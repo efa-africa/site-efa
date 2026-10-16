@@ -99,7 +99,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;l
 .rail svg{width:100%;height:100%;overflow:visible}
 .rail a circle{transition:r .3s,fill .3s}
 .rail .lbl{position:absolute;right:96px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;background:rgba(11,18,32,.75);padding:6px 10px;border-radius:6px;opacity:0;transition:opacity .3s}
-.rail:hover .lbl,.rail.flash .lbl{opacity:1}
+.rail:hover .lbl{opacity:1}
 @media (max-width:900px){.rail{display:none}}
 
 /* Étape 3 : les leçons */
@@ -189,6 +189,9 @@ footer{background:#060B15;color:var(--muted);font-size:13px;padding:28px var(--g
 footer .in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;text-align:center}
 footer a{text-decoration:none}
 footer a:hover{color:#fff}
+/* Accueil : voile renforcé derrière le titre et la question pour rester lisible sur une photo chargée */
+.hero::before{background:linear-gradient(180deg,rgba(11,18,32,.78) 0%,rgba(11,18,32,.55) 45%,rgba(11,18,32,.15) 62%,rgba(11,18,32,.82) 100%)}
+.hero .sub{text-shadow:0 2px 14px rgba(0,0,0,.7)}
 /* Mention de source sous les chiffres d'enquête */
 .src{font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.78);margin-top:-10px;max-width:34em;text-shadow:0 1px 8px rgba(0,0,0,.4)}
 
@@ -221,6 +224,12 @@ img.char{object-position:50% 18%}
 .book .sheet span{font-weight:800;font-size:15px}
 .book .sheet i{display:block;height:22px;border-bottom:1px dashed #C9C0AE}
 
+/* Sommaire des fiches */
+.fiches{list-style:none;counter-reset:f;margin:0;padding:0;display:grid;gap:8px;max-width:440px}
+.fiches li{counter-increment:f;display:grid;grid-template-columns:28px 1fr;column-gap:10px;font-size:14px;color:#FFE9E2}
+.fiches li::before{content:counter(f);grid-row:span 2;width:24px;height:24px;border-radius:50%;background:var(--nuit);color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center}
+.fiches b{color:#fff;font-size:15px}
+.book .sheet i{font-style:normal;font-size:11px;font-weight:600;color:#4E5566;display:flex;align-items:flex-end;padding-bottom:3px}
 /* Inscriptions pas encore ouvertes */
 .soon{display:grid;gap:16px;max-width:440px;background:rgba(11,18,32,.14);border-radius:12px;padding:18px}
 .soon p{font-size:15px;color:#FFF3EE}
@@ -265,7 +274,7 @@ img.char{object-position:50% 18%}
     <a href="methode.html">Études</a>
     <a href="#fondateur">À propos</a>
   </nav>
-  <a class="cta" href="#guide">Guide gratuit</a>
+  <a class="cta" href="#guide" data-cta-short>Le guide</a>
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
 
@@ -278,7 +287,7 @@ img.char{object-position:50% 18%}
 <main id="accueil">
 
   <!-- 0. Promesse -->
-  <section class="screen" data-step="Accueil">
+  <section class="screen hero" data-step="Accueil">
     <img class="bg" src="https://images.unsplash.com/photo-1734255026082-82fdc81991f0?auto=format&fit=crop&w=2000&q=80" alt="Un marché animé, des clients autour d’un étal de tomates" fetchpriority="high">
     <div class="head">
       <p class="step">Éducation Financière Afrique</p>
@@ -288,7 +297,7 @@ img.char{object-position:50% 18%}
     <div class="foot">
       <div class="btns">
         <a class="btn btn-main" href="#cercle">Commencer le parcours</a>
-        <a class="btn btn-alt" href="#guide">Recevoir le guide gratuit</a>
+        <a class="btn btn-alt" href="#guide" data-cta>Être prévenu de la sortie du guide</a>
       </div>
       <span class="cue" aria-hidden="true"></span>
     </div>
@@ -344,7 +353,7 @@ img.char{object-position:50% 18%}
     <div class="head">
       <p class="step">Étape 3 · Apprendre</p>
       <h2>Trois leçons. Deux minutes.</h2>
-      <p class="sub">Un mot, une situation, une idée. Avant de laisser votre email.</p>
+      <p class="sub">Un mot, une situation, une idée. Gratuit, sans inscription.</p>
     </div>
     <div class="cards">
       <article class="card">
@@ -378,10 +387,10 @@ img.char{object-position:50% 18%}
         <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=900&q=80" alt="Une commerçante assise au comptoir de sa boutique" loading="lazy">
         <div class="in">
           <span class="n">Leçon 3 · La Tribune</span>
-          <h3>La tontine n’est pas de l’épargne.</h3>
-          <p>C’est un décalage de trésorerie. Le point de vue d’Élysée Johnson.</p>
+          <h3>Que construisez-vous avec l’argent qui passe ?</h3>
+          <p>Tout l’argent qui passe entre vos mains ne laisse pas forcément de trace. Le point de vue d’Élysée Johnson.</p>
           <!-- LIEN À METTRE À JOUR : URL Substack de la Tribune n° 1 -->
-          <a class="go" href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Lire la tribune</a>
+          <a class="go" href="https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec" target="_blank" rel="noopener">Lire la tribune</a>
         </div>
       </article>
     </div>
@@ -421,7 +430,7 @@ img.char{object-position:50% 18%}
     <div class="ph book-wrap">
       <img class="cover-img" src="guide-couverture.jpg" alt="Couverture du guide Construire sa stabilité financière" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
       <div class="book" aria-hidden="true">
-        <div class="sheet"><b>Fiche 2</b><span>Ma réserve de sécurité</span><i></i><i></i><i></i><i></i></div>
+        <div class="sheet"><b>Fiche 1</b><span>Mes sept chiffres</span><i>Revenus</i><i>Dépenses courantes</i><i>Dettes</i><i>Soutien aux proches</i><i>Tontine</i></div>
         <div class="cover">
           <img src="logo-efa.png" alt="" width="44" height="44">
           <small>Guide gratuit EFA</small>
@@ -434,7 +443,14 @@ img.char{object-position:50% 18%}
     <div class="side">
       <p class="step">Étape 5 · Agir</p>
       <h2>Construire sa stabilité financière</h2>
-      <p class="sub">Le guide gratuit EFA&nbsp;: organiser son budget, constituer une réserve, préparer ses projets. Cinq fiches à remplir.</p>
+      <p class="sub">Le guide gratuit EFA&nbsp;: mesurer sa stabilité, puis la construire pilier par pilier. Un cas concret, celui de Koffi, et cinq fiches à remplir avec vos propres chiffres.</p>
+      <ol class="fiches">
+        <li><b>Mes sept chiffres</b><span>Revenus, charges, dettes, réserve&nbsp;: votre score de stabilité.</span></li>
+        <li><b>Mes dépenses courantes</b><span>Fixes, nécessaires ou choisies&nbsp;: où agir.</span></li>
+        <li><b>Mes dettes</b><span>Les classer par coût et choisir l’ordre de remboursement.</span></li>
+        <li><b>Mes obligations sociales</b><span>Funérailles, fêtes, cotisations&nbsp;: une enveloppe sur douze mois.</span></li>
+        <li><b>Ma réserve</b><span>Deux semaines, un mois, trois mois de charges, par paliers.</span></li>
+      </ol>
       <div class="soon" id="soon" hidden>
         <p><strong>Les inscriptions ouvrent très bientôt.</strong> Pour être prévenu le jour de la sortie du guide, rejoignez la communauté.</p>
         <div class="btns left">
@@ -542,7 +558,7 @@ img.char{object-position:50% 18%}
   var cur=-1;
   function set(i){ if(i===cur) return; cur=i;
     dots.forEach(function(c,j){c.setAttribute('fill',j<i?'#6DB8F2':(j===i?'#E44828':'rgba(255,255,255,.35)'));});
-    lbl.textContent=steps[i].dataset.step; rail.classList.add('flash'); clearTimeout(set.t); set.t=setTimeout(function(){rail.classList.remove('flash');},1400);
+    lbl.textContent=steps[i].dataset.step;
   }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting) set(steps.indexOf(e.target));});},{threshold:.55});
   steps.forEach(function(s){io.observe(s);}); set(0);
@@ -582,6 +598,7 @@ var BREVO_URL='';
   var WA='https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a';
   function say(t){m.innerHTML=t;}
   // Tant que Brevo n'est pas branché, on ne demande pas l'email : on l'annonce avant
+  if(BREVO_URL){var c=document.querySelector('[data-cta]'),s=document.querySelector('[data-cta-short]');if(c)c.textContent='Recevoir le guide gratuit';if(s)s.textContent='Guide gratuit';}
   if(!BREVO_URL){f.hidden=true;document.getElementById('soon').hidden=false;return;}
   f.addEventListener('submit',function(e){
     e.preventDefault();
