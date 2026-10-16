@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Éducation Financière Afrique</title>
+<meta name="description" content="EFA, Éducation Financière Afrique : apprendre à gérer son argent avec les réalités d’ici — salaire, famille, tontine, mobile money. L’argent s’apprend.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="EFA — L’argent s’apprend.">
+<meta property="og:description" content="Votre argent est-il un cercle ou une spirale ? Apprendre à gérer son argent avec les réalités d’ici. Guide gratuit et newsletter chaque lundi.">
+<meta property="og:url" content="https://efa-africa.github.io/site-efa/">
+<meta property="og:image" content="https://efa-africa.github.io/site-efa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+/* Architecture : un écran = une étape du parcours, du cercle vers la spirale. Photo plein cadre, peu de mots, deux actions. */
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#2188D6; --corail:#E44828;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --muted:#AEB6C6;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{margin:0;background:var(--nuit);color:#fff;font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;margin:0;text-wrap:balance}
+:focus-visible{outline:3px solid var(--soft-bleu);outline-offset:3px;border-radius:6px}
+
+/* Boutons façon showroom : un plein, un translucide */
+.btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:240px;min-height:46px;padding:12px 26px;border-radius:8px;border:0;font:700 15px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:filter .2s,background .2s}
+.btn-main{background:var(--corail);color:#fff}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-alt{background:rgba(244,244,244,.86);color:var(--nuit)}
+.btn-alt:hover{background:#fff}
+.btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85)}
+@media (max-width:620px){.btn{min-width:0;width:100%}.btns{flex-direction:column;width:100%;max-width:380px}}
+
+/* En-tête transparent */
+.top{position:fixed;inset:0 0 auto;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);transition:background .3s}
+.top.solid{background:rgba(11,18,32,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.top .cta{font-size:14px;font-weight:800;text-decoration:none;padding:8px 16px;border-radius:8px;background:rgba(255,255,255,.14)}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{display:none}
+  .nav{position:fixed;inset:0;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-weight:900;font-size:34px;text-transform:uppercase}
+  .menu-btn{display:block;position:relative;z-index:31}
+  .top .cta{display:none}
+}
+
+/* Écran type */
+.screen{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:96px var(--gut) 56px;overflow:hidden;scroll-snap-align:start;isolation:isolate}
+.screen > .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.screen::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,.62) 0%,rgba(11,18,32,.12) 38%,rgba(11,18,32,.18) 60%,rgba(11,18,32,.82) 100%)}
+.head{display:grid;gap:12px;justify-items:center;max-width:860px}
+.step{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
+.screen h1{font-size:clamp(60px,11vw,140px)}
+.screen h2{font-size:clamp(46px,8vw,104px)}
+.sub{font-size:clamp(16px,2vw,19px);font-weight:600;max-width:36em;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.sub a{font-weight:800}
+.foot{display:grid;gap:22px;justify-items:center;width:100%}
+.stat{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.stat div{display:grid;gap:2px;min-width:140px}
+.stat b{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,5vw,56px);line-height:1}
+.stat span{font-size:13px;font-weight:700;color:#E3E7EE;max-width:15em;margin:0 auto}
+.credit{position:absolute;right:var(--gut);bottom:10px;font-size:10px;color:rgba(255,255,255,.55);text-decoration:none}
+
+/* Couleurs de l'étape : le cercle reste froid, la spirale prend le bleu EFA */
+.s-cercle .stat b{color:#fff}
+.s-spirale .stat b{color:var(--soft-bleu)}
+.cue{width:26px;height:40px;border-radius:14px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);position:relative}
+.cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.6s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* Repère de progression : la spirale de points avance avec la lecture */
+.rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:25;width:84px;height:84px}
+.rail svg{width:100%;height:100%;overflow:visible}
+.rail a circle{transition:r .3s,fill .3s}
+.rail .lbl{position:absolute;right:96px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;background:rgba(11,18,32,.75);padding:6px 10px;border-radius:6px;opacity:0;transition:opacity .3s}
+.rail:hover .lbl,.rail.flash .lbl{opacity:1}
+@media (max-width:900px){.rail{display:none}}
+
+/* Étape 3 : les leçons */
+.lessons{background:var(--creme);color:var(--nuit);justify-content:center;gap:40px}
+.lessons::before{display:none}
+.lessons .step{color:var(--corail)}
+.lessons .sub{text-shadow:none;color:#4E5566}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;max-width:1180px;text-align:left}
+.card{position:relative;border-radius:18px;overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;isolation:isolate;background:var(--nuit)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.card:hover img{transform:scale(1.04)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,0) 20%,rgba(11,18,32,.92) 78%)}
+.card .in{padding:24px;display:grid;gap:10px}
+.card .n{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.card h3{font-size:40px}
+.card p{font-size:15px;color:#DDE2EA}
+.card .go{font-weight:800;font-size:15px;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.card .go::after{content:"→";transition:transform .2s}
+.card:hover .go::after{transform:translateX(4px)}
+.word{font-family:var(--f-display);font-weight:900;font-size:76px;line-height:.85}
+details summary{list-style:none;cursor:pointer;font-weight:800;display:inline-flex;gap:8px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+"}
+details[open] summary::after{content:"–"}
+details .def{display:grid;gap:8px;margin-top:10px;font-size:15px;color:#DDE2EA}
+details .def b{color:#fff}
+@media (max-width:980px){
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+  .cards::-webkit-scrollbar{display:none}
+  .card{scroll-snap-align:center;min-height:460px}
+}
+
+/* Étape 4 : questions du visiteur */
+.ask{background:var(--nuit);justify-content:center;gap:36px}
+.ask::before{display:none}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;max-width:1180px;text-align:left}
+.tile{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.tile:hover img{transform:scale(1.05)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,0) 35%,rgba(11,18,32,.9))}
+.tile span{padding:18px;display:grid;gap:4px}
+.tile b{font-family:var(--f-display);font-weight:900;font-size:30px;line-height:.95;text-transform:uppercase}
+.tile small{font-size:13px;font-weight:700;color:var(--soft-bleu)}
+.tile.soon small{color:var(--muted)}
+@media (max-width:980px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{aspect-ratio:4/5}}
+
+/* Étape 5 : le guide, photo et formulaire côte à côte */
+.guide{flex-direction:row;align-items:stretch;justify-content:flex-start;padding:0;text-align:left;background:var(--corail)}
+.guide::before{display:none}
+.guide .ph{position:relative;flex:1 1 50%;min-height:100svh}
+.guide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.guide .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(228,72,40,0) 60%,rgba(228,72,40,.35))}
+.guide .side{flex:1 1 50%;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:96px clamp(16px,5vw,72px) 56px}
+.guide .step{color:#FFE2D9}
+.guide h2{font-size:clamp(44px,6vw,80px)}
+.guide .sub{text-shadow:none}
+form{display:grid;gap:12px;max-width:440px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,select{width:100%;font:600 16px var(--f-body);padding:14px;border-radius:8px;border:0;background:rgba(255,255,255,.96);color:var(--nuit)}
+input::placeholder{color:#7A8090}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:600;color:#FFF3EE}
+.check input{width:20px;height:20px;flex:none;margin-top:1px;padding:0}
+.guide .btn-main{background:var(--nuit);width:100%}
+.formmsg{font-size:14px;font-weight:700;min-height:1.2em}
+.hp{position:absolute;left:-9999px}
+.small{font-size:13px;color:#FFE2D9}
+@media (max-width:900px){.guide{flex-direction:column}.guide .ph{min-height:46svh;flex:none}.guide .side{padding:40px 16px 56px}.row{grid-template-columns:1fr}}
+
+/* Étape 6 : fondateur */
+.founder{background:var(--nuit);justify-content:center;gap:40px}
+.founder::before{display:none}
+.founder canvas{width:min(300px,62vw);aspect-ratio:1;height:auto}
+.founder blockquote{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,8vw,104px);line-height:.92}
+.founder blockquote span{color:var(--soft-corail)}
+
+/* Pied */
+.week{background:var(--creme);color:var(--nuit);padding:56px var(--gut)}
+.week .in{max-width:1180px;margin:0 auto;display:grid;gap:22px}
+.week h3{font-size:clamp(32px,4vw,44px)}
+.days{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.days div{border-top:3px solid var(--nuit);padding-top:10px;display:grid;gap:2px}
+.days small{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu)}
+.days b{font-size:16px}
+.days span{font-size:13px;color:#4E5566}
+@media (max-width:900px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+footer{background:#060B15;color:var(--muted);font-size:13px;padding:28px var(--gut)}
+footer .in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;text-align:center}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <a class="brand" href="#accueil"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a href="#cercle">Comprendre</a>
+    <a href="#lecons">Apprendre</a>
+    <a href="#questions">Vos questions</a>
+    <a href="#guide">Guide</a>
+    <a href="methode.html">Études</a>
+    <a href="#fondateur">À propos</a>
+  </nav>
+  <a class="cta" href="#guide">Guide gratuit</a>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<!-- Repère : la spirale de progression -->
+<div class="rail" id="rail" aria-label="Progression">
+  <span class="lbl" id="rail-lbl">Accueil</span>
+  <svg viewBox="-50 -50 100 100" id="rail-svg" aria-hidden="true"></svg>
+</div>
+
+<main id="accueil">
+
+  <!-- 0. Promesse -->
+  <section class="screen" data-step="Accueil">
+    <img class="bg" src="https://images.unsplash.com/photo-1734255026082-82fdc81991f0?auto=format&fit=crop&w=2000&q=80" alt="Un marché animé, des clients autour d’un étal de tomates" fetchpriority="high">
+    <div class="head">
+      <p class="step">Éducation Financière Afrique</p>
+      <h1>L’argent s’apprend.</h1>
+      <p class="sub">Votre argent tourne-t-il en rond, ou vous fait-il avancer&nbsp;?</p>
+    </div>
+    <div class="foot">
+      <div class="btns">
+        <a class="btn btn-main" href="#cercle">Commencer le parcours</a>
+        <a class="btn btn-alt" href="#guide">Recevoir le guide gratuit</a>
+      </div>
+      <span class="cue" aria-hidden="true"></span>
+    </div>
+    <a class="credit" href="https://unsplash.com/photos/a-group-of-people-standing-around-a-table-filled-with-tomatoes-cnVn4Gg4b00" target="_blank" rel="noopener">Photo&nbsp;: Tunde Buremo / Unsplash</a>
+  </section>
+
+  <!-- 1. Le cercle -->
+  <section class="screen s-cercle" id="cercle" data-step="Étape 1 · Le cercle">
+    <img class="bg" src="https://images.unsplash.com/photo-1575303093127-18b3c4ef8c41?auto=format&fit=crop&w=2000&q=80" alt="Une commerçante tient des tomates devant ses bassines" loading="lazy">
+    <div class="head">
+      <p class="step">Étape 1 · Le cercle</p>
+      <h2>L’argent arrive. L’argent repart.</h2>
+      <p class="sub">Le tour répond aux besoins du moment. Au tour suivant, quelle part reste disponible pour la suite&nbsp;?</p>
+    </div>
+    <div class="foot">
+      <div class="stat">
+        <div><b>71 %</b><span>des tontines redistribuent tout</span></div>
+        <div><b>47 %</b><span>n’ont rien gardé de durable du dernier tour</span></div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-alt" href="#spirale">Passer à la spirale</a>
+        <a class="btn btn-line" href="methode.html#enquete">Voir l’enquête</a>
+      </div>
+    </div>
+    <a class="credit" href="https://unsplash.com/photos/woman-holding-tomatoes-near-containers-of-tomatoes-zlZnNIS7eDk" target="_blank" rel="noopener">Photo&nbsp;: Omotayo Tajudeen / Unsplash</a>
+  </section>
+
+  <!-- 2. La spirale -->
+  <section class="screen s-spirale" id="spirale" data-step="Étape 2 · La spirale">
+    <img class="bg" src="https://images.unsplash.com/photo-1687422809069-0fa3546b8471?auto=format&fit=crop&w=2000&q=80" alt="Un tailleur sourit en travaillant à sa machine à coudre" loading="lazy">
+    <div class="head">
+      <p class="step">Étape 2 · La spirale</p>
+      <h2>Une part reste. Et travaille.</h2>
+      <p class="sub">Une réserve protège. Un outil produit. Une part conservée ou investie peut préparer le tour suivant.</p>
+    </div>
+    <div class="foot">
+      <div class="stat">
+        <div><b>65 %</b><span>ont gardé quelque chose quand le tour a servi une activité</span></div>
+        <div><b>29 %</b><span>quand il a couvert les dépenses courantes</span></div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-main" href="#lecons">Apprendre la spirale</a>
+        <a class="btn btn-line" href="methode.html#enquete">Comprendre ces chiffres</a>
+      </div>
+    </div>
+    <a class="credit" href="https://unsplash.com/photos/a-man-smiles-as-he-uses-a-sewing-machine-cU3xxfbB9Es" target="_blank" rel="noopener">Photo&nbsp;: Ali Mkumbwa / Unsplash</a>
+  </section>
+
+  <!-- 3. Trois leçons -->
+  <section class="screen lessons" id="lecons" data-step="Étape 3 · Apprendre">
+    <div class="head">
+      <p class="step">Étape 3 · Apprendre</p>
+      <h2>Trois leçons. Deux minutes.</h2>
+      <p class="sub">Un mot, une situation, une idée. Avant de laisser votre email.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1677935711525-1059c0cb9b44?auto=format&fit=crop&w=900&q=80" alt="Une femme montre l’écran de son téléphone" loading="lazy">
+        <div class="in">
+          <span class="n">Leçon 1 · Le Dico</span>
+          <span class="word">Flux</span>
+          <p>L’argent qui passe entre vos mains&nbsp;: ce qui entre, ce qui sort.</p>
+          <details>
+            <summary>Lire la définition</summary>
+            <div class="def">
+              <p>Le flux s’oppose au <b>stock</b>&nbsp;: ce qui vous reste, ce que vous possédez.</p>
+              <p>300&nbsp;000 FCFA entrent chaque mois, 300&nbsp;000 FCFA ressortent&nbsp;: beaucoup de flux, aucun stock en plus.</p>
+              <p><b>Ce qui circule n’est pas ce qui reste.</b></p>
+            </div>
+          </details>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1686723726446-8b881f37ce62?auto=format&fit=crop&w=900&q=80" alt="Une femme en t-shirt orange au téléphone" loading="lazy">
+        <div class="in">
+          <span class="n">Leçon 2 · Min’Fin</span>
+          <h3>Prêter à un proche&nbsp;: prêt ou cadeau&nbsp;?</h3>
+          <p>Koffi prête à sa sœur. Un mois plus tard, plus personne n’en parle.</p>
+          <!-- LIEN À METTRE À JOUR : URL TikTok de l’épisode 3 -->
+          <a class="go" href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">Regarder l’épisode</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=900&q=80" alt="Une commerçante assise au comptoir de sa boutique" loading="lazy">
+        <div class="in">
+          <span class="n">Leçon 3 · La Tribune</span>
+          <h3>La tontine n’est pas de l’épargne.</h3>
+          <p>C’est un décalage de trésorerie. Le point de vue d’Élysée Johnson.</p>
+          <!-- LIEN À METTRE À JOUR : URL Substack de la Tribune n° 1 -->
+          <a class="go" href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Lire la tribune</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4. Questions du visiteur -->
+  <section class="screen ask" id="questions" data-step="Étape 4 · Votre question">
+    <div class="head">
+      <p class="step">Étape 4 · Votre question</p>
+      <h2>Qu’est-ce qui vous préoccupe&nbsp;?</h2>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="#guide">
+        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Organiser mon budget</b><small>Le guide gratuit →</small></span>
+      </a>
+      <a class="tile" href="#cercle">
+        <img src="https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Préparer mon tour de tontine</b><small>Le cercle et la spirale →</small></span>
+      </a>
+      <a class="tile" href="#lecons">
+        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Aider ma famille sans m’épuiser</b><small>Prêt ou cadeau&nbsp;? →</small></span>
+      </a>
+      <div class="tile soon">
+        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Épargner pour un projet</b><small>Guide en préparation</small></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Le guide -->
+  <section class="screen guide" id="guide" data-step="Étape 5 · Agir">
+    <div class="ph"><img src="https://images.unsplash.com/photo-1680878903102-92692799ef36?auto=format&fit=crop&w=1400&q=80" alt="Une femme en robe verte tient son téléphone" loading="lazy"></div>
+    <div class="side">
+      <p class="step">Étape 5 · Agir</p>
+      <h2>Construire sa stabilité financière</h2>
+      <p class="sub">Le guide gratuit EFA&nbsp;: organiser son budget, constituer une réserve, préparer ses projets. Cinq fiches à remplir.</p>
+      <form id="signup-form" novalidate>
+        <div class="row">
+          <input id="f-prenom" name="PRENOM" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
+          <select id="f-pays" name="PAYS" aria-label="Pays">
+            <option value="">Pays</option>
+            <option>Côte d’Ivoire</option><option>Sénégal</option><option>Cameroun</option><option>Bénin</option>
+            <option>Burkina Faso</option><option>Mali</option><option>Togo</option><option>Guinée</option>
+            <option>Niger</option><option>Gabon</option><option>RD Congo</option><option>Congo</option>
+            <option>France</option><option>Autre pays</option>
+          </select>
+        </div>
+        <input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="Adresse email" aria-label="Adresse email" required>
+        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span>J’accepte de recevoir le guide et «&nbsp;L’argent de la semaine&nbsp;» chaque lundi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
+        <button class="btn btn-main" type="submit">Recevoir le guide</button>
+        <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="small">Pas de conseil de placement, pas de produit à vendre. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
+    </div>
+  </section>
+
+  <!-- 6. Fondateur -->
+  <section class="screen founder" id="fondateur" data-step="Le fondateur">
+    <canvas id="spiral" width="600" height="600" aria-hidden="true"></canvas>
+    <div class="head">
+      <blockquote>La confiance <span>précède</span> le capital.</blockquote>
+      <p class="sub" style="color:var(--muted)">Élysée Johnson, fondateur d’EFA. Banque d’investissement, capital-investissement, conseil en stratégie, à Paris, New York et Abidjan. Auteur à paraître de <i>Le Cercle et la Spirale</i>.</p>
+    </div>
+    <div class="btns">
+      <a class="btn btn-alt" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Rejoindre EFA Community</a>
+      <a class="btn btn-line" href="methode.html">Notre méthode</a>
+    </div>
+  </section>
+</main>
+
+<section class="week" aria-label="Une semaine avec EFA">
+  <div class="in">
+    <h3>Une semaine avec EFA</h3>
+    <div class="days">
+      <div><small>Lundi · email</small><b>L’argent de la semaine</b><span>La newsletter</span></div>
+      <div><small>Lundi</small><b>Le Dico</b><span>Un mot expliqué</span></div>
+      <div><small>Mercredi</small><b>Min’Fin</b><span>Koffi en une minute</span></div>
+      <div><small>Jeudi 19 h</small><b>EFA Community</b><span>Sur WhatsApp</span></div>
+      <div><small>Vendredi</small><b>Instant’Fin</b><span>Une idée, une affiche</span></div>
+      <div><small>Samedi</small><b>La Tribune</b><span>Le point de vue d’Élysée</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="in">
+    <span>Éducation Financière Afrique © 2026</span>
+    <span>Éducation financière, pas conseil en placement</span>
+    <a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="methode.html">Notre méthode</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+  </div>
+</footer>
+
+<script>
+// En-tête : devient opaque après le premier écran ; menu plein écran sur mobile
+(function(){
+  var top=document.getElementById('top'), nav=document.getElementById('nav'), mb=document.getElementById('menu');
+  function onScroll(){top.classList.toggle('solid',window.scrollY>window.innerHeight*0.6);}
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Fermer':'Menu';});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded',false);mb.textContent='Menu';}});
+})();
+
+// Repère de progression : un point par étape, posé sur une spirale ; le point corail avance
+(function(){
+  var steps=[].slice.call(document.querySelectorAll('[data-step]'));
+  var svg=document.getElementById('rail-svg'), lbl=document.getElementById('rail-lbl'), rail=document.getElementById('rail');
+  var NS='http://www.w3.org/2000/svg', dots=[];
+  steps.forEach(function(s,i){
+    if(!s.id) s.id='etape-'+i;
+    var f=i/(steps.length-1), a=-Math.PI/2+f*Math.PI*2.6, r=8+f*36;
+    var link=document.createElementNS(NS,'a'); link.setAttribute('href','#'+s.id);
+    var c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',(r*Math.cos(a)).toFixed(1)); c.setAttribute('cy',(r*Math.sin(a)).toFixed(1)); c.setAttribute('r',3+f*2.5);
+    c.setAttribute('fill','rgba(255,255,255,.35)');
+    var t=document.createElementNS(NS,'title'); t.textContent=s.dataset.step;
+    c.appendChild(t); link.appendChild(c); svg.appendChild(link); dots.push(c);
+  });
+  var cur=-1;
+  function set(i){ if(i===cur) return; cur=i;
+    dots.forEach(function(c,j){c.setAttribute('fill',j<i?'#6DB8F2':(j===i?'#E44828':'rgba(255,255,255,.35)'));});
+    lbl.textContent=steps[i].dataset.step; rail.classList.add('flash'); clearTimeout(set.t); set.t=setTimeout(function(){rail.classList.remove('flash');},1400);
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting) set(steps.indexOf(e.target));});},{threshold:.55});
+  steps.forEach(function(s){io.observe(s);}); set(0);
+})();
+
+// Spirale du fondateur : le motif EFA
+(function(){
+  var c=document.getElementById('spiral'); if(!c||!c.getContext) return;
+  var x=c.getContext('2d'), W=c.width, cx=W/2, cy=W/2, s=W/720;
+  function draw(t){
+    x.clearRect(0,0,W,W);
+    for(var i=0;i<14;i++){var a=-Math.PI/2+i*2*Math.PI/14;x.beginPath();x.arc(cx+300*s*Math.cos(a),cy+300*s*Math.sin(a),7*s,0,7);x.fillStyle='rgba(255,255,255,.25)';x.fill();}
+    var N=70,k=Math.floor(t/90)%N;
+    for(var j=0;j<N;j++){var f=j/N,ang=-Math.PI/2+f*Math.PI*5.2,r=(24+f*250)*s,last=j===k;
+      x.beginPath();x.arc(cx+r*Math.cos(ang),cy+r*Math.sin(ang),(last?15:(5+f*7))*s,0,7);
+      x.fillStyle=last?'#E44828':(j<=k?'#6DB8F2':'rgba(109,184,242,.2)');x.fill();}
+  }
+  draw(90*69);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var st=null;(function loop(ts){if(ts){if(st===null)st=ts;draw((ts-st)%(90*80));}requestAnimationFrame(loop);})();
+})();
+
+// Formulaire → Brevo (liste « Newsletter EFA », double confirmation).
+// BREVO_URL : adresse « action » du formulaire Brevo (Contacts › Formulaires › Partager › code HTML).
+var BREVO_URL='';
+(function(){
+  var f=document.getElementById('signup-form'), m=document.getElementById('formmsg'), b=f.querySelector('button[type=submit]');
+  var WA='https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a';
+  function say(t){m.innerHTML=t;}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('f-email').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say('Saisissez une adresse email valide.');return;}
+    if(!document.getElementById('f-ok').checked){say('Cochez la case pour recevoir le guide.');return;}
+    if(f.email_address_check.value) return;
+    if(!BREVO_URL){say('Les inscriptions ouvrent très bientôt. En attendant&nbsp;: <a href="'+WA+'" target="_blank" rel="noopener">EFA Community sur WhatsApp</a>.');return;}
+    var d=new FormData();
+    d.append('EMAIL',em); d.append('PRENOM',document.getElementById('f-prenom').value.trim());
+    d.append('PAYS',document.getElementById('f-pays').value); d.append('email_address_check',''); d.append('locale','fr');
+    b.disabled=true; say('Envoi en cours…');
+    fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'}).then(function(){
+      f.reset(); say('Presque fini&nbsp;: confirmez dans l’email que nous venons d’envoyer (regardez aussi Promotions et Spam). Le guide arrive juste après.');
+    }).catch(function(){say('L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.');}).then(function(){b.disabled=false;});
+  });
+})();
+</script>
+</body>
+</html>
