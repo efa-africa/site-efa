@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<title>Éducation Financière Afrique</title>
+<meta name="description" content="EFA, Éducation Financière Afrique : apprendre à gérer son argent, comprendre la tontine, construire sa stabilité. L'argent s'apprend.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+/* Layout : bandes pleine largeur alternant crème et bleu nuit, contenu en colonne de 1080 px ; le cercle de points EFA comme motif. */
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#2188D6; --corail:#E44828; --blanc:#FFFFFF;
+  --bg:#F5EFE2; --fg:#0B1220; --muted:#4E5566; --card:#FFFFFF; --line:#DCD3C2;
+  --band:#0B1220; --band-fg:#FFFFFF; --band-muted:#AEB6C6; --soft-corail:#F09680; --soft-bleu:#6DB8F2;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1220; --fg:#F5EFE2; --muted:#AEB6C6; --card:#141D30; --line:#26324A;
+  --band:#060B15; --band-fg:#FFFFFF; --band-muted:#AEB6C6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1220; --fg:#F5EFE2; --muted:#AEB6C6; --card:#141D30; --line:#26324A;
+  --band:#060B15; --band-fg:#FFFFFF; --band-muted:#AEB6C6; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:.005em;text-wrap:balance;margin:0}
+.kicker{font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.band .kicker{color:var(--soft-corail)}
+p{margin:0}
+
+/* En-tête */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--band);color:var(--band-fg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--band)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:40px;height:40px}
+.brand span{font-size:12px;font-weight:800;letter-spacing:.2em}
+.nav{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:700}
+.nav a{text-decoration:none;color:var(--band-muted)}
+.nav a:hover{color:var(--band-fg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 26px;font:800 16px/1 var(--f-body);text-decoration:none;cursor:pointer}
+.btn-corail{background:var(--corail);color:#fff}
+.btn-corail:hover{filter:brightness(1.08)}
+.btn-small{padding:10px 18px;font-size:14px}
+@media (max-width:760px){.nav a:not(.btn){display:none}.brand span{display:none}}
+
+/* Hero */
+.hero{background:var(--band);color:var(--band-fg);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;padding-block:72px 84px}
+.hero h1{font-size:clamp(56px,9vw,112px)}
+.hero h1 .c{color:var(--soft-corail)}
+.hero h1 .b{color:var(--soft-bleu)}
+.hero .lead{font-size:clamp(18px,2.2vw,21px);color:#D9DEE8;max-width:34em;margin-top:24px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:32px}
+.hero .note{font-size:14px;color:var(--band-muted)}
+.cycle{width:100%;max-width:360px;justify-self:center;display:grid;gap:14px}
+.cycle canvas{width:100%;max-width:100%;aspect-ratio:1;height:auto;display:block}
+.cycle .legend{text-align:center;font-size:13px;color:var(--band-muted);letter-spacing:.04em}
+@media (max-width:800px){.hero .wrap{grid-template-columns:1fr;padding-block:48px 56px}.cycle{max-width:260px}}
+
+/* Preuves */
+.proofs{border-bottom:1px solid var(--line)}
+.proofs .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-block:36px}
+.proof b{display:block;font-family:var(--f-display);font-weight:900;font-size:48px;line-height:1;color:var(--bleu);font-variant-numeric:tabular-nums}
+.proof span{font-size:15px;color:var(--muted)}
+@media (max-width:700px){.proofs .wrap{grid-template-columns:1fr;gap:18px}}
+
+section{padding-block:80px}
+.sec-head{display:grid;gap:14px;max-width:46em;margin-bottom:40px}
+.sec-head h2{font-size:clamp(40px,6vw,68px)}
+.sec-head p{color:var(--muted);font-size:18px}
+
+/* Cercle et spirale */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pane{border-radius:22px;padding:30px;display:grid;gap:12px;min-width:0}
+.pane h3{font-size:40px}
+.pane.cercle{background:var(--card);border:1px solid var(--line)}
+.pane.spirale{background:var(--bleu);color:#fff}
+.pane .tag{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.pane.cercle .tag{color:var(--muted)}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.findings{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.finding{display:grid;gap:6px;border-top:3px solid var(--fg);padding-top:14px}
+.finding b{font-family:var(--f-display);font-size:44px;font-weight:900;line-height:1;color:var(--corail);font-variant-numeric:tabular-nums}
+.finding span{font-size:15px;color:var(--muted)}
+.fine{margin-top:16px;font-size:13px;color:var(--muted);font-style:italic}
+@media (max-width:760px){.findings{grid-template-columns:1fr}}
+
+/* Inscription */
+.signup{background:var(--corail);color:#fff}
+.signup .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;padding-block:80px}
+.signup h2{font-size:clamp(40px,6vw,64px)}
+.signup .kicker{color:#FFE2D9}
+.signup ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.signup li{display:flex;gap:12px;align-items:flex-start}
+.signup li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:#fff;margin-top:9px}
+form{background:var(--nuit);color:#fff;border-radius:22px;padding:30px;display:grid;gap:16px;min-width:0}
+label{font-size:14px;font-weight:700;display:grid;gap:6px}
+input,select{font:600 16px var(--f-body);padding:13px 14px;border-radius:12px;border:1px solid #2E3A55;background:#141D30;color:#fff;width:100%}
+input::placeholder{color:#7E889C}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:13px;color:#C9D0DC}
+.check input{width:20px;height:20px;flex:none;margin-top:1px}
+form .btn{width:100%}
+.formmsg{font-size:14px;color:#A8E6C1;min-height:1.2em}
+@media (max-width:800px){.signup .wrap{grid-template-columns:1fr;gap:32px;padding-block:56px}}
+
+/* Rubriques */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rub{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:grid;gap:10px;align-content:start;min-width:0}
+.rub .when{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu)}
+.rub h3{font-size:34px}
+.rub p{color:var(--muted);font-size:15px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* Guides */
+.band{background:var(--band);color:var(--band-fg)}
+.guides{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:stretch}
+.guide-main{background:var(--bleu);border-radius:22px;padding:34px;display:grid;gap:14px;align-content:start}
+.guide-main h3{font-size:46px}
+.guide-main .btn{justify-self:start;background:#fff;color:var(--nuit)}
+.soon{display:grid;gap:12px;align-content:start}
+.soon-item{border:1px solid #26324A;border-radius:16px;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.soon-item b{font-weight:700}
+.pill{flex:none;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:#26324A;color:var(--band-muted)}
+@media (max-width:800px){.guides{grid-template-columns:1fr}}
+
+/* Fondateur */
+.founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.founder blockquote{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(38px,5vw,58px);line-height:.98}
+.founder blockquote span{color:var(--corail)}
+.founder .bio{display:grid;gap:14px;color:var(--muted)}
+.founder .bio strong{color:var(--fg)}
+@media (max-width:800px){.founder{grid-template-columns:1fr;gap:24px}}
+
+/* Communauté */
+.community .wrap{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.socials a{text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.socials a:hover{border-color:var(--bleu)}
+@media (max-width:760px){.community .wrap{grid-template-columns:1fr}}
+
+footer{background:var(--band);color:var(--band-muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:32px}
+footer b{color:var(--band-fg)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#accueil"><img src="logo-efa.png" alt="Logo EFA" width="40" height="40"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#cercle">Le cercle et la spirale</a>
+      <a href="#rubriques">Nos rendez-vous</a>
+      <a href="#guides">Guides</a>
+      <a href="#communaute">Communauté</a>
+      <a class="btn btn-corail btn-small" href="#inscription">Le guide gratuit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="accueil">
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Éducation Financière Afrique</p>
+        <h1 style="margin-top:16px">L’argent<br><span class="b">s’apprend.</span></h1>
+        <p class="lead">Votre argent tourne-t-il en rond, ou vous fait-il avancer ? EFA vous apprend à gérer votre argent avec les réalités d’ici : le salaire qui ne suffit jamais, la famille, la tontine, le mobile money.</p>
+        <div class="actions">
+          <a class="btn btn-corail" href="#inscription">Recevoir le guide gratuit</a>
+          <span class="note">Chaque lundi, « L’argent de la semaine » par email.</span>
+        </div>
+      </div>
+      <div class="cycle" aria-hidden="true">
+        <canvas id="spiral" width="720" height="720"></canvas>
+        <p class="legend">Le cercle se referme. La spirale avance.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="proofs">
+    <div class="wrap">
+      <div class="proof"><b>1,1 M</b><span>vues sur Facebook en 28 jours (septembre–octobre 2026)</span></div>
+      <div class="proof"><b>251</b><span>réponses à notre enquête sur l’argent de la tontine</span></div>
+      <div class="proof"><b>54 400</b><span>vues pour le premier épisode de Min’Fin sur TikTok</span></div>
+    </div>
+  </div>
+
+  <section id="cercle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Notre conviction</p>
+        <h2>Votre argent est-il un cercle ou une spirale&nbsp;?</h2>
+        <p>Ce qui circule n’est pas ce qui reste. On peut cotiser vingt ans et ne rien garder. Tout se joue dans ce que l’on fait de l’argent quand il arrive.</p>
+      </div>
+      <div class="duo">
+        <div class="pane cercle">
+          <span class="tag">Le cercle</span>
+          <h3>L’argent arrive, l’argent repart.</h3>
+          <p>Le tour de tontine couvre les dépenses du moment. Le mois suivant, on recommence au même point.</p>
+        </div>
+        <div class="pane spirale">
+          <span class="tag">La spirale</span>
+          <h3>L’argent arrive, une part reste et travaille.</h3>
+          <p>Une réserve protège, un stock ou un outil produit. Chaque tour vous laisse un peu plus loin que le précédent.</p>
+        </div>
+      </div>
+      <div class="findings">
+        <div class="finding"><b>71 %</b><span>des tontines de notre enquête redistribuent tout : rien n’est gardé en commun.</span></div>
+        <div class="finding"><b>47 %</b><span>des participants disent n’avoir rien gardé de durable de leur dernier tour.</span></div>
+        <div class="finding"><b>65 % / 29 %</b><span>en gardent quelque chose quand le tour a financé une activité, contre 29 % quand il a couvert les dépenses courantes.</span></div>
+      </div>
+      <p class="fine">Enquête EFA « L’argent de la tontine », 251 réponses dont 160 participants à une tontine, export du 12 octobre 2026. Résultats provisoires, échantillon non représentatif.</p>
+    </div>
+  </section>
+
+  <section class="signup" id="inscription" style="padding:0">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Gratuit</p>
+        <h2 style="margin-top:12px">Construire sa stabilité financière</h2>
+        <p style="margin-top:18px;font-size:18px">Le guide pratique EFA pour poser des bases solides, avant de penser à épargner ou à investir.</p>
+        <ul>
+          <li>Le guide en PDF, tout de suite.</li>
+          <li>« L’argent de la semaine » chaque lundi : un chiffre, trois actus décryptées, un mot expliqué, une action à faire.</li>
+          <li>Pas de conseil de placement, pas de produit à vendre. Désinscription en un clic.</li>
+        </ul>
+      </div>
+      <form id="signup-form" novalidate>
+        <label for="f-prenom">Prénom<input id="f-prenom" name="PRENOM" type="text" autocomplete="given-name" placeholder="Votre prénom"></label>
+        <label for="f-email">Adresse email<input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="vous@exemple.com" required></label>
+        <label for="f-pays">Pays
+          <select id="f-pays" name="PAYS">
+            <option value="">Choisir</option>
+            <option>Côte d’Ivoire</option><option>Sénégal</option><option>Cameroun</option><option>Bénin</option>
+            <option>Burkina Faso</option><option>Mali</option><option>Togo</option><option>Guinée</option>
+            <option>Niger</option><option>Gabon</option><option>RD Congo</option><option>Congo</option>
+            <option>France</option><option>Autre pays</option>
+          </select>
+        </label>
+        <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required>J’accepte de recevoir le guide et la newsletter d’EFA par email. Je peux me désinscrire à tout moment.</label>
+        <button class="btn btn-corail" type="submit">Recevoir le guide</button>
+        <p class="formmsg" id="formmsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="rubriques">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Nos rendez-vous</p>
+        <h2>Une semaine avec EFA</h2>
+        <p>Des formats courts, une idée à la fois, des exemples tirés de la vie d’ici.</p>
+      </div>
+      <div class="grid">
+        <article class="rub"><span class="when">Lundi · email</span><h3>L’argent de la semaine</h3><p>La newsletter : ce qui a bougé dans l’argent en Afrique francophone, et ce que ça change pour vous.</p></article>
+        <article class="rub"><span class="when">Lundi</span><h3>Le Dico</h3><p>Un mot de la finance expliqué simplement, avec un exemple en francs CFA.</p></article>
+        <article class="rub"><span class="when">Mercredi</span><h3>Min’Fin</h3><p>Ma minute finance : les mini-films de Koffi, Tantie Affoué et Tonton Bamba. Une situation, un piège, une règle.</p></article>
+        <article class="rub"><span class="when">Vendredi</span><h3>Instant’Fin</h3><p>Une affiche, une idée à retenir en trois secondes.</p></article>
+        <article class="rub"><span class="when">Samedi</span><h3>La Tribune</h3><p>Le point de vue d’Élysée Johnson sur l’argent, la tontine et la famille.</p></article>
+        <article class="rub"><span class="when">Chaque jour</span><h3>EFA News</h3><p>L’actualité économique africaine décryptée, du budget de l’État au prix du panier.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="guides">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Guides pratiques</p>
+        <h2>Des guides pour passer à l’action</h2>
+        <p style="color:var(--band-muted)">Chaque guide répond à une question concrète, étape par étape.</p>
+      </div>
+      <div class="guides">
+        <div class="guide-main">
+          <span class="kicker" style="color:#fff">Disponible</span>
+          <h3>Construire sa stabilité financière</h3>
+          <p>Faire le compte de ce qui entre et sort, se constituer une réserve, alléger ses engagements.</p>
+          <a class="btn" href="#inscription">Le recevoir gratuitement</a>
+        </div>
+        <div class="soon">
+          <div class="soon-item"><b>Choisir sa tontine</b><span class="pill">Bientôt</span></div>
+          <div class="soon-item"><b>Que faire de sa tontine ? Décider avant de recevoir</b><span class="pill">Bientôt</span></div>
+          <div class="soon-item"><b>Votre liberté financière : combien vous faut-il pour être libre ?</b><span class="pill">Bientôt</span></div>
+          <div class="soon-item"><b>Rapport : la tontine en chiffres</b><span class="pill">Bientôt</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fondateur">
+    <div class="wrap founder">
+      <blockquote>La confiance <span>précède</span> le capital.</blockquote>
+      <div class="bio">
+        <p class="kicker">Le fondateur</p>
+        <p><strong>Élysée Johnson</strong> a fondé Éducation Financière Afrique pour rendre l’argent compréhensible par tous. Son parcours l’a mené de la banque d’investissement au capital-investissement et au conseil en stratégie, à Paris, New York et Abidjan.</p>
+        <p>Il prépare un livre sur la tontine, <strong>Le Cercle et la Spirale</strong>, nourri par les enquêtes et les témoignages de la communauté EFA.</p>
+        <p>Chaque contenu EFA est rédigé et vérifié par notre équipe, sources à l’appui.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="community" id="communaute" style="background:var(--card);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Communauté</p>
+        <h2 style="font-size:clamp(36px,5vw,56px);margin-top:12px">Rejoignez EFA Community</h2>
+        <p style="color:var(--muted);margin-top:14px;max-width:38em">Chaque jeudi à 19 h, sur WhatsApp : une fiche, une question, vos réponses.</p>
+        <div class="socials">
+          <a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a>
+        </div>
+      </div>
+      <a class="btn btn-corail" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Rejoindre le groupe WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>Éducation Financière Afrique</b> · L’argent s’apprend.</span>
+    <span>EFA fait de l’éducation financière, pas du conseil en placement.</span>
+    <span>Contact : newsletter@efa.africa</span>
+  </div>
+</footer>
+
+<script>
+// Spirale de points : le motif EFA (cercle de points, point corail qui avance)
+(function(){
+  var c=document.getElementById('spiral'); if(!c) return;
+  var x=c.getContext('2d'), W=c.width, cx=W/2, cy=W/2;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function draw(t){
+    x.clearRect(0,0,W,W);
+    var n=14;
+    for(var i=0;i<n;i++){ // cercle extérieur
+      var a=-Math.PI/2+i*2*Math.PI/n;
+      x.beginPath(); x.arc(cx+300*Math.cos(a),cy+300*Math.sin(a),7,0,7); x.fillStyle='rgba(255,255,255,.28)'; x.fill();
+    }
+    var N=70, k=Math.floor(t/90)%N;
+    for(var j=0;j<N;j++){ // spirale
+      var f=j/N, ang=-Math.PI/2+f*Math.PI*5.2, r=24+f*250;
+      var on=j<=k, last=j===k;
+      x.beginPath(); x.arc(cx+r*Math.cos(ang),cy+r*Math.sin(ang),last?15:(5+f*7),0,7);
+      x.fillStyle=last?'#E44828':(on?'#6DB8F2':'rgba(109,184,242,.22)'); x.fill();
+    }
+  }
+  if(reduce){draw(90*69);return;}
+  draw(90*69);
+  var s=null; function loop(ts){ if(s===null) s=ts; draw((ts-s)%(90*80)); requestAnimationFrame(loop);}
+  setTimeout(function(){requestAnimationFrame(loop)},1200);
+})();
+// Formulaire : sera relié au formulaire Brevo (liste Newsletter EFA)
+(function(){
+  var f=document.getElementById('signup-form'), m=document.getElementById('formmsg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('f-email').value.trim(), ok=document.getElementById('f-ok').checked;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.style.color='#FFB4A3';m.textContent='Saisissez une adresse email valide, par exemple vous@exemple.com.';return;}
+    if(!ok){m.style.color='#FFB4A3';m.textContent='Cochez la case pour accepter de recevoir le guide et la newsletter.';return;}
+    m.style.color='#A8E6C1';
+    m.textContent='Aperçu : le formulaire sera relié à Brevo à la mise en ligne. Aucune donnée n’a été envoyée.';
+  });
+})();
+</script>
+
+</body>
+</html>
