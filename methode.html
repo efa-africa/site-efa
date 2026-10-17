@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<meta name="theme-color" content="#070C16">
+<title>EFA Études · Terminal</title>
+<meta name="description" content="Le terminal EFA : les chiffres de l’enquête « L’argent de la tontine », écran par écran, à consulter et à partager.">
+<meta property="og:title" content="EFA Études · L’argent de la tontine en chiffres">
+<meta property="og:description" content="251 réponses, 160 participants : ce que devient l’argent du tour. Écrans de données EFA à partager.">
+<meta property="og:image" content="https://efa-africa.github.io/site-efa/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+/* Terminal EFA : un seul univers sombre, assumé. Données = mono, titres = Big Shoulders. */
+:root{
+  --bg:#070C16; --panel:#0D1525; --panel2:#111B2F; --line:#1F2C45; --ink:#E8EDF5; --ink2:#A9B4C6; --mute:#6F7C93;
+  --bleu:#6DB8F2; --bleu-d:#2188D6; --corail:#F0603F; --amber:#F2B84B; --creme:#F5EFE2;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Manrope",system-ui,Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Barre du haut */
+.top{position:sticky;top:0;z-index:20;background:rgba(7,12,22,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 12px var(--mono);letter-spacing:.12em}
+.brand img{width:30px;height:30px}
+.brand b{color:var(--corail)}
+.cmd{flex:1;display:flex;max-width:460px;margin-left:auto;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#050910}
+.cmd label{font:600 11px var(--mono);color:var(--amber);padding:0 10px;display:flex;align-items:center;border-right:1px solid var(--line)}
+.cmd input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink);font:500 13px var(--mono);padding:9px 10px;text-transform:uppercase}
+.cmd input::placeholder{color:var(--mute);text-transform:none}
+.cmd button{background:var(--amber);color:#1A1205;border:0;font:700 12px var(--mono);padding:0 14px;cursor:pointer}
+.back{font:600 12px var(--mono);color:var(--ink2);text-decoration:none;white-space:nowrap}
+.back:hover{color:var(--ink)}
+@media (max-width:700px){.top .wrap{flex-wrap:wrap}.cmd{order:3;max-width:none;flex-basis:100%}.back{margin-left:auto}}
+
+/* Bandeau défilant */
+.tape{border-bottom:1px solid var(--line);background:#050910;overflow:hidden;white-space:nowrap}
+.tape .run{display:inline-flex;gap:40px;padding:8px 0;animation:tape 48s linear infinite}
+.tape span{font:500 12px var(--mono);color:var(--ink2)}
+.tape b{color:var(--ink);font-weight:700}
+.tape em{font-style:normal;color:var(--bleu)}
+@keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* En-tête de page */
+.intro{padding-block:36px 22px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:end}
+.kick{font:600 11px var(--mono);letter-spacing:.2em;color:var(--corail);text-transform:uppercase}
+h1{font:900 clamp(44px,7vw,84px)/.9 var(--disp);text-transform:uppercase;margin:8px 0 12px;text-wrap:balance}
+.intro p{color:var(--ink2);max-width:58ch;margin:0}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.meta div{background:var(--panel);padding:12px 14px}
+.meta small{display:block;font:600 10px var(--mono);letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.meta b{font:600 15px var(--mono)}
+@media (max-width:860px){.intro{grid-template-columns:none}}
+
+/* Grille d'écrans */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;padding-bottom:20px}
+.scr{grid-column:span 6;background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;scroll-margin-top:110px}
+.scr.w4{grid-column:span 4}.scr.w8{grid-column:span 8}.scr.w12{grid-column:span 12}
+@media (max-width:980px){.scr,.scr.w4,.scr.w8{grid-column:span 12}}
+@media (max-width:520px){.bar-h{flex-wrap:wrap}.bar-h h2{white-space:normal;flex-basis:calc(100% - 60px)}.acts{margin-left:auto}}
+.scr:target{box-shadow:0 0 0 2px var(--amber)}
+.bar-h{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--panel2);border-radius:10px 10px 0 0}
+.code{font:700 11px var(--mono);color:#1A1205;background:var(--amber);padding:2px 7px;border-radius:3px;letter-spacing:.06em}
+.bar-h h2{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin:0;color:var(--ink);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acts{display:flex;gap:6px}
+.acts button{background:transparent;border:1px solid var(--line);color:var(--ink2);font:600 11px var(--mono);padding:4px 8px;border-radius:4px;cursor:pointer}
+.acts button:hover{color:var(--ink);border-color:var(--mute)}
+.body{padding:16px 14px 12px;display:grid;gap:12px;flex:1}
+.q{font-size:14px;color:var(--ink2);margin:0}
+.q b{color:var(--ink)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;padding:8px 12px;border-top:1px solid var(--line);font:500 11px var(--mono);color:var(--mute)}
+
+/* Chiffre héros */
+.hero-n{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.hero-n b{font:900 clamp(64px,9vw,104px)/.85 var(--disp);color:var(--ink)}
+.hero-n span{color:var(--ink2);max-width:28ch}
+.split{display:flex;height:14px;border-radius:4px;overflow:hidden;gap:2px;background:var(--panel)}
+.split i{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 12px var(--mono);color:var(--ink2)}
+.leg span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;background:var(--c);vertical-align:0}
+
+/* Barres horizontales (une seule série : une teinte, la valeur clé en corail) */
+.bars{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+.bars li{display:grid;grid-template-columns:minmax(110px,38%) minmax(0,1fr) 44px;align-items:center;gap:10px;font-size:13px;cursor:default;border-radius:4px;padding:2px 0}
+.bars li:hover,.bars li:focus{background:rgba(255,255,255,.03);outline:none}
+.bars .lab{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .trk{height:12px;background:#0A1120;border-radius:0 4px 4px 0;position:relative}
+.bars .fil{position:absolute;inset:0 auto 0 0;background:var(--bleu-d);border-radius:0 4px 4px 0;transform-origin:left;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+.bars li.key .fil{background:var(--corail)}
+.bars li.key .lab,.bars li.key .val{color:var(--ink);font-weight:700}
+.bars .val{font:600 13px var(--mono);text-align:right;color:var(--ink)}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* Comparaison durable selon l'usage */
+.cmp{display:grid;gap:14px}
+.cmp .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:end}
+.cmp .row b{font:900 40px/.9 var(--disp)}
+.cmp .row small{font:500 11px var(--mono);color:var(--mute)}
+.cmp .row .trk{grid-column:1/-1;height:16px;background:#0A1120;border-radius:0 4px 4px 0;position:relative}
+.cmp .row .fil{position:absolute;inset:0 auto 0 0;border-radius:0 4px 4px 0;background:var(--bleu-d);animation:grow 1s cubic-bezier(.2,.7,.2,1) both}
+.cmp .row.key .fil{background:var(--corail)}
+.warn{font:500 12px var(--mono);color:var(--amber);border-left:2px solid var(--amber);padding-left:10px;margin:0}
+
+/* Tableaux de données (vue accessible) */
+table{width:100%;border-collapse:collapse;font:500 12px var(--mono)}
+th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:600}
+td:last-child,th:last-child{text-align:right}
+
+/* Info-bulle */
+.tip{position:fixed;z-index:50;pointer-events:none;background:#050910;border:1px solid var(--mute);border-radius:6px;padding:8px 10px;font:500 12px var(--mono);color:var(--ink);max-width:260px;opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}
+.tip b{display:block;font-size:16px}
+
+/* Notification de copie */
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--amber);color:#1A1205;font:700 12px var(--mono);padding:10px 14px;border-radius:6px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+
+/* Méthode : un bandeau compact en bas, contenu complet au clic */
+.method{margin-block:6px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.method summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px;flex-wrap:wrap}
+.method summary::-webkit-details-marker{display:none}
+.method summary .t{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.method summary .s{color:var(--mute);font-size:13px;flex:1;min-width:200px}
+.method summary .b{font:700 12px var(--mono);background:var(--creme);color:#0B1220;padding:7px 12px;border-radius:5px}
+.method[open] summary .b::after{content:" ×"}
+.method .in{padding:4px 18px 22px;border-top:1px solid var(--line);color:var(--ink2);max-width:860px}
+.method h3{font:900 28px/.95 var(--disp);text-transform:uppercase;color:var(--ink);margin:22px 0 8px}
+.method li{margin-bottom:6px}
+.method strong{color:var(--ink)}
+.method .note{border-left:3px solid var(--bleu);padding-left:12px}
+footer{padding-block:18px 36px;font:500 12px var(--mono);color:var(--mute);display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="logo-efa.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES</b></span></a>
+    <form class="cmd" id="cmd" autocomplete="off">
+      <label for="cmd-in">CODE</label>
+      <input id="cmd-in" list="codes" placeholder="Code écran : TONT, DURA, USAG, RSTE…" aria-label="Aller à un écran par son code">
+      <datalist id="codes"><option value="TONT"><option value="USAG"><option value="RSTE"><option value="DURA"><option value="FONC"><option value="REGL"><option value="ORDR"><option value="PROF"><option value="MOTV"></datalist>
+      <button type="submit">GO</button>
+    </form>
+    <a class="back" href="./">← Le site</a>
+  </div>
+</header>
+
+<div class="tape" aria-hidden="true"><div class="run" id="tape"></div></div>
+
+<main id="enquete">
+  <section class="wrap intro">
+    <div>
+      <p class="kick">Étude n° 1 · Enquête exploratoire</p>
+      <h1>L’argent de la tontine</h1>
+      <p>Ce que devient l’argent du tour, mesuré auprès de celles et ceux qui cotisent. Chaque écran se partage avec sa source et son nombre de répondants.</p>
+    </div>
+    <div class="meta">
+      <div><small>Répondants</small><b>251</b></div>
+      <div><small>Participants à une tontine</small><b>160</b></div>
+      <div><small>Données arrêtées</small><b>12 oct. 2026</b></div>
+      <div><small>Statut</small><b style="color:var(--amber)">Provisoire</b></div>
+    </div>
+  </section>
+
+  <div class="wrap grid" id="grid"></div>
+
+  <div class="wrap">
+    <details class="method" id="methode">
+      <summary><span class="t">Notre méthode</span><span class="s">Sources, collecte, limites de l’échantillon, corrections et usage des personnages.</span><span class="b">Lire</span></summary>
+      <div class="in">
+        <h3>Comment nous produisons</h3>
+        <ul>
+          <li><strong>Des sources.</strong> Chiffres publics (banques centrales, instituts statistiques, Banque mondiale), presse économique et nos propres enquêtes. La source figure sur chaque contenu chiffré.</li>
+          <li><strong>Une vérification humaine.</strong> Nous utilisons l’IA pour produire plus vite&nbsp;; chaque contenu est relu et validé par l’équipe et par Élysée Johnson avant publication.</li>
+          <li><strong>Des corrections visibles.</strong> Une erreur signalée est corrigée, et la correction est indiquée. Écrivez-nous&nbsp;: newsletter@efa.africa.</li>
+          <li><strong>Des personnages créés.</strong> Koffi, Tantie Affoué et Tonton Bamba sont des personnages inventés par EFA, illustrés avec l’aide d’outils d’IA. Ils représentent des situations rencontrées dans nos enquêtes, pas des personnes réelles.</li>
+          <li><strong>Pas de conseil de placement.</strong> EFA fait de l’éducation financière. Nous ne vendons aucun produit et ne recommandons aucun placement.</li>
+        </ul>
+        <h3>Cette enquête</h3>
+        <p>251 personnes interrogées, dont 160 participent ou ont participé à une tontine. 247 répondants vivent en Côte d’Ivoire. Collecte sur le terrain par les enquêteurs EFA (200 réponses, notamment à Cocody, Bingerville et dans les zones Sodeci et Filtisac) et en ligne (21 réponses). Données arrêtées le 12 octobre 2026.</p>
+        <p class="note"><strong>Résultats provisoires, échantillon non représentatif.</strong> Ces chiffres décrivent les personnes interrogées, pas toute la population. 79 % des participants sont des femmes et près de la moitié ont entre 25 et 34 ans. Les écarts entre groupes sont des différences observées&nbsp;: ils ne prouvent pas une cause.</p>
+        <p><strong>« Quelque chose de durable »</strong>&nbsp;: un bien possédé, une activité productive, de l’argent encore disponible, ou autre chose cité par le répondant.</p>
+        <p>Prochaine étape&nbsp;: dépasser 300 réponses, puis organiser la collecte par quotas de zones et de régions pour pouvoir généraliser.</p>
+        <h3>Photos</h3>
+        <p>Les photographies du site proviennent d’<a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> et sont utilisées sous la licence Unsplash. Les personnes photographiées n’ont pas de lien avec EFA.</p>
+      </div>
+    </details>
+  </div>
+</main>
+
+<footer class="wrap">
+  <span>Éducation Financière Afrique © 2026</span>
+  <a href="./">Accueil</a>
+  <a href="confidentialite.html">Vos données</a>
+  <a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a>
+  <span>Mis à jour le 17 octobre 2026</span>
+</footer>
+
+<div class="tip" id="tip" role="status"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// Données de l'enquête EFA « L'argent de la tontine », export du 12 octobre 2026.
+var SRC='Enquête EFA « L’argent de la tontine » · export du 12/10/2026 · échantillon non représentatif';
+var SITE='https://efa-africa.github.io/site-efa/methode.html';
+var SCREENS=[
+  {code:'TONT',w:'w4',title:'Réserve commune',kind:'hero',n:'participants à une tontine',
+   value:71,unit:'%',text:'des tontines redistribuent tout : rien n’est gardé en commun.',
+   split:[['Tout est redistribué',71,'var(--corail)'],['Autres cas',29,'#3A4A66']],
+   share:'71 % des tontines de notre enquête redistribuent tout : rien n’est gardé en commun.'},
+  {code:'DURA',w:'w8',title:'Ce qui reste du dernier tour',kind:'cmp',
+   q:'<b>Reste-t-il quelque chose de durable</b> de votre dernier tour, selon l’usage principal&nbsp;?',
+   rows:[['Le tour a surtout financé une activité',65,40,1],['Il a surtout payé la scolarité',33,15,0],['Il a surtout couvert les dépenses courantes',29,34,0]],
+   warn:'Différence observée entre répondants, pas une preuve de cause. Petits effectifs.',
+   share:'Quand le tour finance une activité, 65 % en gardent quelque chose de durable. Quand il couvre les dépenses courantes : 29 %.'},
+  {code:'USAG',w:'w8',title:'À quoi sert l’argent du tour',kind:'bars',n:159,
+   q:'Usages du dernier tour. <b>Plusieurs réponses possibles</b>, donc le total dépasse 100 %.',
+   data:[['Dépenses courantes',42],['Activité ou commerce',38,1],['Soutien familial',27],['Autre',21],['Épargne conservée',15],['Scolarité',14],['Équipement professionnel',6],['Logement',4],['Santé',4],['Remboursement de dette',4],['Cérémonie',3],['Placement',3],['Terrain',1]],
+   share:'À quoi sert l’argent du tour ? Dépenses courantes 42 %, activité ou commerce 38 %, soutien familial 27 %. Épargne conservée : 15 %.'},
+  {code:'RSTE',w:'w4',title:'Durable aujourd’hui ?',kind:'bars',n:154,
+   q:'Reste-t-il quelque chose de durable du dernier tour&nbsp;?',
+   data:[['Non',47,1],['Oui',44],['Ne sait pas',10]],
+   note:'Parmi les « oui » : un bien possédé 18 %, une activité productive 11 %, de l’argent conservé 9 %, autre 5 %.',
+   share:'47 % des participants n’ont rien gardé de durable de leur dernier tour de tontine.'},
+  {code:'FONC',w:'w4',title:'Comment fonctionne la tontine',kind:'bars',n:'participants',
+   q:'Type de tontine.',
+   data:[['Rotative',83,1],['Épargne individuelle',7]],
+   share:'83 % des tontines de notre enquête sont rotatives.'},
+  {code:'REGL',w:'w4',title:'Les règles',kind:'bars',n:'participants',
+   q:'Les règles de votre tontine sont…',
+   data:[['Orales',43,1],['Inexistantes',33],['Écrites',18]],
+   share:'Règles de la tontine : orales 43 %, aucune 33 %, écrites 18 %.'},
+  {code:'ORDR',w:'w4',title:'L’ordre de passage',kind:'bars',n:'participants',
+   q:'Comment est décidé l’ordre de passage&nbsp;?',
+   data:[['Fixé à l’avance',34,1],['Tirage au sort',20],['Accord entre membres',19],['Selon les besoins et urgences',16]],
+   share:'Ordre de passage : fixé à l’avance 34 %, tirage 20 %, accord entre membres 19 %.'},
+  {code:'MOTV',w:'w6',title:'Ce qui ferait cotiser plus',kind:'bars',n:'participants',
+   q:'Qu’est-ce qui vous ferait cotiser davantage&nbsp;?',
+   data:[['Hausse des revenus',39,1],['Rien',19],['Plus de transparence',6],['Protection contre les défauts',6],['Financer un actif',5],['Une réserve collective',2]],
+   share:'Seuls 2 % citent une réserve collective comme raison de cotiser plus. 39 % attendent une hausse de revenus.'},
+  {code:'PROF',w:'w6',title:'Qui a répondu',kind:'bars',n:251,
+   q:'Âge des répondants. <b>79 %</b> des participants sont des femmes.',
+   data:[['Moins de 25 ans',22],['25-34 ans',48,1],['35-44 ans',22]],
+   note:'Situation : entrepreneurs, commerçants ou indépendants 43 %, salariés 25 %, étudiants 18 %.',
+   share:'Profil des répondants : 48 % ont 25-34 ans, 79 % des participants sont des femmes.'}
+];
+
+// Bandeau défilant
+(function(){
+  var items=['TONTINE · TOUT REDISTRIBUÉ <b>71 %</b>','RIEN DE DURABLE APRÈS LE TOUR <b>47 %</b>','DURABLE SI LE TOUR FINANCE UNE ACTIVITÉ <b>65 %</b>','… SI DÉPENSES COURANTES <b>29 %</b>','TONTINES ROTATIVES <b>83 %</b>','RÈGLES ORALES <b>43 %</b>','RÉSERVE COLLECTIVE CITÉE <b>2 %</b>','RÉPONDANTS <em>251</em>','PARTICIPANTS <em>160</em>'];
+  var h=items.map(function(t){return '<span>'+t+'</span>';}).join('');
+  document.getElementById('tape').innerHTML=h+h;
+})();
+
+// Construction des écrans
+var grid=document.getElementById('grid');
+function esc(s){return String(s).replace(/</g,'&lt;');}
+function plain(s){var d=document.createElement('div');d.innerHTML=s;return d.textContent;}
+SCREENS.forEach(function(s){
+  var el=document.createElement('section');
+  el.className='scr '+(s.w||'');el.id=s.code.toLowerCase();
+  var body='', table='';
+  if(s.q) body+='<p class="q">'+s.q+'</p>';
+  if(s.kind==='hero'){
+    body+='<div class="hero-n"><b>'+s.value+'&nbsp;'+s.unit+'</b><span>'+s.text+'</span></div>';
+    body+='<div class="split">'+s.split.map(function(p){return '<i style="width:'+p[1]+'%;background:'+p[2]+'" data-tip="'+esc(p[0])+'|'+p[1]+' %"></i>';}).join('')+'</div>';
+    body+='<div class="leg">'+s.split.map(function(p){return '<span style="--c:'+p[2]+'">'+p[0]+' · '+p[1]+' %</span>';}).join('')+'</div>';
+    table=s.split.map(function(p){return '<tr><td>'+p[0]+'</td><td>'+p[1]+' %</td></tr>';}).join('');
+  }else if(s.kind==='cmp'){
+    body+='<div class="cmp">'+s.rows.map(function(r,i){return '<div class="row'+(r[3]?' key':'')+'" data-tip="'+esc(r[0])+'|'+r[1]+' % · n = '+r[2]+'"><span>'+r[0]+'</span><b>'+r[1]+'&nbsp;%</b><span class="trk"><span class="fil" style="width:'+r[1]+'%;animation-delay:'+(i*.08)+'s"></span></span><small>n = '+r[2]+' répondants</small></div>';}).join('')+'</div>';
+    body+='<p class="warn">'+s.warn+'</p>';
+    table=s.rows.map(function(r){return '<tr><td>'+r[0]+' (n = '+r[2]+')</td><td>'+r[1]+' %</td></tr>';}).join('');
+  }else{
+    var max=Math.max.apply(null,s.data.map(function(d){return d[1];}));
+    body+='<ul class="bars">'+s.data.map(function(d,i){return '<li tabindex="0" class="'+(d[2]?'key':'')+'" data-tip="'+esc(d[0])+'|'+d[1]+' %"><span class="lab">'+d[0]+'</span><span class="trk"><span class="fil" style="width:'+(d[1]/max*100)+'%;animation-delay:'+(i*.04)+'s"></span></span><span class="val">'+d[1]+' %</span></li>';}).join('')+'</ul>';
+    if(s.note) body+='<p class="q">'+s.note+'</p>';
+    table=s.data.map(function(d){return '<tr><td>'+d[0]+'</td><td>'+d[1]+' %</td></tr>';}).join('');
+  }
+  var n=typeof s.n==='number'?'n = '+s.n:(s.n?'Base : '+s.n:'');
+  el.innerHTML='<div class="bar-h"><span class="code">'+s.code+'</span><h2>'+s.title+'</h2><div class="acts"><button type="button" data-act="table" aria-expanded="false">Données</button><button type="button" data-act="share">Partager</button></div></div>'+
+    '<div class="body"><div class="viz">'+body+'</div><div class="tbl" hidden><table><thead><tr><th>Réponse</th><th>Part</th></tr></thead><tbody>'+table+'</tbody></table></div></div>'+
+    '<div class="foot"><span>'+(n?n+' · ':'')+'Enquête EFA, 12/10/2026</span><span>Non représentatif</span></div>';
+  el._s=s; grid.appendChild(el);
+});
+
+// Données / Partager
+var toast=document.getElementById('toast');
+function say(t){toast.textContent=t;toast.classList.add('on');clearTimeout(say.t);say.t=setTimeout(function(){toast.classList.remove('on');},2200);}
+grid.addEventListener('click',function(e){
+  var b=e.target.closest('button[data-act]'); if(!b) return;
+  var scr=b.closest('.scr'), s=scr._s;
+  if(b.dataset.act==='table'){
+    var t=scr.querySelector('.tbl'), v=scr.querySelector('.viz'), open=t.hidden;
+    t.hidden=!open; v.hidden=open; b.setAttribute('aria-expanded',open); b.textContent=open?'Graphique':'Données';
+    return;
+  }
+  var url=SITE+'#'+s.code.toLowerCase();
+  var text=s.share+'\n'+SRC+'\n'+url;
+  if(navigator.share){navigator.share({title:'EFA · '+s.title,text:s.share+'\n'+SRC,url:url}).catch(function(){});return;}
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener');
+});
+
+// Info-bulle au survol et au clavier
+var tip=document.getElementById('tip');
+function showTip(t,x,y){var p=t.split('|');tip.innerHTML='<span>'+p[0]+'</span><b>'+p[1]+'</b>';tip.classList.add('on');
+  var w=tip.offsetWidth,h=tip.offsetHeight;tip.style.left=Math.min(innerWidth-w-8,Math.max(8,x+14))+'px';tip.style.top=Math.max(8,y-h-12)+'px';}
+grid.addEventListener('mousemove',function(e){var t=e.target.closest('[data-tip]');if(t)showTip(t.dataset.tip,e.clientX,e.clientY);else tip.classList.remove('on');});
+grid.addEventListener('mouseleave',function(){tip.classList.remove('on');});
+grid.addEventListener('focusin',function(e){var t=e.target.closest('[data-tip]');if(t){var r=t.getBoundingClientRect();showTip(t.dataset.tip,r.left+r.width/2,r.top);}});
+grid.addEventListener('focusout',function(){tip.classList.remove('on');});
+
+// Barre de commande : tapez un code, GO
+document.getElementById('cmd').addEventListener('submit',function(e){
+  e.preventDefault();
+  var v=document.getElementById('cmd-in').value.trim().toUpperCase().replace(/\s*GO$/,'');
+  if(v==='METH'||v==='METHODE'){var m=document.getElementById('methode');m.open=true;m.scrollIntoView();return;}
+  var t=document.getElementById(v.toLowerCase());
+  if(t&&t.classList.contains('scr')){location.hash=v.toLowerCase();t.scrollIntoView({block:'start'});}
+  else say('Code inconnu. Essayez TONT, USAG, DURA, FONC, PROF ou MOTV.');
+});
+
+// Lien direct vers la méthode
+if(location.hash==='#methode'){document.getElementById('methode').open=true;}
+</script>
+</body>
+</html>
