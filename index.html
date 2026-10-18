@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Éducation Financière Afrique</title>
+<meta name="description" content="EFA, Éducation Financière Afrique : apprendre à gérer son argent avec les réalités d’ici — salaire, famille, tontine, mobile money. L’argent s’apprend.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="EFA — L’argent s’apprend.">
+<meta property="og:description" content="Votre argent est-il un cercle ou une spirale ? Apprendre à gérer son argent avec les réalités d’ici. Guide gratuit et newsletter chaque lundi.">
+<meta property="og:url" content="https://efa.africa/">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+/* Architecture : un écran = une étape du parcours, du cercle vers la spirale. Photo plein cadre, peu de mots, deux actions. */
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#2188D6; --corail:#E44828;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --muted:#AEB6C6;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{margin:0;background:var(--nuit);color:#fff;font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;margin:0;text-wrap:balance}
+:focus-visible{outline:3px solid var(--soft-bleu);outline-offset:3px;border-radius:6px}
+
+/* Boutons façon showroom : un plein, un translucide */
+.btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:240px;min-height:46px;padding:12px 26px;border-radius:8px;border:0;font:700 15px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:filter .2s,background .2s}
+.btn-main{background:var(--corail);color:#fff}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-alt{background:rgba(244,244,244,.86);color:var(--nuit)}
+.btn-alt:hover{background:#fff}
+.btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85)}
+@media (max-width:620px){.btn{min-width:0;width:100%}.btns{flex-direction:column;width:100%;max-width:380px}}
+
+/* En-tête transparent */
+/* Barre EFA · BRVM (bleu nuit, sous le menu) */
+.tk{--tk-bg:#0E1A30;--tk-ink:#E8EDF5;--tk-ink2:#AEB9CC;--tk-line:rgba(255,255,255,.1);background:var(--tk-bg);color:var(--tk-ink);border-bottom:1px solid var(--tk-line);font:600 13px/1.3 "Manrope",system-ui,Arial,sans-serif;transition:opacity .3s,transform .3s}
+.tk.off{opacity:0;pointer-events:none;transform:translateY(-6px)}
+.tk-in{display:flex;align-items:center;gap:8px;height:34px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tk-view{flex:1;min-width:0;overflow:hidden;white-space:nowrap;touch-action:pan-y}
+.tk-run{display:inline-flex;gap:34px;align-items:center;animation:tkrun var(--dur,60s) linear infinite}
+.tk.paused .tk-run,.tk:focus-within .tk-run{animation-play-state:paused}
+@media (hover:hover){.tk:hover .tk-run{animation-play-state:paused}}
+@keyframes tkrun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tk-it{display:inline-flex;align-items:center;gap:8px;color:var(--tk-ink2);text-decoration:none}
+.tk-it:hover .tk-t{color:var(--tk-ink);text-decoration:underline}
+.tk-it b{color:var(--tk-ink)}
+.tk-it em{font-style:normal}
+.tk-it .up{color:#3FCF8E}.tk-it .down{color:#FF7B7B}.tk-it .flat{color:#9AA5B8}
+.tk-cat{font:800 10px/1 "Manrope",system-ui,sans-serif;letter-spacing:.12em;padding:4px 6px;border-radius:4px}
+.tk-cat.e{background:#6DB8F2;color:#06182B}
+.tk-cat.b{background:#F2B84B;color:#1A1205}
+.tk-btn,.tk-pause{background:transparent;border:1px solid var(--tk-line);color:var(--tk-ink);border-radius:6px;min-width:30px;height:26px;font:700 13px/1 system-ui,sans-serif;cursor:pointer}
+.tk-btn,.tk-n{display:none}
+.tk-n{font:600 11px/1 system-ui,sans-serif;color:var(--tk-ink2);min-width:3.2em;text-align:center}
+.tk.one .tk-btn,.tk.one .tk-n{display:inline-block}
+.tk.one .tk-btn,.tk.one .tk-pause{min-width:40px;height:40px;font-size:15px}
+.tk.one .tk-in{height:auto;min-height:52px;padding-block:6px;gap:6px}
+.tk.one .tk-view{white-space:normal}
+.tk.one .tk-run{display:block;animation:none}
+.tk.one .tk-it{display:flex;align-items:flex-start}
+.tk.one .tk-t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.tk-run{animation:none}}
+.tk{position:fixed;left:0;right:0;top:var(--hh,64px);z-index:29}
+.top{position:fixed;inset:0 0 auto;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);transition:background .3s}
+.top.solid,.top.has-tk{background:rgba(11,18,32,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.nav a.nav-cta:hover{filter:brightness(1.08);background:var(--corail)}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{display:none}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-weight:900;font-size:34px;text-transform:uppercase}
+  .menu-btn{display:block;position:relative;z-index:31}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+}
+
+/* Écran type */
+.screen{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:max(120px,calc(var(--hh,64px) + var(--tkh,34px) + 22px)) var(--gut) 56px;overflow:hidden;scroll-snap-align:start;isolation:isolate}
+.screen > .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.screen::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,.62) 0%,rgba(11,18,32,.12) 38%,rgba(11,18,32,.18) 60%,rgba(11,18,32,.82) 100%)}
+.head{display:grid;gap:12px;justify-items:center;max-width:860px}
+.step{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
+.screen h1{font-size:clamp(60px,11vw,140px)}
+.screen h2{font-size:clamp(46px,8vw,104px)}
+.sub{font-size:clamp(16px,2vw,19px);font-weight:600;max-width:36em;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.sub a{font-weight:800}
+.foot{display:grid;gap:22px;justify-items:center;width:100%}
+.stat{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.stat div{display:grid;gap:2px;min-width:140px}
+.stat b{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,5vw,56px);line-height:1}
+.stat span{font-size:13px;font-weight:700;color:#E3E7EE;max-width:15em;margin:0 auto}
+.credit{position:absolute;right:var(--gut);bottom:10px;font-size:10px;color:rgba(255,255,255,.55);text-decoration:none}
+
+/* Couleurs de l'étape : le cercle reste froid, la spirale prend le bleu EFA */
+.s-cercle .stat b{color:#fff}
+.s-spirale .stat b{color:var(--soft-bleu)}
+/* Récit au défilement : l'écran reste fixe, la caméra et la spirale avancent avec le pouce */
+.story{position:relative;background:#060A13}
+.stage{position:relative;min-height:100vh;min-height:100svh;gap:14px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:calc(var(--hh,64px) + var(--tkh,34px) + 16px) var(--gut) 26px;isolation:isolate;touch-action:pan-y;background:radial-gradient(90% 60% at 50% 56%,#14223D 0%,#0B1220 58%,#070C16 100%)}
+.stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(6,10,19,.6) 0%,rgba(6,10,19,0) 32%,rgba(6,10,19,0) 60%,rgba(6,10,19,.75) 100%)}
+.stage .orbit{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.stage{cursor:ew-resize}
+.viz-space{flex:1 0 auto;width:100%;min-height:clamp(200px,25svh,560px)}
+@media (min-width:621px){.viz-space{min-height:clamp(280px,38svh,540px)}}
+.swipe-hint .h-s{display:none}
+.story .stage{padding-top:calc(var(--hh,64px) + 18px)}
+.swipe-hint{display:flex;justify-content:center;align-items:center;gap:10px;margin:0;padding:8px 14px;border-radius:999px;background:rgba(11,18,32,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-size:13px;font-weight:700;color:#E8EDF5;white-space:nowrap;pointer-events:none;transition:opacity .6s}
+.swipe-hint .ar{color:var(--soft-bleu);font-size:16px;animation:nudge 1.6s ease-in-out infinite;--d:-5px}
+.swipe-hint .ar:last-child{animation-delay:.8s;--d:5px}
+.swipe-hint.used{opacity:.55}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(var(--d))}}
+@media (max-width:420px){.swipe-hint{font-size:12px;padding:7px 11px;white-space:normal;max-width:100%;text-align:center}}
+.stage[data-c="3"] .chap h2{font-size:clamp(30px,4.2vw,58px)}
+.chaps{display:grid;width:100%;max-width:900px}
+.chap{grid-area:1/1;display:grid;gap:10px;justify-items:center;align-content:start;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .18s,transform .18s,visibility 0s .18s;pointer-events:none}
+.chap.on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .4s .2s,transform .4s .2s,visibility 0s .2s}
+.stage .res{font-size:15px;font-weight:600;max-width:34em;margin:0}
+.stage .res b{color:var(--soft-bleu);white-space:nowrap}
+.chap h2{font-size:clamp(38px,5.4vw,72px)}
+.chap .sub{max-width:38em;font-size:16px}
+.dock{display:grid;gap:14px;justify-items:center;width:100%}
+.prog{display:flex;gap:6px;width:min(340px,72%)}
+.prog button{flex:1;height:28px;padding:12px 0;border:0;background:transparent;cursor:pointer}
+.prog button i{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.22);overflow:hidden}
+.prog button i::after{content:"";display:block;height:100%;background:#fff;transform-origin:left;transform:scaleX(var(--f,0))}
+.cfg{display:flex;flex-wrap:wrap;gap:10px 12px;justify-content:center;align-items:center;max-width:1040px;transition:opacity .4s}
+.seg{display:inline-flex;padding:4px;border-radius:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.seg button{border:0;background:transparent;color:#fff;font:700 14px/1 var(--f-body);padding:10px 16px;border-radius:7px;cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:#F4F4F4;color:var(--nuit)}
+.part{display:flex;align-items:center;gap:10px;padding:6px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-size:14px;font-weight:700}
+.part input{width:clamp(120px,22vw,200px);accent-color:var(--soft-bleu)}
+.part output{font:900 22px/1 var(--f-display);min-width:3.2ch;color:var(--soft-bleu)}
+.spec{display:flex;justify-content:center;width:100%;max-width:640px}
+.spec div{flex:1;display:grid;gap:4px;padding:0 10px;min-width:0}
+.spec div + div{border-left:1px solid rgba(255,255,255,.22)}
+.spec b{font:900 clamp(26px,4.2vw,42px)/1 var(--f-display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.spec span{font-size:12px;font-weight:700;color:#C9D1DE}
+.spec .k b{color:var(--soft-bleu)}
+.stage .src{margin-top:-8px}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:10px;justify-content:center;width:100%}
+.links .lk{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border-radius:8px;text-decoration:none;font:800 15px/1.2 var(--f-body);box-shadow:inset 0 0 0 2px rgba(255,255,255,.75);color:#fff}
+.links .lk.p{background:var(--corail);box-shadow:none}
+.links .lk:hover{filter:brightness(1.1)}
+.jump{background:none;border:0;color:var(--soft-bleu);font:800 12px var(--f-body);letter-spacing:.02em;padding:12px 4px;margin:-12px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.amt{display:flex;align-items:center;gap:10px;padding:6px 8px 6px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-size:14px;font-weight:700}
+.amt-in{display:flex;align-items:center;gap:6px;background:#F5EFE2;border-radius:7px;padding:0 10px}
+.amt-in input{width:9ch;border:0;background:transparent;color:var(--nuit);font:800 17px var(--f-body);padding:9px 0;text-align:right}
+.amt-in span{color:#4E5566;font-size:13px;font-weight:800}
+.amt-in:focus-within{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.nb{display:flex;align-items:center;gap:6px;padding:6px 8px 6px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-size:14px;font-weight:700}
+.nb button{width:32px;height:32px;border:0;border-radius:7px;background:rgba(255,255,255,.16);color:#fff;font:800 18px/1 var(--f-body);cursor:pointer}
+.nb button:hover{background:rgba(255,255,255,.28)}
+.nb input{width:3.2ch;border:0;border-radius:7px;background:#F5EFE2;color:var(--nuit);font:800 17px var(--f-body);padding:7px 4px;text-align:center}
+.nb input:focus{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.amt-err{flex-basis:100%;margin:0;font-size:13px;font-weight:700;color:var(--soft-corail)}
+/* Écrans intermédiaires : le menu reste sur une ligne */
+@media (min-width:901px) and (max-width:1200px){.brand span{display:none}.nav a{padding-inline:10px}}
+.hint{font-size:12px;font-weight:700;color:#C9D1DE;letter-spacing:.04em}
+@media (max-width:620px){
+  .chap .sub{font-size:14.5px}
+  .chap[data-c="3"] .sub{font-size:14px}
+  .stage[data-c="3"] .cfg{gap:8px}
+  .dock{gap:11px}
+  .spec span{font-size:11px}
+  .seg button{padding:9px 11px;font-size:13px}
+  .part{font-size:13px}
+  .amt{font-size:13px}
+  .stage[data-c="3"] .chap h2{font-size:30px}
+  .stage[data-c="3"] .spec{display:none}
+  .stage[data-c="3"] .src{display:none}
+  .swipe-hint .h-l{display:none}.swipe-hint .h-s{display:inline}
+  .stage{gap:10px}
+  .stage[data-c="3"] .cfg{display:grid;gap:8px;width:100%}
+  .stage[data-c="3"] .amt,.stage[data-c="3"] .part,.stage[data-c="3"] .nb{justify-content:space-between}
+  .nb{font-size:13px}
+  .stage[data-c="3"] .amt,.stage[data-c="3"] .nb,.stage[data-c="3"] .part{padding-top:4px;padding-bottom:4px}
+  .nb span#nb-l{margin-right:auto}
+  .links .lk{font-size:14px}
+}
+.cue{width:26px;height:40px;border-radius:14px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);position:relative}
+.cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.6s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* Repère de progression : la spirale de points avance avec la lecture */
+.rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:25;width:84px;height:84px}
+.rail svg{width:100%;height:100%;overflow:visible}
+.rail a circle{transition:r .3s,fill .3s}
+.rail .lbl{position:absolute;right:96px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;background:rgba(11,18,32,.75);padding:6px 10px;border-radius:6px;opacity:0;transition:opacity .3s}
+.rail:hover .lbl{opacity:1}
+@media (max-width:900px){.rail{display:none}}
+
+/* Étape 3 : les leçons */
+.lessons{background:var(--creme);color:var(--nuit);justify-content:center;gap:40px}
+.lessons::before{display:none}
+.lessons .step{color:var(--corail)}
+.lessons .sub{text-shadow:none;color:#4E5566}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;max-width:1180px;text-align:left}
+.card{position:relative;border-radius:18px;overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;isolation:isolate;background:var(--nuit)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.card:hover img{transform:scale(1.04)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,0) 20%,rgba(11,18,32,.92) 78%)}
+.card .in{padding:24px;display:grid;gap:10px}
+.card .n{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.card h3{font-size:40px}
+.card p{font-size:15px;color:#DDE2EA}
+.card .go{font-weight:800;font-size:15px;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.card .go::after{content:"→";transition:transform .2s}
+.card:hover .go::after{transform:translateX(4px)}
+.word{font-family:var(--f-display);font-weight:900;font-size:76px;line-height:.85}
+details summary{list-style:none;cursor:pointer;font-weight:800;display:inline-flex;gap:8px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+"}
+details[open] summary::after{content:"–"}
+details .def{display:grid;gap:8px;margin-top:10px;font-size:15px;color:#DDE2EA}
+details .def b{color:#fff}
+@media (max-width:980px){
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+  .cards::-webkit-scrollbar{display:none}
+  .card{scroll-snap-align:center;min-height:460px}
+}
+
+/* Étape 4 : questions du visiteur */
+.ask{background:var(--nuit);justify-content:center;gap:36px}
+.ask::before{display:none}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;max-width:1180px;text-align:left}
+.tile{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.tile:hover img{transform:scale(1.05)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,0) 35%,rgba(11,18,32,.9))}
+.tile span{padding:18px;display:grid;gap:4px}
+.tile b{font-family:var(--f-display);font-weight:900;font-size:30px;line-height:.95;text-transform:uppercase}
+.tile small{font-size:13px;font-weight:700;color:var(--soft-bleu)}
+.tile.soon small{color:var(--muted)}
+@media (max-width:980px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{aspect-ratio:4/5}}
+
+/* Étape 5 : le guide, photo et formulaire côte à côte */
+.guide{flex-direction:row;align-items:stretch;justify-content:flex-start;padding:0;text-align:left;background:var(--corail)}
+.guide::before{display:none}
+.guide .ph{position:relative;flex:1 1 50%;min-height:100svh}
+.guide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.guide .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(228,72,40,0) 60%,rgba(228,72,40,.35))}
+.guide .side{flex:1 1 50%;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:96px clamp(16px,5vw,72px) 56px}
+.guide .step{color:#FFE2D9}
+.guide h2{font-size:clamp(44px,6vw,80px)}
+.guide .sub{text-shadow:none}
+form{display:grid;gap:12px;max-width:440px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,select{width:100%;font:600 16px var(--f-body);padding:14px;border-radius:8px;border:0;background:rgba(255,255,255,.96);color:var(--nuit)}
+input::placeholder{color:#7A8090}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:600;color:#FFF3EE}
+.check input{width:20px;height:20px;flex:none;margin-top:1px;padding:0}
+.guide .btn-main{background:var(--nuit);width:100%}
+.formmsg{font-size:14px;font-weight:700;min-height:1.2em}
+.hp{position:absolute;left:-9999px}
+.small{font-size:13px;color:#FFE2D9}
+@media (max-width:900px){.guide{flex-direction:column}.guide .ph{min-height:46svh;flex:none}.guide .side{padding:40px 16px 56px}.row{grid-template-columns:1fr}}
+
+/* Étape 6 : fondateur */
+.founder{background:var(--nuit);justify-content:center;gap:40px}
+.founder::before{display:none}
+.founder canvas{width:min(300px,62vw);aspect-ratio:1;height:auto}
+.founder blockquote{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,8vw,104px);line-height:.92}
+.founder blockquote span{color:var(--soft-corail)}
+
+/* Le texte garde sa taille sur tous les téléphones (pas d’agrandissement automatique) */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+/* Catalogue des guides */
+.cat,.livre{scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.cat{background:var(--creme);color:var(--nuit);padding:88px var(--gut)}
+.cat .in,.livre .in{max-width:1180px;margin:0 auto}
+.cat .in{display:grid;gap:36px}
+.cat-head{display:grid;gap:12px;max-width:640px}
+.kick{margin:0;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--corail)}
+.cat h2,.livre h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;font-size:clamp(40px,6vw,72px);text-wrap:balance}
+.cat .lead{margin:0;font-size:17px;font-weight:600;color:#4E5566}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px}
+.gd{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:start;background:#FFFDF8;border:1px solid #E2D8C4;border-radius:16px;padding:16px}
+.gd-cv{aspect-ratio:3/4;border-radius:4px 10px 10px 4px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,#F5EFE2,#E6D9C0);box-shadow:0 10px 20px rgba(11,18,32,.18),inset 4px 0 0 rgba(11,18,32,.12);color:var(--nuit);overflow:hidden}
+.gd-cv.dark{background:linear-gradient(160deg,#18315A,#0B1220);color:#F5EFE2}
+.gd-cv img{width:22px;height:22px}
+.gd-cv b{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:14px;line-height:.95;overflow-wrap:anywhere}
+.gd-cv i{display:block;height:5px;width:40%;border-radius:3px;background:var(--bleu)}
+.gd-cv.dark i{background:var(--corail)}
+.gd-tx{display:grid;gap:8px;min-width:0}
+.gd-st{justify-self:start;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border-radius:4px;background:#E6DECE;color:#4E5566}
+.gd-st.ok{background:var(--bleu);color:#fff}
+.gd-tx h3{margin:0;font-size:18px;font-weight:800;line-height:1.25}
+.gd-tx p{margin:0;font-size:14px;color:#4E5566}
+.gd-tx a{justify-self:start;font-size:14px;font-weight:800;color:var(--nuit);text-decoration:none;border-bottom:2px solid var(--corail);padding-bottom:2px}
+.gd-tx a:hover{color:var(--corail)}
+.gd.soon-g{background:transparent;border-style:dashed}
+/* Le livre */
+.livre{background:var(--nuit);color:#fff;padding:96px var(--gut)}
+.livre .in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,80px);align-items:center}
+@media (max-width:860px){.livre .in{grid-template-columns:1fr}}
+.lv-cover{position:relative;width:min(360px,78vw);aspect-ratio:2/3;justify-self:center;transform:rotate(-3deg)}
+.lv-cover .lv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:4px 12px 12px 4px;opacity:0;transition:opacity .4s;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.lv-cover.has-img .lv-img{opacity:1}
+.lv-cover.has-img .lv-css{display:none}
+.lv-css{position:absolute;inset:0;border-radius:4px 12px 12px 4px;background:linear-gradient(160deg,#EC6243,#E2401C 55%,#B92F12);box-shadow:0 40px 80px rgba(0,0,0,.5),inset 8px 0 0 rgba(0,0,0,.14);padding:28px 26px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;color:#F5EFE2;overflow:hidden}
+.lv-css svg{position:absolute;left:8%;top:6%;width:84%}
+.lv-css strong{position:relative;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(36px,8vw,52px);line-height:.9}
+.lv-css em{position:relative;font-style:normal;font-size:14px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.lv-txt{display:grid;gap:16px;min-width:0}
+.lv-form{display:grid;gap:10px;max-width:520px}
+.lv-form label{font-weight:800;font-size:15px;color:#fff}
+.lv-row{display:flex;gap:10px;flex-wrap:wrap}
+.lv-row input{flex:1 1 220px;min-width:0}
+.lv-row .btn{min-width:0;flex:0 0 auto}
+.lv-txt .lv-note{font-size:13px;color:#AEB6C6}
+.lv-note a{color:#fff}
+.or{margin:4px 0 -4px;font-weight:700}
+.lv-txt .kick{color:var(--soft-corail)}
+.lv-sub{margin:0;font-size:20px;font-weight:700;color:#E8EDF5}
+.lv-txt p{margin:0;max-width:36em;color:#C9D1DE;font-size:16px;line-height:1.6}
+
+/* Mission EFA : en haut, au milieu, en bas */
+.mission{margin:0;max-width:34em;font-size:clamp(16px,2vw,20px);font-weight:700;line-height:1.4;color:#fff}
+.mission .mc{color:#C9D1DE;text-decoration:underline dotted rgba(201,209,222,.7);text-underline-offset:4px}
+.mission .ms,.mb-t .ms{color:var(--soft-bleu)}
+.hero .mission{text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.mband{background:var(--nuit);color:#fff;padding:72px var(--gut);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.mb-ico{width:76px;height:76px;color:#fff}
+.mb-t{margin:0;max-width:22em;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,4.6vw,56px);line-height:1;text-wrap:balance}
+.mb-t .mc{color:#8C96A8}
+.m-foot{max-width:1180px;margin:0 auto 18px;text-align:center;font-size:15px;color:#E8EDF5}
+
+/* Pied */
+.week{background:var(--creme);color:var(--nuit);padding:56px var(--gut)}
+.week .in{max-width:1180px;margin:0 auto;display:grid;gap:22px}
+.week h3{font-size:clamp(32px,4vw,44px)}
+.days{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.days div{border-top:3px solid var(--nuit);padding-top:10px;display:grid;gap:2px}
+.days small{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu)}
+.days b{font-size:16px}
+.days span{font-size:13px;color:#4E5566}
+@media (max-width:900px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+footer{background:#060B15;color:var(--muted);font-size:13px;padding:28px var(--gut)}
+footer .in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;text-align:center}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+/* Accueil : voile renforcé derrière le titre et la question pour rester lisible sur une photo chargée */
+.hero::before{background:linear-gradient(180deg,rgba(11,18,32,.78) 0%,rgba(11,18,32,.55) 45%,rgba(11,18,32,.15) 62%,rgba(11,18,32,.82) 100%)}
+.hero .sub{text-shadow:0 2px 14px rgba(0,0,0,.7)}
+/* Mention de source sous les chiffres d'enquête */
+.src{font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.78);margin-top:-10px;max-width:34em;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+/* Personnages : le visage reste dans le cadre */
+img.char{object-position:50% 18%}
+
+/* Repère de défilement des leçons (mobile) */
+.swipe{display:none;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#4E5566}
+.swipe .dots{display:flex;gap:6px}
+.swipe .dots i{width:8px;height:8px;border-radius:50%;background:#C9C0AE;transition:background .2s,width .2s}
+.swipe .dots i.on{background:var(--corail);width:20px;border-radius:4px}
+@media (max-width:980px){.swipe{display:flex}}
+
+/* Couverture du guide */
+.book-wrap{display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 30% 20%,#18315A 0%,var(--nuit) 70%)}
+.guide .book-wrap::after{display:none}
+.guide .book img{position:static;width:44px;height:44px;object-fit:contain}
+.cover-img{opacity:0;transition:opacity .4s}
+.book-wrap.has-img .cover-img{opacity:1}
+.book-wrap.has-img .book{display:none}
+.book{position:relative;width:min(300px,62vw);aspect-ratio:3/4;transform:rotate(-4deg)}
+.book .cover,.book .sheet{position:absolute;inset:0;border-radius:6px 14px 14px 6px}
+.book .cover{background:linear-gradient(160deg,#F5EFE2,#EADFC9);color:var(--nuit);padding:22px;display:flex;flex-direction:column;gap:8px;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 6px 0 0 rgba(11,18,32,.12)}
+.book .cover small{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail);margin-top:6px}
+.book .cover strong{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,38px);line-height:.92}
+.book .cover em{font-style:normal;font-size:12px;font-weight:700;color:#4E5566}
+.book .cover svg{position:absolute;right:14px;bottom:14px;width:46%}
+.book .sheet{background:#fff;transform:rotate(9deg) translate(18%,4%);padding:20px;display:flex;flex-direction:column;gap:10px;color:var(--nuit);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.book .sheet b{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bleu)}
+.book .sheet span{font-weight:800;font-size:15px}
+.book .sheet i{display:block;height:22px;border-bottom:1px dashed #C9C0AE}
+
+/* Sommaire des fiches */
+.fiches{list-style:none;counter-reset:f;margin:0;padding:0;display:grid;gap:8px;max-width:440px}
+.fiches li{counter-increment:f;display:grid;grid-template-columns:28px 1fr;column-gap:10px;font-size:14px;color:#FFE9E2}
+.fiches li::before{content:counter(f);grid-row:span 2;width:24px;height:24px;border-radius:50%;background:var(--nuit);color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center}
+.fiches b{color:#fff;font-size:15px}
+.book .sheet i{font-style:normal;font-size:11px;font-weight:600;color:#4E5566;display:flex;align-items:flex-end;padding-bottom:3px}
+/* Inscriptions pas encore ouvertes */
+.soon{display:grid;gap:16px;max-width:440px;background:rgba(11,18,32,.14);border-radius:12px;padding:18px}
+.soon p{font-size:15px;color:#FFF3EE}
+.soon strong{color:#fff}
+.btns.left{justify-content:flex-start}
+.btn-dark{background:var(--nuit);color:#fff}
+.btn-dark:hover{filter:brightness(1.25)}
+.soon .btn{min-width:0}
+
+/* Fondateur : portrait et présentation */
+.bio{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;max-width:820px;text-align:left}
+.face{width:min(240px,48vw);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#141D30;box-shadow:0 0 0 4px rgba(109,184,242,.25)}
+.face img{width:100%;height:100%;object-fit:cover}
+.face canvas{width:100%;height:100%}
+.face img ~ canvas{display:none}
+.bio .txt{display:grid;gap:8px}
+.bio .name{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:36px;line-height:1}
+.bio .role{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-corail)}
+.bio p{color:#C9D0DC;font-size:16px}
+.bio .go{font-weight:800;text-decoration:none;color:var(--soft-bleu);margin-top:4px}
+.bio .go::after{content:" →"}
+@media (max-width:700px){.bio{grid-template-columns:none;justify-items:center;text-align:center}}
+
+/* Mobile : seule l'ouverture et les photos prennent un écran entier */
+@media (max-width:900px){
+  .lessons,.ask,.founder{min-height:auto;padding-block:84px 56px;gap:28px}
+  .card{min-height:400px}
+  .founder blockquote{font-size:clamp(40px,11vw,64px)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <a class="brand" href="#accueil"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="diagnostic.html?src=menu">Diagnostic</a>
+    <a href="methode.html#etudes">Études &amp; Outils</a>
+    <a href="#cercle">Cercle &amp; Spirale</a>
+    <a href="#fondateur">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
+
+<!-- Repère : la spirale de progression -->
+<div class="rail" id="rail" aria-label="Progression">
+  <span class="lbl" id="rail-lbl">Accueil</span>
+  <svg viewBox="-50 -50 100 100" id="rail-svg" aria-hidden="true"></svg>
+</div>
+
+<main id="accueil">
+
+  <!-- 0. Promesse -->
+  <section class="screen hero" data-step="Accueil">
+    <img class="bg" src="https://images.unsplash.com/photo-1734255026082-82fdc81991f0?auto=format&fit=crop&w=2000&q=80" alt="Un marché animé, des clients autour d’un étal de tomates" fetchpriority="high">
+    <div class="head">
+      <p class="step">Éducation Financière Afrique</p>
+      <h1>L’argent s’apprend.</h1>
+      <p class="sub">Comprenez où va votre argent, organisez votre budget et préparez vos projets.</p>
+      <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+    </div>
+    <div class="foot">
+      <div class="btns">
+        <a class="btn btn-main" href="diagnostic.html?src=accueil">Faire mon diagnostic gratuit · 6 min</a>
+        <a class="btn btn-alt" href="#cercle">Découvrir le cercle et la spirale</a>
+      </div>
+      <span class="cue" aria-hidden="true"></span>
+    </div>
+    <a class="credit" href="https://unsplash.com/photos/a-group-of-people-standing-around-a-table-filled-with-tomatoes-cnVn4Gg4b00" target="_blank" rel="noopener">Photo&nbsp;: Tunde Buremo / Unsplash</a>
+  </section>
+
+  <!-- 1. Le cercle et la spirale : un récit en 4 chapitres piloté par le défilement, puis un configurateur -->
+  <section class="story" id="cercle" data-step="Étape 1 · Le cercle">
+    <div class="stage" data-c="3">
+      <canvas class="orbit" id="orbit" aria-hidden="true"></canvas>
+      <div class="chaps">
+        <div class="chap on" data-c="3"><p class="step">Le cercle et la spirale</p><h2>Quand une grosse somme arrive, quelle part gardez-vous&nbsp;?</h2><p class="sub">Tontine, prime, 13<sup>e</sup> mois, vente d’une récolte&nbsp;: à 0&nbsp;%, tout repart, c’est le cercle. Gardez une part, la spirale s’ouvre.</p></div>
+      </div>
+      <div class="viz-space" aria-hidden="true"></div>
+      <div class="dock">
+        <p class="swipe-hint" id="ob-swipe"><span class="ar" aria-hidden="true">←</span><span class="h-l">Glissez le doigt sur la spirale pour changer la part gardée</span><span class="h-s">Glissez le doigt sur la spirale pour modifier</span><span class="ar" aria-hidden="true">→</span></p>
+        <div class="cfg" id="cfg">
+          <label class="amt" for="cfg-amount">Somme reçue <span class="amt-in"><input id="cfg-amount" inputmode="numeric" autocomplete="off" value="300 000" aria-describedby="cfg-error"><span>FCFA</span></span></label>
+          <p class="amt-err" id="cfg-error" role="alert" hidden>Indiquez un montant d’au moins 1 000 FCFA.</p>
+          <div class="nb" role="group" aria-labelledby="nb-l"><span id="nb-l">Rentrées</span><button type="button" id="nb-m" aria-label="Une rentrée de moins">−</button><input id="cfg-n" inputmode="numeric" autocomplete="off" value="12" aria-labelledby="nb-l" aria-describedby="nb-h"><button type="button" id="nb-p" aria-label="Une rentrée de plus">+</button><span class="vh" id="nb-h">Nombre de fois où la somme arrive, de 1 à 60</span></div>
+          <label class="part">Part gardée <input type="range" id="cfg-s" min="0" max="100" step="1" value="10"> <output id="cfg-o">10&nbsp;%</output></label>
+          
+        </div>
+        <div class="spec" aria-live="polite">
+          <div><b id="ob-in">300 000</b><span>Somme reçue</span></div>
+          <div><b id="ob-kp">0</b><span>Gardé à chaque fois</span></div>
+          <div class="k"><b id="ob-res">0</b><span>Mis de côté</span></div>
+        </div>
+        <p class="res" id="ob-sent"></p>
+        <p class="src" id="ob-src">Exemple en FCFA, sur <span id="ob-n">12</span> rentrées d’argent · dans notre enquête (251 répondants), 71&nbsp;% des tontines redistribuent tout</p>
+        <div class="links"><a class="lk" href="#spirale">Continuer</a><a class="lk p" href="methode.html#simulateurs">Détail rentrée par rentrée&nbsp;→</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. La spirale -->
+  <section class="screen s-spirale" id="spirale" data-step="Étape 2 · La spirale">
+    <img class="bg" src="https://images.unsplash.com/photo-1687422809069-0fa3546b8471?auto=format&fit=crop&w=2000&q=80" alt="Un tailleur sourit en travaillant à sa machine à coudre" loading="lazy">
+    <div class="head">
+      <p class="step">Étape 2 · La spirale</p>
+      <h2>Une part reste. Et travaille.</h2>
+      <p class="sub">Une réserve protège. Un outil produit. Une part conservée ou investie peut préparer le tour suivant.</p>
+    </div>
+    <div class="foot">
+      <div class="stat">
+        <div><b>65 %</b><span>ont gardé quelque chose quand le tour a surtout financé une activité (40 répondants)</span></div>
+        <div><b>29 %</b><span>quand il a surtout couvert les dépenses courantes (34 répondants)</span></div>
+      </div>
+      <p class="src">Enquête exploratoire EFA&nbsp;: 251 personnes interrogées, dont 160 participants à une tontine&nbsp;; 154 ont répondu à cette question · différence observée, pas une preuve de cause · échantillon non représentatif</p>
+      <div class="btns">
+        <a class="btn btn-main" href="#lecons">Apprendre la spirale</a>
+        <a class="btn btn-line" href="methode.html#enquete">Comprendre ces chiffres</a>
+      </div>
+    </div>
+    <a class="credit" href="https://unsplash.com/photos/a-man-smiles-as-he-uses-a-sewing-machine-cU3xxfbB9Es" target="_blank" rel="noopener">Photo&nbsp;: Ali Mkumbwa / Unsplash</a>
+  </section>
+
+  <!-- 3. Trois leçons -->
+  <section class="screen lessons" id="lecons" data-step="Étape 3 · Apprendre">
+    <div class="head">
+      <p class="step">Étape 3 · Apprendre</p>
+      <h2>Trois leçons. Deux minutes.</h2>
+      <p class="sub">Un mot, une situation, une idée. Gratuit, sans inscription.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1677935711525-1059c0cb9b44?auto=format&fit=crop&w=900&q=80" alt="Une femme montre l’écran de son téléphone" loading="lazy">
+        <div class="in">
+          <span class="n">Leçon 1 · Le Dico</span>
+          <span class="word">Flux</span>
+          <p>L’argent qui passe entre vos mains&nbsp;: ce qui entre, ce qui sort.</p>
+          <details>
+            <summary>Lire la définition</summary>
+            <div class="def">
+              <p>Le flux s’oppose au <b>stock</b>&nbsp;: ce qui vous reste, ce que vous possédez.</p>
+              <p>300&nbsp;000 FCFA entrent, puis sont entièrement dépensés pour la vie courante&nbsp;: le solde disponible n’augmente pas.</p>
+              <p><b>Ce qui circule n’est pas ce qui reste.</b></p>
+            </div>
+          </details>
+        </div>
+      </article>
+      <article class="card" id="preter">
+        <!-- Koffi : déposer koffi.jpg (portrait vertical) dans le dépôt ; sinon la photo de secours s’affiche -->
+        <img class="char" src="koffi.jpg" alt="Koffi, le personnage de Min’Fin" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1686723726446-8b881f37ce62?auto=format&fit=crop&w=900&q=80'">
+        <div class="in">
+          <span class="n">Leçon 2 · Min’Fin</span>
+          <h3>Prêter à un proche&nbsp;: prêt ou cadeau&nbsp;?</h3>
+          <p>Koffi prête à sa sœur. Un mois plus tard, plus personne n’en parle.</p>
+          <a class="go" href="https://vt.tiktok.com/ZSgM8hjPe/" target="_blank" rel="noopener">Regarder l’épisode</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=900&q=80" alt="Une commerçante assise au comptoir de sa boutique" loading="lazy">
+        <div class="in">
+          <span class="n">Leçon 3 · La Tribune</span>
+          <h3>Que construisez-vous avec l’argent qui passe ?</h3>
+          <p>Tout l’argent qui passe entre vos mains ne laisse pas forcément de trace. Le point de vue d’Élysée Johnson.</p>
+          <!-- LIEN À METTRE À JOUR : URL Substack de la Tribune n° 1 -->
+          <a class="go" href="https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec" target="_blank" rel="noopener">Lire la tribune</a>
+        </div>
+      </article>
+    </div>
+    <p class="swipe" aria-hidden="true"><span class="dots"><i class="on"></i><i></i><i></i></span>Glissez pour voir les 3 leçons →</p>
+  </section>
+
+  <!-- Mission EFA (milieu de page) -->
+  <section class="mband" aria-label="La mission d’EFA">
+    <svg class="mb-ico" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="40" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg>
+    <p class="mb-t">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  </section>
+
+  <!-- 4. Questions du visiteur -->
+  <section class="screen ask" id="questions" data-step="Étape 4 · Votre question">
+    <div class="head">
+      <p class="step">Étape 4 · Votre question</p>
+      <h2>Qu’est-ce qui vous préoccupe&nbsp;?</h2>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="diagnostic.html?src=question">
+        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Organiser mon budget</b><small>Faire mon diagnostic →</small></span>
+      </a>
+      <a class="tile" href="#cercle">
+        <!-- Tantie Affoué : déposer affoue.jpg dans le dépôt ; sinon la photo de secours s’affiche -->
+        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
+        <span><b>Préparer mon tour de tontine</b><small>Le cercle et la spirale →</small></span>
+      </a>
+      <a class="tile" href="#preter">
+        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Aider ma famille sans m’épuiser</b><small>Prêt ou cadeau&nbsp;? →</small></span>
+      </a>
+      <a class="tile" href="methode.html#simulateurs">
+        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Épargner pour un projet</b><small>Calculer ce que je peux mettre de côté →</small></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. Le guide -->
+  <section class="screen guide" id="guide" data-step="Étape 5 · Agir">
+    <!-- Couverture du guide : remplacée automatiquement par guide-couverture.jpg si ce fichier est déposé -->
+    <div class="ph book-wrap">
+      <img class="cover-img" src="guide-couverture.jpg" alt="Couverture du guide Construire sa stabilité financière" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+      <div class="book" aria-hidden="true">
+        <div class="sheet"><b>Fiche 1</b><span>Mes sept chiffres</span><i>Revenus</i><i>Dépenses courantes</i><i>Dettes</i><i>Soutien aux proches</i><i>Tontine</i></div>
+        <div class="cover">
+          <img src="logo-efa.png" alt="" width="44" height="44">
+          <small>Guide gratuit EFA</small>
+          <strong>Construire sa stabilité financière</strong>
+          <em>5 fiches à remplir</em>
+          <svg viewBox="-50 -50 100 100"><g fill="#6DB8F2"><circle cx="0" cy="-6" r="2"/><circle cx="6" cy="-2" r="2.4"/><circle cx="6" cy="6" r="2.8"/><circle cx="-2" cy="12" r="3.2"/><circle cx="-12" cy="6" r="3.6"/><circle cx="-14" cy="-8" r="4"/><circle cx="-4" cy="-20" r="4.4"/><circle cx="14" cy="-20" r="4.8"/><circle cx="26" cy="-4" r="5.2"/></g><circle cx="22" cy="18" r="6" fill="#E44828"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="side">
+      <p class="step">Étape 5 · Agir</p>
+      <h2>Construire sa stabilité financière</h2>
+      <p class="sub">Le guide gratuit EFA&nbsp;: mesurer sa stabilité, puis la construire pilier par pilier. Un cas concret, celui de Koffi, et cinq fiches à remplir avec vos propres chiffres.</p>
+      <ol class="fiches">
+        <li><b>Mes sept chiffres</b><span>Revenus, charges, dettes, réserve&nbsp;: votre score de stabilité.</span></li>
+        <li><b>Mes dépenses courantes</b><span>Fixes, nécessaires ou choisies&nbsp;: où agir.</span></li>
+        <li><b>Mes dettes</b><span>Les classer par coût et choisir l’ordre de remboursement.</span></li>
+        <li><b>Mes obligations sociales</b><span>Funérailles, fêtes, cotisations&nbsp;: une enveloppe sur douze mois.</span></li>
+        <li><b>Ma réserve</b><span>Deux semaines, un mois, trois mois de charges, par paliers.</span></li>
+      </ol>
+      <div class="soon" id="soon">
+        <p id="soon-t"><strong>Le guide est disponible, gratuitement.</strong> Répondez au court questionnaire, il vous est envoyé.</p>
+        <div class="btns left">
+          <a class="btn btn-dark" id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Répondre au questionnaire (2 min)</a>
+        </div>
+        <p class="or" id="or-mail" hidden>Ou laissez simplement votre email&nbsp;:</p>
+      </div>
+      <form id="signup-form" novalidate>
+        <div class="row">
+          <input id="f-prenom" name="PRENOM" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
+          <select id="f-pays" name="PAYS" aria-label="Pays">
+            <option value="">Pays</option>
+            <option>Côte d’Ivoire</option><option>Sénégal</option><option>Cameroun</option><option>Bénin</option>
+            <option>Burkina Faso</option><option>Mali</option><option>Togo</option><option>Guinée</option>
+            <option>Niger</option><option>Gabon</option><option>RD Congo</option><option>Congo</option>
+            <option>France</option><option>Autre pays</option>
+          </select>
+        </div>
+        <input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="Adresse email" aria-label="Adresse email" required>
+        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span>J’accepte de recevoir le guide et «&nbsp;L’argent de la semaine&nbsp;» chaque lundi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
+        <button class="btn btn-main" type="submit">Recevoir le guide</button>
+        <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="small">Pas de conseil de placement, pas de produit à vendre. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
+    </div>
+  </section>
+
+  <!-- Catalogue des guides : la liste se modifie dans le script (GUIDES), en bas de page -->
+  <section class="cat" id="guides" aria-labelledby="cat-t">
+    <div class="in">
+      <div class="cat-head">
+        <p class="kick">La collection EFA</p>
+        <h2 id="cat-t">Les guides pratiques</h2>
+        <p class="lead">Gratuits, concrets, avec vos propres chiffres. Un nouveau guide paraît au fur et à mesure.</p>
+      </div>
+      <div class="shelf" id="shelf"></div>
+    </div>
+  </section>
+
+  <!-- Le livre : couverture remplacée automatiquement par livre-couverture.jpg si ce fichier est déposé -->
+  <section class="livre" id="livre" aria-labelledby="livre-t">
+    <div class="in">
+      <div class="lv-cover" id="lv-cover">
+        <img class="lv-img" src="livre-couverture.jpg" alt="Couverture du livre Le Cercle et la Spirale, d’Élysée Johnson" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+        <div class="lv-css" aria-hidden="true">
+          <svg viewBox="-50 -50 100 100"><g fill="#F5EFE2" id="lv-dots"></g><circle id="lv-dot" r="3.4" fill="#0B1220"/></svg>
+          <strong>Le Cercle et la Spirale</strong>
+          <em>Élysée Johnson</em>
+        </div>
+      </div>
+      <div class="lv-txt">
+        <p class="kick">Le livre · en cours d’écriture</p>
+        <h2 id="livre-t">Le Cercle et la Spirale</h2>
+        <p class="lv-sub">Ce que la tontine nous a appris, et ce qu’il nous reste à inventer.</p>
+        <p>L’argent tourne depuis longtemps. Et si, désormais, quelque chose restait&nbsp;? Élysée Johnson écrit un livre sur la tontine, nourri par les enquêtes et les témoignages de la communauté EFA.</p>
+        <p>Les guides pratiques en sont les premiers extraits&nbsp;: ils rejoindront l’annexe du livre.</p>
+        <form class="lv-form" id="lv-form" novalidate hidden>
+          <label for="lv-email">Être prévenu de la sortie du livre</label>
+          <div class="lv-row"><input id="lv-email" type="email" autocomplete="email" placeholder="Adresse email" required><button class="btn btn-main" type="submit">Me prévenir</button></div>
+          <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="lv-note">Vous recevrez aussi «&nbsp;L’argent de la semaine&nbsp;», chaque lundi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></p>
+          <p class="formmsg" id="lv-msg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="btns left" id="lv-btns">
+          <a class="btn btn-main" id="lv-wa" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Être prévenu de la sortie</a>
+          <a class="btn btn-line" href="#guides">Lire les guides</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Fondateur -->
+  <section class="screen founder" id="fondateur" data-step="Le fondateur">
+    <blockquote>La confiance <span>précède</span> le capital.</blockquote>
+    <div class="bio">
+      <div class="face">
+        <!-- Portrait : déposer elysee.jpg (cadrage poitrine, fond sobre) ; sinon la spirale s’affiche -->
+        <img src="elysee.jpg" alt="Élysée Johnson" width="300" height="300" onerror="this.remove()">
+        <canvas id="spiral" width="600" height="600" aria-hidden="true"></canvas>
+      </div>
+      <div class="txt">
+        <p class="name">Élysée Johnson</p>
+        <p class="role">Fondateur d’Éducation Financière Afrique</p>
+        <p>Après une décennie dans la banque d’investissement, le capital-investissement et le conseil, à Paris, New York et Abidjan, j’ai créé EFA pour rendre les mécanismes financiers compréhensibles à partir de nos réalités quotidiennes.</p>
+        <a class="go" href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Lire mes tribunes</a>
+      </div>
+    </div>
+    <div class="btns">
+      <a class="btn btn-alt" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Rejoindre EFA Community</a>
+      <a class="btn btn-line" href="methode.html#methode">Notre méthode</a>
+    </div>
+  </section>
+</main>
+
+<section class="week" aria-label="Une semaine avec EFA">
+  <div class="in">
+    <h3>Une semaine avec EFA</h3>
+    <div class="days">
+      <div><small>Lundi · email</small><b>L’argent de la semaine</b><span>La newsletter</span></div>
+      <div><small>Lundi</small><b>Le Dico</b><span>Un mot expliqué</span></div>
+      <div><small>Mercredi</small><b>Min’Fin</b><span>Koffi en une minute</span></div>
+      <div><small>Jeudi 19 h</small><b>EFA Community</b><span>Sur WhatsApp</span></div>
+      <div><small>Vendredi</small><b>Instant’Fin</b><span>Une idée, une affiche</span></div>
+      <div><small>Samedi</small><b>La Tribune</b><span>Le point de vue d’Élysée</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="mission m-foot">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  <div class="in">
+    <span>Éducation Financière Afrique © 2026</span>
+    <span>Éducation financière, pas conseil en placement</span>
+    <a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="#guides">Guides</a>
+    <a href="#livre">Le livre</a>
+    <a href="methode.html#methode">Notre méthode</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+  </div>
+</footer>
+
+<script src="donnees.js"></script>
+<script>
+/* Barre EFA · BRVM : deux catégories, chaque information cliquable.
+   Ordinateur : défilement lent, bouton pause. Mobile : une information à la fois, flèches et balayage. */
+function efaTickerItems(D){
+  var it=[
+    {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
+    {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
+    {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
+    {c:'EFA',t:'Simulateur : quand une grosse somme arrive, quelle part garder ?',h:'methode.html#simulateurs'},
+    {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
+    {c:'EFA',t:'Guide gratuit « Construire sa stabilité financière » : disponible',h:'./#guide'},
+    {c:'EFA',t:'Le livre « Le Cercle et la Spirale » : en cours d’écriture',h:'./#livre'}
+  ];
+  var B=D&&D.brvm, f=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});};
+  var v=function(x){return '<em class="'+(x>0?'up':x<0?'down':'flat')+'">'+(x>0?'▲ +':x<0?'▼ −':'■ ')+f(Math.abs(x),2)+' %</em>';};
+  if(B&&B.indices&&B.indices.length){
+    B.indices.slice(0,3).forEach(function(i,k){it.splice(1+k*2,0,{c:'BRVM',t:i[0]+' <b>'+f(i[2],2)+'</b> '+v(i[3])+' · dernière séance '+B.seance,h:'methode.html#idx'});});
+    var a=(B.actions||[]).slice().sort(function(x,y){return y[4]-x[4];});
+    if(a.length){it.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4])+' · séance du '+B.seance,h:'methode.html#movr'});
+      it.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4])+' · séance du '+B.seance,h:'methode.html#movr'});}
+  }else it.splice(1,0,{c:'BRVM',t:'Cours de la dernière séance momentanément indisponibles · voir brvm.org',h:'https://www.brvm.org/fr/indices'});
+  if(D&&D.veille) D.veille.forEach(function(x){it.push({c:'EFA',t:'Actualité · '+x.pays+' : '+x.chiffre+' '+x.legende,h:'methode.html#'+x.code.toLowerCase()});});
+  return it;
+}
+function EFATicker(root,items){
+  if(!root||!items||!items.length) return {hide:function(){}};
+  var view=root.querySelector('.tk-view'), run=root.querySelector('.tk-run'), pb=root.querySelector('.tk-pause'),
+      prev=root.querySelector('.tk-prev'), next=root.querySelector('.tk-next'), cnt=root.querySelector('.tk-n'),
+      narrow=matchMedia('(max-width:720px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)'),
+      i=0, timer=null, paused=false, hidden=false, busy=false, x0=null, swiped=false;
+  function one(){return narrow.matches||reduced.matches;}
+  function html(x){var ext=/^https?:/.test(x.h);return '<a class="tk-it" href="'+x.h+'"'+(ext?' target="_blank" rel="noopener"':'')+'><span class="tk-cat '+(x.c==='BRVM'?'b':'e')+'">'+x.c+'</span><span class="tk-t">'+x.t+'</span></a>';}
+  // Mobile : une information toutes les 8 secondes, jamais pendant une lecture, un toucher ou une pause demandée
+  function plan(){clearTimeout(timer);if(one()&&!reduced.matches&&!paused&&!hidden&&!busy&&!document.hidden)timer=setTimeout(function(){go(1);},8000);}
+  function render(){
+    root.classList.toggle('one',one());
+    if(one()){run.style.animation='none';run.innerHTML=html(items[i]);cnt.textContent=(i+1)+'/'+items.length;}
+    else{var s=items.map(html).join('');run.innerHTML=s+s;run.style.animation='';run.style.setProperty('--dur',(items.length*7)+'s');}
+    plan();
+  }
+  function go(d){i=(i+d+items.length)%items.length;render();}
+  prev.addEventListener('click',function(){go(-1);});
+  next.addEventListener('click',function(){go(1);});
+  pb.addEventListener('click',function(){paused=!paused;root.classList.toggle('paused',paused);pb.setAttribute('aria-pressed',String(paused));
+    pb.setAttribute('aria-label',paused?'Reprendre le défilement':'Mettre en pause le défilement');pb.textContent=paused?'▶':'❚❚';plan();});
+  root.addEventListener('focusin',function(){busy=true;plan();});
+  root.addEventListener('focusout',function(e){busy=root.contains(e.relatedTarget);plan();});
+  view.addEventListener('pointerdown',function(e){x0=e.clientX;swiped=false;busy=true;plan();});
+  view.addEventListener('pointerup',function(e){busy=false;if(x0!==null&&one()&&Math.abs(e.clientX-x0)>40){swiped=true;go(e.clientX<x0?1:-1);}x0=null;plan();});
+  view.addEventListener('pointercancel',function(){x0=null;busy=false;plan();});
+  view.addEventListener('click',function(e){if(swiped)e.preventDefault();swiped=false;});
+  document.addEventListener('visibilitychange',plan);
+  [narrow,reduced].forEach(function(m){if(m.addEventListener)m.addEventListener('change',render);else m.addListener(render);});
+  render();
+  return {hide:function(h){h=!!h;if(h===hidden)return;hidden=h;root.classList.toggle('off',h);plan();}};
+}
+var TK=null;
+(function(){
+  function setHH(){var h=document.getElementById('top').offsetHeight,t=document.getElementById('tk');document.documentElement.style.setProperty('--hh',h+'px');document.documentElement.style.setProperty('--tkh',(t&&!t.hidden?t.offsetHeight:0)+'px');}
+  addEventListener('resize',setHH);
+  try{TK=EFATicker(document.getElementById('tk'),efaTickerItems(window.EFA_DATA||{}));document.getElementById('top').classList.add('has-tk');}
+  catch(e){var t=document.getElementById('tk');if(t)t.hidden=true;}
+  setHH(); setTimeout(setHH,500);
+})();
+/* Moteur EFA « cercle → spirale », d'après l'emblème : 12 points gris (le cercle), une spirale de points bleus
+   qui grossissent vers l'extérieur, et le point orange (votre argent) qui circule et allume la spirale.
+   g = ouverture (0 = tout sur le cercle, 1 = spirale complète) ; pitch = angle de vue (1,45 dessus, 0,9 ¾, 0,4 profil). */
+function EFASpiral(cv,o){
+  o=o||{};
+  var ctx=cv.getContext('2d'), still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR=1,W=0,H=0,CX=0,CY=0,R=100,M=o.n||68,TURNS=2.6,TOUR=o.tour||1.7,TEND=2.05,RC=1.05;
+  function sphere(base,hi,lo,S){var s=document.createElement('canvas');S=S||64;s.width=s.height=S;var g=s.getContext('2d');
+    var rg=g.createRadialGradient(S*.36,S*.32,S*.04,S*.5,S*.5,S*.5);rg.addColorStop(0,hi);rg.addColorStop(.45,base);rg.addColorStop(1,lo);
+    g.fillStyle=rg;g.beginPath();g.arc(S/2,S/2,S/2-1,0,7);g.fill();return s;}
+  function glow(rgb,a){var s=document.createElement('canvas'),S=128;s.width=s.height=S;var g=s.getContext('2d');
+    var rg=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);rg.addColorStop(0,'rgba('+rgb+','+a+')');rg.addColorStop(.3,'rgba('+rgb+','+(a*.3)+')');rg.addColorStop(1,'rgba('+rgb+',0)');
+    g.fillStyle=rg;g.fillRect(0,0,S,S);return s;}
+  var BLUE=sphere('#5BAEEE','#D9EEFF','#1E5E9C'), BLUE_D=sphere('#2B4D74','#5E7FA6','#14243A'),
+      GREY=sphere('#2A3550','#56648A','#151C2C'), ORANGE=sphere('#E44828','#FFD2BE','#8E2310',96),
+      GB=glow('109,184,242',.5), GO=glow('240,96,63',.85), SH=glow('0,0,0',.55);
+  var dots=[];for(var i=0;i<M;i++){var q=i/(M-1);dots.push({q:q,t:Math.pow(q,.62)});}
+  var grey=[];for(var k=0;k<12;k++)grey.push(-Math.PI/2+k*Math.PI/6);
+  var api={g:0,pitch:1.45,tg:{g:0,pitch:1.45},tours:o.tours||12,tourN:1,onTour:o.onTour||null,onDone:o.onDone||null,running:false,pile:0,pileTarget:0,speed:1,once:false,done:false};
+  var v=0,laps=1,yaw=0,yawDrag=0,vDrag=0,last=0,clock=0,raf=0,tilt={x:0,y:0},tiltT={x:0,y:0};
+
+  api.fit=function(cx,cy,r){DPR=Math.min(2,window.devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);CX=cx;CY=cy;R=r;draw();};
+  if(o.dragEl){var el=o.dragEl,down=false,px=0;
+    el.addEventListener('pointerdown',function(e){if(e.target.closest('a,button,input,select,label'))return;down=true;px=e.clientX;vDrag=0;});
+    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();tiltT.x=(e.clientX-r.left)/r.width-.5;tiltT.y=(e.clientY-r.top)/r.height-.5;});
+    addEventListener('pointermove',function(e){if(!down)return;var d=(e.clientX-px)/Math.max(200,W)*4;px=e.clientX;yawDrag+=d;vDrag=d;if(still)draw();});
+    addEventListener('pointerup',function(){down=false;});addEventListener('pointercancel',function(){down=false;});
+  }
+  // Chemin commun aux points bleus et au point orange : un tour de cercle quand g = 0, la spirale quand g = 1
+  function path(p,g){
+    var tc=TEND-2*Math.PI*(1-p), ts=TEND-TURNS*2*Math.PI*(1-p), a=tc+(ts-tc)*g;
+    var rs=R*(.06+.94*Math.pow(p,1/.62*.62)), r=R*RC+(rs-R*RC)*g;
+    return {x:Math.cos(a)*r,z:Math.sin(a)*r,y:g*R*.85*p};
+  }
+  function proj(x,y,z){
+    var Y0=yaw+yawDrag, c=Math.cos(Y0),s=Math.sin(Y0),X=x*c-z*s,Z=x*s+z*c;
+    var pt=api.pitch+tilt.y*.12, cp=Math.cos(pt),sp=Math.sin(pt),Yy=y*cp-Z*sp;Z=y*sp+Z*cp;
+    X+=tilt.x*R*.06;
+    var k=1100/(1100+Z);return {x:CX+X*k,y:CY-Yy*k,k:k,z:Z};
+  }
+  function step(dt){
+    var k=Math.min(1,dt*3);api.g+=(api.tg.g-api.g)*k;api.pitch+=(api.tg.pitch-api.pitch)*k;
+    tilt.x+=(tiltT.x-tilt.x)*.06;tilt.y+=(tiltT.y-tilt.y)*.06;vDrag*=.92;yawDrag+=vDrag*.6;
+    if(still||api.done) return;
+    clock+=dt;
+    var g=api.g, sp=((1-g)*1+g/api.tours)/TOUR*api.speed; v+=dt*sp;
+    var n;
+    if(v>=1){if(api.once&&g>=.05){v=1;api.done=true;}else{v-=1;if(g<.05)laps=laps%api.tours+1;}}
+    n=g<.05?laps:Math.min(api.tours,Math.floor(v*api.tours)+1);
+    if(g>=.05)laps=n;
+    if(n!==api.tourN){api.tourN=n;if(api.onTour)api.onTour(n);}
+    if(api.done&&api.onDone)api.onDone();
+  }
+  function draw(){
+    if(!W) return;
+    var w=ctx,g=api.g; w.setTransform(DPR,0,0,DPR,0,0);w.clearRect(0,0,W,H);
+    var floor=-R*.12, sph=Math.sin(api.pitch), O=path(v,g), fade=1;
+    if(g>.05&&!api.done) fade=1-g+g*Math.max(0,Math.min(1,v/.03,(1-v)/.03));
+    var Op=proj(O.x,O.y,O.z), lightR=R*.24;
+    // lumière portée du point orange sur le sol
+    var Of=proj(O.x,floor,O.z), lr=R*.7*Of.k;
+    w.save();w.translate(Of.x,Of.y);w.scale(1,Math.max(.25,sph));w.globalCompositeOperation='lighter';w.globalAlpha=.35*fade;w.drawImage(GO,-lr,-lr,lr*2,lr*2);w.restore();
+    var L=[];
+    grey.forEach(function(a){var x=Math.cos(a)*R*RC*1.03,z=Math.sin(a)*R*RC*1.03;L.push({x:x,y:0,z:z,s:R*.046,kind:'g'});});
+    dots.forEach(function(d){var P=path(d.t,g);var lit=g>.02&&d.t<=v+.002;L.push({x:P.x,y:P.y,z:P.z,s:R*(.018+(.062*d.t)*g+.004*(1-g)),kind:lit?'b':'d',t:d.t});});
+    L.forEach(function(o){var dx=o.x-O.x,dy=o.y-O.y,dz=o.z-O.z;o.l=Math.exp(-(dx*dx+dy*dy+dz*dz)/(lightR*lightR))*fade;o.p=proj(o.x,o.y,o.z);});
+    // ombres au sol (visibles quand la vue s'incline)
+    var shA=Math.max(0,Math.cos(api.pitch))*.9+.12;
+    L.forEach(function(o){var f=proj(o.x,floor,o.z),sz=o.s*3.2*f.k;w.globalAlpha=shA*.55;w.save();w.translate(f.x,f.y);w.scale(1,Math.max(.3,sph));w.drawImage(SH,-sz/2,-sz/2,sz,sz);w.restore();});
+    // traînée du point orange
+    w.globalCompositeOperation='lighter';
+    var span=Math.min(.35,((1-g)*1+g/api.tours)*.55), prev=null;
+    for(var j=0;j<=36;j++){var pv=v-span*j/36; if(pv<0){if(g>.05)break;pv+=1;}
+      var P=path(pv,g),S=proj(P.x,P.y,P.z);
+      if(prev){w.strokeStyle='rgba(240,110,70,'+(.55*(1-j/36)*fade)+')';w.lineWidth=R*.05*S.k*(1-j/40);w.lineCap='round';w.beginPath();w.moveTo(prev.x,prev.y);w.lineTo(S.x,S.y);w.stroke();}
+      prev=S;}
+    w.globalCompositeOperation='source-over';
+    L.push({p:Op,s:R*.07,kind:'o',l:0});
+    L.sort(function(a,b){return b.p.z-a.p.z;});
+    L.forEach(function(o){
+      var k=o.p.k, sz=o.s*2*k, x=o.p.x, y=o.p.y;
+      if(o.kind==='o'){w.globalCompositeOperation='lighter';w.globalAlpha=fade;var gs=sz*5;w.drawImage(GO,x-gs/2,y-gs/2,gs,gs);
+        w.globalCompositeOperation='source-over';w.globalAlpha=fade;w.drawImage(ORANGE,x-sz/2,y-sz/2,sz,sz);return;}
+      var img=o.kind==='b'?BLUE:o.kind==='d'?BLUE_D:GREY;
+      if(o.kind==='b'){w.globalCompositeOperation='lighter';w.globalAlpha=.45;var gs2=sz*3.4;w.drawImage(GB,x-gs2/2,y-gs2/2,gs2,gs2);}
+      w.globalCompositeOperation='source-over';w.globalAlpha=o.kind==='d'?.2+.6*g:1;w.drawImage(img,x-sz/2,y-sz/2,sz,sz);
+      if(o.l>.02){w.globalCompositeOperation='lighter';w.globalAlpha=o.l*.9;var gl=sz*2.6;w.drawImage(GO,x-gl/2,y-gl/2,gl,gl);}
+    });
+    w.globalAlpha=1;w.globalCompositeOperation='source-over';
+  }
+  function loop(ts){var t=ts/1000,dt=last?Math.min(.05,t-last):0;last=t;step(dt);draw();if(api.running)raf=requestAnimationFrame(loop);}
+  api.start=function(){if(api.running)return;api.running=true;last=0;raf=requestAnimationFrame(loop);};
+  api.stop=function(){api.running=false;cancelAnimationFrame(raf);};
+  api.reset=function(){v=0;laps=1;api.tourN=1;api.done=false;if(still)draw();};
+  api.draw=draw;
+  api.watch=function(target){
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)api.start();else api.stop();});}).observe(target||cv);
+    else api.start();
+  };
+  if(still){v=.62;}
+  return api;
+}
+
+// Le cercle et la spirale : le réglage est visible d'emblée ; glisser le doigt sur la spirale change la part gardée
+(function(){
+  var st=document.getElementById('cercle'); if(!st) return;
+  var stage=st.querySelector('.stage'), cv=document.getElementById('orbit'), hint=document.getElementById('ob-swipe');
+  var M=300000, S=.10, N=12, tourN=1;
+  function gOf(s){return Math.pow(Math.max(0,Math.min(1,s)),.2);} // 0 % : le cercle ; l’ouverture croît vite au début, jusqu’à 100 %
+  function rt(n){return n+(n>1?' rentrées':' rentrée');}
+  function fmt(n){return Math.round(n).toLocaleString('fr-FR').replace(/ | /g,' ');}
+  var E=EFASpiral(cv,{onTour:function(n){tourN=n;hud();}});
+  E.tg.pitch=1.45; E.pitch=1.45; E.g=gOf(S);
+  function hud(){
+    var kp=Math.round(S*M);
+    document.getElementById('ob-in').textContent=fmt(M);
+    document.getElementById('ob-kp').textContent=fmt(kp);
+    document.getElementById('ob-res').textContent=fmt(kp*Math.min(tourN,N));
+    document.getElementById('ob-n').textContent=N;
+    document.getElementById('ob-sent').innerHTML=S>=1?'Tout est gardé&nbsp;: <b>'+fmt(kp*N)+' FCFA</b> au bout de '+rt(N)+'. Mais il faut bien vivre&nbsp;: la bonne part est celle que vous tenez dans la durée.':kp?'<b>'+fmt(kp)+' FCFA</b> gardés à chaque rentrée d’argent&nbsp;: <b>'+fmt(kp*N)+' FCFA</b> au bout de '+rt(N)+', si vous n’y touchez pas.':'Rien n’est gardé&nbsp;: tout ce qui est reçu repart. C’est le cercle.';
+  }
+  function fit(){
+    var r=stage.getBoundingClientRect();
+    var sp=st.querySelector('.viz-space').getBoundingClientRect(), avail=sp.height, hb=sp.top-r.top;
+    var R=Math.max(72,Math.min(r.width*.4,avail/2.3,300)), cy=hb+avail*.5;
+    E.fit(r.width/2,cy,R);
+  }
+  var rg=document.getElementById('cfg-s');
+  function out(){var kp=Math.round(S*M);document.getElementById('cfg-o').textContent=rg.value+' %';rg.setAttribute('aria-valuetext',rg.value+' %, soit '+fmt(kp)+' FCFA');}
+  function apply(){E.tg.g=gOf(S);out();hud();}
+  var used=false;function useOnce(){if(!used){used=true;efaCompte('simulateur-spirale');}}
+  rg.addEventListener('input',function(){S=rg.value/100;apply();useOnce();});
+  var amount=document.getElementById('cfg-amount'), aerr=document.getElementById('cfg-error');
+  amount.addEventListener('input',function(){var v=parseInt(amount.value.replace(/\D/g,''),10)||0;var ok=v>=1000&&v<=1e9;
+    aerr.hidden=ok;amount.setAttribute('aria-invalid',String(!ok));if(!ok)return;M=v;apply();});
+  // Nombre de rentrées : 12 par défaut, de 1 à 60
+  var nIn=document.getElementById('cfg-n');
+  function setN(v){v=Math.max(1,Math.min(60,v|0||1));if(v===N){nIn.value=N;return;}N=v;nIn.value=N;E.tours=N;tourN=Math.min(tourN,N);hud();}
+  document.getElementById('nb-m').addEventListener('click',function(){setN(N-1);});
+  document.getElementById('nb-p').addEventListener('click',function(){setN(N+1);});
+  nIn.addEventListener('input',function(){var v=parseInt(nIn.value.replace(/\D/g,''),10);if(v>=1)setN(v);});
+  nIn.addEventListener('blur',function(){nIn.value=N;});
+  nIn.addEventListener('keydown',function(e){if(e.key==='ArrowUp'){e.preventDefault();setN(N+1);}if(e.key==='ArrowDown'){e.preventDefault();setN(N-1);}});
+  amount.addEventListener('blur',function(){amount.value=fmt(M);aerr.hidden=true;amount.removeAttribute('aria-invalid');});
+  // Glisser horizontalement sur la spirale : de 0 % (le cercle) à 100 % ; le défilement vertical reste libre
+  var x0=null,s0=0,moved=false;
+  stage.addEventListener('pointerdown',function(e){if(e.target.closest('a,button,input,select,label'))return;x0=e.clientX;s0=S;moved=false;});
+  stage.addEventListener('pointermove',function(e){if(x0===null)return;var dx=e.clientX-x0;if(!moved&&Math.abs(dx)<6)return;
+    if(!moved){moved=true;try{stage.setPointerCapture(e.pointerId);}catch(_){}}
+    var v=Math.round(Math.max(0,Math.min(1,s0+dx/(stage.clientWidth*.8)))*100);
+    if(+rg.value!==v){rg.value=v;S=v/100;apply();useOnce();}
+    hint.classList.add('used');});
+  function end(){x0=null;}
+  stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
+  // La barre EFA · BRVM se retire pendant que le réglage est à l’écran (pas deux mouvements à la fois)
+  function onScroll(){var r=st.getBoundingClientRect();if(TK)TK.hide(r.bottom>innerHeight*.5&&r.top<innerHeight*.5);}
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  apply(); fit(); onScroll(); E.watch(st);
+})();
+// En-tête : devient opaque après le premier écran ; menu plein écran sur mobile
+(function(){
+  var top=document.getElementById('top'), nav=document.getElementById('nav'), mb=document.getElementById('menu');
+  function onScroll(){top.classList.toggle('solid',window.scrollY>window.innerHeight*0.6);}
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Fermer':'Menu';});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded',false);mb.textContent='Menu';}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='Menu';mb.focus();}});
+})();
+
+// Repère de progression : un point par étape, posé sur une spirale ; le point corail avance
+(function(){
+  var steps=[].slice.call(document.querySelectorAll('[data-step]'));
+  var svg=document.getElementById('rail-svg'), lbl=document.getElementById('rail-lbl'), rail=document.getElementById('rail');
+  var NS='http://www.w3.org/2000/svg', dots=[];
+  steps.forEach(function(s,i){
+    if(!s.id) s.id='etape-'+i;
+    var f=i/(steps.length-1), a=-Math.PI/2+f*Math.PI*2.6, r=8+f*36;
+    var link=document.createElementNS(NS,'a'); link.setAttribute('href','#'+s.id);
+    var c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',(r*Math.cos(a)).toFixed(1)); c.setAttribute('cy',(r*Math.sin(a)).toFixed(1)); c.setAttribute('r',3+f*2.5);
+    c.setAttribute('fill','rgba(255,255,255,.35)');
+    var t=document.createElementNS(NS,'title'); t.textContent=s.dataset.step;
+    c.appendChild(t); link.appendChild(c); svg.appendChild(link); dots.push(c);
+  });
+  var cur=-1;
+  function set(i){ if(i===cur) return; cur=i;
+    dots.forEach(function(c,j){c.setAttribute('fill',j<i?'#6DB8F2':(j===i?'#E44828':'rgba(255,255,255,.35)'));});
+    lbl.textContent=steps[i].dataset.step;
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting) set(steps.indexOf(e.target));});},{threshold:.55});
+  steps.forEach(function(s){io.observe(s);}); set(0);
+})();
+
+// Spirale du fondateur : le motif EFA
+(function(){
+  var c=document.getElementById('spiral'); if(!c||!c.getContext) return;
+  var x=c.getContext('2d'), W=c.width, cx=W/2, cy=W/2, s=W/720;
+  function draw(t){
+    x.clearRect(0,0,W,W);
+    for(var i=0;i<14;i++){var a=-Math.PI/2+i*2*Math.PI/14;x.beginPath();x.arc(cx+300*s*Math.cos(a),cy+300*s*Math.sin(a),7*s,0,7);x.fillStyle='rgba(255,255,255,.25)';x.fill();}
+    var N=70,k=Math.floor(t/90)%N;
+    for(var j=0;j<N;j++){var f=j/N,ang=-Math.PI/2+f*Math.PI*5.2,r=(24+f*250)*s,last=j===k;
+      x.beginPath();x.arc(cx+r*Math.cos(ang),cy+r*Math.sin(ang),(last?15:(5+f*7))*s,0,7);
+      x.fillStyle=last?'#E44828':(j<=k?'#6DB8F2':'rgba(109,184,242,.2)');x.fill();}
+  }
+  draw(90*69);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var st=null;(function loop(ts){if(ts){if(st===null)st=ts;draw((ts-st)%(90*80));}requestAnimationFrame(loop);})();
+})();
+
+// Repère des leçons : le point actif suit la carte visible
+(function(){
+  var c=document.querySelector('.cards'), d=document.querySelectorAll('.swipe .dots i'); if(!c||!d.length) return;
+  c.addEventListener('scroll',function(){
+    var w=c.scrollWidth-c.clientWidth, i=w>0?Math.round(c.scrollLeft/w*(d.length-1)):0;
+    d.forEach(function(x,j){x.classList.toggle('on',j===i);});
+  },{passive:true});
+})();
+
+// Mesure d’audience : un événement GoatCounter, sans donnée personnelle
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+// Catalogue des guides. Pour publier un guide : passer dispo à true et mettre son lien.
+// GUIDE_LIEN : lien du formulaire Google Forms qui envoie « Construire sa stabilité financière ».
+var GUIDE_LIEN='https://forms.gle/5CsRvJYxoFArJbNa8';
+var GUIDES=[
+  {t:'Construire sa stabilité financière',d:'Mesurer sa stabilité, puis la construire pilier par pilier. Cinq fiches à remplir.',dispo:true,lien:'GUIDE'},
+  {t:'Choisir sa tontine',d:'Entrer dans une tontine, la lancer, appartenir à une communauté financière.',dispo:false},
+  {t:'Que faire de sa tontine ? Décider avant de recevoir',d:'Savoir à quoi servira la somme avant le jour où elle arrive.',dispo:false},
+  {t:'Combien vaut mon rang ? Premier servi, dernier servi',d:'Recevoir tôt, c’est emprunter. Recevoir tard, c’est épargner.',dispo:false},
+  {t:'Cotiser depuis l’étranger',d:'Le guide de la diaspora : cotiser, suivre et sécuriser sa tontine à distance.',dispo:false},
+  {t:'Votre liberté financière : combien vous faut-il ?',d:'Les questions que tout le monde se pose, et les stratégies classiques.',dispo:false,sombre:true}
+];
+(function(){
+  var WA='https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a';
+  var gl=document.getElementById('guide-lien'); if(gl&&GUIDE_LIEN) gl.href=GUIDE_LIEN;
+  var sh=document.getElementById('shelf'); if(!sh) return;
+  var esc=function(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  sh.innerHTML=GUIDES.map(function(g){
+    var href=g.lien==='GUIDE'?(GUIDE_LIEN||'#guide'):(g.lien||WA), ext=/^https?:/.test(href);
+    return '<article class="gd'+(g.dispo?'':' soon-g')+'"><div class="gd-cv'+(g.sombre?' dark':'')+'" aria-hidden="true"><img src="logo-efa.png" alt=""><b>'+esc(g.t)+'</b><i></i></div>'+
+      '<div class="gd-tx"><span class="gd-st'+(g.dispo?' ok':'')+'">'+(g.dispo?'Disponible':'À venir')+'</span><h3>'+esc(g.t)+'</h3><p>'+esc(g.d)+'</p>'+
+      (g.dispo?'<a href="'+href+'" data-goatcounter-click="guide-catalogue"'+(ext?' target="_blank" rel="noopener"':'')+'>Recevoir le guide gratuit</a>':'<a href="'+WA+'" target="_blank" rel="noopener">Être prévenu de la sortie</a>')+'</div></article>';
+  }).join('');
+  // Spirale de points de la couverture du livre (couleurs du livre)
+  var g=document.getElementById('lv-dots'), dot=document.getElementById('lv-dot');
+  if(g){var h='',N=46,last;for(var j=0;j<N;j++){var f=j/N,a=-Math.PI/2+f*Math.PI*5,r=3+f*40,x=(r*Math.cos(a)).toFixed(1),y=(r*Math.sin(a)).toFixed(1);h+='<circle cx="'+x+'" cy="'+y+'" r="'+(0.8+f*2.2).toFixed(2)+'"/>';last=[x,y];}
+    g.innerHTML=h; dot.setAttribute('cx',last[0]); dot.setAttribute('cy',last[1]);}
+})();
+
+// Formulaire → Brevo (liste « Newsletter EFA », double confirmation).
+// BREVO_URL : adresse « action » du formulaire Brevo (Contacts › Formulaires › Partager › code HTML).
+var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhlcS3Knrj0HOrhpnsbgPHCoa1GSLsbsCmk1lvMWF8o_An6q6BYBz85koQiVVRpHhage71-PdxWrT1OFhCY5iidi-UIq-C34WPbWb-FGUjhGa5kXw3NytB242VM_LTd9sbakiFejMRUqseZNiyuN8LB_U_cvRkJ7v0E1SyaD-_RVTlQfAI7JLVRw==';
+(function(){
+  var f=document.getElementById('signup-form'), m=document.getElementById('formmsg'), b=f.querySelector('button[type=submit]');
+  var WA='https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a';
+  function say(t){m.innerHTML=t;}
+  // Tant que Brevo n'est pas branché, on ne demande pas l'email : on l'annonce avant
+  if(BREVO_URL){var c=document.querySelector('[data-cta]'),s=document.querySelector('[data-cta-short]');if(c)c.textContent='Recevoir le guide gratuit';if(s)s.textContent='Guide gratuit';}
+  if(!BREVO_URL){f.hidden=true;return;}
+  document.getElementById('or-mail').hidden=false;
+  document.getElementById('soon-t').innerHTML='<strong>Le guide est disponible, gratuitement.</strong> Deux façons de le recevoir&nbsp;:';
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('f-email').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say('Saisissez une adresse email valide.');return;}
+    if(!document.getElementById('f-ok').checked){say('Cochez la case pour recevoir le guide.');return;}
+    if(f.email_address_check.value) return;
+    if(!BREVO_URL){say('Les inscriptions ouvrent très bientôt. En attendant&nbsp;: <a href="'+WA+'" target="_blank" rel="noopener">EFA Community sur WhatsApp</a>.');return;}
+    var d=new FormData();
+    d.append('EMAIL',em); d.append('PRENOM',document.getElementById('f-prenom').value.trim());
+    d.append('PAYS',document.getElementById('f-pays').value); d.append('email_address_check',''); d.append('locale','fr');
+    b.disabled=true; say('Envoi en cours…'); efaCompte('guide-email');
+    fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'}).then(function(){
+      f.reset(); say('Demande envoyée. Un email de confirmation doit arriver dans les minutes qui viennent (regardez aussi Promotions et Spam)&nbsp;; le guide suit dès que vous confirmez. Rien reçu&nbsp;? <a href="'+(GUIDE_LIEN||WA)+'" target="_blank" rel="noopener">Recevez-le par le questionnaire</a>.');
+    }).catch(function(){say('L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.');}).then(function(){b.disabled=false;});
+  });
+})();
+// Livre : alerte de sortie par email (même liste Brevo que le guide)
+(function(){
+  var f=document.getElementById('lv-form'); if(!f||!BREVO_URL) return;
+  f.hidden=false; document.getElementById('lv-wa').hidden=true;
+  var m=document.getElementById('lv-msg'), b=f.querySelector('button');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('lv-email').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.textContent='Saisissez une adresse email valide.';return;}
+    if(f.email_address_check.value) return;
+    var d=new FormData(); d.append('EMAIL',em); d.append('email_address_check',''); d.append('locale','fr');
+    b.disabled=true; m.textContent='Envoi en cours…'; efaCompte('livre-email');
+    fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'}).then(function(){f.reset();m.textContent='Demande envoyée. Un email de confirmation doit arriver dans les minutes qui viennent (regardez aussi Promotions et Spam). Une fois confirmé, nous vous préviendrons à la sortie du livre.';})
+      .catch(function(){m.textContent='L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.';}).then(function(){b.disabled=false;});
+  });
+})();
+</script>
+<!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
