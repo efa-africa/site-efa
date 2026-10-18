@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<meta name="theme-color" content="#070C16">
+<title>EFA Études</title>
+<meta name="description" content="Les études EFA, un simulateur de tontine, la Bourse régionale (BRVM) et l’actualité économique, avec leurs sources.">
+<meta property="og:title" content="EFA Études · enquêtes, simulateur et données">
+<meta property="og:description" content="L’argent de la tontine en chiffres, un simulateur pour savoir quelle part garder, la BRVM et l’actualité EFA.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+/* Terminal EFA : un univers sombre unique, assumé. Données en mono, titres en Big Shoulders. */
+:root{
+  --bg:#070C16; --panel:#0D1525; --panel2:#111B2F; --line:#1F2C45; --ink:#E8EDF5; --ink2:#A9B4C6; --mute:#7A879D;
+  --bleu:#6DB8F2; --bleu-d:#2188D6; --corail:#F0603F; --amber:#F2B84B; --creme:#F5EFE2;
+  --up:#3FCF8E; --down:#FF6B6B; --flat:#8C97AB;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Manrope",system-ui,Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,select,input{font:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Barre du haut */
+.top{position:sticky;top:0;z-index:20;background:rgba(7,12,22,.96);backdrop-filter:blur(8px)}
+.top .bar{display:flex;align-items:center;gap:16px;padding-block:10px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 12px var(--mono);letter-spacing:.12em;white-space:nowrap}
+.brand img{width:30px;height:30px}
+.brand b{color:var(--corail)}
+.go{background:var(--creme);color:#0B1220;border:0;font:800 14px var(--body);padding:0 18px;cursor:pointer;border-radius:6px}
+.go:hover{filter:brightness(1.08)}
+.back{font:600 12px var(--mono);color:var(--ink2);text-decoration:none;white-space:nowrap}
+.back:hover{color:var(--ink)}
+
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--flat)}
+
+
+/* En-tête d'onglet */
+.intro{padding-block:28px 18px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:end}
+.kick{font:600 11px var(--mono);letter-spacing:.2em;color:var(--corail);text-transform:uppercase;margin:0}
+h1{font:900 clamp(40px,6.4vw,78px)/.9 var(--disp);text-transform:uppercase;margin:8px 0 12px;text-wrap:balance}
+.intro p{color:var(--ink2);max-width:60ch;margin:0}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.meta div{background:var(--panel);padding:12px 14px;min-width:0}
+.meta small{display:block;font:600 10px var(--mono);letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.meta b{font:600 15px var(--mono)}
+@media (max-width:860px){.intro{grid-template-columns:none}}
+
+/* Barre de filtres */
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);margin-bottom:14px}
+.filters label{display:grid;gap:5px;font:700 12px var(--body);color:var(--ink2)}
+.filters select,.filters input{background:#050910;border:1px solid var(--line);color:var(--ink);border-radius:5px;padding:8px 10px;font:500 13px var(--mono);min-width:140px}
+.filters input{min-width:170px}
+.filters .go{height:38px}
+.filters .reset{background:transparent;border:1px solid var(--line);color:var(--ink2);height:36px;border-radius:5px;padding:0 12px;font:600 12px var(--mono);cursor:pointer}
+.filters .count{font:500 12px var(--mono);color:var(--ink2);margin-left:auto;align-self:center}
+@media (max-width:620px){.filters label{flex:1 1 45%}.filters select,.filters input{min-width:0;width:100%}.filters .count{margin-left:0;flex-basis:100%}}
+
+/* Grille d'écrans */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;padding-bottom:20px}
+.scr{grid-column:span 6;background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;scroll-margin-top:calc(var(--hh,130px) + 12px)}
+.scr.w4{grid-column:span 4}.scr.w8{grid-column:span 8}.scr.w12{grid-column:span 12}
+@media (max-width:980px){.scr,.scr.w4,.scr.w8{grid-column:span 12}}
+.scr.hit{box-shadow:0 0 0 2px var(--amber)}
+.bar-h{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--panel2);border-radius:10px 10px 0 0}
+.code{font:600 10px var(--mono);color:var(--mute);border:1px solid var(--line);padding:2px 6px;border-radius:4px;letter-spacing:.06em}
+.bar-h h2{font:800 14px var(--body);margin:0;color:var(--ink);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acts{display:flex;gap:6px}
+.acts button{background:transparent;border:1px solid var(--line);color:var(--ink2);font:600 11px var(--mono);padding:4px 8px;border-radius:4px;cursor:pointer}
+.acts button:hover{color:var(--ink);border-color:var(--mute)}
+@media (max-width:520px){.bar-h{flex-wrap:wrap}.bar-h h2{white-space:normal;flex-basis:calc(100% - 60px)}.acts{margin-left:auto}}
+.body{padding:16px 14px 12px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;flex:1;align-content:start}
+.q{font-size:14px;color:var(--ink2);margin:0}
+.q b{color:var(--ink)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;padding:8px 12px;border-top:1px solid var(--line);font:500 11px var(--mono);color:var(--mute)}
+.empty{font:500 13px var(--mono);color:var(--mute);margin:0}
+
+/* Chiffre héros */
+.hero-n{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.hero-n b{font:900 clamp(54px,8vw,96px)/.85 var(--disp);color:var(--ink)}
+.hero-n.sm b{font-size:clamp(40px,4.6vw,60px)}
+.hero-n span{color:var(--ink2);max-width:30ch}
+.split{display:flex;height:14px;border-radius:4px;overflow:hidden;gap:2px}
+.split i{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 12px var(--mono);color:var(--ink2)}
+.leg span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;background:var(--c)}
+
+/* Barres horizontales : une série, une teinte, la valeur clé en corail */
+.bars{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+.bars li{display:grid;grid-template-columns:minmax(100px,38%) minmax(0,1fr) 66px;align-items:center;gap:10px;font-size:13px;border-radius:4px;padding:2px 0}
+.bars li:hover,.bars li:focus{background:rgba(255,255,255,.03);outline:none}
+.bars .lab{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .trk{height:12px;background:#0A1120;border-radius:0 4px 4px 0;position:relative}
+.bars .fil{position:absolute;inset:0 auto 0 0;background:var(--bleu-d);border-radius:0 4px 4px 0;transform-origin:left;animation:grow .8s cubic-bezier(.2,.7,.2,1) both}
+.bars li.key .fil{background:var(--corail)}
+.bars li.key .lab,.bars li.key .val{color:var(--ink);font-weight:700}
+.bars .val{font:600 13px var(--mono);text-align:right;color:var(--ink);white-space:nowrap}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* Barres de variation autour de zéro (hausse à droite, baisse à gauche) */
+.div{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+.div li{display:grid;grid-template-columns:minmax(100px,36%) minmax(0,1fr) 84px;align-items:center;gap:10px;font-size:13px}
+.div .lab{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.div .trk{height:12px;position:relative;background:linear-gradient(90deg,transparent calc(50% - 1px),var(--mute) calc(50% - 1px),var(--mute) calc(50% + 1px),transparent calc(50% + 1px))}
+.div .fil{position:absolute;top:0;bottom:0;border-radius:4px}
+.div .fil.p{left:50%;background:var(--up);border-radius:0 4px 4px 0}
+.div .fil.n{right:50%;background:var(--down);border-radius:4px 0 0 4px}
+.div .val{font:600 13px var(--mono);text-align:right;white-space:nowrap}
+
+/* Comparaison */
+.cmp{display:grid;gap:14px}
+.cmp .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:end}
+.cmp .row b{font:900 40px/.9 var(--disp)}
+.cmp .row small{font:500 11px var(--mono);color:var(--mute)}
+.cmp .row .trk{grid-column:1/-1;height:16px;background:#0A1120;border-radius:0 4px 4px 0;position:relative}
+.cmp .row .fil{position:absolute;inset:0 auto 0 0;border-radius:0 4px 4px 0;background:var(--bleu-d);animation:grow 1s cubic-bezier(.2,.7,.2,1) both}
+.cmp .row.key .fil{background:var(--corail)}
+.warn{font:500 12px var(--mono);color:var(--amber);border-left:2px solid var(--amber);padding-left:10px;margin:0}
+
+/* Tableaux */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font:500 12px var(--mono)}
+th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mute);font-weight:600;position:sticky;top:0;background:var(--panel)}
+td.r,th.r{text-align:right}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+.tbl-scroll{max-height:460px;overflow:auto}
+
+/* Simulateur : la spirale EFA dans le terminal */
+.simu{margin-bottom:14px}
+.simu .sim-f{margin:12px 12px 0;background:#0A1222}
+.sim-viz{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px;align-items:stretch}
+.sim-stage{position:relative;height:380px;border-radius:8px;overflow:hidden;background:radial-gradient(120% 80% at 50% 55%,#1B2D4B 0%,#0E1828 50%,#060A13 100%);touch-action:pan-y;cursor:grab}
+.sim-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.sim-stage .lbl{position:absolute;left:10px;top:10px;font:600 11px var(--mono);color:var(--ink2);letter-spacing:.06em}
+.sim-stage .lbl b{color:var(--bleu)}
+.sim-stage .drag{position:absolute;right:10px;bottom:10px;font:500 11px var(--mono);color:var(--mute)}
+.sim-out{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;align-content:start}
+.sim-out div{background:var(--panel2);padding:12px 14px;display:grid;gap:2px}
+.sim-out small{font:600 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.sim-out b{font:600 22px var(--mono);color:var(--ink)}
+.sim-out .key b{font:900 clamp(40px,5vw,60px)/.9 var(--disp);color:var(--corail)}
+.sim-out p{margin:0;font-size:12px;color:var(--ink2)}
+@media (max-width:860px){.sim-viz{grid-template-columns:none}.sim-stage{height:300px}}
+/* Info-bulle et notification */
+.tip{position:fixed;z-index:50;pointer-events:none;background:#050910;border:1px solid var(--mute);border-radius:6px;padding:8px 10px;font:500 12px var(--mono);color:var(--ink);max-width:260px;opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}
+.tip b{display:block;font-size:16px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--amber);color:#1A1205;font:700 12px var(--mono);padding:10px 14px;border-radius:6px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+
+/* Méthode : un bandeau compact en bas */
+.method{margin-block:6px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.method summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px;flex-wrap:wrap}
+.method summary::-webkit-details-marker{display:none}
+.method summary .t{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.method summary .s{color:var(--mute);font-size:13px;flex:1;min-width:200px}
+.method summary .b{font:700 12px var(--mono);background:var(--creme);color:#0B1220;padding:7px 12px;border-radius:5px}
+.method[open] summary .b::after{content:" ×"}
+.method .in{padding:4px 18px 22px;border-top:1px solid var(--line);color:var(--ink2);max-width:860px}
+.method h3{font:900 28px/.95 var(--disp);text-transform:uppercase;color:var(--ink);margin:22px 0 8px}
+.method li{margin-bottom:6px}
+.method strong{color:var(--ink)}
+.method .note{border-left:3px solid var(--bleu);padding-left:12px}
+footer{padding-block:18px 36px;font:500 12px var(--mono);color:var(--mute);display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* Barre EFA · BRVM (bleu nuit, sous le menu) */
+.tk{--tk-bg:#0E1A30;--tk-ink:#E8EDF5;--tk-ink2:#AEB9CC;--tk-line:rgba(255,255,255,.1);background:var(--tk-bg);color:var(--tk-ink);border-bottom:1px solid var(--tk-line);font:600 13px/1.3 "Manrope",system-ui,Arial,sans-serif;transition:opacity .3s,transform .3s}
+.tk.off{display:none}
+.tk-in{display:flex;align-items:center;gap:8px;height:34px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tk-view{flex:1;min-width:0;overflow:hidden;white-space:nowrap;touch-action:pan-y}
+.tk-run{display:inline-flex;gap:34px;align-items:center;animation:tkrun var(--dur,60s) linear infinite}
+.tk.paused .tk-run,.tk:focus-within .tk-run{animation-play-state:paused}
+@media (hover:hover){.tk:hover .tk-run{animation-play-state:paused}}
+@keyframes tkrun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tk-it{display:inline-flex;align-items:center;gap:8px;color:var(--tk-ink2);text-decoration:none}
+.tk-it:hover .tk-t{color:var(--tk-ink);text-decoration:underline}
+.tk-it b{color:var(--tk-ink)}
+.tk-it em{font-style:normal}
+.tk-it .up{color:#3FCF8E}.tk-it .down{color:#FF7B7B}.tk-it .flat{color:#9AA5B8}
+.tk-cat{font:800 10px/1 "Manrope",system-ui,sans-serif;letter-spacing:.12em;padding:4px 6px;border-radius:4px}
+.tk-cat.e{background:#6DB8F2;color:#06182B}
+.tk-cat.b{background:#F2B84B;color:#1A1205}
+.tk-btn,.tk-pause{background:transparent;border:1px solid var(--tk-line);color:var(--tk-ink);border-radius:6px;min-width:30px;height:26px;font:700 13px/1 system-ui,sans-serif;cursor:pointer}
+.tk-btn,.tk-n{display:none}
+.tk-n{font:600 11px/1 system-ui,sans-serif;color:var(--tk-ink2);min-width:3.2em;text-align:center}
+.tk.one .tk-btn,.tk.one .tk-n{display:inline-block}
+.tk.one .tk-btn,.tk.one .tk-pause{min-width:40px;height:40px;font-size:15px}
+.tk.one .tk-in{height:auto;min-height:52px;padding-block:6px;gap:6px}
+.tk.one .tk-view{white-space:normal}
+.tk.one .tk-run{display:block;animation:none}
+.tk.one .tk-it{display:flex;align-items:flex-start}
+.tk.one .tk-t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.tk-run{animation:none}}
+
+/* Rubriques : onglets explicites sur ordinateur, menu déroulant sur mobile */
+.rubs{display:flex;gap:4px;margin-left:auto}
+.rubs a{font:700 14px var(--body);text-decoration:none;color:var(--ink2);padding:9px 14px;border-radius:8px;white-space:nowrap}
+.rubs a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.rubs a[aria-current="page"]{background:var(--creme);color:#0B1220}
+.rub-sel{display:none}
+.pick{display:grid;gap:4px;font:700 12px var(--body);color:var(--ink2)}
+.pick select{appearance:none;-webkit-appearance:none;background:#050910 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F5EFE2' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 12px center;border:1px solid var(--mute);color:var(--ink);border-radius:8px;padding:11px 36px 11px 12px;font:800 15px var(--body);width:100%}
+@media (max-width:760px){.rubs{display:none}.rub-sel{display:grid;order:3;flex-basis:100%}.top .bar{flex-wrap:wrap}.back{margin-left:auto}}
+
+/* Liste des études */
+.studies{padding-block:22px 0;display:grid;gap:10px}
+.studies h2{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0}
+.st-list{display:flex;gap:10px;flex-wrap:wrap}
+.st-card{display:grid;gap:3px;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;color:var(--ink);cursor:pointer;min-width:240px}
+.st-card[aria-current="true"]{border-color:var(--creme);box-shadow:inset 3px 0 0 var(--corail)}
+.st-card b{font:800 16px var(--body)}
+.st-card span{font-size:13px;color:var(--ink2)}
+.st-card em{font-style:normal;font-size:12px;font-weight:800;color:var(--amber)}
+.st-sel{display:none}
+.st-nav{display:flex;justify-content:space-between;gap:10px;padding-block:6px 20px}
+.st-nav button{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:10px 14px;font:700 14px var(--body);cursor:pointer}
+@media (max-width:760px){.st-list{display:none}.st-sel{display:grid}}
+
+/* État de remplacement quand une source de données manque */
+.miss{grid-column:span 12;background:var(--panel);border:1px dashed var(--mute);border-radius:10px;padding:22px;display:grid;gap:8px}
+.miss b{font:800 18px var(--body)}
+.miss p{margin:0;color:var(--ink2)}
+
+/* Simulateur guidé */
+.sim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;padding-bottom:24px;align-items:start}
+@media (max-width:900px){.sim{grid-template-columns:none}}
+.sim-panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:16px;min-width:0}
+.sim-panel h2{font:900 clamp(30px,3.6vw,44px)/.95 var(--disp);text-transform:uppercase;margin:0;text-wrap:balance}
+.sim-panel .lead{color:var(--ink2);margin:0}
+.choices{display:grid;gap:10px}
+.big{display:block;width:100%;text-align:left;border:0;border-radius:10px;padding:16px 18px;cursor:pointer;font:800 17px var(--body)}
+.big small{display:block;font-weight:600;font-size:13px;margin-top:3px;opacity:.8}
+.big.a{background:var(--creme);color:#0B1220}
+.big.b{background:var(--bleu-d);color:#fff}
+.step-n{font:700 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--corail)}
+.qs{display:grid;gap:8px}
+.qs label{font:800 20px/1.25 var(--body)}
+.qs .help{font-size:14px;color:var(--ink2);margin:0}
+.amount{display:flex;align-items:center;background:#050910;border:1px solid var(--mute);border-radius:10px;overflow:hidden}
+.amount input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink);font:700 24px var(--mono);padding:12px 14px}
+.amount span{font:700 14px var(--body);color:var(--ink2);padding-right:14px}
+.amount:focus-within{border-color:var(--bleu)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:8px 13px;font:700 13px var(--body);cursor:pointer}
+.chips button:hover{border-color:var(--mute)}
+.chips button[aria-pressed="true"]{background:var(--creme);color:#0B1220;border-color:var(--creme)}
+.live{font:700 14px var(--body);color:var(--bleu);margin:0;min-height:1.4em}
+.err{font:700 13px var(--body);color:var(--corail);margin:0;min-height:1.2em}
+.row-b{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:8px;padding:12px 18px;font:800 15px var(--body);cursor:pointer}
+.btn.p{background:var(--corail);color:#fff}
+.btn.s{background:transparent;color:var(--ink);border:1px solid var(--mute)}
+.res-big{font:900 clamp(48px,7vw,80px)/.9 var(--disp);color:var(--ink)}
+.res-big small{display:block;font:700 15px var(--body);color:var(--ink2);margin-top:8px}
+.res-txt{font-size:16px;margin:0}
+.res-txt b{color:var(--bleu)}
+.koffi{font-size:14px;color:var(--ink2);border-left:3px solid var(--amber);padding-left:10px;margin:0}
+.share3{display:grid;gap:8px}
+.share3 .bar{display:flex;height:18px;border-radius:5px;overflow:hidden;gap:2px;background:#050910}
+.share3 .bar i{display:block;height:100%}
+.share3 ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:14px}
+.share3 li{display:flex;justify-content:space-between;gap:10px}
+.share3 li span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;background:var(--c)}
+.share3 li b{font-family:var(--mono)}
+.note{font-size:13px;color:var(--ink2);margin:0;border-left:3px solid var(--bleu);padding-left:10px}
+.sim-x summary{cursor:pointer;font:700 14px var(--body);color:var(--ink2)}
+.sim-x .seg{margin-top:10px}
+.seg{display:inline-flex;padding:4px;border-radius:10px;background:rgba(255,255,255,.08)}
+.seg button{border:0;background:transparent;color:var(--ink);font:700 13px var(--body);padding:8px 14px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--creme);color:#0B1220}
+.sim-stage{position:relative;height:440px;border-radius:12px;overflow:hidden;background:radial-gradient(90% 70% at 50% 52%,#14223D 0%,#0B1220 60%,#070C16 100%);touch-action:pan-y;border:1px solid var(--line)}
+.sim-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.sim-stage .lbl{position:absolute;left:14px;right:14px;top:12px;font:700 14px var(--body);color:var(--ink)}
+.sim-stage .lbl b{color:var(--bleu)}
+.sim-stage .cap{position:absolute;left:14px;right:14px;bottom:12px;font-size:13px;color:var(--ink2)}
+@media (max-width:900px){.sim-stage{height:320px}}
+.sim .tbl table{margin-top:4px}
+
+.sim.scr{background:none;border:0;border-radius:0;display:grid}
+#sim-res,#sim-intro{display:grid;gap:14px}
+#sim-res p,#sim-intro p,#sim-intro h2{margin:0}
+.pick.rub-sel,.pick.st-sel{display:none}
+@media (max-width:760px){.pick.rub-sel,.pick.st-sel{display:grid}}
+/* Méthode, en rubrique */
+.mtxt{max-width:860px;padding-block:6px 30px;color:var(--ink2)}
+.mtxt h3{font:900 28px/.95 var(--disp);text-transform:uppercase;color:var(--ink);margin:26px 0 8px}
+.mtxt li{margin-bottom:6px}
+.mtxt strong{color:var(--ink)}
+.mtxt .note{border-left:3px solid var(--bleu);padding-left:12px}
+
+/* Mission EFA : visible dans chaque rubrique */
+.mission-l{margin:0 auto;padding-block:14px 0;font:700 14px/1.45 var(--body);color:var(--ink)}
+.mission-l .mc,.mission-f .mc{color:var(--ink2);text-decoration:underline dotted;text-underline-offset:3px}
+.mission-l .ms,.mission-f .ms{color:var(--bleu)}
+.mission-f{flex-basis:100%;font:700 13px/1.45 var(--body);color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="logo-efa.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES</b></span></a>
+    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#brvm" data-tab="brvm">BRVM</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#methode" data-tab="methode">Méthode</a></nav>
+    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="simulateurs">Simulateurs</option><option value="brvm">BRVM</option><option value="actualites">Actualités</option><option value="methode">Méthode</option></select></label>
+    <a class="back" href="./">← Le site</a>
+  </div>
+  <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
+</header>
+
+<main id="enquete">
+  <p class="wrap mission-l">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  <!-- RUBRIQUE ÉTUDES -->
+  <section class="tab" id="tab-etudes" data-tab="etudes">
+    <div class="wrap studies">
+      <h2 id="st-count">Études publiées</h2>
+      <div class="st-list" id="st-list"></div>
+      <label class="pick st-sel">Choisir une étude<select id="st-sel"></select></label>
+    </div>
+    <div class="wrap intro">
+      <div>
+        <p class="kick">Étude n° 1 · Enquête exploratoire</p>
+        <h1>L’argent de la tontine</h1>
+        <p>Ce que devient l’argent du tour, mesuré auprès de celles et ceux qui cotisent. Chaque écran se partage avec sa source et son nombre de répondants.</p>
+      </div>
+      <div class="meta">
+        <div><small>Répondants</small><b>251</b></div>
+        <div><small>Participants</small><b>160</b></div>
+        <div><small>Données arrêtées</small><b>12 oct. 2026</b></div>
+        <div><small>Statut</small><b style="color:var(--amber)">Provisoire</b></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <form class="filters" data-for="etudes">
+        <label>Thème<select name="theme"><option value="">Tous les écrans</option><option value="fonc">Fonctionnement</option><option value="usage">Usage et résultat</option><option value="motiv">Motivations</option><option value="profil">Profil</option></select></label>
+        <label>Tri<select name="tri"><option value="">Ordre de l’enquête</option><option value="desc">Du plus fréquent au moins fréquent</option></select></label>
+        <label>Seuil<select name="seuil"><option value="0">Toutes les réponses</option><option value="5">5 % et plus</option><option value="10">10 % et plus</option><option value="20">20 % et plus</option></select></label>
+        <label>Affichage<select name="vue"><option value="">Graphiques</option><option value="table">Tableaux</option></select></label>
+        <button class="go" type="submit">Appliquer</button>
+        <button class="reset" type="reset">Effacer</button>
+        <span class="count" aria-live="polite"></span>
+      </form>
+    </div>
+    <div class="wrap grid" id="grid-tontine"></div>
+    <div class="wrap st-nav" id="st-nav" hidden><button type="button" id="st-prev">← Étude précédente</button><button type="button" id="st-next">Étude suivante →</button></div>
+  </section>
+
+
+  <!-- RUBRIQUE SIMULATEURS -->
+  <section class="tab" id="tab-simulateurs" data-tab="simulateurs" hidden>
+    <div class="wrap intro"><div><p class="kick">Simulateur · Grosses sommes</p><h1>Du cercle à la spirale</h1><p>Trois questions, un résultat en FCFA, à expliquer avec vos propres mots. Le calcul se fait sur votre téléphone&nbsp;: rien n’est envoyé ni enregistré.</p></div></div>
+    <div class="wrap sim scr" id="simu" data-tab="simulateurs">
+      <div class="sim-panel" id="sim-panel">
+
+        <div id="sim-intro">
+          <h2>Quand une grosse somme arrive, quelle part pouvez-vous garder&nbsp;?</h2>
+          <p class="lead">Une tontine, une prime, un 13<sup>e</sup> mois, la vente d’une récolte&nbsp;: le calcul est le même.</p>
+          <p class="lead" style="font-weight:700">Choisissez comment commencer.</p>
+          <div class="choices">
+            <button type="button" class="big a" id="sim-koffi">Voir l’exemple de Koffi<small>Une démonstration déjà remplie, en 10 secondes</small></button>
+            <button type="button" class="big b" id="sim-mine">Essayer avec mes chiffres<small>Trois questions simples, une à la fois</small></button>
+          </div>
+        </div>
+
+        <form id="sim-wiz" hidden novalidate>
+          <p class="step-n" id="wiz-n">Question 1 sur 3</p>
+          <div class="qs" data-q="1">
+            <p class="help" style="font-weight:700;color:var(--ink)">D’où vient cette somme&nbsp;?</p>
+            <div class="chips" id="src-chips" role="group" aria-label="Origine de la somme"><button type="button" data-s="tontine" aria-pressed="true">Tontine</button><button type="button" data-s="prime" aria-pressed="false">Prime, 13<sup>e</sup> mois</button><button type="button" data-s="vente" aria-pressed="false">Vente, récolte</button><button type="button" data-s="autre" aria-pressed="false">Autre</button></div>
+            <label for="in-m">Combien recevez-vous d’un coup&nbsp;?</label>
+            <p class="help" id="help-m">Le montant total que vous touchez quand c’est votre tour, pas votre cotisation.</p>
+            <div class="amount"><input id="in-m" inputmode="numeric" autocomplete="off" placeholder="300 000"><span>FCFA</span></div>
+            <div class="chips" data-fill="in-m"><button type="button" data-v="100000">100 000</button><button type="button" data-v="250000">250 000</button><button type="button" data-v="500000">500 000</button><button type="button" data-v="1000000">1 000 000</button></div>
+          </div>
+          <div class="qs" data-q="2" hidden>
+            <label for="in-k">Combien souhaitez-vous mettre de côté à chaque fois&nbsp;?</label>
+            <p class="help">La part que vous gardez et à laquelle vous ne touchez pas.</p>
+            <div class="amount"><input id="in-k" inputmode="numeric" autocomplete="off" placeholder="30 000"><span>FCFA</span></div>
+            <p class="live" id="k-pct" aria-live="polite"></p>
+            <div class="chips" id="k-chips"><button type="button" data-p=".05">5 %</button><button type="button" data-p=".1">10 %</button><button type="button" data-p=".2">20 %</button><button type="button" data-p="0">Rien</button></div>
+          </div>
+          <div class="qs" data-q="3" hidden>
+            <label for="in-n">Combien de fois recevrez-vous cette somme&nbsp;?</label>
+            <p class="help" id="help-n">Dans une tontine rotative, vous recevez la cagnotte une fois par cycle. Exemple&nbsp;: 10 membres qui cotisent chaque mois, vous recevez une fois tous les 10 mois, soit 6 fois en 5 ans.</p>
+            <div class="amount"><input id="in-n" inputmode="numeric" autocomplete="off" placeholder="6"><span>fois</span></div>
+            <div class="chips" data-fill="in-n"><button type="button" data-v="3">3 fois</button><button type="button" data-v="6">6 fois</button><button type="button" data-v="12">12 fois</button></div>
+          </div>
+          <p class="err" id="wiz-err" role="alert"></p>
+          <div class="row-b"><button type="button" class="btn s" id="wiz-prev">Précédent</button><button type="submit" class="btn p" id="wiz-next">Suivant</button></div>
+        </form>
+
+        <div id="sim-res" hidden>
+          <p class="koffi" id="res-koffi" hidden>Exemple de Koffi, personnage EFA, montants illustratifs&nbsp;: sa levée de tontine est de 250&nbsp;000&nbsp;FCFA. Il décide d’en garder 50&nbsp;000 à chaque fois, sur 3 levées.</p>
+          <p class="res-big" id="res-big">0<small id="res-big-l">FCFA mis de côté</small></p>
+          <p class="res-txt" id="res-txt"></p>
+          <div class="share3" id="res-split"></div>
+          <p class="note">Cette somme vient uniquement de ce qui a été mis de côté&nbsp;: aucun placement ni intérêt n’est ajouté. Le reste n’est pas perdu pour autant&nbsp;: il couvre vos besoins et peut financer un équipement, des études ou une activité.</p>
+          <div class="row-b">
+            <button type="button" class="btn p" id="res-replay">Rejouer</button>
+            <button type="button" class="btn s" id="res-edit">Modifier mes chiffres</button>
+            <button type="button" class="btn s" id="res-reset">Recommencer</button>
+          </div>
+          <div class="row-b">
+            <button type="button" class="btn s" data-act="table" aria-expanded="false">Voir le tableau</button>
+            <button type="button" class="btn s" data-act="share">Partager</button>
+          </div>
+          <div class="tbl" hidden><div class="tw tbl-scroll"><table id="sim-t"></table></div></div>
+          <details class="sim-x"><summary>Explorer la visualisation</summary>
+            <div class="seg" id="sim-view" role="group" aria-label="Angle de vue"><button type="button" data-v="1.45" aria-pressed="true">Vue du dessus</button><button type="button" data-v=".9" aria-pressed="false">¾</button><button type="button" data-v=".45" aria-pressed="false">Profil</button></div>
+            <p class="note" style="margin-top:10px">Facultatif&nbsp;: vous pouvez aussi faire tourner la spirale en la faisant glisser.</p>
+          </details>
+        </div>
+      </div>
+      <div class="viz sim-stage" id="sim-stage"><canvas id="sim-cv" aria-hidden="true"></canvas><p class="lbl" id="sim-lbl">Sans part gardée, l’argent fait le tour et repart.</p><p class="cap" id="sim-cap">Le point orange, c’est la somme que vous recevez. Les points bleus, ce que vous gardez.</p></div>
+      <div class="foot" hidden><span>Calcul EFA · exemple illustratif · pas un conseil de placement</span></div>
+    </div>
+  </section>
+
+  <!-- RUBRIQUE BRVM -->
+  <section class="tab" id="tab-brvm" data-tab="brvm" hidden>
+    <div class="wrap intro">
+      <div>
+        <p class="kick">Marché · Bourse régionale des valeurs mobilières</p>
+        <h1>La BRVM en une séance</h1>
+        <p>Les cours de clôture de la dernière séance, recopiés après la séance, pour comprendre ce qui bouge sur la Bourse commune aux huit pays de l’UEMOA. Ce ne sont pas des cours en direct, ni un conseil d’investissement.</p>
+      </div>
+      <div class="meta" id="brvm-meta"></div>
+    </div>
+    <div class="wrap">
+      <form class="filters" data-for="brvm">
+        <label>Pays<select name="pays" id="f-pays"><option value="">Tous les pays</option></select></label>
+        <label>Sens<select name="sens"><option value="">Toutes les actions</option><option value="up">En hausse</option><option value="down">En baisse</option><option value="flat">Stables</option></select></label>
+        <label>Tri<select name="tri"><option value="vd">Variation, plus forte hausse</option><option value="va">Variation, plus forte baisse</option><option value="px">Cours, du plus élevé</option><option value="nm">Nom, de A à Z</option></select></label>
+        <label>Recherche<input name="q" type="search" placeholder="Sonatel, ORAC…"></label>
+        <button class="go" type="submit">Appliquer</button>
+        <button class="reset" type="reset">Effacer</button>
+        <span class="count" aria-live="polite"></span>
+      </form>
+    </div>
+    <div class="wrap grid" id="grid-brvm"></div>
+  </section>
+
+  <!-- RUBRIQUE ACTUALITÉS -->
+  <section class="tab" id="tab-actualites" data-tab="actualites" hidden>
+    <div class="wrap intro">
+      <div>
+        <p class="kick">EFA News · Chiffres vérifiés de la semaine</p>
+        <h1>L’actualité en chiffres</h1>
+        <p>Les chiffres économiques retenus par la rédaction EFA, avec leur source et ce qu’ils changent pour un ménage. Chaque écran se partage.</p>
+      </div>
+      <div class="meta" id="veille-meta"></div>
+    </div>
+    <div class="wrap">
+      <form class="filters" data-for="actualites">
+        <label>Pays<select name="pays" id="f-vpays"><option value="">Tous les pays</option></select></label>
+        <label>Rubrique<select name="rub" id="f-vrub"><option value="">Toutes les rubriques</option></select></label>
+        <button class="go" type="submit">Appliquer</button>
+        <button class="reset" type="reset">Effacer</button>
+        <span class="count" aria-live="polite"></span>
+      </form>
+    </div>
+    <div class="wrap grid" id="grid-veille"></div>
+  </section>
+
+  <!-- RUBRIQUE MÉTHODE -->
+  <section class="tab" id="tab-methode" data-tab="methode" hidden>
+    <div class="wrap intro"><div><p class="kick">Notre méthode</p><h1>Comment nous travaillons</h1><p>Sources, collecte, limites de l’échantillon, corrections et usage des personnages.</p></div></div>
+    <div class="wrap mtxt">
+        <h3>Comment nous produisons</h3>
+        <ul>
+          <li><strong>Des sources.</strong> Chiffres publics (banques centrales, instituts statistiques, Banque mondiale, BRVM), presse économique et nos propres enquêtes. La source figure sur chaque écran.</li>
+          <li><strong>Une vérification humaine.</strong> Nous utilisons l’IA pour produire plus vite&nbsp;; chaque contenu est relu et validé par l’équipe et par Élysée Johnson avant publication.</li>
+          <li><strong>Des corrections visibles.</strong> Une erreur signalée est corrigée, et la correction est indiquée. Écrivez-nous&nbsp;: newsletter@efa.africa.</li>
+          <li><strong>Des personnages créés.</strong> Koffi, Tantie Affoué et Tonton Bamba sont des personnages inventés par EFA, illustrés avec l’aide d’outils d’IA. Ils représentent des situations rencontrées dans nos enquêtes, pas des personnes réelles.</li>
+          <li><strong>Pas de conseil de placement.</strong> EFA fait de l’éducation financière. Nous ne vendons aucun produit et ne recommandons aucun placement. Les cours de la BRVM sont donnés à titre d’information.</li>
+        </ul>
+        <h3>L’enquête « L’argent de la tontine »</h3>
+        <p>251 personnes interrogées, dont 160 participent ou ont participé à une tontine. 247 répondants vivent en Côte d’Ivoire. Collecte sur le terrain par les enquêteurs EFA (200 réponses, notamment à Cocody, Bingerville et dans les zones Sodeci et Filtisac) et en ligne (21 réponses). Données arrêtées le 12 octobre 2026.</p>
+        <p class="note"><strong>Résultats provisoires, échantillon non représentatif.</strong> Ces chiffres décrivent les personnes interrogées, pas toute la population. 79 % des participants sont des femmes et près de la moitié ont entre 25 et 34 ans. Les écarts entre groupes sont des différences observées&nbsp;: ils ne prouvent pas une cause.</p>
+        <p><strong>« Quelque chose de durable »</strong>&nbsp;: un bien possédé, une activité productive, de l’argent encore disponible, ou autre chose cité par le répondant.</p>
+        <p>Prochaine étape&nbsp;: dépasser 300 réponses, puis organiser la collecte par quotas de zones et de régions pour pouvoir généraliser.</p>
+        <h3>Les données de marché</h3>
+        <p>Cours de clôture et indices publiés par la BRVM sur brvm.org, recopiés après la séance. La date de la séance figure sur chaque écran. Les variations sont celles du jour, par rapport à la séance précédente.</p>
+        <h3>Le simulateur</h3>
+        <p>Le simulateur additionne ce que vous gardez à chaque rentrée d’argent (tontine, prime, 13<sup>e</sup> mois, vente…). Il ne suppose aucun placement ni intérêt&nbsp;: la somme obtenue vient uniquement de ce que vous avez mis de côté. Le calcul se fait sur votre appareil&nbsp;; vos chiffres ne sont ni envoyés ni enregistrés.</p>
+        <h3>Photos</h3>
+        <p>Les photographies du site proviennent d’<a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> et sont utilisées sous la licence Unsplash. Les personnes photographiées n’ont pas de lien avec EFA.</p>
+      </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span class="mission-f">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</span>
+  <span>Éducation Financière Afrique © 2026</span>
+  <a href="./">Accueil</a>
+  <a href="confidentialite.html">Vos données</a>
+  <a href="diagnostic.html?src=etudes">Faire mon diagnostic</a>
+  <a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a>
+  <span>Mis à jour le 17 octobre 2026</span>
+</footer>
+
+<div class="tip" id="tip" role="status"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="donnees.js"></script>
+<script>
+/* Barre EFA · BRVM : deux catégories, chaque information cliquable.
+   Ordinateur : défilement lent, bouton pause. Mobile : une information à la fois, flèches et balayage. */
+function efaTickerItems(D){
+  var it=[
+    {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
+    {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
+    {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
+    {c:'EFA',t:'Simulateur : quand une grosse somme arrive, quelle part garder ?',h:'methode.html#simulateurs'},
+    {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
+    {c:'EFA',t:'Guide « Construire sa stabilité financière » : bientôt disponible',h:'./#guide'}
+  ];
+  var B=D&&D.brvm, f=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});};
+  var v=function(x){return '<em class="'+(x>0?'up':x<0?'down':'flat')+'">'+(x>0?'▲ +':x<0?'▼ −':'■ ')+f(Math.abs(x),2)+' %</em>';};
+  if(B&&B.indices&&B.indices.length){
+    B.indices.slice(0,3).forEach(function(i,k){it.splice(1+k*2,0,{c:'BRVM',t:i[0]+' <b>'+f(i[2],2)+'</b> '+v(i[3])+' · dernière séance '+B.seance,h:'methode.html#idx'});});
+    var a=(B.actions||[]).slice().sort(function(x,y){return y[4]-x[4];});
+    if(a.length){it.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4])+' · séance du '+B.seance,h:'methode.html#movr'});
+      it.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4])+' · séance du '+B.seance,h:'methode.html#movr'});}
+  }else it.splice(1,0,{c:'BRVM',t:'Cours de la dernière séance momentanément indisponibles · voir brvm.org',h:'https://www.brvm.org/fr/indices'});
+  if(D&&D.veille) D.veille.forEach(function(x){it.push({c:'EFA',t:'Actualité · '+x.pays+' : '+x.chiffre+' '+x.legende,h:'methode.html#'+x.code.toLowerCase()});});
+  return it;
+}
+function EFATicker(root,items){
+  if(!root||!items||!items.length) return {hide:function(){}};
+  var view=root.querySelector('.tk-view'), run=root.querySelector('.tk-run'), pb=root.querySelector('.tk-pause'),
+      prev=root.querySelector('.tk-prev'), next=root.querySelector('.tk-next'), cnt=root.querySelector('.tk-n'),
+      narrow=matchMedia('(max-width:720px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)'),
+      i=0, timer=null, paused=false, hidden=false, busy=false, x0=null, swiped=false;
+  function one(){return narrow.matches||reduced.matches;}
+  function html(x){var ext=/^https?:/.test(x.h);return '<a class="tk-it" href="'+x.h+'"'+(ext?' target="_blank" rel="noopener"':'')+'><span class="tk-cat '+(x.c==='BRVM'?'b':'e')+'">'+x.c+'</span><span class="tk-t">'+x.t+'</span></a>';}
+  // Mobile : une information toutes les 8 secondes, jamais pendant une lecture, un toucher ou une pause demandée
+  function plan(){clearTimeout(timer);if(one()&&!reduced.matches&&!paused&&!hidden&&!busy&&!document.hidden)timer=setTimeout(function(){go(1);},8000);}
+  function render(){
+    root.classList.toggle('one',one());
+    if(one()){run.style.animation='none';run.innerHTML=html(items[i]);cnt.textContent=(i+1)+'/'+items.length;}
+    else{var s=items.map(html).join('');run.innerHTML=s+s;run.style.animation='';run.style.setProperty('--dur',(items.length*7)+'s');}
+    plan();
+  }
+  function go(d){i=(i+d+items.length)%items.length;render();}
+  prev.addEventListener('click',function(){go(-1);});
+  next.addEventListener('click',function(){go(1);});
+  pb.addEventListener('click',function(){paused=!paused;root.classList.toggle('paused',paused);pb.setAttribute('aria-pressed',String(paused));
+    pb.setAttribute('aria-label',paused?'Reprendre le défilement':'Mettre en pause le défilement');pb.textContent=paused?'▶':'❚❚';plan();});
+  root.addEventListener('focusin',function(){busy=true;plan();});
+  root.addEventListener('focusout',function(e){busy=root.contains(e.relatedTarget);plan();});
+  view.addEventListener('pointerdown',function(e){x0=e.clientX;swiped=false;busy=true;plan();});
+  view.addEventListener('pointerup',function(e){busy=false;if(x0!==null&&one()&&Math.abs(e.clientX-x0)>40){swiped=true;go(e.clientX<x0?1:-1);}x0=null;plan();});
+  view.addEventListener('pointercancel',function(){x0=null;busy=false;plan();});
+  view.addEventListener('click',function(e){if(swiped)e.preventDefault();swiped=false;});
+  document.addEventListener('visibilitychange',plan);
+  [narrow,reduced].forEach(function(m){if(m.addEventListener)m.addEventListener('change',render);else m.addListener(render);});
+  render();
+  return {hide:function(h){h=!!h;if(h===hidden)return;hidden=h;root.classList.toggle('off',h);plan();}};
+}
+
+/* Chaque bloc démarre seul : une donnée manquante (donnees.js absent, réseau coupé) n'empêche jamais
+   les onglets, les études ni le simulateur de fonctionner. */
+var D=window.EFA_DATA||{}, B=(D.brvm&&D.brvm.actions&&D.brvm.actions.length)?D.brvm:null;
+var SITE='https://efa.africa/methode.html';
+function safe(name,fn){try{fn();}catch(e){if(window.console)console.warn('EFA · '+name+' :',e);}}
+function fr(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});}
+function pct(v){var s=(v>0?'+':v<0?'−':'')+fr(Math.abs(v),2)+' %';return s;}
+function cls(v){return v>0?'up':v<0?'down':'flat';}
+function arrow(v){return v>0?'▲':v<0?'▼':'■';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+
+/* ---------- Barre EFA · BRVM ---------- */
+var TK=null;
+safe('barre',function(){TK=EFATicker(document.getElementById('tk'),efaTickerItems(D));});
+
+/* ---------- Fabrique d'écrans ---------- */
+var REG={};          // code -> {tab, el, spec}
+var codes=[];
+function screen(tab,s,inner,table,foot){
+  var el=document.createElement('section');
+  el.className='scr '+(s.w||'');el.id=s.code.toLowerCase();el.dataset.tab=tab;
+  el.innerHTML='<div class="bar-h"><span class="code">'+s.code+'</span><h2>'+s.title+'</h2><div class="acts">'+(table?'<button type="button" data-act="table" aria-expanded="false">Tableau</button>':'')+'<button type="button" data-act="share">Partager</button></div></div>'+
+    '<div class="body"><div class="viz">'+inner+'</div>'+(table?'<div class="tbl" hidden><div class="tw"><table>'+table+'</table></div></div>':'')+'</div>'+
+    '<div class="foot">'+foot+'</div>';
+  el._s=s; REG[s.code]={tab:tab,el:el,s:s}; codes.push(s.code);
+  return el;
+}
+function barsHTML(data,unit,dec){
+  var max=Math.max.apply(null,data.map(function(d){return d[1];}))||1;
+  return '<ul class="bars">'+data.map(function(d,i){return '<li tabindex="0" class="'+(d[2]?'key':'')+'" data-tip="'+esc(d[0])+'|'+fr(d[1],d[1]%1?2:0)+' '+unit+'"><span class="lab">'+d[0]+'</span><span class="trk"><span class="fil" style="width:'+(d[1]/max*100)+'%;animation-delay:'+(i*.03)+'s"></span></span><span class="val">'+fr(d[1],dec!=null?dec:(d[1]%1?1:0))+(unit==='%'?' %':'')+'</span></li>';}).join('')+'</ul>';
+}
+function tableRows(head,rows,left){left=left||1;return '<thead><tr>'+head.map(function(h,i){return '<th'+(i>=left?' class="r"':'')+'>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td'+(i>=left?' class="r"':'')+'>'+c+'</td>';}).join('')+'</tr>';}).join('')+'</tbody>';}
+
+/* ---------- Onglet Tontine ---------- */
+var SRC_T='Enquête EFA « L’argent de la tontine » · 12/10/2026 · non représentatif';
+var T=[
+  {code:'TONT',w:'w4',theme:'fonc',title:'Réserve commune',kind:'hero',base:'participants',value:71,text:'des tontines redistribuent tout : rien n’est gardé en commun.',
+   split:[['Tout est redistribué',71,'var(--corail)'],['Autres cas',29,'#3A4A66']],share:'71 % des tontines de notre enquête redistribuent tout : rien n’est gardé en commun.'},
+  {code:'DURA',w:'w8',theme:'usage',title:'Ce qui reste du dernier tour',kind:'cmp',q:'<b>Reste-t-il quelque chose de durable</b> de votre dernier tour, selon l’usage principal&nbsp;?',
+   data:[['Le tour a surtout financé une activité',65,1,40],['Il a surtout payé la scolarité',33,0,15],['Il a surtout couvert les dépenses courantes',29,0,34]],
+   warn:'Différence observée entre répondants, pas une preuve de cause. Petits effectifs.',share:'Quand le tour finance une activité, 65 % en gardent quelque chose de durable. Quand il couvre les dépenses courantes : 29 %.'},
+  {code:'USAG',w:'w8',theme:'usage',title:'À quoi sert l’argent du tour',kind:'bars',n:159,q:'Usages du dernier tour. <b>Plusieurs réponses possibles</b>, donc le total dépasse 100 %.',
+   data:[['Dépenses courantes',42],['Activité ou commerce',38,1],['Soutien familial',27],['Autre',21],['Épargne conservée',15],['Scolarité',14],['Équipement professionnel',6],['Logement',4],['Santé',4],['Remboursement de dette',4],['Cérémonie',3],['Placement',3],['Terrain',1]],
+   share:'À quoi sert l’argent du tour ? Dépenses courantes 42 %, activité ou commerce 38 %, soutien familial 27 %. Épargne conservée : 15 %.'},
+  {code:'RSTE',w:'w4',theme:'usage',title:'Durable aujourd’hui ?',kind:'bars',n:154,q:'Reste-t-il quelque chose de durable du dernier tour&nbsp;?',
+   data:[['Non',47,1],['Oui',44],['Ne sait pas',10]],note:'Parmi les « oui » : un bien possédé 18 %, une activité productive 11 %, de l’argent conservé 9 %, autre 5 %.',
+   share:'47 % des participants n’ont rien gardé de durable de leur dernier tour de tontine.'},
+  {code:'FONC',w:'w4',theme:'fonc',title:'Type de tontine',kind:'bars',base:'participants',q:'Type de tontine pratiquée.',
+   data:[['Rotative',83,1],['Épargne individuelle',7]],share:'83 % des tontines de notre enquête sont rotatives.'},
+  {code:'ANCI',w:'w4',theme:'fonc',title:'Ancienneté',kind:'bars',base:'participants',q:'Depuis combien de temps cotisez-vous dans cette tontine&nbsp;?',
+   data:[['Moins d’un an',40,1],['1 à 3 ans',27],['4 à 6 ans',12],['7 à 10 ans',21]],share:'40 % des participants cotisent dans leur tontine depuis moins d’un an, 21 % depuis 7 à 10 ans.'},
+  {code:'TAIL',w:'w4',theme:'fonc',title:'Taille du groupe',kind:'bars',base:'participants',q:'Combien de membres compte votre tontine&nbsp;?',
+   data:[['Moins de 10 membres',35],['10 à 20 membres',39,1]],share:'39 % des tontines de notre enquête comptent 10 à 20 membres.'},
+  {code:'LIEN',w:'w4',theme:'fonc',title:'Lien entre membres',kind:'bars',base:'participants',q:'Qu’est-ce qui relie les membres&nbsp;?',
+   data:[['Le quartier',36,1],['L’amitié',29],['Le travail',13]],share:'Dans notre enquête, 36 % des tontines réunissent des voisins de quartier, 29 % des amis.'},
+  {code:'REGL',w:'w4',theme:'fonc',title:'Les règles',kind:'bars',base:'participants',q:'Les règles de votre tontine sont…',
+   data:[['Orales',43,1],['Inexistantes',33],['Écrites',18]],share:'Règles de la tontine : orales 43 %, aucune 33 %, écrites 18 %.'},
+  {code:'ORDR',w:'w4',theme:'fonc',title:'L’ordre de passage',kind:'bars',base:'participants',q:'Comment est décidé l’ordre de passage&nbsp;?',
+   data:[['Fixé à l’avance',34,1],['Tirage au sort',20],['Accord entre membres',19],['Selon les besoins et urgences',16]],share:'Ordre de passage : fixé à l’avance 34 %, tirage 20 %, accord entre membres 19 %.'},
+  {code:'MOTV',w:'w6',theme:'motiv',title:'Ce qui ferait cotiser plus',kind:'bars',base:'participants',q:'Qu’est-ce qui vous ferait cotiser davantage&nbsp;?',
+   data:[['Hausse des revenus',39,1],['Rien',19],['Plus de transparence',6],['Protection contre les défauts',6],['Financer un actif',5],['Une réserve collective',2]],
+   share:'Seuls 2 % citent une réserve collective comme raison de cotiser plus. 39 % attendent une hausse de revenus.'},
+  {code:'PROF',w:'w6',theme:'profil',title:'Qui a répondu',kind:'bars',n:251,q:'Âge des répondants. <b>79 %</b> des participants sont des femmes.',
+   data:[['Moins de 25 ans',22],['25-34 ans',48,1],['35-44 ans',22]],note:'Situation : entrepreneurs, commerçants ou indépendants 43 %, salariés 25 %, étudiants 18 %.',
+   share:'Profil des répondants : 48 % ont 25-34 ans, 79 % des participants sont des femmes.'}
+];
+var gT=document.getElementById('grid-tontine');
+function renderTontine(f){
+  f=f||{}; gT.innerHTML=''; var shown=0;
+  T.forEach(function(s){
+    if(f.theme&&s.theme!==f.theme) return;
+    var seuil=+f.seuil||0, inner='', rows=[], data=s.data?s.data.slice():null;
+    if(data){ data=data.filter(function(d){return d[1]>=seuil;}); if(f.tri==='desc') data.sort(function(a,b){return b[1]-a[1];}); }
+    if(s.q) inner+='<p class="q">'+s.q+'</p>';
+    if(s.kind==='hero'){
+      inner+='<div class="hero-n"><b>'+s.value+'&nbsp;%</b><span>'+s.text+'</span></div><div class="split">'+s.split.map(function(p){return '<i style="width:'+p[1]+'%;background:'+p[2]+'" data-tip="'+esc(p[0])+'|'+p[1]+' %"></i>';}).join('')+'</div><div class="leg">'+s.split.map(function(p){return '<span style="--c:'+p[2]+'">'+p[0]+' · '+p[1]+' %</span>';}).join('')+'</div>';
+      rows=s.split.map(function(p){return [p[0],p[1]+' %'];});
+    }else if(s.kind==='cmp'){
+      inner+=data.length?'<div class="cmp">'+data.map(function(r,i){return '<div class="row'+(r[2]?' key':'')+'" data-tip="'+esc(r[0])+'|'+r[1]+' % · n = '+r[3]+'"><span>'+r[0]+'</span><b>'+r[1]+'&nbsp;%</b><span class="trk"><span class="fil" style="width:'+r[1]+'%;animation-delay:'+(i*.08)+'s"></span></span><small>n = '+r[3]+' répondants</small></div>';}).join('')+'</div><p class="warn">'+s.warn+'</p>':'<p class="empty">Aucune réponse au-dessus du seuil choisi.</p>';
+      rows=data.map(function(r){return [r[0]+' (n = '+r[3]+')',r[1]+' %'];});
+    }else{
+      inner+=data.length?barsHTML(data,'%'):'<p class="empty">Aucune réponse au-dessus du seuil choisi.</p>';
+      if(s.note) inner+='<p class="q">'+s.note+'</p>';
+      rows=data.map(function(d){return [d[0],d[1]+' %'];});
+    }
+    var base=s.n?'n = '+s.n:'Base : '+(s.base||'participants');
+    var el=screen('etudes',s,inner,tableRows(['Réponse','Part'],rows),'<span>'+base+' · Enquête EFA, 12/10/2026</span><span>Non représentatif</span>');
+    gT.appendChild(el); shown++;
+    if(f.vue==='table') toggleTable(el,true);
+  });
+  return shown+' écran'+(shown>1?'s':'');
+}
+
+/* ---------- BRVM ---------- */
+var gB=document.getElementById('grid-brvm');
+function missing(grid,title,text,link){grid.innerHTML='<div class="miss" role="status"><b>'+title+'</b><p>'+text+'</p>'+(link?'<p><a href="'+link[1]+'" target="_blank" rel="noopener">'+link[0]+'</a></p>':'')+'</div>';}
+/* ---------- Onglet Bourse ---------- */
+var gB=document.getElementById('grid-brvm');
+if(B) safe('brvm entête',function(){
+  var ups=B.actions.filter(function(a){return a[4]>0;}).length, dn=B.actions.filter(function(a){return a[4]<0;}).length;
+  document.getElementById('brvm-meta').innerHTML='<div><small>Séance</small><b>'+B.seance+'</b></div><div><small>BRVM Composite</small><b>'+fr(B.indices[0][2],2)+' <span class="'+cls(B.indices[0][3])+'">'+arrow(B.indices[0][3])+' '+pct(B.indices[0][3])+'</span></b></div><div><small>Actions en hausse</small><b class="up">▲ '+ups+'</b></div><div><small>Actions en baisse</small><b class="down">▼ '+dn+'</b></div>';
+  var sel=document.getElementById('f-pays');
+  Object.keys(D.pays).forEach(function(k){if(B.actions.some(function(a){return a[2]===k;})){var o=document.createElement('option');o.value=k;o.textContent=D.pays[k];sel.appendChild(o);}});
+});
+else document.getElementById('brvm-meta').innerHTML='<div><small>Séance</small><b>Indisponible</b></div><div><small>Source</small><b>brvm.org</b></div>';
+function divHTML(rows,fmt){
+  var m=Math.max.apply(null,rows.map(function(r){return Math.abs(r[1]);}))||1;
+  return '<ul class="div">'+rows.map(function(r){var w=Math.abs(r[1])/m*50;return '<li tabindex="0" data-tip="'+esc(r[0])+'|'+pct(r[1])+'"><span class="lab">'+r[0]+'</span><span class="trk"><span class="fil '+(r[1]>=0?'p':'n')+'" style="width:'+w+'%"></span></span><span class="val '+cls(r[1])+'">'+arrow(r[1])+' '+pct(r[1])+'</span></li>';}).join('')+'</ul>';
+}
+function renderBrvm(f){
+  f=f||{}; gB.innerHTML='';
+  if(!B){missing(gB,'Les cours de la dernière séance ne sont pas disponibles pour le moment.','Le reste du site fonctionne normalement. Vous pouvez consulter les cours officiels sur le site de la BRVM.',['Ouvrir brvm.org','https://www.brvm.org/fr/indices']);return '';}
+  var srcFoot='<span>Source : BRVM · clôture du '+B.seance+'</span><span>Pas un conseil d’investissement</span>';
+  // Indices
+  var idx=B.indices.map(function(i){return [i[0],fr(i[1],2),fr(i[2],2),'<span class="'+cls(i[3])+'">'+arrow(i[3])+' '+pct(i[3])+'</span>'];});
+  var top=B.indices[0];
+  gB.appendChild(screen('brvm',{code:'IDX',w:'w4',title:'Indices',share:'BRVM, séance du '+B.seance+' : Composite à '+fr(top[2],2)+' ('+pct(top[3])+').'},
+    '<div class="hero-n"><b>'+fr(top[2],2)+'</b><span class="'+cls(top[3])+'" style="font:700 16px var(--mono)">'+arrow(top[3])+' '+pct(top[3])+'</span></div><p class="q">BRVM Composite, l’indice de toutes les actions cotées.</p><div class="tw"><table>'+tableRows(['Indice','Préc.','Clôture','Var.'],idx)+'</table></div>',
+    null,srcFoot));
+  // Secteurs
+  var sec=B.secteurs.map(function(s){return [s[0],s[2]];}).sort(function(a,b){return b[1]-a[1];});
+  gB.appendChild(screen('brvm',{code:'SECT',w:'w8',title:'Secteurs du jour',share:'BRVM, séance du '+B.seance+' : '+sec[0][0]+' '+pct(sec[0][1])+', '+sec[sec.length-1][0]+' '+pct(sec[sec.length-1][1])+'.'},
+    '<p class="q">Variation du jour des indices sectoriels. Hausse à droite, baisse à gauche.</p>'+divHTML(sec),
+    tableRows(['Secteur','Indice','Variation'],B.secteurs.map(function(s){return [s[0],fr(s[1],2),pct(s[2])];})),srcFoot));
+  // Liste filtrée
+  var L=B.actions.slice();
+  if(f.pays) L=L.filter(function(a){return a[2]===f.pays;});
+  if(f.sens) L=L.filter(function(a){return cls(a[4])===f.sens;});
+  if(f.q){var q=f.q.toLowerCase();L=L.filter(function(a){return (a[0]+' '+a[1]).toLowerCase().indexOf(q)>-1;});}
+  var tri=f.tri||'vd';
+  L.sort(function(a,b){return tri==='va'?a[4]-b[4]:tri==='px'?b[3]-a[3]:tri==='nm'?a[1].localeCompare(b[1],'fr'):b[4]-a[4];});
+  var label=(f.pays?D.pays[f.pays]:'Toutes places')+(f.sens?' · '+({up:'en hausse',down:'en baisse',flat:'stables'})[f.sens]:'');
+  // Plus fortes variations (sur la sélection)
+  var byV=L.slice().sort(function(a,b){return b[4]-a[4];});
+  var hi=byV.filter(function(a){return a[4]>0;}).slice(0,5), lo=byV.filter(function(a){return a[4]<0;}).slice(-5).reverse();
+  var mv=hi.concat(lo).map(function(a){return [a[1]+' ('+a[0]+')',a[4]];});
+  gB.appendChild(screen('brvm',{code:'MOVR',w:'w6',title:'Plus fortes variations',share:'BRVM, séance du '+B.seance+' : '+(hi[0]?'plus forte hausse '+hi[0][1]+' '+pct(hi[0][4]):'')+(lo[0]?', plus forte baisse '+lo[0][1]+' '+pct(lo[0][4]):'')+'.'},
+    '<p class="q">Les 5 plus fortes hausses et baisses · <b>'+label+'</b>.</p>'+(mv.length?divHTML(mv):'<p class="empty">Aucune action ne correspond aux filtres.</p>'),
+    tableRows(['Action','Variation'],mv.map(function(r){return [r[0],pct(r[1])];})),srcFoot));
+  // Répartition par pays (sur la sélection)
+  var cnt={}; L.forEach(function(a){cnt[a[2]]=(cnt[a[2]]||0)+1;});
+  var pd=Object.keys(cnt).map(function(k){return [D.pays[k],cnt[k]];}).sort(function(a,b){return b[1]-a[1];});
+  if(pd[0]) pd[0][2]=1;
+  gB.appendChild(screen('brvm',{code:'PAYS',w:'w6',title:'Actions par pays',share:'La BRVM cote des sociétés de 7 pays de l’UEMOA. Séance du '+B.seance+'.'},
+    '<p class="q">Nombre d’actions cotées dans la sélection, par pays du siège · <b>'+label+'</b>.</p>'+(pd.length?barsHTML(pd,''):'<p class="empty">Aucune action ne correspond aux filtres.</p>'),
+    tableRows(['Pays','Actions'],pd.map(function(p){return [p[0],p[1]];})),srcFoot));
+  // Cote complète
+  var rows=L.map(function(a){return [a[0],esc(a[1]),D.pays[a[2]],fr(a[3]),'<span class="'+cls(a[4])+'">'+arrow(a[4])+' '+pct(a[4])+'</span>'];});
+  gB.appendChild(screen('brvm',{code:'COTE',w:'w12',title:'La cote · '+L.length+' actions',share:'La cote complète de la BRVM, séance du '+B.seance+', sur EFA.'},
+    L.length?'<div class="tbl-scroll"><table>'+tableRows(['Symbole','Société','Pays','Cours (FCFA)','Var. jour'],rows,3)+'</table></div>':'<p class="empty">Aucune action ne correspond aux filtres.</p>',
+    null,srcFoot));
+  return L.length+' action'+(L.length>1?'s':'')+' sur '+B.actions.length;
+}
+
+/* ---------- Actualités ---------- */
+var gV=document.getElementById('grid-veille');
+/* ---------- Onglet Veille ---------- */
+var gV=document.getElementById('grid-veille');
+if(D.veille&&D.veille.length) safe('actualités entête',function(){
+  var ps=[],rs=[];D.veille.forEach(function(v){if(ps.indexOf(v.pays)<0)ps.push(v.pays);if(rs.indexOf(v.rubrique)<0)rs.push(v.rubrique);});
+  ps.forEach(function(p){var o=document.createElement('option');o.value=o.textContent=p;document.getElementById('f-vpays').appendChild(o);});
+  rs.forEach(function(r){var o=document.createElement('option');o.value=o.textContent=r;document.getElementById('f-vrub').appendChild(o);});
+  document.getElementById('veille-meta').innerHTML='<div><small>Écrans</small><b>'+D.veille.length+'</b></div><div><small>Pays couverts</small><b>'+ps.length+'</b></div><div><small>Dernière info</small><b>'+D.veille[0].date+'</b></div><div><small>Statut</small><b style="color:var(--up)">Sources vérifiées</b></div>';
+});
+function renderVeille(f){
+  f=f||{}; gV.innerHTML=''; var n=0;
+  if(!(D.veille&&D.veille.length)){missing(gV,'L’actualité n’a pas pu être chargée.','Réessayez dans un instant. Les études et le simulateur restent disponibles.');return '';}
+  D.veille.forEach(function(v){
+    if(f.pays&&v.pays!==f.pays) return; if(f.rub&&v.rubrique!==f.rub) return;
+    var pts=v.points.map(function(p,i){return [p[0],p[1],i===v.points.length-1?1:0];});
+    var inner='<p class="q"><b>'+v.pays+'</b> · '+v.rubrique+' · '+v.titre+'</p><div class="hero-n sm"><b>'+v.chiffre+'</b><span>'+v.legende+'</span></div>'+barsHTML(pts,v.unite==='%'?'%':v.unite,v.points.some(function(p){return p[1]%1;})?(v.unite==='%'?2:1):0)+'<p class="q">'+v.note+'</p>';
+    gV.appendChild(screen('actualites',{code:v.code,w:'w6',title:v.pays+' · '+v.titre,share:v.pays+' : '+v.chiffre+' '+v.legende+'.'},inner,
+      tableRows(['Élément','Valeur ('+v.unite+')'],v.points.map(function(p){return [p[0],fr(p[1],p[1]%1?2:0)];})),
+      '<span>Source : '+v.source+'</span><span>EFA News · '+v.date+'</span>'));
+    n++;
+  });
+  return n+' écran'+(n>1?'s':'');
+}
+
+/* ---------- Filtres : appliqués avec « Appliquer » ---------- */
+var R={etudes:renderTontine,brvm:renderBrvm,actualites:renderVeille};
+document.querySelectorAll('.filters[data-for]').forEach(function(form){
+  var t=form.dataset.for, out=form.querySelector('.count');
+  function apply(){var f={};new FormData(form).forEach(function(v,k){f[k]=String(v).trim();});safe('filtre '+t,function(){out.textContent=R[t](f)||'';});}
+  form.addEventListener('submit',function(e){e.preventDefault();apply();});
+  form.addEventListener('reset',function(){setTimeout(apply,0);});
+  if((t==='brvm'&&!B)||(t==='actualites'&&!(D.veille&&D.veille.length))) form.hidden=true;
+  apply();
+});
+
+/* ---------- Études : liste, sélecteur mobile, précédente / suivante ---------- */
+var STUDIES=[{id:'tontine',titre:'L’argent de la tontine',date:'12 oct. 2026',statut:'Provisoire',n:'251 répondants'}], curStudy=0;
+safe('études',function(){
+  var list=document.getElementById('st-list'), sel=document.getElementById('st-sel');
+  document.getElementById('st-count').textContent=STUDIES.length+(STUDIES.length>1?' études publiées':' étude publiée');
+  list.innerHTML=STUDIES.map(function(s,i){return '<button type="button" class="st-card" data-i="'+i+'" aria-current="'+(i===curStudy)+'"><b>'+s.titre+'</b><span>'+s.date+' · '+s.n+'</span><em>'+s.statut+'</em></button>';}).join('');
+  sel.innerHTML=STUDIES.map(function(s,i){return '<option value="'+i+'">'+s.titre+' · '+s.date+'</option>';}).join('');
+  document.getElementById('st-nav').hidden=STUDIES.length<2;
+});
+
+/* ---------- Rubriques ---------- */
+var TABS=['etudes','simulateurs','brvm','actualites','methode'];
+var ALIAS={tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites',bourse:'brvm'};
+function setHH(){var h=document.getElementById('top').offsetHeight;document.documentElement.style.setProperty('--hh',h+'px');}
+function showTab(t){
+  document.querySelectorAll('.tab').forEach(function(s){s.hidden=s.dataset.tab!==t;});
+  document.querySelectorAll('.rubs a').forEach(function(a){if(a.dataset.tab===t)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  var sel=document.getElementById('rub-sel'); if(sel.value!==t) sel.value=t;
+  if(TK) TK.hide(t==='simulateurs');   // pas deux mouvements en même temps
+  setTimeout(setHH,350);
+}
+function route(){
+  var h=(location.hash||'#etudes').slice(1).toLowerCase(); h=ALIAS[h]||h||'etudes';
+  if(TABS.indexOf(h)>-1){showTab(h);window.scrollTo(0,0);return;}
+  var c=REG[h.toUpperCase()];
+  if(c){showTab(c.tab);setTimeout(function(){c.el.scrollIntoView({block:'start'});c.el.classList.add('hit');setTimeout(function(){c.el.classList.remove('hit');},1600);},40);}
+  else {showTab('etudes');window.scrollTo(0,0);}
+}
+addEventListener('hashchange',route);
+document.getElementById('rub-sel').addEventListener('change',function(){location.hash=this.value;});
+addEventListener('resize',setHH);
+
+/* Moteur EFA « cercle → spirale », d'après l'emblème : 12 points gris (le cercle), une spirale de points bleus
+   qui grossissent vers l'extérieur, et le point orange (votre argent) qui circule et allume la spirale.
+   g = ouverture (0 = tout sur le cercle, 1 = spirale complète) ; pitch = angle de vue (1,45 dessus, 0,9 ¾, 0,4 profil). */
+function EFASpiral(cv,o){
+  o=o||{};
+  var ctx=cv.getContext('2d'), still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR=1,W=0,H=0,CX=0,CY=0,R=100,M=o.n||68,TURNS=2.6,TOUR=o.tour||1.7,TEND=2.05,RC=1.05;
+  function sphere(base,hi,lo,S){var s=document.createElement('canvas');S=S||64;s.width=s.height=S;var g=s.getContext('2d');
+    var rg=g.createRadialGradient(S*.36,S*.32,S*.04,S*.5,S*.5,S*.5);rg.addColorStop(0,hi);rg.addColorStop(.45,base);rg.addColorStop(1,lo);
+    g.fillStyle=rg;g.beginPath();g.arc(S/2,S/2,S/2-1,0,7);g.fill();return s;}
+  function glow(rgb,a){var s=document.createElement('canvas'),S=128;s.width=s.height=S;var g=s.getContext('2d');
+    var rg=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);rg.addColorStop(0,'rgba('+rgb+','+a+')');rg.addColorStop(.3,'rgba('+rgb+','+(a*.3)+')');rg.addColorStop(1,'rgba('+rgb+',0)');
+    g.fillStyle=rg;g.fillRect(0,0,S,S);return s;}
+  var BLUE=sphere('#5BAEEE','#D9EEFF','#1E5E9C'), BLUE_D=sphere('#2B4D74','#5E7FA6','#14243A'),
+      GREY=sphere('#2A3550','#56648A','#151C2C'), ORANGE=sphere('#E44828','#FFD2BE','#8E2310',96),
+      GB=glow('109,184,242',.5), GO=glow('240,96,63',.85), SH=glow('0,0,0',.55);
+  var dots=[];for(var i=0;i<M;i++){var q=i/(M-1);dots.push({q:q,t:Math.pow(q,.62)});}
+  var grey=[];for(var k=0;k<12;k++)grey.push(-Math.PI/2+k*Math.PI/6);
+  var api={g:0,pitch:1.45,tg:{g:0,pitch:1.45},tours:o.tours||12,tourN:1,onTour:o.onTour||null,onDone:o.onDone||null,running:false,pile:0,pileTarget:0,speed:1,once:false,done:false};
+  var v=0,laps=1,yaw=0,yawDrag=0,vDrag=0,last=0,clock=0,raf=0,tilt={x:0,y:0},tiltT={x:0,y:0};
+
+  api.fit=function(cx,cy,r){DPR=Math.min(2,window.devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);CX=cx;CY=cy;R=r;draw();};
+  if(o.dragEl){var el=o.dragEl,down=false,px=0;
+    el.addEventListener('pointerdown',function(e){if(e.target.closest('a,button,input,select,label'))return;down=true;px=e.clientX;vDrag=0;});
+    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();tiltT.x=(e.clientX-r.left)/r.width-.5;tiltT.y=(e.clientY-r.top)/r.height-.5;});
+    addEventListener('pointermove',function(e){if(!down)return;var d=(e.clientX-px)/Math.max(200,W)*4;px=e.clientX;yawDrag+=d;vDrag=d;if(still)draw();});
+    addEventListener('pointerup',function(){down=false;});addEventListener('pointercancel',function(){down=false;});
+  }
+  // Chemin commun aux points bleus et au point orange : un tour de cercle quand g = 0, la spirale quand g = 1
+  function path(p,g){
+    var tc=TEND-2*Math.PI*(1-p), ts=TEND-TURNS*2*Math.PI*(1-p), a=tc+(ts-tc)*g;
+    var rs=R*(.06+.94*Math.pow(p,1/.62*.62)), r=R*RC+(rs-R*RC)*g;
+    return {x:Math.cos(a)*r,z:Math.sin(a)*r,y:g*R*.85*p};
+  }
+  function proj(x,y,z){
+    var Y0=yaw+yawDrag, c=Math.cos(Y0),s=Math.sin(Y0),X=x*c-z*s,Z=x*s+z*c;
+    var pt=api.pitch+tilt.y*.12, cp=Math.cos(pt),sp=Math.sin(pt),Yy=y*cp-Z*sp;Z=y*sp+Z*cp;
+    X+=tilt.x*R*.06;
+    var k=1100/(1100+Z);return {x:CX+X*k,y:CY-Yy*k,k:k,z:Z};
+  }
+  function step(dt){
+    var k=Math.min(1,dt*3);api.g+=(api.tg.g-api.g)*k;api.pitch+=(api.tg.pitch-api.pitch)*k;
+    tilt.x+=(tiltT.x-tilt.x)*.06;tilt.y+=(tiltT.y-tilt.y)*.06;vDrag*=.92;yawDrag+=vDrag*.6;
+    if(still||api.done) return;
+    clock+=dt;
+    var g=api.g, sp=((1-g)*1+g/api.tours)/TOUR*api.speed; v+=dt*sp;
+    var n;
+    if(v>=1){if(api.once&&g>=.05){v=1;api.done=true;}else{v-=1;if(g<.05)laps=laps%api.tours+1;}}
+    n=g<.05?laps:Math.min(api.tours,Math.floor(v*api.tours)+1);
+    if(g>=.05)laps=n;
+    if(n!==api.tourN){api.tourN=n;if(api.onTour)api.onTour(n);}
+    if(api.done&&api.onDone)api.onDone();
+  }
+  function draw(){
+    if(!W) return;
+    var w=ctx,g=api.g; w.setTransform(DPR,0,0,DPR,0,0);w.clearRect(0,0,W,H);
+    var floor=-R*.12, sph=Math.sin(api.pitch), O=path(v,g), fade=1;
+    if(g>.05&&!api.done) fade=1-g+g*Math.max(0,Math.min(1,v/.03,(1-v)/.03));
+    var Op=proj(O.x,O.y,O.z), lightR=R*.24;
+    // lumière portée du point orange sur le sol
+    var Of=proj(O.x,floor,O.z), lr=R*.7*Of.k;
+    w.save();w.translate(Of.x,Of.y);w.scale(1,Math.max(.25,sph));w.globalCompositeOperation='lighter';w.globalAlpha=.35*fade;w.drawImage(GO,-lr,-lr,lr*2,lr*2);w.restore();
+    var L=[];
+    grey.forEach(function(a){var x=Math.cos(a)*R*RC*1.03,z=Math.sin(a)*R*RC*1.03;L.push({x:x,y:0,z:z,s:R*.046,kind:'g'});});
+    dots.forEach(function(d){var P=path(d.t,g);var lit=g>.02&&d.t<=v+.002;L.push({x:P.x,y:P.y,z:P.z,s:R*(.018+(.062*d.t)*g+.004*(1-g)),kind:lit?'b':'d',t:d.t});});
+    L.forEach(function(o){var dx=o.x-O.x,dy=o.y-O.y,dz=o.z-O.z;o.l=Math.exp(-(dx*dx+dy*dy+dz*dz)/(lightR*lightR))*fade;o.p=proj(o.x,o.y,o.z);});
+    // ombres au sol (visibles quand la vue s'incline)
+    var shA=Math.max(0,Math.cos(api.pitch))*.9+.12;
+    L.forEach(function(o){var f=proj(o.x,floor,o.z),sz=o.s*3.2*f.k;w.globalAlpha=shA*.55;w.save();w.translate(f.x,f.y);w.scale(1,Math.max(.3,sph));w.drawImage(SH,-sz/2,-sz/2,sz,sz);w.restore();});
+    // traînée du point orange
+    w.globalCompositeOperation='lighter';
+    var span=Math.min(.35,((1-g)*1+g/api.tours)*.55), prev=null;
+    for(var j=0;j<=36;j++){var pv=v-span*j/36; if(pv<0){if(g>.05)break;pv+=1;}
+      var P=path(pv,g),S=proj(P.x,P.y,P.z);
+      if(prev){w.strokeStyle='rgba(240,110,70,'+(.55*(1-j/36)*fade)+')';w.lineWidth=R*.05*S.k*(1-j/40);w.lineCap='round';w.beginPath();w.moveTo(prev.x,prev.y);w.lineTo(S.x,S.y);w.stroke();}
+      prev=S;}
+    w.globalCompositeOperation='source-over';
+    L.push({p:Op,s:R*.07,kind:'o',l:0});
+    L.sort(function(a,b){return b.p.z-a.p.z;});
+    L.forEach(function(o){
+      var k=o.p.k, sz=o.s*2*k, x=o.p.x, y=o.p.y;
+      if(o.kind==='o'){w.globalCompositeOperation='lighter';w.globalAlpha=fade;var gs=sz*5;w.drawImage(GO,x-gs/2,y-gs/2,gs,gs);
+        w.globalCompositeOperation='source-over';w.globalAlpha=fade;w.drawImage(ORANGE,x-sz/2,y-sz/2,sz,sz);return;}
+      var img=o.kind==='b'?BLUE:o.kind==='d'?BLUE_D:GREY;
+      if(o.kind==='b'){w.globalCompositeOperation='lighter';w.globalAlpha=.45;var gs2=sz*3.4;w.drawImage(GB,x-gs2/2,y-gs2/2,gs2,gs2);}
+      w.globalCompositeOperation='source-over';w.globalAlpha=o.kind==='d'?.2+.6*g:1;w.drawImage(img,x-sz/2,y-sz/2,sz,sz);
+      if(o.l>.02){w.globalCompositeOperation='lighter';w.globalAlpha=o.l*.9;var gl=sz*2.6;w.drawImage(GO,x-gl/2,y-gl/2,gl,gl);}
+    });
+    w.globalAlpha=1;w.globalCompositeOperation='source-over';
+  }
+  function loop(ts){var t=ts/1000,dt=last?Math.min(.05,t-last):0;last=t;step(dt);draw();if(api.running)raf=requestAnimationFrame(loop);}
+  api.start=function(){if(api.running)return;api.running=true;last=0;raf=requestAnimationFrame(loop);};
+  api.stop=function(){api.running=false;cancelAnimationFrame(raf);};
+  api.reset=function(){v=0;laps=1;api.tourN=1;api.done=false;if(still)draw();};
+  api.draw=draw;
+  api.watch=function(target){
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)api.start();else api.stop();});}).observe(target||cv);
+    else api.start();
+  };
+  if(still){v=.62;}
+  return api;
+}
+
+
+/* ---------- Simulateur guidé ---------- */
+var SIM={m:0,k:0,n:0,koffi:false}, E=null;
+safe('simulateur',function(){
+  var el=document.getElementById('simu'), st=document.getElementById('sim-stage'), cv=document.getElementById('sim-cv');
+  var intro=document.getElementById('sim-intro'), wiz=document.getElementById('sim-wiz'), res=document.getElementById('sim-res');
+  var lbl=document.getElementById('sim-lbl'), cap=document.getElementById('sim-cap'), err=document.getElementById('wiz-err');
+  var inM=document.getElementById('in-m'), inK=document.getElementById('in-k'), inN=document.getElementById('in-n');
+  var q=1;
+  el._s={code:'SIMU',title:'Simulateur · du cercle à la spirale',share:''};
+  REG.SIMU={tab:'simulateurs',el:el,s:el._s};
+  E=EFASpiral(cv,{dragEl:st,onTour:function(n){if(!res.hidden)live(n);},onDone:function(){if(!res.hidden)live(SIM.n,true);}});
+  function num(i){return parseInt(String(i.value).replace(/\D/g,''),10)||0;}
+  function setNum(i,v){i.value=v?fr(v):'';}
+  function fit(){var w=st.clientWidth,h=st.clientHeight;E.fit(w/2,h*.52,Math.max(70,Math.min(w*.36,h*.36)));}
+  function live(n,end){
+    var r=SIM.k*n;
+    lbl.innerHTML=SIM.k?(end?'Terminé&nbsp;: <b>'+fr(SIM.k*SIM.n)+' FCFA</b> de côté après '+SIM.n+' rentrée'+(SIM.n>1?'s':''):'Rentrée '+n+' sur '+SIM.n+'&nbsp;: <b>'+fr(r)+' FCFA</b> de côté'):'Rien n’est gardé&nbsp;: l’argent fait le tour et repart.';
+  }
+  function show(part){intro.hidden=part!=='intro';wiz.hidden=part!=='wiz';res.hidden=part!=='res';}
+  function goQ(n){q=n;wiz.querySelectorAll('.qs').forEach(function(x){x.hidden=+x.dataset.q!==q;});
+    document.getElementById('wiz-n').textContent='Question '+q+' sur 3';
+    document.getElementById('wiz-prev').textContent=q===1?'Retour':'Précédent';
+    document.getElementById('wiz-next').textContent=q===3?'Voir mon résultat':'Suivant';
+    err.textContent=''; var f=wiz.querySelector('.qs[data-q="'+q+'"] input'); if(f) setTimeout(function(){f.focus();},50);}
+  function pctLine(){var m=num(inM),k=num(inK);document.getElementById('k-pct').textContent=(m&&inK.value!=='')?(k>m?'':'Soit '+fr(k/m*100,k/m*100%1?1:0)+' % de ce que vous recevez.'):'';}
+  function check(){
+    var m=num(inM),k=num(inK),n=num(inN);
+    if(q===1&&m<1000) return 'Indiquez le montant que vous recevez, par exemple 300 000.';
+    if(q===2&&inK.value.trim()==='') return 'Indiquez un montant, ou touchez « Rien ».';
+    if(q===2&&k>m) return 'Vous ne pouvez pas garder plus que ce que vous recevez ('+fr(m)+' FCFA).';
+    if(q===3&&(n<1||n>60)) return 'Indiquez un nombre entre 1 et 60.';
+    return '';
+  }
+  function result(){
+    var m=SIM.m,k=SIM.k,n=SIM.n,tot=m*n,keep=k*n,use=tot-keep,p=m?k/m:0;
+    document.getElementById('res-koffi').hidden=!SIM.koffi;
+    document.getElementById('res-big').firstChild.nodeValue=fr(keep)+' FCFA';
+    document.getElementById('res-big-l').textContent='mis de côté après '+n+' rentrée'+(n>1?'s':'')+', si vous n’y touchez pas';
+    var who=SIM.koffi?'Koffi garde':'Vous gardez', who2=SIM.koffi?'il aura':'vous aurez';
+    document.getElementById('res-txt').innerHTML=k?who+' <b>'+fr(k)+' FCFA</b> à chaque rentrée, soit '+fr(p*100,p*100%1?1:0)+' % de '+fr(m)+' FCFA. Après '+n+' rentrée'+(n>1?'s':'')+', si cette réserve n’est pas utilisée, '+who2+' <b>'+fr(keep)+' FCFA</b> de côté.'
+      :'Rien n’est gardé&nbsp;: tout ce qui est reçu repart. C’est le cercle. Même 5 % feraient '+fr(Math.round(m*.05/1000)*1000*n)+' FCFA après '+n+' rentrée'+(n>1?'s':'')+'.';
+    var a=tot?keep/tot*100:0;
+    document.getElementById('res-split').innerHTML='<div class="bar" role="img" aria-label="Sur '+fr(tot)+' FCFA reçus, '+fr(keep)+' gardés et '+fr(use)+' utilisés"><i style="width:'+a+'%;background:var(--bleu)"></i><i style="width:'+(100-a)+'%;background:#3A4A66"></i></div>'+
+      '<ul><li><span style="--c:var(--ink2)">Ce que le groupe vous verse, au total</span><b>'+fr(tot)+'</b></li><li><span style="--c:var(--bleu)">Ce que vous conservez</span><b>'+fr(keep)+'</b></li><li><span style="--c:#3A4A66">Ce que vous utilisez pour vos besoins et projets</span><b>'+fr(use)+'</b></li></ul>';
+    var rows=[];for(var i=1;i<=n;i++)rows.push([i,fr(m),fr(k),fr(m-k),fr(k*i)]);
+    document.getElementById('sim-t').innerHTML=tableRows(['Rentrée','Reçu','Gardé','Utilisé','De côté'],rows);
+    el._s.share=(k?'Avec une rentrée de '+fr(m)+' FCFA, garder '+fr(k)+' FCFA à chaque rentrée donne '+fr(keep)+' FCFA de côté après '+n+' rentrées.':'Avec une rentrée de '+fr(m)+' FCFA, sans rien garder, tout repart.')+' Faites le calcul avec vos chiffres sur EFA.';
+    show('res'); play();
+  }
+  function play(){
+    var p=SIM.m?SIM.k/SIM.m:0;
+    E.tours=SIM.n; E.once=true; E.speed=Math.max(.5,SIM.n*1.7/Math.max(4,Math.min(14,SIM.n*1.4)));
+    E.tg.g=SIM.k?Math.sqrt(Math.min(.1,p)/.1):0; E.reset(); live(1);
+    cap.textContent=SIM.k?'Le point orange, c’est la somme reçue. Chaque point bleu allumé, c’est une part gardée.':'Le point orange fait le tour : rien n’est gardé.';
+  }
+
+  var HELP={tontine:['Le montant total que vous touchez quand c’est votre tour, pas votre cotisation.','Dans une tontine rotative, vous recevez la cagnotte une fois par cycle. Exemple : 10 membres qui cotisent chaque mois, vous recevez une fois tous les 10 mois, soit 6 fois en 5 ans.'],
+    prime:['Le montant net qui arrive sur votre compte : prime, 13e mois, bonus.','Exemple : une prime par an pendant 5 ans, soit 5 fois.'],
+    vente:['Ce qui vous reste une fois la vente faite et les frais payés.','Exemple : deux récoltes par an pendant 3 ans, soit 6 fois.'],
+    autre:['Le montant qui arrive d’un coup : héritage, remboursement, cagnotte, gros contrat.','Combien de fois pensez-vous recevoir une somme de ce type ? Une seule fois, c’est possible aussi.']};
+  document.getElementById('src-chips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+    this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    var h=HELP[b.dataset.s];document.getElementById('help-m').textContent=h[0];document.getElementById('help-n').textContent=h[1];});
+  document.getElementById('sim-koffi').addEventListener('click',function(){SIM={m:250000,k:50000,n:3,koffi:true};result();});
+  document.getElementById('sim-mine').addEventListener('click',function(){SIM.koffi=false;show('wiz');goQ(1);});
+  wiz.addEventListener('submit',function(e){e.preventDefault();var m=check();if(m){err.textContent=m;return;}
+    if(q<3){goQ(q+1);if(q===2)pctLine();return;}
+    SIM={m:num(inM),k:num(inK),n:num(inN),koffi:false};result();});
+  document.getElementById('wiz-prev').addEventListener('click',function(){if(q===1)show('intro');else goQ(q-1);});
+  wiz.querySelectorAll('.chips[data-fill]').forEach(function(c){c.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var i=document.getElementById(c.dataset.fill);setNum(i,+b.dataset.v);err.textContent='';pctLine();});});
+  document.getElementById('k-chips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var m=num(inM);inK.value=b.dataset.p==='0'?'0':fr(Math.round(m*b.dataset.p/1000)*1000);err.textContent='';pctLine();});
+  [inM,inK,inN].forEach(function(i){i.addEventListener('blur',function(){if(i.value.trim()!=='')setNum(i,num(i))||(i.value=i===inK&&num(i)===0?'0':i.value);pctLine();});i.addEventListener('input',function(){err.textContent='';pctLine();});});
+  document.getElementById('res-replay').addEventListener('click',play);
+  document.getElementById('res-edit').addEventListener('click',function(){setNum(inM,SIM.m);inK.value=SIM.k?fr(SIM.k):'0';setNum(inN,SIM.n);show('wiz');goQ(1);});
+  document.getElementById('res-reset').addEventListener('click',function(){inM.value=inK.value=inN.value='';SIM={m:0,k:0,n:0};show('intro');E.once=false;E.tg.g=0;E.reset();lbl.textContent='Sans part gardée, l’argent fait le tour et repart.';});
+  document.getElementById('sim-view').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});E.tg.pitch=+b.dataset.v;});
+  addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  fit(); E.watch(st);
+  new MutationObserver(function(){if(!document.getElementById('tab-simulateurs').hidden)setTimeout(fit,30);}).observe(document.getElementById('tab-simulateurs'),{attributes:true,attributeFilter:['hidden']});
+});
+
+/* ---------- Tableau / Partager ---------- */
+var toast=document.getElementById('toast');
+function say(t){toast.textContent=t;toast.classList.add('on');clearTimeout(say.t);say.t=setTimeout(function(){toast.classList.remove('on');},2600);}
+function toggleTable(scr,force){
+  var t=scr.querySelector('.tbl'), v=scr.id==='simu'?null:scr.querySelector('.viz'), b=scr.querySelector('[data-act="table"]'); if(!t) return;
+  var open=force!==undefined?force:t.hidden;
+  t.hidden=!open; if(v) v.hidden=open; b.setAttribute('aria-expanded',open); b.textContent=scr.id==='simu'?(open?'Masquer le tableau':'Voir le tableau'):(open?'Graphique':'Tableau');
+}
+document.querySelector('main').addEventListener('click',function(e){
+  var b=e.target.closest('button[data-act]'); if(!b) return;
+  var scr=b.closest('.scr'), s=scr&&scr._s; if(!s) return;
+  if(b.dataset.act==='table'){toggleTable(scr);return;}
+  var url=SITE+'#'+s.code.toLowerCase();
+  var src=scr.dataset.tab==='etudes'?SRC_T:(s.code==='SIMU'?'Simulateur EFA · exemple illustratif':((scr.querySelector('.foot span')||{}).textContent||''));
+  if(navigator.share){navigator.share({title:'EFA · '+plain(s.title),text:s.share+'\n'+src,url:url}).catch(function(){});return;}
+  window.open('https://wa.me/?text='+encodeURIComponent(s.share+'\n'+src+'\n'+url),'_blank','noopener');
+});
+function plain(s){var d=document.createElement('div');d.innerHTML=s;return d.textContent;}
+
+/* ---------- Info-bulles ---------- */
+
+var tip=document.getElementById('tip'), M=document.querySelector('main');
+function showTip(t,x,y){var p=t.split('|');tip.innerHTML='<span>'+p[0]+'</span><b>'+p[1]+'</b>';tip.classList.add('on');var w=tip.offsetWidth,h=tip.offsetHeight;tip.style.left=Math.min(innerWidth-w-8,Math.max(8,x+14))+'px';tip.style.top=Math.max(8,y-h-12)+'px';}
+M.addEventListener('mousemove',function(e){var t=e.target.closest('[data-tip]');if(t)showTip(t.dataset.tip,e.clientX,e.clientY);else tip.classList.remove('on');});
+M.addEventListener('mouseleave',function(){tip.classList.remove('on');});
+M.addEventListener('focusin',function(e){var t=e.target.closest('[data-tip]');if(t){var r=t.getBoundingClientRect();showTip(t.dataset.tip,r.left+r.width/2,r.top);}});
+M.addEventListener('focusout',function(){tip.classList.remove('on');});
+
+setHH(); route();
+</script>
+</body>
+</html>
