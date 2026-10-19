@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070C16">
+<link rel="canonical" href="https://efa.africa/auteur.html">
+<meta property="og:url" content="https://efa.africa/auteur.html">
+<meta property="og:type" content="profile">
+<title>Élysée Johnson · EFA</title>
+<meta name="description" content="Élysée Johnson, financier, fondateur d'Éducation Financière Afrique (EFA) et auteur du livre en cours « Le Cercle et la Spirale ». Parcours, convictions et réalisations.">
+<meta property="og:title" content="Élysée Johnson · Fondateur d'Éducation Financière Afrique">
+<meta property="og:description" content="Une décennie dans la banque d'investissement, le capital-investissement et le conseil. Une question : comment l'argent qui circule devient du capital qui reste.">
+<meta property="og:image" content="https://efa.africa/elysee-portrait.jpg">
+<link rel="icon" href="logo-efa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;600;700;800&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Élysée Johnson",
+  "url": "https://efa.africa/auteur.html",
+  "image": "https://efa.africa/elysee-portrait.jpg",
+  "jobTitle": "Fondateur d'Éducation Financière Afrique",
+  "description": "Financier, fondateur d'Éducation Financière Afrique (EFA) et auteur du livre en cours « Le Cercle et la Spirale ».",
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity", "name": "ENSEA Abidjan"},
+    {"@type": "CollegeOrUniversity", "name": "ESCP Business School"}
+  ],
+  "knowsAbout": ["Éducation financière", "Tontine", "Finance africaine", "Capital-investissement", "Épargne", "Patrimoine"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Éducation Financière Afrique",
+    "alternateName": "EFA",
+    "url": "https://efa.africa",
+    "sameAs": [
+      "https://www.tiktok.com/@efa.afrique",
+      "https://www.youtube.com/@efaeducationfinanciereafrique",
+      "https://educationfinanciereafrique.substack.com"
+    ]
+  }
+}
+</script>
+<style>
+/* Charte du site efa.africa (univers sombre) : portrait et nom en ouverture, puis trois bandes, une par dimension. */
+:root{
+  --bg:#070C16; --panel:#0D1525; --panel2:#111B2F; --line:#1F2C45;
+  --ink:#E8EDF5; --ink2:#A9B4C6; --mute:#7A879D;
+  --bleu:#6DB8F2; --bleu-d:#2188D6; --corail:#F0603F; --vermillon:#EC6243; --amber:#F2B84B; --creme:#F5EFE2; --nuit:#0B1220;
+  --disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Manrope",system-ui,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--bleu);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Barre du haut */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,12,22,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .bar{display:flex;align-items:center;gap:14px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 12px var(--mono);letter-spacing:.12em;white-space:nowrap}
+.brand img{width:30px;height:30px}
+.brand b{color:var(--corail);font-weight:600}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{font:700 14px var(--body);text-decoration:none;color:var(--ink2);padding:8px 12px;border-radius:8px;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.back{font:600 12px var(--mono);color:var(--ink2);text-decoration:none;white-space:nowrap}
+.back:hover{color:var(--ink)}
+@media (max-width:820px){.nav{display:none}.back{margin-left:auto}}
+
+.mission{margin:0;padding-block:14px 0;font:700 14px/1.45 var(--body)}
+.mc{color:var(--vermillon);font-weight:800}.ms{color:var(--bleu)}
+
+.kick{font:600 11px var(--mono);letter-spacing:.2em;color:var(--corail);text-transform:uppercase;margin:0}
+h1,h2{font-family:var(--disp);font-weight:900;text-transform:uppercase;text-wrap:balance;margin:0}
+h2{font-size:clamp(36px,5vw,60px);line-height:.92}
+h3{margin:0;text-wrap:balance}
+p{margin:0}
+
+/* Ouverture */
+.hero{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end;padding-block:28px 40px}
+.face{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:2/3;max-width:100%;background:radial-gradient(90% 70% at 40% 30%,#17305A,var(--nuit))}
+.face img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.face::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(transparent,rgba(7,12,22,.85))}
+.face figcaption{position:absolute;left:16px;bottom:14px;z-index:1;font:600 11px var(--mono);letter-spacing:.14em;color:var(--ink2);text-transform:uppercase}
+.hero-t{display:grid;gap:18px;min-width:0}
+.hero h1{font-size:clamp(58px,10vw,128px);line-height:.84}
+.hero h1 span{display:block;color:var(--bleu)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);max-width:58ch}
+.lead b{color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;max-width:640px}
+.facts div{background:var(--panel);padding:12px 14px;min-width:0}
+.facts small{display:block;font:600 10px var(--mono);letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.facts b{font:700 15px var(--body)}
+.jump{display:flex;flex-wrap:wrap;gap:8px}
+.jump a{text-decoration:none;font:700 14px var(--body);padding:10px 16px;border-radius:999px;border:1px solid var(--line);color:var(--ink)}
+.jump a:hover{border-color:var(--mute)}
+.jump a.main{background:var(--creme);color:var(--nuit);border-color:var(--creme)}
+@media (max-width:820px){.hero{grid-template-columns:none}.face{max-width:340px}}
+
+/* Bandes */
+.band{border-top:1px solid var(--line);padding-block:56px;scroll-margin-top:64px}
+.band.alt{background:var(--panel)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 48px;align-items:end;margin-bottom:32px}
+.head p{color:var(--ink2);max-width:56ch}
+@media (max-width:820px){.head{grid-template-columns:none}}
+
+/* Parcours : un registre par métier */
+.ledger{display:grid;border-top:1px solid var(--line)}
+.ledger>div{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:8px 28px;align-items:baseline;padding-block:18px;border-bottom:1px solid var(--line)}
+.ledger dt{font:600 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.ledger dd{margin:0;font:800 clamp(20px,2.2vw,26px)/1.25 var(--body);min-width:0}
+.ledger .note{font:500 14px var(--body);color:var(--ink2)}
+.ledger .city{font:600 12px var(--mono);color:var(--bleu);white-space:nowrap}
+@media (max-width:640px){.ledger>div{grid-template-columns:none}}
+.coda{margin-top:28px;font-size:clamp(18px,1.8vw,22px);font-weight:700;max-width:60ch}
+.coda span{color:var(--bleu)}
+
+/* Pensée : la chaîne */
+.chain{overflow-x:auto;margin-bottom:28px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.chain svg{display:block;width:100%;min-width:640px;height:auto}
+.theses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:960px){.theses{grid-template-columns:none}}
+.thesis{display:grid;gap:12px;align-content:start;padding:22px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);min-width:0}
+.thesis.new{background:var(--creme);color:var(--nuit);border-color:var(--creme)}
+.thesis .tag{display:flex;justify-content:space-between;gap:10px;font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.thesis.new .tag{color:#5A6276}
+.thesis .tag em{font-style:normal;color:var(--amber)}
+.thesis.new .tag em{color:#B23A1E}
+.thesis h3{font:900 clamp(30px,3vw,40px)/.95 var(--disp);text-transform:uppercase}
+.thesis.new h3 span{color:#C2401F}
+.thesis .sub{font:800 15px var(--body);color:var(--bleu)}
+.thesis.new .sub{color:var(--bleu-d)}
+.thesis p{font-size:15px;color:var(--ink2)}
+.thesis.new p{color:#2A3346}
+.thesis .q{font:700 16px/1.45 var(--body);color:var(--nuit);background:#E9E0CC;border-radius:8px;padding:12px 14px}
+.thesis .src{font:500 12px var(--mono);color:var(--mute);border-top:1px solid var(--line);padding-top:10px}
+.thesis.new .src{color:#5A6276;border-color:#D9CFBA}
+.spiral{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px;align-items:center;margin-top:28px;padding:22px;border:1px solid var(--line);border-radius:12px}
+.spiral canvas{width:100%;max-width:220px;aspect-ratio:1;display:block}
+.spiral h3{font:900 clamp(30px,3.4vw,44px)/.95 var(--disp);text-transform:uppercase}
+.spiral p{color:var(--ink2);max-width:58ch;margin-top:10px}
+.spiral blockquote{margin:14px 0 0;font:800 clamp(18px,1.8vw,22px)/1.35 var(--body)}
+.spiral blockquote span{color:var(--bleu)}
+@media (max-width:640px){.spiral{grid-template-columns:none}.spiral canvas{max-width:180px}}
+
+/* Réalisations */
+.works{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.work{grid-column:span 2;display:grid;gap:10px;align-content:start;padding:20px;border-radius:12px;background:var(--bg);border:1px solid var(--line);min-width:0}
+.work.big{grid-column:span 4;background:var(--bleu-d);border-color:var(--bleu-d)}
+.work.big p,.work.big li{color:#EAF4FE}
+@media (max-width:960px){.work,.work.big{grid-column:span 3}}
+@media (max-width:640px){.work,.work.big{grid-column:span 6}}
+.pill{justify-self:start;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:5px;background:rgba(255,255,255,.08);color:var(--ink2)}
+.pill.on{background:#3FCF8E;color:#06261A}
+.pill.wip{background:var(--amber);color:#1A1205}
+.work.big .pill.on{background:var(--creme);color:var(--nuit)}
+.work h3{font:800 21px/1.25 var(--body)}
+.work p{font-size:15px;color:var(--ink2)}
+.work ul{margin:0;padding-left:18px;font-size:15px;color:var(--ink2)}
+.nums{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:4px}
+.nums div{display:grid}
+.nums b{font:900 clamp(38px,4.4vw,54px)/.9 var(--disp)}
+.nums small{font:600 12px var(--body);color:#D5E8FB;max-width:24ch}
+.work a.more{font:700 14px var(--body);text-decoration:none;color:var(--bleu)}
+.work.big a.more{color:#fff}
+.work a.more:hover{text-decoration:underline}
+
+/* Biographies à copier */
+.bios{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:760px){.bios{grid-template-columns:none}}
+.tabs{display:grid;gap:6px}
+@media (max-width:760px){.tabs{grid-auto-flow:column;grid-auto-columns:1fr}}
+.tabs button{text-align:left;background:transparent;border:1px solid var(--line);color:var(--ink);font:700 15px var(--body);padding:12px 14px;border-radius:8px;cursor:pointer}
+.tabs button small{display:block;font:500 12px var(--mono);color:var(--mute)}
+.tabs button[aria-selected="true"]{background:var(--creme);color:var(--nuit);border-color:var(--creme)}
+.tabs button[aria-selected="true"] small{color:#5A6276}
+.bio{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:22px;display:grid;gap:16px;min-width:0}
+.bio p{font-size:17px;line-height:1.65;max-width:68ch}
+.bio .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{border:0;border-radius:8px;padding:11px 16px;font:800 14px var(--body);cursor:pointer;background:var(--corail);color:#fff}
+.btn.s{background:transparent;color:var(--ink);border:1px solid var(--mute)}
+.count{font:500 12px var(--mono);color:var(--mute)}
+.contact{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:28px;padding:18px 20px;border:1px dashed var(--mute);border-radius:12px}
+.contact p{color:var(--ink2)}
+.contact code{font:600 15px var(--mono);color:var(--ink);user-select:all}
+
+footer{border-top:1px solid var(--line);padding-block:20px 40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 12px var(--mono);color:var(--mute)}
+footer .mission{flex-basis:100%;padding:0;color:var(--ink);font-size:13px}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--amber);color:#1A1205;font:700 13px var(--mono);padding:10px 14px;border-radius:6px;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="logo-efa.png" alt="" width="30" height="30"><span>EFA <b>L’AUTEUR</b></span></a>
+    <nav class="nav" aria-label="Sections"><a href="#parcours">Parcours</a><a href="#pensee">Pensée</a><a href="#realisations">Réalisations</a><a href="#biographie">Biographie</a></nav>
+    <a class="back" href="./">← Le site</a>
+  </div>
+</header>
+
+<main>
+  <p class="wrap mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+
+  <section class="wrap hero" aria-labelledby="nom">
+    <figure class="face" style="margin:0">
+      <img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909">
+    </figure>
+    <div class="hero-t">
+      <p class="kick">L’auteur</p>
+      <h1 id="nom">Élysée <span>Johnson</span></h1>
+      <p class="lead">Financier, fondateur d’<b>Éducation Financière Afrique</b> et auteur du livre en cours <b>« Le Cercle et la Spirale »</b>. Il relie la finance du quotidien à une question de long terme&nbsp;: à qui appartiendra le capital africain&nbsp;?</p>
+      <div class="facts">
+        <div><small>Métiers</small><b>Banque d’investissement, capital-investissement, conseil</b></div>
+        <div><small>Villes</small><b>Paris, New York, Abidjan</b></div>
+        <div><small>Formation</small><b>ENSEA, ESCP</b></div>
+        <div><small>Fondateur</small><b>Éducation Financière Afrique</b></div>
+      </div>
+      <div class="jump">
+        <a class="main" href="#pensee">Lire ses convictions</a>
+        <a href="#biographie">Biographie pour la presse</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Parcours professionnel -->
+  <section class="band" id="parcours" aria-labelledby="t-parcours">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Parcours professionnel</p><h2 id="t-parcours">Une décennie dans la finance</h2></div>
+        <p>Conseil, banque, capital-investissement&nbsp;: trois métiers qui posent la même question, celle de savoir où va le capital, à quelles conditions et pour combien de temps.</p>
+      </div>
+      <dl class="ledger">
+        <div><dt>Conseil en stratégie</dt><dd>Chappuis Halder · Capgemini Invent · Onpoint Africa</dd></div>
+        <div><dt>Banque d’investissement</dt><dd>BPCE · Citibank</dd></div>
+        <div><dt>Capital-investissement</dt><dd>I&amp;P, Investisseurs &amp; Partenaires</dd></div>
+        <div><dt>Formation</dt><dd>ENSEA · ESCP<br><span class="note">A présidé l’association des élèves ingénieurs de l’ENSEA.</span></dd></div>
+      </dl>
+      <p class="coda">Exercés à Paris, New York et Abidjan, ces métiers lui ont appris à lire un bilan. EFA applique ce regard à <span>l’argent des familles</span>.</p>
+    </div>
+  </section>
+
+  <!-- 2. Contribution intellectuelle -->
+  <section class="band alt" id="pensee" aria-labelledby="t-pensee">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Contribution intellectuelle</p><h2 id="t-pensee">Trois convictions, une même chaîne</h2></div>
+        <p>Ses textes partent d’une pratique que tout le monde connaît, la tontine, pour arriver à une question que peu posent&nbsp;: ce qui reste de l’argent qui circule, et à qui il appartient.</p>
+      </div>
+
+      <div class="chain" role="img" aria-label="La chaîne : la confiance permet la circulation de l’argent, une part conservée crée une réserve, la réserve devient du capital.">
+        <svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7A879D"/></marker></defs>
+          <g font-family="Manrope, system-ui, sans-serif">
+            <line x1="185" y1="88" x2="300" y2="88" stroke="#7A879D" stroke-width="2" marker-end="url(#ar)"/>
+            <line x1="435" y1="88" x2="550" y2="88" stroke="#7A879D" stroke-width="2" marker-end="url(#ar)"/>
+            <line x1="685" y1="88" x2="800" y2="88" stroke="#7A879D" stroke-width="2" marker-end="url(#ar)"/>
+            <rect x="40" y="48" width="140" height="80" rx="10" fill="#F5EFE2"/>
+            <text x="110" y="85" text-anchor="middle" font-size="19" font-weight="800" fill="#0B1220">Confiance</text>
+            <text x="110" y="108" text-anchor="middle" font-size="13" fill="#3A4357">la parole tenue</text>
+            <rect x="305" y="48" width="125" height="80" rx="10" fill="#111B2F" stroke="#F0603F" stroke-width="2"/>
+            <text x="367" y="85" text-anchor="middle" font-size="19" font-weight="800" fill="#E8EDF5">Circulation</text>
+            <text x="367" y="108" text-anchor="middle" font-size="13" fill="#A9B4C6">l’argent tourne</text>
+            <rect x="555" y="48" width="125" height="80" rx="10" fill="#111B2F" stroke="#6DB8F2" stroke-width="2"/>
+            <text x="617" y="85" text-anchor="middle" font-size="19" font-weight="800" fill="#E8EDF5">Réserve</text>
+            <text x="617" y="108" text-anchor="middle" font-size="13" fill="#A9B4C6">une part reste</text>
+            <rect x="805" y="48" width="155" height="80" rx="10" fill="#2188D6"/>
+            <text x="882" y="85" text-anchor="middle" font-size="19" font-weight="800" fill="#FFFFFF">Capital</text>
+            <text x="882" y="108" text-anchor="middle" font-size="13" fill="#EAF4FE">possédé, durable</text>
+            <text x="110" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#F2B84B">III · La confiance précède le capital</text>
+            <text x="492" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#A9B4C6">I · Ce qui circule n’est pas ce qui reste</text>
+            <text x="882" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#A9B4C6">II · Après le paiement, le capital</text>
+            <line x1="315" y1="145" x2="670" y2="145" stroke="#1F2C45" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="theses">
+        <article class="thesis">
+          <div class="tag"><span>Conviction I</span><span>Le quotidien</span></div>
+          <h3>Ce qui circule n’est pas ce qui reste.</h3>
+          <p class="sub">La tontine comme mécanisme de circulation financière</p>
+          <p>La tontine rotative organise la circulation de l’argent entre ses membres. Elle peut discipliner l’épargne et financer des projets. Mais sans part conservée, la rotation ne crée pas, à elle seule, de capital collectif durable. Ce que chacun fait de son tour décide de ce qu’il construit.</p>
+          <p class="src">Tribune n° 1, 12 sept. 2026 · Conviction n° 1</p>
+        </article>
+        <article class="thesis">
+          <div class="tag"><span>Conviction II</span><span>Le continent</span></div>
+          <h3>Après le paiement, le capital.</h3>
+          <p class="sub">L’appropriation du capital africain à long terme</p>
+          <p>Nous avons multiplié les petits paiements. Nous devons multiplier les petits placements. Les téléphones qui font circuler l’argent peuvent aussi réunir des millions de petits tickets pour financer des actifs productifs, détenus par celles et ceux qui épargnent.</p>
+          <p class="src">Tribune n° 5, 17 oct. 2026 · « Avec nos téléphones, nous pouvons construire des usines »</p>
+        </article>
+        <article class="thesis new">
+          <div class="tag"><span>Conviction III</span><em>En construction</em></div>
+          <h3>La confiance <span>précède</span> le capital.</h3>
+          <p class="q">Comment transformer les mécanismes financiers communautaires existants en capacités durables d’épargne, de financement et d’investissement&nbsp;?</p>
+          <p>Une tontine qui tient vingt ans a résolu le problème le plus difficile de la finance&nbsp;: que chacun paie, à l’heure, sans contrat ni guichet. Cette confiance est un actif. Elle se construit et se prouve, mais elle n’a nulle part où se faire valoir. C’est le chantier qui relie EFA à ce qui viendra après.</p>
+          <p class="src">Fil conducteur de la première partie du livre</p>
+        </article>
+      </div>
+
+      <div class="spiral">
+        <canvas id="cv" width="440" height="440" aria-hidden="true"></canvas>
+        <div>
+          <p class="kick">Le concept</p>
+          <h3>Le Cercle et la Spirale</h3>
+          <p>Le cercle, c’est l’argent qui tourne et repart. La spirale, c’est l’argent dont une part reste à chaque tour, et qui grandit. Le concept est né de la Tribune n° 1 et des milliers de réactions qu’elle a suscitées. Il donne son titre au livre en cours de rédaction.</p>
+          <blockquote>Le cercle devient une spirale <span>quand le groupe garde une part.</span></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Réalisations entrepreneuriales -->
+  <section class="band" id="realisations" aria-labelledby="t-real">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Réalisations entrepreneuriales</p><h2 id="t-real">Ce qu’il construit</h2></div>
+        <p>Un média pour expliquer, des données pour prouver, un livre pour fixer la pensée, et un terrain pour tester.</p>
+      </div>
+      <div class="works">
+        <article class="work big">
+          <span class="pill on">En ligne</span>
+          <h3>Éducation Financière Afrique</h3>
+          <p>Une plateforme qui explique l’argent à partir des réalités africaines&nbsp;: la Tribune, le Dico, Min’Fin, Instant’Fin, EFA News, des guides pratiques, un diagnostic financier et la communauté EFA.</p>
+          <div class="nums">
+            <div><b>810 000+</b><small>vues pour la Tribune n° 1, au 9 oct. 2026</small></div>
+            <div><b>1,1 M</b><small>vues sur Facebook en 28 jours, du 9 sept. au 6 oct. 2026</small></div>
+          </div>
+          <a class="more" href="./">Découvrir EFA →</a>
+        </article>
+        <article class="work">
+          <span class="pill wip">Provisoire</span>
+          <h3>EFA Études</h3>
+          <p>L’enquête « L’argent de la tontine »&nbsp;: 251 répondants, données arrêtées le 12 oct. 2026. Prochaine étape&nbsp;: dépasser 300 réponses, avec des quotas par zones et régions.</p>
+          <a class="more" href="methode.html#etudes">Voir les résultats →</a>
+        </article>
+        <article class="work">
+          <span class="pill wip">En cours</span>
+          <h3>Le Cercle et la Spirale</h3>
+          <p>Un livre sur la tontine, ce qu’elle fait, pour qui et à quelles conditions, et sur ce qu’il faudrait pour qu’à chaque tour, quelque chose reste.</p>
+        </article>
+        <article class="work">
+          <span class="pill">Terrain</span>
+          <h3>Des tontines laboratoires</h3>
+          <p>Il anime des tontines lancées comme cas d’étude, où le groupe s’accorde dès le départ pour garder une réserve en caisse. Il reste aussi simple membre de tontines qu’il n’organise pas.</p>
+        </article>
+        <article class="work">
+          <span class="pill">Podcast</span>
+          <h3>Diasporafrique</h3>
+          <p>Le podcast qu’il anime.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Biographie de référence -->
+  <section class="band alt" id="biographie" aria-labelledby="t-bio">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Pour la presse et les organisateurs</p><h2 id="t-bio">Biographie de référence</h2></div>
+        <p>Trois longueurs, un même texte de référence. Merci d’utiliser l’une de ces versions pour présenter Élysée Johnson.</p>
+      </div>
+      <div class="bios">
+        <div class="tabs" role="tablist" aria-label="Longueur de la biographie">
+          <button type="button" role="tab" id="tb-1" aria-selected="false" aria-controls="bio" data-k="ligne">Une ligne<small>Bandeau, légende</small></button>
+          <button type="button" role="tab" id="tb-2" aria-selected="true" aria-controls="bio" data-k="courte">Courte<small>Programme, invitation</small></button>
+          <button type="button" role="tab" id="tb-3" aria-selected="false" aria-controls="bio" data-k="longue">Longue<small>Article, conférence</small></button>
+        </div>
+        <div class="bio" id="bio" role="tabpanel" aria-live="polite">
+          <p id="bio-t"></p>
+          <div class="row"><button type="button" class="btn" id="copy">Copier le texte</button><span class="count" id="bio-n"></span></div>
+        </div>
+      </div>
+      <div class="contact">
+        <p>Interviews, conférences, partenariats&nbsp;:</p>
+        <code id="mail">newsletter@efa.africa</code>
+        <button type="button" class="btn s" id="copy-mail">Copier l’adresse</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+    <span>Éducation Financière Afrique © 2026</span>
+    <a href="./">Accueil</a>
+    <a href="methode.html">Études &amp; outils</a>
+    <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Les tribunes</a>
+    <a href="confidentialite.html">Vos données</a>
+    <span>Mis à jour le 19 octobre 2026</span>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+var BIOS={
+  ligne:"Élysée Johnson, financier, fondateur d’Éducation Financière Afrique (EFA).",
+  courte:"Élysée Johnson est le fondateur d’Éducation Financière Afrique (EFA), une plateforme qui explique l’argent à partir des réalités africaines. Après une décennie dans la banque d’investissement, le capital-investissement et le conseil, à Paris, New York et Abidjan, il travaille sur une question : comment l’argent qui circule devient du capital qui reste.",
+  longue:"Élysée Johnson est le fondateur d’Éducation Financière Afrique (EFA), une plateforme qui explique l’argent à partir des réalités africaines. Formé à l’ENSEA et à l’ESCP, il a passé une décennie dans le conseil en stratégie (Chappuis Halder, Capgemini Invent, Onpoint Africa), la banque d’investissement (BPCE, Citibank) et le capital-investissement (I&P), à Paris, New York et Abidjan. Sa Tribune « La tontine n’est pas de l’épargne », vue plus de 810 000 fois, a ouvert un débat public sur la différence entre l’argent qui circule et le capital qui reste. Il en a tiré le concept du Cercle et de la Spirale, titre du livre qu’il rédige, et une conviction : la confiance précède le capital. Avec EFA Études, il documente la tontine par l’enquête et les données."
+};
+var cur='courte', t=document.getElementById('bio-t'), n=document.getElementById('bio-n'), toast=document.getElementById('toast');
+function words(s){return s.split(/\s+/).filter(function(w){return /[\wÀ-ÿ]/.test(w);}).length;}
+function show(k){cur=k;t.textContent=BIOS[k];n.textContent=words(BIOS[k])+' mots';
+  document.querySelectorAll('.tabs button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.k===k));});}
+document.querySelector('.tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)show(b.dataset.k);});
+function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(say.t);say.t=setTimeout(function(){toast.classList.remove('on');},2200);}
+function selectEl(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+function copy(text,el,msg){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){say(msg);},function(){selectEl(el);say('Texte sélectionné : copiez-le avec votre clavier.');});}
+  else{selectEl(el);say('Texte sélectionné : copiez-le avec votre clavier.');}
+}
+document.getElementById('copy').addEventListener('click',function(){copy(BIOS[cur],t,'Biographie copiée');});
+document.getElementById('copy-mail').addEventListener('click',function(){var m=document.getElementById('mail');copy(m.textContent,m,'Adresse copiée');});
+show('courte');
+
+/* L'emblème : 12 points gris (le cercle) et une spirale de points bleus qui grossissent vers l'extérieur ; le point orange circule. */
+(function(){
+  var cv=document.getElementById('cv'); if(!cv) return;
+  var c=cv.getContext('2d'), S=cv.width, C=S/2, R=S*.42, still=matchMedia('(prefers-reduced-motion: reduce)').matches, a0=0;
+  function dot(x,y,r,col){c.beginPath();c.arc(x,y,r,0,7);c.fillStyle=col;c.fill();}
+  function draw(){
+    c.clearRect(0,0,S,S);
+    for(var k=0;k<12;k++){var a=-Math.PI/2+k*Math.PI/6;dot(C+Math.cos(a)*R,C+Math.sin(a)*R,S*.018,'#2A3550');}
+    var M=46;
+    for(var i=0;i<M;i++){var q=i/(M-1),a=-Math.PI/2+q*2.6*2*Math.PI,r=R*(.08+.82*Math.pow(q,.8));
+      dot(C+Math.cos(a)*r,C+Math.sin(a)*r,S*(.006+.02*q),q<.98?'#6DB8F2':'#2188D6');}
+    var ao=-Math.PI/2+a0;
+    var g=c.createRadialGradient(C+Math.cos(ao)*R,C+Math.sin(ao)*R,0,C+Math.cos(ao)*R,C+Math.sin(ao)*R,S*.08);
+    g.addColorStop(0,'rgba(240,96,63,.6)');g.addColorStop(1,'rgba(240,96,63,0)');c.fillStyle=g;c.fillRect(0,0,S,S);
+    dot(C+Math.cos(ao)*R,C+Math.sin(ao)*R,S*.026,'#F0603F');
+  }
+  function loop(){a0+=.012;draw();requestAnimationFrame(loop);}
+  draw(); if(!still) requestAnimationFrame(loop);
+})();
+</script>
+
+<!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
