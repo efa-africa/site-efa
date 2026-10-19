@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Mes outils et diagnostic · EFA</title>
+<meta name="description" content="Comprendre votre argent, avec vos chiffres. Les outils gratuits d'Éducation Financière Afrique : Où est passé mon argent ? et Mon diagnostic financier complet.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:title" content="Mes outils et diagnostic · EFA">
+<meta property="og:description" content="Comprendre votre argent. Avec vos chiffres. Des outils gratuits, étape par étape.">
+<meta property="og:url" content="https://efa.africa/outils.html">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#2188D6; --corail:#E44828;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --line:#E2D8C4;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--nuit);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;overflow-wrap:break-word}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:1100px){.brand span{display:none}}
+@media (max-width:900px){
+  .brand span{display:inline;font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none;text-align:center}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-weight:900;font-size:30px;text-transform:uppercase;white-space:normal}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+.intro{background:var(--nuit);color:#fff;padding-block:40px 48px}
+.mission{font-weight:700;font-size:14px;line-height:1.45;color:#C9D1DE}
+.mission .mc{color:#EC6243;font-weight:800}.mission .ms{color:var(--soft-bleu);font-weight:800}
+.kick{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail);margin-top:24px}
+.intro h1{font-size:clamp(46px,8vw,88px);margin-top:10px}
+.intro .lead{margin-top:14px;font-size:clamp(17px,2.2vw,21px);color:#E8EDF5;max-width:36em}
+main{padding-block:36px 64px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.tool{background:var(--papier);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:14px;align-content:start;min-width:0}
+.tool .tag{justify-self:start;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:6px;background:#E5F1FB;color:#0E3B60}
+.tool h2{font-size:clamp(32px,4vw,44px)}
+.tool .q{font-size:17px;color:var(--ink)}
+.tool dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:15px}
+.tool dt{font-weight:800;color:var(--ink2)}
+.tool dd{margin:0}
+.tool .note{font-size:13px;color:var(--ink2)}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:12px 22px;border-radius:12px;font:800 17px/1.2 var(--f-body);text-decoration:none;text-align:center;margin-top:4px}
+.btn-main{background:var(--corail);color:#fff}
+.btn-dark{background:var(--nuit);color:#fff}
+.how{margin-top:28px;display:grid;gap:10px;font-size:15px;color:var(--ink)}
+.how h2{font-size:28px}
+footer{background:var(--nuit);color:#AEB6C6;padding-block:22px;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:#E8EDF5;text-decoration:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="outils.html" aria-current="page">Mes outils et diagnostic</a>
+    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
+    <a href="methode.html#etudes">Études &amp; Outils</a>
+    <a href="index.html#guides">Guides</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<section class="intro">
+  <div class="wrap">
+    <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+    <p class="kick">Mes outils et diagnostic</p>
+    <h1>Comprendre votre argent. Avec vos chiffres.</h1>
+    <p class="lead">Choisissez votre question. EFA vous accompagne étape par étape et vous propose une première action.</p>
+  </div>
+</section>
+<main class="wrap">
+  <div class="cards" id="cards"></div>
+  <div class="how">
+    <h2>Comment ces outils fonctionnent</h2>
+    <p>Ce sont des outils pédagogiques. Ils décrivent votre situation à partir de ce que vous saisissez, sans rien vérifier, et ne recommandent aucun produit financier. Vos montants restent sur votre téléphone. EFA fait de l’éducation financière, pas du conseil en placement.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>Éducation Financière Afrique © 2026</span>
+    <a href="index.html">Accueil</a>
+    <a href="methode.html#methode">Notre méthode</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+<script>
+// Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
+var OUTILS = [
+  {id:"ou-est-passe-mon-argent", titre:"Où est passé mon argent ?", theme:"Suivre", url:"ou-est-passe-mon-argent.html",
+   description:"Retrouvez les principales destinations de votre argent et les montants qu’il reste à expliquer.",
+   objectif:"Reconstituer une période : ce que vous aviez, ce que vous avez reçu, ce qui est sorti et ce qu’il reste.",
+   acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Vos soldes au début et à la fin, vos principales entrées et sorties. Des estimations suffisent.",
+   duree:"Environ 10 minutes (à confirmer après essais)", disponibilite:"Disponible", version_methode:"1.0", bouton:"Retrouver mon argent", principal:true},
+  {id:"diagnostic", titre:"Mon diagnostic financier complet", theme:"Comprendre", url:"diagnostic.html?src=outils",
+   description:"Faites le point sur vos connaissances, vos habitudes et votre situation financière, puis identifiez vos priorités.",
+   objectif:"Six dimensions, un profil, une priorité et une première action.",
+   acces:"Gratuit. Une première synthèse s’affiche sans email ; le résultat complet est envoyé contre une adresse email ; le parcours 1 (vos chiffres) s’ouvre sur validation.", prix:0, devise:"XOF",
+   infos:"Vos réponses à 19 questions et 4 questions de profil. Aucun montant pour la première étape.",
+   duree:"6 minutes", disponibilite:"Disponible", version_methode:"1.0", bouton:"Faire mon diagnostic",
+   note:"« Complet » désigne le parcours EFA proposé : ce n’est pas un audit exhaustif de votre patrimoine ou de votre solvabilité."}
+];
+(function(){
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+  var prix=function(o){return o.prix>0?esc(o.prix.toLocaleString("fr-FR"))+" FCFA ("+esc(o.devise)+")":"Gratuit";};
+  document.getElementById("cards").innerHTML=OUTILS.map(function(o){
+    return '<article class="tool" id="'+esc(o.id)+'"><span class="tag">'+esc(o.theme)+' · '+esc(o.disponibilite)+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.description)+'</p>'+
+      '<dl><dt>Objectif</dt><dd>'+esc(o.objectif)+'</dd><dt>Accès</dt><dd>'+prix(o)+' · '+esc(o.acces)+'</dd><dt>Il vous faut</dt><dd>'+esc(o.infos)+'</dd><dt>Durée</dt><dd>'+esc(o.duree)+'</dd><dt>Méthode</dt><dd>Version '+esc(o.version_methode)+'</dd></dl>'+
+      (o.note?'<p class="note">'+esc(o.note)+'</p>':'')+
+      '<a class="btn '+(o.principal?'btn-main':'btn-dark')+'" href="'+esc(o.url)+'" data-goatcounter-click="outils-'+esc(o.id)+'">'+esc(o.bouton)+'</a></article>';
+  }).join("");
+  var b=document.getElementById("menu"), n=document.getElementById("nav");
+  b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

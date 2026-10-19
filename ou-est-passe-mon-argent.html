@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Où est passé mon argent ? · EFA</title>
+<meta name="description" content="Votre argent est allé quelque part. Retrouvons où. En cinq étapes, rassemblez ce que vous aviez, ce que vous avez reçu, ce qui est sorti et ce qu'il vous reste. Gratuit, sans inscription.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:title" content="Où est passé mon argent ? · un outil gratuit EFA">
+<meta property="og:description" content="En cinq étapes, retrouvez où est allé votre argent. Gratuit, sans inscription, vos chiffres restent sur votre téléphone.">
+<meta property="og:url" content="https://efa.africa/ou-est-passe-mon-argent.html">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#2188D6; --corail:#E44828;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --line:#E2D8C4; --err:#B3261E;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--nuit);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;overflow-wrap:break-word}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+[tabindex="-1"]:focus,[tabindex="-1"]:focus-visible{outline:0}
+.wrap{max-width:760px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* En-tête */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:1100px){.brand span{display:none}}
+@media (max-width:900px){
+  .brand span{display:inline;font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none;text-align:center}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-weight:900;font-size:30px;text-transform:uppercase;white-space:normal}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+
+/* Ouverture */
+.intro{background:var(--nuit);color:#fff;padding-block:36px 40px}
+.mission{font-weight:700;font-size:14px;line-height:1.45;color:#C9D1DE}
+.mission .mc{color:#EC6243;font-weight:800}.mission .ms{color:var(--soft-bleu);font-weight:800}
+.kick{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.intro .kick{color:var(--soft-corail);margin-top:22px}
+.intro h1{font-size:clamp(46px,9vw,84px);margin-top:10px}
+.intro .lead{margin-top:14px;font-size:clamp(17px,2.2vw,20px);color:#E8EDF5}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.facts span{font-size:13px;font-weight:700;background:rgba(255,255,255,.1);border-radius:999px;padding:6px 12px}
+
+/* Étapes */
+main{padding-block:28px 64px}
+.prog{display:grid;gap:8px;margin-bottom:20px}
+.prog .row{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.prog .bar{height:8px;border-radius:6px;background:var(--line);overflow:hidden}
+.prog .bar i{display:block;height:100%;background:var(--bleu);border-radius:6px;transition:width .3s}
+.step-h{display:grid;gap:8px;margin-bottom:18px}
+.step-h h2{font-size:clamp(34px,6vw,52px)}
+.step-h p{color:var(--ink)}
+.card{background:var(--papier);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px;margin-bottom:14px;min-width:0}
+.card > *{min-width:0}
+.card h3{font-size:24px}
+.hint{font-size:14px;color:var(--ink2)}
+.note{border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.5;background:#EAF4FD;border:1px solid #BFDDF6;color:#0E3B60}
+.note.w{background:#FFF1EC;border-color:#F5C6B8;color:#5A2416}
+.note b{display:block}
+.choices{display:grid;gap:8px}
+.choices.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:560px){.choices.two{grid-template-columns:minmax(0,1fr)}}
+.ch{display:flex;gap:12px;align-items:flex-start;min-height:48px;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;font-weight:600;font-size:16px;line-height:1.35}
+.ch input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--bleu);flex:none}
+.ch small{display:block;font-weight:500;font-size:13px;color:var(--ink2)}
+.ch:has(input:checked){border-color:var(--bleu);background:#F1F8FE}
+.dates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dates label{display:grid;gap:6px;font-size:14px;font-weight:800}
+.dates input,select{min-height:48px;border:2px solid var(--line);border-radius:12px;padding:8px 12px;font:600 16px var(--f-body);color:var(--nuit);background:#fff;width:100%}
+
+/* Champ monétaire */
+.amt{display:grid;gap:8px;padding-block:12px;border-top:1px solid var(--line)}
+.amt:first-of-type{border-top:0}
+.amt .lab{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.amt .lab b{font-size:16px}
+.amt .lab .tot{font-weight:800;font-size:14px;color:var(--bleu);white-space:nowrap}
+.amt .ex{font-size:13px;color:var(--ink2);line-height:1.45}
+.money{display:flex;align-items:center;background:#fff;border:2px solid var(--line);border-radius:12px;padding:0 12px;min-height:50px}
+.money:focus-within{border-color:var(--bleu)}
+.money input{flex:1;min-width:0;width:100%;border:0;outline:0;background:none;font:800 20px/1 var(--f-body);color:var(--nuit);padding:12px 0}
+.money em{font-style:normal;font-weight:800;color:var(--ink2);font-size:14px}
+.money.off{opacity:.55}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{min-height:36px;padding:6px 12px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:700 13px var(--f-body);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--nuit);border-color:var(--nuit);color:#fff}
+.lk{background:none;border:0;padding:6px 0;font:800 14px var(--f-body);color:var(--bleu);cursor:pointer;text-align:left;min-height:36px}
+.lines{display:grid;gap:8px;background:#F8F3E8;border-radius:12px;padding:12px}
+.line{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 64px 40px;gap:6px;align-items:center}
+.line input{min-width:0;width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;font:600 15px var(--f-body);background:#fff}
+.line .x{min-height:44px;border:0;background:none;font-size:20px;color:var(--ink2);cursor:pointer}
+@media (max-width:480px){.line{grid-template-columns:minmax(0,1fr) 64px 40px}.line .ll{grid-column:1/-1}}
+.err{font-size:14px;font-weight:700;color:var(--err)}
+details.grp{border-top:1px solid var(--line)}
+details.grp:first-of-type{border-top:0}
+details.grp > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:52px;font-weight:800;font-size:17px}
+details.grp > summary::-webkit-details-marker{display:none}
+details.grp > summary::after{content:"+";font-size:22px;color:var(--bleu)}
+details.grp[open] > summary::after{content:"−"}
+details.grp > summary span{font-size:14px;color:var(--bleu);margin-left:auto;margin-right:8px;white-space:nowrap}
+.chk{display:grid;gap:8px}
+.chk label{display:flex;gap:10px;align-items:flex-start;font-size:15px;min-height:40px}
+.chk input{width:20px;height:20px;accent-color:var(--bleu);flex:none;margin-top:2px}
+
+/* Navigation des étapes */
+.navs{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 22px;border-radius:12px;border:0;font:800 16px/1.2 var(--f-body);text-decoration:none;cursor:pointer;text-align:center}
+.btn-main{background:var(--corail);color:#fff}
+.btn-dark{background:var(--nuit);color:#fff}
+.btn-line{background:transparent;color:var(--nuit);box-shadow:inset 0 0 0 2px var(--nuit)}
+@media (max-width:560px){.navs .btn{flex:1 1 100%}}
+
+/* Résultat */
+.ex-band{background:var(--nuit);color:#fff;border-radius:14px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.ex-band b{font-size:15px}
+.rap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.rap div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:4px;min-width:0}
+.rap b{font-family:var(--f-display);font-weight:900;font-size:clamp(22px,3.4vw,30px);line-height:1;overflow-wrap:anywhere}
+.rap span{font-size:12px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em}
+.rap .ec{background:var(--nuit);border-color:var(--nuit);color:#fff}.rap .ec span{color:#C9D1DE}
+@media (max-width:640px){.rap{grid-template-columns:repeat(2,minmax(0,1fr))}.rap .ec{grid-column:1/-1}}
+.sent{font-size:18px;font-weight:700;line-height:1.5}
+.sent b{color:var(--bleu)}
+.bars{display:grid;gap:10px}
+.bar-r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline}
+.bar-r .l{font-size:15px;font-weight:700}
+.bar-r .v{font-size:15px;font-weight:800;white-space:nowrap}
+.bar-r .tr{grid-column:1/-1;height:12px;background:#EFE7D6;border-radius:4px;overflow:hidden}
+.bar-r .tr i{display:block;height:100%;background:var(--bleu);border-radius:0 4px 4px 0;min-width:2px}
+.base{font-size:13px;color:var(--ink2)}
+.grps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.grps div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:2px}
+.grps b{font-size:18px}
+.grps span{font-size:13px;color:var(--ink2)}
+.qual{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px}
+.act{background:var(--corail);color:#fff;border-radius:16px;padding:20px;display:grid;gap:10px;margin-bottom:14px}
+.act .kick{color:#FFE3DB}
+.act h3{font-family:var(--f-body);font-weight:800;text-transform:none;font-size:21px;line-height:1.35}
+.act .btn-dark{background:var(--nuit)}
+.act .navs .btn-line{color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.meth{font-size:15px}
+.meth table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.meth td,.meth th{border-top:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+.save{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.save input{width:20px;height:20px;accent-color:var(--bleu);flex:none;margin-top:2px}
+footer{background:var(--nuit);color:#AEB6C6;padding-block:22px;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:#E8EDF5;text-decoration:none}
+.print-only{display:none}
+@media print{
+  .top,.intro,.prog,.navs,.act .navs,footer,.noprint,.ex-band .btn{display:none!important}
+  body{background:#fff}
+  .card,.rap div,.grps div{break-inside:avoid;border-color:#ccc}
+  .print-only{display:block;font-size:12px;color:#444;margin-bottom:10px}
+  .act{background:#fff;color:#000;border:2px solid #000}
+  .act .kick{color:#000}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="outils.html">Mes outils et diagnostic</a>
+    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
+    <a href="methode.html#etudes">Études &amp; Outils</a>
+    <a href="index.html#guides">Guides</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<section class="intro" id="intro">
+  <div class="wrap">
+    <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+    <p class="kick">Mes outils · gratuit, sans inscription</p>
+    <h1>Où est passé mon argent&nbsp;?</h1>
+    <p class="lead">Votre argent est allé quelque part. Retrouvons où. En cinq étapes, rassemblez ce que vous aviez, ce que vous avez reçu, ce qui est sorti et ce qu’il vous reste.</p>
+    <div class="facts"><span>5 étapes</span><span>Environ 10 minutes, à confirmer</span><span>Vos chiffres restent sur votre téléphone</span><span>Aucun email demandé</span></div>
+  </div>
+</section>
+
+<main class="wrap" id="app" aria-live="polite"></main>
+
+<footer>
+  <div class="wrap">
+    <span>Éducation Financière Afrique © 2026</span>
+    <span>Éducation financière, pas conseil en placement</span>
+    <a href="outils.html">Mes outils et diagnostic</a>
+    <a href="index.html">Accueil</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script src="oepma-calc.js"></script>
+<script>
+(function(){
+  "use strict";
+  var C = window.OEPMA, $app = document.getElementById("app");
+  var KEY = "efa_oepma_v1";
+  function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+  var vus = {}; function compteUne(ev){ if(vus[ev]) return; vus[ev]=1; efaCompte(ev); }
+
+  // Menu mobile
+  var mb=document.getElementById("menu"), nv=document.getElementById("nav");
+  mb.addEventListener("click",function(){var o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"Fermer":"Menu";});
+
+  /* ---------- État ---------- */
+  function vide(){ return {v:C.VERSION, etape:1, devise:"XOF", periode:{type:"",debut:"",fin:""}, pratiques:{}, rentrees:"", inclureEpargne:false,
+    confie:{oui:false,debut:{m:null,p:""},fin:{m:null,p:""}}, activite:"", soldes:{}, mouv:{}, engagements:{m:null,p:""}, garder:false, exemple:false, verif:{}}; }
+  var S = vide();
+  function lire(){ try{ var t=localStorage.getItem(KEY)||sessionStorage.getItem(KEY); if(t){ var e=JSON.parse(t); if(e&&e.v===C.VERSION) S=Object.assign(vide(),e);} }catch(e){} }
+  function garde(){ try{ var t=JSON.stringify(S); sessionStorage.setItem(KEY,t); if(S.garder) localStorage.setItem(KEY,t); else localStorage.removeItem(KEY);}catch(e){} }
+  function effacer(){ try{localStorage.removeItem(KEY);sessionStorage.removeItem(KEY);}catch(e){} S=vide(); efaCompte("oepma-effacer"); go(1); }
+  lire();
+
+  /* ---------- Outils ---------- */
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+  var fmt=function(x){ if(x===null||x===undefined||isNaN(x)) return ""; return Math.round(x).toLocaleString("fr-FR").replace(/[   ]/g," "); };
+  var dev=function(){ return "FCFA"; };
+  var F=function(x){ return fmt(x)+" FCFA"; };
+  var parse=function(t,neg){ t=String(t||"").replace(/\s| | /g,"").replace(",","."); var n=neg&&/^-/.test(t); t=t.replace(/[^\d.]/g,""); if(t==="") return null; var v=Math.round(parseFloat(t)); if(isNaN(v)) return null; return n?-v:v; };
+  function get(path){ return path.split(".").reduce(function(o,k){ return o==null?undefined:o[k]; },S); }
+  function set(path,val){ var ks=path.split("."), o=S; for(var i=0;i<ks.length-1;i++){ if(o[ks[i]]==null||typeof o[ks[i]]!=="object") o[ks[i]]={}; o=o[ks[i]]; } o[ks[ks.length-1]]=val; }
+  function amtObj(path){ var a=get(path); if(!a||typeof a!=="object"){ a={m:null,p:""}; set(path,a);} return a; }
+  var ISO=function(d){ return d.toISOString().slice(0,10); };
+
+  /* ---------- Composants ---------- */
+  // Champ monétaire avec précision : Exact, Estimé, Je ne sais pas (+ Rien pour les mouvements)
+  function champ(path, titre, ex, opt){
+    opt=opt||{}; var a=amtObj(path), off=a.p==="inconnu"||a.p==="rien";
+    var chips=[["exact","Exact"],["estime","Estimé"],["inconnu","Je ne sais pas"]]; if(opt.rien) chips.push(["rien","Rien"]);
+    return '<div class="amt" data-amt="'+path+'"><div class="lab"><b>'+esc(titre)+'</b></div>'+(ex?'<p class="ex">'+esc(ex)+'</p>':'')+
+      '<div class="money'+(off?' off':'')+'"><input inputmode="'+(opt.neg?'text':'numeric')+'" autocomplete="off" aria-label="'+esc(titre)+' en FCFA" data-k="'+path+'"'+(opt.neg?' data-neg="1"':'')+' value="'+(a.m!=null&&!off?fmt(a.m):"")+'" placeholder="'+(a.p==="inconnu"?"Inconnu":a.p==="rien"?"0":"Montant")+'"'+(off?' disabled':'')+'><em>FCFA</em></div>'+
+      '<div class="chips" role="group" aria-label="Précision du montant">'+chips.map(function(c){ var on=a.p===c[0]||(c[0]==="exact"&&a.p===""&&a.m!=null); return '<button type="button" data-p="'+c[0]+'" data-for="'+path+'" aria-pressed="'+on+'">'+c[1]+'</button>'; }).join("")+'</div>'+
+      (opt.neg?'<p class="ex">À découvert&nbsp;? Saisissez le solde avec le signe moins, par exemple −15 000.</p>':'')+'</div>';
+  }
+  // Catégorie de mouvement : total simple ou lignes détaillées (jamais les deux)
+  function cat(c){
+    var path="mouv."+c.id, m=amtObj(path), r=C.totalCat(m);
+    var tot=r.v>0?F(r.v)+(r.est?" · estimé":""):r.v===0?"0":r.v===null?"inconnu":"";
+    if(m.mode==="detail"){
+      var L=m.lignes&&m.lignes.length?m.lignes:(m.lignes=[{lib:"",m:null,n:1}]);
+      return '<div class="amt"><div class="lab"><b>'+esc(c.t)+'</b><span class="tot" data-tot="'+c.id+'">'+tot+'</span></div><p class="ex">'+esc(c.ex)+'</p>'+
+        '<div class="lines">'+L.map(function(l,i){ return '<div class="line"><input class="ll" placeholder="Libellé (facultatif)" aria-label="Libellé" data-line="'+c.id+'.'+i+'.lib" value="'+esc(l.lib||"")+'"><input inputmode="numeric" placeholder="Montant" aria-label="Montant en FCFA" data-line="'+c.id+'.'+i+'.m" value="'+(l.m!=null?fmt(l.m):"")+'"><input inputmode="numeric" aria-label="Nombre de fois" title="Nombre de fois" data-line="'+c.id+'.'+i+'.n" value="'+(l.n||1)+'"><button type="button" class="x" data-del="'+c.id+'.'+i+'" aria-label="Supprimer la ligne">×</button></div>'; }).join("")+
+        '<p class="ex">Montant × nombre de fois. Exemple&nbsp;: 500&nbsp;FCFA × 12 achats = 6&nbsp;000&nbsp;FCFA (compté comme estimé).</p>'+
+        '<div class="chips"><button type="button" data-add="'+c.id+'">+ Ajouter une ligne</button></div></div>'+
+        '<button type="button" class="lk" data-mode="'+c.id+'.simple">Revenir à un total unique</button></div>';
+    }
+    return champ(path,c.t,c.ex,{rien:true}).replace('<div class="lab"><b>'+esc(c.t)+'</b></div>','<div class="lab"><b>'+esc(c.t)+'</b><span class="tot" data-tot="'+c.id+'"></span></div>')
+      .replace(/<\/div>$/,'<button type="button" class="lk" data-mode="'+c.id+'.detail">Détailler en plusieurs lignes</button></div>');
+  }
+  function prog(n){ return '<div class="prog"><div class="row"><span>Étape '+n+' sur 5</span><span>'+["","La période","Ce que vous aviez et avez reçu","Ce qui est sorti","Ce qu’il vous reste","Le bilan"][n]+'</span></div><div class="bar"><i style="width:'+(n/5*100)+'%"></i></div></div>'; }
+  function navs(prev,next,label){ return '<div class="navs">'+(prev?'<button type="button" class="btn btn-line" data-go="'+prev+'">← Précédent</button>':'')+'<button type="button" class="btn btn-main" data-go="'+next+'">'+(label||"Continuer")+'</button></div>'; }
+
+  /* ---------- Étapes ---------- */
+  var V={};
+  V[1]=function(){
+    var P=S.periode, pr=S.pratiques;
+    var per=[["dernier_salaire","Depuis mon dernier salaire",""],["derniere_rentree","Depuis ma dernière grosse rentrée","Tontine, récolte, paiement d’un client…"],["sept_jours","Les sept derniers jours",""],["mois_prec","Le mois précédent",""],["perso","Une période de mon choix",""]];
+    var prat=[["especes","Espèces"],["banque","Banque ou microfinance"],["mm","Mobile money"],["tontine","Tontine ou groupe d’épargne"],["proches","Argent reçu ou envoyé à des proches"],["activite","Argent d’une activité mélangé à l’argent personnel"]];
+    var ren=[["regulieres","Régulières"],["variables","Variables selon les jours ou les semaines"],["saisonnieres","Saisonnières"],["melange","Un mélange de plusieurs sources"]];
+    var depuis=P.type==="dernier_salaire"||P.type==="derniere_rentree";
+    return prog(1)+'<div class="step-h"><h2>Quelle période regardons-nous&nbsp;?</h2><p>Choisissez la période qui correspond le mieux à votre façon de recevoir de l’argent.</p></div>'+
+     '<div class="card"><div class="choices">'+per.map(function(o){return '<label class="ch"><input type="radio" name="per" value="'+o[0]+'"'+(P.type===o[0]?" checked":"")+'><span>'+o[1]+(o[2]?'<small>'+o[2]+'</small>':'')+'</span></label>';}).join("")+'</div>'+
+     (P.type?'<div class="dates"><label>Du<input type="date" data-date="debut" value="'+esc(P.debut)+'"></label><label>Au<input type="date" data-date="fin" value="'+esc(P.fin)+'"></label></div>':'')+
+     (depuis?'<p class="note"><b>Pour ne rien compter deux fois</b>Le solde de départ est celui juste avant cette rentrée. La rentrée elle-même se note à l’étape suivante, dans les entrées.</p>':'')+
+     '<label class="dates" style="grid-template-columns:minmax(0,1fr)"><span style="font-size:14px;font-weight:800">Devise</span><select data-devise><option value="XOF"'+(S.devise==="XOF"?" selected":"")+'>FCFA · XOF (Afrique de l’Ouest, UEMOA)</option><option value="XAF"'+(S.devise==="XAF"?" selected":"")+'>FCFA · XAF (Afrique centrale, CEMAC)</option></select></label></div>'+
+     '<div class="card"><h3>Pour vous montrer les catégories utiles, qu’utilisez-vous&nbsp;?</h3><p class="hint">Plusieurs choix possibles, facultatif. Cela adapte les champs affichés, sans aucun jugement.</p><div class="choices two">'+
+       prat.map(function(o){return '<label class="ch"><input type="checkbox" data-prat="'+o[0]+'"'+(pr[o[0]]?" checked":"")+'><span>'+o[1]+'</span></label>';}).join("")+'</div>'+
+       '<label class="ch"><input type="checkbox" data-epargne'+(S.inclureEpargne?" checked":"")+'><span>Suivre aussi mon épargne liquide<small>Un compte ou une caisse d’où vous pouvez retirer rapidement.</small></span></label></div>'+
+     (pr.activite?'<div class="card"><h3>Votre activité</h3><p>Dans vos encaissements, y a-t-il de l’argent qui doit servir à racheter des marchandises ou à payer l’activité&nbsp;?</p><div class="choices"><label class="ch"><input type="radio" name="act" value="separer"'+(S.activite==="separer"?" checked":"")+'><span>Je peux séparer<small>Je note seulement ce que j’ai pris dans la caisse pour mon usage personnel.</small></span></label><label class="ch"><input type="radio" name="act" value="melange"'+(S.activite==="melange"?" checked":"")+'><span>Je ne peux pas encore séparer<small>Je suis la caisse mélangée : encaissements, paiements de l’activité, dépenses personnelles.</small></span></label></div></div>':'')+
+     '<div class="card"><h3>Vos rentrées d’argent sont plutôt…</h3><div class="choices two">'+ren.map(function(o){return '<label class="ch"><input type="radio" name="ren" value="'+o[0]+'"'+(S.rentrees===o[0]?" checked":"")+'><span>'+o[1]+'</span></label>';}).join("")+'</div></div>'+
+     '<div class="card"><h3>Une partie de cet argent appartient-elle à quelqu’un d’autre&nbsp;?</h3><p class="hint">Collecte pour une cérémonie, argent confié pour un achat, cotisations d’une association, somme à retransmettre.</p><div class="choices two"><label class="ch"><input type="radio" name="conf" value="non"'+(!S.confie.oui?" checked":"")+'><span>Non</span></label><label class="ch"><input type="radio" name="conf" value="oui"'+(S.confie.oui?" checked":"")+'><span>Oui</span></label></div>'+
+       (S.confie.oui?'<p class="note">Nous retirerons cette somme de vos soldes. <b>Ne notez ni sa réception ni sa remise dans vos entrées et sorties.</b></p>':'')+'</div>'+
+     '<p class="err" id="e1" hidden></p>'+
+     '<div class="navs"><button type="button" class="btn btn-main" data-go="2">Continuer</button><button type="button" class="btn btn-line" data-act="koffi">Voir un exemple avec Koffi</button></div>';
+  };
+  V[2]=function(){
+    var ps=C.pochesActives(S), cE=C.actives(S).filter(function(c){return c.sens==="E";});
+    return prog(2)+'<div class="step-h"><h2>Combien aviez-vous, et combien avez-vous reçu&nbsp;?</h2></div>'+
+     '<div class="card"><h3>A · L’argent présent au début</h3><p class="hint">'+(S.periode.debut?"Au "+esc(S.periode.debut.split("-").reverse().join("/"))+", ":"")+'poche par poche.</p>'+
+       ps.map(function(p){return champ("soldes."+p.id+".debut",p.t,"",{neg:p.neg});}).join("")+
+       (S.confie.oui?champ("confie.debut","Dont argent appartenant à d’autres","Cette somme sera retirée du total."):"")+
+       '<p class="sent" data-s0></p></div>'+
+     '<div class="card"><h3>B · Les entrées pendant la période</h3><p class="note"><b>Tout ce qui entre n’est pas un revenu.</b>Un emprunt devra être remboursé, et une vente transforme un bien en argent. Notez le salaire net réellement encaissé : n’ajoutez pas les retenues déjà prélevées.</p>'+
+       cE.map(cat).join("")+'</div>'+navs(1,3);
+  };
+  V[3]=function(){
+    var cO=C.actives(S).filter(function(c){return c.sens==="O";});
+    var groupes=[["vie","Vie quotidienne, santé et loisirs",["alim","depl","tel","loge","sante","achats"]],["sol","Proches et solidarité",["sol_prev","sol_exc","even"]],["dette","Dettes remboursées",["dette"]],["tontine","Tontine",["ton_cot","ton_frais","ton_autre"]],["ep","Épargne, biens et activité",["epargne_ext","biens","act_pay"]],["pret","Prêts accordés",["pret"]],["autre","Frais et autres sorties",["frais","nonclasse","autre_o"]]];
+    var dispo=cO.map(function(c){return c.id;});
+    return prog(3)+'<div class="step-h"><h2>Qu’avez-vous fait de cet argent&nbsp;?</h2><p>Ouvrez les rubriques qui vous concernent. Un total par rubrique suffit&nbsp;; vous pouvez aussi détailler.</p></div>'+
+     '<div class="note"><b>Argent déplacé entre vos poches</b>Retirer de votre mobile money, déposer des espèces sur votre téléphone, passer d’un compte à l’autre&nbsp;: si les deux poches sont suivies, ce n’est pas une sortie. Notez seulement les frais (par exemple 500&nbsp;FCFA sur un retrait de 20&nbsp;000), puis les achats faits ensuite. L’argent envoyé à quelqu’un, lui, est une sortie&nbsp;: aide, prêt ou paiement.</div><div style="height:12px"></div>'+
+     '<div class="card">'+groupes.map(function(G,gi){ var ids=G[2].filter(function(i){return dispo.indexOf(i)>=0;}); if(!ids.length) return "";
+        var open=gi===0||ids.some(function(i){var m=S.mouv[i];return m&&(m.m!=null||m.p||m.mode==="detail");})||(G[0]==="sol"&&S.pratiques.proches)||(G[0]==="tontine");
+        return '<details class="grp"'+(open?" open":"")+'><summary>'+G[1]+'<span data-gtot="'+ids.join(",")+'"></span></summary>'+
+          (G[0]==="sol"?'<p class="hint">Un prêt à un proche se note dans « Prêts accordés ». Un paiement fait pour quelqu’un va dans la rubrique concernée.</p>':'')+
+          ids.map(function(i){return cat(cO.filter(function(c){return c.id===i;})[0]);}).join("")+'</details>'; }).join("")+'</div>'+
+     '<div class="card"><h3>Achats à payer plus tard</h3><p class="hint">Un achat à crédit chez un commerçant, pas encore payé&nbsp;: noté pour mémoire, il n’est pas compté dans les sorties de la période.</p>'+champ("engagements","Engagements à venir (pour mémoire)","")+'</div>'+
+     '<div class="card noprint" id="vides-box" hidden><p><b>Certaines rubriques sont restées vides.</b> Une rubrique vide n’est pas comptée comme zéro.</p><div class="navs"><button type="button" class="btn btn-dark" data-act="vides0">Toutes les rubriques vides sont à 0</button></div></div>'+
+     navs(2,4);
+  };
+  V[4]=function(){
+    var ps=C.pochesActives(S), ck=[["esp","Ai-je compté les espèces ?"],["mm","Ai-je vérifié tous mes portefeuilles mobile money ?"],["dbl","Ai-je évité de compter un même montant sur deux supports ?"],["date","Ai-je utilisé la même date pour tous les soldes ?"]];
+    return prog(4)+'<div class="step-h"><h2>Combien vous reste-t-il&nbsp;?</h2><p>'+(S.periode.fin?"Au "+esc(S.periode.fin.split("-").reverse().join("/"))+", ":"")+'dans les mêmes poches qu’au départ.</p></div>'+
+     '<div class="card">'+ps.map(function(p){return champ("soldes."+p.id+".fin",p.t,"",{neg:p.neg});}).join("")+
+       (S.confie.oui?champ("confie.fin","Dont argent appartenant à d’autres","Cette somme sera retirée du total."):"")+'<p class="sent" data-s1></p></div>'+
+     '<div class="card"><h3>Avant de voir le bilan</h3><div class="chk">'+ck.map(function(c){return '<label><input type="checkbox" data-verif="'+c[0]+'"'+(S.verif[c[0]]?" checked":"")+'>'+c[1]+'</label>';}).join("")+'</div>'+
+       '<p class="hint">Ne comptez pas ici l’argent que des proches vous doivent, vos biens, ni une cagnotte de tontine que vous attendez.</p></div>'+navs(3,5,"Voir où est passé mon argent");
+  };
+  V[5]=function(){
+    var b=C.bilan(S), q=b.qualite, cats={}; C.CATS.forEach(function(c){cats[c.id]=c.t;});
+    compteUne("oepma-resultat");
+    var phrase;
+    if(b.ecart===null) phrase="Il manque un solde de départ ou de fin : nous ne pouvons pas calculer d’écart. Voici l’analyse partielle des mouvements saisis.";
+    else if(b.ecart===0) phrase="Vos montants se rapprochent&nbsp;: les mouvements déclarés expliquent le solde final.";
+    else if(b.ecart>0) phrase="Il reste <b>"+F(b.ecart)+"</b> à expliquer&nbsp;: vérifiez les sorties oubliées et les montants saisis.";
+    else phrase="Vous avez <b>"+F(-b.ecart)+"</b> de plus que prévu&nbsp;: vérifiez les entrées oubliées, les doublons et les soldes.";
+    var resume="Vous avez identifié <b>"+F(b.O)+"</b> de sorties."+(b.S1!==null?" Il vous reste <b>"+F(b.S1)+"</b> dans les poches suivies.":"")+(b.ecart?" Un écart de <b>"+F(Math.abs(b.ecart))+"</b> reste à vérifier.":"");
+    var st={partiel:"Analyse partielle",["partiel-flux"]:"Résultat partiel : certains montants sont inconnus",estimatif:"Résultat estimatif",complet:"Résultat déclaratif"}[b.statut];
+    var PL={dernier_salaire:"depuis mon dernier salaire",derniere_rentree:"depuis ma dernière grosse rentrée",sept_jours:"les sept derniers jours",mois_prec:"le mois précédent",perso:"période de mon choix"};
+    var d2=function(x){return x.split("-").reverse().join("/");};
+    var per=S.periode.debut&&S.periode.fin?"du "+d2(S.periode.debut)+" au "+d2(S.periode.fin):(PL[S.periode.type]||"période non précisée")+(S.periode.fin?", jusqu’au "+d2(S.periode.fin):"");
+    var max=b.dest.length?b.dest[0].v:0;
+    var actLink={soldes:["Corriger mes soldes","2"],ecart_pos:["Revoir mes sorties","3"],ecart_neg:["Revoir mes entrées","2"],releve:["Recevoir le guide (fiche 2)","guide"],coherent:["Faire mon diagnostic financier complet","diag"]}[b.action.k];
+    var actBtn=actLink[1]==="guide"?'<a class="btn btn-dark" href="index.html#guide">'+actLink[0]+'</a>':actLink[1]==="diag"?'<a class="btn btn-dark" href="diagnostic.html?src=oepma">'+actLink[0]+'</a>':'<button type="button" class="btn btn-dark" data-go="'+actLink[1]+'">'+actLink[0]+'</button>';
+    return prog(5)+(S.exemple?'<div class="ex-band"><b>Exemple de Koffi : montants illustratifs.</b><button type="button" class="btn btn-main" data-act="mesChiffres">Commencer avec mes chiffres</button></div>':'')+
+     '<p class="print-only">Éducation Financière Afrique · Où est passé mon argent ? · méthode '+esc(b.version)+' · '+esc(per)+' · FCFA ('+esc(S.devise)+') · résultat déclaratif, établi à partir des informations saisies.</p>'+
+     '<div class="step-h"><p class="kick">'+esc(st)+' · '+esc(per)+'</p><h2>Voici où est passé votre argent</h2><p class="sent">'+resume+'</p></div>'+
+     '<div class="card"><h3>A · Le rapprochement</h3><div class="rap"><div><span>Au départ</span><b>'+(b.S0===null?"?":fmt(b.S0))+'</b></div><div><span>Entrées</span><b>'+fmt(b.E)+'</b></div><div><span>Sorties identifiées</span><b>'+fmt(b.O)+'</b></div><div><span>À la fin</span><b>'+(b.S1===null?"?":fmt(b.S1))+'</b></div><div class="ec"><span>Écart à vérifier</span><b>'+(b.ecart===null?"—":fmt(b.ecart))+'</b></div></div>'+
+       '<p class="hint">Montants en FCFA ('+esc(S.devise)+'). Solde final attendu = départ + entrées − sorties'+(b.attendu!==null?" = "+F(b.attendu):"")+'.</p><p class="sent">'+phrase+'</p>'+
+       (b.ecart===0?'<p class="hint">Un écart nul ne prouve pas que tout est exact : deux erreurs peuvent se compenser.</p>':'')+'</div>'+
+     '<div class="card"><h3>B · Les destinations</h3>'+(b.dest.length?'<div class="bars">'+b.dest.map(function(d){return '<div class="bar-r" title="'+esc(d.t)+' : '+F(d.v)+(d.pct!==null?" · "+Math.round(d.pct*100)+" %":"")+'"><span class="l">'+esc(d.t)+(d.est?' <small class="hint">(estimé)</small>':'')+'</span><span class="v">'+F(d.v)+(d.pct!==null?' · '+Math.round(d.pct*100)+'&nbsp;%':'')+'</span><span class="tr"><i style="width:'+(d.v/max*100)+'%"></i></span></div>';}).join("")+'</div><p class="base">Pourcentages calculés sur les '+F(b.O)+' de sorties identifiées. L’écart n’est pas une dépense : il est présenté à part.</p>':'<p class="hint">Aucune sortie déclarée sur la période.</p>')+'</div>'+
+     '<div class="card"><h3>C · Ce que ces sorties représentent</h3>'+(b.groupes.length?'<div class="grps">'+b.groupes.map(function(g){return '<div><span>'+esc(g.t)+'</span><b>'+F(g.v)+'</b></div>';}).join("")+'</div>':'')+
+       '<p>Sortir de votre compte ne signifie pas forcément disparaître&nbsp;: une partie peut avoir servi à vivre, aider, rembourser, épargner ou acquérir un bien. Les cotisations de tontine ne sont pas pour autant une épargne disponible.</p>'+
+       (b.solidarite.total>0?'<p>Vous avez consacré <b>'+F(b.solidarite.total)+'</b> aux proches et aux contributions sur cette période'+(b.solidarite.exceptionnel>0?', dont <b>'+F(b.solidarite.exceptionnel)+'</b> pour des événements exceptionnels':'')+'. Souhaitez-vous distinguer ce que vous pouvez prévoir chaque mois des demandes exceptionnelles&nbsp;?</p>':'')+
+       (b.messages.length?'<div class="note w">'+b.messages.map(function(m){return '<p>'+esc(m)+'</p>';}).join("")+'</div>':'')+'</div>'+
+     '<div class="card"><h3>D · Qualité des informations</h3><ul class="qual"><li>Période analysée : '+esc(per)+'.</li><li>Poches incluses : '+C.pochesActives(S).map(function(p){return p.t;}).join(", ")+(S.confie.oui?" (argent confié retiré)":"")+'.</li><li>Montants estimés : '+q.estimes+'.</li>'+
+       (q.inconnus.length?'<li>Montants inconnus : '+q.inconnus.map(function(i){return cats[i];}).join(", ")+'.</li>':'')+
+       (q.soldesManquants.length?'<li>Soldes manquants : '+q.soldesManquants.length+'.</li>':'')+
+       (q.vides.length?'<li>Rubriques laissées vides (non comptées) : '+q.vides.length+'.</li>':'')+
+       '<li>Écart restant : '+(b.ecart===null?"non calculable":F(b.ecart))+'.</li></ul></div>'+
+     '<div class="act"><p class="kick">E · Votre première action</p><h3>'+esc(b.action.t)+'</h3><p>'+esc(b.action.d)+'</p><div class="navs">'+actBtn+'</div></div>'+
+     '<div class="navs noprint"><button type="button" class="btn btn-line" data-go="2">Corriger mes chiffres</button><button type="button" class="btn btn-line" data-act="pdf">Imprimer / enregistrer en PDF</button><a class="btn btn-main" href="diagnostic.html?src=oepma">Faire mon diagnostic financier complet</a></div>'+
+     '<div class="card noprint" style="margin-top:14px"><label class="save"><input type="checkbox" data-garder'+(S.garder?" checked":"")+'><span>Garder mes chiffres sur ce téléphone, pour y revenir plus tard. Sinon, ils sont effacés à la fermeture de la page.</span></label><button type="button" class="lk" data-act="effacer">Effacer mes données de cet appareil</button></div>'+
+     '<details class="card meth"><summary><b>Méthode et limites</b></summary><p>Solde final attendu = argent au départ + entrées − sorties. Écart à vérifier = solde attendu − solde constaté à la fin. Un transfert entre deux poches suivies n’est ni une entrée ni une sortie. Un champ vide n’est pas compté comme zéro ; « Je ne sais pas » reste inconnu. Aucune note ni aucun score : l’outil décrit des mouvements passés, il ne juge pas.</p>'+
+       '<table><tr><th>Référence</th><th>Principe retenu</th></tr><tr><td>OCDE / INFE</td><td>Distinguer les connaissances financières des comportements de suivi et de gestion.</td></tr><tr><td>CFPB · Your Money, Your Goals</td><td>Recenser les entrées, suivre les sorties, classer les dépenses et rapprocher les mouvements.</td></tr><tr><td>Microfinance Opportunities, journaux financiers CGAP</td><td>Prendre en compte les revenus irréguliers, les espèces, les transferts et les multiples instruments des ménages.</td></tr></table>'+
+       '<p class="hint" style="margin-top:10px">Méthode pédagogique EFA '+esc(b.version)+', inspirée des approches de suivi des revenus, dépenses et mouvements financiers. Les résultats dépendent des informations saisies. Cet outil n’est ni certifié ni approuvé par les organismes cités. Vos montants restent dans ce navigateur : rien n’est envoyé.</p></details>';
+  };
+
+  /* ---------- Rendu et navigation ---------- */
+  function majTotaux(){
+    var b=C.bilan(S);
+    document.querySelectorAll("[data-tot]").forEach(function(e){ var r=C.totalCat(S.mouv[e.dataset.tot]); e.textContent=r.v>0?F(r.v)+(r.est?" · estimé":""):r.v===0?"0":r.v===null?"inconnu":""; });
+    document.querySelectorAll("[data-gtot]").forEach(function(e){ var s=0; e.dataset.gtot.split(",").forEach(function(i){ var r=C.totalCat(S.mouv[i]); if(r.v>0) s+=r.v; }); e.textContent=s?F(s):""; });
+    var s0=document.querySelector("[data-s0]"); if(s0) s0.innerHTML=b.S0===null?"Total au départ : à compléter.":"Total au départ : <b>"+F(b.S0)+"</b>";
+    var s1=document.querySelector("[data-s1]"); if(s1) s1.innerHTML=b.S1===null?"Total à la fin : à compléter.":"Total à la fin : <b>"+F(b.S1)+"</b>";
+    var vb=document.getElementById("vides-box"); if(vb){ var vO=b.qualite.vides.filter(function(i){return C.CATS.filter(function(c){return c.id===i&&c.sens==="O";}).length;}); vb.hidden=vO.length===0; }
+  }
+  function render(){ document.getElementById("intro").hidden=S.etape>1; $app.innerHTML=V[S.etape](); majTotaux(); }
+  function go(n){
+    n=+n;
+    if(n===2 && S.etape===1 && !S.periode.type){ var e=document.getElementById("e1"); if(e){ e.textContent="Choisissez une période pour continuer."; e.hidden=false; e.scrollIntoView({block:"center"}); } return; }
+    if(S.etape===1 && n===2) compteUne("oepma-debut");
+    S.etape=n; garde(); render(); compteUne("oepma-etape-"+n);
+    var h=$app.querySelector("h2"); if(h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+    window.scrollTo(0,0);
+  }
+  function setPeriode(t){
+    var P=S.periode, d=new Date(); P.type=t;
+    if(t==="sept_jours"){ var a=new Date(d); a.setDate(a.getDate()-6); P.debut=ISO(a); P.fin=ISO(d); }
+    else if(t==="mois_prec"){ var f=new Date(d.getFullYear(),d.getMonth(),0), a2=new Date(f.getFullYear(),f.getMonth(),1); P.debut=ISO(new Date(a2.getTime()-a2.getTimezoneOffset()*6e4)); P.fin=ISO(new Date(f.getTime()-f.getTimezoneOffset()*6e4)); }
+    else { if(!P.fin) P.fin=ISO(d); }
+  }
+
+  $app.addEventListener("input",function(e){
+    var t=e.target;
+    if(t.dataset.k){ var a=amtObj(t.dataset.k); a.m=parse(t.value,!!t.dataset.neg); if(a.m!==null&&(a.p===""||a.p==="rien"||a.p==="inconnu")) a.p=a.p==="estime"?"estime":"exact"; if(a.m===null&&a.p==="exact") a.p=""; }
+    else if(t.dataset.line){ var p=t.dataset.line.split("."), L=S.mouv[p[0]].lignes[+p[1]]; if(p[2]==="lib") L.lib=t.value.slice(0,60); else if(p[2]==="n") L.n=Math.max(1,Math.min(999,parse(t.value)||1)); else L.m=parse(t.value); }
+    else return;
+    garde(); majTotaux();
+  });
+  $app.addEventListener("focusout",function(e){ var t=e.target; if((t.dataset.k||(t.dataset.line&&/\.m$/.test(t.dataset.line)))&&t.value){ var v=parse(t.value,!!t.dataset.neg); if(v!==null) t.value=fmt(v); } });
+  $app.addEventListener("change",function(e){
+    var t=e.target;
+    if(t.name==="per"){ setPeriode(t.value); garde(); return render(); }
+    if(t.dataset.date){ S.periode[t.dataset.date]=t.value; garde(); return; }
+    if(t.dataset.devise!==undefined){ S.devise=t.value; garde(); return; }
+    if(t.dataset.prat){ S.pratiques[t.dataset.prat]=t.checked; if(t.dataset.prat==="activite"&&!t.checked) S.activite=""; garde(); return render(); }
+    if(t.dataset.epargne!==undefined){ S.inclureEpargne=t.checked; garde(); return; }
+    if(t.name==="act"){ S.activite=t.value; garde(); return; }
+    if(t.name==="ren"){ S.rentrees=t.value; garde(); return; }
+    if(t.name==="conf"){ S.confie.oui=t.value==="oui"; garde(); return render(); }
+    if(t.dataset.verif){ S.verif[t.dataset.verif]=t.checked; garde(); return; }
+    if(t.dataset.garder!==undefined){ S.garder=t.checked; garde(); return; }
+  });
+  $app.addEventListener("click",function(e){
+    var t=e.target.closest("button"); if(!t) return;
+    if(t.dataset.go){ return go(t.dataset.go); }
+    if(t.dataset.p){ var a=amtObj(t.dataset["for"]), p=t.dataset.p; if(p==="inconnu"||p==="rien"){ a.p=a.p===p?"":p; if(a.p) a.m=null; } else { a.p=p; } garde(); var y=scrollY; render(); scrollTo(0,y); return; }
+    if(t.dataset.mode){ var q=t.dataset.mode.split("."), m=amtObj("mouv."+q[0]); if(q[1]==="detail"){ m.mode="detail"; m.lignes=m.m!=null?[{lib:"",m:m.m,n:1,p:m.p==="estime"?"estime":""}]:[{lib:"",m:null,n:1}]; m.m=null; m.p=""; } else { var r=C.totalCat(m); m.mode="simple"; m.m=r.v>0?r.v:null; m.p=r.est?"estime":(r.v>0?"exact":""); m.lignes=[]; } garde(); var y2=scrollY; render(); scrollTo(0,y2); return; }
+    if(t.dataset.add){ S.mouv[t.dataset.add].lignes.push({lib:"",m:null,n:1}); garde(); var y3=scrollY; render(); scrollTo(0,y3); return; }
+    if(t.dataset.del){ var d=t.dataset.del.split("."), L=S.mouv[d[0]].lignes; L.splice(+d[1],1); if(!L.length) L.push({lib:"",m:null,n:1}); garde(); var y4=scrollY; render(); scrollTo(0,y4); return; }
+    var act=t.dataset.act;
+    if(act==="vides0"){ var b=C.bilan(S); b.qualite.vides.forEach(function(i){ var c=C.CATS.filter(function(x){return x.id===i;})[0]; if(c&&c.sens==="O"){ S.mouv[i]={m:null,p:"rien"}; } }); garde(); var y5=scrollY; render(); scrollTo(0,y5); return; }
+    if(act==="koffi"){ koffi(); return; }
+    if(act==="mesChiffres"){ S=vide(); garde(); return go(1); }
+    if(act==="pdf"){ efaCompte("oepma-pdf"); try{ window.print(); }catch(err){} return; }
+    if(act==="effacer"){ effacer(); return; }
+  });
+  function koffi(){
+    var A=function(m){return {m:m,p:"exact"};};
+    S=vide(); S.exemple=true; setPeriode("dernier_salaire"); S.pratiques={especes:true,tontine:true,proches:true}; S.rentrees="regulieres";
+    S.soldes={especes:{debut:A(20000),fin:A(20000)}};
+    S.mouv={rev:A(300000),alim:A(140000),sante:A(20000),sol_prev:A(30000),dette:A(25000),ton_cot:A(30000),epargne_ext:A(40000),frais:A(5000)};
+    efaCompte("oepma-koffi"); go(5);
+  }
+  if(/[?&]exemple=koffi/.test(location.search)) koffi(); else render();
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

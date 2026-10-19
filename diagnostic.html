@@ -6,12 +6,12 @@
 <link rel="icon" href="logo-efa.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
-<title>Diagnostic EFA</title>
+<title>Mon diagnostic financier complet · EFA</title>
 <meta name="description" content="Où en êtes-vous avec votre argent ? Un diagnostic gratuit en six minutes, qui compte aussi vos tontines et ce que vous donnez à vos proches.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Diagnostic EFA — Où en êtes-vous avec votre argent ?">
+<meta property="og:title" content="Mon diagnostic financier complet · EFA">
 <meta property="og:description" content="Six dimensions, six minutes, gratuit. Le seul diagnostic qui compte aussi vos tontines et vos proches.">
 <meta property="og:image" content="https://efa-africa.github.io/site-efa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -172,7 +172,7 @@ const APERCU = CFG.APERCU !== false;
 // Première action, selon la dimension à travailler en premier. f = fiche du guide « Construire sa stabilité financière ».
 const ACTIONS = {
   savoir:{a:"Cette semaine, apprenez une notion : la différence entre ce qui passe (le flux) et ce qui reste (le stock). Puis notez vos sept chiffres dans la fiche 1.", f:"Fiche 1 · Mes sept chiffres", l:"index.html#lecons", b:"Lire la leçon Flux (2 min)"},
-  habitudes:{a:"Pendant sept jours, notez chaque dépense, même petite. Puis classez-les dans la fiche 2 : fixes, nécessaires ou choisies.", f:"Fiche 2 · Mes dépenses courantes", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
+  habitudes:{a:"Retrouvez où est passé votre argent sur une période récente : ce que vous aviez, ce que vous avez reçu, ce qui est sorti et ce qu'il reste. Puis classez vos dépenses dans la fiche 2.", f:"Outil · Où est passé mon argent ? · puis fiche 2", l:"ou-est-passe-mon-argent.html?src=diagnostic", b:"Retrouver mon argent"},
   projection:{a:"Écrivez un objectif avec un montant et une date. Puis calculez combien de rentrées il vous faut pour y arriver.", f:"Calcul : épargner pour un projet", l:"cercle-spirale.html#projet", b:"Calculer mon projet"},
   resilience:{a:"Séparez une réserve de votre argent courant et fixez un premier palier : deux semaines de charges. Les paliers suivants sont dans la fiche 5.", f:"Fiche 5 · Ma réserve", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
   rapport:{a:"Cette semaine, attendez 72 heures avant tout achat non prévu. Notez ceux auxquels vous avez renoncé, et la somme épargnée.", f:"Fiche 2 · Mes dépenses courantes", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
@@ -250,12 +250,13 @@ const retour = `<button class="btn ghost" data-act="retour">Retour</button>`;
 const V = {
  accueil() {
   const enCours = S.ans.length > 0 && !S.lead;
-  return `<div class="stack"><p class="step">Diagnostic gratuit · 6 minutes</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
+  return `<div class="stack"><p class="step">Mon diagnostic financier complet · gratuit · 6 minutes</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
    <p class="lead">Le seul diagnostic qui compte aussi vos tontines et ce que vous donnez à vos proches.</p></div>
    <div class="dims">${DIMS.map(d => `<div><b>${d.n}</b><span>${Q.filter(q => q.d === d.k).length} questions</span></div>`).join("")}</div>
    <div class="actions">${S.lead ? `<button class="btn" data-go="resultat">Voir mon résultat</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
      : enCours ? `<button class="btn" data-go="quiz">Reprendre où j'en étais</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
      : `<button class="btn" data-act="start">Commencer</button>`}</div>
+   <p class="small muted">« Complet » désigne le parcours EFA proposé : ce n'est pas un audit exhaustif de votre patrimoine. Vous cherchez plutôt où est passé votre argent ? <a href="ou-est-passe-mon-argent.html?src=diagnostic">Essayez cet outil</a>.</p>
    <p class="small muted">${Q.length} questions, puis ${PROFIL_Q.length} questions de profil. ${APERCU ? "Une première synthèse s'affiche tout de suite. Votre email vous est ensuite demandé pour recevoir le résultat complet et votre première action." : "Votre adresse email vous sera demandée pour afficher le résultat."}</p>`;
  },
  quiz() {
