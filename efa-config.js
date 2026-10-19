@@ -13,6 +13,9 @@ window.EFA_CONFIG = {
   SUBSTACK: "https://educationfinanciereafrique.substack.com",
   GUIDE: "index.html#guide",
 
+  // true = une première synthèse s'affiche avant l'email (situation, point d'appui, priorité) ; false = l'email est demandé avant tout résultat.
+  APERCU: true,
+
   // Adresse pour les demandes de suppression.
   CONTACT: "newsletter@efa.africa",
 

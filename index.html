@@ -250,6 +250,25 @@ details .def b{color:#fff}
 .ask{background:var(--nuit);justify-content:center;gap:36px}
 .ask::before{display:none}
 .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;max-width:1180px;text-align:left}
+.tiles.t3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px}
+@media (max-width:980px){.tiles.t3{grid-template-columns:minmax(0,1fr)}.tiles.t3 .tile{aspect-ratio:auto;min-height:200px}}
+.enq-facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.enq-facts li{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 14px;font-size:15px;line-height:1.35;max-width:16em}
+.enq-facts b{display:block;font-family:var(--f-display);font-weight:900;font-size:30px;line-height:1}
+.enq-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+.enq-links a{color:#fff;font-weight:800;text-underline-offset:3px}
+.bio .lab{font-size:15px;color:#C9D0DC;border-left:3px solid var(--soft-corail);padding-left:12px}
+.bio .lab b{color:#fff}
+.rdv{color:#fff;width:100%;max-width:1180px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:center;text-align:left;background:#141D30;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 24px}
+.rdv-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.rdv-t{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3.4vw,38px);line-height:1;margin-top:6px}
+.rdv-s{font-size:15px;color:#C9D0DC;margin-top:6px}
+.rdv-x{grid-column:1/-1;font-size:14px;color:#AEB6C6}
+.rdv-x a{color:var(--soft-bleu);font-weight:700}
+@media (max-width:760px){.rdv{grid-template-columns:minmax(0,1fr)}.rdv .btn{width:100%}}
+.next-l{font-size:clamp(17px,2vw,20px);font-weight:800;text-align:center;max-width:30em;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.hero-note{font-size:14px;font-weight:600;color:#E8EDF5;text-shadow:0 2px 10px rgba(0,0,0,.8);text-align:center;max-width:30em}
+.hero-alt{font-size:15px;font-weight:800;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8);text-underline-offset:4px}
 .tile{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
 .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
 .tile:hover img{transform:scale(1.05)}
@@ -384,6 +403,16 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .enq-pill a small{display:block;font-weight:600;font-size:12px;opacity:.9}
 .enq-pill button{flex:none;width:36px;height:36px;margin-right:4px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:18px;line-height:1;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.enq-pill{transition:none}}
+/* Concrètement : à qui appartient la réserve */
+.cq-own{background:#FFFDF8;border:2px solid var(--nuit);border-radius:18px;padding:28px;display:grid;gap:14px;min-width:0}
+.cq-own-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.cq-own h3{margin:0;font-size:clamp(30px,4vw,44px)}
+.cq-own-l{margin:0;font-size:17px;line-height:1.55;color:#2A3142;max-width:46em}
+.cq-own-g{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:g}
+.cq-own-g li{background:#F5EFE2;border-radius:12px;padding:16px;display:grid;gap:6px;font-size:15px;line-height:1.5;color:#3A4152;counter-increment:g}
+.cq-own-g b{font-size:17px;color:var(--nuit)}
+.cq-own-g b::before{content:counter(g) " · ";color:var(--corail)}
+@media (max-width:860px){.cq-own{padding:22px}.cq-own-g{grid-template-columns:minmax(0,1fr)}}
 /* Concrètement, quoi ? */
 .concret{background:var(--creme);color:var(--nuit);padding:88px var(--gut);scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
 .concret .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px}
@@ -513,6 +542,8 @@ img.char{object-position:50% 18%}
 .soon strong{color:#fff}
 .btns.left{justify-content:flex-start}
 .btn-dark{background:var(--nuit);color:#fff}
+.g-alt{font-size:15px;color:#FFF3EE;margin-top:4px}
+.g-alt a{color:#fff;font-weight:800;text-underline-offset:3px}
 .btn-dark:hover{filter:brightness(1.25)}
 .soon .btn{min-width:0}
 
@@ -545,10 +576,10 @@ img.char{object-position:50% 18%}
   <a class="brand" href="#accueil"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a class="nav-cta" href="diagnostic.html?src=menu">Diagnostic</a>
+    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
     <a href="methode.html#etudes">Études &amp; Outils</a>
-    <a href="#cercle">Cercle &amp; Spirale</a>
-    <a href="#fondateur">À propos</a>
-    <a href="auteur.html">L’auteur</a>
+    <a href="#guides">Guides</a>
+    <a href="auteur.html">À propos</a>
   </nav>
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
@@ -579,19 +610,46 @@ img.char{object-position:50% 18%}
     <div class="foot">
       <div class="btns">
         <a class="btn btn-main" href="diagnostic.html?src=accueil">Faire mon diagnostic gratuit · 6 min</a>
-        <a class="btn btn-alt" href="#cercle">Découvrir le cercle et la spirale</a>
       </div>
+      <p class="hero-note">Gratuit. Une première synthèse s’affiche tout de suite&nbsp;; votre email n’est demandé qu’ensuite, pour le résultat complet.</p>
+      <a class="hero-alt" href="#cercle">Comprendre le cercle et la spirale</a>
       <span class="cue" aria-hidden="true"></span>
     </div>
     <a class="credit" href="https://unsplash.com/photos/a-group-of-people-standing-around-a-table-filled-with-tomatoes-cnVn4Gg4b00" target="_blank" rel="noopener">Photo&nbsp;: Tunde Buremo / Unsplash</a>
   </section>
 
-  <!-- 1. Le cercle et la spirale : un récit en 4 chapitres piloté par le défilement, puis un configurateur -->
+  <!-- 1. Trois besoins : chacun mène vers un outil -->
+  <section class="screen ask" id="besoins" data-step="Votre besoin">
+    <div class="head">
+      <p class="step">Votre besoin</p>
+      <h2>Qu’est-ce qui vous préoccupe&nbsp;?</h2>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="diagnostic.html?src=besoin-budget" data-goatcounter-click="besoin-budget">
+        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je ne sais pas où passe mon argent</b><small>Faire mon diagnostic · 6 min →</small></span>
+      </a>
+      <a class="tile" href="cercle-spirale.html#argent" data-goatcounter-click="besoin-rentree">
+        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
+        <span><b>Je vais recevoir une grosse somme</b><small>Calculer la part à garder →</small></span>
+      </a>
+      <a class="tile" href="#preter" data-goatcounter-click="besoin-proches">
+        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je veux mieux organiser l’aide aux proches</b><small>La leçon « Prêt ou cadeau&nbsp;? » →</small></span>
+      </a>
+      <a class="tile" href="cercle-spirale.html#groupe" data-goatcounter-click="besoin-tontine">
+        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je veux comprendre ma tontine</b><small>D’où vient la réserve, à qui elle appartient →</small></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. Le cercle et la spirale : un récit en 4 chapitres piloté par le défilement, puis un configurateur -->
   <section class="story" id="cercle" data-step="Étape 1 · Le cercle">
     <div class="stage" data-c="3">
       <canvas class="orbit" id="orbit" aria-hidden="true"></canvas>
       <div class="chaps">
-        <div class="chap on" data-c="3"><p class="step">Le cercle et la spirale</p><h2>Quand une grosse somme arrive, quelle part gardez-vous&nbsp;?</h2><p class="sub">Tontine, prime, 13<sup>e</sup> mois, vente d’une récolte&nbsp;: à 0&nbsp;%, tout repart, c’est le cercle. Gardez une part, la spirale s’ouvre.</p></div>
+        <div class="chap on" data-c="3"><p class="step">Le cercle et la spirale · l’exemple de Koffi</p><h2>Koffi reçoit 300&nbsp;000&nbsp;FCFA. Quelle part garde-t-il&nbsp;?</h2><p class="sub">À 0&nbsp;%, tout repart&nbsp;: c’est le cercle. Koffi garde 10&nbsp;% à chaque rentrée. Changez la part ou le montant, et voyez la différence.</p></div>
       </div>
       <div class="viz-space" aria-hidden="true"></div>
       <div class="dock">
@@ -610,7 +668,7 @@ img.char{object-position:50% 18%}
         </div>
         <p class="res" id="ob-sent"></p>
         <p class="src" id="ob-src">Exemple en FCFA, sur <span id="ob-n">12</span> rentrées d’argent · dans notre enquête (251 répondants), 71&nbsp;% des tontines redistribuent tout</p>
-        <div class="links"><a class="lk" href="#spirale">Continuer</a><a class="lk p" href="methode.html#simulateurs">Détail rentrée par rentrée&nbsp;→</a></div>
+        <div class="links"><a class="lk" href="#spirale">Voir ce que ça change</a><a class="lk p" href="cercle-spirale.html#argent">Calculer avec mes chiffres&nbsp;→</a></div>
       </div>
     </div>
   </section>
@@ -621,7 +679,7 @@ img.char{object-position:50% 18%}
     <div class="head">
       <p class="step">Étape 2 · La spirale</p>
       <h2>Une part reste. Et travaille.</h2>
-      <p class="sub">Une réserve protège. Un outil produit. Une part conservée ou investie peut préparer le tour suivant.</p>
+      <p class="sub">L’argent dépensé a pu être utile&nbsp;: le cercle n’est pas du gaspillage. Ce qui est gardé n’est pas un rendement, c’est votre argent mis de côté. Mais il reste, et il peut préparer le tour suivant.</p>
     </div>
     <div class="foot">
       <div class="stat">
@@ -629,70 +687,95 @@ img.char{object-position:50% 18%}
         <div><b>29 %</b><span>quand il a surtout couvert les dépenses courantes (34 répondants)</span></div>
       </div>
       <p class="src">Enquête exploratoire EFA&nbsp;: 251 personnes interrogées, dont 160 participants à une tontine&nbsp;; 154 ont répondu à cette question · différence observée, pas une preuve de cause · échantillon non représentatif</p>
+      <p class="next-l">Vous voyez ce qui pourrait rester. Voyons maintenant ce que votre situation permet.</p>
       <div class="btns">
-        <a class="btn btn-main" href="#concretement">Concrètement, quoi&nbsp;?</a>
-        <a class="btn btn-line" href="methode.html#enquete">Comprendre ces chiffres</a>
+        <a class="btn btn-main" href="diagnostic.html?src=demo" data-goatcounter-click="demo-diagnostic">Faire mon diagnostic</a>
+        <a class="btn btn-line" href="cercle-spirale.html#groupe" data-goatcounter-click="demo-collectif">Comprendre la spirale collective</a>
       </div>
     </div>
     <a class="credit" href="https://unsplash.com/photos/a-man-smiles-as-he-uses-a-sewing-machine-cU3xxfbB9Es" target="_blank" rel="noopener">Photo&nbsp;: Ali Mkumbwa / Unsplash</a>
   </section>
 
-  <!-- Concrètement : la spirale appliquée à un groupe -->
-  <section class="concret" id="concretement" aria-labelledby="cq-t">
-    <div class="in">
-      <div class="cq-head">
-        <p class="kick">La spirale, en pratique</p>
-        <h2 id="cq-t">Concrètement, quoi&nbsp;?</h2>
-        <p class="lead">Prenez un groupe qui épargne ensemble, une tontine par exemple.</p>
-      </div>
-      <ol class="cq-steps">
-        <li><span class="cq-n">1</span><div><b class="cq-big">1&nbsp;000&nbsp;000 FCFA</b><p><b>10 membres</b> cotisent chacun <b>100&nbsp;000&nbsp;FCFA</b>&nbsp;: chaque tour réunit une cagnotte d’un million.</p></div></li>
-        <li><span class="cq-n">2</span><div><b class="cq-big cq-keep">200&nbsp;000 FCFA</b><p>Au lieu de remettre toute la cagnotte, le groupe décide d’en <b>garder 20&nbsp;%</b>. Le membre dont c’est le tour reçoit 800&nbsp;000&nbsp;FCFA.</p></div></li>
-        <li><span class="cq-n">3</span><div><b class="cq-big cq-keep">2&nbsp;000&nbsp;000 FCFA</b><p>Après <b>10 tours</b>, à la fin du cycle, le groupe a constitué une réserve commune de deux millions.</p></div></li>
-      </ol>
-      <p class="cq-swipe" aria-hidden="true"><span class="cq-dots"></span>Glissez pour suivre les 3 étapes →</p>
-      <div class="cq-use">
-        <h3>Alors, qu’en fait-on&nbsp;?</h3>
-        <div class="cq-cards">
-          <article><span class="cq-tag">Prêter</span><h4>Financer les membres</h4><p>Le groupe accorde des crédits à ses membres, à un taux étudié et connu de tous. Les intérêts restent dans la caisse et font grossir le capital.</p></article>
-          <article><span class="cq-tag">Placer</span><h4>Investir en Bourse</h4><p>Une partie de la réserve est placée sur la BRVM, la Bourse régionale, pour la faire travailler sur plusieurs années.</p></article>
-          <article><span class="cq-tag">Structurer</span><h4>Créer un fonds commun</h4><p>Le groupe se dote d’un fonds de placement, avec des règles écrites, pour gérer son capital dans la durée.</p></article>
-        </div>
-        <p class="cq-swipe" aria-hidden="true"><span class="cq-dots"></span>Glissez pour voir les 3 usages →</p>
-      </div>
-      <div class="cq-far">
-        <div class="cq-far-i">
-          <p class="cq-q">Et dix ans après&nbsp;?</p>
-          <b class="cq-huge">20 millions</b>
-          <p>À raison d’un cycle par an, le groupe a mis de côté 20&nbsp;000&nbsp;000&nbsp;FCFA, avant même les intérêts des prêts et les rendements des placements. Un joli fonds, construit tour après tour.</p>
-        </div>
-        <div class="cq-far-i cq-far-x">
-          <p class="cq-q">Et si vous vous unissiez avec d’autres groupes&nbsp;? 1&nbsp;000 autres&nbsp;?</p>
-          <b class="cq-huge">20 milliards</b>
-          <p>1&nbsp;000 groupes comme le vôtre, c’est 20&nbsp;milliards de FCFA mis en commun. De quoi financer des commerces, des logements, des entreprises&nbsp;: un capital qui nous appartient.</p>
-        </div>
-      </div>
-      <p class="cq-swipe" aria-hidden="true"><span class="cq-dots"></span>Glissez : 10 ans, puis 1&nbsp;000 groupes →</p>
-      <p class="cq-note">Exemple pédagogique. Les montants à dix ans supposent un cycle par an, sans intérêts ni rendements. Prêter et placer comportent des risques&nbsp;: un placement peut baisser et un prêt peut ne pas être remboursé. Des règles écrites et la transparence comptent autant que le taux. EFA fait de l’éducation financière, pas du conseil en placement.</p>
-      <div class="cq-end">
-        <p class="cq-final">Voilà la spirale. <span>Bienvenue chez EFA.</span></p>
-        <div class="btns">
-          <a class="btn btn-main" href="#cercle">Faire le calcul pour mon groupe</a>
-          <a class="btn btn-dark" href="diagnostic.html?src=concretement">Faire mon diagnostic gratuit</a>
+
+
+  <!-- 5. Le guide -->
+  <section class="screen guide" id="guide" data-step="Agir">
+    <!-- Couverture du guide : remplacée automatiquement par guide-couverture.jpg si ce fichier est déposé -->
+    <div class="ph book-wrap">
+      <img class="cover-img" src="guide-couverture.jpg" alt="Couverture du guide Construire sa stabilité financière" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+      <div class="book" aria-hidden="true">
+        <div class="sheet"><b>Fiche 1</b><span>Mes sept chiffres</span><i>Revenus</i><i>Dépenses courantes</i><i>Dettes</i><i>Soutien aux proches</i><i>Tontine</i></div>
+        <div class="cover">
+          <img src="logo-efa.png" alt="" width="44" height="44">
+          <small>Guide gratuit EFA</small>
+          <strong>Construire sa stabilité financière</strong>
+          <em>5 fiches à remplir</em>
+          <svg viewBox="-50 -50 100 100"><g fill="#6DB8F2"><circle cx="0" cy="-6" r="2"/><circle cx="6" cy="-2" r="2.4"/><circle cx="6" cy="6" r="2.8"/><circle cx="-2" cy="12" r="3.2"/><circle cx="-12" cy="6" r="3.6"/><circle cx="-14" cy="-8" r="4"/><circle cx="-4" cy="-20" r="4.4"/><circle cx="14" cy="-20" r="4.8"/><circle cx="26" cy="-4" r="5.2"/></g><circle cx="22" cy="18" r="6" fill="#E44828"/></svg>
         </div>
       </div>
     </div>
+    <div class="side">
+      <p class="step">Agir</p>
+      <h2>Construire sa stabilité financière</h2>
+      <p class="sub">Le guide gratuit EFA&nbsp;: mesurer sa stabilité, puis la construire pilier par pilier. Un cas concret, celui de Koffi, et cinq fiches à remplir avec vos propres chiffres.</p>
+      <ol class="fiches">
+        <li><b>Mes sept chiffres</b><span>Revenus, charges, dettes, réserve&nbsp;: votre score de stabilité.</span></li>
+        <li><b>Mes dépenses courantes</b><span>Fixes, nécessaires ou choisies&nbsp;: où agir.</span></li>
+        <li><b>Mes dettes</b><span>Les classer par coût et choisir l’ordre de remboursement.</span></li>
+        <li><b>Mes obligations sociales</b><span>Funérailles, fêtes, cotisations&nbsp;: une enveloppe sur douze mois.</span></li>
+        <li><b>Ma réserve</b><span>Deux semaines, un mois, trois mois de charges, par paliers.</span></li>
+      </ol>
+      <div class="soon" id="soon">
+        <p id="soon-t"><strong>Le guide est disponible, gratuitement.</strong> Laissez votre email&nbsp;: après un clic de confirmation, il vous est envoyé.</p>
+      </div>
+      <form id="signup-form" novalidate>
+        <div class="row">
+          <input id="f-prenom" name="PRENOM" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
+          <select id="f-pays" name="PAYS" aria-label="Pays">
+            <option value="">Pays</option>
+            <option>Côte d’Ivoire</option><option>Sénégal</option><option>Cameroun</option><option>Bénin</option>
+            <option>Burkina Faso</option><option>Mali</option><option>Togo</option><option>Guinée</option>
+            <option>Niger</option><option>Gabon</option><option>RD Congo</option><option>Congo</option>
+            <option>France</option><option>Autre pays</option>
+          </select>
+        </div>
+        <input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="Adresse email" aria-label="Adresse email" required>
+        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span id="f-ok-t">J’accepte de recevoir le guide et «&nbsp;L’argent de la semaine&nbsp;» chaque mardi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
+        <label class="check" for="f-nl" id="f-nl-l" hidden><input id="f-nl" type="checkbox"><span>Recevoir aussi «&nbsp;L’argent de la semaine&nbsp;», la lettre EFA, chaque mardi. Facultatif.</span></label>
+        <button class="btn btn-main" type="submit">Recevoir le guide</button>
+        <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="g-alt">Vous préférez ne pas laisser d’email ici&nbsp;? <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Recevez-le en répondant au questionnaire (2 min)</a></p>
+      <p class="small">Pas de conseil de placement, pas de produit à vendre. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
+    </div>
   </section>
 
-  <!-- 3. Trois leçons -->
+  <!-- Catalogue des guides : la liste se modifie dans le script (GUIDES), en bas de page -->
+  <section class="cat" id="guides" aria-labelledby="cat-t">
+    <div class="in">
+      <div class="cat-head">
+        <p class="kick">La collection EFA</p>
+        <h2 id="cat-t">Les guides pratiques</h2>
+        <p class="lead">Gratuits, concrets, avec vos propres chiffres. Un nouveau guide paraît au fur et à mesure.</p>
+      </div>
+      <div class="shelf" id="shelf"></div>
+    </div>
+  </section>
+
+
+
+
   <!-- Enquête : tout visiteur est invité à répondre, tontine ou pas -->
   <section class="enq" id="enquete" aria-labelledby="enq-t">
     <div class="in">
       <div class="enq-t">
-        <p class="kick">L’enquête EFA · ouverte</p>
+        <p class="kick">Études &amp; méthode · l’enquête est ouverte</p>
         <h2 id="enq-t">Votre réponse fait avancer l’étude.</h2>
         <p class="lead">Tontine ou pas, nous avons besoin de vous.</p>
         <p>Les chiffres de cette page viennent de 251 personnes qui ont répondu à notre enquête «&nbsp;L’argent de la tontine&nbsp;». Pour aller plus loin, il nous faut plus de voix, et surtout celles de ceux qui ne cotisent pas&nbsp;: comprendre pourquoi on n’entre pas dans une tontine compte autant que savoir ce qu’on en fait.</p>
+        <ul class="enq-facts"><li><b>71&nbsp;%</b> des tontines redistribuent tout</li><li><b>47&nbsp;%</b> n’ont rien gardé de durable du dernier tour</li></ul>
+        <p class="enq-links"><a href="methode.html#etudes">Lire l’étude complète →</a><a href="methode.html#methode">Notre méthode →</a></p>
       </div>
       <div class="enq-box">
         <div class="enq-who">
@@ -704,14 +787,45 @@ img.char{object-position:50% 18%}
           <div class="trk"><span></span></div>
         </div>
         <a class="btn-enq enq-lien" data-goatcounter-click="enquete-section" href="#enquete" target="_blank" rel="noopener">Répondre à l’enquête</a>
-        <p class="enq-note">Quelques minutes. Les résultats sont publiés ici, dans <a href="methode.html#etudes">Études &amp; Outils</a>.</p>
+        <p class="enq-note">Quelques minutes. Les résultats sont publiés ici, avec leur méthode.</p>
       </div>
     </div>
   </section>
 
-  <section class="screen lessons" id="lecons" data-step="Étape 3 · Apprendre">
+  <!-- Mission EFA (milieu de page) -->
+  <section class="mband" aria-label="La mission d’EFA">
+    <svg class="mb-ico" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="40" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg>
+    <p class="mb-t">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  </section>
+
+  <!-- 6. Fondateur -->
+  <section class="screen founder" id="fondateur" data-step="Le fondateur">
+    <blockquote>La confiance <span>précède</span> le capital.</blockquote>
+    <div class="bio">
+      <div class="face">
+        <!-- Portrait : déposer elysee.jpg (cadrage poitrine, fond sobre) ; sinon la spirale s’affiche -->
+        <img src="elysee.jpg" alt="Élysée Johnson" width="300" height="300" onerror="this.remove()">
+        <canvas id="spiral" width="600" height="600" aria-hidden="true"></canvas>
+      </div>
+      <div class="txt">
+        <p class="name">Élysée Johnson</p>
+        <p class="role">Fondateur d’Éducation Financière Afrique</p>
+        <p>Après une décennie dans la banque d’investissement, le capital-investissement et le conseil, à Paris, New York et Abidjan, j’ai créé EFA pour rendre les mécanismes financiers compréhensibles à partir de nos réalités quotidiennes.</p>
+        <p class="lab"><b>Sur le terrain.</b> J’anime aussi des tontines laboratoires, lancées comme cas d’étude, où le groupe s’accorde dès le départ pour garder une réserve en caisse.</p>
+        <a class="go" href="auteur.html">Mon parcours et mes convictions</a>
+        <a class="go" href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Lire mes tribunes</a>
+      </div>
+    </div>
+    <div class="btns">
+      <a class="btn btn-alt" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Rejoindre EFA Community</a>
+      <a class="btn btn-line" href="#contact">Nous écrire</a>
+    </div>
+  </section>
+
+  <!-- Trois leçons -->
+  <section class="screen lessons" id="lecons" data-step="Publications">
     <div class="head">
-      <p class="step">Étape 3 · Apprendre</p>
+      <p class="step">Publications récentes</p>
       <h2>Trois leçons. Deux minutes.</h2>
       <p class="sub">Un mot, une situation, une idée. Gratuit, sans inscription.</p>
     </div>
@@ -754,105 +868,10 @@ img.char{object-position:50% 18%}
       </article>
     </div>
     <p class="swipe" aria-hidden="true"><span class="dots"><i class="on"></i><i></i><i></i></span>Glissez pour voir les 3 leçons →</p>
-  </section>
-
-  <!-- Mission EFA (milieu de page) -->
-  <section class="mband" aria-label="La mission d’EFA">
-    <svg class="mb-ico" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="40" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg>
-    <p class="mb-t">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
-  </section>
-
-  <!-- 4. Questions du visiteur -->
-  <section class="screen ask" id="questions" data-step="Étape 4 · Votre question">
-    <div class="head">
-      <p class="step">Étape 4 · Votre question</p>
-      <h2>Qu’est-ce qui vous préoccupe&nbsp;?</h2>
-    </div>
-    <div class="tiles">
-      <a class="tile" href="diagnostic.html?src=question">
-        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Organiser mon budget</b><small>Faire mon diagnostic →</small></span>
-      </a>
-      <a class="tile" href="#cercle">
-        <!-- Tantie Affoué : déposer affoue.jpg dans le dépôt ; sinon la photo de secours s’affiche -->
-        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
-        <span><b>Préparer mon tour de tontine</b><small>Le cercle et la spirale →</small></span>
-      </a>
-      <a class="tile" href="#preter">
-        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Aider ma famille sans m’épuiser</b><small>Prêt ou cadeau&nbsp;? →</small></span>
-      </a>
-      <a class="tile" href="methode.html#simulateurs">
-        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Épargner pour un projet</b><small>Calculer ce que je peux mettre de côté →</small></span>
-      </a>
-    </div>
-  </section>
-
-  <!-- 5. Le guide -->
-  <section class="screen guide" id="guide" data-step="Étape 5 · Agir">
-    <!-- Couverture du guide : remplacée automatiquement par guide-couverture.jpg si ce fichier est déposé -->
-    <div class="ph book-wrap">
-      <img class="cover-img" src="guide-couverture.jpg" alt="Couverture du guide Construire sa stabilité financière" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
-      <div class="book" aria-hidden="true">
-        <div class="sheet"><b>Fiche 1</b><span>Mes sept chiffres</span><i>Revenus</i><i>Dépenses courantes</i><i>Dettes</i><i>Soutien aux proches</i><i>Tontine</i></div>
-        <div class="cover">
-          <img src="logo-efa.png" alt="" width="44" height="44">
-          <small>Guide gratuit EFA</small>
-          <strong>Construire sa stabilité financière</strong>
-          <em>5 fiches à remplir</em>
-          <svg viewBox="-50 -50 100 100"><g fill="#6DB8F2"><circle cx="0" cy="-6" r="2"/><circle cx="6" cy="-2" r="2.4"/><circle cx="6" cy="6" r="2.8"/><circle cx="-2" cy="12" r="3.2"/><circle cx="-12" cy="6" r="3.6"/><circle cx="-14" cy="-8" r="4"/><circle cx="-4" cy="-20" r="4.4"/><circle cx="14" cy="-20" r="4.8"/><circle cx="26" cy="-4" r="5.2"/></g><circle cx="22" cy="18" r="6" fill="#E44828"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="side">
-      <p class="step">Étape 5 · Agir</p>
-      <h2>Construire sa stabilité financière</h2>
-      <p class="sub">Le guide gratuit EFA&nbsp;: mesurer sa stabilité, puis la construire pilier par pilier. Un cas concret, celui de Koffi, et cinq fiches à remplir avec vos propres chiffres.</p>
-      <ol class="fiches">
-        <li><b>Mes sept chiffres</b><span>Revenus, charges, dettes, réserve&nbsp;: votre score de stabilité.</span></li>
-        <li><b>Mes dépenses courantes</b><span>Fixes, nécessaires ou choisies&nbsp;: où agir.</span></li>
-        <li><b>Mes dettes</b><span>Les classer par coût et choisir l’ordre de remboursement.</span></li>
-        <li><b>Mes obligations sociales</b><span>Funérailles, fêtes, cotisations&nbsp;: une enveloppe sur douze mois.</span></li>
-        <li><b>Ma réserve</b><span>Deux semaines, un mois, trois mois de charges, par paliers.</span></li>
-      </ol>
-      <div class="soon" id="soon">
-        <p id="soon-t"><strong>Le guide est disponible, gratuitement.</strong> Répondez au court questionnaire, il vous est envoyé.</p>
-        <div class="btns left">
-          <a class="btn btn-dark" id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Répondre au questionnaire (2 min)</a>
-        </div>
-        <p class="or" id="or-mail" hidden>Ou laissez simplement votre email&nbsp;:</p>
-      </div>
-      <form id="signup-form" novalidate>
-        <div class="row">
-          <input id="f-prenom" name="PRENOM" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
-          <select id="f-pays" name="PAYS" aria-label="Pays">
-            <option value="">Pays</option>
-            <option>Côte d’Ivoire</option><option>Sénégal</option><option>Cameroun</option><option>Bénin</option>
-            <option>Burkina Faso</option><option>Mali</option><option>Togo</option><option>Guinée</option>
-            <option>Niger</option><option>Gabon</option><option>RD Congo</option><option>Congo</option>
-            <option>France</option><option>Autre pays</option>
-          </select>
-        </div>
-        <input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="Adresse email" aria-label="Adresse email" required>
-        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span>J’accepte de recevoir le guide et «&nbsp;L’argent de la semaine&nbsp;» chaque mardi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
-        <button class="btn btn-main" type="submit">Recevoir le guide</button>
-        <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
-      </form>
-      <p class="small">Pas de conseil de placement, pas de produit à vendre. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
-    </div>
-  </section>
-
-  <!-- Catalogue des guides : la liste se modifie dans le script (GUIDES), en bas de page -->
-  <section class="cat" id="guides" aria-labelledby="cat-t">
-    <div class="in">
-      <div class="cat-head">
-        <p class="kick">La collection EFA</p>
-        <h2 id="cat-t">Les guides pratiques</h2>
-        <p class="lead">Gratuits, concrets, avec vos propres chiffres. Un nouveau guide paraît au fur et à mesure.</p>
-      </div>
-      <div class="shelf" id="shelf"></div>
+    <div class="rdv">
+      <div><p class="rdv-k">Le rendez-vous</p><p class="rdv-t">«&nbsp;L’argent de la semaine&nbsp;», chaque mardi</p><p class="rdv-s">Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture.</p></div>
+      <a class="btn btn-main" href="#guide" data-goatcounter-click="rdv-lettre">Recevoir la lettre</a>
+      <p class="rdv-x">Envie d’échanger&nbsp;? <a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community, le jeudi à 19&nbsp;h</a></p>
     </div>
   </section>
 
@@ -887,29 +906,6 @@ img.char{object-position:50% 18%}
       </div>
     </div>
   </section>
-
-  <!-- 6. Fondateur -->
-  <section class="screen founder" id="fondateur" data-step="Le fondateur">
-    <blockquote>La confiance <span>précède</span> le capital.</blockquote>
-    <div class="bio">
-      <div class="face">
-        <!-- Portrait : déposer elysee.jpg (cadrage poitrine, fond sobre) ; sinon la spirale s’affiche -->
-        <img src="elysee.jpg" alt="Élysée Johnson" width="300" height="300" onerror="this.remove()">
-        <canvas id="spiral" width="600" height="600" aria-hidden="true"></canvas>
-      </div>
-      <div class="txt">
-        <p class="name">Élysée Johnson</p>
-        <p class="role">Fondateur d’Éducation Financière Afrique</p>
-        <p>Après une décennie dans la banque d’investissement, le capital-investissement et le conseil, à Paris, New York et Abidjan, j’ai créé EFA pour rendre les mécanismes financiers compréhensibles à partir de nos réalités quotidiennes.</p>
-        <a class="go" href="auteur.html">Mon parcours et mes convictions</a>
-        <a class="go" href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Lire mes tribunes</a>
-      </div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-alt" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Rejoindre EFA Community</a>
-      <a class="btn btn-line" href="#contact">Nous écrire</a>
-    </div>
-  </section>
 </main>
 
 <!-- Contact : formulaire envoyé par Web3Forms vers newsletter@efa.africa (clé WEB3_CLE, dans le script) -->
@@ -942,19 +938,6 @@ img.char{object-position:50% 18%}
   </div>
 </section>
 
-<section class="week" aria-label="Une semaine avec EFA">
-  <div class="in">
-    <h3>Une semaine avec EFA</h3>
-    <div class="days">
-      <div><small>Lundi</small><b>Le Dico</b><span>Un mot expliqué</span></div>
-      <div><small>Mardi · email</small><b>L’argent de la semaine</b><span>La newsletter</span></div>
-      <div><small>Mercredi</small><b>Min’Fin</b><span>Koffi en une minute</span></div>
-      <div><small>Jeudi 19 h</small><b>EFA Community</b><span>Sur WhatsApp</span></div>
-      <div><small>Vendredi</small><b>Instant’Fin</b><span>Une idée, une affiche</span></div>
-      <div><small>Samedi</small><b>La Tribune</b><span>Le point de vue d’Élysée</span></div>
-    </div>
-  </div>
-</section>
 
 <div class="enq-pill" id="enq-pill" role="complementary" aria-label="Enquête EFA" hidden>
   <a class="enq-lien" data-goatcounter-click="enquete-rappel" href="#enquete" target="_blank" rel="noopener">Répondez à l’enquête tontine<small>Même si vous n’en faites pas · quelques minutes</small></a>
@@ -973,7 +956,8 @@ img.char{object-position:50% 18%}
     <a href="#contact">Nous contacter</a>
     <a href="#guides">Guides</a>
     <a href="#livre">Le livre</a>
-    <a href="auteur.html">L’auteur</a>
+    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
+    <a href="auteur.html">À propos</a>
     <a href="methode.html#methode">Notre méthode</a>
     <a href="confidentialite.html">Confidentialité</a>
     <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
@@ -993,7 +977,7 @@ function efaTickerItems(D){
     {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
     {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
     {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
-    {c:'EFA',t:'Simulateur : quand une grosse somme arrive, quelle part garder ?',h:'methode.html#simulateurs'},
+    {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
     {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
     {c:'EFA',t:'Guide gratuit « Construire sa stabilité financière » : disponible',h:'./#guide'},
     {c:'EFA',t:'Le livre « Le Cercle et la Spirale » : en cours d’écriture',h:'./#livre'}
@@ -1286,16 +1270,32 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
   document.querySelectorAll('.enq-lien').forEach(function(a){
     if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
   });
-  var p=document.getElementById('enq-pill'), sec=document.getElementById('enquete'), hero=document.querySelector('.hero'), foot=document.querySelector('footer');
-  if(!p||!ENQUETE_LIEN) return;
-  try{ if(localStorage.getItem('efa-enq-x')) return; }catch(e){}
-  p.hidden=false;
-  var past=false, hideAt={};
-  function upd(){ var show=past&&!hideAt.sec&&!hideAt.foot; p.classList.toggle('on',show); }
-  new IntersectionObserver(function(es){es.forEach(function(e){past=!e.isIntersecting&&e.boundingClientRect.top<0;});upd();}).observe(hero);
-  new IntersectionObserver(function(es){es.forEach(function(e){hideAt.sec=e.isIntersecting;});upd();}).observe(sec);
-  if(foot) new IntersectionObserver(function(es){es.forEach(function(e){hideAt.foot=e.isIntersecting;});upd();}).observe(foot);
-  document.getElementById('enq-x').addEventListener('click',function(){p.classList.remove('on');setTimeout(function(){p.hidden=true;},400);try{localStorage.setItem('efa-enq-x','1');}catch(e){}});
+  // Rappel : une seule fois par visite, 12 secondes, jamais au-dessus d'un formulaire, d'un simulateur ou d'un bouton de fin de section.
+  var p=document.getElementById('enq-pill'), start=document.getElementById('spirale');
+  if(!p||!ENQUETE_LIEN||!start) return;
+  try{ if(localStorage.getItem('efa-enq-x')||sessionStorage.getItem('efa-enq-vu')) return; }catch(e){}
+  var zones=['#cercle','#spirale','#enquete','#guide','#livre','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
+  var inZone=new Set(), armed=false, done=false, timer=null;
+  function hide(){p.classList.remove('on');}
+  function under(){
+    var r=p.getBoundingClientRect(); if(!r.width) r={left:16,right:innerWidth-16,top:innerHeight-80,bottom:innerHeight-16};
+    var pts=[[r.left+12,r.top+8],[r.right-12,r.top+8],[(r.left+r.right)/2,(r.top+r.bottom)/2],[r.left+12,r.bottom-8],[r.right-12,r.bottom-8]];
+    return pts.some(function(q){return document.elementsFromPoint(q[0],q[1]).some(function(e){return !p.contains(e)&&e.closest&&e.closest('a,button,input,select,textarea,label,summary,.tk');});});
+  }
+  function upd(){
+    if(done) return;
+    var busy=inZone.size>0||under()||(document.activeElement&&/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName));
+    if(armed&&!busy){
+      p.hidden=false; requestAnimationFrame(function(){p.classList.add('on');});
+      if(!timer){ try{sessionStorage.setItem('efa-enq-vu','1');}catch(e){} timer=setTimeout(function(){done=true;hide();},12000); }
+    } else hide();
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)inZone.add(e.target);else inZone.delete(e.target);});upd();},{rootMargin:'0px 0px -10% 0px'});
+  zones.forEach(function(z){io.observe(z);});
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0)armed=true;});upd();}).observe(start);
+  var raf=0; addEventListener('scroll',function(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;upd();});},{passive:true});
+  document.addEventListener('focusin',upd); document.addEventListener('focusout',function(){setTimeout(upd,50);});
+  document.getElementById('enq-x').addEventListener('click',function(){done=true;hide();setTimeout(function(){p.hidden=true;},400);try{localStorage.setItem('efa-enq-x','1');}catch(e){}});
 })();
 // Catalogue des guides. Pour publier un guide : passer dispo à true et mettre son lien.
 // GUIDE_LIEN : lien du formulaire Google Forms qui envoie « Construire sa stabilité financière ».
@@ -1355,6 +1355,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
 
 // Formulaire → Brevo (liste « Newsletter EFA », double confirmation).
 // BREVO_URL : adresse « action » du formulaire Brevo (Contacts › Formulaires › Partager › code HTML).
+var NL_SEPAREE=false;
 var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhlcS3Knrj0HOrhpnsbgPHCoa1GSLsbsCmk1lvMWF8o_An6q6BYBz85koQiVVRpHhage71-PdxWrT1OFhCY5iidi-UIq-C34WPbWb-FGUjhGa5kXw3NytB242VM_LTd9sbakiFejMRUqseZNiyuN8LB_U_cvRkJ7v0E1SyaD-_RVTlQfAI7JLVRw==';
 (function(){
   var f=document.getElementById('signup-form'), m=document.getElementById('formmsg'), b=f.querySelector('button[type=submit]');
@@ -1363,8 +1364,12 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
   // Tant que Brevo n'est pas branché, on ne demande pas l'email : on l'annonce avant
   if(BREVO_URL){var c=document.querySelector('[data-cta]'),s=document.querySelector('[data-cta-short]');if(c)c.textContent='Recevoir le guide gratuit';if(s)s.textContent='Guide gratuit';}
   if(!BREVO_URL){f.hidden=true;return;}
-  document.getElementById('or-mail').hidden=false;
-  document.getElementById('soon-t').innerHTML='<strong>Le guide est disponible, gratuitement.</strong> Deux façons de le recevoir&nbsp;:';
+  // NL_SEPAREE : passer à true une fois le champ booléen NEWSLETTER ajouté au formulaire Brevo (et la liste « Guide EFA » choisie).
+  // Le guide et la newsletter deviennent alors deux consentements distincts ; la case newsletter est décochée par défaut.
+  if(NL_SEPAREE){
+    document.getElementById('f-ok-t').innerHTML='Je souhaite recevoir le guide par email. <a href="confidentialite.html">Vos données</a>';
+    document.getElementById('f-nl-l').hidden=false;
+  }
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var em=document.getElementById('f-email').value.trim();
@@ -1375,7 +1380,8 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
     var d=new FormData();
     d.append('EMAIL',em); d.append('PRENOM',document.getElementById('f-prenom').value.trim());
     d.append('PAYS',document.getElementById('f-pays').value); d.append('email_address_check',''); d.append('locale','fr');
-    b.disabled=true; say('Envoi en cours…'); efaCompte('guide-email');
+    if(NL_SEPAREE) d.append('NEWSLETTER',document.getElementById('f-nl').checked?'true':'false');
+    b.disabled=true; say('Envoi en cours…'); efaCompte('guide-demande');
     fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'}).then(function(){
       f.reset(); say('Demande envoyée. Un email de confirmation doit arriver dans les minutes qui viennent (regardez aussi Promotions et Spam)&nbsp;; le guide suit dès que vous confirmez. Rien reçu&nbsp;? <a href="'+(GUIDE_LIEN||WA)+'" target="_blank" rel="noopener">Recevez-le par le questionnaire</a>.');
     }).catch(function(){say('L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.');}).then(function(){b.disabled=false;});

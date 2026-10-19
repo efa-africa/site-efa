@@ -101,6 +101,14 @@ button{font:inherit}
 .box{border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
 .box.alert{background:var(--alert-bg);color:var(--alert-ink);border-left:4px solid var(--corail)}
 .box.alert h3{color:inherit}
+.b4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.card.lockd{border-style:dashed}
+.box.act{background:var(--corail);color:#fff}
+.box.act .tag{color:#FFE3DB}
+.box.act h3{color:#fff;font-family:var(--f-body);font-weight:800;text-transform:none;font-size:20px;line-height:1.4}
+.box.act .btn{background:#fff;color:var(--nuit)}
+.box.act .link{color:#fff}
+details.det summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
 .box.blue{background:var(--bleu);color:#fff}
 .box.blue .btn{background:#fff;color:var(--nuit)}
 .box.blue .link{color:#fff}
@@ -159,6 +167,25 @@ body.nuit .mission .mc,body.nuit .mission-f .mc{color:#EC6243}
 <script src="efa-commun.js"></script>
 <script>
 const CFG = window.EFA_CONFIG, LOCAL = !CFG.BREVO_URL, ETAT = "efa_diag_v2";
+// APERCU : true = une première synthèse s'affiche avant l'email ; l'email donne le résultat complet et la première action.
+const APERCU = CFG.APERCU !== false;
+// Première action, selon la dimension à travailler en premier. f = fiche du guide « Construire sa stabilité financière ».
+const ACTIONS = {
+  savoir:{a:"Cette semaine, apprenez une notion : la différence entre ce qui passe (le flux) et ce qui reste (le stock). Puis notez vos sept chiffres dans la fiche 1.", f:"Fiche 1 · Mes sept chiffres", l:"index.html#lecons", b:"Lire la leçon Flux (2 min)"},
+  habitudes:{a:"Pendant sept jours, notez chaque dépense, même petite. Puis classez-les dans la fiche 2 : fixes, nécessaires ou choisies.", f:"Fiche 2 · Mes dépenses courantes", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
+  projection:{a:"Écrivez un objectif avec un montant et une date. Puis calculez combien de rentrées il vous faut pour y arriver.", f:"Calcul : épargner pour un projet", l:"cercle-spirale.html#projet", b:"Calculer mon projet"},
+  resilience:{a:"Séparez une réserve de votre argent courant et fixez un premier palier : deux semaines de charges. Les paliers suivants sont dans la fiche 5.", f:"Fiche 5 · Ma réserve", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
+  rapport:{a:"Cette semaine, attendez 72 heures avant tout achat non prévu. Notez ceux auxquels vous avez renoncé, et la somme épargnée.", f:"Fiche 2 · Mes dépenses courantes", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
+  flux:{a:"Fixez un montant mensuel pour vos proches et annoncez-le. Inscrivez aussi funérailles, fêtes et cotisations dans une enveloppe sur douze mois (fiche 4).", f:"Fiche 4 · Mes obligations sociales", l:"index.html#preter", b:"Voir la leçon « Prêt ou cadeau ? »"}
+};
+const APPUI = {
+  savoir:"Vous maîtrisez les mécanismes de base : inflation, intérêt, diversification.",
+  habitudes:"Vous avez déjà des réflexes de suivi : vous savez où va votre argent.",
+  projection:"Vous regardez loin : vous avez des objectifs et pensez à l'avenir.",
+  resilience:"Vous avez un coussin : un imprévu ne vous met pas tout de suite en difficulté.",
+  rapport:"Vous prenez vos décisions d'argent avec recul.",
+  flux:"Vous gérez déjà vos engagements envers vos proches avec méthode."
+};
 const total = Q.length + PROFIL_Q.length;
 const VIDE = {view: "accueil", i: 0, ans: [], prof: {}, lead: null, nl: false, src: "", p1ok: false, demandeP1: false,
   interet: {projeter: false, batir: false}, f1: {}, p1: null, attente: false, vus: {}};
@@ -229,7 +256,7 @@ const V = {
    <div class="actions">${S.lead ? `<button class="btn" data-go="resultat">Voir mon résultat</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
      : enCours ? `<button class="btn" data-go="quiz">Reprendre où j'en étais</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
      : `<button class="btn" data-act="start">Commencer</button>`}</div>
-   <p class="small muted">${Q.length} questions, puis ${PROFIL_Q.length} questions de profil. Votre adresse email vous sera demandée pour afficher le résultat.</p>`;
+   <p class="small muted">${Q.length} questions, puis ${PROFIL_Q.length} questions de profil. ${APERCU ? "Une première synthèse s'affiche tout de suite. Votre email vous est ensuite demandé pour recevoir le résultat complet et votre première action." : "Votre adresse email vous sera demandée pour afficher le résultat."}</p>`;
  },
  quiz() {
   const inQ = S.i < Q.length, q = inQ ? Q[S.i] : PROFIL_Q[S.i - Q.length];
@@ -239,8 +266,21 @@ const V = {
    <h2 class="q">${esc(q.q)}</h2><div class="stack" style="gap:10px">${opts.map((o, j) => `<button class="opt ${cur === j ? "sel" : ""}" data-rep="${j}">${esc(o)}</button>`).join("")}</div>
    ${S.i > 0 ? `<button class="link" data-act="prev" style="align-self:flex-start">← Question précédente</button>` : ""}`;
  },
+ apercu() {
+  const s = scores(S.ans), p = PROFILS[s.profil];
+  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1];
+  return `<div class="stack"><p class="step">Diagnostic terminé · première synthèse</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
+   <div class="b4">
+    <div class="card"><span class="tag">Votre situation</span><h3>${s.palier}</h3><p class="small muted">Une première lecture de vos ${Q.length} réponses, sur six dimensions.</p></div>
+    <div class="card"><span class="tag">Votre point d'appui</span><h3>${fort.n}</h3><p class="small muted">${APPUI[fort.k]}</p></div>
+    <div class="card"><span class="tag">Votre priorité</span><h3>${faible.n}</h3><p class="small muted">C'est le sujet à travailler en premier.</p></div>
+    <div class="card lockd"><span class="tag">Votre première action</span><h3>Une tâche concrète pour cette semaine</h3><p class="small muted">Avec votre score détaillé, votre radar et la fiche correspondante.</p></div>
+   </div>
+   <div class="actions"><button class="btn" data-go="gate">Recevoir mon résultat complet</button><button class="link" data-act="prev2">← Revoir mes réponses</button></div>
+   <p class="small muted">Gratuit. Votre email sert à vous envoyer votre résultat et ses ressources. Rien n'est vendu.</p>`;
+ },
  gate() {
-  return `<div class="stack"><p class="step">Diagnostic terminé</p><h2>Votre résultat est prêt.</h2><p class="lead">Indiquez votre adresse pour l'afficher. Vous recevrez ensuite un email pour la confirmer.</p></div>
+  return `<div class="stack"><p class="step">Diagnostic terminé</p><h2>${APERCU ? "Votre résultat complet et votre première action" : "Votre résultat est prêt."}</h2><p class="lead">Indiquez votre adresse pour l'afficher. Vous recevrez ensuite un email pour la confirmer.</p></div>
    <form id="fgate" class="card" novalidate>
     <label for="prenom">Prénom <span class="hint">Facultatif</span><input id="prenom" type="text" autocomplete="given-name" maxlength="60"></label>
     <label for="email">Adresse email<input id="email" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="vous@exemple.com"></label>
@@ -253,22 +293,26 @@ const V = {
  },
  resultat() {
   const s = scores(S.ans), p = PROFILS[s.profil];
-  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1];
+  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1], A = ACTIONS[faible.k];
   const acces = S.p1ok ? `<div class="actions"><button class="btn" data-go="p1">${S.p1 ? "Revoir le parcours 1" : "Commencer le parcours 1"}</button></div>`
     : `<div class="actions"><button class="btn" data-act="demande" ${S.demandeP1 ? "disabled" : ""}>${S.demandeP1 ? "Demande enregistrée" : "Demander l'accès"}</button><button class="link" data-go="cle">J'ai déjà une clé</button></div>
        ${S.demandeP1 ? `<p class="small">Vous recevrez le lien et votre clé par email après validation par l'équipe EFA.</p>` : ""}`;
-  return `<div class="stack"><p class="step">Votre profil${S.lead.prenom ? ", " + esc(S.lead.prenom) : ""}</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
-   <div class="grid"><div class="card"><span class="tag">Score global</span><div class="kpi">${s.global}<small> / 100</small></div><span class="small muted">${s.palier}. La cible est ${CIBLE}.</span></div>
-    <div class="card"><span class="tag">Point fort</span><h3>${fort.n}</h3><span class="small muted">${s[fort.k]} / 100</span></div>
-    <div class="card"><span class="tag">Priorité</span><h3>${faible.n}</h3><span class="small muted">${s[faible.k]} / 100</span></div></div>
-   <div class="card"><div class="two"><div>${radar([{n: "Vous", c: "var(--c1)", v: s, fill: true}], "Votre radar sur six dimensions")}</div>
+  const ext = /^https?:/.test(A.l) ? ' target="_blank" rel="noopener"' : "";
+  return `<div class="stack"><p class="step">Votre résultat${S.lead.prenom ? ", " + esc(S.lead.prenom) : ""}</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
+   <div class="b4">
+    <div class="card"><span class="tag">1 · Votre situation</span><div class="kpi">${s.global}<small> / 100</small></div><span class="small muted">${s.palier}. La cible est ${CIBLE}. Un repère pédagogique, pas une note.</span></div>
+    <div class="card"><span class="tag">2 · Votre point d'appui</span><h3>${fort.n} · ${s[fort.k]} / 100</h3><span class="small muted">${APPUI[fort.k]} Appuyez-vous dessus.</span></div>
+    <div class="card"><span class="tag">3 · Votre priorité</span><h3>${faible.n} · ${s[faible.k]} / 100</h3><span class="small muted">${faible.conseil}</span></div>
+   </div>
+   <div class="box act"><span class="tag">4 · Votre première action cette semaine</span><h3>${esc(A.a)}</h3><p class="small">${esc(A.f)}</p>
+    <div class="actions"><a class="btn" href="${A.l}"${ext} data-goatcounter-click="diag-action">${A.b}</a><a class="link" href="${CFG.GUIDE}">Le guide complet, en complément</a></div></div>
+   ${s.flux < 34 && faible.k !== "flux" ? `<div class="box alert"><h3>Pilier de famille sous pression</h3><p>Vous portez des charges pour vos proches sans les avoir budgétées. Ce n'est pas un défaut, c'est une ligne à inscrire dans votre budget.</p></div>` : ""}
+   <details class="card det"><summary>Voir le détail de mes six dimensions</summary><div class="two"><div>${radar([{n: "Vous", c: "var(--c1)", v: s, fill: true}], "Votre radar sur six dimensions")}</div>
     <div class="stack" style="gap:10px">${DIMS.map(d => barre(d.n, s[d.k])).join("")}</div></div>
-    <div class="legend"><span><i style="background:var(--c1)"></i>Vous, sur 100</span><span><i class="dash"></i>Cible ${CIBLE}</span></div></div>
-   <div class="box alert"><h3>Par où commencer&nbsp;: ${faible.n}</h3><p>${faible.conseil}</p></div>
-   ${s.flux < 34 ? `<div class="box alert"><h3>Pilier de famille sous pression</h3><p>Vous portez des charges pour vos proches sans les avoir budgétées. Ce n'est pas un défaut, c'est une ligne à inscrire dans votre budget.</p></div>` : ""}
-   <div class="box blue"><span class="tag">Parcours 1 · Assainir · gratuit sur validation</span><h3>Passez des habitudes aux chiffres.</h3><p>Sept montants, un score de stabilité sur 100 et trois priorités chiffrées.</p>${acces}</div>
-   <div class="grid">${lock("projeter", "2 · Projeter", "Votre projet est-il finançable&nbsp;?")}${lock("batir", "3 · Bâtir", "Patrimoine et retraite à vingt ans.")}</div>
-   <div class="actions"><button class="btn ghost" data-act="partage">Partager le diagnostic</button><a class="link" href="${CFG.SUBSTACK}" target="_blank" rel="noopener">Lire EFA sur Substack</a><button class="link" data-act="recommencer">Refaire le diagnostic</button></div>
+    <div class="legend"><span><i style="background:var(--c1)"></i>Vous, sur 100</span><span><i class="dash"></i>Cible ${CIBLE}</span></div>
+    <p class="small muted">Limites : vos réponses sont déclaratives et les seuils sont des repères fixés par EFA. Ce diagnostic ne recommande aucun produit financier.</p></details>
+   <div class="box blue"><span class="tag">Aller plus loin · Parcours 1 · gratuit sur validation</span><h3>Passez des habitudes aux chiffres.</h3><p>Sept montants, un score de stabilité sur 100 et trois priorités chiffrées.</p>${acces}</div>
+   <div class="actions"><button class="btn ghost" data-act="partage">Partager le diagnostic</button><button class="link" data-act="recommencer">Refaire le diagnostic</button><button class="link" data-act="effacer">Effacer mes données de cet appareil</button></div>
    <p class="small muted">${LOCAL ? "Mode local : rien ne quitte ce navigateur." : "Dernière étape : un email de confirmation doit vous arriver dans les minutes qui viennent. Confirmez votre adresse en cliquant sur son lien (regardez aussi dans Promotions ou Spam). Sans confirmation, nous ne pourrons pas vous écrire."}</p>`;
  },
  cle() {
@@ -297,7 +341,6 @@ const V = {
    <div class="card">${r.piliers.map(p => `<div class="stack" style="gap:5px">${barre(p.k, p.pts, 25)}<span class="small muted">${p.d}</span></div>`).join("")}</div>
    <div class="box alert"><h3>Vos priorités</h3><ul>${r.actions.map(a => `<li>${a}</li>`).join("")}</ul>${r.tontine ? `<p class="small">${r.tontine}</p>` : ""}</div>
    <div class="box blue"><span class="tag">Guide gratuit EFA</span><h3>Construire sa stabilité financière</h3><p>Cinq fiches pour travailler chaque pilier avec vos propres chiffres.</p><div class="actions"><a class="btn" href="${CFG.GUIDE}">Voir le guide</a></div></div>
-   <div class="grid">${lock("projeter", "2 · Projeter", "Votre projet est-il finançable&nbsp;?")}${lock("batir", "3 · Bâtir", "Patrimoine et retraite à vingt ans.")}</div>
    <div class="actions"><button class="btn ghost" data-go="p1">Modifier mes chiffres</button><button class="link" data-go="resultat">Retour à mon profil</button></div>`;
  },
  methode() {
@@ -334,7 +377,8 @@ function go(v) {
   if (v === "p1" && !S.p1ok) v = S.lead ? "cle" : "accueil";
   if (v === "r1" && !S.p1) v = "p1";
   if (v === "quiz" && S.lead) v = "resultat";
-  if (v === "gate" && !fini0()) v = "accueil";
+  if ((v === "gate" || v === "apercu") && !fini0()) v = "accueil";
+  if (v === "apercu" && S.lead) v = "resultat";
   if (S.view !== "methode" && S.view !== "confidentialite") prec = S.view;
   S.view = v; garde(); render(); window.scrollTo(0, 0);
 }
@@ -354,13 +398,15 @@ document.addEventListener("click", async e => {
     if (S.i === 9) mesure("diag_question_10", true);
     if (S.i < total - 1) { S.i++; garde(); return render(); }
     mesure("diag_fin_questions", true);
-    return go("gate");
+    return go(APERCU ? "apercu" : "gate");
   }
   if (t.dataset.int) { const k = t.dataset.int; S.interet[k] = !S.interet[k]; if (S.interet[k]) mesure("diag_interet_" + k, true); garde(); transmettre(); return render(); }
   const a = t.dataset.act;
   if (a === "start") { S.i = 0; mesure("diag_debut"); return go("quiz"); }
   if (a === "recommencer") { if (S.lead && !confirm("Refaire le diagnostic ? Votre résultat actuel sera remplacé sur cet appareil.")) return; const src = S.src; S = JSON.parse(JSON.stringify(VIDE)); S.src = src; garde(); mesure("diag_debut"); return go("quiz"); }
   if (a === "prev") { S.i--; garde(); return render(); }
+  if (a === "prev2") { S.i = total - 1; garde(); return go("quiz"); }
+  if (a === "effacer") { try { localStorage.removeItem(ETAT); } catch (err) {} S = JSON.parse(JSON.stringify(VIDE)); return go("accueil"); }
   if (a === "retour") return go(prec);
   if (a === "demande") { S.demandeP1 = true; mesure("diag_p1_demande", true); garde(); transmettre(); return render(); }
   if (a === "exemple") { S.f1 = {rev: 350000, dep: 190000, det: 60000, fam: 55000, ton: 25000, epa: 120000, src: "1"}; return render(); }
