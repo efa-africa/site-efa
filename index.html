@@ -355,6 +355,35 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media (max-width:860px){.mband-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 28px);padding-bottom:36px;gap:16px}.mband-top .mb-ico{width:60px;height:60px}.mband-top .mb-t{font-size:clamp(28px,8.4vw,40px)}.mband-top + .hero{padding-top:48px}}
 .m-foot{max-width:1180px;margin:0 auto 18px;text-align:center;font-size:15px;color:#E8EDF5}
 
+
+/* Enquête « L'argent de la tontine » : appel à répondre */
+.enq{background:var(--corail);color:#fff;padding:80px var(--gut);scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.enq .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:860px){.enq{padding-block:56px}.enq .in{grid-template-columns:minmax(0,1fr);gap:28px}}
+.enq-t{display:grid;gap:14px;min-width:0}
+.enq .kick{margin:0;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#FFE3DB}
+.enq h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;font-size:clamp(40px,6.4vw,76px);text-wrap:balance;overflow-wrap:break-word}
+.enq .lead{margin:0;font-size:clamp(19px,2.3vw,24px);font-weight:800}
+.enq p{margin:0;font-size:16px;line-height:1.6;max-width:36em}
+.enq-box{background:#fff;color:var(--nuit);border-radius:20px;padding:26px;display:grid;gap:16px;min-width:0}
+.enq-who{display:grid;gap:10px}
+.enq-who div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:#F5EFE2;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.45}
+.enq-who b{display:block;font-size:16px}
+.enq-who i{font-style:normal;font-size:20px;line-height:1.2}
+.enq-bar{display:grid;gap:6px;font-size:13px;font-weight:700;color:#4E5566}
+.enq-bar .trk{height:10px;border-radius:6px;background:#EADFCB;overflow:hidden}
+.enq-bar .trk span{display:block;height:100%;width:84%;background:var(--corail);border-radius:6px}
+.enq-bar .row{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.enq .btn-enq{display:flex;justify-content:center;align-items:center;text-align:center;background:var(--nuit);color:#fff;font-weight:800;font-size:17px;padding:16px 20px;border-radius:12px;text-decoration:none}
+.enq .btn-enq:hover{background:#1B2638}
+.enq-note{font-size:13px!important;color:#4E5566;text-align:center}
+/* Rappel flottant */
+.enq-pill{position:fixed;z-index:24;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;background:var(--corail);color:#fff;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:calc(100vw - 32px);transform:translateY(140%);opacity:0;transition:transform .35s,opacity .35s}
+.enq-pill.on{transform:none;opacity:1}
+.enq-pill a{color:#fff;text-decoration:none;font-weight:800;font-size:14px;line-height:1.25;padding:11px 4px 11px 18px}
+.enq-pill a small{display:block;font-weight:600;font-size:12px;opacity:.9}
+.enq-pill button{flex:none;width:36px;height:36px;margin-right:4px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.enq-pill{transition:none}}
 /* Concrètement, quoi ? */
 .concret{background:var(--creme);color:var(--nuit);padding:88px var(--gut);scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
 .concret .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px}
@@ -656,6 +685,30 @@ img.char{object-position:50% 18%}
   </section>
 
   <!-- 3. Trois leçons -->
+  <!-- Enquête : tout visiteur est invité à répondre, tontine ou pas -->
+  <section class="enq" id="enquete" aria-labelledby="enq-t">
+    <div class="in">
+      <div class="enq-t">
+        <p class="kick">L’enquête EFA · ouverte</p>
+        <h2 id="enq-t">Votre réponse fait avancer l’étude.</h2>
+        <p class="lead">Tontine ou pas, nous avons besoin de vous.</p>
+        <p>Les chiffres de cette page viennent de 251 personnes qui ont répondu à notre enquête «&nbsp;L’argent de la tontine&nbsp;». Pour aller plus loin, il nous faut plus de voix, et surtout celles de ceux qui ne cotisent pas&nbsp;: comprendre pourquoi on n’entre pas dans une tontine compte autant que savoir ce qu’on en fait.</p>
+      </div>
+      <div class="enq-box">
+        <div class="enq-who">
+          <div><i aria-hidden="true">●</i><span><b>Vous cotisez dans une tontine</b>Racontez-nous comment elle fonctionne et ce que devient l’argent du tour.</span></div>
+          <div><i aria-hidden="true">○</i><span><b>Vous ne cotisez pas, ou plus</b>Dites-nous pourquoi. Votre réponse est tout aussi utile.</span></div>
+        </div>
+        <div class="enq-bar" aria-label="251 réponses sur un objectif de 300">
+          <div class="row"><span>251 réponses</span><span>Prochain cap&nbsp;: 300</span></div>
+          <div class="trk"><span></span></div>
+        </div>
+        <a class="btn-enq enq-lien" data-goatcounter-click="enquete-section" href="#enquete" target="_blank" rel="noopener">Répondre à l’enquête</a>
+        <p class="enq-note">Quelques minutes. Les résultats sont publiés ici, dans <a href="methode.html#etudes">Études &amp; Outils</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="screen lessons" id="lecons" data-step="Étape 3 · Apprendre">
     <div class="head">
       <p class="step">Étape 3 · Apprendre</p>
@@ -903,6 +956,10 @@ img.char{object-position:50% 18%}
   </div>
 </section>
 
+<div class="enq-pill" id="enq-pill" role="complementary" aria-label="Enquête EFA" hidden>
+  <a class="enq-lien" data-goatcounter-click="enquete-rappel" href="#enquete" target="_blank" rel="noopener">Répondez à l’enquête tontine<small>Même si vous n’en faites pas · quelques minutes</small></a>
+  <button type="button" id="enq-x" aria-label="Fermer le rappel">×</button>
+</div>
 <footer>
   <p class="mission m-foot">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
   <div class="in">
@@ -912,6 +969,7 @@ img.char{object-position:50% 18%}
     <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a>
     <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a>
     <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a class="enq-lien" href="#enquete" target="_blank" rel="noopener">Répondre à l’enquête</a>
     <a href="#contact">Nous contacter</a>
     <a href="#guides">Guides</a>
     <a href="#livre">Le livre</a>
@@ -924,10 +982,14 @@ img.char{object-position:50% 18%}
 
 <script src="donnees.js"></script>
 <script>
+// ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine ». Vide = les boutons mènent à la section #enquete.
+var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';
+
 /* Barre EFA · BRVM : deux catégories, chaque information cliquable.
    Ordinateur : défilement lent, bouton pause. Mobile : une information à la fois, flèches et balayage. */
 function efaTickerItems(D){
   var it=[
+    {c:'EFA',t:'Enquête « L’argent de la tontine » : répondez, même sans tontine',h:ENQUETE_LIEN||'./#enquete'},
     {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
     {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
     {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
@@ -1219,6 +1281,21 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     for(var i=0;i<n;i++){var x=document.createElement('i');if(!i)x.className='on';d.appendChild(x);dots.push(x);}
     t.addEventListener('scroll',function(){var w=t.scrollWidth-t.clientWidth,k=w>0?Math.round(t.scrollLeft/w*(n-1)):0;dots.forEach(function(x,j){x.classList.toggle('on',j===k);});},{passive:true});
   });
+})();
+(function(){
+  document.querySelectorAll('.enq-lien').forEach(function(a){
+    if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
+  });
+  var p=document.getElementById('enq-pill'), sec=document.getElementById('enquete'), hero=document.querySelector('.hero'), foot=document.querySelector('footer');
+  if(!p||!ENQUETE_LIEN) return;
+  try{ if(localStorage.getItem('efa-enq-x')) return; }catch(e){}
+  p.hidden=false;
+  var past=false, hideAt={};
+  function upd(){ var show=past&&!hideAt.sec&&!hideAt.foot; p.classList.toggle('on',show); }
+  new IntersectionObserver(function(es){es.forEach(function(e){past=!e.isIntersecting&&e.boundingClientRect.top<0;});upd();}).observe(hero);
+  new IntersectionObserver(function(es){es.forEach(function(e){hideAt.sec=e.isIntersecting;});upd();}).observe(sec);
+  if(foot) new IntersectionObserver(function(es){es.forEach(function(e){hideAt.foot=e.isIntersecting;});upd();}).observe(foot);
+  document.getElementById('enq-x').addEventListener('click',function(){p.classList.remove('on');setTimeout(function(){p.hidden=true;},400);try{localStorage.setItem('efa-enq-x','1');}catch(e){}});
 })();
 // Catalogue des guides. Pour publier un guide : passer dispo à true et mettre son lien.
 // GUIDE_LIEN : lien du formulaire Google Forms qui envoie « Construire sa stabilité financière ».

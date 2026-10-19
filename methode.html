@@ -303,6 +303,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 /* Mission EFA : visible dans chaque rubrique */
+.enq-l{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:18px;background:#E44828;color:#fff;border-radius:16px;padding:18px 22px}
+.enq-l p{margin:0;font-size:16px;line-height:1.45;min-width:0;flex:1 1 280px}
+.enq-l b{display:block;font-size:18px}
+.enq-l a{flex:none;background:#0B1220;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:10px}
 .mission-l{margin:0 auto;padding-block:14px 0;font:700 14px/1.45 var(--body);color:var(--ink)}
 .mission-l .mc,.mission-f .mc{color:#EC6243;font-weight:800}
 .mission-l .ms,.mission-f .ms{color:var(--bleu)}
@@ -327,6 +331,10 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <section class="tab" id="tab-etudes" data-tab="etudes">
     <div class="wrap studies">
       <h2 id="st-count">Études publiées</h2>
+    <div class="enq-l" id="enq-l">
+      <p><b>Cette étude se construit avec vous.</b>Tontine ou pas, répondez à l’enquête «&nbsp;L’argent de la tontine&nbsp;» : chaque réponse, y compris celle de ceux qui ne cotisent pas, renforce les résultats.</p>
+      <a id="enq-l-a" data-goatcounter-click="enquete-etudes" href="index.html#enquete">Répondre à l’enquête</a>
+    </div>
       <div class="st-list" id="st-list"></div>
       <label class="pick st-sel">Choisir une étude<select id="st-sel"></select></label>
     </div>
@@ -1013,5 +1021,9 @@ setHH(); route();
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+// ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine » (le même que dans index.html).
+(function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
+</script>
 </body>
 </html>
