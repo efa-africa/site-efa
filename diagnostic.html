@@ -446,7 +446,11 @@ const tip = document.getElementById("tip");
 document.addEventListener("mousemove", e => { const t = e.target.closest && e.target.closest("[data-tip]"); if (!t) { tip.hidden = true; return; }
   tip.textContent = t.dataset.tip; tip.hidden = false;
   tip.style.left = Math.max(8, Math.min(window.innerWidth - tip.offsetWidth - 8, e.clientX + 12)) + "px"; tip.style.top = Math.max(8, e.clientY - tip.offsetHeight - 10) + "px"; });
-go(S.view);
+// À l'ouverture : on ne rouvre jamais une page annexe (méthode, confidentialité, clé) restée en mémoire.
+// On reprend le parcours là où il en était : résultat, questions en cours, ou accueil.
+go(["methode", "confidentialite", "cle", "gate", "apercu"].includes(S.view)
+   ? (S.lead ? "resultat" : (S.ans.length && !fini0() ? "accueil" : (fini0() ? (APERCU ? "apercu" : "gate") : "accueil")))
+   : S.view);
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
