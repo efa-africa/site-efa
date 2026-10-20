@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@800&display=swap">
 <style>
 /* Architecture : un écran = une étape du parcours, du cercle vers la spirale. Photo plein cadre, peu de mots, deux actions. */
 :root{
@@ -375,6 +375,37 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .mb-ico{width:76px;height:76px;color:#fff}
 .mb-t{margin:0;max-width:22em;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,4.6vw,56px);line-height:1;text-wrap:balance}
 .mb-t .mc{color:#EC6243}
+/* 0 · EFA | Éducation Financière Afrique, globe en arrière-plan */
+.efa-top{position:relative;overflow:hidden;isolation:isolate;background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 72px) var(--gut) 88px;min-height:min(86vh,760px);display:flex;align-items:center;scroll-snap-align:start}
+.g-wrap{position:absolute;z-index:-2;top:50%;right:-8%;width:min(78vh,820px,72vw);aspect-ratio:1/1;transform:translateY(-44%);pointer-events:none}
+.g-wrap img,.g-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.g-wrap canvas{opacity:0;transition:opacity .8s}
+.g-wrap canvas.on{opacity:1}
+.g-wrap img.off{opacity:0;transition:opacity .8s .2s}
+.g-voile{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(11,18,32,.94) 0%,rgba(11,18,32,.82) 34%,rgba(11,18,32,.38) 62%,rgba(11,18,32,.18) 100%),linear-gradient(180deg,rgba(11,18,32,.25),rgba(11,18,32,0) 30%,rgba(11,18,32,.45))}
+.efa-in{position:relative;max-width:1180px;width:100%;margin:0 auto;display:grid;gap:18px}
+.efa-in h1{font-family:"Plus Jakarta Sans",var(--f-body);font-weight:800;text-transform:none;letter-spacing:-.02em;line-height:1.12;font-size:clamp(56px,5.4vw,72px);max-width:13em;text-wrap:balance;color:#fff}
+.efa-in .sep{color:var(--soft-bleu);font-weight:400}
+.efa-in .e2{white-space:nowrap}
+.efa-l{font-size:clamp(19px,1.8vw,23px);line-height:1.45;color:#E8EDF5;max-width:30em;font-weight:600}
+.efa-s{font-size:16px;line-height:1.6;color:#C9D1DE;max-width:34em}
+.efa-b{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:10px}
+.efa-c{font-weight:800;font-size:15px;color:#fff;text-decoration:none;border-bottom:2px solid var(--soft-bleu);padding-bottom:2px}
+.efa-c::after{content:"\00a0→"}
+.g-pause{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:18px;z-index:2;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(11,18,32,.6);color:#C9D1DE;font:600 12px var(--f-body);cursor:pointer}
+.g-pause:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.efa-top + .cs-top{padding-top:72px}
+@media (max-width:860px){
+  .efa-top{min-height:0;align-items:flex-start;padding:calc(var(--hh,64px) + var(--tkh,34px) + 34px) var(--gut) 72px}
+  .g-wrap{right:auto;left:50%;top:auto;bottom:-24%;width:min(120vw,620px);transform:translateX(-50%)}
+  .g-voile{background:linear-gradient(180deg,rgba(11,18,32,.9) 0%,rgba(11,18,32,.82) 46%,rgba(11,18,32,.48) 72%,rgba(11,18,32,.3) 100%)}
+  .efa-in h1{font-size:clamp(34px,10vw,44px);line-height:1.15}
+  .efa-in .sep{display:none}
+  .efa-in .e1,.efa-in .e2{display:block}
+  .efa-in .e2{white-space:normal}
+  .efa-b .btn{width:100%}
+  .efa-top + .cs-top{padding-top:48px}
+}
 /* Bloc 4 · Rester en lien */
 .liens{background:var(--nuit);color:#fff;padding:64px var(--gut) 72px;border-top:1px solid rgba(255,255,255,.08)}
 .liens .in{max-width:1180px;margin:0 auto;display:grid;gap:28px}
@@ -394,8 +425,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .cs-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px 64px;align-items:start}
 .cs-q,.cs-def{min-width:0}
 .cs-k{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
-.cs-q h1 .nw{white-space:nowrap}
-.cs-q h1{margin-top:14px;font-size:clamp(44px,6.4vw,84px);line-height:.92}
+.cs-q h2 .nw{white-space:nowrap}
+.cs-q h2{margin-top:14px;font-size:clamp(44px,6.4vw,84px);line-height:.92}
 .cs-lead{margin-top:20px;font-size:clamp(17px,2vw,20px);line-height:1.55;color:#D3DAE6;max-width:32em}
 .cs-def{display:grid;gap:0;padding-top:6px}
 .cs-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;align-items:start;padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
@@ -427,8 +458,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .cs-diag::after{content:"\00a0→"}
 .cs-more{justify-self:start;font-size:14px;font-weight:700;color:var(--soft-bleu);text-decoration:none;border-bottom:1px solid rgba(109,184,242,.4);padding-bottom:2px}
 .cs-top + .hero{padding-top:64px}
-@media (max-width:860px){.cs-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 30px);padding-bottom:44px}.cs-in{grid-template-columns:minmax(0,1fr);gap:26px}.cs-q h1 .nw{white-space:nowrap}
-.cs-q h1{font-size:clamp(40px,11vw,60px)}.cs-act{justify-items:stretch}.cs-act .btn{min-width:0;width:100%}.cs-top + .hero{padding-top:48px}}
+@media (max-width:860px){.cs-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 30px);padding-bottom:44px}.cs-in{grid-template-columns:minmax(0,1fr);gap:26px}.cs-q h2 .nw{white-space:nowrap}
+.cs-q h2{font-size:clamp(40px,11vw,60px)}.cs-act{justify-items:stretch}.cs-act .btn{min-width:0;width:100%}.cs-top + .hero{padding-top:48px}}
 @media (max-width:380px){.cs-row{grid-template-columns:40px minmax(0,1fr);gap:14px}.cs-ic{width:40px;height:40px}.cs-exb{padding:18px 16px}}
 .mband-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 40px);padding-bottom:52px;border-top:0;scroll-snap-align:start}
 .mband-top + .hero{padding-top:64px}
@@ -653,12 +684,28 @@ img.char{object-position:50% 18%}
 
 <main id="accueil">
 
+  <!-- 0. EFA | Éducation Financière Afrique : globe en rotation en arrière-plan (globe.js), image fixe pendant le chargement -->
+  <section class="efa-top" id="efa" aria-labelledby="efa-t" data-step="Accueil">
+    <div class="g-wrap" aria-hidden="true"><img class="g-img" src="globe.webp" alt="" width="900" height="900" fetchpriority="low"><canvas id="globe"></canvas></div>
+    <div class="g-voile" aria-hidden="true"></div>
+    <div class="efa-in">
+      <h1 id="efa-t"><span class="e1">EFA</span><span class="sep" aria-hidden="true"> | </span><span class="e2">Éducation Financière Afrique</span></h1>
+      <p class="efa-l">Notre communauté travaille partout dans le monde pour construire une meilleure Afrique.</p>
+      <p class="efa-s">Comprendre l’argent, partager les connaissances et préparer nos projets&nbsp;: commencez ici, avec votre quotidien.</p>
+      <div class="efa-b">
+        <a class="btn btn-main" href="outils.html" data-goatcounter-click="efa-outils">Découvrir mes outils</a>
+        <a class="efa-c" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="efa-communaute">Rejoindre la communauté</a>
+      </div>
+    </div>
+    <button type="button" class="g-pause" aria-pressed="false">Mettre l’animation en pause</button>
+  </section>
+
   <!-- Comprendre tout de suite : la question du visiteur, puis le cercle et la spirale en langage courant -->
-  <section class="cs-top" id="comprendre" aria-labelledby="cs-t" data-step="Accueil">
+  <section class="cs-top" id="comprendre" aria-labelledby="cs-t" data-step="Comprendre">
     <div class="cs-in">
       <div class="cs-q">
-        <p class="cs-k">Éducation Financière Afrique · L’argent s’apprend</p>
-        <h1 id="cs-t">Votre argent entre. Que <span class="nw">reste-t-il</span> après&nbsp;?</h1>
+        <p class="cs-k">L’argent s’apprend</p>
+        <h2 id="cs-t">Votre argent entre. Que <span class="nw">reste-t-il</span> après&nbsp;?</h2>
         <p class="cs-lead">Salaire, recettes d’activité, transferts ou tontine&nbsp;: une partie sert à vivre et à honorer vos engagements. EFA vous aide à comprendre où elle va et à préparer vos projets.</p>
       </div>
       <div class="cs-def">
@@ -871,6 +918,7 @@ img.char{object-position:50% 18%}
 // Anciennes ancres de l'accueil (liens déjà publiés) : redirigées vers leur nouvelle place
 (function(){var h=(location.hash||'').slice(1),M={preter:'preter-a-un-proche.html',guides:'auteur.html#publications',lecons:'auteur.html#publications',livre:'auteur.html#publications',fondateur:'auteur.html#auteur',spirale:'#cercle'};if(M[h]){if(M[h].charAt(0)==='#')location.hash=M[h];else location.replace(M[h]);}})();
 </script>
+<script src="globe.js" defer></script>
 <script src="donnees.js"></script>
 <script>
 // ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine ». Vide = les boutons mènent à la section #enquete.
