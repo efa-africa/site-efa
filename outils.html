@@ -85,6 +85,18 @@ main{padding-block:36px 64px}
 .fam-h p{font-size:16px;color:var(--ink2)}
 .kick2{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
 .next{font-size:14px;color:var(--ink2)}
+.dsearch{display:grid;gap:6px;max-width:640px}
+.dsearch label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.dsrow{display:flex;gap:10px;flex-wrap:wrap}
+.dsrow input{flex:1 1 260px;min-width:0;min-height:50px;border:1px solid var(--line);border-radius:12px;background:var(--papier);padding:0 16px;font:500 16px var(--f-body);color:var(--nuit)}
+.dsrow input:focus{outline:3px solid var(--bleu);outline-offset:1px}
+.dclear{min-height:50px;padding:0 16px;border:1px solid var(--nuit);border-radius:12px;background:none;font:700 15px var(--f-body);color:var(--nuit);cursor:pointer}
+.dcount{font-size:14px;color:var(--ink2)}
+.dnone{display:grid;gap:12px;justify-items:start;padding:22px;border:1px dashed var(--line);border-radius:14px}
+.dc.vise{box-shadow:0 0 0 3px var(--bleu)}
+.dfoot{max-width:60em}
+.tabs a[aria-selected="true"] b{text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:3px;text-underline-offset:6px}
+@media (max-width:640px){.tabs a{flex:1 1 calc(50% - 8px);padding:12px 14px}.tabs a b{font-size:21px}.tabs a small{font-size:12px}}
 .tool .eff{font-size:15px;color:var(--ink2)}
 .tool .eff b{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:2px}
 .how-t{border-top:1px solid var(--line);padding-top:6px}
@@ -116,16 +128,24 @@ footer a{color:#E8EDF5;text-decoration:none}
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <p class="kick">Mes outils et diagnostic</p>
     <h1>Comprendre votre argent. Et agir.</h1>
-    <p class="lead">EFA vous aide à comprendre votre argent et à agir, avec des explications et des outils adaptés à votre quotidien. Faites le point sur votre situation, ou apprenez à agir dans une situation précise : vous repartez avec une réponse ou une première action.</p>
+    <p class="lead">Faites le point sur votre situation, découvrez une méthode pour agir ou comprenez les mots de l’argent. EFA vous accompagne avec des explications et des outils adaptés à votre quotidien.</p>
     <div class="tabs" role="tablist" aria-label="Choisir le type d’outil">
       <a href="#point" role="tab" id="t-point" aria-controls="point" aria-selected="true"><b>Faire le point</b><small>Où en suis-je&nbsp;?</small></a>
-      <a href="#agir" role="tab" id="t-agir" aria-controls="agir" aria-selected="false"><b>Apprendre à agir</b><small>Comment m’y prendre&nbsp;?</small></a>
+      <a href="#agir" role="tab" id="t-agir" aria-controls="agir" aria-selected="false" tabindex="-1"><b>Apprendre à agir</b><small>Comment m’y prendre&nbsp;?</small></a>
+      <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1"><b>Dico pratique</b><small>Comprendre les mots de l’argent</small></a>
     </div>
   </div>
 </section>
 <main class="wrap">
   <div id="cards"></div>
-  <div class="how">
+  <section class="fam" id="dico" role="tabpanel" aria-labelledby="t-dico" hidden>
+    <div class="fam-h"><p>Un mot, une définition claire, une application concrète. Retrouvez les fiches publiées par EFA et poursuivez votre lecture sur notre publication Substack.</p></div>
+    <div class="dsearch"><label for="dq">Rechercher un mot</label><div class="dsrow"><input id="dq" type="search" autocomplete="off" placeholder="Rechercher un mot : épargne, crédit, patrimoine…"><button type="button" class="dclear" id="dclear" hidden>Effacer la recherche</button></div><p class="dcount" id="dcount" role="status" aria-live="polite"></p></div>
+    <div class="cards" id="dcards"></div>
+    <div class="dnone" id="dnone" hidden><p>Aucune fiche ne correspond à votre recherche. Essayez un autre mot ou consultez toutes les fiches.</p><button type="button" class="btn btn-dark" id="dclear2">Effacer la recherche</button></div>
+    <p class="note dfoot">Les définitions et résumés sont proposés par EFA. Les fiches complètes sont hébergées sur notre publication Substack. Les conditions d’accès sont précisées sur chaque fiche.</p>
+  </section>
+  <div class="how" id="how">
     <h2>Comment ces outils fonctionnent</h2>
     <p>Ce sont des outils pédagogiques. Ils décrivent votre situation à partir de ce que vous saisissez, sans rien vérifier, et ne recommandent aucun produit financier. Vos montants restent sur votre téléphone. EFA fait de l’éducation financière, pas du conseil en placement.</p>
   </div>
@@ -138,6 +158,7 @@ footer a{color:#E8EDF5;text-decoration:none}
     <a href="confidentialite.html">Confidentialité</a>
   </div>
 </footer>
+<script src="dico.js"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -190,10 +211,41 @@ var OUTILS = [
     var L=OUTILS.filter(function(o){return o.famille===f[0];}); if(!L.length) return "";
     return '<section class="fam" id="'+f[0]+'" role="tabpanel" aria-labelledby="t-'+f[0]+'"'+(f[0]==="agir"?' hidden':'')+'><div class="fam-h"><p>'+esc(f[3])+'</p></div><div class="cards">'+L.map(carte).join("")+'</div>'+(f[0]==="agir"?'<p class="next">Prochains parcours : comprendre sa tontine, gérer une grosse rentrée, répondre aux demandes d’aide familiale.</p>':'')+'</section>';
   }).join("");
-  function montre(id){ var g=id==="agir"; document.getElementById("point").hidden=g; document.getElementById("agir").hidden=!g; document.getElementById("t-point").setAttribute("aria-selected",!g); document.getElementById("t-agir").setAttribute("aria-selected",g); }
-  function depuisAncre(){ var h=(location.hash||"").slice(1); montre(h==="agir"||h==="preter-a-un-proche"?"agir":"point"); if(h&&h!=="point"&&h!=="agir"){ var el=document.getElementById(h); if(el) el.scrollIntoView({block:"start"}); } }
-  document.querySelectorAll(".tabs a").forEach(function(a){ a.addEventListener("click",function(e){ e.preventDefault(); history.replaceState(null,"",a.getAttribute("href")); depuisAncre(); }); });
-  window.addEventListener("hashchange",depuisAncre); depuisAncre();
+  /* Dico pratique : fiches publiées, recherche sans accents ni majuscules, ordre alphabétique */
+  var norm=function(x){ return String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(); };
+  var ACCES={libre:"Accès libre",inscription:"Inscription gratuite demandée",abonnement:"Réservé aux abonnés"};
+  var FICHES=(window.EFA_DICO||[]).filter(function(f){ return f&&f.publie&&/^https:\/\/educationfinanciereafrique\.substack\.com\/p\//.test(f.url_substack||""); })
+    .sort(function(a,b){ return norm(a.titre).localeCompare(norm(b.titre)); });
+  var dq=document.getElementById("dq"), dc=document.getElementById("dcards"), dn=document.getElementById("dnone"), dcount=document.getElementById("dcount"), dclear=document.getElementById("dclear");
+  dc.innerHTML=FICHES.map(function(f){
+    return '<article class="tool dc" id="fiche-'+esc(f.slug)+'" data-q="'+esc(norm([f.titre,f.notion,f.definition_courte].concat(f.mots_cles||[]).join(" ")))+'"><span class="tag">'+esc(f.collection)+(f.numero?' · n° '+esc(f.numero):'')+'</span><h2>'+esc(f.titre)+'</h2><p class="q">'+esc(f.definition_courte)+'</p>'+
+      '<p class="eff"><b>Dans cette fiche</b> '+esc(f.benefice_lecture)+'</p>'+
+      '<a class="btn btn-dark" href="'+esc(f.url_substack)+'" target="_blank" rel="noopener noreferrer" data-fiche="'+esc(f.id)+'" aria-label="Lire la fiche '+esc(f.titre)+' sur Substack — nouvel onglet">Lire la fiche complète <span aria-hidden="true">↗</span></a>'+
+      '<p class="note">Sur Substack · EFA · '+esc(ACCES[f.acces]||ACCES.libre)+'</p></article>';
+  }).join("");
+  function filtre(){ var q=norm(dq.value.trim()), n=0;
+    dc.querySelectorAll(".dc").forEach(function(c){ var ok=!q||c.dataset.q.indexOf(q)>=0; c.hidden=!ok; if(ok) n++; });
+    dcount.textContent=n+(n>1?" fiches":" fiche")+(q?" correspondant à votre recherche":"");
+    dn.hidden=n>0; dclear.hidden=!q; }
+  function effacer(){ dq.value=""; filtre(); dq.focus(); }
+  dq.addEventListener("input",filtre); dclear.addEventListener("click",effacer); document.getElementById("dclear2").addEventListener("click",effacer); filtre();
+  dc.addEventListener("click",function(e){ var a=e.target.closest("a[data-fiche]"); if(a) mesure("dico-fiche-"+a.dataset.fiche); });
+  function mesure(ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
+
+  /* Onglets : Faire le point · Apprendre à agir · Dico pratique (ancres #point, #agir, #dico, #dico/slug) */
+  var TABS=["point","agir","dico"], vuDico=false;
+  function montre(id){ TABS.forEach(function(k){ document.getElementById(k).hidden=k!==id; var t=document.getElementById("t-"+k); t.setAttribute("aria-selected",String(k===id)); t.tabIndex=k===id?0:-1; });
+    document.getElementById("how").hidden=id==="dico"; if(id==="dico"&&!vuDico){ vuDico=true; mesure("dico-onglet"); } }
+  function depuisAncre(){ var h=decodeURIComponent((location.hash||"").slice(1)), m=/^dico\/(.+)$/.exec(h);
+    if(m||h==="dico"){ montre("dico"); if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m[1]); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
+    montre(h==="agir"||h==="preter-a-un-proche"?"agir":"point");
+    if(h&&TABS.indexOf(h)<0){ var el=document.getElementById(h); if(el) el.scrollIntoView({block:"start"}); } }
+  var tabs=[].slice.call(document.querySelectorAll(".tabs a"));
+  tabs.forEach(function(a,i){
+    a.addEventListener("click",function(e){ e.preventDefault(); if(location.hash!==a.getAttribute("href")) history.pushState(null,"",a.getAttribute("href")); depuisAncre(); });
+    a.addEventListener("keydown",function(e){ var k=e.key, j=k==="ArrowRight"?i+1:k==="ArrowLeft"?i-1:k==="Home"?0:k==="End"?tabs.length-1:null; if(j===null) return; e.preventDefault(); j=(j+tabs.length)%tabs.length; tabs[j].focus(); tabs[j].click(); });
+  });
+  window.addEventListener("hashchange",depuisAncre); window.addEventListener("popstate",depuisAncre); depuisAncre();
   var b=document.getElementById("menu"), n=document.getElementById("nav");
   b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});
 })();
