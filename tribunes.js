@@ -8,6 +8,13 @@
    Gardez la virgule entre deux blocs. Une apostrophe dans le texte s'écrit ’ ou \' */
 window.EFA_TRIBUNES = [
   {
+    n: 5,
+    date: "2026-10-17",
+    titre: "Avec nos téléphones, nous pouvons construire des usines",
+    idee: "Après le paiement, le capital : le mobile money sait rassembler des millions de petites sommes ; l’étape suivante est de les orienter vers des actifs productifs.",
+    lien: "https://educationfinanciereafrique.substack.com/p/tribune-5-avec-nos-telephones-nous"
+  },
+  {
     n: 4,
     date: "2026-10-03",
     titre: "Que construisez-vous avec tout l’argent qui passe entre vos mains ?",
