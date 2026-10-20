@@ -375,6 +375,20 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .mb-ico{width:76px;height:76px;color:#fff}
 .mb-t{margin:0;max-width:22em;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,4.6vw,56px);line-height:1;text-wrap:balance}
 .mb-t .mc{color:#EC6243}
+/* Bloc 4 · Rester en lien */
+.liens{background:var(--nuit);color:#fff;padding:64px var(--gut) 72px;border-top:1px solid rgba(255,255,255,.08)}
+.liens .in{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+.lien-h h2{margin-top:10px;font-size:clamp(38px,5.4vw,64px);line-height:.95}
+.lk3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lk3 article{display:grid;gap:10px;align-content:start;padding:24px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:#111A2C;min-width:0}
+.lk3 .lk-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.lk3 h3{font-size:28px;line-height:1}
+.lk3 p{font-size:15px;line-height:1.55;color:#C9D1DE}
+.lk-a{justify-self:start;margin-top:6px;font-weight:800;font-size:15px;color:#fff;text-decoration:none;border-bottom:2px solid var(--corail);padding-bottom:2px}
+.lk-a::after{content:"\00a0→"}
+.lk-b{justify-self:start;font-size:14px;font-weight:700;color:var(--soft-bleu);text-decoration:none}
+.lk-enq{border-color:rgba(228,72,40,.5)!important}
+@media (max-width:900px){.lk3{grid-template-columns:minmax(0,1fr)}}
 /* Comprendre tout de suite (haut de page) */
 .cs-top{background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 48px) var(--gut) 64px;scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
 .cs-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px 64px;align-items:start}
@@ -625,7 +639,6 @@ img.char{object-position:50% 18%}
     <a class="nav-cta" href="outils.html">Mes outils et diagnostic</a>
     <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
     <a href="methode.html#etudes">Études &amp; méthode</a>
-    <a href="#guides">Guides</a>
     <a href="auteur.html">À propos</a>
   </nav>
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -702,7 +715,7 @@ img.char{object-position:50% 18%}
     <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
   </section>
 
-  <!-- 2. Le cercle et la spirale : un récit en 4 chapitres piloté par le défilement, puis un configurateur -->
+  <!-- 3. Le cercle et la spirale : le simulateur de Koffi -->
   <section class="story" id="cercle" data-step="Étape 1 · Le cercle">
     <div class="stage" data-c="3">
       <canvas class="orbit" id="orbit" aria-hidden="true"></canvas>
@@ -726,38 +739,13 @@ img.char{object-position:50% 18%}
         </div>
         <p class="res" id="ob-sent"></p>
         <p class="src" id="ob-src">Exemple en FCFA, sur <span id="ob-n">12</span> rentrées d’argent · dans notre enquête (251 répondants), 71&nbsp;% des tontines redistribuent tout</p>
-        <div class="links"><a class="lk" href="#spirale">Voir ce que ça change</a><a class="lk p" href="cercle-spirale.html#argent">Calculer avec mes chiffres&nbsp;→</a></div>
+        <div class="links"><a class="lk" href="cercle-spirale.html#groupe">Avec mon groupe</a><a class="lk p" href="cercle-spirale.html#argent">Calculer avec mes chiffres&nbsp;→</a></div>
       </div>
     </div>
   </section>
-
-  <!-- 2. La spirale -->
-  <section class="screen s-spirale" id="spirale" data-step="Étape 2 · La spirale">
-    <img class="bg" src="https://images.unsplash.com/photo-1687422809069-0fa3546b8471?auto=format&fit=crop&w=2000&q=80" alt="Un tailleur sourit en travaillant à sa machine à coudre" loading="lazy">
-    <div class="head">
-      <p class="step">Étape 2 · La spirale</p>
-      <h2>Une part reste. Et travaille.</h2>
-      <p class="sub">L’argent dépensé a pu être utile&nbsp;: le cercle n’est pas du gaspillage. Ce qui est gardé n’est pas un rendement, c’est votre argent mis de côté. Mais il reste, et il peut préparer le tour suivant.</p>
-    </div>
-    <div class="foot">
-      <div class="stat">
-        <div><b>65 %</b><span>ont gardé quelque chose quand le tour a surtout financé une activité (40 répondants)</span></div>
-        <div><b>29 %</b><span>quand il a surtout couvert les dépenses courantes (34 répondants)</span></div>
-      </div>
-      <p class="src">Enquête exploratoire EFA&nbsp;: 251 personnes interrogées, dont 160 participants à une tontine&nbsp;; 154 ont répondu à cette question · différence observée, pas une preuve de cause · échantillon non représentatif</p>
-      <p class="next-l">Vous voyez ce qui pourrait rester. Voyons maintenant ce que votre situation permet.</p>
-      <div class="btns">
-        <a class="btn btn-main" href="diagnostic.html?src=demo" data-goatcounter-click="demo-diagnostic">Faire mon diagnostic</a>
-        <a class="btn btn-line" href="cercle-spirale.html#groupe" data-goatcounter-click="demo-collectif">Comprendre la spirale collective</a>
-      </div>
-    </div>
-    <a class="credit" href="https://unsplash.com/photos/a-man-smiles-as-he-uses-a-sewing-machine-cU3xxfbB9Es" target="_blank" rel="noopener">Photo&nbsp;: Ali Mkumbwa / Unsplash</a>
-  </section>
-
-
 
   <!-- 5. Le guide -->
-  <section class="screen guide" id="guide" data-step="Agir">
+  <section class="screen guide" id="guide" data-step="Rester en lien">
     <!-- Couverture du guide : remplacée automatiquement par guide-couverture.jpg si ce fichier est déposé -->
     <div class="ph book-wrap">
       <img class="cover-img" src="guide-couverture.jpg" alt="Couverture du guide Construire sa stabilité financière" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
@@ -773,7 +761,7 @@ img.char{object-position:50% 18%}
       </div>
     </div>
     <div class="side">
-      <p class="step">Agir</p>
+      <p class="step">Rester en lien · le guide gratuit</p>
       <h2>Construire sa stabilité financière</h2>
       <p class="sub">Le guide gratuit EFA&nbsp;: mesurer sa stabilité, puis la construire pilier par pilier. Un cas concret, celui de Koffi, et cinq fiches à remplir avec vos propres chiffres.</p>
       <ol class="fiches">
@@ -809,158 +797,14 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <!-- Catalogue des guides : la liste se modifie dans le script (GUIDES), en bas de page -->
-  <section class="cat" id="guides" aria-labelledby="cat-t">
+  <!-- 4. Rester en lien : la lettre du mardi, EFA Community, l'enquête -->
+  <section class="liens" id="lien" aria-labelledby="lien-t">
     <div class="in">
-      <div class="cat-head">
-        <p class="kick">La collection EFA</p>
-        <h2 id="cat-t">Les guides pratiques</h2>
-        <p class="lead">Gratuits, concrets, avec vos propres chiffres. Un nouveau guide paraît au fur et à mesure.</p>
-      </div>
-      <div class="shelf" id="shelf"></div>
-    </div>
-  </section>
-
-
-
-
-  <!-- Enquête : tout visiteur est invité à répondre, tontine ou pas -->
-  <section class="enq" id="enquete" aria-labelledby="enq-t">
-    <div class="in">
-      <div class="enq-t">
-        <p class="kick">Études &amp; méthode · l’enquête est ouverte</p>
-        <h2 id="enq-t">Votre réponse fait avancer l’étude.</h2>
-        <p class="lead">Tontine ou pas, nous avons besoin de vous.</p>
-        <p>Les chiffres de cette page viennent de 251 personnes qui ont répondu à notre enquête «&nbsp;L’argent de la tontine&nbsp;». Pour aller plus loin, il nous faut plus de voix, et surtout celles de ceux qui ne cotisent pas&nbsp;: comprendre pourquoi on n’entre pas dans une tontine compte autant que savoir ce qu’on en fait.</p>
-        <ul class="enq-facts"><li><b>71&nbsp;%</b> des tontines redistribuent tout</li><li><b>47&nbsp;%</b> n’ont rien gardé de durable du dernier tour</li></ul>
-        <p class="enq-links"><a href="methode.html#etudes">Lire l’étude complète →</a><a href="methode.html#methode">Notre méthode →</a></p>
-      </div>
-      <div class="enq-box">
-        <div class="enq-who">
-          <div><i aria-hidden="true">●</i><span><b>Vous cotisez dans une tontine</b>Racontez-nous comment elle fonctionne et ce que devient l’argent du tour.</span></div>
-          <div><i aria-hidden="true">○</i><span><b>Vous ne cotisez pas, ou plus</b>Dites-nous pourquoi. Votre réponse est tout aussi utile.</span></div>
-        </div>
-        <div class="enq-bar" aria-label="251 réponses sur un objectif de 300">
-          <div class="row"><span>251 réponses</span><span>Prochain cap&nbsp;: 300</span></div>
-          <div class="trk"><span></span></div>
-        </div>
-        <a class="btn-enq enq-lien" data-goatcounter-click="enquete-section" href="#enquete" target="_blank" rel="noopener">Répondre à l’enquête</a>
-        <p class="enq-note">Quelques minutes. Les résultats sont publiés ici, avec leur méthode.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mission EFA (milieu de page) -->
-  <section class="mband" aria-label="La mission d’EFA">
-    <svg class="mb-ico" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="40" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg>
-    <p class="mb-t">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
-  </section>
-
-  <!-- 6. Fondateur -->
-  <section class="screen founder" id="fondateur" data-step="Le fondateur">
-    <blockquote>La confiance <span>précède</span> le capital.</blockquote>
-    <div class="bio">
-      <div class="face">
-        <!-- Portrait : déposer elysee.jpg (cadrage poitrine, fond sobre) ; sinon la spirale s’affiche -->
-        <img src="elysee.jpg" alt="Élysée Johnson" width="300" height="300" onerror="this.remove()">
-        <canvas id="spiral" width="600" height="600" aria-hidden="true"></canvas>
-      </div>
-      <div class="txt">
-        <p class="name">Élysée Johnson</p>
-        <p class="role">Fondateur d’Éducation Financière Afrique</p>
-        <p>Après une décennie dans la banque d’investissement, le capital-investissement et le conseil, à Paris, New York et Abidjan, j’ai créé EFA pour rendre les mécanismes financiers compréhensibles à partir de nos réalités quotidiennes.</p>
-        <p class="lab"><b>Sur le terrain.</b> J’anime aussi des tontines laboratoires, lancées comme cas d’étude, où le groupe s’accorde dès le départ pour garder une réserve en caisse.</p>
-        <a class="go" href="auteur.html">Mon parcours et mes convictions</a>
-        <a class="go" href="tribunes.html">Lire mes tribunes</a>
-      </div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-alt" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Rejoindre EFA Community</a>
-      <a class="btn btn-line" href="#contact">Nous écrire</a>
-    </div>
-  </section>
-
-  <!-- Trois leçons -->
-  <section class="screen lessons" id="lecons" data-step="Publications">
-    <div class="head">
-      <p class="step">Publications récentes</p>
-      <h2>Trois leçons. Deux minutes.</h2>
-      <p class="sub">Un mot, une situation, une idée. Gratuit, sans inscription.</p>
-    </div>
-    <div class="cards">
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1677935711525-1059c0cb9b44?auto=format&fit=crop&w=900&q=80" alt="Une femme montre l’écran de son téléphone" loading="lazy">
-        <div class="in">
-          <span class="n">Leçon 1 · Le Dico</span>
-          <span class="word">Flux</span>
-          <p>L’argent qui passe entre vos mains&nbsp;: ce qui entre, ce qui sort.</p>
-          <details>
-            <summary>Lire la définition</summary>
-            <div class="def">
-              <p>Le flux s’oppose au <b>stock</b>&nbsp;: ce qui vous reste, ce que vous possédez.</p>
-              <p>300&nbsp;000 FCFA entrent, puis sont entièrement dépensés pour la vie courante&nbsp;: le solde disponible n’augmente pas.</p>
-              <p><b>Ce qui circule n’est pas ce qui reste.</b></p>
-            </div>
-          </details>
-        </div>
-      </article>
-      <article class="card" id="preter">
-        <!-- Koffi : déposer koffi.jpg (portrait vertical) dans le dépôt ; sinon la photo de secours s’affiche -->
-        <img class="char" src="koffi.jpg" alt="Koffi, le personnage de Min’Fin" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1686723726446-8b881f37ce62?auto=format&fit=crop&w=900&q=80'">
-        <div class="in">
-          <span class="n">Leçon 2 · Min’Fin</span>
-          <h3>Prêter à un proche&nbsp;: prêt ou cadeau&nbsp;?</h3>
-          <p>Koffi prête à sa sœur. Un mois plus tard, plus personne n’en parle.</p>
-          <a class="go" href="https://vt.tiktok.com/ZSgM8hjPe/" target="_blank" rel="noopener">Regarder l’épisode</a> <a class="go" href="preter-a-un-proche.html?src=minfin" data-goatcounter-click="lecon-preter-parcours">Faire le parcours</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=900&q=80" alt="Une commerçante assise au comptoir de sa boutique" loading="lazy">
-        <div class="in">
-          <span class="n">Leçon 3 · La Tribune</span>
-          <h3>Avec nos téléphones, nous pouvons construire des usines</h3>
-          <p>Après le paiement, le capital&nbsp;: et si nos petites sommes finançaient ce qui produit&nbsp;? Le point de vue d’Élysée Johnson.</p>
-          <!-- Tribune la plus récente ; la liste complète est dans tribunes.js -->
-          <a class="go" href="https://educationfinanciereafrique.substack.com/p/tribune-5-avec-nos-telephones-nous" target="_blank" rel="noopener">Lire la tribune</a> <a class="go" href="tribunes.html">Toutes les tribunes</a>
-        </div>
-      </article>
-    </div>
-    <p class="swipe" aria-hidden="true"><span class="dots"><i class="on"></i><i></i><i></i></span>Glissez pour voir les 3 leçons →</p>
-    <div class="rdv">
-      <div><p class="rdv-k">Le rendez-vous</p><p class="rdv-t">«&nbsp;L’argent de la semaine&nbsp;», chaque mardi</p><p class="rdv-s">Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture.</p></div>
-      <a class="btn btn-main" href="#guide" data-goatcounter-click="rdv-lettre">Recevoir la lettre</a>
-      <p class="rdv-x">Envie d’échanger&nbsp;? <a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community, le jeudi à 19&nbsp;h</a></p>
-    </div>
-  </section>
-
-  <!-- Le livre : couverture remplacée automatiquement par livre-couverture.jpg si ce fichier est déposé -->
-  <section class="livre" id="livre" aria-labelledby="livre-t">
-    <div class="in">
-      <div class="lv-cover" id="lv-cover">
-        <img class="lv-img" src="livre-couverture.jpg" alt="Couverture du livre Le Cercle et la Spirale, d’Élysée Johnson" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
-        <div class="lv-css" aria-hidden="true">
-          <svg viewBox="-50 -50 100 100"><g fill="#F5EFE2" id="lv-dots"></g><circle id="lv-dot" r="3.4" fill="#0B1220"/></svg>
-          <strong>Le Cercle et la Spirale</strong>
-          <em>Élysée Johnson</em>
-        </div>
-      </div>
-      <div class="lv-txt">
-        <p class="kick">Le livre · en cours d’écriture</p>
-        <h2 id="livre-t">Le Cercle et la Spirale</h2>
-        <p class="lv-sub">Ce que la tontine nous a appris, et ce qu’il nous reste à inventer.</p>
-        <p>L’argent tourne depuis longtemps. Et si, désormais, quelque chose restait&nbsp;? Élysée Johnson écrit un livre sur la tontine, nourri par les enquêtes et les témoignages de la communauté EFA.</p>
-        <p>Les guides pratiques en sont les premiers extraits&nbsp;: ils rejoindront l’annexe du livre.</p>
-        <form class="lv-form" id="lv-form" novalidate hidden>
-          <label for="lv-email">Être prévenu de la sortie du livre</label>
-          <div class="lv-row"><input id="lv-email" type="email" autocomplete="email" placeholder="Adresse email" required><button class="btn btn-main" type="submit">Me prévenir</button></div>
-          <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="lv-note">Vous recevrez aussi «&nbsp;L’argent de la semaine&nbsp;», chaque mardi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></p>
-          <p class="formmsg" id="lv-msg" role="status" aria-live="polite"></p>
-        </form>
-        <div class="btns left" id="lv-btns">
-          <a class="btn btn-main" id="lv-wa" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Être prévenu de la sortie</a>
-          <a class="btn btn-line" href="#guides">Lire les guides</a>
-        </div>
+      <div class="lien-h"><p class="kick">Rester en lien</p><h2 id="lien-t">Chaque semaine, un rendez-vous</h2></div>
+      <div class="lk3">
+        <article><p class="lk-k">Le mardi</p><h3>«&nbsp;L’argent de la semaine&nbsp;»</h3><p>Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture, par email.</p><a class="lk-a" href="#guide" data-goatcounter-click="lien-lettre">Recevoir la lettre</a></article>
+        <article><p class="lk-k">Le jeudi à 19&nbsp;h</p><h3>EFA Community</h3><p>Échanger sur l’argent, la tontine et les projets, avec la communauté, sur WhatsApp.</p><a class="lk-a" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="lien-community">Rejoindre la communauté</a></article>
+        <article class="lk-enq" id="enquete"><p class="lk-k">L’enquête est ouverte</p><h3>Tontine ou pas, votre réponse compte</h3><p>251 personnes ont déjà répondu à «&nbsp;L’argent de la tontine&nbsp;». Prochain cap&nbsp;: 300. Comprendre pourquoi on n’entre pas dans une tontine compte autant que savoir ce qu’on en fait.</p><a class="lk-a enq-lien" href="#enquete" target="_blank" rel="noopener" data-goatcounter-click="enquete-section">Répondre à l’enquête</a><a class="lk-b" href="methode.html#etudes">Lire l’étude</a></article>
       </div>
     </div>
   </section>
@@ -1012,8 +856,8 @@ img.char{object-position:50% 18%}
     <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a>
     <a class="enq-lien" href="#enquete" target="_blank" rel="noopener">Répondre à l’enquête</a>
     <a href="#contact">Nous contacter</a>
-    <a href="#guides">Guides</a>
-    <a href="#livre">Le livre</a>
+    <a href="auteur.html#publications">Guides, livre et tribunes</a>
+    <a href="tribunes.html">Les tribunes</a>
     <a href="outils.html">Mes outils et diagnostic</a>
     <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
     <a href="auteur.html">À propos</a>
@@ -1023,6 +867,10 @@ img.char{object-position:50% 18%}
   </div>
 </footer>
 
+<script>
+// Anciennes ancres de l'accueil (liens déjà publiés) : redirigées vers leur nouvelle place
+(function(){var h=(location.hash||'').slice(1),M={preter:'preter-a-un-proche.html',guides:'auteur.html#publications',lecons:'auteur.html#publications',livre:'auteur.html#publications',fondateur:'auteur.html#auteur',spirale:'#cercle'};if(M[h]){if(M[h].charAt(0)==='#')location.hash=M[h];else location.replace(M[h]);}})();
+</script>
 <script src="donnees.js"></script>
 <script>
 // ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine ». Vide = les boutons mènent à la section #enquete.
@@ -1038,9 +886,11 @@ function efaTickerItems(D){
     {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
     {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
     {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
-    {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
+    {c:'EFA',t:'Nouvelle tribune : « Avec nos téléphones, nous pouvons construire des usines »',h:'tribunes.html'},
+    {c:'EFA',t:'Nouveau parcours pratique : prêter à un proche, avec Koffi',h:'preter-a-un-proche.html?src=bandeau'},
+    {c:'EFA',t:'Nouvel outil : préparer ma retraite, six questions pour faire le point',h:'preparer-ma-retraite.html?src=bandeau'},
     {c:'EFA',t:'Guide gratuit « Construire sa stabilité financière » : disponible',h:'./#guide'},
-    {c:'EFA',t:'Le livre « Le Cercle et la Spirale » : en cours d’écriture',h:'./#livre'}
+    {c:'EFA',t:'Le livre « Le Cercle et la Spirale » : en cours d’écriture',h:'auteur.html#publications'}
   ];
   var B=D&&D.brvm, f=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});};
   var v=function(x){return '<em class="'+(x>0?'up':x<0?'down':'flat')+'">'+(x>0?'▲ +':x<0?'▼ −':'■ ')+f(Math.abs(x),2)+' %</em>';};
@@ -1331,10 +1181,10 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
   });
   // Rappel : une seule fois par visite, 12 secondes, jamais au-dessus d'un formulaire, d'un simulateur ou d'un bouton de fin de section.
-  var p=document.getElementById('enq-pill'), start=document.getElementById('spirale');
+  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle');
   if(!p||!ENQUETE_LIEN||!start) return;
   try{ if(localStorage.getItem('efa-enq-x')||sessionStorage.getItem('efa-enq-vu')) return; }catch(e){}
-  var zones=['#cercle','#spirale','#enquete','#guide','#livre','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
+  var zones=['#cercle','#guide','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
   var inZone=new Set(), armed=false, done=false, timer=null;
   function hide(){p.classList.remove('on');}
   function under(){

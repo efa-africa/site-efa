@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://efa.africa/auteur.html">
 <meta property="og:url" content="https://efa.africa/auteur.html">
 <meta property="og:type" content="profile">
-<title>Élysée Johnson · EFA</title>
+<title>À propos · EFA, Élysée Johnson</title>
 <meta name="description" content="Élysée Johnson, financier, fondateur d'Éducation Financière Afrique (EFA) et auteur du livre en cours « Le Cercle et la Spirale ». Parcours, convictions et réalisations.">
 <meta property="og:title" content="Élysée Johnson · Fondateur d'Éducation Financière Afrique">
 <meta property="og:description" content="Une décennie dans la banque d'investissement, le capital-investissement et le conseil. Une question : comment l'argent qui circule devient du capital qui reste.">
@@ -106,7 +106,7 @@ p{margin:0}
 @media (max-width:820px){.hero{grid-template-columns:none}.face{max-width:340px}}
 
 /* Bandes */
-.band{border-top:1px solid var(--line);padding-block:56px;scroll-margin-top:64px}
+.band{border-top:1px solid var(--line);padding-block:56px;scroll-margin-top:80px}
 .band.alt{background:var(--panel)}
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 48px;align-items:end;margin-bottom:32px}
 .head p{color:var(--ink2);max-width:56ch}
@@ -192,6 +192,49 @@ p{margin:0}
 .contact p{color:var(--ink2)}
 .contact code{font:600 15px var(--mono);color:var(--ink);user-select:all}
 
+/* À propos en onglets */
+.intro{background:var(--panel);border-bottom:1px solid var(--line)}
+.ih{font-size:clamp(46px,8vw,96px);line-height:.88;margin-top:10px}
+.ptabs{display:flex;gap:8px;margin-top:30px;flex-wrap:wrap}
+.ptabs a{flex:1 1 200px;display:grid;gap:2px;text-decoration:none;padding:16px 20px;border-radius:14px 14px 0 0;background:#16213A;color:var(--ink2);min-height:44px}
+.ptabs a b{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;color:#fff}
+.ptabs a small{font-size:13px;font-weight:600}
+.ptabs a[aria-selected="true"]{background:var(--bg);color:var(--ink2)}
+@media (max-width:640px){.ptabs a{flex:1 1 calc(50% - 8px);padding:12px 14px}.ptabs a b{font-size:21px}.ptabs a small{font-size:12px}}
+.band.first{border-top:0}
+.nav a.on{color:var(--ink);background:rgba(255,255,255,.08)}
+.menu-btn{display:none;margin-left:auto;background:rgba(255,255,255,.08);color:var(--ink);border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--body);cursor:pointer}
+@media (max-width:900px){.menu-btn{display:block}.nav{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:8px}.nav.open{display:flex}.nav a{font:900 30px var(--disp);text-transform:uppercase;color:var(--ink)}.menu-btn{position:relative;z-index:31}}
+.lv{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.lv-c{position:relative;aspect-ratio:2/3;border-radius:6px;overflow:hidden;background:var(--creme);max-width:260px}
+.lv-c img{display:block;width:100%;height:100%;object-fit:cover}
+.lv-f{display:none}
+.lv-c.no-img .lv-f{display:grid;position:absolute;inset:0;align-content:end;padding:20px;gap:6px;color:var(--nuit)}
+.lv-f b{font:900 30px/.95 var(--disp);text-transform:uppercase}.lv-f i{font-style:normal;font-weight:700}
+.lv-t{display:grid;gap:14px;min-width:0}
+.lv-t > p:not(.kick):not(.lead){color:var(--ink2);max-width:60ch}
+@media (max-width:640px){.lv{grid-template-columns:none}.lv-c{max-width:200px}}
+.trib{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.trib a{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.trib .n{font:900 34px/.9 var(--disp);color:var(--bleu)}
+.trib .tt{font:700 18px/1.35 var(--body)}
+.trib .d{grid-column:2;font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.trib .fl{grid-column:3;grid-row:1/span 2;align-self:center;color:var(--bleu);font-size:20px}
+.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:960px){.shelf{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.shelf{grid-template-columns:none}}
+.gd{display:grid;gap:8px;align-content:start;padding:20px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);min-width:0}
+.gd.soon-g{opacity:.8}
+.gd h3{font:800 19px/1.3 var(--body)}
+.gd p{font-size:14px;color:var(--ink2)}
+.gd a{justify-self:start;font:700 14px var(--body);color:var(--bleu);text-decoration:none}
+.lec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:960px){.lec{grid-template-columns:none}}
+.lec article{display:grid;gap:10px;align-content:start;padding:22px;border-radius:12px;background:var(--bg);border:1px solid var(--line);min-width:0}
+.lec h3{font:900 clamp(26px,2.6vw,34px)/.95 var(--disp);text-transform:uppercase}
+.lec p{font-size:15px;color:var(--ink2)}
+.lec b{color:var(--ink)}
+.lec a.more{font:700 14px var(--body);text-decoration:none;color:var(--bleu)}
 footer{border-top:1px solid var(--line);padding-block:20px 40px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 12px var(--mono);color:var(--mute)}
 footer .mission{flex-basis:100%;padding:0;color:var(--ink);font-size:13px}
@@ -206,16 +249,85 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="./"><img src="logo-efa.png" alt="" width="30" height="30"><span>EFA <b>L’AUTEUR</b></span></a>
-    <nav class="nav" aria-label="Sections"><a href="#parcours">Parcours</a><a href="#pensee">Pensée</a><a href="#realisations">Réalisations</a><a href="#biographie">Biographie</a></nav>
-    <a class="back" href="./">← Le site</a>
+    <a class="brand" href="./"><img src="logo-efa.png" alt="" width="30" height="30"><span>EFA <b>À PROPOS</b></span></a>
+    <nav class="nav" id="nav" aria-label="Navigation principale"><a href="outils.html">Mes outils et diagnostic</a><a href="cercle-spirale.html">Cercle &amp; Spirale</a><a href="methode.html#etudes">Études &amp; méthode</a><a href="auteur.html" aria-current="page" class="on">À propos</a></nav>
+    <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
   </div>
 </header>
 
 <main>
-  <p class="wrap mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  <section class="intro">
+    <div class="wrap">
+      <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+      <p class="kick" style="margin-top:22px">À propos</p>
+      <h1 class="ih">Éducation Financière Afrique</h1>
+      <p class="lead" style="margin-top:14px">Comprendre l’argent à partir des réalités africaines. Qui nous sommes, qui écrit, ce que nous publions et ce que nous défendons.</p>
+      <div class="ptabs" role="tablist" aria-label="À propos">
+        <a href="#efa" role="tab" id="t-efa" aria-controls="efa" aria-selected="true"><b>EFA</b><small>Ce que nous faisons</small></a>
+        <a href="#auteur" role="tab" id="t-auteur" aria-controls="auteur" aria-selected="false"><b>L’auteur</b><small>Élysée Johnson</small></a>
+        <a href="#publications" role="tab" id="t-publications" aria-controls="publications" aria-selected="false"><b>Publications</b><small>Livre, tribunes, guides</small></a>
+        <a href="#convictions" role="tab" id="t-convictions" aria-controls="convictions" aria-selected="false"><b>Convictions</b><small>Le cercle et la spirale</small></a>
+      </div>
+    </div>
+  </section>
 
-  <section class="wrap hero" aria-labelledby="nom">
+  <div class="panel" id="efa" role="tabpanel" aria-labelledby="t-efa">
+  <!-- 3. Réalisations entrepreneuriales -->
+  <section class="band first" id="realisations" aria-labelledby="t-real">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Ce que fait EFA</p><h2 id="t-real">Expliquer, prouver, outiller</h2></div>
+        <p>Éducation Financière Afrique aide chacun à comprendre son argent et à agir, avec des explications et des outils adaptés au quotidien. Un média pour expliquer, des données pour prouver, des outils pour agir, un livre pour fixer la pensée et un terrain pour tester.</p>
+      </div>
+      <div class="works">
+        <article class="work big">
+          <span class="pill on">En ligne</span>
+          <h3>Éducation Financière Afrique</h3>
+          <p>Une plateforme qui explique l’argent à partir des réalités africaines&nbsp;: la Tribune, le Dico, Min’Fin, Instant’Fin, EFA News, des guides pratiques, un diagnostic financier et la communauté EFA.</p>
+          <div class="nums">
+            <div><b>810 000+</b><small>vues pour la Tribune n° 1, au 9 oct. 2026</small></div>
+            <div><b>1,1 M</b><small>vues sur Facebook en 28 jours, du 9 sept. au 6 oct. 2026</small></div>
+          </div>
+          <a class="more" href="outils.html">Mes outils et diagnostic →</a>
+        </article>
+        <article class="work">
+          <span class="pill wip">Provisoire</span>
+          <h3>EFA Études</h3>
+          <p>L’enquête « L’argent de la tontine »&nbsp;: 251 répondants, données arrêtées le 12 oct. 2026. Prochaine étape&nbsp;: dépasser 300 réponses, avec des quotas par zones et régions.</p>
+          <a class="more" href="methode.html#etudes">Voir les résultats →</a>
+        </article>
+        <article class="work">
+          <span class="pill wip">En cours</span>
+          <h3>Le Cercle et la Spirale</h3>
+          <p>Un livre sur la tontine, ce qu’elle fait, pour qui et à quelles conditions, et sur ce qu’il faudrait pour qu’à chaque tour, quelque chose reste.</p>
+        </article>
+        <article class="work">
+          <span class="pill">Terrain</span>
+          <h3>Des tontines laboratoires</h3>
+          <p>Il anime des tontines lancées comme cas d’étude, où le groupe s’accorde dès le départ pour garder une réserve en caisse. Il reste aussi simple membre de tontines qu’il n’organise pas.</p>
+        </article>
+        <article class="work">
+          <span class="pill">Podcast</span>
+          <h3>Diasporafrique</h3>
+          <p>Le podcast qu’il anime.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" aria-labelledby="t-meth">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Nos engagements</p><h2 id="t-meth">De l’éducation, pas de la vente</h2></div>
+        <p>EFA ne recommande aucun produit financier et ne fait pas de conseil en placement. Les outils fonctionnent dans votre navigateur&nbsp;: vos montants ne sont pas envoyés. Les études publient leur méthode et leurs limites.</p>
+      </div>
+      <div class="jump"><a class="main" href="methode.html#methode">Notre méthode</a><a href="methode.html#etudes">Les études</a><a href="confidentialite.html">Vos données</a><a href="./#contact">Nous écrire</a></div>
+    </div>
+  </section>
+  </div>
+
+  <div class="panel" id="auteur" role="tabpanel" aria-labelledby="t-auteur" hidden>
+  <section class="wrap hero" aria-labelledby="nom" style="padding-top:44px">
     <figure class="face" style="margin:0">
       <img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909">
     </figure>
@@ -230,7 +342,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
         <div><small>Fondateur</small><b>Éducation Financière Afrique</b></div>
       </div>
       <div class="jump">
-        <a class="main" href="#pensee">Lire ses convictions</a>
+        <a class="main" href="#convictions" data-tab="convictions">Lire ses convictions</a>
         <a href="#biographie">Biographie pour la presse</a>
       </div>
     </div>
@@ -253,8 +365,74 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
     </div>
   </section>
 
+  <!-- 4. Biographie de référence -->
+  <section class="band alt" id="biographie" aria-labelledby="t-bio">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="kick">Pour la presse et les organisateurs</p><h2 id="t-bio">Biographie de référence</h2></div>
+        <p>Trois longueurs, un même texte de référence. Merci d’utiliser l’une de ces versions pour présenter Élysée Johnson.</p>
+      </div>
+      <div class="bios">
+        <div class="tabs" role="tablist" aria-label="Longueur de la biographie">
+          <button type="button" role="tab" id="tb-1" aria-selected="false" aria-controls="bio" data-k="ligne">Une ligne<small>Bandeau, légende</small></button>
+          <button type="button" role="tab" id="tb-2" aria-selected="true" aria-controls="bio" data-k="courte">Courte<small>Programme, invitation</small></button>
+          <button type="button" role="tab" id="tb-3" aria-selected="false" aria-controls="bio" data-k="longue">Longue<small>Article, conférence</small></button>
+        </div>
+        <div class="bio" id="bio" role="tabpanel" aria-live="polite">
+          <p id="bio-t"></p>
+          <div class="row"><button type="button" class="btn" id="copy">Copier le texte</button><span class="count" id="bio-n"></span></div>
+        </div>
+      </div>
+      <div class="contact">
+        <p>Interviews, conférences, partenariats&nbsp;:</p>
+        <code id="mail">newsletter@efa.africa</code>
+        <button type="button" class="btn s" id="copy-mail">Copier l’adresse</button>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="panel" id="publications" role="tabpanel" aria-labelledby="t-publications" hidden>
+  <section class="band first" id="pub-livre" aria-labelledby="t-livre">
+    <div class="wrap lv">
+      <div class="lv-c"><img src="livre-couverture.jpg" alt="Couverture du livre Le Cercle et la Spirale, d’Élysée Johnson" loading="lazy" onerror="this.parentNode.classList.add('no-img');this.remove()"><span class="lv-f" aria-hidden="true"><b>Le Cercle et la Spirale</b><i>Élysée Johnson</i></span></div>
+      <div class="lv-t">
+        <p class="kick">Le livre · en cours d’écriture</p>
+        <h2 id="t-livre">Le Cercle et la Spirale</h2>
+        <p class="lead">Ce que la tontine nous a appris, et ce qu’il nous reste à inventer.</p>
+        <p>L’argent tourne depuis longtemps. Et si, désormais, quelque chose restait&nbsp;? Un livre sur la tontine, ce qu’elle fait, pour qui et à quelles conditions, nourri par les enquêtes et les témoignages de la communauté EFA. Les guides pratiques en sont les premiers extraits.</p>
+        <div class="jump"><a class="main" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Être prévenu de la sortie</a></div>
+      </div>
+    </div>
+  </section>
+  <section class="band alt" id="pub-tribunes" aria-labelledby="t-trib">
+    <div class="wrap">
+      <div class="head"><div><p class="kick">La Tribune · chaque semaine</p><h2 id="t-trib">Les tribunes</h2></div><p>Une idée par semaine sur l’argent tel qu’il circule chez nous.</p></div>
+      <ol class="trib" id="trib"></ol>
+      <div class="jump" style="margin-top:20px"><a class="main" href="tribunes.html">Toutes les tribunes</a><a href="https://educationfinanciereafrique.substack.com/subscribe" target="_blank" rel="noopener">S’abonner sur Substack</a></div>
+    </div>
+  </section>
+  <section class="band" id="pub-guides" aria-labelledby="t-guides">
+    <div class="wrap">
+      <div class="head"><div><p class="kick">La collection EFA</p><h2 id="t-guides">Les guides pratiques</h2></div><p>Gratuits, concrets, avec vos propres chiffres. Un nouveau guide paraît au fur et à mesure.</p></div>
+      <div class="shelf" id="shelf"></div>
+    </div>
+  </section>
+  <section class="band alt" id="pub-lecons" aria-labelledby="t-lecons">
+    <div class="wrap">
+      <div class="head"><div><p class="kick">Deux minutes</p><h2 id="t-lecons">Les leçons</h2></div><p>Un mot, une situation, une idée. Gratuit, sans inscription.</p></div>
+      <div class="lec">
+        <article><p class="pill">Le Dico</p><h3>Flux</h3><p>L’argent qui passe entre vos mains&nbsp;: ce qui entre, ce qui sort. Le flux s’oppose au <b>stock</b>, ce qui vous reste.</p><p>300&nbsp;000 FCFA entrent, puis sont entièrement dépensés pour la vie courante&nbsp;: le solde disponible n’augmente pas. <b>Ce qui circule n’est pas ce qui reste.</b></p></article>
+        <article><p class="pill">Min’Fin</p><h3>Prêter à un proche&nbsp;: prêt ou cadeau&nbsp;?</h3><p>Koffi prête à sa sœur. Un mois plus tard, plus personne n’en parle.</p><a class="more" href="https://vt.tiktok.com/ZSgM8hjPe/" target="_blank" rel="noopener">Regarder l’épisode →</a><a class="more" href="preter-a-un-proche.html?src=apropos">Faire le parcours pratique →</a></article>
+        <article><p class="pill">Instant’Fin et EFA News</p><h3>L’actualité, décryptée</h3><p>Les chiffres de la semaine en Afrique, expliqués en une image.</p><a class="more" href="methode.html#actualites">Voir les actualités →</a></article>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="panel" id="convictions" role="tabpanel" aria-labelledby="t-convictions" hidden>
   <!-- 2. Contribution intellectuelle -->
-  <section class="band alt" id="pensee" aria-labelledby="t-pensee">
+  <section class="band first" id="pensee" aria-labelledby="t-pensee">
     <div class="wrap">
       <div class="head">
         <div><p class="kick">Contribution intellectuelle</p><h2 id="t-pensee">Trois convictions, une même chaîne</h2></div>
@@ -324,74 +502,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
     </div>
   </section>
 
-  <!-- 3. Réalisations entrepreneuriales -->
-  <section class="band" id="realisations" aria-labelledby="t-real">
-    <div class="wrap">
-      <div class="head">
-        <div><p class="kick">Réalisations entrepreneuriales</p><h2 id="t-real">Ce qu’il construit</h2></div>
-        <p>Un média pour expliquer, des données pour prouver, un livre pour fixer la pensée, et un terrain pour tester.</p>
-      </div>
-      <div class="works">
-        <article class="work big">
-          <span class="pill on">En ligne</span>
-          <h3>Éducation Financière Afrique</h3>
-          <p>Une plateforme qui explique l’argent à partir des réalités africaines&nbsp;: la Tribune, le Dico, Min’Fin, Instant’Fin, EFA News, des guides pratiques, un diagnostic financier et la communauté EFA.</p>
-          <div class="nums">
-            <div><b>810 000+</b><small>vues pour la Tribune n° 1, au 9 oct. 2026</small></div>
-            <div><b>1,1 M</b><small>vues sur Facebook en 28 jours, du 9 sept. au 6 oct. 2026</small></div>
-          </div>
-          <a class="more" href="./">Découvrir EFA →</a>
-        </article>
-        <article class="work">
-          <span class="pill wip">Provisoire</span>
-          <h3>EFA Études</h3>
-          <p>L’enquête « L’argent de la tontine »&nbsp;: 251 répondants, données arrêtées le 12 oct. 2026. Prochaine étape&nbsp;: dépasser 300 réponses, avec des quotas par zones et régions.</p>
-          <a class="more" href="methode.html#etudes">Voir les résultats →</a>
-        </article>
-        <article class="work">
-          <span class="pill wip">En cours</span>
-          <h3>Le Cercle et la Spirale</h3>
-          <p>Un livre sur la tontine, ce qu’elle fait, pour qui et à quelles conditions, et sur ce qu’il faudrait pour qu’à chaque tour, quelque chose reste.</p>
-        </article>
-        <article class="work">
-          <span class="pill">Terrain</span>
-          <h3>Des tontines laboratoires</h3>
-          <p>Il anime des tontines lancées comme cas d’étude, où le groupe s’accorde dès le départ pour garder une réserve en caisse. Il reste aussi simple membre de tontines qu’il n’organise pas.</p>
-        </article>
-        <article class="work">
-          <span class="pill">Podcast</span>
-          <h3>Diasporafrique</h3>
-          <p>Le podcast qu’il anime.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Biographie de référence -->
-  <section class="band alt" id="biographie" aria-labelledby="t-bio">
-    <div class="wrap">
-      <div class="head">
-        <div><p class="kick">Pour la presse et les organisateurs</p><h2 id="t-bio">Biographie de référence</h2></div>
-        <p>Trois longueurs, un même texte de référence. Merci d’utiliser l’une de ces versions pour présenter Élysée Johnson.</p>
-      </div>
-      <div class="bios">
-        <div class="tabs" role="tablist" aria-label="Longueur de la biographie">
-          <button type="button" role="tab" id="tb-1" aria-selected="false" aria-controls="bio" data-k="ligne">Une ligne<small>Bandeau, légende</small></button>
-          <button type="button" role="tab" id="tb-2" aria-selected="true" aria-controls="bio" data-k="courte">Courte<small>Programme, invitation</small></button>
-          <button type="button" role="tab" id="tb-3" aria-selected="false" aria-controls="bio" data-k="longue">Longue<small>Article, conférence</small></button>
-        </div>
-        <div class="bio" id="bio" role="tabpanel" aria-live="polite">
-          <p id="bio-t"></p>
-          <div class="row"><button type="button" class="btn" id="copy">Copier le texte</button><span class="count" id="bio-n"></span></div>
-        </div>
-      </div>
-      <div class="contact">
-        <p>Interviews, conférences, partenariats&nbsp;:</p>
-        <code id="mail">newsletter@efa.africa</code>
-        <button type="button" class="btn s" id="copy-mail">Copier l’adresse</button>
-      </div>
-    </div>
-  </section>
+  </div>
 </main>
 
 <footer>
@@ -402,12 +513,41 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
     <a href="methode.html">Études &amp; méthode</a>
     <a href="tribunes.html">Les tribunes</a>
     <a href="confidentialite.html">Vos données</a>
-    <span>Mis à jour le 19 octobre 2026</span>
+    <span>Mis à jour le 20 octobre 2026</span>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="tribunes.js"></script>
 <script>
+/* Onglets : EFA · L'auteur · Publications · Convictions. Anciennes ancres conservées. */
+(function(){
+  var IDS=["efa","auteur","publications","convictions"], ALIAS={parcours:"auteur",biographie:"auteur",pensee:"convictions",realisations:"efa"};
+  function montre(id){ IDS.forEach(function(k){ document.getElementById(k).hidden=k!==id; document.getElementById("t-"+k).setAttribute("aria-selected",String(k===id)); }); }
+  function depuisAncre(scroll){ var h=(location.hash||"").slice(1), id=IDS.indexOf(h)>=0?h:(ALIAS[h]||(document.getElementById(h)&&document.getElementById(h).closest(".panel")?document.getElementById(h).closest(".panel").id:"efa"));
+    montre(id); if(scroll&&h){ var el=ALIAS[h]?document.getElementById(h):(IDS.indexOf(h)>=0?document.querySelector(".ptabs"):document.getElementById(h)); if(el) setTimeout(function(){ window.scrollTo({top:el.getBoundingClientRect().top+scrollY-70}); },30); } }
+  document.querySelectorAll(".ptabs a,[data-tab]").forEach(function(a){ a.addEventListener("click",function(e){ e.preventDefault(); var h=a.getAttribute("href"); history.replaceState(null,"",h); depuisAncre(!!a.dataset.tab); }); });
+  addEventListener("hashchange",function(){ depuisAncre(true); }); depuisAncre(true);
+  var mb=document.getElementById("menu"), nv=document.getElementById("nav");
+  if(mb) mb.addEventListener("click",function(){ var o=nv.classList.toggle("open"); mb.setAttribute("aria-expanded",o); mb.textContent=o?"Fermer":"Menu"; });
+  var esc=function(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+  var MOIS=["janv.","févr.","mars","avril","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+  var dFR=function(d){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||""); return m?(+m[3])+" "+MOIS[+m[2]-1]+" "+m[1]:""; };
+  var T=(window.EFA_TRIBUNES||[]).slice().sort(function(a,b){return (b.n||0)-(a.n||0);}).slice(0,3), tr=document.getElementById("trib");
+  if(tr) tr.innerHTML=T.map(function(x){ return '<li><a href="'+esc(x.lien||"tribunes.html")+'" target="_blank" rel="noopener"><span class="n">'+esc(x.n)+'</span><span class="tt">'+esc(x.titre)+'</span><span class="fl" aria-hidden="true">→</span><span class="d">'+esc(dFR(x.date))+'</span></a></li>'; }).join("");
+  var GUIDE_LIEN="https://forms.gle/5CsRvJYxoFArJbNa8", WA="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a";
+  var GUIDES=[
+    {t:"Construire sa stabilité financière",d:"Mesurer sa stabilité, puis la construire pilier par pilier. Cinq fiches à remplir.",dispo:true},
+    {t:"Choisir sa tontine",d:"Entrer dans une tontine, la lancer, appartenir à une communauté financière."},
+    {t:"Que faire de sa tontine ? Décider avant de recevoir",d:"Savoir à quoi servira la somme avant le jour où elle arrive."},
+    {t:"Combien vaut mon rang ? Premier servi, dernier servi",d:"Recevoir tôt, c’est emprunter. Recevoir tard, c’est épargner."},
+    {t:"Cotiser depuis l’étranger",d:"Le guide de la diaspora : cotiser, suivre et sécuriser sa tontine à distance."},
+    {t:"Votre liberté financière : combien vous faut-il ?",d:"Les questions que tout le monde se pose, et les stratégies classiques."}
+  ];
+  var sh=document.getElementById("shelf");
+  if(sh) sh.innerHTML=GUIDES.map(function(g){ return '<article class="gd'+(g.dispo?'':' soon-g')+'"><span class="pill'+(g.dispo?' on':'')+'">'+(g.dispo?'Disponible':'À venir')+'</span><h3>'+esc(g.t)+'</h3><p>'+esc(g.d)+'</p>'+(g.dispo?'<a href="./#guide">Recevoir le guide par email →</a><a href="'+GUIDE_LIEN+'" target="_blank" rel="noopener">Ou par le questionnaire →</a>':'<a href="'+WA+'" target="_blank" rel="noopener">Être prévenu de la sortie →</a>')+'</article>'; }).join("");
+})();
+
 var BIOS={
   ligne:"Élysée Johnson, financier, fondateur d’Éducation Financière Afrique (EFA).",
   courte:"Élysée Johnson est le fondateur d’Éducation Financière Afrique (EFA), une plateforme qui explique l’argent à partir des réalités africaines. Après une décennie dans la banque d’investissement, le capital-investissement et le conseil, à Paris, New York et Abidjan, il travaille sur une question : comment l’argent qui circule devient du capital qui reste.",
@@ -416,8 +556,8 @@ var BIOS={
 var cur='courte', t=document.getElementById('bio-t'), n=document.getElementById('bio-n'), toast=document.getElementById('toast');
 function words(s){return s.split(/\s+/).filter(function(w){return /[\wÀ-ÿ]/.test(w);}).length;}
 function show(k){cur=k;t.textContent=BIOS[k];n.textContent=words(BIOS[k])+' mots';
-  document.querySelectorAll('.tabs button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.k===k));});}
-document.querySelector('.tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)show(b.dataset.k);});
+  document.querySelectorAll('.bios .tabs button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.k===k));});}
+document.querySelector('.bios .tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)show(b.dataset.k);});
 function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(say.t);say.t=setTimeout(function(){toast.classList.remove('on');},2200);}
 function selectEl(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);}
 function copy(text,el,msg){
