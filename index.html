@@ -369,6 +369,45 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .mb-ico{width:76px;height:76px;color:#fff}
 .mb-t{margin:0;max-width:22em;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,4.6vw,56px);line-height:1;text-wrap:balance}
 .mb-t .mc{color:#EC6243}
+/* Comprendre tout de suite (haut de page) */
+.cs-top{background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 48px) var(--gut) 64px;scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
+.cs-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px 64px;align-items:start}
+.cs-q,.cs-def{min-width:0}
+.cs-k{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
+.cs-q h2 .nw{white-space:nowrap}
+.cs-q h2{margin-top:14px;font-size:clamp(44px,6.4vw,84px);line-height:.92}
+.cs-lead{margin-top:20px;font-size:clamp(17px,2vw,20px);line-height:1.55;color:#D3DAE6;max-width:32em}
+.cs-def{display:grid;gap:0;padding-top:6px}
+.cs-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;align-items:start;padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
+.cs-row:first-child{border-top-color:rgba(255,255,255,.5)}
+.cs-ic{width:52px;height:52px}
+.cs-row p{font-size:17px;line-height:1.55;color:#C9D1DE}
+.cs-row b{display:block;color:#fff;font-weight:700;font-size:19px;line-height:1.35;margin-bottom:4px}
+.cs-row .mc{color:#EC6243}.cs-row .ms{color:var(--soft-bleu)}
+.cs-nuance{padding:18px 0 0;border-top:1px solid rgba(255,255,255,.12);font-size:15px;line-height:1.55;color:var(--muted)}
+.cs-act{display:grid;gap:18px;margin-top:26px;justify-items:start}
+.cs-act .btn{min-width:280px}
+.cs-ex{width:100%}
+.cs-ex summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:700;font-size:15px;color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:6px}
+.cs-ex summary::-webkit-details-marker{display:none}
+.cs-ex summary::after{content:"";flex:none;width:8px;height:8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg);margin-bottom:4px;transition:transform .2s}
+.cs-ex[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+.cs-exb{margin-top:14px;padding:22px;background:#111A2C;border:1px solid rgba(255,255,255,.1);border-radius:10px;display:grid;gap:18px}
+.cs-ext{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-bleu)}
+.cs-case{display:grid;gap:10px}
+.cs-case p{font-size:15px;line-height:1.55;color:#C9D1DE}
+.cs-case b{color:#fff;font-weight:700}
+.cs-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.08)}
+.cs-bar i{display:block;background:rgba(236,98,67,.75)}
+.cs-bar em{display:block;background:var(--soft-bleu)}
+.cs-steps{display:flex;align-items:flex-end;gap:5px;height:34px}
+.cs-steps i{flex:1;height:var(--h);min-height:3px;background:var(--soft-bleu);border-radius:2px 2px 0 0}
+.cs-note{font-size:13px;line-height:1.5;color:var(--muted)}
+.cs-more{justify-self:start;font-size:14px;font-weight:700;color:var(--soft-bleu);text-decoration:none;border-bottom:1px solid rgba(109,184,242,.4);padding-bottom:2px}
+.cs-top + .hero{padding-top:64px}
+@media (max-width:860px){.cs-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 30px);padding-bottom:44px}.cs-in{grid-template-columns:minmax(0,1fr);gap:26px}.cs-q h2 .nw{white-space:nowrap}
+.cs-q h2{font-size:clamp(40px,11vw,60px)}.cs-act{justify-items:stretch}.cs-act .btn{min-width:0;width:100%}.cs-top + .hero{padding-top:48px}}
+@media (max-width:380px){.cs-row{grid-template-columns:40px minmax(0,1fr);gap:14px}.cs-ic{width:40px;height:40px}.cs-exb{padding:18px 16px}}
 .mband-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 40px);padding-bottom:52px;border-top:0;scroll-snap-align:start}
 .mband-top + .hero{padding-top:64px}
 @media (max-width:860px){.mband-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 28px);padding-bottom:36px;gap:16px}.mband-top .mb-ico{width:60px;height:60px}.mband-top .mb-t{font-size:clamp(28px,8.4vw,40px)}.mband-top + .hero{padding-top:48px}}
@@ -593,10 +632,34 @@ img.char{object-position:50% 18%}
 
 <main id="accueil">
 
-  <!-- Mission EFA (haut de page) -->
-  <section class="mband mband-top" aria-label="La mission d’EFA">
-    <svg class="mb-ico" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="40" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg>
-    <p class="mb-t">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  <!-- Comprendre tout de suite : la question du visiteur, puis le cercle et la spirale en langage courant -->
+  <section class="cs-top" id="comprendre" aria-labelledby="cs-t">
+    <div class="cs-in">
+      <div class="cs-q">
+        <p class="cs-k">Le cercle et la spirale, en clair</p>
+        <h2 id="cs-t">Votre argent entre. Que <span class="nw">reste-t-il</span> après&nbsp;?</h2>
+        <p class="cs-lead">Salaire, recettes d’activité, transferts ou tontine&nbsp;: une partie sert à vivre et à honorer vos engagements. EFA vous aide à comprendre où elle va et à préparer vos projets.</p>
+      </div>
+      <div class="cs-def">
+        <div class="cs-row"><svg class="cs-ic" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="34" fill="none" stroke="#EC6243" stroke-width="5" stroke-dasharray="3 8" stroke-linecap="round"/><path d="M34 0 l-7 -7 M34 0 l7 -7" stroke="#EC6243" stroke-width="5" stroke-linecap="round" fill="none"/></svg><p><b><span class="mc">Le cercle</span>&nbsp;: l’argent circule.</b> Vous recevez, vous utilisez, puis vous attendez la prochaine rentrée.</p></div>
+        <div class="cs-row"><svg class="cs-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg><p><b><span class="ms">La spirale</span>&nbsp;: une partie se construit dans la durée.</b> Au fil des rentrées, vous conservez une part pour une réserve ou un projet.</p></div>
+        <p class="cs-nuance">Payer ses besoins est nécessaire. L’objectif est de comprendre ce qui circule et ce que vous pouvez progressivement construire.</p>
+        <div class="cs-act">
+          <a class="btn btn-main" href="ou-est-passe-mon-argent.html?src=accueil-cs" data-goatcounter-click="cs-oepma">Où est passé mon argent&nbsp;?</a>
+          <details class="cs-ex" id="cs-ex">
+            <summary data-goatcounter-click="cs-exemple">Comprendre le cercle et la spirale avec un exemple</summary>
+            <div class="cs-exb">
+              <p class="cs-ext">Un exemple avec 100&nbsp;000&nbsp;FCFA</p>
+              <div class="cs-case"><span class="cs-bar"><i style="width:100%"></i></span><p>Vous recevez 100&nbsp;000&nbsp;FCFA et utilisez toute la somme&nbsp;: <b>cette rentrée n’ajoute rien à votre réserve.</b> C’est le cercle.</p></div>
+              <div class="cs-case"><span class="cs-bar"><i style="width:95%"></i><em style="width:5%"></em></span><p>Vous recevez 100&nbsp;000&nbsp;FCFA, utilisez 95&nbsp;000&nbsp;FCFA et conservez 5&nbsp;000&nbsp;FCFA&nbsp;: <b>vous commencez à constituer une réserve.</b></p></div>
+              <div class="cs-case"><span class="cs-steps" aria-hidden="true"><i style="--h:10%"></i><i style="--h:20%"></i><i style="--h:30%"></i><i style="--h:40%"></i><i style="--h:50%"></i><i style="--h:60%"></i><i style="--h:70%"></i><i style="--h:80%"></i><i style="--h:90%"></i><i style="--h:100%"></i></span><p>Si vous pouvez renouveler cette mise de côté pendant dix rentrées, sans retrait, <b>vous aurez conservé 50&nbsp;000&nbsp;FCFA</b>, hors frais et sans supposer de rendement.</p></div>
+              <p class="cs-note">EFA appelle cette accumulation progressive «&nbsp;la spirale&nbsp;». Le montant dépend de votre situation&nbsp;; 5&nbsp;% n’est pas une règle imposée.</p>
+              <a class="cs-more" href="#cercle">Essayer avec d’autres montants, l’exemple de Koffi</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 0. Promesse -->
@@ -612,7 +675,7 @@ img.char{object-position:50% 18%}
         <a class="btn btn-main" href="diagnostic.html?src=accueil">Faire mon diagnostic gratuit · 6 min</a>
       </div>
       <p class="hero-note">Gratuit. Une première synthèse s’affiche tout de suite&nbsp;; votre email n’est demandé qu’ensuite, pour le résultat complet.</p>
-      <a class="hero-alt" href="#cercle">Comprendre le cercle et la spirale</a>
+      <a class="hero-alt" href="#cercle">Voir l’exemple de Koffi : quelle part garder<a class="hero-alt" href="#cercle">Comprendre le cercle et la spirale</a>nbsp;?</a>
       <span class="cue" aria-hidden="true"></span>
     </div>
     <a class="credit" href="https://unsplash.com/photos/a-group-of-people-standing-around-a-table-filled-with-tomatoes-cnVn4Gg4b00" target="_blank" rel="noopener">Photo&nbsp;: Tunde Buremo / Unsplash</a>
