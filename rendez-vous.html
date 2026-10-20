@@ -684,7 +684,7 @@ img.char{object-position:50% 18%}
   <!-- 4. Rester en lien : la lettre du mardi, EFA Community, l'enquête -->
   <section class="liens" id="lien" aria-labelledby="lien-t">
     <div class="in">
-      <div class="lien-h"><p class="kick">Rester en lien</p><h1 id="lien-t">Chaque semaine, un rendez-vous</h1><p class="lede">Trois façons de garder le fil avec EFA, et un formulaire pour nous écrire directement.</p></div>
+      <div class="lien-h"><p class="kick">Rester en lien</p><h1 id="lien-t">Chaque semaine, un rendez-vous</h1><p class="lede">Trois façons de garder le fil avec EFA, et un formulaire pour nous écrire directement. Vous représentez une organisation&nbsp;? <a href="organisations.html" style="color:#fff">Découvrez les programmes EFA</a>.</p></div>
       <div class="lk3">
         <article><p class="lk-k">Le mardi</p><h3>«&nbsp;L’argent de la semaine&nbsp;»</h3><p>Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture, par email.</p><a class="lk-a" href="./#guide" data-goatcounter-click="lien-lettre">Recevoir la lettre</a></article>
         <article><p class="lk-k">Le jeudi à 19&nbsp;h</p><h3>EFA Community</h3><p>Échanger sur l’argent, la tontine et les projets, avec la communauté, sur WhatsApp.</p><a class="lk-a" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="lien-community">Rejoindre la communauté</a></article>
@@ -710,6 +710,8 @@ img.char{object-position:50% 18%}
       <label>Sujet<select id="ct-sujet" name="sujet">
         <option>Une question sur mon argent</option>
         <option>Un témoignage sur la tontine</option>
+        <option>Un programme pour mon organisation</option>
+        <option>Une étude sur commande</option>
         <option>Un partenariat</option>
         <option>La presse</option>
         <option>Autre</option>
@@ -741,6 +743,7 @@ img.char{object-position:50% 18%}
     <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
     <a href="auteur.html">À propos</a>
     <a href="methode.html#methode">Notre méthode</a>
+    <a href="organisations.html">Pour les organisations</a>
     <a href="confidentialite.html">Confidentialité</a>
     <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
   </div>
@@ -842,6 +845,8 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
 (function(){
   var f=document.getElementById('ct-form'); if(!f) return;
   var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
+  // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
+  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];}catch(e){}
   function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
   f.addEventListener('submit',function(e){
     e.preventDefault();
