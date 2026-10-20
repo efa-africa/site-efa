@@ -666,7 +666,7 @@ img.char{object-position:50% 18%}
   <a class="brand" href="#accueil"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a class="nav-cta" href="outils.html">Mes outils et diagnostic</a>
-    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
+    <a href="rendez-vous.html">Rendez-vous &amp; contact</a>
     <a href="methode.html#etudes">Études &amp; méthode</a>
     <a href="auteur.html">À propos</a>
   </nav>
@@ -842,48 +842,10 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <!-- 4. Rester en lien : la lettre du mardi, EFA Community, l'enquête -->
-  <section class="liens" id="lien" aria-labelledby="lien-t">
-    <div class="in">
-      <div class="lien-h"><p class="kick">Rester en lien</p><h2 id="lien-t">Chaque semaine, un rendez-vous</h2></div>
-      <div class="lk3">
-        <article><p class="lk-k">Le mardi</p><h3>«&nbsp;L’argent de la semaine&nbsp;»</h3><p>Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture, par email.</p><a class="lk-a" href="#guide" data-goatcounter-click="lien-lettre">Recevoir la lettre</a></article>
-        <article><p class="lk-k">Le jeudi à 19&nbsp;h</p><h3>EFA Community</h3><p>Échanger sur l’argent, la tontine et les projets, avec la communauté, sur WhatsApp.</p><a class="lk-a" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="lien-community">Rejoindre la communauté</a></article>
-        <article class="lk-enq" id="enquete"><p class="lk-k">L’enquête est ouverte</p><h3>Tontine ou pas, votre réponse compte</h3><p>251 personnes ont déjà répondu à «&nbsp;L’argent de la tontine&nbsp;». Prochain cap&nbsp;: 300. Comprendre pourquoi on n’entre pas dans une tontine compte autant que savoir ce qu’on en fait.</p><a class="lk-a enq-lien" href="#enquete" target="_blank" rel="noopener" data-goatcounter-click="enquete-section">Répondre à l’enquête</a><a class="lk-b" href="methode.html#etudes">Lire l’étude</a></article>
-      </div>
-    </div>
-  </section>
+
 </main>
 
-<!-- Contact : formulaire envoyé par Web3Forms vers newsletter@efa.africa (clé WEB3_CLE, dans le script) -->
-<section class="contact" id="contact" aria-labelledby="ct-t">
-  <div class="in">
-    <div class="ct-txt">
-      <p class="kick">Nous écrire</p>
-      <h2 id="ct-t">Une question, un témoignage, un projet&nbsp;?</h2>
-      <p>Une question sur votre argent, votre expérience de la tontine, une proposition de partenariat ou une demande de la presse&nbsp;: écrivez-nous. Nous répondons sous quelques jours.</p>
-      <p class="ct-alt">Vous préférez l’email&nbsp;? <b>newsletter@efa.africa</b></p>
-    </div>
-    <form class="ct-form" id="ct-form" novalidate>
-      <div class="ct-row">
-        <label>Prénom et nom<input id="ct-nom" name="nom" type="text" autocomplete="name" maxlength="80" required></label>
-        <label>Adresse email<input id="ct-mail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required></label>
-      </div>
-      <label>Sujet<select id="ct-sujet" name="sujet">
-        <option>Une question sur mon argent</option>
-        <option>Un témoignage sur la tontine</option>
-        <option>Un partenariat</option>
-        <option>La presse</option>
-        <option>Autre</option>
-      </select></label>
-      <label>Votre message<textarea id="ct-msg" name="message" rows="5" maxlength="3000" required></textarea></label>
-      <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="check ct-ok" for="ct-ok"><input id="ct-ok" type="checkbox" required><span>J’accepte qu’EFA utilise mon nom et mon email pour me répondre. Ils ne servent à rien d’autre. <a href="confidentialite.html">Vos données</a></span></label>
-      <button class="btn btn-main" type="submit">Envoyer le message</button>
-      <p class="formmsg" id="ct-msgbox" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
+
 
 
 <div class="enq-pill" id="enq-pill" role="complementary" aria-label="Enquête EFA" hidden>
@@ -900,7 +862,7 @@ img.char{object-position:50% 18%}
     <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a>
     <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a>
     <a class="enq-lien" href="#enquete" target="_blank" rel="noopener">Répondre à l’enquête</a>
-    <a href="#contact">Nous contacter</a>
+    <a href="rendez-vous.html">Rendez-vous &amp; contact</a>
     <a href="auteur.html#publications">Guides, livre et tribunes</a>
     <a href="tribunes.html">Les tribunes</a>
     <a href="outils.html">Mes outils et diagnostic</a>
@@ -914,7 +876,7 @@ img.char{object-position:50% 18%}
 
 <script>
 // Anciennes ancres de l'accueil (liens déjà publiés) : redirigées vers leur nouvelle place
-(function(){var h=(location.hash||'').slice(1),M={preter:'preter-a-un-proche.html',guides:'auteur.html#publications',lecons:'auteur.html#publications',livre:'auteur.html#publications',fondateur:'auteur.html#auteur',spirale:'#cercle'};if(M[h]){if(M[h].charAt(0)==='#')location.hash=M[h];else location.replace(M[h]);}})();
+(function(){var h=(location.hash||'').slice(1),M={preter:'preter-a-un-proche.html',guides:'auteur.html#publications',lecons:'auteur.html#publications',livre:'auteur.html#publications',fondateur:'auteur.html#auteur',spirale:'#cercle',lien:'rendez-vous.html',contact:'rendez-vous.html#contact',enquete:'rendez-vous.html#enquete'};if(M[h]){if(M[h].charAt(0)==='#')location.hash=M[h];else location.replace(M[h]);}})();
 </script>
 <script src="globe.js" defer></script>
 <script src="donnees.js"></script>
