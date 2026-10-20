@@ -1,8 +1,9 @@
-/* « Où est passé mon argent ? » · moteur de calcul EFA (méthode 1.0)
+/* « Où est passé mon argent ? » · moteur de calcul EFA (méthode 1.1)
+   1.1 : une catégorie non renseignée rend le rapprochement partiel tant que l'utilisateur ne l'a pas confirmée ; ajout du zoom thématique.
    Fonctions pures : aucune donnée n'est envoyée, tout est recalculé à partir des saisies.
    Spécifications : claude/site/specifications (sections 4 à 8 et addendum 12 à 22). */
 (function (root) {
-  var VERSION = "1.0";
+  var VERSION = "1.1";
 
   // Catégories. sens : E = entrée, O = sortie. g = regroupement du bloc C. si = condition d'affichage.
   var CATS = [
@@ -127,7 +128,7 @@
     var solTot = 0, solExc = 0;
     lignes.forEach(function (x) { if (x.c.sol && x.r.v > 0) { solTot += x.r.v; if (x.c.exc) solExc += x.r.v; } });
     var inconnus = E.inc.concat(O.inc), vides = E.vide.concat(O.vide);
-    var statut = !soldesConnus ? "partiel" : (inconnus.length ? "partiel-flux" : (nbEst ? "estimatif" : "complet"));
+    var statut = !soldesConnus ? "partiel" : (inconnus.length || vides.length ? "partiel-flux" : (nbEst ? "estimatif" : "complet"));
 
     // Messages selon le contexte déclaré (addendum, section 21)
     var pr = etat.pratiques || {}, msgs = [];
@@ -155,6 +156,21 @@
       messages: msgs, action: action};
   }
 
-  var API = {VERSION: VERSION, CATS: CATS, GROUPES: GROUPES, POCHES: POCHES, val: val, totalCat: totalCat, actives: actives, pochesActives: pochesActives, bilan: bilan};
+  // Zoom thématique : uniquement les catégories du thème, sans écart global ni conclusion sur l'ensemble.
+  function zoom(etat, ids) {
+    var mv = (etat && etat.mouv) || {}, cats = CATS.filter(function (c) { return ids.indexOf(c.id) >= 0; });
+    var l = cats.map(function (c) { return {id: c.id, t: c.t, sens: c.sens, r: totalCat(mv[c.id])}; });
+    var sorties = l.filter(function (x) { return x.sens === "O"; }), entrees = l.filter(function (x) { return x.sens === "E"; });
+    var tot = function (L) { return L.reduce(function (a, x) { return a + (x.r.v > 0 ? x.r.v : 0); }, 0); };
+    var tS = tot(sorties);
+    return {total_sorties: tS, total_entrees: tot(entrees),
+      repartition: sorties.filter(function (x) { return x.r.v > 0; }).map(function (x) { return {id: x.id, t: x.t, v: x.r.v, est: x.r.est, pct: tS > 0 ? x.r.v / tS : null}; }).sort(function (a, b) { return b.v - a.v; }),
+      entrees: entrees.filter(function (x) { return x.r.v > 0; }).map(function (x) { return {id: x.id, t: x.t, v: x.r.v, est: x.r.est}; }),
+      estimes: l.filter(function (x) { return x.r.est; }).map(function (x) { return x.t; }),
+      inconnus: l.filter(function (x) { return x.r.v === null; }).map(function (x) { return x.t; }),
+      vides: l.filter(function (x) { return x.r.v === undefined; }).map(function (x) { return x.t; })};
+  }
+
+  var API = {VERSION: VERSION, CATS: CATS, GROUPES: GROUPES, POCHES: POCHES, val: val, totalCat: totalCat, actives: actives, pochesActives: pochesActives, bilan: bilan, zoom: zoom};
   if (typeof module !== "undefined" && module.exports) module.exports = API; else root.OEPMA = API;
 })(this);
