@@ -15,7 +15,7 @@
 <link rel="icon" href="logo-efa.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,9 +49,9 @@
   --bg:#070C16; --panel:#0D1525; --panel2:#111B2F; --line:#1F2C45;
   --ink:#E8EDF5; --ink2:#A9B4C6; --mute:#7A879D;
   --bleu:#6DB8F2; --bleu-d:#2188D6; --corail:#F0603F; --vermillon:#EC6243; --amber:#F2B84B; --creme:#F5EFE2; --nuit:#0B1220;
-  --disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --body:"Manrope",system-ui,Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --disp:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --mono:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -79,8 +79,8 @@ a{color:inherit}
 .mc{color:var(--vermillon);font-weight:800}.ms{color:var(--bleu)}
 
 .kick{font:600 11px var(--mono);letter-spacing:.2em;color:var(--corail);text-transform:uppercase;margin:0}
-h1,h2{font-family:var(--disp);font-weight:900;text-transform:uppercase;text-wrap:balance;margin:0}
-h2{font-size:clamp(36px,5vw,60px);line-height:.92}
+h1,h2{font-family:var(--disp);font-weight:700;text-transform:none;text-wrap:balance;margin:0}
+h2{font-size:clamp(31px,4.3vw,52px);line-height:1.12}
 h3{margin:0;text-wrap:balance}
 p{margin:0}
 
@@ -91,7 +91,7 @@ p{margin:0}
 .face::after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(transparent,rgba(7,12,22,.85))}
 .face figcaption{position:absolute;left:16px;bottom:14px;z-index:1;font:600 11px var(--mono);letter-spacing:.14em;color:var(--ink2);text-transform:uppercase}
 .hero-t{display:grid;gap:18px;min-width:0}
-.hero h1{font-size:clamp(58px,10vw,128px);line-height:.84}
+.hero h1{font-size:clamp(50px,8.6vw,110px);line-height:1.12}
 .hero h1 span{display:block;color:var(--bleu)}
 .lead{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);max-width:58ch}
 .lead b{color:var(--ink)}
@@ -134,7 +134,7 @@ p{margin:0}
 .thesis.new .tag{color:#5A6276}
 .thesis .tag em{font-style:normal;color:var(--amber)}
 .thesis.new .tag em{color:#B23A1E}
-.thesis h3{font:900 clamp(30px,3vw,40px)/.95 var(--disp);text-transform:uppercase}
+.thesis h3{font:700 clamp(26px,2.6vw,34px)/1.12 var(--disp);text-transform:none}
 .thesis.new h3 span{color:#C2401F}
 .thesis .sub{font:800 15px var(--body);color:var(--bleu)}
 .thesis.new .sub{color:var(--bleu-d)}
@@ -145,7 +145,7 @@ p{margin:0}
 .thesis.new .src{color:#5A6276;border-color:#D9CFBA}
 .spiral{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:24px;align-items:center;margin-top:28px;padding:22px;border:1px solid var(--line);border-radius:12px}
 .spiral canvas{width:100%;max-width:220px;aspect-ratio:1;display:block}
-.spiral h3{font:900 clamp(30px,3.4vw,44px)/.95 var(--disp);text-transform:uppercase}
+.spiral h3{font:700 clamp(26px,2.9vw,38px)/1.12 var(--disp);text-transform:none}
 .spiral p{color:var(--ink2);max-width:58ch;margin-top:10px}
 .spiral blockquote{margin:14px 0 0;font:800 clamp(18px,1.8vw,22px)/1.35 var(--body)}
 .spiral blockquote span{color:var(--bleu)}
@@ -167,7 +167,7 @@ p{margin:0}
 .work ul{margin:0;padding-left:18px;font-size:15px;color:var(--ink2)}
 .nums{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:4px}
 .nums div{display:grid}
-.nums b{font:900 clamp(38px,4.4vw,54px)/.9 var(--disp)}
+.nums b{font:700 clamp(33px,3.8vw,46px)/1.12 var(--disp)}
 .nums small{font:600 12px var(--body);color:#D5E8FB;max-width:24ch}
 .work a.more{font:700 14px var(--body);text-decoration:none;color:var(--bleu)}
 .work.big a.more{color:#fff}
@@ -194,29 +194,29 @@ p{margin:0}
 
 /* À propos en onglets */
 .intro{background:var(--panel);border-bottom:1px solid var(--line)}
-.ih{font-size:clamp(46px,8vw,96px);line-height:.88;margin-top:10px}
+.ih{font-size:clamp(40px,6.2vw,76px);line-height:1.1;margin-top:10px}
 .ptabs{display:flex;gap:8px;margin-top:30px;flex-wrap:wrap}
 .ptabs a{flex:1 1 200px;display:grid;gap:2px;text-decoration:none;padding:16px 20px;border-radius:14px 14px 0 0;background:#16213A;color:var(--ink2);min-height:44px}
-.ptabs a b{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;color:#fff}
+.ptabs a b{font-family:var(--disp);font-weight:700;text-transform:none;font-size:22px;line-height:1.12;color:#fff}
 .ptabs a small{font-size:13px;font-weight:600}
 .ptabs a[aria-selected="true"]{background:var(--bg);color:var(--ink2)}
 @media (max-width:640px){.ptabs a{flex:1 1 calc(50% - 8px);padding:12px 14px}.ptabs a b{font-size:21px}.ptabs a small{font-size:12px}}
 .band.first{border-top:0}
 .nav a.on{color:var(--ink);background:rgba(255,255,255,.08)}
 .menu-btn{display:none;margin-left:auto;background:rgba(255,255,255,.08);color:var(--ink);border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--body);cursor:pointer}
-@media (max-width:900px){.menu-btn{display:block}.nav{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:8px}.nav.open{display:flex}.nav a{font:900 30px var(--disp);text-transform:uppercase;color:var(--ink)}.menu-btn{position:relative;z-index:31}}
+@media (max-width:900px){.menu-btn{display:block}.nav{display:none;position:fixed;inset:0;z-index:30;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:8px}.nav.open{display:flex}.nav a{font:700 26px var(--disp);text-transform:none;color:var(--ink)}.menu-btn{position:relative;z-index:31}}
 .lv{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
 .lv-c{position:relative;aspect-ratio:2/3;border-radius:6px;overflow:hidden;background:var(--creme);max-width:260px}
 .lv-c img{display:block;width:100%;height:100%;object-fit:cover}
 .lv-f{display:none}
 .lv-c.no-img .lv-f{display:grid;position:absolute;inset:0;align-content:end;padding:20px;gap:6px;color:var(--nuit)}
-.lv-f b{font:900 30px/.95 var(--disp);text-transform:uppercase}.lv-f i{font-style:normal;font-weight:700}
+.lv-f b{font:700 26px/1.12 var(--disp);text-transform:none}.lv-f i{font-style:normal;font-weight:700}
 .lv-t{display:grid;gap:14px;min-width:0}
 .lv-t > p:not(.kick):not(.lead){color:var(--ink2);max-width:60ch}
 @media (max-width:640px){.lv{grid-template-columns:none}.lv-c{max-width:200px}}
 .trib{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .trib a{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none}
-.trib .n{font:900 34px/.9 var(--disp);color:var(--bleu)}
+.trib .n{font:700 29px/1.12 var(--disp);color:var(--bleu)}
 .trib .tt{font:700 18px/1.35 var(--body)}
 .trib .d{grid-column:2;font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .trib .fl{grid-column:3;grid-row:1/span 2;align-self:center;color:var(--bleu);font-size:20px}
@@ -231,7 +231,7 @@ p{margin:0}
 .lec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:960px){.lec{grid-template-columns:none}}
 .lec article{display:grid;gap:10px;align-content:start;padding:22px;border-radius:12px;background:var(--bg);border:1px solid var(--line);min-width:0}
-.lec h3{font:900 clamp(26px,2.6vw,34px)/.95 var(--disp);text-transform:uppercase}
+.lec h3{font:700 clamp(22px,2.2vw,29px)/1.12 var(--disp);text-transform:none}
 .lec p{font-size:15px;color:var(--ink2)}
 .lec b{color:var(--ink)}
 .lec a.more{font:700 14px var(--body);text-decoration:none;color:var(--bleu)}
@@ -442,7 +442,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       <div class="chain" role="img" aria-label="La chaîne : la confiance permet la circulation de l’argent, une part conservée crée une réserve, la réserve devient du capital.">
         <svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg">
           <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7A879D"/></marker></defs>
-          <g font-family="Manrope, system-ui, sans-serif">
+          <g font-family="Source Sans 3, Source Sans Pro, Arial, sans-serif">
             <line x1="185" y1="88" x2="300" y2="88" stroke="#7A879D" stroke-width="2" marker-end="url(#ar)"/>
             <line x1="435" y1="88" x2="550" y2="88" stroke="#7A879D" stroke-width="2" marker-end="url(#ar)"/>
             <line x1="685" y1="88" x2="800" y2="88" stroke="#7A879D" stroke-width="2" marker-end="url(#ar)"/>

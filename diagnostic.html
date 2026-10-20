@@ -17,14 +17,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
 /* Questions sur fond crème, résultats sur fond bleu nuit. Corail = attention uniquement. */
 :root{
   --nuit:#0B1220; --creme:#F5EFE2; --bleu:#2188D6; --corail:#E44828;
   --soft-bleu:#6DB8F2; --soft-corail:#F09680;
-  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --gut:max(16px,env(safe-area-inset-left,0px));
   /* jetons de la page (crème) — repris par le radar */
   --bg:var(--creme); --ink:var(--nuit); --muted:#4E5566; --line:#D9D0BE; --surface:#FFFDF8;
@@ -42,10 +42,10 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 a{color:inherit}
 p{margin:0;max-width:62ch}
-h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;letter-spacing:.005em}
-h1{font-size:clamp(44px,11vw,76px)}
-h2{font-size:clamp(30px,7vw,46px)}
-h3{font-size:24px;line-height:1}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(38px,9.5vw,65px)}
+h2{font-size:clamp(26px,6vw,40px)}
+h3{font-size:21px;line-height:1.12}
 :focus-visible{outline:3px solid var(--soft-bleu);outline-offset:3px;border-radius:6px}
 [tabindex="-1"]:focus,[tabindex="-1"]:focus-visible{outline:0}
 
@@ -93,7 +93,7 @@ button{font:inherit}
 
 /* Résultats */
 .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
-.kpi{font-family:var(--f-display);font-weight:900;font-size:56px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi{font-family:var(--f-display);font-weight:700;font-size:48px;line-height:1.12;font-variant-numeric:tabular-nums}
 .kpi.big{font-size:96px}
 .kpi small{font-size:22px;color:var(--muted)}
 .tag{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -105,7 +105,7 @@ button{font:inherit}
 .card.lockd{border-style:dashed}
 .box.act{background:var(--corail);color:#fff}
 .box.act .tag{color:#FFE3DB}
-.box.act h3{color:#fff;font-family:var(--f-body);font-weight:800;text-transform:none;font-size:20px;line-height:1.4}
+.box.act h3{color:#fff;font-family:var(--f-body);font-weight:700;text-transform:none;font-size:17px;line-height:1.4}
 .box.act .btn{background:#fff;color:var(--nuit)}
 .box.act .link{color:#fff}
 details.det summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}

@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
 /* Système visuel : surfaces calmes, filets fins, une seule couleur d'action par écran.
    Charte EFA : bleu nuit, blanc, cyan, corail. */
@@ -26,8 +26,8 @@
   --cyan:#6DB8F2; --bleu:#2188D6; --corail:#E44828; --corail2:#F09680;
   --ink:#0B1220; --ink2:#4A5263; --ink3:#7A8293; --filet:rgba(11,18,32,.12); --filet2:rgba(11,18,32,.06);
   --sel:#EEF5FC; --err:#B3261E;
-  --f-d:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --f:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-d:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --gut:max(20px,env(safe-area-inset-left,0px)); --gutR:max(20px,env(safe-area-inset-right,0px));
   --bar-h:84px;
 }
@@ -66,7 +66,7 @@ button{font-family:inherit}
 /* Éléments communs */
 .over{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
 .dark .over{color:#8E98AA}
-.t1{font-family:var(--f-d);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;font-size:clamp(52px,11vw,112px);text-wrap:balance}
+.t1{font-family:var(--f-d);font-weight:700;text-transform:none;line-height:1.12;letter-spacing:-.005em;font-size:clamp(45px,9.5vw,96px);text-wrap:balance}
 .t2{font-weight:300;font-size:clamp(28px,5.4vw,44px);line-height:1.12;letter-spacing:-.015em;text-wrap:balance}
 .t3{font-weight:600;font-size:clamp(19px,2.6vw,22px);line-height:1.3;letter-spacing:-.005em}
 .lede{font-size:clamp(17px,2.2vw,20px);line-height:1.55;font-weight:400;color:var(--ink2)}
@@ -130,7 +130,7 @@ button{font-family:inherit}
 /* Pistes */
 .res-h{display:grid;gap:14px;margin-bottom:40px}
 .piste{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;padding-block:32px;border-top:1px solid var(--filet)}
-.piste .n{font-family:var(--f-d);font-weight:900;font-size:56px;line-height:.85;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
+.piste .n{font-family:var(--f-d);font-weight:700;font-size:48px;line-height:1.12;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
 .piste.p1 .n{font-size:88px}
 .piste .b{display:grid;gap:10px;min-width:0}
 .piste .why{font-size:15px;color:var(--ink2);line-height:1.55}
@@ -284,9 +284,14 @@ footer a{color:#D8DEE8;text-decoration:none}
 .alt b{color:var(--ink);font-weight:600}
 .plan-l{counter-reset:pl;border-top:1px solid var(--filet)}
 .plan-l li{list-style:none;counter-increment:pl;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--filet);font-size:16px}
-.plan-l li::before{content:"0" counter(pl);font-family:var(--f-d);font-weight:900;font-size:30px;line-height:1;color:var(--bleu)}
+.plan-l li::before{content:"0" counter(pl);font-family:var(--f-d);font-weight:700;font-size:26px;line-height:1.12;color:var(--bleu)}
 .plan-l{padding:0;margin:12px 0 0}
 .zres{margin-top:8px}
+
+/* Typographie de titres : Libre Baskerville */
+.t2{font-family:var(--f-d);font-weight:400;letter-spacing:-.01em;line-height:1.2}
+.t3{font-family:var(--f-d);font-weight:700;letter-spacing:0}
+.lede{font-size:clamp(18px,2.2vw,21px)}
 </style>
 </head>
 <body>
@@ -429,7 +434,7 @@ footer a{color:#D8DEE8;text-decoration:none}
     var bloc=function(pi,k){ return '<article class="piste'+(k===0?' p1':'')+'"><span class="n" aria-hidden="true">0'+(k+1)+'</span><div class="b">'+(k===0?'<p class="over">Piste prioritaire</p>':'')+'<h2 class="'+(k===0?'t2':'t3')+'">'+esc(pi.titre)+'</h2><p class="why"><b>Pourquoi&nbsp;:</b> '+esc(pi.justification)+'</p><p class="act">'+esc(pi.action)+'</p><div class="noprint">'+lienPiste(pi)+'</div></div></article>'; };
     return '<section class="screen"><div class="stage col">'+
       '<p class="print-only">Éducation Financière Afrique · Préparer ma retraite · votre point de départ, établi à partir de vos réponses.</p>'+
-      '<div class="res-h"><p class="over">Point de départ</p><h1 class="t1" tabindex="-1" style="font-size:clamp(44px,9vw,84px)">Votre point de départ</h1>'+
+      '<div class="res-h"><p class="over">Point de départ</p><h1 class="t1" tabindex="-1" style="font-size:clamp(38px,7.7vw,72px)">Votre point de départ</h1>'+
       (x.horizon_titre?'<p class="lede"><b style="font-weight:600;color:var(--ink)">'+esc(x.horizon_titre)+'</b> '+esc(x.horizon)+'</p>':'')+'</div>'+
       bloc(p[0],0)+(p.length>1?'<p class="over sub-h">À examiner également</p>'+p.slice(1).map(function(pi,k){return bloc(pi,k+1);}).join(""):'')+
       '<div class="first dark"><p class="over">Votre première action</p><p class="t2">'+esc(x.premiere_action)+'</p></div>'+
@@ -500,7 +505,7 @@ footer a{color:#D8DEE8;text-decoration:none}
   };
   V.e4=function(){
     var x=calc({r:0}); mesure("retraite_estimation_resultat");
-    var head=exBand()+'<p class="print-only">Éducation Financière Afrique · Préparer ma retraite · méthode '+C.VERSION+' · estimation pédagogique en francs d’aujourd’hui.</p><div class="res-h"><p class="over">Estimation'+(x.partiel?' partielle':'')+' · scénario prudent</p><h1 class="t1" tabindex="-1" style="font-size:clamp(44px,9vw,84px)">Votre estimation</h1></div>';
+    var head=exBand()+'<p class="print-only">Éducation Financière Afrique · Préparer ma retraite · méthode '+C.VERSION+' · estimation pédagogique en francs d’aujourd’hui.</p><div class="res-h"><p class="over">Estimation'+(x.partiel?' partielle':'')+' · scénario prudent</p><h1 class="t1" tabindex="-1" style="font-size:clamp(38px,7.7vw,72px)">Votre estimation</h1></div>';
     if(!x.ok){
       var lib={age_actuel:"votre âge",age_arret:"l’âge d’arrêt",duree_retraite:"la durée de retraite",besoin:"votre besoin mensuel",taux:"le taux du dollar"};
       return '<section class="screen"><div class="stage col">'+head+'<p class="info w"><b>Estimation partielle&nbsp;:</b> il manque '+x.manque.map(function(m){return lib[m];}).join(", ")+'. Sans ces informations, aucun calcul n’est fait.</p><div class="r-acts"><button type="button" class="btn btn-n" data-nav="'+(x.manque.indexOf("besoin")>=0&&x.manque.length===1?"e2":"e1")+'">Compléter</button></div></div>'+barre("e-",null,"")+'</section>';

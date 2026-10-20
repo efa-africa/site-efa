@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
 /* Système visuel : surfaces calmes, filets fins, une seule couleur d'action par écran.
    Charte EFA : bleu nuit, blanc, cyan, corail. */
@@ -26,8 +26,8 @@
   --cyan:#6DB8F2; --bleu:#2188D6; --corail:#E44828; --corail2:#F09680;
   --ink:#0B1220; --ink2:#4A5263; --ink3:#7A8293; --filet:rgba(11,18,32,.12); --filet2:rgba(11,18,32,.06);
   --sel:#EEF5FC; --err:#B3261E;
-  --f-d:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --f:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-d:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --gut:max(20px,env(safe-area-inset-left,0px)); --gutR:max(20px,env(safe-area-inset-right,0px));
   --bar-h:84px;
 }
@@ -66,7 +66,7 @@ button{font-family:inherit}
 /* Éléments communs */
 .over{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
 .dark .over{color:#8E98AA}
-.t1{font-family:var(--f-d);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;font-size:clamp(52px,11vw,112px);text-wrap:balance}
+.t1{font-family:var(--f-d);font-weight:700;text-transform:none;line-height:1.12;letter-spacing:-.005em;font-size:clamp(45px,9.5vw,96px);text-wrap:balance}
 .t2{font-weight:300;font-size:clamp(28px,5.4vw,44px);line-height:1.12;letter-spacing:-.015em;text-wrap:balance}
 .t3{font-weight:600;font-size:clamp(19px,2.6vw,22px);line-height:1.3;letter-spacing:-.005em}
 .lede{font-size:clamp(17px,2.2vw,20px);line-height:1.55;font-weight:400;color:var(--ink2)}
@@ -130,7 +130,7 @@ button{font-family:inherit}
 /* Pistes */
 .res-h{display:grid;gap:14px;margin-bottom:40px}
 .piste{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;padding-block:32px;border-top:1px solid var(--filet)}
-.piste .n{font-family:var(--f-d);font-weight:900;font-size:56px;line-height:.85;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
+.piste .n{font-family:var(--f-d);font-weight:700;font-size:48px;line-height:1.12;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
 .piste.p1 .n{font-size:88px}
 .piste .b{display:grid;gap:10px;min-width:0}
 .piste .why{font-size:15px;color:var(--ink2);line-height:1.55}
@@ -277,7 +277,7 @@ footer a{color:#D8DEE8;text-decoration:none}
 .cards4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--nuit)}
 .cards4 > div{padding:22px 20px 22px 0;border-bottom:1px solid var(--filet);display:grid;gap:8px;align-content:start;min-width:0}
 .cards4 > div:nth-child(even){padding-left:20px;border-left:1px solid var(--filet)}
-.cards4 .n{font-family:var(--f-d);font-weight:900;font-size:34px;line-height:1;color:var(--bleu)}
+.cards4 .n{font-family:var(--f-d);font-weight:700;font-size:29px;line-height:1.12;color:var(--bleu)}
 .cards4 p{font-size:15px;color:var(--ink2);line-height:1.6}
 @media (max-width:640px){.cards4{grid-template-columns:minmax(0,1fr)}.cards4 > div:nth-child(even){padding-left:0;border-left:0}}
 .real{margin-top:32px;background:var(--nuit);color:#fff;padding:28px;border-radius:2px;display:grid;gap:14px}
@@ -289,7 +289,7 @@ footer a{color:#D8DEE8;text-decoration:none}
 @media (max-width:560px){.real{margin-inline:calc(-1 * var(--gut));padding:28px var(--gut);border-radius:0}}
 .meth{border-top:1px solid var(--nuit)}
 .meth > div{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 18px;padding:22px 0;border-bottom:1px solid var(--filet)}
-.meth .n{grid-row:1/span 3;font-family:var(--f-d);font-weight:900;font-size:40px;line-height:.9;color:var(--bleu)}
+.meth .n{grid-row:1/span 3;font-family:var(--f-d);font-weight:700;font-size:34px;line-height:1.12;color:var(--bleu)}
 .meth b{font-weight:600;font-size:18px}
 .meth p{font-size:15px;color:var(--ink2);line-height:1.6}
 .meth .kf{font-size:14px;color:var(--ink);background:var(--blanc);border-left:2px solid var(--corail);padding:10px 12px;margin-top:6px}
@@ -310,6 +310,11 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
 .suite a b{display:block;font-weight:600;font-size:16px}
 .suite a span{font-size:14px;color:var(--ink2)}
 .suite a i{font-style:normal;color:var(--bleu);font-size:20px}
+
+/* Typographie de titres : Libre Baskerville */
+.t2{font-family:var(--f-d);font-weight:400;letter-spacing:-.01em;line-height:1.2}
+.t3{font-family:var(--f-d);font-weight:700;letter-spacing:0}
+.lede{font-size:clamp(18px,2.2vw,21px)}
 </style>
 </head>
 <body>
