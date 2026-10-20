@@ -68,6 +68,17 @@ main{padding-block:36px 64px}
 .tool dt{font-weight:800;color:var(--ink2)}
 .tool dd{margin:0}
 .tool .note{font-size:13px;color:var(--ink2)}
+.famnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:32px}
+.famnav a{display:grid;gap:2px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--papier);text-decoration:none;min-width:0}
+.famnav b{font-weight:800;font-size:16px}
+.famnav span{font-size:14px;color:var(--ink2)}
+.famnav a::after{content:"↓";color:var(--corail);font-weight:800}
+.fam{scroll-margin-top:80px;display:grid;gap:18px;margin-bottom:44px}
+.fam-h{display:grid;gap:6px;border-top:2px solid var(--nuit);padding-top:18px}
+.fam-h h2{font-size:clamp(34px,5vw,52px)}
+.fam-h p{font-size:16px;color:var(--ink2)}
+.kick2{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.next{font-size:14px;color:var(--ink2)}
 .tool .eff{font-size:15px;color:var(--ink2)}
 .tool .eff b{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:2px}
 .how-t{border-top:1px solid var(--line);padding-top:6px}
@@ -100,11 +111,12 @@ footer a{color:#E8EDF5;text-decoration:none}
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <p class="kick">Mes outils et diagnostic</p>
     <h1>Comprendre votre argent. Et agir.</h1>
-    <p class="lead">EFA vous aide à comprendre votre argent et à agir, avec des explications et des outils adaptés à votre quotidien. Choisissez votre question : vous repartez avec une réponse ou une première action.</p>
+    <p class="lead">EFA vous aide à comprendre votre argent et à agir, avec des explications et des outils adaptés à votre quotidien. Faites le point sur votre situation, ou apprenez à agir dans une situation précise : vous repartez avec une réponse ou une première action.</p>
   </div>
 </section>
 <main class="wrap">
-  <div class="cards" id="cards"></div>
+  <nav class="famnav" aria-label="Familles d’outils"><a href="#point"><b>Faire le point</b><span>« Où en suis-je ? »</span></a><a href="#agir"><b>Apprendre à agir</b><span>« Comment m’y prendre ? »</span></a></nav>
+  <div id="cards"></div>
   <div class="how">
     <h2>Comment ces outils fonctionnent</h2>
     <p>Ce sont des outils pédagogiques. Ils décrivent votre situation à partir de ce que vous saisissez, sans rien vérifier, et ne recommandent aucun produit financier. Vos montants restent sur votre téléphone. EFA fait de l’éducation financière, pas du conseil en placement.</p>
@@ -121,20 +133,20 @@ footer a{color:#E8EDF5;text-decoration:none}
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
-  {id:"ou-est-passe-mon-argent", titre:"Où est passé mon argent ?", theme:"Suivre", url:"ou-est-passe-mon-argent.html",
+  {id:"ou-est-passe-mon-argent", famille:"point", titre:"Où est passé mon argent ?", theme:"Suivre", url:"ou-est-passe-mon-argent.html",
    benefice:"Repérez où chercher, puis vérifiez avec vos chiffres où votre argent est allé.",
    effort:"Cinq questions, sans relevé. Bilan chiffré facultatif.",
    objectif:"Savoir où chercher, puis vérifier combien : destinations de votre argent et montants qu’il reste à expliquer.",
    acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Pour les pistes : rien, aucun relevé. Pour le bilan facultatif : vos soldes et vos principales entrées et sorties, des estimations suffisent.",
    version_methode:"parcours 2.0 · calcul 1.1", bouton:"Identifier mes pistes", principal:true},
-  {id:"preparer-ma-retraite", titre:"Préparer ma retraite", theme:"Préparer", url:"preparer-ma-retraite.html",
+  {id:"preparer-ma-retraite", famille:"point", titre:"Préparer ma retraite", theme:"Préparer", url:"preparer-ma-retraite.html",
    benefice:"Faites le point sur votre retraite, puis estimez l’effort à fournir avec vos chiffres.",
    effort:"Six questions, sans montant. Estimation et plan facultatifs.",
    objectif:"Savoir où vous en êtes, mesurer l’écart entre votre besoin et vos ressources, puis décider d’un premier effort.",
    acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Pour le point de départ : rien. Pour l’estimation facultative : votre âge, votre besoin mensuel et vos ressources prévues, des estimations suffisent.",
    version_methode:"parcours 1.0 · calcul 1.0", bouton:"Faire le point",
    note:"Ce n’est ni un calcul de pension ni un conseil en placement : seule votre caisse peut calculer votre pension."},
-  {id:"diagnostic", titre:"Mon diagnostic financier complet", theme:"Comprendre", url:"diagnostic.html?src=outils",
+  {id:"diagnostic", famille:"point", titre:"Mon diagnostic financier complet", theme:"Comprendre", url:"diagnostic.html?src=outils",
    benefice:"Examinez votre situation sur six dimensions et repartez avec une priorité et une première action.",
    effort:"19 questions et 4 questions de profil. Aucun montant.",
    objectif:"Six dimensions, un profil, une priorité et une première action.",
@@ -142,7 +154,14 @@ var OUTILS = [
    infos:"Vos réponses à 19 questions et 4 questions de profil. Aucun montant pour la première étape.",
    version_methode:"1.0", bouton:"Faire mon diagnostic",
    note:"« Complet » désigne le parcours EFA proposé : ce n’est pas un audit exhaustif de votre patrimoine ou de votre solvabilité."},
-  {id:"cercle-spirale", titre:"Le simulateur Cercle & Spirale", theme:"Simuler", url:"cercle-spirale.html#argent",
+  {id:"preter-a-un-proche", famille:"agir", titre:"Prêter à un proche", theme:"Parcours pratique", url:"preter-a-un-proche.html",
+   benefice:"Une situation avec Koffi, les enjeux et une méthode, puis votre propre réponse, prête à envoyer.",
+   effort:"Six étapes courtes. Aucun montant obligatoire.",
+   objectif:"Savoir répondre clairement à une demande d’argent d’un proche : aider, prêter, proposer autre chose ou refuser.",
+   acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Si vous le souhaitez : le montant demandé, ce que vous pouvez engager, l’échéance envisagée.",
+   version_methode:"1.0", bouton:"Commencer le parcours", principal:true,
+   note:"Chaque réponse est légitime. Le parcours ne constitue ni un conseil juridique ni un conseil financier."},
+  {id:"cercle-spirale", famille:"point", titre:"Le simulateur Cercle & Spirale", theme:"Simuler", url:"cercle-spirale.html#argent",
    benefice:"Voyez ce que représente une part gardée à chaque rentrée, seul ou avec votre groupe.",
    effort:"Une somme, une part, un nombre de rentrées.",
    objectif:"Montrer ce qui reste quand une part est conservée à chaque rentrée, sans supposer de rendement.",
@@ -152,11 +171,16 @@ var OUTILS = [
 (function(){
   var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
   var prix=function(o){return o.prix>0?esc(o.prix.toLocaleString("fr-FR"))+" FCFA ("+esc(o.devise)+")":"Gratuit";};
-  document.getElementById("cards").innerHTML=OUTILS.map(function(o){
+  var carte=function(o){
     return '<article class="tool" id="'+esc(o.id)+'"><span class="tag">'+esc(o.theme)+' · '+(o.prix>0?prix(o):"Gratuit")+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.benefice)+'</p>'+
       '<p class="eff"><b>Ce qu’il vous faut</b> '+esc(o.effort)+'</p>'+
       '<a class="btn '+(o.principal?'btn-main':'btn-dark')+'" href="'+esc(o.url)+'" data-goatcounter-click="outils-'+esc(o.id)+'">'+esc(o.bouton)+'</a>'+
       '<details class="how-t"><summary>Comment fonctionne cet outil&nbsp;?</summary><dl><dt>Objectif</dt><dd>'+esc(o.objectif)+'</dd><dt>Accès</dt><dd>'+prix(o)+' · '+esc(o.acces)+'</dd><dt>Il vous faut</dt><dd>'+esc(o.infos)+'</dd><dt>Méthode</dt><dd>Version '+esc(o.version_methode)+'</dd></dl>'+(o.note?'<p class="note">'+esc(o.note)+'</p>':'')+'</details></article>';
+  };
+  var FAM=[["point","Faire le point","« Où en suis-je ? »","Des pistes, des chiffres à vérifier et une priorité."],["agir","Apprendre à agir","« Comment m’y prendre ? »","Une méthode comprise, exercée sur un cas, puis appliquée à votre situation."]];
+  document.getElementById("cards").innerHTML=FAM.map(function(f){
+    var L=OUTILS.filter(function(o){return o.famille===f[0];}); if(!L.length) return "";
+    return '<section class="fam" id="'+f[0]+'" aria-labelledby="fam-'+f[0]+'"><div class="fam-h"><p class="kick2">'+esc(f[2])+'</p><h2 id="fam-'+f[0]+'">'+esc(f[1])+'</h2><p>'+esc(f[3])+'</p></div><div class="cards">'+L.map(carte).join("")+'</div>'+(f[0]==="agir"?'<p class="next">Prochains parcours : comprendre sa tontine, gérer une grosse rentrée, répondre aux demandes d’aide familiale.</p>':'')+'</section>';
   }).join("");
   var b=document.getElementById("menu"), n=document.getElementById("nav");
   b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});

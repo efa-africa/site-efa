@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Prêter à un proche · EFA</title>
+<meta name="description" content="Un parcours pratique EFA : une situation avec Koffi, les enjeux, une méthode, puis votre propre réponse à une demande d’argent d’un proche. Gratuit, sans inscription.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:title" content="Prêter à un proche · un parcours pratique EFA">
+<meta property="og:description" content="Aider, prêter, proposer autre chose ou refuser : préparez votre réponse clairement. Gratuit, sans inscription.">
+<meta property="og:url" content="https://efa.africa/preter-a-un-proche.html">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Système visuel : surfaces calmes, filets fins, une seule couleur d'action par écran.
+   Charte EFA : bleu nuit, blanc, cyan, corail. */
+:root{
+  --nuit:#0B1220; --nuit2:#131C2E; --papier:#FAF8F4; --blanc:#FFFFFF; --creme:#F5EFE2;
+  --cyan:#6DB8F2; --bleu:#2188D6; --corail:#E44828; --corail2:#F09680;
+  --ink:#0B1220; --ink2:#4A5263; --ink3:#7A8293; --filet:rgba(11,18,32,.12); --filet2:rgba(11,18,32,.06);
+  --sel:#EEF5FC; --err:#B3261E;
+  --f-d:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(20px,env(safe-area-inset-left,0px)); --gutR:max(20px,env(safe-area-inset-right,0px));
+  --bar-h:84px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html:has(.hero),html:has(.hero) body{background:var(--nuit)}
+body{margin:0;background:var(--papier);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:400}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--bleu);outline-offset:3px}
+[tabindex="-1"]:focus{outline:0}
+.col{max-width:720px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+.col.w{max-width:1040px}
+
+/* Barre du site */
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 var(--gutR) 0 var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.24em}
+.brand img{width:30px;height:30px}
+.nav{display:flex;gap:2px}
+.nav a{text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.01em;padding:8px 12px;border-radius:4px;white-space:nowrap;color:#D8DEE8}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav a.on{color:#fff}
+.menu-btn{display:none;background:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:8px 14px;min-height:40px;font:600 13px var(--f);letter-spacing:.04em;cursor:pointer}
+@media (max-width:1100px){.brand span{display:none}}
+@media (max-width:900px){
+  .brand span{display:inline;font-size:9.5px;letter-spacing:.16em;line-height:1.3;max-width:13em}
+  .nav{position:fixed;inset:0;width:100vw;height:100svh;z-index:40;background:var(--nuit);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 32px;gap:4px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-size:26px;font-weight:300;letter-spacing:-.01em;white-space:normal;color:#fff;padding:10px 0}
+  .menu-btn{display:block;position:relative;z-index:41}
+}
+
+/* Éléments communs */
+.over{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.dark .over{color:#8E98AA}
+.t1{font-family:var(--f-d);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;font-size:clamp(52px,11vw,112px);text-wrap:balance}
+.t2{font-weight:300;font-size:clamp(28px,5.4vw,44px);line-height:1.12;letter-spacing:-.015em;text-wrap:balance}
+.t3{font-weight:600;font-size:clamp(19px,2.6vw,22px);line-height:1.3;letter-spacing:-.005em}
+.lede{font-size:clamp(17px,2.2vw,20px);line-height:1.55;font-weight:400;color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3);line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:4px;border:0;font:600 15px/1 var(--f);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.btn-c{background:var(--corail);color:#fff}
+.btn-c:hover{background:#D23C1F}
+.btn-n{background:var(--nuit);color:#fff}
+.btn-n:hover{background:#1B2638}
+.btn-w{background:#fff;color:var(--nuit)}
+.btn-g{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--filet)}
+.btn-g:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.btn:disabled{opacity:.35;cursor:default}
+.lien{background:none;border:0;padding:8px 0;font:600 15px/1.5 var(--f);color:var(--ink);cursor:pointer;display:inline;text-align:left;text-decoration:underline;text-decoration-color:var(--filet);text-decoration-thickness:1px;text-underline-offset:6px}
+.lien:hover{text-decoration-color:currentColor}
+.lien::after{content:"\00a0→"}
+.lien.b{color:var(--bleu);text-decoration-color:rgba(33,136,214,.3)}
+.dark .lien{color:#fff;text-decoration-color:rgba(255,255,255,.3)}
+
+/* Entrée */
+.hero{background:var(--nuit);color:#fff;min-height:min(calc(100svh - 60px),780px);display:flex;align-items:flex-end;padding-block:56px 48px;position:relative;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;right:-18vmin;top:-12vmin;width:72vmin;height:72vmin;border-radius:50%;border:1px solid rgba(109,184,242,.16);z-index:-1}
+.hero::after{content:"";position:absolute;right:-6vmin;top:0;width:48vmin;height:48vmin;border-radius:50%;border:1px dashed rgba(255,255,255,.08);z-index:-1}
+.hero .col{width:100%}
+.hero .mission{font-size:13px;color:#8E98AA;max-width:34em;margin-bottom:40px}
+.hero .mission .mc{color:#EC6243}.hero .mission .ms{color:var(--cyan)}
+.hero .t1{margin-top:14px}
+.hero .lede{color:#C9D1DE;margin-top:22px;max-width:30em}
+.hero .acts{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin-top:40px}
+.hero .note{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#8E98AA;letter-spacing:.01em}
+.reprise{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:36px;padding:16px 18px;border:1px solid rgba(255,255,255,.16);border-radius:6px;max-width:560px}
+.reprise b{display:block;font-weight:600;font-size:15px}
+.reprise span{font-size:13px;color:#8E98AA}
+@media (max-width:560px){.hero .acts .btn{width:100%}}
+
+/* Écrans d'étape */
+.screen{min-height:min(calc(100svh - 60px),900px);display:flex;flex-direction:column}
+.stage{flex:1;padding-block:28px calc(var(--bar-h) + 40px)}
+.prog{display:flex;align-items:center;gap:16px;margin-bottom:44px}
+.prog .lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+.seg{flex:1;display:grid;gap:4px}
+.seg i{display:block;height:2px;background:var(--filet)}
+.seg i.on{background:var(--nuit)}
+.q-h{display:grid;gap:12px;margin-bottom:28px}
+.q-h .small{margin-top:4px}
+.opts{border-top:1px solid var(--filet)}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;min-height:64px;padding:16px 4px;border:0;border-bottom:1px solid var(--filet);background:none;text-align:left;cursor:pointer;color:var(--ink);font:400 17px/1.4 var(--f);transition:background .15s}
+.opt:hover{background:var(--filet2)}
+.opt small{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
+.opt .ind{flex:none;width:22px;height:22px;border:1.5px solid rgba(11,18,32,.35);border-radius:50%;position:relative;transition:all .15s}
+.opt.m .ind{border-radius:4px}
+.opt[aria-pressed="true"]{font-weight:600}
+.opt[aria-pressed="true"] .ind{background:var(--nuit);border-color:var(--nuit)}
+.opt[aria-pressed="true"] .ind::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(250,248,244,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--filet);padding:14px var(--gutR) calc(14px + env(safe-area-inset-bottom,0px)) var(--gut)}
+.bar .col{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:0}
+.bar .btn{flex:1;max-width:260px}
+.bar .btn-g{flex:0 0 auto;max-width:none;padding:0 22px}
+@media (min-width:720px){.bar .col{justify-content:flex-end}}
+
+/* Pistes */
+.res-h{display:grid;gap:14px;margin-bottom:40px}
+.piste{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;padding-block:32px;border-top:1px solid var(--filet)}
+.piste .n{font-family:var(--f-d);font-weight:900;font-size:56px;line-height:.85;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
+.piste.p1 .n{font-size:88px}
+.piste .b{display:grid;gap:10px;min-width:0}
+.piste .why{font-size:15px;color:var(--ink2);line-height:1.55}
+.piste .why b{font-weight:600;color:var(--ink)}
+.piste .act{font-size:16px;line-height:1.6}
+.piste.p1 .t2{font-size:clamp(26px,4.6vw,38px)}
+.piste .t3{font-size:21px}
+.sub-h{padding-top:12px;margin-bottom:-8px}
+.first{background:var(--nuit);color:#fff;margin-top:24px;padding:36px 32px;border-radius:2px}
+.first .t2{color:#fff;margin-top:12px;font-size:clamp(24px,4.2vw,34px)}
+@media (max-width:560px){.first{margin-inline:calc(-1 * var(--gut));padding:32px var(--gut);border-radius:0}.piste{grid-template-columns:minmax(0,1fr);gap:10px}.piste .n{font-size:44px}.piste.p1 .n{font-size:64px}}
+.ctx{margin-top:28px;display:grid;gap:10px}
+.ctx p{font-size:15px;color:var(--ink2);padding-left:16px;border-left:2px solid var(--cyan)}
+.mention{margin-top:28px;font-size:13px;color:var(--ink3)}
+.keep{margin-top:20px;padding:20px;border:1px solid var(--filet);border-radius:4px;display:grid;gap:14px;background:var(--blanc)}
+.keep .row{display:flex;flex-wrap:wrap;gap:10px}
+.toggle{display:flex;gap:12px;align-items:flex-start;font-size:15px;cursor:pointer}
+.toggle input{width:20px;height:20px;accent-color:var(--nuit);flex:none;margin-top:2px}
+.edit{margin-top:36px}
+
+/* Formulaires du bilan */
+.block{padding-block:28px;border-top:1px solid var(--filet)}
+.block:first-of-type{border-top:0;padding-top:0}
+.block > .t3{margin-bottom:6px}
+.block > .small{margin-bottom:12px}
+.field{padding-block:18px;border-bottom:1px solid var(--filet2);display:grid;gap:8px}
+.field:last-child{border-bottom:0}
+.field .lab{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.field .lab b{font-weight:600;font-size:16px}
+.field .lab .tot{font-size:13px;font-weight:700;color:var(--bleu);white-space:nowrap;font-variant-numeric:tabular-nums}
+.field .ex{font-size:13px;color:var(--ink3);line-height:1.5}
+.amount{display:flex;align-items:baseline;gap:10px;border-bottom:1.5px solid rgba(11,18,32,.3);padding-bottom:4px;transition:border-color .15s}
+.amount:focus-within{border-color:var(--bleu)}
+.amount input{flex:1;min-width:0;width:100%;border:0;outline:0;background:none;font:300 30px/1.2 var(--f);letter-spacing:-.01em;color:var(--ink);padding:4px 0}
+.amount input::placeholder{color:#B8BDC7}
+.amount input:disabled{color:var(--ink3)}
+.amount em{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--ink3)}
+.prec{display:inline-flex;flex-wrap:wrap;border:1px solid var(--filet);border-radius:4px;overflow:hidden;align-self:start}
+.prec button{min-height:34px;padding:0 12px;border:0;border-right:1px solid var(--filet);background:none;font:600 12px var(--f);letter-spacing:.02em;color:var(--ink2);cursor:pointer}
+.prec button:last-child{border-right:0}
+.prec button[aria-pressed="true"]{background:var(--nuit);color:#fff}
+.mini{background:none;border:0;padding:4px 0;font:600 13px var(--f);color:var(--bleu);cursor:pointer;text-align:left;justify-self:start;min-height:32px}
+.lines{display:grid;gap:10px;padding:12px 0 4px}
+.line{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 60px 36px;gap:8px;align-items:end}
+.line input{min-width:0;width:100%;border:0;border-bottom:1px solid var(--filet);background:none;padding:8px 0;font:400 15px var(--f);outline:0}
+.line input:focus{border-color:var(--bleu)}
+.line .x{min-height:38px;border:0;background:none;font-size:18px;color:var(--ink3);cursor:pointer}
+@media (max-width:480px){.line{grid-template-columns:minmax(0,1fr) 60px 36px}.line .ll{grid-column:1/-1}}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:560px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.date{display:grid;gap:6px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.date input,.date select{border:0;border-bottom:1.5px solid rgba(11,18,32,.3);background:none;padding:8px 0;font:400 18px var(--f);color:var(--ink);text-transform:none;letter-spacing:0;outline:0;width:100%;min-height:44px;border-radius:0}
+.checks{border-top:1px solid var(--filet)}
+.chk{display:flex;gap:14px;align-items:flex-start;padding:14px 2px;border-bottom:1px solid var(--filet);cursor:pointer;font-size:16px}
+.chk input{width:20px;height:20px;accent-color:var(--nuit);flex:none;margin-top:2px}
+.chk small{display:block;font-size:13px;color:var(--ink3)}
+.info{font-size:14px;line-height:1.55;color:var(--ink2);padding:14px 16px;background:var(--blanc);border-left:2px solid var(--cyan);margin-block:12px}
+.info b{color:var(--ink);font-weight:600}
+.info.w{border-color:var(--corail)}
+details.grp{border-top:1px solid var(--filet)}
+details.grp > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:60px;font-weight:600;font-size:17px}
+details.grp > summary::-webkit-details-marker{display:none}
+details.grp > summary .s{margin-left:auto;font-size:13px;font-weight:700;color:var(--bleu)}
+details.grp > summary::after{content:"";width:9px;height:9px;border:solid var(--ink);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);margin:0 4px 4px 8px;transition:transform .2s}
+details.grp[open] > summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+.more{display:flex;flex-wrap:wrap;gap:8px;padding-block:12px}
+.more button{min-height:38px;padding:0 14px;border:1px solid var(--filet);border-radius:999px;background:var(--blanc);font:500 13px var(--f);color:var(--ink);cursor:pointer}
+.more button::before{content:"+ ";color:var(--bleu);font-weight:700}
+.err{font-size:14px;font-weight:600;color:var(--err)}
+.total{display:flex;justify-content:space-between;gap:12px;padding-top:16px;font-size:15px;color:var(--ink2)}
+.total b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* Bilan */
+.ex-band{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 0;margin-bottom:28px;border-bottom:1px solid var(--filet)}
+.ex-band span{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--corail)}
+.figs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--nuit);border-bottom:1px solid var(--filet);margin-top:8px}
+.figs div{padding:18px 14px 18px 0;display:grid;grid-template-rows:minmax(2.8em,auto) auto;align-items:end;gap:6px;min-width:0}
+.figs span{align-self:start}
+.figs div + div{padding-left:14px;border-left:1px solid var(--filet)}
+.figs span{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.figs b{font-weight:300;font-size:clamp(22px,2.6vw,27px);letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.figs .ec b{font-weight:600;color:var(--bleu)}
+@media (max-width:640px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.figs div:nth-child(odd){padding-left:0;border-left:0}.figs div:nth-child(even){padding-left:14px;border-left:1px solid var(--filet)}.figs div{border-bottom:1px solid var(--filet2)}.figs .ec{grid-column:1/-1;padding-left:0!important;border-left:0!important;border-bottom:0}}
+.verdict{margin-top:20px;font-size:clamp(18px,2.4vw,21px);line-height:1.5}
+.verdict b{font-weight:600}
+.bars{display:grid;gap:18px;margin-top:8px}
+.br{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:baseline}
+.br .l{font-size:15px}
+.br .v{font-size:15px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.br .v small{font-weight:400;color:var(--ink3);margin-left:6px}
+.br .tr{grid-column:1/-1;height:6px;background:var(--filet2);border-radius:0 3px 3px 0}
+.br .tr i{display:block;height:100%;background:var(--bleu);border-radius:0 3px 3px 0;min-width:2px}
+.dl{display:grid;grid-template-columns:minmax(0,1fr) auto;border-top:1px solid var(--filet)}
+.dl > *{padding:12px 0;border-bottom:1px solid var(--filet2);font-size:15px}
+.dl dt{color:var(--ink2)}
+.dl dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.act-panel{background:var(--corail);color:#fff;padding:32px;margin-top:8px;border-radius:2px}
+.act-panel .over{color:#FFE0D6}
+.act-panel .t2{color:#fff;margin-top:10px;font-size:clamp(23px,4vw,32px)}
+.act-panel p{margin-top:10px;color:#FFF1EC}
+.act-panel .btn{margin-top:22px}
+@media (max-width:560px){.act-panel{margin-inline:calc(-1 * var(--gut));padding:28px var(--gut);border-radius:0}}
+.r-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+@media (max-width:560px){.r-acts .btn{flex:1 1 100%}}
+details.meth{margin-top:36px;border-top:1px solid var(--filet);padding-top:8px}
+details.meth summary{cursor:pointer;min-height:52px;display:flex;align-items:center;font-weight:600}
+details.meth p,details.meth table{font-size:14px;color:var(--ink2)}
+details.meth table{width:100%;border-collapse:collapse;margin-block:12px}
+details.meth td,details.meth th{border-top:1px solid var(--filet);padding:10px 8px 10px 0;text-align:left;vertical-align:top}
+.recover textarea{width:100%;min-height:140px;font:13px ui-monospace,monospace;border:1px solid var(--filet);padding:10px}
+footer{background:var(--nuit);color:#8E98AA;padding-block:24px;font-size:12px;letter-spacing:.02em}
+footer .col{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:#D8DEE8;text-decoration:none}
+.print-only{display:none}
+@media print{
+  .top,.bar,footer,.noprint,.hero{display:none!important}
+  body{background:#fff;font-size:12pt}
+  .screen{min-height:0}.stage{padding:0}
+  .first,.act-panel{background:#fff!important;color:#000!important;border:1.5px solid #000}
+  .first .t2,.act-panel .t2,.act-panel p{color:#000!important}
+  .print-only{display:block;font-size:10pt;color:#333;margin-bottom:12pt}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Parcours pratique « Prêter à un proche » */
+.hero .accroche{margin-top:18px;font-size:15px;color:#8E98AA;max-width:32em}
+.story{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:28px;align-items:start}
+.story .ph{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:2px;background:var(--nuit2)}
+@media (max-width:640px){.story{grid-template-columns:minmax(0,1fr)}.story .ph{max-width:160px;aspect-ratio:1/1}}
+.story .tx{display:grid;gap:16px;min-width:0}
+.story .tx p{font-size:17px;line-height:1.65}
+.quote{font-size:clamp(20px,3vw,26px);font-weight:300;line-height:1.4;letter-spacing:-.01em;padding-left:18px;border-left:2px solid var(--corail)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit);border-bottom:1px solid var(--filet);margin-top:8px}
+.facts div{padding:16px 12px 16px 0;display:grid;gap:6px;min-width:0}
+.facts div + div{padding-left:12px;border-left:1px solid var(--filet)}
+.facts span{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.facts b{font-weight:300;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.02em;white-space:nowrap}
+@media (max-width:480px){.facts{grid-template-columns:minmax(0,1fr)}.facts div + div{padding-left:0;border-left:0;border-top:1px solid var(--filet2)}}
+.fb{display:grid;gap:0;margin-top:24px;border-top:1px solid var(--filet)}
+.fb > div{padding:18px 0;border-bottom:1px solid var(--filet);display:grid;gap:6px}
+.fb b{font-weight:600;font-size:16px}
+.fb p{font-size:15px;color:var(--ink2);line-height:1.6}
+.fb .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bleu)}
+.cards4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--nuit)}
+.cards4 > div{padding:22px 20px 22px 0;border-bottom:1px solid var(--filet);display:grid;gap:8px;align-content:start;min-width:0}
+.cards4 > div:nth-child(even){padding-left:20px;border-left:1px solid var(--filet)}
+.cards4 .n{font-family:var(--f-d);font-weight:900;font-size:34px;line-height:1;color:var(--bleu)}
+.cards4 p{font-size:15px;color:var(--ink2);line-height:1.6}
+@media (max-width:640px){.cards4{grid-template-columns:minmax(0,1fr)}.cards4 > div:nth-child(even){padding-left:0;border-left:0}}
+.real{margin-top:32px;background:var(--nuit);color:#fff;padding:28px;border-radius:2px;display:grid;gap:14px}
+.real .over{color:#8E98AA}
+.real ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.real li{font-size:15px;line-height:1.6;color:#C9D1DE;padding-left:18px;position:relative}
+.real li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+.real li b{color:#fff;font-weight:600}
+@media (max-width:560px){.real{margin-inline:calc(-1 * var(--gut));padding:28px var(--gut);border-radius:0}}
+.meth{border-top:1px solid var(--nuit)}
+.meth > div{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 18px;padding:22px 0;border-bottom:1px solid var(--filet)}
+.meth .n{grid-row:1/span 3;font-family:var(--f-d);font-weight:900;font-size:40px;line-height:.9;color:var(--bleu)}
+.meth b{font-weight:600;font-size:18px}
+.meth p{font-size:15px;color:var(--ink2);line-height:1.6}
+.meth .kf{font-size:14px;color:var(--ink);background:var(--blanc);border-left:2px solid var(--corail);padding:10px 12px;margin-top:6px}
+.meth .kf::before{content:"Koffi : ";font-weight:700;color:var(--corail)}
+.choix .chk{align-items:flex-start}
+.reponse{margin-top:6px;font-size:14px;color:var(--ink2);line-height:1.55;padding:12px 14px;background:var(--blanc);border-left:2px solid var(--cyan)}
+textarea.msg{width:100%;min-height:170px;border:1px solid var(--filet);background:var(--blanc);padding:14px;font:400 16px/1.6 var(--f);color:var(--ink);border-radius:2px;resize:vertical}
+textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
+.txt{border:0;border-bottom:1.5px solid rgba(11,18,32,.3);background:none;padding:8px 0;font:400 18px var(--f);color:var(--ink);outline:0;width:100%;min-height:44px;border-radius:0}
+.txt:focus{border-color:var(--bleu)}
+.fiche{border-top:1px solid var(--nuit)}
+.fiche dl{margin:0}
+.todo{margin:12px 0 0;padding:0;list-style:none;border-top:1px solid var(--filet)}
+.todo li{padding:14px 0 14px 30px;border-bottom:1px solid var(--filet);position:relative;font-size:16px}
+.todo li::before{content:"";position:absolute;left:2px;top:17px;width:16px;height:16px;border:1.5px solid rgba(11,18,32,.4);border-radius:3px}
+.suite{display:grid;gap:0;border-top:1px solid var(--filet);margin-top:12px}
+.suite a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid var(--filet);text-decoration:none;color:inherit}
+.suite a b{display:block;font-weight:600;font-size:16px}
+.suite a span{font-size:14px;color:var(--ink2)}
+.suite a i{font-style:normal;color:var(--bleu);font-size:20px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="30" height="30"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="on" href="outils.html">Mes outils et diagnostic</a>
+    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
+    <a href="methode.html#etudes">Études &amp; méthode</a>
+    <a href="index.html#guides">Guides</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<div id="app"></div>
+
+<footer>
+  <div class="col w">
+    <span>Éducation Financière Afrique © 2026</span>
+    <span>Éducation financière, pas conseil juridique ni financier</span>
+    <a href="outils.html">Mes outils et diagnostic</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var $app=document.getElementById("app"), KEY="efa_preter_v1", MKEY="efa_preter_mesures", VERSION="1.0";
+  var mb=document.getElementById("menu"), nv=document.getElementById("nav");
+  mb.addEventListener("click",function(){var o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"Fermer":"Menu";});
+
+  /* Mesure anonyme : aucune réponse, aucun montant */
+  var mesures={}; try{ mesures=JSON.parse(sessionStorage.getItem(MKEY)||"{}"); }catch(e){}
+  function mesure(ev){ if(mesures[ev]) return; mesures[ev]=1; try{ sessionStorage.setItem(MKEY,JSON.stringify(mesures)); }catch(e){}
+    try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
+
+  /* ---------- Contenu ---------- */
+  var QUESTIONS=[
+    ["usage","À quoi va servir exactement l’argent","Savoir s’il s’agit d’une ordonnance, d’une hospitalisation ou d’un examen permet parfois de payer directement la pharmacie ou l’hôpital, par mobile money. L’aide arrive là où elle est utile."],
+    ["nature","S’il s’agit d’une aide ou d’un prêt","C’est souvent là que naissent les malentendus : Koffi pense prêter, Afi pense recevoir un soutien. Le dire dès le départ protège la relation."],
+    ["rembourser","Quand et comment elle pourrait rembourser","Une échéance liée à une vraie rentrée, un salaire, une récolte, le tour de tontine, est plus réaliste qu’une date choisie au hasard."],
+    ["capacite","Combien il peut donner sans se mettre en difficulté","S’il envoie 50 000 FCFA, Koffi ne peut plus payer sa cotisation de tontine dans dix jours. Il risquerait de devoir emprunter à son tour."],
+    ["famille","Si d’autres membres de la famille participent","Une urgence se partage souvent. Proposer une partie et laisser d’autres compléter est une vraie réponse, pas une dérobade."],
+    ["rien","Rien : il envoie tout de suite","C’est un réflexe généreux, et parfois le bon. Le risque : découvrir ensuite qu’il manque de l’argent pour ses propres engagements, ou que chacun avait compris autre chose sur le remboursement."]
+  ];
+  var USAGES=[["sante","Santé"],["scolarite","Scolarité"],["ceremonie","Cérémonie, funérailles"],["loyer","Loyer ou factures"],["activite","Activité ou commerce"],["dette","Rembourser une dette"],["autre","Autre"],["nsp","Je ne sais pas encore"]];
+  var NATURES=[["don","Un don","La personne n’aura pas à rendre l’argent."],["pret","Un prêt","La personne rendra l’argent selon une échéance convenue."],["mixte","Une partie de chaque","Une part donnée, une part prêtée."],["nsp","Je ne sais pas encore",""]];
+  var ECHEANCES=[["rentree","À sa prochaine rentrée","Salaire, récolte, tour de tontine…"],["1mois","Dans un mois environ",""],["3mois","Dans trois mois environ",""],["aucune","Pas de date réaliste pour l’instant",""],["nsp","Pas encore discuté",""]];
+  var DIFF=[["report","On reporte l’échéance"],["fois","On rembourse en plusieurs fois"],["don","Le reste devient un don"],["nsp","Pas encore discuté"]];
+  var REPONSES=[
+    ["accepter","Accepter","Vous envoyez la somme demandée, en disant clairement s’il s’agit d’un don ou d’un prêt."],
+    ["autre_somme","Proposer une somme différente","Vous aidez avec ce que vous pouvez engager sans vous mettre en difficulté."],
+    ["autre_aide","Offrir une autre aide","Payer directement, mobiliser la famille, accompagner : l’aide n’est pas toujours de l’argent envoyé."],
+    ["refuser","Refuser pour l’instant","Dire non avec respect, quand aider vous mettrait en difficulté. C’est une réponse légitime."]
+  ];
+  var AIDES=[["payer","Payer directement la facture, la pharmacie ou l’école"],["famille","En parler à la famille pour participer ensemble"],["accompagner","Accompagner la personne, chercher une autre solution avec elle"]];
+
+  /* ---------- État ---------- */
+  function vide(){ return {version:VERSION, mode:"accueil", etape:1, vus:[], q2vu:false,
+    perso:{qui:"", demande:{m:null}, usage:"", urgent:"", capacite:{m:null}, nature:"", partPret:{m:null}, echeance:"", difficulte:"", reponse:"", montant:{m:null}, aide:"", message:"", messageModifie:false},
+    preferences:{sauvegarde_locale:false}}; }
+  var S=vide(), recup=null;
+  function ecrire(){ try{ var t=JSON.stringify(S); sessionStorage.setItem(KEY,t); if(S.preferences.sauvegarde_locale) localStorage.setItem(KEY,t); else localStorage.removeItem(KEY); }catch(e){} }
+  function lireBrut(){ var t=null; try{ t=localStorage.getItem(KEY); }catch(e){} if(!t){ try{ t=sessionStorage.getItem(KEY); }catch(e){} } return t; }
+  function fusion(b,e){ for(var k in e){ if(e[k]&&typeof e[k]==="object"&&!Array.isArray(e[k])&&b[k]&&typeof b[k]==="object") b[k]=fusion(b[k],e[k]); else b[k]=e[k]; } return b; }
+  function charger(){ var t=lireBrut(); if(!t) return; try{ var e=JSON.parse(t); if(!e||!e.version) throw 0; S=fusion(vide(),e); }catch(err){ recup=t; } }
+  function effacer(){ try{ localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); }catch(e){} S=vide(); recup=null; render(true); window.scrollTo(0,0); }
+
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+  var fmt=function(x){ if(x===null||x===undefined||isNaN(x)) return ""; return Math.round(x).toLocaleString("fr-FR").replace(/[   ]/g," "); };
+  var F=function(x){ return fmt(x)+" FCFA"; };
+  var parse=function(t){ t=String(t||"").replace(/[^\d]/g,""); if(t==="") return null; return +t; };
+  var lib=function(L,v){ var x=L.filter(function(o){return o[0]===v;})[0]; return x?x[1]:""; };
+  var P=function(){ return S.perso; };
+
+  /* ---------- Règles déterministes de la fiche ---------- */
+  function analyse(){
+    var p=P(), d=p.demande.m, c=p.capacite.m, m=p.montant.m, r={alertes:[], points:[]};
+    var envoie=!p.reponse||p.reponse==="accepter"||p.reponse==="autre_somme", pret=envoie&&(p.nature==="pret"||p.nature==="mixte");
+    if(envoie&&d!=null&&c!=null&&d>c) r.alertes.push("La somme demandée dépasse de "+F(d-c)+" ce que vous pouvez engager sans difficulté. Proposer une somme différente ou une autre aide est une réponse légitime.");
+    if((p.reponse==="accepter"||p.reponse==="autre_somme")&&m!=null&&c!=null&&m>c) r.alertes.push("Le montant que vous envisagez dépasse de "+F(m-c)+" ce que vous pouvez engager. Vérifiez vos propres engagements jusqu’à votre prochaine rentrée.");
+    if(pret&&p.echeance==="aucune") r.alertes.push("Un prêt sans échéance réaliste devient souvent un don non dit. Vous pouvez choisir de le considérer comme un don, en totalité ou en partie, et le dire.");
+    if(!p.usage||p.usage==="nsp") r.points.push("Demander à quoi servira exactement l’argent.");
+    if(p.usage==="sante"||p.usage==="scolarite"||p.usage==="loyer") r.points.push("Voir s’il est possible de payer directement "+(p.usage==="sante"?"la pharmacie ou l’hôpital":p.usage==="scolarite"?"l’école":"le propriétaire ou la facture")+".");
+    if(c==null) r.points.push("Calculer ce que vous pouvez engager jusqu’à votre prochaine rentrée, après vos propres dépenses et engagements.");
+    if(envoie&&(!p.nature||p.nature==="nsp")) r.points.push("Décider s’il s’agit d’un don ou d’un prêt, et le dire clairement.");
+    if(pret){
+      if(!p.echeance||p.echeance==="nsp") r.points.push("Convenir d’une échéance liée à une vraie rentrée.");
+      if(!p.difficulte||p.difficulte==="nsp") r.points.push("Convenir à l’avance de ce que vous ferez si le remboursement devient difficile.");
+      r.points.push("Garder une trace : un message récapitulatif suffit souvent, ou un témoin de confiance dans la famille.");
+    }
+    if(!p.reponse) r.points.push("Choisir votre réponse : accepter, proposer une autre somme, offrir une autre aide ou refuser.");
+    return r;
+  }
+  function echeanceTexte(e){ return {rentree:"à ta prochaine rentrée","1mois":"d’ici un mois","3mois":"d’ici trois mois"}[e]||"quand nous aurons fixé une date ensemble"; }
+  function difficulteTexte(d){ return {report:"on décalera la date",fois:"tu pourras me rembourser en plusieurs fois",don:"on considérera le reste comme un don"}[d]||"préviens-moi et on trouvera un arrangement"; }
+  function message(){
+    var p=P(), u=p.usage&&p.usage!=="nsp"&&p.usage!=="autre"?" pour "+lib(USAGES,p.usage).toLowerCase().replace("cérémonie, funérailles","la cérémonie").replace("loyer ou factures","le loyer ou les factures").replace("activité ou commerce","ton activité").replace("rembourser une dette","ta dette").replace("santé","les soins").replace("scolarité","la scolarité"):"";
+    var m=p.montant.m!=null?F(p.montant.m):(p.demande.m!=null?F(p.demande.m):"cette somme");
+    var pp=p.partPret.m, nat=p.nature;
+    var suite=function(){
+      if(nat==="don") return " C’est un don : tu n’as pas à me le rendre.";
+      if(nat==="pret") return " C’est un prêt : on convient que tu me rembourses "+echeanceTexte(p.echeance)+". Si ça devient difficile, préviens-moi avant : "+difficulteTexte(p.difficulte)+".";
+      if(nat==="mixte") return pp!=null?" Sur cette somme, "+F(pp)+" sont un prêt que tu me rendras "+echeanceTexte(p.echeance)+", et le reste est un don.":" Une partie est un don, l’autre un prêt : on en reparle pour fixer la part à rendre et la date.";
+      return " On en reparle pour savoir si c’est un don ou un prêt.";
+    };
+    if(p.reponse==="accepter") return "Je t’envoie "+m+u+"."+suite()+" Tiens-moi au courant.";
+    if(p.reponse==="autre_somme") return "Je ne peux pas envoyer "+(p.demande.m!=null?F(p.demande.m):"toute la somme")+" en ce moment sans me mettre en difficulté. Je peux t’aider avec "+(p.montant.m!=null?F(p.montant.m):"une partie")+u+"."+suite();
+    if(p.reponse==="autre_aide"){ var a={payer:"Je ne peux pas envoyer d’argent tout de suite, mais je peux payer directement"+(p.usage==="sante"?" la pharmacie ou l’hôpital":p.usage==="scolarite"?" l’école":" la facture")+". Envoie-moi les références.",famille:"Je ne peux pas tout prendre en charge seul. Je propose qu’on en parle en famille pour participer ensemble : je mettrai ma part.",accompagner:"Je ne peux pas envoyer d’argent en ce moment, mais je veux t’aider autrement. On peut chercher ensemble une solution : je peux t’accompagner."}[p.aide]; return a||"Je ne peux pas envoyer d’argent en ce moment, mais je veux t’aider autrement. Dis-moi ce qui te soulagerait le plus."; }
+    if(p.reponse==="refuser") return "Je comprends que c’est important pour toi. En ce moment, je ne peux pas t’aider financièrement sans me mettre moi-même en difficulté, et je préfère te le dire franchement. Si tu veux, on peut réfléchir ensemble à qui d’autre pourrait aider.";
+    return "";
+  }
+
+  /* ---------- Composants ---------- */
+  function progBar(n){ var s=""; for(var i=1;i<=6;i++) s+='<i class="'+(i<=n?"on":"")+'"></i>'; return '<div class="prog"><span class="lbl">Étape '+n+' sur 6</span><span class="seg" style="grid-template-columns:repeat(6,1fr)">'+s+'</span></div>'; }
+  function barre(prev,next,label,dis){ return '<div class="bar noprint"><div class="col">'+(prev?'<button type="button" class="btn btn-g" data-nav="'+prev+'">Précédent</button>':'<span></span>')+(next?'<button type="button" class="btn btn-n" data-nav="'+next+'"'+(dis?' disabled':'')+'>'+label+'</button>':'')+'</div></div>'; }
+  function head(n,over,titre,sous){ return progBar(n)+'<div class="q-h"><p class="over">'+over+'</p><h1 class="t2" tabindex="-1">'+titre+'</h1>'+(sous?'<p class="lede">'+sous+'</p>':'')+'</div>'; }
+  function montant(path,titre,ex){ var v=P()[path].m; return '<div class="field"><div class="lab"><b>'+esc(titre)+'</b></div>'+(ex?'<p class="ex">'+ex+'</p>':'')+'<div class="amount"><input inputmode="numeric" autocomplete="off" aria-label="'+esc(titre)+', en FCFA" data-m="'+path+'" value="'+(v!=null?fmt(v):"")+'" placeholder="—"><em>FCFA</em></div></div>'; }
+  function radios(name,L,titre,ex){ var v=P()[name]; return '<div class="field"><div class="lab"><b>'+esc(titre)+'</b></div>'+(ex?'<p class="ex">'+ex+'</p>':'')+'<div class="checks">'+L.map(function(o){ return '<label class="chk"><input type="radio" name="'+name+'" data-r="'+name+'" value="'+o[0]+'"'+(v===o[0]?" checked":"")+'><span>'+esc(o[1])+(o[2]?'<small>'+esc(o[2])+'</small>':'')+'</span></label>'; }).join("")+'</div></div>'; }
+
+  function alertesHtml(a){ return a.alertes.length?'<div class="block">'+a.alertes.map(function(x){return '<p class="info w">'+esc(x)+'</p>';}).join("")+'</div>':''; }
+  function majAlertes(){ var el=document.getElementById("alertes"); if(el) el.innerHTML=alertesHtml(analyse()); }
+  /* ---------- Vues ---------- */
+  var V={};
+  V.recup=function(){ return '<section class="screen"><div class="stage col recover"><p class="over">Données à récupérer</p><h1 class="t2" style="margin-top:12px" tabindex="-1">Nous n’avons pas pu relire votre saisie précédente.</h1><p class="lede" style="margin-top:16px">Rien n’a été effacé. Vous pouvez copier ces données, puis recommencer.</p><textarea readonly aria-label="Données brutes" style="margin-top:20px">'+esc(recup)+'</textarea><div class="r-acts"><button type="button" class="btn btn-g" data-act="copierBrut">Copier les données</button><button type="button" class="btn btn-n" data-act="recommencer">Recommencer sans ces données</button></div></div></section>'; };
+  V.accueil=function(){
+    var reprise=S.etape>1||P().reponse;
+    return '<section class="hero dark"><div class="col">'+
+      '<p class="over">Apprendre à agir · parcours pratique</p><h1 class="t1" style="margin-top:14px">Prêter à un proche</h1>'+
+      '<p class="accroche">Aider, prêter, proposer autre chose ou refuser : chaque réponse peut être juste. Ce qui compte, c’est qu’elle soit claire.</p>'+
+      '<p class="lede">Une situation avec Koffi, les enjeux, une méthode simple, puis votre propre réponse, prête à envoyer.</p>'+
+      (reprise?'<div class="reprise"><div><b>Reprendre mon parcours</b><span>Étape '+S.etape+' sur 6</span></div><button type="button" class="btn btn-w" data-act="reprendre">Reprendre</button></div>':'')+
+      '<div class="acts"><button type="button" class="btn btn-c" data-act="commencer">Commencer avec Koffi</button><button type="button" class="lien" data-act="direct">J’ai une demande en cours : préparer ma réponse</button></div>'+
+      '<p class="note">Six étapes courtes. Gratuit, sans inscription. Rien de ce que vous écrivez n’est envoyé.</p></div></section>';
+  };
+  V.e1=function(){
+    mesure("preter_debut");
+    return '<section class="screen"><div class="stage col">'+head(1,"La situation","Afi demande 50&nbsp;000&nbsp;FCFA à Koffi")+
+      '<div class="story"><div class="tx">'+
+        '<p>Mardi soir, Koffi reçoit un appel de sa tante. Elle l’a déjà prévenue&nbsp;: «&nbsp;Ta sœur va t’appeler, c’est urgent.&nbsp;» Quelques minutes plus tard, Afi appelle à son tour.</p>'+
+        '<p class="quote">«&nbsp;Le petit est malade, il faut payer l’ordonnance et l’examen. Tu peux m’envoyer 50&nbsp;000 par mobile money ce soir&nbsp;?&nbsp;»</p>'+
+        '<p>Koffi veut aider. Mais son salaire est déjà bien entamé, et il doit encore tenir jusqu’à la fin du mois.</p>'+
+      '</div><img class="ph" src="koffi.jpg" alt="Koffi, le personnage de Min’Fin" width="220" height="293" onerror="this.remove()"></div>'+
+      '<div class="facts"><div><span>Demandé</span><b>50&nbsp;000</b></div><div><span>Il lui reste</span><b>70&nbsp;000</b></div><div><span>Tontine dans 10 jours</span><b>20&nbsp;000</b></div></div>'+
+      '<p class="small" style="margin-top:10px">En FCFA. Il lui reste aussi le transport et les repas jusqu’à la fin du mois.</p>'+
+      '</div>'+barre("accueil","e2","Continuer")+'</section>';
+  };
+  V.e2=function(){
+    var vus=S.vus;
+    return '<section class="screen"><div class="stage col">'+head(2,"À vous","À la place de Koffi, que chercheriez-vous à savoir avant de répondre&nbsp;?","Choisissez une ou plusieurs réponses. Il n’y a pas de mauvaise réponse : chacune a ses conséquences.")+
+      '<div class="opts" role="group" aria-label="Ce que vous chercheriez à savoir">'+QUESTIONS.map(function(q){ var on=vus.indexOf(q[0])>=0; return '<button type="button" class="opt m" data-q="'+q[0]+'" aria-pressed="'+on+'"><span>'+esc(q[1])+'</span><span class="ind" aria-hidden="true"></span></button>'; }).join("")+'</div>'+
+      (S.q2vu&&vus.length?'<div class="fb" id="fb">'+QUESTIONS.filter(function(q){return vus.indexOf(q[0])>=0;}).map(function(q){ return '<div><span class="k">'+esc(q[1])+'</span><p>'+esc(q[2])+'</p></div>'; }).join("")+
+        '<div><span class="k">Ce que Koffi a fini par demander</span><p>À quoi servirait l’argent, si c’était un prêt, et si quelqu’un d’autre pouvait participer. Puis il a regardé ce qu’il pouvait engager sans manquer sa cotisation.</p></div></div>':'')+
+      '</div>'+(S.q2vu&&vus.length?barre("e1","e3","Comprendre les enjeux"):barre("e1","voir","Voir ce que ça change",!vus.length))+'</section>';
+  };
+  V.e3=function(){
+    return '<section class="screen"><div class="stage col">'+head(3,"Les enjeux","Quatre choses à clarifier","Avant de dire oui ou non, ces quatre points évitent la plupart des malentendus.")+
+      '<div class="cards4">'+
+        '<div><span class="n">01</span><p class="t3">Aide ou prêt</p><p>Une aide ne se rend pas. Un prêt se rend, selon une échéance. Les deux sont légitimes&nbsp;; ce qui abîme la relation, c’est de ne pas l’avoir dit.</p></div>'+
+        '<div><span class="n">02</span><p class="t3">L’usage de la somme</p><p>Savoir à quoi sert l’argent n’est pas de la méfiance. Cela permet parfois de payer directement, ou d’ajuster le montant au vrai besoin.</p></div>'+
+        '<div><span class="n">03</span><p class="t3">Le remboursement envisagé</p><p>Comment la personne pense-t-elle rembourser, et avec quelle rentrée&nbsp;? Sans réponse réaliste, mieux vaut parler de don, en totalité ou en partie.</p></div>'+
+        '<div><span class="n">04</span><p class="t3">Vos propres engagements</p><p>Loyer, cotisation, transport, autres personnes à charge&nbsp;: aider ne devrait pas vous obliger à emprunter à votre tour.</p></div>'+
+      '</div>'+
+      '<div class="real"><p class="over">Ce qui rend ces demandes délicates chez nous</p><ul>'+
+        '<li><b>La solidarité familiale compte.</b> Refuser peut sembler impossible&nbsp;; pourtant, une aide plus petite et tenue vaut mieux qu’une promesse qu’on ne peut pas honorer.</li>'+
+        '<li><b>La demande passe parfois par un aîné.</b> Une tante, un oncle, un grand frère appuie la demande. Vous pouvez remercier pour le message et prendre le temps de répondre à la personne concernée.</li>'+
+        '<li><b>Les urgences médicales n’attendent pas.</b> Payer directement l’ordonnance ou l’examen répond à l’urgence sans débat sur le montant.</li>'+
+        '<li><b>Les revenus sont souvent irréguliers</b>, pour vous comme pour le proche&nbsp;: une échéance liée à une vraie rentrée est plus juste qu’une date fixe.</li>'+
+        '<li><b>Demander une trace écrite peut gêner.</b> Un simple message récapitulatif, ou un témoin de confiance, suffit souvent. Le transfert mobile money laisse déjà une trace du montant.</li>'+
+      '</ul><p class="small" style="color:#8E98AA">Chaque famille fonctionne à sa manière : prenez ce qui vous ressemble.</p></div>'+
+      '</div>'+barre("e2","e4","Voir la méthode")+'</section>';
+  };
+  V.e4=function(){
+    return '<section class="screen"><div class="stage col">'+head(4,"La méthode","Quatre questions pour préparer la discussion","")+
+      '<div class="meth">'+
+        '<div><span class="n">1</span><b>Quel montant puis-je engager&nbsp;?</b><p>Partez de ce qu’il vous reste jusqu’à votre prochaine rentrée, moins vos propres dépenses et engagements. Si c’est un prêt, engagez seulement ce que vous pourriez supporter de ne pas revoir tout de suite.</p><p class="kf">il lui reste 70&nbsp;000. Avec 20&nbsp;000 de tontine et 15&nbsp;000 de transport et de repas, il peut engager 35&nbsp;000.</p></div>'+
+        '<div><span class="n">2</span><b>Est-ce un don ou un prêt&nbsp;?</b><p>Décidez-le avant d’envoyer, et dites-le. Une partie de chaque est possible&nbsp;: c’est souvent la réponse la plus confortable pour les deux.</p><p class="kf">15&nbsp;000 de don pour l’examen, 20&nbsp;000 de prêt.</p></div>'+
+        '<div><span class="n">3</span><b>Quelle échéance est réaliste&nbsp;?</b><p>Liez-la à une vraie rentrée du proche&nbsp;: un salaire, une récolte, un tour de tontine. Une date choisie au hasard est rarement tenue.</p><p class="kf">Afi reçoit son tour de tontine en décembre&nbsp;: elle rendra les 20&nbsp;000 à ce moment-là.</p></div>'+
+        '<div><span class="n">4</span><b>Que fait-on si le remboursement devient difficile&nbsp;?</b><p>Convenez-en dès maintenant&nbsp;: décaler la date, rembourser en plusieurs fois, ou considérer le reste comme un don. Cela évite les silences gênés.</p><p class="kf">si la tontine est retardée, elle rendra 10&nbsp;000 en décembre et 10&nbsp;000 en janvier.</p></div>'+
+      '</div>'+
+      '<p class="info" style="margin-top:20px"><b>Et pour l’urgence&nbsp;?</b> Koffi a payé directement l’ordonnance à la pharmacie par mobile money, puis envoyé le reste à Afi avec un message récapitulatif.</p>'+
+      '</div>'+barre("e3","e5","Préparer ma réponse")+'</section>';
+  };
+  V.e5=function(){
+    var p=P(), a=analyse();
+    mesure("preter_situation");
+    var pret=p.nature==="pret"||p.nature==="mixte", montre=p.reponse==="accepter"||p.reponse==="autre_somme";
+    return '<section class="screen"><div class="stage col">'+head(5,"Votre situation","Préparez votre réponse","Remplissez seulement ce qui vous aide. Vos réponses restent sur cet appareil.")+
+      '<div class="block"><p class="t3">La demande</p>'+
+        '<div class="field"><div class="lab"><b>Qui vous demande&nbsp;? (facultatif)</b></div><p class="ex">Un prénom ou un lien : « mon frère », « ma cousine ».</p><input class="txt" maxlength="40" autocomplete="off" data-t="qui" value="'+esc(p.qui)+'" placeholder="—"></div>'+
+        montant("demande","Montant demandé","")+
+        '<div class="field"><div class="lab"><b>À quoi doit servir l’argent&nbsp;?</b></div><label class="date">Usage<select data-s="usage"><option value="">—</option>'+USAGES.map(function(u){return '<option value="'+u[0]+'"'+(p.usage===u[0]?" selected":"")+'>'+u[1]+'</option>';}).join("")+'</select></label></div>'+
+      '</div>'+
+      '<div class="block"><p class="t3">Ce que vous pouvez engager</p>'+montant("capacite","Montant que vous pouvez engager sans difficulté","Ce qu’il vous reste jusqu’à votre prochaine rentrée, moins vos propres dépenses et engagements.")+'</div>'+
+      '<div class="block">'+radios("nature",NATURES,"Don ou prêt&nbsp;?","")+
+        (p.nature==="mixte"?montant("partPret","Dont la part prêtée",""):"")+
+        (pret?radios("echeance",ECHEANCES,"Quand la personne pourrait-elle rembourser&nbsp;?","")+radios("difficulte",DIFF,"Si le remboursement devient difficile","Ce que vous pourriez convenir dès maintenant."):"")+'</div>'+
+      '<div class="block choix"><p class="t3">Votre réponse</p><p class="small">Chacune de ces réponses est légitime.</p><div class="checks" style="margin-top:12px">'+REPONSES.map(function(r){ return '<label class="chk"><input type="radio" name="reponse" data-r="reponse" value="'+r[0]+'"'+(p.reponse===r[0]?" checked":"")+'><span>'+esc(r[1])+'<small>'+esc(r[2])+'</small></span></label>'; }).join("")+'</div>'+
+        (montre?montant("montant",p.reponse==="accepter"?"Montant que vous envoyez":"Montant que vous proposez",""):"")+
+        (p.reponse==="autre_aide"?radios("aide",AIDES,"Quelle autre aide&nbsp;?",""):"")+'</div>'+
+      '<div id="alertes">'+alertesHtml(a)+'</div>'+
+      '</div>'+barre("e4","e6","Voir ma fiche",!p.reponse)+'</section>';
+  };
+  V.e6=function(){
+    var p=P(), a=analyse(); mesure("preter_fiche");
+    if(!p.messageModifie) p.message=message();
+    var rep=lib(REPONSES,p.reponse), nat=lib(NATURES,p.nature);
+    var envoie=p.reponse==="accepter"||p.reponse==="autre_somme", pretF=envoie&&(p.nature==="pret"||p.nature==="mixte");
+    var rows='<dt>Ma réponse</dt><dd>'+esc(rep||"à choisir")+'</dd>'+(p.qui?'<dt>Demande de</dt><dd>'+esc(p.qui)+'</dd>':'')+(p.demande.m!=null?'<dt>Montant demandé</dt><dd>'+F(p.demande.m)+'</dd>':'')+(p.usage?'<dt>Usage</dt><dd>'+esc(lib(USAGES,p.usage))+'</dd>':'')+(p.capacite.m!=null?'<dt>Je peux engager</dt><dd>'+F(p.capacite.m)+'</dd>':'')+((p.reponse==="accepter"||p.reponse==="autre_somme")&&p.montant.m!=null?'<dt>J’envoie</dt><dd>'+F(p.montant.m)+'</dd>':'')+(envoie&&p.nature?'<dt>Nature</dt><dd>'+esc(nat)+(p.nature==="mixte"&&p.partPret.m!=null?' · '+F(p.partPret.m)+' prêtés':'')+'</dd>':'')+(pretF&&p.echeance?'<dt>Échéance</dt><dd>'+esc(lib(ECHEANCES,p.echeance))+'</dd>':'')+(pretF&&p.difficulte?'<dt>En cas de difficulté</dt><dd>'+esc(lib(DIFF,p.difficulte))+'</dd>':'');
+    return '<section class="screen"><div class="stage col">'+head(6,"Ma fiche","Votre réponse, prête à envoyer","")+
+      '<p class="print-only">Éducation Financière Afrique · Prêter à un proche · ma fiche personnelle.</p>'+
+      '<div class="fiche"><dl class="dl">'+rows+'</dl></div>'+
+      (a.alertes.length?a.alertes.map(function(x){return '<p class="info w">'+esc(x)+'</p>';}).join(""):'')+
+      (a.points.length?'<div class="block" style="margin-top:20px"><p class="t3">Points à clarifier avant d’envoyer</p><ul class="todo">'+a.points.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul></div>':'')+
+      '<div class="block"><p class="t3">Une formulation pour en parler</p><p class="small">Modifiez-la avec vos mots. Elle se met à jour si vous changez vos choix, tant que vous ne l’avez pas modifiée.</p><textarea class="msg" data-msg aria-label="Message à envoyer">'+esc(p.message)+'</textarea>'+
+        '<div class="r-acts noprint"><button type="button" class="btn btn-n" data-act="copierMsg">Copier le message</button><button type="button" class="btn btn-g" data-act="copierFiche">Copier ma fiche</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button>'+(p.messageModifie?'<button type="button" class="mini" data-act="msgReset">Revenir à la formulation proposée</button>':'')+'</div><p class="small" id="copie-ok" hidden style="margin-top:8px">Copié.</p></div>'+
+      '<div class="keep noprint"><label class="toggle"><input type="checkbox" data-pref'+(S.preferences.sauvegarde_locale?" checked":"")+'><span>Garder ma fiche sur cet appareil. Sans cette option, elle reste seulement le temps de votre navigation.</span></label><button type="button" class="mini" data-act="effacer">Effacer mes données de cet appareil</button></div>'+
+      '<div class="block noprint" style="margin-top:20px"><p class="t3">Pour aller plus loin</p><div class="suite">'+
+        '<a href="ou-est-passe-mon-argent.html?src=preter"><span><b>Où est passé mon argent&nbsp;?</b><span>Retrouvez les aides et les prêts déjà faits ce mois-ci.</span></span><i aria-hidden="true">→</i></a>'+
+        '<a href="https://vt.tiktok.com/ZSgM8hjPe/" target="_blank" rel="noopener"><span><b>Min’Fin · Prêter à un proche&nbsp;: prêt ou cadeau&nbsp;?</b><span>L’épisode avec Koffi, en vidéo.</span></span><i aria-hidden="true">→</i></a>'+
+        '<a href="outils.html?src=preter"><span><b>Tous mes outils et parcours</b><span>Faire le point ou apprendre à agir.</span></span><i aria-hidden="true">→</i></a>'+
+      '</div></div>'+
+      '<details class="meth"><summary>Méthode et limites</summary><p>Parcours pédagogique EFA '+VERSION+'. Les messages et les points à clarifier sont produits par des règles fixes à partir de vos réponses, sans intelligence artificielle. Ils ne constituent ni un conseil juridique ni un conseil financier. Aucune information n’est envoyée : ce que vous écrivez reste dans ce navigateur.</p></details>'+
+      '</div>'+barre("e5",null,"")+'</section>';
+  };
+
+  /* ---------- Rendu et navigation ---------- */
+  function render(focus){
+    var v=recup?"recup":(S.mode==="accueil"?"accueil":"e"+S.etape);
+    $app.innerHTML=V[v](); document.querySelector("footer").hidden=v!=="accueil";
+    if(focus){ var h=$app.querySelector("h1[tabindex]"); if(h) h.focus({preventScroll:true}); }
+  }
+  function go(n){ if(n==="accueil") S.mode="accueil"; else { S.mode="parcours"; S.etape=n; } ecrire(); render(true); window.scrollTo(0,0); }
+  function garder(fn){ var y=scrollY; fn(); ecrire(); render(false); window.scrollTo(0,y); }
+  function nav(t){
+    if(t==="accueil") return go("accueil");
+    if(t==="voir"){ mesure("preter_choix"); return garder(function(){ S.q2vu=true; }); }
+    var m=/^e(\d)$/.exec(t); if(m) return go(+m[1]);
+  }
+  function ficheTexte(){
+    var p=P(), a=analyse(), l=["Prêter à un proche · ma fiche (EFA)",""];
+    l.push("Ma réponse : "+(lib(REPONSES,p.reponse)||"à choisir"));
+    if(p.demande.m!=null) l.push("Montant demandé : "+F(p.demande.m));
+    if(p.usage) l.push("Usage : "+lib(USAGES,p.usage));
+    if(p.capacite.m!=null) l.push("Je peux engager : "+F(p.capacite.m));
+    if(p.nature&&(p.reponse==="accepter"||p.reponse==="autre_somme")) l.push("Nature : "+lib(NATURES,p.nature));
+    if(a.points.length){ l.push("","Points à clarifier :"); a.points.forEach(function(x){ l.push("- "+x); }); }
+    if(p.message) l.push("","Message :",p.message);
+    l.push("","https://efa.africa/preter-a-un-proche.html"); return l.join("\n");
+  }
+  function copier(txt){ var ok=function(){ var c=document.getElementById("copie-ok"); if(c) c.hidden=false; mesure("preter_copie"); }, fait=false, fin=function(){ if(!fait){ fait=true; ok(); } }, sec=function(){ if(fait) return; var ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(ta); fin(); };
+    try{ navigator.clipboard.writeText(txt).then(fin,sec); setTimeout(sec,1500); }catch(e){ sec(); } }
+
+  $app.addEventListener("click",function(e){
+    var t=e.target.closest("button"); if(!t) return;
+    if(t.dataset.nav) return nav(t.dataset.nav);
+    if(t.dataset.q){ return garder(function(){ var v=t.dataset.q, L=S.vus, i=L.indexOf(v); if(i>=0) L.splice(i,1); else if(v==="rien") S.vus=["rien"]; else { if(L.indexOf("rien")>=0) L.splice(L.indexOf("rien"),1); L.push(v); } }); }
+    var a=t.dataset.act;
+    if(a==="commencer") return go(1);
+    if(a==="direct") return go(5);
+    if(a==="reprendre") return go(S.etape);
+    if(a==="copierMsg"){ var ta=$app.querySelector("[data-msg]"); return copier(ta?ta.value:P().message); }
+    if(a==="copierFiche") return copier(ficheTexte());
+    if(a==="msgReset") return garder(function(){ P().messageModifie=false; });
+    if(a==="imprimer"){ try{ window.print(); }catch(err){} return; }
+    if(a==="effacer") return effacer();
+    if(a==="copierBrut") return copier(recup);
+    if(a==="recommencer"){ try{ localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); }catch(err){} recup=null; S=vide(); return go("accueil"); }
+  });
+  $app.addEventListener("input",function(e){
+    var t=e.target;
+    if(t.dataset.m){ P()[t.dataset.m]={m:parse(t.value)}; ecrire(); majAlertes(); return; }
+    if(t.dataset.t){ P()[t.dataset.t]=t.value.slice(0,40); ecrire(); return; }
+    if(t.dataset.msg!==undefined){ P().message=t.value.slice(0,2000); P().messageModifie=true; ecrire(); return; }
+  });
+  $app.addEventListener("change",function(e){
+    var t=e.target;
+    if(t.dataset.m){ var v=parse(t.value); if(v!=null) t.value=fmt(v); return; }
+    if(t.dataset.r){ P()[t.dataset.r]=t.value; return garder(function(){}); }
+    if(t.dataset.s){ P()[t.dataset.s]=t.value; return garder(function(){}); }
+    if(t.dataset.pref!==undefined){ S.preferences.sauvegarde_locale=t.checked; return ecrire(); }
+  });
+
+  charger(); S.mode="accueil";
+  render(false);
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
