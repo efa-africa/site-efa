@@ -68,6 +68,11 @@ main{padding-block:36px 64px}
 .tool dt{font-weight:800;color:var(--ink2)}
 .tool dd{margin:0}
 .tool .note{font-size:13px;color:var(--ink2)}
+.tool .eff{font-size:15px;color:var(--ink2)}
+.tool .eff b{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:2px}
+.how-t{border-top:1px solid var(--line);padding-top:6px}
+.how-t summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;font-size:15px;color:var(--ink)}
+.how-t dl{margin:6px 0 10px}
 .btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:12px 22px;border-radius:12px;font:800 17px/1.2 var(--f-body);text-decoration:none;text-align:center;margin-top:4px}
 .btn-main{background:var(--corail);color:#fff}
 .btn-dark{background:var(--nuit);color:#fff}
@@ -84,7 +89,7 @@ footer a{color:#E8EDF5;text-decoration:none}
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a class="nav-cta" href="outils.html" aria-current="page">Mes outils et diagnostic</a>
     <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
-    <a href="methode.html#etudes">Études &amp; Outils</a>
+    <a href="methode.html#etudes">Études &amp; méthode</a>
     <a href="index.html#guides">Guides</a>
     <a href="auteur.html">À propos</a>
   </nav>
@@ -94,8 +99,8 @@ footer a{color:#E8EDF5;text-decoration:none}
   <div class="wrap">
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <p class="kick">Mes outils et diagnostic</p>
-    <h1>Comprendre votre argent. Avec vos chiffres.</h1>
-    <p class="lead">Choisissez votre question. EFA vous accompagne étape par étape et vous propose une première action.</p>
+    <h1>Comprendre votre argent. Et agir.</h1>
+    <p class="lead">EFA vous aide à comprendre votre argent et à agir, avec des explications et des outils adaptés à votre quotidien. Choisissez votre question : vous repartez avec une réponse ou une première action.</p>
   </div>
 </section>
 <main class="wrap">
@@ -117,32 +122,41 @@ footer a{color:#E8EDF5;text-decoration:none}
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
   {id:"ou-est-passe-mon-argent", titre:"Où est passé mon argent ?", theme:"Suivre", url:"ou-est-passe-mon-argent.html",
-   description:"Cinq questions pour repérer ce qu’il faut regarder. Puis, si vous le souhaitez, le bilan avec vos chiffres.",
+   benefice:"Repérez où chercher, puis vérifiez avec vos chiffres où votre argent est allé.",
+   effort:"Cinq questions, sans relevé. Bilan chiffré facultatif.",
    objectif:"Savoir où chercher, puis vérifier combien : destinations de votre argent et montants qu’il reste à expliquer.",
    acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Pour les pistes : rien, aucun relevé. Pour le bilan facultatif : vos soldes et vos principales entrées et sorties, des estimations suffisent.",
-   duree:"Cinq questions, puis un bilan chiffré facultatif", disponibilite:"Disponible", version_methode:"parcours 2.0 · calcul 1.1", bouton:"Identifier mes pistes", principal:true},
+   version_methode:"parcours 2.0 · calcul 1.1", bouton:"Identifier mes pistes", principal:true},
   {id:"preparer-ma-retraite", titre:"Préparer ma retraite", theme:"Préparer", url:"preparer-ma-retraite.html",
-   description:"Six questions pour savoir où vous en êtes. Puis, si vous le souhaitez, une estimation avec vos chiffres et un premier plan.",
+   benefice:"Faites le point sur votre retraite, puis estimez l’effort à fournir avec vos chiffres.",
+   effort:"Six questions, sans montant. Estimation et plan facultatifs.",
    objectif:"Savoir où vous en êtes, mesurer l’écart entre votre besoin et vos ressources, puis décider d’un premier effort.",
    acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Pour le point de départ : rien. Pour l’estimation facultative : votre âge, votre besoin mensuel et vos ressources prévues, des estimations suffisent.",
-   duree:"Six questions, puis une estimation et un plan facultatifs", disponibilite:"Disponible", version_methode:"parcours 1.0 · calcul 1.0", bouton:"Faire le point",
+   version_methode:"parcours 1.0 · calcul 1.0", bouton:"Faire le point",
    note:"Ce n’est ni un calcul de pension ni un conseil en placement : seule votre caisse peut calculer votre pension."},
   {id:"diagnostic", titre:"Mon diagnostic financier complet", theme:"Comprendre", url:"diagnostic.html?src=outils",
-   description:"Faites le point sur vos connaissances, vos habitudes et votre situation financière, puis identifiez vos priorités.",
+   benefice:"Examinez votre situation sur six dimensions et repartez avec une priorité et une première action.",
+   effort:"19 questions et 4 questions de profil. Aucun montant.",
    objectif:"Six dimensions, un profil, une priorité et une première action.",
    acces:"Gratuit. Une première synthèse s’affiche sans email ; le résultat complet est envoyé contre une adresse email ; le parcours 1 (vos chiffres) s’ouvre sur validation.", prix:0, devise:"XOF",
    infos:"Vos réponses à 19 questions et 4 questions de profil. Aucun montant pour la première étape.",
-   duree:"6 minutes", disponibilite:"Disponible", version_methode:"1.0", bouton:"Faire mon diagnostic",
-   note:"« Complet » désigne le parcours EFA proposé : ce n’est pas un audit exhaustif de votre patrimoine ou de votre solvabilité."}
+   version_methode:"1.0", bouton:"Faire mon diagnostic",
+   note:"« Complet » désigne le parcours EFA proposé : ce n’est pas un audit exhaustif de votre patrimoine ou de votre solvabilité."},
+  {id:"cercle-spirale", titre:"Le simulateur Cercle & Spirale", theme:"Simuler", url:"cercle-spirale.html#argent",
+   benefice:"Voyez ce que représente une part gardée à chaque rentrée, seul ou avec votre groupe.",
+   effort:"Une somme, une part, un nombre de rentrées.",
+   objectif:"Montrer ce qui reste quand une part est conservée à chaque rentrée, sans supposer de rendement.",
+   acces:"Gratuit, sans inscription", prix:0, devise:"XOF", infos:"Le montant d’une rentrée et la part que vous envisagez de garder.",
+   version_methode:"1.0", bouton:"Lancer le simulateur"}
 ];
 (function(){
   var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
   var prix=function(o){return o.prix>0?esc(o.prix.toLocaleString("fr-FR"))+" FCFA ("+esc(o.devise)+")":"Gratuit";};
   document.getElementById("cards").innerHTML=OUTILS.map(function(o){
-    return '<article class="tool" id="'+esc(o.id)+'"><span class="tag">'+esc(o.theme)+' · '+esc(o.disponibilite)+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.description)+'</p>'+
-      '<dl><dt>Objectif</dt><dd>'+esc(o.objectif)+'</dd><dt>Accès</dt><dd>'+prix(o)+' · '+esc(o.acces)+'</dd><dt>Il vous faut</dt><dd>'+esc(o.infos)+'</dd><dt>Durée</dt><dd>'+esc(o.duree)+'</dd><dt>Méthode</dt><dd>Version '+esc(o.version_methode)+'</dd></dl>'+
-      (o.note?'<p class="note">'+esc(o.note)+'</p>':'')+
-      '<a class="btn '+(o.principal?'btn-main':'btn-dark')+'" href="'+esc(o.url)+'" data-goatcounter-click="outils-'+esc(o.id)+'">'+esc(o.bouton)+'</a></article>';
+    return '<article class="tool" id="'+esc(o.id)+'"><span class="tag">'+esc(o.theme)+' · '+(o.prix>0?prix(o):"Gratuit")+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.benefice)+'</p>'+
+      '<p class="eff"><b>Ce qu’il vous faut</b> '+esc(o.effort)+'</p>'+
+      '<a class="btn '+(o.principal?'btn-main':'btn-dark')+'" href="'+esc(o.url)+'" data-goatcounter-click="outils-'+esc(o.id)+'">'+esc(o.bouton)+'</a>'+
+      '<details class="how-t"><summary>Comment fonctionne cet outil&nbsp;?</summary><dl><dt>Objectif</dt><dd>'+esc(o.objectif)+'</dd><dt>Accès</dt><dd>'+prix(o)+' · '+esc(o.acces)+'</dd><dt>Il vous faut</dt><dd>'+esc(o.infos)+'</dd><dt>Méthode</dt><dd>Version '+esc(o.version_methode)+'</dd></dl>'+(o.note?'<p class="note">'+esc(o.note)+'</p>':'')+'</details></article>';
   }).join("");
   var b=document.getElementById("menu"), n=document.getElementById("nav");
   b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});
