@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Les tribunes d’Élysée Johnson · EFA</title>
+<meta name="description" content="Toutes les tribunes d’Élysée Johnson, fondateur d’Éducation Financière Afrique : la tontine, le cercle et la spirale, l’argent qui passe et l’argent qui reste.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:title" content="Les tribunes d’Élysée Johnson · EFA">
+<meta property="og:description" content="Une tribune chaque semaine. Toutes celles déjà parues, au même endroit.">
+<meta property="og:url" content="https://efa.africa/tribunes.html">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Système visuel : surfaces calmes, filets fins, une seule couleur d'action par écran.
+   Charte EFA : bleu nuit, blanc, cyan, corail. */
+:root{
+  --nuit:#0B1220; --nuit2:#131C2E; --papier:#FAF8F4; --blanc:#FFFFFF; --creme:#F5EFE2;
+  --cyan:#6DB8F2; --bleu:#2188D6; --corail:#E44828; --corail2:#F09680;
+  --ink:#0B1220; --ink2:#4A5263; --ink3:#7A8293; --filet:rgba(11,18,32,.12); --filet2:rgba(11,18,32,.06);
+  --sel:#EEF5FC; --err:#B3261E;
+  --f-d:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(20px,env(safe-area-inset-left,0px)); --gutR:max(20px,env(safe-area-inset-right,0px));
+  --bar-h:84px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html:has(.hero),html:has(.hero) body{background:var(--nuit)}
+body{margin:0;background:var(--papier);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:400}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--bleu);outline-offset:3px}
+[tabindex="-1"]:focus{outline:0}
+.col{max-width:720px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+.col.w{max-width:1040px}
+
+/* Barre du site */
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 var(--gutR) 0 var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.24em}
+.brand img{width:30px;height:30px}
+.nav{display:flex;gap:2px}
+.nav a{text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.01em;padding:8px 12px;border-radius:4px;white-space:nowrap;color:#D8DEE8}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav a.on{color:#fff}
+.menu-btn{display:none;background:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:8px 14px;min-height:40px;font:600 13px var(--f);letter-spacing:.04em;cursor:pointer}
+@media (max-width:1100px){.brand span{display:none}}
+@media (max-width:900px){
+  .brand span{display:inline;font-size:9.5px;letter-spacing:.16em;line-height:1.3;max-width:13em}
+  .nav{position:fixed;inset:0;width:100vw;height:100svh;z-index:40;background:var(--nuit);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 32px;gap:4px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-size:26px;font-weight:300;letter-spacing:-.01em;white-space:normal;color:#fff;padding:10px 0}
+  .menu-btn{display:block;position:relative;z-index:41}
+}
+
+/* Éléments communs */
+.over{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.dark .over{color:#8E98AA}
+.t1{font-family:var(--f-d);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;font-size:clamp(52px,11vw,112px);text-wrap:balance}
+.t2{font-weight:300;font-size:clamp(28px,5.4vw,44px);line-height:1.12;letter-spacing:-.015em;text-wrap:balance}
+.t3{font-weight:600;font-size:clamp(19px,2.6vw,22px);line-height:1.3;letter-spacing:-.005em}
+.lede{font-size:clamp(17px,2.2vw,20px);line-height:1.55;font-weight:400;color:var(--ink2)}
+.small{font-size:13px;color:var(--ink3);line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:4px;border:0;font:600 15px/1 var(--f);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.btn-c{background:var(--corail);color:#fff}
+.btn-c:hover{background:#D23C1F}
+.btn-n{background:var(--nuit);color:#fff}
+.btn-n:hover{background:#1B2638}
+.btn-w{background:#fff;color:var(--nuit)}
+.btn-g{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--filet)}
+.btn-g:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.btn:disabled{opacity:.35;cursor:default}
+.lien{background:none;border:0;padding:8px 0;font:600 15px/1.5 var(--f);color:var(--ink);cursor:pointer;display:inline;text-align:left;text-decoration:underline;text-decoration-color:var(--filet);text-decoration-thickness:1px;text-underline-offset:6px}
+.lien:hover{text-decoration-color:currentColor}
+.lien::after{content:"\00a0→"}
+.lien.b{color:var(--bleu);text-decoration-color:rgba(33,136,214,.3)}
+.dark .lien{color:#fff;text-decoration-color:rgba(255,255,255,.3)}
+
+/* Entrée */
+.hero{background:var(--nuit);color:#fff;min-height:min(calc(100svh - 60px),780px);display:flex;align-items:flex-end;padding-block:56px 48px;position:relative;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;right:-18vmin;top:-12vmin;width:72vmin;height:72vmin;border-radius:50%;border:1px solid rgba(109,184,242,.16);z-index:-1}
+.hero::after{content:"";position:absolute;right:-6vmin;top:0;width:48vmin;height:48vmin;border-radius:50%;border:1px dashed rgba(255,255,255,.08);z-index:-1}
+.hero .col{width:100%}
+.hero .mission{font-size:13px;color:#8E98AA;max-width:34em;margin-bottom:40px}
+.hero .mission .mc{color:#EC6243}.hero .mission .ms{color:var(--cyan)}
+.hero .t1{margin-top:14px}
+.hero .lede{color:#C9D1DE;margin-top:22px;max-width:30em}
+.hero .acts{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin-top:40px}
+.hero .note{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#8E98AA;letter-spacing:.01em}
+.reprise{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:36px;padding:16px 18px;border:1px solid rgba(255,255,255,.16);border-radius:6px;max-width:560px}
+.reprise b{display:block;font-weight:600;font-size:15px}
+.reprise span{font-size:13px;color:#8E98AA}
+@media (max-width:560px){.hero .acts .btn{width:100%}}
+
+/* Écrans d'étape */
+.screen{min-height:min(calc(100svh - 60px),900px);display:flex;flex-direction:column}
+.stage{flex:1;padding-block:28px calc(var(--bar-h) + 40px)}
+.prog{display:flex;align-items:center;gap:16px;margin-bottom:44px}
+.prog .lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+.seg{flex:1;display:grid;gap:4px}
+.seg i{display:block;height:2px;background:var(--filet)}
+.seg i.on{background:var(--nuit)}
+.q-h{display:grid;gap:12px;margin-bottom:28px}
+.q-h .small{margin-top:4px}
+.opts{border-top:1px solid var(--filet)}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;min-height:64px;padding:16px 4px;border:0;border-bottom:1px solid var(--filet);background:none;text-align:left;cursor:pointer;color:var(--ink);font:400 17px/1.4 var(--f);transition:background .15s}
+.opt:hover{background:var(--filet2)}
+.opt small{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
+.opt .ind{flex:none;width:22px;height:22px;border:1.5px solid rgba(11,18,32,.35);border-radius:50%;position:relative;transition:all .15s}
+.opt.m .ind{border-radius:4px}
+.opt[aria-pressed="true"]{font-weight:600}
+.opt[aria-pressed="true"] .ind{background:var(--nuit);border-color:var(--nuit)}
+.opt[aria-pressed="true"] .ind::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(250,248,244,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--filet);padding:14px var(--gutR) calc(14px + env(safe-area-inset-bottom,0px)) var(--gut)}
+.bar .col{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:0}
+.bar .btn{flex:1;max-width:260px}
+.bar .btn-g{flex:0 0 auto;max-width:none;padding:0 22px}
+@media (min-width:720px){.bar .col{justify-content:flex-end}}
+
+/* Pistes */
+.res-h{display:grid;gap:14px;margin-bottom:40px}
+.piste{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;padding-block:32px;border-top:1px solid var(--filet)}
+.piste .n{font-family:var(--f-d);font-weight:900;font-size:56px;line-height:.85;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
+.piste.p1 .n{font-size:88px}
+.piste .b{display:grid;gap:10px;min-width:0}
+.piste .why{font-size:15px;color:var(--ink2);line-height:1.55}
+.piste .why b{font-weight:600;color:var(--ink)}
+.piste .act{font-size:16px;line-height:1.6}
+.piste.p1 .t2{font-size:clamp(26px,4.6vw,38px)}
+.piste .t3{font-size:21px}
+.sub-h{padding-top:12px;margin-bottom:-8px}
+.first{background:var(--nuit);color:#fff;margin-top:24px;padding:36px 32px;border-radius:2px}
+.first .t2{color:#fff;margin-top:12px;font-size:clamp(24px,4.2vw,34px)}
+@media (max-width:560px){.first{margin-inline:calc(-1 * var(--gut));padding:32px var(--gut);border-radius:0}.piste{grid-template-columns:minmax(0,1fr);gap:10px}.piste .n{font-size:44px}.piste.p1 .n{font-size:64px}}
+.ctx{margin-top:28px;display:grid;gap:10px}
+.ctx p{font-size:15px;color:var(--ink2);padding-left:16px;border-left:2px solid var(--cyan)}
+.mention{margin-top:28px;font-size:13px;color:var(--ink3)}
+.keep{margin-top:20px;padding:20px;border:1px solid var(--filet);border-radius:4px;display:grid;gap:14px;background:var(--blanc)}
+.keep .row{display:flex;flex-wrap:wrap;gap:10px}
+.toggle{display:flex;gap:12px;align-items:flex-start;font-size:15px;cursor:pointer}
+.toggle input{width:20px;height:20px;accent-color:var(--nuit);flex:none;margin-top:2px}
+.edit{margin-top:36px}
+
+/* Formulaires du bilan */
+.block{padding-block:28px;border-top:1px solid var(--filet)}
+.block:first-of-type{border-top:0;padding-top:0}
+.block > .t3{margin-bottom:6px}
+.block > .small{margin-bottom:12px}
+.field{padding-block:18px;border-bottom:1px solid var(--filet2);display:grid;gap:8px}
+.field:last-child{border-bottom:0}
+.field .lab{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.field .lab b{font-weight:600;font-size:16px}
+.field .lab .tot{font-size:13px;font-weight:700;color:var(--bleu);white-space:nowrap;font-variant-numeric:tabular-nums}
+.field .ex{font-size:13px;color:var(--ink3);line-height:1.5}
+.amount{display:flex;align-items:baseline;gap:10px;border-bottom:1.5px solid rgba(11,18,32,.3);padding-bottom:4px;transition:border-color .15s}
+.amount:focus-within{border-color:var(--bleu)}
+.amount input{flex:1;min-width:0;width:100%;border:0;outline:0;background:none;font:300 30px/1.2 var(--f);letter-spacing:-.01em;color:var(--ink);padding:4px 0}
+.amount input::placeholder{color:#B8BDC7}
+.amount input:disabled{color:var(--ink3)}
+.amount em{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--ink3)}
+.prec{display:inline-flex;flex-wrap:wrap;border:1px solid var(--filet);border-radius:4px;overflow:hidden;align-self:start}
+.prec button{min-height:34px;padding:0 12px;border:0;border-right:1px solid var(--filet);background:none;font:600 12px var(--f);letter-spacing:.02em;color:var(--ink2);cursor:pointer}
+.prec button:last-child{border-right:0}
+.prec button[aria-pressed="true"]{background:var(--nuit);color:#fff}
+.mini{background:none;border:0;padding:4px 0;font:600 13px var(--f);color:var(--bleu);cursor:pointer;text-align:left;justify-self:start;min-height:32px}
+.lines{display:grid;gap:10px;padding:12px 0 4px}
+.line{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 60px 36px;gap:8px;align-items:end}
+.line input{min-width:0;width:100%;border:0;border-bottom:1px solid var(--filet);background:none;padding:8px 0;font:400 15px var(--f);outline:0}
+.line input:focus{border-color:var(--bleu)}
+.line .x{min-height:38px;border:0;background:none;font-size:18px;color:var(--ink3);cursor:pointer}
+@media (max-width:480px){.line{grid-template-columns:minmax(0,1fr) 60px 36px}.line .ll{grid-column:1/-1}}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:560px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.date{display:grid;gap:6px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.date input,.date select{border:0;border-bottom:1.5px solid rgba(11,18,32,.3);background:none;padding:8px 0;font:400 18px var(--f);color:var(--ink);text-transform:none;letter-spacing:0;outline:0;width:100%;min-height:44px;border-radius:0}
+.checks{border-top:1px solid var(--filet)}
+.chk{display:flex;gap:14px;align-items:flex-start;padding:14px 2px;border-bottom:1px solid var(--filet);cursor:pointer;font-size:16px}
+.chk input{width:20px;height:20px;accent-color:var(--nuit);flex:none;margin-top:2px}
+.chk small{display:block;font-size:13px;color:var(--ink3)}
+.info{font-size:14px;line-height:1.55;color:var(--ink2);padding:14px 16px;background:var(--blanc);border-left:2px solid var(--cyan);margin-block:12px}
+.info b{color:var(--ink);font-weight:600}
+.info.w{border-color:var(--corail)}
+details.grp{border-top:1px solid var(--filet)}
+details.grp > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:60px;font-weight:600;font-size:17px}
+details.grp > summary::-webkit-details-marker{display:none}
+details.grp > summary .s{margin-left:auto;font-size:13px;font-weight:700;color:var(--bleu)}
+details.grp > summary::after{content:"";width:9px;height:9px;border:solid var(--ink);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);margin:0 4px 4px 8px;transition:transform .2s}
+details.grp[open] > summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+.more{display:flex;flex-wrap:wrap;gap:8px;padding-block:12px}
+.more button{min-height:38px;padding:0 14px;border:1px solid var(--filet);border-radius:999px;background:var(--blanc);font:500 13px var(--f);color:var(--ink);cursor:pointer}
+.more button::before{content:"+ ";color:var(--bleu);font-weight:700}
+.err{font-size:14px;font-weight:600;color:var(--err)}
+.total{display:flex;justify-content:space-between;gap:12px;padding-top:16px;font-size:15px;color:var(--ink2)}
+.total b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* Bilan */
+.ex-band{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 0;margin-bottom:28px;border-bottom:1px solid var(--filet)}
+.ex-band span{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--corail)}
+.figs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--nuit);border-bottom:1px solid var(--filet);margin-top:8px}
+.figs div{padding:18px 14px 18px 0;display:grid;grid-template-rows:minmax(2.8em,auto) auto;align-items:end;gap:6px;min-width:0}
+.figs span{align-self:start}
+.figs div + div{padding-left:14px;border-left:1px solid var(--filet)}
+.figs span{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.figs b{font-weight:300;font-size:clamp(22px,2.6vw,27px);letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.figs .ec b{font-weight:600;color:var(--bleu)}
+@media (max-width:640px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.figs div:nth-child(odd){padding-left:0;border-left:0}.figs div:nth-child(even){padding-left:14px;border-left:1px solid var(--filet)}.figs div{border-bottom:1px solid var(--filet2)}.figs .ec{grid-column:1/-1;padding-left:0!important;border-left:0!important;border-bottom:0}}
+.verdict{margin-top:20px;font-size:clamp(18px,2.4vw,21px);line-height:1.5}
+.verdict b{font-weight:600}
+.bars{display:grid;gap:18px;margin-top:8px}
+.br{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:baseline}
+.br .l{font-size:15px}
+.br .v{font-size:15px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.br .v small{font-weight:400;color:var(--ink3);margin-left:6px}
+.br .tr{grid-column:1/-1;height:6px;background:var(--filet2);border-radius:0 3px 3px 0}
+.br .tr i{display:block;height:100%;background:var(--bleu);border-radius:0 3px 3px 0;min-width:2px}
+.dl{display:grid;grid-template-columns:minmax(0,1fr) auto;border-top:1px solid var(--filet)}
+.dl > *{padding:12px 0;border-bottom:1px solid var(--filet2);font-size:15px}
+.dl dt{color:var(--ink2)}
+.dl dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.act-panel{background:var(--corail);color:#fff;padding:32px;margin-top:8px;border-radius:2px}
+.act-panel .over{color:#FFE0D6}
+.act-panel .t2{color:#fff;margin-top:10px;font-size:clamp(23px,4vw,32px)}
+.act-panel p{margin-top:10px;color:#FFF1EC}
+.act-panel .btn{margin-top:22px}
+@media (max-width:560px){.act-panel{margin-inline:calc(-1 * var(--gut));padding:28px var(--gut);border-radius:0}}
+.r-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+@media (max-width:560px){.r-acts .btn{flex:1 1 100%}}
+details.meth{margin-top:36px;border-top:1px solid var(--filet);padding-top:8px}
+details.meth summary{cursor:pointer;min-height:52px;display:flex;align-items:center;font-weight:600}
+details.meth p,details.meth table{font-size:14px;color:var(--ink2)}
+details.meth table{width:100%;border-collapse:collapse;margin-block:12px}
+details.meth td,details.meth th{border-top:1px solid var(--filet);padding:10px 8px 10px 0;text-align:left;vertical-align:top}
+.recover textarea{width:100%;min-height:140px;font:13px ui-monospace,monospace;border:1px solid var(--filet);padding:10px}
+footer{background:var(--nuit);color:#8E98AA;padding-block:24px;font-size:12px;letter-spacing:.02em}
+footer .col{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:#D8DEE8;text-decoration:none}
+.print-only{display:none}
+@media print{
+  .top,.bar,footer,.noprint,.hero{display:none!important}
+  body{background:#fff;font-size:12pt}
+  .screen{min-height:0}.stage{padding:0}
+  .first,.act-panel{background:#fff!important;color:#000!important;border:1.5px solid #000}
+  .first .t2,.act-panel .t2,.act-panel p{color:#000!important}
+  .print-only{display:block;font-size:10pt;color:#333;margin-bottom:12pt}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Tribunes */
+html:has(.hero),html:has(.hero) body{background:var(--papier)}
+.hero.tri{min-height:0;padding-block:72px 56px}
+.hero.tri .lede{max-width:34em}
+.hero .face{display:flex;align-items:center;gap:14px;margin-top:30px}
+.hero .face img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+.hero .face b{display:block;font-weight:600;font-size:15px}
+.hero .face span{font-size:13px;color:#8E98AA}
+.une{padding-block:56px 8px}
+.une a.carte{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 32px;text-decoration:none;color:inherit;padding-block:28px 36px;border-top:1px solid var(--nuit)}
+.une .num{font-family:var(--f-d);font-weight:900;font-size:clamp(84px,14vw,148px);line-height:.8;color:var(--bleu);letter-spacing:-.01em}
+.une .b{display:grid;gap:14px;align-content:start;min-width:0}
+.une .t2{font-size:clamp(28px,4.6vw,44px)}
+.une .idee{font-size:clamp(17px,2.2vw,19px);color:var(--ink2);max-width:34em}
+.une .go{font-weight:600;font-size:15px;color:var(--corail)}
+.une a.carte:hover .t2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:8px}
+.liste{padding-block:24px 32px}
+.liste ol{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--filet)}
+.liste li a,.liste li .sans{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:6px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--filet);text-decoration:none;color:inherit}
+.liste li a:hover{background:var(--filet2)}
+.liste .n{font-family:var(--f-d);font-weight:900;font-size:40px;line-height:.9;color:var(--ink)}
+.liste .tt{font-weight:400;font-size:clamp(18px,2.4vw,21px);line-height:1.35;letter-spacing:-.005em}
+.liste .i{grid-column:2;font-size:15px;color:var(--ink2);line-height:1.5}
+.liste .d{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+.liste .fl{grid-column:3;grid-row:1/span 2;align-self:center;font-size:20px;color:var(--bleu)}
+.liste .lire{display:none}
+.liste .sans .fl{color:var(--ink3);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:560px){.une a.carte{grid-template-columns:minmax(0,1fr)}.liste li a,.liste li .sans{grid-template-columns:52px minmax(0,1fr)}.liste .n{font-size:32px}.liste .fl{display:none}.liste .lire{display:block;grid-column:2;font-size:14px;font-weight:600;color:var(--bleu);margin-top:2px}.liste .i{grid-column:2}}
+.abonne{background:var(--nuit);color:#fff;padding-block:48px}
+.abonne .col{display:grid;gap:18px}
+.abonne .t2{color:#fff}
+.abonne p.lede{color:#C9D1DE}
+.abonne .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+@media (max-width:560px){.abonne .row .btn{flex:1 1 100%}}
+footer{display:block!important}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="30" height="30"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a href="outils.html">Mes outils et diagnostic</a>
+    <a href="cercle-spirale.html">Cercle &amp; Spirale</a>
+    <a href="methode.html#etudes">Études &amp; Outils</a>
+    <a href="index.html#guides">Guides</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<section class="hero tri dark">
+  <div class="col">
+    <p class="over">La Tribune · chaque semaine</p>
+    <h1 class="t1" style="margin-top:14px">Mes tribunes</h1>
+    <p class="lede">Une idée par semaine sur l’argent tel qu’il circule chez nous : la tontine, le cercle et la spirale, ce qui passe et ce qui reste. Toutes les tribunes parues sont ici.</p>
+    <div class="face"><img src="elysee.jpg" alt="" width="52" height="52" onerror="this.remove()"><div><b>Élysée Johnson</b><span>Fondateur d’Éducation Financière Afrique</span></div></div>
+  </div>
+</section>
+
+<main>
+  <section class="une col" id="une" aria-label="Dernière tribune"></section>
+  <section class="liste col" id="toutes" aria-labelledby="t-toutes">
+    <p class="over" id="t-toutes">Toutes les tribunes</p>
+    <ol id="liste"></ol>
+  </section>
+  <section class="abonne">
+    <div class="col">
+      <p class="over">Ne manquez pas la prochaine</p>
+      <h2 class="t2">Recevez chaque tribune dès sa parution</h2>
+      <p class="lede">Les tribunes sont publiées sur Substack. L’abonnement est gratuit.</p>
+      <div class="row">
+        <a class="btn btn-c" href="https://educationfinanciereafrique.substack.com/subscribe" target="_blank" rel="noopener" data-goatcounter-click="tribunes-abonnement">S’abonner sur Substack</a>
+        <a class="btn btn-w" href="index.html#guide" data-goatcounter-click="tribunes-lettre">Recevoir la lettre du mardi</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="col w">
+    <span>Éducation Financière Afrique © 2026</span>
+    <a href="index.html">Accueil</a>
+    <a href="auteur.html">À propos</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script src="tribunes.js"></script>
+<script>
+(function(){
+  var mb=document.getElementById("menu"), nv=document.getElementById("nav");
+  mb.addEventListener("click",function(){var o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"Fermer":"Menu";});
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+  var MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+  var dFR=function(d){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||""); return m?(+m[3]===1?"1er":+m[3])+" "+MOIS[+m[2]-1]+" "+m[1]:""; };
+  var ARCH="https://educationfinanciereafrique.substack.com/archive";
+  var sur=function(u){ return /^https:\/\//.test(u||""); }, lienDe=function(x){ return sur(x.lien)?x.lien:ARCH; };
+  var L=(window.EFA_TRIBUNES||[]).filter(function(t){ return t&&t.titre; }).slice().sort(function(a,b){ return (b.n||0)-(a.n||0); });
+  var une=document.getElementById("une"), liste=document.getElementById("liste");
+  if(!L.length){ une.innerHTML='<p class="lede" style="padding-top:40px">Les tribunes arrivent bientôt.</p>'; return; }
+  var t=L[0], lien=lienDe(t);
+  une.innerHTML='<p class="over">La dernière tribune'+(t.date?' · '+esc(dFR(t.date)):'')+'</p>'+
+    '<a class="carte" href="'+esc(lien)+'" target="_blank" rel="noopener" data-goatcounter-click="tribune-'+esc(t.n)+'"><span class="num" aria-hidden="true">'+esc(t.n)+'</span><div class="b"><p class="over">Tribune n° '+esc(t.n)+'</p><h2 class="t2">'+esc(t.titre)+'</h2>'+(t.idee?'<p class="idee">'+esc(t.idee)+'</p>':'')+'<span class="go">Lire la tribune sur Substack →</span></div></a>';
+  liste.innerHTML=L.map(function(x){
+    var inner='<span class="n" aria-hidden="true">'+esc(x.n)+'</span><span class="tt"><span class="sr" style="position:absolute;left:-9999px">Tribune n° '+esc(x.n)+' : </span>'+esc(x.titre)+'</span>'+
+      '<span class="fl" aria-hidden="true">→</span>'+
+      '<span class="i">'+(x.date?'<span class="d">'+esc(dFR(x.date))+'</span>'+(x.idee?' · ':''):'')+esc(x.idee||"")+'</span><span class="lire">Lire la tribune →</span>';
+    return '<li><a href="'+esc(lienDe(x))+'" target="_blank" rel="noopener" data-goatcounter-click="tribune-'+esc(x.n)+'">'+inner+'</a></li>';
+  }).join("");
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
