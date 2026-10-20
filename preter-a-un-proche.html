@@ -315,6 +315,14 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
 .t2{font-family:var(--f-d);font-weight:400;letter-spacing:-.01em;line-height:1.2}
 .t3{font-family:var(--f-d);font-weight:700;letter-spacing:0}
 .lede{font-size:clamp(18px,2.2vw,21px)}
+
+/* Encadrés EFA : un seul style sur toute la plateforme, aplat vermillon */
+:root{--verm:#E44828;--verm-ink:#FFFFFF;--verm-soft:#FFE1D8}
+.info,.info.w,.ctx p,.reponse,.meth .kf{background:var(--verm)!important;color:var(--verm-ink)!important;border:0!important;border-left:0!important;border-radius:2px;padding:16px 18px!important;box-shadow:none}
+.info b,.info strong,.info h3,.info .k,.info small,.info.w b,.info.w strong,.info.w h3,.info.w .k,.info.w small,.ctx p b,.ctx p strong,.ctx p h3,.ctx p .k,.ctx p small,.reponse b,.reponse strong,.reponse h3,.reponse .k,.reponse small,.meth .kf b,.meth .kf strong,.meth .kf h3,.meth .kf .k,.meth .kf small{color:var(--verm-ink)!important}
+.info a,.info .mini,.info button.lien,.info.w a,.info.w .mini,.info.w button.lien,.ctx p a,.ctx p .mini,.ctx p button.lien,.reponse a,.reponse .mini,.reponse button.lien,.meth .kf a,.meth .kf .mini,.meth .kf button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
+.quote{border-left:0!important;padding-left:0!important;font-family:var(--f-d);font-style:italic;font-weight:400!important;color:var(--ink)}
+.meth .kf::before{color:var(--verm-ink)!important;font-weight:700}
 </style>
 </head>
 <body>

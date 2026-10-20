@@ -311,6 +311,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .mission-l .mc,.mission-f .mc{color:#EC6243;font-weight:800}
 .mission-l .ms,.mission-f .ms{color:var(--bleu)}
 .mission-f{flex-basis:100%;font:700 13px/1.45 var(--body);color:var(--ink)}
+
+/* Encadrés EFA : un seul style sur toute la plateforme, aplat vermillon */
+:root{--verm:#E44828;--verm-ink:#FFFFFF;--verm-soft:#FFE1D8}
+.note,.method .note,.mtxt .note,.koffi,.warn{background:var(--verm)!important;color:var(--verm-ink)!important;border:0!important;border-left:0!important;border-radius:2px;padding:16px 18px!important;box-shadow:none}
+.note b,.note strong,.note h3,.note .k,.note small,.method .note b,.method .note strong,.method .note h3,.method .note .k,.method .note small,.mtxt .note b,.mtxt .note strong,.mtxt .note h3,.mtxt .note .k,.mtxt .note small,.koffi b,.koffi strong,.koffi h3,.koffi .k,.koffi small,.warn b,.warn strong,.warn h3,.warn .k,.warn small{color:var(--verm-ink)!important}
+.note a,.note .mini,.note button.lien,.method .note a,.method .note .mini,.method .note button.lien,.mtxt .note a,.mtxt .note .mini,.mtxt .note button.lien,.koffi a,.koffi .mini,.koffi button.lien,.warn a,.warn .mini,.warn button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
+.note,.koffi,.warn{font-size:13px}
 </style>
 </head>
 <body>
