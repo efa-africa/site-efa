@@ -34,6 +34,7 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html:has(.hero),html:has(.hero) body{background:var(--nuit)}
 body{margin:0;background:var(--papier);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
 a{color:inherit}
 p{margin:0}
@@ -86,7 +87,7 @@ button{font-family:inherit}
 .dark .lien{color:#fff;text-decoration-color:rgba(255,255,255,.3)}
 
 /* Entrée */
-.hero{background:var(--nuit);color:#fff;min-height:calc(100svh - 60px);display:flex;align-items:flex-end;padding-block:56px 48px;position:relative;overflow:hidden;isolation:isolate}
+.hero{background:var(--nuit);color:#fff;min-height:min(calc(100svh - 60px),780px);display:flex;align-items:flex-end;padding-block:56px 48px;position:relative;overflow:hidden;isolation:isolate}
 .hero::before{content:"";position:absolute;right:-18vmin;top:-12vmin;width:72vmin;height:72vmin;border-radius:50%;border:1px solid rgba(109,184,242,.16);z-index:-1}
 .hero::after{content:"";position:absolute;right:-6vmin;top:0;width:48vmin;height:48vmin;border-radius:50%;border:1px dashed rgba(255,255,255,.08);z-index:-1}
 .hero .col{width:100%}
@@ -102,7 +103,7 @@ button{font-family:inherit}
 @media (max-width:560px){.hero .acts .btn{width:100%}}
 
 /* Écrans d'étape */
-.screen{min-height:calc(100svh - 60px);display:flex;flex-direction:column}
+.screen{min-height:min(calc(100svh - 60px),900px);display:flex;flex-direction:column}
 .stage{flex:1;padding-block:28px calc(var(--bar-h) + 40px)}
 .prog{display:flex;align-items:center;gap:16px;margin-bottom:44px}
 .prog .lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
@@ -325,7 +326,7 @@ footer a{color:#D8DEE8;text-decoration:none}
     }catch(err){ recup={cle:OLD,brut:o}; }
   }
   function fusion(base,e){ for(var k in e){ if(e[k]&&typeof e[k]==="object"&&!Array.isArray(e[k])&&base[k]&&typeof base[k]==="object") base[k]=fusion(base[k],e[k]); else base[k]=e[k]; } return base; }
-  function effacer(){ try{ [KEY,OLD].forEach(function(k){ localStorage.removeItem(k); sessionStorage.removeItem(k); }); }catch(e){} S=vide(); exemple=false; perso=null; go("accueil"); }
+  function effacer(){ try{ [KEY,OLD].forEach(function(k){ localStorage.removeItem(k); sessionStorage.removeItem(k); }); }catch(e){} S=vide(); exemple=false; perso=null; S.mode="accueil"; render(true); window.scrollTo(0,0); }
 
   /* ---------- Outils ---------- */
   var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
