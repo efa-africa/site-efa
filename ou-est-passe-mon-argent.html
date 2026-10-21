@@ -265,6 +265,17 @@ footer a{color:#D8DEE8;text-decoration:none}
 .info,.info.w,.ctx p{background:var(--verm)!important;color:var(--verm-ink)!important;border:0!important;border-left:0!important;border-radius:2px;padding:16px 18px!important;box-shadow:none}
 .info b,.info strong,.info h3,.info .k,.info small,.info.w b,.info.w strong,.info.w h3,.info.w .k,.info.w small,.ctx p b,.ctx p strong,.ctx p h3,.ctx p .k,.ctx p small{color:var(--verm-ink)!important}
 .info a,.info .mini,.info button.lien,.info.w a,.info.w .mini,.info.w button.lien,.ctx p a,.ctx p .mini,.ctx p button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
+
+/* Mon plan d'action : la suite du diagnostic, vers le plan et le cahier */
+.plan-a{margin-top:36px;padding-top:28px;border-top:1px solid var(--filet);display:grid;gap:16px}
+.plan-a .pa{display:grid;gap:10px;padding:18px 20px;border:1px solid var(--filet);border-radius:6px;background:var(--blanc,#fff)}
+.plan-a dl{margin:0;display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:8px 16px;font-size:15px;line-height:1.5}
+.plan-a dt{font-weight:700;color:var(--ink)}
+.plan-a dd{margin:0;color:var(--ink2)}
+.plan-a dd a{color:var(--ink);font-weight:600;text-underline-offset:4px}
+@media (max-width:560px){.plan-a dl{grid-template-columns:minmax(0,1fr)}.plan-a dd{margin-bottom:6px}}
+.plan-a .pa-acts{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.plan-a .pa-ok{font-size:15px;font-weight:600;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -294,6 +305,7 @@ footer a{color:#D8DEE8;text-decoration:none}
 
 <script src="oepma-calc.js"></script>
 <script src="oepma-pistes.js"></script>
+<script src="plan-efa.js"></script>
 <script>
 (function(){
   "use strict";
@@ -425,6 +437,27 @@ footer a{color:#D8DEE8;text-decoration:none}
         return '<button type="button" class="opt'+(Q.multi?' m':'')+'" data-rep="'+o[0]+'" aria-pressed="'+on+'"><span>'+esc(o[1])+(o[2]?'<small>'+esc(o[2])+'</small>':'')+'</span><span class="ind" aria-hidden="true"></span></button>'; }).join("")+'</div>'+
       '</div>'+barre(i>0?"q-":"accueil", i<4?"q+":"pistes", i<4?"Continuer":"Voir mes pistes", !fait)+'</section>';
   };
+  // Mon plan d'action : pour chaque piste, maintenant, cette semaine, pour aller plus loin. Le cahier vit dans outils.html#cahier.
+  var cahierOk=false;
+  function planAction(p){
+    var E=window.EFA_PLAN; if(!E) return "";
+    var lienPoste=function(m){ if(m.poste===null) return null; var lib=m.poste?(E.POSTES.filter(function(x){return x[0]===m.poste;})[0]||[])[1]:""; return {txt:lib?"Suivre « "+lib+" » pendant sept jours, un chiffre par soir.":"Choisir un poste et le suivre pendant sept jours, un chiffre par soir.", url:"outils.html#cahier/nouveau"+(m.poste?"/"+m.poste:"")}; };
+    var art=p.map(function(pi){
+      var m=E.PISTES[pi.id]||{}, M=E.MODULES[m.module], s=E.sujet(m.sujet), d=lienPoste(m), pr=m.parcours&&E.PARCOURS[m.parcours];
+      var loin=[];
+      if(M) loin.push(M.dispo?'<a href="outils.html#plan/'+esc(m.sujet)+'">Méthode : '+esc(M.titre)+'</a>':'Méthode « '+esc(M.titre)+' » : bientôt');
+      if(pr) loin.push('<a href="'+esc(pr.url.replace("src=plan","src=oepma"))+'">Parcours : '+esc(pr.titre)+'</a>');
+      return '<article class="pa"><h3 class="t3">'+esc(pi.titre)+'</h3><dl><dt>Maintenant</dt><dd>'+esc(pi.action)+'</dd>'+
+        '<dt>Cette semaine</dt><dd>'+(d?'Le défi des sept jours&nbsp;: <a href="'+d.url+'">'+esc(d.txt)+'</a>':'Refaites l’action ci-dessus sur une semaine complète&nbsp;; le défi dédié arrivera avec sa méthode.')+'</dd>'+
+        (loin.length?'<dt>Pour aller plus loin</dt><dd>'+loin.join('<br>')+'</dd>':'')+'</dl></article>';
+    }).join("");
+    var s0=E.PISTES[p[0].id]&&E.sujet(E.PISTES[p[0].id].sujet);
+    return '<section class="plan-a noprint" aria-labelledby="pa-t"><p class="over">Mon plan d’action</p><h2 class="t2" id="pa-t">De vos pistes à votre cahier</h2>'+
+      '<p class="small">Pour chaque piste&nbsp;: une action tout de suite, un défi pour la semaine, une méthode pour aller plus loin. Votre cahier suit le défi jour après jour, sur votre téléphone.</p>'+art+
+      '<div class="pa-acts">'+(cahierOk?'<span class="pa-ok">Pistes ajoutées à votre cahier.</span><a class="btn btn-c" href="outils.html#cahier">Ouvrir mon cahier</a>':(exemple?'':'<button type="button" class="btn btn-c" data-act="versCahier">Ajouter à mon cahier</button>'))+
+      (s0?'<a class="lien" href="outils.html#plan/'+esc(s0.slug)+'">Voir le plan d’action complet</a>':'')+'</div>'+
+      (exemple?'<p class="small">Mode exemple&nbsp;: les pistes de l’exemple ne sont pas ajoutées à un cahier.</p>':'')+'</section>';
+  }
   V.pistes=function(){
     var x=P.pistes(R()), p=x.pistes; mesure("oepma_reperage_resultat");
     var lien=function(pi){ return pi.zoom?'<button type="button" class="lien b" data-zoom="'+pi.zoom+'">Examiner '+esc(P.ZOOMS[pi.zoom].t)+'</button>':'<button type="button" class="lien b" data-act="bilanApres">Approfondir avec mes chiffres</button>'; };
@@ -435,9 +468,7 @@ footer a{color:#D8DEE8;text-decoration:none}
       bloc(p[0],0)+(p.length>1?'<p class="over sub-h">À examiner également</p>'+p.slice(1).map(function(pi,k){return bloc(pi,k+1);}).join(""):'')+
       '<div class="first dark"><p class="over">Votre première action</p><p class="t2">'+esc(x.premiere_action)+'</p></div>'+
       (x.contextes.length?'<div class="ctx">'+x.contextes.map(function(c){return '<p>'+esc(c)+'</p>';}).join("")+'</div>':'')+
-      (p.some(function(pi){return pi.id==="D";})?'<p class="info noprint" style="margin-top:24px"><b>Pour apprendre à agir&nbsp;:</b> le parcours <a href="budget-mobile-money.html?src=oepma">Budget et mobile money</a> aide à suivre les petites sommes, les frais et plusieurs portefeuilles.</p>':'')+
-      (p.some(function(pi){return pi.id==="J"||pi.id==="C";})?'<p class="info noprint" style="margin-top:12px"><b>Pour apprendre à agir&nbsp;:</b> le parcours <a href="construire-son-budget.html?src=oepma">Construire son budget</a> présente les méthodes 50/30/20, enveloppes et revenus irréguliers.</p>':'')+
-      (p.some(function(pi){return pi.id==="E"||pi.id==="K";})?'<p class="info noprint" style="margin-top:24px"><b>Pour apprendre à agir&nbsp;:</b> le parcours pratique <a href="preter-a-un-proche.html?src=oepma">Prêter à un proche</a> aide à préparer sa réponse à une demande d’argent, avec Koffi.</p>':'')+
+      planAction(p)+
       '<p class="mention">Ces pistes viennent de vos réponses. Elles ne permettent pas encore de déterminer les montants ni la cause d’un éventuel écart.</p>'+
       '<div class="r-acts noprint"><button type="button" class="btn btn-n" data-act="bilanApres">Vérifier avec mes chiffres</button><button type="button" class="lien" data-act="garder" aria-expanded="'+S.garderOuvert+'">Garder mes pistes</button></div>'+
       (S.garderOuvert?'<div class="keep noprint"><div class="row"><button type="button" class="btn btn-g" data-act="copier">Copier la synthèse</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button></div><label class="toggle"><input type="checkbox" data-pref'+(S.preferences.sauvegarde_locale?" checked":"")+'><span>Garder mes réponses sur cet appareil. Sans cette option, elles restent seulement le temps de votre navigation.</span></label><p class="small" id="copie-ok" hidden>Synthèse copiée.</p></div>':'')+
@@ -653,6 +684,7 @@ footer a{color:#D8DEE8;text-decoration:none}
     if(act==="autres0") return garderScroll(function(){ var b=C.bilan(A()); b.qualite.vides.forEach(function(id){ A().mouv[id]={m:null,p:"rien"}; }); A().autresConfirmes="aucun"; });
     if(act==="autresVoir") return garderScroll(function(){ C.actives(A()).forEach(function(c){ if(A().vus.indexOf(c.id)<0) A().vus.push(c.id); }); });
     if(act==="autresNsp") return garderScroll(function(){ A().autresConfirmes="nsp"; });
+    if(act==="versCahier"){ if(exemple) return; try{ window.EFA_PLAN.cahier.ajouterPistes(P.pistes(R()).pistes,"oepma"); cahierOk=true; mesure("oepma_plan_cahier"); }catch(err){} return garderScroll(function(){}); }
     if(act==="koffi") return koffi();
     if(act==="quitterExemple") return quitterExemple();
     if(act==="effacer") return effacer();

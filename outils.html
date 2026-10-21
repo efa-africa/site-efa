@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>Mes outils et diagnostic · EFA</title>
-<meta name="description" content="Comprendre votre argent, avec vos chiffres. Les outils gratuits d'Éducation Financière Afrique : Où est passé mon argent ? et Mon diagnostic financier complet.">
+<meta name="description" content="Faire son diagnostic, choisir un plan d’action, suivre ses défis semaine après semaine dans son cahier, comprendre les mots de l’argent. Les outils gratuits d’Éducation Financière Afrique.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="Mes outils et diagnostic · EFA">
@@ -110,6 +110,118 @@ main{padding-block:36px 64px}
 footer{background:var(--nuit);color:#AEB6C6;padding-block:22px;font-size:13px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
 footer a{color:#E8EDF5;text-decoration:none}
+/* ---- Quatre onglets : Diagnostic · Plan d'action · Mon cahier · Dico ---- */
+.tabs a{flex:1 1 200px}
+@media (max-width:640px){.tabs{gap:6px}.tabs a{flex:1 1 calc(50% - 6px);border-radius:12px 12px 0 0}}
+.pan{display:grid;gap:22px}
+.pan-h{display:grid;gap:8px;max-width:46em}
+.pan-h p{font-size:16px;color:var(--ink2)}
+.sec{font-size:clamp(24px,3vw,30px);margin-top:18px}
+.lede{font-size:17px;color:var(--ink);max-width:40em}
+.tag.ok{background:#E3F2E8;color:#14532D}
+.tag.soon{background:#EEE7D8;color:var(--ink2)}
+.tool .meta{font-size:14px;color:var(--ink2)}
+.btn-line{background:none;border:1.5px solid var(--nuit);color:var(--nuit)}
+button.btn{border:0;cursor:pointer;width:100%}
+button.btn.btn-line{border:1.5px solid var(--nuit)}
+.lnk{background:none;border:0;padding:6px 0;font:700 15px var(--f-body);color:var(--nuit);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px;cursor:pointer;min-height:40px}
+.back{justify-self:start;font-weight:700;font-size:15px;text-decoration:none;min-height:40px;display:inline-flex;align-items:center}
+.back::before{content:"←";margin-right:8px;color:var(--corail)}
+/* Bandeau « d'après votre diagnostic » */
+.diag-b{display:grid;gap:10px;padding:20px 22px;border-radius:16px;background:var(--nuit);color:#fff}
+.diag-b .k{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--soft-corail)}
+.diag-b ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.diag-b a{color:#fff;font-weight:700;text-underline-offset:4px}
+/* Détail d'un plan : quatre temps */
+.temps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:t}
+.temps>li{counter-increment:t;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;background:var(--papier);border:1px solid var(--line);border-radius:18px;padding:22px}
+.temps>li::before{content:counter(t);grid-row:1 / span 3;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--nuit);color:#fff;font:700 18px var(--f-display)}
+.temps>li>*{grid-column:2;min-width:0}
+.temps h3{font-size:clamp(21px,2.5vw,26px)}
+.temps .sous{font-size:15px;color:var(--ink2);margin-top:2px}
+.temps .corps{display:grid;gap:12px;margin-top:12px}
+@media (max-width:560px){.temps>li{grid-template-columns:minmax(0,1fr);padding:18px}.temps>li::before{grid-row:auto;width:36px;height:36px;font-size:16px}.temps>li>*{grid-column:1}}
+.mod{border:1px solid var(--line);border-radius:14px;background:#FFFFFF;min-width:0}
+.mod summary{cursor:pointer;list-style:none;display:grid;gap:4px;padding:16px 18px;min-height:44px}
+.mod summary::-webkit-details-marker{display:none}
+.mod summary b{font-size:18px;font-family:var(--f-display)}
+.mod summary span{font-size:14px;color:var(--ink2)}
+.mod summary::after{content:"Lire la méthode ↓";font-size:13px;font-weight:800;color:var(--corail);margin-top:4px}
+.mod[open] summary::after{content:"Refermer ↑"}
+.mod .mb{padding:0 18px 18px;display:grid;gap:14px}
+.mod ol{margin:0;padding-left:22px;display:grid;gap:12px}
+.mod ol b{display:block}
+.mod ol span{font-size:15px;color:var(--ink)}
+.cas{padding:16px 18px;border-radius:12px;background:var(--creme);font-size:15px}
+.cas b{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px}
+.mod.off{padding:14px 18px;display:grid;gap:4px;background:transparent;border-style:dashed}
+.mod.off b{font-family:var(--f-display);font-size:17px;color:var(--ink2)}
+.mod.off span{font-size:14px;color:var(--ink2)}
+.defi{display:grid;gap:8px;padding:18px;border-radius:14px;background:#FFFFFF;border:1px solid var(--line)}
+.defi b{font-family:var(--f-display);font-size:18px}
+.defi .d{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--corail)}
+.prc{display:flex;flex-wrap:wrap;gap:10px}
+.prc a{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border-radius:10px;border:1.5px solid var(--nuit);font-weight:700;text-decoration:none;font-size:15px}
+.prc a::after{content:"→";margin-left:8px;color:var(--corail)}
+.pistes-p{display:grid;gap:10px}
+.pistes-p article{display:grid;gap:6px;padding:16px 18px;border-radius:12px;background:#FFFFFF;border:1px solid var(--line)}
+.pistes-p .t{font-weight:700}
+.pistes-p .a{font-size:15px;color:var(--ink)}
+.ajout{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.ajout .ok{font-size:15px;color:#14532D;font-weight:700}
+/* ---- Mon cahier ---- */
+.ch-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;background:var(--nuit);color:#fff;border-radius:18px;padding:22px}
+.ch-h h2{font-size:clamp(28px,4vw,40px)}
+.ch-h p{color:#C9D1DE;font-size:15px;margin-top:6px}
+.ch-h svg{width:clamp(92px,22vw,130px);height:auto}
+.wk{display:grid;gap:14px;background:var(--papier);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0}
+.wk h3{font-size:clamp(22px,2.8vw,28px)}
+.wk .over{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--corail)}
+.wk .small{font-size:14px;color:var(--ink2)}
+.jauge{height:10px;border-radius:6px;background:#EEE7D8;overflow:hidden}
+.jauge i{display:block;height:100%;background:var(--bleu);border-radius:6px}
+.jauge.trop i{background:var(--corail)}
+.jours{display:grid;gap:8px}
+.jr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,190px);gap:12px;align-items:center;padding:10px 12px;border-radius:12px;background:#FFFFFF;border:1px solid var(--line)}
+.jr.auj{border-color:var(--bleu);box-shadow:0 0 0 2px rgba(33,136,214,.18)}
+.jr.fut{opacity:.55}
+.jr b{display:block;font-size:15px}.jr small{font-size:13px;color:var(--ink2)}
+.amt{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:#FFFFFF;min-height:48px;padding:0 12px;gap:8px}
+.amt input{flex:1;min-width:0;width:100%;border:0;background:none;font:700 17px var(--f-body);color:var(--nuit);text-align:right;min-height:46px}
+.amt input:focus{outline:none}
+.amt:focus-within{outline:3px solid var(--bleu);outline-offset:1px}
+.amt em{font-style:normal;font-size:13px;color:var(--ink2)}
+@media (max-width:420px){.jr{grid-template-columns:minmax(0,1fr)}}
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.chiffres div{padding:14px 16px;border-radius:12px;background:#FFFFFF;border:1px solid var(--line)}
+.chiffres small{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.chiffres b{font-family:var(--f-display);font-size:clamp(22px,3vw,28px)}
+.verdict{font-family:var(--f-display);font-size:clamp(19px,2.3vw,23px);line-height:1.35}
+.postes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
+.postes label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#FFFFFF;border:1px solid var(--line);cursor:pointer;min-height:48px}
+.postes input{margin-top:4px;width:18px;height:18px;flex:none;accent-color:var(--corail)}
+.postes label{min-width:0}.postes label>span{flex:1;min-width:0}.postes b{display:block;font-size:15px}.postes small{font-size:13px;color:var(--ink2)}
+.postes label:has(input:checked){border-color:var(--corail);box-shadow:0 0 0 2px rgba(228,72,40,.15)}
+.fld{display:grid;gap:6px;max-width:420px;min-width:0;grid-template-columns:minmax(0,1fr)}
+.fld>b{font-size:15px}
+.fld input[type=text]{min-height:48px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:600 16px var(--f-body);background:#FFFFFF}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.duo{grid-template-columns:minmax(0,1fr)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-flex;align-items:center;min-height:42px;padding:0 14px;border-radius:999px;background:#FFFFFF;border:1px solid var(--line);font-weight:700;font-size:14px;text-decoration:none}
+.hist{display:grid;gap:8px}
+.hist div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:12px 16px;border-radius:12px;background:#FFFFFF;border:1px solid var(--line);font-size:15px}
+.hist small{grid-column:1 / -1;color:var(--ink2);font-size:13px}
+.garde{display:grid;gap:12px;padding:18px;border-radius:14px;border:1px dashed var(--line)}
+.garde label{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.garde input{margin-top:3px;width:18px;height:18px;flex:none}
+.garde .acts{display:flex;flex-wrap:wrap;gap:6px 18px}
+.vide{display:grid;gap:14px;justify-items:start;padding:26px;border-radius:18px;background:var(--papier);border:1px solid var(--line)}
+.vide .duo{width:100%}
+[tabindex="-1"]:focus{outline:none}
+.pan,.wk,.vide,.temps .corps,.mod .mb{grid-template-columns:minmax(0,1fr)}
+.vide{justify-items:stretch}.vide>.lnk,.vide>.kick2{justify-self:start}
+.pan{scroll-margin-top:76px}
 </style>
 </head>
 <body>
@@ -128,16 +240,22 @@ footer a{color:#E8EDF5;text-decoration:none}
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <p class="kick">Mes outils et diagnostic</p>
     <h1>Comprendre votre argent. Et agir.</h1>
-    <p class="lead">Faites le point sur votre situation, découvrez une méthode pour agir ou comprenez les mots de l’argent. EFA vous accompagne avec des explications et des outils adaptés à votre quotidien.</p>
-    <div class="tabs" role="tablist" aria-label="Choisir le type d’outil">
-      <a href="#point" role="tab" id="t-point" aria-controls="point" aria-selected="true"><b>Faire le point</b><small>Où en suis-je&nbsp;?</small></a>
-      <a href="#agir" role="tab" id="t-agir" aria-controls="agir" aria-selected="false" tabindex="-1"><b>Apprendre à agir</b><small>Comment m’y prendre&nbsp;?</small></a>
-      <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1"><b>Dico pratique</b><small>Comprendre les mots de l’argent</small></a>
+    <p class="lead">Faites votre diagnostic, choisissez un plan d’action, suivez vos progrès semaine après semaine dans votre cahier, et comprenez les mots de l’argent.</p>
+    <div class="tabs" role="tablist" aria-label="Choisir un espace">
+      <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="true"><b>Diagnostic</b><small>Où en suis-je&nbsp;?</small></a>
+      <a href="#plan" role="tab" id="t-plan" aria-controls="plan" aria-selected="false" tabindex="-1"><b>Plan d’action</b><small>Que faire&nbsp;?</small></a>
+      <a href="#cahier" role="tab" id="t-cahier" aria-controls="cahier" aria-selected="false" tabindex="-1"><b>Mon cahier</b><small>Suivre mes progrès</small></a>
+      <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1"><b>Dico pratique</b><small>Les mots de l’argent</small></a>
     </div>
   </div>
 </section>
 <main class="wrap">
-  <div id="cards"></div>
+  <section class="pan" id="diagnostic" role="tabpanel" aria-labelledby="t-diagnostic">
+    <div class="pan-h"><p>Commencez ici si vous ne savez pas par où commencer. Chaque diagnostic vous donne des pistes, puis vous mène au plan d’action et à votre cahier.</p></div>
+    <div class="cards" id="diag-cards"></div>
+  </section>
+  <section class="pan" id="plan" role="tabpanel" aria-labelledby="t-plan" hidden><div class="pan" id="plan-vue"></div></section>
+  <section class="pan" id="cahier" role="tabpanel" aria-labelledby="t-cahier" hidden><div class="pan" id="cahier-vue"></div></section>
   <section class="fam" id="dico" role="tabpanel" aria-labelledby="t-dico" hidden>
     <div class="fam-h"><p>Un mot, une définition claire, une application concrète. Retrouvez les fiches publiées par EFA et poursuivez votre lecture sur notre publication Substack.</p></div>
     <div class="dsearch"><label for="dq">Rechercher un mot</label><div class="dsrow"><input id="dq" type="search" autocomplete="off" placeholder="Rechercher un mot : épargne, crédit, patrimoine…"><button type="button" class="dclear" id="dclear" hidden>Effacer la recherche</button></div><p class="dcount" id="dcount" role="status" aria-live="polite"></p></div>
@@ -160,6 +278,7 @@ footer a{color:#E8EDF5;text-decoration:none}
   </div>
 </footer>
 <script src="dico.js"></script>
+<script src="plan-efa.js"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -211,7 +330,18 @@ var OUTILS = [
    version_methode:"1.0", bouton:"Lancer le simulateur"}
 ];
 (function(){
+  "use strict";
+  var E=window.EFA_PLAN, CH=E.cahier, DT=E.dates;
   var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
+  var fmt=function(x){ if(x==null||isNaN(x)) return ""; return Math.round(x).toLocaleString("fr-FR").replace(/[   ]/g," "); };
+  var F=function(x){ return fmt(x)+" FCFA"; };
+  var env=function(x){ return F(Math.round(x/100)*100); };
+  var parse=function(t){ t=String(t||"").replace(/[^\d]/g,""); return t===""?null:+t; };
+  var MOIS=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."], JS=["dim.","lun.","mar.","mer.","jeu.","ven.","sam."];
+  var dateCourte=function(s){ var d=DT.versDate(s); return JS[d.getDay()]+" "+d.getDate()+" "+MOIS[d.getMonth()]; };
+  var vus={}; function mesure(ev){ if(vus[ev]) return; vus[ev]=1; try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
+
+  /* ---------- Cartes d'outils (Diagnostic) et parcours pratiques ---------- */
   var prix=function(o){return o.prix>0?esc(o.prix.toLocaleString("fr-FR"))+" FCFA ("+esc(o.devise)+")":"Gratuit";};
   var carte=function(o){
     return '<article class="tool" id="'+esc(o.id)+'"><span class="tag">'+esc(o.theme)+' · '+(o.prix>0?prix(o):"Gratuit")+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.benefice)+'</p>'+
@@ -219,13 +349,201 @@ var OUTILS = [
       '<a class="btn '+(o.principal?'btn-main':'btn-dark')+'" href="'+esc(o.url)+'" data-goatcounter-click="outils-'+esc(o.id)+'">'+esc(o.bouton)+'</a>'+
       '<details class="how-t"><summary>Comment fonctionne cet outil&nbsp;?</summary><dl><dt>Objectif</dt><dd>'+esc(o.objectif)+'</dd><dt>Accès</dt><dd>'+prix(o)+' · '+esc(o.acces)+'</dd><dt>Il vous faut</dt><dd>'+esc(o.infos)+'</dd><dt>Méthode</dt><dd>Version '+esc(o.version_methode)+'</dd></dl>'+(o.note?'<p class="note">'+esc(o.note)+'</p>':'')+'</details></article>';
   };
-  var FAM=[["point","Faire le point","« Où en suis-je ? »","Des pistes, des chiffres à vérifier et une priorité."],["agir","Apprendre à agir","« Comment m’y prendre ? »","Une méthode comprise, exercée sur un cas, puis appliquée à votre situation."]];
-  document.getElementById("cards").innerHTML=FAM.map(function(f){
-    var L=OUTILS.filter(function(o){return o.famille===f[0];}); if(!L.length) return "";
-    return '<section class="fam" id="'+f[0]+'" role="tabpanel" aria-labelledby="t-'+f[0]+'"'+(f[0]==="agir"?' hidden':'')+'><div class="fam-h"><p>'+esc(f[3])+'</p></div><div class="cards">'+L.map(carte).join("")+'</div>'+(f[0]==="agir"?'<div class="pv-wrap" style="margin-top:22px;max-width:760px"><div data-prevenir="kit-tontine"></div></div><p class="next">Prochains parcours : comprendre sa tontine, gérer une grosse rentrée, répondre aux demandes d’aide familiale.</p>':'')+'</section>';
-  }).join("");
-  /* Dico pratique : fiches publiées, recherche sans accents ni majuscules, ordre alphabétique */
-  var norm=function(x){ return String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(); };
+  document.getElementById("diag-cards").innerHTML=OUTILS.filter(function(o){return o.famille==="point";}).map(carte).join("");
+
+  /* ---------- Plan d'action ---------- */
+  var $plan=document.getElementById("plan-vue");
+  function compte(n,un,plusieurs){ return n+" "+(n>1?plusieurs:un); }
+  function cartesSujets(c){
+    return E.SUJETS.map(function(s){
+      var m=s.modules.filter(function(k){return E.MODULES[k].dispo;}).length, d=s.defis.length, p=s.parcours.length, bits=[];
+      if(s.diagnostic) bits.push("un diagnostic"); if(m) bits.push(compte(m,"méthode","méthodes")); if(d) bits.push(compte(d,"défi","défis")); if(p) bits.push(compte(p,"parcours","parcours"));
+      var dans=c&&c.sujets.indexOf(s.slug)>=0;
+      return '<article class="tool sj" id="sujet-'+esc(s.slug)+'"><span class="tag'+(dans?' ok':'')+'">'+(dans?'Dans mon cahier':'Plan d’action')+'</span><h2>'+esc(s.titre)+'</h2><p class="q">'+esc(s.intro)+'</p>'+(bits.length?'<p class="meta">'+esc(bits.join(" · "))+'</p>':'')+'<a class="btn btn-dark" href="#plan/'+esc(s.slug)+'">Voir le plan</a></article>';
+    }).join("");
+  }
+  function bandeauDiag(c){
+    if(!c||!c.pistes||!c.pistes.liste.length) return "";
+    var sj=E.PISTES[c.pistes.liste[0].id], s=sj&&E.sujet(sj.sujet);
+    return '<div class="diag-b"><p class="k">D’après votre diagnostic du '+esc(dateCourte(c.pistes.date))+'</p><ul>'+c.pistes.liste.map(function(p){return '<li>'+esc(p.titre)+'</li>';}).join("")+'</ul>'+(s?'<p><a href="#plan/'+esc(s.slug)+'">Voir mon plan d’action</a> · <a href="#cahier">Ouvrir mon cahier</a></p>':'')+'</div>';
+  }
+  function vueModule(k,ouvert){
+    var M=E.MODULES[k]; if(!M) return "";
+    if(!M.dispo) return '<div class="mod off"><span class="tag soon" style="justify-self:start">Bientôt</span><b>'+esc(M.titre)+'</b><span>'+esc(M.resume)+'</span></div>';
+    return '<details class="mod" id="m-'+esc(k)+'"'+(ouvert?' open':'')+'><summary><b>'+esc(M.titre)+'</b><span>'+esc(M.resume)+'</span></summary><div class="mb"><ol>'+M.etapes.map(function(e){return '<li><b>'+esc(e[0])+'</b><span>'+esc(e[1])+'</span></li>';}).join("")+'</ol>'+(M.cas?'<p class="cas"><b>Le cas d’Awa</b>'+esc(M.cas)+'</p>':'')+'</div></details>';
+  }
+  function boutonDefi(poste){ return '<a class="btn btn-main" href="#cahier/nouveau'+(poste?'/'+esc(poste):'')+'" data-goatcounter-click="plan-defi">Commencer dans mon cahier</a>'; }
+  function vueSujet(s,c){
+    mesure("plan-sujet-"+s.slug);
+    var mes=c&&c.pistes?c.pistes.liste.filter(function(p){var m=E.PISTES[p.id];return m&&m.sujet===s.slug;}):[];
+    var t1=s.diagnostic?(mes.length
+      ?'<li><h3>Vos pistes</h3><p class="sous">Trouvées par votre diagnostic du '+esc(dateCourte(c.pistes.date))+'.</p><div class="corps"><div class="pistes-p">'+mes.map(function(p){var m=E.PISTES[p.id], M=E.MODULES[m.module]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a"><b>Maintenant&nbsp;:</b> '+esc(p.action)+'</span>'+(M?'<span class="a"><b>Méthode&nbsp;:</b> '+esc(M.titre)+(M.dispo?'':' (bientôt)')+'</span>':'')+'</article>';}).join("")+'</div><a class="lnk" href="'+esc(s.diagnostic.url)+'">Refaire le diagnostic</a></div></li>'
+      :'<li><h3>Faire le point</h3><p class="sous">'+esc(s.diagnostic.texte)+' Facultatif&nbsp;: si vous savez déjà ce qui coince, passez à la suite.</p><div class="corps"><a class="btn btn-dark" href="'+esc(s.diagnostic.url)+'" style="justify-self:start">'+esc(s.diagnostic.titre)+'</a></div></li>'):'';
+    var mods=s.modules.map(function(k,i){return vueModule(k,i===0&&E.MODULES[k].dispo);}).join("");
+    var t2=mods?'<li><h3>Comprendre la méthode</h3><p class="sous">Lisez la méthode avant de vous exercer. Les autres arrivent au fil des tests.</p><div class="corps">'+mods+'</div></li>':'';
+    var posteDefi=s.poste, p1=mes[0]&&E.PISTES[mes[0].id]; if(p1&&p1.poste) posteDefi=p1.poste;
+    var t3=s.defis.length?'<li><h3>S’exercer : le défi de la semaine</h3><p class="sous">Le défi se suit dans votre cahier, semaine après semaine. Vos montants restent sur votre téléphone.</p><div class="corps">'+s.defis.map(function(k,i){var D=E.DEFIS[k]; return '<div class="defi"><span class="d">Semaine '+(i+1)+' · '+esc(D.duree)+'</span><b>'+esc(D.titre)+'</b><p class="small">'+esc(D.resume)+'</p></div>';}).join("")+boutonDefi(posteDefi)+'</div></li>':'';
+    var t4=(s.parcours.length||s.bientot)?'<li><h3>Aller plus loin</h3><p class="sous">Des parcours pratiques, étape par étape, avec un cas puis votre situation.</p><div class="corps">'+(s.parcours.length?'<div class="prc">'+s.parcours.map(function(k){var P=E.PARCOURS[k];return '<a href="'+esc(P.url)+'">'+esc(P.titre)+'</a>';}).join("")+'</div>':'')+(s.bientot?'<p class="small">'+esc(s.bientot)+'</p>':'')+'</div></li>':'';
+    var dans=c&&c.sujets.indexOf(s.slug)>=0;
+    return '<a class="back" href="#plan">Tous les problèmes</a><div class="pan-h"><p class="kick2">Plan d’action</p><h2 style="font-size:clamp(30px,4.6vw,48px)" tabindex="-1" id="sj-t">'+esc(s.titre)+'</h2><p class="lede">'+esc(s.intro)+'</p></div>'+
+      '<ol class="temps">'+t1+t2+t3+t4+'</ol>'+
+      '<div class="ajout">'+(dans?'<span class="ok">Ce plan est dans votre cahier.</span><a class="lnk" href="#cahier">Ouvrir mon cahier</a>':'<button type="button" class="btn btn-line" style="width:auto" data-act="ajouterSujet" data-slug="'+esc(s.slug)+'">Ajouter ce plan à mon cahier</button>')+'</div>';
+  }
+  function rendrePlan(slug){
+    var c=CH.lire(), s=slug&&E.sujet(slug);
+    if(s){ $plan.innerHTML=vueSujet(s,c); return; }
+    $plan.innerHTML='<div class="pan-h"><p>Partez d’un problème. Chaque plan réunit un point de départ, une méthode, un défi à suivre dans votre cahier et des parcours pratiques.</p></div>'+bandeauDiag(c)+
+      '<div class="cards">'+cartesSujets(c)+'</div>'+
+      '<h2 class="sec" id="parcours">Tous les parcours pratiques</h2><div class="cards">'+OUTILS.filter(function(o){return o.famille==="agir";}).map(carte).join("")+'</div>'+
+      '<div style="max-width:760px"><div data-prevenir="kit-tontine"></div></div>'+
+      '<p class="next">Prochains parcours : séparer les poches, comprendre sa tontine, gérer une grosse rentrée.</p>';
+    if(window.EFA_PREVENIR_INIT) window.EFA_PREVENIR_INIT();
+  }
+
+  /* ---------- Mon cahier ---------- */
+  var $ch=document.getElementById("cahier-vue"), choixPoste="", confirmer="";
+  function spirale(n){
+    var s="", N=12;
+    for(var i=0;i<N;i++){ var a=i*0.95+0.4, r=8+i*3.2, x=50+r*Math.cos(a), y=50+r*Math.sin(a), on=i<n;
+      s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(2.2+i*0.28).toFixed(1)+'" fill="'+(on?'#E44828':'none')+'" stroke="'+(on?'#E44828':'#6DB8F2')+'" stroke-width="1.4"/>'; }
+    return '<svg viewBox="0 0 100 100" role="img" aria-label="'+compte(n,"semaine terminée","semaines terminées")+'">'+s+'</svg>';
+  }
+  function titreSemaine(s,i){ return 'Semaine '+(i+1)+' · '+(s.type==="plafond-7j"?'Tenir mon plafond':'Observer')+' : '+esc(CH.libPoste(s)); }
+  function vueJours(s){
+    var j=DT.numeroJour(s.debut), out="";
+    for(var i=0;i<7;i++){ var d=DT.ajouterJours(s.debut,i), fut=i+1>j, v=s.jours[i];
+      out+='<div class="jr'+(i+1===j?' auj':'')+(fut?' fut':'')+'"><div><b>Jour '+(i+1)+(i+1===j?' · aujourd’hui':'')+'</b><small>'+esc(dateCourte(d))+'</small></div>'+
+        '<label class="amt"><input inputmode="numeric" autocomplete="off" data-jour="'+i+'" aria-label="Jour '+(i+1)+', montant en FCFA" value="'+(v!=null?fmt(v):"")+'" placeholder="'+(fut?'à venir':'—')+'"'+(fut?' disabled':'')+'><em>FCFA</em></label></div>'; }
+    return out;
+  }
+  function vueEnCours(s,i){
+    var n=CH.remplis(s), j=Math.min(DT.numeroJour(s.debut),7), tot=s.jours.reduce(function(a,b){return a+(b||0);},0);
+    var jauge=s.type==="plafond-7j"&&s.plafond?'<div><p class="small">Déjà <b id="tot">'+F(tot)+'</b> sur un plafond de '+F(s.plafond)+'.</p><div class="jauge'+(tot>s.plafond?' trop':'')+'" id="jg"><i style="width:'+Math.min(100,Math.round(tot/s.plafond*100))+'%"></i></div></div>':'<p class="small">Total noté&nbsp;: <b id="tot">'+F(tot)+'</b>'+(s.estimation!=null?' · votre estimation pour la semaine&nbsp;: '+F(s.estimation):'')+'</p>';
+    return '<section class="wk" aria-labelledby="wk-t"><p class="over">Cette semaine · jour '+j+' sur 7</p><h3 id="wk-t">'+titreSemaine(s,i)+'</h3>'+
+      '<p class="small">Chaque soir, notez le total du jour pour ce poste. Rien dépensé&nbsp;: notez 0. Un jour oublié&nbsp;: une estimation suffit. '+compte(n,"jour noté","jours notés")+' sur 7.</p>'+
+      jauge+'<div class="jours">'+vueJours(s)+'</div>'+
+      (confirmer==="abandon"?'<div class="ajout"><span>Arrêter cette semaine&nbsp;? Ses chiffres seront effacés.</span><button type="button" class="lnk" data-act="abandonOui">Oui, arrêter</button><button type="button" class="lnk" data-act="annuler">Non</button></div>':'<button type="button" class="lnk" data-act="abandon" style="justify-self:start">Arrêter cette semaine</button>')+'</section>';
+  }
+  function vueBilan(s,i){
+    var b=CH.calculBilan(s), part=b.jours<7?'<p class="small">Calculé sur '+b.jours+' jours notés, ramenés à une semaine.</p>':'';
+    var h='<section class="wk" aria-labelledby="wk-t"><p class="over">Bilan de la semaine '+(i+1)+'</p><h3 id="wk-t" tabindex="-1">'+esc(CH.libPoste(s))+'</h3>'+part;
+    if(s.type==="poste-7j"){
+      var v=b.sens==="plus_haut"?'C’est '+F(b.ecart)+' de plus que votre estimation, soit '+Math.round(b.ecartRel*100)+'&nbsp;% de plus.':b.sens==="plus_bas"?'C’est '+F(-b.ecart)+' de moins que votre estimation.':b.sens==="proche"?'C’est proche de votre estimation&nbsp;: vous connaissiez bien ce poste.':'';
+      h+='<div class="chiffres">'+(s.estimation!=null?'<div><small>Votre estimation</small><b>'+F(s.estimation)+'</b></div>':'')+'<div><small>Ce que vous avez noté</small><b>'+F(b.semaine)+'</b></div><div><small>Sur un mois, environ</small><b>'+env(b.mois)+'</b></div><div><small>Sur un an, environ</small><b>'+env(b.an)+'</b></div></div>'+
+        (v?'<p class="verdict">'+v+'</p>':'')+
+        '<div class="fld"><b>Votre plafond pour la semaine prochaine</b><p class="small">Suggestion&nbsp;: 10&nbsp;% de moins que ce que vous avez noté. Choisissez un chiffre que vous pensez tenir.</p><label class="amt"><input inputmode="numeric" id="plaf" value="'+fmt(b.plafondSuggere)+'" aria-label="Plafond de la semaine prochaine, en FCFA"><em>FCFA</em></label></div>'+
+        '<div class="duo"><button type="button" class="btn btn-main" data-act="semaine2">Commencer la semaine '+(i+2)+' : tenir ce plafond</button><button type="button" class="btn btn-line" data-act="finir">Terminer sans plafond</button></div>';
+    } else {
+      var baisse=Math.max(0,Math.round(s.plafond*0.9/500)*500);
+      h+='<div class="chiffres"><div><small>Votre plafond</small><b>'+F(s.plafond)+'</b></div><div><small>Ce que vous avez noté</small><b>'+F(b.semaine)+'</b></div></div>'+
+        '<p class="verdict">'+(b.tenu?'Plafond tenu, avec '+F(b.marge)+' de marge. Ce que vous n’avez pas dépensé reste à vous&nbsp;: mettez-le de côté avant qu’il ne reparte.':'Plafond dépassé de '+F(-b.marge)+'. Ce n’est pas un échec&nbsp;: regardez quels jours ont pesé, puis gardez le même plafond une semaine de plus.')+'</p>'+
+        '<div class="duo"><button type="button" class="btn btn-main" data-act="garderPlafond">Garder '+F(s.plafond)+' une semaine de plus</button>'+(b.tenu&&baisse>0&&baisse<s.plafond?'<button type="button" class="btn btn-line" data-act="baisser" data-v="'+baisse+'">Passer à '+F(baisse)+'</button>':'')+'<button type="button" class="btn btn-line" data-act="autrePiste">Choisir une autre piste</button></div>';
+    }
+    return h+'</section>';
+  }
+  function vueNouveau(c,poste){
+    if(poste!=null&&!choixPoste) choixPoste=poste;
+    var autre=choixPoste==="autre";
+    return '<section class="wk" aria-labelledby="nv-t"><p class="over">Nouveau défi · sept jours</p><h3 id="nv-t" tabindex="-1">Quel poste voulez-vous observer&nbsp;?</h3>'+
+      '<p class="small">Un seul poste, un seul chiffre par soir, aucun changement cette semaine&nbsp;: on observe d’abord.</p>'+
+      '<div class="postes" role="radiogroup" aria-labelledby="nv-t">'+E.POSTES.map(function(p){return '<label><input type="radio" name="poste" value="'+p[0]+'"'+(choixPoste===p[0]?' checked':'')+'><span><b>'+esc(p[1])+'</b><small>'+esc(p[2])+'</small></span></label>';}).join("")+'</div>'+
+      (autre?'<label class="fld"><b>Lequel&nbsp;?</b><input type="text" id="libre" maxlength="40" placeholder="Par exemple : coiffure, jeux, sorties"></label>':'')+
+      '<div class="fld"><b>Combien pensez-vous dépenser sur ce poste en une semaine&nbsp;?</b><p class="small">Votre meilleure idée, sans chercher. C’est elle que le bilan comparera.</p><label class="amt"><input inputmode="numeric" id="estim" aria-label="Estimation pour une semaine, en FCFA" placeholder="—"><em>FCFA</em></label></div>'+
+      '<p class="small" id="nv-m" role="status" aria-live="polite"></p>'+
+      '<div class="duo"><button type="button" class="btn btn-main" data-act="demarrer" data-garder="1">Commencer et garder sur ce téléphone</button><button type="button" class="btn btn-line" data-act="demarrer" data-garder="0">Commencer sans garder</button></div>'+
+      '<p class="small">Sans garder, le cahier s’efface à la fermeture du navigateur&nbsp;: pour un défi de sept jours, mieux vaut le garder. Il reste sur ce téléphone, rien n’est envoyé à EFA.</p></section>';
+  }
+  function vueVide(){
+    return '<div class="vide"><p class="kick2">Mon cahier</p><h2 style="font-size:clamp(28px,4vw,40px)" tabindex="-1">Votre cahier est encore vide</h2><p class="lede">Il se remplit au fil de votre parcours&nbsp;: les pistes de votre diagnostic, les plans que vous choisissez, et vos défis, semaine après semaine.</p>'+
+      '<div class="duo"><a class="btn btn-main" href="ou-est-passe-mon-argent.html?src=cahier">Commencer par le diagnostic</a><a class="btn btn-line" href="#plan">Choisir un problème</a></div>'+
+      '<button type="button" class="lnk" data-act="nouveau">Ou commencer directement un défi de sept jours</button></div>';
+  }
+  function texteCahier(c){
+    var l=["Mon cahier EFA",""];
+    if(c.pistes){ l.push("Mes pistes ("+dateCourte(c.pistes.date)+")"); c.pistes.liste.forEach(function(p){ l.push("- "+p.titre+" : "+p.action); }); l.push(""); }
+    if(c.sujets.length){ l.push("Mes plans : "+c.sujets.map(function(k){var s=E.sujet(k);return s?s.titre:k;}).join(" ; ")); l.push(""); }
+    c.semaines.forEach(function(s,i){ var b=s.bilan||CH.calculBilan(s);
+      l.push("Semaine "+(i+1)+" ("+dateCourte(s.debut)+") · "+(s.type==="plafond-7j"?"plafond "+F(s.plafond):"observer")+" · "+CH.libPoste(s));
+      l.push("  Jours : "+s.jours.map(function(x){return x==null?"—":fmt(x);}).join(" | "));
+      l.push("  Total : "+F(b.semaine)+(s.estimation!=null?" · estimation "+F(s.estimation):"")+(s.fini?"":" (en cours)")); });
+    l.push("","Cahier tenu sur efa.africa/outils.html#cahier · éducation financière, pas conseil en placement.");
+    return l.join("\n").replace(/ /g," ");
+  }
+  function rendreCahier(sous){
+    var c=CH.lire(), nouveau=/^nouveau/.test(sous||""), poste=nouveau?(sous.split("/")[1]||""):null, existe=!!c;
+    if(!c&&!nouveau){ $ch.innerHTML=vueVide(); return; }
+    c=c||CH.vide();
+    var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
+    h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
+    if(cur&&!nouveau){
+      var et=CH.etat(cur);
+      if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }
+      else if(et==="incomplet") h+='<section class="wk"><p class="over">Semaine '+(idx+1)+'</p><h3>La semaine est passée avec moins de quatre jours notés</h3><p class="small">Ce n’est pas grave&nbsp;: c’est souvent la deuxième semaine qui prend. Recommencez à partir d’aujourd’hui, sur le même poste.</p><div class="duo"><button type="button" class="btn btn-main" data-act="recommencer">Recommencer cette semaine</button><button type="button" class="btn btn-line" data-act="abandonOui">Changer de poste</button></div></section>';
+      else h+=vueEnCours(cur,idx);
+    } else if(cur&&nouveau){ h+='<section class="wk"><p class="over">Un défi est déjà en cours</p><h3>'+titreSemaine(cur,idx)+'</h3><p class="small">Terminez-le avant d’en commencer un autre&nbsp;: un poste à la fois.</p><a class="btn btn-dark" href="#cahier" style="justify-self:start">Reprendre mon défi</a></section>'; }
+    else h+=vueNouveau(c,poste);
+    if(c.pistes&&c.pistes.liste.length) h+='<section class="wk"><p class="over">Mes pistes</p><h3>D’après mon diagnostic du '+esc(dateCourte(c.pistes.date))+'</h3><div class="pistes-p">'+c.pistes.liste.map(function(p){var m=E.PISTES[p.id]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a">'+esc(p.action)+'</span>'+(m?'<a class="lnk" href="#plan/'+esc(m.sujet)+'" style="justify-self:start">Voir le plan</a>':'')+'</article>';}).join("")+'</div><a class="lnk" href="ou-est-passe-mon-argent.html?src=cahier">Refaire le diagnostic</a></section>';
+    if(c.sujets.length) h+='<section class="wk"><p class="over">Mes plans</p><div class="chips">'+c.sujets.map(function(k){var s=E.sujet(k);return s?'<a href="#plan/'+esc(k)+'">'+esc(s.titre)+'</a>':'';}).join("")+'</div></section>';
+    var fin=c.semaines.filter(function(s){return s.fini;});
+    if(fin.length) h+='<section class="wk"><p class="over">Mon parcours</p><div class="hist">'+c.semaines.map(function(s,i){ if(!s.fini) return ""; var b=s.bilan||CH.calculBilan(s);
+      return '<div><b>'+titreSemaine(s,i)+'</b><span>'+F(b.semaine)+'</span><small>Commencée le '+esc(dateCourte(s.debut))+(s.type==="plafond-7j"?(b.tenu?' · plafond tenu':' · plafond dépassé'):(s.estimation!=null?' · estimation '+F(s.estimation):''))+(b.plafondChoisi?' · plafond suivant '+F(b.plafondChoisi):'')+'</small></div>'; }).join("")+'</div></section>';
+    if(existe) h+='<div class="garde"><label><input type="checkbox" data-act="garder"'+(c.garder?' checked':'')+'><span>Garder mon cahier sur ce téléphone. '+(c.garder?'Il y reste tant que vous ne l’effacez pas.':'Sans cette option, il s’efface à la fermeture du navigateur.')+' Rien n’est envoyé à EFA&nbsp;: sur un autre téléphone, le cahier sera vide.</span></label>'+
+      '<div class="acts"><button type="button" class="lnk" data-act="copier">Copier mon cahier</button>'+(confirmer==="effacer"?'<span>Tout effacer&nbsp;?</span><button type="button" class="lnk" data-act="effacerOui">Oui, effacer</button><button type="button" class="lnk" data-act="annuler">Non</button>':'<button type="button" class="lnk" data-act="effacer">Effacer mon cahier</button>')+'</div><p class="small" id="copie-ok" role="status" aria-live="polite"></p></div>';
+    $ch.innerHTML=h;
+  }
+  function majTotal(s){
+    var tot=s.jours.reduce(function(a,b){return a+(b||0);},0), t=document.getElementById("tot"), g=document.getElementById("jg");
+    if(t) t.textContent=F(tot);
+    if(g&&s.plafond){ g.classList.toggle("trop",tot>s.plafond); g.firstChild.style.width=Math.min(100,Math.round(tot/s.plafond*100))+"%"; }
+  }
+  function sauver(fn){ var c=CH.ouvrir(); fn(c); CH.ecrire(c); return c; }
+  function reafficher(){ var y=scrollY; depuisAncre(); window.scrollTo(0,y); }
+  function nouvelleDepuisBilan(type,plafond){
+    sauver(function(c){ var s=CH.semaineEnCours(c); if(!s) return; s.bilan=CH.calculBilan(s); if(plafond!=null) s.bilan.plafondChoisi=plafond; s.fini=true;
+      if(type) c.semaines.push(CH.nouvelleSemaine(type,s.poste,s.libre,null,plafond)); });
+  }
+  document.querySelector("main").addEventListener("click",function(e){
+    var t=e.target.closest("[data-act]"); if(!t||t.tagName==="INPUT") return;
+    var a=t.dataset.act;
+    if(a==="ajouterSujet"){ sauver(function(c){ CH.ajouterSujet(c,t.dataset.slug); }); mesure("plan-ajout-"+t.dataset.slug); return reafficher(); }
+    if(a==="nouveau"){ choixPoste=""; history.pushState(null,"","#cahier/nouveau"); return depuisAncre(); }
+    if(a==="demarrer"){
+      var r=document.querySelector('input[name=poste]:checked'), m=document.getElementById("nv-m"), est=parse((document.getElementById("estim")||{}).value), lib=((document.getElementById("libre")||{}).value||"").trim();
+      if(!r){ m.textContent="Choisissez d’abord un poste."; return; }
+      if(r.value==="autre"&&!lib){ m.textContent="Indiquez le poste que vous voulez suivre."; return; }
+      sauver(function(c){ c.garder=t.dataset.garder==="1"; c.semaines.push(CH.nouvelleSemaine("poste-7j",r.value,lib,est,null)); });
+      mesure("cahier-defi-debut"); choixPoste=""; history.pushState(null,"","#cahier"); depuisAncre(); window.scrollTo(0,0); return;
+    }
+    if(a==="semaine2"){ var p=parse(document.getElementById("plaf").value); if(!p){ document.getElementById("plaf").focus(); return; } nouvelleDepuisBilan("plafond-7j",p); mesure("cahier-semaine-plafond"); window.scrollTo(0,0); return depuisAncre(); }
+    if(a==="finir"){ nouvelleDepuisBilan(null,null); return reafficher(); }
+    if(a==="garderPlafond"){ var c0=CH.ouvrir(), s0=CH.semaineEnCours(c0); nouvelleDepuisBilan("plafond-7j",s0.plafond); window.scrollTo(0,0); return depuisAncre(); }
+    if(a==="baisser"){ nouvelleDepuisBilan("plafond-7j",+t.dataset.v); window.scrollTo(0,0); return depuisAncre(); }
+    if(a==="autrePiste"){ nouvelleDepuisBilan(null,null); history.pushState(null,"","#plan"); window.scrollTo(0,0); return depuisAncre(); }
+    if(a==="recommencer"){ sauver(function(c){ var s=CH.semaineEnCours(c); s.debut=DT.aujourdhui(); s.jours=[null,null,null,null,null,null,null]; }); return reafficher(); }
+    if(a==="abandon"){ confirmer="abandon"; return reafficher(); }
+    if(a==="abandonOui"){ confirmer=""; sauver(function(c){ if(CH.semaineEnCours(c)) c.semaines.pop(); }); return reafficher(); }
+    if(a==="effacer"){ confirmer="effacer"; return reafficher(); }
+    if(a==="effacerOui"){ confirmer=""; CH.effacer(); window.scrollTo(0,0); return depuisAncre(); }
+    if(a==="annuler"){ confirmer=""; return reafficher(); }
+    if(a==="copier"){ var txt=texteCahier(CH.ouvrir()), ok=function(){ var o=document.getElementById("copie-ok"); if(o) o.textContent="Cahier copié : collez-le dans vos notes ou envoyez-le-vous."; mesure("cahier-copie"); }, fait=false, fin=function(){ if(!fait){ fait=true; ok(); } };
+      var sec=function(){ if(fait) return; var ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); }catch(err){} document.body.removeChild(ta); fin(); };
+      try{ navigator.clipboard.writeText(txt).then(fin,sec); setTimeout(sec,1500); }catch(err){ sec(); } return; }
+  });
+  document.querySelector("main").addEventListener("change",function(e){
+    var t=e.target;
+    if(t.name==="poste"){ choixPoste=t.value; var est=(document.getElementById("estim")||{}).value; reafficher(); if(est) document.getElementById("estim").value=est; return; }
+    if(t.dataset.act==="garder"){ sauver(function(c){ c.garder=t.checked; }); return reafficher(); }
+    if(t.dataset.jour!=null){ var v=parse(t.value); if(v!=null) t.value=fmt(v); var c=CH.ouvrir(), s=CH.semaineEnCours(c); if(s&&CH.etat(s)==="bilan"){ mesure("cahier-jour7"); reafficher(); } return; }
+    if(t.id==="estim"||t.id==="plaf"){ var w=parse(t.value); if(w!=null) t.value=fmt(w); }
+  });
+  document.querySelector("main").addEventListener("input",function(e){
+    var t=e.target; if(t.dataset.jour==null) return;
+    var c=sauver(function(c){ var s=CH.semaineEnCours(c); if(s) s.jours[+t.dataset.jour]=parse(t.value); });
+    var s=CH.semaineEnCours(c); if(s) majTotal(s); mesure("cahier-jour");
+  });
+
+  /* ---------- Dico pratique : fiches publiées, recherche sans accents ni majuscules, ordre alphabétique ---------- */
+  var norm=function(x){ return String(x||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase(); };
   var ACCES={libre:"Accès libre",inscription:"Inscription gratuite demandée",abonnement:"Réservé aux abonnés"};
   var FICHES=(window.EFA_DICO||[]).filter(function(f){ return f&&f.publie&&/^https:\/\/educationfinanciereafrique\.substack\.com\/p\//.test(f.url_substack||""); })
     .sort(function(a,b){ return norm(a.titre).localeCompare(norm(b.titre)); });
@@ -240,25 +558,34 @@ var OUTILS = [
     dc.querySelectorAll(".dc").forEach(function(c){ var ok=!q||c.dataset.q.indexOf(q)>=0; c.hidden=!ok; if(ok) n++; });
     dcount.textContent=n+(n>1?" fiches":" fiche")+(q?" correspondant à votre recherche":"");
     dn.hidden=n>0; dclear.hidden=!q; }
-  function effacer(){ dq.value=""; filtre(); dq.focus(); }
-  dq.addEventListener("input",filtre); dclear.addEventListener("click",effacer); document.getElementById("dclear2").addEventListener("click",effacer); filtre();
+  function effacerQ(){ dq.value=""; filtre(); dq.focus(); }
+  dq.addEventListener("input",filtre); dclear.addEventListener("click",effacerQ); document.getElementById("dclear2").addEventListener("click",effacerQ); filtre();
   dc.addEventListener("click",function(e){ var a=e.target.closest("a[data-fiche]"); if(a) mesure("dico-fiche-"+a.dataset.fiche); });
-  function mesure(ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
 
-  /* Onglets : Faire le point · Apprendre à agir · Dico pratique (ancres #point, #agir, #dico, #dico/slug) */
-  var TABS=["point","agir","dico"], vuDico=false;
+  /* ---------- Onglets et adresses : #diagnostic · #plan · #plan/sujet · #cahier · #cahier/nouveau/poste · #dico · #dico/slug ---------- */
+  var TABS=["diagnostic","plan","cahier","dico"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
   function montre(id){ TABS.forEach(function(k){ document.getElementById(k).hidden=k!==id; var t=document.getElementById("t-"+k); t.setAttribute("aria-selected",String(k===id)); t.tabIndex=k===id?0:-1; });
-    document.getElementById("how").hidden=id==="dico"; if(id==="dico"&&!vuDico){ vuDico=true; mesure("dico-onglet"); } }
-  function depuisAncre(){ var h=decodeURIComponent((location.hash||"").slice(1)), m=/^dico\/(.+)$/.exec(h);
-    if(m||h==="dico"){ montre("dico"); if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m[1]); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
-    montre(h==="agir"||h==="preter-a-un-proche"?"agir":"point");
-    if(h&&TABS.indexOf(h)<0){ var el=document.getElementById(h); if(el) el.scrollIntoView({block:"start"}); } }
+    document.getElementById("how").hidden=id!=="diagnostic"; mesure("onglet-"+id); }
+  // Après un lien interne : ramener le haut de l'espace ouvert à l'écran
+  function cadrer(id,force){ var el=document.getElementById(id); if(!el) return; var r=el.getBoundingClientRect(); if(force||r.top<0) el.scrollIntoView({block:"start"}); }
+  function depuisAncre(){
+    var h=decodeURIComponent((location.hash||"").slice(1)), parts=h.split("/"), k=parts[0];
+    if(ANCIENS[k]) k=ANCIENS[k];
+    if(k==="dico"){ montre("dico"); var m=parts[1]; if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
+    if(k==="plan"){ montre("plan"); rendrePlan(parts[1]); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
+    if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
+    var outil=OUTILS.filter(function(o){return o.id===k;})[0];
+    if(outil&&outil.famille==="agir"){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
+    montre("diagnostic"); if(outil){ var el2=document.getElementById(k); if(el2) el2.scrollIntoView({block:"start"}); }
+  }
   var tabs=[].slice.call(document.querySelectorAll(".tabs a"));
   tabs.forEach(function(a,i){
     a.addEventListener("click",function(e){ e.preventDefault(); if(location.hash!==a.getAttribute("href")) history.pushState(null,"",a.getAttribute("href")); depuisAncre(); });
     a.addEventListener("keydown",function(e){ var k=e.key, j=k==="ArrowRight"?i+1:k==="ArrowLeft"?i-1:k==="Home"?0:k==="End"?tabs.length-1:null; if(j===null) return; e.preventDefault(); j=(j+tabs.length)%tabs.length; tabs[j].focus(); tabs[j].click(); });
   });
   window.addEventListener("hashchange",depuisAncre); window.addEventListener("popstate",depuisAncre); depuisAncre();
+  // Le cahier a pu changer dans un autre onglet du navigateur
+  window.addEventListener("storage",function(e){ if(e.key===CH.CLE&&!document.getElementById("cahier").hidden) reafficher(); });
   var b=document.getElementById("menu"), n=document.getElementById("nav");
   b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});
 })();
