@@ -222,6 +222,31 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .pan,.wk,.vide,.temps .corps,.mod .mb{grid-template-columns:minmax(0,1fr)}
 .vide{justify-items:stretch}.vide>.lnk,.vide>.kick2{justify-self:start}
 .pan{scroll-margin-top:76px}
+
+/* Recherche dans tous les outils, plans, parcours et fiches */
+.rech{margin-top:22px;max-width:720px;display:grid;gap:8px;grid-template-columns:minmax(0,1fr)}
+.rech label{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#C9D1DE}
+.rech-row{display:flex;align-items:center;gap:10px;background:#FFFFFF;border-radius:12px;padding:0 6px 0 16px;min-height:54px}
+.rech-row:focus-within{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.rech-row svg{flex:none;width:20px;height:20px;color:var(--ink2)}
+.rech-row input{flex:1;min-width:0;width:100%;border:0;background:none;font:500 17px var(--f-body);color:var(--nuit);min-height:52px}
+.rech-row input:focus{outline:none}
+.rech-row input::-webkit-search-cancel-button{display:none}
+.rech-x{border:0;background:none;font:700 14px var(--f-body);color:var(--ink2);padding:10px;cursor:pointer;min-height:44px}
+.rech-sug{display:flex;flex-wrap:wrap;gap:6px 8px;font-size:13px;color:#AEB9CC}
+.rech-sug button{border:0;background:rgba(255,255,255,.1);color:#fff;font:600 13px var(--f-body);padding:6px 12px;border-radius:999px;cursor:pointer;min-height:32px}
+#resultats{display:grid;gap:14px}
+#resultats .rcount{font-size:15px;color:var(--ink2)}
+.res{display:grid;gap:10px}
+.res a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:center;padding:16px 18px;border-radius:14px;background:var(--papier);border:1px solid var(--line);text-decoration:none;min-width:0}
+.res a:hover{border-color:var(--nuit)}
+.res .rt{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--corail)}
+.res b{font-family:var(--f-display);font-size:19px;line-height:1.25}
+.res span.d{font-size:15px;color:var(--ink2);grid-column:1}
+.res .go{grid-row:1 / span 3;grid-column:2;color:var(--corail);font-weight:800;font-size:20px}
+.res a>*{min-width:0;overflow-wrap:anywhere}
+.rech-sug{min-width:0}
+.res mark{background:#FFE1D8;color:inherit;border-radius:3px;padding:0 1px}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -242,6 +267,11 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
     <p class="kick">Mes outils et diagnostic</p>
     <h1>Comprendre votre argent. Et agir.</h1>
     <p class="lead">Faites votre diagnostic, choisissez un plan d’action, suivez vos progrès semaine après semaine dans votre cahier, et comprenez les mots de l’argent.</p>
+    <form class="rech" role="search" id="rech-f" onsubmit="return false">
+      <label for="rq">Rechercher un outil, un problème ou un mot</label>
+      <div class="rech-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="rq" type="search" autocomplete="off" enterkeyhint="search" placeholder="Par exemple : budget, tontine, retraite, prêter…"><button type="button" class="rech-x" id="rq-x" hidden>Effacer</button></div>
+      <p class="rech-sug" id="rech-sug">Recherches fréquentes : <button type="button">budget</button><button type="button">tontine</button><button type="button">mobile money</button><button type="button">retraite</button><button type="button">prêter</button><button type="button">dépenses</button></p>
+    </form>
     <div class="tabs" role="tablist" aria-label="Choisir un espace">
       <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="true"><b>Diagnostic</b><small>Où en suis-je&nbsp;?</small></a>
       <a href="#plan" role="tab" id="t-plan" aria-controls="plan" aria-selected="false" tabindex="-1"><b>Plan d’action</b><small>Que faire&nbsp;?</small></a>
@@ -251,6 +281,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
   </div>
 </section>
 <main class="wrap">
+  <section class="pan" id="resultats" aria-live="polite" hidden></section>
   <section class="pan" id="diagnostic" role="tabpanel" aria-labelledby="t-diagnostic">
     <div class="pan-h"><p>Commencez ici si vous ne savez pas par où commencer. Chaque diagnostic vous donne des pistes, puis vous mène au plan d’action et à votre cahier.</p></div>
     <div class="cards" id="diag-cards"></div>
@@ -624,6 +655,48 @@ var OUTILS = [
     a.addEventListener("keydown",function(e){ var k=e.key, j=k==="ArrowRight"?i+1:k==="ArrowLeft"?i-1:k==="Home"?0:k==="End"?tabs.length-1:null; if(j===null) return; e.preventDefault(); j=(j+tabs.length)%tabs.length; tabs[j].focus(); tabs[j].click(); });
   });
   window.addEventListener("hashchange",depuisAncre); window.addEventListener("popstate",depuisAncre); depuisAncre();
+
+  /* ---------- Recherche : outils, plans d'action, méthodes, parcours, fiches du Dico ---------- */
+  var MOTS={
+    "ou-est-passe-mon-argent":"dépenses fin du mois argent disparu où passe suivi traces espèces petits achats mobile money relevé historique budget",
+    "preparer-ma-retraite":"retraite pension caisse cnps cgrae vieillesse vieux jours avenir long terme terrain maison épargne",
+    "diagnostic":"bilan santé financière évaluation score profil test questionnaire point complet",
+    "preter-a-un-proche":"prêt prêter famille proche demande d'argent dette refuser aider aide solidarité remboursement",
+    "construire-son-budget":"budget 50/30/20 70/20/10 80/20 enveloppes base zéro revenus irréguliers salaire dépenses épargne méthode mois",
+    "budget-mobile-money":"mobile money momo wallet portefeuille transfert envoi retrait frais petites sommes téléphone",
+    "cercle-spirale":"tontine cotisation épargne groupe tour cagnotte simulateur part gardée réserve cercle spirale"};
+  var MSUJ={"ou-passe-mon-argent":"dépenses fin du mois argent disparu traces suivi défi poste tontine dettes","proches":"famille aide prêt prêter demande cérémonies solidarité dons","mobile-money":"mobile money momo frais transfert portefeuille","budget":"budget méthode salaire épargne","grosse-somme":"tontine cagnotte prime rappel gros montant répartition rentrée","retraite":"retraite pension vieillesse"};
+  var INDEX=[];
+  OUTILS.forEach(function(o){ INDEX.push({type:o.famille==="agir"?"Parcours pratique":"Diagnostic",titre:o.titre,desc:o.benefice,mots:MOTS[o.id]||"",url:o.url}); });
+  E.SUJETS.forEach(function(s){ INDEX.push({type:"Plan d’action",titre:s.titre,desc:s.intro,mots:MSUJ[s.slug]||"",url:"#plan/"+s.slug}); });
+  Object.keys(E.MODULES).forEach(function(k){ var M=E.MODULES[k]; if(!M.dispo) return; var s=E.SUJETS.filter(function(x){return x.modules.indexOf(k)>=0;})[0]; INDEX.push({type:"Méthode",titre:M.titre,desc:M.resume,mots:(M.etapes||[]).map(function(e){return e[0]+" "+e[1];}).join(" "),url:"#plan/"+(s?s.slug:"")}); });
+  INDEX.push({type:"Mon cahier",titre:"Défi : sept jours sur un poste",desc:E.DEFIS["poste-7j"].resume,mots:"défi cahier suivre noter plafond semaine poste transport repas crédit",url:"#cahier/nouveau"});
+  FICHES.forEach(function(f){ INDEX.push({type:"Dico pratique",titre:f.titre,desc:f.definition_courte,mots:(f.mots_cles||[]).join(" ")+" "+f.notion,url:"#dico/"+f.slug}); });
+  INDEX.forEach(function(x){ x.nt=norm(x.titre); x.nm=norm(x.mots); x.nd=norm(x.desc); });
+  var rq=document.getElementById("rq"), rx=document.getElementById("rq-x"), $res=document.getElementById("resultats"), rechT=0;
+  function surligne(txt,mots){ var h=esc(txt); mots.forEach(function(m){ if(m.length<3) return; var src=norm(txt), i=src.indexOf(m); if(i<0) return; h=esc(txt.slice(0,i))+'<mark>'+esc(txt.slice(i,i+m.length))+'</mark>'+esc(txt.slice(i+m.length)); }); return h; }
+  function cherche(){
+    var q=norm(rq.value.trim()), mots=q.split(/[\s,;']+/).filter(function(m){return m.length>1;});
+    rx.hidden=!q;
+    if(!mots.length){ $res.hidden=true; $res.innerHTML=""; TABS.forEach(function(k){}); depuisAncre(); return; }
+    var L=INDEX.map(function(x){ var sc=0, tous=mots.every(function(m){ var t=x.nt.indexOf(m)>=0, k=x.nm.indexOf(m)>=0, d=x.nd.indexOf(m)>=0; sc+=(t?5:0)+(k?3:0)+(d?1:0); return t||k||d; }); return {x:x,sc:tous?sc:0}; })
+      .filter(function(r){return r.sc>0;}).sort(function(a,b){return b.sc-a.sc;});
+    TABS.forEach(function(k){ document.getElementById(k).hidden=true; }); document.getElementById("how").hidden=true;
+    $res.hidden=false;
+    $res.innerHTML='<p class="rcount">'+(L.length?L.length+(L.length>1?' résultats':' résultat')+' pour « '+esc(rq.value.trim())+' »':'Aucun résultat pour « '+esc(rq.value.trim())+' ». Essayez un mot plus court ou une recherche fréquente.')+'</p>'+
+      (L.length?'<div class="res">'+L.slice(0,12).map(function(r){ return '<a href="'+esc(r.x.url)+'" data-res="1"><span class="rt">'+esc(r.x.type)+'</span><b>'+surligne(r.x.titre,mots)+'</b><span class="d">'+surligne(r.x.desc,mots)+'</span><span class="go" aria-hidden="true">→</span></a>'; }).join("")+'</div>':'')+
+      '<button type="button" class="lnk" data-act="finRech" style="justify-self:start">Revenir aux onglets</button>';
+    clearTimeout(rechT); rechT=setTimeout(function(){ mesure("recherche"); },1200);
+  }
+  function finRech(){ rq.value=""; cherche(); }
+  rq.addEventListener("input",cherche);
+  rq.addEventListener("keydown",function(e){ if(e.key==="Escape") finRech(); if(e.key==="Enter"){ var a=$res.querySelector("a[data-res]"); if(a){ e.preventDefault(); a.click(); } } });
+  rx.addEventListener("click",function(){ finRech(); rq.focus(); });
+  document.getElementById("rech-sug").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; rq.value=b.textContent; cherche(); $res.scrollIntoView({block:"start"}); });
+  $res.addEventListener("click",function(e){ var a=e.target.closest("a[data-res]"); if(a){ mesure("recherche-clic"); var h=a.getAttribute("href"); if(h.charAt(0)==="#"){ e.preventDefault(); rq.value=""; rx.hidden=true; $res.hidden=true; history.pushState(null,"",h); depuisAncre(); cadrer(h.split("/")[0].slice(1),true); } return; }
+    if(e.target.closest("[data-act=finRech]")) finRech(); });
+  tabs.forEach(function(a){ a.addEventListener("click",function(){ if(rq.value){ rq.value=""; rx.hidden=true; $res.hidden=true; } }); });
+  try{ var q0=(new URLSearchParams(location.search)).get("q"); if(q0){ rq.value=q0; cherche(); } }catch(e){}
   // Le cahier a pu changer dans un autre onglet du navigateur
   window.addEventListener("storage",function(e){ if(e.key===CH.CLE&&!document.getElementById("cahier").hidden) reafficher(); });
   var b=document.getElementById("menu"), n=document.getElementById("nav");
