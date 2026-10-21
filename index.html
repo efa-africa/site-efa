@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="logo-efa.png">
+<link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>Éducation Financière Afrique</title>
@@ -672,7 +672,7 @@ img.char{object-position:50% 18%}
 <body>
 
 <header class="top" id="top">
-  <a class="brand" href="#accueil"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <a class="brand" href="#accueil"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a class="nav-cta" href="outils.html">Mes outils et diagnostic</a>
     <a href="methode.html#etudes">Études &amp; méthode</a>
@@ -809,7 +809,7 @@ img.char{object-position:50% 18%}
       <div class="book" aria-hidden="true">
         <div class="sheet"><b>Fiche 1</b><span>Mes sept chiffres</span><i>Revenus</i><i>Dépenses courantes</i><i>Dettes</i><i>Soutien aux proches</i><i>Tontine</i></div>
         <div class="cover">
-          <img src="logo-efa.png" alt="" width="44" height="44">
+          <img src="logo-efa-96.png" alt="" width="44" height="44">
           <small>Guide gratuit EFA</small>
           <strong>Construire sa stabilité financière</strong>
           <em>5 fiches à remplir</em>
@@ -868,7 +868,7 @@ img.char{object-position:50% 18%}
   <div class="ef-in">
     <div class="ef-top">
       <div class="ef-brand">
-        <a class="ef-logo" href="index.html"><img src="logo-efa.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
         <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
         <a class="ef-cta" href="outils.html">Mes outils et diagnostic</a>
       </div>
@@ -1273,7 +1273,7 @@ var GUIDES=[
   var esc=function(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
   sh.innerHTML=GUIDES.map(function(g){
     var href=g.lien==='GUIDE'?(GUIDE_LIEN||'#guide'):(g.lien||WA), ext=/^https?:/.test(href);
-    return '<article class="gd'+(g.dispo?'':' soon-g')+'"><div class="gd-cv'+(g.sombre?' dark':'')+'" aria-hidden="true"><img src="logo-efa.png" alt=""><b>'+esc(g.t)+'</b><i></i></div>'+
+    return '<article class="gd'+(g.dispo?'':' soon-g')+'"><div class="gd-cv'+(g.sombre?' dark':'')+'" aria-hidden="true"><img src="logo-efa-96.png" alt=""><b>'+esc(g.t)+'</b><i></i></div>'+
       '<div class="gd-tx"><span class="gd-st'+(g.dispo?' ok':'')+'">'+(g.dispo?'Disponible':'À venir')+'</span><h3>'+esc(g.t)+'</h3><p>'+esc(g.d)+'</p>'+
       (g.dispo?'<a href="'+href+'" data-goatcounter-click="guide-catalogue"'+(ext?' target="_blank" rel="noopener"':'')+'>Recevoir le guide gratuit</a>':'<a href="'+WA+'" target="_blank" rel="noopener">Être prévenu de la sortie</a>')+'</div></article>';
   }).join('');

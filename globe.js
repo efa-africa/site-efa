@@ -1,7 +1,8 @@
 /* globe.js · EFA — globe terrestre réaliste, rendu léger sur canvas 2D, sans bibliothèque.
    Image de la Terre : NASA Blue Marble (domaine public, NASA Visible Earth), fichiers terre-2048.jpg et terre-1024.jpg.
    Un tour complet en 100 s, Afrique visible au départ. L'animation s'arrête hors de l'écran, quand l'onglet est masqué,
-   si l'utilisateur réduit les animations, ou sur demande (bouton pause). Sans rendu possible, l'image fixe globe.webp reste affichée. */
+   si l'utilisateur réduit les animations, ou sur demande (bouton pause). Sans rendu possible, l'image fixe globe.webp reste affichée.
+   Chargement différé : rien n'est calculé ni téléchargé avant que la section approche de l'écran ; texture 1024 sur téléphone et tablette. */
 (function(){
   function init(){
     var cv=document.getElementById("globe"); if(!cv||!cv.getContext) return;
@@ -29,7 +30,7 @@
       pret=!!tex; if(pret) dessine();
     }
     function charge(){
-      var w=cv.getBoundingClientRect().width*(window.devicePixelRatio||1), src=w>620?"terre-2048.jpg":"terre-1024.jpg", im=new Image();
+      var src=N>=760&&!matchMedia("(pointer:coarse)").matches?"terre-2048.jpg":"terre-1024.jpg", im=new Image(); im.decoding="async";
       im.onload=function(){ try{ var oc=document.createElement("canvas"); TW=oc.width=im.naturalWidth; TH=oc.height=im.naturalHeight; var ox=oc.getContext("2d"); ox.drawImage(im,0,0);
           tex=new Uint32Array(ox.getImageData(0,0,TW,TH).data.buffer); pret=true; dessine(); cv.classList.add("on"); if(img) img.classList.add("off"); relance(); }catch(e){ /* image fixe conservée */ } };
       im.src=src;
@@ -52,14 +53,22 @@
       ctx.fillStyle=h; ctx.beginPath(); ctx.arc(c,c,R*1.06,0,7); ctx.fill();
     }
     function boucle(ts){ raf=0; if(!actif()) return; if(t0===null) t0=ts-((lon0-off)/360)*100000;
-      if(ts-last>=40){ last=ts; off=lon0-((ts-t0)/100000)*360; dessine(); } raf=requestAnimationFrame(boucle); }
+      if(ts-last>=66){ last=ts; off=lon0-((ts-t0)/100000)*360; dessine(); } raf=requestAnimationFrame(boucle); }
     function actif(){ return pret&&!pause&&visible&&!document.hidden&&!reduit.matches; }
     function relance(){ if(actif()&&!raf){ t0=null; raf=requestAnimationFrame(boucle); } }
-    prepare(); charge();
-    addEventListener("resize",function(){ clearTimeout(prepare.t); prepare.t=setTimeout(prepare,200); });
-    if("IntersectionObserver" in window) new IntersectionObserver(function(e){ visible=e[0].isIntersecting; relance(); }).observe(sec);
+    var lance=false;
+    var attend=false;
+    // Le globe passe après le premier écran : on attend la fin du chargement de la page, puis un temps libre
+    function demarre(){ if(lance||reduit.matches) return;
+      if(document.readyState!=="complete"){ if(!attend){ attend=true; addEventListener("load",function(){ setTimeout(demarre,400); },{once:true}); } return; }
+      lance=true; (window.requestIdleCallback||function(f){ setTimeout(f,1); })(function(){ prepare(); charge(); }); }
+    addEventListener("resize",function(){ if(!lance) return; clearTimeout(prepare.t); prepare.t=setTimeout(prepare,200); });
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(e){ visible=e[0].isIntersecting; if(visible) demarre(); relance(); }).observe(sec);
+      new IntersectionObserver(function(e){ if(e[0].isIntersecting) demarre(); },{rootMargin:"400px 0px"}).observe(sec);
+    } else demarre();
     document.addEventListener("visibilitychange",relance);
-    if(reduit.addEventListener) reduit.addEventListener("change",function(){ if(btn) btn.hidden=reduit.matches; relance(); });
+    if(reduit.addEventListener) reduit.addEventListener("change",function(){ if(btn) btn.hidden=reduit.matches; if(!reduit.matches&&visible) demarre(); relance(); });
     if(btn){ btn.hidden=reduit.matches; btn.addEventListener("click",function(){ pause=!pause; btn.setAttribute("aria-pressed",String(pause)); btn.textContent=pause?"Reprendre l’animation":"Mettre l’animation en pause"; relance(); }); }
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
