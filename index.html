@@ -666,6 +666,13 @@ img.char{object-position:50% 18%}
 #besoins.ask{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 32px)}
 .ask + .efa-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 48px);border-top:1px solid rgba(255,255,255,.08)}
 @media (max-width:860px){.ask + .efa-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 28px)}}
+
+.ask-rech{width:min(560px,100%);display:grid;gap:8px;margin-top:8px;text-align:left}
+.ask-rech label{font-size:13px;font-weight:700;color:#C9D1DE;text-align:center}
+.ask-rech div{display:flex;gap:8px;background:#fff;border-radius:12px;padding:5px}
+.ask-rech input{flex:1;min-width:0;border:0;background:none;padding:0 12px;font:500 16px var(--f-body);color:var(--nuit);min-height:46px}
+.ask-rech input:focus{outline:none}.ask-rech div:focus-within{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.ask-rech button{border:0;border-radius:9px;background:var(--corail);color:#fff;font:700 15px var(--f-body);padding:0 16px;min-height:46px;cursor:pointer}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -719,6 +726,10 @@ img.char{object-position:50% 18%}
         <span><b>Je veux préparer ma retraite</b><small>Six questions pour faire le point →</small></span>
       </a>
     </div>
+    <form class="ask-rech" action="outils.html" method="get" role="search">
+      <label for="ask-q">Ou cherchez directement</label>
+      <div><input id="ask-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Budget, tontine, retraite, prêter…"><button type="submit">Rechercher</button></div>
+    </form>
     <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
   </section>
 
