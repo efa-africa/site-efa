@@ -382,7 +382,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .g-wrap img.off{opacity:0;transition:opacity .8s .2s}
 .g-voile{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(11,18,32,.94) 0%,rgba(11,18,32,.82) 34%,rgba(11,18,32,.38) 62%,rgba(11,18,32,.18) 100%),linear-gradient(180deg,rgba(11,18,32,.25),rgba(11,18,32,0) 30%,rgba(11,18,32,.45))}
 .efa-in{position:relative;max-width:1180px;width:100%;margin:0 auto;display:grid;gap:18px}
-.efa-in h1{font-family:var(--f-display);font-weight:700;text-transform:none;letter-spacing:-.02em;line-height:1.12;font-size:clamp(48px,4.6vw,62px);max-width:13em;text-wrap:balance;color:#fff}
+.efa-in h2{font-family:var(--f-display);font-weight:700;text-transform:none;letter-spacing:-.02em;line-height:1.12;font-size:clamp(48px,4.6vw,62px);max-width:13em;text-wrap:balance;color:#fff}
 .efa-in .sep{color:var(--soft-bleu);font-weight:400}
 .efa-in .e2{white-space:nowrap}
 .efa-l{font-size:clamp(19px,1.8vw,23px);line-height:1.45;color:#E8EDF5;max-width:30em;font-weight:600}
@@ -397,7 +397,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .efa-top{min-height:0;align-items:flex-start;padding:calc(var(--hh,64px) + var(--tkh,34px) + 34px) var(--gut) 72px}
   .g-wrap{right:auto;left:50%;top:auto;bottom:-24%;width:min(120vw,620px);transform:translateX(-50%)}
   .g-voile{background:linear-gradient(180deg,rgba(11,18,32,.9) 0%,rgba(11,18,32,.82) 46%,rgba(11,18,32,.48) 72%,rgba(11,18,32,.3) 100%)}
-  .efa-in h1{font-size:clamp(29px,8.6vw,38px);line-height:1.15}
+  .efa-in h2{font-size:clamp(29px,8.6vw,38px);line-height:1.15}
   .efa-in .sep{display:none}
   .efa-in .e1,.efa-in .e2{display:block}
   .efa-in .e2{white-space:normal}
@@ -658,6 +658,14 @@ img.char{object-position:50% 18%}
   .founder blockquote{font-size:clamp(40px,11vw,64px)}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* Ordre de l'accueil : le besoin d'abord, puis la mission, puis le concept */
+.ask-marque{display:grid;gap:4px;justify-items:center;margin:0;font-size:13px;line-height:1.4;color:#C9D1DE}
+.ask-marque b{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.ask .head h1{font-size:clamp(40px,6.9vw,89px)}
+#besoins.ask{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 32px)}
+.ask + .efa-top{padding-top:96px;border-top:1px solid rgba(255,255,255,.08)}
+@media (max-width:860px){.ask + .efa-top{padding-top:64px}}
 </style>
 </head>
 <body>
@@ -682,12 +690,43 @@ img.char{object-position:50% 18%}
 
 <main id="accueil">
 
+  <!-- 1. Votre besoin : on entre par le problème ; chaque tuile ouvre son plan d’action -->
+  <section class="screen ask" id="besoins" data-step="Accueil" aria-labelledby="ask-t">
+    <div class="head">
+      <p class="ask-marque"><b>EFA · Éducation Financière Afrique</b> <span>Des outils gratuits pour comprendre votre argent et agir</span></p>
+      <h1 id="ask-t">Qu’est-ce qui vous préoccupe&nbsp;?</h1>
+    </div>
+    <div class="tiles t5">
+      <a class="tile" href="outils.html?src=besoin#plan/ou-passe-mon-argent" data-goatcounter-click="besoin-budget">
+        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je ne sais pas où passe mon argent</b><small>Diagnostic, méthode et défi de la semaine →</small></span>
+      </a>
+      <a class="tile" href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">
+        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
+        <span><b>Je vais recevoir une grosse somme</b><small>Prévoir sa répartition avant qu’elle arrive →</small></span>
+      </a>
+      <a class="tile" href="outils.html?src=besoin#plan/proches" data-goatcounter-click="besoin-proches">
+        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je veux mieux organiser l’aide aux proches</b><small>Mesurer, puis préparer sa réponse →</small></span>
+      </a>
+      <a class="tile" href="cercle-spirale.html#groupe" data-goatcounter-click="besoin-tontine">
+        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je veux comprendre ma tontine</b><small>D’où vient la réserve, à qui elle appartient →</small></span>
+      </a>
+      <a class="tile" href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">
+        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
+        <span><b>Je veux préparer ma retraite</b><small>Six questions pour faire le point →</small></span>
+      </a>
+    </div>
+    <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
+  </section>
+
   <!-- 0. EFA | Éducation Financière Afrique : globe en rotation en arrière-plan (globe.js), image fixe pendant le chargement -->
-  <section class="efa-top" id="efa" aria-labelledby="efa-t" data-step="Accueil">
+  <section class="efa-top" id="efa" aria-labelledby="efa-t" data-step="La mission">
     <div class="g-wrap" aria-hidden="true"><img class="g-img" src="globe.webp" alt="" width="900" height="900" fetchpriority="low"><canvas id="globe"></canvas></div>
     <div class="g-voile" aria-hidden="true"></div>
     <div class="efa-in">
-      <h1 id="efa-t"><span class="e1">EFA</span><span class="sep" aria-hidden="true"> | </span><span class="e2">Éducation Financière Afrique</span></h1>
+      <h2 id="efa-t"><span class="e1">EFA</span><span class="sep" aria-hidden="true"> | </span><span class="e2">Éducation Financière Afrique</span></h2>
       <p class="efa-l">Donner à chacun les moyens de construire l’avenir.</p>
       <p class="efa-s">En Afrique et dans la diaspora, réunissons les connaissances et les initiatives pour construire une prospérité qui se transmet.</p>
       <div class="efa-b">
@@ -730,35 +769,7 @@ img.char{object-position:50% 18%}
   </section>
 
   <!-- 1. Les besoins : chacun mène vers un outil -->
-  <section class="screen ask" id="besoins" data-step="Votre besoin">
-    <div class="head">
-      <p class="step">Votre besoin</p>
-      <h2>Qu’est-ce qui vous préoccupe&nbsp;?</h2>
-    </div>
-    <div class="tiles t5">
-      <a class="tile" href="ou-est-passe-mon-argent.html?src=besoin" data-goatcounter-click="besoin-budget">
-        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je ne sais pas où passe mon argent</b><small>Cinq questions pour savoir où chercher →</small></span>
-      </a>
-      <a class="tile" href="cercle-spirale.html#argent" data-goatcounter-click="besoin-rentree">
-        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
-        <span><b>Je vais recevoir une grosse somme</b><small>Calculer la part à garder →</small></span>
-      </a>
-      <a class="tile" href="preter-a-un-proche.html?src=besoin" data-goatcounter-click="besoin-proches">
-        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux mieux organiser l’aide aux proches</b><small>Le parcours pratique avec Koffi →</small></span>
-      </a>
-      <a class="tile" href="cercle-spirale.html#groupe" data-goatcounter-click="besoin-tontine">
-        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux comprendre ma tontine</b><small>D’où vient la réserve, à qui elle appartient →</small></span>
-      </a>
-      <a class="tile" href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">
-        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux préparer ma retraite</b><small>Six questions pour faire le point →</small></span>
-      </a>
-    </div>
-    <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
-  </section>
+
 
   <!-- 3. Le cercle et la spirale : le simulateur de Koffi -->
   <section class="story" id="cercle" data-step="Étape 1 · Le cercle">
