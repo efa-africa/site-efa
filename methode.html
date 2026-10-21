@@ -193,9 +193,9 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .tk-cat{font:800 10px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.12em;padding:4px 6px;border-radius:4px}
 .tk-cat.e{background:#6DB8F2;color:#06182B}
 .tk-cat.b{background:#F2B84B;color:#1A1205}
-.tk-btn,.tk-pause{background:transparent;border:1px solid var(--tk-line);color:var(--tk-ink);border-radius:6px;min-width:30px;height:26px;font:700 13px/1 system-ui,sans-serif;cursor:pointer}
+.tk-btn,.tk-pause{background:transparent;border:1px solid var(--tk-line);color:var(--tk-ink);border-radius:6px;min-width:30px;height:26px;font:700 13px/1 "Source Sans 3","Source Sans Pro",Arial,sans-serif;cursor:pointer}
 .tk-btn,.tk-n{display:none}
-.tk-n{font:600 11px/1 system-ui,sans-serif;color:var(--tk-ink2);min-width:3.2em;text-align:center}
+.tk-n{font:600 11px/1 "Source Sans 3","Source Sans Pro",Arial,sans-serif;color:var(--tk-ink2);min-width:3.2em;text-align:center}
 .tk.one .tk-btn,.tk.one .tk-n{display:inline-block}
 .tk.one .tk-btn,.tk.one .tk-pause{min-width:40px;height:40px;font-size:15px}
 .tk.one .tk-in{height:auto;min-height:52px;padding-block:6px;gap:6px}
@@ -318,6 +318,17 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .note b,.note strong,.note h3,.note .k,.note small,.method .note b,.method .note strong,.method .note h3,.method .note .k,.method .note small,.mtxt .note b,.mtxt .note strong,.mtxt .note h3,.mtxt .note .k,.mtxt .note small,.koffi b,.koffi strong,.koffi h3,.koffi .k,.koffi small,.warn b,.warn strong,.warn h3,.warn .k,.warn small{color:var(--verm-ink)!important}
 .note a,.note .mini,.note button.lien,.method .note a,.method .note .mini,.method .note button.lien,.mtxt .note a,.mtxt .note .mini,.mtxt .note button.lien,.koffi a,.koffi .mini,.koffi button.lien,.warn a,.warn .mini,.warn button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
 .note,.koffi,.warn{font-size:13px}
+
+/* Sans liserés, et une typographie plus éditoriale : chiffres en Baskerville, étiquettes moins espacées */
+.st-card{border:0}
+.meta{border:0}
+.filters,.scr,.sim-out,.method,.sim-panel{border:0}
+.code{border:0;background:rgba(255,255,255,.07)}
+.st-card[aria-current="true"]{border:0;box-shadow:none;background:#1C2842}
+.rubs a[aria-current="page"]{background:none;color:#fff;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:8px}
+.kick,.meta small,.sim-out small,.studies h2,.step-n{letter-spacing:.06em;font-weight:700;font-size:12px}
+.method summary .t{letter-spacing:.04em}
+.meta b,.sim-out b{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.2vw,26px);letter-spacing:0}
 </style>
 </head>
 <body>
