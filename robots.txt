@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /merci-guide.html
+Disallow: /app/equipe
 
 Sitemap: https://efa.africa/sitemap.xml
