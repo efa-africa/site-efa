@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Cercle &amp; Spirale · EFA</title>
+<meta name="description" content="Calculez votre spirale : avec votre argent (quelle part garder d’une grosse rentrée) ou avec votre groupe (la réserve d’une tontine, tour par tour). Éducation Financière Afrique.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:title" content="Cercle &amp; Spirale · Calculez votre spirale">
+<meta property="og:description" content="Avec votre argent ou avec votre groupe : voyez ce qui reste quand une part est gardée.">
+<meta property="og:url" content="https://efa.africa/cercle-spirale.html">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#2188D6; --corail:#E44828;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --line:#E2D8C4;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--nuit);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;overflow-wrap:break-word}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* En-tête (identique à l'accueil) */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.nav a[aria-current]{box-shadow:inset 0 -2px 0 var(--soft-bleu);border-radius:0}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-weight:900;font-size:34px;text-transform:uppercase}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+
+/* Ouverture */
+.intro{background:var(--nuit);color:#fff;padding-block:44px 0}
+.mission{font-weight:700;font-size:15px;line-height:1.45;color:#E8EDF5;max-width:44em}
+.mission .mc{color:#EC6243;font-weight:800}.mission .ms{color:var(--soft-bleu);font-weight:800}
+.intro .kick{margin-top:26px;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
+.intro h1{font-size:clamp(48px,8vw,96px);margin-top:10px}
+.intro .lead{margin-top:14px;font-size:clamp(17px,2vw,20px);color:#C9D1DE;max-width:38em}
+.tabs{display:flex;gap:8px;margin-top:30px;flex-wrap:wrap}
+.tabs a{flex:1 1 220px;display:grid;gap:2px;text-decoration:none;padding:16px 20px;border-radius:14px 14px 0 0;background:#16213A;color:#C9D1DE;min-height:44px}
+.tabs a b{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:26px;line-height:1;color:#fff}
+.tabs a small{font-size:13px;font-weight:600}
+.tabs a[aria-selected="true"]{background:var(--creme);color:var(--ink2)}
+.tabs a[aria-selected="true"] b{color:var(--nuit)}
+
+/* Panneaux */
+.panel{padding-block:40px 64px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--papier);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:18px;min-width:0}
+.card h2{font-size:clamp(30px,4vw,42px)}
+.card .hint{font-size:15px;color:var(--ink2)}
+.f{display:grid;gap:8px;min-width:0}
+.card > *,.kpis > *{min-width:0}
+.f > span{font-size:14px;font-weight:800}
+.f small{font-size:13px;color:var(--ink2)}
+.money{display:flex;align-items:center;background:#fff;border:2px solid var(--line);border-radius:12px;padding:0 14px;min-height:52px}
+.money:focus-within{border-color:var(--bleu)}
+.money input{flex:1;min-width:0;width:100%;border:0;outline:0;background:none;font:800 22px/1 var(--f-body);color:var(--nuit);padding:12px 0}
+.money em{font-style:normal;font-weight:800;color:var(--ink2);font-size:15px}
+.step{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;gap:8px;align-items:center}
+.step button{height:52px;border-radius:12px;border:2px solid var(--line);background:#fff;font:800 22px/1 var(--f-body);color:var(--nuit);cursor:pointer}
+.step button:active{background:var(--creme)}
+.step input{min-width:0;width:100%;height:52px;text-align:center;border:2px solid var(--line);border-radius:12px;font:800 22px/1 var(--f-body);color:var(--nuit);background:#fff}
+.step input:focus{border-color:var(--bleu);outline:0}
+.step .u{grid-column:1/-1;font-size:13px;color:var(--ink2);text-align:center}
+.err{font-size:14px;font-weight:700;color:#B3261E}
+
+/* Résultats */
+.res{display:grid;gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:4px;min-width:0}
+.kpi b{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,3.4vw,38px);line-height:1;overflow-wrap:anywhere}
+.kpi span{font-size:14px;color:var(--ink2);line-height:1.4}
+.kpi.k{background:var(--bleu);border-color:var(--bleu);color:#fff}.kpi.k span{color:#EAF4FD}
+.kpi.c{background:var(--nuit);border-color:var(--nuit);color:#fff}.kpi.c span{color:#C9D1DE}
+.kpi.w{grid-column:1/-1}
+.sent{font-size:17px;font-weight:700;line-height:1.5}
+.sent b{color:var(--bleu)}
+.note{font-size:14px;line-height:1.55;color:var(--ink2)}
+.box{border-radius:14px;padding:16px 18px;font-size:15px;line-height:1.55}
+.box.warn{background:#FFF1EC;border:1px solid #F5C6B8;color:#5A2416}
+.box.info{background:#EAF4FD;border:1px solid #BFDDF6;color:#0E3B60}
+.box b{display:block;margin-bottom:2px}
+.hyp{margin:0;padding-left:20px;font-size:14px;color:var(--ink2);display:grid;gap:4px}
+.more{font-weight:800;color:var(--bleu);text-decoration:none}
+.more:hover{text-decoration:underline}
+
+/* Gouvernance et usages (groupe) */
+.sec{padding-block:40px 16px}
+.sec:last-of-type{padding-bottom:56px}
+.sec h2{font-size:clamp(34px,5vw,56px)}
+.sec .lead{margin-top:10px;font-size:18px;color:var(--ink);max-width:44em}
+.gov{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:g}
+.gov li{background:var(--papier);border:2px solid var(--nuit);border-radius:16px;padding:20px;display:grid;gap:8px;counter-increment:g;min-width:0}
+.gov b{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:28px;line-height:1}
+.gov b::before{content:counter(g) " · ";color:var(--corail)}
+.gov p{font-size:15px;color:var(--ink)}
+.gov p.q{font-weight:700;color:var(--nuit)}
+.uses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+.uses article{background:var(--nuit);color:#fff;border-radius:16px;padding:20px;display:grid;gap:8px;align-content:start;min-width:0}
+.uses .tag{justify-self:start;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:var(--bleu);padding:5px 10px;border-radius:6px}
+.uses h3{font-size:24px}
+.uses p{font-size:15px;color:#C9D1DE}
+.uses p.r{color:var(--soft-corail);font-weight:700}
+@media (max-width:860px){.gov,.uses{grid-template-columns:minmax(0,1fr)}}
+.proj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.proj div{background:var(--papier);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:6px;min-width:0}
+.proj div.x{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.proj b{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,6vw,64px);line-height:.95;overflow-wrap:anywhere}
+.proj div:not(.x) b{color:var(--bleu)}
+.proj span{font-size:15px}
+.proj div.x span{color:#EAF4FD}
+@media (max-width:700px){.proj{grid-template-columns:minmax(0,1fr)}}
+
+/* Suite */
+.next{background:var(--nuit);color:#fff;padding-block:56px}
+.next h2{font-size:clamp(34px,5vw,56px)}
+.next .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:10px;font:800 15px/1.2 var(--f-body);text-decoration:none;text-align:center}
+.btn-main{background:var(--corail);color:#fff}
+.btn-line{box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);color:#fff}
+@media (max-width:620px){.next .row .btn{width:100%}}
+footer{background:var(--nuit);color:#AEB6C6;border-top:1px solid rgba(255,255,255,.08);padding-block:22px;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:#E8EDF5;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="diagnostic.html?src=cercle-spirale">Diagnostic</a>
+    <a href="cercle-spirale.html" aria-current="page">Cercle &amp; Spirale</a>
+    <a href="methode.html#etudes">Études &amp; Outils</a>
+    <a href="index.html#guides">Guides</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main>
+<section class="intro">
+  <div class="wrap">
+    <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+    <p class="kick">Cercle &amp; Spirale</p>
+    <h1>Calculez votre spirale.</h1>
+    <p class="lead">À 0&nbsp;%, tout l’argent qui arrive repart&nbsp;: c’est le cercle. Gardez une part, même petite, et elle s’accumule&nbsp;: c’est la spirale. Faites le calcul seul, ou avec votre groupe.</p>
+    <div class="tabs" role="tablist" aria-label="Choisir le calcul">
+      <a href="#argent" role="tab" id="t-argent" aria-controls="argent" aria-selected="true"><b>Avec mon argent</b><small>Une grosse rentrée, quelle part garder&nbsp;?</small></a>
+      <a href="#groupe" role="tab" id="t-groupe" aria-controls="groupe" aria-selected="false"><b>Avec mon groupe</b><small>Tontine&nbsp;: la réserve, tour par tour</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Avec mon argent ===== -->
+<section class="panel" id="argent" role="tabpanel" aria-labelledby="t-argent">
+  <div class="wrap grid">
+    <div class="card">
+      <h2>Vos chiffres</h2>
+      <p class="hint">Un tour de tontine, une prime, un 13<sup>e</sup> mois, la vente d’une récolte&nbsp;: tout ce qui arrive en une fois.</p>
+      <label class="f"><span>Somme reçue à chaque fois</span>
+        <span class="money"><input id="a-som" inputmode="numeric" autocomplete="off" value="300 000" aria-describedby="a-err"><em>FCFA</em></span>
+      </label>
+      <div class="f"><span id="a-n-l">Nombre de rentrées</span>
+        <div class="step" role="group" aria-labelledby="a-n-l"><button type="button" data-t="a-n" data-d="-1" aria-label="Une rentrée de moins">−</button><input id="a-n" inputmode="numeric" value="12" aria-labelledby="a-n-l"><button type="button" data-t="a-n" data-d="1" aria-label="Une rentrée de plus">+</button><span class="u">de 1 à 60 · par exemple 12 pour une rentrée par mois pendant un an</span></div>
+      </div>
+      <div class="f"><span id="a-p-l">Part gardée à chaque fois</span>
+        <div class="step" role="group" aria-labelledby="a-p-l"><button type="button" data-t="a-p" data-d="-5" aria-label="Moins 5 points">−</button><input id="a-p" inputmode="numeric" value="10" aria-labelledby="a-p-l"><button type="button" data-t="a-p" data-d="5" aria-label="Plus 5 points">+</button><span class="u">en %, de 0 à 100</span></div>
+      </div>
+      <label class="f" id="projet"><span>Mon projet coûte (facultatif)</span>
+        <span class="money"><input id="a-obj" inputmode="numeric" autocomplete="off" placeholder="Par exemple 1 500 000"><em>FCFA</em></span>
+        <small>Nous calculons combien de rentrées il faut pour y arriver.</small>
+      </label>
+      <p class="err" id="a-err" role="alert" hidden>Indiquez une somme d’au moins 1&nbsp;000&nbsp;FCFA.</p>
+    </div>
+    <div class="card res" aria-live="polite">
+      <h2>Ce qui reste</h2>
+      <div class="kpis">
+        <div class="kpi"><b id="a-k1">30 000</b><span>gardés à chaque rentrée (FCFA)</span></div>
+        <div class="kpi"><b id="a-k2">270 000</b><span>dépensés à chaque rentrée (FCFA)</span></div>
+        <div class="kpi k w"><b id="a-k3">360 000 FCFA</b><span id="a-k3l">mis de côté après 12 rentrées</span></div>
+        <div class="kpi c w" id="a-obj-k" hidden><b id="a-k4">50 rentrées</b><span id="a-k4l">pour financer votre projet</span></div>
+      </div>
+      <p class="sent" id="a-sent"></p>
+      <div class="box info"><b>Ce calcul ne compte pas d’intérêts.</b>Il montre seulement ce que vous gardez. Placée ou prêtée, une réserve peut rapporter, mais aussi perdre&nbsp;: un placement peut baisser, un prêt peut ne pas être remboursé.</div>
+      <a class="more" href="methode.html#simulateurs">Voir le détail rentrée par rentrée →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Avec mon groupe ===== -->
+<section class="panel" id="groupe" role="tabpanel" aria-labelledby="t-groupe" hidden>
+  <div class="wrap grid">
+    <div class="card">
+      <h2>Votre groupe</h2>
+      <p class="hint">Une tontine rotative&nbsp;: chaque tour, tout le monde cotise et un membre reçoit la cagnotte. Ici, le groupe décide d’en garder une part.</p>
+      <div class="f"><span id="g-m-l">Nombre de membres</span>
+        <div class="step" role="group" aria-labelledby="g-m-l"><button type="button" data-t="g-m" data-d="-1" aria-label="Un membre de moins">−</button><input id="g-m" inputmode="numeric" value="10" aria-labelledby="g-m-l"><button type="button" data-t="g-m" data-d="1" aria-label="Un membre de plus">+</button><span class="u">de 2 à 100</span></div>
+      </div>
+      <label class="f"><span>Cotisation de chaque membre, par tour</span>
+        <span class="money"><input id="g-c" inputmode="numeric" autocomplete="off" value="100 000"><em>FCFA</em></span>
+      </label>
+      <div class="f"><span id="g-t-l">Nombre de tours dans le cycle</span>
+        <div class="step" role="group" aria-labelledby="g-t-l"><button type="button" data-t="g-t" data-d="-1" aria-label="Un tour de moins">−</button><input id="g-t" inputmode="numeric" value="10" aria-labelledby="g-t-l"><button type="button" data-t="g-t" data-d="1" aria-label="Un tour de plus">+</button><span class="u">souvent égal au nombre de membres</span></div>
+      </div>
+      <div class="f"><span id="g-p-l">Part gardée par le groupe à chaque tour</span>
+        <div class="step" role="group" aria-labelledby="g-p-l"><button type="button" data-t="g-p" data-d="-5" aria-label="Moins 5 points">−</button><input id="g-p" inputmode="numeric" value="20" aria-labelledby="g-p-l"><button type="button" data-t="g-p" data-d="5" aria-label="Plus 5 points">+</button><span class="u">en %, de 0 à 100</span></div>
+      </div>
+      <p class="err" id="g-err" role="alert" hidden>Indiquez une cotisation d’au moins 500&nbsp;FCFA.</p>
+    </div>
+    <div class="card res" aria-live="polite">
+      <h2>Tour par tour</h2>
+      <div class="kpis">
+        <div class="kpi"><b id="g-k1">1 000 000</b><span>réunis à chaque tour (FCFA)</span></div>
+        <div class="kpi c"><b id="g-k2">800 000</b><span>versés au bénéficiaire du tour (FCFA)</span></div>
+        <div class="kpi"><b id="g-k3">200 000</b><span>gardés par le groupe à chaque tour (FCFA)</span></div>
+        <div class="kpi k"><b id="g-k4">2 000 000</b><span id="g-k4l">de réserve commune à la fin du cycle (FCFA)</span></div>
+      </div>
+      <div class="box warn"><b>La réserve n’est pas un gain.</b><span id="g-why">Elle vient de vos propres cotisations&nbsp;: chaque bénéficiaire reçoit 200&nbsp;000&nbsp;FCFA de moins que la cagnotte. Ce que chacun a laissé lui appartient toujours.</span></div>
+      <p class="note"><b>Hypothèses.</b></p>
+      <ul class="hyp" id="g-hyp"></ul>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <p class="kick" style="font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)">Avant de s’en servir</p>
+    <h2>À qui appartient la réserve&nbsp;?</h2>
+    <p class="lead">Trois questions se règlent par écrit, avant le premier tour. Sans elles, une réserve commune devient vite une source de conflit.</p>
+    <ol class="gov">
+      <li><b>Propriété</b><p class="q">Quelle part revient à chaque membre&nbsp;?</p><p>Chacun sait ce qu’il a laissé. Le montant de chacun est noté et partagé avec tout le groupe.</p></li>
+      <li><b>Contrôle</b><p class="q">Qui décide et qui vérifie&nbsp;?</p><p>Qui tient les comptes, qui signe, comment on vote un usage. Les comptes sont montrés régulièrement.</p></li>
+      <li><b>Sortie</b><p class="q">Comment récupérer sa part&nbsp;?</p><p>Si un membre quitte le groupe&nbsp;: ce qu’il récupère, sous quel délai, et ce qui se passe s’il doit encore de l’argent.</p></li>
+    </ol>
+  </div>
+
+  <div class="wrap sec">
+    <h2>Ensuite, qu’en faire&nbsp;?</h2>
+    <p class="lead">Une fois les règles écrites, la réserve peut servir. Chaque usage a ses risques.</p>
+    <div class="uses">
+      <article><span class="tag">Prêter</span><h3>Financer les membres</h3><p>Le groupe prête à ses membres, à un taux connu de tous. Les intérêts restent dans la caisse.</p><p class="r">Risque&nbsp;: un prêt peut ne pas être remboursé.</p></article>
+      <article><span class="tag">Placer</span><h3>Investir en Bourse</h3><p>Une partie est placée sur la BRVM, la Bourse régionale, pour plusieurs années.</p><p class="r">Risque&nbsp;: un placement peut baisser.</p></article>
+      <article><span class="tag">Structurer</span><h3>Créer un fonds commun</h3><p>Le groupe se dote d’un cadre écrit et d’un compte dédié pour gérer son capital dans la durée.</p><p class="r">À prévoir&nbsp;: des frais et des règles plus strictes.</p></article>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <h2>Et sur la durée&nbsp;?</h2>
+    <div class="proj">
+      <div><span>Après 10 ans, à un cycle par an</span><b id="g-p10">20 millions</b><span id="g-p10l">de réserve pour votre groupe, avant intérêts et rendements.</span></div>
+      <div class="x"><span>Si 1&nbsp;000 groupes comme le vôtre font de même</span><b id="g-p1000">20 milliards</b><span>de FCFA mis en commun, de quoi financer des commerces, des logements, des entreprises.</span></div>
+    </div>
+    <p class="note" style="margin-top:14px">Exemple pédagogique&nbsp;: un cycle par an, cotisations constantes, aucun intérêt ni rendement, aucun membre qui sort. EFA fait de l’éducation financière, pas du conseil en placement.</p>
+  </div>
+</section>
+
+<section class="next">
+  <div class="wrap">
+    <h2>Et maintenant&nbsp;?</h2>
+    <div class="row">
+      <a class="btn btn-main" href="diagnostic.html?src=cercle-spirale">Faire mon diagnostic gratuit ·&nbsp;6&nbsp;min</a>
+      <a class="btn btn-line" href="index.html#guide">Recevoir le guide gratuit</a>
+      <a class="btn btn-line" href="index.html#concretement">Revoir l’exemple de la tontine</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Éducation Financière Afrique © 2026</span>
+    <span>Éducation financière, pas conseil en placement</span>
+    <a href="index.html">Accueil</a>
+    <a href="methode.html#methode">Notre méthode</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){
+  // Menu mobile
+  var b=document.getElementById('menu'), n=document.getElementById('nav');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});
+
+  var fmt=function(x){return Math.round(x).toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g,'\u00a0');};
+  var num=function(el){var v=parseInt(String(el.value).replace(/[^\d]/g,''),10);return isNaN(v)?0:v;};
+  var clamp=function(v,a,z){return Math.max(a,Math.min(z,v));};
+  var big=function(x){if(x>=1e9){var m=x/1e9;return (m%1?m.toFixed(1).replace('.',','):m)+' milliard'+(m>=2?'s':'');} if(x>=1e6){var k=x/1e6;return (k%1?k.toFixed(1).replace('.',','):k)+' million'+(k>=2?'s':'');} return fmt(x)+'\u00a0FCFA';};
+  var $=function(i){return document.getElementById(i);};
+  var LIM={'a-n':[1,60],'a-p':[0,100],'g-m':[2,100],'g-t':[1,100],'g-p':[0,100]};
+
+  // Champs monétaires : séparateurs de milliers à la saisie
+  document.querySelectorAll('.money input').forEach(function(i){
+    i.addEventListener('input',function(){var v=num(i);i.value=i.value.trim()===''?'':fmt(v);calc();});
+  });
+  document.querySelectorAll('.step input').forEach(function(i){
+    i.addEventListener('input',function(){calc();});
+    i.addEventListener('blur',function(){var l=LIM[i.id];i.value=clamp(num(i),l[0],l[1]);calc();});
+  });
+  document.querySelectorAll('.step button').forEach(function(bt){
+    bt.addEventListener('click',function(){var i=$(bt.dataset.t),l=LIM[i.id];i.value=clamp(num(i)+(+bt.dataset.d),l[0],l[1]);calc();});
+  });
+
+  var touched={a:false,g:false}, counted={a:false,g:false};
+  document.querySelectorAll('#argent input,#argent button').forEach(function(e){e.addEventListener(e.tagName==='BUTTON'?'click':'input',function(){touched.a=true;});});
+  document.querySelectorAll('#groupe input,#groupe button').forEach(function(e){e.addEventListener(e.tagName==='BUTTON'?'click':'input',function(){touched.g=true;});});
+  var tmr={};
+  function done(k,ev){ if(!touched[k]||counted[k]) return; clearTimeout(tmr[k]); tmr[k]=setTimeout(function(){counted[k]=true;efaCompte(ev);},4000); }
+
+  function calc(){
+    // Avec mon argent
+    var S=num($('a-som')), N=clamp(num($('a-n')),1,60), P=clamp(num($('a-p')),0,100), O=num($('a-obj'));
+    var okA=S>=1000; $('a-err').hidden=okA||$('a-som').value==='';
+    if(okA){
+      var k=S*P/100, tot=k*N;
+      $('a-k1').textContent=fmt(k); $('a-k2').textContent=fmt(S-k);
+      $('a-k3').textContent=fmt(tot)+'\u00a0FCFA'; $('a-k3l').textContent='mis de côté après '+N+' rentrée'+(N>1?'s':'');
+      $('a-sent').innerHTML=P===0?'À 0&nbsp;%, tout repart à chaque fois&nbsp;: <b>c’est le cercle</b>. Essayez 10&nbsp;%.':
+        (P===100?'Tout est gardé. Mais il faut bien vivre&nbsp;: une part raisonnable tient dans la durée.':'En gardant <b>'+P+'&nbsp;%</b>, il vous reste <b>'+fmt(tot)+'&nbsp;FCFA</b> au lieu de 0. C’est la spirale.');
+      var ob=$('a-obj-k');
+      if(O>0){ob.hidden=false; if(k>0){var r=Math.ceil(O/k);$('a-k4').textContent=r+' rentrée'+(r>1?'s':'');$('a-k4l').textContent='pour réunir '+fmt(O)+' FCFA en gardant '+P+'\u00a0% à chaque fois';} else {$('a-k4').textContent='Jamais';$('a-k4l').textContent='à 0 % gardé, le projet ne se rapproche pas';}}
+      else ob.hidden=true;
+      done('a','sim-individuel-fin');
+    }
+    // Avec mon groupe
+    var M=clamp(num($('g-m')),2,100), C=num($('g-c')), T=clamp(num($('g-t')),1,100), G=clamp(num($('g-p')),0,100);
+    var okG=C>=500; $('g-err').hidden=okG||$('g-c').value==='';
+    if(okG){
+      var pot=M*C, keep=pot*G/100, cyc=keep*T;
+      $('g-k1').textContent=fmt(pot); $('g-k2').textContent=fmt(pot-keep); $('g-k3').textContent=fmt(keep); $('g-k4').textContent=fmt(cyc);
+      $('g-k4l').textContent='de réserve commune après '+T+' tour'+(T>1?'s':'')+' (FCFA)';
+      $('g-why').innerHTML='Elle vient de vos propres cotisations&nbsp;: chaque bénéficiaire reçoit '+fmt(keep)+'&nbsp;FCFA de moins que la cagnotte. Ce que chacun a laissé lui appartient toujours.';
+      var per=T?cyc/M:0;
+      $('g-hyp').innerHTML='<li>'+M+' membres cotisent '+fmt(C)+' FCFA à chacun des '+T+' tours.</li><li>Le groupe garde '+G+'\u00a0% de chaque cagnotte, avant de la verser.</li><li>À la fin du cycle, la part de chaque membre dans la réserve est d’environ '+fmt(per)+' FCFA (si tous cotisent autant).</li><li>Aucun intérêt, aucun rendement, aucun défaut de paiement.</li>';
+      $('g-p10').textContent=big(cyc*10); $('g-p10l').textContent='de réserve pour votre groupe, avant intérêts et rendements.';
+      $('g-p1000').textContent=big(cyc*10*1000);
+      done('g','sim-groupe-fin');
+    }
+  }
+
+  // Onglets, pilotés par l'ancre (#argent, #projet, #groupe)
+  function show(id){
+    var g=id==='groupe';
+    $('argent').hidden=g; $('groupe').hidden=!g;
+    $('t-argent').setAttribute('aria-selected',!g); $('t-groupe').setAttribute('aria-selected',g);
+  }
+  function fromHash(scroll){
+    var h=(location.hash||'').slice(1);
+    show(h==='groupe'?'groupe':'argent');
+    if(h==='projet'){var o=$('a-obj'); setTimeout(function(){o.scrollIntoView({block:'center'});o.focus({preventScroll:true});},60);}
+    else if(scroll&&(h==='groupe'||h==='argent')) window.scrollTo({top:document.querySelector('.tabs').getBoundingClientRect().top+scrollY-80});
+  }
+  document.querySelectorAll('.tabs a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var h=a.getAttribute('href');history.replaceState(null,'',h);fromHash(false);});});
+  window.addEventListener('hashchange',function(){fromHash(true);});
+  fromHash(true); calc();
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
