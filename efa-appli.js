@@ -113,6 +113,8 @@
 })();
 
 /* ===== Bouton « Parler à Ely » — à coller à la fin de efa-appli.js ===== */
+
+/* ===== Bouton « Parler à Ely » — à coller à la fin de efa-appli.js ===== */
 (function () {
   if (/\/ely(\.html)?$/.test(location.pathname)) return;           // pas sur la page d'Ely
   function poser() {
@@ -135,3 +137,4 @@ fUHUxtdNtHH0qJLAyShmLSOTjLHNcsacU7t3O2VabVoqxoaXaya9qiyOp8mM5C12F7bpb6dcwMuY54Hh
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", poser); else poser();
 })();
+
