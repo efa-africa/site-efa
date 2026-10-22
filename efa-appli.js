@@ -1,6 +1,8 @@
 /* EFA · mention de l'appli EFA Compagnon sur le site efa.africa.
    À inclure en bas de chaque page, juste avant </body> :
      <script src="efa-appli.js" defer></script>
+   - Menu du haut : ajoute « L'appli » en dernière position.
+   - Section « Comprendre · Agir… » au-dessus du pied de page : ajoute une colonne « L'appli ».
    - Pied de page : ajoute un lien « L'appli EFA » sur toutes les pages qui l'incluent.
    - Pages d'outils et diagnostic : ajoute une carte « Suivre ma progression dans l'appli » avant le pied de page.
    - Rien ne s'affiche quand la page est ouverte depuis l'appli elle-même (dans son lecteur intégré).
@@ -14,7 +16,10 @@
     corps: "Des leçons de 5 minutes avec Koffi, votre cahier, vos challenges de 7 jours et votre progression, au même endroit. Gratuite, sans compte : vos réponses restent sur votre téléphone.",
     bouton: "Ouvrir l’appli",
     aide: "Sur Android : dans Chrome, menu ⋮ puis « Ajouter à l’écran d’accueil ».",
-    pied: "L’appli EFA"
+    pied: "L’appli EFA",
+    menu: "L’appli",
+    colonne: "L’appli",
+    liens: ["Ouvrir l’appli EFA", "Leçons de 5 minutes avec Koffi", "Suivre ma progression"]
   };
   // Pages qui reçoivent la carte (nom du fichier, sans le dossier)
   var PAGES_CARTE = ["outils.html", "diagnostic.html", "ou-est-passe-mon-argent.html", "preparer-ma-retraite.html", "preter-a-un-proche.html", "construire-son-budget.html", "budget-mobile-money.html", "cercle-spirale.html"];
@@ -40,13 +45,50 @@
 
     // 1. Lien dans le pied de page (toutes les pages), à côté des autres liens
     if (footer && !footer.querySelector(".efa-appli-pied")) {
-      var zone = footer.querySelector(".wrap") || footer;
+      var zone = footer.querySelector(".wrap, .in") || footer;
       var a = document.createElement("a");
       a.className = "efa-appli-pied";
       a.href = APP;
       a.setAttribute("data-goatcounter-click", "appli-pied");
       a.textContent = TEXTE.pied;
       zone.appendChild(a);
+    }
+
+
+    // 3. Menu du haut : « L'appli » en dernière position, dans le style des autres liens
+    var nav = document.querySelector("header nav") || document.querySelector("nav.nav") || document.getElementById("nav");
+    if (nav && !nav.querySelector('a[href="' + APP + '"]')) {
+      var liens = [].slice.call(nav.querySelectorAll("a"));
+      var modele = liens.filter(function (x) { return !/cta/.test(x.className); }).pop() || liens.pop();
+      var m = modele ? modele.cloneNode(false) : document.createElement("a");
+      m.removeAttribute("aria-current"); m.removeAttribute("id");
+      m.href = APP; m.textContent = TEXTE.menu;
+      m.setAttribute("data-goatcounter-click", "appli-menu");
+      (modele && modele.parentNode !== nav ? modele.parentNode : nav).appendChild(m);
+    }
+
+    // 4. Section de liens « Comprendre · Agir · … » (au-dessus du pied de page) : colonne « L'appli » en dernier
+    var MOTS = /^(comprendre|agir|apprendre|outils|s’informer|s'informer|ressources)$/i;
+    var titres = [].slice.call(document.querySelectorAll("h2,h3,h4,h5,h6,strong,b,p,span,dt,small,div")).filter(function (el) {
+      return el.childElementCount === 0 && MOTS.test((el.textContent || "").trim());
+    });
+    if (titres.length && !document.querySelector(".efa-appli-col")) {
+      var col = titres[0];
+      while (col.parentElement && !col.querySelector("a")) col = col.parentElement;
+      var rang = col.parentElement;
+      if (rang && rang.children.length >= 2) {
+        var dern = rang.lastElementChild, c = dern.cloneNode(true);
+        c.classList.add("efa-appli-col");
+        var t = [].slice.call(c.querySelectorAll("*")).filter(function (el) { return el.childElementCount === 0 && el.tagName !== "A" && (el.textContent || "").trim(); })[0];
+        var la = [].slice.call(c.querySelectorAll("a"));
+        if (t && la.indexOf(t) < 0) t.textContent = TEXTE.colonne;
+        var items = TEXTE.liens;
+        la.forEach(function (x, i) {
+          if (i < items.length) { x.textContent = items[i]; x.href = APP; x.removeAttribute("target"); x.setAttribute("data-goatcounter-click", "appli-colonne"); }
+          else { var li = x.closest("li"); (li && c.contains(li) ? li : x).remove(); }
+        });
+        rang.appendChild(c);
+      }
     }
 
     // 2. Carte sur les pages d'outils et de diagnostic
