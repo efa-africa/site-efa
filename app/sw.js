@@ -1,5 +1,5 @@
 /* EFA Compagnon : fonctionnement hors connexion. Changer VERSION à chaque mise en ligne. */
-var VERSION = "efa-app-0.6";
+var VERSION = "efa-app-0.6.1";
 var FICHIERS = ["./", "./index.html", "./content.js", "./manifest.webmanifest", "./confidentialite.html", "./koffi.jpg", "./bamba.jpg", "./affoue.jpg", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./fonts.css", "./big-shoulders-display-latin-600-normal.woff2", "./big-shoulders-display-latin-800-normal.woff2", "./big-shoulders-display-latin-900-normal.woff2", "./manrope-latin-400-normal.woff2", "./manrope-latin-500-normal.woff2", "./manrope-latin-600-normal.woff2", "./manrope-latin-700-normal.woff2", "./manrope-latin-800-normal.woff2"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(FICHIERS.map(function (f) { return new Request(f, { cache: "reload" }); })).catch(function () {}); }));
