@@ -253,6 +253,8 @@ details .def b{color:#fff}
 .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;max-width:1180px;text-align:left}
 .tiles.t5{grid-template-columns:repeat(5,minmax(0,1fr));max-width:1280px}
 .ask-all{margin-top:22px}
+.ask-guides{margin:18px 0 0;font-size:14px;color:#C9D1DE;text-align:center}
+.ask-guides a{color:#fff;font-weight:700}
 .tiles.t3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px}
 @media (max-width:980px){.tiles.t3{grid-template-columns:minmax(0,1fr)}.tiles.t3 .tile{aspect-ratio:auto;min-height:200px}}
 .enq-facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
@@ -708,7 +710,7 @@ img.char{object-position:50% 18%}
   <!-- 1. Votre besoin : on entre par le problème ; chaque tuile ouvre son plan d’action -->
   <section class="screen ask" id="besoins" data-step="Accueil" aria-labelledby="ask-t">
     <div class="head">
-      <p class="ask-marque"><b>EFA · Éducation Financière Afrique</b> <span>Des outils gratuits pour comprendre votre argent et agir</span></p>
+      <p class="ask-marque"><b>EFA · Éducation Financière Afrique</b> <span>Des outils gratuits pour gérer votre argent en FCFA&nbsp;: budget, épargne, tontine</span></p>
       <h1 id="ask-t">Qu’est-ce qui vous préoccupe&nbsp;?</h1>
     </div>
     <div class="tiles t5">
@@ -724,9 +726,9 @@ img.char{object-position:50% 18%}
         <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
         <span><b>Je veux mieux organiser l’aide aux proches</b><small>Mesurer, puis préparer sa réponse →</small></span>
       </a>
-      <a class="tile" href="cercle-spirale.html#groupe" data-goatcounter-click="besoin-tontine">
+      <a class="tile" href="tontine.html" data-goatcounter-click="besoin-tontine">
         <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux comprendre ma tontine</b><small>D’où vient la réserve, à qui elle appartient →</small></span>
+        <span><b>Je veux comprendre ma tontine</b><small>Comment elle marche, ce qu’elle vous apporte vraiment →</small></span>
       </a>
       <a class="tile" href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">
         <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
@@ -737,6 +739,7 @@ img.char{object-position:50% 18%}
       <label for="ask-q">Ou cherchez directement</label>
       <div><input id="ask-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Budget, tontine, retraite, prêter…"><button type="submit">Rechercher</button></div>
     </form>
+    <p class="ask-guides">Comprendre l’essentiel&nbsp;: <a href="tontine.html">la tontine</a> · <a href="epargner.html">épargner</a> · <a href="construire-son-budget.html">faire son budget en FCFA</a></p>
     <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
   </section>
 

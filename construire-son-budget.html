@@ -555,12 +555,12 @@ details.loin[open] > summary::after{content:"−"}
   V.accueil=function(){
     var reprise=S.etape>1||P().type;
     return '<section class="hero dark"><div class="col">'+
-      '<p class="over">Apprendre à agir · parcours pratique</p><h1 class="t1" style="margin-top:14px">Construire son budget</h1>'+
+      '<p class="over">Apprendre à agir · parcours pratique</p><h1 class="t1" style="margin-top:14px">Construire son budget en FCFA</h1>'+
       '<p class="accroche">50/30/20, enveloppes, base zéro, « payez-vous d’abord » : vous en entendez parler partout. Voyons ce qui marche vraiment avec nos réalités et des revenus qui changent.</p>'+
-      '<p class="lede">Une situation avec Koffi et Awa, les enjeux, les méthodes expliquées simplement, puis votre propre budget.</p>'+
+      '<p class="lede">Une situation avec Koffi et Awa, les enjeux, les méthodes expliquées simplement, puis votre propre budget en FCFA : salaire, famille, tontine, mobile money, de la Côte d’Ivoire à toute l’Afrique.</p>'+
       (reprise?'<div class="reprise"><div><b>Reprendre mon parcours</b><span>Étape '+S.etape+' sur 6</span></div><button type="button" class="btn btn-w" data-act="reprendre">Reprendre</button></div>':'')+
       '<div class="acts"><button type="button" class="btn btn-c" data-act="commencer">Commencer avec Koffi et Awa</button><button type="button" class="lien" data-act="direct">J’ai mes chiffres : faire mon budget</button></div>'+
-      '<p class="note">Six étapes courtes. Gratuit, sans inscription. Vos montants restent sur votre téléphone.</p></div></section>';
+      '<p class="note">Six étapes courtes. Gratuit, sans inscription. Vos montants restent sur votre téléphone.</p><p class="note">Pour aller plus loin : <a href="epargner.html" style="color:inherit">épargner, par où commencer</a> · <a href="tontine.html" style="color:inherit">la tontine expliquée</a></p></div></section>';
   };
   V.e1=function(){
     mesure("budget_debut");
