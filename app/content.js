@@ -448,19 +448,19 @@ window.EFA_CONTENU = {
   ],
 
   explorer: [
-    { titre: "Le site efa.africa", detail: "La plateforme d’éducation financière EFA", url: "https://efa.africa/" },
-    { titre: "Diagnostic approfondi", detail: "Six dimensions, un profil, une priorité", url: "https://efa.africa/diagnostic.html", cat: "Outils" },
-    { titre: "Où est passé mon argent ?", detail: "L’outil pour retrouver ses dépenses du mois", url: "https://efa.africa/ou-est-passe-mon-argent.html", cat: "Outils" },
-    { titre: "Mes outils", detail: "Tous les simulateurs EFA", url: "https://efa.africa/outils.html", cat: "Outils" },
-    { titre: "Le cercle et la spirale", detail: "L’idée au cœur d’EFA", url: "https://efa.africa/cercle-spirale.html", cat: "Méthode" },
-    { titre: "Études et méthode", detail: "Méthode, sources et limites", url: "https://efa.africa/methode.html#etudes", cat: "Méthode" },
-    { titre: "Guide « Construire sa stabilité financière »", detail: "Gratuit, contre quelques réponses", url: "https://forms.gle/5CsRvJYxoFArJbNa8", cat: "Guides" },
-    { titre: "Enquête « L’argent de la tontine »", detail: "Aidez-nous à documenter la tontine", url: "https://forms.gle/Sczi5p58q9ijuKqp9", cat: "Études" },
-    { titre: "EFA sur YouTube", detail: "Min’Fin, Dico et vidéos", url: "https://www.youtube.com/@efaeducationfinanciereafrique", cat: "Vidéos" },
-    { titre: "EFA sur TikTok", detail: "Le Dico, Min’Fin, Instant’Fin, La Tribune", url: "https://www.tiktok.com/@efa.afrique", cat: "Vidéos" },
-    { titre: "La plateforme éducative (Substack)", detail: "Tribunes et newsletter", url: "https://educationfinanciereafrique.substack.com", cat: "Tribunes" },
-    { titre: "EFA Community", detail: "Le groupe WhatsApp, rendez-vous le jeudi à 19 h", url: "https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a", cat: "Communauté" },
-    { titre: "À propos de l’auteur", detail: "Élysée Johnson", url: "https://efa.africa/auteur.html", cat: "Méthode" }
+    { titre: "Le site efa.africa", detail: "La plateforme d’éducation financière EFA", url: "https://efa.africa/" , mode: "app" },
+    { titre: "Diagnostic approfondi", detail: "Six dimensions, un profil, une priorité", url: "https://efa.africa/diagnostic.html", cat: "Outils" , mode: "app" },
+    { titre: "Où est passé mon argent ?", detail: "L’outil pour retrouver ses dépenses du mois", url: "https://efa.africa/ou-est-passe-mon-argent.html", cat: "Outils" , mode: "app" },
+    { titre: "Mes outils", detail: "Tous les simulateurs EFA", url: "https://efa.africa/outils.html", cat: "Outils" , mode: "app" },
+    { titre: "Le cercle et la spirale", detail: "L’idée au cœur d’EFA", url: "https://efa.africa/cercle-spirale.html", cat: "Méthode" , mode: "app" },
+    { titre: "Études et méthode", detail: "Méthode, sources et limites", url: "https://efa.africa/methode.html#etudes", cat: "Méthode" , mode: "app" },
+    { titre: "Guide « Construire sa stabilité financière »", detail: "Gratuit, contre quelques réponses", url: "https://forms.gle/5CsRvJYxoFArJbNa8", cat: "Guides" , mode: "app" },
+    { titre: "Enquête « L’argent de la tontine »", detail: "Aidez-nous à documenter la tontine", url: "https://forms.gle/Sczi5p58q9ijuKqp9", cat: "Études" , mode: "app" },
+    { titre: "EFA sur YouTube", detail: "Min’Fin, Dico et vidéos", url: "https://www.youtube.com/@efaeducationfinanciereafrique", cat: "Vidéos" , mode: "ext", appli: "YouTube" },
+    { titre: "EFA sur TikTok", detail: "Le Dico, Min’Fin, Instant’Fin, La Tribune", url: "https://www.tiktok.com/@efa.afrique", cat: "Vidéos" , mode: "ext", appli: "TikTok" },
+    { titre: "Les Tribunes d’Élysée Johnson", detail: "Une idée forte chaque samedi", url: "https://educationfinanciereafrique.substack.com", cat: "Tribunes" , mode: "tribunes" },
+    { titre: "EFA Community", detail: "Le groupe WhatsApp, rendez-vous le jeudi à 19 h", url: "https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a", cat: "Communauté" , mode: "ext", appli: "WhatsApp" },
+    { titre: "À propos de l’auteur", detail: "Élysée Johnson", url: "https://efa.africa/auteur.html", cat: "Méthode" , mode: "app" }
   ],
 
   diagnostic: {
@@ -549,3 +549,12 @@ window.EFA_CONTENU.aide = {
   p2l4: { 0: "Transport : 52 000 − 40 000. Nourriture : 110 000 − 120 000. Sorties : 0. Additionnez les trois écarts." },
   p3l3: { 0: "10 %, c’est diviser par 10." }
 };
+
+/* Les Tribunes, lues dans l'appli. Même liste que tribunes.js du site : ajouter la nouvelle EN HAUT. */
+window.EFA_CONTENU.tribunes = [
+  { n: 5, date: "2026-10-17", titre: "Avec nos téléphones, nous pouvons construire des usines", idee: "Après le paiement, le capital\u00a0: le mobile money sait rassembler des millions de petites sommes\u00a0; l’étape suivante est de les orienter vers des actifs productifs.", lien: "https://educationfinanciereafrique.substack.com/p/tribune-5-avec-nos-telephones-nous" },
+  { n: 4, date: "2026-10-03", titre: "Que construisez-vous avec tout l’argent qui passe entre vos mains\u00a0?", idee: "Ce qui passe entre nos mains n’est pas ce qui reste\u00a0: on peut gagner beaucoup, longtemps, sans bâtir de patrimoine.", lien: "https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec" },
+  { n: 3, date: "2026-09-26", titre: "Si tout le monde veut être premier, il n’y a plus de tontine", idee: "Le premier reçoit la liquidité du groupe, le dernier lui prête du temps\u00a0: chaque rang a une valeur.", lien: "https://educationfinanciereafrique.substack.com/p/tribune-3-si-tout-le-monde-veut-etre" },
+  { n: 2, date: "2026-09-19", titre: "Recevoir un million ne vous enrichit pas d’un million", idee: "Un encaissement n’est pas un enrichissement\u00a0: le même million peut donner quatre bilans différents.", lien: "https://educationfinanciereafrique.substack.com/p/tribune-2-recevoir-un-million-ne" },
+  { n: 1, date: "2026-09-12", titre: "La tontine n’est pas de l’épargne", idee: "C’est un décalage de trésorerie\u00a0: la tontine déplace l’argent dans le temps\u00a0; elle ne crée pas de capital par elle-même.", lien: "https://educationfinanciereafrique.substack.com/p/la-tontine-nest-pas-de-lepargne" }
+];
