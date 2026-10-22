@@ -1,4 +1,4 @@
-/* EFA · mention de l'appli EFA Compagnon sur le site efa.africa.
+-/* EFA · mention de l'appli EFA Compagnon sur le site efa.africa.
    À inclure en bas de chaque page, juste avant </body> :
      <script src="efa-appli.js" defer></script>
    - Menu du haut : ajoute « L'appli » en dernière position.
@@ -115,7 +115,7 @@
 /* ===== Bouton « Parler à Ely » — à coller à la fin de efa-appli.js ===== */
 
 /* ===== Bouton « Parler à Ely » — à coller à la fin de efa-appli.js ===== */
-(function () {
+;(function () {
   if (/\/ely(\.html)?$/.test(location.pathname)) return;           // pas sur la page d'Ely
   function poser() {
     if (document.getElementById("efa-ely-bouton")) return;
