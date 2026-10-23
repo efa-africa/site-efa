@@ -83,6 +83,9 @@ form{display:flex;gap:8px;align-items:flex-end;padding-block:10px 4px}
 #envoyer:disabled{opacity:.4;cursor:default}
 button:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
 .mention a{color:var(--doux);text-decoration:underline}.mention{font-size:11px;color:var(--doux);padding-block:4px 10px;text-align:center}
+.avis{display:flex;gap:6px;align-items:center;margin:6px 0 0 37px;font-size:12.5px;color:var(--doux)}
+.avis button{font:700 12.5px var(--f-texte);color:var(--texte);background:transparent;border:1px solid var(--filet);border-radius:999px;padding:3px 11px;cursor:pointer}
+.avis button[aria-pressed="true"]{background:var(--bleu);border-color:var(--bleu);color:var(--blanc)}
 .indispo{background:var(--carte);border:1px solid var(--filet);border-radius:16px;padding:14px 16px;color:var(--doux)}
 </style>
 
@@ -104,7 +107,7 @@ button:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
       <textarea id="saisie" rows="1" placeholder="Écrivez à Ely…"></textarea>
       <button id="envoyer" type="submit" aria-label="Envoyer"></button>
     </form>
-    <div class="mention">Ely est une intelligence artificielle, pas un conseiller humain. Vos messages sont transmis à un service d’IA pour produire la réponse&nbsp;: n’y indiquez ni nom, ni numéro de compte, ni code. Pédagogique, pas un conseil financier personnalisé. Réservé aux 18&nbsp;ans et plus. <a href="confidentialite.html#ely">Confidentialité</a></div>
+    <div class="mention">Ely est une intelligence artificielle, pas un conseiller humain. Pédagogique, pas un conseil financier personnalisé. Réservé aux 18&nbsp;ans et plus. <a href="confidentialite.html#ely">Comment EFA gère vos données</a></div>
   </div>
 </div>
 
@@ -138,6 +141,22 @@ const fil=document.getElementById("fil"), defile=document.getElementById("defile
 const form=document.getElementById("form"), saisie=document.getElementById("saisie"), btn=document.getElementById("envoyer");
 const ELY_API="https://ely.elysees-johnson.workers.dev";
 let tours=[], ctl=null, enCours=false, sample=true;
+function lire(k){try{return sessionStorage.getItem(k)}catch{return null}}
+function ecrire(k,v){try{sessionStorage.setItem(k,v)}catch{}}
+function nouvelId(){try{return crypto.randomUUID()}catch{return Date.now().toString(36)+Math.random().toString(36).slice(2)}}
+let SESSION=lire("efa-ely-session");if(!SESSION){SESSION=nouvelId();ecrire("efa-ely-session",SESSION)}
+const SOURCE=(new URLSearchParams(location.search).get("src")||(document.referrer?(function(){try{const h=new URL(document.referrer).hostname;return h.endsWith("efa.africa")?"site":h}catch{return "direct"}})():"direct")).slice(0,40);
+function nePasConserver(){try{return localStorage.getItem("efa-ely-nepas")==="1"}catch{return false}}
+function boutonsAvis(b,ref){
+  if(nePasConserver())return;
+  const d=document.createElement("div");d.className="avis";d.innerHTML='<span>Cette réponse vous aide ?</span><button type="button" data-v="1" aria-pressed="false">Oui</button><button type="button" data-v="-1" aria-pressed="false">Non</button>';
+  d.querySelectorAll("button").forEach(x=>x.onclick=()=>{
+    d.querySelectorAll("button").forEach(y=>y.setAttribute("aria-pressed",y===x?"true":"false"));
+    fetch(ELY_API+"/avis",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ref,avis:Number(x.dataset.v)})}).catch(()=>{});
+    d.querySelector("span").textContent="Merci.";
+  });
+  b.closest(".msg").after(d);
+}
 
 function remplirAvatar(el){
   const statut=el.querySelector(".statut");
@@ -216,10 +235,12 @@ async function envoyer(texte){
   const b=bulle("ely",'<span class="points" aria-label="Ely écrit"><i></i><i></i><i></i></span>');
   etat(true);ctl=new AbortController();
   const recents=tours.slice(-16);while(recents.length&&recents[0].role!=="user")recents.shift();
+  const ref=nouvelId();
   try{
-    const {text,truncated}=await demander(recents,ctl.signal,t=>{b.innerHTML=md(t);enBas()});
+    const {text,truncated}=await demander(recents,ctl.signal,t=>{b.innerHTML=md(t);enBas()},ref);
     b.innerHTML=md(text)+(truncated?'<div class="erreur">Réponse coupée : demandez la suite.</div>':"");
     tours.push({role:"assistant",content:text});
+    boutonsAvis(b,ref);
   }catch(e){
     const partiel=e&&e.code!=="refused"&&e.text?e.text:"";
     b.innerHTML=partiel?md(partiel):"";
@@ -230,9 +251,9 @@ async function envoyer(texte){
   }finally{etat(false);ctl=null;enBas()}
 }
 
-async function demander(messages,signal,onText){
+async function demander(messages,signal,onText,ref){
   let r;
-  try{r=await fetch(ELY_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages}),signal})}
+  try{r=await fetch(ELY_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages,session:SESSION,ref,source:SOURCE,ne_pas_conserver:nePasConserver()}),signal})}
   catch(e){throw{code:signal.aborted?"cancelled":"upstream_error"}}
   if(!r.ok){let m="";try{m=(await r.json()).erreur}catch{}throw{code:r.status===429?"rate_limited":"upstream_error",message:m}}
   const lecteur=r.body.getReader(),dec=new TextDecoder();let tampon="",texte="",coupe=false;
@@ -258,7 +279,7 @@ function ajuste(){saisie.style.height="auto";saisie.style.height=Math.min(saisie
 saisie.addEventListener("input",ajuste);
 saisie.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});
 form.addEventListener("submit",e=>{e.preventDefault();if(enCours){ctl?.abort();return}envoyer(saisie.value)});
-document.getElementById("nouveau").onclick=()=>{ctl?.abort();tours=[];accueil();saisie.focus()};
+document.getElementById("nouveau").onclick=()=>{ctl?.abort();tours=[];SESSION=nouvelId();ecrire("efa-ely-session",SESSION);accueil();saisie.focus()};
 
 etat(false);accueil();
 </script>

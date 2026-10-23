@@ -4,3 +4,4 @@ Disallow: /merci-guide.html
 Disallow: /app/equipe
 
 Sitemap: https://efa.africa/sitemap.xml
+Disallow: /tableau-ely.html
