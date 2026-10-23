@@ -248,6 +248,87 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .res a>*{min-width:0;overflow-wrap:anywhere}
 .rech-sug{min-width:0}
 .res mark{background:#FFE1D8;color:inherit;border-radius:3px;padding:0 1px}
+
+/* ---- Onglet « Mon certificat » : onglet à part, en vermillon ---- */
+.tabs a.t-cert{background:var(--corail);color:#fff;position:relative}
+.tabs a.t-cert b{color:#fff}
+.tabs a.t-cert small{color:#FFE3DA}
+.tabs a.t-cert .pil{display:inline-block;vertical-align:1px;margin-right:4px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:#fff;color:var(--corail);padding:2px 8px;border-radius:999px}
+.tabs a.t-cert[aria-selected="true"]{background:var(--corail);color:#fff}
+.tabs a.t-cert[aria-selected="true"] b{color:#fff;text-decoration-color:#fff}
+@media (min-width:900px){.tabs a.t-cert{margin-left:10px}}
+@media (max-width:640px){.tabs a.t-cert{flex:1 1 100%}}
+#certificat{display:grid;gap:34px;grid-template-columns:minmax(0,1fr)}
+.ce-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;align-items:center}
+@media (max-width:860px){.ce-hero{grid-template-columns:minmax(0,1fr)}}
+.ce-hero>div{min-width:0}.ce-ecran{width:100%;max-width:100%}
+.ce-hero h2{font-size:clamp(30px,4.4vw,46px)}
+.ce-hero .lede{margin-top:10px}
+.ce-faits{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.ce-faits span{font-size:13px;font-weight:800;padding:6px 12px;border-radius:999px;background:var(--nuit);color:#fff}
+.ce-faits span.v{background:var(--corail)}
+/* maquette de l'écran d'apprentissage */
+.ce-ecran{container-type:inline-size;aspect-ratio:297/210;background:var(--creme);border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto auto 1fr auto;box-shadow:0 18px 44px rgba(11,18,32,.22);border:1px solid var(--line)}
+.ce-b{background:var(--nuit);color:#fff;display:flex;align-items:center;gap:2.4cqw;padding:2.2cqw 3cqw}
+.ce-b .l{background:var(--corail);font-size:max(8px,1.9cqw);font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:.8cqw 1.8cqw;border-radius:999px;white-space:nowrap}
+.ce-b .t{flex:1;min-width:0;font-size:max(8px,2cqw);font-weight:700;color:#C9D1DE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ce-b .c{font-family:var(--f-display);font-weight:700;font-size:max(9px,2.6cqw)}
+.ce-p{display:grid;grid-template-columns:repeat(7,1fr);gap:.8cqw;padding:1.6cqw 3cqw 0}
+.ce-p i{height:max(3px,.9cqw);border-radius:999px;background:var(--line)}.ce-p i.f{background:var(--corail)}
+.ce-c{display:grid;grid-template-columns:38% 1fr;gap:3.4cqw;padding:3cqw 4cqw;min-height:0}
+.ce-c figure{margin:0;border-radius:2cqw;overflow:hidden;position:relative;background:var(--nuit)}
+.ce-c img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.ce-c figcaption{position:absolute;inset:auto 0 0 0;color:#fff;font-size:max(7px,1.9cqw);font-weight:700;text-align:center;padding:6cqw 2cqw 2cqw;background:linear-gradient(to top,rgba(11,18,32,.92),rgba(11,18,32,0))}
+.ce-x{display:flex;flex-direction:column;justify-content:center;gap:1.6cqw;min-width:0}
+.ce-x .s{font-size:max(7px,1.7cqw);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.ce-x .h{font-family:var(--f-display);font-weight:700;font-size:max(11px,4.2cqw);line-height:1.12;color:var(--nuit)}
+.ce-x .p{font-size:max(8px,2.3cqw);line-height:1.4;color:var(--ink2)}
+.ce-f{display:flex;align-items:center;gap:2cqw;padding:1.8cqw 3cqw;background:var(--papier);border-top:1px solid var(--line)}
+.ce-f .e{margin-right:auto;font-size:max(8px,2cqw);font-weight:700;color:var(--bleu)}
+.ce-f .k{font-size:max(8px,2cqw);font-weight:800;padding:1.1cqw 2.6cqw;border-radius:1cqw;background:var(--creme)}
+.ce-f .k.s{background:var(--corail);color:#fff}
+.ce-leg{font-size:13px;color:var(--ink2);margin-top:8px;text-align:center}
+/* modules */
+.ce-mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.ce-mod{background:var(--papier);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;gap:6px;align-content:start}
+.ce-mod .n{font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1;color:var(--corail)}
+.ce-mod h3{font-size:19px;line-height:1.18}
+.ce-mod p{font-size:15px;color:var(--ink2)}
+.ce-mod .sg{justify-self:start;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--nuit);color:#fff;padding:3px 8px;border-radius:6px}
+/* ce que le certificat valide */
+.ce-val{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.ce-val{grid-template-columns:1fr}}
+.ce-val ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.ce-val li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:16px;color:var(--ink)}
+.ce-val li::before{content:"✓";font-weight:800;color:#fff;background:var(--corail);width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-size:13px;margin-top:2px}
+.ce-pas{background:var(--nuit);color:#E8EDF5;border-radius:14px;padding:20px 22px;display:grid;gap:8px;align-content:start}
+.ce-pas h3{color:#fff;font-size:21px}
+.ce-pas p{font-size:15px;color:#C9D1DE}
+/* circuit */
+.ce-circ{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:e}
+@media (max-width:860px){.ce-circ{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.ce-circ{grid-template-columns:1fr}}
+.ce-et{background:var(--papier);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:8px;align-content:start}
+.ce-et::before{counter-increment:e;content:counter(e);font-family:var(--f-display);font-weight:700;font-size:20px;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--nuit);color:#fff}
+.ce-et:last-child::before{background:var(--corail)}
+.ce-et h3{font-size:19px;line-height:1.18}
+.ce-et p{font-size:15px;color:var(--ink2)}
+/* inscription */
+.ce-insc{background:var(--corail);color:#fff;border-radius:2px;padding:clamp(22px,4vw,36px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:860px){.ce-insc{grid-template-columns:1fr}}
+.ce-insc .kick2{color:#fff;opacity:.85}
+.ce-insc h2{color:#fff;font-size:clamp(28px,3.8vw,40px);margin-top:6px}
+.ce-insc p{color:#FFF1EC;font-size:16px;margin-top:10px}
+.ce-insc .ce-form p{margin-top:0}.ce-insc .ce-form .ce-msg{color:var(--ink)}.ce-insc .ce-form .ce-note{color:var(--ink2);font-size:13px}
+.ce-form{background:var(--papier);color:var(--ink);border-radius:14px;padding:20px;display:grid;gap:12px}
+.ce-form label{display:grid;gap:6px;font-size:14px;font-weight:700;color:var(--ink2)}
+.ce-form input[type=email],.ce-form input[type=text]{font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);min-height:48px}
+.ce-form .ok{display:grid;grid-template-columns:22px 1fr;gap:10px;font-weight:400;font-size:14px;color:var(--ink2)}
+.ce-form .ok input{width:20px;height:20px;margin-top:2px;accent-color:var(--corail)}
+.ce-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ce-msg{font-size:15px;color:var(--ink);min-height:1.2em}
+.ce-msg a{color:var(--bleu);font-weight:700}
+.ce-note{font-size:13px;color:var(--ink2)}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -278,6 +359,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
       <a href="#plan" role="tab" id="t-plan" aria-controls="plan" aria-selected="false" tabindex="-1"><b>Plan d’action</b><small>Que faire&nbsp;?</small></a>
       <a href="#cahier" role="tab" id="t-cahier" aria-controls="cahier" aria-selected="false" tabindex="-1"><b>Mon cahier</b><small>Suivre mes progrès</small></a>
       <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1"><b>Dico pratique</b><small>Les mots de l’argent</small></a>
+      <a href="#certificat" role="tab" id="t-certificat" class="t-cert" aria-controls="certificat" aria-selected="false" tabindex="-1"><b>Mon certificat</b><small><span class="pil">Pilote</span> Apprendre et le prouver</small></a>
     </div>
   </div>
 </section>
@@ -295,6 +377,84 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
     <div class="cards" id="dcards"></div>
     <div class="dnone" id="dnone" hidden><p>Aucune fiche ne correspond à votre recherche. Essayez un autre mot ou consultez toutes les fiches.</p><button type="button" class="btn btn-dark" id="dclear2">Effacer la recherche</button></div>
     <p class="note dfoot">Les définitions et résumés sont proposés par EFA. Les fiches complètes sont hébergées sur notre publication Substack. Les conditions d’accès sont précisées sur chaque fiche.</p>
+  </section>
+  <section id="certificat" role="tabpanel" aria-labelledby="t-certificat" hidden>
+    <div class="ce-hero">
+      <div>
+        <p class="kick2">Certificat EFA Fondations · Pilote gratuit</p>
+        <h2>Apprenez les bases de votre argent. Et prouvez-le.</h2>
+        <p class="lede">Huit modules courts, des cas concrets avec Koffi et Tantie Affoué, un exercice sur vos propres chiffres à chaque étape, puis un examen final. À la clé : votre Certificat EFA Fondations.</p>
+        <div class="ce-faits"><span>8 modules</span><span>10 à 15 min chacun</span><span>1 examen final</span><span class="v">Gratuit</span></div>
+      </div>
+      <div>
+        <div class="ce-ecran" aria-label="Aperçu d'un écran d'apprentissage du parcours">
+          <div class="ce-b"><span class="l">Écran d'apprentissage</span><span class="t">Module 1 · Flux et stock : où va mon argent</span><span class="c">2 / 7</span></div>
+          <div class="ce-p" aria-hidden="true"><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="ce-c">
+            <figure><img src="koffi.jpg" alt="Koffi, personnage du parcours"><figcaption>Le 24 du mois,<br>le compte de Koffi est vide</figcaption></figure>
+            <div class="ce-x"><span class="s">Le cas</span><span class="h">Un bon salaire, et rien à la fin du mois</span><span class="p">Koffi gagne 400 000 F par mois. La veille de la paie, il ne reste rien. Où est passé son argent ?</span></div>
+          </div>
+          <div class="ce-f" aria-hidden="true"><span class="e">Demander à Ely</span><span class="k">Précédent</span><span class="k s">Suivant</span></div>
+        </div>
+        <p class="ce-leg">Chaque module se suit comme un tutoriel, écran par écran.</p>
+      </div>
+    </div>
+
+    <div class="pan-h"><p class="kick2">Ce que vous allez apprendre</p><h2 class="sec" style="margin-top:4px">Huit modules, de votre mois à votre protection</h2></div>
+    <div class="ce-mods">
+      <article class="ce-mod"><span class="n">1</span><h3>Flux et stock</h3><p>Savoir ce qui passe et ce qui reste, et calculer votre patrimoine net.</p></article>
+      <article class="ce-mod"><span class="n">2</span><h3>Budget</h3><p>Décider avant que l'argent arrive, même avec un revenu irrégulier.</p></article>
+      <article class="ce-mod"><span class="n">3</span><h3>Tontine</h3><p>Comprendre ce que fait vraiment votre tontine, et décider de l'usage du tour.</p><span class="sg">Module signature</span></article>
+      <article class="ce-mod"><span class="n">4</span><h3>Épargne de précaution</h3><p>Construire une réserve pour les imprévus : combien, où, comment.</p></article>
+      <article class="ce-mod"><span class="n">5</span><h3>Famille et prêts</h3><p>Aider ses proches sans se mettre en danger : prêt ou cadeau, dit avant.</p></article>
+      <article class="ce-mod"><span class="n">6</span><h3>Dette et crédit</h3><p>Lire le vrai coût d'un crédit et repérer les signes de surendettement.</p></article>
+      <article class="ce-mod"><span class="n">7</span><h3>Mobile money</h3><p>Compter vos frais, protéger votre compte et épargner avec votre téléphone.</p></article>
+      <article class="ce-mod"><span class="n">8</span><h3>Assurance et arnaques</h3><p>Reconnaître une promesse trop belle et vérifier un acteur avant de verser.</p></article>
+    </div>
+
+    <div class="pan-h"><p class="kick2">Ce que le certificat valide</p><h2 class="sec" style="margin-top:4px">Ce que vous saurez faire</h2></div>
+    <div class="ce-val">
+      <ul>
+        <li>Faire le point sur un mois : ce qui entre, ce qui sort, ce qui reste.</li>
+        <li>Bâtir un budget qui commence par vous mettre de côté.</li>
+        <li>Savoir ce que votre tontine fait de votre argent, selon votre rang.</li>
+        <li>Constituer et garder une réserve pour les imprévus.</li>
+        <li>Aider votre famille avec un plafond, sans vous endetter.</li>
+        <li>Comparer deux crédits sur leur coût total.</li>
+        <li>Reconnaître une arnaque et vérifier qu'un acteur est autorisé.</li>
+      </ul>
+      <div class="ce-pas">
+        <p class="kick" style="margin-top:0">À savoir</p>
+        <h3>Une attestation de parcours, pas un diplôme</h3>
+        <p>Le Certificat EFA atteste que vous avez suivi les huit modules et réussi l'examen final. Il porte un numéro unique, vérifiable sur efa.africa.</p>
+        <p>EFA éduque : aucun produit, aucune banque, aucun placement ne vous est recommandé.</p>
+      </div>
+    </div>
+
+    <div class="pan-h"><p class="kick2">Le circuit complet</p><h2 class="sec" style="margin-top:4px">Quatre étapes, à votre rythme</h2></div>
+    <div class="ce-circ">
+      <article class="ce-et"><h3>Inscription</h3><p>Votre email suffit. Vous recevez votre accès au parcours.</p></article>
+      <article class="ce-et"><h3>Huit modules</h3><p>Sept écrans par module : un cas, une notion, un exemple chiffré, un exercice sur vos chiffres et un quiz de 5 questions.</p></article>
+      <article class="ce-et"><h3>Examen final</h3><p>24 questions en 30 minutes. 70 % de bonnes réponses pour réussir, avec trois tentatives.</p></article>
+      <article class="ce-et"><h3>Votre certificat</h3><p>Un certificat numéroté à votre nom, et un badge à partager sur vos réseaux et votre statut.</p></article>
+    </div>
+
+    <div class="ce-insc" id="certificat-inscription">
+      <div>
+        <p class="kick2">Version pilote</p>
+        <h2>Rejoignez le pilote du Certificat EFA</h2>
+        <p>Le pilote se déroule du 1er décembre 2026 au 31 janvier 2027. Il est gratuit. Inscrivez-vous : vous recevrez votre accès par email à l'ouverture, et vos retours aideront à construire la version publique.</p>
+      </div>
+      <form class="ce-form" id="ce-f" novalidate>
+        <label for="ce-prenom">Prénom<input id="ce-prenom" type="text" autocomplete="given-name" placeholder="Votre prénom"></label>
+        <label for="ce-email">Email<input id="ce-email" type="email" autocomplete="email" inputmode="email" required placeholder="vous@exemple.com"></label>
+        <label class="ok"><input id="ce-ok" type="checkbox"><span>J'accepte de recevoir par email mon accès et les informations du pilote. <a href="confidentialite.html">Vos données</a></span></label>
+        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn-dark" id="ce-b">M'inscrire au pilote</button>
+        <p class="ce-msg" id="ce-msg" role="status" aria-live="polite"></p>
+        <p class="ce-note">Contenus produits avec l'aide de l'intelligence artificielle, vérifiés par l'équipe EFA.</p>
+      </form>
+    </div>
   </section>
   <div class="how" id="how">
     <h2>Comment ces outils fonctionnent</h2>
@@ -645,7 +805,7 @@ var OUTILS = [
   dc.addEventListener("click",function(e){ var a=e.target.closest("a[data-fiche]"); if(a) mesure("dico-fiche-"+a.dataset.fiche); });
 
   /* ---------- Onglets et adresses : #diagnostic · #plan · #plan/sujet · #cahier · #cahier/nouveau/poste · #dico · #dico/slug ---------- */
-  var TABS=["diagnostic","plan","cahier","dico"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
+  var TABS=["diagnostic","plan","cahier","dico","certificat"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
   function montre(id){ TABS.forEach(function(k){ document.getElementById(k).hidden=k!==id; var t=document.getElementById("t-"+k); t.setAttribute("aria-selected",String(k===id)); t.tabIndex=k===id?0:-1; });
     document.getElementById("how").hidden=id!=="diagnostic"; mesure("onglet-"+id); }
   // Après un lien interne : ramener le haut de l'espace ouvert à l'écran
@@ -655,6 +815,7 @@ var OUTILS = [
     if(ANCIENS[k]) k=ANCIENS[k];
     if(k==="dico"){ montre("dico"); var m=parts[1]; if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
     if(k==="plan"){ montre("plan"); rendrePlan(parts[1]); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
+    if(k==="certificat"){ montre("certificat"); cadrer("certificat",false); return; }
     if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
     var outil=OUTILS.filter(function(o){return o.id===k;})[0];
     if(outil&&outil.famille==="agir"){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
@@ -713,6 +874,36 @@ var OUTILS = [
   window.addEventListener("storage",function(e){ if(e.key===CH.CLE&&!document.getElementById("cahier").hidden) reafficher(); });
   var b=document.getElementById("menu"), n=document.getElementById("nav");
   b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});
+})();
+</script>
+<script>
+/* ---------- Mon certificat : inscription au pilote ----------
+   CERTIF_BREVO_URL : adresse « action » du formulaire Brevo « Certificat Fondations » (Contacts › Formulaires › Partager › code HTML).
+   Formulaire « Certificat Fondations (site) », liste #5, double opt-in (modèle n° 16). Champs : EMAIL, PRENOM. Vide = rien n'est envoyé. */
+(function(){
+  var CERTIF_BREVO_URL = "https://b46b1615.sibforms.com/serve/MUIFADbkh7vxWBzo1fFQWyL1ekIc-CF0Bv-2T-mtbctqsK043XL7JVLrCVjlkTXajWCz4WROynzss187aTaZa9O6b2jsT8aNUjfIQE-AKGcBAIVNKHx1FCcVY_Es25937vr2sX5jGAvaVb-u4533imCCaku2cYh7NOsthGbMJUbj3EypZi1DaCW_9YkVWLzlHlbRJdJuI2fbd9CqSQ==";
+  var WA = "https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a";
+  var f = document.getElementById("ce-f"); if(!f) return;
+  var msg = document.getElementById("ce-msg"), b = document.getElementById("ce-b");
+  function say(h){ msg.innerHTML = h; }
+  function compte(ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
+  f.addEventListener("submit", function(e){
+    e.preventDefault();
+    var em = document.getElementById("ce-email").value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ say("Saisissez une adresse email valide."); document.getElementById("ce-email").focus(); return; }
+    if(!document.getElementById("ce-ok").checked){ say("Cochez la case pour recevoir votre accès."); return; }
+    if(f.email_address_check.value) return;
+    compte("certif-inscription");
+    if(!CERTIF_BREVO_URL){ say('Les inscriptions ouvrent très bientôt. En attendant, rejoignez <a href="'+WA+'" target="_blank" rel="noopener">EFA Community sur WhatsApp</a> : l\'ouverture y sera annoncée.'); return; }
+    var d = new FormData();
+    d.append("EMAIL", em); d.append("PRENOM", document.getElementById("ce-prenom").value.trim());
+    d.append("email_address_check", ""); d.append("locale", "fr");
+    b.disabled = true; say("Envoi en cours…");
+    fetch(CERTIF_BREVO_URL, {method:"POST", body:d, mode:"no-cors"}).then(function(){
+      f.reset(); compte("certif-inscription-envoyee");
+      say("C'est noté. Un email de confirmation arrive dans quelques minutes (regardez aussi Promotions et Spam). Confirmez-le : votre accès au pilote vous sera envoyé à l'ouverture, le 1er décembre.");
+    }).catch(function(){ say("L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez."); }).then(function(){ b.disabled = false; });
+  });
 })();
 </script>
 <script src="prevenir.js" defer></script>
