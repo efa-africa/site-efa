@@ -208,6 +208,13 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.tk-run{animation:none}}
 
 /* Rubriques : onglets explicites sur ordinateur, menu déroulant sur mobile */
+.mainnav{border-bottom:1px solid var(--line)}
+.mn-in{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:6px}
+.mn-in::-webkit-scrollbar{display:none}
+.mainnav a{flex:none;font:700 13px var(--body);text-decoration:none;color:var(--ink2);padding:7px 12px;border-radius:8px;white-space:nowrap}
+.mainnav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.mainnav a[aria-current="page"]{color:#fff;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:6px}
+.mainnav a.mn-cta{background:var(--corail);color:#fff}
 .rubs{display:flex;gap:4px;margin-left:auto}
 .rubs a{font:700 14px var(--body);text-decoration:none;color:var(--ink2);padding:9px 14px;border-radius:8px;white-space:nowrap}
 .rubs a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
@@ -338,6 +345,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <body>
 
 <header class="top" id="top">
+  <nav class="mainnav" aria-label="Navigation principale"><div class="wrap mn-in"><a href="./">Accueil</a><a class="mn-cta" href="outils.html">Mes outils et diagnostic</a><a href="methode.html#etudes" aria-current="page">Études &amp; méthode</a><a href="auteur.html">À propos</a><a href="rendez-vous.html">Rencontres &amp; contact</a></div></nav>
   <div class="wrap bar">
     <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; MÉTHODE</b></span></a>
     <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#brvm" data-tab="brvm">BRVM</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#methode" data-tab="methode">Méthode</a></nav>
@@ -598,7 +606,7 @@ function efaTickerItems(D){
   var it=[
     {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
     {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
-    {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
+    {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
     {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
     {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
     {c:'EFA',t:'Guide « Construire sa stabilité financière » : bientôt disponible',h:'./#guide'}
@@ -684,7 +692,7 @@ function tableRows(head,rows,left){left=left||1;return '<thead><tr>'+head.map(fu
 var SRC_T='Enquête EFA « L’argent de la tontine » · 12/10/2026 · non représentatif';
 var T=[
   {code:'TONT',w:'w4',theme:'fonc',title:'Réserve commune',kind:'hero',base:'participants',value:71,text:'des tontines redistribuent tout : rien n’est gardé en commun.',
-   split:[['Tout est redistribué',71,'var(--corail)'],['Autres cas',29,'#3A4A66']],share:'71 % des tontines de notre enquête redistribuent tout : rien n’est gardé en commun.'},
+   split:[['Tout est redistribué',71,'var(--corail)'],['Autres cas',29,'#3A4A66']],share:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout, rien n’est gardé en commun.'},
   {code:'DURA',w:'w8',theme:'usage',title:'Ce qui reste du dernier tour',kind:'cmp',q:'<b>Reste-t-il quelque chose de durable</b> de votre dernier tour, selon l’usage principal&nbsp;?',
    data:[['Le tour a surtout financé une activité',65,1,40],['Il a surtout payé la scolarité',33,0,15],['Il a surtout couvert les dépenses courantes',29,0,34]],
    warn:'Différence observée entre répondants, pas une preuve de cause. Petits effectifs.',share:'Quand le tour finance une activité, 65 % en gardent quelque chose de durable. Quand il couvre les dépenses courantes : 29 %.'},
@@ -1093,6 +1101,6 @@ setHH(); route();
 // ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine » (le même que dans index.html).
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
-<script src="efa-appli.js?v=2026102202" defer></script>
+<script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>

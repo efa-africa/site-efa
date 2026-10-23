@@ -422,6 +422,17 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .lk-enq{border-color:rgba(228,72,40,.5)!important}
 @media (max-width:900px){.lk3{grid-template-columns:minmax(0,1fr)}}
 /* Comprendre tout de suite (haut de page) */
+.sp-apercu{background:var(--nuit);color:#fff;padding:56px var(--gut);border-bottom:1px solid rgba(255,255,255,.08)}
+.sp-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px 32px;align-items:center}
+.sp-ic{width:72px;height:72px}
+.sp-k{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft-corail)}
+.sp-txt h2{margin:0 0 8px;font-family:var(--f-display);font-size:clamp(24px,3.2vw,32px);line-height:1.2;text-wrap:balance}
+.sp-txt p{margin:0;color:var(--muted);max-width:62ch}
+.sp-txt .sp-src{margin-top:10px;font-size:13px}
+.sp-txt .sp-src a{color:var(--soft-bleu)}
+.sp-act{display:grid;gap:12px;justify-items:center}
+.sp-lk{font-size:15px;font-weight:700;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+@media (max-width:860px){.sp-in{grid-template-columns:minmax(0,1fr)}.sp-ic{width:56px;height:56px}.sp-act{justify-items:stretch;text-align:center}.sp-act .btn{width:100%}}
 .cs-top{background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 48px) var(--gut) 64px;scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
 .cs-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px 64px;align-items:start}
 .cs-q,.cs-def{min-width:0}
@@ -782,7 +793,7 @@ img.char{object-position:50% 18%}
               <div class="cs-case"><span class="cs-bar"><i style="width:95%"></i><em style="width:5%"></em></span><p>Vous recevez 100&nbsp;000&nbsp;FCFA, utilisez 95&nbsp;000&nbsp;FCFA et conservez 5&nbsp;000&nbsp;FCFA&nbsp;: <b>vous commencez à constituer une réserve.</b></p></div>
               <div class="cs-case"><span class="cs-steps" aria-hidden="true"><i style="--h:10%"></i><i style="--h:20%"></i><i style="--h:30%"></i><i style="--h:40%"></i><i style="--h:50%"></i><i style="--h:60%"></i><i style="--h:70%"></i><i style="--h:80%"></i><i style="--h:90%"></i><i style="--h:100%"></i></span><p>Si vous pouvez renouveler cette mise de côté pendant dix rentrées, sans retrait, <b>vous aurez conservé 50&nbsp;000&nbsp;FCFA</b>, hors frais et sans supposer de rendement.</p></div>
               <p class="cs-note">EFA appelle cette accumulation progressive «&nbsp;la spirale&nbsp;». Le montant dépend de votre situation&nbsp;; 5&nbsp;% n’est pas une règle imposée.</p>
-              <a class="cs-more" href="#cercle">Essayer avec d’autres montants, l’exemple de Koffi</a>
+              <a class="cs-more" href="cercle-spirale.html#argent">Essayer avec d’autres montants, l’exemple de Koffi</a>
             </div>
           </details>
         </div>
@@ -793,31 +804,19 @@ img.char{object-position:50% 18%}
   <!-- 1. Les besoins : chacun mène vers un outil -->
 
 
-  <!-- 3. Le cercle et la spirale : le simulateur de Koffi -->
-  <section class="story" id="cercle" data-step="Étape 1 · Le cercle">
-    <div class="stage" data-c="3">
-      <canvas class="orbit" id="orbit" aria-hidden="true"></canvas>
-      <div class="chaps">
-        <div class="chap on" data-c="3"><p class="step">Le cercle et la spirale · l’exemple de Koffi</p><h2>Koffi reçoit 300&nbsp;000&nbsp;FCFA. Quelle part garde-t-il&nbsp;?</h2><p class="sub">À 0&nbsp;%, tout repart&nbsp;: c’est le cercle. Koffi garde 10&nbsp;% à chaque rentrée. Changez la part ou le montant, et voyez la différence.</p></div>
+  <!-- 3. Le cercle et la spirale : aperçu ; le simulateur principal est sur cercle-spirale.html -->
+  <section class="sp-apercu" id="apercu-spirale" data-step="Le cercle et la spirale" aria-labelledby="sp-t">
+    <div class="sp-in">
+      <svg class="sp-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/></svg>
+      <div class="sp-txt">
+        <p class="sp-k">Le simulateur · l’exemple de Koffi</p>
+        <h2 id="sp-t">Koffi reçoit 300&nbsp;000&nbsp;FCFA. Quelle part garde-t-il&nbsp;?</h2>
+        <p>Changez la part gardée et voyez ce qui reste après 12 rentrées d’argent.</p>
+        <p class="sp-src">Dans notre enquête, parmi les répondants qui participent à une tontine, 71&nbsp;% déclarent que leur tontine redistribue tout. Enquête de 251 répondants, résultats provisoires, échantillon non représentatif. <a href="methode.html#tont">La méthode</a></p>
       </div>
-      <div class="viz-space" aria-hidden="true"></div>
-      <div class="dock">
-        <p class="swipe-hint" id="ob-swipe"><span class="ar" aria-hidden="true">←</span><span class="h-l">Glissez le doigt sur la spirale pour changer la part gardée</span><span class="h-s">Glissez le doigt sur la spirale pour modifier</span><span class="ar" aria-hidden="true">→</span></p>
-        <div class="cfg" id="cfg">
-          <label class="amt" for="cfg-amount">Somme reçue <span class="amt-in"><input id="cfg-amount" inputmode="numeric" autocomplete="off" value="300 000" aria-describedby="cfg-error"><span>FCFA</span></span></label>
-          <p class="amt-err" id="cfg-error" role="alert" hidden>Indiquez un montant d’au moins 1 000 FCFA.</p>
-          <div class="nb" role="group" aria-labelledby="nb-l"><span id="nb-l">Rentrées</span><button type="button" id="nb-m" aria-label="Une rentrée de moins">−</button><input id="cfg-n" inputmode="numeric" autocomplete="off" value="12" aria-labelledby="nb-l" aria-describedby="nb-h"><button type="button" id="nb-p" aria-label="Une rentrée de plus">+</button><span class="vh" id="nb-h">Nombre de fois où la somme arrive, de 1 à 60</span></div>
-          <label class="part">Part gardée <input type="range" id="cfg-s" min="0" max="100" step="1" value="10"> <output id="cfg-o">10&nbsp;%</output></label>
-          
-        </div>
-        <div class="spec" aria-live="polite">
-          <div><b id="ob-in">300 000</b><span>Somme reçue</span></div>
-          <div><b id="ob-kp">0</b><span>Gardé à chaque fois</span></div>
-          <div class="k"><b id="ob-res">0</b><span>Mis de côté</span></div>
-        </div>
-        <p class="res" id="ob-sent"></p>
-        <p class="src" id="ob-src">Exemple en FCFA, sur <span id="ob-n">12</span> rentrées d’argent · dans notre enquête (251 répondants), 71&nbsp;% des tontines redistribuent tout</p>
-        <div class="links"><a class="lk" href="cercle-spirale.html#groupe">Avec mon groupe</a><a class="lk p" href="cercle-spirale.html#argent">Calculer avec mes chiffres&nbsp;→</a></div>
+      <div class="sp-act">
+        <a class="btn btn-main" href="cercle-spirale.html#argent" data-goatcounter-click="apercu-simulateur">Ouvrir le simulateur</a>
+        <a class="sp-lk" href="cercle-spirale.html#groupe">Avec mon groupe de tontine</a>
       </div>
     </div>
   </section>
@@ -870,7 +869,7 @@ img.char{object-position:50% 18%}
         <button class="btn btn-main" type="submit">Recevoir le guide</button>
         <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
       </form>
-      <p class="g-alt">Vous préférez ne pas laisser d’email ici&nbsp;? <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Recevez-le en répondant au questionnaire (2 min)</a></p>
+      <p class="g-alt">Vous préférez ne pas laisser d’email ici&nbsp;? <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://forms.gle/5CsRvJYxoFArJbNa8" target="_blank" rel="noopener">Recevez-le en répondant au questionnaire (2 min)</a></p>
       <p class="small">Aucun produit financier à vendre, pas de conseil en placement. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
     </div>
   </section>
@@ -956,7 +955,7 @@ function efaTickerItems(D){
     {c:'EFA',t:'Nouvel outil gratuit : Où est passé mon argent ? Cinq questions pour savoir où chercher',h:'ou-est-passe-mon-argent.html?src=bandeau'},
     {c:'EFA',t:'Mon diagnostic financier complet : six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
     {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
-    {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
+    {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
     {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
     {c:'EFA',t:'Nouvelle tribune : « Avec nos téléphones, nous pouvons construire des usines »',h:'tribunes.html'},
     {c:'EFA',t:'Nouveau parcours pratique : prêter à un proche, avec Koffi',h:'preter-a-un-proche.html?src=bandeau'},
@@ -1254,10 +1253,10 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
   });
   // Rappel : une seule fois par visite, 12 secondes, jamais au-dessus d'un formulaire, d'un simulateur ou d'un bouton de fin de section.
-  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle');
+  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle')||document.getElementById('apercu-spirale');
   if(!p||!ENQUETE_LIEN||!start) return;
   try{ if(localStorage.getItem('efa-enq-x')||sessionStorage.getItem('efa-enq-vu')) return; }catch(e){}
-  var zones=['#cercle','#guide','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
+  var zones=['#cercle','#apercu-spirale','#guide','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
   var inZone=new Set(), armed=false, done=false, timer=null;
   function hide(){p.classList.remove('on');}
   function under(){
@@ -1389,6 +1388,6 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102202" defer></script>
+<script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>
