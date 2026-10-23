@@ -339,6 +339,26 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .kick,.meta small,.sim-out small,.studies h2,.step-n{letter-spacing:.06em;font-weight:700;font-size:12px}
 .method summary .t{letter-spacing:.04em}
 .meta b,.sim-out b{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.2vw,26px);letter-spacing:0}
+
+/* Fiche de l'étude n° 1 */
+.f1{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:26px;align-items:center;background:var(--panel2);border-radius:16px;padding:22px;margin-top:18px}
+.f1-cov{position:relative;display:block;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden}
+.f1-cov img{display:block;width:100%;height:auto}
+.f1-cov span{position:absolute;left:12px;bottom:12px;background:#E44828;color:#fff;font:800 13px var(--body);padding:6px 12px;border-radius:999px}
+.f1-cov:focus-visible,.f1-a a:focus-visible,.f1-a button:focus-visible,.foot.links button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.f1-t h2{font-family:var(--disp);font-size:clamp(28px,3.4vw,40px);line-height:1.12;margin:4px 0 8px;color:var(--ink)}
+.f1-s{color:var(--ink2);margin:0 0 14px}
+.f1-k{list-style:none;padding:0;margin:0 0 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.f1-k li{background:var(--panel);border-radius:10px;padding:10px 12px;display:grid;gap:2px}
+.f1-k b{font-family:var(--disp);font-size:24px;color:var(--corail)} .f1-k span{font-size:13px;color:var(--ink2);line-height:1.3}
+.f1-a{display:flex;flex-wrap:wrap;gap:10px}
+.f1-a a,.f1-a button{font:800 15px var(--body);text-decoration:none;border:0;cursor:pointer;border-radius:999px;padding:11px 16px}
+.f1-a .p{background:#E44828;color:#fff} .f1-a .s{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.f1-src{font-size:12.5px;color:var(--mute);margin:12px 0 0}
+.foot.links{display:flex;flex-wrap:wrap;gap:6px 16px;border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
+.foot.links a,.foot.links button{color:var(--bleu);background:none;border:0;padding:0;font:700 13px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+a.st-card{text-decoration:none}
+@media (max-width:760px){.f1{grid-template-columns:minmax(0,1fr)}.f1-k{grid-template-columns:minmax(0,1fr)}}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -368,11 +388,24 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
       <div class="st-list" id="st-list"></div>
       <label class="pick st-sel">Choisir une étude<select id="st-sel"></select></label>
     </div>
+    <div class="wrap">
+      <article class="f1" id="etude-1" aria-labelledby="f1-t">
+        <button type="button" class="f1-cov" data-etude-pdf aria-label="Recevoir le rapport PDF La tontine en chiffres"><img src="etudes/tontine-en-chiffres-couverture.jpg" alt="Couverture du rapport La tontine en chiffres" width="1280" height="720" loading="lazy"><span>PDF · 42 pages</span></button>
+        <div class="f1-t">
+          <p class="kick">Étude n° 1 · Rapport régional · 23 octobre 2026</p>
+          <h2 id="f1-t">La tontine en chiffres</h2>
+          <p class="f1-s">Afrique de l’Ouest et centrale&nbsp;: l’épargne en groupe dans 19 pays, d’après le Global Findex 2025 de la Banque mondiale.</p>
+          <ul class="f1-k"><li><b>28,9&nbsp;%</b><span>des adultes épargnent en groupe</span></li><li><b>≈ 100 M</b><span>de personnes</span></li><li><b>17 / 19</b><span>pays où le groupe devance la banque</span></li></ul>
+          <div class="f1-a"><a class="p" href="etude-tontine-en-chiffres.html">Lire l’étude en ligne</a><button type="button" class="s" data-etude-pdf>Rapport PDF gratuit</button><a class="s" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener" onclick="window.efaCompte&&efaCompte('enquete-fiche-etude1')">Répondre à l’enquête</a></div>
+          <p class="f1-src">Source&nbsp;: Banque mondiale, Global Findex Database 2025 (enquête 2024). Chaque chiffre recalculé et contrôlé par EFA Études.</p>
+        </div>
+      </article>
+    </div>
     <div class="wrap intro">
       <div>
-        <p class="kick">Étude n° 1 · Enquête exploratoire</p>
+        <p class="kick">Étude n° 2 · Enquête en cours · résultats provisoires</p>
         <h1>L’argent de la tontine</h1>
-        <p>Ce que devient l’argent du tour, mesuré auprès de celles et ceux qui cotisent. Chaque écran se partage avec sa source et son nombre de répondants.</p>
+        <p>Ce que devient l’argent du tour, mesuré auprès de celles et ceux qui cotisent. L’enquête est en cours&nbsp;: ces résultats sont provisoires et seront mis à jour à 300 réponses. Chaque écran se partage avec sa source et son nombre de répondants.</p>
       </div>
       <div class="meta">
         <div><small>Répondants</small><b>251</b></div>
@@ -605,7 +638,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 function efaTickerItems(D){
   var it=[
     {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
-    {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
+    {c:'EFA',t:'Nouvelle étude : « La tontine en chiffres », 19 pays, Global Findex 2025',h:'etude-tontine-en-chiffres.html'},
+    {c:'EFA',t:'Enquête en cours : « L’argent de la tontine », 251 répondants, résultats provisoires',h:'methode.html#etudes'},
     {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
     {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
     {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
@@ -673,12 +707,13 @@ safe('barre',function(){TK=EFATicker(document.getElementById('tk'),efaTickerItem
 /* ---------- Fabrique d'écrans ---------- */
 var REG={};          // code -> {tab, el, spec}
 var codes=[];
+var ENQ_L='https://forms.gle/Sczi5p58q9ijuKqp9';
 function screen(tab,s,inner,table,foot){
   var el=document.createElement('section');
   el.className='scr '+(s.w||'');el.id=s.code.toLowerCase();el.dataset.tab=tab;
   el.innerHTML='<div class="bar-h"><span class="code">'+s.code+'</span><h2>'+s.title+'</h2><div class="acts">'+(table?'<button type="button" data-act="table" aria-expanded="false">Tableau</button>':'')+'<button type="button" data-act="share">Partager</button></div></div>'+
     '<div class="body"><div class="viz">'+inner+'</div>'+(table?'<div class="tbl" hidden><div class="tw"><table>'+table+'</table></div></div>':'')+'</div>'+
-    '<div class="foot">'+foot+'</div>';
+    '<div class="foot">'+foot+'</div>'+(tab==='etudes'?'<div class="foot links"><button type="button" data-etude-pdf>Rapport PDF « La tontine en chiffres »</button><a href="'+ENQ_L+'" target="_blank" rel="noopener">Questionnaire de l’enquête</a></div>':'');
   el._s=s; REG[s.code]={tab:tab,el:el,s:s}; codes.push(s.code);
   return el;
 }
@@ -846,13 +881,14 @@ document.querySelectorAll('.filters[data-for]').forEach(function(form){
 });
 
 /* ---------- Études : liste, sélecteur mobile, précédente / suivante ---------- */
-var STUDIES=[{id:'tontine',titre:'L’argent de la tontine',date:'12 oct. 2026',statut:'Provisoire',n:'251 répondants'}], curStudy=0;
+var STUDIES=[{id:'findex',titre:'La tontine en chiffres',date:'23 oct. 2026',statut:'Publiée · rapport PDF',n:'19 pays · Global Findex 2025',href:'etude-tontine-en-chiffres.html'},{id:'tontine',titre:'L’argent de la tontine',date:'12 oct. 2026',statut:'Provisoire · enquête en cours',n:'251 répondants'}], curStudy=1;
 safe('études',function(){
   var list=document.getElementById('st-list'), sel=document.getElementById('st-sel');
   document.getElementById('st-count').textContent=STUDIES.length+(STUDIES.length>1?' études publiées':' étude publiée');
-  list.innerHTML=STUDIES.map(function(s,i){return '<button type="button" class="st-card" data-i="'+i+'" aria-current="'+(i===curStudy)+'"><b>'+s.titre+'</b><span>'+s.date+' · '+s.n+'</span><em>'+s.statut+'</em></button>';}).join('');
-  sel.innerHTML=STUDIES.map(function(s,i){return '<option value="'+i+'">'+s.titre+' · '+s.date+'</option>';}).join('');
-  document.getElementById('st-nav').hidden=STUDIES.length<2;
+  list.innerHTML=STUDIES.map(function(s,i){var c='<b>'+s.titre+'</b><span>'+s.date+' · '+s.n+'</span><em>'+s.statut+'</em>';return s.href?'<a class="st-card" href="'+s.href+'">'+c+'</a>':'<button type="button" class="st-card" data-i="'+i+'" aria-current="'+(i===curStudy)+'">'+c+'</button>';}).join('');
+  sel.innerHTML=STUDIES.map(function(s,i){return '<option value="'+i+'"'+(i===curStudy?' selected':'')+'>'+s.titre+' · '+s.date+'</option>';}).join('');
+  sel.addEventListener('change',function(){var t=STUDIES[+sel.value];if(t&&t.href)location.href=t.href;});
+  document.getElementById('st-nav').hidden=true;
 });
 
 /* ---------- Rubriques ---------- */
@@ -1101,6 +1137,7 @@ setHH(); route();
 // ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine » (le même que dans index.html).
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
+<script src="etude-pdf.js?v=2026102301" defer></script>
 <script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>
