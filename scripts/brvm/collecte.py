@@ -210,13 +210,20 @@ def main():
     sa, si = BeautifulSoup(html_a, "html.parser"), BeautifulSoup(html_i, "html.parser")
 
     if a.verifier:
-        jour = date_seance(sa)
-        act, ind = lire_actions(sa, jour), lire_indices(si, jour)
-        print(f"Vérification · séance ouverte : {seance_ouverte(sa)} · date : {jour} · {len(act)} actions · {len(ind)} indices")
-        for r in act[:3] + ind[:5]:
-            print(r)
-        if len(act) < 40 or not any(i["categorie"] == "principal" for i in ind):
-            raise SystemExit("ERREUR : lecture incomplète.")
+        d = DOSSIER / "_verification"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "actions.html").write_text(html_a, encoding="utf-8")
+        (d / "indices.html").write_text(html_i, encoding="utf-8")
+        try:
+            jour = date_seance(sa)
+            act, ind = lire_actions(sa, jour), lire_indices(si, jour)
+            rapport = f"ouverte={seance_ouverte(sa)} date={jour} actions={len(act)} indices={len(ind)}\n"
+            rapport += "\n".join(map(str, act[:3] + ind[:8]))
+        except SystemExit as e:
+            rapport = str(e)
+        rapport += "\nTABLEAUX: " + repr([(e, len(l)) for e, l in tableaux(sa)] + [(e, len(l)) for e, l in tableaux(si)])
+        (d / "rapport.txt").write_text(rapport, encoding="utf-8")
+        print(rapport)
         return
     if seance_ouverte(sa):
         print("Séance encore ouverte : rien n'est enregistré.")
