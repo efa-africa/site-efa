@@ -6,13 +6,13 @@
 <link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
-<title>Rencontres &amp; contact · EFA</title>
-<meta name="description" content="Les rendez-vous d’EFA chaque semaine : la lettre du mardi, EFA Community le jeudi, l’enquête tontine. Et un formulaire pour nous écrire.">
+<title>Organisations &amp; contact · EFA</title>
+<meta name="description" content="Organisations &amp; contact : les programmes d’éducation financière EFA pour les organisations, les études sur commande, les rendez-vous de la semaine et un formulaire pour nous écrire.">
 <link rel="canonical" href="https://efa.africa/rendez-vous.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="EFA · Rencontres &amp; contact">
+<meta property="og:title" content="EFA · Organisations &amp; contact">
 <meta property="og:description" content="La lettre du mardi, EFA Community le jeudi, l’enquête tontine, et un formulaire pour nous écrire.">
 <meta property="og:url" content="https://efa.africa/rendez-vous.html">
 <meta property="og:image" content="https://efa.africa/og-image.png">
@@ -660,7 +660,8 @@ img.char{object-position:50% 18%}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 
-/* Page Rencontres & contact */
+/* Page Organisations & contact */
+#lien{padding-top:40px}
 .rv{padding-top:calc(var(--hh,64px) + var(--tkh,0px))}
 .rv .liens{border-top:0;padding-top:clamp(40px,7vw,72px)}
 .rv .lien-h h1{margin:10px 0 0;font-family:var(--f-display);font-weight:700;line-height:1.12;font-size:clamp(33px,4.6vw,55px);text-wrap:balance}
@@ -675,7 +676,7 @@ img.char{object-position:50% 18%}
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a class="nav-cta" href="outils.html">Mes outils et diagnostic</a>
     <a href="methode.html#etudes">Études &amp; actualité</a>
-    <a href="rendez-vous.html" aria-current="page">Rencontres &amp; contact</a>
+    <a href="rendez-vous.html" aria-current="page">Organisations &amp; contact</a>
     <a href="auteur.html">À propos</a>
   </nav>
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -683,10 +684,22 @@ img.char{object-position:50% 18%}
 <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
 
 <main class="rv" id="rendez-vous">
+  <!-- Organisations & contact : programmes et études pour les organisations, puis nous écrire -->
+  <section class="liens" id="organisations" aria-labelledby="org-t">
+    <div class="in">
+      <div class="lien-h"><p class="kick">Organisations &amp; contact</p><h1 id="org-t">Travaillons ensemble</h1><p class="lede">Entreprises, coopératives, fondations, écoles&nbsp;: EFA conçoit des programmes d’éducation financière pour votre public et mène des études sur commande. Particuliers, partenaires, presse&nbsp;: écrivez-nous.</p></div>
+      <div class="lk3">
+        <article><p class="lk-k">Pour les organisations</p><h3>Un programme pour votre public</h3><p>Diagnostic pédagogique, modules, supports d’animation et bilan agrégé, sans jamais transmettre de réponse individuelle.</p><a class="lk-a" href="organisations.html" data-goatcounter-click="oc-programmes">Voir les programmes</a></article>
+        <article><p class="lk-k">Sur commande</p><h3>Une étude sur votre question</h3><p>Usage de la tontine, solidarité familiale, revenus irréguliers&nbsp;: une enquête, sa méthode et ses limites publiées.</p><a class="lk-a" href="rendez-vous.html?sujet=etude#contact" data-goatcounter-click="oc-etude">Parler d’une étude</a></article>
+        <article><p class="lk-k">Nous écrire</p><h3>Une question, un partenariat, la presse</h3><p>Le formulaire est en bas de cette page. Nous répondons sous quelques jours.</p><a class="lk-a" href="#contact" data-goatcounter-click="oc-contact">Écrire à EFA</a></article>
+      </div>
+    </div>
+  </section>
+
   <!-- 4. Rester en lien : la lettre du mardi, EFA Community, l'enquête -->
   <section class="liens" id="lien" aria-labelledby="lien-t">
     <div class="in">
-      <div class="lien-h"><p class="kick">Rester en lien</p><h1 id="lien-t">Chaque semaine, un rendez-vous</h1><p class="lede">Trois façons de garder le fil avec EFA, et un formulaire pour nous écrire directement. Vous représentez une organisation&nbsp;? <a href="organisations.html" style="color:#fff">Découvrez les programmes EFA</a>.</p></div>
+      <div class="lien-h"><p class="kick">Rester en lien</p><h2 id="lien-t">Chaque semaine, un rendez-vous</h2><p class="lede">Trois façons de garder le fil avec EFA, et un formulaire pour nous écrire directement.</p></div>
       <div class="lk3">
         <article><p class="lk-k">Le mardi</p><h3>«&nbsp;L’argent de la semaine&nbsp;»</h3><p>Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture, par email.</p><a class="lk-a" href="./#guide" data-goatcounter-click="lien-lettre">Recevoir la lettre</a></article>
         <article><p class="lk-k">Le jeudi à 19&nbsp;h</p><h3>EFA Community</h3><p>Échanger sur l’argent, la tontine et les projets, avec la communauté, sur WhatsApp.</p><a class="lk-a" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="lien-community">Rejoindre la communauté</a></article>
@@ -760,7 +773,7 @@ img.char{object-position:50% 18%}
           <li><a href="auteur.html#auteur">L’auteur</a></li>
           <li><a href="auteur.html#publications">Publications</a></li>
           <li><a href="organisations.html">Pour les organisations</a></li>
-          <li><a href="rendez-vous.html">Rencontres &amp; contact</a></li>
+          <li><a href="rendez-vous.html">Organisations &amp; contact</a></li>
         </ul></div>
         <div><h2>Suivre EFA</h2><ul>
           <li><a href="index.html#guide">La lettre du mardi</a></li>
