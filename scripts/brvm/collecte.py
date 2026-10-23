@@ -200,6 +200,7 @@ def main():
     p.add_argument("--fichiers", nargs=2, metavar=("ACTIONS", "INDICES"),
                    help="pages déjà enregistrées (tests), au lieu de brvm.org")
     p.add_argument("--sans-site", action="store_true", help="ne pas toucher à donnees.js")
+    p.add_argument("--verifier", action="store_true", help="lire et contrôler sans rien écrire (même séance ouverte)")
     a = p.parse_args()
 
     if a.fichiers:
@@ -208,6 +209,13 @@ def main():
         html_a, html_i = telecharger(URL_ACTIONS), telecharger(URL_INDICES)
     sa, si = BeautifulSoup(html_a, "html.parser"), BeautifulSoup(html_i, "html.parser")
 
+    if a.verifier:
+        jour = date_seance(sa)
+        act, ind = lire_actions(sa, jour), lire_indices(si, jour)
+        print(f"Vérification · séance ouverte : {seance_ouverte(sa)} · date : {jour} · {len(act)} actions · {len(ind)} indices")
+        for r in act[:3] + ind[:5]:
+            print(r)
+        return
     if seance_ouverte(sa):
         print("Séance encore ouverte : rien n'est enregistré.")
         return

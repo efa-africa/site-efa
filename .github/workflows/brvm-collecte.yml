@@ -7,6 +7,11 @@ on:
     - cron: "37 18 * * 1-5"
     - cron: "37 21 * * 1-5"
   workflow_dispatch:
+    inputs:
+      verifier:
+        description: "Vérifier la lecture sans rien enregistrer"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -25,7 +30,7 @@ jobs:
           python-version: "3.12"
       - run: pip install requests beautifulsoup4
       - name: Relever la séance
-        run: python scripts/brvm/collecte.py
+        run: python scripts/brvm/collecte.py ${{ inputs.verifier && '--verifier' || '' }}
       - name: Enregistrer dans le dépôt
         run: |
           git config user.name "EFA robot BRVM"
