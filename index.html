@@ -6,8 +6,9 @@
 <link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
-<title>Éducation Financière Afrique</title>
-<meta name="description" content="EFA, Éducation Financière Afrique : apprendre à gérer son argent avec les réalités d’ici — salaire, famille, tontine, mobile money. L’argent s’apprend.">
+<title>Éducation financière en Afrique : apprendre à gérer son argent · EFA</title>
+<meta name="description" content="Éducation Financière Afrique (EFA) : budget en FCFA, épargne, tontine, mobile money, famille. Des outils gratuits et des leçons pour gérer son argent avec les réalités d’ici, de la Côte d’Ivoire à toute l’Afrique.">
+<link rel="canonical" href="https://efa.africa/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:locale" content="fr_FR">
@@ -252,6 +253,8 @@ details .def b{color:#fff}
 .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;max-width:1180px;text-align:left}
 .tiles.t5{grid-template-columns:repeat(5,minmax(0,1fr));max-width:1280px}
 .ask-all{margin-top:22px}
+.ask-guides{margin:18px 0 0;font-size:14px;color:#C9D1DE;text-align:center}
+.ask-guides a{color:#fff;font-weight:700}
 .tiles.t3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px}
 @media (max-width:980px){.tiles.t3{grid-template-columns:minmax(0,1fr)}.tiles.t3 .tile{aspect-ratio:auto;min-height:200px}}
 .enq-facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
@@ -419,6 +422,17 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .lk-enq{border-color:rgba(228,72,40,.5)!important}
 @media (max-width:900px){.lk3{grid-template-columns:minmax(0,1fr)}}
 /* Comprendre tout de suite (haut de page) */
+.sp-apercu{background:var(--nuit);color:#fff;padding:56px var(--gut);border-bottom:1px solid rgba(255,255,255,.08)}
+.sp-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px 32px;align-items:center}
+.sp-ic{width:72px;height:72px}
+.sp-k{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft-corail)}
+.sp-txt h2{margin:0 0 8px;font-family:var(--f-display);font-size:clamp(24px,3.2vw,32px);line-height:1.2;text-wrap:balance}
+.sp-txt p{margin:0;color:var(--muted);max-width:62ch}
+.sp-txt .sp-src{margin-top:10px;font-size:13px}
+.sp-txt .sp-src a{color:var(--soft-bleu)}
+.sp-act{display:grid;gap:12px;justify-items:center}
+.sp-lk{font-size:15px;font-weight:700;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+@media (max-width:860px){.sp-in{grid-template-columns:minmax(0,1fr)}.sp-ic{width:56px;height:56px}.sp-act{justify-items:stretch;text-align:center}.sp-act .btn{width:100%}}
 .cs-top{background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 48px) var(--gut) 64px;scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
 .cs-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px 64px;align-items:start}
 .cs-q,.cs-def{min-width:0}
@@ -673,8 +687,37 @@ img.char{object-position:50% 18%}
 .ask-rech input{flex:1;min-width:0;border:0;background:none;padding:0 12px;font:500 16px var(--f-body);color:var(--nuit);min-height:46px}
 .ask-rech input:focus{outline:none}.ask-rech div:focus-within{outline:3px solid var(--soft-bleu);outline-offset:2px}
 .ask-rech button{border:0;border-radius:9px;background:var(--corail);color:#fff;font:700 15px var(--f-body);padding:0 16px;min-height:46px;cursor:pointer}
+
+/* Accueil · situations : le message d'abord, la photo en appui (option 1, 23 oct. 2026) */
+.tiles.sit{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1180px;gap:14px}
+.stile{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;text-decoration:none;background:var(--c);color:var(--t);transition:transform .2s}
+.stile:hover{transform:translateY(-3px)}
+.stile:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.stile .bd{order:2;display:flex;flex-direction:column;gap:8px;padding:16px;flex:1}
+.stile .ph{order:1;display:block;height:clamp(64px,8vw,104px);overflow:hidden;background:#0B1220}
+.stile .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.stile .k{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.stile b{font-family:var(--f-body);font-weight:800;font-size:clamp(19px,1.7vw,22px);line-height:1.2}
+.stile .why{font-size:14.5px;line-height:1.4}
+.stile .cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--bb);color:var(--bt);font-weight:800;font-size:14.5px;padding:11px 14px;border-radius:10px}
+.stile .cta i{font-style:normal;transition:transform .2s}.stile:hover .cta i{transform:translateX(3px)}
+.stile.s1{--c:#E44828;--t:#fff;--bb:#fff;--bt:#0B1220}
+.stile.s2{--c:#2453C2;--t:#fff;--bb:#fff;--bt:#1B3E94}
+.stile.s3{--c:#143B63;--t:#fff;--bb:#5FD3EC;--bt:#0B1220}
+.stile.s4{--c:#4BC8E0;--t:#0B1220;--bb:#0B1220;--bt:#fff}
+.ask-more{width:100%;max-width:1180px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 18px;margin:0;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;color:#C9D1DE}
+.ask-more a{color:#6DB8F2;font-weight:800;text-decoration:none}
+.ask-more > a{color:#F0603F}
+@media (max-width:980px){.tiles.sit{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stile .bd{padding:12px;gap:6px}.stile b{font-size:clamp(16px,4.4vw,19px)}.stile .k{letter-spacing:.08em;font-size:10.5px}.stile .why{font-size:13px}.stile .cta{font-size:13px;padding:10px 11px}.stile .ph{height:58px}}
+@media (max-width:339px){.stile .why{display:none}}
 </style>
 <link rel="stylesheet" href="footer.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://efa.africa/#organisation","name":"Éducation Financière Afrique","alternateName":["EFA","EFA Africa","efa.africa"],"url":"https://efa.africa/","logo":"https://efa.africa/logo-efa.png","slogan":"L’argent s’apprend.","description":"Plateforme d’éducation financière en Afrique : budget, épargne, tontine, mobile money.","founder":{"@type":"Person","@id":"https://efa.africa/auteur.html#elysee","name":"Élysée Johnson","url":"https://efa.africa/auteur.html"},"areaServed":[{"@type":"Place","name":"Afrique"},{"@type":"Country","name":"Côte d’Ivoire"}],"knowsAbout":["éducation financière","budget","épargne","tontine","mobile money","finance africaine","FCFA"],"sameAs":["https://www.tiktok.com/@efa.afrique","https://www.youtube.com/@efaeducationfinanciereafrique","https://substack.com/@educationfinanciereafrique","https://www.facebook.com/4061594083128437"]},
+{"@type":"WebSite","@id":"https://efa.africa/#site","url":"https://efa.africa/","name":"Éducation Financière Afrique","alternateName":"EFA","inLanguage":"fr","publisher":{"@id":"https://efa.africa/#organisation"}}
+]}
+</script>
 </head>
 <body>
 
@@ -701,36 +744,33 @@ img.char{object-position:50% 18%}
   <!-- 1. Votre besoin : on entre par le problème ; chaque tuile ouvre son plan d’action -->
   <section class="screen ask" id="besoins" data-step="Accueil" aria-labelledby="ask-t">
     <div class="head">
-      <p class="ask-marque"><b>EFA · Éducation Financière Afrique</b> <span>Des outils gratuits pour comprendre votre argent et agir</span></p>
+      <p class="ask-marque"><b>EFA · Éducation Financière Afrique</b> <span>Des outils gratuits pour gérer votre argent en FCFA&nbsp;: budget, épargne, tontine</span></p>
       <h1 id="ask-t">Qu’est-ce qui vous préoccupe&nbsp;?</h1>
     </div>
-    <div class="tiles t5">
-      <a class="tile" href="outils.html?src=besoin#plan/ou-passe-mon-argent" data-goatcounter-click="besoin-budget">
-        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je ne sais pas où passe mon argent</b><small>Diagnostic, méthode et défi de la semaine →</small></span>
+    <div class="tiles t4 sit">
+      <a class="stile s1" href="outils.html?src=besoin#plan/ou-passe-mon-argent" data-goatcounter-click="besoin-budget">
+        <span class="bd"><span class="k">01 · Faire le point</span><b>Je ne sais pas où passe mon argent</b><span class="why">Un diagnostic en 5 questions, la méthode et le défi de la semaine.</span><span class="cta">Identifier mes pistes<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
-      <a class="tile" href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">
-        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
-        <span><b>Je vais recevoir une grosse somme</b><small>Prévoir sa répartition avant qu’elle arrive →</small></span>
+      <a class="stile s2" href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">
+        <span class="bd"><span class="k">02 · Anticiper</span><b>Je vais recevoir une grosse somme</b><span class="why">Décider de sa répartition avant qu’elle arrive&nbsp;: dépenser, garder, investir.</span><span class="cta">Préparer sa répartition<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'"></span>
       </a>
-      <a class="tile" href="outils.html?src=besoin#plan/proches" data-goatcounter-click="besoin-proches">
-        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux mieux organiser l’aide aux proches</b><small>Mesurer, puis préparer sa réponse →</small></span>
+      <a class="stile s3" href="outils.html?src=besoin#plan/proches" data-goatcounter-click="besoin-proches">
+        <span class="bd"><span class="k">03 · Organiser</span><b>Je veux mieux aider mes proches</b><span class="why">Mesurer ce que vous donnez, puis fixer une enveloppe qui tient.</span><span class="cta">Organiser mon aide<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
-      <a class="tile" href="cercle-spirale.html#groupe" data-goatcounter-click="besoin-tontine">
-        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux comprendre ma tontine</b><small>D’où vient la réserve, à qui elle appartient →</small></span>
-      </a>
-      <a class="tile" href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">
-        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux préparer ma retraite</b><small>Six questions pour faire le point →</small></span>
+      <a class="stile s4" href="tontine.html" data-goatcounter-click="besoin-tontine">
+        <span class="bd"><span class="k">04 · Comprendre</span><b>Je veux comprendre ma tontine</b><span class="why">Comment elle marche et ce qu’elle vous apporte vraiment.</span><span class="cta">Découvrir la méthode<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
     </div>
+    <p class="ask-more"><span>Autre question&nbsp;? <a href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">Préparer ma retraite →</a></span><a href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Voir tous les outils →</a></p>
     <form class="ask-rech" action="outils.html" method="get" role="search">
       <label for="ask-q">Ou cherchez directement</label>
       <div><input id="ask-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Budget, tontine, retraite, prêter…"><button type="submit">Rechercher</button></div>
     </form>
-    <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
+    <p class="ask-guides">Comprendre l’essentiel&nbsp;: <a href="tontine.html">la tontine</a> · <a href="epargner.html">épargner</a> · <a href="construire-son-budget.html">faire son budget en FCFA</a></p>
   </section>
 
   <!-- 0. EFA | Éducation Financière Afrique : globe en rotation en arrière-plan (globe.js), image fixe pendant le chargement -->
@@ -772,7 +812,7 @@ img.char{object-position:50% 18%}
               <div class="cs-case"><span class="cs-bar"><i style="width:95%"></i><em style="width:5%"></em></span><p>Vous recevez 100&nbsp;000&nbsp;FCFA, utilisez 95&nbsp;000&nbsp;FCFA et conservez 5&nbsp;000&nbsp;FCFA&nbsp;: <b>vous commencez à constituer une réserve.</b></p></div>
               <div class="cs-case"><span class="cs-steps" aria-hidden="true"><i style="--h:10%"></i><i style="--h:20%"></i><i style="--h:30%"></i><i style="--h:40%"></i><i style="--h:50%"></i><i style="--h:60%"></i><i style="--h:70%"></i><i style="--h:80%"></i><i style="--h:90%"></i><i style="--h:100%"></i></span><p>Si vous pouvez renouveler cette mise de côté pendant dix rentrées, sans retrait, <b>vous aurez conservé 50&nbsp;000&nbsp;FCFA</b>, hors frais et sans supposer de rendement.</p></div>
               <p class="cs-note">EFA appelle cette accumulation progressive «&nbsp;la spirale&nbsp;». Le montant dépend de votre situation&nbsp;; 5&nbsp;% n’est pas une règle imposée.</p>
-              <a class="cs-more" href="#cercle">Essayer avec d’autres montants, l’exemple de Koffi</a>
+              <a class="cs-more" href="cercle-spirale.html#argent">Essayer avec d’autres montants, l’exemple de Koffi</a>
             </div>
           </details>
         </div>
@@ -783,31 +823,19 @@ img.char{object-position:50% 18%}
   <!-- 1. Les besoins : chacun mène vers un outil -->
 
 
-  <!-- 3. Le cercle et la spirale : le simulateur de Koffi -->
-  <section class="story" id="cercle" data-step="Étape 1 · Le cercle">
-    <div class="stage" data-c="3">
-      <canvas class="orbit" id="orbit" aria-hidden="true"></canvas>
-      <div class="chaps">
-        <div class="chap on" data-c="3"><p class="step">Le cercle et la spirale · l’exemple de Koffi</p><h2>Koffi reçoit 300&nbsp;000&nbsp;FCFA. Quelle part garde-t-il&nbsp;?</h2><p class="sub">À 0&nbsp;%, tout repart&nbsp;: c’est le cercle. Koffi garde 10&nbsp;% à chaque rentrée. Changez la part ou le montant, et voyez la différence.</p></div>
+  <!-- 3. Le cercle et la spirale : aperçu ; le simulateur principal est sur cercle-spirale.html -->
+  <section class="sp-apercu" id="apercu-spirale" data-step="Le cercle et la spirale" aria-labelledby="sp-t">
+    <div class="sp-in">
+      <svg class="sp-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/></svg>
+      <div class="sp-txt">
+        <p class="sp-k">Le simulateur · l’exemple de Koffi</p>
+        <h2 id="sp-t">Koffi reçoit 300&nbsp;000&nbsp;FCFA. Quelle part garde-t-il&nbsp;?</h2>
+        <p>Changez la part gardée et voyez ce qui reste après 12 rentrées d’argent.</p>
+        <p class="sp-src">Dans notre enquête, parmi les répondants qui participent à une tontine, 71&nbsp;% déclarent que leur tontine redistribue tout. Enquête de 251 répondants, résultats provisoires, échantillon non représentatif. <a href="methode.html#tont">La méthode</a></p>
       </div>
-      <div class="viz-space" aria-hidden="true"></div>
-      <div class="dock">
-        <p class="swipe-hint" id="ob-swipe"><span class="ar" aria-hidden="true">←</span><span class="h-l">Glissez le doigt sur la spirale pour changer la part gardée</span><span class="h-s">Glissez le doigt sur la spirale pour modifier</span><span class="ar" aria-hidden="true">→</span></p>
-        <div class="cfg" id="cfg">
-          <label class="amt" for="cfg-amount">Somme reçue <span class="amt-in"><input id="cfg-amount" inputmode="numeric" autocomplete="off" value="300 000" aria-describedby="cfg-error"><span>FCFA</span></span></label>
-          <p class="amt-err" id="cfg-error" role="alert" hidden>Indiquez un montant d’au moins 1 000 FCFA.</p>
-          <div class="nb" role="group" aria-labelledby="nb-l"><span id="nb-l">Rentrées</span><button type="button" id="nb-m" aria-label="Une rentrée de moins">−</button><input id="cfg-n" inputmode="numeric" autocomplete="off" value="12" aria-labelledby="nb-l" aria-describedby="nb-h"><button type="button" id="nb-p" aria-label="Une rentrée de plus">+</button><span class="vh" id="nb-h">Nombre de fois où la somme arrive, de 1 à 60</span></div>
-          <label class="part">Part gardée <input type="range" id="cfg-s" min="0" max="100" step="1" value="10"> <output id="cfg-o">10&nbsp;%</output></label>
-          
-        </div>
-        <div class="spec" aria-live="polite">
-          <div><b id="ob-in">300 000</b><span>Somme reçue</span></div>
-          <div><b id="ob-kp">0</b><span>Gardé à chaque fois</span></div>
-          <div class="k"><b id="ob-res">0</b><span>Mis de côté</span></div>
-        </div>
-        <p class="res" id="ob-sent"></p>
-        <p class="src" id="ob-src">Exemple en FCFA, sur <span id="ob-n">12</span> rentrées d’argent · dans notre enquête (251 répondants), 71&nbsp;% des tontines redistribuent tout</p>
-        <div class="links"><a class="lk" href="cercle-spirale.html#groupe">Avec mon groupe</a><a class="lk p" href="cercle-spirale.html#argent">Calculer avec mes chiffres&nbsp;→</a></div>
+      <div class="sp-act">
+        <a class="btn btn-main" href="cercle-spirale.html#argent" data-goatcounter-click="apercu-simulateur">Ouvrir le simulateur</a>
+        <a class="sp-lk" href="cercle-spirale.html#groupe">Avec mon groupe de tontine</a>
       </div>
     </div>
   </section>
@@ -860,7 +888,7 @@ img.char{object-position:50% 18%}
         <button class="btn btn-main" type="submit">Recevoir le guide</button>
         <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
       </form>
-      <p class="g-alt">Vous préférez ne pas laisser d’email ici&nbsp;? <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">Recevez-le en répondant au questionnaire (2 min)</a></p>
+      <p class="g-alt">Vous préférez ne pas laisser d’email ici&nbsp;? <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://forms.gle/5CsRvJYxoFArJbNa8" target="_blank" rel="noopener">Recevez-le en répondant au questionnaire (2 min)</a></p>
       <p class="small">Aucun produit financier à vendre, pas de conseil en placement. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
     </div>
   </section>
@@ -892,9 +920,12 @@ img.char{object-position:50% 18%}
           <li><a href="cercle-spirale.html">Cercle &amp; Spirale</a></li>
         </ul></div>
         <div><h2>Comprendre</h2><ul>
+          <li><a href="tontine.html">La tontine</a></li>
+          <li><a href="epargner.html">Épargner</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="construire-son-budget.html">Faire son budget</a></li>
           <li><a href="methode.html#etudes">Études</a></li>
           <li><a href="methode.html#simulateurs">Simulateurs</a></li>
-          <li><a href="methode.html#actualites">EFA News</a></li>
           <li><a href="methode.html#brvm">BRVM</a></li>
           <li><a href="methode.html#methode">Notre méthode</a></li>
           <li><a href="tribunes.html">Les tribunes</a></li>
@@ -943,12 +974,13 @@ function efaTickerItems(D){
     {c:'EFA',t:'Nouvel outil gratuit : Où est passé mon argent ? Cinq questions pour savoir où chercher',h:'ou-est-passe-mon-argent.html?src=bandeau'},
     {c:'EFA',t:'Mon diagnostic financier complet : six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
     {c:'EFA',t:'Dernière étude : « L’argent de la tontine », 251 répondants, 12 oct. 2026',h:'methode.html#etudes'},
-    {c:'EFA',t:'71 % des tontines de notre enquête redistribuent tout',h:'methode.html#tont'},
+    {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
     {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
     {c:'EFA',t:'Nouvelle tribune : « Avec nos téléphones, nous pouvons construire des usines »',h:'tribunes.html'},
     {c:'EFA',t:'Nouveau parcours pratique : prêter à un proche, avec Koffi',h:'preter-a-un-proche.html?src=bandeau'},
     {c:'EFA',t:'Nouveau : votre plan d’action et votre cahier, pour suivre vos défis semaine après semaine',h:'outils.html?src=bandeau#plan'},
     {c:'EFA',t:'Nouvel outil : préparer ma retraite, six questions pour faire le point',h:'preparer-ma-retraite.html?src=bandeau'},
+    {c:'EFA',t:'Nouvelle étude : « La tontine en chiffres », 19 pays, Global Findex 2025',h:'etude-tontine-en-chiffres.html'},
     {c:'EFA',t:'Guide gratuit « Construire sa stabilité financière » : disponible',h:'./#guide'},
     {c:'EFA',t:'Le livre « Le Cercle et la Spirale » : en cours d’écriture',h:'auteur.html#publications'}
   ];
@@ -1241,10 +1273,10 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
   });
   // Rappel : une seule fois par visite, 12 secondes, jamais au-dessus d'un formulaire, d'un simulateur ou d'un bouton de fin de section.
-  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle');
+  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle')||document.getElementById('apercu-spirale');
   if(!p||!ENQUETE_LIEN||!start) return;
   try{ if(localStorage.getItem('efa-enq-x')||sessionStorage.getItem('efa-enq-vu')) return; }catch(e){}
-  var zones=['#cercle','#guide','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
+  var zones=['#cercle','#apercu-spirale','#guide','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
   var inZone=new Set(), armed=false, done=false, timer=null;
   function hide(){p.classList.remove('on');}
   function under(){
@@ -1376,5 +1408,6 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>

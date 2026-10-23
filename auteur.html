@@ -19,7 +19,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": "Person","@id":"https://efa.africa/auteur.html#elysee",
   "name": "Élysée Johnson",
   "url": "https://efa.africa/auteur.html",
   "image": "https://efa.africa/elysee-portrait.jpg",
@@ -244,6 +244,19 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--amber);color:#1A1205;font:700 13px var(--mono);padding:10px 14px;border-radius:6px;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+/* Études */
+.et{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:start}
+.et article{background:var(--panel2);border-radius:16px;padding:20px;display:grid;gap:10px}
+.et h3{font-family:var(--disp);font-size:clamp(24px,2.6vw,30px);line-height:1.15;margin:0;color:var(--ink)}
+.et p{margin:0;color:var(--ink2)}
+.et-cov{position:relative;display:block;padding:0;border:0;background:none;cursor:pointer;border-radius:10px;overflow:hidden}
+.et-cov img{display:block;width:100%;height:auto}
+.et-cov span{position:absolute;left:12px;bottom:12px;background:#E44828;color:#fff;font:800 13px var(--body);padding:6px 12px;border-radius:999px}
+.et-cov:focus-visible,.et-b:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.et-b{font:700 14px var(--body);padding:10px 16px;border-radius:999px;border:1px solid var(--creme);background:var(--creme);color:var(--nuit);cursor:pointer}
+.et-prov{color:var(--amber)!important;font-weight:700}
+@media (max-width:820px){.et{grid-template-columns:minmax(0,1fr)}}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -268,7 +281,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       <div class="ptabs" role="tablist" aria-label="À propos">
         <a href="#efa" role="tab" id="t-efa" aria-controls="efa" aria-selected="true"><b>EFA</b><small>Ce que nous faisons</small></a>
         <a href="#auteur" role="tab" id="t-auteur" aria-controls="auteur" aria-selected="false"><b>L’auteur</b><small>Élysée Johnson</small></a>
-        <a href="#publications" role="tab" id="t-publications" aria-controls="publications" aria-selected="false"><b>Publications</b><small>Livre, tribunes, guides</small></a>
+        <a href="#publications" role="tab" id="t-publications" aria-controls="publications" aria-selected="false"><b>Publications</b><small>Études, livre, tribunes, guides</small></a>
         <a href="#convictions" role="tab" id="t-convictions" aria-controls="convictions" aria-selected="false"><b>Convictions</b><small>Le cercle et la spirale</small></a>
       </div>
     </div>
@@ -391,7 +404,28 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   </div>
 
   <div class="panel" id="publications" role="tabpanel" aria-labelledby="t-publications" hidden>
-  <section class="band first" id="pub-livre" aria-labelledby="t-livre">
+  <section class="band first" id="pub-etudes" aria-labelledby="t-etudes">
+    <div class="wrap">
+      <div class="head"><div><p class="kick">EFA Études</p><h2 id="t-etudes">Les études</h2></div><p>Des données publiques recalculées et contrôlées, et l’enquête menée auprès de la communauté EFA. Le rapport complet se télécharge gratuitement.</p></div>
+      <div class="et">
+        <article class="et-1">
+          <button type="button" class="et-cov" data-etude-pdf aria-label="Recevoir le rapport PDF La tontine en chiffres"><img src="etudes/tontine-en-chiffres-couverture.jpg" alt="Couverture du rapport La tontine en chiffres" width="1280" height="720" loading="lazy"><span>Rapport PDF · 42 pages · gratuit</span></button>
+          <p class="kick">Étude n° 1 · Rapport régional · 23 octobre 2026</p>
+          <h3>La tontine en chiffres</h3>
+          <p>Afrique de l’Ouest et centrale&nbsp;: l’épargne en groupe dans 19 pays, d’après le Global Findex 2025 de la Banque mondiale. 28,9&nbsp;% des adultes, environ 100 millions de personnes, épargnent en groupe&nbsp;: plus qu’à la banque dans 17 pays sur 19.</p>
+          <div class="jump"><button type="button" class="et-b main" data-etude-pdf>Recevoir le rapport PDF</button><a href="etude-tontine-en-chiffres.html">Lire en ligne</a><a href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener">Répondre à l’enquête</a></div>
+        </article>
+        <article class="et-2">
+          <p class="kick">Étude n° 2 · Enquête en cours</p>
+          <h3>L’argent de la tontine</h3>
+          <p class="et-prov">Résultats provisoires · 251 répondants au 12 octobre 2026</p>
+          <p>Ce que devient l’argent du tour&nbsp;: à quoi il sert, ce qui en reste un an après, comment les groupes s’organisent. Les résultats seront mis à jour à 300 réponses.</p>
+          <div class="jump"><a class="main" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener">Répondre au questionnaire</a><a href="methode.html#etudes">Voir les résultats provisoires</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="band alt" id="pub-livre" aria-labelledby="t-livre">
     <div class="wrap lv">
       <div class="lv-c"><img src="livre-couverture.jpg" alt="Couverture du livre Le Cercle et la Spirale, d’Élysée Johnson" loading="lazy" onerror="this.parentNode.classList.add('no-img');this.remove()"><span class="lv-f" aria-hidden="true"><b>Le Cercle et la Spirale</b><i>Élysée Johnson</i></span></div>
       <div class="lv-t">
@@ -403,20 +437,20 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       </div>
     </div>
   </section>
-  <section class="band alt" id="pub-tribunes" aria-labelledby="t-trib">
+  <section class="band" id="pub-tribunes" aria-labelledby="t-trib">
     <div class="wrap">
       <div class="head"><div><p class="kick">La Tribune · chaque semaine</p><h2 id="t-trib">Les tribunes</h2></div><p>Une idée par semaine sur l’argent tel qu’il circule chez nous.</p></div>
       <ol class="trib" id="trib"></ol>
       <div class="jump" style="margin-top:20px"><a class="main" href="tribunes.html">Toutes les tribunes</a><a href="https://educationfinanciereafrique.substack.com/subscribe" target="_blank" rel="noopener">S’abonner sur Substack</a></div>
     </div>
   </section>
-  <section class="band" id="pub-guides" aria-labelledby="t-guides">
+  <section class="band alt" id="pub-guides" aria-labelledby="t-guides">
     <div class="wrap">
       <div class="head"><div><p class="kick">La collection EFA</p><h2 id="t-guides">Les guides pratiques</h2></div><p>Gratuits, concrets, avec vos propres chiffres. Un nouveau guide paraît au fur et à mesure.</p></div>
       <div class="shelf" id="shelf"></div>
     </div>
   </section>
-  <section class="band alt" id="pub-lecons" aria-labelledby="t-lecons">
+  <section class="band" id="pub-lecons" aria-labelledby="t-lecons">
     <div class="wrap">
       <div class="head"><div><p class="kick">Deux minutes</p><h2 id="t-lecons">Les leçons</h2></div><p>Un mot, une situation, une idée. Gratuit, sans inscription.</p></div>
       <div class="lec">
@@ -516,9 +550,12 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
           <li><a href="cercle-spirale.html">Cercle &amp; Spirale</a></li>
         </ul></div>
         <div><h2>Comprendre</h2><ul>
+          <li><a href="tontine.html">La tontine</a></li>
+          <li><a href="epargner.html">Épargner</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="construire-son-budget.html">Faire son budget</a></li>
           <li><a href="methode.html#etudes">Études</a></li>
           <li><a href="methode.html#simulateurs">Simulateurs</a></li>
-          <li><a href="methode.html#actualites">EFA News</a></li>
           <li><a href="methode.html#brvm">BRVM</a></li>
           <li><a href="methode.html#methode">Notre méthode</a></li>
           <li><a href="tribunes.html">Les tribunes</a></li>
@@ -623,5 +660,7 @@ show('courte');
 
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="etude-pdf.js?v=2026102301" defer></script>
+<script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>
