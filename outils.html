@@ -443,7 +443,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
       <div>
         <p class="kick2">Version pilote</p>
         <h2>Rejoignez le pilote du Certificat EFA</h2>
-        <p>Le pilote se déroule du 1er décembre 2026 au 31 janvier 2027. Il est gratuit. Inscrivez-vous : vous recevrez votre accès par email à l'ouverture, et vos retours aideront à construire la version publique.</p>
+        <p>Le pilote est ouvert jusqu'au 30 novembre 2026. Il est gratuit. Inscrivez-vous : votre accès vous est envoyé par email dès la confirmation de votre adresse, et vos retours aideront à construire la version publique.</p>
       </div>
       <form class="ce-form" id="ce-f" novalidate>
         <label for="ce-prenom">Prénom<input id="ce-prenom" type="text" autocomplete="given-name" placeholder="Votre prénom"></label>
@@ -901,7 +901,7 @@ var OUTILS = [
     b.disabled = true; say("Envoi en cours…");
     fetch(CERTIF_BREVO_URL, {method:"POST", body:d, mode:"no-cors"}).then(function(){
       f.reset(); compte("certif-inscription-envoyee");
-      say("C'est noté. Un email de confirmation arrive dans quelques minutes (regardez aussi Promotions et Spam). Confirmez-le : votre accès au pilote vous sera envoyé à l'ouverture, le 1er décembre.");
+      say("C'est noté. Un email de confirmation arrive dans quelques minutes (regardez aussi Promotions et Spam). Confirmez-le : votre accès au pilote vous est envoyé juste après.");
     }).catch(function(){ say("L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez."); }).then(function(){ b.disabled = false; });
   });
 })();
