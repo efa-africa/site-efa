@@ -1,7 +1,7 @@
 -/* EFA · mention de l'appli EFA Compagnon sur le site efa.africa.
    À inclure en bas de chaque page, juste avant </body> :
      <script src="efa-appli.js" defer></script>
-   - Menu du haut : ajoute « L'appli » en dernière position.
+   - Menu du haut : plus de lien « L'appli » (retiré le 23/10/2026).
    - Section « Comprendre · Agir… » au-dessus du pied de page : ajoute une colonne « L'appli ».
    - Pied de page : ajoute un lien « L'appli EFA » sur toutes les pages qui l'incluent.
    - Pages d'outils et diagnostic : ajoute une carte « Suivre ma progression dans l'appli » avant le pied de page.
@@ -55,8 +55,8 @@
     }
 
 
-    // 3. Menu du haut : « L'appli » en dernière position, dans le style des autres liens
-    var nav = document.querySelector("header nav") || document.querySelector("nav.nav") || document.getElementById("nav");
+    // 3. Menu du haut : « L'appli » retiré du menu le 23/10/2026 (décision d'Élysée). L'appli reste accessible par le pied de page.
+    var nav = null;
     if (nav && !nav.querySelector('a[href="' + APP + '"]')) {
       var liens = [].slice.call(nav.querySelectorAll("a"));
       var modele = liens.filter(function (x) { return !/cta/.test(x.className); }).pop() || liens.pop();

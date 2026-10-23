@@ -38,7 +38,55 @@
     poches: { titre: "Séparer les poches", dispo: false, resume: "Mon argent, celui de mon activité, celui qu’on m’a confié : les distinguer avant de compter." },
     proches: { titre: "Aider, prêter ou contribuer", dispo: false, resume: "Donner un nom à chaque somme envoyée aux proches, pour savoir ce qui reviendra et ce qui ne reviendra pas." },
     engagements: { titre: "Les engagements", dispo: false, resume: "La tontine, les dettes et les retenues sur salaire : ce qui part avant même que vous ne choisissiez." },
-    exceptions: { titre: "Les exceptions", dispo: false, resume: "Imprévus, cérémonies, argent déplacé : les isoler pour ne pas fausser le reste." }
+    exceptions: { titre: "Les exceptions", dispo: false, resume: "Imprévus, cérémonies, argent déplacé : les isoler pour ne pas fausser le reste." },
+    "bourse-pret": {
+      titre: "Suis-je prêt à investir ?", dispo: true,
+      resume: "Quatre vérifications avant de placer le moindre franc en Bourse.",
+      etapes: [
+        ["Une réserve de sécurité d’abord", "Environ trois mois de dépenses essentielles, mis de côté en dehors de la Bourse. Sans elle, le premier imprévu vous obligerait à vendre, peut-être à perte."],
+        ["Pas de dette chère en cours", "Rembourser un crédit à 20 % rapporte plus sûrement qu’une action. Soldez d’abord les dettes les plus chères."],
+        ["Un argent qui peut attendre cinq ans", "Un cours peut baisser longtemps. N’investissez en actions que ce dont vous n’aurez pas besoin avant cinq ans au moins."],
+        ["Savoir expliquer ce que l’on achète", "Une action ou une obligation, ce que fait l’entreprise, et ce qui peut faire baisser son prix. Si vous ne savez pas l’expliquer en une phrase, attendez."]
+      ]
+    },
+    "bourse-10": {
+      titre: "10 choses à savoir avant d’investir en Bourse", dispo: true,
+      resume: "Ce qu’est une action, une obligation, un dividende, et pourquoi les frais, la liquidité et les promesses comptent.",
+      etapes: [
+        ["Une Bourse est d’abord un marché d’occasion", "Vous achetez le plus souvent à un autre investisseur, pas à l’entreprise. Le prix se fixe entre acheteurs et vendeurs, séance après séance."],
+        ["Une action fait de vous un copropriétaire", "Vous partagez la réussite et les difficultés de l’entreprise. Propriétaire, pas créancier : rien ne vous est dû."],
+        ["Une obligation, c’est un prêt", "Vous prêtez à un État ou à une entreprise, pour une durée et à un taux connus d’avance. La BRVM cote des actions et des obligations."],
+        ["On gagne de deux façons, sans garantie", "Le dividende, si l’assemblée générale le vote, et la plus-value, si vous revendez plus cher. Un dividende récompense l’année passée, il ne promet rien pour la suivante."],
+        ["Un cours peut baisser longtemps", "La Bourse se juge sur des années, pas sur une séance."],
+        ["On passe par un intermédiaire agréé", "À la BRVM, une SGI agréée par l’AMF-UMOA passe vos ordres et conserve vos titres. Pas d’agrément, pas d’argent."],
+        ["Les frais mangent les petits ordres", "Avec 1,2 % de courtage à l’achat et à la vente, 50 000 FCFA coûtent environ 1 200 FCFA aller-retour : il faut une hausse d’environ 2,4 % pour rentrer dans ses frais."],
+        ["Certains titres s’échangent peu", "C’est la liquidité. Préférez l’ordre à cours limité : vous fixez le prix maximum que vous acceptez de payer."],
+        ["Ne pas tout mettre sur une seule société", "Répartir sur plusieurs sociétés et secteurs limite le choc. Avec un petit budget, un fonds commun de placement (FCP) le fait pour vous."],
+        ["Un rendement garanti, c’est un signal d’alarme", "« Doublez votre argent en trois mois » est la marque des arnaques. Plus la promesse est belle, plus il faut vérifier l’agrément."]
+      ],
+      cas: "Awa a 300 000 FCFA de côté et une collègue lui conseille « l’action qui a pris 30 % ». Avant d’acheter, elle vérifie : sa réserve de trois mois est faite, elle n’a pas de crédit, cet argent peut attendre. Elle lit les comptes de la société : le bénéfice baisse. Elle choisit de commencer avec 100 000 FCFA dans un fonds commun de placement, et note dans son cahier pourquoi."
+    },
+    "bourse-ordre": {
+      titre: "Six étapes jusqu’au premier ordre", dispo: true,
+      resume: "Choisir sa SGI, ouvrir un compte-titres, l’alimenter, passer un ordre à cours limité, puis suivre sans s’affoler.",
+      etapes: [
+        ["Choisir une SGI agréée", "Vérifiez l’agrément sur amf-umoa.org. Comparez le courtage, les frais de tenue de compte et de retrait, et le dépôt minimum, qui va de zéro à plus de 150 000 FCFA selon les SGI."],
+        ["Ouvrir un compte-titres", "Pièce d’identité, justificatif de domicile, formulaire et questionnaire de profil. Certaines SGI le font en ligne."],
+        ["Alimenter le compte", "Par virement, et chez certaines SGI par mobile money. Sur un petit montant, les frais pèsent plus lourd."],
+        ["Passer un ordre à cours limité", "Le titre, la quantité et le prix maximum. Sur un titre peu échangé, l’ordre peut prendre plusieurs jours."],
+        ["Tenir un cahier", "Pour chaque achat : la date, le prix, les frais et la raison de votre choix, en une phrase."],
+        ["Suivre sans réagir à chaque séance", "Les dividendes arrivent après un impôt retenu à la source. Lisez les comptes de vos sociétés deux fois par an."]
+      ]
+    },
+    "bourse-seance": {
+      titre: "Lire une séance de la BRVM", dispo: true,
+      resume: "L’indice, la variation avec le volume, et jamais une séance seule. Puis les chiffres du jour.",
+      etapes: [
+        ["L’indice d’abord", "Le BRVM Composite résume l’évolution de toutes les actions cotées à la Bourse régionale d’Abidjan, commune aux huit pays de l’UEMOA. Il dit l’humeur du marché, pas celle de votre société."],
+        ["La variation, avec le volume", "Une hausse de 7 % sur quelques dizaines de titres échangés n’a pas le même sens qu’une hausse sur des milliers."],
+        ["Jamais une séance seule", "Comparez sur plusieurs mois, et rapportez toujours le cours à ce que l’entreprise gagne. Les chiffres de la dernière séance sont dans l’onglet BRVM d’Études & actualité (methode.html#brvm)."]
+      ]
+    }
   };
 
   var DEFIS = {
@@ -69,6 +117,10 @@
      intro: "L’argent rentre, et à la fin du mois il n’en reste rien, sans savoir vraiment pourquoi. On commence par repérer où chercher, puis on observe un poste pendant une semaine.",
      diagnostic: {titre: "Où est passé mon argent ?", url: "ou-est-passe-mon-argent.html?src=plan", texte: "Cinq questions, sans relevé, pour savoir où chercher en premier."},
      modules: ["traces", "poches", "engagements", "exceptions"], defis: ["poste-7j", "plafond-7j"], parcours: ["mm", "budget"], poste: ""},
+    {slug: "investir-brvm", titre: "Je veux investir à la BRVM",
+     intro: "Acheter des actions à la Bourse d’Abidjan commence avant la Bourse : une réserve de sécurité, pas de dette chère, de l’argent qui peut attendre. Puis dix choses à comprendre avant le premier ordre.",
+     diagnostic: {titre: "Mon diagnostic financier complet", url: "diagnostic.html?src=brvm", texte: "Pour vérifier que votre réserve et vos dettes permettent d’investir."},
+     modules: ["bourse-pret", "bourse-10", "bourse-ordre", "bourse-seance"], defis: [], parcours: ["brvm"], poste: ""},
     {slug: "proches", titre: "Les demandes de mes proches désorganisent mon budget",
      intro: "Une aide ici, un prêt là, une cérémonie : chaque demande se comprend, mais leur total déborde. On mesure d’abord, puis on prépare sa réponse.",
      diagnostic: {titre: "Où est passé mon argent ?", url: "ou-est-passe-mon-argent.html?src=plan", texte: "Pour voir si les aides font partie des sommes difficiles à retrouver."},
@@ -81,10 +133,6 @@
      intro: "Un budget qui tienne compte des obligations sociales et des revenus qui changent d’un mois à l’autre. Une semaine d’observation d’abord : on construit mieux sur des chiffres vus.",
      diagnostic: {titre: "Mon diagnostic financier complet", url: "diagnostic.html?src=plan", texte: "Six dimensions pour savoir où porter l’effort."},
      modules: ["traces"], defis: ["poste-7j"], parcours: ["budget"], poste: ""},
-    {slug: "investir-brvm", titre: "Je veux investir à la BRVM",
-     intro: "Acheter des actions à la Bourse d’Abidjan commence avant la Bourse : une réserve de sécurité, pas de dette chère, de l’argent qui peut attendre. Puis dix choses à comprendre avant le premier ordre.",
-     diagnostic: {titre: "Mon diagnostic financier complet", url: "diagnostic.html?src=brvm", texte: "Pour vérifier que votre réserve et vos dettes permettent d’investir."},
-     modules: [], defis: [], parcours: ["brvm"], poste: ""},
     {slug: "grosse-somme", titre: "Je vais recevoir une grosse somme",
      intro: "Le tour de tontine, une prime, un rappel : une grosse rentrée se dépense vite si sa répartition n’est pas prévue avant qu’elle arrive.",
      diagnostic: null,

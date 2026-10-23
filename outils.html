@@ -379,6 +379,12 @@ var OUTILS = [
    infos:"Vos réponses à 19 questions et 4 questions de profil. Aucun montant pour la première étape.",
    version_methode:"1.0", bouton:"Faire mon diagnostic",
    note:"« Complet » désigne le parcours EFA proposé : ce n’est pas un audit exhaustif de votre patrimoine ou de votre solvabilité."},
+  {id:"premiers-pas-brvm", famille:"agir", titre:"Premiers pas à la BRVM", theme:"Parcours d’apprentissage · Nouveau", url:"premiers-pas-brvm.html?src=outils",
+   benefice:"10 choses à savoir avant d’investir en Bourse, suis-je prêt, six étapes jusqu’au premier ordre, puis lire une séance de la BRVM.",
+   effort:"Quatre leçons, 20 minutes. Dix fiches et un quiz.",
+   objectif:"Comprendre ce que vous achetez avant votre premier ordre à la Bourse régionale d’Abidjan.",
+   acces:"Gratuit, sans inscription.", prix:0, devise:"XOF", infos:"Rien : la leçon 2 vous demande seulement de cocher ce qui est vrai pour vous.",
+   version_methode:"1.0", bouton:"Faire mes premiers pas", principal:true},
   {id:"preter-a-un-proche", famille:"agir", titre:"Prêter à un proche", theme:"Parcours pratique", url:"preter-a-un-proche.html",
    benefice:"Une situation avec Koffi, les enjeux et une méthode, puis votre propre réponse, prête à envoyer.",
    effort:"Six étapes courtes. Aucun montant obligatoire.",
@@ -456,7 +462,7 @@ var OUTILS = [
       ?'<li><h3>Vos pistes</h3><p class="sous">Trouvées par votre diagnostic du '+esc(dateCourte(c.pistes.date))+'.</p><div class="corps"><div class="pistes-p">'+mes.map(function(p){var m=E.PISTES[p.id], M=E.MODULES[m.module]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a"><b>Maintenant&nbsp;:</b> '+esc(p.action)+'</span>'+(M?'<span class="a"><b>Méthode&nbsp;:</b> '+esc(M.titre)+(M.dispo?'':' (bientôt)')+'</span>':'')+'</article>';}).join("")+'</div><a class="lnk" href="'+esc(s.diagnostic.url)+'">Refaire le diagnostic</a></div></li>'
       :'<li><h3>Faire le point</h3><p class="sous">'+esc(s.diagnostic.texte)+' Facultatif&nbsp;: si vous savez déjà ce qui coince, passez à la suite.</p><div class="corps"><a class="btn btn-dark" href="'+esc(s.diagnostic.url)+'" style="justify-self:start">'+esc(s.diagnostic.titre)+'</a></div></li>'):'';
     var mods=s.modules.map(function(k,i){return vueModule(k,i===0&&E.MODULES[k].dispo);}).join("");
-    var t2=mods?'<li><h3>Comprendre la méthode</h3><p class="sous">Lisez la méthode avant de vous exercer. Les autres arrivent au fil des tests.</p><div class="corps">'+mods+'</div></li>':'';
+    var t2=mods?'<li><h3>Comprendre la méthode</h3><p class="sous">'+(s.modules.every(function(k){return E.MODULES[k].dispo;})?'Quatre méthodes courtes, dans l’ordre. La première est ouverte.':'Lisez la méthode avant de vous exercer. Les autres arrivent au fil des tests.')+'</p><div class="corps">'+mods+'</div></li>':'';
     var posteDefi=s.poste, p1=mes[0]&&E.PISTES[mes[0].id]; if(p1&&p1.poste) posteDefi=p1.poste;
     var t3=s.defis.length?'<li><h3>S’exercer : le défi de la semaine</h3><p class="sous">Le défi se suit dans votre cahier, semaine après semaine. Vos montants restent sur votre téléphone.</p><div class="corps">'+s.defis.map(function(k,i){var D=E.DEFIS[k]; return '<div class="defi"><span class="d">Semaine '+(i+1)+' · '+esc(D.duree)+'</span><b>'+esc(D.titre)+'</b><p class="small">'+esc(D.resume)+'</p></div>';}).join("")+boutonDefi(posteDefi)+'</div></li>':'';
     var t4=(s.parcours.length||s.bientot)?'<li><h3>Aller plus loin</h3><p class="sous">Des parcours pratiques, étape par étape, avec un cas puis votre situation.</p><div class="corps">'+(s.parcours.length?'<div class="prc">'+s.parcours.map(function(k){var P=E.PARCOURS[k];return '<a href="'+esc(P.url)+'">'+esc(P.titre)+'</a>';}).join("")+'</div>':'')+(s.bientot?'<p class="small">'+esc(s.bientot)+'</p>':'')+'</div></li>':'';
@@ -663,6 +669,7 @@ var OUTILS = [
 
   /* ---------- Recherche : outils, plans d'action, méthodes, parcours, fiches du Dico ---------- */
   var MOTS={
+    "premiers-pas-brvm":"brvm bourse action actions investir placement sgi dividende obligation fcp abidjan cours séance",
     "ou-est-passe-mon-argent":"dépenses fin du mois argent disparu où passe suivi traces espèces petits achats mobile money relevé historique budget",
     "preparer-ma-retraite":"retraite pension caisse cnps cgrae vieillesse vieux jours avenir long terme terrain maison épargne",
     "diagnostic":"bilan santé financière évaluation score profil test questionnaire point complet",
@@ -675,7 +682,6 @@ var OUTILS = [
   OUTILS.forEach(function(o){ INDEX.push({type:o.famille==="agir"?"Parcours pratique":"Diagnostic",titre:o.titre,desc:o.benefice,mots:MOTS[o.id]||"",url:o.url}); });
   E.SUJETS.forEach(function(s){ INDEX.push({type:"Plan d’action",titre:s.titre,desc:s.intro,mots:MSUJ[s.slug]||"",url:"#plan/"+s.slug}); });
   Object.keys(E.MODULES).forEach(function(k){ var M=E.MODULES[k]; if(!M.dispo) return; var s=E.SUJETS.filter(function(x){return x.modules.indexOf(k)>=0;})[0]; INDEX.push({type:"Méthode",titre:M.titre,desc:M.resume,mots:(M.etapes||[]).map(function(e){return e[0]+" "+e[1];}).join(" "),url:"#plan/"+(s?s.slug:"")}); });
-  INDEX.push({type:"Parcours d’apprentissage",titre:"Premiers pas à la BRVM",desc:"10 choses à savoir avant d’investir en Bourse, suis-je prêt, six étapes jusqu’au premier ordre, lire une séance.",mots:"brvm bourse action actions investir placement sgi dividende obligation fcp abidjan cours",url:"premiers-pas-brvm.html?src=recherche"});
   INDEX.push({type:"Mon cahier",titre:"Défi : sept jours sur un poste",desc:E.DEFIS["poste-7j"].resume,mots:"défi cahier suivre noter plafond semaine poste transport repas crédit",url:"#cahier/nouveau"});
   FICHES.forEach(function(f){ INDEX.push({type:"Dico pratique",titre:f.titre,desc:f.definition_courte,mots:(f.mots_cles||[]).join(" ")+" "+f.notion,url:"#dico/"+f.slug}); });
   INDEX.forEach(function(x){ x.nt=norm(x.titre); x.nm=norm(x.mots); x.nd=norm(x.desc); });
