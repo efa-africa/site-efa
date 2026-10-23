@@ -354,7 +354,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
   </div>
 </footer>
 <script src="dico.js"></script>
-<script src="plan-efa.js"></script>
+<script src="plan-efa.js?v=2026102302"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -670,11 +670,12 @@ var OUTILS = [
     "construire-son-budget":"budget 50/30/20 70/20/10 80/20 enveloppes base zéro revenus irréguliers salaire dépenses épargne méthode mois",
     "budget-mobile-money":"mobile money momo wallet portefeuille transfert envoi retrait frais petites sommes téléphone",
     "cercle-spirale":"tontine cotisation épargne groupe tour cagnotte simulateur part gardée réserve cercle spirale"};
-  var MSUJ={"ou-passe-mon-argent":"dépenses fin du mois argent disparu traces suivi défi poste tontine dettes","proches":"famille aide prêt prêter demande cérémonies solidarité dons","mobile-money":"mobile money momo frais transfert portefeuille","budget":"budget méthode salaire épargne","grosse-somme":"tontine cagnotte prime rappel gros montant répartition rentrée","retraite":"retraite pension vieillesse"};
+  var MSUJ={"investir-brvm":"brvm bourse action actions investir placement sgi dividende obligation fcp","ou-passe-mon-argent":"dépenses fin du mois argent disparu traces suivi défi poste tontine dettes","proches":"famille aide prêt prêter demande cérémonies solidarité dons","mobile-money":"mobile money momo frais transfert portefeuille","budget":"budget méthode salaire épargne","grosse-somme":"tontine cagnotte prime rappel gros montant répartition rentrée","retraite":"retraite pension vieillesse"};
   var INDEX=[];
   OUTILS.forEach(function(o){ INDEX.push({type:o.famille==="agir"?"Parcours pratique":"Diagnostic",titre:o.titre,desc:o.benefice,mots:MOTS[o.id]||"",url:o.url}); });
   E.SUJETS.forEach(function(s){ INDEX.push({type:"Plan d’action",titre:s.titre,desc:s.intro,mots:MSUJ[s.slug]||"",url:"#plan/"+s.slug}); });
   Object.keys(E.MODULES).forEach(function(k){ var M=E.MODULES[k]; if(!M.dispo) return; var s=E.SUJETS.filter(function(x){return x.modules.indexOf(k)>=0;})[0]; INDEX.push({type:"Méthode",titre:M.titre,desc:M.resume,mots:(M.etapes||[]).map(function(e){return e[0]+" "+e[1];}).join(" "),url:"#plan/"+(s?s.slug:"")}); });
+  INDEX.push({type:"Parcours d’apprentissage",titre:"Premiers pas à la BRVM",desc:"10 choses à savoir avant d’investir en Bourse, suis-je prêt, six étapes jusqu’au premier ordre, lire une séance.",mots:"brvm bourse action actions investir placement sgi dividende obligation fcp abidjan cours",url:"premiers-pas-brvm.html?src=recherche"});
   INDEX.push({type:"Mon cahier",titre:"Défi : sept jours sur un poste",desc:E.DEFIS["poste-7j"].resume,mots:"défi cahier suivre noter plafond semaine poste transport repas crédit",url:"#cahier/nouveau"});
   FICHES.forEach(function(f){ INDEX.push({type:"Dico pratique",titre:f.titre,desc:f.definition_courte,mots:(f.mots_cles||[]).join(" ")+" "+f.notion,url:"#dico/"+f.slug}); });
   INDEX.forEach(function(x){ x.nt=norm(x.titre); x.nm=norm(x.mots); x.nd=norm(x.desc); });

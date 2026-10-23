@@ -60,7 +60,8 @@
     mm: P("budget-mobile-money", "Budget et mobile money", "budget-mobile-money.html?src=plan"),
     preter: P("preter-a-un-proche", "Prêter à un proche", "preter-a-un-proche.html?src=plan"),
     retraite: P("preparer-ma-retraite", "Préparer ma retraite", "preparer-ma-retraite.html?src=plan"),
-    spirale: P("cercle-spirale", "Le simulateur Cercle & Spirale", "cercle-spirale.html#argent")
+    spirale: P("cercle-spirale", "Le simulateur Cercle & Spirale", "cercle-spirale.html#argent"),
+    brvm: P("premiers-pas-brvm", "Premiers pas à la BRVM", "premiers-pas-brvm.html?src=plan")
   };
 
   var SUJETS = [
@@ -80,6 +81,10 @@
      intro: "Un budget qui tienne compte des obligations sociales et des revenus qui changent d’un mois à l’autre. Une semaine d’observation d’abord : on construit mieux sur des chiffres vus.",
      diagnostic: {titre: "Mon diagnostic financier complet", url: "diagnostic.html?src=plan", texte: "Six dimensions pour savoir où porter l’effort."},
      modules: ["traces"], defis: ["poste-7j"], parcours: ["budget"], poste: ""},
+    {slug: "investir-brvm", titre: "Je veux investir à la BRVM",
+     intro: "Acheter des actions à la Bourse d’Abidjan commence avant la Bourse : une réserve de sécurité, pas de dette chère, de l’argent qui peut attendre. Puis dix choses à comprendre avant le premier ordre.",
+     diagnostic: {titre: "Mon diagnostic financier complet", url: "diagnostic.html?src=brvm", texte: "Pour vérifier que votre réserve et vos dettes permettent d’investir."},
+     modules: [], defis: [], parcours: ["brvm"], poste: ""},
     {slug: "grosse-somme", titre: "Je vais recevoir une grosse somme",
      intro: "Le tour de tontine, une prime, un rappel : une grosse rentrée se dépense vite si sa répartition n’est pas prévue avant qu’elle arrive.",
      diagnostic: null,
