@@ -501,7 +501,7 @@ a.st-card{text-decoration:none}
   <!-- RUBRIQUE ÉTUDES -->
   <section class="tab" id="tab-etudes" data-tab="etudes">
     <div class="wrap studies">
-      <h2 id="st-count">2 études publiées</h2>
+      <h2 id="st-count">1 étude publiée · 1 enquête en cours</h2>
       <label class="st-pick" for="st-sel"><span>Explorer les études</span>
         <select id="st-sel">
           <option value="">Toutes les études</option>
@@ -1123,7 +1123,9 @@ safe('études',function(){
     var n=0;
     fiches.forEach(function(e){var ok=!v||(v.indexOf('t:')===0?(' '+e.dataset.etude+' ').indexOf(' '+v.slice(2)+' ')>-1:e.id===v.slice(2));e.hidden=!ok;if(ok)n++;});
     if(sel.value!==v) sel.value=v;
-    document.getElementById('st-count').textContent=v?(n+(n>1?' études':' étude')+' affichée'+(n>1?'s':'')+' · '+fiches.length+' publiées'):fiches.length+' études publiées';
+    var enq=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' enquete ')>-1;}).length, pub=fiches.length-enq;
+    var tot=pub+(pub>1?' études publiées':' étude publiée')+(enq?' · '+enq+(enq>1?' enquêtes en cours':' enquête en cours'):'');
+    document.getElementById('st-count').textContent=v?(n+(n>1?' fiches affichées':' fiche affichée')+' · '+tot):tot;
     document.getElementById('st-none').hidden=n>0;
   }
   efaOpenRes=function(scroll){apply('e:etude-2',true);res.hidden=false;if(scroll!==false)setTimeout(function(){res.scrollIntoView({block:'start'});},30);};
