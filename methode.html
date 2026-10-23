@@ -451,6 +451,20 @@ a.st-card{text-decoration:none}
 .bx-lecon{font:700 16px/1.4 var(--disp)!important;color:var(--ink)!important}
 .bx-une{color:var(--ink)!important}
 .bx-src{font-size:12.5px!important;color:var(--mute)!important;margin:0}
+/* Inscription au bulletin « La semaine à la BRVM » (masquée tant que BRVM_FORM_URL est vide) */
+.bx-nl{background:var(--panel2);border-radius:14px;padding:22px;display:grid;gap:10px}
+.bx-nl-k{font-family:var(--body);font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680;margin:0}
+.bx-nl h2{font-family:var(--disp);font-weight:700;line-height:1.12;font-size:clamp(24px,3vw,32px);margin:0;color:var(--ink)}
+.bx-nl-p{margin:0;color:var(--ink2)}
+.bx-nl-row{display:flex;gap:8px;flex-wrap:wrap}
+.bx-nl-row input{flex:1 1 220px;min-height:46px;padding:10px 14px;border-radius:8px;border:0;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.bx-nl-row button{min-height:46px;padding:12px 22px;border-radius:8px;border:0;background:#E44828;color:#fff;font-family:var(--body);font-size:16px;font-weight:800;cursor:pointer}
+.bx-nl-row button:disabled{opacity:.6;cursor:wait}
+.bx-nl-ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:var(--ink2);margin-top:8px}
+.bx-nl-ok a,.bx-nl-m a{color:var(--ink)}
+.bx-nl-m{margin:0;font-size:14px;color:var(--ink)}
+.bx-nl-n{margin:0;font-size:12.5px;color:var(--mute)}
+.bx-nl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .bx-src a,.bx-in a{color:var(--ink2)}
 .bx-mini{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0}
 .bx-mini th,.bx-mini td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line)}
@@ -672,7 +686,20 @@ a.st-card{text-decoration:none}
           <span class="count" aria-live="polite"></span>
         </form>
         <div class="grid" id="grid-brvm"></div>
-        <p class="bx-src">Cours de clôture recopiés après la séance, pas des cours en direct. Une variation d’un jour ne dit rien de la santé d’une entreprise.</p>
+        <p class="bx-src">Cours de clôture relevés après chaque séance, pas des cours en direct. Une variation d’un jour ne dit rien de la santé d’une entreprise.</p>
+        <section class="bx-nl" id="brvm-bulletin" aria-labelledby="bx-nl-t" hidden>
+          <p class="bx-nl-k">Bulletin gratuit · chaque dimanche</p>
+          <h2 id="bx-nl-t">La semaine à la BRVM</h2>
+          <p class="bx-nl-p">Les indices, les plus fortes hausses et baisses, les titres les plus échangés&nbsp;: la semaine expliquée simplement, dans votre boîte mail.</p>
+          <form id="bx-nl-f" novalidate>
+            <label class="bx-nl-sr" for="bx-nl-e">Votre adresse email</label>
+            <div class="bx-nl-row"><input id="bx-nl-e" type="email" autocomplete="email" placeholder="Votre adresse email" required><button type="submit">Je m’inscris</button></div>
+            <label class="bx-nl-ok"><input id="bx-nl-c" type="checkbox"><span>J’accepte de recevoir le bulletin. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
+            <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+            <p class="bx-nl-m" id="bx-nl-m" aria-live="polite"></p>
+          </form>
+          <p class="bx-nl-n">Contenu pédagogique, ne constitue pas un conseil en investissement.</p>
+        </section>
       </div>
       <aside class="bx-side" aria-label="Comprendre la BRVM">
         <section class="bx-mots" aria-labelledby="bx-mots-t">
@@ -1403,5 +1430,29 @@ setHH(); route();
 </script>
 <script src="etude-pdf.js?v=2026102301" defer></script>
 <script src="efa-appli.js?v=2026102301" defer></script>
+
+<script>
+/* Bulletin « La semaine à la BRVM » → Brevo (liste dédiée, double confirmation).
+   BRVM_FORM_URL : adresse « action » du formulaire Brevo (Contacts › Formulaires › Partager › code HTML).
+   Vide = le bloc d'inscription reste masqué. */
+var BRVM_FORM_URL='';
+(function(){
+  var box=document.getElementById('brvm-bulletin'); if(!box||!BRVM_FORM_URL) return;
+  box.hidden=false;
+  var f=document.getElementById('bx-nl-f'), m=document.getElementById('bx-nl-m'), b=f.querySelector('button[type=submit]');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('bx-nl-e').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.textContent='Saisissez une adresse email valide.';return;}
+    if(!document.getElementById('bx-nl-c').checked){m.textContent='Cochez la case pour recevoir le bulletin.';return;}
+    if(f.email_address_check.value) return;
+    var d=new FormData(); d.append('EMAIL',em); d.append('email_address_check',''); d.append('locale','fr');
+    b.disabled=true; m.textContent='Envoi en cours…';
+    fetch(BRVM_FORM_URL,{method:'POST',body:d,mode:'no-cors'}).then(function(){
+      f.reset(); m.textContent='Presque fini : confirmez votre inscription dans l’email que vous allez recevoir (regardez aussi Promotions et Spam).';
+    }).catch(function(){m.textContent='L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.';}).then(function(){b.disabled=false;});
+  });
+})();
+</script>
 </body>
 </html>

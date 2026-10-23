@@ -2,7 +2,7 @@
 """Synthèse de la semaine (ou du mois) à la BRVM, à partir de la base de relevés EFA.
 
 Produit data/brvm/syntheses/AAAA-MM-JJ.md : matière brute pour rédiger « La semaine à la BRVM ».
-Sonatel (SNTS) est exclue des palmarès publiés (règle EFA) mais reste dans la base.
+Les sociétés du groupe Orange (SNTS, ORAC) sont exclues des palmarès publiés (règle EFA) mais reste dans la base.
 
 Usage : python scripts/brvm/semaine.py [--fin AAAA-MM-JJ] [--jours 7]
 """
@@ -12,7 +12,7 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[2]
 DOSSIER = RACINE / "data" / "brvm"
-EXCLUS = {"SNTS"}
+EXCLUS = {"SNTS", "ORAC"}  # groupe Orange : exclu des contenus éditoriaux (décision du 23/10/2026)
 
 
 def lire(f):
@@ -92,7 +92,7 @@ def main():
     hausse = sum(1 for x in publiables if x[4] > 0)
     baisse = sum(1 for x in publiables if x[4] < 0)
     lignes += [f"Titres en hausse : {hausse} · en baisse : {baisse} · stables : {len(publiables) - hausse - baisse}",
-               "", f"(Sonatel exclue des palmarès : règle EFA.)"]
+               "", f"(Sociétés du groupe Orange exclues des palmarès : règle EFA.)"]
 
     sortie = DOSSIER / "syntheses" / f"{s1}.md"
     sortie.parent.mkdir(parents=True, exist_ok=True)
