@@ -105,7 +105,7 @@ def lire_actions(soup, jour):
 def lire_indices(soup, jour):
     out = []
     for entetes, lignes in tableaux(soup):
-        if not entetes or not any("cloture" in e or "closing" in e for e in entetes):
+        if not entetes or not any(k in e for e in entetes for k in ("cloture", "closing", "fermeture")):
             continue
         for l in lignes:
             if len(l) < 4:
@@ -167,7 +167,7 @@ def maj_donnees_js(jour, actions, indices):
         for cle, libelle in SECTEURS.items():
             if cle in n:
                 secteurs.append([libelle, i["cloture"], i["variation_pct"]])
-    secteurs.sort(key=lambda s: s[0])
+    secteurs.sort(key=lambda s: sans_accents(s[0]))
     lignes = []
     for a in sorted(actions, key=lambda a: a["symbole"]):
         nom, pays = connus.get(a["symbole"], (a["nom"].title(), ""))
