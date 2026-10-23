@@ -382,6 +382,15 @@ a.st-card{text-decoration:none}
 .st-res[hidden]{display:none!important}
 @media (max-width:980px){.f1-k{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 .pick.st-sel{display:none!important}
+
+.st-pick{display:grid;gap:6px;margin:14px 0 22px;max-width:520px}
+.st-pick span{font:700 14px var(--body);color:var(--ink2)}
+.st-pick select{font:700 16px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;appearance:auto}
+.st-pick select:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.st-zone{margin-top:6px}
+.st-back{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:22px 4px}
+.st-back button{font:700 14px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+.st-back span{font-size:13px;color:var(--ink2);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -404,13 +413,14 @@ a.st-card{text-decoration:none}
   <section class="tab" id="tab-etudes" data-tab="etudes">
     <div class="wrap studies">
       <h2 id="st-count">2 études publiées</h2>
-      <div class="st-f" role="group" aria-label="Filtrer les études">
-        <button type="button" data-f="" aria-pressed="true">Toutes les études</button>
-        <button type="button" data-f="tontine" aria-pressed="false">Tontine</button>
-        <button type="button" data-f="donnees" aria-pressed="false">Données publiques</button>
-        <button type="button" data-f="enquete" aria-pressed="false">Enquêtes EFA</button>
-      </div>
-      <label class="pick st-sel">Filtrer les études<select id="st-sel"><option value="">Toutes les études</option><option value="tontine">Tontine</option><option value="donnees">Données publiques</option><option value="enquete">Enquêtes EFA</option></select></label>
+      <label class="st-pick" for="st-sel"><span>Explorer les études</span>
+        <select id="st-sel">
+          <option value="">Toutes les études</option>
+          <optgroup label="Par thème"><option value="t:tontine">Tontine</option></optgroup>
+          <optgroup label="Par type"><option value="t:donnees">Données publiques</option><option value="t:enquete">Enquêtes EFA</option></optgroup>
+          <optgroup label="Par étude"><option value="e:etude-1">N° 1 · La tontine en chiffres</option><option value="e:etude-2">N° 2 · L’argent de la tontine (provisoire)</option></optgroup>
+        </select>
+      </label>
     </div>
     <div class="wrap st-zone">
       <article class="f1" id="etude-1" data-etude="tontine donnees" aria-labelledby="f1-t">
@@ -437,7 +447,8 @@ a.st-card{text-decoration:none}
       </article>
       <p class="st-none" id="st-none" hidden>Aucune étude dans ce filtre pour l’instant.</p>
     </div>
-    <div class="st-res" id="res-etude-2" data-etude="tontine enquete">
+    <div class="st-res" id="res-etude-2" hidden>
+    <div class="wrap st-back"><button type="button" id="st-back">← Toutes les études</button><span>Étude n° 2 · résultats provisoires détaillés</span></div>
     <div class="wrap">
     <div class="enq-l" id="enq-l">
       <p><b>Cette étude se construit avec vous.</b>Tontine ou pas, répondez à l’enquête «&nbsp;L’argent de la tontine&nbsp;» : chaque réponse, y compris celle de ceux qui ne cotisent pas, renforce les résultats.</p>
@@ -918,22 +929,25 @@ document.querySelectorAll('.filters[data-for]').forEach(function(form){
   apply();
 });
 
-/* ---------- Études : filtre par thème et par type ---------- */
+/* ---------- Études : sélecteur (thème, type, étude) et ouverture des résultats ---------- */
+var efaOpenRes=function(){};
 safe('études',function(){
-  var items=[].slice.call(document.querySelectorAll('#tab-etudes [data-etude]')), btns=[].slice.call(document.querySelectorAll('.st-f button')), sel=document.getElementById('st-sel');
-  var fiches=items.filter(function(e){return e.tagName==='ARTICLE';});
-  function apply(f){
+  var fiches=[].slice.call(document.querySelectorAll('#tab-etudes article[data-etude]')), sel=document.getElementById('st-sel'), res=document.getElementById('res-etude-2');
+  function apply(v,keepRes){
+    if(!keepRes) res.hidden=true;
     var n=0;
-    items.forEach(function(e){var ok=!f||(' '+e.dataset.etude+' ').indexOf(' '+f+' ')>-1;e.hidden=!ok;if(ok&&e.tagName==='ARTICLE')n++;});
-    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.f===f));});
-    if(sel.value!==f) sel.value=f;
-    document.getElementById('st-count').textContent=(f?n+(n>1?' études':' étude')+' dans ce filtre':fiches.length+' études publiées');
+    fiches.forEach(function(e){var ok=!v||(v.indexOf('t:')===0?(' '+e.dataset.etude+' ').indexOf(' '+v.slice(2)+' ')>-1:e.id===v.slice(2));e.hidden=!ok;if(ok)n++;});
+    if(sel.value!==v) sel.value=v;
+    document.getElementById('st-count').textContent=v?(n+(n>1?' études':' étude')+' affichée'+(n>1?'s':'')+' · '+fiches.length+' publiées'):fiches.length+' études publiées';
     document.getElementById('st-none').hidden=n>0;
   }
-  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.f);});});
+  efaOpenRes=function(scroll){apply('e:etude-2',true);res.hidden=false;if(scroll!==false)setTimeout(function(){res.scrollIntoView({block:'start'});},30);};
   sel.addEventListener('change',function(){apply(sel.value);});
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#res-etude-2"]');if(!a)return;e.preventDefault();efaOpenRes();});
+  document.getElementById('st-back').addEventListener('click',function(){apply('');document.getElementById('tab-etudes').scrollIntoView({block:'start'});});
   document.querySelectorAll('.f1-a .soon').forEach(function(b){b.addEventListener('click',function(){var n=document.getElementById(b.getAttribute('aria-describedby'));if(n){n.classList.add('flash');setTimeout(function(){n.classList.remove('flash');},1400);}});});
   apply('');
+  if((location.hash||'').toLowerCase()==='#res-etude-2') efaOpenRes();
 });
 
 /* ---------- Rubriques ---------- */
@@ -948,10 +962,10 @@ function showTab(t){
   setTimeout(setHH,350);
 }
 function route(){
-  var h=(location.hash||'#etudes').slice(1).toLowerCase(); h=ALIAS[h]||h||'etudes';
+  var h=(location.hash||'#etudes').slice(1).toLowerCase(); if(h==='res-etude-2'){showTab('etudes');efaOpenRes();return;} h=ALIAS[h]||h||'etudes';
   if(TABS.indexOf(h)>-1){showTab(h);window.scrollTo(0,0);return;}
   var c=REG[h.toUpperCase()];
-  if(c){showTab(c.tab);setTimeout(function(){c.el.scrollIntoView({block:'start'});c.el.classList.add('hit');setTimeout(function(){c.el.classList.remove('hit');},1600);},40);}
+  if(c){showTab(c.tab);if(c.tab==='etudes')efaOpenRes(false);setTimeout(function(){c.el.scrollIntoView({block:'start'});c.el.classList.add('hit');setTimeout(function(){c.el.classList.remove('hit');},1600);},40);}
   else {showTab('etudes');window.scrollTo(0,0);}
 }
 addEventListener('hashchange',route);
