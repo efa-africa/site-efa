@@ -215,6 +215,8 @@ def main():
         print(f"Vérification · séance ouverte : {seance_ouverte(sa)} · date : {jour} · {len(act)} actions · {len(ind)} indices")
         for r in act[:3] + ind[:5]:
             print(r)
+        if len(act) < 40 or not any(i["categorie"] == "principal" for i in ind):
+            raise SystemExit("ERREUR : lecture incomplète.")
         return
     if seance_ouverte(sa):
         print("Séance encore ouverte : rien n'est enregistré.")
