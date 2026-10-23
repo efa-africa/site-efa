@@ -687,6 +687,29 @@ img.char{object-position:50% 18%}
 .ask-rech input{flex:1;min-width:0;border:0;background:none;padding:0 12px;font:500 16px var(--f-body);color:var(--nuit);min-height:46px}
 .ask-rech input:focus{outline:none}.ask-rech div:focus-within{outline:3px solid var(--soft-bleu);outline-offset:2px}
 .ask-rech button{border:0;border-radius:9px;background:var(--corail);color:#fff;font:700 15px var(--f-body);padding:0 16px;min-height:46px;cursor:pointer}
+
+/* Accueil · situations : le message d'abord, la photo en appui (option 1, 23 oct. 2026) */
+.tiles.sit{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1180px;gap:14px}
+.stile{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;text-decoration:none;background:var(--c);color:var(--t);transition:transform .2s}
+.stile:hover{transform:translateY(-3px)}
+.stile:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.stile .bd{order:2;display:flex;flex-direction:column;gap:8px;padding:16px;flex:1}
+.stile .ph{order:1;display:block;height:clamp(64px,8vw,104px);overflow:hidden;background:#0B1220}
+.stile .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.stile .k{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.stile b{font-family:var(--f-body);font-weight:800;font-size:clamp(19px,1.7vw,22px);line-height:1.2}
+.stile .why{font-size:14.5px;line-height:1.4}
+.stile .cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--bb);color:var(--bt);font-weight:800;font-size:14.5px;padding:11px 14px;border-radius:10px}
+.stile .cta i{font-style:normal;transition:transform .2s}.stile:hover .cta i{transform:translateX(3px)}
+.stile.s1{--c:#E44828;--t:#fff;--bb:#fff;--bt:#0B1220}
+.stile.s2{--c:#2453C2;--t:#fff;--bb:#fff;--bt:#1B3E94}
+.stile.s3{--c:#143B63;--t:#fff;--bb:#5FD3EC;--bt:#0B1220}
+.stile.s4{--c:#4BC8E0;--t:#0B1220;--bb:#0B1220;--bt:#fff}
+.ask-more{width:100%;max-width:1180px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 18px;margin:0;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;color:#C9D1DE}
+.ask-more a{color:#6DB8F2;font-weight:800;text-decoration:none}
+.ask-more > a{color:#F0603F}
+@media (max-width:980px){.tiles.sit{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stile .bd{padding:12px;gap:6px}.stile b{font-size:clamp(16px,4.4vw,19px)}.stile .k{letter-spacing:.08em;font-size:10.5px}.stile .why{font-size:13px}.stile .cta{font-size:13px;padding:10px 11px}.stile .ph{height:58px}}
+@media (max-width:339px){.stile .why{display:none}}
 </style>
 <link rel="stylesheet" href="footer.css">
 <script type="application/ld+json">
@@ -724,34 +747,30 @@ img.char{object-position:50% 18%}
       <p class="ask-marque"><b>EFA · Éducation Financière Afrique</b> <span>Des outils gratuits pour gérer votre argent en FCFA&nbsp;: budget, épargne, tontine</span></p>
       <h1 id="ask-t">Qu’est-ce qui vous préoccupe&nbsp;?</h1>
     </div>
-    <div class="tiles t5">
-      <a class="tile" href="outils.html?src=besoin#plan/ou-passe-mon-argent" data-goatcounter-click="besoin-budget">
-        <img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je ne sais pas où passe mon argent</b><small>Diagnostic, méthode et défi de la semaine →</small></span>
+    <div class="tiles t4 sit">
+      <a class="stile s1" href="outils.html?src=besoin#plan/ou-passe-mon-argent" data-goatcounter-click="besoin-budget">
+        <span class="bd"><span class="k">01 · Faire le point</span><b>Je ne sais pas où passe mon argent</b><span class="why">Un diagnostic en 5 questions, la méthode et le défi de la semaine.</span><span class="cta">Identifier mes pistes<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
-      <a class="tile" href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">
-        <img class="char" src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.classList.remove('char');this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'">
-        <span><b>Je vais recevoir une grosse somme</b><small>Prévoir sa répartition avant qu’elle arrive →</small></span>
+      <a class="stile s2" href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">
+        <span class="bd"><span class="k">02 · Anticiper</span><b>Je vais recevoir une grosse somme</b><span class="why">Décider de sa répartition avant qu’elle arrive&nbsp;: dépenser, garder, investir.</span><span class="cta">Préparer sa répartition<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="affoue.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1670159739004-232a2ddfc01a?auto=format&fit=crop&w=700&q=80'"></span>
       </a>
-      <a class="tile" href="outils.html?src=besoin#plan/proches" data-goatcounter-click="besoin-proches">
-        <img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux mieux organiser l’aide aux proches</b><small>Mesurer, puis préparer sa réponse →</small></span>
+      <a class="stile s3" href="outils.html?src=besoin#plan/proches" data-goatcounter-click="besoin-proches">
+        <span class="bd"><span class="k">03 · Organiser</span><b>Je veux mieux aider mes proches</b><span class="why">Mesurer ce que vous donnez, puis fixer une enveloppe qui tient.</span><span class="cta">Organiser mon aide<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
-      <a class="tile" href="tontine.html" data-goatcounter-click="besoin-tontine">
-        <img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux comprendre ma tontine</b><small>Comment elle marche, ce qu’elle vous apporte vraiment →</small></span>
-      </a>
-      <a class="tile" href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">
-        <img src="https://images.unsplash.com/photo-1687422808311-a776f467a468?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy">
-        <span><b>Je veux préparer ma retraite</b><small>Six questions pour faire le point →</small></span>
+      <a class="stile s4" href="tontine.html" data-goatcounter-click="besoin-tontine">
+        <span class="bd"><span class="k">04 · Comprendre</span><b>Je veux comprendre ma tontine</b><span class="why">Comment elle marche et ce qu’elle vous apporte vraiment.</span><span class="cta">Découvrir la méthode<i aria-hidden="true">→</i></span></span>
+        <span class="ph"><img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
     </div>
+    <p class="ask-more"><span>Autre question&nbsp;? <a href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">Préparer ma retraite →</a></span><a href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Voir tous les outils →</a></p>
     <form class="ask-rech" action="outils.html" method="get" role="search">
       <label for="ask-q">Ou cherchez directement</label>
       <div><input id="ask-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Budget, tontine, retraite, prêter…"><button type="submit">Rechercher</button></div>
     </form>
     <p class="ask-guides">Comprendre l’essentiel&nbsp;: <a href="tontine.html">la tontine</a> · <a href="epargner.html">épargner</a> · <a href="construire-son-budget.html">faire son budget en FCFA</a></p>
-    <a class="btn btn-line ask-all" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous mes outils et diagnostic</a>
   </section>
 
   <!-- 0. EFA | Éducation Financière Afrique : globe en rotation en arrière-plan (globe.js), image fixe pendant le chargement -->
