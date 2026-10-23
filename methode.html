@@ -401,6 +401,60 @@ a.st-card{text-decoration:none}
 .subtabs a:hover{color:var(--ink)}
 .all-news{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
 @media (max-width:560px){.subtabs a{flex:1 1 calc(50% - 8px);padding:12px 14px}.subtabs a small{font-size:12px}}
+
+/* La BRVM expliquée par EFA */
+.bx{display:grid;gap:18px;margin-top:22px;margin-bottom:40px;grid-template-columns:minmax(0,1fr)}
+.bx-card,.bx-pret{grid-template-columns:minmax(0,1fr)}.bx-card>*,.bx-meth li{min-width:0}
+.bx-h h1{margin:8px 0 0}
+.bx-lede{color:var(--ink2);max-width:60ch;margin:10px 0 0;font-size:17px;line-height:1.55}
+.bx-pret{display:grid;gap:10px;padding:20px 22px;border-radius:12px;background:var(--panel2)}
+.bx-pret h2,.bx-card h2{font:700 clamp(21px,2.6vw,27px)/1.25 var(--disp);margin:0;color:var(--ink);text-wrap:balance}
+.bx-pret ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink2);line-height:1.55}
+.bx-pret b,.bx-card b{color:var(--ink)}
+.bx-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin:4px 0 0}
+.bx-links a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+.bx-portes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.bx-portes button{display:grid;gap:4px;align-content:start;text-align:left;padding:16px;border:0;border-radius:12px;background:var(--panel);color:var(--ink2);cursor:pointer;font:400 14px/1.45 var(--body);min-width:0}
+.bx-portes button:hover,.bx-portes button:focus-visible{background:#1C2842}
+.bx-portes small{font:700 11px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--corail)}
+.bx-portes b{font:700 17px/1.25 var(--disp);color:var(--ink)}
+@media (max-width:900px){.bx-portes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.bx-portes{grid-template-columns:minmax(0,1fr)}}
+.bx-card{display:grid;gap:12px;padding:22px;border-radius:12px;background:var(--panel);scroll-margin-top:calc(var(--hh,120px) + 12px);min-width:0}
+.bx-card p{margin:0;color:var(--ink2);line-height:1.6;max-width:70ch}
+.bx-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.bx-duo div{display:grid;gap:2px;padding:14px 16px;border-radius:10px;background:var(--panel2)}
+.bx-duo small{font:700 11px var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.bx-duo b{font:700 clamp(24px,3.4vw,34px)/1.15 var(--disp)}
+.bx-duo span{font-size:13px;color:var(--ink2)}
+.bx-duo .bx-rouge b{color:var(--corail)}
+@media (max-width:520px){.bx-duo{grid-template-columns:minmax(0,1fr)}}
+.bx-lecon{font:700 clamp(18px,2.2vw,21px)/1.4 var(--disp)!important;color:var(--ink)!important}
+.bx-src{font-size:13px!important;color:var(--mute)!important}
+.bx-src a,.bx-meth a{color:var(--ink2)}
+.bx-une{color:var(--ink)!important}
+.bx-meth,.bx-etapes{margin:0;padding-left:22px;display:grid;gap:12px;color:var(--ink2);line-height:1.6}
+.bx-meth ul{margin:6px 0 0;padding-left:18px;display:grid;gap:6px}
+.bx-tab{overflow-x:auto;margin:8px 0}
+.bx-tab table{border-collapse:collapse;min-width:420px;width:100%;font-size:14px}
+.bx-tab th,.bx-tab td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.bx-tab th{font:700 12px var(--body);color:var(--mute)}
+.bx-tab td.n{color:var(--corail);font-weight:700}
+.bx-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:820px){.bx-row{grid-template-columns:minmax(0,1fr)}}
+.bx-liste{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.bx-liste li{display:grid;gap:2px;padding:12px 14px;border-radius:10px;background:var(--panel2)}
+.bx-liste button{all:unset;cursor:pointer;font:700 16px var(--disp);color:var(--ink);text-decoration:underline;text-decoration-color:var(--corail);text-underline-offset:5px}
+.bx-liste small{font-size:13px;color:var(--mute)}
+.bx-chiffres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bx-chiffres div{display:grid;gap:2px;padding:12px 14px;border-radius:10px;background:var(--panel2);min-width:0}
+.bx-chiffres small{font:700 11px var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.bx-chiffres b{font:700 20px/1.2 var(--disp)}
+.bx-chiffres span{font-size:13px;color:var(--ink2)}
+@media (max-width:620px){.bx-chiffres{grid-template-columns:minmax(0,1fr)}}
+.bx-mention{margin:0;font-size:13px;color:var(--mute)}
+.bx-data{border-top:1px solid var(--line);padding-top:28px}
+.bx-h2{font:700 clamp(24px,3vw,32px)/1.2 var(--disp);margin:8px 0 0}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -588,10 +642,116 @@ a.st-card{text-decoration:none}
   <!-- ACTUALITÉS · sous-onglet BRVM -->
   <section class="tab" id="tab-brvm" data-tab="brvm" hidden>
     <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
-    <div class="wrap intro">
+    <!-- LA BRVM EXPLIQUÉE PAR EFA : comprendre avant d'investir. Aucune société du groupe Orange dans les contenus (décision du 23/10/2026). -->
+    <div class="wrap bx">
+      <header class="bx-h">
+        <p class="kick">La BRVM expliquée par EFA</p>
+        <h1>Comprendre avant d’investir</h1>
+        <p class="bx-lede">Pas de palmarès, pas de « bonne affaire » : comment lire une entreprise, un chiffre et votre propre situation avant d’entrer en Bourse.</p>
+      </header>
+
+      <section class="bx-pret" aria-labelledby="bx-pret-t">
+        <h2 id="bx-pret-t">Avant tout : suis-je prêt&nbsp;?</h2>
+        <ul>
+          <li><b>Une réserve d’abord.</b> Trois mois de dépenses mis de côté, en dehors de la Bourse.</li>
+          <li><b>Pas de dette chère.</b> Rembourser un crédit à 20&nbsp;% rapporte plus sûrement qu’une action.</li>
+          <li><b>Un argent qui peut attendre.</b> Une somme dont vous n’aurez pas besoin avant cinq ans, car un cours peut baisser longtemps.</li>
+        </ul>
+        <p class="bx-links"><a href="diagnostic.html?src=brvm">Faire mon diagnostic</a><a href="outils.html#plan">Voir mon plan d’action</a></p>
+      </section>
+
+      <nav class="bx-portes" aria-label="Quatre portes d’entrée">
+        <button type="button" data-bx="bx-chiffre"><small>Cette semaine</small><b>Le chiffre qui peut tromper</b><span>12,5 milliards de dividendes, un bénéfice qui fond</span></button>
+        <button type="button" data-bx="bx-loupe"><small>Sous la loupe</small><b>Une entreprise expliquée</b><span>SAPH, le caoutchouc ivoirien</span></button>
+        <button type="button" data-bx="bx-apprendre"><small>Cinq minutes</small><b>J’apprends à analyser</b><span>Lire une publication, sans se tromper de chiffre</span></button>
+        <button type="button" data-bx="bx-seance"><small>Dernière séance</small><b>Que s’est-il passé&nbsp;?</b><span id="bx-seance-court">La séance datée, sans direct</span></button>
+      </nav>
+
+      <article class="bx-card" id="bx-chiffre" aria-labelledby="bx-chiffre-t">
+        <p class="kick">Le chiffre qui peut tromper</p>
+        <h2 id="bx-chiffre-t">12,5 milliards de dividendes… pour un bénéfice semestriel de 2,2 milliards</h2>
+        <p>Le 28 août 2026, la SAPH a versé 12,5 milliards de FCFA de dividendes bruts à ses actionnaires. Deux semaines plus tard, elle publiait un bénéfice de 2,2 milliards pour le premier semestre 2026, en baisse de 88&nbsp;%.</p>
+        <div class="bx-duo">
+          <div><small>Dividende versé en août 2026</small><b>12,5 Md FCFA</b><span>au titre de 2025, année record</span></div>
+          <div class="bx-rouge"><small>Bénéfice du 1<sup>er</sup> semestre 2026</small><b>2,2 Md FCFA</b><span>−88&nbsp;% sur un an</span></div>
+        </div>
+        <p><b>Pourquoi ce n’est pas contradictoire :</b> un dividende récompense l’année passée. Celui d’août 2026 vient des 25 milliards de bénéfice de 2025. Il ne dit rien de 2026.</p>
+        <p><b>La question à se poser :</b> peut-il durer&nbsp;? Hypothèse EFA, pour illustrer&nbsp;: si le second semestre ressemblait au premier, le bénéfice de 2026 serait d’environ 4,4 milliards, soit un tiers du dividende qui vient d’être versé.</p>
+        <p class="bx-lecon">Un dividende regarde en arrière. Avant de calculer un rendement, regardez ce que l’entreprise gagne aujourd’hui.</p>
+        <p class="bx-src">Sources&nbsp;: <a href="https://www.financialafrik.com/2026/03/25/dividendes-2025-la-societe-africaine-de-plantation-dheveas-allouera-a-ses-actionnaires-12497-milliards-de-fcfa/" target="_blank" rel="noopener">Financial Afrik, 25 mars 2026</a> (dividende brut de 12,497 Md FCFA) · <a href="https://www.financialafrik.com/2026/08/13/le-versement-du-dividende-2025-de-la-societe-africaine-de-plantation-dheveas-fixe-au-28-aout-2026/" target="_blank" rel="noopener">Financial Afrik, 13 août 2026</a> (paiement le 28 août) · <a href="https://www.capmad.com/article/saph-le-benefice-net-semestriel-decroche-de-88-apres-une-annee-2025-record" target="_blank" rel="noopener">Capmad, 10 septembre 2026</a> (comptes du 1<sup>er</sup> semestre). Le dividende de 2026 sera décidé en assemblée générale en 2027.</p>
+      </article>
+
+      <article class="bx-card" id="bx-loupe" aria-labelledby="bx-loupe-t">
+        <p class="kick">Une entreprise sous la loupe · SAPH (Côte d’Ivoire)</p>
+        <h2 id="bx-loupe-t">SAPH&nbsp;: après une année record, un bénéfice divisé par huit</h2>
+        <p class="bx-une"><b>En une phrase&nbsp;:</b> le caoutchouc s’est vendu moins cher et en moins grande quantité, et comme les coûts d’une plantation bougent peu, le bénéfice a fondu bien plus vite que les ventes.</p>
+        <ol class="bx-meth">
+          <li><b>L’activité.</b> La Société africaine de plantations d’hévéas produit et transforme du caoutchouc naturel en Côte d’Ivoire. Elle exploite 24&nbsp;400 hectares de plantations et encadre environ 29&nbsp;000 planteurs villageois, dont elle achète la production. En 2025, presque tout son chiffre d’affaires (336 sur 341 milliards de FCFA) venait de produits sortis de ses usines.</li>
+          <li><b>Le fait nouveau.</b> Les comptes du premier semestre 2026, présentés le 10 septembre 2026.</li>
+          <li><b>Les chiffres et leur période.</b>
+            <div class="bx-tab" role="region" aria-label="Chiffres de la SAPH" tabindex="0"><table>
+              <thead><tr><th>Indicateur</th><th>1<sup>er</sup> sem. 2026</th><th>1<sup>er</sup> sem. 2025</th><th>Variation</th></tr></thead>
+              <tbody>
+                <tr><td>Chiffre d’affaires</td><td>138,2 Md FCFA</td><td>171,4 Md FCFA</td><td class="n">−19&nbsp;%</td></tr>
+                <tr><td>Résultat d’exploitation</td><td>4,7 Md FCFA</td><td>26,4 Md FCFA</td><td class="n">−82&nbsp;%</td></tr>
+                <tr><td>Résultat net</td><td>2,2 Md FCFA</td><td>18,1 Md FCFA</td><td class="n">−88&nbsp;%</td></tr>
+              </tbody>
+            </table></div>
+            Pour mémoire, l’année 2025&nbsp;: chiffre d’affaires de 340,8 Md FCFA (+22&nbsp;%) et résultat net de 25,0 Md FCFA (+33&nbsp;%).</li>
+          <li><b>L’explication.</b> Le prix moyen de vente a reculé de 12&nbsp;% et les volumes vendus de 10&nbsp;%&nbsp;: d’où des ventes en baisse de 19&nbsp;%. Mais les plantations, les usines et le personnel (32,5 Md FCFA en 2025) coûtent à peu près la même chose chaque année. Quand les ventes baissent, le bénéfice baisse donc bien plus vite. C’est l’effet de levier des coûts fixes, typique des matières premières.</li>
+          <li><b>Les limites, ce qu’il faut encore vérifier.</b>
+            <ul>
+              <li>Ce n’est pas une perte&nbsp;: la SAPH reste bénéficiaire. « Dans le rouge » serait faux ici&nbsp;; « en forte baisse » est exact.</li>
+              <li>Six mois ne font pas une année&nbsp;: le prix du caoutchouc est cyclique et peut remonter, ou baisser encore.</li>
+              <li>La trésorerie nette était négative fin 2025 (−15,4 Md FCFA), même si elle s’améliorait&nbsp;: un point à suivre dans les comptes annuels.</li>
+              <li>Le cours est passé d’environ 8&nbsp;350 FCFA à la mi-mars à 7&nbsp;620 FCFA à la séance du 22 octobre, soit environ −9&nbsp;% (calcul EFA)&nbsp;: bien moins que le bénéfice. Le marché regarde plusieurs années, pas un semestre. Ce n’est ni un signal d’achat ni un signal de vente.</li>
+            </ul></li>
+          <li><b>Les sources.</b> <a href="https://www.capmad.com/article/saph-le-benefice-net-semestriel-decroche-de-88-apres-une-annee-2025-record" target="_blank" rel="noopener">Capmad, 10 septembre 2026</a> (semestre 2026, prix, volumes, cours de mi-mars) · <a href="https://dabafinance.com/fr/nouvelles/r-sultats-annuels-complets-2025-de-Saph-sur-le-caoutchouc-et-les-b-n-fices" target="_blank" rel="noopener">Daba Finance, 19 mars 2026</a> (comptes 2025 provisoires, activité) · cours de clôture BRVM du 22/10/2026.</li>
+        </ol>
+      </article>
+
+      <article class="bx-card" id="bx-apprendre" aria-labelledby="bx-apprendre-t">
+        <p class="kick">J’apprends à analyser · cinq minutes</p>
+        <h2 id="bx-apprendre-t">Lire une entreprise en cinq étapes</h2>
+        <ol class="bx-etapes">
+          <li><b>Trouver la publication.</b> Les sociétés cotées publient leurs comptes sur brvm.org et sur leur site. Lisez le document de l’entreprise, pas seulement un titre d’article.</li>
+          <li><b>Lire trois lignes, avec leur période.</b> Chiffre d’affaires (ce qu’elle vend), résultat d’exploitation (ce que rapporte son métier), résultat net (ce qui reste à la fin). Toujours vérifier&nbsp;: un semestre, une année, comparés à quoi&nbsp;?</li>
+          <li><b>Séparer le bénéfice et le cours.</b> Le bénéfice dit ce que l’entreprise gagne. Le cours dit ce que le marché accepte de payer aujourd’hui. Les deux peuvent aller en sens inverse.</li>
+          <li><b>Regarder trois risques.</b> La dette (l’entreprise a-t-elle plus de trésorerie que de dettes&nbsp;?), la liquidité (le titre s’échange-t-il assez pour revendre facilement&nbsp;?), le dividende (d’où vient-il, peut-il durer&nbsp;?).</li>
+          <li><b>Écrire sa propre conclusion.</b> Une phrase, avec une limite. Par exemple&nbsp;: « La SAPH reste bénéficiaire, mais son bénéfice dépend du prix du caoutchouc&nbsp;; je dois voir les comptes annuels. » La décision vous appartient.</li>
+        </ol>
+      </article>
+
+      <section class="bx-card" id="bx-seance" aria-labelledby="bx-seance-t">
+        <p class="kick">Que s’est-il passé sur le marché&nbsp;?</p>
+        <h2 id="bx-seance-t">La dernière séance</h2>
+        <div id="bx-seance-c"><p>Les chiffres de la séance s’affichent ici dès qu’ils sont disponibles.</p></div>
+        <p class="bx-src">Une variation d’un jour ne dit rien de la santé d’une entreprise. Ce sont des cours de clôture recopiés après la séance, pas des cours en direct.</p>
+      </section>
+
+      <section class="bx-row" aria-labelledby="bx-fiches-t">
+        <div class="bx-card">
+          <p class="kick">Les entreprises expliquées</p>
+          <h2 id="bx-fiches-t">Une fiche, une méthode</h2>
+          <p>Chaque fiche suit le même ordre&nbsp;: activité, fait nouveau, chiffres et période, explication, limites, sources. Jamais de classement par performance.</p>
+          <ul class="bx-liste"><li><button type="button" data-bx="bx-loupe">SAPH · caoutchouc · Côte d’Ivoire</button><small>Comptes du 1<sup>er</sup> semestre 2026</small></li></ul>
+          <p class="bx-src">Prochaine fiche dans deux semaines.</p>
+        </div>
+        <div class="bx-card">
+          <p class="kick">Investir à plusieurs</p>
+          <h2>De la tontine au club d’investissement</h2>
+          <p>Un groupe qui cotise déjà peut acheter des titres ensemble&nbsp;: ce qu’est un club, comment il décide, ce que son règlement doit prévoir, ce que ça coûte. Ce dossier est en préparation.</p>
+          <p class="bx-links"><a href="cercle-spirale.html#groupe">Calculer avec mon groupe</a><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">En parler dans EFA Community</a></p>
+        </div>
+      </section>
+
+      <p class="bx-mention">Éducation financière, pas conseil en investissement. Les performances passées ne préjugent pas des performances futures. EFA ne vend aucun produit financier.</p>
+    </div>
+
+    <div class="wrap intro bx-data">
       <div>
-        <p class="kick">Marché · Bourse régionale des valeurs mobilières</p>
-        <h1>La BRVM en une séance</h1>
+        <p class="kick">Les données de la séance · Bourse régionale des valeurs mobilières</p>
+        <h2 class="bx-h2">Indices, secteurs et cote complète</h2>
         <p>Les cours de clôture de la dernière séance, recopiés après la séance, pour comprendre ce qui bouge sur la Bourse commune aux huit pays de l’UEMOA. Ce ne sont pas des cours en direct, ni un conseil d’investissement.</p>
       </div>
       <div class="meta" id="brvm-meta"></div>
@@ -963,6 +1123,22 @@ safe('études',function(){
   if((location.hash||'').toLowerCase()==='#res-etude-2') efaOpenRes();
 });
 
+
+/* ---------- La BRVM expliquée : portes d'entrée et dernière séance ---------- */
+safe('brvm expliquée',function(){
+  document.querySelectorAll('[data-bx]').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.bx);if(el){el.scrollIntoView({block:'start'});var h=el.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}}});});
+  var c=document.getElementById('bx-seance-c'),court=document.getElementById('bx-seance-court'); if(!B||!c) return;
+  var fx=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d}).replace(/\u202f/g,'\u00a0');};
+  var pc=function(v){return (v>0?'+':v<0?'−':'')+fx(Math.abs(v),2)+'\u00a0%';};
+  var comp=(B.indices||[]).filter(function(i){return i[0]==='BRVM Composite';})[0];
+  var a=B.actions.slice().sort(function(x,y){return y[4]-x[4];}), hi=a[0], lo=a[a.length-1];
+  var cell=function(t,v,s){return '<div><small>'+t+'</small><b>'+v+'</b><span>'+s+'</span></div>';};
+  c.innerHTML='<p>Séance du '+B.seance+'.</p><div class="bx-chiffres">'+
+    (comp?cell('BRVM Composite',fx(comp[2],2),pc(comp[3])+' sur la séance'):'')+
+    cell('Plus forte hausse',hi[1],pc(hi[4])+' · '+fx(hi[3],0)+'\u00a0FCFA')+
+    cell('Plus forte baisse',lo[1],pc(lo[4])+' · '+fx(lo[3],0)+'\u00a0FCFA')+'</div>';
+  if(court) court.textContent='Séance du '+B.seance+(comp?' · Composite '+pc(comp[3]):'');
+});
 /* ---------- Rubriques ---------- */
 var TABS=['etudes','simulateurs','actualites','brvm','methode'];
 var ALIAS={tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites','efa-news':'actualites',actu:'actualites',actualite:'actualites',bourse:'brvm',marche:'brvm'};
