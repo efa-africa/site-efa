@@ -474,8 +474,8 @@ a.st-card{text-decoration:none}
   <nav class="mainnav" aria-label="Navigation principale"><div class="wrap mn-in"><a class="mn-cta" href="outils.html">Mes outils et diagnostic</a><a href="methode.html#etudes" aria-current="page">Études &amp; actualité</a><a href="rendez-vous.html">Rencontres &amp; contact</a><a href="auteur.html">À propos</a></div></nav>
   <div class="wrap bar">
     <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; ACTUALITÉ</b></span></a>
-    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#methode" data-tab="methode">Méthode</a></nav>
-    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="simulateurs">Simulateurs</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="methode">Méthode</option></select></label>
+    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#methode" data-tab="methode">Méthode</a></nav>
+    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="simulateurs">Simulateurs</option><option value="methode">Méthode</option></select></label>
     <a class="back" href="./">← Le site</a>
   </div>
   <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
@@ -1156,7 +1156,7 @@ safe('brvm expliquée',function(){
     cell('Plus forte baisse',lo[1],'<span>'+fx(lo[3],0)+' FCFA · '+pc(lo[4])+'</span>')+'</div>';
 });
 /* ---------- Rubriques ---------- */
-var TABS=['etudes','simulateurs','actualites','brvm','methode'];
+var TABS=['etudes','actualites','brvm','simulateurs','methode'];
 var ALIAS={tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites','efa-news':'actualites',actu:'actualites',actualite:'actualites',bourse:'brvm',marche:'brvm'};
 function setHH(){var h=document.getElementById('top').offsetHeight;document.documentElement.style.setProperty('--hh',h+'px');}
 function showTab(t){
