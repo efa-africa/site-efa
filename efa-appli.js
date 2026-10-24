@@ -44,7 +44,8 @@
     var footer = document.querySelector("footer");
 
     // 1. Lien dans le pied de page (toutes les pages), à côté des autres liens
-    if (footer && !footer.querySelector(".efa-appli-pied")) {
+    var piedEFA = footer && footer.classList.contains("efa-foot"); // le pied commun a déjà « L’appli EFA » dans Agir
+    if (footer && !piedEFA && !footer.querySelector(".efa-appli-pied")) {
       var zone = footer.querySelector(".wrap, .in") || footer;
       var a = document.createElement("a");
       a.className = "efa-appli-pied";
@@ -72,7 +73,7 @@
     var titres = [].slice.call(document.querySelectorAll("h2,h3,h4,h5,h6,strong,b,p,span,dt,small,div")).filter(function (el) {
       return el.childElementCount === 0 && !el.closest("[data-sans-appli]") && MOTS.test((el.textContent || "").trim());
     });
-    if (titres.length && !document.querySelector(".efa-appli-col")) {
+    if (!piedEFA && titres.length && !document.querySelector(".efa-appli-col")) {
       var col = titres[0];
       while (col.parentElement && !col.querySelector("a")) col = col.parentElement;
       var rang = col.parentElement;
