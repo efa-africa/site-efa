@@ -359,7 +359,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .ce-note{font-size:13px;color:var(--ink2)}
 </style>
 <link rel="stylesheet" href="footer.css">
-<script src="parcours-efa.js?v=2026102403"></script>
+<script src="parcours-efa.js?v=2026102404"></script>
 <script src="parcours-ui.js?v=2026102401"></script>
 </head>
 <body>
@@ -573,7 +573,7 @@ var OUTILS = [
    benefice:"Examinez votre situation sur six dimensions et repartez avec une priorité et une première action.",
    effort:"19 questions et 4 questions de profil. Aucun montant.",
    objectif:"Six dimensions, un profil, une priorité et une première action.",
-   acces:"Gratuit. Une première synthèse s’affiche sans email ; le résultat complet est envoyé contre une adresse email ; le parcours 1 (vos chiffres) s’ouvre sur validation.", prix:0, devise:"XOF",
+   acces:"Gratuit. Une première synthèse s’affiche sans email ; le résultat complet est envoyé contre une adresse email ; le niveau 2, avec vos chiffres, s’ouvre sur validation.", prix:0, devise:"XOF",
    infos:"Vos réponses à 19 questions et 4 questions de profil. Aucun montant pour la première étape.",
    version_methode:"1.0", bouton:"Faire mon diagnostic",
    note:"« Complet » désigne le parcours EFA proposé : ce n’est pas un audit exhaustif de votre patrimoine ou de votre solvabilité."},
@@ -765,7 +765,7 @@ var OUTILS = [
     var faits=st.faits||{}, lignes=[];
     DP.parcours.forEach(function(p){
       var dispo=0, n=0, suivante=null;
-      p.etapes.forEach(function(e,i){ if(!e.ok) return; dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
+      p.etapes.forEach(function(e,i){ if(!e.ok||!e.ess) return; dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
       if(!n && st.actif!==p.id) return;
       var href=suivante?(/^https?:/.test(suivante.lien)?suivante.lien:suivante.lien.split("#")[0]+(suivante.lien.indexOf("?")<0?"?":"&")+"parcours="+p.id+(suivante.lien.indexOf("#")>=0?"#"+suivante.lien.split("#").slice(1).join("#"):"")):("parcours.html#"+p.id);
       lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>Parcours '+esc(p.id.slice(1))+' · '+esc(p.titre)+' · '+n+' sur '+dispo+' étapes</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a></div>');
