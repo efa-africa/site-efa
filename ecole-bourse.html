@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>École de la Bourse · Simulation : la première année de Koffi · EFA</title>
+<meta name="description" content="Simulation EFA : achetez des actions d’une société fictive, traversez une baisse, lisez des résultats, touchez un dividende et déjouez une arnaque. Cours fictifs, vraies règles de la BRVM.">
+<link rel="canonical" href="https://efa.africa/ecole-bourse.html">
+<meta property="og:title" content="École de la Bourse : la première année de Koffi">
+<meta property="og:description" content="Une simulation en onze écrans : vos décisions, leurs conséquences, et ce qu’il faut retenir avant d’investir à la BRVM.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:url" content="https://efa.africa/ecole-bourse.html">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Écran d'apprentissage A4 paysage centré ; page autour en tokens clair/sombre, cadre toujours en charte crème */
+:root{
+  --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --page:#E9E2D2; --page-ink:#4E5566;
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --corail:#E44828; --bleu:#2188D6;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#7A8293; --line:#E2D8C4; --hausse:#1E9E5A;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}}
+:root[data-theme="dark"]{--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-block:16px}
+.cadre-wrap{width:min(100%, calc((100vh - 70px) * 1.4143), 1280px)}
+.cadre{container-type:inline-size;width:100%;aspect-ratio:297/210;background:var(--creme);color:var(--ink);border-radius:12px;overflow:hidden;
+  display:grid;grid-template-rows:auto auto 1fr auto;box-shadow:0 18px 50px rgba(11,18,32,.28)}
+/* bandeau */
+.barre{background:var(--nuit);color:#fff;display:flex;align-items:center;gap:2cqw;padding:1.5cqw 2.6cqw}
+.label{background:var(--corail);color:#fff;font-weight:800;font-size:max(9px,1.2cqw);letter-spacing:.18em;text-transform:uppercase;padding:.55cqw 1.2cqw;border-radius:999px;white-space:nowrap}
+.titre-mod{flex:1;min-width:0;font-weight:700;font-size:max(10px,1.5cqw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#C9D1DE}
+.compteur{font-family:var(--f-display);font-weight:700;font-size:max(12px,1.9cqw);font-variant-numeric:tabular-nums}
+.progres{display:grid;grid-template-columns:repeat(7,1fr);gap:.5cqw;padding:1.1cqw 2.6cqw 0}
+.progres button{all:unset;cursor:pointer;height:max(4px,.6cqw);border-radius:999px;background:var(--line)}
+.progres button.fait{background:var(--corail)}
+.progres button:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
+/* corps */
+.corps{display:grid;grid-template-columns:38% 1fr;gap:3cqw;padding:2.2cqw 3.4cqw;min-height:0;overflow:auto}
+.illu{border-radius:1.4cqw;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2cqw;padding:2cqw;min-height:0}
+.illu.bleu{background:var(--bleu);color:#fff}.illu.nuit{background:var(--nuit);color:#fff}.illu.papier{background:var(--papier);color:var(--ink)}.illu.corail{background:var(--corail);color:#fff}
+.illu svg.perso{width:62%;height:auto;max-height:70%}
+.illu.photo{position:relative;padding:0;margin:0;overflow:hidden;background:var(--nuit);justify-content:flex-end}
+.illu.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.illu.photo .legende{position:relative;width:100%;color:#fff;padding:5cqw 1.6cqw 1.6cqw;background:linear-gradient(to top,rgba(11,18,32,.92),rgba(11,18,32,0))}
+.legende{font-size:max(10px,1.4cqw);font-weight:700;text-align:center;line-height:1.3}
+.texte{display:flex;flex-direction:column;justify-content:center;gap:1.3cqw;min-width:0}
+.sur{font-size:max(9px,1.2cqw);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.h{font-family:var(--f-display);font-weight:700;font-size:max(16px,3.2cqw);line-height:1.12;color:var(--nuit);margin:0;text-wrap:balance}
+.p{font-size:max(12px,1.75cqw);line-height:1.45;color:var(--ink2);margin:0}
+.p strong{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:.8cqw}
+.chip{font-size:max(10px,1.3cqw);font-weight:700;background:var(--nuit);color:#fff;padding:.55cqw 1.2cqw;border-radius:999px}
+.aplat{background:var(--nuit);color:#fff;border-radius:.4cqw;padding:1.4cqw 1.8cqw;font-family:var(--f-display);font-weight:700;font-size:max(13px,2.2cqw);line-height:1.25}
+.aplat .c{color:#F09680}.aplat .s{color:#6DB8F2}
+/* tableau chiffré */
+.tab{width:100%;border-collapse:collapse;font-size:max(10px,1.45cqw);font-variant-numeric:tabular-nums}
+.tab td{padding:.45cqw .3cqw;border-bottom:1px solid rgba(255,255,255,.18)}
+.tab td:last-child{text-align:right;font-weight:700}
+.tab tr.tot td{border-bottom:0;padding-top:.9cqw;font-weight:800}
+.tab .m{color:#F09680}
+.tabtitre{font-size:max(9px,1.15cqw);font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.75;align-self:flex-start}
+/* exercice */
+.exo{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw}
+.exo label{display:flex;flex-direction:column;gap:.4cqw;font-size:max(10px,1.3cqw);font-weight:700;color:var(--ink2)}
+.exo input{font:inherit;font-size:max(13px,1.9cqw);font-weight:700;padding:.8cqw 1cqw;border:1px solid var(--line);border-radius:.7cqw;background:var(--papier);color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
+.exo input:focus{outline:2px solid var(--bleu);border-color:transparent}
+.resultat{font-family:var(--f-display);font-weight:700;font-size:max(22px,4.6cqw);line-height:1;font-variant-numeric:tabular-nums}
+.verdict{font-size:max(11px,1.5cqw);font-weight:700;text-align:center;line-height:1.35}
+/* quiz */
+.q{display:flex;flex-direction:column;gap:1cqw}
+.q .enonce{font-family:var(--f-display);font-weight:700;font-size:max(14px,2.2cqw);line-height:1.25;color:var(--nuit);margin:0}
+.opts{display:flex;flex-direction:column;gap:.8cqw}
+.opt{all:unset;cursor:pointer;background:var(--papier);border-radius:.8cqw;padding:1cqw 1.4cqw;font-size:max(12px,1.65cqw);font-weight:600;color:var(--ink);display:flex;gap:1cqw;align-items:center}
+.opt:hover{background:#fff}
+.opt:focus-visible{outline:2px solid var(--bleu)}
+.opt .l{font-weight:800;color:var(--corail);min-width:1.6em}
+.opt.ok{background:var(--hausse);color:#fff}.opt.ok .l{color:#fff}
+.opt.ko{background:var(--corail);color:#fff}.opt.ko .l{color:#fff}
+.opt[disabled]{cursor:default}
+.explic{font-size:max(11px,1.5cqw);line-height:1.4;color:var(--ink2);background:var(--papier);border-radius:.8cqw;padding:1cqw 1.4cqw}
+.qnum{font-size:max(9px,1.2cqw);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.score{font-family:var(--f-display);font-weight:700;font-size:max(30px,7cqw);line-height:1}
+/* pied */
+.pied{display:flex;align-items:center;gap:1.6cqw;padding:1.3cqw 2.6cqw;background:var(--papier);border-top:1px solid var(--line)}
+.ely{margin-right:auto;font-size:max(11px,1.45cqw);font-weight:700;color:var(--bleu);text-decoration:none;white-space:nowrap}
+.ely:hover{text-decoration:underline}
+.duree{font-size:max(10px,1.3cqw);color:var(--ink3);white-space:nowrap}
+.btn{all:unset;cursor:pointer;font-size:max(12px,1.5cqw);font-weight:800;padding:.9cqw 2cqw;border-radius:.8cqw;white-space:nowrap}
+.btn:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
+.prec{background:var(--creme);color:var(--ink)}
+.suiv{background:var(--corail);color:#fff}
+.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed}
+.mention{font-size:12px;color:var(--page-ink);opacity:.8;text-align:center;max-width:70ch}
+.tourner{display:none;font-size:13px;font-weight:700;background:var(--nuit);color:#fff;padding:8px 14px;border-radius:999px}
+@media (orientation:portrait) and (max-width:700px){.tourner{display:block}}
+@media (prefers-reduced-motion:no-preference){.corps{animation:entre .28s ease-out}}
+@keyframes entre{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+[hidden]{display:none!important}
+.tab td:last-child,.tab td.v{white-space:nowrap}
+html,body{height:auto;min-height:100%}
+body{justify-content:safe center}
+.exo.trois{grid-template-columns:repeat(3,1fr)}
+.tab th{font-size:max(9px,1.1cqw);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;text-align:right;padding:.4cqw .3cqw}
+.tab th:first-child{text-align:left}
+.tab td.v{text-align:right;font-weight:700}
+.tab.clair td{border-bottom:1px solid var(--line);color:var(--ink)}
+.tab.clair td.faible{color:var(--corail)}
+.illu .mot{font-size:max(10px,1.3cqw);font-weight:700;opacity:.85;text-align:center}
+.illu .tabtitre.fonce,.resultat.fonce{color:var(--nuit);opacity:1}
+.illu.accueil{justify-content:center;text-align:center}
+.illu .logo{width:24%;height:auto}
+.illu .grand{font-family:var(--f-display);font-weight:700;font-size:max(18px,3.4cqw);line-height:1.12}
+.lienraz{all:unset;cursor:pointer;margin-top:1.6cqw;font-size:max(9px,1.1cqw);font-weight:700;color:#C9D1DE;text-decoration:underline;text-underline-offset:3px}
+.lienraz:focus-visible{outline:2px solid var(--soft-bleu,#6DB8F2)}
+.h.hs{font-size:max(15px,2.5cqw)}
+.tuiles{display:grid;grid-template-columns:1fr 1fr;gap:.8cqw}
+.tuile{all:unset;cursor:pointer;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1cqw;align-items:center;background:var(--papier);border-radius:.9cqw;padding:.9cqw 1.2cqw}
+.tuile:hover{background:#fff}.tuile:focus-visible{outline:2px solid var(--bleu)}
+.tuile .tnum{grid-row:span 2;font-family:var(--f-display);font-weight:700;font-size:max(15px,2.3cqw);color:var(--corail);min-width:1.3em;text-align:center}
+.tuile .tnom{font-weight:800;font-size:max(11px,1.45cqw);color:var(--ink);line-height:1.2}
+.tuile .tetat{font-size:max(9px,1.1cqw);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.tuile.ok .tetat{color:var(--hausse)}
+.tuile.exam{grid-column:span 2;background:var(--nuit)}
+.tuile.exam .tnom{color:#fff}.tuile.exam .tetat{color:#C9D1DE}.tuile.exam .tnum{color:#F09680}
+.tuile.exam.ok .tetat{color:#3CCB7F}
+.note{font-size:max(9px,1.15cqw);color:var(--ink3);margin:0;line-height:1.4}
+.opt.choisi{background:var(--nuit);color:#fff}.opt.choisi .l{color:#F09680}
+.progres button.ici{outline:2px solid var(--nuit);outline-offset:1px}
+.btn[hidden]{display:none}
+.retour{background:transparent;color:var(--ink2);padding-inline:1cqw}
+/* certificat */
+#certif-wrap{width:min(100%, calc((100vh - 150px) * 1.4143), 1280px);display:flex;flex-direction:column;gap:12px;align-items:center}
+.certificat{container-type:inline-size;width:100%;aspect-ratio:297/210;background:var(--creme);color:var(--ink);border-radius:6px;overflow:hidden;position:relative;
+  display:grid;grid-template-rows:auto 1fr auto;padding:4.2cqw 5.4cqw 3.4cqw;box-shadow:0 18px 50px rgba(11,18,32,.28)}
+.c-haut{display:flex;align-items:center;gap:1.4cqw}
+.c-haut img{width:5.6cqw;height:auto}
+.c-logo{font-weight:800;font-size:1.25cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--nuit)}
+.c-specimen{margin-left:auto;background:var(--provisoire,#F2B84B);color:var(--nuit);font-weight:800;font-size:1.05cqw;letter-spacing:.14em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:999px}
+.c-milieu{display:flex;flex-direction:column;justify-content:center;gap:1.1cqw}
+.c-sur{font-weight:800;font-size:1.25cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.c-titre{font-family:var(--f-display);font-weight:700;font-size:5.4cqw;line-height:1.05;color:var(--nuit);margin:0}
+.c-a{font-size:1.6cqw;color:var(--ink2);margin:.6cqw 0 0}
+.c-nom{font-family:var(--f-display);font-weight:700;font-size:4cqw;line-height:1.1;color:var(--nuit);margin:0;overflow-wrap:anywhere}
+.c-texte{font-size:1.55cqw;line-height:1.45;color:var(--ink2);margin:0;max-width:70%}
+.c-modules{list-style:none;margin:.6cqw 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:.5cqw 1.6cqw;font-size:1.2cqw;font-weight:700;color:var(--ink)}
+.c-modules li{display:flex;gap:.6cqw;align-items:baseline}
+.c-modules span{font-family:var(--f-display);color:var(--corail)}
+.c-bas{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:2cqw;align-items:end;border-top:1px solid var(--line);padding-top:1.4cqw}
+.c-et{font-weight:700;font-size:1cqw;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.c-val{font-family:var(--f-display);font-weight:700;font-size:1.6cqw;color:var(--nuit);margin-top:.3cqw}
+.c-signe{border-bottom:1.5px solid var(--nuit);height:2.6cqw;margin-bottom:.4cqw}
+.c-pied{position:absolute;left:5.4cqw;right:5.4cqw;bottom:1.1cqw;display:flex;justify-content:space-between;font-size:1.05cqw;color:var(--ink3)}
+.c-mission{font-weight:700;color:var(--ink2)}.c-mission .ce{color:#EC6243}.c-mission .sp{color:var(--bleu)}
+.c-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.c-actions button{all:unset;cursor:pointer;font-family:var(--f-body);font-size:15px;font-weight:800;min-height:46px;display:inline-flex;align-items:center;padding:0 20px;border-radius:8px;background:var(--nuit);color:#fff}
+.c-actions button.principal{background:var(--corail)}
+.c-actions button.discret{background:transparent;color:var(--page-ink);text-decoration:underline;text-underline-offset:4px}
+.c-actions button:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
+#apercu{max-width:420px;text-align:center;font-size:13px;color:var(--page-ink)}
+#apercu img{width:100%;border-radius:10px;margin-top:6px}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body{background:#fff;padding:0;display:block}
+  body>*:not(#certif-wrap){display:none!important}
+  #certif-wrap{width:297mm;display:block}
+  .c-actions,#apercu{display:none!important}
+  .certificat{width:297mm;height:210mm;border-radius:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<style>
+/* École de la Bourse : compléments à l'écran d'apprentissage */
+.progres{grid-template-columns:repeat(11,1fr)}
+.cadre{grid-template-columns:minmax(0,1fr)}
+.h:focus,.enonce:focus{outline:none}
+.opt.mo{background:#F2B84B;color:var(--nuit)}.opt.mo .l{color:var(--nuit)}
+.opt .t{display:block}
+.explic b{color:var(--ink)}
+.portef{width:100%;background:rgba(255,255,255,.06);border-radius:.8cqw;padding:1cqw 1.2cqw}
+.illu.nuit .tab td{color:#E8EDF5}
+.courbe{width:100%;height:auto;display:block}
+.courbe text{font-family:var(--f-body);font-size:13px;fill:#C9D1DE}
+.carnet{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:max(10px,1.4cqw)}
+.carnet th{font-size:max(9px,1.05cqw);letter-spacing:.08em;text-transform:uppercase;opacity:.75;padding:.4cqw .3cqw;text-align:right}
+.carnet td{padding:.45cqw .3cqw;text-align:right;border-bottom:1px solid rgba(255,255,255,.14)}
+.carnet .ach{color:#6DB8F2}.carnet .ven{color:#F09680}
+.wa{background:#E8EDF5;color:var(--nuit);border-radius:1cqw;padding:1.2cqw 1.4cqw;font-size:max(11px,1.5cqw);line-height:1.4;width:100%}
+.wa small{display:block;font-weight:800;color:#1E9E5A;margin-bottom:.4cqw}
+.exo input.ok{outline:2px solid var(--hausse)}
+.liens{display:flex;flex-direction:column;gap:.7cqw}
+.liens a{background:var(--papier);color:var(--ink);text-decoration:none;font-weight:700;border-radius:.8cqw;padding:.9cqw 1.3cqw;font-size:max(12px,1.55cqw)}
+.liens a:hover{background:#fff}
+.liens a span{color:var(--corail)}
+.gros{font-family:var(--f-display);font-weight:700;font-size:max(26px,5.4cqw);line-height:1;font-variant-numeric:tabular-nums}
+.raz{all:unset;cursor:pointer;font-size:max(10px,1.2cqw);font-weight:700;color:#C9D1DE;text-decoration:underline;text-underline-offset:3px}
+@media (orientation:portrait) and (max-width:700px){
+  .tourner{display:none!important}
+  .cadre-wrap{width:100%}
+  .cadre{aspect-ratio:auto}
+  .corps{grid-template-columns:minmax(0,1fr);overflow:visible;padding:16px;gap:16px}
+  .illu{padding:16px;border-radius:12px;gap:10px}
+  .barre{padding:10px 14px;gap:10px}.progres{padding:10px 14px 0;gap:4px}.progres button{height:5px}
+  .label{font-size:9px;padding:4px 9px}.titre-mod{font-size:12px}.compteur{font-size:15px}
+  .h{font-size:23px}.p{font-size:16px}.sur,.tabtitre,.qnum{font-size:11px}
+  .opt{font-size:15.5px;padding:11px 13px;border-radius:10px;gap:10px}.opts{gap:8px}
+  .explic{font-size:15px;padding:12px 14px;border-radius:10px}
+  .tab,.carnet{font-size:14px}.carnet th{font-size:10.5px}.wa{font-size:15px;padding:12px 14px;border-radius:12px}
+  .aplat{font-size:17px;padding:12px 14px}.exo input{font-size:17px;padding:9px 10px;border-radius:8px}.exo label{font-size:13px}
+  .liens a{font-size:15px;padding:11px 13px;border-radius:10px}.liens{gap:8px}
+  .q .enonce{font-size:19px}
+  .gros{font-size:34px}.resultat{font-size:30px}.verdict{font-size:15px}
+  .pied{padding:10px 14px;gap:8px}.duree{display:none}.ely{font-size:13px}.btn{font-size:15px;padding:10px 16px;border-radius:8px}
+  .portef{padding:10px 12px;border-radius:10px}
+}
+</style>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+
+<div class="tourner" role="note">Tournez votre téléphone pour un meilleur confort de lecture</div>
+<div class="cadre-wrap">
+  <section class="cadre" aria-label="Écran d'apprentissage">
+    <div class="barre">
+      <span class="label">École de la Bourse</span>
+      <span class="titre-mod">Simulation 1 · La première année de Koffi</span>
+      <span class="compteur" id="compteur"></span>
+    </div>
+    <nav class="progres" id="progres" aria-label="Progression"></nav>
+    <div class="corps" id="corps" aria-live="polite"></div>
+    <div class="pied">
+      <a class="ely" href="https://efa.africa/ely.html" target="_blank" rel="noopener">Demander à Ely</a>
+      <span class="duree" id="duree"></span>
+      <button class="btn prec" id="prec" type="button">Précédent</button>
+      <button class="btn suiv" id="suiv" type="button">Suivant</button>
+    </div>
+  </section>
+</div>
+<p class="mention">Simulation pédagogique. Cacao d’Ébène est une société fictive ; ses cours, ses résultats et son dividende sont inventés. Les frais et le fonctionnement des ordres reprennent des ordres de grandeur de la BRVM ; seule la grille de votre SGI fait foi. Koffi est un personnage fictif. EFA éduque, elle ne conseille aucun titre ni établissement.</p>
+
+<script>
+(function(){
+"use strict";
+var $=function(i){return document.getElementById(i)};
+var F=function(n){return (n<0?'− ':'')+Math.abs(Math.round(n)).toLocaleString('fr-FR').replace(/[   ]/g,' ')+' F'};
+var PC=function(x,d){d=d==null?1:d;return (x<0?'− ':'')+(Math.round(Math.abs(x)*Math.pow(10,d))/Math.pow(10,d)).toString().replace('.',',')+' %'};
+function compte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true})}catch(e){}}
+
+/* ---------- Données fictives ---------- */
+var FRAIS=0.013, DEPART=100000, NB=38, DIV=120, IMPOT=0.10;
+var MOIS=['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
+var COURS=[2450,2470,2400,2150,2200,2260,2320,2300,2380,2450,2520,2600];
+var ACHAT={A:{cout:95750,prix:'2 520 F en moyenne'},B:{cout:93100,prix:'2 450 F'},C:{cout:91200,prix:'2 400 F'}};
+
+/* ---------- État ---------- */
+var CLE='efa_ecole_bourse_1', etat={i:0,c:{}};
+try{var s=localStorage.getItem(CLE);if(s)etat=JSON.parse(s)}catch(e){}
+function sauver(){try{localStorage.setItem(CLE,JSON.stringify(etat))}catch(e){}}
+
+function portef(jusqua){
+  var c=etat.c, p={cash:DEPART,n:0,frais:0,cout:0,vendu:false,div:0,perte:0};
+  if(c.d1){var a=ACHAT[c.d1];p.n=NB;p.cout=a.cout;var f=Math.round(a.cout*FRAIS);p.frais+=f;p.cash-=a.cout+f}
+  if(jusqua>=2&&c.d2){
+    if(c.d2==='A'){var v=p.n*2150,f2=Math.round(v*FRAIS);p.cash+=v-f2;p.frais+=f2;p.n=0;p.vendu=true}
+    if(c.d2==='B'){var k=Math.floor(p.cash/(2150*(1+FRAIS)));if(k>0){var co=k*2150,f3=Math.round(co*FRAIS);p.cash-=co+f3;p.frais+=f3;p.cout+=co;p.n+=k;p.rachat=k}}
+  }
+  if(jusqua>=3&&p.n){p.div=Math.round(p.n*DIV*(1-IMPOT));}
+  if(jusqua>=4&&c.d4==='A'){p.perte=50000}
+  return p;
+}
+function tablePortef(p,cours,titre){
+  var val=p.n*cours;
+  return '<div class="portef"><span class="tabtitre">'+(titre||'Le compte-titres de Koffi')+'</span><table class="tab"><tbody>'+
+    '<tr><td>Actions Cacao d’Ébène</td><td>'+p.n+' × '+F(cours)+'</td></tr>'+
+    '<tr><td>Valeur des actions</td><td>'+F(val)+'</td></tr>'+
+    '<tr><td>Espèces sur le compte</td><td>'+F(p.cash+p.div)+'</td></tr>'+
+    '<tr><td>Frais payés</td><td class="m">'+F(-p.frais)+'</td></tr>'+
+    '<tr class="tot"><td>Total</td><td>'+F(val+p.cash+p.div)+'</td></tr></tbody></table></div>';
+}
+function courbe(jusqua,marque){
+  var W=420,H=200,pad=28,pr=46,mn=2050,mx=2700,n=COURS.length;
+  var x=function(i){return pad+i*(W-pad-pr)/(n-1)}, y=function(v){return H-pad-(v-mn)/(mx-mn)*(H-pad*2)};
+  var pts=COURS.slice(0,jusqua+1).map(function(v,i){return x(i).toFixed(1)+','+y(v).toFixed(1)}).join(' ');
+  var g='<svg class="courbe" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Cours fictif de Cacao d’Ébène, de janvier à '+MOIS[jusqua]+' : '+COURS[jusqua]+' F">';
+  [2100,2400,2700].forEach(function(v){g+='<line x1="'+pad+'" x2="'+(W-pr)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#1F2C45"/><text x="'+(W-pr+6)+'" y="'+(y(v)+4)+'" font-size="11">'+v+'</text>'});
+  g+='<line x1="'+pad+'" x2="'+(W-pr)+'" y1="'+y(2450)+'" y2="'+y(2450)+'" stroke="#6DB8F2" stroke-dasharray="4 4"/>';
+  g+='<polyline points="'+pts+'" fill="none" stroke="#F09680" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
+  g+='<circle cx="'+x(jusqua)+'" cy="'+y(COURS[jusqua])+'" r="5" fill="#F09680"/>';
+  g+='<text x="'+pad+'" y="'+(H-6)+'">'+MOIS[0]+'</text>'+(jusqua>1?'<text x="'+(x(jusqua)-14)+'" y="'+(H-6)+'">'+MOIS[jusqua]+'</text>':'');
+  g+='<text x="'+(pad+4)+'" y="'+(y(2450)-6)+'" fill="#6DB8F2">prix d’achat visé · 2 450</text>';
+  return g+'</svg>';
+}
+
+/* ---------- Écrans ---------- */
+var E=[];
+// 0 Accueil
+E.push({min:1,rendu:function(){
+  var fait=Object.keys(etat.c).length;
+  return '<div class="illu nuit accueil"><img class="logo" src="certificat-pilote/logo-efa.png" alt=""><span class="tabtitre">École de la Bourse · Simulation 1</span><div class="grand">La première année de Koffi en Bourse</div><span class="mot">11 écrans · 10 minutes</span>'+(fait?'<button class="raz" id="raz" type="button">Recommencer la simulation</button>':'')+'</div>'+
+  '<div class="texte"><p class="sur">Apprendre en décidant</p><h2 class="h">Vous prenez les décisions de Koffi</h2>'+
+  '<p class="p">Koffi a sa réserve de précaution, pas de dette chère, et 100&nbsp;000&nbsp;F qui peuvent attendre cinq ans. Il ouvre un compte chez une SGI agréée et achète des actions d’une société fictive, <strong>Cacao d’Ébène</strong>.</p>'+
+  '<p class="p">Pendant un an, vous décidez à sa place&nbsp;: comment passer l’ordre, que faire quand le cours baisse, comment lire les résultats, quoi répondre à un message trop beau. Chaque choix a des conséquences sur son compte.</p>'+
+  '<div class="chips"><span class="chip">Cours fictifs</span><span class="chip">Vrais mécanismes</span><span class="chip">Aucun conseil de titre</span></div></div>';
+}});
+// 1 Le décor
+E.push({min:1,rendu:function(){
+  return '<div class="illu nuit"><span class="tabtitre">Fiche de la société (fictive)</span><table class="tab"><tbody>'+
+  '<tr><td>Société</td><td>Cacao d’Ébène</td></tr><tr><td>Activité</td><td>Transforme le cacao</td></tr><tr><td>Cours de l’action</td><td>2 450 F</td></tr>'+
+  '<tr><td>Titres échangés par jour</td><td>≈ 300</td></tr><tr><td>Dividende l’an dernier</td><td>110 F par action</td></tr><tr><td>Chiffre d’affaires</td><td>42 milliards F</td></tr></tbody></table></div>'+
+  '<div class="texte"><p class="sur">Le décor</p><h2 class="h">Le compte de Koffi est ouvert</h2>'+
+  '<p class="p">Sa SGI prend <strong>1&nbsp;%</strong> de commission à chaque achat et chaque vente. La Bourse, le dépositaire et le régulateur prennent environ <strong>0,3&nbsp;%</strong>. Chaque ordre coûte donc <strong>1,3&nbsp;%</strong> de son montant.</p>'+
+  '<p class="p">Koffi vise <strong>38 actions</strong> à 2&nbsp;450&nbsp;F, soit 93&nbsp;100&nbsp;F. Il les a choisies pour une raison qu’il devra écrire dans son cahier. Mais d’abord, il faut passer l’ordre.</p></div>';
+}});
+// 2 Le carnet d'ordres
+E.push({min:1,rendu:function(){
+  return '<div class="illu nuit"><span class="tabtitre">Carnet d’ordres de Cacao d’Ébène, ce matin</span><table class="carnet"><thead><tr><th>Acheteurs</th><th>Prix</th><th>Vendeurs</th></tr></thead><tbody>'+
+  '<tr><td></td><td class="ven">2 600 F</td><td class="ven">13 titres</td></tr><tr><td></td><td class="ven">2 520 F</td><td class="ven">10 titres</td></tr><tr><td></td><td class="ven">2 450 F</td><td class="ven">15 titres</td></tr>'+
+  '<tr><td class="ach">40 titres</td><td class="ach">2 400 F</td><td></td></tr><tr><td class="ach">25 titres</td><td class="ach">2 380 F</td><td></td></tr></tbody></table><span class="mot">En bleu, ceux qui veulent acheter. En corail, ceux qui veulent vendre.</span></div>'+
+  '<div class="texte"><p class="sur">Comprendre</p><h2 class="h">Le prix, ce sont les ordres des autres</h2>'+
+  '<p class="p">Une action ne s’achète pas à «&nbsp;son&nbsp;» prix. Elle s’achète au prix auquel quelqu’un accepte de la vendre. Ce matin, le vendeur le moins cher propose <strong>15 titres à 2&nbsp;450&nbsp;F</strong>. Les suivants demandent 2&nbsp;520&nbsp;F, puis 2&nbsp;600&nbsp;F.</p>'+
+  '<p class="p">À la BRVM, beaucoup de titres s’échangent peu. Le carnet est mince&nbsp;: un ordre trop pressé peut faire monter le prix contre vous.</p></div>';
+}});
+// 3 Décision 1 : l'ordre
+E.push({min:2,cle:'d1',rendu:function(){return decision(this,courbe(0),'Décision 1 · Passer l’ordre','Koffi veut ses 38 actions. Comment passe-t-il l’ordre&nbsp;?',[
+  ['A','Au marché : tout acheter tout de suite, quel que soit le prix.','ko','<b>Les 38 actions sont achetées, mais cher.</b> L’ordre a pris les 15 titres à 2&nbsp;450&nbsp;F, puis 10 à 2&nbsp;520&nbsp;F et 13 à 2&nbsp;600&nbsp;F. Koffi paie 95&nbsp;750&nbsp;F au lieu de 93&nbsp;100&nbsp;F&nbsp;: 2&nbsp;650&nbsp;F de plus, en une seconde. Sur un titre peu échangé, l’ordre au marché est à éviter.'],
+  ['B','À cours limité à 2 450 F : pas un franc de plus.','ok','<b>Bon réflexe.</b> 15 actions sont achetées ce matin à 2&nbsp;450&nbsp;F. Le reste de l’ordre attend dans le carnet et s’exécute dans les jours suivants, au même prix. Koffi paie 93&nbsp;100&nbsp;F, plus 1&nbsp;210&nbsp;F de frais.'],
+  ['C','À cours limité à 2 400 F, et attendre patiemment.','ok','<b>La patience a payé, cette fois.</b> Rien ne s’exécute ce matin. Trois séances plus tard, des vendeurs acceptent 2&nbsp;400&nbsp;F&nbsp;: Koffi paie 91&nbsp;200&nbsp;F, plus 1&nbsp;186&nbsp;F de frais. Le risque&nbsp;: que le cours monte et que l’ordre ne s’exécute jamais. Fixez une date limite à votre ordre.']]);
+}});
+// 4 La raison écrite
+E.push({min:1,cle:'r',rendu:function(){return decision(this,'<div class="aplat">«&nbsp;J’achète Cacao d’Ébène parce que…&nbsp;»</div><span class="mot">La phrase du cahier de Koffi. C’est elle qu’il relira quand le cours baissera.</span>','Le cahier','Quelle raison Koffi doit-il écrire&nbsp;?',[
+  ['A','Le cours a monté de 10 % ce mois-ci.','ko','<b>Ce n’est pas une raison, c’est un souvenir.</b> Un cours qui a monté ne dit rien de ce qu’il fera. Le jour où il baisse, cette phrase ne vous aide pas à décider.'],
+  ['B','Un collègue en a acheté et il s’y connaît.','ko','<b>La raison de votre collègue n’est pas la vôtre.</b> Il peut vendre demain sans vous prévenir. Vous devez pouvoir expliquer votre achat sans lui.'],
+  ['C','Elle vend plus chaque année, verse un dividende, et je garde 5 ans.','ok','<b>C’est une vraie raison.</b> Elle porte sur l’entreprise, pas sur le cours, et elle dit combien de temps vous gardez. Elle se vérifie à chaque publication des résultats.']]);
+}});
+// 5 La baisse
+E.push({min:2,cle:'d2',rendu:function(){var p=portef(1);return decision(this,courbe(3)+tablePortef(p,2150),'Décision 2 · Avril, le cours baisse','Cacao d’Ébène tombe à 2&nbsp;150&nbsp;F, 12&nbsp;% sous le prix visé. Aucune nouvelle sur la société. Que fait Koffi&nbsp;?',[
+  ['A','Il vend tout, pour ne pas perdre plus.','ko','<b>La perte devient définitive.</b> Koffi récupère 81&nbsp;700&nbsp;F, moins 1&nbsp;062&nbsp;F de frais. Rien n’avait changé dans l’entreprise&nbsp;: seul le cours avait bougé. Vendre sur une simple baisse, c’est payer deux fois des frais pour acheter cher et vendre bas.'],
+  ['B','Il rachète avec ses espèces : c’est moins cher.','mo','<b>Possible, mais pas encore justifié.</b> Racheter a du sens si la raison écrite tient toujours. Sans avoir lu de nouvelles, c’est un pari. Ici, Koffi avait peu d’espèces&nbsp;: il ajoute quelques actions et paie de nouveaux frais.'],
+  ['C','Il relit son cahier et attend les résultats annuels.','ok','<b>C’est la méthode.</b> Sa raison portait sur l’entreprise, pas sur le cours. Tant qu’aucune information ne la contredit, une baisse ne demande aucune action. Il ne paie aucun frais.']]);
+}});
+// 6 Les résultats
+E.push({min:2,cle:'d3',rendu:function(){return decision(this,'<span class="tabtitre">Résultats annuels publiés (fictifs)</span><table class="tab"><thead><tr><th></th><th>Année passée</th><th>Cette année</th></tr></thead><tbody>'+
+  '<tr><td>Chiffre d’affaires</td><td class="v">42 Md</td><td class="v">46 Md</td></tr><tr><td>Bénéfice net</td><td class="v">3,1 Md</td><td class="v">3,4 Md</td></tr><tr><td>Dette</td><td class="v">12 Md</td><td class="v m">15 Md</td></tr><tr><td>Dividende par action</td><td class="v">110 F</td><td class="v">120 F</td></tr></tbody></table><span class="mot">La société explique la dette : une nouvelle usine de transformation.</span>','Décision 3 · Lire les résultats','Que retient Koffi&nbsp;?',[
+  ['A','Tout va bien : la dette, ça ne compte pas.','ko','<b>La dette compte toujours.</b> Elle se rembourse avec les bénéfices futurs. Une dette qui monte plus vite que les ventes est un signal à suivre.'],
+  ['B','L’activité progresse ; la dette monte pour une usine : je surveille.','ok','<b>Exactement.</b> Ventes +10&nbsp;%, bénéfice +10&nbsp;%, dividende en hausse&nbsp;: sa raison tient. La dette finance un investissement, pas des pertes. Koffi note dans son cahier de vérifier, l’an prochain, que l’usine produit.'],
+  ['C','Le cours a baissé, donc l’entreprise va mal.','ko','<b>Le cours et l’entreprise sont deux choses.</b> En avril, le cours baissait alors que les ventes progressaient. C’est l’entreprise qu’on lit dans les résultats, pas dans le cours du jour.']]);
+}});
+// 7 Le dividende (exercice)
+E.push({min:2,cle:'d5',rendu:function(){
+  var p=portef(2), brut=p.n*DIV, net=Math.round(brut*(1-IMPOT)), self=this, rep=etat.c.d5;
+  if(!p.n) return '<div class="illu nuit">'+courbe(6)+'</div><div class="texte"><p class="sur">Juillet · Le dividende</p><h2 class="h">Koffi n’a plus d’actions</h2><p class="p">Cacao d’Ébène verse 120&nbsp;F par action. Koffi a vendu en avril&nbsp;: il ne touche rien. Ceux qui ont gardé reçoivent 108&nbsp;F net par action, après l’impôt retenu à la source.</p><p class="p">Avec 38 actions, il aurait reçu <strong>4&nbsp;104&nbsp;F</strong>, versés directement sur son compte-titres.</p></div>';
+  setTimeout(function(){var i=$('x-div'),b=$('x-ok');if(!i)return;var go=function(){var v=+String(i.value).replace(/[^\d]/g,'');if(!v)return;etat.c.d5=(Math.abs(v-net)<=2?'ok':'ko');sauver();compte('ecole-bourse-dividende');aller(etat.i)};b.addEventListener('click',go);i.addEventListener('keydown',function(e){if(e.key==='Enter')go()})},0);
+  return '<div class="illu nuit"><span class="tabtitre">Juillet · Avis de paiement (fictif)</span><table class="tab"><tbody><tr><td>Actions détenues</td><td>'+p.n+'</td></tr><tr><td>Dividende brut</td><td>120 F par action</td></tr><tr><td>Impôt retenu à la source</td><td>10 %</td></tr></tbody></table>'+
+  (rep?'<div class="resultat">'+F(net)+'</div><span class="verdict">net, versé sur le compte-titres</span>':'')+'</div>'+
+  '<div class="texte"><p class="sur">Exercice · Le dividende</p><h2 class="h">Combien Koffi touche-t-il vraiment&nbsp;?</h2>'+
+  (rep?'<p class="explic">'+(rep==='ok'?'<b>Juste.</b> ':'<b>Pas tout à fait.</b> ')+p.n+' × 120&nbsp;F = '+F(brut)+' brut. Moins 10&nbsp;% d’impôt&nbsp;: <b>'+F(net)+' net</b>. Rapporté à ce qu’il a payé ses actions, c’est un rendement d’environ '+PC(net/p.cout*100)+' sur l’année, avant la variation du cours. Le taux de l’impôt dépend du pays de la société&nbsp;: dans cet exemple, 10&nbsp;%.</p>':
+  '<p class="p">Le dividende est une part du bénéfice reversée aux actionnaires. Il est annoncé brut&nbsp;; un impôt est retenu à la source avant le versement.</p><div class="exo"><label>Dividende net reçu par Koffi<input id="x-div" inputmode="numeric" autocomplete="off" placeholder="en F"></label><label>&nbsp;<button class="btn suiv" id="x-ok" type="button">Vérifier</button></label></div>')+'</div>';
+}});
+// 8 L'arnaque
+E.push({min:1,cle:'d4',rendu:function(){return decision(this,'<div class="wa"><small>Groupe «&nbsp;Bourse Gagnante 2026&nbsp;»</small>Bonjour frère&nbsp;🙏 Notre équipe d’experts BRVM garantit <b>3&nbsp;% par mois</b>. Places limitées&nbsp;! Envoie 50&nbsp;000&nbsp;F sur ce numéro avant ce soir et tu doubles en 2 ans. 📈💰</div><span class="mot">Septembre. Un message transféré dans un groupe WhatsApp.</span>','Décision 4 · Septembre, un message','Koffi a encore sa réserve de précaution. Que fait-il&nbsp;?',[
+  ['A','Il envoie 50 000 F de sa réserve : 3 % par mois, c’est tentant.','ko','<b>L’argent est perdu.</b> Le numéro ne répond plus au bout de deux semaines. Personne ne peut garantir 3&nbsp;% par mois, et une SGI agréée ne demande jamais d’envoyer de l’argent sur un numéro personnel. La réserve de Koffi a fondu de 50&nbsp;000&nbsp;F.'],
+  ['B','Il demande le numéro d’agrément, vérifie sur amf-umoa.org, et n’envoie rien.','ok','<b>Le bon réflexe.</b> Aucun agrément&nbsp;: c’est une arnaque. Trois signaux suffisaient&nbsp;: un rendement garanti, l’urgence, un numéro personnel. Koffi signale le message au groupe.'],
+  ['C','Il transfère le message à sa famille pour avoir leur avis.','mo','<b>Il n’a rien perdu, mais il a fait circuler l’arnaque.</b> Un proche moins prudent pourrait envoyer de l’argent. Mieux vaut vérifier l’agrément, puis prévenir.']]);
+}});
+// 9 Bilan
+E.push({min:2,rendu:function(){
+  var p=portef(4), val=p.n*2600, tot=val+p.cash+p.div, gain=tot-DEPART-p.perte;
+  var ok=['d1','r','d2','d3','d4'].filter(function(k){return {d1:{B:1,C:1},r:{C:1},d2:{C:1},d3:{B:1},d4:{B:1}}[k][etat.c[k]]}).length;
+  var ref=Math.round(NB*2600+ (DEPART-93100-1210) + Math.round(NB*DIV*(1-IMPOT)));
+  compte('ecole-bourse-bilan');
+  return '<div class="illu nuit"><span class="tabtitre">Décembre · Bilan de l’année</span><div class="gros" style="color:'+(gain>=0?'#3CCB7F':'#F09680')+'">'+(gain>=0?'+':'')+F(gain)+'</div><span class="mot">'+PC(gain/DEPART*100)+' sur les 100&nbsp;000&nbsp;F de départ'+(p.perte?', arnaque comprise':'')+'</span>'+tablePortef(p,2600,'Compte-titres au 31 décembre')+'</div>'+
+  '<div class="texte"><p class="sur">Votre méthode&nbsp;: '+ok+' décision'+(ok>1?'s':'')+' sur 5</p><h2 class="h">'+(ok>=4?'Une année traversée avec méthode':ok>=2?'Une année instructive':'Une année qui coûte cher')+'</h2>'+
+  '<p class="p">Le cours finit l’année à 2&nbsp;600&nbsp;F. Koffi a payé <strong>'+F(p.frais)+'</strong> de frais'+(p.vendu?', vendu en avril au plus bas':'')+(p.perte?', et perdu 50&nbsp;000&nbsp;F de sa réserve dans une arnaque':'')+'.</p>'+
+  (Math.round(tot)===ref&&!p.perte?'<p class="p">C’est le chemin de la méthode&nbsp;: un ordre à cours limité, rien pendant la baisse.':'<p class="p">Pour comparer&nbsp;: avec un ordre à cours limité, sans rien faire pendant la baisse, il aurait <strong>'+F(ref)+'</strong>, frais de vente non compris.')+' Si l’action avait fini plus bas, la méthode aurait été la même&nbsp;: c’est elle qu’on juge, pas le cours de décembre.</p>'+
+  '<p class="p" style="font-size:.9em">Pour vendre, il faudrait encore payer environ 1,3&nbsp;% de frais. Un an, c’est court&nbsp;: Koffi avait prévu de garder cinq ans.</p></div>';
+}});
+// 10 Retenir
+E.push({min:1,rendu:function(){
+  compte('ecole-bourse-fin');
+  return '<div class="illu bleu"><span class="tabtitre">Ce qu’il faut retenir</span><div class="aplat" style="background:transparent;padding:0">1. Ordre à cours limité.<br>2. Une raison écrite.<br>3. Une baisse n’est pas une nouvelle.<br>4. On lit l’entreprise, pas le cours.<br>5. Rendement garanti = arnaque.</div></div>'+
+  '<div class="texte"><p class="sur">Simulation terminée</p><h2 class="h">Avant votre vrai premier ordre</h2><div class="liens">'+
+  '<a href="questions-a-poser-a-sa-sgi.html?src=ecole-bourse">Les dix questions à poser à votre SGI <span>→</span></a>'+
+  '<a href="premiers-pas-brvm.html?src=ecole-bourse">Premiers pas à la BRVM&nbsp;: 10 choses à savoir <span>→</span></a>'+
+  '<a href="methode.html?src=ecole-bourse#brvm">Lire une vraie séance de la BRVM <span>→</span></a>'+
+  '<a href="parcours.html?src=ecole-bourse#P8">Reprendre le parcours Premiers pas à la BRVM <span>→</span></a></div>'+
+  '<p class="p" style="font-size:.9em">D’autres simulations suivront&nbsp;: investir avec un petit budget, investir à plusieurs en club.</p></div>';
+}});
+
+/* ---------- Décisions ---------- */
+function decision(scr,illu,sur,question,opts){
+  var rep=etat.c[scr.cle];
+  var h='<div class="illu nuit">'+illu+'</div><div class="texte"><p class="sur">'+sur+'</p><div class="q"><p class="enonce">'+question+'</p><div class="opts">';
+  opts.forEach(function(o){var cl=rep?(o[0]===rep?' '+o[2]:''):'';h+='<button class="opt'+cl+'" type="button" data-cle="'+scr.cle+'" data-v="'+o[0]+'"'+(rep?' disabled':'')+'><span class="l">'+o[0]+'</span><span class="t">'+o[1]+'</span></button>'});
+  h+='</div>';
+  if(rep){var o=opts.filter(function(x){return x[0]===rep})[0];h+='<p class="explic">'+o[3]+'</p>'}
+  return h+'</div></div>';
+}
+
+/* ---------- Navigation ---------- */
+var corps=$('corps'), prog=$('progres');
+E.forEach(function(e,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Écran '+(i+1));b.addEventListener('click',function(){if(i<=maxAccessible())aller(i)});prog.appendChild(b)});
+function bloque(i){var e=E[i];if(e.cle==='d5'&&!portef(2).n)return false;return !!(e.cle&&!etat.c[e.cle])}
+function maxAccessible(){for(var i=0;i<E.length;i++){if(bloque(i))return i}return E.length-1}
+function aller(i,focus){
+  etat.i=Math.max(0,Math.min(i,E.length-1));sauver();
+  corps.innerHTML=E[etat.i].rendu.call(E[etat.i]);
+  [].forEach.call(prog.children,function(b,k){b.classList.toggle('fait',k<=etat.i);b.setAttribute('aria-current',k===etat.i?'step':'false')});
+  $('compteur').textContent=(etat.i+1)+' / '+E.length;
+  $('duree').textContent='≈ '+E[etat.i].min+' min';
+  $('prec').setAttribute('aria-disabled',etat.i===0?'true':'false');
+  var fin=etat.i===E.length-1, bl=bloque(etat.i);
+  $('suiv').textContent=etat.i===0?(Object.keys(etat.c).length?'Reprendre':'Commencer'):fin?'Recommencer':'Suivant';
+  $('suiv').setAttribute('aria-disabled',bl?'true':'false');
+  $('suiv').title=bl?'Choisissez une réponse pour continuer':'';
+  var r=$('raz');if(r)r.addEventListener('click',function(){etat={i:0,c:{}};sauver();aller(0)});
+  if(focus){var t=corps.querySelector('.h,.enonce');if(t){t.setAttribute('tabindex','-1');t.focus({preventScroll:true})}
+    var c=document.querySelector('.cadre');if(c&&c.getBoundingClientRect().top<0)c.scrollIntoView({block:'start'})}
+}
+corps.addEventListener('click',function(ev){
+  var b=ev.target.closest('.opt');if(!b||b.disabled)return;
+  etat.c[b.getAttribute('data-cle')]=b.getAttribute('data-v');sauver();
+  compte('ecole-bourse-'+b.getAttribute('data-cle')+'-'+b.getAttribute('data-v'));
+  aller(etat.i);var x=corps.querySelector('.explic');if(x&&x.scrollIntoView)x.scrollIntoView({block:'nearest'});
+});
+$('prec').addEventListener('click',function(){if(etat.i>0)aller(etat.i-1,true)});
+$('suiv').addEventListener('click',function(){
+  if(bloque(etat.i))return;
+  if(etat.i===0&&Object.keys(etat.c).length){aller(maxAccessible(),true);return}
+  if(etat.i===E.length-1){etat={i:0,c:{}};sauver();aller(0,true);return}
+  aller(etat.i+1,true);
+});
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')$('suiv').click();if(e.key==='ArrowLeft')$('prec').click()});
+aller(Math.min(etat.i||0,maxAccessible()));
+compte('ecole-bourse-ouverture');
+})();
+</script>
+<script src="efa-suite.js?v=2026102404" defer></script>
+</body></html>
