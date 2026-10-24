@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>L’essentiel de la Bourse · École de la Bourse EFA</title>
+<meta name="description" content="Cinq formations courtes pour investir à la BRVM : être prêt, comprendre ce qu’on achète, le fonctionnement de la Bourse, le premier ordre, tenir dans la durée. Quiz et plan d’investissement.">
+<link rel="canonical" href="https://efa.africa/bourse-essentiel.html">
+<meta property="og:title" content="L’essentiel de la Bourse : cinq formations pour investir à la BRVM">
+<meta property="og:description" content="École de la Bourse EFA : cinq formations, des cas, des quiz, et votre plan d’investissement à la fin.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:url" content="https://efa.africa/bourse-essentiel.html">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="ecole-bourse.css?v=2026102401">
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+
+<div class="tourner" role="note">Tournez votre téléphone pour un meilleur confort de lecture</div>
+<div class="cadre-wrap">
+  <section class="cadre" aria-label="Écran d'apprentissage">
+    <div class="barre">
+      <span class="label">École de la Bourse</span>
+      <span class="titre-mod" id="titre">L’essentiel de la Bourse</span>
+      <span class="compteur" id="compteur"></span>
+    </div>
+    <nav class="progres" id="progres" aria-label="Progression"></nav>
+    <div class="corps" id="corps" aria-live="polite"></div>
+    <div class="pied">
+      <a class="ely" href="https://efa.africa/ely.html" target="_blank" rel="noopener">Demander à Ely</a>
+      <span class="duree" id="duree"></span>
+      <button class="btn prec" id="som" type="button">Sommaire</button>
+      <button class="btn prec" id="prec" type="button">Précédent</button>
+      <button class="btn suiv" id="suiv" type="button">Suivant</button>
+    </div>
+  </section>
+</div>
+<p class="mention">Formation pédagogique d’EFA. Koffi et Tantie Affoué sont des personnages fictifs, comme les sociétés et les montants des exemples. Les frais et les règles reprennent des ordres de grandeur de la BRVM ; seules la grille de votre SGI et les textes de la BRVM et de l’AMF-UMOA font foi. EFA éduque, elle ne recommande aucun titre ni établissement.</p>
+
+<script src="donnees.js"></script>
+<script>
+window.ECOLE = {
+  cle: "efa_bourse_essentiel_v1",
+  titre: "L’essentiel de la Bourse",
+  label: "L’essentiel",
+  accueil: {
+    sur: "École de la Bourse · Parcours A",
+    titre: "L’essentiel de la Bourse",
+    kick: "Cinq formations · environ 3 heures",
+    h: "Tout ce qu’il faut savoir avant votre premier ordre à la BRVM",
+    p: ["Chaque formation part d’un cas, vous fait décider, et se termine par un quiz de cinq questions. À la fin, vous écrivez votre plan d’investissement."],
+    plus: '<p class="p" style="font-size:.9em">Pour aller plus loin : <a href="ecole-bourse.html?src=essentiel">la simulation « La première année de Koffi »</a></p>'
+  },
+  final: '<a href="ecole-bourse.html?src=essentiel">S’entraîner : la première année de Koffi en Bourse <span>→</span></a><a href="parcours.html?src=essentiel#P8">Reprendre le parcours 8 <span>→</span></a>',
+  modules: []
+};
+var MOD = window.ECOLE.modules;
+
+/* ======================= A1 ======================= */
+MOD.push({id:"A1", titre:"Suis-je prêt à investir ?", court:"Suis-je prêt ?", duree:"≈ 25 min",
+retenir:"La Bourse vient <span class=\"s\">après</span> la réserve et les dettes chères. On n’y met que de l’argent qui peut <span class=\"c\">attendre cinq ans et baisser</span> sans vous obliger à vendre.",
+ecrans:[
+ {t:"info", illu:{photo:"affoue-portrait.jpg", leg:"Tantie Affoué, commerçante à Treichville"}, sur:"Le cas", h:"Tantie Affoué veut « faire travailler » ses 300 000 F",
+  p:["Sa cousine lui parle de la Bourse : « Mon argent a pris 20 % l’an dernier. » Tantie Affoué a 300 000 F sur son compte mobile money. Elle n’a pas d’autre réserve, et elle rembourse encore un prêt de 150 000 F à un collègue de marché, à 5 % par mois.",
+   "Avant de choisir une action, une seule question compte : cet argent peut-il partir en Bourse ?"]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les quatre vérifications EFA</span><ol class="liste-n"><li><b>Une réserve en place.</b> Trois à six mois de dépenses, ailleurs qu’en Bourse.</li><li><b>Pas de dette chère.</b> Crédit à la consommation, avance, prêt entre particuliers : on rembourse d’abord.</li><li><b>Un horizon d’au moins cinq ans.</b> Rien de prévu pour cet argent avant.</li><li><b>Savoir expliquer.</b> Dire en une phrase ce qu’on achète, et pourquoi.</li></ol>'},
+  sur:"Comprendre", h:"Quatre vérifications avant le premier franc",
+  p:["La Bourse n’est pas un compte d’épargne. Un cours peut baisser de 30 % et rester bas pendant des mois. Si vous avez besoin de cet argent à ce moment-là, vous vendez au plus mauvais prix.",
+   "C’est pour cela qu’on vérifie d’abord le reste : la réserve protège les placements, et une dette chère coûte plus que ce que la Bourse peut rapporter."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Ce que coûte la dette de Tantie Affoué</span><div class="resultat">60 %</div><span class="verdict">par an : 5 % par mois, sans les intérêts sur les intérêts</span><span class="mot">Aucune action de la BRVM ne promet cela. Rembourser, c’est gagner 60 % à coup sûr.</span>'},
+  sur:"L’exemple chiffré", h:"Rembourser une dette chère, le meilleur placement du marché",
+  p:["À 5 % par mois, le prêt coûte 7 500 F chaque mois à Tantie Affoué, soit 90 000 F sur un an. Pour faire mieux en Bourse, il lui faudrait plus de 60 % par an, chaque année, sans aucune baisse.",
+   "Ces dernières années, les dividendes à la BRVM ont souvent représenté 5 à 9 % du cours des actions, plus ou moins la variation du cours. Rien qui approche une dette à 5 % par mois."]},
+ {t:"choix", illu:{photo:"affoue-soucieuse.jpg", leg:"300 000 F, une dette à 5 % par mois, pas de réserve"}, sur:"Décider", h:"Que doit faire Tantie Affoué de ses 300 000 F ?",
+  opts:[["A","Tout placer en Bourse : sa cousine a gagné 20 %.","ko","<b>Trop tôt.</b> Sans réserve, la moindre urgence l’obligera à vendre, peut-être en baisse. Et sa dette lui coûte trois fois plus que ce que la Bourse peut espérer."],
+   ["B","Rembourser le prêt, puis constituer sa réserve. La Bourse ensuite.","ok","<b>C’est l’ordre EFA.</b> 150 000 F remboursent la dette : 7 500 F d’économie chaque mois. Les 150 000 F restants commencent sa réserve. La Bourse viendra avec l’argent qui peut attendre."],
+   ["C","Moitié en Bourse, moitié pour la dette.","mo","<b>Un compromis qui garde le pire.</b> La dette est remboursée, mais il n’y a toujours pas de réserve. La moitié placée risque d’être revendue à la première urgence."]]},
+ {t:"perso", rendu:function(c){var v=c.S.r.mt||"";return '<div class="illu nuit"><span class="tabtitre">Le test de la baisse</span><div class="exo"><label>Somme que je pense investir<input id="x-mt" inputmode="numeric" autocomplete="off" placeholder="ex. 200 000" value="'+v+'"></label></div><div class="resultat" id="x-r1">–</div><span class="verdict" id="x-r2">après une baisse de 30 %</span></div><div class="texte"><p class="sur">Exercice</p><h2 class="h">La somme que vous acceptez de voir baisser</h2><p class="p">Imaginez votre placement en baisse de 30 % pendant un an. C’est arrivé sur beaucoup de titres, à la BRVM comme ailleurs. Regardez le montant à gauche.</p><p class="p">Si ce chiffre vous empêche de dormir, ou si vous auriez besoin de vendre, la somme est trop élevée. Commencez plus petit : on ajoute plus tard, pas l’inverse.</p></div>'},
+  apres:function(c){var i=document.getElementById('x-mt'),f=function(){var n=+String(i.value).replace(/[^\d]/g,'');c.S.r.mt=i.value;c.sauver();document.getElementById('x-r1').textContent=n?ECOLE.outils.F(n*0.7):'–';document.getElementById('x-r2').textContent=n?'au lieu de '+ECOLE.outils.F(n)+', après une baisse de 30 %':'après une baisse de 30 %';};i.addEventListener('input',f);f();}}
+],
+quiz:[
+ ["Quelle est la première chose à avoir avant d’acheter des actions ?",[["A","Une SGI qui offre les frais les plus bas"],["B","Une réserve de précaution, ailleurs qu’en Bourse"],["C","Un conseil d’un collègue qui s’y connaît"]],"B","La réserve vous évite de vendre vos actions au mauvais moment quand une urgence arrive."],
+ ["Vous avez un crédit à la consommation à 18 % par an. Que faire d’abord ?",[["A","Le rembourser : c’est un gain sûr de 18 %"],["B","Investir : les actions rapportent plus"],["C","Faire les deux à parts égales"]],"A","Rembourser une dette chère rapporte son taux, sans risque. Aucune action ne le garantit."],
+ ["Pour quel horizon place-t-on de l’argent en actions ?",[["A","Quelques semaines"],["B","Un an"],["C","Au moins cinq ans"]],"C","Sur quelques mois, un cours peut baisser fortement. Sur cinq ans ou plus, on laisse le temps aux entreprises de produire leurs résultats."],
+ ["« Mon argent a pris 20 % l’an dernier. » Que dit cette phrase sur l’an prochain ?",[["A","Que vous gagnerez aussi environ 20 %"],["B","Rien : un rendement passé ne se répète pas forcément"],["C","Que le risque est faible"]],"B","Un bon résultat passé ne dit ni ce qui arrivera, ni quel risque a été pris pour l’obtenir."],
+ ["Vous investissez 200 000 F. Le cours baisse de 30 %. Combien vaut votre placement ?",[["A","170 000 F"],["B","140 000 F"],["C","60 000 F"]],"B","200 000 F × 0,70 = 140 000 F. Si cette perte vous obligerait à vendre, commencez avec moins."]
+]});
+
+/* ======================= A2 ======================= */
+MOD.push({id:"A2", titre:"Ce qu’on achète vraiment", court:"Ce qu’on achète", duree:"≈ 35 min",
+retenir:"Une <span class=\"c\">action</span>, c’est une part d’entreprise. Une <span class=\"s\">obligation</span>, c’est un prêt. Un fonds, c’est un panier. On gagne par le dividende et la plus-value ; on perd quand l’entreprise déçoit. On ne met jamais tout sur une seule société.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Une action</span><div class="grand">1 part d’une entreprise</div><span class="mot">Droit au dividende · droit de vote à l’assemblée générale · part de la valeur de l’entreprise</span>'},
+  sur:"L’action", h:"Acheter une action, c’est devenir copropriétaire",
+  p:["Une entreprise cotée a divisé son capital en millions de parts. En achetant une action, vous en détenez une, avec les autres actionnaires.",
+   "Vous recevez une part du bénéfice quand l’entreprise décide d’en distribuer : c’est le dividende. Vous pouvez voter à l’assemblée générale. Et si l’entreprise vaut plus demain, votre part aussi."]},
+ {t:"info", illu:{c:"bleu", accueil:true, html:'<span class="tabtitre">Une obligation</span><div class="grand">Un prêt, avec un taux</div><span class="mot">Intérêt fixé d’avance · remboursement à l’échéance · risque : que l’emprunteur ne paie pas</span>'},
+  sur:"L’obligation", h:"Acheter une obligation, c’est prêter",
+  p:["Un État ou une entreprise emprunte auprès du public pour cinq, sept ou dix ans. Il verse un intérêt chaque année, puis rembourse le capital à la fin.",
+   "Les États de l’UEMOA empruntent souvent ainsi, et leurs obligations sont cotées à la BRVM. Le rendement est connu d’avance ; le risque, c’est que l’emprunteur ait du mal à payer, ou que vous deviez revendre avant l’échéance à un prix plus bas."]},
+ {t:"info", illu:{c:"papier", accueil:true, html:'<span class="tabtitre fonce">Un fonds commun de placement</span><div class="grand" style="color:var(--nuit)">Un panier géré pour vous</div><span class="mot" style="color:var(--ink2)">Petits montants acceptés · plusieurs titres d’un coup · frais de gestion chaque année</span>'},
+  sur:"Le fonds", h:"Le fonds commun : plusieurs titres avec un seul achat",
+  p:["Un fonds commun de placement (FCP) réunit l’argent de nombreux épargnants. Une société de gestion agréée l’investit en actions, en obligations ou dans les deux.",
+   "Vous achetez des parts du fonds. Avec quelques milliers de francs, vous êtes exposé à de nombreux titres. En échange, le fonds prélève des frais d’entrée et de gestion : comparez-les avant de souscrire."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Une année d’actionnaire (exemple fictif)</span><table class="tab"><tbody><tr><td>Achat d’une action</td><td>10 000 F</td></tr><tr><td>Dividende reçu, net</td><td>+ 600 F</td></tr><tr><td>Cours un an après</td><td>11 000 F</td></tr><tr class="tot"><td>Gain si l’on vend</td><td>+ 1 600 F</td></tr></tbody></table><span class="mot">16 %, avant les frais d’achat et de vente</span>'},
+  sur:"Comment on gagne", h:"Deux sources de gain : le dividende et la plus-value",
+  p:["Le dividende est versé en espèces sur votre compte-titres, en général une fois par an. La plus-value, c’est la hausse du cours : elle n’est acquise que le jour où vous vendez.",
+   "Aucun des deux n’est garanti. Une entreprise peut réduire ou supprimer son dividende, et le cours peut finir l’année plus bas qu’à l’achat."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Plus de rendement espéré, plus de risque</span><table class="tab"><thead><tr><th></th><th>Rendement</th><th>Risque</th></tr></thead><tbody><tr><td>Épargne rémunérée</td><td class="v">faible, connu</td><td class="v">très faible</td></tr><tr><td>Obligation d’État</td><td class="v">connu d’avance</td><td class="v">faible à moyen</td></tr><tr><td>Fonds diversifié</td><td class="v">variable</td><td class="v">moyen</td></tr><tr><td>Une seule action</td><td class="v">très variable</td><td class="v">élevé</td></tr></tbody></table>'},
+  sur:"Comment on perd", h:"Le risque est le prix du rendement",
+  p:["On perd quand l’entreprise déçoit : ventes en baisse, dette trop lourde, dividende supprimé. Dans les cas graves, une société peut disparaître et l’action ne plus rien valoir.",
+   "Plus un placement peut rapporter, plus il peut baisser. Celui qui promet beaucoup sans risque ment, ou ne connaît pas son produit."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Cinq sociétés de 100 000 F chacune</span><table class="tab"><tbody><tr><td>Quatre sociétés stables</td><td>400 000 F</td></tr><tr><td>Une société chute de 50 %</td><td>50 000 F</td></tr><tr class="tot"><td>Portefeuille</td><td>450 000 F</td></tr></tbody></table><span class="mot">− 10 % au lieu de − 50 % si tout était sur la même</span>'},
+  sur:"La règle", h:"Ne pas tout mettre sur une seule société",
+  p:["Même une très bonne entreprise peut traverser une mauvaise année. En répartissant votre argent entre plusieurs sociétés, de secteurs et de pays différents, le choc d’une seule reste supportable.",
+   "Avec un petit montant, un fonds commun fait ce travail pour vous."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Koffi a 300 000 F prêts à attendre cinq ans"}, sur:"Décider", h:"Koffi hésite entre trois idées. Laquelle suit les règles ?",
+  opts:[["A","Tout sur l’action qui a pris 40 % cette année.","ko","<b>C’est suivre le passé, et tout miser sur un seul titre.</b> Une hausse de 40 % ne dit rien de l’an prochain, et Koffi n’a aucune protection si la société déçoit."],
+   ["B","Un fonds diversifié, ou quatre à cinq sociétés de secteurs différents.","ok","<b>Oui.</b> Le risque d’une société est dilué. Koffi peut commencer par un fonds, puis ajouter des actions qu’il sait expliquer."],
+   ["C","Une « obligation » d’un ami qui promet 25 % par an.","ko","<b>Signal d’alarme.</b> Les obligations des États de la région rapportent bien moins. Un taux aussi élevé signifie un risque très élevé, ou une arnaque. Vérifiez toujours l’agrément sur amf-umoa.org."]]}
+],
+quiz:[
+ ["Que détenez-vous quand vous achetez une action ?",[["A","Un prêt à l’entreprise"],["B","Une part de l’entreprise"],["C","Un compte d’épargne à la banque de l’entreprise"]],"B","L’action est une part du capital. Le prêt, c’est l’obligation."],
+ ["Qu’est-ce qu’un dividende ?",[["A","Une part du bénéfice versée aux actionnaires"],["B","Les frais payés à la SGI"],["C","La hausse du cours de l’action"]],"A","Le dividende est distribué par l’entreprise, quand elle le décide. La hausse du cours s’appelle la plus-value."],
+ ["Une obligation d’État à 6 % par an pendant 5 ans : qu’est-ce qui est connu d’avance ?",[["A","Le cours de l’obligation chaque jour"],["B","L’intérêt versé chaque année et la date de remboursement"],["C","Rien du tout"]],"B","L’intérêt et l’échéance sont fixés à l’émission. Le prix de revente avant l’échéance, lui, peut varier."],
+ ["Pourquoi répartir son argent entre plusieurs sociétés ?",[["A","Pour payer moins de frais"],["B","Pour qu’une mauvaise surprise sur une société reste supportable"],["C","Parce que c’est obligatoire"]],"B","La diversification limite l’effet d’une seule mauvaise nouvelle sur l’ensemble de votre argent."],
+ ["Un placement promet 25 % par an sans risque. Qu’en pensez-vous ?",[["A","C’est une belle occasion"],["B","C’est un signal d’alarme : rendement élevé et absence de risque ne vont pas ensemble"],["C","C’est normal pour une obligation"]],"B","Plus le rendement promis est élevé, plus le risque l’est. « Sans risque » à 25 % n’existe pas."]
+]});
+
+/* ======================= A3 ======================= */
+MOD.push({id:"A3", titre:"Comment marche la BRVM", court:"La BRVM", duree:"≈ 35 min",
+retenir:"La BRVM réunit <span class=\"s\">huit pays</span>. Vous passez par une <span class=\"c\">SGI</span> ; vos titres sont conservés au dépositaire central ; l’AMF-UMOA surveille. Le prix naît des ordres des autres, et un titre peu échangé se vend difficilement.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Bourse régionale des valeurs mobilières</span><div class="grand">8 pays, 1 Bourse, 1 monnaie</div><span class="mot">Bénin · Burkina Faso · Côte d’Ivoire · Guinée-Bissau · Mali · Niger · Sénégal · Togo</span>'},
+  sur:"La BRVM", h:"Une Bourse commune aux huit pays de l’UEMOA",
+  p:["La BRVM a son siège à Abidjan et une antenne dans chaque pays. Ses premières séances datent de 1998. On y échange, en francs CFA, les actions d’environ 48 sociétés et de nombreuses obligations d’États et d’entreprises.",
+   "Un épargnant de Dakar peut acheter une société ivoirienne, et un épargnant de Lomé une banque sénégalaise, avec le même compte-titres."]},
+ {t:"info", illu:{c:"nuit", html:'<div class="schema"><div><b>Vous</b>donnez votre ordre</div><div class="fl">↓</div><div><b>La SGI</b>le transmet à la Bourse</div><div class="fl">↓</div><div><b>La BRVM</b>confronte acheteurs et vendeurs</div><div class="fl">↓</div><div><b>Le dépositaire central</b>conserve les titres, règle et livre</div></div>'},
+  sur:"Les acteurs", h:"Qui fait quoi quand vous achetez une action",
+  p:["<strong>La SGI</strong>, société de gestion et d’intermédiation agréée, est votre seule porte d’entrée. <strong>La BRVM</strong> organise les séances. <strong>Le dépositaire central</strong> (DC/BR) enregistre qui possède quoi et fait circuler l’argent et les titres, deux jours ouvrés après la séance.",
+   "<strong>L’AMF-UMOA</strong>, le régulateur, agrée les SGI et les fonds, et surveille l’information publiée par les sociétés cotées."]},
+ {t:"perso", rendu:function(){var D=(window.EFA_DATA||{}).brvm, rows='';if(D&&D.indices)rows=D.indices.map(function(x){var v=x[3];return '<tr><td>'+x[0]+'</td><td class="v">'+String(x[2]).replace('.',',')+'</td><td class="v" style="color:'+(v>=0?'#3CCB7F':'#F09680')+'">'+(v>=0?'+':'−')+Math.abs(v).toString().replace('.',',')+'&nbsp;%</td></tr>';}).join('');
+  return '<div class="illu nuit"><span class="tabtitre">Indices de la séance du '+(D?D.seance:'')+'</span><table class="tab"><thead><tr><th>Indice</th><th>Clôture</th><th>Jour</th></tr></thead><tbody>'+rows+'</tbody></table><span class="mot">Données réelles de la BRVM, mises à jour chaque soir de séance</span></div><div class="texte"><p class="sur">La séance</p><h2 class="h">Chaque jour ouvré, une séance</h2>'+ECOLE.outils.typo('<p class="p">Les ordres sont reçus dès 9 h, heure d’Abidjan. Les échanges se font en continu de 9 h 45 à 14 h, puis un dernier prix est fixé à 14 h 30 : le <strong>cours de clôture</strong>. Les résultats sont officiels à 15 h.</p><p class="p">Un <strong>indice</strong> résume l’évolution d’un groupe de titres. Le BRVM Composite suit toutes les actions ; le BRVM 30, les trente plus échangées. Un indice en hausse ne veut pas dire que vos actions montent.</p>')+'</div>';}},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Carnet d’ordres d’un titre (fictif)</span><table class="carnet"><thead><tr><th>Acheteurs</th><th>Prix</th><th>Vendeurs</th></tr></thead><tbody><tr><td></td><td class="ven">5 300 F</td><td class="ven">40 titres</td></tr><tr><td></td><td class="ven">5 150 F</td><td class="ven">12 titres</td></tr><tr><td></td><td class="ven">5 000 F</td><td class="ven">8 titres</td></tr><tr><td class="ach">30 titres</td><td class="ach">4 900 F</td><td></td></tr><tr><td class="ach">55 titres</td><td class="ach">4 850 F</td><td></td></tr></tbody></table><span class="mot">En bleu, les acheteurs. En corail, les vendeurs.</span>'},
+  sur:"Le carnet d’ordres", h:"Le prix, ce sont les ordres des autres",
+  p:["Pour chaque titre, la Bourse range les ordres d’achat et de vente par prix. Une transaction a lieu quand un acheteur accepte le prix d’un vendeur.",
+   "Ici, le vendeur le moins cher ne propose que 8 titres à 5 000 F. Qui veut 50 titres tout de suite devra aussi payer 5 150 F, puis 5 300 F : un ordre pressé fait monter son propre prix."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Deux titres, deux liquidités (fictif)</span><table class="tab"><thead><tr><th></th><th>Titre A</th><th>Titre B</th></tr></thead><tbody><tr><td>Titres échangés par jour</td><td class="v">25 000</td><td class="v">20</td></tr><tr><td>Vendre 500 titres</td><td class="v">en une séance</td><td class="v">plusieurs semaines</td></tr></tbody></table>'},
+  sur:"La liquidité", h:"Un titre peu échangé ne se vend pas toujours quand on veut",
+  p:["La liquidité, c’est la facilité à acheter ou vendre sans faire bouger le prix. À la BRVM, certains titres s’échangent par milliers chaque jour, d’autres par dizaines.",
+   "Avant d’acheter, regardez le volume moyen sur quelques semaines. Et sachez qu’une séance ne peut pas faire varier un cours au-delà d’une limite fixée par la Bourse : un titre très demandé ou très vendu peut mettre plusieurs jours à trouver son prix."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Un titre où s’échangent 20 actions par jour"}, sur:"Décider", h:"Koffi veut placer 2 millions sur un titre qui s’échange à 20 actions par jour. Que faire ?",
+  opts:[["A","Tout acheter en une fois, au marché.","ko","<b>Il ferait monter le prix contre lui.</b> Son ordre viderait le carnet sur plusieurs séances, à des prix de plus en plus hauts. Et il aurait le même problème le jour où il voudrait vendre."],
+   ["B","Réduire la somme ou l’étaler par ordres à cours limité, et garder en tête qu’il sera lent à revendre.","ok","<b>Oui.</b> Sur un titre peu liquide, on achète par petites quantités, avec une limite de prix, et on n’y met que de l’argent qui peut attendre longtemps."],
+   ["C","Peu importe : le prix affiché est le prix.","ko","<b>Le prix affiché est celui du dernier échange.</b> Il ne garantit pas qu’on trouvera des vendeurs pour 2 millions à ce prix-là."]]}
+],
+quiz:[
+ ["Combien de pays partagent la BRVM ?",[["A","Trois"],["B","Huit, ceux de l’UEMOA"],["C","Quinze, ceux de la CEDEAO"]],"B","Bénin, Burkina Faso, Côte d’Ivoire, Guinée-Bissau, Mali, Niger, Sénégal et Togo."],
+ ["Par qui faut-il passer pour acheter une action à la BRVM ?",[["A","Directement auprès de la BRVM"],["B","Une SGI agréée par l’AMF-UMOA"],["C","N’importe quel intermédiaire sur les réseaux sociaux"]],"B","Seules les SGI agréées peuvent transmettre des ordres. Leur liste est publiée sur amf-umoa.org."],
+ ["Que mesure le BRVM Composite ?",[["A","Le cours d’une seule société"],["B","L’évolution de l’ensemble des actions cotées"],["C","Le taux de change du franc CFA"]],"B","C’est l’indice qui regroupe toutes les actions. Le BRVM 30 suit les trente plus échangées."],
+ ["Que veut dire « un titre peu liquide » ?",[["A","Un titre peu échangé, difficile à acheter ou vendre vite au prix voulu"],["B","Un titre qui ne verse pas de dividende"],["C","Un titre très cher"]],"A","La liquidité, c’est la facilité d’échanger sans faire bouger le prix."],
+ ["Qui conserve vos titres et assure le règlement des échanges ?",[["A","Votre banque, toujours"],["B","Le dépositaire central (DC/BR)"],["C","La société dont vous avez acheté les actions"]],"B","Le dépositaire central enregistre la propriété des titres et règle les échanges, deux jours ouvrés après la séance."]
+]});
+
+/* ======================= A4 ======================= */
+MOD.push({id:"A4", titre:"Passer son premier ordre", court:"Premier ordre", duree:"≈ 40 min",
+retenir:"Une SGI <span class=\"s\">agréée</span>, des frais <span class=\"c\">calculés avant</span>, un ordre <span class=\"s\">à cours limité</span> avec une date de validité, et l’avis d’opéré vérifié après.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<div class="schema"><div><b>1</b>Choisir une SGI agréée</div><div><b>2</b>Ouvrir un compte-titres</div><div><b>3</b>Alimenter le compte</div><div><b>4</b>Passer un ordre à cours limité</div><div><b>5</b>Vérifier l’avis d’opéré</div></div>'},
+  sur:"Le chemin", h:"Cinq étapes jusqu’à votre première action",
+  p:["Ouvrir un compte-titres demande en général une pièce d’identité, un justificatif de domicile, un formulaire et un questionnaire sur votre profil. Certaines SGI le proposent en ligne.",
+   "Le compte s’alimente par virement, parfois par mobile money. L’argent attend sur le compte jusqu’à votre ordre."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Cinq questions avant de signer</span><ol class="liste-n"><li><b>Êtes-vous agréée ?</b> Vérifier sur amf-umoa.org.</li><li><b>Combien coûte un ordre</b>, tout compris ?</li><li><b>Quels frais chaque année</b>, même sans rien faire ?</li><li><b>Comment je retire mon argent</b>, et en combien de temps ?</li><li><b>Combien coûte le départ</b> vers une autre SGI ?</li></ol>'},
+  sur:"Choisir sa SGI", h:"On choisit une SGI sur son agrément et ses frais",
+  p:["EFA ne recommande aucune SGI. Comparez-en deux ou trois de la liste officielle, et demandez leur grille de frais par écrit.",
+   "Les dix questions complètes sont dans la leçon « Dix questions à poser à votre SGI »."], plus:'<p class="p"><a href="questions-a-poser-a-sa-sgi.html?src=essentiel" target="_blank" rel="noopener">Ouvrir les dix questions →</a></p>'},
+ {t:"perso", rendu:function(c){var v=c.S.r.fr||{m:'100 000',c:'1',f:'5 000'};return '<div class="illu nuit"><span class="tabtitre">Mes frais la première année</span><div class="exo trois"><label>Montant<input id="f-m" inputmode="numeric" value="'+v.m+'"></label><label>Commission %<input id="f-c" inputmode="decimal" value="'+v.c+'"></label><label>Frais/an<input id="f-f" inputmode="numeric" value="'+v.f+'"></label></div><div class="resultat" id="f-r">–</div><span class="verdict" id="f-v"></span></div><div class="texte"><p class="sur">Calculer</p><h2 class="h">Les frais pèsent lourd sur les petits ordres</h2>'+ECOLE.outils.typo('<p class="p">À chaque achat et à chaque vente : la commission de la SGI (souvent autour de 1 %) et celles de la place (environ 0,3 %). Chaque année : la tenue de compte et la conservation.</p><p class="p">Avec 100 000 F, une commission de 1 % et 5 000 F de frais annuels, il faut une hausse de 7,6 % la première année pour ne rien perdre. Avec 500 000 F, 3,6 %. Groupez vos achats.</p>')+'</div>';},
+  apres:function(c){var g=function(i){return String(document.getElementById(i).value)},f=function(){var m=+g('f-m').replace(/[^\d]/g,''),co=parseFloat(g('f-c').replace(',','.'))||0,fa=+g('f-f').replace(/[^\d]/g,'');c.S.r.fr={m:g('f-m'),c:g('f-c'),f:g('f-f')};c.sauver();if(!m){document.getElementById('f-r').textContent='–';return;}var t=2*m*(co/100+0.003)+fa;document.getElementById('f-r').textContent=ECOLE.outils.PC(t/m*100);document.getElementById('f-v').textContent='de hausse nécessaire pour couvrir achat, revente et une année de frais ('+ECOLE.outils.F(t)+')';};['f-m','f-c','f-f'].forEach(function(i){document.getElementById(i).addEventListener('input',f)});f();}},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Deux façons de demander</span><table class="tab"><tbody><tr><td><b>Au marché</b></td><td>au prix disponible, quel qu’il soit</td></tr><tr><td><b>À cours limité</b></td><td>pas plus cher que la limite fixée</td></tr></tbody></table><span class="tabtitre" style="margin-top:8px">Durée de validité</span><table class="tab"><tbody><tr><td>Jour</td><td>annulé à la clôture</td></tr><tr><td>Jusqu’à une date</td><td>annulé à cette date</td></tr><tr><td>Jusqu’à annulation</td><td>reste tant qu’on ne l’annule pas</td></tr></tbody></table>'},
+  sur:"Les ordres", h:"L’ordre à cours limité protège votre prix",
+  p:["L’ordre au marché s’exécute vite, mais au prix des vendeurs présents. Sur un carnet mince, ce prix peut être bien plus haut que le dernier cours.",
+   "L’ordre à cours limité fixe le prix maximum à l’achat, ou minimum à la vente. Il peut ne s’exécuter qu’en partie, ou pas du tout : donnez-lui une date de validité et revoyez-le si le marché s’éloigne."]},
+ {t:"info", illu:{c:"papier", html:'<span class="tabtitre fonce">Ordre de bourse (exemple)</span><div class="bon"><table><tbody><tr><td>Sens</td><td>Achat</td></tr><tr><td>Titre</td><td>Société fictive SFX</td></tr><tr><td>Quantité</td><td>20 actions</td></tr><tr><td>Type</td><td>À cours limité</td></tr><tr><td>Limite</td><td>5 000 F</td></tr><tr><td>Validité</td><td>Jusqu’au 30 novembre</td></tr></tbody></table></div>'},
+  sur:"Rédiger l’ordre", h:"Six informations, ni plus ni moins",
+  p:["Que vous passiez par une application, un appel ou l’agence, votre SGI doit recevoir ces six informations. Gardez une trace écrite de chaque ordre.",
+   "Ne laissez jamais quelqu’un « passer les ordres pour vous » sans mandat écrit, et ne confiez jamais vos codes d’accès."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Titre à 5 000 F, 8 vendeurs à ce prix ce matin"}, sur:"Décider", h:"Koffi veut 20 actions d’un titre à 5 000 F, peu échangé. Quel ordre passe-t-il ?",
+  opts:[["A","Au marché, validité jour.","ko","<b>Risqué.</b> Les 8 titres à 5 000 F partent, puis il paie 5 150 F et 5 300 F pour le reste. Sur un titre peu échangé, l’ordre au marché coûte cher."],
+   ["B","À cours limité à 5 000 F, valable jusqu’à la fin du mois.","ok","<b>C’est le bon ordre.</b> Il achète ce qui est disponible à son prix, le reste attend dans le carnet jusqu’à la date choisie. Il revoit l’ordre si le cours s’éloigne."],
+   ["C","À cours limité à 4 000 F, jusqu’à annulation.","mo","<b>Trop loin du marché.</b> Le titre ne descendra peut-être jamais à 4 000 F. L’ordre risque de rester oublié des mois dans le carnet."]]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Avis d’opéré (exemple fictif)</span><table class="tab"><tbody><tr><td>Achat SFX</td><td>20 × 5 000 F</td></tr><tr><td>Montant brut</td><td>100 000 F</td></tr><tr><td>Commission SGI</td><td>1 000 F</td></tr><tr><td>Commissions de la place</td><td>300 F</td></tr><tr><td>Taxes</td><td>180 F</td></tr><tr class="tot"><td>Total débité</td><td>101 480 F</td></tr></tbody></table>'},
+  sur:"Après l’ordre", h:"L’avis d’opéré : la preuve de ce que vous avez payé",
+  p:["Après chaque exécution, votre SGI vous envoie un avis d’opéré : quantité, prix obtenu, frais et taxes. Comparez-le à votre ordre et à la grille de frais.",
+   "Notez-le dans votre cahier : date, prix, frais, et la raison de votre achat en une phrase."]}
+],
+quiz:[
+ ["Comment vérifier qu’une SGI est autorisée ?",[["A","Sur la liste officielle du régulateur, amf-umoa.org"],["B","Au nombre d’abonnés de sa page"],["C","À la taille de ses locaux"]],"A","Seul l’agrément du régulateur compte. Demandez le numéro et vérifiez le nom exact."],
+ ["Quel ordre fixe un prix maximum à l’achat ?",[["A","L’ordre au marché"],["B","L’ordre à cours limité"],["C","Aucun"]],"B","L’ordre à cours limité ne s’exécute pas au-dessus de la limite fixée."],
+ ["Pourquoi les frais pèsent-ils plus sur un petit ordre ?",[["A","Parce que les frais annuels et les minimums ne baissent pas avec le montant"],["B","Ce n’est pas vrai"],["C","Parce que la Bourse taxe les petits épargnants"]],"A","Les frais fixes représentent une plus grande part d’un petit montant. Grouper ses achats les allège."],
+ ["Que contient l’avis d’opéré ?",[["A","Les conseils de la SGI pour la suite"],["B","La quantité, le prix obtenu, les frais et les taxes de l’opération"],["C","Le cours du lendemain"]],"B","C’est la trace officielle de votre opération. Vérifiez-la à chaque fois."],
+ ["Votre ordre à cours limité n’est exécuté qu’en partie. Est-ce normal ?",[["A","Oui : il n’y avait pas assez de vendeurs à votre prix ; le reste attend"],["B","Non : c’est une erreur de la SGI"],["C","Non : la Bourse a annulé l’ordre"]],"A","L’exécution partielle est fréquente sur les titres peu échangés. Le reste attend jusqu’à la date de validité."]
+]});
+
+/* ======================= A5 ======================= */
+MOD.push({id:"A5", titre:"Tenir dans la durée", court:"Tenir", duree:"≈ 40 min",
+retenir:"Une <span class=\"s\">raison écrite</span>, relue avant chaque décision. Une baisse sans nouvelle n’est pas une raison de vendre ; une raison contredite, si. Investir <span class=\"c\">chaque mois</span>, et fuir les rendements garantis.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Le cahier de l’investisseur</span><div class="aplat" style="background:transparent;padding:0">« J’achète parce que… »<br>« Je garde jusqu’à… »<br>« Je revends si… »</div>'},
+  sur:"La thèse", h:"Écrire sa raison avant d’acheter",
+  p:["Les professionnels l’appellent la thèse d’investissement. Pour vous, trois phrases suffisent : pourquoi vous achetez, combien de temps vous gardez, et ce qui vous ferait changer d’avis.",
+   "Une bonne raison porte sur l’entreprise (ses ventes, ses bénéfices, son dividende, sa dette), pas sur le cours d’hier ni sur l’avis d’un collègue."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Avant de réagir à une baisse</span><ol class="liste-n"><li><b>Ma raison est-elle contredite ?</b> Une nouvelle sur l’entreprise, pas seulement le cours.</li><li><b>Ai-je besoin de cet argent ?</b> Si oui, la réserve était trop courte.</li><li><b>Achèterais-je aujourd’hui ?</b> Si oui, garder a du sens.</li></ol>'},
+  sur:"Les baisses", h:"Trois questions avant de vendre",
+  p:["Les cours bougent tous les jours, souvent sans nouvelle. Vendre sur une simple baisse transforme une perte possible en perte réelle, et coûte des frais deux fois.",
+   "Mais garder n’est pas une règle absolue : si la raison écrite est contredite, on réexamine, et l’on peut vendre."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Le calendrier d’un dividende (exemple)</span><table class="tab"><tbody><tr><td>Assemblée générale</td><td>vote le dividende</td></tr><tr><td>Date de détachement</td><td>il faut détenir l’action la veille</td></tr><tr><td>Date de paiement</td><td>versé sur le compte-titres</td></tr></tbody></table><table class="tab" style="margin-top:8px"><tbody><tr><td>50 actions × 500 F brut</td><td>25 000 F</td></tr><tr><td>Impôt retenu, 10 %</td><td class="m">− 2 500 F</td></tr><tr class="tot"><td>Net reçu</td><td>22 500 F</td></tr></tbody></table>'},
+  sur:"Le dividende", h:"Ce que vous touchez vraiment",
+  p:["Le dividende est voté par l’assemblée générale. Pour le recevoir, il faut détenir l’action avant la date de détachement ; ce jour-là, le cours baisse en général d’environ le montant du dividende.",
+   "Un impôt est retenu à la source avant le versement. Son taux dépend du pays de la société, souvent entre 10 et 15 %. Raisonnez toujours en net."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">25 000 F chaque mois (exemple fictif)</span><table class="tab"><thead><tr><th>Mois</th><th>Cours</th><th>Actions</th></tr></thead><tbody><tr><td>Janvier</td><td class="v">5 000 F</td><td class="v">5</td></tr><tr><td>Février</td><td class="v">4 000 F</td><td class="v">6</td></tr><tr><td>Mars</td><td class="v">6 250 F</td><td class="v">4</td></tr><tr class="tot"><td>Total</td><td class="v">75 000 F</td><td class="v">15</td></tr></tbody></table><span class="mot">Prix moyen payé : 5 000 F. Les mois de baisse, on achète plus d’actions.</span>'},
+  sur:"Investir chaque mois", h:"Un montant fixe, à date fixe",
+  p:["Personne ne sait quand le cours est au plus bas. En investissant la même somme chaque mois, ou chaque trimestre pour limiter les frais, vous achetez plus quand c’est moins cher et moins quand c’est plus cher.",
+   "C’est aussi la façon la plus simple de tenir : la décision est prise une fois, pas à chaque séance."]},
+ {t:"info", illu:{c:"corail", html:'<span class="tabtitre">Quatre signaux d’arnaque</span><ol class="liste-n"><li><b>Un rendement garanti</b>, surtout « par mois ».</li><li><b>L’urgence</b> : « places limitées, décidez ce soir ».</li><li><b>Un numéro personnel</b> pour envoyer l’argent.</li><li><b>Pas d’agrément</b> vérifiable sur amf-umoa.org.</li></ol>'},
+  sur:"Se protéger", h:"Ce qui doit vous faire partir",
+  p:["Les arnaques à la Bourse circulent sur WhatsApp, Facebook et TikTok, souvent avec de faux logos et de faux témoignages.",
+   "Une SGI ou un fonds agréé ne garantit jamais un rendement en actions, ne presse personne, et reçoit l’argent sur un compte à son nom."]},
+ {t:"choix", illu:{photo:"koffi-inquiet.jpg", leg:"Le cours chute de 20 % : le dividende est supprimé"}, sur:"Décider", h:"Koffi avait écrit : « J’achète pour le dividende régulier. » La société annonce qu’elle le supprime, et le cours chute de 20 %. Que fait-il ?",
+  opts:[["A","Rien : on ne vend jamais sur une baisse.","mo","<b>Pas cette fois.</b> La règle vaut pour une baisse sans nouvelle. Ici, la nouvelle contredit directement sa raison d’acheter : elle mérite un réexamen."],
+   ["B","Il relit sa thèse : la raison est contredite. Il réexamine, et peut vendre.","ok","<b>C’est la méthode.</b> Il lit l’explication de la société : difficulté passagère ou durable ? Si sa raison ne tient plus, vendre est une décision réfléchie, pas une panique."],
+   ["C","Il rachète : c’est 20 % moins cher.","ko","<b>Moins cher n’est pas une raison.</b> Le cours a baissé parce que l’entreprise rapporte moins aux actionnaires. Sans nouvelle thèse écrite, racheter est un pari."]]},
+ {t:"perso", bloque:function(c){return !(c.S.r.plan&&c.S.r.plan.ok)}, rendu:function(c){var p=c.S.r.plan||{},v=function(k){return (p[k]||'').replace(/"/g,'&quot;')};
+  return '<div class="illu papier"><span class="tabtitre fonce">Mon plan d’investissement</span><div class="exo" style="grid-template-columns:1fr 1fr;width:100%"><label>Montant par mois<input id="p-m" inputmode="numeric" value="'+v('m')+'" placeholder="ex. 25 000"></label><label>Pendant (années)<input id="p-d" inputmode="numeric" value="'+v('d')+'" placeholder="ex. 5"></label><label style="grid-column:1/-1">Ce que j’achète, en une phrase<input id="p-q" value="'+v('q')+'" placeholder="ex. un fonds diversifié, puis deux sociétés que je sais expliquer"></label><label style="grid-column:1/-1">Je revois mon plan si…<input id="p-s" value="'+v('s')+'" placeholder="ex. ma réserve passe sous 3 mois de dépenses"></label></div><button class="btn suiv" id="p-ok" type="button">Écrire mon plan</button></div>'+
+  '<div class="texte"><p class="sur">Votre preuve</p><h2 class="h">Votre plan, en quatre lignes</h2>'+(p.ok?'<div class="plan-sortie" id="p-txt">'+p.txt+'</div><button class="copier" id="p-copie" type="button">Copier mon plan</button><p class="p" style="font-size:.9em">Gardé sur ce téléphone seulement. Recopiez-le dans votre cahier.</p>':ECOLE.outils.typo('<p class="p">Un plan écrit vous protège de vos propres émotions : quand le cours baisse, ou quand un message promet monts et merveilles, vous relisez ce que vous aviez décidé à froid.</p><p class="p">Remplissez les quatre champs, puis écrivez votre plan pour continuer.</p>'))+'</div>';},
+  apres:function(c){var b=document.getElementById('p-ok');b.addEventListener('click',function(){var g=function(i){return document.getElementById(i).value.trim()},m=g('p-m'),d=g('p-d'),q=g('p-q'),s=g('p-s');if(!m||!d||!q){document.getElementById(!m?'p-m':!d?'p-d':'p-q').focus();return;}var e=function(t){return t.replace(/[<>&]/g,'')};var txt='J’investis <b>'+ECOLE.outils.F(+m.replace(/[^\d]/g,''))+' par mois</b> pendant <b>'+e(d)+' an'+(+d>1?'s':'')+'</b>, avec de l’argent qui peut attendre et baisser.<br>J’achète&nbsp;: '+e(q)+'.<br>Je passe des ordres à cours limité et je note chaque achat dans mon cahier.<br>Je revois mon plan si '+e(s||'ma situation change')+'.';c.S.r.plan={m:m,d:d,q:q,s:s,ok:true,txt:txt};c.sauver();ECOLE.outils.compte('ecole-A5-plan');c.refaire();});
+  var cp=document.getElementById('p-copie');if(cp)cp.addEventListener('click',function(){var t=document.getElementById('p-txt').innerText;try{navigator.clipboard.writeText(t).then(function(){cp.textContent='Plan copié';},function(){});}catch(e){}});}}
+],
+quiz:[
+ ["Qu’est-ce qu’une bonne raison d’acheter une action ?",[["A","Le cours a beaucoup monté"],["B","Une raison sur l’entreprise : ses ventes, ses bénéfices, son dividende, avec une durée de détention"],["C","Un collègue l’a achetée"]],"B","Une raison sur l’entreprise se vérifie à chaque publication de résultats. Un cours passé ou l’avis d’un autre, non."],
+ ["Le cours baisse de 10 % sans aucune nouvelle. Que faire d’abord ?",[["A","Vendre tout de suite"],["B","Relire sa raison écrite et vérifier s’il y a une information nouvelle"],["C","Emprunter pour racheter"]],"B","Une baisse sans nouvelle ne contredit pas votre raison. On relit, on vérifie, on ne réagit pas à chaud."],
+ ["Pour recevoir un dividende, il faut détenir l’action…",[["A","Avant la date de détachement"],["B","Le jour du paiement seulement"],["C","Peu importe la date"]],"A","Celui qui détient l’action avant le détachement reçoit le dividende, même s’il vend ensuite."],
+ ["Pourquoi investir un montant fixe chaque mois ?",[["A","Pour acheter toujours au plus bas"],["B","Pour lisser le prix payé et décider une seule fois"],["C","Parce que les frais sont offerts"]],"B","Personne ne connaît le point bas. Le montant régulier achète plus quand c’est moins cher, et vous évite de décider à chaque séance."],
+ ["Un message promet « 3 % par mois garantis, envoyez sur ce numéro ». C’est…",[["A","Une bonne affaire à saisir vite"],["B","Une arnaque : rendement garanti, urgence, numéro personnel"],["C","Normal pour une SGI"]],"B","Aucune SGI agréée ne garantit un tel rendement ni ne demande d’envoyer de l’argent sur un numéro personnel."]
+]});
+</script>
+<script src="ecole-bourse-moteur.js?v=2026102401"></script>
+<script src="efa-suite.js?v=2026102404" defer></script>
+</body></html>
