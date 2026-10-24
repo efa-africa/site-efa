@@ -728,6 +728,7 @@ img.char{object-position:50% 18%}
         <option>Un programme pour mon organisation</option>
         <option>Une étude sur commande</option>
         <option>Un partenariat</option>
+        <option>Relire un contenu (notaire, expert, professionnel)</option>
         <option>La presse</option>
         <option>Autre</option>
       </select></label>
@@ -763,6 +764,7 @@ img.char{object-position:50% 18%}
           <li><a href="news.html">EFA News</a></li>
           <li><a href="construire-son-budget.html">Faire son budget</a></li>
           <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
           <li><a href="methode.html#simulateurs">Simulateurs</a></li>
           <li><a href="methode.html#brvm">BRVM</a></li>
           <li><a href="methode.html#methode">Notre méthode</a></li>
@@ -891,7 +893,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
   var f=document.getElementById('ct-form'); if(!f) return;
   var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
   // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
-  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];}catch(e){}
+  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];}catch(e){}
   function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
   f.addEventListener('submit',function(e){
     e.preventDefault();
