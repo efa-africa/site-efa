@@ -30,8 +30,8 @@ def nouv(type_, titre, lien, ess=True):
 
 MODULES = [
     dict(id='P1', module=1, titre='Où passe mon argent ?', duree='45 min',
-         objectif='Connaître son flux net du dernier mois et nommer ses trois postes à surveiller.',
-         fiche=dict(titre='Mes 3 postes à surveiller', desc='Votre flux net du mois et les trois dépenses à regarder en premier.', lien='ou-est-passe-mon-argent.html?src=parcours'),
+         objectif='Distinguer ce qui entre, ce qui sort et ce qui reste, puis repérer avec l’outil « Où est passé mon argent ? » les postes à examiner.',
+         fiche=dict(titre='Mes postes à examiner', desc='Votre flux net du mois et les dépenses repérées dans l’outil, à regarder en premier.', lien='ou-est-passe-mon-argent.html?src=parcours'),
          etapes=[nouv('Vidéo', 'Min’Fin 1 · Où est passé votre argent ?', 'minfin.html#ep-1-1'), e('P1', 1, True), e('P1', 0, True),
                  e('P1', 2, False), e('P1', 3, False), e('P1', 4, False), e('P1', 5, False)]),
     dict(id='P2', module=2, titre='Un budget qui tient', duree='1 h',
@@ -146,7 +146,7 @@ def construire(m, cycle):
     for k in ('titre', 'duree', 'objectif', 'etapes', 'probleme', 'depart'):
         if k in m: p[k] = m[k]
     p['cycle'] = cycle; p['module'] = m['module']; p['nom'] = 'Module %d' % m['module']; p['fiche'] = m['fiche']
-    p['preuve'] = 'Votre fiche « %s », gardée dans Mon cahier ou envoyée par WhatsApp.' % m['fiche']['titre']
+    p['preuve'] = 'Votre fiche « %s », gardée dans Mon cahier.' % m['fiche']['titre']
     return p
 
 
@@ -169,16 +169,16 @@ for k, p in enumerate(parcours):
 P0['cycles'] = [
     dict(id='fondations', num='I', nom='Fondations', sous='Voir et tenir', modules='1 à 8',
          gain='Savoir où passe son argent, tenir un mois, commencer une réserve, protéger sa famille.',
-         duree='8 modules · environ 6 h, plus 30 jours de suivi', certificat='Certificat local Fondations', statut='ouvert',
-         validation='Chaque module validé donne une attestation. Les 8 attestations, puis l’examen final (17 bonnes réponses sur 24), donnent le certificat local.'),
+         duree='Leçons et quiz : environ 2 h', outils='Outils et exercices : en plus, à votre rythme', suivi='Suivi proposé sur 30 jours', certificat='Certificat local Fondations', statut='ouvert',
+         validation='Chaque module validé donne une attestation de réalisation. Les 8 modules validés, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local.'),
     dict(id='maitrise', num='II', nom='Maîtrise', sous='Organiser sa vie d’argent', modules='9 à 16',
          gain='Un mois de réserve, des dettes ordonnées, l’année entière prévue, la solidarité organisée.',
-         duree='8 modules · environ 5 h, plus 2 mois de suivi', certificat='Certificat local Maîtrise', statut='libre',
-         validation='Attestation par module. Projet de fin de cycle : « Mon plan sur 12 mois ». Examen et certificat à l’ouverture du cycle.'),
+         duree='Leçons et outils : environ 5 h', outils='', suivi='Suivi proposé sur 2 mois', certificat='Certificat local Maîtrise', statut='libre',
+         validation='Attestation de réalisation par module. Projet de fin de cycle : « Mon plan sur 12 mois ». Examen et certificat en préparation.'),
     dict(id='patrimoine', num='III', nom='Patrimoine', sous='Faire travailler son argent', modules='17 à 23',
          gain='Comprendre les placements de la zone, la BRVM, préparer un projet, sa retraite et la transmission.',
-         duree='7 modules · environ 6 h, plus 3 mois de suivi', certificat='Certificat local Patrimoine', statut='libre',
-         validation='Attestation par module. Projet de fin de cycle : un plan patrimonial à 10 ans. Examen et certificat à l’ouverture du cycle.'),
+         duree='Leçons et outils : environ 6 h', outils='', suivi='Suivi proposé sur 3 mois', certificat='Certificat local Patrimoine', statut='libre',
+         validation='Attestation de réalisation par module. Projet de fin de cycle : un plan patrimonial à 10 ans. Examen et certificat en préparation.'),
 ]
 P0['parcours'] = parcours
 P0['version'] = '2.0'; P0['date'] = '2026-10-24'

@@ -175,6 +175,7 @@ details.cy>summary::-webkit-details-marker{display:none}
 .cy-t p{color:#C9D1DE;font-size:15.5px}
 .cy-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .cy-meta span{font-size:12.5px;font-weight:700;background:var(--panel,#111B2F);color:#C9D1DE;border-radius:var(--r-pastille);padding:4px 10px}
+.cy-next{font-size:14.5px;color:#C9D1DE;margin-top:4px}.cy-next b{color:#fff}
 .cy-meta span.ok{background:var(--hausse);color:var(--nuit)}
 .cy-meta span.ouvert{background:var(--corail);color:#fff}
 details.cy .fleche{color:#8E98AA}
@@ -197,6 +198,29 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
 .boite span{font-size:14px;color:var(--ink2)}
 .boite a:hover{background:var(--line)}
 
+
+/* Premier écran : deux choix */
+.choix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+@media (max-width:640px){.choix{grid-template-columns:1fr}}
+.ch-b{display:flex;flex-direction:column;gap:4px;text-decoration:none;border-radius:12px;padding:16px 18px;background:#F5EFE2;color:var(--nuit);min-height:46px}
+.ch-b b{font-size:18px;font-weight:800}.ch-b span{font-size:14.5px;color:var(--ink2)}
+.ch-b.ch-p{background:var(--corail);color:#fff}.ch-b.ch-p span{color:#fff}
+.ch-diag{margin-top:16px}
+.ch-trame{margin-top:14px;font-size:15px;color:#C9D1DE;max-width:40em}
+.reprise{margin-top:20px;background:#111B2F;border-radius:12px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reprise p{color:#E8EDF5;font-size:15.5px;flex:1 1 240px}.reprise b{color:#fff}
+.reprise .bouton{min-height:42px;padding:10px 18px;font-size:15px}
+.statut{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.statut.dispo{background:#E3F5EA;color:#1D6B43}.statut.pilote{background:var(--bleu);color:#fff}.statut.prep{background:var(--line);color:var(--ink2)}
+.p-go{font-size:14px;font-weight:800;color:var(--corail);white-space:nowrap}
+.cond{background:var(--creme);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--ink)}
+/* Ma progression */
+.progr{background:var(--papier);border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:12px;margin-top:40px}
+.progr h2{font-size:clamp(22px,2.6vw,28px)}
+.progr p{color:var(--ink2);font-size:15.5px}
+.progr .acts{display:flex;flex-wrap:wrap;gap:10px}
+.progr button,.progr label.bouton{font:800 15px/1.2 var(--f-body);min-height:44px;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;background:var(--creme);color:var(--nuit)}
+.progr .msg{font-weight:700;color:#1D6B43;min-height:1.3em}
 
 /* Route des cycles (en-tête) */
 .route{list-style:none;margin:28px 0 0;padding:0;display:flex;align-items:stretch;gap:8px}
@@ -272,7 +296,14 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
       <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l’argent qui tourne, à la <span class="spirale">spirale</span>, l’argent qui reste.</p>
       <span class="surtitre">L’école EFA</span>
       <h1>L’école EFA</h1>
-      <p class="chapo">Un diagnostic pour savoir par où commencer, puis trois cycles, chacun validé par un certificat local, et le certificat CEFA quand les trois sont acquis. Gratuit, sur téléphone, avec vos propres chiffres.</p>
+      <p class="chapo">Trois cycles pour progresser à votre rythme. Le certificat Fondations est ouvert en pilote. Les certificats Maîtrise et Patrimoine sont en préparation.</p>
+      <div class="choix">
+        <a class="ch-b ch-p" href="#P1" data-ouvrir="P1" data-goatcounter-click="ecole-choix-bases"><b>Je veux apprendre les bases</b><span>Commencer le module 1 du cycle Fondations</span></a>
+        <a class="ch-b" href="outils.html?src=ecole#parcours" data-goatcounter-click="ecole-choix-question"><b>J’ai une question précise</b><span>Les questions les plus fréquentes et leurs modules</span></a>
+      </div>
+      <p class="ch-diag"><a class="lien-souligne" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-choix-diagnostic">Je ne sais pas par où commencer : faire mon diagnostic</a></p>
+      <p class="ch-trame">Chaque module : une situation concrète, une explication, un exercice avec vos chiffres et une fiche à garder.</p>
+      <div class="reprise" id="reprise" hidden></div>
       <ol class="route" aria-label="Le parcours de l’école">
         <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
@@ -282,11 +313,6 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
         <li aria-hidden="true" class="r-fl">›</li>
         <li class="r-fin"><a href="#certificats"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux · devenir Passeur</small></a></li>
       </ol>
-      <div class="acts">
-        <a class="bouton bouton-principal" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-diagnostic">Faire mon diagnostic, 6 min</a>
-        <a class="lien-souligne" href="#P1" data-ouvrir="P1">Ou commencer au module 1</a>
-      </div>
-      <div class="chiffres" id="chiffres"></div>
     </div>
   </div>
 
@@ -298,7 +324,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
     <ol class="chemin">
       <li><b>1</b><div><h3>Je fais le point</h3><p>Le diagnostic vous dit par quel module commencer. Vous pourrez le refaire à chaque fin de cycle pour mesurer le chemin.</p></div></li>
       <li><b>2</b><div><h3>J’avance module par module</h3><p>Chaque module vous envoie au bon moment vers une vidéo, une leçon ou un outil, et se termine par une fiche que vous gardez. Le Dico est là quand un mot bloque.</p></div></li>
-      <li><b>3</b><div><h3>Je valide</h3><p>Un module terminé, avec sa fiche gardée, donne une attestation. Les modules d’un cycle et l’examen final donnent le certificat local du cycle. Les trois certificats locaux donnent le certificat CEFA.</p></div></li>
+      <li><b>3</b><div><h3>Je valide</h3><p>Un module terminé, avec sa fiche gardée, donne une attestation de réalisation. Les modules d’un cycle et l’examen final donnent le certificat local du cycle. Les trois certificats locaux donnent le certificat CEFA.</p></div></li>
     </ol>
   </section>
 
@@ -372,6 +398,16 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
       <p style="color:#fff">EFA est gratuit et grandit grâce à vous. Un message à un proche, un groupe de tontine, un collègue : chaque partage compte.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px"><button type="button" class="bouton" style="background:#fff;color:#0B1220" data-efa-partager="whatsapp">Partager sur WhatsApp</button><button type="button" class="bouton bouton-sombre" data-efa-partager="facebook">Facebook</button><button type="button" class="bouton bouton-sombre" data-efa-partager="copier">Copier le lien</button></div>
     </div>
+    <section class="progr" id="ma-progression" aria-labelledby="t-progr">
+      <h2 id="t-progr">Ma progression</h2>
+      <p>Votre progression et vos fiches restent dans ce navigateur, sur cet appareil : rien n’est envoyé à EFA. Si vous changez de téléphone ou videz votre navigateur, elles sont perdues. Sauvegardez-les pour les retrouver.</p>
+      <div class="acts">
+        <button type="button" id="pg-save">Sauvegarder ma progression</button>
+        <label class="bouton" for="pg-file">Restaurer une sauvegarde</label><input type="file" id="pg-file" accept="application/json,.json" hidden>
+        <button type="button" id="pg-raz">Tout effacer</button>
+      </div>
+      <p class="msg" id="pg-msg" role="status" aria-live="polite"></p>
+    </section>
     <p class="mention">Éducation financière, pas conseil en placement. Aucun produit financier recommandé. Parcours conçus par EFA avec l’aide de l’intelligence artificielle, vérifiés par l’équipe EFA. Koffi, Tonton Bamba et Tantie Affoué sont des personnages fictifs.</p>
   </div>
 </main>
@@ -418,8 +454,8 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   </div>
 </footer>
 
-<script src="parcours-efa.js?v=2026102504"></script>
-<script src="parcours-ui.js?v=2026102503"></script>
+<script src="parcours-efa.js?v=2026102505"></script>
+<script src="parcours-ui.js?v=2026102505"></script>
 <script>
 (function(){
   "use strict";
@@ -487,8 +523,16 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
     return !!(pg && F[pg]);
   }
   function valide(p){ var g = progression(p); return g.dispo > 0 && g.faits >= g.dispo && ficheGardee(p); }
+  // État unique du module, d'après les données : En préparation si une étape essentielle n'est pas en ligne, Pilote si une étape est en pilote, sinon Disponible
+  function statut(p){
+    var E = p.etapes.filter(function(s){ return s.ess; });
+    if(!E.length || E.some(function(s){ return !s.ok; })) return {c:"prep", t:"En préparation"};
+    if(E.some(function(s){ return s.pilote; })) return {c:"pilote", t:"Pilote"};
+    return {c:"dispo", t:"Disponible"};
+  }
+  function prochaine(p){ var r=null; p.etapes.some(function(s,i){ if(s.ess && s.ok && s.lien && !etat.faits[p.id+"."+i]){ r={s:s,i:i}; return true; } return false; }); return r; }
   function carte(p){
-    var g = progression(p), ok = valide(p);
+    var g = progression(p), ok = valide(p), st = statut(p);
     function ligne(s,i){
       var k = p.id+"."+i, fait = !!etat.faits[k], href = lienEtape(s,p.id), ext = href && /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : "";
       var nom = s.ok && href ? '<a href="'+esc(href)+'"'+ext+'>'+esc(s.titre)+'</a>' : esc(s.titre);
@@ -504,17 +548,18 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
     return '<details class="parcours" id="'+p.id+'"><summary>'
       + '<span class="num">'+numero(p.id)+'</span>'
       + '<span class="p-tete"><span class="etiquette">'+esc(nomCourt(p.id))+' · '+esc(p.titre)+'</span><h3>« '+esc(p.probleme)+' »</h3><span class="obj">À l’arrivée : '+esc(p.objectif.charAt(0).toLowerCase()+p.objectif.slice(1))+'</span></span>'
-      + '<span class="p-cote"><span class="duree">'+esc(p.duree)+'</span><span class="fleche" aria-hidden="true">›</span></span>'
+      + '<span class="p-cote"><span class="duree">'+esc(p.duree)+'</span><span class="statut '+st.c+'">'+st.t+'</span>'+(premier?'<span class="p-go">'+(g.faits?'Reprendre':'Commencer')+' ›</span>':'')+'<span class="fleche" aria-hidden="true">›</span></span>'
       + '<span class="barre" aria-hidden="true"><i style="width:'+(g.dispo?Math.round(g.faits/g.dispo*100):0)+'%"></i></span>'
-      + '<span class="barre-txt">'+(ok ? '<span class="pill valide">Module validé · attestation obtenue</span>' : !g.dispo ? 'Module en préparation' : g.faits+' étape'+(g.faits>1?"s":"")+' faite'+(g.faits>1?"s":"")+' sur '+g.dispo+' essentielles'+(g.faits>=g.dispo ? ' · il reste votre fiche' : ''))+'</span>'
+      + '<span class="barre-txt">'+(ok ? '<span class="pill valide">Module validé · attestation de réalisation</span>' : !g.dispo ? 'Module en préparation' : g.faits+' étape'+(g.faits>1?"s":"")+' faite'+(g.faits>1?"s":"")+' sur '+g.dispo+' essentielles'+(g.faits>=g.dispo ? ' · il reste votre fiche' : ''))+'</span>'
       + '</summary><div class="p-corps">'
       + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
+      + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+(p.cycle==="fondations"?', dont le quiz du module dans le certificat,':'')+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')+'</p>'
       + '<ol class="etapes">'+et+'</ol>'
       + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
       + (!g.dispo ? '<div class="p-acts"><span class="pill bientot">Module en préparation</span></div>' : premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le module" : "Commencer le module")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Partager ce module</button></div>'
-         : '<div class="p-acts"><span class="pill '+(ok?'valide':'fait')+'">'+(ok?'Module validé : attestation obtenue':'Étapes faites : gardez votre fiche pour valider')+'</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Bravo ! Partagez ce module à un proche</button></div>')
+         : '<div class="p-acts"><span class="pill '+(ok?'valide':'fait')+'">'+(ok?'Module validé : attestation de réalisation obtenue':'Étapes faites : gardez votre fiche pour valider')+'</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Bravo ! Partagez ce module à un proche</button></div>')
       + '</div></details>';
   }
   var CY = D.cycles || [];
@@ -525,10 +570,13 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
     document.querySelectorAll("details.cy").forEach(function(d){ if(d.open) cyOuvert[d.getAttribute("data-cy")]=1; else delete cyOuvert[d.getAttribute("data-cy")]; });
     $("liste-parcours").innerHTML = CY.map(function(c){
       var M = D.parcours.filter(function(p){ return p.cycle===c.id; }), nv = M.filter(valide).length;
+      var nd = M.filter(function(p){ return statut(p).c!=="prep"; }).length;
+      var pro = M.filter(function(p){ return !valide(p) && statut(p).c!=="prep"; })[0];
       return '<details class="cy" id="cycle-'+c.id+'" data-cy="'+c.id+'"'+(cyOuvert[c.id]?' open':'')+'><summary>'
         + '<span class="cy-num">'+esc(c.num)+'</span>'
         + '<span class="cy-t"><span class="etiquette">Cycle '+esc(c.num)+' · modules '+esc(c.modules)+'</span><h3>'+esc(c.nom)+' · '+esc(c.sous)+'</h3><p>Ce que vous y gagnez : '+esc(c.gain.charAt(0).toLowerCase()+c.gain.slice(1))+'</p>'
-        + '<span class="cy-meta"><span>'+esc(c.duree)+'</span><span class="'+(c.statut==="ouvert"?"ouvert":"")+'">'+(c.statut==="ouvert"?"Certificat ouvert (pilote)":"Modules en accès libre")+'</span><span class="'+(nv?"ok":"")+'">'+nv+' sur '+M.length+' modules validés</span></span></span>'
+        + '<span class="cy-meta"><span>'+nd+' module'+(nd>1?'s':'')+' disponible'+(nd>1?'s':'')+' sur '+M.length+'</span><span>'+esc(c.duree)+'</span>'+(c.suivi?'<span>'+esc(c.suivi)+'</span>':'')+'<span class="'+(c.statut==="ouvert"?"ouvert":"")+'">'+(c.statut==="ouvert"?"Certificat ouvert en pilote":"Certificat en préparation")+'</span><span class="'+(nv?"ok":"")+'">'+nv+' sur '+M.length+' validés</span></span>'
+        + (pro ? '<span class="cy-next">Prochain module : <b>'+esc(pro.nom)+' · '+esc(pro.titre)+'</b></span>' : '')+'</span>'
         + '<span class="fleche" aria-hidden="true">›</span></summary>'
         + '<div class="cy-corps"><div class="liste">'+M.map(carte).join("")+'</div>'
         + '<div class="cy-val"><span class="etiquette" style="color:#8E98AA">'+esc(c.certificat)+'</span><span>'+esc(c.validation)+'</span>'
@@ -536,7 +584,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
         + '</div></div></details>';
     }).join("");
     Object.keys(ouverts).forEach(function(id){ var d=$(id); if(d) d.open=true; });
-    if($("liste-certs")) $("liste-certs").innerHTML = '<article class="cert plein"><span class="etiquette">Pour chaque module</span><h3>L’attestation</h3><p>Les étapes essentielles faites et la fiche du module gardée. Elle s’affiche sur le module, la fiche reste dans Mon cahier.</p></article>'
+    if($("liste-certs")) $("liste-certs").innerHTML = '<article class="cert plein"><span class="etiquette">Pour chaque module</span><h3>L’attestation de réalisation</h3><p>Une attestation de réalisation : les étapes essentielles faites et la fiche du module gardée. Pour Fondations, le quiz de chaque module est évalué dans le certificat.</p></article>'
       + CY.map(function(c){ var M=D.parcours.filter(function(p){return p.cycle===c.id;}); return '<article class="cert"><span class="etiquette">Cycle '+esc(c.num)+' · '+M.length+' modules</span><h3>'+esc(c.certificat)+'</h3><p>'+esc(c.validation)+'</p>'+(c.statut==="ouvert"?'<a class="lien-souligne" href="certificat-pilote.html">Le pilote est ouvert</a>':'<span class="etiquette">À l’ouverture du cycle</span>')+'</article>'; }).join("");
     marquerReco();
   }
@@ -584,6 +632,31 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   document.addEventListener("toggle",function(e){ if(e.target.classList && e.target.classList.contains("parcours") && e.target.open){ etat.actif=e.target.id; ecrire(etat); } },true);
 
   rendre();
+  // Reprendre là où on s'est arrêté
+  (function(){
+    var a = etat.actif && P[vrai(etat.actif)]; if(!a || valide(a)) return;
+    var n = prochaine(a); if(!n) return;
+    var r = $("reprise"); r.hidden = false;
+    r.innerHTML = '<p>Vous en étiez au <b>'+esc(a.nom)+' · '+esc(a.titre)+'</b>. Prochaine étape : '+esc(n.s.titre)+'.</p><a class="bouton bouton-principal" href="'+esc(lienEtape(n.s,a.id))+'" data-goatcounter-click="ecole-reprendre">Reprendre</a>';
+    var der = etat.vu ? (Date.now()-etat.vu)/864e5 : 0; if(der>2) mesure("ecole-reprise-apres-jours");
+  })();
+  etat.vu = Date.now(); ecrire(etat); mesure("ecole-entree");
+  // Ma progression : sauvegarde, restauration, effacement
+  function msg(t){ $("pg-msg").textContent = t; }
+  $("pg-save").addEventListener("click", function(){
+    var d = localStorage.getItem(KEY) || "{}", b = new Blob([d], {type:"application/json"}), a = document.createElement("a");
+    a.href = URL.createObjectURL(b); a.download = "ma-progression-efa-"+new Date().toISOString().slice(0,10)+".json"; document.body.appendChild(a); a.click(); a.remove();
+    msg("Sauvegarde téléchargée. Gardez ce fichier : il permet de tout retrouver sur un autre appareil."); mesure("ecole-sauvegarde");
+  });
+  $("pg-file").addEventListener("change", function(e){
+    var f = e.target.files && e.target.files[0]; if(!f) return;
+    var rd = new FileReader(); rd.onload = function(){ try{ var o = JSON.parse(rd.result); if(!o || typeof o!=="object" || !(o.faits||o.fiches||o.preuves)) throw 0; localStorage.setItem(KEY, JSON.stringify(o)); etat = lire(); etat.faits = etat.faits||{}; rendre(); msg("Progression restaurée."); }catch(x){ msg("Ce fichier n’est pas une sauvegarde EFA."); } }; rd.readAsText(f);
+  });
+  var razConf = false;
+  $("pg-raz").addEventListener("click", function(){
+    if(!razConf){ razConf = true; this.textContent = "Confirmer : tout effacer"; msg("Cela efface vos étapes cochées et vos fiches sur cet appareil. Touchez à nouveau pour confirmer."); return; }
+    try{ localStorage.removeItem(KEY); }catch(x){} etat = {faits:{}}; razConf = false; this.textContent = "Tout effacer"; $("reprise").hidden = true; rendre(); msg("Progression et fiches effacées sur cet appareil.");
+  });
   // Recommandation venant du diagnostic (?profil=…) ou des 3 questions déjà faites
   var q = new URLSearchParams(location.search), pr = q.get("profil");
   var PR = {}; D.profils.forEach(function(x){ PR[x.id]=x; });
@@ -594,11 +667,12 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   // Ouverture par l'adresse (#P5)
   var h = vrai((location.hash||"").slice(1));
   document.addEventListener("click",function(e){ var r=e.target.closest&&e.target.closest("[data-cy-go]"); if(!r) return; var d=$("cycle-"+r.getAttribute("data-cy-go")); if(d){ e.preventDefault(); d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); } });
+  window.addEventListener("hashchange", function(){ var x=vrai((location.hash||"").slice(1)); if(P[x]){ var d=ouvrirModule(x); if(d) d.scrollIntoView({block:"start"}); } else if(/^cycle-/.test(x) && $(x)){ $(x).open=true; $(x).scrollIntoView({block:"start"}); } });
   if(/^cycle-/.test(h) && $(h)){ $(h).open=true; setTimeout(function(){ $(h).scrollIntoView({block:"start"}); },60); }
   if(h && P[h]){ var d=ouvrirModule(h); setTimeout(function(){ d.scrollIntoView({block:"start"}); },60); }
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102503" defer></script>
+<script src="efa-appli.js?v=2026102505" defer></script>
 </body>
 </html>

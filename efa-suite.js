@@ -63,7 +63,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102504"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102505"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -106,7 +106,10 @@
     + ".efa-suite .es-merci{grid-column:1/-1;background:#E44828;color:#fff;border-radius:12px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}"
     + ".efa-suite .es-merci p{margin:0;flex:1 1 260px;color:#fff;font-size:16px}"
     + ".efa-suite .es-merci .es-pb{background:#fff;color:#0B1220}"
-    + "@media print{.efa-suite{display:none}}";
+    + ".efa-suite .es-autres{font-size:13px;color:#8E98AA}.efa-suite .es-autres summary{cursor:pointer}"
+    + ".efa-ctx{background:#111B2F;color:#E8EDF5;font-family:\"Source Sans 3\",\"Source Sans Pro\",system-ui,sans-serif;font-size:14.5px;padding:10px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between}"
+    + ".efa-ctx b{color:#fff}.efa-ctx a{color:#fff;font-weight:800;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:4px}"
+    + "@media print{.efa-suite,.efa-ctx{display:none}}";
 
   var LIGNE = '<div class="es-partage"><p><b>Ça vous a aidé ?</b> Partagez-le à quelqu’un qui en a besoin : c’est comme ça qu’EFA grandit.</p>'
     + '<button type="button" class="es-pb wa" data-efa-partager="whatsapp">WhatsApp</button>'
@@ -136,7 +139,7 @@
     if (!candidats.length) {
       placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
         + '<p>Les 8 modules gratuits de l’École EFA partent de votre situation et se terminent par une fiche que vous gardez : un budget qui tient, une réserve, une tontine décidée.</p></div>'
-        + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Choisir mon parcours</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
+        + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Entrer dans l’école</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
       return;
     }
 
@@ -153,16 +156,16 @@
     var nbEss = p.etapes.filter(function (s) { return s.ess; }).length;
     function nbFaits() { var n = 0; p.etapes.forEach(function (s, k) { if (s.ok && s.ess && etat.faits[p.id + "." + k]) n++; }); return n; }
     var faitIci = ici.every(function (k) { return etat.faits[p.id + "." + k]; });
-    var rang = ici[0] + 1;
+    var rang = p.etapes.filter(function (s, k) { return s.ess && k <= ici[0]; }).length || ici[0] + 1;
 
     var gauche = '<div><span class="es-sur">' + esc(nomCourt(p.id)) + " · " + esc(p.titre) + "</span>";
     if (suivante) {
       gauche += '<h2>Étape suivante : ' + esc(suivante.titre) + "</h2>"
         + "<p>" + (p.etapes[ici[0]].ess ? "Vous êtes à l’étape " + rang + " sur " + nbEss + "." : "Une ressource pour aller plus loin.") + " À l’arrivée : " + esc(p.objectif.charAt(0).toLowerCase() + p.objectif.slice(1)) + "</p>";
     } else {
-      gauche += "<h2>Dernière étape en ligne de ce parcours.</h2>"
+      gauche += "<h2>Dernière étape en ligne de ce module.</h2>"
         + "<p>Pour savoir que c’est acquis : " + esc(p.preuve.charAt(0).toLowerCase() + p.preuve.slice(1)) + "</p>"
-        + '<div class="es-chips">' + p.suite.map(function (id) { return '<a class="es-chip" href="parcours.html#' + id + '"><b>' + (id === "P0" ? "0" : id.slice(1)) + "</b> " + esc(P[id].titre) + "</a>"; }).join("") + "</div>";
+        + '<div class="es-chips">' + p.suite.map(function (id) { return '<a class="es-chip" href="parcours.html#' + id + '"><b>' + (P[id] && P[id].module ? P[id].module : id.slice(1)) + "</b> " + esc(P[id].titre) + "</a>"; }).join("") + "</div>";
     }
     gauche += '<div class="es-barre" aria-hidden="true"><i style="width:' + (dispo ? Math.round(nbFaits() / dispo * 100) : 0) + '%"></i></div><div class="es-prog" id="es-prog">' + nbFaits() + " sur " + dispo + " étapes essentielles faites</div></div>";
 
@@ -170,12 +173,21 @@
     var droite = '<div class="es-acts">'
       + '<label class="es-fait" for="es-fait"><input type="checkbox" id="es-fait"' + (faitIci ? " checked" : "") + "> J’ai fait cette étape</label>"
       + (suivante ? '<a class="es-btn" href="' + esc(hrefSuiv) + '"' + ext + ' data-goatcounter-click="suite-' + p.id + '">Étape suivante</a>'
-                  : '<a class="es-btn" href="parcours.html#' + esc(p.suite[0] || p.id) + '">Parcours suivant</a>')
-      + '<a class="es-lien" href="parcours.html#' + p.id + '">Voir tout le parcours</a>'
-      + (candidats.length > 1 ? '<span class="es-prog">Cette page fait aussi partie de : ' + candidats.filter(function (c) { return c !== p; }).map(function (c) { return '<a class="es-lien" style="font-size:13px" href="?parcours=' + c.id + location.hash + '">' + esc(nomCourt(c.id)) + "</a>"; }).join(", ") + "</span>" : "")
+                  : '<a class="es-btn" href="parcours.html#' + esc(p.suite[0] || p.id) + '">Module suivant</a>')
+      + '<a class="es-lien" href="parcours.html#' + p.id + '">Revenir au module</a>'
+      + (candidats.length > 1 && !voulu ? '<details class="es-autres"><summary>Autres usages de cette ressource</summary>' + candidats.filter(function (c) { return c !== p; }).map(function (c) { return '<a class="es-lien" style="font-size:13px" href="?parcours=' + c.id + location.hash + '">' + esc(nomCourt(c.id)) + " · " + esc(c.titre) + "</a>"; }).join("<br>") + "</details>" : "")
       + "</div>";
 
     var box = placer(gauche + droite);
+    // Arrivée depuis un module : rappeler où l'on est, avec un retour direct
+    if (voulu && voulu === p.id && p.etapes[ici[0]] && p.etapes[ici[0]].ess) {
+      var ctx = document.createElement("div"); ctx.className = "efa-ctx"; ctx.setAttribute("role", "note");
+      ctx.innerHTML = "<span>Vous êtes dans le <b>" + esc(nomCourt(p.id)) + " · " + esc(p.titre) + "</b>, étape " + rang + " sur " + nbEss + ".</span>"
+        + '<a href="parcours.html#' + p.id + '" data-goatcounter-click="retour-module-' + p.id + '">Revenir au module</a>';
+      var hd = document.querySelector("header");
+      if (hd && hd.parentNode) hd.parentNode.insertBefore(ctx, hd.nextSibling); else document.body.insertBefore(ctx, document.body.firstChild);
+      mesure("ressource-ouverte-" + p.id + "-" + rang);
+    }
     var cb = box.querySelector("#es-fait");
     cb.addEventListener("change", function () {
       etat = lire(); etat.faits = etat.faits || {};
