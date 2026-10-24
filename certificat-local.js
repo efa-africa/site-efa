@@ -86,7 +86,7 @@
     var ce = lireCle(CLES.cefa) || {};
     function cefa() {
       if (!tous) {
-        vue.innerHTML = '<section class="carte"><p class="sur">Où vous en êtes</p><h2>' + trois.filter(function (t) { return t.r; }).length + ' certificat' + (trois.filter(function (t) { return t.r; }).length > 1 ? 's' : '') + ' local' + (trois.filter(function (t) { return t.r; }).length > 1 ? 'aux' : '') + ' sur 3</h2>'
+        vue.innerHTML = '<section class="carte"><p class="sur">Où vous en êtes</p><h2>' + trois.filter(function (t) { return t.r; }).length + ' certificat' + (trois.filter(function (t) { return t.r; }).length > 1 ? 's' : '') + ' loca' + (trois.filter(function (t) { return t.r; }).length > 1 ? 'ux' : 'l') + ' sur 3</h2>'
           + '<ul class="etat3">' + trois.map(function (t, k) { return '<li class="c-' + t.c + '"><b>' + ["I", "II", "III"][k] + '</b><span>Certificat local ' + NOMS[t.c] + '</span>' + (t.r ? '<em class="ok">Obtenu · ' + esc(t.r.numero) + '</em>' : '<a class="bt" href="' + PAGES[t.c] + '">Le préparer</a>') + '</li>'; }).join("") + '</ul>'
           + '<p class="note">Le certificat CEFA ★ se délivre ici, sur ce téléphone, dès que les trois certificats locaux y sont obtenus.</p></section>';
         return;
