@@ -760,6 +760,24 @@ img.char{object-position:50% 18%}
   .ec-portes{grid-template-columns:minmax(0,1fr);gap:10px}
   .ec-porte{padding:16px}
 }
+
+/* Section institutionnelle : ligne cercle/spirale et inscription compacte */
+.efa-cs{margin:14px 0 0;font-size:clamp(16px,1.8vw,18px);font-weight:700;color:#E8EDF5;max-width:34em}
+.efa-cs .mc{color:#EC6243}.efa-cs .ms{color:var(--soft-bleu)}
+.efa-cs a{color:#C9D1DE;font-weight:600;margin-left:4px}
+.efa-nl{margin-top:24px;background:rgba(13,21,37,.82);border-radius:14px;padding:18px;width:min(560px,100%);box-sizing:border-box;display:grid;gap:10px;text-align:left}
+.efa-nl-t{margin:0;font-size:15px;color:#C9D1DE}.efa-nl-t b{color:#fff}
+.efa-nl-row{display:flex;gap:8px}
+.efa-nl-row input{flex:1;min-width:0;min-height:46px;border:0;border-radius:8px;padding:0 14px;font:500 16px var(--f-body);color:var(--nuit)}
+.efa-nl .check{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#C9D1DE;margin-top:8px}
+.efa-nl .check a{color:#fff}
+.efa-nl .formmsg{margin:6px 0 0;font-size:14px;color:#fff}.efa-nl .formmsg a{color:#fff}
+.efa-nl .hp{position:absolute;left:-9999px}
+.efa-in{grid-template-columns:minmax(0,1fr)}
+.efa-nl-row .btn{flex:none;width:auto;min-width:0;padding:0 18px;min-height:46px}
+.efa-nl-row input{flex:1 1 auto!important;width:auto!important}
+.efa-nl .check input{width:18px;height:18px;flex:none;margin:2px 0 0}
+.efa-nl-alt{margin:0;font-size:13px;color:#9FB0C8}.efa-nl-alt a{color:#E8EDF5}
 </style>
 <link rel="stylesheet" href="footer.css">
 <script type="application/ld+json">
@@ -860,116 +878,25 @@ img.char{object-position:50% 18%}
       <h2 id="efa-t"><span class="e1">EFA</span><span class="sep" aria-hidden="true"> | </span><span class="e2">Éducation Financière Afrique</span></h2>
       <p class="efa-l">Donner à chacun les moyens de construire l’avenir.</p>
       <p class="efa-s">En Afrique et dans la diaspora, réunissons les connaissances et les initiatives pour construire une prospérité qui se transmet.</p>
+      <p class="efa-cs">EFA vous fait passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste. <a href="cercle-spirale.html">Comprendre en deux minutes</a></p>
+      <div class="efa-nl" id="guide">
+        <p class="efa-nl-t"><b>La lettre du mardi</b> et, en cadeau, le guide «&nbsp;Construire sa stabilité financière&nbsp;».</p>
+        <form id="signup-form" novalidate>
+          <input id="f-prenom" type="hidden" value=""><input id="f-pays" type="hidden" value="">
+          <div class="efa-nl-row"><input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="Votre adresse email" aria-label="Adresse email" required><button class="btn btn-main" type="submit">Recevoir</button></div>
+          <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span id="f-ok-t">J’accepte de recevoir le guide et «&nbsp;L’argent de la semaine&nbsp;» chaque mardi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
+          <label class="check" for="f-nl" id="f-nl-l" hidden><input id="f-nl" type="checkbox"><span>Recevoir aussi «&nbsp;L’argent de la semaine&nbsp;», la lettre EFA, chaque mardi. Facultatif.</span></label>
+          <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="efa-nl-alt">Sans email&nbsp;: <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://forms.gle/5CsRvJYxoFArJbNa8" target="_blank" rel="noopener">recevez le guide par le questionnaire</a></p>
+      </div>
       <div class="efa-b">
         <a class="btn btn-main" href="outils.html" data-goatcounter-click="efa-outils">Découvrir mes outils</a>
         <a class="efa-c" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="efa-communaute">Rejoindre la communauté</a>
       </div>
     </div>
     <button type="button" class="g-pause" aria-pressed="false">Mettre l’animation en pause</button>
-  </section>
-
-  <!-- Comprendre tout de suite : la question du visiteur, puis le cercle et la spirale en langage courant -->
-  <section class="cs-top" id="comprendre" aria-labelledby="cs-t" data-step="Comprendre">
-    <div class="cs-in">
-      <div class="cs-q">
-        <p class="cs-k">L’argent s’apprend</p>
-        <h2 id="cs-t">Votre argent entre. Que <span class="nw">reste-t-il</span> après&nbsp;?</h2>
-        <p class="cs-lead">Salaire, recettes d’activité, transferts ou tontine&nbsp;: une partie sert à vivre et à honorer vos engagements. EFA vous aide à comprendre où elle va et à préparer vos projets.</p>
-      </div>
-      <div class="cs-def">
-        <div class="cs-row"><svg class="cs-ic" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="34" fill="none" stroke="#EC6243" stroke-width="5" stroke-dasharray="3 8" stroke-linecap="round"/><path d="M34 0 l-7 -7 M34 0 l7 -7" stroke="#EC6243" stroke-width="5" stroke-linecap="round" fill="none"/></svg><p><b><span class="mc">Le cercle</span>&nbsp;: l’argent circule.</b> Vous recevez, vous utilisez, puis vous attendez la prochaine rentrée.</p></div>
-        <div class="cs-row"><svg class="cs-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="10" r="6" fill="#E44828"/></svg><p><b><span class="ms">La spirale</span>&nbsp;: une partie se construit dans la durée.</b> Au fil des rentrées, vous conservez une part pour une réserve ou un projet.</p></div>
-        <p class="cs-nuance">Payer ses besoins est nécessaire. L’objectif est de comprendre ce qui circule et ce que vous pouvez progressivement construire.</p>
-        <div class="cs-act">
-          <a class="btn btn-main" href="ou-est-passe-mon-argent.html?src=accueil-cs" data-goatcounter-click="cs-oepma">Où est passé mon argent&nbsp;?</a>
-          <a class="cs-diag" href="diagnostic.html?src=accueil" data-goatcounter-click="cs-diagnostic">Ou faites le point complet&nbsp;: mon diagnostic gratuit, 6&nbsp;min</a>
-          <details class="cs-ex" id="cs-ex">
-            <summary data-goatcounter-click="cs-exemple">Comprendre le cercle et la spirale avec un exemple</summary>
-            <div class="cs-exb">
-              <p class="cs-ext">Un exemple avec 100&nbsp;000&nbsp;FCFA</p>
-              <div class="cs-case"><span class="cs-bar"><i style="width:100%"></i></span><p>Vous recevez 100&nbsp;000&nbsp;FCFA et utilisez toute la somme&nbsp;: <b>cette rentrée n’ajoute rien à votre réserve.</b> C’est le cercle.</p></div>
-              <div class="cs-case"><span class="cs-bar"><i style="width:95%"></i><em style="width:5%"></em></span><p>Vous recevez 100&nbsp;000&nbsp;FCFA, utilisez 95&nbsp;000&nbsp;FCFA et conservez 5&nbsp;000&nbsp;FCFA&nbsp;: <b>vous commencez à constituer une réserve.</b></p></div>
-              <div class="cs-case"><span class="cs-steps" aria-hidden="true"><i style="--h:10%"></i><i style="--h:20%"></i><i style="--h:30%"></i><i style="--h:40%"></i><i style="--h:50%"></i><i style="--h:60%"></i><i style="--h:70%"></i><i style="--h:80%"></i><i style="--h:90%"></i><i style="--h:100%"></i></span><p>Si vous pouvez renouveler cette mise de côté pendant dix rentrées, sans retrait, <b>vous aurez conservé 50&nbsp;000&nbsp;FCFA</b>, hors frais et sans supposer de rendement.</p></div>
-              <p class="cs-note">EFA appelle cette accumulation progressive «&nbsp;la spirale&nbsp;». Le montant dépend de votre situation&nbsp;; 5&nbsp;% n’est pas une règle imposée.</p>
-              <a class="cs-more" href="cercle-spirale.html#argent">Essayer avec d’autres montants, l’exemple de Koffi</a>
-            </div>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 1. Les besoins : chacun mène vers un outil -->
-
-
-  <!-- 3. Le cercle et la spirale : aperçu ; le simulateur principal est sur cercle-spirale.html -->
-  <section class="sp-apercu" id="apercu-spirale" data-step="Le cercle et la spirale" aria-labelledby="sp-t">
-    <div class="sp-in">
-      <svg class="sp-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/></svg>
-      <div class="sp-txt">
-        <p class="sp-k">Le simulateur · l’exemple de Koffi</p>
-        <h2 id="sp-t">Koffi reçoit 300&nbsp;000&nbsp;FCFA. Quelle part garde-t-il&nbsp;?</h2>
-        <p>Changez la part gardée et voyez ce qui reste après 12 rentrées d’argent.</p>
-        <p class="sp-src">Dans notre enquête, parmi les répondants qui participent à une tontine, 71&nbsp;% déclarent que leur tontine redistribue tout. Enquête de 251 répondants, résultats provisoires, échantillon non représentatif. <a href="methode.html#tont">La méthode</a></p>
-      </div>
-      <div class="sp-act">
-        <a class="btn btn-main" href="cercle-spirale.html#argent" data-goatcounter-click="apercu-simulateur">Ouvrir le simulateur</a>
-        <a class="sp-lk" href="cercle-spirale.html#groupe">Avec mon groupe de tontine</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Le guide -->
-  <section class="screen guide" id="guide" data-step="Rester en lien">
-    <!-- Couverture du guide : remplacée automatiquement par guide-couverture.jpg si ce fichier est déposé -->
-    <div class="ph book-wrap">
-      <img class="cover-img" src="guide-couverture.jpg" alt="Couverture du guide Construire sa stabilité financière" loading="lazy" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
-      <div class="book" aria-hidden="true">
-        <div class="sheet"><b>Fiche 1</b><span>Mes sept chiffres</span><i>Revenus</i><i>Dépenses courantes</i><i>Dettes</i><i>Soutien aux proches</i><i>Tontine</i></div>
-        <div class="cover">
-          <img src="logo-efa-96.png" alt="" width="44" height="44">
-          <small>Guide gratuit EFA</small>
-          <strong>Construire sa stabilité financière</strong>
-          <em>5 fiches à remplir</em>
-          <svg viewBox="-50 -50 100 100"><g fill="#6DB8F2"><circle cx="0" cy="-6" r="2"/><circle cx="6" cy="-2" r="2.4"/><circle cx="6" cy="6" r="2.8"/><circle cx="-2" cy="12" r="3.2"/><circle cx="-12" cy="6" r="3.6"/><circle cx="-14" cy="-8" r="4"/><circle cx="-4" cy="-20" r="4.4"/><circle cx="14" cy="-20" r="4.8"/><circle cx="26" cy="-4" r="5.2"/></g><circle cx="22" cy="18" r="6" fill="#E44828"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="side">
-      <p class="step">Rester en lien · le guide gratuit</p>
-      <h2>Construire sa stabilité financière</h2>
-      <p class="sub">Le guide gratuit EFA&nbsp;: mesurer sa stabilité, puis la construire pilier par pilier. Un cas concret, celui de Koffi, et cinq fiches à remplir avec vos propres chiffres.</p>
-      <ol class="fiches">
-        <li><b>Mes sept chiffres</b><span>Revenus, charges, dettes, réserve&nbsp;: votre score de stabilité.</span></li>
-        <li><b>Mes dépenses courantes</b><span>Fixes, nécessaires ou choisies&nbsp;: où agir.</span></li>
-        <li><b>Mes dettes</b><span>Les classer par coût et choisir l’ordre de remboursement.</span></li>
-        <li><b>Mes obligations sociales</b><span>Funérailles, fêtes, cotisations&nbsp;: une enveloppe sur douze mois.</span></li>
-        <li><b>Ma réserve</b><span>Deux semaines, un mois, trois mois de charges, par paliers.</span></li>
-      </ol>
-      <div class="soon" id="soon">
-        <p id="soon-t"><strong>Le guide est disponible, gratuitement.</strong> Laissez votre email&nbsp;: après un clic de confirmation, il vous est envoyé.</p>
-      </div>
-      <form id="signup-form" novalidate>
-        <div class="row">
-          <input id="f-prenom" name="PRENOM" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
-          <select id="f-pays" name="PAYS" aria-label="Pays">
-            <option value="">Pays</option>
-            <option>Côte d’Ivoire</option><option>Sénégal</option><option>Cameroun</option><option>Bénin</option>
-            <option>Burkina Faso</option><option>Mali</option><option>Togo</option><option>Guinée</option>
-            <option>Niger</option><option>Gabon</option><option>RD Congo</option><option>Congo</option>
-            <option>France</option><option>Autre pays</option>
-          </select>
-        </div>
-        <input id="f-email" name="EMAIL" type="email" autocomplete="email" placeholder="Adresse email" aria-label="Adresse email" required>
-        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check" for="f-ok"><input id="f-ok" type="checkbox" required><span id="f-ok-t">J’accepte de recevoir le guide et «&nbsp;L’argent de la semaine&nbsp;» chaque mardi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
-        <label class="check" for="f-nl" id="f-nl-l" hidden><input id="f-nl" type="checkbox"><span>Recevoir aussi «&nbsp;L’argent de la semaine&nbsp;», la lettre EFA, chaque mardi. Facultatif.</span></label>
-        <button class="btn btn-main" type="submit">Recevoir le guide</button>
-        <p class="formmsg" id="formmsg" role="status" aria-live="polite"></p>
-      </form>
-      <p class="g-alt">Vous préférez ne pas laisser d’email ici&nbsp;? <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://forms.gle/5CsRvJYxoFArJbNa8" target="_blank" rel="noopener">Recevez-le en répondant au questionnaire (2 min)</a></p>
-      <p class="small">Aucun produit financier à vendre, pas de conseil en placement. Prochain guide&nbsp;: «&nbsp;Choisir sa tontine&nbsp;».</p>
-    </div>
   </section>
 
 
@@ -1355,10 +1282,10 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
   });
   // Rappel : une seule fois par visite, 12 secondes, jamais au-dessus d'un formulaire, d'un simulateur ou d'un bouton de fin de section.
-  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle')||document.getElementById('apercu-spirale');
+  var p=document.getElementById('enq-pill'), start=document.getElementById('cercle')||document.getElementById('apercu-spirale')||document.getElementById('minfin');
   if(!p||!ENQUETE_LIEN||!start) return;
   try{ if(localStorage.getItem('efa-enq-x')||sessionStorage.getItem('efa-enq-vu')) return; }catch(e){}
-  var zones=['#cercle','#apercu-spirale','#guide','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
+  var zones=['#cercle','#apercu-spirale','#guide','#efa','#lien','#contact','footer'].map(function(q){return document.querySelector(q);}).filter(Boolean);
   var inZone=new Set(), armed=false, done=false, timer=null;
   function hide(){p.classList.remove('on');}
   function under(){
