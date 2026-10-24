@@ -258,7 +258,6 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .dq-lien a{color:var(--ink,#2A3142);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-decoration-thickness:2px;text-underline-offset:4px}
 .creuse-g{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3,#7A8293)}
 .creuse-pied{grid-column:1/-1;font-size:16px;margin:6px 0 0}.creuse-pied a{color:var(--ink,#2A3142);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-decoration-thickness:2px;text-underline-offset:4px}
-.lnk-p a{color:inherit}
 .cote-parc{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
 @media (max-width:860px){.cote-parc{grid-template-columns:minmax(0,1fr)}}
 .cote-parc>div{display:flex;flex-direction:column;gap:10px;min-width:0}
@@ -288,14 +287,16 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 .ce-parc{margin:8px 0 0;font-size:13.5px;font-weight:700}.ce-parc a{color:inherit;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
 .creuse-intro{margin:4px 0 0;font-size:15px;color:var(--ink2,#4E5566)}
 .creuse-liste{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
-.creuse{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:center;background:var(--papier,#FFFDF8);border-radius:12px;padding:14px 18px}
+.creuse{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:10px 18px;align-items:center;background:var(--papier,#FFFDF8);border-radius:12px;padding:14px 18px}
 @media (max-width:640px){.creuse{grid-template-columns:minmax(0,1fr)}}
 .creuse-t{display:flex;flex-direction:column;gap:2px;min-width:0}
 .creuse-t q{font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--nuit,#0B1220);quotes:"«\00a0" "\00a0»"}
-.creuse-t b{font-size:14px;color:var(--corail,#E44828)}
-.creuse-t span{font-size:14.5px;color:var(--ink2,#4E5566)}
+.creuse-t b{font-family:var(--f-display);font-weight:700;font-size:clamp(18px,1.8vw,21px);line-height:1.2;color:var(--nuit,#0B1220);margin:2px 0}
+.creuse-t span{font-size:15px;color:var(--ink2,#4E5566)}
+.creuse-t span.creuse-g{font-size:12px}
 .creuse-a{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.lnk-p{font-size:13.5px;font-weight:700;color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
+.lnk-p{display:flex;flex-direction:column;gap:4px;font-size:13.5px;font-weight:600;color:var(--ink3,#7A8293);line-height:1.35}
+.lnk-p a{font-weight:700;color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-decoration-thickness:2px;text-underline-offset:4px}
 .cote-pied{margin:18px 0 0;font-weight:700}.cote-pied a{color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
 .plan-renvoi{margin:0 0 16px;padding:12px 16px;border-radius:10px;background:var(--nuit,#0B1220);color:#E8EDF5;font-weight:600}.plan-renvoi a{color:#fff}
 .parc-band{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 18px;border-radius:12px;background:#16213A;color:#E8EDF5;text-decoration:none;font-size:16px;line-height:1.35;max-width:760px}
@@ -665,7 +666,7 @@ var OUTILS = [
     function ligne(c){
       return '<article class="creuse"><div class="creuse-t"><span class="creuse-g">'+esc(c.g)+' · '+esc(c.d)+'</span><b>'+esc(c.t)+'</b><span>'+esc(c.r)+'</span></div>'+
         '<div class="creuse-a"><a class="btn btn-dark" href="'+esc(c.u)+'" data-goatcounter-click="point-'+c.p[0]+'">'+esc(c.b)+'</a>'+
-        '<span class="lnk-p">Fait partie '+(c.p.length>1?'des parcours ':'du parcours ')+c.p.map(function(id){ return '<a href="parcours.html#'+id+'">'+id.slice(1)+' · '+esc((PB[id]||{}).titre||"")+'</a>'; }).join(", ")+'</span></div></article>';
+        '<span class="lnk-p">'+(c.p.length>1?'Dans les parcours':'Dans le parcours')+c.p.map(function(id){ return '<a href="parcours.html#'+id+'">'+id.slice(1)+' · '+esc((PB[id]||{}).titre||"")+'</a>'; }).join("")+'</span></div></article>';
     }
     function groupe(g,titre,intro){ return '<div class="creuse-tete"><p class="cote-t">'+titre+'</p><p class="creuse-intro">'+intro+'</p></div><div class="creuse-liste">'+POINT.filter(function(c){return c.g===g;}).map(ligne).join("")+'</div>'; }
     document.getElementById("diag-cards").innerHTML=
