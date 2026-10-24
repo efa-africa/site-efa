@@ -251,6 +251,10 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 
 /* ---- Onglet « Mon certificat » : onglet à part, en vermillon ---- */
 .tabs a.t-cert{background:var(--corail);color:#fff;position:relative}
+.parc-band{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 18px;border-radius:12px;background:#16213A;color:#E8EDF5;text-decoration:none;font-size:16px;line-height:1.35;max-width:760px}
+.parc-band b{font-family:var(--f-display);font-weight:700;color:#fff}
+.parc-band:hover{background:#1E2B47}
+.parc-new{flex:none;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--corail);color:#fff;padding:3px 9px;border-radius:999px}
 .tabs a.t-cert b{color:#fff}
 .tabs a.t-cert small{color:#FFE3DA}
 .tabs a.t-cert .pil{display:inline-block;vertical-align:1px;margin-right:4px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:#fff;color:var(--corail);padding:2px 8px;border-radius:999px}
@@ -331,6 +335,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .ce-note{font-size:13px;color:var(--ink2)}
 </style>
 <link rel="stylesheet" href="footer.css">
+<script src="parcours-efa.js?v=2026102401"></script>
 </head>
 <body>
 <header class="top">
@@ -354,6 +359,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
       <div class="rech-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="rq" type="search" autocomplete="off" enterkeyhint="search" placeholder="Par exemple : budget, tontine, retraite, prêter…"><button type="button" class="rech-x" id="rq-x" hidden>Effacer</button></div>
       <p class="rech-sug" id="rech-sug">Recherches fréquentes : <button type="button">budget</button><button type="button">tontine</button><button type="button">mobile money</button><button type="button">retraite</button><button type="button">prêter</button><button type="button">dépenses</button></p>
     </form>
+    <a class="parc-band" href="parcours.html" data-goatcounter-click="outils-parcours"><span class="parc-new">Nouveau</span><span><b>Mes parcours</b> · onze parcours pas à pas, de votre situation à un résultat concret</span><span aria-hidden="true">→</span></a>
     <div class="tabs" role="tablist" aria-label="Choisir un espace">
       <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="true"><b>Diagnostic</b><small>Où en suis-je&nbsp;?</small></a>
       <a href="#plan" role="tab" id="t-plan" aria-controls="plan" aria-selected="false" tabindex="-1"><b>Plan d’action</b><small>Que faire&nbsp;?</small></a>
@@ -471,6 +477,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
       </div>
       <nav class="ef-cols" aria-label="Plan du site">
         <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">Mes parcours</a></li>
           <li><a href="outils.html#diagnostic">Diagnostic</a></li>
           <li><a href="outils.html#plan">Plan d’action</a></li>
           <li><a href="outils.html#cahier">Mon cahier</a></li>
@@ -845,6 +852,7 @@ var OUTILS = [
   Object.keys(E.MODULES).forEach(function(k){ var M=E.MODULES[k]; if(!M.dispo) return; var s=E.SUJETS.filter(function(x){return x.modules.indexOf(k)>=0;})[0]; INDEX.push({type:"Méthode",titre:M.titre,desc:M.resume,mots:(M.etapes||[]).map(function(e){return e[0]+" "+e[1];}).join(" "),url:"#plan/"+(s?s.slug:"")}); });
   INDEX.push({type:"Mon cahier",titre:"Défi : sept jours sur un poste",desc:E.DEFIS["poste-7j"].resume,mots:"défi cahier suivre noter plafond semaine poste transport repas crédit",url:"#cahier/nouveau"});
   FICHES.forEach(function(f){ INDEX.push({type:"Dico pratique",titre:f.titre,desc:f.definition_courte,mots:(f.mots_cles||[]).join(" ")+" "+f.notion,url:"#dico/"+f.slug}); });
+  (window.EFA_PARCOURS ? window.EFA_PARCOURS.parcours : []).forEach(function(p){ INDEX.push({type:"Parcours",titre:p.titre,desc:p.objectif,mots:p.theme+" "+p.depart+" "+p.etapes.map(function(e){return e.titre;}).join(" "),url:"parcours.html#"+p.id}); });
   INDEX.forEach(function(x){ x.nt=norm(x.titre); x.nm=norm(x.mots); x.nd=norm(x.desc); });
   var rq=document.getElementById("rq"), rx=document.getElementById("rq-x"), $res=document.getElementById("resultats"), rechT=0;
   function surligne(txt,mots){ var h=esc(txt); mots.forEach(function(m){ if(m.length<3) return; var src=norm(txt), i=src.indexOf(m); if(i<0) return; h=esc(txt.slice(0,i))+'<mark>'+esc(txt.slice(i,i+m.length))+'</mark>'+esc(txt.slice(i+m.length)); }); return h; }
