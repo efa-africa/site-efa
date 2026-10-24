@@ -169,15 +169,15 @@ for k, p in enumerate(parcours):
 P0['cycles'] = [
     dict(id='fondations', num='I', nom='Fondations', sous='Voir et tenir', modules='1 à 8',
          gain='Savoir où passe son argent, tenir un mois, commencer une réserve, protéger sa famille.',
-         duree='8 modules · environ 6 h, plus 30 jours de suivi', certificat='Certificat EFA Fondations', statut='ouvert',
-         validation='Chaque module validé donne une attestation. Les 8 attestations, puis l’examen final (17 bonnes réponses sur 24), donnent le certificat.'),
+         duree='8 modules · environ 6 h, plus 30 jours de suivi', certificat='Certificat local Fondations', statut='ouvert',
+         validation='Chaque module validé donne une attestation. Les 8 attestations, puis l’examen final (17 bonnes réponses sur 24), donnent le certificat local.'),
     dict(id='maitrise', num='II', nom='Maîtrise', sous='Organiser sa vie d’argent', modules='9 à 16',
          gain='Un mois de réserve, des dettes ordonnées, l’année entière prévue, la solidarité organisée.',
-         duree='8 modules · environ 5 h, plus 2 mois de suivi', certificat='Certificat EFA Maîtrise', statut='libre',
+         duree='8 modules · environ 5 h, plus 2 mois de suivi', certificat='Certificat local Maîtrise', statut='libre',
          validation='Attestation par module. Projet de fin de cycle : « Mon plan sur 12 mois ». Examen et certificat à l’ouverture du cycle.'),
     dict(id='patrimoine', num='III', nom='Patrimoine', sous='Faire travailler son argent', modules='17 à 23',
          gain='Comprendre les placements de la zone, la BRVM, préparer un projet, sa retraite et la transmission.',
-         duree='7 modules · environ 6 h, plus 3 mois de suivi', certificat='Certificat EFA Patrimoine', statut='libre',
+         duree='7 modules · environ 6 h, plus 3 mois de suivi', certificat='Certificat local Patrimoine', statut='libre',
          validation='Attestation par module. Projet de fin de cycle : un plan patrimonial à 10 ans. Examen et certificat à l’ouverture du cycle.'),
 ]
 P0['parcours'] = parcours

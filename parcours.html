@@ -217,7 +217,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   .route small{flex-basis:100%;padding-left:40px}
   .route .r-n{min-width:28px;font-size:22px}
 }
-/* Diplôme */
+/* Certificat CEFA */
 .diplome{background:var(--nuit);color:#E8EDF5;border-radius:var(--r-carte);padding:24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;margin-top:12px;align-items:start}
 .diplome .etoile{font-family:var(--f-display);font-size:44px;line-height:1;color:var(--corail)}
 .diplome h3{color:#fff;font-size:clamp(22px,2.6vw,28px);margin:6px 0 8px}
@@ -272,7 +272,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
       <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l’argent qui tourne, à la <span class="spirale">spirale</span>, l’argent qui reste.</p>
       <span class="surtitre">L’école EFA</span>
       <h1>L’école EFA</h1>
-      <p class="chapo">Un diagnostic pour savoir par où commencer, puis trois cycles, chacun validé par un certificat. Gratuit, sur téléphone, avec vos propres chiffres.</p>
+      <p class="chapo">Un diagnostic pour savoir par où commencer, puis trois cycles, chacun validé par un certificat local, et le certificat CEFA quand les trois sont acquis. Gratuit, sur téléphone, avec vos propres chiffres.</p>
       <ol class="route" aria-label="Le parcours de l’école">
         <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
@@ -280,7 +280,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
         <li aria-hidden="true" class="r-fl">›</li>
         <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
-        <li class="r-fin"><a href="#certificats"><span class="r-n">★</span><b>Diplôme EFA</b><small>Les 3 certificats · devenir Passeur</small></a></li>
+        <li class="r-fin"><a href="#certificats"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux · devenir Passeur</small></a></li>
       </ol>
       <div class="acts">
         <a class="bouton bouton-principal" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-diagnostic">Faire mon diagnostic, 6 min</a>
@@ -298,7 +298,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
     <ol class="chemin">
       <li><b>1</b><div><h3>Je fais le point</h3><p>Le diagnostic vous dit par quel module commencer. Vous pourrez le refaire à chaque fin de cycle pour mesurer le chemin.</p></div></li>
       <li><b>2</b><div><h3>J’avance module par module</h3><p>Chaque module vous envoie au bon moment vers une vidéo, une leçon ou un outil, et se termine par une fiche que vous gardez. Le Dico est là quand un mot bloque.</p></div></li>
-      <li><b>3</b><div><h3>Je valide</h3><p>Un module terminé, avec sa fiche gardée, donne une attestation. Les modules d’un cycle et l’examen final donnent le certificat EFA du cycle.</p></div></li>
+      <li><b>3</b><div><h3>Je valide</h3><p>Un module terminé, avec sa fiche gardée, donne une attestation. Les modules d’un cycle et l’examen final donnent le certificat local du cycle. Les trois certificats locaux donnent le certificat CEFA.</p></div></li>
     </ol>
   </section>
 
@@ -316,7 +316,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   <section class="bloc col" id="tous" aria-labelledby="t-tous">
     <div class="intro">
       <span class="surtitre">Le parcours</span>
-      <h2 class="titre-section" id="t-tous">Trois cycles, un certificat à la fin de chacun</h2>
+      <h2 class="titre-section" id="t-tous">Trois cycles, un certificat local à la fin de chacun</h2>
       <p>Ouvrez un cycle pour voir ses modules, puis un module pour voir ses étapes. Votre progression reste sur ce téléphone, rien n’est envoyé à EFA.</p>
     </div>
     <div class="cycles" id="liste-parcours"></div>
@@ -325,16 +325,16 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   <section class="bloc col" id="certificats" aria-labelledby="t-cert">
     <div class="intro">
       <span class="surtitre">Valider ce qu’on a appris</span>
-      <h2 class="titre-section" id="t-cert">Des attestations, puis un certificat par cycle</h2>
+      <h2 class="titre-section" id="t-cert">Des attestations, des certificats locaux, puis le CEFA</h2>
       <p>On ne valide pas des heures passées, on valide ce que vous savez faire avec votre argent.</p>
     </div>
     <div class="certs" id="liste-certs"></div>
     <div class="diplome">
       <span class="etoile" aria-hidden="true">★</span>
       <div>
-        <span class="etiquette">Après les trois certificats</span>
-        <h3>Le Diplôme EFA de la finance personnelle</h3>
-        <p>Fondations, Maîtrise et Patrimoine validés : vous savez tenir votre argent, l’organiser sur l’année et le faire travailler. Le diplôme réunit vos trois certificats et votre dossier de fiches.</p>
+        <span class="etiquette">Après les trois certificats locaux</span>
+        <h3>Le certificat CEFA ★</h3>
+        <p>Fondations, Maîtrise et Patrimoine validés : vous savez tenir votre argent, l’organiser sur l’année et le faire travailler. Le CEFA couvre toute l’école : il réunit vos trois certificats locaux et votre dossier de fiches.</p>
         <p><b style="color:#fff">Il ouvre le rôle de Passeur EFA</b> : animer un cercle d’apprentissage dans sa tontine, son entreprise ou sa famille, avec les supports de l’école. Celui qui a appris transmet à son tour.</p>
       </div>
     </div>
@@ -418,7 +418,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
   </div>
 </footer>
 
-<script src="parcours-efa.js?v=2026102503"></script>
+<script src="parcours-efa.js?v=2026102504"></script>
 <script src="parcours-ui.js?v=2026102503"></script>
 <script>
 (function(){
