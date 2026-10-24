@@ -219,6 +219,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .rubs a{font:700 14px var(--body);text-decoration:none;color:var(--ink2);padding:9px 14px;border-radius:8px;white-space:nowrap}
 .rubs a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
 .rubs a[aria-current="page"]{background:var(--creme);color:#0B1220}
+.a2075-l{color:var(--ink2);max-width:70ch;margin:8px 0 0}
 .rub-sel{display:none}
 .pick{display:grid;gap:4px;font:700 12px var(--body);color:var(--ink2)}
 .pick select{appearance:none;-webkit-appearance:none;background:#050910 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F5EFE2' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 12px center;border:1px solid var(--mute);color:var(--ink);border-radius:8px;padding:11px 36px 11px 12px;font:800 15px var(--body);width:100%}
@@ -489,8 +490,8 @@ a.st-card{text-decoration:none}
   <nav class="mainnav" aria-label="Navigation principale"><div class="wrap mn-in"><a class="mn-cta" href="outils.html">Mes outils et diagnostic</a><a href="methode.html#etudes" aria-current="page">Études &amp; actualité</a><a href="rendez-vous.html">Organisations &amp; contact</a><a href="auteur.html">À propos</a></div></nav>
   <div class="wrap bar">
     <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; ACTUALITÉ</b></span></a>
-    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#methode" data-tab="methode">Méthode</a></nav>
-    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="simulateurs">Simulateurs</option><option value="methode">Méthode</option></select></label>
+    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Prospective · Africa 2075</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#methode" data-tab="methode">Méthode</a></nav>
+    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Prospective · Africa 2075</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="simulateurs">Simulateurs</option><option value="methode">Méthode</option></select></label>
     <a class="back" href="./">← Le site</a>
   </div>
   <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
@@ -501,13 +502,13 @@ a.st-card{text-decoration:none}
   <!-- RUBRIQUE ÉTUDES -->
   <section class="tab" id="tab-etudes" data-tab="etudes">
     <div class="wrap studies">
-      <h2 id="st-count">1 étude publiée · 1 enquête en cours · Africa 2075</h2>
+      <h2 id="st-count">1 étude publiée · 1 enquête en cours</h2>
       <label class="st-pick" for="st-sel"><span>Explorer les études</span>
         <select id="st-sel">
           <option value="">Toutes les études</option>
           <optgroup label="Par thème"><option value="t:tontine">Tontine</option></optgroup>
-          <optgroup label="Par type"><option value="t:donnees">Données publiques</option><option value="t:enquete">Enquêtes EFA</option><option value="t:prospective">Prospective · Africa 2075</option></optgroup>
-          <optgroup label="Par étude"><option value="e:etude-1">N° 1 · La tontine en chiffres</option><option value="e:etude-2">N° 2 · L’argent de la tontine (provisoire)</option><option value="e:africa-2075">Africa 2075 · n° 1</option></optgroup>
+          <optgroup label="Par type"><option value="t:donnees">Données publiques</option><option value="t:enquete">Enquêtes EFA</option></optgroup>
+          <optgroup label="Par étude"><option value="e:etude-1">N° 1 · La tontine en chiffres</option><option value="e:etude-2">N° 2 · L’argent de la tontine (provisoire)</option></optgroup>
         </select>
       </label>
     </div>
@@ -532,17 +533,6 @@ a.st-card{text-decoration:none}
           <ul class="f1-k"><li><b>251</b><span>répondants</span></li><li><b>160</b><span>participants à une tontine</span></li><li><b>12 oct.</b><span>données arrêtées en 2026</span></li><li><b class="prov">Provisoire</b><span>enquête en cours</span></li></ul>
           <div class="f1-a"><a class="p" href="#res-etude-2">Lire les résultats provisoires</a><button type="button" class="s soon" aria-disabled="true" aria-describedby="f2-soon">Rapport PDF · bientôt</button><a class="s" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener" onclick="window.efaCompte&&efaCompte('enquete-fiche-etude2')">Répondre à l’enquête</a></div>
           <p class="f1-src" id="f2-soon">Le rapport PDF paraîtra une fois les 300 réponses atteintes. Source&nbsp;: enquête EFA «&nbsp;L’argent de la tontine&nbsp;», échantillon non représentatif.</p>
-        </div>
-      </article>
-      <article class="f1" id="africa-2075" data-etude="prospective" aria-labelledby="a2075-t">
-        <a class="f1-cov" href="africa-2075-n1.html" aria-label="Lire Africa 2075 n° 1"><img src="etudes/africa-2075-n1-entete.jpg" alt="Africa 2075, Frontières de croissance, par Élysée Johnson" width="1600" height="900" loading="lazy"><span>Nouveau · n° 1</span></a>
-        <div class="f1-t">
-          <p class="kick">Revue de prospective · Africa 2075 · n° 1 · octobre 2026</p>
-          <h2 id="a2075-t">Africa 2075 · Frontières de croissance</h2>
-          <p class="f1-s">Ce que le FMI, la Banque mondiale, McKinsey, le Forum de Davos et les grandes institutions annoncent, vérifié à la source, et ce que cela change pour l’Afrique francophone et anglophone. N° 1&nbsp;: «&nbsp;La croissance revient. Qui va la garder&nbsp;?&nbsp;»</p>
-          <ul class="f1-k"><li><b>5</b><span>frontières de croissance</span></li><li><b>11</b><span>institutions et revues suivies</span></li><li><b>7 min</b><span>de lecture</span></li><li><b class="ok">N° 1</b><span>octobre 2026</span></li></ul>
-          <div class="f1-a"><a class="p" href="africa-2075-n1.html" onclick="window.efaCompte&&efaCompte('a2075-n1-fiche')">Lire le n° 1</a><a class="s" href="index.html#guide">Recevoir les prochains numéros</a></div>
-          <p class="f1-src">Par Élysée Johnson, fondateur d’EFA. Sources&nbsp;: FMI, Banque mondiale, McKinsey Global Institute, GSMA, Commission de l’UEMOA, octobre 2026.</p>
         </div>
       </article>
       <p class="st-none" id="st-none" hidden>Aucune étude dans ce filtre pour l’instant.</p>
@@ -579,6 +569,27 @@ a.st-card{text-decoration:none}
     <div class="wrap st-nav" id="st-nav" hidden><button type="button" id="st-prev">← Étude précédente</button><button type="button" id="st-next">Étude suivante →</button></div>
   </section>
 
+
+  <!-- RUBRIQUE PROSPECTIVE · AFRICA 2075 -->
+  <section class="tab" id="tab-africa-2075" data-tab="africa-2075" hidden>
+    <div class="wrap studies">
+      <h2>Prospective · Africa 2075 — Frontières de croissance</h2>
+      <p class="a2075-l">La revue de prospective d’EFA, par Élysée Johnson&nbsp;: ce que le FMI, la Banque mondiale, McKinsey, le Forum de Davos et les grandes institutions annoncent, vérifié à la source, et ce que cela change pour l’Afrique francophone et anglophone.</p>
+    </div>
+    <div class="wrap st-zone">
+      <article class="f1" id="a2075-n1" aria-labelledby="a2075-t">
+        <a class="f1-cov" href="africa-2075-n1.html" aria-label="Lire Africa 2075 n° 1"><img src="etudes/africa-2075-n1-entete.jpg" alt="Africa 2075, Frontières de croissance, par Élysée Johnson" width="1600" height="900" loading="lazy"><span>Nouveau · n° 1</span></a>
+        <div class="f1-t">
+          <p class="kick">Revue de prospective · Africa 2075 · n° 1 · octobre 2026</p>
+          <h2 id="a2075-t">La croissance revient. Qui va la garder&nbsp;?</h2>
+          <p class="f1-s">Croissance, choc d’Ormuz, «&nbsp;petite IA&nbsp;», tokenisation, AGOA&nbsp;: cinq frontières de croissance lues depuis l’Afrique, chiffres vérifiés à la source.</p>
+          <ul class="f1-k"><li><b>5</b><span>frontières de croissance</span></li><li><b>11</b><span>institutions et revues suivies</span></li><li><b>7 min</b><span>de lecture</span></li><li><b class="ok">N° 1</b><span>octobre 2026</span></li></ul>
+          <div class="f1-a"><a class="p" href="africa-2075-n1.html" onclick="window.efaCompte&&efaCompte('a2075-n1-fiche')">Lire le n° 1</a><a class="s" href="index.html#guide">Recevoir les prochains numéros</a></div>
+          <p class="f1-src">Par Élysée Johnson, fondateur d’EFA. Sources&nbsp;: FMI, Banque mondiale, McKinsey Global Institute, GSMA, Commission de l’UEMOA, octobre 2026.</p>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <!-- RUBRIQUE SIMULATEURS -->
   <section class="tab" id="tab-simulateurs" data-tab="simulateurs" hidden>
@@ -1135,8 +1146,8 @@ safe('études',function(){
     var n=0;
     fiches.forEach(function(e){var ok=!v||(v.indexOf('t:')===0?(' '+e.dataset.etude+' ').indexOf(' '+v.slice(2)+' ')>-1:e.id===v.slice(2));e.hidden=!ok;if(ok)n++;});
     if(sel.value!==v) sel.value=v;
-    var enq=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' enquete ')>-1;}).length, rev=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' prospective ')>-1;}).length, pub=fiches.length-enq-rev;
-    var tot=pub+(pub>1?' études publiées':' étude publiée')+(enq?' · '+enq+(enq>1?' enquêtes en cours':' enquête en cours'):'')+(rev?' · Africa 2075':'');
+    var enq=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' enquete ')>-1;}).length, pub=fiches.length-enq;
+    var tot=pub+(pub>1?' études publiées':' étude publiée')+(enq?' · '+enq+(enq>1?' enquêtes en cours':' enquête en cours'):'');
     document.getElementById('st-count').textContent=v?(n+(n>1?' fiches affichées':' fiche affichée')+' · '+tot):tot;
     document.getElementById('st-none').hidden=n>0;
   }
@@ -1198,8 +1209,8 @@ safe('brvm expliquée',function(){
     cell('Plus forte baisse',lo[1],'<span>'+fx(lo[3],0)+' FCFA · '+pc(lo[4])+'</span>')+'</div>';
 });
 /* ---------- Rubriques ---------- */
-var TABS=['etudes','actualites','brvm','simulateurs','methode'];
-var ALIAS={tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites','efa-news':'actualites',actu:'actualites',actualite:'actualites',bourse:'brvm',marche:'brvm'};
+var TABS=['etudes','africa-2075','actualites','brvm','simulateurs','methode'];
+var ALIAS={a2075:'africa-2075',africa2075:'africa-2075',prospective:'africa-2075',frontieres:'africa-2075',tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites','efa-news':'actualites',actu:'actualites',actualite:'actualites',bourse:'brvm',marche:'brvm'};
 function setHH(){var h=document.getElementById('top').offsetHeight;document.documentElement.style.setProperty('--hh',h+'px');}
 function showTab(t){
   document.querySelectorAll('.tab').forEach(function(s){s.hidden=s.dataset.tab!==t;});
