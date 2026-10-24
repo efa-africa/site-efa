@@ -41,12 +41,12 @@
     {
       "id": "P1", "titre": "Où passe mon argent ?", "theme": "Comprendre", "duree": "2 semaines · 1 h 30 + 7 jours de défi",
       "depart": "« Je ne sais pas où passe mon argent. » Profils Explorateur et Discipliné.",
-      "objectif": "Connaître son flux net du dernier mois et nommer ses trois postes de fuite.",
+      "objectif": "Connaître son flux net du dernier mois et nommer ses trois postes à examiner.",
       "etapes": [
+        {"type": "Outil", "titre": "Où est passé mon argent ? · Repérer puis vérifier", "statut": "dispo", "lien": "https://efa.africa/ou-est-passe-mon-argent.html?src=parcours"},
         {"type": "Module", "titre": "Certificat · Module 1 · Flux et stock", "statut": "pilote", "lien": "https://efa.africa/certificat-pilote.html"},
         {"type": "Dico", "titre": "Flux · Stock · Patrimoine net · Revenu · Dépense", "statut": "dispo", "lien": "https://efa.africa/outils.html#dico"},
-        {"type": "Outil", "titre": "Où est passé mon argent ? · Repérer puis vérifier", "statut": "dispo", "lien": "https://efa.africa/ou-est-passe-mon-argent.html?src=parcours"},
-        {"type": "Méthode", "titre": "Retrouver ses traces", "statut": "dispo", "lien": "https://efa.africa/outils.html#plan"},
+        {"type": "Méthode", "titre": "Retrouver ses traces", "statut": "dispo", "lien": "https://efa.africa/outils.html#plan/ou-passe-mon-argent"},
         {"type": "Leçons appli", "titre": "Appli · Où passe mon argent ? (4 leçons)", "statut": "dispo", "lien": "https://efa.africa/app/"},
         {"type": "Défi", "titre": "Sept jours sur un poste", "statut": "dispo", "lien": "https://efa.africa/outils.html#cahier"},
         {"type": "Méthode", "titre": "Séparer les poches (perso, activité, argent confié)", "statut": "a_produire"}
@@ -79,7 +79,7 @@
         {"type": "Outil", "titre": "Prêter à un proche · une méthode pour décider", "statut": "dispo", "lien": "https://efa.africa/preter-a-un-proche.html"},
         {"type": "Leçons appli", "titre": "Appli · Aider mes proches avec des limites claires (4 leçons)", "statut": "dispo", "lien": "https://efa.africa/app/"},
         {"type": "Guide", "titre": "Construire sa stabilité financière · fiche 4 « Mes obligations sociales »", "statut": "dispo", "lien": "https://efa.africa/index.html#guide"},
-        {"type": "Vidéo", "titre": "Min'Fin 5 · Un proche vous demande 50 000. Vous dites oui ?", "statut": "prepa"},
+        {"type": "Vidéo", "titre": "Min'Fin 5 · Un proche vous demande 50 000. Vous dites oui ?", "statut": "dispo", "lien": "https://efa.africa/minfin.html#ep-1-5"},
         {"type": "Module", "titre": "Certificat · Module 5 · L'argent de la famille", "statut": "a_produire"},
         {"type": "Tribune", "titre": "L'aîné, assureur non déclaré de la famille", "statut": "a_produire"}
       ],
@@ -108,7 +108,7 @@
         {"type": "Leçon", "titre": "La tontine : comment ça marche et pourquoi ce n'est pas une épargne", "statut": "dispo", "lien": "https://efa.africa/tontine.html"},
         {"type": "Module", "titre": "Certificat · Module 3 · Décalage de trésorerie ou épargne ?", "statut": "pilote", "lien": "https://efa.africa/certificat-pilote.html"},
         {"type": "Dico", "titre": "Dico 006 · Décalage de trésorerie", "statut": "prepa"},
-        {"type": "Vidéo", "titre": "Min'Fin 4 · 1 000 000 de tontine. Trois semaines plus tard ?", "statut": "prepa"},
+        {"type": "Vidéo", "titre": "Min'Fin 4 · 1 000 000 de tontine. Trois semaines plus tard ?", "statut": "dispo", "lien": "https://efa.africa/minfin.html#ep-1-4"},
         {"type": "Simulateur", "titre": "Cercle et spirale · avec mon groupe de tontine", "statut": "dispo", "lien": "https://efa.africa/cercle-spirale.html#groupe"},
         {"type": "Guide", "titre": "Choisir sa tontine · Combien vaut mon rang ?", "statut": "prepa"},
         {"type": "Guide", "titre": "Que faire de sa tontine ? Décider avant de recevoir", "statut": "prepa"},

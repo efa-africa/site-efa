@@ -465,7 +465,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
       <div>
         <p class="kick2">Les Fondations · Certificat EFA · Pilote gratuit</p>
         <h2>Apprenez les bases de votre argent. Et prouvez-le.</h2>
-        <div class="ce-cta"><a class="btn btn-main" href="certificat-pilote.html?src=fondations" data-goatcounter-click="fondations-commencer">Commencer par le module 1</a><a class="btn btn-line" href="#certificat-inscription">Recevoir mon accès par email</a></div>
+        <div class="ce-cta"><a class="btn btn-main" href="certificat-pilote.html?src=fondations" data-goatcounter-click="fondations-commencer">Commencer par le module 1</a><a class="btn btn-line" href="#certificat-inscription">Rejoindre le pilote par email</a></div>
         <div class="ce-faits"><span>8 modules de 10 à 15 min</span><span>1 examen de 30 min</span><span>Environ 2 heures au total</span><span class="v">Gratuit</span></div>
         <p class="ce-cond"><b>Pour obtenir le certificat</b> Validez chaque module (3 bonnes réponses sur 5 au quiz), puis réussissez l’examen final&nbsp;: 17 bonnes réponses sur 24, avec trois tentatives. Vous avancez à votre rythme.</p>
         <p class="lede">Des cas concrets avec Koffi et Tantie Affoué, un exercice sur vos propres chiffres à chaque module. Chaque module fait aussi partie d’un parcours&nbsp;: ce que vous y faites compte des deux côtés.</p>
@@ -527,12 +527,12 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
       <div>
         <p class="kick2">Version pilote</p>
         <h2>Rejoignez le pilote du Certificat EFA</h2>
-        <p>Le pilote est ouvert jusqu'au 30 novembre 2026. Il est gratuit. Inscrivez-vous : votre accès vous est envoyé par email dès la confirmation de votre adresse, et vos retours aideront à construire la version publique.</p>
+        <p>Le pilote est ouvert jusqu'au 30 novembre 2026. Il est gratuit. Les modules sont en accès libre : vous pouvez commencer tout de suite. Votre email sert à obtenir votre certificat numéroté, à recevoir le lien des modules et les nouvelles du pilote ; vos retours aideront à construire la version publique.</p>
       </div>
       <form class="ce-form" id="ce-f" novalidate>
         <label for="ce-prenom">Prénom<input id="ce-prenom" type="text" autocomplete="given-name" placeholder="Votre prénom"></label>
         <label for="ce-email">Email<input id="ce-email" type="email" autocomplete="email" inputmode="email" required placeholder="vous@exemple.com"></label>
-        <label class="ok"><input id="ce-ok" type="checkbox"><span>J'accepte de recevoir par email mon accès et les informations du pilote. <a href="confidentialite.html">Vos données</a></span></label>
+        <label class="ok"><input id="ce-ok" type="checkbox"><span>J'accepte de recevoir par email le lien des modules et les informations du pilote. <a href="confidentialite.html">Vos données</a></span></label>
         <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button type="submit" class="btn btn-dark" id="ce-b">M'inscrire au pilote</button>
         <p class="ce-msg" id="ce-msg" role="status" aria-live="polite"></p>
@@ -809,7 +809,7 @@ var OUTILS = [
     if(change){ try{ localStorage.setItem("efa_parcours_v1",JSON.stringify(st)); }catch(e){} }
   }
   /* Carnet de preuves : une preuve par parcours, et un point à 30 jours */
-  var INDICE={P1:"Mes 3 postes de fuite : … · Mon flux net du mois : … F",P2:"Prévu / réel ce mois-ci : … F / … F",P3:"Mon enveloppe solidarité : … F par mois. Ma règle : prêt ou cadeau, je le dis avant.",P4:"Ma réserve aujourd’hui : … semaines de dépenses. Prochain palier : …",P5:"Mon prochain tour, le … : … F. Ce que j’en ferai : …",P6:"Mes dettes, de la plus chère à la moins chère : …",P7:"La somme attendue : … F. Ma répartition : …",P8:"L’entreprise étudiée : … En une phrase : … Sa limite : …",P9:"Mon effort par rentrée : … F. Date de révision : …",P10:"Mes frais du mois : … F. Ce que je change : …",P11:"Ma poche activité : … · Ma poche personnelle : … · Ce que l’activité me verse : … F",P12:"Mes grosses dépenses de l’année : … · À garder chaque mois : … F",P13:"Budget du projet : … F · Financement : … · Vérifications faites : …"};
+  var INDICE={P1:"Mes 3 postes à examiner : … · Mon flux net du mois : … F",P2:"Prévu / réel ce mois-ci : … F / … F",P3:"Mon enveloppe solidarité : … F par mois. Ma règle : prêt ou cadeau, je le dis avant.",P4:"Ma réserve aujourd’hui : … semaines de dépenses. Prochain palier : …",P5:"Mon prochain tour, le … : … F. Ce que j’en ferai : …",P6:"Mes dettes, de la plus chère à la moins chère : …",P7:"La somme attendue : … F. Ma répartition : …",P8:"L’entreprise étudiée : … En une phrase : … Sa limite : …",P9:"Mon effort par rentrée : … F. Date de révision : …",P10:"Mes frais du mois : … F. Ce que je change : …",P11:"Ma poche activité : … · Ma poche personnelle : … · Ce que l’activité me verse : … F",P12:"Mes grosses dépenses de l’année : … · À garder chaque mois : … F",P13:"Budget du projet : … F · Financement : … · Vérifications faites : …"};
   function jourISO(d){ return d.toISOString().slice(0,10); }
   function dans30(){ var d=new Date(); d.setDate(d.getDate()+30); return jourISO(d); }
   function dateFr(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}); }catch(e){ return iso; } }
