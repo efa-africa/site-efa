@@ -39,6 +39,7 @@
   --corail:#E44828; --bleu:#2188D6; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -107,6 +108,21 @@ main .col{display:flex;flex-direction:column;gap:30px}
 .ancre-l{font-weight:800;color:#6DB8F2}
 .chantier{align-self:flex-start;background:var(--sable);color:var(--ink2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
 @media (max-width:480px){.ancre{grid-template-columns:minmax(0,1fr)}.ancre-ic{width:72px;height:72px}}
+.porte{background:var(--nuit);color:#E8EDF5;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.porte::before{content:"";position:absolute;left:0;right:0;top:-90px;height:90px;background:linear-gradient(rgba(245,239,226,0),var(--creme));pointer-events:none}
+.porte .surtitre{color:var(--soft-corail)}
+.porte h2{font-size:clamp(23px,3.2vw,29px);color:#fff}
+.porte p{margin:0;color:#C9D1DE}
+.a2075-form{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.a2075-ligne{display:flex;flex-wrap:wrap;gap:10px}
+.a2075-ligne input[type=email]{flex:1 1 220px;min-width:0;font:400 17px var(--body);padding:12px 14px;border-radius:8px;border:0;background:#fff;color:#0B1220;min-height:46px}
+.a2075-ligne button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:var(--corail);color:#fff;cursor:pointer}
+.a2075-ligne button:disabled{opacity:.6}
+.a2075-ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#C9D1DE}
+.a2075-ok a{color:#6DB8F2}
+.a2075-msg{font-size:14px;color:#F09680;min-height:1em}
+.a2075-hp{position:absolute;left:-9999px}
+.merci{background:var(--sable);border-radius:10px;padding:14px 16px;font-size:15px;color:var(--ink2)}
 .une-phrase{background:var(--corail);color:#fff;border-radius:2px;padding:20px 22px}
 .une-phrase .surtitre{color:#fff;opacity:.9}
 .une-phrase p{margin:6px 0 0;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.38}
@@ -155,6 +171,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
 @media (max-width:480px){.agenda .ligne{grid-template-columns:1fr;gap:2px}.tendance{padding:22px 18px}}
 </style>
 <link rel="stylesheet" href="footer.css">
+<noscript><style>[data-a2075-suite][hidden]{display:block!important}</style></noscript>
 </head>
 <body>
 
@@ -170,7 +187,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
   <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
 <div class="actbar"><div class="wrap"><p>Africa 2075 · Frontières de croissance · n° 1</p>
-<a class="a1" href="index.html#guide" onclick="efaCompte('a2075-n1-abonnement-barre')">Recevoir chaque numéro</a>
+<a class="a1" href="africa-2075-fondateur.html#t-cta" onclick="efaCompte('a2075-n1-abonnement-barre')">Recevoir chaque numéro</a>
 <a class="a2" href="methode.html#africa-2075">Tous les numéros</a></div></div>
 </div>
 <div class="mission"><p class="wrap">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p></div>
@@ -209,6 +226,18 @@ footer.site a{color:#E8EDF5;text-decoration:none}
       <p>L’Afrique croît plus vite que le reste du monde, mais le choc pétrolier, la dette et l’arrivée de l’IA vont décider qui garde cette croissance : c’est le passage du cercle à la spirale, à l’échelle des pays.</p>
     </section>
 
+    <section class="porte" data-a2075-porte hidden aria-labelledby="t-porte">
+      <span class="surtitre">Lire la suite gratuitement</span>
+      <h2 id="t-porte">La suite d’Africa 2075 est réservée à nos lecteurs inscrits</h2>
+      <p>Laissez votre adresse email pour lire ce numéro en entier, avec ses cinq frontières, l’agenda et les sources, et recevoir les prochains numéros. C’est gratuit.</p>
+        <form class="a2075-form" novalidate>
+          <div class="a2075-ligne"><label class="a2075-hp" aria-hidden="true">Ne pas remplir<input name="email_address_check" tabindex="-1" autocomplete="off"></label><input type="email" id="porte-email" name="EMAIL" placeholder="Votre adresse email" autocomplete="email" required aria-label="Votre adresse email"><button type="submit">Lire la suite</button></div>
+          <label class="a2075-ok"><input type="checkbox" id="porte-email-ok" checked> J’accepte de recevoir Africa 2075 et la newsletter d’EFA par email. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></label>
+          <p class="a2075-msg" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+    <div data-a2075-suite hidden>
+    <p class="merci" id="a2075-merci" hidden>Merci, bonne lecture. Un email de confirmation arrive dans quelques minutes : confirmez-le pour recevoir les prochains numéros.</p>
     <nav class="sommaire" aria-label="Sommaire">
       <span class="etiquette">Au sommaire</span>
       <ol>
@@ -333,6 +362,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
       <p class="methode">Méthode : nous suivons les publications du FMI, de la Banque mondiale, du McKinsey Global Institute, du Forum économique mondial, du BCG, de la BAD, d’Afreximbank, de la BCEAO, de la GSMA, de la Harvard Business Review et de The Economist. Chaque chiffre est vérifié à la source. Les passages « Pour l’Afrique francophone » et « À retenir » sont des analyses d’EFA. EFA fait de l’éducation financière, pas du conseil en placement.</p>
     </section>
 
+    </div>
   </div>
 </main>
 
@@ -349,6 +379,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
 b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="africa-2075.js?v=2026102401" defer></script>
 <script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>

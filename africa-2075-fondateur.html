@@ -39,6 +39,7 @@
   --corail:#E44828; --bleu:#2188D6; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -97,6 +98,20 @@ main .col{display:flex;flex-direction:column;gap:30px}
 .edito p{margin:0;color:#C9D1DE}
 .edito .sig{font-family:var(--display);font-style:italic;color:#fff}
 
+.porte{background:var(--nuit);color:#E8EDF5;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.porte .surtitre{color:var(--soft-corail)}
+.porte h2{font-size:clamp(23px,3.2vw,29px);color:#fff}
+.porte p{margin:0;color:#C9D1DE}
+.a2075-form{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.a2075-ligne{display:flex;flex-wrap:wrap;gap:10px}
+.a2075-ligne input[type=email]{flex:1 1 220px;min-width:0;font:400 17px var(--body);padding:12px 14px;border-radius:8px;border:0;background:#fff;color:#0B1220;min-height:46px}
+.a2075-ligne button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:var(--corail);color:#fff;cursor:pointer}
+.a2075-ligne button:disabled{opacity:.6}
+.a2075-ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#C9D1DE}
+.a2075-ok a{color:#6DB8F2}
+.a2075-msg{font-size:14px;color:#F09680;min-height:1em}
+.a2075-hp{position:absolute;left:-9999px}
+.merci{background:var(--sable);border-radius:10px;padding:14px 16px;font-size:15px;color:var(--ink2)}
 .une-phrase{background:var(--corail);color:#fff;border-radius:2px;padding:20px 22px}
 .une-phrase .surtitre{color:#fff;opacity:.9}
 .une-phrase p{margin:6px 0 0;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.38}
@@ -326,10 +341,16 @@ footer.site a{color:#E8EDF5;text-decoration:none}
       <p class="signature">Élysée Johnson<span>Fondateur d’Éducation Financière Afrique</span></p>
     </div>
 
-    <section class="cta" aria-labelledby="t-cta">
-      <h2 id="t-cta">Suivez la route vers 2075</h2>
-      <p>Le premier numéro est en ligne : « La croissance revient. Qui va la garder ? »</p>
-      <div class="btns"><a class="p" href="africa-2075-n1.html" onclick="efaCompte('a2075-fondateur-vers-n1')">Lire le n° 1</a><a class="s" href="index.html#guide" onclick="efaCompte('a2075-fondateur-abonnement')">Recevoir les prochains numéros</a></div>
+    <section class="porte" aria-labelledby="t-cta">
+      <span class="surtitre">Suivez la route vers 2075</span>
+      <h2 id="t-cta">Recevez les prochains numéros d’Africa 2075</h2>
+      <p>Chaque numéro mesure où nous en sommes sur les six chantiers. Laissez votre email : vous serez prévenu de chaque parution et les numéros vous seront ouverts en entier. Le n° 1, «&nbsp;La croissance revient. Qui va la garder&nbsp;?&nbsp;», est déjà en ligne.</p>
+        <form class="a2075-form" data-a2075-inscription novalidate>
+          <div class="a2075-ligne"><label class="a2075-hp" aria-hidden="true">Ne pas remplir<input name="email_address_check" tabindex="-1" autocomplete="off"></label><input type="email" id="fond-email" name="EMAIL" placeholder="Votre adresse email" autocomplete="email" required aria-label="Votre adresse email"><button type="submit">Être informé</button></div>
+          <label class="a2075-ok"><input type="checkbox" id="fond-email-ok" checked> J’accepte de recevoir Africa 2075 et la newsletter d’EFA par email. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></label>
+          <p class="a2075-msg" role="status" aria-live="polite"></p>
+        </form>
+      <p><a href="africa-2075-n1.html" style="color:#6DB8F2;font-weight:800" onclick="efaCompte('a2075-fondateur-vers-n1')">Lire le début du n° 1 →</a></p>
     </section>
 
     <section class="section sources" aria-labelledby="t-sources">
@@ -360,6 +381,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
 b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="africa-2075.js?v=2026102401" defer></script>
 <script src="efa-appli.js?v=2026102301" defer></script>
 </body>
 </html>
