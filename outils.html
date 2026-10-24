@@ -256,6 +256,13 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .cote-parc>div{display:flex;flex-direction:column;gap:10px;min-width:0}
 .cote-t{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
 .creuse-tete{grid-column:1/-1;margin-top:8px}
+.pc-liste{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.pc-l{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--line,#E2D8C4)}
+.pc-l b{font-family:var(--f-display);font-size:16px;color:var(--nuit,#0B1220);display:block}
+.pc-l small{display:block;font-size:13.5px;color:var(--ink2,#4E5566);margin-top:2px}
+.pc-b{display:block;height:6px;border-radius:999px;background:var(--line,#E2D8C4);overflow:hidden;margin-top:8px;max-width:360px}.pc-b i{display:block;height:100%;background:var(--corail,#E44828)}
+.d-parc{font-size:13.5px;font-weight:700;margin:0}.d-parc a{color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
+.ce-parc{margin:8px 0 0;font-size:13.5px;font-weight:700}.ce-parc a{color:inherit;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
 .creuse-intro{margin:4px 0 0;font-size:15px;color:var(--ink2,#4E5566)}
 .creuse-liste{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
 .creuse{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:center;background:var(--papier,#FFFDF8);border-radius:12px;padding:14px 18px}
@@ -403,7 +410,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
   <section class="pan" id="plan" role="tabpanel" aria-labelledby="t-parcours" hidden><p class="plan-renvoi" id="plan-renvoi">Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver mon parcours →</a></p><div class="pan" id="plan-vue"></div></section>
   <section class="pan" id="cahier" role="tabpanel" aria-labelledby="t-cahier" hidden><div class="pan" id="cahier-vue"></div></section>
   <section class="fam" id="dico" role="tabpanel" aria-labelledby="t-dico" hidden>
-    <div class="fam-h"><p>Un mot, une définition claire, une application concrète. Retrouvez les fiches publiées par EFA et poursuivez votre lecture sur notre publication Substack.</p></div>
+    <div class="fam-h"><p>Un mot, une définition claire, une application concrète. Chaque fiche sert dans un parcours : elle explique les mots que vous y rencontrez. Les fiches complètes sont sur notre publication Substack.</p></div>
     <div class="dsearch"><label for="dq">Rechercher un mot</label><div class="dsrow"><input id="dq" type="search" autocomplete="off" placeholder="Rechercher un mot : épargne, crédit, patrimoine…"><button type="button" class="dclear" id="dclear" hidden>Effacer la recherche</button></div><p class="dcount" id="dcount" role="status" aria-live="polite"></p></div>
     <div class="cards" id="dcards"></div>
     <div class="dnone" id="dnone" hidden><p>Aucune fiche ne correspond à votre recherche. Essayez un autre mot ou consultez toutes les fiches.</p><button type="button" class="btn btn-dark" id="dclear2">Effacer la recherche</button></div>
@@ -433,14 +440,14 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 
     <div class="pan-h"><p class="kick2">Ce que vous allez apprendre</p><h2 class="sec" style="margin-top:4px">Huit modules, de votre mois à votre protection</h2></div>
     <div class="ce-mods">
-      <article class="ce-mod"><span class="n">1</span><h3>Flux et stock</h3><p>Savoir ce qui passe et ce qui reste, et calculer votre patrimoine net.</p></article>
-      <article class="ce-mod"><span class="n">2</span><h3>Budget</h3><p>Décider avant que l'argent arrive, même avec un revenu irrégulier.</p></article>
-      <article class="ce-mod"><span class="n">3</span><h3>Tontine</h3><p>Comprendre ce que fait vraiment votre tontine, et décider de l'usage du tour.</p><span class="sg">Module signature</span></article>
-      <article class="ce-mod"><span class="n">4</span><h3>Épargne de précaution</h3><p>Construire une réserve pour les imprévus : combien, où, comment.</p></article>
-      <article class="ce-mod"><span class="n">5</span><h3>Famille et prêts</h3><p>Aider ses proches sans se mettre en danger : prêt ou cadeau, dit avant.</p></article>
-      <article class="ce-mod"><span class="n">6</span><h3>Dette et crédit</h3><p>Lire le vrai coût d'un crédit et repérer les signes de surendettement.</p></article>
-      <article class="ce-mod"><span class="n">7</span><h3>Mobile money</h3><p>Compter vos frais, protéger votre compte et épargner avec votre téléphone.</p></article>
-      <article class="ce-mod"><span class="n">8</span><h3>Assurance et arnaques</h3><p>Reconnaître une promesse trop belle et vérifier un acteur avant de verser.</p></article>
+      <article class="ce-mod"><span class="n">1</span><h3>Flux et stock</h3><p>Savoir ce qui passe et ce qui reste, et calculer votre patrimoine net.</p><p class="ce-parc"><a href="parcours.html#P1">Dans le parcours 1 · Où passe mon argent ?</a></p></article>
+      <article class="ce-mod"><span class="n">2</span><h3>Budget</h3><p>Décider avant que l'argent arrive, même avec un revenu irrégulier.</p><p class="ce-parc"><a href="parcours.html#P2">Dans le parcours 2 · Un budget qui tient</a></p></article>
+      <article class="ce-mod"><span class="n">3</span><h3>Tontine</h3><p>Comprendre ce que fait vraiment votre tontine, et décider de l'usage du tour.</p><span class="sg">Module signature</span><p class="ce-parc"><a href="parcours.html#P5">Dans le parcours 5 · Comprendre et maîtriser sa tontine</a></p></article>
+      <article class="ce-mod"><span class="n">4</span><h3>Épargne de précaution</h3><p>Construire une réserve pour les imprévus : combien, où, comment.</p><p class="ce-parc"><a href="parcours.html#P4">Dans le parcours 4 · Ma réserve de sécurité</a></p></article>
+      <article class="ce-mod"><span class="n">5</span><h3>Famille et prêts</h3><p>Aider ses proches sans se mettre en danger : prêt ou cadeau, dit avant.</p><p class="ce-parc"><a href="parcours.html#P3">Dans le parcours 3 · Aider mes proches sans me perdre</a></p></article>
+      <article class="ce-mod"><span class="n">6</span><h3>Dette et crédit</h3><p>Lire le vrai coût d'un crédit et repérer les signes de surendettement.</p><p class="ce-parc"><a href="parcours.html#P6">Dans le parcours 6 · Reprendre la main sur mes dettes</a></p></article>
+      <article class="ce-mod"><span class="n">7</span><h3>Mobile money</h3><p>Compter vos frais, protéger votre compte et épargner avec votre téléphone.</p><p class="ce-parc"><a href="parcours.html#P10">Dans le parcours 10 · Se protéger</a></p></article>
+      <article class="ce-mod"><span class="n">8</span><h3>Assurance et arnaques</h3><p>Reconnaître une promesse trop belle et vérifier un acteur avant de verser.</p><p class="ce-parc"><a href="parcours.html#P10">Dans le parcours 10 · Se protéger</a></p></article>
     </div>
 
     <div class="pan-h"><p class="kick2">Ce que le certificat valide</p><h2 class="sec" style="margin-top:4px">Ce que vous saurez faire</h2></div>
@@ -504,7 +511,6 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
         <div><h2>Agir</h2><ul>
           <li><a href="parcours.html">Mes parcours</a></li>
           <li><a href="outils.html#diagnostic">Diagnostic</a></li>
-          <li><a href="outils.html#plan">Plan d’action</a></li>
           <li><a href="outils.html#cahier">Mon cahier</a></li>
           <li><a href="outils.html#dico">Dico pratique</a></li>
           <li><a href="cercle-spirale.html">Cercle &amp; Spirale</a></li>
@@ -752,9 +758,24 @@ var OUTILS = [
       '<div class="duo"><button type="button" class="btn btn-main" data-act="demarrer" data-garder="1">Commencer et garder sur ce téléphone</button><button type="button" class="btn btn-line" data-act="demarrer" data-garder="0">Commencer sans garder</button></div>'+
       '<p class="small">Sans garder, le cahier s’efface à la fermeture du navigateur&nbsp;: pour un défi de sept jours, mieux vaut le garder. Il reste sur ce téléphone, rien n’est envoyé à EFA.</p></section>';
   }
+  /* Mes parcours : progression lue dans efa_parcours_v1 (la même que parcours.html et le bloc « Et ensuite ? ») */
+  function vueParcours(){
+    var DP=window.EFA_PARCOURS; if(!DP) return "";
+    var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){}
+    var faits=st.faits||{}, lignes=[];
+    DP.parcours.forEach(function(p){
+      var dispo=0, n=0, suivante=null;
+      p.etapes.forEach(function(e,i){ if(!e.ok) return; dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
+      if(!n && st.actif!==p.id) return;
+      var href=suivante?(/^https?:/.test(suivante.lien)?suivante.lien:suivante.lien.split("#")[0]+(suivante.lien.indexOf("?")<0?"?":"&")+"parcours="+p.id+(suivante.lien.indexOf("#")>=0?"#"+suivante.lien.split("#").slice(1).join("#"):"")):("parcours.html#"+p.id);
+      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>Parcours '+esc(p.id.slice(1))+' · '+esc(p.titre)+' · '+n+' sur '+dispo+' étapes</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a></div>');
+    });
+    return '<section class="wk pc"><p class="over">Mes parcours</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous mes parcours</a></p>'
+      :'<h3>Aucun parcours commencé</h3><p class="small">Partez de votre problème : chaque étape faite s’affichera ici.</p><a class="btn btn-main" href="#parcours">Choisir mon parcours</a>')+'</section>';
+  }
   function vueVide(){
-    return '<div class="vide"><p class="kick2">Mon cahier</p><h2 style="font-size:clamp(28px,4vw,40px)" tabindex="-1">Votre cahier est encore vide</h2><p class="lede">Il se remplit au fil de votre parcours&nbsp;: les pistes de votre diagnostic, les plans que vous choisissez, et vos défis, semaine après semaine.</p>'+
-      '<div class="duo"><a class="btn btn-main" href="ou-est-passe-mon-argent.html?src=cahier">Commencer par le diagnostic</a><a class="btn btn-line" href="#plan">Choisir un problème</a></div>'+
+    return '<div class="vide"><p class="kick2">Mon cahier</p><h2 style="font-size:clamp(28px,4vw,40px)" tabindex="-1">Votre cahier est encore vide</h2><p class="lede">Il se remplit au fil de vos parcours&nbsp;: les pistes de votre diagnostic, les parcours que vous suivez, et vos défis, semaine après semaine.</p>'+
+      '<div class="duo"><a class="btn btn-main" href="ou-est-passe-mon-argent.html?src=cahier">Commencer par le diagnostic</a><a class="btn btn-line" href="#parcours">Choisir un problème</a></div>'+
       '<button type="button" class="lnk" data-act="nouveau">Ou commencer directement un défi de sept jours</button></div>';
   }
   function texteCahier(c){
@@ -770,10 +791,11 @@ var OUTILS = [
   }
   function rendreCahier(sous){
     var c=CH.lire(), nouveau=/^nouveau/.test(sous||""), poste=nouveau?(sous.split("/")[1]||""):null, existe=!!c;
-    if(!c&&!nouveau){ $ch.innerHTML=vueVide(); return; }
+    if(!c&&!nouveau){ $ch.innerHTML=vueParcours()+vueVide(); return; }
     c=c||CH.vide();
     var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
     h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
+    h+=vueParcours();
     if(cur&&!nouveau){
       var et=CH.etat(cur);
       if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }
@@ -782,9 +804,10 @@ var OUTILS = [
     } else if(cur&&nouveau){ h+='<section class="wk"><p class="over">Un défi est déjà en cours</p><h3>'+titreSemaine(cur,idx)+'</h3><p class="small">Terminez-le avant d’en commencer un autre&nbsp;: un poste à la fois.</p><a class="btn btn-dark" href="#cahier" style="justify-self:start">Reprendre mon défi</a></section>'; }
     else h+=vueNouveau(c,poste);
     if(c.pistes&&c.pistes.liste.length) h+='<section class="wk"><p class="over">Mes pistes</p><h3>D’après mon diagnostic du '+esc(dateCourte(c.pistes.date))+'</h3><div class="pistes-p">'+c.pistes.liste.map(function(p){var m=E.PISTES[p.id]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a">'+esc(p.action)+'</span>'+(m?'<a class="lnk" href="#plan/'+esc(m.sujet)+'" style="justify-self:start">Voir le plan</a>':'')+'</article>';}).join("")+'</div><a class="lnk" href="ou-est-passe-mon-argent.html?src=cahier">Refaire le diagnostic</a></section>';
-    if(c.sujets.length) h+='<section class="wk"><p class="over">Mes plans</p><div class="chips">'+c.sujets.map(function(k){var s=E.sujet(k);return s?'<a href="#plan/'+esc(k)+'">'+esc(s.titre)+'</a>':'';}).join("")+'</div></section>';
+    var PSJ={"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"};
+    if(c.sujets.length) h+='<section class="wk"><p class="over">Mes problèmes suivis</p><div class="chips">'+c.sujets.map(function(k){var s=E.sujet(k);return s?'<a href="parcours.html#'+(PSJ[k]||"P1")+'">'+esc(s.titre)+'</a>':'';}).join("")+'</div></section>';
     var fin=c.semaines.filter(function(s){return s.fini;});
-    if(fin.length) h+='<section class="wk"><p class="over">Mon parcours</p><div class="hist">'+c.semaines.map(function(s,i){ if(!s.fini) return ""; var b=s.bilan||CH.calculBilan(s);
+    if(fin.length) h+='<section class="wk"><p class="over">Mes défis terminés</p><div class="hist">'+c.semaines.map(function(s,i){ if(!s.fini) return ""; var b=s.bilan||CH.calculBilan(s);
       return '<div><b>'+titreSemaine(s,i)+'</b><span>'+F(b.semaine)+'</span><small>Commencée le '+esc(dateCourte(s.debut))+(s.type==="plafond-7j"?(b.tenu?' · plafond tenu':' · plafond dépassé'):(s.estimation!=null?' · estimation '+F(s.estimation):''))+(b.plafondChoisi?' · plafond suivant '+F(b.plafondChoisi):'')+'</small></div>'; }).join("")+'</div></section>';
     if(existe) h+='<div class="garde"><label><input type="checkbox" data-act="garder"'+(c.garder?' checked':'')+'><span>Garder mon cahier sur ce téléphone. '+(c.garder?'Il y reste tant que vous ne l’effacez pas.':'Sans cette option, il s’efface à la fermeture du navigateur.')+' Rien n’est envoyé à EFA&nbsp;: sur un autre téléphone, le cahier sera vide.</span></label>'+
       '<div class="acts"><button type="button" class="lnk" data-act="copier">Copier mon cahier</button>'+(confirmer==="effacer"?'<span>Tout effacer&nbsp;?</span><button type="button" class="lnk" data-act="effacerOui">Oui, effacer</button><button type="button" class="lnk" data-act="annuler">Non</button>':'<button type="button" class="lnk" data-act="effacer">Effacer mon cahier</button>')+'</div><p class="small" id="copie-ok" role="status" aria-live="polite"></p></div>';
@@ -851,6 +874,8 @@ var OUTILS = [
     return '<article class="tool dc" id="fiche-'+esc(f.slug)+'" data-q="'+esc(norm([f.titre,f.notion,f.definition_courte].concat(f.mots_cles||[]).join(" ")))+'"><span class="tag">'+esc(f.collection)+(f.numero?' · n° '+esc(f.numero):'')+'</span><h2>'+esc(f.titre)+'</h2><p class="q">'+esc(f.definition_courte)+'</p>'+
       '<p class="eff"><b>Dans cette fiche</b> '+esc(f.benefice_lecture)+'</p>'+
       '<a class="btn btn-dark" href="'+esc(f.url_substack)+'" target="_blank" rel="noopener noreferrer" data-fiche="'+esc(f.id)+'" aria-label="Lire la fiche '+esc(f.titre)+' sur Substack — nouvel onglet">Lire la fiche complète <span aria-hidden="true">↗</span></a>'+
+      (function(){ var DP=window.EFA_PARCOURS; if(!DP) return ""; var t=norm(f.titre), ids=[]; DP.parcours.forEach(function(p){ p.etapes.forEach(function(e){ if(e.type==="Dico" && norm(e.titre).indexOf(t)>=0 && ids.indexOf(p.id)<0) ids.push(p.id); }); });
+        return ids.length?'<p class="d-parc">Utile dans : '+ids.map(function(id){ var p=DP.parcours.filter(function(x){return x.id===id;})[0]; return '<a href="parcours.html#'+id+'">Parcours '+id.slice(1)+' · '+esc(p.titre)+'</a>'; }).join(", ")+'</p>':""; })()+
       '<p class="note">Sur Substack · EFA · '+esc(ACCES[f.acces]||ACCES.libre)+'</p></article>';
   }).join("");
   function filtre(){ var q=norm(dq.value.trim()), n=0;
@@ -871,7 +896,10 @@ var OUTILS = [
     var h=decodeURIComponent((location.hash||"").slice(1)), parts=h.split("/"), k=parts[0];
     if(ANCIENS[k]) k=ANCIENS[k];
     if(k==="dico"){ montre("dico"); var m=parts[1]; if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
-    if(k==="plan"){ montre("plan"); rendrePlan(parts[1]); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
+    if(k==="plan"){ montre("plan"); rendrePlan(parts[1]);
+      (function(){ var M={"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"}, id=M[parts[1]], r=document.getElementById("plan-renvoi"), DP=window.EFA_PARCOURS;
+        if(!r) return; var pp=id&&DP?DP.parcours.filter(function(x){return x.id===id;})[0]:null;
+        r.innerHTML=pp?'Ce plan fait partie du parcours '+id.slice(1)+' : « '+esc(pp.probleme)+' ». <a href="parcours.html#'+id+'">Suivre le parcours étape par étape →</a>':'Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver mon parcours →</a>'; })(); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
     if(k==="certificat"){ montre("certificat"); cadrer("certificat",false); return; }
     if(k===""||k==="parcours"){ montre("parcours"); if(k) cadrer("parcours",false); return; }
     if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
