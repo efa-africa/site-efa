@@ -162,7 +162,7 @@
 
   /* ---------- Le cahier ---------- */
   var CKEY = "efa_cahier_v1";
-  function vide() { return {version: 1, garder: false, cree: aujourdhui(), pistes: null, sujets: [], semaines: []}; }
+  function vide() { return {version: 1, garder: true, cree: aujourdhui(), pistes: null, sujets: [], semaines: []}; }
   function lire() {
     var t = null;
     try { t = localStorage.getItem(CKEY); } catch (e) {}
