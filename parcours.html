@@ -88,38 +88,9 @@ section.bloc .intro p{color:var(--ink2)}
 
 
 .conseil{margin-top:14px;font-size:15px;color:var(--ink2)}
-.problemes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-@media (max-width:640px){.problemes{grid-template-columns:1fr}}
-.pb{all:unset;box-sizing:border-box;cursor:pointer;background:var(--papier);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;min-width:0;font-family:var(--f-body)}
-.pb:hover{background:#fff}
-.pb:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
-.pb .pb-txt{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
-.pb q{font-family:var(--f-display);font-weight:700;font-size:18px;line-height:1.25;color:var(--nuit);quotes:"«\00a0" "\00a0»"}
-.pb .pb-vers{font-size:14px;font-weight:700;color:var(--corail)}
-.pb .pb-fl{font-size:22px;color:var(--ink3)}
-.pb.zero{background:var(--nuit)}
-.pb.zero q{color:#fff}.pb.zero .pb-vers{color:var(--soft-corail)}.pb.zero .pb-fl{color:#8E98AA}
-.tags-profils{display:flex;flex-wrap:wrap;gap:8px}
-.tp{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;flex-direction:column;gap:2px;background:var(--papier);border-radius:12px;padding:10px 16px;min-height:44px;font-family:var(--f-body)}
-.tp b{font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--nuit)}
-.tp span{font-size:13px;color:var(--ink2)}
-.tp[aria-pressed="true"]{background:var(--nuit)}.tp[aria-pressed="true"] b,.tp[aria-pressed="true"] span{color:#fff}
-.tp:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
-.p-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.p-tag{font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--creme);border-radius:var(--r-pastille);padding:3px 10px}
-.quiz{background:var(--papier);border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:22px}
-.quiz fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
-.quiz legend{font-family:var(--f-display);font-weight:700;font-size:clamp(18px,1.8vw,21px);color:var(--nuit);margin-bottom:6px;padding:0}
-.quiz legend span{font-family:var(--f-body);font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--corail);display:block;margin-bottom:6px}
-.quiz .opts{display:flex;flex-wrap:wrap;gap:8px}
-.quiz label{display:inline-flex;align-items:center;gap:8px;background:var(--creme);border-radius:var(--r-pastille);padding:10px 16px;min-height:44px;cursor:pointer;font-size:16px}
-.quiz input{accent-color:var(--corail);width:18px;height:18px;margin:0}
-.quiz label:has(input:checked){background:var(--nuit);color:#fff}
-.quiz .err{color:var(--erreur,#B3261E);font-weight:700;font-size:15px}
-.quiz-res{margin-top:12px;background:var(--nuit);color:#E8EDF5;border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:12px}
-.quiz-res h3{color:#fff;font-size:clamp(20px,2.4vw,26px)}
-.quiz-res ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;color:#C9D1DE}
-.quiz-res ol a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
+.cote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.cote{grid-template-columns:minmax(0,1fr)}}
+#questions{display:flex;flex-direction:column;gap:12px;scroll-margin-top:76px}
 
 /* Parcours */
 .liste{display:flex;flex-direction:column;gap:12px}
@@ -220,22 +191,15 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
 
   <section class="bloc col" id="problemes" aria-labelledby="t-pb">
     <div class="intro">
-      <span class="surtitre">Partir de votre problème</span>
-      <h2 class="titre-section" id="t-pb">Lequel vous ressemble ?</h2>
-      <p>Touchez la phrase qui décrit le mieux votre situation : le parcours correspondant s’ouvre.</p>
+      <span class="surtitre">Mon parcours</span>
+      <h2 class="titre-section" id="t-pb">Je connais mon problème, ou je me pose des questions</h2>
+      <p>Touchez la phrase qui décrit votre situation. Vous hésitez ? Répondez aux trois questions à côté.</p>
     </div>
-    <div class="problemes" id="liste-problemes"></div>
+    <div class="cote">
+      <div id="liste-problemes"></div>
+      <div id="questions"><form id="quiz"></form><div id="quiz-res" role="status" hidden></div></div>
+    </div>
     <p class="conseil" id="conseil" hidden></p>
-  </section>
-
-  <section class="bloc col" id="questions" aria-labelledby="t-q">
-    <div class="intro">
-      <span class="surtitre">Vous hésitez ?</span>
-      <h2 class="titre-section" id="t-q">Trois questions pour trouver votre parcours</h2>
-      <p>Moins d’une minute. Rien n’est envoyé : la réponse s’affiche ici.</p>
-    </div>
-    <form class="quiz" id="quiz" novalidate></form>
-    <div class="quiz-res" id="quiz-res" role="status" hidden></div>
   </section>
 
   <section class="bloc col" id="profil" aria-labelledby="t-profil">
@@ -336,7 +300,8 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
   </div>
 </footer>
 
-<script src="parcours-efa.js?v=2026102401"></script>
+<script src="parcours-efa.js?v=2026102402"></script>
+<script src="parcours-ui.js?v=2026102401"></script>
 <script>
 (function(){
   "use strict";
@@ -365,13 +330,9 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
   var nbEt = 0, nbOk = 0; D.parcours.forEach(function(p){ p.etapes.forEach(function(s){ nbEt++; if(s.ok) nbOk++; }); });
   if($("chiffres")) $("chiffres").innerHTML = '<div><strong>'+D.parcours.length+'</strong><span>Parcours</span></div><div><strong>'+D.programmes.length+'</strong><span>Programmes</span></div><div><strong>'+nbOk+'</strong><span>Étapes en ligne</span></div><div><strong>Gratuit</strong><span>Sans inscription</span></div>';
 
-  // Problèmes
-  var ordre = D.parcours.filter(function(p){return p.id!=="P0";}).concat(D.parcours.filter(function(p){return p.id==="P0";}));
-  $("liste-problemes").innerHTML = ordre.map(function(p){
-    var zero = p.id==="P0";
-    return '<button class="pb'+(zero?" zero":"")+'" type="button" '+(zero?'data-quiz="1"':'data-ouvrir="'+p.id+'"')+'><span class="pb-txt"><q>'+esc(p.probleme)+'</q><span class="pb-vers">'+(zero?"Répondre à 3 questions":esc(nomCourt(p.id))+" · "+esc(p.titre))+'</span></span><span class="pb-fl" aria-hidden="true">→</span></button>';
-  }).join("");
-
+  // Problèmes et trois questions (parcours-ui.js)
+  function ouvrir(id){ var d=$(id); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+id);}catch(x){} } }
+  EFAParcoursUI.problemes($("liste-problemes"), {choisir: ouvrir});
   // Profils : une conséquence du diagnostic, pas une porte d'entrée
   var PARP = {};
   D.profils.forEach(function(x){ x.parcours.forEach(function(id){ (PARP[id]=PARP[id]||[]).push(x.nom); }); });
@@ -389,40 +350,10 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
     mesure("parcours-profil-"+x.id);
   });
 
-  // Trois questions
-  var QS = [
-    {id:"q1", t:"À la fin du mois, savez-vous où est passé votre argent ?", o:[["oui","Oui, à peu près"],["non","Non, pas vraiment"]]},
-    {id:"q2", t:"Avez-vous de côté au moins un mois de dépenses, en dehors de la tontine ?", o:[["oui","Oui"],["non","Non"],["nsp","Je ne sais pas"]]},
-    {id:"q3", t:"Qu’est-ce qui pèse le plus en ce moment ?", o:[["P3","Les demandes de mes proches"],["P6","Mes dettes"],["P5","Ma tontine"],["P7","Une grosse somme qui arrive"],["P2","Tenir mon budget"],["P10","Les frais et les arnaques"],["P8","Je veux faire fructifier mon argent"],["P9","Préparer ma retraite"]]}
-  ];
-  $("quiz").innerHTML = QS.map(function(q,i){
-    return '<fieldset><legend><span>Question '+(i+1)+' sur 3</span>'+esc(q.t)+'</legend><div class="opts">'+q.o.map(function(o){ return '<label><input type="radio" name="'+q.id+'" value="'+o[0]+'"> '+esc(o[1])+'</label>'; }).join("")+'</div></fieldset>';
-  }).join("") + '<p class="err" id="quiz-err" hidden>Répondez aux trois questions.</p><div><button class="bouton bouton-principal" type="submit">Voir mon parcours</button></div>';
-  function val(n){ var x=document.querySelector('input[name="'+n+'"]:checked'); return x?x.value:null; }
-  function orienter(r1,r2,r3){
-    var L=[], ajoute=function(id){ if(L.indexOf(id)<0) L.push(id); };
-    var urgent = ["P3","P6","P5","P7","P10"].indexOf(r3)>=0;
-    if(urgent) ajoute(r3);
-    if(r1==="non") ajoute("P1");
-    if(r3==="P2") ajoute("P2");
-    if(r2!=="oui") ajoute("P4");
-    if(r3==="P8"||r3==="P9"){ if(r2!=="oui") ajoute("P4"); ajoute(r3); }
-    if(r1==="non") ajoute("P2");
-    ["P2","P4","P8"].forEach(function(id){ if(L.length<3) ajoute(id); });
-    return L.slice(0,3);
-  }
-  $("quiz").addEventListener("submit",function(e){
-    e.preventDefault();
-    var r1=val("q1"), r2=val("q2"), r3=val("q3");
-    if(!r1||!r2||!r3){ $("quiz-err").hidden=false; return; }
-    $("quiz-err").hidden=true;
-    var L = orienter(r1,r2,r3);
-    $("quiz-res").hidden=false;
-    $("quiz-res").innerHTML = '<span class="surtitre" style="color:var(--soft-corail)">Votre parcours</span><h3>Commencez par : « '+esc(P[L[0]].probleme)+' »</h3><ol>'+L.map(function(id){ return '<li><a href="#'+id+'" data-ouvrir="'+id+'">'+esc(nomCourt(id))+' · '+esc(P[id].titre)+'</a></li>'; }).join("")+'</ol><div><a class="bouton bouton-principal" href="#'+L[0]+'" data-ouvrir="'+L[0]+'">Ouvrir ce parcours</a></div><p style="font-size:14px;color:#8E98AA;margin:0">Pour un bilan plus complet, <a style="color:#fff" href="diagnostic.html?src=parcours-quiz">faites le diagnostic gratuit (6 min)</a>.</p>';
-    recommander(L, null, false);
-    etat.quiz = L; ecrire(etat);
-    mesure("parcours-quiz-"+L[0]);
-    $("quiz-res").scrollIntoView({behavior:"smooth",block:"nearest"});
+  EFAParcoursUI.quiz($("quiz"), $("quiz-res"), {
+    lien: function(id){ return "#"+id; },
+    ouvrir: ouvrir,
+    resultat: function(L){ recommander(L, "D’après vos réponses", false); }
   });
 
   // Parcours
@@ -504,7 +435,9 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
   // Recommandation venant du diagnostic (?profil=…) ou des 3 questions déjà faites
   var q = new URLSearchParams(location.search), pr = q.get("profil");
   var PR = {}; D.profils.forEach(function(x){ PR[x.id]=x; });
-  if(pr && PR[pr]){ recommander(PR[pr].parcours, "Votre profil « "+PR[pr].nom+" »", !location.hash); var bp=$("pr-"+pr); if(bp) bp.setAttribute("aria-pressed","true"); }
+  var rq = (q.get("reco")||"").split(",").filter(function(id){ return P[id]; });
+  if(rq.length) recommander(rq, "D’après vos réponses", false);
+  else if(pr && PR[pr]){ recommander(PR[pr].parcours, "Votre profil « "+PR[pr].nom+" »", !location.hash); var bp=$("pr-"+pr); if(bp) bp.setAttribute("aria-pressed","true"); }
   else if(etat.quiz && etat.quiz.length) recommander(etat.quiz, "D’après vos réponses", false);
   // Ouverture par l'adresse (#P5)
   var h = (location.hash||"").slice(1);

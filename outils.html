@@ -251,6 +251,12 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 
 /* ---- Onglet « Mon certificat » : onglet à part, en vermillon ---- */
 .tabs a.t-cert{background:var(--corail);color:#fff;position:relative}
+.cote-parc{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.cote-parc{grid-template-columns:minmax(0,1fr)}}
+.cote-parc>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.cote-t{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.cote-pied{margin:18px 0 0;font-weight:700}.cote-pied a{color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+.plan-renvoi{margin:0 0 16px;padding:12px 16px;border-radius:10px;background:var(--nuit,#0B1220);color:#E8EDF5;font-weight:600}.plan-renvoi a{color:#fff}
 .parc-band{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 18px;border-radius:12px;background:#16213A;color:#E8EDF5;text-decoration:none;font-size:16px;line-height:1.35;max-width:760px}
 .parc-band b{font-family:var(--f-display);font-weight:700;color:#fff}
 .parc-band:hover{background:#1E2B47}
@@ -335,7 +341,8 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .ce-note{font-size:13px;color:var(--ink2)}
 </style>
 <link rel="stylesheet" href="footer.css">
-<script src="parcours-efa.js?v=2026102401"></script>
+<script src="parcours-efa.js?v=2026102402"></script>
+<script src="parcours-ui.js?v=2026102401"></script>
 </head>
 <body>
 <header class="top">
@@ -353,16 +360,15 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <p class="kick">Mes outils et diagnostic</p>
     <h1>Comprendre votre argent. Et agir.</h1>
-    <p class="lead">Faites votre diagnostic, choisissez un plan d’action, suivez vos progrès semaine après semaine dans votre cahier, et comprenez les mots de l’argent.</p>
+    <p class="lead">Partez de votre problème et suivez votre parcours. Creusez avec le diagnostic, suivez vos progrès dans votre cahier, et comprenez les mots de l’argent.</p>
     <form class="rech" role="search" id="rech-f" onsubmit="return false">
       <label for="rq">Rechercher un outil, un problème ou un mot</label>
       <div class="rech-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="rq" type="search" autocomplete="off" enterkeyhint="search" placeholder="Par exemple : budget, tontine, retraite, prêter…"><button type="button" class="rech-x" id="rq-x" hidden>Effacer</button></div>
       <p class="rech-sug" id="rech-sug">Recherches fréquentes : <button type="button">budget</button><button type="button">tontine</button><button type="button">mobile money</button><button type="button">retraite</button><button type="button">prêter</button><button type="button">dépenses</button></p>
     </form>
-    <a class="parc-band" href="parcours.html" data-goatcounter-click="outils-parcours"><span class="parc-new">Nouveau</span><span><b>Mes parcours</b> · onze parcours pas à pas, de votre situation à un résultat concret</span><span aria-hidden="true">→</span></a>
     <div class="tabs" role="tablist" aria-label="Choisir un espace">
-      <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="true"><b>Diagnostic</b><small>Où en suis-je&nbsp;?</small></a>
-      <a href="#plan" role="tab" id="t-plan" aria-controls="plan" aria-selected="false" tabindex="-1"><b>Plan d’action</b><small>Que faire&nbsp;?</small></a>
+      <a href="#parcours" role="tab" id="t-parcours" aria-controls="parcours" aria-selected="true"><b>Mon parcours</b><small>Par où commencer&nbsp;?</small></a>
+      <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="false" tabindex="-1"><b>Diagnostic</b><small>Creuser ma situation</small></a>
       <a href="#cahier" role="tab" id="t-cahier" aria-controls="cahier" aria-selected="false" tabindex="-1"><b>Mon cahier</b><small>Suivre mes progrès</small></a>
       <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1"><b>Dico pratique</b><small>Les mots de l’argent</small></a>
       <a href="#certificat" role="tab" id="t-certificat" class="t-cert" aria-controls="certificat" aria-selected="false" tabindex="-1"><b>Mon certificat</b><small><span class="pil">Pilote</span> Apprendre et le prouver</small></a>
@@ -371,11 +377,19 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 </section>
 <main class="wrap">
   <section class="pan" id="resultats" aria-live="polite" hidden></section>
-  <section class="pan" id="diagnostic" role="tabpanel" aria-labelledby="t-diagnostic">
-    <div class="pan-h"><p>Commencez ici si vous ne savez pas par où commencer. Chaque diagnostic vous donne des pistes, puis vous mène au plan d’action et à votre cahier.</p></div>
+  <section class="pan" id="parcours" role="tabpanel" aria-labelledby="t-parcours">
+    <div class="pan-h"><p>Partez de votre problème : un parcours vous guide étape par étape jusqu’à un résultat concret. Vous hésitez ? Trois questions suffisent. Pour creuser, le diagnostic est dans l’onglet suivant.</p></div>
+    <div class="cote-parc">
+      <div><p class="cote-t">Je connais mon problème</p><div id="pb-outils"></div></div>
+      <div><form id="quiz-outils"></form><div id="quiz-outils-res" role="status" hidden></div></div>
+    </div>
+    <p class="cote-pied"><a href="parcours.html">Voir tous les parcours en détail, avec vos étapes et votre progression →</a></p>
+  </section>
+  <section class="pan" id="diagnostic" role="tabpanel" aria-labelledby="t-diagnostic" hidden>
+    <div class="pan-h"><p>Pour creuser : faites le point en détail. Chaque diagnostic vous donne votre profil et vos pistes, puis vous mène au bon parcours.</p></div>
     <div class="cards" id="diag-cards"></div>
   </section>
-  <section class="pan" id="plan" role="tabpanel" aria-labelledby="t-plan" hidden><div class="pan" id="plan-vue"></div></section>
+  <section class="pan" id="plan" role="tabpanel" aria-labelledby="t-parcours" hidden><p class="plan-renvoi" id="plan-renvoi">Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver mon parcours →</a></p><div class="pan" id="plan-vue"></div></section>
   <section class="pan" id="cahier" role="tabpanel" aria-labelledby="t-cahier" hidden><div class="pan" id="cahier-vue"></div></section>
   <section class="fam" id="dico" role="tabpanel" aria-labelledby="t-dico" hidden>
     <div class="fam-h"><p>Un mot, une définition claire, une application concrète. Retrouvez les fiches publiées par EFA et poursuivez votre lecture sur notre publication Substack.</p></div>
@@ -812,8 +826,8 @@ var OUTILS = [
   dc.addEventListener("click",function(e){ var a=e.target.closest("a[data-fiche]"); if(a) mesure("dico-fiche-"+a.dataset.fiche); });
 
   /* ---------- Onglets et adresses : #diagnostic · #plan · #plan/sujet · #cahier · #cahier/nouveau/poste · #dico · #dico/slug ---------- */
-  var TABS=["diagnostic","plan","cahier","dico","certificat"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
-  function montre(id){ TABS.forEach(function(k){ document.getElementById(k).hidden=k!==id; var t=document.getElementById("t-"+k); t.setAttribute("aria-selected",String(k===id)); t.tabIndex=k===id?0:-1; });
+  var TABS=["parcours","diagnostic","plan","cahier","dico","certificat"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
+  function montre(id){ TABS.forEach(function(k){ document.getElementById(k).hidden=k!==id; var t=document.getElementById("t-"+k); if(!t) return; t.setAttribute("aria-selected",String(k===id||(k==="parcours"&&id==="plan"))); t.tabIndex=(k===id||(k==="parcours"&&id==="plan"))?0:-1; });
     document.getElementById("how").hidden=id!=="diagnostic"; mesure("onglet-"+id); }
   // Après un lien interne : ramener le haut de l'espace ouvert à l'écran
   function cadrer(id,force){ var el=document.getElementById(id); if(!el) return; var r=el.getBoundingClientRect(); if(force||r.top<0) el.scrollIntoView({block:"start"}); }
@@ -823,11 +837,14 @@ var OUTILS = [
     if(k==="dico"){ montre("dico"); var m=parts[1]; if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
     if(k==="plan"){ montre("plan"); rendrePlan(parts[1]); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
     if(k==="certificat"){ montre("certificat"); cadrer("certificat",false); return; }
+    if(k===""||k==="parcours"){ montre("parcours"); if(k) cadrer("parcours",false); return; }
     if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
     var outil=OUTILS.filter(function(o){return o.id===k;})[0];
     if(outil&&outil.famille==="agir"){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
-    montre("diagnostic"); if(outil){ var el2=document.getElementById(k); if(el2) el2.scrollIntoView({block:"start"}); }
+    if(k==="diagnostic"||outil){ montre("diagnostic"); if(outil){ var el2=document.getElementById(k); if(el2) el2.scrollIntoView({block:"start"}); } return; }
+    montre("parcours");
   }
+  if(window.EFAParcoursUI){ EFAParcoursUI.problemes(document.getElementById("pb-outils")); EFAParcoursUI.quiz(document.getElementById("quiz-outils"), document.getElementById("quiz-outils-res")); }
   var tabs=[].slice.call(document.querySelectorAll(".tabs a"));
   tabs.forEach(function(a,i){
     a.addEventListener("click",function(e){ e.preventDefault(); if(location.hash!==a.getAttribute("href")) history.pushState(null,"",a.getAttribute("href")); depuisAncre(); });
