@@ -859,13 +859,20 @@ var OUTILS = [
       p.etapes.forEach(function(e,i){ if(!e.ok||!e.ess) return; dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
       if(!n && st.actif!==p.id && !(st.preuves&&st.preuves[p.id])) return;
       var href=suivante?(/^https?:/.test(suivante.lien)?suivante.lien:suivante.lien.split("#")[0]+(suivante.lien.indexOf("?")<0?"?":"&")+"parcours="+p.id+(suivante.lien.indexOf("#")>=0?"#"+suivante.lien.split("#").slice(1).join("#"):"")):("parcours.html#"+p.id);
-      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>Parcours '+esc(p.id.slice(1))+' · '+esc(p.titre)+' · '+n+' sur '+dispo+' étapes</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a><div class="pv-z">'+vuePreuve(p,st)+'</div></div>');
+      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>'+esc(p.nom||('Parcours '+p.id.slice(1)))+' · '+esc(p.titre)+' · '+n+' sur '+dispo+' étapes</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a><div class="pv-z">'+vuePreuve(p,st)+'</div></div>');
     });
-    return '<section class="wk pc"><p class="over">Mes parcours</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous mes parcours</a></p>'
+    return '<section class="wk pc"><p class="over">Mes modules</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous les modules</a></p>'
       :'<h3>Aucun parcours commencé</h3><p class="small">Partez de votre problème : chaque étape faite s’affichera ici.</p><a class="btn btn-main" href="#parcours">Choisir mon parcours</a>')+'</section>';
   }
+  function vueFiches(){
+    var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){}
+    var F=st.fiches||{}, k=Object.keys(F).sort(function(a,b){ return (F[b].d||"").localeCompare(F[a].d||""); });
+    if(!k.length) return "";
+    return '<section class="wk"><p class="over">Mes fiches</p><h3>'+k.length+' fiche'+(k.length>1?'s':'')+' gardée'+(k.length>1?'s':'')+'</h3>'+k.map(function(p){ var f=F[p];
+      return '<details class="pv"><summary>'+esc(f.titre)+' · '+esc(dateFr(f.d))+'</summary><pre style="white-space:pre-wrap;font:inherit;font-size:15px;margin:8px 0">'+esc(f.t)+'</pre><a class="lnk" href="'+esc(f.url||p)+'">Refaire le calcul</a></details>'; }).join("")+'</section>';
+  }
   function vueVide(){
-    return '<div class="vide"><p class="kick2">Mon cahier</p><h2 style="font-size:clamp(28px,4vw,40px)" tabindex="-1">Votre cahier est encore vide</h2><p class="lede">Commencez par la question qui vous préoccupe&nbsp;: vous retrouverez ici vos étapes, vos défis et vos notes.</p>'+
+    return '<div class="vide"><p class="kick2">Mon cahier</p><h2 style="font-size:clamp(28px,4vw,40px)" tabindex="-1">'+(function(){ try{ var st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; return (st.fiches&&Object.keys(st.fiches).length)||(st.preuves&&Object.keys(st.preuves).length) ? "Et maintenant, un défi de sept jours ?" : "Votre cahier est encore vide"; }catch(e){ return "Votre cahier est encore vide"; } })()+'</h2><p class="lede">Commencez par la question qui vous préoccupe&nbsp;: vous retrouverez ici vos étapes, vos défis et vos notes.</p>'+
       '<div class="duo"><a class="btn btn-main" href="#parcours">Choisir ma question</a><a class="btn btn-line" href="#diagnostic">Faire le point</a></div>'+
       '<button type="button" class="lnk" data-act="nouveau">Ou commencer directement un défi de sept jours</button></div>';
   }
@@ -882,11 +889,11 @@ var OUTILS = [
   }
   function rendreCahier(sous){
     var c=CH.lire(), nouveau=/^nouveau/.test(sous||""), poste=nouveau?(sous.split("/")[1]||""):null, existe=!!c;
-    if(!c&&!nouveau){ $ch.innerHTML=vueParcours()+vueVide(); return; }
+    if(!c&&!nouveau){ $ch.innerHTML=vueParcours()+vueFiches()+vueVide(); return; }
     c=c||CH.vide();
     var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
     h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
-    h+=vueParcours();
+    h+=vueParcours()+vueFiches();
     if(cur&&!nouveau){
       var et=CH.etat(cur);
       if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }
@@ -1095,7 +1102,7 @@ var OUTILS = [
 </script>
 <script src="prevenir.js" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102501" defer></script>
+<script src="efa-appli.js?v=2026102502" defer></script>
 <script src="minfin.js?v=202610241407"></script>
 <script>
 (function(){
