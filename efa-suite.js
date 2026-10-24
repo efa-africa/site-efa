@@ -9,6 +9,50 @@
   try { if (window.self !== window.top) return; } catch (e) { return; }
   if (window.__efaSuite) return; window.__efaSuite = 1;
 
+  /* ---------- Partage : « Si ça vous a aidé, partagez » ----------
+     Tout bouton [data-efa-partager] du site déclenche le partage (attributs facultatifs :
+     data-efa-partager="whatsapp|facebook|copier", data-titre, data-url). */
+  function urlPartage(u) {
+    var c = document.querySelector('link[rel="canonical"]');
+    var b = u || (c && c.href) || (location.origin + location.pathname);
+    b = b.split("#")[0].replace(/[?&]parcours=P\d+/, "");
+    return b + (b.indexOf("?") < 0 ? "?" : "&") + "src=partage";
+  }
+  function titrePartage(t) { return (t || document.title || "EFA").replace(/\s*·\s*EFA\s*$/, ""); }
+  function texteMessage(t) { return "Ça m’a aidé à mieux gérer mon argent, je vous le partage : « " + titrePartage(t) + " » · EFA, Éducation Financière Afrique"; }
+  function compter(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
+  function partager(mode, t, u, bouton) {
+    var url = urlPartage(u), texte = texteMessage(t);
+    compter("partage-" + (mode || "auto"));
+    if ((!mode || mode === "auto") && navigator.share) {
+      navigator.share({ title: titrePartage(t), text: texte, url: url }).catch(function () {});
+      return;
+    }
+    if (mode === "facebook") { window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url), "_blank", "noopener"); return; }
+    if (mode === "copier") {
+      var ok = function () { if (bouton) { var o = bouton.textContent; bouton.textContent = "Lien copié"; setTimeout(function () { bouton.textContent = o; }, 2000); } };
+      try { navigator.clipboard.writeText(url).then(ok, function () { window.prompt("Copiez ce lien :", url); }); } catch (e) { window.prompt("Copiez ce lien :", url); }
+      return;
+    }
+    window.open("https://wa.me/?text=" + encodeURIComponent(texte + " " + url), "_blank", "noopener");
+  }
+  window.efaPartager = partager;
+  // Pied de page de toutes les pages : « Partager EFA »
+  function piedPartage() {
+    var bas = document.querySelector(".efa-foot .ef-bot");
+    if (!bas || bas.querySelector("[data-efa-partager]")) return;
+    var b = document.createElement("a"); b.href = "#"; b.textContent = "Partager EFA à un proche";
+    b.setAttribute("data-efa-partager", "whatsapp"); b.setAttribute("data-url", "https://efa.africa/"); b.setAttribute("data-titre", "EFA, l’argent s’apprend");
+    b.style.color = "#F09680"; b.style.fontWeight = "700";
+    bas.appendChild(b);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", piedPartage); else piedPartage();
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-efa-partager]"); if (!b) return;
+    e.preventDefault();
+    partager(b.getAttribute("data-efa-partager"), b.getAttribute("data-titre"), b.getAttribute("data-url"), b);
+  });
+
   var EXCLUS = ["parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
     "organisations.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
   var page = (location.pathname.split("/").pop() || "index.html");
@@ -53,13 +97,28 @@
     + ".efa-suite .es-chip{font-size:14px;color:#fff;text-decoration:none;background:#111B2F;border-radius:999px;padding:6px 12px}"
     + ".efa-suite .es-chip b{color:#F09680}"
     + ".efa-suite a:focus-visible,.efa-suite button:focus-visible,.efa-suite input:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px}"
+    + ".efa-suite .es-partage{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}"
+    + ".efa-suite .es-partage p{margin:0;flex:1 1 260px;font-size:15px;color:#E8EDF5}"
+    + ".efa-suite .es-partage p b{color:#fff}"
+    + ".efa-suite .es-pb{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:999px;border:0;background:#111B2F;color:#fff;font:700 14px/1.2 inherit;font-family:inherit;cursor:pointer;text-decoration:none}"
+    + ".efa-suite .es-pb:hover{background:#1F2C45}"
+    + ".efa-suite .es-pb.wa{background:#E44828}"
+    + ".efa-suite .es-merci{grid-column:1/-1;background:#E44828;color:#fff;border-radius:12px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}"
+    + ".efa-suite .es-merci p{margin:0;flex:1 1 260px;color:#fff;font-size:16px}"
+    + ".efa-suite .es-merci .es-pb{background:#fff;color:#0B1220}"
     + "@media print{.efa-suite{display:none}}";
 
+  var LIGNE = '<div class="es-partage"><p><b>Ça vous a aidé ?</b> Partagez-le à quelqu’un qui en a besoin : c’est comme ça qu’EFA grandit.</p>'
+    + '<button type="button" class="es-pb wa" data-efa-partager="whatsapp">WhatsApp</button>'
+    + '<button type="button" class="es-pb" data-efa-partager="facebook">Facebook</button>'
+    + '<button type="button" class="es-pb" data-efa-partager="copier">Copier le lien</button>'
+    + (navigator.share ? '<button type="button" class="es-pb" data-efa-partager="auto">Autre…</button>' : "")
+    + "</div>";
   function placer(html) {
     var st = document.createElement("style"); st.textContent = CSS; document.head.appendChild(st);
     var box = document.createElement("aside");
     box.className = "efa-suite"; box.setAttribute("aria-label", "Et ensuite ?");
-    box.innerHTML = '<div class="es-in">' + html + "</div>";
+    box.innerHTML = '<div class="es-in">' + html + LIGNE + "</div>";
     var pied = document.querySelector("footer.efa-foot") || document.querySelector("footer");
     if (pied && pied.parentNode) pied.parentNode.insertBefore(box, pied); else document.body.appendChild(box);
     return box;
@@ -123,7 +182,18 @@
       etat.actif = p.id; ecrire(etat);
       var n = nbFaits(); box.querySelector("#es-prog").textContent = n + " sur " + dispo + " étapes faites";
       box.querySelector(".es-barre i").style.width = (dispo ? Math.round(n / dispo * 100) : 0) + "%";
-      if (cb.checked) mesure("suite-fait-" + p.id + "-" + rang);
+      if (cb.checked) {
+        mesure("suite-fait-" + p.id + "-" + rang);
+        var jour = new Date().toISOString().slice(0, 10), dejaVu = null;
+        try { dejaVu = localStorage.getItem("efa_partage_rappel"); } catch (e) {}
+        if (dejaVu !== jour && !box.querySelector(".es-merci")) {
+          try { localStorage.setItem("efa_partage_rappel", jour); } catch (e) {}
+          var m = document.createElement("div"); m.className = "es-merci"; m.setAttribute("role", "status");
+          m.innerHTML = "<p>Bravo, une étape de plus. Si elle vous a été utile, envoyez-la à un proche : un partage aide plus qu’on ne croit.</p>"
+            + '<button type="button" class="es-pb" data-efa-partager="whatsapp">Partager sur WhatsApp</button>';
+          box.querySelector(".es-in").insertBefore(m, box.querySelector(".es-partage"));
+        }
+      }
     });
   });
 })();

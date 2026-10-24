@@ -234,6 +234,12 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
       <p>Les parcours 1 à 5 et 10 préparent le Certificat EFA « Fondations ». Le pilote est ouvert : inscrivez-vous, suivez les modules, passez le quiz.</p>
       <div><a class="bouton bouton-principal" href="certificat-pilote.html">Découvrir le certificat</a></div>
     </div>
+    <div class="encadre" style="background:#E44828;margin-top:-32px">
+      <span class="surtitre" style="color:#fff">Ça vous a aidé ?</span>
+      <h2>Partagez-le à quelqu’un qui en a besoin.</h2>
+      <p style="color:#fff">EFA est gratuit et grandit grâce à vous. Un message à un proche, un groupe de tontine, un collègue : chaque partage compte.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px"><button type="button" class="bouton" style="background:#fff;color:#0B1220" data-efa-partager="whatsapp">Partager sur WhatsApp</button><button type="button" class="bouton bouton-sombre" data-efa-partager="facebook">Facebook</button><button type="button" class="bouton bouton-sombre" data-efa-partager="copier">Copier le lien</button></div>
+    </div>
     <p class="mention">Éducation financière, pas conseil en placement. Aucun produit financier recommandé. Parcours conçus par EFA avec l’aide de l’intelligence artificielle, vérifiés par l’équipe EFA. Koffi, Tonton Bamba et Tantie Affoué sont des personnages fictifs.</p>
   </div>
 </main>
@@ -353,7 +359,8 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
       + '<ol class="etapes">'+et+'</ol>'
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
-      + (premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le parcours" : "Commencer le parcours")+'</a></div>' : '<div class="p-acts"><span class="pill fait">Toutes les étapes en ligne sont faites</span></div>')
+      + (premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le parcours" : "Commencer le parcours")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Partager ce parcours</button></div>'
+         : '<div class="p-acts"><span class="pill fait">Toutes les étapes en ligne sont faites</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Bravo ! Partagez ce parcours à un proche</button></div>')
       + '</div></details>';
   }
   function rendre(){
