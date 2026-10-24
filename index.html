@@ -712,6 +712,25 @@ img.char{object-position:50% 18%}
 .ask-more > a{color:#F0603F}
 @media (max-width:980px){.tiles.sit{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stile .bd{padding:12px;gap:6px}.stile b{font-size:clamp(16px,4.4vw,19px)}.stile .k{letter-spacing:.08em;font-size:10.5px}.stile .why{font-size:13px}.stile .cta{font-size:13px;padding:10px 11px}.stile .ph{height:58px}}
 @media (max-width:339px){.stile .why{display:none}}
+
+/* Min’Fin sur l’accueil */
+.mfh{background:#070C16;color:#fff;padding:64px var(--gut);scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
+.mfh-in{max-width:1120px;margin:0 auto}
+.mfh-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.mfh-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680;margin:0}
+.mfh h2{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;line-height:1.12;font-size:clamp(28px,3.8vw,44px);margin:10px 0 0}
+.mfh-l{color:#C9D1DE;margin:10px 0 0;max-width:36em}
+.mfh-all{display:inline-flex;align-items:center;min-height:46px;padding:12px 22px;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;font-weight:800;text-decoration:none}
+.mfh-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.mfh-ep{position:relative;display:block;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#0D1525;color:#fff;text-decoration:none}
+.mfh-ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.mfh-ep::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070C16 8%,rgba(7,12,22,.65) 48%,rgba(7,12,22,.1) 100%)}
+.mfh-ep span{position:absolute;z-index:1}
+.mfh-n{left:16px;bottom:66px;font:700 48px/1 "Libre Baskerville",Georgia,serif}
+.mfh-t{left:16px;right:16px;bottom:16px;font:700 18px/1.2 "Libre Baskerville",Georgia,serif}
+.mfh-p{top:12px;right:12px;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.mfh-p::before{content:"";border-left:12px solid #0B1220;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+@media (max-width:760px){.mfh{padding:48px var(--gut)}.mfh-rail{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.mfh-ep{scroll-snap-align:start}}
 </style>
 <link rel="stylesheet" href="footer.css">
 <script type="application/ld+json">
@@ -826,6 +845,21 @@ img.char{object-position:50% 18%}
 
 
   <!-- 3. Le cercle et la spirale : aperçu ; le simulateur principal est sur cercle-spirale.html -->
+  <!-- Min’Fin : les derniers épisodes de la série (données : minfin.js), vers la vitrine minfin.html -->
+  <section class="mfh" id="minfin" aria-labelledby="mfh-t" data-step="Min’Fin">
+    <div class="mfh-in">
+      <div class="mfh-h">
+        <div>
+          <p class="mfh-k">La série EFA · une minute par épisode</p>
+          <h2 id="mfh-t">Regardez Min’Fin avec Koffi</h2>
+          <p class="mfh-l">Une situation que tout le monde a vécue, le piège nommé, une règle à appliquer le soir même.</p>
+        </div>
+        <a class="mfh-all" href="minfin.html" data-goatcounter-click="accueil-minfin-tout">Tous les épisodes</a>
+      </div>
+      <div class="mfh-rail" id="mfh-rail"></div>
+    </div>
+  </section>
+
   <section class="sp-apercu" id="apercu-spirale" data-step="Le cercle et la spirale" aria-labelledby="sp-t">
     <div class="sp-in">
       <svg class="sp-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/></svg>
@@ -1414,5 +1448,15 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026102501" defer></script>
+<script src="minfin.js"></script>
+<script>
+(function(){
+  var M=window.MINFIN, r=document.getElementById('mfh-rail'); if(!M||!r) return;
+  var eps=[]; M.saisons.forEach(function(s){s.episodes.forEach(function(e){if(e.statut==='publie'){e.saison=s.n;eps.push(e);}});});
+  eps=eps.slice(-3).reverse();
+  function esc(t){return String(t).replace(/ ([:?!;])/g,'\u00a0$1').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  r.innerHTML=eps.map(function(e){return '<a class="mfh-ep" href="minfin.html#ep-'+e.saison+'-'+e.n+'" data-goatcounter-click="accueil-minfin-ep'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"><img src="'+esc(e.image)+'" alt="" loading="lazy"><span class="mfh-p" aria-hidden="true"></span><span class="mfh-n">'+e.n+'</span><span class="mfh-t">'+esc(e.titre)+'</span></a>';}).join('');
+})();
+</script>
 </body>
 </html>

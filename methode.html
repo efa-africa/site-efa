@@ -498,7 +498,7 @@ a.st-card{text-decoration:none}
   <div class="wrap bar">
     <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; ACTUALITÉ</b></span></a>
     <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Prospective · Africa 2075</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#methode" data-tab="methode">Méthode</a></nav>
-    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Prospective · Africa 2075</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="simulateurs">Simulateurs</option><option value="methode">Méthode</option></select></label>
+    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Prospective · Africa 2075</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="minfin">Vidéos · Min’Fin</option><option value="simulateurs">Simulateurs</option><option value="methode">Méthode</option></select></label>
     <a class="back" href="./">← Le site</a>
   </div>
   <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
@@ -682,7 +682,7 @@ a.st-card{text-decoration:none}
 
   <!-- RUBRIQUE ACTUALITÉS · sous-onglet EFA News (affiché en premier) -->
   <section class="tab" id="tab-actualites" data-tab="actualites" hidden>
-    <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites" aria-current="page"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
+    <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites" aria-current="page"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a><a href="minfin.html" data-goatcounter-click="etudes-minfin"><b>Min’Fin</b><small>La série vidéo, épisode par épisode</small></a></nav></div>
     <div class="wrap intro">
       <div>
         <p class="kick">EFA News · Chiffres vérifiés de la semaine</p>
@@ -706,7 +706,7 @@ a.st-card{text-decoration:none}
 
   <!-- ACTUALITÉS · sous-onglet BRVM -->
   <section class="tab" id="tab-brvm" data-tab="brvm" hidden>
-    <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
+    <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a><a href="minfin.html" data-goatcounter-click="etudes-minfin"><b>Min’Fin</b><small>La série vidéo, épisode par épisode</small></a></nav></div>
     <!-- LA BRVM EXPLIQUÉE PAR EFA : à gauche les données de la séance, à droite quatre blocs pour comprendre. Aucune société du groupe Orange dans les contenus éditoriaux (décision du 23/10/2026). -->
     <div class="wrap bx-top">
       <p class="kick">La BRVM expliquée par EFA</p>
@@ -1252,7 +1252,7 @@ function route(){
   else {showTab('etudes');window.scrollTo(0,0);}
 }
 addEventListener('hashchange',route);
-document.getElementById('rub-sel').addEventListener('change',function(){location.hash=this.value;});
+document.getElementById('rub-sel').addEventListener('change',function(){if(this.value==='minfin'){location.href='minfin.html';return;}location.hash=this.value;});
 addEventListener('resize',setHH);
 
 /* Moteur EFA « cercle → spirale », d'après l'emblème : 12 points gris (le cercle), une spirale de points bleus
