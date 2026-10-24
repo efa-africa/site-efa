@@ -721,7 +721,9 @@ img.char{object-position:50% 18%}
 .mfh h2{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;line-height:1.12;font-size:clamp(28px,3.8vw,44px);margin:10px 0 0}
 .mfh-l{color:#C9D1DE;margin:10px 0 0;max-width:36em}
 .mfh-all{display:inline-flex;align-items:center;min-height:46px;padding:12px 22px;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;font-weight:800;text-decoration:none}
-.mfh-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.mfh-rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 28px) / 3);gap:14px;margin-top:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#1F2C45 transparent;padding-bottom:6px;overscroll-behavior-x:contain}
+.mfh-ep{scroll-snap-align:start}
+.mfh-suite{margin:12px 0 0;font-size:14px;color:#C9D1DE}
 .mfh-ep{position:relative;display:block;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#0D1525;color:#fff;text-decoration:none}
 .mfh-ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .mfh-ep::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070C16 8%,rgba(7,12,22,.65) 48%,rgba(7,12,22,.1) 100%)}
@@ -730,7 +732,7 @@ img.char{object-position:50% 18%}
 .mfh-t{left:16px;right:16px;bottom:16px;font:700 18px/1.2 "Libre Baskerville",Georgia,serif}
 .mfh-p{top:12px;right:12px;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center}
 .mfh-p::before{content:"";border-left:12px solid #0B1220;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
-@media (max-width:760px){.mfh{padding:48px var(--gut)}.mfh-rail{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.mfh-ep{scroll-snap-align:start}}
+@media (max-width:760px){.mfh{padding:48px var(--gut)}.mfh-rail{grid-auto-columns:72%}}
 </style>
 <link rel="stylesheet" href="footer.css">
 <script type="application/ld+json">
@@ -806,6 +808,7 @@ img.char{object-position:50% 18%}
         <a class="mfh-all" href="minfin.html" data-goatcounter-click="accueil-minfin-tout">Tous les épisodes</a>
       </div>
       <div class="mfh-rail" id="mfh-rail"></div>
+      <p class="mfh-suite" id="mfh-suite" hidden>Faites défiler pour voir les épisodes suivants →</p>
     </div>
   </section>
 
@@ -1453,8 +1456,8 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 (function(){
   var M=window.MINFIN, r=document.getElementById('mfh-rail'); if(!M||!r) return;
   var eps=[]; M.saisons.forEach(function(s){s.episodes.forEach(function(e){if(e.statut==='publie'){e.saison=s.n;eps.push(e);}});});
-  eps=eps.slice(-3).reverse();
   function esc(t){return String(t).replace(/ ([:?!;])/g,'\u00a0$1').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  var sx=document.getElementById('mfh-suite'); if(sx&&eps.length>3) sx.hidden=false;
   r.innerHTML=eps.map(function(e){return '<a class="mfh-ep" href="minfin.html#ep-'+e.saison+'-'+e.n+'" data-goatcounter-click="accueil-minfin-ep'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"><img src="'+esc(e.image)+'" alt="" loading="lazy"><span class="mfh-p" aria-hidden="true"></span><span class="mfh-n">'+e.n+'</span><span class="mfh-t">'+esc(e.titre)+'</span></a>';}).join('');
 })();
 </script>
