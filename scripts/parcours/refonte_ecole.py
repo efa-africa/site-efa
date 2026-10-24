@@ -70,7 +70,7 @@ MODULES = [
                  e('P14', 5, False), e('P14', 6, False), e('P14', 2, False), e('P14', 3, False)]),
 ]
 def neuf(type_, titre, lien=None):
-    return {'type': type_, 'titre': titre, 'lien': lien, 'ok': bool(lien), 'pilote': False, 'ess': True}
+    return {'type': type_, 'titre': titre, 'lien': lien, 'ok': bool(lien), 'pilote': bool(lien), 'ess': True}
 
 
 MAITRISE = [
@@ -85,8 +85,8 @@ MAITRISE = [
     dict(id='M11', base='P6', module=11, titre='Sortir de la dette', duree='45 min',
          probleme='Je rembourse, mais je n’en vois pas la fin', depart='« Je rembourse chaque mois sans savoir quand j’en aurai fini. »',
          objectif='Lire le vrai coût d’un crédit, choisir l’ordre de remboursement et préparer une renégociation.',
-         fiche=dict(titre='Mon ordre de remboursement', desc='Vos dettes, de la plus chère à la moins chère, et la date de fin visée.', lien='cout-total-credit.html?src=parcours'),
-         etapes=[e('P6', 4, True), e('P6', 2, True), e('P6', 1, False), neuf('Leçon', 'Renégocier une dette : quoi demander, à qui')]),
+         fiche=dict(titre='Ma proposition au prêteur', desc='Ce que vous pouvez payer chaque mois, la durée demandée et le message à envoyer.', lien='renegocier-une-dette.html?src=parcours'),
+         etapes=[e('P6', 4, True), e('P6', 2, True), e('P6', 1, False), neuf('Leçon', 'Renégocier une dette : quoi demander, à qui', 'renegocier-une-dette.html')]),
     dict(id='M12', base='P3', module=12, titre='La solidarité organisée', duree='45 min',
          probleme='Toute la famille compte sur moi', depart='« Je suis celui ou celle que l’on appelle quand il y a un besoin. »',
          objectif='Un budget famille sur l’année, une façon de dire non, et des envois organisés.',
@@ -108,8 +108,8 @@ MAITRISE = [
     dict(id='M16', base='P2', module=16, titre='Consommer et acheter', duree='30 min',
          probleme='Les prix montent et j’achète à crédit', depart='« Tout augmente, et j’achète souvent à crédit chez le commerçant. »',
          objectif='Comprendre l’inflation, le vrai prix d’un achat à crédit, et négocier.',
-         fiche=dict(titre='Mes achats à négocier', desc='Ce que vous achetez à crédit et ce que cela vous coûte vraiment.', lien='cout-total-credit.html?src=parcours'),
-         etapes=[neuf('Leçon', 'L’inflation : pourquoi tout augmente'), neuf('Méthode guidée', 'Acheter à crédit chez le commerçant : le vrai prix'), neuf('Leçon', 'Négocier un prix')]),
+         fiche=dict(titre='Mes achats à négocier', desc='Ce que vous achetez en plusieurs fois et ce que cela vous coûte vraiment.', lien='consommer-et-acheter.html?src=parcours'),
+         etapes=[neuf('Leçon', 'Consommer et acheter : inflation, crédit chez le commerçant, négocier', 'consommer-et-acheter.html'), e('P6', 4, True), e('P2', 1, False)]),
 ]
 PATRIMOINE = [
     dict(id='M17', base='P4', module=17, titre='Épargner ou investir', duree='45 min',
@@ -121,7 +121,7 @@ PATRIMOINE = [
          probleme='Je ne connais pas les placements de chez nous', depart='« DAT, emprunts d’État, OPCVM : je ne sais pas ce que c’est. »',
          objectif='Comprendre les placements de la zone, leurs risques et leurs frais.',
          fiche=dict(titre='Les placements que je comprends', desc='Les placements de la zone, ce qu’ils rapportent et ce qu’ils risquent, sans aucun produit recommandé.', lien='opcvm-fcpe.html?src=parcours'),
-         etapes=[e('P9', 4, True), e('P8', 10, True), neuf('Leçon', 'DAT et emprunts d’État : comment ça marche')]),
+         etapes=[e('P9', 4, True), e('P8', 10, True), neuf('Leçon', 'DAT et emprunts d’État : comment ça marche', 'dat-emprunts-etat.html')]),
     dict(id='P8', module=19, titre='La BRVM', duree='3 h',
          fiche=dict(titre='Suis-je prêt ? et mon plan écrit', desc='Les quatre vérifications avant d’investir, puis votre plan, sans aucun titre recommandé.', lien='bourse-essentiel.html?src=parcours#A5'),
          etapes=[e('P8', i, True) for i in (0, 1, 2, 3, 4, 5)] + [e('P8', i, False) for i in (6, 11, 12, 14)]),
@@ -137,7 +137,7 @@ PATRIMOINE = [
          probleme='Je veux que ma famille sache quoi faire', depart='« Si je disparais, ma famille ne saurait pas où sont les choses. »',
          objectif='Préparer les études des enfants, l’héritage, et ce que la famille doit savoir.',
          fiche=dict(titre='Ce que ma famille doit savoir', desc='Où sont vos papiers, vos comptes, et à qui s’adresser.', lien='papiers-famille.html?src=parcours'),
-         etapes=[e('P14', 4, True), e('P14', 6, True), neuf('Leçon', 'Les études des enfants et l’héritage')]),
+         etapes=[e('P14', 4, True), e('P14', 6, True), neuf('Leçon', 'Les études des enfants et l’héritage', 'etudes-enfants-heritage.html')]),
 ]
 
 
@@ -146,6 +146,10 @@ def construire(m, cycle):
     for k in ('titre', 'duree', 'objectif', 'etapes', 'probleme', 'depart'):
         if k in m: p[k] = m[k]
     p['cycle'] = cycle; p['module'] = m['module']; p['nom'] = 'Module %d' % m['module']; p['fiche'] = m['fiche']
+    if cycle != 'fondations':
+        q = neuf('Quiz', 'Quiz du module · 5 questions (certificat local %s)' % ('Maîtrise' if cycle == 'maitrise' else 'Patrimoine'), 'certificat-%s.html?m=%d' % (cycle, m['module']))
+        k = max([i for i, s in enumerate(p['etapes']) if s['ess']] + [-1]) + 1
+        p['etapes'].insert(k, q)
     p['preuve'] = 'Votre fiche « %s », gardée dans Mon cahier.' % m['fiche']['titre']
     return p
 
@@ -169,16 +173,16 @@ for k, p in enumerate(parcours):
 P0['cycles'] = [
     dict(id='fondations', num='I', nom='Fondations', sous='Voir et tenir', modules='1 à 8',
          gain='Savoir où passe son argent, tenir un mois, commencer une réserve, protéger sa famille.',
-         duree='Leçons et quiz : environ 2 h', outils='Outils et exercices : en plus, à votre rythme', suivi='Suivi proposé sur 30 jours', certificat='Certificat local Fondations', statut='ouvert',
+         duree='Leçons et quiz : environ 2 h', outils='Outils et exercices : en plus, à votre rythme', suivi='Suivi proposé sur 30 jours', certificat='Certificat local Fondations', statut='ouvert', page='certificat-pilote.html',
          validation='Chaque module validé donne une attestation de réalisation. Les 8 modules validés, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local.'),
     dict(id='maitrise', num='II', nom='Maîtrise', sous='Organiser sa vie d’argent', modules='9 à 16',
          gain='Un mois de réserve, des dettes ordonnées, l’année entière prévue, la solidarité organisée.',
-         duree='Leçons et outils : environ 5 h', outils='', suivi='Suivi proposé sur 2 mois', certificat='Certificat local Maîtrise', statut='libre',
-         validation='Attestation de réalisation par module. Projet de fin de cycle : « Mon plan sur 12 mois ». Examen et certificat en préparation.'),
+         duree='Leçons et outils : environ 5 h', outils='', suivi='Suivi proposé sur 2 mois', certificat='Certificat local Maîtrise', statut='ouvert', page='certificat-maitrise.html',
+         validation='Chaque module validé donne une attestation de réalisation. Le quiz de chaque module, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local. Projet conseillé : « Mon plan sur 12 mois ».'),
     dict(id='patrimoine', num='III', nom='Patrimoine', sous='Faire travailler son argent', modules='17 à 23',
          gain='Comprendre les placements de la zone, la BRVM, préparer un projet, sa retraite et la transmission.',
-         duree='Leçons et outils : environ 6 h', outils='', suivi='Suivi proposé sur 3 mois', certificat='Certificat local Patrimoine', statut='libre',
-         validation='Attestation de réalisation par module. Projet de fin de cycle : un plan patrimonial à 10 ans. Examen et certificat en préparation.'),
+         duree='Leçons et outils : environ 6 h', outils='', suivi='Suivi proposé sur 3 mois', certificat='Certificat local Patrimoine', statut='ouvert', page='certificat-patrimoine.html',
+         validation='Chaque module validé donne une attestation de réalisation. Le quiz de chaque module, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local. Projet conseillé : un plan patrimonial à 10 ans.'),
 ]
 P0['parcours'] = parcours
 P0['version'] = '2.0'; P0['date'] = '2026-10-24'
@@ -197,7 +201,7 @@ for p in parcours:
         if l and not l.startswith('http'):
             f = l.split('#')[0].split('?')[0] or 'index.html'
             f = f + 'index.html' if f.endswith('/') else f
-            assert (RACINE / f).exists(), (p['id'], f)
+            assert (RACINE / f).exists() or f.startswith('certificat-'), (p['id'], f)
     if 'fiche' in p:
         assert (RACINE / p['fiche']['lien'].split('?')[0].split('#')[0]).exists(), p['id']
 

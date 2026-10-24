@@ -324,7 +324,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l’argent qui tourne, à la <span class="spirale">spirale</span>, l’argent qui reste.</p>
       <span class="surtitre">L’école EFA</span>
       <h1>L’école EFA</h1>
-      <p class="chapo">Trois cycles pour progresser à votre rythme. Le certificat Fondations est ouvert en pilote. Les certificats Maîtrise et Patrimoine sont en préparation.</p>
+      <p class="chapo">Trois cycles pour progresser à votre rythme. Les trois certificats locaux et le certificat CEFA ★ sont ouverts en pilote.</p>
       <div class="choix">
         <a class="ch-b ch-p" href="#P1" data-ouvrir="P1" data-goatcounter-click="ecole-choix-bases"><b>Je veux apprendre les bases</b><span>Commencer le module 1 du cycle Fondations</span></a>
         <a class="ch-b" href="outils.html?src=ecole#parcours" data-goatcounter-click="ecole-choix-question"><b>J’ai une question précise</b><span>Les questions les plus fréquentes et leurs modules</span></a>
@@ -339,7 +339,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
         <li aria-hidden="true" class="r-fl">›</li>
         <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
-        <li class="r-fin"><a href="#certificats"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux · devenir Passeur</small></a></li>
+        <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux · devenir Passeur</small></a></li>
       </ol>
     </div>
   </div>
@@ -389,6 +389,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
         <span class="etiquette">Après les trois certificats locaux</span>
         <h3>Le certificat CEFA ★</h3>
         <p>Fondations, Maîtrise et Patrimoine validés : vous savez tenir votre argent, l’organiser sur l’année et le faire travailler. Le CEFA couvre toute l’école : il réunit vos trois certificats locaux et votre dossier de fiches.</p>
+        <p><a class="bouton bouton-principal" href="certificat-cefa.html" style="margin:4px 0 12px">Où j’en suis pour le CEFA ★</a></p>
         <p><b style="color:#fff">Il ouvre le rôle de Passeur EFA</b> : animer un cercle d’apprentissage dans sa tontine, son entreprise ou sa famille, avec les supports de l’école. Celui qui a appris transmet à son tour.</p>
       </div>
     </div>
@@ -482,7 +483,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
   </div>
 </footer>
 
-<script src="parcours-efa.js?v=2026102505"></script>
+<script src="parcours-efa.js?v=2026102506"></script>
 <script src="parcours-ui.js?v=2026102505"></script>
 <script>
 (function(){
@@ -582,7 +583,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       + '</summary><div class="p-corps">'
       + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
-      + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+(p.cycle==="fondations"?', dont le quiz du module dans le certificat,':'')+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')+'</p>'
+      + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+', dont le quiz du module,'+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')+'</p>'
       + '<ol class="etapes">'+et+'</ol>'
       + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
@@ -608,12 +609,12 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
         + '<span class="fleche" aria-hidden="true">›</span></summary>'
         + '<div class="cy-corps"><div class="liste">'+M.map(carte).join("")+'</div>'
         + '<div class="cy-val"><span class="etiquette" style="color:#8E98AA">'+esc(c.certificat)+'</span><span>'+esc(c.validation)+'</span>'
-        + (c.statut==="ouvert" ? '<a class="bouton bouton-principal" href="certificat-pilote.html">'+(nv>=M.length?"Passer l’examen final":"Découvrir le certificat")+'</a>' : '<b>Certificat à l’ouverture du cycle. Les attestations obtenues d’ici là sont gardées.</b>')
+        + (c.statut==="ouvert" ? '<a class="bouton bouton-principal" href="'+esc(c.page||"certificat-pilote.html")+'">'+(c.id==="fondations"?"Ouvrir le certificat Fondations":"Quiz et examen du certificat "+esc(c.nom))+'</a>' : '<b>Certificat à l’ouverture du cycle.</b>')
         + '</div></div></details>';
     }).join("");
     Object.keys(ouverts).forEach(function(id){ var d=$(id); if(d) d.open=true; });
-    if($("liste-certs")) $("liste-certs").innerHTML = '<article class="cert plein"><span class="etiquette">Pour chaque module</span><h3>L’attestation de réalisation</h3><p>Une attestation de réalisation : les étapes essentielles faites et la fiche du module gardée. Pour Fondations, le quiz de chaque module est évalué dans le certificat.</p></article>'
-      + CY.map(function(c){ var M=D.parcours.filter(function(p){return p.cycle===c.id;}); return '<article class="cert"><span class="etiquette">Cycle '+esc(c.num)+' · '+M.length+' modules</span><h3>'+esc(c.certificat)+'</h3><p>'+esc(c.validation)+'</p>'+(c.statut==="ouvert"?'<a class="lien-souligne" href="certificat-pilote.html">Le pilote est ouvert</a>':'<span class="etiquette">À l’ouverture du cycle</span>')+'</article>'; }).join("");
+    if($("liste-certs")) $("liste-certs").innerHTML = '<article class="cert plein"><span class="etiquette">Pour chaque module</span><h3>L’attestation de réalisation</h3><p>Une attestation de réalisation : les étapes essentielles faites, dont le quiz du module, et la fiche du module gardée.</p></article>'
+      + CY.map(function(c){ var M=D.parcours.filter(function(p){return p.cycle===c.id;}); return '<article class="cert"><span class="etiquette">Cycle '+esc(c.num)+' · '+M.length+' modules</span><h3>'+esc(c.certificat)+'</h3><p>'+esc(c.validation)+'</p>'+(c.statut==="ouvert"?'<a class="lien-souligne" href="'+esc(c.page||"certificat-pilote.html")+'">Ouvert en pilote : y aller</a>':'<span class="etiquette">À l’ouverture du cycle</span>')+'</article>'; }).join("");
     marquerReco();
   }
   function ouvrirModule(id){

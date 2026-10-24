@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+"""Pages des certificats locaux Maîtrise et Patrimoine et du certificat CEFA ★ (pilote, 24/10/2026).
+Questions : scripts/ecole/questions-maitrise.json et questions-patrimoine.json. Moteur : certificat-local.js."""
+import json
+from pathlib import Path
+R = Path(__file__).resolve().parents[2]
+T = (R / 'salaire-fixe-activite.html').read_text(encoding='utf-8')
+HEADER = T[T.index('<header class="top">'):T.index('<main>')]
+FOOTER = T[T.index('<footer class="efa-foot">'):T.index('<script>\nfunction efaCompte')]
+NAVCSS = T[T.index('.top{position:sticky'):T.index('.intro{background:var(--nuit)')]
+V = '2026102506'
+
+CSS = '''
+:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#E2D8C4;--hausse:#3CCB7F;
+--f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--gut:max(16px,env(safe-area-inset-left,0px))}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;margin:0;text-wrap:balance;color:var(--nuit)}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+''' + NAVCSS + '''
+.hero{padding-block:30px 36px;color:#fff;background:HEROBG}
+.hero .crumbs{font-size:13px;opacity:.85}.hero .crumbs a{color:inherit}
+.hero .sur{margin-top:18px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:HEROSUR}
+.hero h1{font-size:clamp(40px,6.9vw,72px);margin-top:10px;color:HEROH}
+.hero p.chapo{margin-top:14px;font-size:clamp(17px,2vw,19px);max-width:36em;color:HEROTXT}
+main{padding-bottom:40px}
+#vue{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+.carte{background:var(--papier);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.carte.ok{background:#E3F5EA}
+.carte h2{font-size:clamp(22px,3vw,30px)}
+.sur{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--corail)}
+.note{font-size:15px;color:var(--ink2);background:var(--creme);border-radius:10px;padding:10px 12px}
+.bt{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);font:800 15.5px/1.2 var(--f-body);cursor:pointer;text-decoration:none}
+.bt-p{background:var(--corail);color:#fff}.bt-l{background:none;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px;padding-inline:4px}
+.bt[disabled]{opacity:.45;cursor:not-allowed}
+.acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.lien{font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px;font-size:15px}
+.mods{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.mods li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;padding:12px 0;border-top:1px solid var(--line);align-items:center}
+.mods .n{font-family:var(--f-display);font-size:22px;color:var(--corail)}
+.mods .t{font-weight:700;color:var(--nuit)}.mods .t em{display:inline-block;margin-left:8px;font-style:normal;font-size:12px;font-weight:800;background:var(--hausse);color:var(--nuit);border-radius:999px;padding:2px 10px}
+.mods .a{grid-column:2;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.mods .a .bt{min-height:40px;padding:8px 14px;font-size:14.5px}
+.barre{height:6px;border-radius:999px;background:var(--creme);overflow:hidden}.barre i{display:block;height:100%;background:var(--corail)}
+.enonce{font-size:clamp(20px,2.6vw,25px);line-height:1.25}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;text-align:left;background:var(--creme);border:0;border-radius:12px;padding:12px 14px;font:400 16.5px/1.4 var(--f-body);color:var(--ink);cursor:pointer;min-height:52px}
+.opt b{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--papier);align-items:center;justify-content:center;font-weight:800;color:var(--nuit)}
+.opt.choisi{background:var(--nuit);color:#fff}.opt.choisi b{background:var(--corail);color:#fff}
+.opt.juste{background:#E3F5EA;color:var(--nuit)}.opt.juste b{background:var(--hausse)}
+.opt.faux{background:#FBE3DD}.opt[disabled]{cursor:default}
+.fb{border-radius:10px;padding:12px 14px;font-size:15.5px}.fb.oui{background:#E3F5EA}.fb.non{background:#FBE3DD}
+#fb{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.ex-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.chrono{font-family:var(--f-display);font-weight:700;font-size:22px;background:var(--nuit);color:#fff;border-radius:8px;padding:4px 12px}
+.pastilles{display:flex;flex-wrap:wrap;gap:5px}
+.pa{width:22px;height:22px;border-radius:6px;border:0;background:var(--line);cursor:pointer;padding:0}.pa.r{background:var(--nuit)}.pa.ici{box-shadow:0 0 0 3px var(--corail)}
+.tab{width:100%;border-collapse:collapse;font-size:15.5px}.tab td{padding:8px 4px;border-bottom:1px solid var(--line)}.tab td:last-child{text-align:right;font-weight:800}
+.champ{display:grid;gap:6px;font-weight:700}.champ input{font:inherit;font-size:18px;padding:12px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit)}
+.etat3{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.etat3 li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;border-radius:12px;padding:14px 16px;color:#fff}
+.etat3 li b{font-family:var(--f-display);font-size:24px}.etat3 li span{font-weight:700}.etat3 em.ok{font-style:normal;font-size:13px;font-weight:800;background:var(--hausse);color:var(--nuit);border-radius:999px;padding:3px 10px}
+.etat3 .c-fondations{background:#E44828}.etat3 .c-maitrise{background:#2188D6}.etat3 .c-patrimoine{background:#FFFDF8;color:var(--nuit);box-shadow:0 1px 0 var(--line)}.etat3 .c-patrimoine b{color:var(--corail)}
+@media (max-width:520px){.etat3 li{grid-template-columns:36px minmax(0,1fr)}.etat3 li>:last-child{grid-column:2}}
+.cert{background:var(--creme);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 18px rgba(11,18,32,.1);color:var(--nuit)}
+.cert-h{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap}
+.cert-h em{margin-left:auto;font-style:normal;background:#F2B84B;color:var(--nuit);border-radius:999px;padding:4px 12px}
+.cert-sur{margin-top:16px;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.cert-t{font-size:clamp(44px,8vw,76px)}.cert-a{color:var(--ink2)}.cert-nom{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,5vw,44px);color:var(--nuit)}
+.cert-txt{color:var(--ink2)}
+.cert-l{list-style:none;padding:0;margin:6px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px;font-size:14.5px;font-weight:700}
+.cert-l b{color:var(--corail);margin-right:8px}
+.cert-b{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px;padding-top:14px;border-top:2px solid var(--line)}
+.cert-b small{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.cert-b b{font-family:var(--f-display);font-size:16px}.cert-b .sig i{display:block;height:2px;background:var(--nuit);margin:22px 0 6px}
+@media (max-width:560px){.cert-b{grid-template-columns:minmax(0,1fr)}.cert-l{grid-template-columns:minmax(0,1fr)}}
+.cert-p{font-size:13px;color:var(--ink3);margin-top:8px}.cert-p .ce{color:#EC6243}.cert-p .sp{color:var(--bleu)}
+.cert.cert-cefa{background:var(--nuit);color:#fff}.cert-cefa .cert-t,.cert-cefa .cert-nom{color:#fff}.cert-cefa .cert-sur{color:var(--soft-corail)}.cert-cefa .cert-a,.cert-cefa .cert-txt,.cert-cefa .cert-p{color:#C9D1DE}
+.cert-cefa .cert-txt b{color:#fff}.cert-cefa .cert-b{border-color:#1F2C45}.cert-cefa .cert-b b{color:#fff}.cert-cefa .sig i{background:#fff}.cert-cefa .cert-l b{color:var(--soft-corail)}
+.cert-maitrise .cert-sur,.cert-maitrise .cert-l b{color:var(--bleu)}
+.cert-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+#apercu img{max-width:100%;border-radius:10px;margin-top:10px}
+.mention{font-size:13.5px;color:var(--ink3);margin-top:28px}
+@media print{header,footer,.cert-acts,#apercu,.hero,.mention,.efa-suite{display:none!important}.cert{box-shadow:none}}
+'''
+
+def page(slug, cycle, titre, sur, chapo, bg, h, txt, surc, data_js, crumb):
+    css = CSS.replace('HEROBG', bg).replace('HEROH', h).replace('HEROTXT', txt).replace('HEROSUR', surc)
+    html = f'''<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>{titre} · EFA</title>
+<meta name="description" content="{chapo} Pilote réalisé avec l’aide de l’intelligence artificielle, vérifié par l’équipe EFA.">
+<link rel="canonical" href="https://efa.africa/{slug}.html">
+<meta property="og:title" content="{titre}">
+<meta property="og:description" content="{chapo}">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css">
+<style>{css}</style>
+</head>
+<body data-cycle="{cycle}">
+{HEADER}<main>
+<section class="hero"><div class="wrap">
+  <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="parcours.html#{crumb}">L’école</a> › {titre}</nav>
+  <p class="sur">{sur}</p>
+  <h1>{titre}</h1>
+  <p class="chapo">{chapo}</p>
+</div></section>
+<div class="wrap">
+  <div id="vue" aria-live="polite"></div>
+  <p class="mention">Certificat pilote d’EFA, l’école de la finance personnelle&nbsp;: il atteste ce que vous avez appris à l’école EFA, ce n’est pas un diplôme d’État. Questions rédigées avec l’aide de l’intelligence artificielle, vérifiées par l’équipe EFA&nbsp;; relecture pédagogique en cours. Votre progression reste dans ce navigateur. Éducation financière, pas conseil en placement.</p>
+</div>
+</main>
+{FOOTER}<script>(function(){{var b=document.getElementById('menu'),n=document.getElementById('nav');b.addEventListener('click',function(){{var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';}});}})();</script>
+<script src="parcours-efa.js?v={V}"></script>
+{data_js}<script src="certificat-local.js?v={V}"></script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v={V}" defer></script>
+</body>
+</html>
+'''
+    (R / (slug + '.html')).write_text(html, encoding='utf-8')
+
+def donnees(nom, num, accent):
+    Q = json.load(open(R / 'scripts/ecole' / ('questions-%s.json' % nom), encoding='utf-8'))
+    for m in Q:
+        assert len(m['questions']) >= 5, m['num']
+        for q in m['questions']: assert len(q['o']) == 3 and q['b'] in (0, 1, 2) and q['e'] and q['x'], q
+    d = {'num': num, 'accent': accent, 'modules': Q}
+    return '<script>window.EFA_CERTIF=' + json.dumps(d, ensure_ascii=False) + ';</script>\n', sum(len(m['questions']) for m in Q)
+
+dm, nm = donnees('maitrise', 'II', '#2188D6')
+page('certificat-maitrise', 'maitrise', 'Certificat local Maîtrise', 'Cycle II · Certificat local · Pilote',
+     'Les quiz des 8 modules du cycle Maîtrise, puis l’examen final : 24 questions, 30 minutes, 17 bonnes réponses pour réussir.',
+     '#2188D6', '#fff', '#fff', '#fff', dm, 'cycle-maitrise')
+dp, np_ = donnees('patrimoine', 'III', '#E44828')
+page('certificat-patrimoine', 'patrimoine', 'Certificat local Patrimoine', 'Cycle III · Certificat local · Pilote',
+     'Les quiz des 7 modules du cycle Patrimoine, puis l’examen final : 24 questions, 30 minutes, 17 bonnes réponses pour réussir.',
+     '#FFFDF8', '#0B1220', '#4E5566', '#E44828', dp, 'cycle-patrimoine')
+page('certificat-cefa', 'cefa', 'Certificat CEFA ★', 'Le certificat EFA complet · Pilote',
+     'Les trois certificats locaux, Fondations, Maîtrise et Patrimoine, réunis : toute l’école EFA. Il ouvre le rôle de Passeur EFA.',
+     '#0B1220', '#fff', '#C9D1DE', '#F09680', '', 'certificats')
+print('questions', nm, np_)
