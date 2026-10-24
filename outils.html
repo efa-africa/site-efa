@@ -255,6 +255,17 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 @media (max-width:860px){.cote-parc{grid-template-columns:minmax(0,1fr)}}
 .cote-parc>div{display:flex;flex-direction:column;gap:10px;min-width:0}
 .cote-t{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.creuse-tete{grid-column:1/-1;margin-top:8px}
+.creuse-intro{margin:4px 0 0;font-size:15px;color:var(--ink2,#4E5566)}
+.creuse-liste{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
+.creuse{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:center;background:var(--papier,#FFFDF8);border-radius:12px;padding:14px 18px}
+@media (max-width:640px){.creuse{grid-template-columns:minmax(0,1fr)}}
+.creuse-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.creuse-t q{font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--nuit,#0B1220);quotes:"«\00a0" "\00a0»"}
+.creuse-t b{font-size:14px;color:var(--corail,#E44828)}
+.creuse-t span{font-size:14.5px;color:var(--ink2,#4E5566)}
+.creuse-a{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.lnk-p{font-size:13.5px;font-weight:700;color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
 .cote-pied{margin:18px 0 0;font-weight:700}.cote-pied a{color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
 .plan-renvoi{margin:0 0 16px;padding:12px 16px;border-radius:10px;background:var(--nuit,#0B1220);color:#E8EDF5;font-weight:600}.plan-renvoi a{color:#fff}
 .parc-band{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 18px;border-radius:12px;background:#16213A;color:#E8EDF5;text-decoration:none;font-size:16px;line-height:1.35;max-width:760px}
@@ -607,12 +618,37 @@ var OUTILS = [
   /* ---------- Cartes d'outils (Diagnostic) et parcours pratiques ---------- */
   var prix=function(o){return o.prix>0?esc(o.prix.toLocaleString("fr-FR"))+" FCFA ("+esc(o.devise)+")":"Gratuit";};
   var carte=function(o){
-    return '<article class="tool" id="'+esc(o.id)+'"><span class="tag">'+esc(o.theme)+' · '+(o.prix>0?prix(o):"Gratuit")+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.benefice)+'</p>'+
+    return '<article class="tool" id="'+esc(o.id==="diagnostic"?"diag-complet":o.id)+'"><span class="tag">'+esc(o.theme)+' · '+(o.prix>0?prix(o):"Gratuit")+'</span><h2>'+esc(o.titre)+'</h2><p class="q">'+esc(o.benefice)+'</p>'+
       '<p class="eff"><b>Ce qu’il vous faut</b> '+esc(o.effort)+'</p>'+
       '<a class="btn '+(o.principal?'btn-main':'btn-dark')+'" href="'+esc(o.url)+'" data-goatcounter-click="outils-'+esc(o.id)+'">'+esc(o.bouton)+'</a>'+
       '<details class="how-t"><summary>Comment fonctionne cet outil&nbsp;?</summary><dl><dt>Objectif</dt><dd>'+esc(o.objectif)+'</dd><dt>Accès</dt><dd>'+prix(o)+' · '+esc(o.acces)+'</dd><dt>Il vous faut</dt><dd>'+esc(o.infos)+'</dd><dt>Méthode</dt><dd>Version '+esc(o.version_methode)+'</dd></dl>'+(o.note?'<p class="note">'+esc(o.note)+'</p>':'')+'</details></article>';
   };
-  document.getElementById("diag-cards").innerHTML=OUTILS.filter(function(o){return o.famille==="point";}).map(carte).join("");
+  /* Onglet Diagnostic : creuser, problème par problème, en lien avec les parcours */
+  var CREUSER=[
+    ["P1","Où est passé mon argent ?","Cinq questions, puis vos chiffres si vous voulez.","ou-est-passe-mon-argent.html?parcours=P1","Identifier mes pistes"],
+    ["P2","Construire son budget","La méthode qui tient avec vos revenus, même irréguliers.","construire-son-budget.html?parcours=P2","Construire mon budget"],
+    ["P3","Prêter à un proche","Une situation, une méthode, puis votre réponse prête à envoyer.","preter-a-un-proche.html?parcours=P3","Préparer ma réponse"],
+    ["P4","Combien garder à chaque rentrée ?","Ce que devient une petite part gardée, rentrée après rentrée.","cercle-spirale.html?parcours=P4#argent","Faire le calcul"],
+    ["P5","Ma tontine, tour par tour","Ce que votre groupe garderait avec une réserve commune.","cercle-spirale.html?parcours=P5#groupe","Simuler avec mon groupe"],
+    ["P6","Mes dettes, une par une","La fiche 3 du guide gratuit : classer vos dettes par coût.","index.html#guide","Recevoir le guide"],
+    ["P7","Avant de recevoir une grosse somme","Décider de sa répartition avant qu’elle arrive.","#plan/grosse-somme","Préparer ma répartition"],
+    ["P8","Suis-je prêt à investir ?","Quatre vérifications avant le moindre franc en Bourse.","premiers-pas-brvm.html?parcours=P8","Vérifier"],
+    ["P9","Préparer ma retraite","Six questions, puis une estimation et un plan.","preparer-ma-retraite.html?parcours=P9","Faire le point"],
+    ["P10","Mes frais de mobile money","Une semaine d’envois et de frais, mesurée.","budget-mobile-money.html?parcours=P10","Mesurer mes frais"]
+  ];
+  (function(){
+    var DP=window.EFA_PARCOURS, PB={}; if(DP) DP.parcours.forEach(function(p){ PB[p.id]=p; });
+    var diag=OUTILS.filter(function(o){return o.id==="diagnostic";})[0];
+    var lignes=CREUSER.map(function(c){
+      var p=PB[c[0]]||{probleme:"",titre:""};
+      return '<article class="creuse"><div class="creuse-t"><q>'+esc(p.probleme)+'</q><b>'+esc(c[1])+'</b><span>'+esc(c[2])+'</span></div>'+
+        '<div class="creuse-a"><a class="btn btn-dark" href="'+esc(c[3])+'" data-goatcounter-click="creuser-'+c[0]+'">'+esc(c[4])+'</a><a class="lnk-p" href="parcours.html#'+c[0]+'">Parcours '+c[0].slice(1)+' · '+esc(p.titre)+'</a></div></article>';
+    }).join("");
+    document.getElementById("diag-cards").innerHTML=
+      '<div class="creuse-tete"><p class="cote-t">Le point complet</p></div>'+(diag?carte(diag):"")+
+      '<div class="creuse-tete"><p class="cote-t">Creuser un problème précis</p><p class="creuse-intro">Chaque outil approfondit un problème et fait partie de son parcours.</p></div>'+
+      '<div class="creuse-liste">'+lignes+'</div>';
+  })();
 
   /* ---------- Plan d'action ---------- */
   var $plan=document.getElementById("plan-vue");
@@ -628,7 +664,7 @@ var OUTILS = [
   function bandeauDiag(c){
     if(!c||!c.pistes||!c.pistes.liste.length) return "";
     var sj=E.PISTES[c.pistes.liste[0].id], s=sj&&E.sujet(sj.sujet);
-    return '<div class="diag-b"><p class="k">D’après votre diagnostic du '+esc(dateCourte(c.pistes.date))+'</p><ul>'+c.pistes.liste.map(function(p){return '<li>'+esc(p.titre)+'</li>';}).join("")+'</ul>'+(s?'<p><a href="#plan/'+esc(s.slug)+'">Voir mon plan d’action</a> · <a href="#cahier">Ouvrir mon cahier</a></p>':'')+'</div>';
+    return '<div class="diag-b"><p class="k">D’après votre diagnostic du '+esc(dateCourte(c.pistes.date))+'</p><ul>'+c.pistes.liste.map(function(p){return '<li>'+esc(p.titre)+'</li>';}).join("")+'</ul>'+(s?'<p><a href="parcours.html#'+({"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"}[s.slug]||"P1")+'">Voir mon parcours</a> · <a href="#cahier">Ouvrir mon cahier</a></p>':'')+'</div>';
   }
   function vueModule(k,ouvert){
     var M=E.MODULES[k]; if(!M) return "";
