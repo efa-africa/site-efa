@@ -467,6 +467,11 @@ a.st-card{text-decoration:none}
 .bx-nl-m{margin:0;font-size:14px;color:var(--ink)}
 .bx-nl-n{margin:0;font-size:12.5px;color:var(--mute)}
 .bx-nl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.bx-nl-top{margin-top:18px;padding:18px 20px}
+.bx-nl-txt,.bx-nl-act{display:grid;gap:8px;min-width:0}
+.bx-nl-top h2{font-size:clamp(22px,2.6vw,28px)}
+@media (max-width:560px){.bx-nl-top .bx-nl-p{display:none}}
+@media (min-width:900px){.bx-nl-top{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:center}}
 .bx-src a,.bx-in a{color:var(--ink2)}
 .bx-mini{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0}
 .bx-mini th,.bx-mini td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line)}
@@ -705,6 +710,24 @@ a.st-card{text-decoration:none}
       <p class="kick">La BRVM expliquée par EFA</p>
       <h1>La BRVM en une séance</h1>
       <p class="bx-lede">Les chiffres de la dernière séance d’abord. À droite, de quoi les comprendre avant d’investir. Vous débutez&nbsp;? <a class="bx-pp" href="premiers-pas-brvm.html?src=brvm">Premiers pas à la BRVM&nbsp;: 10 choses à savoir →</a></p>
+
+        <section class="bx-nl bx-nl-top" id="brvm-bulletin" aria-labelledby="bx-nl-t" hidden>
+          <div class="bx-nl-txt">
+          <p class="bx-nl-k">Bulletin gratuit · chaque dimanche</p>
+          <h2 id="bx-nl-t">La semaine à la BRVM</h2>
+          <p class="bx-nl-p">Les indices, les plus fortes hausses et baisses, les titres les plus échangés&nbsp;: la semaine expliquée simplement, dans votre boîte mail.</p>
+          </div>
+          <div class="bx-nl-act">
+          <form id="bx-nl-f" novalidate>
+            <label class="bx-nl-sr" for="bx-nl-e">Votre adresse email</label>
+            <div class="bx-nl-row"><input id="bx-nl-e" type="email" autocomplete="email" placeholder="Votre adresse email" required><button type="submit">Je m’inscris</button></div>
+            <label class="bx-nl-ok"><input id="bx-nl-c" type="checkbox"><span>J’accepte de recevoir le bulletin. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
+            <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+            <p class="bx-nl-m" id="bx-nl-m" aria-live="polite"></p>
+          </form>
+          <p class="bx-nl-n">Contenu pédagogique, ne constitue pas un conseil en investissement.</p>
+        </div>
+        </section>
     </div>
     <div class="wrap bxl">
       <div class="bx-main">
@@ -721,19 +744,6 @@ a.st-card{text-decoration:none}
         </form>
         <div class="grid" id="grid-brvm"></div>
         <p class="bx-src">Cours de clôture relevés après chaque séance, pas des cours en direct. Une variation d’un jour ne dit rien de la santé d’une entreprise.</p>
-        <section class="bx-nl" id="brvm-bulletin" aria-labelledby="bx-nl-t" hidden>
-          <p class="bx-nl-k">Bulletin gratuit · chaque dimanche</p>
-          <h2 id="bx-nl-t">La semaine à la BRVM</h2>
-          <p class="bx-nl-p">Les indices, les plus fortes hausses et baisses, les titres les plus échangés&nbsp;: la semaine expliquée simplement, dans votre boîte mail.</p>
-          <form id="bx-nl-f" novalidate>
-            <label class="bx-nl-sr" for="bx-nl-e">Votre adresse email</label>
-            <div class="bx-nl-row"><input id="bx-nl-e" type="email" autocomplete="email" placeholder="Votre adresse email" required><button type="submit">Je m’inscris</button></div>
-            <label class="bx-nl-ok"><input id="bx-nl-c" type="checkbox"><span>J’accepte de recevoir le bulletin. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
-            <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-            <p class="bx-nl-m" id="bx-nl-m" aria-live="polite"></p>
-          </form>
-          <p class="bx-nl-n">Contenu pédagogique, ne constitue pas un conseil en investissement.</p>
-        </section>
       </div>
       <aside class="bx-side" aria-label="Comprendre la BRVM">
         <section class="bx-mots" aria-labelledby="bx-mots-t">
