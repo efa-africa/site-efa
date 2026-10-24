@@ -27,7 +27,7 @@ window.MINFIN = {
   ],
   personnages: [
     {nom: "Koffi", image: "koffi.jpg", role: "Salarié à Abidjan, l'aîné de la famille. Il cotise en tontine et soutient tout le monde."},
-    {nom: "Tonton Bamba", image: "koffi.jpg", role: "Son mentor. C'est lui qui donne la règle, toujours en une phrase."},
+    {nom: "Tonton Bamba", image: "app/bamba.jpg", role: "Son mentor. C'est lui qui donne la règle, toujours en une phrase."},
     {nom: "Tantie Affoué", image: "app/affoue.jpg", role: "Sa tante, commerçante à Abobo. Vingt ans de tontines, jamais une cotisation ratée."}
   ]
 };
