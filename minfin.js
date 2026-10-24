@@ -16,7 +16,7 @@ window.MINFIN = {
       titre: "Le million de Koffi",
       resume: "Koffi est salarié à Abidjan. Il gagne bien sa vie, soutient sa famille, cotise en tontine… et ne sait jamais où passe son argent. Une saison pour comprendre pourquoi l'argent tourne sans rester.",
       episodes: [
-        {n: 1, titre: "Où est passé votre argent ?", notion: "L'argent qui file sans qu'on sache où", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube:youtube: "TLPBoOPa5L0", tiktok: ""},
+        {n: 1, titre: "Où est passé votre argent ?", notion: "L'argent qui file sans qu'on sache où", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube: "TLPBoOPa5L0", tiktok: ""},
         {n: 2, titre: "+200 000 FCFA de salaire. Toujours rien ?", notion: "Quand le train de vie monte aussi vite que le salaire", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube: "", tiktok: ""},
         {n: 3, titre: "Prêter à un proche : prêt ou cadeau ?", notion: "Ce que coûte vraiment un prêt dans la famille", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube: "", tiktok: ""},
         {n: 4, titre: "1 000 000 de tontine. Trois semaines plus tard ?", notion: "Le tour n'est pas un gain : c'est votre argent, plus une avance du groupe", image: "app/bamba.jpg", duree: "54 s", statut: "bientot", youtube: "", tiktok: ""},
