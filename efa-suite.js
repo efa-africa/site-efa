@@ -63,7 +63,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102404"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102405"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -135,7 +135,7 @@
     // Page hors parcours : proposer d'en choisir un
     if (!candidats.length) {
       placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
-        + '<p>Onze parcours gratuits partent de votre situation et s’arrêtent sur un résultat concret : un budget qui tient, une réserve, une tontine décidée.</p></div>'
+        + '<p>Treize parcours gratuits partent de votre situation et s’arrêtent sur un résultat concret : un budget qui tient, une réserve, une tontine décidée.</p></div>'
         + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Choisir mon parcours</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
       return;
     }
