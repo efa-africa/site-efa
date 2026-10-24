@@ -135,7 +135,7 @@
     // Page hors parcours : proposer d'en choisir un
     if (!candidats.length) {
       placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
-        + '<p>Treize parcours gratuits partent de votre situation et s’arrêtent sur un résultat concret : un budget qui tient, une réserve, une tontine décidée.</p></div>'
+        + '<p>Quatorze parcours gratuits partent de votre situation et s’arrêtent sur un résultat concret : un budget qui tient, une réserve, une tontine décidée.</p></div>'
         + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Choisir mon parcours</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
       return;
     }

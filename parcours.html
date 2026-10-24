@@ -8,12 +8,12 @@
 <meta name="theme-color" content="#0B1220">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <title>Parcours d’apprentissage : gérer son argent pas à pas · EFA</title>
-<meta name="description" content="Treize parcours gratuits d’éducation financière, du budget à la tontine, de la réserve de sécurité à la BRVM. Chacun part de votre situation et s’arrête sur un résultat concret.">
+<meta name="description" content="Quatorze parcours gratuits d’éducation financière, du budget à la tontine, de la réserve de sécurité à la BRVM. Chacun part de votre situation et s’arrête sur un résultat concret.">
 <link rel="canonical" href="https://efa.africa/parcours.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="Mes parcours · EFA">
-<meta property="og:description" content="Partez de votre situation, arrivez à un résultat concret. Treize parcours gratuits, avec Koffi, Tonton Bamba et Tantie Affoué.">
+<meta property="og:description" content="Partez de votre situation, arrivez à un résultat concret. Quatorze parcours gratuits, avec Koffi, Tonton Bamba et Tantie Affoué.">
 <meta property="og:url" content="https://efa.africa/parcours.html">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -128,6 +128,7 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
 .pill{font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:3px 10px;border-radius:var(--r-pastille);white-space:nowrap}
 .pill.bientot{background:var(--line);color:var(--ink2)}
 .pill.pilote{background:var(--bleu);color:#fff}
+.pill.dispo{background:#E3F5EA;color:#1D6B43}
 .pill.fait{background:var(--hausse);color:var(--nuit)}
 .tags-profils{display:flex;flex-wrap:wrap;gap:8px}
 .tp{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;flex-direction:column;gap:2px;background:var(--papier);border-radius:12px;padding:10px 16px;min-height:44px;font-family:var(--f-body)}
@@ -196,21 +197,18 @@ details.plus[open]>summary::before{content:"− "}
       <h1>Qu’est-ce qui vous préoccupe ?</h1>
       <p class="chapo">Choisissez votre problème : un parcours vous guide, étape par étape, jusqu’à un résultat concret avec votre propre argent.</p>
       <div class="acts">
-        <a class="lien-souligne" href="#questions">Je ne sais pas : 3 questions</a>
+        <a class="lien-souligne" href="#questions" data-quiz>Je ne sais pas : m’aider à choisir en 3 questions</a>
       </div>
     </div>
   </div>
 
   <section class="bloc col" id="problemes" aria-labelledby="t-pb">
     <div class="intro">
-      <span class="surtitre">Mon parcours</span>
-      <h2 class="titre-section" id="t-pb">Je connais mon problème, ou je me pose des questions</h2>
-      <p>Touchez la phrase qui décrit votre situation. Vous hésitez ? Répondez aux trois questions à côté.</p>
+      <span class="surtitre">Mes questions</span>
+      <h2 class="titre-section" id="t-pb">Partez de la question que vous vous posez</h2>
+      <p>Touchez la question qui vous ressemble : elle vous mène au parcours qui y répond. Vous hésitez ? Trois questions suffisent pour choisir.</p>
     </div>
-    <div class="cote">
-      <div id="liste-problemes"></div>
-      <div id="questions"><form id="quiz"></form><div id="quiz-res" role="status" hidden></div></div>
-    </div>
+    <div id="questions"></div>
     <p class="conseil" id="conseil" hidden></p>
   </section>
 
@@ -226,8 +224,8 @@ details.plus[open]>summary::before{content:"− "}
   <section class="bloc col" id="tous" aria-labelledby="t-tous">
     <div class="intro">
       <span class="surtitre">Les parcours</span>
-      <h2 class="titre-section" id="t-tous">Treize parcours, du budget à la maison</h2>
-      <p>Cochez chaque étape faite : votre progression reste sur ce téléphone, rien n’est envoyé à EFA. Les étapes marquées « Bientôt » sont en préparation.</p>
+      <h2 class="titre-section" id="t-tous">Quatorze parcours, du budget à la protection de la famille</h2>
+      <p>Cochez chaque étape faite : votre progression reste sur ce téléphone, rien n’est envoyé à EFA. Chaque étape indique si elle est disponible ou en préparation.</p>
     </div>
     <div class="liste" id="liste-parcours"></div>
   </section>
@@ -269,7 +267,7 @@ details.plus[open]>summary::before{content:"− "}
       <nav class="ef-cols" aria-label="Plan du site">
         <div><h2>Agir</h2><ul>
           <li><a href="parcours.html">Mes parcours</a></li>
-          <li><a href="outils.html#diagnostic">Diagnostic</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
           <li><a href="outils.html#cahier">Mon cahier</a></li>
           <li><a href="outils.html#dico">Dico pratique</a></li>
           <li><a href="cercle-spirale.html">Cercle &amp; Spirale</a></li>
@@ -311,8 +309,8 @@ details.plus[open]>summary::before{content:"− "}
   </div>
 </footer>
 
-<script src="parcours-efa.js?v=2026102405"></script>
-<script src="parcours-ui.js?v=2026102402"></script>
+<script src="parcours-efa.js?v=2026102501"></script>
+<script src="parcours-ui.js?v=2026102501"></script>
 <script>
 (function(){
   "use strict";
@@ -343,7 +341,11 @@ details.plus[open]>summary::before{content:"− "}
 
   // Problèmes et trois questions (parcours-ui.js)
   function ouvrir(id){ var d=$(id); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+id);}catch(x){} } }
-  EFAParcoursUI.problemes($("liste-problemes"), {choisir: ouvrir});
+  var QS = EFAParcoursUI.questions($("questions"), {choisir: ouvrir, lien: function(id){ return "#"+id; }, pied: false, quiz: {
+    lien: function(id){ return "#"+id; },
+    ouvrir: ouvrir,
+    resultat: function(L){ recommander(L, "D’après vos réponses", false); }
+  }});
   // Profils : une conséquence du diagnostic, pas une porte d'entrée
   var PARP = {};
   D.profils.forEach(function(x){ x.parcours.forEach(function(id){ (PARP[id]=PARP[id]||[]).push(x.nom); }); });
@@ -361,11 +363,6 @@ details.plus[open]>summary::before{content:"− "}
     mesure("parcours-profil-"+x.id);
   });
 
-  EFAParcoursUI.quiz($("quiz"), $("quiz-res"), {
-    lien: function(id){ return "#"+id; },
-    ouvrir: ouvrir,
-    resultat: function(L){ recommander(L, "D’après vos réponses", false); }
-  });
 
   // Parcours
   function progression(p){
@@ -378,7 +375,7 @@ details.plus[open]>summary::before{content:"− "}
     function ligne(s,i){
       var k = p.id+"."+i, fait = !!etat.faits[k], href = lienEtape(s,p.id), ext = href && /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : "";
       var nom = s.ok && href ? '<a href="'+esc(href)+'"'+ext+'>'+esc(s.titre)+'</a>' : esc(s.titre);
-      var pill = !s.ok ? '<span class="pill bientot">Bientôt</span>' : fait ? '<span class="pill fait">Fait</span>' : s.pilote ? '<span class="pill pilote">Pilote</span>' : '';
+      var pill = !s.ok ? '<span class="pill bientot">En préparation</span>' : fait ? '<span class="pill fait">Fait</span>' : s.pilote ? '<span class="pill pilote">Pilote</span>' : '<span class="pill dispo">Disponible</span>';
       return '<li class="'+(fait?"fait":"")+'"><input type="checkbox" aria-label="J’ai fait cette étape : '+esc(s.titre)+'" data-k="'+k+'" '+(fait?"checked":"")+' '+(s.ok?"":"disabled")+'><span class="e-txt"><span class="e-type">'+esc(s.type)+'</span><span class="e-nom">'+nom+'</span></span>'+pill+'</li>';
     }
     var ess = [], plus = [];
@@ -430,7 +427,7 @@ details.plus[open]>summary::before{content:"− "}
     if(defiler){ var d=$(L[0]); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); } }
   }
   document.addEventListener("click",function(e){
-    if(e.target.closest && e.target.closest("[data-quiz]")){ e.preventDefault(); $("questions").scrollIntoView({behavior:"smooth",block:"start"}); }
+    if(e.target.closest && e.target.closest("[data-quiz]")){ e.preventDefault(); if(QS) QS.quiz(); }
   });
 
   document.addEventListener("click",function(e){
@@ -459,6 +456,6 @@ details.plus[open]>summary::before{content:"− "}
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102301" defer></script>
+<script src="efa-appli.js?v=2026102501" defer></script>
 </body>
 </html>
