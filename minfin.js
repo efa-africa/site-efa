@@ -19,15 +19,15 @@ window.MINFIN = {
         {n: 1, titre: "Où est passé votre argent ?", notion: "L'argent qui file sans qu'on sache où", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube: "TLPBoOPa5L0", tiktok: ""},
         {n: 2, titre: "+200 000 FCFA de salaire. Toujours rien ?", notion: "Quand le train de vie monte aussi vite que le salaire", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube: "MqusG9AAdCI", tiktok: ""},
         {n: 3, titre: "Prêter à un proche : prêt ou cadeau ?", notion: "Ce que coûte vraiment un prêt dans la famille", image: "koffi.jpg", duree: "1 min", statut: "publie", youtube: "vtK09o9n_1M", tiktok: ""},
-        {n: 4, titre: "1 000 000 de tontine. Trois semaines plus tard ?", notion: "Le tour n'est pas un gain : c'est votre argent, plus une avance du groupe", image: "app/bamba.jpg", duree: "54 s", statut: "publie", youtube: "w34pG9APpIQ", tiktok: ""},
+        {n: 4, titre: "1 000 000 de tontine. Trois semaines plus tard ?", notion: "Le tour n'est pas un gain : c'est votre argent, plus une avance du groupe", image: "koffi.jpg", duree: "54 s", statut: "publie", youtube: "w34pG9APpIQ", tiktok: ""},
         {n: 5, titre: "Un proche vous demande 50 000. Vous dites oui ?", notion: "Regarder ce qui est déjà engagé avant de dire oui", image: "koffi.jpg", duree: "1 min 28", statut: "publie", youtube: "oNh-TwxnGTE", tiktok: ""},
-        {n: 6, titre: "Emprunter pour cotiser ?", notion: "Recevoir le tour n'efface pas la dette", image: "app/bamba.jpg", duree: "46 s", statut: "reserve", youtube: "", tiktok: ""}
+        {n: 6, titre: "Emprunter pour cotiser ?", notion: "Recevoir le tour n'efface pas la dette", image: "koffi.jpg", duree: "46 s", statut: "reserve", youtube: "", tiktok: ""}
       ]
     }
   ],
   personnages: [
     {nom: "Koffi", image: "koffi.jpg", role: "Salarié à Abidjan, l'aîné de la famille. Il cotise en tontine et soutient tout le monde."},
-    {nom: "Tonton Bamba", image: "app/bamba.jpg", role: "Son mentor. C'est lui qui donne la règle, toujours en une phrase."},
+    {nom: "Tonton Bamba", image: "koffi.jpg", role: "Son mentor. C'est lui qui donne la règle, toujours en une phrase."},
     {nom: "Tantie Affoué", image: "app/affoue.jpg", role: "Sa tante, commerçante à Abobo. Vingt ans de tontines, jamais une cotisation ratée."}
   ]
 };
