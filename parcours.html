@@ -194,23 +194,15 @@ details.plus[open]>summary::before{content:"− "}
     <div class="col">
       <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l’argent qui tourne, à la <span class="spirale">spirale</span>, l’argent qui reste.</p>
       <span class="surtitre">Mes parcours</span>
-      <h1>Qu’est-ce qui vous préoccupe ?</h1>
-      <p class="chapo">Choisissez votre problème : un parcours vous guide, étape par étape, jusqu’à un résultat concret avec votre propre argent.</p>
+      <h1>Mes parcours</h1>
+      <p class="chapo">Chaque parcours vous guide, étape par étape, jusqu’à un résultat concret avec votre propre argent.</p>
       <div class="acts">
-        <a class="lien-souligne" href="#questions" data-quiz>Je ne sais pas : m’aider à choisir en 3 questions</a>
+        <a class="lien-souligne" href="outils.html#parcours">Vous partez d’une question ? Toutes les questions sont dans Mes outils</a>
       </div>
     </div>
   </div>
 
-  <section class="bloc col" id="problemes" aria-labelledby="t-pb">
-    <div class="intro">
-      <span class="surtitre">Mes questions</span>
-      <h2 class="titre-section" id="t-pb">Partez de la question que vous vous posez</h2>
-      <p>Touchez la question qui vous ressemble : elle vous mène au parcours qui y répond. Vous hésitez ? Trois questions suffisent pour choisir.</p>
-    </div>
-    <div id="questions"></div>
-    <p class="conseil" id="conseil" hidden></p>
-  </section>
+  <p class="conseil col" id="conseil" hidden></p>
 
   <section class="bloc col" id="profil" aria-labelledby="t-profil">
     <div class="intro">
@@ -330,7 +322,7 @@ details.plus[open]>summary::before{content:"− "}
 
   // Problèmes et trois questions (parcours-ui.js)
   function ouvrir(id){ var d=$(id); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+id);}catch(x){} } }
-  var QS = EFAParcoursUI.questions($("questions"), {choisir: ouvrir, lien: function(id){ return "#"+id; }, pied: false, quiz: {
+  var QS = !$("questions") ? null : EFAParcoursUI.questions($("questions"), {choisir: ouvrir, lien: function(id){ return "#"+id; }, pied: false, quiz: {
     lien: function(id){ return "#"+id; },
     ouvrir: ouvrir,
     resultat: function(L){ recommander(L, "D’après vos réponses", false); }
