@@ -63,7 +63,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102403"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102404"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -149,21 +149,22 @@
     var dernier = ici[ici.length - 1];
     var suivante = null, iSuiv = -1;
     for (var i = dernier + 1; i < p.etapes.length; i++) { if (p.etapes[i].ok && p.etapes[i].lien) { suivante = p.etapes[i]; iSuiv = i; break; } }
-    var dispo = p.etapes.filter(function (s) { return s.ok; }).length;
-    function nbFaits() { var n = 0; p.etapes.forEach(function (s, k) { if (s.ok && etat.faits[p.id + "." + k]) n++; }); return n; }
+    var dispo = p.etapes.filter(function (s) { return s.ok && s.ess; }).length;
+    var nbEss = p.etapes.filter(function (s) { return s.ess; }).length;
+    function nbFaits() { var n = 0; p.etapes.forEach(function (s, k) { if (s.ok && s.ess && etat.faits[p.id + "." + k]) n++; }); return n; }
     var faitIci = ici.every(function (k) { return etat.faits[p.id + "." + k]; });
     var rang = ici[0] + 1;
 
     var gauche = '<div><span class="es-sur">' + esc(nomCourt(p.id)) + " · " + esc(p.titre) + "</span>";
     if (suivante) {
       gauche += '<h2>Étape suivante : ' + esc(suivante.titre) + "</h2>"
-        + "<p>Vous êtes à l’étape " + rang + " sur " + p.etapes.length + ". À l’arrivée : " + esc(p.objectif.charAt(0).toLowerCase() + p.objectif.slice(1)) + "</p>";
+        + "<p>" + (p.etapes[ici[0]].ess ? "Vous êtes à l’étape " + rang + " sur " + nbEss + "." : "Une ressource pour aller plus loin.") + " À l’arrivée : " + esc(p.objectif.charAt(0).toLowerCase() + p.objectif.slice(1)) + "</p>";
     } else {
       gauche += "<h2>Dernière étape en ligne de ce parcours.</h2>"
         + "<p>Pour savoir que c’est acquis : " + esc(p.preuve.charAt(0).toLowerCase() + p.preuve.slice(1)) + "</p>"
         + '<div class="es-chips">' + p.suite.map(function (id) { return '<a class="es-chip" href="parcours.html#' + id + '"><b>' + (id === "P0" ? "0" : id.slice(1)) + "</b> " + esc(P[id].titre) + "</a>"; }).join("") + "</div>";
     }
-    gauche += '<div class="es-barre" aria-hidden="true"><i style="width:' + (dispo ? Math.round(nbFaits() / dispo * 100) : 0) + '%"></i></div><div class="es-prog" id="es-prog">' + nbFaits() + " sur " + dispo + " étapes faites</div></div>";
+    gauche += '<div class="es-barre" aria-hidden="true"><i style="width:' + (dispo ? Math.round(nbFaits() / dispo * 100) : 0) + '%"></i></div><div class="es-prog" id="es-prog">' + nbFaits() + " sur " + dispo + " étapes essentielles faites</div></div>";
 
     var hrefSuiv = suivante ? lienEtape(suivante, p.id) : null, ext = hrefSuiv && /^https?:/.test(hrefSuiv) ? ' target="_blank" rel="noopener"' : "";
     var droite = '<div class="es-acts">'
@@ -180,7 +181,7 @@
       etat = lire(); etat.faits = etat.faits || {};
       ici.forEach(function (k) { if (p.etapes[k].ok) { if (cb.checked) etat.faits[p.id + "." + k] = 1; else delete etat.faits[p.id + "." + k]; } });
       etat.actif = p.id; ecrire(etat);
-      var n = nbFaits(); box.querySelector("#es-prog").textContent = n + " sur " + dispo + " étapes faites";
+      var n = nbFaits(); box.querySelector("#es-prog").textContent = n + " sur " + dispo + " étapes essentielles faites";
       box.querySelector(".es-barre i").style.width = (dispo ? Math.round(n / dispo * 100) : 0) + "%";
       if (cb.checked) {
         mesure("suite-fait-" + p.id + "-" + rang);

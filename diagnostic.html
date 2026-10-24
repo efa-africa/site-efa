@@ -352,7 +352,7 @@ const V = {
  resultat() {
   const s = scores(S.ans), p = PROFILS[s.profil];
   const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1], A = ACTIONS[faible.k];
-  const acces = S.p1ok ? `<div class="actions"><button class="btn" data-go="p1">${S.p1 ? "Revoir le parcours 1" : "Commencer le parcours 1"}</button></div>`
+  const acces = S.p1ok ? `<div class="actions"><button class="btn" data-go="p1">${S.p1 ? "Revoir le niveau 2" : "Commencer le niveau 2"}</button></div>`
     : `<div class="actions"><button class="btn" data-act="demande" ${S.demandeP1 ? "disabled" : ""}>${S.demandeP1 ? "Demande enregistrée" : "Demander l'accès"}</button><button class="link" data-go="cle">J'ai déjà une clé</button></div>
        ${S.demandeP1 ? `<p class="small">Vous recevrez le lien et votre clé par email après validation par l'équipe EFA.</p>` : ""}`;
   const ext = /^https?:/.test(A.l) ? ' target="_blank" rel="noopener"' : "";
@@ -370,18 +370,18 @@ const V = {
     <div class="stack" style="gap:10px">${DIMS.map(d => barre(d.n, s[d.k])).join("")}</div></div>
     <div class="legend"><span><i style="background:var(--c1)"></i>Vous, sur 100</span><span><i class="dash"></i>Cible ${CIBLE}</span></div>
     <p class="small muted">Limites : vos réponses sont déclaratives et les seuils sont des repères fixés par EFA. Ce diagnostic ne recommande aucun produit financier.</p></details>
-   <div class="box blue"><span class="tag">Aller plus loin · Parcours 1 · gratuit sur validation</span><h3>Passez des habitudes aux chiffres.</h3><p>Sept montants, un score de stabilité sur 100 et trois priorités chiffrées.</p>${acces}</div>
+   <div class="box blue"><span class="tag">Aller plus loin · Niveau 2 · gratuit sur validation</span><h3>Passez des habitudes aux chiffres.</h3><p>Sept montants, un score de stabilité sur 100 et trois priorités chiffrées.</p>${acces}</div>
    <div class="actions"><button class="btn ghost" data-act="partage">Partager le diagnostic</button><button class="link" data-act="recommencer">Refaire le diagnostic</button><button class="link" data-act="effacer">Effacer mes données de cet appareil</button></div>
    <p class="small muted">${LOCAL ? "Mode local : rien ne quitte ce navigateur." : "Dernière étape : un email de confirmation doit vous arriver dans les minutes qui viennent. Confirmez votre adresse en cliquant sur son lien (regardez aussi dans Promotions ou Spam). Sans confirmation, nous ne pourrons pas vous écrire."}</p>`;
  },
  cle() {
-  return `<div class="stack"><p class="step">Parcours 1 · Assainir</p><h2>Votre clé d'accès</h2><p class="muted">Elle figure dans l'email envoyé par EFA après validation de votre demande.</p></div>
+  return `<div class="stack"><p class="step">Niveau 2 · Assainir</p><h2>Votre clé d'accès</h2><p class="muted">Elle figure dans l'email envoyé par EFA après validation de votre demande.</p></div>
    <form id="fcle" class="card" novalidate><label for="cle">Clé d'accès<input id="cle" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40"></label>
-    <p class="err" id="cerr" role="alert" hidden></p><div class="actions"><button class="btn" type="submit">Ouvrir le parcours 1</button><button class="link" type="button" data-go="resultat">Retour à mon résultat</button></div></form>`;
+    <p class="err" id="cerr" role="alert" hidden></p><div class="actions"><button class="btn" type="submit">Ouvrir le niveau 2</button><button class="link" type="button" data-go="resultat">Retour à mon résultat</button></div></form>`;
  },
  p1() {
   const f = (id, l, h) => `<label for="${id}">${l}<span class="hint">${h}</span><input id="${id}" type="number" inputmode="numeric" min="0" step="1000" value="${esc(S.f1[id] ?? "")}"></label>`;
-  return `<div class="stack"><p class="step">Parcours 1 · Assainir</p><h2>Sept chiffres, par mois, en francs CFA.</h2><p class="muted">Un ordre de grandeur suffit. Ces montants restent sur votre appareil : seuls votre score et vos ratios sont transmis.</p></div>
+  return `<div class="stack"><p class="step">Niveau 2 · Assainir</p><h2>Sept chiffres, par mois, en francs CFA.</h2><p class="muted">Un ordre de grandeur suffit. Ces montants restent sur votre appareil : seuls votre score et vos ratios sont transmis.</p></div>
    <form id="f1" class="card" novalidate>
     ${f("rev", "Revenus du mois", "Salaire, activité, loyers perçus : tout ce qui rentre")}
     ${f("dep", "Dépenses courantes", "Loyer, nourriture, transport, factures, scolarité")}
@@ -404,13 +404,13 @@ const V = {
  },
  methode() {
   return `<div class="stack"><p class="step">Méthode · version ${esc(CFG.VERSION)}</p><h1>Comment votre résultat est calculé</h1></div>
-   <div class="card"><h3>Parcours 0 · Comprendre</h3><ul>
+   <div class="card"><h3>Niveau 1 · Comprendre</h3><ul>
     <li>Six dimensions : ${DIMS.map(d => d.n).join(", ")}.</li>
     <li>Savoir : quatre questions, un point par bonne réponse. Les cinq autres dimensions : trois questions notées de 0 à 2.</li>
     <li>Chaque dimension est ramenée sur 100. Le score global est la moyenne des six.</li>
     <li>Paliers : ${CIBLE} et plus, Maîtrise · 40 à ${CIBLE - 1}, En construction · moins de 40, Fragile.</li>
     <li>Le profil croise le Savoir (au moins 3 bonnes réponses) et la Pratique (moyenne de Habitudes, Projection et Résilience, au moins 50).</li></ul></div>
-   <div class="card"><h3>Parcours 1 · Assainir</h3><div class="scroll"><table><tr><th>Pilier</th><th>Mesure</th><th>25 points</th><th>0 point</th></tr>
+   <div class="card"><h3>Niveau 2 · Assainir</h3><div class="scroll"><table><tr><th>Pilier</th><th>Mesure</th><th>25 points</th><th>0 point</th></tr>
     <tr><td>Marge mensuelle</td><td>(Revenus − dépenses − dettes − soutien aux proches) ÷ revenus. La tontine compte comme épargne.</td><td>20 % ou plus</td><td>0 % ou moins</td></tr>
     <tr><td>Poids des dettes</td><td>Remboursements ÷ revenus</td><td>0 %</td><td>50 % ou plus</td></tr>
     <tr><td>Résistance aux chocs</td><td>Épargne ÷ charges mensuelles, plus 5 points à partir de deux sources de revenus</td><td>3 mois et deux sources</td><td>Aucune réserve, une source</td></tr>
@@ -422,7 +422,7 @@ const V = {
  confidentialite() {
   return `<div class="stack"><p class="step">Confidentialité</p><h1>Ce que nous faisons de vos données</h1></div>
    <div class="card"><h3>Ce qui est conservé</h3><ul><li>Votre adresse email et, si vous le donnez, votre prénom.</li><li>Vos réponses au questionnaire, votre profil et vos scores, votre tranche d'âge, votre pays et votre activité.</li>
-    <li>Pour le parcours 1 : votre score, vos piliers et vos ratios. Vos montants en francs restent sur votre appareil.</li></ul></div>
+    <li>Pour le niveau 2 : votre score, vos piliers et vos ratios. Vos montants en francs restent sur votre appareil.</li></ul></div>
    <div class="card"><h3>À quoi cela sert</h3><ul><li>Vous envoyer votre diagnostic et les contenus d'éducation financière d'EFA.</li><li>Produire des statistiques anonymes, publiées uniquement par groupes d'au moins 50 personnes.</li><li>Vos données sont hébergées par Brevo, notre outil d'envoi d'emails. Elles ne sont ni vendues ni transmises à d'autres tiers.</li></ul></div>
    <div class="card"><h3>Vos droits</h3><ul><li>Chaque email contient un lien de désinscription.</li><li>Vous pouvez demander la suppression de vos données en écrivant à <a href="mailto:${esc(CFG.CONTACT)}">${esc(CFG.CONTACT)}</a>. La demande est traitée sous 30 jours.</li></ul></div>
    <div class="actions">${retour}<a class="link" href="confidentialite.html">Politique complète du site</a></div>`;
