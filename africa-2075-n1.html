@@ -97,6 +97,16 @@ main .col{display:flex;flex-direction:column;gap:30px}
 .edito p{margin:0;color:#C9D1DE}
 .edito .sig{font-family:var(--display);font-style:italic;color:#fff}
 
+.ancre{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:center;background:var(--nuit);color:#E8EDF5;border-radius:28px;padding:22px;text-decoration:none}
+.ancre:hover .ancre-l{text-decoration:underline}
+.ancre-ic{width:96px;height:96px}
+.ancre-t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ancre-s{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#F09680}
+.ancre b{font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.25;color:#fff}
+.ancre-p{color:#C9D1DE;font-size:16px}
+.ancre-l{font-weight:800;color:#6DB8F2}
+.chantier{align-self:flex-start;background:var(--sable);color:var(--ink2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
+@media (max-width:480px){.ancre{grid-template-columns:minmax(0,1fr)}.ancre-ic{width:72px;height:72px}}
 .une-phrase{background:var(--corail);color:#fff;border-radius:2px;padding:20px 22px}
 .une-phrase .surtitre{color:#fff;opacity:.9}
 .une-phrase p{margin:6px 0 0;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.38}
@@ -176,13 +186,23 @@ footer.site a{color:#E8EDF5;text-decoration:none}
 <main>
   <div class="col">
 
-    <section class="edito" aria-labelledby="t-edito">
-      <span class="surtitre">Pourquoi Africa 2075</span>
-      <h2 id="t-edito">Le monde se projette en 2075. Lisons-le depuis ici.</h2>
-      <p>En 2022, Goldman Sachs publiait <i>The Path to 2075</i>, une projection de l’économie mondiale à cet horizon, où plusieurs pays africains gagnent du poids. Les grandes institutions, les cabinets et les forums dessinent ainsi, chaque mois, l’économie qui vient. Elles la regardent rarement depuis Abidjan, Dakar ou Douala.</p>
-      <p>Africa 2075 fait ce travail : lire ce qu’elles annoncent, vérifier chaque chiffre à la source, et dire ce que cela change pour nous, pour nos États et pour l’argent de nos ménages. Une projection n’est pas un destin. Ce qui compte, c’est la part de cette croissance qui restera chez ceux qui la produisent.</p>
-      <p class="sig">Élysée Johnson, fondateur d’Éducation Financière Afrique</p>
-    </section>
+    <a class="ancre" href="africa-2075-fondateur.html" onclick="efaCompte('a2075-n1-vers-fondateur')">
+      <svg class="ancre-ic" viewBox="0 0 120 120" aria-hidden="true">
+        <g stroke="#F09680" stroke-width="1.5" stroke-linecap="round">
+          <line x1="60" y1="6" x2="60" y2="24"/><line x1="60" y1="96" x2="60" y2="114"/><line x1="6" y1="60" x2="24" y2="60"/><line x1="96" y1="60" x2="114" y2="60"/>
+          <line x1="21.8" y1="21.8" x2="34.6" y2="34.6"/><line x1="85.4" y1="85.4" x2="98.2" y2="98.2"/><line x1="98.2" y1="21.8" x2="85.4" y2="34.6"/><line x1="34.6" y1="85.4" x2="21.8" y2="98.2"/>
+        </g>
+        <circle cx="60" cy="60" r="30" fill="none" stroke="#6DB8F2" stroke-width="2"/>
+        <circle cx="60" cy="60" r="17" fill="none" stroke="#6DB8F2" stroke-width="1.2" stroke-dasharray="2 4"/>
+        <circle cx="60" cy="60" r="6" fill="#E44828"/>
+      </svg>
+      <span class="ancre-t">
+        <span class="ancre-s">Africa 2075 · N° 1 depuis l’article fondateur</span>
+        <b>2075 : l’Afrique, première puissance économique du monde</b>
+        <span class="ancre-p">Tout part de là : six chantiers à mener pour tenir cette promesse, le premier étant l’éducation financière. Ce numéro les touche tous les six.</span>
+        <span class="ancre-l">Relire l’article fondateur →</span>
+      </span>
+    </a>
 
     <section class="une-phrase" aria-label="En une phrase">
       <span class="surtitre">En une phrase</span>
@@ -201,6 +221,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
     </nav>
 
     <article class="tendance" id="croissance">
+      <span class="chantier">Chantiers n° 1 et 4</span>
       <span class="surtitre">FMI · Banque mondiale · octobre 2026</span>
       <h2>La croissance revient, le revenu ne suit pas</h2>
       <div class="bloc"><h3>Le fait</h3>
@@ -215,6 +236,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
     </article>
 
     <article class="tendance" id="ormuz">
+      <span class="chantier">Chantier n° 6</span>
       <span class="surtitre">McKinsey Global Institute · 17 septembre 2026</span>
       <h2>Choc d’Ormuz : l’énergie redevient une affaire d’argent</h2>
       <div class="bloc"><h3>Le fait</h3>
@@ -229,6 +251,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
     </article>
 
     <article class="tendance" id="petite-ia">
+      <span class="chantier">Chantiers n° 2 et 3</span>
       <span class="surtitre">Banque mondiale · Assemblées de Bangkok · 13 octobre 2026</span>
       <h2>La « petite IA » tiendra dans nos téléphones</h2>
       <div class="bloc"><h3>Le fait</h3>
@@ -243,6 +266,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
     </article>
 
     <article class="tendance" id="tokenisation">
+      <span class="chantier">Chantier n° 4</span>
       <span class="surtitre">FMI · Rapport sur la stabilité financière · octobre 2026</span>
       <h2>Tokenisation et stablecoins : la finance se réécrit</h2>
       <div class="bloc"><h3>Le fait</h3>
@@ -257,6 +281,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
     </article>
 
     <article class="tendance" id="agoa">
+      <span class="chantier">Chantier n° 5</span>
       <span class="surtitre">Congrès américain · septembre 2026</span>
       <h2>Commerce : l’AGOA prolongé jusqu’en 2028</h2>
       <div class="bloc"><h3>Le fait</h3>
