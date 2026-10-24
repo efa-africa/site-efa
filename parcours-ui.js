@@ -6,9 +6,9 @@
 (function () {
   "use strict";
   var D = window.EFA_PARCOURS; if (!D) return;
-  var P = {}; D.parcours.forEach(function (p) { P[p.id] = p; });
+  var P = {}; D.parcours.forEach(function (p) { P[p.id] = p; }); var FU = D.fusions || {}; Object.keys(FU).forEach(function (k) { if (P[FU[k]]) P[k] = P[FU[k]]; });
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function nomCourt(id) { return id === "P0" ? "Commencer ici" : "Parcours " + id.slice(1); }
+  function nomCourt(id) { return P[id] && P[id].nom ? P[id].nom : "Parcours " + id.slice(1); }
   function mesure(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
 
   var CSS = ".efa-pb-liste{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}"
@@ -73,11 +73,11 @@
   var QS = [
     { id: "q1", t: "À la fin du mois, savez-vous où est passé votre argent ?", o: [["oui", "Oui, à peu près"], ["non", "Non, pas vraiment"]] },
     { id: "q2", t: "Avez-vous de côté au moins un mois de dépenses, hors tontine ?", o: [["oui", "Oui"], ["non", "Non"], ["nsp", "Je ne sais pas"]] },
-    { id: "q3", t: "Qu’est-ce qui pèse le plus en ce moment ?", o: [["P3", "Les demandes de mes proches"], ["P6", "Mes dettes"], ["P5", "Ma tontine"], ["P7", "Une grosse somme qui arrive"], ["P2", "Tenir mon budget"], ["P10", "Les frais et les arnaques"], ["P11", "Mon activité, mon commerce"], ["P12", "La rentrée, les fêtes, les funérailles"], ["P13", "Construire ma maison"], ["P14", "Protéger ma famille d’un coup dur"], ["P8", "Faire fructifier mon argent"], ["P9", "Préparer ma retraite"]] }
+    { id: "q3", t: "Qu’est-ce qui pèse le plus en ce moment ?", o: [["P3", "Les demandes de mes proches"], ["P6", "Mes dettes"], ["P5", "Ma tontine"], ["P5", "Une grosse somme qui arrive"], ["P2", "Tenir mon budget"], ["P10", "Les frais et les arnaques"], ["P2", "Mon activité, mon commerce"], ["P2", "La rentrée, les fêtes, les funérailles"], ["P13", "Construire ma maison"], ["P14", "Protéger ma famille d’un coup dur"], ["P8", "Faire fructifier mon argent"], ["P9", "Préparer ma retraite"]] }
   ];
   function orienter(r1, r2, r3) {
     var L = [], a = function (id) { if (L.indexOf(id) < 0) L.push(id); };
-    if (["P3", "P6", "P5", "P7", "P10", "P11", "P12"].indexOf(r3) >= 0) a(r3);
+    if (["P3", "P6", "P5", "P10"].indexOf(r3) >= 0) a(r3);
     if (r1 === "non") a("P1");
     if (r3 === "P2") a("P2");
     if (r2 !== "oui") a("P4");
@@ -118,7 +118,7 @@
       + '<p class="qs-n" role="status" aria-live="polite"></p><div class="qs-liste"></div>'
       + '<p class="qs-vide" hidden>Aucune question ne ressemble à la vôtre. Essayez un autre mot, <a href="#' + uid + '-quiz" data-qs="quiz">répondez aux 3 questions</a> ou <a href="ely.html?src=questions">posez-la à Ely</a>.</p>'
       + '</div>'
-      + (opts.pied === false ? "" : '<p class="qs-pied"><a href="parcours.html#tous">Voir les ' + D.parcours.length + ' parcours en détail →</a></p>');
+      + (opts.pied === false ? "" : '<p class="qs-pied"><a href="parcours.html#tous">Voir les ' + D.parcours.length + ' modules en détail →</a></p>');
     var boxQ = el.querySelector("#" + uid + "-quiz"), boxT = el.querySelector("#" + uid + "-toutes");
     var bQ = el.querySelector('.qs-b[data-qs="quiz"]'), bT = el.querySelector('.qs-b[data-qs="toutes"]');
     var quizPret = false;

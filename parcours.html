@@ -8,12 +8,12 @@
 <meta name="theme-color" content="#0B1220">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <title>Parcours d’apprentissage : gérer son argent pas à pas · EFA</title>
-<meta name="description" content="Quatorze parcours gratuits d’éducation financière, du budget à la tontine, de la réserve de sécurité à la BRVM. Chacun part de votre situation et s’arrête sur un résultat concret.">
+<meta name="description" content="Les 8 modules gratuits de l’École EFA, du budget à la tontine, de la réserve de sécurité à la protection de la famille. Chacun part de votre situation et se termine par une fiche que vous gardez concret.">
 <link rel="canonical" href="https://efa.africa/parcours.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="Mes parcours · EFA">
-<meta property="og:description" content="Partez de votre situation, arrivez à un résultat concret. Quatorze parcours gratuits, avec Koffi, Tonton Bamba et Tantie Affoué.">
+<meta property="og:description" content="Partez de votre situation, arrivez à un résultat concret. Les 8 modules de l’École EFA, avec Koffi, Tonton Bamba et Tantie Affoué.">
 <meta property="og:url" content="https://efa.africa/parcours.html">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -96,6 +96,10 @@ section.bloc .intro p{color:var(--ink2)}
 .liste{display:flex;flex-direction:column;gap:12px}
 .parcours{background:var(--papier);border-radius:var(--r-carte);scroll-margin-top:76px;transition:opacity .2s}
 .parcours.estompe{opacity:.4}
+.cycle{font-family:var(--f-body);font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--corail);margin:18px 0 2px}
+.cycle:first-child{margin-top:0}
+.fiche{background:var(--creme);border-radius:12px;padding:16px 18px;margin:16px 0;display:grid;gap:8px;justify-items:start}
+.fiche p{margin:0}
 .parcours.reco{box-shadow:0 0 0 3px var(--corail)}
 .parcours summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 16px;align-items:start}
 .parcours summary::-webkit-details-marker{display:none}
@@ -215,9 +219,9 @@ details.plus[open]>summary::before{content:"− "}
 
   <section class="bloc col" id="tous" aria-labelledby="t-tous">
     <div class="intro">
-      <span class="surtitre">Les parcours</span>
-      <h2 class="titre-section" id="t-tous">Quatorze parcours, du budget à la protection de la famille</h2>
-      <p>Cochez chaque étape faite : votre progression reste sur ce téléphone, rien n’est envoyé à EFA. Chaque étape indique si elle est disponible ou en préparation.</p>
+      <span class="surtitre">L’école EFA</span>
+      <h2 class="titre-section" id="t-tous">Les Fondations en 8 modules, du budget à la protection de la famille</h2>
+      <p>Chaque module tient en moins d’une heure et se termine par une fiche que vous gardez. Cochez chaque étape faite : votre progression reste sur ce téléphone, rien n’est envoyé à EFA.</p>
     </div>
     <div class="liste" id="liste-parcours"></div>
   </section>
@@ -235,7 +239,7 @@ details.plus[open]>summary::before{content:"− "}
     <div class="encadre">
       <span class="surtitre">Le certificat EFA</span>
       <h2>Apprendre, et le prouver.</h2>
-      <p>Les parcours 1 à 5 et 10 préparent le Certificat EFA « Fondations ». Le pilote est ouvert : inscrivez-vous, suivez les modules, passez le quiz.</p>
+      <p>Les 8 modules ci-dessus sont ceux du Certificat EFA « Fondations ». Le pilote est ouvert : inscrivez-vous, suivez les modules, passez le quiz.</p>
       <div><a class="bouton bouton-principal" href="certificat-pilote.html">Découvrir le certificat</a></div>
     </div>
     <div class="encadre" style="background:#E44828;margin-top:-32px">
@@ -290,8 +294,8 @@ details.plus[open]>summary::before{content:"− "}
   </div>
 </footer>
 
-<script src="parcours-efa.js?v=2026102501"></script>
-<script src="parcours-ui.js?v=2026102501"></script>
+<script src="parcours-efa.js?v=2026102502"></script>
+<script src="parcours-ui.js?v=2026102502"></script>
 <script>
 (function(){
   "use strict";
@@ -306,8 +310,10 @@ details.plus[open]>summary::before{content:"− "}
   var etat = lire(); etat.faits = etat.faits || {};
   function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
   var P = {}; D.parcours.forEach(function(p){ P[p.id]=p; });
-  function numero(id){ return id==="P0" ? "0" : id.slice(1); }
-  function nomCourt(id){ return id==="P0" ? "Commencer ici" : "Parcours " + numero(id); }
+  var FU = D.fusions || {};
+  function vrai(id){ return FU[id] || id; }
+  function numero(id){ id=vrai(id); return P[id] && P[id].module ? String(P[id].module) : id.slice(1); }
+  function nomCourt(id){ id=vrai(id); return P[id] && P[id].nom ? P[id].nom : "Parcours " + numero(id); }
   function mesure(ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
   function lienEtape(s, pid){
     if(!s.lien) return null;
@@ -318,7 +324,7 @@ details.plus[open]>summary::before{content:"− "}
 
   // Chiffres
   var nbEt = 0, nbOk = 0; D.parcours.forEach(function(p){ p.etapes.forEach(function(s){ nbEt++; if(s.ok) nbOk++; }); });
-  if($("chiffres")) $("chiffres").innerHTML = '<div><strong>'+D.parcours.length+'</strong><span>Parcours</span></div><div><strong>'+D.programmes.length+'</strong><span>Programmes</span></div><div><strong>'+nbOk+'</strong><span>Étapes en ligne</span></div><div><strong>Gratuit</strong><span>Sans inscription</span></div>';
+  if($("chiffres")) $("chiffres").innerHTML = '<div><strong>'+D.parcours.length+'</strong><span>Modules</span></div><div><strong>'+D.programmes.length+'</strong><span>Programmes</span></div><div><strong>'+nbOk+'</strong><span>Étapes en ligne</span></div><div><strong>Gratuit</strong><span>Sans inscription</span></div>';
 
   // Problèmes et trois questions (parcours-ui.js)
   function ouvrir(id){ var d=$(id); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+id);}catch(x){} } }
@@ -363,7 +369,7 @@ details.plus[open]>summary::before{content:"− "}
     p.etapes.forEach(function(s,i){ (s.ess ? ess : plus).push(ligne(s,i)); });
     var et = ess.join("") + '</ol>' + (plus.length ? '<details class="plus"><summary>Pour aller plus loin · '+plus.length+' ressource'+(plus.length>1?"s":"")+'</summary><ol class="etapes">'+plus.join("")+'</ol></details>' : '') + '<ol hidden>';
     var premier = null; p.etapes.some(function(s,i){ if(s.ess && s.ok && s.lien && !etat.faits[p.id+"."+i]){ premier = lienEtape(s,p.id); return true; } return false; });
-    var suite = p.suite.map(function(id){ return '<a class="chip" href="#'+id+'" data-ouvrir="'+id+'"><b>'+numero(id)+'</b> '+esc(P[id].titre)+'</a>'; }).join(" ");
+    var suite = p.suite.map(vrai).map(function(id){ return '<a class="chip" href="#'+id+'" data-ouvrir="'+id+'"><b>'+numero(id)+'</b> '+esc(P[id].titre)+'</a>'; }).join(" ");
     var ext1 = premier && /^https?:/.test(premier) ? ' target="_blank" rel="noopener"' : "";
     return '<details class="parcours" id="'+p.id+'"><summary>'
       + '<span class="num">'+numero(p.id)+'</span>'
@@ -375,21 +381,23 @@ details.plus[open]>summary::before{content:"− "}
       + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
       + '<ol class="etapes">'+et+'</ol>'
+      + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
-      + (premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le parcours" : "Commencer le parcours")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Partager ce parcours</button></div>'
-         : '<div class="p-acts"><span class="pill fait">Toutes les étapes essentielles sont faites</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Bravo ! Partagez ce parcours à un proche</button></div>')
+      + (premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le module" : "Commencer le module")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Partager ce module</button></div>'
+         : '<div class="p-acts"><span class="pill fait">Toutes les étapes essentielles sont faites</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Bravo ! Partagez ce module à un proche</button></div>')
       + '</div></details>';
   }
   function rendre(){
     var ouverts = {}; document.querySelectorAll(".parcours[open]").forEach(function(d){ ouverts[d.id]=1; });
-    $("liste-parcours").innerHTML = D.parcours.map(carte).join("");
+    var cy = {fondations:"Cycle Fondations · 8 modules", patrimoine:"Cycle Patrimoine · pour aller plus loin"}, vu = {};
+    $("liste-parcours").innerHTML = D.parcours.map(function(p){ var t = (p.cycle && !vu[p.cycle] && cy[p.cycle]) ? '<h3 class="cycle">'+cy[p.cycle]+'</h3>' : ""; if(p.cycle) vu[p.cycle]=1; return t + carte(p); }).join("");
     Object.keys(ouverts).forEach(function(id){ var d=$(id); if(d) d.open=true; });
     marquerReco();
   }
 
   // Programmes
   $("liste-programmes").innerHTML = D.programmes.map(function(g){
-    var seq = g.sequence.map(function(id){ return '<a href="#'+id+'" data-ouvrir="'+id+'"><b>'+numero(id)+'</b><span>'+esc(P[id].titre)+'</span></a>'; }).join('<span class="sep" aria-hidden="true">›</span>');
+    var seq = g.sequence.map(vrai).map(function(id){ return '<a href="#'+id+'" data-ouvrir="'+id+'"><b>'+numero(id)+'</b><span>'+esc(P[id].titre)+'</span></a>'; }).join('<span class="sep" aria-hidden="true">›</span>');
     return '<article class="prog"><div class="prog-haut"><h3>'+esc(g.nom)+'</h3><span class="duree">'+esc(g.duree)+'</span></div><p class="pour">'+esc(g.pour)+(g.personnage && g.personnage!=="—" ? " · avec "+esc(g.personnage) : "")+'</p><div class="seq">'+seq+'</div><p class="arrivee"><span class="etiquette">À l’arrivée</span> '+esc(g.arrivee)+'</p></article>';
   }).join("");
 
@@ -402,6 +410,7 @@ details.plus[open]>summary::before{content:"− "}
     });
   }
   function recommander(L, origine, defiler){
+    L = L.map(vrai).filter(function(id,i,a){ return P[id] && a.indexOf(id)===i; }); if(!L.length) return;
     reco = L.slice(); marquerReco();
     $("conseil").hidden=false;
     $("conseil").innerHTML = (origine ? esc(origine)+" : commencez" : "Commencez")+' par <a class="lien-souligne" href="#'+L[0]+'" data-ouvrir="'+L[0]+'">« '+esc(P[L[0]].probleme)+' »</a>'+(L.length>1?', puis '+L.slice(1).map(function(id){return esc(nomCourt(id));}).join(" et "):"")+'. <button class="lien-souligne" type="button" id="tout" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer">Tout afficher</button>';
@@ -427,12 +436,12 @@ details.plus[open]>summary::before{content:"− "}
   // Recommandation venant du diagnostic (?profil=…) ou des 3 questions déjà faites
   var q = new URLSearchParams(location.search), pr = q.get("profil");
   var PR = {}; D.profils.forEach(function(x){ PR[x.id]=x; });
-  var rq = (q.get("reco")||"").split(",").filter(function(id){ return P[id]; });
+  var rq = (q.get("reco")||"").split(",").map(vrai).filter(function(id){ return P[id]; });
   if(rq.length) recommander(rq, "D’après vos réponses", false);
   else if(pr && PR[pr]){ recommander(PR[pr].parcours, "Votre profil « "+PR[pr].nom+" »", !location.hash); var bp=$("pr-"+pr); if(bp) bp.setAttribute("aria-pressed","true"); }
   else if(etat.quiz && etat.quiz.length) recommander(etat.quiz, "D’après vos réponses", false);
   // Ouverture par l'adresse (#P5)
-  var h = (location.hash||"").slice(1);
+  var h = vrai((location.hash||"").slice(1));
   if(h && P[h]){ var d=$(h); d.open=true; setTimeout(function(){ d.scrollIntoView({block:"start"}); },60); }
 })();
 </script>

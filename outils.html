@@ -666,9 +666,9 @@ var OUTILS = [
   };
   /* Onglet « Faire le point » : uniquement les outils qui rendent un résultat (diagnostics et simulateurs), chacun relié à ses parcours */
   var POINT=[
-    {g:"Diagnostic",p:["P1","P11"],t:"Où est passé mon argent ?",r:"Cinq questions, puis vos chiffres si vous voulez : où part votre argent, et la première piste à suivre.",d:"10 min",u:"ou-est-passe-mon-argent.html?src=faire-le-point",b:"Faire le point sur mes dépenses"},
+    {g:"Diagnostic",p:["P1", "P2"],t:"Où est passé mon argent ?",r:"Cinq questions, puis vos chiffres si vous voulez : où part votre argent, et la première piste à suivre.",d:"10 min",u:"ou-est-passe-mon-argent.html?src=faire-le-point",b:"Faire le point sur mes dépenses"},
     {g:"Diagnostic",p:["P8"],t:"Suis-je prêt à investir ?",r:"Quatre vérifications : réserve, dette chère, horizon, savoir expliquer. Vous savez si c’est le moment.",d:"3 min",u:"bourse-essentiel.html?src=faire-le-point#lecon-2",b:"Vérifier"},
-    {g:"Simulateur",p:["P4","P12","P13"],t:"Combien garder à chaque rentrée ?",r:"Ce que devient une petite part gardée, rentrée après rentrée : pour une réserve, une grosse dépense ou l’apport d’une maison.",d:"3 min",u:"cercle-spirale.html?src=faire-le-point#argent",b:"Faire le calcul"},
+    {g:"Simulateur",p:["P4", "P2", "P13"],t:"Combien garder à chaque rentrée ?",r:"Ce que devient une petite part gardée, rentrée après rentrée : pour une réserve, une grosse dépense ou l’apport d’une maison.",d:"3 min",u:"cercle-spirale.html?src=faire-le-point#argent",b:"Faire le calcul"},
     {g:"Simulateur",p:["P5"],t:"Ma tontine, tour par tour",r:"Ce que votre groupe garderait avec une réserve commune, selon les tours.",d:"5 min",u:"cercle-spirale.html?src=faire-le-point#groupe",b:"Simuler avec mon groupe"},
     {g:"Simulateur",p:["P9"],t:"Préparer ma retraite",r:"Six questions, puis une estimation de ce qu’il vous faudra et un plan pour y aller.",d:"8 min",u:"preparer-ma-retraite.html?src=faire-le-point",b:"Faire mon estimation"}
   ];
@@ -702,7 +702,7 @@ var OUTILS = [
   function bandeauDiag(c){
     if(!c||!c.pistes||!c.pistes.liste.length) return "";
     var sj=E.PISTES[c.pistes.liste[0].id], s=sj&&E.sujet(sj.sujet);
-    return '<div class="diag-b"><p class="k">D’après votre diagnostic du '+esc(dateCourte(c.pistes.date))+'</p><ul>'+c.pistes.liste.map(function(p){return '<li>'+esc(p.titre)+'</li>';}).join("")+'</ul>'+(s?'<p><a href="parcours.html#'+({"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"}[s.slug]||"P1")+'">Voir mon parcours</a> · <a href="#cahier">Ouvrir mon cahier</a></p>':'')+'</div>';
+    return '<div class="diag-b"><p class="k">D’après votre diagnostic du '+esc(dateCourte(c.pistes.date))+'</p><ul>'+c.pistes.liste.map(function(p){return '<li>'+esc(p.titre)+'</li>';}).join("")+'</ul>'+(s?'<p><a href="parcours.html#'+({"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P5","retraite":"P9"}[s.slug]||"P1")+'">Voir mon parcours</a> · <a href="#cahier">Ouvrir mon cahier</a></p>':'')+'</div>';
   }
   function vueModule(k,ouvert){
     var M=E.MODULES[k]; if(!M) return "";
@@ -994,7 +994,7 @@ var OUTILS = [
     if(ANCIENS[k]) k=ANCIENS[k];
     if(k==="dico"){ montre("dico"); var m=parts[1]; if(m){ if(dq.value){ dq.value=""; filtre(); } var c=document.getElementById("fiche-"+m); if(c){ c.classList.add("vise"); setTimeout(function(){ c.scrollIntoView({block:"center"}); },30); } } return; }
     if(k==="plan"){ montre("plan"); rendrePlan(parts[1]);
-      (function(){ var M={"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"}, id=M[parts[1]], r=document.getElementById("plan-renvoi"), DP=window.EFA_PARCOURS;
+      (function(){ var M={"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P5","retraite":"P9"}, id=M[parts[1]], r=document.getElementById("plan-renvoi"), DP=window.EFA_PARCOURS;
         if(!r) return; var pp=id&&DP?DP.parcours.filter(function(x){return x.id===id;})[0]:null;
         r.innerHTML=pp?'Ce plan fait partie du parcours '+id.slice(1)+' : « '+esc(pp.probleme)+' ». <a href="parcours.html#'+id+'">Suivre le parcours étape par étape →</a>':'Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver ma question →</a>'; })(); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
     if(k==="certificat"){ montre("certificat"); vueCertificat(); cadrer("certificat",false); return; }

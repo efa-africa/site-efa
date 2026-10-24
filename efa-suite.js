@@ -70,7 +70,7 @@
   function ecrire(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function base(l) { return (l || "").split("#")[0].split("?")[0] || "index.html"; }
-  function nomCourt(id) { return id === "P0" ? "Commencer ici" : "Parcours " + id.slice(1); }
+  function nomCourt(id) { var D = window.EFA_PARCOURS, p = null; if (D) { id = (D.fusions || {})[id] || id; D.parcours.forEach(function (x) { if (x.id === id) p = x; }); } return p && p.nom ? p.nom : "Parcours " + id.slice(1); }
   function lienEtape(s, pid) {
     if (!s.lien) return null;
     if (/^https?:/.test(s.lien)) return s.lien;
@@ -126,7 +126,7 @@
 
   charger(function () {
     var D = window.EFA_PARCOURS; if (!D) return;
-    var P = {}; D.parcours.forEach(function (p) { P[p.id] = p; });
+    var P = {}; D.parcours.forEach(function (p) { P[p.id] = p; }); var FU = D.fusions || {}; Object.keys(FU).forEach(function (k) { if (P[FU[k]]) P[k] = P[FU[k]]; });
     var etat = lire(); etat.faits = etat.faits || {};
     var q = new URLSearchParams(location.search), voulu = q.get("parcours");
 
@@ -135,7 +135,7 @@
     // Page hors parcours : proposer d'en choisir un
     if (!candidats.length) {
       placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
-        + '<p>Quatorze parcours gratuits partent de votre situation et s’arrêtent sur un résultat concret : un budget qui tient, une réserve, une tontine décidée.</p></div>'
+        + '<p>Les 8 modules gratuits de l’École EFA partent de votre situation et se terminent par une fiche que vous gardez : un budget qui tient, une réserve, une tontine décidée.</p></div>'
         + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Choisir mon parcours</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
       return;
     }
