@@ -39,12 +39,19 @@
     return '<div class="illu ' + (I.c || "nuit") + (I.accueil ? " accueil" : "") + '">' + typo(I.html) + "</div>";
   }
   function paras(p) { return (p || []).map(function (x) { return '<p class="p">' + typo(x) + "</p>"; }).join(""); }
-  function opts(cle, liste, rep, bonne) {
+  function melange(liste, graine) {
+    var L = liste.slice(), x = 0;
+    for (var c = 0; c < graine.length; c++) x = (x * 31 + graine.charCodeAt(c)) % 2147483647;
+    for (var i = L.length - 1; i > 0; i--) { x = (x * 16807) % 2147483647; var j = x % (i + 1), t = L[i]; L[i] = L[j]; L[j] = t; }
+    return L;
+  }
+  function opts(cle, liste, rep, bonne, graine) {
     var h = '<div class="opts">';
-    liste.forEach(function (o) {
+    if (graine) liste = melange(liste, graine);
+    liste.forEach(function (o, n) {
       var cl = "";
       if (rep) { if (bonne) cl = o[0] === bonne ? " ok" : (o[0] === rep ? " ko" : ""); else cl = o[0] === rep ? " " + o[2] : ""; }
-      h += '<button class="opt' + cl + '" type="button" data-cle="' + cle + '" data-v="' + o[0] + '"' + (rep ? " disabled" : "") + '><span class="l">' + o[0] + '</span><span class="t">' + typo(o[1]) + "</span></button>";
+      h += '<button class="opt' + cl + '" type="button" data-cle="' + cle + '" data-v="' + o[0] + '"' + (rep ? " disabled" : "") + '><span class="l">' + (graine ? "ABCDE".charAt(n) : o[0]) + '</span><span class="t">' + typo(o[1]) + "</span></button>";
     });
     return h + "</div>";
   }
@@ -59,14 +66,14 @@
     if (E.t === "quiz") {
       var q = M.quiz[E.k], cq = "q" + E.k, rq = S.q[cq];
       return '<div class="illu nuit"><span class="tabtitre">Quiz · ' + typo(M.court) + '</span><div class="score">' + (E.k + 1) + ' / ' + M.quiz.length + '</div><span class="mot">Trois bonnes réponses sur cinq valident le module.</span></div>' +
-        '<div class="texte"><p class="qnum">Question ' + (E.k + 1) + "</p><div class=\"q\"><p class=\"enonce\">" + typo(q[0]) + "</p>" + opts(cq, q[1], rq, q[2]) +
+        '<div class="texte"><p class="qnum">Question ' + (E.k + 1) + "</p><div class=\"q\"><p class=\"enonce\">" + typo(q[0]) + "</p>" + opts(cq, q[1], rq, q[2], M.id + "-" + E.k) +
         (rq ? '<p class="explic"><b>' + (rq === q[2] ? "Juste." : "Pas tout à fait.") + "</b> " + typo(q[3]) + "</p>" : "") + "</div></div>";
     }
     if (E.t === "fin") {
-      var sc = (M.quiz || []).filter(function (q, k) { return S.q["q" + k] === q[2]; }).length, ok = sc >= 3;
+      var nq = (M.quiz || []).length, sc = (M.quiz || []).filter(function (q, k) { return S.q["q" + k] === q[2]; }).length, ok = nq ? sc >= 3 : true;
       if (ok && !S.valide) { S.valide = true; S.score = sc; sauver(); compte("ecole-" + M.id + "-valide"); }
       var k = EC.modules.indexOf(M), suiv = EC.modules[k + 1];
-      return '<div class="illu ' + (ok ? "bleu" : "nuit") + '"><span class="tabtitre">Votre score</span><div class="score">' + sc + " / " + M.quiz.length + '</div><span class="mot">' + (ok ? "Module validé" : "Trois bonnes réponses sont nécessaires") + "</span></div>" +
+      return '<div class="illu ' + (ok ? "bleu" : "nuit") + '">' + (nq ? '<span class="tabtitre">Votre score</span><div class="score">' + sc + " / " + nq + '</div><span class="mot">' + (ok ? "Module validé" : "Trois bonnes réponses sont nécessaires") + "</span>" : '<span class="tabtitre">Projet</span><div class="grand">Terminé</div>') + "</div>" +
         '<div class="texte"><p class="sur">' + typo(M.court) + '</p><h2 class="h">' + (ok ? "Ce qu’il faut garder" : "Encore un essai") + '</h2><div class="aplat">' + typo(M.retenir) + "</div>" +
         '<div class="liens">' + (ok ? "" : '<a href="#' + M.id + '" data-refaire="' + M.id + '">Refaire le quiz <span>→</span></a>') +
         (suiv ? '<a href="#' + suiv.id + '">Module suivant&nbsp;: ' + typo(suiv.titre) + " <span>→</span></a>" : (EC.final ? typo(EC.final) : "")) +
@@ -79,7 +86,7 @@
   function sommaire() {
     var A = EC.accueil, faits = EC.modules.filter(function (m) { return st(m.id).valide; }).length;
     var tu = EC.modules.map(function (m) {
-      var S = st(m.id), e = S.valide ? "Validé · " + S.score + "/5" : (S.i ? "En cours" : m.duree);
+      var S = st(m.id), e = S.valide ? ((m.quiz || []).length ? "Validé · " + S.score + "/5" : "Terminé") : (S.i ? "En cours" : m.duree);
       return '<button class="tuile-m' + (S.valide ? " fait" : "") + '" type="button" data-mod="' + m.id + '"><span class="n">' + m.id + '</span><span class="tt">' + typo(m.titre) + '</span><span class="e">' + typo(e) + "</span></button>";
     }).join("");
     return '<div class="illu nuit accueil"><img class="logo" src="certificat-pilote/logo-efa.png" alt=""><span class="tabtitre">' + typo(A.sur) + '</span><div class="grand">' + typo(A.titre) + '</div><span class="mot">' + faits + " module" + (faits > 1 ? "s" : "") + " validé" + (faits > 1 ? "s" : "") + " sur " + EC.modules.length + "</span>" +

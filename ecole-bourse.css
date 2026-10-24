@@ -231,6 +231,10 @@ body{justify-content:safe center}
   .illu.photo{min-height:240px}
   .pied{flex-wrap:wrap}.pied .ely{flex-basis:100%}.pied .btn{flex:1 1 auto;text-align:center}
   .liens a{overflow-wrap:anywhere}
+  .tab td:last-child,.tab td.v{white-space:normal}.illu{min-width:0}
 }
 
 .texte .p a{color:var(--bleu);font-weight:700;text-underline-offset:3px}
+.defile{width:100%;overflow-x:auto}
+.tab.large th,.tab.large td{white-space:nowrap;padding-left:.5cqw;padding-right:.5cqw}
+@media (orientation:portrait) and (max-width:700px){.tab.large{font-size:13px}.tab.large th,.tab.large td{white-space:nowrap!important;padding:6px 5px}}
