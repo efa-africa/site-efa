@@ -678,8 +678,8 @@ img.char{object-position:50% 18%}
 .ask-marque b{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
 .ask .head h1{font-size:clamp(40px,6.9vw,89px)}
 #besoins.ask{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 32px)}
-.ask + .efa-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 48px);border-top:1px solid rgba(255,255,255,.08)}
-@media (max-width:860px){.ask + .efa-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 28px)}}
+.ask + .efa-top,.mfh + .efa-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 48px);border-top:1px solid rgba(255,255,255,.08)}
+@media (max-width:860px){.ask + .efa-top,.mfh + .efa-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 28px)}}
 
 .ask-rech{width:min(560px,100%);display:grid;gap:8px;margin-top:8px;text-align:left}
 .ask-rech label{font-size:13px;font-weight:700;color:#C9D1DE;text-align:center}
@@ -794,6 +794,21 @@ img.char{object-position:50% 18%}
     <p class="ask-guides">Comprendre l’essentiel&nbsp;: <a href="tontine.html">la tontine</a> · <a href="epargner.html">épargner</a> · <a href="construire-son-budget.html">faire son budget en FCFA</a></p>
   </section>
 
+  <!-- Min’Fin : les derniers épisodes de la série (données : minfin.js), vers la vitrine minfin.html -->
+  <section class="mfh" id="minfin" aria-labelledby="mfh-t" data-step="Min’Fin">
+    <div class="mfh-in">
+      <div class="mfh-h">
+        <div>
+          <p class="mfh-k">En vidéo · la série Min’Fin</p>
+          <h2 id="mfh-t">Ces questions, Koffi se les pose aussi</h2>
+          <p class="mfh-l">Une minute par question&nbsp;: la situation, le piège, la règle à appliquer le soir même.</p>
+        </div>
+        <a class="mfh-all" href="minfin.html" data-goatcounter-click="accueil-minfin-tout">Tous les épisodes</a>
+      </div>
+      <div class="mfh-rail" id="mfh-rail"></div>
+    </div>
+  </section>
+
   <!-- 0. EFA | Éducation Financière Afrique : globe en rotation en arrière-plan (globe.js), image fixe pendant le chargement -->
   <section class="efa-top" id="efa" aria-labelledby="efa-t" data-step="La mission">
     <div class="g-wrap" aria-hidden="true"><img class="g-img" src="globe.webp" alt="" width="900" height="900" fetchpriority="low"><canvas id="globe"></canvas></div>
@@ -845,21 +860,6 @@ img.char{object-position:50% 18%}
 
 
   <!-- 3. Le cercle et la spirale : aperçu ; le simulateur principal est sur cercle-spirale.html -->
-  <!-- Min’Fin : les derniers épisodes de la série (données : minfin.js), vers la vitrine minfin.html -->
-  <section class="mfh" id="minfin" aria-labelledby="mfh-t" data-step="Min’Fin">
-    <div class="mfh-in">
-      <div class="mfh-h">
-        <div>
-          <p class="mfh-k">La série EFA · une minute par épisode</p>
-          <h2 id="mfh-t">Regardez Min’Fin avec Koffi</h2>
-          <p class="mfh-l">Une situation que tout le monde a vécue, le piège nommé, une règle à appliquer le soir même.</p>
-        </div>
-        <a class="mfh-all" href="minfin.html" data-goatcounter-click="accueil-minfin-tout">Tous les épisodes</a>
-      </div>
-      <div class="mfh-rail" id="mfh-rail"></div>
-    </div>
-  </section>
-
   <section class="sp-apercu" id="apercu-spirale" data-step="Le cercle et la spirale" aria-labelledby="sp-t">
     <div class="sp-in">
       <svg class="sp-ic" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0 0 C 6 -8, 16 -2, 14 8 C 12 20, -6 24, -16 14 C -28 2, -20 -22, 0 -26 C 22 -30, 36 -10, 34 10" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/></svg>
