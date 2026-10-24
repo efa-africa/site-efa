@@ -256,6 +256,21 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .cote-parc>div{display:flex;flex-direction:column;gap:10px;min-width:0}
 .cote-t{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
 .creuse-tete{grid-column:1/-1;margin-top:8px}
+.pv-z{grid-column:1/-1}
+details.pv{background:var(--creme,#F5EFE2);border-radius:10px;padding:10px 14px}
+details.pv>summary{cursor:pointer;font-weight:700;font-size:14.5px;list-style:none}
+details.pv>summary::before{content:"✎ ";color:var(--corail,#E44828)}
+details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);padding:10px 12px;border:1px solid var(--line,#E2D8C4);border-radius:8px;background:#fff;color:var(--ink,#2A3142)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pv-r{font-size:13.5px;color:var(--ink2,#4E5566);margin:8px 0 0}
+.pv-point{margin-top:8px;background:var(--nuit,#0B1220);color:#fff;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.pv-point .chips button{font:700 14px var(--f-body);border:0;border-radius:999px;padding:8px 14px;background:#fff;color:var(--nuit,#0B1220);cursor:pointer}
+.ce-etat{background:var(--nuit,#0B1220);color:#E8EDF5;border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.ce-etat b.t{font-family:var(--f-display);font-size:clamp(20px,2.4vw,26px);color:#fff}
+.ce-etat .mods{display:flex;flex-wrap:wrap;gap:6px}
+.ce-etat .mods span{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:#111B2F;color:#C9D1DE}
+.ce-etat .mods span.ok{background:#3CCB7F;color:#0B1220}
+.ce-etat a.btn{align-self:flex-start}
 .pc-liste{display:flex;flex-direction:column;gap:10px;margin-top:10px}
 .pc-l{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--line,#E2D8C4)}
 .pc-l b{font-family:var(--f-display);font-size:16px;color:var(--nuit,#0B1220);display:block}
@@ -417,6 +432,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
     <p class="note dfoot">Les définitions et résumés sont proposés par EFA. Les fiches complètes sont hébergées sur notre publication Substack. Les conditions d’accès sont précisées sur chaque fiche.</p>
   </section>
   <section id="certificat" role="tabpanel" aria-labelledby="t-certificat" hidden>
+    <div class="ce-etat" id="ce-etat" hidden></div>
     <div class="ce-hero">
       <div>
         <p class="kick2">Certificat EFA Fondations · Pilote gratuit</p>
@@ -552,7 +568,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
   </div>
 </footer>
 <script src="dico.js"></script>
-<script src="plan-efa.js?v=2026102302"></script>
+<script src="plan-efa.js?v=2026102401"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -761,17 +777,76 @@ var OUTILS = [
       '<div class="duo"><button type="button" class="btn btn-main" data-act="demarrer" data-garder="1">Commencer et garder sur ce téléphone</button><button type="button" class="btn btn-line" data-act="demarrer" data-garder="0">Commencer sans garder</button></div>'+
       '<p class="small">Sans garder, le cahier s’efface à la fermeture du navigateur&nbsp;: pour un défi de sept jours, mieux vaut le garder. Il reste sur ce téléphone, rien n’est envoyé à EFA.</p></section>';
   }
+  /* Une seule progression : défis du cahier et modules du certificat cochent les étapes des parcours */
+  function lireCert(){ try{ return JSON.parse(localStorage.getItem("efa-certificat-fondations-pilote")||"{}")||{}; }catch(e){ return {}; } }
+  function syncProgression(){
+    var DP=window.EFA_PARCOURS; if(!DP) return;
+    var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){} st.faits=st.faits||{};
+    var c=CH.lire(), fin=c?c.semaines.filter(function(x){return x.fini;}):[], cert=lireCert(), val=cert.valides||{}, change=false;
+    DP.parcours.forEach(function(p){ p.etapes.forEach(function(e,i){
+      var k=p.id+"."+i, ok=false;
+      if(e.type==="Défi" && e.lien && e.lien.indexOf("#cahier")>=0){
+        if(e.lien.indexOf("activite")>=0) ok=fin.some(function(x){return x.type==="poste-7j"&&x.poste==="activite";});
+        else if(/plafond/i.test(e.titre)) ok=fin.some(function(x){return x.type==="plafond-7j";});
+        else ok=fin.some(function(x){return x.type==="poste-7j";});
+      }
+      var m=/Module (\d)/.exec(e.titre); if(m && e.lien && e.lien.indexOf("certificat")>=0) ok=!!val[m[1]];
+      if(ok && !st.faits[k]){ st.faits[k]=1; change=true; }
+    }); });
+    if(change){ try{ localStorage.setItem("efa_parcours_v1",JSON.stringify(st)); }catch(e){} }
+  }
+  /* Carnet de preuves : une preuve par parcours, et un point à 30 jours */
+  var INDICE={P1:"Mes 3 postes de fuite : … · Mon flux net du mois : … F",P2:"Prévu / réel ce mois-ci : … F / … F",P3:"Mon enveloppe solidarité : … F par mois. Ma règle : prêt ou cadeau, je le dis avant.",P4:"Ma réserve aujourd’hui : … semaines de dépenses. Prochain palier : …",P5:"Mon prochain tour, le … : … F. Ce que j’en ferai : …",P6:"Mes dettes, de la plus chère à la moins chère : …",P7:"La somme attendue : … F. Ma répartition : …",P8:"L’entreprise étudiée : … En une phrase : … Sa limite : …",P9:"Mon effort par rentrée : … F. Date de révision : …",P10:"Mes frais du mois : … F. Ce que je change : …",P11:"Ma poche activité : … · Ma poche personnelle : … · Ce que l’activité me verse : … F",P12:"Mes grosses dépenses de l’année : … · À garder chaque mois : … F",P13:"Budget du projet : … F · Financement : … · Vérifications faites : …"};
+  function jourISO(d){ return d.toISOString().slice(0,10); }
+  function dans30(){ var d=new Date(); d.setDate(d.getDate()+30); return jourISO(d); }
+  function dateFr(iso){ try{ return new Date(iso+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}); }catch(e){ return iso; } }
+  function vuePreuve(p,st){
+    var pr=(st.preuves||{})[p.id];
+    var h='<details class="pv"><summary>'+(pr?'Ma preuve · notée le '+esc(dateFr(pr.d)):'Noter ma preuve')+'</summary><p class="small">'+esc(p.preuve)+'</p>'+
+      '<label class="vh" for="pv-'+p.id+'">Ma preuve</label><textarea id="pv-'+p.id+'" rows="3" maxlength="600" placeholder="'+esc(INDICE[p.id]||"")+'">'+esc(pr?pr.t:"")+'</textarea>'+
+      '<button type="button" class="btn btn-dark" data-preuve="'+p.id+'">'+(pr?'Mettre à jour':'Enregistrer ma preuve')+'</button></details>';
+    if(pr&&pr.r){
+      if(pr.bilan) h+='<p class="pv-r">Point du '+esc(dateFr(pr.bilan.d))+' : <b>'+esc({tenu:"tenu",partie:"en partie",non:"pas encore"}[pr.bilan.v]||"")+'</b></p>';
+      else if(pr.r<=jourISO(new Date())) h+='<div class="pv-point"><b>C’est le moment de faire le point : avez-vous tenu ce que vous aviez noté ?</b><div class="chips"><button type="button" data-point="'+p.id+'" data-v="tenu">Oui, tenu</button><button type="button" data-point="'+p.id+'" data-v="partie">En partie</button><button type="button" data-point="'+p.id+'" data-v="non">Pas encore</button></div></div>';
+      else h+='<p class="pv-r">Point prévu le '+esc(dateFr(pr.r))+' : on vous demandera si vous avez tenu.</p>';
+    }
+    return h;
+  }
+  document.addEventListener("click",function(e){
+    var b=e.target.closest&&e.target.closest("[data-preuve],[data-point]"); if(!b) return;
+    var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(x){} st.preuves=st.preuves||{};
+    if(b.hasAttribute("data-preuve")){
+      var id=b.getAttribute("data-preuve"), t=(document.getElementById("pv-"+id)||{}).value||""; if(!t.trim()) return;
+      var anc=st.preuves[id]; st.preuves[id]={t:t.trim().slice(0,600),d:jourISO(new Date()),r:anc&&anc.r?anc.r:dans30(),bilan:anc?anc.bilan:null};
+      mesure("preuve-"+id);
+    } else { var pid=b.getAttribute("data-point"); if(st.preuves[pid]) st.preuves[pid].bilan={v:b.getAttribute("data-v"),d:jourISO(new Date())}; mesure("point30-"+pid+"-"+b.getAttribute("data-v")); }
+    try{ localStorage.setItem("efa_parcours_v1",JSON.stringify(st)); }catch(x){}
+    rendreCahier("");
+  });
   /* Mes parcours : progression lue dans efa_parcours_v1 (la même que parcours.html et le bloc « Et ensuite ? ») */
+  function vueCertificat(){
+    var el=document.getElementById("ce-etat"); if(!el) return;
+    var cert=lireCert(), val=cert.valides||{}, n=0, prochain=0;
+    for(var i=1;i<=8;i++){ if(val[i]) n++; else if(!prochain) prochain=i; }
+    if(!n && !cert.reussite){ el.hidden=true; return; }
+    syncProgression();
+    var mods=""; for(var j=1;j<=8;j++) mods+='<span class="'+(val[j]?"ok":"")+'">Module '+j+'</span>';
+    el.innerHTML='<span class="cote-t" style="color:#F09680">Votre avancement</span><b class="t">'+(cert.reussite?"Certificat obtenu. Bravo !":n+" module"+(n>1?"s":"")+" validé"+(n>1?"s":"")+" sur 8")+'</b><div class="mods">'+mods+'</div>'+
+      '<p style="margin:0;color:#C9D1DE">'+(cert.reussite?"Partagez votre badge, puis passez au niveau suivant avec vos parcours.":(prochain?"Prochain module : "+prochain+". L’examen final se débloque une fois les 8 modules validés.":"Les 8 modules sont validés : l’examen final est débloqué."))+' Chaque module validé coche aussi l’étape de son parcours.</p>'+
+      '<a class="btn btn-main" href="certificat-pilote.html">'+(cert.reussite?"Voir mon certificat":(prochain?"Continuer le module "+prochain:"Passer l’examen"))+'</a>';
+    el.hidden=false;
+  }
   function vueParcours(){
     var DP=window.EFA_PARCOURS; if(!DP) return "";
+    syncProgression();
     var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){}
     var faits=st.faits||{}, lignes=[];
     DP.parcours.forEach(function(p){
       var dispo=0, n=0, suivante=null;
       p.etapes.forEach(function(e,i){ if(!e.ok||!e.ess) return; dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
-      if(!n && st.actif!==p.id) return;
+      if(!n && st.actif!==p.id && !(st.preuves&&st.preuves[p.id])) return;
       var href=suivante?(/^https?:/.test(suivante.lien)?suivante.lien:suivante.lien.split("#")[0]+(suivante.lien.indexOf("?")<0?"?":"&")+"parcours="+p.id+(suivante.lien.indexOf("#")>=0?"#"+suivante.lien.split("#").slice(1).join("#"):"")):("parcours.html#"+p.id);
-      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>Parcours '+esc(p.id.slice(1))+' · '+esc(p.titre)+' · '+n+' sur '+dispo+' étapes</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a></div>');
+      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>Parcours '+esc(p.id.slice(1))+' · '+esc(p.titre)+' · '+n+' sur '+dispo+' étapes</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a><div class="pv-z">'+vuePreuve(p,st)+'</div></div>');
     });
     return '<section class="wk pc"><p class="over">Mes parcours</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous mes parcours</a></p>'
       :'<h3>Aucun parcours commencé</h3><p class="small">Partez de votre problème : chaque étape faite s’affichera ici.</p><a class="btn btn-main" href="#parcours">Choisir mon parcours</a>')+'</section>';
@@ -807,8 +882,6 @@ var OUTILS = [
     } else if(cur&&nouveau){ h+='<section class="wk"><p class="over">Un défi est déjà en cours</p><h3>'+titreSemaine(cur,idx)+'</h3><p class="small">Terminez-le avant d’en commencer un autre&nbsp;: un poste à la fois.</p><a class="btn btn-dark" href="#cahier" style="justify-self:start">Reprendre mon défi</a></section>'; }
     else h+=vueNouveau(c,poste);
     if(c.pistes&&c.pistes.liste.length) h+='<section class="wk"><p class="over">Mes pistes</p><h3>D’après mon diagnostic du '+esc(dateCourte(c.pistes.date))+'</h3><div class="pistes-p">'+c.pistes.liste.map(function(p){var m=E.PISTES[p.id]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a">'+esc(p.action)+'</span>'+(m?'<a class="lnk" href="#plan/'+esc(m.sujet)+'" style="justify-self:start">Voir le plan</a>':'')+'</article>';}).join("")+'</div><a class="lnk" href="ou-est-passe-mon-argent.html?src=cahier">Refaire le diagnostic</a></section>';
-    var PSJ={"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"};
-    if(c.sujets.length) h+='<section class="wk"><p class="over">Mes problèmes suivis</p><div class="chips">'+c.sujets.map(function(k){var s=E.sujet(k);return s?'<a href="parcours.html#'+(PSJ[k]||"P1")+'">'+esc(s.titre)+'</a>':'';}).join("")+'</div></section>';
     var fin=c.semaines.filter(function(s){return s.fini;});
     if(fin.length) h+='<section class="wk"><p class="over">Mes défis terminés</p><div class="hist">'+c.semaines.map(function(s,i){ if(!s.fini) return ""; var b=s.bilan||CH.calculBilan(s);
       return '<div><b>'+titreSemaine(s,i)+'</b><span>'+F(b.semaine)+'</span><small>Commencée le '+esc(dateCourte(s.debut))+(s.type==="plafond-7j"?(b.tenu?' · plafond tenu':' · plafond dépassé'):(s.estimation!=null?' · estimation '+F(s.estimation):''))+(b.plafondChoisi?' · plafond suivant '+F(b.plafondChoisi):'')+'</small></div>'; }).join("")+'</div></section>';
@@ -903,7 +976,7 @@ var OUTILS = [
       (function(){ var M={"ou-passe-mon-argent":"P1","investir-brvm":"P8","proches":"P3","mobile-money":"P10","budget":"P2","grosse-somme":"P7","retraite":"P9"}, id=M[parts[1]], r=document.getElementById("plan-renvoi"), DP=window.EFA_PARCOURS;
         if(!r) return; var pp=id&&DP?DP.parcours.filter(function(x){return x.id===id;})[0]:null;
         r.innerHTML=pp?'Ce plan fait partie du parcours '+id.slice(1)+' : « '+esc(pp.probleme)+' ». <a href="parcours.html#'+id+'">Suivre le parcours étape par étape →</a>':'Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver mon parcours →</a>'; })(); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
-    if(k==="certificat"){ montre("certificat"); cadrer("certificat",false); return; }
+    if(k==="certificat"){ montre("certificat"); vueCertificat(); cadrer("certificat",false); return; }
     if(k===""||k==="parcours"){ montre("parcours"); if(k) cadrer("parcours",false); return; }
     if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
     var outil=OUTILS.filter(function(o){return o.id===k;})[0];
