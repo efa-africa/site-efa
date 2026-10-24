@@ -468,6 +468,8 @@ a.st-card{text-decoration:none}
 .bx-nl-n{margin:0;font-size:12.5px;color:var(--mute)}
 .bx-nl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .bx-nl-top{margin-top:18px;padding:18px 20px}
+.bx-nl-conf{margin:0;padding:14px 16px;border-radius:10px;background:#E44828;color:#fff;font-size:15.5px;line-height:1.5}
+.bx-nl-conf b{color:#fff}
 .bx-nl-txt,.bx-nl-act{display:grid;gap:8px;min-width:0}
 .bx-nl-top h2{font-size:clamp(22px,2.6vw,28px)}
 @media (max-width:560px){.bx-nl-top .bx-nl-p{display:none}}
@@ -1487,6 +1489,15 @@ var BRVM_FORM_URL='https://b46b1615.sibforms.com/serve/MUIFAAPqeKYInXpC5639w_t_3
 (function(){
   var box=document.getElementById('brvm-bulletin'); if(!box||!BRVM_FORM_URL) return;
   box.hidden=false;
+  /* Retour du lien de confirmation (Brevo redirige vers methode.html?bulletin=ok#brvm) : inscription confirmée, gardée sur cet appareil */
+  var K='efa_bulletin_brvm', etat=''; try{ etat=localStorage.getItem(K)||''; }catch(e){}
+  if(/[?&]bulletin=ok/.test(location.search)){ etat='ok'; try{ localStorage.setItem(K,'ok'); }catch(e){} try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:'bulletin-brvm-confirme',title:'bulletin-brvm-confirme',event:true}); }catch(e){}
+    try{ history.replaceState(null,'',location.pathname+location.hash); }catch(e){} }
+  if(etat==='ok'){
+    var act=box.querySelector('.bx-nl-act');
+    if(act) act.innerHTML='<p class="bx-nl-conf"><b>Inscription confirmée.</b> Vous recevrez « La semaine à la BRVM » chaque dimanche, dans votre boîte mail. Pensez à ajouter newsletter@efa.africa à vos contacts pour qu’il n’arrive pas dans les spams.</p><p class="bx-nl-n">Contenu pédagogique, ne constitue pas un conseil en investissement.</p>';
+    return;
+  }
   var f=document.getElementById('bx-nl-f'), m=document.getElementById('bx-nl-m'), b=f.querySelector('button[type=submit]');
   f.addEventListener('submit',function(e){
     e.preventDefault();
