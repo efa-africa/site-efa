@@ -405,6 +405,20 @@ a.st-card{text-decoration:none}
 
 /* La BRVM expliquée par EFA : données à gauche, quatre blocs à droite */
 .bx-top{margin-top:22px}
+.bx-ecole{background:#E44828;color:#fff;border-radius:14px;padding:18px 20px;display:grid;gap:14px;margin-bottom:22px}
+.bx-ec-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;opacity:.9}
+.bx-ecole h2{margin:4px 0 0;font-family:var(--disp);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.12;color:#fff}
+.bx-ec-p{margin:6px 0 0;font-size:15.5px;line-height:1.45;color:#fff;opacity:.95}
+.bx-ec-act{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bx-ec-b{display:flex;flex-direction:column;gap:2px;background:rgba(11,18,32,.28);color:#fff;text-decoration:none;border-radius:10px;padding:12px 14px;min-width:0}
+.bx-ec-b.p{background:#0B1220}
+.bx-ec-b:hover{background:#0B1220}
+.bx-ec-b:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.bx-ec-b b{font-size:16px;font-weight:800}
+.bx-ec-b small{font-size:13px;opacity:.85;line-height:1.3}
+@media (min-width:900px){.bx-ecole{grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);align-items:center;gap:24px}}
+@media (max-width:560px){.bx-ec-act{grid-template-columns:minmax(0,1fr)}.bx-ec-p{display:none}.bx-ec-b{flex-direction:row;justify-content:space-between;align-items:baseline;gap:10px}}
+
 .bx-top h1{margin:8px 0 0}
 .bx-lede{color:var(--ink2);max-width:60ch;margin:8px 0 0;font-size:16px;line-height:1.55}
 .bx-pp{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
@@ -731,6 +745,14 @@ a.st-card{text-decoration:none}
     <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
     <!-- LA BRVM EXPLIQUÉE PAR EFA : à gauche les données de la séance, à droite quatre blocs pour comprendre. Aucune société du groupe Orange dans les contenus éditoriaux (décision du 23/10/2026). -->
     <div class="wrap bx-top">
+      <section class="bx-ecole" aria-labelledby="bx-ec-t">
+        <div class="bx-ec-txt"><p class="bx-ec-k">École de la Bourse · gratuit</p><h2 id="bx-ec-t">Apprendre à investir à la BRVM</h2><p class="bx-ec-p">Des formations courtes en écrans, avec des cas, des quiz et vos propres chiffres.</p></div>
+        <div class="bx-ec-act">
+          <a class="bx-ec-b p" href="bourse-essentiel.html?src=brvm" data-goatcounter-click="brvm-ecole-essentiel"><b>L’essentiel</b><small>5 formations · 3 h</small></a>
+          <a class="bx-ec-b" href="bourse-pro.html?src=brvm" data-goatcounter-click="brvm-ecole-pro"><b>Approfondi</b><small>Comme un pro · 8 modules</small></a>
+          <a class="bx-ec-b" href="ecole-bourse.html?src=brvm" data-goatcounter-click="brvm-ecole-simulation"><b>Simulation</b><small>Une année en Bourse · 10 min</small></a>
+        </div>
+      </section>
       <p class="kick">La BRVM expliquée par EFA</p>
       <h1>La BRVM en une séance</h1>
       <p class="bx-lede">Les chiffres de la dernière séance d’abord. À droite, de quoi les comprendre avant d’investir. Vous débutez&nbsp;? <a class="bx-pp" href="premiers-pas-brvm.html?src=brvm">Premiers pas à la BRVM&nbsp;: 10 choses à savoir →</a></p>
