@@ -73,11 +73,11 @@
   var QS = [
     { id: "q1", t: "À la fin du mois, savez-vous où est passé votre argent ?", o: [["oui", "Oui, à peu près"], ["non", "Non, pas vraiment"]] },
     { id: "q2", t: "Avez-vous de côté au moins un mois de dépenses, hors tontine ?", o: [["oui", "Oui"], ["non", "Non"], ["nsp", "Je ne sais pas"]] },
-    { id: "q3", t: "Qu’est-ce qui pèse le plus en ce moment ?", o: [["P3", "Les demandes de mes proches"], ["P6", "Mes dettes"], ["P5", "Ma tontine"], ["P5", "Une grosse somme qui arrive"], ["P2", "Tenir mon budget"], ["P10", "Les frais et les arnaques"], ["P2", "Mon activité, mon commerce"], ["P2", "La rentrée, les fêtes, les funérailles"], ["P13", "Construire ma maison"], ["P14", "Protéger ma famille d’un coup dur"], ["P8", "Faire fructifier mon argent"], ["P9", "Préparer ma retraite"]] }
+    { id: "q3", t: "Qu’est-ce qui pèse le plus en ce moment ?", o: [["P3", "Les demandes de mes proches"], ["P6", "Mes dettes"], ["P5", "Ma tontine"], ["M14", "Une grosse somme qui arrive"], ["P2", "Tenir mon budget"], ["P10", "Les frais et les arnaques"], ["M9", "Mon activité, mon commerce"], ["M10", "La rentrée, les fêtes, les funérailles"], ["P13", "Construire ma maison"], ["P14", "Protéger ma famille d’un coup dur"], ["P8", "Faire fructifier mon argent"], ["P9", "Préparer ma retraite"]] }
   ];
   function orienter(r1, r2, r3) {
     var L = [], a = function (id) { if (L.indexOf(id) < 0) L.push(id); };
-    if (["P3", "P6", "P5", "P10"].indexOf(r3) >= 0) a(r3);
+    if (["P3", "P6", "P5", "P10", "M9", "M10", "M14"].indexOf(r3) >= 0) a(r3);
     if (r1 === "non") a("P1");
     if (r3 === "P2") a("P2");
     if (r2 !== "oui") a("P4");
