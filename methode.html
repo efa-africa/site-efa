@@ -501,13 +501,13 @@ a.st-card{text-decoration:none}
   <!-- RUBRIQUE ÉTUDES -->
   <section class="tab" id="tab-etudes" data-tab="etudes">
     <div class="wrap studies">
-      <h2 id="st-count">1 étude publiée · 1 enquête en cours</h2>
+      <h2 id="st-count">1 étude publiée · 1 enquête en cours · Africa 2075</h2>
       <label class="st-pick" for="st-sel"><span>Explorer les études</span>
         <select id="st-sel">
           <option value="">Toutes les études</option>
           <optgroup label="Par thème"><option value="t:tontine">Tontine</option></optgroup>
-          <optgroup label="Par type"><option value="t:donnees">Données publiques</option><option value="t:enquete">Enquêtes EFA</option></optgroup>
-          <optgroup label="Par étude"><option value="e:etude-1">N° 1 · La tontine en chiffres</option><option value="e:etude-2">N° 2 · L’argent de la tontine (provisoire)</option></optgroup>
+          <optgroup label="Par type"><option value="t:donnees">Données publiques</option><option value="t:enquete">Enquêtes EFA</option><option value="t:prospective">Prospective · Africa 2075</option></optgroup>
+          <optgroup label="Par étude"><option value="e:etude-1">N° 1 · La tontine en chiffres</option><option value="e:etude-2">N° 2 · L’argent de la tontine (provisoire)</option><option value="e:africa-2075">Africa 2075 · n° 1</option></optgroup>
         </select>
       </label>
     </div>
@@ -532,6 +532,17 @@ a.st-card{text-decoration:none}
           <ul class="f1-k"><li><b>251</b><span>répondants</span></li><li><b>160</b><span>participants à une tontine</span></li><li><b>12 oct.</b><span>données arrêtées en 2026</span></li><li><b class="prov">Provisoire</b><span>enquête en cours</span></li></ul>
           <div class="f1-a"><a class="p" href="#res-etude-2">Lire les résultats provisoires</a><button type="button" class="s soon" aria-disabled="true" aria-describedby="f2-soon">Rapport PDF · bientôt</button><a class="s" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener" onclick="window.efaCompte&&efaCompte('enquete-fiche-etude2')">Répondre à l’enquête</a></div>
           <p class="f1-src" id="f2-soon">Le rapport PDF paraîtra une fois les 300 réponses atteintes. Source&nbsp;: enquête EFA «&nbsp;L’argent de la tontine&nbsp;», échantillon non représentatif.</p>
+        </div>
+      </article>
+      <article class="f1" id="africa-2075" data-etude="prospective" aria-labelledby="a2075-t">
+        <a class="f1-cov" href="africa-2075-n1.html" aria-label="Lire Africa 2075 n° 1"><img src="etudes/africa-2075-n1-entete.jpg" alt="Africa 2075, Frontières de croissance, par Élysée Johnson" width="1600" height="900" loading="lazy"><span>Nouveau · n° 1</span></a>
+        <div class="f1-t">
+          <p class="kick">Revue de prospective · Africa 2075 · n° 1 · octobre 2026</p>
+          <h2 id="a2075-t">Africa 2075 · Frontières de croissance</h2>
+          <p class="f1-s">Ce que le FMI, la Banque mondiale, McKinsey, le Forum de Davos et les grandes institutions annoncent, vérifié à la source, et ce que cela change pour l’Afrique francophone et anglophone. N° 1&nbsp;: «&nbsp;La croissance revient. Qui va la garder&nbsp;?&nbsp;»</p>
+          <ul class="f1-k"><li><b>5</b><span>frontières de croissance</span></li><li><b>11</b><span>institutions et revues suivies</span></li><li><b>7 min</b><span>de lecture</span></li><li><b class="ok">N° 1</b><span>octobre 2026</span></li></ul>
+          <div class="f1-a"><a class="p" href="africa-2075-n1.html" onclick="window.efaCompte&&efaCompte('a2075-n1-fiche')">Lire le n° 1</a><a class="s" href="index.html#guide">Recevoir les prochains numéros</a></div>
+          <p class="f1-src">Par Élysée Johnson, fondateur d’EFA. Sources&nbsp;: FMI, Banque mondiale, McKinsey Global Institute, GSMA, Commission de l’UEMOA, octobre 2026.</p>
         </div>
       </article>
       <p class="st-none" id="st-none" hidden>Aucune étude dans ce filtre pour l’instant.</p>
@@ -872,6 +883,7 @@ a.st-card{text-decoration:none}
 function efaTickerItems(D){
   var it=[
     {c:'EFA',t:'Nouveau : le diagnostic gratuit, six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
+    {c:'EFA',t:'Nouveau : Africa 2075, la revue de prospective d’EFA. N° 1 : « La croissance revient. Qui va la garder ? »',h:'africa-2075-n1.html'},
     {c:'EFA',t:'Nouvelle étude : « La tontine en chiffres », 19 pays, Global Findex 2025',h:'etude-tontine-en-chiffres.html'},
     {c:'EFA',t:'Enquête en cours : « L’argent de la tontine », 251 répondants, résultats provisoires',h:'methode.html#etudes'},
     {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
@@ -1123,8 +1135,8 @@ safe('études',function(){
     var n=0;
     fiches.forEach(function(e){var ok=!v||(v.indexOf('t:')===0?(' '+e.dataset.etude+' ').indexOf(' '+v.slice(2)+' ')>-1:e.id===v.slice(2));e.hidden=!ok;if(ok)n++;});
     if(sel.value!==v) sel.value=v;
-    var enq=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' enquete ')>-1;}).length, pub=fiches.length-enq;
-    var tot=pub+(pub>1?' études publiées':' étude publiée')+(enq?' · '+enq+(enq>1?' enquêtes en cours':' enquête en cours'):'');
+    var enq=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' enquete ')>-1;}).length, rev=fiches.filter(function(e){return (' '+e.dataset.etude+' ').indexOf(' prospective ')>-1;}).length, pub=fiches.length-enq-rev;
+    var tot=pub+(pub>1?' études publiées':' étude publiée')+(enq?' · '+enq+(enq>1?' enquêtes en cours':' enquête en cours'):'')+(rev?' · Africa 2075':'');
     document.getElementById('st-count').textContent=v?(n+(n>1?' fiches affichées':' fiche affichée')+' · '+tot):tot;
     document.getElementById('st-none').hidden=n>0;
   }
