@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
-/* Page « Mes parcours » : en-tête nuit, choix du profil, parcours en cartes papier dépliables, programmes. Charte efa.africa du 23/10/2026. */
+/* Page « Mes parcours » : en-tête nuit, choix du problème, trois questions, parcours en cartes papier dépliables, programmes. Charte efa.africa du 23/10/2026. */
 :root{
   --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
@@ -69,7 +69,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-sp
 .lien-souligne{font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
 
 /* En-tête de page */
-.hero{background:var(--nuit);color:#E8EDF5;padding-block:48px 56px}
+.hero{background:var(--nuit);color:#E8EDF5;padding-block:36px 40px}
 .hero .mission{font-size:clamp(16px,2vw,20px);font-weight:700;line-height:1.4;color:#C9D1DE;max-width:34em}
 .hero .mission .cercle{color:#EC6243;font-weight:800}.hero .mission .spirale{color:var(--soft-bleu);font-weight:800}
 .hero .surtitre{color:var(--soft-corail);display:block;margin-top:36px}
@@ -82,23 +82,36 @@ h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-sp
 .chiffres strong{font-family:var(--f-display);font-size:clamp(20px,2.2vw,26px);color:#fff}
 .chiffres span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8E98AA}
 
-section.bloc{padding-block:56px 8px}
+section.bloc{padding-block:40px 8px}
 section.bloc .intro{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;max-width:44em}
 section.bloc .intro p{color:var(--ink2)}
 
-/* Profils */
-.profils{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-@media (max-width:820px){.profils{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:460px){.profils{grid-template-columns:1fr}}
-.profil{all:unset;box-sizing:border-box;cursor:pointer;background:var(--papier);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:4px;min-width:0;font-family:var(--f-body);color:var(--ink)}
-.profil strong{font-family:var(--f-display);font-size:18px;color:var(--nuit)}
-.profil .lect{font-size:15px;color:var(--ink2)}
-.profil .vers{font-size:14px;font-weight:800;color:var(--corail);margin-top:4px}
-.profil:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
-.profil[aria-pressed="true"]{background:var(--nuit)}
-.profil[aria-pressed="true"] strong,.profil[aria-pressed="true"] .lect,.profil[aria-pressed="true"] .etiquette{color:#fff}
-.profil[aria-pressed="true"] .vers{color:var(--soft-corail)}
+
 .conseil{margin-top:14px;font-size:15px;color:var(--ink2)}
+.problemes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.problemes{grid-template-columns:1fr}}
+.pb{all:unset;box-sizing:border-box;cursor:pointer;background:var(--papier);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;min-width:0;font-family:var(--f-body)}
+.pb:hover{background:#fff}
+.pb:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.pb .pb-txt{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pb q{font-family:var(--f-display);font-weight:700;font-size:18px;line-height:1.25;color:var(--nuit);quotes:"«\00a0" "\00a0»"}
+.pb .pb-vers{font-size:14px;font-weight:700;color:var(--corail)}
+.pb .pb-fl{font-size:22px;color:var(--ink3)}
+.pb.zero{background:var(--nuit)}
+.pb.zero q{color:#fff}.pb.zero .pb-vers{color:var(--soft-corail)}.pb.zero .pb-fl{color:#8E98AA}
+.quiz{background:var(--papier);border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:22px}
+.quiz fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.quiz legend{font-family:var(--f-display);font-weight:700;font-size:clamp(18px,1.8vw,21px);color:var(--nuit);margin-bottom:6px;padding:0}
+.quiz legend span{font-family:var(--f-body);font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--corail);display:block;margin-bottom:6px}
+.quiz .opts{display:flex;flex-wrap:wrap;gap:8px}
+.quiz label{display:inline-flex;align-items:center;gap:8px;background:var(--creme);border-radius:var(--r-pastille);padding:10px 16px;min-height:44px;cursor:pointer;font-size:16px}
+.quiz input{accent-color:var(--corail);width:18px;height:18px;margin:0}
+.quiz label:has(input:checked){background:var(--nuit);color:#fff}
+.quiz .err{color:var(--erreur,#B3261E);font-weight:700;font-size:15px}
+.quiz-res{margin-top:12px;background:var(--nuit);color:#E8EDF5;border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:12px}
+.quiz-res h3{color:#fff;font-size:clamp(20px,2.4vw,26px)}
+.quiz-res ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;color:#C9D1DE}
+.quiz-res ol a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
 
 /* Parcours */
 .liste{display:flex;flex-direction:column;gap:12px}
@@ -189,24 +202,32 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
     <div class="col">
       <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l’argent qui tourne, à la <span class="spirale">spirale</span>, l’argent qui reste.</p>
       <span class="surtitre">Mes parcours</span>
-      <h1>Apprendre pas à pas, jusqu’à un résultat.</h1>
-      <p class="chapo">Chaque parcours part d’une situation que vous reconnaissez et s’arrête quand vous avez fait quelque chose avec votre propre argent. Comprendre, appliquer, agir, revenir.</p>
+      <h1>Qu’est-ce qui vous préoccupe ?</h1>
+      <p class="chapo">Choisissez votre problème : un parcours vous guide, étape par étape, jusqu’à un résultat concret avec votre propre argent.</p>
       <div class="acts">
-        <a class="bouton bouton-principal" href="#profils">Trouver mon parcours</a>
-        <a class="lien-souligne" href="diagnostic.html?src=parcours">Ou faire mon diagnostic gratuit, 6 min</a>
+        <a class="lien-souligne" href="#questions">Je ne sais pas : 3 questions</a>
       </div>
-      <div class="chiffres" id="chiffres"></div>
     </div>
   </div>
 
-  <section class="bloc col" id="profils" aria-labelledby="t-profils">
+  <section class="bloc col" id="problemes" aria-labelledby="t-pb">
     <div class="intro">
-      <span class="surtitre">D’où partez-vous ?</span>
-      <h2 class="titre-section" id="t-profils">Choisissez ce qui vous ressemble</h2>
-      <p>Votre profil du diagnostic, ou la situation qui vous parle le plus. Nous mettons en avant les trois parcours par lesquels commencer.</p>
+      <span class="surtitre">Partir de votre problème</span>
+      <h2 class="titre-section" id="t-pb">Lequel vous ressemble ?</h2>
+      <p>Touchez la phrase qui décrit le mieux votre situation : le parcours correspondant s’ouvre.</p>
     </div>
-    <div class="profils" id="liste-profils"></div>
+    <div class="problemes" id="liste-problemes"></div>
     <p class="conseil" id="conseil" hidden></p>
+  </section>
+
+  <section class="bloc col" id="questions" aria-labelledby="t-q">
+    <div class="intro">
+      <span class="surtitre">Vous hésitez ?</span>
+      <h2 class="titre-section" id="t-q">Trois questions pour trouver votre parcours</h2>
+      <p>Moins d’une minute. Rien n’est envoyé : la réponse s’affiche ici.</p>
+    </div>
+    <form class="quiz" id="quiz" novalidate></form>
+    <div class="quiz-res" id="quiz-res" role="status" hidden></div>
   </section>
 
   <section class="bloc col" id="tous" aria-labelledby="t-tous">
@@ -325,12 +346,50 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
 
   // Chiffres
   var nbEt = 0, nbOk = 0; D.parcours.forEach(function(p){ p.etapes.forEach(function(s){ nbEt++; if(s.ok) nbOk++; }); });
-  $("chiffres").innerHTML = '<div><strong>'+D.parcours.length+'</strong><span>Parcours</span></div><div><strong>'+D.programmes.length+'</strong><span>Programmes</span></div><div><strong>'+nbOk+'</strong><span>Étapes en ligne</span></div><div><strong>Gratuit</strong><span>Sans inscription</span></div>';
+  if($("chiffres")) $("chiffres").innerHTML = '<div><strong>'+D.parcours.length+'</strong><span>Parcours</span></div><div><strong>'+D.programmes.length+'</strong><span>Programmes</span></div><div><strong>'+nbOk+'</strong><span>Étapes en ligne</span></div><div><strong>Gratuit</strong><span>Sans inscription</span></div>';
 
-  // Profils
-  $("liste-profils").innerHTML = D.profils.map(function(x){
-    return '<button class="profil" type="button" id="pr-'+x.id+'" data-p="'+x.parcours.join(" ")+'" aria-pressed="false"><span class="etiquette">'+esc(x.source.replace(/\s*\(.*\)/,""))+'</span><strong>'+esc(x.nom)+'</strong><span class="lect">'+esc(x.lecture)+'</span><span class="vers">Commencer par : '+x.parcours.map(nomCourt).join(" · ")+'</span></button>';
+  // Problèmes
+  var ordre = D.parcours.filter(function(p){return p.id!=="P0";}).concat(D.parcours.filter(function(p){return p.id==="P0";}));
+  $("liste-problemes").innerHTML = ordre.map(function(p){
+    var zero = p.id==="P0";
+    return '<button class="pb'+(zero?" zero":"")+'" type="button" '+(zero?'data-quiz="1"':'data-ouvrir="'+p.id+'"')+'><span class="pb-txt"><q>'+esc(p.probleme)+'</q><span class="pb-vers">'+(zero?"Répondre à 3 questions":esc(nomCourt(p.id))+" · "+esc(p.titre))+'</span></span><span class="pb-fl" aria-hidden="true">→</span></button>';
   }).join("");
+
+  // Trois questions
+  var QS = [
+    {id:"q1", t:"À la fin du mois, savez-vous où est passé votre argent ?", o:[["oui","Oui, à peu près"],["non","Non, pas vraiment"]]},
+    {id:"q2", t:"Avez-vous de côté au moins un mois de dépenses, en dehors de la tontine ?", o:[["oui","Oui"],["non","Non"],["nsp","Je ne sais pas"]]},
+    {id:"q3", t:"Qu’est-ce qui pèse le plus en ce moment ?", o:[["P3","Les demandes de mes proches"],["P6","Mes dettes"],["P5","Ma tontine"],["P7","Une grosse somme qui arrive"],["P2","Tenir mon budget"],["P10","Les frais et les arnaques"],["P8","Je veux faire fructifier mon argent"],["P9","Préparer ma retraite"]]}
+  ];
+  $("quiz").innerHTML = QS.map(function(q,i){
+    return '<fieldset><legend><span>Question '+(i+1)+' sur 3</span>'+esc(q.t)+'</legend><div class="opts">'+q.o.map(function(o){ return '<label><input type="radio" name="'+q.id+'" value="'+o[0]+'"> '+esc(o[1])+'</label>'; }).join("")+'</div></fieldset>';
+  }).join("") + '<p class="err" id="quiz-err" hidden>Répondez aux trois questions.</p><div><button class="bouton bouton-principal" type="submit">Voir mon parcours</button></div>';
+  function val(n){ var x=document.querySelector('input[name="'+n+'"]:checked'); return x?x.value:null; }
+  function orienter(r1,r2,r3){
+    var L=[], ajoute=function(id){ if(L.indexOf(id)<0) L.push(id); };
+    var urgent = ["P3","P6","P5","P7","P10"].indexOf(r3)>=0;
+    if(urgent) ajoute(r3);
+    if(r1==="non") ajoute("P1");
+    if(r3==="P2") ajoute("P2");
+    if(r2!=="oui") ajoute("P4");
+    if(r3==="P8"||r3==="P9"){ if(r2!=="oui") ajoute("P4"); ajoute(r3); }
+    if(r1==="non") ajoute("P2");
+    ["P2","P4","P8"].forEach(function(id){ if(L.length<3) ajoute(id); });
+    return L.slice(0,3);
+  }
+  $("quiz").addEventListener("submit",function(e){
+    e.preventDefault();
+    var r1=val("q1"), r2=val("q2"), r3=val("q3");
+    if(!r1||!r2||!r3){ $("quiz-err").hidden=false; return; }
+    $("quiz-err").hidden=true;
+    var L = orienter(r1,r2,r3);
+    $("quiz-res").hidden=false;
+    $("quiz-res").innerHTML = '<span class="surtitre" style="color:var(--soft-corail)">Votre parcours</span><h3>Commencez par : « '+esc(P[L[0]].probleme)+' »</h3><ol>'+L.map(function(id){ return '<li><a href="#'+id+'" data-ouvrir="'+id+'">'+esc(nomCourt(id))+' · '+esc(P[id].titre)+'</a></li>'; }).join("")+'</ol><div><a class="bouton bouton-principal" href="#'+L[0]+'" data-ouvrir="'+L[0]+'">Ouvrir ce parcours</a></div><p style="font-size:14px;color:#8E98AA;margin:0">Pour un bilan plus complet, <a style="color:#fff" href="diagnostic.html?src=parcours-quiz">faites le diagnostic gratuit (6 min)</a>.</p>';
+    recommander(L, null, false);
+    etat.quiz = L; ecrire(etat);
+    mesure("parcours-quiz-"+L[0]);
+    $("quiz-res").scrollIntoView({behavior:"smooth",block:"nearest"});
+  });
 
   // Parcours
   function progression(p){
@@ -351,7 +410,7 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
     var ext1 = premier && /^https?:/.test(premier) ? ' target="_blank" rel="noopener"' : "";
     return '<details class="parcours" id="'+p.id+'"><summary>'
       + '<span class="num">'+numero(p.id)+'</span>'
-      + '<span class="p-tete"><span class="etiquette">'+esc(p.theme)+'</span><h3>'+esc(p.titre)+'</h3><span class="obj">'+esc(p.objectif)+'</span></span>'
+      + '<span class="p-tete"><span class="etiquette">'+esc(nomCourt(p.id))+' · '+esc(p.titre)+'</span><h3>« '+esc(p.probleme)+' »</h3><span class="obj">À l’arrivée : '+esc(p.objectif.charAt(0).toLowerCase()+p.objectif.slice(1))+'</span></span>'
       + '<span class="p-cote"><span class="duree">'+esc(p.duree)+'</span><span class="fleche" aria-hidden="true">›</span></span>'
       + '<span class="barre" aria-hidden="true"><i style="width:'+(g.dispo?Math.round(g.faits/g.dispo*100):0)+'%"></i></span>'
       + '<span class="barre-txt">'+g.faits+' étape'+(g.faits>1?"s":"")+' faite'+(g.faits>1?"s":"")+' sur '+g.dispo+' en ligne</span>'
@@ -376,7 +435,7 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
     return '<article class="prog"><div class="prog-haut"><h3>'+esc(g.nom)+'</h3><span class="duree">'+esc(g.duree)+'</span></div><p class="pour">'+esc(g.pour)+(g.personnage && g.personnage!=="—" ? " · avec "+esc(g.personnage) : "")+'</p><div class="seq">'+seq+'</div><p class="arrivee"><span class="etiquette">À l’arrivée</span> '+esc(g.arrivee)+'</p></article>';
   }).join("");
 
-  // Profil choisi : mise en avant
+  // Mise en avant des parcours recommandés (questions ou diagnostic)
   var reco = [];
   function marquerReco(){
     document.querySelectorAll(".parcours").forEach(function(d){
@@ -384,24 +443,20 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
       d.classList.toggle("estompe", reco.length>0 && reco.indexOf(d.id)<0 && d.id!=="P0");
     });
   }
-  function choisirProfil(b, defiler){
-    var deja = b.getAttribute("aria-pressed")==="true";
-    document.querySelectorAll(".profil").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
-    if(deja){ reco=[]; $("conseil").hidden=true; etat.profil=null; ecrire(etat); marquerReco(); return; }
-    b.setAttribute("aria-pressed","true"); reco = b.dataset.p.split(" ");
-    etat.profil = b.id.slice(3); ecrire(etat);
+  function recommander(L, origine, defiler){
+    reco = L.slice(); marquerReco();
     $("conseil").hidden=false;
-    $("conseil").innerHTML = 'Commencez par <a class="lien-souligne" href="#'+reco[0]+'" data-ouvrir="'+reco[0]+'">'+esc(nomCourt(reco[0])+" · "+P[reco[0]].titre)+'</a>, puis '+reco.slice(1).map(function(id){return esc(nomCourt(id));}).join(" et ")+'. <button class="lien-souligne" type="button" id="tout" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer">Tout afficher</button>';
-    marquerReco();
-    mesure("parcours-profil-"+etat.profil);
-    if(defiler){ var d=$(reco[0]); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); } }
+    $("conseil").innerHTML = (origine ? esc(origine)+" : commencez" : "Commencez")+' par <a class="lien-souligne" href="#'+L[0]+'" data-ouvrir="'+L[0]+'">« '+esc(P[L[0]].probleme)+' »</a>'+(L.length>1?', puis '+L.slice(1).map(function(id){return esc(nomCourt(id));}).join(" et "):"")+'. <button class="lien-souligne" type="button" id="tout" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer">Tout afficher</button>';
+    if(defiler){ var d=$(L[0]); if(d){ d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); } }
   }
-  document.querySelectorAll(".profil").forEach(function(b){ b.addEventListener("click",function(){ choisirProfil(b,true); }); });
+  document.addEventListener("click",function(e){
+    if(e.target.closest && e.target.closest("[data-quiz]")){ e.preventDefault(); $("questions").scrollIntoView({behavior:"smooth",block:"start"}); }
+  });
 
   document.addEventListener("click",function(e){
     var t = e.target.closest("[data-ouvrir]");
     if(t){ var d=$(t.getAttribute("data-ouvrir")); if(d){ e.preventDefault(); d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+d.id);}catch(x){} } return; }
-    if(e.target.id==="tout"){ document.querySelectorAll(".profil").forEach(function(x){ x.setAttribute("aria-pressed","false"); }); reco=[]; $("conseil").hidden=true; etat.profil=null; ecrire(etat); marquerReco(); }
+    if(e.target.id==="tout"){ reco=[]; $("conseil").hidden=true; etat.quiz=null; ecrire(etat); marquerReco(); }
   });
   document.addEventListener("change",function(e){
     var k = e.target.getAttribute && e.target.getAttribute("data-k"); if(!k) return;
@@ -411,9 +466,11 @@ li.fait .e-nom a{text-decoration-color:var(--hausse)}
   document.addEventListener("toggle",function(e){ if(e.target.classList && e.target.classList.contains("parcours") && e.target.open){ etat.actif=e.target.id; ecrire(etat); } },true);
 
   rendre();
-  // Profil venant du diagnostic (?profil=…) ou mémorisé
-  var q = new URLSearchParams(location.search), pr = q.get("profil") || etat.profil;
-  if(pr && $("pr-"+pr)) choisirProfil($("pr-"+pr), !!q.get("profil"));
+  // Recommandation venant du diagnostic (?profil=…) ou des 3 questions déjà faites
+  var q = new URLSearchParams(location.search), pr = q.get("profil");
+  var PR = {}; D.profils.forEach(function(x){ PR[x.id]=x; });
+  if(pr && PR[pr]) recommander(PR[pr].parcours, "D’après votre diagnostic", !location.hash);
+  else if(etat.quiz && etat.quiz.length) recommander(etat.quiz, "D’après vos réponses", false);
   // Ouverture par l'adresse (#P5)
   var h = (location.hash||"").slice(1);
   if(h && P[h]){ var d=$(h); d.open=true; setTimeout(function(){ d.scrollIntoView({block:"start"}); },60); }
