@@ -1,0 +1,129 @@
+/* EFA · « Et ensuite ? » : la suite de chaque contenu, d'après les parcours d'apprentissage.
+   Chargé par efa-appli.js sur toutes les pages (ou directement : <script src="efa-suite.js" defer></script>).
+   - La page fait partie d'un parcours : affiche l'étape suivante, la progression et un bouton « J'ai fait cette étape ».
+   - Sinon : propose de choisir un parcours.
+   Parcours suivi : ?parcours=P5 dans l'adresse, sinon le dernier parcours ouvert, sinon le premier qui contient la page.
+   Progression gardée sur l'appareil (localStorage « efa_parcours_v1 », la même que parcours.html). Rien n'est envoyé. */
+(function () {
+  "use strict";
+  try { if (window.self !== window.top) return; } catch (e) { return; }
+  if (window.__efaSuite) return; window.__efaSuite = 1;
+
+  var EXCLUS = ["parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
+    "organisations.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
+  var page = (location.pathname.split("/").pop() || "index.html");
+  if (EXCLUS.indexOf(page) >= 0) return;
+  var CARREFOURS = ["outils.html"]; // pages qui regroupent plusieurs outils : carte générique
+  var KEY = "efa_parcours_v1";
+
+  function charger(cb) {
+    if (window.EFA_PARCOURS) return cb();
+    var s = document.createElement("script");
+    s.src = "parcours-efa.js?v=2026102401"; s.onload = cb; s.onerror = function () {};
+    document.head.appendChild(s);
+  }
+  function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
+  function ecrire(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function base(l) { return (l || "").split("#")[0].split("?")[0] || "index.html"; }
+  function nomCourt(id) { return id === "P0" ? "Commencer ici" : "Parcours " + id.slice(1); }
+  function lienEtape(s, pid) {
+    if (!s.lien) return null;
+    if (/^https?:/.test(s.lien)) return s.lien;
+    var h = s.lien.split("#"), b = h[0], a = h[1] ? "#" + h.slice(1).join("#") : "";
+    return b + (b.indexOf("?") < 0 ? "?" : "&") + "parcours=" + pid + a;
+  }
+  function mesure(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
+
+  var CSS = ".efa-suite{background:#0B1220;color:#E8EDF5;font-family:\"Source Sans 3\",\"Source Sans Pro\",system-ui,-apple-system,\"Segoe UI\",Arial,sans-serif;padding-block:40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}"
+    + ".efa-suite .es-in{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px 40px;align-items:center}"
+    + "@media (max-width:760px){.efa-suite .es-in{grid-template-columns:minmax(0,1fr)}}"
+    + ".efa-suite .es-sur{display:block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680}"
+    + ".efa-suite h2{font-family:\"Libre Baskerville\",Baskerville,Georgia,\"Times New Roman\",serif;font-weight:700;line-height:1.15;text-transform:none;letter-spacing:-.005em;font-size:clamp(22px,3vw,32px);color:#fff;margin:10px 0 0;text-wrap:balance}"
+    + ".efa-suite p{margin:10px 0 0;color:#C9D1DE;font-size:16px;line-height:1.55;max-width:40em}"
+    + ".efa-suite .es-barre{height:6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:16px;max-width:420px}"
+    + ".efa-suite .es-barre i{display:block;height:100%;background:#E44828;border-radius:999px}"
+    + ".efa-suite .es-prog{font-size:13px;color:#8E98AA;margin-top:6px}"
+    + ".efa-suite .es-acts{display:flex;flex-direction:column;align-items:flex-start;gap:12px}"
+    + ".efa-suite .es-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 22px;border-radius:8px;border:0;background:#E44828;color:#fff;font:800 16px/1.2 inherit;font-family:inherit;text-decoration:none;cursor:pointer}"
+    + ".efa-suite .es-lien{color:#fff;font-weight:700;font-size:15px;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:5px;background:none;border:0;padding:0;cursor:pointer;font-family:inherit;text-align:left}"
+    + ".efa-suite .es-fait{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:#C9D1DE;cursor:pointer}"
+    + ".efa-suite .es-fait input{width:20px;height:20px;accent-color:#3CCB7F;margin:0}"
+    + ".efa-suite .es-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}"
+    + ".efa-suite .es-chip{font-size:14px;color:#fff;text-decoration:none;background:#111B2F;border-radius:999px;padding:6px 12px}"
+    + ".efa-suite .es-chip b{color:#F09680}"
+    + ".efa-suite a:focus-visible,.efa-suite button:focus-visible,.efa-suite input:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px}"
+    + "@media print{.efa-suite{display:none}}";
+
+  function placer(html) {
+    var st = document.createElement("style"); st.textContent = CSS; document.head.appendChild(st);
+    var box = document.createElement("aside");
+    box.className = "efa-suite"; box.setAttribute("aria-label", "Et ensuite ?");
+    box.innerHTML = '<div class="es-in">' + html + "</div>";
+    var pied = document.querySelector("footer.efa-foot") || document.querySelector("footer");
+    if (pied && pied.parentNode) pied.parentNode.insertBefore(box, pied); else document.body.appendChild(box);
+    return box;
+  }
+
+  charger(function () {
+    var D = window.EFA_PARCOURS; if (!D) return;
+    var P = {}; D.parcours.forEach(function (p) { P[p.id] = p; });
+    var etat = lire(); etat.faits = etat.faits || {};
+    var q = new URLSearchParams(location.search), voulu = q.get("parcours");
+
+    var candidats = CARREFOURS.indexOf(page) >= 0 ? [] : D.parcours.filter(function (p) { return p.etapes.some(function (s) { return s.lien && !/^https?:/.test(s.lien) && base(s.lien) === page; }); });
+
+    // Page hors parcours : proposer d'en choisir un
+    if (!candidats.length) {
+      placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
+        + '<p>Onze parcours gratuits partent de votre situation et s’arrêtent sur un résultat concret : un budget qui tient, une réserve, une tontine décidée.</p></div>'
+        + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Choisir mon parcours</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
+      return;
+    }
+
+    var p = (voulu && P[voulu] && candidats.indexOf(P[voulu]) >= 0) ? P[voulu]
+      : (etat.actif && P[etat.actif] && candidats.indexOf(P[etat.actif]) >= 0) ? P[etat.actif]
+      : (candidats.filter(function (c) { return c.id !== "P0"; })[0] || candidats[0]);
+    if (voulu && voulu === p.id) { etat.actif = p.id; ecrire(etat); }
+
+    var ici = []; p.etapes.forEach(function (s, i) { if (s.lien && base(s.lien) === page) ici.push(i); });
+    var dernier = ici[ici.length - 1];
+    var suivante = null, iSuiv = -1;
+    for (var i = dernier + 1; i < p.etapes.length; i++) { if (p.etapes[i].ok && p.etapes[i].lien) { suivante = p.etapes[i]; iSuiv = i; break; } }
+    var dispo = p.etapes.filter(function (s) { return s.ok; }).length;
+    function nbFaits() { var n = 0; p.etapes.forEach(function (s, k) { if (s.ok && etat.faits[p.id + "." + k]) n++; }); return n; }
+    var faitIci = ici.every(function (k) { return etat.faits[p.id + "." + k]; });
+    var rang = ici[0] + 1;
+
+    var gauche = '<div><span class="es-sur">' + esc(nomCourt(p.id)) + " · " + esc(p.titre) + "</span>";
+    if (suivante) {
+      gauche += '<h2>Étape suivante : ' + esc(suivante.titre) + "</h2>"
+        + "<p>Vous êtes à l’étape " + rang + " sur " + p.etapes.length + ". À l’arrivée : " + esc(p.objectif.charAt(0).toLowerCase() + p.objectif.slice(1)) + "</p>";
+    } else {
+      gauche += "<h2>Dernière étape en ligne de ce parcours.</h2>"
+        + "<p>Pour savoir que c’est acquis : " + esc(p.preuve.charAt(0).toLowerCase() + p.preuve.slice(1)) + "</p>"
+        + '<div class="es-chips">' + p.suite.map(function (id) { return '<a class="es-chip" href="parcours.html#' + id + '"><b>' + (id === "P0" ? "0" : id.slice(1)) + "</b> " + esc(P[id].titre) + "</a>"; }).join("") + "</div>";
+    }
+    gauche += '<div class="es-barre" aria-hidden="true"><i style="width:' + (dispo ? Math.round(nbFaits() / dispo * 100) : 0) + '%"></i></div><div class="es-prog" id="es-prog">' + nbFaits() + " sur " + dispo + " étapes faites</div></div>";
+
+    var hrefSuiv = suivante ? lienEtape(suivante, p.id) : null, ext = hrefSuiv && /^https?:/.test(hrefSuiv) ? ' target="_blank" rel="noopener"' : "";
+    var droite = '<div class="es-acts">'
+      + '<label class="es-fait" for="es-fait"><input type="checkbox" id="es-fait"' + (faitIci ? " checked" : "") + "> J’ai fait cette étape</label>"
+      + (suivante ? '<a class="es-btn" href="' + esc(hrefSuiv) + '"' + ext + ' data-goatcounter-click="suite-' + p.id + '">Étape suivante</a>'
+                  : '<a class="es-btn" href="parcours.html#' + esc(p.suite[0] || p.id) + '">Parcours suivant</a>')
+      + '<a class="es-lien" href="parcours.html#' + p.id + '">Voir tout le parcours</a>'
+      + (candidats.length > 1 ? '<span class="es-prog">Cette page fait aussi partie de : ' + candidats.filter(function (c) { return c !== p; }).map(function (c) { return '<a class="es-lien" style="font-size:13px" href="?parcours=' + c.id + location.hash + '">' + esc(nomCourt(c.id)) + "</a>"; }).join(", ") + "</span>" : "")
+      + "</div>";
+
+    var box = placer(gauche + droite);
+    var cb = box.querySelector("#es-fait");
+    cb.addEventListener("change", function () {
+      etat = lire(); etat.faits = etat.faits || {};
+      ici.forEach(function (k) { if (p.etapes[k].ok) { if (cb.checked) etat.faits[p.id + "." + k] = 1; else delete etat.faits[p.id + "." + k]; } });
+      etat.actif = p.id; ecrire(etat);
+      var n = nbFaits(); box.querySelector("#es-prog").textContent = n + " sur " + dispo + " étapes faites";
+      box.querySelector(".es-barre i").style.width = (dispo ? Math.round(n / dispo * 100) : 0) + "%";
+      if (cb.checked) mesure("suite-fait-" + p.id + "-" + rang);
+    });
+  });
+})();

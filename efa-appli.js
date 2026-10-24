@@ -70,7 +70,7 @@
     // 4. Section de liens « Comprendre · Agir · … » (au-dessus du pied de page) : colonne « L'appli » en dernier
     var MOTS = /^(comprendre|agir|apprendre|outils|s’informer|s'informer|ressources)$/i;
     var titres = [].slice.call(document.querySelectorAll("h2,h3,h4,h5,h6,strong,b,p,span,dt,small,div")).filter(function (el) {
-      return el.childElementCount === 0 && MOTS.test((el.textContent || "").trim());
+      return el.childElementCount === 0 && !el.closest("[data-sans-appli]") && MOTS.test((el.textContent || "").trim());
     });
     if (titres.length && !document.querySelector(".efa-appli-col")) {
       var col = titres[0];
@@ -149,4 +149,10 @@
     });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", poser); else poser();
+})();
+
+/* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
+(function () {
+  try { if (window.self !== window.top) return; } catch (e) { return; }
+  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102401"; s.defer = true; document.head.appendChild(s);
 })();
