@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quelle tontine avez-vous devant vous ? · École de la tontine EFA</title>
+<meta name="description" content="École de la tontine EFA, formation 1 : reconnaître le fonctionnement réel d’un groupe avant d’y cotiser. Tontine rotative, collecteur d’épargne, rang payant, groupe qui garde une part, faux « tontines » à recrutement. Cas, exercices, quiz, et la carte de votre tontine à garder.">
+<link rel="canonical" href="https://efa.africa/tontine-formations.html">
+<meta property="og:title" content="Quelle tontine avez-vous devant vous ?">
+<meta property="og:description" content="Formation 1 de l’École de la tontine : reconnaître le fonctionnement réel d’un groupe, puis établir la carte de votre tontine.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:url" content="https://efa.africa/tontine-formations.html">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="ecole-bourse.css?v=2026102510">
+<style>
+.exo select{font:inherit;font-size:max(13px,1.7cqw);font-weight:700;padding:.7cqw .9cqw;border:1px solid var(--line);border-radius:.7cqw;background:var(--papier);color:var(--ink);width:100%}
+.exo .large{grid-column:1/-1}
+.carte-t{background:var(--papier);color:var(--ink);border-radius:.8cqw;padding:1.2cqw 1.4cqw;width:100%;font-size:max(11px,1.4cqw);line-height:1.45}
+.carte-t b{color:var(--nuit)}.carte-t .a{color:#B8341A;font-weight:700}
+.carte-t ul{margin:.4em 0 0;padding-left:1.2em}
+.bt-g{all:unset;cursor:pointer;background:#DA3C1B;color:#fff;font-weight:800;font-size:max(12px,1.4cqw);padding:.8cqw 1.4cqw;border-radius:8px}
+.bt-g:focus-visible{outline:2px solid #6DB8F2;outline-offset:2px}
+.tab.def td{white-space:normal!important;text-align:left;font-weight:400;vertical-align:top}.tab.def td:first-child{font-weight:700;padding-right:1.2cqw;width:36%;white-space:nowrap!important}
+@media (orientation:portrait) and (max-width:700px){.exo select{font-size:15px;padding:9px 10px}.carte-t{font-size:14.5px;padding:12px 14px;border-radius:10px}.bt-g{font-size:15px;padding:10px 14px}.tab.def td:first-child{white-space:normal!important}}
+</style>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head><body>
+
+<div class="tourner" role="note">Tournez votre téléphone pour un meilleur confort de lecture</div>
+<div class="cadre-wrap">
+  <section class="cadre" aria-label="Écran d'apprentissage">
+    <div class="barre">
+      <span class="label">École de la tontine</span>
+      <span class="titre-mod" id="titre">Quelle tontine avez-vous devant vous ?</span>
+      <span class="compteur" id="compteur"></span>
+    </div>
+    <nav class="progres" id="progres" aria-label="Progression"></nav>
+    <div class="corps" id="corps" aria-live="polite"></div>
+    <div class="pied">
+      <a class="ely" href="https://efa.africa/ely.html" target="_blank" rel="noopener">Demander à Ely</a>
+      <span class="duree" id="duree"></span>
+      <button class="btn prec" id="som" type="button">Sommaire</button>
+      <button class="btn prec" id="prec" type="button">Précédent</button>
+      <button class="btn suiv" id="suiv" type="button">Suivant</button>
+    </div>
+  </section>
+</div>
+<p class="mention">Formation pédagogique d’EFA. Koffi, Tantie Affoué, Awa et leurs groupes sont des personnages et des cas fictifs, inspirés de situations rencontrées dans nos enquêtes. Les chiffres de l’enquête EFA « L’argent de la tontine » sont provisoires et décrivent les personnes interrogées, pas toute la population. EFA n’organise aucune tontine et ne vend aucun produit financier.</p>
+
+<script src="efa-suivi.js?v=2026102501"></script>
+<script>
+window.ECOLE = {
+  cle: "efa_ecole_tontine_v1",
+  titre: "École de la tontine",
+  label: "Tontine",
+  accueil: {
+    sur: "École de la tontine",
+    titre: "Choisir, comprendre, décider ensemble",
+    kick: "Formation 1 ouverte · les quatre suivantes en préparation",
+    h: "Quelle tontine avez-vous devant vous ?",
+    p: ["Avant de cotiser, il faut savoir dans quel groupe on entre. Une tontine où tout le monde reçoit à tour de rôle, un collecteur qui garde votre argent du mois, un groupe où le rang se paie, un groupe qui garde une part : ce ne sont pas les mêmes engagements.",
+       "En vingt minutes, vous apprenez à reconnaître le fonctionnement réel d’un groupe. Vous repartez avec la carte de votre tontine et la liste des questions à poser avant le premier versement."],
+    plus: '<p class="p" style="font-size:.9em"><a href="avant-de-cotiser.html?src=formation">La fiche « Avant de cotiser, posez ces questions »</a> · <a href="ecole-de-la-tontine.html?src=formation">Toute l’École de la tontine</a></p>'
+  },
+  final: '<a href="avant-de-cotiser.html?src=t1">Ouvrir la fiche « Avant de cotiser, posez ces questions » <span>→</span></a><a href="ecole-de-la-tontine.html?src=t1">Retour à l’École de la tontine <span>→</span></a>',
+  modules: []
+};
+var MOD = window.ECOLE.modules;
+function T(s){ return ECOLE.outils.typo(s); }
+function esc(s){ return String(s == null ? "" : s).replace(/[<>&"]/g, function(c){ return {"<":"&lt;", ">":"&gt;", "&":"&amp;", '"':"&quot;"}[c]; }); }
+
+/* ======================= T1 ======================= */
+MOD.push({id:"T1", titre:"Quelle tontine avez-vous devant vous ?", court:"Quelle tontine ?", duree:"≈ 20 min",
+retenir:"Avant de cotiser, quatre questions disent quelle tontine vous avez devant vous : <span class=\"c\">qui reçoit et quand</span>, ce qui est gardé en commun, qui tient l’argent, et ce que coûte la participation. Un groupe qui promet de recevoir plus que l’on verse, grâce aux nouveaux membres, n’est pas une tontine.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Quatre questions</span><div class="schema"><div><b>1 · Qui reçoit, et quand ?</b>À tour de rôle, à la fin du mois, selon un rang payé…</div><div><b>2 · Que garde-t-on en commun ?</b>Rien, une caisse pour les coups durs, une réserve</div><div><b>3 · Qui tient l’argent ?</b>L’organisatrice, un collecteur, un compte au nom du groupe</div><div><b>4 · Que coûte la participation ?</b>Rien, une mise par mois, une prime pour recevoir tôt</div></div>'},
+  sur:"Pourquoi cette formation", h:"Le même mot, des engagements différents",
+  p:["On dit « tontine » pour des groupes qui ne fonctionnent pas du tout pareil. Dans l’un, vous empruntez ou vous prêtez sans intérêt selon votre rang. Dans l’autre, vous payez un collecteur pour garder votre argent. Dans un troisième, le groupe garde une part qui n’appartient à personne en particulier.",
+   "Quatre questions suffisent pour savoir où vous mettez les pieds. On les applique à cinq groupes, puis à la vôtre."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">La tontine rotative · dix membres</span><table class="tab"><tbody><tr><td>Chacun verse, chaque mois</td><td>50 000 F</td></tr><tr><td>Le membre du mois reçoit</td><td>500 000 F</td></tr><tr><td>Durée du cycle</td><td>10 mois</td></tr><tr><td>Chacun a versé, au total</td><td>500 000 F</td></tr><tr class="tot"><td>Chacun a reçu, au total</td><td>500 000 F</td></tr></tbody></table><span class="mot">Enquête EFA : 83 % des participants interrogés sont dans une tontine rotative</span>'},
+  sur:"1 · Le cercle", h:"La tontine rotative : chacun reçoit à son tour",
+  p:["C’est la plus répandue. Chacun verse la même somme, et chaque tour un membre reçoit tout. Quand tout le monde a reçu une fois, le cycle est fini. Personne ne gagne d’argent : le groupe change seulement le moment où chacun dispose de la somme.",
+   "Le premier emprunte au groupe sans intérêt, le dernier lui prête sans intérêt. Dans l’enquête EFA, 71 % des participants disent que leur tontine redistribue tout : rien n’est gardé en commun. C’est un cercle."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Le collecteur du marché · un mois</span><table class="tab"><tbody><tr><td>Awa verse, chaque jour</td><td>2 000 F</td></tr><tr><td>En trente jours</td><td>60 000 F</td></tr><tr><td>Gardé par le collecteur</td><td>2 000 F</td></tr><tr class="tot"><td>Rendu à Awa en fin de mois</td><td>58 000 F</td></tr></tbody></table><span class="mot">Exemple fictif : le collecteur garde ici une journée de versement</span>'},
+  sur:"2 · L’épargne confiée", h:"Le collecteur : une épargne que l’on paie pour garder",
+  p:["Au marché, un collecteur passe chaque jour prendre une petite somme et la rend en fin de mois, souvent moins une journée de versement : c’est sa rémunération. Ici, personne n’emprunte à personne. Chacun récupère son propre argent.",
+   "Le service est réel : l’argent n’est pas à la maison, on ne le dépense pas. Mais il a un coût, ici 2 000 F sur 60 000 F, et un risque : celui d’un collecteur qui disparaît avec la caisse. Il faut donc savoir qui il est et depuis quand il collecte."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Un rang qui se paie · dix membres, 50 000 F</span><table class="tab"><tbody><tr><td>Reçoit au 1er tour</td><td>470 000 F</td></tr><tr><td>Reçoit au 5e tour</td><td>500 000 F</td></tr><tr class="tot"><td>Reçoit au 10e tour</td><td>530 000 F</td></tr></tbody></table><span class="mot">Exemple fictif : ceux qui reçoivent tôt laissent une part à ceux qui attendent</span>'},
+  sur:"3 · Le rang payant", h:"Quand recevoir tôt coûte quelque chose",
+  p:["Dans certains groupes, notamment au Cameroun, les premiers tours se négocient : celui qui veut recevoir tôt accepte de recevoir moins, ou paie un supplément. Ce qu’il laisse va à ceux qui attendent.",
+   "C’est plus juste pour les derniers, qui prêtent leur argent plus longtemps : leur attente est rémunérée. Mais il faut que la règle soit connue de tous, avant le premier versement, et que chacun sache ce que coûte son rang."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Deux façons de garder une part</span><table class="tab"><tbody><tr><td><b>Cotiser un peu plus</b></td><td>110 000 F par mois, dont 10 000 F mis de côté</td></tr><tr><td><b>Recevoir un peu moins</b></td><td>80 % du tour versés, 20 % gardés</td></tr><tr><td><b>Une caisse sociale</b></td><td>une petite somme pour les décès, les naissances : elle se dépense</td></tr></tbody></table>'},
+  sur:"4 · La spirale", h:"Le groupe qui garde une part",
+  p:["Certains groupes décident, avant le cycle, de ne pas tout redistribuer. La part gardée va sur un compte au nom du groupe : elle peut servir de réserve, prêter à un membre, financer un projet commun. C’est ce qu’EFA appelle une spirale : le cercle devient une spirale quand le groupe garde une part.",
+   "À ne pas confondre avec la caisse sociale, qui aide un membre dans un coup dur et se dépense. Une réserve, elle, s’accumule. Dans les deux cas, la question est la même : à qui appartient cet argent, et qui peut le retirer ?"]},
+ {t:"info", illu:{c:"corail", html:'<span class="tabtitre">Le message reçu</span><div class="grand">« Verse 20 000 F, fais entrer deux personnes, et tu reçois 100 000 F. »</div>'},
+  sur:"5 · Ce qui n’est pas une tontine", h:"Quand on promet de recevoir plus que l’on verse",
+  p:["Dans une vraie tontine, sur un cycle, chacun reçoit à peu près ce qu’il a versé. Un groupe qui promet de recevoir beaucoup plus, à condition de faire entrer de nouveaux membres, paie les anciens avec l’argent des nouveaux. C’est un système pyramidal.",
+   "Il s’écroule quand les nouveaux manquent, et les derniers entrés perdent tout. Ces systèmes empruntent souvent le mot « tontine » parce qu’il inspire confiance. Le signal est simple : un gain promis qui dépend du recrutement."]},
+ {t:"choix", illu:{photo:"affoue-portrait.jpg", leg:"Tantie Affoué, vingt ans de tontines"}, sur:"Reconnaître", h:"Dix membres, 100 000 F par mois, chacune reçoit 1 000 000 F à son tour, rien n’est gardé. Qu’est-ce que c’est ?",
+  opts:[["A","Une tontine rotative : un cercle","ok","Oui. Sur le cycle, chacune reçoit ce qu’elle verse. La première a emprunté au groupe, la dernière lui a prêté, et rien ne reste en commun à la fin."],
+   ["B","Une épargne qui rapporte","ko","Personne ne gagne d’argent : chacune reçoit 1 000 000 F pour 1 000 000 F versés. Le groupe déplace l’argent dans le temps, il ne le fait pas grossir."],
+   ["C","Une spirale","ko","Une spirale garde une part en commun. Ici, tout est redistribué : c’est un cercle."]]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Le collecteur d’Awa</span><table class="tab"><tbody><tr><td>Versé en un mois</td><td>60 000 F</td></tr><tr><td>Rendu en fin de mois</td><td>58 000 F</td></tr></tbody></table>'}, sur:"Reconnaître", h:"Awa reçoit 58 000 F pour 60 000 F versés. Que paie-t-elle ?",
+  opts:[["A","Des intérêts sur un prêt","ko","Awa n’a rien emprunté : elle récupère son propre argent. Les 2 000 F rémunèrent le service du collecteur."],
+   ["B","Le service de garde de son argent : environ 3,3 % de ce qu’elle verse","ok","Oui : 2 000 ÷ 60 000. Le service a de la valeur, l’argent n’est pas dépensé au fil du mois. Mais sur douze mois, ce sont 24 000 F : c’est le prix à comparer avec un compte ou un portefeuille mobile séparé."],
+   ["C","Rien : elle a été volée","ko","Ce n’est pas un vol si la règle était annoncée : c’est le prix du service. Le vrai risque est ailleurs, un collecteur qui disparaît avec la caisse."]]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Koffi hésite entre le 1er et le 10e rang"}, sur:"Reconnaître", h:"Dans le groupe de Koffi, le premier reçoit 470 000 F, le dernier 530 000 F. Que faut-il vérifier avant d’entrer ?",
+  opts:[["A","Que la règle est connue et écrite, et ce que coûte chaque rang","ok","Oui. Un rang payant peut être juste : les derniers sont payés pour attendre. Mais seulement si chacun connaît le prix de son rang avant de verser."],
+   ["B","Rien : un écart de 60 000 F prouve une arnaque","ko","Pas forcément. Dans un rang payant, ceux qui reçoivent tôt laissent une part à ceux qui attendent. C’est une règle à connaître, pas une fraude."],
+   ["C","Seulement le montant de la cotisation","ko","La cotisation ne suffit pas : ici, ce que vous recevez dépend de votre rang. Il faut connaître la règle avant d’entrer."]]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Un groupe de dix commerçantes</span><table class="tab"><tbody><tr><td>Chacune verse</td><td>110 000 F</td></tr><tr><td>La bénéficiaire du mois reçoit</td><td>1 000 000 F</td></tr><tr><td>Mis sur un compte du groupe</td><td>100 000 F</td></tr></tbody></table>'}, sur:"Reconnaître", h:"100 000 F vont chaque mois sur un compte. Quelle question poser d’abord ?",
+  opts:[["A","À qui appartient cet argent, qui peut le retirer, et que récupère un membre qui part ?","ok","Oui. Une réserve protège le groupe si ses règles sont écrites : qui signe, à quoi elle sert, ce que l’on récupère en partant. Sans ces règles, elle devient une source de conflit."],
+   ["B","Combien rapporte ce compte ?","mo","C’est une bonne question, mais elle vient après. D’abord : à qui appartient l’argent, et qui peut le retirer."],
+   ["C","Aucune : c’est l’organisatrice qui décide","ko","L’argent de la réserve est celui des membres. Les règles se décident ensemble, et s’écrivent."]]},
+ {t:"choix", illu:{c:"corail", html:'<span class="tabtitre">Message WhatsApp</span><div class="grand">« Tontine solidaire : 20 000 F aujourd’hui, 100 000 F dans un mois. Fais entrer deux amis ! »</div>'}, sur:"Reconnaître", h:"Un collègue vous envoie ce message. Qu’en pensez-vous ?",
+  opts:[["A","C’est une tontine qui rapporte bien","ko","Aucune tontine ne fait recevoir cinq fois ce que l’on verse. L’argent des nouveaux paie les anciens : quand les nouveaux manquent, les derniers entrés perdent tout."],
+   ["B","Un système pyramidal qui emprunte le mot « tontine » : je n’y entre pas, et je préviens mon collègue","ok","Oui. Le signal est double : un gain promis bien supérieur à ce que l’on verse, et une condition de recrutement. Une tontine ne demande pas de recruter pour être payé."],
+   ["C","J’essaie avec 20 000 F, pour voir","ko","Les premiers sont parfois payés, pour attirer les suivants. Essayer, c’est faire perdre de l’argent aux deux amis que vous ferez entrer."]]},
+ {t:"perso", consigne:"Remplissez la carte <span class=\"c-l\">à gauche</span><span class=\"c-p\">ci-dessus</span>, puis touchez « Établir ma carte ».", bloque:function(c){ return !(c.S.r.ca && c.S.r.ca.ok); },
+  rendu:function(c){ var v = c.S.r.ca || {ty:"rotative", co:"50 000", fr:"mois", me:"10", rg:"", ti:"organisatrice", pa:"non", re:"orales"};
+    var o = function(id, L){ return '<select id="' + id + '">' + L.map(function(x){ return '<option value="' + x[0] + '"' + (v[id.slice(3)] === x[0] ? " selected" : "") + '>' + x[1] + '</option>'; }).join("") + '</select>'; };
+    return '<div class="illu nuit"><span class="tabtitre">La carte de ma tontine</span><div class="exo"><label class="large">Ce que c’est' + o("ca-ty", [["rotative", "Rotative : chacun à son tour"], ["collecteur", "Un collecteur garde mon épargne"], ["payant", "Le rang se paie"], ["spirale", "Le groupe garde une part"], ["sais", "Je ne sais pas encore"]]) + '</label><label>Cotisation (F)<input id="ca-co" inputmode="numeric" value="' + esc(v.co) + '"></label><label>Versée chaque' + o("ca-fr", [["jour", "jour"], ["semaine", "semaine"], ["mois", "mois"]]) + '</label><label>Nombre de membres<input id="ca-me" inputmode="numeric" value="' + esc(v.me) + '"></label><label>Mon rang, si je le connais<input id="ca-rg" inputmode="numeric" value="' + esc(v.rg) + '"></label><label class="large">Qui tient l’argent' + o("ca-ti", [["organisatrice", "L’organisatrice"], ["collecteur", "Un collecteur"], ["compte", "Un compte au nom du groupe"], ["sais", "Je ne sais pas"]]) + '</label><label class="large">Une part est gardée' + o("ca-pa", [["non", "Non, tout est redistribué"], ["oui", "Oui"], ["sais", "Je ne sais pas"]]) + '</label><label class="large">Les règles sont' + o("ca-re", [["ecrites", "Écrites et partagées"], ["orales", "Orales"], ["aucune", "Il n’y en a pas vraiment"], ["sais", "Je ne sais pas"]]) + '</label></div><button class="bt-g" id="ca-go" type="button">' + (v.ok ? 'Mettre à jour ma carte' : 'Établir ma carte') + '</button></div>' +
+      (v.ok ? '<div class="texte"><p class="sur">Votre document</p><h2 class="h">' + T("La carte de votre tontine") + '</h2><div class="carte-t" id="ca-txt">' + v.txt + '</div><button class="copier" id="ca-cp" type="button">Copier ma carte</button></div>'
+      : '<div class="texte"><p class="sur">À vous</p><h2 class="h">' + T("La carte de votre tontine") + '</h2>' + T('<p class="p">Pensez à un groupe où vous cotisez, ou à celui qu’on vous propose. Remplissez ce que vous savez ; « je ne sais pas » est une réponse utile : c’est une question à poser.</p><p class="p">La carte dit ce que vous allez verser, ce que vous recevrez, et ce qu’il reste à clarifier avant le premier versement. Elle reste sur votre téléphone.</p>') + '</div>'); },
+  apres:function(c){ var cp = document.getElementById("ca-cp"); if (cp) cp.addEventListener("click", function(){ var t = document.getElementById("ca-txt").innerText; try { navigator.clipboard.writeText(t).then(function(){ cp.textContent = "Carte copiée"; }, function(){ cp.textContent = "Sélectionnez le texte pour le copier"; }); } catch (e) { cp.textContent = "Sélectionnez le texte pour le copier"; } });
+    document.getElementById("ca-go").addEventListener("click", function(){
+    var g = function(i){ return document.getElementById(i).value; }, n = function(i){ return parseFloat(String(g(i)).replace(/\D/g, "")) || 0; }, F = ECOLE.outils.F;
+    var d = {ty:g("ca-ty"), co:g("ca-co"), fr:g("ca-fr"), me:g("ca-me"), rg:g("ca-rg"), ti:g("ca-ti"), pa:g("ca-pa"), re:g("ca-re"), ok:true};
+    var co = n("ca-co"), me = n("ca-me"), rg = n("ca-rg"), noms = {rotative:"Tontine rotative", collecteur:"Épargne confiée à un collecteur", payant:"Tontine à rang payant", spirale:"Groupe qui garde une part", sais:"Fonctionnement à confirmer"}, per = {jour:"jours", semaine:"semaines", mois:"mois"}[d.fr];
+    var L = [], q = [];
+    L.push("<b>" + noms[d.ty] + "</b>" + (co ? " · " + F(co) + " par " + d.fr : ""));
+    if (d.ty !== "collecteur" && co && me){ L.push("Tour : <b>" + F(co * me) + "</b> · cycle de " + me + " " + per + " · engagement total : <b>" + F(co * me) + "</b>");
+      if (rg && rg <= me){ var av = co * (rg - 1), ap = co * (me - rg); L.push("Au rang " + rg + " : versé avant votre tour <b>" + F(av) + "</b>, encore à verser après <b>" + F(ap) + "</b>. " + (rg <= me / 2 ? "Vous empruntez au groupe sans intérêt." : "Vous prêtez au groupe sans intérêt, et vous portez le risque des impayés.")); }
+      else q.push("Quel sera mon rang, et comment est-il fixé ?"); }
+    if (d.ty === "collecteur" && co){ var mois = d.fr === "jour" ? co * 30 : d.fr === "semaine" ? co * 4 : co; L.push("Environ <b>" + F(mois) + "</b> confiés par mois au collecteur."); q.push("Combien garde le collecteur chaque mois, et depuis quand collecte-t-il ?"); }
+    if (d.ty === "payant") q.push("Combien coûte chaque rang, et la règle est-elle écrite ?");
+    if (d.ty === "sais") q.push("Comment fonctionne exactement le groupe : qui reçoit, quand, combien ?");
+    if (d.ti === "sais") q.push("Qui garde l’argent entre la collecte et le versement, et où ?");
+    if (d.ti === "organisatrice") q.push("Comment je vois que chacun a payé : cahier, reçus, groupe WhatsApp ?");
+    if (d.pa === "oui") q.push("À qui appartient la part gardée, qui peut la retirer, que récupère un membre qui part ?");
+    if (d.pa === "sais") q.push("Une part est-elle gardée en commun, et pour quoi faire ?");
+    if (d.re !== "ecrites") q.push("Peut-on écrire les règles et les partager avec tous avant le premier versement ?");
+    q.push("Si un membre ne paie plus, qui couvre ?");
+    d.txt = L.join("<br>") + '<br><span class="a">À clarifier avant de cotiser :</span><ul>' + q.map(function(x){ return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+    c.S.r.ca = d; c.sauver(); ECOLE.outils.compte("ecole-T1-carte");
+    if (window.EFA_SUIVI) EFA_SUIVI.planifier({id:"T1", titre:"La carte de ma tontine", action:"Poser mes questions à l’organisatrice avant le premier versement", lien:"avant-de-cotiser.html"}); c.refaire(); }); }},
+ {t:"info", illu:{c:"bleu", accueil:true, html:'<span class="tabtitre">Avant de cotiser</span><div class="grand">12 questions</div><span class="mot">Montants, calendrier, caisse, impayés, sortie : à poser à l’organisatrice, puis à cocher</span>'},
+  sur:"La suite", h:"Posez vos questions avant le premier versement",
+  p:["Votre carte a fait apparaître des points à clarifier. La fiche « Avant de cotiser, posez ces questions » les reprend tous, rangés par thème. Vous cochez ce qui est clair, et vous envoyez le reste à l’organisatrice, par écrit, sur WhatsApp.",
+   "Dans l’enquête EFA, 18 % seulement des participants disent que les règles de leur tontine sont écrites. Une trace protège tout le monde, l’organisatrice comprise."],
+  plus:'<p class="p"><a href="avant-de-cotiser.html?src=t1" target="_blank" rel="noopener">Ouvrir la fiche « Avant de cotiser » →</a></p>'}
+],
+quiz:[
+ ["Dans une tontine rotative, sur un cycle complet, chaque membre…",[["A","reçoit à peu près ce qu’il a versé"],["B","reçoit deux fois sa mise"],["C","perd une partie de sa mise"]],"A","Le groupe déplace l’argent dans le temps : le premier emprunte, le dernier prête, sans intérêt."],
+ ["Un collecteur rend 58 000 F pour 60 000 F versés dans le mois. Les 2 000 F sont…",[["A","des intérêts que vous payez sur un prêt"],["B","le prix du service de garde de votre argent"],["C","une erreur de calcul"]],"B","Vous récupérez votre propre argent, moins la rémunération du collecteur."],
+ ["Dans une tontine à rang payant, recevoir au premier tour…",[["A","coûte quelque chose : on reçoit moins, ou on paie un supplément"],["B","rapporte un bonus"],["C","ne change rien"]],"A","Ce que laissent les premiers rémunère l’attente des derniers."],
+ ["Un groupe garde 100 000 F par mois sur un compte. Première question à poser ?",[["A","Combien ça rapporte"],["B","À qui appartient l’argent, qui peut le retirer, ce que récupère un membre qui part"],["C","Aucune"]],"B","Une réserve protège le groupe si ses règles sont écrites et connues de tous."],
+ ["« Verse 20 000 F, fais entrer deux amis, reçois 100 000 F. » C’est…",[["A","une tontine généreuse"],["B","un système pyramidal qui utilise le mot « tontine »"],["C","une spirale"]],"B","Un gain très supérieur à ce que l’on verse, conditionné au recrutement : l’argent des nouveaux paie les anciens."]
+]});
+</script>
+<script src="ecole-bourse-moteur.js?v=2026102505"></script>
+<script src="efa-suite.js?v=2026102525" defer></script>
+<script src="efa-compte.js?v=2026102530" defer></script>
+</body></html>

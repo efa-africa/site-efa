@@ -208,6 +208,13 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
 .ch-b.ch-p{background:var(--corail);color:#fff}.ch-b.ch-p span{color:#fff}
 .ch-diag{margin-top:16px}
 .ent-t{margin-top:22px!important}
+.ecoles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+@media (max-width:640px){.ecoles{grid-template-columns:minmax(0,1fr)}}
+.ec-c{display:flex;flex-direction:column;gap:8px;text-decoration:none;border-radius:14px;padding:20px;background:#F5EFE2;color:#0B1220;min-width:0}
+.ec-c:hover{background:#FFFDF8}.ec-c:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
+.ec-k{font-family:var(--f-display,"Libre Baskerville",Georgia,serif);font-weight:700;font-size:clamp(22px,2.4vw,28px);line-height:1.12}
+.ec-c b{font-weight:600;font-size:16px;line-height:1.45;color:#2A3142}
+.ec-c em{font-style:normal;margin-top:auto;padding-top:6px;font-weight:800;font-size:16px;color:#B8341A}
 .entrainer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
 @media (max-width:640px){.entrainer{grid-template-columns:1fr}}
 .entrainer a{display:flex;flex-direction:column;gap:4px;text-decoration:none;border-radius:12px;padding:16px 18px;background:#13203A;color:#fff;border:1px solid #2E4366}
@@ -343,6 +350,10 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <span class="surtitre">L’école EFA</span>
       <h1>L’école EFA</h1>
       <p class="chapo">Trois cycles pour progresser à votre rythme. Les trois certificats locaux et le certificat CEFA ★ sont ouverts en pilote.</p>
+      <div class="ecoles" aria-label="Les deux écoles">
+        <a class="ec-c" href="ecole-de-la-tontine.html?src=ecole" data-goatcounter-click="ecole-carte-tontine"><span class="ec-k">École de la tontine</span><b>Choisir une tontine, comprendre ses engagements et décider de ce que le groupe peut construire ensemble.</b><em>Explorer l’École de la tontine →</em></a>
+        <a class="ec-c" href="ecole-de-la-bourse.html?src=ecole" data-goatcounter-click="ecole-carte-bourse"><span class="ec-k">École de la Bourse</span><b>Comprendre les marchés, choisir comment investir et apprendre à suivre ses décisions.</b><em>Explorer l’École de la Bourse →</em></a>
+      </div>
       <p class="ch-qui">Je suis un particulier, je veux apprendre</p>
       <div class="choix">
         <a class="ch-b ch-p" href="#P1" data-ouvrir="P1" data-goatcounter-click="ecole-choix-bases"><b>Je veux apprendre les bases</b><span>Commencer le module 1 du cycle Fondations</span></a>
@@ -351,7 +362,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <p class="ch-qui ent-t">Je m’entraîne</p>
       <div class="entrainer">
         <a href="decider.html?src=ecole" data-goatcounter-click="ecole-entrainer-decider"><span class="en-k">Nouveau</span><b>Simulateur de décisions</b><span>Un proche demande, mon tour de tontine, un crédit, une prime : je choisis, je vois ce qui peut arriver, je rédige ma réponse.</span><em>5 cas · 7 min chacun →</em></a>
-        <a href="bourse-marche.html?src=ecole#C1" data-goatcounter-click="ecole-entrainer-bourse"><span class="en-k">Nouveau</span><b>École de la Bourse</b><span>Une introduction à la séance, puis les indices, les graphiques, les tendances et les stratégies ; cinq formations pour passer à l’action.</span><em>Commencer par l’introduction · 30 min →</em></a>
+        <a href="cercle-spirale.html?src=ecole" data-goatcounter-click="ecole-entrainer-spirale"><b>Cercle ou spirale ?</b><span>Ce que vous gardez à chaque rentrée d’argent, seul ou avec votre groupe de tontine.</span><em>Calculer · 3 min →</em></a>
       </div>
       <p class="ch-diag"><a class="lien-souligne" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-choix-diagnostic">Je ne sais pas par où commencer : faire mon diagnostic</a></p>
       <a class="ch-orga" href="programme-organisation.html?src=ecole" data-goatcounter-click="ecole-choix-organisation"><b>Pour les organisations</b><span>Faites suivre L’école à vos collaborateurs, membres ou élèves : programme à la carte, comptes et tableau de bord.</span><em>Composer un programme →</em></a>
