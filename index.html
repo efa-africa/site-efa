@@ -826,6 +826,10 @@ img.char{object-position:50% 18%}
 .ec-etapes li.en{color:#0B1220}.ec-etapes li.en::before{border-color:#2188D6;background:radial-gradient(#2188D6 45%,transparent 50%)}
 .ec-etapes em{white-space:nowrap;font-style:normal;font-weight:600;color:#2188D6;font-size:11.5px;margin-left:auto}
 @media (max-width:820px){.ec-hb{flex-wrap:nowrap;width:100%}.ec-hb a{flex:1 1 auto;justify-content:center;padding:12px 14px}.ec-hero{grid-template-columns:minmax(0,1fr);padding:28px 22px 10px;gap:10px}.ec-tel{min-height:500px}.ec-phone{transform:rotateY(-18deg) rotateX(6deg) rotateZ(4deg) scale(.9)}.ec-blob{max-width:330px;top:14%}}
+.lettre-bas{background:var(--nuit);padding:24px var(--gouttiere,16px) 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lb-in{max-width:900px;margin:0 auto}
+.lettre-bas .efa-nl{background:#13203A;border-radius:14px;padding:20px 22px;margin:0 auto!important;width:100%!important;max-width:640px;box-sizing:border-box}
+.lettre-bas .efa-nl{grid-template-columns:minmax(0,1fr)}.lettre-bas .efa-nl > *{min-width:0}.lettre-bas #signup-form{grid-template-columns:minmax(0,1fr)}.lettre-bas #signup-form > *{min-width:0}.lettre-bas .efa-nl-row input{min-width:0;width:100%;flex:1 1 0}.lettre-bas .efa-nl-row button{flex:none}
 .ec-pubs{margin:2px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px;color:#9FB0C8;max-width:900px}
 .ec-pubs a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
 .ec-reperes{margin:0;font-size:14px;font-weight:700;letter-spacing:.04em;color:#9FB0C8}
@@ -974,15 +978,9 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <!-- 0. EFA | Éducation Financière Afrique : globe en rotation en arrière-plan (globe.js), image fixe pendant le chargement -->
-  <section class="efa-top" id="efa" aria-labelledby="efa-t" data-step="La mission">
-    <div class="g-wrap" aria-hidden="true"><img class="g-img" src="globe.webp" alt="" width="900" height="900" fetchpriority="low"><canvas id="globe"></canvas></div>
-    <div class="g-voile" aria-hidden="true"></div>
-    <div class="efa-in">
-      <h2 id="efa-t"><span class="e1">EFA</span><span class="sep" aria-hidden="true"> | </span><span class="e2">Éducation Financière Afrique</span></h2>
-      <p class="efa-l">Donner à chacun les moyens de construire l’avenir.</p>
-      <p class="efa-s">En Afrique et dans la diaspora, réunissons les connaissances et les initiatives pour construire une prospérité qui se transmet.</p>
-      <p class="efa-cs">EFA vous fait passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste. <a href="cercle-spirale.html">Comprendre en deux minutes</a></p>
+  <!-- La lettre du mardi : seul rappel en bas d'accueil (la mission est dans À propos) -->
+  <section class="lettre-bas" id="efa" aria-label="La lettre du mardi" data-step="La lettre">
+    <div class="lb-in">
       <div class="efa-nl" id="guide">
         <p class="efa-nl-t"><b>La lettre du mardi</b> et, en cadeau, le guide «&nbsp;Construire sa stabilité financière&nbsp;».</p>
         <form id="signup-form" novalidate>
@@ -995,12 +993,7 @@ img.char{object-position:50% 18%}
         </form>
         <p class="efa-nl-alt">Sans email&nbsp;: <a id="guide-lien" data-goatcounter-click="guide-questionnaire" href="https://forms.gle/5CsRvJYxoFArJbNa8" target="_blank" rel="noopener">recevez le guide par le questionnaire</a></p>
       </div>
-      <div class="efa-b">
-        <a class="btn btn-main" href="outils.html" data-goatcounter-click="efa-outils">Découvrir mes outils</a>
-        <a class="efa-c" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="efa-communaute">Rejoindre la communauté</a>
-      </div>
     </div>
-    <button type="button" class="g-pause" aria-pressed="false">Mettre l’animation en pause</button>
   </section>
 
 
@@ -1059,7 +1052,6 @@ img.char{object-position:50% 18%}
 // Anciennes ancres de l'accueil (liens déjà publiés) : redirigées vers leur nouvelle place
 (function(){var h=(location.hash||'').slice(1),M={preter:'preter-a-un-proche.html',guides:'auteur.html#publications',lecons:'auteur.html#publications',livre:'auteur.html#publications',fondateur:'auteur.html#auteur',spirale:'#cercle',lien:'rendez-vous.html',contact:'rendez-vous.html#contact',enquete:'rendez-vous.html#enquete'};if(M[h]){if(M[h].charAt(0)==='#')location.hash=M[h];else location.replace(M[h]);}})();
 </script>
-<script src="globe.js" defer></script>
 <script src="donnees.js"></script>
 <script>
 // ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine ». Vide = les boutons mènent à la section #enquete.
