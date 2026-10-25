@@ -45,7 +45,7 @@
       + "#efa-suivi .q{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:17px;line-height:1.3;color:#fff;margin:0 0 6px}"
       + "#efa-suivi .a{margin:0 0 10px;color:#C9D1DE}#efa-suivi .a b{color:#fff}"
       + "#efa-suivi .b{display:flex;flex-wrap:wrap;gap:8px}#efa-suivi button{font:800 14.5px/1.1 'Source Sans 3',system-ui,sans-serif;border:0;border-radius:8px;padding:10px 13px;cursor:pointer;background:#1A2740;color:#fff}"
-      + "#efa-suivi button.p{background:#E44828}#efa-suivi button.l{background:none;color:#9FB0C8;text-decoration:underline;padding:10px 4px}"
+      + "#efa-suivi button.p{background:#DA3C1B}#efa-suivi button.l{background:none;color:#9FB0C8;text-decoration:underline;padding:10px 4px}"
       + "#efa-suivi button:focus-visible{outline:2px solid #6DB8F2;outline-offset:2px}#efa-suivi .x{position:absolute;top:6px;right:8px;background:none;color:#9FB0C8;font-size:20px;padding:6px 8px}"
       + "#efa-suivi a{color:#6DB8F2;font-weight:700}";
     d.appendChild(st);

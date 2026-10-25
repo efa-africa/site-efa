@@ -30,7 +30,7 @@
     "#ep-box input:focus-visible,#ep-box button:focus-visible,#ep-box a:focus-visible{outline:3px solid #2188D6;outline-offset:2px}" +
     "#ep-box label.ck{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#3A4357}" +
     "#ep-box label.ck input{margin-top:4px;flex:none;width:18px;height:18px}" +
-    "#ep-box .go{font-family:inherit;font-weight:800;font-size:16px;background:#E44828;color:#fff;border:0;border-radius:999px;padding:13px 18px;cursor:pointer}" +
+    "#ep-box .go{font-family:inherit;font-weight:800;font-size:16px;background:#DA3C1B;color:#fff;border:0;border-radius:999px;padding:13px 18px;cursor:pointer}" +
     "#ep-box .go[disabled]{opacity:.6}" +
     "#ep-box .dl{display:inline-flex;align-items:center;justify-content:center;background:#0B1220;color:#fff;text-decoration:none;font-weight:800;border-radius:999px;padding:13px 20px;margin:4px 0 12px}" +
     "#ep-box .msg{font-size:14px;min-height:1em;margin:0}" +

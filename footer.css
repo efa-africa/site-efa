@@ -10,7 +10,7 @@ footer.efa-foot[hidden]{display:none}
 .efa-foot .ef-logo img{width:40px;height:40px;flex:none}
 .efa-foot .ef-mis{margin:0;font-size:15px;line-height:1.55;color:#C9D1DE;max-width:26em}
 .efa-foot .mc{color:#EC6243;font-weight:700}.efa-foot .ms{color:#6DB8F2;font-weight:700}
-.efa-foot .ef-cta{justify-self:start;display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:8px;background:#E44828;color:#fff;font-weight:700;font-size:15px;text-decoration:none}
+.efa-foot .ef-cta{justify-self:start;display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:8px;background:#DA3C1B;color:#fff;font-weight:700;font-size:15px;text-decoration:none}
 .efa-foot .ef-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
 .efa-foot .ef-cols>div{min-width:0}
 .efa-foot .ef-soc{margin:8px 0 0;font-size:14px;color:#8E98AA;line-height:1.9}

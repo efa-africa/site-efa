@@ -4,8 +4,8 @@
   --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --page:#E9E2D2; --page-ink:#4E5566;
-  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --corail:#E44828; --bleu:#2188D6;
-  --ink:#2A3142; --ink2:#4E5566; --ink3:#7A8293; --line:#E2D8C4; --hausse:#1E9E5A;
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --corail:#DA3C1B; --bleu:#1B71B2;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#E2D8C4; --hausse:#1E9E5A;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}}
 :root[data-theme="dark"]{--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}

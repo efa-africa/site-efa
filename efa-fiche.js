@@ -49,7 +49,7 @@
     + ".efa-fiche textarea:focus{outline:3px solid #6DB8F2;outline-offset:2px}"
     + ".efa-fiche .ff-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}"
     + ".efa-fiche button{font:inherit;font-size:15px;font-weight:800;min-height:44px;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;background:#F5EFE2;color:#0B1220}"
-    + ".efa-fiche button.ff-p{background:#E44828;color:#fff}"
+    + ".efa-fiche button.ff-p{background:#DA3C1B;color:#fff}"
     + ".efa-fiche .ff-ok{min-height:1.4em;margin:10px 0 0;font-weight:700;color:#3CCB7F}"
     + ".efa-fiche .ff-ok a{color:#6DB8F2;font-weight:700}"
     + "@media (max-width:480px){.efa-fiche .ff-acts button{flex:1 1 calc(50% - 10px)}}";

@@ -26,7 +26,7 @@
 <style>
 /* Architecture : un écran = une étape du parcours, du cercle vers la spirale. Photo plein cadre, peu de mots, deux actions. */
 :root{
-  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#2188D6; --corail:#E44828;
+  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#1B71B2; --corail:#DA3C1B;
   --soft-bleu:#6DB8F2; --soft-corail:#F09680; --muted:#AEB6C6;
   --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
@@ -696,6 +696,16 @@ img.char{object-position:50% 18%}
 .org .pv{color:#fff;background:#111A2C;border-color:rgba(255,255,255,.14)}
 @media (max-width:980px){.org .g4,.org .steps{grid-template-columns:repeat(2,minmax(0,1fr))}.org .g3{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.org .g4,.org .steps,.org .g2,.org .comp{grid-template-columns:minmax(0,1fr)}}
+
+/* Grammaire des fonds (25/10/2026) : ouverture, publications et promesse en navy ; ce qu’on lit pour décider en crème. */
+.org section.clair{background:#F5EFE2;color:#0B1220;border-top-color:#E2D8C4}
+.org .clair .lede,.org .clair article p,.org .clair .comp span,.org .clair .steps span{color:#4E5566}
+.org .clair .kick{color:#B8341A}
+.org .clair .acts .lk{color:#0B1220;text-decoration-color:#E44828}
+.org .clair .g4 article,.org .clair .g3 article{background:#FFFDF8;border-color:#E2D8C4}
+.org .clair .comp li{border-top-color:#E2D8C4}
+.org .clair .btn-main{background:#D23F20}
+.org .clair .btn-sec{background:#0B1220;color:#fff}
 </style>
 <link rel="stylesheet" href="footer.css">
 </head>
@@ -723,7 +733,7 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <section aria-labelledby="org-qui">
+  <section class="clair" aria-labelledby="org-qui">
     <div class="in">
       <h2 id="org-qui">Pour qui</h2>
       <div class="g4">
@@ -735,7 +745,7 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <section aria-labelledby="org-quoi">
+  <section class="clair" aria-labelledby="org-quoi">
     <div class="in">
       <h2 id="org-quoi">Ce que comprend un programme</h2>
       <ul class="comp">
@@ -748,7 +758,7 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <section aria-labelledby="org-comment">
+  <section class="clair" aria-labelledby="org-comment">
     <div class="in">
       <h2 id="org-comment">Comment ça se passe</h2>
       <ol class="steps">
@@ -760,7 +770,7 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <section aria-labelledby="org-eng">
+  <section class="clair" aria-labelledby="org-eng">
     <div class="in">
       <h2 id="org-eng">Nos engagements</h2>
       <div class="g3">
@@ -771,7 +781,7 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <section aria-labelledby="org-etude">
+  <section class="clair" aria-labelledby="org-etude">
     <div class="in">
       <h2 id="org-etude">Une étude sur commande</h2>
       <p class="lede">Vous avez une question précise sur l’argent de votre public&nbsp;: usage de la tontine, solidarité familiale, revenus irréguliers. EFA conçoit l’enquête, la mène et publie la méthode avec les résultats, limites comprises.</p>

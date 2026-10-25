@@ -35,8 +35,8 @@
   --display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
   --body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --nuit:#0B1220; --sombre:#070C16; --creme:#F5EFE2; --papier:#FFFDF8; --line:#E2D8C4; --sable:#EBE2D0;
-  --ink:#2A3142; --ink2:#4E5566; --ink3:#7A8293;
-  --corail:#E44828; --bleu:#2188D6; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --corail:#DA3C1B; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -49,7 +49,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
 a{color:var(--bleu);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
-.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
 
 /* Barre du site */
 .stick{position:sticky;top:0;z-index:30}
@@ -59,9 +59,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--bleu);outline-offse
 .stick .nav{display:flex;gap:6px;align-items:center}
 .stick .nav a{color:#E8EDF5;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px}
 .stick .nav a[aria-current="page"]{background:#1C2842}
-.stick .nav a.nav-cta{background:#E44828;color:#fff}
+.stick .nav a.nav-cta{background:#DA3C1B;color:#fff}
 .stick .menu-btn{display:none;background:transparent;color:#fff;border:1px solid #2A3446;border-radius:999px;padding:8px 14px;font:700 14px var(--body);cursor:pointer}
-.actbar{background:#E44828;color:#fff}
+.actbar{background:#DA3C1B;color:#fff}
 .actbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding-block:8px}
 .actbar p{margin:0;font-weight:700;font-size:14px;flex:1 1 220px;min-width:0}
 .actbar a{font:800 14px var(--body);text-decoration:none;border-radius:999px;padding:8px 14px;white-space:nowrap}
@@ -179,7 +179,7 @@ footer.site a{color:#E8EDF5;text-decoration:none}
 .g-lib .g-af{font-weight:800;fill:var(--corail)}
 .g-lib .g-note{font-size:12px;fill:var(--ink3)}
 .g-neutre{fill:#9AA3B2}
-.g-s1{fill:#E44828;background:#E44828}.g-s2{fill:#EC6243;background:#EC6243}.g-s3{fill:#F09680;background:#F09680}.g-s4{fill:#F6C2B4;background:#F6C2B4}
+.g-s1{fill:#E44828;background:#DA3C1B}.g-s2{fill:#EC6243;background:#EC6243}.g-s3{fill:#F09680;background:#F09680}.g-s4{fill:#F6C2B4;background:#F6C2B4}
 .g-reste{fill:none;stroke:#E44828;stroke-width:1.5;stroke-dasharray:5 4}
 .g-reste-t{font:700 13px var(--body);fill:#E44828}
 .g-val{font:700 14px var(--body);fill:var(--ink)}

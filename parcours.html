@@ -25,8 +25,8 @@
 :root{
   --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --nuit:#0B1220; --creme:#F5EFE2; --corail:#E44828; --bleu:#2188D6; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
-  --papier:#FFFDF8; --line:#E2D8C4; --ink:#2A3142; --ink2:#4E5566; --ink3:#7A8293;
+  --nuit:#0B1220; --creme:#F5EFE2; --corail:#DA3C1B; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+  --papier:#FFFDF8; --line:#E2D8C4; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
   --hausse:#3CCB7F; --provisoire:#F2B84B;
   --r-bouton:8px; --r-carte:14px; --r-pastille:999px;
   --gut:max(16px,env(safe-area-inset-left,0px)); --gutR:max(16px,env(safe-area-inset-right,0px));
@@ -60,7 +60,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-sp
 }
 
 /* Typographie commune */
-.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
 .etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
 .titre-section{font-size:clamp(28px,3.8vw,44px)}
 .bouton{display:inline-flex;align-items:center;justify-content:center;font:800 16px/1.2 var(--f-body);min-height:46px;padding:12px 22px;border-radius:var(--r-bouton);border:0;text-decoration:none;cursor:pointer}
@@ -270,8 +270,8 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
 
 
 /* Couleurs des cycles : I vermillon, II bleu, III crème (la pureté) */
-details.cy[data-cy="fondations"]{background:#E44828}
-details.cy[data-cy="maitrise"]{background:#2188D6}
+details.cy[data-cy="fondations"]{background:#DA3C1B}
+details.cy[data-cy="maitrise"]{background:#1B71B2}
 details.cy[data-cy="patrimoine"]{background:#FFFDF8;color:var(--ink);box-shadow:0 2px 14px rgba(11,18,32,.08)}
 details.cy[data-cy="fondations"] .cy-num,details.cy[data-cy="maitrise"] .cy-num{color:#fff}
 details.cy[data-cy="fondations"] .cy-t .etiquette,details.cy[data-cy="maitrise"] .cy-t .etiquette,
@@ -290,8 +290,8 @@ details.cy[data-cy="patrimoine"] .cy-meta span{background:#F5EFE2;color:var(--in
 details.cy[data-cy="patrimoine"] .cy-val{background:#F5EFE2;color:var(--ink2)}
 details.cy[data-cy="patrimoine"] .cy-val .etiquette{color:var(--ink3)!important}
 details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
-.route li:nth-child(1) a{background:#E44828}.route li:nth-child(1) .r-n,.route li:nth-child(1) small{color:#fff}
-.route li:nth-child(3) a{background:#2188D6}.route li:nth-child(3) .r-n,.route li:nth-child(3) small{color:#fff}
+.route li:nth-child(1) a{background:#DA3C1B}.route li:nth-child(1) .r-n,.route li:nth-child(1) small{color:#fff}
+.route li:nth-child(3) a{background:#1B71B2}.route li:nth-child(3) .r-n,.route li:nth-child(3) small{color:#fff}
 .route li:nth-child(5) a{background:#F5EFE2}.route li:nth-child(5) b{color:#0B1220}.route li:nth-child(5) .r-n{color:#E44828}.route li:nth-child(5) small{color:var(--ink2)}.route li:nth-child(5) em{color:#E44828}
 .route .r-fin a{background:#111B2F}.route .r-fin .r-n{color:#E44828}.route .r-fin small{color:#C9D1DE}
 .ch-b.ch-p{box-shadow:0 0 0 2px rgba(255,255,255,.0)}
@@ -446,7 +446,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
   </section>
 
   <div class="col">
-    <div class="encadre" style="background:#E44828">
+    <div class="encadre" style="background:#DA3C1B">
       <span class="surtitre" style="color:#fff">Ça vous a aidé ?</span>
       <h2>Partagez-le à quelqu’un qui en a besoin.</h2>
       <p style="color:#fff">EFA est gratuit et grandit grâce à vous. Un message à un proche, un groupe de tontine, un collègue : chaque partage compte.</p>
