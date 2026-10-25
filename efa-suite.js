@@ -9,6 +9,34 @@
   try { if (window.self !== window.top) return; } catch (e) { return; }
   if (window.__efaSuite) return; window.__efaSuite = 1;
 
+  /* ---------- Barre de navigation commune ----------
+     Les pages plein écran (formations, certificats, Ely, diagnostic…) n'ont pas le menu du site :
+     on y ajoute une barre fine pour aller partout sans repasser par l'accueil. */
+  function barreNav() {
+    var deja = document.querySelector('header a[href="methode.html"], .mainnav a[href="methode.html"], nav a[href="methode.html"]');
+    if (deja || document.querySelector(".efa-nav")) return;
+    var p = (location.pathname.split("/").pop() || "index.html");
+    var st = document.createElement("style");
+    st.textContent = ".efa-nav{position:relative;z-index:50;align-self:stretch;width:100%;max-width:100vw;box-sizing:border-box;flex:none;background:#0B1220;color:#fff;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;border-bottom:1px solid #1F2C45}"
+      + ".efa-nav-in{max-width:min(1120px,100vw);box-sizing:border-box;margin:0 auto;display:flex;align-items:center;gap:4px 6px;padding:6px max(12px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none;white-space:nowrap}"
+      + ".efa-nav-in::-webkit-scrollbar{display:none}"
+      + ".efa-nav a{color:#E8EDF5;text-decoration:none;font-size:14px;font-weight:700;padding:7px 10px;border-radius:8px;flex:0 0 auto}"
+      + ".efa-nav a:hover{background:rgba(255,255,255,.1)}"
+      + ".efa-nav a.efa-nav-logo{display:flex;align-items:center;gap:8px;padding:4px 8px 4px 0;font-size:11px;letter-spacing:.16em}"
+      + ".efa-nav a.efa-nav-logo img{width:26px;height:26px}"
+      + ".efa-nav a.efa-nav-p{background:#E44828;color:#fff}"
+      + ".efa-nav a[aria-current]{box-shadow:inset 0 -2px 0 #E44828}"
+      + "@media (max-width:640px){.efa-nav a.efa-nav-logo span{display:none}.efa-nav a{font-size:13.5px;padding:7px 8px}}"
+      + "@media print{.efa-nav{display:none}}";
+    document.head.appendChild(st);
+    var L = [["parcours.html", "L’école", "efa-nav-p"], ["methode.html", "Études & prospective"], ["organisations.html", "Pour les organisations"], ["auteur.html", "À propos"]];
+    var n = document.createElement("nav"); n.className = "efa-nav"; n.setAttribute("aria-label", "Navigation du site");
+    n.innerHTML = '<div class="efa-nav-in"><a class="efa-nav-logo" href="index.html" aria-label="Accueil EFA"><img src="logo-efa-96.png" alt="" width="26" height="26"><span>ACCUEIL</span></a>'
+      + L.map(function (x) { return '<a href="' + x[0] + '"' + (x[2] ? ' class="' + x[2] + '"' : '') + (p === x[0] ? ' aria-current="page"' : '') + ">" + x[1] + "</a>"; }).join("") + "</div>";
+    document.body.insertBefore(n, document.body.firstChild);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", barreNav); else barreNav();
+
   /* ---------- Partage : « Si ça vous a aidé, partagez » ----------
      Tout bouton [data-efa-partager] du site déclenche le partage (attributs facultatifs :
      data-efa-partager="whatsapp|facebook|copier", data-titre, data-url). */
@@ -66,7 +94,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102508"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102510"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -144,7 +172,7 @@
     // Page hors parcours : proposer d'en choisir un
     if (!candidats.length) {
       placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
-        + '<p>Les 8 modules gratuits de l’École EFA partent de votre situation et se terminent par une fiche que vous gardez : un budget qui tient, une réserve, une tontine décidée.</p></div>'
+        + '<p>L’école EFA&nbsp;: trois cycles de modules gratuits, qui partent de votre situation et se terminent par une fiche que vous gardez&nbsp;: un budget qui tient, une réserve, une tontine décidée.</p></div>'
         + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Entrer dans l’école</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
       return;
     }

@@ -399,8 +399,8 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 .mfq-t{left:12px;right:12px;bottom:12px;font:700 16px/1.22 var(--f-display)}
 </style>
 <link rel="stylesheet" href="footer.css">
-<script src="parcours-efa.js?v=2026102508"></script>
-<script src="parcours-ui.js?v=2026102508"></script>
+<script src="parcours-efa.js?v=2026102510"></script>
+<script src="parcours-ui.js?v=2026102510"></script>
 </head>
 <body>
 <header class="top">
@@ -463,7 +463,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
     <div class="ce-etat" id="ce-etat" hidden></div>
     <div class="ce-hero">
       <div>
-        <p class="kick2">Les Fondations · Certificat EFA · Pilote gratuit</p>
+        <p class="kick2">Cycle I · Certificat local Fondations · Pilote gratuit</p>
         <h2>Apprenez les bases de votre argent. Et prouvez-le.</h2>
         <div class="ce-cta"><a class="btn btn-main" href="certificat-pilote.html?src=fondations&amp;m=1" data-goatcounter-click="fondations-commencer">Commencer par le module 1</a><a class="btn btn-line" href="#certificat-inscription">Rejoindre le pilote par email</a></div>
         <div class="ce-faits"><span>8 modules de 10 à 15 min</span><span>1 examen de 30 min</span><span>Environ 2 heures au total</span><span class="v">Gratuit</span></div>
@@ -510,7 +510,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
       <div class="ce-pas">
         <p class="kick" style="margin-top:0">À savoir</p>
         <h3>Une attestation de parcours, pas un diplôme</h3>
-        <p>Le Certificat EFA atteste que vous avez suivi les huit modules et réussi l'examen final. Il porte un numéro unique, vérifiable sur efa.africa.</p>
+        <p>Le certificat local Fondations atteste que vous avez suivi les huit modules et réussi l'examen final. Il porte un numéro unique. Viennent ensuite les certificats locaux Maîtrise et Patrimoine, puis le <a href="certificat-cefa.html">certificat CEFA ★</a>, qui réunit les trois.</p>
         <p>EFA éduque : aucun produit, aucune banque, aucun placement ne vous est recommandé.</p>
       </div>
     </div>
@@ -845,7 +845,7 @@ var OUTILS = [
     syncProgression();
     var mods=""; for(var j=1;j<=8;j++) mods+='<span class="'+(val[j]?"ok":"")+'">Module '+j+'</span>';
     el.innerHTML='<span class="cote-t" style="color:#F09680">Votre avancement</span><b class="t">'+(cert.reussite?"Certificat obtenu. Bravo !":n+" module"+(n>1?"s":"")+" validé"+(n>1?"s":"")+" sur 8")+'</b><div class="mods">'+mods+'</div>'+
-      '<p style="margin:0;color:#C9D1DE">'+(cert.reussite?"Partagez votre badge, puis passez au niveau suivant avec vos parcours.":(prochain?"Prochain module : "+prochain+". L’examen final se débloque une fois les 8 modules validés.":"Les 8 modules sont validés : l’examen final est débloqué."))+' Chaque module validé coche aussi l’étape de son parcours.</p>'+
+      '<p style="margin:0;color:#C9D1DE">'+(cert.reussite?"Partagez votre badge, puis passez au cycle Maîtrise de l’école.":(prochain?"Prochain module : "+prochain+". L’examen final se débloque une fois les 8 modules validés.":"Les 8 modules sont validés : l’examen final est débloqué."))+' Chaque module validé coche aussi l’étape de son parcours.</p>'+
       '<a class="btn btn-main" href="certificat-pilote.html">'+(cert.reussite?"Voir mon certificat":(prochain?"Continuer le module "+prochain:"Passer l’examen"))+'</a>';
     el.hidden=false;
   }
@@ -1102,7 +1102,7 @@ var OUTILS = [
 </script>
 <script src="prevenir.js" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102508" defer></script>
+<script src="efa-appli.js?v=2026102510" defer></script>
 <script src="minfin.js?v=202610241407"></script>
 <script>
 (function(){

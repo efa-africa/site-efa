@@ -124,7 +124,7 @@
   // Les données des parcours servent à nommer la fiche du module ; on les charge si la page ne l'a pas fait.
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
-    var s = document.createElement("script"); s.src = "parcours-efa.js?v=2026102508"; s.onload = cb; s.onerror = cb; document.head.appendChild(s);
+    var s = document.createElement("script"); s.src = "parcours-efa.js?v=2026102510"; s.onload = cb; s.onerror = cb; document.head.appendChild(s);
   }
   function go() { charger(demarrer); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", go); else go();
