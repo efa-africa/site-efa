@@ -241,6 +241,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .comite h2{font-family:var(--disp);font-size:clamp(26px,3.2vw,36px);line-height:1.12;margin:4px 0 10px;color:var(--ink)}
 .comite-txt p,.comite-txt li{color:var(--ink2)}
 .comite-txt ul{padding-left:20px;display:grid;gap:6px;margin:12px 0}
+.comite-membre{display:grid;gap:4px;background:var(--panel);border-radius:12px;padding:14px 16px;margin:14px 0}
+.comite-membre b{color:var(--ink)}
+.comite-membre a{font-weight:800;color:var(--bleu)}
+.comite-membre span{font-size:14px;color:var(--mute)}
 .comite-note{font-size:14px;color:var(--mute)!important}
 .comite-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .comite-form label{display:grid;gap:5px;font:700 14px var(--body);color:var(--ink)}
@@ -707,6 +711,7 @@ a.st-card{text-decoration:none}
             <li>Vous donnez votre avis partie par partie.</li>
             <li>Vous choisissez, pour chaque avis, d’être cité comme contributeur ou de rester anonyme.</li>
           </ul>
+          <div class="comite-membre"><b>Déjà membre du comité&nbsp;?</b><a href="https://claude.ai/artifact/6omNyimzrVW6Jx8BM4kw2T" target="_blank" rel="noopener" onclick="window.efaCompte&&efaCompte('a2075-comite-acces-membre')">Accéder à l’espace de relecture →</a><span>Connectez-vous avec l’adresse à laquelle vous avez reçu l’invitation.</span></div>
           <p class="comite-note">Les candidatures sont examinées par Élysée Johnson, fondateur d’EFA. Si votre profil est retenu, vous recevez une invitation personnelle à l’espace de relecture (un compte Claude gratuit est nécessaire pour y accéder).</p>
         </div>
         <form class="comite-form" id="comite-form" novalidate>
