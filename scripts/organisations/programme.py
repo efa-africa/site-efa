@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Page « Composer le programme de votre organisation » : configurateur 100 % en ligne (25/10/2026).
+L'organisation choisit son public, ses sujets et son rythme ; la page propose les arbitrages, puis construit
+un programme semaine par semaine à partir des modules de l'école (parcours-efa.js). Le lien ?p= rouvre le programme
+et donne la vue participant (&vue=participant)."""
+from pathlib import Path
+R = Path(__file__).resolve().parents[2]
+T = (R / 'salaire-fixe-activite.html').read_text(encoding='utf-8')
+HEADER = T[T.index('<header class="top">'):T.index('<main>')].replace('<a href="organisations.html">Pour les organisations</a>', '<a href="organisations.html" aria-current="page">Pour les organisations</a>')
+FOOTER = T[T.index('<footer class="efa-foot">'):T.index('<script>\nfunction efaCompte')]
+NAVCSS = T[T.index('.top{position:sticky'):T.index('.intro{background:var(--nuit)')]
+V = '2026102511'
+HTML = r'''<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Composer le programme de votre organisation · EFA</title>
+<meta name="description" content="Entreprises, coopératives, écoles, associations : composez en ligne un programme d’éducation financière à la carte, à partir des modules de l’école EFA. Vos participants le suivent sur téléphone ; EFA peut venir animer une session.">
+<link rel="canonical" href="https://efa.africa/programme-organisation.html">
+<meta property="og:title" content="Composer le programme de votre organisation · EFA">
+<meta property="og:description" content="Un programme d’éducation financière à la carte, entièrement en ligne, en quelques minutes.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css">
+<style>
+:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#E2D8C4;--hausse:#3CCB7F;--provisoire:#F2B84B;
+--f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--gut:max(16px,env(safe-area-inset-left,0px))}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;margin:0;text-wrap:balance;color:var(--nuit)}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+NAVCSS
+.hero{background:var(--nuit);color:#fff;padding-block:30px 36px}
+.hero .crumbs{font-size:13px;color:#AEB6C6}.hero .crumbs a{color:#E8EDF5}
+.sur{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.hero .sur{display:block;margin-top:18px;color:var(--soft-corail)}
+.hero h1{color:#fff;font-size:clamp(34px,5.6vw,60px);margin-top:10px;max-width:20ch}
+.hero .chapo{margin-top:14px;font-size:clamp(17px,2vw,19px);color:#C9D1DE;max-width:40em}
+.promesse{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+@media (max-width:720px){.promesse{grid-template-columns:minmax(0,1fr)}}
+.promesse div{background:#111B2F;border-radius:12px;padding:14px 16px}.promesse b{display:block;color:#fff;font-size:16px}.promesse span{font-size:14.5px;color:#C9D1DE}
+.etapes-c{display:flex;gap:6px;margin:22px 0 0;padding:0;list-style:none;flex-wrap:wrap}
+.etapes-c li{font-size:13px;font-weight:800;padding:6px 12px;border-radius:999px;background:var(--papier);color:var(--ink3)}
+.etapes-c li.ici{background:var(--nuit);color:#fff}.etapes-c li.fait{background:#E3F5EA;color:#1D6B43}
+#vue{margin-top:16px;display:flex;flex-direction:column;gap:14px;padding-bottom:40px}
+.carte{background:var(--papier);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.carte h2{font-size:clamp(22px,3vw,30px)}.carte .aide{color:var(--ink2);font-size:15.5px}
+.champ{display:grid;gap:6px;font-weight:700;font-size:15px}.champ input,.champ select{font:inherit;font-weight:400;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);width:100%;min-width:0}
+.choix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
+.ch{position:relative;display:flex;flex-direction:column;gap:4px;text-align:left;background:var(--creme);border:0;border-radius:12px;padding:14px 16px 14px 44px;cursor:pointer;font:inherit;color:var(--ink);min-height:56px}
+.ch::before{content:"";position:absolute;left:14px;top:16px;width:20px;height:20px;border-radius:6px;background:var(--papier);box-shadow:inset 0 0 0 2px var(--line)}
+.ch.rond::before{border-radius:50%}
+.ch[aria-pressed="true"]{background:var(--nuit);color:#fff}.ch[aria-pressed="true"]::before{background:var(--corail);box-shadow:none}
+.ch b{font-size:16px}.ch small{font-size:13.5px;color:var(--ink2)}.ch[aria-pressed="true"] small{color:#C9D1DE}
+.ch em{font-style:normal;font-size:12px;font-weight:800;color:var(--corail)}
+.grille2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media (max-width:620px){.grille2{grid-template-columns:minmax(0,1fr)}}
+.acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bt{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 20px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);font:800 15.5px/1.2 var(--f-body);cursor:pointer;text-decoration:none}
+.bt-p{background:var(--corail);color:#fff}.bt-n{background:var(--nuit);color:#fff}.bt-l{background:none;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px;padding-inline:4px}
+.bt[disabled]{opacity:.45;cursor:not-allowed}
+.arb{background:var(--creme);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.arb h3{font-size:19px}.arb p{color:var(--ink2);font-size:15.5px}
+.arb .opts{display:flex;flex-direction:column;gap:8px}
+.ok-l{background:#E3F5EA;border-radius:12px;padding:14px 16px;color:#1D6B43;font-weight:700}
+.resume{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}@media (max-width:720px){.resume{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.resume div{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px}.resume small{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#AEB6C6}.resume b{font-family:var(--f-display);font-size:clamp(18px,2.4vw,22px)}
+.sem{border-top:1px solid var(--line);padding-top:14px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 16px}
+@media (max-width:620px){.sem{grid-template-columns:minmax(0,1fr)}}
+.sem h3{font-size:18px}.sem h3 small{display:block;font-family:var(--f-body);font-size:13px;color:var(--ink3);font-weight:700}
+.mod{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;align-items:start;background:var(--creme);border-radius:12px;padding:12px 14px;margin-bottom:8px;text-decoration:none;color:inherit}
+.mod .n{font-family:var(--f-display);font-weight:700;font-size:22px;color:var(--corail)}
+.mod b{display:block;font-size:16px;color:var(--nuit)}.mod span{font-size:14px;color:var(--ink2)}
+.mod .d{font-size:13px;font-weight:800;color:var(--ink2);white-space:nowrap}
+.mod.c-maitrise .n{color:var(--bleu)}.mod.c-patrimoine .n{color:var(--nuit)}
+.session{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px}.session b{color:#fff}.session span{color:#C9D1DE;font-size:14px;display:block}
+.limites{font-size:14.5px;color:var(--ink2)}.limites li{margin:4px 0}
+.mention{font-size:13.5px;color:var(--ink3);margin-top:8px}
+@media print{header,footer,.hero,.etapes-c,.acts,.efa-suite,#efa-ely,.no-print{display:none!important}.carte{padding:0}}
+</style>
+</head>
+<body>
+HEADER<main>
+<section class="hero"><div class="wrap">
+  <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="organisations.html">Pour les organisations</a> › <span id="fil">Composer un programme</span></nav>
+  <span class="sur" id="h-sur">Pour les organisations · En ligne, en 5 minutes</span>
+  <h1 id="h-t">Composez le programme d’éducation financière de votre organisation</h1>
+  <p class="chapo" id="h-c">Vous choisissez ce que votre public doit apprendre ; nous vous proposons les arbitrages ; vous repartez avec un programme semaine par semaine que vos participants suivent sur leur téléphone. EFA peut ensuite venir animer une session pour répondre aux questions, challenger et faciliter.</p>
+  <div class="promesse" id="h-p">
+    <div><b>Entièrement en ligne</b><span>Leçons, vidéos, outils de calcul, quiz et fiches à garder, sur téléphone.</span></div>
+    <div><b>À la carte</b><span>23 modules en trois cycles, assemblés selon vos sujets et votre rythme.</span></div>
+    <div><b>Une présence humaine en plus</b><span>Une ou deux sessions avec EFA, si vous le souhaitez.</span></div>
+  </div>
+</div></section>
+<div class="wrap">
+  <ol class="etapes-c no-print" id="etapes"></ol>
+  <div id="vue" aria-live="polite"></div>
+</div>
+</main>
+FOOTER<script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
+<script src="parcours-efa.js?v=VV"></script>
+<script src="programme-organisation.js?v=VV"></script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=VV" defer></script>
+</body>
+</html>
+'''
+html = HTML.replace('NAVCSS', NAVCSS).replace('HEADER', HEADER).replace('FOOTER', FOOTER).replace('VV', V)
+(R / 'programme-organisation.html').write_text(html, encoding='utf-8')
+print('ok')

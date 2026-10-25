@@ -82,7 +82,7 @@
   });
 
   var EXCLUS = ["parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
-    "organisations.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
+    "organisations.html", "programme-organisation.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
   var page = (location.pathname.split("/").pop() || "index.html");
   if (EXCLUS.indexOf(page) >= 0) return;
   // Publications (études, prospective, actualités) : pas de bloc de progression, sauf arrivée depuis un module (?parcours=)
@@ -94,7 +94,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102510"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102511"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
