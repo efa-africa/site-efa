@@ -81,6 +81,67 @@
     partager(b.getAttribute("data-efa-partager"), b.getAttribute("data-titre"), b.getAttribute("data-url"), b);
   });
 
+  /* ---------- Précédent / Suivant, en haut de chaque écran ----------
+     Précédent : la page d'où l'on vient sur le site (mémorisée pendant la visite), sinon l'accueil.
+     Suivant : l'étape suivante dans un module ; sinon la suite qu'EFA veut proposer (table SUIVANT, à modifier librement). */
+  var SUIVANT = {
+    "index.html": ["parcours.html", "L’école"],
+    "auteur.html": ["parcours.html", "L’école"],
+    "outils.html": ["parcours.html", "L’école"],
+    "diagnostic.html": ["parcours.html", "L’école"],
+    "methode.html": ["etude-tontine-en-chiffres.html?src=suivant", "La dernière étude"],
+    "news.html": ["methode.html", "Études & prospective"],
+    "organisations.html": ["programme-organisation.html", "Composer un programme"],
+    "rendez-vous.html": ["index.html", "Accueil"],
+    "rejoindre.html": ["parcours.html", "L’école"],
+    "espace-organisation.html": ["programme-organisation.html", "Composer un programme"]
+  };
+  var SANS_FIL = ["admin-ecole.html", "tableau-ely.html", "ely.html"];
+  var FIL = "efa_fil";
+  function court(t) { t = String(t || "").replace(/\s*·\s*EFA.*$/, "").replace(/\s*\|.*$/, "").trim(); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, "") + "…" : t; }
+  function filSuivant(href, label) {
+    var a = document.querySelector(".efa-fil .fil-s"); if (!a || !href) return;
+    a.href = href; a.innerHTML = "<span>Suivant&nbsp;: </span>" + esc(label) + " →"; a.hidden = false;
+    if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
+  }
+  window.EFA_FIL = { suivant: filSuivant };
+  function filNav() {
+    var pg = location.pathname.split("/").pop() || "index.html";
+    if (SANS_FIL.indexOf(pg) >= 0 || document.querySelector(".efa-fil")) return;
+    var cur = location.pathname + location.search, S = [];
+    try { S = JSON.parse(sessionStorage.getItem(FIL) || "[]") || []; } catch (e) {}
+    if (S.length && S[S.length - 1].u === cur) { /* rechargement */ }
+    else if (S.length > 1 && S[S.length - 2].u === cur) S.pop(); // retour en arrière
+    else S.push({ u: cur, t: ({ "index.html": "Accueil", "parcours.html": "L’école", "methode.html": "Études & prospective", "organisations.html": "Pour les organisations", "outils.html": "Mes outils", "auteur.html": "À propos" })[pg] || court((document.querySelector("h1") || {}).textContent || document.title) });
+    S = S.slice(-30); try { sessionStorage.setItem(FIL, JSON.stringify(S)); } catch (e) {}
+    var prev = S.length > 1 ? S[S.length - 2] : (pg !== "index.html" ? { u: "index.html", t: "Accueil" } : null);
+    var st = document.createElement("style");
+    st.textContent = ".efa-fil{background:#F5EFE2;border-bottom:1px solid #E2D8C4;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;align-self:stretch;width:100%;box-sizing:border-box}"
+      + ".efa-fil-in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px max(12px,env(safe-area-inset-left,0px))}"
+      + ".efa-fil a{display:inline-flex;align-items:center;gap:4px;min-height:38px;padding:6px 12px;border-radius:8px;font-size:14.5px;font-weight:800;text-decoration:none;color:#0B1220;max-width:48%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"
+      + ".efa-fil a.fil-p{background:#fff}.efa-fil a.fil-s{background:#0B1220;color:#fff;margin-left:auto}.efa-fil a[hidden]{display:none}"
+      + ".efa-fil a span{font-weight:600;opacity:.75}"
+      + "@media (max-width:520px){.efa-fil a{font-size:13.5px;padding:6px 10px}.efa-fil a span{display:none}}"
+      + "@media print{.efa-fil{display:none}}";
+    document.head.appendChild(st);
+    var f = document.createElement("nav"); f.className = "efa-fil"; f.setAttribute("aria-label", "Précédent et suivant");
+    f.innerHTML = '<div class="efa-fil-in">' + (prev ? '<a class="fil-p" href="' + esc(prev.u) + '" data-goatcounter-click="fil-precedent">← <span>Précédent&nbsp;: </span>' + esc(prev.t || "Retour") + "</a>" : "") + '<a class="fil-s" hidden data-goatcounter-click="fil-suivant"></a></div>';
+    var p0 = f.querySelector(".fil-p");
+    if (p0) p0.addEventListener("click", function (e) {
+      // Retour réel quand on vient de la page précédente du site : la page reprend où on l'avait laissée
+      try { if (S.length > 1 && document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { e.preventDefault(); history.back(); } } catch (x) {}
+    });
+    var hd = document.querySelector(".efa-nav") || document.querySelector("header");
+    if (hd && hd.parentNode) hd.parentNode.insertBefore(f, hd.nextSibling); else document.body.insertBefore(f, document.body.firstChild);
+    // Suivant par défaut : la table SUIVANT, sinon reprendre le module en cours, sinon L'école
+    var et = {}; try { et = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; } catch (e) {}
+    if (SUIVANT[pg]) filSuivant(SUIVANT[pg][0], SUIVANT[pg][1]);
+    else if (pg === "parcours.html") filSuivant("parcours.html#" + (et.actif || "P1"), et.actif ? "Reprendre mon module" : "Module 1");
+    else if (et.actif && pg !== "programme-organisation.html") filSuivant("parcours.html#" + et.actif, "Reprendre mon module");
+    else if (pg !== "programme-organisation.html") filSuivant("parcours.html", "L’école");
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", filNav); else filNav();
+
   var EXCLUS = ["parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
     "organisations.html", "programme-organisation.html", "rejoindre.html", "espace-organisation.html", "admin-ecole.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
   var page = (location.pathname.split("/").pop() || "index.html");
@@ -217,19 +278,20 @@
       + "</div>";
 
     var box = placer(gauche + droite);
+    if (window.EFA_FIL) { if (hrefSuiv) window.EFA_FIL.suivant(hrefSuiv, "Étape suivante"); else window.EFA_FIL.suivant("parcours.html#" + p.id, "Retour au module"); }
     // Arrivée depuis un module : rappeler où l'on est, avec un retour direct
     if (voulu && voulu === p.id && p.etapes[ici[0]] && p.etapes[ici[0]].ess) {
       var ctx = document.createElement("div"); ctx.className = "efa-ctx"; ctx.setAttribute("role", "note");
       ctx.innerHTML = "<span>Vous êtes dans le <b>" + esc(nomCourt(p.id)) + " · " + esc(p.titre) + "</b>, étape " + rang + " sur " + nbEss + ".</span>"
         + '<span class="ctx-acts"><button type="button" class="ctx-fait" aria-pressed="false"></button><a class="ctx-suiv" hidden' + (hrefSuiv ? ' href="' + esc(hrefSuiv) + '"' + ext : ' href="parcours.html#' + p.id + '"') + '>' + (hrefSuiv ? "Étape suivante →" : "Retour au module →") + '</a><a href="parcours.html#' + p.id + '" data-goatcounter-click="retour-module-' + p.id + '">Revenir au module</a></span>';
-      var hd = document.querySelector("header");
+      var hd = document.querySelector(".efa-fil") || document.querySelector("header");
       if (hd && hd.parentNode) hd.parentNode.insertBefore(ctx, hd.nextSibling); else document.body.insertBefore(ctx, document.body.firstChild);
       mesure("ressource-ouverte-" + p.id + "-" + rang);
     }
     var cb = box.querySelector("#es-fait");
     // En haut de la page : « Marquer comme fait », puis « Étape suivante », sans descendre en bas de la page
     var bf = document.querySelector(".efa-ctx .ctx-fait"), bs = document.querySelector(".efa-ctx .ctx-suiv");
-    function haut() { if (!bf) return; bf.setAttribute("aria-pressed", cb.checked ? "true" : "false"); bf.textContent = cb.checked ? "✓ Étape faite" : "Marquer comme fait"; if (bs) bs.hidden = !cb.checked; }
+    function haut() { if (!bf) return; bf.setAttribute("aria-pressed", cb.checked ? "true" : "false"); bf.textContent = cb.checked ? "✓ Étape faite" : "Marquer comme fait"; }
     if (bf) bf.onclick = function () { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); };
     haut();
     cb.addEventListener("change", haut);
