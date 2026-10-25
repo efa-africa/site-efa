@@ -162,12 +162,12 @@ var c0 = E.compte(); if (c0 && c0.cle) vueCompte(c0, false); else vueAccueil();
 # ------------------------------------------------------------------ espace-organisation.html (tableau de bord)
 page('espace-organisation', 'Espace organisation · tableau de bord', 'Pour les organisations · Tableau de bord',
      'Le tableau de bord de votre programme',
-     'Qui s’est inscrit, qui s’est connecté, qui avance et qui a terminé. Vous y accédez avec la clé d’organisation remise par EFA.',
+     'Qui s’est inscrit, qui s’est connecté, qui avance et qui a terminé. Vous y accédez avec la clé d’organisation reçue en créant vos accès.',
      COMMUN + r'''
 var CLEO = null, DATA = null, tri = "nom", sens = 1;
 try { CLEO = sessionStorage.getItem("efa_cle_orga"); } catch (e) {}
 function connexion() {
-  $("vue").innerHTML = '<section class="carte"><h2>Entrer votre clé d’organisation</h2><p class="aide">Elle commence par ORG- et vous a été remise par EFA. Elle est réservée aux <b>responsables du programme</b> désignés par votre organisation (RH, formation, direction) : ce sont eux qui consultent le suivi. Les participants qui suivent les cours ne l’utilisent pas, ils ont leur propre code et leur clé personnelle.</p>'
+  $("vue").innerHTML = '<section class="carte"><h2>Entrer votre clé d’organisation</h2><p class="aide">Elle commence par ORG- : vous l’avez reçue en créant vos accès, ou de la part d’EFA. Elle est réservée aux <b>responsables du programme</b> désignés par votre organisation (RH, formation, direction) : ce sont eux qui consultent le suivi. Les participants qui suivent les cours ne l’utilisent pas, ils ont leur propre code et leur clé personnelle.</p>'
     + '<label class="champ">Clé d’organisation<input id="o-cle" class="cle-in" autocomplete="off" placeholder="ORG-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"></label>'
     + '<label class="case"><input type="checkbox" id="o-garde"><span>Rester connecté sur cet appareil le temps de la session</span></label>'
     + '<div class="acts"><button type="button" class="bt bt-p" id="o-go">Ouvrir le tableau de bord</button><a class="bt bt-l" href="programme-organisation.html">Composer un programme</a></div><p class="msg" id="o-msg" role="status"></p></section>';

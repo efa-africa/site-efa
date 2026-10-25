@@ -1,4 +1,4 @@
-/* EFA · Worker « efa-ecole » · version 1.0 · 25 octobre 2026
+/* EFA · Worker « efa-ecole » · version 1.1 · 25 octobre 2026
    Comptes de l'école pour les organisations : clés d'accès, comptes participants, tableau de bord.
 
    Réglages (Cloudflare > Workers > efa-ecole > Settings > Variables and Secrets) :
@@ -10,10 +10,13 @@
      - clé maîtresse (ADMIN_KEY)       : créer un programme, générer la clé d'une organisation, désactiver ;
      - clé d'organisation (32 caract.) : voir son tableau de bord (participants, connexions, progression) ;
      - clé personnelle (24 caract.)    : un compte par participant, pour retrouver sa progression partout.
+   Version 1.1 : une organisation crée elle-même ses accès depuis « Composer un programme » (route /organisations),
+   sans attendre EFA : 500 places au plus, ouvert un an, au plus 3 créations par email et par jour et 30 par heure au total.
    Les clés ne sont jamais stockées : seule leur empreinte SHA-256 l'est. Aucune somme saisie dans les outils n'est reçue. */
 
 const ORIGINES = ["https://efa.africa", "https://www.efa.africa"];
-const VERSION = "1.0";
+const VERSION = "1.1";
+const AUTO_PLACES = 500, AUTO_PAR_EMAIL = 3, AUTO_PAR_HEURE = 30;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sans 0/O ni 1/I, pour la lecture et la dictée
 
 /* ---------- Clés ---------- */
@@ -70,6 +73,10 @@ function base(env) {
     async majProgramme(id, l) { await req("/ecole_programmes?id=eq." + encodeURIComponent(id), { method: "PATCH", headers: { "Prefer": "return=minimal" }, body: JSON.stringify(l) }); },
     async creerParticipant(l) { return (await (await req("/ecole_participants", { method: "POST", headers: { "Prefer": "return=representation" }, body: JSON.stringify(l) })).json())[0]; },
     async majParticipant(id, l) { await req("/ecole_participants?id=eq." + encodeURIComponent(id), { method: "PATCH", headers: { "Prefer": "return=minimal" }, body: JSON.stringify(l) }); },
+    async compter(filtre) {
+      const r = await req("/ecole_programmes?" + filtre + "&select=id", { headers: { "Prefer": "count=exact", "Range": "0-0" } });
+      return parseInt((r.headers.get("content-range") || "*/0").split("/")[1], 10) || 0;
+    },
     async stats() { return (await req("/ecole_programmes_stats?select=*&order=cree_le.desc")).json(); }
   };
 }
@@ -78,7 +85,7 @@ function base(env) {
 const MODULE = /^[PM]\d{1,2}$/, ETAPE = /^[PM]\d{1,2}\.\d{1,2}$/;
 function programmeValide(p) {
   if (!p || !Array.isArray(p.m) || !p.m.length || p.m.length > 30 || !p.m.every(x => MODULE.test(x))) return null;
-  return { m: p.m, s: Math.min(52, Math.max(1, +p.s || 8)), mi: Math.min(600, Math.max(15, +p.mi || 45)), f: ["0", "1", "2"].includes(String(p.f)) ? String(p.f) : "0", c: p.c === "F" ? "F" : "" };
+  return { m: p.m, s: Math.min(52, Math.max(1, +p.s || 8)), mi: Math.min(600, Math.max(15, +p.mi || 45)), f: ["0", "1", "2"].includes(String(p.f)) ? String(p.f) : "0", c: ["F", "M", "P"].filter(l => String(p.c || "").includes(l)).join("") };
 }
 function ouvert(pg) { return pg && pg.actif && (!pg.expire_le || new Date(pg.expire_le + "T23:59:59Z") >= new Date()); }
 const publicProgramme = pg => ({ id: pg.id, nom: pg.nom, programme: pg.programme, expire_le: pg.expire_le, actif: pg.actif });
@@ -130,6 +137,29 @@ async function organisation(request, env, db, chemin, c) {
   return json({ erreur: "Route inconnue." }, 404, c);
 }
 
+// Création des accès par l'organisation elle-même, à la fin de « Composer un programme »
+async function inscrireOrganisation(request, env, db, c) {
+  const b = await lire(request) || {};
+  const nom = texte(b.nom, 80), prog = programmeValide(b.programme), r = b.responsable || {};
+  const rNom = texte(r.nom, 80), rFonction = texte(r.fonction, 80), rEmail = texte(r.email, 120).toLowerCase();
+  if (b.accord !== true) return json({ erreur: "Cochez la case pour accepter les conditions des accès." }, 400, c);
+  if (nom.length < 2) return json({ erreur: "Indiquez le nom de l'organisation." }, 400, c);
+  if (!prog) return json({ erreur: "Programme illisible : recomposez-le, puis réessayez." }, 400, c);
+  if (rNom.length < 2) return json({ erreur: "Indiquez le nom du responsable du programme." }, 400, c);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(rEmail)) return json({ erreur: "Indiquez une adresse email valide pour le responsable." }, 400, c);
+  const jour = new Date(Date.now() - 864e5).toISOString(), heure = new Date(Date.now() - 36e5).toISOString();
+  if (await db.compter("note=ilike." + encodeURIComponent("*" + rEmail + "*") + "&cree_le=gte." + jour) >= AUTO_PAR_EMAIL) return json({ erreur: "Vous avez déjà créé plusieurs programmes aujourd'hui. Écrivez à EFA pour en ouvrir un autre." }, 429, c);
+  if (await db.compter("note=like.auto*&cree_le=gte." + heure) >= AUTO_PAR_HEURE) return json({ erreur: "Beaucoup de demandes en ce moment : réessayez dans une heure, ou écrivez à EFA." }, 429, c);
+  const demande = Math.max(1, parseInt(b.places, 10) || 50), places = Math.min(AUTO_PLACES, demande);
+  const fin = new Date(Date.now() + 365 * 864e5).toISOString().slice(0, 10);
+  const cle = cleOrganisation();
+  let code = codeInvitation();
+  for (let k = 0; k < 5 && await db.programmeParCode(code); k++) code = codeInvitation();
+  const pg = await db.creerProgramme({ nom, programme: prog, cle_hash: await empreinte(cle), code, places, expire_le: fin,
+    note: ("auto · " + rNom + (rFonction ? " (" + rFonction + ")" : "") + " · " + rEmail + (demande > places ? " · demande " + demande + " places" : "")).slice(0, 300) });
+  return json({ programme: { ...publicProgramme(pg), code: pg.code, places: pg.places }, cle_organisation: cle, code: pg.code, places_demandees: demande }, 201, c);
+}
+
 async function rejoindre(request, env, db, c) {
   const b = await lire(request) || {};
   const code = texte(b.code, 20).toUpperCase(), nom = texte(b.nom, 80), email = texte(b.email, 120).toLowerCase() || null;
@@ -178,6 +208,7 @@ export async function traiter(request, env, db) {
   try {
     if (chemin.startsWith("/admin/")) return await admin(request, env, db, chemin, c);
     if (chemin === "/orga" || chemin.startsWith("/orga/")) return await organisation(request, env, db, chemin, c);
+    if (request.method === "POST" && chemin === "/organisations") return await inscrireOrganisation(request, env, db, c);
     if (request.method === "POST" && chemin === "/rejoindre") return await rejoindre(request, env, db, c);
     if (request.method === "POST" && (chemin === "/moi" || chemin === "/moi/sync")) return await moi(request, env, db, chemin, c);
     return json({ erreur: "Route inconnue." }, 404, c);

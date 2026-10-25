@@ -6,7 +6,7 @@
 <link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>Espace organisation · tableau de bord · EFA</title>
-<meta name="description" content="Qui s’est inscrit, qui s’est connecté, qui avance et qui a terminé. Vous y accédez avec la clé d’organisation remise par EFA.">
+<meta name="description" content="Qui s’est inscrit, qui s’est connecté, qui avance et qui a terminé. Vous y accédez avec la clé d’organisation reçue en créant vos accès.">
 <meta name="robots" content="noindex">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +92,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="organisations.html">Pour les organisations</a> › Tableau de bord</nav>
   <span class="sur">Pour les organisations · Tableau de bord</span>
   <h1>Le tableau de bord de votre programme</h1>
-  <p class="chapo">Qui s’est inscrit, qui s’est connecté, qui avance et qui a terminé. Vous y accédez avec la clé d’organisation remise par EFA.</p>
+  <p class="chapo">Qui s’est inscrit, qui s’est connecté, qui avance et qui a terminé. Vous y accédez avec la clé d’organisation reçue en créant vos accès.</p>
 </div></section>
 <div class="wrap"><div id="vue" aria-live="polite"></div></div>
 </main>
@@ -164,7 +164,7 @@ function bilan(pa, mods) {
 var CLEO = null, DATA = null, tri = "nom", sens = 1;
 try { CLEO = sessionStorage.getItem("efa_cle_orga"); } catch (e) {}
 function connexion() {
-  $("vue").innerHTML = '<section class="carte"><h2>Entrer votre clé d’organisation</h2><p class="aide">Elle commence par ORG- et vous a été remise par EFA. Elle est réservée aux <b>responsables du programme</b> désignés par votre organisation (RH, formation, direction) : ce sont eux qui consultent le suivi. Les participants qui suivent les cours ne l’utilisent pas, ils ont leur propre code et leur clé personnelle.</p>'
+  $("vue").innerHTML = '<section class="carte"><h2>Entrer votre clé d’organisation</h2><p class="aide">Elle commence par ORG- : vous l’avez reçue en créant vos accès, ou de la part d’EFA. Elle est réservée aux <b>responsables du programme</b> désignés par votre organisation (RH, formation, direction) : ce sont eux qui consultent le suivi. Les participants qui suivent les cours ne l’utilisent pas, ils ont leur propre code et leur clé personnelle.</p>'
     + '<label class="champ">Clé d’organisation<input id="o-cle" class="cle-in" autocomplete="off" placeholder="ORG-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"></label>'
     + '<label class="case"><input type="checkbox" id="o-garde"><span>Rester connecté sur cet appareil le temps de la session</span></label>'
     + '<div class="acts"><button type="button" class="bt bt-p" id="o-go">Ouvrir le tableau de bord</button><a class="bt bt-l" href="programme-organisation.html">Composer un programme</a></div><p class="msg" id="o-msg" role="status"></p></section>';

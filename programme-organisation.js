@@ -226,12 +226,17 @@
         + '<p>Former ' + (pr.n ? 'les équipes de ' + esc(pr.n) : 'vos équipes') + ' à leurs finances, c’est leur donner de la sérénité et de la marge de manœuvre. EFA se tient à vos côtés pour mener ce chantier jusqu’au bout.</p>'
         + '<p>Je suis Élysée Johnson et je vous accompagnerai tout au long de ce programme, du lancement jusqu’aux certificats.</p><p class="sig">Élysée Johnson<small>Fondateur et président d’EFA</small></p></div></section>'
         + '<section class="carte no-print" id="suite"><p class="sur">Étape 5 sur 5 · Votre programme est prêt</p><h2>Trois étapes pour le lancer</h2><ol class="suite">'
-        + '<li><b><span class="n">1</span>Vérifiez le programme</b><span>Les modules, les semaines et les sessions sont détaillés juste en dessous. Un changement&nbsp;? Modifiez-le avant de demander les accès.</span><div class="acts"><a href="#curriculum">Voir le programme ↓</a><button type="button" class="bt bt-l" id="a-mod">Modifier le programme</button></div></li>'
-        + '<li class="go"><b><span class="n">2</span>Demandez les accès à EFA</b><span>EFA vous remet la clé de votre tableau de bord, réservée aux responsables du programme, et le code d’inscription de vos participants.</span>'
+        + '<li><b><span class="n">1</span>Vérifiez le programme</b><span>Les modules, les semaines et les sessions sont détaillés juste en dessous. Un changement&nbsp;? Modifiez-le avant de créer vos accès.</span><div class="acts"><a href="#curriculum">Voir le programme ↓</a><button type="button" class="bt bt-l" id="a-mod">Modifier le programme</button></div></li>'
+        + '<li class="go" id="acces"><b><span class="n">2</span>Créez vos accès, tout de suite</b><span>Vous recevez à l’instant la clé de votre tableau de bord, réservée aux responsables du programme, et le code d’inscription de vos participants. Gratuit pendant le pilote.</span>'
+        + '<div class="g2"><label class="champ">Organisation<input id="x-org" maxlength="80" autocomplete="organization" value="' + esc(pr.n || "") + '"></label><label class="champ">Nombre de places<input id="x-places" type="number" min="1" max="500" value="' + ({ "moins de 20": 20, "20 à 100": 100 }[pr.ta] || (pr.ta ? 500 : 50)) + '"></label>'
+        + '<label class="champ">Responsable du programme<input id="x-nom" maxlength="80" autocomplete="name" placeholder="Prénom et nom"></label><label class="champ">Fonction <small style="font-weight:400;color:#AEB6C6">facultatif</small><input id="x-fct" maxlength="80" placeholder="ex. DRH, chargée de formation"></label>'
+        + '<label class="champ">Email du responsable<input id="x-mail" type="email" maxlength="120" autocomplete="email"></label></div>'
         + '<label class="ok-case"><input type="checkbox" id="a-ok"><span>J’ai vérifié les modules, les semaines et les sessions</span></label>'
-        + '<div class="acts"><a class="bt bt-p" id="a-ses" aria-disabled="true" href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact">Demander les accès à EFA</a></div><p class="aide" id="a-msg" role="status" style="color:#F09680"></p></li>'
-        + '<li><b><span class="n">3</span>Invitez vos participants</b><span>Une fois les accès reçus, depuis votre <a href="espace-organisation.html">tableau de bord</a> : le message d’invitation, avec le code, est prêt à envoyer. Sans ce code, la progression de vos participants ne peut pas être suivie.</span></li></ol>'
-        + '<details class="valid"><summary>Faire valider le programme en interne avant de demander les accès</summary><p class="aide">Pour un directeur, la RH ou le bureau de la coopérative : le lien rouvre ce programme tel quel.</p><div class="acts"><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button><button type="button" class="bt" id="a-lien">Copier le lien du programme</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button></div><p class="aide" id="a-msg2" role="status"></p></details>'
+        + '<label class="ok-case"><input type="checkbox" id="a-acc"><span>Je suis habilité à ouvrir ce programme pour mon organisation. Les responsables désignés verront le nom, les visites et l’avancement des participants inscrits avec notre code, jamais leurs montants, leurs fiches ni leurs réponses (<a href="confidentialite.html#programme" style="color:#6DB8F2">confidentialité</a>).</span></label>'
+        + '<div class="acts"><button type="button" class="bt bt-p" id="a-ses" aria-disabled="true">Créer mes accès maintenant</button></div><p class="aide" id="a-msg" role="status" style="color:#F09680"></p>'
+        + '<span>Plus de 500 places, une session à fixer, un devis ou une autre demande&nbsp;? <a href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact" style="color:#6DB8F2">Écrire à EFA</a> (facultatif).</span></li>'
+        + '<li><b><span class="n">3</span>Invitez vos participants</b><span>Depuis votre <a href="espace-organisation.html">tableau de bord</a> : le message d’invitation, avec le code, est prêt à envoyer par email ou WhatsApp. Sans ce code, la progression de vos participants ne peut pas être suivie.</span></li></ol>'
+        + '<details class="valid"><summary>Faire valider le programme en interne avant de créer les accès</summary><p class="aide">Pour un directeur, la RH ou le bureau de la coopérative : le lien rouvre ce programme tel quel.</p><div class="acts"><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button><button type="button" class="bt" id="a-lien">Copier le lien du programme</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button></div><p class="aide" id="a-msg2" role="status"></p></details>'
         + '</section>' + h;
       h +=         + '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
         + "<li><b>Gratuit pendant le pilote</b> : les modules et la composition du programme. Les sessions avec EFA se conviennent ensemble.</li>"
@@ -245,9 +250,42 @@
     $("a-lien").onclick = function () { copier(lien, "Lien copié : il rouvre ce programme tel quel, pour le faire valider."); mesure("orga-programme-lien-validation"); };
     $("a-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("Projet de programme d’éducation financière avec EFA" + (pr.n ? " pour " + pr.n : "") + ", à valider : " + lien), "_blank", "noopener"); mesure("orga-programme-whatsapp"); };
     $("a-print").onclick = function () { try { window.print(); } catch (e) {} };
-    $("a-ok").onchange = function () { $("a-ses").setAttribute("aria-disabled", this.checked ? "false" : "true"); if (this.checked) $("a-msg").textContent = ""; };
-    $("a-ses").onclick = function (e) { if (!$("a-ok").checked) { e.preventDefault(); $("a-msg").textContent = "Cochez d’abord la case : vérifiez les modules, les semaines et les sessions ci-dessous."; return; } mesure("orga-programme-session"); };
+    function pret() { $("a-ses").setAttribute("aria-disabled", $("a-ok").checked && $("a-acc").checked ? "false" : "true"); }
+    $("a-ok").onchange = pret; $("a-acc").onchange = pret;
+    $("a-ses").onclick = function () { creerAcces(pr, lien); };
     $("a-mod").onclick = function () { history.replaceState(null, "", location.pathname); aller(1); };
+  }
+  // Création des accès par l'organisation : le Worker efa-ecole renvoie la clé d'organisation (montrée une seule fois) et le code
+  function creerAcces(pr, lien) {
+    var m = function (t) { $("a-msg").innerHTML = t; };
+    var org = $("x-org").value.trim(), nom = $("x-nom").value.trim(), fct = $("x-fct").value.trim(), mail = $("x-mail").value.trim(), places = +$("x-places").value || 50;
+    if (!$("a-ok").checked) return m("Cochez d’abord la première case : vérifiez les modules, les semaines et les sessions ci-dessous.");
+    if (org.length < 2) return m("Indiquez le nom de l’organisation.");
+    if (nom.length < 2) return m("Indiquez le nom du responsable du programme.");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mail)) return m("Indiquez une adresse email valide.");
+    if (!$("a-acc").checked) return m("Cochez la seconde case pour ouvrir le programme.");
+    var E = window.EFA_ECOLE; if (!E) return m("Le service se charge : réessayez dans quelques secondes.");
+    var b = $("a-ses"); b.disabled = true; m("Création de vos accès…");
+    var prog = { n: org, m: pr.m, s: pr.s, mi: pr.mi, f: pr.f, c: pr.c };
+    E.appel("/organisations", { nom: org, programme: prog, places: places, accord: true, responsable: { nom: nom, fonction: fct, email: mail } }).then(function (r) {
+      mesure("orga-acces-crees");
+      try { sessionStorage.setItem("efa_cle_orga", r.cle_organisation); } catch (e) {}
+      var inv = "Bonjour, notre programme d’éducation financière avec EFA est ouvert. Créez votre compte en 1 minute sur votre téléphone : " + location.origin + "/rejoindre.html?code=" + r.code + " (code : " + r.code + "). Ce que voit l’organisation : votre nom, vos visites et votre avancement. Jamais vos montants, vos fiches ni vos réponses.";
+      var li = $("acces"); li.className = "acces-ok";
+      li.innerHTML = '<b><span class="n">2</span>Vos accès sont créés · ' + esc(r.programme.nom) + '</b>'
+        + '<p class="alerte-cle"><b>Notez votre clé maintenant : elle ne sera plus affichée.</b> Gardez-la pour les responsables du programme. EFA ne peut pas la retrouver ; en cas de perte, une nouvelle clé se demande à EFA.</p>'
+        + '<span><b>Clé du tableau de bord</b> (confidentielle)</span><div class="cle">' + esc(r.cle_organisation) + '</div>'
+        + '<span><b>Code des participants</b> · ' + r.programme.places + ' places, ouvert jusqu’au ' + new Date(r.programme.expire_le).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) + '</span><div class="cle">' + esc(r.code) + '</div>'
+        + (pr.f !== "0" ? '<span>Votre programme prévoit ' + (pr.f === "2" ? "deux sessions" : "une session") + ' avec EFA : nous écrivons à ' + esc(mail) + ' pour fixer la date.</span>' : '')
+        + (r.places_demandees > r.programme.places ? '<span>Vous avez demandé ' + r.places_demandees + ' places : EFA vous écrit pour ouvrir les suivantes.</span>' : '')
+        + '<div class="acts"><button type="button" class="bt" id="k-cop">Copier ma clé</button><button type="button" class="bt" id="k-mail">M’envoyer ma clé par email</button><a class="bt bt-p" href="espace-organisation.html">Ouvrir mon tableau de bord</a></div><p class="aide" id="k-msg" role="status"></p>';
+      var cop = function (t, x) { try { navigator.clipboard.writeText(t).then(function () { $("k-msg").textContent = x; }, function () { window.prompt("Copiez :", t); }); } catch (e) { window.prompt("Copiez :", t); } };
+      $("k-cop").onclick = function () { cop(r.cle_organisation, "Clé copiée : gardez-la dans un endroit sûr."); };
+      $("k-mail").onclick = function () { location.href = "mailto:" + encodeURIComponent(mail) + "?subject=" + encodeURIComponent("Accès EFA · " + r.programme.nom) + "&body=" + encodeURIComponent("Tableau de bord : " + location.origin + "/espace-organisation.html\nClé d’organisation (confidentielle) : " + r.cle_organisation + "\n\nCode des participants : " + r.code + "\nLien d’inscription : " + location.origin + "/rejoindre.html?code=" + r.code + "\n\nMessage d’invitation à envoyer :\n" + inv); };
+      // EFA est prévenu (sans la clé) : nom, responsable, programme, places
+      try { fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ access_key: "426191fb-4812-4de4-b602-5857464c5916", subject: "efa.africa · Nouveau programme d’organisation : " + org, from_name: "Site efa.africa", name: nom, email: mail, replyto: mail,
+        message: "Organisation : " + org + "\nResponsable : " + nom + (fct ? " (" + fct + ")" : "") + " · " + mail + "\nPlaces : " + r.programme.places + (r.places_demandees > r.programme.places ? " (demandé : " + r.places_demandees + ")" : "") + "\nCode participants : " + r.code + "\nFormat : " + ((FORMATS.filter(function (x) { return x[0] === pr.f; })[0] || FORMATS[0])[1]) + "\nProgramme : " + lien }) }); } catch (e) {}
+    }, function (e) { b.disabled = false; m(esc(e.message) + ' Vous pouvez aussi <a href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact" style="color:#6DB8F2">écrire à EFA</a>.'); });
   }
   function e5() {
     var pr = programme();

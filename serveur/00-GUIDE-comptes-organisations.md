@@ -1,6 +1,6 @@
 # Comptes de l'école pour les organisations · guide d'installation
 
-Version 1.0 · 25 octobre 2026 · environ 20 minutes, sur ordinateur.
+Version 1.1 · 25 octobre 2026 · environ 20 minutes, sur ordinateur.
 
 Le site est déjà en ligne : la page `admin-ecole.html` (pour vous), le tableau de bord `espace-organisation.html` (pour l'entreprise) et la page `rejoindre.html` (pour les salariés). Il manque seulement le service qui garde les comptes. Tant qu'il n'est pas installé, ces pages affichent « Service en cours d'installation » ou « Connexion impossible ».
 
@@ -57,3 +57,11 @@ Pour la clé maîtresse, ouvrez efa.africa/admin-ecole.html et touchez **Génér
 - **ARTCI** : ce sont des données personnelles (des noms, rattachés à un employeur). La déclaration suppose une structure juridique. C'est à régulariser avec l'immatriculation d'EFA, et un point à mettre dans le contrat avec chaque organisation.
 - **Limite connue** : un certificat obtenu sur un téléphone apparaît dans le tableau de bord, mais ne se réaffiche pas sur un autre téléphone. La progression, elle, se retrouve partout.
 - **Accès** : deux personnes au plus ont la clé maîtresse et l'accès Supabase.
+
+## Mise à jour 1.1 · les organisations créent leurs accès elles-mêmes
+
+À la fin de « Composer un programme », l'organisation remplit le responsable (nom, fonction, email), coche deux cases et touche **Créer mes accès maintenant** : la clé `ORG-…` et le code des participants s'affichent aussitôt. EFA reçoit un email (sans la clé) avec l'organisation, le responsable, les places et le lien du programme.
+
+Garde-fous du Worker : 500 places au plus (au-delà, EFA les ouvre depuis l'administration), programme ouvert un an, 3 créations au plus par email et par jour, 30 par heure au total. Les programmes créés ainsi portent la note « auto · responsable · email » dans l'administration, où vous pouvez les fermer.
+
+Pour l'activer : Cloudflare › Workers & Pages › **efa-ecole** › **Edit code**, remplacez tout le code par la nouvelle version de `02-worker-efa-ecole.js`, puis **Deploy**. Aucune variable ni table à changer. La page d'accueil du Worker affiche alors `"version":"1.1"`.
