@@ -49,6 +49,7 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 .carte h2{font-size:clamp(22px,3vw,30px)}.aide{color:var(--ink2);font-size:15.5px}
 .grille2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media (max-width:720px){.grille2{grid-template-columns:minmax(0,1fr)}}
 .champ{display:grid;gap:6px;font-weight:700;font-size:15px}.champ small{font-weight:400;color:var(--ink3)}
+.champ[hidden]{display:none}
 .champ input,.champ select,.champ textarea{font:inherit;font-weight:400;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);width:100%;min-width:0}
 .cle-in{font-family:ui-monospace,Menlo,Consolas,monospace!important;letter-spacing:.06em;text-transform:uppercase}
 .case{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink2)}.case input{width:20px;height:20px;margin-top:2px;accent-color:var(--corail);flex:none}
@@ -161,6 +162,10 @@ function bilan(pa, mods) {
   return { valides: v, total: mods.length, pct: etd ? Math.round(et / etd * 100) : 0, fini: mods.length > 0 && v === mods.length };
 }
 
+// Programmes prêts : le certificat Fondations et les programmes types des parcours (même format que le compositeur)
+var FOND = D ? D.parcours.filter(function (p) { return p.cycle === "fondations"; }).map(function (p) { return p.id; }) : [];
+var PRETS = [{ t: "Certificat EFA Fondations · 8 modules", pr: function (n) { return { n: n, m: FOND, s: 8, mi: 45, f: "0", c: "F" }; } }]
+  .concat(D ? D.programmes.map(function (g) { return { t: g.nom + " · " + g.sequence.length + " modules", pr: function (n) { return { n: n, m: g.sequence.slice(), s: Math.max(4, g.sequence.length * 2), mi: 45, f: "0", c: "" }; } }; }) : []);
 var ADM = null;
 function decoder(t) { try { t = t.replace(/-/g, "+").replace(/_/g, "/"); while (t.length % 4) t += "="; return JSON.parse(decodeURIComponent(escape(atob(t)))); } catch (e) { return null; } }
 function connexion() {
@@ -176,16 +181,18 @@ function liste(res) {
     var P0 = j.programmes || [];
     $("vue").innerHTML = (res ? res : '')
       + '<section class="carte"><p class="sur">Nouveau programme</p><h2>Générer les accès d’une organisation</h2>'
-      + '<div class="grille2"><label class="champ">Organisation<input id="n-nom" maxlength="80" placeholder="ex. Coopérative Awa"></label><label class="champ">Lien du programme<small>copié depuis « Composer un programme »</small><input id="n-lien" placeholder="https://efa.africa/programme-organisation.html?p=…"></label>'
+      + '<div class="grille2"><label class="champ">Organisation<input id="n-nom" maxlength="80" placeholder="ex. Coopérative Awa"></label><label class="champ">Programme<select id="n-prog">' + PRETS.map(function (x, i) { return '<option value="' + i + '">' + esc(x.t) + '</option>'; }).join("") + '<option value="lien">Programme composé en ligne (coller son lien)</option></select></label>'
+      + '<label class="champ" id="n-lien-l" hidden>Lien du programme<small>copié depuis « Composer un programme »</small><input id="n-lien" placeholder="https://efa.africa/programme-organisation.html?p=…"></label>'
       + '<label class="champ">Places<input id="n-places" type="number" min="1" value="50"></label><label class="champ">Ouvert jusqu’au <small>facultatif</small><input id="n-fin" type="date"></label>'
       + '<label class="champ">Note interne <small>facultatif : contact, conditions</small><input id="n-note" maxlength="300"></label></div>'
       + '<div class="acts"><button type="button" class="bt bt-p" id="n-go">Générer la clé et le code</button><a class="bt bt-l" href="programme-organisation.html" target="_blank" rel="noopener">Composer un programme</a></div><p class="msg" id="n-msg"></p></section>'
       + '<section class="carte"><h2>Programmes (' + P0.length + ')</h2>' + (P0.length ? '<div class="tabw"><table class="t"><thead><tr><th>Organisation</th><th>Code</th><th>Inscrits</th><th>Actifs 7 j</th><th>Dernier accès</th><th>État</th><th></th></tr></thead><tbody>'
         + P0.map(function (p) { return '<tr><td><b>' + esc(p.nom) + '</b><small>créé le ' + dateFr(p.cree_le) + (p.note ? ' · ' + esc(p.note) : '') + '</small></td><td><code>' + esc(p.code) + '</code></td><td>' + p.participants + ' / ' + p.places + '</td><td>' + p.actifs_7j + '</td><td>' + dateFr(p.dernier_acces) + '</td><td><span class="pill ' + (p.actif ? 'ok">Ouvert' : 'zero">Fermé') + '</span></td><td><button class="bt bt-l" data-cle="' + p.id + '">Nouvelle clé</button><button class="bt bt-l" data-etat="' + p.id + '" data-actif="' + (p.actif ? 0 : 1) + '">' + (p.actif ? 'Fermer' : 'Rouvrir') + '</button></td></tr>'; }).join("")
         + '</tbody></table></div>' : '<p class="aide">Aucun programme pour l’instant.</p>') + '<p class="msg" id="l-msg"></p></section>';
+    $("n-prog").onchange = function () { $("n-lien-l").hidden = this.value !== "lien"; };
     $("n-go").onclick = function () {
-      var l = $("n-lien").value.trim(), m = /[?&]p=([A-Za-z0-9_-]+)/.exec(l), pr = m && decoder(m[1]), nom = $("n-nom").value.trim() || (pr && pr.n) || "";
-      if (!pr || !pr.m) return msg("n-msg", "Collez le lien complet du programme composé en ligne.");
+      var v = $("n-prog").value, l = $("n-lien").value.trim(), m = /[?&]p=([A-Za-z0-9_-]+)/.exec(l), pr = v === "lien" ? (m && decoder(m[1])) : PRETS[+v].pr($("n-nom").value.trim()), nom = $("n-nom").value.trim() || (pr && pr.n) || "";
+      if (!pr || !pr.m) return msg("n-msg", "Collez le lien complet du programme composé en ligne, ou choisissez un programme prêt.");
       if (nom.length < 2) return msg("n-msg", "Indiquez le nom de l’organisation.");
       E.appel("/admin/programmes", { nom: nom, programme: pr, places: +$("n-places").value, expire_le: $("n-fin").value || null, note: $("n-note").value.trim() }, ADM).then(function (r) { liste(remise(r)); }, function (e) { msg("n-msg", e.message); });
     };
@@ -207,6 +214,6 @@ connexion();
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102512" defer></script>
+<script src="efa-appli.js?v=2026102513" defer></script>
 </body>
 </html>

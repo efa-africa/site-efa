@@ -115,7 +115,7 @@
 
 /* ===== Bouton « Posez une question à Ely » ===== */
 ;(function () {
-  if (/\/ely(\.html)?$/.test(location.pathname)) return;           // pas sur la page d'Ely
+  if (/\/(ely|admin-ecole|espace-organisation)(\.html)?$/.test(location.pathname)) return; // ni sur Ely, ni dans les espaces de gestion           // pas sur la page d'Ely
   function poser() {
     if (document.getElementById("efa-ely")) return;
     var css = document.createElement("style");
