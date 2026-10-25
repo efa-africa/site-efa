@@ -197,11 +197,11 @@
   /* ---------- le programme (organisation ou participant) ---------- */
   function rendre(pr, participant) {
     var g = { ids: pr.m.filter(function (id) { return P[id]; }), semaines: pr.s, min: pr.mi }, sem = planifier(g), t = total(g.ids), f = FORMATS.filter(function (x) { return x[0] === pr.f; })[0] || FORMATS[0];
-    var lien = location.origin + location.pathname + "?p=" + encoder(pr), lienP = lien + "&vue=participant";
+    var lien = location.origin + location.pathname + "?p=" + encoder(pr);
     var st = {}; try { st = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; } catch (e) {} var faits = st.faits || {};
     function prog(id) { var p = P[id], n = 0, d = 0; p.etapes.forEach(function (s, i) { if (s.ess && s.ok) { d++; if (faits[id + "." + i]) n++; } }); return d ? n + "/" + d : ""; }
     var dern = sem.length ? sem[sem.length - 1].n + (sem[sem.length - 1].span || 1) - 1 : 0;
-    var h = '<section class="carte">' + (participant ? '<p class="sur">Votre programme</p>' : '<p class="sur">Étape 5 sur 5 · Votre programme</p>')
+    var h = '<section class="carte" id="curriculum">' + (participant ? '<p class="sur">Votre programme</p>' : '<p class="sur">Le programme à vérifier</p>')
       + "<h2>" + (pr.n ? "Programme d’éducation financière · " + esc(pr.n) : "Votre programme d’éducation financière") + "</h2>"
       + '<div class="resume"><div><small>Modules</small><b>' + g.ids.length + '</b></div><div><small>Durée</small><b>' + Math.max(dern, pr.s) + ' semaines</b></div><div><small>Par semaine</small><b>' + duree(pr.mi) + '</b></div><div><small>Format</small><b>' + esc(f[1].replace("En ligne + ", "+ ")) + "</b></div></div>"
       + (pr.c ? '<p class="ok-l">Ce programme couvre ' + CYCLES.filter(function (c) { return pr.c.indexOf(c.l) >= 0; }).map(function (c) { return "le cycle " + c.nom; }).join(", ").replace(/, ([^,]*)$/, " et $1") + ' : chaque participant peut passer l’examen en ligne et obtenir le certificat local correspondant' + (pr.c.length === 3 ? ', puis le certificat CEFA ★' : '') + '.</p>' : '<p class="aide">Chaque module terminé, avec sa fiche gardée, donne une attestation de réalisation au participant.</p>');
@@ -222,12 +222,15 @@
     if (participant) {
       h += '<section class="carte"><h2>Comment suivre ce programme</h2><ul class="limites"><li>Ouvrez chaque module dans l’ordre : il vous guide étape par étape, avec vidéos, leçons et outils.</li><li>Votre organisation vous a donné un code&nbsp;? <a href="rejoindre.html">Créez votre compte</a> : votre progression est enregistrée et vous la retrouvez sur n’importe quel téléphone.</li><li><b>Ce que voit votre organisation</b>, par ses responsables du programme : votre nom, vos visites, les étapes faites, les modules terminés et votre certificat. <b>Jamais</b> vos montants, le contenu de vos fiches ni vos réponses aux quiz. Sans compte, rien n’est transmis.</li><li>Une question&nbsp;? <a href="ely.html">Posez-la à Ely</a>, le guide de l’école, ou gardez-la pour la session EFA.</li></ul><div class="acts"><a class="bt bt-p" href="parcours.html?src=programme#' + (g.ids[0] || "") + '">Commencer le premier module</a></div></section>';
     } else {
-      h += '<section class="carte no-print"><h2>Et maintenant</h2>'
-        + '<div class="acts"><button type="button" class="bt bt-p" id="a-part">Copier le lien pour les participants</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button></div>'
-        + '<p class="aide" id="a-msg" role="status"></p>'
-        + '<div class="acts"><a class="bt bt-n" id="a-ses" href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact">' + "Demander les accès à EFA" + '</a><button type="button" class="bt bt-l" id="a-mod">Modifier le programme</button><button type="button" class="bt bt-l" id="a-lien">Copier le lien de cette page</button></div>'
-        + '</section>'
-        + '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
+      h = '<section class="carte no-print" id="suite"><p class="sur">Étape 5 sur 5 · Votre programme est prêt</p><h2>Trois étapes pour le lancer</h2><ol class="suite">'
+        + '<li><b><span class="n">1</span>Vérifiez le programme</b><span>Les modules, les semaines et les sessions sont détaillés juste en dessous. Un changement&nbsp;? Modifiez-le avant de demander les accès.</span><div class="acts"><a href="#curriculum">Voir le programme ↓</a><button type="button" class="bt bt-l" id="a-mod">Modifier le programme</button></div></li>'
+        + '<li class="go"><b><span class="n">2</span>Demandez les accès à EFA</b><span>EFA vous remet la clé de votre tableau de bord, réservée aux responsables du programme, et le code d’inscription de vos participants.</span>'
+        + '<label class="ok-case"><input type="checkbox" id="a-ok"><span>J’ai vérifié les modules, les semaines et les sessions</span></label>'
+        + '<div class="acts"><a class="bt bt-p" id="a-ses" aria-disabled="true" href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact">Demander les accès à EFA</a></div><p class="aide" id="a-msg" role="status" style="color:#F09680"></p></li>'
+        + '<li><b><span class="n">3</span>Invitez vos participants</b><span>Une fois les accès reçus, depuis votre <a href="espace-organisation.html">tableau de bord</a> : le message d’invitation, avec le code, est prêt à envoyer. Sans ce code, la progression de vos participants ne peut pas être suivie.</span></li></ol>'
+        + '<details class="valid"><summary>Faire valider le programme en interne avant de demander les accès</summary><p class="aide">Pour un directeur, la RH ou le bureau de la coopérative : le lien rouvre ce programme tel quel.</p><div class="acts"><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button><button type="button" class="bt" id="a-lien">Copier le lien du programme</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button></div><p class="aide" id="a-msg2" role="status"></p></details>'
+        + '</section>' + h;
+      h +=         + '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
         + "<li><b>Gratuit pendant le pilote</b> : les modules et la composition du programme. Les sessions avec EFA se conviennent ensemble.</li>"
         + "<li><b>Suivi</b> : avec les accès remis par EFA, chaque participant a son compte et votre organisation a son <a href=\"espace-organisation.html\">tableau de bord</a> : inscriptions, connexions, progression, modules terminés, certificats.</li>"
         + "<li><b>Contenus en pilote</b> : les modules et les certificats sont en ligne et relus progressivement par l’équipe pédagogique d’EFA.</li>"
@@ -235,12 +238,12 @@
     }
     $("vue").innerHTML = h;
     if (participant) return;
-    function copier(t, m) { var ok = function () { $("a-msg").textContent = m; }; try { navigator.clipboard.writeText(t).then(ok, function () { window.prompt("Copiez ce lien :", t); }); } catch (e) { window.prompt("Copiez ce lien :", t); } }
-    $("a-part").onclick = function () { copier(lienP, "Lien copié : envoyez-le à vos participants (email, WhatsApp, intranet)."); mesure("orga-programme-lien-participants"); };
-    $("a-lien").onclick = function () { copier(lien, "Lien copié : il rouvre ce programme tel quel."); };
-    $("a-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent((pr.n ? pr.n + " : " : "") + "votre programme d’éducation financière avec EFA, à suivre sur téléphone : " + lienP), "_blank", "noopener"); mesure("orga-programme-whatsapp"); };
+    function copier(t, m) { var ok = function () { $("a-msg2").textContent = m; }; try { navigator.clipboard.writeText(t).then(ok, function () { window.prompt("Copiez ce lien :", t); }); } catch (e) { window.prompt("Copiez ce lien :", t); } }
+    $("a-lien").onclick = function () { copier(lien, "Lien copié : il rouvre ce programme tel quel, pour le faire valider."); mesure("orga-programme-lien-validation"); };
+    $("a-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("Projet de programme d’éducation financière avec EFA" + (pr.n ? " pour " + pr.n : "") + ", à valider : " + lien), "_blank", "noopener"); mesure("orga-programme-whatsapp"); };
     $("a-print").onclick = function () { try { window.print(); } catch (e) {} };
-    $("a-ses").onclick = function () { mesure("orga-programme-session"); };
+    $("a-ok").onchange = function () { $("a-ses").setAttribute("aria-disabled", this.checked ? "false" : "true"); if (this.checked) $("a-msg").textContent = ""; };
+    $("a-ses").onclick = function (e) { if (!$("a-ok").checked) { e.preventDefault(); $("a-msg").textContent = "Cochez d’abord la case : vérifiez les modules, les semaines et les sessions ci-dessous."; return; } mesure("orga-programme-session"); };
     $("a-mod").onclick = function () { history.replaceState(null, "", location.pathname); aller(1); };
   }
   function e5() {
