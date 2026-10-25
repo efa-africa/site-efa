@@ -882,7 +882,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
   var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
   // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
   try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];}catch(e){}
-  try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation\.html\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons organiser une session avec EFA. Nos disponibilités : …\n\nMerci.';}}catch(e){}
+  try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation\.html\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons recevoir les accès (clé d’organisation pour le tableau de bord, code pour nos participants) et, si possible, organiser une session avec EFA. Nombre de participants : … Nos disponibilités : …\n\nMerci.';}}catch(e){}
   function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
   f.addEventListener('submit',function(e){
     e.preventDefault();
@@ -907,6 +907,6 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102511" defer></script>
+<script src="efa-appli.js?v=2026102512" defer></script>
 </body>
 </html>
