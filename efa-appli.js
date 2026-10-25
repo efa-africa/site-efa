@@ -166,7 +166,7 @@
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
-  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102512"; s.defer = true; document.head.appendChild(s);
+  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102523"; s.defer = true; document.head.appendChild(s);
   var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102512"; f.defer = true; document.head.appendChild(f);
   if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102520"; k.defer = true; document.head.appendChild(k); }
 })();

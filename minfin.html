@@ -148,6 +148,7 @@ body.mf{background:#070C16;color:#E8EDF5}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CreativeWorkSeries","name":"Min’Fin","alternateName":"Ma minute finance","description":"Série de mini-films d’éducation financière d’Éducation Financière Afrique.","inLanguage":"fr","url":"https://efa.africa/minfin.html","publisher":{"@type":"Organization","name":"Éducation Financière Afrique","url":"https://efa.africa"}}
 </script>
+<style>.lect-fait{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 6px}.lect-fait button{font:800 16px "Source Sans 3",system-ui,sans-serif;min-height:46px;padding:10px 18px;border-radius:8px;border:0;cursor:pointer;background:#E44828;color:#fff}.lect-fait span{color:#3CCB7F;font-weight:800}.lect-fait a{background:#F5EFE2;color:#0B1220;font-weight:800;text-decoration:none;padding:10px 16px;border-radius:8px}</style>
 </head>
 <body class="mf">
 
@@ -252,6 +253,8 @@ body.mf{background:#070C16;color:#E8EDF5}
 </footer>
 
 <script src="minfin.js?v=202610241407"></script>
+<script src="efa-suite.js?v=2026102523" defer></script>
+<script src="efa-compte.js?v=2026102520" defer></script>
 <script>
 function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
 (function(){
@@ -314,10 +317,16 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     liens.push('<a href="'+esc(e.tiktok||M.tiktok)+'" target="_blank" rel="noopener">Voir sur TikTok</a>');
     liens.push('<a href="diagnostic.html?src=minfin-ep'+e.n+'">Faire mon diagnostic</a>');
     K.innerHTML=liens.join(' · ');
+    // Arrivé depuis un module de l'école : valider l'étape sans quitter la vidéo, puis passer à la suivante
+    if(/[?&]parcours=/.test(location.search)) (function essai(n){ var cb=document.getElementById('es-fait'); if(!cb){ if(n<30) setTimeout(function(){ if(!L.hidden) essai(n+1); },200); return; } if(L.querySelector('.lect-fait')) return;
+      var bx=document.createElement('div'); bx.className='lect-fait';
+      var maj=function(){var s=document.querySelector('.efa-ctx .ctx-suiv'); bx.innerHTML=cb.checked?'<span>✓ Vidéo marquée comme vue</span>'+(s?'<a href="'+s.getAttribute('href')+'">'+s.textContent+'</a>':''):'<button type="button">J’ai vu la vidéo : marquer comme fait</button>'; var b=bx.querySelector('button'); if(b) b.onclick=function(){cb.checked=true; cb.dispatchEvent(new Event('change')); maj();};};
+      maj(); K.parentNode.insertBefore(bx,K);
+    })(0);
     dernier=document.activeElement; L.hidden=false; document.body.style.overflow='hidden';
     document.getElementById('lect-x').focus();
   }
-  function fermer(){L.hidden=true; V.innerHTML=''; document.body.style.overflow=''; if(dernier) dernier.focus();}
+  function fermer(){var f=L.querySelector('.lect-fait'); if(f) f.remove(); L.hidden=true; V.innerHTML=''; document.body.style.overflow=''; if(dernier) dernier.focus();}
   document.getElementById('lect-x').addEventListener('click',fermer);
   L.addEventListener('click',function(ev){if(ev.target===L) fermer();});
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!L.hidden) fermer();});

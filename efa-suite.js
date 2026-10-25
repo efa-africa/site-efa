@@ -140,6 +140,10 @@
     + ".efa-suite .es-autres{font-size:13px;color:#8E98AA}.efa-suite .es-autres summary{cursor:pointer}"
     + ".efa-ctx{background:#111B2F;color:#E8EDF5;font-family:\"Source Sans 3\",\"Source Sans Pro\",system-ui,sans-serif;font-size:14.5px;padding:10px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between}"
     + ".efa-ctx b{color:#fff}.efa-ctx a{color:#fff;font-weight:800;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:4px}"
+    + ".efa-ctx .ctx-acts{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}"
+    + ".efa-ctx button.ctx-fait{font:800 14.5px \"Source Sans 3\",system-ui,sans-serif;min-height:40px;padding:8px 14px;border-radius:8px;border:0;cursor:pointer;background:#E44828;color:#fff}"
+    + ".efa-ctx button.ctx-fait[aria-pressed=true]{background:#3CCB7F;color:#0B1220}"
+    + ".efa-ctx a.ctx-suiv{background:#F5EFE2;color:#0B1220;text-decoration:none;padding:8px 14px;border-radius:8px}"
     + "@media print{.efa-suite,.efa-ctx{display:none}}";
 
   var LIGNE = '<div class="es-partage"><p><b>Ça vous a aidé ?</b> Partagez-le à quelqu’un qui en a besoin : c’est comme ça qu’EFA grandit.</p>'
@@ -217,12 +221,18 @@
     if (voulu && voulu === p.id && p.etapes[ici[0]] && p.etapes[ici[0]].ess) {
       var ctx = document.createElement("div"); ctx.className = "efa-ctx"; ctx.setAttribute("role", "note");
       ctx.innerHTML = "<span>Vous êtes dans le <b>" + esc(nomCourt(p.id)) + " · " + esc(p.titre) + "</b>, étape " + rang + " sur " + nbEss + ".</span>"
-        + '<a href="parcours.html#' + p.id + '" data-goatcounter-click="retour-module-' + p.id + '">Revenir au module</a>';
+        + '<span class="ctx-acts"><button type="button" class="ctx-fait" aria-pressed="false"></button><a class="ctx-suiv" hidden' + (hrefSuiv ? ' href="' + esc(hrefSuiv) + '"' + ext : ' href="parcours.html#' + p.id + '"') + '>' + (hrefSuiv ? "Étape suivante →" : "Retour au module →") + '</a><a href="parcours.html#' + p.id + '" data-goatcounter-click="retour-module-' + p.id + '">Revenir au module</a></span>';
       var hd = document.querySelector("header");
       if (hd && hd.parentNode) hd.parentNode.insertBefore(ctx, hd.nextSibling); else document.body.insertBefore(ctx, document.body.firstChild);
       mesure("ressource-ouverte-" + p.id + "-" + rang);
     }
     var cb = box.querySelector("#es-fait");
+    // En haut de la page : « Marquer comme fait », puis « Étape suivante », sans descendre en bas de la page
+    var bf = document.querySelector(".efa-ctx .ctx-fait"), bs = document.querySelector(".efa-ctx .ctx-suiv");
+    function haut() { if (!bf) return; bf.setAttribute("aria-pressed", cb.checked ? "true" : "false"); bf.textContent = cb.checked ? "✓ Étape faite" : "Marquer comme fait"; if (bs) bs.hidden = !cb.checked; }
+    if (bf) bf.onclick = function () { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); };
+    haut();
+    cb.addEventListener("change", haut);
     cb.addEventListener("change", function () {
       etat = lire(); etat.faits = etat.faits || {};
       ici.forEach(function (k) { if (p.etapes[k].ok) { if (cb.checked) etat.faits[p.id + "." + k] = 1; else delete etat.faits[p.id + "." + k]; } });
