@@ -277,10 +277,13 @@ details.cy[data-cy="patrimoine"] .cy-val .etiquette{color:var(--ink3)!important}
 details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
 .route li:nth-child(1) a{background:#E44828}.route li:nth-child(1) .r-n,.route li:nth-child(1) small{color:#fff}
 .route li:nth-child(3) a{background:#2188D6}.route li:nth-child(3) .r-n,.route li:nth-child(3) small{color:#fff}
-.route li:nth-child(5) a{background:#F5EFE2}.route li:nth-child(5) b{color:#0B1220}.route li:nth-child(5) .r-n{color:#E44828}.route li:nth-child(5) small{color:var(--ink2)}
+.route li:nth-child(5) a{background:#F5EFE2}.route li:nth-child(5) b{color:#0B1220}.route li:nth-child(5) .r-n{color:#E44828}.route li:nth-child(5) small{color:var(--ink2)}.route li:nth-child(5) em{color:#E44828}
 .route .r-fin a{background:#111B2F}.route .r-fin .r-n{color:#E44828}.route .r-fin small{color:#C9D1DE}
 .ch-b.ch-p{box-shadow:0 0 0 2px rgba(255,255,255,.0)}
 
+.route em{display:block;font-style:normal;font-size:12.5px;font-weight:800;margin-top:4px;opacity:.95}
+@media (max-width:760px){.route em{flex-basis:100%;padding-left:40px;margin-top:0}}
+.cy-cert{font-size:14.5px;font-weight:700;margin-top:2px}.cy-cert b{font-weight:800}
 /* Programmes */
 .progs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (max-width:760px){.progs{grid-template-columns:1fr}}
@@ -333,13 +336,13 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <p class="ch-trame">Chaque module : une situation concrète, une explication, un exercice avec vos chiffres et une fiche à garder.</p>
       <div class="reprise" id="reprise" hidden></div>
       <ol class="route" aria-label="Le parcours de l’école">
-        <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small></a></li>
+        <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small><em>Se termine par le certificat local Fondations</em></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
-        <li><a href="#cycle-maitrise" data-cy-go="maitrise"><span class="r-n">II</span><b>Maîtrise</b><small>Modules 9 à 16 · organiser</small></a></li>
+        <li><a href="#cycle-maitrise" data-cy-go="maitrise"><span class="r-n">II</span><b>Maîtrise</b><small>Modules 9 à 16 · organiser</small><em>Se termine par le certificat local Maîtrise</em></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
-        <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small></a></li>
+        <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small><em>Se termine par le certificat local Patrimoine</em></a></li>
         <li aria-hidden="true" class="r-fl">›</li>
-        <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux · devenir Passeur</small></a></li>
+        <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux réunis · devenir Passeur</small></a></li>
       </ol>
     </div>
   </div>
@@ -604,6 +607,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       return '<details class="cy" id="cycle-'+c.id+'" data-cy="'+c.id+'"'+(cyOuvert[c.id]?' open':'')+'><summary>'
         + '<span class="cy-num">'+esc(c.num)+'</span>'
         + '<span class="cy-t"><span class="etiquette">Cycle '+esc(c.num)+' · modules '+esc(c.modules)+'</span><h3>'+esc(c.nom)+' · '+esc(c.sous)+'</h3><p>Ce que vous y gagnez : '+esc(c.gain.charAt(0).toLowerCase()+c.gain.slice(1))+'</p>'
+        + '<span class="cy-cert">Se termine par le <b>'+esc(c.certificat.replace(/^Certificat/,'certificat'))+'</b></span>'
         + '<span class="cy-meta"><span>'+nd+' module'+(nd>1?'s':'')+' disponible'+(nd>1?'s':'')+' sur '+M.length+'</span><span>'+esc(c.duree)+'</span>'+(c.suivi?'<span>'+esc(c.suivi)+'</span>':'')+'<span class="'+(c.statut==="ouvert"?"ouvert":"")+'">'+(c.statut==="ouvert"?"Certificat ouvert en pilote":"Certificat en préparation")+'</span><span class="'+(nv?"ok":"")+'">'+nv+' sur '+M.length+' validés</span></span>'
         + (pro ? '<span class="cy-next">Prochain module : <b>'+esc(pro.nom)+' · '+esc(pro.titre)+'</b></span>' : '')+'</span>'
         + '<span class="fleche" aria-hidden="true">›</span></summary>'
