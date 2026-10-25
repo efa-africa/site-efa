@@ -813,7 +813,7 @@ a.st-card{text-decoration:none}
               <li><b>Un argent qui peut attendre.</b> Une somme dont vous n’aurez pas besoin avant cinq ans&nbsp;: un cours peut baisser longtemps.</li>
               <li><b>Seul ou à plusieurs.</b> Un groupe qui cotise déjà peut acheter des titres ensemble&nbsp;: le dossier « De la tontine au club d’investissement » est en préparation.</li>
             </ul>
-            <p class="bx-links"><a href="bourse-essentiel.html?src=brvm#lecon-2">Le parcours Premiers pas</a><a href="diagnostic.html?src=brvm">Faire mon diagnostic</a><a href="outils.html#plan">Mon plan d’action</a><a href="cercle-spirale.html#groupe">Calculer avec mon groupe</a></p>
+            <p class="bx-links"><a href="bourse-essentiel.html?src=brvm#A1">Le parcours Premiers pas</a><a href="diagnostic.html?src=brvm">Faire mon diagnostic</a><a href="outils.html#plan">Mon plan d’action</a><a href="cercle-spirale.html#groupe">Calculer avec mon groupe</a></p>
           </div>
         </details>
 
@@ -1281,7 +1281,9 @@ function route(){
   if(TABS.indexOf(h)>-1){showTab(h);window.scrollTo(0,0);return;}
   var c=REG[h.toUpperCase()];
   if(c){showTab(c.tab);if(c.tab==='etudes')efaOpenRes(false);setTimeout(function(){c.el.scrollIntoView({block:'start'});c.el.classList.add('hit');setTimeout(function(){c.el.classList.remove('hit');},1600);},40);}
-  else {showTab('etudes');window.scrollTo(0,0);}
+  else { var el=document.getElementById(location.hash.slice(1)), tb=el&&el.closest('.tab');
+    if(tb){ showTab(tb.dataset.tab); if(el.tagName==='DETAILS') el.open=true; setTimeout(function(){ el.scrollIntoView({block:'start'}); },60); }
+    else {showTab('etudes');window.scrollTo(0,0);} }
 }
 addEventListener('hashchange',route);
 document.getElementById('rub-sel').addEventListener('change',function(){location.hash=this.value;});
@@ -1512,7 +1514,7 @@ setHH(); route();
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
 <script src="etude-pdf.js?v=2026102301" defer></script>
-<script src="efa-appli.js?v=2026102505" defer></script>
+<script src="efa-appli.js?v=2026102507" defer></script>
 
 <script>
 /* Bulletin « La semaine à la BRVM » → Brevo (liste dédiée, double confirmation).

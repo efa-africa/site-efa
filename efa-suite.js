@@ -63,7 +63,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102506"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102507"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -133,7 +133,10 @@
     var etat = lire(); etat.faits = etat.faits || {};
     var q = new URLSearchParams(location.search), voulu = q.get("parcours");
 
-    var candidats = CARREFOURS.indexOf(page) >= 0 ? [] : D.parcours.filter(function (p) { return p.etapes.some(function (s) { return s.lien && !/^https?:/.test(s.lien) && base(s.lien) === page; }); });
+    // Même page, plusieurs étapes (certificat-pilote.html?m=6) : le paramètre m désigne la bonne étape
+    var mq = q.get("m");
+    function ici_(s) { return s.lien && !/^https?:/.test(s.lien) && base(s.lien) === page && (!mq || !/[?&]m=/.test(s.lien) || new RegExp("[?&]m=" + mq + "(&|#|$)").test(s.lien)); }
+    var candidats = CARREFOURS.indexOf(page) >= 0 ? [] : D.parcours.filter(function (p) { return p.etapes.some(ici_); });
 
     // Page hors parcours : proposer d'en choisir un
     if (!candidats.length) {
@@ -148,7 +151,7 @@
       : (candidats.filter(function (c) { return c.id !== "P0"; })[0] || candidats[0]);
     if (voulu && voulu === p.id) { etat.actif = p.id; ecrire(etat); }
 
-    var ici = []; p.etapes.forEach(function (s, i) { if (s.lien && base(s.lien) === page) ici.push(i); });
+    var ici = []; p.etapes.forEach(function (s, i) { if (ici_(s)) ici.push(i); });
     var dernier = ici[ici.length - 1];
     var suivante = null, iSuiv = -1;
     for (var i = dernier + 1; i < p.etapes.length; i++) { if (p.etapes[i].ok && p.etapes[i].lien) { suivante = p.etapes[i]; iSuiv = i; break; } }

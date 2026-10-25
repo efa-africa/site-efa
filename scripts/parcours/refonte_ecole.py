@@ -162,6 +162,11 @@ def remap(ids, soi=None):
     return out
 
 
+import re as _re
+for _p in SRC.values():
+    for _s in _p['etapes']:
+        _m = _re.search(r'Module (\d)', _s.get('titre', ''))
+        if _s.get('lien') == 'certificat-pilote.html' and _m: _s['lien'] = 'certificat-pilote.html?m=' + _m.group(1)
 parcours = ([construire(m, 'fondations') for m in MODULES] + [construire(m, 'maitrise') for m in MAITRISE]
             + [construire(m, 'patrimoine') for m in PATRIMOINE])
 for k, p in enumerate(parcours):
@@ -184,6 +189,13 @@ P0['cycles'] = [
          duree='Leçons et outils : environ 6 h', outils='', suivi='Suivi proposé sur 3 mois', certificat='Certificat local Patrimoine', statut='ouvert', page='certificat-patrimoine.html',
          validation='Chaque module validé donne une attestation de réalisation. Le quiz de chaque module, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local. Projet conseillé : un plan patrimonial à 10 ans.'),
 ]
+for _p in parcours:
+    for _s in _p['etapes']:
+        _m = _re.search(r'Module (\d)', _s.get('titre', ''))
+        if _s.get('lien') == 'certificat-pilote.html' and _m: _s['lien'] = 'certificat-pilote.html?m=' + _m.group(1)
+for _p in parcours:
+    for _s in _p['etapes']:
+        if _s.get('lien') == 'methode.html#brvm' and 'SAPH' in _s.get('titre', ''): _s['lien'] = 'methode.html#bx-loupe'
 P0['parcours'] = parcours
 P0['version'] = '2.0'; P0['date'] = '2026-10-24'
 P0['fusions'] = FUSIONS

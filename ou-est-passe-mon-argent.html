@@ -521,6 +521,7 @@ footer a{color:#D8DEE8;text-decoration:none}
       (x.contextes.length?'<div class="ctx">'+x.contextes.map(function(c){return '<p>'+esc(c)+'</p>';}).join("")+'</div>':'')+
       planAction(p)+
       '<p class="mention">Ces pistes viennent de vos réponses. Elles ne permettent pas encore de déterminer les montants ni la cause d’un éventuel écart.</p>'+
+      '<p class="noprint" style="margin-top:18px"><a class="lien" href="parcours.html?src=oepma#P1">Apprendre la méthode&nbsp;: module 1 de l’école EFA →</a></p>'+
       '<div class="r-acts noprint"><button type="button" class="btn btn-n" data-act="bilanApres">Vérifier avec mes chiffres</button><button type="button" class="lien" data-act="garder" aria-expanded="'+S.garderOuvert+'">Garder mes pistes</button></div>'+
       (S.garderOuvert?'<div class="keep noprint"><div class="row"><button type="button" class="btn btn-g" data-act="copier">Copier la synthèse</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button></div><label class="toggle"><input type="checkbox" data-pref'+(S.preferences.sauvegarde_locale?" checked":"")+'><span>Garder mes réponses sur cet appareil. Sans cette option, elles restent seulement le temps de votre navigation.</span></label><p class="small" id="copie-ok" hidden>Synthèse copiée.</p></div>':'')+
       '<div class="edit noprint"><button type="button" class="lien" data-act="modifier">Modifier mes réponses</button></div>'+
@@ -749,10 +750,10 @@ footer a{color:#D8DEE8;text-decoration:none}
   charger();
   // À l'ouverture, on affiche toujours l'entrée : si une saisie existe, « Reprendre mon parcours » est proposé.
   if(S.mode!=="accueil"){ S.dernier=S.mode; S.mode="accueil"; }
-  if(/[?&]exemple=koffi/.test(location.search)) koffi(); else render(false);
+  if(/[?&]exemple=koffi/.test(location.search)) koffi(); else if(location.hash==="#questions"){ if(!R().termine&&!R().periode) R().q=0; mesure("oepma_entree_directe"); go(R().termine?"pistes":"reperage"); } else render(false);
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102505" defer></script>
+<script src="efa-appli.js?v=2026102507" defer></script>
 </body>
 </html>

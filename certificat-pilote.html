@@ -1123,8 +1123,8 @@ MODULES.push((function(){
     if(ev.key==='ArrowRight'&&!suiv.hidden)suiv.click();
     if(ev.key==='ArrowLeft'&&!prec.hidden)prec.click();
   });
-  sommaire();
+  var mq=+(new URLSearchParams(location.search).get('m')||0); if(mq>=1&&mq<=MODULES.length) ouvrir(mq); else sommaire();
 })();
 </script>
-<script src="efa-suite.js?v=2026102505" defer></script>
+<script src="efa-suite.js?v=2026102507" defer></script>
 </body></html>
