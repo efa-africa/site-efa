@@ -237,6 +237,23 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .rubs a{font:700 14px var(--body);text-decoration:none;color:var(--ink2);padding:9px 14px;border-radius:8px;white-space:nowrap}
 .rubs a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
 .rubs a[aria-current="page"]{background:var(--creme);color:#0B1220}
+.comite{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:26px;background:var(--panel2);border-radius:16px;padding:24px;margin:26px 0 64px}
+.comite h2{font-family:var(--disp);font-size:clamp(26px,3.2vw,36px);line-height:1.12;margin:4px 0 10px;color:var(--ink)}
+.comite-txt p,.comite-txt li{color:var(--ink2)}
+.comite-txt ul{padding-left:20px;display:grid;gap:6px;margin:12px 0}
+.comite-note{font-size:14px;color:var(--mute)!important}
+.comite-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.comite-form label{display:grid;gap:5px;font:700 14px var(--body);color:var(--ink)}
+.comite-form input,.comite-form select,.comite-form textarea{font:400 16px var(--body);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:0}
+.comite-form .plein{grid-column:1/-1}
+.comite-form .ok{display:flex;gap:8px;align-items:flex-start;font-weight:400;color:var(--ink2)}
+.comite-form .ok a{color:var(--bleu)}
+.comite-form .hp{position:absolute;left:-9999px}
+.comite-act{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.comite-act button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:#E44828;color:#fff;cursor:pointer}
+.comite-act button:disabled{opacity:.6}
+.comite-act p{margin:0;font-size:14px;color:var(--ink2)}
+@media (max-width:860px){.comite{grid-template-columns:minmax(0,1fr)}.comite-form{grid-template-columns:minmax(0,1fr)}}
 .a2075-l{color:var(--ink2);max-width:70ch;margin:8px 0 0}
 .rub-sel{display:none}
 .pick{display:grid;gap:4px;font:700 12px var(--body);color:var(--ink2)}
@@ -678,6 +695,33 @@ a.st-card{text-decoration:none}
           <p class="f1-src">Par Élysée Johnson, fondateur d’EFA. Sources&nbsp;: OMPI, Epoch AI, Stanford AI Index, GSMA, FMI, ONU.</p>
         </div>
       </article>
+    </div>
+    <div class="wrap">
+      <section class="comite" id="comite" aria-labelledby="comite-t">
+        <div class="comite-txt">
+          <p class="kick">Africa 2075 · Comité de lecture</p>
+          <h2 id="comite-t">Rejoignez notre comité de lecture</h2>
+          <p>Économistes, dirigeants, chercheurs, praticiens de la finance, du numérique ou des politiques publiques&nbsp;: lisez les prochains numéros d’Africa 2075 avant leur publication et enrichissez-les de votre regard.</p>
+          <ul>
+            <li>Vous recevez les articles en avant-première, au format de publication.</li>
+            <li>Vous donnez votre avis partie par partie.</li>
+            <li>Vous choisissez, pour chaque avis, d’être cité comme contributeur ou de rester anonyme.</li>
+          </ul>
+          <p class="comite-note">Les candidatures sont examinées par Élysée Johnson, fondateur d’EFA. Si votre profil est retenu, vous recevez une invitation personnelle à l’espace de relecture (un compte Claude gratuit est nécessaire pour y accéder).</p>
+        </div>
+        <form class="comite-form" id="comite-form" novalidate>
+          <label>Nom et prénom<input id="cm-nom" autocomplete="name" required></label>
+          <label>Adresse email<input id="cm-mail" type="email" autocomplete="email" required></label>
+          <label>Fonction et organisation<input id="cm-fonction" placeholder="Ex. : économiste, institution financière" required></label>
+          <label>Pays<input id="cm-pays" autocomplete="country-name"></label>
+          <label>Domaine d’expertise<select id="cm-domaine"><option>Économie et politiques publiques</option><option>Banque, finance, marchés de capitaux</option><option>Numérique et intelligence artificielle</option><option>Entreprise et direction générale</option><option>Énergie, infrastructures, commerce</option><option>Recherche et enseignement</option><option>Autre</option></select></label>
+          <label>Profil en ligne (facultatif)<input id="cm-lien" type="url" placeholder="Lien LinkedIn ou page professionnelle"></label>
+          <label class="plein">Ce que vous aimeriez apporter au comité<textarea id="cm-msg" rows="4" placeholder="Vos sujets, votre angle, ce que vous lisez dans Africa 2075…"></textarea></label>
+          <label class="ok plein"><input type="checkbox" id="cm-ok"> J’accepte qu’EFA conserve ces informations pour examiner ma candidature et me recontacter. <a href="confidentialite.html">Vos données</a></label>
+          <label class="hp" aria-hidden="true">Ne pas remplir<input type="checkbox" name="botcheck" tabindex="-1"></label>
+          <div class="plein comite-act"><button type="submit">Proposer ma candidature</button><p id="cm-box" role="status" aria-live="polite"></p></div>
+        </form>
+      </section>
     </div>
   </section>
 
@@ -1315,7 +1359,7 @@ safe('brvm expliquée',function(){
 });
 /* ---------- Rubriques ---------- */
 var TABS=['etudes','africa-2075','actualites','brvm','simulateurs','methode'];
-var ALIAS={a2075:'africa-2075',africa2075:'africa-2075',prospective:'africa-2075',frontieres:'africa-2075',tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites','efa-news':'actualites',actu:'actualites',actualite:'actualites',bourse:'brvm',marche:'brvm'};
+var ALIAS={comite:'africa-2075',a2075:'africa-2075',africa2075:'africa-2075',prospective:'africa-2075',frontieres:'africa-2075',tontine:'etudes',enquete:'etudes',etude:'etudes',simu:'simulateurs',simulateur:'simulateurs',veille:'actualites',news:'actualites','efa-news':'actualites',actu:'actualites',actualite:'actualites',bourse:'brvm',marche:'brvm'};
 function setHH(){var h=document.getElementById('top').offsetHeight;document.documentElement.style.setProperty('--hh',h+'px');}
 function showTab(t){
   document.querySelectorAll('.tab').forEach(function(s){s.hidden=s.dataset.tab!==t;});
@@ -1327,7 +1371,7 @@ function showTab(t){
 function route(){
   var smm=document.getElementById('sommaire'); if(smm) smm.hidden=!!location.hash;
   var h=(location.hash||'#etudes').slice(1).toLowerCase(); if(h==='res-etude-2'){showTab('etudes');efaOpenRes();return;} h=ALIAS[h]||h||'etudes';
-  if(TABS.indexOf(h)>-1){showTab(h);window.scrollTo(0,0);return;}
+  if(TABS.indexOf(h)>-1){showTab(h);var cm=(location.hash||'').toLowerCase()==='#comite'&&document.getElementById('comite');if(cm)setTimeout(function(){cm.scrollIntoView({block:'start'});},60);else window.scrollTo(0,0);return;}
   var c=REG[h.toUpperCase()];
   if(c){showTab(c.tab);if(c.tab==='etudes')efaOpenRes(false);setTimeout(function(){c.el.scrollIntoView({block:'start'});c.el.classList.add('hit');setTimeout(function(){c.el.classList.remove('hit');},1600);},40);}
   else { var el=document.getElementById(location.hash.slice(1)), tb=el&&el.closest('.tab');
@@ -1556,6 +1600,32 @@ M.addEventListener('focusout',function(){tip.classList.remove('on');});
 setHH(); route();
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
+<script>
+/* ---------- Africa 2075 : candidature au comité de lecture (Web3Forms → newsletter@efa.africa) ---------- */
+(function(){
+  var f=document.getElementById('comite-form'); if(!f) return;
+  var CLE='426191fb-4812-4de4-b602-5857464c5916', box=document.getElementById('cm-box'), b=f.querySelector('button[type=submit]');
+  function v(id){return document.getElementById(id).value.trim();}
+  function say(t,err){box.textContent=t;box.style.color=err?'var(--corail)':'';}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!v('cm-nom')){say('Indiquez votre nom.',1);return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v('cm-mail'))){say('Saisissez une adresse email valide.',1);return;}
+    if(!v('cm-fonction')){say('Indiquez votre fonction et votre organisation.',1);return;}
+    if(!document.getElementById('cm-ok').checked){say('Cochez la case pour que nous puissions examiner votre candidature.',1);return;}
+    if(f.botcheck.checked) return;
+    b.disabled=true; say('Envoi en cours…'); try{if(window.efaCompte)efaCompte('a2075-comite-candidature');}catch(x){}
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:CLE,subject:'Candidature · Comité de lecture Africa 2075 · '+v('cm-nom'),from_name:'Site efa.africa',name:v('cm-nom'),email:v('cm-mail'),replyto:v('cm-mail'),
+        fonction:v('cm-fonction'),pays:v('cm-pays'),domaine:v('cm-domaine'),profil:v('cm-lien'),message:v('cm-msg')})})
+    .then(function(r){return r.json();}).then(function(j){
+      if(j&&j.success){f.reset();say('Merci, votre candidature est bien arrivée. Nous vous recontactons à l’adresse indiquée.');}
+      else say('La candidature n’a pas pu être envoyée. Réessayez, ou écrivez-nous à newsletter@efa.africa.',1);
+    }).catch(function(){say('La candidature n’a pas pu partir (connexion ?). Réessayez, ou écrivez-nous à newsletter@efa.africa.',1);})
+    .then(function(){b.disabled=false;});
+  });
+})();
+</script>
 <script src="prevenir.js" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
