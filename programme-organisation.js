@@ -238,7 +238,7 @@
         + '<li><b><span class="n">3</span>Invitez vos participants</b><span>Depuis votre <a href="espace-organisation.html">tableau de bord</a> : le message d’invitation, avec le code, est prêt à envoyer par email ou WhatsApp. Sans ce code, la progression de vos participants ne peut pas être suivie.</span></li></ol>'
         + '<details class="valid"><summary>Faire valider le programme en interne avant de créer les accès</summary><p class="aide">Pour un directeur, la RH ou le bureau de la coopérative : le lien rouvre ce programme tel quel.</p><div class="acts"><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button><button type="button" class="bt" id="a-lien">Copier le lien du programme</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button></div><p class="aide" id="a-msg2" role="status"></p></details>'
         + '</section>' + h;
-      h +=         + '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
+      h += '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
         + "<li><b>Gratuit pendant le pilote</b> : les modules et la composition du programme. Les sessions avec EFA se conviennent ensemble.</li>"
         + "<li><b>Suivi</b> : avec les accès remis par EFA, chaque participant a son compte et votre organisation a son <a href=\"espace-organisation.html\">tableau de bord</a> : inscriptions, connexions, progression, modules terminés, certificats.</li>"
         + "<li><b>Contenus en pilote</b> : les modules et les certificats sont en ligne et relus progressivement par l’équipe pédagogique d’EFA.</li>"
