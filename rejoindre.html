@@ -160,13 +160,23 @@ function bilan(pa, mods) {
   return { valides: v, total: mods.length, pct: etd ? Math.round(et / etd * 100) : 0, fini: mods.length > 0 && v === mods.length };
 }
 
+var COMM = E.CODE_COMMUNAUTE || "";
+function estComm(c) { return !!(c && c.programme && (c.programme.nom === "Communauté EFA" || (COMM && c.code === COMM))); }
+function modeComm() {
+  document.title = "Créer mon compte EFA · Communauté EFA · EFA";
+  var h = document.querySelector(".hero h1"), s = document.querySelector(".hero .sur"), ch = document.querySelector(".hero .chapo");
+  if (s) s.textContent = "Mon compte · Communauté EFA";
+  if (h) h.textContent = "Créer mon compte EFA";
+  if (ch) ch.textContent = "Gratuit et ouvert à tous. Votre progression dans L’école est enregistrée : vous la retrouvez sur n’importe quel téléphone, et vos certificats sont rattachés à votre nom.";
+}
 function vueCompte(c, nouveau) {
+  var comm = estComm(c); if (comm) modeComm();
   $("vue").innerHTML = '<section class="carte"><p class="sur">' + (nouveau ? "Compte créé" : "Mon compte") + '</p><h2>Bonjour ' + esc(c.nom) + '</h2>'
     + '<p class="aide">Vous suivez le programme <b>' + esc(c.programme.nom) + '</b>. Votre progression est enregistrée à chaque étape cochée.</p>'
     + (nouveau ? '<div class="alerte"><b>Gardez votre clé personnelle.</b> Elle vous permet de retrouver votre progression sur un autre téléphone. EFA ne peut pas la retrouver pour vous.</div><div class="cle" id="ma-cle">' + esc(c.cle) + '</div>'
       + '<div class="acts"><button type="button" class="bt" id="c-copier">Copier ma clé</button><button type="button" class="bt" id="c-wa">M’envoyer ma clé par WhatsApp</button></div><p class="msg" id="c-msg"></p>' : '')
     + '<div class="acts"><a class="bt bt-p" href="' + E.lienProgramme(c) + '">Ouvrir mon programme</a><a class="bt" href="parcours.html">L’école</a><button type="button" class="bt bt-l" id="c-out">Me déconnecter de ce téléphone</button></div></section>'
-    + '<section class="carte"><h2>Ce que voit votre organisation</h2><ul class="aide"><li>Votre nom' + (c.email ? " et votre email" : "") + ', la date de votre inscription et de votre dernière visite.</li><li>Les étapes que vous cochez, les modules terminés, les fiches gardées (le titre, jamais leur contenu) et vos certificats.</li><li><b>Jamais</b> les montants que vous saisissez dans les outils : ils restent sur votre téléphone.</li></ul></section>';
+    + '<section class="carte"><h2>' + (comm ? 'Ce que voit EFA' : 'Ce que voit votre organisation') + '</h2><ul class="aide"><li>Votre nom' + (c.email ? " et votre email" : "") + ', la date de votre inscription et de votre dernière visite.</li><li>Les étapes que vous cochez, les modules terminés, les fiches gardées (le titre, jamais leur contenu) et vos certificats.</li><li><b>Jamais</b> les montants que vous saisissez dans les outils : ils restent sur votre téléphone.</li></ul></section>';
   if ($("c-copier")) $("c-copier").onclick = function () { copier(c.cle, "c-msg", "Clé copiée."); };
   if ($("c-wa")) $("c-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("Ma clé personnelle EFA (programme " + c.programme.nom + ") : " + c.cle + " · pour me reconnecter : https://efa.africa/rejoindre.html"), "_blank", "noopener"); };
   $("c-out").onclick = function () { if (!confirmerSortie()) return; E.deconnecter(); vueAccueil(); };
@@ -174,13 +184,15 @@ function vueCompte(c, nouveau) {
 var sortie = false;
 function confirmerSortie() { if (sortie) return true; sortie = true; msg("c-msg", "Avez-vous gardé votre clé ? Touchez à nouveau pour vous déconnecter.", false); if (!$("c-msg")) { var p = document.createElement("p"); p.id = "c-msg"; p.className = "msg err"; p.textContent = "Avez-vous gardé votre clé personnelle ? Touchez à nouveau pour vous déconnecter."; $("c-out").parentNode.after(p); } return false; }
 function vueAccueil() {
-  var code = (new URLSearchParams(location.search).get("code") || "").toUpperCase();
-  $("vue").innerHTML = '<section class="carte"><p class="sur">Première fois</p><h2>J’ai un code de mon organisation</h2>'
-    + '<div class="grille2"><label class="champ">Code du programme<input id="j-code" class="cle-in" autocomplete="off" placeholder="EFA-XXXX-XXXX" value="' + esc(code) + '"></label>'
+  var q = new URLSearchParams(location.search), code = (q.get("code") || "").toUpperCase();
+  var comm = !!COMM && (q.has("communaute") || code === COMM); if (comm) { code = COMM; modeComm(); }
+  $("vue").innerHTML = '<section class="carte"><p class="sur">' + (comm ? 'Communauté EFA · gratuit' : 'Première fois') + '</p><h2>' + (comm ? 'Créer mon compte' : 'J’ai un code de mon organisation') + '</h2>'
+    + '<div class="grille2">' + (comm ? '<input id="j-code" type="hidden" value="' + esc(code) + '">' : '<label class="champ">Code du programme<input id="j-code" class="cle-in" autocomplete="off" placeholder="EFA-XXXX-XXXX" value="' + esc(code) + '"></label>')
     + '<label class="champ">Prénom et nom<input id="j-nom" autocomplete="name" maxlength="80"></label>'
     + '<label class="champ">Email <small>facultatif</small><input id="j-mail" type="email" autocomplete="email" maxlength="120"></label></div>'
-    + '<label class="case"><input type="checkbox" id="j-ok"><span>J’accepte que mon organisation voie mon nom, mes visites et ma progression dans le programme (étapes, modules, certificats). Les montants que je saisis restent sur mon téléphone. <a href="confidentialite.html">Confidentialité</a></span></label>'
+    + '<label class="case"><input type="checkbox" id="j-ok"><span>' + (comm ? 'J’accepte qu’EFA voie mon nom, mes visites et ma progression dans L’école (étapes, modules, certificats), pour suivre et améliorer les cours.' : 'J’accepte que mon organisation voie mon nom, mes visites et ma progression dans le programme (étapes, modules, certificats).') + ' Les montants que je saisis restent sur mon téléphone. <a href="confidentialite.html">Confidentialité</a></span></label>'
     + '<div class="acts"><button type="button" class="bt bt-p" id="j-go">Créer mon compte</button></div><p class="msg" id="j-msg" role="status"></p></section>'
+    + (comm || !COMM ? '' : '<section class="carte"><p class="sur">Pour tous</p><h2>Je n’ai pas de code</h2><p class="aide">Rejoignez la Communauté EFA : un compte gratuit pour suivre L’école et retrouver votre progression partout.</p><div class="acts"><a class="bt bt-n" href="rejoindre.html?communaute">Créer mon compte gratuit</a></div></section>')
     + '<section class="carte"><p class="sur">Déjà inscrit</p><h2>J’ai ma clé personnelle</h2><p class="aide">Pour retrouver votre progression sur ce téléphone.</p>'
     + '<label class="champ">Clé personnelle<input id="k-cle" class="cle-in" autocomplete="off" placeholder="EFA-XXXXXX-XXXXXX-XXXXXX-XXXXXX"></label>'
     + '<div class="acts"><button type="button" class="bt bt-n" id="k-go">Me connecter</button></div><p class="msg" id="k-msg" role="status"></p></section>';

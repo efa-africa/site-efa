@@ -7,6 +7,8 @@
   if (window.EFA_ECOLE) return;
   var API = "https://efa-ecole.elysees-johnson.workers.dev";
   var CLE = "efa_compte";
+  // Programme ouvert à tous : « Communauté EFA » (code public, créé dans admin-ecole). Vide = inscriptions pas encore ouvertes.
+  var CODE_COMMUNAUTE = "";
   function lire(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
   function ecrire(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 
@@ -50,7 +52,7 @@
   }
 
   window.EFA_ECOLE = {
-    API: API, appel: appel, progression: progression, synchroniser: synchroniser,
+    API: API, CODE_COMMUNAUTE: CODE_COMMUNAUTE, appel: appel, progression: progression, synchroniser: synchroniser,
     compte: function () { return lire(CLE); },
     rejoindre: function (code, nom, email) {
       return appel("/rejoindre", { code: code, nom: nom, email: email || "", accord: true }).then(function (j) {
@@ -86,8 +88,17 @@
     var h = document.querySelector("header"); if (h && h.parentNode) h.parentNode.insertBefore(d, h.nextSibling); else document.body.insertBefore(d, document.body.firstChild);
   }
 
+  // Sur L'école, sans compte : proposer le compte gratuit de la Communauté EFA
+  function invitation() {
+    var page = location.pathname.split("/").pop() || "index.html";
+    if (!CODE_COMMUNAUTE || page !== "parcours.html" || lire(CLE) || document.getElementById("efa-compte-i")) return;
+    var ref = document.querySelector(".ch-diag"); if (!ref) return;
+    var p = document.createElement("p"); p.id = "efa-compte-i"; p.className = "ch-diag";
+    p.innerHTML = '<a class="lien-souligne" href="rejoindre.html?communaute" data-goatcounter-click="ecole-compte-communaute">Créer mon compte gratuit : ma progression sur tous mes téléphones</a>';
+    ref.parentNode.insertBefore(p, ref.nextSibling);
+  }
   function demarrer() {
-    rappel();
+    rappel(); invitation();
     if (!lire(CLE)) return;
     setTimeout(function () { synchroniser(false); }, 2500);
     setInterval(function () { synchroniser(false); }, 60000);
