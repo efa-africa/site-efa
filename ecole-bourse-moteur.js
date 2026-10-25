@@ -136,10 +136,25 @@
     $("suiv").dataset.vers = "";
     $("suiv").setAttribute("aria-disabled", bl ? "true" : "false");
     $("suiv").title = bl ? "Répondez pour continuer" : "";
+    if (bl) consigne(L[S.i]);
     if (focus) {
       var t = corps.querySelector(".h,.enonce"); if (t) { t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: true }); }
       var c = document.querySelector(".cadre"); if (c && c.getBoundingClientRect().top < 0) c.scrollIntoView({ block: "start" });
     }
+  }
+  /* Consigne visible quand une réponse est attendue : on ne reste jamais devant un bouton grisé sans savoir quoi faire */
+  function consigne(E) {
+    var t = E.t === "perso" ? (E.consigne || "Choisissez une réponse <span class=\"c-l\">dans la zone de gauche</span><span class=\"c-p\">ci-dessus</span>, puis touchez Suivant.") : "Choisissez une réponse ci-dessous, puis touchez Suivant.";
+    var d = document.createElement("p"); d.className = "consigne"; d.setAttribute("role", "status");
+    d.innerHTML = '<b aria-hidden="true">À vous</b> ' + t;
+    var x = corps.querySelector(".texte .q") || corps.querySelector(".texte");
+    if (x) { var h = x.querySelector(".enonce") || x.querySelector(".h"); if (h && h.nextSibling) h.parentNode.insertBefore(d, h.nextSibling); else x.appendChild(d); }
+  }
+  function rappelConsigne() {
+    var d = corps.querySelector(".consigne"); if (!d) return;
+    d.classList.remove("flash"); void d.offsetWidth; d.classList.add("flash");
+    var cible = corps.querySelector(".opt:not([disabled]), .act-l button, .rep-types button, .illu input, .illu button");
+    if (cible) { cible.classList.add("vise"); setTimeout(function () { cible.classList.remove("vise"); }, 1600); if (cible.scrollIntoView) cible.scrollIntoView({ block: "nearest" }); }
   }
   function accessible(M) { var L = ecrans(M); for (var k = 0; k < L.length; k++) if (bloque(M, L[k], k)) return k; return L.length - 1; }
 
@@ -161,7 +176,7 @@
   $("suiv").addEventListener("click", function () {
     if (!cur) { aller(this.dataset.vers, null, true); return; }
     var L = ecrans(cur), S = st(cur.id);
-    if (bloque(cur, L[S.i], S.i)) return;
+    if (bloque(cur, L[S.i], S.i)) { rappelConsigne(); return; }
     if (S.i === L.length - 1) { var n = EC.modules[EC.modules.indexOf(cur) + 1]; aller(n ? n.id : null, n ? 0 : null, true); return; }
     aller(cur.id, S.i + 1, true);
   });

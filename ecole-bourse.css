@@ -238,3 +238,18 @@ body{justify-content:safe center}
 .defile{width:100%;overflow-x:auto}
 .tab.large th,.tab.large td{white-space:nowrap;padding-left:.5cqw;padding-right:.5cqw}
 @media (orientation:portrait) and (max-width:700px){.tab.large{font-size:13px}.tab.large th,.tab.large td{white-space:nowrap!important;padding:6px 5px}}
+
+/* Consigne « À vous » quand une réponse est attendue */
+.consigne{display:block;margin:0;background:#0B1220;color:#fff;border-radius:.8cqw;padding:.8cqw 1.2cqw;font-size:max(12px,1.45cqw);font-weight:600;line-height:1.35}
+.consigne b{display:inline-block;margin-right:.5em;background:#DA3C1B;color:#fff;border-radius:999px;padding:.2cqw .9cqw;font-size:.85em;letter-spacing:.08em;text-transform:uppercase}
+.consigne .c-p{display:none}
+.consigne.flash{animation:consigne-flash .9s ease-in-out 2}
+@keyframes consigne-flash{0%,100%{background:#0B1220}50%{background:#DA3C1B}}
+.vise{outline:3px solid #DA3C1B!important;outline-offset:2px}
+.btn.suiv[aria-disabled="true"]{opacity:.55}
+/* Boutons de choix dans un cadre clair : bien visibles */
+.illu.papier .act-l button{background:#F5EFE2;box-shadow:inset 0 0 0 1px #D9CDB5}
+.illu.papier .act-l button:hover{background:#EFE5D0}
+.illu.papier .act-l button[aria-pressed="true"]{background:#0B1220;box-shadow:none}
+@media (orientation:portrait) and (max-width:700px){.consigne{font-size:15px;padding:10px 12px;border-radius:10px}.consigne .c-l{display:none}.consigne .c-p{display:inline}}
+@media (prefers-reduced-motion:reduce){.consigne.flash{animation:none}}

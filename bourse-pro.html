@@ -11,7 +11,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
-<link rel="stylesheet" href="ecole-bourse.css?v=2026102402">
+<link rel="stylesheet" href="ecole-bourse.css?v=2026102504">
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head><body>
 
@@ -322,7 +322,7 @@ ecrans:[
   sur:"Le projet", h:"Présenter un investissement comme devant un comité",
   p:["Dans les fonds d’investissement, aucune décision ne se prend sans une note présentée à un comité : pourquoi investir, ce qui pourrait mal tourner, à quel prix, et quand sortir.",
    "Choisissez l’une des trois sociétés fictives, ou une vraie société dont vous avez lu le rapport annuel. Remplissez votre fiche : elle vous servira de modèle pour chaque achat réel."]},
- {t:"perso", bloque:function(c){return !(c.S.r.fi&&c.S.r.fi.ok)}, rendu:function(c){var p=c.S.r.fi||{},v=function(k){return (p[k]||'').replace(/"/g,'&quot;')};
+ {t:"perso", bloque:function(c){return !(c.S.r.fi&&c.S.r.fi.ok)}, consigne:"Remplissez votre fiche <span class=\"c-l\">à gauche</span><span class=\"c-p\">ci-dessus</span>, puis touchez « Écrire ma fiche ».", rendu:function(c){var p=c.S.r.fi||{},v=function(k){return (p[k]||'').replace(/"/g,'&quot;')};
   if(p.ok) return '<div class="illu papier"><span class="tabtitre fonce">Ma fiche de comité</span><div class="plan-sortie" id="fi-txt">'+p.txt+'</div><button class="copier" id="fi-copie" type="button">Copier ma fiche</button></div><div class="texte"><p class="sur">Fiche prête</p><h2 class="h">Votre décision tient sur une page</h2>'+ECOLE.outils.typo('<p class="p">Relisez-la demain, à froid. Si un point vous gêne, c’est le moment de corriger, pas après l’achat.</p><p class="p">Gardée sur ce téléphone seulement. <a href="#" id="fi-mod">Modifier ma fiche</a></p>')+'</div>';
   return '<div class="illu papier"><span class="tabtitre fonce">Ma fiche de comité</span><div class="exo" style="width:100%"><label style="grid-column:1/-1">Société<input id="fi-s" value="'+v('s')+'" placeholder="ex. Distribution Lagune"></label><label style="grid-column:1/-1">Ma thèse en une phrase<input id="fi-t" value="'+v('t')+'" placeholder="ex. ventes en hausse, dividende couvert, dette modérée"></label><label>Risque 1<input id="fi-r1" value="'+v('r1')+'" placeholder="ex. litige fiscal"></label><label>Risque 2<input id="fi-r2" value="'+v('r2')+'" placeholder="ex. concurrence"></label><label>Bénéfice par action (F)<input id="fi-b" inputmode="numeric" value="'+v('b')+'" placeholder="290"></label><label>PER raisonnable<input id="fi-p" inputmode="decimal" value="'+v('p')+'" placeholder="12"></label><label>Montant investi (F)<input id="fi-m" inputmode="numeric" value="'+v('m')+'" placeholder="300 000"></label><label>Je revends si…<input id="fi-v" value="'+v('v')+'" placeholder="ex. dividende réduit deux ans"></label></div><button class="btn suiv" id="fi-ok" type="button">Écrire ma fiche</button></div>'+
   '<div class="texte"><p class="sur">Votre fiche</p><h2 class="h">Huit cases, une décision</h2>'+ECOLE.outils.typo('<p class="p">La thèse porte sur l’entreprise. Les risques sont ceux qui contrediraient la thèse. Le prix maximum vient du bénéfice par action et d’un PER raisonnable, moins 15 % de marge de sécurité.</p><p class="p">La fiche calcule votre limite d’ordre et la quantité correspondante.</p>')+'</div>';},
@@ -336,7 +336,7 @@ ecrans:[
     d.ok=true;c.S.r.fi=d;c.sauver();O.compte('ecole-B8-fiche');if(window.EFA_SUIVI)EFA_SUIVI.planifier({id:'B8',titre:'Ma fiche de comité d’investissement',action:'Relire ma fiche à froid, puis passer ou non mon ordre à cours limité',lien:'bourse-pro.html#B8'});c.refaire();});}}
 ]});
 </script>
-<script src="ecole-bourse-moteur.js?v=2026102402"></script>
+<script src="ecole-bourse-moteur.js?v=2026102504"></script>
 <script src="efa-suite.js?v=2026102525" defer></script>
 <script src="efa-compte.js?v=2026102530" defer></script>
 </body></html>

@@ -217,6 +217,10 @@ body{justify-content:safe center}
   .pied{padding:10px 14px;gap:8px}.duree{display:none}.ely{font-size:13px}.btn{font-size:15px;padding:10px 16px;border-radius:8px}
   .portef{padding:10px 12px;border-radius:10px}
 }
+.consigne{display:block;margin:0;background:#0B1220;color:#fff;border-radius:.8cqw;padding:.8cqw 1.2cqw;font-size:max(12px,1.45cqw);font-weight:600;line-height:1.35}
+.consigne b{display:inline-block;margin-right:.5em;background:#DA3C1B;color:#fff;border-radius:999px;padding:.2cqw .9cqw;font-size:.85em;letter-spacing:.08em;text-transform:uppercase}
+.consigne.flash{animation:consigne-flash .9s ease-in-out 2}@keyframes consigne-flash{0%,100%{background:#0B1220}50%{background:#DA3C1B}}
+@media (orientation:portrait) and (max-width:700px){.consigne{font-size:15px;padding:10px 12px;border-radius:10px}}
 </style>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head><body>
@@ -415,6 +419,7 @@ function aller(i,focus){
   $('suiv').textContent=etat.i===0?(Object.keys(etat.c).length?'Reprendre':'Commencer'):fin?'Recommencer':'Suivant';
   $('suiv').setAttribute('aria-disabled',bl?'true':'false');
   $('suiv').title=bl?'Choisissez une réponse pour continuer':'';
+  if(bl){var q=corps.querySelector('.q');if(q){var d=document.createElement('p');d.className='consigne';d.setAttribute('role','status');d.innerHTML='<b aria-hidden="true">À vous</b> '+(corps.querySelector('#x-div')?'Écrivez votre réponse, puis touchez Vérifier.':'Choisissez une réponse ci-dessous, puis touchez Suivant.');var e=q.querySelector('.enonce');e.parentNode.insertBefore(d,e.nextSibling);}}
   var r=$('raz');if(r)r.addEventListener('click',function(){etat={i:0,c:{}};sauver();aller(0)});
   if(focus){var t=corps.querySelector('.h,.enonce');if(t){t.setAttribute('tabindex','-1');t.focus({preventScroll:true})}
     var c=document.querySelector('.cadre');if(c&&c.getBoundingClientRect().top<0)c.scrollIntoView({block:'start'})}
@@ -427,7 +432,7 @@ corps.addEventListener('click',function(ev){
 });
 $('prec').addEventListener('click',function(){if(etat.i>0)aller(etat.i-1,true)});
 $('suiv').addEventListener('click',function(){
-  if(bloque(etat.i))return;
+  if(bloque(etat.i)){var d=corps.querySelector('.consigne');if(d){d.classList.remove('flash');void d.offsetWidth;d.classList.add('flash');}return;}
   if(etat.i===0&&Object.keys(etat.c).length){aller(maxAccessible(),true);return}
   if(etat.i===E.length-1){etat={i:0,c:{}};sauver();aller(0,true);return}
   aller(etat.i+1,true);
