@@ -78,7 +78,7 @@ NAVCSS
 .mod b{display:block;font-size:16px;color:var(--nuit)}.mod span{font-size:14px;color:var(--ink2)}
 .mod .d{font-size:13px;font-weight:800;color:var(--ink2);white-space:nowrap}
 .mod.c-maitrise .n{color:var(--bleu)}.mod.c-patrimoine .n{color:var(--nuit)}
-.session{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px}.session b{color:#fff}.session span{color:#C9D1DE;font-size:14px;display:block}
+.session{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px}.session b{color:#fff}.session span{color:#C9D1DE;font-size:14px;display:block}.session.prat{background:#EFE6D3}.session.prat b{color:var(--nuit)}.session.prat span{color:var(--ink2)}
 .limites{font-size:14.5px;color:var(--ink2)}.limites li{margin:4px 0}
 .mention{font-size:13.5px;color:var(--ink3);margin-top:8px}
 @media print{header,footer,.hero,.etapes-c,.acts,.efa-suite,#efa-ely,.no-print{display:none!important}.carte{padding:0}}

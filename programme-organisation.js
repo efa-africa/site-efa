@@ -109,6 +109,12 @@
       if (cur.t > g.min) cur.span = Math.ceil(cur.t / g.min);
     });
     if (cur.mods.length) sem.push(cur);
+    // Semaines restantes : réparties entre les blocs, pour la mise en pratique (le calendrier va jusqu’à la dernière semaine choisie)
+    var fin = sem.length ? sem[sem.length - 1].n + (sem[sem.length - 1].span || 1) - 1 : 0, reste = (g.semaines || 0) - fin;
+    if (sem.length && reste > 0) {
+      var base = Math.floor(reste / sem.length), plus = reste % sem.length, n = 1;
+      sem.forEach(function (s, k) { s.pratique = base + (k < plus ? 1 : 0); s.n = n; s.span = (s.span || 1) + s.pratique; n += s.span; });
+    }
     return sem;
   }
   function programme() {
@@ -184,17 +190,19 @@
       + '<div class="resume"><div><small>Modules</small><b>' + g.ids.length + '</b></div><div><small>Durée</small><b>' + Math.max(dern, pr.s) + ' semaines</b></div><div><small>Par semaine</small><b>' + duree(pr.mi) + '</b></div><div><small>Format</small><b>' + esc(f[1].replace("En ligne + ", "+ ")) + "</b></div></div>"
       + (pr.c === "F" ? '<p class="ok-l">Ce programme couvre le cycle Fondations : chaque participant peut passer l’examen en ligne et obtenir le certificat local Fondations.</p>' : '<p class="aide">Chaque module terminé, avec sa fiche gardée, donne une attestation de réalisation au participant.</p>');
     sem.forEach(function (s, k) {
-      var titre = s.span > 1 ? "Semaines " + s.n + " à " + (s.n + s.span - 1) : "Semaine " + s.n;
-      h += '<div class="sem"><h3>' + titre + "<small>" + duree(s.t) + "</small></h3><div>";
-      if (k === 0 && pr.f !== "0") h += '<div class="session"><b>Session EFA de lancement</b><span>En présentiel ou en visio : le programme, les premières questions, le module de départ fait ensemble.</span></div>';
+      var titre = s.span > 1 ? "Semaines " + s.n + (s.span === 2 ? " et " : " à ") + (s.n + s.span - 1) : "Semaine " + s.n;
+      var ses = (k === 0 && pr.f !== "0" ? 60 : 0) + (k === sem.length - 1 && pr.f === "2" ? 60 : 0);
+      h += '<div class="sem"><h3>' + titre + "<small>" + duree(s.t + ses) + (ses ? " · dont " + duree(ses) + " de session" + (ses > 60 ? "s" : "") : "") + (s.span > 1 ? " · sur " + s.span + " semaines" : "") + "</small></h3><div>";
+      if (k === 0 && pr.f !== "0") h += '<div class="session"><b>Session EFA de lancement · 1 h</b><span>En présentiel ou en visio : le programme, les premières questions, le module de départ fait ensemble.</span></div>';
       s.mods.forEach(function (id) { var p = P[id], pg = participant ? prog(id) : ""; h += '<a class="mod c-' + p.cycle + '" href="parcours.html?src=programme#' + id + '"><span class="n">' + p.module + "</span><div><b>" + esc(p.titre) + "</b><span>" + esc(p.objectif) + " Fiche à garder : " + esc(p.fiche ? p.fiche.titre : "") + ".</span></div><span class=\"d\">" + (pg ? pg + " étapes" : esc(duree(minutes(p)))) + "</span></a>"; });
-      if (k === sem.length - 1 && pr.f === "2") h += '<div class="session"><b>Session EFA de bilan</b><span>Ce que chacun a décidé, ce qui a marché, les questions restées ouvertes.</span></div>';
+      if (s.pratique) { var d0 = s.n + s.span - s.pratique, d1 = s.n + s.span - 1; h += '<div class="session prat"><b>' + (s.pratique > 1 ? "Semaines " + d0 + (s.pratique === 2 ? " et " : " à ") + d1 : "Semaine " + d0) + ' · mise en pratique</b><span>Pas de nouveau module : chacun applique sa fiche, refait l’outil avec ses vrais chiffres et vérifie la décision prise. C’est le temps de reprendre une étape manquée.</span></div>'; }
+      if (k === sem.length - 1 && pr.f === "2") h += '<div class="session"><b>Session EFA de bilan · 1 h</b><span>Ce que chacun a décidé, ce qui a marché, les questions restées ouvertes.</span></div>';
       h += "</div></div>";
     });
-    if (pr.c === "F") h += '<div class="sem"><h3>Pour finir<small>30 min</small></h3><div><a class="mod" href="certificat-pilote.html?src=programme"><span class="n">★</span><div><b>Examen du certificat local Fondations</b><span>24 questions, 30 minutes, 17 bonnes réponses pour réussir. En ligne, sur téléphone.</span></div><span class="d">30 min</span></a></div></div>';
+    if (pr.c === "F") h += '<div class="sem"><h3>Pour finir<small>30 min · semaine ' + Math.max(dern, pr.s) + '</small></h3><div><a class="mod" href="certificat-pilote.html?src=programme"><span class="n">★</span><div><b>Examen du certificat local Fondations</b><span>24 questions, 30 minutes, 17 bonnes réponses pour réussir. En ligne, sur téléphone.</span></div><span class="d">30 min</span></a></div></div>';
     h += "</section>";
     if (participant) {
-      h += '<section class="carte"><h2>Comment suivre ce programme</h2><ul class="limites"><li>Ouvrez chaque module dans l’ordre : il vous guide étape par étape, avec vidéos, leçons et outils.</li><li>Votre organisation vous a donné un code&nbsp;? <a href="rejoindre.html">Créez votre compte</a> : votre progression est enregistrée et vous la retrouvez sur n’importe quel téléphone.</li><li>Une question&nbsp;? <a href="ely.html">Posez-la à Ely</a>, le guide de l’école, ou gardez-la pour la session EFA.</li></ul><div class="acts"><a class="bt bt-p" href="parcours.html?src=programme#' + (g.ids[0] || "") + '">Commencer le premier module</a></div></section>';
+      h += '<section class="carte"><h2>Comment suivre ce programme</h2><ul class="limites"><li>Ouvrez chaque module dans l’ordre : il vous guide étape par étape, avec vidéos, leçons et outils.</li><li>Votre organisation vous a donné un code&nbsp;? <a href="rejoindre.html">Créez votre compte</a> : votre progression est enregistrée et vous la retrouvez sur n’importe quel téléphone.</li><li><b>Ce que voit votre organisation</b>, par ses responsables du programme : votre nom, vos visites, les étapes faites, les modules terminés et votre certificat. <b>Jamais</b> vos montants, le contenu de vos fiches ni vos réponses aux quiz. Sans compte, rien n’est transmis.</li><li>Une question&nbsp;? <a href="ely.html">Posez-la à Ely</a>, le guide de l’école, ou gardez-la pour la session EFA.</li></ul><div class="acts"><a class="bt bt-p" href="parcours.html?src=programme#' + (g.ids[0] || "") + '">Commencer le premier module</a></div></section>';
     } else {
       h += '<section class="carte no-print"><h2>Et maintenant</h2>'
         + '<div class="acts"><button type="button" class="bt bt-p" id="a-part">Copier le lien pour les participants</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button></div>'
