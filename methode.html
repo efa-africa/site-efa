@@ -216,6 +216,13 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .mainnav a[aria-current="page"]{color:#fff;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:6px}
 .mainnav a.mn-cta{background:var(--corail);color:#fff}
 .rubs{display:flex;gap:4px;margin-left:auto}
+.garant{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:22px;align-items:center;background:var(--panel,#0D1525);border-radius:14px;padding:22px;margin-block:8px 18px}
+.garant img{width:100%;height:auto;border-radius:12px;display:block}
+.garant h2{font:700 clamp(24px,3vw,32px) var(--disp,Georgia),serif;margin:6px 0 4px;color:var(--ink,#E8EDF5)}
+.garant .g-role{font-size:14.5px;font-weight:700;color:var(--ink2,#A9B4C6);margin:0 0 10px}
+.garant p{color:var(--ink,#E8EDF5);margin:0 0 10px}
+.garant .g-lien{font-weight:800;color:#fff;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-decoration-thickness:2px;text-underline-offset:4px}
+@media (max-width:600px){.garant{grid-template-columns:minmax(0,1fr)}.garant img{max-width:180px}}
 .somm{padding-block:26px 6px}
 .somm .kick{margin:0}
 .somm h1{font-size:clamp(28px,4.4vw,48px);margin:8px 0 18px;max-width:22ch}
@@ -896,6 +903,16 @@ a.st-card{text-decoration:none}
   <!-- RUBRIQUE MÉTHODE -->
   <section class="tab" id="tab-methode" data-tab="methode" hidden>
     <div class="wrap intro"><div><p class="kick">Notre méthode</p><h1>Comment nous travaillons</h1><p>Sources, collecte, limites de l’échantillon, corrections et usage des personnages.</p></div></div>
+    <div class="wrap garant">
+      <img src="elysee-portrait.jpg" alt="Élysée Johnson, fondateur et président d’EFA" width="606" height="909" loading="lazy">
+      <div>
+        <p class="kick">Le garant de la méthode</p>
+        <h2>Élysée Johnson</h2>
+        <p class="g-role">Fondateur et président d’EFA · banque d’investissement, capital-investissement et conseil · ENSEA, ESCP</p>
+        <p>Chaque étude, chaque module et chaque outil d’EFA est relu et validé par Élysée Johnson avant publication. Les sources sont citées, les limites sont dites, les erreurs signalées sont corrigées publiquement.</p>
+        <p><a class="g-lien" href="auteur.html">Son parcours et pourquoi il a créé EFA →</a></p>
+      </div>
+    </div>
     <div class="wrap mtxt">
         <h3>Comment nous produisons</h3>
         <ul>
