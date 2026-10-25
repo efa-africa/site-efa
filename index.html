@@ -757,6 +757,23 @@ img.char{object-position:50% 18%}
 .ec-a:hover{filter:brightness(1.06)}
 .ec-a3{grid-column:1/-1;background:#F5EFE2;color:var(--nuit);flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 18px;padding:16px 20px}
 .ec-a3 .ec-k{color:var(--corail);opacity:1}.ec-a3 .ec-q{color:#2A3142;flex:1 1 320px}.ec-a3 .ec-go{color:var(--nuit)}
+.ec-illu{margin:0;width:100%;max-width:720px}
+.ec-illu svg{width:100%;height:auto;display:block}
+.ec-acces{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.ec-a{gap:6px!important;padding:18px 20px!important}
+.ec-a3{grid-column:auto!important;flex-direction:column!important;align-items:stretch!important;background:#F5EFE2}
+.ec-mot{font-family:var(--f-display,"Libre Baskerville",Georgia,serif);font-weight:700;font-size:clamp(22px,2.2vw,28px);line-height:1.1}
+.ec-a .ec-q{font-size:15px;opacity:.92}
+.ec-a3 .ec-mot,.ec-a3 .ec-q{color:var(--nuit)}
+.ec-a3 .ec-q{flex:0 0 auto!important}
+.ec-bt{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.ec-bt a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:8px;font:800 15px/1.1 var(--f-body);text-decoration:none;background:rgba(11,18,32,.28);color:#fff}
+.ec-a1 .ec-bt a:first-child{background:var(--nuit)}
+.ec-a2 .ec-bt a{background:rgba(255,255,255,.1)}.ec-a2 .ec-bt a:first-child{background:#2188D6}
+.ec-a3 .ec-bt a{background:rgba(11,18,32,.08);color:var(--nuit)}.ec-a3 .ec-bt a:first-child{background:var(--nuit);color:#fff}
+.ec-bt a:hover{filter:brightness(1.1)}
+.ec-bt a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (max-width:700px){.ec-acces{grid-template-columns:minmax(0,1fr)!important}.ec-a{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px}.ec-a .ec-bt{grid-column:1/-1}.ec-illu{max-width:520px}.ec-illu text{font-size:30px}.ec-illu{margin-bottom:6px}}
 .ec-pubs{margin:2px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px;color:#9FB0C8;max-width:900px}
 .ec-pubs a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
 .ec-reperes{margin:0;font-size:14px;font-weight:700;letter-spacing:.04em;color:#9FB0C8}
@@ -828,12 +845,24 @@ img.char{object-position:50% 18%}
     <div class="ec-in">
       <p class="ec-marque">EFA <span aria-hidden="true">|</span> Éducation Financière Afrique</p>
       <p class="ec-ecole">L’école de la finance personnelle, ancrée dans les réalités africaines</p>
-      <h1 id="ec-t">Savoir où passe votre argent, tenir un budget, garder une part de chaque rentrée, investir et construire un patrimoine.</h1>
-      <p class="ec-lead">Gratuit, sur votre téléphone, avec vos propres chiffres. Partez d’une situation que vous connaissez et repartez avec un plan&nbsp;: votre budget, votre réserve, votre règle pour aider vos proches, votre premier investissement.</p>
+      <h1 id="ec-t">Savoir où passe votre argent, tenir un budget, garder une part, investir, construire un patrimoine.</h1>
+      <figure class="ec-illu" aria-label="Le chemin EFA : comprendre, budget, réserve, investir, patrimoine">
+        <svg viewBox="0 0 900 230" role="img" aria-hidden="true">
+          <defs><linearGradient id="ec-g" x1="0" x2="1"><stop offset="0" stop-color="#EC6243"/><stop offset="1" stop-color="#6DB8F2"/></linearGradient></defs>
+          <path d="M70 150 C 190 40, 300 40, 360 120 S 520 210, 600 120 S 760 20, 840 70" fill="none" stroke="url(#ec-g)" stroke-width="5" stroke-linecap="round"/>
+          <g font-family="Source Sans 3, Arial, sans-serif" font-weight="800" text-anchor="middle">
+            <g transform="translate(70 150)"><circle r="30" fill="#0B1220" stroke="#EC6243" stroke-width="4"/><circle r="11" fill="none" stroke="#EC6243" stroke-width="4"/><text x="-30" y="58" text-anchor="start" fill="#E8EDF5" font-size="17">Comprendre</text></g>
+            <g transform="translate(250 66)"><circle r="30" fill="#0B1220" stroke="#EC6243" stroke-width="4"/><path d="M-13 9V-3M-4 9V-11M5 9V-6M14 9V2" stroke="#F5EFE2" stroke-width="5" stroke-linecap="round"/><text y="-44" fill="#E8EDF5" font-size="17">Budget</text></g>
+            <g transform="translate(450 168)"><circle r="30" fill="#0B1220" stroke="#B9A1C9" stroke-width="4"/><path d="M-13 -2h26v14h-26z M-8 -2v-6a8 8 0 0 1 16 0v6" fill="none" stroke="#F5EFE2" stroke-width="4" stroke-linejoin="round"/><text y="58" fill="#E8EDF5" font-size="17">Réserve</text></g>
+            <g transform="translate(650 98)"><circle r="30" fill="#0B1220" stroke="#6DB8F2" stroke-width="4"/><path d="M-14 10L-4 0L3 6L14 -9M6 -9h8v8" fill="none" stroke="#F5EFE2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text y="58" fill="#E8EDF5" font-size="17">Investir</text></g>
+            <g transform="translate(840 70)"><circle r="30" fill="#2188D6"/><path d="M0 0m-3 0a3 3 0 1 1 6 0a7 7 0 1 1 -14 0a11 11 0 1 1 22 0" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><text x="30" y="58" text-anchor="end" fill="#E8EDF5" font-size="17">Patrimoine</text></g>
+          </g>
+        </svg>
+      </figure>
       <div class="ec-acces">
-        <a class="ec-a ec-a1" href="#besoins" data-goatcounter-click="accueil-apprendre"><span class="ec-k">Pour apprendre</span><span class="ec-q">Une question sur votre argent&nbsp;? Commencez par une situation concrète, puis exercez-vous avec vos chiffres.</span><span class="ec-go">Trouver mon parcours →</span></a>
-        <a class="ec-a ec-a2" href="methode.html?src=accueil" data-goatcounter-click="accueil-comprendre"><span class="ec-k">Pour comprendre et anticiper</span><span class="ec-q">Que disent les données sur l’argent en Afrique&nbsp;? Explorez les études EFA et les perspectives d’Africa 2075.</span><span class="ec-go">Explorer les études &amp; la prospective →</span></a>
-        <a class="ec-a ec-a3" href="organisations.html?src=accueil" data-goatcounter-click="accueil-organisations"><span class="ec-k">Pour les organisations</span><span class="ec-q">Entreprise, coopérative, école&nbsp;: faites former vos collaborateurs avec L’école EFA, un programme à la carte et un tableau de bord de suivi.</span><span class="ec-go">Former mes équipes →</span></a>
+        <div class="ec-a ec-a1"><span class="ec-mot">Apprendre</span><span class="ec-q">Vos chiffres, un plan.</span><span class="ec-bt"><a href="#besoins" data-goatcounter-click="accueil-apprendre">Mon parcours</a><a href="bourse-essentiel.html?src=accueil" data-goatcounter-click="accueil-bourse">La Bourse</a></span></div>
+        <div class="ec-a ec-a2"><span class="ec-mot">Anticiper</span><span class="ec-q">Les données, l’avenir.</span><span class="ec-bt"><a href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-comprendre">Études</a><a href="methode.html?src=accueil#africa-2075" data-goatcounter-click="accueil-africa2075-porte">Africa 2075</a></span></div>
+        <div class="ec-a ec-a3"><span class="ec-mot">Former</span><span class="ec-q">Vos équipes, suivies.</span><span class="ec-bt"><a href="organisations.html?src=accueil" data-goatcounter-click="accueil-organisations">Programme</a><a href="organisations.html?src=accueil#contact" data-goatcounter-click="accueil-organisations-contact">Nous écrire</a></span></div>
       </div>
       <p class="ec-pubs"><span>Dernière étude&nbsp;: <a href="etude-tontine-en-chiffres.html?src=accueil" data-goatcounter-click="accueil-etude">La tontine en chiffres</a></span><span>Africa 2075&nbsp;: <a href="africa-2075-dossier-1.html?src=accueil" data-goatcounter-click="accueil-africa2075">L’IA va multiplier les cerveaux, combien seront africains&nbsp;?</a></span></p>
     </div>
