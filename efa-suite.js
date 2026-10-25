@@ -101,7 +101,7 @@
   function court(t) { t = String(t || "").replace(/\s*·\s*EFA.*$/, "").replace(/\s*\|.*$/, "").trim(); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, "") + "…" : t; }
   function filSuivant(href, label) {
     var a = document.querySelector(".efa-fil .fil-s"); if (!a || !href) return;
-    a.href = href; a.innerHTML = "<span>Suivant&nbsp;: </span>" + esc(label) + " →"; a.hidden = false;
+    a.href = href; a.innerHTML = "Poursuivre<span>&nbsp;: " + esc(label) + "</span> →"; a.hidden = false;
     if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
   }
   window.EFA_FIL = { suivant: filSuivant };
@@ -118,14 +118,14 @@
     var st = document.createElement("style");
     st.textContent = ".efa-fil{background:#F5EFE2;border-bottom:1px solid #E2D8C4;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;align-self:stretch;width:100%;box-sizing:border-box}"
       + ".efa-fil-in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px max(12px,env(safe-area-inset-left,0px))}"
-      + ".efa-fil a{display:inline-flex;align-items:center;gap:4px;min-height:38px;padding:6px 12px;border-radius:8px;font-size:14.5px;font-weight:800;text-decoration:none;color:#0B1220;max-width:48%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"
-      + ".efa-fil a.fil-p{background:#fff}.efa-fil a.fil-s{background:#0B1220;color:#fff;margin-left:auto}.efa-fil a[hidden]{display:none}"
-      + ".efa-fil a span{font-weight:600;opacity:.75}"
-      + "@media (max-width:520px){.efa-fil a{font-size:13.5px;padding:6px 10px}.efa-fil a span{display:none}}"
+      + ".efa-fil a{display:inline-block;line-height:26px;min-height:38px;padding:6px 12px;border-radius:8px;font-size:14.5px;font-weight:800;text-decoration:none;color:#0B1220;max-width:48%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"
+      + ".efa-fil a.fil-p{background:#0B1220;color:#fff}.efa-fil a.fil-s{background:#E44828;color:#fff;margin-left:auto}.efa-fil a[hidden]{display:none}"
+      + ".efa-fil a span{font-weight:600;opacity:.85}"
+      + "@media (max-width:520px){.efa-fil a{font-size:14px;padding:6px 12px}.efa-fil a.fil-p span{display:none}.efa-fil a.fil-s{max-width:62%}}"
       + "@media print{.efa-fil{display:none}}";
     document.head.appendChild(st);
-    var f = document.createElement("nav"); f.className = "efa-fil"; f.setAttribute("aria-label", "Précédent et suivant");
-    f.innerHTML = '<div class="efa-fil-in">' + (prev ? '<a class="fil-p" href="' + esc(prev.u) + '" data-goatcounter-click="fil-precedent">← <span>Précédent&nbsp;: </span>' + esc(prev.t || "Retour") + "</a>" : "") + '<a class="fil-s" hidden data-goatcounter-click="fil-suivant"></a></div>';
+    var f = document.createElement("nav"); f.className = "efa-fil"; f.setAttribute("aria-label", "Revenir et poursuivre");
+    f.innerHTML = '<div class="efa-fil-in">' + (prev ? '<a class="fil-p" href="' + esc(prev.u) + '" data-goatcounter-click="fil-precedent">← Revenir<span>&nbsp;: ' + esc(prev.t || "") + "</span></a>" : "") + '<a class="fil-s" hidden data-goatcounter-click="fil-suivant"></a></div>';
     var p0 = f.querySelector(".fil-p");
     if (p0) p0.addEventListener("click", function (e) {
       // Retour réel quand on vient de la page précédente du site : la page reprend où on l'avait laissée
