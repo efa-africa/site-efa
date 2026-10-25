@@ -65,3 +65,9 @@ Pour la clé maîtresse, ouvrez efa.africa/admin-ecole.html et touchez **Génér
 Garde-fous du Worker : 500 places au plus (au-delà, EFA les ouvre depuis l'administration), programme ouvert un an, 3 créations au plus par email et par jour, 30 par heure au total. Les programmes créés ainsi portent la note « auto · responsable · email » dans l'administration, où vous pouvez les fermer.
 
 Pour l'activer : Cloudflare › Workers & Pages › **efa-ecole** › **Edit code**, remplacez tout le code par la nouvelle version de `02-worker-efa-ecole.js`, puis **Deploy**. Aucune variable ni table à changer. La page d'accueil du Worker affiche alors `"version":"1.1"`.
+
+## Mise à jour 1.2 · le participant voit son programme avant de s'inscrire
+
+Le lien d'invitation présente le programme (organisation, modules, rythme, certificats) avant la création du compte. Un code inconnu ou fermé affiche « Ce code n'est pas reconnu ou n'est plus actif » avec la marche à suivre. Un lien d'invitation ne bascule jamais vers la Communauté EFA ; si un autre compte est déjà ouvert sur le téléphone, la page le dit et laisse choisir.
+
+Pour l'activer : même manipulation que la 1.1 (Edit code, coller la nouvelle version de `02-worker-efa-ecole.js`, Deploy). La page du Worker affiche alors `"version":"1.2"`.

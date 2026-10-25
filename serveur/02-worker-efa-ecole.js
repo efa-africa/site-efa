@@ -1,4 +1,4 @@
-/* EFA · Worker « efa-ecole » · version 1.1 · 25 octobre 2026
+/* EFA · Worker « efa-ecole » · version 1.2 · 25 octobre 2026
    Comptes de l'école pour les organisations : clés d'accès, comptes participants, tableau de bord.
 
    Réglages (Cloudflare > Workers > efa-ecole > Settings > Variables and Secrets) :
@@ -12,10 +12,11 @@
      - clé personnelle (24 caract.)    : un compte par participant, pour retrouver sa progression partout.
    Version 1.1 : une organisation crée elle-même ses accès depuis « Composer un programme » (route /organisations),
    sans attendre EFA : 500 places au plus, ouvert un an, au plus 3 créations par email et par jour et 30 par heure au total.
+   Version 1.2 : /programme?code=… présente le programme (organisation, modules, rythme) avant la création du compte.
    Les clés ne sont jamais stockées : seule leur empreinte SHA-256 l'est. Aucune somme saisie dans les outils n'est reçue. */
 
 const ORIGINES = ["https://efa.africa", "https://www.efa.africa"];
-const VERSION = "1.1";
+const VERSION = "1.2";
 const AUTO_PLACES = 500, AUTO_PAR_EMAIL = 3, AUTO_PAR_HEURE = 30;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sans 0/O ni 1/I, pour la lecture et la dictée
 
@@ -160,6 +161,15 @@ async function inscrireOrganisation(request, env, db, c) {
   return json({ programme: { ...publicProgramme(pg), code: pg.code, places: pg.places }, cle_organisation: cle, code: pg.code, places_demandees: demande }, 201, c);
 }
 
+// Ce que le participant voit avant de créer son compte : le programme de son organisation (jamais la liste des inscrits)
+async function apercu(request, env, db, c) {
+  const code = texte(new URL(request.url).searchParams.get("code"), 20).toUpperCase();
+  const pg = /^EFA-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code) && await db.programmeParCode(code);
+  if (!ouvert(pg)) return json({ erreur: "Ce code n’est pas reconnu ou n’est plus actif." }, 404, c);
+  const complet = await db.nbParticipants(pg.id) >= pg.places;
+  return json({ programme: { id: pg.id, nom: pg.nom, programme: pg.programme, expire_le: pg.expire_le }, complet }, 200, c);
+}
+
 async function rejoindre(request, env, db, c) {
   const b = await lire(request) || {};
   const code = texte(b.code, 20).toUpperCase(), nom = texte(b.nom, 80), email = texte(b.email, 120).toLowerCase() || null;
@@ -208,6 +218,7 @@ export async function traiter(request, env, db) {
   try {
     if (chemin.startsWith("/admin/")) return await admin(request, env, db, chemin, c);
     if (chemin === "/orga" || chemin.startsWith("/orga/")) return await organisation(request, env, db, chemin, c);
+    if (request.method === "GET" && chemin === "/programme") return await apercu(request, env, db, c);
     if (request.method === "POST" && chemin === "/organisations") return await inscrireOrganisation(request, env, db, c);
     if (request.method === "POST" && chemin === "/rejoindre") return await rejoindre(request, env, db, c);
     if (request.method === "POST" && (chemin === "/moi" || chemin === "/moi/sync")) return await moi(request, env, db, chemin, c);
