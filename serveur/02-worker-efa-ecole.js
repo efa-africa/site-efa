@@ -16,7 +16,7 @@
    Les clés ne sont jamais stockées : seule leur empreinte SHA-256 l'est. Aucune somme saisie dans les outils n'est reçue. */
 
 const ORIGINES = ["https://efa.africa", "https://www.efa.africa"];
-const VERSION = "1.2";
+const VERSION = "1.3";
 const AUTO_PLACES = 500, AUTO_PAR_EMAIL = 3, AUTO_PAR_HEURE = 30;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sans 0/O ni 1/I, pour la lecture et la dictée
 
@@ -69,7 +69,7 @@ function base(env) {
       const r = await req("/ecole_participants?programme_id=eq." + encodeURIComponent(pid) + "&actif=is.true&select=id", { headers: { "Prefer": "count=exact", "Range": "0-0" } });
       return parseInt((r.headers.get("content-range") || "*/0").split("/")[1], 10) || 0;
     },
-    async participants(pid) { return (await req("/ecole_participants?programme_id=eq." + encodeURIComponent(pid) + "&select=id,cree_le,nom,email,vu_le,connexions,faits,fiches,certificats,actif&order=nom.asc")).json(); },
+    async participants(pid) { const q = c => "/ecole_participants?programme_id=eq." + encodeURIComponent(pid) + "&select=id,cree_le,nom,email,vu_le,connexions,faits,fiches,certificats," + c + "actif&order=nom.asc"; try { return (await req(q("bilan,"))).json(); } catch (e) { return (await req(q(""))).json(); } },
     async creerProgramme(l) { return (await (await req("/ecole_programmes", { method: "POST", headers: { "Prefer": "return=representation" }, body: JSON.stringify(l) })).json())[0]; },
     async majProgramme(id, l) { await req("/ecole_programmes?id=eq." + encodeURIComponent(id), { method: "PATCH", headers: { "Prefer": "return=minimal" }, body: JSON.stringify(l) }); },
     async creerParticipant(l) { return (await (await req("/ecole_participants", { method: "POST", headers: { "Prefer": "return=representation" }, body: JSON.stringify(l) })).json())[0]; },
@@ -128,7 +128,7 @@ async function organisation(request, env, db, chemin, c) {
   if (!pg) return json({ erreur: "Clé d'organisation incorrecte." }, 401, c);
   if (request.method === "GET" && chemin === "/orga") {
     const pas = await db.participants(pg.id);
-    return json({ programme: { ...publicProgramme(pg), code: pg.code, places: pg.places }, participants: pas.filter(p => p.actif).map(publicParticipant) }, 200, c);
+    return json({ programme: { ...publicProgramme(pg), code: pg.code, places: pg.places }, participants: pas.filter(p => p.actif).map(publicParticipant), cohorte: cohorte(pas) }, 200, c);
   }
   if (request.method === "POST" && chemin === "/orga/retirer") {
     const b = await lire(request) || {}; const pas = await db.participants(pg.id);
@@ -188,7 +188,24 @@ function nettoyerProgression(b) {
   const faits = {}; if (b && b.faits && typeof b.faits === "object") Object.keys(b.faits).slice(0, 600).forEach(k => { if (ETAPE.test(k) && b.faits[k]) faits[k] = 1; });
   const fiches = Array.isArray(b && b.fiches) ? [...new Set(b.fiches.filter(x => typeof x === "string" && MODULE.test(x)))].slice(0, 40) : [];
   const certificats = {}; if (b && b.certificats && typeof b.certificats === "object") ["fondations", "maitrise", "patrimoine", "cefa"].forEach(k => { const v = texte(b.certificats[k], 30); if (/^(EFA-[FMP]|CEFA)-\d{4}-\d{6}$/.test(v)) certificats[k] = v; });
-  return { faits, fiches, certificats };
+  // Bilan de cohorte (1.3) : identifiants de simulations terminées et totaux du suivi, jamais de texte ni de montant
+  const ids = (x, re) => Array.isArray(x) ? [...new Set(x.filter(v => typeof v === "string" && re.test(v)))].slice(0, 30) : [];
+  const nb = v => Math.max(0, Math.min(999, parseInt(v, 10) || 0));
+  const bb = b && b.bilan && typeof b.bilan === "object" ? b.bilan : {};
+  const su = bb.suivi && typeof bb.suivi === "object" ? { planifies: nb(bb.suivi.planifies), essaye: nb(bb.suivi.essaye), partiel: nb(bb.suivi.partiel), pas: nb(bb.suivi.pas) } : null;
+  const bilan = { decisions: ids(bb.decisions, /^D\d$/), bourse: ids(bb.bourse, /^[AB]\d$/), suivi: su };
+  return { faits, fiches, certificats, bilan };
+}
+// Entonnoir de la cohorte, en totaux seulement. Sous 5 personnes, les deux dernières marches ne sont pas affichées.
+const SEUIL = 5;
+function cohorte(pas) {
+  const actifs = pas.filter(p => p.actif), n = actifs.length;
+  const commence = actifs.filter(p => Object.keys(p.faits || {}).length > 0 || ((p.bilan || {}).decisions || []).length > 0).length;
+  const cas = actifs.filter(p => { const b = p.bilan || {}; return (b.decisions || []).length + (b.bourse || []).length > 0; }).length;
+  const essaye = actifs.filter(p => { const s = (p.bilan || {}).suivi; return s && (s.essaye + s.partiel) > 0; }).length;
+  const repondu = actifs.filter(p => { const s = (p.bilan || {}).suivi; return s && (s.essaye + s.partiel + s.pas) > 0; }).length;
+  const assez = n >= SEUIL;
+  return { inscrits: n, commence, cas: assez ? cas : null, essaye: assez ? essaye : null, repondu: assez ? repondu : null, seuil: SEUIL };
 }
 async function moi(request, env, db, chemin, c) {
   const cle = porteur(request); if (!/^EFA-/.test(cle)) return json({ erreur: "Clé personnelle incorrecte." }, 401, c);
@@ -203,8 +220,11 @@ async function moi(request, env, db, chemin, c) {
     maj.faits = { ...(pa.faits || {}), ...n.faits };
     maj.fiches = [...new Set([...(pa.fiches || []), ...n.fiches])];
     maj.certificats = { ...(pa.certificats || {}), ...n.certificats };
+    const ab = pa.bilan || {};
+    maj.bilan = { decisions: [...new Set([...(ab.decisions || []), ...n.bilan.decisions])], bourse: [...new Set([...(ab.bourse || []), ...n.bilan.bourse])], suivi: n.bilan.suivi || ab.suivi || null };
   }
-  await db.majParticipant(pa.id, maj);
+  try { await db.majParticipant(pa.id, maj); }
+  catch (e) { if (!maj.bilan) throw e; delete maj.bilan; await db.majParticipant(pa.id, maj); } // colonne « bilan » pas encore créée : on garde la progression
   return json({ participant: publicParticipant({ ...pa, ...maj }), programme: publicProgramme(pg), ouvert: ouvert(pg) }, 200, c);
 }
 

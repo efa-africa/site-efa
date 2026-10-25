@@ -73,6 +73,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .filtre input{font:inherit;font-size:16px;padding:9px 12px;border-radius:8px;border:0;background:var(--creme);min-width:0;flex:1 1 200px}
 .mention{font-size:13.5px;color:var(--ink3)}
 @media print{header,footer,.hero,.acts,.filtre,.efa-suite,#efa-ely,.no-print{display:none!important}}
+.entonnoir{display:grid;gap:10px;margin-top:12px}.en-l{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 92px;gap:12px;align-items:center}.en-t b{display:block;font-size:15px}.en-t small{display:block;color:#7A8293;font-size:12.5px;line-height:1.3}.en-b{height:12px;border-radius:999px;background:#E2D8C4;overflow:hidden}.en-b i{display:block;height:100%;background:#E44828;border-radius:999px}.en-v{font-weight:800;font-size:16px;white-space:nowrap;text-align:right}.en-v small{font-weight:600;color:#7A8293;font-size:12.5px}@media (max-width:620px){.en-l{grid-template-columns:minmax(0,1fr) auto}.en-b{grid-column:1/-1;grid-row:2}}
 </style>
 </head>
 <body>
@@ -186,6 +187,18 @@ function lignes() {
     return { pa: pa, b: b, jours: jours, etat: etat, cert: Object.keys(pa.certificats || {}).map(function (k) { return pa.certificats[k]; }).join(", ") };
   });
 }
+// Bilan de la cohorte : totaux seulement (calculés par le service), jamais de réponse individuelle
+function cohorteHtml(co, L) {
+  var n = L.length, commence = co ? co.commence : L.filter(function (l) { return l.b.pct > 0; }).length, fin = L.filter(function (l) { return l.b.fini; }).length;
+  var seuil = co && co.seuil || 5;
+  var marches = [["Inscrits", n, ""], ["Ont commencé", commence, ""], ["Ont terminé leur programme", fin, ""],
+    ["Ont réussi un cas", co ? co.cas : null, "une simulation de décision ou une formation de l’École de la Bourse menée jusqu’au bout"],
+    ["Déclarent avoir essayé une action", co ? co.essaye : null, "réponse « oui » ou « en partie » au suivi à 7 ou 30 jours"]];
+  var max = Math.max(1, n);
+  return '<section class="carte"><h2>Bilan de la cohorte</h2><p class="aide">De l’inscription à l’action : combien de personnes passent chaque étape. Ce sont des totaux ; aucune réponse personnelle n’apparaît.</p><div class="entonnoir">'
+    + marches.map(function (m) { var v = m[1], ok = v != null; return '<div class="en-l"><div class="en-t"><b>' + m[0] + '</b>' + (m[2] ? '<small>' + m[2] + '</small>' : '') + '</div><div class="en-b"><i style="width:' + (ok ? Math.round(v / max * 100) : 0) + '%"></i></div><div class="en-v">' + (ok ? v + (n ? ' <small>' + Math.round(v / max * 100) + ' %</small>' : '') : '<small>' + (co ? 'à partir de ' + seuil + ' inscrits' : 'mise à jour du service à installer') + '</small>') + '</div></div>'; }).join('')
+    + '</div>' + (co && co.repondu != null ? '<p class="mention">' + co.repondu + ' participant' + (co.repondu > 1 ? 's ont' : ' a') + ' répondu au suivi. Une action « déclarée » est ce que la personne dit avoir fait : c’est un indicateur, pas une vérification.</p>' : '<p class="mention">Une action « déclarée » est ce que la personne dit avoir fait : c’est un indicateur, pas une vérification.</p>') + '</section>';
+}
 function tableau() {
   var L = lignes(), pg = DATA.programme, f = (($("f-q") || {}).value || "").toLowerCase();
   var n = L.length, act = L.filter(function (l) { return l.jours <= 7; }).length, fin = L.filter(function (l) { return l.b.fini; }).length, cer = L.filter(function (l) { return l.cert; }).length;
@@ -195,6 +208,7 @@ function tableau() {
   $("vue").innerHTML = '<section class="carte"><p class="sur">Programme</p><h2>' + esc(pg.nom) + '</h2>'
     + '<p class="aide">' + pg.programme.m.length + ' modules · ' + pg.programme.s + ' semaines · ' + n + ' inscrit' + (n > 1 ? 's' : '') + ' sur ' + pg.places + ' places' + (pg.expire_le ? ' · ouvert jusqu’au ' + dateFr(pg.expire_le) : '') + (pg.actif ? '' : ' · <b>programme fermé</b>') + '</p>'
     + '<div class="stats"><div><small>Inscrits</small><b>' + n + '</b></div><div><small>Actifs cette semaine</small><b>' + act + '</b></div><div><small>Ont terminé</small><b>' + fin + '</b></div><div><small>Certificats</small><b>' + cer + '</b></div></div></section>'
+    + cohorteHtml(DATA.cohorte, L)
     + '<section class="carte no-print"><h2>Inviter vos participants</h2><p class="aide">Chacun crée son compte avec ce code, depuis son téléphone. Il obtient une clé personnelle pour retrouver sa progression partout.</p>'
     + '<div class="grille2"><div><p class="sur">Code du programme</p><div class="cle">' + esc(pg.code) + '</div></div><div><p class="sur">Lien direct</p><div class="cle" style="font-size:14px">' + esc(lienJ) + '</div></div></div>'
     + '<div class="acts"><button type="button" class="bt bt-p" id="i-copier">Copier le message d’invitation</button><button type="button" class="bt" id="i-wa">Envoyer par WhatsApp</button><a class="bt bt-l" href="' + E.lienProgramme({ programme: pg }) .replace("&vue=participant", "") + '">Voir le programme</a></div><p class="msg" id="i-msg"></p></section>'

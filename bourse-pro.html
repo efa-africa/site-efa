@@ -36,6 +36,7 @@
 </div>
 <p class="mention">Formation pédagogique d’EFA. Les sociétés Banque du Fleuve, Ciments du Sahel et Distribution Lagune sont fictives, comme leurs chiffres. Les données de séance affichées sont celles de la BRVM. Les règles citées (horaires, limites de variation, règlement-livraison, fiscalité) peuvent évoluer : les textes de la BRVM, du DC/BR, de l’AMF-UMOA et des administrations fiscales font foi. EFA éduque, elle ne recommande aucun titre ni établissement.</p>
 
+<script src="efa-suivi.js?v=2026102501"></script>
 <script src="donnees.js"></script>
 <script>
 window.ECOLE = {
@@ -332,10 +333,10 @@ ecrans:[
     var manque=['fi-s','fi-t','fi-r1','fi-b','fi-p','fi-m'].filter(function(i){return !g(i)})[0];if(manque){document.getElementById(manque).focus();return;}
     var mx=Math.floor(n('fi-b')*n('fi-p')*0.85),q=mx?Math.floor(n('fi-m')/(mx*1.013)):0;
     d.txt='<b>'+e(d.s)+'</b><br>Thèse&nbsp;: '+e(d.t)+'.<br>Risques&nbsp;: '+e(d.r1)+(d.r2?' ; '+e(d.r2):'')+'.<br>Prix maximum&nbsp;: <b>'+O.F(mx)+'</b> ('+e(d.b)+'&nbsp;F × PER '+e(d.p)+', moins 15&nbsp;%).<br>Ordre&nbsp;: achat de <b>'+q+' actions</b> à cours limité à '+O.F(mx)+', frais compris dans '+O.F(n('fi-m'))+'. Si le cours est au-dessus, l’ordre attend.<br>Je revends si '+e(d.v||'ma thèse est contredite')+'.';
-    d.ok=true;c.S.r.fi=d;c.sauver();O.compte('ecole-B8-fiche');c.refaire();});}}
+    d.ok=true;c.S.r.fi=d;c.sauver();O.compte('ecole-B8-fiche');if(window.EFA_SUIVI)EFA_SUIVI.planifier({id:'B8',titre:'Ma fiche de comité d’investissement',action:'Relire ma fiche à froid, puis passer ou non mon ordre à cours limité',lien:'bourse-pro.html#B8'});c.refaire();});}}
 ]});
 </script>
 <script src="ecole-bourse-moteur.js?v=2026102402"></script>
 <script src="efa-suite.js?v=2026102525" defer></script>
-<script src="efa-compte.js?v=2026102520" defer></script>
+<script src="efa-compte.js?v=2026102530" defer></script>
 </body></html>

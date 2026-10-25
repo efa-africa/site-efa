@@ -36,6 +36,7 @@
 </div>
 <p class="mention">Formation pédagogique d’EFA. Koffi et Tantie Affoué sont des personnages fictifs, comme les sociétés et les montants des exemples. Les frais et les règles reprennent des ordres de grandeur de la BRVM ; seules la grille de votre SGI et les textes de la BRVM et de l’AMF-UMOA font foi. EFA éduque, elle ne recommande aucun titre ni établissement.</p>
 
+<script src="efa-suivi.js?v=2026102501"></script>
 <script src="donnees.js"></script>
 <script>
 window.ECOLE = {
@@ -231,7 +232,7 @@ ecrans:[
  {t:"perso", bloque:function(c){return !(c.S.r.plan&&c.S.r.plan.ok)}, rendu:function(c){var p=c.S.r.plan||{},v=function(k){return (p[k]||'').replace(/"/g,'&quot;')};
   return '<div class="illu papier"><span class="tabtitre fonce">Mon plan d’investissement</span><div class="exo" style="grid-template-columns:1fr 1fr;width:100%"><label>Montant par mois<input id="p-m" inputmode="numeric" value="'+v('m')+'" placeholder="ex. 25 000"></label><label>Pendant (années)<input id="p-d" inputmode="numeric" value="'+v('d')+'" placeholder="ex. 5"></label><label style="grid-column:1/-1">Ce que j’achète, en une phrase<input id="p-q" value="'+v('q')+'" placeholder="ex. un fonds diversifié, puis deux sociétés que je sais expliquer"></label><label style="grid-column:1/-1">Je revois mon plan si…<input id="p-s" value="'+v('s')+'" placeholder="ex. ma réserve passe sous 3 mois de dépenses"></label></div><button class="btn suiv" id="p-ok" type="button">Écrire mon plan</button></div>'+
   '<div class="texte"><p class="sur">Votre preuve</p><h2 class="h">Votre plan, en quatre lignes</h2>'+(p.ok?'<div class="plan-sortie" id="p-txt">'+p.txt+'</div><button class="copier" id="p-copie" type="button">Copier mon plan</button><p class="p" style="font-size:.9em">Gardé sur ce téléphone seulement. Recopiez-le dans votre cahier.</p>':ECOLE.outils.typo('<p class="p">Un plan écrit vous protège de vos propres émotions : quand le cours baisse, ou quand un message promet monts et merveilles, vous relisez ce que vous aviez décidé à froid.</p><p class="p">Remplissez les quatre champs, puis écrivez votre plan pour continuer.</p>'))+'</div>';},
-  apres:function(c){var b=document.getElementById('p-ok');b.addEventListener('click',function(){var g=function(i){return document.getElementById(i).value.trim()},m=g('p-m'),d=g('p-d'),q=g('p-q'),s=g('p-s');if(!m||!d||!q){document.getElementById(!m?'p-m':!d?'p-d':'p-q').focus();return;}var e=function(t){return t.replace(/[<>&]/g,'')};var txt='J’investis <b>'+ECOLE.outils.F(+m.replace(/[^\d]/g,''))+' par mois</b> pendant <b>'+e(d)+' an'+(+d>1?'s':'')+'</b>, avec de l’argent qui peut attendre et baisser.<br>J’achète&nbsp;: '+e(q)+'.<br>Je passe des ordres à cours limité et je note chaque achat dans mon cahier.<br>Je revois mon plan si '+e(s||'ma situation change')+'.';c.S.r.plan={m:m,d:d,q:q,s:s,ok:true,txt:txt};c.sauver();ECOLE.outils.compte('ecole-A5-plan');c.refaire();});
+  apres:function(c){var b=document.getElementById('p-ok');b.addEventListener('click',function(){var g=function(i){return document.getElementById(i).value.trim()},m=g('p-m'),d=g('p-d'),q=g('p-q'),s=g('p-s');if(!m||!d||!q){document.getElementById(!m?'p-m':!d?'p-d':'p-q').focus();return;}var e=function(t){return t.replace(/[<>&]/g,'')};var txt='J’investis <b>'+ECOLE.outils.F(+m.replace(/[^\d]/g,''))+' par mois</b> pendant <b>'+e(d)+' an'+(+d>1?'s':'')+'</b>, avec de l’argent qui peut attendre et baisser.<br>J’achète&nbsp;: '+e(q)+'.<br>Je passe des ordres à cours limité et je note chaque achat dans mon cahier.<br>Je revois mon plan si '+e(s||'ma situation change')+'.';c.S.r.plan={m:m,d:d,q:q,s:s,ok:true,txt:txt};c.sauver();ECOLE.outils.compte('ecole-A5-plan');if(window.EFA_SUIVI)EFA_SUIVI.planifier({id:'A5',titre:'Mon plan d’investissement',action:'Faire mon premier versement de '+ECOLE.outils.F(+m.replace(/[^\d]/g,''))+' ou ouvrir mon compte-titres',lien:'bourse-essentiel.html#A5'});c.refaire();});
   var cp=document.getElementById('p-copie');if(cp)cp.addEventListener('click',function(){var t=document.getElementById('p-txt').innerText;try{navigator.clipboard.writeText(t).then(function(){cp.textContent='Plan copié';},function(){});}catch(e){}});}}
 ],
 quiz:[
@@ -244,5 +245,5 @@ quiz:[
 </script>
 <script src="ecole-bourse-moteur.js?v=2026102402"></script>
 <script src="efa-suite.js?v=2026102525" defer></script>
-<script src="efa-compte.js?v=2026102520" defer></script>
+<script src="efa-compte.js?v=2026102530" defer></script>
 </body></html>

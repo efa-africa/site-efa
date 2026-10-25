@@ -71,3 +71,17 @@ Pour l'activer : Cloudflare › Workers & Pages › **efa-ecole** › **Edit cod
 Le lien d'invitation présente le programme (organisation, modules, rythme, certificats) avant la création du compte. Un code inconnu ou fermé affiche « Ce code n'est pas reconnu ou n'est plus actif » avec la marche à suivre. Un lien d'invitation ne bascule jamais vers la Communauté EFA ; si un autre compte est déjà ouvert sur le téléphone, la page le dit et laisse choisir.
 
 Pour l'activer : même manipulation que la 1.1 (Edit code, coller la nouvelle version de `02-worker-efa-ecole.js`, Deploy). La page du Worker affiche alors `"version":"1.2"`.
+
+## Mise à jour 1.3 · bilan de cohorte (25 octobre 2026)
+
+Le tableau de bord de l'organisation affiche maintenant un **bilan de la cohorte** : inscrits, ont commencé, ont réussi un cas (une simulation de décision ou une formation de l'École de la Bourse), ont essayé une action (réponse au suivi à 7 ou 30 jours).
+
+1. **D'abord** Supabase : SQL Editor, collez `03-supabase-bilan-cohorte.sql`, puis **Run**.
+2. **Ensuite** Cloudflare : Worker **efa-ecole**, **Edit code**, collez le nouveau `02-worker-efa-ecole.js`, puis **Deploy**.
+3. Vérifiez : https://efa-ecole.elysees-johnson.workers.dev doit afficher `"version":"1.3"`.
+
+L'ordre compte : un Worker 1.3 sans la colonne `bilan` ne pourrait pas enregistrer la progression.
+
+Règles de confidentialité du bilan :
+- seulement des totaux ; aucune réponse individuelle, aucun message rédigé, aucun montant ;
+- sous **5 participants**, les marches « cas réussi » et « action essayée » ne s'affichent pas.

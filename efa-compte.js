@@ -28,7 +28,11 @@
     var certs = {};
     [["fondations", "efa-certificat-fondations-pilote"], ["maitrise", "efa-certificat-maitrise-pilote"], ["patrimoine", "efa-certificat-patrimoine-pilote"]].forEach(function (x) { var e = lire(x[1]); if (e && e.reussite && e.reussite.numero) certs[x[0]] = e.reussite.numero; });
     var ce = lire("efa-certificat-cefa"); if (ce && ce.numero) certs.cefa = ce.numero;
-    return { faits: st.faits || {}, fiches: fiches, certificats: certs };
+    // Bilan de cohorte : des totaux et des identifiants de simulations, jamais un texte ni un montant
+    var valides = function (k) { var e = lire(k) || {}, m = e.m || {}; return Object.keys(m).filter(function (x) { return m[x] && m[x].valide; }); };
+    var su = window.EFA_SUIVI ? window.EFA_SUIVI.bilan() : null;
+    var bilan = { decisions: valides("efa_decider_v1"), bourse: valides("efa_bourse_essentiel_v1").concat(valides("efa_bourse_pro_v1")), suivi: su ? { planifies: su.planifies, essaye: su.essaye, partiel: su.partiel, pas: su.pas } : null };
+    return { faits: st.faits || {}, fiches: fiches, certificats: certs, bilan: bilan };
   }
   // Après une connexion sur un autre appareil : on récupère les étapes déjà faites
   function fusionner(pa) {

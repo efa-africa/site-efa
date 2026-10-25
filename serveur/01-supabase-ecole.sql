@@ -31,6 +31,7 @@ create table if not exists ecole_participants (
   faits         jsonb not null default '{}'::jsonb,   -- étapes cochées : {"P1.0":1, …} (jamais de montant)
   fiches        jsonb not null default '[]'::jsonb,   -- modules dont la fiche est gardée : ["P1", …] (jamais le contenu)
   certificats   jsonb not null default '{}'::jsonb,   -- {"fondations":"EFA-F-2026-…"}
+  bilan         jsonb not null default '{}'::jsonb,   -- 1.3 : simulations terminées (D1…, A1…) et totaux du suivi à 7/30 jours, jamais de texte
   actif         boolean not null default true
 );
 create index if not exists ecole_participants_programme on ecole_participants(programme_id);
@@ -49,3 +50,6 @@ left join ecole_participants pa on pa.programme_id = p.id
 group by p.id;
 
 revoke all on ecole_programmes_stats from anon, authenticated;
+
+-- 1.3 : si la table existait déjà avant la colonne « bilan »
+alter table ecole_participants add column if not exists bilan jsonb not null default '{}'::jsonb;
