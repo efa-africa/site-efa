@@ -189,6 +189,7 @@ function liste(res) {
       + '<section class="carte"><h2>Programmes (' + P0.length + ')</h2>' + (P0.length ? '<div class="tabw"><table class="t"><thead><tr><th>Organisation</th><th>Code</th><th>Inscrits</th><th>Actifs 7 j</th><th>Dernier accès</th><th>État</th><th></th></tr></thead><tbody>'
         + P0.map(function (p) { return '<tr><td><b>' + esc(p.nom) + '</b><small>créé le ' + dateFr(p.cree_le) + (p.note ? ' · ' + esc(p.note) : '') + '</small></td><td><code>' + esc(p.code) + '</code></td><td>' + p.participants + ' / ' + p.places + '</td><td>' + p.actifs_7j + '</td><td>' + dateFr(p.dernier_acces) + '</td><td><span class="pill ' + (p.actif ? 'ok">Ouvert' : 'zero">Fermé') + '</span></td><td><button class="bt bt-l" data-cle="' + p.id + '">Nouvelle clé</button><button class="bt bt-l" data-etat="' + p.id + '" data-actif="' + (p.actif ? 0 : 1) + '">' + (p.actif ? 'Fermer' : 'Rouvrir') + '</button></td></tr>'; }).join("")
         + '</tbody></table></div>' : '<p class="aide">Aucun programme pour l’instant.</p>') + '<p class="msg" id="l-msg"></p></section>';
+    if (res) { var r0 = document.querySelector("#vue .carte"); if (r0) r0.scrollIntoView({ behavior: "smooth", block: "start" }); }
     $("n-prog").onchange = function () { $("n-lien-l").hidden = this.value !== "lien"; };
     $("n-go").onclick = function () {
       var v = $("n-prog").value, l = $("n-lien").value.trim(), m = /[?&]p=([A-Za-z0-9_-]+)/.exec(l), pr = v === "lien" ? (m && decoder(m[1])) : PRETS[+v].pr($("n-nom").value.trim()), nom = $("n-nom").value.trim() || (pr && pr.n) || "";
