@@ -305,7 +305,7 @@
     if (participant) {
       $("etapes").hidden = true; $("h-sur").textContent = "Programme d’éducation financière"; $("h-t").textContent = pr.n ? "Votre programme avec " + pr.n : "Votre programme d’éducation financière";
       $("h-c").textContent = "Un programme composé pour vous, à suivre sur votre téléphone, module après module. Chaque module part d’une situation concrète et se termine par une fiche que vous gardez.";
-      $("h-p").hidden = true; $("fil").textContent = "Mon programme"; mesure("orga-programme-participant");
+      $("h-p").hidden = true; $("fil").textContent = "Mon programme"; document.documentElement.classList.remove("vue-p"); mesure("orga-programme-participant");
     } else { etape = 5; pastilles(); }
     rendre(pr, participant);
   } else { pastilles(); e1(); }

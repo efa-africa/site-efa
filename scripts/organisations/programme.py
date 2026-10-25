@@ -86,6 +86,8 @@ NAVCSS
 .mention{font-size:13.5px;color:var(--ink3);margin-top:8px}
 @media print{header,footer,.hero,.etapes-c,.acts,.efa-suite,#efa-ely,.no-print{display:none!important}.carte{padding:0}}
 </style>
+<style>[hidden]{display:none!important}.vue-p #h-sur,.vue-p #h-t,.vue-p #h-c,.vue-p #h-p,.vue-p #etapes{visibility:hidden}</style>
+<script>if(/[?&]vue=participant/.test(location.search))document.documentElement.className+=" vue-p";</script>
 </head>
 <body>
 HEADER<main>

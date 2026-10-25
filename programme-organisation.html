@@ -91,6 +91,8 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 .mention{font-size:13.5px;color:var(--ink3);margin-top:8px}
 @media print{header,footer,.hero,.etapes-c,.acts,.efa-suite,#efa-ely,.no-print{display:none!important}.carte{padding:0}}
 </style>
+<style>[hidden]{display:none!important}.vue-p #h-sur,.vue-p #h-t,.vue-p #h-c,.vue-p #h-p,.vue-p #etapes{visibility:hidden}</style>
+<script>if(/[?&]vue=participant/.test(location.search))document.documentElement.className+=" vue-p";</script>
 </head>
 <body>
 <header class="top">
@@ -165,7 +167,7 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="parcours-efa.js?v=2026102512"></script>
-<script src="programme-organisation.js?v=2026102521"></script>
+<script src="programme-organisation.js?v=2026102522"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026102520" defer></script>
 </body>
