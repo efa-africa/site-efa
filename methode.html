@@ -216,6 +216,17 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .mainnav a[aria-current="page"]{color:#fff;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:6px}
 .mainnav a.mn-cta{background:var(--corail);color:#fff}
 .rubs{display:flex;gap:4px;margin-left:auto}
+.somm{padding-block:26px 6px}
+.somm .kick{margin:0}
+.somm h1{font-size:clamp(28px,4.4vw,48px);margin:8px 0 18px;max-width:22ch}
+.somm-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:700px){.somm-g{grid-template-columns:minmax(0,1fr)}}
+.somm-c{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:start;background:var(--panel,#0D1525);border-radius:14px;padding:18px 20px;text-decoration:none;color:inherit}
+.somm-c:hover{background:#13203A}
+.somm-n{grid-row:span 2;font-family:var(--disp,Georgia),serif;font-weight:700;font-size:28px;line-height:1;color:var(--corail,#E44828)}
+.somm-c b{font:700 20px var(--disp,Georgia),serif;color:var(--ink,#E8EDF5)}
+.somm-c span:not(.somm-n){font-size:15px;color:var(--ink2,#C9D1DE)}
+.somm-o{background:#1C2842}
 .rubs a{font:700 14px var(--body);text-decoration:none;color:var(--ink2);padding:9px 14px;border-radius:8px;white-space:nowrap}
 .rubs a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
 .rubs a[aria-current="page"]{background:var(--creme);color:#0B1220}
@@ -508,17 +519,27 @@ a.st-card{text-decoration:none}
 <body>
 
 <header class="top" id="top">
-  <nav class="mainnav" aria-label="Navigation principale"><div class="wrap mn-in"><a class="mn-cta" href="parcours.html">L’école</a><a href="methode.html#etudes" aria-current="page">Études &amp; actualité</a><a href="rendez-vous.html">Organisations &amp; contact</a><a href="auteur.html">À propos</a></div></nav>
+  <nav class="mainnav" aria-label="Navigation principale"><div class="wrap mn-in"><a class="mn-cta" href="parcours.html">L’école</a><a href="methode.html" aria-current="page">Études &amp; prospective</a><a href="organisations.html">Pour les organisations</a><a href="auteur.html">À propos</a></div></nav>
   <div class="wrap bar">
-    <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; ACTUALITÉ</b></span></a>
-    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Prospective · Africa 2075</a><a href="#actualites" data-tab="actualites">Actualités</a><a href="#simulateurs" data-tab="simulateurs">Simulateurs</a><a href="#methode" data-tab="methode">Méthode</a></nav>
-    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Prospective · Africa 2075</option><option value="actualites">Actualités · EFA News</option><option value="brvm">Actualités · BRVM</option><option value="simulateurs">Simulateurs</option><option value="methode">Méthode</option></select></label>
+    <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; PROSPECTIVE</b></span></a>
+    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Africa 2075</a><a href="#actualites" data-tab="actualites">Actualités et marchés</a><a href="#methode" data-tab="methode">Notre méthode</a></nav>
+    <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Africa 2075</option><option value="actualites">Actualités et marchés · EFA News</option><option value="brvm">Actualités et marchés · BRVM</option><option value="methode">Notre méthode</option></select></label>
     <a class="back" href="./">← Le site</a>
   </div>
   <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
 </header>
 
 <main id="enquete">
+  <section class="wrap somm" id="sommaire" aria-labelledby="somm-t" hidden>
+    <p class="kick">Études &amp; prospective</p>
+    <h1 id="somm-t">Ce que disent les données sur l’argent en Afrique, et ce qui se prépare</h1>
+    <div class="somm-g">
+      <a href="#etudes" class="somm-c"><span class="somm-n">1</span><b>Études</b><span>Ce qui est mesuré, avec la source, la date et le statut. Dernière publiée&nbsp;: <i>La tontine en chiffres</i> (23 octobre 2026). Une enquête en cours, résultats provisoires.</span></a>
+      <a href="#africa-2075" class="somm-c"><span class="somm-n">2</span><b>Africa 2075</b><span>Les grandes questions de transformation du continent. Dernier dossier&nbsp;: <i>L’IA va multiplier les cerveaux, combien seront africains&nbsp;?</i></span></a>
+      <a href="#actualites" class="somm-c"><span class="somm-n">3</span><b>Actualités et marchés</b><span>Les faits récents expliqués, EFA News et la BRVM, et ce qu’ils changent.</span></a>
+      <a href="organisations.html?src=etudes" class="somm-c somm-o"><span class="somm-n">4</span><b>Travailler avec EFA</b><span>Une étude, un programme pour vos équipes, une collaboration&nbsp;: l’offre pour les organisations.</span></a>
+    </div>
+  </section>
   <p class="wrap mission-l">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
   <!-- RUBRIQUE ÉTUDES -->
   <section class="tab" id="tab-etudes" data-tab="etudes">
@@ -1277,6 +1298,7 @@ function showTab(t){
   setTimeout(setHH,350);
 }
 function route(){
+  var smm=document.getElementById('sommaire'); if(smm) smm.hidden=!!location.hash;
   var h=(location.hash||'#etudes').slice(1).toLowerCase(); if(h==='res-etude-2'){showTab('etudes');efaOpenRes();return;} h=ALIAS[h]||h||'etudes';
   if(TABS.indexOf(h)>-1){showTab(h);window.scrollTo(0,0);return;}
   var c=REG[h.toUpperCase()];
@@ -1514,7 +1536,7 @@ setHH(); route();
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
 <script src="etude-pdf.js?v=2026102301" defer></script>
-<script src="efa-appli.js?v=2026102507" defer></script>
+<script src="efa-appli.js?v=2026102508" defer></script>
 
 <script>
 /* Bulletin « La semaine à la BRVM » → Brevo (liste dédiée, double confirmation).

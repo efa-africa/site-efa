@@ -57,13 +57,16 @@
     "organisations.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
   var page = (location.pathname.split("/").pop() || "index.html");
   if (EXCLUS.indexOf(page) >= 0) return;
+  // Publications (études, prospective, actualités) : pas de bloc de progression, sauf arrivée depuis un module (?parcours=)
+  var PUBLICATIONS = ["methode.html", "news.html", "tribunes.html", "etude-tontine-en-chiffres.html", "africa-2075-fondateur.html", "africa-2075-n1.html", "africa-2075-n2.html", "africa-2075-dossier-1.html"];
+  if (PUBLICATIONS.indexOf(page) >= 0 && !/[?&]parcours=/.test(location.search)) return;
   var CARREFOURS = ["outils.html"]; // pages qui regroupent plusieurs outils : carte générique
   var KEY = "efa_parcours_v1";
 
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102507"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=2026102508"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }

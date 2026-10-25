@@ -746,6 +746,16 @@ img.char{object-position:50% 18%}
 .ec-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:8px;font:800 16px/1.2 var(--f-body);text-decoration:none}
 .ec-main{background:var(--corail);color:#fff}
 .ec-sec{background:rgba(255,255,255,.14);color:#fff}
+.ec-acces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:900px;text-align:left;margin-top:6px}
+@media (max-width:700px){.ec-acces{grid-template-columns:minmax(0,1fr)}}
+.ec-a{display:flex;flex-direction:column;gap:8px;border-radius:14px;padding:18px 20px;text-decoration:none;color:#fff}
+.ec-a1{background:var(--corail)}.ec-a2{background:#13203A}
+.ec-a .ec-k{color:#fff;opacity:.9}.ec-a2 .ec-k{color:var(--soft-corail);opacity:1}
+.ec-q{font-size:16px;line-height:1.45;color:#fff}.ec-a2 .ec-q{color:#C9D1DE}
+.ec-a .ec-go{font-size:16px;font-weight:800;color:#fff}.ec-a2 .ec-go{color:var(--soft-bleu)}
+.ec-a:hover{filter:brightness(1.06)}
+.ec-pubs{margin:2px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px;color:#9FB0C8;max-width:900px}
+.ec-pubs a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
 .ec-reperes{margin:0;font-size:14px;font-weight:700;letter-spacing:.04em;color:#9FB0C8}
 .ec-portes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:100%;max-width:1120px;text-align:left}
 .ec-porte{display:grid;gap:10px;align-content:start;background:var(--panel,#0D1525);border-radius:14px;padding:20px;color:#fff;text-decoration:none}
@@ -793,8 +803,8 @@ img.char{object-position:50% 18%}
   <a class="brand" href="#accueil"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a class="nav-cta" href="parcours.html">L’école</a>
-    <a href="methode.html#etudes">Études &amp; actualité</a>
-    <a href="rendez-vous.html">Organisations &amp; contact</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
     <a href="auteur.html">À propos</a>
   </nav>
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -816,11 +826,11 @@ img.char{object-position:50% 18%}
       <p class="ec-marque">EFA <span aria-hidden="true">|</span> Éducation Financière Afrique</p>
       <h1 id="ec-t">L’école de la finance personnelle, ancrée dans les réalités africaines.</h1>
       <p class="ec-lead">Vous avez une question sur votre argent&nbsp;? Partez d’une situation que vous connaissez, comprenez ce qui se joue, puis exercez-vous à décider avec vos propres chiffres.</p>
-      <div class="ec-b">
-        <a class="ec-btn ec-main" href="#besoins" data-goatcounter-click="ecole-parcours">Trouver mon parcours</a>
-        <a class="ec-btn ec-sec" href="parcours.html?src=accueil#cycle-fondations" data-goatcounter-click="ecole-fondations">Découvrir Les Fondations</a>
+      <div class="ec-acces">
+        <a class="ec-a ec-a1" href="#besoins" data-goatcounter-click="accueil-apprendre"><span class="ec-k">Pour apprendre</span><span class="ec-q">Une question sur votre argent&nbsp;? Commencez par une situation concrète, puis exercez-vous avec vos chiffres.</span><span class="ec-go">Trouver mon parcours →</span></a>
+        <a class="ec-a ec-a2" href="methode.html?src=accueil" data-goatcounter-click="accueil-comprendre"><span class="ec-k">Pour comprendre et anticiper</span><span class="ec-q">Que disent les données sur l’argent en Afrique&nbsp;? Explorez les études EFA et les perspectives d’Africa 2075.</span><span class="ec-go">Explorer les études &amp; la prospective →</span></a>
       </div>
-      <p class="ec-reperes">Questions du quotidien · Cas concrets · Outils pratiques</p>
+      <p class="ec-pubs"><span>Dernière étude&nbsp;: <a href="etude-tontine-en-chiffres.html?src=accueil" data-goatcounter-click="accueil-etude">La tontine en chiffres</a></span><span>Africa 2075&nbsp;: <a href="africa-2075-dossier-1.html?src=accueil" data-goatcounter-click="accueil-africa2075">L’IA va multiplier les cerveaux, combien seront africains&nbsp;?</a></span></p>
     </div>
   </section>
 
@@ -846,7 +856,7 @@ img.char{object-position:50% 18%}
         <span class="ph"><img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
     </div>
-    <p class="ask-more"><span>Autre question&nbsp;? <a href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">Je vais recevoir une grosse somme →</a> · <a href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">Préparer ma retraite →</a></span><a href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Voir tous les outils →</a></p>
+    <p class="ask-more"><span>Autre question&nbsp;? <a href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">Je vais recevoir une grosse somme →</a> · <a href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">Préparer ma retraite →</a></span><a href="parcours.html?src=accueil#cycle-fondations" data-goatcounter-click="ecole-fondations">Découvrir Les Fondations →</a><a href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Voir tous les outils →</a></p>
     <form class="ask-rech" action="outils.html" method="get" role="search">
       <label for="ask-q">Ou cherchez directement</label>
       <div><input id="ask-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Budget, tontine, retraite, prêter…"><button type="submit">Rechercher</button></div>
@@ -1406,7 +1416,7 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102507" defer></script>
+<script src="efa-appli.js?v=2026102508" defer></script>
 <script src="minfin.js?v=202610241407"></script>
 <script>
 (function(){

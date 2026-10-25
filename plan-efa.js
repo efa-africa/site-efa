@@ -84,7 +84,7 @@
       etapes: [
         ["L’indice d’abord", "Le BRVM Composite résume l’évolution de toutes les actions cotées à la Bourse régionale d’Abidjan, commune aux huit pays de l’UEMOA. Il dit l’humeur du marché, pas celle de votre société."],
         ["La variation, avec le volume", "Une hausse de 7 % sur quelques dizaines de titres échangés n’a pas le même sens qu’une hausse sur des milliers."],
-        ["Jamais une séance seule", "Comparez sur plusieurs mois, et rapportez toujours le cours à ce que l’entreprise gagne. Les chiffres de la dernière séance sont dans l’onglet BRVM d’Études & actualité (methode.html#brvm)."]
+        ["Jamais une séance seule", "Comparez sur plusieurs mois, et rapportez toujours le cours à ce que l’entreprise gagne. Les chiffres de la dernière séance sont dans l’onglet BRVM d’Études & prospective (methode.html#brvm)."]
       ]
     }
   };
