@@ -204,9 +204,9 @@ function vueAccueil(opts) {
     + '<section class="carte"><p class="sur">' + (comm ? 'Communauté EFA · gratuit' : pre ? 'Invitation' : 'Première fois') + '</p><h2>' + (comm ? 'Créer mon compte' : pre ? 'Rejoindre le programme de ' + esc(pre.nom) : 'J’ai un code de mon organisation') + '</h2>'
     + (pre && !comm ? apercuHtml(pre) + (opts.complet ? '<p class="msg err">Toutes les places de ce programme sont prises. Prévenez la personne qui vous a invité.</p>' : '') : '')
     + '<div class="grille2">' + (comm || pre ? '<input id="j-code" type="hidden" value="' + esc(code) + '">' : '<label class="champ">Code du programme<input id="j-code" class="cle-in" autocomplete="off" placeholder="EFA-XXXX-XXXX" value="' + esc(bloque ? "" : code) + '"></label>')
-    + '<label class="champ">Prénom et nom<input id="j-nom" autocomplete="name" maxlength="80"></label>'
-    + '<label class="champ">Email <small>facultatif</small><input id="j-mail" type="email" autocomplete="email" maxlength="120"></label></div>'
-    + '<label class="case"><input type="checkbox" id="j-ok"><span>' + (comm ? 'J’accepte qu’EFA voie mon nom, mes visites et ma progression dans L’école (étapes, modules terminés, certificats), pour suivre et améliorer les cours. Jamais mes réponses aux quiz ni le contenu de mes fiches.' : 'J’accepte que les responsables du programme désignés par ' + (pre ? esc(pre.nom) : 'mon organisation') + ', et EFA, voient mon nom, mes visites et ma progression (étapes, modules terminés, certificats). Jamais mes réponses aux quiz ni le contenu de mes fiches.') + ' Les montants que je saisis restent sur mon téléphone. <a href="confidentialite.html#programme">Confidentialité</a></span></label>'
+    + '<label class="champ">Prénom et nom<input id="j-nom" autocomplete="name" maxlength="80" value="' + esc(opts.nom || "") + '"></label>'
+    + '<label class="champ">Email <small>facultatif</small><input id="j-mail" type="email" autocomplete="email" maxlength="120" value="' + esc(opts.mail || "") + '"></label></div>'
+    + '<label class="case"><input type="checkbox" id="j-ok"' + (opts.ok ? ' checked' : '') + '><span>' + (comm ? 'J’accepte qu’EFA voie mon nom, mes visites et ma progression dans L’école (étapes, modules terminés, certificats), pour suivre et améliorer les cours. Jamais mes réponses aux quiz ni le contenu de mes fiches.' : 'J’accepte que les responsables du programme désignés par ' + (pre ? esc(pre.nom) : 'mon organisation') + ', et EFA, voient mon nom, mes visites et ma progression (étapes, modules terminés, certificats). Jamais mes réponses aux quiz ni le contenu de mes fiches.') + ' Les montants que je saisis restent sur mon téléphone. <a href="confidentialite.html#programme">Confidentialité</a></span></label>'
     + '<div class="acts"><button type="button" class="bt bt-p" id="j-go"' + (opts.complet ? ' disabled' : '') + '>' + (pre && !comm ? 'Rejoindre ' + esc(pre.nom) : 'Créer mon compte') + '</button>' + (pre && !comm ? '<a class="bt bt-l" href="rejoindre.html">Ce n’est pas mon programme</a>' : '') + '</div><p class="msg" id="j-msg" role="status"></p></section>'
     + (comm || !COMM || pre ? '' : '<section class="carte"><p class="sur">Pour tous</p><h2>Je n’ai pas de code</h2><p class="aide">Rejoignez la Communauté EFA : un compte gratuit pour suivre L’école seul et retrouver votre progression partout. Il n’est relié à aucune organisation.</p><div class="acts"><a class="bt bt-n" href="rejoindre.html?communaute">Créer mon compte gratuit</a></div></section>')
     + '<section class="carte"><p class="sur">Déjà inscrit</p><h2>J’ai ma clé personnelle</h2><p class="aide">Pour retrouver votre progression sur ce téléphone.</p>'
@@ -224,7 +224,10 @@ function vueAccueil(opts) {
   $("j-go").onclick = function () {
     var c = $("j-code").value.trim().toUpperCase();
     if (pre || comm || !c) return go();
-    verifier(c, function (r) { if (r && r.programme) vueAccueil({ code: c, apercu: r.programme, complet: r.complet }); else if (r === false) vueAccueil({ code: c, inconnu: true }); else go(); });
+    var garde = { nom: $("j-nom").value.trim(), mail: $("j-mail").value.trim(), ok: $("j-ok").checked };
+    verifier(c, function (r) {
+      if (r && r.programme) { vueAccueil({ code: c, apercu: r.programme, complet: r.complet, nom: garde.nom, mail: garde.mail, ok: garde.ok }); msg("j-msg", "Vérifiez le programme ci-dessus, puis touchez « Rejoindre " + r.programme.nom + " ».", true); }
+      else if (r === false) vueAccueil({ code: c, inconnu: true, nom: garde.nom, mail: garde.mail, ok: garde.ok }); else go(); });
   };
   $("k-go").onclick = function () {
     var k = $("k-cle").value.trim(); if (k.length < 20) return msg("k-msg", "Collez votre clé personnelle complète.");
