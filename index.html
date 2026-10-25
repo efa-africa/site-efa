@@ -818,6 +818,43 @@ img.char{object-position:50% 18%}
 .ec-ic s{display:block;width:20px;height:10px;border:1.5px solid #0B1220;border-radius:3px;margin-left:5px;background:linear-gradient(90deg,#0B1220 75%,transparent 75%);background-clip:content-box;padding:1px}
 .ec-next{background:#0B1220;color:#fff;border-radius:12px;padding:10px 12px;display:grid;gap:3px;font-size:12.5px}.ec-next small{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#F09680}.ec-next b{font-size:13px}.ec-next span{justify-self:start;margin-top:4px;background:#DA3C1B;border-radius:6px;padding:5px 10px;font-weight:800;font-size:11.5px}
 .ec-barre{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:36%;height:4px;border-radius:999px;background:#0B1220;opacity:.85}
+/* Écran du téléphone : tableau de bord façon banque mobile, vert profond */
+.ec-ecran.fx{background:#F3F7F4;display:flex;flex-direction:column}
+.fx-st{position:absolute;top:0;left:0;right:0;z-index:3;color:#fff}.fx-st .ec-ic u{background:#fff}.fx-st .ec-ic s{border-color:#fff;background:linear-gradient(90deg,#fff 75%,transparent 75%);background-clip:content-box}
+.fx-haut{position:relative;padding:38px 14px 26px;color:#fff;background:radial-gradient(120% 80% at 100% 0%,#1FBF7A 0%,rgba(31,191,122,0) 55%),radial-gradient(90% 70% at 0% 100%,#1B71B2 0%,rgba(27,113,178,0) 60%),linear-gradient(160deg,#0B6B46 0%,#064A31 55%,#03301F 100%);overflow:hidden}
+.fx-haut::after{content:"";position:absolute;width:180px;height:180px;right:-70px;top:-60px;border-radius:50%;border:22px solid rgba(255,255,255,.06)}
+.fx-tete{display:flex;align-items:center;gap:7px}
+.fx-tete img{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.fx-tete span{display:grid;line-height:1.05;font-size:11px;font-weight:800}.fx-tete small{font-size:8px;font-weight:600;opacity:.75}
+.fx-tete em{margin-left:auto;position:relative;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.fx-tete em i{position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:#FF6B4A;box-shadow:0 0 0 1.5px #064A31}
+.fx-l{margin:12px 0 0;font-size:9px;font-weight:700;letter-spacing:.04em;opacity:.8;display:flex;align-items:center;gap:4px}.fx-l u{display:inline-flex;text-decoration:none}
+.fx-solde{margin:2px 0 0;font-family:var(--f-body);font-weight:800;font-size:25px;letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.fx-solde span{font-size:13px;font-weight:700;opacity:.85}
+.fx-var{display:inline-flex;align-items:center;gap:3px;margin:6px 0 0;font-size:8.5px;font-weight:800;color:#063B26;background:#7DF0B8;border-radius:999px;padding:3px 7px}
+.fx-act{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:12px}
+.fx-act a{display:grid;justify-items:center;gap:3px;font-size:7.5px;font-weight:700;color:#E6FFF2}
+.fx-act svg{box-sizing:content-box;padding:8px;border-radius:12px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18);color:#fff}
+.fx-act a.on svg{background:#7DF0B8;color:#063B26}
+.fx-act b{font-weight:700}
+.fx-feuille{position:relative;margin-top:-14px;background:#F3F7F4;border-radius:16px 16px 0 0;padding:10px 10px 0;display:grid;gap:7px;flex:1;z-index:2}
+.fx-but{background:#fff;border-radius:12px;padding:8px 9px 4px;box-shadow:0 4px 14px rgba(6,74,49,.12)}
+.fx-but-t{display:flex;align-items:center;justify-content:space-between}.fx-but-t span{display:grid;line-height:1.15}
+.fx-but-t small{font-size:7px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0E9F63}.fx-but-t b{font-size:10px;color:#0B1220}
+.fx-but-t em{font-style:normal;font-size:10px;font-weight:800;color:#0B6B46;background:#E3F7EC;border-radius:999px;padding:2px 6px}
+.fx-jauge{height:6px;border-radius:999px;background:#E6ECE8;margin-top:6px;overflow:hidden}.fx-jauge i{display:block;width:67%;height:100%;border-radius:999px;background:linear-gradient(90deg,#1B71B2,#0E9F63 55%,#1FBF7A)}
+.fx-but-b{display:flex;justify-content:space-between;font-size:7.5px;font-weight:700;color:#5F6676;margin-top:3px}.fx-but-b span:first-child{color:#0B1220}
+.fx-courbe{display:block;width:100%;height:26px;margin-top:2px}
+.fx-h{margin:0;font-size:9px;font-weight:800;color:#0B1220}
+.fx-mv{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.fx-mv li{display:flex;align-items:center;gap:7px;background:#fff;border-radius:10px;padding:5px 7px}
+.fx-mv li>i{width:20px;height:20px;border-radius:7px;display:grid;place-items:center;flex:none}
+.fx-i1{background:#E3F7EC;color:#0B6B46}.fx-i2{background:#E2EEF9;color:#1B71B2}.fx-i3{background:#FDECE7;color:#DA3C1B}
+.fx-mv span{display:grid;line-height:1.15;min-width:0}.fx-mv b{font-size:8.5px;color:#0B1220;white-space:nowrap}.fx-mv small{font-size:7px;color:#5F6676}
+.fx-mv em{margin-left:auto;font-style:normal;font-size:8.5px;font-weight:800;color:#0B1220;white-space:nowrap;font-variant-numeric:tabular-nums}.fx-mv em.p{color:#0E9F63}.fx-mv em.g{color:#1B71B2}
+.fx-nav{display:flex;justify-content:space-around;align-items:center;background:#fff;padding:7px 10px 16px;box-shadow:0 -4px 12px rgba(6,74,49,.08);z-index:2}
+.fx-nav a{color:#9AA5A0;display:grid;place-items:center;width:30px;height:24px;border-radius:9px}.fx-nav a.on{color:#0B6B46;background:#E3F7EC}
+.ec-ecran.fx .ec-barre{background:#0B1220;opacity:.75;z-index:4;bottom:5px}
 .ec-reflet{position:absolute;inset:3px;border-radius:45px;pointer-events:none;transform:translateZ(1px);background:linear-gradient(120deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.14) 18%,rgba(255,255,255,0) 32%,rgba(255,255,255,0) 64%,rgba(255,255,255,.10) 82%,rgba(255,255,255,0) 100%)}
 .ec-htxt{display:grid;gap:14px;justify-items:start;min-width:0}
 .ec-hero .ec-marque{color:#E44828}
@@ -928,15 +965,26 @@ img.char{object-position:50% 18%}
         </div>
         <div class="ec-tel" aria-hidden="true">
           <div class="ec-blob"></div>
-          <div class="ec-sol"></div><div class="ec-phone"><span class="ec-ep ec-ep3"></span><span class="ec-ep ec-ep2"></span><span class="ec-ep ec-ep1"></span><span class="ec-bt-v1"></span><span class="ec-bt-v2"></span><span class="ec-bt-on"></span><div class="ec-bezel"><div class="ec-ecran">
-            <div class="ec-st"><span>9:41</span><i><b></b></i><span class="ec-ic"><u></u><u></u><u></u><u></u><s></s></span></div>
-            <div class="ec-app"><img src="logo-efa-96.png" alt=""><b>EFA</b></div>
-            <div class="ec-c">
-              <p class="ec-salut">Bonjour Koffi.</p>
-              <div class="ec-mois"><small>Ce mois-ci</small><div><span>Rentrées</span><b>400 000 F</b></div><div><span>Dépenses</span><b>340 000 F</b></div><div class="g"><span>Gardé</span><b>+ 60 000 F</b></div></div>
-              <ol class="ec-etapes"><li class="ok">Comprendre</li><li class="ok">Budget</li><li class="en">Réserve <em>2 mois sur 3</em></li><li>Investir</li><li>Patrimoine</li></ol>
-              <div class="ec-next"><small>Prochaine étape</small><b>Garder 20 000 F ce mois</b></div>
+          <div class="ec-sol"></div><div class="ec-phone"><span class="ec-ep ec-ep3"></span><span class="ec-ep ec-ep2"></span><span class="ec-ep ec-ep1"></span><span class="ec-bt-v1"></span><span class="ec-bt-v2"></span><span class="ec-bt-on"></span><div class="ec-bezel"><div class="ec-ecran fx">
+            <div class="ec-st fx-st"><span>9:41</span><i><b></b></i><span class="ec-ic"><u></u><u></u><u></u><u></u><s></s></span></div>
+            <div class="fx-haut">
+              <div class="fx-tete"><img src="logo-efa-96.png" alt=""><span><small>Bonjour</small>Koffi</span><em><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg><i></i></em></div>
+              <p class="fx-l">Mon épargne EFA <u><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></u></p>
+              <p class="fx-solde">1&nbsp;284&nbsp;500<span>&nbsp;F</span></p>
+              <p class="fx-var"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg> + 60&nbsp;000&nbsp;F gardés ce mois</p>
+              <div class="fx-act"><a><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg><b>Envoyer</b></a><a><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg><b>Recevoir</b></a><a class="on"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a2 2 0 1 0 2 2 4 4 0 1 0-4-4 6 6 0 1 0 6 6"/></svg><b>Garder</b></a><a><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><b>Payer</b></a></div>
             </div>
+            <div class="fx-feuille">
+              <div class="fx-but"><div class="fx-but-t"><span><small>Ma spirale</small><b>Réserve de précaution</b></span><em>67&nbsp;%</em></div><div class="fx-jauge"><i></i></div><div class="fx-but-b"><span>800&nbsp;000 F</span><span>objectif 1&nbsp;200&nbsp;000 F</span></div>
+                <svg class="fx-courbe" viewBox="0 0 200 40" preserveAspectRatio="none"><defs><linearGradient id="fxg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1FBF7A" stop-opacity=".35"/><stop offset="1" stop-color="#1FBF7A" stop-opacity="0"/></linearGradient></defs><path d="M0 34 L25 31 L50 32 L75 25 L100 26 L125 18 L150 17 L175 10 L200 6 L200 40 L0 40Z" fill="url(#fxg)"/><path d="M0 34 L25 31 L50 32 L75 25 L100 26 L125 18 L150 17 L175 10 L200 6" fill="none" stroke="#0E9F63" stroke-width="2.2" stroke-linejoin="round"/><circle cx="200" cy="6" r="3" fill="#0E9F63"/></svg></div>
+              <p class="fx-h">Mouvements récents</p>
+              <ul class="fx-mv">
+                <li><i class="fx-i1"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></i><span><b>Salaire d’octobre</b><small>Aujourd’hui</small></span><em class="p">+ 400&nbsp;000</em></li>
+                <li><i class="fx-i2"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a2 2 0 1 0 2 2 4 4 0 1 0-4-4 6 6 0 1 0 6 6"/></svg></i><span><b>Vers ma réserve</b><small>Automatique</small></span><em class="g">20&nbsp;000</em></li>
+                <li><i class="fx-i3"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></i><span><b>Tontine du bureau</b><small>Tour 8 sur 12</small></span><em>− 50&nbsp;000</em></li>
+              </ul>
+            </div>
+            <nav class="fx-nav"><a class="on"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9H3z"/></svg></a><a><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></a><a><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a2 2 0 1 0 2 2 4 4 0 1 0-4-4 6 6 0 1 0 6 6"/></svg></a><a><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a></nav>
             <span class="ec-barre"></span>
           </div><span class="ec-reflet"></span></div></div>
         </div>
