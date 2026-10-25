@@ -8,7 +8,7 @@
   var API = "https://efa-ecole.elysees-johnson.workers.dev";
   var CLE = "efa_compte";
   // Programme ouvert à tous : « Communauté EFA » (code public, créé dans admin-ecole). Vide = inscriptions pas encore ouvertes.
-  var CODE_COMMUNAUTE = "";
+  var CODE_COMMUNAUTE = "EFA-7XFE-5KZ7";
   function lire(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
   function ecrire(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 
