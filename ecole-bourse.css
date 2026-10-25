@@ -89,7 +89,11 @@ body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--f-b
 @keyframes entre{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 [hidden]{display:none!important}
-.tab td:last-child,.tab td.v{white-space:nowrap}
+.tab td.v{white-space:nowrap}
+/* Mise en page robuste : le texte d'une cellule passe à la ligne, rien ne sort du cadre, rien n'est écrasé */
+.tab td{overflow-wrap:break-word;hyphens:manual;vertical-align:top}
+.corps>*{min-width:0}.illu{min-width:0;justify-content:safe center}.illu>*{flex-shrink:0;max-width:100%}
+.illu svg.perso{flex-shrink:1}.illu.photo>*{flex-shrink:1}
 html,body{height:auto;min-height:100%}
 body{justify-content:safe center}
 .exo.trois{grid-template-columns:repeat(3,1fr)}
@@ -253,3 +257,13 @@ body{justify-content:safe center}
 .illu.papier .act-l button[aria-pressed="true"]{background:#0B1220;box-shadow:none}
 @media (orientation:portrait) and (max-width:700px){.consigne{font-size:15px;padding:10px 12px;border-radius:10px}.consigne .c-l{display:none}.consigne .c-p{display:inline}}
 @media (prefers-reduced-motion:reduce){.consigne.flash{animation:none}}
+/* Petits cadres (téléphone à l'horizontale, petites tablettes) : les tableaux à plusieurs colonnes tiennent dans leur encadré */
+@container (max-width:780px){.tab th{letter-spacing:.03em}.tab td,.tab th{padding-left:2px;padding-right:2px}}
+/* Téléphone à l'horizontale : le cadre prend toute la largeur et la hauteur nécessaire, la page défile */
+@media (orientation:landscape) and (max-height:500px){
+  .cadre-wrap{width:100%}
+  .cadre{aspect-ratio:auto}
+  .corps{overflow:visible;grid-template-columns:minmax(0,42%) minmax(0,1fr)}
+}
+.illu.nuit .exo label,.illu.bleu .exo label,.illu.corail .exo label{color:#C9D1DE}
+@container (max-width:900px){.tab.large td:first-child{white-space:normal!important;min-width:5.5em}.tab.large{font-size:10.5px}.tab.large th,.tab.large td{padding-left:2px;padding-right:2px;letter-spacing:0}}

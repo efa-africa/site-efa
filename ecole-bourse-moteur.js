@@ -9,7 +9,7 @@
   var EC = window.ECOLE, $ = function (i) { return document.getElementById(i); };
   var NB = " ";
   function typo(s) {
-    return String(s).replace(/ ([:;?!»%])/g, "&nbsp;$1").replace(/« /g, "«&nbsp;")
+    return String(s).replace(/ ([:;?!»%])/g, "&nbsp;$1").replace(/« /g, "«&nbsp;").replace(/([≈+−]) (?=\d)/g, "$1&nbsp;")
       .replace(/(\d) (?=\d{3}\b)/g, "$1&nbsp;").replace(/(\d) h (\d)/g, "$1&nbsp;h&nbsp;$2").replace(/(\d) h\b/g, "$1&nbsp;h").replace(/(\d) (F|FCFA|Md|ans?|mois|jours?|titres?|actions?|séances?|points?)\b/g, "$1&nbsp;$2");
   }
   var F = function (n) { return (n < 0 ? "− " : "") + Math.abs(Math.round(n)).toLocaleString("fr-FR").replace(/[   ]/g, NB) + NB + "F"; };

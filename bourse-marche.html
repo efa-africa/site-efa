@@ -11,7 +11,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
-<link rel="stylesheet" href="ecole-bourse.css?v=2026102504">
+<link rel="stylesheet" href="ecole-bourse.css?v=2026102510">
 <style>
 .lg{display:flex;flex-wrap:wrap;gap:.4cqw 1.6cqw;font-size:max(10px,1.25cqw);color:#C9D1DE;width:100%}
 .lg i{display:inline-block;width:1.6em;height:3px;vertical-align:middle;margin-right:.4em;border-radius:2px}
@@ -30,6 +30,7 @@
 .illu .tab.nuit-t td{color:#E8EDF5}
 .illu .courbe text{font-size:inherit}
 .illu.nuit .exo label{color:#C9D1DE}
+.tab.def td{white-space:normal!important;text-align:left;font-weight:400;vertical-align:top}.tab.def td:first-child{font-weight:700;padding-right:1.2cqw;width:36%}
 .up{color:#3CCB7F}.dn{color:#F09680}
 @media (orientation:portrait) and (max-width:700px){
   .lg{font-size:12.5px;gap:4px 14px}.bt-g{font-size:14px;padding:9px 13px}
@@ -222,7 +223,7 @@ ecrans:[
   sur:"Étape 4 · La cote", h:"Une cote très ivoirienne",
   p:["La plupart des sociétés cotées sont ivoiriennes. Acheter « la BRVM », c’est donc surtout acheter l’économie ivoirienne, et quelques grandes sociétés du Sénégal, du Burkina Faso, du Bénin, du Mali, du Togo et du Niger.",
    "Dans l’onglet BRVM, la cote complète se filtre par pays et par sens de variation."]}),
- {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les mots pour lire la cote</span><table class="tab"><tbody><tr><td><b>Dividende</b></td><td>la part du bénéfice versée aux actionnaires</td></tr><tr><td><b>Liquidité</b></td><td>la facilité à acheter ou vendre un titre sans faire bouger son prix</td></tr><tr><td><b>Capitalisation</b></td><td>le cours multiplié par le nombre d’actions</td></tr><tr><td><b>Indice</b></td><td>un panier de titres résumé en un chiffre</td></tr><tr><td><b>Rendement</b></td><td>le dividende rapporté au cours</td></tr></tbody></table>'},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les mots pour lire la cote</span><table class="tab def"><tbody><tr><td><b>Dividende</b></td><td>la part du bénéfice versée aux actionnaires</td></tr><tr><td><b>Liquidité</b></td><td>la facilité à acheter ou vendre un titre sans faire bouger son prix</td></tr><tr><td><b>Capitalisation</b></td><td>le cours multiplié par le nombre d’actions</td></tr><tr><td><b>Indice</b></td><td>un panier de titres résumé en un chiffre</td></tr><tr><td><b>Rendement</b></td><td>le dividende rapporté au cours</td></tr></tbody></table>'},
   sur:"Le vocabulaire", h:"Cinq mots suffisent pour commencer",
   p:["Ces cinq mots reviennent dans tous les modules. Le plus sous-estimé est la liquidité : à la BRVM, beaucoup de titres s’échangent peu. Un cours qui ne bouge pas peut simplement signifier que personne n’a acheté ni vendu.",
    "Chaque mot a sa fiche dans le Dico pratique d’EFA."]},
@@ -254,7 +255,7 @@ ecrans:[
   p:["On choisit des actions, on additionne leur valeur en Bourse, et on fixe le total de départ à 100 points. Chaque soir, on recalcule : si le panier vaut 3 % de plus, l’indice gagne 3 %.",
    "Le BRVM Composite est parti de 100 points au lancement de la BRVM, en 1998. Son niveau ne s’interprète donc qu’en comparaison : avec hier, avec il y a un an, avec un autre indice."]},
  P({illu:function(){ var I = D0.indices || [], S = D0.secteurs || [];
-    return illu("La famille des indices BRVM", '<table class="tab nuit-t"><tbody><tr><td><b>BRVM Composite</b></td><td>toutes les actions cotées</td></tr><tr><td><b>BRVM 30</b></td><td>les trente actions les plus échangées</td></tr><tr><td><b>BRVM Prestige</b></td><td>le compartiment Prestige</td></tr><tr><td><b>BRVM Principal</b></td><td>le compartiment Principal</td></tr><tr><td><b>Sept indices sectoriels</b></td><td>' + (S.length ? S.map(function(s){ return esc(s[0]); }).join(", ") : "un par secteur") + '</td></tr></tbody></table>'); },
+    return illu("La famille des indices BRVM", '<table class="tab nuit-t def"><tbody><tr><td><b>BRVM Composite</b></td><td>toutes les actions cotées</td></tr><tr><td><b>BRVM 30</b></td><td>les trente actions les plus échangées</td></tr><tr><td><b>BRVM Prestige</b></td><td>le compartiment Prestige</td></tr><tr><td><b>BRVM Principal</b></td><td>le compartiment Principal</td></tr><tr><td><b>Sept indices sectoriels</b></td><td>' + (S.length ? S.map(function(s){ return esc(s[0]); }).join(", ") : "un par secteur") + '</td></tr></tbody></table>'); },
   sur:"À la BRVM", h:"Un indice pour l’ensemble, d’autres pour regarder de plus près",
   p:["Le Composite donne la tendance générale. Le BRVM 30 suit les titres les plus échangés, ceux dont le prix reflète le plus d’ordres. Les indices sectoriels permettent de comparer une société à ses voisines.",
    "La composition et la méthode de chaque indice sont publiées par la BRVM sur brvm.org."]}),
@@ -325,7 +326,7 @@ ecrans:[
     ["B", "Environ " + pc(SP.perf, 0), "ok", "Juste : (" + fr(SP.f) + " ÷ " + fr(SP.d) + ") − 1. Entre-temps, le titre est monté bien plus haut : celui qui a acheté au sommet perd de l’argent."],
     ["C", "Environ " + pc((SP.hi / SP.lo - 1) * 100, 0), "ko", "C’est l’écart entre le plus haut et le plus bas. La variation sur l’année se calcule entre le premier et le dernier cours : " + pc(SP.perf, 0) + "."]]; }}),
  P({illu:function(){ var s = PDG.c.slice(120, 180), mi = Math.min.apply(null, s), ma = Math.max.apply(null, s);
-    return '<div class="illu nuit"><span class="tabtitre">Mêmes chiffres, deux échelles</span><div class="mini" style="grid-template-columns:repeat(2,minmax(0,1fr))"><figure>' + G.ligne({s:[{d:s, col:G.CO}], min:Math.floor(mi / 10) * 10, max:Math.ceil(ma / 10) * 10, W:300, H:200, aria:"Échelle resserrée"}) + '<figcaption>Échelle resserrée</figcaption></figure><figure>' + G.ligne({s:[{d:s, col:G.CO}], min:0, max:Math.ceil(ma / 500) * 500, W:300, H:200, aria:"Échelle à partir de zéro"}) + '<figcaption>Échelle depuis zéro</figcaption></figure></div><span class="mot">Variation dans les deux cas : ' + pc((s[s.length - 1] / s[0] - 1) * 100, 1) + '</span></div>'; },
+    return '<div class="illu nuit"><span class="tabtitre">Mêmes chiffres, deux échelles</span><div class="mini" style="grid-template-columns:repeat(2,minmax(0,1fr))"><figure>' + G.ligne({s:[{d:s, col:G.CO}], min:Math.floor(mi / 10) * 10, max:Math.ceil(ma / 10) * 10, W:300, H:260, aria:"Échelle resserrée"}) + '<figcaption>Échelle resserrée</figcaption></figure><figure>' + G.ligne({s:[{d:s, col:G.CO}], min:0, max:Math.ceil(ma / 500) * 500, W:300, H:260, aria:"Échelle à partir de zéro"}) + '<figcaption>Échelle depuis zéro</figcaption></figure></div><span class="mot">Variation dans les deux cas : ' + pc((s[s.length - 1] / s[0] - 1) * 100, 1) + '</span></div>'; },
   sur:"Le piège de l’échelle", h:"La même baisse peut sembler un effondrement ou un détail",
   p:["À gauche, l’échelle commence près du plus bas : la baisse semble vertigineuse. À droite, elle part de zéro : la même baisse paraît modeste. Les deux graphiques sont exacts.",
    "Réflexe : regardez les chiffres de l’axe, puis calculez la variation en pour cent. C’est elle qui compte, pas la pente du dessin."]}),
@@ -367,7 +368,7 @@ var EDL = G.serie(3000, [[150, .12, 1.1], [20, -1.1, 1.2, 0, 3.2], [40, -.1, 1.1
 MOD.push({id:"C4", titre:"Analyser une tendance", court:"Les tendances", duree:"≈ 50 min",
 retenir:"Une tendance se lit dans les <span class=\"c\">plus hauts et plus bas successifs</span>, se confirme par la moyenne mobile et le volume, et ne dit jamais pourquoi : le graphique choisit le moment, l’analyse de l’entreprise choisit le titre.",
 ecrans:[
- P({illu:function(){ var f = function(s, t){ return '<figure>' + G.ligne({s:[{d:s.c}], W:240, H:170, nu:1, aria:t}) + '<figcaption>' + t + '</figcaption></figure>'; };
+ P({illu:function(){ var f = function(s, t){ return '<figure>' + G.ligne({s:[{d:s.c}], W:240, H:220, nu:1, aria:t}) + '<figcaption>' + t + '</figcaption></figure>'; };
     return '<div class="illu nuit"><span class="tabtitre">Trois marchés fictifs, soixante séances</span><div class="mini">' + f(TH, "Haussière") + f(TB, "Baissière") + f(TL, "Sans tendance") + '</div></div>'; },
   sur:"Les trois tendances", h:"Monter, baisser, ou hésiter",
   p:["<strong>Tendance haussière :</strong> chaque creux est plus haut que le précédent, chaque sommet aussi. <strong>Baissière :</strong> les sommets et les creux sont de plus en plus bas.",
@@ -441,7 +442,7 @@ ecrans:[
   sur:"Le rendement", h:"Un rendement élevé peut être un signal d’alarme",
   p:["Le rendement affiché rapporte le dernier dividende au cours actuel. Si le cours s’effondre, le rendement grimpe mécaniquement, sans que l’entreprise verse un franc de plus.",
    "Un rendement très supérieur à celui des sociétés voisines veut souvent dire que le marché doute du prochain dividende. La question n’est pas « combien rapporte-t-il ? » mais « pourra-t-elle le verser encore ? »."]},
- {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Deux banques fictives</span><table class="tab"><tbody><tr><td><b>Banque du Fleuve</b></td><td>rendement 7 %, bénéfice stable depuis cinq ans</td></tr><tr><td><b>Banque des Lagunes</b></td><td>rendement 15 %, cours − 45 % en un an, bénéfice en baisse</td></tr></tbody></table>'}, sur:"Décider", h:"Laquelle demande le plus de prudence ?",
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Deux banques fictives</span><table class="tab def"><tbody><tr><td><b>Banque du Fleuve</b></td><td>rendement 7 %, bénéfice stable depuis cinq ans</td></tr><tr><td><b>Banque des Lagunes</b></td><td>rendement 15 %, cours − 45 % en un an, bénéfice en baisse</td></tr></tbody></table>'}, sur:"Décider", h:"Laquelle demande le plus de prudence ?",
   opts:[["A","La Banque du Fleuve : 7 %, c’est moins","ko","Le rendement le plus haut n’est pas le meilleur. Celui de la Banque des Lagunes vient d’un cours effondré et d’un bénéfice en baisse : son dividende est menacé."],
    ["B","La Banque des Lagunes : son rendement vient d’un cours effondré et d’un bénéfice en baisse","ok","Oui. Si le bénéfice continue de baisser, le dividende peut être réduit, et le rendement de 15 % disparaître avec lui."],
    ["C","Aucune différence, seul le rendement compte","ko","Le rendement passé ne dit rien du dividende futur. Il faut regarder le bénéfice qui le finance."]]},
@@ -540,7 +541,7 @@ ecrans:[
   opts:[["A","Elle garde tout : ce titre lui porte chance","ko","La chance n’est pas une stratégie. À 70 % sur un seul titre, une mauvaise nouvelle de la société emporterait l’essentiel de son épargne."],
    ["B","Elle vend une partie pour revenir à un poids raisonnable et répartit le reste","ok","Oui, c’est le rééquilibrage. Elle garde une partie du gain, réduit son risque, et reste investie dans le titre."],
    ["C","Elle vend tout et ne réinvestit plus jamais","mo","Prendre ses gains n’est pas une faute, mais tout arrêter la prive du rendement des années suivantes. Réduire suffit souvent."]]},
- {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Cinq biais bien connus</span><table class="tab"><tbody><tr><td><b>Peur de manquer</b></td><td>acheter parce que « tout le monde achète »</td></tr><tr><td><b>Aversion aux pertes</b></td><td>garder un perdant, vendre trop vite un gagnant</td></tr><tr><td><b>Ancrage</b></td><td>tout juger par rapport à son prix d’achat</td></tr><tr><td><b>Excès de confiance</b></td><td>croire qu’on a trouvé la bonne affaire</td></tr><tr><td><b>Effet de troupeau</b></td><td>suivre le groupe sans vérifier</td></tr></tbody></table>'},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Cinq biais bien connus</span><table class="tab def"><tbody><tr><td><b>Peur de manquer</b></td><td>acheter parce que « tout le monde achète »</td></tr><tr><td><b>Aversion aux pertes</b></td><td>garder un perdant, vendre trop vite un gagnant</td></tr><tr><td><b>Ancrage</b></td><td>tout juger par rapport à son prix d’achat</td></tr><tr><td><b>Excès de confiance</b></td><td>croire qu’on a trouvé la bonne affaire</td></tr><tr><td><b>Effet de troupeau</b></td><td>suivre le groupe sans vérifier</td></tr></tbody></table>'},
   sur:"Les biais", h:"Notre cerveau n’est pas fait pour la Bourse",
   p:["Ces biais ont été décrits par la finance comportementale : ils touchent les débutants comme les professionnels. On ne s’en débarrasse pas ; on les reconnaît, et on les contourne par des règles écrites à l’avance.",
    "C’est pourquoi les gérants de fonds ont des comités et des limites. Votre version personnelle : trois règles, écrites aujourd’hui, relues avant chaque ordre."]},
@@ -592,7 +593,7 @@ ecrans:[
    ["B","Quand le cours baisse puis remonte","ko","C’est l’inverse : les achats pendant la baisse se font à bas prix, et l’achat régulier fait mieux."],
    ["C","Jamais","ko","Si, quand le marché monte sans interruption. L’achat régulier n’est pas toujours le plus rentable ; il est le plus sûr quand on ignore l’avenir."]]},
  P({illu:function(c){ var v = c.S.r.dv || {c:"500 000", r:"6", g:"3", n:"10"};
-    return illu("Réinvestir ses dividendes", '<div class="exo"><label>Capital investi (F)<input id="dv-c" inputmode="numeric" value="' + esc(v.c) + '"></label><label>Rendement net, % par an<input id="dv-r" inputmode="decimal" value="' + esc(v.r) + '"></label><label>Hausse moyenne du cours, % par an<input id="dv-g" inputmode="decimal" value="' + esc(v.g) + '"></label><label>Nombre d’années<input id="dv-n" inputmode="numeric" value="' + esc(v.n) + '"></label></div><table class="tab nuit-t"><tbody><tr><td>Dividendes encaissés et dépensés</td><td class="v" id="dv-1">–</td></tr><tr><td>Dividendes réinvestis chaque année</td><td class="v" id="dv-2">–</td></tr></tbody></table><span class="verdict" id="dv-x"></span>'); },
+    return illu("Réinvestir ses dividendes", '<div class="exo"><label>Capital investi (F)<input id="dv-c" inputmode="numeric" value="' + esc(v.c) + '"></label><label>Rendement net, % par an<input id="dv-r" inputmode="decimal" value="' + esc(v.r) + '"></label><label>Hausse moyenne du cours, % par an<input id="dv-g" inputmode="decimal" value="' + esc(v.g) + '"></label><label>Nombre d’années<input id="dv-n" inputmode="numeric" value="' + esc(v.n) + '"></label></div><table class="tab nuit-t"><tbody><tr><td>Dividendes encaissés et dépensés</td><td id="dv-1">–</td></tr><tr><td>Dividendes réinvestis chaque année</td><td id="dv-2">–</td></tr></tbody></table><span class="verdict" id="dv-x"></span>'); },
   apres:function(c){ var F = ECOLE.outils.F, f = function(){ var C = nb("dv-c") || 0, r = (nb("dv-r") || 0) / 100, g = (nb("dv-g") || 0) / 100, n = Math.min(40, Math.max(0, Math.round(nb("dv-n") || 0))), dep = 0, x = C;
       for (var k = 0; k < n; k++){ dep += C * Math.pow(1 + g, k) * r; } var a = C * Math.pow(1 + g, n), b = C * Math.pow((1 + g) * (1 + r), n);
       c.S.r.dv = {c:document.getElementById("dv-c").value, r:document.getElementById("dv-r").value, g:document.getElementById("dv-g").value, n:document.getElementById("dv-n").value}; c.sauver();
@@ -680,7 +681,7 @@ ecrans:[
    "Écrivez votre note, attendez une semaine, relisez-la à froid. Si elle tient, vous saurez quoi demander à votre SGI. Si elle ne tient pas, vous aurez économisé une erreur."]}
 ]});
 </script>
-<script src="ecole-bourse-moteur.js?v=2026102504"></script>
+<script src="ecole-bourse-moteur.js?v=2026102505"></script>
 <script src="efa-suite.js?v=2026102525" defer></script>
 <script src="efa-compte.js?v=2026102530" defer></script>
 </body></html>
