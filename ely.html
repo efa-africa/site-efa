@@ -228,7 +228,7 @@ const MESSAGES={
 
 async function envoyer(texte){
   texte=(texte||"").trim();if(!texte||enCours)return;
-  if(!sample){bulle("ely",'<span class="erreur">Ely ne peut pas répondre dans cette vue. Ouvrez la page en étant connecté à Claude.</span>');return}
+  if(!sample){bulle("ely",'<span class="erreur">Ely est momentanément indisponible. Réessayez dans quelques minutes, ou écrivez-nous à contact@efa.africa.</span>');return}
   bulle("moi",esc(texte).replace(/\n/g,"<br>"));
   tours.push({role:"user",content:texte});
   saisie.value="";ajuste();

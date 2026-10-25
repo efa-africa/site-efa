@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <!--/squelette-->
 <title>EFA Compagnon</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#070B14">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -1038,7 +1037,7 @@ document.addEventListener("click",function(ev){
 document.addEventListener("input",function(ev){if(ev.target.id==="xq"){ui.q=ev.target.value;ui.fq=true;render();}});
 document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&ui.sheet)closeSheet();});
 function tick(){var d=new Date();document.getElementById("clock").textContent=d.getHours()+":"+pad(d.getMinutes());}tick();setInterval(tick,30000);
-try{if("serviceWorker" in navigator&&location.protocol==="https:"&&!/claude|anthropic/.test(location.hostname))navigator.serviceWorker.register("sw.js").catch(function(){});}catch(e){}
+try{if("serviceWorker" in navigator&&location.protocol==="https:"&&/(^|\.)efa\.africa$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))navigator.serviceWorker.register("sw.js").catch(function(){});}catch(e){}
 render(true);
 })();
 </script>

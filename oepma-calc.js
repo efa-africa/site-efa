@@ -1,7 +1,7 @@
 /* « Où est passé mon argent ? » · moteur de calcul EFA (méthode 1.1)
    1.1 : une catégorie non renseignée rend le rapprochement partiel tant que l'utilisateur ne l'a pas confirmée ; ajout du zoom thématique.
    Fonctions pures : aucune donnée n'est envoyée, tout est recalculé à partir des saisies.
-   Spécifications : claude/site/specifications (sections 4 à 8 et addendum 12 à 22). */
+   Spécifications : documents internes EFA (sections 4 à 8 et addendum 12 à 22). */
 (function (root) {
   var VERSION = "1.1";
 

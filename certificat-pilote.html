@@ -3,7 +3,6 @@
 <title>Certificat EFA Fondations · Pilote</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="logo-efa-96.png">
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
@@ -1073,14 +1072,11 @@ MODULES.push((function(){
   function rond(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
 
 
-  // ---------- enregistrer un fichier : capacité downloads de la page publiée, sinon lien classique
-  var dl=null;
-  if(window.claude&&window.claude.use){window.claude.use('downloads').then(function(d){dl=d}).catch(function(){})}
+  // ---------- enregistrer un fichier : lien de téléchargement classique
   function offrir(cv,nom,url,alt){
     $('apercu').innerHTML='<p>Image prête. Si l\'enregistrement ne s\'ouvre pas, appuyez longuement sur l\'image pour l\'enregistrer.</p><img alt="'+alt+'" src="'+url+'">';
     cv.toBlob(function(blob){
-      if(dl){dl.save({filename:nom,data:blob}).catch(function(e){if(e&&e.code==='declined')return;})}
-      else{var a=document.createElement('a');a.href=url;a.download=nom;document.body.appendChild(a);a.click();a.remove()}
+      var a=document.createElement('a');a.href=url;a.download=nom;document.body.appendChild(a);a.click();a.remove()
     },'image/png');
   }
   // ---------- certificat en image A4 paysage (300 dpi)
