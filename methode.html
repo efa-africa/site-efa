@@ -246,6 +246,14 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .comite-membre a{font-weight:800;color:var(--bleu)}
 .comite-membre span{font-size:14px;color:var(--mute)}
 .comite-note{font-size:14px;color:var(--mute)!important}
+.comite-portes{display:grid;gap:14px;align-content:start}
+.comite-porte{display:grid;gap:4px;border-radius:14px;padding:20px 22px;text-decoration:none}
+.comite-porte span{font:800 12px var(--body);letter-spacing:.18em;text-transform:uppercase}
+.comite-porte b{font:700 clamp(19px,1.7vw,23px) var(--disp);line-height:1.18}
+.comite-porte small{font-size:14px}
+.comite-porte.rejoindre{background:#DA3C1B;color:#fff}
+.comite-porte.membre{background:#0B1220;color:#E8EDF5}
+.comite-porte.membre span{color:#F09680}
 .comite-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .comite-form label{display:grid;gap:5px;font:700 14px var(--body);color:var(--ink)}
 .comite-form input,.comite-form select,.comite-form textarea{font:400 16px var(--body);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:0}
@@ -711,21 +719,12 @@ a.st-card{text-decoration:none}
             <li>Vous donnez votre avis partie par partie.</li>
             <li>Vous choisissez, pour chaque avis, d’être cité comme contributeur ou de rester anonyme.</li>
           </ul>
-          <div class="comite-membre"><b>Déjà membre du comité&nbsp;?</b><a href="https://claude.ai/artifact/6omNyimzrVW6Jx8BM4kw2T" target="_blank" rel="noopener" onclick="window.efaCompte&&efaCompte('a2075-comite-acces-membre')">Accéder à l’espace de relecture →</a><span>Connectez-vous avec l’adresse à laquelle vous avez reçu l’invitation.</span></div>
-          <p class="comite-note">Les candidatures sont examinées par Élysée Johnson, fondateur d’EFA. Si votre profil est retenu, vous recevez une invitation personnelle à l’espace de relecture (un compte Claude gratuit est nécessaire pour y accéder).</p>
+          <p class="comite-note">Les candidatures sont examinées par Élysée Johnson, fondateur d’EFA. Une fois votre candidature acceptée, vous vous connectez sur efa.africa avec votre adresse email, sans mot de passe.</p>
         </div>
-        <form class="comite-form" id="comite-form" novalidate>
-          <label>Nom et prénom<input id="cm-nom" autocomplete="name" required></label>
-          <label>Adresse email<input id="cm-mail" type="email" autocomplete="email" required></label>
-          <label>Fonction et organisation<input id="cm-fonction" placeholder="Ex. : économiste, institution financière" required></label>
-          <label>Pays<input id="cm-pays" autocomplete="country-name"></label>
-          <label>Domaine d’expertise<select id="cm-domaine"><option>Économie et politiques publiques</option><option>Banque, finance, marchés de capitaux</option><option>Numérique et intelligence artificielle</option><option>Entreprise et direction générale</option><option>Énergie, infrastructures, commerce</option><option>Recherche et enseignement</option><option>Autre</option></select></label>
-          <label>Profil en ligne (facultatif)<input id="cm-lien" type="url" placeholder="Lien LinkedIn ou page professionnelle"></label>
-          <label class="plein">Ce que vous aimeriez apporter au comité<textarea id="cm-msg" rows="4" placeholder="Vos sujets, votre angle, ce que vous lisez dans Africa 2075…"></textarea></label>
-          <label class="ok plein"><input type="checkbox" id="cm-ok"> J’accepte qu’EFA conserve ces informations pour examiner ma candidature et me recontacter. <a href="confidentialite.html">Vos données</a></label>
-          <label class="hp" aria-hidden="true">Ne pas remplir<input type="checkbox" name="botcheck" tabindex="-1"></label>
-          <div class="plein comite-act"><button type="submit">Proposer ma candidature</button><p id="cm-box" role="status" aria-live="polite"></p></div>
-        </form>
+        <div class="comite-portes">
+          <a class="comite-porte rejoindre" href="comite.html#candidature" onclick="window.efaCompte&&efaCompte('a2075-comite-vers-candidature')"><span>Vous souhaitez contribuer</span><b>Proposer ma candidature →</b></a>
+          <a class="comite-porte membre" href="comite.html" onclick="window.efaCompte&&efaCompte('a2075-comite-acces-membre')"><span>Déjà membre du comité</span><b>Accéder à l’espace de relecture →</b><small>Connexion par lien envoyé à votre adresse email.</small></a>
+        </div>
       </section>
     </div>
   </section>
