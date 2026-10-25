@@ -267,3 +267,5 @@ body{justify-content:safe center}
 }
 .illu.nuit .exo label,.illu.bleu .exo label,.illu.corail .exo label{color:#C9D1DE}
 @container (max-width:900px){.tab.large td:first-child{white-space:normal!important;min-width:5.5em}.tab.large{font-size:10.5px}.tab.large th,.tab.large td{padding-left:2px;padding-right:2px;letter-spacing:0}}
+/* Cases alignées dans une même rangée, même quand un intitulé passe sur deux lignes */
+.exo label>input,.exo label>select,.exo label>textarea{margin-top:auto}

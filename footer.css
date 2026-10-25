@@ -25,3 +25,13 @@ footer.efa-foot[hidden]{display:none}
 .efa-foot .ef-bot a{color:#C9D1DE;text-decoration:none}
 @media (max-width:900px){.efa-foot .ef-top{grid-template-columns:minmax(0,1fr);gap:36px}.efa-foot .ef-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 20px}}
 @media print{footer.efa-foot{display:none}}
+
+/* Champs de saisie alignés : dans une même rangée, toutes les cases commencent à la même hauteur,
+   même quand un intitulé passe sur deux lignes ou qu'une aide est ajoutée sous la case. */
+@supports (grid-template-rows:subgrid){
+  .champs{row-gap:0}
+  .champs>label{grid-row:span 3;grid-template-rows:subgrid;row-gap:6px;align-items:end;margin-bottom:12px}
+  .champs>label>small{align-self:start}
+}
+.grille2>.champ{display:flex;flex-direction:column;gap:6px}
+.grille2>.champ>input,.grille2>.champ>select{margin-top:auto}
