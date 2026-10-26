@@ -947,8 +947,6 @@ img.char{object-position:50% 18%}
 .eh-tags{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:17px;color:#7A8293}.eh-tags a{color:#4E5566;text-decoration:none}.eh-tags a:hover{color:#B8341A;text-decoration:underline}
 .eh-vis{position:relative;display:flex;justify-content:center;align-items:center}
 .eh-img{display:block;width:112%;max-width:720px;height:auto;margin-right:-6%}
-.eh-zone{position:absolute;left:60%;top:17%;width:31%;height:19%;border-radius:16px}
-.eh-zone:focus-visible{outline:3px solid #1B71B2;outline-offset:2px}
 .eh-bas{width:100%;max-width:1220px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #0B1220;margin-top:4px}
 .eh-bas a{display:flex;align-items:center;gap:22px;padding:24px 18px;text-decoration:none;color:#0B1220}.eh-bas a+a{border-left:1px solid #CFC6B4}
 .eh-bas b{font-size:clamp(16px,1.5vw,20px);font-weight:800;border-bottom:3px solid #DA3C1B;padding-bottom:6px}.eh-bas a:nth-child(2) b{border-bottom-color:#6DB8F2}
@@ -967,6 +965,33 @@ img.char{object-position:50% 18%}
 .ecole .ec-in{max-width:1100px;width:100%;gap:22px}
 .ec-titre{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.2vw,40px);line-height:1.15;color:#fff;text-align:center}
 @media (max-width:700px){.screen.ecole{padding:40px var(--gut) 36px}}
+
+/* Visuel de l'accueil : photo de la maquette + écran et carte redessinés nets, posés dans la perspective */
+.eh-art{position:relative;width:112%;max-width:720px;margin-right:-6%;aspect-ratio:822/734}
+.eh-art .eh-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0}
+.eh-calque{position:absolute;left:0;top:0;width:822px;height:734px;transform-origin:0 0}
+.eh-scr{position:absolute;left:0;top:0;width:300px;height:690px;transform-origin:0 0;transform:matrix3d(0.88202268,-0.04247252,0,-0.00015696,-0.10739301,0.91293782,0,-0.00006280,0,0,1,0,208.8,31.8,0,1);
+  background:#FFFDF9;border-radius:40px;overflow:hidden;font-family:var(--f-body);color:#0B1220;padding:16px 18px 0;display:flex;flex-direction:column;gap:12px;-webkit-font-smoothing:antialiased}
+.eh-scr::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 22%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 72%,rgba(255,255,255,.18) 100%)}
+.eh-scr svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.s-st{display:flex;align-items:center;justify-content:space-between;height:30px;font-size:14px}.s-st b{font-weight:800;padding-left:10px}.s-st i{width:104px;height:30px;border-radius:16px;background:#0A0C10}
+.s-st span{display:flex;align-items:flex-end;gap:2px;padding-right:6px}.s-st u{display:block;width:3px;background:#0B1220;border-radius:1px}.s-st u:nth-child(1){height:5px}.s-st u:nth-child(2){height:7px}.s-st u:nth-child(3){height:9px}.s-st u:nth-child(4){height:11px}.s-st em{display:block;width:22px;height:11px;border:1.6px solid #0B1220;border-radius:3px;margin-left:5px;background:linear-gradient(90deg,#0B1220 75%,transparent 0) 1px/calc(100% - 2px) calc(100% - 2px) no-repeat}
+.s-h{display:flex;align-items:center;gap:10px;font-size:9.5px;font-weight:800;letter-spacing:.16em;line-height:1.35;margin-top:4px}.s-h img{width:34px;height:34px}.s-h s{margin-left:auto;width:20px;height:14px;border-top:2.4px solid #0B1220;border-bottom:2.4px solid #0B1220;position:relative}.s-h s::after{content:"";position:absolute;left:0;right:0;top:3.4px;border-top:2.4px solid #0B1220}
+.s-t{margin:4px 0 0;font-family:var(--f-display);font-weight:700;font-size:26px;letter-spacing:-.01em}
+.s-c{background:#fff;border-radius:18px;padding:14px 14px;box-shadow:0 2px 10px rgba(11,18,32,.07),0 0 0 1px rgba(11,18,32,.03);display:grid;grid-template-columns:auto 1fr auto;gap:6px 12px;align-items:center}
+.s-ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center}.s-ic.r{background:#DA3C1B;color:#fff}.s-ic.b{background:#D8EEFB;color:#0B1220}
+.s-x b{display:block;font-size:16.5px;font-weight:800}.s-x small{display:block;font-size:13px;color:#4E5566;line-height:1.35;margin-top:2px}
+.s-ch{width:28px;height:28px;border-radius:50%;background:#F1ECE2;display:grid;place-items:center;font-weight:800;font-size:18px}
+.s-pr{grid-column:1/-1;height:9px;border-radius:9px;background:#E7E2D9;overflow:hidden;margin-top:6px}.s-pr i{display:block;width:56%;height:100%;border-radius:9px;background:#1B71B2}
+.s-b{grid-template-columns:1fr;gap:8px}.s-bt{margin:0 0 4px;display:flex;align-items:center;gap:10px;font-size:16.5px}.s-pie{width:26px;height:26px;border-radius:50%;background:conic-gradient(#6DB8F2 0 28%,#D8EEFB 0);box-shadow:inset 0 0 0 2px #fff}
+.s-l{margin:0;display:grid;grid-template-columns:22px 92px 1fr;gap:8px;align-items:center;font-size:12.5px;color:#2A3142}.s-l svg{width:17px;height:17px}.s-l i{display:block;height:10px;border-radius:9px;background:linear-gradient(90deg,var(--c) var(--w),#EAE6DE 0)}
+.s-d{grid-template-columns:auto 1fr}.s-go{grid-column:1/-1;justify-self:center;background:#0B1220;color:#fff;border-radius:12px;padding:11px 18px;font-size:14px;font-weight:800;margin-top:6px}
+.s-n{margin-top:auto;display:flex;justify-content:space-around;padding:12px 0 18px;border-top:1px solid #EFE9DF;color:#4E5566}.s-n i{display:grid;place-items:center;padding-bottom:6px}.s-n i.on{color:#DA3C1B;border-bottom:2.5px solid #DA3C1B}.s-n svg{width:22px;height:22px}
+.eh-carte{position:absolute;left:488px;top:122px;width:266px;height:136px;transform:rotate(-3.8deg);transform-origin:0 0;background:#fff;border-radius:18px;box-shadow:0 14px 30px rgba(11,18,32,.14);display:flex;align-items:center;gap:14px;padding:16px 18px;text-decoration:none;color:#0B1220;font-family:var(--f-body)}
+.eh-carte svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.eh-carte .s-ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#D8EEFB;flex:none}
+.eh-carte b{display:block;font-family:var(--f-display);font-weight:700;font-size:15.5px;line-height:1.3;max-width:150px}.eh-carte small{display:block;font-size:13px;color:#5F6676;margin-top:8px}.eh-carte em{font-style:normal;font-weight:800;font-size:18px;margin-left:auto;width:26px;height:26px;border-radius:50%;background:#F1ECE2;display:grid;place-items:center}
+.eh-carte:hover{box-shadow:0 18px 36px rgba(11,18,32,.2)}.eh-carte:focus-visible{outline:3px solid #1B71B2;outline-offset:3px}
+@media (max-width:900px){.eh-art{width:100%;margin-right:0}}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 <script type="application/ld+json">
@@ -1010,8 +1035,25 @@ img.char{object-position:50% 18%}
         <p class="eh-tags"><a href="parcours.html?src=accueil#P2">Budget</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#P5">Tontine</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#P6">Crédit</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#M17">Investissement</a></p>
       </div>
       <div class="eh-vis">
-        <img class="eh-img" src="accueil-visuel.webp" alt="Sur le téléphone, l’école EFA : Mon parcours, les Fondations, Mon budget et un exercice « À vous de décider »." width="822" height="734" fetchpriority="high" decoding="async">
-        <a class="eh-zone" href="cout-total-credit.html?src=accueil" data-goatcounter-click="accueil-hero-credit" aria-label="Comprendre le coût d’un crédit : exercice pratique"></a>
+        <div class="eh-art" id="eh-art">
+          <img class="eh-img" src="accueil-visuel.webp" alt="" width="1644" height="1468" fetchpriority="high" decoding="async">
+          <div class="eh-calque" id="eh-calque">
+            <div class="eh-scr" role="img" aria-label="Sur le téléphone, l’école EFA : Mon parcours, les Fondations, Mon budget et un exercice « À vous de décider ».">
+              <div class="s-st"><b>9:41</b><i></i><span><u></u><u></u><u></u><u></u><em></em></span></div>
+              <div class="s-h"><img src="logo-efa-96.png" alt="" width="34" height="34"><span>ÉDUCATION<br>FINANCIÈRE AFRIQUE</span><s></s></div>
+              <p class="s-t">Mon parcours EFA</p>
+              <div class="s-c s-f"><span class="s-ic r"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a3 3 0 0 1 2 1 3 3 0 0 1 2-1h7v13h-7a2 2 0 0 0-2 2 2 2 0 0 0-2-2H3z"/><path d="M12 6v14"/></svg></span><span class="s-x"><b>Les Fondations</b><small>Module 3 sur 8</small></span><span class="s-ch">›</span><span class="s-pr"><i></i></span></div>
+              <div class="s-c s-b"><p class="s-bt"><span class="s-pie"></span><b>Mon budget</b></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/></svg><span>Alimentation</span><i style="--w:82%;--c:#F26A45"></i></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="13" rx="2"/><path d="M5 11h14M8 20v-3M16 20v-3"/></svg><span>Transport</span><i style="--w:66%;--c:#1B71B2"></i></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg><span>Logement</span><i style="--w:40%;--c:#38B6E8"></i></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18" cy="12" r="1.3"/></svg><span>Autres</span><i style="--w:30%;--c:#B9C2CF"></i></p></div>
+              <div class="s-c s-d"><span class="s-ic b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></span><span class="s-x"><b>À vous de décider</b><small>Un besoin ou une envie ?<br>Faites le bon choix.</small></span><span class="s-go">Commencer l’exercice →</span></div>
+              <div class="s-n"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a3 3 0 0 1 2 1 3 3 0 0 1 2-1h7v13h-7a2 2 0 0 0-2 2 2 2 0 0 0-2-2H3z"/><path d="M12 6v14"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></i></div>
+            </div>
+            <a class="eh-carte" href="cout-total-credit.html?src=accueil" data-goatcounter-click="accueil-hero-credit"><span class="s-ic b"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01"/></svg></span><span><b>Comprendre le coût d’un crédit</b><small>Exercice pratique</small></span><em>›</em></a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="eh-bas">
@@ -1616,6 +1658,11 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
   var sx=document.getElementById('mfh-suite'); if(sx&&eps.length>3) sx.hidden=false;
   r.innerHTML=eps.map(function(e){return '<a class="mfh-ep" href="minfin.html#ep-'+e.saison+'-'+e.n+'" data-goatcounter-click="accueil-minfin-ep'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"><img src="'+esc(e.image)+'" alt="" loading="lazy"><span class="mfh-p" aria-hidden="true"></span><span class="mfh-n">'+e.n+'</span><span class="mfh-t">'+esc(e.titre)+'</span></a>';}).join('');
 })();
+</script>
+<script>
+(function(){var A=document.getElementById('eh-art'),C=document.getElementById('eh-calque');if(!A||!C)return;
+function f(){C.style.transform='scale('+(A.clientWidth/822)+')';}
+f();if(window.ResizeObserver)new ResizeObserver(f).observe(A);else window.addEventListener('resize',f);})();
 </script>
 </body>
 </html>
