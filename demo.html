@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="theme-color" content="#0B1220">
+<title>Découvrir l’école EFA en une minute · EFA</title>
+<meta name="description" content="L’école de la finance personnelle, ancrée dans les réalités africaines : faire le point, suivre un parcours, décider avec ses chiffres, valider ses acquis. Gratuitement.">
+<link rel="canonical" href="https://efa.africa/demo.html">
+<meta property="og:title" content="L’école EFA en une minute">
+<meta property="og:description" content="Apprendre et maîtriser son argent, avec un parcours. Gratuitement.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#1B71B2;--corail:#DA3C1B;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--vermillon:#EC6243;--t:#E8EDF5;--t2:#C9D1DE;--panel:#111B2F;
+  --f-display:"Libre Baskerville",Baskerville,Georgia,serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--dur:6.5s}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--nuit);color:var(--t);font-family:var(--f-body);-webkit-text-size-adjust:100%;overflow:hidden}
+h1,h2{font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;margin:0;text-wrap:balance;color:#fff}
+p{margin:0}
+.demo{position:fixed;inset:0;display:flex;flex-direction:column}
+/* barre de progression type « stories » */
+.bars{display:flex;gap:5px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 0}
+.bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.22);overflow:hidden}
+.bars i b{display:block;height:100%;width:0;background:#fff}
+.bars i.done b{width:100%}
+.bars i.on b{animation:fill var(--dur) linear forwards}
+.paused .bars i.on b{animation-play-state:paused}
+@keyframes fill{to{width:100%}}
+.head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.brand img{width:30px;height:30px}
+.ctl{display:flex;gap:8px}
+.ctl button,.ctl a{min-width:44px;min-height:40px;border:0;border-radius:999px;background:rgba(255,255,255,.1);color:#fff;font:700 14px var(--f-body);padding:0 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.stage{position:relative;flex:1;overflow:hidden}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;padding:16px 22px 40px;text-align:center;opacity:0;visibility:hidden;transition:opacity .5s}
+.scene.on{opacity:1;visibility:visible}
+.in{width:100%;max-width:640px;display:grid;gap:18px;justify-items:center}
+.k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail)}
+.big{font-size:clamp(32px,7vw,58px)}
+.mid{font-size:clamp(26px,5.4vw,42px)}
+.lead{font-size:clamp(17px,2.4vw,21px);line-height:1.5;color:var(--t2);max-width:520px}
+.ce{color:var(--vermillon)}.sp{color:var(--soft-bleu)}
+/* entrées animées */
+.scene.on .up{animation:up .7s both}
+.scene.on .up.d1{animation-delay:.35s}.scene.on .up.d2{animation-delay:.8s}.scene.on .up.d3{animation-delay:1.3s}.scene.on .up.d4{animation-delay:1.9s}.scene.on .up.d5{animation-delay:2.5s}.scene.on .up.d6{animation-delay:3.1s}.scene.on .up.d7{animation-delay:3.7s}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* scène 1 : le cercle */
+.orbit{position:relative;width:min(56vw,220px);aspect-ratio:1}
+.orbit .ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,255,255,.18)}
+.orbit .dot{position:absolute;left:50%;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--vermillon);transform-origin:9px calc(min(56vw,220px)/2 + 9px)}
+.scene.on .orbit .dot{animation:spin 2.2s linear infinite}
+.orbit .lbl{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-size:clamp(22px,5vw,30px);color:#fff}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* scène 3 : questions */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chip{background:var(--papier);color:var(--nuit);border-radius:999px;padding:10px 16px;font-size:clamp(14px,2vw,16px);font-weight:700}
+.chip.c{background:var(--corail);color:#fff}
+/* scène 4 : diagnostic */
+.dims{width:100%;max-width:440px;display:grid;gap:10px;text-align:left}
+.dim{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;font-size:15px;font-weight:700}
+.dim i{height:10px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
+.dim i b{display:block;height:100%;width:0;border-radius:6px;background:var(--soft-bleu)}
+.scene.on .dim i b{animation:grow 1.4s ease-out forwards}
+.scene.on .dim:nth-child(2) i b{animation-delay:.3s}.scene.on .dim:nth-child(3) i b{animation-delay:.6s}.scene.on .dim:nth-child(4) i b{animation-delay:.9s}.scene.on .dim:nth-child(5) i b{animation-delay:1.2s}.scene.on .dim:nth-child(6) i b{animation-delay:1.5s}
+@keyframes grow{to{width:var(--w)}}
+@media (max-width:420px){.dim{grid-template-columns:120px 1fr;font-size:14px}}
+/* scène 5 : modules */
+.mods{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;text-align:left;max-width:480px;width:100%}
+.mods img{width:clamp(92px,22vw,128px);aspect-ratio:1;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px var(--corail)}
+.mods ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.mods li{background:var(--panel);border-radius:12px;padding:10px 14px;font-size:15px;line-height:1.35}
+.mods li b{color:#fff}
+/* scène 6 : spirale */
+.spi{width:min(60vw,240px);aspect-ratio:1}
+.spi circle{opacity:0}
+.scene.on .spi circle{animation:pop .4s forwards}
+@keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+.spi circle{transform-box:fill-box;transform-origin:center}
+/* scène 7 : certificats */
+.steps{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:center}
+.st{background:var(--panel);border-radius:12px;padding:12px 14px;min-width:118px;font-weight:800;font-size:15px;color:#fff}
+.st small{display:block;font-weight:600;font-size:12px;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.st.cefa{background:var(--corail)}
+.st.cefa small{color:#fff}
+.arr{color:var(--t2);font-weight:800}
+/* fin */
+.cta{display:grid;gap:10px;width:100%;max-width:420px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:54px;padding:12px 22px;border-radius:12px;font:800 17px var(--f-body);text-decoration:none;border:0;cursor:pointer}
+.btn-main{background:var(--corail);color:#fff}
+.btn-clair{background:var(--creme);color:var(--nuit)}
+.btn-ghost{background:transparent;color:#fff;text-decoration:underline;text-underline-offset:5px;min-height:44px}
+.tap{position:absolute;top:0;bottom:0;width:30%;z-index:2;background:transparent;border:0;cursor:pointer}
+.tap.l{left:0}.tap.r{right:0}
+.last .tap{display:none}
+.mission{font-size:14px;font-weight:700;color:var(--t2)}
+@media (prefers-reduced-motion:reduce){.scene.on .up,.scene.on .dim i b,.scene.on .spi circle,.scene.on .orbit .dot{animation:none!important;opacity:1}.dim i b{width:var(--w)!important}.spi circle{opacity:1}}
+</style>
+</head>
+<body>
+<div class="demo" id="demo">
+  <div class="bars" id="bars" aria-hidden="true"></div>
+  <div class="head">
+    <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="30" height="30">EFA · L’école</a>
+    <div class="ctl"><button type="button" id="pause" aria-label="Mettre en pause">❚❚</button><a href="#" id="passer">Passer</a></div>
+  </div>
+
+  <div class="stage" id="stage" aria-live="polite">
+    <section class="scene" aria-label="Le cercle">
+      <div class="in">
+        <div class="orbit up"><div class="ring"></div><div class="dot"></div><div class="lbl">Le cercle</div></div>
+        <h1 class="big up d1">Votre argent arrive.<br>Puis il repart.</h1>
+        <p class="lead up d2">Le salaire tombe, la tontine tourne, les proches appellent. À la fin du mois, il ne reste rien. Ce n’est pas une fatalité&nbsp;: <b style="color:#fff">ça s’apprend.</b></p>
+      </div>
+    </section>
+
+    <section class="scene" aria-label="La promesse">
+      <div class="in">
+        <p class="k up">EFA · Éducation Financière Afrique</p>
+        <h2 class="big up d1">L’école de la finance personnelle</h2>
+        <p class="lead up d2">Ancrée dans les réalités africaines. On y apprend, puis on <b style="color:#fff">maîtrise son argent, avec un parcours.</b></p>
+        <p class="mission up d3">Du <span class="ce">cercle</span>, l’argent qui tourne, à la <span class="sp">spirale</span>, l’argent qui reste.</p>
+      </div>
+    </section>
+
+    <section class="scene" aria-label="Vos questions">
+      <div class="in">
+        <p class="k up">Tout part de vos vraies questions</p>
+        <div class="chips">
+          <span class="chip c up d1">Je ne sais pas où passe mon argent</span>
+          <span class="chip up d2">Je n’ai rien de côté en cas de coup dur</span>
+          <span class="chip up d3">Je cotise à une tontine, mais il ne m’en reste rien</span>
+          <span class="chip up d4">Je rembourse, mais je n’en vois pas la fin</span>
+          <span class="chip up d5">Je ne sais pas où garder mon argent</span>
+          <span class="chip up d6">Je ne connais pas les placements de chez nous</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" aria-label="Faire le point">
+      <div class="in">
+        <p class="k up">Étape 1</p>
+        <h2 class="mid up d1">Je fais le point</h2>
+        <div class="dims up d2">
+          <div class="dim"><span>Savoir</span><i><b style="--w:72%"></b></i></div>
+          <div class="dim"><span>Habitudes</span><i><b style="--w:55%"></b></i></div>
+          <div class="dim"><span>Projection</span><i><b style="--w:40%"></b></i></div>
+          <div class="dim"><span>Résilience</span><i><b style="--w:30%"></b></i></div>
+          <div class="dim"><span>Rapport à l’argent</span><i><b style="--w:64%"></b></i></div>
+          <div class="dim"><span>Flux communautaires</span><i><b style="--w:48%"></b></i></div>
+        </div>
+        <p class="lead up d4">Un diagnostic gratuit en six minutes, qui compte aussi vos tontines et ce que vous donnez à vos proches.</p>
+      </div>
+    </section>
+
+    <section class="scene" aria-label="Avancer">
+      <div class="in">
+        <p class="k up">Étape 2</p>
+        <h2 class="mid up d1">J’avance, module par module</h2>
+        <div class="mods up d2">
+          <img src="koffi.jpg" alt="Koffi, le personnage des leçons EFA">
+          <ul>
+            <li class="up d3"><b>Des leçons courtes</b>, avec Koffi et ses proches</li>
+            <li class="up d4"><b>Des cas concrets</b>&nbsp;: budget, tontine, crédit, famille</li>
+            <li class="up d5"><b>Une fiche à garder</b> à la fin de chaque module</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" aria-label="Décider">
+      <div class="in">
+        <p class="k up">Étape 3</p>
+        <h2 class="mid up d1">Je décide avec mes chiffres</h2>
+        <svg class="spi up d1" viewBox="-110 -110 220 220" aria-hidden="true" id="spi"></svg>
+        <p class="lead up d3">Des simulateurs pour décider&nbsp;: votre budget, votre réserve, le vrai coût d’un crédit, votre retraite. <b style="color:#fff">Chaque mois, une part reste.</b></p>
+      </div>
+    </section>
+
+    <section class="scene" aria-label="Valider">
+      <div class="in">
+        <p class="k up">Étape 4</p>
+        <h2 class="mid up d1">Je valide ce que je sais</h2>
+        <div class="steps">
+          <span class="st up d2"><small>Cycle 1</small>Fondations</span><span class="arr up d2">›</span>
+          <span class="st up d3"><small>Cycle 2</small>Maîtrise</span><span class="arr up d3">›</span>
+          <span class="st up d4"><small>Cycle 3</small>Patrimoine</span><span class="arr up d4">›</span>
+          <span class="st cefa up d5"><small>Toute l’école</small>CEFA ★</span>
+        </div>
+        <p class="lead up d6">Un certificat local à la fin de chaque cycle, puis le certificat CEFA pour toute l’école.</p>
+      </div>
+    </section>
+
+    <section class="scene fin" aria-label="Commencer">
+      <div class="in">
+        <p class="k up">Gratuit · à votre rythme · sur votre téléphone</p>
+        <h2 class="big up d1">Maîtriser vos finances commence aujourd’hui.</h2>
+        <div class="cta up d2">
+          <a class="btn btn-main" href="parcours.html?src=demo" data-goatcounter-click="demo-parcours">Commencer mon parcours</a>
+          <a class="btn btn-clair" href="diagnostic.html?src=demo" data-goatcounter-click="demo-diagnostic">Faire mon diagnostic · 6 min</a>
+          <button class="btn btn-ghost" type="button" id="revoir">Revoir la démo</button>
+        </div>
+      </div>
+    </section>
+
+    <button class="tap l" type="button" id="tapl" aria-label="Scène précédente"></button>
+    <button class="tap r" type="button" id="tapr" aria-label="Scène suivante"></button>
+  </div>
+</div>
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){
+  // Spirale de points (le cercle devient une spirale)
+  var svg=document.getElementById('spi'),n=34,h='';
+  for(var k=0;k<12;k++){var a=k/12*Math.PI*2;h+='<circle cx="'+(Math.cos(a)*92).toFixed(1)+'" cy="'+(Math.sin(a)*92).toFixed(1)+'" r="4" fill="#4E5566" style="animation-delay:'+(k*0.04).toFixed(2)+'s"/>';}
+  for(var i=0;i<n;i++){var t=i/n,ang=t*Math.PI*5.2,r=8+t*80;h+='<circle cx="'+(Math.cos(ang)*r).toFixed(1)+'" cy="'+(Math.sin(ang)*r).toFixed(1)+'" r="'+(2.2+t*5).toFixed(1)+'" fill="'+(i===n-1?'#EC6243':'#6DB8F2')+'" style="animation-delay:'+(0.6+i*0.07).toFixed(2)+'s"/>';}
+  svg.innerHTML=h;
+
+  var demo=document.getElementById('demo'),sc=[].slice.call(document.querySelectorAll('.scene')),bars=document.getElementById('bars'),
+      pb=document.getElementById('pause'),i=0,timer=null,paused=false,DUR=6500,reste=DUR,debut=0;
+  bars.innerHTML=sc.map(function(){return '<i><b></b></i>';}).join('');
+  var bi=[].slice.call(bars.children);
+  function show(k){
+    i=Math.max(0,Math.min(sc.length-1,k));
+    sc.forEach(function(s,j){s.classList.toggle('on',j===i);});
+    bi.forEach(function(b,j){b.className=j<i?'done':(j===i?'on':'');var x=b.firstChild;x.style.animation='none';void x.offsetWidth;x.style.animation='';});
+    demo.classList.toggle('last',i===sc.length-1);
+    if(i===sc.length-1){bi[i].className='done';efaCompte('demo-fin');}
+    reste=DUR;plan();
+  }
+  function plan(){clearTimeout(timer);if(paused||i>=sc.length-1)return;debut=Date.now();timer=setTimeout(function(){show(i+1);},reste);}
+  function pause(p){paused=p;demo.classList.toggle('paused',p);pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre':'Mettre en pause');
+    if(p){clearTimeout(timer);reste=Math.max(300,reste-(Date.now()-debut));}else plan();}
+  pb.addEventListener('click',function(){pause(!paused);});
+  document.getElementById('tapr').addEventListener('click',function(){show(i+1);});
+  document.getElementById('tapl').addEventListener('click',function(){show(i-1);});
+  document.getElementById('passer').addEventListener('click',function(e){e.preventDefault();efaCompte('demo-passer');show(sc.length-1);});
+  document.getElementById('revoir').addEventListener('click',function(){efaCompte('demo-revoir');show(0);});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);if(e.key===' '){e.preventDefault();pause(!paused);}});
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&!paused)pause(true);});
+  show(0); efaCompte('demo-debut');
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

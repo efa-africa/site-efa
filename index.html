@@ -863,6 +863,9 @@ img.char{object-position:50% 18%}
 .ec-quiz .qz-t small{display:block;font-size:14px;font-weight:600;opacity:.92}
 .ec-quiz .qz-go{flex:none;font-size:15px;font-weight:800;border-bottom:2px solid #fff;padding-bottom:1px}
 @media (max-width:620px){.ec-quiz{flex-wrap:wrap;gap:8px 12px;padding:14px 16px}.ec-quiz .qz-t{flex-basis:100%;font-size:17px}}
+.ec-demo{display:inline-flex;align-items:center;gap:10px;color:#0B1220;font-weight:800;font-size:16px;text-decoration:none;border-bottom:2px solid var(--corail);padding-bottom:2px}
+.ec-demo:hover{color:var(--corail)}
+.ec-demo-p{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--corail);color:#fff;font-size:11px;padding-left:2px}
 .ec-htxt{display:grid;gap:14px;justify-items:start;min-width:0}
 .ec-hero .ec-marque{color:#E44828}
 .ec-hero .ec-ecole{color:#4E5566;border-bottom-color:#E2D8C4;margin:0}
@@ -970,6 +973,7 @@ img.char{object-position:50% 18%}
           <h1 id="ec-t">Maîtriser vos finances.</h1>
           <p class="ec-sous">Savoir où passe votre argent, tenir un budget, garder une part de chaque rentrée, investir et construire un patrimoine. <strong>Gratuitement.</strong></p>
           <div class="ec-hb"><a class="ec-hb1" href="#besoins" data-goatcounter-click="accueil-hero-commencer">Commencer</a><a class="ec-hb2" href="outils.html?src=accueil#certificat" data-goatcounter-click="accueil-hero-fondations">Les Fondations</a></div>
+          <a class="ec-demo" href="demo.html?src=accueil" data-goatcounter-click="accueil-demo"><span class="ec-demo-p" aria-hidden="true">▶</span>Découvrir l’école en 1 minute</a>
         </div>
         <div class="ec-tel" aria-hidden="true">
           <div class="ec-blob"></div>
@@ -1135,6 +1139,7 @@ var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';
    Ordinateur : défilement lent, bouton pause. Mobile : une information à la fois, flèches et balayage. */
 function efaTickerItems(D){
   var it=[
+    {c:'EFA',t:'Découvrir l’école EFA en une minute : faire le point, suivre un parcours, décider, valider',h:'demo.html?src=bandeau'},
     {c:'EFA',t:'Nouveau : le quiz de la semaine · jouez et gagnez un prix en fin de semaine',h:'quiz.html?src=bandeau'},
     {c:'EFA',t:'Enquête « L’argent de la tontine » : répondez, même sans tontine',h:ENQUETE_LIEN||'./#enquete'},
     {c:'EFA',t:'Nouvel outil gratuit : Où est passé mon argent ? Cinq questions pour savoir où chercher',h:'ou-est-passe-mon-argent.html?src=bandeau'},
