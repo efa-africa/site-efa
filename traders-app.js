@@ -127,31 +127,54 @@
     if (p.termine) return ["Terminé", "moyen"];
     return ["En cours", "cours"];
   }
+  var CHAPITRES = [
+    { t: "Lire le marché", d: "Ce que montre un écran de cotation", ids: ["t1", "t2", "t3"] },
+    { t: "Décider et compter", d: "Ce que coûte et rapporte un ordre", ids: ["t4", "t5", "t6", "t7"] },
+    { t: "Penser son risque", d: "Exposition, diversification, information", ids: ["t8", "t9"] },
+    { t: "Les devises", d: "Paires, cotation et spread", ids: ["t10", "t11"] },
+    { t: "Faire le bilan", d: "Juger une décision, pas un résultat", ids: ["t12"] }
+  ];
+  var ICO = {
+    ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    go: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>'
+  };
   function vParcours() {
-    var h = '<section class="tr-bloc"><p class="surtitre">Mes parcours</p><h2>Douze tutoriels, puis des scénarios</h2>' +
-      '<p class="lead">Chaque tutoriel demande une action dans le simulateur et une réponse. La correction n’apparaît qu’après votre réponse.</p><ol class="tr-tutos">';
-    C.TUTORIELS.forEach(function (t, i) {
-      var s = statutTuto(t.id);
-      h += '<li class="carte"><span class="tr-num">' + (i + 1) + '</span><div><b class="titre-tuile">' + esc(t.titre) + '</b><small>' + esc(t.competence) + " · " + t.duree + '</small></div><span class="pastille ' + s[1] + '">' + s[0] + '</span><button class="bouton bouton-sombre" data-go="tu:' + t.id + '">' + (D.sessions["tu:" + t.id] && !(D.tutos[t.id] || {}).termine ? "Reprendre" : D.tutos[t.id] && D.tutos[t.id].termine ? "Revoir" : "Commencer") + "</button></li>";
+    var faits = C.TUTORIELS.filter(function (t) { return (D.tutos[t.id] || {}).termine; }).length;
+    var prochain = C.TUTORIELS.filter(function (t) { return !(D.tutos[t.id] || {}).termine; })[0];
+    var enCours = prochain && D.sessions["tu:" + prochain.id];
+    var h = '<section class="tr-bloc"><div class="tr-ph">' +
+      '<div class="tr-ph-t"><p class="surtitre">Mes parcours</p><h2>Douze tutoriels, puis des scénarios</h2><p class="lead">Chaque tutoriel vous fait agir dans le simulateur, puis vous pose une question. La correction vient après votre réponse.</p></div>' +
+      '<div class="tr-suite"><p class="etiquette">Votre progression</p><p class="tr-suite-n"><b>' + faits + '</b> / ' + C.TUTORIELS.length + ' tutoriels</p><div class="tr-barre" aria-hidden="true"><i style="width:' + (faits / C.TUTORIELS.length * 100) + '%"></i></div>' +
+      (prochain ? '<button class="bouton bouton-principal" data-go="tu:' + prochain.id + '">' + (enCours ? "Reprendre" : faits ? "Continuer" : "Commencer") + " : " + esc(prochain.titre) + "</button>" : '<a class="bouton bouton-principal" href="#bilan">Voir mon bilan</a>') + "</div></div>";
+    h += '<div class="tr-chaps">';
+    var n = 0;
+    CHAPITRES.forEach(function (ch, ci) {
+      h += '<section class="tr-chap"><header><span class="tr-chap-n">' + (ci + 1) + '</span><div><h3>' + esc(ch.t) + "</h3><p>" + esc(ch.d) + '</p></div></header><ol class="tr-liste">';
+      ch.ids.forEach(function (id) {
+        var t = tuto(id), s = statutTuto(id), p = D.tutos[id] || {}; n++;
+        var etat = p.termine ? "fait" : D.sessions["tu:" + id] ? "cours" : prochain && prochain.id === id ? "suivant" : "";
+        h += '<li><button type="button" class="tr-ligne ' + etat + '" data-go="tu:' + id + '"><span class="tr-pt">' + (p.termine ? ICO.ok : C.TUTORIELS.indexOf(t) + 1) + '</span><span class="tr-lt"><b>' + esc(t.titre) + "</b><small>" + esc(t.competence) + '</small></span><span class="tr-lm">' + (etat === "fait" ? '<span class="pastille ' + s[1] + '">' + s[0] + (p.score ? " · " + p.score : "") + "</span>" : etat === "cours" ? '<span class="pastille cours">En cours</span>' : '<span class="tr-duree">' + t.duree + "</span>") + "</span>" + '<span class="tr-chev">' + ICO.go + "</span></button></li>";
+      });
+      h += "</ol></section>";
     });
-    h += '</ol></section><section class="tr-bloc"><p class="surtitre">Scénarios</p><h2>Des situations à traverser</h2><p class="lead">Un capital, un horizon, des informations qui arrivent au fil des séances. Le premier passage est un exercice : on ne revient pas en arrière.</p><div class="tr-scs">';
+    h += "</div></section>";
+    h += '<section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">Scénarios</p><h2>Des situations à traverser</h2></div><p class="lead">Un capital, un horizon, des informations qui tombent au fil des séances. Premier passage en exercice : on ne revient pas en arrière.</p></div><div class="tr-scs">';
     C.SCENARIOS.forEach(function (s) {
-      var st = D.sessions["sc:" + s.id];
-      h += '<article class="carte tr-sc"><p class="etiquette">' + esc(s.niveau) + " · " + s.duree + " · " + (s.univers === "forex" ? "Change" : "Actions") + '</p><h3 class="titre-tuile">' + esc(s.titre) + '</h3><p>' + esc(s.situation) + '</p><p class="tr-comp">Compétence : ' + esc(s.competence) + '</p><div class="tr-cta">' +
-        (st ? (st.termine ? '<button class="bouton bouton-sombre" data-bilan="sc:' + s.id + '">Voir mon bilan</button><button class="lien-souligne" data-rejouer="' + s.id + '">Rejouer en mode libre</button>' : '<button class="bouton bouton-principal" data-go="sc:' + s.id + '">Reprendre</button>') : '<button class="bouton bouton-principal" data-go="sc:' + s.id + '">Commencer l’exercice</button>') +
-        "</div></article>";
+      var st = D.sessions["sc:" + s.id], fx = s.univers === "forex";
+      var act = st ? (st.termine ? '<button class="tr-sc-cta" data-bilan="sc:' + s.id + '">Voir mon bilan ' + ICO.go + '</button><button class="lien-souligne" data-rejouer="' + s.id + '">Rejouer en libre</button>' : '<button class="tr-sc-cta" data-go="sc:' + s.id + '">Reprendre · séance ' + (st.seance - st.debut) + " sur " + s.seances + " " + ICO.go + "</button>") : '<button class="tr-sc-cta" data-go="sc:' + s.id + '">Commencer l’exercice ' + ICO.go + "</button>";
+      h += '<article class="tr-sc ' + (fx ? "fx" : "") + '"><div class="tr-sc-h"><span>' + (fx ? "Change" : "Actions") + "</span><span>" + esc(s.niveau) + " · " + s.duree + '</span></div><div class="tr-sc-b"><h3>' + esc(s.titre) + "</h3><p>" + esc(s.situation) + '</p><p class="tr-comp"><span>Compétence</span>' + esc(s.competence) + '</p><div class="tr-sc-a">' + act + "</div></div></article>";
     });
-    h += '</div></section><section class="tr-bloc"><p class="surtitre">Mode libre</p><h2>Explorer sans consigne</h2><div class="tr-scs">' +
-      Object.keys(LIBRES).map(function (k) { var l = LIBRES[k]; return '<article class="carte tr-sc"><h3 class="titre-tuile">' + esc(l.titre) + '</h3><p>' + esc(l.situation) + '</p><div class="tr-cta"><button class="bouton bouton-sombre" data-go="li:' + k + '">' + (D.sessions["li:" + k] ? "Reprendre" : "Ouvrir") + '</button>' + (D.sessions["li:" + k] ? '<button class="lien-souligne" data-reinit="li:' + k + '">Réinitialiser</button>' : "") + "</div></article>"; }).join("") +
-      "</div><p class=\"tr-note\">Les sessions libres sont séparées des exercices : elles ne comptent pas dans votre bilan de compétences.</p></section>";
+    h += '</div></section><section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">Mode libre</p><h2>Explorer sans consigne</h2></div><p class="lead">Séparé des exercices : ne compte pas dans votre bilan de compétences.</p></div><div class="tr-scs deux">' +
+      Object.keys(LIBRES).map(function (k) { var l = LIBRES[k], ex = D.sessions["li:" + k]; return '<article class="tr-sc libre ' + (l.univers === "forex" ? "fx" : "") + '"><div class="tr-sc-h"><span>' + (l.univers === "forex" ? "Change" : "Actions") + '</span><span>Sans limite</span></div><div class="tr-sc-b"><h3>' + esc(l.titre) + "</h3><p>" + esc(l.situation) + '</p><div class="tr-sc-a"><button class="tr-sc-cta" data-go="li:' + k + '">' + (ex ? "Reprendre" : "Ouvrir") + " " + ICO.go + "</button>" + (ex ? '<button class="lien-souligne" data-reinit="li:' + k + '">Réinitialiser</button>' : "") + "</div></div></article>"; }).join("") +
+      "</div></section>";
     vue.innerHTML = h;
     $$("[data-go]", vue).forEach(function (b) { b.onclick = function () { lancer(b.dataset.go); }; });
     $$("[data-bilan]", vue).forEach(function (b) { b.onclick = function () { D.active = b.dataset.bilan; sauver(); aller("bilan"); }; });
-    $$("[data-reinit]", vue).forEach(function (b) { b.onclick = function () { delete D.sessions[b.dataset.reinit]; sauver(); vParcours(); }; });
+    $$("[data-reinit]", vue).forEach(function (b) { b.onclick = function () { if (!confirm("Effacer cette session libre ?")) return; delete D.sessions[b.dataset.reinit]; if (D.active === b.dataset.reinit) D.active = null; sauver(); vParcours(); }; });
     $$("[data-rejouer]", vue).forEach(function (b) {
       b.onclick = function () {
         var id = b.dataset.rejouer, k = "sr:" + id;
-        if (D.sessions[k] && !confirm("Recommencer la session libre de ce scénario ?")) return;
+        if (D.sessions[k] && !confirm("Recommencer la session libre de ce scénario ? Vous connaissez déjà son déroulement.")) return;
         delete D.sessions[k];
         lancer(k, { mode: "libre" });
       };
