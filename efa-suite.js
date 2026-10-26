@@ -113,7 +113,9 @@
     "organisations.html": ["programme-organisation.html", "Composer un programme"],
     "rendez-vous.html": ["index.html", "Accueil"],
     "rejoindre.html": ["parcours.html", "L’école"],
-    "espace-organisation.html": ["programme-organisation.html", "Composer un programme"]
+    "espace-organisation.html": ["programme-organisation.html", "Composer un programme"],
+    "bourse-marche.html": ["traders.html", "EFA Traders, le simulateur"],
+    "traders.html": ["bourse-essentiel.html", "L’École de la Bourse"]
   };
   var SANS_FIL = ["admin-ecole.html", "tableau-ely.html", "ely.html", "index.html"]; // l'accueil est le point de départ : ses deux portes suffisent
   var FIL = "efa_fil";
