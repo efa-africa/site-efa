@@ -244,4 +244,100 @@ window.EFA_LIVRES = [
       ["Face à une offre « valable une heure », le bon réflexe est…", ["Payer vite", "Prendre le temps : l’urgence est un signal d’alerte", "Demander un crédit"], 1, "L’urgence fait décider le système 1 : c’est la base de nombreuses arnaques."]
     ]
   }
+  ,{
+    id: "aide-fatale", n: 11, titre: "L’aide fatale", auteur: "Dambisa Moyo", annee: 2009, theme: "Penseurs africains · Dépendance", c1: "#3A2410", c2: "#EC6243",
+    accroche: "Ce qu’on reçoit sans compter finit par coûter.",
+    phrase: "L’aide versée aux États africains <em>n’a pas tenu sa promesse</em> : il faut la réduire et financer autrement.",
+    phraseSuite: "Titre original : Dead Aid. L’économiste zambienne, passée par la Banque mondiale et la finance, parle de l’aide aux États (dons et prêts à taux réduit), pas de l’aide humanitaire d’urgence.",
+    idees: [
+      ["L’aide aux États n’a pas enrichi l’Africain moyen.", "Pour l’auteure, des décennies de transferts aux gouvernements n’ont pas changé durablement les perspectives des populations."],
+      ["L’argent facile affaiblit la responsabilité.", "Quand un État vit de transferts, il rend moins de comptes à ses citoyens et à ses contribuables."],
+      ["Réduire l’aide pas à pas.", "Elle ne demande pas un arrêt brutal : l’aide doit servir de tremplin vers d’autres financements, puis diminuer."],
+      ["Financer autrement.", "Emprunter sur les marchés, attirer l’investissement, commercer davantage, et mobiliser l’épargne locale."],
+      ["Les ressources de la diaspora et des ménages.", "La microfinance et des envois de fonds moins chers font partie, pour elle, des solutions venues du continent."]
+    ],
+    marche: [["Se méfier de la dépendance.", "Pour un foyer aussi : vivre durablement d’un soutien extérieur retarde les décisions difficiles. L’aide reçue se budgète et a une fin prévue."], ["L’épargne locale.", "Tontines, coopératives, petites épargnes : c’est déjà de l’argent africain qui finance des projets africains."], ["Les envois de la diaspora.", "Comparer les frais d’envoi et donner un but précis aux sommes reçues : c’est la même logique, à l’échelle d’une famille."]],
+    pasIci: [["« Il suffit d’emprunter sur les marchés ».", "Pour un État comme pour un ménage, la dette a un coût : la critique du livre a souligné ce risque."], ["Des affirmations très tranchées.", "Plusieurs économistes ont contesté ses chiffres et rappelé que des pays très aidés ont aussi connu une forte croissance."], ["La microfinance comme remède.", "Elle aide certains, mais ses effets sur la pauvreté restent discutés : un crédit cher reste un crédit cher."]],
+    garde: "<b>Une voix africaine</b> qui pose la bonne question : qui finance, à quelles conditions, et qui en répond ?",
+    nuance: "Le livre a été vivement débattu ; une recension du FMI (2009) lui reproche des chiffres contestables et peu de feuille de route. <b>EFA en tire une question, pas une politique.</b>",
+    decision: ["Faites le point sur l’argent que vous recevez.", "Soutien de la famille, envois de la diaspora, avances : pour chaque somme, notez à quoi elle sert et jusqu’à quand elle durera."],
+    modules: [["P3", "Aider mes proches sans me perdre"], ["P6", "Reprendre la main sur mes dettes"]],
+    quiz: [
+      ["De quelle aide parle surtout le livre ?", ["L’aide humanitaire d’urgence", "Les transferts aux États : dons et prêts à taux réduit", "L’aide entre voisins"], 1, "L’auteure parle des transferts aux gouvernements, pas des secours d’urgence."],
+      ["L’auteure demande-t-elle l’arrêt immédiat de l’aide ?", ["Oui, du jour au lendemain", "Non : une réduction progressive vers d’autres financements", "Non, elle demande plus d’aide"], 1, "L’aide doit servir de tremplin, puis diminuer."],
+      ["Pour un foyer, la leçon EFA du livre est…", ["Recevoir sans compter", "Budgéter l’argent reçu et lui donner une fin prévue", "Emprunter pour remplacer l’aide"], 1, "Un soutien sans but ni fin retarde les décisions difficiles."]
+    ]
+  },
+  {
+    id: "afrotopia", n: 12, titre: "Afrotopia", auteur: "Felwine Sarr", annee: 2016, theme: "Penseurs africains · Réussite", c1: "#0E2E2A", c2: "#6DB8F2",
+    accroche: "Définir sa réussite, sans copier.",
+    phrase: "L’Afrique n’a pas de retard à rattraper : <em>elle a sa propre voie</em> à inventer.",
+    phraseSuite: "L’économiste et écrivain sénégalais propose une « utopie active » : sortir de la course à l’accumulation, achever la décolonisation des esprits, et contribuer au monde à partir de ses propres valeurs.",
+    idees: [
+      ["Pas de retard à rattraper.", "Mesurer l’Afrique avec le mètre des autres conduit à la croire toujours en retard. Elle peut fixer ses propres critères."],
+      ["Sortir de la course à l’accumulation.", "La compétition sans fin pour accumuler des richesses use les sociétés et la nature : l’auteur la juge dangereuse."],
+      ["Achever la décolonisation.", "Renouer avec ses cultures et ses savoirs, pour penser par soi-même."],
+      ["Une force démographique.", "Un quart de l’humanité pourrait être africaine dans quelques décennies : une force, si elle est bien orientée."],
+      ["Bien commun, équilibre, dignité.", "Des valeurs que l’Afrique peut apporter à une civilisation plus attentive."]
+    ],
+    marche: [["Définir sa propre réussite.", "Une réserve, une maison payée sans dette, les études des enfants : vos objectifs, pas ceux de la publicité."], ["Valoriser ce qui existe.", "La tontine, la solidarité, l’entraide sont des institutions financières à part entière, à organiser plutôt qu’à abandonner."], ["Résister à la comparaison.", "Ne pas s’endetter pour suivre le niveau de vie affiché par d’autres."]],
+    pasIci: [["Un essai, pas un manuel.", "Le livre pense la société ; il ne dit pas comment tenir un budget ou épargner."], ["Refuser l’accumulation.", "Pour un foyer qui n’a pas encore de réserve, garder et faire grandir son argent reste une nécessité, pas une course."], ["Une lecture exigeante.", "Le texte est riche et philosophique : la fiche n’en donne qu’une porte d’entrée."]],
+    garde: "<b>Choisir ses propres critères de réussite</b>, puis organiser son argent pour les atteindre.",
+    nuance: "L’essai a suscité des débats sur la place de l’économie et de la croissance. <b>EFA y prend une méthode : partir de ce qui compte pour vous.</b>",
+    decision: ["Écrivez trois choses qui, pour vous, veulent dire « réussir ».", "Sans regarder les autres. Puis cherchez combien chacune coûte et en combien de temps."],
+    modules: [["P1", "Où passe mon argent ?"], ["M12", "La solidarité organisée"]],
+    quiz: [
+      ["Pour l’auteur, l’Afrique…", ["Doit rattraper son retard", "A sa propre voie à inventer", "Doit copier l’Asie"], 1, "Pas de retard à rattraper : des critères à définir soi-même."],
+      ["Ce que le livre critique, c’est…", ["La solidarité", "La course sans fin à l’accumulation", "L’éducation"], 1, "Une compétition qui use les sociétés et la nature."],
+      ["Pour EFA, la leçon pratique est de…", ["Ne plus épargner", "Choisir ses propres objectifs, puis les financer", "S’endetter pour paraître"], 1, "Vos critères de réussite, puis un plan d’argent pour les atteindre."]
+    ]
+  },
+  {
+    id: "urgence-africaine", n: 13, titre: "L’urgence africaine", auteur: "Kako Nubukpo", annee: 2019, theme: "Penseurs africains · Modèle de croissance", c1: "#2A1E3E", c2: "#F2B84B",
+    accroche: "Changer de modèle de croissance.",
+    phrase: "La croissance ne suffit pas : <em>il faut changer de modèle</em> et remettre l’humain au centre.",
+    phraseSuite: "L’économiste togolais, ancien ministre de la Prospective de son pays, alerte sur des défis qui arrivent tous en même temps, et plaide pour une voie africaine.",
+    idees: [
+      ["Le défi des jeunes.", "Chaque année, beaucoup de jeunes arrivent sur le marché du travail, et trop peu trouveront un emploi décent si rien ne change."],
+      ["Le climat et les déplacements.", "Les sécheresses poussent des populations vers d’autres régions du continent, ce qui fragilise des équilibres déjà précaires."],
+      ["Croissance et inégalités.", "Une classe moyenne émerge lentement, pendant que l’extrême pauvreté progresse encore dans certaines régions."],
+      ["Sortir de l’extraversion.", "Des économies tournées vers l’extérieur, des États affaiblis par les ajustements : l’auteur veut des politiques pensées depuis l’Afrique."],
+      ["Justice sociale et intégration régionale.", "Mieux partager les fruits de la croissance et penser ensemble territoires et régions."]
+    ],
+    marche: [["Penser aux jeunes de la famille.", "Formation, premier emploi, première activité : c’est souvent là que l’argent de la famille a le plus d’effet."], ["Regarder l’économie régionale.", "Les placements de l’UEMOA (bons du Trésor des États, emprunts obligataires) financent la région : il faut d’abord les comprendre."], ["Préparer les chocs.", "Climat, prix, emploi : une réserve de sécurité est la première protection d’un foyer."]],
+    pasIci: [["Un livre de politique économique.", "Il s’adresse aux décideurs ; ses propositions ne se transposent pas directement dans un budget familial."], ["Des sujets débattus.", "Modèle de croissance, rôle de l’État, monnaie : ce sont des débats publics, sur lesquels les économistes ne sont pas d’accord."], ["Des constats plus que des recettes.", "Le livre ouvre des pistes ; à chacun d’en tirer ses décisions."]],
+    garde: "<b>Penser son argent dans son contexte</b> : jeunes à former, chocs à prévoir, épargne qui peut financer la région.",
+    nuance: "L’auteur défend des positions qui ont aussi des contradicteurs, sur la croissance comme sur la monnaie. <b>EFA présente le débat, sans trancher.</b>",
+    decision: ["Choisissez un jeune de votre entourage à aider avec méthode.", "Formation, outil de travail, premier stock : un montant, un but, une date. C’est une solidarité qui construit."],
+    modules: [["M18", "Les placements de l’UEMOA"], ["P4", "Ma réserve de sécurité"]],
+    quiz: [
+      ["Pour l’auteur, que faut-il changer ?", ["Rien, la croissance suffit", "Le modèle de croissance, avec l’humain au centre", "Seulement la monnaie"], 1, "La croissance seule ne suffit pas : il faut changer de modèle."],
+      ["L’« extraversion », c’est…", ["Être sociable", "Des économies tournées vers l’extérieur plus que vers leurs besoins", "Exporter plus"], 1, "L’auteur veut des politiques pensées depuis l’Afrique."],
+      ["Le premier rempart d’un foyer face aux chocs (climat, prix, emploi) est…", ["Un crédit", "Une réserve de sécurité", "La Bourse"], 1, "La réserve permet de traverser un choc sans s’endetter."]
+    ]
+  },
+  {
+    id: "business-revolution", n: 14, titre: "Africa’s Business Revolution", auteur: "Acha Leke, Mutsa Chironga et Georges Desvaux", annee: 2018, theme: "Penseurs africains · Entreprendre", c1: "#0B2A3A", c2: "#3CCB7F",
+    accroche: "Le marché africain, vu par ceux qui le servent.",
+    phrase: "L’Afrique est l’un des <em>grands marchés de croissance</em> du monde, et ses propres entreprises en sont le moteur.",
+    phraseSuite: "Livre en anglais, paru chez Harvard Business Review Press. Ses auteurs, dont le Camerounais Acha Leke et le Zimbabwéen Mutsa Chironga, s’appuient sur les recherches de leur cabinet et sur des entretiens avec des dirigeants africains.",
+    idees: [
+      ["Un continent jeune et urbain.", "Une population jeune, en forte croissance, qui s’installe en ville : des besoins immenses en logement, alimentation, transport, santé."],
+      ["La technologie adoptée vite.", "Le mobile et le paiement mobile ont montré qu’ici, on peut sauter des étapes."],
+      ["Des besoins non satisfaits.", "Là où un service manque, il y a une entreprise à créer : les auteurs y voient l’opportunité."],
+      ["Des champions africains.", "De grandes entreprises du continent réussissent déjà, souvent mieux que les étrangères, parce qu’elles connaissent leurs clients."],
+      ["Penser long et local.", "Réussir demande une stratégie adaptée à chaque marché et de la patience."]
+    ],
+    marche: [["Partir d’un besoin réel.", "Une petite activité qui répond à un manque du quartier vaut mieux qu’une idée copiée."], ["Séparer la caisse.", "L’argent de l’activité et celui du foyer dans deux poches : la base pour grandir."], ["Le mobile comme outil.", "Paiements, commandes, suivi des ventes : des outils simples pour une petite entreprise."]],
+    pasIci: [["Un livre pour grandes entreprises.", "Il parle surtout aux dirigeants et investisseurs ; pour un commerce, il faut traduire."], ["Un regard de cabinet de conseil.", "Les auteurs travaillaient pour un grand cabinet : le ton est optimiste et orienté vers les affaires."], ["Disponible en anglais.", "Pas d’édition française connue à ce jour : la fiche en reprend les grandes idées."]],
+    garde: "<b>Partir d’un besoin réel et séparer la caisse</b> : les deux réflexes d’une activité qui peut grandir.",
+    nuance: "Le livre montre surtout les réussites. <b>EFA rappelle que la plupart des activités commencent petit</b>, et qu’une réserve protège quand une année est mauvaise.",
+    decision: ["Écrivez le besoin auquel répond votre activité.", "En une phrase : qui sont vos clients, que leur manquait-il ? Puis séparez cette semaine la caisse de l’activité de celle du foyer."],
+    modules: [["M9", "Revenu irrégulier et activité"], ["M21", "Du groupe au club d’investissement"]],
+    quiz: [
+      ["Pour les auteurs, une opportunité d’entreprise naît surtout…", ["D’une idée copiée", "D’un besoin non satisfait", "D’un crédit"], 1, "Là où un service manque, il y a une entreprise à créer."],
+      ["Le premier réflexe d’une petite activité qui veut grandir, selon EFA :", ["Mélanger les caisses", "Séparer la caisse de l’activité et celle du foyer", "Emprunter"], 1, "Deux poches : on voit enfin ce que l’activité rapporte."],
+      ["Le livre est publié…", ["En anglais", "En wolof", "En portugais"], 0, "Il est paru en anglais ; la fiche en reprend les idées."]
+    ]
+  }
 ];
