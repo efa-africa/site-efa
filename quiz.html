@@ -121,13 +121,8 @@ footer a{color:#fff}
     <div class="alerte">
       <p class="kick" style="color:var(--soft-corail)">Premier quiz bientôt</p>
       <h2>Soyez prévenu du lancement</h2>
-      <form id="q-form" novalidate>
-        <div class="row"><input id="q-email" type="email" autocomplete="email" placeholder="Votre adresse email" aria-label="Adresse email" required><button class="btn btn-main" type="submit">Me prévenir</button></div>
-        <input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check" for="q-ok" style="margin-top:10px"><input id="q-ok" type="checkbox" required><span>J’accepte de recevoir l’annonce du quiz et «&nbsp;L’argent de la semaine&nbsp;», la lettre EFA du mardi. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></span></label>
-        <p class="msg" id="q-msg" role="status" aria-live="polite"></p>
-      </form>
-      <p class="alt">Sans email&nbsp;: <a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="quiz-whatsapp">rejoignez EFA Community sur WhatsApp</a>, le quiz y sera annoncé.</p>
+      <p style="color:#C9D1DE">Le premier quiz sera annoncé dans EFA Community, notre groupe WhatsApp, et dans «&nbsp;L’argent de la semaine&nbsp;», la lettre du mardi.</p>
+      <div class="row"><a class="btn btn-main" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="quiz-whatsapp">Être prévenu sur WhatsApp</a><a class="btn" style="background:#111B2F;color:#fff" href="./#guide" data-goatcounter-click="quiz-lettre">Recevoir la lettre du mardi</a></div>
     </div>
   </div>
 </section>
@@ -155,22 +150,6 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     fb.innerHTML=(k===ok?'<b>Bonne réponse.</b> ':'<b>Pas tout à fait.</b> ')+'12 × 95&nbsp;000 = 1&nbsp;140&nbsp;000&nbsp;F remboursés, soit 140&nbsp;000&nbsp;F de coût pour 1&nbsp;000&nbsp;000&nbsp;F empruntés. <a href="cout-total-credit.html?src=quiz" style="color:#fff;font-weight:800">Calculer le coût de mon crédit</a>';
     efaCompte(k===ok?'quiz-essai-bon':'quiz-essai-faux');
   });});
-})();
-var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhlcS3Knrj0HOrhpnsbgPHCoa1GSLsbsCmk1lvMWF8o_An6q6BYBz85koQiVVRpHhage71-PdxWrT1OFhCY5iidi-UIq-C34WPbWb-FGUjhGa5kXw3NytB242VM_LTd9sbakiFejMRUqseZNiyuN8LB_U_cvRkJ7v0E1SyaD-_RVTlQfAI7JLVRw==';
-(function(){
-  var f=document.getElementById('q-form'), m=document.getElementById('q-msg'), b=f.querySelector('button[type=submit]');
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var em=document.getElementById('q-email').value.trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.textContent='Saisissez une adresse email valide.';return;}
-    if(!document.getElementById('q-ok').checked){m.textContent='Cochez la case pour être prévenu.';return;}
-    if(f.email_address_check.value) return;
-    var d=new FormData(); d.append('EMAIL',em); d.append('email_address_check',''); d.append('locale','fr');
-    b.disabled=true; m.textContent='Envoi en cours…'; efaCompte('quiz-alerte');
-    fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'}).then(function(){
-      f.reset(); m.textContent='C’est noté. Confirmez votre adresse dans l’email qui arrive (regardez aussi Promotions et Spam).';
-    }).catch(function(){m.textContent='L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.';}).then(function(){b.disabled=false;});
-  });
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
