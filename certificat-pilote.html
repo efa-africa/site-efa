@@ -91,7 +91,31 @@ body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--f-b
 .btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed}
 .mention{font-size:12px;color:var(--page-ink);opacity:.8;text-align:center;max-width:70ch}
 .tourner{display:none;font-size:13px;font-weight:700;background:var(--nuit);color:#fff;padding:8px 14px;border-radius:999px}
-@media (orientation:portrait) and (max-width:700px){.tourner{display:block}}
+/* Téléphone tenu droit : le cadre devient une page qui défile, une colonne, boutons toujours à l'écran */
+@media (max-width:700px){
+  html,body{height:auto}
+  body{justify-content:flex-start}
+  .cadre-wrap{width:100%}
+  .cadre{aspect-ratio:auto;overflow:visible;grid-template-rows:auto auto auto auto}
+  .barre{padding:10px 12px;gap:8px;flex-wrap:wrap}
+  .titre-mod{flex-basis:100%;order:3;white-space:normal}
+  .progres{gap:4px;padding:8px 12px 0}
+  .progres button{height:8px}
+  .corps{grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 14px 18px;overflow:visible}
+  .illu{min-height:140px;max-height:320px;border-radius:12px}
+  .illu.photo{aspect-ratio:4/3}
+  .texte{gap:10px}
+  .chips,.exo{gap:8px}
+  .exo{grid-template-columns:minmax(0,1fr)}
+  .exo input{padding:10px 12px;border-radius:8px}
+  .opt{padding:12px 14px;border-radius:10px;min-height:24px}
+  .explic,.aplat{padding:12px 14px;border-radius:10px}
+  .pied{position:sticky;bottom:0;z-index:5;flex-wrap:wrap;gap:8px;padding:10px 12px;border-radius:0 0 12px 12px}
+  .ely{flex-basis:100%;order:3;margin:0;text-align:center}
+  .duree{display:none}
+  .btn{flex:1 1 0;text-align:center;padding:12px 10px;border-radius:8px;min-height:22px;white-space:normal}
+  .tourner{display:none!important}
+}
 @media (prefers-reduced-motion:no-preference){.corps{animation:entre .28s ease-out}}
 @keyframes entre{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
 
@@ -904,9 +928,9 @@ MODULES.push((function(){
   function rendreQuiz(){
     var qs=M.questions;
     if(qi>=qs.length){
-      var s=rep.filter(Boolean).length, ok=s>=3;
+      var s=rep.filter(Boolean).length, ok=s>=4;
       if(ok){etat.valides[M.num]=true;sauver()}
-      corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">Votre score</span><div class="score">'+s+' / 5</div><div class="verdict">'+(ok?'Module validé':'Seuil : 3 bonnes réponses')+'</div></div>'
+      corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">Votre score</span><div class="score">'+s+' / 5</div><div class="verdict">'+(ok?'Module validé':'Seuil : 4 bonnes réponses')+'</div></div>'
         +'<div class="texte"><span class="sur">Résultat</span><h2 class="h">'+(ok?'Bravo, le module '+M.num+' est validé':'Encore un effort')+'</h2>'
         +'<p class="p">'+(ok?M.suite:'Relisez les écrans 3 et 4, puis recommencez le quiz. Il n\'y a pas de limite d\'essais.')+'</p>'
         +'<div class="chips"><button class="btn prec" type="button" id="refaire">Refaire le quiz</button></div></div>';
@@ -960,8 +984,8 @@ MODULES.push((function(){
       +'<p class="p"><strong>3 questions par module</strong>, tirées au hasard parmi 10. Vous pouvez revenir sur une question tant que vous n\'avez pas terminé.</p>'
       +'<p class="p">Pas de correction pendant l\'examen : votre résultat s\'affiche à la fin, module par module.</p>'
       +'<p class="p"><strong>3 tentatives</strong>, puis 24 heures d\'attente. '+(etat.reussite?'Vous avez déjà réussi l\'examen.':bloque?attente:'Tentatives restantes : <strong>'+reste+'</strong>.')+'</p>'
-      +(v<8?'<p class="note">'+v+' module'+(v>1?'s':'')+' sur 8 validé'+(v>1?'s':'')+'. Conseil : passez l\'examen une fois les huit modules terminés.</p>':'')+'</div>';
-    boutons({retour:true,prec:false,suiv:etat.reussite?{t:'Voir mon certificat',f:certificat}:{t:'Commencer l\'examen',off:bloque,f:examenDebut},duree:''});
+      +(v<8&&!etat.reussite?'<p class="note">L\'examen s\'ouvre quand les 8 modules sont validés : '+v+' sur 8 pour l\'instant.</p>':'')+'</div>';
+    boutons({retour:true,prec:false,suiv:etat.reussite?{t:'Voir mon certificat',f:certificat}:v<8?{t:'Valider les modules d\'abord',off:true,f:function(){}}:{t:'Commencer l\'examen',off:bloque,f:examenDebut},duree:''});
     anim();
   }
   var chrono=null;

@@ -36,7 +36,7 @@ window.EFA_DATA = {
       ["ETIT","Ecobank Transnational","TG",64,0.0], ["FTSC","Filtisac","CI",1795,-0.28],
       ["LNBB","Loterie nationale du Bénin","BJ",4000,2.56], ["NEIC","NEI-CEDA","CI",2135,0.23],
       ["NSBC","NSIA Banque CI","CI",20700,0.0], ["NTLC","Nestlé CI","CI",13900,-4.34],
-      ["ONTBF","Onatel Burkina","BF",3075,-0.49], ["ORAC","Orange CI","CI",20200,0.55],
+      ["ONTBF","Onatel Burkina","BF",3075,-0.49],
       ["ORGT","Oragroup","TG",2770,-1.07], ["PALC","Palm CI","CI",7200,-4.0],
       ["PRSC","Tractafric Motors","CI",3800,-1.04], ["SAFC","Safca","CI",3875,1.44],
       ["SCRC","Sucrivoire","CI",2375,3.26], ["SDCC","SODE CI","CI",12300,6.03],
@@ -44,7 +44,7 @@ window.EFA_DATA = {
       ["SGBC","Société Générale CI","CI",38950,0.13], ["SHEC","Vivo Energy CI","CI",2180,-0.46],
       ["SIBC","Société Ivoirienne de Banque","CI",8795,2.21], ["SICC","Sicor","CI",8400,0.0],
       ["SIVC","Erium","CI",1700,0.0], ["SLBC","Solibra","CI",38605,-1.01],
-      ["SMBC","SMB","CI",14810,2.88], ["SNTS","Sonatel","SN",43850,4.4],
+      ["SMBC","SMB","CI",14810,2.88],
       ["SOGC","SOGB","CI",7600,0.0], ["SPHC","SAPH","CI",8000,4.99],
       ["STAC","Setao","CI",1900,-1.81], ["STBC","Sitab","CI",21200,-0.47],
       ["TTLC","TotalEnergies Marketing CI","CI",2895,-0.17], ["TTLS","TotalEnergies Marketing Sénégal","SN",3550,-3.79],
@@ -70,8 +70,8 @@ window.EFA_DATA = {
   veille: [
     {code:"MMCM", pays:"Cameroun", rubrique:"Paiements", date:"15/10/2026",
      titre:"Le mobile money rapporte… aux opérateurs",
-     chiffre:"21,5 Md FCFA", legende:"d'intérêts perçus en 2025 par Orange Money et MTN MoMo sur l'argent des clients placé en banque",
-     points:[["Orange Money",9.9],["MTN MoMo",11.6]], unite:"Md FCFA",
+     chiffre:"21,5 Md FCFA", legende:"d'intérêts perçus en 2025 par les deux principaux opérateurs sur l'argent des clients placé en banque",
+     points:[["1er opérateur",11.6],["2e opérateur",9.9]], unite:"Md FCFA",
      note:"La règle CEMAC réserve ces intérêts à l'opérateur et interdit d'en verser au client. Le mobile money sert à payer, pas à épargner.",
      source:"Rapport CNEF 2025 (données COBAC), via Investir au Cameroun, 15/10/2026"},
     {code:"BUCI", pays:"Côte d'Ivoire", rubrique:"Finances publiques", date:"14/10/2026",
@@ -94,3 +94,13 @@ window.EFA_DATA = {
      source:"Ministère de l'Économie du Gabon, via Agence Ecofin, 15/10/2026"}
   ]
 };
+
+/* Règles éditoriales : certaines sociétés ne figurent dans aucun contenu d'EFA (cote, palmarès, bandeaux).
+   Le filtre s'applique ici, à la source, pour toutes les pages qui lisent ces données. */
+(function () {
+  var EXCLUS = ["SNTS", "ORAC"], b = window.EFA_DATA && window.EFA_DATA.brvm;
+  if (!b) return;
+  Object.keys(b).forEach(function (k) {
+    if (Array.isArray(b[k])) b[k] = b[k].filter(function (l) { return !(Array.isArray(l) && EXCLUS.indexOf(l[0]) >= 0); });
+  });
+})();

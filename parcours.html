@@ -115,7 +115,7 @@ details.cy .fiche p,details.cy .fiche b{color:var(--ink)!important}details.cy .f
 .barre{grid-column:2/4;height:6px;border-radius:var(--r-pastille);background:var(--creme);overflow:hidden}
 .barre i{display:block;height:100%;background:var(--corail);border-radius:var(--r-pastille);width:0}
 .barre-txt{grid-column:2/4;font-size:13px;color:var(--ink3)}
-@media (max-width:560px){.parcours summary{grid-template-columns:auto minmax(0,1fr)}.p-cote{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between}.barre,.barre-txt{grid-column:1/3}}
+@media (max-width:560px){.parcours summary{grid-template-columns:auto minmax(0,1fr)}.p-cote{grid-column:2;flex-direction:row;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between;min-width:0}.barre,.barre-txt{grid-column:1/3}}
 .p-corps{padding:0 22px 22px;display:flex;flex-direction:column;gap:18px}
 .arc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .arc div{background:var(--creme);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}

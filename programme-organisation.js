@@ -99,7 +99,7 @@
       else if (S.arb.charge === "rythme") r.min = Math.ceil(t / S.semaines / 15) * 15;
       else if (S.arb.charge === "prioriser") {
         // ordre de priorité : socle et certificat d’abord, puis les sujets dans l’ordre choisi
-        var ordre = S.extra.slice(); S.sujets.forEach(function (s) { SUJETS.forEach(function (x) { if (x[0] === s) x[2].forEach(function (id) { if (ordre.indexOf(id) < 0) ordre.push(id); }); }); });
+        var ordre = S.extra.slice(); (S.cycles || []).forEach(function (c) { CYCLES.forEach(function (x) { if (x.id === c) x.ids.forEach(function (id) { if (ordre.indexOf(id) < 0) ordre.push(id); }); }); }); S.sujets.forEach(function (s) { SUJETS.forEach(function (x) { if (x[0] === s) x[2].forEach(function (id) { if (ordre.indexOf(id) < 0) ordre.push(id); }); }); });
         var garde = [], c = 0; ordre.forEach(function (id) { var m = minutes(P[id]); if (c + m <= cap) { garde.push(id); c += m; } });
         S.retire = ids.filter(function (id) { return garde.indexOf(id) < 0; });
       }
@@ -190,7 +190,10 @@
         if (avant !== apres) { e4(); return; }
         $("suiv").disabled = !A.every(function (a) { return S.arb[a.id]; }); };
     });
-    $("suiv").onclick = function () { aller(5); }; $("prec").onclick = function () { aller(3); };
+    $("suiv").onclick = function () {
+      // Jamais de programme vide : si les arbitrages ne laissent aucun module, on le dit et on reste ici
+      if (!appliquer().ids.length) { var m = $("vue").querySelector(".vide-msg") || document.createElement("p"); m.className = "aide vide-msg"; m.style.color = "#B3261E"; m.style.fontWeight = "700"; m.textContent = "Avec ces choix, aucun module ne tient dans le temps prévu. Choisissez « Allonger » ou « Passer à … min par semaine », ou revenez au rythme."; this.parentNode.after(m); return; }
+      aller(5); }; $("prec").onclick = function () { aller(3); };
   }
   function arbitragesApres() { return arbitrages(); }
 
@@ -259,6 +262,7 @@
   function creerAcces(pr, lien) {
     var m = function (t) { $("a-msg").innerHTML = t; };
     var org = $("x-org").value.trim(), nom = $("x-nom").value.trim(), fct = $("x-fct").value.trim(), mail = $("x-mail").value.trim(), places = +$("x-places").value || 50;
+    if (!pr.m || !pr.m.length) return m("Ce programme ne contient aucun module : modifiez-le avant de créer les accès.");
     if (!$("a-ok").checked) return m("Cochez d’abord la première case : vérifiez les modules, les semaines et les sessions ci-dessous.");
     if (org.length < 2) return m("Indiquez le nom de l’organisation.");
     if (nom.length < 2) return m("Indiquez le nom du responsable du programme.");

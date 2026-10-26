@@ -170,6 +170,8 @@ def maj_donnees_js(jour, actions, indices):
     secteurs.sort(key=lambda s: sans_accents(s[0]))
     lignes = []
     for a in sorted(actions, key=lambda a: a["symbole"]):
+        if a["symbole"] in ("SNTS", "ORAC"):  # règles éditoriales d'EFA : jamais publiées sur le site
+            continue
         nom, pays = connus.get(a["symbole"], (a["nom"].title(), ""))
         lignes.append("[" + ",".join(js(x) for x in [a["symbole"], nom, pays, a["cours_cloture"], a["variation_pct"]]) + "]")
     actions_js = ",\n      ".join(", ".join(lignes[i:i + 2]) for i in range(0, len(lignes), 2))

@@ -270,7 +270,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .rub-sel{display:none}
 .pick{display:grid;gap:4px;font:700 12px var(--body);color:var(--ink2)}
 .pick select{appearance:none;-webkit-appearance:none;background:#050910 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F5EFE2' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 12px center;border:1px solid var(--mute);color:var(--ink);border-radius:8px;padding:11px 36px 11px 12px;font:800 15px var(--body);width:100%}
-@media (max-width:760px){.rubs{display:none}.rub-sel{display:grid;order:3;flex-basis:100%}.top .bar{flex-wrap:wrap}.back{margin-left:auto}}
+@media (max-width:900px){.rubs{display:none}.rub-sel{display:grid;order:3;flex-basis:100%}.top .bar{flex-wrap:wrap}.back{margin-left:auto}}
 
 /* Liste des études */
 .studies{padding-block:22px 0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
@@ -350,7 +350,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 #sim-res,#sim-intro{display:grid;gap:14px}
 #sim-res p,#sim-intro p,#sim-intro h2{margin:0}
 .pick.rub-sel,.pick.st-sel{display:none}
-@media (max-width:760px){.pick.rub-sel,.pick.st-sel{display:grid}}
+@media (max-width:900px){.pick.rub-sel{display:grid}}
+@media (max-width:760px){.pick.st-sel{display:grid}}
 /* Méthode, en rubrique */
 .mtxt{max-width:860px;padding-block:6px 30px;color:var(--ink2)}
 .mtxt h3{font:700 24px/1.12 var(--disp);text-transform:none;color:var(--ink);margin:26px 0 8px}
@@ -837,7 +838,7 @@ a.st-card{text-decoration:none}
   <!-- ACTUALITÉS · sous-onglet BRVM -->
   <section class="tab" id="tab-brvm" data-tab="brvm" hidden>
     <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
-    <!-- LA BRVM EXPLIQUÉE PAR EFA : à gauche les données de la séance, à droite quatre blocs pour comprendre. Aucune société du groupe Orange dans les contenus éditoriaux (décision du 23/10/2026). -->
+    <!-- LA BRVM EXPLIQUÉE PAR EFA : à gauche les données de la séance, à droite quatre blocs pour comprendre. Exclusions éditoriales appliquées par donnees.js. -->
     <div class="wrap bx-top">
       <section class="bx-ecole" aria-labelledby="bx-ec-t">
         <div class="bx-ec-txt"><p class="bx-ec-k">École de la Bourse · gratuit</p><h2 id="bx-ec-t">Apprendre à investir à la BRVM</h2><p class="bx-ec-p">Des formations courtes en écrans : la séance, les indices, les graphiques et les tendances, les bons réflexes et votre stratégie, avec des cas, des quiz et vos propres chiffres.</p></div>
