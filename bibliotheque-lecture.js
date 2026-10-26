@@ -58,19 +58,23 @@
     var b = el && el.querySelector(".son"); if (!b) return; var o = MUS.actif();
     b.setAttribute("aria-pressed", String(o)); b.setAttribute("aria-label", o ? "Couper la musique" : "Activer la musique"); b.querySelector("span").textContent = o ? "Son" : "Son coupé";
   }
-  function scenes(b) {
+  function ideeHtml(x, k, court) {
+    var h = '<p class="k up">' + (court ? "L’idée clé" : "Idée " + (k + 1) + " sur 5") + '</p><h2 class="mid up d1">' + x[0] + '</h2><p class="lead up d2">' + x[1] + "</p>";
+    if (x[2]) h += '<div class="koffi up d3"><div><small>' + x[2][0] + "</small><b>" + x[2][1] + '</b></div><div class="g"><small>' + x[2][2] + "</small><b>" + x[2][3] + "</b></div><div><small>" + x[2][4] + "</small><b>" + x[2][5] + "</b></div></div>";
+    return h;
+  }
+  // court : l'essentiel en 4 écrans (la phrase, l'idée clé, ce qui ne marche pas ici, la décision) ; sinon la fiche complète
+  function scenes(b, court) {
     var s = [];
-    s.push('<p class="k up">La bibliothèque EFA · n° ' + b.n + '</p><div class="livre up d1" style="background:linear-gradient(135deg,' + b.c1 + ',#0E1A30)"><i style="background:radial-gradient(circle at 35% 35%,#fff,' + b.c2 + ')"></i><b>' + esc(b.titre) + "</b><small>" + esc(b.auteur) + " · " + b.annee + '</small></div><h1 class="mid up d2">Le livre en une minute</h1><p class="lead up d3">Ce qu’il dit, ce qui marche chez nous, ce qui ne marche pas. Et une décision à prendre cette semaine.</p>');
+    s.push('<p class="k up">La bibliothèque EFA · n° ' + b.n + '</p><div class="livre up d1" style="background:linear-gradient(135deg,' + b.c1 + ',#0E1A30)"><i style="background:radial-gradient(circle at 35% 35%,#fff,' + b.c2 + ')"></i><b>' + esc(b.titre) + "</b><small>" + esc(b.auteur) + " · " + b.annee + '</small></div><h1 class="mid up d2">Les idées essentielles, en format statut</h1><p class="lead up d3">Ce qu’il dit, ce qui marche chez nous, ce qui ne marche pas. Et une décision à prendre cette semaine.</p>');
     s.push('<p class="k up">Le livre en une phrase</p><h2 class="big up d1">' + b.phrase + '</h2><p class="lead up d2">' + b.phraseSuite + "</p>");
-    b.idees.forEach(function (x, k) {
-      var h = '<p class="k up">Idée ' + (k + 1) + ' sur 5</p><h2 class="mid up d1">' + x[0] + '</h2><p class="lead up d2">' + x[1] + "</p>";
-      if (x[2]) h += '<div class="koffi up d3"><div><small>' + x[2][0] + "</small><b>" + x[2][1] + '</b></div><div class="g"><small>' + x[2][2] + "</small><b>" + x[2][3] + "</b></div><div><small>" + x[2][4] + "</small><b>" + x[2][5] + "</b></div></div>";
-      s.push(h);
-    });
+    b.idees.forEach(function (x, k) { s.push(ideeHtml(x, k)); });
     s.push('<p class="k up">Ce qui marche ici</p><div class="liste">' + b.marche.map(function (x, k) { return '<div class="ok up d' + (k + 1) + '"><span><b>' + x[0] + "</b> " + x[1] + "</span></div>"; }).join("") + "</div>");
     s.push('<p class="k up">Ce qui ne marche pas tel quel</p><div class="liste">' + b.pasIci.map(function (x, k) { return '<div class="ko up d' + (k + 1) + '"><span><b>' + x[0] + "</b> " + x[1] + "</span></div>"; }).join("") + "</div>");
     s.push('<p class="k up">Ce qu’EFA en retient, et n’en retient pas</p><div class="carte clair up d1"><span class="lbl">On garde</span>' + b.garde + '</div><div class="carte up d2"><span class="lbl">On nuance</span>' + b.nuance + "</div>");
-    s.push('<p class="k up">Votre décision cette semaine</p><h2 class="mid up d1">' + b.decision[0] + '</h2><p class="lead up d2">' + b.decision[1] + '</p><div class="carte clair up d3"><span class="lbl">Pour aller plus loin</span>Le module ' + esc(b.modules[0][1]) + " de l’école vous aide à passer à l’action.</div>");
+    var deci = '<p class="k up">Votre décision cette semaine</p><h2 class="mid up d1">' + b.decision[0] + '</h2><p class="lead up d2">' + b.decision[1] + '</p><div class="cta up d3"><a class="btn btn-main" href="parcours.html?src=bibliotheque#' + b.modules[0][0] + '">Passer à l’action : « ' + esc(b.modules[0][1]) + ' »</a></div>';
+    if (court) return [s[1], ideeHtml(b.idees[0], 0, true), s[s.length - 2], deci + '<div class="cta up d4"><button type="button" class="btn btn-clair" data-b="complet">Voir la fiche complète · ' + (b.idees.length + 8) + ' écrans</button></div>'];
+    s.push(deci);
     s.push('<div class="quiz" style="display:grid;gap:18px;justify-items:center;width:100%"></div>');
     var autre = L.filter(function (x) { return x.id !== b.id; })[b.n % (L.length - 1)];
     s.push('<p class="k up">Et maintenant</p><h2 class="mid up d1">Passez du livre à vos chiffres.</h2><div class="cta up d2">'
@@ -105,10 +109,10 @@
     compte("biblio-" + B.id + "-ecran-" + (i + 1));
   }
   function suivant() { var s = el.querySelector(".efb-nav .s"); if (!s.disabled && !s.hidden) aller(i + 1); }
-  function ouvrir(id) {
-    B = L.filter(function (x) { return x.id === id; })[0]; if (!B) return;
+  function ouvrir(id, complet) {
+    B = L.filter(function (x) { return x.id === id; })[0]; if (!B) return; var court = !complet;
     if (!document.getElementById("efb-css")) { var st = document.createElement("style"); st.id = "efb-css"; st.textContent = CSS; document.head.appendChild(st); }
-    S = scenes(B); i = 0; qi = 0; bonnes = 0;
+    S = scenes(B, court); i = 0; qi = 0; bonnes = 0;
     if (el && el.parentNode) el.parentNode.removeChild(el);
     el = document.createElement("div"); el.className = "efb"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", "Fiche de lecture : " + B.titre);
     el.innerHTML = '<div class="bars" aria-hidden="true">' + S.map(function () { return "<i><b></b></i>"; }).join("") + "</div>"
@@ -118,7 +122,7 @@
       + '<div class="stage">' + S.map(function (h, k) { return '<section class="scene" aria-label="Écran ' + (k + 1) + '"><div class="in">' + h + "</div></section>"; }).join("")
       + '<div class="efb-nav"><button type="button" class="p" aria-label="Écran précédent">←</button><span class="astuce">Touchez l’écran pour avancer</span><button type="button" class="s">Suivant →</button></div></div>';
     document.body.appendChild(el); document.documentElement.style.overflow = "hidden";
-    try { history.replaceState(null, "", location.pathname + "?livre=" + B.id); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + "?livre=" + B.id + (court ? "" : "&fiche=complete")); } catch (e) {}
     var stage = el.querySelector(".stage");
     // Toucher : à gauche (un tiers) pour revenir, ailleurs pour avancer ; jamais sur un bouton ou un lien
     stage.addEventListener("click", function (e) {
@@ -127,7 +131,8 @@
         if (t.classList.contains("opt") && !t.disabled) return repondre(+t.getAttribute("data-r"));
         var a = t.getAttribute && t.getAttribute("data-b");
         if (a === "qsuite") { qi++; quiz(); }
-        else if (a === "livre") ouvrir(t.getAttribute("data-id"));
+        else if (a === "livre") ouvrir(t.getAttribute("data-id"), true);
+        else if (a === "complet") { compte("biblio-" + B.id + "-complet"); ouvrir(B.id, true); }
         else if (a === "biblio") fermer();
         else if (t.classList.contains("p")) aller(i - 1);
         else if (t.classList.contains("s")) suivant();
@@ -144,7 +149,7 @@
       var a = t.getAttribute("data-b");
       if (a === "fermer") fermer();
       if (a === "partager") {
-        var u = location.origin + location.pathname + "?livre=" + B.id + "&src=partage", tx = "« " + B.titre + " » en une minute, version Afrique : ce qui marche chez nous, ce qui ne marche pas. ";
+        var u = location.origin + location.pathname + "?livre=" + B.id + "&src=partage", tx = "« " + B.titre + " » : les idées essentielles, version Afrique. Ce qui marche chez nous, ce qui ne marche pas. ";
         compte("biblio-" + B.id + "-partage");
         if (navigator.share) navigator.share({ title: "La bibliothèque EFA", text: tx, url: u }).catch(function () {});
         else window.open("https://wa.me/?text=" + encodeURIComponent(tx + u), "_blank", "noopener");
@@ -154,7 +159,7 @@
     var premier = function (e) { if (!coupe && !MUS.actif() && !(e.target.closest && e.target.closest(".son"))) { MUS.start(); majSon(); } el.removeEventListener("pointerdown", premier, true); };
     el.addEventListener("pointerdown", premier, true);
     if (!coupe) { MUS.start(); }
-    majSon(); aller(0); compte("biblio-" + B.id + "-debut");
+    majSon(); aller(0); compte("biblio-" + B.id + (court ? "-court" : "-complet"));
   }
   function fermer() {
     MUS.stop(); if (el && el.parentNode) el.parentNode.removeChild(el); el = null; document.documentElement.style.overflow = "";
