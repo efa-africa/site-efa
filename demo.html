@@ -34,6 +34,8 @@ p{margin:0}
 .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
 .brand img{width:30px;height:30px}
 .ctl{display:flex;gap:8px}
+#son{gap:6px}#son[aria-pressed="false"]{background:var(--corail);animation:appel 1.6s ease-in-out 3}#son[aria-pressed="false"] .w{opacity:.35}
+@keyframes appel{50%{transform:scale(1.08)}}
 .ctl button,.ctl a{min-width:44px;min-height:40px;border:0;border-radius:999px;background:rgba(255,255,255,.1);color:#fff;font:700 14px var(--f-body);padding:0 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
 .stage{position:relative;flex:1;overflow:hidden}
 .scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;padding:16px 22px 40px;text-align:center;opacity:0;visibility:hidden;transition:opacity .5s}
@@ -105,7 +107,7 @@ p{margin:0}
   <div class="bars" id="bars" aria-hidden="true"></div>
   <div class="head">
     <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="30" height="30">EFA · L’école</a>
-    <div class="ctl"><button type="button" id="pause" aria-label="Mettre en pause">❚❚</button><a href="#" id="passer">Passer</a></div>
+    <div class="ctl"><button type="button" id="son" aria-pressed="false" aria-label="Activer la musique"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="w" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span id="son-t">Son</span></button><button type="button" id="pause" aria-label="Mettre en pause">❚❚</button><a href="#" id="passer">Passer</a></div>
   </div>
 
   <div class="stage" id="stage" aria-live="polite">
@@ -213,6 +215,58 @@ p{margin:0}
 
 <script>
 function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+
+/* Musique : composée et jouée par le navigateur (Web Audio), sans fichier ni droits.
+   Accords doux (Do maj7, La m9, Fa maj7, Sol 6), nappe filtrée et petites notes cristallines, volume bas. */
+var MUS=(function(){
+  var ctx=null,master=null,on=false,tick=null,step=0,next=0;
+  var BPM=72,BEAT=60/BPM;
+  var CH=[[48,55,59,64],[45,52,55,59,62],[41,48,52,57],[43,50,55,59,64]];   // notes MIDI
+  var ARP=[[64,67,71,72,71,67],[64,67,69,72,69,67],[60,64,67,69,67,64],[62,67,71,74,71,67]];
+  function hz(m){return 440*Math.pow(2,(m-69)/12);}
+  function init(){
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+    ctx=new AC(); master=ctx.createGain(); master.gain.value=0;
+    var lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=2600;
+    // petit écho pour l'espace
+    var dl=ctx.createDelay(); dl.delayTime.value=BEAT*0.75; var fb=ctx.createGain(); fb.gain.value=0.28; var wet=ctx.createGain(); wet.gain.value=0.22;
+    master.connect(lp); lp.connect(ctx.destination); lp.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(wet); wet.connect(ctx.destination);
+    return true;
+  }
+  function pad(notes,t,d){
+    notes.forEach(function(m){[ -6, 6 ].forEach(function(det){
+      var o=ctx.createOscillator(),g=ctx.createGain(),f=ctx.createBiquadFilter();
+      o.type='triangle'; o.frequency.value=hz(m-12); o.detune.value=det;
+      f.type='lowpass'; f.frequency.value=900;
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(0.022,t+1.2); g.gain.setValueAtTime(0.022,t+d-1.2); g.gain.linearRampToValueAtTime(0,t+d+0.4);
+      o.connect(f); f.connect(g); g.connect(master); o.start(t); o.stop(t+d+0.5);
+    });});
+  }
+  function bell(m,t,v){
+    [[1,1],[2,0.18],[3.01,0.06]].forEach(function(h){
+      var o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=hz(m)*h[0];
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v*h[1],t+0.015); g.gain.exponentialRampToValueAtTime(0.0001,t+1.6);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t+1.7);
+    });
+  }
+  function bass(m,t,d){var o=ctx.createOscillator(),g=ctx.createGain(); o.type='sine'; o.frequency.value=hz(m-12);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(0.06,t+0.08); g.gain.exponentialRampToValueAtTime(0.0001,t+d); o.connect(g); g.connect(master); o.start(t); o.stop(t+d+0.1);}
+  function plan(){
+    while(next<ctx.currentTime+1.5){
+      var bar=Math.floor(step/8)%4, pos=step%8, t=next;
+      if(pos===0){ pad(CH[bar],t,BEAT*4); bass(CH[bar][0],t,BEAT*3.5); }
+      if(pos%2===0 || pos===7){ var a=ARP[bar]; bell(a[(step>>1)%a.length]+(pos===7?5:0), t, pos===0?0.05:0.032); }
+      step++; next+=BEAT/2;
+    }
+  }
+  return {
+    start:function(){ if(!ctx&&!init()) return; if(ctx.state==='suspended') ctx.resume(); if(on) return; on=true;
+      next=ctx.currentTime+0.1; master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(master.gain.value,ctx.currentTime); master.gain.linearRampToValueAtTime(0.55,ctx.currentTime+2.5);
+      plan(); tick=setInterval(plan,400); },
+    stop:function(){ if(!ctx||!on) return; on=false; clearInterval(tick); var n=ctx.currentTime; master.gain.cancelScheduledValues(n); master.gain.setValueAtTime(master.gain.value,n); master.gain.linearRampToValueAtTime(0,n+0.8); },
+    actif:function(){return on;}
+  };
+})();
 (function(){
   // Spirale de points (le cercle devient une spirale)
   var svg=document.getElementById('spi'),n=34,h='';
@@ -235,13 +289,19 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
   function plan(){clearTimeout(timer);if(paused||i>=sc.length-1)return;debut=Date.now();timer=setTimeout(function(){show(i+1);},reste);}
   function pause(p){paused=p;demo.classList.toggle('paused',p);pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre':'Mettre en pause');
     if(p){clearTimeout(timer);reste=Math.max(300,reste-(Date.now()-debut));}else plan();}
-  pb.addEventListener('click',function(){pause(!paused);});
+  pb.addEventListener('click',function(){pause(!paused);if(paused)MUS.stop();else if(!coupe)MUS.start();majSon();});
   document.getElementById('tapr').addEventListener('click',function(){show(i+1);});
   document.getElementById('tapl').addEventListener('click',function(){show(i-1);});
   document.getElementById('passer').addEventListener('click',function(e){e.preventDefault();efaCompte('demo-passer');show(sc.length-1);});
   document.getElementById('revoir').addEventListener('click',function(){efaCompte('demo-revoir');show(0);});
   document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);if(e.key===' '){e.preventDefault();pause(!paused);}});
-  document.addEventListener('visibilitychange',function(){if(document.hidden&&!paused)pause(true);});
+  document.addEventListener('visibilitychange',function(){if(document.hidden){if(!paused)pause(true);MUS.stop();majSon();}});
+  var sb=document.getElementById('son'),coupe=false;
+  function majSon(){var o=MUS.actif();sb.setAttribute('aria-pressed',String(o));sb.setAttribute('aria-label',o?'Couper la musique':'Activer la musique');document.getElementById('son-t').textContent=o?'Son':'Son coupé';}
+  sb.addEventListener('click',function(e){e.stopPropagation();if(MUS.actif()){MUS.stop();coupe=true;efaCompte('demo-son-off');}else{MUS.start();coupe=false;efaCompte('demo-son-on');}majSon();});
+  // Les navigateurs exigent un geste : la musique démarre au premier toucher, sauf si elle a été coupée
+  document.addEventListener('pointerdown',function(e){if(!coupe&&!MUS.actif()&&!sb.contains(e.target)){MUS.start();majSon();}},true);
+  document.getElementById('son-t').textContent='Son';
   show(0); efaCompte('demo-debut');
 })();
 </script>
