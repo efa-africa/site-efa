@@ -295,11 +295,11 @@ const retour = `<button class="btn ghost" data-act="retour">Retour</button>`;
 
 const V = {
  accueil() {
-  const enCours = S.ans.length > 0 && !S.lead;
+  const enCours = S.ans.length > 0 && !fini0();
   return `<div class="stack"><p class="step">Mon diagnostic financier complet · gratuit · 6 minutes</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
    <p class="lead">Le seul diagnostic qui compte aussi vos tontines et ce que vous donnez à vos proches.</p></div>
    <div class="dims">${DIMS.map(d => `<div><b>${d.n}</b><span>${Q.filter(q => q.d === d.k).length} questions</span></div>`).join("")}</div>
-   <div class="actions">${S.lead ? `<button class="btn" data-go="resultat">Voir mon résultat</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
+   <div class="actions">${S.lead && fini0() ? `<button class="btn" data-go="resultat">Voir mon dernier résultat</button><button class="btn ghost" data-act="recommencer">Refaire le diagnostic</button>`
      : enCours ? `<button class="btn" data-go="quiz">Reprendre où j'en étais</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
      : `<button class="btn" data-act="start">Commencer</button>`}</div>
    <p class="small muted">« Complet » désigne le parcours EFA proposé : ce n'est pas un audit exhaustif de votre patrimoine. Vous cherchez plutôt où est passé votre argent ? <a href="ou-est-passe-mon-argent.html?src=diagnostic">Essayez cet outil</a>.</p>
@@ -421,10 +421,11 @@ const V = {
 /* ---------- Navigation ---------- */
 let prec = "accueil";
 function go(v) {
-  if ((v === "resultat" || v === "cle") && !S.lead) v = fini0() ? "gate" : "accueil";
+  // Jamais de résultat (ni de profil) sans un questionnaire complet sur cet appareil
+  if ((v === "resultat" || v === "cle") && !(S.lead && fini0())) v = fini0() ? "gate" : "accueil";
   if (v === "p1" && !S.p1ok) v = S.lead ? "cle" : "accueil";
   if (v === "r1" && !S.p1) v = "p1";
-  if (v === "quiz" && S.lead) v = "resultat";
+  if (v === "quiz" && S.lead && fini0()) v = "resultat";
   if ((v === "gate" || v === "apercu") && !fini0()) v = "accueil";
   if (v === "apercu" && S.lead) v = "resultat";
   if (S.view !== "methode" && S.view !== "confidentialite") prec = S.view;
@@ -496,8 +497,9 @@ document.addEventListener("mousemove", e => { const t = e.target.closest && e.ta
   tip.style.left = Math.max(8, Math.min(window.innerWidth - tip.offsetWidth - 8, e.clientX + 12)) + "px"; tip.style.top = Math.max(8, e.clientY - tip.offsetHeight - 10) + "px"; });
 // À l'ouverture : on ne rouvre jamais une page annexe (méthode, confidentialité, clé) restée en mémoire.
 // On reprend le parcours là où il en était : résultat, questions en cours, ou accueil.
-go(["methode", "confidentialite", "cle", "gate", "apercu"].includes(S.view)
-   ? (S.lead ? "resultat" : (S.ans.length && !fini0() ? "accueil" : (fini0() ? (APERCU ? "apercu" : "gate") : "accueil")))
+// Un résultat déjà obtenu ne s'affiche jamais d'office : la personne choisit « Voir mon dernier résultat » ou « Refaire le diagnostic ».
+go(["resultat", "r1", "p1"].includes(S.view) ? "accueil" : ["methode", "confidentialite", "cle", "gate", "apercu"].includes(S.view)
+   ? (S.lead ? "accueil" : (S.ans.length && !fini0() ? "accueil" : (fini0() ? (APERCU ? "apercu" : "gate") : "accueil")))
    : S.view);
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
