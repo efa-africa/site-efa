@@ -739,6 +739,7 @@ img.char{object-position:50% 18%}
         <option>Un programme pour mon organisation</option>
         <option>Une étude sur commande</option>
         <option>Un partenariat</option>
+        <option>Devenir ambassadeur EFA</option>
         <option>Relire un contenu (notaire, expert, professionnel)</option>
         <option>La presse</option>
         <option>Autre</option>
@@ -892,7 +893,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
   var f=document.getElementById('ct-form'); if(!f) return;
   var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
   // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
-  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];}catch(e){}
+  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',ambassadeur:'Devenir ambassadeur EFA',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];if(q==='ambassadeur'){var am=document.getElementById('ct-msg');if(am&&!am.value)am.value='Bonjour,\n\nJe souhaite devenir ambassadeur EFA.\nMa communauté (réseau, nombre d’abonnés, lien) : …\nCe que je partage aujourd’hui : …\n';}}catch(e){}
   try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation\.html\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons recevoir les accès (clé d’organisation pour le tableau de bord, code pour nos participants) et, si possible, organiser une session avec EFA. Nombre de participants : … Nos disponibilités : …\n\nMerci.';}}catch(e){}
   function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
   f.addEventListener('submit',function(e){
