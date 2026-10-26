@@ -245,6 +245,7 @@ details.cy[open]>summary .fleche{transform:rotate(90deg)}
 .progr .msg{font-weight:700;color:#1D6B43;min-height:1.3em}
 
 /* Route des cycles (en-tête) */
+.apres-route{margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
 .route{list-style:none;margin:28px 0 0;padding:0;display:flex;align-items:stretch;gap:8px}
 .route li{display:flex}
 .route a{flex:1;display:flex;flex-direction:column;gap:2px;text-decoration:none;background:#111B2F;border-radius:12px;padding:14px 16px;min-width:0;color:#E8EDF5}
@@ -350,6 +351,17 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <span class="surtitre">L’école EFA</span>
       <h1>L’école EFA</h1>
       <p class="chapo"><strong style="color:#fff">Après EFA, vous savez où passe votre argent, combien en garder, et comment le faire grandir.</strong> Trois cycles pour progresser à votre rythme. Les trois certificats locaux et le certificat CEFA ★ sont ouverts en pilote.</p>
+      <div class="reprise" id="reprise" hidden></div>
+      <ol class="route" aria-label="Le parcours de l’école">
+        <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small><em>Se termine par le certificat local Fondations</em></a></li>
+        <li aria-hidden="true" class="r-fl">›</li>
+        <li><a href="#cycle-maitrise" data-cy-go="maitrise"><span class="r-n">II</span><b>Maîtrise</b><small>Modules 9 à 16 · organiser</small><em>Se termine par le certificat local Maîtrise</em></a></li>
+        <li aria-hidden="true" class="r-fl">›</li>
+        <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small><em>Se termine par le certificat local Patrimoine</em></a></li>
+        <li aria-hidden="true" class="r-fl">›</li>
+        <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux réunis · devenir Passeur</small></a></li>
+      </ol>
+      <div class="apres-route">
       <div class="ecoles" aria-label="Les deux écoles">
         <a class="ec-c" href="ecole-de-la-tontine.html?src=ecole" data-goatcounter-click="ecole-carte-tontine"><span class="ec-k">École de la tontine</span><b>Choisir une tontine, comprendre ses engagements et décider de ce que le groupe peut construire ensemble.</b><em>Explorer l’École de la tontine →</em></a>
         <a class="ec-c" href="ecole-de-la-bourse.html?src=ecole" data-goatcounter-click="ecole-carte-bourse"><span class="ec-k">École de la Bourse</span><b>Comprendre les marchés, choisir comment investir et apprendre à suivre ses décisions.</b><em>Explorer l’École de la Bourse →</em></a>
@@ -367,16 +379,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <p class="ch-diag"><a class="lien-souligne" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-choix-diagnostic">Je ne sais pas par où commencer : faire mon diagnostic</a></p>
       <a class="ch-orga" href="programme-organisation.html?src=ecole" data-goatcounter-click="ecole-choix-organisation"><b>Pour les organisations</b><span>Faites suivre L’école à vos collaborateurs, membres ou élèves : programme à la carte, comptes et tableau de bord.</span><em>Composer un programme →</em></a>
       <p class="ch-trame">Chaque module : une situation concrète, une explication, un exercice avec vos chiffres et une fiche à garder.</p>
-      <div class="reprise" id="reprise" hidden></div>
-      <ol class="route" aria-label="Le parcours de l’école">
-        <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small><em>Se termine par le certificat local Fondations</em></a></li>
-        <li aria-hidden="true" class="r-fl">›</li>
-        <li><a href="#cycle-maitrise" data-cy-go="maitrise"><span class="r-n">II</span><b>Maîtrise</b><small>Modules 9 à 16 · organiser</small><em>Se termine par le certificat local Maîtrise</em></a></li>
-        <li aria-hidden="true" class="r-fl">›</li>
-        <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small><em>Se termine par le certificat local Patrimoine</em></a></li>
-        <li aria-hidden="true" class="r-fl">›</li>
-        <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux réunis · devenir Passeur</small></a></li>
-      </ol>
+      </div>
     </div>
   </div>
 
