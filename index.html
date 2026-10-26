@@ -992,6 +992,35 @@ img.char{object-position:50% 18%}
 .eh-carte b{display:block;font-family:var(--f-display);font-weight:700;font-size:15.5px;line-height:1.3;max-width:150px}.eh-carte small{display:block;font-size:13px;color:#5F6676;margin-top:8px}.eh-carte em{font-style:normal;font-weight:800;font-size:18px;margin-left:auto;width:26px;height:26px;border-radius:50%;background:#F1ECE2;display:grid;place-items:center}
 .eh-carte:hover{box-shadow:0 18px 36px rgba(11,18,32,.2)}.eh-carte:focus-visible{outline:3px solid #1B71B2;outline-offset:3px}
 @media (max-width:900px){.eh-art{width:100%;margin-right:0}}
+
+/* UX « Qu'est-ce qui vous préoccupe ? » (26/10/2026) : titre à l'échelle d'une section, cartes alignées, recherche + puces */
+.ask .head{display:grid;gap:10px;justify-items:center;text-align:center}
+.ask-sur{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+.ask .head h2{font-size:clamp(32px,4.4vw,56px)!important}
+.ask-sous{margin:0;max-width:560px;font-size:clamp(16px,1.5vw,18px);color:#4E5566}
+#besoins.ask{gap:28px}
+.ask .stile .ph{height:auto;aspect-ratio:16/7}
+.ask .stile b{font-family:var(--f-display);font-weight:700;font-size:clamp(18px,1.6vw,21px);line-height:1.22}
+.ask .stile .bd{padding:18px;gap:8px}
+.ask .stile .why{margin-bottom:8px}
+.ask .stile .cta{white-space:nowrap}
+.ask-rech{margin-top:4px}
+.ask-puces{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px}
+.ask-puces a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:999px;background:#FFFDF8;box-shadow:inset 0 0 0 1px #E2D8C4;color:#0B1220;font-size:14.5px;font-weight:700;text-decoration:none}
+.ask-puces a:hover{box-shadow:inset 0 0 0 1.5px #1B71B2;color:#1B71B2}
+.ask-puces a.tous{background:#0B1220;color:#fff;box-shadow:none}
+@media (max-width:640px){
+  .ask .tiles.sit{grid-template-columns:1fr;gap:10px}
+  .ask .stile{flex-direction:row;align-items:stretch;border-radius:14px}
+  .ask .stile .ph{order:1;flex:0 0 92px;aspect-ratio:auto;height:auto;min-height:100%}
+  .ask .stile .bd{order:2;padding:12px 14px;gap:3px;justify-content:center}
+  .ask .stile b{font-size:17px}
+  .ask .stile .why{display:none}
+  .ask .stile .k{font-size:10.5px}
+  .ask .stile .cta{background:none!important;color:#B8341A!important;padding:2px 0 0;font-size:14px;justify-content:flex-start;margin:0}
+  .ask .stile .neuf{padding:1px 7px;font-size:10px}
+  .ask-puces a{font-size:14px;min-height:38px;padding:7px 12px}
+}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 <script type="application/ld+json">
@@ -1077,32 +1106,39 @@ img.char{object-position:50% 18%}
 
   <section class="screen ask" id="besoins" data-step="Mes questions" aria-labelledby="ask-t">
     <div class="head">
+      <p class="ask-sur">Mes outils et diagnostic</p>
       <h2 id="ask-t">Qu’est-ce qui vous préoccupe&nbsp;?</h2>
+      <p class="ask-sous">Choisissez votre situation. Chaque outil est gratuit et se fait en quelques minutes.</p>
     </div>
     <div class="tiles t4 sit">
       <a class="stile s1" href="ou-est-passe-mon-argent.html?src=besoin#questions" data-goatcounter-click="besoin-budget">
-        <span class="bd"><span class="k">01 · Faire le point</span><b>Je ne sais pas où passe mon argent</b><span class="why">Un diagnostic en 5 questions, la méthode et le défi de la semaine.</span><span class="cta">Identifier mes pistes<i aria-hidden="true">→</i></span></span>
+        <span class="bd"><span class="k">Faire le point</span><b>Je ne sais pas où passe mon argent</b><span class="why">Un diagnostic en 5 questions, la méthode et le défi de la semaine.</span><span class="cta">Faire le diagnostic<i aria-hidden="true">→</i></span></span>
         <span class="ph"><img src="https://images.unsplash.com/photo-1714327676544-48dafc3ffa41?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
       <a class="stile s2" href="bourse-essentiel.html?src=besoin" data-goatcounter-click="besoin-brvm">
-        <span class="bd"><span class="k">02 · Investir <em class="neuf">Nouveau</em></span><b>Je veux investir à la BRVM</b><span class="why">L’École de la Bourse : cinq formations courtes avant votre premier ordre.</span><span class="cta">Commencer l’École de la Bourse<i aria-hidden="true">→</i></span></span>
+        <span class="bd"><span class="k">Investir <em class="neuf">Nouveau</em></span><b>Je veux investir à la BRVM</b><span class="why">L’École de la Bourse : cinq formations courtes avant votre premier ordre.</span><span class="cta">Commencer la formation<i aria-hidden="true">→</i></span></span>
         <span class="ph ph-brvm" aria-hidden="true"><svg viewBox="0 0 320 104" preserveAspectRatio="none"><path d="M0 104V78l26-6 22 10 26-20 24 6 22-22 26 12 24-26 22 8 26-24 24 10 22-18 56-14V104Z" fill="#2453C2"/><path d="M0 78l26-6 22 10 26-20 24 6 22-22 26 12 24-26 22 8 26-24 24 10 22-18 56-14" fill="none" stroke="#6DB8F2" stroke-width="3" vector-effect="non-scaling-stroke"/><g fill="#E44828"><rect x="40" y="58" width="8" height="22"/><rect x="112" y="40" width="8" height="18"/><rect x="186" y="30" width="8" height="24"/><rect x="258" y="18" width="8" height="20"/></g></svg></span>
       </a>
       <a class="stile s3" href="outils.html?src=besoin#plan/proches" data-goatcounter-click="besoin-proches">
-        <span class="bd"><span class="k">03 · Organiser</span><b>Je veux mieux aider mes proches</b><span class="why">Mesurer ce que vous donnez, puis fixer une enveloppe qui tient.</span><span class="cta">Organiser mon aide<i aria-hidden="true">→</i></span></span>
+        <span class="bd"><span class="k">Organiser</span><b>Je veux mieux aider mes proches</b><span class="why">Mesurer ce que vous donnez, puis fixer une enveloppe qui tient.</span><span class="cta">Organiser mon aide<i aria-hidden="true">→</i></span></span>
         <span class="ph"><img src="https://images.unsplash.com/photo-1524414621493-7dec026782c3?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
       <a class="stile s4" href="tontine.html" data-goatcounter-click="besoin-tontine">
-        <span class="bd"><span class="k">04 · Comprendre</span><b>Je veux comprendre ma tontine</b><span class="why">Comment elle marche et ce qu’elle vous apporte vraiment.</span><span class="cta">Découvrir la méthode<i aria-hidden="true">→</i></span></span>
+        <span class="bd"><span class="k">Comprendre</span><b>Je veux comprendre ma tontine</b><span class="why">Comment elle marche et ce qu’elle vous apporte vraiment.</span><span class="cta">Comprendre ma tontine<i aria-hidden="true">→</i></span></span>
         <span class="ph"><img src="https://images.unsplash.com/photo-1687422808565-929533931584?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy" onerror="this.style.display='none'"></span>
       </a>
     </div>
-    <p class="ask-more"><span>Autre question&nbsp;? <a href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">Je vais recevoir une grosse somme →</a> · <a href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">Préparer ma retraite →</a></span><a href="parcours.html?src=accueil#cycle-fondations" data-goatcounter-click="ecole-fondations">Découvrir Les Fondations →</a><a href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Voir tous les outils →</a></p>
     <form class="ask-rech" action="outils.html" method="get" role="search">
-      <label for="ask-q">Ou cherchez directement</label>
+      <label for="ask-q">Une autre question&nbsp;? Cherchez directement</label>
       <div><input id="ask-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Budget, tontine, retraite, prêter…"><button type="submit">Rechercher</button></div>
     </form>
-    <p class="ask-guides">Comprendre l’essentiel&nbsp;: <a href="tontine.html">la tontine</a> · <a href="epargner.html">épargner</a> · <a href="construire-son-budget.html">faire son budget en FCFA</a></p>
+    <nav class="ask-puces" aria-label="Autres situations">
+      <a href="outils.html?src=besoin#plan/grosse-somme" data-goatcounter-click="besoin-rentree">Je vais recevoir une grosse somme</a>
+      <a href="preparer-ma-retraite.html?src=besoin" data-goatcounter-click="besoin-retraite">Préparer ma retraite</a>
+      <a href="epargner.html?src=besoin">Épargner</a>
+      <a href="construire-son-budget.html?src=besoin">Faire mon budget en FCFA</a>
+      <a class="tous" href="outils.html?src=besoin" data-goatcounter-click="besoin-tous-outils">Tous les outils →</a>
+    </nav>
   </section>
 
   <!-- Min’Fin : les derniers épisodes de la série (données : minfin.js), vers la vitrine minfin.html -->
