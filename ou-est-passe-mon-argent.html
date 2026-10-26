@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -278,7 +279,7 @@ footer a{color:#D8DEE8;text-decoration:none}
 .plan-a .pa-acts{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
 .plan-a .pa-ok{font-size:15px;font-weight:600;color:var(--ink)}
 </style>
-<link rel="stylesheet" href="footer.css?v=2026102511">
+<link rel="stylesheet" href="footer.css?v=2026102602">
 </head>
 <body>
 
@@ -355,7 +356,7 @@ footer a{color:#D8DEE8;text-decoration:none}
 
 <script src="oepma-calc.js"></script>
 <script src="oepma-pistes.js"></script>
-<script src="plan-efa.js?v=2026102401"></script>
+<script src="plan-efa.js?v=2026102601"></script>
 <script>
 (function(){
   "use strict";
@@ -471,7 +472,7 @@ footer a{color:#D8DEE8;text-decoration:none}
     else if(r.q>0||r.periode) ou="Repérage, question "+(r.q+1)+" sur 5";
     return '<section class="hero dark"><div class="col">'+
       '<p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>'+
-      '<p class="over">Mes outils · gratuit</p><h1 class="t1">Où est passé mon argent&nbsp;?</h1>'+
+      '<p class="over">L’école · outil gratuit</p><h1 class="t1">Où est passé mon argent&nbsp;?</h1>'+
       '<p class="lede">Quelques questions pour repérer ce qu’il faut regarder. Puis, si vous le souhaitez, faites le bilan avec vos chiffres.</p>'+
       (ou&&touche?'<div class="reprise"><div><b>Reprendre mon parcours</b><span>'+esc(ou)+(S.migre?" · repris depuis la version précédente":"")+'</span></div><button type="button" class="btn btn-w" data-act="reprendre">Reprendre</button></div>':'')+
       '<div class="acts"><button type="button" class="btn btn-c" data-act="reperage">Identifier mes pistes</button><button type="button" class="lien" data-act="bilanDirect">J’ai mes chiffres : faire le bilan détaillé</button></div>'+
@@ -496,7 +497,7 @@ footer a{color:#D8DEE8;text-decoration:none}
     var art=p.map(function(pi){
       var m=E.PISTES[pi.id]||{}, M=E.MODULES[m.module], s=E.sujet(m.sujet), d=lienPoste(m), pr=m.parcours&&E.PARCOURS[m.parcours];
       var loin=[];
-      if(M) loin.push(M.dispo?'<a href="outils.html#plan/'+esc(m.sujet)+'">Méthode : '+esc(M.titre)+'</a>':'Méthode « '+esc(M.titre)+' » : bientôt');
+      if(M) loin.push(M.dispo?'<a href="outils.html#plan/'+esc(m.sujet)+'">Méthode : '+esc(M.titre)+'</a>':M.page?'<a href="'+esc(M.page)+'?src=pistes">Méthode : '+esc(M.titre)+'</a>':'Méthode « '+esc(M.titre)+' » : bientôt');
       if(pr) loin.push('<a href="'+esc(pr.url.replace("src=plan","src=oepma"))+'">Parcours : '+esc(pr.titre)+'</a>');
       return '<article class="pa"><h3 class="t3">'+esc(pi.titre)+'</h3><dl><dt>Maintenant</dt><dd>'+esc(pi.action)+'</dd>'+
         '<dt>Cette semaine</dt><dd>'+(d?'Le défi des sept jours&nbsp;: <a href="'+d.url+'">'+esc(d.txt)+'</a>':'Refaites l’action ci-dessus sur une semaine complète&nbsp;; le défi dédié arrivera avec sa méthode.')+'</dd>'+
@@ -754,6 +755,6 @@ footer a{color:#D8DEE8;text-decoration:none}
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102525" defer></script>
+<script src="efa-appli.js?v=2026102602" defer></script>
 </body>
 </html>

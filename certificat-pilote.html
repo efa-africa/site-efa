@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Certificat EFA Fondations · Pilote</title>
+<title>Certificat local Fondations · Pilote</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="logo-efa-96.png">
 <meta name="author" content="EFA · Éducation Financière Afrique">
@@ -43,7 +43,7 @@ body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--f-b
 .illu.photo .legende{position:relative;width:100%;color:#fff;padding:5cqw 1.6cqw 1.6cqw;background:linear-gradient(to top,rgba(11,18,32,.92),rgba(11,18,32,0))}
 .legende{font-size:max(10px,1.4cqw);font-weight:700;text-align:center;line-height:1.3}
 .texte{display:flex;flex-direction:column;justify-content:center;gap:1.3cqw;min-width:0}
-.sur{font-size:max(9px,1.2cqw);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.sur{font-size:max(9px,1.2cqw);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#B8341A}
 .h{font-family:var(--f-display);font-weight:700;font-size:max(16px,3.2cqw);line-height:1.12;color:var(--nuit);margin:0;text-wrap:balance}
 .p{font-size:max(12px,1.75cqw);line-height:1.45;color:var(--ink2);margin:0}
 .p strong{color:var(--ink)}
@@ -198,7 +198,7 @@ body{justify-content:safe center}
   <section class="cadre" aria-label="Écran d'apprentissage">
     <div class="barre">
       <span class="label">Écran d'apprentissage</span>
-      <span class="titre-mod" id="titre">Certificat EFA Fondations</span>
+      <span class="titre-mod" id="titre">Certificat local Fondations</span>
       <span class="compteur" id="compteur"></span>
     </div>
     <nav class="progres" id="progres" aria-label="Progression"></nav>
@@ -213,7 +213,7 @@ body{justify-content:safe center}
   </section>
 </div>
 <div id="certif-wrap" hidden>
-  <article class="certificat" aria-label="Certificat EFA Fondations">
+  <article class="certificat" aria-label="Certificat local Fondations">
     <div class="c-haut"><img src="certificat-pilote/logo-efa.png" alt="Logo EFA"><span class="c-logo">EFA · Éducation Financière Afrique</span><span class="c-specimen">Pilote 2026</span></div>
     <div class="c-milieu">
       <span class="c-sur">Certificat EFA · Niveau 1</span>
@@ -240,12 +240,12 @@ body{justify-content:safe center}
   </div>
   <div id="apercu" aria-live="polite"></div>
 </div>
-<p class="mention">Parcours réalisé avec l'aide de l'intelligence artificielle, vérifié par l'équipe EFA. Koffi et Tantie Affoué sont des personnages fictifs ; leurs montants sont fictifs. EFA éduque, elle ne conseille aucun produit ni établissement. Le Certificat EFA est une attestation de parcours, pas un diplôme.</p>
+<p class="mention">Parcours réalisé avec l'aide de l'intelligence artificielle, vérifié par l'équipe EFA. Koffi et Tantie Affoué sont des personnages fictifs ; leurs montants sont fictifs. EFA éduque, elle ne conseille aucun produit ni établissement. Le certificat local Fondations est une attestation de parcours, pas un diplôme.</p>
 <script>
 var MODULES=[];
 function fcfa(n){return window.fcfa(n)}
 MODULES.push((function(){
-  var NUM=1, COURT=`Flux et stock`;
+  var NUM=1, COURT=`Où passe mon argent ?`;
   var SUITE=`Vous savez distinguer ce qui passe de ce qui reste. Le module 2, <strong>Budget</strong>, est débloqué.`;
   var RAPPEL=`Le <span class="c">flux</span> dit ce qui passe.<br>Le <span class="s">stock</span> dit ce qui reste.`;
   var etapes=[
@@ -316,10 +316,10 @@ MODULES.push((function(){
      x:`30 000 − 10 000 + 20 000 = + 40 000 F. Les flux s'additionnent dans le stock.`}
   ];
 
-  return {num:NUM, court:COURT, titre:'Flux et stock : où va mon argent', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:'Où passe mon argent ? · Flux et stock', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Budget`;
+  var COURT=`Un budget qui tient`;
   var NUM=2;
   var SUITE=`Vous savez donner un rôle à chaque franc avant qu'il arrive. Le module 3, <strong>Tontine</strong>, est débloqué.`;
   var RAPPEL=`Un budget, c'est décider <span class="c">avant</span> que l'argent arrive.`;
@@ -392,10 +392,10 @@ MODULES.push((function(){
      x:`Revenu − épargne − fixes − variables = 0 : tout l'argent a une destination décidée d'avance.`}
   ];
 
-  return {num:NUM, court:COURT, titre:'Le budget : décider avant de dépenser', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:'Un budget qui tient · Décider avant de dépenser', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Tontine`;
+  var COURT=`Ma tontine, du cercle à la spirale`;
   var NUM=3;
   var SUITE=`Vous savez ce que la tontine fait, et ce qu'elle ne fait pas. Le module 4, <strong>Épargne de précaution</strong>, est débloqué.`;
   var RAPPEL=`La tontine <span class="c">avance</span> ou <span class="s">retarde</span> votre argent.<br>Elle ne l'augmente pas.`;
@@ -467,10 +467,10 @@ MODULES.push((function(){
      x:`Le risque d'une tontine, c'est le défaut d'un membre. La confiance et une règle claire en cas d'impayé protègent le groupe.`}
   ];
 
-  return {num:NUM, court:COURT, titre:'Tontine : décalage de trésorerie ou épargne ?', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:'Ma tontine, du cercle à la spirale · Trésorerie ou épargne ?', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Épargne de précaution`;
+  var COURT=`Ma réserve de sécurité`;
   var NUM=4;
   var SUITE=`Vous avez votre plan de réserve. Le module 5, <strong>L'argent de la famille</strong>, est débloqué.`;
   var RAPPEL=`<span class="c">Disponible.</span><br>Séparée.<br><span class="s">Sûre.</span>`;
@@ -544,10 +544,10 @@ MODULES.push((function(){
      x:`300 000 ÷ 25 000 = 12 mois.`}
   ];
 
-  return {num:NUM, court:COURT, titre:'Épargne de précaution : se protéger des imprévus', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:'Ma réserve de sécurité · Se protéger des imprévus', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Famille et prêts`;
+  var COURT=`Aider mes proches sans me perdre`;
   var NUM=5;
   var SUITE=`Vous savez aider sans vous mettre en danger. Le module 6, <strong>Dette et crédit</strong>, est débloqué.`;
   var RAPPEL=`Un prêt se rend.<br>Un cadeau se donne.<br>Dites-le <span class="c">avant</span>.`;
@@ -615,10 +615,10 @@ MODULES.push((function(){
      x:`Un petit mot écrit protège la relation autant que l'argent.`}
   ];
 
-  return {num:NUM, court:COURT, titre:"L'argent de la famille : prêt ou cadeau ?", suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:"Aider mes proches sans me perdre · Prêt ou cadeau ?", suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Dette et crédit`;
+  var COURT=`Reprendre la main sur mes dettes`;
   var NUM=6;
   var SUITE=`Vous savez lire le vrai prix d'un crédit. Le module 7, <strong>Mobile money et frais</strong>, est débloqué.`;
   var RAPPEL=`Le vrai prix d'un crédit,<br>c'est le <span class="c">coût total</span>.`;
@@ -692,10 +692,10 @@ MODULES.push((function(){
      x:`Ces trois éléments disent ce que le crédit vous coûtera, même en cas de difficulté.`}
   ];
 
-  return {num:NUM, court:COURT, titre:"Dette et crédit : ce que coûte l'argent emprunté", suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:"Reprendre la main sur mes dettes · Ce que coûte l'argent emprunté", suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Mobile money`;
+  var COURT=`Mobile money et frais`;
   var NUM=7;
   var SUITE=`Vous savez ce que coûtent vos opérations et comment protéger votre compte. Le module 8, <strong>Assurance et arnaques</strong>, est débloqué.`;
   var RAPPEL=`Petits frais × souvent<br>= <span class="c">gros coût</span>.`;
@@ -767,12 +767,12 @@ MODULES.push((function(){
      x:`Un code vu n'est plus secret : changez-le sans attendre.`}
   ];
 
-  return {num:NUM, court:COURT, titre:'Mobile money : frais et sécurité', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:'Mobile money et frais · Frais et sécurité', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 MODULES.push((function(){
-  var COURT=`Assurance et arnaques`;
+  var COURT=`Se protéger, protéger sa famille`;
   var NUM=8;
-  var SUITE=`Vous avez terminé les huit modules du Certificat EFA Fondations. <strong>L'examen final est débloqué.</strong>`;
+  var SUITE=`Vous avez terminé les huit modules du Certificat local Fondations. <strong>L'examen final est débloqué.</strong>`;
   var RAPPEL=`Rendement très élevé<br>+ « garanti »<br>= <span class="c">danger</span>.`;
   var etapes=[
     {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-portrait.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`Tantie Affoué<br>commerçante au marché`,
@@ -839,7 +839,7 @@ MODULES.push((function(){
      x:`Payer les premiers est la stratégie même de la pyramide.`}
   ];
 
-  return {num:NUM, court:COURT, titre:'Se protéger : assurance et arnaques', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+  return {num:NUM, court:COURT, titre:'Se protéger, protéger sa famille · Assurance et arnaques', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
 })());
 </script>
 <script>
@@ -882,7 +882,7 @@ MODULES.push((function(){
   // ---------- sommaire
   function sommaire(){
     vue='sommaire';cadre.hidden=false;certifWrap.hidden=true;
-    titre.textContent='Certificat EFA Fondations · Sommaire';
+    titre.textContent='Certificat local Fondations · Sommaire';
     var v=nbValides(); compteur.textContent=v+' / 8';
     segments(8,function(k){return etat.valides[k+1]});
     var tuiles=MODULES.map(function(m){
@@ -893,7 +893,7 @@ MODULES.push((function(){
     tuiles+='<button type="button" class="tuile exam'+(r?' ok':'')+'" data-m="examen"><span class="tnum">✦</span><span class="tnom">Examen final</span><span class="tetat">'+(r?'Réussi · '+r.score+' / 24':'24 questions · 30 min')+'</span></button>';
     corps.className='corps';
     corps.innerHTML='<div class="illu nuit accueil"><img class="logo" src="certificat-pilote/logo-efa.png" alt="Logo EFA"><span class="tabtitre">Éducation Financière Afrique</span>'
-      +'<div class="grand">Certificat EFA<br>Fondations</div><div class="mot">8 modules · 1 examen · environ 2 heures</div>'
+      +'<div class="grand">Certificat local<br>Fondations</div><div class="mot">8 modules · 1 examen · environ 2 heures</div>'
       +'<div class="mot">L\'argent s\'apprend.</div><button type="button" class="lienraz" id="raz">Réinitialiser ma progression</button></div>'
       +'<div class="texte"><span class="sur">Sommaire</span><h2 class="h hs">Les bases pour reprendre la main sur votre argent</h2><div class="tuiles">'+tuiles+'</div>'
       +'<p class="note">Version pilote : tous les modules sont ouverts. Suivez-les dans l\'ordre, un par jour suffit. Le pilote est ouvert jusqu\'au 30 novembre 2026.</p></div>';
@@ -905,7 +905,7 @@ MODULES.push((function(){
   }
 
   // ---------- modules
-  function ouvrir(n){M=MODULES[n-1];i=0;qi=0;rep=[];ordreQ=null;vue='module';titre.textContent='Certificat EFA Fondations · Module '+M.num+' · '+M.titre;rendre()}
+  function ouvrir(n){M=MODULES[n-1];i=0;qi=0;rep=[];ordreQ=null;vue='module';titre.textContent='Certificat local Fondations · Module '+M.num+' · '+M.titre;rendre()}
   function illu(e){
     if(e.exo) return '<div class="illu bleu"><span class="tabtitre">'+M.exo.titre+'</span><div class="resultat" id="res">—</div><div class="verdict" id="ver">Saisissez vos montants</div></div>';
     if(e.photo) return '<figure class="illu photo"><img src="'+e.photo+'" alt="'+(e.alt||'Koffi')+'" style="object-position:'+e.pos+'"><figcaption class="legende">'+e.leg+'</figcaption></figure>';
@@ -972,7 +972,7 @@ MODULES.push((function(){
   // ---------- examen
   function echecsRecents(){var t=Date.now();return etat.tentatives.filter(function(a){return !a.ok&&t-a.t<864e5})}
   function examenIntro(){
-    vue='examen';arreterChrono();titre.textContent='Certificat EFA Fondations · Examen final';compteur.textContent='Examen';
+    vue='examen';arreterChrono();titre.textContent='Certificat local Fondations · Examen final';compteur.textContent='Examen';
     segments(8,function(k){return etat.valides[k+1]});
     var ech=echecsRecents(), bloque=!etat.reussite&&ech.length>=EXAMEN.essais, reste=EXAMEN.essais-ech.length;
     var attente='';
@@ -980,7 +980,7 @@ MODULES.push((function(){
     var v=nbValides();
     corps.className='corps';
     corps.innerHTML='<div class="illu nuit"><span class="tabtitre">Examen final</span><div class="resultat">24</div><div class="mot">questions</div><div class="resultat">30 min</div><div class="mot">70 % pour réussir, soit 17 bonnes réponses</div></div>'
-      +'<div class="texte"><span class="sur">Avant de commencer</span><h2 class="h">L\'examen du Certificat EFA Fondations</h2>'
+      +'<div class="texte"><span class="sur">Avant de commencer</span><h2 class="h">L\'examen du Certificat local Fondations</h2>'
       +'<p class="p"><strong>3 questions par module</strong>, tirées au hasard parmi 10. Vous pouvez revenir sur une question tant que vous n\'avez pas terminé.</p>'
       +'<p class="p">Pas de correction pendant l\'examen : votre résultat s\'affiche à la fin, module par module.</p>'
       +'<p class="p"><strong>3 tentatives</strong>, puis 24 heures d\'attente. '+(etat.reussite?'Vous avez déjà réussi l\'examen.':bloque?attente:'Tentatives restantes : <strong>'+reste+'</strong>.')+'</p>'
@@ -1032,7 +1032,7 @@ MODULES.push((function(){
     corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">'+(tempsEcoule?'Temps écoulé · ':'')+'Votre score</span><div class="score">'+s+' / 24</div><div class="verdict">'+pct+' % · '+(ok?'Examen réussi':'Seuil : 17 bonnes réponses')+'</div></div>'
       +'<div class="texte"><span class="sur">Résultat de l\'examen</span><h2 class="h">'+(ok?'Félicitations, vous avez réussi':'Pas encore, mais vous approchez')+'</h2>'
       +'<table class="tab clair">'+lignes+'</table>'
-      +'<p class="p">'+(ok?'Votre Certificat EFA Fondations vous attend.':(faibles.length?'Revoyez en priorité le'+(faibles.length>1?'s modules ':' module ')+faibles.join(', ')+'. ':'')+'Tentatives restantes : '+Math.max(0,EXAMEN.essais-echecsRecents().length)+'.')+'</p></div>';
+      +'<p class="p">'+(ok?'Votre Certificat local Fondations vous attend.':(faibles.length?'Revoyez en priorité le'+(faibles.length>1?'s modules ':' module ')+faibles.join(', ')+'. ':'')+'Tentatives restantes : '+Math.max(0,EXAMEN.essais-echecsRecents().length)+'.')+'</p></div>';
     boutons({retour:true,prec:false,suiv:ok?{t:'Obtenir mon certificat',f:certificat}:{t:'Revenir à l\'examen',f:examenIntro},duree:''});
     segments(8,function(k){return (parM[k+1]||0)>=2});
     anim();
@@ -1042,7 +1042,7 @@ MODULES.push((function(){
   function certificat(){
     var r=etat.reussite; if(!r) return examenIntro();
     if(!r.nom){
-      vue='certif';titre.textContent='Certificat EFA Fondations · Votre certificat';compteur.textContent='✦';
+      vue='certif';titre.textContent='Certificat local Fondations · Votre certificat';compteur.textContent='✦';
       corps.className='corps';
       corps.innerHTML='<div class="illu bleu"><span class="tabtitre">Examen réussi</span><div class="score">'+r.score+' / 24</div><div class="verdict">'+r.pct+' %</div></div>'
         +'<div class="texte"><span class="sur">Votre certificat</span><h2 class="h">Quel nom inscrire sur votre certificat ?</h2>'
@@ -1074,7 +1074,7 @@ MODULES.push((function(){
       dessiner(true);
       var url;
       try{url=cv.toDataURL('image/png')}catch(e){cv=document.createElement('canvas');cv.width=W;cv.height=H;g=cv.getContext('2d');dessiner(false);url=cv.toDataURL('image/png')}
-      offrir(cv,'badge-certificat-efa-fondations-'+(W===H?'carre':'statut')+'.png',url,'Badge Certificat EFA Fondations');
+      offrir(cv,'badge-certificat-efa-fondations-'+(W===H?'carre':'statut')+'.png',url,'Badge Certificat local Fondations');
     });
     function dessiner(avecLogo){
       g.fillStyle='#0B1220';g.fillRect(0,0,W,H);
@@ -1111,7 +1111,7 @@ MODULES.push((function(){
     Promise.race([pret,new Promise(function(ok){setTimeout(ok,2500)})]).then(function(){
       dessiner(true);var url;
       try{url=cv.toDataURL('image/png')}catch(e){cv=document.createElement('canvas');cv.width=W;cv.height=H;g=cv.getContext('2d');dessiner(false);url=cv.toDataURL('image/png')}
-      offrir(cv,'certificat-efa-fondations-'+r.numero+'.png',url,'Certificat EFA Fondations');
+      offrir(cv,'certificat-efa-fondations-'+r.numero+'.png',url,'Certificat local Fondations');
     });
     function dessiner(avecLogo){
       var X=320;
@@ -1146,6 +1146,6 @@ MODULES.push((function(){
   var mq=+(new URLSearchParams(location.search).get('m')||0); if(mq>=1&&mq<=MODULES.length) ouvrir(mq); else sommaire();
 })();
 </script>
-<script src="efa-suite.js?v=2026102525" defer></script>
+<script src="efa-suite.js?v=2026102602" defer></script>
 <script src="efa-compte.js?v=2026102530" defer></script>
 </body></html>

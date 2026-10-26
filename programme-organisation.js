@@ -79,7 +79,7 @@
     if (t > cap) {
       var sem = besoin(modulesChoisis(), S.min), mn = Math.ceil(t / S.semaines / 15) * 15;
       A.push({ id: "charge", t: "Le temps disponible", p: "Votre sélection demande environ " + duree(t) + ", pour " + duree(cap) + " disponibles (" + S.semaines + " semaines × " + S.min + " min).",
-        o: [["allonger", "Allonger le programme à " + sem + " semaines", ""], ["rythme", "Passer à " + mn + " min par semaine", ""], ["prioriser", "Garder seulement ce qui tient en " + S.semaines + " semaines, dans l’ordre des sujets choisis", ""]] });
+        o: [["allonger", "Allonger le programme à " + sem + " semaines", ""]].concat(mn <= 120 ? [["rythme", "Passer à " + duree(mn) + " par semaine", ""]] : []).concat([["prioriser", "Garder seulement ce qui tient en " + S.semaines + " semaines, dans l’ordre des sujets choisis", ""]]) });
     } else if (t < cap * 0.4 && ids.length) {
       A.push({ id: "marge", t: "Il vous reste du temps", p: "Votre sélection demande environ " + duree(t) + " sur " + duree(cap) + " disponibles.",
         o: [["raccourcir", "Raccourcir le programme à " + Math.max(1, Math.ceil(t / S.min)) + " semaines", ""], ["garder", "Garder " + S.semaines + " semaines : plus de temps pour les outils et les défis", ""]] });
@@ -187,7 +187,7 @@
       box.onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; S.arb[box.dataset.arb] = b.dataset.v; box.querySelectorAll(".ch").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); mesure("orga-arbitrage-" + box.dataset.arb + "-" + b.dataset.v);
         // un choix peut en faire apparaître un autre (ex. compléter les Fondations augmente la durée)
         var avant = A.map(function (a) { return a.id; }).join(); appliquer(); var apres = arbitragesApres().map(function (a) { return a.id; }).join();
-        if (avant !== apres) { e4(); return; }
+        if (avant !== apres || box.dataset.arb === "socle" || box.dataset.arb === "certif") { var y = window.scrollY; e4(); window.scrollTo(0, y); return; } // les durées proposées se recalculent
         $("suiv").disabled = !A.every(function (a) { return S.arb[a.id]; }); };
     });
     $("suiv").onclick = function () {

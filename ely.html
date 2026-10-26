@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8">
+<meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B1220">
 <meta name="description" content="Ely, le guide d'Éducation Financière Afrique : posez vos questions sur le budget, la tontine, l'épargne et les prêts à la famille.">
@@ -228,7 +229,7 @@ const MESSAGES={
 
 async function envoyer(texte){
   texte=(texte||"").trim();if(!texte||enCours)return;
-  if(!sample){bulle("ely",'<span class="erreur">Ely est momentanément indisponible. Réessayez dans quelques minutes, ou écrivez-nous à contact@efa.africa.</span>');return}
+  if(!sample){bulle("ely",'<span class="erreur">Ely est momentanément indisponible. Réessayez dans quelques minutes, ou écrivez-nous à newsletter@efa.africa.</span>');return}
   bulle("moi",esc(texte).replace(/\n/g,"<br>"));
   tours.push({role:"user",content:texte});
   saisie.value="";ajuste();
@@ -283,5 +284,5 @@ document.getElementById("nouveau").onclick=()=>{ctl?.abort();tours=[];SESSION=no
 
 etat(false);accueil();
 </script>
-<script src="efa-suite.js?v=2026102525" defer></script>
+<script src="efa-suite.js?v=2026102602" defer></script>
 </html>

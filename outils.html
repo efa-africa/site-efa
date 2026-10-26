@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -398,7 +399,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 .mfq-p::before{content:"";border-left:10px solid #0B1220;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
 .mfq-t{left:12px;right:12px;bottom:12px;font:700 16px/1.22 var(--f-display)}
 </style>
-<link rel="stylesheet" href="footer.css?v=2026102511">
+<link rel="stylesheet" href="footer.css?v=2026102602">
 <script src="parcours-efa.js?v=2026102512"></script>
 <script src="parcours-ui.js?v=2026102512"></script>
 </head>
@@ -418,7 +419,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <p class="kick"><a href="parcours.html" style="color:inherit">L’école EFA</a> · La boîte à outils</p>
     <h1>Comprendre votre argent. Et agir.</h1>
-    <p class="lead">Partez de votre question et suivez votre parcours. Faites le point en quelques minutes, suivez vos progrès dans votre cahier, et comprenez les mots de l’argent.</p>
+    <p class="lead">Partez de votre question et suivez votre module. Faites le point en quelques minutes, suivez vos progrès dans votre cahier, et comprenez les mots de l’argent.</p>
     <form class="rech" role="search" id="rech-f" onsubmit="return false">
       <label for="rq">Rechercher une question, un outil ou un mot</label>
       <div class="rech-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="rq" type="search" autocomplete="off" enterkeyhint="search" placeholder="Par exemple : budget, tontine, retraite, prêter, assurance…"><button type="button" class="rech-x" id="rq-x" hidden>Effacer</button></div>
@@ -587,7 +588,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
   </div>
 </footer>
 <script src="dico.js"></script>
-<script src="plan-efa.js?v=2026102401"></script>
+<script src="plan-efa.js?v=2026102601"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -714,7 +715,7 @@ var OUTILS = [
     mesure("plan-sujet-"+s.slug);
     var mes=c&&c.pistes?c.pistes.liste.filter(function(p){var m=E.PISTES[p.id];return m&&m.sujet===s.slug;}):[];
     var t1=s.diagnostic?(mes.length
-      ?'<li><h3>Vos pistes</h3><p class="sous">Trouvées par votre diagnostic du '+esc(dateCourte(c.pistes.date))+'.</p><div class="corps"><div class="pistes-p">'+mes.map(function(p){var m=E.PISTES[p.id], M=E.MODULES[m.module]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a"><b>Maintenant&nbsp;:</b> '+esc(p.action)+'</span>'+(M?'<span class="a"><b>Méthode&nbsp;:</b> '+esc(M.titre)+(M.dispo?'':' (bientôt)')+'</span>':'')+'</article>';}).join("")+'</div><a class="lnk" href="'+esc(s.diagnostic.url)+'">Refaire le diagnostic</a></div></li>'
+      ?'<li><h3>Vos pistes</h3><p class="sous">Trouvées par votre diagnostic du '+esc(dateCourte(c.pistes.date))+'.</p><div class="corps"><div class="pistes-p">'+mes.map(function(p){var m=E.PISTES[p.id], M=E.MODULES[m.module]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a"><b>Maintenant&nbsp;:</b> '+esc(p.action)+'</span>'+(M?'<span class="a"><b>Méthode&nbsp;:</b> '+(M.page&&!M.dispo?'<a href="'+esc(M.page)+'?src=cahier">'+esc(M.titre)+'</a>':esc(M.titre)+(M.dispo?'':' (bientôt)'))+'</span>':'')+'</article>';}).join("")+'</div><a class="lnk" href="'+esc(s.diagnostic.url)+'">Refaire le diagnostic</a></div></li>'
       :'<li><h3>Faire le point</h3><p class="sous">'+esc(s.diagnostic.texte)+' Facultatif&nbsp;: si vous savez déjà ce qui coince, passez à la suite.</p><div class="corps"><a class="btn btn-dark" href="'+esc(s.diagnostic.url)+'" style="justify-self:start">'+esc(s.diagnostic.titre)+'</a></div></li>'):'';
     var mods=s.modules.map(function(k,i){return vueModule(k,i===0&&E.MODULES[k].dispo);}).join("");
     var t2=mods?'<li><h3>Comprendre la méthode</h3><p class="sous">'+(s.modules.every(function(k){return E.MODULES[k].dispo;})?'Quatre méthodes courtes, dans l’ordre. La première est ouverte.':'Lisez la méthode avant de vous exercer. Les autres arrivent au fil des tests.')+'</p><div class="corps">'+mods+'</div></li>':'';
@@ -1102,7 +1103,7 @@ var OUTILS = [
 </script>
 <script src="prevenir.js?v=2026102601" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102525" defer></script>
+<script src="efa-appli.js?v=2026102602" defer></script>
 <script src="minfin.js?v=202610241407"></script>
 <script>
 (function(){

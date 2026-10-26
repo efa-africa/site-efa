@@ -37,6 +37,25 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", barreNav); else barreNav();
 
+  /* ---------- Mentions obligatoires en bas de page ----------
+     Chaque page dit, si elle ne le dit pas déjà : contenus faits avec l'aide de l'IA et vérifiés, personnages fictifs,
+     éducation et non conseil. */
+  function mentions() {
+    var pg = location.pathname.split("/").pop() || "index.html";
+    if (["admin-ecole.html", "espace-organisation.html", "tableau-ely.html"].indexOf(pg) >= 0 || document.querySelector(".efa-mentions")) return;
+    var t = (document.body.innerText || "").toLowerCase(), m = [];
+    if (t.indexOf("intelligence artificielle") < 0) m.push("Contenus pédagogiques réalisés avec l’aide de l’intelligence artificielle et vérifiés par l’équipe EFA. Les personnages et leurs montants sont fictifs.");
+    if (!/pas (un )?conseil|ni conseil|aucun conseil|éducation, pas conseil|pas de conseil/.test(t)) m.push("EFA fait de l’éducation financière : ni conseil en investissement, ni vente de produits financiers.");
+    if (!m.length) return;
+    var st = document.createElement("style");
+    st.textContent = ".efa-mentions{max-width:1120px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left,0px));font:400 13px/1.5 'Source Sans 3','Source Sans Pro',system-ui,sans-serif;color:#5F6676;text-align:center}.efa-foot .efa-mentions{color:#8E98AA;padding-inline:0;text-align:left}";
+    document.head.appendChild(st);
+    var p = document.createElement("p"); p.className = "efa-mentions"; p.textContent = m.join(" ");
+    var bas = document.querySelector(".efa-foot .ef-bot");
+    if (bas) bas.parentNode.insertBefore(p, bas); else document.body.appendChild(p);
+  }
+  if (document.readyState === "complete") setTimeout(mentions, 0); else window.addEventListener("load", function () { setTimeout(mentions, 300); });
+
   /* ---------- Partage : « Si ça vous a aidé, partagez » ----------
      Tout bouton [data-efa-partager] du site déclenche le partage (attributs facultatifs :
      data-efa-partager="whatsapp|facebook|copier", data-titre, data-url). */
@@ -96,7 +115,7 @@
     "rejoindre.html": ["parcours.html", "L’école"],
     "espace-organisation.html": ["programme-organisation.html", "Composer un programme"]
   };
-  var SANS_FIL = ["admin-ecole.html", "tableau-ely.html", "ely.html"];
+  var SANS_FIL = ["admin-ecole.html", "tableau-ely.html", "ely.html", "index.html"]; // l'accueil est le point de départ : ses deux portes suffisent
   var FIL = "efa_fil";
   function court(t) { t = String(t || "").replace(/\s*·\s*EFA.*$/, "").replace(/\s*\|.*$/, "").trim(); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, "") + "…" : t; }
   function filSuivant(href, label) {
@@ -131,8 +150,14 @@
       // Retour réel quand on vient de la page précédente du site : la page reprend où on l'avait laissée
       try { if (S.length > 1 && document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { e.preventDefault(); history.back(); } } catch (x) {}
     });
-    var hd = document.querySelector(".efa-nav") || document.querySelector("header");
-    if (hd && hd.parentNode) hd.parentNode.insertBefore(f, hd.nextSibling); else document.body.insertBefore(f, document.body.firstChild);
+    var hd = document.querySelector(".efa-nav") || document.querySelector("header"), mn = document.querySelector("main");
+    if (hd && getComputedStyle(hd).position === "fixed" && mn) {
+      // En-tête fixe (accueil, organisations, rendez-vous) : la barre se place sous lui, en tête du contenu
+      var bas = hd.getBoundingClientRect().bottom, tk = document.getElementById("tk");
+      if (tk && getComputedStyle(tk).position === "fixed") bas = Math.max(bas, tk.getBoundingClientRect().bottom);
+      f.style.marginTop = Math.round(bas) + "px"; mn.insertBefore(f, mn.firstChild);
+      var pt = parseFloat(getComputedStyle(mn).paddingTop) || 0; if (pt >= bas) f.style.marginTop = "0px";
+    } else if (hd && hd.parentNode) hd.parentNode.insertBefore(f, hd.nextSibling); else document.body.insertBefore(f, document.body.firstChild);
     // Suivant par défaut : la table SUIVANT, sinon reprendre le module en cours, sinon L'école
     var et = {}; try { et = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; } catch (e) {}
     if (SUIVANT[pg]) filSuivant(SUIVANT[pg][0], SUIVANT[pg][1]);
@@ -182,8 +207,8 @@
     + ".efa-suite .es-prog{font-size:13px;color:#8E98AA;margin-top:6px}"
     + ".efa-suite .es-acts{display:flex;flex-direction:column;align-items:flex-start;gap:12px}"
     + ".efa-suite .es-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 22px;border-radius:8px;border:0;background:#DA3C1B;color:#fff;font:800 16px/1.2 inherit;font-family:inherit;text-decoration:none;cursor:pointer}"
-    + ".efa-suite .es-lien{color:#fff;font-weight:700;font-size:15px;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:5px;background:none;border:0;padding:0;cursor:pointer;font-family:inherit;text-align:left}"
-    + ".efa-suite .es-fait{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:#C9D1DE;cursor:pointer}"
+    + ".efa-suite .es-lien{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:700;font-size:15px;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:5px;background:none;border:0;padding:0;cursor:pointer;font-family:inherit;text-align:left}"
+    + ".efa-suite .es-fait{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:#C9D1DE;cursor:pointer;min-height:44px}"
     + ".efa-suite .es-fait input{width:20px;height:20px;accent-color:#3CCB7F;margin:0}"
     + ".efa-suite .es-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}"
     + ".efa-suite .es-chip{font-size:14px;color:#fff;text-decoration:none;background:#111B2F;border-radius:999px;padding:6px 12px}"
@@ -198,7 +223,7 @@
     + ".efa-suite .es-merci{grid-column:1/-1;background:#DA3C1B;color:#fff;border-radius:12px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}"
     + ".efa-suite .es-merci p{margin:0;flex:1 1 260px;color:#fff;font-size:16px}"
     + ".efa-suite .es-merci .es-pb{background:#fff;color:#0B1220}"
-    + ".efa-suite .es-autres{font-size:13px;color:#8E98AA}.efa-suite .es-autres summary{cursor:pointer}"
+    + ".efa-suite .es-autres{font-size:13px;color:#8E98AA}.efa-suite .es-autres summary{cursor:pointer;min-height:40px;display:flex;align-items:center}.efa-suite .es-autres a.es-lien{display:inline-block;padding:10px 0}"
     + ".efa-ctx{background:#111B2F;color:#E8EDF5;font-family:\"Source Sans 3\",\"Source Sans Pro\",system-ui,sans-serif;font-size:14.5px;padding:10px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between}"
     + ".efa-ctx b{color:#fff}.efa-ctx a{color:#fff;font-weight:800;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:4px}"
     + ".efa-ctx .ctx-acts{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}"

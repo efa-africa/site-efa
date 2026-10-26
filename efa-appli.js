@@ -140,7 +140,8 @@
     document.head.appendChild(css);
     var bloc = document.createElement("div");
     bloc.id = "efa-ely";
-    var ferme = false, discret = /\/(outils|parcours)(\.html)?$/.test(location.pathname) || document.body.hasAttribute("data-ely-discret");
+    var ferme = false, discret = /\/(outils|parcours)(\.html)?$/.test(location.pathname) || document.body.hasAttribute("data-ely-discret")
+      || (window.matchMedia && window.matchMedia("(max-width:640px)").matches); // téléphone : petite icône, jamais sur le premier écran
     try { ferme = localStorage.getItem("efa-ely-bulle") === "fermee"; } catch (e) {}
     if (discret) {
       ferme = true; bloc.className = "discret"; document.body.classList.add("ely-discret");
@@ -166,7 +167,7 @@
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
-  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102525"; s.defer = true; document.head.appendChild(s);
+  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102602"; s.defer = true; document.head.appendChild(s);
   var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102512"; f.defer = true; document.head.appendChild(f);
   if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102501"; u.defer = true; document.head.appendChild(u); }
   if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102530"; k.defer = true; document.head.appendChild(k); }

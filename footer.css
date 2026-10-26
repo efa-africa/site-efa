@@ -22,7 +22,7 @@ footer.efa-foot[hidden]{display:none}
 .efa-foot li a:hover,.efa-foot .ef-bot a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .efa-foot a:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px;border-radius:4px}
 .efa-foot .ef-bot{display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:#8E98AA}
-.efa-foot .ef-bot a{color:#C9D1DE;text-decoration:none}
+.efa-foot .ef-bot a{color:#C9D1DE;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 @media (max-width:900px){.efa-foot .ef-top{grid-template-columns:minmax(0,1fr);gap:36px}.efa-foot .ef-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 20px}}
 @media print{footer.efa-foot{display:none}}
 
@@ -35,3 +35,7 @@ footer.efa-foot[hidden]{display:none}
 }
 .grille2>.champ{display:flex;flex-direction:column;gap:6px}
 .grille2>.champ>input,.grille2>.champ>select{margin-top:auto}
+
+/* Fil d’Ariane : des liens assez grands pour le doigt */
+nav.crumbs a,.crumbs a{display:inline-flex;align-items:center;min-height:40px}
+@media (min-width:901px){nav.crumbs a,.crumbs a{min-height:0}}

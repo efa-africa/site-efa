@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
 <meta name="theme-color" content="#070C16">
@@ -569,7 +570,7 @@ a.st-card{text-decoration:none}
 .tab:not(#tab-brvm) .big.b{color:#fff}
 .tab:not(#tab-brvm) select,.tab:not(#tab-brvm) input[type="search"],.tab:not(#tab-brvm) input[type="text"]{background:#FFFDF8;color:#0B1220;border:1px solid #E2D8C4}
 </style>
-<link rel="stylesheet" href="footer.css?v=2026102511">
+<link rel="stylesheet" href="footer.css?v=2026102602">
 </head>
 <body>
 
@@ -1064,7 +1065,7 @@ function efaTickerItems(D){
     {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
     {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
     {c:'EFA',t:'Nouvelle tribune : « Que construisez-vous avec l’argent qui passe ? »',h:'https://educationfinanciereafrique.substack.com/p/tribune-4-que-construisez-avec'},
-    {c:'EFA',t:'Guide « Construire sa stabilité financière » : bientôt disponible',h:'./#guide'}
+    {c:'EFA',t:'Guide gratuit « Construire sa stabilité financière » : disponible',h:'./#guide'}
   ];
   var B=D&&D.brvm, f=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});};
   var v=function(x){return '<em class="'+(x>0?'up':x<0?'down':'flat')+'">'+(x>0?'▲ +':x<0?'▼ −':'■ ')+f(Math.abs(x),2)+' %</em>';};
@@ -1147,7 +1148,7 @@ function tableRows(head,rows,left){left=left||1;return '<thead><tr>'+head.map(fu
 /* ---------- Onglet Tontine ---------- */
 var SRC_T='Enquête EFA « L’argent de la tontine » · 12/10/2026 · non représentatif';
 var T=[
-  {code:'TONT',w:'w4',theme:'fonc',title:'Réserve commune',kind:'hero',base:'participants',value:71,text:'des tontines redistribuent tout : rien n’est gardé en commun.',
+  {code:'TONT',w:'w4',theme:'fonc',title:'Réserve commune',kind:'hero',base:'participants',value:71,text:'des participants déclarent que leur tontine redistribue tout : rien n’est gardé en commun.',
    split:[['Tout est redistribué',71,'var(--corail)'],['Autres cas',29,'#3A4A66']],share:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout, rien n’est gardé en commun.'},
   {code:'DURA',w:'w8',theme:'usage',title:'Ce qui reste du dernier tour',kind:'cmp',q:'<b>Reste-t-il quelque chose de durable</b> de votre dernier tour, selon l’usage principal&nbsp;?',
    data:[['Le tour a surtout financé une activité',65,1,40],['Il a surtout payé la scolarité',33,0,15],['Il a surtout couvert les dépenses courantes',29,0,34]],
@@ -1648,7 +1649,7 @@ setHH(); route();
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
 <script src="etude-pdf.js?v=2026102301" defer></script>
-<script src="efa-appli.js?v=2026102525" defer></script>
+<script src="efa-appli.js?v=2026102602" defer></script>
 
 <script>
 /* Bulletin « La semaine à la BRVM » → Brevo (liste dédiée, double confirmation).

@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -152,7 +153,7 @@ body.nuit .mission .mc,body.nuit .mission-f .mc{color:#EC6243}
 .box.alert b,.box.alert strong,.box.alert h3,.box.alert .k,.box.alert small{color:var(--verm-ink)!important}
 .box.alert a,.box.alert .mini,.box.alert button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
 </style>
-<link rel="stylesheet" href="footer.css?v=2026102511">
+<link rel="stylesheet" href="footer.css?v=2026102602">
 </head>
 <body>
 
@@ -319,7 +320,7 @@ const V = {
   return `<div class="stack"><p class="step">Diagnostic terminé · première synthèse</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
    <div class="b4">
     <div class="card"><span class="tag">Votre situation</span><h3>${s.palier}</h3><p class="small muted">Une première lecture de vos ${Q.length} réponses, sur six dimensions.</p></div>
-    <div class="card"><span class="tag">Votre point d'appui</span><h3>${fort.n}</h3><p class="small muted">${APPUI[fort.k]}</p></div>
+    ${s[fort.k] >= 50 && s[fort.k] > s[faible.k] ? `<div class="card"><span class="tag">Votre point d'appui</span><h3>${fort.n}</h3><p class="small muted">${APPUI[fort.k]}</p></div>` : `<div class="card"><span class="tag">Votre point d'appui</span><h3>À construire</h3><p class="small muted">Aucune dimension ne se détache encore. Le premier module vous donne une base solide en 45 minutes.</p></div>`}
     <div class="card"><span class="tag">Votre priorité</span><h3>${faible.n}</h3><p class="small muted">C'est le sujet à travailler en premier.</p></div>
     <div class="card lockd"><span class="tag">Votre première action</span><h3>Une tâche concrète pour cette semaine</h3><p class="small muted">Avec votre score détaillé, votre radar et la fiche correspondante.</p></div>
    </div>
@@ -348,12 +349,12 @@ const V = {
   return `<div class="stack"><p class="step">Votre résultat${S.lead.prenom ? ", " + esc(S.lead.prenom) : ""}</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
    <div class="b4">
     <div class="card"><span class="tag">1 · Votre situation</span><div class="kpi">${s.global}<small> / 100</small></div><span class="small muted">${s.palier}. La cible est ${CIBLE}. Un repère pédagogique, pas une note.</span></div>
-    <div class="card"><span class="tag">2 · Votre point d'appui</span><h3>${fort.n} · ${s[fort.k]} / 100</h3><span class="small muted">${APPUI[fort.k]} Appuyez-vous dessus.</span></div>
+    ${s[fort.k] >= 50 && s[fort.k] > s[faible.k] ? `<div class="card"><span class="tag">2 · Votre point d'appui</span><h3>${fort.n} · ${s[fort.k]} / 100</h3><span class="small muted">${APPUI[fort.k]} Appuyez-vous dessus.</span></div>` : `<div class="card"><span class="tag">2 · Votre point d'appui</span><h3>À construire · ${s[fort.k]} / 100 au mieux</h3><span class="small muted">Aucune dimension ne se détache encore : c’est le point de départ le plus courant, et le premier module est fait pour lui.</span></div>`}
     <div class="card"><span class="tag">3 · Votre priorité</span><h3>${faible.n} · ${s[faible.k]} / 100</h3><span class="small muted">${faible.conseil}</span></div>
    </div>
    <div class="box act"><span class="tag">4 · Votre première action cette semaine</span><h3>${esc(A.a)}</h3><p class="small">${esc(A.f)}</p>
     <div class="actions"><a class="btn" href="${A.l}"${ext} data-goatcounter-click="diag-action">${A.b}</a><a class="link" href="${CFG.GUIDE}">Le guide complet, en complément</a></div></div>
-   ${(() => { const pid = s.flux < 34 ? "pilier" : s.profil; const R = {explorateur:["P1","Où passe mon argent ?"], averti:["P2","Un budget qui tient"], discipline:["P1","Où passe mon argent ?"], stratege:["P8","Premiers pas à la BRVM"], pilier:["P3","Aider mes proches sans me perdre"]}[pid] || ["P1","Où passe mon argent ?"]; return `<div class="box blue"><span class="tag">5 · Votre parcours</span><h3>Commencez par le parcours ${R[0].slice(1)} : ${R[1]}</h3><p class="small">Des étapes courtes, avec Koffi, jusqu'à un résultat concret. Votre progression reste sur votre téléphone.</p><div class="actions"><a class="btn" href="parcours.html?profil=${pid}#${R[0]}" data-goatcounter-click="diag-parcours">Ouvrir mon parcours</a><a class="link" href="parcours.html?profil=${pid}">Voir tous les parcours</a></div></div>`; })()}
+   ${(() => { const pid = s.flux < 34 ? "pilier" : s.profil; const R = {explorateur:["P1","Où passe mon argent ?"], averti:["P2","Un budget qui tient"], discipline:["P1","Où passe mon argent ?"], stratege:["P8","Premiers pas à la BRVM"], pilier:["P3","Aider mes proches sans me perdre"]}[pid] || ["P1","Où passe mon argent ?"]; return `<div class="box blue"><span class="tag">5 · Votre parcours</span><h3>Commencez par le parcours ${R[0].slice(1)} : ${R[1]}</h3><p class="small">Des étapes courtes, avec Koffi, jusqu'à un résultat concret. Votre progression dans l’école reste sur votre téléphone ; vos réponses au diagnostic ne sont envoyées que si vous l’avez accepté.</p><div class="actions"><a class="btn" href="parcours.html?profil=${pid}#${R[0]}" data-goatcounter-click="diag-parcours">Ouvrir mon parcours</a><a class="link" href="parcours.html?profil=${pid}">Voir tous les parcours</a></div></div>`; })()}
    ${s.flux < 34 && faible.k !== "flux" ? `<div class="box alert"><h3>Pilier de famille sous pression</h3><p>Vous portez des charges pour vos proches sans les avoir budgétées. Ce n'est pas un défaut, c'est une ligne à inscrire dans votre budget.</p></div>` : ""}
    <details class="card det"><summary>Voir le détail de mes six dimensions</summary><div class="two"><div>${radar([{n: "Vous", c: "var(--c1)", v: s, fill: true}], "Votre radar sur six dimensions")}</div>
     <div class="stack" style="gap:10px">${DIMS.map(d => barre(d.n, s[d.k])).join("")}</div></div>
@@ -504,6 +505,6 @@ go(["resultat", "r1", "p1"].includes(S.view) ? "accueil" : ["methode", "confiden
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102525" defer></script>
+<script src="efa-appli.js?v=2026102602" defer></script>
 </body>
 </html>
