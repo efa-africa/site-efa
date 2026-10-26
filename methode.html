@@ -262,7 +262,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .comite-form .ok a{color:var(--bleu)}
 .comite-form .hp{position:absolute;left:-9999px}
 .comite-act{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.comite-act button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:#E44828;color:#fff;cursor:pointer}
+.comite-act button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:#DA3C1B;color:#fff;cursor:pointer}
 .comite-act button:disabled{opacity:.6}
 .comite-act p{margin:0;font-size:14px;color:var(--ink2)}
 @media (max-width:860px){.comite{grid-template-columns:minmax(0,1fr)}.comite-form{grid-template-columns:minmax(0,1fr)}}
@@ -370,7 +370,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .mission-f{flex-basis:100%;font:700 13px/1.45 var(--body);color:var(--ink)}
 
 /* Encadrés EFA : un seul style sur toute la plateforme, aplat vermillon */
-:root{--verm:#E44828;--verm-ink:#FFFFFF;--verm-soft:#FFE1D8}
+:root{--verm:#DA3C1B;--verm-ink:#FFFFFF;--verm-soft:#FFE1D8}
 .note,.method .note,.mtxt .note,.koffi,.warn{background:var(--verm)!important;color:var(--verm-ink)!important;border:0!important;border-left:0!important;border-radius:2px;padding:16px 18px!important;box-shadow:none}
 .note b,.note strong,.note h3,.note .k,.note small,.method .note b,.method .note strong,.method .note h3,.method .note .k,.method .note small,.mtxt .note b,.mtxt .note strong,.mtxt .note h3,.mtxt .note .k,.mtxt .note small,.koffi b,.koffi strong,.koffi h3,.koffi .k,.koffi small,.warn b,.warn strong,.warn h3,.warn .k,.warn small{color:var(--verm-ink)!important}
 .note a,.note .mini,.note button.lien,.method .note a,.method .note .mini,.method .note button.lien,.mtxt .note a,.mtxt .note .mini,.mtxt .note button.lien,.koffi a,.koffi .mini,.koffi button.lien,.warn a,.warn .mini,.warn button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
@@ -446,7 +446,11 @@ a.st-card{text-decoration:none}
 .subtabs a{flex:1 1 220px;display:grid;gap:2px;padding:14px 18px;border-radius:12px;background:var(--panel);color:var(--ink2);text-decoration:none;min-width:0}
 .subtabs a b{font:700 18px var(--disp);color:var(--ink)}
 .subtabs a small{font-size:13px}
-.subtabs a[aria-current="page"]{background:#1C2842;box-shadow:inset 0 -3px 0 var(--corail)}
+.subtabs a[aria-current="page"]{background:#0B1220;color:#C9D1DE;box-shadow:inset 0 -4px 0 #DA3C1B}
+.subtabs a[aria-current="page"] b{color:#fff}
+.tab:not(#tab-brvm) .subtabs a:not([aria-current="page"]){box-shadow:inset 0 0 0 1px #E2D8C4}
+#tab-brvm .subtabs a{background:#13203A;color:#C9D1DE;box-shadow:inset 0 0 0 1px #2E4366}#tab-brvm .subtabs a b{color:#fff}
+#tab-brvm .subtabs a[aria-current="page"]{background:#DA3C1B;color:#fff;box-shadow:none}
 .subtabs a:hover{color:var(--ink)}
 .all-news{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
 @media (max-width:560px){.subtabs a{flex:1 1 calc(50% - 8px);padding:12px 14px}.subtabs a small{font-size:12px}}
@@ -555,6 +559,12 @@ a.st-card{text-decoration:none}
 /* Grammaire des fonds (25/10/2026) : la BRVM garde son terminal sombre ; études, actualités, prospective, simulateurs et méthode passent en crème, pour lire. */
 .tab:not(#tab-brvm){--bg:#F5EFE2;--panel:#FFFDF8;--panel2:#FFFFFF;--line:#E2D8C4;--ink:#0B1220;--ink2:#4E5566;--mute:#5F6676;--bleu:#1A6FB3;--corail:#B8341A;background:var(--bg);color:var(--ink);color-scheme:light}
 .tab:not(#tab-brvm) .rubs a[aria-current="page"]{color:var(--ink)}
+/* Contrastes lisibles sur fond clair (WCAG AA) */
+.tab:not(#tab-brvm){--up:#1E7A4C}
+.tab:not(#tab-brvm) .f1-k b.prov{color:#8A5A00}
+.tab:not(#tab-brvm) .f1-cov .f2-in i{color:#AEB6C6}
+.tab:not(#tab-brvm) .garant .g-lien{color:var(--ink)}
+.mainnav a.mn-cta{background:#DA3C1B}
 .tab:not(#tab-brvm) .big.b{color:#fff}
 .tab:not(#tab-brvm) select,.tab:not(#tab-brvm) input[type="search"],.tab:not(#tab-brvm) input[type="text"]{background:#FFFDF8;color:#0B1220;border:1px solid #E2D8C4}
 </style>
