@@ -471,6 +471,9 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .reprise small{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#F09680}
 .reprise b{display:block;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.25;margin-top:2px}
 .reprise .s{display:block;font-size:13.5px;color:#C9D1DE;margin-top:2px}
+#demo-band{position:absolute;left:10px;right:10px;bottom:calc(78px + env(safe-area-inset-bottom,0px));z-index:60;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px 8px 12px;margin:0;background:#F2B84B;color:#1A1205;font:600 12.5px/1.3 var(--body,system-ui)}
+#demo-band b{font-weight:800}#demo-band button{flex:none;border:0;border-radius:8px;background:#0B1220;color:#fff;font:800 12px var(--body,system-ui);padding:7px 10px;cursor:pointer}
+.tour-note{display:block;margin-top:6px;font-size:12px;opacity:.75;line-height:1.35}
 .vide{padding:22px;border-radius:16px;background:var(--glass2);text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
 
 </style>
@@ -482,7 +485,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
     <p>L’école de la finance personnelle dans votre poche : vos outils et votre cahier, l’école et ses modules, les questions que l’on se pose, les études. Les mêmes données que sur efa.africa.</p>
     <div class="tour"><b>Commencer comme</b><div class="tour-grid">
       <button class="main" data-act="demo" data-mode="new">Un nouvel utilisateur</button>
-      <button data-act="demo" data-mode="busy">Koffi, après dix jours</button></div></div>
+      <button data-act="demo" data-mode="busy">Koffi, après dix jours · démo</button></div><small class="tour-note">La démonstration utilise des données fictives : votre progression réelle n’est ni remplacée ni modifiée.</small></div>
     <div class="tour"><b>Aller directement à</b><div class="tour-grid">
       <button data-act="tour" data-to="outils">Mes outils</button>
       <button data-act="tour" data-to="cahier">Mon cahier</button>
@@ -584,7 +587,14 @@ function fresh(){return {v:1,cree:dkey(),derniereVisite:null,profil:{onboarde:fa
   lecons:{},parcours:{},reprise:null,cahier:[],actions:[],challenges:{},diag:[],evts:[],vus:{}};}
 var mem=null;
 function load(){try{var s=localStorage.getItem(KEY);if(s){var o=JSON.parse(s);if(o&&o.v===1)return o;}}catch(e){}return mem||fresh();}
-function save(){mem=st;try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+/* Démonstration : les données fictives de Koffi ne remplacent jamais la progression réelle, qui reste enregistrée à part */
+var DEMO=false;
+function save(){mem=st;if(DEMO)return;try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+function demoBandeau(){var d=document.getElementById("demo-band");if(!DEMO){if(d)d.remove();return;}if(d)return;d=document.createElement("div");d.id="demo-band";d.setAttribute("role","status");
+  d.innerHTML='<span><b>Démonstration</b> · données fictives, rien n’est enregistré</span><button type="button" data-act="demo-quitter">Revenir à mes données</button>';
+  var a=document.getElementById("app");a.insertBefore(d,a.firstChild);}
+function entrerDemo(etat){DEMO=true;mem=null;st=etat;demoBandeau();}
+function quitterDemo(){DEMO=false;mem=null;st=load();demoBandeau();hist=[];go(st.profil&&st.profil.onboarde?"outils":"onboarding");toast("Vos données");}
 var st=load(),absence=st.derniereVisite?diffDays(st.derniereVisite,dkey()):0;st.derniereVisite=dkey();save();
 function evt(k,x){st.evts.push({d:dkey(),k:k,x:x||null});if(st.evts.length>800)st.evts=st.evts.slice(-800);}
 
@@ -1346,8 +1356,9 @@ document.addEventListener("click",function(ev){
   if(a==="dl"){try{var jj=b.dataset.j==="1",bl=new Blob([document.getElementById("exp-t").value],{type:jj?"application/json":"text/plain"}),u=URL.createObjectURL(bl),lk=document.createElement("a");lk.href=u;lk.download=jj?"efa-sauvegarde-"+dkey()+".json":"efa-cahier-"+dkey()+".txt";document.body.appendChild(lk);lk.click();lk.remove();setTimeout(function(){URL.revokeObjectURL(u);},2000);}catch(e){toast("Utilisez Copier");}return;}
   if(a==="importDo"){try{var ob=JSON.parse(document.getElementById("imp-t").value);if(!ob||ob.v!==1||!ob.profil)throw 0;st=ob;save();closeSheet();toast("Sauvegarde restaurée");hist=[];go("aujourdhui");}catch(e){toast("Ce texte n’est pas une sauvegarde EFA");}return;}
   if(a==="wipe"){st=fresh();mem=null;try{localStorage.removeItem(KEY);}catch(e){}ui.ob=0;hist=[];go("onboarding");toast("Données supprimées");return;}
-  if(a==="demo"){hist=[];if(b.dataset.mode==="new"){st=fresh();ui.ob=0;save();go("onboarding");}else{st=demoKoffi();save();go("aujourdhui");toast("Koffi, après dix jours");}return;}
-  if(a==="tour"){if(!st.profil.onboarde){st=demoKoffi();save();}var to=b.dataset.to;hist=[{view:"outils",p:{}}];
+  if(a==="demo-quitter"){quitterDemo();return;}
+  if(a==="demo"){hist=[];if(b.dataset.mode==="new"){if(DEMO||(st.profil&&st.profil.onboarde))entrerDemo(fresh());ui.ob=0;go("onboarding");}else{entrerDemo(demoKoffi());go("aujourdhui");toast("Démonstration : Koffi, après dix jours");}return;}
+  if(a==="tour"){if(!st.profil.onboarde&&!DEMO){entrerDemo(demoKoffi());}var to=b.dataset.to;hist=[{view:"outils",p:{}}];
     function openAt(lid,step){var sl=LS(lid);if(sl.statut==="a_faire")sl.statut="en_cours";sl.step=step;save();go("lecon",{id:lid});}
     if(to==="lecon")openAt("p1l4",0);else if(to==="cahier"){hist=[];ui.seg="cahier";go("outils");}else if(to==="defis"){hist=[];ui.seg="defis";go("outils");}else if(to==="outils"){hist=[];ui.seg="outils";go("outils");}
     else if(to==="module"){hist=[{view:"ecole",p:{}}];go("module",{id:"P1"});}else{hist=[];go(to,{});}return;}
