@@ -960,6 +960,13 @@ img.char{object-position:50% 18%}
   .eh-bas{grid-template-columns:minmax(0,1fr)}.eh-bas a+a{border-left:0;border-top:1px solid #CFC6B4}.eh-bas a{padding:16px 6px;gap:16px}.eh-bi{width:56px;height:56px}.eh-bi svg{width:26px;height:26px}
 }
 @media (max-width:480px){.eh-bt a{flex:1 1 100%}.eh h1{font-size:clamp(40px,11.5vw,56px)}.eh-sur{letter-spacing:.14em;font-size:12px}}
+
+/* Les trois portes : une bande compacte sous l'accueil, plus un écran plein */
+.screen.ecole{min-height:0;padding:56px var(--gut) 52px;justify-content:flex-start;gap:0}
+.screen.ecole::before{display:none}
+.ecole .ec-in{max-width:1100px;width:100%;gap:22px}
+.ec-titre{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.2vw,40px);line-height:1.15;color:#fff;text-align:center}
+@media (max-width:700px){.screen.ecole{padding:40px var(--gut) 36px}}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 <script type="application/ld+json">
@@ -1014,9 +1021,9 @@ img.char{object-position:50% 18%}
     </div>
   </section>
 
-  <section class="screen ecole" id="ecole" data-step="Trois portes" aria-label="Apprendre, anticiper, former">
+  <section class="screen ecole" id="ecole" data-step="Trois portes" aria-labelledby="ec-t2">
     <div class="ec-in">
-      <a class="ec-quiz" href="quiz.html?src=accueil" data-goatcounter-click="accueil-quiz"><span class="qz-tag">Bientôt</span><span class="qz-t">Le quiz de la semaine<small>Essayez une question et soyez prévenu du premier quiz.</small></span><span class="qz-go">Essayer&nbsp;→</span></a>
+      <h2 class="ec-titre" id="ec-t2">Par où voulez-vous commencer&nbsp;?</h2>
       <div class="ec-acces">
         <div class="ec-a ec-a1"><span class="ec-pour">Pour vous, à votre rythme</span><span class="ec-mot">Apprendre</span><span class="ec-q">Vos chiffres, un plan.</span><span class="ec-bt"><a href="#besoins" data-goatcounter-click="accueil-apprendre">Mon parcours</a><a href="decider.html?src=accueil" data-goatcounter-click="accueil-decider">Décider</a><a href="bourse-essentiel.html?src=accueil" data-goatcounter-click="accueil-bourse">La Bourse</a></span></div>
         <div class="ec-a ec-a2"><span class="ec-pour">Pour les décideurs</span><span class="ec-mot">Anticiper</span><span class="ec-q">Les données, l’avenir.</span><span class="ec-bt"><a href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-comprendre">Études</a><a href="methode.html?src=accueil#africa-2075" data-goatcounter-click="accueil-africa2075-porte">Africa 2075</a><a href="bibliotheque.html?src=accueil" data-goatcounter-click="accueil-bibliotheque">Bibliothèque</a></span></div>
