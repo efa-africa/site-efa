@@ -51,6 +51,8 @@ var PUBLICATIONS = {
   + '.pv ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px;line-height:1.5}'
   + '.pv dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:14px;line-height:1.5}'
   + '.pv dt{font-weight:700}.pv dd{margin:0;opacity:.85}'
+  + '[data-prevenir].pv{display:flex;flex-direction:column;align-self:stretch;box-sizing:border-box;height:100%}'
+  + '.pv-pied{margin-top:auto;display:grid;gap:14px}'
   + '.pv-lim{font-size:13.5px!important;opacity:.8;font-style:italic}'
   + '.pv-b{justify-self:start;display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:8px;border:0;background:#DA3C1B;color:#fff!important;font:700 15px "Source Sans 3",system-ui,sans-serif;cursor:pointer;text-decoration:none!important}'
   + '.pv-b:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px}'
@@ -72,7 +74,7 @@ var PUBLICATIONS = {
       + '<h3>'+esc(P.titre)+'</h3>'
       + '<p>'+P.gratuit+'</p>'
       + '<div><p><b>Ce que '+(P.etiquette.indexOf('Kit')===0?'le kit':'le dossier')+' ajoute</b></p><ul>'+P.ajoute.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></div>'
-      + '<dl><dt>Pour qui</dt><dd>'+esc(P.pour)+'</dd><dt>Format</dt><dd>'+esc(P.format)+'</dd><dt>Prix</dt><dd>'+(P.prix?esc(P.prix):'Annoncé à l’ouverture')+'</dd></dl>'
+      + '<div class="pv-pied"><dl><dt>Pour qui</dt><dd>'+esc(P.pour)+'</dd><dt>Format</dt><dd>'+esc(P.format)+'</dd><dt>Prix</dt><dd>'+(P.prix?esc(P.prix):'Annoncé à l’ouverture')+'</dd></dl>'
       + (P.limite?'<p class="pv-lim">'+esc(P.limite)+'</p>':'')
       + (ouvert
           ? '<a class="pv-b" href="'+esc(P.lien_achat)+'" target="_blank" rel="noopener" data-goatcounter-click="achat-'+esc(id)+'">Obtenir · '+esc(P.prix)+'</a>'
@@ -80,7 +82,7 @@ var PUBLICATIONS = {
             + '<form hidden novalidate><input type="email" autocomplete="email" inputmode="email" placeholder="Adresse email" aria-label="Adresse email" maxlength="120" required>'
             + '<input class="pv-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">'
             + '<label class="pv-ok"><input type="checkbox" required><span>J’accepte qu’EFA m’écrive pour annoncer la sortie de cette publication. Mon email ne sert à rien d’autre. <a href="confidentialite.html">Vos données</a></span></label>'
-            + '<button type="submit" class="pv-b">Me prévenir</button><p class="pv-m" role="status" aria-live="polite"></p></form>');
+            + '<button type="submit" class="pv-b">Me prévenir</button><p class="pv-m" role="status" aria-live="polite"></p></form>') + '</div>';
   }
 
   function brancher(el, id, P){
