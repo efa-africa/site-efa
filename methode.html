@@ -44,8 +44,9 @@ button,select,input{font:inherit}
 .go{background:var(--creme);color:#0B1220;border:0;font:800 14px var(--body);padding:0 18px;cursor:pointer;border-radius:6px}
 .go:hover{filter:brightness(1.08)}
 .back{font:600 12px var(--mono);color:var(--ink2);text-decoration:none;white-space:nowrap}
-.demo-p{font:800 13.5px var(--body);color:#fff;background:#DA3C1B;border-radius:999px;padding:8px 14px;margin-left:8px}.demo-p:hover{background:#B8341A}
-@media (max-width:900px){.top .bar .brand{flex:1 1 100%}.top .bar .rub-sel{flex:1 1 0;min-width:0;order:3}.top .bar .demo-p{order:4;align-self:flex-end;margin:0 0 2px;padding:12px 14px;border-radius:10px;white-space:nowrap}}
+.demo-p{font:800 13.5px var(--body);color:#fff;background:#DA3C1B;border-radius:999px;padding:9px 16px;margin-left:auto;margin-right:6px}
+@media (min-width:901px){.top .bar .rubs{margin-left:0}}.demo-p:hover{background:#B8341A}
+@media (max-width:900px){.top .bar .brand{flex:1 1 100%}.top .bar .rub-sel{flex:1 1 0;min-width:0;order:4}.top .bar .demo-p{order:3;align-self:flex-end;margin:0 0 2px;padding:12px 14px;border-radius:10px;white-space:nowrap}}
 .back:hover{color:var(--ink)}
 
 .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--flat)}
@@ -588,9 +589,9 @@ a.st-card{text-decoration:none}
   <nav class="mainnav" aria-label="Navigation principale"><div class="wrap mn-in"><a class="mn-cta" href="parcours.html">L’école</a><a href="methode.html" aria-current="page">Études &amp; prospective</a><a href="organisations.html">Pour les organisations</a><a href="auteur.html">À propos</a></div></nav>
   <div class="wrap bar">
     <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; PROSPECTIVE</b></span></a>
+    <a class="back demo-p" href="demo.html?d=decideurs&amp;src=etudes" data-goatcounter-click="demo-lien-etudes">▶ La démo · 1 à 2 min</a>
     <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Africa 2075</a><a href="#actualites" data-tab="actualites">Actualités et marchés</a><a href="#methode" data-tab="methode">Notre méthode</a></nav>
     <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Africa 2075</option><option value="actualites">Actualités et marchés · EFA News</option><option value="brvm">Actualités et marchés · BRVM</option><option value="methode">Notre méthode</option></select></label>
-    <a class="back demo-p" href="demo.html?d=decideurs&amp;src=etudes" data-goatcounter-click="demo-lien-etudes">▶ La démo · 1 à 2 min</a>
   </div>
   <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
 </header>
