@@ -184,12 +184,13 @@
     var et = {}; try { et = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; } catch (e) {}
     if (SUIVANT[pg]) filSuivant(SUIVANT[pg][0], SUIVANT[pg][1]);
     else if (pg === "parcours.html") filSuivant("parcours.html#" + (et.actif || "P1"), et.actif ? "Reprendre mon module" : "Module 1");
+    else if (["point-de-depart.html", "traders.html", "ceo.html", "corporate.html", "demo.html"].indexOf(pg) >= 0) { /* orientation et laboratoires : pas de reprise d’une autre activité */ }
     else if (et.actif && pg !== "programme-organisation.html") filSuivant("parcours.html#" + et.actif, "Reprendre mon module");
     else if (pg !== "programme-organisation.html") filSuivant("parcours.html", "L’école");
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", filNav); else filNav();
 
-  var EXCLUS = ["parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
+  var EXCLUS = ["point-de-depart.html", "parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
     "organisations.html", "programme-organisation.html", "rejoindre.html", "espace-organisation.html", "admin-ecole.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
   var page = (location.pathname.split("/").pop() || "index.html");
   if (EXCLUS.indexOf(page) >= 0) return;
