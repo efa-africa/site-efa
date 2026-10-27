@@ -39,7 +39,7 @@
     h += '<section class="tr-bloc" id="tr-classe"><div class="tr-ent"><div><p class="surtitre">Pour les enseignants</p><h2>Utiliser en cours</h2></div><button class="lien-souligne" type="button" id="tr-pp">Imprimer le programme</button></div>' +
       '<p class="lead">Chaque chapitre se termine par un cas de transfert et renvoie à un cas pratique. Les étudiants gardent leur progression sur leur appareil ; le suivi de groupe arrivera avec les comptes.</p><div class="tr-table gauche"><table><thead><tr><th>Ch.</th><th>Chapitre</th><th>Durée</th><th>Compétences</th><th>Cas pratique</th></tr></thead><tbody>' +
       K.CHAPITRES.map(function (c, i) { var cas = c.pratique && c.pratique.lien ? CS.CAS.filter(function (x) { return "cas:" + x.id === c.pratique.lien; })[0] : null; return "<tr><td>" + (i + 1) + '</td><td><a href="#cours-' + c.id + '">' + esc(c.titre) + "</a></td><td>" + c.duree + "</td><td>" + c.objectifs.map(esc).join("<br>") + "</td><td>" + (cas ? esc(cas.titre) : "Outil du chapitre") + "</td></tr>"; }).join("") + "</tbody></table></div>" +
-      '<p class="tr-note">Organisations et écoles : <a href="organisations.html?src=corporate">composer un programme pour un groupe</a>.</p></section>';
+      '<p class="tr-note">Organisations et écoles : <a href="organisations.html?src=corporate">composer un programme pour un groupe</a>. Pour les études de cas de stratégie, voir <a href="ceo.html">EFA CEO Challenge</a>.</p></section>';
     vue.innerHTML = h;
     $("#tr-pp").onclick = function () { document.body.classList.add("imp-classe"); window.print(); setTimeout(function () { document.body.classList.remove("imp-classe"); }, 500); };
   }
