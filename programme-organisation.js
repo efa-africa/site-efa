@@ -416,6 +416,9 @@
     } else { etape = 5; pastilles(); }
     rendre(pr, participant);
   } else {
+    var ty = q.get("type"); if (ty && TYPES.some(function (t) { return t[0] === ty; })) S.type = ty;
+    var pu = q.get("public"); if (pu) pu.split(",").forEach(function (x) { if (PUBLICS.some(function (p) { return p[0] === x; }) && S.publics.indexOf(x) < 0) S.publics.push(x); });
+    if (ty || pu) mesure("orga-programme-depuis-" + (ty || "public"));
     var en = q.get("en");
     if (en) { en.split(",").forEach(function (x) { var p = x.split("."); if (EN[p[0]] && S.enjeux.indexOf(p[0]) < 0) { S.enjeux.push(p[0]); S.niv[p[0]] = Math.min(3, Math.max(1, +p[1] || 2)); } });
       S.nom = (q.get("n") || "").slice(0, 60); S.source = (q.get("rep") ? q.get("rep") + " réponses" : "réponses anonymes"); mesure("orga-programme-depuis-enquete"); }

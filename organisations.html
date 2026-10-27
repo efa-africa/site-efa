@@ -681,6 +681,12 @@ img.char{object-position:50% 18%}
 .org .kick{color:var(--soft-corail)}
 .org .acts{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
 .org .acts .lk{color:#fff;font-weight:700;text-underline-offset:4px}
+.org .g4 .qui-c{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:14px;background:#111A2C;min-width:0;color:inherit;text-decoration:none;transition:transform .12s,background .2s}
+.org .g4 .qui-c:hover{background:#18253F}.org .g4 .qui-c:active{transform:scale(.98)}
+.org .g4 .qui-c:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
+.org .clair .g4 .qui-c{background:#FFFDF8;color:#0B1220}.org .clair .g4 .qui-c:hover{background:#fff;box-shadow:0 8px 22px rgba(11,18,32,.1)}.org .clair .g4 .qui-c h3{color:#0B1220}.org .clair .g4 .qui-c p{color:#4E5566}.org .clair .qui-go{color:#B8341A}.org .clair .qui-l{color:#4E5566}
+.qui-go{margin-top:auto;padding-top:8px;font-weight:800;font-size:15px;color:#F09680}
+.qui-l{margin-top:8px;color:#C9D1DE}
 .org .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .org .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
 .org .g4 article,.org .g3 article{display:grid;gap:8px;align-content:start;padding:22px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:#111A2C;min-width:0}
@@ -739,11 +745,12 @@ img.char{object-position:50% 18%}
   <section class="clair" aria-labelledby="org-qui">
     <div class="in">
       <h2 id="org-qui">Pour qui</h2>
+      <p class="qui-l">Touchez votre cas&nbsp;: le programme s’ouvre déjà réglé pour votre public, en 5 minutes.</p>
       <div class="g4">
-        <article><h3>Entreprises</h3><p>Aider vos salariés à tenir entre deux paies, à gérer les demandes familiales et à préparer la retraite.</p></article>
-        <article><h3>Coopératives et associations</h3><p>Donner à vos membres et à vos responsables de groupes des règles claires et des outils de suivi.</p></article>
-        <article><h3>Fondations et ONG</h3><p>Ajouter un volet d’éducation financière à un programme d’insertion, d’entrepreneuriat ou d’inclusion.</p></article>
-        <article><h3>Écoles et collectivités</h3><p>Former des jeunes ou des agents aux notions de base&nbsp;: revenu, dépense, dette, épargne.</p></article>
+        <a class="qui-c" href="programme-organisation.html?src=organisations-pour-qui&amp;type=entreprise&amp;public=salaries" data-goatcounter-click="org-pour-qui-entreprise"><h3>Entreprises</h3><p>Aider vos salariés à tenir entre deux paies, à gérer les demandes familiales et à préparer la retraite.</p><span class="qui-go">Composer un programme pour mon entreprise →</span></a>
+        <a class="qui-c" href="programme-organisation.html?src=organisations-pour-qui&amp;type=cooperative&amp;public=groupes,commercants" data-goatcounter-click="org-pour-qui-cooperative"><h3>Coopératives et associations</h3><p>Donner à vos membres et à vos responsables de groupes des règles claires et des outils de suivi.</p><span class="qui-go">Composer un programme pour ma coopérative →</span></a>
+        <a class="qui-c" href="programme-organisation.html?src=organisations-pour-qui&amp;type=association&amp;public=commercants,jeunes" data-goatcounter-click="org-pour-qui-association"><h3>Fondations et ONG</h3><p>Ajouter un volet d’éducation financière à un programme d’insertion, d’entrepreneuriat ou d’inclusion.</p><span class="qui-go">Composer un programme pour mon programme →</span></a>
+        <a class="qui-c" href="programme-organisation.html?src=organisations-pour-qui&amp;type=ecole&amp;public=jeunes" data-goatcounter-click="org-pour-qui-ecole"><h3>Écoles et collectivités</h3><p>Former des jeunes ou des agents aux notions de base&nbsp;: revenu, dépense, dette, épargne.</p><span class="qui-go">Composer un programme pour mon école →</span></a>
       </div>
     </div>
   </section>
