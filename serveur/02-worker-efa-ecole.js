@@ -193,7 +193,9 @@ function nettoyerProgression(b) {
   const nb = v => Math.max(0, Math.min(999, parseInt(v, 10) || 0));
   const bb = b && b.bilan && typeof b.bilan === "object" ? b.bilan : {};
   const su = bb.suivi && typeof bb.suivi === "object" ? { planifies: nb(bb.suivi.planifies), essaye: nb(bb.suivi.essaye), partiel: nb(bb.suivi.partiel), pas: nb(bb.suivi.pas) } : null;
-  const bilan = { decisions: ids(bb.decisions, /^D\d$/), bourse: ids(bb.bourse, /^[AB]\d$/), suivi: su };
+  // « Mon point » : trois réponses oui (1) ou non (0) au départ, à 30 et à 90 jours
+  const pt = {}; if (bb.point && typeof bb.point === "object") ["j0", "j30", "j90"].forEach(k => { if (/^[01]{3}$/.test(String(bb.point[k] || ""))) pt[k] = bb.point[k]; });
+  const bilan = { decisions: ids(bb.decisions, /^D\d$/), bourse: ids(bb.bourse, /^[AB]\d$/), suivi: su, point: Object.keys(pt).length ? pt : null };
   return { faits, fiches, certificats, bilan };
 }
 // Entonnoir de la cohorte, en totaux seulement. Sous 5 personnes, les deux dernières marches ne sont pas affichées.
@@ -204,8 +206,13 @@ function cohorte(pas) {
   const cas = actifs.filter(p => { const b = p.bilan || {}; return (b.decisions || []).length + (b.bourse || []).length > 0; }).length;
   const essaye = actifs.filter(p => { const s = (p.bilan || {}).suivi; return s && (s.essaye + s.partiel) > 0; }).length;
   const repondu = actifs.filter(p => { const s = (p.bilan || {}).suivi; return s && (s.essaye + s.partiel + s.pas) > 0; }).length;
-  const assez = n >= SEUIL;
-  return { inscrits: n, commence, cas: assez ? cas : null, essaye: assez ? essaye : null, repondu: assez ? repondu : null, seuil: SEUIL };
+  // « Mon point » : parmi ceux qui ont répondu au départ et à 90 jours, combien ont désormais un mois de côté
+  const p90 = actifs.filter(p => { const t = (p.bilan || {}).point; return t && t.j0 && t.j90; });
+  const reserve90 = p90.filter(p => p.bilan.point.j90.charAt(1) === "1").length, reserve0 = p90.filter(p => p.bilan.point.j0.charAt(1) === "1").length;
+  const depart = actifs.filter(p => ((p.bilan || {}).point || {}).j0).length;
+  const assez = n >= SEUIL, assez90 = p90.length >= SEUIL;
+  return { inscrits: n, commence, cas: assez ? cas : null, essaye: assez ? essaye : null, repondu: assez ? repondu : null, seuil: SEUIL,
+    point: { depart: assez ? depart : null, a90: assez90 ? p90.length : null, reserve_depart: assez90 ? reserve0 : null, reserve_90: assez90 ? reserve90 : null } };
 }
 async function moi(request, env, db, chemin, c) {
   const cle = porteur(request); if (!/^EFA-/.test(cle)) return json({ erreur: "Clé personnelle incorrecte." }, 401, c);
@@ -221,7 +228,7 @@ async function moi(request, env, db, chemin, c) {
     maj.fiches = [...new Set([...(pa.fiches || []), ...n.fiches])];
     maj.certificats = { ...(pa.certificats || {}), ...n.certificats };
     const ab = pa.bilan || {};
-    maj.bilan = { decisions: [...new Set([...(ab.decisions || []), ...n.bilan.decisions])], bourse: [...new Set([...(ab.bourse || []), ...n.bilan.bourse])], suivi: n.bilan.suivi || ab.suivi || null };
+    maj.bilan = { decisions: [...new Set([...(ab.decisions || []), ...n.bilan.decisions])], bourse: [...new Set([...(ab.bourse || []), ...n.bilan.bourse])], suivi: n.bilan.suivi || ab.suivi || null, point: (n.bilan.point || ab.point) ? { ...(ab.point || {}), ...(n.bilan.point || {}) } : null };
   }
   try { await db.majParticipant(pa.id, maj); }
   catch (e) { if (!maj.bilan) throw e; delete maj.bilan; await db.majParticipant(pa.id, maj); } // colonne « bilan » pas encore créée : on garde la progression
