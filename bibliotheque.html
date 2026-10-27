@@ -74,11 +74,13 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .mention{font-size:13.5px;color:var(--ink3)}
 @media print{header,footer,.hero,.acts,.filtre,.efa-suite,#efa-ely,.no-print{display:none!important}}
 
-.etag{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px;padding-block:28px 40px}
-@media (max-width:560px){.etag{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
+.etag{display:grid;gap:34px;padding-block:28px 40px}
+.rayon{display:grid;gap:16px}.rayon-t{max-width:44em}.rayon-t h2{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1.15;color:var(--nuit);margin:4px 0 6px}.rayon-t p{margin:0;color:var(--ink2);font-size:16px}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
+@media (max-width:560px){.grille{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
 .lv{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:10px;align-content:start;text-align:left}
 .lv:focus-visible{outline:3px solid var(--bleu);outline-offset:4px;border-radius:12px}
-.cv{position:relative;aspect-ratio:2/3;border-radius:6px 12px 12px 6px;box-shadow:inset 8px 0 0 rgba(0,0,0,.25),0 12px 26px rgba(11,18,32,.25);display:grid;align-content:center;gap:8px;padding:14px 12px;text-align:center;transition:transform .2s}
+.cv{position:relative;display:block;aspect-ratio:2/3;border-radius:6px 12px 12px 6px;overflow:hidden;box-shadow:0 12px 26px rgba(11,18,32,.18);background:#F5EFE2;transition:transform .2s}.cv img{display:block;width:100%;height:100%;object-fit:cover}
 .lv:hover .cv{transform:translateY(-4px)}
 .cv i{display:block;width:34px;height:34px;margin:0 auto;border-radius:50%}
 .cv b{font-family:var(--f-display);font-size:clamp(14px,1.7vw,17px);line-height:1.22;color:#fff}
@@ -88,7 +90,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .lv .th{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#B8341A}
 .lv .ac{font-size:15px;line-height:1.4;color:var(--ink2)}
 .lv .go{font-size:14.5px;font-weight:800;color:var(--nuit)}
-.etag>div{display:grid;gap:6px;align-content:start}
+.grille>div{display:grid;gap:6px;align-content:start}
 .cmp{font-size:14px;font-weight:700;color:var(--ink2);text-decoration:underline;text-decoration-color:var(--corail);text-underline-offset:4px;display:inline-flex;min-height:36px;align-items:center}
 .intro-b{display:grid;gap:10px;background:var(--papier);border-radius:14px;padding:18px 20px;margin-top:24px;font-size:16px;line-height:1.5;color:var(--ink2)}
 .intro-b b{color:var(--nuit)}
@@ -165,15 +167,18 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 </footer>
 
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
-<script src="bibliotheque-livres.js?v=2026102606"></script>
-<script src="bibliotheque-lecture.js?v=2026102605"></script>
+<script src="bibliotheque-livres.js?v=2026102801"></script>
+<script src="bibliotheque-lecture.js?v=2026102801"></script>
 <script>
 (function(){
   var L=window.EFA_LIVRES||[], E=document.getElementById('etag');
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function rendre(){
     var lus=window.EFA_BIBLIO.lu();
-    E.innerHTML=L.map(function(b){var l=lus[b.id];return '<div><button type="button" class="lv" data-id="'+b.id+'" data-goatcounter-click="biblio-ouvrir-'+b.id+'"><span class="cv" style="background:linear-gradient(135deg,'+b.c1+',#0E1A30)"><span class="no">n° '+b.n+'</span>'+(l?'<span class="lu">'+(l>1?'Quiz '+(l-1)+'/3':'Lu')+'</span>':'')+'<i style="background:radial-gradient(circle at 35% 35%,#fff,'+b.c2+')"></i><b>'+esc(b.titre)+'</b><small>'+esc(b.auteur)+' · '+b.annee+'</small></span><span class="th">'+esc(b.theme)+'</span><span class="ac">'+esc(b.accroche)+'</span><span class="go">L’essentiel · 4 écrans ▶</span></button><a class="cmp" href="?livre='+b.id+'&fiche=complete" data-complet="'+b.id+'">Fiche complète · 13 écrans</a></div>'}).join('');
+    function carte(b){var l=lus[b.id];return '<div><button type="button" class="lv" data-id="'+b.id+'" data-goatcounter-click="biblio-ouvrir-'+b.id+'"><span class="cv"><img src="bibliotheque/couv-'+b.id+'-400.webp" srcset="bibliotheque/couv-'+b.id+'-400.webp 400w, bibliotheque/couv-'+b.id+'-800.webp 800w" sizes="(max-width:560px) 46vw, 220px" width="400" height="600" loading="lazy" alt="'+esc(b.titre+', '+b.auteur)+'">'+(l?'<span class="lu">'+(l>1?'Quiz '+(l-1)+'/3':'Lu')+'</span>':'')+'</span><span class="th">'+esc(b.theme)+'</span><span class="ac">'+esc(b.accroche)+'</span><span class="go">L’essentiel · 4 écrans ▶</span></button><a class="cmp" href="?livre='+b.id+'&fiche=complete" data-complet="'+b.id+'">Fiche complète · 13 écrans</a></div>'}
+    var af=L.filter(function(b){return b.afrique}), au=L.filter(function(b){return !b.afrique});
+    E.innerHTML='<section class="rayon"><div class="rayon-t"><span class="sur">Penseurs africains</span><h2>Des auteurs africains</h2><p>L’aide, la croissance, les marchés et le progrès, pensés depuis le continent.</p></div><div class="grille">'+af.map(carte).join('')+'</div></section>'
+      +'<section class="rayon"><div class="rayon-t"><span class="sur">Les classiques de l’argent</span><h2>Épargner, investir, décider</h2><p>Les livres que le monde entier lit, relus avec un salaire irrégulier, la famille, la tontine et le mobile money.</p></div><div class="grille">'+au.map(carte).join('')+'</div></section>';
   }
   E.addEventListener('click',function(e){var c=e.target.closest('[data-complet]');if(c){e.preventDefault();window.EFA_BIBLIO.ouvrir(c.dataset.complet,true);return}var b=e.target.closest('.lv');if(b)window.EFA_BIBLIO.ouvrir(b.dataset.id)});
   window.EFA_BIBLIO.apresFermer=rendre; rendre();

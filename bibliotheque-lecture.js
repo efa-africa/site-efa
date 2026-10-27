@@ -33,7 +33,7 @@
     + ".efb .k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680}.efb .big{font-size:clamp(28px,6.6vw,50px)}.efb .big em{font-style:normal;color:#EC6243}.efb .mid{font-size:clamp(23px,4.8vw,36px)}"
     + ".efb .lead{font-size:clamp(17px,2.3vw,20px);line-height:1.5;color:#C9D1DE;max-width:540px}.efb .lead b{color:#fff}"
     + ".efb .num{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:clamp(56px,14vw,96px);line-height:1;color:#EC6243}"
-    + ".efb .livre{width:min(46vw,190px);aspect-ratio:2/3;border-radius:6px 12px 12px 6px;box-shadow:inset 8px 0 0 rgba(0,0,0,.25),0 18px 40px rgba(0,0,0,.45);display:grid;align-content:center;gap:10px;padding:18px 16px;text-align:center}"
+    + ".efb .livre{display:block;width:min(46vw,190px);height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:6px 12px 12px 6px;box-shadow:0 18px 40px rgba(0,0,0,.45);background:#F5EFE2}"
     + ".efb .livre b{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(15px,3.4vw,19px);line-height:1.25;color:#fff}.efb .livre small{font-size:12px;color:#E8EDF5;opacity:.85;letter-spacing:.06em}.efb .livre i{display:block;width:40px;height:40px;margin:0 auto;border-radius:50%}"
     + ".efb .carte{background:#111B2F;border-radius:14px;padding:16px 18px;text-align:left;width:100%;max-width:540px;font-size:16.5px;line-height:1.5;color:#C9D1DE}.efb .carte b{color:#fff}"
     + ".efb .carte.clair{background:#F5EFE2;color:#2A3142}.efb .carte.clair b{color:#0B1220}.efb .carte .lbl{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#F09680;margin-bottom:6px}.efb .carte.clair .lbl{color:#B8341A}"
@@ -66,7 +66,7 @@
   // court : l'essentiel en 4 écrans (la phrase, l'idée clé, ce qui ne marche pas ici, la décision) ; sinon la fiche complète
   function scenes(b, court) {
     var s = [];
-    s.push('<p class="k up">La bibliothèque EFA · n° ' + b.n + '</p><div class="livre up d1" style="background:linear-gradient(135deg,' + b.c1 + ',#0E1A30)"><i style="background:radial-gradient(circle at 35% 35%,#fff,' + b.c2 + ')"></i><b>' + esc(b.titre) + "</b><small>" + esc(b.auteur) + " · " + b.annee + '</small></div><h1 class="mid up d2">Les idées essentielles, en format statut</h1><p class="lead up d3">Ce qu’il dit, ce qui marche chez nous, ce qui ne marche pas. Et une décision à prendre cette semaine.</p>');
+    s.push('<p class="k up">La bibliothèque EFA · n° ' + b.n + '</p><img class="livre up d1" src="bibliotheque/couv-' + b.id + '-400.webp" srcset="bibliotheque/couv-' + b.id + '-400.webp 400w, bibliotheque/couv-' + b.id + '-800.webp 800w" sizes="190px" width="400" height="600" alt="' + esc(b.titre + ", " + b.auteur) + '"><h1 class="mid up d2">Les idées essentielles, en format statut</h1><p class="lead up d3">Ce qu’il dit, ce qui marche chez nous, ce qui ne marche pas. Et une décision à prendre cette semaine.</p>');
     s.push('<p class="k up">Le livre en une phrase</p><h2 class="big up d1">' + b.phrase + '</h2><p class="lead up d2">' + b.phraseSuite + "</p>");
     b.idees.forEach(function (x, k) { s.push(ideeHtml(x, k)); });
     s.push('<p class="k up">Ce qui marche ici</p><div class="liste">' + b.marche.map(function (x, k) { return '<div class="ok up d' + (k + 1) + '"><span><b>' + x[0] + "</b> " + x[1] + "</span></div>"; }).join("") + "</div>");

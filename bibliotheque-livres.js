@@ -245,7 +245,7 @@ window.EFA_LIVRES = [
     ]
   }
   ,{
-    id: "aide-fatale", n: 11, titre: "L’aide fatale", auteur: "Dambisa Moyo", annee: 2009, theme: "Penseurs africains · Dépendance", c1: "#3A2410", c2: "#EC6243",
+    id: "aide-fatale", n: 11, afrique: true, titre: "L’aide fatale", auteur: "Dambisa Moyo", annee: 2009, theme: "Penseurs africains · Dépendance", c1: "#3A2410", c2: "#EC6243",
     accroche: "Ce qu’on reçoit sans compter finit par coûter.",
     phrase: "L’aide versée aux États africains <em>n’a pas tenu sa promesse</em> : il faut la réduire et financer autrement.",
     phraseSuite: "Titre original : Dead Aid. L’économiste zambienne, passée par la Banque mondiale et la finance, parle de l’aide aux États (dons et prêts à taux réduit), pas de l’aide humanitaire d’urgence.",
@@ -269,7 +269,7 @@ window.EFA_LIVRES = [
     ]
   },
   {
-    id: "afrotopia", n: 12, titre: "Afrotopia", auteur: "Felwine Sarr", annee: 2016, theme: "Penseurs africains · Réussite", c1: "#0E2E2A", c2: "#6DB8F2",
+    id: "afrotopia", n: 12, afrique: true, titre: "Afrotopia", auteur: "Felwine Sarr", annee: 2016, theme: "Penseurs africains · Réussite", c1: "#0E2E2A", c2: "#6DB8F2",
     accroche: "Définir sa réussite, sans copier.",
     phrase: "L’Afrique n’a pas de retard à rattraper : <em>elle a sa propre voie</em> à inventer.",
     phraseSuite: "L’économiste et écrivain sénégalais propose une « utopie active » : sortir de la course à l’accumulation, achever la décolonisation des esprits, et contribuer au monde à partir de ses propres valeurs.",
@@ -293,7 +293,7 @@ window.EFA_LIVRES = [
     ]
   },
   {
-    id: "urgence-africaine", n: 13, titre: "L’urgence africaine", auteur: "Kako Nubukpo", annee: 2019, theme: "Penseurs africains · Modèle de croissance", c1: "#2A1E3E", c2: "#F2B84B",
+    id: "urgence-africaine", n: 13, afrique: true, titre: "L’urgence africaine", auteur: "Kako Nubukpo", annee: 2019, theme: "Penseurs africains · Modèle de croissance", c1: "#2A1E3E", c2: "#F2B84B",
     accroche: "Changer de modèle de croissance.",
     phrase: "La croissance ne suffit pas : <em>il faut changer de modèle</em> et remettre l’humain au centre.",
     phraseSuite: "L’économiste togolais, ancien ministre de la Prospective de son pays, alerte sur des défis qui arrivent tous en même temps, et plaide pour une voie africaine.",
@@ -317,7 +317,7 @@ window.EFA_LIVRES = [
     ]
   },
   {
-    id: "business-revolution", n: 14, titre: "Africa’s Business Revolution", auteur: "Acha Leke, Mutsa Chironga et Georges Desvaux", annee: 2018, theme: "Penseurs africains · Entreprendre", c1: "#0B2A3A", c2: "#3CCB7F",
+    id: "business-revolution", n: 14, afrique: true, titre: "Africa’s Business Revolution", auteur: "Acha Leke, Mutsa Chironga et Georges Desvaux", annee: 2018, theme: "Penseurs africains · Entreprendre", c1: "#0B2A3A", c2: "#3CCB7F",
     accroche: "Le marché africain, vu par ceux qui le servent.",
     phrase: "L’Afrique est l’un des <em>grands marchés de croissance</em> du monde, et ses propres entreprises en sont le moteur.",
     phraseSuite: "Livre en anglais, paru chez Harvard Business Review Press. Ses auteurs, dont le Camerounais Acha Leke et le Zimbabwéen Mutsa Chironga, s’appuient sur les recherches de leur cabinet et sur des entretiens avec des dirigeants africains.",
