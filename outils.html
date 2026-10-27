@@ -623,19 +623,19 @@ var OUTILS = [
    objectif:"Comprendre ce que vous achetez avant votre premier ordre à la Bourse régionale d’Abidjan.",
    acces:"Gratuit, sans inscription.", prix:0, devise:"XOF", infos:"Rien : la leçon 2 vous demande seulement de cocher ce qui est vrai pour vous.",
    version_methode:"1.0", bouton:"Faire mes premiers pas", principal:true},
-  {id:"efa-ceo", famille:"agir", titre:"EFA CEO Challenge · décider comme un dirigeant", theme:"Cas de direction · Nouveau", url:"ceo.html?src=outils",
+  {id:"efa-ceo", famille:"labo", titre:"EFA CEO Challenge · décider comme un dirigeant", theme:"Cas de direction · Nouveau", url:"ceo.html?src=outils",
    benefice:"Des entreprises d’Afrique de l’Ouest et du Centre face à de vrais choix : profits en baisse, nouveau marché, guerre des prix, rachat. Vous chiffrez les options et vous tranchez.",
    effort:"Onze chapitres de méthode, six cas de 20 à 25 minutes.",
    objectif:"Prendre et défendre une décision de direction, chiffres à l’appui.",
    acces:"Gratuit, sans inscription.", prix:0, devise:"XOF", infos:"Rien : tout reste sur votre appareil. Entreprises et chiffres fictifs.",
    version_methode:"1.0", bouton:"Ouvrir CEO Challenge", principal:false},
-  {id:"efa-corporate", famille:"agir", titre:"EFA Corporate Finance · le laboratoire de l’entreprise", theme:"Cours et cas pratiques · Nouveau", url:"corporate.html?src=outils",
+  {id:"efa-corporate", famille:"labo", titre:"EFA Corporate Finance · le laboratoire de l’entreprise", theme:"Cours et cas pratiques · Nouveau", url:"corporate.html?src=outils",
    benefice:"Lire les comptes d’une entreprise, décider d’un investissement, choisir un financement et estimer une valeur, avec des chiffres qui réagissent à vos hypothèses.",
    effort:"Quatorze chapitres niveau licence, cinq cas pratiques de 15 à 20 minutes.",
    objectif:"Savoir analyser une entreprise et défendre une décision d’investissement ou de financement.",
    acces:"Gratuit, sans inscription.", prix:0, devise:"XOF", infos:"Rien : tout reste sur votre appareil. Entreprises et montants fictifs.",
    version_methode:"1.0", bouton:"Ouvrir Corporate Finance", principal:false},
-  {id:"efa-traders", famille:"agir", titre:"EFA Traders · le laboratoire des décisions", theme:"Simulateur · Nouveau", url:"traders.html?src=outils",
+  {id:"efa-traders", famille:"labo", titre:"EFA Traders · le laboratoire des décisions", theme:"Simulateur · Nouveau", url:"traders.html?src=outils",
    benefice:"Un marché simulé en FCFA et en devises : vous observez, décidez ou attendez, puis vous voyez les conséquences et leur explication.",
    effort:"Douze tutoriels de 5 à 10 minutes, sept scénarios.",
    objectif:"Comprendre les frais, l’exposition, la diversification et le spread avant d’investir pour de vrai.",
@@ -755,6 +755,7 @@ var OUTILS = [
     $plan.innerHTML='<div class="pan-h"><p>Partez d’un problème. Chaque plan réunit un point de départ, une méthode, un défi à suivre dans votre cahier et des parcours pratiques.</p></div>'+bandeauDiag(c)+
       '<div class="cards">'+cartesSujets(c)+'</div>'+
       '<h2 class="sec" id="parcours">Tous les parcours pratiques</h2><div class="cards">'+OUTILS.filter(function(o){return o.famille==="agir";}).map(carte).join("")+'</div>'+
+      '<h2 class="sec" id="se-former">Se former autrement</h2><div class="pan-h"><p>Trois laboratoires pour aller plus loin que son budget : décider sur un marché simulé, analyser une entreprise, trancher comme un dirigeant. Pour les curieux, les étudiants, les entrepreneurs et les cadres.</p></div><div class="cards">'+['efa-traders','efa-corporate','efa-ceo'].map(function(id){return OUTILS.filter(function(o){return o.id===id;})[0];}).map(carte).join("")+'</div>'+
       '<div style="max-width:760px"><div data-prevenir="kit-tontine"></div></div>'+
       '<p class="next">Prochains parcours : séparer les poches, comprendre sa tontine, gérer une grosse rentrée.</p>';
     if(window.EFA_PREVENIR_INIT) window.EFA_PREVENIR_INIT();
@@ -1031,7 +1032,7 @@ var OUTILS = [
     if(k===""||k==="parcours"||k==="questions"){ montre("parcours"); if(k) cadrer("parcours",false); if(MQ&&parts[1]==="toutes") MQ.toutes(parts[2]||null); if(MQ&&parts[1]==="choisir") MQ.quiz(); return; }
     if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
     var outil=OUTILS.filter(function(o){return o.id===k;})[0];
-    if(outil&&outil.famille==="agir"){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
+    if(outil&&(outil.famille==="agir"||outil.famille==="labo")){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
     if(k==="diagnostic"||outil){ montre("diagnostic"); if(outil){ var el2=document.getElementById(k); if(el2) el2.scrollIntoView({block:"start"}); } return; }
     montre("parcours");
   }
@@ -1055,7 +1056,7 @@ var OUTILS = [
     "cercle-spirale":"tontine cotisation épargne groupe tour cagnotte simulateur part gardée réserve cercle spirale"};
   var MSUJ={"investir-brvm":"brvm bourse action actions investir placement sgi dividende obligation fcp","ou-passe-mon-argent":"dépenses fin du mois argent disparu traces suivi défi poste tontine dettes","proches":"famille aide prêt prêter demande cérémonies solidarité dons","mobile-money":"mobile money momo frais transfert portefeuille","budget":"budget méthode salaire épargne","grosse-somme":"tontine cagnotte prime rappel gros montant répartition rentrée","retraite":"retraite pension vieillesse"};
   var INDEX=[];
-  OUTILS.forEach(function(o){ INDEX.push({type:o.famille==="agir"?"Parcours pratique":"Diagnostic",titre:o.titre,desc:o.benefice,mots:MOTS[o.id]||"",url:o.url}); });
+  OUTILS.forEach(function(o){ INDEX.push({type:o.famille==="labo"?"Se former autrement":o.famille==="agir"?"Parcours pratique":"Diagnostic",titre:o.titre,desc:o.benefice,mots:MOTS[o.id]||"",url:o.url}); });
   E.SUJETS.forEach(function(s){ INDEX.push({type:"Plan d’action",titre:s.titre,desc:s.intro,mots:MSUJ[s.slug]||"",url:"#plan/"+s.slug}); });
   Object.keys(E.MODULES).forEach(function(k){ var M=E.MODULES[k]; if(!M.dispo) return; var s=E.SUJETS.filter(function(x){return x.modules.indexOf(k)>=0;})[0]; INDEX.push({type:"Méthode",titre:M.titre,desc:M.resume,mots:(M.etapes||[]).map(function(e){return e[0]+" "+e[1];}).join(" "),url:"#plan/"+(s?s.slug:"")}); });
   INDEX.push({type:"Mon cahier",titre:"Défi : sept jours sur un poste",desc:E.DEFIS["poste-7j"].resume,mots:"défi cahier suivre noter plafond semaine poste transport repas crédit",url:"#cahier/nouveau"});
