@@ -143,6 +143,10 @@
       + ".efa-fil a.fil-p{background:#0B1220;color:#fff}.efa-fil a.fil-s{background:#DA3C1B;color:#fff;margin-left:auto}.efa-fil a[hidden]{display:none}"
       + ".efa-fil a span{font-weight:600;opacity:.85}"
       + "@media (max-width:520px){.efa-fil a{font-size:14px;padding:6px 12px}.efa-fil a.fil-p span{display:none}.efa-fil a.fil-s{max-width:62%}}"
+      + ".efa-fil.flot{position:fixed;left:0;right:0;z-index:45;background:rgba(245,239,226,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(11,18,32,.12);animation:efaFil .18s ease-out}"
+      + ".efa-fil.flot .efa-fil-in{padding-top:4px;padding-bottom:4px}.efa-fil.flot a{min-height:34px;line-height:22px;padding:6px 12px}"
+      + "@keyframes efaFil{from{transform:translateY(-8px);opacity:0}to{transform:none;opacity:1}}"
+      + "@media (prefers-reduced-motion:reduce){.efa-fil.flot{animation:none}}"
       + "@media print{.efa-fil{display:none}}";
     document.head.appendChild(st);
     var f = document.createElement("nav"); f.className = "efa-fil"; f.setAttribute("aria-label", "Revenir et poursuivre");
@@ -160,6 +164,22 @@
       f.style.marginTop = Math.round(bas) + "px"; mn.insertBefore(f, mn.firstChild);
       var pt = parseFloat(getComputedStyle(mn).paddingTop) || 0; if (pt >= bas) f.style.marginTop = "0px";
     } else if (hd && hd.parentNode) hd.parentNode.insertBefore(f, hd.nextSibling); else document.body.insertBefore(f, document.body.firstChild);
+    // Toujours visible : quand la barre sort de l'écran, elle se fixe en haut, juste sous l'en-tête s'il reste affiché
+    var ph = document.createElement("div"); ph.className = "efa-fil-place"; f.parentNode.insertBefore(ph, f); ph.appendChild(f);
+    var entete = function () { if (!hd || hd === f) return 0; var cs = getComputedStyle(hd); if (cs.position !== "fixed" && cs.position !== "sticky") return 0; var r = hd.getBoundingClientRect(); return r.bottom > 0 && r.top <= 0.5 ? r.bottom : 0; };
+    var flotte = false, att = false;
+    var maj = function () {
+      att = false; var hb = entete(), r = ph.getBoundingClientRect(), doit = r.top < hb - 0.5;
+      if (doit !== flotte) {
+        flotte = doit;
+        if (doit) { ph.style.height = r.height + "px"; f.classList.add("flot"); }
+        else { f.classList.remove("flot"); f.style.top = ""; ph.style.height = ""; }
+      }
+      if (flotte) { f.style.top = Math.round(hb) + "px"; document.documentElement.style.setProperty("--efa-fil-h", f.offsetHeight + "px"); }
+      else document.documentElement.style.setProperty("--efa-fil-h", "0px");
+    };
+    var demande = function () { if (!att) { att = true; requestAnimationFrame(maj); } };
+    window.addEventListener("scroll", demande, { passive: true }); window.addEventListener("resize", demande); maj();
     // Suivant par défaut : la table SUIVANT, sinon reprendre le module en cours, sinon L'école
     var et = {}; try { et = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; } catch (e) {}
     if (SUIVANT[pg]) filSuivant(SUIVANT[pg][0], SUIVANT[pg][1]);
