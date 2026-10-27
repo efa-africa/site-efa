@@ -152,7 +152,7 @@ p{margin:0}
   <div class="bars" id="bars" aria-hidden="true"></div>
   <div class="head">
     <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="30" height="30">EFA · L’école</a>
-    <div class="ctl"><button type="button" id="son" aria-pressed="false" aria-label="Activer la musique"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="w" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span id="son-t">Son</span></button><button type="button" id="pause" aria-label="Mettre en pause">❚❚</button><a href="#" id="passer">Passer</a></div>
+    <div class="ctl"><button type="button" id="son" aria-pressed="false" aria-label="Activer la musique"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path class="w" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span id="son-t">Son</span></button><button type="button" id="recul" aria-label="Scène précédente">‹</button><button type="button" id="pause" aria-label="Mettre en pause">❚❚</button><a href="#" id="passer">Passer</a></div>
   </div>
 
   <div class="stage" id="stage" aria-live="polite">
@@ -444,7 +444,7 @@ var MUS=(function(){
   var tout=[].slice.call(document.querySelectorAll('.scene')),demo=document.getElementById('demo'),sc=[],bars=document.getElementById('bars'),bi=[],D='efa',
       pb=document.getElementById('pause'),i=0,timer=null,paused=false,DUR=6500,reste=DUR,debut=0;
   function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
-  function lancer(d,depart){
+  function lancer(d,depart,empiler){
     D=DEMOS[d]?d:'efa';
     tout.forEach(function(s){s.classList.remove('on');});
     sc=tout.filter(function(s){return s.getAttribute('data-d')===D;});
@@ -452,7 +452,7 @@ var MUS=(function(){
     document.querySelectorAll('[data-autres]').forEach(function(box){
       box.innerHTML=ORDRE[D].map(function(k){var x=DEMOS[k];return '<button type="button" class="dm" data-lancer="'+k+'"><b>'+esc(x.t)+'</b><span>'+esc(x.p)+'</span><em>Voir · '+x.d+'</em></button>';}).join('');
     });
-    try{history.replaceState(null,'',location.pathname+(D==='efa'?'':'?d='+D));}catch(e){}
+    try{var u=location.pathname+(D==='efa'?'':'?d='+D);if(empiler)history.pushState({d:D},'',u);else history.replaceState({d:D},'',u);}catch(e){}
     efaCompte('demo-'+D+'-debut');
     show(depart||0);
   }
@@ -472,16 +472,16 @@ var MUS=(function(){
     if(p){clearTimeout(timer);reste=Math.max(300,reste-(Date.now()-debut));}else plan();}
   pb.addEventListener('click',function(){pause(!paused);if(paused)MUS.stop();else if(!coupe)MUS.start();majSon();});
   document.getElementById('tapr').addEventListener('click',function(){show(i+1);});
-  document.getElementById('tapl').addEventListener('click',function(){show(i-1);});
+  document.getElementById('tapl').addEventListener('click',function(){reculer();});
   document.getElementById('passer').addEventListener('click',function(e){e.preventDefault();efaCompte('demo-passer');show(sc.length-1);});
   document.addEventListener('click',function(e){
-    var l=e.target.closest('[data-lancer]');if(l){e.preventDefault();efaCompte('demo-choix-'+l.getAttribute('data-lancer'));lancer(l.getAttribute('data-lancer'));return;}
+    var l=e.target.closest('[data-lancer]');if(l){e.preventDefault();efaCompte('demo-choix-'+l.getAttribute('data-lancer'));lancer(l.getAttribute('data-lancer'),0,true);return;}
     if(e.target.closest('[data-revoir]')){efaCompte('demo-revoir');show(0);}
   });
   /* l'écran défile dans le téléphone : de haut en bas, sans dépasser */
   function caler(im){function f(){var h=im.parentNode.clientHeight,H=im.getBoundingClientRect().height;im.style.setProperty('--y',Math.min(0,h-H)+'px');var a=im.style.animation;im.style.animation='none';void im.offsetWidth;im.style.animation=a;}if(im.complete)f();else im.addEventListener('load',f,{once:true});}
   window.addEventListener('resize',function(){var im=sc[i]&&sc[i].querySelector('.tel img');if(im)caler(im);});
-  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);if(e.key===' '){e.preventDefault();pause(!paused);}});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')reculer();if(e.key===' '){e.preventDefault();pause(!paused);}});
   document.addEventListener('visibilitychange',function(){if(document.hidden){if(!paused)pause(true);MUS.stop();majSon();}});
   var sb=document.getElementById('son'),coupe=false;
   function majSon(){var o=MUS.actif();sb.setAttribute('aria-pressed',String(o));sb.setAttribute('aria-label',o?'Couper la musique':'Activer la musique');document.getElementById('son-t').textContent=o?'Son':'Son coupé';}
@@ -491,6 +491,10 @@ var MUS=(function(){
   ['click','touchend','keydown'].forEach(function(ev){document.addEventListener(ev,function(e){if(!coupe&&!MUS.actif()&&!sb.contains(e.target)){MUS.start();majSon();}},true);});
   document.getElementById('son-t').textContent='Son';
   var q=new URLSearchParams(location.search).get('d')||location.hash.slice(1);lancer(q);
+  /* revenir en arrière : scène précédente ; au début d'une démo courte, retour au choix des démos */
+  function reculer(){if(i>0){show(i-1);return;}if(D!=='efa'){efaCompte('demo-retour-choix');lancer('efa',99);}}
+  document.getElementById('recul').addEventListener('click',function(e){e.stopPropagation();reculer();});
+  window.addEventListener('popstate',function(){var d=new URLSearchParams(location.search).get('d')||'efa';lancer(d,d==='efa'?99:0);});
 })();
 </script>
 <script src="efa-sons.js?v=2026102701"></script>

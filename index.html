@@ -897,6 +897,16 @@ img.char{object-position:50% 18%}
 .lb-in{max-width:900px;margin:0 auto}
 .lettre-bas .efa-nl{background:#13203A;border-radius:14px;padding:20px 22px;margin:0 auto!important;width:100%!important;max-width:640px;box-sizing:border-box}
 .lettre-bas .efa-nl{grid-template-columns:minmax(0,1fr)}.lettre-bas .efa-nl > *{min-width:0}.lettre-bas #signup-form{grid-template-columns:minmax(0,1fr)}.lettre-bas #signup-form > *{min-width:0}.lettre-bas .efa-nl-row input{min-width:0;width:100%;flex:1 1 0}.lettre-bas .efa-nl-row button{flex:none}
+#ecole{scroll-margin-top:96px}
+.ec-profils{width:100%;max-width:1100px;display:grid;gap:10px;text-align:left}
+.ec-pk{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail);text-align:center}
+.ec-pg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ec-pf{display:flex;flex-direction:column;gap:6px;background:#0D1525;border-radius:14px;padding:16px 18px;color:#C9D1DE;text-decoration:none;min-width:0;transition:transform .12s,background .2s}
+.ec-pf:hover{background:#13203A}.ec-pf:active{transform:scale(.98)}
+.ec-pf small{font-size:13px;font-weight:800;color:#fff}
+.ec-pf span{font-size:14.5px;line-height:1.45}
+.ec-pf em{margin-top:auto;font-style:normal;font-weight:800;font-size:14px;color:var(--soft-bleu)}
+@media (max-width:700px){.ec-pg{grid-template-columns:minmax(0,1fr);gap:8px}.ec-pf{padding:13px 15px}}
 .ec-pubs{margin:2px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px;color:#9FB0C8;max-width:900px}
 .ec-pubs a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
 .ec-reperes{margin:0;font-size:14px;font-weight:700;letter-spacing:.04em;color:#9FB0C8}
@@ -1060,7 +1070,7 @@ img.char{object-position:50% 18%}
         <p class="eh-sur">Apprendre. Comprendre. Décider.</p>
         <h1 id="eh-t">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>
         <p class="eh-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>
-        <div class="eh-bt"><a class="eh-b1" href="parcours.html?src=accueil" data-goatcounter-click="accueil-hero-commencer">Commencer gratuitement <span aria-hidden="true">→</span></a><a class="eh-b2" href="demo.html?src=accueil" data-goatcounter-click="accueil-demo">Découvrir la méthode</a></div>
+        <div class="eh-bt"><a class="eh-b1" href="#ecole" data-goatcounter-click="accueil-hero-commencer">Commencer gratuitement <span aria-hidden="true">→</span></a><a class="eh-b2" href="demo.html?src=accueil" data-goatcounter-click="accueil-demo">Découvrir la méthode</a></div>
         <p class="eh-tags"><a href="parcours.html?src=accueil#P2">Budget</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#P5">Tontine</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#P6">Crédit</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#M17">Investissement</a></p>
       </div>
       <div class="eh-vis">
@@ -1099,6 +1109,14 @@ img.char{object-position:50% 18%}
         <div class="ec-a ec-a1"><span class="ec-pour">Pour vous, à votre rythme</span><span class="ec-mot">Apprendre</span><span class="ec-q">Vos chiffres, un plan.</span><span class="ec-bt"><a href="#besoins" data-goatcounter-click="accueil-apprendre">Mon parcours</a><a href="decider.html?src=accueil" data-goatcounter-click="accueil-decider">Décider</a><a href="bourse-essentiel.html?src=accueil" data-goatcounter-click="accueil-bourse">La Bourse</a><a href="traders.html?src=accueil" data-goatcounter-click="accueil-traders">Simuler</a></span></div>
         <div class="ec-a ec-a2"><span class="ec-pour">Pour les décideurs</span><span class="ec-mot">Anticiper</span><span class="ec-q">Les données, l’avenir.</span><span class="ec-bt"><a href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-comprendre">Études</a><a href="methode.html?src=accueil#africa-2075" data-goatcounter-click="accueil-africa2075-porte">Africa 2075</a><a href="bibliotheque.html?src=accueil" data-goatcounter-click="accueil-bibliotheque">Bibliothèque</a></span></div>
         <div class="ec-a ec-a3"><span class="ec-pour">Pour les organisations</span><span class="ec-mot">Former</span><span class="ec-q">Vos équipes, suivies.</span><span class="ec-bt"><a href="organisations.html?src=accueil" data-goatcounter-click="accueil-organisations">Programme</a><a href="rendez-vous.html?sujet=organisation&src=accueil#contact" data-goatcounter-click="accueil-organisations-contact">Nous écrire</a></span></div>
+      </div>
+      <div class="ec-profils">
+        <p class="ec-pk">Vous êtes plutôt…</p>
+        <div class="ec-pg">
+          <a class="ec-pf" href="#besoins" data-goatcounter-click="accueil-profil-apprendre"><small>Je veux apprendre</small><span>Mieux gérer mon argent&nbsp;: budget, réserve, dettes, tontine, Bourse. L’école me guide pas à pas, gratuitement.</span><em>C’est moi →</em></a>
+          <a class="ec-pf" href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-profil-decideur"><small>Je suis un décideur</small><span>Dirigeant, élu, banquier, chercheur&nbsp;: des données de terrain et la prospective Africa 2075 pour orienter mes décisions.</span><em>C’est moi →</em></a>
+          <a class="ec-pf" href="organisations.html?src=accueil" data-goatcounter-click="accueil-profil-organisation"><small>Je forme une organisation</small><span>Entreprise, coopérative, association&nbsp;: un programme pour mon groupe, suivi, sans voir les montants de chacun.</span><em>C’est moi →</em></a>
+        </div>
       </div>
       <p class="ec-pubs"><span>Dernière étude&nbsp;: <a href="etude-tontine-en-chiffres.html?src=accueil" data-goatcounter-click="accueil-etude">La tontine en chiffres</a></span><span>Africa 2075&nbsp;: <a href="africa-2075-dossier-1.html?src=accueil" data-goatcounter-click="accueil-africa2075">L’IA va multiplier les cerveaux, combien seront africains&nbsp;?</a></span></p>
     </div>
