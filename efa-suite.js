@@ -410,3 +410,20 @@
   window.addEventListener("efa-ici", function () { if (window.EFA_PARCOURS) rendre(); });
   window.addEventListener("hashchange", function () { if (window.EFA_PARCOURS && rendu) rendre(); });
 })();
+
+/* EFA Patrimoine : charte vert profond et or sur tout le parcours (classe « efa-vert » sur <html>) */
+(function(){
+  if(document.getElementById("efa-vert-css"))return;
+  var st=document.createElement("style");st.id="efa-vert-css";
+  st.textContent="html.efa-vert .top,html.efa-vert .efa-nav{background:#0F2E2A;border-bottom-color:#163E38}"
+    +"html.efa-vert .nav a.nav-cta,html.efa-vert .efa-nav a.efa-nav-p{background:#C9A35C;color:#0F2E2A}"
+    +"@media (max-width:900px){html.efa-vert .nav{background:#0F2E2A}html.efa-vert .nav a.nav-cta{background:none;color:#E2C893}}"
+    +"html.efa-vert .efa-fil{background:#F6F1E6;border-bottom-color:#E4DCC9}"
+    +"html.efa-vert .efa-fil a.fil-p{background:#0F2E2A;color:#fff}"
+    +"html.efa-vert .efa-fil a.fil-s{background:#C9A35C;color:#0F2E2A}"
+    +"html.efa-vert .efa-suite .es-btn,html.efa-vert .efa-suite .es-pb.wa,html.efa-vert .efa-suite .es-merci,html.efa-vert .efa-ctx button.ctx-fait{background:#C9A35C;color:#0F2E2A}"
+    +"html.efa-vert .efa-suite .es-barre i{background:#C9A35C}"
+    +"html.efa-vert .efa-suite .es-lien,html.efa-vert .efa-ctx a{text-decoration-color:#C9A35C}"
+    +"html.efa-vert footer.efa-foot{background:#0B231F;border-top-color:rgba(201,163,92,.25)}html.efa-vert .efa-foot .ef-cta{background:#C9A35C;color:#0F2E2A}";
+  (document.head||document.documentElement).appendChild(st);
+})();
