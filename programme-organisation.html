@@ -87,6 +87,16 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 .bt{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 20px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);font:800 15.5px/1.2 var(--f-body);cursor:pointer;text-decoration:none}
 .bt-p{background:var(--corail);color:#fff}.bt-n{background:var(--nuit);color:#fff}.bt-l{background:none;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px;padding-inline:4px}
 .bt[disabled]{opacity:.45;cursor:not-allowed}
+.bt{transition:transform .12s ease,background-color .2s ease,box-shadow .2s ease}
+.bt:not([disabled]):hover{box-shadow:0 4px 14px rgba(11,18,32,.18)}
+.bt:not([disabled]):active{transform:scale(.96)}
+.bt.bt-ok,.bt.bt-ok[disabled]{background:#1E7A4C;color:#fff;opacity:1;animation:bt-pop .45s ease}
+@keyframes bt-pop{0%{transform:scale(.94)}55%{transform:scale(1.05)}100%{transform:scale(1)}}
+.reco-ok{margin-top:14px;background:#1E7A4C;color:#fff;border-radius:10px;padding:14px 16px;font-size:16px;animation:bt-pop .45s ease}
+.reco-ok b{color:#fff}.reco-ok a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:4px;margin-left:4px}
+.ch.vient{animation:ch-vient 1.1s ease 2}
+@keyframes ch-vient{0%,100%{box-shadow:0 0 0 0 rgba(218,60,27,0)}50%{box-shadow:0 0 0 4px rgba(218,60,27,.55)}}
+@media (prefers-reduced-motion:reduce){.bt,.bt.bt-ok,.reco-ok,.ch.vient{animation:none;transition:none}}
 .arb{background:var(--creme);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
 .arb h3{font-size:19px}.arb p{color:var(--ink2);font-size:15.5px}
 .arb .opts{display:flex;flex-direction:column;gap:8px}
@@ -187,7 +197,7 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="parcours-efa.js?v=2026102512"></script>
-<script src="programme-organisation.js?v=2026102702"></script>
+<script src="programme-organisation.js?v=2026102703"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026102704" defer></script>
 </body>

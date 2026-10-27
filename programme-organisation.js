@@ -176,7 +176,7 @@
   function enqueteHtml() {
     var L = mesEnquetes();
     return '<div class="enq"><p class="sur">Facultatif</p><h3>Vous n’êtes pas sûr ? Demandez-leur.</h3>'
-      + '<p>Une enquête anonyme de 3 minutes, à envoyer à vos salariés ou à vos membres : 15 situations, oui ou non. Ni nom, ni email, ni montant. Dès 5 réponses, les résultats cochent les situations et leur importance à votre place.</p>'
+      + '<p>Une enquête anonyme de 3 minutes, à envoyer à vos salariés ou à vos membres : 15 situations, oui ou non. Ni nom, ni email, ni montant. Dès 5 réponses, les résultats cochent les situations et leur importance à votre place.</p><p class="aide"><b>Ce qui se passe ensuite :</b> vous obtenez aussitôt un lien à envoyer (WhatsApp, email) et un lien privé pour lire vos résultats.</p>'
       + '<div class="acts"><button type="button" class="bt bt-n" id="enq-c">Créer une enquête anonyme</button><a class="bt bt-l" href="enquete.html?apercu=1" target="_blank" rel="noopener">Voir les questions</a></div><p class="aide" id="enq-m" role="status" aria-live="polite"></p><div id="enq-r"></div>'
       + (L.length ? '<p class="aide"><b>Vos enquêtes sur ce téléphone :</b> ' + L.map(function (x) { return '<a href="enquete.html?resultats=' + encodeURIComponent(x.cle) + '">' + esc(x.nom) + ' · résultats</a>'; }).join(" · ") + '</p>' : '')
       + '</div>';
@@ -197,7 +197,7 @@
             + '<p><b>Le lien de vos résultats</b> : gardez-le pour vous, il n’est montré qu’une fois. Il est aussi gardé sur ce téléphone.</p><div class="lien">' + esc(res) + '</div><div class="acts"><a class="bt bt-n" href="' + esc(res) + '">Voir les résultats</a></div>'
             + '<p class="aide">Les résultats s’affichent dès 5 réponses. Vous pouvez continuer à composer votre programme maintenant, puis l’ajuster avec l’enquête.</p></div>';
           $("enq-cop").onclick = function () { try { navigator.clipboard.writeText(msg).then(function () { $("enq-m").textContent = "Message copié."; }); } catch (e) {} };
-        }, function (e) { b.disabled = false; m.textContent = e.message + " Vous pouvez composer votre programme sans enquête."; });
+        }, function (e) { b.disabled = false; m.textContent = (/Route inconnue/.test(e.message) ? "La création d’enquêtes n’est pas encore ouverte : elle arrive dans les prochains jours." : e.message) + " Vous pouvez composer votre programme dès maintenant, sans enquête."; mesure("orga-enquete-erreur"); });
     };
   }
   function e1() {
@@ -231,7 +231,9 @@
     $("vue").innerHTML = '<section class="carte"><p class="sur">Étape 2 sur 5</p><h2>Que doivent-ils apprendre&nbsp;?</h2>'
       + (S.enjeux.length && cons.length ? '<div class="reco"><p class="sur">Notre recommandation</p><h3>Vos ' + cons.length + ' sujets prioritaires</h3><ol>' + cons.map(function (k) { var x = NOMSUJ[k], w = R.pourquoi[k] || []; return x ? '<li><b>' + esc(x[1]) + '</b>' + (w.length ? '<small>Parce que : ' + esc(w.slice(0, 2).join(" ; ").toLowerCase()) + '</small>' : '') + '</li>' : ''; }).join("") + '</ol>'
         + (cons.indexOf("retraite") >= 0 || cons.indexOf("placer") >= 0 ? '<p class="aide">Placer ou préparer la retraite suppose une réserve et des dettes maîtrisées : l’étape des arbitrages vous proposera ce socle.</p>' : '')
-        + '<div class="acts"><button type="button" class="bt bt-p" id="s-reco">Prendre ces sujets</button></div></div>' : '')
+        + (cons.every(function (k) { return S.sujets.indexOf(k) >= 0; })
+          ? '<p class="reco-ok" id="s-conf"><b>✓ Ces ' + cons.length + ' sujets sont dans votre programme.</b> Ils sont cochés plus bas, dans « Des sujets précis ». <a href="#s-l" id="s-voir">Les voir ↓</a></p>'
+          : '<div class="acts"><button type="button" class="bt bt-p" id="s-reco">Prendre ces sujets</button></div>') + '</div>' : '')
       + '<p class="aide"><b>Un cycle complet</b> : tous ses modules, et son certificat local à la fin.</p>'
       + '<div class="choix" id="c-l">' + CYCLES.map(function (c) { return bouton(c.id, "Cycle " + c.n + " · " + c.nom, S.cycles.indexOf(c.id) >= 0, c.ids.length + " modules · " + c.but + " · environ " + duree(total(c.ids)), "Certificat local " + c.nom); }).join("")
       + bouton("tous", "Les trois cycles", tous, "23 modules · tout le parcours de l’école", "Certificat CEFA ★") + "</div>"
@@ -245,8 +247,23 @@
       e2(); };
     function maj() { var ids = modulesChoisis(); $("s-n").innerHTML = ids.length ? "<b>" + ids.length + " module" + (ids.length > 1 ? "s" : "") + "</b>, environ " + duree(total(ids)) + " de leçons et d’outils." : "Choisissez au moins un sujet."; $("suiv").disabled = !ids.length; }
     $("s-l").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; var v = b.dataset.v, i = S.sujets.indexOf(v); if (i >= 0) S.sujets.splice(i, 1); else S.sujets.push(v); b.setAttribute("aria-pressed", i < 0); maj(); };
-    if ($("s-reco")) $("s-reco").onclick = function () { cons.forEach(function (k) { if (S.sujets.indexOf(k) < 0) S.sujets.push(k); }); mesure("orga-reco-prise"); e2(); };
-    if ($("s-cons")) $("s-cons").onclick = function () { cons.forEach(function (s) { if (S.sujets.indexOf(s) < 0) S.sujets.push(s); }); e2(); };
+    function prendre(b, ev) {
+      var n = 0; cons.forEach(function (k) { if (S.sujets.indexOf(k) < 0) { S.sujets.push(k); n++; } });
+      b.classList.add("bt-ok"); b.disabled = true; b.textContent = "✓ Sujets ajoutés";
+      if (ev) mesure(ev);
+      setTimeout(function () { S.recoPrise = cons.length; e2(); }, 450);
+    }
+    if ($("s-reco")) $("s-reco").onclick = function () { prendre(this, "orga-reco-prise"); };
+    if ($("s-cons")) $("s-cons").onclick = function () { prendre(this); };
+    if (S.recoPrise) {
+      var k = S.recoPrise; S.recoPrise = 0;
+      var l = $("s-l"), conf = $("s-conf");
+      if (conf) { conf.hidden = false; }
+      l.querySelectorAll('.ch[aria-pressed="true"]').forEach(function (x) { x.classList.add("vient"); });
+      setTimeout(function () { var y = l.getBoundingClientRect().top + window.scrollY - 140; window.scrollTo({ top: y, behavior: "smooth" }); }, 900);
+      setTimeout(function () { l.querySelectorAll(".vient").forEach(function (x) { x.classList.remove("vient"); }); }, 3200);
+    }
+    if ($("s-voir")) $("s-voir").onclick = function (e) { e.preventDefault(); var y = $("s-l").getBoundingClientRect().top + window.scrollY - 140; window.scrollTo({ top: y, behavior: "smooth" }); };
     $("suiv").onclick = function () { aller(3); }; $("prec").onclick = function () { aller(1); }; maj();
   }
   function e3() {
