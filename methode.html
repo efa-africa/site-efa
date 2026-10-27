@@ -214,7 +214,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .mn-in::-webkit-scrollbar{display:none}
 .mainnav a{flex:none;font:700 13px var(--body);text-decoration:none;color:var(--ink2);padding:7px 12px;border-radius:8px;white-space:nowrap}
 .mainnav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
-.mainnav a[aria-current="page"]{color:#fff;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:6px}
+.mainnav a[aria-current="page"]{color:#fff;background:rgba(255,255,255,.16);text-decoration:none}
 .mainnav a.mn-cta{background:var(--corail);color:#fff}
 .rubs{display:flex;gap:4px;margin-left:auto}
 .garant{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:22px;align-items:center;background:var(--panel,#0D1525);border-radius:14px;padding:22px;margin-block:8px 18px}
@@ -366,7 +366,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .enq-l p{margin:0;font-size:16px;line-height:1.45;min-width:0;flex:1 1 280px}
 .enq-l b{display:block;font-size:18px}
 .enq-l a{flex:none;background:#0B1220;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:10px}
-.mission-l{margin:0 auto;padding-block:14px 0;font:700 14px/1.45 var(--body);color:var(--ink)}
+.mission-l{margin:0 auto;padding-block:16px 30px;font:700 14px/1.45 var(--body);color:var(--ink)}
 .mission-l .mc,.mission-f .mc{color:#EC6243;font-weight:800}
 .mission-l .ms,.mission-f .ms{color:var(--bleu)}
 .mission-f{flex-basis:100%;font:700 13px/1.45 var(--body);color:var(--ink)}
@@ -385,7 +385,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .code{border:0;background:rgba(255,255,255,.07)}
 .pv{border:0!important}
 .st-card[aria-current="true"]{border:0;box-shadow:none;background:#1C2842}
-.rubs a[aria-current="page"]{background:none;color:#fff;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:8px}
+.rubs a[aria-current="page"]{background:rgba(255,255,255,.16);color:#fff;text-decoration:none}
 .kick,.meta small,.sim-out small,.studies h2,.step-n{letter-spacing:.06em;font-weight:700;font-size:12px}
 .method summary .t{letter-spacing:.04em}
 .meta b,.sim-out b{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.2vw,26px);letter-spacing:0}
@@ -444,7 +444,7 @@ a.st-card{text-decoration:none}
 .st-back span{font-size:13px;color:var(--ink2);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 
 /* Actualités : deux sous-onglets, EFA News puis BRVM */
-.subtabs{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.subtabs{display:flex;gap:8px;margin-top:0;padding-top:26px;flex-wrap:wrap}
 .subtabs a{flex:1 1 220px;display:grid;gap:2px;padding:14px 18px;border-radius:12px;background:var(--panel);color:var(--ink2);text-decoration:none;min-width:0}
 .subtabs a b{font:700 18px var(--disp);color:var(--ink)}
 .subtabs a small{font-size:13px}
