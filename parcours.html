@@ -625,7 +625,9 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
   function progression(p){
     var dispo = p.etapes.filter(function(s){return s.ok && s.ess;}).length, faits = 0;
     p.etapes.forEach(function(s,i){ if(s.ok && s.ess && etat.faits[p.id+"."+i]) faits++; });
-    return {dispo:dispo, faits:faits};
+    var plus = p.etapes.filter(function(s){return s.ok && !s.ess;}).length, pf = 0;
+    p.etapes.forEach(function(s,i){ if(s.ok && !s.ess && etat.faits[p.id+"."+i]) pf++; });
+    return {dispo:dispo, faits:faits, plus:plus, pf:pf};
   }
   function ficheGardee(p){
     if(etat.preuves && etat.preuves[p.id]) return true;
@@ -660,7 +662,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       + '<span class="p-tete"><span class="etiquette">'+esc(nomCourt(p.id))+' · '+esc(p.titre)+'</span><h3>« '+esc(p.probleme)+' »</h3><span class="obj">À l’arrivée : '+esc(p.objectif.charAt(0).toLowerCase()+p.objectif.slice(1))+'</span></span>'
       + '<span class="p-cote"><span class="duree">'+esc(p.duree)+'</span><span class="statut '+st.c+'">'+st.t+'</span>'+(premier?'<span class="p-go">'+(g.faits?'Reprendre':'Commencer')+' ›</span>':'')+'<span class="fleche" aria-hidden="true">›</span></span>'
       + '<span class="barre" aria-hidden="true"><i style="width:'+(g.dispo?Math.round(g.faits/g.dispo*100):0)+'%"></i></span>'
-      + '<span class="barre-txt">'+(ok ? '<span class="pill valide">Module validé · attestation de réalisation</span>' : !g.dispo ? 'Module en préparation' : g.faits+' étape'+(g.faits>1?"s":"")+' faite'+(g.faits>1?"s":"")+' sur '+g.dispo+' essentielles'+(g.faits>=g.dispo ? ' · il reste votre fiche' : ''))+'</span>'
+      + '<span class="barre-txt">'+(ok ? '<span class="pill valide">Module validé · attestation de réalisation</span>' : !g.dispo ? 'Module en préparation' : 'Étapes essentielles : '+g.faits+' sur '+g.dispo+(g.plus?' · pour aller plus loin : '+g.pf+' sur '+g.plus:'')+(g.faits>=g.dispo ? ' · il reste votre fiche' : ''))+'</span>'
       + '</summary><div class="p-corps">'
       + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'

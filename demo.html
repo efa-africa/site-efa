@@ -530,7 +530,7 @@ var MUS=(function(){
     document.querySelectorAll('[data-autres]').forEach(function(box){
       var V=vues(),L=ORDRE[D].slice().sort(function(a,b){return (V.indexOf(a)>=0)-(V.indexOf(b)>=0);});
       box.innerHTML=L.map(function(k){var x=DEMOS[k],vu=V.indexOf(k)>=0;return '<button type="button" class="dm'+(vu?' vu':'')+'" data-lancer="'+k+'"><b>'+esc(x.t)+'</b><span>'+esc(x.p)+'</span><em>'+(vu?'✓ Déjà vue · revoir':'Voir · '+x.d)+'</em></button>';}).join('')
-        +'<a class="dm app" href="app/?installer=1&amp;src=demo-'+D+'" data-goatcounter-click="demo-appli-'+D+'"><b>L’appli EFA</b><span>Gardez l’école sur votre téléphone, même sans connexion.</span><em>Installer l’appli →</em></a>';
+        +'<a class="dm app" href="app/?installer=1&amp;src=demo-'+D+'" data-goatcounter-click="demo-appli-'+D+'"><b>L’appli EFA</b><span>Gardez l’école sur votre téléphone : modules, cahier et Dico consultables hors connexion.</span><em>Installer l’appli →</em></a>';
     });
     try{var u=location.pathname+(D==='choix'?'':'?d='+D);if(empiler)history.pushState({d:D},'',u);else history.replaceState({d:D},'',u);}catch(e){}
     if(D!=='choix')marquerVue(D);

@@ -326,7 +326,8 @@ MODULES.push((function(){
   var etapes=[
     {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>salarié à Abidjan`,
      corps:`<h2 class="h">Le salaire arrive, et une semaine après, la moitié est déjà partie ?</h2>`
-      +`<p class="p">Ce n'est pas un manque de volonté. C'est un manque d'ordre.</p>`
+      +`<p class="p">Souvent, ce n'est pas un manque de volonté, mais un manque d'ordre.</p>`
+      +`<p class="p">Et parfois, c'est le revenu qui ne suffit pas. Ce module vous aide aussi à le voir clairement.</p>`
       +`<p class="p">Ce module vous apprend à <strong>décider où va votre argent avant qu'il arrive</strong>.</p>`},
     {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`Le 1er du mois,<br>la moitié du salaire est partie`,
      corps:`<h2 class="h">400 000 F le 25, 200 000 F le 1er</h2>`
@@ -359,13 +360,14 @@ MODULES.push((function(){
      corps:`<h2 class="h">Trois idées à garder</h2>`
       +`<p class="p"><strong>1.</strong> Payez-vous en premier : l'épargne sort le jour de la paie, pas à la fin du mois.</p>`
       +`<p class="p"><strong>2.</strong> Les fixes, on les connaît. Les variables, on les pilote.</p>`
-      +`<p class="p"><strong>3.</strong> Revenu irrégulier : bâtissez le budget sur un petit mois. Le surplus des bons mois va à l'épargne.</p>`},
+      +`<p class="p"><strong>3.</strong> Revenu irrégulier : bâtissez le budget sur un petit mois. Le surplus des bons mois va à l'épargne.</p>`
+      +`<p class="p">Si votre revenu ne couvre pas l'essentiel, le budget ne fait pas de miracle. Il montre l'écart exact : c'est ce chiffre qui sert pour chercher un revenu en plus, négocier un loyer ou une dette, ou demander de l'aide sans honte.</p>`},
     {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
   ];
   var EXO={titre:`Ce qui reste pour vous`,
     champs:[{id:`rev`,label:`Revenu du mois`,ph:`ex. 400 000`},{id:`fix`,label:`Dépenses fixes`,ph:`ex. 235 000`},{id:`var`,label:`Dépenses variables`,ph:`ex. 145 000`}],
     calc:function(v){var r=v[0]-v[1]-v[2], p=v[0]>0?Math.round(r/v[0]*100):0;
-      return {res:fcfa(r), ver: r<0 ? `Vos dépenses dépassent votre revenu. Regardez d'abord les variables.` : r===0 ? `Rien ne reste. Commencez petit : 5 000 F mis de côté dès la paie.` : p>=10 ? `Soit ${p} % du revenu. Mettez-le de côté le jour de la paie.` : `Soit ${p} % du revenu. C'est un début : programmez-le le jour de la paie.`}}};
+      return {res:fcfa(r), ver: r<0 ? `Vos dépenses dépassent votre revenu. Regardez d'abord les variables. Si l'écart vient de l'essentiel (logement, nourriture, santé, école), couper ailleurs ne suffira pas : il faudra agir sur le revenu, renégocier une charge ou demander un appui. Ce n'est pas un échec de votre part.` : r===0 ? `Rien ne reste. Commencez petit : 5 000 F mis de côté dès la paie.` : p>=10 ? `Soit ${p} % du revenu. Mettez-le de côté le jour de la paie.` : `Soit ${p} % du revenu. C'est un début : programmez-le le jour de la paie.`}}};
   var questions=[
     {e:`Le loyer est une dépense…`, o:[`fixe`,`variable`,`imprévue`], b:0,
      x:`Le loyer revient chaque mois pour le même montant : c'est une dépense fixe.`},
@@ -376,7 +378,7 @@ MODULES.push((function(){
     {e:`Une commerçante gagne entre 150 000 F et 300 000 F selon les mois. Sur quel montant bâtir son budget ?`, o:[`300 000 F`,`225 000 F, la moyenne`,`150 000 F, le petit mois`], b:2,
      x:`Un budget bâti sur le petit mois tient tous les mois. Les bons mois, le surplus va à l'épargne.`},
     {e:`Pour réduire vite ses dépenses, on regarde d'abord…`, o:[`les dépenses variables`,`les dépenses fixes`,`l'épargne`], b:0,
-     x:`Les fixes sont liées à des engagements (bail, forfait). Les variables se pilotent dès cette semaine.`}
+     x:`Les fixes sont liées à des engagements (bail, forfait). Les variables se pilotent dès cette semaine. Mais si le manque vient de l'essentiel, il faut aussi agir sur le revenu ou les charges fixes.`}
   ];
 
   var BANQUE=[

@@ -879,11 +879,11 @@ var OUTILS = [
     var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){}
     var faits=st.faits||{}, lignes=[];
     DP.parcours.forEach(function(p){
-      var dispo=0, n=0, suivante=null;
-      p.etapes.forEach(function(e,i){ if(!e.ok||!e.ess) return; dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
+      var dispo=0, n=0, plus=0, pn=0, suivante=null;
+      p.etapes.forEach(function(e,i){ if(!e.ok) return; if(!e.ess){ plus++; if(faits[p.id+"."+i]) pn++; return; } dispo++; if(faits[p.id+"."+i]) n++; else if(!suivante&&e.lien) suivante=e; });
       if(!n && st.actif!==p.id && !(st.preuves&&st.preuves[p.id])) return;
       var href=suivante?(/^https?:/.test(suivante.lien)?suivante.lien:suivante.lien.split("#")[0]+(suivante.lien.indexOf("?")<0?"?":"&")+"parcours="+p.id+(suivante.lien.indexOf("#")>=0?"#"+suivante.lien.split("#").slice(1).join("#"):"")):("parcours.html#"+p.id);
-      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>'+esc(p.nom||('Parcours '+p.id.slice(1)))+' · '+esc(p.titre)+' · parcours : '+n+' étape'+(n>1?'s':'')+' faite'+(n>1?'s':'')+' sur '+dispo+' (le quiz du module en est une)</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a><div class="pv-z">'+vuePreuve(p,st)+'</div></div>');
+      lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>'+esc(p.nom||('Parcours '+p.id.slice(1)))+' · '+esc(p.titre)+' · étapes essentielles : '+n+' sur '+dispo+(plus?' · pour aller plus loin : '+pn+' sur '+plus:'')+'</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a><div class="pv-z">'+vuePreuve(p,st)+'</div></div>');
     });
     return '<section class="wk pc"><p class="over">Mes modules</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous les modules</a></p>'
       :'<h3>Aucun parcours commencé</h3><p class="small">Partez de votre problème : chaque étape faite s’affichera ici.</p><a class="btn btn-main" href="#parcours">Choisir mon parcours</a>')+'</section>';

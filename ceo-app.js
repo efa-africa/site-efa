@@ -210,14 +210,15 @@
     maj();
   }
   function grille(c, s) {
-    var tx = [], cal = 0, nc = 0;
-    c.etapes.forEach(function (e, i) { var r = s.rep[i]; if (!r) return; if (e.t === "texte") tx.push(r.auto); if (e.t === "nombre" || e.t === "qcm") { nc++; if (r.juste) cal++; } });
+    var tx = [], cr = null, cal = 0, nc = 0;
+    c.etapes.forEach(function (e, i) { var r = s.rep[i]; if (!r) return; if (e.t === "texte") { if (e.critique) cr = r.auto; else tx.push(r.auto); } if (e.t === "nombre" || e.t === "qcm") { nc++; if (r.juste) cal++; } });
     var st = tx.length ? tx[0] : null, d = s.decision, chiffre = /\d/.test(d.texte), long = d.texte.length >= 60;
     var lig = function (t, ok, txt) { return '<div class="ceo-gl"><span class="ceo-gi ' + ok + '" aria-hidden="true"></span><b>' + t + "</b><small>" + txt + "</small></div>"; };
     return '<div class="ceo-grille"><p class="etiquette">Votre grille</p>' +
       lig("Structure", st === 0 ? "ok" : st === 1 ? "moyen" : "ko", st === 0 ? "Votre structure couvrait l’essentiel." : st === 1 ? "Votre structure couvrait une partie des branches." : st === 2 ? "Votre structure est à retravailler : relisez le chapitre sur les arbres MECE." : "Non évaluée.") +
       lig("Calcul", nc && cal / nc >= .8 ? "ok" : nc && cal / nc >= .5 ? "moyen" : "ko", cal + " réponse(s) juste(s) sur " + nc + " au premier essai.") +
-      lig("Synthèse", chiffre && long ? "ok" : chiffre || long ? "moyen" : "ko", (chiffre ? "Appuyée sur un chiffre" : "Sans chiffre : ajoutez celui qui fonde la décision") + (long ? ", avec une raison développée." : ", trop courte pour convaincre un dirigeant.")) + "</div>";
+      lig("Synthèse", chiffre && long ? "ok" : chiffre || long ? "moyen" : "ko", (chiffre ? "Appuyée sur un chiffre" : "Sans chiffre : ajoutez celui qui fonde la décision") + (long ? ", avec une raison développée." : ", trop courte pour convaincre un dirigeant.")) +
+      (c.etapes.some(function (e) { return e.critique; }) ? lig("Esprit critique", cr === 0 ? "ok" : cr === 1 ? "moyen" : "ko", cr === 0 ? "Vous aviez repéré les hypothèses fragiles : un calcul n’est pas encore une stratégie." : cr === 1 ? "Vous aviez repéré une partie des hypothèses fragiles." : cr === 2 ? "Prenez l’habitude de chercher l’hypothèse qui ferait tomber votre calcul." : "Non évalué.") : "") + "</div>";
   }
   function guide(c, s, o) {
     var z = $("#cf-guide"), n = c.etapes.length, i = s.etape, h = '<p class="etiquette">' + (i < n ? "Étape " + (i + 1) + " sur " + n : "Votre décision") + '</p><div class="tr-prog"><i style="width:' + Math.min(i, n) / n * 100 + '%"></i></div>';
@@ -225,12 +226,13 @@
       var e = c.etapes[i], r = s.rep[i];
       if (e.t === "info") h += "<p>" + esc(e.texte) + '</p><button class="bouton bouton-sombre" id="g-ok">Compris</button>';
       if (e.t === "texte") {
-        h += '<p class="tr-qq">' + esc(e.q) + "</p>";
-        if (!r || r.auto == null) h += '<label class="cf-lab">Votre structure<textarea id="g-t" rows="6" maxlength="1200" placeholder="1. …&#10;2. …&#10;3. …"' + (r ? " disabled" : "") + ">" + esc(r ? r.texte : s.brouillon || "") + "</textarea></label>" + (r ? "" : '<p class="tr-err" id="g-err" role="alert"></p><button class="bouton bouton-sombre" id="g-tv">Comparer avec la structure modèle</button>');
+        var cri = !!e.critique;
+        h += (cri ? '<p class="etiquette">Calcul ou stratégie ?</p>' : "") + '<p class="tr-qq">' + esc(e.q) + "</p>";
+        if (!r || r.auto == null) h += '<label class="cf-lab">' + (cri ? "Les hypothèses qui pourraient tout changer" : "Votre structure") + '<textarea id="g-t" rows="6" maxlength="1200" placeholder="' + (cri ? "Si les clients… &#10;Si le concurrent…" : "1. …&#10;2. …&#10;3. …") + '"' + (r ? " disabled" : "") + ">" + esc(r ? r.texte : s.brouillon || "") + "</textarea></label>" + (r ? "" : '<p class="tr-err" id="g-err" role="alert"></p><button class="bouton bouton-sombre" id="g-tv">' + (cri ? "Comparer avec les points de vigilance" : "Comparer avec la structure modèle") + '</button>');
         if (r) {
-          h += '<div class="ceo-modele"><p class="etiquette">Structure modèle</p><ul>' + e.modele.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
-          if (r.auto == null) h += '<p class="tr-qq">Votre structure couvrait-elle ces branches ?</p><div class="tr-choix"><button type="button" class="choix" data-a="0">Oui, l’essentiel</button><button type="button" class="choix" data-a="1">En partie</button><button type="button" class="choix" data-a="2">Non</button></div>';
-          else h += '<p class="cf-dec"><b>Votre structure :</b></p><p class="ceo-vtx">' + esc(r.texte) + '</p><p class="tr-note">Auto-évaluation : ' + ["l’essentiel y était", "en partie", "à retravailler"][r.auto] + '.</p><button class="bouton bouton-sombre" id="g-ok">Continuer</button>';
+          h += '<div class="ceo-modele"><p class="etiquette">' + (cri ? "Points de vigilance" : "Structure modèle") + '</p><ul>' + e.modele.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+          if (r.auto == null) h += '<p class="tr-qq">' + (cri ? "Aviez-vous repéré ces hypothèses ?" : "Votre structure couvrait-elle ces branches ?") + '</p><div class="tr-choix"><button type="button" class="choix" data-a="0">Oui, l’essentiel</button><button type="button" class="choix" data-a="1">En partie</button><button type="button" class="choix" data-a="2">Non</button></div>';
+          else h += '<p class="cf-dec"><b>' + (cri ? "Vos hypothèses :" : "Votre structure :") + '</b></p><p class="ceo-vtx">' + esc(r.texte) + '</p><p class="tr-note">Auto-évaluation : ' + ["l’essentiel y était", "en partie", "à retravailler"][r.auto] + '.</p><button class="bouton bouton-sombre" id="g-ok">Continuer</button>';
         }
       }
       if (e.t === "action") { var fait = e.test(s.x, o); h += '<p class="tr-act"><b>À faire :</b> ' + esc(e.consigne) + "</p>" + (fait ? '<p class="hausse">✓ Fait.</p><button class="bouton bouton-sombre" id="g-ok">Continuer</button>' : '<p class="tr-vide">Utilisez les curseurs.</p>'); }
@@ -246,7 +248,7 @@
     z.innerHTML = h;
     var ok = $("#g-ok", z); if (ok) ok.onclick = function () { s.etape++; sauver(); guide(c, s, c.calc(s.x)); };
     var gt = $("#g-t", z); if (gt && !gt.disabled) gt.oninput = function () { s.brouillon = gt.value; sauver(); };
-    var tv = $("#g-tv", z); if (tv) tv.onclick = function () { var t = (gt.value || "").trim(); if (t.length < 15) { $("#g-err").textContent = "Écrivez d’abord votre structure, même courte : c’est l’exercice."; return; } s.rep[i] = { texte: t, auto: null }; delete s.brouillon; sauver(); suivi("structure-" + c.id); guide(c, s, o); };
+    var tv = $("#g-tv", z); if (tv) tv.onclick = function () { var t = (gt.value || "").trim(); if (t.length < 15) { $("#g-err").textContent = cri ? "Écrivez au moins une hypothèse : c’est l’exercice." : "Écrivez d’abord votre structure, même courte : c’est l’exercice."; return; } s.rep[i] = { texte: t, auto: null }; delete s.brouillon; sauver(); suivi("structure-" + c.id); guide(c, s, o); };
     $$(".choix[data-a]", z).forEach(function (b) { b.onclick = function () { s.rep[i].auto = +b.dataset.a; s.rep[i].juste = +b.dataset.a === 0; sauver(); guide(c, s, o); }; });
     $$(".choix[data-k]", z).forEach(function (b) { b.onclick = function () { var e = c.etapes[i], k = +b.dataset.k; s.rep[i] = { v: k, juste: k === e.bonne, msg: e.fb[k] }; sauver(); guide(c, s, o); }; });
     var f = $("#g-f", z); if (f) f.onsubmit = function (ev) { ev.preventDefault(); var raw = lire($("input", f).value); if (raw === "" || isNaN(+raw)) return; var r = verif(c.etapes[i], raw); s.rep[i] = { v: $("input", f).value, juste: r.juste, msg: r.msg }; sauver(); guide(c, s, o); };
