@@ -298,7 +298,7 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
       <button type="button" data-profil="patrimoine" aria-pressed="false">J’ai un patrimoine à organiser</button>
     </div>
     <div class="carte test" id="zone" aria-live="polite"></div>
-    <p class="note">Vos réponses restent sur cet appareil. Les montants sont fictifs, proches de ceux d’un cadre ou d’un entrepreneur en Afrique de l’Ouest.</p>
+    <p class="note">Vos réponses restent sur cet appareil. Les montants sont fictifs, proches de situations réelles en Afrique de l’Ouest, et s’adaptent au profil choisi.</p>
   </section>
 
   <!-- Chemin personnel : le parcours -->
@@ -535,9 +535,23 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
   function liste(){return Q.filter(function(q){return S.profil==="dirigeant"||!q.dir;});}
   function rates(){return liste().filter(function(q){return S.rep[q.id]!=null&&S.rep[q.id]!==q.b;}).map(function(q){return q.r;});}
 
+
+  /* Profil « patrimoine à organiser » : mêmes mécanismes, montants à l'échelle d'un patrimoine plus large */
+  var PAT={
+    reserve:{c:"Revenus nets : 5 000 000 F par mois (activité, loyers, dividendes). Dépenses du mois, famille comprise : 3 800 000 F. Argent disponible en moins d’une semaine : 7 600 000 F.",
+      e:"On divise la réserve par les dépenses, pas par les revenus : 7 600 000 ÷ 3 800 000 = 2 mois. Les loyers, dividendes ou paiements attendus ne sont ni immédiats ni certains. À ce niveau de dépenses, deux mois laissent peu de marge."},
+    retraite:{t:"Que vaudra 10 000 000 F dans vingt ans ?",c:"Les prix augmentent de 3 % par an. Vous gardez 10 000 000 F de côté pour votre retraite, sans le placer.",
+      o:["Environ 9 400 000 F d’aujourd’hui","Environ 8 000 000 F d’aujourd’hui","Environ 5 500 000 F d’aujourd’hui","Environ 4 000 000 F d’aujourd’hui"],
+      e:"10 000 000 ÷ 1,03²⁰ ≈ 5 540 000 F. En vingt ans, l’argent qui dort perd près de la moitié de sa valeur. Un objectif de retraite se calcule en argent d’aujourd’hui."},
+    prime:{t:"50 000 000 F arrivent d’un coup : une vente, un héritage, un dividende. Quel premier geste vous protège le mieux ?",c:"Vous pensez à un immeuble, à un crédit à solder et à plusieurs demandes de la famille."},
+    terrain:{t:"80 % de votre patrimoine est en terrains et immeubles. Un imprévu de 20 000 000 F arrive. Que se passe-t-il le plus souvent ?",c:"Vos biens ont pris de la valeur depuis l’achat."},
+    famille:{c:"Chaque mois, selon les demandes, vous envoyez entre 500 000 et 1 300 000 F à la famille.",
+      e:"Aider n’est pas l’erreur. L’écart entre 500 000 et 1 300 000 F, décidé demande par demande, rend tout le reste imprévisible. Une enveloppe annoncée protège le budget et la relation."}
+  };
+  function qv(q){ if(S.profil!=="patrimoine"||!PAT[q.id]) return q; var o={},k; for(k in q) o[k]=q[k]; for(k in PAT[q.id]) o[k]=PAT[q.id][k]; return o; }
   var zone=$("zone");
   function rendreQ(){
-    var L=liste(), q=L[S.k], r=S.rep[q.id], vu=r!=null;
+    var L=liste(), q=qv(L[S.k]), r=S.rep[q.id], vu=r!=null;
     var h='<div class="prog" style="grid-template-columns:repeat('+L.length+',1fr)" aria-hidden="true">'+L.map(function(x,j){return '<i class="'+(j<S.k||(S.rep[x.id]!=null&&j!==S.k)?"fait":"")+(j===S.k?" ici":"")+'"></i>';}).join("")+'</div>'
       +'<p class="qn">Situation '+(S.k+1)+' sur '+L.length+'</p><p class="q-t">'+typo(q.t)+'</p><p class="q-c">'+typo(q.c)+'</p><div class="opts">'
       +q.o.map(function(o,j){var cl=vu?(j===q.b?(j===r?"ok":"ok-vu"):(j===r?"ko":"")):"";return '<button type="button" class="opt '+cl+'" data-j="'+j+'"'+(vu?" disabled":"")+'><b>'+"ABCD"[j]+'</b><span>'+typo(o)+'</span></button>';}).join("")+'</div>';
