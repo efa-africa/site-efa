@@ -1,5 +1,4 @@
 {
- "genere_le": "2026-10-27",
  "categories": {
   "finance": "Finance",
   "economie": "Économie",
@@ -9,6 +8,447 @@
   "vie-quotidienne": "Vie quotidienne"
  },
  "articles": [
+  {
+   "id": "2026-10-24-opay-introduction-bourse",
+   "statut": "publié",
+   "categorie": "brvm",
+   "rubrique": "Fintech",
+   "titre": "OPay vise 4,2 Md $ pour son entrée en Bourse à New York",
+   "resume": "La fintech, active surtout au Nigeria, propose 16 millions de titres entre 19 et 21 $ : à 20 $, elle vaudrait environ 4,2 Md $.",
+   "pays": [
+    "Nigeria",
+    "États-Unis"
+   ],
+   "entites": [
+    "OPay",
+    "NYSE",
+    "SEC"
+   ],
+   "notions": [
+    "introduction en Bourse",
+    "fourchette de prix",
+    "valorisation",
+    "taux de change"
+   ],
+   "evenement": "2026-10-23",
+   "evenement_label": "23 octobre 2026",
+   "publication": "2026-10-27",
+   "maj": "2026-10-27",
+   "fait": "Le 23 octobre 2026, OPay a fixé les conditions de son entrée à la Bourse de New York : 16 millions de titres proposés entre 19 et 21 $ chacun. La cotation est prévue au NYSE, et le prix final est attendu la semaine du 26 octobre.",
+   "chiffres": [
+    {
+     "valeur": "4,2 Md $",
+     "libelle": "valeur de l'entreprise au milieu de la fourchette",
+     "periode": "estimation du 23 oct. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "≈ 320 M$",
+     "libelle": "argent réellement levé (16 millions × 20 $)",
+     "periode": "au milieu de la fourchette",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "89,5 %",
+     "libelle": "part des revenus réalisée au Nigeria",
+     "periode": "1er semestre 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "La banque d'affaires annonce une fourchette de prix ; les investisseurs passent commande.",
+    "Le prix final est fixé selon la demande, puis le titre s'échange chaque jour en Bourse.",
+    "Valeur en Bourse = prix × nombre de titres : c'est un pari sur les bénéfices futurs, pas l'argent en caisse."
+   ],
+   "change": "Pour un épargnant africain, ce n'est pas une offre accessible directement. C'est un cas d'école : une valeur de 4,2 Md $ n'est pas 4,2 Md $ levés, et une entreprise qui gagne presque tout en naira dépend du cours du naira. Le 22 octobre, le naira a perdu 2,1 % en une séance.",
+   "limites": [
+    "Prospectus préliminaire : prix, montant et date peuvent changer.",
+    "La valeur de 4,2 Md $ est une estimation, pas un prix acquis.",
+    "Les 270 M$ d'intérêt d'investisseurs sont des intentions non contraignantes.",
+    "Reuters cite une levée « jusqu'à 366 M$ » qui ne colle pas au calcul (16 M × 21 $ = 336 M$)."
+   ],
+   "question": "Si la monnaie de l'entreprise baisse de 10 %, que deviennent ses bénéfices comptés en dollars ?",
+   "mot": {
+    "terme": "Fourchette de prix",
+    "definition": "Le prix minimum et le prix maximum proposés pour une action qui entre en Bourse. Le prix final est fixé à la fin, selon la demande."
+   },
+   "retenir": "La valeur d'une entreprise en Bourse n'est pas l'argent qu'elle lève.",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Emprunts obligataires et introductions en Bourse",
+     "description": "Lire une offre d'actions : qui vend, combien, à quel prix.",
+     "url": "bourse-pro.html#B7"
+    },
+    {
+     "type": "Calcul",
+     "titre": "Combien me coûtent les frais de ma SGI ?",
+     "description": "Avant d'acheter une action, calculer ce que vous paierez vraiment.",
+     "url": "questions-a-poser-a-sa-sgi.html#calcul"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Prospectus F-1 d'OPay",
+     "organisme": "SEC",
+     "date": "9 oct. 2026",
+     "url": "https://www.sec.gov/Archives/edgar/data/2103076/000119312526418812/d56487df1.htm",
+     "consulte_le": "2026-10-24"
+    },
+    {
+     "titre": "OPay vise jusqu'à 4,4 Md $ de valorisation",
+     "organisme": "Reuters, via KSL",
+     "date": "23 oct. 2026",
+     "url": "https://www.ksl.com/article/51640373/softbank-backed-opay-eyes-up-to-44-billion-valuation-in-us-ipo",
+     "consulte_le": "2026-10-24"
+    },
+    {
+     "titre": "OPay fixe les conditions de son IPO",
+     "organisme": "Renaissance Capital",
+     "date": "23 oct. 2026",
+     "url": "https://www.renaissancecapital.com/IPO-Center/News/122387/emerging-markets-fintech-opay-sets-terms-for-320-million-us-ipo",
+     "consulte_le": "2026-10-24"
+    },
+    {
+     "titre": "Le naira tombe à 1 365 pour 1 $",
+     "organisme": "Nairametrics",
+     "date": "23 oct. 2026",
+     "url": "https://nairametrics.com/2026/10/23/naira-weakens-to-n1365-records-sharpest-daily-decline-in-18-months/",
+     "consulte_le": "2026-10-24"
+    }
+   ],
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "veille EFA News du 2026-10-24"
+  },
+  {
+   "id": "2026-10-24-cemac-microfinances-fragiles",
+   "statut": "publié",
+   "categorie": "finance",
+   "rubrique": "Microfinance",
+   "titre": "Afrique centrale : 48,7 % des microfinances jugées « très fragiles »",
+   "resume": "Fin 2025, 48,7 % des microfinances de la CEMAC étaient classées « très fragiles », et 20,5 % de leurs prêts n'étaient plus remboursés normalement.",
+   "pays": [
+    "Cameroun",
+    "Gabon",
+    "Congo",
+    "Tchad",
+    "Centrafrique",
+    "Guinée équatoriale",
+    "CEMAC"
+   ],
+   "entites": [
+    "COBAC"
+   ],
+   "notions": [
+    "créance en souffrance",
+    "provision",
+    "microfinance",
+    "épargne"
+   ],
+   "evenement": "2025-12-31",
+   "evenement_label": "situation à fin 2025",
+   "publication": "2026-10-27",
+   "maj": "2026-10-27",
+   "fait": "Dans son rapport annuel 2025, la Commission bancaire de l'Afrique centrale (COBAC) classe 48,7 % des établissements de microfinance de la CEMAC comme « très fragiles ». Le rapport a été relayé le 23 octobre 2026.",
+   "chiffres": [
+    {
+     "valeur": "48,7 %",
+     "libelle": "part des microfinances « très fragiles »",
+     "periode": "fin 2025",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "20,5 %",
+     "libelle": "part des prêts qui ne sont plus remboursés normalement",
+     "periode": "fin 2025 (17,1 % fin 2024)",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "−89,4 %",
+     "libelle": "baisse du bénéfice net du secteur",
+     "periode": "2025 contre 2024",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Un prêt n'est plus remboursé comme prévu.",
+    "L'établissement doit mettre de l'argent de côté pour couvrir la perte probable : c'est la provision.",
+    "Le bénéfice fond, et avec lui le coussin qui protège l'épargne des clients."
+   ],
+   "change": "La microfinance garde l'épargne de millions de petits commerçants et de ménages. Avant d'y déposer une réserve, il vaut la peine de savoir si l'établissement est agréé et ce qui protège les dépôts.",
+   "limites": [
+    "Chiffres rapportés par Agence Ecofin ; rapport de la COBAC non consulté directement.",
+    "48,7 % est une part d'établissements, pas une part de l'épargne ni des actifs.",
+    "Le classement des 21,4 % restants n'est pas précisé.",
+    "Le système de notation est récent : deux évaluations seulement."
+   ],
+   "question": "Votre microfinance est-elle agréée, et qu'est-ce qui protège votre dépôt si elle ferme ?",
+   "mot": {
+    "terme": "Créance en souffrance",
+    "definition": "Un prêt qui n'est plus remboursé comme prévu. Ce n'est pas encore une perte totale."
+   },
+   "retenir": "L'épargne d'un client dépend aussi de la santé des prêts que fait son établissement.",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Où garder sa réserve : banque, microfinance ou mobile money ?",
+     "description": "Comparer les trois et découper sa réserve.",
+     "url": "ou-garder-sa-reserve.html"
+    },
+    {
+     "type": "Calcul",
+     "titre": "Comment découper ma réserve ?",
+     "description": "Répartir sa réserve pour ne pas tout laisser au même endroit.",
+     "url": "ou-garder-sa-reserve.html#calcul"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Près de la moitié des microfinances de la CEMAC jugées très fragiles",
+     "organisme": "Ecofin Agency",
+     "date": "23 oct. 2026",
+     "url": "https://www.ecofinagency.com/news-finances/2310-60059-nearly-half-of-cemac-microfinance-institutions-rated-very-fragile-as-bad-loans-rise",
+     "consulte_le": "2026-10-24"
+    },
+    {
+     "titre": "CEMAC : 48,7 % des établissements de microfinance jugés très fragiles",
+     "organisme": "Agence Ecofin",
+     "date": "23 oct. 2026",
+     "url": "https://www.agenceecofin.com/actualites-finance/2310-142706-cemac-48-7-des-etablissements-de-microfinance-juges-tres-fragiles-fin-2025",
+     "consulte_le": "2026-10-24"
+    }
+   ],
+   "une": true,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "veille EFA News du 2026-10-24"
+  },
+  {
+   "id": "2026-10-23-senegal-obligation-49-centimes",
+   "statut": "publié",
+   "categorie": "finance",
+   "rubrique": "Marchés",
+   "titre": "La dette sénégalaise se revend à 49 centimes pour 1 € promis",
+   "resume": "Le 20 octobre, l'obligation du Sénégal remboursable en 2037 valait 48,93 centimes pour 1 € promis : les investisseurs doutent.",
+   "pays": [
+    "Sénégal"
+   ],
+   "entites": [
+    "FMI",
+    "Assemblée nationale du Sénégal"
+   ],
+   "notions": [
+    "obligation",
+    "eurobond",
+    "prix d'une obligation",
+    "rendement",
+    "dette publique"
+   ],
+   "evenement": "2026-10-20",
+   "evenement_label": "20 octobre 2026",
+   "publication": "2026-10-27",
+   "maj": "2026-10-27",
+   "fait": "Le 20 octobre 2026, l'obligation du Sénégal en euros remboursable en 2037 est tombée à 48,931 centimes pour 1 € promis, en baisse de 2,166 centimes dans la journée. La veille, le président de l'Assemblée avait annoncé que les députés ne voteraient pas en l'état la loi de finances rectificative 2026 ni le budget 2027.",
+   "chiffres": [
+    {
+     "valeur": "48,93 centimes",
+     "libelle": "prix de l'obligation 2037 pour 1 € promis",
+     "periode": "20 oct. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "7,6 % du PIB",
+     "libelle": "déficit prévu par la loi de finances rectificative 2026",
+     "periode": "projet, 5,4 % prévu au départ",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "2,2 Md $",
+     "libelle": "programme du FMI en attente",
+     "periode": "36 mois, accord technique du 1er sept.",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Sans budget voté, le programme du FMI risque d'être retardé.",
+    "Les investisseurs revendent les titres, et le prix baisse, surtout pour les échéances lointaines.",
+    "Un prix plus bas fait monter le rendement : emprunter devient plus cher pour l'État."
+   ],
+   "change": "Ce titre en euros est détenu surtout par des investisseurs internationaux : ce n'est pas une perte pour les épargnants locaux. Mais chaque nouvel emprunt devient plus cher pour le Sénégal, et ce coût finit par peser sur le budget de tous.",
+   "limites": [
+    "Un prix de marché varie chaque jour et ne prédit pas à lui seul ce qui sera remboursé.",
+    "Le 22 octobre, l'examen en commission a été renvoyé et la plénière reportée : la situation peut encore évoluer.",
+    "Pas un conseil d'investissement."
+   ],
+   "question": "Quand le prix d'une obligation baisse, qui y perd, et qui y gagne en l'achetant maintenant ?",
+   "mot": {
+    "terme": "Eurobond",
+    "definition": "Un emprunt d'un État auprès d'investisseurs étrangers, en euros ou en dollars, dont les titres se revendent chaque jour."
+   },
+   "retenir": "Le prix d'une dette dit, en temps réel, la confiance des prêteurs.",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "DAT et emprunts d'État : comment ça marche",
+     "description": "Comprendre ce que l'on prête et ce que l'on récupère.",
+     "url": "dat-emprunts-etat.html"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Emprunts obligataires et introductions en Bourse",
+     "description": "Lire le prix et le rendement d'une obligation.",
+     "url": "bourse-pro.html#B7"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Les obligations du Sénégal reculent après l'opposition de Sonko au budget",
+     "organisme": "Reuters, via Capital.com",
+     "date": "20 oct. 2026",
+     "url": "https://capital.com/en-int/news/senegal-bonds-fall-after-sonko-opposes-budget-bills",
+     "consulte_le": "2026-10-23"
+    },
+    {
+     "titre": "Les obligations du Sénégal reculent",
+     "organisme": "Reuters, via Devdiscourse",
+     "date": "20 oct. 2026",
+     "url": "https://www.devdiscourse.com/article/international/3995256-senegal-bonds-fall-after-sonko-opposes-budget-bills",
+     "consulte_le": "2026-10-23"
+    },
+    {
+     "titre": "Loi de finances rectificative : plénière reportée",
+     "organisme": "MADAR",
+     "date": "21 oct. 2026",
+     "url": "https://fr.madar.mr/actualites/senegal/senegal-amended-finance-bill-plenary-postponed-committee-resumes-20261022",
+     "consulte_le": "2026-10-23"
+    },
+    {
+     "titre": "L'examen de la LFR 2026 reporté à vendredi",
+     "organisme": "Senego",
+     "date": "22 oct. 2026",
+     "url": "https://senego.com/assemblee-nationale-lexamen-du-projet-de-loi-de-finances-rectificative-2026-reporte-a-vendredi_2016301.html",
+     "consulte_le": "2026-10-23"
+    }
+   ],
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "veille EFA News du 2026-10-23"
+  },
+  {
+   "id": "2026-10-23-gabon-audit-dette",
+   "statut": "publié",
+   "categorie": "economie",
+   "rubrique": "Dette",
+   "titre": "Gabon : la dette recomptée en baisse de 18,6 %, et le FMI vérifie encore",
+   "resume": "Après audit, l'État affiche 9 524,6 Md FCFA de dette fin 2025, contre près de 11 700 Md avant ; le FMI vérifie encore ces chiffres.",
+   "pays": [
+    "Gabon",
+    "CEMAC"
+   ],
+   "entites": [
+    "FMI",
+    "Ministère de l'Économie du Gabon"
+   ],
+   "notions": [
+    "audit de la dette",
+    "périmètre",
+    "dette publique",
+    "arriérés"
+   ],
+   "evenement": "2026-10-19",
+   "evenement_label": "19 octobre 2026",
+   "publication": "2026-10-27",
+   "maj": "2026-10-27",
+   "fait": "Une circulaire du 19 octobre 2026, révélée par Reuters, indique que le FMI examine encore l'audit de la dette du Gabon et que « les chiffres peuvent changer ». L'audit, publié le 13 septembre, ramène la dette à 9 524,6 Md FCFA fin 2025.",
+   "chiffres": [
+    {
+     "valeur": "9 524,6 Md FCFA",
+     "libelle": "dette après audit",
+     "periode": "au 31 déc. 2025",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "−18,6 %",
+     "libelle": "écart avec le chiffre d'avant l'audit (près de 11 700 Md)",
+     "periode": "selon le ministère",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "68,91 %",
+     "libelle": "dette rapportée au PIB, pour un plafond CEMAC de 70 %",
+     "periode": "PIB 2025 rebasé",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "L'État recompte une par une ses dettes : prêts, titres, factures impayées.",
+    "Il corrige, reclasse, retire ou ajoute ce qui entre dans le périmètre.",
+    "Un tiers, ici le FMI, vérifie avant que les prêteurs ne s'appuient sur le chiffre."
+   ],
+   "change": "La baisse vient de vérifications et de reclassements, pas d'un remboursement. Pour les prêteurs, et donc pour le coût des futurs emprunts, c'est le chiffre validé qui comptera.",
+   "limites": [
+    "Les chiffres ne sont pas validés par le FMI.",
+    "La circulaire et la dépêche Reuters originale n'ont pas été consultées ; chiffres de Sika Finance, recoupés par EcoMatin.",
+    "Le montant de 11 700 Md FCFA est un ordre de grandeur (« près de »)."
+   ],
+   "question": "Un chiffre de dette, qui l'a vérifié ?",
+   "mot": {
+    "terme": "Audit de la dette",
+    "definition": "Recompter une par une toutes les dettes de l'État. Ce n'est pas un remboursement. Le périmètre est la liste de ce que l'on compte."
+   },
+   "retenir": "Avant de juger une dette, il faut savoir ce qu'elle compte et qui l'a vérifiée.",
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Où est passé mon argent ?",
+     "description": "Faire votre propre inventaire : ce qui entre, ce qui sort, ce que vous devez.",
+     "url": "ou-est-passe-mon-argent.html"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Renégocier une dette : quoi demander, à qui",
+     "description": "Lister ses dettes avant de négocier.",
+     "url": "renegocier-une-dette.html"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Gabon : l'audit de la dette remis à l'examen du FMI",
+     "organisme": "Sika Finance",
+     "date": "19 oct. 2026",
+     "url": "https://www.sikafinance.com/marches/gabon-les-conclusions-de-l-audit-de-la-dette-remises-a-l-examen-du-fmi-une-revision-des-chiffres-envisagee_65053",
+     "consulte_le": "2026-10-23"
+    },
+    {
+     "titre": "Le gouvernement soumet l'audit de sa dette au FMI",
+     "organisme": "Financial Afrik",
+     "date": "21 oct. 2026",
+     "url": "https://www.financialafrik.com/2026/10/21/gabon-le-gouvernement-soumet-laudit-de-sa-dette-au-fmi-avant-revision-des-chiffres/",
+     "consulte_le": "2026-10-23"
+    },
+    {
+     "titre": "Le défi de la clarification de la dette publique",
+     "organisme": "Gabon Media Time",
+     "date": "21 oct. 2026",
+     "url": "https://gabonmediatime.com/gabon-fmi-le-defi-de-la-clarification-de-la-dette-publique/",
+     "consulte_le": "2026-10-23"
+    },
+    {
+     "titre": "Les divergences sur les chiffres de la dette inquiètent",
+     "organisme": "EcoMatin",
+     "date": "6 oct. 2026",
+     "url": "https://ecomatin.net/gabon-les-divergences-sur-les-chiffres-de-la-dette-inquietent-les-investisseurs",
+     "consulte_le": "2026-10-23"
+    }
+   ],
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "veille EFA News du 2026-10-23"
+  },
   {
    "id": "2026-10-19-ouganda-taux-12-pourcent",
    "categorie": "banques-centrales",
@@ -75,13 +515,13 @@
      "type": "Leçon",
      "titre": "Consommer et acheter : inflation, crédit chez le commerçant",
      "description": "Voir ce que la hausse des prix fait à votre budget.",
-     "url": "https://efa.africa/consommer-et-acheter.html"
+     "url": "consommer-et-acheter.html"
     },
     {
      "type": "Calcul",
      "titre": "Combien ce crédit me coûtera-t-il au total ?",
      "description": "Voir l'effet d'un taux plus haut sur un crédit.",
-     "url": "https://efa.africa/cout-total-credit.html#calcul"
+     "url": "cout-total-credit.html#calcul"
     }
    ],
    "sources": [
@@ -117,8 +557,7 @@
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-19-ouganda-taux-12-pourcent.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-19-kenya-pipeline-premier-dividende",
@@ -187,13 +626,13 @@
      "type": "Leçon",
      "titre": "Apprécier le prix d'une action",
      "description": "Calculer et comparer le rendement du dividende.",
-     "url": "https://efa.africa/bourse-pro.html#B4"
+     "url": "bourse-pro.html#B4"
     },
     {
      "type": "Leçon",
      "titre": "Une entreprise sous la loupe",
      "description": "Lire le bénéfice et ce qui est reversé.",
-     "url": "https://efa.africa/bourse-marche.html#C6"
+     "url": "bourse-marche.html#C6"
     }
    ],
    "sources": [
@@ -229,8 +668,7 @@
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-19-kenya-pipeline-premier-dividende.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-18-senegal-budget-interets-dette",
@@ -299,13 +737,13 @@
      "type": "Calcul",
      "titre": "Combien ce crédit me coûtera-t-il au total ?",
      "description": "Séparer ce que vous remboursez de ce que vous payez en intérêts.",
-     "url": "https://efa.africa/cout-total-credit.html#calcul"
+     "url": "cout-total-credit.html#calcul"
     },
     {
      "type": "Leçon",
      "titre": "Renégocier une dette : quoi demander, à qui",
      "description": "Quand les remboursements prennent trop de place.",
-     "url": "https://efa.africa/renegocier-une-dette.html"
+     "url": "renegocier-une-dette.html"
     }
    ],
    "sources": [
@@ -341,12 +779,11 @@
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-18-senegal-budget-interets-dette.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-18-bceao-prix-de-l-argent",
-   "une": true,
+   "une": false,
    "categorie": "banques-centrales",
    "rubrique": "Banques centrales",
    "titre": "Le prix de l'argent commence à la BCEAO : 3 %",
@@ -419,13 +856,13 @@
      "type": "Calcul",
      "titre": "Comparer deux offres de crédit",
      "description": "Calculer le coût total, frais compris, de deux crédits.",
-     "url": "https://efa.africa/cout-total-credit.html#calcul"
+     "url": "cout-total-credit.html#calcul"
     },
     {
      "type": "Leçon",
      "titre": "Cinq questions avant de signer un crédit",
      "description": "Ce qu'il faut demander à la banque.",
-     "url": "https://efa.africa/cout-total-credit.html#verifier"
+     "url": "cout-total-credit.html#verifier"
     }
    ],
    "sources": [
@@ -460,8 +897,7 @@
    ],
    "statut": "publié",
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-18-bceao-prix-de-l-argent.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-17-senegal-emprunt-prime-de-duree",
@@ -531,13 +967,13 @@
      "type": "Calcul",
      "titre": "Combien rapporte un placement à taux fixe ?",
      "description": "Faire le calcul pour votre somme et votre durée.",
-     "url": "https://efa.africa/dat-emprunts-etat.html#calcul"
+     "url": "dat-emprunts-etat.html#calcul"
     },
     {
      "type": "Leçon",
      "titre": "Cinq questions avant de prêter son argent",
      "description": "Vérifier durée, sortie anticipée et fiscalité.",
-     "url": "https://efa.africa/dat-emprunts-etat.html#verifier"
+     "url": "dat-emprunts-etat.html#verifier"
     }
    ],
    "sources": [
@@ -573,8 +1009,7 @@
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-17-senegal-emprunt-prime-de-duree.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-17-ethiopie-papss-monnaies-locales",
@@ -644,13 +1079,13 @@
      "type": "Calcul",
      "titre": "Combien coûte vraiment mon envoi ?",
      "description": "Additionner frais et perte de change sur un transfert.",
-     "url": "https://efa.africa/cotiser-depuis-l-etranger.html#calcul"
+     "url": "cotiser-depuis-l-etranger.html#calcul"
     },
     {
      "type": "Leçon",
      "titre": "Cinq règles pour l'argent envoyé de loin",
      "description": "Envoyer moins souvent, comparer, garder une trace.",
-     "url": "https://efa.africa/cotiser-depuis-l-etranger.html#verifier"
+     "url": "cotiser-depuis-l-etranger.html#verifier"
     }
    ],
    "sources": [
@@ -686,8 +1121,7 @@
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-17-ethiopie-papss-monnaies-locales.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-16-cote-divoire-budget-2027",
@@ -754,13 +1188,13 @@
      "type": "Leçon",
      "titre": "Faire son budget en FCFA",
      "description": "Le même exercice que l'État, à l'échelle de votre foyer.",
-     "url": "https://efa.africa/construire-son-budget.html"
+     "url": "construire-son-budget.html"
     },
     {
      "type": "Outil",
      "titre": "Où est passé mon argent ?",
      "description": "Comparer ce que vous prévoyez et ce que vous dépensez vraiment.",
-     "url": "https://efa.africa/ou-est-passe-mon-argent.html"
+     "url": "ou-est-passe-mon-argent.html"
     }
    ],
    "sources": [
@@ -787,8 +1221,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-16-cote-divoire-budget-2027.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-16-cameroun-mobile-money-interets",
@@ -856,13 +1289,13 @@
      "type": "Calcul",
      "titre": "Comment découper ma réserve ?",
      "description": "Garder sur le téléphone ce qui sert, placer le reste.",
-     "url": "https://efa.africa/ou-garder-sa-reserve.html#calcul"
+     "url": "ou-garder-sa-reserve.html#calcul"
     },
     {
      "type": "Leçon",
      "titre": "Budget et mobile money",
      "description": "Ne plus perdre le fil de ses petites dépenses.",
-     "url": "https://efa.africa/budget-mobile-money.html"
+     "url": "budget-mobile-money.html"
     }
    ],
    "sources": [
@@ -882,8 +1315,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-16-cameroun-mobile-money-interets.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-14-shelter-afrique-obligation-logement",
@@ -954,13 +1386,13 @@
      "type": "Leçon",
      "titre": "Cinq questions avant de prêter son argent",
      "description": "Vérifier l'emprunteur, la durée et la sortie.",
-     "url": "https://efa.africa/dat-emprunts-etat.html#verifier"
+     "url": "dat-emprunts-etat.html#verifier"
     },
     {
      "type": "Calcul",
      "titre": "Combien rapporte un placement à taux fixe ?",
      "description": "Comparer 5 ans à 6,10 % et 7 ans à 6,30 %.",
-     "url": "https://efa.africa/dat-emprunts-etat.html#calcul"
+     "url": "dat-emprunts-etat.html#calcul"
     }
    ],
    "sources": [
@@ -980,8 +1412,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-14-shelter-afrique-obligation-logement.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-14-senegal-excedent-commercial",
@@ -1048,13 +1479,13 @@
      "type": "Outil",
      "titre": "Où est passé mon argent ?",
      "description": "Faire la balance de votre foyer : ce qui entre, ce qui sort.",
-     "url": "https://efa.africa/ou-est-passe-mon-argent.html"
+     "url": "ou-est-passe-mon-argent.html"
     },
     {
      "type": "Leçon",
      "titre": "Faire son budget en FCFA",
      "description": "Lire un mois sans en tirer une tendance.",
-     "url": "https://efa.africa/construire-son-budget.html"
+     "url": "construire-son-budget.html"
     }
    ],
    "sources": [
@@ -1074,8 +1505,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-14-senegal-excedent-commercial.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-14-niger-prix-en-baisse",
@@ -1143,13 +1573,13 @@
      "type": "Outil",
      "titre": "Où est passé mon argent ?",
      "description": "Mesurer votre propre inflation, poste par poste.",
-     "url": "https://efa.africa/ou-est-passe-mon-argent.html"
+     "url": "ou-est-passe-mon-argent.html"
     },
     {
      "type": "Leçon",
      "titre": "Consommer et acheter : inflation et prix",
      "description": "Cinq réflexes avant d'acheter.",
-     "url": "https://efa.africa/consommer-et-acheter.html#verifier"
+     "url": "consommer-et-acheter.html#verifier"
     }
    ],
    "sources": [
@@ -1169,8 +1599,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-14-niger-prix-en-baisse.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-14-ghana-creances-en-souffrance",
@@ -1237,13 +1666,13 @@
      "type": "Leçon",
      "titre": "Renégocier une dette : quoi demander, à qui",
      "description": "Agir avant le retard plutôt qu'après.",
-     "url": "https://efa.africa/renegocier-une-dette.html"
+     "url": "renegocier-une-dette.html"
     },
     {
      "type": "Calcul",
      "titre": "Que donnerait un étalement ?",
      "description": "Voir ce qu'un délai plus long change à vos mensualités.",
-     "url": "https://efa.africa/renegocier-une-dette.html#calcul"
+     "url": "renegocier-une-dette.html#calcul"
     }
    ],
    "sources": [
@@ -1270,8 +1699,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-14-ghana-creances-en-souffrance.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-13-tchad-fmi",
@@ -1338,13 +1766,13 @@
      "type": "Outil",
      "titre": "Où est passé mon argent ?",
      "description": "Séparer l'argent reçu de l'argent attendu.",
-     "url": "https://efa.africa/ou-est-passe-mon-argent.html"
+     "url": "ou-est-passe-mon-argent.html"
     },
     {
      "type": "Leçon",
      "titre": "Faire son budget en FCFA",
      "description": "Ne prévoir que ce qui est réellement entré.",
-     "url": "https://efa.africa/construire-son-budget.html"
+     "url": "construire-son-budget.html"
     }
    ],
    "sources": [
@@ -1364,8 +1792,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-13-tchad-fmi.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-13-rwanda-inflation",
@@ -1431,13 +1858,13 @@
      "type": "Leçon",
      "titre": "Consommer et acheter : inflation et prix",
      "description": "Ce que la hausse des prix fait à votre budget.",
-     "url": "https://efa.africa/consommer-et-acheter.html"
+     "url": "consommer-et-acheter.html"
     },
     {
      "type": "Leçon",
      "titre": "Épargner : par où commencer",
      "description": "Protéger une épargne qui perd de la valeur.",
-     "url": "https://efa.africa/epargner.html"
+     "url": "epargner.html"
     }
    ],
    "sources": [
@@ -1464,8 +1891,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-13-rwanda-inflation.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-13-moodys-afrique-perspective",
@@ -1537,13 +1963,13 @@
      "type": "Leçon",
      "titre": "Cinq questions avant de prêter son argent",
      "description": "Regarder qui emprunte avant de regarder le taux.",
-     "url": "https://efa.africa/dat-emprunts-etat.html#verifier"
+     "url": "dat-emprunts-etat.html#verifier"
     },
     {
      "type": "Leçon",
      "titre": "Emprunts obligataires et introductions en Bourse",
      "description": "Lire une note et une perspective.",
-     "url": "https://efa.africa/bourse-pro.html#B7"
+     "url": "bourse-pro.html#B7"
     }
    ],
    "sources": [
@@ -1563,8 +1989,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-13-moodys-afrique-perspective.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-13-guinee-bissau-obligation",
@@ -1632,13 +2057,13 @@
      "type": "Calcul",
      "titre": "Combien rapporte un placement à taux fixe ?",
      "description": "Comparer coupon et rendement sur votre somme.",
-     "url": "https://efa.africa/dat-emprunts-etat.html#calcul"
+     "url": "dat-emprunts-etat.html#calcul"
     },
     {
      "type": "Leçon",
      "titre": "Emprunts obligataires et introductions en Bourse",
      "description": "Prix, coupon et rendement d'une obligation.",
-     "url": "https://efa.africa/bourse-pro.html#B7"
+     "url": "bourse-pro.html#B7"
     }
    ],
    "sources": [
@@ -1653,8 +2078,7 @@
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-13-guinee-bissau-obligation.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-13-dangote-benefice-9-mois",
@@ -1721,13 +2145,13 @@
      "type": "Leçon",
      "titre": "Une entreprise sous la loupe",
      "description": "Lire chiffre d'affaires, bénéfice et marge.",
-     "url": "https://efa.africa/bourse-marche.html#C6"
+     "url": "bourse-marche.html#C6"
     },
     {
      "type": "Leçon",
      "titre": "Les chiffres qui trompent",
      "description": "Repérer ce qu'un chiffre isolé ne dit pas.",
-     "url": "https://efa.africa/bourse-marche.html#C5"
+     "url": "bourse-marche.html#C5"
     }
    ],
    "sources": [
@@ -1747,8 +2171,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-13-dangote-benefice-9-mois.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-13-airtel-money-bourse",
@@ -1816,13 +2239,13 @@
      "type": "Leçon",
      "titre": "Emprunts obligataires et introductions en Bourse",
      "description": "Distinguer argent neuf et actions revendues.",
-     "url": "https://efa.africa/bourse-pro.html#B7"
+     "url": "bourse-pro.html#B7"
     },
     {
      "type": "Leçon",
      "titre": "Lire les annonces des sociétés",
      "description": "Trouver l'information dans un prospectus.",
-     "url": "https://efa.africa/bourse-pro.html#B2"
+     "url": "bourse-pro.html#B2"
     }
    ],
    "sources": [
@@ -1842,8 +2265,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-13-airtel-money-bourse.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-12-senegal-dette",
@@ -1903,13 +2325,13 @@
      "type": "Leçon",
      "titre": "Renégocier une dette : quoi demander, à qui",
      "description": "Six étapes pour renégocier, à l'échelle d'un ménage.",
-     "url": "https://efa.africa/renegocier-une-dette.html#verifier"
+     "url": "renegocier-une-dette.html#verifier"
     },
     {
      "type": "Calcul",
      "titre": "Que donnerait un étalement ?",
      "description": "Voir ce que coûte un délai plus long.",
-     "url": "https://efa.africa/renegocier-une-dette.html#calcul"
+     "url": "renegocier-une-dette.html#calcul"
     }
    ],
    "sources": [
@@ -1929,8 +2351,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-12-senegal-dette.html"
+   "auteur": "Rédaction EFA"
   },
   {
    "id": "2026-10-12-afrique-croissance-inflation",
@@ -1996,13 +2417,13 @@
      "type": "Leçon",
      "titre": "Consommer et acheter : inflation et prix",
      "description": "Ce que l'inflation fait à votre budget.",
-     "url": "https://efa.africa/consommer-et-acheter.html"
+     "url": "consommer-et-acheter.html"
     },
     {
      "type": "Leçon",
      "titre": "Épargner : par où commencer",
      "description": "Mettre de côté malgré la hausse des prix.",
-     "url": "https://efa.africa/epargner.html"
+     "url": "epargner.html"
     }
    ],
    "sources": [
@@ -2022,8 +2443,7 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA",
-   "url": "https://efa.africa/news/2026-10-12-afrique-croissance-inflation.html"
+   "auteur": "Rédaction EFA"
   }
  ]
 }
