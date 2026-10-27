@@ -402,6 +402,10 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
 .ceo-ent{display:grid;gap:6px;margin:10px 0}
 .ceo-et{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;font-size:14px}.ceo-et i{display:block;height:12px;border-radius:3px;background:var(--bleu)}.ceo-et b{font-variant-numeric:tabular-nums;color:var(--nuit)}
 @media (max-width:520px){.ceo-et{grid-template-columns:1fr auto}.ceo-et i{grid-column:1/-1;grid-row:2}}
+
+/* Le formulaire de réponse porte la classe .tr-num, comme la pastille numérotée : on lui rend sa taille de formulaire */
+form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit;display:flex;place-items:normal;grid-row:auto;font-weight:inherit}
+.tr-exo form.tr-num{flex-wrap:wrap}.tr-exo form.tr-num{align-items:center}.tr-exo form.tr-num input{flex:1 1 140px;min-width:120px;max-width:220px}.tr-exo form.tr-num span{align-self:center;margin:0}
 </style>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <link rel="stylesheet" href="footer.css?v=2026102602">
