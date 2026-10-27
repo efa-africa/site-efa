@@ -188,6 +188,31 @@ footer.site a{color:#E8EDF5;text-decoration:none}
 .g-leg li{display:flex;align-items:center;gap:8px}
 .g-leg i{display:inline-block;width:14px;height:14px;border-radius:3px}
 .graphe figcaption{font-size:14px;color:var(--ink3)}
+.gb-cles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gb-cle{background:#fff;border-radius:12px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.gb-cle b{font:700 clamp(24px,3vw,32px)/1.1 var(--display,'Libre Baskerville',Georgia,serif);color:var(--nuit,#0B1220)}
+.gb-cle span{font-size:15px;line-height:1.45;color:var(--ink2)}
+.gb-cle.on{background:#DA3C1B}.gb-cle.on b,.gb-cle.on span{color:#fff}
+.gb{display:grid;gap:12px;margin-top:4px}
+.gb-u{margin:0;font-size:13px;font-weight:700;color:var(--ink3)}
+.gb-r{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+.gb-l{display:grid;line-height:1.25}.gb-l b{font-size:15.5px;color:var(--ink)}.gb-l small{font-size:12.5px;color:var(--ink3)}
+.gb-t{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:8px;align-items:center;min-width:0}
+.gb-k{display:block;min-width:0}
+.gb-b{display:block;height:26px;border-radius:0 4px 4px 0;background:#9AA3B2}
+.gb-t em{font-style:normal;font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap}
+.gb-pile{display:flex;height:26px}
+.gb-af .gb-pile{width:55%}
+.gb-s{display:block;height:100%;flex-basis:0}
+.g-s1.gb-s{flex-grow:13.1}.g-s2.gb-s{flex-grow:10.4}.g-s3.gb-s{flex-grow:6.2}.g-s4.gb-s{flex-grow:3.3}
+.gb-s{width:auto!important}
+.gb-grp{display:flex;flex:0 0 55%;height:100%}
+.gb-reste{flex:1 1 auto;display:flex;align-items:center;justify-content:center;border:2px dashed #DA3C1B;border-left:0;border-radius:0 4px 4px 0;font-size:12.5px;font-weight:800;color:#B8341A;white-space:nowrap;overflow:hidden}
+.gb-ng .gb-b{background:#DA3C1B}.gb-ng .gb-l b,.gb-ng em,.gb-af .gb-l b,.gb-af em,.gb-tout .gb-l b,.gb-tout em{color:#B8341A}
+.gb-ax{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:4px}
+.gb-ax span:first-child{margin-left:-3px}.gb-ax span:last-child{margin-right:-8px}
+.g-rl{border:2px dashed #DA3C1B;background:none!important}
+@media (max-width:640px){.gb-cles{grid-template-columns:minmax(0,1fr)}.gb-r{grid-template-columns:minmax(0,1fr);gap:4px}.gb-cle{grid-template-columns:auto 1fr;align-items:center;column-gap:14px}}
 .encadre-nuit{background:var(--nuit);color:#E8EDF5;border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
 .encadre-nuit .surtitre{color:var(--soft-corail)}
 .encadre-nuit h2{color:#fff;font-size:clamp(24px,3.2vw,30px)}
@@ -246,41 +271,16 @@ footer.site a{color:#E8EDF5;text-decoration:none}
     <figure class="graphe" aria-labelledby="g-titre">
       <span class="surtitre">Ce que projette Goldman Sachs pour 2075</span>
       <h2 id="g-titre">Les géants de 2075, et le poids de quatre pays africains réunis</h2>
-      <div class="g-zone">
-        <svg viewBox="0 0 640 300" role="img" aria-label="PIB projeté en 2075, en milliers de milliards de dollars réels : Chine 57, Inde 52,5, États-Unis 51,5, quatre pays africains réunis 33,0 (Nigeria 13,1, Égypte 10,4, Éthiopie 6,2, Afrique du Sud 3,3).">
-          <g class="g-axe">
-            <line x1="150" y1="20" x2="150" y2="250"/>
-            <line x1="150" y1="250" x2="620" y2="250"/>
-            <line class="g-grille" x1="306.7" y1="20" x2="306.7" y2="250"/><line class="g-grille" x1="463.3" y1="20" x2="463.3" y2="250"/><line class="g-grille" x1="620" y1="20" x2="620" y2="250"/>
-            <text x="150" y="268" text-anchor="middle">0</text><text x="306.7" y="268" text-anchor="middle">20</text><text x="463.3" y="268" text-anchor="middle">40</text><text x="620" y="268" text-anchor="middle">60</text>
-            <text x="385" y="290" text-anchor="middle" class="g-unite">PIB 2075, en milliers de milliards de dollars réels</text>
-          </g>
-          <g class="g-lib">
-            <text x="140" y="49" text-anchor="end">Chine</text>
-            <text x="140" y="99" text-anchor="end">Inde</text>
-            <text x="140" y="149" text-anchor="end">États-Unis</text>
-            <text x="140" y="199" text-anchor="end" class="g-af">Afrique (4 pays)</text>
-            <text x="140" y="215" text-anchor="end" class="g-note">du classement</text>
-          </g>
-          <rect class="g-neutre" x="150" y="32" width="446.5" height="28"/><text class="g-val" x="602" y="51">57</text>
-          <rect class="g-neutre" x="150" y="82" width="411.3" height="28"/><text class="g-val" x="567" y="101">52,5</text>
-          <rect class="g-neutre" x="150" y="132" width="403.4" height="28"/><text class="g-val" x="559" y="151">51,5</text>
-          <rect class="g-s1" x="150" y="182" width="102.6" height="28"/>
-          <rect class="g-s2" x="252.6" y="182" width="81.5" height="28"/>
-          <rect class="g-s3" x="334.1" y="182" width="48.6" height="28"/>
-          <rect class="g-s4" x="382.7" y="182" width="25.8" height="28"/>
-          <rect class="g-reste" x="408.5" y="182" width="188" height="28"/>
-          <text class="g-val g-af" x="414" y="231">33,0</text>
-          <text class="g-reste-t" x="502" y="200" text-anchor="middle">+ le reste du continent ?</text>
-        </svg>
-      </div>
+      <div class="gb-cles"><div class="gb-cle on"><b>5<sup>e</sup></b><span>Le <strong>Nigeria</strong> serait la 5<sup>e</sup> économie du monde en 2075 : <strong>13 100 milliards de dollars</strong>.</span></div><div class="gb-cle"><b>33 000 Md $</b><span>Quatre pays africains réunis : plus de la moitié de la Chine, déjà.</span></div><div class="gb-cle"><b>+ 50 pays</b><span>Le reste du continent n’est pas compté ici. C’est tout l’enjeu.</span></div></div>
+      <div class="gb" role="img" aria-label="PIB projeté en 2075, en milliers de milliards de dollars réels : Chine 57, Inde 52,5, États-Unis 51,5, Nigeria 13,1, quatre pays africains réunis 33,0, le reste du continent non chiffré."><p class="gb-u">PIB en 2075, en milliers de milliards de dollars</p><div class="gb-r "><div class="gb-l"><b>Chine</b><small>1<sup>re</sup></small></div><div class="gb-t"><span class="gb-k"><span class="gb-b" style="width:95.0%"></span></span><em>57</em></div></div><div class="gb-r "><div class="gb-l"><b>Inde</b><small>2<sup>e</sup></small></div><div class="gb-t"><span class="gb-k"><span class="gb-b" style="width:87.5%"></span></span><em>52,5</em></div></div><div class="gb-r "><div class="gb-l"><b>États-Unis</b><small>3<sup>e</sup></small></div><div class="gb-t"><span class="gb-k"><span class="gb-b" style="width:85.83%"></span></span><em>51,5</em></div></div><div class="gb-r gb-ng"><div class="gb-l"><b>Nigeria</b><small>5<sup>e</sup> économie mondiale</small></div><div class="gb-t"><span class="gb-k"><span class="gb-b" style="width:21.83%"></span></span><em>13,1</em></div></div><div class="gb-r gb-af"><div class="gb-l"><b>Afrique · 4 pays réunis</b><small>Nigeria, Égypte, Éthiopie, Afrique du Sud</small></div><div class="gb-t"><span class="gb-k"><span class="gb-pile"><span class="gb-s g-s1" style="width:21.83%" title="Nigeria 13,1"></span><span class="gb-s g-s2" style="width:17.33%" title="Égypte 10,4"></span><span class="gb-s g-s3" style="width:10.33%" title="Éthiopie 6,2"></span><span class="gb-s g-s4" style="width:5.5%" title="Afrique du Sud 3,3"></span></span></span><em>33,0</em></div></div><div class="gb-r gb-tout"><div class="gb-l"><b>Afrique entière</b><small>avec les 50 autres pays</small></div><div class="gb-t"><span class="gb-k"><span class="gb-pile"><span class="gb-grp"><span class="gb-s g-s1" style="width:21.83%" title=""></span><span class="gb-s g-s2" style="width:17.33%" title=""></span><span class="gb-s g-s3" style="width:10.33%" title=""></span><span class="gb-s g-s4" style="width:5.5%" title=""></span></span><span class="gb-reste">non chiffré</span></span></span><em>?</em></div></div><div class="gb-r gb-axr"><div class="gb-l"></div><div class="gb-t"><span class="gb-ax"><span>0</span><span>20</span><span>40</span><span>60</span></span><em></em></div></div></div>
       <ul class="g-leg">
         <li><i class="g-s1"></i><span>Nigeria 13,1 · 5<sup>e</sup></span></li>
         <li><i class="g-s2"></i><span>Égypte 10,4 · 7<sup>e</sup></span></li>
         <li><i class="g-s3"></i><span>Éthiopie 6,2 · 17<sup>e</sup></span></li>
         <li><i class="g-s4"></i><span>Afrique du Sud 3,3 · 25<sup>e</sup></span></li>
+        <li><i class="g-rl"></i><span>Le reste du continent, non chiffré par Goldman Sachs</span></li>
       </ul>
-      <figcaption>Source : Goldman Sachs Research, <i>The Path to 2075</i>, décembre 2022 (projections du PIB en dollars réels, 104 pays). Goldman Sachs ne publie pas de total pour l’Afrique : la barre africaine additionne les quatre pays africains du top 25. La partie en pointillé, le reste du continent, n’est pas chiffrée.</figcaption>
+      <figcaption>Source : Goldman Sachs Research, <i>The Path to 2075</i>, décembre 2022 (projections du PIB en dollars réels, 104 pays). Goldman Sachs ne publie pas de total pour l’Afrique : la barre africaine additionne les quatre pays africains du top 25. La partie en pointillé, le reste du continent (50 autres pays), n’est pas chiffrée. 13,1 milliers de milliards = 13 100 milliards de dollars.</figcaption>
     </figure>
 
     <div class="prose">
