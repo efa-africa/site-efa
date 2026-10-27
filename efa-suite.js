@@ -194,6 +194,7 @@
     function repriseSecondaire() {
       // L’ancienne activité de L’école reste accessible, mais en bas de page, sans détourner du parcours en cours
       if (!et.actif || document.querySelector(".efa-reprise")) return;
+      try { if (localStorage.getItem("efa_objectif")) return; } catch (e) {} // un objectif en cours passe avant l’ancienne activité
       var zone = document.querySelector("main") || document.body, d = document.createElement("p");
       d.className = "efa-reprise";
       d.innerHTML = 'Votre activité précédente dans L’école&nbsp;: <a href="parcours.html#' + esc(et.actif) + '" data-goatcounter-click="fil-reprise-secondaire">reprendre le module ' + esc(String(et.actif).replace(/^P/, "")) + "</a>";
@@ -337,6 +338,20 @@
       : (etat.actif && P[etat.actif] && candidats.indexOf(P[etat.actif]) >= 0) ? P[etat.actif]
       : (candidats.filter(function (c) { return c.id !== "P0"; })[0] || candidats[0]);
     if (voulu && voulu === p.id) { etat.actif = p.id; ecrire(etat); }
+
+    // Hors d'un module (arrivée directe, depuis le point de départ ou l'accueil) : pas de progression étrangère à ce que la personne fait
+    var dansModule = !!(voulu && voulu === p.id);
+    try {
+      if (dansModule) sessionStorage.setItem("efa_module", p.id);
+      else dansModule = sessionStorage.getItem("efa_module") === p.id || /\/parcours(\.html)?([?#]|$)/.test(document.referrer || "");
+    } catch (e) {}
+    if (!dansModule) {
+      placer('<div><span class="es-sur">Aller plus loin</span><h2>' + esc(p.titre) + '</h2>'
+        + '<p>Le module de l’école EFA qui reprend cette méthode pas à pas, avec un cas, un calcul et une fiche à garder. ' + esc(p.objectif) + '</p></div>'
+        + '<div class="es-acts"><a class="es-btn" href="parcours.html?src=suite#' + esc(p.id) + '" data-goatcounter-click="suite-decouvrir-' + p.id + '">Découvrir le module</a>'
+        + '<a class="es-lien" href="outils.html#cahier">Mon cahier</a></div>');
+      return;
+    }
 
     var ici = []; p.etapes.forEach(function (s, i) { if (ici_(s)) ici.push(i); });
     var dernier = ici[ici.length - 1];

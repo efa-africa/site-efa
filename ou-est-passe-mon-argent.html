@@ -132,6 +132,7 @@ button{font-family:inherit}
 
 /* Pistes */
 .res-h{display:grid;gap:14px;margin-bottom:40px}
+.loin{margin-top:28px;border-radius:14px;background:var(--papier,#FFFDF8);padding:4px 18px}.loin summary{cursor:pointer;font-weight:800;min-height:48px;display:flex;align-items:center}.loin[open]{padding-bottom:16px}.loin-l{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
 .piste{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;padding-block:32px;border-top:1px solid var(--filet)}
 .piste .n{font-family:var(--f-d);font-weight:700;font-size:48px;line-height:1.12;color:var(--bleu);letter-spacing:-.01em;min-width:1.4em}
 .piste.p1 .n{font-size:88px}
@@ -516,21 +517,36 @@ footer a{color:#D8DEE8;text-decoration:none}
       (exemple?'<p class="small">Mode exemple&nbsp;: les pistes de l’exemple ne sont pas ajoutées à un cahier.</p>':'')+'</section>';
   }
   V.pistes=function(){
-    var x=P.pistes(R()), p=x.pistes; mesure("oepma_reperage_resultat");
+    var x=P.pistes(R()), p=x.pistes, E=window.EFA_PLAN, p0=p[0]; mesure("oepma_reperage_resultat");
+    var m=(E&&E.PISTES[p0.id])||{}, M=E&&E.MODULES[m.module], s0=E&&m.sujet&&E.sujet(m.sujet);
+    var lib=E&&m.poste?(E.POSTES.filter(function(z){return z[0]===m.poste;})[0]||[])[1]:"";
+    var suivi=m.poste===null?null:"outils.html#cahier/nouveau"+(m.poste?"/"+m.poste:"");
+    var methode=M?(M.dispo?"outils.html#plan/"+m.sujet:M.page?M.page+"?src=pistes":null):null;
     var lien=function(pi){ return pi.zoom?'<button type="button" class="lien b" data-zoom="'+pi.zoom+'">Examiner '+esc(P.ZOOMS[pi.zoom].t)+'</button>':'<button type="button" class="lien b" data-act="bilanApres">Approfondir avec mes chiffres</button>'; };
-    var bloc=function(pi,k){ return '<article class="piste'+(k===0?' p1':'')+'"><span class="n" aria-hidden="true">0'+(k+1)+'</span><div class="b">'+(k===0?'<p class="over">Piste prioritaire</p>':'')+'<h2 class="'+(k===0?'t2':'t3')+'">'+esc(pi.titre)+'</h2><p class="why"><b>Pourquoi&nbsp;:</b> '+esc(pi.justification)+'</p><p class="act">'+esc(pi.action)+'</p><div>'+lien(pi)+'</div></div></article>'; };
+    var bloc=function(pi){ return '<article class="piste"><div class="b"><h3 class="t3">'+esc(pi.titre)+'</h3><p class="why"><b>Pourquoi&nbsp;:</b> '+esc(pi.justification)+'</p><p class="act">'+esc(pi.action)+'</p><div>'+lien(pi)+'</div></div></article>'; };
+    var semaine=suivi?(lib?"Cette semaine, suivez « "+lib+" » : notez son montant chaque soir, pendant sept jours.":"Cette semaine, choisissez un poste et notez son montant chaque soir, pendant sept jours."):x.premiere_action;
     return '<section class="screen"><div class="stage col">'+
-      '<p class="print-only">Éducation Financière Afrique · Où est passé mon argent ? · vos pistes de travail, établies à partir de vos réponses.</p>'+
-      '<div class="res-h"><p class="over">Repérage terminé</p><h1 class="t1" tabindex="-1" style="font-size:clamp(38px,7.7vw,72px)">Voici vos pistes de travail</h1></div>'+
-      bloc(p[0],0)+(p.length>1?'<p class="over sub-h">À examiner également</p>'+p.slice(1).map(function(pi,k){return bloc(pi,k+1);}).join(""):'')+
-      '<div class="first dark"><p class="over">Votre première action</p><p class="t2">'+esc(x.premiere_action)+'</p></div>'+
-      (x.contextes.length?'<div class="ctx">'+x.contextes.map(function(c){return '<p>'+esc(c)+'</p>';}).join("")+'</div>':'')+
-      planAction(p)+
-      '<p class="mention">Ces pistes viennent de vos réponses. Elles ne permettent pas encore de déterminer les montants ni la cause d’un éventuel écart.</p>'+
-      '<p class="noprint" style="margin-top:18px"><a class="lien" href="parcours.html?src=oepma#P1">Apprendre la méthode&nbsp;: module 1 de l’école EFA →</a></p>'+
-      '<div class="r-acts noprint"><button type="button" class="btn btn-n" data-act="bilanApres">Vérifier avec mes chiffres</button><button type="button" class="lien" data-act="garder" aria-expanded="'+S.garderOuvert+'">Garder mes pistes</button></div>'+
-      (S.garderOuvert?'<div class="keep noprint"><div class="row"><button type="button" class="btn btn-g" data-act="copier">Copier la synthèse</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button></div><label class="toggle"><input type="checkbox" data-pref'+(S.preferences.sauvegarde_locale?" checked":"")+'><span>Garder mes réponses sur cet appareil. Sans cette option, elles restent seulement le temps de votre navigation.</span></label><p class="small" id="copie-ok" hidden>Synthèse copiée.</p></div>':'')+
-      '<div class="edit noprint"><button type="button" class="lien" data-act="modifier">Modifier mes réponses</button></div>'+
+      '<p class="print-only">Éducation Financière Afrique · Où est passé mon argent ? · votre priorité, établie à partir de vos réponses.</p>'+
+      '<div class="res-h"><p class="over">Votre priorité</p><h1 class="t1" tabindex="-1" style="font-size:clamp(34px,6.4vw,60px)">'+esc(p0.titre)+'</h1>'+
+      '<p class="lede">'+esc(p0.justification)+'</p></div>'+
+      '<div class="first dark"><p class="over">Votre action</p><p class="t2">'+esc(semaine)+'</p>'+
+        '<div class="acts noprint" style="margin-top:18px">'+(suivi&&!exemple?'<button type="button" class="btn btn-c" data-act="suivi7" data-href="'+suivi+'">Commencer mon suivi sur 7 jours</button>'+(methode?'<a class="lien" style="color:#fff" href="'+esc(methode)+'">Comprendre la méthode</a>':'')
+          :methode?'<a class="btn btn-c" href="'+esc(methode)+'">Ouvrir la méthode pas à pas</a><button type="button" class="lien" style="color:#fff" data-act="bilanApres">Vérifier avec mes chiffres</button>'
+          :'<button type="button" class="btn btn-c" data-act="bilanApres">Vérifier avec mes chiffres</button>')+'</div></div>'+
+      '<p class="mention">Cette priorité vient de vos réponses. Elle ne permet pas encore de déterminer les montants ni la cause d’un éventuel écart. Vos réponses restent sur cet appareil.</p>'+
+      '<details class="loin noprint"><summary>Aller plus loin</summary>'+
+        (p.length>1?'<p class="over sub-h">À examiner également</p>'+p.slice(1).map(bloc).join(""):'')+
+        (x.contextes.length?'<div class="ctx">'+x.contextes.map(function(c){return '<p>'+esc(c)+'</p>';}).join("")+'</div>':'')+
+        '<ul class="loin-l">'+
+          '<li><button type="button" class="lien" data-act="bilanApres">Vérifier avec mes chiffres : le bilan détaillé</button></li>'+
+          (s0?'<li><a class="lien" href="outils.html#plan/'+esc(s0.slug)+'">Le plan d’action complet</a></li>':'')+
+          '<li><a class="lien" href="parcours.html?src=oepma#P1">Le module 1 de l’école EFA</a></li>'+
+          (cahierOk?'<li><span class="pa-ok">Pistes ajoutées à votre cahier.</span> <a class="lien" href="outils.html#cahier">Ouvrir mon cahier</a></li>':(exemple?'':'<li><button type="button" class="lien" data-act="versCahier">Garder mes pistes dans mon cahier</button></li>'))+
+          '<li><button type="button" class="lien" data-act="garder" aria-expanded="'+S.garderOuvert+'">Copier ou imprimer ma synthèse</button></li>'+
+          '<li><button type="button" class="lien" data-act="modifier">Modifier mes réponses</button></li>'+
+        '</ul>'+
+        (S.garderOuvert?'<div class="keep"><div class="row"><button type="button" class="btn btn-g" data-act="copier">Copier la synthèse</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button></div><label class="toggle"><input type="checkbox" data-pref'+(S.preferences.sauvegarde_locale?" checked":"")+'><span>Garder mes réponses sur cet appareil. Sans cette option, elles restent seulement le temps de votre navigation.</span></label><p class="small" id="copie-ok" hidden>Synthèse copiée.</p></div>':'')+
+      '</details>'+
       '</div></section>';
   };
   V.zoom=function(){
@@ -742,6 +758,7 @@ footer a{color:#D8DEE8;text-decoration:none}
     if(act==="autres0") return garderScroll(function(){ var b=C.bilan(A()); b.qualite.vides.forEach(function(id){ A().mouv[id]={m:null,p:"rien"}; }); A().autresConfirmes="aucun"; });
     if(act==="autresVoir") return garderScroll(function(){ C.actives(A()).forEach(function(c){ if(A().vus.indexOf(c.id)<0) A().vus.push(c.id); }); });
     if(act==="autresNsp") return garderScroll(function(){ A().autresConfirmes="nsp"; });
+    if(act==="suivi7"){ try{ if(!exemple) window.EFA_PLAN.cahier.ajouterPistes(P.pistes(R()).pistes,"oepma"); mesure("oepma_suivi7"); }catch(err){} location.href=t.getAttribute("data-href"); return; }
     if(act==="versCahier"){ if(exemple) return; try{ window.EFA_PLAN.cahier.ajouterPistes(P.pistes(R()).pistes,"oepma"); cahierOk=true; mesure("oepma_plan_cahier"); }catch(err){} return garderScroll(function(){}); }
     if(act==="koffi") return koffi();
     if(act==="quitterExemple") return quitterExemple();
@@ -760,6 +777,6 @@ footer a{color:#D8DEE8;text-decoration:none}
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102716" defer></script>
+<script src="efa-appli.js?v=2026102820" defer></script>
 </body>
 </html>
