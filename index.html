@@ -1020,7 +1020,7 @@ img.char{object-position:50% 18%}
 .eh-bt{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
 .eh-bt a{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 28px;border-radius:10px;font:800 18px/1.2 var(--f-body);text-decoration:none}
 .eh-b1{background:#DA3C1B;color:#fff;box-shadow:0 10px 24px rgba(218,60,27,.25)}.eh-b1:hover{background:#B8341A}
-.eh-micro{flex:1 1 100%;order:3;margin:-2px 0 0;font-size:15px;color:#4E5566}
+.eh-micro{flex:1 1 100%;order:3;margin:-2px 0 0;font-size:15px;color:#4E5566}.eh-micro a{color:#0B1220;font-weight:700;text-decoration:underline;text-decoration-color:#DA3C1B;text-underline-offset:4px}
 .eh-b2{background:#FFFDF8;color:#0B1220;border:0;box-shadow:none}.eh-b2:hover{background:#EFE8DA;color:#0B1220}
 .eh-pour{margin:14px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:15px;color:#4E5566}.eh-pour span{font-weight:700}
 .eh-pour a{display:inline-flex;gap:6px;align-items:center;background:#FFFDF8;border-radius:999px;padding:7px 14px;color:#0B1220;text-decoration:none;font-weight:600}.eh-pour a b{color:#B8341A;font-weight:800}.eh-pour a:hover{background:#EFE8DA}
@@ -1152,6 +1152,16 @@ img.char{object-position:50% 18%}
         <h1 id="eh-t">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>
         <p class="eh-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>
         <div class="eh-bt"><a class="eh-b1" href="point-de-depart.html?src=accueil-hero" data-goatcounter-click="accueil-hero-point-de-depart">Trouver votre point de départ <span aria-hidden="true">→</span></a><a class="eh-b2" href="demo.html?src=accueil-hero" data-goatcounter-click="accueil-hero-demo">Voir la démo</a><p class="eh-micro">Gratuit, sans inscription.</p></div>
+        <script>/* Au retour : reprendre avant de découvrir. Le point de départ n'est pas redemandé. */
+        (function(){try{var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro");if(!b)return;
+          var P=JSON.parse(localStorage.getItem("efa_parcours_v1")||"null"),O=JSON.parse(localStorage.getItem("efa_objectif")||"null");
+          if(P&&P.actif&&P.faits&&Object.keys(P.faits).some(function(k){return k.indexOf(P.actif+".")===0;})){
+            b.href="parcours.html?src=accueil-reprendre#"+P.actif;b.setAttribute("data-goatcounter-click","accueil-hero-reprendre");b.innerHTML='Reprendre mon module <span aria-hidden="true">→</span>';
+            if(m)m.innerHTML='Vous en étiez à votre module en cours. <a href="point-de-depart.html?src=accueil-retour">Voir mes autres actions</a>';
+          }else if(O&&O.p&&O.q3){
+            b.href="point-de-depart.html?src=accueil-retour";b.setAttribute("data-goatcounter-click","accueil-hero-mes-actions");b.innerHTML='Ma prochaine action <span aria-hidden="true">→</span>';
+            if(m)m.innerHTML='Votre point de départ est gardé sur cet appareil. <a href="point-de-depart.html?changer=1&amp;src=accueil">Changer mon objectif</a>';
+          }}catch(x){}})();</script>
         <p class="eh-pour"><span>Vous représentez :</span><a href="demo.html?d=organisations&amp;src=accueil-hero" data-goatcounter-click="accueil-hero-demo-orga" aria-label="Une organisation : voir la démo organisations">une organisation <b aria-hidden="true">→</b></a><a href="demo.html?d=decideurs&amp;src=accueil-hero" data-goatcounter-click="accueil-hero-demo-decideurs" aria-label="Une institution, un décideur : voir la démo décideurs">une institution, un décideur <b aria-hidden="true">→</b></a></p>
         <p class="eh-tags"><a href="parcours.html?src=accueil#P2">Budget</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#P5">Tontine</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#P6">Crédit</a><span aria-hidden="true">•</span><a href="parcours.html?src=accueil#M17">Investissement</a></p>
       </div>
