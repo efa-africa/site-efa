@@ -467,9 +467,9 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
 
   /* Questions 2 et 3, selon le profil */
   var Q={
-    moi:[{q:"Quelle question voulez-vous résoudre ?",choix:[["budget","Mon budget"],["dettes","Mes dettes"],["proches","Les demandes de mes proches"],["tontine","Ma tontine"],["investir","Investir"]]},
+    moi:[{q:"Quelle question voulez-vous résoudre ?",choix:[["budget","Mon budget"],["dettes","Mes dettes"],["proches","Les demandes de mes proches"],["tontine","Ma tontine"],["investir","Investir"],["cadre","Je suis cadre ou dirigeant : aller plus loin"]]},
          {q:"Aujourd’hui, vous préférez…",choix:[["essai","Faire un premier essai"],["lecon","Comprendre les bases"],["parcours","Suivre un parcours"]]}],
-    orga:[{q:"Quel public voulez-vous former ?",choix:[["salaries","Des salariés"],["etudiants","Des étudiants · finances personnelles"],["etudiants-gestion","Des étudiants en gestion ou finance"],["entrepreneurs","Des entrepreneurs"],["membres","Les membres d’un groupe"]]},
+    orga:[{q:"Quel public voulez-vous former ?",choix:[["salaries","Des salariés"],["etudiants","Des étudiants · finances personnelles"],["etudiants-gestion","Des étudiants en gestion ou finance"],["entrepreneurs","Des entrepreneurs"],["cadres","Des cadres ou un comité de direction"],["membres","Les membres d’un groupe"]]},
           {q:"Que voulez-vous faire maintenant ?",choix:[["decouvrir","Découvrir"],["tester","Tester un module"],["preparer","Préparer un programme"]]}],
     eco:[{q:"Quel sujet vous intéresse ?",choix:[["brvm","La BRVM"],["economie","L’économie africaine"],["entreprises","Les entreprises"],["tontine","La tontine"]]},
          {q:"Quel format cherchez-vous ?",choix:[["synthese","Une synthèse rapide"],["explication","Une explication"],["etude","Une étude approfondie"]]}]
@@ -497,7 +497,11 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
       investir:{titre:"Votre première étape : vérifier que c’est le bon moment pour investir.",
         essai:["Essayer maintenant","Une année en Bourse, en simulation · 10 minutes, 11 écrans","ecole-bourse.html?src=depart"],
         lecon:["Comprendre","Suis-je prêt à investir ? La première formation de la Bourse · environ 25 minutes","bourse-essentiel.html?src=depart#A1"],
-        parcours:["Suivre le parcours","Module 17 · Épargner ou investir, puis Module 19 · La BRVM","parcours.html?src=depart#M17"]}
+        parcours:["Suivre le parcours","Module 17 · Épargner ou investir, puis Module 19 · La BRVM","parcours.html?src=depart#M17"]},
+      cadre:{titre:"Votre première étape : trouver vos angles morts, pas refaire les bases.",
+        essai:["Faire le test","Le test des angles morts : huit situations de cadre, avec des chiffres","cadres.html?src=depart#test"],
+        lecon:["Comprendre","Recevoir une grosse somme : décider avant que les demandes n’arrivent","parcours.html?src=depart#M14"],
+        parcours:["Suivre le parcours","Le parcours Cadres et dirigeants, à votre niveau","cadres.html?src=depart#parcours"]}
     },
     orga:{
       _base:{decouvrir:["Voir une démonstration","Le fonctionnement d’un programme EFA, en 30 secondes","demo.html?d=organisations&src=depart"],
@@ -514,6 +518,10 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
         decouvrir:["Consulter le programme","Les notions et compétences des laboratoires EFA","ceo.html?src=depart#decouvrir"],
         tester:["Tester un cas","Une décision de dirigeant, guidée pas à pas","ceo.html?src=depart#cas-money"],
         preparer:["Préparer une séance de laboratoire","Choisir les cas de finance d’entreprise et de stratégie, et le déroulé de la séance","programme-organisation.html?src=depart&type=ecole&public=jeunes&mode=labo"]},
+      cadres:{titre:"Formez vos cadres ou votre comité de direction, à leur niveau.",
+        decouvrir:["Voir l’offre","Deux formats : six semaines pour les cadres, trois ateliers pour les dirigeants","cadres.html?src=depart&pour=orga#orga"],
+        tester:["Tester une séquence gratuite","Ce que vivront vos cadres : huit situations, avec des chiffres","cadres.html?src=depart&pour=orga#test"],
+        preparer:["Demander une proposition","Public, participants, objectif et dates : nous préparons programme, calendrier et prix","cadres.html?src=depart&pour=orga#proposition"]},
       entrepreneurs:{titre:"Aidez vos entrepreneurs à lire leurs chiffres et à décider.",
         tester:["Tester un cas","Prêter à Ciments Bakar : analyser une entreprise et décider d’un financement","corporate.html?src=depart#cas-pret"],
         preparer:["Préparer mon programme","Un programme pour vos entrepreneurs : sujets et rythme, en ligne","programme-organisation.html?src=depart&type=association&public=commercants"]}

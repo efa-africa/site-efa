@@ -24,7 +24,8 @@
     ["commercants", "Commerçants, agents, indépendants", "Des revenus qui varient d’un mois à l’autre"],
     ["jeunes", "Jeunes, étudiants, premiers emplois", "Un premier budget, le téléphone comme banque"],
     ["groupes", "Membres de tontines ou de groupes", "Cotiser, recevoir son tour, épargner ensemble"],
-    ["diaspora", "Diaspora", "Soutenir la famille, construire au pays"]
+    ["diaspora", "Diaspora", "Soutenir la famille, construire au pays"],
+    ["cadres", "Cadres et dirigeants", "Revenus élevés, patrimoine à structurer, décisions qui engagent"]
   ];
   var SUJETS = [
     ["budget", "Savoir où passe l’argent et tenir un budget", ["P1", "P2"]],
@@ -42,7 +43,7 @@
     ["retraite", "Préparer sa retraite", ["P9"]],
     ["club", "Investir à plusieurs", ["M21"]]
   ];
-  var CONSEILS = { salaries: ["budget", "reserve", "dettes", "annee", "retraite"], commercants: ["activite", "mm", "reserve", "tontine"], jeunes: ["budget", "mm", "conso", "reserve"], groupes: ["tontine", "reserve", "club"], diaspora: ["famille", "logement", "placer", "retraite"] };
+  var CONSEILS = { cadres: ["annee", "famille", "placer", "logement", "retraite", "protection"], salaries: ["budget", "reserve", "dettes", "annee", "retraite"], commercants: ["activite", "mm", "reserve", "tontine"], jeunes: ["budget", "mm", "conso", "reserve"], groupes: ["tontine", "reserve", "club"], diaspora: ["famille", "logement", "placer", "retraite"] };
   var FORMATS = [["0", "100 % en ligne", "Vos participants suivent le programme seuls, sur téléphone."], ["1", "En ligne + 1 session EFA", "Une session de lancement pour donner envie et répondre aux questions."], ["2", "En ligne + 2 sessions EFA", "Un lancement, puis un bilan pour challenger les décisions prises."]];
   var INVESTIR = ["M17", "M18", "P8", "M21", "P13", "P9"];
 
