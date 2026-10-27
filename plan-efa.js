@@ -35,10 +35,10 @@
       ],
       cas: "Awa pensait dépenser 7 000 FCFA par semaine en transport. Pendant sept jours, elle a noté chaque trajet le soir, en dix secondes. Total : 10 500 FCFA. L’écart, 3 500 FCFA par semaine, représente environ 15 000 FCFA par mois. Elle n’a rien changé la première semaine ; la deuxième, elle s’est fixé un plafond de 9 000 FCFA."
     },
-    poches: { titre: "Séparer les poches", dispo: false, page: "separer-les-poches.html", resume: "Mon argent, celui de mon activité, celui qu’on m’a confié : les distinguer avant de compter." },
-    proches: { titre: "Aider, prêter ou contribuer", dispo: false, page: "preter-a-un-proche.html", resume: "Donner un nom à chaque somme envoyée aux proches, pour savoir ce qui reviendra et ce qui ne reviendra pas." },
-    engagements: { titre: "Les engagements", dispo: false, page: "engagements-et-exceptions.html", resume: "La tontine, les dettes et les retenues sur salaire : ce qui part avant même que vous ne choisissiez." },
-    exceptions: { titre: "Les exceptions", dispo: false, page: "engagements-et-exceptions.html", resume: "Imprévus, cérémonies, argent déplacé : les isoler pour ne pas fausser le reste." },
+    poches: { titre: "Séparer les poches", dispo: false, page: "separer-les-poches.html", actions: [["Ouvrir la méthode", "separer-les-poches.html?src=plan"]], resume: "Mon argent, celui de mon activité, celui qu’on m’a confié : les distinguer avant de compter." },
+    proches: { titre: "Aider, prêter ou contribuer", dispo: false, page: "preter-a-un-proche.html", actions: [["Fixer mon enveloppe d’entraide", "solidarite-assureur-de-la-famille.html?src=plan#calcul"], ["Préparer ma réponse à une demande", "preter-a-un-proche.html?src=plan"]], resume: "Donner un nom à chaque somme envoyée aux proches, pour savoir ce qui reviendra et ce qui ne reviendra pas." },
+    engagements: { titre: "Les engagements", dispo: false, page: "engagements-et-exceptions.html", actions: [["Ouvrir la méthode", "engagements-et-exceptions.html?src=plan"]], resume: "La tontine, les dettes et les retenues sur salaire : ce qui part avant même que vous ne choisissiez." },
+    exceptions: { titre: "Les exceptions", dispo: false, page: "engagements-et-exceptions.html", actions: [["Ouvrir la méthode", "engagements-et-exceptions.html?src=plan"]], resume: "Imprévus, cérémonies, argent déplacé : les isoler pour ne pas fausser le reste." },
     "bourse-pret": {
       titre: "Suis-je prêt à investir ?", dispo: true,
       resume: "Quatre vérifications avant de placer le moindre franc en Bourse.",

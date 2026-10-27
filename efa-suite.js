@@ -182,7 +182,40 @@
     window.addEventListener("scroll", demande, { passive: true }); window.addEventListener("resize", demande); maj();
     // Suivant par défaut : la table SUIVANT, sinon reprendre le module en cours, sinon L'école
     var et = {}; try { et = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; } catch (e) {}
-    if (SUIVANT[pg]) filSuivant(SUIVANT[pg][0], SUIVANT[pg][1]);
+    // Arrivée depuis « Trouver mon point de départ » : la suite logique est de revenir à ses recommandations
+    var depuisDepart = false;
+    try {
+      if (/[?&]src=depart/.test(location.search) || /point-de-depart\.html/.test(document.referrer || "")) sessionStorage.setItem("efa_depart", "1");
+      depuisDepart = sessionStorage.getItem("efa_depart") === "1" && !!localStorage.getItem("efa_objectif");
+    } catch (e) {}
+    var MOTEUR = window.ECOLE && window.ECOLE.modules && window.ECOLE.cle;
+    function repriseSecondaire() {
+      // L’ancienne activité de L’école reste accessible, mais en bas de page, sans détourner du parcours en cours
+      if (!et.actif || document.querySelector(".efa-reprise")) return;
+      var zone = document.querySelector("main") || document.body, d = document.createElement("p");
+      d.className = "efa-reprise";
+      d.innerHTML = 'Votre activité précédente dans L’école&nbsp;: <a href="parcours.html#' + esc(et.actif) + '" data-goatcounter-click="fil-reprise-secondaire">reprendre le module ' + esc(String(et.actif).replace(/^P/, "")) + "</a>";
+      var s2 = document.createElement("style");
+      s2.textContent = ".efa-reprise{max-width:1120px;margin:28px auto 8px;padding:0 max(16px,env(safe-area-inset-left,0px));font:400 14.5px/1.45 'Source Sans 3',system-ui,sans-serif;color:inherit;opacity:.78}.efa-reprise a{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px}";
+      document.head.appendChild(s2); zone.appendChild(d);
+    }
+    function suiteMoteur() {
+      var E = window.ECOLE, ec = { m: {} }; try { ec = JSON.parse(localStorage.getItem(E.cle) || "{}") || { m: {} }; } catch (e) {}
+      var M = ec.m || {}, h = location.hash.slice(1), L = E.modules, k0 = 0;
+      for (var k = 0; k < L.length; k++) if (L[k].id === h) k0 = k;
+      // Le module en cours s’il n’est pas fini, sinon le premier module non validé de cette formation
+      var cible = null;
+      if (h && M[h] && !M[h].valide) cible = null; // on y est déjà : on propose la suite
+      for (var j = 0; j < L.length && !cible; j++) { var x = L[(k0 + (h ? 1 : 0) + j) % L.length]; if (x.id !== h && !(M[x.id] && M[x.id].valide)) cible = x; }
+      if (cible) filSuivant(pg + "#" + cible.id, "Continuer cette formation");
+      else filSuivant(pg, "Continuer cette formation");
+    }
+    if (depuisDepart && pg !== "point-de-depart.html") { filSuivant("point-de-depart.html", "Revenir à mes recommandations"); repriseSecondaire(); }
+    else if (MOTEUR) {
+      suiteMoteur(); repriseSecondaire();
+      window.addEventListener("efa-ici", suiteMoteur); window.addEventListener("hashchange", suiteMoteur);
+    }
+    else if (SUIVANT[pg]) filSuivant(SUIVANT[pg][0], SUIVANT[pg][1]);
     else if (pg === "parcours.html") filSuivant("parcours.html#" + (et.actif || "P1"), et.actif ? "Reprendre mon module" : "Module 1");
     else if (["point-de-depart.html", "traders.html", "ceo.html", "corporate.html", "demo.html"].indexOf(pg) >= 0) { /* orientation et laboratoires : pas de reprise d’une autre activité */ }
     else if (et.actif && pg !== "programme-organisation.html") filSuivant("parcours.html#" + et.actif, "Reprendre mon module");

@@ -156,6 +156,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .mod ol span{font-size:15px;color:var(--ink)}
 .cas{padding:16px 18px;border-radius:12px;background:var(--creme);font-size:15px}
 .cas b{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px}
+.mod.act{padding:16px 18px;display:grid;gap:6px}.mod.act b{font-family:var(--f-display);font-size:17px}.mod.act span{font-size:14.5px;color:var(--ink2)}.mod.act .act-l{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .mod.off{padding:14px 18px;display:grid;gap:4px;background:transparent;border-style:dashed}
 .mod.off b{font-family:var(--f-display);font-size:17px;color:var(--ink2)}
 .mod.off span{font-size:14px;color:var(--ink2)}
@@ -593,7 +594,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
   </div>
 </footer>
 <script src="dico.js"></script>
-<script src="plan-efa.js?v=2026102601"></script>
+<script src="plan-efa.js?v=2026102801"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -730,6 +731,7 @@ var OUTILS = [
   }
   function vueModule(k,ouvert){
     var M=E.MODULES[k]; if(!M) return "";
+    if(!M.dispo&&M.actions) return '<div class="mod act"><b>'+esc(M.titre)+'</b><span>'+esc(M.resume)+'</span><div class="act-l">'+M.actions.map(function(a,i){return '<a class="btn '+(i?'btn-dark':'btn-main')+'" href="'+esc(a[1])+'" data-goatcounter-click="plan-action-'+esc(k)+'">'+esc(a[0])+'</a>';}).join("")+'</div></div>';
     if(!M.dispo) return '<div class="mod off"><span class="tag soon" style="justify-self:start">Bientôt</span><b>'+esc(M.titre)+'</b><span>'+esc(M.resume)+'</span></div>';
     return '<details class="mod" id="m-'+esc(k)+'"'+(ouvert?' open':'')+'><summary><b>'+esc(M.titre)+'</b><span>'+esc(M.resume)+'</span></summary><div class="mb"><ol>'+M.etapes.map(function(e){return '<li><b>'+esc(e[0])+'</b><span>'+esc(e[1])+'</span></li>';}).join("")+'</ol>'+(M.cas?'<p class="cas"><b>Le cas d’Awa</b>'+esc(M.cas)+'</p>':'')+'</div></details>';
   }
@@ -741,7 +743,7 @@ var OUTILS = [
       ?'<li><h3>Vos pistes</h3><p class="sous">Trouvées par votre diagnostic du '+esc(dateCourte(c.pistes.date))+'.</p><div class="corps"><div class="pistes-p">'+mes.map(function(p){var m=E.PISTES[p.id], M=E.MODULES[m.module]; return '<article><span class="t">'+esc(p.titre)+'</span><span class="a"><b>Maintenant&nbsp;:</b> '+esc(p.action)+'</span>'+(M?'<span class="a"><b>Méthode&nbsp;:</b> '+(M.page&&!M.dispo?'<a href="'+esc(M.page)+'?src=cahier">'+esc(M.titre)+'</a>':esc(M.titre)+(M.dispo?'':' (bientôt)'))+'</span>':'')+'</article>';}).join("")+'</div><a class="lnk" href="'+esc(s.diagnostic.url)+'">Refaire le diagnostic</a></div></li>'
       :'<li><h3>Faire le point</h3><p class="sous">'+esc(s.diagnostic.texte)+' Facultatif&nbsp;: si vous savez déjà ce qui coince, passez à la suite.</p><div class="corps"><a class="btn btn-dark" href="'+esc(s.diagnostic.url)+'" style="justify-self:start">'+esc(s.diagnostic.titre)+'</a></div></li>'):'';
     var mods=s.modules.map(function(k,i){return vueModule(k,i===0&&E.MODULES[k].dispo);}).join("");
-    var t2=mods?'<li><h3>Comprendre la méthode</h3><p class="sous">'+(s.modules.every(function(k){return E.MODULES[k].dispo;})?'Quatre méthodes courtes, dans l’ordre. La première est ouverte.':'Lisez la méthode avant de vous exercer. Les autres arrivent au fil des tests.')+'</p><div class="corps">'+mods+'</div></li>':'';
+    var t2=mods?'<li><h3>Comprendre la méthode</h3><p class="sous">'+(s.modules.every(function(k){return E.MODULES[k].dispo;})?'Quatre méthodes courtes, dans l’ordre. La première est ouverte.':(s.modules.every(function(k){return E.MODULES[k].dispo||E.MODULES[k].actions;})?'Passez directement à l’outil : il vous guide pas à pas.':'Lisez la méthode avant de vous exercer. Les autres arrivent au fil des tests.'))+'</p><div class="corps">'+mods+'</div></li>':'';
     var posteDefi=s.poste, p1=mes[0]&&E.PISTES[mes[0].id]; if(p1&&p1.poste) posteDefi=p1.poste;
     var t3=s.defis.length?'<li><h3>S’exercer : le défi de la semaine</h3><p class="sous">Le défi se suit dans votre cahier, semaine après semaine. Vos montants restent sur votre téléphone.</p><div class="corps">'+s.defis.map(function(k,i){var D=E.DEFIS[k]; return '<div class="defi"><span class="d">Semaine '+(i+1)+' · '+esc(D.duree)+'</span><b>'+esc(D.titre)+'</b><p class="small">'+esc(D.resume)+'</p></div>';}).join("")+boutonDefi(posteDefi)+'</div></li>':'';
     var t4=(s.parcours.length||s.bientot)?'<li><h3>Aller plus loin</h3><p class="sous">Des parcours pratiques, étape par étape, avec un cas puis votre situation.</p><div class="corps">'+(s.parcours.length?'<div class="prc">'+s.parcours.map(function(k){var P=E.PARCOURS[k];return '<a href="'+esc(P.url)+'">'+esc(P.titre)+'</a>';}).join("")+'</div>':'')+(s.bientot?'<p class="small">'+esc(s.bientot)+'</p>':'')+'</div></li>':'';

@@ -651,6 +651,8 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
   });
 
   charger(); S.mode="accueil";
+  /* Entrée directe dans le cas de Koffi (depuis « Faire un premier essai ») : sans repasser par l’introduction, sauf travail en cours */
+  try{ if(new URLSearchParams(location.search).get("entree")==="cas" && !recup && !(S.etape>1)){ S.mode="parcours"; S.etape=1; } }catch(e){}
   render(false);
 })();
 </script>
