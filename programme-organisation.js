@@ -167,7 +167,7 @@
   var NOMS = ["Votre organisation", "Cycles et sujets", "Rythme et format", "Arbitrages", "Votre programme"];
   function pastilles() { $("etapes").innerHTML = NOMS.map(function (n, k) { return '<li class="' + (k + 1 === etape ? "ici" : k + 1 < etape ? "fait" : "") + '">' + (k + 1) + " · " + n + "</li>"; }).join(""); }
   function bouton(id, label, pressed, sous, em, rond) { return '<button type="button" class="ch' + (rond ? " rond" : "") + '" data-v="' + id + '" aria-pressed="' + (pressed ? "true" : "false") + '"><b>' + esc(label) + "</b>" + (sous ? "<small>" + esc(sous) + "</small>" : "") + (em ? "<em>" + esc(em) + "</em>" : "") + "</button>"; }
-  function aller(n) { etape = n; pastilles(); [null, e1, e2, e3, e4, e5][n](); try { window.scrollTo({ top: $("etapes").getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" }); } catch (e) {} mesure("orga-programme-etape-" + n); }
+  function aller(n) { etape = n; if ($("etapes") && n !== 2) $("etapes").hidden = false; pastilles(); [null, e1, e2, e3, e4, e5][n](); try { window.scrollTo({ top: $("etapes").getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" }); } catch (e) {} mesure("orga-programme-etape-" + n); }
 
   /* L'enquête anonyme (facultative) : l'organisation crée un lien, ses salariés répondent en 3 minutes,
      les résultats (à partir de 5 réponses) cochent les situations et leur importance. */
@@ -228,7 +228,11 @@
   function e2() {
     var R = recommandation(), cons = R.sujets, NOMSUJ = {}; SUJETS.forEach(function (x) { NOMSUJ[x[0]] = x; });
     var tous = CYCLES.every(function (c) { return S.cycles.indexOf(c.id) >= 0; });
+    if (S.mode === "labo") return eLabo();
+    if ($("etapes")) $("etapes").hidden = false;
     $("vue").innerHTML = '<section class="carte"><p class="sur">Étape 2 sur 5</p><h2>Que doivent-ils apprendre&nbsp;?</h2>'
+      + '<p class="aide"><b>Ce que vous préparez</b></p><div class="choix" id="m-l">' + bouton("perso", "Un programme de finances personnelles", S.mode !== "labo", "Budget, réserve, dettes, tontine… les 23 modules de l’école", "", true) + bouton("labo", "Une séance de laboratoire", S.mode === "labo", "Finance d’entreprise et stratégie : des cas à résoudre en groupe", "", true) + "</div>"
+
       + (S.enjeux.length && cons.length ? '<div class="reco"><p class="sur">Notre recommandation</p><h3>Vos ' + cons.length + ' sujets prioritaires</h3><ol>' + cons.map(function (k) { var x = NOMSUJ[k], w = R.pourquoi[k] || []; return x ? '<li><b>' + esc(x[1]) + '</b>' + (w.length ? '<small>Parce que : ' + esc(w.slice(0, 2).join(" ; ").toLowerCase()) + '</small>' : '') + '</li>' : ''; }).join("") + '</ol>'
         + (cons.indexOf("retraite") >= 0 || cons.indexOf("placer") >= 0 ? '<p class="aide">Placer ou préparer la retraite suppose une réserve et des dettes maîtrisées : l’étape des arbitrages vous proposera ce socle.</p>' : '')
         + (cons.every(function (k) { return S.sujets.indexOf(k) >= 0; })
@@ -264,7 +268,63 @@
       setTimeout(function () { l.querySelectorAll(".vient").forEach(function (x) { x.classList.remove("vient"); }); }, 3200);
     }
     if ($("s-voir")) $("s-voir").onclick = function (e) { e.preventDefault(); var y = $("s-l").getBoundingClientRect().top + window.scrollY - 140; window.scrollTo({ top: y, behavior: "smooth" }); };
+    brancherMode();
     $("suiv").onclick = function () { aller(3); }; $("prec").onclick = function () { aller(1); }; maj();
+  }
+
+  /* Séance de laboratoire : un ou plusieurs cas des laboratoires EFA, pour une séance en groupe */
+  function casLabo() {
+    var L = [];
+    ((window.EFA_CEO_CAS && window.EFA_CEO_CAS.CAS) || window.EFA_CEO_CAS || []).forEach(function (c) { L.push({ id: "ceo-" + c.id, lab: "EFA CEO Challenge · stratégie", titre: c.titre, sec: c.secteur || "", d: parseInt(c.duree, 10) || 20, url: "ceo.html#cas-" + c.id }); });
+    ((window.EFA_CF_CAS && window.EFA_CF_CAS.CAS) || window.EFA_CF_CAS || []).forEach(function (c) { L.push({ id: "cf-" + c.id, lab: "EFA Corporate Finance · finance d’entreprise", titre: c.titre, sec: c.secteur || "", d: parseInt(c.duree, 10) || 15, url: "corporate.html#cas-" + c.id }); });
+    return L;
+  }
+  function brancherMode() {
+    if (!$("m-l")) return;
+    $("m-l").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; S.mode = b.dataset.v; mesure("orga-mode-" + S.mode); e2(); };
+  }
+  function eLabo() {
+    if ($("etapes")) $("etapes").hidden = true;
+    var L = casLabo(); S.cas = S.cas || [];
+    var groupes = {}; L.forEach(function (c) { (groupes[c.lab] = groupes[c.lab] || []).push(c); });
+    $("vue").innerHTML = '<section class="carte"><p class="sur">Étape 2 sur 3 · séance de laboratoire</p><h2>Quels cas votre groupe va-t-il résoudre&nbsp;?</h2>'
+      + '<p class="aide"><b>Ce que vous préparez</b></p><div class="choix" id="m-l">' + bouton("perso", "Un programme de finances personnelles", S.mode !== "labo", "Budget, réserve, dettes, tontine… les 23 modules de l’école", "", true) + bouton("labo", "Une séance de laboratoire", S.mode === "labo", "Finance d’entreprise et stratégie : des cas à résoudre en groupe", "", true) + "</div>"
+      + '<p class="aide">Entreprises fictives, contextes UEMOA et CEMAC. Chaque cas se joue en ligne : données, curseurs, questions guidées, puis une décision à justifier. Choisissez un à trois cas.</p>'
+      + Object.keys(groupes).map(function (g) { return '<p class="aide" style="margin-top:18px"><b>' + esc(g) + '</b></p><div class="choix" id="cas-' + (g.indexOf("CEO") >= 0 ? "ceo" : "cf") + '">' + groupes[g].map(function (c) { return bouton(c.id, c.titre, S.cas.indexOf(c.id) >= 0, c.sec + " · " + c.d + " min", ""); }).join("") + "</div>"; }).join("")
+      + '<div class="grille2" style="margin-top:18px"><label class="champ">Durée de la séance<select id="l-dur">' + [[60, "1 heure"], [90, "1 h 30"], [120, "2 heures"], [180, "Une demi-journée"]].map(function (x) { return '<option value="' + x[0] + '"' + ((S.ldur || 90) === x[0] ? " selected" : "") + ">" + x[1] + "</option>"; }).join("") + '</select></label>'
+      + '<label class="champ">Format<select id="l-fmt"><option value="salle"' + (S.lfmt !== "distance" ? " selected" : "") + '>En salle, sur les téléphones</option><option value="distance"' + (S.lfmt === "distance" ? " selected" : "") + '>À distance</option></select></label></div>'
+      + '<p class="aide" id="l-n"></p>'
+      + '<div class="acts"><button type="button" class="bt bt-p" id="suiv">Voir ma séance</button><button type="button" class="bt bt-l" id="prec">Retour</button></div></section>';
+    brancherMode();
+    function maj() { var n = S.cas.length, t = L.filter(function (c) { return S.cas.indexOf(c.id) >= 0; }).reduce(function (a, c) { return a + c.d; }, 0);
+      $("l-n").innerHTML = n ? "<b>" + n + " cas</b>, environ " + duree(t) + " de travail sur les cas." + (n >= 3 ? " C’est le maximum pour une séance." : "") : "Choisissez au moins un cas."; $("suiv").disabled = !n; }
+    ["cas-ceo", "cas-cf"].forEach(function (id) { if ($(id)) $(id).onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; var v = b.dataset.v, i = S.cas.indexOf(v);
+      if (i >= 0) S.cas.splice(i, 1); else if (S.cas.length < 3) S.cas.push(v); else return; b.setAttribute("aria-pressed", i < 0); maj(); }; });
+    $("suiv").onclick = function () { S.ldur = +$("l-dur").value; S.lfmt = $("l-fmt").value; mesure("orga-labo-seance"); laboFin(); };
+    $("prec").onclick = function () { aller(1); }; maj();
+  }
+  function laboFin() {
+    var L = casLabo().filter(function (c) { return S.cas.indexOf(c.id) >= 0; }), base = location.origin + location.pathname.replace(/[^\/]*$/, "");
+    var travail = L.reduce(function (a, c) { return a + c.d; }, 0), debat = Math.max(10, Math.floor((S.ldur - 25 - travail) / Math.max(1, L.length)));
+    var t = 0, lignes = [["Accueil et cadrage", 10, "Présenter l’entreprise du premier cas, la décision à prendre et les règles : chiffres fictifs, aucun conseil de placement."]];
+    L.forEach(function (c, k) { lignes.push(["Cas " + (k + 1) + " · " + c.titre, c.d, "En binômes, sur téléphone : lire les données, régler les curseurs, répondre aux questions guidées, puis décider."]);
+      lignes.push(["Mise en commun", debat, "Chaque binôme présente sa décision et ses deux meilleurs arguments. Comparer les décisions, pas les personnes."]); });
+    lignes.push(["Conclusion", 15, "Ce que le groupe retient, et le cas à refaire seul avant la prochaine séance."]);
+    var nom = S.nom || "votre groupe", msg = "Séance de laboratoire EFA · " + nom + "\n\nOuvrez ces cas sur votre téléphone :\n" + L.map(function (c) { return "· " + c.titre + " : " + base + c.url; }).join("\n") + "\n\nEntreprises fictives, chiffres d’exercice. Aucun compte n’est nécessaire.";
+    var h = '<section class="carte"><p class="sur">Étape 3 sur 3 · votre séance</p><h2>Séance de laboratoire' + (S.nom ? " · " + esc(S.nom) : "") + '</h2>'
+      + '<p class="aide">' + esc(duree(S.ldur)) + ' · ' + (S.lfmt === "distance" ? "à distance" : "en salle, sur les téléphones") + ' · ' + L.length + ' cas · aucun compte à créer pour les participants.</p>'
+      + '<ol class="suite">' + lignes.map(function (x) { t += x[1]; return '<li><b>' + esc(x[0]) + ' · ' + x[1] + ' min</b><span>' + esc(x[2]) + '</span></li>'; }).join("") + '</ol>'
+      + (t > S.ldur ? '<p class="aide"><b>Attention&nbsp;:</b> ce déroulé dure environ ' + esc(duree(t)) + ', plus que la séance. Retirez un cas ou allongez la séance.</p>' : '')
+      + '<p class="aide" style="margin-top:16px"><b>Les liens à donner aux participants</b></p><ul class="aide">' + L.map(function (c) { return '<li><a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.titre) + '</a> · ' + esc(c.lab) + '</li>'; }).join("") + '</ul>'
+      + '<div class="acts"><button type="button" class="bt bt-p" id="l-wa">Envoyer par WhatsApp</button><button type="button" class="bt" id="l-cop">Copier le message</button><button type="button" class="bt bt-l" id="l-mod">Modifier la séance</button></div>'
+      + '<p class="aide" id="l-msg" role="status" aria-live="polite"></p>'
+      + '<p class="aide">Pour un suivi des participants et un certificat, composez plutôt un <button type="button" class="bt bt-l" id="l-perso">programme de finances personnelles</button>.</p></section>';
+    $("vue").innerHTML = h;
+    $("l-wa").onclick = function () { mesure("orga-labo-whatsapp"); window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank"); };
+    $("l-cop").onclick = function () { try { navigator.clipboard.writeText(msg).then(function () { $("l-msg").textContent = "Message copié."; }, function () { $("l-msg").textContent = msg; }); } catch (e) { $("l-msg").textContent = msg; } };
+    $("l-mod").onclick = function () { eLabo(); };
+    $("l-perso").onclick = function () { S.mode = "perso"; e2(); };
+    try { window.scrollTo({ top: $("etapes").getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" }); } catch (e) {}
   }
   function e3() {
     $("vue").innerHTML = '<section class="carte"><p class="sur">Étape 3 sur 5</p><h2>Le rythme et le format</h2>'
@@ -418,6 +478,7 @@
     rendre(pr, participant);
   } else {
     var ty = q.get("type"); if (ty && TYPES.some(function (t) { return t[0] === ty; })) S.type = ty;
+    if (q.get("mode") === "labo") S.mode = "labo";
     var pu = q.get("public"); if (pu) pu.split(",").forEach(function (x) { if (PUBLICS.some(function (p) { return p[0] === x; }) && S.publics.indexOf(x) < 0) S.publics.push(x); });
     if (ty || pu) mesure("orga-programme-depuis-" + (ty || "public"));
     var en = q.get("en");
