@@ -82,7 +82,7 @@
 
   // Rappel discret sur l'école et le programme : « Connecté au programme de … »
   function rappel() {
-    var c = lire(CLE), page = location.pathname.split("/").pop() || "index.html";
+    var c = lire(CLE), page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
     if (!c || !c.programme || ["parcours.html", "programme-organisation.html"].indexOf(page) < 0 || document.getElementById("efa-compte-r")) return;
     if (page === "programme-organisation.html" && !/vue=participant/.test(location.search)) return;
     var d = document.createElement("div"); d.id = "efa-compte-r";
@@ -94,7 +94,7 @@
 
   // Sur L'école, sans compte : proposer le compte gratuit de la Communauté EFA
   function invitation() {
-    var page = location.pathname.split("/").pop() || "index.html";
+    var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
     if (!CODE_COMMUNAUTE || page !== "parcours.html" || lire(CLE) || document.getElementById("efa-compte-i")) return;
     var ref = document.querySelector(".ch-diag"); if (!ref) return;
     var p = document.createElement("p"); p.id = "efa-compte-i"; p.className = "ch-diag";

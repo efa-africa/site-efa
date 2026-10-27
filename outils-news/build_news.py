@@ -222,6 +222,7 @@ def head(titre, desc, canon, pre, og_type="website", image=None, extra=""):
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){{try{{var p=location.pathname,n=p.replace(/\\/index\\.html$/,"/").replace(/\\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}}catch(e){{}}}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="{pre}logo-efa-96.png">
 <link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
@@ -255,7 +256,7 @@ def tail(pre):
     return f"""{reloc(footer, pre)}
 {JS_MENU}
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="{pre}efa-appli.js?v=2026102801" defer></script>
+<script src="{pre}efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>
 """
@@ -272,7 +273,7 @@ LIB_BOUTON = {"Leçon": "Lire la leçon", "Calcul": "Faire le calcul", "Outil": 
 # ------------------------------------------------------------------ page article
 def page_article(a):
     pre = ""
-    url = f"{BASEURL}news/{a['id']}.html"
+    url = f"{BASEURL}news/{a['id']}"
     img = f"{BASEURL}news/og/{a['id']}.png"
     titre_page = a["titre"].replace("'", "’") + " · EFA News"
     desc = attr(a["resume"])
@@ -290,7 +291,7 @@ def page_article(a):
          "citation": [s[3] for s in a["sources"]]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Accueil", "item": BASEURL},
-            {"@type": "ListItem", "position": 2, "name": "EFA News", "item": BASEURL + "news.html"},
+            {"@type": "ListItem", "position": 2, "name": "EFA News", "item": BASEURL + "news"},
             {"@type": "ListItem", "position": 3, "name": a["titre"].replace("'", "’"), "item": url}]}]}
     extra = (f'<meta property="article:published_time" content="{a["publication"]}T07:00:00+00:00">\n'
              f'<meta property="article:modified_time" content="{a["maj"]}T07:00:00+00:00">\n'
@@ -393,7 +394,7 @@ def page_article(a):
   var ref=document.referrer||'';
   document.querySelectorAll('[data-retour]').forEach(function(a){
     a.addEventListener('click',function(ev){
-      if(/\\/news\\.html/.test(ref)&&ref.indexOf(location.host)>-1&&history.length>1){ev.preventDefault();history.back();}
+      if(/\\/news(\\.html)?([?#]|$)/.test(ref)&&ref.indexOf(location.host)>-1&&history.length>1){ev.preventDefault();history.back();}
     });
   });
   /* Vérifiez votre lecture */
@@ -431,14 +432,14 @@ def index_json():
 
 def page_home():
     pre = ""
-    url = BASEURL + "news.html"
+    url = BASEURL + "news"
     titre = "EFA News : comprendre ce que l’actualité change pour votre argent · EFA"
     desc = "L’actualité de la finance africaine expliquée : le fait, le chiffre, le mécanisme, ce qu’on ne sait pas encore, les sources, et la leçon EFA pour aller plus loin."
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": url, "url": url, "name": "EFA News", "description": desc, "inLanguage": "fr",
          "publisher": {"@type": "Organization", "name": "Éducation Financière Afrique", "url": BASEURL},
          "mainEntity": {"@type": "ItemList", "itemListElement": [
-             {"@type": "ListItem", "position": i + 1, "url": f"{BASEURL}news/{a['id']}.html", "name": a["titre"].replace("'", "’")} for i, a in enumerate(PUB)]}},
+             {"@type": "ListItem", "position": i + 1, "url": f"{BASEURL}news/{a['id']}", "name": a["titre"].replace("'", "’")} for i, a in enumerate(PUB)]}},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Accueil", "item": BASEURL},
             {"@type": "ListItem", "position": 2, "name": "EFA News", "item": url}]}]}
@@ -592,8 +593,8 @@ open(os.path.join(SITE, "news.html"), "w", encoding="utf-8").write(page_home())
 # sitemap
 sm = open(os.path.join(SITE, "sitemap.xml"), encoding="utf-8").read()
 sm = re.sub(r"\s*<url><loc>https://efa\.africa/news/[^<]+</loc>.*?</url>", "", sm)
-sm = re.sub(r"(<url><loc>https://efa\.africa/news\.html</loc><lastmod>)[^<]+", r"\g<1>" + AUJ, sm)
-add = "".join(f'\n  <url><loc>{BASEURL}news/{a["id"]}.html</loc><lastmod>{a["maj"]}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>' for a in PUB)
+sm = re.sub(r"(<url><loc>https://efa\.africa/news</loc><lastmod>)[^<]+", r"\g<1>" + AUJ, sm)
+add = "".join(f'\n  <url><loc>{BASEURL}news/{a["id"]}</loc><lastmod>{a["maj"]}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>' for a in PUB)
 sm = sm.replace("</urlset>", add + "\n</urlset>")
 open(os.path.join(SITE, "sitemap.xml"), "w", encoding="utf-8").write(sm)
 

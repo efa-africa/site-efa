@@ -4,7 +4,7 @@
    Placé une fois par bloc de saisie, y compris dans les écrans affichés plus tard. */
 (function () {
   if (window.EFA_CHIFFRES) return; window.EFA_CHIFFRES = true;
-  var page = location.pathname.split("/").pop() || "index.html";
+  var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
   if (/^(traders|admin-ecole|programme-organisation|espace-organisation|rejoindre|tableau-ely)\.html$/.test(page)) return;
   var TXT = page === "diagnostic.html"
     ? "<b>Vos montants restent sur votre téléphone.</b> EFA ne les garde pas. Si vous demandez votre résultat par email, seuls vos scores et des pourcentages sont transmis, jamais vos montants. Vous pouvez aussi mettre des chiffres fictifs, proches de votre réalité."

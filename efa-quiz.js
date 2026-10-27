@@ -180,7 +180,7 @@
   window.EFA_QUIZ = { ouvrir: ouvrir };
 
   function carte() {
-    var pg = location.pathname.split("/").pop() || "index.html", conf = PAGES[pg];
+    var pg = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html"), conf = PAGES[pg];
     var q = new URLSearchParams(location.search).get("quiz");
     if (q && QUIZ[q]) ouvrir(q);
     if (!conf || document.querySelector(".efq-carte")) return;

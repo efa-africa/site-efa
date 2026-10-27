@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -9,12 +10,12 @@
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <title>L’école EFA : apprendre à gérer son argent, du diagnostic au certificat · EFA</title>
 <meta name="description" content="L’école EFA : un diagnostic pour savoir par où commencer, trois cycles (Fondations, Maîtrise, Patrimoine), une fiche à garder à la fin de chaque module et un certificat par cycle. Gratuit.">
-<link rel="canonical" href="https://efa.africa/parcours.html">
+<link rel="canonical" href="https://efa.africa/parcours">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="L’école EFA">
 <meta property="og:description" content="Du diagnostic au certificat : trois cycles pour apprendre à gérer son argent, avec Koffi, Tonton Bamba et Tantie Affoué.">
-<meta property="og:url" content="https://efa.africa/parcours.html">
+<meta property="og:url" content="https://efa.africa/parcours">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -672,8 +673,8 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       + '<ol class="etapes">'+et+'</ol>'
       + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
-      + (!g.dispo ? '<div class="p-acts"><span class="pill bientot">Module en préparation</span></div>' : premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le module" : "Commencer le module")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Partager ce module</button></div>'
-         : '<div class="p-acts"><span class="pill '+(ok?'valide':'fait')+'">'+(ok?'Module validé : attestation de réalisation obtenue':'Étapes faites : gardez votre fiche pour valider')+'</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours.html#'+p.id+'">Bravo ! Partagez ce module à un proche</button></div>')
+      + (!g.dispo ? '<div class="p-acts"><span class="pill bientot">Module en préparation</span></div>' : premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le module" : "Commencer le module")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours#'+p.id+'">Partager ce module</button></div>'
+         : '<div class="p-acts"><span class="pill '+(ok?'valide':'fait')+'">'+(ok?'Module validé : attestation de réalisation obtenue':'Étapes faites : gardez votre fiche pour valider')+'</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours#'+p.id+'">Bravo ! Partagez ce module à un proche</button></div>')
       + '</div></details>';
   }
   var CY = D.cycles || [];
@@ -788,6 +789,6 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>

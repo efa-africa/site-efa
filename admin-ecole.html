@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
@@ -186,7 +187,7 @@ function liste(res) {
     $("vue").innerHTML = (res ? res : '')
       + '<section class="carte"><p class="sur">Nouveau programme</p><h2>Générer les accès d’une organisation</h2>'
       + '<div class="grille2"><label class="champ">Organisation<input id="n-nom" maxlength="80" placeholder="ex. Coopérative Awa"></label><label class="champ">Programme<select id="n-prog">' + PRETS.map(function (x, i) { return '<option value="' + i + '">' + esc(x.t) + '</option>'; }).join("") + '<option value="lien">Programme composé en ligne (coller son lien)</option></select></label>'
-      + '<label class="champ" id="n-lien-l" hidden>Lien du programme<small>copié depuis « Composer un programme »</small><input id="n-lien" placeholder="https://efa.africa/programme-organisation.html?p=…"></label>'
+      + '<label class="champ" id="n-lien-l" hidden>Lien du programme<small>copié depuis « Composer un programme »</small><input id="n-lien" placeholder="https://efa.africa/programme-organisation?p=…"></label>'
       + '<label class="champ">Places<input id="n-places" type="number" min="1" value="50"></label><label class="champ">Ouvert jusqu’au <small>facultatif</small><input id="n-fin" type="date"></label>'
       + '<label class="champ">Note interne <small>facultatif : contact, conditions</small><input id="n-note" maxlength="300"></label></div>'
       + '<div class="acts"><button type="button" class="bt bt-p" id="n-go">Générer la clé et le code</button><a class="bt bt-l" href="programme-organisation.html" target="_blank" rel="noopener">Composer un programme</a></div><p class="msg" id="n-msg"></p></section>'
@@ -219,6 +220,6 @@ connexion();
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>

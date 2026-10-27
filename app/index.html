@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <!--/squelette-->
@@ -1004,7 +1005,7 @@ function vDiag(){var D=C.diagnostic,a=ui.p.rep||(ui.p.rep=[]),i=a.length;
   h+='<section class="pcard" style="width:100%;min-height:260px">'+art(p.id)+'<span class="pill ok">Proposé pour vous</span><h3 style="font-size:40px;max-width:12ch">'+esc(p.titre)+'</h3><span class="sub" style="font-size:14.5px">Parce que '+esc(r.raison)+'</span></section>';
   h+='<div class="glass"><p class="meta">Ce que disent vos réponses</p>'+r.obs.map(function(o){return '<div class="idea"><b style="width:8px;height:8px;margin-top:8px;background:var(--cyan)"></b><span class="sub" style="font-size:14.5px">'+esc(o)+'</span></div>';}).join("")+'</div>';
   if(r.second)h+='<p class="sub">À garder en tête : « '+esc(PARC[r.second].titre)+' », parce que '+esc(r.raison2)+'</p>';
-  h+='<div class="glass" style="background:transparent"><p class="meta">Les limites</p><p class="sub" style="font-size:14.5px">Cinq questions repèrent un besoin. Elles ne résument pas votre situation et ne donnent aucun score. Le diagnostic approfondi du site examine six dimensions.</p><a class="link" href="https://efa.africa/diagnostic.html" target="_blank" rel="noopener">Ouvrir le diagnostic approfondi</a></div>';
+  h+='<div class="glass" style="background:transparent"><p class="meta">Les limites</p><p class="sub" style="font-size:14.5px">Cinq questions repèrent un besoin. Elles ne résument pas votre situation et ne donnent aucun score. Le diagnostic approfondi du site examine six dimensions.</p><a class="link" href="https://efa.africa/diagnostic" target="_blank" rel="noopener">Ouvrir le diagnostic approfondi</a></div>';
   h+='<section class="stack"><div class="secth"><h2>Ou un autre parcours</h2></div><div class="list">'+C.parcours.filter(function(x){return x.id!==r.reco;}).map(function(x){return '<button class="row" data-act="diagGo" data-id="'+x.id+'"><span class="sq">'+ICON.book+'</span><span class="grow"><span class="t">'+esc(x.titre)+'</span></span>'+ICON.chev+'</button>';}).join("")+'</div></section>';
   h+='<div class="cta"><button class="btn block" data-act="diagGo" data-id="'+p.id+'">'+ICON.play+'Commencer ce parcours</button><p class="fine" style="text-align:center">Première action proposée : '+esc(p.lecons[0].action.etape.charAt(0).toLowerCase()+p.lecons[0].action.etape.slice(1))+'.</p></div>';
   return h;}

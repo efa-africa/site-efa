@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="fr"><head><meta charset="utf-8"><script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Simulateur de décisions · L’école EFA</title>
 <meta name="description" content="Cinq décisions d’argent à s’entraîner à prendre : un proche qui demande, le tour de tontine, une offre de crédit, une prime, le premier investissement. Vous choisissez, vous voyez ce qui peut arriver, vous rédigez votre réponse.">
-<link rel="canonical" href="https://efa.africa/decider.html">
+<link rel="canonical" href="https://efa.africa/decider">
 <meta property="og:title" content="Simulateur de décisions EFA : entraîner son jugement">
 <meta property="og:description" content="Un proche vous demande 100 000 F. Aide, prêt ou pas maintenant ? Choisissez, voyez ce qui peut arriver, rédigez votre réponse.">
 <meta property="og:image" content="https://efa.africa/og-image.png">
-<meta property="og:url" content="https://efa.africa/decider.html">
+<meta property="og:url" content="https://efa.africa/decider">
 <link rel="icon" href="logo-efa-96.png">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
@@ -48,7 +49,7 @@
     <nav class="progres" id="progres" aria-label="Progression"></nav>
     <div class="corps" id="corps" aria-live="polite"></div>
     <div class="pied">
-      <a class="ely" href="https://efa.africa/ely.html" target="_blank" rel="noopener">Demander à Ely</a>
+      <a class="ely" href="https://efa.africa/ely" target="_blank" rel="noopener">Demander à Ely</a>
       <span class="duree" id="duree"></span>
       <button class="btn prec" id="som" type="button">Sommaire</button>
       <button class="btn prec" id="prec" type="button">Précédent</button>
@@ -96,7 +97,7 @@ function ecranReponse(o) { // o: {types:[[cle,libelle]], parChoix:{A:cle}, model
 /* Rappel à J+7 dans l'agenda du téléphone (.ics) ou Google Agenda : rien n'est envoyé par EFA */
 function rappelAgenda(it,action,M){
   var d=new Date(it.j7),f=function(x){return x.toISOString().slice(0,10).replace(/-/g,'');},d2=new Date(d.getTime()+864e5);
-  var titre='EFA · ai-je essayé ? '+action, lien='https://efa.africa/decider.html#'+M.id, det='Cette semaine, j’ai choisi : '+action+'. Revenez sur '+lien+' pour noter ce qui s’est passé.';
+  var titre='EFA · ai-je essayé ? '+action, lien='https://efa.africa/decider#'+M.id, det='Cette semaine, j’ai choisi : '+action+'. Revenez sur '+lien+' pour noter ce qui s’est passé.';
   var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//EFA//Rappel//FR','BEGIN:VEVENT','UID:efa-'+M.id+'-'+it.j7+'@efa.africa','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;VALUE=DATE:'+f(d),'DTEND;VALUE=DATE:'+f(d2),'SUMMARY:'+titre.replace(/[,;]/g,' '),'DESCRIPTION:'+det.replace(/[,;]/g,' '),'URL:'+lien,'BEGIN:VALARM','TRIGGER:PT9H','ACTION:DISPLAY','DESCRIPTION:'+titre.replace(/[,;]/g,' '),'END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
   var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(titre)+'&dates='+f(d)+'/'+f(d2)+'&details='+encodeURIComponent(det);
   return '<a href="data:text/calendar;charset=utf-8,'+encodeURIComponent(ics)+'" download="rappel-efa-'+M.id+'.ics">agenda du téléphone</a> ou <a href="'+g+'" target="_blank" rel="noopener">Google Agenda</a>.';
@@ -241,5 +242,5 @@ ecrans:[
 })();
 </script>
 <script src="ecole-bourse-moteur.js?v=2026102703"></script>
-<script src="efa-suite.js?v=2026102803" defer></script>
+<script src="efa-suite.js?v=2026102710" defer></script>
 </body></html>

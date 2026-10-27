@@ -39,7 +39,7 @@
   function brancherCertif(o, changerNom) {
     $("c-print").onclick = function () { try { window.print(); } catch (e) {} };
     $("c-nom").onclick = changerNom;
-    $("c-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("J’ai obtenu le " + o.titreLong + " d’EFA, l’école de la finance personnelle. Et vous ? https://efa.africa/parcours.html?src=certificat"), "_blank", "noopener"); };
+    $("c-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("J’ai obtenu le " + o.titreLong + " d’EFA, l’école de la finance personnelle. Et vous ? https://efa.africa/parcours?src=certificat"), "_blank", "noopener"); };
     $("c-png").onclick = function () { image(o); };
   }
   function image(o) {

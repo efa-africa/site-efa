@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
@@ -9,13 +10,13 @@
 <meta name="theme-color" content="#0B1220">
 <title>Pour les organisations · Contact · EFA</title>
 <meta name="description" content="Pour les organisations · Contact : les programmes d’éducation financière EFA pour les organisations, les études sur commande, les rendez-vous de la semaine et un formulaire pour nous écrire.">
-<link rel="canonical" href="https://efa.africa/rendez-vous.html">
+<link rel="canonical" href="https://efa.africa/rendez-vous">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="EFA · Pour les organisations · Contact">
 <meta property="og:description" content="La lettre du mardi, EFA Community le jeudi, l’enquête tontine, et un formulaire pour nous écrire.">
-<meta property="og:url" content="https://efa.africa/rendez-vous.html">
+<meta property="og:url" content="https://efa.africa/rendez-vous">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -900,7 +901,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
   var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
   // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
   try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={accompagnement:'Un accompagnement individuel ou en groupe',organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',ambassadeur:'Devenir ambassadeur EFA',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];if(q==='ambassadeur'){var am=document.getElementById('ct-msg');if(am&&!am.value)am.value='Bonjour,\n\nJe souhaite devenir ambassadeur EFA.\nMa communauté (réseau, nombre d’abonnés, lien) : …\nCe que je partage aujourd’hui : …\n';}}catch(e){}
-  try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation\.html\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons recevoir les accès (clé d’organisation pour le tableau de bord, code pour nos participants) et, si possible, organiser une session avec EFA. Nombre de participants : … Nos disponibilités : …\n\nMerci.';}}catch(e){}
+  try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation(\.html)?\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons recevoir les accès (clé d’organisation pour le tableau de bord, code pour nos participants) et, si possible, organiser une session avec EFA. Nombre de participants : … Nos disponibilités : …\n\nMerci.';}}catch(e){}
   function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
   f.addEventListener('submit',function(e){
     e.preventDefault();
@@ -925,6 +926,6 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>

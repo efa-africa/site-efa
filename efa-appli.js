@@ -24,7 +24,7 @@
   // Pages qui reçoivent la carte (nom du fichier, sans le dossier)
   var PAGES_CARTE = ["outils.html", "diagnostic.html", "ou-est-passe-mon-argent.html", "preparer-ma-retraite.html", "preter-a-un-proche.html", "construire-son-budget.html", "budget-mobile-money.html", "cercle-spirale.html"];
 
-  var page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html").toLowerCase();
 
   var css = "" +
     ".efa-appli{max-width:1080px;margin:40px auto;padding:0 16px;box-sizing:border-box}" +
@@ -167,12 +167,12 @@
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
-  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102803"; s.defer = true; document.head.appendChild(s);
-  var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102702"; f.defer = true; document.head.appendChild(f);
+  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102710"; s.defer = true; document.head.appendChild(s);
+  var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102710"; f.defer = true; document.head.appendChild(f);
   var pt = document.createElement("script"); pt.src = "efa-point.js?v=2026102701"; pt.defer = true; document.head.appendChild(pt);
-  if (!window.EFA_CHIFFRES) { var ch = document.createElement("script"); ch.src = "efa-chiffres.js?v=2026102701"; ch.defer = true; document.head.appendChild(ch); }
+  if (!window.EFA_CHIFFRES) { var ch = document.createElement("script"); ch.src = "efa-chiffres.js?v=2026102710"; ch.defer = true; document.head.appendChild(ch); }
   if (!window.EFA_SONS) { var so = document.createElement("script"); so.src = "efa-sons.js?v=2026102701"; so.defer = true; document.head.appendChild(so); }
-  var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=2026102701"; qz.defer = true; document.head.appendChild(qz);
-  if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102501"; u.defer = true; document.head.appendChild(u); }
-  if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102701"; k.defer = true; document.head.appendChild(k); }
+  var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=2026102710"; qz.defer = true; document.head.appendChild(qz);
+  if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102710"; u.defer = true; document.head.appendChild(u); }
+  if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102710"; k.defer = true; document.head.appendChild(k); }
 })();

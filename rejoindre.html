@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
@@ -183,7 +184,7 @@ function vueCompte(c, nouveau) {
     + '<div class="acts"><a class="bt bt-p" href="' + E.lienProgramme(c) + '">Ouvrir mon programme</a><a class="bt" href="parcours.html">L’école</a><button type="button" class="bt bt-l" id="c-out">Me déconnecter de ce téléphone</button></div></section>'
     + '<section class="carte"><h2>' + (comm ? 'Ce que voit EFA' : 'Ce que voit votre organisation') + '</h2><ul class="aide"><li>Votre nom' + (c.email ? " et votre email" : "") + ', la date de votre inscription et de votre dernière visite.</li><li>Les étapes que vous cochez, les modules terminés, les fiches gardées (le titre, jamais leur contenu) et vos certificats.</li><li><b>Jamais</b> les montants que vous saisissez dans les outils, le contenu de vos fiches ni vos réponses aux quiz et aux examens : ils restent sur votre téléphone.</li></ul></section>';
   if ($("c-copier")) $("c-copier").onclick = function () { copier(c.cle, "c-msg", "Clé copiée."); };
-  if ($("c-wa")) $("c-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("Ma clé personnelle EFA (programme " + c.programme.nom + ") : " + c.cle + " · pour me reconnecter : https://efa.africa/rejoindre.html"), "_blank", "noopener"); };
+  if ($("c-wa")) $("c-wa").onclick = function () { window.open("https://wa.me/?text=" + encodeURIComponent("Ma clé personnelle EFA (programme " + c.programme.nom + ") : " + c.cle + " · pour me reconnecter : https://efa.africa/rejoindre"), "_blank", "noopener"); };
   $("c-out").onclick = function () { if (!confirmerSortie()) return; E.deconnecter(); vueAccueil(); };
 }
 var sortie = false;
@@ -269,6 +270,6 @@ demarrer();
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>

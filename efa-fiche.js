@@ -6,7 +6,7 @@
   "use strict";
   try { if (window.self !== window.top) return; } catch (e) { return; }
   if (window.__efaFiche) return; window.__efaFiche = 1;
-  var page = (location.pathname.split("/").pop() || "index.html");
+  var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
   // Pages qui ont déjà leur propre fiche, ou qui ne sont pas des outils de calcul
   var EXCLUS = ["index.html", "outils.html", "parcours.html", "diagnostic.html", "construire-son-budget.html",
     "preter-a-un-proche.html", "budget-mobile-money.html", "ou-est-passe-mon-argent.html", "preparer-ma-retraite.html", "ely.html"];

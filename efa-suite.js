@@ -15,7 +15,7 @@
   function barreNav() {
     var deja = document.querySelector('header a[href="methode.html"], .mainnav a[href="methode.html"], nav a[href="methode.html"]');
     if (deja || document.querySelector(".efa-nav")) return;
-    var p = (location.pathname.split("/").pop() || "index.html");
+    var p = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
     var st = document.createElement("style");
     st.textContent = ".efa-nav{position:relative;z-index:50;align-self:stretch;width:100%;max-width:100vw;box-sizing:border-box;flex:none;background:#0B1220;color:#fff;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;border-bottom:1px solid #1F2C45}"
       + ".efa-nav-in{max-width:min(1120px,100vw);box-sizing:border-box;margin:0 auto;display:flex;align-items:center;gap:4px 6px;padding:6px max(12px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none;white-space:nowrap}"
@@ -41,7 +41,7 @@
      Chaque page dit, si elle ne le dit pas déjà : contenus faits avec l'aide de l'IA et vérifiés, personnages fictifs,
      éducation et non conseil. */
   function mentions() {
-    var pg = location.pathname.split("/").pop() || "index.html";
+    var pg = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
     if (["admin-ecole.html", "espace-organisation.html", "tableau-ely.html"].indexOf(pg) >= 0 || document.querySelector(".efa-mentions")) return;
     var t = (document.body.innerText || "").toLowerCase(), m = [];
     if (t.indexOf("intelligence artificielle") < 0) m.push("Contenus pédagogiques réalisés avec l’aide de l’intelligence artificielle et vérifiés par l’équipe EFA. Les personnages et leurs montants sont fictifs.");
@@ -127,7 +127,7 @@
   }
   window.EFA_FIL = { suivant: filSuivant };
   function filNav() {
-    var pg = location.pathname.split("/").pop() || "index.html";
+    var pg = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
     if (SANS_FIL.indexOf(pg) >= 0 || document.querySelector(".efa-fil")) return;
     var cur = location.pathname + location.search, S = [];
     try { S = JSON.parse(sessionStorage.getItem(FIL) || "[]") || []; } catch (e) {}
@@ -185,7 +185,7 @@
     // Arrivée depuis « Trouver mon point de départ » : la suite logique est de revenir à ses recommandations
     var depuisDepart = false;
     try {
-      if (/[?&]src=depart/.test(location.search) || /point-de-depart\.html/.test(document.referrer || "")) sessionStorage.setItem("efa_depart", "1");
+      if (/[?&]src=depart/.test(location.search) || /point-de-depart(\.html)?([?#]|$)/.test(document.referrer || "")) sessionStorage.setItem("efa_depart", "1");
       depuisDepart = sessionStorage.getItem("efa_depart") === "1" && !!localStorage.getItem("efa_objectif");
     } catch (e) {}
     var MOTEUR = window.ECOLE && window.ECOLE.modules && window.ECOLE.cle;
@@ -225,7 +225,7 @@
 
   var EXCLUS = ["point-de-depart.html", "parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
     "organisations.html", "programme-organisation.html", "rejoindre.html", "espace-organisation.html", "admin-ecole.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
-  var page = (location.pathname.split("/").pop() || "index.html");
+  var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
   if (EXCLUS.indexOf(page) >= 0) return;
   // Publications (études, prospective, actualités) : pas de bloc de progression, sauf arrivée depuis un module (?parcours=)
   var PUBLICATIONS = ["methode.html", "news.html", "tribunes.html", "etude-tontine-en-chiffres.html", "africa-2075-fondateur.html", "africa-2075-n1.html", "africa-2075-n2.html", "africa-2075-dossier-1.html"];

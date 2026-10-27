@@ -449,18 +449,18 @@ window.EFA_CONTENU = {
 
   explorer: [
     { titre: "Le site efa.africa", detail: "La plateforme d’éducation financière EFA", url: "https://efa.africa/" , mode: "app" },
-    { titre: "Diagnostic approfondi", detail: "Six dimensions, un profil, une priorité", url: "https://efa.africa/diagnostic.html", cat: "Outils" , mode: "app" },
-    { titre: "Où est passé mon argent ?", detail: "L’outil pour retrouver ses dépenses du mois", url: "https://efa.africa/ou-est-passe-mon-argent.html", cat: "Outils" , mode: "app" },
-    { titre: "Mes outils", detail: "Tous les simulateurs EFA", url: "https://efa.africa/outils.html", cat: "Outils" , mode: "app" },
-    { titre: "Le cercle et la spirale", detail: "L’idée au cœur d’EFA", url: "https://efa.africa/cercle-spirale.html", cat: "Méthode" , mode: "app" },
-    { titre: "Études et méthode", detail: "Méthode, sources et limites", url: "https://efa.africa/methode.html#etudes", cat: "Méthode" , mode: "app" },
+    { titre: "Diagnostic approfondi", detail: "Six dimensions, un profil, une priorité", url: "https://efa.africa/diagnostic", cat: "Outils" , mode: "app" },
+    { titre: "Où est passé mon argent ?", detail: "L’outil pour retrouver ses dépenses du mois", url: "https://efa.africa/ou-est-passe-mon-argent", cat: "Outils" , mode: "app" },
+    { titre: "Mes outils", detail: "Tous les simulateurs EFA", url: "https://efa.africa/outils", cat: "Outils" , mode: "app" },
+    { titre: "Le cercle et la spirale", detail: "L’idée au cœur d’EFA", url: "https://efa.africa/cercle-spirale", cat: "Méthode" , mode: "app" },
+    { titre: "Études et méthode", detail: "Méthode, sources et limites", url: "https://efa.africa/methode#etudes", cat: "Méthode" , mode: "app" },
     { titre: "Guide « Construire sa stabilité financière »", detail: "Gratuit, contre quelques réponses", url: "https://forms.gle/5CsRvJYxoFArJbNa8", cat: "Guides" , mode: "app" },
     { titre: "Enquête « L’argent de la tontine »", detail: "Aidez-nous à documenter la tontine", url: "https://forms.gle/Sczi5p58q9ijuKqp9", cat: "Études" , mode: "app" },
     { titre: "EFA sur YouTube", detail: "Min’Fin, Dico et vidéos", url: "https://www.youtube.com/@efaeducationfinanciereafrique", cat: "Vidéos" , mode: "ext", appli: "YouTube" },
     { titre: "EFA sur TikTok", detail: "Le Dico, Min’Fin, Instant’Fin, La Tribune", url: "https://www.tiktok.com/@efa.afrique", cat: "Vidéos" , mode: "ext", appli: "TikTok" },
     { titre: "Les Tribunes d’Élysée Johnson", detail: "Une idée forte chaque samedi", url: "https://educationfinanciereafrique.substack.com", cat: "Tribunes" , mode: "tribunes" },
     { titre: "EFA Community", detail: "Le groupe WhatsApp, rendez-vous le jeudi à 19 h", url: "https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a", cat: "Communauté" , mode: "ext", appli: "WhatsApp" },
-    { titre: "À propos de l’auteur", detail: "Élysée Johnson", url: "https://efa.africa/auteur.html", cat: "Méthode" , mode: "app" }
+    { titre: "À propos de l’auteur", detail: "Élysée Johnson", url: "https://efa.africa/auteur", cat: "Méthode" , mode: "app" }
   ],
 
   diagnostic: {

@@ -2,14 +2,15 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
 <meta name="theme-color" content="#070C16">
 <title>Études sur la tontine et l’argent en Afrique, actualité EFA News et BRVM · EFA</title>
 <meta name="description" content="Les études d’Éducation Financière Afrique sur la tontine et l’argent en Afrique, un simulateur de tontine, la BRVM expliquée et l’actualité économique, avec leurs sources.">
-<link rel="canonical" href="https://efa.africa/methode.html">
-<meta property="og:url" content="https://efa.africa/methode.html">
+<link rel="canonical" href="https://efa.africa/methode">
+<meta property="og:url" content="https://efa.africa/methode">
 <meta property="og:title" content="EFA Études · enquêtes, simulateur et données">
 <meta property="og:description" content="L’argent de la tontine en chiffres, un simulateur pour savoir quelle part garder, la BRVM et l’actualité EFA.">
 <meta property="og:image" content="https://efa.africa/og-image.png">
@@ -1130,7 +1131,7 @@ function EFATicker(root,items){
 /* Chaque bloc démarre seul : une donnée manquante (donnees.js absent, réseau coupé) n'empêche jamais
    les onglets, les études ni le simulateur de fonctionner. */
 var D=window.EFA_DATA||{}, B=(D.brvm&&D.brvm.actions&&D.brvm.actions.length)?D.brvm:null;
-var SITE='https://efa.africa/methode.html';
+var SITE='https://efa.africa/methode';
 function safe(name,fn){try{fn();}catch(e){if(window.console)console.warn('EFA · '+name+' :',e);}}
 function fr(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});}
 function pct(v){var s=(v>0?'+':v<0?'−':'')+fr(Math.abs(v),2)+' %';return s;}
@@ -1680,7 +1681,7 @@ setHH(); route();
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
 <script src="etude-pdf.js?v=2026102301" defer></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 
 <script>
 /* Bulletin « La semaine à la BRVM » → Brevo (liste dédiée, double confirmation).

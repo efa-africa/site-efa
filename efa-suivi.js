@@ -90,7 +90,7 @@
   }
 
   function verifier() {
-    var page = location.pathname.split("/").pop() || "index.html";
+    var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
     if (/^(espace-organisation|admin-ecole|rejoindre)\.html$/.test(page)) return;
     var v = lire(), now = Date.now();
     for (var i = 0; i < v.items.length; i++) { var q = du(v.items[i], now); if (q) { var it = v.items[i]; setTimeout(function () { carte(it, q); }, 4000); return; } }

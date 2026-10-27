@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
@@ -9,12 +10,12 @@
 <meta name="theme-color" content="#0B1220">
 <title>Préparer sa retraite : où en êtes-vous ? Outil gratuit · EFA</title>
 <meta name="description" content="Six questions pour savoir où vous en êtes. Puis, si vous le souhaitez, une estimation avec vos chiffres et un premier plan. Gratuit, sans inscription.">
-<link rel="canonical" href="https://efa.africa/preparer-ma-retraite.html">
+<link rel="canonical" href="https://efa.africa/preparer-ma-retraite">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="Préparer ma retraite · un outil gratuit EFA">
 <meta property="og:description" content="Six questions pour savoir où vous en êtes. Puis une estimation et un premier plan, si vous le souhaitez. Gratuit, sans inscription.">
-<meta property="og:url" content="https://efa.africa/preparer-ma-retraite.html">
+<meta property="og:url" content="https://efa.africa/preparer-ma-retraite">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -738,7 +739,7 @@ footer a{color:#D8DEE8;text-decoration:none}
       if(y.ok){ l.push("Estimation (scénario prudent, francs d’aujourd’hui)","Besoin mensuel : "+F(y.B),"Revenus prévus : "+F(y.P),"Écart mensuel : "+F(y.G),"Capital nécessaire à l’arrêt : "+F(y.C),"Capital disponible : "+F(y.K0),y.deja?"Durée couverte : "+(y.moisCouverts===null?"écart couvert":ans(y.moisCouverts)):"Effort mensuel indicatif : "+F(y.effort||0)); }
       if(quoi==="plan"){ var er=C.lire(S.plan.effort_retenu).v; if(er) l.push("Effort retenu : "+F(er)+" par mois"); l.push("","Mes actions :"); actionsPlan().forEach(function(a,i){ l.push((i+1)+". "+a); }); l.push("","À refaire le "+dFR(S.plan.date_revision)+"."); }
       l.push("","Estimation pédagogique, à partir de mes chiffres et d’hypothèses affichées. Ni calcul de pension, ni conseil en placement."); }
-    l.push("https://efa.africa/preparer-ma-retraite.html");
+    l.push("https://efa.africa/preparer-ma-retraite");
     return l.join("\n");
   }
   function awa(){
@@ -813,6 +814,6 @@ footer a{color:#D8DEE8;text-decoration:none}
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>

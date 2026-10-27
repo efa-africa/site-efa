@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png">
@@ -9,12 +10,12 @@
 <meta name="theme-color" content="#0B1220">
 <title>Prêter de l’argent à un proche : une méthode pour bien décider · EFA</title>
 <meta name="description" content="Un parcours pratique EFA : une situation avec Koffi, les enjeux, une méthode, puis votre propre réponse à une demande d’argent d’un proche. Gratuit, sans inscription.">
-<link rel="canonical" href="https://efa.africa/preter-a-un-proche.html">
+<link rel="canonical" href="https://efa.africa/preter-a-un-proche">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="Prêter à un proche · un parcours pratique EFA">
 <meta property="og:description" content="Aider, prêter, proposer autre chose ou refuser : préparez votre réponse clairement. Gratuit, sans inscription.">
-<meta property="og:url" content="https://efa.africa/preter-a-un-proche.html">
+<meta property="og:url" content="https://efa.africa/preter-a-un-proche">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -615,7 +616,7 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
     if(p.nature&&(p.reponse==="accepter"||p.reponse==="autre_somme")) l.push("Nature : "+lib(NATURES,p.nature));
     if(a.points.length){ l.push("","Points à clarifier :"); a.points.forEach(function(x){ l.push("- "+x); }); }
     if(p.message) l.push("","Message :",p.message);
-    l.push("","https://efa.africa/preter-a-un-proche.html"); return l.join("\n");
+    l.push("","https://efa.africa/preter-a-un-proche"); return l.join("\n");
   }
   function copier(txt){ var ok=function(){ var c=document.getElementById("copie-ok"); if(c) c.hidden=false; mesure("preter_copie"); }, fait=false, fin=function(){ if(!fait){ fait=true; ok(); } }, sec=function(){ if(fait) return; var ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(ta); fin(); };
     try{ navigator.clipboard.writeText(txt).then(fin,sec); setTimeout(sec,1500); }catch(e){ sec(); } }
@@ -657,6 +658,6 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102801" defer></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
 </body>
 </html>
