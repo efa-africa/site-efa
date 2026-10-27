@@ -1,29 +1,29 @@
-/* EFA CEO Challenge · La méthode du cas (niveau licence et master, préparation aux entretiens de cabinets de conseil)
+/* EFA CEO Challenge · La méthode de décision (dirigeants, cadres, étudiants en stratégie)
    11 chapitres en 3 parties. Même structure que les cours EFA : objectifs, notions, formules, exemples chiffrés,
    « À retenir », exercices corrigés (une explication par erreur fréquente), un cas de transfert, puis un cas.
    Chiffres d'exercice : ordres de grandeur arrondis, à ne pas citer comme statistiques. */
 (function (racine) {
   "use strict";
   var PARTIES = [
-    { id: "A", titre: "La méthode", sous: "Clarifier, structurer, calculer, conclure" },
+    { id: "A", titre: "La méthode", sous: "Trouver la vraie question, découper, chiffrer, trancher" },
     { id: "B", titre: "Les grands types de cas", sous: "Rentabilité, marché, prix, rachat, opérations" },
     { id: "C", titre: "Le terrain africain", sous: "Ce qui change dans l'UEMOA et la CEMAC" }
   ];
   var CH = [
-    { id: "m1", partie: "A", titre: "Ce qu'est une étude de cas", duree: "20 min",
-      objectifs: ["Connaître le déroulé d'un cas en entretien", "Savoir ce que l'évaluateur observe", "Éviter les erreurs de départ"],
+    { id: "m1", partie: "A", titre: "Aborder un problème de direction", duree: "20 min",
+      objectifs: ["Connaître les quatre temps d'une décision", "Savoir ce qui fait une décision solide", "Éviter les erreurs de départ"],
       sections: [
-        { t: "Un problème d'entreprise, en 25 minutes", p: ["Un dirigeant fictif a un problème : ses profits baissent, il hésite à entrer sur un marché, il veut racheter un concurrent. Vous jouez le consultant. On n'attend pas « la » bonne réponse, mais une démarche claire et des chiffres justes."] },
+        { t: "Un problème, une décision", p: ["Les profits baissent, un marché voisin tente, un concurrent casse les prix, une société est à vendre. En comité de direction, en conseil d'administration ou face à un investisseur, on attend la même chose : une démarche claire, des chiffres justes, et une décision assumée.", "C'est la méthode des directions générales et des cabinets de stratégie. Elle s'apprend, et elle sert aussi bien pour diriger une PME que pour réussir un recrutement exigeant."] },
         { t: "Le déroulé en quatre temps", liste: [
           "Clarifier : reformuler la question, demander l'objectif et les contraintes (horizon, montant, critère de succès).",
           "Structurer : annoncer comment vous allez découper le problème, en branches qui ne se recoupent pas.",
           "Analyser : demander les données, calculer à voix haute, tirer une conclusion de chaque chiffre.",
           "Recommander : une réponse d'abord, deux ou trois raisons, les risques, la prochaine étape."] },
-        { t: "Ce que l'on évalue", liste: ["La structure : votre découpage couvre-t-il tout, sans doublon ?", "Le calcul : exact, rapide, avec les bonnes unités.", "Le jugement : que veut dire ce chiffre pour la décision ?", "La communication : réponse d'abord, phrases courtes."] }
+        { t: "Ce qui fait une décision solide", liste: ["La structure : le découpage couvre-t-il tout, sans doublon ?", "Le calcul : exact, rapide, avec les bonnes unités.", "Le jugement : que veut dire ce chiffre pour la décision ?", "La communication : la décision d'abord, phrases courtes."] }
       ],
       retenir: ["Clarifier avant de structurer.", "Chaque chiffre doit servir une conclusion.", "Recommander, c'est répondre à la question posée."],
       exos: [
-        { type: "qcm", q: "Le recruteur annonce : « Notre client, un brasseur, voit ses profits baisser. » Que faites-vous d'abord ?", choix: ["Je donne trois causes possibles", "Je reformule et demande l'objectif, la période et l'ampleur de la baisse", "Je propose de baisser les coûts"], bonne: 1,
+        { type: "qcm", q: "Votre directeur commercial annonce : « Nos profits baissent. » Que faites-vous d'abord ?", choix: ["Je donne trois causes possibles", "Je fais préciser : depuis quand, de combien, sur quels produits, et ce qu'on veut atteindre", "Je lance un plan de réduction des coûts"], bonne: 1,
           fb: ["Trop tôt : vous ne savez pas encore de quoi on parle.", "Juste : clarifier évite de résoudre le mauvais problème.", "Non : c'est une solution avant le diagnostic."] },
         { type: "qcm", transfert: true, q: "À la fin, vous n'avez pas le temps de tout analyser. Que dites-vous ?", choix: ["« Je ne peux pas conclure »", "Une recommandation sur ce que vous savez, en nommant ce qu'il faudrait vérifier ensuite", "Je résume tout ce que j'ai fait"], bonne: 1,
           fb: ["Un dirigeant attend une position, même provisoire.", "Juste : réponse, raisons, risques, prochaine étape.", "Un récit n'est pas une recommandation."] }
@@ -76,7 +76,7 @@
       exos: [
         { type: "nombre", q: "Avec les hypothèses de l'exemple, combien de baguettes par jour ?", unite: "baguettes", tol: 0, rep: function () { return 6e6 / 5 * .4 * 2; }, pieges: [{ v: 4800000, msg: "Vous avez appliqué les 40 % à la population, pas aux ménages. On achète le pain par ménage." }], corr: "6 000 000 ÷ 5 × 0,4 × 2 = 960 000 baguettes par jour." },
         { type: "nombre", q: "À 150 FCFA la baguette et 360 jours, valeur annuelle du marché, en milliards de FCFA (une décimale) ?", unite: "Md FCFA", tol: .1, rep: function () { return Math.round(960000 * 150 * 360 / 1e8) / 10; }, corr: "960 000 × 150 = 144 M par jour ; × 360 = 51,8 milliards de FCFA par an." },
-        { type: "qcm", transfert: true, q: "Comment vérifier cette estimation par une autre voie ?", choix: ["Refaire le même calcul", "Estimer le nombre de boulangeries et leur production quotidienne", "Demander au recruteur"], bonne: 1, fb: ["Ce n'est pas un contrôle.", "Juste : une estimation ascendante, par l'offre.", "On peut, mais il attend votre démarche."] }
+        { type: "qcm", transfert: true, q: "Comment vérifier cette estimation par une autre voie ?", choix: ["Refaire le même calcul", "Estimer le nombre de boulangeries et leur production quotidienne", "Demander à un collègue"], bonne: 1, fb: ["Ce n'est pas un contrôle.", "Juste : une estimation ascendante, par l'offre.", "Utile ensuite, mais vérifiez d'abord par vous-même."] }
       ],
       pratique: { texte: "Le cas « Motos électriques à Cotonou » commence par une estimation du parc de motos-taxis.", lien: "cas:motos" } },
 
@@ -169,8 +169,8 @@
       ],
       pratique: { texte: "Tous les cas demandent ces calculs ; faites-les sans calculatrice.", lien: null } },
 
-    { id: "m11", partie: "A", titre: "Synthétiser et recommander", duree: "20 min",
-      objectifs: ["Construire une recommandation en pyramide", "Hiérarchiser raisons, risques et prochaines étapes", "Parler à un dirigeant"],
+    { id: "m11", partie: "A", titre: "Trancher et convaincre", duree: "20 min",
+      objectifs: ["Annoncer une décision en pyramide", "Hiérarchiser raisons, risques et prochaines étapes", "Convaincre un conseil ou un investisseur"],
       sections: [
         { t: "La pyramide", p: ["Commencez par la réponse. Puis deux ou trois raisons, chacune appuyée par un chiffre. Puis les risques et la façon de les réduire. Enfin la prochaine étape concrète."], ex: "« Je recommande d'entrer au Cameroun par un partenariat avec un embouteilleur local. Trois raisons : le marché vaut 224 milliards, le leader verrouille la distribution, et le partenariat évite 25 milliards d'investissement. Risque : la dépendance au partenaire, à encadrer par contrat. Prochaine étape : rencontrer deux embouteilleurs d'ici un mois. »" },
         { t: "Ce qu'on évite", liste: ["Raconter son analyse dans l'ordre chronologique.", "Recommander deux choses à la fois sans trancher.", "Oublier le chiffre qui fonde la décision."] }
@@ -180,7 +180,7 @@
         { type: "qcm", q: "Quelle ouverture est la meilleure ?", choix: ["« Nous avons d'abord regardé le marché, puis la concurrence… »", "« Je recommande de ne pas lancer le produit cette année, pour trois raisons. »", "« C'est un cas complexe. »"], bonne: 1, fb: ["C'est un récit, pas une réponse.", "Juste : la réponse, puis l'annonce de la structure.", "Cela n'apporte rien au dirigeant."] },
         { type: "qcm", transfert: true, q: "Votre analyse montre un projet rentable mais risqué. Que recommander ?", choix: ["« C'est rentable mais risqué, à vous de voir »", "Lancer en pilote limité, avec un critère chiffré pour décider de la suite", "Ne rien faire"], bonne: 1, fb: ["Le dirigeant attend une position.", "Juste : une décision qui réduit le risque, avec un critère.", "Trop prudent sans raison chiffrée."] }
       ],
-      pratique: { texte: "Chaque cas se termine par votre recommandation et votre phrase de synthèse.", lien: "cas:brasserie" } }
+      pratique: { texte: "Chaque cas se termine par votre décision et votre phrase de synthèse.", lien: "cas:brasserie" } }
   ];
   /* ordre de lecture : méthode (m1, m2, m10, m11), puis types de cas, puis terrain */
   var ORDRE = ["m1", "m2", "m10", "m11", "m3", "m4", "m5", "m6", "m7", "m8", "m9"];

@@ -31,17 +31,17 @@
   /* ================= Découvrir ================= */
   function vDecouvrir() {
     var mins = K.CHAPITRES.reduce(function (a, c) { return a + parseInt(c.duree, 10); }, 0);
-    var h = '<section class="tr-bloc tr-intro"><div><p class="surtitre">Le cabinet de stratégie</p><h2>Un dirigeant a un problème. Vous avez vingt-cinq minutes.</h2>' +
-      '<p class="lead">Des études de cas comme en entretien de cabinet de conseil, ancrées en Afrique de l’Ouest et du Centre : un opérateur de mobile money qui perd de l’argent, une brasserie qui hésite à entrer au Cameroun, une cimenterie face aux importations. Vous structurez, vous calculez, vous recommandez.</p>' +
+    var h = '<section class="tr-bloc tr-intro"><div><p class="surtitre">Le siège du dirigeant</p><h2>Un problème d’entreprise. Une décision à prendre.</h2>' +
+      '<p class="lead">Des profits qui fondent malgré la croissance, un marché voisin qui tente, un concurrent qui casse les prix, une société à racheter : les décisions qui font ou défont une entreprise, ici, en Afrique de l’Ouest et du Centre. Vous prenez la place de celui qui décide, avec la méthode des directions générales et des cabinets de stratégie.</p>' +
       '<div class="tr-cta"><a class="bouton bouton-principal" href="#cas-money">Premier cas : Kalao Money</a><a class="bouton bouton-clair" href="#cours">La méthode</a></div>' +
-      '<p class="tr-avert">Entreprises fictives, pays réels, chiffres d’exercice : ce sont des hypothèses, pas des statistiques. Pour les étudiants en stratégie, en école de commerce ou d’ingénieurs, et pour préparer un entretien.</p></div>' +
-      '<ol class="tr-5q"><li>Clarifier la question</li><li>Structurer le problème</li><li>Calculer, de tête</li><li>Recommander, réponse d’abord</li><li>Relire sa décision plus tard</li></ol></section>';
-    h += '<section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">Les cas</p><h2>Six entreprises, six décisions</h2></div><p class="lead">Chaque cas suit le même déroulé qu’un entretien : votre structure d’abord, comparée à une structure modèle, puis les pièces à lire, les calculs, et votre recommandation.</p></div><div class="cf-parts">' +
+      '<p class="tr-avert">Pour les dirigeants et entrepreneurs qui veulent affûter leurs décisions, les cadres qui prennent plus de responsabilités, les étudiants qui se destinent à la stratégie, et tous ceux qui veulent s’entraîner à raisonner sous pression. Entreprises fictives, pays réels, chiffres d’exercice.</p></div>' +
+      '<ol class="tr-5q"><li>Trouver la vraie question</li><li>Découper le problème</li><li>Chiffrer les options</li><li>Trancher, et le dire clairement</li><li>Relire sa décision plus tard</li></ol></section>';
+    h += '<section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">Les cas</p><h2>Six entreprises, six décisions</h2></div><p class="lead">Chaque cas suit le même déroulé : votre lecture du problème d’abord, comparée à une structure modèle, puis les pièces à lire, les chiffres à faire varier, et votre décision, que vous défendez.</p></div><div class="cf-parts">' +
       CS.CAS.map(function (c) { return '<a class="cf-part" href="#cas-' + c.id + '"><span class="etiquette">' + esc(c.type) + "</span><b>" + esc(c.titre) + "</b><small>" + esc(c.secteur) + " · " + c.duree + "</small></a>"; }).join("") + "</div></section>";
     h += '<section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">La méthode</p><h2>Trois parties, onze chapitres</h2></div><p class="lead">Environ ' + Math.round(mins / 6) / 10 + ' h de cours, avec des exercices corrigés et trois outils interactifs.</p></div><div class="cf-parts">' +
       K.PARTIES.map(function (p) { var chs = K.CHAPITRES.filter(function (c) { return c.partie === p.id; }); return '<a class="cf-part" href="#cours"><span class="tr-chap-n">' + p.id + "</span><b>" + esc(p.titre) + "</b><small>" + chs.map(function (c) { return esc(c.titre); }).join(" · ") + "</small></a>"; }).join("") + "</div></section>";
-    h += '<section class="tr-bloc" id="tr-classe"><div class="tr-ent"><div><p class="surtitre">Pour les enseignants</p><h2>Utiliser en cours</h2></div><button class="lien-souligne" type="button" id="tr-pp">Imprimer le programme</button></div>' +
-      '<p class="lead">Un format qui marche bien : les étudiants préparent le cas en binôme (un consultant, un recruteur qui lit les pièces), puis comparent leurs recommandations en groupe. Chaque cas se termine par une grille : structure, calcul, synthèse.</p><div class="tr-table gauche"><table><thead><tr><th>Ch.</th><th>Chapitre</th><th>Durée</th><th>Compétences</th><th>Cas lié</th></tr></thead><tbody>' +
+    h += '<section class="tr-bloc" id="tr-classe"><div class="tr-ent"><div><p class="surtitre">En groupe</p><h2>École, comité de direction, formation de managers</h2></div><button class="lien-souligne" type="button" id="tr-pp">Imprimer le programme</button></div>' +
+      '<p class="lead">Un format qui marche bien : on prépare le cas à deux (l’un décide, l’autre joue le conseil d’administration et lit les pièces), puis le groupe compare les décisions. En séminaire de direction, un cas par session suffit pour lancer un vrai débat. Chaque cas se termine par une grille : structure, calcul, synthèse.</p><div class="tr-table gauche"><table><thead><tr><th>Ch.</th><th>Chapitre</th><th>Durée</th><th>Compétences</th><th>Cas lié</th></tr></thead><tbody>' +
       K.CHAPITRES.map(function (c, i) { var cas = c.pratique && c.pratique.lien ? CS.CAS.filter(function (x) { return "cas:" + x.id === c.pratique.lien; })[0] : null; return "<tr><td>" + (i + 1) + '</td><td><a href="#cours-' + c.id + '">' + esc(c.titre) + "</a></td><td>" + c.duree + "</td><td>" + c.objectifs.map(esc).join("<br>") + "</td><td>" + (cas ? esc(cas.titre) : "Tous les cas") + "</td></tr>"; }).join("") + "</tbody></table></div>" +
       '<p class="tr-note">Organisations et écoles : <a href="organisations.html?src=ceo">composer un programme pour un groupe</a>. Pour la partie financière (VAN, BFR, valorisation), voir <a href="corporate.html">EFA Corporate Finance</a>.</p></section>';
     vue.innerHTML = h;
@@ -53,7 +53,7 @@
   function etatCh(c) { var p = D.cours[c.id]; if (!p) return { s: "", n: 0, j: 0 }; var n = Object.keys(p.rep || {}).length, j = Object.keys(p.rep || {}).filter(function (k) { return p.rep[k].juste; }).length; return { s: n >= c.exos.length ? "fait" : p.lu ? "cours" : "", n: n, j: j }; }
   function vCours() {
     var faits = K.CHAPITRES.filter(function (c) { return etatCh(c).s === "fait"; }).length, suite = K.CHAPITRES.filter(function (c) { return etatCh(c).s !== "fait"; })[0];
-    var h = '<section class="tr-bloc"><div class="tr-ph"><div class="tr-ph-t"><p class="surtitre">La méthode</p><h2>Résoudre une étude de cas</h2><p class="lead">La démarche des entretiens de cabinets de conseil, avec des exemples d’ici : structurer, estimer, calculer de tête, recommander.</p></div>' +
+    var h = '<section class="tr-bloc"><div class="tr-ph"><div class="tr-ph-t"><p class="surtitre">La méthode</p><h2>La méthode de décision</h2><p class="lead">La démarche des directions générales et des cabinets de stratégie, avec des exemples d’ici : trouver la vraie question, découper, estimer, chiffrer, trancher.</p></div>' +
       '<div class="tr-suite"><p class="etiquette">Votre progression</p><p class="tr-suite-n"><b>' + faits + "</b> / " + K.CHAPITRES.length + ' chapitres</p><div class="tr-barre" aria-hidden="true"><i style="width:' + (faits / K.CHAPITRES.length * 100) + '%"></i></div>' +
       (suite ? '<a class="bouton bouton-principal" href="#cours-' + suite.id + '">' + (faits ? "Continuer" : "Commencer") + " : chapitre " + (K.CHAPITRES.indexOf(suite) + 1) + "</a>" : '<a class="bouton bouton-principal" href="#cas">Passer aux cas</a>') + '</div></div><div class="tr-chaps">';
     K.PARTIES.forEach(function (pa) {
@@ -160,10 +160,10 @@
   /* ================= Cas ================= */
   function etatCas(c) { var s = D.cas[c.id]; if (!s) return ""; if (s.decision) return "fait"; return "cours"; }
   function vListeCas() {
-    var h = '<section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">Les cas</p><h2>Prenez la place du consultant</h2></div><p class="lead">Chaque cas suit le déroulé d’un entretien : votre structure, les pièces, les calculs, puis votre recommandation, que vous défendez avec un chiffre. Il n’y a pas une seule bonne réponse, mais des raisonnements plus ou moins solides.</p></div><div class="tr-scs">';
+    var h = '<section class="tr-bloc"><div class="tr-sh"><div><p class="surtitre">Les cas</p><h2>À vous de décider</h2></div><p class="lead">Chaque cas suit le même déroulé : votre lecture du problème, les pièces, les chiffres, puis votre décision, que vous défendez avec un chiffre. Il n’y a pas une seule bonne décision, mais des raisonnements plus ou moins solides.</p></div><div class="tr-scs">';
     CS.CAS.forEach(function (c) {
       var e = etatCas(c);
-      h += '<article class="tr-sc"><div class="tr-sc-h"><span>' + esc(c.type) + "</span><span>" + c.duree + '</span></div><div class="tr-sc-b"><p class="etiquette">' + esc(c.secteur) + "</p><h3>" + esc(c.titre) + "</h3><p>" + esc(c.situation) + '</p><p class="tr-comp"><span>Chapitres utiles</span>' + c.chapitres.map(function (id) { var ch = K.CHAPITRES.filter(function (x) { return x.id === id; })[0]; return ch ? esc(ch.titre) : ""; }).join(" · ") + '</p><div class="tr-sc-a"><a class="tr-sc-cta" href="#cas-' + c.id + '">' + (e === "fait" ? "Revoir ma recommandation" : e === "cours" ? "Reprendre" : "Commencer le cas") + " " + CHEV + "</a>" + (e === "fait" ? '<span class="pastille ok">Recommandé</span>' : "") + "</div></div></article>";
+      h += '<article class="tr-sc"><div class="tr-sc-h"><span>' + esc(c.type) + "</span><span>" + c.duree + '</span></div><div class="tr-sc-b"><p class="etiquette">' + esc(c.secteur) + "</p><h3>" + esc(c.titre) + "</h3><p>" + esc(c.situation) + '</p><p class="tr-comp"><span>Chapitres utiles</span>' + c.chapitres.map(function (id) { var ch = K.CHAPITRES.filter(function (x) { return x.id === id; })[0]; return ch ? esc(ch.titre) : ""; }).join(" · ") + '</p><div class="tr-sc-a"><a class="tr-sc-cta" href="#cas-' + c.id + '">' + (e === "fait" ? "Revoir ma décision" : e === "cours" ? "Reprendre" : "Commencer le cas") + " " + CHEV + "</a>" + (e === "fait" ? '<span class="pastille ok">Décidé</span>' : "") + "</div></div></article>";
     });
     vue.innerHTML = h + "</div></section>";
   }
@@ -220,7 +220,7 @@
       lig("Synthèse", chiffre && long ? "ok" : chiffre || long ? "moyen" : "ko", (chiffre ? "Appuyée sur un chiffre" : "Sans chiffre : ajoutez celui qui fonde la décision") + (long ? ", avec une raison développée." : ", trop courte pour convaincre un dirigeant.")) + "</div>";
   }
   function guide(c, s, o) {
-    var z = $("#cf-guide"), n = c.etapes.length, i = s.etape, h = '<p class="etiquette">' + (i < n ? "Étape " + (i + 1) + " sur " + n : "Votre recommandation") + '</p><div class="tr-prog"><i style="width:' + Math.min(i, n) / n * 100 + '%"></i></div>';
+    var z = $("#cf-guide"), n = c.etapes.length, i = s.etape, h = '<p class="etiquette">' + (i < n ? "Étape " + (i + 1) + " sur " + n : "Votre décision") + '</p><div class="tr-prog"><i style="width:' + Math.min(i, n) / n * 100 + '%"></i></div>';
     if (i < n) {
       var e = c.etapes[i], r = s.rep[i];
       if (e.t === "info") h += "<p>" + esc(e.texte) + '</p><button class="bouton bouton-sombre" id="g-ok">Compris</button>';
@@ -240,8 +240,8 @@
     } else {
       var d = s.decision;
       h += '<p class="tr-qq">' + esc(c.decision.q) + "</p>";
-      if (!d) h += '<div class="tr-choix">' + c.decision.choix.map(function (x, k) { return '<button type="button" class="choix" data-d="' + k + '" aria-pressed="' + (s.dchoix === k) + '">' + esc(x.t) + "</button>"; }).join("") + '</div><label class="cf-lab">Votre phrase de synthèse : la réponse d’abord, puis la raison chiffrée<textarea id="g-j" rows="4" maxlength="600" placeholder="Je recommande de…, parce que…">' + esc(s.djust || "") + '</textarea></label><p class="tr-err" id="g-err" role="alert"></p><button class="bouton bouton-principal" id="g-dec">Enregistrer ma recommandation</button>';
-      else h += '<p class="cf-dec"><b>Vous avez recommandé :</b> ' + esc(c.decision.choix[d.i].t) + '</p><p class="cf-dec"><b>Votre synthèse :</b> « ' + esc(d.texte) + ' »</p><div class="tr-corr"><b>Retour.</b> ' + esc(c.decision.choix[d.i].retour) + "</div>" + grille(c, s) + '<div class="tr-cta"><a class="bouton bouton-sombre" href="#decisions">Mes recommandations</a><a class="lien-souligne" href="#cas">Autre cas</a><button class="lien-souligne" id="g-raz" type="button">Refaire le cas</button></div>';
+      if (!d) h += '<div class="tr-choix">' + c.decision.choix.map(function (x, k) { return '<button type="button" class="choix" data-d="' + k + '" aria-pressed="' + (s.dchoix === k) + '">' + esc(x.t) + "</button>"; }).join("") + '</div><label class="cf-lab">Votre phrase de synthèse : la réponse d’abord, puis la raison chiffrée<textarea id="g-j" rows="4" maxlength="600" placeholder="Je décide de…, parce que…">' + esc(s.djust || "") + '</textarea></label><p class="tr-err" id="g-err" role="alert"></p><button class="bouton bouton-principal" id="g-dec">Enregistrer ma décision</button>';
+      else h += '<p class="cf-dec"><b>Vous avez décidé :</b> ' + esc(c.decision.choix[d.i].t) + '</p><p class="cf-dec"><b>Votre synthèse :</b> « ' + esc(d.texte) + ' »</p><div class="tr-corr"><b>Retour.</b> ' + esc(c.decision.choix[d.i].retour) + "</div>" + grille(c, s) + '<div class="tr-cta"><a class="bouton bouton-sombre" href="#decisions">Mes décisions</a><a class="lien-souligne" href="#cas">Autre cas</a><button class="lien-souligne" id="g-raz" type="button">Refaire le cas</button></div>';
     }
     z.innerHTML = h;
     var ok = $("#g-ok", z); if (ok) ok.onclick = function () { s.etape++; sauver(); guide(c, s, c.calc(s.x)); };
@@ -253,21 +253,21 @@
     $$(".choix[data-d]", z).forEach(function (b) { b.onclick = function () { s.dchoix = +b.dataset.d; $$(".choix[data-d]", z).forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); }; });
     var j = $("#g-j", z); if (j) j.oninput = function () { s.djust = j.value; sauver(); };
     var dec = $("#g-dec", z); if (dec) dec.onclick = function () {
-      if (s.dchoix == null) { $("#g-err").textContent = "Choisissez une recommandation."; return; }
+      if (s.dchoix == null) { $("#g-err").textContent = "Choisissez une option."; return; }
       if (!(s.djust || "").trim()) { $("#g-err").textContent = "Écrivez votre synthèse : c’est elle que l’on juge, pas le choix seul."; return; }
       s.decision = { i: s.dchoix, texte: s.djust.trim(), le: Date.now(), x: JSON.parse(JSON.stringify(s.x)) }; sauver(); suivi("decision-" + c.id); guide(c, s, o);
     };
-    var raz = $("#g-raz", z); if (raz) raz.onclick = function () { if (!confirm("Refaire ce cas ? Votre recommandation actuelle sera effacée.")) return; delete D.cas[c.id]; sauver(); vCas(c.id); };
+    var raz = $("#g-raz", z); if (raz) raz.onclick = function () { if (!confirm("Refaire ce cas ? Votre décision actuelle sera effacée.")) return; delete D.cas[c.id]; sauver(); vCas(c.id); };
   }
 
   /* ================= Mes recommandations ================= */
   function vDecisions() {
     var L = CS.CAS.filter(function (c) { return D.cas[c.id] && D.cas[c.id].decision; });
-    var h = '<section class="tr-bloc"><p class="surtitre">Mes recommandations</p><h2>Ce que j’ai recommandé, et pourquoi</h2><p class="lead">Votre synthèse reste telle que vous l’avez écrite. Ce que vous comprenez après s’ajoute à côté : c’est ainsi qu’on progresse d’un entretien à l’autre.</p>';
-    if (!L.length) h += '<p class="tr-vide">Aucune recommandation pour l’instant.</p><a class="bouton bouton-principal" href="#cas">Choisir un cas</a>';
+    var h = '<section class="tr-bloc"><p class="surtitre">Mes décisions</p><h2>Ce que j’ai décidé, et pourquoi</h2><p class="lead">Votre synthèse reste telle que vous l’avez écrite. Ce que vous comprenez après s’ajoute à côté : c’est ainsi qu’on progresse d’une décision à l’autre.</p>';
+    if (!L.length) h += '<p class="tr-vide">Aucune décision pour l’instant.</p><a class="bouton bouton-principal" href="#cas">Choisir un cas</a>';
     L.forEach(function (c) {
       var s = D.cas[c.id], d = s.decision;
-      h += '<article class="carte tr-dec"><p class="etiquette">' + esc(c.entreprise) + " · " + new Date(d.le).toLocaleDateString("fr-FR") + '</p><h3 class="titre-tuile">' + esc(c.titre) + '</h3><p class="tr-avant"><b>Recommandation :</b> ' + esc(c.decision.choix[d.i].t) + '</p><p class="tr-avant"><b>Ma synthèse :</b> « ' + esc(d.texte) + ' »</p><p class="tr-note">' + esc(c.decision.choix[d.i].retour) + "</p>" +
+      h += '<article class="carte tr-dec"><p class="etiquette">' + esc(c.entreprise) + " · " + new Date(d.le).toLocaleDateString("fr-FR") + '</p><h3 class="titre-tuile">' + esc(c.titre) + '</h3><p class="tr-avant"><b>Décision :</b> ' + esc(c.decision.choix[d.i].t) + '</p><p class="tr-avant"><b>Ma synthèse :</b> « ' + esc(d.texte) + ' »</p><p class="tr-note">' + esc(c.decision.choix[d.i].retour) + "</p>" +
         (d.apres ? '<p class="tr-apres"><b>Ce que je comprends après :</b> ' + esc(d.apres) + "</p>" : '<form class="tr-refl" data-id="' + c.id + '"><label>Ce que je comprends après<textarea rows="2" maxlength="400"></textarea></label><button class="bouton bouton-sombre">Ajouter</button></form>') + "</article>";
     });
     vue.innerHTML = h + "</section>";
@@ -275,7 +275,7 @@
   }
 
   /* ================= Glossaire ================= */
-  var GLO = [["Étude de cas", "Exercice d'entretien où l'on résout un problème d'entreprise à voix haute, en 20 à 30 minutes."], ["Clarifier", "Reformuler la question et demander l'objectif, l'horizon et le critère de succès avant d'analyser."],
+  var GLO = [["Étude de cas", "Problème d'entreprise réel ou fictif, à résoudre en temps limité ; utilisé en formation de dirigeants, en école et dans les recrutements exigeants."], ["Clarifier", "Reformuler la question et demander l'objectif, l'horizon et le critère de succès avant d'analyser."],
     ["Arbre de problème", "Découpage d'une question en branches, puis en sous-branches mesurables."], ["MECE", "Mutuellement exclusif, collectivement exhaustif : pas de doublon, pas d'oubli."], ["Hypothèse", "La piste que l'on teste en premier, annoncée avec sa raison ; les données la confirment ou l'écartent."],
     ["Principe de la pyramide", "Présenter la réponse d'abord, puis les raisons, puis les détails."], ["Synthèse", "Recommandation, deux ou trois raisons chiffrées, risques, prochaine étape."],
     ["Marge sur coûts variables", "Chiffre d'affaires moins coûts variables ; elle doit couvrir les coûts fixes."], ["Coûts fixes", "Coûts qui ne varient pas avec le volume à court terme : loyers, personnel, réseau."], ["Point mort", "Volume à partir duquel la marge couvre les coûts fixes."],
@@ -288,7 +288,7 @@
     ["Gain rapide", "Action peu coûteuse et rapide, à lancer en premier."], ["UEMOA", "Union économique et monétaire ouest-africaine : huit pays, franc CFA XOF, banque centrale BCEAO."], ["CEMAC", "Communauté économique et monétaire de l'Afrique centrale : six pays, franc CFA XAF, banque centrale BEAC."],
     ["OHADA", "Organisation pour l'harmonisation en Afrique du droit des affaires : un droit commercial commun à dix-sept pays."], ["Économie informelle", "Activités qui échappent aux registres et aux statistiques officielles."], ["Agent (mobile money)", "Commerçant qui fait les dépôts et retraits d'argent mobile, payé à la commission."]];
   function vGlossaire() {
-    vue.innerHTML = '<section class="tr-bloc"><p class="surtitre">Glossaire</p><h2>Les mots de la stratégie</h2><label class="tr-sel">Chercher un mot<input id="tr-gq" type="search" autocomplete="off"></label><dl class="tr-glo" id="tr-gl"></dl></section>';
+    vue.innerHTML = '<section class="tr-bloc"><p class="surtitre">Glossaire</p><h2>Les mots de la décision</h2><label class="tr-sel">Chercher un mot<input id="tr-gq" type="search" autocomplete="off"></label><dl class="tr-glo" id="tr-gl"></dl></section>';
     function f() { var q = $("#tr-gq").value.trim().toLowerCase(); $("#tr-gl").innerHTML = GLO.filter(function (g) { return !q || (g[0] + " " + g[1]).toLowerCase().indexOf(q) >= 0; }).map(function (g) { return "<dt>" + esc(g[0]) + "</dt><dd>" + esc(g[1]) + "</dd>"; }).join("") || '<dd class="tr-vide">Aucun mot trouvé.</dd>'; }
     $("#tr-gq").oninput = f; f();
   }
