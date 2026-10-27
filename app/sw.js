@@ -1,11 +1,12 @@
 /* EFA · L'appli : fonctionnement hors connexion. Changer VERSION à chaque mise en ligne.
    Les données de l'école, du cahier, de Min'Fin, du Dico, des Tribunes et des études viennent du site (../*.js) :
    elles sont mises en cache pour rester disponibles sans connexion, et rafraîchies à chaque ouverture en ligne. */
-var VERSION = "efa-app-1.0";
+var VERSION = "efa-app-1.1";
 var FICHIERS = ["./", "./index.html", "./content.js", "./manifest.webmanifest", "./confidentialite.html",
   "./koffi.jpg", "./bamba.jpg", "./affoue.jpg", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./fonts.css",
   "./libre-baskerville-latin-400-normal.woff2", "./libre-baskerville-latin-700-normal.woff2", "./libre-baskerville-latin-400-italic.woff2",
   "./source-sans-3-latin-400-normal.woff2", "./source-sans-3-latin-600-normal.woff2", "./source-sans-3-latin-700-normal.woff2", "./source-sans-3-latin-800-normal.woff2",
+  "../accueil-visuel.webp", "../accueil/carte-argent-900.webp", "../accueil/carte-bourse-900.webp", "../accueil/carte-proches-900.webp", "../accueil/carte-tontine-900.webp",
   "../parcours-efa.js", "../plan-efa.js", "../minfin.js", "../dico.js", "../tribunes.js", "../donnees.js"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) {
