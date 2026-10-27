@@ -463,8 +463,8 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
   /* Question 1 */
   var Q1={q:"Pourquoi venez-vous sur EFA ?",choix:[
     ["moi","Pour moi","Mieux gérer mon argent ou apprendre à investir."],
-    ["orga","Pour mon organisation","Former des salariés, des étudiants, des membres ou des bénéficiaires."],
-    ["eco","Pour comprendre l’économie et les marchés","Actualités, études et données."]]};
+    ["orga","Former mes équipes","Salariés, cadres, étudiants, membres ou bénéficiaires."],
+    ["eco","Des données pour comprendre et décider","Économie, marchés, études et prospective."]]};
 
   /* Questions 2 et 3, selon le profil */
   var Q={
@@ -547,7 +547,7 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
     }
   };
   var ORDRE={moi:["essai","lecon","parcours"],orga:["decouvrir","tester","preparer"],eco:["synthese","explication","etude"]};
-  var LIB={moi:"Pour moi",orga:"Pour mon organisation",eco:"Comprendre l’économie et les marchés"};
+  var LIB={moi:"Pour moi",orga:"Former mes équipes",eco:"Des données pour comprendre et décider"};
 
   function actions(o){
     var g=R[o.p][o.q2]||{}, base=R[o.p]._base||{}, ord=ORDRE[o.p].slice();
