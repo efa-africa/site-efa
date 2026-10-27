@@ -1205,41 +1205,10 @@ img.char{object-position:50% 18%}
     </nav>
   </section>
 
-  <!-- Essayer EFA : trois expériences, puis Min’Fin en bloc compact -->
-  <section class="fx3" id="essayer" aria-labelledby="fx3-t" data-step="Essayer">
+  <!-- Min’Fin : un épisode mis en avant -->
+  <section class="fx3" id="essayer-minfin" aria-label="Min’Fin" data-step="Min’Fin">
     <div class="fx3-in">
-      <p class="fx3-k">Ce que vous pouvez faire avec EFA</p>
-      <h2 id="fx3-t">Essayez, avec vos chiffres.</h2>
-      <p class="fx3-l">Trois expériences gratuites, sur votre téléphone, sans compte pour commencer.</p>
-      <div class="fx3-g">
-        <article class="fx3-c">
-          <div class="fx3-tel"><div class="fx3-ec"><img src="demo/accueil-point.jpg" alt="Le résultat du diagnostic EFA : un profil, une situation, une priorité et une première action" width="520" height="1120" loading="lazy"></div></div>
-          <div class="fx3-x">
-            <h3>Faire le point sur mon argent</h3>
-            <ol><li>Quelques réponses</li><li>Un résultat sur six dimensions</li><li>Une première action pour la semaine</li></ol>
-            <a class="fx3-b" href="diagnostic.html?src=accueil-essayer" data-goatcounter-click="accueil-essayer-diagnostic">Faire mon diagnostic · 6 min</a>
-          </div>
-        </article>
-        <article class="fx3-c">
-          <div class="fx3-tel"><div class="fx3-ec"><img src="demo/accueil-ecole.jpg" alt="Un exercice de l’école : deux offres de crédit comparées, le verdict, puis la fiche gardée" width="520" height="1350" loading="lazy"></div></div>
-          <div class="fx3-x">
-            <h3>Apprendre avec l’école</h3>
-            <ol><li>Une situation</li><li>Un exercice avec vos montants</li><li>Une fiche gardée sur votre téléphone</li></ol>
-            <a class="fx3-b" href="cout-total-credit.html?src=accueil-essayer#calcul" data-goatcounter-click="accueil-essayer-exercice">Essayer un exercice</a>
-            <a class="fx3-s" href="parcours.html?src=accueil-essayer" data-goatcounter-click="accueil-essayer-parcours">Voir tout le parcours</a>
-          </div>
-        </article>
-        <article class="fx3-c">
-          <div class="fx3-tel"><div class="fx3-ec"><img src="demo/accueil-marche.jpg" alt="EFA Traders : un marché simulé avec un capital fictif, le résultat et les frais" width="520" height="973" loading="lazy"></div></div>
-          <div class="fx3-x">
-            <h3>M’entraîner sur un marché</h3>
-            <ol><li>Une décision avec un capital fictif</li><li>Son résultat, frais compris</li><li>L’explication de ce qui s’est passé</li></ol>
-            <a class="fx3-b" href="traders.html?src=accueil-essayer" data-goatcounter-click="accueil-essayer-traders">Ma première simulation</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="mf1" id="minfin" aria-labelledby="mf1-t">
+      <div class="mf1" id="minfin" aria-labelledby="mf1-t" style="margin-top:0">
         <a class="mf1-v" id="mf1-v" href="minfin.html" data-goatcounter-click="accueil-minfin-vignette"><img id="mf1-img" src="minfin/ep-5.svg" alt="" width="800" height="1000" loading="lazy"><span class="mf1-p" aria-hidden="true"></span></a>
         <div class="mf1-x">
           <p class="mf1-k">En vidéo · Min’Fin, la série d’une minute</p>
@@ -1797,13 +1766,7 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
   document.getElementById('mf1-bt').innerHTML='<a class="fx3-b" href="'+lien+'" data-goatcounter-click="accueil-minfin-ep'+e.n+'">Voir l’épisode</a>'+(su?'<a class="fx3-b clair" href="'+su[1]+'?src=minfin-accueil" data-goatcounter-click="accueil-minfin-suite'+e.n+'">'+esc(su[0])+'</a>':'');
   var all=document.querySelector('.mf1-all'); if(all) all.textContent='Découvrir Min’Fin · '+eps.length+' épisodes';
 })();
-/* les écrans défilent doucement dans les téléphones quand ils arrivent à l'écran */
-(function(){var L=[].slice.call(document.querySelectorAll('.fx3-tel'));if(!L.length)return;
-  function caler(t){var im=t.querySelector('img'),h=t.querySelector('.fx3-ec').clientHeight,H=im.getBoundingClientRect().height;im.style.setProperty('--y',Math.min(0,h-H)+'px');}
-  L.forEach(function(t){var im=t.querySelector('img');if(im.complete)caler(t);else im.addEventListener('load',function(){caler(t);});});
-  if(!('IntersectionObserver' in window)){L.forEach(function(t){t.classList.add('vu');});return;}
-  var o=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){caler(x.target);x.target.classList.add('vu');o.unobserve(x.target);}});},{threshold:.5});
-  L.forEach(function(t){o.observe(t);});})();
+
 </script>
 <script>
 (function(){var A=document.getElementById('eh-art'),C=document.getElementById('eh-calque');if(!A||!C)return;
