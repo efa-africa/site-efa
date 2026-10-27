@@ -241,6 +241,15 @@ strong{color:var(--nuit)}
 .sources li{margin:10px 0;line-height:1.45}
 .sources a{color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .sources span{display:block;font-size:14px;color:var(--ink3)}
+.sources .st{display:block;width:max-content;max-width:100%;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:2px 9px;margin:0 0 4px}
+.sources .st.p{background:#DDEDF8;color:#0F4E80}.sources .st.m{background:#EFE8DA;color:#4E5566}
+.verif{margin-top:14px;background:var(--papier);border-radius:14px;padding:18px;display:grid;gap:10px}
+.verif .vq{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,2vw,21px);line-height:1.35;color:var(--nuit)}
+.verif .vc{display:grid;gap:8px}
+.verif button{font:600 16px var(--f-body);text-align:left;background:#fff;color:var(--nuit);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:46px;cursor:pointer}
+.verif button:hover{border-color:var(--nuit)}.verif button[disabled]{cursor:default}
+.verif button.ok{background:#E3F4EA;border-color:#1F8A52}.verif button.ko{background:#FBE7E2;border-color:#B3261E}
+.verif .vr{margin:0;font-weight:800}.verif .vr.ok{color:#1F8A52}.verif .vr.ko{color:#B3261E}.verif .vx{margin:0;color:var(--ink2)}
 .maj{margin-top:14px;background:var(--papier);border-radius:14px;padding:14px 18px}
 .maj p{margin:4px 0 0;font-size:15px}
 .signature{margin-top:26px;font-size:14.5px;color:var(--ink2);max-width:64ch}
@@ -304,8 +313,9 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
   <section id="consequences"><p class="bk">Ce que cela peut changer</p><h2>Pour qui, et comment</h2><p>Si les notes montent, les États empruntent moins cher, et gardent plus de marge pour leurs dépenses. Pour l’épargnant, c’est aussi un repère avant de prêter à un État.</p><p class="retenir"><small>À retenir</small>Une perspective positive annonce une hausse possible, pas une hausse acquise.</p></section>
   <section id="limites"><p class="bk">Ce qu’on ne sait pas encore</p><h2>Les limites de cette information</h2><ul class="limites"><li>Une perspective n’est pas une note&nbsp;: aucune note n’est encore relevée.</li><li>Selon Moody’s, tout peut basculer&nbsp;: intérêts trop lourds, recettes faibles, choc climatique, insécurité, départ brutal des investisseurs.</li></ul></section>
   <section id="question"><div class="question"><small>La question EFA</small><p>Avant de prêter à un État, avez-vous regardé sa note et sa perspective&nbsp;?</p></div></section>
+  <section id="verifier"><p class="bk">Vérifiez votre lecture</p><div class="verif" data-bonne="1" data-id="2026-10-13-moodys-afrique-perspective"><p class="vq">Moody’s passe sa perspective à «&nbsp;positive&nbsp;». Les notes des États sont-elles relevées&nbsp;?</p><div class="vc"><button type="button" data-i="0">Oui, toutes</button><button type="button" data-i="1">Non&nbsp;: une perspective annonce qu’une note pourrait monter, rien n’est encore relevé</button><button type="button" data-i="2">Oui, pour 8&nbsp;pays</button></div><p class="vr" hidden></p><p class="vx" hidden>Une perspective est une indication de direction. Une note ne change qu’après une nouvelle décision de l’agence.</p></div></section>
   <section id="action"><p class="bk">Passer à l’action</p><h2>Pour comprendre, faites le calcul</h2><div class="actions"><div class="act"><small>Leçon</small><h3>Cinq questions avant de prêter son argent</h3><p>Regarder qui emprunte avant de regarder le taux.</p><a class="bt" href="dat-emprunts-etat.html#verifier" data-goatcounter-click="news-ecole-2026-10-13-moodys-afrique-perspective-1">Comprendre avec EFA →</a></div><div class="act"><small>Leçon</small><h3>Emprunts obligataires et introductions en Bourse</h3><p>Lire une note et une perspective.</p><a class="bt s" href="bourse-pro.html#B7" data-goatcounter-click="news-ecole-2026-10-13-moodys-afrique-perspective-2">Lire la leçon →</a></div></div></section>
-  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources"><li><a href="https://www.thisdaylive.com/2026/10/08/moodys-turns-positive-on-sub-saharan-africa-as-debt-liquidity-improve/" target="_blank" rel="noopener">Moody’s passe en positif sur l’Afrique subsaharienne</a><span>ThisDay · 8 oct. 2026 · consulté le 27 octobre 2026</span></li></ol><p class="note">Les liens ouvrent le site de chaque source.</p><div class="maj"><p class="bk">Mises à jour</p><p><b><time datetime="2026-10-27">27 octobre 2026</time></b>&nbsp;: Sources rendues cliquables&nbsp;; ajout du nombre d’États en perspective positive et négative.</p></div></section>
+  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources"><li><em class="st m">Information rapportée par un média</em><a href="https://www.thisdaylive.com/2026/10/08/moodys-turns-positive-on-sub-saharan-africa-as-debt-liquidity-improve/" target="_blank" rel="noopener">Moody’s passe en positif sur l’Afrique subsaharienne</a><span>ThisDay · 8 oct. 2026 · consulté le 27 octobre 2026</span></li></ol><p class="note">Les liens ouvrent le site de chaque source.</p><div class="maj"><p class="bk">Mises à jour</p><p><b><time datetime="2026-10-27">27 octobre 2026</time></b>&nbsp;: Sources rendues cliquables&nbsp;; ajout du nombre d’États en perspective positive et négative.</p></div></section>
   <p class="signature">Rédaction EFA. Éducation financière, pas conseil en placement. Une erreur, un chiffre à corriger&nbsp;? Écrivez à newsletter@efa.africa&nbsp;: la correction sera indiquée sur cette page.</p>
   <section id="liees"><p class="bk">À lire aussi</p><h2>Sur le même sujet</h2><div class="liees"><article class="carte-n"><a class="lien" href="news/2026-10-23-senegal-obligation-49-centimes.html"><p class="meta-n"><span class="rub">Marchés</span><time datetime="2026-10-27">27 octobre 2026</time></p><h3>La dette sénégalaise se revend à 49&nbsp;centimes pour 1 € promis</h3><p>Le 20 octobre, l’obligation du Sénégal remboursable en 2037 valait 48,93&nbsp;centimes pour 1 € promis&nbsp;: les investisseurs doutent.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article><article class="carte-n"><a class="lien" href="news/2026-10-14-shelter-afrique-obligation-logement.html"><p class="meta-n"><span class="rub">Marchés</span><time datetime="2026-10-14">14 octobre 2026</time></p><h3>Logement&nbsp;: Shelter Afrique emprunte 60&nbsp;Md FCFA dans l’UEMOA</h3><p>Shelter Afrique emprunte 60&nbsp;Md FCFA dans l’UEMOA pour financer des logements abordables&nbsp;: 6,10&nbsp;% sur 5&nbsp;ans ou 6,30&nbsp;% sur 7&nbsp;ans.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article><article class="carte-n"><a class="lien" href="news/2026-10-14-ghana-creances-en-souffrance.html"><p class="meta-n"><span class="rub">Banques</span><time datetime="2026-10-14">14 octobre 2026</time></p><h3>Ghana&nbsp;: 15,66&nbsp;% des prêts bancaires ne rentrent pas</h3><p>En août 2026, 15,66&nbsp;% des prêts des banques ghanéennes n’étaient pas remboursés comme prévu&nbsp;; le plafond exigé fin 2026 est de 10&nbsp;%.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article></div></section>
   <div class="retour-bas"><a class="bt s" href="news.html" data-retour>← Toutes les actualités</a><a class="bt l" href="parcours.html">L’école EFA</a></div>
@@ -333,6 +343,17 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
       if(/\/news\.html/.test(ref)&&ref.indexOf(location.host)>-1&&history.length>1){ev.preventDefault();history.back();}
     });
   });
+  /* Vérifiez votre lecture */
+  document.querySelectorAll('.verif').forEach(function(v){
+    var bonne=+v.dataset.bonne, r=v.querySelector('.vr'), x=v.querySelector('.vx');
+    v.querySelectorAll('.vc button').forEach(function(b){b.addEventListener('click',function(){
+      var i=+b.dataset.i, ok=i===bonne;
+      v.querySelectorAll('.vc button').forEach(function(c){c.disabled=true; if(+c.dataset.i===bonne)c.classList.add('ok');});
+      if(!ok)b.classList.add('ko');
+      r.textContent=ok?'Juste.':'Pas tout à fait.'; r.className='vr '+(ok?'ok':'ko'); r.hidden=false; x.hidden=false;
+      efaCompte('news-verif-'+(ok?'ok':'ko')+'-'+v.dataset.id);
+    });});
+  });
   /* un article ancien ne doit pas sembler du jour */
   var art=document.querySelector('[data-pub]'),an=document.getElementById('ancien');
   if(art&&an){
@@ -355,6 +376,8 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
           <li><a href="outils.html#diagnostic">Faire le point</a></li>
           <li><a href="outils.html#dico">Dico pratique</a></li>
           <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
           <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
         </ul></div>
         <div><h2>Comprendre</h2><ul>

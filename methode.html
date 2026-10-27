@@ -484,6 +484,14 @@ a.st-card{text-decoration:none}
 .bx-main .scr,.bx-main .scr.w4,.bx-main .scr.w8{grid-column:span 6}.bx-main .scr.w12{grid-column:span 12}
 @media (max-width:1180px){.bx-main .scr,.bx-main .scr.w4,.bx-main .scr.w8{grid-column:span 12}}
 .bx-seance:empty{display:none}
+.bx-lect{background:var(--panel);border-radius:12px;padding:16px 18px;margin-bottom:10px;display:grid;gap:8px}
+.bx-lect-k{margin:0;font:800 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:#F09680}
+.bx-lect ol{margin:0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:l}
+.bx-lect li{display:grid;gap:2px;padding-left:34px;position:relative;counter-increment:l}
+.bx-lect li::before{content:counter(l);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:#DA3C1B;color:#fff;font:800 13px/24px var(--body);text-align:center}
+.bx-lect li b{font:700 15.5px var(--body);color:var(--ink)}.bx-lect li span{font-size:15px;line-height:1.5;color:var(--ink2)}
+.bx-lect .up{color:#4FD18B;font-weight:700}.bx-lect .down{color:#F09680;font-weight:700}
+.bx-lect-a{justify-self:start;font-weight:800;color:#6DB8F2}.bx-lect-n{margin:0;font-size:12.5px;color:var(--mute)}
 .bx-chiffres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .bx-chiffres div{display:grid;gap:2px;padding:14px 16px;border-radius:10px;background:var(--panel);min-width:0}
 .bx-chiffres small{font:700 11px var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
@@ -848,7 +856,7 @@ a.st-card{text-decoration:none}
           <a class="bx-ec-b p" href="bourse-marche.html?src=brvm#C1" data-goatcounter-click="brvm-ecole-intro"><b>Commencer ici</b><small>Introduction · la séance en 10 écrans</small></a>
           <a class="bx-ec-b" href="bourse-essentiel.html?src=brvm" data-goatcounter-click="brvm-ecole-essentiel"><b>L’essentiel</b><small>5 formations · 3 h</small></a>
           <a class="bx-ec-b" href="bourse-marche.html?src=brvm" data-goatcounter-click="brvm-ecole-marche"><b>Lire le marché</b><small>Indices, graphes, tendances, stratégies · 9 modules</small></a>
-          <a class="bx-ec-b" href="bourse-pro.html?src=brvm" data-goatcounter-click="brvm-ecole-pro"><b>Approfondi</b><small>Comme un pro · 8 modules</small></a>
+          <a class="bx-ec-b" href="bourse-pro.html?src=brvm" data-goatcounter-click="brvm-ecole-pro"><b>Approfondi</b><small>En investisseur averti · 8 modules</small></a>
           <a class="bx-ec-b" href="ecole-bourse.html?src=brvm" data-goatcounter-click="brvm-ecole-simulation"><b>Simulation</b><small>Une année en Bourse · 10 min</small></a>
         </div>
       </section>
@@ -1374,7 +1382,22 @@ safe('brvm expliquée',function(){
   var comp=(B.indices||[]).filter(function(i){return i[0]==='BRVM Composite';})[0];
   var a=B.actions.slice().sort(function(x,y){return y[4]-x[4];}), hi=a[0], lo=a[a.length-1];
   var cell=function(t,v,s){return '<div><small>'+t+'</small><b>'+v+'</b>'+s+'</div>';};
-  c.innerHTML='<div class="bx-chiffres">'+
+  /* La séance en trois idées : lecture calculée à partir des données, sans attribuer la hausse à un titre (pas de pondérations ici) */
+  var lecture=(function(){
+    if(!comp) return '';
+    var I=function(n){return (B.indices||[]).filter(function(i){return i[0]===n;})[0];}, pr=I('BRVM Prestige'), pp=I('BRVM Principal');
+    var h=0,bs=0,st=0; B.actions.forEach(function(x){ if(x[4]>0)h++; else if(x[4]<0)bs++; else st++; });
+    var sens=comp[3]>0?'monte':comp[3]<0?'baisse':'ne bouge pas', disc=(comp[3]>0&&bs>h)||(comp[3]<0&&h>bs), dif=pr&&pp&&(pr[3]>0)!==(pp[3]>0);
+    var i1='Le BRVM Composite '+sens+' de '+pc(comp[3])+' ('+fx(comp[1],2)+' → '+fx(comp[2],2)+').'+(pr&&pp?' Le BRVM Prestige fait '+pc(pr[3])+', le BRVM Principal '+pc(pp[3])+'.':'');
+    var i2='Sur les '+B.actions.length+' titres présentés ici, '+h+' montent, '+bs+' baissent'+(st?' et '+st+' ne bougent pas':'')+'.'+(disc?' L’indice et la majorité des actions vont dans des sens opposés.':h>bs?' La hausse est assez partagée.':bs>h?' La baisse est assez partagée.':'');
+    var i3=disc?'Un indice pèse chaque société selon sa taille en Bourse : quelques grandes valeurs suffisent à le tirer. Sans le poids de chaque titre, on ne peut pas dire laquelle a porté la séance. Et une séance ne fait pas une tendance.'
+      :(dif?'Les grandes valeurs les plus échangées (Prestige) et les autres (Principal) n’ont pas suivi le même chemin : « le marché » n’a pas un seul sens. ':'')+'Une séance ne fait pas une tendance : regardez la semaine et l’année avant d’en tirer une conclusion.';
+    return '<div class="bx-lect"><p class="bx-lect-k">La séance du '+esc2(B.seance)+' en trois idées</p><ol>'
+      +'<li><b>Ce qui a bougé</b><span>'+i1+'</span></li><li><b>Ce que la majorité des actions a fait</b><span>'+i2+'</span></li><li><b>Ce que cette séance ne permet pas de conclure</b><span>'+i3+'</span></li></ol>'
+      +'<a class="bx-lect-a" href="bourse-marche.html?src=brvm-lecture#C2">Comprendre comment un indice est calculé →</a><p class="bx-lect-n">Lecture calculée automatiquement à partir des cours de la séance. Les titres que nous ne présentons pas ne sont pas comptés.</p></div>';
+  })();
+  function esc2(t){return String(t==null?'':t).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});}
+  c.innerHTML=lecture+'<div class="bx-chiffres">'+
     cell('Plus forte hausse',hi[1],'<span>'+fx(hi[3],0)+' FCFA · '+pc(hi[4])+'</span>')+
     cell('Plus forte baisse',lo[1],'<span>'+fx(lo[3],0)+' FCFA · '+pc(lo[4])+'</span>')+'</div>';
 });

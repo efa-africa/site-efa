@@ -93,34 +93,48 @@
      "organisme": "SEC",
      "date": "9 oct. 2026",
      "url": "https://www.sec.gov/Archives/edgar/data/2103076/000119312526418812/d56487df1.htm",
-     "consulte_le": "2026-10-24"
+     "consulte_le": "2026-10-24",
+     "type": "primaire"
     },
     {
      "titre": "OPay vise jusqu'à 4,4 Md $ de valorisation",
      "organisme": "Reuters, via KSL",
      "date": "23 oct. 2026",
      "url": "https://www.ksl.com/article/51640373/softbank-backed-opay-eyes-up-to-44-billion-valuation-in-us-ipo",
-     "consulte_le": "2026-10-24"
+     "consulte_le": "2026-10-24",
+     "type": "media"
     },
     {
      "titre": "OPay fixe les conditions de son IPO",
      "organisme": "Renaissance Capital",
      "date": "23 oct. 2026",
      "url": "https://www.renaissancecapital.com/IPO-Center/News/122387/emerging-markets-fintech-opay-sets-terms-for-320-million-us-ipo",
-     "consulte_le": "2026-10-24"
+     "consulte_le": "2026-10-24",
+     "type": "media"
     },
     {
      "titre": "Le naira tombe à 1 365 pour 1 $",
      "organisme": "Nairametrics",
      "date": "23 oct. 2026",
      "url": "https://nairametrics.com/2026/10/23/naira-weakens-to-n1365-records-sharpest-daily-decline-in-18-months/",
-     "consulte_le": "2026-10-24"
+     "consulte_le": "2026-10-24",
+     "type": "media"
     }
    ],
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
-   "origine": "veille EFA News du 2026-10-24"
+   "origine": "veille EFA News du 2026-10-24",
+   "verif": {
+    "q": "Avec une valeur annoncée de 4,2 Md $, combien OPay encaisse-t-il réellement s'il vend ses 16 millions de titres à 20 $ ?",
+    "choix": [
+     "4,2 Md $",
+     "Environ 320 M$",
+     "Les 270 M$ d'intentions des investisseurs"
+    ],
+    "bonne": 1,
+    "explication": "La valeur en Bourse (prix × tous les titres) n'est pas l'argent levé. L'entreprise encaisse seulement les titres vendus : 16 millions × 20 $ ≈ 320 M$."
+   }
   },
   {
    "id": "2026-10-24-cemac-microfinances-fragiles",
@@ -210,20 +224,32 @@
      "organisme": "Ecofin Agency",
      "date": "23 oct. 2026",
      "url": "https://www.ecofinagency.com/news-finances/2310-60059-nearly-half-of-cemac-microfinance-institutions-rated-very-fragile-as-bad-loans-rise",
-     "consulte_le": "2026-10-24"
+     "consulte_le": "2026-10-24",
+     "type": "media"
     },
     {
      "titre": "CEMAC : 48,7 % des établissements de microfinance jugés très fragiles",
      "organisme": "Agence Ecofin",
      "date": "23 oct. 2026",
      "url": "https://www.agenceecofin.com/actualites-finance/2310-142706-cemac-48-7-des-etablissements-de-microfinance-juges-tres-fragiles-fin-2025",
-     "consulte_le": "2026-10-24"
+     "consulte_le": "2026-10-24",
+     "type": "media"
     }
    ],
    "une": true,
    "corrections": [],
    "auteur": "Rédaction EFA",
-   "origine": "veille EFA News du 2026-10-24"
+   "origine": "veille EFA News du 2026-10-24",
+   "verif": {
+    "q": "48,7 % des microfinances de la CEMAC sont « très fragiles ». Cela veut-il dire que 48,7 % de l'épargne déposée est menacée ?",
+    "choix": [
+     "Oui, c'est la même chose",
+     "Non : c'est une part d'établissements, pas une part de l'épargne",
+     "Oui, et même davantage"
+    ],
+    "bonne": 1,
+    "explication": "Le chiffre compte des établissements, grands ou petits. Quelques gros établissements solides peuvent détenir l'essentiel de l'épargne, ou l'inverse : il faut d'autres données pour le savoir."
+   }
   },
   {
    "id": "2026-10-23-senegal-obligation-49-centimes",
@@ -308,34 +334,48 @@
      "organisme": "Reuters, via Capital.com",
      "date": "20 oct. 2026",
      "url": "https://capital.com/en-int/news/senegal-bonds-fall-after-sonko-opposes-budget-bills",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     },
     {
      "titre": "Les obligations du Sénégal reculent",
      "organisme": "Reuters, via Devdiscourse",
      "date": "20 oct. 2026",
      "url": "https://www.devdiscourse.com/article/international/3995256-senegal-bonds-fall-after-sonko-opposes-budget-bills",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     },
     {
      "titre": "Loi de finances rectificative : plénière reportée",
      "organisme": "MADAR",
      "date": "21 oct. 2026",
      "url": "https://fr.madar.mr/actualites/senegal/senegal-amended-finance-bill-plenary-postponed-committee-resumes-20261022",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     },
     {
      "titre": "L'examen de la LFR 2026 reporté à vendredi",
      "organisme": "Senego",
      "date": "22 oct. 2026",
      "url": "https://senego.com/assemblee-nationale-lexamen-du-projet-de-loi-de-finances-rectificative-2026-reporte-a-vendredi_2016301.html",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     }
    ],
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
-   "origine": "veille EFA News du 2026-10-23"
+   "origine": "veille EFA News du 2026-10-23",
+   "verif": {
+    "q": "Le prix de l'obligation du Sénégal baisse. Qu'est-ce que cela change pour un acheteur qui l'achète maintenant ?",
+    "choix": [
+     "Son rendement attendu est plus élevé, avec un risque plus élevé",
+     "Son rendement attendu est plus faible",
+     "Rien : seul le prix d'émission compte"
+    ],
+    "bonne": 0,
+    "explication": "Payer 49 centimes pour 1 € promis fait monter le rendement si le remboursement a lieu. Le prix bas reflète justement le doute du marché sur ce remboursement."
+   }
   },
   {
    "id": "2026-10-23-gabon-audit-dette",
@@ -420,34 +460,48 @@
      "organisme": "Sika Finance",
      "date": "19 oct. 2026",
      "url": "https://www.sikafinance.com/marches/gabon-les-conclusions-de-l-audit-de-la-dette-remises-a-l-examen-du-fmi-une-revision-des-chiffres-envisagee_65053",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     },
     {
      "titre": "Le gouvernement soumet l'audit de sa dette au FMI",
      "organisme": "Financial Afrik",
      "date": "21 oct. 2026",
      "url": "https://www.financialafrik.com/2026/10/21/gabon-le-gouvernement-soumet-laudit-de-sa-dette-au-fmi-avant-revision-des-chiffres/",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     },
     {
      "titre": "Le défi de la clarification de la dette publique",
      "organisme": "Gabon Media Time",
      "date": "21 oct. 2026",
      "url": "https://gabonmediatime.com/gabon-fmi-le-defi-de-la-clarification-de-la-dette-publique/",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     },
     {
      "titre": "Les divergences sur les chiffres de la dette inquiètent",
      "organisme": "EcoMatin",
      "date": "6 oct. 2026",
      "url": "https://ecomatin.net/gabon-les-divergences-sur-les-chiffres-de-la-dette-inquietent-les-investisseurs",
-     "consulte_le": "2026-10-23"
+     "consulte_le": "2026-10-23",
+     "type": "media"
     }
    ],
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
-   "origine": "veille EFA News du 2026-10-23"
+   "origine": "veille EFA News du 2026-10-23",
+   "verif": {
+    "q": "L'audit ramène la dette du Gabon à 68,91 % du PIB, sous le plafond CEMAC de 70 %. Peut-on dire que le Gabon respecte le plafond ?",
+    "choix": [
+     "Oui, c'est acquis",
+     "Pas encore : le FMI examine l'audit et les chiffres peuvent changer",
+     "Non, il le dépasse"
+    ],
+    "bonne": 1,
+    "explication": "Le chiffre n'est pas validé et l'écart avec le plafond est mince : une petite correction suffirait à le faire passer au-dessus."
+   }
   },
   {
    "id": "2026-10-19-ouganda-taux-12-pourcent",
@@ -530,34 +584,48 @@
      "organisme": "Banque d'Ouganda",
      "date": "14 oct. 2026",
      "url": "https://bou.or.ug/uploads/MPS_October_2026_cdc1de720f.pdf",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "primaire"
     },
     {
      "titre": "L'Ouganda relève son taux à 12 % en réunion d'urgence",
      "organisme": "Reuters, via BusinessDay",
      "date": "14 oct. 2026",
      "url": "https://www.businessday.co.za/world/africa/2026-10-14-uganda-lifts-interest-rate-to-12-at-emergency-meeting/",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     },
     {
      "titre": "La Banque d'Ouganda relève son taux à 12 %",
      "organisme": "Nairametrics",
      "date": "14 oct. 2026",
      "url": "https://nairametrics.com/2026/10/14/bank-of-uganda-raises-benchmark-interest-rate-to-12-amid-currency-inflation-pressures/",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     },
     {
      "titre": "La BoU relève son taux à 12 %",
      "organisme": "Daily Monitor",
      "date": "14 oct. 2026",
      "url": "https://www.monitor.co.ug/uganda/news/national/bou-raises-interest-rate-to-12-as-uganda-shilling-weakness-stokes-inflation-5631846",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     }
    ],
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Pourquoi une banque centrale monte-t-elle son taux quand sa monnaie recule ?",
+    "choix": [
+     "Pour rendre l'épargne en monnaie locale plus attractive et freiner la demande de dollars",
+     "Pour rendre le crédit moins cher",
+     "Pour faire baisser les prix du pétrole"
+    ],
+    "bonne": 0,
+    "explication": "Un taux plus élevé rémunère mieux les placements en shillings et renchérit le crédit : la demande de dollars ralentit, ce qui soutient la monnaie."
+   }
   },
   {
    "id": "2026-10-19-kenya-pipeline-premier-dividende",
@@ -641,34 +709,48 @@
      "organisme": "Capital FM",
      "date": "14 oct. 2026",
      "url": "https://capitalfm.africa/kenya-pipeline-company-net-profit-rises-13pc-to-sh11-58bn/",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     },
     {
      "titre": "Kenya Pipeline : bénéfice et dividende",
      "organisme": "The Rio Times",
      "date": "14 oct. 2026",
      "url": "https://www.riotimesonline.com/kenya-pipeline-profit-dividend/",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     },
     {
      "titre": "Kenya Pipeline dépasse les prévisions de l'IPO",
      "organisme": "Mwango Capital",
      "date": "19 oct. 2026",
      "url": "https://mwangocapital.substack.com/p/19-10-2026-kenya-pipeline-beats-ipo-forecasts",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     },
     {
      "titre": "L'IPO de Kenya Pipeline lève 112,3 Md KES",
      "organisme": "Citizen Digital",
      "date": "4 mars 2026",
      "url": "https://www.citizen.digital/business/kenya-pipeline-ipo-raises-ksh1123-billion-after-1057-oversubscription-n378465",
-     "consulte_le": "2026-10-19"
+     "consulte_le": "2026-10-19",
+     "type": "media"
     }
    ],
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le rendement de 3,5 % est calculé avec un cours de 9,02 KES. Si vous achetez l'action à 12 KES, votre rendement sera…",
+    "choix": [
+     "toujours 3,5 %",
+     "plus faible : 0,32 ÷ 12 ≈ 2,7 %",
+     "plus élevé"
+    ],
+    "bonne": 1,
+    "explication": "Le dividende est fixe en shillings, mais le rendement dépend du prix payé : plus vous payez cher, plus il baisse."
+   }
   },
   {
    "id": "2026-10-18-senegal-budget-interets-dette",
@@ -752,34 +834,48 @@
      "organisme": "vie-publique.sn",
      "date": "14 oct. 2026",
      "url": "https://www.vie-publique.sn/documents/14567/projet-loi-finances-2027-senegal",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "primaire"
     },
     {
      "titre": "Les chiffres clés du budget 2027 du Sénégal",
      "organisme": "Seneweb",
      "date": "14 oct. 2026",
      "url": "https://www.seneweb.com/en/news/Economie/depenses-recettes-dette-enjeux-decouvrez-en-exclusivite-les-chiffres-cles-du-budget-2027-du-senegal_n_999000682.html",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "media"
     },
     {
      "titre": "Le Sénégal table sur 7 363 Md FCFA de dépenses",
      "organisme": "PressAfrik",
      "date": "15 oct. 2026",
      "url": "https://www.pressafrik.com/Projet-de-loi-de-finances-2027-le-Senegal-table-sur-7-363-milliards-FCFA-de-depenses_a313080.html",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "media"
     },
     {
      "titre": "Les dépenses budgétaires prévues en baisse de 2,9 %",
      "organisme": "Agence Ecofin",
      "date": "16 oct. 2026",
      "url": "https://www.agenceecofin.com/actualites/1610-142476-senegal-les-depenses-budgetaires-prevues-en-baisse-de-2-9-en-2027",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "media"
     }
    ],
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Sur 100 FCFA de recettes, 22 partent en intérêts. Les 4 552 Md de capital à rembourser sont-ils compris dans ces 22 FCFA ?",
+    "choix": [
+     "Oui",
+     "Non : les intérêts et le capital à rembourser sont deux choses différentes",
+     "Cela dépend du taux"
+    ],
+    "bonne": 1,
+    "explication": "Les 22 FCFA ne couvrent que les intérêts et commissions. Le capital arrivé à échéance s'y ajoute, et il est souvent refinancé par un nouvel emprunt."
+   }
   },
   {
    "id": "2026-10-18-bceao-prix-de-l-argent",
@@ -871,33 +967,47 @@
      "organisme": "BCEAO",
      "date": "16 oct. 2026",
      "url": "https://www.bceao.int/sites/default/files/2026-10/Avis%20d%27appel%20d%27offres%20du%20march%C3%A9%20mon%C3%A9taire%20N%C2%B042_H_2026.pdf",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "primaire"
     },
     {
      "titre": "Page de l'avis d'adjudication du 19 octobre 2026",
      "organisme": "BCEAO",
      "date": "16 oct. 2026",
      "url": "https://www.bceao.int/fr/appels-offres/avis-dappel-doffres-de-ladjudication-ndeg42h2026-du-19-octobre-2026",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "primaire"
     },
     {
      "titre": "Conditions de banque : taux débiteur moyen de 6,67 % en mai 2026",
      "organisme": "Le Jecos",
      "date": "2026",
      "url": "https://www.lejecos.com/Conditions-de-banques-dans-la-zone-Uemoa-Le-taux-debiteur-moyen-s-est-etabli-a-667-en-mai-2026_a31375.html",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "media"
     },
     {
      "titre": "La BCEAO maintient son taux directeur à 3 %",
      "organisme": "Capmad",
      "date": "9 sept. 2026",
      "url": "https://www.capmad.com/article/le-cpm-de-la-bceao-maintient-son-taux-directeur-a-3-apres-sa-reunion-du-9-septembre",
-     "consulte_le": "2026-10-18"
+     "consulte_le": "2026-10-18",
+     "type": "media"
     }
    ],
    "statut": "publié",
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le taux directeur est de 3 %. Un particulier peut-il emprunter à sa banque à 3 % ?",
+    "choix": [
+     "Oui, c'est le taux de référence pour tous",
+     "Non : la banque ajoute le risque d'impayé, ses coûts et sa marge",
+     "Oui, s'il est fonctionnaire"
+    ],
+    "bonne": 1,
+    "explication": "Le taux directeur est le prix auquel la BCEAO prête aux banques. Les crédits aux clients coûtent en moyenne 6,67 %, souvent plus pour un particulier, sans compter les frais."
+   }
   },
   {
    "id": "2026-10-17-senegal-emprunt-prime-de-duree",
@@ -982,34 +1092,48 @@
      "organisme": "Le Soleil",
      "date": "14-15 oct. 2026",
      "url": "https://lesoleil.sn/actualites/economie/le-senegal-mobilise-338-milliards-fcfa-grace-a-son-emprunt-obligataire/",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     },
     {
      "titre": "338 Md FCFA mobilisés grâce au deuxième emprunt de l'année",
      "organisme": "Sika Finance",
      "date": "15 oct. 2026",
      "url": "https://www.sikafinance.com/marches/senegal-338-milliards-fcfa-mobilises-grace-au-deuxieme-emprunt-obligataire-de-lannee_64964",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     },
     {
      "titre": "Le Journal de l'Économie sénégalaise",
      "organisme": "allAfrica",
      "date": "16 oct. 2026",
      "url": "https://fr.allafrica.com/stories/202610160166.html",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     },
     {
      "titre": "Conditions de l'emprunt au lancement",
      "organisme": "APA News",
      "date": "21 sept. 2026",
      "url": "https://fr.apanews.net/business/le-senegal-recherche-200-milliards-fcfa-sur-le-marche-regional/",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     }
    ],
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Pourquoi la tranche à 10 ans paie-t-elle 6,95 % contre 6,40 % à 3 ans ?",
+    "choix": [
+     "Parce que l'argent est bloqué plus longtemps et que le risque est plus long",
+     "Parce que l'État préfère les emprunts courts",
+     "Par hasard"
+    ],
+    "bonne": 0,
+    "explication": "Prêter plus longtemps immobilise l'argent et expose à plus d'incertitudes : l'emprunteur paie une prime de durée."
+   }
   },
   {
    "id": "2026-10-17-ethiopie-papss-monnaies-locales",
@@ -1094,34 +1218,48 @@
      "organisme": "African Newspage",
      "date": "15 oct. 2026",
      "url": "https://www.africannewspage.net/2026/10/ethiopia-joins-pan-african-payment-and-settlement-system-papss-network-as-national-bank-of-ethiopia-and-papss-announce-the-2nd-edition-of-cowry-in-addis-ababa/",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     },
     {
      "titre": "L'Éthiopie rejoint le PAPSS",
      "organisme": "Agence Ecofin",
      "date": "16 oct. 2026",
      "url": "https://www.agenceecofin.com/actualites-finance/1610-142497-l-ethiopie-rejoint-le-papss-pour-faciliter-les-paiements-en-monnaies-locales",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     },
     {
      "titre": "La Banque nationale d'Éthiopie rejoint PAPSS",
      "organisme": "Central Banking",
      "date": "16 oct. 2026",
      "url": "https://www.centralbanking.com/central-banks/payments/7977457/national-bank-of-ethiopia-joins-papss",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "media"
     },
     {
      "titre": "Chiffres du réseau PAPSS",
      "organisme": "Afreximbank",
      "date": "11 sept. 2026",
      "url": "https://afreximbank.africa-newsroom.com/press/panafrican-payment-and-settlement-system-papss-targets-accelerated-adoption-and-transaction-growth-as-network-expands-across-africa?lang=en",
-     "consulte_le": "2026-10-17"
+     "consulte_le": "2026-10-17",
+     "type": "primaire"
     }
    ],
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "PAPSS annonce 92 à 95 % d'économies sur le coût d'une transaction. Ce chiffre est-il vérifié ?",
+    "choix": [
+     "Oui, par la banque centrale éthiopienne",
+     "Non : il est revendiqué par PAPSS, sans vérification indépendante",
+     "Oui, par le FMI"
+    ],
+    "bonne": 1,
+    "explication": "C'est un chiffre de l'opérateur du réseau. Il faudra des paiements réels, et des coûts publiés, pour le confirmer."
+   }
   },
   {
    "id": "2026-10-16-cote-divoire-budget-2027",
@@ -1203,14 +1341,16 @@
      "organisme": "Fraternité Matin",
      "date": "15 oct. 2026",
      "url": "https://www.fratmat.info/article/2645205/politique/conseil-des-ministres-le-budget-2027-fixe-a-18-466-milliards-de-fcfa",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     },
     {
      "titre": "Le budget 2027 projeté à 18 466,1 Md FCFA, dont 100 Md pour le Fonds souverain",
      "organisme": "Financial Afrik",
      "date": "15 oct. 2026",
      "url": "https://www.financialafrik.com/2026/10/15/cote-divoire-le-budget-2027-projete-a-18-4661-milliards-fcfa-dont-100-milliards-pour-le-nouveau-fonds-souverain/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1221,7 +1361,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le budget 2027 monte à 18 466,1 Md FCFA. Tout cet argent vient-il des impôts ?",
+    "choix": [
+     "Oui",
+     "Non : une partie est empruntée pour couvrir le déficit",
+     "Oui, avec les dons"
+    ],
+    "bonne": 1,
+    "explication": "Le budget inclut les emprunts parmi ses ressources : le déficit visé de 3,5 % du PIB est financé par la dette."
+   }
   },
   {
    "id": "2026-10-16-cameroun-mobile-money-interets",
@@ -1304,7 +1454,8 @@
      "organisme": "EcoMatin",
      "date": "15 oct. 2026",
      "url": "https://ecomatin.net/cameroun-orange-money-et-mtn-momo-percoivent-215-milliards-fcfa-dinterets-sur-leurs-fonds-places-dans-les-banques",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1315,7 +1466,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Les opérateurs ont touché 21,5 Md FCFA d'intérêts. Est-ce leur bénéfice sur cette activité ?",
+    "choix": [
+     "Oui",
+     "Non : sans leurs coûts, on ne connaît pas leur gain réel",
+     "Oui, après impôt"
+    ],
+    "bonne": 1,
+    "explication": "21,5 Md sont des revenus. Leurs coûts ne sont pas publiés : le bénéfice réel reste inconnu."
+   }
   },
   {
    "id": "2026-10-14-shelter-afrique-obligation-logement",
@@ -1401,7 +1562,8 @@
      "organisme": "Brand Spur",
      "date": "7 oct. 2026",
      "url": "https://brandspurng.com/2026/10/07/shelter-afrique-development-bank-announces-a-fcfa-60-billion-sustainable-bond-issuance-to-finance-affordable-housing-in-west-africa/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1412,7 +1574,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "L'avis favorable de S&P sur cet emprunt, c'est…",
+    "choix": [
+     "une note de crédit qui mesure le risque de non-remboursement",
+     "un avis sur le cadre « durable » de l'emprunt, pas une note de crédit",
+     "une garantie de remboursement"
+    ],
+    "bonne": 1,
+    "explication": "S&P a évalué l'usage « durable » des fonds. Le risque de crédit de l'émission n'est pas noté dans les documents consultés."
+   }
   },
   {
    "id": "2026-10-14-senegal-excedent-commercial",
@@ -1494,7 +1666,8 @@
      "organisme": "Sika Finance",
      "date": "14 oct. 2026",
      "url": "https://www.sikafinance.com/marches/senegal-un-excedent-commercial-de-160-milliards-fcfa-enregistre-en-aout-2026_64866",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1505,7 +1678,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le Sénégal a un excédent de 160 Md FCFA en août. Peut-on parler d'une tendance ?",
+    "choix": [
+     "Oui, c'est un signal fort",
+     "Pas avec un seul mois : en juin, le solde était un déficit de 128,9 Md",
+     "Oui, grâce au pétrole"
+    ],
+    "bonne": 1,
+    "explication": "Le solde commercial varie beaucoup d'un mois à l'autre. Il faut plusieurs mois, ou une année, pour parler de tendance."
+   }
   },
   {
    "id": "2026-10-14-niger-prix-en-baisse",
@@ -1588,7 +1771,8 @@
      "organisme": "Sika Finance",
      "date": "12 oct. 2026",
      "url": "https://www.sikafinance.com/marches/niger-le-fmi-ouvre-la-voie-a-un-nouveau-programme-de-203-millions-de-dollars_64869",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1599,7 +1783,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le FMI prévoit une baisse moyenne des prix de 2,5 % au Niger. Votre panier de courses coûtera-t-il forcément moins cher ?",
+    "choix": [
+     "Oui",
+     "Non : c'est une moyenne, et certains prix, comme le transport ou l'énergie, peuvent monter",
+     "Oui, de 2,5 % exactement"
+    ],
+    "bonne": 1,
+    "explication": "L'inflation est une moyenne sur un panier type. Le vôtre peut contenir surtout des produits qui montent."
+   }
   },
   {
    "id": "2026-10-14-ghana-creances-en-souffrance",
@@ -1681,14 +1875,16 @@
      "organisme": "Adom Online",
      "date": "20 oct. 2026",
      "url": "https://www.adomonline.com/banks-write-off-gh%c2%a21-86bn-in-bad-loans-as-npl-ratio-drops-to-15-7-in-august-2026/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     },
     {
      "titre": "La BoG demande aux banques de ramener les créances douteuses à 10 % fin 2026",
      "organisme": "MyJoyOnline",
      "date": "4 août 2026",
      "url": "https://www.myjoyonline.com/bog-directs-banks-to-cut-bad-loans-to-10-by-end-of-2026/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1699,7 +1895,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "15,66 % des prêts sont « en souffrance ». Les banques ont-elles perdu tout cet argent ?",
+    "choix": [
+     "Oui",
+     "Non : une partie peut encore être récupérée",
+     "Oui, et la banque centrale le rembourse"
+    ],
+    "bonne": 1,
+    "explication": "Une créance en souffrance est un prêt qui n'est plus remboursé comme prévu. La banque provisionne la perte probable, mais récupère souvent une partie."
+   }
   },
   {
    "id": "2026-10-13-tchad-fmi",
@@ -1781,7 +1987,8 @@
      "organisme": "Sika Finance",
      "date": "12 oct. 2026",
      "url": "https://www.sikafinance.com/marches/tchad-lexamen-des-politiques-economiques-de-la-cemac-retarde-les-decaissements-du-fmi_64880",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1792,7 +1999,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le FMI a approuvé un prêt de 455,7 millions de DTS. Combien le Tchad a-t-il réellement reçu fin septembre 2026 ?",
+    "choix": [
+     "455,7 millions de DTS",
+     "28 millions de DTS, soit environ 6 %",
+     "La moitié"
+    ],
+    "bonne": 1,
+    "explication": "Un prêt du FMI est versé par tranches, après des revues. Un montant approuvé n'est pas un montant reçu."
+   }
   },
   {
    "id": "2026-10-13-rwanda-inflation",
@@ -1873,14 +2090,16 @@
      "organisme": "NISR",
      "date": "10 oct. 2026",
      "url": "https://statistics.gov.rw/node/1836",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "primaire"
     },
     {
      "titre": "Rwanda : l'inflation s'envole à 17,2 % en septembre 2026",
      "organisme": "Financial Afrik",
      "date": "12 oct. 2026",
      "url": "https://www.financialafrik.com/2026/10/12/rwanda-linflation-senvole-a-172-en-septembre-2026/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1891,7 +2110,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Les prix en ville ont monté de 17,2 % en un an. Un revenu qui a augmenté de 10 % sur la même période…",
+    "choix": [
+     "permet d'acheter plus qu'avant",
+     "permet d'acheter moins qu'avant",
+     "ne change rien"
+    ],
+    "bonne": 1,
+    "explication": "Si les prix montent plus vite que le revenu, le pouvoir d'achat baisse : 1 100 francs ne suffisent plus pour un panier passé à 1 172."
+   }
   },
   {
    "id": "2026-10-13-moodys-afrique-perspective",
@@ -1978,7 +2207,8 @@
      "organisme": "ThisDay",
      "date": "8 oct. 2026",
      "url": "https://www.thisdaylive.com/2026/10/08/moodys-turns-positive-on-sub-saharan-africa-as-debt-liquidity-improve/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -1989,7 +2219,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Moody's passe sa perspective à « positive ». Les notes des États sont-elles relevées ?",
+    "choix": [
+     "Oui, toutes",
+     "Non : une perspective annonce qu'une note pourrait monter, rien n'est encore relevé",
+     "Oui, pour 8 pays"
+    ],
+    "bonne": 1,
+    "explication": "Une perspective est une indication de direction. Une note ne change qu'après une nouvelle décision de l'agence."
+   }
   },
   {
    "id": "2026-10-13-guinee-bissau-obligation",
@@ -2072,13 +2312,24 @@
      "organisme": "UMOA-Titres",
      "date": "12 oct. 2026",
      "url": "https://www.umoatitres.org/",
-     "consulte_le": "2026-10-13"
+     "consulte_le": "2026-10-13",
+     "type": "primaire"
     }
    ],
    "statut": "publié",
    "une": false,
    "corrections": [],
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Le titre est vendu 9 599 FCFA pour 10 000 FCFA remboursés. Pourquoi le rendement (7,80 %) dépasse-t-il le coupon ?",
+    "choix": [
+     "Parce que la décote de 401 FCFA s'ajoute aux intérêts",
+     "Parce que l'État paie un bonus",
+     "Il ne le dépasse pas"
+    ],
+    "bonne": 0,
+    "explication": "L'acheteur touche le coupon chaque année et gagne en plus la différence entre 9 599 et 10 000 FCFA à l'échéance."
+   }
   },
   {
    "id": "2026-10-13-dangote-benefice-9-mois",
@@ -2160,7 +2411,8 @@
      "organisme": "Nairametrics",
      "date": "13 oct. 2026",
      "url": "https://nairametrics.com/2026/10/13/dangote-refinerys-9-month-profit-hits-4-73-billion-as-revenue-surges-144-47/",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -2171,7 +2423,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Les résultats publiés par Dangote sont « non audités ». Qu'est-ce que cela implique ?",
+    "choix": [
+     "Ils sont faux",
+     "Aucun auditeur indépendant ne les a encore vérifiés : ils peuvent être corrigés",
+     "Ils sont garantis par la Bourse"
+    ],
+    "bonne": 1,
+    "explication": "Non audité ne veut pas dire faux, mais pas encore contrôlé. C'est d'autant plus important qu'ils sont publiés pendant une offre d'actions."
+   }
   },
   {
    "id": "2026-10-13-airtel-money-bourse",
@@ -2254,7 +2516,8 @@
      "organisme": "The Paypers",
      "date": "9 oct. 2026",
      "url": "https://thepaypers.com/payments/news/airtel-money-shares-dip-below-ipo-price-in-usd-7-billion-london-debut",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -2265,7 +2528,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Lors de l'entrée en Bourse d'Airtel Money, à qui sont allés les 703 M$ ?",
+    "choix": [
+     "À l'entreprise, pour investir",
+     "Aux actionnaires qui ont vendu leurs actions",
+     "À la Bourse de Londres"
+    ],
+    "bonne": 1,
+    "explication": "Aucune action nouvelle n'a été créée : c'est une cession secondaire. L'argent va aux vendeurs, pas à l'entreprise."
+   }
   },
   {
    "id": "2026-10-12-senegal-dette",
@@ -2340,7 +2613,8 @@
      "organisme": "Senego",
      "date": "oct. 2026",
      "url": "https://senego.com/le-senegal-reunit-ses-creanciers-avec-le-fmi-enjeu-sur-les-factures-des-menages_2009083.html",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -2351,7 +2625,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "Dans une renégociation de dette, que peut demander l'État à ses prêteurs ?",
+    "choix": [
+     "Seulement un taux plus bas",
+     "Des délais plus longs, un taux plus bas, parfois l'effacement d'une partie",
+     "Rien, il doit payer"
+    ],
+    "bonne": 1,
+    "explication": "Les trois leviers existent. Chacun coûte quelque chose aux prêteurs : c'est ce que l'on négocie."
+   }
   },
   {
    "id": "2026-10-12-afrique-croissance-inflation",
@@ -2432,7 +2716,8 @@
      "organisme": "Dabafinance",
      "date": "7 oct. 2026",
      "url": "https://dabafinance.com/fr/nouvelles/afrique-subsaharienne-banque-mondiale-releve-previsions-croissance-2026-10-07",
-     "consulte_le": "2026-10-27"
+     "consulte_le": "2026-10-27",
+     "type": "media"
     }
    ],
    "corrections": [
@@ -2443,7 +2728,17 @@
    ],
    "statut": "publié",
    "une": false,
-   "auteur": "Rédaction EFA"
+   "auteur": "Rédaction EFA",
+   "verif": {
+    "q": "La croissance prévue est de 4,3 % et l'inflation médiane de 5,5 %. Si votre revenu monte de 4 %, votre pouvoir d'achat…",
+    "choix": [
+     "monte",
+     "baisse probablement",
+     "ne bouge pas"
+    ],
+    "bonne": 1,
+    "explication": "Si les prix montent plus vite que votre revenu, vous pouvez acheter moins, même quand l'économie croît. La médiane ne dit pas l'inflation de votre pays : vérifiez-la."
+   }
   }
  ]
 }

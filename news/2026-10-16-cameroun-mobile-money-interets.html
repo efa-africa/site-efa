@@ -233,6 +233,15 @@ strong{color:var(--nuit)}
 .sources li{margin:10px 0;line-height:1.45}
 .sources a{color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .sources span{display:block;font-size:14px;color:var(--ink3)}
+.sources .st{display:block;width:max-content;max-width:100%;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:2px 9px;margin:0 0 4px}
+.sources .st.p{background:#DDEDF8;color:#0F4E80}.sources .st.m{background:#EFE8DA;color:#4E5566}
+.verif{margin-top:14px;background:var(--papier);border-radius:14px;padding:18px;display:grid;gap:10px}
+.verif .vq{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,2vw,21px);line-height:1.35;color:var(--nuit)}
+.verif .vc{display:grid;gap:8px}
+.verif button{font:600 16px var(--f-body);text-align:left;background:#fff;color:var(--nuit);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:46px;cursor:pointer}
+.verif button:hover{border-color:var(--nuit)}.verif button[disabled]{cursor:default}
+.verif button.ok{background:#E3F4EA;border-color:#1F8A52}.verif button.ko{background:#FBE7E2;border-color:#B3261E}
+.verif .vr{margin:0;font-weight:800}.verif .vr.ok{color:#1F8A52}.verif .vr.ko{color:#B3261E}.verif .vx{margin:0;color:var(--ink2)}
 .maj{margin-top:14px;background:var(--papier);border-radius:14px;padding:14px 18px}
 .maj p{margin:4px 0 0;font-size:15px}
 .signature{margin-top:26px;font-size:14.5px;color:var(--ink2);max-width:64ch}
@@ -296,8 +305,9 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
   <section id="consequences"><p class="bk">Ce que cela peut changer</p><h2>Pour qui, et comment</h2><p>Votre solde mobile money est protégé, mais il ne vous rapporte rien. Une réserve qui dort longtemps sur un téléphone perd du pouvoir d’achat avec l’inflation.</p><p class="retenir"><small>À retenir</small>Votre solde mobile money est protégé, mais les intérêts vont à l’opérateur.</p></section>
   <section id="limites"><p class="bk">Ce qu’on ne sait pas encore</p><h2>Les limites de cette information</h2><ul class="limites"><li>Sans soldes moyens ni coûts publiés, le gain réel des opérateurs reste inconnu&nbsp;: 21,5&nbsp;Md FCFA ne sont pas un bénéfice net.</li><li>Rapport du CNEF non consulté directement.</li><li>Le rendement de 4,5&nbsp;% est un calcul EFA sur le solde de fin d’année, pas sur le solde moyen.</li></ul></section>
   <section id="question"><div class="question"><small>La question EFA</small><p>Combien d’argent laissez-vous dormir sur votre téléphone, et pour combien de temps&nbsp;?</p></div></section>
+  <section id="verifier"><p class="bk">Vérifiez votre lecture</p><div class="verif" data-bonne="1" data-id="2026-10-16-cameroun-mobile-money-interets"><p class="vq">Les opérateurs ont touché 21,5&nbsp;Md FCFA d’intérêts. Est-ce leur bénéfice sur cette activité&nbsp;?</p><div class="vc"><button type="button" data-i="0">Oui</button><button type="button" data-i="1">Non&nbsp;: sans leurs coûts, on ne connaît pas leur gain réel</button><button type="button" data-i="2">Oui, après impôt</button></div><p class="vr" hidden></p><p class="vx" hidden>21,5&nbsp;Md sont des revenus. Leurs coûts ne sont pas publiés&nbsp;: le bénéfice réel reste inconnu.</p></div></section>
   <section id="action"><p class="bk">Passer à l’action</p><h2>Pour comprendre, faites le calcul</h2><div class="actions"><div class="act"><small>Calcul</small><h3>Comment découper ma réserve&nbsp;?</h3><p>Garder sur le téléphone ce qui sert, placer le reste.</p><a class="bt" href="ou-garder-sa-reserve.html#calcul" data-goatcounter-click="news-ecole-2026-10-16-cameroun-mobile-money-interets-1">Comprendre avec EFA →</a></div><div class="act"><small>Leçon</small><h3>Budget et mobile money</h3><p>Ne plus perdre le fil de ses petites dépenses.</p><a class="bt s" href="budget-mobile-money.html" data-goatcounter-click="news-ecole-2026-10-16-cameroun-mobile-money-interets-2">Lire la leçon →</a></div></div></section>
-  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources"><li><a href="https://ecomatin.net/cameroun-orange-money-et-mtn-momo-percoivent-215-milliards-fcfa-dinterets-sur-leurs-fonds-places-dans-les-banques" target="_blank" rel="noopener">Mobile money au Cameroun&nbsp;: 21,5&nbsp;Md FCFA d’intérêts sur les fonds placés en banque</a><span>EcoMatin · 15 oct. 2026 · consulté le 27 octobre 2026</span></li></ol><p class="note">Les liens ouvrent le site de chaque source. Les chiffres marqués «&nbsp;Calcul EFA&nbsp;» sont calculés par la rédaction à partir de ces sources.</p><div class="maj"><p class="bk">Mises à jour</p><p><b><time datetime="2026-10-27">27 octobre 2026</time></b>&nbsp;: Source rendue cliquable&nbsp;; ajout du montant déposé en banque (473&nbsp;Md FCFA) et d’un calcul EFA de rendement moyen.</p></div></section>
+  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources"><li><em class="st m">Information rapportée par un média</em><a href="https://ecomatin.net/cameroun-orange-money-et-mtn-momo-percoivent-215-milliards-fcfa-dinterets-sur-leurs-fonds-places-dans-les-banques" target="_blank" rel="noopener">Mobile money au Cameroun&nbsp;: 21,5&nbsp;Md FCFA d’intérêts sur les fonds placés en banque</a><span>EcoMatin · 15 oct. 2026 · consulté le 27 octobre 2026</span></li></ol><p class="note">Les liens ouvrent le site de chaque source. Les chiffres marqués «&nbsp;Calcul EFA&nbsp;» sont calculés par la rédaction à partir de ces sources.</p><div class="maj"><p class="bk">Mises à jour</p><p><b><time datetime="2026-10-27">27 octobre 2026</time></b>&nbsp;: Source rendue cliquable&nbsp;; ajout du montant déposé en banque (473&nbsp;Md FCFA) et d’un calcul EFA de rendement moyen.</p></div></section>
   <p class="signature">Rédaction EFA. Éducation financière, pas conseil en placement. Une erreur, un chiffre à corriger&nbsp;? Écrivez à newsletter@efa.africa&nbsp;: la correction sera indiquée sur cette page.</p>
   <section id="liees"><p class="bk">À lire aussi</p><h2>Sur le même sujet</h2><div class="liees"><article class="carte-n"><a class="lien" href="news/2026-10-24-cemac-microfinances-fragiles.html"><p class="meta-n"><span class="rub">Microfinance</span><time datetime="2026-10-27">27 octobre 2026</time></p><h3>Afrique centrale&nbsp;: 48,7&nbsp;% des microfinances jugées «&nbsp;très fragiles&nbsp;»</h3><p>Fin 2025, 48,7&nbsp;% des microfinances de la CEMAC étaient classées «&nbsp;très fragiles&nbsp;», et 20,5&nbsp;% de leurs prêts n’étaient plus remboursés normalement.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article><article class="carte-n"><a class="lien" href="news/2026-10-17-ethiopie-papss-monnaies-locales.html"><p class="meta-n"><span class="rub">Paiements</span><time datetime="2026-10-17">17 octobre 2026</time></p><h3>L’Éthiopie rejoint PAPSS, le paiement en monnaies africaines</h3><p>Le 15 octobre, l’Éthiopie a rejoint PAPSS, un réseau qui permet aux banques africaines de se payer d’un pays à l’autre en monnaies locales.</p><p class="pied-n"><span>2 min de lecture</span><span>Paiements</span></p></a></article><article class="carte-n"><a class="lien" href="news/2026-10-17-senegal-emprunt-prime-de-duree.html"><p class="meta-n"><span class="rub">Marchés</span><time datetime="2026-10-17">17 octobre 2026</time></p><h3>Sénégal&nbsp;: prêter plus longtemps rapporte 6,95&nbsp;%</h3><p>Le Sénégal a levé 338,2&nbsp;Md FCFA au lieu des 200&nbsp;Md visés, à 6,40&nbsp;% par an sur 3&nbsp;ans et 6,95&nbsp;% sur 10&nbsp;ans.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article></div></section>
   <div class="retour-bas"><a class="bt s" href="news.html" data-retour>← Toutes les actualités</a><a class="bt l" href="parcours.html">L’école EFA</a></div>
@@ -325,6 +335,17 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
       if(/\/news\.html/.test(ref)&&ref.indexOf(location.host)>-1&&history.length>1){ev.preventDefault();history.back();}
     });
   });
+  /* Vérifiez votre lecture */
+  document.querySelectorAll('.verif').forEach(function(v){
+    var bonne=+v.dataset.bonne, r=v.querySelector('.vr'), x=v.querySelector('.vx');
+    v.querySelectorAll('.vc button').forEach(function(b){b.addEventListener('click',function(){
+      var i=+b.dataset.i, ok=i===bonne;
+      v.querySelectorAll('.vc button').forEach(function(c){c.disabled=true; if(+c.dataset.i===bonne)c.classList.add('ok');});
+      if(!ok)b.classList.add('ko');
+      r.textContent=ok?'Juste.':'Pas tout à fait.'; r.className='vr '+(ok?'ok':'ko'); r.hidden=false; x.hidden=false;
+      efaCompte('news-verif-'+(ok?'ok':'ko')+'-'+v.dataset.id);
+    });});
+  });
   /* un article ancien ne doit pas sembler du jour */
   var art=document.querySelector('[data-pub]'),an=document.getElementById('ancien');
   if(art&&an){
@@ -347,6 +368,8 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
           <li><a href="outils.html#diagnostic">Faire le point</a></li>
           <li><a href="outils.html#dico">Dico pratique</a></li>
           <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
           <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
         </ul></div>
         <div><h2>Comprendre</h2><ul>

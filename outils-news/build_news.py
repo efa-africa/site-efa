@@ -14,6 +14,8 @@ for _a in _SRC["articles"]:
     _b["chiffres"] = [(c["valeur"], c["libelle"], c["periode"], bool(c.get("calcul_efa"))) for c in _a["chiffres"]]
     _b["actions"] = [(x["type"], x["titre"], x["description"], x["url"]) for x in _a["actions"]]
     _b["sources"] = [(x["titre"], x["organisme"], x["date"], x["url"], x["consulte_le"]) for x in _a["sources"]]
+    _b["types"] = [x.get("type", "media") for x in _a["sources"]]
+    _b["verif"] = _a.get("verif")
     _b["mot"] = (_a["mot"]["terme"], _a["mot"]["definition"])
     _b["corrections"] = [(x["date"], x["texte"]) for x in _a.get("corrections", [])]
     ARTICLES.append(_b)
@@ -140,6 +142,15 @@ CSS = """<style>
 .sources li{margin:10px 0;line-height:1.45}
 .sources a{color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .sources span{display:block;font-size:14px;color:var(--ink3)}
+.sources .st{display:block;width:max-content;max-width:100%;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:2px 9px;margin:0 0 4px}
+.sources .st.p{background:#DDEDF8;color:#0F4E80}.sources .st.m{background:#EFE8DA;color:#4E5566}
+.verif{margin-top:14px;background:var(--papier);border-radius:14px;padding:18px;display:grid;gap:10px}
+.verif .vq{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,2vw,21px);line-height:1.35;color:var(--nuit)}
+.verif .vc{display:grid;gap:8px}
+.verif button{font:600 16px var(--f-body);text-align:left;background:#fff;color:var(--nuit);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:46px;cursor:pointer}
+.verif button:hover{border-color:var(--nuit)}.verif button[disabled]{cursor:default}
+.verif button.ok{background:#E3F4EA;border-color:#1F8A52}.verif button.ko{background:#FBE7E2;border-color:#B3261E}
+.verif .vr{margin:0;font-weight:800}.verif .vr.ok{color:#1F8A52}.verif .vr.ko{color:#B3261E}.verif .vx{margin:0;color:var(--ink2)}
 .maj{margin-top:14px;background:var(--papier);border-radius:14px;padding:14px 18px}
 .maj p{margin:4px 0 0;font-size:15px}
 .signature{margin-top:26px;font-size:14.5px;color:var(--ink2);max-width:64ch}
@@ -244,7 +255,7 @@ def tail(pre):
     return f"""{reloc(footer, pre)}
 {JS_MENU}
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="{pre}efa-appli.js?v=2026102707" defer></script>
+<script src="{pre}efa-appli.js?v=2026102801" defer></script>
 </body>
 </html>
 """
@@ -325,6 +336,11 @@ def page_article(a):
     li = "".join(f"<li>{typo(l)}</li>" for l in a["limites"])
     out += f'  <section id="limites"><p class="bk">Ce qu’on ne sait pas encore</p><h2>Les limites de cette information</h2><ul class="limites">{li}</ul></section>\n'
     out += f'  <section id="question"><div class="question"><small>La question EFA</small><p>{typo(a["question"])}</p></div></section>\n'
+    vf = a.get("verif")
+    if vf:
+        bts = "".join(f'<button type="button" data-i="{i}">{typo(c)}</button>' for i, c in enumerate(vf["choix"]))
+        out += (f'  <section id="verifier"><p class="bk">Vérifiez votre lecture</p><div class="verif" data-bonne="{vf["bonne"]}" data-id="{a["id"]}">'
+                f'<p class="vq">{typo(vf["q"])}</p><div class="vc">{bts}</div><p class="vr" hidden></p><p class="vx" hidden>{typo(vf["explication"])}</p></div></section>\n')
     acts = ""
     for i, (t, ti, d, u) in enumerate(a["actions"]):
         lib = "Comprendre avec EFA" if i == 0 else LIB_BOUTON.get(t, "Ouvrir")
@@ -333,11 +349,18 @@ def page_article(a):
                  f'<a class="{cls}" href="{u}" data-goatcounter-click="news-ecole-{a["id"]}-{i+1}">{lib} →</a></div>')
     out += f'  <section id="action"><p class="bk">Passer à l’action</p><h2>Pour comprendre, faites le calcul</h2><div class="actions">{acts}</div></section>\n'
     so = ""
-    for ti, org, d, u, cons in a["sources"]:
-        so += (f'<li><a href="{html.escape(u)}" target="_blank" rel="noopener">{typo(ti)}</a>'
+    GROUPES = {"Agence Ecofin": "Ecofin", "Ecofin Agency": "Ecofin", "MyJoyOnline": "Multimedia Group", "Adom Online": "Multimedia Group"}
+    def groupe(org):
+        return "Reuters" if org.startswith("Reuters") else GROUPES.get(org, org)
+    for (ti, org, d, u, cons), ty in zip(a["sources"], a["types"]):
+        badge = '<em class="st p">Document primaire consulté</em>' if ty == "primaire" else '<em class="st m">Information rapportée par un média</em>'
+        so += (f'<li>{badge}<a href="{html.escape(u)}" target="_blank" rel="noopener">{typo(ti)}</a>'
                f'<span>{typo(org)} · {typo(d)} · consulté le {date_fr(cons)}</span></li>')
+    gm = [groupe(o) for (t_, o, *_), ty in zip(a["sources"], a["types"]) if ty != "primaire"]
+    meme = sorted({x for x in gm if gm.count(x) > 1})
+    grp_note = (" Plusieurs sources appartiennent au même groupe de presse (" + ", ".join(meme) + ") : elles comptent pour une seule confirmation.") if meme else ""
     calc_note = " Les chiffres marqués «&nbsp;Calcul EFA&nbsp;» sont calculés par la rédaction à partir de ces sources." if any(c[3] for c in a["chiffres"]) else ""
-    out += f'  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources">{so}</ol><p class="note">Les liens ouvrent le site de chaque source.{calc_note}</p>'
+    out += f'  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources">{so}</ol><p class="note">Les liens ouvrent le site de chaque source.{calc_note}{grp_note}</p>'
     if a["corrections"]:
         mj = "".join(f'<p><b><time datetime="{d}">{date_fr(d)}</time></b>&nbsp;: {typo(t)}</p>' for d, t in a["corrections"])
         out += f'<div class="maj"><p class="bk">Mises à jour</p>{mj}</div>'
@@ -372,6 +395,17 @@ def page_article(a):
     a.addEventListener('click',function(ev){
       if(/\\/news\\.html/.test(ref)&&ref.indexOf(location.host)>-1&&history.length>1){ev.preventDefault();history.back();}
     });
+  });
+  /* Vérifiez votre lecture */
+  document.querySelectorAll('.verif').forEach(function(v){
+    var bonne=+v.dataset.bonne, r=v.querySelector('.vr'), x=v.querySelector('.vx');
+    v.querySelectorAll('.vc button').forEach(function(b){b.addEventListener('click',function(){
+      var i=+b.dataset.i, ok=i===bonne;
+      v.querySelectorAll('.vc button').forEach(function(c){c.disabled=true; if(+c.dataset.i===bonne)c.classList.add('ok');});
+      if(!ok)b.classList.add('ko');
+      r.textContent=ok?'Juste.':'Pas tout à fait.'; r.className='vr '+(ok?'ok':'ko'); r.hidden=false; x.hidden=false;
+      efaCompte('news-verif-'+(ok?'ok':'ko')+'-'+v.dataset.id);
+    });});
   });
   /* un article ancien ne doit pas sembler du jour */
   var art=document.querySelector('[data-pub]'),an=document.getElementById('ancien');

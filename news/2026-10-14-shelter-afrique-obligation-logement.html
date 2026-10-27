@@ -233,6 +233,15 @@ strong{color:var(--nuit)}
 .sources li{margin:10px 0;line-height:1.45}
 .sources a{color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .sources span{display:block;font-size:14px;color:var(--ink3)}
+.sources .st{display:block;width:max-content;max-width:100%;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:2px 9px;margin:0 0 4px}
+.sources .st.p{background:#DDEDF8;color:#0F4E80}.sources .st.m{background:#EFE8DA;color:#4E5566}
+.verif{margin-top:14px;background:var(--papier);border-radius:14px;padding:18px;display:grid;gap:10px}
+.verif .vq{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,2vw,21px);line-height:1.35;color:var(--nuit)}
+.verif .vc{display:grid;gap:8px}
+.verif button{font:600 16px var(--f-body);text-align:left;background:#fff;color:var(--nuit);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:46px;cursor:pointer}
+.verif button:hover{border-color:var(--nuit)}.verif button[disabled]{cursor:default}
+.verif button.ok{background:#E3F4EA;border-color:#1F8A52}.verif button.ko{background:#FBE7E2;border-color:#B3261E}
+.verif .vr{margin:0;font-weight:800}.verif .vr.ok{color:#1F8A52}.verif .vr.ko{color:#B3261E}.verif .vx{margin:0;color:var(--ink2)}
 .maj{margin-top:14px;background:var(--papier);border-radius:14px;padding:14px 18px}
 .maj p{margin:4px 0 0;font-size:15px}
 .signature{margin-top:26px;font-size:14.5px;color:var(--ink2);max-width:64ch}
@@ -296,8 +305,9 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
   <section id="consequences"><p class="bk">Ce que cela peut changer</p><h2>Pour qui, et comment</h2><p>Pour un épargnant, c’est un placement à taux fixe, pas un compte d’épargne garanti. Le taux annoncé rémunère un risque&nbsp;: celui que l’emprunteur ne rembourse pas.</p><p class="retenir"><small>À retenir</small>Un taux annoncé ne dit rien de la solidité de l’emprunteur.</p></section>
   <section id="limites"><p class="bk">Ce qu’on ne sait pas encore</p><h2>Les limites de cette information</h2><ul class="limites"><li>Note de crédit de l’émission, cotation à la BRVM et montant minimum non précisés.</li><li>Note d’information non consultée.</li><li>L’avis favorable de S&amp;P porte sur le cadre «&nbsp;durable&nbsp;», ce n’est pas une note de crédit.</li><li>Pas un conseil d’investissement.</li></ul></section>
   <section id="question"><div class="question"><small>La question EFA</small><p>Qui rembourse si l’emprunteur ne peut plus payer, et pouvez-vous revendre avant la fin&nbsp;?</p></div></section>
+  <section id="verifier"><p class="bk">Vérifiez votre lecture</p><div class="verif" data-bonne="1" data-id="2026-10-14-shelter-afrique-obligation-logement"><p class="vq">L’avis favorable de S&amp;P sur cet emprunt, c’est…</p><div class="vc"><button type="button" data-i="0">une note de crédit qui mesure le risque de non-remboursement</button><button type="button" data-i="1">un avis sur le cadre «&nbsp;durable&nbsp;» de l’emprunt, pas une note de crédit</button><button type="button" data-i="2">une garantie de remboursement</button></div><p class="vr" hidden></p><p class="vx" hidden>S&amp;P a évalué l’usage «&nbsp;durable&nbsp;» des fonds. Le risque de crédit de l’émission n’est pas noté dans les documents consultés.</p></div></section>
   <section id="action"><p class="bk">Passer à l’action</p><h2>Pour comprendre, faites le calcul</h2><div class="actions"><div class="act"><small>Leçon</small><h3>Cinq questions avant de prêter son argent</h3><p>Vérifier l’emprunteur, la durée et la sortie.</p><a class="bt" href="dat-emprunts-etat.html#verifier" data-goatcounter-click="news-ecole-2026-10-14-shelter-afrique-obligation-logement-1">Comprendre avec EFA →</a></div><div class="act"><small>Calcul</small><h3>Combien rapporte un placement à taux fixe&nbsp;?</h3><p>Comparer 5&nbsp;ans à 6,10&nbsp;% et 7&nbsp;ans à 6,30&nbsp;%.</p><a class="bt s" href="dat-emprunts-etat.html#calcul" data-goatcounter-click="news-ecole-2026-10-14-shelter-afrique-obligation-logement-2">Faire le calcul →</a></div></div></section>
-  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources"><li><a href="https://brandspurng.com/2026/10/07/shelter-afrique-development-bank-announces-a-fcfa-60-billion-sustainable-bond-issuance-to-finance-affordable-housing-in-west-africa/" target="_blank" rel="noopener">Shelter Afrique annonce une obligation durable de 60&nbsp;Md FCFA</a><span>Brand Spur · 7 oct. 2026 · consulté le 27 octobre 2026</span></li></ol><p class="note">Les liens ouvrent le site de chaque source.</p><div class="maj"><p class="bk">Mises à jour</p><p><b><time datetime="2026-10-27">27 octobre 2026</time></b>&nbsp;: Sources rendues cliquables&nbsp;; ajout de la période de souscription (7 au 30 octobre).</p></div></section>
+  <section id="sources"><p class="bk">Sources</p><h2>Les documents consultés</h2><ol class="sources"><li><em class="st m">Information rapportée par un média</em><a href="https://brandspurng.com/2026/10/07/shelter-afrique-development-bank-announces-a-fcfa-60-billion-sustainable-bond-issuance-to-finance-affordable-housing-in-west-africa/" target="_blank" rel="noopener">Shelter Afrique annonce une obligation durable de 60&nbsp;Md FCFA</a><span>Brand Spur · 7 oct. 2026 · consulté le 27 octobre 2026</span></li></ol><p class="note">Les liens ouvrent le site de chaque source.</p><div class="maj"><p class="bk">Mises à jour</p><p><b><time datetime="2026-10-27">27 octobre 2026</time></b>&nbsp;: Sources rendues cliquables&nbsp;; ajout de la période de souscription (7 au 30 octobre).</p></div></section>
   <p class="signature">Rédaction EFA. Éducation financière, pas conseil en placement. Une erreur, un chiffre à corriger&nbsp;? Écrivez à newsletter@efa.africa&nbsp;: la correction sera indiquée sur cette page.</p>
   <section id="liees"><p class="bk">À lire aussi</p><h2>Sur le même sujet</h2><div class="liees"><article class="carte-n"><a class="lien" href="news/2026-10-17-senegal-emprunt-prime-de-duree.html"><p class="meta-n"><span class="rub">Marchés</span><time datetime="2026-10-17">17 octobre 2026</time></p><h3>Sénégal&nbsp;: prêter plus longtemps rapporte 6,95&nbsp;%</h3><p>Le Sénégal a levé 338,2&nbsp;Md FCFA au lieu des 200&nbsp;Md visés, à 6,40&nbsp;% par an sur 3&nbsp;ans et 6,95&nbsp;% sur 10&nbsp;ans.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article><article class="carte-n"><a class="lien" href="news/2026-10-23-senegal-obligation-49-centimes.html"><p class="meta-n"><span class="rub">Marchés</span><time datetime="2026-10-27">27 octobre 2026</time></p><h3>La dette sénégalaise se revend à 49&nbsp;centimes pour 1 € promis</h3><p>Le 20 octobre, l’obligation du Sénégal remboursable en 2037 valait 48,93&nbsp;centimes pour 1 € promis&nbsp;: les investisseurs doutent.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article><article class="carte-n"><a class="lien" href="news/2026-10-13-moodys-afrique-perspective.html"><p class="meta-n"><span class="rub">Dette</span><time datetime="2026-10-13">13 octobre 2026</time></p><h3>Moody’s voit les États africains en positif</h3><p>Pour Moody’s, les finances des États d’Afrique subsaharienne s’améliorent&nbsp;: leurs notes pourraient monter, mais aucune n’est encore relevée.</p><p class="pied-n"><span>2 min de lecture</span><span>Finance</span></p></a></article></div></section>
   <div class="retour-bas"><a class="bt s" href="news.html" data-retour>← Toutes les actualités</a><a class="bt l" href="parcours.html">L’école EFA</a></div>
@@ -325,6 +335,17 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
       if(/\/news\.html/.test(ref)&&ref.indexOf(location.host)>-1&&history.length>1){ev.preventDefault();history.back();}
     });
   });
+  /* Vérifiez votre lecture */
+  document.querySelectorAll('.verif').forEach(function(v){
+    var bonne=+v.dataset.bonne, r=v.querySelector('.vr'), x=v.querySelector('.vx');
+    v.querySelectorAll('.vc button').forEach(function(b){b.addEventListener('click',function(){
+      var i=+b.dataset.i, ok=i===bonne;
+      v.querySelectorAll('.vc button').forEach(function(c){c.disabled=true; if(+c.dataset.i===bonne)c.classList.add('ok');});
+      if(!ok)b.classList.add('ko');
+      r.textContent=ok?'Juste.':'Pas tout à fait.'; r.className='vr '+(ok?'ok':'ko'); r.hidden=false; x.hidden=false;
+      efaCompte('news-verif-'+(ok?'ok':'ko')+'-'+v.dataset.id);
+    });});
+  });
   /* un article ancien ne doit pas sembler du jour */
   var art=document.querySelector('[data-pub]'),an=document.getElementById('ancien');
   if(art&&an){
@@ -347,6 +368,8 @@ mark{background:#FCE3D9;color:inherit;border-radius:3px;padding:0 2px}
           <li><a href="outils.html#diagnostic">Faire le point</a></li>
           <li><a href="outils.html#dico">Dico pratique</a></li>
           <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
           <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
         </ul></div>
         <div><h2>Comprendre</h2><ul>
