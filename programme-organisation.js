@@ -46,7 +46,38 @@
   var FORMATS = [["0", "100 % en ligne", "Vos participants suivent le programme seuls, sur téléphone."], ["1", "En ligne + 1 session EFA", "Une session de lancement pour donner envie et répondre aux questions."], ["2", "En ligne + 2 sessions EFA", "Un lancement, puis un bilan pour challenger les décisions prises."]];
   var INVESTIR = ["M17", "M18", "P8", "M21", "P13", "P9"];
 
-  var S = { nom: "", type: "entreprise", taille: "", publics: [], cycles: [], sujets: [], semaines: 8, min: 45, format: "1", certif: "oui", arb: {}, extra: [], retire: [] };
+  var S = { nom: "", type: "entreprise", taille: "", publics: [], enjeux: [], cycles: [], sujets: [], semaines: 8, min: 45, format: "1", certif: "oui", arb: {}, extra: [], retire: [] };
+  /* Ce que l'organisation observe chez ses membres (ressources humaines, responsables de groupe).
+     Chaque enjeu pèse sur des sujets : 3 = sujet central, 2 = utile, 1 = complément. */
+  var ENJEUX = [
+    ["Fin de mois", [
+      ["avance", "Demandes d’avance sur salaire fréquentes", { budget: 3, dettes: 2, reserve: 2 }],
+      ["court", "Des personnes à court d’argent avant la fin du mois", { budget: 3, reserve: 1, mm: 1 }],
+      ["dettes", "Prêts entre collègues, usuriers, ardoises chez les commerçants", { dettes: 3, conso: 2, famille: 1 }],
+      ["retenues", "Retenues ou saisies sur salaire pour rembourser un crédit", { dettes: 3, budget: 1 }],
+      ["irregulier", "Revenus variables : commissions, commerce, primes au rendement", { activite: 3, reserve: 2, budget: 1 }]]],
+    ["Imprévus et famille", [
+      ["urgences", "Demandes d’aide exceptionnelle : maladie, décès, accident", { reserve: 3, protection: 2, famille: 1 }],
+      ["proches", "Charges familiales lourdes, sollicitations des proches", { famille: 3, budget: 1 }],
+      ["pics", "Pics de difficulté à la rentrée scolaire, aux fêtes, aux funérailles", { annee: 3, reserve: 1 }],
+      ["tontines", "Beaucoup cotisent à des tontines ou à des groupes d’épargne", { tontine: 3, reserve: 1 }],
+      ["arnaques", "Fraudes, arnaques ou frais de mobile money signalés", { mm: 3 }]]],
+    ["Projets et avenir", [
+      ["retraite", "Des départs à la retraite à préparer dans les 5 à 10 ans", { retraite: 3, placer: 1, logement: 1 }],
+      ["primes", "Primes, 13e mois ou intéressement versés, vite dépensés", { annee: 3, placer: 2, reserve: 1 }],
+      ["epargne", "Une épargne salariale ou un fonds proposé, mais peu compris", { placer: 3, retraite: 1 }],
+      ["logement", "Des projets de terrain ou de maison, parfois mal sécurisés", { logement: 3, dettes: 1 }],
+      ["jeunes", "Beaucoup de jeunes recrues : premier salaire, premier budget", { budget: 2, mm: 2, conso: 1 }]]]
+  ];
+  var EN = {}; ENJEUX.forEach(function (g) { g[1].forEach(function (x) { EN[x[0]] = x; }); });
+  // Sujets recommandés : poids des enjeux cochés, plus un point pour le public choisi ; les raisons suivent chaque sujet
+  function recommandation() {
+    var sc = {}, pourquoi = {};
+    (S.enjeux || []).forEach(function (k) { var x = EN[k]; if (!x) return; Object.keys(x[2]).forEach(function (s) { sc[s] = (sc[s] || 0) + x[2][s]; if (x[2][s] >= 2) (pourquoi[s] = pourquoi[s] || []).push(x[1]); }); });
+    S.publics.forEach(function (p) { (CONSEILS[p] || []).forEach(function (s) { sc[s] = (sc[s] || 0) + 1; }); });
+    var liste = Object.keys(sc).filter(function (s) { return sc[s] >= 2 || !(S.enjeux || []).length; }).sort(function (a, b) { return sc[b] - sc[a]; });
+    return { sujets: liste.slice(0, 6), score: sc, pourquoi: pourquoi };
+  }
   var etape = 1;
 
   /* ---------- encodage du programme dans l’adresse ---------- */
@@ -126,7 +157,7 @@
   }
   function programme() {
     var g = appliquer();
-    return { v: 1, n: S.nom.slice(0, 60), ty: S.type, ta: S.taille, pu: S.publics, m: g.ids, s: g.semaines, mi: g.min, f: S.format, c: S.certif === "oui" ? cyclesComplets(g.ids).map(function (c) { return c.l; }).join("") : "" };
+    return { v: 1, n: S.nom.slice(0, 60), ty: S.type, ta: S.taille, pu: S.publics, en: S.enjeux.slice(0, 15), m: g.ids, s: g.semaines, mi: g.min, f: S.format, c: S.certif === "oui" ? cyclesComplets(g.ids).map(function (c) { return c.l; }).join("") : "" };
   }
 
   /* ---------- écrans de composition ---------- */
@@ -142,18 +173,27 @@
       + '<label class="champ">Nombre de participants <small style="font-weight:400;color:var(--ink3)">indicatif : le nombre exact de places est fixé avec EFA</small><select id="o-taille">' + ["", "moins de 20", "20 à 100", "100 à 500", "500 à 2 000", "2 000 à 10 000", "plus de 10 000"].map(function (t) { return '<option value="' + t + '"' + (S.taille === t ? " selected" : "") + ">" + (t || "À préciser") + "</option>"; }).join("") + "</select></label></div>"
       + '<p class="aide"><b>Qui va suivre le programme&nbsp;?</b> Choisissez un ou plusieurs publics : nous vous conseillerons des sujets.</p>'
       + '<div class="choix" id="o-pub">' + PUBLICS.map(function (p) { return bouton(p[0], p[1], S.publics.indexOf(p[0]) >= 0, p[2]); }).join("") + "</div>"
-      + '<div class="acts"><button type="button" class="bt bt-p" id="suiv">Choisir les sujets</button></div></section>';
+      + '<p class="aide" style="margin-top:22px"><b>Ce que vous observez&nbsp;?</b> Cochez les situations que vous rencontrez chez vos salariés ou vos membres. Nous en déduirons les sujets prioritaires. Rien n’est envoyé à EFA.</p>'
+      + ENJEUX.map(function (g) { return '<p class="en-g">' + esc(g[0]) + '</p><div class="choix en-l">' + g[1].map(function (x) { return bouton(x[0], x[1], S.enjeux.indexOf(x[0]) >= 0, "", ""); }).join("") + "</div>"; }).join("")
+      + '<p class="aide" id="en-n"></p>'
+      + '<div class="acts"><button type="button" class="bt bt-p" id="suiv">Voir les sujets recommandés</button></div></section>';
+    function majEn() { var n = S.enjeux.length; $("en-n").innerHTML = n ? "<b>" + n + " situation" + (n > 1 ? "s" : "") + " cochée" + (n > 1 ? "s" : "") + ".</b> L’étape suivante vous propose les sujets qui y répondent." : "Aucune situation cochée : nous vous conseillerons d’après le public seulement."; }
+    Array.prototype.forEach.call(document.querySelectorAll(".en-l"), function (box) { box.onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; var v = b.dataset.v, i = S.enjeux.indexOf(v); if (i >= 0) S.enjeux.splice(i, 1); else S.enjeux.push(v); b.setAttribute("aria-pressed", i < 0); majEn(); }; });
+    majEn();
     $("o-pub").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; var v = b.dataset.v, i = S.publics.indexOf(v); if (i >= 0) S.publics.splice(i, 1); else S.publics.push(v); b.setAttribute("aria-pressed", i < 0); };
-    $("suiv").onclick = function () { S.nom = $("o-nom").value.trim(); S.type = $("o-type").value; S.taille = $("o-taille").value; aller(2); };
+    $("suiv").onclick = function () { S.nom = $("o-nom").value.trim(); S.type = $("o-type").value; S.taille = $("o-taille").value; S.enjeux.forEach(function (k) { mesure("orga-enjeu-" + k); }); aller(2); };
   }
   function e2() {
-    var cons = []; S.publics.forEach(function (p) { (CONSEILS[p] || []).forEach(function (s) { if (cons.indexOf(s) < 0) cons.push(s); }); });
+    var R = recommandation(), cons = R.sujets, NOMSUJ = {}; SUJETS.forEach(function (x) { NOMSUJ[x[0]] = x; });
     var tous = CYCLES.every(function (c) { return S.cycles.indexOf(c.id) >= 0; });
     $("vue").innerHTML = '<section class="carte"><p class="sur">Étape 2 sur 5</p><h2>Que doivent-ils apprendre&nbsp;?</h2>'
+      + (S.enjeux.length && cons.length ? '<div class="reco"><p class="sur">Notre recommandation</p><h3>Vos ' + cons.length + ' sujets prioritaires</h3><ol>' + cons.map(function (k) { var x = NOMSUJ[k], w = R.pourquoi[k] || []; return x ? '<li><b>' + esc(x[1]) + '</b>' + (w.length ? '<small>Parce que : ' + esc(w.slice(0, 2).join(" ; ").toLowerCase()) + '</small>' : '') + '</li>' : ''; }).join("") + '</ol>'
+        + (cons.indexOf("retraite") >= 0 || cons.indexOf("placer") >= 0 ? '<p class="aide">Placer ou préparer la retraite suppose une réserve et des dettes maîtrisées : l’étape des arbitrages vous proposera ce socle.</p>' : '')
+        + '<div class="acts"><button type="button" class="bt bt-p" id="s-reco">Prendre ces sujets</button></div></div>' : '')
       + '<p class="aide"><b>Un cycle complet</b> : tous ses modules, et son certificat local à la fin.</p>'
       + '<div class="choix" id="c-l">' + CYCLES.map(function (c) { return bouton(c.id, "Cycle " + c.n + " · " + c.nom, S.cycles.indexOf(c.id) >= 0, c.ids.length + " modules · " + c.but + " · environ " + duree(total(c.ids)), "Certificat local " + c.nom); }).join("")
       + bouton("tous", "Les trois cycles", tous, "23 modules · tout le parcours de l’école", "Certificat CEFA ★") + "</div>"
-      + '<p class="aide" style="margin-top:22px"><b>Ou des sujets précis</b>, à ajouter ou à la place : choisissez ceux utiles à votre public. ' + (cons.length ? "Les sujets marqués « Conseillé » correspondent au public choisi." : "") + '</p>'
+      + '<p class="aide" style="margin-top:22px"><b>Ou des sujets précis</b>, à ajouter ou à la place : choisissez ceux utiles à votre public. ' + (cons.length ? "Les sujets marqués « Conseillé » répondent aux situations cochées et au public choisi." : "") + '</p>'
       + '<div class="choix" id="s-l">' + SUJETS.map(function (s) { return bouton(s[0], s[1], S.sujets.indexOf(s[0]) >= 0, s[2].map(function (id) { return "Module " + P[id].module; }).join(" · "), cons.indexOf(s[0]) >= 0 ? "Conseillé" : ""); }).join("") + "</div>"
       + '<p class="aide" id="s-n"></p>'
       + '<div class="acts">' + (cons.length ? '<button type="button" class="bt" id="s-cons">Prendre les sujets conseillés</button>' : "") + '<button type="button" class="bt bt-p" id="suiv">Rythme et format</button><button type="button" class="bt bt-l" id="prec">Retour</button></div></section>';
@@ -163,6 +203,7 @@
       e2(); };
     function maj() { var ids = modulesChoisis(); $("s-n").innerHTML = ids.length ? "<b>" + ids.length + " module" + (ids.length > 1 ? "s" : "") + "</b>, environ " + duree(total(ids)) + " de leçons et d’outils." : "Choisissez au moins un sujet."; $("suiv").disabled = !ids.length; }
     $("s-l").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; var v = b.dataset.v, i = S.sujets.indexOf(v); if (i >= 0) S.sujets.splice(i, 1); else S.sujets.push(v); b.setAttribute("aria-pressed", i < 0); maj(); };
+    if ($("s-reco")) $("s-reco").onclick = function () { cons.forEach(function (k) { if (S.sujets.indexOf(k) < 0) S.sujets.push(k); }); mesure("orga-reco-prise"); e2(); };
     if ($("s-cons")) $("s-cons").onclick = function () { cons.forEach(function (s) { if (S.sujets.indexOf(s) < 0) S.sujets.push(s); }); e2(); };
     $("suiv").onclick = function () { aller(3); }; $("prec").onclick = function () { aller(1); }; maj();
   }
@@ -208,6 +249,8 @@
       + "<h2>" + (pr.n ? "Programme d’éducation financière · " + esc(pr.n) : "Votre programme d’éducation financière") + "</h2>"
       + '<div class="resume"><div><small>Modules</small><b>' + g.ids.length + '</b></div><div><small>Durée</small><b>' + Math.max(dern, pr.s) + ' semaines</b></div><div><small>Par semaine</small><b>' + duree(pr.mi) + '</b></div><div><small>Format</small><b>' + esc(f[1].replace("En ligne + ", "+ ")) + "</b></div></div>"
       + (pr.c ? '<p class="ok-l">Ce programme couvre ' + CYCLES.filter(function (c) { return pr.c.indexOf(c.l) >= 0; }).map(function (c) { return "le cycle " + c.nom; }).join(", ").replace(/, ([^,]*)$/, " et $1") + ' : chaque participant peut passer l’examen en ligne et obtenir le certificat local correspondant' + (pr.c.length === 3 ? ', puis le certificat CEFA ★' : '') + '.</p>' : '<p class="aide">Chaque module terminé, avec sa fiche gardée, donne une attestation de réalisation au participant.</p>');
+    var enj = (pr.en || []).filter(function (k) { return EN[k]; });
+    if (enj.length && !participant) h += '<div class="pourquoi"><p class="sur">Les situations de départ</p><ul>' + enj.map(function (k) { return '<li>' + esc(EN[k][1]) + '</li>'; }).join("") + '</ul><p class="aide">Trois mois après la fin, le point « Mon point » de chaque participant (oui ou non : savoir où passe son argent, un mois de côté, pas de dette chère) montre ce qui a changé. Les totaux apparaissent dans votre tableau de bord.</p></div>';
     sem.forEach(function (s, k) {
       var titre = s.span > 1 ? "Semaines " + s.n + (s.span === 2 ? " et " : " à ") + (s.n + s.span - 1) : "Semaine " + s.n;
       var ses = (k === 0 && pr.f !== "0" ? 60 : 0) + (k === sem.length - 1 && pr.f === "2" ? 60 : 0);
