@@ -893,7 +893,7 @@ MODULES.push((function(){
     tuiles+='<button type="button" class="tuile exam'+(r?' ok':'')+'" data-m="examen"><span class="tnum">✦</span><span class="tnom">Examen final</span><span class="tetat">'+(r?'Réussi · '+r.score+' / 24':'24 questions · 30 min')+'</span></button>';
     corps.className='corps';
     corps.innerHTML='<div class="illu nuit accueil"><img class="logo" src="certificat-pilote/logo-efa.png" alt="Logo EFA"><span class="tabtitre">Éducation Financière Afrique</span>'
-      +'<div class="grand">Certificat local<br>Fondations</div><div class="mot">8 modules · 1 examen · environ 2 heures</div>'
+      +'<div class="grand">Certificat local<br>Fondations</div><div class="mot">8 modules · 1 examen · environ 2 h de modules et d’examen</div>'
       +'<div class="mot">L\'argent s\'apprend.</div><button type="button" class="lienraz" id="raz">Réinitialiser ma progression</button></div>'
       +'<div class="texte"><span class="sur">Sommaire</span><h2 class="h hs">Les bases pour reprendre la main sur votre argent</h2><div class="tuiles">'+tuiles+'</div>'
       +'<p class="note">Version pilote : tous les modules sont ouverts. Suivez-les dans l\'ordre, un par jour suffit. Le pilote est ouvert jusqu\'au 30 novembre 2026.</p></div>';
@@ -930,7 +930,7 @@ MODULES.push((function(){
     if(qi>=qs.length){
       var s=rep.filter(Boolean).length, ok=s>=4;
       if(ok){etat.valides[M.num]=true;sauver()}
-      corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">Votre score</span><div class="score">'+s+' / 5</div><div class="verdict">'+(ok?'Module validé':'Seuil : 4 bonnes réponses')+'</div></div>'
+      corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">Votre score</span><div class="score">'+s+' / 5</div><div class="verdict">'+(ok?'Quiz réussi · module validé pour le certificat':'Seuil : 4 bonnes réponses')+'</div></div>'
         +'<div class="texte"><span class="sur">Résultat</span><h2 class="h">'+(ok?'Bravo, le module '+M.num+' est validé':'Encore un effort')+'</h2>'
         +'<p class="p">'+(ok?M.suite:'Relisez les écrans 3 et 4, puis recommencez le quiz. Il n\'y a pas de limite d\'essais.')+'</p>'
         +'<div class="chips"><button class="btn prec" type="button" id="refaire">Refaire le quiz</button></div></div>';
@@ -1147,6 +1147,6 @@ MODULES.push((function(){
 })();
 </script>
 <script src="efa-sons.js?v=2026102701" defer></script>
-<script src="efa-suite.js?v=2026102702" defer></script>
+<script src="efa-suite.js?v=2026102703" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 </body></html>

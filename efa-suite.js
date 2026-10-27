@@ -241,7 +241,7 @@
     + (navigator.share ? '<button type="button" class="es-pb" data-efa-partager="auto">Autre…</button>' : "")
     + "</div>";
   function placer(html) {
-    var st = document.createElement("style"); st.textContent = CSS; document.head.appendChild(st);
+    if (!document.getElementById("efa-suite-css")) { var st = document.createElement("style"); st.id = "efa-suite-css"; st.textContent = CSS; document.head.appendChild(st); }
     var box = document.createElement("aside");
     box.className = "efa-suite"; box.setAttribute("aria-label", "Et ensuite ?");
     box.innerHTML = '<div class="es-in">' + html + LIGNE + "</div>";
@@ -250,16 +250,24 @@
     return box;
   }
 
-  charger(function () {
+  /* La ressource affichée peut changer sans recharger la page (simulateur : D1, D2…) : on recalcule la suite */
+  var rendu = false;
+  function rendre() {
     var D = window.EFA_PARCOURS; if (!D) return;
+    if (rendu) { Array.prototype.forEach.call(document.querySelectorAll(".efa-suite,.efa-ctx"), function (n) { n.parentNode.removeChild(n); }); }
+    rendu = true;
     var P = {}; D.parcours.forEach(function (p) { P[p.id] = p; }); var FU = D.fusions || {}; Object.keys(FU).forEach(function (k) { if (P[FU[k]]) P[k] = P[FU[k]]; });
     var etat = lire(); etat.faits = etat.faits || {};
     var q = new URLSearchParams(location.search), voulu = q.get("parcours");
 
     // Même page, plusieurs étapes (certificat-pilote.html?m=6) : le paramètre m désigne la bonne étape
     var mq = q.get("m");
-    function ici_(s) { return s.lien && !/^https?:/.test(s.lien) && base(s.lien) === page && (!mq || !/[?&]m=/.test(s.lien) || new RegExp("[?&]m=" + mq + "(&|#|$)").test(s.lien)); }
+    // Une étape qui vise une ancre (decider.html#D1) ne correspond qu'à cette ancre quand la page en affiche une
+    var hc = location.hash.slice(1);
+    function ancre(s) { return (s.lien.split("#")[1] || ""); }
+    function ici_(s) { return s.lien && !/^https?:/.test(s.lien) && base(s.lien) === page && (!mq || !/[?&]m=/.test(s.lien) || new RegExp("[?&]m=" + mq + "(&|#|$)").test(s.lien)) && (!hc || !ancre(s) || ancre(s) === hc); }
     var candidats = CARREFOURS.indexOf(page) >= 0 ? [] : D.parcours.filter(function (p) { return p.etapes.some(ici_); });
+    if (hc) candidats.sort(function (a, b) { var x = a.etapes.some(function (s) { return ici_(s) && ancre(s) === hc; }), y = b.etapes.some(function (s) { return ici_(s) && ancre(s) === hc; }); return (y ? 1 : 0) - (x ? 1 : 0); });
 
     // Page hors parcours : proposer d'en choisir un
     if (!candidats.length) {
@@ -341,5 +349,8 @@
         }
       }
     });
-  });
+  }
+  charger(rendre);
+  window.addEventListener("efa-ici", function () { if (window.EFA_PARCOURS) rendre(); });
+  window.addEventListener("hashchange", function () { if (window.EFA_PARCOURS && rendu) rendre(); });
 })();

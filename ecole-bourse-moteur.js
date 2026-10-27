@@ -112,12 +112,12 @@
       var prem = EC.modules.filter(function (m) { return !st(m.id).valide; })[0] || EC.modules[0];
       $("suiv").textContent = (st(prem.id).i ? "Reprendre " : "Commencer ") + prem.id; $("suiv").setAttribute("aria-disabled", "false"); $("suiv").dataset.vers = prem.id;
       var r = $("raz"); if (r) r.addEventListener("click", function () { etat = { m: {} }; sauver(); aller(null); });
-      if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+      if (location.hash) { history.replaceState(null, "", location.pathname + location.search); window.dispatchEvent(new Event("efa-ici")); }
       return;
     }
     var L = ecrans(M), S = st(M.id);
     S.i = Math.max(0, Math.min(i == null ? S.i : i, L.length - 1)); sauver(); cur = M;
-    if (location.hash !== "#" + M.id) history.replaceState(null, "", "#" + M.id);
+    if (location.hash !== "#" + M.id) { history.replaceState(null, "", "#" + M.id); window.dispatchEvent(new Event("efa-ici")); }
     corps.innerHTML = rendreEcran(M, L[S.i], S.i);
     prog.hidden = false;
     if (prog.children.length !== L.length || prog.dataset.m !== M.id) {

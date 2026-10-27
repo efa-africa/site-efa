@@ -235,7 +235,7 @@
           ? '<p class="reco-ok" id="s-conf"><b>✓ Ces ' + cons.length + ' sujets sont dans votre programme.</b> Ils sont cochés plus bas, dans « Des sujets précis ». <a href="#s-l" id="s-voir">Les voir ↓</a></p>'
           : '<div class="acts"><button type="button" class="bt bt-p" id="s-reco">Prendre ces sujets</button></div>') + '</div>' : '')
       + '<p class="aide"><b>Un cycle complet</b> : tous ses modules, et son certificat local à la fin.</p>'
-      + '<div class="choix" id="c-l">' + CYCLES.map(function (c) { return bouton(c.id, "Cycle " + c.n + " · " + c.nom, S.cycles.indexOf(c.id) >= 0, c.ids.length + " modules · " + c.but + " · environ " + duree(total(c.ids)), "Certificat local " + c.nom); }).join("")
+      + '<div class="choix" id="c-l">' + CYCLES.map(function (c) { return bouton(c.id, "Cycle " + c.n + " · " + c.nom, S.cycles.indexOf(c.id) >= 0, c.ids.length + " modules · " + c.but + " · environ " + duree(total(c.ids)) + " avec les exercices et les outils", "Certificat local " + c.nom); }).join("")
       + bouton("tous", "Les trois cycles", tous, "23 modules · tout le parcours de l’école", "Certificat CEFA ★") + "</div>"
       + '<p class="aide" style="margin-top:22px"><b>Ou des sujets précis</b>, à ajouter ou à la place : choisissez ceux utiles à votre public. ' + (cons.length ? "Les sujets marqués « Conseillé » répondent aux situations cochées et au public choisi." : "") + '</p>'
       + '<div class="choix" id="s-l">' + SUJETS.map(function (s) { return bouton(s[0], s[1], S.sujets.indexOf(s[0]) >= 0, s[2].map(function (id) { return "Module " + P[id].module; }).join(" · "), cons.indexOf(s[0]) >= 0 ? "Conseillé" : ""); }).join("") + "</div>"
@@ -270,6 +270,7 @@
     $("vue").innerHTML = '<section class="carte"><p class="sur">Étape 3 sur 5</p><h2>Le rythme et le format</h2>'
       + '<div class="grille2"><label class="champ">Durée du programme<select id="r-sem">' + [2, 4, 6, 8, 10, 12, 16].map(function (n) { return '<option value="' + n + '"' + (S.semaines === n ? " selected" : "") + ">" + n + " semaines</option>"; }).join("") + "</select></label>"
       + '<label class="champ">Temps par semaine et par participant<select id="r-min">' + [30, 45, 60, 90, 120].map(function (n) { return '<option value="' + n + '"' + (S.min === n ? " selected" : "") + ">" + duree(n) + "</option>"; }).join("") + "</select></label></div>"
+      + '<p class="aide">Ce temps couvre les leçons et les outils en ligne. Les sessions EFA s’y ajoutent : 1 h la semaine du lancement, et 1 h la semaine du bilan avec le format à deux sessions.</p>'
       + '<p class="aide"><b>Le format</b></p><div class="choix" id="r-f">' + FORMATS.map(function (f) { return bouton(f[0], f[1], S.format === f[0], f[2], "", true); }).join("") + "</div>"
       + '<p class="aide"><b>Un certificat&nbsp;?</b></p><div class="choix" id="r-c">' + bouton("oui", "Oui, viser un certificat", S.certif === "oui", "Certificat local, avec un examen en ligne", "", true) + bouton("non", "Non, des attestations suffisent", S.certif === "non", "Une attestation de réalisation par module", "", true) + "</div>"
       + '<div class="acts"><button type="button" class="bt bt-p" id="suiv">Voir les arbitrages</button><button type="button" class="bt bt-l" id="prec">Retour</button></div></section>';

@@ -93,12 +93,20 @@ function ecranReponse(o) { // o: {types:[[cle,libelle]], parChoix:{A:cle}, model
     w.addEventListener('click',function(e){e.stopPropagation();ECOLE.outils.compte('decider-'+c.M.id+'-whatsapp');});
   }};
 }
+/* Rappel à J+7 dans l'agenda du téléphone (.ics) ou Google Agenda : rien n'est envoyé par EFA */
+function rappelAgenda(it,action,M){
+  var d=new Date(it.j7),f=function(x){return x.toISOString().slice(0,10).replace(/-/g,'');},d2=new Date(d.getTime()+864e5);
+  var titre='EFA · ai-je essayé ? '+action, lien='https://efa.africa/decider.html#'+M.id, det='Cette semaine, j’ai choisi : '+action+'. Revenez sur '+lien+' pour noter ce qui s’est passé.';
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//EFA//Rappel//FR','BEGIN:VEVENT','UID:efa-'+M.id+'-'+it.j7+'@efa.africa','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;VALUE=DATE:'+f(d),'DTEND;VALUE=DATE:'+f(d2),'SUMMARY:'+titre.replace(/[,;]/g,' '),'DESCRIPTION:'+det.replace(/[,;]/g,' '),'URL:'+lien,'BEGIN:VALARM','TRIGGER:PT9H','ACTION:DISPLAY','DESCRIPTION:'+titre.replace(/[,;]/g,' '),'END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(titre)+'&dates='+f(d)+'/'+f(d2)+'&details='+encodeURIComponent(det);
+  return '<a href="data:text/calendar;charset=utf-8,'+encodeURIComponent(ics)+'" download="rappel-efa-'+M.id+'.ics">agenda du téléphone</a> ou <a href="'+g+'" target="_blank" rel="noopener">Google Agenda</a>.';
+}
 function ecranAction(o) { // o: {actions:[...], titre}
   return {t:"perso", bloque:function(c){return !c.S.r.ac;}, rendu:function(c){
     var S=c.S, a=S.r.ac, it=null;
     try{it=(window.EFA_SUIVI&&EFA_SUIVI.liste()||[]).filter(function(x){return x.id===c.M.id;})[0];}catch(e){}
     var l=o.actions.map(function(x,i){return '<button type="button" data-ac="'+i+'" aria-pressed="'+(a!=null&&+a===i)+'">'+x+'</button>';}).join('')+'<button type="button" data-ac="-1" aria-pressed="'+(a==="-1")+'">Pas maintenant</button>';
-    var conf=a!=null&&a!=="-1"&&it?'<p class="explic"><b>C’est noté.</b> Le '+new Date(it.j7).toLocaleDateString('fr-FR',{day:'numeric',month:'long'})+', EFA vous demandera si vous avez pu essayer, puis à nouveau dans 30 jours. Le rappel s’affiche quand vous revenez sur le site ; rien n’est envoyé.</p>':(a==="-1"?'<p class="explic">Pas de souci. Vous pouvez revenir choisir une action quand vous voulez.</p>':'');
+    var conf=a!=null&&a!=="-1"&&it?'<p class="explic"><b>C’est noté.</b> Le '+new Date(it.j7).toLocaleDateString('fr-FR',{day:'numeric',month:'long'})+', EFA vous demandera si vous avez pu essayer, puis à nouveau dans 30 jours. Pour ne pas l’oublier, mettez-le dans votre agenda&nbsp;: '+rappelAgenda(it,o.actions[+a],c.M)+'</p>':(a==="-1"?'<p class="explic">Pas de souci. Vous pouvez revenir choisir une action quand vous voulez.</p>':'');
     return '<div class="illu papier"><span class="tabtitre fonce">Cette semaine, j’essaie…</span><div class="act-l" id="al">'+l+'</div></div>'
      +'<div class="texte"><p class="sur">Votre action</p><h2 class="h">'+o.titre+'</h2>'+ECOLE.outils.typo('<p class="p">Une décision ne change rien tant qu’on ne l’a pas essayée. Choisissez une seule action, petite et faisable cette semaine.</p>')+conf+'</div>';
   }, apres:function(c){
@@ -232,6 +240,6 @@ ecrans:[
   window.ECOLE.accueil.plus='<p class="sur" style="margin-top:6px">Mes actions en cours</p><div class="suivis">'+l.map(function(x){var r=x.r30||x.r7;return '<div><b>'+x.action.replace(/</g,'&lt;')+'</b><br>'+(r?('Réponse : '+(r==='oui'?'essayé':r==='partiel'?'en partie':'pas encore')+(x.r30?'':' · point à 30 jours le '+f(x.j30))):'Point à 7 jours le '+f(x.j7))+'</div>';}).join('')+'</div>';
 })();
 </script>
-<script src="ecole-bourse-moteur.js?v=2026102701"></script>
-<script src="efa-suite.js?v=2026102702" defer></script>
+<script src="ecole-bourse-moteur.js?v=2026102703"></script>
+<script src="efa-suite.js?v=2026102703" defer></script>
 </body></html>
