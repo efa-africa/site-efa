@@ -51,7 +51,7 @@
     D.active = cle;
     var st2 = D.sessions[cle];
     ui.onglet = st2.tuto ? "tutoriel" : "marche";
-    ui.ticket = { sens: "achat", qte: "", cat: "", texte: "" }; ui.confirme = false;
+    ui.ticket = { sens: "achat", qte: "", cat: "", texte: "", type: "marché", prix: "", valid: "5" }; ui.confirme = false;
     ui.actif = st2.ui && st2.ui.actif || scenarioDe(cle).actifs[0];
     ui.selection = null;
     sauver();
@@ -59,16 +59,18 @@
 
   /* ---------- Interface ---------- */
   var ui = { vue: "ligne", fenetre: 30, pct: false, volumes: true, trades: true, actif: null, selection: null, onglet: "marche", lecture: null, ticket: { sens: "achat", qte: "", cat: "", texte: "" }, confirme: false };
-  var RUB = [["decouvrir", "Découvrir"], ["parcours", "Mes parcours"], ["simuler", "Simuler"], ["decisions", "Mes décisions"], ["bilan", "Mon bilan"], ["groupe", "Mon groupe"], ["glossaire", "Glossaire"]];
+  var RUB = [["decouvrir", "Découvrir"], ["cours", "Le cours"], ["parcours", "Mes parcours"], ["simuler", "Simuler"], ["decisions", "Mes décisions"], ["bilan", "Mon bilan"], ["groupe", "Mon groupe"], ["glossaire", "Glossaire"]];
   var vue = $("#tr-vue");
 
   function route() {
-    var h = (location.hash || "").replace("#", "") || (D.active ? "simuler" : "decouvrir");
+    var h = (location.hash || "").replace("#", "") || (D.active ? "simuler" : "decouvrir"), chap = null;
+    if (/^cours-c\d+$/.test(h)) { chap = h.slice(6); h = "cours"; }
     if (!RUB.some(function (r) { return r[0] === h; })) h = "decouvrir";
     stopLecture();
     var an = $("#tr-annonce"); if (an) an.classList.remove("on");
     $$(".tr-rub a").forEach(function (a) { a.setAttribute("aria-current", a.getAttribute("href") === "#" + h ? "page" : "false"); });
-    ({ decouvrir: vDecouvrir, parcours: vParcours, simuler: vSimuler, decisions: vDecisions, bilan: vBilan, groupe: vGroupe, glossaire: vGlossaire })[h]();
+    if (chap) { vChapitre(chap); vue.focus({ preventScroll: true }); window.scrollTo({ top: Math.max(0, $("#tr").getBoundingClientRect().top + window.scrollY - 84) }); return; }
+    ({ decouvrir: vDecouvrir, cours: vCours, parcours: vParcours, simuler: vSimuler, decisions: vDecisions, bilan: vBilan, groupe: vGroupe, glossaire: vGlossaire })[h]();
     vue.focus({ preventScroll: true });
   }
   function aller(h) { if (location.hash === "#" + h) route(); else location.hash = h; window.scrollTo({ top: Math.max(0, $("#tr").getBoundingClientRect().top + window.scrollY - 84), behavior: "smooth" }); }
@@ -86,7 +88,7 @@
       '<section class="tr-bloc tr-intro">' +
       '<div><p class="surtitre">Le laboratoire des décisions</p><h2>Observer, décider, comprendre. Sans argent réel.</h2>' +
       '<p class="lead">Vous regardez un marché, vous formez une hypothèse, vous décidez ou vous attendez, puis vous voyez les conséquences et leur explication.</p>' +
-      '<div class="tr-cta"><button class="bouton bouton-principal" data-go="tu:t1">Ma première simulation guidée</button><a class="bouton bouton-clair" href="#parcours">Voir les parcours</a></div>' +
+      '<div class="tr-cta"><button class="bouton bouton-principal" data-go="tu:t1">Ma première simulation guidée</button><a class="bouton bouton-clair" href="#cours">Le cours de finance de marché</a></div>' +
       '<p class="tr-avert">Vous utilisez un capital fictif. Les scénarios servent à apprendre. Les résultats ne permettent pas de prévoir ce que vous gagneriez ou perdriez sur un marché réel.</p></div>' +
       '<ol class="tr-5q"><li>Qu’est-ce que je regarde&nbsp;?</li><li>Que sais-je réellement&nbsp;?</li><li>Quelle décision, et quelle somme j’expose&nbsp;?</li><li>Quelles conséquences&nbsp;?</li><li>Qu’est-ce que j’en apprends&nbsp;?</li></ol></section>' +
       '<section class="tr-bloc"><h3>Votre objectif</h3><div class="tr-puces" role="group" aria-label="Choisir un objectif">' +
@@ -320,6 +322,12 @@
       var y = Y(val(px)), a = o.sens === "achat";
       g += '<g class="trade ' + (a ? "a" : "v") + '"><path d="M' + X(i) + " " + (a ? y + 6 : y - 6) + " l-6 " + (a ? 10 : -10) + " h12z\"/><text x=\"" + X(i) + "\" y=\"" + (a ? y + 27 : y - 19) + '" text-anchor="middle">' + (a ? "A" : "V") + "</text></g>";
     });
+    st.ordres.forEach(function (o) {
+      if (o.etat !== "en attente" || o.actif !== ui.actif || !o.type || o.type === "marché") return;
+      var pv = o.type === "limite" ? o.limite : o.seuil; if (forex() && o.sens === "achat") pv -= (st.spread[o.actif] || 0);
+      var y = Y(val(pv)); if (y < ph || y > H - pb) return;
+      g += '<g class="attente"><line x1="' + pg + '" x2="' + (W - pd) + '" y1="' + y + '" y2="' + y + '"/><text x="' + (W - pd - 4) + '" y="' + (y - 5) + '" text-anchor="end">' + (o.type === "limite" ? "Limite " : "Stop ") + (o.sens === "achat" ? "achat" : "vente") + "</text></g>";
+    });
     var sel = ui.selection != null && ui.selection.actif === ui.actif ? ui.selection.idx - i0 : -1;
     if (sel >= 0 && sel < n) g += '<line class="curseur" x1="' + X(sel) + '" x2="' + X(sel) + '" y1="' + ph + '" y2="' + (H - 22) + '"/>';
     var xs = [0, Math.floor((n - 1) / 2), n - 1];
@@ -368,7 +376,10 @@
       '<label>Actif<select id="k-actif">' + sc().actifs.map(function (a) { return '<option value="' + a + '">' + a + " · " + esc(C.ACTIFS[a].nom) + "</option>"; }).join("") + "</select></label>" +
       '<label>Quantité ' + (fx ? "(en " + "devise de base" + ")" : "(nombre d’actions entier)") + '<input id="k-qte" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="0"></label>' +
       '<div class="tr-rapide" id="k-rapide"></div>' +
-      '<p class="tr-type">Type : <b>ordre au marché</b></p>' +
+      (st.execution === "immediat" ? '<p class="tr-type">Type : <b>ordre au marché</b>, exécuté au cours affiché</p>' :
+        '<p class="tr-lab">Type d’ordre</p><div class="seg large" role="group" aria-label="Type d’ordre"><button type="button" data-type="marché">Au marché</button><button type="button" data-type="limite">Limité</button><button type="button" data-type="stop">Stop</button></div>' +
+        '<div class="tr-px2" id="k-pxz"><label><span id="k-pxl">Prix limite</span><input id="k-px" inputmode="decimal" autocomplete="off"></label><label>Validité<select id="k-val"><option value="1">1 séance</option><option value="5">5 séances</option><option value="10">10 séances</option><option value="20">20 séances</option></select></label></div>' +
+        '<p class="tr-note" id="k-tyn"></p>') +
       '<dl class="tr-est" id="k-est"></dl>' +
       '<label>Pourquoi cette décision&nbsp;?<select id="k-cat"><option value="">Choisir une raison</option>' + C.JUSTIFS.map(function (j) { return "<option>" + esc(j) + "</option>"; }).join("") + "</select></label>" +
       '<label>En une phrase (facultatif)<textarea id="k-txt" maxlength="280" rows="2" placeholder="Ce que je pense au moment de décider"></textarea></label>' +
@@ -377,6 +388,11 @@
       '<p class="tr-note">Attendre est une décision. Notez-la avec sa raison : elle entre dans votre journal.</p>';
     var t = ui.ticket;
     $("#k-actif").value = ui.actif; $("#k-qte").value = t.qte; $("#k-cat").value = t.cat; $("#k-txt").value = t.texte;
+    t.type = t.type || "marché"; t.prix = t.prix || ""; t.valid = t.valid || "5";
+    if ($("#k-px")) { $("#k-px").value = t.prix; $("#k-val").value = t.valid;
+      $$("[data-type]", f).forEach(function (b) { b.onclick = function () { t.type = b.dataset.type; if (!t.prix) { var c0 = M.coursRef(st, marche(), ui.actif, t.sens); t.prix = fx ? M.taux(c0) : String(c0); $("#k-px").value = t.prix; } ui.confirme = false; majTicket(); }; });
+      $("#k-px").oninput = function () { t.prix = this.value; ui.confirme = false; majTicket(); };
+      $("#k-val").onchange = function () { t.valid = this.value; }; }
     $$("[data-sens]", f).forEach(function (b) { b.onclick = function () { t.sens = b.dataset.sens; ui.confirme = false; majTicket(); }; });
     $("#k-actif").onchange = function () { ui.actif = this.value; ui.selection = null; ui.confirme = false; $$("[data-actif]").forEach(function (x) { x.setAttribute("aria-selected", x.dataset.actif === ui.actif); }); majTout(); };
     $("#k-qte").oninput = function () { t.qte = this.value.replace(/[^\d]/g, ""); if (this.value !== t.qte) this.value = t.qte; ui.confirme = false; majTicket(); };
@@ -390,26 +406,42 @@
     };
     f.onsubmit = function (e) {
       e.preventDefault();
-      var o = { actif: ui.actif, sens: t.sens, qte: parseInt(t.qte, 10) || 0, justification: { categorie: t.cat, texte: t.texte } };
+      var o = ordreDuTicket();
       if (!ui.confirme) {
         if (!(o.qte > 0)) { $("#k-err").textContent = M.MESSAGES.QTE_INVALIDE; return; }
         if (!o.justification.categorie) { $("#k-err").textContent = M.MESSAGES.JUSTIF; return; }
+        if (o.type !== "marché" && !((o.limite || o.seuil) > 0)) { $("#k-err").textContent = M.MESSAGES.PRIX; return; }
         ui.confirme = true; ui.cle = "o" + Date.now() + Math.random().toString(36).slice(2, 7); majTicket(); return;
       }
       o.cle = ui.cle;
       var r = M.soumettre(st, marche(), o);
       if (!r.ok) { $("#k-err").textContent = r.texte; ui.confirme = false; majTicket(); return; }
       suivi("ordre-" + o.sens);
-      t.qte = ""; t.cat = ""; t.texte = ""; ui.confirme = false;
+      t.qte = ""; t.cat = ""; t.texte = ""; t.prix = ""; t.type = "marché"; ui.confirme = false;
       ticket(); sauver(); majTout();
-      annonce(r.ordre.etat === "exécuté" ? "Ordre exécuté au cours affiché." : "Ordre enregistré : il sera exécuté à l’ouverture de la prochaine séance.");
+      annonce(r.ordre.etat === "exécuté" ? "Ordre exécuté au cours affiché." : r.ordre.type === "marché" ? "Ordre enregistré : il sera exécuté à l’ouverture de la prochaine séance." : "Ordre " + (r.ordre.type === "limite" ? "à cours limité" : "stop") + " enregistré : il attend que le marché atteigne votre prix, " + r.ordre.validite + " séance(s) au plus.");
     };
+  }
+  function lirePrix(v) { var x = parseFloat(String(v || "").replace(/\s/g, "").replace(",", ".")); if (!(x > 0)) return 0; return forex() ? Math.round(x * 10000) : Math.round(x); }
+  function ordreDuTicket() {
+    var t = ui.ticket, st = session(), type = st.execution === "immediat" ? "marché" : (t.type || "marché");
+    var o = { actif: ui.actif, sens: t.sens, qte: parseInt(t.qte, 10) || 0, type: type, justification: { categorie: t.cat, texte: t.texte } };
+    if (type === "limite") o.limite = lirePrix(t.prix); if (type === "stop") o.seuil = lirePrix(t.prix);
+    if (type !== "marché") o.validite = parseInt(t.valid, 10) || 5;
+    return o;
   }
   function majTicket() {
     var f = $("#tr-ticket"); if (!f || !session()) return;
     var st = session(), t = ui.ticket, fx = forex();
     $$("[data-sens]", f).forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.sens === t.sens); });
     if ($("#k-actif").value !== ui.actif) $("#k-actif").value = ui.actif;
+    if ($("#k-pxz")) {
+      var ty = t.type || "marché";
+      $$("[data-type]", f).forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.type === ty); });
+      $("#k-pxz").hidden = ty === "marché";
+      $("#k-pxl").textContent = ty === "stop" ? "Seuil de déclenchement" + (fx ? "" : " (FCFA)") : "Prix limite" + (fx ? "" : " (FCFA)");
+      $("#k-tyn").textContent = ty === "marché" ? "Exécuté à l’ouverture de la prochaine séance, au prix d’alors." : ty === "limite" ? (t.sens === "achat" ? "Vous ne paierez jamais plus que ce prix. Si le marché ne l’atteint pas, l’ordre expire." : "Vous ne vendrez jamais moins cher que ce prix. Si le marché ne l’atteint pas, l’ordre expire.") : (t.sens === "vente" ? "Si le cours descend jusqu’au seuil, vous vendez. Le prix final peut être moins bon que le seuil." : "Si le cours monte jusqu’au seuil, vous achetez. Le prix final peut être moins bon que le seuil.");
+    }
     var q = parseInt(t.qte, 10) || 0, pos = st.positions[ui.actif];
     var px = M.coursRef(st, marche(), ui.actif, "achat");
     var r = $("#k-rapide");
@@ -418,8 +450,9 @@
     $$("[data-q]", r).forEach(function (b) { b.onclick = function () { t.qte = b.dataset.q; $("#k-qte").value = t.qte; ui.confirme = false; majTicket(); }; });
     var est = $("#k-est");
     if (q > 0) {
-      var e = M.estimer(st, marche(), { actif: ui.actif, sens: t.sens, qte: q });
-      est.innerHTML = "<dt>Cours de référence" + (fx ? (t.sens === "achat" ? " (ask)" : " (bid)") : "") + "</dt><dd>" + cours(e.prix) + (fx ? "" : " FCFA") + "</dd>" +
+      var oo = ordreDuTicket(), e = (oo.type !== "marché" && !((oo.limite || oo.seuil) > 0)) ? null : M.estimer(st, marche(), oo);
+      if (!e) { est.innerHTML = '<dd class="tr-vide">Indiquez votre prix pour voir l’estimation.</dd>'; } else
+      est.innerHTML = "<dt>" + (oo.type === "limite" ? "Prix limite" : oo.type === "stop" ? "Seuil de déclenchement" : "Cours de référence" + (fx ? (t.sens === "achat" ? " (ask)" : " (bid)") : "")) + "</dt><dd>" + cours(e.prix) + (fx ? "" : " FCFA") + "</dd>" +
         "<dt>Montant brut</dt><dd>" + argent(e.brut) + "</dd>" + (fx ? "" : "<dt>Frais estimés</dt><dd>" + argent(e.frais) + "</dd>") +
         "<dt>" + (t.sens === "achat" ? "Débit estimé" : "Crédit estimé") + "</dt><dd><b>" + argent(e.total) + "</b></dd>" +
         "<dt>Liquidités après</dt><dd class=\"" + (e.liquiditesApres < 0 ? "baisse" : "") + "\">" + argent(e.liquiditesApres) + "</dd>" +
@@ -452,7 +485,7 @@
     h += '<dl class="tr-mini"><dt>Résultat réalisé</dt><dd class="' + classe(st.realise) + '">' + signe(st.realise) + argent(st.realise) + "</dd>" + (fx ? "" : "<dt>Frais cumulés</dt><dd>" + argent(st.fraisCumules) + "</dd>") + "</dl>";
     z.innerHTML = h;
     var att = st.ordres.filter(function (o) { return o.etat === "en attente"; });
-    $("#tr-att").innerHTML = '<h3 class="tr-h3">Ordres en attente</h3>' + (att.length ? att.map(function (o) { return '<div class="tr-ordre"><span>' + (o.sens === "achat" ? "Achat" : "Vente") + " de " + o.qte.toLocaleString("fr-FR") + " " + o.actif + " · estimé " + argent(o.estimation.total) + '</span><button type="button" class="lien-souligne" data-annuler="' + o.id + '">Annuler</button></div>'; }).join("") + '<p class="tr-note">Ils seront exécutés à l’ouverture de la prochaine séance, au prix d’alors.</p>' : '<p class="tr-vide">Aucun.</p>');
+    $("#tr-att").innerHTML = '<h3 class="tr-h3">Ordres en attente</h3>' + (att.length ? att.map(function (o) { var ty = o.type === "limite" ? " · limité à " + cours(o.limite) : o.type === "stop" ? " · stop à " + cours(o.seuil) : " · au marché"; var reste = o.type && o.type !== "marché" ? " · encore " + Math.max(1, o.seanceSoumission + o.validite - st.seance) + " séance(s)" : ""; return '<div class="tr-ordre"><span>' + (o.sens === "achat" ? "Achat" : "Vente") + " de " + o.qte.toLocaleString("fr-FR") + " " + o.actif + ty + reste + '</span><button type="button" class="lien-souligne" data-annuler="' + o.id + '">Annuler</button></div>'; }).join("") + '<p class="tr-note">Au marché : exécutés à l’ouverture suivante. Limités et stops : quand le marché atteint leur prix, sinon ils expirent.</p>' : '<p class="tr-vide">Aucun.</p>');
     $$("[data-annuler]").forEach(function (b) { b.onclick = function () { M.annuler(st, +b.dataset.annuler); sauver(); majTout(); }; });
   }
   function majJmini() {
@@ -556,7 +589,7 @@
       var o = x.o, e = o.execution, fx = forex();
       var resultat = "";
       if (o.etat === "exécuté" && o.sens === "vente") resultat = '<dt>Résultat réalisé net</dt><dd class="' + classe(e.resultat) + '">' + signe(e.resultat) + argent(e.resultat) + "</dd>";
-      h += '<article class="carte tr-dec"><p class="etiquette">Séance ' + (o.seanceSoumission - st.debut) + " · soumis le " + new Date(o.soumisLe).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }) + '</p><h3 class="titre-tuile">' + (o.sens === "achat" ? "Achat" : "Vente") + " de " + o.qte.toLocaleString("fr-FR") + " " + o.actif + ' <span class="pastille ' + (o.etat === "exécuté" ? "ok" : o.etat === "rejeté" ? "ko" : "cours") + '">' + o.etat + "</span></h3>" +
+      h += '<article class="carte tr-dec"><p class="etiquette">Séance ' + (o.seanceSoumission - st.debut) + " · soumis le " + new Date(o.soumisLe).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }) + '</p><h3 class="titre-tuile">' + (o.sens === "achat" ? "Achat" : "Vente") + " de " + o.qte.toLocaleString("fr-FR") + " " + o.actif + ' <span class="pastille ' + (o.etat === "exécuté" ? "ok" : o.etat === "rejeté" ? "ko" : o.etat === "expiré" ? "moyen" : "cours") + '">' + o.etat + "</span></h3>" +
         '<dl class="tr-est"><dt>Estimation à la soumission</dt><dd>' + cours(o.estimation.prix) + " · " + argent(o.estimation.total) + "</dd>" +
         (e ? "<dt>Exécuté</dt><dd>" + cours(e.prix) + " · séance " + (e.seance - st.debut) + " (" + e.moment + ")" + (fx ? "" : " · frais " + argent(e.frais)) + " · " + argent(e.total) + "</dd>" + resultat : "") +
         (o.etat === "rejeté" ? "<dt>Motif</dt><dd>" + esc(o.motif) + "</dd>" : "") + "</dl>" +
@@ -575,6 +608,7 @@
     var st = session();
     var comp = '<section class="tr-bloc"><p class="surtitre">Mes compétences</p><h2>Ce que vous avez travaillé</h2><p class="lead">Évalué séparément de vos résultats financiers fictifs.</p><div class="tr-comps">' +
       C.TUTORIELS.map(function (t) { var s = statutTuto(t.id), p = D.tutos[t.id] || {}; return '<div class="tr-cp"><span class="pastille ' + s[1] + '">' + s[0] + "</span><b>" + esc(t.competence) + "</b><small>" + esc(t.titre) + (p.score ? " · " + p.score : "") + "</small></div>"; }).join("") + "</div></section>";
+    if (K) comp += '<section class="tr-bloc"><p class="surtitre">Le cours</p><h2>Chapitres travaillés</h2><div class="tr-comps">' + K.CHAPITRES.map(function (c, i) { var e = etatCh(c); return '<a class="tr-cp" href="#cours-' + c.id + '"><span class="pastille ' + (e.s === "fait" ? (e.j >= Math.ceil(c.exos.length * .7) ? "ok" : "moyen") : e.s === "cours" ? "cours" : "") + '">' + (e.s === "fait" ? "Fait · " + e.j + "/" + c.exos.length : e.s === "cours" ? "Commencé" : "À faire") + "</span><b>" + (i + 1) + ". " + esc(c.titre) + "</b><small>" + esc(c.objectifs[0]) + "</small></a>"; }).join("") + "</div></section>";
     if (!st) { vue.innerHTML = '<section class="tr-bloc"><h2>Mon bilan</h2><p>Votre bilan apparaît après une première session.</p></section>' + comp; return; }
     var m = marche(), b = M.bilan(st, m), s = sc(), fx = forex();
     var vals = st.valorisations.filter(function (x) { return x.moment === "clôture"; });
@@ -617,15 +651,177 @@
     z.innerHTML = g;
   }
 
+  /* ================= Le cours ================= */
+  var K = window.EFA_TR_COURS;
+  function progCh(id) { D.cours = D.cours || {}; return D.cours[id] || (D.cours[id] = { rep: {} }); }
+  function etatCh(c) {
+    var p = (D.cours || {})[c.id]; if (!p) return { s: "", n: 0 };
+    var n = Object.keys(p.rep || {}).length, j = Object.keys(p.rep || {}).filter(function (k) { return p.rep[k].juste; }).length;
+    if (n >= c.exos.length) return { s: "fait", n: n, j: j };
+    return { s: p.lu ? "cours" : "", n: n, j: j };
+  }
+  function numCh(c) { return K.CHAPITRES.indexOf(c) + 1; }
+  function vCours() {
+    if (!K) { vue.innerHTML = '<p class="tr-vide">Le cours n’a pas pu se charger.</p>'; return; }
+    var faits = K.CHAPITRES.filter(function (c) { return etatCh(c).s === "fait"; }).length;
+    var suite = K.CHAPITRES.filter(function (c) { return etatCh(c).s !== "fait"; })[0];
+    var h = '<section class="tr-bloc"><div class="tr-ph"><div class="tr-ph-t"><p class="surtitre">Le cours</p><h2>La finance de marché, du premier chapitre à la pratique</h2>' +
+      '<p class="lead">Quatorze chapitres, niveau premier cycle universitaire. Chacun donne les notions, les formules et des exemples en FCFA, puis des exercices corrigés et un passage au simulateur.</p></div>' +
+      '<div class="tr-suite"><p class="etiquette">Votre progression</p><p class="tr-suite-n"><b>' + faits + "</b> / " + K.CHAPITRES.length + ' chapitres</p><div class="tr-barre" aria-hidden="true"><i style="width:' + (faits / K.CHAPITRES.length * 100) + '%"></i></div>' +
+      (suite ? '<a class="bouton bouton-principal" href="#cours-' + suite.id + '">' + (faits ? "Continuer" : "Commencer") + " : chapitre " + numCh(suite) + "</a>" : '<a class="bouton bouton-principal" href="#bilan">Voir mon bilan</a>') + "</div></div>";
+    h += '<div class="tr-chaps">';
+    K.PARTIES.forEach(function (pa, pi) {
+      var chs = K.CHAPITRES.filter(function (c) { return c.partie === pa.id; });
+      h += '<section class="tr-chap"><header><span class="tr-chap-n">' + pa.id + '</span><div><h3>' + esc(pa.titre) + "</h3><p>" + esc(pa.sous) + '</p></div></header><ol class="tr-liste">';
+      chs.forEach(function (c) {
+        var e = etatCh(c);
+        h += '<li><a class="tr-ligne ' + (e.s === "fait" ? "fait" : e.s === "cours" ? "cours" : suite === c ? "suivant" : "") + '" href="#cours-' + c.id + '"><span class="tr-pt">' + (e.s === "fait" ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' : numCh(c)) + '</span><span class="tr-lt"><b>' + esc(c.titre) + "</b><small>" + esc(c.objectifs[0]) + '</small></span><span class="tr-lm">' + (e.s === "fait" ? '<span class="pastille ' + (e.j >= Math.ceil(c.exos.length * .7) ? "ok" : "moyen") + '">' + e.j + "/" + c.exos.length + "</span>" : '<span class="tr-duree">' + c.duree + "</span>") + '</span><span class="tr-chev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a></li>';
+      });
+      h += "</ol></section>";
+    });
+    h += '</div><p class="tr-note">Pour un enseignant : le programme, les durées et les compétences de chaque chapitre sont dans « Mon groupe », prêts à imprimer.</p></section>';
+    vue.innerHTML = h;
+  }
+
+  function fmt(n, d) { return Number(n).toLocaleString("fr-FR", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }).replace(/ | /g, " "); }
+  function vChapitre(id) {
+    var c = K && K.CHAPITRES.filter(function (x) { return x.id === id; })[0];
+    if (!c) return vCours();
+    var p = progCh(c.id); p.lu = true; sauver();
+    var i = K.CHAPITRES.indexOf(c), prev = K.CHAPITRES[i - 1], next = K.CHAPITRES[i + 1], pa = K.PARTIES.filter(function (x) { return x.id === c.partie; })[0];
+    var h = '<article class="tr-chapitre"><p class="tr-fil"><a href="#cours">Le cours</a> · Partie ' + pa.id + " · " + esc(pa.titre) + '</p>' +
+      '<p class="etiquette">Chapitre ' + (i + 1) + " sur " + K.CHAPITRES.length + " · " + c.duree + '</p><h2>' + esc(c.titre) + "</h2>" +
+      '<div class="tr-obj"><p class="etiquette">À la fin du chapitre, vous saurez</p><ul>' + c.objectifs.map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("") + "</ul></div>";
+    c.sections.forEach(function (sct) {
+      h += '<section class="tr-sec"><h3>' + esc(sct.t) + "</h3>" + (sct.p || []).map(function (x) { return "<p>" + esc(x) + "</p>"; }).join("") +
+        (sct.liste ? "<ul>" + sct.liste.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
+        (sct.f ? '<p class="tr-f">' + esc(sct.f) + "</p>" : "") + (sct.ex ? '<p class="tr-ex"><b>Exemple.</b> ' + esc(sct.ex) + "</p>" : "") +
+        (sct.carnet ? carnetHTML() : "") + "</section>";
+    });
+    if (c.outil) h += '<section class="tr-outil" id="tr-outil" data-outil="' + c.outil + '"></section>';
+    h += '<div class="tr-ret"><p class="etiquette">À retenir</p><ul>' + c.retenir.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+    h += '<section class="tr-exos"><h3>Exercices</h3><p class="tr-note">La correction s’affiche après votre réponse. Le dernier exercice est un cas différent : il vérifie que vous savez appliquer.</p>';
+    c.exos.forEach(function (e, k) { h += '<div class="tr-exo" data-k="' + k + '"></div>'; });
+    h += "</section>";
+    if (c.pratique) h += '<div class="tr-prat"><div><p class="etiquette">En pratique</p><p>' + esc(c.pratique.texte) + "</p></div>" + (c.pratique.lien ? '<button class="bouton bouton-sombre" data-go="' + c.pratique.lien + '">Ouvrir le simulateur</button>' : "") + "</div>";
+    h += '<nav class="tr-chnav">' + (prev ? '<a class="bouton bouton-clair" href="#cours-' + prev.id + '">← ' + esc(prev.titre) + "</a>" : '<a class="bouton bouton-clair" href="#cours">← Le cours</a>') + '<button class="lien-souligne" id="tr-print" type="button">Imprimer ce chapitre</button>' + (next ? '<a class="bouton bouton-principal" href="#cours-' + next.id + '">' + esc(next.titre) + " →</a>" : '<a class="bouton bouton-principal" href="#cours">Retour au cours</a>') + "</nav>";
+    h += '<p class="tr-note">Contenu pédagogique réalisé avec l’aide de l’intelligence artificielle et vérifié par l’équipe EFA. Exemples et montants fictifs. Éducation financière, pas conseil en placement.</p></article>';
+    vue.innerHTML = h;
+    $$(".tr-exo", vue).forEach(function (z) { exo(c, +z.dataset.k, z); });
+    $$("[data-go]", vue).forEach(function (b) { b.onclick = function () { lancer(b.dataset.go); }; });
+    $("#tr-print").onclick = function () { window.print(); };
+    if (c.outil) outil(c.outil, $("#tr-outil"));
+  }
+  function carnetHTML() {
+    var A = K.CARNET.achat, V = K.CARNET.vente;
+    return '<div class="tr-carnet" role="table" aria-label="Carnet d’ordres"><div class="tc-h"><span>Acheteurs</span><span>Vendeurs</span></div>' +
+      A.map(function (a, i) { var v = V[i]; return '<div class="tc-r"><span><b>' + fmt(a[0]) + "</b> · " + fmt(a[1]) + " titres</span><span><b>" + fmt(v[0]) + "</b> · " + fmt(v[1]) + " titres</span></div>"; }).join("") +
+      '<p class="tr-note">Meilleur acheteur 5 000, meilleur vendeur 5 050 : la fourchette est de 50 FCFA.</p></div>';
+  }
+  function exo(c, k, z) {
+    var e = c.exos[k], p = progCh(c.id), r = p.rep[k];
+    var h = '<p class="etiquette">' + (e.transfert ? "Transfert · un autre cas" : "Exercice " + (k + 1)) + '</p><p class="tr-qq">' + esc(e.q) + "</p>";
+    if (e.type === "qcm") h += '<div class="tr-choix">' + e.choix.map(function (x, i) { return '<button type="button" class="choix' + (r ? (i === e.bonne ? " juste" : i === r.v ? " faux" : "") : "") + '" data-i="' + i + '"' + (r ? " disabled" : "") + ">" + esc(x) + "</button>"; }).join("") + "</div>";
+    else h += '<form class="tr-num"><input inputmode="decimal" autocomplete="off" aria-label="Votre réponse"' + (r ? ' value="' + esc(r.v) + '" disabled' : "") + '><span>' + esc(e.unite || "") + "</span>" + (r ? "" : '<button class="bouton bouton-sombre">Valider</button>') + "</form>";
+    if (r) h += '<div class="tr-corr ' + (r.juste ? "ok" : "ko") + '"><b>' + (r.juste ? "Juste." : "Pas tout à fait.") + "</b> " + esc(r.msg) + (e.type === "nombre" ? '<br><span class="tr-cs">' + esc(e.corr) + "</span>" : "") + '</div><button type="button" class="lien-souligne tr-re">Refaire cet exercice</button>';
+    z.innerHTML = h;
+    $$(".choix", z).forEach(function (b) { b.onclick = function () { var i = +b.dataset.i; p.rep[k] = { v: i, juste: i === e.bonne, msg: e.fb[i] }; sauver(); suivi("cours-" + c.id + "-" + k); exo(c, k, z); }; });
+    var f = $("form", z);
+    if (f && !r) f.onsubmit = function (ev) {
+      ev.preventDefault();
+      var raw = $("input", f).value.replace(/\s/g, "").replace(",", ".").replace("−", "-");
+      if (raw === "" || isNaN(+raw)) { $("input", f).focus(); return; }
+      var v = +raw, rep = e.rep(), juste = Math.abs(v - rep) <= (e.tol || 0) + 1e-9, msg = "";
+      if (juste) msg = "Bonne réponse.";
+      else { var pg = (e.pieges || []).filter(function (x) { return Math.abs(v - x.v) <= (x.tol != null ? x.tol : Math.max(.01, Math.abs(x.v) * .002)); })[0]; msg = pg ? pg.msg : "Reprenez la formule du chapitre pas à pas, puis comparez avec la correction."; }
+      p.rep[k] = { v: $("input", f).value, juste: juste, msg: msg }; sauver(); suivi("cours-" + c.id + "-" + k); exo(c, k, z);
+    };
+    var re = $(".tr-re", z); if (re) re.onclick = function () { delete p.rep[k]; sauver(); exo(c, k, z); };
+  }
+
+  /* Outils interactifs des chapitres */
+  function curseur(id, lab, min, max, pas, v, suff) { return '<label class="tr-cur"><span>' + lab + ' <b id="' + id + '-v"></b>' + (suff || "") + '</span><input type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + pas + '" value="' + v + '"></label>'; }
+  function courbeSVG(pts, opt) {
+    var W = 520, H = 200, pl = 56, pr = 12, pt = 12, pb = 28;
+    var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; }).concat(opt.ys || []);
+    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys), m = (y1 - y0) * .08 || 1; y0 -= m; y1 += m;
+    var X = function (x) { return pl + (W - pl - pr) * (x - x0) / (x1 - x0); }, Y = function (y) { return pt + (H - pt - pb) * (1 - (y - y0) / (y1 - y0)); };
+    var g = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(opt.titre) + '">';
+    [0, .5, 1].forEach(function (f) { var y = y0 + (y1 - y0) * f; g += '<line class="gr" x1="' + pl + '" x2="' + (W - pr) + '" y1="' + Y(y) + '" y2="' + Y(y) + '"/><text class="ax" x="' + (pl - 6) + '" y="' + (Y(y) + 4) + '" text-anchor="end">' + fmt(y, opt.dy || 0) + "</text>"; });
+    if (opt.zero && y0 < 0 && y1 > 0) g += '<line class="z" x1="' + pl + '" x2="' + (W - pr) + '" y1="' + Y(0) + '" y2="' + Y(0) + '"/>';
+    (opt.series || [pts]).forEach(function (s, i) { g += '<path class="l' + i + '" d="' + s.map(function (p, j) { return (j ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1); }).join("") + '"/>'; });
+    if (opt.pt) g += '<circle class="pt" cx="' + X(opt.pt[0]) + '" cy="' + Y(opt.pt[1]) + '" r="5"/>';
+    g += '<text class="ax" x="' + pl + '" y="' + (H - 8) + '">' + esc(opt.gx) + '</text><text class="ax" x="' + (W - pr) + '" y="' + (H - 8) + '" text-anchor="end">' + esc(opt.dx) + "</text></svg>";
+    return g;
+  }
+  function outil(type, z) {
+    if (type === "interets") {
+      z.innerHTML = '<p class="etiquette">Outil · intérêts composés</p><div class="tr-curs">' + curseur("oi-c", "Capital", 100000, 5000000, 100000, 1000000, " FCFA") + curseur("oi-t", "Taux annuel", 1, 15, .5, 6, " %") + curseur("oi-n", "Durée", 1, 30, 1, 10, " ans") + '</div><div class="tr-out" id="oi-o"></div><div class="tr-gr" id="oi-g"></div>';
+      var f = function () {
+        var C0 = +$("#oi-c").value, t = +$("#oi-t").value / 100, n = +$("#oi-n").value;
+        $("#oi-c-v").textContent = fmt(C0); $("#oi-t-v").textContent = fmt(t * 100, 1); $("#oi-n-v").textContent = n;
+        var comp = C0 * Math.pow(1 + t, n), simp = C0 * (1 + t * n);
+        $("#oi-o").innerHTML = "<div><span>Intérêts composés</span><b>" + fmt(comp) + " FCFA</b></div><div><span>Intérêts simples</span><b>" + fmt(simp) + " FCFA</b></div><div><span>Écart dû à la composition</span><b>" + fmt(comp - simp) + " FCFA</b></div><div><span>Doublement (règle de 72)</span><b>≈ " + fmt(72 / (t * 100), 1) + " ans</b></div>";
+        var a = [], b = []; for (var k = 0; k <= n; k++) { a.push([k, C0 * Math.pow(1 + t, k)]); b.push([k, C0 * (1 + t * k)]); }
+        $("#oi-g").innerHTML = courbeSVG(a, { series: [a, b], titre: "Capital au fil des années", gx: "Année 0", dx: "Année " + n }) + '<p class="tr-leg"><i class="l0"></i>Composés <i class="l1"></i>Simples</p>';
+      };
+      $$("input", z).forEach(function (x) { x.oninput = f; }); f();
+    }
+    if (type === "obligation") {
+      z.innerHTML = '<p class="etiquette">Outil · prix d’une obligation</p><div class="tr-curs">' + curseur("ob-c", "Coupon", 2, 10, .25, 6, " %") + curseur("ob-n", "Échéance", 1, 15, 1, 5, " ans") + curseur("ob-t", "Taux du marché", 2, 12, .25, 7, " %") + '</div><div class="tr-out" id="ob-o"></div><div class="tr-gr" id="ob-g"></div>';
+      var g2 = function () {
+        var cp = +$("#ob-c").value / 100, n = +$("#ob-n").value, t = +$("#ob-t").value / 100;
+        $("#ob-c-v").textContent = fmt(cp * 100, 2); $("#ob-n-v").textContent = n; $("#ob-t-v").textContent = fmt(t * 100, 2);
+        var P = K.prixOblig(10000, cp, t, n);
+        $("#ob-o").innerHTML = "<div><span>Coupon annuel</span><b>" + fmt(10000 * cp) + " FCFA</b></div><div><span>Prix pour 10 000 de nominal</span><b>" + fmt(P) + " FCFA</b></div><div><span>Écart au pair</span><b>" + (P >= 10000 ? "+" : "−") + fmt(Math.abs(P - 10000)) + " FCFA (" + fmt((P / 10000 - 1) * 100, 1) + " %)</b></div>";
+        var pts = []; for (var x = 2; x <= 12.001; x += .25) pts.push([x, K.prixOblig(10000, cp, x / 100, n)]);
+        $("#ob-g").innerHTML = courbeSVG(pts, { titre: "Prix selon le taux du marché", pt: [t * 100, P], gx: "Taux 2 %", dx: "Taux 12 %" }) + '<p class="tr-leg">Plus la courbe est pentue, plus le prix réagit aux taux. Allongez l’échéance pour le voir.</p>';
+      };
+      $$("input", z).forEach(function (x) { x.oninput = g2; }); g2();
+    }
+    if (type === "portefeuille") {
+      z.innerHTML = '<p class="etiquette">Outil · deux actifs, une corrélation</p><p class="tr-note">A : rendement attendu 10 %, volatilité 25 %. B : rendement attendu 6 %, volatilité 15 %.</p><div class="tr-curs">' + curseur("pf-w", "Part de A", 0, 100, 5, 50, " %") + curseur("pf-r", "Corrélation", -1, 1, .1, .2, "") + '</div><div class="tr-out" id="pf-o"></div><div class="tr-gr" id="pf-g"></div>';
+      var g3 = function () {
+        var w = +$("#pf-w").value / 100, rho = +$("#pf-r").value, sa = .25, sb = .15;
+        $("#pf-w-v").textContent = Math.round(w * 100); $("#pf-r-v").textContent = fmt(rho, 1);
+        var vol = function (x) { return Math.sqrt(x * x * sa * sa + (1 - x) * (1 - x) * sb * sb + 2 * x * (1 - x) * rho * sa * sb); };
+        var R = w * .10 + (1 - w) * .06, V = vol(w);
+        $("#pf-o").innerHTML = "<div><span>Rendement attendu</span><b>" + fmt(R * 100, 1) + " %</b></div><div><span>Volatilité</span><b>" + fmt(V * 100, 1) + " %</b></div><div><span>Moyenne pondérée des volatilités</span><b>" + fmt((w * sa + (1 - w) * sb) * 100, 1) + " %</b></div><div><span>Gain de diversification</span><b>" + fmt((w * sa + (1 - w) * sb - V) * 100, 1) + " point(s)</b></div>";
+        var pts = []; for (var x = 0; x <= 1.0001; x += .05) pts.push([x * 100, vol(x) * 100]);
+        $("#pf-g").innerHTML = courbeSVG(pts, { titre: "Volatilité selon la part de A", pt: [w * 100, V * 100], gx: "0 % de A", dx: "100 % de A", dy: 0 }) + '<p class="tr-leg">Volatilité du portefeuille (%) selon la part de A. Baissez la corrélation : le creux s’approfondit.</p>';
+      };
+      $$("input", z).forEach(function (x) { x.oninput = g3; }); g3();
+    }
+    if (type === "option") {
+      z.innerHTML = '<p class="etiquette">Outil · gain d’une option à l’échéance</p><div class="seg" role="group" aria-label="Type d’option"><button type="button" data-op="call" aria-pressed="true">Call (achat)</button><button type="button" data-op="put" aria-pressed="false">Put (vente)</button></div><div class="tr-curs">' + curseur("op-k", "Prix d’exercice", 4000, 6000, 100, 5000, " FCFA") + curseur("op-p", "Prime", 50, 600, 10, 200, " FCFA") + curseur("op-s", "Cours final", 3500, 6500, 50, 5600, " FCFA") + '</div><div class="tr-out" id="op-o"></div><div class="tr-gr" id="op-g"></div>';
+      var typ = "call";
+      var g4 = function () {
+        var K0 = +$("#op-k").value, pr = +$("#op-p").value, S = +$("#op-s").value;
+        $("#op-k-v").textContent = fmt(K0); $("#op-p-v").textContent = fmt(pr); $("#op-s-v").textContent = fmt(S);
+        var gain = function (x) { return (typ === "call" ? Math.max(x - K0, 0) : Math.max(K0 - x, 0)) - pr; };
+        var pm = typ === "call" ? K0 + pr : K0 - pr;
+        $("#op-o").innerHTML = "<div><span>Gain net par action</span><b class=\"" + (gain(S) >= 0 ? "hausse" : "baisse") + "\">" + (gain(S) >= 0 ? "+" : "−") + fmt(Math.abs(gain(S))) + " FCFA</b></div><div><span>Perte maximale</span><b>la prime, " + fmt(pr) + " FCFA</b></div><div><span>Point mort</span><b>" + fmt(pm) + " FCFA</b></div>";
+        var pts = []; for (var x = 3500; x <= 6500; x += 50) pts.push([x, gain(x)]);
+        $("#op-g").innerHTML = courbeSVG(pts, { titre: "Gain selon le cours final", pt: [S, gain(S)], zero: true, gx: "3 500 FCFA", dx: "6 500 FCFA" }) + '<p class="tr-leg">Gain net par action selon le cours à l’échéance. Sous zéro, la perte s’arrête à la prime.</p>';
+      };
+      $$("input", z).forEach(function (x) { x.oninput = g4; });
+      $$("[data-op]", z).forEach(function (b) { b.onclick = function () { typ = b.dataset.op; $$("[data-op]", z).forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); g4(); }; });
+      g4();
+    }
+  }
+
   /* ================= Mon groupe ================= */
   function vGroupe() {
     vue.innerHTML = '<section class="tr-bloc"><p class="surtitre">Mon groupe</p><h2>Pratiquer avec un formateur</h2>' +
       '<p class="lead">Un enseignant ou un animateur choisit le scénario, l’échéance et les notions, puis suit la progression du groupe. Chaque participant a son propre marché : vos ordres ne changent pas les cours des autres.</p>' +
       '<div class="tr-scs"><div class="carte"><h3 class="titre-tuile">Vous avez un code de groupe</h3><form id="tr-gf" class="tr-num"><input id="tr-gc" placeholder="EFA-XXXX-XXXX" autocomplete="off" aria-label="Code du groupe"><button class="bouton bouton-sombre">Rejoindre</button></form><p class="tr-note" id="tr-gm" role="status"></p></div>' +
       '<div class="carte"><h3 class="titre-tuile">Vous êtes formateur ou organisation</h3><p>Groupes, exercices assignés et tableau de bord du formateur arrivent avec les comptes EFA Traders. Écrivez-nous pour préparer une cohorte pilote.</p><a class="bouton bouton-principal" href="organisations.html?src=traders">Former un groupe</a></div></div>' +
-      '<p class="tr-note">Les réponses individuelles des autres membres ne sont jamais visibles. Le formateur ne peut pas modifier vos décisions.</p></section>';
+      '<p class="tr-note">Les réponses individuelles des autres membres ne sont jamais visibles. Le formateur ne peut pas modifier vos décisions.</p></section>' +
+      (K ? '<section class="tr-bloc" id="tr-classe"><div class="tr-ent"><div><p class="surtitre">Utiliser en classe</p><h2>Le programme du cours</h2></div><button class="lien-souligne" type="button" id="tr-pp">Imprimer le programme</button></div><p class="lead">Quatorze chapitres pour un premier cycle : environ ' + Math.round(K.CHAPITRES.reduce(function (a, c) { return a + parseInt(c.duree, 10); }, 0) / 60 * 10) / 10 + ' h de cours, plus la pratique au simulateur. Chaque chapitre se termine par un cas de transfert et un lien vers un scénario.</p><div class="tr-table gauche"><table><thead><tr><th>Ch.</th><th>Chapitre</th><th>Durée</th><th>Compétences</th><th>Pratique</th></tr></thead><tbody>' +
+        K.CHAPITRES.map(function (c, i) { var pr = c.pratique && c.pratique.lien ? (c.pratique.lien.indexOf("sc:") === 0 ? "Scénario « " + (C.SCENARIOS.filter(function (x) { return x.id === c.pratique.lien.slice(3); })[0] || {}).titre + " »" : "Marché libre") : "Outil du chapitre"; return "<tr><td>" + (i + 1) + '</td><td><a href="#cours-' + c.id + '">' + esc(c.titre) + "</a></td><td>" + c.duree + "</td><td>" + c.objectifs.map(esc).join("<br>") + "</td><td>" + esc(pr) + "</td></tr>"; }).join("") + "</tbody></table></div></section>" : "");
     $("#tr-gf").onsubmit = function (e) { e.preventDefault(); var v = $("#tr-gc").value.trim().toUpperCase(); $("#tr-gm").textContent = v ? "Les groupes EFA Traders ouvrent avec les comptes. Gardez ce code : votre formateur vous dira quand l’utiliser. En attendant, suivez les tutoriels : votre progression est gardée sur cet appareil." : "Saisissez le code donné par votre formateur."; if (v) { D.groupe = v; sauver(); } };
     if (D.groupe) $("#tr-gc").value = D.groupe;
+    var pp = $("#tr-pp"); if (pp) pp.onclick = function () { document.body.classList.add("imp-classe"); window.print(); setTimeout(function () { document.body.classList.remove("imp-classe"); }, 500); };
   }
 
   /* ================= Glossaire ================= */

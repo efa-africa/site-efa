@@ -102,5 +102,38 @@ const z = JSON.parse(JSON.stringify(x));
 M.avancer(z, m1); M.avancer(x, m1);
 t("Actualisation : l'état sauvegardé reprend à l'identique", JSON.stringify(z) === JSON.stringify(x));
 
+// 17 Ordres à cours limité et stop
+const Bx = (o, h, l, c) => ({ o, h, l, c, v: 1000 });
+let ml = { series: { AAA: [Bx(5000,5000,5000,5000), Bx(5100,5150,4900,5000), Bx(5000,5050,4980,5020), Bx(5200,5250,5150,5200)] }, debut: 0, fin: 3 };
+s = M.nouvelleSession(sc, ml, {});
+M.soumettre(s, ml, { actif: "AAA", sens: "achat", qte: 10, type: "limite", limite: 4950, validite: 1, justification: J });
+M.avancer(s, ml);
+t("Limite achat 4 950 : ouverture 5 100, plus bas 4 900 → exécuté à 4 950", s.ordres[0].etat === "exécuté" && s.ordres[0].execution.prix === 4950);
+s = M.nouvelleSession(sc, ml, {});
+M.soumettre(s, ml, { actif: "AAA", sens: "achat", qte: 10, type: "limite", limite: 5200, justification: J });
+M.avancer(s, ml);
+t("Limite achat 5 200 : ouverture 5 100 déjà sous la limite → exécuté à 5 100", s.ordres[0].execution.prix === 5100);
+s = M.nouvelleSession(sc, ml, {});
+M.soumettre(s, ml, { actif: "AAA", sens: "achat", qte: 10, type: "limite", limite: 4800, validite: 2, justification: J });
+M.avancer(s, ml); const att = s.ordres[0].etat; M.avancer(s, ml);
+t("Limite non atteinte : en attente, puis expirée après sa validité", att === "en attente" && s.ordres[0].etat === "expiré" && s.liquidites === 1000000);
+s = M.nouvelleSession(sc, ml, { execution: "ouverture" });
+M.soumettre(s, ml, { actif: "AAA", sens: "achat", qte: 10, justification: J }); M.avancer(s, ml);
+M.soumettre(s, ml, { actif: "AAA", sens: "vente", qte: 10, type: "stop", seuil: 4990, justification: J }); M.avancer(s, ml);
+t("Stop vente 4 990 : plus bas 4 980 → exécuté au seuil", s.ordres[1].etat === "exécuté" && s.ordres[1].execution.prix === 4990);
+let mg = { series: { AAA: [Bx(5000,5000,5000,5000), Bx(4600,4700,4550,4650)] }, debut: 0, fin: 1 };
+s = M.nouvelleSession(sc, mg, { execution: "immediat" });
+M.soumettre(s, mg, { actif: "AAA", sens: "achat", qte: 10, justification: J });
+s.execution = "ouverture";
+M.soumettre(s, mg, { actif: "AAA", sens: "vente", qte: 10, type: "stop", seuil: 4900, justification: J }); M.avancer(s, mg);
+t("Stop vente 4 900 et ouverture à 4 600 : exécuté à 4 600, moins bon que le seuil", s.ordres[1].execution.prix === 4600);
+s = M.nouvelleSession(sc, mg, { execution: "immediat" });
+r = M.soumettre(s, mg, { actif: "AAA", sens: "achat", qte: 1, type: "limite", limite: 4000, justification: J });
+t("Exécution au cours affiché : ordre limite refusé avec explication", !r.ok && r.code === "TYPE");
+s = M.nouvelleSession(sc, ml, {});
+a = M.soumettre(s, ml, { actif: "AAA", sens: "achat", qte: 150, type: "limite", limite: 5000, justification: J });
+b = M.soumettre(s, ml, { actif: "AAA", sens: "achat", qte: 100, justification: J });
+t("Un ordre limite réserve ses liquidités : pas de double dépense", a.ok && !b.ok && b.code === "LIQUIDITES");
+
 console.log(`\n${ok} réussis, ${ko} échoués`);
 process.exit(ko ? 1 : 0);

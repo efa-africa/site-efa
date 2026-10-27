@@ -114,13 +114,16 @@
 
   /* Estimation affichée dans le ticket (avant confirmation) */
   function estimer(st, marche, o) {
-    var p = coursRef(st, marche, o.actif, o.sens), brut = montant(st, o.qte, p), f = fraisDe(st, brut);
+    var type = o.type || "marché";
+    var p = type === "limite" ? o.limite : type === "stop" ? o.seuil : coursRef(st, marche, o.actif, o.sens), brut = montant(st, o.qte, p), f = fraisDe(st, brut);
     var pos = st.positions[o.actif] || { qte: 0, cout: 0 };
     return {
       prix: p, brut: brut, frais: f, total: o.sens === "achat" ? brut + f : brut - f,
       liquiditesApres: o.sens === "achat" ? st.liquidites - brut - f : st.liquidites + brut - f,
       qteApres: o.sens === "achat" ? pos.qte + o.qte : pos.qte - o.qte,
-      execution: st.execution === "immediat" ? "au cours affiché" : "à l'ouverture de la prochaine séance, prix final inconnu"
+      execution: type === "limite" ? (o.sens === "achat" ? "seulement à " + p + " ou moins, dès que le marché le permet ; sinon l'ordre attend, puis expire" : "seulement à " + p + " ou plus, dès que le marché le permet ; sinon l'ordre attend, puis expire")
+        : type === "stop" ? "déclenché si le cours " + (o.sens === "vente" ? "descend" : "monte") + " jusqu'à " + p + " ; le prix final peut être moins bon que le seuil"
+        : st.execution === "immediat" ? "au cours affiché" : "à l'ouverture de la prochaine séance, prix final inconnu"
     };
   }
 
@@ -133,6 +136,8 @@
     TERMINEE: "Session terminée : plus aucun ordre possible.",
     DEJA: "Action déjà traitée : cet ordre est déjà enregistré.",
     JUSTIF: "Choisissez la raison de votre décision.",
+    TYPE: "Ici, l'exécution se fait au cours affiché : seuls les ordres au marché sont possibles.",
+    PRIX: "Indiquez un prix limite ou un seuil supérieur à zéro.",
     MARCHE: "Marché indisponible pour cet actif."
   };
 
@@ -143,13 +148,19 @@
     if (!marche.series[o.actif]) return erreur("MARCHE", MESSAGES.MARCHE);
     if (!(o.qte > 0) || Math.floor(o.qte) !== o.qte) return erreur("QTE_INVALIDE", MESSAGES.QTE_INVALIDE);
     if (!o.justification || !o.justification.categorie) return erreur("JUSTIF", MESSAGES.JUSTIF);
+    var type = o.type || "marché";
+    if (type !== "marché" && st.execution === "immediat") return erreur("TYPE", MESSAGES.TYPE);
+    if (type === "limite" && !(o.limite > 0)) return erreur("PRIX", MESSAGES.PRIX);
+    if (type === "stop" && !(o.seuil > 0)) return erreur("PRIX", MESSAGES.PRIX);
     var est = estimer(st, marche, o);
     var reservee = st.ordres.filter(function (x) { return x.etat === "en attente" && x.actif === o.actif && x.sens === "vente"; }).reduce(function (a, x) { return a + x.qte; }, 0);
     var engage = st.ordres.filter(function (x) { return x.etat === "en attente" && x.sens === "achat"; }).reduce(function (a, x) { return a + x.estimation.total; }, 0);
     if (o.sens === "vente" && o.qte + reservee > ((st.positions[o.actif] || {}).qte || 0)) return erreur("QUANTITE", MESSAGES.QUANTITE);
     if (o.sens === "achat" && est.total + engage > st.liquidites) return erreur("LIQUIDITES", MESSAGES.LIQUIDITES);
     var ordre = {
-      id: st.prochainId++, actif: o.actif, sens: o.sens, qte: o.qte, type: "marché",
+      id: st.prochainId++, actif: o.actif, sens: o.sens, qte: o.qte, type: type,
+      limite: type === "limite" ? o.limite : null, seuil: type === "stop" ? o.seuil : null,
+      validite: type === "marché" ? 1 : Math.max(1, Math.min(60, o.validite || 5)),
       seanceSoumission: st.seance, soumisLe: o.date || Date.now(), estimation: est,
       justification: { categorie: o.justification.categorie, texte: (o.justification.texte || "").slice(0, 280) },
       etat: "en attente", execution: null, reflexion: null
@@ -202,6 +213,26 @@
     return v;
   }
 
+  /* Prix d'exécution d'un ordre en attente sur la séance b, ou null.
+     Conventions (bougies seules, ordre des mouvements inconnu dans la séance) :
+     - au marché : ouverture ;
+     - limite : à l'ouverture si elle est déjà au-delà de la limite (prix plus favorable), sinon à la limite si la séance l'a atteinte ;
+     - stop : à l'ouverture si elle a déjà franchi le seuil (souvent moins bon que le seuil), sinon au seuil si la séance l'a touché.
+     Pour le change, l'achat se fait à l'ask (bid + spread), la vente au bid. */
+  function prixExecution(st, o, b) {
+    var sp = st.univers === "forex" && o.sens === "achat" ? (st.spread[o.actif] || 0) : 0;
+    var O = b.o + sp, H = b.h + sp, L = b.l + sp, type = o.type || "marché";
+    if (type === "marché") return { prix: O, moment: "ouverture" };
+    if (type === "limite") {
+      if (o.sens === "achat") { if (O <= o.limite) return { prix: O, moment: "ouverture" }; if (L <= o.limite) return { prix: o.limite, moment: "en séance" }; }
+      else { if (O >= o.limite) return { prix: O, moment: "ouverture" }; if (H >= o.limite) return { prix: o.limite, moment: "en séance" }; }
+      return null;
+    }
+    if (o.sens === "vente") { if (O <= o.seuil) return { prix: O, moment: "ouverture (seuil franchi)" }; if (L <= o.seuil) return { prix: o.seuil, moment: "en séance (seuil touché)" }; }
+    else { if (O >= o.seuil) return { prix: O, moment: "ouverture (seuil franchi)" }; if (H >= o.seuil) return { prix: o.seuil, moment: "en séance (seuil touché)" }; }
+    return null;
+  }
+
   /* Avance d'une séance : publication, exécution à l'ouverture, valorisation */
   function avancer(st, marche) {
     if (st.termine) return erreur("TERMINEE", MESSAGES.TERMINEE);
@@ -210,10 +241,9 @@
     var execs = 0;
     st.ordres.forEach(function (o) {
       if (o.etat !== "en attente") return;
-      var b = barre(marche, o.actif, st.seance);
-      var prix = st.univers === "forex" && o.sens === "achat" ? b.o + (st.spread[o.actif] || 0) : b.o;
-      executer(st, o, prix, st.seance, "ouverture");
-      execs++;
+      var r = prixExecution(st, o, barre(marche, o.actif, st.seance));
+      if (r) { executer(st, o, r.prix, st.seance, r.moment); execs++; }
+      else if (st.seance >= o.seanceSoumission + o.validite) { o.etat = "expiré"; o.motif = "Le prix demandé n'a pas été atteint pendant la validité de l'ordre."; }
     });
     if (execs) st.valorisations.push({ seance: st.seance, moment: "après exécution", valeur: valeur(st, marche, st.seance, "o") });
     st.valorisations.push({ seance: st.seance, moment: "clôture", valeur: valeur(st, marche, st.seance, "c") });
@@ -279,7 +309,7 @@
 
   var API = {
     hasard: hasard, serie: serie, verifierOHLC: verifierOHLC, construireMarche: construireMarche,
-    nouvelleSession: nouvelleSession, visibles: visibles, estimer: estimer, soumettre: soumettre, executer: executer,
+    nouvelleSession: nouvelleSession, visibles: visibles, estimer: estimer, prixExecution: prixExecution, soumettre: soumettre, executer: executer,
     annuler: annuler, avancer: avancer, avancerN: avancerN, valeur: valeur, baisseMax: baisseMax, reflechir: reflechir,
     bilan: bilan, rapprocher: rapprocher, coursRef: coursRef, montant: montant, MESSAGES: MESSAGES,
     fcfa: fcfa, usd: usd, taux: taux, pct: pct, arrondiPas: arrondiPas
