@@ -494,6 +494,10 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .acc-p b{font-family:var(--display);font-size:22px;color:#fff}
 .acc-p span{font-size:14.5px;color:#C9D1DE}
 .acc-p:nth-child(2){background:#111B2F}.acc-p:nth-child(3){background:#14507F}
+
+.inst{margin:4px 0 0;padding-left:22px;display:grid;gap:8px;font-size:15.5px;line-height:1.45}
+.inst li::marker{font-weight:800;color:#DA3C1B}
+.ico-i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:#F5EFE2;vertical-align:middle;color:#1B71B2}
 </style>
 
 <div class="stage">
@@ -621,8 +625,14 @@ var ui={seg:"outils",cyc:null,qt:null,view:"accueil",p:{},ob:0,ex:{},kp:"",filtr
 function go(view,p){ui.hint=null;ui.view=view;ui.p=p||{};ui.ex={};ui.kp="";ui.sheet=null;render(true);$scroll.scrollTop=0;}
 function nav(view,p){hist.push({view:ui.view,p:ui.p});if(hist.length>30)hist.shift();go(view,p);}
 function toast(t){$toast.innerHTML='<div class="toast" role="status">'+esc(t)+'</div>';$island.classList.add("talk");clearTimeout(toast.t);toast.t=setTimeout(function(){$toast.innerHTML="";$island.classList.remove("talk");},2100);}
+var ICON_PARTAGE='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v9h14v-9h-1"/></svg>';
+function plateforme(){var u=navigator.userAgent||"";if(/iPhone|iPad|iPod/i.test(u)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1))return "ios";return "android";}
+function installee(){try{return window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;}catch(e){return false;}}
+function instVu(v){try{if(v)localStorage.setItem("efa_appli_install","1");return localStorage.getItem("efa_appli_install")==="1";}catch(e){return !!v;}}
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();ui.bip=e;if(ui.sheet&&ui.sheet.k==="installer")renderSheet();});
+window.addEventListener("appinstalled",function(){instVu(true);ui.bip=null;if(ui.sheet&&ui.sheet.k==="installer")closeSheet();toast("EFA est installée");});
 function openSheet(s){ui.sheet=s;ui.kp="";renderSheet();}
-function closeSheet(){ui.sheet=null;ui.kp="";renderSheet();}
+function closeSheet(){if(ui.sheet&&ui.sheet.k==="installer")instVu(true);ui.sheet=null;ui.kp="";renderSheet();}
 
 /* ───── Logique leçons ───── */
 function LS(id){return st.lecons[id]||(st.lecons[id]={statut:"a_faire",step:0,essais:{},erreurs:0,verifiee:false,review:null});}
@@ -1058,6 +1068,15 @@ function renderSheet(){var s=ui.sheet;if(!s){$sheet.innerHTML="";return;}var h="
   if(s.k==="programme"){var pg=EP.programmes[+s.id];h='<span class="sur">Selon votre objectif</span><h2 class="h2">'+esc(pg.nom)+'</h2><p class="sub" style="font-size:15.5px">'+esc(pg.pour)+'. '+esc(pg.duree)+'.</p><div class="list">'+pg.sequence.map(function(id,k){var q=MODS[id];return q?'<button class="row mrow" data-act="module" data-id="'+esc(q.id)+'"><span class="sq">'+(k+1)+'</span><span class="grow"><span class="t">'+esc(q.titre)+'</span><span class="s">'+esc(q.nom||"")+'</span></span>'+ICON.chev+'</button>':"";}).join("")+'</div><div class="glass"><span class="sur" style="color:var(--green)">À l’arrivée</span><p class="h3">'+esc(pg.arrivee)+'</p></div>';}
   if(s.k==="sdico"){var D2=EDICO.length?EDICO:C.dico.map(function(d){return {titre:d.mot,definition_courte:d.def};}),dx=D2[+s.id];h='<div class="memo" style="padding:22px"><div class="dico" style="border:0;padding:0;align-items:flex-end"><span class="letter" style="font-size:84px">'+esc(dx.titre[0])+'</span><div><p class="big" style="color:#fff;font-size:30px;line-height:1.1">'+esc(dx.titre)+'</p></div></div><p style="font-size:16.5px;color:#E8EDF5">'+esc(dx.definition_courte||"")+'</p>'+(dx.exemple?'<p>'+esc(dx.exemple)+'</p>':'')+'</div>'+(dx.url_substack?'<a class="btn ghost block" href="'+esc(dx.url_substack)+'" target="_blank" rel="noopener">Lire la fiche complète ↗</a>':'')+(dx.slug?'<button class="btn block" data-act="web" data-url="outils.html#dico/'+esc(dx.slug)+'" data-t="Dico pratique">Voir dans le Dico</button>':'');}
   if(s.k==="siteDay"){var c3=siteCahier(),cu3=c3&&EPLAN.cahier.semaineEnCours(c3);if(cu3){var j3=EPLAN.dates.numeroJour(cu3.debut);if(!s.st){s.st=1;ui.kp=cu3.jours[j3-1]!=null?String(cu3.jours[j3-1]):"";}h='<h2 class="h2">Aujourd’hui</h2><p class="meta">'+esc(EPLAN.cahier.libPoste(cu3))+' · jour '+j3+' sur 7</p>'+kpDisplay(true)+keypad()+'<button class="btn block" data-act="siteDayOk">Enregistrer</button><p class="fine">Le montant s’ajoute à votre défi du cahier EFA. Rien dépensé ? Enregistrez 0.</p>';}}
+  if(s.k==="installer"){var pf=s.pf||plateforme();
+    var IOS='<ol class="inst"><li>Ouvrez cette page dans <b>Safari</b> (sur iPhone, l’installation passe par Safari).</li><li>Touchez le bouton <b>Partager</b> <span class="ico-i" aria-hidden="true">'+ICON_PARTAGE+'</span>, en bas de l’écran.</li><li>Faites défiler et touchez <b>Sur l’écran d’accueil</b>.</li><li>Touchez <b>Ajouter</b>. L’icône EFA apparaît avec vos applis.</li></ol>';
+    var AND=(ui.bip?'<button class="btn block" data-act="installNow">Installer EFA sur mon téléphone</button><p class="fine" style="text-align:center">Votre téléphone vous demande de confirmer : touchez « Installer ».</p>':'')
+      +'<ol class="inst"'+(ui.bip?' style="opacity:.85"':'')+'>'+(ui.bip?'<p class="meta" style="margin:0 0 4px">Ou à la main :</p>':'')+'<li>Ouvrez cette page dans <b>Chrome</b>.</li><li>Touchez le menu <b>⋮</b>, en haut à droite.</li><li>Touchez <b>Installer l’application</b> (ou <b>Ajouter à l’écran d’accueil</b>).</li><li>Confirmez. L’icône EFA apparaît avec vos applis.</li></ol>';
+    h='<span class="sur">Avant de commencer</span><h2 class="h2">Gardez EFA sur votre téléphone</h2><p class="sub" style="font-size:15.5px">Pas besoin du Play Store ni de l’App Store : en quatre gestes, EFA s’installe comme une appli. Elle fonctionne ensuite sans connexion, et se met à jour toute seule.</p>'
+      +'<div class="seg" role="tablist" aria-label="Votre téléphone"><button data-act="instPf" data-v="android" aria-pressed="'+(pf==="android")+'">J’utilise Android</button><button data-act="instPf" data-v="ios" aria-pressed="'+(pf==="ios")+'">J’utilise un iPhone</button></div>'
+      +(pf==="ios"?IOS:AND)
+      +'<div class="hstack" style="justify-content:space-between;gap:10px"><button class="link" data-act="close">Plus tard</button><button class="link" data-act="instDeja">C’est fait</button></div>'
+      +'<p class="fine">Rien n’est envoyé à EFA. Vous retrouvez ces explications dans Plus, « Installer l’appli ».</p>';}
   var keep=document.querySelector(".sheet"),top=keep?keep.scrollTop:0;
   $sheet.innerHTML='<div class="scrim" data-act="close"></div><div class="sheet" role="dialog" aria-modal="true"'+(s.shown?' style="animation:none"':'')+'><div class="grab"></div>'+h+'</div>';
   if(s.shown){$sheet.querySelector(".scrim").style.animation="none";$sheet.querySelector(".sheet").scrollTop=top;}s.shown=true;}
@@ -1300,8 +1319,8 @@ function vPlus(){var h=headerT("Plus","EFA, Ely et mes réglages");
   h+='<section class="stack"><div class="secth"><h2>Le Dico pratique</h2><span class="meta">'+D.length+' mots</span></div><div class="rail">'+D.map(function(d,i){return '<button class="dcard '+(["","alt","alt2"][i%3])+'" data-act="sheet" data-k="sdico" data-id="'+i+'"><span class="L">'+esc((d.titre||"?")[0])+'</span><span><b>'+esc(d.titre)+'</b><br><small>'+esc(d.collection||"Le Dico EFA")+(d.numero?" n° "+d.numero:"")+'</small></span></button>';}).join("")+'</div></section>';
   h+='<section class="stack"><div class="secth"><h2>EFA</h2></div><div class="list"><button class="row" data-act="go" data-view="etudes"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">Études &amp; prospective</span><span class="s">Données de terrain, Africa 2075, la BRVM</span></span>'+ICON.chev+'</button>'+webRow("À propos","L’école, son fondateur, sa méthode","auteur.html","book")+webRow("Pour les organisations","Entreprises, écoles, programmes de formation","organisations.html","people")+webRow("Contact et rendez-vous","Écrire à EFA, proposer un échange","rendez-vous.html","doc")+webRow("La lettre du mardi","L’argent de la semaine, par email","index.html#guide","bell")+'</div></section>';
   h+='<section class="stack"><div class="secth"><h2>La communauté</h2></div><div class="list">'+extRow("EFA Community","Le groupe WhatsApp, rendez-vous le jeudi à 19 h","https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a","WhatsApp")+extRow("TikTok","@efa.afrique","https://www.tiktok.com/@efa.afrique","TikTok")+extRow("YouTube","Min’Fin et les vidéos EFA","https://www.youtube.com/@efaeducationfinanciereafrique","YouTube")+extRow("Facebook","Éducation Financière Afrique","https://www.facebook.com/share/19sTpHPsGP/","Facebook")+'</div></section>';
-  h+='<section class="stack"><div class="secth"><h2>Moi</h2></div><div class="list"><button class="row" data-act="go" data-view="profil"><span class="sq" style="color:var(--green)">'+ICON.chart+'</span><span class="grow"><span class="t">Ma progression et mes données</span><span class="s">Sauvegarde, réglages, taille du texte</span></span>'+ICON.chev+'</button><button class="row" data-act="web" data-url="confidentialite.html" data-local="1" data-t="Confidentialité"><span class="sq" style="color:var(--cyan)">'+ICON.shield+'</span><span class="grow"><span class="t">Confidentialité</span><span class="s">Rien n’est envoyé à EFA sans votre accord</span></span>'+ICON.chev+'</button></div></section>';
-  h+='<p class="fine" style="text-align:center">EFA, l’appli · version 1.1. Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
+  h+='<section class="stack"><div class="secth"><h2>Moi</h2></div><div class="list"><button class="row" data-act="sheet" data-k="installer"><span class="sq" style="color:var(--coral2)">'+ICON.plus+'</span><span class="grow"><span class="t">Installer l’appli</span><span class="s">Sur Android ou iPhone, sans passer par un store</span></span>'+ICON.chev+'</button><button class="row" data-act="go" data-view="profil"><span class="sq" style="color:var(--green)">'+ICON.chart+'</span><span class="grow"><span class="t">Ma progression et mes données</span><span class="s">Sauvegarde, réglages, taille du texte</span></span>'+ICON.chev+'</button><button class="row" data-act="web" data-url="confidentialite.html" data-local="1" data-t="Confidentialité"><span class="sq" style="color:var(--cyan)">'+ICON.shield+'</span><span class="grow"><span class="t">Confidentialité</span><span class="s">Rien n’est envoyé à EFA sans votre accord</span></span>'+ICON.chev+'</button></div></section>';
+  h+='<p class="fine" style="text-align:center">EFA, l’appli · version 1.2. Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
   return h;}
 
 /* ───── Lecteur intégré : les pages du site, sans leur en-tête ni leur pied de page ───── */
@@ -1386,6 +1405,9 @@ document.addEventListener("click",function(ev){
   if(a==="filtre"){ui.filtre=b.dataset.f;render();return;}
   if(a==="tab"){ui.tab=b.dataset.t;render(true);return;}
   if(a==="sheet"){openSheet({k:b.dataset.k,id:id,day:b.dataset.day,c:b.dataset.c,f:b.dataset.f});return;}
+  if(a==="instPf"){ui.sheet.pf=b.dataset.v;renderSheet();return;}
+  if(a==="instDeja"){instVu(true);closeSheet();toast("Parfait");return;}
+  if(a==="installNow"){var pr=ui.bip;if(pr){pr.prompt();pr.userChoice.then(function(r){if(r&&r.outcome==="accepted")instVu(true);ui.bip=null;renderSheet();});}return;}
   if(a==="sset"){var te=document.getElementById("en-t");if(te)s.st.txt=te.value;s.st[b.dataset.f]=b.dataset.v;renderSheet();return;}
   if(a==="saveEntry"){var tx=document.getElementById("en-t").value.trim();if(!tx&&!ui.kp){toast("La note est vide");return;}
     var o={texte:tx,type:s.st.type,montant:s.st.prec==="manquant"||!ui.kp?null:+ui.kp,precision:s.st.prec==="manquant"?"manquant":(ui.kp?s.st.prec:null),nature:s.st.nature||null};
@@ -1439,5 +1461,6 @@ document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&ui.sheet)
 function tick(){var d=new Date();document.getElementById("clock").textContent=d.getHours()+":"+pad(d.getMinutes());}tick();setInterval(tick,30000);
 try{if("serviceWorker" in navigator&&location.protocol==="https:"&&/(^|\.)efa\.africa$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))navigator.serviceWorker.register("sw.js").catch(function(){});}catch(e){}
 render(true);
+if(!installee()&&!instVu()&&!DEMO)setTimeout(function(){if(!ui.sheet)openSheet({k:"installer"});},900);
 })();
 </script>
