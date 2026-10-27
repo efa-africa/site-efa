@@ -907,6 +907,22 @@ img.char{object-position:50% 18%}
 .ec-pf span{font-size:14.5px;line-height:1.45}
 .ec-pf em{margin-top:auto;font-style:normal;font-weight:800;font-size:14px;color:var(--soft-bleu)}
 @media (max-width:700px){.ec-pg{grid-template-columns:minmax(0,1fr);gap:8px}.ec-pf{padding:13px 15px}}
+/* Les trois portes : une porte par profil, arrondie en haut, serrure en bas */
+.ec-acces{align-items:stretch}
+.ec-a{border-radius:150px 150px 16px 16px/64px 64px 16px 16px!important;padding:34px 22px 22px!important;align-items:center!important;text-align:center;gap:10px!important;position:relative}
+.ec-a .ec-pour{align-self:center}
+.ec-a .ec-bt{justify-content:center}
+.ec-desc{margin-top:auto;padding:14px 16px;display:grid;gap:4px;font-size:14.5px;line-height:1.45;border-radius:12px;background:rgba(11,18,32,.16);width:100%}
+.ec-desc b{font-size:14px;font-weight:800}
+.ec-a1 .ec-desc{color:#fff}.ec-a2 .ec-desc{color:#C9D1DE;background:rgba(255,255,255,.06)}.ec-a2 .ec-desc b{color:#fff}
+.ec-a3 .ec-desc{color:#2A3142;background:rgba(11,18,32,.06)}.ec-a3 .ec-desc b{color:var(--nuit)}
+.ec-entrer{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 20px;border-radius:999px;font:800 16px/1 var(--f-body);text-decoration:none;transition:transform .12s,filter .2s}
+.ec-entrer:active{transform:scale(.96)}.ec-entrer:hover{filter:brightness(1.08)}
+.ec-a1 .ec-entrer{background:#fff;color:#B8341A}.ec-a2 .ec-entrer{background:#6DB8F2;color:#0B1220}.ec-a3 .ec-entrer{background:var(--nuit);color:#fff}
+.ec-cle{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:currentColor}
+.ec-cle svg{width:16px;height:16px;fill:#fff;stroke:none}
+.ec-a1 .ec-cle svg{fill:#fff}.ec-a1 .ec-cle{background:#DA3C1B}.ec-a2 .ec-cle{background:#0B1220}.ec-a2 .ec-cle svg{fill:#6DB8F2}.ec-a3 .ec-cle{background:#fff}.ec-a3 .ec-cle svg{fill:#0B1220}
+@media (max-width:700px){.ec-a{display:flex!important;flex-direction:column!important;border-radius:110px 110px 16px 16px/46px 46px 16px 16px!important;padding:26px 18px 18px!important}.ec-desc{font-size:14px}}
 .ec-pubs{margin:2px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-size:14.5px;color:#9FB0C8;max-width:900px}
 .ec-pubs a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
 .ec-reperes{margin:0;font-size:14px;font-weight:700;letter-spacing:.04em;color:#9FB0C8}
@@ -1106,17 +1122,9 @@ img.char{object-position:50% 18%}
     <div class="ec-in">
       <h2 class="ec-titre" id="ec-t2">Par où voulez-vous commencer&nbsp;?</h2>
       <div class="ec-acces">
-        <div class="ec-a ec-a1"><span class="ec-pour">Pour vous, à votre rythme</span><span class="ec-mot">Apprendre</span><span class="ec-q">Vos chiffres, un plan.</span><span class="ec-bt"><a href="#besoins" data-goatcounter-click="accueil-apprendre">Mon parcours</a><a href="decider.html?src=accueil" data-goatcounter-click="accueil-decider">Décider</a><a href="bourse-essentiel.html?src=accueil" data-goatcounter-click="accueil-bourse">La Bourse</a><a href="traders.html?src=accueil" data-goatcounter-click="accueil-traders">Simuler</a></span></div>
-        <div class="ec-a ec-a2"><span class="ec-pour">Pour les décideurs</span><span class="ec-mot">Anticiper</span><span class="ec-q">Les données, l’avenir.</span><span class="ec-bt"><a href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-comprendre">Études</a><a href="methode.html?src=accueil#africa-2075" data-goatcounter-click="accueil-africa2075-porte">Africa 2075</a><a href="bibliotheque.html?src=accueil" data-goatcounter-click="accueil-bibliotheque">Bibliothèque</a></span></div>
-        <div class="ec-a ec-a3"><span class="ec-pour">Pour les organisations</span><span class="ec-mot">Former</span><span class="ec-q">Vos équipes, suivies.</span><span class="ec-bt"><a href="organisations.html?src=accueil" data-goatcounter-click="accueil-organisations">Programme</a><a href="rendez-vous.html?sujet=organisation&src=accueil#contact" data-goatcounter-click="accueil-organisations-contact">Nous écrire</a></span></div>
-      </div>
-      <div class="ec-profils">
-        <p class="ec-pk">Vous êtes plutôt…</p>
-        <div class="ec-pg">
-          <a class="ec-pf" href="#besoins" data-goatcounter-click="accueil-profil-apprendre"><small>Je veux apprendre</small><span>Mieux gérer mon argent&nbsp;: budget, réserve, dettes, tontine, Bourse. L’école me guide pas à pas, gratuitement.</span><em>C’est moi →</em></a>
-          <a class="ec-pf" href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-profil-decideur"><small>Je suis un décideur</small><span>Dirigeant, élu, banquier, chercheur&nbsp;: des données de terrain et la prospective Africa 2075 pour orienter mes décisions.</span><em>C’est moi →</em></a>
-          <a class="ec-pf" href="organisations.html?src=accueil" data-goatcounter-click="accueil-profil-organisation"><small>Je forme une organisation</small><span>Entreprise, coopérative, association&nbsp;: un programme pour mon groupe, suivi, sans voir les montants de chacun.</span><em>C’est moi →</em></a>
-        </div>
+        <div class="ec-a ec-a1"><span class="ec-pour">Pour vous, à votre rythme</span><span class="ec-mot">Apprendre</span><span class="ec-q">Vos chiffres, un plan.</span><span class="ec-bt"><a href="#besoins" data-goatcounter-click="accueil-apprendre">Mon parcours</a><a href="decider.html?src=accueil" data-goatcounter-click="accueil-decider">Décider</a><a href="bourse-essentiel.html?src=accueil" data-goatcounter-click="accueil-bourse">La Bourse</a><a href="traders.html?src=accueil" data-goatcounter-click="accueil-traders">Simuler</a></span><span class="ec-desc"><b>Je veux apprendre</b>Mieux gérer mon argent&nbsp;: budget, réserve, dettes, tontine, Bourse. L’école me guide pas à pas, gratuitement.</span><a class="ec-entrer" href="#besoins" data-goatcounter-click="accueil-porte-entrer-apprendre"><span class="ec-cle"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M10.4 12.4 9 20h6l-1.4-7.6"/></svg></span>Entrer ici</a></div>
+        <div class="ec-a ec-a2"><span class="ec-pour">Pour les décideurs</span><span class="ec-mot">Anticiper</span><span class="ec-q">Les données, l’avenir.</span><span class="ec-bt"><a href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-comprendre">Études</a><a href="methode.html?src=accueil#africa-2075" data-goatcounter-click="accueil-africa2075-porte">Africa 2075</a><a href="bibliotheque.html?src=accueil" data-goatcounter-click="accueil-bibliotheque">Bibliothèque</a></span><span class="ec-desc"><b>Je suis un décideur</b>Dirigeant, élu, banquier, chercheur&nbsp;: des données de terrain et la prospective Africa 2075 pour orienter mes décisions.</span><a class="ec-entrer" href="methode.html?src=accueil#etudes" data-goatcounter-click="accueil-porte-entrer-decideur"><span class="ec-cle"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M10.4 12.4 9 20h6l-1.4-7.6"/></svg></span>Entrer ici</a></div>
+        <div class="ec-a ec-a3"><span class="ec-pour">Pour les organisations</span><span class="ec-mot">Former</span><span class="ec-q">Vos équipes, suivies.</span><span class="ec-bt"><a href="organisations.html?src=accueil" data-goatcounter-click="accueil-organisations">Programme</a><a href="rendez-vous.html?sujet=organisation&src=accueil#contact" data-goatcounter-click="accueil-organisations-contact">Nous écrire</a></span><span class="ec-desc"><b>Je forme une organisation</b>Entreprise, coopérative, association&nbsp;: un programme pour mon groupe, suivi, sans voir les montants de chacun.</span><a class="ec-entrer" href="organisations.html?src=accueil" data-goatcounter-click="accueil-porte-entrer-organisation"><span class="ec-cle"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M10.4 12.4 9 20h6l-1.4-7.6"/></svg></span>Entrer ici</a></div>
       </div>
       <p class="ec-pubs"><span>Dernière étude&nbsp;: <a href="etude-tontine-en-chiffres.html?src=accueil" data-goatcounter-click="accueil-etude">La tontine en chiffres</a></span><span>Africa 2075&nbsp;: <a href="africa-2075-dossier-1.html?src=accueil" data-goatcounter-click="accueil-africa2075">L’IA va multiplier les cerveaux, combien seront africains&nbsp;?</a></span></p>
     </div>
