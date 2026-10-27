@@ -244,7 +244,7 @@ def tail(pre):
     return f"""{reloc(footer, pre)}
 {JS_MENU}
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="{pre}efa-appli.js?v=2026102704" defer></script>
+<script src="{pre}efa-appli.js?v=2026102705" defer></script>
 </body>
 </html>
 """

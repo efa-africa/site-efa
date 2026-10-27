@@ -25,7 +25,7 @@
       + ".efa-nav a.efa-nav-logo{display:flex;align-items:center;gap:8px;padding:4px 8px 4px 0;font-size:11px;letter-spacing:.16em}"
       + ".efa-nav a.efa-nav-logo img{width:26px;height:26px}"
       + ".efa-nav a.efa-nav-p{background:#DA3C1B;color:#fff}"
-      + ".efa-nav a[aria-current]{box-shadow:inset 0 -2px 0 #E44828}"
+      + ".efa-nav a[aria-current]{background:rgba(255,255,255,.16)}"
       + "@media (max-width:640px){.efa-nav a.efa-nav-logo span{display:none}.efa-nav a{font-size:13.5px;padding:7px 8px}}"
       + "@media print{.efa-nav{display:none}}";
     document.head.appendChild(st);
