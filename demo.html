@@ -125,7 +125,7 @@ p{margin:0}
 .chiffre small{display:block;font-family:var(--f-body);font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft-corail);margin-top:10px}
 /* fin : choisir une autre démo */
 .ou{font-size:15px;font-weight:700;color:var(--t2);margin-top:6px}
-.autres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:680px}
+.autres{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;width:100%;max-width:820px}
 .dm{background:var(--panel);border:0;border-radius:14px;padding:14px 16px;text-align:left;color:#fff;cursor:pointer;font:inherit;display:flex;flex-direction:column;gap:5px;min-height:44px;transition:transform .12s,background .2s}
 .dm:hover{background:#18253F}.dm:active{transform:scale(.97)}
 .dm b{font-family:var(--f-display);font-size:17px;line-height:1.2}
@@ -136,6 +136,10 @@ p{margin:0}
 .demo.choix .bars{visibility:hidden}.demo.choix #passer,.demo.choix #pause,.demo.choix #recul{display:none}
 button.pf{border:0;font:inherit;cursor:pointer}
 .dm.ch{background:transparent;box-shadow:inset 0 0 0 0 transparent;background:#1A2A47}
+.dm.vu{opacity:.7}.dm.vu em{color:var(--t2)}
+a.dm{text-decoration:none}.dm.app{background:#F5EFE2;color:#0B1220;grid-column:1/-1;flex-direction:row;align-items:center;gap:6px 14px;flex-wrap:wrap}.dm.app b{flex:none}.dm.app span{flex:1 1 200px}.dm.app em{margin:0}
+.scene.fin{overflow-y:auto;justify-content:flex-start;padding-top:max(16px,4vh)}
+@media (max-width:640px){.scene.fin .dm:not(.app) span{display:none}.scene.fin .dm{padding:10px 14px;gap:2px}}.dm.app span{color:#4E5566}.dm.app em{color:#B8341A}
 .pf{background:var(--creme);color:var(--nuit);border-radius:14px;padding:16px;text-align:left;text-decoration:none;display:flex;flex-direction:column;gap:6px;min-width:0;transition:transform .12s}
 .pf:active{transform:scale(.97)}
 .pf small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#B8341A}
@@ -269,7 +273,7 @@ button.pf{border:0;font:inherit;cursor:pointer}
         </div>
         <p class="ou up d3">Aller plus loin en 30 secondes&nbsp;:</p>
         <div class="autres up d3" data-autres></div>
-        <button class="btn btn-ghost up d4" type="button" data-revoir>Revoir la démo</button>
+        <button class="btn btn-ghost up d4" type="button" data-revoir>Revoir la démo</button><button class="btn btn-ghost up d4" type="button" data-lancer="choix">← Choisir un autre profil</button>
       </div>
     </section>
 
@@ -322,6 +326,7 @@ button.pf{border:0;font:inherit;cursor:pointer}
         </div>
         <p class="ou up d3">Voir une autre démo&nbsp;:</p>
         <div class="autres up d3" data-autres></div>
+        <button class="btn btn-ghost up d4" type="button" data-lancer="choix">← Choisir un autre profil</button>
       </div>
     </section>
 
@@ -371,6 +376,7 @@ button.pf{border:0;font:inherit;cursor:pointer}
         </div>
         <p class="ou up d3">Voir une autre démo&nbsp;:</p>
         <div class="autres up d3" data-autres></div>
+        <button class="btn btn-ghost up d4" type="button" data-lancer="choix">← Choisir un autre profil</button>
       </div>
     </section>
 
@@ -421,6 +427,7 @@ button.pf{border:0;font:inherit;cursor:pointer}
         </div>
         <p class="ou up d3">Voir une autre démo&nbsp;:</p>
         <div class="autres up d3" data-autres></div>
+        <button class="btn btn-ghost up d4" type="button" data-lancer="choix">← Choisir un autre profil</button>
       </div>
     </section>
 
@@ -470,6 +477,7 @@ button.pf{border:0;font:inherit;cursor:pointer}
         </div>
         <p class="ou up d3">Voir une autre démo&nbsp;:</p>
         <div class="autres up d3" data-autres></div>
+        <button class="btn btn-ghost up d4" type="button" data-lancer="choix">← Choisir un autre profil</button>
       </div>
     </section>
 
@@ -507,7 +515,10 @@ var MUS=(function(){
     bourse:{t:'La Bourse',p:'Voir un cours monter ne suffit pas pour décider.',d:'30 s'},
     organisations:{t:'Former mon organisation',p:'Un programme pour un groupe, sans ses montants personnels.',d:'30 s'}
   };
-  var ORDRE={choix:[],efa:['tontine','bourse','choix'],tontine:['bourse','efa','choix'],bourse:['tontine','efa','choix'],organisations:['decideurs','efa','choix'],decideurs:['organisations','efa','choix']};
+  var ORDRE={choix:[],efa:['tontine','bourse','organisations','decideurs'],tontine:['bourse','efa','organisations','decideurs'],bourse:['tontine','efa','organisations','decideurs'],organisations:['efa','tontine','bourse','decideurs'],decideurs:['efa','tontine','bourse','organisations']};
+  /* Démos déjà vues pendant la visite : on propose d'abord celles qui restent */
+  function vues(){try{return JSON.parse(sessionStorage.getItem('efa_demo_vues')||'[]');}catch(e){return [];}}
+  function marquerVue(d){try{var v=vues();if(v.indexOf(d)<0){v.push(d);sessionStorage.setItem('efa_demo_vues',JSON.stringify(v));}}catch(e){}}
   var tout=[].slice.call(document.querySelectorAll('.scene')),demo=document.getElementById('demo'),sc=[],bars=document.getElementById('bars'),bi=[],D='efa',
       pb=document.getElementById('pause'),i=0,timer=null,paused=false,DUR=6500,reste=DUR,debut=0;
   function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
@@ -517,9 +528,12 @@ var MUS=(function(){
     sc=tout.filter(function(s){return s.getAttribute('data-d')===D;});
     bars.innerHTML=sc.map(function(){return '<i><b></b></i>';}).join('');bi=[].slice.call(bars.children);
     document.querySelectorAll('[data-autres]').forEach(function(box){
-      box.innerHTML=ORDRE[D].map(function(k){var x=DEMOS[k];return '<button type="button" class="dm'+(k==='choix'?' ch':'')+'" data-lancer="'+k+'"><b>'+esc(x.t)+'</b><span>'+esc(x.p)+'</span><em>'+(x.d?'Voir · '+x.d:'← Choisir')+'</em></button>';}).join('');
+      var V=vues(),L=ORDRE[D].slice().sort(function(a,b){return (V.indexOf(a)>=0)-(V.indexOf(b)>=0);});
+      box.innerHTML=L.map(function(k){var x=DEMOS[k],vu=V.indexOf(k)>=0;return '<button type="button" class="dm'+(vu?' vu':'')+'" data-lancer="'+k+'"><b>'+esc(x.t)+'</b><span>'+esc(x.p)+'</span><em>'+(vu?'✓ Déjà vue · revoir':'Voir · '+x.d)+'</em></button>';}).join('')
+        +'<a class="dm app" href="app/?installer=1&amp;src=demo-'+D+'" data-goatcounter-click="demo-appli-'+D+'"><b>L’appli EFA</b><span>Gardez l’école sur votre téléphone, même sans connexion.</span><em>Installer l’appli →</em></a>';
     });
     try{var u=location.pathname+(D==='choix'?'':'?d='+D);if(empiler)history.pushState({d:D},'',u);else history.replaceState({d:D},'',u);}catch(e){}
+    if(D!=='choix')marquerVue(D);
     efaCompte('demo-'+D+'-debut');
     show(depart||0);
   }
