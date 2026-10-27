@@ -85,3 +85,14 @@ L'ordre compte : un Worker 1.3 sans la colonne `bilan` ne pourrait pas enregistr
 Règles de confidentialité du bilan :
 - seulement des totaux ; aucune réponse individuelle, aucun message rédigé, aucun montant ;
 - sous **5 participants**, les marches « cas réussi » et « action essayée » ne s'affichent pas.
+
+## Mise à jour 1.4 · enquête anonyme des organisations et « Mon point » (27 octobre 2026)
+
+Une organisation peut interroger ses salariés ou ses membres avant de composer son programme (15 réponses oui/non, anonymes). Le participant peut aussi faire « Mon point » au départ, à 30 et à 90 jours.
+
+1. **D'abord** Supabase : SQL Editor, **New query**, collez tout `03-supabase-enquetes.sql`, puis **Run**. Résultat attendu : « Success. No rows returned ». Le script ajoute aussi la colonne `bilan` si la mise à jour 1.3 n'avait pas été faite.
+2. **Ensuite** Cloudflare : Worker **efa-ecole**, **Edit code**, remplacez tout par le `02-worker-efa-ecole.js` actuel, puis **Deploy**. Les variables ne changent pas.
+3. Vérifiez : https://efa-ecole.elysees-johnson.workers.dev doit afficher `"version":"1.4"`.
+4. Test : ouvrez `enquete.html`, créez une enquête de test, répondez une fois, puis ouvrez les résultats avec la clé reçue.
+
+Confidentialité : ni nom, ni email, ni adresse IP, ni montant ; seulement la date du jour et la suite de 15 réponses.
