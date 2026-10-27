@@ -76,6 +76,8 @@ body.mf{background:#070C16;color:#E8EDF5}
 
 /* Bannière : l’épisode à la une */
 .hero{position:relative;min-height:min(78svh,640px);display:flex;align-items:flex-end;overflow:hidden;background:#070C16}
+.hero-aff{position:absolute;z-index:1;right:max(16px,5vw);top:50%;transform:translateY(-50%);width:min(28vw,300px);height:auto;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+@media (max-width:820px){.hero-aff{display:none}}
 .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 22%;opacity:.55}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#070C16 0%,rgba(7,12,22,.82) 42%,rgba(7,12,22,.2) 100%),linear-gradient(0deg,#070C16 0%,rgba(7,12,22,0) 45%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-block:56px 44px}
@@ -111,6 +113,13 @@ body.mf{background:#070C16;color:#E8EDF5}
 .ep-d{font-size:13px;color:#C9D1DE;margin-top:6px}
 .badge{position:absolute;top:12px;left:12px;z-index:1;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--corail);color:#fff}
 .badge.bientot{background:#F2B84B;color:#0B1220}
+.ep.aff{aspect-ratio:auto;display:flex;flex-direction:column;background:#0D1525}
+.ep.aff img{position:static;width:100%;height:auto;aspect-ratio:1122/1402;object-fit:cover;object-position:top}
+.ep.aff::after{display:none}
+.ep.aff .ep-in{position:static;padding:12px 14px 14px}
+.ep.aff .ep-num,.ep.aff .ep-t{display:none!important}
+.ep.aff .ep-d{margin-top:0;font-size:14px;color:#E8EDF5}
+.ep.aff .play{top:auto;bottom:62px}
 .ep.off{cursor:default}
 .ep.off img{filter:grayscale(.6) brightness(.6)}
 .ep.off:hover{transform:none}
@@ -166,6 +175,7 @@ body.mf{background:#070C16;color:#E8EDF5}
 <main>
 <section class="hero" aria-labelledby="h-une">
   <div class="hero-img" id="hero-img" style="background-image:url('koffi.jpg')"></div>
+  <img class="hero-aff" id="hero-aff" src="" alt="" width="800" height="1000" hidden>
   <div class="wrap">
     <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
     <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › Min’Fin, la série</nav>
@@ -254,7 +264,7 @@ body.mf{background:#070C16;color:#E8EDF5}
   </div>
 </footer>
 
-<script src="minfin.js?v=2026102701"></script>
+<script src="minfin.js?v=2026102702"></script>
 <script src="efa-suite.js?v=2026102702" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 <script>
@@ -280,7 +290,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
       +'<p class="sous">'+esc(s.resume)+'</p><div class="rail" role="list">';
     eps.forEach(function(e){
       var on=e.statut==='publie'; e.saison=s.n; if(on) tous.push(e);
-      html+='<'+(on?'button type="button"':'div')+' class="ep'+(on?'':' off')+'" role="listitem"'+' id="ep-'+s.n+'-'+e.n+'"'+(on?' data-ep="'+s.n+'-'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"':' aria-label="Épisode '+e.n+', bientôt : '+esc(e.titre)+'"')+'>'
+      html+='<'+(on?'button type="button"':'div')+' class="ep'+(e.affiche?' aff':'')+(on?'':' off')+'" role="listitem"'+' id="ep-'+s.n+'-'+e.n+'"'+(on?' data-ep="'+s.n+'-'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"':' aria-label="Épisode '+e.n+', bientôt : '+esc(e.titre)+'"')+'>'
         +'<img src="'+esc(e.vignette||e.image)+'" alt="" loading="lazy">'
         +(on?'<span class="play" aria-hidden="true"></span>':'<span class="badge bientot">Bientôt</span>')
         +'<span class="ep-in"><span class="ep-num">'+e.n+'</span><span class="ep-t" style="display:block">'+esc(e.titre)+'</span><span class="ep-d" style="display:block">'+esc(e.notion)+' · '+esc(e.duree)+'</span></span>'
@@ -301,7 +311,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     document.getElementById('h-une').textContent=une.titre.replace(/ ([:?!;])/g,'\u00a0$1');
     document.getElementById('hero-kick').textContent='Nouvel épisode · Saison '+une.saison;
     document.getElementById('hero-meta').innerHTML='<b>Épisode '+une.n+'</b><span>'+esc(une.duree)+'</span><span>'+esc(une.notion)+'</span>';
-    document.getElementById('hero-img').style.backgroundImage="url('"+une.image+"')";
+    document.getElementById('hero-img').style.backgroundImage="url('"+une.image+"')";if(une.affiche){var hv=document.getElementById('hero-aff');if(hv){hv.src=une.vignette;hv.alt='Affiche de l’épisode '+une.n;hv.hidden=false;if(innerWidth>820)document.getElementById('hero-img').style.opacity='.18';}}
   }
 
   /* Lecteur : vidéo intégrée si l’identifiant YouTube est connu, sinon liens */
