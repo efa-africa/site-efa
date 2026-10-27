@@ -944,7 +944,7 @@ MODULES.push((function(){
     Array.prototype.forEach.call(box.children,function(b){b.onclick=function(){
       if(rep.length>qi) return;
       var k=+b.dataset.k, bon=k===q.b; rep.push(bon);
-      Array.prototype.forEach.call(box.children,function(c){c.disabled=true;var j=+c.dataset.k;if(j===q.b)c.classList.add('ok');else if(j===k)c.classList.add('ko')});
+      Array.prototype.forEach.call(box.children,function(c){c.disabled=true;var j=+c.dataset.k;if(j===q.b)c.classList.add('ok');else if(j===k)c.classList.add('ko')});if(window.EFA_SONS)EFA_SONS.joue(k===q.b?'bon':'faux');
       $('ex').innerHTML='<div class="explic"><strong>'+(bon?'Juste. ':'Pas tout à fait. ')+'</strong>'+q.x+'</div>';
       majPied();
     }});
@@ -1146,6 +1146,7 @@ MODULES.push((function(){
   var mq=+(new URLSearchParams(location.search).get('m')||0); if(mq>=1&&mq<=MODULES.length) ouvrir(mq); else sommaire();
 })();
 </script>
+<script src="efa-sons.js?v=2026102701" defer></script>
 <script src="efa-suite.js?v=2026102702" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 </body></html>

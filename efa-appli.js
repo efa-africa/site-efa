@@ -170,7 +170,8 @@
   var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102702"; s.defer = true; document.head.appendChild(s);
   var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102702"; f.defer = true; document.head.appendChild(f);
   var pt = document.createElement("script"); pt.src = "efa-point.js?v=2026102701"; pt.defer = true; document.head.appendChild(pt);
-  var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=2026102603"; qz.defer = true; document.head.appendChild(qz);
+  if (!window.EFA_SONS) { var so = document.createElement("script"); so.src = "efa-sons.js?v=2026102701"; so.defer = true; document.head.appendChild(so); }
+  var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=2026102701"; qz.defer = true; document.head.appendChild(qz);
   if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102501"; u.defer = true; document.head.appendChild(u); }
   if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102701"; k.defer = true; document.head.appendChild(k); }
 })();

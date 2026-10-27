@@ -141,7 +141,7 @@
   }
   function repondre(k) {
     if (choisi != null) return; choisi = k;
-    var x = liste[i], bon = k === x.ok; if (bon) bonnes++;
+    var x = liste[i], bon = k === x.ok; if (bon) bonnes++; if (window.EFA_SONS) EFA_SONS.joue(bon ? "bon" : "faux");
     el.querySelectorAll(".opt").forEach(function (b, j) { b.disabled = true; if (j === x.ok) b.classList.add("ok"); else if (j === k) b.classList.add("ko"); });
     var d = document.createElement("div");
     d.innerHTML = '<p class="exp"><b>' + (bon ? "Bonne réponse." : "Pas tout à fait.") + "</b> " + esc(x.e) + '</p><div class="cta" style="margin-top:14px"><button type="button" class="btn btn-clair" data-q="suite">' + (i + 1 < liste.length ? "Question suivante" : "Voir mon score") + "</button></div>";
@@ -149,7 +149,7 @@
     var s = d.querySelector("[data-q=suite]"); try { s.focus({ preventScroll: true }); s.scrollIntoView({ block: "nearest", behavior: "smooth" }); } catch (e) {}
   }
   function fin() {
-    i = liste.length; meilleur(cle, bonnes); compter("quiz-fin-" + cle + "-" + bonnes);
+    i = liste.length; if (window.EFA_SONS) EFA_SONS.joue(bonnes >= 3 ? "fin" : "clic"); meilleur(cle, bonnes); compter("quiz-fin-" + cle + "-" + bonnes);
     var mot = bonnes === 5 ? "Parfait. Vous connaissez votre sujet." : bonnes >= 3 ? "Belle base. Quelques points à consolider." : "C’est un bon début : l’école est faite pour ça.";
     var url = location.origin + "/" + (location.pathname.split("/").pop() || "") + "?quiz=" + cle;
     cadre('<p class="k">Votre score</p><div class="anneau" style="--p:' + (bonnes * 20) + '%"><span>' + bonnes + "/5</span></div><h2 class=\"mid\">" + mot + "</h2>"

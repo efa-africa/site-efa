@@ -166,7 +166,7 @@
     if (a) { ev.preventDefault(); var h = a.getAttribute("href").slice(1); aller(h || null, null, true); return; }
     var b = ev.target.closest(".opt"); if (!b || b.disabled || !cur) return;
     var S = st(cur.id), c = b.dataset.cle;
-    if (c.charAt(0) === "q") S.q[c] = b.dataset.v; else S.r[c] = b.dataset.v;
+    if (c.charAt(0) === "q") { S.q[c] = b.dataset.v; var qq = (cur.quiz || [])[+c.slice(1)]; if (qq && window.EFA_SONS) EFA_SONS.joue(b.dataset.v === qq[2] ? "bon" : "faux"); } else S.r[c] = b.dataset.v;
     sauver(); compte("ecole-" + cur.id + "-" + c + "-" + b.dataset.v);
     aller(cur.id, S.i);
     var x = corps.querySelector(".explic"); if (x && x.scrollIntoView) x.scrollIntoView({ block: "nearest" });

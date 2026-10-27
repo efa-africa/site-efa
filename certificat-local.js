@@ -148,7 +148,7 @@
         b.onclick = function () {
           if (vue.querySelector(".opt[disabled]")) return;
           var ch = +b.getAttribute("data-k"), ok = ch === it.q.b; if (ok) bons++;
-          vue.querySelectorAll(".opt").forEach(function (c) { c.disabled = true; var kk = +c.getAttribute("data-k"); if (kk === it.q.b) c.classList.add("juste"); else if (c === b) c.classList.add("faux"); });
+          vue.querySelectorAll(".opt").forEach(function (c) { c.disabled = true; var kk = +c.getAttribute("data-k"); if (kk === it.q.b) c.classList.add("juste"); else if (c === b) c.classList.add("faux"); }); if (window.EFA_SONS) EFA_SONS.joue(+b.getAttribute("data-k") === it.q.b ? "bon" : "faux");
           $("fb").innerHTML = '<p class="fb ' + (ok ? 'oui' : 'non') + '"><b>' + (ok ? 'Juste.' : 'Pas tout à fait.') + '</b> ' + esc(it.q.x) + '</p><button type="button" class="bt bt-p" id="suite">' + (k + 1 < qs.length ? 'Question suivante' : 'Voir mon résultat') + '</button>';
           $("suite").onclick = function () { k++; if (k < qs.length) une(); else fin(); };
           $("suite").focus();
@@ -192,7 +192,7 @@
     if ($("suiv")) $("suiv").onclick = function () { ex.k++; question(); };
     $("fin").onclick = function () { finExamen(false); };
   }
-  function finExamen(temps) {
+  function finExamen(temps) { if (window.EFA_SONS) EFA_SONS.joue("fin");
     arreter(); var s = 0, parM = {}, nbM = {};
     ex.qs.forEach(function (it, j) { var ok = ex.rep[j] === it.q.b; if (ok) s++; parM[it.m] = (parM[it.m] || 0) + (ok ? 1 : 0); nbM[it.m] = (nbM[it.m] || 0) + 1; });
     var ok = s >= EXAMEN.seuil;
