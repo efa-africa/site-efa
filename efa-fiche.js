@@ -100,7 +100,7 @@
     c.innerHTML = '<p class="c-s">Ne perdez pas ce que vous avez fait</p><h3>Gardez votre progression sur tous vos téléphones</h3>'
       + '<p>Créez votre compte gratuit dans la Communauté EFA : vos étapes et vos modules terminés sont enregistrés. Jamais vos montants, ni le texte de vos fiches.</p>'
       + '<div class="c-g"><label class="c-f" for="c-nom">Prénom<input id="c-nom" type="text" autocomplete="given-name" maxlength="40"></label><label class="c-f" for="c-mail">Email<input id="c-mail" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="vous@exemple.com"></label></div>'
-      + '<label class="c-c" for="c-nl"><input id="c-nl" type="checkbox"><span>Je veux recevoir chaque semaine ma prochaine étape et la lettre EFA par email. Un email de confirmation va arriver.</span></label>'
+      + '<label class="c-c" for="c-nl"><input id="c-nl" type="checkbox"><span>Je veux recevoir la lettre EFA par email : conseils, nouveaux modules et rappels pour avancer. Un email de confirmation va arriver.</span></label>'
       + '<p style="font-size:13.5px">En créant le compte, j’accepte que mon prénom, mon email et ma progression soient conservés par EFA. <a href="confidentialite.html#communaute" style="color:#0B1220;font-weight:700">Vos données</a></p>'
       + '<div class="c-a"><button type="button" data-c="creer">Créer mon compte</button><button type="button" class="c-l" data-c="tard">Plus tard</button></div><p class="c-m" role="status" aria-live="polite"></p>';
     boite.parentNode.insertBefore(c, boite.nextSibling);
@@ -117,7 +117,7 @@
       m.className = "c-m";
       if (nom.length < 2) { m.className = "c-m err"; m.textContent = "Indiquez votre prénom."; c.querySelector("#c-nom").focus(); return; }
       if (mail && !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mail)) { m.className = "c-m err"; m.textContent = "Cet email ne semble pas complet."; c.querySelector("#c-mail").focus(); return; }
-      if (nl && !mail) { m.className = "c-m err"; m.textContent = "Indiquez votre email pour recevoir votre prochaine étape."; c.querySelector("#c-mail").focus(); return; }
+      if (nl && !mail) { m.className = "c-m err"; m.textContent = "Indiquez votre email pour recevoir la lettre EFA."; c.querySelector("#c-mail").focus(); return; }
       b.disabled = true; m.textContent = "Création du compte…";
       E.rejoindre(E.CODE_COMMUNAUTE, nom, mail).then(function (j) {
         compter("compte-cree-fiche");

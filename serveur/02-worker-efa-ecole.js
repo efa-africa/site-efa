@@ -13,10 +13,12 @@
    Version 1.1 : une organisation crée elle-même ses accès depuis « Composer un programme » (route /organisations),
    sans attendre EFA : 500 places au plus, ouvert un an, au plus 3 créations par email et par jour et 30 par heure au total.
    Version 1.2 : /programme?code=… présente le programme (organisation, modules, rythme) avant la création du compte.
+   Version 1.4 (27 octobre 2026) : « Mon point » (oui/non au départ, à 30 et 90 jours) dans le bilan ; enquêtes anonymes des
+   organisations (routes /enquete…, tables de 03-supabase-enquetes.sql) : 15 réponses oui/non, résultats à partir de 5 réponses.
    Les clés ne sont jamais stockées : seule leur empreinte SHA-256 l'est. Aucune somme saisie dans les outils n'est reçue. */
 
-const ORIGINES = ["https://efa.africa", "https://www.efa.africa"];
-const VERSION = "1.3";
+const ORIGINES = ["https://efa.africa", "https://www.efa.africa", "https://efa-test.pages.dev"];
+const VERSION = "1.4";
 const AUTO_PLACES = 500, AUTO_PAR_EMAIL = 3, AUTO_PAR_HEURE = 30;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sans 0/O ni 1/I, pour la lecture et la dictée
 
@@ -74,6 +76,15 @@ function base(env) {
     async majProgramme(id, l) { await req("/ecole_programmes?id=eq." + encodeURIComponent(id), { method: "PATCH", headers: { "Prefer": "return=minimal" }, body: JSON.stringify(l) }); },
     async creerParticipant(l) { return (await (await req("/ecole_participants", { method: "POST", headers: { "Prefer": "return=representation" }, body: JSON.stringify(l) })).json())[0]; },
     async majParticipant(id, l) { await req("/ecole_participants?id=eq." + encodeURIComponent(id), { method: "PATCH", headers: { "Prefer": "return=minimal" }, body: JSON.stringify(l) }); },
+    enqueteParCode: c => un("/ecole_enquetes?code=eq." + encodeURIComponent(c) + "&select=id,nom,actif"),
+    enqueteParCle: h => un("/ecole_enquetes?cle_hash=eq." + h + "&select=id,nom,code,actif,cree_le"),
+    async creerEnquete(l) { return (await (await req("/ecole_enquetes", { method: "POST", headers: { "Prefer": "return=representation" }, body: JSON.stringify(l) })).json())[0]; },
+    async repondreEnquete(l) { await req("/ecole_enquete_reponses", { method: "POST", headers: { "Prefer": "return=minimal" }, body: JSON.stringify(l) }); },
+    async reponsesEnquete(id) { return (await req("/ecole_enquete_reponses?enquete_id=eq." + encodeURIComponent(id) + "&select=r&limit=20000")).json(); },
+    async compterTable(table, filtre) {
+      const r = await req("/" + table + "?" + filtre + "&select=id", { headers: { "Prefer": "count=exact", "Range": "0-0" } });
+      return parseInt((r.headers.get("content-range") || "*/0").split("/")[1], 10) || 0;
+    },
     async compter(filtre) {
       const r = await req("/ecole_programmes?" + filtre + "&select=id", { headers: { "Prefer": "count=exact", "Range": "0-0" } });
       return parseInt((r.headers.get("content-range") || "*/0").split("/")[1], 10) || 0;
@@ -235,6 +246,44 @@ async function moi(request, env, db, chemin, c) {
   return json({ participant: publicParticipant({ ...pa, ...maj }), programme: publicProgramme(pg), ouvert: ouvert(pg) }, 200, c);
 }
 
+/* ---------- Enquêtes anonymes des organisations (1.4) ---------- */
+const NB_QUESTIONS = 15, SEUIL_ENQUETE = 5, ENQUETES_PAR_HEURE = 30, REPONSES_MAX = 20000;
+const cleEnquete = () => "RES-" + aleatoire(24).match(/.{6}/g).join("-");   // 120 bits : donne accès aux résultats
+const codeEnquete = () => "ENQ-" + aleatoire(4) + "-" + aleatoire(4);
+async function enquetes(request, env, db, chemin, c) {
+  if (request.method === "POST" && chemin === "/enquete") { // créer une enquête : nom de l'organisation seulement
+    const b = await lire(request) || {}, nom = texte(b.nom, 80);
+    if (nom.length < 2) return json({ erreur: "Indiquez le nom de l'organisation : il est montré aux personnes interrogées." }, 400, c);
+    if (await db.compterTable("ecole_enquetes", "cree_le=gte." + new Date(Date.now() - 36e5).toISOString()) >= ENQUETES_PAR_HEURE) return json({ erreur: "Beaucoup d'enquêtes créées en ce moment : réessayez dans une heure." }, 429, c);
+    const cle = cleEnquete(); let code = codeEnquete();
+    for (let k = 0; k < 5 && await db.enqueteParCode(code); k++) code = codeEnquete();
+    await db.creerEnquete({ nom, code, cle_hash: await empreinte(cle) });
+    return json({ code, cle, nom }, 201, c); // la clé des résultats n'est montrée qu'une fois
+  }
+  if (request.method === "GET" && chemin === "/enquete") { // ce que voit la personne interrogée
+    const e = await db.enqueteParCode(texte(new URL(request.url).searchParams.get("code"), 20).toUpperCase());
+    if (!e) return json({ erreur: "Enquête introuvable. Vérifiez le lien reçu." }, 404, c);
+    return json({ nom: e.nom, ouverte: e.actif, questions: NB_QUESTIONS }, 200, c);
+  }
+  if (request.method === "POST" && chemin === "/enquete/reponse") {
+    const b = await lire(request) || {}, r = texte(b.r, 20);
+    if (!new RegExp("^[01]{" + NB_QUESTIONS + "}$").test(r)) return json({ erreur: "Réponses incomplètes." }, 400, c);
+    const e = await db.enqueteParCode(texte(b.code, 20).toUpperCase());
+    if (!e || !e.actif) return json({ erreur: "Cette enquête est fermée." }, 404, c);
+    if (await db.compterTable("ecole_enquete_reponses", "enquete_id=eq." + e.id) >= REPONSES_MAX) return json({ erreur: "Cette enquête a reçu le nombre maximal de réponses." }, 429, c);
+    await db.repondreEnquete({ enquete_id: e.id, r });
+    return json({ ok: true }, 201, c);
+  }
+  if (request.method === "GET" && chemin === "/enquete/resultats") { // avec la clé des résultats ; totaux seulement
+    const cle = porteur(request); if (!/^RES-/.test(cle)) return json({ erreur: "Clé des résultats incorrecte." }, 401, c);
+    const e = await db.enqueteParCle(await empreinte(cle)); if (!e) return json({ erreur: "Clé des résultats incorrecte." }, 401, c);
+    const rep = await db.reponsesEnquete(e.id), n = rep.length, oui = Array(NB_QUESTIONS).fill(0);
+    rep.forEach(x => { for (let i = 0; i < NB_QUESTIONS; i++) if (x.r.charAt(i) === "1") oui[i]++; });
+    return json({ nom: e.nom, code: e.code, cree_le: e.cree_le, n, seuil: SEUIL_ENQUETE, oui: n >= SEUIL_ENQUETE ? oui : null }, 200, c);
+  }
+  return json({ erreur: "Route inconnue." }, 404, c);
+}
+
 export async function traiter(request, env, db) {
   const c = cors(request.headers.get("Origin") || "");
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: c });
@@ -247,6 +296,7 @@ export async function traiter(request, env, db) {
     if (chemin === "/orga" || chemin.startsWith("/orga/")) return await organisation(request, env, db, chemin, c);
     if (request.method === "GET" && chemin === "/programme") return await apercu(request, env, db, c);
     if (request.method === "POST" && chemin === "/organisations") return await inscrireOrganisation(request, env, db, c);
+    if (chemin === "/enquete" || chemin.startsWith("/enquete/")) return await enquetes(request, env, db, chemin, c);
     if (request.method === "POST" && chemin === "/rejoindre") return await rejoindre(request, env, db, c);
     if (request.method === "POST" && (chemin === "/moi" || chemin === "/moi/sync")) return await moi(request, env, db, chemin, c);
     return json({ erreur: "Route inconnue." }, 404, c);
