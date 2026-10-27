@@ -254,7 +254,7 @@ body.mf{background:#070C16;color:#E8EDF5}
   </div>
 </footer>
 
-<script src="minfin.js?v=202610241407"></script>
+<script src="minfin.js?v=2026102701"></script>
 <script src="efa-suite.js?v=2026102702" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 <script>
@@ -281,7 +281,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     eps.forEach(function(e){
       var on=e.statut==='publie'; e.saison=s.n; if(on) tous.push(e);
       html+='<'+(on?'button type="button"':'div')+' class="ep'+(on?'':' off')+'" role="listitem"'+' id="ep-'+s.n+'-'+e.n+'"'+(on?' data-ep="'+s.n+'-'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"':' aria-label="Épisode '+e.n+', bientôt : '+esc(e.titre)+'"')+'>'
-        +'<img src="'+esc(e.image)+'" alt="" loading="lazy">'
+        +'<img src="'+esc(e.vignette||e.image)+'" alt="" loading="lazy">'
         +(on?'<span class="play" aria-hidden="true"></span>':'<span class="badge bientot">Bientôt</span>')
         +'<span class="ep-in"><span class="ep-num">'+e.n+'</span><span class="ep-t" style="display:block">'+esc(e.titre)+'</span><span class="ep-d" style="display:block">'+esc(e.notion)+' · '+esc(e.duree)+'</span></span>'
         +'</'+(on?'button':'div')+'>';

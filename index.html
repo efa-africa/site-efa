@@ -732,6 +732,43 @@ img.char{object-position:50% 18%}
 .ask-guides{color:#4E5566!important}.ask-guides a{color:#0B1220!important;text-decoration:underline;text-decoration-color:#E44828;text-decoration-thickness:2px;text-underline-offset:4px}
 
 
+/* Essayer EFA : trois expériences */
+.fx3{background:#070C16;color:#fff;padding:64px var(--gut);scroll-snap-align:start}
+.fx3-in{max-width:1120px;margin:0 auto}
+.fx3-k,.mf1-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680;margin:0}
+.fx3 h2{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;line-height:1.12;font-size:clamp(28px,3.8vw,44px);margin:10px 0 0}
+.fx3-l{color:#C9D1DE;margin:10px 0 0;max-width:40em}
+.fx3-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
+.fx3-c{background:#0D1525;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.fx3-tel{align-self:center;width:min(200px,100%);height:300px;border-radius:24px;background:#05080F;padding:7px;box-shadow:0 0 0 2px rgba(255,255,255,.14)}
+.fx3-ec{height:100%;border-radius:18px;overflow:hidden;background:#F5EFE2}
+.fx3-ec img{width:100%;height:auto;display:block;transform:translateY(0);transition:transform 6s ease-in-out}
+.fx3-tel.vu .fx3-ec img{transform:translateY(var(--y,0px))}
+.fx3-x{display:flex;flex-direction:column;gap:10px;flex:1}
+.fx3-x h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:clamp(19px,1.8vw,22px);line-height:1.2;margin:0;color:#fff}
+.fx3-x ol{margin:0;padding:0;list-style:none;counter-reset:f;display:grid;gap:6px}
+.fx3-x li{counter-increment:f;display:flex;gap:10px;align-items:baseline;color:#C9D1DE;font-size:15.5px;line-height:1.35}
+.fx3-x li::before{content:counter(f);flex:none;width:24px;height:24px;border-radius:50%;background:#DA3C1B;color:#fff;font:800 13px/24px "Source Sans 3",system-ui,sans-serif;text-align:center}
+.fx3-b{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:8px;background:#DA3C1B;color:#fff;font-weight:800;font-size:16px;text-decoration:none;text-align:center;transition:transform .12s}
+.fx3-b:active{transform:scale(.97)}.fx3-b.clair{background:#F5EFE2;color:#0B1220}
+.fx3-x .fx3-b{margin-top:auto}
+.fx3-s{color:#fff;font-weight:700;font-size:15px;text-align:center;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:860px){.fx3-g{grid-template-columns:minmax(0,1fr)}.fx3-c{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:start}.fx3-tel{width:150px;height:240px}}
+@media (max-width:420px){.fx3-c{grid-template-columns:minmax(0,1fr)}.fx3-tel{width:180px;height:260px}}
+@media (max-width:760px){.fx3{padding:48px var(--gut)}}
+/* Min'Fin compact */
+.mf1{margin-top:22px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center;background:#0D1525;border-radius:16px;padding:16px}
+.mf1-v{position:relative;display:block;aspect-ratio:4/5;border-radius:12px;overflow:hidden}
+.mf1-v img{width:100%;height:100%;object-fit:cover;display:block}
+.mf1-p{position:absolute;right:10px;bottom:10px;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.mf1-p::before{content:"";border-left:12px solid #0B1220;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.mf1-x{display:flex;flex-direction:column;gap:8px;min-width:0}
+.mf1-x h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:clamp(19px,2vw,24px);line-height:1.2;margin:0;color:#fff}
+.mf1-ep{margin:0;color:#C9D1DE;font-size:15.5px;line-height:1.4}.mf1-ep b{display:block;color:#fff}
+.mf1-bt{display:flex;flex-wrap:wrap;gap:8px}
+.mf1-all{color:#fff;font-weight:700;font-size:15px;text-decoration:underline;text-underline-offset:4px;align-self:flex-start}
+@media (max-width:520px){.mf1{grid-template-columns:96px minmax(0,1fr);gap:14px;padding:14px}.mf1-bt .fx3-b{min-height:44px;padding:10px 14px;font-size:15px}}
+@media (prefers-reduced-motion:reduce){.fx3-ec img{transition:none}}
 /* Min’Fin sur l’accueil */
 .mfh{background:#070C16;color:#fff;padding:64px var(--gut);scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
 .mfh-in{max-width:1120px;margin:0 auto}
@@ -1168,19 +1205,50 @@ img.char{object-position:50% 18%}
     </nav>
   </section>
 
-  <!-- Min’Fin : les derniers épisodes de la série (données : minfin.js), vers la vitrine minfin.html -->
-  <section class="mfh" id="minfin" aria-labelledby="mfh-t" data-step="Min’Fin">
-    <div class="mfh-in">
-      <div class="mfh-h">
-        <div>
-          <p class="mfh-k">En vidéo · la série Min’Fin</p>
-          <h2 id="mfh-t">Ces questions, Koffi se les pose aussi</h2>
-          <p class="mfh-l">Une minute par question&nbsp;: la situation, le piège, la règle à appliquer le soir même.</p>
-        </div>
-        <a class="mfh-all" href="minfin.html" data-goatcounter-click="accueil-minfin-tout">Tous les épisodes</a>
+  <!-- Essayer EFA : trois expériences, puis Min’Fin en bloc compact -->
+  <section class="fx3" id="essayer" aria-labelledby="fx3-t" data-step="Essayer">
+    <div class="fx3-in">
+      <p class="fx3-k">Ce que vous pouvez faire avec EFA</p>
+      <h2 id="fx3-t">Essayez, avec vos chiffres.</h2>
+      <p class="fx3-l">Trois expériences gratuites, sur votre téléphone, sans compte pour commencer.</p>
+      <div class="fx3-g">
+        <article class="fx3-c">
+          <div class="fx3-tel"><div class="fx3-ec"><img src="demo/accueil-point.jpg" alt="Le résultat du diagnostic EFA : un profil, une situation, une priorité et une première action" width="520" height="1120" loading="lazy"></div></div>
+          <div class="fx3-x">
+            <h3>Faire le point sur mon argent</h3>
+            <ol><li>Quelques réponses</li><li>Un résultat sur six dimensions</li><li>Une première action pour la semaine</li></ol>
+            <a class="fx3-b" href="diagnostic.html?src=accueil-essayer" data-goatcounter-click="accueil-essayer-diagnostic">Faire mon diagnostic · 6 min</a>
+          </div>
+        </article>
+        <article class="fx3-c">
+          <div class="fx3-tel"><div class="fx3-ec"><img src="demo/accueil-ecole.jpg" alt="Un exercice de l’école : deux offres de crédit comparées, le verdict, puis la fiche gardée" width="520" height="1350" loading="lazy"></div></div>
+          <div class="fx3-x">
+            <h3>Apprendre avec l’école</h3>
+            <ol><li>Une situation</li><li>Un exercice avec vos montants</li><li>Une fiche gardée sur votre téléphone</li></ol>
+            <a class="fx3-b" href="cout-total-credit.html?src=accueil-essayer#calcul" data-goatcounter-click="accueil-essayer-exercice">Essayer un exercice</a>
+            <a class="fx3-s" href="parcours.html?src=accueil-essayer" data-goatcounter-click="accueil-essayer-parcours">Voir tout le parcours</a>
+          </div>
+        </article>
+        <article class="fx3-c">
+          <div class="fx3-tel"><div class="fx3-ec"><img src="demo/accueil-marche.jpg" alt="EFA Traders : un marché simulé avec un capital fictif, le résultat et les frais" width="520" height="973" loading="lazy"></div></div>
+          <div class="fx3-x">
+            <h3>M’entraîner sur un marché</h3>
+            <ol><li>Une décision avec un capital fictif</li><li>Son résultat, frais compris</li><li>L’explication de ce qui s’est passé</li></ol>
+            <a class="fx3-b" href="traders.html?src=accueil-essayer" data-goatcounter-click="accueil-essayer-traders">Ma première simulation</a>
+          </div>
+        </article>
       </div>
-      <div class="mfh-rail" id="mfh-rail"></div>
-      <p class="mfh-suite" id="mfh-suite" hidden>Faites défiler pour voir les épisodes suivants →</p>
+
+      <div class="mf1" id="minfin" aria-labelledby="mf1-t">
+        <a class="mf1-v" id="mf1-v" href="minfin.html" data-goatcounter-click="accueil-minfin-vignette"><img id="mf1-img" src="minfin/ep-5.svg" alt="" width="800" height="1000" loading="lazy"><span class="mf1-p" aria-hidden="true"></span></a>
+        <div class="mf1-x">
+          <p class="mf1-k">En vidéo · Min’Fin, la série d’une minute</p>
+          <h3 id="mf1-t">Les questions d’argent, en une minute.</h3>
+          <p class="mf1-ep" id="mf1-ep"></p>
+          <div class="mf1-bt" id="mf1-bt"></div>
+          <a class="mf1-all" href="minfin.html" data-goatcounter-click="accueil-minfin-tout">Découvrir Min’Fin</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1713,15 +1781,29 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026102706" defer></script>
-<script src="minfin.js?v=202610241407"></script>
+<script src="minfin.js?v=2026102701"></script>
 <script>
 (function(){
-  var M=window.MINFIN, r=document.getElementById('mfh-rail'); if(!M||!r) return;
+  /* Min'Fin : un seul épisode mis en avant (le plus récent publié), avec sa suite utile */
+  var M=window.MINFIN; if(!M) return;
   var eps=[]; M.saisons.forEach(function(s){s.episodes.forEach(function(e){if(e.statut==='publie'){e.saison=s.n;eps.push(e);}});});
-  function esc(t){return String(t).replace(/ ([:?!;])/g,'\u00a0$1').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  var sx=document.getElementById('mfh-suite'); if(sx&&eps.length>3) sx.hidden=false;
-  r.innerHTML=eps.map(function(e){return '<a class="mfh-ep" href="minfin.html#ep-'+e.saison+'-'+e.n+'" data-goatcounter-click="accueil-minfin-ep'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"><img src="'+esc(e.image)+'" alt="" loading="lazy"><span class="mfh-p" aria-hidden="true"></span><span class="mfh-n">'+e.n+'</span><span class="mfh-t">'+esc(e.titre)+'</span></a>';}).join('');
+  if(!eps.length) return;
+  var SUITE={1:['Faire mon budget','ou-est-passe-mon-argent.html'],2:['Faire mon budget','construire-son-budget.html'],3:['Préparer ma réponse','preter-a-un-proche.html'],4:['Comprendre ma tontine','tontine-decider-avant-de-recevoir.html'],5:['Préparer ma réponse','question-preter-a-ma-soeur.html'],6:['Comprendre ma tontine','tontine.html']};
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}).replace(/ ([:?!;])/g,'\u00a0$1');}
+  var e=eps[eps.length-1], lien='minfin.html#ep-'+e.saison+'-'+e.n, su=SUITE[e.n];
+  document.getElementById('mf1-v').href=lien;
+  if(e.vignette) document.getElementById('mf1-img').src=e.vignette;
+  document.getElementById('mf1-ep').innerHTML='<b>Épisode '+e.n+' · '+esc(e.titre)+'</b>'+esc(e.notion);
+  document.getElementById('mf1-bt').innerHTML='<a class="fx3-b" href="'+lien+'" data-goatcounter-click="accueil-minfin-ep'+e.n+'">Voir l’épisode</a>'+(su?'<a class="fx3-b clair" href="'+su[1]+'?src=minfin-accueil" data-goatcounter-click="accueil-minfin-suite'+e.n+'">'+esc(su[0])+'</a>':'');
+  var all=document.querySelector('.mf1-all'); if(all) all.textContent='Découvrir Min’Fin · '+eps.length+' épisodes';
 })();
+/* les écrans défilent doucement dans les téléphones quand ils arrivent à l'écran */
+(function(){var L=[].slice.call(document.querySelectorAll('.fx3-tel'));if(!L.length)return;
+  function caler(t){var im=t.querySelector('img'),h=t.querySelector('.fx3-ec').clientHeight,H=im.getBoundingClientRect().height;im.style.setProperty('--y',Math.min(0,h-H)+'px');}
+  L.forEach(function(t){var im=t.querySelector('img');if(im.complete)caler(t);else im.addEventListener('load',function(){caler(t);});});
+  if(!('IntersectionObserver' in window)){L.forEach(function(t){t.classList.add('vu');});return;}
+  var o=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){caler(x.target);x.target.classList.add('vu');o.unobserve(x.target);}});},{threshold:.5});
+  L.forEach(function(t){o.observe(t);});})();
 </script>
 <script>
 (function(){var A=document.getElementById('eh-art'),C=document.getElementById('eh-calque');if(!A||!C)return;
