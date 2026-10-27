@@ -393,6 +393,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 .mfq-ep{position:relative;display:block;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#0D1525;color:#fff;text-decoration:none;scroll-snap-align:start}
 .mfq-ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .mfq-ep::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070C16 10%,rgba(7,12,22,.6) 55%,rgba(7,12,22,.1) 100%)}
+.mfq-ep.aff{aspect-ratio:1122/1402}.mfq-ep.aff img{object-position:top}.mfq-ep.aff::after{display:none}.mfq-ep.aff .mfq-n,.mfq-ep.aff .mfq-t{display:none}
 .mfq-ep span{position:absolute;z-index:1}
 .mfq-n{left:12px;top:10px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:rgba(7,12,22,.7);padding:4px 8px;border-radius:999px}
 .mfq-p{right:10px;top:10px;width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center}
@@ -1127,13 +1128,13 @@ var OUTILS = [
 <script src="prevenir.js?v=2026102601" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026102801" defer></script>
-<script src="minfin.js?v=202610241407"></script>
+<script src="minfin.js?v=2026102702"></script>
 <script>
 (function(){
   var M=window.MINFIN, r=document.getElementById('mfq-rail'); if(!M||!r) return;
   function esc(t){return String(t).replace(/ ([:?!;])/g,'\u00a0$1').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var h=''; M.saisons.forEach(function(s){s.episodes.forEach(function(e){ if(e.statut!=='publie') return;
-    h+='<a class="mfq-ep" href="minfin.html#ep-'+s.n+'-'+e.n+'" data-goatcounter-click="outils-minfin-ep'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"><img src="'+esc(e.image)+'" alt="" loading="lazy"><span class="mfq-n">Ép. '+e.n+'</span><span class="mfq-p" aria-hidden="true"></span><span class="mfq-t">'+esc(e.titre)+'</span></a>';
+    h+='<a class="mfq-ep'+(e.affiche?' aff':'')+'" href="minfin.html#ep-'+s.n+'-'+e.n+'" data-goatcounter-click="outils-minfin-ep'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"><img src="'+esc(e.vignette||e.image)+'" alt="" loading="lazy"><span class="mfq-n">Ép. '+e.n+'</span><span class="mfq-p" aria-hidden="true"></span><span class="mfq-t">'+esc(e.titre)+'</span></a>';
   });});
   r.innerHTML=h;
 })();

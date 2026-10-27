@@ -412,6 +412,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .mfep .t{left:14px;right:14px;bottom:14px;font:700 16px/1.25 var(--display)}
 .mfep .p{top:10px;right:10px;width:38px;height:38px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center}
 .mfep .p::before{content:"";border-left:11px solid #0B1220;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.mfep.aff{aspect-ratio:1122/1402}.mfep.aff img{object-position:top}.mfep.aff::after{display:none}.mfep.aff .n,.mfep.aff .t{display:none}.mfep.aff .p{top:auto;bottom:10px}
 .mfep .r{top:12px;left:12px;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:rgba(7,12,22,.7);padding:4px 8px;border-radius:999px}
 .video{position:relative;aspect-ratio:9/16;max-height:62vh;align-self:center;width:100%;max-width:360px;border-radius:16px;overflow:hidden;background:#000}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -1299,7 +1300,7 @@ function vQuestions(){var h='<section class="navy-card" style="padding:22px"><di
       if(ui.qt!=null&&EQ.themes[ui.qt])h+='<div class="list qlist">'+EQ.themes[ui.qt].questions.map(qRow).join("")+'</div>';}
     h+='</section>';}
   if(MF&&MF.saisons){h+='<section class="stack"><div class="secth"><h2>Ces questions, Koffi se les pose aussi</h2></div><p class="sub" style="font-size:15px;margin-top:-4px">Min’Fin, des épisodes d’une minute.</p>';
-    MF.saisons.forEach(function(sa){h+='<p class="meta">Saison '+sa.n+' · '+esc(sa.titre)+'</p><div class="mfrail">'+sa.episodes.map(function(e){var pub=e.statut==="publie"&&e.youtube;return '<button class="mfep" data-act="'+(pub?"video":"noop")+'" data-id="'+sa.n+"-"+e.n+'"'+(pub?'':' aria-disabled="true"')+'><img src="'+esc(siteUrl(e.image||"koffi.jpg"))+'" alt="" loading="lazy" onerror="this.src=\'koffi.jpg\'">'+(pub?'<span class="p"></span>':'<span class="r">Bientôt</span>')+'<span class="n">'+e.n+'</span><span class="t">'+esc(e.titre)+'</span></button>';}).join("")+'</div>';});
+    MF.saisons.forEach(function(sa){h+='<p class="meta">Saison '+sa.n+' · '+esc(sa.titre)+'</p><div class="mfrail">'+sa.episodes.map(function(e){var pub=e.statut==="publie"&&e.youtube;return '<button class="mfep'+(e.affiche?' aff':'')+'" data-act="'+(pub?"video":"noop")+'" data-id="'+sa.n+"-"+e.n+'"'+(pub?'':' aria-disabled="true"')+'><img src="'+esc(siteUrl(e.vignette||e.image||"koffi.jpg"))+'" alt="" loading="lazy" onerror="this.src=\'koffi.jpg\'">'+(pub?'<span class="p"></span>':'<span class="r">Bientôt</span>')+'<span class="n">'+e.n+'</span><span class="t">'+esc(e.titre)+'</span></button>';}).join("")+'</div>';});
     h+='<button class="lien" style="align-self:flex-start" data-act="web" data-url="minfin.html" data-t="Min’Fin">Tous les épisodes</button></section>';}
   h+='<section class="stack"><div class="secth"><h2>Comprendre l’essentiel</h2></div><div class="list">'+webRow("La tontine","Comment ça marche, et pourquoi ce n’est pas une épargne","tontine.html","people")+webRow("Épargner","Se payer en premier, à chaque rentrée","epargner.html","chart")+webRow("Faire son budget en FCFA","Huit sections, revenus irréguliers inclus","construire-son-budget.html","doc")+'</div></section>';
   return h;}
