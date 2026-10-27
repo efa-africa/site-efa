@@ -89,6 +89,7 @@
       '<div><p class="surtitre">Le laboratoire des décisions</p><h2>Observer, décider, comprendre. Sans argent réel.</h2>' +
       '<p class="lead">Vous regardez un marché, vous formez une hypothèse, vous décidez ou vous attendez, puis vous voyez les conséquences et leur explication.</p>' +
       '<div class="tr-cta"><button class="bouton bouton-principal" data-go="tu:t1">Ma première simulation guidée</button><a class="bouton bouton-clair" href="#cours">Le cours de finance de marché</a></div>' +
+      '<p class="tr-note">Pour la finance d’entreprise (comptes, VAN, financement, valorisation) : <a href="corporate.html?src=traders">EFA Corporate Finance</a>.</p>' +
       '<p class="tr-avert">Vous utilisez un capital fictif. Les scénarios servent à apprendre. Les résultats ne permettent pas de prévoir ce que vous gagneriez ou perdriez sur un marché réel.</p></div>' +
       '<ol class="tr-5q"><li>Qu’est-ce que je regarde&nbsp;?</li><li>Que sais-je réellement&nbsp;?</li><li>Quelle décision, et quelle somme j’expose&nbsp;?</li><li>Quelles conséquences&nbsp;?</li><li>Qu’est-ce que j’en apprends&nbsp;?</li></ol></section>' +
       '<section class="tr-bloc"><h3>Votre objectif</h3><div class="tr-puces" role="group" aria-label="Choisir un objectif">' +
