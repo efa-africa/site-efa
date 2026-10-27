@@ -468,7 +468,7 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
 
   /* Questions 2 et 3, selon le profil */
   var Q={
-    moi:[{q:"Quelle question voulez-vous résoudre ?",choix:[["cadre","Je suis cadre ou dirigeant : aller plus loin"],["budget","Mon budget"],["dettes","Mes dettes"],["proches","Les demandes de mes proches"],["tontine","Ma tontine"],["investir","Investir"]]},
+    moi:[{q:"Quelle question voulez-vous résoudre ?",choix:[["cadre","Je suis cadre ou dirigeant : aller plus loin"],["patrimoine","Organiser et faire fructifier mon patrimoine"],["budget","Mon budget"],["dettes","Mes dettes"],["proches","Les demandes de mes proches"],["tontine","Ma tontine"],["investir","Investir"]]},
          {q:"Aujourd’hui, vous préférez…",choix:[["essai","Faire un premier essai"],["lecon","Comprendre les bases"],["parcours","Suivre un parcours"]]}],
     orga:[{q:"Quel public voulez-vous former ?",choix:[["salaries","Des salariés"],["etudiants","Des étudiants · finances personnelles"],["etudiants-gestion","Des étudiants en gestion ou finance"],["entrepreneurs","Des entrepreneurs"],["cadres","Des cadres ou un comité de direction"],["membres","Les membres d’un groupe"]]},
           {q:"Que voulez-vous faire maintenant ?",choix:[["decouvrir","Découvrir"],["tester","Tester un module"],["preparer","Préparer un programme"]]}],
@@ -499,8 +499,12 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
         essai:["Essayer maintenant","Une année en Bourse, en simulation · 10 minutes, 11 écrans","ecole-bourse.html?src=depart"],
         lecon:["Comprendre","Suis-je prêt à investir ? La première formation de la Bourse · environ 25 minutes","bourse-essentiel.html?src=depart#A1"],
         parcours:["Suivre le parcours","Module 17 · Épargner ou investir, puis Module 19 · La BRVM","parcours.html?src=depart#M17"]},
+      patrimoine:{titre:"Votre première étape : voir votre patrimoine sur une page.",
+        essai:["Faire mon bilan patrimonial","Ce que vous possédez, ce que vous devez, ce qui est disponible : quatre repères en cinq minutes","patrimoine.html?src=depart&profil=patrimoine#bilan"],
+        lecon:["Comprendre","Les quatre gestes de la gestion de patrimoine : structurer, protéger, faire fructifier, transmettre","patrimoine.html?src=depart&profil=patrimoine#gestion"],
+        parcours:["Suivre le parcours","EFA Patrimoine : le bilan express, puis un parcours qui part de vos réponses","patrimoine.html?src=depart&profil=patrimoine#test"]},
       cadre:{titre:"Votre première étape : repérer ce qui mérite votre attention, sans refaire ce que vous maîtrisez.",
-        essai:["Faire le bilan express","Huit situations de cadre, avec des chiffres, pour savoir par où commencer","patrimoine.html?src=depart#test"],
+        essai:["Faire le bilan express","Huit situations chiffrées, pour savoir par où commencer","patrimoine.html?src=depart#test"],
         lecon:["Comprendre","Recevoir une grosse somme : décider avant que les demandes n’arrivent","parcours.html?src=depart#M14"],
         parcours:["Suivre le parcours","EFA Patrimoine : le parcours des cadres et dirigeants, à votre niveau","patrimoine.html?src=depart#parcours"]}
     },
