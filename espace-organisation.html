@@ -143,7 +143,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="parcours-efa.js?v=2026102512"></script>
-<script src="efa-compte.js?v=2026102512"></script>
+<script src="efa-compte.js?v=2026102701"></script>
 <script>
 
 var $ = function (id) { return document.getElementById(id); }, E = window.EFA_ECOLE, D = window.EFA_PARCOURS, P = {};
@@ -190,6 +190,12 @@ function lignes() {
   });
 }
 // Bilan de la cohorte : totaux seulement (calculés par le service), jamais de réponse individuelle
+// « Mon point » : un mois de côté au départ, puis à 90 jours (totaux, à partir de 5 réponses)
+function pointHtml(co) {
+  var p = co && co.point; if (!p || p.depart == null) return '';
+  return '<p class="mention"><b>Mon point</b> · ' + p.depart + ' participant' + (p.depart > 1 ? 's ont' : ' a') + ' fait leur point de départ.'
+    + (p.a90 != null ? ' Parmi les ' + p.a90 + ' qui ont fait le point à 90 jours, ' + p.reserve_depart + ' avaient un mois de côté au départ, ' + p.reserve_90 + ' en ont un aujourd’hui.' : ' Le résultat à 90 jours s’affiche à partir de 5 réponses.') + '</p>';
+}
 function cohorteHtml(co, L) {
   var n = L.length, commence = co ? co.commence : L.filter(function (l) { return l.b.pct > 0; }).length, fin = L.filter(function (l) { return l.b.fini; }).length;
   var seuil = co && co.seuil || 5;
@@ -199,7 +205,7 @@ function cohorteHtml(co, L) {
   var max = Math.max(1, n);
   return '<section class="carte"><h2>Bilan de la cohorte</h2><p class="aide">De l’inscription à l’action : combien de personnes passent chaque étape. Ce sont des totaux ; aucune réponse personnelle n’apparaît.</p><div class="entonnoir">'
     + marches.map(function (m) { var v = m[1], ok = v != null; return '<div class="en-l"><div class="en-t"><b>' + m[0] + '</b>' + (m[2] ? '<small>' + m[2] + '</small>' : '') + '</div><div class="en-b"><i style="width:' + (ok ? Math.round(v / max * 100) : 0) + '%"></i></div><div class="en-v">' + (ok ? v + (n ? ' <small>' + Math.round(v / max * 100) + ' %</small>' : '') : '<small>' + (co ? 'à partir de ' + seuil + ' inscrits' : 'mise à jour du service à installer') + '</small>') + '</div></div>'; }).join('')
-    + '</div>' + (co && co.repondu != null ? '<p class="mention">' + co.repondu + ' participant' + (co.repondu > 1 ? 's ont' : ' a') + ' répondu au suivi. Une action « déclarée » est ce que la personne dit avoir fait : c’est un indicateur, pas une vérification.</p>' : '<p class="mention">Une action « déclarée » est ce que la personne dit avoir fait : c’est un indicateur, pas une vérification.</p>') + '</section>';
+    + '</div>' + pointHtml(co) + (co && co.repondu != null ? '<p class="mention">' + co.repondu + ' participant' + (co.repondu > 1 ? 's ont' : ' a') + ' répondu au suivi. Une action « déclarée » est ce que la personne dit avoir fait : c’est un indicateur, pas une vérification.</p>' : '<p class="mention">Une action « déclarée » est ce que la personne dit avoir fait : c’est un indicateur, pas une vérification.</p>') + '</section>';
 }
 function tableau() {
   var L = lignes(), pg = DATA.programme, f = (($("f-q") || {}).value || "").toLowerCase();
@@ -242,6 +248,6 @@ if (CLEO) charger(false); else connexion();
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102701" defer></script>
+<script src="efa-appli.js?v=2026102704" defer></script>
 </body>
 </html>

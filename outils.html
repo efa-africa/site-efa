@@ -898,11 +898,11 @@ var OUTILS = [
   }
   function rendreCahier(sous){
     var c=CH.lire(), nouveau=/^nouveau/.test(sous||""), poste=nouveau?(sous.split("/")[1]||""):null, existe=!!c;
-    if(!c&&!nouveau){ $ch.innerHTML=vueParcours()+vueFiches()+vueVide(); return; }
+    if(!c&&!nouveau){ $ch.innerHTML='<div data-efa-point></div>'+vueParcours()+vueFiches()+vueVide(); return; }
     c=c||CH.vide();
     var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
     h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
-    h+=vueParcours()+vueFiches();
+    h+='<div data-efa-point></div>'+vueParcours()+vueFiches();
     if(cur&&!nouveau){
       var et=CH.etat(cur);
       if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }
@@ -1111,7 +1111,7 @@ var OUTILS = [
 </script>
 <script src="prevenir.js?v=2026102601" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102701" defer></script>
+<script src="efa-appli.js?v=2026102704" defer></script>
 <script src="minfin.js?v=202610241407"></script>
 <script>
 (function(){

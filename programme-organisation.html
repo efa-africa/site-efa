@@ -64,6 +64,24 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 .ch[aria-pressed="true"]{background:var(--nuit);color:#fff}.ch[aria-pressed="true"]::before{background:var(--corail);box-shadow:none}
 .ch b{font-size:16px}.ch small{font-size:13.5px;color:var(--ink2)}.ch[aria-pressed="true"] small{color:#C9D1DE}
 .ch em{font-style:normal;font-size:12px;font-weight:800;color:var(--corail)}
+.en-g{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin:14px 0 8px}
+.reco{background:var(--nuit);color:#E8EDF5;border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.reco .sur{color:#F09680}.reco h3{color:#fff;font-size:clamp(19px,2vw,22px)}
+.reco ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px}
+.reco li b{display:block;color:#fff}.reco li small{display:block;font-size:14px;color:#C9D1DE}
+.reco .aide{color:#C9D1DE}
+.pourquoi{background:var(--creme);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.pourquoi ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.pourquoi small{color:var(--ink3)}
+.en-i{display:flex;flex-direction:column;gap:6px;min-width:0}
+.niv{display:flex;flex-wrap:wrap;gap:6px;padding-left:4px}
+.niv button{font:inherit;font-size:14px;font-weight:700;min-height:36px;padding:6px 12px;border-radius:999px;border:0;background:var(--papier);color:var(--nuit);box-shadow:inset 0 0 0 1.5px var(--line);cursor:pointer}
+.niv button[aria-pressed="true"]{background:var(--corail);color:#fff;box-shadow:none}
+.enq{background:var(--creme);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.enq h3{font-size:clamp(18px,2vw,21px)}
+.enq a:not(.bt){color:var(--nuit);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
+.enq-ok{background:var(--papier);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.enq-ok .lien{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--creme);border-radius:8px;padding:10px 12px;word-break:break-all;color:var(--nuit)}
 .grille2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media (max-width:620px){.grille2{grid-template-columns:minmax(0,1fr)}}
 .acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .bt{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 20px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);font:800 15.5px/1.2 var(--f-body);cursor:pointer;text-decoration:none}
@@ -169,8 +187,8 @@ a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700
 
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="parcours-efa.js?v=2026102512"></script>
-<script src="programme-organisation.js?v=2026102602"></script>
+<script src="programme-organisation.js?v=2026102702"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102701" defer></script>
+<script src="efa-appli.js?v=2026102704" defer></script>
 </body>
 </html>

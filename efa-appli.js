@@ -115,7 +115,7 @@
 
 /* ===== Bouton « Posez une question à Ely » ===== */
 ;(function () {
-  if (/\/(ely|admin-ecole|espace-organisation)(\.html)?$/.test(location.pathname)) return; // ni sur Ely, ni dans les espaces de gestion           // pas sur la page d'Ely
+  if (/\/(ely|admin-ecole|espace-organisation|enquete)(\.html)?$/.test(location.pathname)) return; // ni sur Ely, ni dans les espaces de gestion           // pas sur la page d'Ely
   function poser() {
     if (document.getElementById("efa-ely")) return;
     var css = document.createElement("style");
@@ -168,8 +168,9 @@
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
   var s = document.createElement("script"); s.src = "efa-suite.js?v=2026102701"; s.defer = true; document.head.appendChild(s);
-  var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102512"; f.defer = true; document.head.appendChild(f);
+  var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102702"; f.defer = true; document.head.appendChild(f);
+  var pt = document.createElement("script"); pt.src = "efa-point.js?v=2026102701"; pt.defer = true; document.head.appendChild(pt);
   var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=2026102603"; qz.defer = true; document.head.appendChild(qz);
   if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102501"; u.defer = true; document.head.appendChild(u); }
-  if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102530"; k.defer = true; document.head.appendChild(k); }
+  if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102701"; k.defer = true; document.head.appendChild(k); }
 })();
