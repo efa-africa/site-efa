@@ -122,7 +122,7 @@
   function court(t) { t = String(t || "").replace(/\s*·\s*EFA.*$/, "").replace(/\s*\|.*$/, "").trim(); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, "") + "…" : t; }
   function filSuivant(href, label) {
     var a = document.querySelector(".efa-fil .fil-s"); if (!a || !href) return;
-    a.href = href; a.innerHTML = "Poursuivre<span>&nbsp;: " + esc(label) + "</span> →"; a.hidden = false;
+    a.href = href; a.innerHTML = '<b class="fp">Poursuivre&nbsp;: </b><span>' + esc(label) + "</span> →"; a.hidden = false;
     if (/^https?:/.test(href)) { a.target = "_blank"; a.rel = "noopener"; }
   }
   window.EFA_FIL = { suivant: filSuivant };
@@ -139,10 +139,12 @@
     var st = document.createElement("style");
     st.textContent = ".efa-fil{background:#F5EFE2;border-bottom:1px solid #E2D8C4;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;align-self:stretch;width:100%;box-sizing:border-box}"
       + ".efa-fil-in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px max(12px,env(safe-area-inset-left,0px))}"
+      + ".efa-fil-place{width:100%;max-width:100%;min-width:0;align-self:stretch}.efa-fil{max-width:100%;overflow:hidden}.efa-fil-in{min-width:0}.efa-fil-in>a{flex:0 1 auto;min-width:0}"
       + ".efa-fil a{display:inline-block;line-height:26px;min-height:38px;padding:6px 12px;border-radius:8px;font-size:14.5px;font-weight:800;text-decoration:none;color:#0B1220;max-width:48%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"
       + ".efa-fil a.fil-p{background:#0B1220;color:#fff}.efa-fil a.fil-s{background:#DA3C1B;color:#fff;margin-left:auto}.efa-fil a[hidden]{display:none}"
-      + ".efa-fil a span{font-weight:600;opacity:.85}"
-      + "@media (max-width:520px){.efa-fil a{font-size:14px;padding:6px 12px}.efa-fil a.fil-p span{display:none}.efa-fil a.fil-s{max-width:62%}}"
+      + ".efa-fil a span{font-weight:600;opacity:.85}.efa-fil a .fp{font-weight:800}"
+      + "@media (max-width:520px){.efa-fil a.fil-s .fp{display:none}.efa-fil a.fil-s span{opacity:1;font-weight:800}}"
+      + "@media (max-width:520px){.efa-fil a{font-size:14px;padding:6px 12px}.efa-fil a.fil-p span{display:none}.efa-fil a.fil-s{max-width:calc(100% - 104px)}}"
       + ".efa-fil.flot{position:fixed;left:0;right:0;z-index:45;background:rgba(245,239,226,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(11,18,32,.12);animation:efaFil .18s ease-out}"
       + ".efa-fil.flot .efa-fil-in{padding-top:4px;padding-bottom:4px}.efa-fil.flot a{min-height:34px;line-height:22px;padding:6px 12px}"
       + "@keyframes efaFil{from{transform:translateY(-8px);opacity:0}to{transform:none;opacity:1}}"
@@ -207,8 +209,8 @@
       var cible = null;
       if (h && M[h] && !M[h].valide) cible = null; // on y est déjà : on propose la suite
       for (var j = 0; j < L.length && !cible; j++) { var x = L[(k0 + (h ? 1 : 0) + j) % L.length]; if (x.id !== h && !(M[x.id] && M[x.id].valide)) cible = x; }
-      if (cible) filSuivant(pg + "#" + cible.id, "Continuer cette formation");
-      else filSuivant(pg, "Continuer cette formation");
+      if (cible) filSuivant(pg + "#" + cible.id, "Continuer la formation");
+      else filSuivant(pg, "Continuer la formation");
     }
     if (depuisDepart && pg !== "point-de-depart.html") { filSuivant("point-de-depart.html", "Revenir à mes recommandations"); repriseSecondaire(); }
     else if (MOTEUR) {
