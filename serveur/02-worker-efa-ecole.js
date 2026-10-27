@@ -1,4 +1,4 @@
-/* EFA · Worker « efa-ecole » · version 1.2 · 25 octobre 2026
+/* EFA · Worker « efa-ecole » · version 1.4 · 27 octobre 2026
    Comptes de l'école pour les organisations : clés d'accès, comptes participants, tableau de bord.
 
    Réglages (Cloudflare > Workers > efa-ecole > Settings > Variables and Secrets) :
