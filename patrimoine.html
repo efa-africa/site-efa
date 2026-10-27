@@ -239,13 +239,9 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
 <section class="intro">
   <div class="wrap">
     <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="parcours.html">L’école</a> › EFA Patrimoine</nav>
-    <p class="kick">EFA Patrimoine</p>
-    <h1>Structurer, protéger et faire fructifier votre patrimoine</h1>
+    <p class="kick" id="kick">EFA Patrimoine</p>
+    <h1 id="titre">Structurer, protéger et faire fructifier votre patrimoine</h1>
     <p class="chapo" id="chapo">Cadres, dirigeants, professions libérales, entrepreneurs, diaspora, héritiers&nbsp;: <b>dès que votre argent dépasse le budget du mois</b>, chaque décision engage davantage. Le parcours part de votre situation réelle et vous fait gagner du temps sur ce que vous maîtrisez déjà.</p>
-    <div class="chemins" role="group" aria-label="Choisir votre chemin">
-      <button type="button" data-vue="moi" aria-pressed="true">Pour moi</button>
-      <button type="button" data-vue="orga" aria-pressed="false">Pour mes équipes</button>
-    </div>
   </div>
 </section>
 
@@ -285,6 +281,7 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
       <li><b>2. Notre proposition</b>Programme, calendrier, livrables et prix.</li>
       <li><b>3. Le démarrage</b>Après accord, les participants reçoivent leurs accès et les dates des ateliers.</li>
     </ol>
+    <p class="note">Pour vous-même&nbsp;? <a class="lien" href="patrimoine.html" data-goatcounter-click="patrimoine-vers-perso">Le parcours EFA Patrimoine personnel →</a></p>
   </section>
 
   <!-- Le test (les deux chemins) -->
@@ -370,6 +367,13 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
         <div><button class="btn btn-main" type="submit">Être informé de la prochaine session</button></div>
         <p class="msg" id="a-msg" role="status"></p>
       </form>
+    </div>
+  </section>
+
+  <section class="bloc" data-pour="moi">
+    <div class="carte" style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between">
+      <p style="margin:0;max-width:40em;color:var(--ink)"><b style="color:var(--pv)">Vous voulez proposer ce parcours à vos cadres ou à votre comité de direction&nbsp;?</b> Deux formats pour les entreprises, avec un bilan d’ensemble et des plans personnels confidentiels.</p>
+      <a class="lien" href="patrimoine.html?pour=orga#orga" data-goatcounter-click="patrimoine-vers-entreprise">Voir l’offre entreprise →</a>
     </div>
   </section>
 
@@ -612,6 +616,8 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     vue=v;
     Array.prototype.forEach.call(document.querySelectorAll("[data-vue]"),function(b){b.setAttribute("aria-pressed",String(b.dataset.vue===v));});
     Array.prototype.forEach.call(document.querySelectorAll("[data-pour]"),function(s){s.hidden=s.dataset.pour!==v;});
+    $("kick").textContent=v==="orga"?"EFA Patrimoine · Pour les entreprises":"EFA Patrimoine";
+    $("titre").textContent=v==="orga"?"Former vos cadres et votre comité de direction":"Structurer, protéger et faire fructifier votre patrimoine";
     $("t-bk").textContent=v==="orga"?"La séquence gratuite":"Pour commencer";
     $("t-sous").innerHTML=v==="orga"?"Ce que vivront vos cadres en entrant dans le programme&nbsp;: des situations concrètes, avec des chiffres. Les réponses de chacun déterminent par où il commence.":"Des situations concrètes, avec des chiffres. Vos réponses indiquent par où commencer, et ce que vous pouvez passer.";
     $("chapo").innerHTML=v==="orga"?"Un programme à la hauteur de vos cadres&nbsp;: <b>il part de leur situation réelle</b>, va directement à ce qui compte pour chacun et se termine par un plan personnel.":"Cadres, dirigeants, professions libérales, entrepreneurs, diaspora, héritiers&nbsp;: <b>dès que votre argent dépasse le budget du mois</b>, chaque décision engage davantage. Le parcours part de votre situation réelle et vous fait gagner du temps sur ce que vous maîtrisez déjà.";
