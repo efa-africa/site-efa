@@ -581,7 +581,9 @@ a.tr-ligne{color:inherit;text-decoration:none}a.tr-cp{text-decoration:none}
     var r=vue.querySelector("[data-retour]");if(r)r.onclick=function(){if(etat.q2&&!etat.q3&&vue.innerHTML.indexOf("Question 3")>=0){delete etat.q2;v2();}else{etat={};v1();}};
   }
   var deja=lire(), qs=new URLSearchParams(location.search);
-  if(deja&&deja.p&&deja.q2&&deja.q3&&R[deja.p]&&!qs.has("changer")){etat=deja;res();}else v1();
+  var pour=qs.get("pour"); /* entrée directe depuis l'accueil : la première question est déjà répondue */
+  if(pour&&Q[pour]){etat={p:pour};suivi("q1-"+pour+"-direct");v2();}
+  else if(deja&&deja.p&&deja.q2&&deja.q3&&R[deja.p]&&!qs.has("changer")){etat=deja;res();}else v1();
 })();
 </script>
 
