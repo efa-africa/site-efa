@@ -110,6 +110,7 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
 /* Le test */
 .profil{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .profil button{font:700 15px/1.2 var(--f-body);min-height:44px;padding:10px 16px;border-radius:999px;border:0;cursor:pointer;background:var(--papier);color:var(--pv)}
+.profil a.vers-dir{display:inline-flex;align-items:center;font:700 15px/1.2 var(--f-body);min-height:44px;padding:10px 16px;border-radius:999px;text-decoration:none;background:#0C2340;color:#fff}
 .profil button[aria-pressed="true"]{background:var(--pv);color:#fff}
 .test{margin-top:18px}
 .prog{display:grid;gap:4px;margin-bottom:16px}
@@ -291,7 +292,7 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
     <p class="sous" id="t-sous">Des situations concrètes, avec des chiffres. Vos réponses indiquent par où commencer, et ce que vous pouvez passer.</p>
     <div class="profil" role="group" aria-label="Votre situation">
       <button type="button" data-profil="cadre" aria-pressed="true">Je suis cadre ou salarié</button>
-      <button type="button" data-profil="dirigeant" aria-pressed="false">Je dirige une entreprise</button>
+      <a class="vers-dir" href="dirigeants.html?src=patrimoine" data-goatcounter-click="patrimoine-vers-dirigeants">Je dirige une entreprise →</a>
       <button type="button" data-profil="patrimoine" aria-pressed="false">J’ai un patrimoine à organiser</button>
     </div>
     <div class="carte test" id="zone" aria-live="polite"></div>
@@ -348,7 +349,7 @@ section.bloc{padding-top:44px;scroll-margin-top:72px}
       <article class="pil"><span class="n">4 · Préparer et transmettre</span><b>Penser à vingt ans</b><p>Le terrain, la retraite, ce qui reviendra à la famille.</p>
         <ul><li><a href="parcours.html?src=patrimoine#P13">Terrain et maison</a></li><li><a href="preparer-ma-retraite.html?src=patrimoine">Préparer ma retraite</a></li><li><a href="parcours.html?src=patrimoine#M23">Transmettre</a></li></ul></article>
       <article class="pil d"><span class="n">Pour les dirigeants</span><b>Financer et décider</b><p>Séparer l’entreprise et le patrimoine personnel, lire un financement.</p>
-        <ul><li><a href="corporate.html?src=patrimoine#cas-pret">Le cas Ciments Bakar</a></li><li><a href="corporate.html?src=patrimoine">EFA Corporate Finance</a></li><li><a href="ceo.html?src=patrimoine">EFA CEO Challenge</a></li></ul></article>
+        <ul><li><a href="dirigeants.html?src=patrimoine">EFA Dirigeants, le parcours complet</a></li><li><a href="corporate.html?src=patrimoine#cas-pret">Le cas Ciments Bakar</a></li><li><a href="corporate.html?src=patrimoine">EFA Corporate Finance</a></li><li><a href="ceo.html?src=patrimoine">EFA CEO Challenge</a></li></ul></article>
     </div>
   </section>
 
@@ -534,7 +535,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
 
   var S={profil:"cadre",rep:{},k:0,fini:false};
   try{var x=JSON.parse(localStorage.getItem(CLE)||"null");if(x&&x.rep)S=x;}catch(e){}
-  try{var qp=new URLSearchParams(location.search).get("profil");if(qp==="dirigeant"||qp==="cadre"||qp==="patrimoine")S.profil=qp;}catch(e){}
+  try{var qp=new URLSearchParams(location.search).get("profil");if(qp==="dirigeant"){location.replace("dirigeants.html"+location.hash);return;}if(qp==="cadre"||qp==="patrimoine")S.profil=qp;}catch(e){}
   function sauver(){try{localStorage.setItem(CLE,JSON.stringify(S));}catch(e){}}
   function liste(){return Q.filter(function(q){return S.profil==="dirigeant"||!q.dir;});}
   function rates(){return liste().filter(function(q){return S.rep[q.id]!=null&&S.rep[q.id]!==q.b;}).map(function(q){return q.r;});}
@@ -593,7 +594,7 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     var reste=ordre.filter(function(k){return prio.indexOf(k)<0;});
     var L=prio.concat(reste);
     var h=L.map(function(k){var x=REC[k],p=prio.indexOf(k)>=0;return '<li'+(p?' class="prio"':'')+'><div>'+(p?'<em>À approfondir en premier</em>':'')+'<b>'+typo(x.t)+'</b><span>'+typo(x.d)+'</span></div><a class="go" href="'+x.l[0][1]+'" data-goatcounter-click="cadres-etape-'+k+'">Ouvrir</a></li>';}).join("");
-    if(S.profil==="dirigeant") h+='<li><div><b>Décider comme un dirigeant</b><span>EFA CEO Challenge : six cas fictifs de stratégie, avec une note de décision à rédiger.</span></div><a class="go" href="ceo.html?src=cadres">Ouvrir</a></li>';
+    if(false) h+='<li><div><b>Décider comme un dirigeant</b><span>EFA CEO Challenge : six cas fictifs de stratégie, avec une note de décision à rédiger.</span></div><a class="go" href="ceo.html?src=cadres">Ouvrir</a></li>';
     $("etapes").innerHTML=h;
     $("p-sous").innerHTML=S.fini?(prio.length?"Les étapes à approfondir en premier sont en tête, en corail. Les autres complètent le cycle Patrimoine de l’école.":"Toutes les situations sont réussies : suivez les étapes de patrimoine dans l’ordre, ou passez au parcours accompagné."):"Chaque étape ouvre un module de l’école EFA déjà en place, avec ses cas, ses calculs et son quiz. Faites le bilan express&nbsp;: les étapes à approfondir en premier passent en tête.";
   }
@@ -686,6 +687,9 @@ function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)windo
     ind.push('<div class="'+(okI?"ok":"att")+'"><small>Part de l’immobilier</small><b>'+P(im)+'</b><span>'+(okI?"Une part qui laisse de la marge de manœuvre.":"Au-delà de 60 %, le patrimoine se mobilise lentement et souvent sous le prix en cas d’urgence.")+'</span>'+(okI?"":'<a href="parcours.html?src=patrimoine#P13">Terrain et maison</a>')+'</div>');
     if(v["bp-dette"]){var d=v["bp-dette"]/actifs, okD=d<=0.4;
       ind.push('<div class="'+(okD?"ok":"att")+'"><small>Endettement</small><b>'+P(d)+'</b><span>'+(okD?"Des crédits couverts largement par ce que vous possédez.":"Au-delà de 40 % de vos biens, une baisse de revenu pèse vite.")+'</span>'+(okD?"":'<a href="parcours.html?src=patrimoine#M11">Sortir de la dette</a>')+'</div>');}
+    var en=v["bp-ent"]/actifs;
+    if(v["bp-ent"]){var okE=en<=0.5;
+      ind.push('<div class="'+(okE?"ok":"att")+'"><small>Part de l’entreprise</small><b>'+P(en)+'</b><span>'+(okE?"Un patrimoine personnel qui ne dépend pas que de l’entreprise.":"Au-delà de la moitié, une crise de l’entreprise toucherait à la fois votre revenu et votre patrimoine.")+'</span>'+(okE?"":'<a href="dirigeants.html?src=patrimoine#chantiers">Séparer l’entreprise et le patrimoine</a>')+'</div>');}
     var fi=v["bp-fin"]/actifs;
     ind.push('<div class="'+(fi>0?"ok":"att")+'"><small>Part placée</small><b>'+P(fi)+'</b><span>'+(fi>0?"Une partie de votre argent travaille pour vous.":"Aucune part placée : après inflation, l’argent qui dort perd de sa valeur.")+'</span><a href="parcours.html?src=patrimoine#M17">Épargner ou investir</a></div>');
     $("bp-ind").innerHTML=ind.join(""); res.hidden=false;

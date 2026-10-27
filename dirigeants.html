@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0C2340">
+<title>EFA Dirigeants</title>
+<meta name="description" content="EFA Dirigeants : séparer l’entreprise et le patrimoine, piloter la trésorerie, financer, valoriser, transmettre. Un bilan express en neuf situations, puis un parcours qui part de vos réponses.">
+<link rel="canonical" href="https://efa.africa/dirigeants">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="EFA Dirigeants : une entreprise solide, un patrimoine protégé">
+<meta property="og:description" content="Neuf situations de dirigeant, huit minutes. Vos réponses indiquent par où commencer.">
+<meta property="og:url" content="https://efa.africa/dirigeants">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<style>
+
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#1B71B2; --corail:#DA3C1B;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#E2D8C4;
+  --hausse:#1E7A4C;
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--nuit);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;overflow-wrap:break-word}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:760px}
+
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-size:26px}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+
+.intro{background:var(--nuit);color:#fff;padding-block:30px 40px}
+.crumbs{font-size:13px;color:#AEB6C6}
+.crumbs a{color:#E8EDF5}
+.kick{margin-top:20px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail)}
+.intro h1{font-size:clamp(34px,5.6vw,60px);margin-top:10px;max-width:18ch}
+.signe{margin-top:16px;font-size:14px;color:#AEB6C6}
+.signe a{color:#fff;font-weight:700}
+
+article section{padding-top:44px;scroll-margin-top:72px}
+.bk{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+article h2{font-size:clamp(26px,3.6vw,38px);margin-top:8px}
+article h3{font-size:clamp(19px,1.7vw,23px);line-height:1.18}
+article p{margin-top:14px;color:var(--ink)}
+strong{color:var(--nuit)}
+.note{font-size:15px;color:var(--ink2)}
+
+
+/* EFA Dirigeants : bleu profond, bleu ciel, bleu très pâle (charte propre à cet espace) */
+:root{--pv:#0C2340;--pv2:#15325A;--or:#7CC0F4;--or-t:#1B5E99;--or-clair:#A9D6FA;--ivoire:#EEF3F8;--bordeaux:#6E2A2A}
+body{background:var(--ivoire)}
+.intro{background:var(--pv)}
+.intro .kick{color:var(--or-clair)}
+.crumbs{color:#A9BBD2}.crumbs a{color:#E6ECF4}
+.lien{text-decoration-color:var(--or)}
+[hidden]{display:none!important}
+.intro{padding-block:30px 44px}
+.intro h1{max-width:20ch}
+.chapo{margin-top:16px;font-size:clamp(17px,2vw,20px);line-height:1.5;color:#E8EDF5;max-width:40em}
+.chapo b{color:#fff}
+/* Choix du chemin : aplat plein, jamais de liseré */
+.chemins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.chemins button{font:800 15px/1.2 var(--f-body);min-height:46px;padding:12px 18px;border-radius:8px;border:0;cursor:pointer;background:rgba(255,255,255,.1);color:#fff}
+.chemins button[aria-pressed="true"]{background:var(--or);color:var(--pv)}
+.chemins button:hover{background:rgba(255,255,255,.18)}.chemins button[aria-pressed="true"]:hover{background:var(--or);color:var(--pv);filter:brightness(1.06)}
+section.bloc{padding-top:44px;scroll-margin-top:72px}
+.bk{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--or-t)}
+.bloc h2{font-size:clamp(26px,3.6vw,40px);margin-top:8px}
+.bloc .sous{margin-top:12px;color:var(--ink2);max-width:44em}
+.carte{background:var(--papier);border-radius:14px;padding:22px;min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font:800 16px/1.2 var(--f-body);min-height:46px;padding:12px 22px;border-radius:8px;border:0;cursor:pointer}
+.btn-main{background:var(--or);color:var(--pv)}.btn-dark{background:var(--pv);color:#fff}.btn-clair{background:var(--ivoire);color:var(--pv)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.lien{font-weight:700;color:var(--pv);text-decoration:underline;text-decoration-color:var(--or);text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* Le test */
+.profil{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.profil button{font:700 15px/1.2 var(--f-body);min-height:44px;padding:10px 16px;border-radius:999px;border:0;cursor:pointer;background:var(--papier);color:var(--pv)}
+.profil button[aria-pressed="true"]{background:var(--pv);color:#fff}
+.test{margin-top:18px}
+.prog{display:grid;gap:4px;margin-bottom:16px}
+.prog i{display:block;height:6px;border-radius:999px;background:var(--line)}
+.prog i.fait{background:var(--pv)}.prog i.ici{background:var(--or)}
+.qn{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.q-t{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,2.2vw,25px);line-height:1.25;margin-top:8px;text-wrap:pretty}
+.q-c{margin-top:10px;color:var(--ink)}
+.opts{display:grid;gap:8px;margin-top:16px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;font:600 16px/1.4 var(--f-body);padding:14px 16px;border-radius:10px;border:0;cursor:pointer;background:var(--ivoire);color:var(--pv);width:100%}
+.opt b{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--papier);font-size:13px}
+.opt:hover:not([disabled]){background:#EAE2D2}
+.opt[disabled]{cursor:default}
+.opt.ok{background:#1E7A4C;color:#fff}.opt.ok b{background:rgba(255,255,255,.2)}
+.opt.ko{background:var(--bordeaux);color:#fff}.opt.ko b{background:rgba(255,255,255,.2)}
+.opt.ok-vu{background:#DDEFE4}
+.expl{margin-top:16px;padding:16px 18px;border-radius:10px;background:var(--pv);color:#E8EDF5}
+.expl p{margin:0}.expl p+p{margin-top:8px}
+.expl .v{font-weight:800;color:#fff;font-size:17px}
+.expl .r{font-size:15px;color:#C9D1DE}.expl .r a{color:#fff;font-weight:700}
+.nav-q{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+/* Résultat */
+.score{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.score .n{font-family:var(--f-display);font-weight:700;font-size:clamp(44px,6vw,64px);line-height:1;color:var(--pv)}
+.score .t{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,2.2vw,26px)}
+.verdict{margin-top:14px;background:var(--pv);color:#fff;border-radius:2px;padding:16px 18px}
+.verdict p{margin:0;color:#fff}.verdict p+p{margin-top:6px}
+.recours{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:10px;margin-top:16px}
+.rc{background:var(--ivoire);border-radius:12px;padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.rc small{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.rc b{font-family:var(--f-display);font-size:18px;line-height:1.2}
+.rc span{font-size:15px;color:var(--ink2)}
+.rc .l{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.rc .l a{font:800 14px/1.2 var(--f-body);text-decoration:none;padding:9px 12px;border-radius:8px;background:var(--pv);color:#fff}
+.rc .l a+a{background:var(--papier);color:var(--pv)}
+/* Parcours */
+.etapes{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;counter-reset:e}
+.etapes li{counter-increment:e;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--papier);border-radius:14px;padding:16px 18px}
+.etapes li::before{content:counter(e);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pv);color:#fff;font:800 15px var(--f-body)}
+.etapes li.prio::before{background:var(--or)}
+.etapes b{display:block;font-family:var(--f-display);font-size:18px;line-height:1.2}
+.etapes span{display:block;font-size:15px;color:var(--ink2);margin-top:4px}
+.etapes em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--or-t)}
+.etapes a.go{font:800 14px/1.2 var(--f-body);text-decoration:none;padding:10px 14px;border-radius:8px;background:var(--ivoire);color:var(--pv);white-space:nowrap}
+.etapes li.prio a.go{background:var(--or);color:var(--pv)}
+@media (max-width:620px){.etapes li{grid-template-columns:auto minmax(0,1fr)}.etapes a.go{grid-column:2;justify-self:start}}
+/* Offres */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+@media (max-width:700px){.duo{grid-template-columns:minmax(0,1fr)}}
+.offre{border-radius:14px;padding:22px;display:grid;gap:12px;align-content:start;min-width:0}
+.offre.c{background:var(--papier)}.offre.d{background:var(--pv);color:#E8EDF5}
+.offre .k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--or-t)}.offre.d .k{color:var(--or-clair)}
+.offre h3{font-size:clamp(20px,2vw,24px);line-height:1.2}.offre.d h3{color:#fff}
+.offre dl{margin:0;display:grid;gap:10px}
+.offre dt{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}.offre.d dt{color:#9AA5B8}
+.offre dd{margin:2px 0 0;font-size:16px}
+.accomp{margin-top:14px;background:var(--pv);color:#E8EDF5;border-radius:14px;padding:22px}
+.accomp h3{color:#fff;font-size:clamp(20px,2vw,24px)}
+.accomp p{margin-top:10px;color:#C9D1DE}
+.etapes-o{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
+.etapes-o li{background:var(--papier);border-radius:12px;padding:14px;font-size:15px;color:var(--ink2)}
+.etapes-o b{display:block;color:var(--pv);font-size:16px;margin-bottom:4px}
+/* Formulaires */
+.form{display:grid;gap:14px;margin-top:16px}
+.champs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.form label{display:grid;gap:6px;font-weight:700;font-size:15px;min-width:0}
+.form small{font-weight:400;color:var(--ink2);font-size:13px}
+.form input,.form select,.form textarea{font:inherit;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:var(--ivoire);color:var(--pv);width:100%;min-width:0}
+.form textarea{min-height:110px;resize:vertical}
+.accomp .form input,.accomp .form select{background:#fff}
+.accomp .form label{color:#fff}
+.case{display:flex!important;gap:10px;align-items:flex-start;font-weight:400!important;font-size:15px!important;color:var(--ink2)}
+.accomp .case{color:#C9D1DE}
+.case input{width:20px!important;height:20px;flex:none;margin-top:2px}
+.msg{font-size:15px;font-weight:700;min-height:1.4em}
+.bot{position:absolute;left:-9999px}
+.note{font-size:14.5px;color:var(--ink2);margin-top:12px}
+.fin{padding-bottom:56px}
+
+/* Piliers */
+.piliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px;margin-top:18px}
+.pil{background:var(--papier);border-radius:14px;padding:18px;display:grid;gap:8px;align-content:start;min-width:0}
+.pil .n{font:700 12px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--or-t)}
+.pil b{font-family:var(--f-display);font-size:19px;line-height:1.2;color:var(--pv)}
+.pil p{margin:0;font-size:15px;color:var(--ink2)}
+.pil ul{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px}
+.pil li a{font-weight:700;font-size:15px;color:var(--pv);text-decoration:underline;text-decoration-color:var(--or);text-decoration-thickness:2px;text-underline-offset:4px}
+.pil.d{background:var(--pv);color:#E6ECF4}.pil.d b{color:#fff}.pil.d p{color:#C4D0E0}.pil.d .n{color:var(--or-clair)}.pil.d li a{color:#fff}
+/* Bilan patrimonial */
+.bp-grille{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+@media (max-width:700px){.bp-grille{grid-template-columns:minmax(0,1fr)}}
+.bp-col{background:var(--ivoire);border-radius:12px;padding:16px;display:grid;gap:12px;align-content:start;min-width:0}
+.bp-col h3{font-size:18px;color:var(--pv)}
+.bp label{display:grid;gap:6px;font-weight:700;font-size:15px;min-width:0}
+.bp label small{font-weight:400;color:var(--ink2);font-size:13px}
+.bp input{font:inherit;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:var(--papier);color:var(--pv);width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.bp-res{margin-top:16px;background:var(--pv);color:#E6ECF4;border-radius:14px;padding:20px;display:grid;gap:14px}
+.bp-net small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A9BBD2}
+.bp-net b{font-family:var(--f-display);font-size:clamp(28px,4vw,40px);color:#fff;font-variant-numeric:tabular-nums}
+.bp-barre{display:flex;height:18px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08)}
+.bp-barre i{display:block;height:100%}
+.bp-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:#C4D0E0;list-style:none;margin:0;padding:0}
+.bp-leg li{display:flex;align-items:center;gap:6px}.bp-leg i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.bp-ind{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.bp-ind div{background:var(--pv2);border-radius:12px;padding:14px;display:grid;gap:4px;min-width:0}
+.bp-ind small{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A9BBD2}
+.bp-ind b{font-family:var(--f-display);font-size:22px;color:#fff;font-variant-numeric:tabular-nums}
+.bp-ind span{font-size:14.5px;color:#C4D0E0}
+.bp-ind a{color:var(--or-clair);font-weight:700;font-size:14.5px}
+.bp-ind .ok b{color:#9BE0B8}.bp-ind .att b{color:var(--or-clair)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main>
+<section class="intro">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="patrimoine.html">EFA Patrimoine</a> › EFA Dirigeants</nav>
+    <p class="kick">EFA Dirigeants</p>
+    <h1>Une entreprise solide, un patrimoine protégé</h1>
+    <p class="chapo">Diriger, c’est engager deux patrimoines à la fois&nbsp;: celui de l’entreprise et le vôtre. <b>Ce parcours vous aide à les séparer, à les financer et à les protéger</b>, à partir de vos décisions réelles.</p>
+  </div>
+</section>
+
+<div class="wrap fin">
+
+  <section class="bloc" id="test">
+    <p class="bk">Pour commencer</p>
+    <h2>Le bilan express du dirigeant&nbsp;: neuf situations, huit minutes</h2>
+    <p class="sous">Trésorerie, financement, valorisation, caution, rémunération, succession&nbsp;: des situations concrètes, avec des chiffres. Vos réponses indiquent par où commencer, et ce que vous pouvez passer.</p>
+    <div class="carte test" id="zone" aria-live="polite"></div>
+    <p class="note">Vos réponses restent sur cet appareil. Les montants sont fictifs, proches de ceux d’une PME en Afrique de l’Ouest.</p>
+  </section>
+
+  <section class="bloc" id="parcours">
+    <p class="bk">Votre parcours de dirigeant</p>
+    <h2>Un parcours qui part de vos réponses</h2>
+    <p class="sous" id="p-sous">Chaque étape ouvre un chapitre ou un cas d’EFA Corporate Finance, d’EFA CEO Challenge ou de l’école EFA. Faites le bilan express&nbsp;: les étapes à approfondir en premier passent en tête.</p>
+    <ol class="etapes" id="etapes"></ol>
+  </section>
+
+  <section class="bloc" id="bilan">
+    <p class="bk">Mon bilan patrimonial</p>
+    <h2>Votre patrimoine sur une page</h2>
+    <p class="sous">Estimez chaque poste à sa valeur de revente aujourd’hui. Des montants ronds suffisent&nbsp;: c’est la structure qui compte.</p>
+    <div class="carte bp">
+      <div class="bp-grille">
+        <div class="bp-col"><h3>Ce que vous possédez</h3>
+          <label>Disponible en moins d’une semaine<small>Comptes, mobile money, espèces</small><input id="bp-liq" inputmode="numeric" autocomplete="off"></label>
+          <label>Épargne bloquée<small>Dépôts à terme, plans d’épargne, tontine en cours</small><input id="bp-bloq" inputmode="numeric" autocomplete="off"></label>
+          <label>Placements financiers<small>Actions, obligations, fonds communs</small><input id="bp-fin" inputmode="numeric" autocomplete="off"></label>
+          <label>Immobilier et terrains<small>Valeur de revente estimée</small><input id="bp-immo" inputmode="numeric" autocomplete="off"></label>
+          <label>Parts d’entreprise et autres biens<small>Facultatif</small><input id="bp-ent" inputmode="numeric" autocomplete="off"></label>
+        </div>
+        <div class="bp-col"><h3>Ce que vous devez, ce que vous dépensez</h3>
+          <label>Crédits restant dus<small>Immobilier, consommation, avances sur salaire</small><input id="bp-dette" inputmode="numeric" autocomplete="off"></label>
+          <label>Dépenses d’un mois, famille comprise<small>Pour mesurer votre marge en cas d’imprévu</small><input id="bp-dep" inputmode="numeric" autocomplete="off"></label>
+        </div>
+      </div>
+      <div class="bp-res" id="bp-res" hidden aria-live="polite">
+        <div class="bp-net"><small>Patrimoine net</small><b id="bp-net"></b></div>
+        <div class="bp-barre" id="bp-barre" aria-hidden="true"></div>
+        <ul class="bp-leg" id="bp-leg"></ul>
+        <div class="bp-ind" id="bp-ind"></div>
+        <p style="margin:0;font-size:14px;color:#A9BDB7">Les repères sont ceux de l’école EFA, à adapter à votre situation&nbsp;: ce ne sont pas des conseils en placement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc" id="chantiers">
+    <p class="bk">Les cinq chantiers du dirigeant</p>
+    <h2>Séparer, financer, piloter, valoriser, transmettre</h2>
+    <p class="sous">Chaque chantier s’appuie sur des cours et des cas déjà en place, avec des données d’entreprises fictives et des calculs guidés.</p>
+    <div class="piliers">
+      <article class="pil"><span class="n">1 · Séparer</span><b>L’entreprise n’est pas votre portefeuille</b><p>Votre rémunération, vos apports, vos garanties.</p>
+        <ul><li><a href="separer-les-poches.html?src=dirigeants">Séparer les poches</a></li><li><a href="#bilan" data-aller="bilan">Mon bilan patrimonial</a></li><li><a href="corporate.html?src=dirigeants#cas-pret">Ce que regarde la banque</a></li></ul></article>
+      <article class="pil"><span class="n">2 · Piloter la trésorerie</span><b>Le résultat n’est pas la trésorerie</b><p>Délais clients, stocks, fournisseurs.</p>
+        <ul><li><a href="corporate.html?src=dirigeants#cours-f4">Fonds de roulement, BFR et trésorerie</a></li><li><a href="corporate.html?src=dirigeants#cas-bfr">Le cas de la grosse commande</a></li></ul></article>
+      <article class="pil"><span class="n">3 · Financer</span><b>Dette ou capital, et à quel prix</b><p>Banque, investisseur, autofinancement.</p>
+        <ul><li><a href="corporate.html?src=dirigeants#cours-f9">Les sources de financement dans l’UEMOA</a></li><li><a href="corporate.html?src=dirigeants#cas-financement">Financer dix magasins</a></li><li><a href="corporate.html?src=dirigeants#cas-invest">Investir dans une usine</a></li></ul></article>
+      <article class="pil"><span class="n">4 · Valoriser</span><b>Savoir ce que vaut votre entreprise</b><p>Flux, multiples, gouvernance.</p>
+        <ul><li><a href="corporate.html?src=dirigeants#cours-f13">Valoriser une entreprise</a></li><li><a href="corporate.html?src=dirigeants#cas-valo">Le rachat de Boulangeries Kanga</a></li><li><a href="corporate.html?src=dirigeants#cours-f14">Gouvernance et création de valeur</a></li></ul></article>
+      <article class="pil d"><span class="n">5 · Décider et transmettre</span><b>Tenir sans vous, durer après vous</b><p>Stratégie, délégations, succession.</p>
+        <ul><li><a href="ceo.html?src=dirigeants">EFA CEO Challenge : six cas de stratégie</a></li><li><a href="parcours.html?src=dirigeants#M23">Transmettre</a></li><li><a href="papiers-famille.html?src=dirigeants">Les papiers de la famille</a></li></ul></article>
+    </div>
+  </section>
+
+  <section class="bloc" id="ateliers">
+    <div class="accomp">
+      <p class="kick" style="margin:0">En petit groupe</p>
+      <h3>Les ateliers EFA Dirigeants</h3>
+      <p>Trois ateliers entre dirigeants&nbsp;: patrimoine personnel, trésorerie et financement, valorisation. Chacun repart avec un plan personnel confidentiel et des notes de décision sur des cas fictifs. Les premières dates ne sont pas encore fixées&nbsp;: laissez votre adresse, nous vous écrivons dès qu’elles le sont.</p>
+      <form class="form" id="f-att" data-sans-note-chiffres novalidate>
+        <div class="champs">
+          <label>Votre adresse email<input type="email" id="a-mail" autocomplete="email" required></label>
+          <label>Taille de votre entreprise<select id="a-taille"><option>Moins de 10 personnes</option><option>10 à 50 personnes</option><option>Plus de 50 personnes</option></select></label>
+        </div>
+        <label class="case"><input type="checkbox" id="a-ok"> J’accepte qu’EFA m’écrive au sujet de ces ateliers. Aucune autre utilisation.</label>
+        <input type="checkbox" name="botcheck" class="bot" tabindex="-1" aria-hidden="true">
+        <div><button class="btn btn-main" type="submit">Être informé des prochaines dates</button></div>
+        <p class="msg" id="a-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="bloc">
+    <div class="carte" style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between">
+      <p style="margin:0;max-width:40em;color:var(--ink)"><b style="color:var(--pv)">Former votre comité de direction ou vos cadres&nbsp;?</b> Trois ateliers pour le comité de direction, six semaines accompagnées pour les cadres, sur proposition.</p>
+      <a class="lien" href="patrimoine.html?pour=orga#orga" data-goatcounter-click="dirigeants-vers-entreprise">Voir l’offre entreprise →</a>
+    </div>
+    <p class="note">Votre patrimoine personnel plutôt que l’entreprise&nbsp;? <a class="lien" href="patrimoine.html?profil=patrimoine" data-goatcounter-click="dirigeants-vers-patrimoine">EFA Patrimoine →</a></p>
+  </section>
+
+</div>
+</main>
+
+
+<footer class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var $=function(i){return document.getElementById(i);};
+  var typo=function(s){return String(s).replace(/ ([:;?!»%])/g,"&nbsp;$1").replace(/« /g,"«&nbsp;").replace(/(\d) (\d{3})/g,"$1&nbsp;$2").replace(/(\d) F\b/g,"$1&nbsp;F");};
+  var son=function(t){try{if(window.EFA_SONS)EFA_SONS.joue(t);}catch(e){}};
+  var CLE="efa_dirigeants_v1", WEB3="426191fb-4812-4de4-b602-5857464c5916";
+
+  /* Les recours : cours et cas déjà en place (EFA Corporate Finance, CEO Challenge, école EFA) */
+  var REC={
+    separer:{t:"Séparer l’entreprise et le patrimoine",d:"Votre rémunération, vos apports, ce qui vous appartient vraiment.",l:[["Séparer les poches","separer-les-poches.html?src=dirigeants"],["Mon bilan patrimonial","#bilan"]]},
+    tresorerie:{t:"Fonds de roulement, BFR et trésorerie",d:"Pourquoi une entreprise rentable peut manquer d’argent.",l:[["Le chapitre","corporate.html?src=dirigeants#cours-f4"],["Le cas de la grosse commande","corporate.html?src=dirigeants#cas-bfr"]]},
+    financement:{t:"Dette ou capital",d:"Le vrai coût de chaque ressource, et ce qu’elle vous fait céder.",l:[["Le cas des dix magasins","corporate.html?src=dirigeants#cas-financement"],["Structure financière et levier","corporate.html?src=dirigeants#cours-f11"]]},
+    caution:{t:"Ce que la banque regarde",d:"Analyser un financement, et mesurer ce que vous garantissez.",l:[["Le cas Ciments Bakar","corporate.html?src=dirigeants#cas-pret"],["Les sources de financement","corporate.html?src=dirigeants#cours-f9"]]},
+    valo:{t:"Valoriser une entreprise",d:"Flux actualisés, multiples, et ce qui fait la valeur.",l:[["Le chapitre","corporate.html?src=dirigeants#cours-f13"],["Le rachat de Boulangeries Kanga","corporate.html?src=dirigeants#cas-valo"]]},
+    reserve:{t:"Votre réserve personnelle",d:"Tenir quand l’entreprise ne peut plus vous payer.",l:[["Le module","certificat-pilote.html?src=dirigeants&m=4"],["Où garder sa réserve","ou-garder-sa-reserve.html?src=dirigeants"]]},
+    transmettre:{t:"Tenir sans vous, transmettre",d:"Délégations, papiers, succession.",l:[["Le module Transmettre","parcours.html?src=dirigeants#M23"],["Les papiers de la famille","papiers-famille.html?src=dirigeants"]]}
+  };
+
+  var Q=[
+    {id:"caution",r:"caution",t:"La banque demande votre caution personnelle sur un prêt de 150 000 000 F à votre entreprise. Qu’est-ce que cela veut dire ?",
+     c:"L’entreprise est une société, distincte de vous.",
+     o:["Rien tant que l’entreprise paie : c’est une formalité","Si l’entreprise ne paie pas, la banque peut se retourner contre vos biens personnels, jusqu’au montant garanti","La banque ne peut saisir que les biens de l’entreprise","Seule votre part du capital est en jeu"],b:1,
+     e:"La société sépare les patrimoines ; la caution les relie à nouveau. Avant de signer, on mesure ce que l’on engage, on négocie un plafond et une durée, et on en parle à sa famille."},
+    {id:"tresorerie",r:"tresorerie",t:"Vos ventes augmentent de 30 % cette année. Que devient votre trésorerie ?",
+     c:"Vos clients paient à 90 jours, vos fournisseurs veulent être payés à 30 jours. L’entreprise est rentable.",
+     o:["Elle augmente avec les ventes","Elle peut baisser, même si l’entreprise est rentable","Elle ne bouge pas : le résultat suffit","Elle dépend seulement du prix de vente"],b:1,
+     e:"Chaque vente payée à 90 jours immobilise de l’argent avant qu’il n’arrive, alors que les fournisseurs sont payés plus tôt. Plus l’activité grandit, plus ce besoin en fonds de roulement augmente : une entreprise rentable peut manquer de trésorerie."},
+    {id:"financement",r:"financement",t:"Deux offres pour financer 200 000 000 F. Quelle affirmation est juste ?",
+     c:"La banque prête à 12 % sur cinq ans. Un investisseur apporte la même somme contre 40 % du capital.",
+     o:["Le capital est gratuit, puisqu’on ne le rembourse pas","La dette se rembourse avec des intérêts ; le capital ne se rembourse pas, mais cède 40 % des bénéfices futurs et une part du pouvoir","Les deux coûtent la même chose","La dette est toujours plus chère que le capital"],b:1,
+     e:"Le capital paraît gratuit parce qu’il n’a pas d’échéance. En réalité, l’investisseur attend un rendement plus élevé que la banque, et il prend une part de la valeur et des décisions. Le bon choix dépend de la capacité de l’entreprise à rembourser."},
+    {id:"valo",r:"valo",t:"Un acheteur propose 300 000 000 F pour votre entreprise. Que faut-il regarder d’abord ?",
+     c:"Elle dégage un résultat net de 100 000 000 F par an et n’a pas de dette.",
+     o:["Rien : c’est forcément une bonne offre","C’est trois fois le résultat annuel : il faut comparer au secteur et à ce que l’entreprise rapportera","La valeur de ses machines","Son chiffre d’affaires, et lui seul"],b:1,
+     e:"Un multiple de trois fois le résultat peut être bas ou juste selon le secteur, la croissance, le risque et la dépendance au dirigeant. Avant de répondre, on calcule une valeur par les flux et une valeur par comparaison."},
+    {id:"concentration",r:"separer",t:"Presque tout votre patrimoine est dans votre entreprise. Qu’est-ce qui vous expose le plus ?",
+     c:"Votre revenu vient aussi de l’entreprise.",
+     o:["Rien, puisque l’entreprise va bien","Un même événement peut toucher à la fois votre revenu et votre patrimoine","Les impôts","Le nombre de salariés"],b:1,
+     e:"Si l’entreprise traverse une crise, vous perdez en même temps le revenu et la valeur. Construire à côté un patrimoine personnel indépendant de l’entreprise est une protection, pas un manque de confiance."},
+    {id:"remuneration",r:"separer",t:"Vous ne vous versez pas de rémunération fixe : vous prenez dans la caisse selon les besoins. Quelle est la conséquence principale ?",
+     c:"La caisse sert aussi aux dépenses de la maison quand il le faut.",
+     o:["Aucune : c’est votre entreprise","Vous ne connaissez ni la vraie rentabilité de l’entreprise ni votre vrai budget","Vous payez moins de charges","La banque apprécie cette souplesse"],b:1,
+     e:"Quand les poches se mélangent, les comptes ne disent plus si l’entreprise gagne de l’argent, et votre budget personnel n’existe pas. Une rémunération fixe, même modeste, remet les deux à leur place."},
+    {id:"apport",r:"separer",t:"Vous avez prêté 50 000 000 F de votre épargne à l’entreprise, sans écrit. Quel est le risque principal ?",
+     c:"L’entreprise rencontre aujourd’hui des difficultés.",
+     o:["Aucun : c’est votre argent","Sans écrit, la somme est difficile à faire reconnaître et à récupérer","La banque la rembourse en priorité","Elle devient automatiquement du capital"],b:1,
+     e:"Un apport sans convention ni trace claire dans les comptes reste fragile : ni le montant, ni la durée, ni les conditions de remboursement ne sont prouvés. Un écrit et une inscription en compte courant d’associé protègent cette somme."},
+    {id:"reserve",r:"reserve",t:"L’entreprise ne peut plus vous rémunérer pendant un temps. Combien de mois tenez-vous ?",
+     c:"Votre rémunération : 1 500 000 F par mois. Dépenses du mois, famille comprise : 1 150 000 F. Argent personnel disponible en moins d’une semaine : 2 300 000 F.",
+     o:["Un mois et demi, environ","Deux mois","Six mois, en comptant les dividendes attendus","Impossible à dire"],b:1,
+     e:"On divise la réserve par les dépenses, pas par la rémunération : 2 300 000 ÷ 1 150 000 = 2 mois. Les dividendes attendus ne sont ni immédiats ni certains, surtout quand l’entreprise traverse une période difficile."},
+    {id:"succession",r:"transmettre",t:"Si vous ne pouviez plus diriger demain, qui signe les paiements et les salaires ?",
+     c:"Vous êtes aujourd’hui le seul signataire.",
+     o:["Mon adjoint, naturellement","La banque accepte la signature d’un proche","Personne, tant qu’aucune délégation ni aucun signataire suppléant n’a été prévu","Le comptable"],b:2,
+     e:"Sans délégation de pouvoirs ni second signataire, l’entreprise peut se retrouver bloquée en quelques jours : salaires, fournisseurs, impôts. Prévoir ces relais protège l’entreprise, les salariés et la famille."}
+  ];
+  var ORDRE=["separer","tresorerie","financement","caution","valo","reserve","transmettre"];
+
+  var S={rep:{},k:0,fini:false};
+  try{var x=JSON.parse(localStorage.getItem(CLE)||"null");if(x&&x.rep)S=x;}catch(e){}
+  function sauver(){try{localStorage.setItem(CLE,JSON.stringify(S));}catch(e){}}
+  function rates(){var R=[];Q.forEach(function(q){if(S.rep[q.id]!=null&&S.rep[q.id]!==q.b&&R.indexOf(q.r)<0)R.push(q.r);});return R;}
+  var zone=$("zone");
+  function lienRec(a){return a[1].charAt(0)==="#"?'<a href="'+a[1]+'" data-aller="'+a[1].slice(1)+'">':'<a href="'+a[1]+'">';}
+  function rendreQ(){
+    var q=Q[S.k], r=S.rep[q.id], vu=r!=null;
+    var h='<div class="prog" style="grid-template-columns:repeat('+Q.length+',1fr)" aria-hidden="true">'+Q.map(function(x,j){return '<i class="'+(j<S.k||(S.rep[x.id]!=null&&j!==S.k)?"fait":"")+(j===S.k?" ici":"")+'"></i>';}).join("")+'</div>'
+      +'<p class="qn">Situation '+(S.k+1)+' sur '+Q.length+'</p><p class="q-t">'+typo(q.t)+'</p><p class="q-c">'+typo(q.c)+'</p><div class="opts">'
+      +q.o.map(function(o,j){var cl=vu?(j===q.b?(j===r?"ok":"ok-vu"):(j===r?"ko":"")):"";return '<button type="button" class="opt '+cl+'" data-j="'+j+'"'+(vu?" disabled":"")+'><b>'+"ABCD"[j]+'</b><span>'+typo(o)+'</span></button>';}).join("")+'</div>';
+    if(vu){var R=REC[q.r], ok=r===q.b;
+      h+='<div class="expl"><p class="v">'+(ok?"Bonne réponse.":"La réponse attendue : "+"ABCD"[q.b]+".")+'</p><p>'+typo(q.e)+'</p><p class="r">Pour aller plus loin&nbsp;: '+lienRec(R.l[0])+typo(R.t)+'</a></p></div>';}
+    h+='<div class="nav-q">'+(S.k>0?'<button type="button" class="btn btn-clair" data-nav="-1">Précédente</button>':'<span></span>')
+      +(vu?'<button type="button" class="btn btn-main" data-nav="1">'+(S.k===Q.length-1?"Voir mon résultat":"Situation suivante")+'</button>':'')+'</div>';
+    zone.innerHTML=h;
+  }
+  function rendreFin(){
+    var n=Q.filter(function(q){return S.rep[q.id]===q.b;}).length, R=rates(), m=Q.length-n;
+    var v=n===Q.length?"<p><b>Toutes les situations sont réussies.</b> Allez directement aux chantiers qui vous intéressent, ou aux ateliers entre dirigeants.</p>"
+      :m<=2?"<p><b>Une base solide, avec "+m+" point"+(m>1?"s":"")+" à approfondir.</b> Ce sont des mécanismes précis, qui se travaillent vite : chacun a son cours ou son cas ci-dessous.</p>"
+      :"<p><b>"+m+" situations sur "+Q.length+" sont à approfondir.</b> C’est fréquent, même chez des dirigeants expérimentés : ces mécanismes s’apprennent, et chacun a son cours ou son cas ci-dessous, dans l’ordre.</p>";
+    var h='<p class="qn">Votre résultat</p><div class="score"><span class="n">'+n+'&nbsp;/&nbsp;'+Q.length+'</span><span class="t">situations réussies</span></div><div class="verdict">'+v+'<p>Vos réponses restent sur cet appareil.</p></div>';
+    if(R.length) h+='<p class="q-t" style="margin-top:22px">Par où commencer</p><div class="recours">'+R.map(function(k){var x=REC[k];return '<div class="rc"><small>À approfondir</small><b>'+typo(x.t)+'</b><span>'+typo(x.d)+'</span><div class="l">'+x.l.map(function(a){return lienRec(a).replace('<a ','<a data-goatcounter-click="dirigeants-recours-'+k+'" ')+typo(a[0])+'</a>';}).join("")+'</div></div>';}).join("")+'</div>';
+    h+='<div class="actions"><a class="btn btn-dark" href="#parcours" data-aller="parcours">Voir mon parcours</a><button type="button" class="btn btn-clair" data-act="refaire">Refaire le test</button></div>';
+    zone.innerHTML=h; rendreEtapes();
+  }
+  function rendre(){ if(S.fini) rendreFin(); else rendreQ(); }
+  zone.addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    if(b.dataset.j!=null){var q=Q[S.k];S.rep[q.id]=+b.dataset.j;son(+b.dataset.j===q.b?"bon":"faux");sauver();rendreQ();efaCompte("dirigeants-q-"+q.id);return;}
+    if(b.dataset.nav){var d=+b.dataset.nav;if(d>0&&S.k===Q.length-1){S.fini=true;sauver();son("fin");efaCompte("dirigeants-test-fini");rendreFin();}else{S.k=Math.max(0,S.k+d);sauver();rendreQ();}
+      var y=$("test").getBoundingClientRect().top+scrollY-70; if(scrollY>y) window.scrollTo(0,y); return;}
+    if(b.dataset.act==="refaire"){S.rep={};S.k=0;S.fini=false;sauver();rendre();rendreEtapes();}
+  });
+  function rendreEtapes(){
+    var R=rates(), prio=ORDRE.filter(function(k){return R.indexOf(k)>=0;}), reste=ORDRE.filter(function(k){return prio.indexOf(k)<0;});
+    var h=prio.concat(reste).map(function(k){var x=REC[k],p=prio.indexOf(k)>=0;return '<li'+(p?' class="prio"':'')+'><div>'+(p?'<em>À approfondir en premier</em>':'')+'<b>'+typo(x.t)+'</b><span>'+typo(x.d)+'</span></div>'+lienRec(x.l[0]).replace('<a ','<a class="go" data-goatcounter-click="dirigeants-etape-'+k+'" ')+'Ouvrir</a></li>';}).join("");
+    h+='<li><div><b>Décider comme un dirigeant</b><span>EFA CEO Challenge : six cas fictifs de stratégie, avec une note de décision à rédiger.</span></div><a class="go" href="ceo.html?src=dirigeants">Ouvrir</a></li>';
+    $("etapes").innerHTML=h;
+    $("p-sous").innerHTML=S.fini?(prio.length?"Les étapes à approfondir en premier sont en tête. Les autres complètent le parcours du dirigeant.":"Toutes les situations sont réussies : suivez les étapes dans l’ordre, ou passez aux ateliers."):"Chaque étape ouvre un chapitre ou un cas d’EFA Corporate Finance, d’EFA CEO Challenge ou de l’école EFA. Faites le bilan express&nbsp;: les étapes à approfondir en premier passent en tête.";
+  }
+  rendre(); rendreEtapes();
+  var h0=location.hash.slice(1); if(h0){var cible=$(h0); if(cible) setTimeout(function(){cible.scrollIntoView();},60);}
+
+  var emailOk=function(m){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m);};
+  $("f-att").addEventListener("submit",function(e){
+    e.preventDefault(); var f=this, box=$("a-msg"), m=$("a-mail").value.trim(), btn=f.querySelector("button[type=submit]");
+    if(!emailOk(m)){box.textContent="Saisissez une adresse email valide.";box.style.color="#F09680";return;}
+    if(!$("a-ok").checked){box.textContent="Cochez la case pour que nous puissions vous écrire.";box.style.color="#F09680";return;}
+    if(f.botcheck.checked) return;
+    var n=Q.filter(function(q){return S.rep[q.id]===q.b;}).length;
+    btn.disabled=true; box.textContent="Envoi en cours…"; box.style.color="";
+    fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({access_key:WEB3,subject:"efa.africa · Ateliers EFA Dirigeants · liste d’attente",from_name:"Site efa.africa",email:m,replyto:m,message:"Taille de l’entreprise : "+$("a-taille").value+"\nBilan express : "+(S.fini?n+" / "+Q.length:"non terminé")})})
+    .then(function(r){return r.json();}).then(function(j){if(j&&j.success){f.reset();box.style.color="#9BE0B8";box.textContent="C’est noté. Nous vous écrivons dès que les dates des ateliers sont fixées.";efaCompte("dirigeants-liste-attente");}else{box.innerHTML="L’envoi n’a pas abouti. Réessayez, ou écrivez-nous à <b>newsletter@efa.africa</b>.";box.style.color="#F09680";}})
+    .catch(function(){box.innerHTML="L’envoi n’a pas pu partir (connexion&nbsp;?). Réessayez, ou écrivez-nous à <b>newsletter@efa.africa</b>.";box.style.color="#F09680";})
+    .then(function(){btn.disabled=false;});
+  });
+  document.addEventListener("click",function(e){var a=e.target.closest("[data-aller]");if(!a)return;var c=$(a.dataset.aller);if(c){e.preventDefault();c.scrollIntoView({behavior:"smooth"});}});
+})();
+</script>
+<script>
+(function(){
+  var C="efa_patrimoine_v1", IDS=["bp-liq","bp-bloq","bp-fin","bp-immo","bp-ent","bp-dette","bp-dep"];
+  var $=function(i){return document.getElementById(i);};
+  var N=function(i){var t=String(($(i)||{}).value||"").replace(/[^\d]/g,"");return t===""?0:+t;};
+  var F=function(n){return (n<0?"− ":"")+Math.abs(Math.round(n)).toLocaleString("fr-FR").replace(/[\u202f\u00a0 ]/g,"\u00a0")+"\u00a0F";};
+  var P=function(x){return Math.round(x*100)+"\u00a0%";};
+  var COUL=[["Disponible","#9BE0B8","bp-liq"],["Épargne bloquée","#5FA897","bp-bloq"],["Placements financiers","#C9A35C","bp-fin"],["Immobilier et terrains","#8C6B3A","bp-immo"],["Entreprise et autres","#A9BDB7","bp-ent"]];
+  var vu=false;
+  function maj(){
+    var v={};IDS.forEach(function(i){v[i]=N(i);});
+    try{localStorage.setItem(C,JSON.stringify(v));}catch(e){}
+    var actifs=v["bp-liq"]+v["bp-bloq"]+v["bp-fin"]+v["bp-immo"]+v["bp-ent"], res=$("bp-res");
+    if(!actifs){res.hidden=true;return;}
+    $("bp-net").textContent=F(actifs-v["bp-dette"]);
+    $("bp-barre").innerHTML=COUL.map(function(c){var x=v[c[2]]/actifs;return x>0?'<i style="width:'+(x*100)+'%;background:'+c[1]+'"></i>':"";}).join("");
+    $("bp-leg").innerHTML=COUL.filter(function(c){return v[c[2]]>0;}).map(function(c){return '<li><i style="background:'+c[1]+'"></i>'+c[0]+' · '+P(v[c[2]]/actifs)+'</li>';}).join("");
+    var ind=[];
+    if(v["bp-dep"]){var m=v["bp-liq"]/v["bp-dep"], ok=m>=3;
+      ind.push('<div class="'+(ok?"ok":"att")+'"><small>Réserve disponible</small><b>'+(Math.round(m*10)/10).toString().replace(".",",")+'\u00a0mois</b><span>'+(ok?"Dans la zone de 3 à 6 mois de dépenses.":"En dessous de 3 mois de dépenses : peu de marge en cas d’imprévu.")+'</span>'+(ok?"":'<a href="certificat-pilote.html?src=dirigeants&amp;m=4">Reconstituer ma réserve</a>')+'</div>');}
+    var im=v["bp-immo"]/actifs, okI=im<=0.6;
+    ind.push('<div class="'+(okI?"ok":"att")+'"><small>Part de l’immobilier</small><b>'+P(im)+'</b><span>'+(okI?"Une part qui laisse de la marge de manœuvre.":"Au-delà de 60 %, le patrimoine se mobilise lentement et souvent sous le prix en cas d’urgence.")+'</span>'+(okI?"":'<a href="parcours.html?src=dirigeants#P13">Terrain et maison</a>')+'</div>');
+    if(v["bp-dette"]){var d=v["bp-dette"]/actifs, okD=d<=0.4;
+      ind.push('<div class="'+(okD?"ok":"att")+'"><small>Endettement</small><b>'+P(d)+'</b><span>'+(okD?"Des crédits couverts largement par ce que vous possédez.":"Au-delà de 40 % de vos biens, une baisse de revenu pèse vite.")+'</span>'+(okD?"":'<a href="parcours.html?src=dirigeants#M11">Sortir de la dette</a>')+'</div>');}
+    var en=v["bp-ent"]/actifs;
+    if(v["bp-ent"]){var okE=en<=0.5;
+      ind.push('<div class="'+(okE?"ok":"att")+'"><small>Part de l’entreprise</small><b>'+P(en)+'</b><span>'+(okE?"Un patrimoine personnel qui ne dépend pas que de l’entreprise.":"Au-delà de la moitié, une crise de l’entreprise toucherait à la fois votre revenu et votre patrimoine.")+'</span>'+(okE?"":'<a href="#chantiers">Séparer l’entreprise et le patrimoine</a>')+'</div>');}
+    var fi=v["bp-fin"]/actifs;
+    ind.push('<div class="'+(fi>0?"ok":"att")+'"><small>Part placée</small><b>'+P(fi)+'</b><span>'+(fi>0?"Une partie de votre argent travaille pour vous.":"Aucune part placée : après inflation, l’argent qui dort perd de sa valeur.")+'</span><a href="parcours.html?src=dirigeants#M17">Épargner ou investir</a></div>');
+    $("bp-ind").innerHTML=ind.join(""); res.hidden=false;
+    if(!vu){vu=true;try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"dirigeants-bilan",event:true});}catch(e){}}
+  }
+  try{var s=JSON.parse(localStorage.getItem(C)||"null");if(s)IDS.forEach(function(i){if(s[i])$(i).value=s[i].toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g," ");});}catch(e){}
+  IDS.forEach(function(i){var el=$(i);
+    el.addEventListener("change",function(){var t=N(i);el.value=t?t.toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g," "):"";maj();});
+    el.addEventListener("input",function(){clearTimeout(el._t);el._t=setTimeout(maj,350);});});
+  maj();
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=2026102710" defer></script>
+</body>
+</html>
