@@ -81,7 +81,7 @@
       p: "Un pays neuf doit tout choisir à la fois, avec un budget limité, dans un monde où le commerce s’accélère.",
       a: [["Jouer à Public ou privé", "#borne-pp"]],
       e: [
-        { k: "o", d: "1956", y: 1956, l: "États-Unis, puis le monde", t: "La boîte qui change le commerce", i: "p-conteneur", h: 2,
+        { k: "o", d: "1956", y: 1956, l: "États-Unis, puis le monde", t: "La boîte qui change le commerce", i: "h-conteneur-1956", h: 1,
           c: ["× 6", "le commerce par la mer entre 1965 et 2015"],
           p: "Le conteneur passe du camion au train et au bateau sans être déchargé. Les coûts chutent, les volumes explosent : Abidjan, Lomé, Tema et Dakar deviennent des portes du monde." },
         { k: "o", d: "1959", y: 1959, l: "Dakar", t: "La BCEAO", i: "h-bceao", h: 2,
