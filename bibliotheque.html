@@ -135,6 +135,23 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .cap ol{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
 .cap ol li{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr);gap:10px}
 .cap ol b{color:var(--nuit)}
+.ill-tete{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;background:var(--papier);border-radius:18px;overflow:hidden;margin-top:24px;align-items:center}
+.ill-tete img{display:block;width:100%;height:auto;aspect-ratio:16/10}
+.ill-tete .intro-b{margin:0;border-radius:0;background:none}
+@media (max-width:720px){.ill-tete{grid-template-columns:minmax(0,1fr)}}
+.salles a{grid-template-columns:auto minmax(0,1fr);overflow:hidden;padding:0 18px 18px}
+.salles a img{grid-column:1/-1;display:block;width:calc(100% + 36px);margin:0 -18px 14px;height:auto;aspect-ratio:16/10}
+.bal-tete{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
+.bal-tete > *{grid-column:1}
+.bal-tete .bal-img{grid-column:2;grid-row:1/span 4;width:100%;height:auto;border-radius:14px;aspect-ratio:16/10}
+@media (max-width:720px){.bal-tete{grid-template-columns:minmax(0,1fr)}.bal-tete .bal-img{grid-column:1;grid-row:auto}}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px;padding-bottom:40px}
+.photos figure{margin:0;background:var(--papier);border-radius:14px;overflow:hidden}
+.photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.photos figcaption{padding:12px 14px;font-size:14.5px;color:var(--ink2)}
+.photos figcaption b{display:block;color:var(--nuit)}
+.cap{padding-top:0;overflow:hidden}
+.cap-img{display:block;width:calc(100% + 40px);margin:0 -20px 4px;height:auto;aspect-ratio:16/10}
 </style>
 </head>
 <body>
@@ -163,7 +180,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 </div></section>
 <div class="wrap">
   <div class="panneau" id="livres" role="tabpanel" aria-labelledby="o-livres">
-  <div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et vérifiées par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div>
+  <div class="ill-tete"><img src="illus/livres.svg" alt="Une étagère de livres et une lampe" width="480" height="300"><div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et vérifiées par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div></div>
   <div class="etag" id="etag" aria-label="Les fiches de lecture"></div>
   </div>
 
@@ -173,14 +190,20 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
       <h2>Comprendre l’économie en 25 minutes, du marché à la banque centrale</h2>
       <p>Une visite en six salles, inspirée du musée de l’économie de la Banque de France et transposée à nos marchés, à nos banques et au franc CFA. Dans chaque salle, une borne&nbsp;: un petit jeu de deux à cinq minutes.</p>
       <a class="bt bt-p" href="balade-economie.html?src=bibliotheque" data-goatcounter-click="biblio-balade-entrer">Commencer la visite →</a>
+      <img class="bal-img" src="illus/p-cauri.svg" alt="Du cauri au téléphone : les formes de la monnaie" width="480" height="300">
     </div>
     <div class="salles">
-      <a href="balade-economie.html?src=bibliotheque#echanger"><i>1</i><b>Échanger</b><span>Pourquoi on se spécialise, ce qui a de la valeur, la confiance.</span><em>Jeu · Troc ou monnaie&nbsp;?</em></a>
-      <a href="balade-economie.html?src=bibliotheque#monnaie"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money, le franc CFA en quatre repères.</span><em>Jeu · Vrai ou faux</em></a>
-      <a href="balade-economie.html?src=bibliotheque#acteurs"><i>3</i><b>Les acteurs</b><span>Ménages, entreprises, banques, État, diaspora&nbsp;: le circuit.</span><em>Jeux · Reliez les acteurs, l’entrepreneur stratège</em></a>
-      <a href="balade-economie.html?src=bibliotheque#etat"><i>4</i><b>L’État et les règles</b><span>Impôts, services publics, externalités, l’informel.</span><em>Jeux · Public ou privé, ce que vaut votre temps</em></a>
-      <a href="balade-economie.html?src=bibliotheque#banques"><i>5</i><b>Banques et inflation</b><span>Solvable ou liquide, la BCEAO, le pouvoir d’achat.</span><em>Jeux · Dans la peau d’un banquier, s’endetter jusqu’où</em></a>
-      <a href="balade-economie.html?src=bibliotheque#croissance"><i>6</i><b>La croissance</b><span>Produire plus ou mieux, le commerce mondial, la frise du temps.</span></a>
+      <a href="balade-economie.html?src=bibliotheque#echanger"><img src="illus/s1-echanger.svg" alt="" width="480" height="300" loading="lazy"><i>1</i><b>Échanger</b><span>Pourquoi on se spécialise, ce qui a de la valeur, la confiance.</span><em>Jeu · Troc ou monnaie&nbsp;?</em></a>
+      <a href="balade-economie.html?src=bibliotheque#monnaie"><img src="illus/s2-monnaie.svg" alt="" width="480" height="300" loading="lazy"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money, le franc CFA en quatre repères.</span><em>Jeu · Vrai ou faux</em></a>
+      <a href="balade-economie.html?src=bibliotheque#acteurs"><img src="illus/s3-acteurs.svg" alt="" width="480" height="300" loading="lazy"><i>3</i><b>Les acteurs</b><span>Ménages, entreprises, banques, État, diaspora&nbsp;: le circuit.</span><em>Jeux · Reliez les acteurs, l’entrepreneur stratège</em></a>
+      <a href="balade-economie.html?src=bibliotheque#etat"><img src="illus/s4-etat.svg" alt="" width="480" height="300" loading="lazy"><i>4</i><b>L’État et les règles</b><span>Impôts, services publics, externalités, l’informel.</span><em>Jeux · Public ou privé, ce que vaut votre temps</em></a>
+      <a href="balade-economie.html?src=bibliotheque#banques"><img src="illus/s5-banques.svg" alt="" width="480" height="300" loading="lazy"><i>5</i><b>Banques et inflation</b><span>Solvable ou liquide, la BCEAO, le pouvoir d’achat.</span><em>Jeux · Dans la peau d’un banquier, s’endetter jusqu’où</em></a>
+      <a href="balade-economie.html?src=bibliotheque#croissance"><img src="illus/s6-croissance.svg" alt="" width="480" height="300" loading="lazy"><i>6</i><b>La croissance</b><span>Produire plus ou mieux, le commerce mondial, la frise du temps.</span></a>
+    </div>
+    <div class="photos" aria-label="Objets vus au musée">
+      <figure><img src="illus/musee-tampons.webp" alt="Tampons et composteurs anciens, en vitrine" loading="lazy" width="800" height="694"><figcaption><b>Les tampons du guichet</b>Chaque opération datée et validée à la main.</figcaption></figure>
+      <figure><img src="illus/musee-registre.webp" alt="Registre « Journal » d’une succursale" loading="lazy" width="800" height="764"><figcaption><b>Le journal de la succursale</b>L’ancêtre de la monnaie écrite sur un compte.</figcaption></figure>
+      <figure><img src="illus/musee-coffret.webp" alt="Coffret de transport en cuir" loading="lazy" width="800" height="625"><figcaption><b>Le coffret de transport</b>Billets et valeurs voyageaient sous clé.</figcaption></figure>
     </div>
   </div>
 
@@ -276,7 +299,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   /* capitaines */
   var C=window.EFA_CAPITAINES||[],Z=document.getElementById('caps');
   function ini(n){return n.split(/\s+/).filter(function(w){return /^[A-ZÉ]/.test(w)}).slice(0,2).map(function(w){return w[0]}).join('');}
-  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><div class="cap-h"><span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span><h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
+  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><img class="cap-img" src="illus/c-'+c.id+'.svg" alt="" width="480" height="300" loading="lazy"><div class="cap-h"><span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span><h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
     +'<div class="cap-idee"><small>Sa pensée</small><b>'+c.nomIdee+'</b><span>'+c.idee+'</span>'+(c.citation?'<cite>'+c.citation+'</cite>':'')+'</div>'
     +'<p><b>'+(c.f?'Ce qu’elle a apporté.':'Ce qu’il a apporté.')+'</b> '+c.apporte+'</p><p class="lec"><b>Ce qu’on en retient pour son argent</b>'+c.lecon+'</p>'
     +'<details><summary>Repères</summary><ol>'+c.reperes.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>'}).join('')+'</ol></details></article>';}
