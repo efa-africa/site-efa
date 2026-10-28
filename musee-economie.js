@@ -11,11 +11,11 @@
       e: [
         { k: "o", d: "−8500", l: "Vallée du Nil, Croissant fertile", t: "On produit plus qu’on ne mange", i: "p-cacao",
           p: "Avec l’agriculture et l’élevage apparaît le <b>surplus</b> : ce qui n’est pas consommé peut se garder, se partager ou s’échanger." },
-        { k: "o", d: "Sahel", l: "Greniers et saisons", t: "Conserver entre deux récoltes", i: "p-solvable",
+        { k: "o", d: "Sahel", l: "Greniers et saisons", t: "Conserver entre deux récoltes", i: "h-grenier", h: 1,
           p: "Le grenier de mil est la première assurance : il protège la famille contre une mauvaise année. Garder, c’est déjà épargner." },
-        { k: "o", d: "−3300", l: "Mésopotamie", t: "Écrire qui doit quoi à qui", i: "musee-registre", port: 1,
+        { k: "o", d: "−3300", l: "Mésopotamie", t: "Écrire qui doit quoi à qui", i: "h-tablettes", h: 1,
           p: "Sur des tablettes d’argile, les scribes notent récoltes, dettes et paiements. La comptabilité naît avec les premières villes.",
-          q: "Ce registre d’une succursale de banque, des milliers d’années plus tard, fait exactement la même chose." },
+          q: "Des milliers d’années plus tard, le registre d’une succursale de banque fait exactement la même chose." },
         { k: "d", t: "À vous : vos réserves", p: "Entre deux rentrées d’argent, que gardez-vous de côté, et où ? C’est le grenier d’aujourd’hui.",
           a: [["Où garder sa réserve", "ou-garder-sa-reserve.html?src=musee"]] }
       ] },
@@ -26,7 +26,7 @@
           p: "Elle envoie une expédition au pays de Pount, au sud de la mer Rouge, chercher encens, ébène et or. Les reliefs de son temple racontent ce voyage : l’un des plus anciens récits de commerce lointain." },
         { k: "f", ini: "MM", nom: "Mansa Moussa", d: "1324", l: "Empire du Mali", role: "Empereur du Mali",
           p: "En route vers La Mecque, il dépense et distribue tant d’or au Caire que, selon les chroniqueurs, son cours y baisse pendant des années. L’or du Sahel fait alors tourner le commerce de la Méditerranée." },
-        { k: "o", d: "XIIIe–XVIe s.", l: "Tombouctou, Gao, Djenné", t: "Or contre sel", i: "p-marche",
+        { k: "o", d: "XIIIe–XVIe s.", l: "Tombouctou, Gao, Djenné", t: "Or contre sel", i: "h-or-sel", h: 1,
           p: "Les caravanes traversent le Sahara : l’or et les tissus d’un côté, le sel du désert de l’autre. Chaque étape a ses péages, ses risques et ses intermédiaires : <b>le prix d’arrivée n’est pas le prix de départ</b>." },
         { k: "d", t: "À vous : troc ou monnaie ?", p: "Essayez d’obtenir du poisson avec un régime de plantain, sans argent. Puis refaites-le avec.",
           a: [["Jouer à Troc ou monnaie", "#borne-troc"]] }
@@ -34,7 +34,7 @@
     { t: "Qu’est-ce qui fait monnaie ?", st: "Cauris, pièces, billets, soldes", i: "p-monnaies",
       p: "Une monnaie sert à compter, à payer et à garder. Elle ne tient que si chacun l’accepte.",
       e: [
-        { k: "o", d: "−600", l: "Lydie", t: "Les premières pièces", i: "s2-monnaie",
+        { k: "o", d: "−600", l: "Lydie", t: "Les premières pièces", i: "h-lydie", h: 1,
           p: "Un morceau de métal au poids garanti par une autorité. Plus besoin de peser l’or à chaque achat : on compte." },
         { k: "f", ini: "IB", nom: "Ibn Battuta", d: "1352", l: "Empire du Mali", role: "Voyageur, né à Tanger",
           p: "Il traverse le Sahara et décrit les marchés du Mali, où l’on paie avec des cauris, ces coquillages venus de l’océan Indien : rares, solides, impossibles à contrefaire." },
@@ -81,7 +81,7 @@
     { t: "L’économie qui fait vivre les familles", st: "Marchés, tontines, diaspora", i: "p-confiance",
       p: "Le cœur de l’économie africaine bat au marché, dans la tontine et dans les transferts de la famille.",
       e: [
-        { k: "f", ini: "NB", nom: "Les Nana Benz", d: "Années 1960–1970", l: "Lomé", role: "Commerçantes de pagnes wax",
+        { k: "f", ini: "NB", i: "h-nana-benz", h: 1, nom: "Les Nana Benz", d: "Années 1960–1970", l: "Lomé", role: "Commerçantes de pagnes wax",
           p: "Des femmes du grand marché de Lomé bâtissent de véritables maisons de commerce. Si prospères qu’on les surnomme d’après leurs Mercedes-Benz, elles font crédit, financent et forment toute une génération de revendeuses." },
         { k: "o", d: "Chez nous", l: "Le cercle de confiance", t: "La tontine", i: "cap-fokam",
           p: "Elle peut lisser les dépenses, financer un projet ou constituer une réserve : tout dépend de ses règles. Elle tient, comme la monnaie, sur la confiance du groupe." },
@@ -147,7 +147,7 @@
           a: [["Suivre l’actualité dans EFA News", "news.html?src=musee"]] }
       ] }
   ];
-  var ACCUEIL = { t: "Le musée de l’économie", i: "p-monnaies",
+  var ACCUEIL = { t: "Le musée de l’économie", i: "h-accueil",
     p: "Qui crée la richesse en Afrique, qui la finance, et qui en garde la valeur ? Douze salles, de la vallée du Nil à la Bourse de Lagos." };
   var SORTIE = { d: "Et demain ?", l: "Le continent", t: "Du cercle à la spirale", i: "p-confiance",
     p: "Commerce continental, ouvert depuis janvier 2021 avec la ZLECAf, énergie, villes, emploi : la salle suivante reste à écrire." };
@@ -162,7 +162,7 @@
   function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
-  function cadre(n, port) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async"></div>'; }
+  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">Reconstitution illustrative, réalisée avec l’aide de l’IA</span>' : '') + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
@@ -174,10 +174,10 @@
     }
     var S = SALLES[x.s];
     if (x.k === "s") return '<div class="mu-etape s">' + (S.sombre ? "" : cadre(S.i)) + '<div class="mu-txt"' + (S.sombre ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.st) + "</span><p>" + esc(S.p) + "</p></div></div>";
-    if (x.k === "f") return '<div class="mu-etape f"><div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div><div class="mu-txt"><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
+    if (x.k === "f") return '<div class="mu-etape f' + (x.i ? ' fi' : '') + '">' + (x.i ? cadre(x.i, 0, x.h) : '<div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div>') + '<div class="mu-txt">' + (x.i ? '<div class="mu-date">' + esc(x.d) + '</div>' : '') + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
     if (x.k === "n") return '<div class="mu-etape n"><div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + x.p + "</p></div></div>";
     if (x.k === "d") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><span class="mu-num" style="width:auto;padding:0 18px;border-radius:999px;font:800 13px/40px Source Sans\\ 3,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;height:40px">À vous de décider</span><h2>' + esc(x.t) + "</h2><p>" + esc(x.p) + "</p>" + actions(x.a) + "</div></div>";
-    return '<div class="mu-etape">' + cadre(x.i, x.port) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
+    return '<div class="mu-etape">' + cadre(x.i, x.port, x.h) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
   }
 
   function construire() {
@@ -192,6 +192,8 @@
     SC = document.getElementById("mu-scene");
     var h = ""; E.forEach(function (x, k) { h += etapeHtml(x).replace('<div class="mu-etape', '<div data-k="' + k + '" class="mu-etape'); });
     SC.insertAdjacentHTML("beforeend", h);
+    // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
+    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (im.naturalWidth) { var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
     // le plan
     document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.st) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
     // commandes
