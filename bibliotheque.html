@@ -153,8 +153,8 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .cap{padding-top:0;overflow:hidden}
 .cap-img{display:block;width:calc(100% + 40px);max-width:none;margin:0 -20px 4px;height:auto;aspect-ratio:16/9;object-fit:cover}
 .cap-photo{display:block;width:calc(100% + 40px);max-width:none;margin:0 -20px 4px;height:auto;aspect-ratio:4/1;object-fit:cover;object-position:left center}
-.cap-photo + .cap-h{grid-template-columns:minmax(0,1fr)}
-.cap-photo + .cap-h .cap-ini{display:none}
+.cap-por{object-fit:cover;object-position:center 20%;width:64px!important;height:64px!important}
+.cap-cr{font-size:12.5px!important;color:var(--ink3)!important}
 .cap-ill{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin:8px 0 10px}
 </style>
 </head>
@@ -273,7 +273,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="bibliotheque-livres.js?v=2026102801"></script>
 <script src="bibliotheque-lecture.js?v=2026102801"></script>
-<script src="bibliotheque-capitaines.js?v=2026102805"></script>
+<script src="bibliotheque-capitaines.js?v=2026102806"></script>
 <script>
 (function(){
   var L=window.EFA_LIVRES||[], E=document.getElementById('etag');
@@ -303,10 +303,10 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   /* capitaines */
   var C=window.EFA_CAPITAINES||[],Z=document.getElementById('caps');
   function ini(n){return n.split(/\s+/).filter(function(w){return /^[A-ZÉ]/.test(w)}).slice(0,2).map(function(w){return w[0]}).join('');}
-  function carte(c){return '<article class="cap" id="cap-'+c.id+'">'+(c.photo?'<img class="cap-photo" src="'+c.photo+'?v=2810" alt="'+c.nom+' et son secteur" loading="lazy">':'<img class="cap-img" src="'+(c.img||'illus/c-'+c.id+'.svg')+'" alt="" width="480" height="300" loading="lazy">')+'<div class="cap-h"><span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span><h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
+  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><img class="cap-img" src="'+(c.img||'illus/c-'+c.id+'.svg')+'?v=2810" alt="" width="480" height="300" loading="lazy"><div class="cap-h">'+(c.portrait?'<img class="cap-ini cap-por" src="'+c.portrait+'" alt="Portrait de '+c.nom+'" loading="lazy">':'<span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span>')+'<h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
     +'<div class="cap-idee"><small>Sa pensée</small><b>'+c.nomIdee+'</b><span>'+c.idee+'</span>'+(c.citation?'<cite>'+c.citation+'</cite>':'')+'</div>'
     +'<p><b>'+(c.f?'Ce qu’elle a apporté.':'Ce qu’il a apporté.')+'</b> '+c.apporte+'</p><p class="lec"><b>Ce qu’on en retient pour son argent</b>'+c.lecon+'</p>'
-    +'<details><summary>Repères et illustration</summary>'+(c.photo&&c.img?'<img class="cap-ill" src="'+c.img+'?v=2810" alt="" loading="lazy">':'')+'<ol>'+c.reperes.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>'}).join('')+'</ol></details></article>';}
+    +(c.portrait&&c.credit?'<p class="cap-cr">Portrait&nbsp;: '+c.credit.auteur+', <a href="'+c.credit.lien+'" target="_blank" rel="noopener">'+c.credit.licence+'</a>, via Wikimedia Commons</p>':'')+'<details><summary>Repères</summary><ol>'+c.reperes.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>'}).join('')+'</ol></details></article>';}
   function rendre(r){Z.innerHTML=C.filter(function(c){return !r||c.region===r}).map(carte).join('');}
   document.getElementById('cap-f').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});rendre(b.dataset.r);});
   rendre('');
