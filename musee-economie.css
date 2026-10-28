@@ -179,3 +179,5 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 .mu-choix button.ko{background:#B3261E}
 .mu-qq{font-size:clamp(20px,3.4vw,30px)!important;text-align:left}
 .mu-etape.dz .mu-txt{max-width:40em}
+
+.mu-cadre img:not([src]){visibility:hidden}

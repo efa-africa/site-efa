@@ -193,7 +193,7 @@
   function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
-  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 3 ? 'Portrait · IA' : 'Illustration · IA') + '</span>' : '') + '</div>'; }
+  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img data-src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 3 ? 'Portrait · IA' : 'Illustration · IA') + '</span>' : '') + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
   function chiffre(x) { return (x.c ? '<p class="mu-c"><b>' + esc(x.c[0]) + '</b><span>' + esc(x.c[1]) + '</span></p>' : '') + (typeof x.y === 'number' ? '<p class="mu-ilya">Il y a ' + (AN - x.y).toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g, '\u00a0') + ' ans</p>' : ''); }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
@@ -229,7 +229,7 @@
     SC.insertAdjacentHTML("beforeend", h);
     avis();
     // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
-    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (im.naturalWidth) { var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
+    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (!im.getAttribute("src")) return; if (im.naturalWidth) { var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
     // le plan
     document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.per) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
     // commandes
@@ -314,7 +314,8 @@
     if (x.k === "qz") quiz();
     if (k > 0 && !dejaIndice) { dejaIndice = true; var ind = document.getElementById("mu-indice"); if (ind) ind.style.opacity = 0; }
     // précharger l'image suivante
-    var nx = E[k + 1]; if (nx && (nx.i || (nx.k === "s" && SALLES[nx.s] && SALLES[nx.s].i))) { var im = new Image(); im.src = img(nx.i || SALLES[nx.s].i); }
+    [k, k + 1, k + 2, k - 1].forEach(function (j) { var el = SC.querySelector('.mu-etape[data-k="' + j + '"]'); if (el) el.querySelectorAll("img[data-src]").forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); });
+    var nx = null; if (nx && (nx.i || (nx.k === "s" && SALLES[nx.s] && SALLES[nx.s].i))) { var im = new Image(); im.src = img(nx.i || SALLES[nx.s].i); }
   }
   function ouvrir(depuis, k0) {
     if (!M) construire();
@@ -336,8 +337,9 @@
     var flot = document.getElementById("musee-flot"), ref = document.querySelector(".btn-musee");
     if (flot) { flot.addEventListener("click", function () { if (flot.dataset.retour) { ouvrir("retour", KPP); } else ouvrir("flottant"); }); if ("IntersectionObserver" in window && ref) new IntersectionObserver(function (es) { flot.classList.toggle("vu", !es[0].isIntersecting); }).observe(ref); }
     var ret = false; try { ret = sessionStorage.getItem("efa_musee_retour") === "1"; sessionStorage.removeItem("efa_musee_retour"); } catch (z) {}
-    if (location.hash === "#musee-fin" || (location.hash === "#musee" && ret)) setTimeout(function () { ouvrir("retour", KPP); }, 60);
-    else if (location.hash === "#musee") setTimeout(function () { ouvrir("lien-direct"); }, 60);
+    if (location.hash === "#musee-fin" || (location.hash === "#musee" && ret)) ouvrir("retour", KPP);
+    else if (location.hash === "#musee") ouvrir("lien-direct");
+    document.documentElement.classList.remove("musee-arrivee");
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
