@@ -25,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <link rel="stylesheet" href="footer.css?v=2026102602">
+<link rel="stylesheet" href="musee-economie.css?v=2026102807">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"La balade de l’économie : du marché à la banque centrale","description":"Six salles et huit jeux pour comprendre l’économie avec nos marchés, nos banques et le franc CFA : échanger, la monnaie, les acteurs, l’État, les banques et l’inflation, la croissance.","inLanguage":"fr","datePublished":"2026-10-28","dateModified":"2026-10-28","mainEntityOfPage":"https://efa.africa/balade-economie","author":{"@type":"Person","@id":"https://efa.africa/auteur#elysee","name":"Élysée Johnson","url":"https://efa.africa/auteur"},"publisher":{"@type":"Organization","name":"Éducation Financière Afrique","url":"https://efa.africa/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://efa.africa/"},{"@type":"ListItem","position":2,"name":"La balade de l’économie","item":"https://efa.africa/balade-economie"}]}]}
 </script>
@@ -984,134 +985,8 @@ var vus={};function vu(k){if(!vus[k]){vus[k]=1;efaCompte('balade-'+k);}}
   init();
 })();
 </script>
-<style>
-/* ---------- Le musée de l'économie, en format statut ---------- */
-.btn-musee{display:inline-flex;align-items:center;gap:10px;margin-top:22px;min-height:52px;padding:12px 22px;border-radius:999px;border:0;cursor:pointer;background:var(--corail);color:#fff;font:800 17px/1.2 var(--f-body)}
-.btn-musee i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#fff;color:var(--corail);font-style:normal;font-size:13px}
-.musee-flot{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 16px;border-radius:999px;border:0;cursor:pointer;background:var(--nuit);color:#fff;font:800 15px/1.2 var(--f-body);box-shadow:0 8px 24px rgba(11,18,32,.28);transform:translateY(140%);transition:transform .25s}
-.musee-flot.vu{transform:none}
-.musee-flot i{font-style:normal;color:var(--soft-corail)}
-html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-fil{display:none!important}
-#musee{position:fixed;inset:0;z-index:2147483000;background:#070C16;color:#fff}
-#musee[hidden]{display:none}
-.m-defile{position:absolute;inset:0;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.m-defile::-webkit-scrollbar{display:none}
-.m-salle{position:relative;height:100svh;min-height:520px;scroll-snap-align:start;scroll-snap-stop:always;display:grid;grid-template-rows:minmax(0,1fr) auto;overflow:hidden}
-.m-img{position:relative;overflow:hidden;background:#0B1220}
-.m-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 6s ease-out}
-.m-salle.vue .m-img img{transform:scale(1)}
-.m-img::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,#070C16,rgba(7,12,22,0))}
-.m-txt{position:relative;padding:0 calc(64px + max(16px,env(safe-area-inset-right,0px))) calc(28px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));margin-top:-90px;opacity:0;transform:translateY(18px);transition:opacity .6s .15s,transform .6s .15s}
-.m-salle.vue .m-txt{opacity:1;transform:none}
-.m-date{font-family:var(--f-display);font-weight:700;font-size:clamp(44px,11vw,84px);line-height:1;color:var(--soft-corail)}
-.m-lieu{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.m-txt h2{margin-top:10px;font-size:clamp(24px,5.4vw,40px);color:#fff;max-width:20ch}
-.m-txt p{margin-top:10px;font-size:clamp(16px,2.2vw,19px);line-height:1.5;color:#C9D1DE;max-width:34em}
-.m-txt .m-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.m-txt .m-act a,.m-txt .m-act button{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;border-radius:8px;border:0;cursor:pointer;font:800 16px/1.2 var(--f-body);text-decoration:none;background:var(--corail);color:#fff}
-.m-txt .m-act .l{background:#fff;color:var(--nuit)}
-.m-couv .m-date{font-size:clamp(34px,8vw,64px);color:#fff}
-.m-glisse{display:inline-block;margin-top:18px;font-size:14px;font-weight:700;color:var(--soft-corail);animation:m-saut 1.6s infinite}
-@keyframes m-saut{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-/* barre de progression, façon statut */
-.m-haut{position:absolute;top:0;left:0;right:0;z-index:3;padding:calc(10px + env(safe-area-inset-top,0px)) max(14px,env(safe-area-inset-right,0px)) 0 max(14px,env(safe-area-inset-left,0px));display:grid;gap:10px;background:linear-gradient(to bottom,rgba(7,12,22,.75),rgba(7,12,22,0));pointer-events:none}
-.m-prog{display:flex;gap:3px}
-.m-prog i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.28)}
-.m-prog i.f{background:#fff}
-.m-prog i.c{background:var(--soft-corail)}
-.m-barre{display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:auto}
-.m-barre b{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
-.m-barre div{display:flex;gap:8px}
-.m-barre button{min-width:44px;min-height:44px;border-radius:999px;border:0;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;font:800 14px var(--f-body);padding:0 14px}
-/* la frise-carte : un point par étape */
-.m-rail{position:absolute;z-index:3;right:max(10px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:0;list-style:none;margin:0;padding:0}
-.m-rail li{position:relative;display:flex;flex-direction:column;align-items:center}
-.m-rail li+li::before{content:"";width:2px;height:clamp(10px,2.6svh,24px);background:rgba(255,255,255,.25)}
-.m-rail button{position:relative;width:16px;height:16px;border-radius:50%;border:0;padding:0;cursor:pointer;background:rgba(255,255,255,.35)}
-.m-rail button::after{content:"";position:absolute;inset:-12px}
-.m-rail button.f{background:#fff}
-.m-rail button.c{background:var(--soft-corail);transform:scale(1.35)}
-.m-rail span{position:absolute;right:24px;top:-4px;white-space:nowrap;font-size:12px;font-weight:800;color:#fff;background:rgba(7,12,22,.8);padding:2px 8px;border-radius:999px;opacity:0;transition:opacity .2s;pointer-events:none}
-.m-rail li.c span{opacity:1}
-@media (max-width:899px){.m-rail span{display:none}}
-@media (min-width:900px){.m-salle{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:1fr}.m-img::after{inset:0 0 0 auto;width:40%;height:auto;background:linear-gradient(to left,#070C16,rgba(7,12,22,0))}.m-txt{margin:0;align-self:center;padding:40px 110px 40px 44px}}
-@media (prefers-reduced-motion:reduce){.m-img img,.m-txt,.m-glisse{transition:none;animation:none;transform:none}}
-</style>
-
 <button type="button" class="musee-flot" id="musee-flot" data-goatcounter-click="balade-musee-flottant"><i>▶</i> Visiter le musée</button>
-
-<div id="musee" role="dialog" aria-modal="true" aria-label="Le musée de l’économie EFA" hidden>
-  <div class="m-defile" id="m-defile"></div>
-  <div class="m-haut"><div class="m-prog" id="m-prog"></div><div class="m-barre"><b>Musée de l’économie · EFA</b><div><button type="button" id="m-son" aria-pressed="true" aria-label="Couper la musique">♪ Son</button><button type="button" id="m-fermer" aria-label="Fermer le musée">✕</button></div></div></div>
-  <ol class="m-rail" id="m-rail" aria-label="La frise du musée"></ol>
-</div>
-
-<script>
-(function(){
-  var V='?v=2810';
-  var S=[
-    {c:1,d:"Bienvenue",l:"Musée de l’économie",t:"Dix mille ans d’argent, en quatorze salles",p:"Du premier champ cultivé au téléphone qui paie. Glissez vers le haut pour avancer, vers le bas pour revenir, ou touchez un point de la frise.",i:"s2-monnaie"},
-    {d:"−8500",l:"Croissant fertile",t:"On produit plus qu’on ne mange",p:"Avec l’agriculture et l’élevage apparaît le surplus. Ce qu’on ne consomme pas peut s’échanger : l’économie commence.",i:"p-cacao"},
-    {d:"−3300",l:"Mésopotamie",t:"Écrire qui doit quoi à qui",p:"Sur des tablettes d’argile, les scribes notent les récoltes, les dettes et les paiements. La comptabilité est née avant l’écriture des poèmes.",i:"musee-registre"},
-    {d:"−600",l:"Lydie",t:"Les premières pièces",p:"Un morceau de métal, d’un poids garanti par une autorité. Plus besoin de peser l’or à chaque achat : on compte.",i:"p-monnaies"},
-    {d:"1352",l:"Empire du Mali",t:"Le cauri, monnaie de l’Afrique de l’Ouest",p:"Le voyageur Ibn Battuta décrit les cauris qui servent à payer sur les marchés du Mali : rares, solides, impossibles à contrefaire.",i:"s2-monnaie"},
-    {d:"1776",l:"Écosse",t:"L’eau, le diamant et la valeur",p:"Adam Smith publie La Richesse des nations. Pourquoi l’eau, vitale, vaut-elle si peu, et le diamant tant ? Parce que la valeur suit la rareté.",i:"p-valeur"},
-    {d:"1800",l:"Paris",t:"Naissance de la Banque de France",p:"Elle émet les billets et veille sur la monnaie. C’est dans son musée de l’économie qu’est née l’idée de cette balade.",i:"s5-banques"},
-    {d:"1880",l:"Europe, Amérique",t:"L’usine change d’échelle",p:"Électricité, moteur, chimie : la seconde révolution industrielle. Produire coûte moins cher, les salaires et les villes grandissent.",i:"p-entreprise"},
-    {d:"1945",l:"Afrique de l’Ouest et centrale",t:"Création du franc CFA",p:"Le 26 décembre 1945. Aujourd’hui deux monnaies : l’une émise par la BCEAO pour huit pays, l’autre par la BEAC pour six.",i:"p-cfa"},
-    {d:"1956",l:"États-Unis",t:"La boîte qui a changé le commerce",p:"Le conteneur passe du camion au train et au bateau sans être déchargé. Le commerce mondial s’emballe ; Abidjan, Lomé, Tema et Dakar en vivent.",i:"p-conteneur"},
-    {d:"1959",l:"Dakar",t:"La BCEAO, banque centrale commune",p:"Elle garde la valeur du franc CFA d’Afrique de l’Ouest et vise une inflation entre 1 et 3 % par an.",i:"p-banque-centrale"},
-    {d:"1994",l:"Zone franc",t:"La dévaluation",p:"Le 12 janvier, le franc CFA perd la moitié de sa valeur face au franc français. Les produits importés coûtent soudain deux fois plus cher.",i:"p-inflation"},
-    {d:"1998",l:"Abidjan",t:"Ouverture de la BRVM",p:"La Bourse régionale des huit pays de l’UEMOA. Chacun peut devenir copropriétaire d’entreprises de la région.",i:"p-esperance"},
-    {d:"2007",l:"Kenya",t:"Le téléphone devient un porte-monnaie",p:"Le mobile money se lance au Kenya, puis gagne le continent. Un solde sur un téléphone est, lui aussi, de la monnaie.",i:"p-fonctions"},
-    {d:"Aujourd’hui",l:"Chez vous",t:"Du cercle à la spirale",p:"L’argent qui tourne, puis l’argent qui reste. La tontine, l’épargne, l’entreprise : à vous d’écrire la salle suivante.",i:"p-confiance",fin:1}
-  ];
-  var M=document.getElementById('musee'),D=document.getElementById('m-defile'),R=document.getElementById('m-rail'),P=document.getElementById('m-prog');
-  var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]});};
-  D.innerHTML=S.map(function(s,k){var src='illus/'+s.i+(s.i.indexOf('musee-')===0?'.webp':'.webp')+V;
-    return '<section class="m-salle'+(s.c?' m-couv':'')+'" data-k="'+k+'" aria-label="'+esc(s.d+' · '+s.t)+'"><div class="m-img"><img src="'+src+'" alt="" '+(k>1?'loading="lazy"':'')+'></div><div class="m-txt"><div class="m-date">'+esc(s.d)+'</div><span class="m-lieu">📍 '+esc(s.l)+'</span><h2>'+esc(s.t)+'</h2><p>'+esc(s.p)+'</p>'
-      +(s.c?'<span class="m-glisse">↑ Glissez vers le haut</span>':'')
-      +(s.fin?'<div class="m-act"><button type="button" id="m-salles">Entrer dans les six salles</button><button type="button" class="l" id="m-rejouer">Revoir le musée</button></div><p style="font-size:14px;margin-top:14px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p>':'')+'</div></section>';}).join('');
-  R.innerHTML=S.map(function(s,k){return '<li><button type="button" data-k="'+k+'" aria-label="'+esc(s.d+' · '+s.l)+'"></button><span>'+esc(s.d)+' · '+esc(s.l)+'</span></li>';}).join('');
-  P.innerHTML=S.map(function(){return '<i></i>';}).join('');
-  var salles=D.querySelectorAll('.m-salle'),cur=0;
-  function marquer(k){cur=k;salles.forEach(function(x,i){x.classList.toggle('vue',i===k);});
-    R.querySelectorAll('li').forEach(function(li,i){li.classList.toggle('c',i===k);li.firstChild.className=i<k?'f':i===k?'c':'';});
-    P.querySelectorAll('i').forEach(function(x,i){x.className=i<k?'f':i===k?'c':'';});
-    if(k===S.length-1)compte('balade-musee-fin');}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>.55)marquer(+e.target.dataset.k);});},{root:D,threshold:[.56]});
-  salles.forEach(function(x){io.observe(x);});
-  function aller(k){k=Math.max(0,Math.min(S.length-1,k));D.scrollTo({top:salles[k].offsetTop,behavior:'smooth'});}
-  R.addEventListener('click',function(e){var b=e.target.closest('button');if(b)aller(+b.dataset.k);});
-  D.addEventListener('click',function(e){if(e.target.closest('button,a'))return;var r=D.getBoundingClientRect();if(e.clientY>r.top+r.height*.5&&cur<S.length-1)aller(cur+1);});
-  function compte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
-  /* musique : la même que la démo et la bibliothèque, au premier geste, coupable */
-  var au=null,son=true;try{son=localStorage.getItem('efa_musee_son')!=='0';}catch(e){}
-  var bS=document.getElementById('m-son');
-  function majSon(){bS.textContent=son?'♪ Son':'♪ Muet';bS.setAttribute('aria-pressed',son);bS.setAttribute('aria-label',son?'Couper la musique':'Remettre la musique');}
-  function jouer(){if(!son)return;try{if(!au){au=new Audio('demo-musique.mp3');au.loop=true;au.volume=.55;}var p=au.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
-  bS.onclick=function(){son=!son;try{localStorage.setItem('efa_musee_son',son?'1':'0');}catch(e){}majSon();if(son)jouer();else if(au)au.pause();};
-  majSon();
-  var avant=null;
-  function ouvrir(depuis){avant=document.activeElement;M.hidden=false;document.documentElement.style.overflow='hidden';document.documentElement.classList.add('musee-ouvert');D.scrollTop=0;marquer(0);jouer();
-    if(location.hash!=='#musee')history.pushState({musee:1},'',location.pathname+location.search+'#musee');
-    document.getElementById('m-fermer').focus();compte('balade-musee-ouvert-'+(depuis||'lien'));}
-  function fermer(retour){M.hidden=true;document.documentElement.style.overflow='';document.documentElement.classList.remove('musee-ouvert');if(au)au.pause();
-    if(!retour&&location.hash==='#musee')history.replaceState(null,'',location.pathname+location.search);if(avant&&avant.focus)avant.focus();}
-  window.EFA_MUSEE=ouvrir;
-  document.getElementById('m-fermer').onclick=function(){fermer();};
-  window.addEventListener('popstate',function(){if(!M.hidden&&location.hash!=='#musee')fermer(true);});
-  document.addEventListener('keydown',function(e){if(M.hidden)return;if(e.key==='Escape')fermer();else if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '){e.preventDefault();aller(cur+1);}else if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();aller(cur-1);}});
-  D.addEventListener('click',function(e){if(e.target.id==='m-salles'){fermer();setTimeout(function(){var x=document.getElementById('echanger');if(x)x.scrollIntoView({behavior:'smooth'});},60);}if(e.target.id==='m-rejouer')aller(0);});
-  document.querySelectorAll('[data-musee]').forEach(function(b){b.addEventListener('click',function(){ouvrir(b.dataset.musee);});});
-  /* le bouton reste à portée pendant toute la balade */
-  var flot=document.getElementById('musee-flot'),hero=document.querySelector('.btn-musee');
-  flot.onclick=function(){ouvrir('flottant');};
-  if('IntersectionObserver' in window&&hero)new IntersectionObserver(function(es){flot.classList.toggle('vu',!es[0].isIntersecting);}).observe(hero);
-  if(location.hash==='#musee')setTimeout(function(){ouvrir('lien-direct');},50);
-})();
-</script>
-
+<script src="musee-economie.js?v=2026102806" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026102821" defer></script>
 </body>
