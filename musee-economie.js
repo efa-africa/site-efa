@@ -105,25 +105,25 @@
     { t: "Les bâtisseurs", st: "Leurs équipes et leurs institutions", i: "cap-elumelu",
       p: "Derrière chaque grande entreprise : un besoin, un premier financement, des salariés, des fournisseurs, des règles.",
       e: [
-        { k: "f", ini: "KD", nom: "Koné Dossongui", d: "1978", l: "Abidjan", role: "Banquier et industriel ivoirien",
+        { k: "f", ini: "KD", i: "h-dossongui", h: 3, nom: "Koné Dossongui", d: "1978", l: "Abidjan", role: "Banquier et industriel ivoirien",
           p: "Il prend 1 % du capital de ce qui deviendra la Banque Atlantique, puis bâtit un groupe de la banque aux mines.",
           q: "« Si tu t’y mets, les 1 % deviennent 90 %. » — Entretien avec Forbes Afrique, 2026" },
-        { k: "o", d: "Douze parcours", l: "De Lagos à Addis-Abeba", t: "Les capitaines d’industrie", i: "cap-dangote",
+        { k: "o", d: "Douze parcours", l: "De Lagos à Addis-Abeba", t: "Les capitaines d’industrie", i: "h-usine-equipe", h: 2,
           p: "Dangote, Elumelu, Dossongui, Mwangi, Masiyiwa, Alemu… Leur pensée, ce qu’ils ont apporté, et ce qu’on en retient pour son argent : des modèles et des parcours dont on peut s’inspirer." },
         { k: "d", t: "À vous : leurs parcours", p: "Douze portraits dans la bibliothèque EFA.",
           a: [["Voir les capitaines d’industrie", "bibliotheque.html?src=musee#capitaines"]] }
       ] },
-    { t: "Le téléphone, outil économique", st: "Payer, envoyer, épargner", i: "cap-masiyiwa",
+    { t: "Le téléphone, outil économique", st: "Payer, envoyer, épargner", i: "h-antenne", h: 2,
       p: "Réseaux, agents, paiements : en vingt ans, le téléphone est devenu une banque de poche.",
       e: [
-        { k: "o", d: "2007", l: "Kenya", t: "Le téléphone devient un porte-monnaie", i: "cap-ibrahim",
+        { k: "o", d: "2007", l: "Kenya", t: "Le téléphone devient un porte-monnaie", i: "h-agent-mm", h: 2,
           p: "Le mobile money se lance au Kenya en mars 2007, puis gagne le continent. Un solde sur un téléphone est, lui aussi, de la monnaie." },
         { k: "o", d: "Chaque jour", l: "Dans votre poche", t: "Frais, agents, fraudes", i: "cap-mwangi",
           p: "Chaque transfert passe par un expéditeur, un réseau, un agent et un bénéficiaire. À chaque étape : un frais possible, un risque possible." },
         { k: "d", t: "À vous : votre budget mobile", p: "Combien vous coûtent vraiment vos transferts, et comment éviter les arnaques.",
           a: [["Budget et mobile money", "budget-mobile-money.html?src=musee"]] }
       ] },
-    { t: "De l’épargne au capital", st: "Comment financer une grande entreprise ?", i: "p-financiers",
+    { t: "De l’épargne au capital", st: "Comment financer une grande entreprise ?", i: "h-conseil", h: 2,
       p: "Autofinancement, prêt, obligation, action : quatre façons de financer, quatre façons de partager le risque.",
       e: [
         { k: "o", d: "1998", l: "Abidjan", t: "La BRVM ouvre", i: "p-esperance",
@@ -136,9 +136,9 @@
     { t: "Dangote, du projet industriel à l’ouverture du capital", st: "La grande étude de cas", i: "cap-dangote",
       p: "Une raffinerie pour arrêter d’importer l’essence, puis des actions proposées au public : toute la balade en un cas.",
       e: [
-        { k: "o", d: "2010", l: "Lagos", t: "Le ciment entre en Bourse", i: "p-entreprise",
+        { k: "o", d: "2010", l: "Lagos", t: "Le ciment entre en Bourse", i: "h-cimenterie", h: 2,
           p: "Dangote Cement est cotée à la Bourse de Lagos depuis 2010. Le groupe a d’abord grandi en produisant au Nigeria ce que le pays importait." },
-        { k: "o", d: "2023", l: "Lekki, Lagos", t: "La raffinerie démarre", i: "p-externalite",
+        { k: "o", d: "2023", l: "Lekki, Lagos", t: "La raffinerie démarre", i: "h-raffinerie", h: 2,
           p: "Une raffinerie prévue pour 650 000 barils par jour. Ses résultats dépendent du prix du pétrole brut, de l’énergie, de la maintenance et de ses clients." },
         { k: "o", d: "14 sept.–27 oct. 2026", l: "Lagos", t: "L’offre au public", i: "p-esperance",
           p: "4,1 milliards d’actions proposées à 525 nairas, soit environ 2 150 milliards de nairas si tout est souscrit. L’offre, prolongée de deux semaines, a fermé le 27 octobre. Au 28 octobre, l’attribution et la cotation restent à venir.",
@@ -149,7 +149,7 @@
   ];
   var ACCUEIL = { t: "Le musée de l’économie", i: "h-accueil",
     p: "Qui crée la richesse en Afrique, qui la finance, et qui en garde la valeur ? Douze salles, de la vallée du Nil à la Bourse de Lagos." };
-  var SORTIE = { d: "Et demain ?", l: "Le continent", t: "Du cercle à la spirale", i: "p-confiance",
+  var SORTIE = { d: "Et demain ?", l: "Le continent", t: "Du cercle à la spirale", i: "h-equipe", h: 2,
     p: "Commerce continental, ouvert depuis janvier 2021 avec la ZLECAf, énergie, villes, emploi : la salle suivante reste à écrire." };
 
   /* ---------- la liste des étapes ---------- */
@@ -162,7 +162,7 @@
   function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
-  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">Reconstitution illustrative, réalisée avec l’aide de l’IA</span>' : '') + '</div>'; }
+  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 1 ? 'Reconstitution illustrative, réalisée avec l’aide de l’IA' : h === 3 ? 'Portrait retravaillé avec l’aide de l’IA' : 'Illustration réalisée avec l’aide de l’IA') + '</span>' : '') + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
@@ -170,10 +170,10 @@
     if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i) + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p><p style="font-size:15px">Touchez le <b>bord droit</b> pour avancer, le <b>bord gauche</b> pour revenir, ou ouvrez le <b>plan</b> en haut.</p><p style="font-size:14px">Une idée de Pacôme Kipré, dit Peck Peckisblackman.</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
-      return '<div class="mu-etape z">' + cadre(SORTIE.i) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p class="mu-q"><small>Votre passeport du musée</small><span class="mu-tampons" id="mu-tampons">' + t + '</span></p><div class="mu-act"><button type="button" data-mu-salles>Entrer dans les six salles de la balade</button><button type="button" class="l" data-mu-debut>Revoir le musée</button></div><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui. Offre Dangote : annonces publiques de septembre et octobre 2026.</p></div></div>';
+      return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p class="mu-q"><small>Votre passeport du musée</small><span class="mu-tampons" id="mu-tampons">' + t + '</span></p><div class="mu-act"><button type="button" data-mu-salles>Entrer dans les six salles de la balade</button><button type="button" class="l" data-mu-debut>Revoir le musée</button></div><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui. Offre Dangote : annonces publiques de septembre et octobre 2026.</p></div></div>';
     }
     var S = SALLES[x.s];
-    if (x.k === "s") return '<div class="mu-etape s">' + (S.sombre ? "" : cadre(S.i)) + '<div class="mu-txt"' + (S.sombre ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.st) + "</span><p>" + esc(S.p) + "</p></div></div>";
+    if (x.k === "s") return '<div class="mu-etape s">' + (S.sombre ? "" : cadre(S.i, 0, S.h)) + '<div class="mu-txt"' + (S.sombre ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.st) + "</span><p>" + esc(S.p) + "</p></div></div>";
     if (x.k === "f") return '<div class="mu-etape f' + (x.i ? ' fi' : '') + '">' + (x.i ? cadre(x.i, 0, x.h) : '<div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div>') + '<div class="mu-txt">' + (x.i ? '<div class="mu-date">' + esc(x.d) + '</div>' : '') + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
     if (x.k === "n") return '<div class="mu-etape n"><div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + x.p + "</p></div></div>";
     if (x.k === "d") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><span class="mu-num" style="width:auto;padding:0 18px;border-radius:999px;font:800 13px/40px Source Sans\\ 3,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;height:40px">À vous de décider</span><h2>' + esc(x.t) + "</h2><p>" + esc(x.p) + "</p>" + actions(x.a) + "</div></div>";
