@@ -485,13 +485,13 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}).replace(/ ([:?!;»])/g,"&nbsp;$1").replace(/« /g,"«&nbsp;");}
 
   /* Question 1 */
-  var Q1={q:"Qu’est-ce qui vous amène ?",choix:[
-    ["moi","Mieux gérer mon argent","Budget, dettes, proches, tontine, investir."],
-    ["cadre","Je suis cadre","De bons revenus, un patrimoine à construire."],
-    ["dirigeant","Je dirige une entreprise","Trésorerie, financement, patrimoine."],
-    ["patrimoine","Mon patrimoine","Le structurer, le protéger, le transmettre."],
-    ["orga","Former mes équipes","Salariés, cadres, étudiants, membres."],
-    ["eco","Des données pour décider","Économie, marchés, études."]]};
+  var Q1={q:"Que voulez-vous accomplir ?",choix:[
+    ["moi","Mieux gérer mon argent","Budget, dettes, proches, tontine, investissement."],
+    ["cadre","Construire mon patrimoine","De bons revenus, un patrimoine encore à construire."],
+    ["patrimoine","Organiser mon patrimoine","Terrains, placements, transmission."],
+    ["dirigeant","Protéger mon entreprise et mon patrimoine","Trésorerie, financement, succession."],
+    ["orga","Former mon équipe","Salariés, cadres, étudiants, membres."],
+    ["eco","Comprendre l’économie","Actualités, études, marchés."]]};
   var DIRECT=["cadre","dirigeant","patrimoine"]; /* ces profils passent directement au choix du format */
   var DEMO={moi:"efa",orga:"organisations",eco:"decideurs"};
 
@@ -583,8 +583,9 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
         etude:["Approfondir","L’étude « La tontine en chiffres »","etude-tontine-en-chiffres.html?src=depart"]}
     }
   };
+  var DEF={moi:"essai",orga:"preparer",eco:"synthese"}; /* pas de question de format : EFA propose d’abord un premier essai */
   var ORDRE={moi:["essai","lecon","parcours"],orga:["decouvrir","tester","preparer"],eco:["synthese","explication","etude"]};
-  var LIB={moi:"Pour moi",orga:"Former mes équipes",eco:"Des données pour comprendre et décider"};
+  var LIB={moi:"Mieux gérer mon argent",orga:"Former mon équipe",eco:"Comprendre l’économie"};
 
   function actions(o){
     var g=R[o.p][o.q2]||{}, base=R[o.p]._base||{}, ord=ORDRE[o.p].slice();
@@ -598,31 +599,34 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
   function boutons(list,cls){return '<div class="pdd-choix '+(cls||"")+'">'+list.map(function(c){return '<button type="button" data-v="'+c[0]+'"><b>'+esc(c[1])+'</b>'+(c[2]?'<span>'+esc(c[2])+'</span>':'')+'</button>';}).join("")+'</div>';}
   function etape(n,total){return '<p class="pdd-et">Question '+n+' sur '+total+'</p><div class="pdd-bar" aria-hidden="true"><i style="width:'+(n/total*100)+'%"></i></div>';}
   function v1(){vert(null);
-    vue.innerHTML=etape(1,3)+'<h1>'+esc(Q1.q)+'</h1>'+boutons(Q1.choix,"six")+'<a class="pdd-lien" href="index.html#ecole" data-goatcounter-click="depart-explorer">Explorer directement EFA</a>';
-    lier(function(v){suivi("q1-"+v);if(DIRECT.indexOf(v)>=0){etat={p:"moi",q2:v,direct:1};v3();}else{etat={p:v};v2();}});
+    vue.innerHTML=etape(1,2)+'<h1>'+esc(Q1.q)+'</h1>'+boutons(Q1.choix,"six")+'<a class="pdd-lien" href="index.html#ecole" data-goatcounter-click="depart-explorer">Explorer directement EFA</a>';
+    lier(function(v){suivi("q1-"+v);if(DIRECT.indexOf(v)>=0){etat={p:"moi",q2:v,direct:1};fin();}else{etat={p:v};v2();}});
   }
-  function v2(){vert(null);var q=Q[etat.p][0],ch=etat.p==="moi"?q.choix.filter(function(c){return DIRECT.indexOf(c[0])<0;}):q.choix;vue.innerHTML=etape(2,3)+'<h1>'+esc(q.q)+'</h1>'+boutons(ch)+retour();lier(function(v){etat.q2=v;v3();});}
-  function v3(){vert(etat);var q=Q[etat.p][1];vue.innerHTML=(etat.direct?etape(2,2):etape(3,3))+'<h1>'+esc(q.q)+'</h1>'+boutons(q.choix)+retour();lier(function(v){etat.q3=v;etat.le=Date.now();ecrire(etat);suivi("fin-"+etat.p+"-"+etat.q2+"-"+etat.q3);res();});}
+  function v2(){vert(null);var q=Q[etat.p][0],ch=etat.p==="moi"?q.choix.filter(function(c){return DIRECT.indexOf(c[0])<0;}):q.choix;vue.innerHTML=etape(2,2)+'<h1>'+esc(q.q)+'</h1>'+boutons(ch)+retour();lier(function(v){etat.q2=v;fin();});}
+  function fin(){etat.q3=DEF[etat.p];etat.le=Date.now();var a=actions(etat);if(a.liste[0]){etat.next=a.liste[0][2];etat.nextT=a.liste[0][1];}ecrire(etat);suivi("fin-"+etat.p+"-"+etat.q2);res();}
   function vert(o){var on=!!(o&&o.q2==="patrimoine");document.documentElement.classList.toggle("efa-vert",on);var m=document.querySelector('meta[name="theme-color"]');if(!m){m=document.createElement("meta");m.name="theme-color";document.head.appendChild(m);}m.content=on?"#0F2E2A":"#0B1220";}
   function retour(){return '<button type="button" class="pdd-lien" data-retour>← Question précédente</button>';}
   function res(){
     var o=lire()||etat,a=actions(o);vert(o);
     var m=a.liste[0], autres=a.liste.slice(1);
+    if(m&&o.next!==m[2]){o.next=m[2];o.nextT=m[1];ecrire(o);}
+    var alt=autres.shift();
     vue.innerHTML='<p class="pdd-et">Votre point de départ · '+esc(libelle(o))+'</p><h1>'+esc(a.titre)+'</h1>'
       +'<div class="pdd-main"><small>'+esc(m[0])+'</small><p>'+esc(m[1])+'</p><a class="pdd-go" href="'+m[2]+'" data-goatcounter-click="depart-action-1">'+esc(m[0])+' <span aria-hidden="true">→</span></a></div>'
-      +(autres.length?'<details class="pdd-autres"><summary>Voir d’autres façons de commencer</summary><ol class="pdd-res">'+autres.map(function(x,i){return '<li><a href="'+x[2]+'" data-goatcounter-click="depart-action-'+(i+2)+'"><small>'+esc(x[0])+'</small><b>'+esc(x[1])+'</b><span aria-hidden="true">→</span></a></li>';}).join("")+'</ol></details>':'')
+      +(alt?'<p style="margin:0"><a class="pdd-lien" href="'+alt[2]+'" data-goatcounter-click="depart-action-2">'+(o.p==="moi"?"Je préfère commencer par une leçon":esc(alt[0]))+'</a></p>':'')
+      +(autres.length?'<details class="pdd-autres"><summary>Aller plus loin</summary><ol class="pdd-res">'+autres.map(function(x,i){return '<li><a href="'+x[2]+'" data-goatcounter-click="depart-action-'+(i+2)+'"><small>'+esc(x[0])+'</small><b>'+esc(x[1])+'</b><span aria-hidden="true">→</span></a></li>';}).join("")+'</ol></details>':'')
       +(function(){var d=o.q2==="tontine"?"tontine":o.q2==="investir"?"bourse":DIRECT.indexOf(o.q2)>=0?"":DEMO[o.p];return d&&!/^demo\.html/.test(m[2])?'<p style="margin:0"><a class="pdd-lien" href="demo.html?d='+d+'&amp;src=depart" data-goatcounter-click="depart-demo">Voir d’abord une démo</a></p>':"";})()
       +'<div class="pdd-bas"><a class="pdd-lien" href="index.html#ecole">Explorer librement</a><button type="button" class="pdd-lien" data-changer>Changer mon objectif</button></div>';
     var ch=vue.querySelector("[data-changer]");ch.onclick=function(){suivi("changer");try{localStorage.removeItem(CLE);}catch(e){}etat={};v1();window.scrollTo(0,0);};
   }
   function lier(f){
     vue.querySelectorAll(".pdd-choix button").forEach(function(b){b.onclick=function(){f(b.dataset.v);window.scrollTo(0,0);};});
-    var r=vue.querySelector("[data-retour]");if(r)r.onclick=function(){if(etat.q2&&!etat.q3&&!etat.direct&&vue.innerHTML.indexOf("Question 3")>=0){delete etat.q2;v2();}else{etat={};v1();}};
+    var r=vue.querySelector("[data-retour]");if(r)r.onclick=function(){etat={};v1();};
   }
   var deja=lire(), qs=new URLSearchParams(location.search);
   var pour=qs.get("pour"); /* entrée directe depuis l'accueil : la première question est déjà répondue */
   if(pour&&Q[pour]){etat={p:pour};suivi("q1-"+pour+"-direct");v2();}
-  else if(deja&&deja.p&&deja.q2&&deja.q3&&R[deja.p]&&!qs.has("changer")){etat=deja;res();}else v1();
+  else if(deja&&deja.p&&deja.q2&&R[deja.p]&&!qs.has("changer")){etat=deja;if(!etat.q3)etat.q3=DEF[etat.p];res();}else v1();
 })();
 </script>
 

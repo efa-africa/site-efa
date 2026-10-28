@@ -1044,6 +1044,7 @@ img.char{object-position:50% 18%}
 .ec2-reprise{width:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;background:#16223A;border-radius:14px;padding:18px 22px;text-align:left;margin-bottom:14px}
 .ec2-reprise p{margin:0;display:grid;gap:2px}
 .ec2-reprise p span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9AA5B8}
+.ec2-reprise p small.ec2-etape{font-size:15px;color:#C9D1DE;margin-top:4px}
 .ec2-reprise p b{font-family:var(--f-display);font-size:clamp(20px,2.2vw,26px);color:#fff}
 .ec2-r-acts{display:flex;align-items:center;gap:16px}
 .ec2-mod{color:#E8EDF5;font-weight:700;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:4px}
@@ -1196,16 +1197,22 @@ img.char{object-position:50% 18%}
         <h1 id="eh-t">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>
         <p class="eh-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>
         <div class="eh-bt"><a class="eh-b1" href="point-de-depart.html?src=accueil-hero" data-goatcounter-click="accueil-hero-point-de-depart">Trouver mon chemin <span aria-hidden="true">→</span></a><p class="eh-micro">3 questions, 1 minute, sans inscription.</p></div>
-        <script>/* Au retour : reprendre avant de découvrir. Le point de départ n'est pas redemandé. */
-        (function(){try{var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro");if(!b)return;
-          var P=JSON.parse(localStorage.getItem("efa_parcours_v1")||"null"),O=JSON.parse(localStorage.getItem("efa_objectif")||"null");
-          if(P&&P.actif&&P.faits&&Object.keys(P.faits).some(function(k){return k.indexOf(P.actif+".")===0;})){
-            b.href="parcours.html?src=accueil-reprendre#"+P.actif;b.setAttribute("data-goatcounter-click","accueil-hero-reprendre");b.innerHTML='Reprendre mon module <span aria-hidden="true">→</span>';
-            if(m)m.innerHTML='Vous en étiez à votre module en cours. <a href="point-de-depart.html?src=accueil-retour">Voir mes autres actions</a>';
-          }else if(O&&O.p&&O.q3){
-            b.href="point-de-depart.html?src=accueil-retour";b.setAttribute("data-goatcounter-click","accueil-hero-mes-actions");b.innerHTML='Ma prochaine action <span aria-hidden="true">→</span>';
-            if(m)m.innerHTML='Votre point de départ est gardé sur cet appareil. <a href="point-de-depart.html?changer=1&amp;src=accueil">Changer mon objectif</a>';
-          }}catch(x){}})();</script>
+        <script>/* L’accueil suit l’avancement : défi en cours, résultat obtenu, objectif choisi, module en cours. Le bouton mène au geste exact. */
+        window.EFA_ETAPE=function(){try{
+          var C=JSON.parse(localStorage.getItem("efa_cahier_v1")||"null"),O=JSON.parse(localStorage.getItem("efa_objectif")||"null"),P=JSON.parse(localStorage.getItem("efa_parcours_v1")||"null");
+          var iso=function(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);},auj=iso(new Date());
+          var sem=C&&C.semaines&&C.semaines.filter(function(x){return !x.fini;}).pop();
+          if(sem&&sem.debut){var a=sem.debut.split("-"),n=Math.round((new Date(iso(new Date()).replace(/-/g,"/"))-new Date(+a[0],+a[1]-1,+a[2]))/864e5)+1,J=sem.jours||[],faits=J.filter(function(x){return x!=null;}).length;
+            if(n>7||faits>=7)return {t:"Votre défi de sept jours est terminé : faites le bilan et choisissez la suite.",b:"Faire mon bilan",h:"outils.html#cahier",k:"bilan"};
+            if(n>=1&&J[n-1]==null)return {t:"Jour "+n+" sur 7 : notez votre dépense du jour.",b:"Noter ma dépense du jour",h:"outils.html#cahier",k:"defi"};
+            return {t:"Jour "+Math.max(1,n)+" sur 7 : c’est noté pour aujourd’hui.",b:"Voir mon défi",h:"outils.html#cahier",k:"defi-ok"};}
+          if(C&&C.pistes&&C.pistes.liste&&C.pistes.liste.length)return {t:"Votre prochaine action : choisir un poste à suivre pendant sept jours.",b:"Choisir mon poste",h:"outils.html#cahier/nouveau",k:"poste"};
+          if(O&&O.p&&O.q2)return {t:"Votre première étape : "+(O.nextT||"votre point de départ")+".",b:"Commencer",h:O.next||"point-de-depart.html?src=accueil-retour",k:"objectif",o:O};
+          if(P&&P.actif&&P.faits&&Object.keys(P.faits).some(function(k){return k.indexOf(P.actif+".")===0;}))return {t:"Vous en étiez à votre module en cours.",b:"Reprendre mon module",h:"parcours.html?src=accueil-reprendre#"+P.actif,k:"module"};
+        }catch(x){}return null;};
+        (function(){var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro"),E=window.EFA_ETAPE();if(!b||!E)return;
+          b.href=E.h;b.setAttribute("data-goatcounter-click","accueil-hero-etape-"+E.k);b.innerHTML='Ma prochaine action <span aria-hidden="true">→</span>';
+          if(m)m.innerHTML=E.t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+(E.k==="objectif"?' <a href="point-de-depart.html?changer=1&amp;src=accueil">Changer mon objectif</a>':'');})();</script>
       </div>
       <div class="eh-vis">
         <div class="eh-art" id="eh-art">
@@ -1288,6 +1295,7 @@ if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);
         brvm:"comprendre la BRVM",economie:"comprendre l’économie africaine",entreprises:"lire les entreprises",tontine_eco:"comprendre la tontine"};
       var k=o.p==="eco"&&o.q2==="tontine"?"tontine_eco":o.q2, t=T[k]; if(!t) return;
       document.getElementById("ec2-obj").textContent=t;
+      var E=window.EFA_ETAPE&&window.EFA_ETAPE(); var bt=document.querySelector("#ec2-reprise .ec2-b1"); if(E&&bt){bt.href=E.h;bt.innerHTML=(E.k==="objectif"?"Commencer":E.b)+' <span aria-hidden="true">→</span>';var pe=document.createElement("small");pe.className="ec2-etape";pe.textContent=E.t;document.querySelector("#ec2-reprise p").appendChild(pe);}
       document.getElementById("ec2-reprise").hidden=false;
       document.getElementById("ec-t2").textContent="Explorer aussi EFA";
       document.getElementById("ec2-sous").hidden=true;
@@ -1884,7 +1892,7 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102820" defer></script>
+<script src="efa-appli.js?v=2026102821" defer></script>
 <script src="minfin.js?v=2026102702"></script>
 <script>
 (function(){

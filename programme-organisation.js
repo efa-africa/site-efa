@@ -161,7 +161,7 @@
   }
   function programme() {
     var g = appliquer();
-    return { v: 1, n: S.nom.slice(0, 60), ty: S.type, ta: S.taille, pu: S.publics, en: S.enjeux.slice(0, 15).map(function (k) { return k + ":" + (S.niv[k] || 2); }), m: g.ids, s: g.semaines, mi: g.min, f: S.format, c: S.certif === "oui" ? cyclesComplets(g.ids).map(function (c) { return c.l; }).join("") : "" };
+    return { v: 1, n: S.nom.slice(0, 60), ty: S.type, ta: S.taille, pu: S.publics, en: S.enjeux.slice(0, 15).map(function (k) { return k + ":" + (S.niv[k] || 2); }), m: g.ids, s: g.semaines, mi: g.min, ob: S.ob || "", f: S.format, c: S.certif === "oui" ? cyclesComplets(g.ids).map(function (c) { return c.l; }).join("") : "" };
   }
 
   /* ---------- écrans de composition ---------- */
@@ -359,6 +359,38 @@
   }
   function arbitragesApres() { return arbitrages(); }
 
+
+  /* ---------- Chemin principal : recevoir une recommandation en quatre réponses ---------- */
+  var OBJ = [["budget", "Tenir jusqu’à la fin du mois", "budget"], ["dettes", "Réduire les dettes et les avances", "dettes"], ["reserve", "Faire face aux imprévus", "reserve"],
+    ["famille", "Aider ses proches sans se fragiliser", "famille"], ["annee", "Bien utiliser primes et 13e mois", "annee"], ["placer", "Épargner et placer", "placer"], ["retraite", "Préparer la retraite", "retraite"], ["tontine", "Mieux utiliser la tontine", "tontine"]];
+  var R0 = { pub: null, obj: null, taille: "", min: 45, sem: 8 };
+  function eRapide() {
+    $("etapes").hidden = true;
+    var pubs = PUBLICS.filter(function (p) { return p[0] !== "cadres"; });
+    if (!R0.pub && S.publics.length) R0.pub = S.publics[0];
+    $("vue").innerHTML = '<section class="carte"><p class="sur">Recevoir une recommandation · 2 minutes</p><h2>Quatre réponses, un programme prêt à ajuster</h2>'
+      + '<p class="aide"><b>1. Qui va suivre le programme&nbsp;?</b></p><div class="choix" id="r-pub">' + PUBLICS.map(function (p) { return bouton(p[0], p[1], R0.pub === p[0], p[2]); }).join("") + "</div>"
+      + '<p class="aide" style="margin-top:20px"><b>2. L’objectif prioritaire</b></p><div class="choix" id="r-obj">' + OBJ.map(function (o) { return bouton(o[0], o[1], R0.obj === o[0]); }).join("") + "</div>"
+      + '<div class="grille2" style="margin-top:20px"><label class="champ">3. Nombre de participants<select id="r-taille">' + ["", "moins de 20", "20 à 100", "100 à 500", "500 à 2 000", "2 000 à 10 000", "plus de 10 000"].map(function (t) { return '<option value="' + t + '"' + (R0.taille === t ? " selected" : "") + ">" + (t || "Je ne sais pas encore") + "</option>"; }).join("") + "</select></label>"
+      + '<label class="champ">4. Temps disponible par participant<select id="r-temps">' + [["30-6", "30 min par semaine, 6 semaines"], ["45-8", "45 min par semaine, 8 semaines"], ["60-8", "1 h par semaine, 8 semaines"], ["60-12", "1 h par semaine, 12 semaines"]].map(function (t) { return '<option value="' + t[0] + '"' + (t[0] === R0.min + "-" + R0.sem ? " selected" : "") + ">" + t[1] + "</option>"; }).join("") + "</select></label></div>"
+      + '<p class="aide" id="r-msg" role="status" style="color:#F09680"></p>'
+      + '<div class="acts"><button type="button" class="bt bt-p" id="r-go">Voir le programme recommandé</button><button type="button" class="bt" id="r-libre">Composer librement</button></div>'
+      + '<p class="aide">Vous pourrez ensuite ajuster les modules, le rythme et le format, ou demander une proposition à EFA.</p></section>';
+    $("r-pub").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; R0.pub = b.dataset.v; Array.prototype.forEach.call(this.querySelectorAll(".ch"), function (x) { x.setAttribute("aria-pressed", x === b); }); };
+    $("r-obj").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; R0.obj = b.dataset.v; Array.prototype.forEach.call(this.querySelectorAll(".ch"), function (x) { x.setAttribute("aria-pressed", x === b); }); };
+    $("r-libre").onclick = function () { mesure("orga-composer-librement"); $("etapes").hidden = false; aller(1); };
+    $("r-go").onclick = function () {
+      if (!R0.pub) { $("r-msg").textContent = "Choisissez le public."; return; }
+      if (!R0.obj) { $("r-msg").textContent = "Choisissez l’objectif prioritaire."; return; }
+      R0.taille = $("r-taille").value; var t = $("r-temps").value.split("-"); R0.min = +t[0]; R0.sem = +t[1];
+      var o = OBJ.filter(function (x) { return x[0] === R0.obj; })[0], suj = [o[2]];
+      (CONSEILS[R0.pub] || []).forEach(function (x) { if (suj.indexOf(x) < 0 && suj.length < 3) suj.push(x); });
+      S.publics = [R0.pub]; S.taille = R0.taille; S.sujets = suj; S.cycles = []; S.enjeux = []; S.semaines = R0.sem; S.min = R0.min; S.format = "1"; S.certif = "non";
+      S.arb = { socle: "ajouter", charge: "prioriser", marge: "garder" }; S.ob = o[2];
+      mesure("orga-recommandation-" + R0.pub + "-" + R0.obj); $("etapes").hidden = false; etape = 5; pastilles(); e5();
+    };
+  }
+
   /* ---------- le programme (organisation ou participant) ---------- */
   function rendre(pr, participant) {
     var g = { ids: pr.m.filter(function (id) { return P[id]; }), semaines: pr.s, min: pr.mi }, sem = planifier(g), t = total(g.ids), f = FORMATS.filter(function (x) { return x[0] === pr.f; })[0] || FORMATS[0];
@@ -372,6 +404,18 @@
       + (pr.c ? '<p class="ok-l">Ce programme couvre ' + CYCLES.filter(function (c) { return pr.c.indexOf(c.l) >= 0; }).map(function (c) { return "le cycle " + c.nom; }).join(", ").replace(/, ([^,]*)$/, " et $1") + ' : chaque participant peut passer l’examen en ligne et obtenir le certificat local correspondant' + (pr.c.length === 3 ? ', puis le certificat CEFA ★' : '') + '.</p>' : '<p class="aide">Chaque module terminé, avec sa fiche gardée, donne une attestation de réalisation au participant.</p>');
     var enj = (pr.en || []).map(function (x) { var p = String(x).split(":"); return { k: p[0], n: +p[1] || 2 }; }).filter(function (x) { return EN[x.k]; }).sort(function (a, b) { return b.n - a.n; });
     if (enj.length && !participant) h += '<div class="pourquoi"><p class="sur">Les situations de départ</p><ul>' + enj.map(function (x) { return '<li>' + esc(EN[x.k][1]) + ' <small>· ' + NIVEAUX[x.n].toLowerCase() + '</small></li>'; }).join("") + '</ul><p class="aide">Trois mois après la fin, le point « Mon point » de chaque participant (oui ou non : savoir où passe son argent, un mois de côté, pas de dette chère) montre ce qui a changé. Les totaux apparaissent dans votre tableau de bord.</p></div>';
+    if (!participant && g.ids.length) {
+      var fiches = g.ids.map(function (id) { return P[id].fiche && P[id].fiche.titre; }).filter(Boolean);
+      var ob = pr.ob && SUJETS.filter(function (x) { return x[0] === pr.ob; })[0], idsOb = ob ? ob[2].filter(function (id) { return g.ids.indexOf(id) >= 0; }) : [], pEx = P[idsOb[0] || g.ids[0]];
+      h += '<div class="enbref"><p class="sur">En bref</p><dl>'
+        + '<div><dt>Résultat attendu</dt><dd>' + (ob ? '<b>' + esc(ob[1]) + '.</b> ' : '') + esc((idsOb.length ? idsOb : g.ids.slice(0, 2)).map(function (id) { return P[id].objectif.replace(/\.$/, ""); }).join(" ; ")) + '.</dd></div>'
+        + '<div><dt>Charge par participant</dt><dd>' + duree(pr.mi) + ' par semaine pendant ' + Math.max(dern, pr.s) + ' semaines, sur téléphone, à son rythme.</dd></div>'
+        + '<div><dt>Exemple d’activité</dt><dd>Module ' + pEx.module + ' · ' + esc(pEx.titre) + (pEx.fiche && pEx.fiche.desc ? ' : ' + esc(pEx.fiche.desc) : '') + '</dd></div>'
+        + '<div><dt>Livrables</dt><dd>' + (fiches.length ? 'Une fiche gardée par module (' + esc(fiches.slice(0, 2).join(", ")) + (fiches.length > 2 ? "…" : "") + '), et une attestation par module terminé.' : 'Une attestation par module terminé.') + '</dd></div>'
+        + '<div><dt>Suivi</dt><dd>Vous voyez les inscriptions, les connexions et l’avancement de chacun. Vous ne voyez jamais ses montants, ses fiches ni ses réponses financières.</dd></div>'
+        + '<div><dt>Ce qui est gratuit</dt><dd>Les modules, les outils et la composition du programme. Les sessions animées par EFA se préparent sur proposition.</dd></div>'
+        + '</dl></div>';
+    }
     sem.forEach(function (s, k) {
       var titre = s.span > 1 ? "Semaines " + s.n + (s.span === 2 ? " et " : " à ") + (s.n + s.span - 1) : "Semaine " + s.n;
       var ses = (k === 0 && pr.f !== "0" ? 60 : 0) + (k === sem.length - 1 && pr.f === "2" ? 60 : 0);
@@ -485,6 +529,6 @@
     var en = q.get("en");
     if (en) { en.split(",").forEach(function (x) { var p = x.split("."); if (EN[p[0]] && S.enjeux.indexOf(p[0]) < 0) { S.enjeux.push(p[0]); S.niv[p[0]] = Math.min(3, Math.max(1, +p[1] || 2)); } });
       S.nom = (q.get("n") || "").slice(0, 60); S.source = (q.get("rep") ? q.get("rep") + " réponses" : "réponses anonymes"); mesure("orga-programme-depuis-enquete"); }
-    pastilles(); e1();
+    pastilles(); if (S.mode === "labo" || en || q.get("libre")) e1(); else eRapide();
   }
 })();

@@ -169,6 +169,19 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", poser); else poser();
 })();
 
+/* Mesure du retour : une personne qui a un objectif ou un cahier revient après 7 jours ou plus (aucune donnée personnelle envoyée). */
+(function () {
+  try {
+    var now = Date.now(), v = JSON.parse(localStorage.getItem("efa_vu") || "null") || {};
+    var engage = !!(localStorage.getItem("efa_objectif") || localStorage.getItem("efa_cahier_v1"));
+    if (engage && v.d && now - v.d >= 7 * 864e5) {
+      var ev = "retour-7-jours";
+      setTimeout(function () { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }, 2500);
+    }
+    if (!v.d || now - v.d > 36e5) { v.d = now; localStorage.setItem("efa_vu", JSON.stringify(v)); }
+  } catch (e) {}
+})();
+
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
