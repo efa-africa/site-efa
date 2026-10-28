@@ -96,3 +96,14 @@ Une organisation peut interroger ses salariés ou ses membres avant de composer 
 4. Test : ouvrez `enquete.html`, créez une enquête de test, répondez une fois, puis ouvrez les résultats avec la clé reçue.
 
 Confidentialité : ni nom, ni email, ni adresse IP, ni montant ; seulement la date du jour et la suite de 15 réponses.
+
+## Mise à jour 1.5 · programmes de communauté avec leur marque (28 octobre 2026)
+
+Un leader de communauté, un influenceur ou un partenaire compose un parcours pour ses membres, avec son nom, sa photo, son logo et un mot d'accueil. Ses membres voient cette marque quand ils rejoignent le parcours avec le code.
+
+1. **Supabase : rien à faire.** La marque est rangée dans la colonne `programme` (jsonb), qui existe déjà. Seule condition : les scripts des mises à jour 1.3 et 1.4 doivent avoir été passés (`03-supabase-bilan-cohorte.sql`, `03-supabase-enquetes.sql`). En cas de doute, repassez `03-supabase-enquetes.sql` : il ne casse rien.
+2. **Cloudflare :** Worker **efa-ecole**, **Edit code**, remplacez tout par le `02-worker-efa-ecole.js` actuel, puis **Deploy**. Les variables ne changent pas.
+3. **Vérifiez :** https://efa-ecole.elysees-johnson.workers.dev doit afficher `"version":"1.5"`.
+4. **Test :** `programme-organisation.html?type=communaute`, composez un parcours « Communauté CDC », ajoutez photo, logo et mot d'accueil, créez les accès, puis ouvrez le lien d'inscription reçu : la marque doit apparaître en haut de `rejoindre.html`.
+
+**Brevo : rien à faire pour cette mise à jour.** Le Worker n'envoie aucun email : la clé et le code s'affichent à l'écran, et le message d'invitation se copie depuis le tableau de bord.
