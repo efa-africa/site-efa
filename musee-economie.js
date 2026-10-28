@@ -1,161 +1,192 @@
 /* Le musée de l'économie EFA · visite en format statut (v2, 28/10/2026)
    Fil conducteur : qui crée la richesse en Afrique, qui la finance, et qui en garde la valeur ?
-   Douze salles. Chaque étape : un objet (date, lieu, image entière), un personnage (médaillon, jamais de faux portrait),
-   ou une décision (renvoi vers un jeu de la balade ou une leçon EFA). Idées reformulées ; seule citation : Koné Dossongui, sourcée.
+   Douze salles, dans l’ordre du temps. Aucun appel à l’action pendant la visite : jeux, leçons, quiz et avis viennent à la sortie. Idées reformulées ; seule citation : Koné Dossongui, sourcée.
    Pour ajouter une étape : copier un bloc { … } dans la bonne salle. Types : o (objet), f (personnage), n (salle sombre, sans image), d (décision). */
 (function () {
   var V = "?v=2810";
+  /* Douze salles, dans l'ordre du temps. y = année (pour « il y a … ans ») ; c = le chiffre clé de l'étape.
+     a = les prolongements de la salle, proposés seulement à la sortie (jamais pendant la visite). */
   var SALLES = [
-    { t: "Avant les billets", st: "Produire, compter, conserver", i: "h-nil", h: 1,
+    { t: "Produire, compter, conserver", per: "−8500 → −3300", i: "h-nil", h: 1,
       p: "Toute économie commence par se nourrir, organiser le travail et garder des réserves pour la mauvaise saison.",
+      a: [["Où garder sa réserve", "ou-garder-sa-reserve.html?src=musee"], ["Jouer à Troc ou monnaie", "#borne-troc"]],
       e: [
-        { k: "o", d: "−8500", l: "Vallée du Nil, Croissant fertile", t: "On produit plus qu’on ne mange", i: "h-surplus", h: 1,
+        { k: "o", d: "−8500", y: -8500, l: "Vallée du Nil, Croissant fertile", t: "On produit plus qu’on ne mange", i: "h-surplus", h: 1,
+          c: ["1", "surplus : la première richesse"],
           p: "Avec l’agriculture et l’élevage apparaît le <b>surplus</b> : ce qui n’est pas consommé peut se garder, se partager ou s’échanger." },
-        { k: "o", d: "Sahel", l: "Greniers et saisons", t: "Conserver entre deux récoltes", i: "h-grenier", h: 1,
-          p: "Le grenier de mil est la première assurance : il protège la famille contre une mauvaise année. Garder, c’est déjà épargner." },
-        { k: "o", d: "−3300", l: "Mésopotamie", t: "Écrire qui doit quoi à qui", i: "h-tablettes", h: 1,
-          p: "Sur des tablettes d’argile, les scribes notent récoltes, dettes et paiements. La comptabilité naît avec les premières villes.",
-          q: "Des milliers d’années plus tard, le registre d’une succursale de banque fait exactement la même chose." },
-        { k: "d", t: "À vous : vos réserves", p: "Entre deux rentrées d’argent, que gardez-vous de côté, et où ? C’est le grenier d’aujourd’hui.",
-          a: [["Où garder sa réserve", "ou-garder-sa-reserve.html?src=musee"]] }
-      ] },
-    { t: "L’Afrique des routes et des marchés", st: "Or, sel, tissus, caravanes", i: "h-routes", h: 1,
-      p: "Bien avant les ports à conteneurs, des routes reliaient le Sahel à la Méditerranée, la mer Rouge à l’océan Indien.",
-      e: [
-        { k: "f", ini: "H", i: "h-hatchepsout", h: 1, nom: "Hatchepsout", d: "Vers −1470", l: "Égypte", role: "Reine-pharaon",
-          p: "Elle envoie une expédition au pays de Pount, au sud de la mer Rouge, chercher encens, ébène et or. Les reliefs de son temple racontent ce voyage : l’un des plus anciens récits de commerce lointain." },
-        { k: "f", ini: "MM", i: "h-mansa-moussa", h: 1, nom: "Mansa Moussa", d: "1324", l: "Empire du Mali", role: "Empereur du Mali",
-          p: "En route vers La Mecque, il dépense et distribue tant d’or au Caire que, selon les chroniqueurs, son cours y baisse pendant des années. L’or du Sahel fait alors tourner le commerce de la Méditerranée." },
-        { k: "o", d: "XIIIe–XVIe s.", l: "Tombouctou, Gao, Djenné", t: "Or contre sel", i: "h-or-sel", h: 1,
-          p: "Les caravanes traversent le Sahara : l’or et les tissus d’un côté, le sel du désert de l’autre. Chaque étape a ses péages, ses risques et ses intermédiaires : <b>le prix d’arrivée n’est pas le prix de départ</b>." },
-        { k: "d", t: "À vous : troc ou monnaie ?", p: "Essayez d’obtenir du poisson avec un régime de plantain, sans argent. Puis refaites-le avec.",
-          a: [["Jouer à Troc ou monnaie", "#borne-troc"]] }
-      ] },
-    { t: "Qu’est-ce qui fait monnaie ?", st: "Cauris, pièces, billets, soldes", i: "h-monnaie", h: 2,
-      p: "Une monnaie sert à compter, à payer et à garder. Elle ne tient que si chacun l’accepte.",
-      e: [
-        { k: "o", d: "−600", l: "Lydie", t: "Les premières pièces", i: "h-lydie", h: 1,
-          p: "Un morceau de métal au poids garanti par une autorité. Plus besoin de peser l’or à chaque achat : on compte." },
-        { k: "f", ini: "IB", i: "h-ibn-battuta", h: 1, nom: "Ibn Battuta", d: "1352", l: "Empire du Mali", role: "Voyageur, né à Tanger",
-          p: "Il traverse le Sahara et décrit les marchés du Mali, où l’on paie avec des cauris, ces coquillages venus de l’océan Indien : rares, solides, impossibles à contrefaire." },
-        { k: "o", d: "Partout", l: "Une idée reçue", t: "Pas forcément le troc d’abord", i: "h-credit", h: 2,
+        { k: "o", d: "Depuis le Néolithique", l: "Sahel, greniers de mil", t: "Conserver entre deux récoltes", i: "h-grenier", h: 1,
+          c: ["12", "mois à tenir entre deux récoltes"],
+          p: "Le grenier est la première assurance : il protège la famille contre une mauvaise année. Garder, c’est déjà épargner." },
+        { k: "o", d: "Partout, depuis toujours", l: "Une idée reçue", t: "Pas forcément le troc d’abord", i: "h-credit", h: 2,
           p: "Les historiens le rappellent : crédit, dons, monnaies et échanges ont souvent coexisté. Ce qui fait la monnaie, ce n’est pas l’objet, c’est <b>la confiance</b>." },
-        { k: "d", t: "À vous : vrai ou faux ?", p: "Six affirmations entendues au marché sur la monnaie. Démêlez le vrai du faux.",
-          a: [["Jouer au Vrai ou faux", "#borne-vf"]] }
+        { k: "o", d: "−3300", y: -3300, l: "Mésopotamie", t: "Écrire qui doit quoi à qui", i: "h-tablettes", h: 1,
+          c: ["1re", "comptabilité écrite connue"],
+          p: "Sur des tablettes d’argile, les scribes notent récoltes, dettes et paiements. La comptabilité naît avec les premières villes.",
+          q: "Des milliers d’années plus tard, le registre d’une succursale de banque fait exactement la même chose." }
       ] },
-    { t: "Traites, conquêtes et économies coloniales", st: "Les personnes d’abord", i: "", sombre: 1,
-      p: "Une salle à part. On y parle d’économie, mais d’abord des femmes et des hommes.",
+    { t: "Routes lointaines et premières pièces", per: "−1470 → −600", i: "h-routes", h: 1,
+      p: "Le commerce relie très tôt la mer Rouge, la Méditerranée et l’intérieur du continent. Puis le métal devient monnaie.",
+      a: [["Jouer au Vrai ou faux sur la monnaie", "#borne-vf"]],
       e: [
-        { k: "n", d: "XVe–XIXe s.", l: "Atlantique, Sahara, océan Indien", t: "Les traites esclavagistes",
-          p: "Des millions de femmes et d’hommes arrachés à leur terre, transportés et vendus. Une tragédie humaine d’abord, qui a aussi privé des régions entières de leurs forces vives pendant des siècles." },
-        { k: "o", d: "Fin XIXe–XXe s.", l: "Mines, plantations, ports", t: "Le rail va au port", i: "h-rail-port", h: 1,
+        { k: "f", ini: "H", i: "h-hatchepsout", h: 1, nom: "Hatchepsout", d: "Vers −1470", y: -1470, l: "Égypte", role: "Reine-pharaon",
+          p: "Elle envoie une expédition au pays de Pount, au sud de la mer Rouge, chercher encens, ébène et or. Les reliefs de son temple racontent ce voyage : l’un des plus anciens récits de commerce lointain." },
+        { k: "o", d: "−600", y: -600, l: "Lydie", t: "Les premières pièces", i: "h-lydie", h: 1,
+          c: ["1", "poids garanti par une autorité"],
+          p: "Un morceau de métal au poids garanti par une autorité. Plus besoin de peser l’or à chaque achat : on compte." }
+      ] },
+    { t: "L’or du Sahel", per: "1324 → XVIe siècle", i: "h-monnaie", h: 2,
+      p: "Pendant des siècles, l’or ouest-africain et le sel du désert font tourner le commerce entre le Sahel et la Méditerranée.",
+      a: [["Jouer à L’entrepreneur stratège", "#borne-strat"]],
+      e: [
+        { k: "f", ini: "MM", i: "h-mansa-moussa", h: 1, nom: "Mansa Moussa", d: "1324", y: 1324, l: "Empire du Mali", role: "Empereur du Mali",
+          p: "En route vers La Mecque, il dépense et distribue tant d’or au Caire que, selon les chroniqueurs, son cours y baisse pendant des années. <b>Trop d’or d’un coup, et l’or vaut moins</b> : c’est déjà de l’inflation." },
+        { k: "f", ini: "IB", i: "h-ibn-battuta", h: 1, nom: "Ibn Battuta", d: "1352", y: 1352, l: "Empire du Mali", role: "Voyageur, né à Tanger",
+          p: "Il traverse le Sahara et décrit les marchés du Mali, où l’on paie avec des cauris, ces coquillages venus de l’océan Indien : rares, solides, impossibles à contrefaire." },
+        { k: "o", d: "XIIIe–XVIe s.", l: "Tombouctou, Gao, Djenné", t: "Or contre sel", i: "h-or-sel", h: 1,
+          c: ["≈ 2 000 km", "de Sahara entre l’or et le sel"],
+          p: "Les caravanes traversent le désert : l’or et les tissus d’un côté, le sel de l’autre. Chaque étape a ses péages, ses risques et ses intermédiaires : <b>le prix d’arrivée n’est pas le prix de départ</b>." }
+      ] },
+    { t: "Les traites esclavagistes", per: "VIIe → XIXe siècle", i: "", sombre: 1,
+      p: "Une salle à part. On y parle d’économie, mais d’abord des femmes et des hommes qui en ont été les victimes.",
+      a: [],
+      e: [
+        { k: "n", d: "VIIe → XIXe siècle", l: "Trois routes, treize siècles", t: "Des millions de vies arrachées",
+          p: "Par le Sahara, par l’océan Indien, puis par l’Atlantique, des millions de femmes et d’hommes ont été capturés, déportés et vendus. Une tragédie humaine d’abord, qui a aussi privé des régions entières de leurs forces vives pendant des siècles." },
+        { k: "o", d: "VIIe → XIXe s.", l: "Sahara", t: "La traite transsaharienne", i: "h-traite-sahara", h: 1,
+          c: ["13 siècles", "de caravanes vers le nord"],
+          p: "Des captifs, attachés les uns aux autres, traversent le désert à pied avec les caravanes, vers l’Afrique du Nord et le Proche-Orient. Les historiens en estiment les victimes à plusieurs millions." },
+        { k: "o", d: "VIIe → XIXe s.", l: "Côte orientale, océan Indien", t: "La traite de l’océan Indien", i: "h-traite-ocean-indien", h: 1,
+          c: ["3 continents", "Afrique, Arabie, Asie"],
+          p: "Depuis les ports de la côte orientale, des captifs sont embarqués vers l’Arabie, le golfe Persique et l’Inde, puis vers les plantations des îles de l’océan Indien." },
+        { k: "o", d: "XVe → XIXe s.", l: "Golfe de Guinée, Atlantique", t: "La traite atlantique", i: "h-traite-atlantique", h: 1,
+          c: ["≈ 12,5 millions", "de personnes embarquées vers les Amériques"],
+          p: "Depuis les forts de la côte, des captifs enchaînés sont embarqués vers les plantations des Amériques. Selon les recensements des historiens des navires négriers, environ 12,5 millions de personnes ont été embarquées, et près de 2 millions sont mortes pendant la traversée.",
+          q: "Une économie peut produire beaucoup de richesse et détruire des vies en même temps. Toute question d’argent est aussi une question de dignité." }
+      ] },
+    { t: "Les économies coloniales", per: "1880 → 1945", i: "",
+      p: "Mines, plantations, ports : l’économie est organisée pour exporter. Les Africains résistent, s’adaptent, inventent.",
+      a: [],
+      e: [
+        { k: "o", d: "Fin XIXe → XXe s.", l: "Mines, plantations, ports", t: "Le rail va au port", i: "h-rail-port", h: 1,
+          c: ["1 sens", "de la mine vers le port"],
           p: "Travail forcé, impôt par tête, cultures imposées : beaucoup de voies ferrées relient les mines et les plantations aux ports, plutôt que les villes africaines entre elles.",
           q: "Une infrastructure peut développer la production et organiser l’extraction en même temps. Qui choisit le tracé, et qui en profite ?" },
-        { k: "f", ini: "FA", i: "h-femmes-aba", h: 1, nom: "Les femmes d’Aba", d: "1929", l: "Sud-Est du Nigeria", role: "Une résistance économique",
-          p: "Des milliers de femmes se soulèvent contre un impôt colonial qu’elles jugent injuste et contre les chefs nommés par l’administration. L’une des grandes résistances de l’époque coloniale." }
+        { k: "f", ini: "FA", i: "h-femmes-aba", h: 1, nom: "Les femmes d’Aba", d: "1929", y: 1929, l: "Sud-Est du Nigeria", role: "Une résistance économique",
+          p: "Des milliers de femmes se soulèvent contre un impôt colonial qu’elles jugent injuste et contre les chefs nommés par l’administration. L’une des grandes résistances de l’époque coloniale." },
+        { k: "o", d: "26 décembre 1945", y: 1945, l: "Afrique de l’Ouest et centrale", t: "Naissance du franc CFA", i: "h-cfa-1945", h: 2,
+          c: ["2", "monnaies aujourd’hui : BCEAO et BEAC"],
+          p: "Aujourd’hui, deux monnaies distinctes : celle de la BCEAO pour huit pays d’Afrique de l’Ouest, celle de la BEAC pour six pays d’Afrique centrale, toutes deux liées à l’euro : <b>1 € = 655,957 F</b>." }
       ] },
-    { t: "Les indépendances", st: "Construire une économie nationale", i: "h-independances", h: 2,
-      p: "Un pays neuf doit tout choisir à la fois, avec un budget limité.",
+    { t: "Les indépendances", per: "1956 → 1960", i: "h-independances", h: 2,
+      p: "Un pays neuf doit tout choisir à la fois, avec un budget limité, dans un monde où le commerce s’accélère.",
+      a: [["Jouer à Public ou privé", "#borne-pp"]],
       e: [
-        { k: "o", d: "1960", l: "Afrique", t: "L’année des indépendances", i: "h-1960", h: 2,
-          p: "Dix-sept pays africains deviennent indépendants cette année-là. Écoles ou routes ? Usines ou importations ? Entreprises publiques, privées ou coopératives ? Chaque pays trace sa trajectoire, avec ses réussites et ses difficultés." },
-        { k: "o", d: "Toujours", l: "Le budget de l’État", t: "Prélever pour investir", i: "h-investir", h: 2,
-          p: "Impôts, taxes, emprunts : l’argent public devient route, école, centre de santé. Et la dette d’aujourd’hui se rembourse avec les impôts de demain." },
-        { k: "d", t: "À vous : public ou privé ?", p: "Huit services du quotidien. Qui les produit : l’État, une entreprise, ou les deux ?",
-          a: [["Jouer à Public ou privé", "#borne-pp"]] }
+        { k: "o", d: "1956", y: 1956, l: "États-Unis, puis le monde", t: "La boîte qui change le commerce", i: "p-conteneur", h: 2,
+          c: ["× 6", "le commerce par la mer entre 1965 et 2015"],
+          p: "Le conteneur passe du camion au train et au bateau sans être déchargé. Les coûts chutent, les volumes explosent : Abidjan, Lomé, Tema et Dakar deviennent des portes du monde." },
+        { k: "o", d: "1959", y: 1959, l: "Dakar", t: "La BCEAO", i: "h-bceao", h: 2,
+          c: ["1 à 3 %", "d’inflation visée chaque année"],
+          p: "La banque centrale commune des États d’Afrique de l’Ouest. Sa mission première : garder la valeur de la monnaie." },
+        { k: "o", d: "1960", y: 1960, l: "Afrique", t: "L’année des indépendances", i: "h-1960", h: 2,
+          c: ["17", "pays indépendants en une seule année"],
+          p: "Écoles ou routes ? Usines ou importations ? Entreprises publiques, privées ou coopératives ? Chaque pays trace sa trajectoire, avec ses réussites et ses difficultés." },
+        { k: "o", d: "Depuis", l: "Le budget de l’État", t: "Prélever pour investir", i: "h-investir", h: 2,
+          p: "Impôts, taxes, emprunts : l’argent public devient route, école, centre de santé. Et la dette d’aujourd’hui se rembourse avec les impôts de demain." }
       ] },
-    { t: "Monnaies, dette et crises", st: "Ce qui fait l’actualité", i: "h-monnaies-crises", h: 2,
-      p: "Banques centrales, change, inflation, dette en devises : la salle qui explique les journaux.",
-      e: [
-        { k: "o", d: "1945", l: "Afrique de l’Ouest et centrale", t: "Naissance du franc CFA", i: "h-cfa-1945", h: 2,
-          p: "Le 26 décembre 1945. Aujourd’hui, deux monnaies distinctes : celle de la BCEAO pour huit pays d’Afrique de l’Ouest, celle de la BEAC pour six pays d’Afrique centrale." },
-        { k: "o", d: "1959", l: "Dakar", t: "La BCEAO", i: "h-bceao", h: 2,
-          p: "La banque centrale commune des États d’Afrique de l’Ouest. Sa mission première : garder la valeur de la monnaie, en visant une inflation entre 1 et 3 % par an." },
-        { k: "o", d: "Années 1980", l: "Le continent", t: "La dette et l’ajustement", i: "h-ajustement", h: 2,
-          p: "Prix des matières premières en baisse, dettes en devises qui pèsent : beaucoup d’États réduisent leurs dépenses, privatisent et réforment, avec des effets durs sur les salaires et les services." },
-        { k: "o", d: "1994", l: "Zone franc", t: "La dévaluation", i: "h-devaluation", h: 2,
-          p: "Le 12 janvier, le franc CFA perd la moitié de sa valeur face au franc français. Les produits importés coûtent soudain deux fois plus cher : <b>le même panier se vide</b>." },
-        { k: "d", t: "À vous : s’endetter jusqu’où ?", p: "Six mois du budget de Mariam. Chaque mois, une décision : moto à crédit, prêt facile, rentrée scolaire.",
-          a: [["Jouer à S’endetter jusqu’où", "#borne-dette"]] }
-      ] },
-    { t: "L’économie qui fait vivre les familles", st: "Marchés, tontines, diaspora", i: "h-famille", h: 2,
+    { t: "Marchés et familles", per: "Années 1960 → aujourd’hui", i: "h-famille", h: 2,
       p: "Le cœur de l’économie africaine bat au marché, dans la tontine et dans les transferts de la famille.",
+      a: [["Comprendre la tontine", "tontine.html?src=musee"], ["Séparer les poches", "separer-les-poches.html?src=musee"], ["Ce que vaut votre temps", "#borne-temps"]],
       e: [
         { k: "f", ini: "NB", i: "h-nana-benz", h: 1, nom: "Les Nana Benz", d: "Années 1960–1970", l: "Lomé", role: "Commerçantes de pagnes wax",
           p: "Des femmes du grand marché de Lomé bâtissent de véritables maisons de commerce. Si prospères qu’on les surnomme d’après leurs Mercedes-Benz, elles font crédit, financent et forment toute une génération de revendeuses." },
-        { k: "o", d: "Chez nous", l: "Le cercle de confiance", t: "La tontine", i: "h-tontine", h: 2,
+        { k: "o", d: "Chaque mois", l: "Le cercle de confiance", t: "La tontine", i: "h-tontine", h: 2,
+          c: ["n × cotisation", "ce que chacun reçoit à son tour"],
           p: "Elle peut lisser les dépenses, financer un projet ou constituer une réserve : tout dépend de ses règles. Elle tient, comme la monnaie, sur la confiance du groupe." },
         { k: "o", d: "Chaque soir", l: "Au marché", t: "Séparer les poches", i: "h-poches", h: 2,
+          c: ["3", "poches : l’activité, le confié, le mien"],
           p: "Revenus irréguliers, argent de la maison mêlé à celui de l’activité : un simple cahier de recettes change tout. Et le travail fait à la maison, lui, n’est compté nulle part." },
         { k: "o", d: "Chaque mois", l: "Paris, Montréal, Abidjan", t: "La diaspora", i: "h-diaspora", h: 2,
-          p: "Les transferts des parents installés à l’étranger pèsent lourd dans le revenu de nombreuses familles. Bien utilisés, ils construisent ; mal organisés, ils s’évaporent." },
-        { k: "d", t: "À vous : votre tontine", p: "Comment elle marche, ce qu’elle rapporte, et comment en garder une part.",
-          a: [["Comprendre la tontine", "tontine.html?src=musee"], ["Ce que vaut votre temps", "#borne-temps"]] }
+          p: "Les transferts des parents installés à l’étranger pèsent lourd dans le revenu de nombreuses familles. Bien utilisés, ils construisent ; mal organisés, ils s’évaporent." }
       ] },
-    { t: "Transformer sur place", st: "Où se crée la valeur ?", i: "h-chocolaterie", h: 2,
-      p: "Posséder une ressource ne suffit pas : la valeur se crée surtout en la transformant.",
-      e: [
-        { k: "o", d: "Aujourd’hui", l: "Côte d’Ivoire et Ghana", t: "La fève et la tablette", i: "h-cacao", h: 2,
-          p: "Les deux pays produisent ensemble plus de la moitié du cacao mondial. Mais l’essentiel du prix d’une tablette se crée après la fève : broyage, chocolaterie, marque, distribution." },
-        { k: "o", d: "Pour réussir", l: "L’atelier, l’usine", t: "Transformer exige", i: "h-atelier", h: 2,
-          p: "Des compétences, de l’énergie, des machines, des clients et un prix compétitif. Et le prix de vente n’est pas le bénéfice : il faut d’abord payer tout le reste." },
-        { k: "d", t: "À vous : l’entrepreneur stratège", p: "Six semaines face à un concurrent : baisser les prix ou améliorer la qualité ?",
-          a: [["Jouer à L’entrepreneur stratège", "#borne-strat"]] }
-      ] },
-    { t: "Les bâtisseurs", st: "Leurs équipes et leurs institutions", i: "h-batisseurs", h: 2,
+    { t: "Les bâtisseurs", per: "1978 →", i: "h-batisseurs", h: 2,
       p: "Derrière chaque grande entreprise : un besoin, un premier financement, des salariés, des fournisseurs, des règles.",
+      a: [["Voir les capitaines d’industrie", "bibliotheque.html?src=musee#capitaines"]],
       e: [
-        { k: "f", ini: "KD", i: "h-dossongui", h: 3, nom: "Koné Dossongui", d: "1978", l: "Abidjan", role: "Banquier et industriel ivoirien",
+        { k: "f", ini: "KD", i: "h-dossongui", h: 3, nom: "Koné Dossongui", d: "1978", y: 1978, l: "Abidjan", role: "Banquier et industriel ivoirien",
           p: "Il prend 1 % du capital de ce qui deviendra la Banque Atlantique, puis bâtit un groupe de la banque aux mines.",
           q: "« Si tu t’y mets, les 1 % deviennent 90 %. » — Entretien avec Forbes Afrique, 2026" },
         { k: "o", d: "Douze parcours", l: "De Lagos à Addis-Abeba", t: "Les capitaines d’industrie", i: "h-usine-equipe", h: 2,
-          p: "Dangote, Elumelu, Dossongui, Mwangi, Masiyiwa, Alemu… Leur pensée, ce qu’ils ont apporté, et ce qu’on en retient pour son argent : des modèles et des parcours dont on peut s’inspirer." },
-        { k: "d", t: "À vous : leurs parcours", p: "Douze portraits dans la bibliothèque EFA.",
-          a: [["Voir les capitaines d’industrie", "bibliotheque.html?src=musee#capitaines"]] }
+          c: ["12", "portraits dans la bibliothèque EFA"],
+          p: "Dangote, Elumelu, Dossongui, Mwangi, Masiyiwa, Alemu… Leur pensée et ce qu’ils ont apporté : des modèles et des parcours dont on peut s’inspirer." }
       ] },
-    { t: "Le téléphone, outil économique", st: "Payer, envoyer, épargner", i: "h-antenne", h: 2,
-      p: "Réseaux, agents, paiements : en vingt ans, le téléphone est devenu une banque de poche.",
+    { t: "Dette et crises", per: "1980 → 1994", i: "h-monnaies-crises", h: 2,
+      p: "Matières premières en baisse, dettes en devises, monnaie dévaluée : la salle qui explique les journaux.",
+      a: [["Jouer à S’endetter jusqu’où", "#borne-dette"], ["Le coût total d’un crédit", "cout-total-credit.html?src=musee"]],
       e: [
-        { k: "o", d: "2007", l: "Kenya", t: "Le téléphone devient un porte-monnaie", i: "h-agent-mm", h: 2,
-          p: "Le mobile money se lance au Kenya en mars 2007, puis gagne le continent. Un solde sur un téléphone est, lui aussi, de la monnaie." },
-        { k: "o", d: "Chaque jour", l: "Dans votre poche", t: "Frais, agents, fraudes", i: "h-frais", h: 2,
-          p: "Chaque transfert passe par un expéditeur, un réseau, un agent et un bénéficiaire. À chaque étape : un frais possible, un risque possible." },
-        { k: "d", t: "À vous : votre budget mobile", p: "Combien vous coûtent vraiment vos transferts, et comment éviter les arnaques.",
-          a: [["Budget et mobile money", "budget-mobile-money.html?src=musee"]] }
+        { k: "o", d: "Années 1980", l: "Le continent", t: "La dette et l’ajustement", i: "h-ajustement", h: 2,
+          p: "Prix des matières premières en baisse, dettes en devises qui pèsent : beaucoup d’États réduisent leurs dépenses, privatisent et réforment, avec des effets durs sur les salaires et les services." },
+        { k: "o", d: "12 janvier 1994", y: 1994, l: "Zone franc", t: "La dévaluation", i: "h-devaluation", h: 2,
+          c: ["− 50 %", "de valeur en une nuit"],
+          p: "Le franc CFA perd la moitié de sa valeur face au franc français. Les produits importés coûtent soudain deux fois plus cher : <b>le même panier se vide</b>." }
       ] },
-    { t: "De l’épargne au capital", st: "Comment financer une grande entreprise ?", i: "h-conseil", h: 2,
+    { t: "De l’épargne au capital", per: "1998 →", i: "h-conseil", h: 2,
       p: "Autofinancement, prêt, obligation, action : quatre façons de financer, quatre façons de partager le risque.",
+      a: [["Jouer au banquier", "#borne-banquier"], ["Suis-je prêt à investir ?", "bourse-essentiel.html?src=musee#A1"]],
       e: [
-        { k: "o", d: "1998", l: "Abidjan", t: "La BRVM ouvre", i: "h-brvm-1998", h: 2,
+        { k: "o", d: "1998", y: 1998, l: "Abidjan", t: "La BRVM ouvre", i: "h-brvm-1998", h: 2,
+          c: ["8", "pays, une seule Bourse"],
           p: "La Bourse régionale des huit pays de l’UEMOA. Chacun peut devenir copropriétaire d’entreprises de la région, et recevoir une part de leurs bénéfices." },
         { k: "o", d: "La différence clé", l: "Marché primaire, marché secondaire", t: "Qui reçoit votre argent ?", i: "musee-coffret",
-          p: "Acheter une action <b>nouvellement émise</b> finance l’entreprise. Acheter une action <b>existante</b> paie celui qui la vend. Dividende, plus-value, perte : l’actionnaire partage le risque." },
-        { k: "d", t: "À vous : dans la peau d’un banquier", p: "Huit demandes de prêt, 100 millions de fonds propres : financer sans mettre la banque en danger.",
-          a: [["Jouer au banquier", "#borne-banquier"], ["Suis-je prêt à investir ?", "bourse-essentiel.html?src=musee#A1"]] }
+          p: "Acheter une action <b>nouvellement émise</b> finance l’entreprise. Acheter une action <b>existante</b> paie celui qui la vend. Dividende, plus-value, perte : l’actionnaire partage le risque." }
       ] },
-    { t: "Dangote, du projet industriel à l’ouverture du capital", st: "La grande étude de cas", i: "h-dangote-plans", h: 2,
-      p: "Une raffinerie pour arrêter d’importer l’essence, puis des actions proposées au public : toute la balade en un cas.",
+    { t: "Le téléphone, outil économique", per: "2007 →", i: "h-antenne", h: 2,
+      p: "Réseaux, agents, paiements : en vingt ans, le téléphone est devenu une banque de poche.",
+      a: [["Budget et mobile money", "budget-mobile-money.html?src=musee"]],
       e: [
-        { k: "o", d: "2010", l: "Lagos", t: "Le ciment entre en Bourse", i: "h-cimenterie", h: 2,
+        { k: "o", d: "Mars 2007", y: 2007, l: "Kenya", t: "Le téléphone devient un porte-monnaie", i: "h-agent-mm", h: 2,
+          p: "Le mobile money se lance au Kenya, puis gagne le continent. Un solde sur un téléphone est, lui aussi, de la monnaie." },
+        { k: "o", d: "Chaque jour", l: "Dans votre poche", t: "Frais, agents, fraudes", i: "h-frais", h: 2,
+          c: ["4", "étapes, et à chacune un frais possible"],
+          p: "Chaque transfert passe par un expéditeur, un réseau, un agent et un bénéficiaire. À chaque étape : un frais possible, un risque possible." }
+      ] },
+    { t: "Transformer, puis ouvrir le capital", per: "2010 → 2026", i: "h-dangote-plans", h: 2,
+      p: "Transformer sur place ce que le continent produit, puis proposer au public une part de l’entreprise : toute la balade en un cas.",
+      a: [["Suivre l’actualité dans EFA News", "news.html?src=musee"], ["Les capitaines d’industrie", "bibliotheque.html?src=musee#capitaines"]],
+      e: [
+        { k: "o", d: "Aujourd’hui", l: "Côte d’Ivoire et Ghana", t: "La fève et la tablette", i: "h-cacao", h: 2,
+          c: ["> 50 %", "du cacao mondial, dans deux pays"],
+          p: "Mais l’essentiel du prix d’une tablette se crée après la fève : broyage, chocolaterie, marque, distribution." },
+        { k: "o", d: "Pour réussir", l: "L’atelier, l’usine", t: "Transformer exige", i: "h-atelier", h: 2,
+          c: ["Prix − coûts", "= bénéfice, jamais le prix seul"],
+          p: "Des compétences, de l’énergie, des machines, des clients et un prix compétitif. Et le prix de vente n’est pas le bénéfice : il faut d’abord payer tout le reste." },
+        { k: "o", d: "2010", y: 2010, l: "Lagos", t: "Le ciment entre en Bourse", i: "h-cimenterie", h: 2,
           p: "Dangote Cement est cotée à la Bourse de Lagos depuis 2010. Le groupe a d’abord grandi en produisant au Nigeria ce que le pays importait." },
-        { k: "o", d: "2023", l: "Lekki, Lagos", t: "La raffinerie démarre", i: "h-raffinerie", h: 2,
-          p: "Une raffinerie prévue pour 650 000 barils par jour. Ses résultats dépendent du prix du pétrole brut, de l’énergie, de la maintenance et de ses clients." },
-        { k: "o", d: "14 sept.–27 oct. 2026", l: "Lagos", t: "L’offre au public", i: "h-offre", h: 2,
-          p: "4,1 milliards d’actions proposées à 525 nairas, soit environ 2 150 milliards de nairas si tout est souscrit. L’offre, prolongée de deux semaines, a fermé le 27 octobre. Au 28 octobre, l’attribution et la cotation restent à venir.",
-          q: "Le prix d’une action n’est pas la valeur de toute l’entreprise. Aucun rendement n’est garanti." },
-        { k: "d", t: "La question de sortie", p: "Que change le fait que davantage d’Africains puissent posséder une part des entreprises qui transforment leur continent ?",
-          a: [["Suivre l’actualité dans EFA News", "news.html?src=musee"]] }
+        { k: "o", d: "2023", y: 2023, l: "Lekki, Lagos", t: "La raffinerie démarre", i: "h-raffinerie", h: 2,
+          c: ["650 000", "barils par jour prévus"],
+          p: "Ses résultats dépendent du prix du pétrole brut, de l’énergie, de la maintenance et de ses clients." },
+        { k: "o", d: "14 sept. → 27 oct. 2026", y: 2026, l: "Lagos", t: "L’offre au public", i: "h-offre", h: 2,
+          c: ["4,1 Md × 525 ₦", "≈ 2 150 milliards de nairas"],
+          p: "4,1 milliards d’actions proposées à 525 nairas. L’offre, prolongée de deux semaines, a fermé le 27 octobre. Au 28 octobre, l’attribution et la cotation restent à venir.",
+          q: "Le prix d’une action n’est pas la valeur de toute l’entreprise. Aucun rendement n’est garanti." }
       ] }
   ];
   var ACCUEIL = { t: "Le musée de l’économie", i: "h-accueil",
-    p: "Qui crée la richesse en Afrique, qui la finance, et qui en garde la valeur ? Douze salles, de la vallée du Nil à la Bourse de Lagos." };
+    p: "Qui crée la richesse en Afrique, qui la finance, et qui en garde la valeur ? Dix mille ans, douze salles, dans l’ordre du temps : de la vallée du Nil à la Bourse de Lagos." };
   var SORTIE = { d: "Et demain ?", l: "Le continent", t: "Du cercle à la spirale", i: "h-equipe", h: 2,
-    p: "Commerce continental, ouvert depuis janvier 2021 avec la ZLECAf, énergie, villes, emploi : la salle suivante reste à écrire." };
+    p: "Commerce continental, ouvert depuis janvier 2021 avec la ZLECAf, énergie, villes, emploi : la salle suivante reste à écrire. Que change le fait que davantage d’Africains possèdent une part des entreprises qui transforment leur continent ?" };
+  var QUIZ = [
+    ["Que permet d’abord l’agriculture, vers −8500 ?", ["Le surplus", "La monnaie", "La Bourse"], 0, "Ce qui n’est pas consommé peut se garder ou s’échanger : c’est le surplus."],
+    ["Pourquoi l’or de Mansa Moussa a-t-il perdu de sa valeur au Caire ?", ["Il était faux", "Trop d’or est arrivé d’un coup", "Le sel valait plus"], 1, "Plus une chose est abondante, moins elle vaut : c’est le mécanisme de l’inflation."],
+    ["Combien de personnes ont été embarquées par la traite atlantique, selon les historiens ?", ["Environ 1,2 million", "Environ 12,5 millions", "Environ 125 millions"], 1, "Environ 12,5 millions de personnes, dont près de 2 millions sont mortes pendant la traversée."],
+    ["En 1994, de combien le franc CFA a-t-il été dévalué ?", ["De 10 %", "De moitié", "Des trois quarts"], 1, "Le 12 janvier 1994, il perd 50 % de sa valeur face au franc français."],
+    ["Acheter une action existante à la Bourse…", ["Finance directement l’entreprise", "Paie celui qui la vend", "Garantit un rendement"], 1, "Seule une action nouvellement émise finance l’entreprise. Aucun rendement n’est garanti."]
+  ];
 
   /* ---------- la liste des étapes ---------- */
   var E = [{ k: "a", s: -1 }];
   SALLES.forEach(function (S, si) { E.push({ k: "s", s: si }); S.e.forEach(function (x) { x.s = si; E.push(x); }); });
-  E.push({ k: "z", s: SALLES.length });
+  E.push({ k: "z", s: SALLES.length }, { k: "pp", s: SALLES.length }, { k: "qz", s: SALLES.length }, { k: "av", s: SALLES.length });
+  var KPP = E.length - 3, KAV = E.length - 1, AN = 2026;
 
   var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false;
   function esc(t) { return String(t == null ? "" : t).replace(/ ([?!:;»%])/g, "\u00a0$1").replace(/« /g, "«\u00a0").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -164,20 +195,24 @@
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
   function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 3 ? 'Portrait · IA' : 'Illustration · IA') + '</span>' : '') + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
+  function chiffre(x) { return (x.c ? '<p class="mu-c"><b>' + esc(x.c[0]) + '</b><span>' + esc(x.c[1]) + '</span></p>' : '') + (typeof x.y === 'number' ? '<p class="mu-ilya">Il y a ' + (AN - x.y).toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g, '\u00a0') + ' ans</p>' : ''); }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
   function etapeHtml(x) {
     if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i) + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p><p style="font-size:15px">Touchez le <b>bord droit</b> pour avancer, le <b>bord gauche</b> pour revenir, ou ouvrez le <b>plan</b> en haut.</p><p style="font-size:14px">Une idée de Pacôme Kipré, dit Peck Peckisblackman.</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
-      return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p class="mu-q"><small>Votre passeport du musée</small><span class="mu-tampons" id="mu-tampons">' + t + '</span></p><div class="mu-act"><button type="button" data-mu-salles>Entrer dans les six salles de la balade</button><button type="button" class="l" data-mu-debut>Revoir le musée</button></div><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui. Offre Dangote : annonces publiques de septembre et octobre 2026.</p></div></div>';
+      return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p></div></div>';
     }
+    if (x.k === "pp") return '<div class="mu-etape s dz pp"><div class="mu-txt" style="align-self:center"><p class="mu-lieu" style="background:#DA3C1B">Votre passeport du musée</p><h2>Douze salles, douze portes</h2><p>Touchez le numéro d’une salle pour prolonger la visite par un jeu ou une leçon. Vous revenez ensuite au musée, ici même.</p><div class="mu-tampons" id="mu-tampons"></div><div id="mu-pro" class="mu-pro" aria-live="polite"></div><div class="mu-act" style="justify-content:center"><button type="button" class="l" data-mu-salles>Voir la balade en six salles</button><button type="button" class="l" data-mu-debut>Revoir le musée</button></div></div></div>';
+    if (x.k === "qz") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><p class="mu-lieu" style="background:#DA3C1B">Le quiz du musée · 5 questions</p><div id="mu-quiz"></div></div></div>';
+    if (x.k === "av") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><p class="mu-lieu" style="background:#DA3C1B">Votre avis</p><h2>Qu’avez-vous ressenti ?</h2><p>Une salle qui vous a marqué, une erreur à corriger, une salle à ajouter : vos mots aident à faire grandir le musée.</p><form id="mu-avis" class="mu-form"><label>Votre message<textarea id="mu-av-t" rows="4" maxlength="1500" required></textarea></label><label>Votre email <small>(facultatif, pour une réponse)</small><input id="mu-av-m" type="email" maxlength="120"></label><input type="checkbox" name="botcheck" class="mu-bot" tabindex="-1" aria-hidden="true"><div class="mu-act" style="justify-content:center"><button type="submit">Envoyer mon avis</button><a class="l" href="rendez-vous.html?src=musee#contact" data-mu-lien>Nous écrire</a></div><p id="mu-av-r" class="mu-ilya" role="status"></p></form></div></div>';
     var S = SALLES[x.s];
-    if (x.k === "s") return '<div class="mu-etape s">' + (S.sombre ? "" : cadre(S.i, 0, S.h)) + '<div class="mu-txt"' + (S.sombre ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.st) + "</span><p>" + esc(S.p) + "</p></div></div>";
-    if (x.k === "f") return '<div class="mu-etape' + (x.i ? ' fi' : ' f') + '">' + (x.i ? cadre(x.i, 0, x.h) : '<div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div>') + '<div class="mu-txt">' + (x.i ? '<div class="mu-date">' + esc(x.d) + '</div>' : '') + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
-    if (x.k === "n") return '<div class="mu-etape n"><div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + x.p + "</p></div></div>";
+    if (x.k === "s") return '<div class="mu-etape s">' + (!S.i ? "" : cadre(S.i, 0, S.h)) + '<div class="mu-txt"' + (!S.i ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.per) + "</span><p>" + esc(S.p) + "</p></div></div>";
+    if (x.k === "f") return '<div class="mu-etape' + (x.i ? ' fi' : ' f') + '">' + (x.i ? cadre(x.i, 0, x.h) : '<div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div>') + '<div class="mu-txt">' + (x.i ? '<div class="mu-date">' + esc(x.d) + '</div>' + chiffre(x) : '') + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
+    if (x.k === "n") return '<div class="mu-etape n"><div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
     if (x.k === "d") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><span class="mu-num" style="width:auto;padding:0 18px;border-radius:999px;font:800 13px/40px Source Sans\\ 3,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;height:40px">À vous de décider</span><h2>' + esc(x.t) + "</h2><p>" + esc(x.p) + "</p>" + actions(x.a) + "</div></div>";
-    return '<div class="mu-etape">' + cadre(x.i, x.port, x.h) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
+    return '<div class="mu-etape">' + cadre(x.i, x.port, x.h) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div>' + chiffre(x) + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
   }
 
   function construire() {
@@ -192,10 +227,11 @@
     SC = document.getElementById("mu-scene");
     var h = ""; E.forEach(function (x, k) { h += etapeHtml(x).replace('<div class="mu-etape', '<div data-k="' + k + '" class="mu-etape'); });
     SC.insertAdjacentHTML("beforeend", h);
+    avis();
     // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
     SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (im.naturalWidth) { var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
     // le plan
-    document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.st) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
+    document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.per) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
     // commandes
     var $ = function (id) { return document.getElementById(id); };
     $("mu-g").onclick = function () { aller(cur - 1); }; $("mu-d").onclick = function () { aller(cur + 1); };
@@ -212,7 +248,10 @@
       var a = e.target.closest("[data-mu-lien]"), sa = e.target.closest("[data-mu-salles]"), de = e.target.closest("[data-mu-debut]");
       if (de) { aller(0); return; }
       if (sa) { fermer(); setTimeout(function () { var x = document.getElementById("echanger"); if (x) x.scrollIntoView({ behavior: "smooth" }); }, 60); return; }
-      if (a) { var hr = a.getAttribute("href"); compte("musee-lien-" + hr.replace(/[^a-z0-9]+/gi, "-").slice(0, 40)); if (hr.charAt(0) === "#") { e.preventDefault(); fermer(); setTimeout(function () { var x = document.querySelector(hr); if (x) x.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); } else if (au) au.pause(); }
+      var tb = e.target.closest("[data-sal]");
+      if (tb) { var S2 = SALLES[+tb.dataset.sal]; document.querySelectorAll("#mu-tampons button").forEach(function (b) { b.classList.toggle("c", b === tb); });
+        document.getElementById("mu-pro").innerHTML = '<p class="mu-pro-t">Salle ' + (+tb.dataset.sal + 1) + ' · ' + esc(S2.t) + ' · ' + esc(S2.per) + '</p>' + (S2.a && S2.a.length ? '<div class="mu-act" style="justify-content:center">' + S2.a.map(function (y) { return '<a href="' + y[1] + '" data-mu-lien>' + esc(y[0]) + ' ›</a>'; }).join("") + "</div>" : '<p>Une salle de mémoire : elle se visite, elle ne se joue pas.</p>'); compte("musee-passeport-" + (+tb.dataset.sal + 1)); return; }
+      if (a) { try { sessionStorage.setItem("efa_musee_retour", "1"); } catch (z) {} var hr = a.getAttribute("href"); compte("musee-lien-" + hr.replace(/[^a-z0-9]+/gi, "-").slice(0, 40)); if (hr.charAt(0) === "#") { e.preventDefault(); fermer(); retourVisible(); setTimeout(function () { var x = document.querySelector(hr); if (x) x.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60); } else if (au) au.pause(); }
     });
     // glisser : à gauche ou vers le haut pour avancer
     var x0 = null, y0 = null;
@@ -229,6 +268,29 @@
     });
     window.addEventListener("popstate", function () { if (!M.hidden && location.hash !== "#musee") fermer(true); });
   }
+  function quiz() {
+    var Z = document.getElementById("mu-quiz"), i = 0, bon = 0;
+    function poser() {
+      if (i >= QUIZ.length) { Z.innerHTML = '<h2>' + bon + ' sur ' + QUIZ.length + '</h2><p>' + (bon >= 4 ? 'Vous avez retenu l’essentiel des dix mille ans du musée.' : 'Revoyez une salle depuis le plan, puis retentez votre chance.') + '</p><div class="mu-act" style="justify-content:center"><button type="button" class="l" id="mu-qz-r">Recommencer</button></div>'; document.getElementById("mu-qz-r").onclick = function () { i = 0; bon = 0; poser(); }; compte("musee-quiz-" + bon); return; }
+      var Q = QUIZ[i];
+      Z.innerHTML = '<p class="mu-ilya">Question ' + (i + 1) + ' sur ' + QUIZ.length + '</p><h2 class="mu-qq">' + esc(Q[0]) + '</h2><div class="mu-choix">' + Q[1].map(function (o, j) { return '<button type="button" data-j="' + j + '">' + esc(o) + '</button>'; }).join("") + '</div><div id="mu-qz-o"></div>';
+      Z.querySelectorAll(".mu-choix button").forEach(function (b) { b.onclick = function () { var ok = +b.dataset.j === Q[2]; if (ok) bon++;
+        Z.querySelectorAll(".mu-choix button").forEach(function (c) { c.disabled = true; if (+c.dataset.j === Q[2]) c.classList.add("ok"); else if (c === b) c.classList.add("ko"); });
+        document.getElementById("mu-qz-o").innerHTML = '<p>' + esc(Q[3]) + '</p><div class="mu-act" style="justify-content:center"><button type="button" id="mu-qz-n">' + (i + 1 < QUIZ.length ? "Question suivante" : "Voir mon score") + '</button></div>';
+        document.getElementById("mu-qz-n").onclick = function () { i++; poser(); }; }; });
+    }
+    poser();
+  }
+  function avis() {
+    var f = document.getElementById("mu-avis"); if (!f) return;
+    f.onsubmit = function (e) { e.preventDefault(); var t = document.getElementById("mu-av-t").value.trim(), m = document.getElementById("mu-av-m").value.trim(), r = document.getElementById("mu-av-r");
+      if (t.length < 3) { r.textContent = "Écrivez quelques mots."; return; } if (f.querySelector(".mu-bot").checked) return;
+      r.textContent = "Envoi…";
+      fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ access_key: "426191fb-4812-4de4-b602-5857464c5916", subject: "efa.africa · Avis sur le musée de l’économie", from_name: "Musée EFA", email: m || "musee@efa.africa", message: t }) })
+        .then(function (x) { return x.json(); }).then(function (j) { if (j && j.success) { r.textContent = "Merci, votre avis est bien arrivé."; f.reset(); compte("musee-avis-envoye"); } else r.textContent = "L’envoi n’a pas abouti. Réessayez, ou écrivez à newsletter@efa.africa."; }, function () { r.textContent = "L’envoi n’a pas abouti. Réessayez, ou écrivez à newsletter@efa.africa."; });
+    };
+  }
+  function retourVisible() { var f = document.getElementById("musee-flot"); if (f) { f.innerHTML = "<i>◀</i> Revenir au musée"; f.classList.add("vu"); f.dataset.retour = "1"; } }
   function majSon() { var b = document.getElementById("mu-son"); b.innerHTML = son ? "♪<span class=\"t\"> Son</span>" : "<s>♪</s><span class=\"t\"> Muet</span>"; b.setAttribute("aria-pressed", son); b.setAttribute("aria-label", son ? "Couper la musique" : "Remettre la musique"); }
   function jouer() { if (!son) return; try { if (!au) { au = new Audio("demo-musique.mp3"); au.loop = true; au.volume = 0.5; } var p = au.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
   function majPlan() { document.querySelectorAll("#mu-plan-l li").forEach(function (li) { var s = +li.dataset.s; li.classList.toggle("ok", !!vus[s]); li.classList.toggle("c", E[cur].s === s); }); }
@@ -240,23 +302,25 @@
     if (s >= 0 && s < SALLES.length) { vus[s] = 1; try { localStorage.setItem("efa_musee_vus", JSON.stringify(vus)); } catch (e) {} }
     // progression : une barre par salle, remplie selon l'étape
     document.querySelectorAll("#mu-prog i").forEach(function (b, i) {
-      var w = 0; if (i < s || x.k === "z") w = 100; else if (i === s) { var tot = SALLES[i].e.length + 1, pos = x.k === "s" ? 1 : SALLES[i].e.indexOf(x) + 2; w = Math.round(100 * pos / tot); }
+      var w = 0; if (i < s || s >= SALLES.length) w = 100; else if (i === s) { var tot = SALLES[i].e.length + 1, pos = x.k === "s" ? 1 : SALLES[i].e.indexOf(x) + 2; w = Math.round(100 * pos / tot); }
       b.firstChild.style.width = w + "%"; b.classList.toggle("c", i === s);
     });
-    document.getElementById("mu-salle").innerHTML = x.k === "a" ? "<b>Bienvenue</b> · Musée de l’économie" : x.k === "z" ? "<b>Sortie</b> · Votre passeport" : "<b>Salle " + (s + 1) + "/12</b> · " + esc(SALLES[s].t);
+    document.getElementById("mu-salle").innerHTML = x.k === "a" ? "<b>Bienvenue</b> · Musée de l’économie" : s >= SALLES.length ? "<b>Sortie</b> · " + ({ z: "Et demain ?", pp: "Votre passeport", qz: "Le quiz du musée", av: "Votre avis" })[x.k] : "<b>Salle " + (s + 1) + "/12</b> · " + esc(SALLES[s].t);
     document.getElementById("mu-prec").disabled = k === 0;
     document.getElementById("mu-suiv").textContent = k === E.length - 1 ? "Terminer ✓" : k === 0 ? "Commencer la visite ›" : "Suivant ›";
-    document.getElementById("mu-passe").style.visibility = (x.k === "a" || x.k === "z" || s === SALLES.length - 1 && x.k !== "s" && false) ? "hidden" : "visible";
-    if (x.k === "z") { var tp = document.getElementById("mu-tampons"); if (tp) tp.innerHTML = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join(""); compte("musee-fin"); }
+    document.getElementById("mu-passe").style.visibility = (x.k === "a" || s >= SALLES.length) ? "hidden" : "visible";
+    if (x.k === "z") compte("musee-fin");
+    if (x.k === "pp") { var tp = document.getElementById("mu-tampons"); if (tp) tp.innerHTML = SALLES.map(function (S, i) { return '<button type="button" class="' + (vus[i] ? "ok" : "") + '" data-sal="' + i + '" aria-label="Salle ' + (i + 1) + ' : ' + esc(S.t) + '">' + (i + 1) + "</button>"; }).join(""); }
+    if (x.k === "qz") quiz();
     if (k > 0 && !dejaIndice) { dejaIndice = true; var ind = document.getElementById("mu-indice"); if (ind) ind.style.opacity = 0; }
     // précharger l'image suivante
     var nx = E[k + 1]; if (nx && (nx.i || (nx.k === "s" && SALLES[nx.s] && SALLES[nx.s].i))) { var im = new Image(); im.src = img(nx.i || SALLES[nx.s].i); }
   }
-  function ouvrir(depuis) {
+  function ouvrir(depuis, k0) {
     if (!M) construire();
     try { vus = JSON.parse(localStorage.getItem("efa_musee_vus") || "{}") || {}; } catch (e) { vus = {}; }
     avant = document.activeElement; M.hidden = false; document.documentElement.classList.add("musee-ouvert");
-    aller(0); jouer();
+    aller(k0 || 0); jouer();
     if (location.hash !== "#musee") history.pushState({ musee: 1 }, "", location.pathname + location.search + "#musee");
     M.setAttribute("tabindex", "-1"); try { M.focus({ preventScroll: true }); } catch (e) {}
     compte("balade-musee-ouvert-" + (depuis || "lien"));
@@ -270,8 +334,10 @@
   function init() {
     document.querySelectorAll("[data-musee]").forEach(function (b) { b.addEventListener("click", function () { ouvrir(b.dataset.musee); }); });
     var flot = document.getElementById("musee-flot"), ref = document.querySelector(".btn-musee");
-    if (flot) { flot.addEventListener("click", function () { ouvrir("flottant"); }); if ("IntersectionObserver" in window && ref) new IntersectionObserver(function (es) { flot.classList.toggle("vu", !es[0].isIntersecting); }).observe(ref); }
-    if (location.hash === "#musee") setTimeout(function () { ouvrir("lien-direct"); }, 60);
+    if (flot) { flot.addEventListener("click", function () { if (flot.dataset.retour) { ouvrir("retour", KPP); } else ouvrir("flottant"); }); if ("IntersectionObserver" in window && ref) new IntersectionObserver(function (es) { flot.classList.toggle("vu", !es[0].isIntersecting); }).observe(ref); }
+    var ret = false; try { ret = sessionStorage.getItem("efa_musee_retour") === "1"; sessionStorage.removeItem("efa_musee_retour"); } catch (z) {}
+    if (location.hash === "#musee-fin" || (location.hash === "#musee" && ret)) setTimeout(function () { ouvrir("retour", KPP); }, 60);
+    else if (location.hash === "#musee") setTimeout(function () { ouvrir("lien-direct"); }, 60);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

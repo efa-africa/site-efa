@@ -157,3 +157,25 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 }
 .mu-cadre{position:relative}.mu-recon{position:absolute;right:16px;bottom:12px;font-size:9.5px;font-style:italic;font-weight:400;letter-spacing:.02em;color:rgba(255,255,255,.82);text-shadow:0 1px 2px rgba(0,0,0,.6);pointer-events:none}
 .mu-etape.fi .mu-txt{text-align:left}
+/* v3 : chiffre clé, recul dans le temps, passeport cliquable, quiz et avis de sortie */
+.mu-c{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:10px 0 0!important;padding:10px 14px;border-radius:12px;background:#0D1525;color:#C9D1DE!important;font-size:15px!important}
+.mu-c b{font-family:"Libre Baskerville",Georgia,serif;font-size:clamp(20px,2.6vw,28px);color:#fff;line-height:1.1}
+.mu-ilya{margin-top:6px!important;font-size:13px!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8E98AA!important}
+.mu-tampons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.mu-tampons button{width:clamp(46px,7vw,58px);height:clamp(46px,7vw,58px);border-radius:50%;border:0;cursor:pointer;font:700 clamp(16px,2.2vw,20px) "Libre Baskerville",Georgia,serif;background:rgba(255,255,255,.12);color:#C9D1DE}
+.mu-tampons button.ok{background:#DA3C1B;color:#fff}
+.mu-tampons button.c{background:#fff;color:#DA3C1B}
+.mu-pro{margin-top:16px}
+.mu-pro:empty{display:none}
+.mu-pro-t{font-weight:800;color:#fff!important;text-align:center}
+.mu-form{display:grid;gap:12px;margin-top:14px;text-align:left}
+.mu-form label{display:grid;gap:6px;font-weight:700;color:#fff;font-size:15px}
+.mu-form small{font-weight:400;color:#8E98AA}
+.mu-form textarea,.mu-form input[type=email]{font:inherit;font-size:16px;padding:11px 12px;border-radius:8px;border:0;background:#F5EFE2;color:#0B1220;width:100%}
+.mu-bot{position:absolute;left:-9999px}
+.mu-choix{display:grid;gap:8px;margin-top:14px}
+.mu-choix button{font:700 16px/1.3 "Source Sans 3",system-ui,sans-serif;text-align:left;min-height:50px;padding:12px 14px;border-radius:10px;border:0;cursor:pointer;background:rgba(255,255,255,.1);color:#fff}
+.mu-choix button.ok{background:#1E7A4C}
+.mu-choix button.ko{background:#B3261E}
+.mu-qq{font-size:clamp(20px,3.4vw,30px)!important;text-align:left}
+.mu-etape.dz .mu-txt{max-width:40em}
