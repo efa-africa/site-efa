@@ -6,10 +6,10 @@
 (function () {
   var V = "?v=2810";
   var SALLES = [
-    { t: "Avant les billets", st: "Produire, compter, conserver", i: "p-specialiser",
+    { t: "Avant les billets", st: "Produire, compter, conserver", i: "h-nil", h: 1,
       p: "Toute économie commence par se nourrir, organiser le travail et garder des réserves pour la mauvaise saison.",
       e: [
-        { k: "o", d: "−8500", l: "Vallée du Nil, Croissant fertile", t: "On produit plus qu’on ne mange", i: "p-cacao",
+        { k: "o", d: "−8500", l: "Vallée du Nil, Croissant fertile", t: "On produit plus qu’on ne mange", i: "h-surplus", h: 1,
           p: "Avec l’agriculture et l’élevage apparaît le <b>surplus</b> : ce qui n’est pas consommé peut se garder, se partager ou s’échanger." },
         { k: "o", d: "Sahel", l: "Greniers et saisons", t: "Conserver entre deux récoltes", i: "h-grenier", h: 1,
           p: "Le grenier de mil est la première assurance : il protège la famille contre une mauvaise année. Garder, c’est déjà épargner." },
@@ -118,7 +118,7 @@
       e: [
         { k: "o", d: "2007", l: "Kenya", t: "Le téléphone devient un porte-monnaie", i: "h-agent-mm", h: 2,
           p: "Le mobile money se lance au Kenya en mars 2007, puis gagne le continent. Un solde sur un téléphone est, lui aussi, de la monnaie." },
-        { k: "o", d: "Chaque jour", l: "Dans votre poche", t: "Frais, agents, fraudes", i: "cap-mwangi",
+        { k: "o", d: "Chaque jour", l: "Dans votre poche", t: "Frais, agents, fraudes", i: "h-frais", h: 2,
           p: "Chaque transfert passe par un expéditeur, un réseau, un agent et un bénéficiaire. À chaque étape : un frais possible, un risque possible." },
         { k: "d", t: "À vous : votre budget mobile", p: "Combien vous coûtent vraiment vos transferts, et comment éviter les arnaques.",
           a: [["Budget et mobile money", "budget-mobile-money.html?src=musee"]] }
@@ -126,21 +126,21 @@
     { t: "De l’épargne au capital", st: "Comment financer une grande entreprise ?", i: "h-conseil", h: 2,
       p: "Autofinancement, prêt, obligation, action : quatre façons de financer, quatre façons de partager le risque.",
       e: [
-        { k: "o", d: "1998", l: "Abidjan", t: "La BRVM ouvre", i: "p-esperance",
+        { k: "o", d: "1998", l: "Abidjan", t: "La BRVM ouvre", i: "h-brvm-1998", h: 2,
           p: "La Bourse régionale des huit pays de l’UEMOA. Chacun peut devenir copropriétaire d’entreprises de la région, et recevoir une part de leurs bénéfices." },
         { k: "o", d: "La différence clé", l: "Marché primaire, marché secondaire", t: "Qui reçoit votre argent ?", i: "musee-coffret",
           p: "Acheter une action <b>nouvellement émise</b> finance l’entreprise. Acheter une action <b>existante</b> paie celui qui la vend. Dividende, plus-value, perte : l’actionnaire partage le risque." },
         { k: "d", t: "À vous : dans la peau d’un banquier", p: "Huit demandes de prêt, 100 millions de fonds propres : financer sans mettre la banque en danger.",
           a: [["Jouer au banquier", "#borne-banquier"], ["Suis-je prêt à investir ?", "bourse-essentiel.html?src=musee#A1"]] }
       ] },
-    { t: "Dangote, du projet industriel à l’ouverture du capital", st: "La grande étude de cas", i: "cap-dangote",
+    { t: "Dangote, du projet industriel à l’ouverture du capital", st: "La grande étude de cas", i: "h-dangote-plans", h: 2,
       p: "Une raffinerie pour arrêter d’importer l’essence, puis des actions proposées au public : toute la balade en un cas.",
       e: [
         { k: "o", d: "2010", l: "Lagos", t: "Le ciment entre en Bourse", i: "h-cimenterie", h: 2,
           p: "Dangote Cement est cotée à la Bourse de Lagos depuis 2010. Le groupe a d’abord grandi en produisant au Nigeria ce que le pays importait." },
         { k: "o", d: "2023", l: "Lekki, Lagos", t: "La raffinerie démarre", i: "h-raffinerie", h: 2,
           p: "Une raffinerie prévue pour 650 000 barils par jour. Ses résultats dépendent du prix du pétrole brut, de l’énergie, de la maintenance et de ses clients." },
-        { k: "o", d: "14 sept.–27 oct. 2026", l: "Lagos", t: "L’offre au public", i: "p-esperance",
+        { k: "o", d: "14 sept.–27 oct. 2026", l: "Lagos", t: "L’offre au public", i: "h-offre", h: 2,
           p: "4,1 milliards d’actions proposées à 525 nairas, soit environ 2 150 milliards de nairas si tout est souscrit. L’offre, prolongée de deux semaines, a fermé le 27 octobre. Au 28 octobre, l’attribution et la cotation restent à venir.",
           q: "Le prix d’une action n’est pas la valeur de toute l’entreprise. Aucun rendement n’est garanti." },
         { k: "d", t: "La question de sortie", p: "Que change le fait que davantage d’Africains puissent posséder une part des entreprises qui transforment leur continent ?",
