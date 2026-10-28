@@ -151,7 +151,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .photos figcaption{padding:12px 14px;font-size:14.5px;color:var(--ink2)}
 .photos figcaption b{display:block;color:var(--nuit)}
 .cap{padding-top:0;overflow:hidden}
-.cap-img{display:block;width:calc(100% + 40px);margin:0 -20px 4px;height:auto;aspect-ratio:16/10}
+.cap-img{display:block;width:calc(100% + 40px);max-width:none;margin:0 -20px 4px;height:auto;aspect-ratio:16/9;object-fit:cover}
 </style>
 </head>
 <body>
@@ -269,7 +269,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="bibliotheque-livres.js?v=2026102801"></script>
 <script src="bibliotheque-lecture.js?v=2026102801"></script>
-<script src="bibliotheque-capitaines.js?v=2026102801"></script>
+<script src="bibliotheque-capitaines.js?v=2026102802"></script>
 <script>
 (function(){
   var L=window.EFA_LIVRES||[], E=document.getElementById('etag');
@@ -299,7 +299,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   /* capitaines */
   var C=window.EFA_CAPITAINES||[],Z=document.getElementById('caps');
   function ini(n){return n.split(/\s+/).filter(function(w){return /^[A-ZÉ]/.test(w)}).slice(0,2).map(function(w){return w[0]}).join('');}
-  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><img class="cap-img" src="illus/c-'+c.id+'.svg" alt="" width="480" height="300" loading="lazy"><div class="cap-h"><span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span><h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
+  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><img class="cap-img" src="'+(c.img||'illus/c-'+c.id+'.svg')+'" alt="" width="480" height="300" loading="lazy"><div class="cap-h"><span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span><h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
     +'<div class="cap-idee"><small>Sa pensée</small><b>'+c.nomIdee+'</b><span>'+c.idee+'</span>'+(c.citation?'<cite>'+c.citation+'</cite>':'')+'</div>'
     +'<p><b>'+(c.f?'Ce qu’elle a apporté.':'Ce qu’il a apporté.')+'</b> '+c.apporte+'</p><p class="lec"><b>Ce qu’on en retient pour son argent</b>'+c.lecon+'</p>'
     +'<details><summary>Repères</summary><ol>'+c.reperes.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>'}).join('')+'</ol></details></article>';}
