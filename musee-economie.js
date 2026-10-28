@@ -19,26 +19,26 @@
         { k: "d", t: "À vous : vos réserves", p: "Entre deux rentrées d’argent, que gardez-vous de côté, et où ? C’est le grenier d’aujourd’hui.",
           a: [["Où garder sa réserve", "ou-garder-sa-reserve.html?src=musee"]] }
       ] },
-    { t: "L’Afrique des routes et des marchés", st: "Or, sel, tissus, caravanes", i: "s1-echanger",
+    { t: "L’Afrique des routes et des marchés", st: "Or, sel, tissus, caravanes", i: "h-routes", h: 1,
       p: "Bien avant les ports à conteneurs, des routes reliaient le Sahel à la Méditerranée, la mer Rouge à l’océan Indien.",
       e: [
-        { k: "f", ini: "H", nom: "Hatchepsout", d: "Vers −1470", l: "Égypte", role: "Reine-pharaon",
+        { k: "f", ini: "H", i: "h-hatchepsout", h: 1, nom: "Hatchepsout", d: "Vers −1470", l: "Égypte", role: "Reine-pharaon",
           p: "Elle envoie une expédition au pays de Pount, au sud de la mer Rouge, chercher encens, ébène et or. Les reliefs de son temple racontent ce voyage : l’un des plus anciens récits de commerce lointain." },
-        { k: "f", ini: "MM", nom: "Mansa Moussa", d: "1324", l: "Empire du Mali", role: "Empereur du Mali",
+        { k: "f", ini: "MM", i: "h-mansa-moussa", h: 1, nom: "Mansa Moussa", d: "1324", l: "Empire du Mali", role: "Empereur du Mali",
           p: "En route vers La Mecque, il dépense et distribue tant d’or au Caire que, selon les chroniqueurs, son cours y baisse pendant des années. L’or du Sahel fait alors tourner le commerce de la Méditerranée." },
         { k: "o", d: "XIIIe–XVIe s.", l: "Tombouctou, Gao, Djenné", t: "Or contre sel", i: "h-or-sel", h: 1,
           p: "Les caravanes traversent le Sahara : l’or et les tissus d’un côté, le sel du désert de l’autre. Chaque étape a ses péages, ses risques et ses intermédiaires : <b>le prix d’arrivée n’est pas le prix de départ</b>." },
         { k: "d", t: "À vous : troc ou monnaie ?", p: "Essayez d’obtenir du poisson avec un régime de plantain, sans argent. Puis refaites-le avec.",
           a: [["Jouer à Troc ou monnaie", "#borne-troc"]] }
       ] },
-    { t: "Qu’est-ce qui fait monnaie ?", st: "Cauris, pièces, billets, soldes", i: "p-monnaies",
+    { t: "Qu’est-ce qui fait monnaie ?", st: "Cauris, pièces, billets, soldes", i: "h-monnaie", h: 2,
       p: "Une monnaie sert à compter, à payer et à garder. Elle ne tient que si chacun l’accepte.",
       e: [
         { k: "o", d: "−600", l: "Lydie", t: "Les premières pièces", i: "h-lydie", h: 1,
           p: "Un morceau de métal au poids garanti par une autorité. Plus besoin de peser l’or à chaque achat : on compte." },
-        { k: "f", ini: "IB", nom: "Ibn Battuta", d: "1352", l: "Empire du Mali", role: "Voyageur, né à Tanger",
+        { k: "f", ini: "IB", i: "h-ibn-battuta", h: 1, nom: "Ibn Battuta", d: "1352", l: "Empire du Mali", role: "Voyageur, né à Tanger",
           p: "Il traverse le Sahara et décrit les marchés du Mali, où l’on paie avec des cauris, ces coquillages venus de l’océan Indien : rares, solides, impossibles à contrefaire." },
-        { k: "o", d: "Partout", l: "Une idée reçue", t: "Pas forcément le troc d’abord", i: "p-fonctions",
+        { k: "o", d: "Partout", l: "Une idée reçue", t: "Pas forcément le troc d’abord", i: "h-credit", h: 2,
           p: "Les historiens le rappellent : crédit, dons, monnaies et échanges ont souvent coexisté. Ce qui fait la monnaie, ce n’est pas l’objet, c’est <b>la confiance</b>." },
         { k: "d", t: "À vous : vrai ou faux ?", p: "Six affirmations entendues au marché sur la monnaie. Démêlez le vrai du faux.",
           a: [["Jouer au Vrai ou faux", "#borne-vf"]] }
@@ -48,10 +48,10 @@
       e: [
         { k: "n", d: "XVe–XIXe s.", l: "Atlantique, Sahara, océan Indien", t: "Les traites esclavagistes",
           p: "Des millions de femmes et d’hommes arrachés à leur terre, transportés et vendus. Une tragédie humaine d’abord, qui a aussi privé des régions entières de leurs forces vives pendant des siècles." },
-        { k: "o", d: "Fin XIXe–XXe s.", l: "Mines, plantations, ports", t: "Le rail va au port", i: "cap-jonah",
+        { k: "o", d: "Fin XIXe–XXe s.", l: "Mines, plantations, ports", t: "Le rail va au port", i: "h-rail-port", h: 1,
           p: "Travail forcé, impôt par tête, cultures imposées : beaucoup de voies ferrées relient les mines et les plantations aux ports, plutôt que les villes africaines entre elles.",
           q: "Une infrastructure peut développer la production et organiser l’extraction en même temps. Qui choisit le tracé, et qui en profite ?" },
-        { k: "f", ini: "FA", nom: "Les femmes d’Aba", d: "1929", l: "Sud-Est du Nigeria", role: "Une résistance économique",
+        { k: "f", ini: "FA", i: "h-femmes-aba", h: 1, nom: "Les femmes d’Aba", d: "1929", l: "Sud-Est du Nigeria", role: "Une résistance économique",
           p: "Des milliers de femmes se soulèvent contre un impôt colonial qu’elles jugent injuste et contre les chefs nommés par l’administration. L’une des grandes résistances de l’époque coloniale." }
       ] },
     { t: "Les indépendances", st: "Construire une économie nationale", i: "h-independances", h: 2,
@@ -174,7 +174,7 @@
     }
     var S = SALLES[x.s];
     if (x.k === "s") return '<div class="mu-etape s">' + (S.sombre ? "" : cadre(S.i, 0, S.h)) + '<div class="mu-txt"' + (S.sombre ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.st) + "</span><p>" + esc(S.p) + "</p></div></div>";
-    if (x.k === "f") return '<div class="mu-etape f' + (x.i ? ' fi' : '') + '">' + (x.i ? cadre(x.i, 0, x.h) : '<div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div>') + '<div class="mu-txt">' + (x.i ? '<div class="mu-date">' + esc(x.d) + '</div>' : '') + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
+    if (x.k === "f") return '<div class="mu-etape' + (x.i ? ' fi' : ' f') + '">' + (x.i ? cadre(x.i, 0, x.h) : '<div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div>') + '<div class="mu-txt">' + (x.i ? '<div class="mu-date">' + esc(x.d) + '</div>' : '') + '<span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
     if (x.k === "n") return '<div class="mu-etape n"><div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + x.p + "</p></div></div>";
     if (x.k === "d") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><span class="mu-num" style="width:auto;padding:0 18px;border-radius:999px;font:800 13px/40px Source Sans\\ 3,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;height:40px">À vous de décider</span><h2>' + esc(x.t) + "</h2><p>" + esc(x.p) + "</p>" + actions(x.a) + "</div></div>";
     return '<div class="mu-etape">' + cadre(x.i, x.port, x.h) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
