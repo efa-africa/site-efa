@@ -140,10 +140,10 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .ill-tete .intro-b{margin:0;border-radius:0;background:none}
 @media (max-width:720px){.ill-tete{grid-template-columns:minmax(0,1fr)}}
 .salles a{grid-template-columns:auto minmax(0,1fr);overflow:hidden;padding:0 18px 18px}
-.salles a img{grid-column:1/-1;display:block;width:calc(100% + 36px);margin:0 -18px 14px;height:auto;aspect-ratio:16/10}
+.salles a img{grid-column:1/-1;display:block;width:calc(100% + 36px);max-width:none;margin:0 -18px 14px;height:auto;aspect-ratio:16/10;object-fit:cover}
 .bal-tete{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
 .bal-tete > *{grid-column:1}
-.bal-tete .bal-img{grid-column:2;grid-row:1/span 4;width:100%;height:auto;border-radius:14px;aspect-ratio:16/10}
+.bal-tete .bal-img{grid-column:2;grid-row:1/span 4;width:100%;height:auto;border-radius:14px;aspect-ratio:16/9;object-fit:cover}
 @media (max-width:720px){.bal-tete{grid-template-columns:minmax(0,1fr)}.bal-tete .bal-img{grid-column:1;grid-row:auto}}
 .photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px;padding-bottom:40px}
 .photos figure{margin:0;background:var(--papier);border-radius:14px;overflow:hidden}
@@ -190,15 +190,15 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
       <h2>Comprendre l’économie en 25 minutes, du marché à la banque centrale</h2>
       <p>Une visite en six salles, inspirée du musée de l’économie de la Banque de France et transposée à nos marchés, à nos banques et au franc CFA. Dans chaque salle, une borne&nbsp;: un petit jeu de deux à cinq minutes.</p>
       <a class="bt bt-p" href="balade-economie.html?src=bibliotheque" data-goatcounter-click="biblio-balade-entrer">Commencer la visite →</a>
-      <img class="bal-img" src="illus/p-cauri.svg" alt="Du cauri au téléphone : les formes de la monnaie" width="480" height="300">
+      <img class="bal-img" src="illus/p-monnaies.webp" alt="Du cauri au téléphone : les formes de la monnaie" width="480" height="300">
     </div>
     <div class="salles">
-      <a href="balade-economie.html?src=bibliotheque#echanger"><img src="illus/s1-echanger.svg" alt="" width="480" height="300" loading="lazy"><i>1</i><b>Échanger</b><span>Pourquoi on se spécialise, ce qui a de la valeur, la confiance.</span><em>Jeu · Troc ou monnaie&nbsp;?</em></a>
-      <a href="balade-economie.html?src=bibliotheque#monnaie"><img src="illus/s2-monnaie.svg" alt="" width="480" height="300" loading="lazy"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money, le franc CFA en quatre repères.</span><em>Jeu · Vrai ou faux</em></a>
-      <a href="balade-economie.html?src=bibliotheque#acteurs"><img src="illus/s3-acteurs.svg" alt="" width="480" height="300" loading="lazy"><i>3</i><b>Les acteurs</b><span>Ménages, entreprises, banques, État, diaspora&nbsp;: le circuit.</span><em>Jeux · Reliez les acteurs, l’entrepreneur stratège</em></a>
-      <a href="balade-economie.html?src=bibliotheque#etat"><img src="illus/s4-etat.svg" alt="" width="480" height="300" loading="lazy"><i>4</i><b>L’État et les règles</b><span>Impôts, services publics, externalités, l’informel.</span><em>Jeux · Public ou privé, ce que vaut votre temps</em></a>
+      <a href="balade-economie.html?src=bibliotheque#echanger"><img src="illus/s1-echanger.webp" alt="" width="480" height="300" loading="lazy"><i>1</i><b>Échanger</b><span>Pourquoi on se spécialise, ce qui a de la valeur, la confiance.</span><em>Jeu · Troc ou monnaie&nbsp;?</em></a>
+      <a href="balade-economie.html?src=bibliotheque#monnaie"><img src="illus/s2-monnaie.webp" alt="" width="480" height="300" loading="lazy"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money, le franc CFA en quatre repères.</span><em>Jeu · Vrai ou faux</em></a>
+      <a href="balade-economie.html?src=bibliotheque#acteurs"><img src="illus/s3-acteurs.webp" alt="" width="480" height="300" loading="lazy"><i>3</i><b>Les acteurs</b><span>Ménages, entreprises, banques, État, diaspora&nbsp;: le circuit.</span><em>Jeux · Reliez les acteurs, l’entrepreneur stratège</em></a>
+      <a href="balade-economie.html?src=bibliotheque#etat"><img src="illus/s4-etat.webp" alt="" width="480" height="300" loading="lazy"><i>4</i><b>L’État et les règles</b><span>Impôts, services publics, externalités, l’informel.</span><em>Jeux · Public ou privé, ce que vaut votre temps</em></a>
       <a href="balade-economie.html?src=bibliotheque#banques"><img src="illus/s5-banques.svg" alt="" width="480" height="300" loading="lazy"><i>5</i><b>Banques et inflation</b><span>Solvable ou liquide, la BCEAO, le pouvoir d’achat.</span><em>Jeux · Dans la peau d’un banquier, s’endetter jusqu’où</em></a>
-      <a href="balade-economie.html?src=bibliotheque#croissance"><img src="illus/s6-croissance.svg" alt="" width="480" height="300" loading="lazy"><i>6</i><b>La croissance</b><span>Produire plus ou mieux, le commerce mondial, la frise du temps.</span></a>
+      <a href="balade-economie.html?src=bibliotheque#croissance"><img src="illus/s6-croissance.webp" alt="" width="480" height="300" loading="lazy"><i>6</i><b>La croissance</b><span>Produire plus ou mieux, le commerce mondial, la frise du temps.</span></a>
     </div>
     <div class="photos" aria-label="Objets vus au musée">
       <figure><img src="illus/musee-tampons.webp" alt="Tampons et composteurs anciens, en vitrine" loading="lazy" width="800" height="694"><figcaption><b>Les tampons du guichet</b>Chaque opération datée et validée à la main.</figcaption></figure>

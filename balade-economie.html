@@ -164,8 +164,8 @@ h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-sp
 input[type=range]{width:100%;accent-color:var(--corail)}
 
 .salle-img{margin:22px 0 0;max-width:820px;border-radius:18px;overflow:hidden;background:var(--papier)}
-.salle-img img{display:block;width:100%;height:auto;aspect-ratio:16/10}
-.pan-img{display:block;width:calc(100% + 40px);max-width:none;margin:-20px -20px 14px;height:auto;aspect-ratio:16/10;border-radius:14px 14px 0 0}
+.salle-img img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.pan-img{display:block;width:calc(100% + 40px);max-width:none;margin:-20px -20px 14px;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:14px 14px 0 0}
 .photos{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
 .photos figure{margin:0;background:var(--papier);border-radius:14px;overflow:hidden}
 .photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
@@ -242,7 +242,7 @@ input[type=range]{width:100%;accent-color:var(--corail)}
 <section class="salle" id="echanger" aria-labelledby="s1-t">
   <div class="salle-tete"><span class="salle-n" aria-hidden="true">1</span><p class="bk">Salle 1 · Échanger</p><h2 id="s1-t">Pourquoi achète-t-on ce qu’on ne fabrique pas&nbsp;?</h2></div>
   <p class="salle-q">Toute l’économie commence par un échange&nbsp;: un bien contre un autre, un service contre de l’argent. Encore faut-il savoir ce que vaut chaque chose, et se faire confiance.</p>
-  <figure class="salle-img"><img src="illus/s1-echanger.svg" alt="Deux marchands échangent un pagne contre un sac de riz" width="480" height="300" loading="lazy"></figure>
+  <figure class="salle-img"><img src="illus/s1-echanger.webp" alt="Deux marchands échangent un pagne contre un sac de riz" width="480" height="300" loading="lazy"></figure>
   <div class="pans">
     <article class="pan">
       <img class="pan-img" src="illus/p-specialiser.svg" alt="" width="480" height="300" loading="lazy">
@@ -277,7 +277,7 @@ input[type=range]{width:100%;accent-color:var(--corail)}
 <section class="salle" id="monnaie" aria-labelledby="s2-t">
   <div class="salle-tete"><span class="salle-n" aria-hidden="true">2</span><p class="bk">Salle 2 · La monnaie</p><h2 id="s2-t">Un billet ne vaut rien en lui-même. Alors pourquoi l’accepte-t-on&nbsp;?</h2></div>
   <p class="salle-q">La monnaie est ce que nous appelons l’argent. Elle a changé de forme au fil des siècles, mais elle tient toujours sur la même chose&nbsp;: la confiance de ceux qui l’utilisent.</p>
-  <figure class="salle-img"><img src="illus/s2-monnaie.svg" alt="Du cauri au téléphone : les formes de la monnaie" width="480" height="300" loading="lazy"></figure>
+  <figure class="salle-img"><img src="illus/s2-monnaie.webp" alt="Du cauri au téléphone : les formes de la monnaie" width="480" height="300" loading="lazy"></figure>
   <div class="pans">
     <article class="pan">
       <img class="pan-img" src="illus/p-fonctions.svg" alt="" width="480" height="300" loading="lazy">
@@ -290,7 +290,7 @@ input[type=range]{width:100%;accent-color:var(--corail)}
       <p>Elle tient parce que chacun l’accepte, et que la loi l’impose&nbsp;: on ne peut pas refuser les billets en paiement, et ils servent à payer l’impôt. C’est ce qu’on appelle <span class="mot">le cours légal</span>.</p>
     </article>
     <article class="pan">
-      <img class="pan-img" src="illus/p-cauri.svg" alt="" width="480" height="300" loading="lazy">
+      <img class="pan-img" src="illus/p-monnaies.webp" alt="" width="480" height="300" loading="lazy">
       <h3>De l’objet rare à l’écriture sur un compte</h3>
       <p>La monnaie a peu à peu perdu sa matière. D’abord des objets rares&nbsp;: <strong>cauris, perles, barres de sel, manilles de cuivre</strong>. Puis des pièces de métal, nées en Lydie, dans l’actuelle Turquie, vers 600 avant notre ère. Au 19<sup>e</sup>&nbsp;siècle, le billet, simple papier, se répand.</p>
       <p>Aujourd’hui, l’essentiel de la monnaie n’est plus qu’une écriture sur un compte&nbsp;: c’est <span class="mot">la monnaie scripturale</span>. En zone euro, pièces et billets n’en représentent qu’environ un dixième.</p>
@@ -325,7 +325,7 @@ input[type=range]{width:100%;accent-color:var(--corail)}
 <section class="salle" id="acteurs" aria-labelledby="s3-t">
   <div class="salle-tete"><span class="salle-n" aria-hidden="true">3</span><p class="bk">Salle 3 · Les acteurs</p><h2 id="s3-t">Qui fait l’économie&nbsp;? Nous tous, et chacun à sa place</h2></div>
   <p class="salle-q">L’économie, ce sont des échanges continus entre des acteurs qui produisent, consomment, prêtent et prélèvent. L’argent que vous dépensez ce matin sera le salaire de quelqu’un ce soir.</p>
-  <figure class="salle-img"><img src="illus/s3-acteurs.svg" alt="Le circuit entre ménages, entreprises, État, banques et reste du monde" width="480" height="300" loading="lazy"></figure>
+  <figure class="salle-img"><img src="illus/s3-acteurs.webp" alt="Le circuit entre ménages, entreprises, État, banques et reste du monde" width="480" height="300" loading="lazy"></figure>
   <div class="pans">
     <article class="pan">
       <img class="pan-img" src="illus/c-mwangi.svg" alt="" width="480" height="300" loading="lazy">
@@ -380,7 +380,7 @@ input[type=range]{width:100%;accent-color:var(--corail)}
 <section class="salle" id="etat" aria-labelledby="s4-t">
   <div class="salle-tete"><span class="salle-n" aria-hidden="true">4</span><p class="bk">Salle 4 · L’État et les règles du jeu</p><h2 id="s4-t">Ce que l’État prélève, ce qu’il rend, et pourquoi il fixe des règles</h2></div>
   <p class="salle-q">L’État n’est pas seulement le gouvernement&nbsp;: c’est l’ensemble des administrations. Il prélève une partie des richesses, la redistribue, et fixe les règles qui permettent aux autres de produire.</p>
-  <figure class="salle-img"><img src="illus/s4-etat.svg" alt="Un bâtiment public, une école, un centre de santé et une route" width="480" height="300" loading="lazy"></figure>
+  <figure class="salle-img"><img src="illus/s4-etat.webp" alt="Un bâtiment public, une école, un centre de santé et une route" width="480" height="300" loading="lazy"></figure>
   <div class="pans">
     <article class="pan">
       <img class="pan-img" src="illus/p-etat-trois.svg" alt="" width="480" height="300" loading="lazy">
@@ -513,7 +513,7 @@ input[type=range]{width:100%;accent-color:var(--corail)}
 <section class="salle" id="croissance" aria-labelledby="s6-t">
   <div class="salle-tete"><span class="salle-n" aria-hidden="true">6</span><p class="bk">Salle 6 · La croissance et le monde</p><h2 id="s6-t">Produire plus, ou produire mieux&nbsp;?</h2></div>
   <p class="salle-q">La croissance d’un pays, c’est l’augmentation durable de ce qu’il produit. Elle a deux moteurs, et elle passe de plus en plus par le reste du monde.</p>
-  <figure class="salle-img"><img src="illus/s6-croissance.svg" alt="Un port à conteneurs et une courbe de croissance" width="480" height="300" loading="lazy"></figure>
+  <figure class="salle-img"><img src="illus/s6-croissance.webp" alt="Un port à conteneurs et une courbe de croissance" width="480" height="300" loading="lazy"></figure>
   <div class="pans">
     <article class="pan">
       <img class="pan-img" src="illus/p-cacao.svg" alt="" width="480" height="300" loading="lazy">
