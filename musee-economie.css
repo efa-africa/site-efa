@@ -122,3 +122,7 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 .mu-etape.dz{grid-template-rows:minmax(0,1fr);align-content:center}.mu-etape.dz .mu-txt{align-self:center;background:#0D1525;border-radius:18px;padding:26px 20px;max-width:36em}.mu-etape.dz .mu-act{justify-content:center}
 #musee:focus{outline:none}
 @media (min-width:900px){.mu-bas{justify-content:center;gap:24px}.mu-suiv{flex:0 0 260px}}
+.mu-txt .mu-lieu,#musee .mu-lieu{color:#fff!important}
+.mu-indice{display:none}
+@media (min-width:900px){.mu-etape.s .mu-cadre{width:min(56vw,calc(34svh * 16 / 9))}}
+.mu-etape.s .mu-txt h2{margin-top:8px!important}.mu-etape.s .mu-txt p{margin-top:8px!important}

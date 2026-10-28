@@ -158,7 +158,8 @@
   E.push({ k: "z", s: SALLES.length });
 
   var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false;
-  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function esc(t) { return String(t == null ? "" : t).replace(/ ([?!:;»%])/g, "\u00a0$1").replace(/« /g, "«\u00a0").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
   function cadre(n, port) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async"></div>'; }
@@ -173,10 +174,10 @@
     }
     var S = SALLES[x.s];
     if (x.k === "s") return '<div class="mu-etape s">' + (S.sombre ? "" : cadre(S.i)) + '<div class="mu-txt"' + (S.sombre ? ' style="align-self:center"' : "") + '><span class="mu-num">' + (x.s + 1) + '</span><h2>' + esc(S.t) + '</h2><span class="mu-role" style="font-size:16px">' + esc(S.st) + "</span><p>" + esc(S.p) + "</p></div></div>";
-    if (x.k === "f") return '<div class="mu-etape f"><div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div><div class="mu-txt"><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + x.p + "</p>" + q(x.q) + "</div></div>";
+    if (x.k === "f") return '<div class="mu-etape f"><div class="mu-med" aria-hidden="true"><span>' + esc(x.ini) + "</span><em>" + esc(x.d) + '</em></div><div class="mu-txt"><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.nom) + '</h2><span class="mu-role">' + esc(x.role) + "</span><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
     if (x.k === "n") return '<div class="mu-etape n"><div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + x.p + "</p></div></div>";
     if (x.k === "d") return '<div class="mu-etape s dz"><div class="mu-txt" style="align-self:center"><span class="mu-num" style="width:auto;padding:0 18px;border-radius:999px;font:800 13px/40px Source Sans\\ 3,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;height:40px">À vous de décider</span><h2>' + esc(x.t) + "</h2><p>" + esc(x.p) + "</p>" + actions(x.a) + "</div></div>";
-    return '<div class="mu-etape">' + cadre(x.i, x.port) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + x.p + "</p>" + q(x.q) + "</div></div>";
+    return '<div class="mu-etape">' + cadre(x.i, x.port) + '<div class="mu-txt"><div class="mu-date">' + esc(x.d) + '</div><span class="mu-lieu">📍 ' + esc(x.l) + "</span><h2>" + esc(x.t) + "</h2><p>" + nb(x.p) + "</p>" + q(x.q) + "</div></div>";
   }
 
   function construire() {
