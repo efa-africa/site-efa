@@ -107,7 +107,7 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 .mu-plan button.go b{display:block;font:700 17px/1.25 "Libre Baskerville",Georgia,serif;color:#fff}
 .mu-plan button.go small{display:block;margin-top:3px;font-size:14px;color:var(--mt)}
 
-@media (min-width:900px){
+@media (min-width:900px) and (min-aspect-ratio:5/4){
   .mu-etape:not(.s):not(.n):not(.f){grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);align-items:center;gap:40px;padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:40px}
   .mu-etape:not(.s):not(.n):not(.f) .mu-cadre{width:100%;max-height:100%}
   .mu-etape:not(.s):not(.n):not(.f) .mu-txt{align-self:center;max-height:100%}
@@ -118,11 +118,40 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 @media (prefers-reduced-motion:reduce){.mu-etape{transition:none}}
 
 @media (max-width:520px){.mu-cmd .t{display:none}.mu-cmd button{padding:0;width:42px}.mu-bas .mu-passe{font-size:15px}}
-@media (max-width:899px){.mu-etape.z .mu-cadre{width:min(100%,calc(26svh * 16 / 9))}}
+@media not all and (min-width:900px) and (min-aspect-ratio:5/4){.mu-etape.z .mu-cadre{width:min(100%,calc(26svh * 16 / 9))}}
 .mu-etape.dz{grid-template-rows:minmax(0,1fr);align-content:center}.mu-etape.dz .mu-txt{align-self:center;background:#0D1525;border-radius:18px;padding:26px 20px;max-width:36em}.mu-etape.dz .mu-act{justify-content:center}
 #musee:focus{outline:none}
-@media (min-width:900px){.mu-bas{justify-content:center;gap:24px}.mu-suiv{flex:0 0 260px}}
+@media (min-width:900px) and (min-aspect-ratio:5/4){.mu-bas{justify-content:center;gap:24px}.mu-suiv{flex:0 0 260px}}
 .mu-txt .mu-lieu,#musee .mu-lieu{color:#fff!important}
 .mu-indice{display:none}
-@media (min-width:900px){.mu-etape.s .mu-cadre{width:min(56vw,calc(34svh * 16 / 9))}}
+@media (min-width:900px) and (min-aspect-ratio:5/4){.mu-etape.s .mu-cadre{width:min(56vw,calc(34svh * 16 / 9))}}
 .mu-etape.s .mu-txt h2{margin-top:8px!important}.mu-etape.s .mu-txt p{margin-top:8px!important}
+
+/* téléphones et écrans en hauteur : une colonne centrée, tailles proportionnelles à la largeur */
+@media not all and (min-width:900px) and (min-aspect-ratio:5/4){
+  .mu-etape{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.4vw,28px)}
+  .mu-etape .mu-cadre,.mu-etape .mu-med{flex:none;align-self:center}
+  .mu-etape .mu-cadre{width:min(100%,calc(46svh * 16 / 9))}
+  .mu-etape .mu-txt{align-self:center}
+  .mu-etape .mu-cadre.port{width:min(100%,calc(46svh * 4 / 3))}
+  .mu-etape .mu-txt{flex:0 1 auto;min-height:0}
+  .mu-etape.z .mu-cadre{width:min(100%,calc(28svh * 16 / 9))}
+  .mu-etape.dz .mu-txt,.mu-etape.n .mu-txt{width:100%}
+  .mu-txt p{font-size:clamp(16px,2.5vw,24px)!important}
+  .mu-txt h2{font-size:clamp(22px,5vw,44px)!important}
+  .mu-etape.s h2{font-size:clamp(26px,6.2vw,54px)!important}
+  .mu-date{font-size:clamp(34px,8.5vw,80px)}
+  .mu-lieu{font-size:clamp(12.5px,1.7vw,17px)}
+  .mu-role{font-size:clamp(15px,2.1vw,20px)!important}
+  .mu-num{width:clamp(56px,7vw,76px);height:clamp(56px,7vw,76px);font-size:clamp(24px,3vw,32px)}
+  .mu-med{width:clamp(140px,34vw,300px)}
+  .mu-med span{font-size:clamp(44px,11vw,96px)}
+  .mu-salle{font-size:clamp(12.5px,1.7vw,17px)}
+  .mu-cmd button{min-height:clamp(44px,5.6vw,58px);min-width:clamp(44px,5.6vw,58px);font-size:clamp(14px,1.8vw,18px)}
+  .mu-bas{justify-content:center;gap:clamp(10px,2.4vw,24px)}
+  .mu-bas button{min-height:clamp(50px,6.4vw,66px);font-size:clamp(16px,2.2vw,22px)}
+  .mu-prec{min-width:clamp(50px,6.4vw,66px)}
+  .mu-suiv{max-width:clamp(200px,40vw,380px)}
+  .mu-act a,.mu-act button{min-height:clamp(48px,6vw,62px);font-size:clamp(16px,2.1vw,21px)}
+  .mu-q{font-size:clamp(15px,2.2vw,21px)!important}
+}
