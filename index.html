@@ -1165,6 +1165,15 @@ html:not(.efa-decouvrir) #ecole,html:not(.efa-decouvrir) #besoins,html:not(.efa-
 .porte-efa i{font-style:normal;display:inline-block;animation:pe 1.8s infinite}
 @keyframes pe{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 html.efa-decouvrir .porte-efa{display:none}
+html:not(.efa-decouvrir) #tk{display:none!important}
+.eh-portes{margin:22px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:560px}
+.eh-portes a{display:flex;flex-direction:column;gap:3px;min-width:0;padding:12px 14px;border-radius:12px;background:#FFFDF8;color:#0B1220;text-decoration:none}
+.eh-portes b{font:800 16px/1.25 var(--f-body)}
+.eh-portes span{font-size:14px;line-height:1.35;color:#4E5566}
+.eh-portes a:hover{background:#EFE8DA}
+.eh-portes a.o{background:#0B1220;color:#fff}.eh-portes a.o span{color:#C9D1DE}.eh-portes a.o:hover{background:#18223A}
+.eh-portes a:focus-visible{outline:3px solid #1B71B2;outline-offset:2px}
+@media (max-width:480px){.eh-portes{gap:8px;margin-top:16px}.eh-portes a{padding:10px 12px}.eh-portes b{font-size:15px}.eh-portes span{font-size:13px}}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 <script type="application/ld+json">
@@ -1203,8 +1212,14 @@ html.efa-decouvrir .porte-efa{display:none}
       <div class="eh-txt">
         <p class="eh-sur">Apprendre. Comprendre. Décider.</p>
         <h1 id="eh-t">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>
-        <p class="eh-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>
+        <p class="eh-lead">Des leçons concrètes et des outils pratiques, à partir des réalités africaines. Pour vous, ou pour former votre équipe.</p>
         <div class="eh-bt"><a class="eh-b1" href="point-de-depart.html?src=accueil-hero" data-goatcounter-click="accueil-hero-point-de-depart">Trouver mon chemin <span aria-hidden="true">→</span></a><p class="eh-micro">2 questions, 1 minute, sans inscription.</p></div>
+        <nav class="eh-portes" aria-label="Aller droit à votre sujet">
+          <a href="point-de-depart.html?pour=moi&amp;src=accueil-porte" data-goatcounter-click="accueil-porte-argent"><b>Gérer mon argent</b><span>Budget, dettes, proches, tontine</span></a>
+          <a href="point-de-depart.html?pour=investir&amp;src=accueil-porte" data-goatcounter-click="accueil-porte-brvm"><b>Investir à la BRVM</b><span>Débuter en Bourse, en simulation</span></a>
+          <a href="point-de-depart.html?pour=cadre&amp;src=accueil-porte" data-goatcounter-click="accueil-porte-patrimoine"><b>Construire mon patrimoine</b><span>Épargner, investir, se loger</span></a>
+          <a class="o" href="point-de-depart.html?pour=orga&amp;src=accueil-porte" data-goatcounter-click="accueil-porte-organisation"><b>Former mon équipe</b><span>Construire un programme de formation</span></a>
+        </nav>
         <script>/* L’accueil suit l’avancement : défi en cours, résultat obtenu, objectif choisi, module en cours. Le bouton mène au geste exact. */
         window.EFA_ETAPE=function(){try{
           var C=JSON.parse(localStorage.getItem("efa_cahier_v1")||"null"),O=JSON.parse(localStorage.getItem("efa_objectif")||"null"),P=JSON.parse(localStorage.getItem("efa_parcours_v1")||"null");
@@ -1219,7 +1234,9 @@ html.efa-decouvrir .porte-efa{display:none}
           if(P&&P.actif&&P.faits&&Object.keys(P.faits).some(function(k){return k.indexOf(P.actif+".")===0;}))return {t:"Vous en étiez à votre module en cours.",b:"Reprendre mon module",h:"parcours.html?src=accueil-reprendre#"+P.actif,k:"module"};
         }catch(x){}return null;};
         (function(){var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro"),E=window.EFA_ETAPE();if(!b||!E)return;
-          b.href=E.h;b.setAttribute("data-goatcounter-click","accueil-hero-etape-"+E.k);b.innerHTML='Ma prochaine action <span aria-hidden="true">→</span>';
+          var orga=E.o&&E.o.p==="orga",pt=document.querySelector(".eh-portes");if(pt)pt.hidden=true;
+          b.href=E.h;b.setAttribute("data-goatcounter-click","accueil-hero-etape-"+E.k);b.innerHTML=(orga?'Construire mon programme':'Ma prochaine action')+' <span aria-hidden="true">→</span>';
+          if(orga){var t=document.getElementById("eh-t"),l=document.querySelector(".eh-lead");if(t)t.innerHTML='Vos équipes.<br>Leurs décisions.<br>Leur <span>avenir.</span>';if(l)l.textContent="Un programme d’éducation financière pour vos salariés, étudiants ou membres : vous choisissez les sujets et le rythme, en ligne.";}
           if(m)m.innerHTML=E.t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+(E.k==="objectif"?' <a href="point-de-depart.html?changer=1&amp;src=accueil">Changer mon objectif</a>':'');})();</script>
       </div>
       <div class="eh-vis">
