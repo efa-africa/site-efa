@@ -18,14 +18,15 @@
   });
   function cyclesComplets(ids) { return CYCLES.filter(function (c) { return c.ids.length && c.ids.every(function (id) { return ids.indexOf(id) >= 0; }); }); }
 
-  var TYPES = [["entreprise", "Entreprise"], ["cooperative", "Coopérative, groupement, tontine"], ["ecole", "École, université"], ["association", "Association, ONG, fondation"], ["institution", "Banque, microfinance, assurance"], ["autre", "Autre"]];
+  var TYPES = [["entreprise", "Entreprise"], ["cooperative", "Coopérative, groupement, tontine"], ["ecole", "École, université"], ["association", "Association, ONG, fondation"], ["institution", "Banque, microfinance, assurance"], ["communaute", "Communauté, influenceur, leader"], ["autre", "Autre"]];
   var PUBLICS = [
     ["salaries", "Salariés", "Un salaire chaque mois, des charges familiales"],
     ["commercants", "Commerçants, agents, indépendants", "Des revenus qui varient d’un mois à l’autre"],
     ["jeunes", "Jeunes, étudiants, premiers emplois", "Un premier budget, le téléphone comme banque"],
     ["groupes", "Membres de tontines ou de groupes", "Cotiser, recevoir son tour, épargner ensemble"],
     ["diaspora", "Diaspora", "Soutenir la famille, construire au pays"],
-    ["cadres", "Cadres et dirigeants", "Revenus élevés, patrimoine à structurer, décisions qui engagent"]
+    ["cadres", "Cadres et dirigeants", "Revenus élevés, patrimoine à structurer, décisions qui engagent"],
+    ["communaute", "Ma communauté, mes abonnés", "Des personnes qui me suivent et me font confiance"]
   ];
   var SUJETS = [
     ["budget", "Savoir où passe l’argent et tenir un budget", ["P1", "P2"]],
@@ -43,7 +44,7 @@
     ["retraite", "Préparer sa retraite", ["P9"]],
     ["club", "Investir à plusieurs", ["M21"]]
   ];
-  var CONSEILS = { cadres: ["annee", "famille", "placer", "logement", "retraite", "protection"], salaries: ["budget", "reserve", "dettes", "annee", "retraite"], commercants: ["activite", "mm", "reserve", "tontine"], jeunes: ["budget", "mm", "conso", "reserve"], groupes: ["tontine", "reserve", "club"], diaspora: ["famille", "logement", "placer", "retraite"] };
+  var CONSEILS = { communaute: ["budget", "reserve", "tontine", "placer"], cadres: ["annee", "famille", "placer", "logement", "retraite", "protection"], salaries: ["budget", "reserve", "dettes", "annee", "retraite"], commercants: ["activite", "mm", "reserve", "tontine"], jeunes: ["budget", "mm", "conso", "reserve"], groupes: ["tontine", "reserve", "club"], diaspora: ["famille", "logement", "placer", "retraite"] };
   var FORMATS = [["0", "100 % en ligne", "Vos participants suivent le programme seuls, sur téléphone."], ["1", "En ligne + 1 session EFA", "Une session de lancement pour donner envie et répondre aux questions."], ["2", "En ligne + 2 sessions EFA", "Un lancement, puis un bilan pour challenger les décisions prises."]];
   var INVESTIR = ["M17", "M18", "P8", "M21", "P13", "P9"];
 
@@ -360,6 +361,27 @@
   function arbitragesApres() { return arbitrages(); }
 
 
+  function enTete() {
+    var c = S.type === "communaute";
+    try {
+      $("h-sur").textContent = c ? "Pour les communautés · En ligne, en 5 minutes" : "Pour les organisations · En ligne, en 5 minutes";
+      $("h-t").textContent = c ? "Composez le parcours de votre communauté, à vos couleurs" : "Composez le programme d’éducation financière de votre organisation";
+      $("h-c").textContent = c ? "Influenceur, leader de communauté ou partenaire EFA : vous choisissez ce que votre communauté apprend, vous ajoutez votre photo et votre logo, et vous partagez un code. Vos membres s’inscrivent en une minute et vous suivez leur avancement, jamais leurs montants." : "Vous choisissez ce que votre public doit apprendre ; nous vous proposons les arbitrages ; vous repartez avec un programme semaine par semaine que vos participants suivent sur leur téléphone. EFA peut ensuite venir animer une session pour répondre aux questions, challenger et faciliter.";
+    } catch (e) {}
+  }
+  /* Réduit une image choisie sur le téléphone : carré ou contenu, 320 px au plus, WebP */
+  function reduire(f, carre, cb) {
+    if (!f || !/^image\//.test(f.type)) return cb("");
+    var fr = new FileReader(); fr.onload = function () { var im = new Image(); im.onload = function () {
+      var M = 320, w = im.width, h = im.height, sx = 0, sy = 0, sw = w, sh = h;
+      if (carre) { var k = Math.min(w, h); sx = (w - k) / 2; sy = Math.max(0, (h - k) / 2 - k * 0.1); sw = sh = k; }
+      var r = Math.min(1, M / Math.max(sw, sh)), cv = document.createElement("canvas"); cv.width = Math.round(sw * r); cv.height = Math.round(sh * r);
+      var cx = cv.getContext("2d"); if (!carre) { cx.fillStyle = "#FFFFFF"; cx.fillRect(0, 0, cv.width, cv.height); } cx.drawImage(im, sx, sy, sw, sh, 0, 0, cv.width, cv.height);
+      var d = cv.toDataURL("image/webp", 0.82); if (d.indexOf("data:image/webp") !== 0) d = cv.toDataURL("image/jpeg", 0.82); cb(d.length <= 115000 ? d : "");
+    }; im.onerror = function () { cb(""); }; im.src = fr.result; }; fr.readAsDataURL(f);
+  }
+  var MQ = { photo: "", logo: "" };
+
   /* ---------- Chemin principal : recevoir une recommandation en quatre réponses ---------- */
   var OBJ = [["budget", "Tenir jusqu’à la fin du mois", "budget"], ["dettes", "Réduire les dettes et les avances", "dettes"], ["reserve", "Faire face aux imprévus", "reserve"],
     ["famille", "Aider ses proches sans se fragiliser", "famille"], ["annee", "Bien utiliser primes et 13e mois", "annee"], ["placer", "Épargner et placer", "placer"], ["retraite", "Préparer la retraite", "retraite"], ["tontine", "Mieux utiliser la tontine", "tontine"]];
@@ -368,7 +390,9 @@
     $("etapes").hidden = true;
     var pubs = PUBLICS.filter(function (p) { return p[0] !== "cadres"; });
     if (!R0.pub && S.publics.length) R0.pub = S.publics[0];
+    var comm = S.type === "communaute";
     $("vue").innerHTML = '<section class="carte"><p class="sur">Recevoir une recommandation · 2 minutes</p><h2>Quatre réponses, un programme prêt à ajuster</h2>'
+      + '<p class="aide"><b>Vous préparez ce programme pour…</b></p><div class="choix" id="r-qui">' + bouton("organisation", "Une organisation", !comm, "Entreprise, école, coopérative, ONG, institution") + bouton("communaute", "Ma communauté", comm, "Influenceur, leader de communauté, partenaire EFA : votre nom, votre photo, votre logo") + "</div>"
       + '<p class="aide"><b>1. Qui va suivre le programme&nbsp;?</b></p><div class="choix" id="r-pub">' + PUBLICS.map(function (p) { return bouton(p[0], p[1], R0.pub === p[0], p[2]); }).join("") + "</div>"
       + '<p class="aide" style="margin-top:20px"><b>2. L’objectif prioritaire</b></p><div class="choix" id="r-obj">' + OBJ.map(function (o) { return bouton(o[0], o[1], R0.obj === o[0]); }).join("") + "</div>"
       + '<div class="grille2" style="margin-top:20px"><label class="champ">3. Nombre de participants<select id="r-taille">' + ["", "moins de 20", "20 à 100", "100 à 500", "500 à 2 000", "2 000 à 10 000", "plus de 10 000"].map(function (t) { return '<option value="' + t + '"' + (R0.taille === t ? " selected" : "") + ">" + (t || "Je ne sais pas encore") + "</option>"; }).join("") + "</select></label>"
@@ -377,6 +401,7 @@
       + '<div class="acts"><button type="button" class="bt bt-p" id="r-go">Voir le programme recommandé</button><button type="button" class="bt" id="r-libre">Composer librement</button></div>'
       + '<p class="aide">Vous pourrez ensuite ajuster les modules, le rythme et le format, ou demander une proposition à EFA.</p></section>';
     $("r-pub").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; R0.pub = b.dataset.v; Array.prototype.forEach.call(this.querySelectorAll(".ch"), function (x) { x.setAttribute("aria-pressed", x === b); }); };
+    $("r-qui").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; S.type = b.dataset.v === "communaute" ? "communaute" : (S.type === "communaute" ? "entreprise" : S.type); if (S.type === "communaute" && !R0.pub) R0.pub = "communaute"; enTete(); eRapide(); };
     $("r-obj").onclick = function (e) { var b = e.target.closest(".ch"); if (!b) return; R0.obj = b.dataset.v; Array.prototype.forEach.call(this.querySelectorAll(".ch"), function (x) { x.setAttribute("aria-pressed", x === b); }); };
     $("r-libre").onclick = function () { mesure("orga-composer-librement"); $("etapes").hidden = false; aller(1); };
     $("r-go").onclick = function () {
@@ -434,14 +459,20 @@
       h += '<section class="carte"><h2>Comment suivre ce programme</h2><ul class="limites"><li>Ouvrez chaque module dans l’ordre : il vous guide étape par étape, avec vidéos, leçons et outils.</li><li>Votre organisation vous a donné un code&nbsp;? <a href="rejoindre.html">Créez votre compte</a> : votre progression est enregistrée et vous la retrouvez sur n’importe quel téléphone.</li><li><b>Ce que voit votre organisation</b>, par ses responsables du programme : votre nom, vos visites, les étapes faites, les modules terminés et votre certificat. <b>Jamais</b> vos montants, le contenu de vos fiches ni vos réponses aux quiz. Sans compte, rien n’est transmis.</li><li>Une question&nbsp;? <a href="ely.html">Posez-la à Ely</a>, le guide de l’école, ou gardez-la pour la session EFA.</li></ul><div class="acts"><a class="bt bt-p" href="parcours.html?src=programme#' + (g.ids[0] || "") + '">Commencer le premier module</a></div></section>';
     } else {
       h = '<section class="bienvenue no-print" aria-label="Le mot du président"><img src="elysee-portrait.jpg" alt="Élysée Johnson, fondateur et président d’EFA" width="606" height="909"><div><p class="sur">Bienvenue</p><h2>Vous avez fait le bon choix</h2>'
-        + '<p>Former ' + (pr.n ? 'les équipes de ' + esc(pr.n) : 'vos équipes') + ' à leurs finances, c’est leur donner de la sérénité et de la marge de manœuvre. EFA se tient à vos côtés pour mener ce chantier jusqu’au bout.</p>'
+        + '<p>Former ' + (pr.ty === "communaute" ? (pr.n ? 'la communauté ' + esc(pr.n) : 'votre communauté') : (pr.n ? 'les équipes de ' + esc(pr.n) : 'vos équipes')) + ' à leurs finances, c’est leur donner de la sérénité et de la marge de manœuvre. EFA se tient à vos côtés pour mener ce chantier jusqu’au bout.</p>'
         + '<p>Je suis Élysée Johnson et je vous accompagnerai tout au long de ce programme, du lancement jusqu’aux certificats.</p><p class="sig">Élysée Johnson<small>Fondateur et président d’EFA</small></p></div></section>'
         + '<section class="carte no-print" id="suite"><p class="sur">Étape 5 sur 5 · Votre programme est prêt</p><h2>Trois étapes pour le lancer</h2><ol class="suite">'
         + '<li><b><span class="n">1</span>Vérifiez le programme</b><span>Les modules, les semaines et les sessions sont détaillés juste en dessous. Un changement&nbsp;? Modifiez-le avant de créer vos accès.</span><div class="acts"><a href="#curriculum">Voir le programme ↓</a><button type="button" class="bt bt-l" id="a-mod">Modifier le programme</button></div></li>'
         + '<li class="go" id="acces"><b><span class="n">2</span>Créez vos accès, tout de suite</b><span>Vous recevez à l’instant la clé de votre tableau de bord, réservée aux responsables du programme, et le code d’inscription de vos participants. Gratuit pendant le pilote.</span>'
-        + '<div class="g2"><label class="champ">Organisation<input id="x-org" maxlength="80" autocomplete="organization" value="' + esc(pr.n || "") + '"></label><label class="champ">Nombre de places<input id="x-places" type="number" min="1" max="500" value="' + ({ "moins de 20": 20, "20 à 100": 100 }[pr.ta] || (pr.ta ? 500 : 50)) + '"></label>'
+        + '<div class="g2"><label class="champ">' + (pr.ty === "communaute" ? "Nom de la communauté" : "Organisation") + '<input id="x-org" maxlength="80" autocomplete="organization" value="' + esc(pr.n || "") + '"></label><label class="champ">Nombre de places<input id="x-places" type="number" min="1" max="500" value="' + ({ "moins de 20": 20, "20 à 100": 100 }[pr.ta] || (pr.ta ? 500 : 50)) + '"></label>'
         + '<label class="champ">Responsable du programme<input id="x-nom" maxlength="80" autocomplete="name" placeholder="Prénom et nom"></label><label class="champ">Fonction <small style="font-weight:400;color:#AEB6C6">facultatif</small><input id="x-fct" maxlength="80" placeholder="ex. DRH, chargée de formation"></label>'
         + '<label class="champ">Email du responsable<input id="x-mail" type="email" maxlength="120" autocomplete="email"></label></div>'
+        + '<details class="marque"' + (pr.ty === "communaute" ? " open" : "") + '><summary>' + (pr.ty === "communaute" ? "Votre marque : photo, logo, message" : "Ajouter votre logo et un mot d’accueil (facultatif)") + '</summary>'
+        + '<p class="aide">Vos membres voient votre photo, votre logo et votre message quand ils rejoignent le parcours.</p>'
+        + '<div class="g2"><label class="champ">Porteur du parcours<input id="x-por" maxlength="80" placeholder="ex. votre nom, ou celui du leader"></label><label class="champ">Rôle<select id="x-role">' + ["Leader de communauté", "Influenceur EFA", "Partenaire EFA", "Responsable du programme"].map(function (r) { return "<option" + ((pr.ty === "communaute" ? "Leader de communauté" : "Responsable du programme") === r ? " selected" : "") + ">" + r + "</option>"; }).join("") + '</select></label>'
+        + '<label class="champ">Photo du porteur<input id="x-photo" type="file" accept="image/*"><small style="font-weight:400;color:#AEB6C6">Un visage, recadré en rond</small></label><label class="champ">Logo de la communauté<input id="x-logo" type="file" accept="image/*"><small style="font-weight:400;color:#AEB6C6">PNG ou JPG, fond clair</small></label></div>'
+        + '<div class="mq-ap" id="mq-ap"></div>'
+        + '<label class="champ">Mot d’accueil <small style="font-weight:400;color:#AEB6C6">240 caractères au plus</small><textarea id="x-msg" maxlength="240" rows="3" placeholder="ex. Bienvenue dans la communauté ! Ensemble, on apprend à faire rester l’argent."></textarea></label></details>'
         + '<label class="ok-case"><input type="checkbox" id="a-ok"><span>J’ai vérifié les modules, les semaines et les sessions</span></label>'
         + '<label class="ok-case"><input type="checkbox" id="a-acc"><span>Je suis habilité à ouvrir ce programme pour mon organisation. Les responsables désignés verront le nom, les visites et l’avancement des participants inscrits avec notre code, jamais leurs montants, leurs fiches ni leurs réponses (<a href="confidentialite.html#programme" style="color:#6DB8F2">confidentialité</a>).</span></label>'
         + '<div class="acts"><button type="button" class="bt bt-p" id="a-ses" aria-disabled="true">Créer mes accès maintenant</button></div><p class="aide" id="a-msg" role="status" style="color:#F09680"></p>'
@@ -464,6 +495,9 @@
     function pret() { $("a-ses").setAttribute("aria-disabled", $("a-ok").checked && $("a-acc").checked ? "false" : "true"); }
     $("a-ok").onchange = pret; $("a-acc").onchange = pret;
     $("a-ses").onclick = function () { creerAcces(pr, lien); };
+    function apercuMq() { var org = $("x-org").value.trim(), por = $("x-por").value.trim(); $("mq-ap").innerHTML = (MQ.photo || MQ.logo) ? (MQ.logo ? '<img class="mq-logo" src="' + MQ.logo + '" alt="">' : '') + (MQ.photo ? '<img class="mq-photo" src="' + MQ.photo + '" alt="">' : '') + '<span><b>' + esc(org || "Votre communauté") + '</b>' + esc(por ? " · " + por : "") + '</span>' : ''; }
+    $("x-photo").onchange = function () { reduire(this.files[0], true, function (d) { MQ.photo = d; apercuMq(); }); };
+    $("x-logo").onchange = function () { reduire(this.files[0], false, function (d) { MQ.logo = d; apercuMq(); }); };
     $("a-mod").onclick = function () { history.replaceState(null, "", location.pathname); aller(1); };
   }
   // Création des accès par l'organisation : le Worker efa-ecole renvoie la clé d'organisation (montrée une seule fois) et le code
@@ -479,10 +513,12 @@
     var E = window.EFA_ECOLE; if (!E) return m("Le service se charge : réessayez dans quelques secondes.");
     var b = $("a-ses"); b.disabled = true; m("Création de vos accès…");
     var prog = { n: org, m: pr.m, s: pr.s, mi: pr.mi, f: pr.f, c: pr.c };
+    var por = $("x-por") ? $("x-por").value.trim() : "", msgA = $("x-msg") ? $("x-msg").value.trim() : "";
+    if (pr.ty === "communaute" || por || msgA || MQ.photo || MQ.logo) prog.mq = { t: pr.ty === "communaute" ? "communaute" : "organisation", nom: org, porteur: por, role: $("x-role") ? $("x-role").value : "", msg: msgA, photo: MQ.photo, logo: MQ.logo };
     E.appel("/organisations", { nom: org, programme: prog, places: places, accord: true, responsable: { nom: nom, fonction: fct, email: mail } }).then(function (r) {
       mesure("orga-acces-crees");
       try { sessionStorage.setItem("efa_cle_orga", r.cle_organisation); } catch (e) {}
-      var inv = "Bonjour, notre programme d’éducation financière avec EFA est ouvert. Créez votre compte en 1 minute sur votre téléphone : " + location.origin + "/rejoindre.html?code=" + r.code + " (code : " + r.code + "). Ce que voit l’organisation : votre nom, vos visites et votre avancement. Jamais vos montants, vos fiches ni vos réponses.";
+      var inv = pr.ty === "communaute" ? "Bonjour ! Le parcours d’éducation financière de " + org + " est ouvert sur EFA. Inscrivez-vous en 1 minute sur votre téléphone : " + location.origin + "/rejoindre.html?code=" + r.code + " (code : " + r.code + "). Ce que je vois : votre nom et votre avancement. Jamais vos montants, vos fiches ni vos réponses." : "Bonjour, notre programme d’éducation financière avec EFA est ouvert. Créez votre compte en 1 minute sur votre téléphone : " + location.origin + "/rejoindre.html?code=" + r.code + " (code : " + r.code + "). Ce que voit l’organisation : votre nom, vos visites et votre avancement. Jamais vos montants, vos fiches ni vos réponses.";
       var li = $("acces"); li.className = "acces-ok";
       li.innerHTML = '<b><span class="n">2</span>Vos accès sont créés · ' + esc(r.programme.nom) + '</b>'
         + '<p class="alerte-cle"><b>Notez votre clé maintenant : elle ne sera plus affichée.</b> Gardez-la pour les responsables du programme. EFA ne peut pas la retrouver ; en cas de perte, une nouvelle clé se demande à EFA.</p>'
@@ -508,6 +544,7 @@
 
   /* ---------- ouverture ---------- */
   var q = new URLSearchParams(location.search), code = q.get("p"), pr = code && decoder(code);
+  if (q.get("type") === "communaute" || (pr && pr.ty === "communaute")) { S.type = "communaute"; if (!q.get("public") && !(pr && pr.pu && pr.pu.length)) S.publics = ["communaute"]; }
   if (pr && pr.m) {
     var participant = q.get("vue") === "participant";
     S.nom = pr.n || ""; S.type = pr.ty || "entreprise"; S.taille = pr.ta || ""; S.publics = pr.pu || []; S.semaines = pr.s; S.min = pr.mi; S.format = pr.f; S.certif = pr.c ? "oui" : "non";
@@ -529,6 +566,6 @@
     var en = q.get("en");
     if (en) { en.split(",").forEach(function (x) { var p = x.split("."); if (EN[p[0]] && S.enjeux.indexOf(p[0]) < 0) { S.enjeux.push(p[0]); S.niv[p[0]] = Math.min(3, Math.max(1, +p[1] || 2)); } });
       S.nom = (q.get("n") || "").slice(0, 60); S.source = (q.get("rep") ? q.get("rep") + " réponses" : "réponses anonymes"); mesure("orga-programme-depuis-enquete"); }
-    pastilles(); if (S.mode === "labo" || en || q.get("libre")) e1(); else eRapide();
+    pastilles(); enTete(); if (S.mode === "labo" || en || q.get("libre")) e1(); else eRapide();
   }
 })();

@@ -74,6 +74,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .filtre input{font:inherit;font-size:16px;padding:9px 12px;border-radius:8px;border:0;background:var(--creme);min-width:0;flex:1 1 200px}
 .mention{font-size:13.5px;color:var(--ink3)}
 @media print{header,footer,.hero,.acts,.filtre,.efa-suite,#efa-ely,.no-print{display:none!important}}
+.mq{display:grid;gap:12px;background:#F5EFE2;border-radius:14px;padding:16px;margin:4px 0 12px}.mq-logo{max-height:64px;max-width:180px;object-fit:contain}.mq-p{display:flex;align-items:center;gap:12px}.mq-photo{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none}.mq-p b{display:block;font-family:var(--f-display);font-size:19px;color:#B8341A}.mq-p small{display:block;font-size:14px;color:#4E5566}.mq-msg{margin:0;font-size:16px;color:#0B1220;font-style:italic}
 </style>
 </head>
 <body>
@@ -179,7 +180,7 @@ function modeComm() {
 function vueCompte(c, nouveau) {
   var comm = estComm(c); if (comm) { modeComm(); var h1 = document.querySelector(".hero h1"); if (h1) h1.textContent = "Mon compte EFA"; document.title = "Mon compte EFA · Communauté EFA · EFA"; }
   $("vue").innerHTML = '<section class="carte"><p class="sur">' + (nouveau ? "Compte créé" : "Mon compte") + '</p><h2>Bonjour ' + esc(c.nom) + '</h2>'
-    + '<p class="aide">Vous suivez le programme <b>' + esc(c.programme.nom) + '</b>. Votre progression est enregistrée à chaque étape cochée.</p>'
+    + marqueHtml(c.programme.programme) + '<p class="aide">Vous suivez le programme <b>' + esc(c.programme.nom) + '</b>. Votre progression est enregistrée à chaque étape cochée.</p>'
     + (nouveau ? '<div class="alerte"><b>Gardez votre clé personnelle.</b> Elle vous permet de retrouver votre progression sur un autre téléphone. EFA ne peut pas la retrouver pour vous.</div><div class="cle" id="ma-cle">' + esc(c.cle) + '</div>'
       + '<div class="acts"><button type="button" class="bt" id="c-copier">Copier ma clé</button><button type="button" class="bt" id="c-wa">M’envoyer ma clé par WhatsApp</button></div><p class="msg" id="c-msg"></p>' : '')
     + '<div class="acts"><a class="bt bt-p" href="' + E.lienProgramme(c) + '">Ouvrir mon programme</a><a class="bt" href="parcours.html">L’école</a><button type="button" class="bt bt-l" id="c-out">Me déconnecter de ce téléphone</button></div></section>'
@@ -191,10 +192,18 @@ function vueCompte(c, nouveau) {
 var sortie = false;
 function confirmerSortie() { if (sortie) return true; sortie = true; msg("c-msg", "Avez-vous gardé votre clé ? Touchez à nouveau pour vous déconnecter.", false); if (!$("c-msg")) { var p = document.createElement("p"); p.id = "c-msg"; p.className = "msg err"; p.textContent = "Avez-vous gardé votre clé personnelle ? Touchez à nouveau pour vous déconnecter."; $("c-out").parentNode.after(p); } return false; }
 // Le programme présenté avant la création du compte : organisation, modules, rythme
+function marqueHtml(g) {
+  var m = g && g.mq; if (!m || !(m.photo || m.logo || m.porteur || m.msg)) return "";
+  var ok = function (x) { return typeof x === "string" && /^data:image\/(webp|jpeg|png);base64,/.test(x) ? x : ""; };
+  return '<div class="mq">' + (ok(m.logo) ? '<img class="mq-logo" src="' + ok(m.logo) + '" alt="Logo ' + esc(m.nom || "") + '">' : '')
+    + '<div class="mq-p">' + (ok(m.photo) ? '<img class="mq-photo" src="' + ok(m.photo) + '" alt="' + esc(m.porteur || "") + '">' : '')
+    + '<div>' + (m.porteur ? '<b>' + esc(m.porteur) + '</b>' : '') + (m.role ? '<small>' + esc(m.role) + (m.nom ? ' · ' + esc(m.nom) : '') + '</small>' : '') + '</div></div>'
+    + (m.msg ? '<p class="mq-msg">« ' + esc(m.msg) + ' »</p>' : '') + '</div>';
+}
 function apercuHtml(pr) {
   var g = pr.programme || {}, mods = (g.m || []).filter(function (id) { return P[id]; });
   var EXN = { F: "Fondations", M: "Maîtrise", P: "Patrimoine" }, certs = String(g.c || "").split("").filter(function (l) { return EXN[l]; }).map(function (l) { return "certificat local " + EXN[l]; });
-  return '<div class="apercu"><p class="sur">Programme · ' + esc(pr.nom) + '</p><p class="aide"><b>' + mods.length + ' module' + (mods.length > 1 ? 's' : '') + '</b>' + (g.s ? ' sur ' + g.s + ' semaines' : '') + (g.mi ? ', environ ' + g.mi + ' min par semaine' : '') + (certs.length ? ' · ' + certs.join(", ") + (certs.length === 3 ? ' et certificat CEFA ★' : '') : '') + '.</p>'
+  return marqueHtml(g) + '<div class="apercu"><p class="sur">' + (g.mq && g.mq.t === "communaute" ? 'Parcours · ' : 'Programme · ') + esc(pr.nom) + '</p><p class="aide"><b>' + mods.length + ' module' + (mods.length > 1 ? 's' : '') + '</b>' + (g.s ? ' sur ' + g.s + ' semaines' : '') + (g.mi ? ', environ ' + g.mi + ' min par semaine' : '') + (certs.length ? ' · ' + certs.join(", ") + (certs.length === 3 ? ' et certificat CEFA ★' : '') : '') + '.</p>'
     + (mods.length ? '<ol class="ap-mods">' + mods.slice(0, 30).map(function (id) { return '<li><b>' + P[id].module + '</b> ' + esc(P[id].titre) + '</li>'; }).join("") + '</ol>' : '') + '</div>';
 }
 function inconnu(code) {

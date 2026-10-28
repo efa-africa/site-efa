@@ -13,12 +13,14 @@
    Version 1.1 : une organisation crée elle-même ses accès depuis « Composer un programme » (route /organisations),
    sans attendre EFA : 500 places au plus, ouvert un an, au plus 3 créations par email et par jour et 30 par heure au total.
    Version 1.2 : /programme?code=… présente le programme (organisation, modules, rythme) avant la création du compte.
+   Version 1.5 (28 octobre 2026) : programmes de communauté (influenceurs, leaders, partenaires) avec marque : nom, porteur,
+   rôle, message d'accueil, photo et logo, renvoyés avec le programme au participant.
    Version 1.4 (27 octobre 2026) : « Mon point » (oui/non au départ, à 30 et 90 jours) dans le bilan ; enquêtes anonymes des
    organisations (routes /enquete…, tables de 03-supabase-enquetes.sql) : 15 réponses oui/non, résultats à partir de 5 réponses.
    Les clés ne sont jamais stockées : seule leur empreinte SHA-256 l'est. Aucune somme saisie dans les outils n'est reçue. */
 
 const ORIGINES = ["https://efa.africa", "https://www.efa.africa", "https://efa-test.pages.dev"];
-const VERSION = "1.4";
+const VERSION = "1.5";
 const AUTO_PLACES = 500, AUTO_PAR_EMAIL = 3, AUTO_PAR_HEURE = 30;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sans 0/O ni 1/I, pour la lecture et la dictée
 
@@ -97,7 +99,18 @@ function base(env) {
 const MODULE = /^[PM]\d{1,2}$/, ETAPE = /^[PM]\d{1,2}\.\d{1,2}$/;
 function programmeValide(p) {
   if (!p || !Array.isArray(p.m) || !p.m.length || p.m.length > 30 || !p.m.every(x => MODULE.test(x))) return null;
-  return { m: p.m, s: Math.min(52, Math.max(1, +p.s || 8)), mi: Math.min(600, Math.max(15, +p.mi || 45)), f: ["0", "1", "2"].includes(String(p.f)) ? String(p.f) : "0", c: ["F", "M", "P"].filter(l => String(p.c || "").includes(l)).join("") };
+  const out = { m: p.m, s: Math.min(52, Math.max(1, +p.s || 8)), mi: Math.min(600, Math.max(15, +p.mi || 45)), f: ["0", "1", "2"].includes(String(p.f)) ? String(p.f) : "0", c: ["F", "M", "P"].filter(l => String(p.c || "").includes(l)).join("") };
+  const mq = marqueValide(p.mq); if (mq) out.mq = mq;
+  return out;
+}
+// Marque d'une communauté ou d'un partenaire : nom, porteur, rôle, message, photo et logo (images réduites dans le navigateur, 90 Ko au plus chacune)
+const ROLES = ["Influenceur EFA", "Leader de communauté", "Partenaire EFA", "Responsable du programme"];
+const IMAGE = /^data:image\/(webp|jpeg|png);base64,[A-Za-z0-9+\/=]+$/;
+function marqueValide(m) {
+  if (!m || typeof m !== "object") return null;
+  const img = x => (typeof x === "string" && x.length <= 120000 && IMAGE.test(x)) ? x : "";
+  const r = { t: String(m.t || "") === "communaute" ? "communaute" : "organisation", nom: texte(m.nom, 80), porteur: texte(m.porteur, 80), role: ROLES.includes(m.role) ? m.role : "", msg: texte(m.msg, 240), photo: img(m.photo), logo: img(m.logo) };
+  return (r.nom || r.porteur || r.photo || r.logo || r.msg || r.t === "communaute") ? r : null;
 }
 function ouvert(pg) { return pg && pg.actif && (!pg.expire_le || new Date(pg.expire_le + "T23:59:59Z") >= new Date()); }
 const publicProgramme = pg => ({ id: pg.id, nom: pg.nom, programme: pg.programme, expire_le: pg.expire_le, actif: pg.actif });
