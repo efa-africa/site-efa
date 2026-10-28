@@ -1157,6 +1157,14 @@ img.char{object-position:50% 18%}
 .lb-app-t{margin:0;color:#fff;font-size:16px}.lb-app-s{margin:4px 0 10px;font-size:14px;line-height:1.45}
 .lb-app-b{display:inline-flex;align-items:center;min-height:42px;padding:8px 14px;border-radius:8px;background:#F5EFE2;color:#0B1220;font-weight:800;font-size:15px;text-decoration:none}
 @media (max-width:760px){.lb-in{grid-template-columns:minmax(0,1fr)}}
+
+/* Accueil épuré : seul l'écran d'accueil et le bas de page ; le reste s'ouvre par « Découvrir EFA » */
+html:not(.efa-decouvrir) #ecole,html:not(.efa-decouvrir) #besoins,html:not(.efa-decouvrir) #essayer-minfin,html:not(.efa-decouvrir) #efa,html:not(.efa-decouvrir) .eh-bas{display:none!important}
+.porte-efa{display:flex;justify-content:center;padding:18px 16px 34px;background:var(--nuit)}
+.porte-efa button{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:10px 18px;border-radius:999px;border:0;cursor:pointer;background:rgba(255,255,255,.1);color:#fff;font:700 15px var(--f-body)}
+.porte-efa i{font-style:normal;display:inline-block;animation:pe 1.8s infinite}
+@keyframes pe{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+html.efa-decouvrir .porte-efa{display:none}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 <script type="application/ld+json">
@@ -1251,6 +1259,7 @@ if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);
     </div>
   </section>
 
+  <div class="porte-efa"><button type="button" id="porte-efa" data-goatcounter-click="accueil-decouvrir-efa">Découvrir EFA <i aria-hidden="true">↓</i></button></div>
   <section class="screen ecole ec2" id="ecole" data-step="Trois portes" aria-labelledby="ec-t2">
     <div class="ec2-in">
       <div class="ec2-reprise" id="ec2-reprise" hidden>
@@ -1390,6 +1399,7 @@ if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);
   <a class="enq-lien" data-goatcounter-click="enquete-rappel" href="#enquete" target="_blank" rel="noopener">Répondez à l’enquête tontine<small>Même si vous n’en faites pas · quelques minutes</small></a>
   <button type="button" id="enq-x" aria-label="Fermer le rappel">×</button>
 </div>
+<script>(function(){var b=document.getElementById("porte-efa");if(!b)return;if(/^#(ecole|besoins|essayer-minfin|efa|guide)/.test(location.hash))document.documentElement.classList.add("efa-decouvrir");b.onclick=function(){document.documentElement.classList.add("efa-decouvrir");var e=document.getElementById("ecole");if(e)e.scrollIntoView({behavior:"smooth"});};})();</script>
 <footer class="efa-foot">
   <div class="ef-in">
     <div class="ef-top">
@@ -1894,7 +1904,7 @@ var BREVO_URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhl
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102821" defer></script>
+<script src="efa-appli.js?v=2026102830" defer></script>
 <script src="minfin.js?v=2026102702"></script>
 <script>
 (function(){

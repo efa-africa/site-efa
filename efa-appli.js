@@ -194,3 +194,31 @@
   if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102710"; u.defer = true; document.head.appendChild(u); }
   if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102710"; k.defer = true; document.head.appendChild(k); }
 })();
+
+/* Menu replié sous trois barres, sur téléphone comme sur ordinateur, avec « Mon parcours » en tête quand on a commencé. */
+(function () {
+  try {
+    var b = document.getElementById("menu"), n = document.getElementById("nav");
+    if (!b || !n || !b.classList.contains("menu-btn")) return;
+    document.documentElement.classList.add("efa-burger");
+    var st = document.createElement("style");
+    st.textContent = "html.efa-burger .menu-btn{display:inline-flex!important;align-items:center;gap:8px;position:relative;z-index:31;min-height:44px}"
+      + "html.efa-burger .menu-btn .bar{display:inline-grid;gap:4px}html.efa-burger .menu-btn .bar i{display:block;width:18px;height:2px;border-radius:2px;background:#fff}"
+      + "html.efa-burger .nav{position:fixed!important;top:0;left:0;width:100vw;height:100vh;height:100svh;z-index:30;background:#0B1220;flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none!important;padding:24px}"
+      + "html.efa-burger .nav.open{display:flex!important}"
+      + "html.efa-burger .nav a{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(22px,3vw,30px);color:#fff;text-decoration:none;padding:8px 14px}"
+      + "html.efa-burger .nav a.nav-cta{background:none!important;color:#F09680!important}"
+      + "html.efa-burger .nav a.nav-moi{font-family:'Source Sans 3',system-ui,sans-serif;font-size:15px;font-weight:800;background:#DA3C1B;border-radius:999px;padding:10px 20px;margin-bottom:10px}";
+    document.head.appendChild(st);
+    var lab = function (o) { b.innerHTML = '<span class="bar" aria-hidden="true"><i></i><i></i><i></i></span><span>' + (o ? "Fermer" : "Menu") + "</span>"; };
+    lab(false);
+    new MutationObserver(function () { lab(n.classList.contains("open")); }).observe(n, { attributes: true, attributeFilter: ["class"] });
+    var moi = localStorage.getItem("efa_objectif") || localStorage.getItem("efa_cahier_v1");
+    if (moi && !n.querySelector(".nav-moi")) {
+      var a = document.createElement("a"); a.className = "nav-moi"; a.href = localStorage.getItem("efa_cahier_v1") ? "outils.html#cahier" : "point-de-depart.html?src=menu";
+      a.textContent = localStorage.getItem("efa_cahier_v1") ? "Mon cahier et mon parcours" : "Mon parcours"; n.insertBefore(a, n.firstChild);
+    }
+    n.addEventListener("click", function (e) { if (e.target.closest("a")) { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && n.classList.contains("open")) { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
+  } catch (e) {}
+})();
