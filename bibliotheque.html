@@ -161,7 +161,8 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .photos figcaption{padding:12px 14px;font-size:14.5px;color:var(--ink2)}
 .photos figcaption b{display:block;color:var(--nuit)}
-.cap{padding-top:0;overflow:hidden}
+.cap{padding-top:0;overflow:hidden;position:relative}
+.cap-ia{position:absolute;top:8px;right:12px;font:italic 400 10px/1 var(--f-body);color:rgba(255,255,255,.9);text-shadow:0 1px 3px rgba(0,0,0,.6);pointer-events:none}
 .cap-img{display:block;width:calc(100% + 40px);max-width:none;margin:0 -20px 4px;height:auto;aspect-ratio:16/9;object-fit:cover}
 .cap-photo{display:block;width:calc(100% + 40px);max-width:none;margin:0 -20px 4px;height:auto;aspect-ratio:4/1;object-fit:cover;object-position:left center}
 .cap-por{object-fit:cover;object-position:center 20%;width:64px!important;height:64px!important}
@@ -195,7 +196,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 </div></section>
 <div class="wrap">
   <div class="panneau" id="livres" role="tabpanel" aria-labelledby="o-livres">
-  <div class="ill-tete"><img src="illus/livres.webp?v=2810" alt="Une bibliothèque bleu nuit, des livres, une lampe et un globe" width="1200" height="675"><div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et relues par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div></div>
+  <div class="ill-tete"><img src="illus/livres.webp?v=2811" alt="Un bureau de lecture : un livre ouvert, un carnet, et des étagères de livres face à la ville" width="1200" height="675"><div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et relues par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div></div>
   <div class="etag" id="etag" aria-label="Les fiches de lecture"></div>
   </div>
 
@@ -314,7 +315,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   /* capitaines */
   var C=window.EFA_CAPITAINES||[],Z=document.getElementById('caps');
   function ini(n){return n.split(/\s+/).filter(function(w){return /^[A-ZÉ]/.test(w)}).slice(0,2).map(function(w){return w[0]}).join('');}
-  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><img class="cap-img" src="'+(c.img||'illus/c-'+c.id+'.svg')+'?v=2810" alt="" width="480" height="300" loading="lazy"><div class="cap-h">'+(c.portrait?'<img class="cap-ini cap-por" src="'+c.portrait+'" alt="Portrait de '+c.nom+'" loading="lazy">':'<span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span>')+'<h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
+  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><img class="cap-img" src="'+(c.img||'illus/c-'+c.id+'.svg')+'?v=2811" alt="" width="480" height="300" loading="lazy">'+(/^(motsepe|ibrahim|dewji|alemu|mwangi|awuah|masiyiwa|fokam|jonah)$/.test(c.id)?'<span class="cap-ia">Illustration · IA</span>':'')+'<div class="cap-h">'+(c.portrait?'<img class="cap-ini cap-por" src="'+c.portrait+'" alt="Portrait de '+c.nom+'" loading="lazy">':'<span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span>')+'<h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
     +'<div class="cap-idee"><small>Sa pensée</small><b>'+c.nomIdee+'</b><span>'+c.idee+'</span>'+(c.citation?'<cite>'+c.citation+'</cite>':'')+'</div>'
     +'<p><b>'+(c.f?'Ce qu’elle a apporté.':'Ce qu’il a apporté.')+'</b> '+c.apporte+'</p><p class="lec"><b>Ce qu’on en retient pour son argent</b>'+c.lecon+'</p>'
     +(c.portrait&&c.credit?'<p class="cap-cr">Portrait&nbsp;: '+c.credit.auteur+', <a href="'+c.credit.lien+'" target="_blank" rel="noopener">'+c.credit.licence+'</a>, via Wikimedia Commons, recadré</p>':'')+'<details><summary>Repères</summary><ol>'+c.reperes.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>'}).join('')+'</ol></details></article>';}
