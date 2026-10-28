@@ -136,7 +136,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .cap ol li{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr);gap:10px}
 .cap ol b{color:var(--nuit)}
 .ill-tete{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;background:var(--papier);border-radius:18px;overflow:hidden;margin-top:24px;align-items:center}
-.ill-tete img{display:block;width:100%;height:auto;aspect-ratio:16/10}
+.ill-tete img{display:block;width:100%;height:100%;min-height:100%;aspect-ratio:16/9;object-fit:cover}
 .ill-tete .intro-b{margin:0;border-radius:0;background:none}
 @media (max-width:720px){.ill-tete{grid-template-columns:minmax(0,1fr)}}
 .salles a{grid-template-columns:auto minmax(0,1fr);overflow:hidden;padding:0 18px 18px}
@@ -180,7 +180,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 </div></section>
 <div class="wrap">
   <div class="panneau" id="livres" role="tabpanel" aria-labelledby="o-livres">
-  <div class="ill-tete"><img src="illus/livres.svg" alt="Une étagère de livres et une lampe" width="480" height="300"><div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et vérifiées par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div></div>
+  <div class="ill-tete"><img src="illus/livres.webp" alt="Une bibliothèque bleu nuit, des livres, une lampe et un globe" width="1200" height="675"><div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et vérifiées par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div></div>
   <div class="etag" id="etag" aria-label="Les fiches de lecture"></div>
   </div>
 
@@ -269,7 +269,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="bibliotheque-livres.js?v=2026102801"></script>
 <script src="bibliotheque-lecture.js?v=2026102801"></script>
-<script src="bibliotheque-capitaines.js?v=2026102803"></script>
+<script src="bibliotheque-capitaines.js?v=2026102804"></script>
 <script>
 (function(){
   var L=window.EFA_LIVRES||[], E=document.getElementById('etag');

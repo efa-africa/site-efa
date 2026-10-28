@@ -23,7 +23,7 @@ window.EFA_CAPITAINES = [
    apporte:"Ancien haut fonctionnaire, il a fondé la Banque Atlantique avec 1&nbsp;% du capital au départ, lancé des réseaux de téléphonie mobile, perdu gros dans l’aérien, puis rebondi jusqu’au rachat d’une mine d’or. Il défend trois valeurs&nbsp;: un parcours exemplaire, l’intégrité, le courage.",
    lecon:"Tester petit, puis s’engager. Et accepter que le chemin ne soit pas droit&nbsp;: une chute n’annule pas un parcours, si l’on garde la force de repartir.",
    reperes:[["1978","Prend 1 % du capital de ce qui deviendra la Banque Atlantique"],["2002","Lance Atlantique Telecom, sous la marque Moov"],["2012","Cède la majorité de la banque pour financer l’étape suivante"],["2025","Rachète la mine d’or de Tongon"]]},
-  {id:"awuah", nom:"Patrick Awuah", pays:"Ghana", region:"ouest", secteur:"Éducation",
+  {id:"awuah", img:"illus/cap-awuah.webp", nom:"Patrick Awuah", pays:"Ghana", region:"ouest", secteur:"Éducation",
    idee:"Le continent manque moins d’argent que de dirigeants intègres capables de résoudre des problèmes.",
    nomIdee:"Former des dirigeants éthiques",
    apporte:"Ingénieur chez Microsoft aux États-Unis, il est rentré au Ghana pour fonder l’université Ashesi, connue pour son code d’honneur&nbsp;: les étudiants passent leurs examens sans surveillant.",
