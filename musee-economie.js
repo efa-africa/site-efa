@@ -78,31 +78,31 @@
         { k: "d", t: "À vous : s’endetter jusqu’où ?", p: "Six mois du budget de Mariam. Chaque mois, une décision : moto à crédit, prêt facile, rentrée scolaire.",
           a: [["Jouer à S’endetter jusqu’où", "#borne-dette"]] }
       ] },
-    { t: "L’économie qui fait vivre les familles", st: "Marchés, tontines, diaspora", i: "p-confiance",
+    { t: "L’économie qui fait vivre les familles", st: "Marchés, tontines, diaspora", i: "h-famille", h: 2,
       p: "Le cœur de l’économie africaine bat au marché, dans la tontine et dans les transferts de la famille.",
       e: [
         { k: "f", ini: "NB", i: "h-nana-benz", h: 1, nom: "Les Nana Benz", d: "Années 1960–1970", l: "Lomé", role: "Commerçantes de pagnes wax",
           p: "Des femmes du grand marché de Lomé bâtissent de véritables maisons de commerce. Si prospères qu’on les surnomme d’après leurs Mercedes-Benz, elles font crédit, financent et forment toute une génération de revendeuses." },
-        { k: "o", d: "Chez nous", l: "Le cercle de confiance", t: "La tontine", i: "cap-fokam",
+        { k: "o", d: "Chez nous", l: "Le cercle de confiance", t: "La tontine", i: "h-tontine", h: 2,
           p: "Elle peut lisser les dépenses, financer un projet ou constituer une réserve : tout dépend de ses règles. Elle tient, comme la monnaie, sur la confiance du groupe." },
-        { k: "o", d: "Chaque soir", l: "Au marché", t: "Séparer les poches", i: "p-informel",
+        { k: "o", d: "Chaque soir", l: "Au marché", t: "Séparer les poches", i: "h-poches", h: 2,
           p: "Revenus irréguliers, argent de la maison mêlé à celui de l’activité : un simple cahier de recettes change tout. Et le travail fait à la maison, lui, n’est compté nulle part." },
-        { k: "o", d: "Chaque mois", l: "Paris, Montréal, Abidjan", t: "La diaspora", i: "s3-acteurs",
+        { k: "o", d: "Chaque mois", l: "Paris, Montréal, Abidjan", t: "La diaspora", i: "h-diaspora", h: 2,
           p: "Les transferts des parents installés à l’étranger pèsent lourd dans le revenu de nombreuses familles. Bien utilisés, ils construisent ; mal organisés, ils s’évaporent." },
         { k: "d", t: "À vous : votre tontine", p: "Comment elle marche, ce qu’elle rapporte, et comment en garder une part.",
           a: [["Comprendre la tontine", "tontine.html?src=musee"], ["Ce que vaut votre temps", "#borne-temps"]] }
       ] },
-    { t: "Transformer sur place", st: "Où se crée la valeur ?", i: "s6-croissance",
+    { t: "Transformer sur place", st: "Où se crée la valeur ?", i: "h-chocolaterie", h: 2,
       p: "Posséder une ressource ne suffit pas : la valeur se crée surtout en la transformant.",
       e: [
-        { k: "o", d: "Aujourd’hui", l: "Côte d’Ivoire et Ghana", t: "La fève et la tablette", i: "p-cacao",
+        { k: "o", d: "Aujourd’hui", l: "Côte d’Ivoire et Ghana", t: "La fève et la tablette", i: "h-cacao", h: 2,
           p: "Les deux pays produisent ensemble plus de la moitié du cacao mondial. Mais l’essentiel du prix d’une tablette se crée après la fève : broyage, chocolaterie, marque, distribution." },
-        { k: "o", d: "Pour réussir", l: "L’atelier, l’usine", t: "Transformer exige", i: "p-entreprise",
+        { k: "o", d: "Pour réussir", l: "L’atelier, l’usine", t: "Transformer exige", i: "h-atelier", h: 2,
           p: "Des compétences, de l’énergie, des machines, des clients et un prix compétitif. Et le prix de vente n’est pas le bénéfice : il faut d’abord payer tout le reste." },
         { k: "d", t: "À vous : l’entrepreneur stratège", p: "Six semaines face à un concurrent : baisser les prix ou améliorer la qualité ?",
           a: [["Jouer à L’entrepreneur stratège", "#borne-strat"]] }
       ] },
-    { t: "Les bâtisseurs", st: "Leurs équipes et leurs institutions", i: "cap-elumelu",
+    { t: "Les bâtisseurs", st: "Leurs équipes et leurs institutions", i: "h-batisseurs", h: 2,
       p: "Derrière chaque grande entreprise : un besoin, un premier financement, des salariés, des fournisseurs, des règles.",
       e: [
         { k: "f", ini: "KD", i: "h-dossongui", h: 3, nom: "Koné Dossongui", d: "1978", l: "Abidjan", role: "Banquier et industriel ivoirien",
@@ -162,7 +162,7 @@
   function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
-  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 1 ? 'Reconstitution illustrative, réalisée avec l’aide de l’IA' : h === 3 ? 'Portrait retravaillé avec l’aide de l’IA' : 'Illustration réalisée avec l’aide de l’IA') + '</span>' : '') + '</div>'; }
+  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 3 ? 'Portrait · IA' : 'Illustration · IA') + '</span>' : '') + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
