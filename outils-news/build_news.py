@@ -217,12 +217,13 @@ CSS_HOME = """<style>
 </style>"""
 
 def head(titre, desc, canon, pre, og_type="website", image=None, extra=""):
+    # canon se terminant par news.html : la page homonyme du dossier news/ garde son .html
     img = image or BASEURL + "og-image.png"
     return f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<script>/* Adresses sans « .html » */(function(){{try{{var p=location.pathname,n=p.replace(/\\/index\\.html$/,"/").replace(/\\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}}catch(e){{}}}})();</script>
+<script>/* Adresses sans « .html » */(function(){{try{{var p=location.pathname;if(/\\/news\\.html$/.test(p))return;var n=p.replace(/\\/index\\.html$/,"/").replace(/\\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}}catch(e){{}}}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="{pre}logo-efa-96.png">
 <link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
@@ -291,7 +292,7 @@ def page_article(a):
          "citation": [s[3] for s in a["sources"]]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Accueil", "item": BASEURL},
-            {"@type": "ListItem", "position": 2, "name": "EFA News", "item": BASEURL + "news"},
+            {"@type": "ListItem", "position": 2, "name": "EFA News", "item": BASEURL + "news.html"},
             {"@type": "ListItem", "position": 3, "name": a["titre"].replace("'", "’"), "item": url}]}]}
     extra = (f'<meta property="article:published_time" content="{a["publication"]}T07:00:00+00:00">\n'
              f'<meta property="article:modified_time" content="{a["maj"]}T07:00:00+00:00">\n'
@@ -432,7 +433,7 @@ def index_json():
 
 def page_home():
     pre = ""
-    url = BASEURL + "news"
+    url = BASEURL + "news.html"  # news/ est aussi un dossier : garder .html
     titre = "EFA News : comprendre ce que l’actualité change pour votre argent · EFA"
     desc = "L’actualité de la finance africaine expliquée : le fait, le chiffre, le mécanisme, ce qu’on ne sait pas encore, les sources, et la leçon EFA pour aller plus loin."
     ld = {"@context": "https://schema.org", "@graph": [

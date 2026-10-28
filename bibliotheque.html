@@ -2,11 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
-<title>La bibliothèque EFA · les grands livres sur l’argent, en format statut · EFA</title>
+<title>La bibliothèque EFA · livres, balade de l’économie, capitaines d’industrie · EFA</title>
 <meta name="description" content="Les grands livres sur l’argent, en fiches de lecture d’une minute au format statut : les idées, ce qui marche en Afrique francophone, ce qui ne marche pas, une décision et un quiz. Fiches réalisées avec l’aide de l’intelligence artificielle, vérifiées par l’équipe EFA.">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,6 +94,47 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .cmp{font-size:14px;font-weight:700;color:var(--ink2);text-decoration:underline;text-decoration-color:var(--corail);text-underline-offset:4px;display:inline-flex;min-height:36px;align-items:center}
 .intro-b{display:grid;gap:10px;background:var(--papier);border-radius:14px;padding:18px 20px;margin-top:24px;font-size:16px;line-height:1.5;color:var(--ink2)}
 .intro-b b{color:var(--nuit)}
+/* onglets : aplat plein pour l'onglet actif, jamais de liseré */
+.onglets{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.onglets button{font:800 15.5px/1.2 var(--f-body);min-height:46px;padding:11px 18px;border-radius:999px;border:0;cursor:pointer;background:rgba(255,255,255,.1);color:#fff}
+.onglets button:hover{background:rgba(255,255,255,.18)}
+.onglets button[aria-selected=true]{background:var(--corail);color:#fff}
+.onglets small{display:block;font-weight:400;font-size:12.5px;opacity:.85;margin-top:2px}
+.panneau[hidden]{display:none}
+/* balade */
+.bal-tete{display:grid;gap:12px;background:var(--nuit);color:#fff;border-radius:18px;padding:24px 22px;margin-top:24px}
+.bal-tete h2{color:#fff;font-size:clamp(24px,3.4vw,36px)}
+.bal-tete p{color:#C9D1DE;max-width:44em}
+.bal-tete .bt-p{justify-self:start}
+.salles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px;padding-block:18px 40px}
+.salles a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;background:var(--papier);border-radius:14px;padding:18px;text-decoration:none;color:var(--nuit)}
+.salles i{grid-row:span 3;width:46px;height:46px;border-radius:50%;background:var(--corail);color:#fff;display:grid;place-items:center;font:700 20px var(--f-display);font-style:normal}
+.salles b{font-family:var(--f-display);font-size:19px;line-height:1.2}
+.salles span{font-size:15px;color:var(--ink2)}
+.salles em{font-style:normal;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#B8341A}
+/* capitaines */
+.cap-filtres{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.cap-filtres button{font:700 15px var(--f-body);min-height:40px;padding:8px 14px;border-radius:999px;border:0;cursor:pointer;background:var(--papier);color:var(--nuit)}
+.cap-filtres button[aria-pressed=true]{background:var(--nuit);color:#fff}
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;padding-block:16px 40px}
+.cap{background:var(--papier);border-radius:16px;padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+.cap-h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 14px;align-items:center}
+.cap-ini{grid-row:span 2;width:52px;height:52px;border-radius:50%;background:var(--nuit);color:#fff;display:grid;place-items:center;font:700 18px var(--f-display)}
+.cap h3{font-size:clamp(19px,1.7vw,23px);line-height:1.18}
+.cap-m{font-size:14px;color:var(--ink2)}
+.cap-idee{background:var(--corail);color:#fff;border-radius:12px;padding:14px 16px}
+.cap-idee small{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.cap-idee b{display:block;font-family:var(--f-display);font-size:18px;line-height:1.3;margin-top:4px}
+.cap-idee span{display:block;font-size:15px;margin-top:6px}
+.cap-idee cite{display:block;font-style:normal;font-size:12.5px;margin-top:6px;opacity:.9}
+.cap p{font-size:16px;color:var(--ink)}
+.cap .lec{background:var(--creme);border-radius:10px;padding:12px 14px;font-size:15.5px}
+.cap .lec b{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#B8341A;margin-bottom:3px}
+.cap details{font-size:15px;color:var(--ink2)}
+.cap summary{cursor:pointer;font-weight:800;color:var(--nuit);min-height:36px;display:flex;align-items:center}
+.cap ol{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+.cap ol li{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr);gap:10px}
+.cap ol b{color:var(--nuit)}
 </style>
 </head>
 <body>
@@ -113,12 +153,47 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <section class="hero"><div class="wrap">
   <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="methode.html">Études &amp; prospective</a> › La bibliothèque</nav>
   <span class="sur">La bibliothèque EFA</span>
-  <h1>Les grands livres sur l’argent, en format statut</h1>
-  <p class="chapo">Pour chaque livre : l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p>
+  <h1>Lire, visiter, s’inspirer</h1>
+  <p class="chapo">Les grands livres sur l’argent en fiches courtes, une balade dans l’économie en six salles, et la pensée des bâtisseurs africains.</p>
+  <div class="onglets" role="tablist" aria-label="Rayons de la bibliothèque">
+    <button type="button" role="tab" id="o-livres" aria-controls="livres" aria-selected="true" data-o="livres">Les livres<small>Fiches de lecture</small></button>
+    <button type="button" role="tab" id="o-balade" aria-controls="balade" aria-selected="false" data-o="balade">La balade de l’économie<small>6 salles, 8 jeux</small></button>
+    <button type="button" role="tab" id="o-capitaines" aria-controls="capitaines" aria-selected="false" data-o="capitaines">Les capitaines d’industrie<small>Leur pensée, leurs leçons</small></button>
+  </div>
 </div></section>
 <div class="wrap">
-  <div class="intro-b"><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et vérifiées par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div>
+  <div class="panneau" id="livres" role="tabpanel" aria-labelledby="o-livres">
+  <div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et vérifiées par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div>
   <div class="etag" id="etag" aria-label="Les fiches de lecture"></div>
+  </div>
+
+  <div class="panneau" id="balade" role="tabpanel" aria-labelledby="o-balade" hidden>
+    <div class="bal-tete">
+      <span class="sur" style="color:var(--soft-corail)">Nouveau · La balade de l’économie</span>
+      <h2>Comprendre l’économie en 25 minutes, du marché à la banque centrale</h2>
+      <p>Une visite en six salles, inspirée du musée de l’économie de la Banque de France et transposée à nos marchés, à nos banques et au franc CFA. Dans chaque salle, une borne&nbsp;: un petit jeu de deux à cinq minutes.</p>
+      <a class="bt bt-p" href="balade-economie.html?src=bibliotheque" data-goatcounter-click="biblio-balade-entrer">Commencer la visite →</a>
+    </div>
+    <div class="salles">
+      <a href="balade-economie.html?src=bibliotheque#echanger"><i>1</i><b>Échanger</b><span>Pourquoi on se spécialise, ce qui a de la valeur, la confiance.</span><em>Jeu · Troc ou monnaie&nbsp;?</em></a>
+      <a href="balade-economie.html?src=bibliotheque#monnaie"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money, le franc CFA en quatre repères.</span><em>Jeu · Vrai ou faux</em></a>
+      <a href="balade-economie.html?src=bibliotheque#acteurs"><i>3</i><b>Les acteurs</b><span>Ménages, entreprises, banques, État, diaspora&nbsp;: le circuit.</span><em>Jeux · Reliez les acteurs, l’entrepreneur stratège</em></a>
+      <a href="balade-economie.html?src=bibliotheque#etat"><i>4</i><b>L’État et les règles</b><span>Impôts, services publics, externalités, l’informel.</span><em>Jeux · Public ou privé, ce que vaut votre temps</em></a>
+      <a href="balade-economie.html?src=bibliotheque#banques"><i>5</i><b>Banques et inflation</b><span>Solvable ou liquide, la BCEAO, le pouvoir d’achat.</span><em>Jeux · Dans la peau d’un banquier, s’endetter jusqu’où</em></a>
+      <a href="balade-economie.html?src=bibliotheque#croissance"><i>6</i><b>La croissance</b><span>Produire plus ou mieux, le commerce mondial, la frise du temps.</span></a>
+    </div>
+  </div>
+
+  <div class="panneau" id="capitaines" role="tabpanel" aria-labelledby="o-capitaines" hidden>
+    <div class="intro-b"><p><b>Ce qu’ils pensent, ce qu’ils ont changé, ce qu’on en retient pour son argent.</b> Des bâtisseurs africains, de Lagos à Addis-Abeba, présentés par leur idée maîtresse plutôt que par leur fortune.</p><p>Portraits rédigés par EFA à partir de sources publiques. Les idées sont reformulées&nbsp;; une citation n’apparaît qu’entre guillemets, avec sa source. Ils ne sont pas des modèles à copier, mais des parcours dont on peut tirer des leçons.</p></div>
+    <div class="cap-filtres" id="cap-f" aria-label="Filtrer par région">
+      <button type="button" data-r="" aria-pressed="true">Tous</button>
+      <button type="button" data-r="ouest" aria-pressed="false">Afrique de l’Ouest</button>
+      <button type="button" data-r="centre" aria-pressed="false">Afrique centrale</button>
+      <button type="button" data-r="est" aria-pressed="false">Afrique de l’Est et australe</button>
+    </div>
+    <div class="caps" id="caps"></div>
+  </div>
 </div>
 </main>
 <footer class="efa-foot">
@@ -171,6 +246,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
 <script src="bibliotheque-livres.js?v=2026102801"></script>
 <script src="bibliotheque-lecture.js?v=2026102801"></script>
+<script src="bibliotheque-capitaines.js?v=2026102801"></script>
 <script>
 (function(){
   var L=window.EFA_LIVRES||[], E=document.getElementById('etag');
@@ -185,6 +261,28 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   E.addEventListener('click',function(e){var c=e.target.closest('[data-complet]');if(c){e.preventDefault();window.EFA_BIBLIO.ouvrir(c.dataset.complet,true);return}var b=e.target.closest('.lv');if(b)window.EFA_BIBLIO.ouvrir(b.dataset.id)});
   window.EFA_BIBLIO.apresFermer=rendre; rendre();
   var P=new URLSearchParams(location.search), q=P.get('livre'); if(q) window.EFA_BIBLIO.ouvrir(q, P.get('fiche')==='complete');
+})();
+</script>
+<script>
+(function(){
+  /* onglets */
+  var T=document.querySelectorAll('.onglets [role=tab]');
+  function montrer(o,maj){T.forEach(function(t){var on=t.dataset.o===o;t.setAttribute('aria-selected',on);document.getElementById(t.dataset.o).hidden=!on;});
+    if(maj&&history.replaceState)history.replaceState(null,'',location.pathname+location.search+(o==='livres'?'':'#'+o));
+    try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'biblio-onglet-'+o,title:o,event:true});}catch(e){}}
+  T.forEach(function(t){t.addEventListener('click',function(){montrer(t.dataset.o,true);});
+    t.addEventListener('keydown',function(e){var i=[].indexOf.call(T,t),n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:-9;if(n===-9)return;n=(n+T.length)%T.length;T[n].focus();montrer(T[n].dataset.o,true);});});
+  var h=location.hash.replace('#','');if(h==='balade'||h==='capitaines')montrer(h,false);
+  /* capitaines */
+  var C=window.EFA_CAPITAINES||[],Z=document.getElementById('caps');
+  function ini(n){return n.split(/\s+/).filter(function(w){return /^[A-ZÉ]/.test(w)}).slice(0,2).map(function(w){return w[0]}).join('');}
+  function carte(c){return '<article class="cap" id="cap-'+c.id+'"><div class="cap-h"><span class="cap-ini" aria-hidden="true">'+ini(c.nom)+'</span><h3>'+c.nom+'</h3><span class="cap-m">'+c.pays+' · '+c.secteur+'</span></div>'
+    +'<div class="cap-idee"><small>Sa pensée</small><b>'+c.nomIdee+'</b><span>'+c.idee+'</span>'+(c.citation?'<cite>'+c.citation+'</cite>':'')+'</div>'
+    +'<p><b>'+(c.f?'Ce qu’elle a apporté.':'Ce qu’il a apporté.')+'</b> '+c.apporte+'</p><p class="lec"><b>Ce qu’on en retient pour son argent</b>'+c.lecon+'</p>'
+    +'<details><summary>Repères</summary><ol>'+c.reperes.map(function(r){return '<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>'}).join('')+'</ol></details></article>';}
+  function rendre(r){Z.innerHTML=C.filter(function(c){return !r||c.region===r}).map(carte).join('');}
+  document.getElementById('cap-f').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});rendre(b.dataset.r);});
+  rendre('');
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
