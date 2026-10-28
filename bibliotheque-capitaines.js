@@ -53,7 +53,7 @@ window.EFA_CAPITAINES = [
    apporte:"Il a mené cinq ans de bataille judiciaire pour obtenir une licence de téléphonie mobile, sans payer de pots-de-vin, avant de bâtir Econet. Il partage depuis des années ses conseils aux jeunes entrepreneurs.",
    lecon:"Un raccourci malhonnête coûte plus cher qu’un détour. Votre réputation est un capital qui ne se rachète pas.",
    reperes:[["1993","Demande une licence de téléphonie mobile"],["1998","Obtient sa licence au terme de la bataille judiciaire et lance Econet"]]},
-  {id:"ibrahim", nom:"Mo Ibrahim", pays:"Soudan, Royaume-Uni", region:"est", secteur:"Télécoms, gouvernance",
+  {id:"ibrahim", img:"illus/cap-ibrahim.webp", nom:"Mo Ibrahim", pays:"Soudan, Royaume-Uni", region:"est", secteur:"Télécoms, gouvernance",
    idee:"Sans bonne gouvernance, ni l’investissement ni la croissance ne tiennent.",
    nomIdee:"La gouvernance d’abord",
    apporte:"Il a créé Celtel, qui a apporté le téléphone mobile à des millions d’Africains, avec une règle affichée&nbsp;: pas de corruption. Après la vente, sa fondation publie un indice de la gouvernance des pays africains.",
