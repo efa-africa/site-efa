@@ -72,10 +72,15 @@ h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-sp
 .signe{margin-top:16px;font-size:14px;color:#AEB6C6}
 .signe a{color:#fff;font-weight:700}
 
-.merci{margin-top:18px;max-width:44em;background:#F5EFE2;border-radius:12px;padding:16px 18px;font-size:16px;line-height:1.5;color:#0B1220;display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:center}
-.merci img{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 22%}
-@media (max-width:420px){.merci{grid-template-columns:72px minmax(0,1fr);gap:12px}.merci img{width:72px;height:72px}}
-.merci b{color:#B8341A;font-weight:800}
+.merci{margin-top:22px;max-width:46em;background:#F5EFE2;border-radius:16px;padding:20px;color:#0B1220;display:grid;grid-template-columns:132px minmax(0,1fr);grid-template-areas:"img id" "img txt";column-gap:22px;row-gap:10px;align-items:start}
+.merci img{grid-area:img;width:132px;height:160px;border-radius:12px;object-fit:cover;object-position:center 20%}
+.merci-id{grid-area:id;min-width:0}
+.merci-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4E5566}
+.merci-n{margin:4px 0 0;font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,30px);line-height:1.1;color:#B8341A}
+.merci-a{margin:4px 0 0;font-size:15px;font-weight:700;color:#0B1220}
+.merci-t{grid-area:txt;margin:0;font-size:16px;line-height:1.55;color:#2A3142}
+.merci-t b{color:#0B1220}
+@media (max-width:560px){.merci{grid-template-columns:76px minmax(0,1fr);grid-template-areas:"img id" "txt txt";column-gap:14px;align-items:center;padding:18px}.merci img{width:76px;height:76px;border-radius:50%}}
 /* plan de la visite */
 .plan{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
 .plan a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:start;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-decoration:none;color:#fff;min-height:100%}
@@ -229,7 +234,11 @@ input[type=range]{width:100%;accent-color:var(--corail)}
     <h1>La balade de l’économie, du marché à la banque centrale</h1>
     <p class="chapo">Six salles, six questions simples&nbsp;: pourquoi échange-t-on, à quoi sert la monnaie, qui fait l’économie, que fait l’État, que font les banques, d’où vient la croissance. Chaque salle a sa borne&nbsp;: un petit jeu de deux à cinq minutes, avec nos marchés, nos banques et le franc CFA.</p>
     <p class="signe">Rédigé par <a href="auteur.html">Élysée Johnson</a>, Éducation Financière Afrique · 28 octobre 2026 · 25 minutes, ou une salle à la fois</p>
-    <div class="merci"><img src="illus/pacome-kipre.webp" alt="Pacôme Kipré, dit Peck Peckisblackman" width="418" height="480"><p>Cette balade est née d’une idée de <b>Pacôme Kipré, dit Peck Peckisblackman</b>, écrivain ivoirien. Lors de sa visite du musée de l’économie de la Banque de France, à Paris, il en a partagé les panneaux et les jeux. EFA les a réécrits et transposés à nos marchés, à nos banques et au franc CFA. Merci à lui.</p></div>
+    <div class="merci">
+      <img src="illus/pacome-kipre.webp" alt="Pacôme Kipré, dit Peck Peckisblackman" width="418" height="480">
+      <div class="merci-id"><p class="merci-k">Une idée de</p><p class="merci-n">Pacôme Kipré</p><p class="merci-a">dit Peck Peckisblackman · écrivain ivoirien</p></div>
+      <p class="merci-t">Lors de sa visite du musée de l’économie de la Banque de France, à Paris, il en a partagé les panneaux et les jeux. EFA les a réécrits et transposés à nos marchés, à nos banques et au franc CFA. <b>Merci à lui.</b></p>
+    </div>
     <ol class="plan" aria-label="Les salles de la balade">
       <li><a href="#echanger" data-goatcounter-click="balade-plan-1"><i>1</i><b>Échanger</b><span>Besoins, valeur, troc</span></a></li>
       <li><a href="#monnaie" data-goatcounter-click="balade-plan-2"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money</span></a></li>
