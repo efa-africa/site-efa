@@ -706,7 +706,7 @@
     h += "</section>";
     if (c.pratique) h += '<div class="tr-prat"><div><p class="etiquette">En pratique</p><p>' + esc(c.pratique.texte) + "</p></div>" + (c.pratique.lien ? '<button class="bouton bouton-sombre" data-go="' + c.pratique.lien + '">Ouvrir le simulateur</button>' : "") + "</div>";
     h += '<nav class="tr-chnav">' + (prev ? '<a class="bouton bouton-clair" href="#cours-' + prev.id + '">← ' + esc(prev.titre) + "</a>" : '<a class="bouton bouton-clair" href="#cours">← Le cours</a>') + '<button class="lien-souligne" id="tr-print" type="button">Imprimer ce chapitre</button>' + (next ? '<a class="bouton bouton-principal" href="#cours-' + next.id + '">' + esc(next.titre) + " →</a>" : '<a class="bouton bouton-principal" href="#cours">Retour au cours</a>') + "</nav>";
-    h += '<p class="tr-note">Contenu pédagogique réalisé avec l’aide de l’intelligence artificielle et vérifié par l’équipe EFA. Exemples et montants fictifs. Éducation financière, pas conseil en placement.</p></article>';
+    h += '<p class="tr-note">Contenu pédagogique réalisé avec l’aide de l’intelligence artificielle et relu par l’équipe EFA. Exemples et montants fictifs. Éducation financière, pas conseil en placement.</p></article>';
     vue.innerHTML = h;
     $$(".tr-exo", vue).forEach(function (z) { exo(c, +z.dataset.k, z); });
     $$("[data-go]", vue).forEach(function (b) { b.onclick = function () { lancer(b.dataset.go); }; });

@@ -30,7 +30,7 @@ def page(slug, titre, desc, module, crumb, kick, minutes, corps, script, sources
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>{titre} · EFA</title>
-<meta name="description" content="{desc} Leçon pilote réalisée avec l’aide de l’intelligence artificielle, vérifiée par l’équipe EFA.">
+<meta name="description" content="{desc} Leçon pilote réalisée avec l’aide de l’intelligence artificielle, relue par l’équipe EFA.">
 <link rel="canonical" href="https://efa.africa/{slug}.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Éducation Financière Afrique">

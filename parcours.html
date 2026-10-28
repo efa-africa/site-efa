@@ -332,6 +332,9 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
 .mention{font-size:13px;color:var(--ink3);padding-bottom:40px}
 @media (prefers-reduced-motion:reduce){.parcours,.fleche{transition:none}}
 .demo-l{margin:14px 0 0}.demo-l a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font-weight:800;font-size:15px;text-decoration:none}.demo-l a:hover{background:rgba(255,255,255,.2)}
+.relu{margin-top:10px;font-size:14px;color:var(--ink3)}.relu b{color:var(--nuit)}
+.reprise .r-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#F09680;margin:0 0 4px}
+details.apres-route{margin-top:18px}details.apres-route>summary{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;font-weight:800;color:#fff;text-decoration:underline;text-decoration-color:#DA3C1B;text-decoration-thickness:2px;text-underline-offset:5px}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 </head>
@@ -366,7 +369,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
         <li aria-hidden="true" class="r-fl">›</li>
         <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux réunis · devenir Passeur</small></a></li>
       </ol>
-      <div class="apres-route">
+      <details class="apres-route"><summary>Autres façons de commencer</summary>
       <div class="ecoles" aria-label="Les deux écoles">
         <a class="ec-c" href="ecole-de-la-tontine.html?src=ecole" data-goatcounter-click="ecole-carte-tontine"><span class="ec-k">École de la tontine</span><b>Choisir une tontine, comprendre ses engagements et décider de ce que le groupe peut construire ensemble.</b><em>Explorer l’École de la tontine →</em></a>
         <a class="ec-c" href="ecole-de-la-bourse.html?src=ecole" data-goatcounter-click="ecole-carte-bourse"><span class="ec-k">École de la Bourse</span><b>Comprendre les marchés, choisir comment investir et apprendre à suivre ses décisions.</b><em>Explorer l’École de la Bourse →</em></a>
@@ -384,7 +387,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       <p class="ch-diag"><a class="lien-souligne" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-choix-diagnostic">Je ne sais pas par où commencer : faire mon diagnostic</a></p>
       <a class="ch-orga" href="programme-organisation.html?src=ecole" data-goatcounter-click="ecole-choix-organisation"><b>Pour les organisations</b><span>Faites suivre L’école à vos collaborateurs, membres ou élèves : programme à la carte, comptes et tableau de bord.</span><em>Composer un programme →</em></a>
       <p class="ch-trame">Chaque module : une situation concrète, une explication, un exercice avec vos chiffres et une fiche à garder.</p>
-      </div>
+      </details>
     </div>
   </div>
 
@@ -490,7 +493,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       </div>
       <p class="msg" id="pg-msg" role="status" aria-live="polite"></p>
     </section>
-    <p class="mention">Éducation financière, pas conseil en placement. Aucun produit financier recommandé. Parcours conçus par EFA avec l’aide de l’intelligence artificielle, vérifiés par l’équipe EFA. Koffi, Tonton Bamba et Tantie Affoué sont des personnages fictifs.</p>
+    <p class="mention">Éducation financière, pas conseil en placement. Aucun produit financier recommandé. Parcours conçus par EFA avec l’aide de l’intelligence artificielle, relus par l’équipe EFA. Koffi, Tonton Bamba et Tantie Affoué sont des personnages fictifs.</p>
   </div>
 <section class="amb" id="ambassadeur" aria-labelledby="amb-t">
   <style>
@@ -640,6 +643,7 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
   }
   function valide(p){ var g = progression(p); return g.dispo > 0 && g.faits >= g.dispo && ficheGardee(p); }
   // État unique du module, d'après les données : En préparation si une étape essentielle n'est pas en ligne, Pilote si une étape est en pilote, sinon Disponible
+  function dateFr(d){ try{ return new Date(d+"T12:00:00Z").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}); }catch(e){ return d; } }
   function statut(p){
     var E = p.etapes.filter(function(s){ return s.ess; });
     if(!E.length || E.some(function(s){ return !s.ok; })) return {c:"prep", t:"En préparation"};
@@ -670,7 +674,8 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
       + '</summary><div class="p-corps">'
       + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
-      + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+', dont le quiz du module,'+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')+'</p>'
+      + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+', dont le quiz du module,'+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')
+      + '</p><p class="relu"><b>Statut : '+st.t+'</b> · relu par l’équipe EFA · version du '+dateFr(p.relu||D.date)+' · relecture par un expert extérieur en cours'+'</p>'
       + '<ol class="etapes">'+et+'</ol>'
       + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
@@ -751,10 +756,12 @@ details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
   rendre();
   // Reprendre là où on s'est arrêté
   (function(){
-    var a = etat.actif && P[vrai(etat.actif)]; if(!a || valide(a)) return;
-    var n = prochaine(a); if(!n) return;
-    var r = $("reprise"); r.hidden = false;
-    r.innerHTML = '<p>Vous en étiez au <b>'+esc(a.nom)+' · '+esc(a.titre)+'</b>. Prochaine étape : '+esc(n.s.titre)+'.</p><a class="bouton bouton-principal" href="'+esc(lienEtape(n.s,a.id))+'" data-goatcounter-click="ecole-reprendre">Reprendre</a>';
+    var r = $("reprise"), a = etat.actif && P[vrai(etat.actif)], n = a && !valide(a) && prochaine(a), neuf = false;
+    if(!n){ a = D.parcours.filter(function(p){ return !valide(p) && statut(p).c!=="prep" && prochaine(p); })[0]; n = a && prochaine(a); neuf = !progression(a||{etapes:[]}).faits; }
+    if(!a || !n) return;
+    r.hidden = false;
+    r.innerHTML = '<p class="r-k">Votre prochaine étape</p><p><b>'+esc(a.nom)+' · '+esc(a.titre)+'</b><br>'+esc(n.s.type)+'\u00a0: '+esc(n.s.titre).replace(/ ([?!:;])/g,'\u00a0$1')+'</p><a class="bouton bouton-principal" href="'+esc(lienEtape(n.s,a.id))+'" data-goatcounter-click="'+(neuf?'ecole-prochaine-etape-debut':'ecole-reprendre')+'">'+(neuf?'Commencer':'Reprendre')+' ›</a>';
+    if(neuf) mesure("ecole-prochaine-etape-affichee");
     var der = etat.vu ? (Date.now()-etat.vu)/864e5 : 0; if(der>2) mesure("ecole-reprise-apres-jours");
   })();
   etat.vu = Date.now(); ecrire(etat); mesure("ecole-entree");

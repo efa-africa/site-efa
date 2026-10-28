@@ -28,6 +28,7 @@ strong{color:var(--fg)}
 a{color:inherit}
 .kicker{font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
 footer{margin-top:64px;border-top:1px solid var(--line);padding-block:24px 48px;font-size:14px}
+.bref{background:#FFFDF8;border-radius:14px;padding:18px 20px;margin:18px 0 8px}.bref h2{margin-top:0!important}.bref ul{margin:10px 0 0;padding-left:20px}.bref li{margin:8px 0}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 </head>
@@ -38,10 +39,19 @@ footer{margin-top:64px;border-top:1px solid var(--line);padding-block:24px 48px;
   <h1 style="margin-top:12px">Vos données</h1>
   <p>Quand vous vous inscrivez sur ce site ou faites le diagnostic, vous nous confiez votre adresse email. Voici ce que nous en faisons, et rien d’autre.</p>
 
-  <h2>Ce que nous recueillons</h2>
+  <section class="bref" aria-labelledby="bref-t"><h2 id="bref-t">En bref, selon ce que vous faites</h2>
+  <ul>
+    <li><b>Vous lisez, vous utilisez un outil</b> : vos chiffres restent sur votre téléphone. Nous comptons les visites, sans savoir qui vous êtes.</li>
+    <li><b>Vous laissez votre email</b> : il sert à vous envoyer la lettre ou le guide, rien d’autre. <a href="#recueil">Détails</a></li>
+    <li><b>Vous faites le diagnostic</b> : vos réponses restent sur votre téléphone, sauf si vous choisissez de les envoyer. <a href="#diagnostic">Détails</a></li>
+    <li><b>Vous parlez à Ely</b> : vos questions servent à vous répondre. <a href="#ely">Détails</a></li>
+    <li><b>Vous avez un compte</b> (Communauté EFA ou programme d’une organisation) : EFA, et le cas échéant les responsables du programme, voient votre nom et votre avancement, jamais vos montants ni vos réponses. <a href="#programme">Détails</a></li>
+    <li><b>Vous ouvrez un programme pour votre organisation</b> : nous gardons votre nom, votre email et le programme. <a href="#responsable">Détails</a></li>
+  </ul></section>
+  <h2 id="recueil">Ce que nous recueillons</h2>
   <p>Votre adresse email (obligatoire), et si vous les donnez, votre prénom et votre pays.</p>
 
-  <h2>Si vous faites le diagnostic</h2>
+  <h2 id="diagnostic">Si vous faites le diagnostic</h2>
   <p>Nous enregistrons aussi vos réponses au questionnaire, votre profil, vos scores, votre tranche d’âge, votre pays, votre activité et la page par laquelle vous êtes arrivé. Pour le diagnostic de niveau 2, seuls votre score et vos ratios sont transmis&nbsp;: <strong>vos montants en francs restent sur votre téléphone</strong>. Votre adresse n’est enregistrée qu’après avoir cliqué sur le lien de confirmation reçu par email.</p>
   <p>Ces réponses servent à vous envoyer votre résultat et à produire des statistiques anonymes, publiées seulement par groupes d’au moins 50 personnes.</p>
 

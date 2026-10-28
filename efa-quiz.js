@@ -61,6 +61,7 @@
   };
   var QUIZ = {
     efa: { titre: "À quel point connaissez-vous EFA ?", sous: "5 questions sur l’école, ses personnages et ses règles.", banques: ["efa", "efa", "efa", "efa", "efa"], cta: ["parcours.html?src=quiz", "Entrer dans l’école"] },
+    moi: { titre: "Où en êtes-vous avec votre argent ?", sous: "5 questions sur les bases : flux, réserve, tontine, crédit. Votre score dit par où commencer.", banques: ["argent", "argent", "argent", "argent", "argent"], cta: ["point-de-depart.html?src=quiz", "Trouver mon point de départ"] },
     argent: { titre: "Les bases de l’argent", sous: "Flux, stock, tontine, réserve : 5 questions pour vous situer.", banques: ["argent", "argent", "argent", "argent", "argent"], cta: ["parcours.html?src=quiz#P1", "Commencer le module 1"] },
     ecole: { titre: "Testez-vous avant d’entrer", sous: "3 questions sur l’argent, 2 sur l’école.", banques: ["argent", "argent", "argent", "efa", "efa"], cta: ["parcours.html?src=quiz#P1", "Commencer le module 1"] },
     etudes: { titre: "Bourse, tontine, chiffres : testez-vous", sous: "5 questions sur ce que disent les études et les marchés.", banques: ["etudes", "etudes", "etudes", "etudes", "etudes"], cta: ["methode.html?src=quiz#sommaire", "Explorer les études"] },
@@ -68,7 +69,7 @@
   };
   // Une carte par rubrique : page → [quiz, sélecteur après lequel s'insérer]
   var PAGES = {
-    "index.html": ["efa", "#ecole"],
+    "index.html": ["moi", "#ecole"],
     "parcours.html": ["ecole", ".ch-trame, .hero"],
     "outils.html": ["argent", ".hero, header + main > section, main > section"],
     "methode.html": ["etudes", "#sommaire"],

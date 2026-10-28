@@ -71,7 +71,7 @@
       var anc = st.preuves[M.id];
       st.preuves[M.id] = { t: t.slice(0, 600), d: d, r: anc && anc.r ? anc.r : dans30(), bilan: anc ? anc.bilan : null };
     }
-    if (ecrire(st)) { message('Fiche gardée sur ce téléphone. <a href="outils.html#cahier">Ouvrir Mon cahier</a>'); compter("fiche-garder-" + page); proposerCompte(); }
+    if (ecrire(st)) { message('Fiche gardée sur ce téléphone. <a href="outils.html#cahier">Ouvrir Mon cahier</a>'); compter("fiche-garder-" + page); try { if (!localStorage.getItem("efa_premiere_fiche")) { localStorage.setItem("efa_premiere_fiche", String(Date.now())); compter("premiere-fiche"); } } catch (x) {} proposerCompte(); }
     else message("Ce navigateur ne permet pas de garder la fiche : copiez-la ou envoyez-la-vous.");
   }
   /* Après la première fiche gardée : proposer de garder sa progression (compte Communauté EFA)

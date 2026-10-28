@@ -96,7 +96,7 @@ def page(slug, cycle, titre, sur, chapo, bg, h, txt, surc, data_js, crumb):
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>{titre} · EFA</title>
-<meta name="description" content="{chapo} Pilote réalisé avec l’aide de l’intelligence artificielle, vérifié par l’équipe EFA.">
+<meta name="description" content="{chapo} Pilote réalisé avec l’aide de l’intelligence artificielle, relu par l’équipe EFA.">
 <link rel="canonical" href="https://efa.africa/{slug}.html">
 <meta property="og:title" content="{titre}">
 <meta property="og:description" content="{chapo}">
@@ -117,7 +117,7 @@ def page(slug, cycle, titre, sur, chapo, bg, h, txt, surc, data_js, crumb):
 </div></section>
 <div class="wrap">
   <div id="vue" aria-live="polite"></div>
-  <p class="mention">Certificat pilote d’EFA, l’école de la finance personnelle&nbsp;: il atteste ce que vous avez appris à l’école EFA, ce n’est pas un diplôme d’État. Questions rédigées avec l’aide de l’intelligence artificielle, vérifiées par l’équipe EFA&nbsp;; relecture pédagogique en cours. Votre progression reste dans ce navigateur ; avec un compte EFA, seuls vos modules validés et votre numéro de certificat sont enregistrés. Éducation financière, pas conseil en placement.</p>
+  <p class="mention">Certificat pilote d’EFA, l’école de la finance personnelle&nbsp;: il atteste ce que vous avez appris à l’école EFA, ce n’est pas un diplôme d’État. Questions rédigées avec l’aide de l’intelligence artificielle, relues par l’équipe EFA&nbsp;; relecture pédagogique en cours. Votre progression reste dans ce navigateur ; avec un compte EFA, seuls vos modules validés et votre numéro de certificat sont enregistrés. Éducation financière, pas conseil en placement.</p>
 </div>
 </main>
 {FOOTER}<script>(function(){{var b=document.getElementById('menu'),n=document.getElementById('nav');b.addEventListener('click',function(){{var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';}});}})();</script>

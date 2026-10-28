@@ -483,7 +483,7 @@
       h += '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
         + "<li><b>Gratuit pendant le pilote</b> : les modules et la composition du programme. Les sessions avec EFA se conviennent ensemble.</li>"
         + "<li><b>Suivi</b> : avec les accès remis par EFA, chaque participant a son compte et votre organisation a son <a href=\"espace-organisation.html\">tableau de bord</a> : inscriptions, connexions, progression, modules terminés, certificats.</li>"
-        + "<li><b>Contenus en pilote</b> : les modules et les certificats sont en ligne et relus progressivement par l’équipe pédagogique d’EFA.</li>"
+        + "<li><b>Contenus en pilote</b> : chaque module est relu par l’équipe EFA ; son statut et la date de sa version sont affichés dans L’école. La relecture par des experts extérieurs se poursuit.</li>"
         + "<li><b>Éducation, pas conseil</b> : EFA ne vend aucun produit financier et ne recommande aucun établissement.</li></ul></section>";
     }
     $("vue").innerHTML = h;
