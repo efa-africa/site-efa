@@ -203,3 +203,6 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 .mu-temps{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08);z-index:3;pointer-events:none}
 .mu-temps i{display:block;height:100%;width:0;background:#F09680}
 #mu-auto[aria-pressed="false"]{background:#DA3C1B;color:#fff}
+
+/* Étapes à boutons (passeport, quiz, avis, « À vous de décider ») : pas de zones de bord, on avance avec les boutons du bas */
+#musee.mu-inter .mu-bord{display:none}

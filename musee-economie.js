@@ -330,8 +330,8 @@
     if (x.k === "pp") { var tp = document.getElementById("mu-tampons"); if (tp) tp.innerHTML = SALLES.map(function (S, i) { return '<button type="button" class="' + (vus[i] ? "ok" : "") + '" data-sal="' + i + '" aria-label="Salle ' + (i + 1) + ' : ' + esc(S.t) + '">' + (i + 1) + "</button>"; }).join(""); }
     if (x.k === "qz") quiz();
     if (k > 0 && !dejaIndice) { dejaIndice = true; var ind = document.getElementById("mu-indice"); if (ind) ind.style.opacity = 0; }
-    M.classList.toggle("mu-debut", k === 0); M.classList.toggle("mu-fin", k === E.length - 1);
-    if (k < 4 || k % 5 === 0) indiquer();
+    M.classList.toggle("mu-debut", k === 0); M.classList.toggle("mu-fin", k === E.length - 1); M.classList.toggle("mu-inter", !!({ d: 1, pp: 1, qz: 1, av: 1 })[x.k]);
+    if ((k < 4 || k % 5 === 0) && !({ d: 1, pp: 1, qz: 1, av: 1 })[x.k]) indiquer();
     programmer();
     // précharger l'image suivante
     [k, k + 1, k + 2, k + 3, k - 1].forEach(function (j) { var el = SC.querySelector('.mu-etape[data-k="' + j + '"]'); if (el) el.querySelectorAll("img[data-src]").forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); });
