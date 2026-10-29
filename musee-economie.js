@@ -266,7 +266,10 @@
     $("mu-plan-l").onclick = function (e) { var b = e.target.closest("button.go"); if (!b) return; $("mu-plan").hidden = true; var s = +b.dataset.s; for (var k = 0; k < E.length; k++) if (E[k].k === "s" && E[k].s === s) { aller(k); return; } };
     try { son = localStorage.getItem("efa_musee_son") !== "0"; } catch (e) {}
     majSon();
-    $("mu-son").onclick = function () { son = !son; try { localStorage.setItem("efa_musee_son", son ? "1" : "0"); } catch (e) {} majSon(); if (son) jouer(); else if (au) au.pause(); };
+    /* Le bouton suit ce qu'on entend vraiment : si la musique joue, il la coupe ; sinon, il la lance */
+    $("mu-son").onclick = function () { var joue = au && !au.paused; son = !joue; try { localStorage.setItem("efa_musee_son", son ? "1" : "0"); } catch (e) {} if (son) jouer(); else if (au) au.pause(); majSon(); };
+    /* Le navigateur bloque souvent le son avant un premier geste : le premier toucher dans le musée le lance */
+    M.addEventListener("pointerdown", function (e) { if (son && (!au || au.paused) && !e.target.closest("#mu-son")) jouer(); }, true);
     SC.addEventListener("click", function (e) {
       var a = e.target.closest("[data-mu-lien]"), sa = e.target.closest("[data-mu-salles]"), de = e.target.closest("[data-mu-debut]");
       if (de) { aller(0); return; }
@@ -314,8 +317,10 @@
     };
   }
   function retourVisible() { var f = document.getElementById("musee-flot"); if (f) { f.innerHTML = "<i>◀</i> Revenir au musée"; f.classList.add("vu"); f.dataset.retour = "1"; } }
-  function majSon() { var b = document.getElementById("mu-son"); b.innerHTML = son ? "♪<span class=\"t\"> Son</span>" : "<s>♪</s><span class=\"t\"> Muet</span>"; b.setAttribute("aria-pressed", son); b.setAttribute("aria-label", son ? "Couper la musique" : "Remettre la musique"); }
-  function jouer() { if (!son) return; try { if (!au) { au = new Audio("demo-musique.mp3"); au.loop = true; au.volume = 0.5; } var p = au.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+  function majSon() { var b = document.getElementById("mu-son"); if (!b) return; var joue = !!(au && !au.paused);
+    b.innerHTML = joue ? "♪<span class=\"t\"> Son</span>" : "<s>♪</s><span class=\"t\"> " + (son ? "Activer le son" : "Muet") + "</span>";
+    b.setAttribute("aria-pressed", joue ? "true" : "false"); b.setAttribute("aria-label", joue ? "Couper la musique" : "Lancer la musique"); }
+  function jouer() { if (!son) return; try { if (!au) { au = new Audio("demo-musique.mp3"); au.loop = true; au.volume = 0.5; au.addEventListener("play", majSon); au.addEventListener("pause", majSon); } var p = au.play(); if (p && p.then) p.then(majSon, majSon); } catch (e) {} majSon(); }
   function majPlan() { document.querySelectorAll("#mu-plan-l li").forEach(function (li) { var s = +li.dataset.s; li.classList.toggle("ok", !!vus[s]); li.classList.toggle("c", E[cur].s === s); }); }
   function aller(k) {
     if (k < 0 || k >= E.length) return;
