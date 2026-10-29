@@ -1168,6 +1168,13 @@ html.efa-decouvrir .porte-efa{display:none}
 html:not(.efa-decouvrir) #tk{display:none!important}
 .eh-rac{background:#F5EFE2;padding-block:8px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 html.efa-perso #raccourcis{display:none}
+.eh-frise{background:#F5EFE2;min-height:62vh;display:grid;place-items:center;padding-block:12vh;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eh-frise-in{width:100%;max-width:1100px;display:grid;gap:clamp(22px,4vh,40px);justify-items:center;text-align:center}
+.eh-frise-svg,.frise-svg{display:block;width:100%;max-width:1100px;height:auto}
+.eh-frise-t{margin:0;max-width:30em;font-family:var(--f-display);font-weight:400;font-style:italic;font-size:clamp(19px,2.2vw,28px);line-height:1.4;color:#4E5566;text-wrap:balance}
+.eh-frise-t .c{color:#B8341A;font-style:normal;font-weight:700}.eh-frise-t .s{color:#1B71B2;font-style:normal;font-weight:700}
+@media (max-width:640px){.eh-frise{min-height:52vh;padding-block:10vh}}
+html.efa-perso .eh-frise{min-height:0;padding-block:6vh}
 .eh-rac-in{max-width:1220px;margin:0 auto;display:grid;gap:16px;border-top:1px solid #E2D8C4;padding-top:28px}
 .eh-rac-t{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,2.4vw,30px);line-height:1.15;color:#0B1220}
 .eh-portes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
@@ -1263,6 +1270,13 @@ if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);
       <a href="parcours.html?src=accueil#P14"><span class="eh-bi r"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Évaluer les risques</b></a>
     </div>
   </section>
+
+  <div class="eh-frise" aria-hidden="false">
+    <div class="eh-frise-in">
+      <svg class="frise-svg" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><circle cx="30" cy="60" r="3.0" fill="#C9C2B2"/><circle cx="72" cy="60" r="3.3" fill="#C9C2B2"/><circle cx="114" cy="61" r="3.7" fill="#C9C2B2"/><circle cx="157" cy="63" r="4.0" fill="#C9C2B2"/><circle cx="199" cy="64" r="4.3" fill="#C9C2B2"/><circle cx="241" cy="65" r="4.7" fill="#C9C2B2"/><circle cx="283" cy="65" r="5.0" fill="#C9C2B2"/><circle cx="326" cy="64" r="5.3" fill="#C9C2B2"/><circle cx="368" cy="61" r="5.7" fill="#C9C2B2"/><circle cx="410" cy="58" r="6.0" fill="#C9C2B2"/><circle cx="452" cy="54" r="6.3" fill="#C9C2B2"/><circle cx="494" cy="51" r="8.0" fill="#E44828"/><circle cx="537" cy="48" r="7.0" fill="#6DB8F2"/><circle cx="579" cy="47" r="7.3" fill="#6DB8F2"/><circle cx="621" cy="47" r="7.7" fill="#6DB8F2"/><circle cx="663" cy="50" r="8.0" fill="#6DB8F2"/><circle cx="706" cy="55" r="8.3" fill="#6DB8F2"/><circle cx="748" cy="61" r="8.7" fill="#6DB8F2"/><circle cx="790" cy="68" r="9.0" fill="#6DB8F2"/><circle cx="832" cy="74" r="9.3" fill="#6DB8F2"/><circle cx="874" cy="79" r="9.7" fill="#2188D6"/><circle cx="917" cy="82" r="10.0" fill="#2188D6"/><circle cx="959" cy="82" r="10.3" fill="#2188D6"/><circle cx="1001" cy="78" r="10.7" fill="#2188D6"/><circle cx="1043" cy="72" r="11.0" fill="#2188D6"/><circle cx="1086" cy="63" r="11.3" fill="#2188D6"/><circle cx="1128" cy="53" r="11.7" fill="#2188D6"/><circle cx="1170" cy="44" r="12.0" fill="#2188D6"/></svg>
+      <p class="eh-frise-t">Du cercle, <span class="c">l’argent qui tourne</span>, à la spirale, <span class="s">l’argent qui reste</span>.</p>
+    </div>
+  </div>
 
   <section class="eh-rac" id="raccourcis">
     <div class="eh-rac-in">
