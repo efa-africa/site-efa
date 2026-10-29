@@ -259,7 +259,7 @@
       + '<div class="mu-plan" id="mu-plan" hidden><div class="mu-plan-t"><h2 style="font-size:24px">Le plan du musée</h2><button type="button" class="mu-prec" id="mu-plan-x" aria-label="Fermer le plan" style="min-height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.12);color:#fff;font:800 14px Source Sans\\ 3,sans-serif;padding:0 14px">✕</button></div><ol id="mu-plan-l"></ol></div>';
     document.body.appendChild(M);
     SC = document.getElementById("mu-scene");
-    var h = ""; E.forEach(function (x, k) { h += etapeHtml(x).replace('<div class="mu-etape', '<div data-k="' + k + '" class="mu-etape'); });
+    var h = ""; E.forEach(function (x, k) { var t = etapeHtml(x), lat = /^<div class="mu-etape[^"]*"><div class="mu-(cadre|livre|med)/.test(t) && k > 0; h += t.replace('<div class="mu-etape', '<div data-k="' + k + '" class="mu-etape' + (lat ? " lat" : "")); });
     SC.insertAdjacentHTML("beforeend", h);
     avis();
     // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
