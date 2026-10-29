@@ -1084,7 +1084,8 @@ img.char{object-position:50% 18%}
 @media (max-width:700px){.screen.ecole{padding:40px var(--gut) 36px}}
 
 /* Visuel de l'accueil : photo de la maquette + écran et carte redessinés nets, posés dans la perspective */
-.eh-art{position:relative;width:112%;max-width:720px;margin-right:-6%;aspect-ratio:822/734}
+.eh-art{position:relative;width:92%;max-width:560px;margin:0 auto;aspect-ratio:822/734}
+.eh-art{-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);mask-composite:intersect}
 .eh-art .eh-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0}
 .eh-calque{position:absolute;left:0;top:0;width:822px;height:734px;transform-origin:0 0}
 /* Le visuel et son écran apparaissent ensemble, une fois l'écran mis à l'échelle et l'image chargée */
@@ -1111,7 +1112,7 @@ img.char{object-position:50% 18%}
 .eh-carte svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.eh-carte .s-ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#D8EEFB;flex:none}
 .eh-carte b{display:block;font-family:var(--f-display);font-weight:700;font-size:15.5px;line-height:1.3;max-width:150px}.eh-carte small{display:block;font-size:13px;color:#5F6676;margin-top:8px}.eh-carte em{font-style:normal;font-weight:800;font-size:18px;margin-left:auto;width:26px;height:26px;border-radius:50%;background:#F1ECE2;display:grid;place-items:center}
 .eh-carte:hover{box-shadow:0 18px 36px rgba(11,18,32,.2)}.eh-carte:focus-visible{outline:3px solid #1B71B2;outline-offset:3px}
-@media (max-width:900px){.eh-art{width:100%;margin-right:0}}
+@media (max-width:900px){.eh-art{width:82%;max-width:380px;margin:0 auto}}
 
 /* UX « Qu'est-ce qui vous préoccupe ? » (26/10/2026) : titre à l'échelle d'une section, cartes alignées, recherche + puces */
 .ask .head{display:grid;gap:10px;justify-items:center;text-align:center}
@@ -1168,14 +1169,12 @@ html.efa-decouvrir .porte-efa{display:none}
 html:not(.efa-decouvrir) #tk{display:none!important}
 .eh-rac{background:#F5EFE2;padding-block:8px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 html.efa-perso #raccourcis{display:none}
-.eh-frise{background:#F5EFE2;min-height:62vh;display:grid;place-items:center;padding-block:12vh;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eh-frise-in{width:100%;max-width:1100px;display:grid;gap:clamp(22px,4vh,40px);justify-items:center;text-align:center}
-.eh-frise-svg,.frise-svg{display:block;width:100%;max-width:1100px;height:auto}
-.eh-frise-t{margin:0;max-width:30em;font-family:var(--f-display);font-weight:400;font-style:italic;font-size:clamp(19px,2.2vw,28px);line-height:1.4;color:#4E5566;text-wrap:balance}
-.eh-frise-t .c{color:#B8341A;font-style:normal;font-weight:700}.eh-frise-t .s{color:#1B71B2;font-style:normal;font-weight:700}
-@media (max-width:640px){.eh-frise{min-height:52vh;padding-block:10vh}}
-html.efa-perso .eh-frise{min-height:0;padding-block:6vh}
-.eh-rac-in{max-width:1220px;margin:0 auto;display:grid;gap:16px;border-top:1px solid #E2D8C4;padding-top:28px}
+.eh-frise{background:#F5EFE2;padding-block:22vh 7vh;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eh-frise-svg{display:block;max-width:1220px;margin:0 auto;opacity:.55}
+.eh-frise-svg path{fill:none;stroke:#A88B62;stroke-width:1.3;stroke-linejoin:miter}
+@media (max-width:640px){.eh-frise{padding-block:16vh 6vh}}
+html.efa-perso .eh-frise{padding-block:5vh}
+.eh-rac-in{max-width:1220px;margin:0 auto;display:grid;gap:16px}
 .eh-rac-t{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,2.4vw,30px);line-height:1.15;color:#0B1220}
 .eh-portes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 @media (max-width:900px){.eh-portes{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -1271,11 +1270,12 @@ if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);
     </div>
   </section>
 
-  <div class="eh-frise" aria-hidden="false">
-    <div class="eh-frise-in">
-      <svg class="frise-svg" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><circle cx="30" cy="60" r="3.0" fill="#C9C2B2"/><circle cx="72" cy="60" r="3.3" fill="#C9C2B2"/><circle cx="114" cy="61" r="3.7" fill="#C9C2B2"/><circle cx="157" cy="63" r="4.0" fill="#C9C2B2"/><circle cx="199" cy="64" r="4.3" fill="#C9C2B2"/><circle cx="241" cy="65" r="4.7" fill="#C9C2B2"/><circle cx="283" cy="65" r="5.0" fill="#C9C2B2"/><circle cx="326" cy="64" r="5.3" fill="#C9C2B2"/><circle cx="368" cy="61" r="5.7" fill="#C9C2B2"/><circle cx="410" cy="58" r="6.0" fill="#C9C2B2"/><circle cx="452" cy="54" r="6.3" fill="#C9C2B2"/><circle cx="494" cy="51" r="8.0" fill="#E44828"/><circle cx="537" cy="48" r="7.0" fill="#6DB8F2"/><circle cx="579" cy="47" r="7.3" fill="#6DB8F2"/><circle cx="621" cy="47" r="7.7" fill="#6DB8F2"/><circle cx="663" cy="50" r="8.0" fill="#6DB8F2"/><circle cx="706" cy="55" r="8.3" fill="#6DB8F2"/><circle cx="748" cy="61" r="8.7" fill="#6DB8F2"/><circle cx="790" cy="68" r="9.0" fill="#6DB8F2"/><circle cx="832" cy="74" r="9.3" fill="#6DB8F2"/><circle cx="874" cy="79" r="9.7" fill="#2188D6"/><circle cx="917" cy="82" r="10.0" fill="#2188D6"/><circle cx="959" cy="82" r="10.3" fill="#2188D6"/><circle cx="1001" cy="78" r="10.7" fill="#2188D6"/><circle cx="1043" cy="72" r="11.0" fill="#2188D6"/><circle cx="1086" cy="63" r="11.3" fill="#2188D6"/><circle cx="1128" cy="53" r="11.7" fill="#2188D6"/><circle cx="1170" cy="44" r="12.0" fill="#2188D6"/></svg>
-      <p class="eh-frise-t">Du cercle, <span class="c">l’argent qui tourne</span>, à la spirale, <span class="s">l’argent qui reste</span>.</p>
-    </div>
+  <div class="eh-frise" aria-hidden="true">
+    <svg class="eh-frise-svg" width="100%" height="30" focusable="false"><defs><pattern id="motif-bois" width="60" height="30" patternUnits="userSpaceOnUse">
+      <path d="M0 1.5H60M0 28.5H60" stroke-width="1"/>
+      <path d="M15 5 25 15 15 25 5 15Z M15 9 21 15 15 21 9 15Z M15 13 17 15 15 17 13 15Z"/>
+      <path d="M31 26 45 6 59 26M36 26 45 13 54 26M41 26 45 20 49 26"/>
+    </pattern></defs><rect width="100%" height="30" fill="url(#motif-bois)"/></svg>
   </div>
 
   <section class="eh-rac" id="raccourcis">
