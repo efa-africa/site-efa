@@ -710,6 +710,14 @@ img.char{object-position:50% 18%}
 .org section.clair{background:#F5EFE2;color:#0B1220;border-top-color:#E2D8C4}
 .org .clair .lede,.org .clair article p,.org .clair .comp span,.org .clair .steps span{color:#4E5566}
 .org .clair .kick{color:#B8341A}
+.org .presta{margin-top:28px;display:grid;gap:14px}.org .presta h3{font-size:clamp(21px,2.2vw,26px)}
+.org .presta-l{display:grid;gap:8px}
+.org .presta-l>div{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) auto;gap:6px 18px;align-items:baseline;background:#FFFDF8;border-radius:12px;padding:14px 16px}
+.org .presta-l b{font-weight:800;color:#0B1220}.org .presta-l span{color:#4E5566;font-size:15.5px;line-height:1.45}
+.org .presta-l em{font-style:normal;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;padding:5px 10px;border-radius:999px}
+.org .presta-l em.g{background:#DDF3E6;color:#14532D}.org .presta-l em.p{background:#FCEFD2;color:#7A4A00}.org .presta-l em.s{background:#0B1220;color:#fff}
+.org .presta-n{color:#4E5566}.org .presta-n a{color:#0B1220;font-weight:700;text-decoration-color:#DA3C1B;text-decoration-thickness:2px;text-underline-offset:4px}
+@media (max-width:760px){.org .presta-l>div{grid-template-columns:minmax(0,1fr)}.org .presta-l em{justify-self:start}}
 .org .clair .acts .lk{color:#0B1220;text-decoration-color:#E44828}
 .org .clair .g4 article,.org .clair .g3 article{background:#FFFDF8;border-color:#E2D8C4}
 .org .clair .comp li{border-top-color:#E2D8C4}
@@ -769,7 +777,7 @@ img.char{object-position:50% 18%}
         <li><b>Des modules</b><span>Cercle et spirale, budget, mobile money, prêter à un proche, retraite&nbsp;: choisis selon votre public.</span></li>
         <li><b>Des supports d’animation</b><span>Guides de séance, présentations et fiches, pour des ateliers en salle ou à distance.</span></li>
         <li><b>Des exercices sur des cas d’ici</b><span>Salaire, famille, tontine, revenus irréguliers&nbsp;: des situations que votre public reconnaît.</span></li>
-        <li><b>Un suivi et un bilan</b><span>Vous voyez qui s’inscrit, qui avance et qui a terminé. Vous ne voyez jamais les montants, les fiches ni les réponses financières de chacun : le bilan des besoins est seulement collectif.</span></li>
+        <li><b>Un suivi et un bilan</b><span>Vous voyez qui s’inscrit, qui avance et qui a terminé. Vous voyez aussi le titre des fiches gardées, jamais leur contenu, ni les montants, ni les réponses de chacun : le bilan des besoins est seulement collectif.</span></li>
       </ul>
     </div>
   </section>
@@ -778,9 +786,25 @@ img.char{object-position:50% 18%}
     <div class="in">
       <h2 id="org-cout">Ce qui est gratuit, ce qui est en pilote, ce qui se fait sur proposition</h2>
       <div class="g3">
-        <article><h3>Gratuit, pour tous</h3><p>Les 23 modules de L’école, les outils, les fiches, la composition du programme en ligne, les comptes des participants et votre tableau de bord.</p></article>
-        <article><h3>En pilote</h3><p>Les certificats locaux et le certificat CEFA ★, les programmes de communauté, l’enquête anonyme. Ils fonctionnent ; leur relecture par des experts extérieurs se poursuit, et nous vous le disons.</p></article>
+        <article><h3>Gratuit, pour tous</h3><p>Les 23 modules de L’école, les outils, les fiches et la composition du programme en ligne.</p></article>
+        <article><h3>En pilote, gratuit</h3><p>Les comptes des participants et votre tableau de bord, les certificats locaux et le certificat CEFA ★, les programmes de communauté, l’enquête anonyme. Ils fonctionnent ; leur relecture par des experts extérieurs se poursuit, et nous vous le disons.</p></article>
         <article><h3>Sur proposition</h3><p>Les sessions animées par EFA, sur place ou en visio, le déploiement accompagné et le bilan restitué à votre direction. Nous les préparons avec vous, selon votre public et votre calendrier.</p></article>
+      </div>
+      <div class="presta">
+        <h3>Le détail des prestations</h3>
+        <div class="presta-l" role="list">
+          <div role="listitem"><b>L’école et les outils</b><span>23 modules, outils de calcul, fiches à garder, composition du programme en ligne. En ligne, au rythme de chacun.</span><em class="g">Gratuit</em></div>
+          <div role="listitem"><b>Comptes et tableau de bord</b><span>Un code pour vos participants et un tableau de bord : inscriptions, visites, progression, modules terminés, certificats. Jusqu’à 500 places, ouvert un an.</span><em class="p">En pilote · gratuit</em></div>
+          <div role="listitem"><b>Enquête anonyme des besoins</b><span>15 questions par oui ou non, résultats affichés à partir de 5 réponses.</span><em class="p">En pilote · gratuit</em></div>
+          <div role="listitem"><b>Programme de communauté</b><span>Un parcours à votre nom, avec photo, logo et mot d’accueil, et un code à partager.</span><em class="p">En pilote · gratuit</em></div>
+          <div role="listitem"><b>Certificats locaux et CEFA ★</b><span>Examen en ligne de 30 minutes, certificat numéroté. Une attestation de parcours EFA, pas un diplôme d’État.</span><em class="p">En pilote · gratuit</em></div>
+          <div role="listitem"><b>Session de lancement</b><span>Le programme présenté, les premières questions, le module de départ fait ensemble. 1 heure, sur place ou en visio.</span><em class="s">Sur proposition</em></div>
+          <div role="listitem"><b>Session de bilan</b><span>Ce que chacun a décidé, ce qui a marché, les questions restées ouvertes. 1 heure.</span><em class="s">Sur proposition</em></div>
+          <div role="listitem"><b>Déploiement accompagné</b><span>Cadrage du public, des objectifs et du calendrier ; modules et exemples adaptés ; supports d’animation.</span><em class="s">Sur proposition</em></div>
+          <div role="listitem"><b>Bilan restitué à votre direction</b><span>Les totaux de « Mon point » à 30 et 90 jours, les gestes mis en pratique, les pistes pour la suite. Jamais de réponse individuelle.</span><em class="s">Sur proposition</em></div>
+          <div role="listitem"><b>EFA Cadres et EFA Dirigeants</b><span>Six semaines accompagnées pour les cadres ; trois ateliers en petit groupe pour les dirigeants.</span><em class="s">Sur proposition</em></div>
+        </div>
+        <p class="presta-n">Une prestation « sur proposition » se prépare avec vous : nous revenons avec un programme, un calendrier et des livrables écrits. <a href="rendez-vous.html?sujet=organisation&amp;src=prestations#contact">Demander une proposition</a></p>
       </div>
     </div>
   </section>
@@ -1013,6 +1037,6 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
 
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102830" defer></script>
+<script src="efa-appli.js?v=2026102901" defer></script>
 </body>
 </html>

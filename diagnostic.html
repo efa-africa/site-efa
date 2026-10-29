@@ -295,8 +295,6 @@ async function transmettre() {
 window.addEventListener("online", () => { if (S.attente) transmettre(); });
 
 /* ---------- Vues ---------- */
-const lock = (k, t, d) => `<div class="card"><span class="pill">Payant · bientôt</span><h3>${t}</h3><p class="muted small">${d}</p>
-  <button class="btn ghost ${S.interet[k] ? "on" : ""}" data-int="${k}" aria-pressed="${S.interet[k]}">${S.interet[k] ? "Vous serez prévenu" : "Me prévenir"}</button></div>`;
 const barre = (l, v, m) => { m = m || 100; return `<div class="stack" style="gap:5px"><div class="row"><span>${l}</span><span>${v} / ${m}</span></div><div class="bar ${v / m < .5 ? "warn" : ""}"><i style="width:${v / m * 100}%"></i></div></div>`; };
 const retour = `<button class="btn ghost" data-act="retour">Retour</button>`;
 
@@ -511,6 +509,6 @@ go(["resultat", "r1", "p1"].includes(S.view) ? "accueil" : ["methode", "confiden
 </script>
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026102830" defer></script>
+<script src="efa-appli.js?v=2026102901" defer></script>
 </body>
 </html>

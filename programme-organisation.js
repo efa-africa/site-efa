@@ -438,7 +438,7 @@
         + '<div><dt>Charge par participant</dt><dd>' + duree(pr.mi) + ' par semaine pendant ' + Math.max(dern, pr.s) + ' semaines, sur téléphone, à son rythme.</dd></div>'
         + '<div><dt>Exemple d’activité</dt><dd>Module ' + pEx.module + ' · ' + esc(pEx.titre) + (pEx.fiche && pEx.fiche.desc ? ' : ' + esc(pEx.fiche.desc) : '') + '</dd></div>'
         + '<div><dt>Livrables</dt><dd>' + (fiches.length ? 'Une fiche gardée par module (' + esc(fiches.slice(0, 2).join(", ")) + (fiches.length > 2 ? "…" : "") + '), et une attestation par module terminé.' : 'Une attestation par module terminé.') + '</dd></div>'
-        + '<div><dt>Suivi</dt><dd>Vous voyez les inscriptions, les connexions et l’avancement de chacun. Vous ne voyez jamais ses montants, ses fiches ni ses réponses financières.</dd></div>'
+        + '<div><dt>Suivi</dt><dd>Vous voyez les inscriptions, les connexions et l’avancement de chacun. Vous voyez le titre des fiches gardées, jamais leur contenu, ni ses montants, ni ses réponses.</dd></div>'
         + '<div><dt>Ce qui est gratuit</dt><dd>Les modules, les outils et la composition du programme. Les sessions animées par EFA se préparent sur proposition.</dd></div>'
         + '</dl></div>';
     }
@@ -475,14 +475,14 @@
         + '<div class="mq-ap" id="mq-ap"></div>'
         + '<label class="champ">Mot d’accueil <small style="font-weight:400;color:#AEB6C6">240 caractères au plus</small><textarea id="x-msg" maxlength="240" rows="3" placeholder="ex. Bienvenue dans la communauté ! Ensemble, on apprend à faire rester l’argent."></textarea></label></details>'
         + '<label class="ok-case"><input type="checkbox" id="a-ok"><span>J’ai vérifié les modules, les semaines et les sessions</span></label>'
-        + '<label class="ok-case"><input type="checkbox" id="a-acc"><span>Je suis habilité à ouvrir ce programme pour mon organisation. Les responsables désignés verront le nom, les visites et l’avancement des participants inscrits avec notre code, jamais leurs montants, leurs fiches ni leurs réponses (<a href="confidentialite.html#programme" style="color:#6DB8F2">confidentialité</a>).</span></label>'
+        + '<label class="ok-case"><input type="checkbox" id="a-acc"><span>Je suis habilité à ouvrir ce programme pour mon organisation. Les responsables désignés verront le nom, les visites et l’avancement des participants inscrits avec notre code, avec le titre des fiches gardées, jamais leurs montants, le contenu de leurs fiches ni leurs réponses (<a href="confidentialite.html#programme" style="color:#6DB8F2">confidentialité</a>).</span></label>'
         + '<div class="acts"><button type="button" class="bt bt-p" id="a-ses" aria-disabled="true">Créer mes accès maintenant</button></div><p class="aide" id="a-msg" role="status" style="color:#F09680"></p>'
-        + '<span>Plus de 500 places, une session à fixer, un devis ou une autre demande&nbsp;? <a href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact" style="color:#6DB8F2">Écrire à EFA</a> (facultatif).</span></li>'
+        + '<span>Plus de 500 places, une session à fixer, une proposition ou une autre demande&nbsp;? <a href="rendez-vous.html?sujet=organisation&amp;programme=' + encodeURIComponent(lien) + '#contact" style="color:#6DB8F2">Écrire à EFA</a> (facultatif).</span></li>'
         + '<li><b><span class="n">3</span>Invitez vos participants</b><span>Depuis votre <a href="espace-organisation.html">tableau de bord</a> : le message d’invitation, avec le code, est prêt à envoyer par email ou WhatsApp. Sans ce code, la progression de vos participants ne peut pas être suivie.</span></li></ol>'
         + '<details class="valid"><summary>Faire valider le programme en interne avant de créer les accès</summary><p class="aide">Pour un directeur, la RH ou le bureau de la coopérative : le lien rouvre ce programme tel quel.</p><div class="acts"><button type="button" class="bt" id="a-print">Imprimer ou enregistrer en PDF</button><button type="button" class="bt" id="a-lien">Copier le lien du programme</button><button type="button" class="bt" id="a-wa">Envoyer par WhatsApp</button></div><p class="aide" id="a-msg2" role="status"></p></details>'
         + '</section>';
       h += '<section class="carte"><h2>Ce qu’il faut savoir</h2><ul class="limites">'
-        + "<li><b>Gratuit pendant le pilote</b> : les modules et la composition du programme. Les sessions avec EFA se conviennent ensemble.</li>"
+        + "<li><b>Gratuit pendant le pilote</b> : les modules et la composition du programme. Les sessions avec EFA se préparent sur proposition.</li>"
         + "<li><b>Suivi</b> : avec les accès remis par EFA, chaque participant a son compte et votre organisation a son <a href=\"espace-organisation.html\">tableau de bord</a> : inscriptions, connexions, progression, modules terminés, certificats.</li>"
         + "<li><b>Contenus en pilote</b> : chaque module est relu par l’équipe EFA ; son statut et la date de sa version sont affichés dans L’école. La relecture par des experts extérieurs se poursuit.</li>"
         + "<li><b>Éducation, pas conseil</b> : EFA ne vend aucun produit financier et ne recommande aucun établissement.</li></ul></section>";

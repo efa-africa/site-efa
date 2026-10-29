@@ -143,7 +143,7 @@
     M = module();
     var s = document.createElement("style"); s.textContent = CSS; document.head.appendChild(s);
     boite = document.createElement("section"); boite.className = "efa-fiche"; boite.setAttribute("aria-label", "Garder ma fiche");
-    boite.innerHTML = '<p class="ff-sur">Garder ma fiche</p><h2></h2><p>Votre résultat est repris ci-dessous. Ajoutez votre décision, puis gardez la fiche : elle reste sur ce téléphone, rien n’est envoyé à EFA.</p>'
+    boite.innerHTML = '<p class="ff-sur">Garder ma fiche</p><h2></h2><p>Votre résultat est repris ci-dessous. Ajoutez votre décision, puis gardez la fiche : elle reste sur ce téléphone. Sans compte, rien n’est envoyé à EFA ; dans le programme d’une organisation, seul son titre l’est.</p>'
       + '<label for="ff-t">Ma fiche</label><textarea id="ff-t" rows="8" maxlength="1500"></textarea>'
       + '<div class="ff-acts"><button type="button" class="ff-p" data-ff="garder">Garder dans Mon cahier</button><button type="button" data-ff="whatsapp">Envoyer par WhatsApp</button><button type="button" data-ff="copier">Copier</button><button type="button" data-ff="email">M’envoyer par email</button></div>'
       + '<p class="ff-ok" role="status" aria-live="polite"></p>';
