@@ -61,6 +61,11 @@ a{color:var(--cyan)}
 .tour-grid{display:flex;flex-wrap:wrap;gap:8px}
 .tour button{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;color:#E8EDF5}
 .tour button:hover{background:rgba(255,255,255,.14)}
+html.plein .stage{display:block;padding:0;background:var(--night)}html.plein .pitch{display:none}
+html.plein .device{height:100%;width:100%;aspect-ratio:auto;border-radius:0;padding:0;background:none;box-shadow:none}
+html.plein .screen{border-radius:0}html.plein .island,html.plein .status{display:none}html.plein .device .scroll{padding-top:0}
+.pitch .entrer{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:#DA3C1B;color:#fff;border:0;border-radius:10px;padding:14px 22px;font:800 17px var(--body,system-ui);cursor:pointer;box-shadow:0 10px 24px rgba(218,60,27,.3)}
+.pitch .entrer:hover{background:#B8341A}
 .tour button.main{background:#DA3C1B;color:#fff;border-color:transparent;font-weight:800}
 
 .device{position:relative;height:min(852px,calc(100vh - 48px));aspect-ratio:393/852;border-radius:58px;padding:11px;background:linear-gradient(145deg,#2A2F3A,#0E1117 40%,#2A2F3A);
@@ -510,6 +515,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
   <aside class="pitch" aria-label="Visite de l’appli">
     <div class="logo"><img src="icon-192.png" alt="" onerror="this.remove()">ÉDUCATION FINANCIÈRE AFRIQUE</div>
     <h1>L’appli <span>EFA</span></h1>
+    <button type="button" class="entrer" data-act="plein">Entrer dans l’appli →</button>
     <p>L’école de la finance personnelle dans votre poche : les nouveautés, votre cahier et votre école, EFA News, Min’Fin. Les mêmes données que sur efa.africa. Sur téléphone et tablette, l’appli s’ouvre en plein écran.</p>
     <div class="tour"><b>Commencer comme</b><div class="tour-grid">
       <button class="main" data-act="tour" data-to="accueil">Mes données</button>
@@ -553,6 +559,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 <!--donnees-site-->
 <script src="../parcours-efa.js" charset="utf-8"></script>
 <script src="../plan-efa.js" charset="utf-8"></script>
+<script>try{if(localStorage.getItem("efa_appli_plein")==="1")document.documentElement.classList.add("plein");}catch(e){}</script>
 <script src="../efa-reprise.js" charset="utf-8"></script>
 <script src="../a-la-une.js" charset="utf-8"></script>
 <script src="../minfin.js" charset="utf-8"></script>
@@ -1525,6 +1532,7 @@ document.addEventListener("click",function(ev){
   if(a==="importDo"){try{var tx=document.getElementById("imp-t").value;if(window.EFA_SAUVEGARDE){EFA_SAUVEGARDE.restaurer(tx);DEMO=false;mem=null;st=load();demoBandeau();}else{var ob=JSON.parse(tx);if(!ob||ob.v!==1||!ob.profil)throw 0;st=ob;save();}closeSheet();toast("Sauvegarde restaurée");hist=[];go("aujourdhui");}catch(e){toast("Ce texte n’est pas une sauvegarde EFA");}return;}
   if(a==="wipe"){st=fresh();mem=null;try{localStorage.removeItem(KEY);}catch(e){}ui.ob=0;hist=[];go("onboarding");toast("Données supprimées");return;}
   if(a==="demo-quitter"){quitterDemo();return;}
+  if(a==="plein"){document.documentElement.classList.add("plein");try{localStorage.setItem("efa_appli_plein","1");}catch(e){}if(DEMO)quitterDemo();else{hist=[];go("accueil");}return;}
   if(a==="demo"){hist=[];if(b.dataset.mode==="new"){if(DEMO||(st.profil&&st.profil.onboarde))entrerDemo(fresh());ui.ob=0;go("onboarding");}else{entrerDemo(demoKoffi());go("aujourdhui");toast("Démonstration : Koffi, après dix jours");}return;}
   if(a==="tour"){if(b.classList.contains("main")){if(DEMO)quitterDemo();else{hist=[];go("accueil");}return;}var to=b.dataset.to;hist=[{view:"outils",p:{}}];
     function openAt(lid,step){var sl=LS(lid);if(sl.statut==="a_faire")sl.statut="en_cours";sl.step=step;save();go("lecon",{id:lid});}
@@ -1566,7 +1574,9 @@ document.addEventListener("click",function(ev){
 document.addEventListener("input",function(ev){if(ev.target.id==="xq"){ui.q=ev.target.value;ui.fq=true;render();}});
 document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&ui.sheet)closeSheet();});
 function tick(){var d=new Date();document.getElementById("clock").textContent=d.getHours()+":"+pad(d.getMinutes());}tick();setInterval(tick,30000);
-try{if("serviceWorker" in navigator&&((location.protocol==="https:"&&/(^|\.)efa\.africa$/.test(location.hostname))||/^localhost$|^127\.0\.0\.1$/.test(location.hostname)))navigator.serviceWorker.register("sw.js").catch(function(){});}catch(e){}
+try{if("serviceWorker" in navigator&&((location.protocol==="https:"&&/(^|\.)efa\.africa$/.test(location.hostname))||/^localhost$|^127\.0\.0\.1$/.test(location.hostname)))(function(){var avait=!!navigator.serviceWorker.controller,fait=false;
+  navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();document.addEventListener("visibilitychange",function(){if(!document.hidden)reg.update();});setInterval(function(){reg.update();},30*60*1000);}).catch(function(){});
+  navigator.serviceWorker.addEventListener("controllerchange",function(){if(avait&&!fait){fait=true;location.reload();}});})();}catch(e){}
 render(true);
 var vInst=/[?&]installer=1/.test(location.search);
 function dejaReussi(){try{if(localStorage.getItem("efa_premiere_fiche"))return true;}catch(e){}if((st.cahier||[]).length)return true;return Object.keys(st.lecons||{}).some(function(id){return lstate(id)==="terminee"||lstate(id)==="verifiee";});}

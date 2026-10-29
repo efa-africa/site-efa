@@ -1,7 +1,7 @@
 /* EFA · L'appli : fonctionnement hors connexion. Changer VERSION à chaque mise en ligne.
    Les données de l'école, du cahier, de Min'Fin, du Dico, des Tribunes et des études viennent du site (../*.js) :
    elles sont mises en cache pour rester disponibles sans connexion, et rafraîchies à chaque ouverture en ligne. */
-var VERSION = "efa-app-2.5";
+var VERSION = "efa-app-2.6";
 var FICHIERS = ["./", "./index.html", "./content.js", "./manifest.webmanifest", "./confidentialite.html",
   "./koffi.jpg", "./bamba.jpg", "./affoue.jpg", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./fonts.css",
   "./libre-baskerville-latin-400-normal.woff2", "./libre-baskerville-latin-700-normal.woff2", "./libre-baskerville-latin-400-italic.woff2",
@@ -21,7 +21,10 @@ self.addEventListener("activate", function (e) {
 /* Réseau d'abord (contenus toujours à jour), cache ensuite. La page de l'appli ne sert de secours qu'aux navigations. */
 self.addEventListener("fetch", function (e) {
   if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
-  e.respondWith(fetch(e.request).then(function (r) {
+  /* Toujours la dernière version : on revalide auprès du serveur au lieu de prendre le cache du navigateur (sauf vidéos et sons, lus par morceaux) */
+  var req = e.request.headers.has("range") ? e.request : new Request(e.request.url, { cache: "no-cache", credentials: "same-origin" });
+  e.respondWith(fetch(req).then(function (r) {
+    if (r && r.redirected && e.request.mode === "navigate") return Response.redirect(r.url, 302);
     if (r && r.ok) { var copie = r.clone(); caches.open(VERSION).then(function (c) { c.put(e.request, copie); }); }
     return r;
   }).catch(function () {
