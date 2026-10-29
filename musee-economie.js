@@ -30,7 +30,7 @@
       e: [
         { k: "f", ini: "H", i: "h-hatchepsout", h: 1, nom: "Hatchepsout", d: "Vers −1470", y: -1470, l: "Égypte", role: "Reine-pharaon",
           p: "Elle envoie une expédition au pays de Pount, au sud de la mer Rouge, chercher encens, ébène et or. Les reliefs de son temple racontent ce voyage : l’un des plus anciens récits de commerce lointain." },
-        { k: "n", d: "Vers −814", l: "Carthage, Tunisie actuelle", t: "Carthage, le grand comptoir",
+        { k: "o", d: "Vers −814", l: "Carthage, Tunisie actuelle", t: "Carthage, le grand comptoir", i: "h-carthage", h: 1,
           p: "Fondée selon la tradition par des marchands phéniciens, Carthage devient une puissance commerçante de la Méditerranée. Ses navires relient l’Afrique du Nord, la Sicile et l’Espagne, et ses caravanes vont vers l’intérieur du continent. Elle frappera plus tard ses propres pièces.",
           q: "Une ville peut devenir riche sans grandes terres : en organisant les échanges des autres." },
         { k: "o", d: "−600", y: -600, l: "Lydie", t: "Les premières pièces", i: "h-lydie", h: 1,
@@ -45,8 +45,8 @@
           p: "En route vers La Mecque, il dépense et distribue tant d’or au Caire que, selon les chroniqueurs, son cours y baisse pendant des années. <b>Trop d’or d’un coup, et l’or vaut moins</b> : c’est déjà de l’inflation." },
         { k: "f", ini: "IB", i: "h-ibn-battuta", h: 1, nom: "Ibn Battuta", d: "1352", y: 1352, l: "Empire du Mali", role: "Voyageur, né à Tanger",
           p: "Il traverse le Sahara et décrit les marchés du Mali, où l’on paie avec des cauris, ces coquillages venus de l’océan Indien : rares, solides, impossibles à contrefaire." },
-        { k: "f", ini: "IK", nom: "Ibn Khaldoun", d: "1377", y: 1377, l: "Tunis, puis Le Caire", role: "Historien et penseur, né à Tunis",
-          p: "Dans sa <i>Muqaddima</i>, il observe que des impôts modérés encouragent le travail et le commerce, alors que des impôts trop lourds les découragent : <b>à trop prélever, l’État finit par recevoir moins</b>. Une idée que les économistes discutent encore." },
+        { k: "f", ini: "IK", i: "h-ibn-khaldoun", h: 2, nom: "Ibn Khaldoun", d: "1377", y: 1377, l: "Tunis, puis Le Caire", role: "Historien et penseur, né à Tunis",
+          p: "Dans sa <i>Muqaddima</i>, il observe que des impôts modérés encouragent le travail et le commerce, alors que des impôts trop lourds les découragent : <b>à trop prélever, l’État finit par recevoir moins</b>. Une idée que les économistes discutent encore. On ne connaît aucun portrait d’époque d’Ibn Khaldoun&nbsp;: l’image est une évocation." },
         { k: "o", d: "XIIIe–XVIe s.", l: "Tombouctou, Gao, Djenné", t: "Or contre sel", i: "h-or-sel", h: 1,
           c: ["≈ 2 000 km", "de Sahara entre l’or et le sel"],
           p: "Les caravanes traversent le désert : l’or et les tissus d’un côté, le sel de l’autre. Chaque étape a ses péages, ses risques et ses intermédiaires : <b>le prix d’arrivée n’est pas le prix de départ</b>." }
