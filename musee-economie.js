@@ -242,7 +242,7 @@
     SC.insertAdjacentHTML("beforeend", h);
     avis();
     // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
-    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (!im.getAttribute("src")) return; if (im.naturalWidth) { im.parentNode.classList.add("pret"); var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
+    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (!im.getAttribute("src")) return; if (im.naturalWidth) { im.parentNode.classList.add("pret"); var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; im.addEventListener("load", f); im.addEventListener("error", function () { im.parentNode.classList.add("pret"); }); if (im.complete) f(); });
     // le plan
     document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.per) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
     // commandes
