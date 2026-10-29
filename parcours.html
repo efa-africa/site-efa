@@ -484,10 +484,10 @@ details.apres-route{margin-top:18px}details.apres-route>summary{cursor:pointer;d
     </div>
     <section class="progr" id="ma-progression" aria-labelledby="t-progr">
       <h2 id="t-progr">Ma progression</h2>
-      <p><b>Sans compte</b>, votre progression et vos fiches restent dans ce navigateur, sur cet appareil : rien n’est envoyé à EFA. Si vous changez de téléphone ou videz votre navigateur, elles sont perdues. Sauvegardez-les pour les retrouver.</p>
+      <p><b>Sans compte</b>, votre progression et vos fiches restent dans ce navigateur, sur cet appareil : rien n’est envoyé à EFA. Si vous changez de téléphone ou videz votre navigateur, elles sont perdues. La sauvegarde garde tout votre EFA dans un fichier : école, cahier, défis, décisions suivies, outils et notes de l’appli.</p>
       <p><b>Avec un compte</b> (Communauté EFA, ou programme de votre organisation), votre progression est enregistrée et vous la retrouvez sur n’importe quel téléphone. Ce qui est transmis, et à qui, est écrit avant la création du compte : votre nom, vos visites, les étapes cochées, les modules terminés et vos certificats, visibles par EFA et, dans un programme d’organisation, par les responsables désignés par celle-ci. <b>Jamais</b> les montants saisis, le contenu de vos fiches ni vos réponses aux quiz et aux examens. <a href="rejoindre.html">Mon compte</a></p>
       <div class="acts">
-        <button type="button" id="pg-save">Sauvegarder ma progression</button>
+        <button type="button" id="pg-save">Sauvegarder tout mon EFA</button>
         <label class="bouton" for="pg-file">Restaurer une sauvegarde</label><input type="file" id="pg-file" accept="application/json,.json" hidden>
         <button type="button" id="pg-raz">Tout effacer</button>
       </div>
@@ -573,6 +573,7 @@ details.apres-route{margin-top:18px}details.apres-route>summary{cursor:pointer;d
 
 <script src="parcours-efa.js?v=2026102512"></script>
 <script src="parcours-ui.js?v=2026102512"></script>
+<script src="efa-reprise.js?v=2026102901"></script>
 <script>
 (function(){
   "use strict";
@@ -768,13 +769,12 @@ details.apres-route{margin-top:18px}details.apres-route>summary{cursor:pointer;d
   // Ma progression : sauvegarde, restauration, effacement
   function msg(t){ $("pg-msg").textContent = t; }
   $("pg-save").addEventListener("click", function(){
-    var d = localStorage.getItem(KEY) || "{}", b = new Blob([d], {type:"application/json"}), a = document.createElement("a");
-    a.href = URL.createObjectURL(b); a.download = "ma-progression-efa-"+new Date().toISOString().slice(0,10)+".json"; document.body.appendChild(a); a.click(); a.remove();
-    msg("Sauvegarde téléchargée. Gardez ce fichier : il permet de tout retrouver sur un autre appareil."); mesure("ecole-sauvegarde");
+    var rs = window.EFA_SAUVEGARDE ? EFA_SAUVEGARDE.telecharger() : [];
+    msg("Sauvegarde téléchargée"+(rs.length?" : "+rs.join(", "):"")+". Gardez ce fichier : il permet de tout retrouver sur un autre appareil."); mesure("ecole-sauvegarde");
   });
   $("pg-file").addEventListener("change", function(e){
     var f = e.target.files && e.target.files[0]; if(!f) return;
-    var rd = new FileReader(); rd.onload = function(){ try{ var o = JSON.parse(rd.result); if(!o || typeof o!=="object" || !(o.faits||o.fiches||o.preuves)) throw 0; localStorage.setItem(KEY, JSON.stringify(o)); etat = lire(); etat.faits = etat.faits||{}; rendre(); msg("Progression restaurée."); }catch(x){ msg("Ce fichier n’est pas une sauvegarde EFA."); } }; rd.readAsText(f);
+    var rd = new FileReader(); rd.onload = function(){ try{ var rs = EFA_SAUVEGARDE.restaurer(rd.result); etat = lire() || {}; etat.faits = etat.faits||{}; rendre(); msg("Sauvegarde restaurée"+(rs.length?" : "+rs.join(", "):"")+"."); }catch(x){ msg("Ce fichier n’est pas une sauvegarde EFA."); } }; rd.readAsText(f);
   });
   var razConf = false;
   $("pg-raz").addEventListener("click", function(){

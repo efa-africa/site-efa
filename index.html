@@ -1220,19 +1220,9 @@ html:not(.efa-decouvrir) #tk{display:none!important}
           <a href="point-de-depart.html?pour=cadre&amp;src=accueil-porte" data-goatcounter-click="accueil-porte-patrimoine"><b>Construire mon patrimoine</b><span>Épargner, investir, se loger</span></a>
           <a class="o" href="point-de-depart.html?pour=orga&amp;src=accueil-porte" data-goatcounter-click="accueil-porte-organisation"><b>Former mon équipe</b><span>Construire un programme de formation</span></a>
         </nav>
+        <script src="efa-reprise.js?v=2026102901"></script>
         <script>/* L’accueil suit l’avancement : défi en cours, résultat obtenu, objectif choisi, module en cours. Le bouton mène au geste exact. */
-        window.EFA_ETAPE=function(){try{
-          var C=JSON.parse(localStorage.getItem("efa_cahier_v1")||"null"),O=JSON.parse(localStorage.getItem("efa_objectif")||"null"),P=JSON.parse(localStorage.getItem("efa_parcours_v1")||"null");
-          var iso=function(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);},auj=iso(new Date());
-          var sem=C&&C.semaines&&C.semaines.filter(function(x){return !x.fini;}).pop();
-          if(sem&&sem.debut){var a=sem.debut.split("-"),n=Math.round((new Date(iso(new Date()).replace(/-/g,"/"))-new Date(+a[0],+a[1]-1,+a[2]))/864e5)+1,J=sem.jours||[],faits=J.filter(function(x){return x!=null;}).length;
-            if(n>7||faits>=7)return {t:"Votre défi de sept jours est terminé : faites le bilan et choisissez la suite.",b:"Faire mon bilan",h:"outils.html#cahier",k:"bilan"};
-            if(n>=1&&J[n-1]==null)return {t:"Jour "+n+" sur 7 : notez votre dépense du jour.",b:"Noter ma dépense du jour",h:"outils.html#cahier",k:"defi"};
-            return {t:"Jour "+Math.max(1,n)+" sur 7 : c’est noté pour aujourd’hui.",b:"Voir mon défi",h:"outils.html#cahier",k:"defi-ok"};}
-          if(C&&C.pistes&&C.pistes.liste&&C.pistes.liste.length)return {t:"Votre prochaine action : choisir un poste à suivre pendant sept jours.",b:"Choisir mon poste",h:"outils.html#cahier/nouveau",k:"poste"};
-          if(O&&O.p&&O.q2)return {t:"Votre première étape : "+(O.nextT||"votre point de départ")+".",b:"Commencer",h:O.next||"point-de-depart.html?src=accueil-retour",k:"objectif",o:O};
-          if(P&&P.actif&&P.faits&&Object.keys(P.faits).some(function(k){return k.indexOf(P.actif+".")===0;}))return {t:"Vous en étiez à votre module en cours.",b:"Reprendre mon module",h:"parcours.html?src=accueil-reprendre#"+P.actif,k:"module"};
-        }catch(x){}return null;};
+        window.EFA_ETAPE=window.EFA_REPRISE?EFA_REPRISE.etape:function(){return null;};
         (function(){var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro"),E=window.EFA_ETAPE();if(!b||!E)return;
           var orga=E.o&&E.o.p==="orga",pt=document.querySelector(".eh-portes");if(pt)pt.hidden=true;
           b.href=E.h;b.setAttribute("data-goatcounter-click","accueil-hero-etape-"+E.k);b.innerHTML=(orga?'Construire mon programme':'Ma prochaine action')+' <span aria-hidden="true">→</span>';
@@ -1400,7 +1390,7 @@ if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);
       </div>
       <aside class="lb-app" aria-label="L’appli EFA">
         <img src="app/icon-192.png" alt="" width="48" height="48" loading="lazy">
-        <div><p class="lb-app-t"><b>L’appli EFA</b> sur votre téléphone</p><p class="lb-app-s">Sans passer par un store. Vos modules, votre cahier et le Dico restent consultables hors connexion.</p>
+        <div><p class="lb-app-t"><b>L’appli EFA</b> sur votre téléphone</p><p class="lb-app-s">Sans passer par un store. Le plan des modules, vos notes, votre défi du jour et le Dico restent consultables hors connexion.</p>
         <a class="lb-app-b" href="app/?installer=1&amp;src=accueil" data-goatcounter-click="accueil-appli">Installer l’appli →</a></div>
       </aside>
     </div>

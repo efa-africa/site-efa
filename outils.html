@@ -219,6 +219,8 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .garde{display:grid;gap:12px;padding:18px;border-radius:14px;border:1px dashed var(--line)}
 .garde label{display:flex;gap:10px;align-items:flex-start;font-size:15px}
 .garde input{margin-top:3px;width:18px;height:18px;flex:none}
+.sauve{display:grid;gap:8px}.sauve .acts{display:flex;flex-wrap:wrap;gap:6px 18px}
+.wk.cont{background:var(--nuit);border-color:var(--nuit);color:#fff}.wk.cont h3{color:#fff}.wk.cont .over{color:#F09680}
 .garde .acts{display:flex;flex-wrap:wrap;gap:6px 18px}
 .vide{display:grid;gap:14px;justify-items:start;padding:26px;border-radius:14px;background:var(--papier);border:0}
 .vide .duo{width:100%}
@@ -598,6 +600,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 </footer>
 <script src="dico.js"></script>
 <script src="plan-efa.js?v=2026102801"></script>
+<script src="efa-reprise.js?v=2026102901"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -894,6 +897,33 @@ var OUTILS = [
     return '<section class="wk pc"><p class="over">Mes modules</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous les modules</a></p>'
       :'<h3>Aucun parcours commencé</h3><p class="small">Partez de votre problème : chaque étape faite s’affichera ici.</p><a class="btn btn-main" href="#parcours">Choisir mon parcours</a>')+'</section>';
   }
+  /* Où continuer, décisions suivies, ce qui vient de l'appli, sauvegarde de tout EFA */
+  function vueContinuer(){
+    var E=window.EFA_REPRISE&&EFA_REPRISE.etape(); if(!E||!/^(suivi|challenge|objectif|module)$/.test(E.k)) return "";
+    return '<section class="wk cont"><p class="over">Où continuer</p><h3>'+esc(E.t)+'</h3><a class="btn btn-main" href="'+esc(E.h)+'" style="justify-self:start">'+esc(E.b)+' →</a></section>';
+  }
+  function vueSuivis(){
+    var v=null; try{ v=JSON.parse(localStorage.getItem("efa_suivi_v1")||"null"); }catch(x){} var L=v&&v.items||[]; if(!L.length) return "";
+    var now=Date.now(), j=function(t){ try{ return new Date(t).toLocaleDateString("fr-FR",{day:"numeric",month:"long"}); }catch(x){ return ""; } };
+    var R={oui:"Essayé",partiel:"En partie",non:"Pas encore"};
+    return '<section class="wk"><p class="over">Mes décisions suivies</p><h3>'+compte(L.length,"décision","décisions")+' à vérifier dans le temps</h3><div class="hist">'+L.slice().reverse().slice(0,6).map(function(it){
+      var r=it.r30||it.r7, du=(!it.r7&&now>=it.j7)||(it.r7&&!it.r30&&now>=it.j30);
+      return '<div><b>'+esc(it.action||it.titre)+'</b><span>'+(r?R[r]||"":du?"Point à faire":"")+'</span><small>'+(it.titre&&it.action?esc(it.titre)+' · ':'')+(it.r30?'Point à 30 jours fait':it.r7?'Point à 30 jours le '+j(it.j30):'Point à 7 jours le '+j(it.j7))+(it.lien?' · <a class="lnk" href="'+esc(it.lien)+'">Revoir</a>':'')+'</small></div>'; }).join("")+'</div></section>';
+  }
+  function vueAppli(){
+    var A=window.EFA_REPRISE&&EFA_REPRISE.appli(); if(!A) return "";
+    var CHT={}; if(window.EFA_CONTENU&&EFA_CONTENU.challenges) EFA_CONTENU.challenges.forEach(function(c){ CHT[c.id]=c.titre; });
+    else if(A.challenges.length&&!document.getElementById("efa-contenu-appli")){ var sc=document.createElement("script"); sc.id="efa-contenu-appli"; sc.src="app/content.js"; sc.onload=function(){ var z=document.getElementById("ch-appli"); if(z) z.outerHTML=vueAppli(); }; document.head.appendChild(sc); }
+    var TY={appris:"J’ai appris",observe:"J’observe",decide:"Je décide",essaie:"J’essaie",bilan:"Bilan"};
+    var h='<section class="wk" id="ch-appli"><p class="over">Depuis l’appli EFA</p><h3>'+[A.notes.length?compte(A.notes.length,"note","notes"):"",A.challenges.length?compte(A.challenges.length,"challenge en cours","challenges en cours"):"",A.actions.length?compte(A.actions.length,"action ouverte","actions ouvertes"):""].filter(Boolean).join(" · ")+'</h3>';
+    if(A.challenges.length) h+='<div class="hist">'+A.challenges.map(function(id){ return '<div><b>'+esc(CHT[id]||"Challenge en cours")+'</b><span>En cours</span></div>'; }).join("")+'</div>';
+    if(A.actions.length) h+='<div class="hist">'+A.actions.slice(0,3).map(function(a){ return '<div><b>'+esc(a.objectif||"Action")+'</b><span>'+(a.statut==="en_cours"?"En cours":a.statut==="reportee"?"Reportée":"À commencer")+'</span>'+(a.etape?'<small>'+esc(a.etape)+'</small>':'')+'</div>'; }).join("")+'</div>';
+    if(A.notes.length) h+='<div class="hist">'+A.notes.slice(0,3).map(function(e){ return '<div><b>'+esc(String(e.texte).slice(0,160))+'</b><small>'+esc(TY[e.type]||"Note")+(e.date?' · '+esc(dateCourte(e.date)):'')+'</small></div>'; }).join("")+'</div>';
+    return h+'<a class="lnk" href="app/" style="justify-self:start">Ouvrir l’appli</a></section>';
+  }
+  function vueSauvegarde(){
+    return '<div class="sauve"><p class="small"><b>Tout votre EFA dans un fichier</b>&nbsp;: école, cahier, défis, décisions suivies, outils et notes de l’appli. Pour changer de téléphone ou ne rien perdre. Le fichier reste chez vous&nbsp;; vos clés d’accès n’y sont pas.</p><div class="acts"><button type="button" class="lnk" data-act="sauverTout">Sauvegarder tout mon EFA</button><label class="lnk" for="restaurerTout" style="cursor:pointer">Restaurer une sauvegarde</label><input type="file" id="restaurerTout" accept="application/json,.json" hidden></div><p class="small" id="sauve-m" role="status" aria-live="polite"></p></div>';
+  }
   function vueFiches(){
     var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){}
     var F=st.fiches||{}, k=Object.keys(F).sort(function(a,b){ return (F[b].d||"").localeCompare(F[a].d||""); });
@@ -919,11 +949,11 @@ var OUTILS = [
   }
   function rendreCahier(sous){
     var c=CH.lire(), nouveau=/^nouveau/.test(sous||""), poste=nouveau?(sous.split("/")[1]||""):null, existe=!!c;
-    if(!c&&!nouveau){ $ch.innerHTML='<div data-efa-point></div>'+vueParcours()+vueFiches()+vueVide(); return; }
+    if(!c&&!nouveau){ $ch.innerHTML='<div data-efa-point></div>'+vueContinuer()+vueParcours()+vueFiches()+vueSuivis()+vueAppli()+vueVide()+'<div class="garde">'+vueSauvegarde()+'</div>'; return; }
     c=c||CH.vide();
     var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
     h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
-    h+='<div data-efa-point></div>'+vueParcours()+vueFiches();
+    h+='<div data-efa-point></div>'+vueContinuer()+vueParcours()+vueFiches();
     if(cur&&!nouveau){
       var et=CH.etat(cur);
       if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }
@@ -935,8 +965,9 @@ var OUTILS = [
     var fin=c.semaines.filter(function(s){return s.fini;});
     if(fin.length) h+='<section class="wk"><p class="over">Mes défis terminés</p><div class="hist">'+c.semaines.map(function(s,i){ if(!s.fini) return ""; var b=s.bilan||CH.calculBilan(s);
       return '<div><b>'+titreSemaine(s,i)+'</b><span>'+F(b.semaine)+'</span><small>Commencée le '+esc(dateCourte(s.debut))+(s.type==="plafond-7j"?(b.tenu?' · plafond tenu':' · plafond dépassé'):(s.estimation!=null?' · estimation '+F(s.estimation):''))+(b.plafondChoisi?' · plafond suivant '+F(b.plafondChoisi):'')+'</small></div>'; }).join("")+'</div></section>';
+    h+=vueSuivis()+vueAppli();
     if(existe&&!nouveau) h+='<section class="wk suite3"><p class="over">Découvrir EFA</p><h3>Et maintenant, que voulez-vous&nbsp;?</h3><div class="s3"><a href="point-de-depart.html?src=cahier"><b>Creuser un sujet</b><span>Une question précise&nbsp;: budget, dette, famille, tontine.</span></a><a href="parcours.html?src=cahier#P1"><b>Acquérir les fondamentaux</b><span>Le parcours de l’école, module après module.</span></a><a href="diagnostic.html?src=cahier"><b>Progresser</b><span>Faire le point complet et voir où aller ensuite.</span></a></div></section>';
-    if(existe) h+='<div class="garde"><label><input type="checkbox" data-act="garder"'+(c.garder?' checked':'')+'><span>Garder mon cahier sur ce téléphone. '+(c.garder?'Il y reste tant que vous ne l’effacez pas.':'Sans cette option, il s’efface à la fermeture du navigateur.')+' Rien n’est envoyé à EFA&nbsp;: sur un autre téléphone, le cahier sera vide.</span></label>'+
+    if(existe) h+='<div class="garde"><label><input type="checkbox" data-act="garder"'+(c.garder?' checked':'')+'><span>Garder mon cahier sur ce téléphone. '+(c.garder?'Il y reste tant que vous ne l’effacez pas.':'Sans cette option, il s’efface à la fermeture du navigateur.')+' Rien n’est envoyé à EFA&nbsp;: pour le retrouver sur un autre téléphone, gardez une sauvegarde.</span></label>'+vueSauvegarde()+
       '<div class="acts"><button type="button" class="lnk" data-act="copier">Copier mon cahier</button>'+(confirmer==="effacer"?'<span>Tout effacer&nbsp;?</span><button type="button" class="lnk" data-act="effacerOui">Oui, effacer</button><button type="button" class="lnk" data-act="annuler">Non</button>':'<button type="button" class="lnk" data-act="effacer">Effacer mon cahier</button>')+'</div><p class="small" id="copie-ok" role="status" aria-live="polite"></p></div>';
     $ch.innerHTML=h;
   }
@@ -951,9 +982,14 @@ var OUTILS = [
     sauver(function(c){ var s=CH.semaineEnCours(c); if(!s) return; s.bilan=CH.calculBilan(s); if(plafond!=null) s.bilan.plafondChoisi=plafond; s.fini=true;
       if(type) c.semaines.push(CH.nouvelleSemaine(type,s.poste,s.libre,null,plafond)); });
   }
+  document.querySelector("main").addEventListener("change",function(e){
+    if(!e.target||e.target.id!=="restaurerTout") return; var f=e.target.files&&e.target.files[0], m0=document.getElementById("sauve-m"); if(!f) return;
+    var rd=new FileReader(); rd.onload=function(){ try{ var rs=EFA_SAUVEGARDE.restaurer(rd.result); mesure("sauvegarde-restauree"); reafficher(); var m1=document.getElementById("sauve-m"); if(m1) m1.textContent="Sauvegarde restaurée"+(rs.length?" : "+rs.join(", "):"")+"."; }catch(x){ if(m0) m0.textContent="Ce fichier n’est pas une sauvegarde EFA."; } }; rd.readAsText(f);
+  });
   document.querySelector("main").addEventListener("click",function(e){
     var t=e.target.closest("[data-act]"); if(!t||t.tagName==="INPUT") return;
     var a=t.dataset.act;
+    if(a==="sauverTout"){ var m0=document.getElementById("sauve-m"); try{ var rs=EFA_SAUVEGARDE.telecharger(); if(m0) m0.textContent="Sauvegarde téléchargée"+(rs.length?" : "+rs.join(", "):"")+". Gardez ce fichier."; mesure("sauvegarde-tout"); }catch(x){ if(m0) m0.textContent="La sauvegarde n’a pas pu être créée sur ce navigateur."; } return; }
     if(a==="ajouterSujet"){ sauver(function(c){ CH.ajouterSujet(c,t.dataset.slug); }); mesure("plan-ajout-"+t.dataset.slug); return reafficher(); }
     if(a==="nouveau"){ choixPoste=""; history.pushState(null,"","#cahier/nouveau"); return depuisAncre(); }
     if(a==="demarrer"){
