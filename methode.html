@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>/* L’ancienne rubrique « Actualités » est remplacée par EFA News */(function(){var h=(location.hash||"").slice(1).toLowerCase();if(/^(actualites|veille|news|efa-news|actu)$/.test(h))location.replace("news.html"+(location.search||"?src=methode"));})();</script>
 <meta charset="utf-8">
 <script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
@@ -592,7 +593,7 @@ a.st-card{text-decoration:none}
   <div class="wrap bar">
     <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>EFA <b>ÉTUDES &amp; PROSPECTIVE</b></span></a>
     <a class="back demo-p" href="demo.html?d=decideurs&amp;src=etudes" data-goatcounter-click="demo-lien-etudes">▶ La démo · 1 à 2 min</a>
-    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Africa 2075</a><a href="#actualites" data-tab="actualites">Actualités et marchés</a><a href="#methode" data-tab="methode">Notre méthode</a></nav>
+    <nav class="rubs" aria-label="Rubriques"><a href="#etudes" data-tab="etudes">Études</a><a href="#africa-2075" data-tab="africa-2075">Africa 2075</a><a href="news.html?src=methode" data-tab="actualites">Actualités et marchés</a><a href="#methode" data-tab="methode">Notre méthode</a></nav>
     <label class="pick rub-sel">Explorer une rubrique<select id="rub-sel"><option value="etudes">Études</option><option value="africa-2075">Africa 2075</option><option value="actualites">Actualités et marchés · EFA News</option><option value="brvm">Actualités et marchés · BRVM</option><option value="methode">Notre méthode</option></select></label>
   </div>
   <div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
@@ -605,7 +606,7 @@ a.st-card{text-decoration:none}
     <div class="somm-g">
       <a href="#etudes" class="somm-c"><span class="somm-n">1</span><b>Études</b><span>Ce qui est mesuré, avec la source, la date et le statut. Dernière publiée&nbsp;: <i>La tontine en chiffres</i> (23 octobre 2026). Une enquête en cours, résultats provisoires.</span></a>
       <a href="#africa-2075" class="somm-c"><span class="somm-n">2</span><b>Africa 2075</b><span>Les grandes questions de transformation du continent. Dernier dossier&nbsp;: <i>L’IA va multiplier les cerveaux, combien seront africains&nbsp;?</i></span></a>
-      <a href="#actualites" class="somm-c"><span class="somm-n">3</span><b>Actualités et marchés</b><span>Les faits récents expliqués, EFA News et la BRVM, et ce qu’ils changent.</span></a>
+      <a href="news.html?src=methode" class="somm-c"><span class="somm-n">3</span><b>Actualités et marchés</b><span>Les faits récents expliqués, EFA News et la BRVM, et ce qu’ils changent.</span></a>
       <a href="bibliotheque.html?src=etudes" class="somm-c"><span class="somm-n">4</span><b>La bibliothèque</b><span>Les grands livres sur l’argent, en format statut : leurs idées, ce qui marche chez nous, ce qui ne marche pas. 14 fiches au format statut.</span></a>
       <a href="organisations.html?src=etudes" class="somm-c somm-o"><span class="somm-n">5</span><b>Travailler avec EFA</b><span>Une étude, un programme pour vos équipes, une collaboration&nbsp;: l’offre pour les organisations.</span></a>
     </div>
@@ -852,7 +853,7 @@ a.st-card{text-decoration:none}
 
   <!-- ACTUALITÉS · sous-onglet BRVM -->
   <section class="tab" id="tab-brvm" data-tab="brvm" hidden>
-    <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="#actualites"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
+    <div class="wrap"><nav class="subtabs" aria-label="Actualités"><a href="news.html?src=methode"><b>EFA News</b><small>L’actualité en chiffres</small></a><a href="#brvm" aria-current="page"><b>BRVM</b><small>La Bourse régionale, séance par séance</small></a></nav></div>
     <!-- LA BRVM EXPLIQUÉE PAR EFA : à gauche les données de la séance, à droite quatre blocs pour comprendre. Exclusions éditoriales appliquées par donnees.js. -->
     <div class="wrap bx-top">
       <section class="bx-ecole" aria-labelledby="bx-ec-t">
@@ -1094,7 +1095,7 @@ function efaTickerItems(D){
     if(a.length){it.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4])+' · séance du '+B.seance,h:'methode.html#movr'});
       it.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4])+' · séance du '+B.seance,h:'methode.html#movr'});}
   }else it.splice(1,0,{c:'BRVM',t:'Cours de la dernière séance momentanément indisponibles · voir brvm.org',h:'https://www.brvm.org/fr/indices'});
-  if(D&&D.veille) D.veille.forEach(function(x){it.push({c:'EFA',t:'Actualité · '+x.pays+' : '+x.chiffre+' '+x.legende,h:'methode.html#'+x.code.toLowerCase()});});
+  /* les anciens écrans « Actualités » ne défilent plus : l’actualité vit dans EFA News (news.html) */
   return it;
 }
 function EFATicker(root,items){
@@ -1421,8 +1422,10 @@ function showTab(t){
 function route(){
   var smm=document.getElementById('sommaire'); if(smm) smm.hidden=!!location.hash;
   var h=(location.hash||'#etudes').slice(1).toLowerCase(); if(h==='res-etude-2'){showTab('etudes');efaOpenRes();return;} h=ALIAS[h]||h||'etudes';
+  if(h==='actualites'){location.href='news.html?src=methode';return;}
   if(TABS.indexOf(h)>-1){showTab(h);var cm=(location.hash||'').toLowerCase()==='#comite'&&document.getElementById('comite');if(cm)setTimeout(function(){cm.scrollIntoView({block:'start'});},60);else window.scrollTo(0,0);return;}
   var c=REG[h.toUpperCase()];
+  if(c&&c.tab==='actualites'){location.href='news.html?src=methode';return;}
   if(c){showTab(c.tab);if(c.tab==='etudes')efaOpenRes(false);setTimeout(function(){c.el.scrollIntoView({block:'start'});c.el.classList.add('hit');setTimeout(function(){c.el.classList.remove('hit');},1600);},40);}
   else { var el=document.getElementById(location.hash.slice(1)), tb=el&&el.closest('.tab');
     if(tb){ showTab(tb.dataset.tab); if(el.tagName==='DETAILS') el.open=true; setTimeout(function(){ el.scrollIntoView({block:'start'}); },60); }

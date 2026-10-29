@@ -995,7 +995,7 @@ function efaTickerItems(D){
     if(a.length){it.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4])+' · séance du '+B.seance,h:'methode.html#movr'});
       it.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4])+' · séance du '+B.seance,h:'methode.html#movr'});}
   }else it.splice(1,0,{c:'BRVM',t:'Cours de la dernière séance momentanément indisponibles · voir brvm.org',h:'https://www.brvm.org/fr/indices'});
-  if(D&&D.veille) D.veille.forEach(function(x){it.push({c:'EFA',t:'Actualité · '+x.pays+' : '+x.chiffre+' '+x.legende,h:'methode.html#'+x.code.toLowerCase()});});
+  /* les anciens écrans « Actualités » ne défilent plus : l’actualité vit dans EFA News (news.html) */
   return it;
 }
 function EFATicker(root,items){
