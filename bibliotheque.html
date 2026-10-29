@@ -6,7 +6,7 @@
 <link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>La bibliothèque EFA · livres, balade de l’économie, capitaines d’industrie · EFA</title>
-<meta name="description" content="La bibliothèque EFA en trois rayons : les grands livres sur l’argent en fiches courtes, la balade et le musée de l’économie en douze salles, et la pensée des capitaines d’industrie africains.">
+<meta name="description" content="La bibliothèque EFA en quatre rayons : le musée de l’économie en douze salles, la balade en six salles et huit jeux, les grands livres sur l’argent en fiches courtes, et la pensée des capitaines d’industrie africains.">
 <link rel="canonical" href="https://efa.africa/bibliotheque.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
@@ -113,6 +113,15 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .onglets small{display:block;font-weight:400;font-size:12.5px;opacity:.85;margin-top:2px}
 .panneau[hidden]{display:none}
 /* balade */
+.mus-tete{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:0;background:var(--nuit);color:#fff;border-radius:18px;overflow:hidden;margin-top:24px}
+.mus-img{position:relative;display:block}.mus-img img{display:block;width:100%;height:100%;aspect-ratio:16/9;object-fit:cover}
+.mus-ia{position:absolute;right:12px;bottom:10px;font-size:10px;font-style:italic;color:rgba(255,255,255,.85);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.mus-txt{display:grid;gap:12px;align-content:center;padding:24px 22px}.mus-txt h2{color:#fff;font-size:clamp(24px,2.6vw,32px)}.mus-txt p{color:#C9D1DE;margin:0}
+.mus-merci{font-size:14.5px;font-style:italic}
+.mus-salles{list-style:none;margin:0;padding:18px 0 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px}
+.mus-salles li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;background:var(--papier);border-radius:12px;padding:12px 14px}
+.mus-salles i{grid-row:span 2;font-style:normal;font:700 18px var(--f-display);color:#B8341A;align-self:center}.mus-salles b{color:var(--nuit)}.mus-salles span{font-size:14px;color:var(--ink2)}
+@media (max-width:760px){.mus-tete{grid-template-columns:minmax(0,1fr)}}
 .bal-tete{display:grid;gap:12px;background:var(--nuit);color:#fff;border-radius:18px;padding:24px 22px;margin-top:24px}
 .bal-tete h2{color:#fff;font-size:clamp(24px,3.4vw,36px)}
 .bal-tete p{color:#C9D1DE;max-width:44em}
@@ -186,16 +195,31 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <section class="hero"><div class="wrap">
   <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="methode.html">Études &amp; prospective</a> › La bibliothèque</nav>
   <span class="sur">La bibliothèque EFA</span>
-  <h1>Lire, visiter, s’inspirer</h1>
-  <p class="chapo">Les grands livres sur l’argent en fiches courtes, une balade dans l’économie en six salles, et la pensée des bâtisseurs africains.</p>
+  <h1>Visiter, jouer, lire, s’inspirer</h1>
+  <p class="chapo">Le musée de l’économie en douze salles, une balade en six salles et huit jeux, les grands livres sur l’argent en fiches courtes, et la pensée des bâtisseurs africains.</p>
   <div class="onglets" role="tablist" aria-label="Rayons de la bibliothèque">
-    <button type="button" role="tab" id="o-livres" aria-controls="livres" aria-selected="true" data-o="livres">Les livres<small>Fiches de lecture</small></button>
+    <button type="button" role="tab" id="o-musee" aria-controls="musee-p" aria-selected="true" data-o="musee-p">Le musée de l’économie<small>12 salles, 10 000 ans</small></button>
     <button type="button" role="tab" id="o-balade" aria-controls="balade" aria-selected="false" data-o="balade">La balade de l’économie<small>6 salles, 8 jeux</small></button>
+    <button type="button" role="tab" id="o-livres" aria-controls="livres" aria-selected="false" data-o="livres">Les livres<small>Fiches de lecture</small></button>
     <button type="button" role="tab" id="o-capitaines" aria-controls="capitaines" aria-selected="false" data-o="capitaines">Les capitaines d’industrie<small>Leur pensée, leurs leçons</small></button>
   </div>
 </div></section>
 <div class="wrap">
-  <div class="panneau" id="livres" role="tabpanel" aria-labelledby="o-livres">
+  <div class="panneau" id="musee-p" role="tabpanel" aria-labelledby="o-musee">
+    <div class="mus-tete">
+      <a class="mus-img" href="balade-economie.html?src=bibliotheque#musee" data-goatcounter-click="biblio-musee-image"><img src="illus/h-accueil.webp?v=2811" alt="Vitrine du musée de l’économie" width="1200" height="675"><span class="mus-ia">Illustration · IA</span></a>
+      <div class="mus-txt">
+        <span class="sur" style="color:var(--soft-corail)">Le musée de l’économie</span>
+        <h2>Dix mille ans d’économie africaine, en douze salles</h2>
+        <p>Qui crée la richesse en Afrique, qui la finance, qui en garde la valeur&nbsp;? De la vallée du Nil à la Bourse de Lagos, dans l’ordre du temps. La visite avance seule, au rythme d’une lecture tranquille&nbsp;; vous pouvez passer ou revenir quand vous voulez.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="bt bt-p" href="balade-economie.html?src=bibliotheque#musee" data-goatcounter-click="biblio-musee">▶ Entrer dans le musée</a></div>
+        <p class="mus-merci">En visitant un musée de l’économie en France, M. Pacôme Kipré, dit Peck Peckisblackman, a spontanément partagé ses idées avec EFA. Ce musée en est né&nbsp;: merci à lui.</p>
+      </div>
+    </div>
+    <ol class="mus-salles" aria-label="Les douze salles"><li><i>1</i><b>Produire, compter, conserver</b><span>−8500 → −3300</span></li><li><i>2</i><b>Routes lointaines et premières pièces</b><span>−1470 → −600</span></li><li><i>3</i><b>L’or du Sahel</b><span>1324 → XVIe siècle</span></li><li><i>4</i><b>Les traites esclavagistes</b><span>VIIe → XIXe siècle</span></li><li><i>5</i><b>Les économies coloniales</b><span>1880 → 1945</span></li><li><i>6</i><b>Les indépendances</b><span>1956 → 1960</span></li><li><i>7</i><b>Marchés et familles</b><span>Années 1960 → aujourd’hui</span></li><li><i>8</i><b>Les bâtisseurs</b><span>1978 →</span></li><li><i>9</i><b>Dette et crises</b><span>1980 → 1994</span></li><li><i>10</i><b>De l’épargne au capital</b><span>1998 →</span></li><li><i>11</i><b>Le téléphone, outil économique</b><span>2007 →</span></li><li><i>12</i><b>Transformer, puis ouvrir le capital</b><span>2010 → 2026</span></li></ol>
+  </div>
+
+  <div class="panneau" id="livres" role="tabpanel" aria-labelledby="o-livres" hidden>
   <div class="ill-tete"><img src="illus/livres.webp?v=2811" alt="Un bureau de lecture : un livre ouvert, un carnet, et des étagères de livres face à la ville" width="1200" height="675"><div class="intro-b"><p><b>Pour chaque livre</b>, l’essentiel en 4 écrans, ou la fiche complète avec ses 5 idées, ce qui marche chez nous, ce qui ne marche pas tel quel, une décision et un quiz. Touchez une couverture.</p><p><b>Pourquoi ces fiches ?</b> Ces livres sont écrits pour d’autres pays. EFA garde ce qui marche avec un salaire irrégulier, la famille, la tontine et le mobile money, et dit franchement ce qui ne marche pas.</p><p>Elles ne remplacent pas les livres : idées reformulées, sans reproduction du texte. Fiches rédigées avec l’aide de l’intelligence artificielle et relues par l’équipe EFA. Éducation financière, pas conseil en placement.</p></div></div>
   <div class="etag" id="etag" aria-label="Les fiches de lecture"></div>
   </div>
@@ -307,11 +331,11 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   /* onglets */
   var T=document.querySelectorAll('.onglets [role=tab]');
   function montrer(o,maj){T.forEach(function(t){var on=t.dataset.o===o;t.setAttribute('aria-selected',on);document.getElementById(t.dataset.o).hidden=!on;});
-    if(maj&&history.replaceState)history.replaceState(null,'',location.pathname+location.search+(o==='livres'?'':'#'+o));
+    if(maj&&history.replaceState)history.replaceState(null,'',location.pathname+location.search+(o==='musee-p'?'':'#'+(o==='musee-p'?'musee':o)));
     try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'biblio-onglet-'+o,title:o,event:true});}catch(e){}}
   T.forEach(function(t){t.addEventListener('click',function(){montrer(t.dataset.o,true);});
     t.addEventListener('keydown',function(e){var i=[].indexOf.call(T,t),n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:-9;if(n===-9)return;n=(n+T.length)%T.length;T[n].focus();montrer(T[n].dataset.o,true);});});
-  var h=location.hash.replace('#','');if(h==='balade'||h==='capitaines')montrer(h,false);
+  var h=location.hash.replace('#',''),q=new URLSearchParams(location.search);if(h==='balade'||h==='capitaines'||h==='livres')montrer(h,false);else if(q.get('livre')||q.get('src')==='ecole-boite')montrer('livres',false);
   /* capitaines */
   var C=window.EFA_CAPITAINES||[],Z=document.getElementById('caps');
   function ini(n){return n.split(/\s+/).filter(function(w){return /^[A-ZÉ]/.test(w)}).slice(0,2).map(function(w){return w[0]}).join('');}
