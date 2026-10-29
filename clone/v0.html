@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>EFA · Clone V0</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Mise en page : structure « offres verticales » (sélecteur de besoins, une section par école, preuves, garanties), charte efa.africa du 23 oct. 2026 */
+:root{
+  --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --creme:#F5EFE2; --corail:#DA3C1B; --corail-texte:#B8341A;
+  --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680; --news:#EC6243;
+  --papier:#FFFDF8; --line:#E2D8C4; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --bg-sombre:#070C16; --panel:#0D1525; --panel2:#111B2F; --line-sombre:#1F2C45;
+  --ts:#E8EDF5; --ts2:#C9D1DE; --hausse:#3CCB7F; --provisoire:#F2B84B;
+  --r-bouton:8px; --r-carte:14px; --r-pastille:999px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);font-size:17px;line-height:1.55;color:var(--ink);background:var(--creme);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte)}
+.sombre .surtitre{color:var(--soft-corail)}
+.bouton{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-body);font-size:16px;font-weight:800;line-height:1.2;min-height:46px;padding:12px 22px;border-radius:var(--r-bouton);border:0;text-decoration:none;cursor:pointer}
+.bouton-principal{background:var(--corail);color:#fff}
+.bouton-sombre{background:var(--nuit);color:#fff}
+.bouton-clair{background:var(--creme);color:var(--nuit)}
+.bouton:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.lien-souligne{font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* Bandeau laboratoire */
+.labo{background:var(--provisoire);color:var(--nuit);font-size:13px;font-weight:700;text-align:center;padding-block:7px}
+.labo .wrap{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+
+/* En-tête */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--nuit)}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nuit);color:#fff}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-texte{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;line-height:1.25}
+.menu{display:flex;gap:4px;align-items:center}
+.menu a{font-size:14px;font-weight:700;padding:8px 14px;border-radius:var(--r-bouton);text-decoration:none;color:var(--ts2)}
+.menu a:hover{color:#fff;background:var(--panel2)}
+.menu a.principal{background:var(--corail);color:#fff}
+@media (max-width:900px){.menu a:not(.principal){display:none}.logo-texte{font-size:10px;letter-spacing:.12em}}
+
+/* Hero */
+.hero{padding-block:44px 28px}
+.hero-grille{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.preuve{display:inline-flex;align-items:center;gap:10px;background:var(--papier);border-radius:var(--r-pastille);padding:6px 14px 6px 6px;font-size:14px;font-weight:700;color:var(--ink2)}
+.preuve b{background:var(--nuit);color:#fff;border-radius:var(--r-pastille);padding:3px 10px;font-weight:800}
+.hero h1{font-size:clamp(40px,6.4vw,82px);margin-top:20px;color:var(--nuit)}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--corail-texte)}
+.hero .chapo{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);margin-top:18px;max-width:34em}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.mission{font-size:clamp(16px,2vw,19px);font-weight:700;line-height:1.4;color:var(--nuit)}
+.mission .cercle{color:var(--news);font-weight:800}
+.mission .spirale{color:var(--bleu);font-weight:800}
+.sombre .mission{color:#fff}
+.sombre .mission .spirale{color:var(--soft-bleu)}
+.hero .mission{margin-top:26px;max-width:32em}
+.hero-visuel{background:var(--nuit);border-radius:18px;aspect-ratio:4/5;max-width:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:22px;color:#fff}
+.hero-visuel canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-visuel .haut,.hero-visuel .bas{position:relative;z-index:1}
+.hero-visuel .bas{background:var(--corail);border-radius:2px;padding:14px 16px}
+.hero-visuel .bas p{font-family:var(--f-display);font-weight:700;font-size:clamp(18px,1.8vw,22px);line-height:1.2}
+.hero-visuel .etq{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ts2)}
+@media (max-width:860px){.hero-grille{grid-template-columns:1fr}.hero-visuel{aspect-ratio:5/4}}
+
+/* Sélecteur de besoins */
+.selecteur{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:15;background:var(--creme);padding-block:10px}
+.pastilles{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.pastilles::-webkit-scrollbar{display:none}
+.pastilles a{flex:0 0 auto;font-size:15px;font-weight:700;text-decoration:none;color:var(--nuit);background:var(--papier);border-radius:var(--r-pastille);padding:9px 16px;white-space:nowrap}
+.pastilles a.actif{background:var(--nuit);color:#fff}
+.atouts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:15px;font-weight:600;color:var(--ink2)}
+.atouts span{display:inline-flex;align-items:center;gap:8px}
+.atouts span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--bleu)}
+
+/* Sections d'offre */
+.offre{padding-block:64px;scroll-margin-top:130px}
+.offre+.offre{padding-top:16px}
+.offre-tete{text-align:center;max-width:780px;margin:0 auto 34px}
+.offre-tete h2{font-size:clamp(28px,3.8vw,44px);margin-top:10px;color:var(--nuit)}
+.offre-grille{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.offre.inverse .offre-grille{grid-template-columns:1.1fr .9fr}
+.offre.inverse .inclus{order:2}
+.inclus{background:var(--papier);border-radius:var(--r-carte);padding:26px;display:flex;flex-direction:column;gap:18px}
+.inclus h3{font-family:var(--f-body);font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.inclus ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.inclus li{display:flex;gap:12px;align-items:flex-start;font-weight:600}
+.inclus li svg{flex:0 0 22px;margin-top:2px}
+.inclus .bouton{align-self:flex-start;margin-top:auto}
+.scene{border-radius:var(--r-carte);padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:26px;min-height:380px;position:relative;overflow:hidden}
+.scene h3{font-size:clamp(24px,2.6vw,34px)}
+.scene p{max-width:30em}
+.scene.nuit{background:var(--nuit);color:var(--ts)}
+.scene.nuit p{color:var(--ts2)}
+.scene.bleu{background:var(--bleu);color:#fff}
+.scene.corail{background:var(--corail);color:#fff}
+.scene .texte{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+.scene .actions{position:relative;z-index:1;display:flex;gap:12px;flex-wrap:wrap}
+.bientot{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--provisoire);color:var(--nuit);border-radius:var(--r-pastille);padding:4px 10px;align-self:flex-start}
+.illu{position:absolute;right:-30px;bottom:-30px;width:56%;max-width:340px;opacity:.95;pointer-events:none}
+@media (max-width:860px){.offre-grille,.offre.inverse .offre-grille{grid-template-columns:1fr}.offre.inverse .inclus{order:0}.illu{width:62%;opacity:.35}}
+
+/* Bande de rappel mission */
+.rappel{background:var(--nuit);padding-block:30px}
+.rappel .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* Tout au même endroit */
+.endroit{padding-block:72px}
+.endroit-grille{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.carte{background:var(--papier);border-radius:var(--r-carte);padding:26px}
+.carte h3{font-size:clamp(20px,1.9vw,24px);color:var(--nuit)}
+.carte p{color:var(--ink2);margin-top:8px}
+.telephone{margin:24px auto 0;width:230px;max-width:100%;background:var(--nuit);border-radius:30px;padding:10px}
+.ecran{background:var(--creme);border-radius:22px;padding:16px 14px;display:flex;flex-direction:column;gap:10px;font-size:13px}
+.ecran .l1{font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--nuit)}
+.ecran .bloc{background:var(--papier);border-radius:10px;padding:10px}
+.ecran .barre{height:7px;border-radius:4px;background:var(--line);margin-top:6px;overflow:hidden}
+.ecran .barre i{display:block;height:100%;background:var(--bleu)}
+.ecran .plein{background:var(--corail);color:#fff;border-radius:2px;padding:9px 10px;font-weight:700}
+.local{display:flex;gap:12px;align-items:flex-start;background:var(--bleu);color:#fff;border-radius:2px;padding:16px 18px;margin-top:20px;font-weight:600}
+@media (max-width:860px){.endroit-grille{grid-template-columns:1fr}}
+
+/* Min'Fin */
+.minfin{background:var(--nuit);color:var(--ts);padding-block:72px}
+.minfin h2{font-size:clamp(28px,3.8vw,44px);color:#fff;margin-top:10px}
+.episodes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.episode{background:var(--panel);border-radius:var(--r-carte);overflow:hidden;display:flex;flex-direction:column}
+.episode .vignette{aspect-ratio:16/10;max-width:100%;position:relative;display:flex;align-items:flex-end;padding:14px;background:var(--panel2)}
+.episode .vignette .num{font-family:var(--f-display);font-weight:700;font-size:64px;line-height:1;color:var(--line-sombre)}
+.episode .vignette .play{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:var(--corail);display:grid;place-items:center}
+.episode .corps{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px}
+.episode .corps h3{font-size:19px;line-height:1.2;color:#fff}
+.episode .corps p{color:var(--ts2);font-size:15px}
+@media (max-width:860px){.episodes{grid-template-columns:1fr}}
+
+/* Avis */
+.avis{padding-block:72px}
+.avis h2{font-size:clamp(28px,3.8vw,44px);color:var(--nuit);margin-top:10px}
+.avis .intro{color:var(--ink2);margin-top:12px;max-width:36em}
+.temoins{columns:3 280px;column-gap:16px;margin-top:30px}
+.temoin{break-inside:avoid;background:var(--papier);border-radius:var(--r-carte);padding:22px;margin-bottom:16px}
+.temoin p{font-size:16px;color:var(--ink)}
+.temoin .qui{margin-top:14px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--ink3)}
+.temoin .qui i{width:30px;height:30px;border-radius:50%;background:var(--line);flex:0 0 30px}
+.temoin.exemple{background:transparent;outline:2px dashed var(--line);outline-offset:-2px}
+.stat{break-inside:avoid;background:var(--nuit);color:#fff;border-radius:var(--r-carte);padding:22px;margin-bottom:16px}
+.stat .chiffre{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,3.6vw,46px);line-height:1}
+.stat .etq{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ts2);margin-top:10px}
+.stat.corail{background:var(--corail)}
+.stat.corail .etq{color:#fff}
+
+/* Garanties */
+.garanties{background:var(--papier);padding-block:26px}
+.garanties .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.garantie{display:flex;gap:12px;align-items:center;font-weight:700;color:var(--nuit);font-size:15px;line-height:1.3}
+.garantie span.ic{flex:0 0 40px;height:40px;border-radius:50%;background:var(--creme);display:grid;place-items:center}
+@media (max-width:860px){.garanties .wrap{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.garanties .wrap{grid-template-columns:1fr}}
+
+/* Appel final */
+.final{padding-block:72px;text-align:center}
+.final h2{font-size:clamp(32px,5vw,60px);color:var(--nuit);max-width:16em;margin:12px auto 0}
+.final .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+
+/* Pied */
+.pied{background:var(--bg-sombre);color:var(--ts2);padding-block:48px 28px}
+.pied-grille{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+.pied h2{font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.pied ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pied a{font-size:15px;text-decoration:none;color:var(--ts2)}
+.pied a:hover{color:#fff}
+.pied .bas{font-size:13px;color:#8E98AA;margin-top:36px;padding-top:18px;border-top:1px solid var(--line-sombre);display:flex;flex-direction:column;gap:8px}
+@media (max-width:860px){.pied-grille{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.pied-grille{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head><body>
+
+<div class="labo"><div class="wrap"><span>Laboratoire EFA · version d'étude, non publiée sur efa.africa</span><span>· V0 du 29 oct. 2026</span></div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#haut" aria-label="EFA, retour en haut">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6DB8F2"/><stop offset="1" stop-color="#1B71B2"/></linearGradient></defs><circle cx="17" cy="17" r="16" fill="#fff"/><circle cx="17" cy="17" r="13.5" fill="url(#lg)"/><path d="M9 19c3-1 5-4 8-4s4 2 8-1c-2 4-5 6-8 6-2 0-3-1-4 0z" fill="#fff"/></svg>
+      <span class="logo-texte">EFA<br>Éducation Financière Afrique</span>
+    </a>
+    <nav class="menu" aria-label="Menu principal">
+      <a class="principal" href="#ecoles">Mes outils et diagnostic</a>
+      <a href="#avis">Études &amp; actualité</a>
+      <a href="#final">Organisations &amp; contact</a>
+      <a href="#pied">À propos</a>
+      <a href="#endroit">L'appli</a>
+    </nav>
+  </div>
+</header>
+
+<main id="haut">
+  <section class="hero">
+    <div class="wrap hero-grille">
+      <div>
+        <span class="preuve"><b>1,1 M</b> vues en 28 jours sur Facebook</span>
+        <h1>L'argent s'apprend. <em>Ici,</em> avec vos vraies questions.</h1>
+        <p class="chapo">L'école digitale de la finance personnelle, ancrée dans les réalités africaines. Vous partez de ce qui vous préoccupe, puis vous vous exercez à décider avec vos propres chiffres.</p>
+        <div class="actions">
+          <a class="bouton bouton-principal" href="#ecoles">Faire mon diagnostic</a>
+          <a class="bouton bouton-sombre" href="#minfin">Voir Min'Fin</a>
+        </div>
+        <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l'argent qui tourne, à la <span class="spirale">spirale</span>, l'argent qui reste.</p>
+      </div>
+      <div class="hero-visuel" aria-label="Spirale EFA">
+        <canvas id="spiraleHero" aria-hidden="true"></canvas>
+        <div class="haut"><span class="etq">La promesse</span></div>
+        <div class="bas"><p>Après EFA, vous savez où passe votre argent, combien en garder, et comment le faire grandir.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="selecteur" id="ecoles">
+    <div class="wrap">
+      <nav class="pastilles" aria-label="Vos besoins">
+        <a href="#fin-de-mois" class="actif">Fin de mois</a>
+        <a href="#tontine">Tontine</a>
+        <a href="#bourse">Bourse</a>
+        <a href="#retraite">Retraite</a>
+        <a href="#organisations">Organisations</a>
+      </nav>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="atouts"><span>Parcours partis d'un vrai problème</span><span>100 % en ligne</span><span>Contenus vérifiés par l'équipe</span><span>Vos chiffres restent sur votre téléphone</span></div>
+  </div>
+
+  <!-- Fin de mois -->
+  <section class="offre" id="fin-de-mois">
+    <div class="wrap">
+      <div class="offre-tete">
+        <span class="surtitre">Parcours · Où est passé mon argent ?</span>
+        <h2>La fin de mois, enfin lisible</h2>
+      </div>
+      <div class="offre-grille">
+        <div class="inclus">
+          <h3>Tout est inclus</h3>
+          <ul>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Un diagnostic de niveau 0 en cinq minutes</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Flux et stock expliqués avec Koffi</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Le simulateur « Où passe mon argent ? »</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Le guide « Construire sa stabilité financière »</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Une première décision notée dans votre cahier</li>
+          </ul>
+          <a class="bouton bouton-principal" href="#final">Commencer ce parcours</a>
+        </div>
+        <div class="scene nuit">
+          <div class="texte">
+            <span class="surtitre">Vous repartez avec</span>
+            <h3>Le chiffre de ce qui reste, chaque mois</h3>
+            <p>On ne vous demande pas de tout couper. On vous apprend à voir le flux, puis à décider ce qui devient du stock.</p>
+          </div>
+          <div class="actions"><a class="bouton bouton-clair" href="#final">Faire le point</a></div>
+          <svg class="illu" viewBox="0 0 300 300" aria-hidden="true">
+            <rect x="40" y="170" width="36" height="90" rx="3" fill="#1F2C45"/>
+            <rect x="96" y="130" width="36" height="130" rx="3" fill="#1F2C45"/>
+            <rect x="152" y="150" width="36" height="110" rx="3" fill="#1F2C45"/>
+            <rect x="208" y="90" width="36" height="170" rx="3" fill="#DA3C1B"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tontine -->
+  <section class="offre inverse" id="tontine">
+    <div class="wrap">
+      <div class="offre-tete">
+        <span class="surtitre">École de la tontine</span>
+        <h2>La tontine sait réunir. Apprenez-lui à garder.</h2>
+      </div>
+      <div class="offre-grille">
+        <div class="inclus">
+          <h3>Tout est inclus</h3>
+          <ul>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#DA3C1B"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>« Où en êtes-vous avec la tontine ? » : rejoindre, participer, garder ensemble</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#DA3C1B"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Cinq formations courtes, chacune finit par une décision</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#DA3C1B"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>La fiche « Avant de cotiser, posez ces questions »</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#DA3C1B"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Le guide « Que faire de sa tontine ? Décider avant de recevoir »</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#DA3C1B"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Formation avancée « De la réserve au club »</li>
+          </ul>
+          <a class="bouton bouton-principal" href="#final">Entrer à l'école de la tontine</a>
+        </div>
+        <div class="scene corail">
+          <div class="texte">
+            <span class="surtitre" style="color:#fff">Vous repartez avec</span>
+            <h3>Une règle de réserve décidée avant le cycle</h3>
+            <p>Cotiser 110 000 F dont 10 000 en réserve, ou redistribuer 80 % du tour : le groupe choisit, et l'argent qui circule commence à rester.</p>
+          </div>
+          <div class="actions"><a class="bouton bouton-sombre" href="#final">Répondre à l'enquête tontine</a></div>
+          <canvas class="illu" id="spiraleTontine" width="340" height="340" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bourse -->
+  <section class="offre" id="bourse">
+    <div class="wrap">
+      <div class="offre-tete">
+        <span class="surtitre">École de la Bourse · BRVM</span>
+        <h2>Après le paiement, le capital</h2>
+      </div>
+      <div class="offre-grille">
+        <div class="inclus">
+          <h3>Tout est inclus</h3>
+          <ul>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>« La BRVM expliquée par EFA », pas à pas</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>« J'investis pour quel projet ? » : un horizon, plusieurs issues</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>EFA Traders, le laboratoire des décisions fictives</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#1B71B2"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Le bulletin « La semaine à la BRVM » par email</li>
+          </ul>
+          <a class="bouton bouton-principal" href="#final">Entrer à l'école de la Bourse</a>
+        </div>
+        <div class="scene bleu">
+          <div class="texte">
+            <span class="surtitre" style="color:#fff">Vous repartez avec</span>
+            <h3>Un horizon choisi, sans promesse de gain</h3>
+            <p>Aucune recommandation de titre. On vous apprend à lire le marché et à décider en connaissant les issues possibles.</p>
+          </div>
+          <div class="actions"><a class="bouton bouton-sombre" href="#final">Essayer EFA Traders</a></div>
+          <svg class="illu" viewBox="0 0 300 300" aria-hidden="true">
+            <polyline points="20,240 70,210 110,225 150,160 190,175 230,110 280,80" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="280" cy="80" r="9" fill="#fff"/>
+            <line x1="20" y1="260" x2="290" y2="260" stroke="#6DB8F2" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Retraite -->
+  <section class="offre inverse" id="retraite">
+    <div class="wrap">
+      <div class="offre-tete">
+        <span class="surtitre">Parcours · Préparer ma retraite</span>
+        <h2>Votre liberté financière a un chiffre</h2>
+      </div>
+      <div class="offre-grille">
+        <div class="inclus">
+          <h3>Ce qui arrive</h3>
+          <ul>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#5F6676"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>L'outil « Préparer ma retraite »</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#5F6676"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Le guide « Combien vous faut-il pour être libre ? »</li>
+            <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#5F6676"/><path d="M6.5 11.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>Le rôle de l'aîné, assureur non déclaré de la famille</li>
+          </ul>
+          <span class="bientot">Bientôt</span>
+        </div>
+        <div class="scene nuit">
+          <div class="texte">
+            <span class="bientot">Bientôt</span>
+            <h3>Combien vous faut-il pour être libre ?</h3>
+            <p>Les questions que tout le monde se pose, les stratégies classiques, et votre propre chiffre, calculé chez vous.</p>
+          </div>
+          <div class="actions"><a class="bouton bouton-clair" href="#final">Être prévenu</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rappel sombre">
+    <div class="wrap">
+      <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l'argent qui tourne, à la <span class="spirale">spirale</span>, l'argent qui reste.</p>
+      <a class="bouton bouton-principal" href="#final">Faire mon diagnostic</a>
+    </div>
+  </div>
+
+  <!-- Tout au même endroit -->
+  <section class="endroit" id="endroit">
+    <div class="wrap">
+      <div class="offre-tete">
+        <span class="surtitre">L'appli EFA</span>
+        <h2>Tout au même endroit, dans votre poche</h2>
+      </div>
+      <div class="endroit-grille">
+        <div class="carte">
+          <h3>Votre cahier, vos parcours, votre certificat</h3>
+          <p>Suivez où vous en êtes, gardez vos décisions dans le cahier, avancez vers le certificat CEFA.</p>
+          <div class="telephone" aria-hidden="true">
+            <div class="ecran">
+              <span class="l1">Bonjour Koffi</span>
+              <div class="bloc">Parcours fin de mois<div class="barre"><i style="width:60%"></i></div></div>
+              <div class="bloc">École de la tontine<div class="barre"><i style="width:25%"></i></div></div>
+              <div class="plein">Décision de la semaine : réserve de 10 %</div>
+              <div class="bloc">Cahier · 3 preuves</div>
+            </div>
+          </div>
+        </div>
+        <div class="carte" style="display:flex;flex-direction:column">
+          <h3>Une communauté le jeudi à 19 h</h3>
+          <p>EFA Community : une fiche, une question posée à tous, et les réponses de ceux qui vivent les mêmes réalités.</p>
+          <h3 style="margin-top:26px">Le Dico, Min'Fin et les Tribunes</h3>
+          <p>Un mot expliqué, une histoire de Koffi, une idée qui bouscule. Chaque contenu renvoie vers un parcours.</p>
+          <div class="local">
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex:0 0 22px"><rect x="4" y="9" width="14" height="10" rx="2" fill="#fff"/><path d="M7 9V6.5a4 4 0 018 0V9" stroke="#fff" stroke-width="2" fill="none"/></svg>
+            <span>EFA ne garde pas vos chiffres : ils restent sur votre téléphone. Vous pouvez aussi saisir des chiffres fictifs, proches de la réalité.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Min'Fin -->
+  <section class="minfin sombre" id="minfin">
+    <div class="wrap">
+      <span class="surtitre">Min'Fin · Saison 1</span>
+      <h2>Les questions que Koffi se pose</h2>
+      <div class="episodes">
+        <article class="episode">
+          <div class="vignette"><span class="num">01</span><span class="play"><svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M1 1l12 7-12 7z" fill="#fff"/></svg></span></div>
+          <div class="corps"><h3>Où est passé votre argent ?</h3><p>L'épisode le plus regardé de la série.</p></div>
+        </article>
+        <article class="episode">
+          <div class="vignette"><span class="num">02</span><span class="play"><svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M1 1l12 7-12 7z" fill="#fff"/></svg></span></div>
+          <div class="corps"><h3>+200 000 FCFA de salaire. Toujours rien ?</h3><p>Gagner plus ne suffit pas à garder plus.</p></div>
+        </article>
+        <article class="episode">
+          <div class="vignette"><span class="num">03</span><span class="play"><svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M1 1l12 7-12 7z" fill="#fff"/></svg></span></div>
+          <div class="corps"><h3>Prêt ou cadeau ?</h3><p>Vous avez déjà prêté à un ami ou à un proche ?</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avis -->
+  <section class="avis" id="avis">
+    <div class="wrap">
+      <span class="surtitre">Ils apprennent avec EFA</span>
+      <h2>Une communauté qui grandit chaque semaine</h2>
+      <p class="intro">Les cartes en pointillés attendent de vrais témoignages, recueillis avec accord. Aucun avis n'est inventé.</p>
+      <div class="temoins">
+        <div class="stat"><div class="chiffre">1,1 M</div><div class="etq">vues Facebook · 9 sept. – 6 oct. 2026</div></div>
+        <div class="temoin exemple"><p>Témoignage à recueillir : un membre d'EFA Community sur sa première réserve de tontine.</p><div class="qui"><i></i>Prénom, ville</div></div>
+        <div class="stat corail"><div class="chiffre">250+</div><div class="etq">réponses à l'enquête « L'argent de la tontine »</div></div>
+        <div class="temoin exemple"><p>Témoignage à recueillir : un testeur du pilote sur le parcours fin de mois.</p><div class="qui"><i></i>Prénom, ville</div></div>
+        <div class="stat"><div class="chiffre">46 K</div><div class="etq">interactions Facebook sur la même période</div></div>
+        <div class="temoin exemple"><p>Témoignage à recueillir : un salarié du pilote entreprise.</p><div class="qui"><i></i>Prénom, organisation</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="garanties">
+    <div class="wrap">
+      <div class="garantie"><span class="ic"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><rect x="4" y="9" width="14" height="10" rx="2" fill="#0B1220"/><path d="M7 9V6.5a4 4 0 018 0V9" stroke="#0B1220" stroke-width="2" fill="none"/></svg></span>Vos chiffres restent chez vous</div>
+      <div class="garantie"><span class="ic"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 11.5l4 4 8-9" stroke="#0B1220" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></span>Contenus vérifiés par l'équipe</div>
+      <div class="garantie"><span class="ic"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#0B1220" stroke-width="2.4" fill="none"/><path d="M6 16L16 6" stroke="#0B1220" stroke-width="2.4"/></svg></span>Aucune recommandation de titre</div>
+      <div class="garantie"><span class="ic"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 18l4-6 4 3 4-7 4 4" stroke="#0B1220" stroke-width="2.4" fill="none" stroke-linejoin="round"/></svg></span>Parcours qui finissent par une décision</div>
+    </div>
+  </div>
+
+  <section class="final" id="final">
+    <div class="wrap">
+      <span class="surtitre">Pour commencer</span>
+      <h2>Qu'est-ce qui vous préoccupe ?</h2>
+      <div class="final-choix actions">
+        <a class="bouton bouton-principal" href="#fin-de-mois">Je veux apprendre</a>
+        <a class="bouton bouton-sombre" href="#bourse">Je suis un décideur</a>
+        <a class="bouton bouton-sombre" href="#endroit" id="organisations">Mon organisation veut former</a>
+      </div>
+      <p class="mission" style="margin-top:30px">EFA aide chacun à passer du <span class="cercle">cercle</span>, l'argent qui tourne, à la <span class="spirale">spirale</span>, l'argent qui reste.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="pied sombre" id="pied">
+  <div class="wrap">
+    <div class="pied-grille">
+      <div>
+        <span class="logo-texte" style="color:#fff">EFA · Éducation Financière Afrique</span>
+        <p style="margin-top:12px;font-size:15px">L'école digitale de la finance personnelle, ancrée dans les réalités africaines.</p>
+      </div>
+      <div><h2>Apprendre</h2><ul><li><a href="#fin-de-mois">Fin de mois</a></li><li><a href="#tontine">École de la tontine</a></li><li><a href="#bourse">École de la Bourse</a></li><li><a href="#minfin">Min'Fin</a></li></ul></div>
+      <div><h2>Études</h2><ul><li><a href="#avis">La tontine en chiffres</a></li><li><a href="#avis">L'argent de la tontine</a></li><li><a href="#avis">Africa 2075</a></li></ul></div>
+      <div><h2>Rester en lien</h2><ul><li><a href="#endroit">EFA Community</a></li><li><a href="#pied">contact@efa.africa</a></li></ul></div>
+    </div>
+    <div class="bas">
+      <span>Contenus pédagogiques. Ils ne constituent ni un conseil en investissement ni une recommandation de titre. Avant de décider, voyez un professionnel.</span>
+      <span>© 2026 EFA · Éducation Financière Afrique · Version de laboratoire</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Vraie spirale d'Archimède, en points
+  function spirale(cv, opts){
+    var ctx=cv.getContext('2d'); if(!ctx) return;
+    var dpr=window.devicePixelRatio||1;
+    var w=cv.clientWidth||cv.width, h=cv.clientHeight||cv.height;
+    cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    var cx=w*opts.cx, cy=h*opts.cy, tours=opts.tours, rmax=Math.min(w,h)*opts.r;
+    var n=opts.points, tmax=tours*2*Math.PI;
+    for(var i=0;i<n;i++){
+      var t=(i/n)*tmax, r=rmax*t/tmax;
+      var x=cx+r*Math.cos(t), y=cy+r*Math.sin(t);
+      var k=i/n;
+      ctx.beginPath();
+      ctx.arc(x,y,opts.taille*(0.45+0.9*k),0,Math.PI*2);
+      ctx.fillStyle = k>0.9 ? opts.fin : opts.couleur;
+      ctx.globalAlpha = 0.25+0.75*k;
+      ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+  function dessiner(){
+    var a=document.getElementById('spiraleHero');
+    if(a) spirale(a,{cx:.55,cy:.4,r:.42,tours:4,points:260,taille:3,couleur:'#6DB8F2',fin:'#F09680'});
+    var b=document.getElementById('spiraleTontine');
+    if(b) spirale(b,{cx:.5,cy:.5,r:.46,tours:3.5,points:180,taille:3.4,couleur:'#FFFFFF',fin:'#0B1220'});
+  }
+  dessiner();
+  var to; window.addEventListener('resize',function(){clearTimeout(to);to=setTimeout(dessiner,150);});
+
+  // Pastille active selon la section visible (aplat, sans liseré)
+  var liens=[].slice.call(document.querySelectorAll('.pastilles a'));
+  var ids=liens.map(function(l){return l.getAttribute('href').slice(1);});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          liens.forEach(function(l){l.classList.toggle('actif',l.getAttribute('href')==='#'+e.target.id);});
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    ids.forEach(function(id){var s=document.getElementById(id); if(s && s.tagName==='SECTION') io.observe(s);});
+  }
+})();
+</script>
+
+</body></html>
