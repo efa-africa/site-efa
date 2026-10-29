@@ -481,6 +481,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 
 
 /* Accueil de l'appli = accueil du site */
+.acc-hero-court{display:none!important}
 .acc-hero{display:flex;flex-direction:column;gap:12px;padding-top:6px}
 .acc-sur{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#B8341A}
 .acc-h1{font-family:var(--display);font-weight:700;font-size:calc(40px*var(--scale));line-height:1.06;letter-spacing:-.015em;color:#0B1220}
@@ -797,7 +798,7 @@ function vOnboarding(){var s=ui.ob,h="";
 /* Aujourd'hui */
 /* Où continuer : la même prochaine étape que sur le site (défi, décision suivie, pistes, challenge, objectif, module) */
 function contCarte(){var E=!DEMO&&window.EFA_REPRISE&&EFA_REPRISE.etape();if(!E)return "";
-  var act=E.k==="challenge"?'data-act="go" data-view="aujourdhui"':'data-act="web" data-url="'+esc(E.h.replace(/^\.\.\//,""))+'" data-t="'+esc(E.b)+'"';
+  var act=E.k==="challenge"?'data-act="go" data-view="aujourdhui"':/^defi/.test(E.k)?'data-act="sheet" data-k="siteDay"':'data-act="web" data-url="'+esc(E.h.replace(/^\.\.\//,""))+'" data-t="'+esc(E.b)+'"';
   return '<section class="navy-card" style="margin-bottom:6px"><span class="sur" style="color:#F09680">Où continuer</span><p class="h3">'+esc(E.t)+'</p><button class="btn sm" '+act+'>'+esc(E.b)+' →</button></section>';}
 function vAujourdhui(){
   var h=header("Aujourd’hui"),p=activeParcours(),rv=reviewsDue(),act=prioAction(),chs=chActifs(),d=doneCount();
@@ -1177,6 +1178,7 @@ function monRetour(){if(DEMO)return "";var rows=[],s=PST(),now=Date.now();
   if(p&&g&&!g.fini)rows.push('<button class="row" data-act="module" data-id="'+esc(p.id)+'"><span class="sq" style="color:var(--coral2)">'+ICON.play+'</span><span class="grow"><span class="t">Reprendre : '+esc(modNom(p))+'</span><span class="s">Étapes essentielles : '+g.n+' sur '+g.tot+'</span></span>'+ICON.chev+'</button>');
   else if(L)rows.push('<button class="row" data-act="lecon" data-id="'+L.id+'"><span class="sq" style="color:var(--coral2)">'+ICON.play+'</span><span class="grow"><span class="t">Reprendre : '+esc(L.titre)+'</span><span class="s">Leçon de l’appli</span></span>'+ICON.chev+'</button>');
   var c=siteCahier(),cu=c&&EPLAN.cahier.semaineEnCours(c),chs=chActifs();
+  var E0=window.EFA_REPRISE&&EFA_REPRISE.etape();if(E0&&/^defi/.test(E0.k))cu=null;
   if(cu){var j=EPLAN.dates.numeroJour(cu.debut);rows.push('<button class="row" data-act="seg" data-s="defis"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">Défi en cours · jour '+Math.min(7,Math.max(1,j))+' sur 7</span><span class="s">'+esc(EPLAN.cahier.libPoste(cu))+' · '+EPLAN.cahier.remplis(cu)+' jour'+(EPLAN.cahier.remplis(cu)>1?"s":"")+' noté'+(EPLAN.cahier.remplis(cu)>1?"s":"")+'</span></span>'+ICON.chev+'</button>');}
   else if(chs.length&&CHAL[chs[0]])rows.push('<button class="row" data-act="seg" data-s="defis"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">Challenge en cours</span><span class="s">'+esc(CHAL[chs[0]].titre)+'</span></span>'+ICON.chev+'</button>');
   var der=null;(st.cahier||[]).slice(0,1).forEach(function(e){der={t:e.texte,d:e.date,k:"note"};});
@@ -1205,16 +1207,21 @@ function siteCahier(){if(!EPLAN)return null;try{return EPLAN.cahier.lire();}catc
 function segCahier(){var h="",c=siteCahier(),s=PST(),fiches=[];
   Object.keys(s.fiches||{}).forEach(function(k){var f=s.fiches[k];fiches.push({titre:f.titre,t:f.t,d:f.d,url:f.url||k});});
   Object.keys(s.preuves||{}).forEach(function(id){var p=MODS[id],f=s.preuves[id];if(!p||!p.fiche)return;if(fiches.some(function(x){return x.titre===p.fiche.titre;}))return;fiches.push({titre:p.fiche.titre,t:f.t,d:f.d,url:p.fiche.lien,mod:id});});
-  if(c){var tn=EPLAN.cahier.terminees(c),cur=EPLAN.cahier.semaineEnCours(c);
-    h+='<section class="navy-card"><span class="sur" style="color:#F09680">Mon cahier EFA</span><p class="h2">'+(tn?plural(tn,"semaine terminée","semaines terminées"):cur?"Un défi en cours":"Votre cahier est ouvert")+'</p>'+
-      (cur?'<p class="sub">Sept jours · '+esc(EPLAN.cahier.libPoste(cur))+' · '+EPLAN.cahier.remplis(cur)+' jour'+(EPLAN.cahier.remplis(cur)>1?"s":"")+' noté'+(EPLAN.cahier.remplis(cur)>1?"s":"")+'</p>':'')+
-      '<button class="btn sm" data-act="web" data-url="outils.html#cahier" data-t="Mon cahier">Ouvrir mon cahier</button></section>';
-    if(c.pistes&&c.pistes.liste&&c.pistes.liste.length)h+='<section class="stack"><div class="secth"><h2>Mes pistes</h2><span class="meta">'+esc(dShort(c.pistes.date))+'</span></div><div class="list">'+c.pistes.liste.map(function(p){return '<div class="row"><span class="sq" style="color:var(--coral2)">'+ICON.chart+'</span><span class="grow"><span class="t">'+esc(p.titre)+'</span>'+(p.action?'<span class="s">'+esc(p.action)+'</span>':'')+'</span></div>';}).join("")+'</div></section>';
-    if(c.sujets&&c.sujets.length)h+='<section class="stack"><div class="secth"><h2>Mes plans d’action</h2></div><div class="list">'+c.sujets.map(function(sl){var su=EPLAN.sujet(sl);return su?webRow(su.titre,"Plan d’action","outils.html#plan/"+sl,"doc","var(--cyan)"):"";}).join("")+'</div></section>';}
-  else h+='<div class="glass"><p class="h3">Le cahier EFA</p><p class="sub" style="font-size:15px">Défis de sept jours, pistes de votre diagnostic et plans d’action : il se tient sur la page Outils du site, et se retrouve ici.</p><button class="btn sm" data-act="web" data-url="outils.html#cahier" data-t="Mon cahier">Ouvrir mon cahier</button></div>';
+  var cur=c&&EPLAN.cahier.semaineEnCours(c),tn=c?EPLAN.cahier.terminees(c):0;
+  h+='<p class="sub" style="font-size:14.5px;margin:0">Tout ce que vous avez appris, décidé et commencé, sur le site comme dans l’appli.</p>';
+  if(cur){var jj=Math.min(7,Math.max(1,EPLAN.dates.numeroJour(cur.debut))),aj=cur.jours[jj-1];
+    h+='<section class="navy-card"><span class="sur" style="color:#F09680">Mon défi en cours</span><p class="h2">Jour '+jj+' sur 7 · '+esc(EPLAN.cahier.libPoste(cur))+'</p><p class="sub">'+EPLAN.cahier.remplis(cur)+' jour'+(EPLAN.cahier.remplis(cur)>1?"s":"")+' noté'+(EPLAN.cahier.remplis(cur)>1?"s":"")+(aj!=null?" · aujourd’hui : "+fcfa(aj):"")+'</p><button class="btn sm" data-act="sheet" data-k="siteDay">'+(aj!=null?"Corriger aujourd’hui":"Noter aujourd’hui")+'</button></section>';}
+  else h+='<section class="glass"><p class="h3">'+(tn?"Prêt pour un nouveau défi ?":"Un défi de sept jours")+'</p><p class="sub" style="font-size:14.5px">Suivre un poste de dépenses pendant une semaine, puis décider.</p><button class="btn sm" data-act="web" data-url="outils.html#cahier/nouveau" data-t="Nouveau défi">Commencer un défi</button></section>';
+  var sv=suiviItems().items.slice().reverse();
+  if(sv.length){var RR={oui:"Essayé",partiel:"En partie",non:"Pas encore"},nw=Date.now();h+='<section class="stack"><div class="secth"><h2>Mes décisions suivies</h2><span class="meta">'+sv.length+'</span></div><div class="list">'+sv.slice(0,5).map(function(it){var r=it.r30||it.r7,du=(!it.r7&&nw>=it.j7)||(it.r7&&!it.r30&&nw>=it.j30);return '<div class="row"><span class="sq" style="color:var(--amber,#F2B84B)">'+ICON.shield+'</span><span class="grow"><span class="t">'+esc(it.action||it.titre)+'</span><span class="s">'+(it.titre&&it.action?esc(it.titre)+" · ":"")+(du?"Point à faire maintenant":r?RR[r]||"":it.r7?"Point à 30 jours le "+esc(new Date(it.j30).toLocaleDateString("fr-FR",{day:"numeric",month:"long"})):"Point à 7 jours le "+esc(new Date(it.j7).toLocaleDateString("fr-FR",{day:"numeric",month:"long"})))+'</span></span></div>';}).join("")+'</div></section>';}
+  if(c&&c.pistes&&c.pistes.liste&&c.pistes.liste.length)h+='<section class="stack"><div class="secth"><h2>Mes pistes</h2><span class="meta">'+esc(dShort(c.pistes.date))+'</span></div><div class="list">'+c.pistes.liste.map(function(p){return '<div class="row"><span class="sq" style="color:var(--coral2)">'+ICON.chart+'</span><span class="grow"><span class="t">'+esc(p.titre)+'</span>'+(p.action?'<span class="s">'+esc(p.action)+'</span>':'')+'</span></div>';}).join("")+'</div></section>';
+  if(c&&c.sujets&&c.sujets.length)h+='<section class="stack"><div class="secth"><h2>Mes plans d’action</h2></div><div class="list">'+c.sujets.map(function(sl){var su=EPLAN.sujet(sl);return su?webRow(su.titre,"Plan d’action","outils.html#plan/"+sl,"doc","var(--cyan)"):"";}).join("")+'</div></section>';
   if(fiches.length)h+='<section class="stack"><div class="secth"><h2>Mes fiches</h2><span class="meta">'+fiches.length+'</span></div><div class="list">'+fiches.map(function(f,i){return '<button class="row" data-act="sheet" data-k="fiche" data-id="'+i+'"><span class="sq" style="color:var(--green)">'+ICON.doc+'</span><span class="grow"><span class="t">'+esc(f.titre)+'</span><span class="s">'+(f.d?"Gardée le "+esc(dShort(f.d)):"Gardée")+'</span></span>'+ICON.chev+'</button>';}).join("")+'</div></section>';
   ui.fiches=fiches;
   h+='<section class="stack"><div class="secth"><h2>Mes notes</h2><span class="meta">'+plural(st.cahier.length,"note","notes")+'</span></div></section>'+vCahier(true);
+  var fin=c&&c.semaines?c.semaines.filter(function(x){return x.fini;}):[];
+  if(fin.length)h+='<section class="stack"><div class="secth"><h2>Mes bilans</h2><span class="meta">'+fin.length+'</span></div><div class="list">'+fin.slice().reverse().map(function(w){var b=w.bilan||EPLAN.cahier.calculBilan(w);return '<div class="row"><span class="sq" style="color:var(--green)">'+ICON.chart+'</span><span class="grow"><span class="t">'+esc(EPLAN.cahier.libPoste(w))+' · '+fcfa(b.semaine)+' sur la semaine</span><span class="s">Commencé le '+esc(dShort(w.debut))+(b.mois?' · environ '+fcfa(b.mois)+' par mois':'')+'</span></span></div>';}).join("")+'</div></section>';
+  h+='<p class="fine" style="text-align:center"><button class="link" style="font-size:12.5px" data-act="web" data-url="outils.html#cahier" data-t="Mon cahier">Voir aussi le cahier sur le site</button></p>';
   return h;}
 
 /* Défis et actions : défi du site, challenges de l'appli, actions suivies à 7 et 30 jours, plan d'action */
@@ -1288,7 +1295,7 @@ function normQ(x){return String(x||"").toLowerCase().normalize("NFD").replace(/[
 function qRow(q){var p=MODS[q.p];return '<button class="row" data-act="'+(q.p==="quiz"?"web":"module")+'" data-id="'+esc(q.p)+'"'+(q.p==="quiz"?' data-url="outils.html#questions/choisir" data-t="Choisir mon module"':'')+'><span class="sq" style="color:var(--coral2)">?</span><span class="grow"><span class="t">'+esc(q.q)+'</span><span class="s">'+(p?esc(modNom(p)):"Trois questions pour choisir mon parcours")+'</span></span>'+ICON.chev+'</button>';}
 /* ───── Onglet 1 : Accueil, la même expérience que l'accueil du site ───── */
 function vAccueil(){
-  var mr=monRetour(),h=contCarte()+mr+'<section class="acc-hero"><p class="acc-sur">Apprendre. Comprendre. Décider.</p><h1 class="acc-h1">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>'
+  var mr=monRetour(),h=contCarte()+mr+(mr?'<p class="meta" style="margin:8px 0 0">Explorer EFA</p>':'')+'<section class="acc-hero'+(mr?' acc-hero-court':'')+'"><p class="acc-sur">Apprendre. Comprendre. Décider.</p><h1 class="acc-h1">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>'
     +'<p class="acc-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>'
     +'<button class="btn block acc-b1" data-act="web" data-url="ou-est-passe-mon-argent.html?src=appli-accueil#questions" data-t="Faire le point">Faire le point en 5 questions →</button>'
     +'<p class="acc-micro">Gratuit, sans inscription. Votre première piste en 3 minutes, avec la méthode et le défi de la semaine.</p>'

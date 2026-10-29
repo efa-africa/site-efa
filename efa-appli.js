@@ -180,6 +180,8 @@
     }
     if (!v.d || now - v.d > 36e5) { v.d = now; localStorage.setItem("efa_vu", JSON.stringify(v)); }
   } catch (e) {}
+  /* Reprise, sauvegarde et cohorte de 30 jours : efa-reprise.js (chargé ici sur les pages qui ne l'ont pas déjà) */
+  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=2026102902"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
 })();
 
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */

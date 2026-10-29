@@ -103,6 +103,27 @@
     return resume({ cles: K });
   }
 
+  function cohorte() {
+  /* Cohorte de 30 jours : chaque étape est comptée une seule fois par téléphone, avec la semaine de départ (ex. « s44 »).
+       Départ · première leçon ou fiche · action choisie · retour à 7 jours · retour à 30 jours · action déclarée réalisée.
+       Aucune donnée personnelle : seulement des compteurs anonymes dans GoatCounter. */
+    try {
+      var L = function (k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (x) { return null; } };
+      var c = L("efa_cohorte") || {}, t = Date.now(), P = L("efa_parcours_v1") || {}, C = L("efa_cahier_v1"), S = L("efa_suivi_v1"), A = L("efa_app_v1");
+      var lecon = !!localStorage.getItem("efa_premiere_fiche") || Object.keys(P.faits || {}).length > 0 || !!(A && A.lecons && Object.keys(A.lecons).length);
+      var action = !!(S && S.items && S.items.length) || !!(C && C.semaines && C.semaines.length) || !!(A && A.challenges && Object.keys(A.challenges).length);
+      var engage = lecon || action || !!localStorage.getItem("efa_objectif") || !!C;
+      if (engage) {
+        if (!c.p) { c.p = t; var d = new Date(t), j = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), n = j.getUTCDay() || 7; j.setUTCDate(j.getUTCDate() + 4 - n); c.s = "s" + Math.ceil(((j - Date.UTC(j.getUTCFullYear(), 0, 1)) / 864e5 + 1) / 7); c.f = {}; }
+        var fait = (S && S.items || []).some(function (x) { return x.r7 === "oui" || x.r30 === "oui"; }) || !!(C && C.semaines && C.semaines.some(function (x) { return x.fini; }));
+        var etapes = [["1-depart", true], ["2-premiere-lecon", lecon], ["3-action-choisie", action], ["4-retour-j7", t - c.p >= 7 * 864e5], ["5-retour-j30", t - c.p >= 30 * 864e5], ["6-action-realisee", fait]];
+        var aEnvoyer = etapes.filter(function (e) { return e[1] && !c.f[e[0]]; }).map(function (e) { c.f[e[0]] = t; return "cohorte-" + e[0] + "-" + c.s; });
+        localStorage.setItem("efa_cohorte", JSON.stringify(c));
+        if (aEnvoyer.length) setTimeout(function () { aEnvoyer.forEach(function (ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }); }, 3000);
+      }
+    } catch (e) {}
+  }
+  try { cohorte(); } catch (e) {}
   window.EFA_REPRISE = { etape: etape, appli: appli };
   window.EFA_SAUVEGARDE = { exporter: exporter, telecharger: telecharger, restaurer: restaurer, resume: resume };
   if (!window.EFA_ETAPE) window.EFA_ETAPE = etape;
