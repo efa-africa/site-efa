@@ -230,8 +230,8 @@
     if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i).replace('</div>', '<p class="mu-merci">En visitant un musée de l’économie en France, M. Pacôme Kipré, dit Peck Peckisblackman, a spontanément partagé ses idées avec EFA. Ce musée en est né&nbsp;: merci à lui.</p></div>') + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p>'
       + '<p class="mu-et">1. Que voulez-vous voir&nbsp;?</p><div class="mu-parts" id="mu-parts" role="radiogroup" aria-label="Partie de l’histoire"><button type="button" role="radio" aria-checked="true" data-p="-1"><b>Toute l’histoire</b><small>12 salles · <span data-min="-1"></span></small></button>'
       + EPOQUES.map(function (P, i) { return '<button type="button" role="radio" aria-checked="false" data-p="' + i + '"><b>' + esc(P.t) + '</b><small>Salles ' + (P.a + 1) + ' à ' + (P.b + 1) + ' · <span data-min="' + i + '"></span></small></button>'; }).join("")
-      + '</div><p class="mu-et">2. Comment&nbsp;?</p><div class="mu-act mu-modes"><button type="button" data-mu-mode="guide">Visite guidée</button><button type="button" class="l" data-mu-mode="libre">Visite libre</button></div>'
-      + '<p class="mu-aide"><b>Guidée</b>&nbsp;: elle avance seule, au rythme d’une lecture tranquille, du début à la fin. <b>Libre</b>&nbsp;: vous passez quand vous voulez, avec les bords de l’écran. Dans les deux cas, touchez une époque en haut pour y aller, et la visite se termine par «&nbsp;Du cercle à la spirale&nbsp;».</p></div></div>';
+      + '</div><p class="mu-et">2. Choisissez en bas de l’écran</p>'
+      + '<p class="mu-aide"><b>Visite guidée</b>&nbsp;: elle avance seule, au rythme d’une lecture tranquille, du début à la fin. <b>Visite libre</b>&nbsp;: vous passez quand vous voulez. Dans les deux cas, touchez une époque en haut pour y aller, et la visite se termine par «&nbsp;Du cercle à la spirale&nbsp;».</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
       return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p></div></div>';
@@ -274,7 +274,7 @@
     $("mu-x").onclick = function () { fermer(); };
     $("mu-epo").onclick = function (e) { var b = e.target.closest("button[data-e]"); if (!b) return; var P = EPOQUES[+b.dataset.e]; if (P.b > finS) finS = P.b; aller(kSalle(P.a), true); compte("musee-epoque-" + (+b.dataset.e + 1)); };
     $("mu-parts").onclick = function (e) { var b = e.target.closest("button[data-p]"); if (!b) return; partie = +b.dataset.p; this.querySelectorAll("button").forEach(function (c) { c.setAttribute("aria-checked", c === b ? "true" : "false"); }); };
-    SC.querySelector(".mu-modes").onclick = function (e) { var b = e.target.closest("[data-mu-mode]"); if (b) demarrer(b.dataset.muMode); };
+    if (SC.querySelector(".mu-modes")) SC.querySelector(".mu-modes").onclick = function (e) { var b = e.target.closest("[data-mu-mode]"); if (b) demarrer(b.dataset.muMode); };
     /* durée estimée de chaque partie, au rythme de la visite guidée */
     (function () { var tot = {}; SC.querySelectorAll(".mu-etape").forEach(function (el) { var x = E[+el.dataset.k]; if (!x || x.s < 0 || x.s >= SALLES.length) return; var d = duree(el), ep = epoque(x.s); tot[-1] = (tot[-1] || 0) + d; tot[ep] = (tot[ep] || 0) + d; });
       SC.querySelectorAll("[data-min]").forEach(function (sp) { var m = Math.max(1, Math.round((tot[sp.dataset.min] || 0) / 60000)); sp.textContent = "environ " + m + " min"; }); })();

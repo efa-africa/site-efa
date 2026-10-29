@@ -231,3 +231,17 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 .mu-aide{margin-top:12px!important;font-size:14px;line-height:1.45;color:var(--mt)}
 .mu-parts button[data-p="-1"]{grid-column:1/-1}
 @media (max-width:700px){#musee .mu-etape[data-k="0"] .mu-cadre{max-height:30svh}#musee .mu-etape[data-k="0"] .mu-cadre img{max-height:30svh;object-fit:contain}}
+/* Accueil du musée : tout l'écran défile d'un bloc, rien n'est coupé · 29/10/2026 */
+#musee .mu-etape[data-k="0"]{overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;grid-template-rows:auto auto;align-content:start;justify-content:flex-start;padding-bottom:24px}
+#musee .mu-etape[data-k="0"] .mu-txt{overflow:visible;max-height:none;flex:none;min-height:auto}
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  #musee .mu-etape[data-k="0"]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto;align-items:center;align-content:center;gap:clamp(24px,3vw,48px);padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+  #musee .mu-etape[data-k="0"] .mu-cadre{width:100%!important;max-height:none}
+  #musee .mu-etape[data-k="0"] .mu-txt{text-align:left;align-self:center}
+  #musee .mu-etape[data-k="0"] .mu-txt h2{font-size:clamp(28px,3vw,42px)!important}
+  #musee .mu-etape[data-k="0"] .mu-txt p{font-size:clamp(15px,1.4vw,18px)!important}
+  #musee .mu-etape[data-k="0"] .mu-et{font-size:12px!important}
+  #musee .mu-etape[data-k="0"] .mu-aide{font-size:14px!important}
+  #musee .mu-etape[data-k="0"] .mu-modes{justify-content:flex-start}
+}
+@media (min-width:900px) and (min-aspect-ratio:5/4){#musee .mu-etape[data-k="0"] .mu-parts{grid-template-columns:repeat(2,minmax(0,1fr))}#musee .mu-etape[data-k="0"] .mu-parts button{min-height:50px;padding:7px 12px}}
