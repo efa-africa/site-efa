@@ -405,6 +405,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .qlist .row .t{font-weight:600}
 .mfrail{display:grid;grid-auto-flow:column;grid-auto-columns:62%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none}
 .mfrail::-webkit-scrollbar{display:none}
+.mfgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .mfep{position:relative;display:block;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#0D1525;color:#fff;border:0;padding:0;text-align:left;scroll-snap-align:start;font:inherit}
 .mfep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .mfep::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070C16 8%,rgba(7,12,22,.6) 48%,rgba(7,12,22,.05) 100%)}
@@ -532,10 +533,10 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
         <div class="scroll" id="scroll"><main id="main"></main></div>
         <nav class="tabbar" id="tabbar" aria-label="Navigation principale">
           <button data-act="go" data-view="accueil"><svg viewBox="0 0 24 24"><path d="M4 11 12 4.5 20 11v9H4z"/><path d="M10 20v-5h4v5"/></svg>Accueil</button>
-          <button data-act="go" data-view="ecole"><svg viewBox="0 0 24 24"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6 11v5c2 1.6 4 2.4 6 2.4s4-.8 6-2.4v-5"/><path d="M21.5 9v5"/></svg>L’école</button>
-          <button data-act="go" data-view="outils"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><path d="M17 13.5v7M13.5 17h7"/></svg>Mes outils</button>
-          <button data-act="go" data-view="questions"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H9l-5 4z"/><path d="M10 9.2a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6 1v.4M12 14.4v.1"/></svg>Questions</button>
-          <button data-act="go" data-view="plus"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18.5" cy="12" r="1.4"/></svg>Plus</button>
+          <button data-act="go" data-view="moncahier"><svg viewBox="0 0 24 24"><path d="M6 3.5h11a1.5 1.5 0 0 1 1.5 1.5v14.5H7A1.5 1.5 0 0 1 5.5 18V4A.5.5 0 0 1 6 3.5z"/><path d="M5.5 18A1.5 1.5 0 0 1 7 16.5h11.5M9 7.5h6M9 11h4"/></svg>Mon cahier</button>
+          <button data-act="go" data-view="news"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M7 8.5h10M7 12h10M7 15.5h6"/></svg>EFA News</button>
+          <button data-act="go" data-view="minfin"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m10.5 9.5 4 2.5-4 2.5z"/></svg>Min’Fin</button>
+          <button data-act="go" data-view="plus"><svg viewBox="0 0 24 24"><path d="M4.5 7h15M4.5 12h15M4.5 17h15"/></svg>Menu</button>
         </nav>
         <div id="fabroot"></div>
         <div id="sheetroot"></div>
@@ -549,6 +550,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 <script src="../parcours-efa.js" charset="utf-8"></script>
 <script src="../plan-efa.js" charset="utf-8"></script>
 <script src="../efa-reprise.js" charset="utf-8"></script>
+<script src="../a-la-une.js" charset="utf-8"></script>
 <script src="../minfin.js" charset="utf-8"></script>
 <script src="../dico.js" charset="utf-8"></script>
 <script src="../tribunes.js" charset="utf-8"></script>
@@ -1090,7 +1092,7 @@ function renderSheet(){var s=ui.sheet;if(!s){$sheet.innerHTML="";return;}var h="
       +(ui.instEnCours?'<div class="inst-cours"><b>Installation en cours.</b> L’icône EFA peut mettre jusqu’à une minute à apparaître parmi vos applis. Si vous ne la voyez pas, ouvrez vos notifications : '+(pf==="ios"?'sur iPhone, elle apparaît en général tout de suite sur l’écran d’accueil, parfois sur la dernière page.':'Android y affiche « Installation en cours », puis « Installée ».')+'</div>':'')
       +(pf==="ios"?IOS:AND)+'<p class="fine">L’icône peut mettre jusqu’à une minute à apparaître parmi vos applis'+(pf==="ios"?'':' ; pendant ce temps, Android affiche « Installation en cours » dans vos notifications')+'.</p>'
       +'<div class="hstack" style="justify-content:space-between;gap:10px"><button class="link" data-act="close">Plus tard</button><button class="link" data-act="instDeja">C’est fait</button></div>'
-      +'<p class="fine">Rien n’est envoyé à EFA. Vous retrouvez ces explications dans Plus, « Installer l’appli ».</p>';}
+      +'<p class="fine">Rien n’est envoyé à EFA. Vous retrouvez ces explications dans Menu, « Installer l’appli ».</p>';}
   var keep=document.querySelector(".sheet"),top=keep?keep.scrollTop:0;
   $sheet.innerHTML='<div class="scrim" data-act="close"></div><div class="sheet" role="dialog" aria-modal="true"'+(s.shown?' style="animation:none"':'')+'><div class="grab"></div>'+h+'</div>';
   if(s.shown){$sheet.querySelector(".scrim").style.animation="none";$sheet.querySelector(".sheet").scrollTop=top;}s.shown=true;}
@@ -1175,6 +1177,7 @@ function headerT(title,sub){var n=modsFaits(),tot=MODL.length||23;return '<heade
 function monRetour(){if(DEMO)return "";var rows=[],s=PST(),now=Date.now();
   var p=s.actif&&MODS[s.actif],g=p&&modProg(p,s);
   var L=st.reprise&&LESSONS[st.reprise.id]&&lstate(st.reprise.id)==="en_cours"?LESSONS[st.reprise.id]:null;
+  var E1=window.EFA_REPRISE&&EFA_REPRISE.etape();if(E1&&E1.k==="module")p=null;
   if(p&&g&&!g.fini)rows.push('<button class="row" data-act="module" data-id="'+esc(p.id)+'"><span class="sq" style="color:var(--coral2)">'+ICON.play+'</span><span class="grow"><span class="t">Reprendre : '+esc(modNom(p))+'</span><span class="s">Étapes essentielles : '+g.n+' sur '+g.tot+'</span></span>'+ICON.chev+'</button>');
   else if(L)rows.push('<button class="row" data-act="lecon" data-id="'+L.id+'"><span class="sq" style="color:var(--coral2)">'+ICON.play+'</span><span class="grow"><span class="t">Reprendre : '+esc(L.titre)+'</span><span class="s">Leçon de l’appli</span></span>'+ICON.chev+'</button>');
   var c=siteCahier(),cu=c&&EPLAN.cahier.semaineEnCours(c),chs=chActifs();
@@ -1294,8 +1297,8 @@ var ASK=[
 function normQ(x){return String(x||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’']/g," ");}
 function qRow(q){var p=MODS[q.p];return '<button class="row" data-act="'+(q.p==="quiz"?"web":"module")+'" data-id="'+esc(q.p)+'"'+(q.p==="quiz"?' data-url="outils.html#questions/choisir" data-t="Choisir mon module"':'')+'><span class="sq" style="color:var(--coral2)">?</span><span class="grow"><span class="t">'+esc(q.q)+'</span><span class="s">'+(p?esc(modNom(p)):"Trois questions pour choisir mon parcours")+'</span></span>'+ICON.chev+'</button>';}
 /* ───── Onglet 1 : Accueil, la même expérience que l'accueil du site ───── */
-function vAccueil(){
-  var mr=monRetour(),h=contCarte()+mr+(mr?'<p class="meta" style="margin:8px 0 0">Explorer EFA</p>':'')+'<section class="acc-hero'+(mr?' acc-hero-court':'')+'"><p class="acc-sur">Apprendre. Comprendre. Décider.</p><h1 class="acc-h1">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>'
+function vDecouvrir(){
+  var mr="",h=topbar("back")+(mr?'<p class="meta" style="margin:8px 0 0">Explorer EFA</p>':'')+'<section class="acc-hero'+(mr?' acc-hero-court':'')+'"><p class="acc-sur">Apprendre. Comprendre. Décider.</p><h1 class="acc-h1">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>'
     +'<p class="acc-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>'
     +'<button class="btn block acc-b1" data-act="web" data-url="ou-est-passe-mon-argent.html?src=appli-accueil#questions" data-t="Faire le point">Faire le point en 5 questions →</button>'
     +'<p class="acc-micro">Gratuit, sans inscription. Votre première piste en 3 minutes, avec la méthode et le défi de la semaine.</p>'
@@ -1317,6 +1320,54 @@ function vAccueil(){
     +'<button class="row" data-act="web" data-url="ceo.html?src=appli" data-t="EFA CEO Challenge"><span class="sq" style="color:var(--cyan)">'+ICON.compass+'</span><span class="grow"><span class="t">EFA CEO Challenge</span><span class="s">Décider comme un dirigeant</span></span>'+ICON.chev+'</button>'
     +'</div></section>';
   h+='<p class="fine" style="text-align:center">Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
+  return h;}
+/* ───── Accueil : ce qui est nouveau chez EFA, ce que l'on pousse, et où reprendre ───── */
+var NEWSD=null;function newsData(){if(NEWSD!==null)return NEWSD;NEWSD=false;try{fetch(siteUrl("news/news-data.json"),{cache:"no-cache"}).then(function(r){return r.json();}).then(function(d){NEWSD=d;if(ui.view==="accueil")render(false);}).catch(function(){});}catch(e){}return false;}
+function uneCarte(k,t,x,act){return '<button class="news" '+act+'><span class="k">'+esc(k)+'</span><b>'+esc(t)+'</b>'+(x?'<span class="lg">'+esc(x)+'</span>':'')+'</button>';}
+function vAccueil(){
+  var A=window.EFA_A_LA_UNE||{nouveautes:[],outils:[]},mr=monRetour(),h='';
+  h+='<section class="stack" style="gap:6px"><p class="sur" style="margin:0;color:#B8341A">EFA · Éducation Financière Afrique</p><h1 class="h2" style="margin:0">'+(mr?"Bon retour":"Bienvenue")+'</h1><p class="sub" style="font-size:15px;margin:0">Ce qui est nouveau chez EFA, et les outils pour avancer.</p></section>';
+  h+=contCarte()+mr;
+  // Nouveau chez EFA : les nouveautés choisies, puis le dernier épisode de Min’Fin et la dernière Tribune
+  var cartes=(A.nouveautes||[]).slice(0,4).map(function(n){return uneCarte(n.k||"Nouveau",n.titre,n.texte,n.vue?'data-act="go" data-view="'+esc(n.vue)+'"':'data-act="web" data-url="'+esc(n.url)+'" data-t="'+esc(n.titre)+'"');});
+  var dern=null;if(MF&&MF.saisons)MF.saisons.forEach(function(sa){sa.episodes.forEach(function(e){if(e.statut==="publie"&&e.youtube)dern={sa:sa,e:e};});});
+  if(dern)cartes.splice(1,0,uneCarte("Min’Fin · épisode "+dern.e.n,dern.e.titre,dern.e.notion,'data-act="video" data-id="'+dern.sa.n+"-"+dern.e.n+'"'));
+  var T=TRIBS();if(T&&T[0])cartes.splice(2,0,uneCarte("Tribune n° "+T[0].n,T[0].titre,"",T[0].lien?'data-act="go" data-view="tribune" data-id="'+T[0].n+'"':'data-act="go" data-view="tribunes"'));
+  h+='<section class="stack"><div class="secth"><h2>Nouveau chez EFA</h2></div><div class="stack" style="gap:10px">'+cartes.join("")+'</div></section>';
+  // EFA News : les trois derniers articles
+  var N=newsData();
+  h+='<section class="stack"><div class="secth"><h2>À la une d’EFA News</h2><button class="link" data-act="go" data-view="news">Tout lire</button></div>';
+  if(N&&N.articles){var L=N.articles.filter(function(a){return /publi/.test(a.statut||"");}).sort(function(a,b){return String(b.publication||"").localeCompare(String(a.publication||""));}).slice(0,3);
+    h+='<div class="stack" style="gap:10px">'+L.map(function(a){return uneCarte((N.categories&&N.categories[a.categorie])||"EFA News",a.titre,a.resume,'data-act="web" data-url="news/'+esc(a.id)+'.html?src=appli" data-t="EFA News"');}).join("")+'</div>';}
+  else h+='<button class="news" data-act="go" data-view="news"><span class="k">EFA News</span><b>L’actualité économique africaine, expliquée</b><span class="lg">Les faits, les chiffres et ce qu’ils changent pour vous.</span></button>';
+  h+='</section>';
+  // Outils à pousser
+  h+='<section class="stack"><div class="secth"><h2>Des outils pour avancer</h2></div><div class="list">'+(A.outils||[]).map(function(o){return webRow(o.titre,o.texte,o.url,"chart","var(--coral2)");}).join("")+'</div></section>';
+  h+='<div class="list"><button class="row" data-act="go" data-view="decouvrir"><span class="sq" style="color:var(--cyan)">'+ICON.compass+'</span><span class="grow"><span class="t">Découvrir EFA</span><span class="s">L’école, les questions, les laboratoires</span></span>'+ICON.chev+'</button></div>';
+  h+='<p class="fine" style="text-align:center">Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
+  return h;}
+/* ───── Mon cahier : mon école d’abord, puis tout ce que j’ai appris, décidé et commencé ───── */
+function vMonCahier(){var h=headerT("Mon cahier","Mon école, mes défis, mes fiches, mes notes");
+  var s=PST(),nm=modsFaits(),tot=MODL.length,r=repriseCard();
+  h+='<section class="stack"><div class="secth"><h2>Mon école</h2><button class="link" data-act="go" data-view="ecole">Toute l’école</button></div>';
+  h+=r||'<div class="glass"><p class="h3">'+(nm?"Choisissez votre prochain module":"Commencez par le premier module")+'</p><p class="sub" style="font-size:14.5px">'+(tot?nm+" module"+(nm>1?"s":"")+" terminé"+(nm>1?"s":"")+" sur "+tot+".":"Trois cycles, module après module.")+'</p><button class="btn sm" data-act="go" data-view="ecole">Ouvrir l’école</button></div>';
+  if(r&&tot)h+='<p class="fine" style="margin:0">'+nm+' module'+(nm>1?'s':'')+' terminé'+(nm>1?'s':'')+' sur '+tot+'.</p>';
+  h+='</section>';
+  h+=segCahier();
+  h+='<div class="list"><button class="row" data-act="seg" data-s="defis"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">Mes défis et actions</span><span class="s">Challenges, décisions à revoir, plan d’action</span></span>'+ICON.chev+'</button><button class="row" data-act="seg" data-s="outils"><span class="sq" style="color:var(--coral2)">'+ICON.plus+'</span><span class="grow"><span class="t">Mes outils</span><span class="s">Simuler, décider, s’organiser</span></span>'+ICON.chev+'</button></div>';
+  return h;}
+/* ───── EFA News : la page du site, dans l’onglet ───── */
+function vNews(){var url=siteUrl("news.html?src=appli");ui.webUrl=url;
+  if(navigator.onLine===false)return headerT("EFA News","L’actualité économique africaine")+'<div class="vide"><p class="h3">EFA News a besoin d’une connexion.</p><button class="btn" data-act="go" data-view="news">Réessayer</button></div>';
+  return '<div class="webwrap"><div class="webload" id="webload"><div class="dots"><i></i><i></i><i></i></div><p class="sub">Chargement d’EFA News…</p><p class="fine" id="webslow" hidden>La page tarde à s’afficher. <a href="'+esc(url)+'" target="_blank" rel="noopener">Ouvrir dans le navigateur</a></p></div><iframe id="webf" src="'+esc(url)+'" title="EFA News" allow="clipboard-write; fullscreen"></iframe></div>';}
+/* ───── Min’Fin : tous les épisodes ───── */
+function vMinfin(){var h=headerT("Min’Fin","La série EFA, une minute par épisode");
+  if(!MF||!MF.saisons)return h+nonCharge("Min’Fin");
+  var dern=null;MF.saisons.forEach(function(sa){sa.episodes.forEach(function(e){if(e.statut==="publie"&&e.youtube)dern={sa:sa,e:e};});});
+  if(dern)h+='<button class="navy-card" style="border:0;text-align:left;font:inherit" data-act="video" data-id="'+dern.sa.n+"-"+dern.e.n+'"><span class="sur" style="color:#F09680">Nouvel épisode · '+dern.e.n+'</span><span class="h2" style="display:block">'+esc(dern.e.titre)+'</span><span class="sub">'+esc(dern.e.notion||"")+(dern.e.duree?" · "+esc(dern.e.duree):"")+'</span><span class="btn sm" style="align-self:flex-start">'+ICON.play+'Regarder</span></button>';
+  MF.saisons.forEach(function(sa){var eps=sa.episodes.filter(function(e){return e.statut!=="reserve";});
+    h+='<section class="stack"><div class="secth"><h2>Saison '+sa.n+' · '+esc(sa.titre)+'</h2></div><div class="mfgrid">'+eps.map(function(e){var pub=e.statut==="publie"&&e.youtube;return '<button class="mfep'+(e.affiche?' aff':'')+'" data-act="'+(pub?"video":"noop")+'" data-id="'+sa.n+"-"+e.n+'"'+(pub?'':' aria-disabled="true"')+'><img src="'+esc(siteUrl(e.vignette||e.image||"koffi.jpg"))+'" alt="" loading="lazy" onerror="this.src=\'koffi.jpg\'">'+(pub?'<span class="p"></span>':'<span class="r">Bientôt</span>')+'<span class="n">'+e.n+'</span><span class="t">'+esc(e.titre)+'</span></button>';}).join("")+'</div></section>';});
+  if(MF.personnages)h+='<section class="stack"><div class="secth"><h2>Les personnages</h2></div><div class="list">'+MF.personnages.map(function(pp){return '<div class="row"><img src="'+esc(siteUrl(pp.image))+'" alt="" style="width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none"><span class="grow"><span class="t">'+esc(pp.nom)+'</span><span class="s">'+esc(pp.role)+'</span></span></div>';}).join("")+'</div><p class="fine">Des personnages fictifs, des situations que tout le monde a vécues.</p></section>';
   return h;}
 function vQuestions(){var h='<section class="navy-card" style="padding:22px"><div class="sitebar"><img src="icon-192.png" alt=""><span style="color:#C9D1DE">EFA | Éducation Financière Afrique</span></div><p style="font-family:var(--display);font-style:italic;color:#C9D1DE;font-size:16px;line-height:1.4">L’école de la finance personnelle, ancrée dans les réalités africaines</p><h1 class="big" style="color:#fff;font-size:calc(32px*var(--scale))">Maîtriser vos finances.</h1><p class="sub" style="color:#C9D1DE">Savoir où passe votre argent, tenir un budget, garder une part de chaque rentrée, investir et construire un patrimoine. <b style="color:#fff">Gratuitement.</b></p><p class="mission">EFA aide chacun à passer du <span class="c">cercle</span>, l’argent qui tourne, à la <span class="s">spirale</span>, l’argent qui reste.</p></section>';
   h+='<section class="stack"><h2 class="h2">Qu’est-ce qui vous préoccupe&nbsp;?</h2><div class="ask">'+ASK.map(function(a){return '<button class="askt" data-act="web" data-url="'+esc(a[4])+'" data-t="'+esc(a[1])+'"><span class="bd"><span class="k">'+esc(a[0])+'</span><b>'+esc(a[1])+'</b><span class="why">'+esc(a[2])+'</span><span class="go">'+esc(a[3])+' →</span></span><span class="ph'+(a[5]?'':' brvm')+'"'+(a[5]?' style="background-image:url(\''+a[5]+'\')"':'')+'></span></button>';}).join("")+'</div>'+
@@ -1354,7 +1405,14 @@ function vEtudes(){var h=headerT("Études & prospective","Comprendre");
 function TRIBS(){return ETRIB||C.tribunes||[];}
 
 /* ───── Onglet 5 : Plus ───── */
-function vPlus(){var h=headerT("Plus","EFA, Ely et mes réglages");
+function vPlus(){var h=headerT("Menu","Tout EFA");
+  h+='<section class="stack"><div class="list">'
+    +'<button class="row" data-act="go" data-view="ecole"><span class="sq" style="color:var(--coral2)">'+ICON.book+'</span><span class="grow"><span class="t">L’école</span><span class="s">Trois cycles, module après module</span></span>'+ICON.chev+'</button>'
+    +'<button class="row" data-act="seg" data-s="outils"><span class="sq" style="color:var(--coral2)">'+ICON.plus+'</span><span class="grow"><span class="t">Mes outils</span><span class="s">Simuler, décider, s’organiser</span></span>'+ICON.chev+'</button>'
+    +'<button class="row" data-act="go" data-view="questions"><span class="sq" style="color:var(--cyan)">'+ICON.search+'</span><span class="grow"><span class="t">Questions</span><span class="s">Qu’est-ce qui vous préoccupe ?</span></span>'+ICON.chev+'</button>'
+    +webRow("La bibliothèque","Le musée, la balade, les livres, les capitaines d’industrie","bibliotheque.html?src=appli","book","var(--green)")
+    +'<button class="row" data-act="go" data-view="decouvrir"><span class="sq" style="color:var(--cyan)">'+ICON.compass+'</span><span class="grow"><span class="t">Découvrir EFA</span><span class="s">Par où commencer, les laboratoires</span></span>'+ICON.chev+'</button>'
+    +'</div></section>';
   h+='<button class="navy-card" style="border:0;text-align:left;font:inherit;flex-direction:row;align-items:center;gap:14px" data-act="web" data-url="ely.html" data-t="Ely"><span style="flex:none;width:54px;height:54px;border-radius:50%;background:#1B71B2;display:grid;place-items:center;font:700 22px var(--display);color:#fff">E</span><span style="flex:1;min-width:0"><span class="sur" style="color:#F09680">Une question sur votre argent ?</span><span style="display:block;font-family:var(--display);font-weight:700;font-size:19px;color:#fff;margin-top:3px">Demandez à Ely</span><span class="sub" style="font-size:14px;color:#C9D1DE">Ely vous répond et vous oriente vers le bon module.</span></span>'+ICON.chev.replace('class="chev"','class="chev" style="color:#C9D1DE"')+'</button>';
   var D=EDICO.length?EDICO:C.dico.map(function(d){return {id:d.id,titre:d.mot,definition_courte:d.def};});
   h+='<section class="stack"><div class="secth"><h2>Le Dico pratique</h2><span class="meta">'+D.length+' mots</span></div><div class="rail">'+D.map(function(d,i){return '<button class="dcard '+(["","alt","alt2"][i%3])+'" data-act="sheet" data-k="sdico" data-id="'+i+'"><span class="L">'+esc((d.titre||"?")[0])+'</span><span><b>'+esc(d.titre)+'</b><br><small>'+esc(d.collection||"Le Dico EFA")+(d.numero?" n° "+d.numero:"")+'</small></span></button>';}).join("")+'</div></section>';
@@ -1362,7 +1420,7 @@ function vPlus(){var h=headerT("Plus","EFA, Ely et mes réglages");
   h+='<section class="stack"><div class="secth"><h2>La communauté</h2></div><div class="list">'+extRow("EFA Community","Le groupe WhatsApp, rendez-vous le jeudi à 19 h","https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a","WhatsApp")+extRow("TikTok","@efa.afrique","https://www.tiktok.com/@efa.afrique","TikTok")+extRow("YouTube","Min’Fin et les vidéos EFA","https://www.youtube.com/@efaeducationfinanciereafrique","YouTube")+extRow("Facebook","Éducation Financière Afrique","https://www.facebook.com/share/19sTpHPsGP/","Facebook")+'</div></section>';
   h+='<section class="stack"><div class="secth"><h2>Moi</h2></div><div class="list"><button class="row" data-act="sheet" data-k="installer"><span class="sq" style="color:var(--coral2)">'+ICON.plus+'</span><span class="grow"><span class="t">Installer l’appli</span><span class="s">Sur Android ou iPhone, sans passer par un store</span></span>'+ICON.chev+'</button><button class="row" data-act="go" data-view="profil"><span class="sq" style="color:var(--green)">'+ICON.chart+'</span><span class="grow"><span class="t">Ma progression et mes données</span><span class="s">Sauvegarde, réglages, taille du texte</span></span>'+ICON.chev+'</button><button class="row" data-act="web" data-url="confidentialite.html" data-local="1" data-t="Confidentialité"><span class="sq" style="color:var(--cyan)">'+ICON.shield+'</span><span class="grow"><span class="t">Confidentialité</span><span class="s">Rien n’est envoyé à EFA sans votre accord, sauf les questions posées à Ely</span></span>'+ICON.chev+'</button></div></section>';
   h+='<div class="glass"><span class="sur">Hors connexion</span><p class="sub" style="font-size:15px">Après une première ouverture avec une connexion, les modules et leurs étapes, les leçons de l’appli, votre cahier et vos défis, le Dico et les questions restent disponibles. Les outils de calcul, les vidéos, Ely et les pages du site demandent une connexion. Les chiffres des études sont ceux de votre dernière connexion.</p></div>';
-  h+='<p class="fine" style="text-align:center">EFA, l’appli · version 1.7. Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
+  h+='<p class="fine" style="text-align:center">EFA, l’appli · version 2.0. Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
   return h;}
 
 /* ───── Lecteur intégré : les pages du site, sans leur en-tête ni leur pied de page ───── */
@@ -1383,17 +1441,17 @@ function webAfter(){var f=document.getElementById("webf");if(!f)return;ui.webN=0
 
 /* ═════════ Rendu ═════════ */
 function render(anim){ui.anim=!!anim;document.documentElement.style.setProperty("--scale",st.profil.taille||1);
-  if(ui.view==="aujourdhui")ui.view="outils";if(ui.view==="cahier"){ui.view="outils";ui.seg="cahier";}if(ui.view==="actions"){ui.view="outils";ui.seg="defis";}if(ui.view==="explorer")ui.view="plus";
+  if(ui.view==="aujourdhui")ui.view="outils";if(ui.view==="cahier")ui.view="moncahier";if(ui.view==="actions"){ui.view="outils";ui.seg="defis";}if(ui.view==="explorer")ui.view="plus";
   var v=ui.view,full={onboarding:1,lecon:1,diag:1,parcours:1,challenge:1,profil:1,web:1,tribunes:1,tribune:1,module:1,video:1}[v];
   $tab.hidden=!!full;$main.className=(full?"player":"")+(anim&&!full?" enter":"")+(v==="onboarding"&&!ui.ob?" ob":"");var h="";
-  try{h={accueil:vAccueil,onboarding:vOnboarding,aujourdhui:vAujourdhui,apprendre:vApprendre,parcours:vParcours,lecon:vLecon,cahier:vCahier,actions:vActions,challenge:vChallenge,explorer:vExplorer,diag:vDiag,profil:vProfil,web:vWeb,tribunes:vTribunes,tribune:vTribune,outils:vOutils,ecole:vEcole,module:vModule,questions:vQuestions,video:vVideo,etudes:vEtudes,plus:vPlus}[v]();}
+  try{h={accueil:vAccueil,onboarding:vOnboarding,aujourdhui:vAujourdhui,apprendre:vApprendre,parcours:vParcours,lecon:vLecon,cahier:vCahier,actions:vActions,challenge:vChallenge,explorer:vExplorer,diag:vDiag,profil:vProfil,web:vWeb,tribunes:vTribunes,tribune:vTribune,outils:vOutils,moncahier:vMonCahier,news:vNews,minfin:vMinfin,decouvrir:vDecouvrir,ecole:vEcole,module:vModule,questions:vQuestions,video:vVideo,etudes:vEtudes,plus:vPlus}[v]();}
   catch(err){h='<div class="glass"><p class="h3">Cet écran n’a pas pu s’afficher.</p><p class="fine">'+esc(err.message)+'</p><button class="btn sm" data-act="go" data-view="outils">Revenir à Mes outils</button></div>';if(window.console)console.error(err);}
-  document.getElementById("fabroot").innerHTML=(v==="outils"&&ui.seg==="cahier")?'<button class="fab" data-act="sheet" data-k="entry" aria-label="Nouvelle note">'+ICON.plus+'</button>':"";
+  document.getElementById("fabroot").innerHTML=(v==="moncahier"||(v==="outils"&&ui.seg==="cahier"))?'<button class="fab" data-act="sheet" data-k="entry" aria-label="Nouvelle note">'+ICON.plus+'</button>':"";
   $main.innerHTML=h;
-  var map={accueil:0,ecole:1,apprendre:1,outils:2,questions:3,plus:4};$tab.querySelectorAll("button").forEach(function(b,i){if(map[v]===i)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
+  var map={accueil:0,moncahier:1,ecole:1,apprendre:1,outils:1,news:2,minfin:3,plus:4,questions:4,etudes:4,decouvrir:0};$tab.querySelectorAll("button").forEach(function(b,i){if(map[v]===i)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
   var xq=document.getElementById("xq");if(xq&&ui.fq){try{xq.focus({preventScroll:true});}catch(e){xq.focus();}var L=xq.value.length;xq.setSelectionRange(L,L);ui.fq=false;var sc=$scroll,r=xq.getBoundingClientRect(),r0=sc.getBoundingClientRect();sc.scrollTop+=r.top-r0.top-80;}
-  if(v==="web")webAfter();
-  $main.classList.toggle("webmode",v==="web");
+  if(v==="web"||v==="news")webAfter();
+  $main.classList.toggle("webmode",v==="web"||v==="news");
   renderSheet();}
 
 /* ═════════ Interactions ═════════ */
@@ -1403,6 +1461,7 @@ document.addEventListener("click",function(ev){
   if(a==="webRetry"){ev.preventDefault();render();return;}
   if(a==="web"){ev.preventDefault();compte("page");nav("web",{url:b.dataset.url,t:b.dataset.t,local:!!b.dataset.local});return;}
   if(a==="webBack"){var wf=document.getElementById("webf");try{if(wf&&ui.webN>1&&wf.contentWindow.history.length>1){ui.webN-=2;wf.contentWindow.history.back();return;}}catch(x){}var hw=hist.pop();if(hw)go(hw.view,hw.p);else go("outils");return;}
+  if(a==="seg"&&b.dataset.s==="cahier"){nav("moncahier",{});return;}
   if(a==="seg"){ui.seg=b.dataset.s;if(ui.view!=="outils"){nav("outils",{});}else render(true);$scroll.scrollTop=0;return;}
   if(a==="cyc"){ui.cyc=ui.cyc===id||(ui.cyc==null&&b.getAttribute("aria-expanded")==="true")?"":id;render();return;}
   if(a==="module"){compte("module-"+id);nav("module",{id:id});return;}
