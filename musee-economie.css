@@ -259,3 +259,13 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
   #musee .mu-etape[data-k="0"] .mu-parts button{min-height:44px;padding:5px 12px;font-size:14.5px}
   #musee .mu-etape[data-k="0"] .mu-et{margin-top:10px!important}
 }
+/* Écran large : toute étape avec une image (salles, livre) en deux colonnes, image à gauche, texte à droite · 29/10/2026 */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  #musee .mu-etape.s:not(.dz):has(> .mu-cadre),#musee .mu-etape.lv{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);align-items:center;align-content:stretch;gap:clamp(24px,3.5vw,56px);padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}
+  #musee .mu-etape.s:not(.dz):has(> .mu-cadre) > .mu-cadre{width:100%!important;max-height:100%;justify-self:stretch}
+  #musee .mu-etape.lv .mu-livre{width:min(30vw,calc(62svh * 2 / 3),340px);justify-self:center}
+  #musee .mu-etape.s:not(.dz):has(> .mu-cadre) .mu-txt,#musee .mu-etape.lv .mu-txt{text-align:left;align-self:center;max-height:100%;overflow-y:auto}
+}
+.mu-parts button{position:relative}
+.mu-parts button::after{content:"›";position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--mc)}
+.mu-parts button:hover{background:#1A2540}
