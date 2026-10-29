@@ -184,7 +184,7 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 
 /* Chargement : le cadre reste sombre jusqu'à l'image, puis elle apparaît en fondu */
 .mu-cadre{background:#111B2F;transition:background .3s}.mu-cadre.pret{background:#F5EFE2}
-.mu-cadre img{opacity:0;transition:opacity .35s}.mu-cadre.pret img{opacity:1}
+.mu-cadre img{opacity:1!important}
 .mu-cadre img{background:transparent}
 /* Merci, sur la première image */
 .mu-merci{position:absolute;left:6px;right:6px;bottom:6px;margin:0;padding:22px 14px 9px;border-radius:0 0 9px 9px;background:linear-gradient(to top,rgba(7,12,22,.88),rgba(7,12,22,0));color:#fff;font-size:13.5px;line-height:1.35;font-weight:600;text-align:center}
