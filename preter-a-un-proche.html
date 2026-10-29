@@ -570,7 +570,7 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
         (montre?montant("montant",p.reponse==="accepter"?"Montant que vous envoyez":"Montant que vous proposez",""):"")+
         (p.reponse==="autre_aide"?radios("aide",AIDES,"Quelle autre aide&nbsp;?",""):"")+'</div>'+
       '<div id="alertes">'+alertesHtml(a)+'</div>'+
-      '</div>'+barre("e4","e6","Voir ma fiche",!p.reponse)+'</section>';
+      '</div>'+barre("e4","e6","Voir ma fiche",false)+'</section>';
   };
   V.e6=function(){
     var p=P(), a=analyse(); mesure("preter_fiche");
@@ -625,6 +625,7 @@ textarea.msg:focus{outline:2px solid var(--bleu);outline-offset:1px}
 
   $app.addEventListener("click",function(e){
     var t=e.target.closest("button"); if(!t) return;
+    if(t.dataset.nav==="e6"&&!P().reponse){ var q=document.querySelector('[name="reponse"]')||document.querySelector('[data-k="reponse"]'), z=q&&(q.closest("fieldset")||q.closest(".block")||q); if(z){ z.scrollIntoView({block:"center"}); var m=document.getElementById("rep-manque"); if(!m){ m=document.createElement("p"); m.id="rep-manque"; m.className="info w"; m.setAttribute("role","alert"); m.textContent="Choisissez votre réponse pour voir la fiche."; z.insertAdjacentElement("beforebegin",m); } } return; }
     if(t.dataset.nav) return nav(t.dataset.nav);
     if(t.dataset.q){ return garder(function(){ var v=t.dataset.q, L=S.vus, i=L.indexOf(v); if(i>=0) L.splice(i,1); else if(v==="rien") S.vus=["rien"]; else { if(L.indexOf("rien")>=0) L.splice(L.indexOf("rien"),1); L.push(v); } }); }
     var a=t.dataset.act;

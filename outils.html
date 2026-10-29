@@ -882,7 +882,7 @@ var OUTILS = [
       '<a class="btn btn-main" href="certificat-pilote.html">'+(cert.reussite?"Voir mon certificat":(prochain?"Continuer le module "+prochain:"Passer l’examen"))+'</a>';
     el.hidden=false;
   }
-  function vueParcours(){
+  function vueParcours(masquerVide){
     var DP=window.EFA_PARCOURS; if(!DP) return "";
     syncProgression();
     var st={}; try{ st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; }catch(e){}
@@ -894,6 +894,7 @@ var OUTILS = [
       var href=suivante?(/^https?:/.test(suivante.lien)?suivante.lien:suivante.lien.split("#")[0]+(suivante.lien.indexOf("?")<0?"?":"&")+"parcours="+p.id+(suivante.lien.indexOf("#")>=0?"#"+suivante.lien.split("#").slice(1).join("#"):"")):("parcours.html#"+p.id);
       lignes.push('<div class="pc-l"><div><b>« '+esc(p.probleme)+' »</b><small>'+esc(p.nom||('Parcours '+p.id.slice(1)))+' · '+esc(p.titre)+' · étapes essentielles : '+n+' sur '+dispo+(plus?' · pour aller plus loin : '+pn+' sur '+plus:'')+'</small><span class="pc-b"><i style="width:'+(dispo?Math.round(n/dispo*100):0)+'%"></i></span></div><a class="btn btn-dark" href="'+esc(href)+'">'+(suivante?"Continuer":"Voir")+'</a><div class="pv-z">'+vuePreuve(p,st)+'</div></div>');
     });
+    if(!lignes.length&&masquerVide) return "";
     return '<section class="wk pc"><p class="over">Mes modules</p>'+(lignes.length?'<div class="pc-liste">'+lignes.join("")+'</div><p class="small"><a href="parcours.html">Tous les modules</a></p>'
       :'<h3>Aucun parcours commencé</h3><p class="small">Partez de votre problème : chaque étape faite s’affichera ici.</p><a class="btn btn-main" href="#parcours">Choisir mon parcours</a>')+'</section>';
   }
@@ -954,8 +955,10 @@ var OUTILS = [
     var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
     h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
     var avantNv=nouveau&&!cur; if(avantNv) h+=vueNouveau(c,poste); /* le défi demandé d’abord, le reste ensuite */
-    h+='<div data-efa-point></div>'+vueContinuer()+vueParcours()+vueFiches();
-    if(avantNv){}
+    var defiAvant=cur&&!nouveau&&CH.etat(cur)!=="bilan"&&CH.etat(cur)!=="incomplet";
+    if(defiAvant) h+=vueEnCours(cur,idx); /* le défi en cours tout en haut : la saisie du jour sans défiler */
+    h+=vueContinuer()+vueParcours(true)+vueFiches()+'<div data-efa-point></div>';
+    if(avantNv||defiAvant){}
     else if(cur&&!nouveau){
       var et=CH.etat(cur);
       if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }

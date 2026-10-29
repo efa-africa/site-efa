@@ -297,7 +297,7 @@ strong{color:var(--nuit)}
     <div class="fq-bilan" id="fq-bilan" aria-live="polite">
       <p class="fq-c" id="fq-c">0 question sur 12 vérifiée.</p>
       <p id="fq-v">Commencez par la première question.</p>
-      <div class="fq-act"><button type="button" class="bt" id="fq-copie">Copier mes questions ouvertes</button><a class="bt bt-w" id="fq-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Envoyer par WhatsApp</a><button type="button" class="bt bt-l" id="fq-raz">Tout effacer</button></div>
+      <div class="fq-act"><button type="button" class="bt" id="fq-cahier">Garder dans mon cahier</button><button type="button" class="bt" id="fq-copie">Copier mes questions ouvertes</button><a class="bt bt-w" id="fq-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Envoyer par WhatsApp</a><button type="button" class="bt bt-l" id="fq-raz">Tout effacer</button></div>
       <p class="note" style="margin-top:10px">Le message reprend les questions marquées «&nbsp;À clarifier&nbsp;» ou «&nbsp;Pas de réponse&nbsp;», ou toutes les questions si vous n’avez encore rien coché.</p>
     </div>
   </section>
@@ -441,6 +441,10 @@ function efaChamps(ids,maj){ids.forEach(function(i){var el=document.getElementBy
     document.getElementById('fq-copie').dataset.msg=msg;
   }
   items.forEach(function(li){li.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st[li.dataset.q]=st[li.dataset.q]===b.dataset.v?'':b.dataset.v;sauver();maj();if(!compte){compte=true;efaCompte('cotiser-fiche-utilisee');}});});
+  document.getElementById('fq-cahier').addEventListener('click',function(){var b=this,d=new Date(),iso=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+    try{var st=JSON.parse(localStorage.getItem('efa_parcours_v1')||'{}')||{};st.fiches=st.fiches||{};st.fiches['avant-de-cotiser.html']={titre:'Avant de cotiser · mes questions',t:(document.getElementById('fq-c').textContent+'\n'+(document.getElementById('fq-copie').dataset.msg||'')).slice(0,1500),d:iso,url:'avant-de-cotiser.html'};localStorage.setItem('efa_parcours_v1',JSON.stringify(st));
+      if(!localStorage.getItem('efa_premiere_fiche')){localStorage.setItem('efa_premiere_fiche',String(Date.now()));efaCompte('premiere-fiche');}
+      b.textContent='Gardée dans mon cahier ✓';efaCompte('cotiser-cahier');if(!document.getElementById('fq-vc')){var l=document.createElement('a');l.id='fq-vc';l.className='bt bt-w';l.href='outils.html?src=cotiser#cahier';l.textContent='Ouvrir mon cahier →';b.insertAdjacentElement('afterend',l);}}catch(e){b.textContent='Ce navigateur ne permet pas de garder la fiche';}});
   document.getElementById('fq-copie').addEventListener('click',function(){var b=this,m=b.dataset.msg;try{navigator.clipboard.writeText(m).then(function(){b.textContent='Questions copiées';efaCompte('cotiser-fiche-copie');},function(){b.textContent='Copie impossible : utilisez WhatsApp';});}catch(e){b.textContent='Copie impossible : utilisez WhatsApp';}});
   document.getElementById('fq-wa').addEventListener('click',function(){efaCompte('cotiser-fiche-whatsapp');try{if(window.EFA_SUIVI)EFA_SUIVI.planifier({id:'cotiser',titre:'Avant de cotiser',action:'Obtenir les réponses de l’organisatrice avant mon premier versement',lien:'avant-de-cotiser.html#questions'});}catch(e){}});
   document.getElementById('fq-raz').addEventListener('click',function(){st={};sauver();maj();});

@@ -42,9 +42,13 @@
       /* 4. Un challenge commencé dans l'appli */
       if (A && A.challenges.length) return { t: "Vous avez un challenge en cours dans l’appli.", b: "Continuer mon challenge", h: BASE + "app/", k: "challenge" };
       /* 5. L'objectif choisi au point de départ */
-      if (O && O.p && O.q2) return { t: "Votre première étape : " + (O.nextT || "votre point de départ") + ".", b: "Commencer", h: O.next || BASE + "point-de-depart.html?src=reprise", k: "objectif", o: O };
+      var pageDe = function (u) { return String(u || "").replace(/^(\.\.\/)+/, "").split("#")[0].split("?")[0]; };
+      var objFait = O && O.next && P && P.fiches && Object.keys(P.fiches).some(function (k) { return pageDe(k) === pageDe(O.next) || pageDe(k).replace(/\.html$/, "") === pageDe(O.next).replace(/\.html$/, ""); });
+      if (O && O.p && O.q2 && !objFait) return { t: "Votre première étape : " + (O.nextT || "votre point de départ") + ".", b: "Commencer", h: O.next || BASE + "point-de-depart.html?src=reprise", k: "objectif", o: O };
       /* 6. Le module en cours dans l'école */
       if (P && P.actif && P.faits && Object.keys(P.faits).some(function (k) { return k.indexOf(P.actif + ".") === 0; })) return { t: "Vous en étiez à votre module en cours.", b: "Reprendre mon module", h: BASE + "parcours.html?src=reprise#" + P.actif, k: "module" };
+      /* 7. La première étape est faite : choisir la suite */
+      if (objFait) return { t: "Première étape faite et gardée dans votre cahier. Choisissez la suite.", b: "Choisir la suite", h: BASE + "outils.html#cahier", k: "suite" };
     } catch (x) {}
     return null;
   }
