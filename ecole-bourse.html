@@ -390,7 +390,8 @@ E.push({min:1,rendu:function(){
   '<a href="bourse-essentiel.html?src=ecole-bourse">Premiers pas à la BRVM&nbsp;: 10 choses à savoir <span>→</span></a>'+
   '<a href="methode.html?src=ecole-bourse#brvm">Lire une vraie séance de la BRVM <span>→</span></a>'+
   '<a href="parcours.html?src=ecole-bourse#P8">Reprendre le parcours Premiers pas à la BRVM <span>→</span></a></div>'+
-  '<p class="p" style="font-size:.9em">D’autres simulations suivront&nbsp;: investir avec un petit budget, investir à plusieurs en club.</p></div>';
+  '<p class="p" style="font-size:.9em">D’autres simulations suivront&nbsp;: investir avec un petit budget, investir à plusieurs en club.</p>'+
+  '<p class="p" style="font-size:.9em"><button type="button" class="lien-raz" id="raz-sim" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">Recommencer la simulation</button></p></div>';
 }});
 
 /* ---------- Décisions ---------- */
@@ -416,7 +417,7 @@ function aller(i,focus){
   $('duree').textContent='≈ '+E[etat.i].min+' min';
   $('prec').setAttribute('aria-disabled',etat.i===0?'true':'false');
   var fin=etat.i===E.length-1, bl=bloque(etat.i);
-  $('suiv').textContent=etat.i===0?(Object.keys(etat.c).length?'Reprendre':'Commencer'):fin?'Recommencer':'Suivant';
+  $('suiv').textContent=etat.i===0?(Object.keys(etat.c).length?'Reprendre':'Commencer'):fin?'Garder et continuer →':'Suivant';
   $('suiv').setAttribute('aria-disabled',bl?'true':'false');
   $('suiv').title=bl?'Choisissez une réponse pour continuer':'';
   if(bl){var q=corps.querySelector('.q');if(q){var d=document.createElement('p');d.className='consigne';d.setAttribute('role','status');d.innerHTML='<b aria-hidden="true">À vous</b> '+(corps.querySelector('#x-div')?'Écrivez votre réponse, puis touchez Vérifier.':'Choisissez une réponse ci-dessous, puis touchez Suivant.');var e=q.querySelector('.enonce');e.parentNode.insertBefore(d,e.nextSibling);}}
@@ -430,11 +431,18 @@ corps.addEventListener('click',function(ev){
   compte('ecole-bourse-'+b.getAttribute('data-cle')+'-'+b.getAttribute('data-v'));
   aller(etat.i);var x=corps.querySelector('.explic');if(x&&x.scrollIntoView)x.scrollIntoView({block:'nearest'});
 });
+corps.addEventListener('click',function(ev){var r=ev.target.closest('#raz-sim');if(!r)return;
+  if(!r.dataset.ok){r.dataset.ok='1';r.textContent='Confirmer : effacer mes réponses et recommencer';return}
+  etat={i:0,c:{}};sauver();aller(0,true);});
 $('prec').addEventListener('click',function(){if(etat.i>0)aller(etat.i-1,true)});
 $('suiv').addEventListener('click',function(){
   if(bloque(etat.i)){var d=corps.querySelector('.consigne');if(d){d.classList.remove('flash');void d.offsetWidth;d.classList.add('flash');}return;}
   if(etat.i===0&&Object.keys(etat.c).length){aller(maxAccessible(),true);return}
-  if(etat.i===E.length-1){etat={i:0,c:{}};sauver();aller(0,true);return}
+  if(etat.i===E.length-1){ /* la simulation terminée va dans le cahier, puis la leçon suivante */
+    try{var d=new Date(),iso=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),st=JSON.parse(localStorage.getItem('efa_parcours_v1')||'{}')||{};st.fiches=st.fiches||{};
+      st.fiches['ecole-bourse.html']={titre:'Ma première année en Bourse · simulation',t:'Simulation terminée le '+d.toLocaleDateString('fr-FR')+'.\nCe que je retiens : 1. Ordre à cours limité. 2. Une raison écrite. 3. Une baisse n’est pas une nouvelle. 4. On lit l’entreprise, pas le cours. 5. Rendement garanti = arnaque.',d:iso,url:'ecole-bourse.html'};
+      localStorage.setItem('efa_parcours_v1',JSON.stringify(st));}catch(x){}
+    compte('ecole-bourse-cahier');location.href='bourse-essentiel.html?src=ecole-bourse#A1';return}
   aller(etat.i+1,true);
 });
 document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')$('suiv').click();if(e.key==='ArrowLeft')$('prec').click()});
@@ -442,7 +450,7 @@ aller(Math.min(etat.i||0,maxAccessible()));
 compte('ecole-bourse-ouverture');
 })();
 </script>
-<script src="efa-suite.js?v=2026102820" defer></script>
+<script src="efa-suite.js?v=2026102901" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 <script src="efa-chiffres.js?v=2026102701" defer></script>
 </body></html>

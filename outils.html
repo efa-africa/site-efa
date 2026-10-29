@@ -953,8 +953,10 @@ var OUTILS = [
     c=c||CH.vide();
     var cur=CH.semaineEnCours(c), idx=c.semaines.length-1, n=CH.terminees(c), h="";
     h+='<div class="ch-h"><div><p class="kick" style="margin-top:0">Mon cahier</p><h2>'+(n?compte(n,"semaine terminée","semaines terminées"):'Votre parcours commence')+'</h2><p>Chaque semaine terminée allume un point de la spirale&nbsp;: l’argent qui tourne devient l’argent qui reste.</p></div>'+spirale(n)+'</div>';
+    var avantNv=nouveau&&!cur; if(avantNv) h+=vueNouveau(c,poste); /* le défi demandé d’abord, le reste ensuite */
     h+='<div data-efa-point></div>'+vueContinuer()+vueParcours()+vueFiches();
-    if(cur&&!nouveau){
+    if(avantNv){}
+    else if(cur&&!nouveau){
       var et=CH.etat(cur);
       if(et==="bilan"){ h+=vueBilan(cur,idx); mesure("cahier-bilan"); }
       else if(et==="incomplet") h+='<section class="wk"><p class="over">Semaine '+(idx+1)+'</p><h3>La semaine est passée avec moins de quatre jours notés</h3><p class="small">Ce n’est pas grave&nbsp;: c’est souvent la deuxième semaine qui prend. Recommencez à partir d’aujourd’hui, sur le même poste.</p><div class="duo"><button type="button" class="btn btn-main" data-act="recommencer">Recommencer cette semaine</button><button type="button" class="btn btn-line" data-act="abandonOui">Changer de poste</button></div></section>';
@@ -1073,7 +1075,9 @@ var OUTILS = [
         r.innerHTML=pp?'Ce plan fait partie du parcours '+id.slice(1)+' : « '+esc(pp.probleme)+' ». <a href="parcours.html#'+id+'">Suivre le parcours étape par étape →</a>':'Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver ma question →</a>'; })(); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
     if(k==="certificat"){ montre("certificat"); vueCertificat(); cadrer("certificat",false); return; }
     if(k===""||k==="parcours"||k==="questions"){ montre("parcours"); if(k) cadrer("parcours",false); if(MQ&&parts[1]==="toutes") MQ.toutes(parts[2]||null); if(MQ&&parts[1]==="choisir") MQ.quiz(); return; }
-    if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]); return; }
+    if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]);
+      if(parts[1]==="nouveau") setTimeout(function(){ var b=document.querySelector('#cahier [data-act="demarrer"]'); if(!b) return; var sec=b.closest("section")||b; if(parts[2]) b.scrollIntoView({block:"center"}); else sec.scrollIntoView({block:"start"}); },60);
+      return; }
     var outil=OUTILS.filter(function(o){return o.id===k;})[0];
     if(outil&&(outil.famille==="agir"||outil.famille==="labo")){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
     if(k==="diagnostic"||outil){ montre("diagnostic"); if(outil){ var el2=document.getElementById(k); if(el2) el2.scrollIntoView({block:"start"}); } return; }

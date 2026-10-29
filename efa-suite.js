@@ -213,7 +213,7 @@
       if (cible) filSuivant(pg + "#" + cible.id, "Continuer la formation");
       else filSuivant(pg, "Continuer la formation");
     }
-    if (depuisDepart && pg !== "point-de-depart.html") { filSuivant("point-de-depart.html", "Revenir à mes recommandations"); repriseSecondaire(); }
+    if (depuisDepart && pg !== "point-de-depart.html") { filSuivant("point-de-depart.html", "Mes recommandations"); repriseSecondaire(); }
     else if (MOTEUR) {
       suiteMoteur(); repriseSecondaire();
       window.addEventListener("efa-ici", suiteMoteur); window.addEventListener("hashchange", suiteMoteur);
