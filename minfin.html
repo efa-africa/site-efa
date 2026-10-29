@@ -101,8 +101,9 @@ body.mf{background:#070C16;color:#E8EDF5}
 .rang-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .rang h2{font-size:clamp(24px,3.2vw,34px)}
 .rang .sous{color:#C9D1DE;max-width:46em;margin-top:8px}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,236px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px var(--gut) 22px;margin-inline:calc(-1 * var(--gut));scrollbar-width:thin;scrollbar-color:#1F2C45 transparent;overscroll-behavior-x:contain}
-.rail>*{scroll-snap-align:start}
+.rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;padding:18px 0 22px}
+@media (max-width:560px){.rail{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+
 .ep{position:relative;display:block;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#0D1525;color:#fff;text-decoration:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;transition:transform .2s ease}
 .ep:hover,.ep:focus-visible{transform:translateY(-4px)}
 .ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
@@ -116,7 +117,7 @@ body.mf{background:#070C16;color:#E8EDF5}
 .ep.aff{aspect-ratio:auto;display:flex;flex-direction:column;background:#0D1525}
 .ep.aff img{position:static;width:100%;height:auto;aspect-ratio:1122/1402;object-fit:cover;object-position:top}
 .ep.aff::after{display:none}
-.ep.aff .ep-in{position:static;padding:12px 14px 14px}
+.ep.aff .ep-in{position:static;padding:12px 60px 14px 14px}
 .ep.aff .ep-num,.ep.aff .ep-t{display:none!important}
 .ep.aff .ep-d{margin-top:0;font-size:14px;color:#E8EDF5}
 .ep.aff .play{top:auto;bottom:62px}
@@ -127,6 +128,11 @@ body.mf{background:#070C16;color:#E8EDF5}
 .play::before{content:"";border-left:12px solid #0B1220;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
 
 /* Personnages */
+.onglets{position:relative;z-index:2;background:rgba(7,12,22,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #1F2C45}
+.onglets .wrap{display:flex;flex-wrap:wrap;gap:6px;padding-block:10px}
+.onglets a{flex:none;color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:8px 14px;border-radius:999px;background:#111B2F}
+.onglets a:hover,.onglets a:focus-visible{background:#DA3C1B}
+#personnages,#saisons,#h-une{scroll-margin-top:120px}
 .persos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
 .perso{display:flex;gap:14px;align-items:center;background:#0D1525;border-radius:14px;padding:14px}
 .perso img{width:76px;height:76px;border-radius:999px;object-fit:cover;flex:none}
@@ -187,13 +193,18 @@ body.mf{background:#070C16;color:#E8EDF5}
     <div class="actions">
       <button class="btn btn-play" type="button" id="hero-play">Regarder</button>
       <a class="btn btn-sec" href="#saison-1">Tous les épisodes</a>
+      <a class="btn btn-sec" href="#personnages">Découvrir les personnages</a>
     </div>
   </div>
 </section>
 
+<nav class="onglets" aria-label="Dans Min’Fin">
+  <div class="wrap"><a href="#h-une">Le nouvel épisode</a><a href="#saisons">Tous les épisodes</a><a href="#personnages">Découvrir les personnages</a></div>
+</nav>
+
 <div id="saisons"></div>
 
-<section class="rang" aria-labelledby="h-persos">
+<section class="rang" id="personnages" aria-labelledby="h-persos">
   <div class="wrap">
     <h2 id="h-persos">Les personnages</h2>
     <div class="persos" id="persos"></div>

@@ -9,7 +9,7 @@ HEAD_CSS = T[T.index('<link rel="preconnect"'):T.index('<script type="applicatio
 STYLE = T[T.index('<!-- Gabarit EFA'):T.index('</head>')]
 HEADER = T[T.index('<header class="top">'):T.index('<main>')]
 FOOTER = T[T.index('<footer class="efa-foot">'):T.index('<script>\n(function(){\n  var vu=false')]
-FIN = '<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>\n<script src="efa-appli.js?v=2026102903" defer></script>\n</body>\n</html>\n'
+FIN = '<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>\n<script src="efa-appli.js?v=2026102904" defer></script>\n</body>\n</html>\n'
 
 def page(slug, titre, desc, module, crumb, kick, minutes, corps, script, sources):
     ld = {"@context": "https://schema.org", "@graph": [

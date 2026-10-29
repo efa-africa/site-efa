@@ -224,3 +224,53 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && n.classList.contains("open")) { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
   } catch (e) {}
 })();
+
+/* Personnages : à la première mention de Koffi, Tonton Bamba, Tantie Affoué (ou d'un personnage d'un cas pratique),
+   une petite fiche dit qu'il s'agit d'un personnage fictif, avec un lien vers Min'Fin et retour possible. */
+(function () {
+  try {
+    var page = (location.pathname.split("/").pop() || "index.html");
+    if (/^(minfin|admin|espace-organisation|tableau)/.test(page)) return;
+    var MF = "Personnage fictif de la série Min’Fin";
+    var P = [
+      { re: /\bTonton Bamba\b/, id: "bamba", nom: "Tonton Bamba", img: "app/bamba.jpg", t: MF, r: "Le mentor de Koffi : il donne la règle, toujours en une phrase.", mf: 1 },
+      { re: /\b(Tantie Affoué|Affoué)\b/, id: "affoue", nom: "Tantie Affoué", img: "app/affoue.jpg", t: MF, r: "La tante de Koffi, commerçante à Abobo (Abidjan). Vingt ans de tontines.", mf: 1 },
+      { re: /\bKoffi\b/, id: "koffi", nom: "Koffi", img: "koffi.jpg", t: MF, r: "Salarié à Abidjan, l’aîné de la famille. Il cotise en tontine et soutient tout le monde.", mf: 1 },
+      { re: /\bAwa\b/, id: "awa", nom: "Awa", t: "Personnage fictif d’un cas pratique EFA", r: "Ses chiffres servent d’exemple ; ils ne décrivent personne de réel." },
+      { re: /\bAffi\b/, id: "affi", nom: "Affi", t: "Personnage fictif d’un cas pratique EFA", r: "La sœur de Koffi dans le cas « Prêter à un proche »." }
+    ];
+    var faits = {}, EXCL = "a,button,input,textarea,select,script,style,svg,label,option,.efa-perso,.efa-pf,#musee,header,nav,footer,[contenteditable]";
+    var css = document.createElement("style");
+    css.textContent = ".efa-perso{all:unset;cursor:pointer;border-bottom:1.5px dotted currentColor;font:inherit;color:inherit}.efa-perso sup{font-size:.62em;margin-left:1px;opacity:.75}"
+      + ".efa-pf{position:fixed;z-index:2147482000;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));max-width:420px;margin:0 auto;background:#0B1220;color:#fff;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.4);padding:16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;font-family:'Source Sans 3',system-ui,sans-serif}"
+      + ".efa-pf img{width:58px;height:58px;border-radius:50%;object-fit:cover}.efa-pf .i{width:58px;height:58px;border-radius:50%;background:#DA3C1B;display:grid;place-items:center;font:700 24px 'Libre Baskerville',Georgia,serif}"
+      + ".efa-pf small{display:block;color:#F09680;font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}.efa-pf b{display:block;font:700 19px/1.2 'Libre Baskerville',Georgia,serif;margin:2px 0 4px}.efa-pf p{margin:0;font-size:15px;line-height:1.45;color:#C9D1DE}"
+      + ".efa-pf .a{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}.efa-pf .a a,.efa-pf .a button{font:800 14px 'Source Sans 3',system-ui,sans-serif;border-radius:8px;padding:9px 14px;border:0;cursor:pointer;text-decoration:none}.efa-pf .a a{background:#DA3C1B;color:#fff}.efa-pf .a button{background:rgba(255,255,255,.12);color:#fff}";
+    document.head.appendChild(css);
+    function fiche(p) {
+      var o = document.querySelector(".efa-pf"); if (o) o.remove();
+      var d = document.createElement("div"); d.className = "efa-pf"; d.setAttribute("role", "dialog"); d.setAttribute("aria-label", p.nom + ", " + p.t);
+      d.innerHTML = (p.img ? '<img src="' + p.img + '" alt="">' : '<span class="i">' + p.nom.charAt(0) + "</span>") + "<div><small>" + p.t + "</small><b>" + p.nom + "</b><p>" + p.r + "</p></div>"
+        + '<div class="a">' + (p.mf ? '<a href="minfin.html?src=' + encodeURIComponent(page.replace(/\.html$/, "")) + '#personnages">Découvrir Min’Fin</a>' : "") + '<button type="button">Revenir à ma lecture</button></div>';
+      d.querySelector("button").onclick = function () { d.remove(); };
+      document.body.appendChild(d);
+      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "personnage-" + p.id, title: "personnage-" + p.id, event: true }); } catch (e) {}
+    }
+    function balayer() {
+      var root = document.querySelector("main") || document.body; if (!root) return;
+      P.forEach(function (p) {
+        if (faits[p.id]) return;
+        var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { if (!n.nodeValue || !p.re.test(n.nodeValue)) return NodeFilter.FILTER_SKIP; var e = n.parentElement; if (!e || e.closest(EXCL) || !e.offsetParent) return NodeFilter.FILTER_SKIP; return NodeFilter.FILTER_ACCEPT; } });
+        var n = w.nextNode(); if (!n) return;
+        var m = n.nodeValue.match(p.re), i = m.index, apres = n.splitText(i); apres.nodeValue = apres.nodeValue.slice(m[0].length);
+        var b = document.createElement("button"); b.type = "button"; b.className = "efa-perso"; b.setAttribute("aria-label", m[0] + " : personnage fictif, en savoir plus");
+        b.innerHTML = m[0] + '<sup aria-hidden="true">ⓘ</sup>'; b.onclick = function (e) { e.preventDefault(); e.stopPropagation(); fiche(p); };
+        n.parentNode.insertBefore(b, apres); faits[p.id] = 1;
+        if (p.id === "affoue") faits.affoue = 1;
+      });
+    }
+    var t = null; function plusTard() { clearTimeout(t); t = setTimeout(balayer, 400); }
+    plusTard();
+    if (window.MutationObserver) { var mo = new MutationObserver(function () { if (Object.keys(faits).length < P.length) plusTard(); else mo.disconnect(); }); mo.observe(document.body, { childList: true, subtree: true }); }
+  } catch (e) {}
+})();
