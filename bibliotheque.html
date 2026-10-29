@@ -110,6 +110,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .onglets button{font:800 15.5px/1.2 var(--f-body);min-height:46px;padding:11px 18px;border-radius:999px;border:0;cursor:pointer;background:rgba(255,255,255,.1);color:#fff}
 .onglets button:hover{background:rgba(255,255,255,.18)}
 .onglets button[aria-selected=true]{background:var(--corail);color:#fff}
+.panneau{scroll-margin-top:150px}
 .onglets small{display:block;font-weight:400;font-size:12.5px;opacity:.85;margin-top:2px}
 .panneau[hidden]{display:none}
 /* balade */
@@ -333,7 +334,11 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
   function montrer(o,maj){T.forEach(function(t){var on=t.dataset.o===o;t.setAttribute('aria-selected',on);document.getElementById(t.dataset.o).hidden=!on;});
     if(maj&&history.replaceState)history.replaceState(null,'',location.pathname+location.search+(o==='musee-p'?'':'#'+(o==='musee-p'?'musee':o)));
     try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'biblio-onglet-'+o,title:o,event:true});}catch(e){}}
-  T.forEach(function(t){t.addEventListener('click',function(){montrer(t.dataset.o,true);});
+  var ALLER={'musee-p':'balade-economie.html?src=bibliotheque#musee','balade':'balade-economie.html?src=bibliotheque'};
+  T.forEach(function(t){t.addEventListener('click',function(){var o=t.dataset.o;
+      /* un clic emmène directement dans l'expérience demandée : le musée et la balade s'ouvrent, les livres et les capitaines viennent en haut de l'écran */
+      if(ALLER[o]){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'biblio-onglet-'+o+'-direct',title:o,event:true});}catch(e){}location.href=ALLER[o];return;}
+      montrer(o,true);var P=document.getElementById(o);if(P)setTimeout(function(){P.scrollIntoView({behavior:'smooth',block:'start'});},30);});
     t.addEventListener('keydown',function(e){var i=[].indexOf.call(T,t),n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:-9;if(n===-9)return;n=(n+T.length)%T.length;T[n].focus();montrer(T[n].dataset.o,true);});});
   var h=location.hash.replace('#',''),q=new URLSearchParams(location.search);if(h==='balade'||h==='capitaines'||h==='livres')montrer(h,false);else if(q.get('livre')||q.get('src')==='ecole-boite')montrer('livres',false);
   /* capitaines */
