@@ -203,14 +203,14 @@
     document.documentElement.classList.add("efa-burger");
     var st = document.createElement("style");
     st.textContent = "html.efa-burger .menu-btn{display:inline-flex!important;align-items:center;gap:8px;position:relative;z-index:31;min-height:44px}"
-      + "html.efa-burger .menu-btn .bar{display:inline-grid;gap:4px}html.efa-burger .menu-btn .bar i{display:block;width:18px;height:2px;border-radius:2px;background:#fff}"
+      + "html.efa-burger .menu-btn .efa-bb{display:inline-grid;gap:4px;position:static;inset:auto;width:auto;height:auto;background:none;box-shadow:none;transform:none;padding:0;margin:0;border:0}html.efa-burger .menu-btn .efa-bb i{display:block;width:18px;height:2px;border-radius:2px;background:#fff}"
       + "html.efa-burger .nav{position:fixed!important;top:0;left:0;width:100vw;height:100vh;height:100svh;z-index:30;background:#0B1220;flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none!important;padding:24px}"
       + "html.efa-burger .nav.open{display:flex!important}"
       + "html.efa-burger .nav a{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(22px,3vw,30px);color:#fff;text-decoration:none;padding:8px 14px}"
       + "html.efa-burger .nav a.nav-cta{background:none!important;color:#F09680!important}"
       + "html.efa-burger .nav a.nav-moi{font-family:'Source Sans 3',system-ui,sans-serif;font-size:15px;font-weight:800;background:#DA3C1B;border-radius:999px;padding:10px 20px;margin-bottom:10px}";
     document.head.appendChild(st);
-    var lab = function (o) { b.innerHTML = '<span class="bar" aria-hidden="true"><i></i><i></i><i></i></span><span>' + (o ? "Fermer" : "Menu") + "</span>"; };
+    var lab = function (o) { b.innerHTML = '<span class="efa-bb" aria-hidden="true"><i></i><i></i><i></i></span><span>' + (o ? "Fermer" : "Menu") + "</span>"; };
     lab(false);
     new MutationObserver(function () { lab(n.classList.contains("open")); }).observe(n, { attributes: true, attributeFilter: ["class"] });
     var moi = localStorage.getItem("efa_objectif") || localStorage.getItem("efa_cahier_v1");
