@@ -71,7 +71,7 @@ a{color:var(--cyan)}
 .status{position:absolute;top:0;left:0;right:0;height:54px;z-index:55;display:flex;align-items:center;justify-content:space-between;padding:4px 34px 0;font-weight:700;font-size:15px;pointer-events:none;color:#0B1220}
 .status i{display:inline-block;width:25px;height:12px;border:1.5px solid rgba(11,18,32,.7);border-radius:4px;position:relative}
 .status i::after{content:"";position:absolute;inset:1.5px 6px 1.5px 1.5px;background:#0B1220;border-radius:1.5px}
-@media (max-width:899px),(max-height:620px){
+@media (max-width:1099px),(max-height:620px),(pointer:coarse){
   .stage{display:block;padding:0;background:var(--night)}
   .pitch{display:none}
   .device{height:100%;width:100%;aspect-ratio:auto;border-radius:0;padding:0;background:none;box-shadow:none}
@@ -84,10 +84,11 @@ a{color:var(--cyan)}
 .scroll{flex:1;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none}
 .scroll::-webkit-scrollbar{display:none}
 .device .scroll{padding-top:44px}
-@media (max-width:899px),(max-height:620px){.device .scroll{padding-top:0}}
+@media (max-width:1099px),(max-height:620px),(pointer:coarse){.device .scroll{padding-top:0}}
 main{min-height:100%;display:flex;flex-direction:column;gap:22px;padding-block:calc(14px + env(safe-area-inset-top,0px)) 118px;
   padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 main.player{padding-bottom:24px;gap:18px}
+@media (min-width:760px){main{max-width:760px;margin-inline:auto;width:100%;box-sizing:border-box}}
 main.ob{background:#0B1220}
 .enter>*{animation:rise .45s var(--ease) both}
 .enter>*:nth-child(2){animation-delay:.04s}.enter>*:nth-child(3){animation-delay:.08s}.enter>*:nth-child(4){animation-delay:.12s}.enter>*:nth-child(5){animation-delay:.16s}
@@ -509,13 +510,16 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
   <aside class="pitch" aria-label="Visite de l’appli">
     <div class="logo"><img src="icon-192.png" alt="" onerror="this.remove()">ÉDUCATION FINANCIÈRE AFRIQUE</div>
     <h1>L’appli <span>EFA</span></h1>
-    <p>L’école de la finance personnelle dans votre poche : vos outils et votre cahier, l’école et ses modules, les questions que l’on se pose, les études. Les mêmes données que sur efa.africa.</p>
+    <p>L’école de la finance personnelle dans votre poche : les nouveautés, votre cahier et votre école, EFA News, Min’Fin. Les mêmes données que sur efa.africa. Sur téléphone et tablette, l’appli s’ouvre en plein écran.</p>
     <div class="tour"><b>Commencer comme</b><div class="tour-grid">
-      <button class="main" data-act="demo" data-mode="new">Un nouvel utilisateur</button>
+      <button class="main" data-act="tour" data-to="accueil">Mes données</button>
       <button data-act="demo" data-mode="busy">Koffi, après dix jours · démo</button></div><small class="tour-note">La démonstration utilise des données fictives : votre progression réelle n’est ni remplacée ni modifiée.</small></div>
     <div class="tour"><b>Aller directement à</b><div class="tour-grid">
-      <button data-act="tour" data-to="outils">Mes outils</button>
+      <button data-act="tour" data-to="accueil">Accueil</button>
       <button data-act="tour" data-to="cahier">Mon cahier</button>
+      <button data-act="tour" data-to="news">EFA News</button>
+      <button data-act="tour" data-to="minfin">Min’Fin</button>
+      <button data-act="tour" data-to="outils">Mes outils</button>
       <button data-act="tour" data-to="defis">Défis et actions</button>
       <button data-act="tour" data-to="ecole">L’école</button>
       <button data-act="tour" data-to="module">Un module</button>
@@ -1522,9 +1526,9 @@ document.addEventListener("click",function(ev){
   if(a==="wipe"){st=fresh();mem=null;try{localStorage.removeItem(KEY);}catch(e){}ui.ob=0;hist=[];go("onboarding");toast("Données supprimées");return;}
   if(a==="demo-quitter"){quitterDemo();return;}
   if(a==="demo"){hist=[];if(b.dataset.mode==="new"){if(DEMO||(st.profil&&st.profil.onboarde))entrerDemo(fresh());ui.ob=0;go("onboarding");}else{entrerDemo(demoKoffi());go("aujourdhui");toast("Démonstration : Koffi, après dix jours");}return;}
-  if(a==="tour"){if(!st.profil.onboarde&&!DEMO){entrerDemo(demoKoffi());}var to=b.dataset.to;hist=[{view:"outils",p:{}}];
+  if(a==="tour"){if(b.classList.contains("main")){if(DEMO)quitterDemo();else{hist=[];go("accueil");}return;}var to=b.dataset.to;hist=[{view:"outils",p:{}}];
     function openAt(lid,step){var sl=LS(lid);if(sl.statut==="a_faire")sl.statut="en_cours";sl.step=step;save();go("lecon",{id:lid});}
-    if(to==="lecon")openAt("p1l4",0);else if(to==="cahier"){hist=[];ui.seg="cahier";go("outils");}else if(to==="defis"){hist=[];ui.seg="defis";go("outils");}else if(to==="outils"){hist=[];ui.seg="outils";go("outils");}
+    if(to==="lecon")openAt("p1l4",0);else if(to==="cahier"){hist=[];go("moncahier");}else if(to==="defis"){hist=[];ui.seg="defis";go("outils");}else if(to==="outils"){hist=[];ui.seg="outils";go("outils");}
     else if(to==="module"){hist=[{view:"ecole",p:{}}];go("module",{id:"P1"});}else{hist=[];go(to,{});}return;}
   if(a==="setStatut"){var ac=st.actions.find(function(x){return x.id===id;});ac.statut=b.dataset.s;save();toast(STATUTS[ac.statut]);ui.sheet=(ac.statut==="realisee"||ac.statut==="abandonnee")?{k:"action",id:ac.id}:null;render();return;}
   if(a==="prio"){st.actions.forEach(function(x){x.prio=x.id===id;});save();render();return;}
