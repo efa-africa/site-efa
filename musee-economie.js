@@ -231,7 +231,7 @@
       + '<p class="mu-et">1. Que voulez-vous voir&nbsp;?</p><div class="mu-parts" id="mu-parts" role="radiogroup" aria-label="Partie de l’histoire"><button type="button" role="radio" aria-checked="true" data-p="-1"><b>Toute l’histoire</b><small>12 salles · <span data-min="-1"></span></small></button>'
       + EPOQUES.map(function (P, i) { return '<button type="button" role="radio" aria-checked="false" data-p="' + i + '"><b>' + esc(P.t) + '</b><small>Salles ' + (P.a + 1) + ' à ' + (P.b + 1) + ' · <span data-min="' + i + '"></span></small></button>'; }).join("")
       + '</div><p class="mu-et">2. Choisissez en bas de l’écran</p>'
-      + '<p class="mu-aide"><b>Visite guidée</b>&nbsp;: elle avance seule, au rythme d’une lecture tranquille, du début à la fin. <b>Visite libre</b>&nbsp;: vous passez quand vous voulez. Dans les deux cas, touchez une époque en haut pour y aller, et la visite se termine par «&nbsp;Du cercle à la spirale&nbsp;».</p></div></div>';
+      + '<p class="mu-aide"><b>Guidée</b>&nbsp;: elle avance seule, au rythme d’une lecture. <b>Libre</b>&nbsp;: à votre rythme. En haut, touchez une époque pour y aller.</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
       return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p></div></div>';

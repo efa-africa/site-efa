@@ -245,3 +245,17 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
   #musee .mu-etape[data-k="0"] .mu-modes{justify-content:flex-start}
 }
 @media (min-width:900px) and (min-aspect-ratio:5/4){#musee .mu-etape[data-k="0"] .mu-parts{grid-template-columns:repeat(2,minmax(0,1fr))}#musee .mu-etape[data-k="0"] .mu-parts button{min-height:50px;padding:7px 12px}}
+/* Accueil sur écran large : image en haut à gauche, texte en face, sur toute la hauteur */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  #musee .mu-etape[data-k="0"]{align-items:start;align-content:start;padding-top:clamp(8px,2svh,24px)}
+  #musee .mu-etape[data-k="0"] .mu-cadre{position:sticky;top:0}
+  #musee .mu-etape[data-k="0"] .mu-txt{align-self:start}
+  #musee .mu-etape[data-k="0"] .mu-txt .mu-lieu{margin-top:0}
+}
+@media (min-width:900px) and (min-aspect-ratio:5/4) and (max-height:700px){
+  #musee .mu-etape[data-k="0"] .mu-txt h2{font-size:clamp(26px,2.6vw,34px)!important;margin-top:6px!important}
+  #musee .mu-etape[data-k="0"] .mu-txt p{font-size:15.5px!important;line-height:1.42}
+  #musee .mu-etape[data-k="0"] .mu-parts{gap:6px;margin-top:6px}
+  #musee .mu-etape[data-k="0"] .mu-parts button{min-height:44px;padding:5px 12px;font-size:14.5px}
+  #musee .mu-etape[data-k="0"] .mu-et{margin-top:10px!important}
+}
