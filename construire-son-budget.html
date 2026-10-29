@@ -481,6 +481,11 @@ details.loin[open] > summary::after{content:"−"}
     if(a==="direct") return go(5);
     if(a==="reprendre") return go(S.etape);
     if(a==="copierFiche") return copier(ficheTexte());
+    if(a==="cahier"){ var d=new Date(), iso=d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2), pg="construire-son-budget.html";
+      S.preferences.sauvegarde_locale=true; ecrire();
+      try{ var st=JSON.parse(localStorage.getItem("efa_parcours_v1")||"{}")||{}; st.fiches=st.fiches||{}; st.fiches[pg]={titre:"Mon budget du mois",t:ficheTexte().slice(0,1500),d:iso,url:pg}; localStorage.setItem("efa_parcours_v1",JSON.stringify(st));
+        if(!localStorage.getItem("efa_premiere_fiche")){ localStorage.setItem("efa_premiere_fiche",String(Date.now())); try{ if(window.goatcounter&&goatcounter.count) goatcounter.count({path:"premiere-fiche",event:true}); }catch(x){} } }catch(x){}
+      t.textContent="Gardée dans mon cahier ✓"; if(!t.nextElementSibling||!t.nextElementSibling.classList.contains("vers-cahier")){ var l=document.createElement("a"); l.className="btn btn-g vers-cahier"; l.href="outils.html?src="+pg.replace(".html","")+"#cahier"; l.textContent="Ouvrir mon cahier →"; t.insertAdjacentElement("afterend",l); } return; }
     if(a==="imprimer"){ try{ window.print(); }catch(err){} return; }
     if(a==="effacer") return effacer();
     if(a==="copierBrut") return copier(recup);
@@ -680,7 +685,7 @@ details.loin[open] > summary::after{content:"−"}
         (rep?'<dl class="dl" style="margin-top:14px">'+rep.map(function(x){ return '<dt>'+esc(x[0])+'<small>'+esc(x[2])+'</small></dt><dd>'+F(x[1])+'</dd>'; }).join("")+'</dl>':'')+
         (o.forts!=null&&p.methode==="irregulier"?'<p class="small" style="margin-top:8px">Un mois fort, vous pourriez verser environ '+F(o.forts)+' dans la caisse tampon.</p>':'')+'</div>'+
       '<div class="block"><p class="t3">En bref</p><ul class="todo">'+actions.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul></div>')+
-      '<div class="r-acts noprint"><button type="button" class="btn btn-n" data-act="copierFiche">Copier ma fiche</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button></div><p class="small" id="copie-ok" hidden style="margin-top:8px">Copié.</p>'+
+      '<div class="r-acts noprint"><button type="button" class="btn btn-n" data-act="cahier">Garder dans mon cahier</button><button type="button" class="btn btn-g" data-act="copierFiche">Copier ma fiche</button><button type="button" class="btn btn-g" data-act="imprimer">Imprimer ou enregistrer en PDF</button></div><p class="small" id="copie-ok" hidden style="margin-top:8px">Copié.</p>'+
       keep()+
       '<details class="loin"><summary>Aller plus loin : la version approfondie</summary><div class="lb">'+
         '<h2 class="t3">1. Bien mesurer son revenu</h2><p>Comptez le net réellement reçu. Pour une activité, partez de la recette du mois, retirez le réapprovisionnement, le transport de la marchandise, la place au marché et les petites charges&nbsp;: ce qui reste est ce que l’activité vous verse. Si vous ne pouvez pas séparer, fixez-vous un montant fixe à prendre chaque semaine dans la caisse.</p>'+

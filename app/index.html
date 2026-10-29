@@ -665,7 +665,8 @@ function jstats(d,c){var n=0,miss=0,zero=0,tot={},t=dkey(),passed=0;d.champs.for
   for(var i=0;i<d.jours;i++){var k=addDays(c.debut,i);if(k>t)continue;passed++;var e=c.jours[k];if(!e){miss++;continue;}n++;if(e.etat==="zero"){zero++;continue;}d.champs.forEach(function(f){tot[f.k]+=(e.v[f.k]||0);});}
   return {ren:n,miss:miss,zero:zero,passed:passed,tot:tot};}
 function mainField(d){return d.champs[d.champs.length>1?1:0];}
-function addEntry(o){var e=Object.assign({id:uid(),date:dkey(),type:"appris",texte:"",montant:null,precision:null,nature:null,source:null},o);st.cahier.unshift(e);evt("saisie");save();return e;}
+function addEntry(o){var e=Object.assign({id:uid(),date:dkey(),type:"appris",texte:"",montant:null,precision:null,nature:null,source:null},o);var prem=!st.cahier.length;st.cahier.unshift(e);evt("saisie");save();
+  if(prem&&!DEMO&&!installee()&&!instVu())setTimeout(function(){if(!ui.sheet)openSheet({k:"installer",apres:1});},1600);return e;}
 function srcLabel(s){if(!s)return "";if(s.k==="lecon"&&LESSONS[s.id])return "Leçon « "+LESSONS[s.id].titre+" »";if(s.k==="challenge"&&CHAL[s.id])return "Challenge « "+CHAL[s.id].titre+" »";if(s.k==="diag")return "Diagnostic d’orientation";if(s.k==="parcours"&&PARC[s.id])return "Parcours « "+PARC[s.id].titre+" »";return "";}
 function addAction(o){var a=Object.assign({id:uid(),cree:dkey(),objectif:"",etape:"",echeance:"",ressource:"",statut:"a_commencer",retour:"",prio:false,source:null},o);
   if(st.actions.some(function(x){return x.objectif===a.objectif&&x.statut!=="abandonnee"&&x.statut!=="realisee";}))return null;
@@ -1170,6 +1171,21 @@ function webRow(t,s,url,ic,col,extra){return '<button class="row" data-act="web"
 function extRow(t,s,url,app){return '<a class="row" href="'+esc(url)+'" target="_blank" rel="noopener"><span class="sq" style="color:var(--coral2)">'+ICON.globe+'</span><span class="grow"><span class="t">'+esc(t)+'</span><span class="s">'+esc(s)+(app?'. S’ouvre dans '+esc(app)+'.':'')+'</span></span><span class="extl" aria-hidden="true">↗</span></a>';}
 function nonCharge(quoi){return '<div class="vide"><p class="h3">'+esc(quoi)+' se charge depuis efa.africa.</p><p class="sub" style="font-size:15px">Ouvrez l’appli une fois avec une connexion : ce contenu reste ensuite disponible, même hors connexion.</p></div>';}
 function headerT(title,sub){var n=modsFaits(),tot=MODL.length||23;return '<header class="lt"><div><small>'+esc(sub)+'</small><h1>'+esc(title)+'</h1></div><button class="me" data-act="go" data-view="profil" aria-label="Ma progression et mes réglages">'+ring(44,n/tot,n)+'</button></header>';}
+function monRetour(){if(DEMO)return "";var rows=[],s=PST(),now=Date.now();
+  var p=s.actif&&MODS[s.actif],g=p&&modProg(p,s);
+  var L=st.reprise&&LESSONS[st.reprise.id]&&lstate(st.reprise.id)==="en_cours"?LESSONS[st.reprise.id]:null;
+  if(p&&g&&!g.fini)rows.push('<button class="row" data-act="module" data-id="'+esc(p.id)+'"><span class="sq" style="color:var(--coral2)">'+ICON.play+'</span><span class="grow"><span class="t">Reprendre : '+esc(modNom(p))+'</span><span class="s">Étapes essentielles : '+g.n+' sur '+g.tot+'</span></span>'+ICON.chev+'</button>');
+  else if(L)rows.push('<button class="row" data-act="lecon" data-id="'+L.id+'"><span class="sq" style="color:var(--coral2)">'+ICON.play+'</span><span class="grow"><span class="t">Reprendre : '+esc(L.titre)+'</span><span class="s">Leçon de l’appli</span></span>'+ICON.chev+'</button>');
+  var c=siteCahier(),cu=c&&EPLAN.cahier.semaineEnCours(c),chs=chActifs();
+  if(cu){var j=EPLAN.dates.numeroJour(cu.debut);rows.push('<button class="row" data-act="seg" data-s="defis"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">Défi en cours · jour '+Math.min(7,Math.max(1,j))+' sur 7</span><span class="s">'+esc(EPLAN.cahier.libPoste(cu))+' · '+EPLAN.cahier.remplis(cu)+' jour'+(EPLAN.cahier.remplis(cu)>1?"s":"")+' noté'+(EPLAN.cahier.remplis(cu)>1?"s":"")+'</span></span>'+ICON.chev+'</button>');}
+  else if(chs.length&&CHAL[chs[0]])rows.push('<button class="row" data-act="seg" data-s="defis"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">Challenge en cours</span><span class="s">'+esc(CHAL[chs[0]].titre)+'</span></span>'+ICON.chev+'</button>');
+  var der=null;(st.cahier||[]).slice(0,1).forEach(function(e){der={t:e.texte,d:e.date,k:"note"};});
+  var F=s.fiches||{};Object.keys(F).forEach(function(k){var f=F[k];if(f&&f.d&&(!der||f.d>der.d))der={t:f.titre,d:f.d,k:"fiche"};});
+  if(der)rows.push('<button class="row" data-act="seg" data-s="cahier"><span class="sq" style="color:var(--green)">'+ICON.doc+'</span><span class="grow"><span class="t">'+(der.k==="fiche"?"Dernière fiche":"Dernière note")+'</span><span class="s">'+esc(String(der.t||"").slice(0,70))+(der.d?" · "+esc(dShort(der.d)):"")+'</span></span>'+ICON.chev+'</button>');
+  var sv=suiviItems().items.filter(function(x){return !x.r30;}).map(function(x){return {x:x,q:x.r7?x.j30:x.j7};}).sort(function(a,b){return a.q-b.q;})[0];
+  if(sv){var du=sv.q<=now;rows.push('<button class="row" data-act="seg" data-s="defis"><span class="sq" style="color:var(--amber,#F2B84B)">'+ICON.shield+'</span><span class="grow"><span class="t">'+(du?"Vérification à faire maintenant":"Prochaine vérification le "+esc(new Date(sv.q).toLocaleDateString("fr-FR",{day:"numeric",month:"long"})))+'</span><span class="s">'+esc(sv.x.action||sv.x.titre)+'</span></span>'+ICON.chev+'</button>');}
+  if(!rows.length)return "";
+  return '<section class="stack"><div class="secth"><h2>Pour reprendre</h2><button class="link" data-act="seg" data-s="cahier">Mon cahier</button></div><div class="list">'+rows.join("")+'</div></section>';}
 function repriseCard(){var s=PST(),p=s.actif&&MODS[s.actif];if(!p)return "";var g=modProg(p,s);if(g.fini)return "";
   return '<button class="reprise" data-act="module" data-id="'+esc(p.id)+'">'+ring(52,g.tot?g.n/g.tot:0,g.n+"/"+g.tot).replace('<svg ','<svg style="color:#fff" ')+'<span class="grow"><small>Reprendre mon module</small><b>'+esc(modNom(p))+'</b><span class="s">'+esc(p.duree||"")+(p.duree?" · ":"")+'Essentielles : '+g.n+" sur "+g.tot+'</span></span>'+ICON.chev.replace('class="chev"','class="chev" style="color:#C9D1DE"')+'</button>';}
 
@@ -1272,7 +1288,7 @@ function normQ(x){return String(x||"").toLowerCase().normalize("NFD").replace(/[
 function qRow(q){var p=MODS[q.p];return '<button class="row" data-act="'+(q.p==="quiz"?"web":"module")+'" data-id="'+esc(q.p)+'"'+(q.p==="quiz"?' data-url="outils.html#questions/choisir" data-t="Choisir mon module"':'')+'><span class="sq" style="color:var(--coral2)">?</span><span class="grow"><span class="t">'+esc(q.q)+'</span><span class="s">'+(p?esc(modNom(p)):"Trois questions pour choisir mon parcours")+'</span></span>'+ICON.chev+'</button>';}
 /* ───── Onglet 1 : Accueil, la même expérience que l'accueil du site ───── */
 function vAccueil(){
-  var h=contCarte()+'<section class="acc-hero"><p class="acc-sur">Apprendre. Comprendre. Décider.</p><h1 class="acc-h1">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>'
+  var mr=monRetour(),h=contCarte()+mr+'<section class="acc-hero"><p class="acc-sur">Apprendre. Comprendre. Décider.</p><h1 class="acc-h1">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>'
     +'<p class="acc-lead">Des leçons concrètes et des outils pratiques pour mieux gérer votre argent, à partir des réalités africaines.</p>'
     +'<button class="btn block acc-b1" data-act="web" data-url="ou-est-passe-mon-argent.html?src=appli-accueil#questions" data-t="Faire le point">Faire le point en 5 questions →</button>'
     +'<p class="acc-micro">Gratuit, sans inscription. Votre première piste en 3 minutes, avec la méthode et le défi de la semaine.</p>'
@@ -1284,9 +1300,9 @@ function vAccueil(){
     +'<button class="acc-p" data-act="web" data-url="organisations.html?src=appli" data-t="Pour les organisations"><small>Pour les organisations</small><b>Former</b><span>Vos équipes, suivies, sans voir leurs montants.</span></button></div></section>';
   h+='<section class="stack"><h2 class="h2">Qu’est-ce qui vous préoccupe&nbsp;?</h2><div class="ask">'+ASK.map(function(a){return '<button class="askt" data-act="web" data-url="'+esc(a[4])+'" data-t="'+esc(a[1])+'"><span class="bd"><span class="k">'+esc(a[0])+'</span><b>'+esc(a[1])+'</b><span class="why">'+esc(a[2])+'</span><span class="go">'+esc(a[3])+' →</span></span><span class="ph" style="background-image:url(\''+a[5]+'\')"></span></button>';}).join("")+'</div>'
     +'<button class="lien" style="align-self:flex-start" data-act="go" data-view="questions">Ou cherchez votre question →</button></section>';
-  var r=repriseCard(); if(r)h+='<section class="stack"><div class="secth"><h2>Reprendre</h2></div>'+r+'</section>';
+  var r=mr?"":repriseCard(); if(r)h+='<section class="stack"><div class="secth"><h2>Reprendre</h2></div>'+r+'</section>';
   h+='<section class="stack"><div class="secth"><h2>Et pour aller plus loin</h2></div><div class="list">'
-    +'<button class="row" data-act="go" data-view="outils"><span class="sq" style="color:var(--coral2)">'+ICON.doc+'</span><span class="grow"><span class="t">Mon cahier et mes défis</span><span class="s">Ce que vous notez, vos actions, vos fiches</span></span>'+ICON.chev+'</button>'
+    +'<button class="row" data-act="seg" data-s="cahier"><span class="sq" style="color:var(--coral2)">'+ICON.doc+'</span><span class="grow"><span class="t">Mon cahier et mes défis</span><span class="s">Ce que vous notez, vos actions, vos fiches</span></span>'+ICON.chev+'</button>'
     +'<button class="row" data-act="web" data-url="bibliotheque.html?src=appli" data-t="La bibliothèque"><span class="sq" style="color:var(--green)">'+ICON.book+'</span><span class="grow"><span class="t">La bibliothèque</span><span class="s">Les livres sur l’argent, en quelques écrans</span></span>'+ICON.chev+'</button></div></section>';
   h+='<section class="stack"><div class="secth"><h2>Se former autrement</h2></div><p class="fine" style="margin:0">Trois laboratoires pour aller plus loin : un marché simulé, une entreprise à analyser, des décisions de dirigeant.</p><div class="list">'
     +'<button class="row" data-act="web" data-url="traders.html?src=appli" data-t="EFA Traders"><span class="sq" style="color:var(--cyan)">'+ICON.chart+'</span><span class="grow"><span class="t">EFA Traders</span><span class="s">S’entraîner en Bourse, sans argent réel</span></span>'+ICON.chev+'</button>'
@@ -1483,6 +1499,7 @@ function tick(){var d=new Date();document.getElementById("clock").textContent=d.
 try{if("serviceWorker" in navigator&&((location.protocol==="https:"&&/(^|\.)efa\.africa$/.test(location.hostname))||/^localhost$|^127\.0\.0\.1$/.test(location.hostname)))navigator.serviceWorker.register("sw.js").catch(function(){});}catch(e){}
 render(true);
 var vInst=/[?&]installer=1/.test(location.search);
-if(!installee()&&(vInst||!instVu())&&!DEMO)setTimeout(function(){if(!ui.sheet)openSheet({k:"installer"});},vInst?300:900);
+function dejaReussi(){try{if(localStorage.getItem("efa_premiere_fiche"))return true;}catch(e){}if((st.cahier||[]).length)return true;return Object.keys(st.lecons||{}).some(function(id){return lstate(id)==="terminee"||lstate(id)==="verifiee";});}
+if(!installee()&&!DEMO&&(vInst||(!instVu()&&dejaReussi())))setTimeout(function(){if(!ui.sheet)openSheet({k:"installer"});},vInst?300:900);
 })();
 </script>

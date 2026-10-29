@@ -710,6 +710,17 @@ img.char{object-position:50% 18%}
 .org section.clair{background:#F5EFE2;color:#0B1220;border-top-color:#E2D8C4}
 .org .clair .lede,.org .clair article p,.org .clair .comp span,.org .clair .steps span{color:#4E5566}
 .org .clair .kick{color:#B8341A}
+.org .ptype{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;margin-top:18px}
+.org .ptype-r{margin:0;display:grid;gap:8px;background:#FFFDF8;border-radius:14px;padding:18px}
+.org .ptype-r div{display:grid;gap:2px}.org .ptype-r dt{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#7A8293}.org .ptype-r dd{margin:0;color:#0B1220}
+.org .ptype-s{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.org .ptype-s li{background:#FFFDF8;border-radius:12px;padding:12px 14px;display:grid;gap:2px}.org .ptype-s b{color:#0B1220}.org .ptype-s span{color:#4E5566;font-size:15px}
+.org .ptype-b{grid-column:1/-1;background:#0B1220;color:#fff;border-radius:14px;padding:20px;display:grid;gap:12px}
+.org .ptype-b h3{color:#fff}.org .ptype-f{margin:0;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#F2B84B}
+.org .ptype-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.org .ptype-k div{background:#111B2F;border-radius:12px;padding:12px;display:grid;gap:4px}.org .ptype-k b{font-family:var(--f-display);font-size:26px}.org .ptype-k span{color:#C9D1DE;font-size:14px}
+.org .ptype-n{margin:0;color:#C9D1DE;font-size:14px}
+@media (max-width:860px){.org .ptype{grid-template-columns:minmax(0,1fr)}.org .ptype-k{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .org .presta{margin-top:28px;display:grid;gap:14px}.org .presta h3{font-size:clamp(21px,2.2vw,26px)}
 .org .presta-l{display:grid;gap:8px}
 .org .presta-l>div{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) auto;gap:6px 18px;align-items:baseline;background:#FFFDF8;border-radius:12px;padding:14px 16px}
@@ -806,6 +817,43 @@ img.char{object-position:50% 18%}
         </div>
         <p class="presta-n">Une prestation « sur proposition » se prépare avec vous : nous revenons avec un programme, un calendrier et des livrables écrits. <a href="rendez-vous.html?sujet=organisation&amp;src=prestations#contact">Demander une proposition</a></p>
       </div>
+    </div>
+  </section>
+
+  <section class="clair" aria-labelledby="org-type">
+    <div class="in">
+      <p class="kick">Un programme type</p>
+      <h2 id="org-type">Salariés · tenir jusqu’à la fin du mois</h2>
+      <p class="lede">Le programme que le configurateur recommande pour des salariés dont l’objectif est de tenir jusqu’à la fin du mois. Vous pouvez l’ouvrir tel quel, puis l’ajuster.</p>
+      <div class="ptype">
+        <dl class="ptype-r">
+          <div><dt>Public</dt><dd>Salariés, toutes fonctions</dd></div>
+          <div><dt>Objectif</dt><dd>Savoir où passe l’argent, tenir un budget, commencer une réserve, reprendre la main sur ses dettes</dd></div>
+          <div><dt>Durée</dt><dd>8 semaines</dd></div>
+          <div><dt>Temps demandé</dt><dd>45 minutes par semaine, sur téléphone, à son rythme</dd></div>
+          <div><dt>Interventions d’EFA</dt><dd>Une session de lancement d’une heure, sur place ou en visio (sur proposition)</dd></div>
+        </dl>
+        <ol class="ptype-s">
+          <li><b>Semaines 1 et 2</b><span>Session de lancement · Module 1 « Où passe mon argent ? » · une semaine de mise en pratique</span></li>
+          <li><b>Semaines 3 et 4</b><span>Module 2 « Un budget qui tient » · fiche « Mon budget du mois »</span></li>
+          <li><b>Semaine 5</b><span>Module 4 « Ma réserve de sécurité » · fiche « Ma réserve »</span></li>
+          <li><b>Semaine 6</b><span>Module 6 « Reprendre la main sur mes dettes » · fiche « Mes dettes classées »</span></li>
+          <li><b>Semaine 7</b><span>Module 11 « Sortir de la dette » · fiche « Ma proposition au prêteur »</span></li>
+          <li><b>Semaine 8</b><span>Module 15 « Où garder son argent » · fiche « Mon choix d’endroit »</span></li>
+        </ol>
+        <div class="ptype-b">
+          <p class="ptype-f">Exemple fictif · pour montrer la forme du bilan</p>
+          <h3>Le bilan à 90 jours, tel que le voit l’organisation</h3>
+          <div class="ptype-k">
+            <div><b>62</b><span>inscrits sur 80 salariés</span></div>
+            <div><b>41</b><span>ont terminé au moins 3 modules</span></div>
+            <div><b>118</b><span>fiches gardées (titres seulement)</span></div>
+            <div><b>9 sur 24</b><span>avaient un mois de côté à 90 jours, contre 4 au départ</span></div>
+          </div>
+          <p class="ptype-n">Seulement des totaux&nbsp;; « Mon point » s’affiche à partir de 5 participants. Jamais les montants, le contenu des fiches ni les réponses de chacun.</p>
+        </div>
+      </div>
+      <div class="acts"><a class="lk" href="programme-organisation.html?p=eyJ2IjoxLCJuIjoiIiwidHkiOiJlbnRyZXByaXNlIiwidGEiOiIiLCJwdSI6WyJzYWxhcmllcyJdLCJlbiI6W10sIm0iOlsiUDEiLCJQMiIsIlA0IiwiUDYiLCJNMTEiLCJNMTUiXSwicyI6OCwibWkiOjQ1LCJvYiI6ImJ1ZGdldCIsImYiOiIxIiwiYyI6IiJ9&amp;src=programme-type">Ouvrir ce programme et l’ajuster →</a></div>
     </div>
   </section>
 
