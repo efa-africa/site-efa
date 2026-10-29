@@ -179,6 +179,13 @@
     p: "Qui crée la richesse en Afrique, qui la finance, et qui en garde la valeur ? Dix mille ans, douze salles, dans l’ordre du temps : de la vallée du Nil à la Bourse de Lagos." };
   var SORTIE = { d: "Et demain ?", l: "Le continent", t: "Du cercle à la spirale", i: "h-equipe", h: 2,
     p: "Commerce continental, ouvert depuis janvier 2021 avec la ZLECAf, énergie, villes, emploi : la salle suivante reste à écrire. Que change le fait que davantage d’Africains possèdent une part des entreprises qui transforment leur continent ?" };
+  /* Les quatre époques : la barre du haut et le choix d'un parcours à l'entrée. a, b = première et dernière salle (0 à 11). */
+  var EPOQUES = [
+    { t: "Les origines", per: "−8500 → XVIe s.", a: 0, b: 2 },
+    { t: "Traites et colonies", per: "VIIe s. → 1945", a: 3, b: 4 },
+    { t: "Indépendances et crises", per: "1956 → 1994", a: 5, b: 8 },
+    { t: "L’Afrique qui investit", per: "1998 → 2026", a: 9, b: 11 }
+  ];
   var QUIZ = [
     ["Que permet d’abord l’agriculture, vers −8500 ?", ["Le surplus", "La monnaie", "La Bourse"], 0, "Ce qui n’est pas consommé peut se garder ou s’échanger : c’est le surplus."],
     ["Pourquoi l’or de Mansa Moussa a-t-il perdu de sa valeur au Caire ?", ["Il était faux", "Trop d’or est arrivé d’un coup", "Le sel valait plus"], 1, "Plus une chose est abondante, moins elle vaut : c’est le mécanisme de l’inflation."],
@@ -191,11 +198,14 @@
   var E = [{ k: "a", s: -1 }];
   SALLES.forEach(function (S, si) { E.push({ k: "s", s: si }); S.e.forEach(function (x) { x.s = si; E.push(x); }); });
   E.push({ k: "z", s: SALLES.length }, { k: "lv", s: SALLES.length }, { k: "pp", s: SALLES.length }, { k: "qz", s: SALLES.length }, { k: "av", s: SALLES.length });
-  var KPP = E.length - 3, KAV = E.length - 1, AN = 2026;
+  var KPP = E.length - 3, KAV = E.length - 1, KZ = E.length - 5, AN = 2026;
+  var partie = -1, finS = 11, mode = "guide";
+  function epoque(s) { for (var i = 0; i < EPOQUES.length; i++) if (s >= EPOQUES[i].a && s <= EPOQUES[i].b) return i; return -1; }
+  function kSalle(s) { for (var k = 0; k < E.length; k++) if (E[k].k === "s" && E[k].s === s) return k; return 0; }
 
   var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false, auto = true, minuteur = null, indic = null;
   /* Défilement : le temps d'une lecture tranquille (environ 170 mots par minute), plus le temps de regarder l'image */
-  var INTERACTIF = { d: 1, pp: 1, qz: 1, av: 1, z: 1 };
+  var INTERACTIF = { a: 1, d: 1, pp: 1, qz: 1, av: 1, z: 1 };
   function duree(el) { var t = (el && el.querySelector(".mu-txt") || {}).textContent || "", mots = t.split(/\s+/).filter(Boolean).length, im = el && el.querySelector(".mu-cadre") ? 3 : 0; return Math.min(60, Math.max(8, Math.round(mots / 2.8) + im + 2)) * 1000; }
   function arreter() { clearTimeout(minuteur); minuteur = null; var b = document.getElementById("mu-temps"); if (b) { b.style.transition = "none"; b.style.width = "0"; } }
   function programmer() {
@@ -217,7 +227,11 @@
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
   function etapeHtml(x) {
-    if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i).replace('</div>', '<p class="mu-merci">En visitant un musée de l’économie en France, M. Pacôme Kipré, dit Peck Peckisblackman, a spontanément partagé ses idées avec EFA. Ce musée en est né&nbsp;: merci à lui.</p></div>') + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p><p style="font-size:15px">La visite <b>avance seule</b>, au rythme d’une lecture tranquille. Vous avez fini de lire&nbsp;? Touchez le <b>bord droit</b> pour passer, le <b>bord gauche</b> pour revenir, ou <b>‖</b> pour faire une pause.</p></div></div>';
+    if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i).replace('</div>', '<p class="mu-merci">En visitant un musée de l’économie en France, M. Pacôme Kipré, dit Peck Peckisblackman, a spontanément partagé ses idées avec EFA. Ce musée en est né&nbsp;: merci à lui.</p></div>') + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p>'
+      + '<p class="mu-et">1. Que voulez-vous voir&nbsp;?</p><div class="mu-parts" id="mu-parts" role="radiogroup" aria-label="Partie de l’histoire"><button type="button" role="radio" aria-checked="true" data-p="-1"><b>Toute l’histoire</b><small>12 salles · <span data-min="-1"></span></small></button>'
+      + EPOQUES.map(function (P, i) { return '<button type="button" role="radio" aria-checked="false" data-p="' + i + '"><b>' + esc(P.t) + '</b><small>Salles ' + (P.a + 1) + ' à ' + (P.b + 1) + ' · <span data-min="' + i + '"></span></small></button>'; }).join("")
+      + '</div><p class="mu-et">2. Comment&nbsp;?</p><div class="mu-act mu-modes"><button type="button" data-mu-mode="guide">Visite guidée</button><button type="button" class="l" data-mu-mode="libre">Visite libre</button></div>'
+      + '<p class="mu-aide"><b>Guidée</b>&nbsp;: elle avance seule, au rythme d’une lecture tranquille, du début à la fin. <b>Libre</b>&nbsp;: vous passez quand vous voulez, avec les bords de l’écran. Dans les deux cas, touchez une époque en haut pour y aller, et la visite se termine par «&nbsp;Du cercle à la spirale&nbsp;».</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
       return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p></div></div>';
@@ -238,6 +252,7 @@
     M = document.createElement("div"); M.id = "musee"; M.hidden = true;
     M.setAttribute("role", "dialog"); M.setAttribute("aria-modal", "true"); M.setAttribute("aria-label", "Le musée de l’économie EFA");
     M.innerHTML = '<div class="mu-haut"><div class="mu-prog" id="mu-prog">' + SALLES.map(function () { return "<i><b></b></i>"; }).join("") + '</div>'
+      + '<div class="mu-epo" id="mu-epo" aria-label="Les époques">' + EPOQUES.map(function (P, i) { return '<button type="button" data-e="' + i + '"><b>' + esc(P.t) + '</b><small>' + esc(P.per) + '</small></button>'; }).join("") + '</div>'
       + '<div class="mu-barre"><span class="mu-salle" id="mu-salle"></span><div class="mu-cmd"><button type="button" id="mu-plan-b" aria-label="Plan du musée">☰<span class="t"> Plan</span></button><button type="button" id="mu-auto" aria-pressed="true" aria-label="Mettre la visite en pause">‖<span class="t"> Pause</span></button><button type="button" id="mu-son" aria-pressed="true">♪</button><button type="button" id="mu-x" aria-label="Fermer le musée">✕</button></div></div></div>'
       + '<div class="mu-scene" id="mu-scene" aria-live="polite"><button type="button" class="mu-bord g" id="mu-g" aria-label="Étape précédente"></button><button type="button" class="mu-bord d" id="mu-d" aria-label="Étape suivante"></button><span class="mu-indice" id="mu-indice">Touchez les bords pour avancer ou revenir</span><div class="mu-temps" aria-hidden="true"><i id="mu-temps"></i></div></div>'
       + '<div class="mu-bas"><button type="button" class="mu-prec" id="mu-prec" aria-label="Revenir">‹</button><button type="button" class="mu-passe" id="mu-passe">Passer la salle »</button><button type="button" class="mu-suiv" id="mu-suiv">Suivant ›</button></div>'
@@ -254,9 +269,15 @@
     // commandes
     var $ = function (id) { return document.getElementById(id); };
     $("mu-g").onclick = function () { aller(cur - 1); }; $("mu-d").onclick = function () { aller(cur + 1); };
-    $("mu-prec").onclick = function () { aller(cur - 1); }; $("mu-suiv").onclick = function () { if (cur === E.length - 1) fermer(); else aller(cur + 1); };
-    $("mu-passe").onclick = function () { var s = E[cur].s; for (var k = cur + 1; k < E.length; k++) if (E[k].k === "s" || E[k].k === "z") { aller(k); return; } };
+    $("mu-prec").onclick = function () { aller(cur - 1); }; $("mu-suiv").onclick = function () { if (cur === E.length - 1) fermer(); else if (cur === 0) demarrer(mode); else aller(cur + 1); };
+    $("mu-passe").onclick = function () { if (cur === 0) { demarrer("libre"); return; } var s = E[cur].s; for (var k = cur + 1; k < E.length; k++) if (E[k].k === "s" || E[k].k === "z") { aller(k); return; } };
     $("mu-x").onclick = function () { fermer(); };
+    $("mu-epo").onclick = function (e) { var b = e.target.closest("button[data-e]"); if (!b) return; var P = EPOQUES[+b.dataset.e]; if (P.b > finS) finS = P.b; aller(kSalle(P.a), true); compte("musee-epoque-" + (+b.dataset.e + 1)); };
+    $("mu-parts").onclick = function (e) { var b = e.target.closest("button[data-p]"); if (!b) return; partie = +b.dataset.p; this.querySelectorAll("button").forEach(function (c) { c.setAttribute("aria-checked", c === b ? "true" : "false"); }); };
+    SC.querySelector(".mu-modes").onclick = function (e) { var b = e.target.closest("[data-mu-mode]"); if (b) demarrer(b.dataset.muMode); };
+    /* durée estimée de chaque partie, au rythme de la visite guidée */
+    (function () { var tot = {}; SC.querySelectorAll(".mu-etape").forEach(function (el) { var x = E[+el.dataset.k]; if (!x || x.s < 0 || x.s >= SALLES.length) return; var d = duree(el), ep = epoque(x.s); tot[-1] = (tot[-1] || 0) + d; tot[ep] = (tot[ep] || 0) + d; });
+      SC.querySelectorAll("[data-min]").forEach(function (sp) { var m = Math.max(1, Math.round((tot[sp.dataset.min] || 0) / 60000)); sp.textContent = "environ " + m + " min"; }); })();
     $("mu-auto").onclick = function () { auto = !auto; majAuto(); if (auto) programmer(); else arreter(); compte("musee-auto-" + (auto ? "on" : "off")); };
     document.addEventListener("visibilitychange", function () { if (M && !M.hidden) { if (document.hidden) arreter(); else programmer(); } });
     // un formulaire ou un lien touché : la visite attend
@@ -322,8 +343,17 @@
     b.setAttribute("aria-pressed", joue ? "true" : "false"); b.setAttribute("aria-label", joue ? "Couper la musique" : "Lancer la musique"); }
   function jouer() { if (!son) return; try { if (!au) { au = new Audio("demo-musique.mp3"); au.loop = true; au.volume = 0.5; au.addEventListener("play", majSon); au.addEventListener("pause", majSon); } var p = au.play(); if (p && p.then) p.then(majSon, majSon); } catch (e) {} majSon(); }
   function majPlan() { document.querySelectorAll("#mu-plan-l li").forEach(function (li) { var s = +li.dataset.s; li.classList.toggle("ok", !!vus[s]); li.classList.toggle("c", E[cur].s === s); }); }
-  function aller(k) {
+  function demarrer(m) {
+    mode = m === "libre" ? "libre" : "guide"; auto = mode === "guide"; majAuto();
+    finS = partie < 0 ? SALLES.length - 1 : EPOQUES[partie].b;
+    compte("musee-depart-" + mode + "-" + (partie < 0 ? "tout" : "e" + (partie + 1)));
+    aller(kSalle(partie < 0 ? 0 : EPOQUES[partie].a), true);
+  }
+  function aller(k, force) {
     if (k < 0 || k >= E.length) return;
+    /* fin de la partie choisie : on rejoint directement « Du cercle à la spirale » */
+    if (!force && k > cur && E[k].k === "s" && E[k].s > finS) k = KZ;
+    if (!force && cur === 0 && k === 1) { demarrer(mode); return; }
     var prec = cur; cur = k;
     SC.querySelectorAll(".mu-etape").forEach(function (el) { var j = +el.dataset.k; el.classList.toggle("ici", j === k); el.classList.toggle("avant", j < k); el.setAttribute("aria-hidden", j === k ? "false" : "true"); if (j === k) { var t = el.querySelector(".mu-txt"); if (t) t.scrollTop = 0; } });
     var x = E[k], s = x.s;
@@ -333,15 +363,18 @@
       var w = 0; if (i < s || s >= SALLES.length) w = 100; else if (i === s) { var tot = SALLES[i].e.length + 1, pos = x.k === "s" ? 1 : SALLES[i].e.indexOf(x) + 2; w = Math.round(100 * pos / tot); }
       b.firstChild.style.width = w + "%"; b.classList.toggle("c", i === s);
     });
+    var ep = s >= 0 && s < SALLES.length ? epoque(s) : -1;
+    document.querySelectorAll("#mu-epo button").forEach(function (b, i) { var P = EPOQUES[i], tous = true; for (var z = P.a; z <= P.b; z++) if (!vus[z]) tous = false; b.classList.toggle("c", i === ep); b.classList.toggle("ok", tous); if (i === ep && b.scrollIntoView && b.parentNode.scrollWidth > b.parentNode.clientWidth) b.parentNode.scrollLeft = b.offsetLeft - 14; });
     document.getElementById("mu-salle").innerHTML = x.k === "a" ? "<b>Bienvenue</b> · Musée de l’économie" : s >= SALLES.length ? "<b>Sortie</b> · " + ({ z: "Et demain ?", lv: "En cours d’écriture", pp: "Votre passeport", qz: "Le quiz du musée", av: "Votre avis" })[x.k] : "<b>Salle " + (s + 1) + "/12</b> · " + esc(SALLES[s].t);
     document.getElementById("mu-prec").disabled = k === 0;
-    document.getElementById("mu-suiv").textContent = k === E.length - 1 ? "Terminer ✓" : k === 0 ? "Commencer la visite ›" : "Suivant ›";
-    document.getElementById("mu-passe").style.visibility = (x.k === "a" || s >= SALLES.length) ? "hidden" : "visible";
+    document.getElementById("mu-suiv").textContent = k === E.length - 1 ? "Terminer ✓" : k === 0 ? "Visite guidée ›" : "Suivant ›";
+    document.getElementById("mu-passe").textContent = k === 0 ? "Visite libre" : "Passer la salle »";
+    document.getElementById("mu-passe").style.visibility = (s >= SALLES.length) ? "hidden" : "visible";
     if (x.k === "z") compte("musee-fin");
     if (x.k === "pp") { var tp = document.getElementById("mu-tampons"); if (tp) tp.innerHTML = SALLES.map(function (S, i) { return '<button type="button" class="' + (vus[i] ? "ok" : "") + '" data-sal="' + i + '" aria-label="Salle ' + (i + 1) + ' : ' + esc(S.t) + '">' + (i + 1) + "</button>"; }).join(""); }
     if (x.k === "qz") quiz();
     if (k > 0 && !dejaIndice) { dejaIndice = true; var ind = document.getElementById("mu-indice"); if (ind) ind.style.opacity = 0; }
-    M.classList.toggle("mu-debut", k === 0); M.classList.toggle("mu-fin", k === E.length - 1); M.classList.toggle("mu-inter", !!({ d: 1, pp: 1, qz: 1, av: 1 })[x.k]);
+    M.classList.toggle("mu-debut", k === 0); M.classList.toggle("mu-fin", k === E.length - 1); M.classList.toggle("mu-inter", !!({ a: 1, d: 1, pp: 1, qz: 1, av: 1 })[x.k]);
     if ((k < 4 || k % 5 === 0) && !({ d: 1, pp: 1, qz: 1, av: 1 })[x.k]) indiquer();
     programmer();
     // précharger l'image suivante
