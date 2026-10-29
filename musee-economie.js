@@ -188,7 +188,20 @@
   E.push({ k: "z", s: SALLES.length }, { k: "pp", s: SALLES.length }, { k: "qz", s: SALLES.length }, { k: "av", s: SALLES.length });
   var KPP = E.length - 3, KAV = E.length - 1, AN = 2026;
 
-  var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false;
+  var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false, auto = true, minuteur = null, indic = null;
+  /* Défilement : le temps d'une lecture tranquille (environ 170 mots par minute), plus le temps de regarder l'image */
+  var INTERACTIF = { d: 1, pp: 1, qz: 1, av: 1, z: 1 };
+  function duree(el) { var t = (el && el.querySelector(".mu-txt") || {}).textContent || "", mots = t.split(/\s+/).filter(Boolean).length, im = el && el.querySelector(".mu-cadre") ? 3 : 0; return Math.min(60, Math.max(8, Math.round(mots / 2.8) + im + 2)) * 1000; }
+  function arreter() { clearTimeout(minuteur); minuteur = null; var b = document.getElementById("mu-temps"); if (b) { b.style.transition = "none"; b.style.width = "0"; } }
+  function programmer() {
+    arreter(); if (!auto || !M || M.hidden || document.hidden) return; var x = E[cur]; if (!x || INTERACTIF[x.k] || cur >= E.length - 1) return;
+    var el = SC.querySelector('.mu-etape[data-k="' + cur + '"]'), ms = duree(el), b = document.getElementById("mu-temps");
+    if (b) { void b.offsetWidth; b.style.transition = "width " + ms + "ms linear"; b.style.width = "100%"; }
+    minuteur = setTimeout(function () { aller(cur + 1); }, ms);
+  }
+  function majAuto() { var b = document.getElementById("mu-auto"); if (!b) return; b.setAttribute("aria-pressed", auto ? "true" : "false"); b.setAttribute("aria-label", auto ? "Mettre la visite en pause" : "Reprendre la visite"); b.innerHTML = auto ? '‖<span class="t"> Pause</span>' : '▶<span class="t"> Lecture</span>'; }
+  /* Les bords s'allument quelques secondes à chaque étape au début, puis de temps en temps */
+  function indiquer() { if (!M) return; clearTimeout(indic); M.classList.add("mu-montre"); indic = setTimeout(function () { M.classList.remove("mu-montre"); }, 2600); }
   function esc(t) { return String(t == null ? "" : t).replace(/ ([?!:;»%])/g, "\u00a0$1").replace(/« /g, "«\u00a0").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
@@ -199,7 +212,7 @@
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
   function etapeHtml(x) {
-    if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i) + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p><p style="font-size:15px">Touchez le <b>bord droit</b> pour avancer, le <b>bord gauche</b> pour revenir, ou ouvrez le <b>plan</b> en haut.</p><p style="font-size:14px">Une idée de Pacôme Kipré, dit Peck Peckisblackman.</p></div></div>';
+    if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i).replace('</div>', '<p class="mu-merci">Merci à M. Pacôme Kipré, dit Peck Peckisblackman, d’avoir suggéré l’idée de ce musée.</p></div>') + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p><p style="font-size:15px">La visite <b>avance seule</b>, au rythme d’une lecture tranquille. Vous avez fini de lire&nbsp;? Touchez le <b>bord droit</b> pour passer, le <b>bord gauche</b> pour revenir, ou <b>‖</b> pour faire une pause.</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
       return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p></div></div>';
@@ -219,8 +232,8 @@
     M = document.createElement("div"); M.id = "musee"; M.hidden = true;
     M.setAttribute("role", "dialog"); M.setAttribute("aria-modal", "true"); M.setAttribute("aria-label", "Le musée de l’économie EFA");
     M.innerHTML = '<div class="mu-haut"><div class="mu-prog" id="mu-prog">' + SALLES.map(function () { return "<i><b></b></i>"; }).join("") + '</div>'
-      + '<div class="mu-barre"><span class="mu-salle" id="mu-salle"></span><div class="mu-cmd"><button type="button" id="mu-plan-b" aria-label="Plan du musée">☰<span class="t"> Plan</span></button><button type="button" id="mu-son" aria-pressed="true">♪</button><button type="button" id="mu-x" aria-label="Fermer le musée">✕</button></div></div></div>'
-      + '<div class="mu-scene" id="mu-scene" aria-live="polite"><button type="button" class="mu-bord g" id="mu-g" aria-label="Étape précédente"></button><button type="button" class="mu-bord d" id="mu-d" aria-label="Étape suivante"></button><span class="mu-indice" id="mu-indice">Touchez les bords pour avancer ou revenir</span></div>'
+      + '<div class="mu-barre"><span class="mu-salle" id="mu-salle"></span><div class="mu-cmd"><button type="button" id="mu-plan-b" aria-label="Plan du musée">☰<span class="t"> Plan</span></button><button type="button" id="mu-auto" aria-pressed="true" aria-label="Mettre la visite en pause">‖<span class="t"> Pause</span></button><button type="button" id="mu-son" aria-pressed="true">♪</button><button type="button" id="mu-x" aria-label="Fermer le musée">✕</button></div></div></div>'
+      + '<div class="mu-scene" id="mu-scene" aria-live="polite"><button type="button" class="mu-bord g" id="mu-g" aria-label="Étape précédente"></button><button type="button" class="mu-bord d" id="mu-d" aria-label="Étape suivante"></button><span class="mu-indice" id="mu-indice">Touchez les bords pour avancer ou revenir</span><div class="mu-temps" aria-hidden="true"><i id="mu-temps"></i></div></div>'
       + '<div class="mu-bas"><button type="button" class="mu-prec" id="mu-prec" aria-label="Revenir">‹</button><button type="button" class="mu-passe" id="mu-passe">Passer la salle »</button><button type="button" class="mu-suiv" id="mu-suiv">Suivant ›</button></div>'
       + '<div class="mu-plan" id="mu-plan" hidden><div class="mu-plan-t"><h2 style="font-size:24px">Le plan du musée</h2><button type="button" class="mu-prec" id="mu-plan-x" aria-label="Fermer le plan" style="min-height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.12);color:#fff;font:800 14px Source Sans\\ 3,sans-serif;padding:0 14px">✕</button></div><ol id="mu-plan-l"></ol></div>';
     document.body.appendChild(M);
@@ -229,7 +242,7 @@
     SC.insertAdjacentHTML("beforeend", h);
     avis();
     // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
-    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (!im.getAttribute("src")) return; if (im.naturalWidth) { var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
+    SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (!im.getAttribute("src")) return; if (im.naturalWidth) { im.parentNode.classList.add("pret"); var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; if (im.complete) f(); else im.addEventListener("load", f); });
     // le plan
     document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.per) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
     // commandes
@@ -238,8 +251,12 @@
     $("mu-prec").onclick = function () { aller(cur - 1); }; $("mu-suiv").onclick = function () { if (cur === E.length - 1) fermer(); else aller(cur + 1); };
     $("mu-passe").onclick = function () { var s = E[cur].s; for (var k = cur + 1; k < E.length; k++) if (E[k].k === "s" || E[k].k === "z") { aller(k); return; } };
     $("mu-x").onclick = function () { fermer(); };
-    $("mu-plan-b").onclick = function () { majPlan(); $("mu-plan").hidden = false; $("mu-plan-x").focus(); };
-    $("mu-plan-x").onclick = function () { $("mu-plan").hidden = true; };
+    $("mu-auto").onclick = function () { auto = !auto; majAuto(); if (auto) programmer(); else arreter(); compte("musee-auto-" + (auto ? "on" : "off")); };
+    document.addEventListener("visibilitychange", function () { if (M && !M.hidden) { if (document.hidden) arreter(); else programmer(); } });
+    // un formulaire ou un lien touché : la visite attend
+    SC.addEventListener("focusin", function (e) { if (e.target.closest("textarea,input,select")) arreter(); });
+    $("mu-plan-b").onclick = function () { arreter(); majPlan(); $("mu-plan").hidden = false; $("mu-plan-x").focus(); };
+    $("mu-plan-x").onclick = function () { $("mu-plan").hidden = true; programmer(); };
     $("mu-plan-l").onclick = function (e) { var b = e.target.closest("button.go"); if (!b) return; $("mu-plan").hidden = true; var s = +b.dataset.s; for (var k = 0; k < E.length; k++) if (E[k].k === "s" && E[k].s === s) { aller(k); return; } };
     try { son = localStorage.getItem("efa_musee_son") !== "0"; } catch (e) {}
     majSon();
@@ -313,8 +330,11 @@
     if (x.k === "pp") { var tp = document.getElementById("mu-tampons"); if (tp) tp.innerHTML = SALLES.map(function (S, i) { return '<button type="button" class="' + (vus[i] ? "ok" : "") + '" data-sal="' + i + '" aria-label="Salle ' + (i + 1) + ' : ' + esc(S.t) + '">' + (i + 1) + "</button>"; }).join(""); }
     if (x.k === "qz") quiz();
     if (k > 0 && !dejaIndice) { dejaIndice = true; var ind = document.getElementById("mu-indice"); if (ind) ind.style.opacity = 0; }
+    M.classList.toggle("mu-debut", k === 0); M.classList.toggle("mu-fin", k === E.length - 1);
+    if (k < 4 || k % 5 === 0) indiquer();
+    programmer();
     // précharger l'image suivante
-    [k, k + 1, k + 2, k - 1].forEach(function (j) { var el = SC.querySelector('.mu-etape[data-k="' + j + '"]'); if (el) el.querySelectorAll("img[data-src]").forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); });
+    [k, k + 1, k + 2, k + 3, k - 1].forEach(function (j) { var el = SC.querySelector('.mu-etape[data-k="' + j + '"]'); if (el) el.querySelectorAll("img[data-src]").forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); });
     var nx = null; if (nx && (nx.i || (nx.k === "s" && SALLES[nx.s] && SALLES[nx.s].i))) { var im = new Image(); im.src = img(nx.i || SALLES[nx.s].i); }
   }
   function ouvrir(depuis, k0) {
@@ -327,7 +347,7 @@
     compte("balade-musee-ouvert-" + (depuis || "lien"));
   }
   function fermer(retour) {
-    if (!M) return; M.hidden = true; document.documentElement.classList.remove("musee-ouvert"); if (au) au.pause();
+    if (!M) return; arreter(); M.hidden = true; document.documentElement.classList.remove("musee-ouvert"); if (au) au.pause();
     if (!retour && location.hash === "#musee") history.replaceState(null, "", location.pathname + location.search);
     if (avant && avant.focus) try { avant.focus({ preventScroll: true }); } catch (e) {}
   }

@@ -181,3 +181,25 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
 .mu-etape.dz .mu-txt{max-width:40em}
 
 .mu-cadre img:not([src]){visibility:hidden}
+
+/* Chargement : le cadre reste sombre jusqu'à l'image, puis elle apparaît en fondu */
+.mu-cadre{background:#111B2F;transition:background .3s}.mu-cadre.pret{background:#F5EFE2}
+.mu-cadre img{opacity:0;transition:opacity .35s}.mu-cadre.pret img{opacity:1}
+.mu-cadre img{background:transparent}
+/* Merci, sur la première image */
+.mu-merci{position:absolute;left:6px;right:6px;bottom:6px;margin:0;padding:22px 14px 9px;border-radius:0 0 9px 9px;background:linear-gradient(to top,rgba(7,12,22,.88),rgba(7,12,22,0));color:#fff;font-size:13.5px;line-height:1.35;font-weight:600;text-align:center}
+/* Les bords : zones grisées et flèches qui clignotent pour montrer où toucher */
+.mu-bord{transition:background .4s}
+#musee.mu-montre .mu-bord.d{background:linear-gradient(to left,rgba(255,255,255,.16),rgba(255,255,255,0))}
+#musee.mu-montre .mu-bord.g{background:linear-gradient(to right,rgba(255,255,255,.16),rgba(255,255,255,0))}
+#musee.mu-montre .mu-bord::after{opacity:1;animation:mu-clin 1.1s ease-in-out 2}
+#musee.mu-debut .mu-bord.g,#musee.mu-fin .mu-bord.d{visibility:hidden}
+.mu-bord::before{position:absolute;top:calc(50% + 30px);font:700 11.5px/1.2 "Source Sans 3",system-ui,sans-serif;color:#fff;opacity:0;transition:opacity .3s;letter-spacing:.04em;white-space:nowrap}
+.mu-bord.d::before{content:"Suivant";right:8px}.mu-bord.g::before{content:"Retour";left:8px}
+#musee.mu-montre .mu-bord::before{opacity:.9}
+@keyframes mu-clin{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.45}}
+@media (prefers-reduced-motion:reduce){#musee.mu-montre .mu-bord::after{animation:none}}
+/* Défilement automatique : un fil fin en bas de la scène */
+.mu-temps{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08);z-index:3;pointer-events:none}
+.mu-temps i{display:block;height:100%;width:0;background:#F09680}
+#mu-auto[aria-pressed="false"]{background:#DA3C1B;color:#fff}
