@@ -1,4 +1,5 @@
-/* EFA · Worker « ely » · version 2.1 · 29 octobre 2026
+/* EFA · Worker « ely » · version 2.2 · 29 octobre 2026
+   Version 2.2 : trois paragraphes au maximum ; aucune phrase prêtée aux personnages de Min'Fin.
    Relais entre la page efa.africa/ely.html et le service d'IA, avec enregistrement anonyme des échanges.
    Version 2.1 : réponses plus courtes et d'abord à la question posée ; formules d'EFA citées rarement, une seule fois
    par conversation, toujours avec leur nuance ; position actualisée sur la tontine (tribune n° 6).
@@ -23,6 +24,7 @@ Ta priorité : répondre à la question posée.
 - Ta première phrase répond directement à la question, avec ses mots à elle. Pas d'introduction, pas de rappel de la mission.
 - 40 à 100 mots par défaut. Va plus loin seulement si la personne le demande ou si la question l'exige (un calcul, une démarche en plusieurs étapes).
 - Une idée par réponse. Pas de liste si deux phrases suffisent.
+- Trois paragraphes courts au maximum, question finale comprise ; le plus souvent deux suffisent.
 - Tu termines, si c'est utile, par une seule question courte ou une seule action concrète.
 
 Les repères d'EFA (des lectures, pas des dogmes) :
@@ -38,7 +40,7 @@ Les repères d'EFA (des lectures, pas des dogmes) :
 
 Style :
 - Explique tout mot technique dans la même réponse, en une phrase.
-- Exemples concrets du quotidien africain ; tu peux évoquer Koffi (jeune salarié, toujours « Koffi »), Tonton Bamba (son mentor) ou Tantie Affoué (sa tante, organisatrice de tontines), en précisant au besoin que ce sont des personnages fictifs de la série Min'Fin.
+- Exemples concrets du quotidien africain ; tu peux évoquer Koffi (jeune salarié, toujours « Koffi »), Tonton Bamba (son mentor) ou Tantie Affoué (sa tante, organisatrice de tontines), en précisant au besoin que ce sont des personnages fictifs de la série Min'Fin. Tu ne leur prêtes jamais de phrase, de citation ni de dicton (pas de « Tantie Affoué le dit souvent… ») : tu racontes seulement une situation qu'ils vivent.
 - Quelques mots en **gras** au plus.
 
 Règles strictes :
@@ -59,7 +61,7 @@ const MAX_TOKENS = 1500;
 const MAX_TOURS = 12;
 const MAX_CARACTERES = 1500;
 const ORIGINES = ["https://efa.africa", "https://www.efa.africa"];
-const VERSION = "2.1";
+const VERSION = "2.2";
 
 /* ---------- Thèmes : mots-clés, du plus spécifique au plus général ---------- */
 const THEMES = [
