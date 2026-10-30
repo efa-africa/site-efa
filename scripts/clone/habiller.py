@@ -20,7 +20,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261030p'
+VERSION = '20261030q'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
@@ -104,9 +104,9 @@ def entete(page):
     onglets = ''.join('<a href="index.html#%s"%s>%s</a>' % (i, ' aria-current="page"' if i == actif else '', t)
                       for i, t in RUBRIQUES)
     return ('<header class="header clone-head" id="clone-haut"><div class="container head-inner">'
-            '<a class="brand" href="index.html" aria-label="EFA, accueil">'
-            '<img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span>'
-            '<small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a>'
+            '<a class="efa-brand" href="/" aria-label="EFA — Accueil">'
+            '<img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt="">'
+            '<span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a>'
             '<nav class="desktop-nav" aria-label="Navigation principale">%s</nav>'
             '<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" '
             'aria-label="Ouvrir le menu"><span></span><span></span></button></div>'
@@ -157,7 +157,8 @@ def regles_coquille():
     return '\n'.join(out)
 
 base_css = open('scripts/clone/habillage-base.css', encoding='utf8').read()
-open(os.path.join(CLONE, 'habillage.css'), 'w', encoding='utf8').write(base_css.replace('/*SHELL*/', regles_coquille()))
+signature = open(os.path.join(CLONE, 'efa-logo.css'), encoding='utf8').read().replace('url(', 'url(')
+open(os.path.join(CLONE, 'habillage.css'), 'w', encoding='utf8').write(base_css.replace('/*SHELL*/', regles_coquille()) + '\n/* Signature efa. (clone/efa-logo.css) */\n' + signature)
 import json
 base_js = open('scripts/clone/habillage-base.js', encoding='utf8').read()
 js = base_js.replace('/*PAGES*/[]', '[]')
@@ -180,8 +181,16 @@ def deshabiller(s):
     return s
 
 # ---------------------------------------------------------------- habiller une page sur place
+ICONE = '<link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png">'
+def icone(s):
+    """Une seule icône d'onglet : l'oiseau de la signature (les autres déclarations sont retirées)."""
+    s = re.sub(r'<link rel="(?:shortcut )?icon"[^>]*>\n?', '', s)
+    s2 = re.sub(r'(<meta charset="?utf-8"?\s*/?>)', lambda m: m.group(1) + ICONE, s, count=1, flags=re.I)
+    return s2 if ICONE in s2 else s2.replace('</head>', ICONE + '\n</head>', 1)
+
 def habiller(s, page):
     s = deshabiller(s)
+    s = icone(s)
     if '</head>' not in s:
         m = re.search(r'</style>\s*(?=<(header|div|main|section|nav)\b)', s)
         if m:
