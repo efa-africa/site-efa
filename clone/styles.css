@@ -409,6 +409,44 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 /* Pied de page blanc */
 footer.efa-foot{background:#fff;border-top:1px solid #e6eef2}
 .efa-foot .ef-bot{border-top-color:#e6eef2}
+/* ===== Agir (proposition « Choisir avec méthode ») ===== */
+.agir-ef{background:linear-gradient(#edf4f6 0,#fff 420px);padding:90px 0 100px;scroll-margin-top:60px}
+.aef-head{display:flex;gap:60px;justify-content:space-between;align-items:end;margin-bottom:44px}
+.aef-head>div{max-width:810px}
+.aef-head h2{font:700 clamp(44px,6vw,80px)/1.03 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.04em;margin:15px 0 0;color:var(--navy)}
+.aef-head h2 em{font-style:normal;color:#178da7}
+.aef-head p{font-size:20px;line-height:1.5;color:var(--muted);max-width:420px;margin:0 0 8px}
+.aef-feature,.aef-card{scroll-margin-top:90px}
+.aef-feature summary,.aef-card summary{list-style:none;cursor:pointer}
+.aef-feature summary::-webkit-details-marker,.aef-card summary::-webkit-details-marker{display:none}
+.aef-feature{border-radius:30px;overflow:hidden;background:var(--navy);color:#fff}
+.aef-feature summary{display:grid;grid-template-columns:56% 44%;min-height:510px}
+.aef-feature img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.aef-copy{padding:clamp(28px,4vw,62px);display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.aef-feature .eyebrow{color:#91dbe5}
+.aef-feature h3{font:700 clamp(38px,4vw,58px)/1.07 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.04em;margin:18px 0}
+.aef-feature h3 em{color:#7ed5df;font-style:normal}
+.aef-feature p{font-size:18px;line-height:1.55;color:#d8e8ef;max-width:440px;margin:0 0 25px}
+.aef-cta{display:inline-flex;align-items:center;gap:18px;font-weight:800;font-size:15px;margin-top:auto;padding-bottom:6px}
+.aef-cta b{font-size:22px;color:var(--coral);line-height:1}
+.aef-feature[open]{background:#0b2240}
+.aef-feature .porte-corps{background:#fff;color:var(--ink);padding:28px clamp(18px,3vw,40px) 34px}
+.aef-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;align-items:start}
+.aef-card{display:flex;flex-direction:column;border:1px solid #dce8eb;border-radius:28px;overflow:hidden;background:#fff;min-width:0}
+.aef-card summary{display:flex;flex-direction:column}
+.aef-card img{aspect-ratio:1.9;object-fit:cover;width:100%;display:block}
+.aef-card .aef-copy{padding:31px}
+.aef-card h3{font:700 clamp(30px,3vw,44px)/1.12 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.04em;margin:15px 0;color:var(--navy)}
+.aef-card h3 em{color:#178da7;font-style:normal}
+.aef-card p{font-size:17px;line-height:1.5;color:var(--muted);margin:0 0 25px}
+.aef-card .aef-cta{color:var(--navy)}
+.aef-card[open]{grid-column:1/-1}
+.aef-suite{margin-top:22px}
+.aef-suite .produit{background:#f6f4ef;margin:0}
+.aef-note{margin:28px 0 0;color:var(--muted);font-size:14px;line-height:1.5;max-width:980px}
+@media(max-width:850px){.aef-head{display:block}.aef-head p{max-width:700px;margin-top:24px}.aef-feature summary{display:block;min-height:0}.aef-feature img{aspect-ratio:1.65;height:auto}.aef-card img{aspect-ratio:1.65}.aef-card .aef-copy{padding:24px}.aef-card h3{font-size:clamp(26px,4vw,34px)}.aef-card p{font-size:15px}}
+@media(max-width:560px){.agir-ef{padding:56px 0 70px}.aef-head{margin-bottom:28px}.aef-head h2{font-size:clamp(40px,11vw,58px)}.aef-head p{font-size:17px}.aef-cards{grid-template-columns:1fr;gap:18px;margin-top:18px}.aef-feature,.aef-card{border-radius:23px}.aef-feature img,.aef-card img{aspect-ratio:1.5}.aef-feature h3{font-size:clamp(32px,9vw,44px)}.aef-feature p{font-size:16px}.aef-note{font-size:12px}}
+.aef-card img{height:auto;flex:none}.aef-feature summary>img{flex:none}
 
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;
