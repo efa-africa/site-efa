@@ -240,6 +240,29 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 .resultat{background:#fff;border-radius:16px;padding:16px 18px;margin:0 0 22px;color:var(--muted);font-size:15px;line-height:1.55}
 .pilier-alt .resultat{background:#f8f7f4}
 .resultat strong{display:block;color:var(--navy);font-size:16px;margin-bottom:4px}
+/* ===== Bandeau défilant et fil EFA News · BRVM ===== */
+.defil{overflow:hidden;min-height:76px;display:flex;align-items:center}
+.defil-run{display:flex;gap:56px;width:max-content;white-space:nowrap;font-size:11px;letter-spacing:.17em;font-weight:800;color:#526b7e;padding-left:56px}
+.defil-droite{animation:defil-d 40s linear infinite}
+.defil:hover .defil-run{animation-play-state:paused}
+@keyframes defil-d{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.fil{display:flex;align-items:center;background:#0E1A30;color:#E8EDF5;min-height:52px;overflow:hidden}
+.fil-tete{flex:0 0 auto;align-self:stretch;display:flex;align-items:center;padding:0 16px 0 max(16px,env(safe-area-inset-left,0px));background:#0B1220;font-size:11px;font-weight:800;letter-spacing:.2em;color:#F09680}
+.fil-vue{flex:1;min-width:0;overflow:hidden}
+.fil-run{display:flex;width:max-content;animation:fil-g var(--dur,60s) linear infinite}
+.fil:hover .fil-run,.fil.pause .fil-run,.fil:focus-within .fil-run{animation-play-state:paused}
+@keyframes fil-g{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.fil-it{display:inline-flex;align-items:center;gap:10px;padding:0 28px;white-space:nowrap;font-size:14px;color:#E8EDF5;border-right:1px solid #1F2C45;min-height:52px}
+.fil-it:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.fil-it b{font-weight:800}
+.fil-it em{font-style:normal;font-weight:700}
+.fil-it em.up{color:#3CCB7F}.fil-it em.down{color:#F09680}.fil-it em.flat{color:#C9D1DE}
+.fil-cat{font-size:10px;font-weight:800;letter-spacing:.12em;padding:3px 8px;border-radius:999px}
+.fil-cat.b{background:#2188D6;color:#fff}.fil-cat.n{background:#EC6243;color:#fff}
+.fil-pause{flex:0 0 auto;align-self:stretch;border:0;background:#0B1220;color:#C9D1DE;width:52px;font-size:13px;margin-right:env(safe-area-inset-right,0px)}
+.fil-pause:focus-visible{outline:3px solid #6DB8F2;outline-offset:-3px}
+@media(prefers-reduced-motion:reduce){.defil-droite,.fil-run{animation:none}.fil-vue{overflow-x:auto}.defil{overflow-x:auto}}
+@media(max-width:720px){.fil-it{font-size:13px;padding:0 20px}.fil-tete{padding-right:12px}}
 
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;

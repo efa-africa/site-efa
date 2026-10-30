@@ -44,3 +44,25 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
   addEventListener('hashchange',()=>suivre(location.hash.slice(1),true));
   suivre(location.hash.slice(1),false);
 })();
+/* Bandeau des principes (gauche → droite) et fil EFA News · BRVM */
+(function(){
+  var run=document.getElementById('fil-run');if(!run)return;
+  var f=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});};
+  var v=function(x){return '<em class="'+(x>0?'up':x<0?'down':'flat')+'">'+(x>0?'▲ +':x<0?'▼ −':'■ ')+f(Math.abs(x),2)+' %</em>';};
+  var it=[],B=(window.EFA_DATA||{}).brvm,N=window.EFA_NEWS||[];
+  var news=N.map(function(n){return {c:'EFA NEWS',t:n.t,h:n.h};});
+  var brvm=[];
+  if(B&&B.indices&&B.indices.length){
+    B.indices.slice(0,3).forEach(function(i){brvm.push({c:'BRVM',t:i[0]+' <b>'+f(i[2],2)+'</b> '+v(i[3])+' · séance du '+B.seance,h:'../methode.html#brvm'});});
+    var a=(B.actions||[]).slice().sort(function(x,y){return y[4]-x[4];});
+    if(a.length){brvm.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4]),h:'../methode.html#brvm'});
+      brvm.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4]),h:'../methode.html#brvm'});}
+  }
+  var n=Math.max(news.length,brvm.length);
+  for(var k=0;k<n;k++){if(brvm[k])it.push(brvm[k]);if(news[k])it.push(news[k]);}
+  if(!it.length){document.getElementById('fil').hidden=true;return;}
+  var h=it.map(function(x){return '<a class="fil-it" href="'+x.h+'"><span class="fil-cat '+(x.c==='BRVM'?'b':'n')+'">'+x.c+'</span>'+x.t+'</a>';}).join('');
+  run.innerHTML=h+h;run.style.setProperty('--dur',(it.length*6)+'s');
+  var root=document.getElementById('fil'),pb=root.querySelector('.fil-pause');
+  pb.addEventListener('click',function(){var p=root.classList.toggle('pause');pb.setAttribute('aria-pressed',String(p));pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre le défilement':'Mettre en pause le défilement');});
+})();
