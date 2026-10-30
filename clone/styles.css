@@ -386,6 +386,29 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 .mef-cta span{color:var(--coral);font-size:22px;line-height:15px}
 @media(max-width:900px){.mef-intro{display:block}.mef-intro p{margin-top:24px}.mef-grid{grid-template-columns:1fr}.mef-stack{grid-template-columns:1fr 1fr}.mef-side{display:block}.mef-side img{height:auto;aspect-ratio:1.45}.mef-side .mef-copy{min-height:290px}}
 @media(max-width:560px){.media-ef{padding:62px 0 78px}.mef-intro{margin-bottom:28px}.mef-intro h2{font-size:clamp(41px,11vw,55px)}.mef-intro p{font-size:18px}.mef-grid,.mef-stack{grid-template-columns:1fr;gap:19px}.mef-card{border-radius:24px}.mef-main img,.mef-side img{aspect-ratio:1.5;height:auto}.mef-copy,.mef-main .mef-copy,.mef-side .mef-copy{padding:23px 23px 27px;min-height:0}.mef-card h3,.mef-main h3{font-size:clamp(31px,8vw,40px)}.mef-card p,.mef-main p{font-size:16px;margin-bottom:23px}}
+/* ===== Média : bandeau EFA News avec actualités qui défilent ===== */
+.mef-news{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);background:#fff;border:1px solid #dce8ed;border-radius:30px;overflow:hidden;box-shadow:0 15px 45px rgba(7,29,56,.06);margin-bottom:22px}
+.mef-news-img{display:block;position:relative;min-height:300px}
+.mef-news-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.mef-news-copy{padding:28px 32px 26px;display:flex;flex-direction:column;min-width:0}
+.mef-news-tete h3{font:700 clamp(26px,2.6vw,38px)/1.1 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.03em;margin:10px 0 14px;color:var(--navy)}
+.mef-news-tete h3 em{font-style:normal;color:#148aa5}
+.mef-news-vue{height:204px;overflow:hidden;position:relative;margin-bottom:16px;border-top:1px solid #e6eef2}
+.mef-news-liste{list-style:none;margin:0;padding:0;transition:transform .7s ease}
+.mef-news-liste li{height:51px;border-bottom:1px solid #e6eef2}
+.mef-news-liste a{display:flex;align-items:center;gap:14px;height:100%;color:var(--navy);min-width:0}
+.mef-news-liste a:hover span{text-decoration:underline;text-underline-offset:3px}
+.mef-news-liste time{flex:0 0 58px;font-size:12px;font-weight:800;letter-spacing:.04em;color:#148aa5;text-transform:uppercase}
+.mef-news-liste span{flex:1;min-width:0;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mef-news-liste b{color:var(--coral)}
+.mef-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.mef-duo .mef-side{display:block}
+.mef-duo .mef-side img{height:auto;aspect-ratio:1.6}
+@media(max-width:900px){.mef-news{grid-template-columns:1fr}.mef-news-img{min-height:0;aspect-ratio:2.6}.mef-duo .mef-side .mef-copy{min-height:0}}
+@media(max-width:560px){.mef-duo{grid-template-columns:1fr}.mef-news-copy{padding:22px 20px}.mef-news-liste span{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:14px}.mef-news-vue{height:240px}.mef-news-liste li{height:60px}}
+/* Pied de page blanc */
+footer.efa-foot{background:#fff;border-top:1px solid #e6eef2}
+.efa-foot .ef-bot{border-top-color:#e6eef2}
 
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;

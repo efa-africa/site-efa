@@ -67,3 +67,15 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
   var root=document.getElementById('fil'),pb=root.querySelector('.fil-pause');
   pb.addEventListener('click',function(){var p=root.classList.toggle('pause');pb.setAttribute('aria-pressed',String(p));pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre le défilement':'Mettre en pause le défilement');});
 })();
+/* Actualités EFA News : une ligne monte toutes les 3,5 s, pause au survol */
+(function(){
+  var vue=document.getElementById('mef-news');if(!vue)return;
+  var ul=vue.querySelector('ul'),items=[].slice.call(ul.children);if(items.length<5)return;
+  items.forEach(function(li){ul.appendChild(li.cloneNode(true));});
+  [].slice.call(ul.children).slice(items.length).forEach(function(li){li.setAttribute('aria-hidden','true');li.querySelector('a').tabIndex=-1;});
+  var i=0,pause=false,red=matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){vue.style.overflowY='auto';return;}
+  vue.addEventListener('mouseenter',function(){pause=true;});vue.addEventListener('mouseleave',function(){pause=false;});
+  vue.addEventListener('focusin',function(){pause=true;});vue.addEventListener('focusout',function(){pause=false;});
+  setInterval(function(){if(pause||document.hidden)return;i++;var h=ul.children[0].offsetHeight;ul.style.transition='transform .7s ease';ul.style.transform='translateY(-'+(i*h)+'px)';
+    if(i===items.length){setTimeout(function(){ul.style.transition='none';i=0;ul.style.transform='translateY(0)';},750);}},3500);
+})();
