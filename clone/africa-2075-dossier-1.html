@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Africa 2075 · Dossier n° 1 : l’IA va multiplier les cerveaux, combien seront africains ? · EFA</title>
+<meta name="description" content="Africa 2075, dossier n° 1 : l’IA et l’Afrique. Brevets, puissance de calcul, scénario noir pour 2075 et sept leviers pour que l’intelligence artificielle multiplie aussi les cerveaux africains.">
+<link rel="canonical" href="https://efa.africa/africa-2075-dossier-1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Africa 2075 · Dossier n° 1 : l’IA et l’Afrique">
+<meta property="og:description" content="L’IA va multiplier les cerveaux. Combien seront africains ? Un dossier de prospective par Élysée Johnson.">
+<meta property="og:url" content="https://efa.africa/africa-2075-dossier-1">
+<meta property="og:image" content="https://efa.africa/etudes/africa-2075-dossier-1-entete.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Article","@id":"https://efa.africa/africa-2075-dossier-1#article","headline":"L’IA va multiplier les cerveaux. Combien seront africains ?","alternativeHeadline":"Africa 2075 · Dossier n° 1 : l’IA et l’Afrique","isPartOf":{"@type":"Periodical","name":"Africa 2075 · Frontières de croissance","publisher":{"@id":"https://efa.africa/#organisation"}},"inLanguage":"fr","datePublished":"2026-10-24","author":{"@type":"Person","name":"Élysée Johnson","url":"https://efa.africa/auteur"},"publisher":{"@id":"https://efa.africa/#organisation"},"image":"https://efa.africa/etudes/africa-2075-dossier-1-entete.jpg","mainEntityOfPage":"https://efa.africa/africa-2075-dossier-1","about":[{"@type":"Thing","name":"Intelligence artificielle en Afrique"},{"@type":"Thing","name":"Prospective"},{"@type":"Thing","name":"Brevets et innovation"}]},
+ {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://efa.africa/"},{"@type":"ListItem","position":2,"name":"Prospective · Africa 2075","item":"https://efa.africa/methode#africa-2075"},{"@type":"ListItem","position":3,"name":"Africa 2075 · Dossier n° 1","item":"https://efa.africa/africa-2075-dossier-1"}]}
+]}
+</script>
+<style>
+/* Dossier de prospective : grande image d'en-tête bleu nuit, puis colonne de lecture sur crème ; cartes papier, aplats corail et nuit. */
+:root{
+  --display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --sombre:#070C16; --creme:#F5EFE2; --papier:#FFFDF8; --line:#E2D8C4; --sable:#EBE2D0;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --corail:#DA3C1B; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nuit)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
+a{color:var(--bleu);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+
+/* Barre du site */
+.stick{position:sticky;top:0;z-index:30}
+.stick .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));background:#0B1220;color:#fff}
+.stick .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:12px;letter-spacing:.18em}
+.stick .brand img{width:36px;height:36px}
+.stick .nav{display:flex;gap:6px;align-items:center}
+.stick .nav a{color:#E8EDF5;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px}
+.stick .nav a[aria-current="page"]{background:#1C2842}
+.stick .nav a.nav-cta{background:#DA3C1B;color:#fff}
+.stick .menu-btn{display:none;background:transparent;color:#fff;border:1px solid #2A3446;border-radius:999px;padding:8px 14px;font:700 14px var(--body);cursor:pointer}
+.actbar{background:#DA3C1B;color:#fff}
+.actbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding-block:8px}
+.actbar p{margin:0;font-weight:700;font-size:14px;flex:1 1 220px;min-width:0}
+.actbar a{font:800 14px var(--body);text-decoration:none;border-radius:999px;padding:8px 14px;white-space:nowrap}
+.actbar .a1{background:#0B1220;color:#fff} .actbar .a2{background:#fff;color:#0B1220}
+.mission{background:var(--nuit);color:var(--creme)} .mission p{margin:0;padding-block:14px;text-align:center;font-size:16px}
+.mission .mc{color:#F0603F;font-weight:700} .mission .ms{color:#6DB8F2;font-weight:700}
+@media (max-width:860px){
+ .stick .menu-btn{display:inline-block;position:relative;z-index:41}
+ .stick .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:40;background:#0B1220;flex-direction:column;justify-content:center;gap:10px;display:none}
+ .stick .nav.open{display:flex}
+ .stick .nav a{font-size:20px}
+ .actbar p{display:none}
+ .actbar .wrap{flex-wrap:wrap;gap:8px}.actbar a,.actbar button{flex:1 1 auto;min-width:0;text-align:center;white-space:normal}
+ .actbar a{font-size:13px;padding:8px 12px}
+}
+
+/* En-tête de la revue */
+.une{background:var(--sombre);color:#E8EDF5}
+.une .wrap{padding-block:28px 40px;display:flex;flex-direction:column;gap:22px}
+.une img{display:block;width:100%;height:auto;border-radius:10px}
+.une .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:#C9D1DE}
+.une .meta b{color:#fff}
+.une h1{font-size:clamp(34px,5.2vw,58px);color:#fff;max-width:20ch}
+.une .chapeau{margin:0;font-size:clamp(17px,2vw,20px);color:#C9D1DE;max-width:62ch}
+.une .surtitre{color:var(--soft-corail)}
+
+main{padding-block:36px 56px}
+main .col{display:flex;flex-direction:column;gap:30px}
+
+/* Éditorial */
+.edito{background:var(--nuit);color:#E8EDF5;border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:12px}
+.edito .surtitre{color:var(--soft-corail)}
+.edito h2{font-size:clamp(24px,3.2vw,30px);color:#fff}
+.edito p{margin:0;color:#C9D1DE}
+.edito .sig{font-family:var(--display);font-style:italic;color:#fff}
+
+.ancre{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:center;background:var(--nuit);color:#E8EDF5;border-radius:28px;padding:22px;text-decoration:none}
+.ancre:hover .ancre-l{text-decoration:underline}
+.ancre-ic{width:96px;height:96px}
+.ancre-t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ancre-s{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#F09680}
+.ancre b{font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.25;color:#fff}
+.ancre-p{color:#C9D1DE;font-size:16px}
+.ancre-l{font-weight:800;color:#6DB8F2}
+.chantier{align-self:flex-start;background:var(--sable);color:var(--ink2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
+@media (max-width:480px){.ancre{grid-template-columns:minmax(0,1fr)}.ancre-ic{width:72px;height:72px}}
+.porte{background:var(--nuit);color:#E8EDF5;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.porte::before{content:"";position:absolute;left:0;right:0;top:-90px;height:90px;background:linear-gradient(rgba(245,239,226,0),var(--creme));pointer-events:none}
+.porte .surtitre{color:var(--soft-corail)}
+.porte h2{font-size:clamp(23px,3.2vw,29px);color:#fff}
+.porte p{margin:0;color:#C9D1DE}
+.a2075-form{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.a2075-ligne{display:flex;flex-wrap:wrap;gap:10px}
+.a2075-ligne input[type=email]{flex:1 1 220px;min-width:0;font:400 17px var(--body);padding:12px 14px;border-radius:8px;border:0;background:#fff;color:#0B1220;min-height:46px}
+.a2075-ligne button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:var(--corail);color:#fff;cursor:pointer}
+.a2075-ligne button:disabled{opacity:.6}
+.a2075-ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#C9D1DE}
+.a2075-ok a{color:#6DB8F2}
+.a2075-msg{font-size:14px;color:#F09680;min-height:1em}
+.a2075-hp{position:absolute;left:-9999px}
+.merci{background:var(--sable);border-radius:10px;padding:14px 16px;font-size:15px;color:var(--ink2)}
+.une-phrase{background:var(--corail);color:#fff;border-radius:2px;padding:20px 22px}
+.une-phrase .surtitre{color:#fff;opacity:.9}
+.une-phrase p{margin:6px 0 0;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.38}
+
+.sommaire{background:var(--papier);border-radius:14px;padding:22px}
+.sommaire ol{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.sommaire li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline}
+.sommaire .n{font-family:var(--display);font-weight:700;color:var(--corail)}
+.sommaire a{color:var(--ink);font-weight:600;text-decoration:none}
+.sommaire a:hover{text-decoration:underline}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+
+.tendance{background:var(--papier);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;scroll-margin-top:96px}
+.tendance .rang{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink3)}
+.tendance h2{font-size:clamp(25px,3.6vw,32px)}
+.bloc h3{font-family:var(--body);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 4px}
+.bloc p{margin:0}
+.bloc.sec p{color:var(--ink2)}
+.diff{background:var(--sable);border-radius:10px;padding:14px 16px}
+.retenir{background:var(--nuit);color:#fff;border-radius:2px;padding:16px 18px}
+.retenir span{display:block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail);margin-bottom:4px}
+.retenir p{margin:0;font-family:var(--display);font-size:18px;line-height:1.38}
+
+.section{display:flex;flex-direction:column;gap:14px}
+.section h2{font-size:clamp(26px,3.8vw,34px)}
+.agenda{background:var(--papier);border-radius:14px;padding:6px 22px}
+.agenda .ligne{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:12px;padding-block:14px;border-bottom:1px solid var(--line)}
+.agenda .ligne:last-child{border-bottom:0}
+.agenda dt{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;font-variant-numeric:tabular-nums}
+.agenda dd{margin:0;min-width:0}
+.agenda dd small{display:block;color:var(--ink3);font-size:14px}
+.agenda dl{margin:0}
+.sources ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--ink2)}
+.methode{font-size:15px;color:var(--ink2);margin:0}
+
+.cta{background:var(--nuit);color:#fff;border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.cta h2{font-size:clamp(22px,3vw,28px);color:#fff}
+.cta p{margin:0;color:#C9D1DE}
+.cta .btns{display:flex;flex-wrap:wrap;gap:10px}
+.cta .btns a{font:800 16px var(--body);text-decoration:none;border-radius:8px;padding:12px 20px;min-height:46px;display:inline-flex;align-items:center}
+.cta .p{background:var(--corail);color:#fff} .cta .s{background:var(--creme);color:var(--nuit)}
+
+footer.site{background:#0B1220;color:#C9D1DE;font-size:14px;padding-block:22px}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer.site a{color:#E8EDF5;text-decoration:none}
+@media (max-width:480px){.agenda .ligne{grid-template-columns:1fr;gap:2px}.tendance{padding:22px 18px}}
+/* Dossier : texte long, chiffres, graphique, scénario, mécanismes, leviers */
+.texte{display:flex;flex-direction:column;gap:14px;scroll-margin-top:96px}
+.texte h2{font-size:clamp(26px,3.8vw,34px)}
+.texte > h3{font-size:clamp(20px,2.4vw,23px);line-height:1.2;margin-top:6px}
+.texte p{margin:0}
+.texte .discret{color:var(--ink2)}
+.citation{font-family:var(--display);font-style:italic;font-size:clamp(19px,2.4vw,22px);line-height:1.4;background:var(--papier);border-radius:14px;padding:20px 22px;margin:0}
+.citation cite{display:block;margin-top:10px;font-family:var(--body);font-style:normal;font-size:14px;font-weight:700;color:var(--ink3)}
+.equation{background:var(--papier);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.equation .formule{font-family:var(--display);font-weight:700;font-size:clamp(20px,3vw,26px);line-height:1.3}
+.equation .x{color:var(--corail);padding-inline:4px}
+.equation p{color:var(--ink2);font-size:16px}
+.chiffres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.chiffre{background:var(--papier);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.chiffre .valeur{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,30px);line-height:1.1;font-variant-numeric:tabular-nums}
+.chiffre .valeur small{font-size:.55em;color:var(--ink2)}
+.chiffre p{font-size:15px;color:var(--ink2);line-height:1.4}
+.chiffre .src{font-size:13px;color:var(--ink3)}
+.graphe{background:var(--papier);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:16px;margin:0}
+.graphe h3{font-size:clamp(19px,2.2vw,21px);line-height:1.25}
+.barre-ligne{display:flex;flex-direction:column;gap:6px}
+.barre-ligne .lib{display:flex;justify-content:space-between;gap:10px;font-size:15px;font-weight:600}
+.barre-ligne .lib span:last-child{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.piste{height:16px;background:var(--sable);border-radius:4px;overflow:hidden}
+.piste i{display:block;height:100%;border-radius:4px;background:var(--corail)}
+.graphe .note{font-size:13px;color:var(--ink3)}
+.scenario{background:var(--nuit);color:#E8EDF5;border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.scenario .surtitre{color:var(--soft-corail)}
+.scenario h3{color:#fff;font-size:clamp(21px,2.6vw,25px)}
+.scenario p{margin:0;color:#C9D1DE}
+.scenario p b{color:#fff}
+.mecanismes,.leviers{display:flex;flex-direction:column;gap:12px}
+.meca{background:var(--papier);border-radius:14px;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px}
+.meca .num{font-family:var(--display);font-weight:700;font-size:26px;line-height:1;color:var(--corail);grid-row:span 3}
+.meca h3,.levier h3{font-size:clamp(19px,2.2vw,21px);line-height:1.25}
+.meca p,.levier p{margin:0;color:var(--ink2);font-size:16px}
+.meca .concret{color:var(--ink)}
+.levier{background:var(--papier);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+.levier .tete{display:flex;gap:12px;align-items:baseline}
+.levier .num{font-family:var(--display);font-weight:700;font-size:22px;color:var(--bleu);line-height:1}
+.levier .action{color:var(--ink);font-size:15px;background:var(--sable);border-radius:10px;padding:10px 14px}
+@media (max-width:520px){.chiffres{grid-template-columns:1fr}.meca{grid-template-columns:1fr}.meca .num{grid-row:auto}}
+</style>
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<noscript><style>[data-a2075-suite][hidden]{display:block!important}</style></noscript>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective" aria-current="page">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<div class="stick">
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html" aria-current="page">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<div class="actbar"><div class="wrap"><p>Africa 2075 · Dossier n° 1 · L’IA et l’Afrique</p>
+<a class="a1" href="africa-2075-fondateur.html#t-cta" onclick="efaCompte('a2075-d1-abonnement-barre')">Recevoir chaque numéro</a>
+<a class="a2" href="methode.html#africa-2075">Tous les numéros</a></div></div>
+</div>
+<div class="mission"><p class="wrap">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p></div>
+
+<section class="une"><div class="wrap">
+  <img src="etudes/africa-2075-dossier-1-entete.jpg" alt="Africa 2075, Frontières de croissance : la revue de prospective d’EFA, par Élysée Johnson" width="1600" height="900">
+  <div class="meta"><span><b>Africa 2075 · Frontières de croissance</b></span><span>Dossier n° 1 · octobre 2026</span><span>Par Élysée Johnson</span><span>Lecture : 12 minutes</span></div>
+  <span class="surtitre">Dossier n° 1 · L’IA et l’Afrique</span>
+  <h1>L’IA va multiplier les cerveaux. Combien seront africains&nbsp;?</h1>
+  <p class="chapeau">Avec l’intelligence artificielle, la puissance d’un pays ne se mesure plus seulement à ses diplômés, mais à ses diplômés multipliés par sa puissance de calcul. Si nous ne faisons rien, l’écart avec la Chine et l’Occident peut devenir un gouffre. Si nous agissons, l’Afrique de 2075 aura le plus grand nombre de cerveaux à multiplier.</p>
+</div></section>
+
+<main>
+  <div class="col">
+
+    <a class="ancre" href="africa-2075-fondateur.html" onclick="efaCompte('a2075-d1-vers-fondateur')">
+      <svg class="ancre-ic" viewBox="0 0 120 120" aria-hidden="true">
+        <g stroke="#F09680" stroke-width="1.5" stroke-linecap="round">
+          <line x1="60" y1="6" x2="60" y2="24"/><line x1="60" y1="96" x2="60" y2="114"/><line x1="6" y1="60" x2="24" y2="60"/><line x1="96" y1="60" x2="114" y2="60"/>
+          <line x1="21.8" y1="21.8" x2="34.6" y2="34.6"/><line x1="85.4" y1="85.4" x2="98.2" y2="98.2"/><line x1="98.2" y1="21.8" x2="85.4" y2="34.6"/><line x1="34.6" y1="85.4" x2="21.8" y2="98.2"/>
+        </g>
+        <circle cx="60" cy="60" r="30" fill="none" stroke="#6DB8F2" stroke-width="2"/>
+        <circle cx="60" cy="60" r="17" fill="none" stroke="#6DB8F2" stroke-width="1.2" stroke-dasharray="2 4"/>
+        <circle cx="60" cy="60" r="6" fill="#E44828"/>
+      </svg>
+      <span class="ancre-t">
+        <span class="ancre-s">Africa 2075 · Dossier n° 1 depuis l’article fondateur</span>
+        <b>2075 : l’Afrique, première puissance économique du monde</b>
+        <span class="ancre-p">Tout part de là : six chantiers à mener pour tenir cette promesse, le premier étant l’éducation financière. Ce dossier touche les chantiers n° 2, 3 et 4.</span>
+        <span class="ancre-l">Relire l’article fondateur →</span>
+      </span>
+    </a>
+
+    <section class="texte" aria-labelledby="t-origine">
+      <span class="surtitre">D’où nous partons</span>
+      <h2 id="t-origine">Pourquoi regarder jusqu’en 2075</h2>
+      <p>En 2022, Goldman Sachs projetait qu’en 2075 le Nigeria serait la 5<sup>e</sup> économie du monde et l’Égypte la 7<sup>e</sup>. Africa 2075 part de cette projection pour aller plus loin : avec une meilleure coordination entre Africains, le continent pourrait devenir la première puissance économique mondiale. Ce n’est pas une prophétie, ce sont six chantiers à mener, et le premier est l’éducation financière.</p>
+      <p>Chaque dossier examine un chantier, ou une menace sur ce chemin. Celui-ci traite de la plus rapide de toutes : l’intelligence artificielle peut accélérer tous les autres chantiers, ou les annuler. C’est pourquoi il ouvre la série.</p>
+    </section>
+
+    <section class="une-phrase" aria-label="En une phrase">
+      <span class="surtitre">En une phrase</span>
+      <p>L’IA ne crée pas l’inégalité : elle multiplie celle qui existe déjà. À nous de faire en sorte qu’elle multiplie aussi notre nombre, notre jeunesse et notre épargne.</p>
+    </section>
+
+    <section class="porte" data-a2075-porte hidden aria-labelledby="t-porte">
+      <span class="surtitre">Lire la suite gratuitement</span>
+      <h2 id="t-porte">La suite d’Africa 2075 est réservée à nos lecteurs inscrits</h2>
+      <p>Laissez votre adresse email pour lire ce dossier en entier : les chiffres, le scénario noir, les sept leviers et les sources. Vous recevrez aussi les prochains numéros. C’est gratuit.</p>
+        <form class="a2075-form" novalidate>
+          <div class="a2075-ligne"><label class="a2075-hp" aria-hidden="true">Ne pas remplir<input name="email_address_check" tabindex="-1" autocomplete="off"></label><input type="email" id="porte-email" name="EMAIL" placeholder="Votre adresse email" autocomplete="email" required aria-label="Votre adresse email"><button type="submit">Lire la suite</button></div>
+          <label class="a2075-ok"><input type="checkbox" id="porte-email-ok" checked> J’accepte de recevoir Africa 2075 et la newsletter d’EFA par email. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></label>
+          <p class="a2075-msg" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+    <div data-a2075-suite hidden>
+    <p class="merci" id="a2075-merci" hidden>Merci, bonne lecture. Un email de confirmation arrive dans quelques minutes : confirmez-le pour recevoir les prochains numéros.</p>
+
+    <nav class="sommaire" aria-label="Sommaire">
+      <span class="etiquette">Au sommaire</span>
+      <ol>
+        <li><span class="n">1</span><a href="#depart">Une route plus dangereuse que la destination</a></li>
+        <li><span class="n">2</span><a href="#equation">La nouvelle équation de la puissance</a></li>
+        <li><span class="n">3</span><a href="#noir">Le scénario noir : l’Afrique déclassée en 2075</a></li>
+        <li><span class="n">4</span><a href="#retourner">Retourner l’équation : l’IA à notre compte</a></li>
+        <li><span class="n">5</span><a href="#chantier">Le premier chantier : l’argent</a></li>
+      </ol>
+    </nav>
+
+    <section class="texte" id="depart" aria-labelledby="t-depart">
+      <span class="surtitre">1 · Le point de départ</span>
+      <h2 id="t-depart">Une route plus dangereuse que la destination</h2>
+      <blockquote class="citation">« Pour la première fois de l’histoire, nous n’avons aucune idée de ce à quoi ressemblera le marché du travail dans dix ans. »<cite>Yuval Noah Harari, historien</cite></blockquote>
+      <p>Harari rappelle une leçon de la révolution industrielle. À la fin, les sociétés industrielles ont été plus prospères que les sociétés agraires. Mais pendant la transition, les quelques pays qui se sont industrialisés les premiers ont conquis et exploité le reste du monde pendant plus d’un siècle. L’Afrique connaît la suite : elle a payé cette route au prix fort.</p>
+      <p>Son avertissement pour l’IA est le même : si la richesse et les emplois se concentrent en Californie et à Shenzhen, les inégalités entre pays peuvent devenir plus grandes encore qu’au XIX<sup>e</sup> siècle. Les institutions parlent d’« inégalités ». Ce mot est trop doux. Il faut dire concrètement ce que cela voudrait dire pour nous.</p>
+    </section>
+
+    <section class="texte" id="equation" aria-labelledby="t-equation">
+      <span class="surtitre">2 · La nouvelle équation</span>
+      <h2 id="t-equation">La puissance de calcul multiplie la matière grise</h2>
+      <p>Jusqu’ici, la capacité d’innover d’un pays dépendait de son nombre de chercheurs, d’ingénieurs et de diplômés. C’était déjà un déséquilibre : la Chine dépose à elle seule près de la moitié des brevets du monde.</p>
+      <p>L’IA change la nature de cette avance. Un chercheur qui dispose de centres de données et de bons modèles peut tester en une nuit ce qu’une équipe testait en un an : des milliers de molécules, de semences, de matériaux ou de lignes de code. Tout se passe comme si l’on <b>gonflait la population de diplômés</b> des pays qui possèdent le calcul.</p>
+      <div class="equation">
+        <span class="etiquette">L’équation de 2075</span>
+        <span class="formule">Puissance d’innovation = cerveaux<span class="x">×</span>puissance de calcul<span class="x">×</span>capital</span>
+        <p>Illustration : si l’IA permet à chaque chercheur de produire autant que dix, un pays qui a déjà dix fois plus de chercheurs et dix fois plus de calcul ne creuse pas l’écart de dix : il le creuse de cent. Ces multiplicateurs sont des hypothèses pour faire comprendre le mécanisme, pas des mesures.</p>
+      </div>
+      <p>Or l’Afrique part avec très peu dans les trois facteurs de l’équation.</p>
+      <div class="chiffres">
+        <div class="chiffre"><span class="etiquette">Brevets déposés en 2024</span><span class="valeur">1,8 M <small>Chine</small></span><span class="valeur">25 <small>Côte d’Ivoire</small></span><p>Asie, Amérique du Nord et Europe totalisent 97 % des 3,7 millions de demandes mondiales.</p><span class="src">OMPI, 2025</span></div>
+        <div class="chiffre"><span class="etiquette">Puissance des grappes de GPU</span><span class="valeur">75 % <small>États-Unis</small></span><span class="valeur">15 % <small>Chine</small></span><p>Il reste environ 10 % pour le reste du monde. La source ne cite aucun pays africain.</p><span class="src">Epoch AI, mai 2025</span></div>
+        <div class="chiffre"><span class="etiquette">Investissement privé dans l’IA, 2024</span><span class="valeur">109 Md$ <small>États-Unis</small></span><span class="valeur">9,3 Md$ <small>Chine</small></span><p>L’écart se mesure ici entre les deux premiers. L’Afrique n’entre pas dans la comparaison.</p><span class="src">Stanford AI Index, 2025</span></div>
+        <div class="chiffre"><span class="etiquette">Dépenses de recherche</span><span class="valeur">0,45 % <small>du PIB en Afrique</small></span><span class="valeur">1,7 % <small>moyenne mondiale</small></span><p>L’objectif de l’Union africaine est de 1 %.</p><span class="src">Research Professional News, 2023</span></div>
+      </div>
+      <figure class="graphe" aria-labelledby="t-graphe">
+        <h3 id="t-graphe">L’Afrique compte 18 % de l’humanité, mais moins de 1 % des centres de données</h3>
+        <div class="barre-ligne"><div class="lib"><span>Part de la population mondiale</span><span>18 %</span></div><div class="piste"><i style="width:18%"></i></div></div>
+        <div class="barre-ligne"><div class="lib"><span>Part de la capacité mondiale des centres de données</span><span>&lt; 1 %</span></div><div class="piste"><i style="width:1%"></i></div></div>
+        <div class="barre-ligne"><div class="lib"><span>Part des contenus en ligne en langues africaines</span><span>&lt; 0,1 %</span></div><div class="piste"><i style="width:.4%;min-width:3px"></i></div></div>
+        <figcaption class="note">Part de l’Afrique dans le total mondial. Source : GSMA, MWC Kigali 2025. Pour comparaison, l’anglais représente 53 % des contenus en ligne.</figcaption>
+      </figure>
+      <p class="discret">En clair : nous avons les cerveaux, mais pas les machines qui les multiplient, ni le capital qui paie les machines. Et chaque année, le multiplicateur des autres grandit.</p>
+    </section>
+
+    <section class="texte" id="noir" aria-labelledby="t-noir">
+      <span class="surtitre">3 · Le scénario noir</span>
+      <h2 id="t-noir">L’Afrique déclassée en 2075</h2>
+      <p>Ce qui suit n’est pas une prophétie. C’est ce qui arrive si nous laissons faire. Le décrire sans détour est la condition pour l’éviter.</p>
+      <div class="scenario">
+        <span class="surtitre">Abidjan, 2050, si rien ne change</span>
+        <h3>Une journée ordinaire dans le scénario noir</h3>
+        <p>Aminata a 24 ans, un master en comptabilité, et pas d’emploi : les tâches qu’elle a apprises sont faites par un logiciel conçu à San Francisco et facturé en dollars à son ancien employeur. Son petit frère voulait travailler dans un centre d’appels : il n’en existe plus, des agents vocaux répondent dans toutes les langues.</p>
+        <p>Pour un crédit, sa banque utilise un modèle de notation étranger qui ne connaît ni les tontines ni les revenus informels : pour lui, Aminata n’existe pas. Les semences de son oncle sont optimisées par une IA chinoise et vendues sous brevet. Et le meilleur élève de sa promotion est parti : là-bas, il dispose du calcul qui multiplie son talent.</p>
+        <p><b>Le continent compte alors un quart de l’humanité, et produit surtout des données que d’autres transforment en richesse.</b></p>
+      </div>
+      <h3>Six mécanismes concrets du déclassement</h3>
+      <div class="mecanismes">
+        <div class="meca"><span class="num">1</span><h3>Le premier barreau de l’échelle disparaît</h3><p>L’Asie s’est développée en vendant d’abord une main-d’œuvre bon marché : textile, assemblage, puis services délocalisés. Avec l’IA et les robots, produire chez soi redevient moins cher que délocaliser.</p><p class="concret"><b>Concrètement :</b> les centres d’appels, la saisie, la traduction et la comptabilité de base, qui devaient absorber nos jeunes diplômés, sont automatisés avant d’avoir été créés chez nous.</p></div>
+        <div class="meca"><span class="num">2</span><h3>Le dividende démographique devient une charge</h3><p>Selon l’ONU, l’Afrique comptera environ 3,3 milliards d’habitants en 2075, près d’un tiers de l’humanité. Dans les pays en développement, quelque 1,2 milliard de jeunes arriveront sur le marché du travail pour environ 420 millions d’emplois prévus.</p><p class="concret"><b>Concrètement :</b> une jeunesse nombreuse dans un monde où le travail humain vaut moins, c’est du chômage de masse, de l’exil et de l’instabilité.</p></div>
+        <div class="meca"><span class="num">3</span><h3>Nos données partent, l’intelligence revient facturée</h3><p>Au XIX<sup>e</sup> siècle, l’Afrique exportait du coton et importait des tissus. Au XXI<sup>e</sup>, elle exporterait des données (paiements mobiles, santé, voix, langues) et importerait de l’intelligence sous forme d’abonnements.</p><p class="concret"><b>Concrètement :</b> chaque entreprise, école et administration paie chaque mois des licences en devises. C’est un cercle à l’échelle d’un continent : l’argent tourne, puis s’en va.</p></div>
+        <div class="meca"><span class="num">4</span><h3>Les solutions à nos problèmes sont brevetées ailleurs</h3><p>L’IA accélère la recherche sur les semences tropicales, le paludisme ou les matériaux de construction. Celui qui fait la recherche dépose le brevet. En 2024, la Côte d’Ivoire a déposé 25 demandes de brevet ; la Chine, 1,8 million.</p><p class="concret"><b>Concrètement :</b> nous payons des redevances pour utiliser des solutions conçues pour nos sols, nos maladies et nos villes.</p></div>
+        <div class="meca"><span class="num">5</span><h3>Le crédit et l’assurance sont décidés par des modèles étrangers</h3><p>Les modèles qui notent les emprunteurs apprennent sur les données qu’on leur donne. Ce qui n’est pas dans les données n’existe pas : tontines, revenus informels, solidarité familiale.</p><p class="concret"><b>Concrètement :</b> des centaines de millions de personnes deviennent invisibles pour la finance automatisée, ou paient plus cher parce qu’elles sont mal comprises.</p></div>
+        <div class="meca"><span class="num">6</span><h3>La dépendance devient un levier politique</h3><p>Le calcul est concentré dans deux pays. Washington a déjà classé les pays du monde par niveau d’accès aux puces les plus avancées en janvier 2025, avant de retirer cette règle quelques mois plus tard.</p><p class="concret"><b>Concrètement :</b> les hôpitaux, banques et administrations d’un pays qui dépend du calcul d’un autre peuvent être ralentis par une décision prise ailleurs.</p></div>
+      </div>
+      <p class="discret">Le FMI le dit à sa manière : près de 40 % des emplois mondiaux sont exposés à l’IA (60 % dans les pays avancés, 26 % dans les pays à faible revenu), et les pays sans infrastructure numérique ni main-d’œuvre qualifiée risquent de voir l’IA aggraver les inégalités entre nations. Nous sommes moins exposés au début, ce qui veut aussi dire que nous profiterons moins des gains.</p>
+    </section>
+
+    <section class="texte" id="retourner" aria-labelledby="t-retourner">
+      <span class="surtitre">4 · Retourner l’équation</span>
+      <h2 id="t-retourner">L’IA à notre compte</h2>
+      <p>L’équation fonctionne dans les deux sens. Le multiplicateur s’applique aux cerveaux que l’on a, et en 2075 l’Afrique aura la plus grande réserve de jeunes cerveaux du monde. La vraie question n’est pas de savoir si nous construirons le plus gros modèle d’IA. C’est de savoir si chaque jeune Africain aura accès au multiplicateur, et si la valeur créée restera chez nous.</p>
+      <p>Pour la première fois, une technologie de pointe s’utilise depuis un téléphone, pour quelques centimes. L’industrie demandait des usines ; l’IA demande d’abord des usages, des données et du capital patient. Sept leviers sont à notre portée.</p>
+      <div class="leviers">
+        <div class="levier"><div class="tete"><span class="num">1</span><h3>Gagner la bataille de l’usage</h3></div><p>Plutôt que de copier la Silicon Valley, miser sur l’IA ciblée, sur téléphone, dans nos langues : éducation, santé, agriculture, commerce, finance des ménages. L’usage massif crée les données, les compétences et les entreprises.</p><p class="action"><b>Mesure :</b> le nombre d’Africains qui utilisent l’IA chaque semaine pour décider, pas seulement pour se divertir.</p></div>
+        <div class="levier"><div class="tete"><span class="num">2</span><h3>Traiter nos données comme un actif</h3></div><p>Paiements mobiles, tontines, langues, santé : ces données valent de l’argent. Il faut savoir qui les détient, qui les entraîne et qui en touche les fruits, avec des règles et des coopératives de données qui gardent la valeur sur le continent.</p><p class="action"><b>Mesure :</b> la part des modèles utilisés en Afrique qui sont entraînés sur des données africaines, avec un retour pour ceux qui les produisent.</p></div>
+        <div class="levier"><div class="tete"><span class="num">3</span><h3>Mutualiser le calcul comme on mutualise une tontine</h3></div><p>Aucun pays de l’UEMOA ne peut s’offrir seul une grappe de calcul de premier rang. Ensemble, à l’échelle régionale, avec l’énergie solaire, c’est envisageable. C’est la logique de la tontine appliquée aux infrastructures : chacun apporte un peu, tous en profitent.</p><p class="action"><b>Mesure :</b> une capacité de calcul régionale, partagée entre universités, États et entreprises.</p></div>
+        <div class="levier"><div class="tete"><span class="num">4</span><h3>Apprendre à décider avec l’IA, pas seulement à coder</h3></div><p>Harari le souligne : on ne sait plus quels métiers enseigner. Il faut donc enseigner ce qui reste vrai quel que soit le métier : poser un problème, vérifier une réponse, gérer son argent, entreprendre. Un jeune qui sait se servir de l’IA vaut une petite équipe.</p><p class="action"><b>Mesure :</b> chaque élève qui sort du lycée sait faire un budget, comparer un crédit et utiliser l’IA pour vérifier une information.</p></div>
+        <div class="levier"><div class="tete"><span class="num">5</span><h3>Faire de la recherche là où personne ne regarde</h3></div><p>Semences tropicales, maladies négligées, construction en climat chaud, finance informelle : l’IA réduit fortement le coût d’un essai. Les sujets que les grands laboratoires ignorent sont ceux où nous pouvons être les premiers, et déposer les brevets.</p><p class="action"><b>Mesure :</b> les brevets africains déposés auprès de l’OAPI et de l’ARIPO dans les domaines où l’Afrique est le premier marché.</p></div>
+        <div class="levier"><div class="tete"><span class="num">6</span><h3>Faire de la diaspora un pont</h3></div><p>Nos chercheurs et ingénieurs installés à l’étranger ont accès au calcul et aux méthodes. Le talent parti peut devenir un talent connecté : missions, laboratoires communs, investissements.</p><p class="action"><b>Mesure :</b> le nombre de projets menés depuis l’Afrique avec des membres de la diaspora.</p></div>
+        <div class="levier"><div class="tete"><span class="num">7</span><h3>Financer nos machines avec notre épargne</h3></div><p>Le calcul et les centres de données coûtent cher. Si c’est le capital étranger qui les finance, c’est lui qui en sera propriétaire. Nos tontines et le mobile money font déjà circuler des sommes considérables. Il faut transformer une partie de cet argent en capital patient, investi dans nos infrastructures.</p><p class="action"><b>Mesure :</b> la part de l’épargne africaine investie à long terme sur le continent.</p></div>
+      </div>
+    </section>
+
+    <section class="texte" id="chantier" aria-labelledby="t-chantier">
+      <span class="surtitre">5 · Le premier chantier</span>
+      <h2 id="t-chantier">Tout commence par l’argent</h2>
+      <p>Le dernier levier conditionne les six autres. Le multiplicateur de l’IA coûte du capital, et un continent qui ne sait pas transformer son épargne en capital le louera aux autres. C’est exactement le passage du cercle à la spirale, appliqué aux nations : la confiance fait circuler l’argent, la réserve fait la spirale, et la spirale finance les machines qui multiplient nos cerveaux.</p>
+      <p>C’est pourquoi l’éducation financière n’est pas un sujet secondaire face à l’IA. C’est la première infrastructure. Un milliard de personnes qui savent épargner, décider et investir valent plus qu’un centre de données.</p>
+    </section>
+
+    <section class="retenir"><span>Ce qu’il faut retenir</span><p>La route de l’IA peut déclasser l’Afrique pour un siècle, comme celle de l’industrie. Elle peut aussi multiplier la plus grande jeunesse du monde. La différence se joue maintenant : dans l’usage, dans nos données, et dans ce que nous faisons de notre argent.</p></section>
+
+    <section class="cta" aria-labelledby="t-cta">
+      <h2 id="t-cta">Recevez les prochains numéros et dossiers d’Africa 2075</h2>
+      <p>Par email, gratuitement. Chaque semaine, ce que les grandes institutions annoncent ; chaque mois, un dossier de fond sur le chemin de 2075.</p>
+      <div class="btns"><a class="p" href="index.html#guide" onclick="efaCompte('a2075-d1-abonnement')">M’abonner gratuitement</a><a class="s" href="africa-2075-n1.html">Lire le n° 1</a></div>
+    </section>
+
+    <section class="section sources" aria-labelledby="t-sources">
+      <span class="surtitre">Sources</span>
+      <h2 id="t-sources">Sur quoi repose ce dossier</h2>
+      <ul>
+        <li><a href="https://www.wipo.int/edocs/pubdocs/en/wipo-pub-943-2025-en-wipo-ip-facts-and-figures-2025.pdf" target="_blank" rel="noopener">OMPI, IP Facts and Figures 2025</a> : 3,7 millions de demandes de brevet en 2024, parts régionales</li>
+        <li><a href="https://english.cnipa.gov.cn/art/2025/11/13/art_2975_202593.html" target="_blank" rel="noopener">CNIPA / China Daily, d’après les World IP Indicators 2025 de l’OMPI</a> · 13 nov. 2025</li>
+        <li><a href="https://www.wipo.int/edocs/statistics-country-profile/en/ci.pdf" target="_blank" rel="noopener">OMPI, profil statistique de la Côte d’Ivoire</a> : 25 demandes de brevet en 2024</li>
+        <li><a href="https://epoch.ai/data-insights/ai-supercomputers-performance-share-by-country" target="_blank" rel="noopener">Epoch AI, parts de la puissance des grappes de GPU par pays</a> · données de mai 2025</li>
+        <li><a href="https://hai.stanford.edu/news/ai-index-2025-state-of-ai-in-10-charts" target="_blank" rel="noopener">Stanford HAI, AI Index 2025</a></li>
+        <li><a href="https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/gsma_resources/mwc-kigali-2025-data-and-compute-for-africa/" target="_blank" rel="noopener">GSMA, MWC Kigali 2025, « Data and Compute for Africa »</a></li>
+        <li><a href="https://www.researchprofessionalnews.com/?p=457699" target="_blank" rel="noopener">Research Professional News, Inorms 2023</a> : dépenses de recherche de l’Afrique</li>
+        <li><a href="https://www.populationpyramid.net/africa/2075/" target="_blank" rel="noopener">ONU, World Population Prospects 2024 (variante moyenne)</a> : Afrique 3,29 milliards, monde 10,25 milliards en 2075</li>
+        <li><a href="https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity" target="_blank" rel="noopener">FMI, « AI Will Transform the Global Economy »</a> · 14 janv. 2024</li>
+        <li><a href="https://gna.org.gh/2026/10/affordable-ai-key-to-filling-africas-1-2-billion-jobs-gap-world-leaders/" target="_blank" rel="noopener">Ghana News Agency, forum « Small AI » de Bangkok</a> · 13 oct. 2026</li>
+        <li>Goldman Sachs Research, <i>The Path to 2075</i>, décembre 2022</li>
+        <li>Yuval Noah Harari, intervention sur l’IA et le marché du travail (extrait traduit par EFA)</li>
+      </ul>
+      <p class="methode">Méthode : chaque chiffre est vérifié à la source. La part de 97 % additionne les parts de l’Asie (70,1 %), de l’Amérique du Nord (17,1 %) et de l’Europe (9,7 %) publiées par l’OMPI. Le scénario d’Aminata est une fiction prospective. Les multiplicateurs de l’équation sont des hypothèses pour illustrer le raisonnement. Les analyses et les leviers sont ceux d’EFA. EFA fait de l’éducation financière, pas du conseil en placement.</p>
+    </section>
+
+    </div>
+  </div>
+</main>
+
+
+
+<footer data-v1-cache class="site"><div class="wrap">
+  <span>Éducation Financière Afrique © 2026</span>
+  <span>Éducation financière, pas conseil en placement</span>
+  <a href="index.html">Accueil</a><a href="methode.html#etudes">Études</a><a href="methode.html#africa-2075">Africa 2075 · Prospective</a><a href="auteur.html#publications">Publications</a>
+  <a href="tontine.html">La tontine</a><a href="methode.html#methode">Notre méthode</a><a href="confidentialite.html">Confidentialité</a>
+</div></footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(!b)return;
+b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
+</script>
+<script src="africa-2075.js?v=2026102401" defer></script>
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Administration des programmes · EFA</title>
+<meta name="description" content="Avec la clé maîtresse : générer la clé d’une organisation et le code de ses participants, suivre les programmes ouverts, renouveler une clé, fermer un programme.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<style>
+:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#1B71B2;--corail:#DA3C1B;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--line:#E2D8C4;--hausse:#3CCB7F;--erreur:#B3261E;
+--f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--gut:max(16px,env(safe-area-inset-left,0px))}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;margin:0;text-wrap:balance;color:var(--nuit)}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-size:26px}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+
+
+.hero{background:var(--nuit);color:#fff;padding-block:28px 32px}
+.hero .crumbs{font-size:13px;color:#AEB6C6}.hero .crumbs a{color:#E8EDF5}
+.sur{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#B8341A}
+.hero .sur{display:block;margin-top:16px;color:var(--soft-corail)}
+.hero h1{color:#fff;font-size:clamp(32px,5vw,54px);margin-top:10px;max-width:22ch}
+.hero .chapo{margin-top:12px;font-size:clamp(16px,2vw,19px);color:#C9D1DE;max-width:40em}
+#vue{margin:18px 0 40px;display:flex;flex-direction:column;gap:14px}
+.carte{background:var(--papier);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.carte h2{font-size:clamp(22px,3vw,30px)}.aide{color:var(--ink2);font-size:15.5px}
+.grille2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media (max-width:720px){.grille2{grid-template-columns:minmax(0,1fr)}}
+.champ{display:grid;gap:6px;font-weight:700;font-size:15px}.champ small{font-weight:400;color:var(--ink3)}
+.champ[hidden]{display:none}
+.champ input,.champ select,.champ textarea{font:inherit;font-weight:400;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);width:100%;min-width:0}
+.cle-in{font-family:ui-monospace,Menlo,Consolas,monospace!important;letter-spacing:.06em;text-transform:uppercase}
+.case{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--ink2)}.case input{width:20px;height:20px;margin-top:2px;accent-color:var(--corail);flex:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bt{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 20px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);font:800 15.5px/1.2 var(--f-body);cursor:pointer;text-decoration:none}
+.bt-p{background:var(--corail);color:#fff}.bt-n{background:var(--nuit);color:#fff}.bt-l{background:none;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px;padding-inline:4px}
+.bt[disabled]{opacity:.45;cursor:not-allowed}
+.msg{font-weight:700;min-height:1.3em}.msg.err{color:var(--erreur)}.msg.ok{color:#1D6B43}
+.cle{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:clamp(16px,2.6vw,22px);font-weight:700;letter-spacing:.05em;background:var(--nuit);color:#fff;border-radius:10px;padding:14px 16px;word-break:break-all}
+.alerte{background:#FFF4D6;border-radius:12px;padding:14px 16px;font-size:15px;color:var(--nuit)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}@media (max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stats div{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px}.stats small{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#AEB6C6}.stats b{font-family:var(--f-display);font-size:clamp(20px,3vw,28px)}
+.tabw{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.t th,.t td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.t th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);cursor:pointer;white-space:nowrap}
+.t td small{display:block;color:var(--ink3);font-size:13px}
+.barre{height:8px;border-radius:999px;background:var(--creme);overflow:hidden;min-width:90px}.barre i{display:block;height:100%;background:var(--corail)}
+.pill{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap;display:inline-block}
+.pill.ok{background:var(--hausse);color:var(--nuit)}.pill.enc{background:#E8F1FB;color:#1E5C99}.pill.zero{background:var(--line);color:var(--ink2)}.pill.dorm{background:#FBE3DD;color:#8A2A16}
+.filtre{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filtre input{font:inherit;font-size:16px;padding:9px 12px;border-radius:8px;border:0;background:var(--creme);min-width:0;flex:1 1 200px}
+.mention{font-size:13.5px;color:var(--ink3)}
+@media print{header,footer,.hero,.acts,.filtre,.efa-suite,#efa-ely,.no-print{display:none!important}}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › Administration</nav>
+  <span class="sur">Réservé à EFA</span>
+  <h1>Créer et gérer les programmes des organisations</h1>
+  <p class="chapo">Avec la clé maîtresse : générer la clé d’une organisation et le code de ses participants, suivre les programmes ouverts, renouveler une clé, fermer un programme.</p>
+</div></section>
+<div class="wrap"><div id="vue" aria-live="polite"></div></div>
+</main>
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="balade-economie.html">La balade de l’économie</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
+<script src="parcours-efa.js?v=2026102512"></script>
+<script src="efa-compte.js?v=2026102701"></script>
+<script>
+
+var $ = function (id) { return document.getElementById(id); }, E = window.EFA_ECOLE, D = window.EFA_PARCOURS, P = {};
+if (D) D.parcours.forEach(function (p) { P[p.id] = p; });
+function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function dateFr(iso, h) { if (!iso) return "jamais"; try { var d = new Date(iso); return d.toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" }) + (h ? " à " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }) : ""); } catch (e) { return iso; } }
+function msg(id, t, ok) { var m = $(id); if (!m) return; m.textContent = t; m.className = "msg " + (ok ? "ok" : "err"); }
+function copier(t, id, m) { var ok = function () { msg(id, m, true); }; try { navigator.clipboard.writeText(t).then(ok, function () { window.prompt("Copiez :", t); }); } catch (e) { window.prompt("Copiez :", t); } }
+function mesure(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
+// Un module est validé quand ses étapes essentielles en ligne sont faites et sa fiche gardée (même règle que l'école)
+function etatModule(id, pa) {
+  var p = P[id]; if (!p) return { d: 0, n: 0, ok: false };
+  var d = 0, n = 0; p.etapes.forEach(function (s, i) { if (s.ess && s.ok) { d++; if ((pa.faits || {})[id + "." + i]) n++; } });
+  return { d: d, n: n, ok: d > 0 && n >= d && (pa.fiches || []).indexOf(id) >= 0 };
+}
+function bilan(pa, mods) {
+  var v = 0, et = 0, etd = 0; mods.forEach(function (id) { var e = etatModule(id, pa); if (e.ok) v++; et += e.n; etd += e.d; });
+  return { valides: v, total: mods.length, pct: etd ? Math.round(et / etd * 100) : 0, fini: mods.length > 0 && v === mods.length };
+}
+
+// Programmes prêts : le certificat Fondations et les programmes types des parcours (même format que le compositeur)
+var FOND = D ? D.parcours.filter(function (p) { return p.cycle === "fondations"; }).map(function (p) { return p.id; }) : [];
+var PRETS = [{ t: "Certificat local Fondations · 8 modules", pr: function (n) { return { n: n, m: FOND, s: 8, mi: 45, f: "0", c: "F" }; } }]
+  .concat(D ? D.programmes.map(function (g) { return { t: g.nom + " · " + g.sequence.length + " modules", pr: function (n) { return { n: n, m: g.sequence.slice(), s: Math.max(4, g.sequence.length * 2), mi: 45, f: "0", c: "" }; } }; }) : []);
+var ADM = null;
+function decoder(t) { try { t = t.replace(/-/g, "+").replace(/_/g, "/"); while (t.length % 4) t += "="; return JSON.parse(decodeURIComponent(escape(atob(t)))); } catch (e) { return null; } }
+function connexion() {
+  $("vue").innerHTML = '<section class="carte"><h2>Clé maîtresse</h2><p class="aide">Elle n’est jamais enregistrée : vous la saisissez à chaque visite.</p><label class="champ">Clé maîtresse<input id="a-cle" type="password" autocomplete="off"></label><div class="acts"><button type="button" class="bt bt-n" id="a-go">Entrer</button></div><p class="msg" id="a-msg"></p><details style="margin-top:22px"><summary class="aide" style="cursor:pointer">Installation du service uniquement : créer la clé maîtresse d’EFA</summary><p class="aide">À n’utiliser qu’une fois, par EFA, pour installer ou remplacer la clé maîtresse. Les organisations ne voient jamais cette page.</p><button type="button" class="bt bt-l" id="a-gen">Générer une nouvelle clé maîtresse</button><div id="a-new"></div></details></section>';
+  $("a-go").onclick = function () { ADM = $("a-cle").value.trim(); liste(); };
+  $("a-cle").onkeydown = function (e) { if (e.key === "Enter") $("a-go").click(); };
+  // Générée dans ce navigateur, jamais envoyée : à coller dans Cloudflare (ADMIN_KEY) et dans un gestionnaire de mots de passe
+  $("a-gen").onclick = function () { var A = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789", o = new Uint8Array(48), k = ""; crypto.getRandomValues(o); for (var i = 0; i < 48; i++) k += A[o[i] % A.length];
+    $("a-new").innerHTML = '<p class="aide">Nouvelle clé maîtresse (48 caractères), créée sur ce téléphone et envoyée nulle part. Collez-la dans Cloudflare, secret <b>ADMIN_KEY</b> du Worker efa-ecole, et gardez-la dans un gestionnaire de mots de passe.</p><div class="cle">' + k + '</div>'; };
+}
+function liste(res) {
+  E.appel("/admin/programmes", null, ADM).then(function (j) {
+    var P0 = j.programmes || [];
+    $("vue").innerHTML = (res ? res : '')
+      + '<section class="carte"><p class="sur">Nouveau programme</p><h2>Générer les accès d’une organisation</h2>'
+      + '<div class="grille2"><label class="champ">Organisation<input id="n-nom" maxlength="80" placeholder="ex. Coopérative Awa"></label><label class="champ">Programme<select id="n-prog">' + PRETS.map(function (x, i) { return '<option value="' + i + '">' + esc(x.t) + '</option>'; }).join("") + '<option value="lien">Programme composé en ligne (coller son lien)</option></select></label>'
+      + '<label class="champ" id="n-lien-l" hidden>Lien du programme<small>copié depuis « Composer un programme »</small><input id="n-lien" placeholder="https://efa.africa/programme-organisation?p=…"></label>'
+      + '<label class="champ">Places<input id="n-places" type="number" min="1" value="50"></label><label class="champ">Ouvert jusqu’au <small>facultatif</small><input id="n-fin" type="date"></label>'
+      + '<label class="champ">Note interne <small>facultatif : contact, conditions</small><input id="n-note" maxlength="300"></label></div>'
+      + '<div class="acts"><button type="button" class="bt bt-p" id="n-go">Générer la clé et le code</button><a class="bt bt-l" href="programme-organisation.html" target="_blank" rel="noopener">Composer un programme</a></div><p class="msg" id="n-msg"></p></section>'
+      + '<section class="carte"><h2>Programmes (' + P0.length + ')</h2>' + (P0.length ? '<div class="tabw"><table class="t"><thead><tr><th>Organisation</th><th>Code</th><th>Inscrits</th><th>Actifs 7 j</th><th>Dernier accès</th><th>État</th><th></th></tr></thead><tbody>'
+        + P0.map(function (p) { return '<tr><td><b>' + esc(p.nom) + '</b><small>créé le ' + dateFr(p.cree_le) + (p.note ? ' · ' + esc(p.note) : '') + '</small></td><td><code>' + esc(p.code) + '</code></td><td>' + p.participants + ' / ' + p.places + '</td><td>' + p.actifs_7j + '</td><td>' + dateFr(p.dernier_acces) + '</td><td><span class="pill ' + (p.actif ? 'ok">Ouvert' : 'zero">Fermé') + '</span></td><td><button class="bt bt-l" data-cle="' + p.id + '">Nouvelle clé</button><button class="bt bt-l" data-etat="' + p.id + '" data-actif="' + (p.actif ? 0 : 1) + '">' + (p.actif ? 'Fermer' : 'Rouvrir') + '</button></td></tr>'; }).join("")
+        + '</tbody></table></div>' : '<p class="aide">Aucun programme pour l’instant.</p>') + '<p class="msg" id="l-msg"></p></section>';
+    if (res) { var r0 = document.querySelector("#vue .carte"); if (r0) r0.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    $("n-prog").onchange = function () { $("n-lien-l").hidden = this.value !== "lien"; };
+    $("n-go").onclick = function () {
+      var v = $("n-prog").value, l = $("n-lien").value.trim(), m = /[?&]p=([A-Za-z0-9_-]+)/.exec(l), pr = v === "lien" ? (m && decoder(m[1])) : PRETS[+v].pr($("n-nom").value.trim()), nom = $("n-nom").value.trim() || (pr && pr.n) || "";
+      if (!pr || !pr.m) return msg("n-msg", "Collez le lien complet du programme composé en ligne, ou choisissez un programme prêt.");
+      if (nom.length < 2) return msg("n-msg", "Indiquez le nom de l’organisation.");
+      E.appel("/admin/programmes", { nom: nom, programme: pr, places: +$("n-places").value, expire_le: $("n-fin").value || null, note: $("n-note").value.trim() }, ADM).then(function (r) { liste(remise(r)); }, function (e) { msg("n-msg", e.message); });
+    };
+    document.querySelectorAll("[data-cle]").forEach(function (b) { b.onclick = function () { if (b.textContent !== "Confirmer") { b.textContent = "Confirmer"; msg("l-msg", "L’ancienne clé de cette organisation cessera de fonctionner. Touchez « Confirmer »."); return; }
+      E.appel("/admin/programme", { id: b.getAttribute("data-cle"), nouvelle_cle: true }, ADM).then(function (r) { var p = P0.filter(function (x) { return x.id === b.getAttribute("data-cle"); })[0]; liste(remise({ programme: p, cle_organisation: r.cle_organisation, code: p.code })); }, function (e) { msg("l-msg", e.message); }); }; });
+    document.querySelectorAll("[data-etat]").forEach(function (b) { b.onclick = function () { E.appel("/admin/programme", { id: b.getAttribute("data-etat"), actif: b.getAttribute("data-actif") === "1" }, ADM).then(function () { liste(); }, function (e) { msg("l-msg", e.message); }); }; });
+  }, function (e) { ADM = null; connexion(); msg("a-msg", e.message); });
+}
+function remise(r) {
+  var org = location.origin, nom = r.programme.nom;
+  var texte = "Bonjour,\n\nVoici les accès au programme d’éducation financière EFA de " + nom + ".\n\n1. Tableau de bord de l’organisation : " + org + "/espace-organisation.html\n   Clé d’organisation (confidentielle) : " + r.cle_organisation + "\n\n2. Pour vos participants : " + org + "/rejoindre.html?code=" + r.code + "\n   Code du programme : " + r.code + "\n\nLa clé d’organisation donne accès à la progression de vos participants : gardez-la pour les responsables du programme.\n\nL’équipe EFA";
+  setTimeout(function () { var b = $("r-copier"); if (b) b.onclick = function () { copier(texte, "r-msg", "Message copié : envoyez-le au responsable de l’organisation."); }; }, 0);
+  return '<section class="carte" style="background:#E3F5EA"><p class="sur">Accès générés · ' + esc(nom) + '</p><h2>Notez la clé maintenant : elle ne sera plus affichée</h2>'
+    + '<p class="aide"><b>Clé d’organisation</b> (tableau de bord, confidentielle)</p><div class="cle">' + esc(r.cle_organisation) + '</div>'
+    + '<p class="aide"><b>Code des participants</b></p><div class="cle">' + esc(r.code) + '</div>'
+    + '<div class="acts"><button type="button" class="bt bt-p" id="r-copier">Copier le message pour l’organisation</button></div><p class="msg" id="r-msg"></p></section>';
+}
+connexion();
+
+</script>
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body>
+</html>

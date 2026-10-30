@@ -1,0 +1,347 @@
+<!doctype html>
+<html data-clone data-clone-plein lang="fr"><head>
+<base href="../"><meta charset="utf-8"><script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lire la BRVM en investisseur averti · École de la Bourse EFA</title>
+<meta name="description" content="Parcours approfondi de l’École de la Bourse EFA : lire la cote et les indices, les annonces des sociétés, les comptes, apprécier le prix, passer ses ordres, construire un portefeuille, souscrire à un emprunt ou une introduction en Bourse.">
+<link rel="canonical" href="https://efa.africa/bourse-pro">
+<meta property="og:title" content="Lire la BRVM en investisseur averti">
+<meta property="og:description" content="Sept modules et un projet final : la cote, les annonces, les comptes, le prix, les ordres, le portefeuille, les emprunts et introductions en Bourse.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:url" content="https://efa.africa/bourse-pro">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="ecole-bourse.css?v=2026102511">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head><body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<div class="tourner" role="note">Tournez votre téléphone pour un meilleur confort de lecture</div>
+<div class="cadre-wrap">
+  <section class="cadre" aria-label="Écran d'apprentissage">
+    <div class="barre">
+      <span class="label">École de la Bourse</span>
+      <span class="titre-mod" id="titre">Lire la BRVM en investisseur averti</span>
+      <span class="compteur" id="compteur"></span>
+    </div>
+    <nav class="progres" id="progres" aria-label="Progression"></nav>
+    <div class="corps" id="corps" aria-live="polite"></div>
+    <div class="pied">
+      <a class="ely" href="https://efa.africa/ely" target="_blank" rel="noopener">Demander à Ely</a>
+      <span class="duree" id="duree"></span>
+      <button class="btn prec" id="som" type="button">Sommaire</button>
+      <button class="btn prec" id="prec" type="button">Précédent</button>
+      <button class="btn suiv" id="suiv" type="button">Suivant</button>
+    </div>
+  </section>
+</div>
+<p class="mention">Formation pédagogique d’EFA. Les sociétés Banque du Fleuve, Ciments du Sahel et Distribution Lagune sont fictives, comme leurs chiffres. Les données de séance affichées sont celles de la BRVM. Les règles citées (horaires, limites de variation, règlement-livraison, fiscalité) peuvent évoluer : les textes de la BRVM, du DC/BR, de l’AMF-UMOA et des administrations fiscales font foi. EFA éduque, elle ne recommande aucun titre ni établissement.</p>
+
+<script src="efa-suivi.js?v=2026102501"></script>
+<script src="donnees.js"></script>
+<script>
+window.ECOLE = {
+  cle: "efa_bourse_pro_v1",
+  titre: "Lire la BRVM en investisseur averti",
+  label: "Approfondi",
+  accueil: {
+    sur: "École de la Bourse · Parcours B",
+    titre: "Lire la BRVM en investisseur averti",
+    kick: "Sept modules et un projet · environ 8 heures",
+    h: "La cote, les annonces, les comptes, le prix, les ordres",
+    p: ["Ce parcours suppose L’essentiel acquis. Il vous apprend à lire ce que la BRVM et les sociétés publient, à juger un prix, et à passer vos ordres avec méthode. Il se termine par votre fiche de comité d’investissement."],
+    plus: '<p class="p" style="font-size:.9em">Pas encore fait ? <a href="bourse-essentiel.html?src=pro">L’essentiel de la Bourse, cinq formations</a> · Graphes et tendances : <a href="bourse-marche.html?src=pro">Lire le marché</a></p>'
+  },
+  final: '<a href="methode.html?src=pro#brvm">Lire la vraie séance du jour <span>→</span></a><a href="parcours.html?src=pro#P8">Retour au module 19 · La BRVM <span>→</span></a>',
+  modules: []
+};
+var MOD = window.ECOLE.modules;
+var SOC = {
+  BDF:{nom:"Banque du Fleuve", sect:"Services financiers", cours:6000, bpa:750, div:420, roe:"18 %", dette:"—", croiss:"+ 6 %"},
+  CDS:{nom:"Ciments du Sahel", sect:"Industriels", cours:2400, bpa:120, div:60, roe:"7 %", dette:"élevée", croiss:"+ 2 %"},
+  DLG:{nom:"Distribution Lagune", sect:"Consommation", cours:3500, bpa:290, div:210, roe:"14,5 %", dette:"modérée", croiss:"+ 8 %"}
+};
+function tabSoc(){var r='';for(var k in SOC){var s=SOC[k];r+='<tr><td>'+s.nom+'</td><td class="v">'+s.cours.toLocaleString('fr-FR')+'</td><td class="v">'+(s.cours/s.bpa).toFixed(1).replace('.',',')+'</td><td class="v">'+(s.div/s.cours*100).toFixed(1).replace('.',',')+'&nbsp;%</td><td class="v">'+s.croiss+'</td><td class="v">'+s.dette+'</td></tr>';}
+ return '<div class="defile"><table class="tab large"><thead><tr><th>Société</th><th>Cours</th><th>PER</th><th>Rdt</th><th>Ventes</th><th>Dette</th></tr></thead><tbody>'+r+'</tbody></table></div>';}
+
+/* ======================= B1 ======================= */
+MOD.push({id:"B1", titre:"Lire la cote et les indices", court:"La cote", duree:"≈ 60 min",
+retenir:"Une ligne de cote se lit <span class=\"s\">avec son volume</span> : une forte variation sur dix titres échangés ne dit presque rien. Un indice résume, il ne <span class=\"c\">remplace pas</span> la lecture de vos lignes.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Chaque soir de séance</span><div class="grand">Le Bulletin officiel de la cote</div><span class="mot">Publié par la BRVM sur brvm.org : cours, volumes, indices, dividendes, annonces</span>'},
+  sur:"La source", h:"Le Bulletin officiel de la cote, la référence",
+  p:["Les sites et les groupes WhatsApp reprennent des chiffres ; la référence reste le Bulletin officiel de la cote (BOC), publié par la BRVM après chaque séance.",
+   "On y trouve, pour chaque titre, les cours et les volumes du jour, le dernier dividende et plusieurs ratios ; puis les indices, les obligations, et les avis de la Bourse et des sociétés. EFA en tire chaque soir les données de la page BRVM."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Une ligne de cote (titre fictif)</span><table class="tab"><tbody><tr><td>Cours précédent</td><td>3 450</td></tr><tr><td>Ouverture</td><td>3 470</td></tr><tr><td>Clôture</td><td>3 500</td></tr><tr><td>Variation</td><td>+ 1,45 %</td></tr><tr><td>Volume</td><td>1 240 titres</td></tr><tr><td>Valeur échangée</td><td>4,3 M F</td></tr><tr><td>Dernier dividende net</td><td>189 F</td></tr><tr><td>Rendement net</td><td>5,4 %</td></tr><tr><td>PER</td><td>12,1</td></tr></tbody></table>'},
+  sur:"Lire une ligne", h:"Neuf chiffres, trois questions",
+  p:["<strong>Qu’est-ce qui a bougé ?</strong> La variation compare la clôture du jour à celle de la veille. <strong>Est-ce significatif ?</strong> Le volume et la valeur échangée disent combien de titres ont changé de main : une hausse de 7 % sur 12 titres pèse peu.",
+   "<strong>Est-ce cher ?</strong> Le rendement net rapporte le dernier dividende au cours ; le PER rapporte le cours au bénéfice par action. On y revient au module B4."]},
+ {t:"perso", rendu:function(){var D=(window.EFA_DATA||{}).brvm||{},A=(D.actions||[]).filter(function(a){return ['SNTS','ORAC'].indexOf(a[0])<0;}),h=A.filter(function(a){return a[4]>0}).length,b=A.filter(function(a){return a[4]<0}).length,s=A.slice().sort(function(x,y){return y[4]-x[4]}),l=function(a){return '<tr><td>'+a[1]+'</td><td class="v">'+a[3].toLocaleString('fr-FR')+'</td><td class="v" style="color:'+(a[4]>=0?'#3CCB7F':'#F09680')+'">'+(a[4]>=0?'+':'−')+Math.abs(a[4]).toString().replace('.',',')+'&nbsp;%</td></tr>'};
+  return '<div class="illu nuit"><span class="tabtitre">Séance du '+(D.seance||'')+' · données BRVM</span><table class="tab"><thead><tr><th>Plus fortes hausses</th><th>Cours</th><th>Jour</th></tr></thead><tbody>'+s.slice(0,3).map(l).join('')+'</tbody></table><table class="tab" style="margin-top:6px"><thead><tr><th>Plus fortes baisses</th><th>Cours</th><th>Jour</th></tr></thead><tbody>'+s.slice(-3).reverse().map(l).join('')+'</tbody></table><span class="mot">'+h+' titres en hausse, '+b+' en baisse</span></div>'+
+  '<div class="texte"><p class="sur">Exercice sur la vraie séance</p><h2 class="h">Lire la séance du jour</h2>'+ECOLE.outils.typo('<p class="p">Voici la dernière séance enregistrée. Avant de regarder un titre, regardez l’ensemble : combien de titres montent, combien baissent ? C’est la « largeur » du marché.</p><p class="p">Puis, pour chaque forte variation, posez la question du volume : ouvrez la page BRVM d’EFA ou le Bulletin officiel et vérifiez combien de titres ont été échangés. Une ligne sans volume est une rumeur, pas une tendance.</p><p class="p" style="font-size:.9em">Liste établie selon les règles éditoriales d’EFA.</p>')+'</div>';}},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">La famille des indices</span><table class="tab"><tbody><tr><td><b>BRVM Composite</b></td><td>toutes les actions</td></tr><tr><td><b>BRVM 30</b></td><td>les 30 plus échangées</td></tr><tr><td><b>BRVM Prestige</b></td><td>le compartiment Prestige</td></tr><tr><td><b>BRVM Principal</b></td><td>le compartiment Principal</td></tr><tr><td><b>Sectoriels</b></td><td>7 secteurs</td></tr><tr><td><b>Rentabilité globale</b></td><td>dividendes réinvestis</td></tr></tbody></table>'},
+  sur:"Les indices", h:"Chaque indice répond à une question différente",
+  p:["Les sociétés sont classées en compartiments (Prestige, Principal, Croissance) selon leur taille, leur liquidité et leurs engagements d’information. Les indices Prestige et Principal suivent les deux premiers.",
+   "Les indices sectoriels permettent de comparer une banque aux autres banques. Les indices de rentabilité globale ajoutent les dividendes, comme s’ils étaient réinvestis : sur une Bourse qui distribue beaucoup, c’est la meilleure mesure de ce qu’a gagné un actionnaire."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Un indice pondéré (exemple fictif)</span><table class="tab"><thead><tr><th></th><th>Poids</th><th>Jour</th></tr></thead><tbody><tr><td>Très grande société</td><td class="v">40 %</td><td class="v">+ 4 %</td></tr><tr><td>Neuf autres sociétés</td><td class="v">60 %</td><td class="v">− 1 %</td></tr><tr class="tot"><td>Indice</td><td></td><td class="v">+ 1 %</td></tr></tbody></table><span class="mot">L’indice monte alors que neuf sociétés sur dix baissent.</span>'},
+  sur:"Ce qu’un indice ne dit pas", h:"Les grandes capitalisations font l’indice",
+  p:["Les indices de la BRVM pondèrent les sociétés selon leur capitalisation. Quelques très grandes sociétés pèsent donc lourd : leur mouvement peut faire monter l’indice alors que la plupart des titres baissent.",
+   "Pour juger le marché, regardez l’indice, la largeur (hausses contre baisses) et la valeur échangée. Pour juger votre portefeuille, regardez vos lignes."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Le BRVM Composite gagne 1,4 % aujourd’hui"}, sur:"Décider", h:"Le Composite gagne 1,4 %. Koffi détient trois sociétés. Qu’en conclut-il ?",
+  opts:[["A","Que ses actions ont gagné environ 1,4 %.","ko","<b>Pas forcément.</b> L’indice peut monter grâce à deux ou trois grandes sociétés. Ses trois lignes ont pu baisser."],
+   ["B","Rien pour lui : il regarde ses trois lignes, leur volume, et la largeur du marché.","ok","<b>C’est la lecture professionnelle.</b> L’indice donne le climat général ; la décision se prend ligne par ligne."],
+   ["C","Qu’il faut acheter, puisque le marché monte.","ko","<b>Un jour de hausse n’est pas une raison.</b> Sa thèse porte sur des entreprises, pas sur l’indice du jour."]]}
+],
+quiz:[
+ ["Quel document est la référence pour les cours officiels ?",[["A","Le Bulletin officiel de la cote publié par la BRVM"],["B","Une capture d’écran partagée dans un groupe"],["C","Le site de votre SGI uniquement"]],"A","Le BOC est publié par la BRVM après chaque séance."],
+ ["Un titre gagne 7 % avec 15 titres échangés. Que vaut ce signal ?",[["A","Un signal très fort"],["B","Un signal faible : le volume est trop petit pour conclure"],["C","Une garantie de hausse demain"]],"B","Sans volume, une variation reflète quelques ordres isolés."],
+ ["Que mesure le rendement net affiché à la cote ?",[["A","Le dernier dividende net rapporté au cours"],["B","La hausse du cours sur un an"],["C","Le bénéfice de la SGI"]],"A","C’est le dividende divisé par le cours. Il dépend du dernier dividende, qui n’est pas garanti."],
+ ["Pourquoi un indice peut-il monter quand la plupart des titres baissent ?",[["A","Parce qu’il est pondéré par la capitalisation : les grandes sociétés pèsent plus"],["B","C’est impossible"],["C","Parce qu’il compte les obligations"]],"A","Une ou deux très grandes sociétés peuvent tirer l’indice."],
+ ["Que mesure un indice de rentabilité globale ?",[["A","La variation des cours seulement"],["B","La variation des cours plus les dividendes, supposés réinvestis"],["C","Le nombre de sociétés cotées"]],"B","Il mesure ce qu’a réellement gagné un actionnaire qui garde et réinvestit ses dividendes."]
+]});
+
+/* ======================= B2 ======================= */
+MOD.push({id:"B2", titre:"Lire les annonces des sociétés", court:"Les annonces", duree:"≈ 60 min",
+retenir:"Une annonce se lit en trois temps : <span class=\"s\">qu’est-ce qui change</span> pour l’entreprise, pour <span class=\"c\">mon nombre de titres</span>, et pour ma thèse. Le fractionnement ne crée pas de valeur ; des résultats en baisse se lisent avec leur explication.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Où trouver l’information</span><ol class="liste-n"><li><b>brvm.org</b> : avis de la Bourse et publications des sociétés cotées.</li><li><b>Le Bulletin officiel de la cote</b> : avis du jour.</li><li><b>Le site de la société</b> : rapports annuels, présentations.</li><li><b>Votre SGI</b> : opérations sur titres qui vous concernent.</li></ol>'},
+  sur:"Les sources", h:"Une société cotée doit informer le public",
+  p:["En entrant en Bourse, une société s’engage à publier régulièrement ses comptes et à annoncer sans délai les événements qui peuvent changer son cours. L’AMF-UMOA veille à cette information.",
+   "Lisez toujours l’annonce d’origine, pas son résumé sur les réseaux : le chiffre clé est souvent dans la deuxième page."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les annonces les plus fréquentes</span><table class="tab"><tbody><tr><td>Résultats annuels ou semestriels</td><td>la santé de l’entreprise</td></tr><tr><td>Convocation d’assemblée générale</td><td>dividende proposé, décisions</td></tr><tr><td>Avis de paiement du dividende</td><td>montant, dates</td></tr><tr><td>Augmentation de capital</td><td>nouvelles actions</td></tr><tr><td>Fractionnement</td><td>plus d’actions, même valeur</td></tr><tr><td>Offre publique, retrait de la cote</td><td>un acheteur pour tous</td></tr><tr><td>Suspension de cotation</td><td>information importante attendue</td></tr></tbody></table>'},
+  sur:"Les types", h:"Sept annonces à savoir lire",
+  p:["Chaque annonce répond à une question : l’entreprise va-t-elle mieux ou moins bien ? Mon nombre de titres change-t-il ? Dois-je faire quelque chose, et avant quelle date ?",
+   "Certaines opérations demandent une réponse de votre part, comme une augmentation de capital avec droits de souscription : votre SGI doit vous prévenir, mais vérifiez vous-même les dates."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Fractionnement 1 pour 10 (fictif)</span><table class="tab"><thead><tr><th></th><th>Avant</th><th>Après</th></tr></thead><tbody><tr><td>Actions détenues</td><td class="v">5</td><td class="v">50</td></tr><tr><td>Cours</td><td class="v">60 000 F</td><td class="v">6 000 F</td></tr><tr class="tot"><td>Valeur</td><td class="v">300 000 F</td><td class="v">300 000 F</td></tr></tbody></table>'},
+  sur:"Le fractionnement", h:"Plus d’actions, la même valeur",
+  p:["Un fractionnement divise chaque action en plusieurs. Le cours est divisé d’autant : votre patrimoine ne change pas. L’intérêt est de rendre le titre accessible aux petits budgets, ce qui peut améliorer sa liquidité.",
+   "À l’inverse, un regroupement réunit plusieurs actions en une. Là encore, la valeur ne change pas le jour de l’opération."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Le calendrier du dividende</span><div class="schema"><div><b>Assemblée générale</b>vote le dividende</div><div class="fl">↓</div><div><b>Date de détachement</b>le cours baisse d’environ le dividende</div><div class="fl">↓</div><div><b>Date de paiement</b>le net arrive sur le compte-titres</div></div>'},
+  sur:"Le dividende", h:"Pourquoi le cours baisse le jour du détachement",
+  p:["Le jour du détachement, l’action ne donne plus droit au dividende qui vient d’être voté. Son cours baisse donc en général d’un montant proche du dividende. Ce n’est pas une mauvaise nouvelle : l’argent sort de l’entreprise pour aller vers les actionnaires.",
+   "Acheter juste avant le détachement « pour toucher le dividende » ne rapporte rien en soi : on paie le dividende dans le prix, puis on paie l’impôt dessus."]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Annonce (fictive)</span><div class="wa"><small>Distribution Lagune · communiqué</small>Résultat net du premier semestre : <b>− 35 %</b>. Le recul s’explique par une provision exceptionnelle sur un litige fiscal ancien. Hors provision, le résultat progresse de 6 %. Le dividende annuel est maintenu.</div>'},
+  sur:"Lire une annonce", h:"Comment Koffi lit-il ce communiqué ?",
+  opts:[["A","− 35 % : il faut vendre avant les autres.","ko","<b>Il a lu le titre, pas le texte.</b> La baisse vient d’une charge exceptionnelle ; l’activité, elle, progresse."],
+   ["B","Il sépare l’exceptionnel du courant : l’activité progresse, mais il note le litige à surveiller.","ok","<b>Lecture professionnelle.</b> Les analystes distinguent toujours le résultat courant des éléments exceptionnels. Le risque fiscal entre dans ses « je revends si »."],
+   ["C","Le dividende est maintenu, donc tout va bien.","mo","<b>À moitié.</b> Un dividende maintenu rassure, mais il faut comprendre le litige : peut-il coûter plus ?"]]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Avis de la Bourse (fictif)</span><div class="wa"><small>BRVM · avis</small>La cotation de <b>Ciments du Sahel</b> est suspendue à compter de ce jour, dans l’attente d’un communiqué de la société.</div>'},
+  sur:"Lire un avis", h:"La cotation d’une société est suspendue. Que comprend Koffi ?",
+  opts:[["A","La société a fait faillite.","ko","<b>Pas nécessairement.</b> Une suspension protège les investisseurs le temps qu’une information importante soit publiée : rachat, résultats, opération sur le capital."],
+   ["B","Une information importante va être publiée ; il attend le communiqué avant toute décision.","ok","<b>Oui.</b> Pendant la suspension, personne ne peut acheter ni vendre. Il prépare ses questions et lit le communiqué dès sa sortie."],
+   ["C","Il peut vendre en urgence par sa SGI.","ko","<b>Impossible.</b> Tant que la cotation est suspendue, aucun ordre n’est exécuté."]]}
+],
+quiz:[
+ ["Où lire une annonce officielle d’une société cotée ?",[["A","Dans l’avis publié sur brvm.org ou sur le site de la société"],["B","Dans un message transféré"],["C","Nulle part : les sociétés n’ont pas à publier"]],"A","Les sociétés cotées ont des obligations d’information ; leurs publications sont relayées par la BRVM."],
+ ["Après un fractionnement 1 pour 10, votre patrimoine…",[["A","est multiplié par 10"],["B","ne change pas : 10 fois plus d’actions, cours divisé par 10"],["C","est divisé par 10"]],"B","Le fractionnement change le nombre d’actions et le cours, pas la valeur détenue."],
+ ["Le jour du détachement du dividende, le cours…",[["A","baisse en général d’environ le montant du dividende"],["B","monte du montant du dividende"],["C","ne bouge jamais"]],"A","L’action ne donne plus droit au dividende versé : son prix s’ajuste."],
+ ["Un résultat semestriel en baisse de 35 % à cause d’une charge exceptionnelle. Que faire d’abord ?",[["A","Vendre immédiatement"],["B","Séparer l’exceptionnel du courant et lire l’explication"],["C","Ignorer l’annonce"]],"B","On distingue ce qui se répétera de ce qui ne se répétera pas."],
+ ["Que signifie une suspension de cotation ?",[["A","Une faillite certaine"],["B","Une pause des échanges en attendant une information importante"],["C","Un jour férié"]],"B","Pendant la suspension, aucun ordre n’est exécuté."]
+]});
+
+/* ======================= B3 ======================= */
+MOD.push({id:"B3", titre:"Lire une entreprise", court:"Les comptes", duree:"≈ 75 min",
+retenir:"Trois documents, cinq ratios : <span class=\"s\">marge</span>, <span class=\"s\">rentabilité des fonds propres</span>, <span class=\"c\">endettement</span>, part distribuée, bénéfice par action. Et une règle : un bénéfice qui ne se transforme pas en <span class=\"c\">trésorerie</span> se surveille.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<div class="schema"><div><b>Compte de résultat</b>ce que l’entreprise a vendu et gagné sur l’année</div><div><b>Bilan</b>ce qu’elle possède et ce qu’elle doit, à une date</div><div><b>Tableau des flux de trésorerie</b>l’argent réellement entré et sorti</div></div>'},
+  sur:"Les trois documents", h:"Gagner, posséder, encaisser",
+  p:["Le rapport annuel d’une société cotée contient ces trois documents, certifiés par des commissaires aux comptes. Vous n’avez pas besoin de tout lire : une dizaine de lignes suffisent pour une première opinion.",
+   "Nous suivons Distribution Lagune, une société fictive de distribution, cotée à 3 500 F, avec 20 millions d’actions."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Compte de résultat (Md F, fictif)</span><table class="tab"><tbody><tr><td>Chiffre d’affaires</td><td>120</td></tr><tr><td>Résultat d’exploitation</td><td>9,6</td></tr><tr><td>Résultat net</td><td>5,8</td></tr></tbody></table><table class="tab" style="margin-top:6px"><tbody><tr><td>Marge d’exploitation</td><td>8 %</td></tr><tr><td>Marge nette</td><td>4,8 %</td></tr><tr><td>Bénéfice par action</td><td>290 F</td></tr></tbody></table>'},
+  sur:"Le compte de résultat", h:"Ce que l’entreprise garde de ce qu’elle vend",
+  p:["Le chiffre d’affaires dit combien elle vend ; le résultat d’exploitation, ce qu’il reste après les coûts de l’activité ; le résultat net, ce qu’il reste après les intérêts de la dette et l’impôt.",
+   "La marge se compare au secteur : 4,8 % est correct pour un distributeur, faible pour une banque. Le bénéfice par action (5,8 Md ÷ 20 M d’actions = 290 F) sert ensuite à juger le prix."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Bilan simplifié (Md F, fictif)</span><table class="tab"><tbody><tr><td>Capitaux propres</td><td>40</td></tr><tr><td>Dettes financières</td><td>24</td></tr><tr><td>Trésorerie disponible</td><td>6</td></tr><tr class="tot"><td>Dette nette</td><td>18</td></tr></tbody></table><table class="tab" style="margin-top:6px"><tbody><tr><td>Rentabilité des fonds propres</td><td>14,5 %</td></tr><tr><td>Dette nette ÷ capitaux propres</td><td>45 %</td></tr></tbody></table>'},
+  sur:"Le bilan", h:"Ce qu’elle doit, comparé à ce qui appartient aux actionnaires",
+  p:["Les capitaux propres appartiennent aux actionnaires. La rentabilité des fonds propres (5,8 ÷ 40 = 14,5 %) dit ce que l’entreprise gagne avec leur argent.",
+   "La dette nette (dettes moins trésorerie) se compare aux capitaux propres : 45 % reste raisonnable. Au-delà de 100 %, la dette pèse plus que les actionnaires : chaque hausse de taux ou mauvaise année devient dangereuse."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Bénéfice ou trésorerie ? (fictif)</span><table class="tab"><thead><tr><th></th><th>Année 1</th><th>Année 2</th></tr></thead><tbody><tr><td>Résultat net</td><td class="v">5,2</td><td class="v">5,8</td></tr><tr><td>Trésorerie d’exploitation</td><td class="v">6,1</td><td class="v">8,0</td></tr></tbody></table><span class="mot">La trésorerie suit le bénéfice : bon signe.</span>'},
+  sur:"Les flux", h:"Le bénéfice doit devenir de l’argent",
+  p:["Le bénéfice est un calcul comptable ; la trésorerie d’exploitation, c’est l’argent réellement encaissé par l’activité. Sur plusieurs années, les deux doivent avancer ensemble.",
+   "Un bénéfice en hausse avec une trésorerie qui baisse peut cacher des clients qui ne paient pas, ou des stocks qui gonflent. C’est souvent le premier signal d’une difficulté."]},
+ {t:"perso", rendu:function(c){var v=c.S.r.rt||{b:'5,8',n:'20',d:'210',c:'3 500'};return '<div class="illu nuit"><span class="tabtitre">Mes ratios</span><div class="exo"><label>Résultat net (Md F)<input id="r-b" inputmode="decimal" value="'+v.b+'"></label><label>Actions (millions)<input id="r-n" inputmode="decimal" value="'+v.n+'"></label><label>Dividende par action (F)<input id="r-d" inputmode="numeric" value="'+v.d+'"></label><label>Cours (F)<input id="r-c" inputmode="numeric" value="'+v.c+'"></label></div><table class="tab" style="margin-top:8px"><tbody><tr><td>Bénéfice par action</td><td id="r-1">–</td></tr><tr><td>Part du bénéfice distribuée</td><td id="r-2">–</td></tr><tr><td>PER</td><td id="r-3">–</td></tr><tr><td>Rendement brut</td><td id="r-4">–</td></tr></tbody></table></div><div class="texte"><p class="sur">Calculer</p><h2 class="h">Vos ratios, à partir du rapport annuel</h2>'+ECOLE.outils.typo('<p class="p">Prenez le rapport annuel d’une société qui vous intéresse et saisissez quatre chiffres. Les valeurs proposées sont celles de Distribution Lagune.</p><p class="p">Une part distribuée supérieure à 100 % signifie que la société verse plus qu’elle ne gagne : cela ne peut pas durer.</p>')+'</div>';},
+  apres:function(c){var g=function(i){return parseFloat(String(document.getElementById(i).value).replace(/\s/g,'').replace(',','.'))||0},f=function(){var b=g('r-b'),n=g('r-n'),d=g('r-d'),co=g('r-c');c.S.r.rt={b:document.getElementById('r-b').value,n:document.getElementById('r-n').value,d:document.getElementById('r-d').value,c:document.getElementById('r-c').value};c.sauver();var bpa=n?b*1000/n:0,O=ECOLE.outils;document.getElementById('r-1').textContent=bpa?O.F(bpa):'–';document.getElementById('r-2').textContent=bpa&&d?O.PC(d/bpa*100,0):'–';document.getElementById('r-3').textContent=bpa&&co?(co/bpa).toFixed(1).replace('.',','):'–';document.getElementById('r-4').textContent=co&&d?O.PC(d/co*100):'–';};['r-b','r-n','r-d','r-c'].forEach(function(i){document.getElementById(i).addEventListener('input',f)});f();}},
+ {t:"info", illu:{c:"papier", html:'<span class="tabtitre fonce">Une banque se lit autrement</span><table class="tab clair"><tbody><tr><td>Produit net bancaire</td><td>son « chiffre d’affaires »</td></tr><tr><td>Coût du risque</td><td>les crédits qui ne seront pas remboursés</td></tr><tr><td>Coefficient d’exploitation</td><td>frais ÷ produit net bancaire</td></tr><tr><td>Ratios de solvabilité</td><td>fonds propres exigés par le régulateur</td></tr></tbody></table>'},
+  sur:"Le cas des banques", h:"Les banques, un tiers de la cote, ont leurs propres chiffres",
+  p:["Les banques et sociétés financières pèsent lourd à la BRVM. Leur dette est leur matière première : les dépôts. On ne calcule donc pas leur endettement comme pour un distributeur.",
+   "On regarde la progression du produit net bancaire, le coût du risque (en hausse : des clients en difficulté), le coefficient d’exploitation (plus il est bas, mieux c’est) et le respect des ratios de solvabilité."]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Ciments du Sahel (fictif, Md F)</span><table class="tab"><thead><tr><th></th><th>An 1</th><th>An 2</th><th>An 3</th></tr></thead><tbody><tr><td>Résultat net</td><td class="v">2,0</td><td class="v">2,3</td><td class="v">2,6</td></tr><tr><td>Trésorerie d’exploitation</td><td class="v">1,8</td><td class="v">0,4</td><td class="v">− 0,9</td></tr><tr><td>Créances clients</td><td class="v">6</td><td class="v">9</td><td class="v">13</td></tr></tbody></table>'},
+  sur:"Décider", h:"Le bénéfice monte trois ans de suite. Qu’en pense Koffi ?",
+  opts:[["A","Excellent : le bénéfice progresse chaque année.","ko","<b>Regardez la ligne du dessous.</b> L’entreprise gagne sur le papier mais n’encaisse plus : ses clients lui doivent deux fois plus qu’il y a deux ans."],
+   ["B","Signal à examiner : le bénéfice ne devient plus de l’argent, les créances clients gonflent.","ok","<b>Exactement.</b> Il cherche l’explication dans le rapport : un gros client public en retard de paiement ? Des ventes à crédit trop généreuses ? Tant qu’il n’a pas de réponse, il n’achète pas."],
+   ["C","Sans importance : seule la hausse du bénéfice compte.","ko","<b>Une entreprise qui n’encaisse pas finit par emprunter</b>, ou par réduire son dividende."]]}
+],
+quiz:[
+ ["Que dit la rentabilité des fonds propres ?",[["A","Ce que l’entreprise gagne avec l’argent de ses actionnaires"],["B","Le cours de l’action"],["C","Le montant de la dette"]],"A","Résultat net ÷ capitaux propres."],
+ ["Comment calculer le bénéfice par action ?",[["A","Chiffre d’affaires ÷ nombre d’actions"],["B","Résultat net ÷ nombre d’actions"],["C","Cours ÷ dividende"]],"B","C’est la part du résultat net qui revient à chaque action."],
+ ["Le bénéfice monte, la trésorerie d’exploitation baisse trois ans de suite. C’est…",[["A","un signal à examiner"],["B","toujours une bonne nouvelle"],["C","impossible"]],"A","Le bénéfice ne se transforme plus en argent : clients qui ne paient pas, stocks qui gonflent…"],
+ ["Une société distribue 130 % de son bénéfice. Qu’en conclure ?",[["A","Que son dividende est très solide"],["B","Qu’elle verse plus qu’elle ne gagne : cela ne peut pas durer"],["C","Rien"]],"B","Au-delà de 100 %, le dividende puise dans les réserves ou la dette."],
+ ["Pour une banque, que signale un coût du risque en forte hausse ?",[["A","Plus de crédits qui risquent de ne pas être remboursés"],["B","Une hausse des dépôts"],["C","Une baisse des frais"]],"A","Le coût du risque mesure les pertes attendues sur les crédits."]
+]});
+
+/* ======================= B4 ======================= */
+MOD.push({id:"B4", titre:"Apprécier le prix", court:"Le prix", duree:"≈ 70 min",
+retenir:"Le prix se juge <span class=\"s\">relativement</span> : PER comparé au secteur et à la croissance, rendement comparé à l’<span class=\"s\">obligation d’État</span>. On se fixe un <span class=\"c\">prix maximum</span> avant d’acheter, avec une marge de sécurité.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">La règle des investisseurs</span><div class="grand">Le prix, c’est ce que vous payez. La valeur, ce que vous obtenez.</div>'},
+  sur:"Prix et valeur", h:"Une bonne entreprise peut être un mauvais placement",
+  p:["Une entreprise solide achetée trop cher peut rapporter peu pendant des années : il faut que ses bénéfices rattrapent le prix payé. À l’inverse, une entreprise ordinaire achetée bon marché peut bien rapporter.",
+   "Juger le prix ne demande pas de modèle compliqué. Trois repères suffisent pour commencer : le PER, le rendement du dividende, et la comparaison avec le placement sans risque de la région."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les trois sociétés fictives</span>'+tabSoc()+'<span class="mot">PER = cours ÷ bénéfice par action. Rdt = dividende ÷ cours.</span>'},
+  sur:"Le PER", h:"Combien d’années de bénéfice payez-vous ?",
+  p:["Un PER de 8 signifie que vous payez l’action huit fois le bénéfice annuel qu’elle représente. Plus il est élevé, plus le marché attend de croissance ; ou plus l’action est chère.",
+   "Le PER se compare : au secteur (les banques ont souvent des PER plus bas que les sociétés de consommation), à l’historique de la société, et à sa croissance. Un PER de 20 avec des ventes qui progressent de 2 % demande une très bonne raison."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Comparer au placement de référence</span><table class="tab"><tbody><tr><td>Obligation d’État de la région (repère)</td><td>≈ 6 %</td></tr><tr><td>Banque du Fleuve : rendement</td><td>7,0 %</td></tr><tr><td>Distribution Lagune : rendement</td><td>6,0 %</td></tr><tr><td>Ciments du Sahel : rendement</td><td>2,5 %</td></tr></tbody></table><span class="mot">Repère indicatif : regardez les taux des derniers emprunts d’État de la région.</span>'},
+  sur:"Le rendement", h:"Une action doit rapporter plus qu’une obligation d’État",
+  p:["Les États de l’UEMOA empruntent régulièrement auprès du public ; leurs derniers emprunts donnent un repère du rendement « sans grand risque » de la région. Une action, plus risquée, doit offrir davantage : dividende plus croissance.",
+   "Ciments du Sahel rapporte 2,5 % : il faut croire à une forte croissance future pour accepter ce rendement. Banque du Fleuve rapporte 7 % : il faut vérifier que ce dividende est durable."]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Les trois sociétés fictives</span>'+tabSoc()},
+  sur:"Décider", h:"Laquelle des trois paraît la plus chère au regard de ses chiffres ?",
+  opts:[["A","Banque du Fleuve : c’est la plus chère en francs.","ko","<b>Le prix en francs ne dit rien.</b> 6 000 F pour 750 F de bénéfice par action, c’est un PER de 8 : la moins chère des trois."],
+   ["B","Ciments du Sahel : PER de 20, ventes à + 2 %, dette élevée.","ok","<b>Oui.</b> Le marché paie vingt ans de bénéfices pour une société qui croît peu et doit beaucoup. Il faudrait une raison solide, comme un grand contrat à venir, pour justifier ce prix."],
+   ["C","Distribution Lagune : elle croît de 8 %.","mo","<b>Croître ne rend pas cher.</b> Un PER de 12 avec 8 % de croissance et 6 % de rendement paraît plutôt raisonnable. Reste à vérifier la durabilité."]]},
+ {t:"info", illu:{c:"corail", html:'<span class="tabtitre">Cinq pièges classiques</span><ol class="liste-n"><li><b>Le dividende exceptionnel</b> qui gonfle un rendement une seule année.</li><li><b>Le bénéfice exceptionnel</b> (une vente d’immeuble) qui écrase le PER.</li><li><b>Le titre peu échangé</b> dont le cours ne reflète que quelques ordres.</li><li><b>Comparer une banque à un industriel</b>.</li><li><b>Le cours qui a beaucoup baissé</b>, pris pour une affaire.</li></ol>'},
+  sur:"Les pièges", h:"Un ratio se vérifie avant de se croire",
+  p:["Les ratios de la cote sont calculés sur le dernier dividende et le dernier bénéfice publiés. S’ils étaient exceptionnels, le ratio trompe.",
+   "Ouvrez toujours le rapport annuel pour vérifier : le dividende de l’an dernier était-il ordinaire ? Le bénéfice comprenait-il une plus-value de cession ?"]},
+ {t:"perso", rendu:function(c){var v=c.S.r.px||{b:'290',p:'12',m:'15',c:'3 500'};return '<div class="illu nuit"><span class="tabtitre">Mon prix maximum</span><div class="exo"><label>Bénéfice par action (F)<input id="x-b" inputmode="numeric" value="'+v.b+'"></label><label>PER que je juge raisonnable<input id="x-p" inputmode="decimal" value="'+v.p+'"></label><label>Marge de sécurité (%)<input id="x-m" inputmode="numeric" value="'+v.m+'"></label><label>Cours actuel (F)<input id="x-c" inputmode="numeric" value="'+v.c+'"></label></div><div class="resultat" id="x-r">–</div><span class="verdict" id="x-v"></span></div><div class="texte"><p class="sur">Calculer</p><h2 class="h">Fixer son prix maximum avant d’acheter</h2>'+ECOLE.outils.typo('<p class="p">Choisissez un PER raisonnable pour la société, d’après son secteur et sa croissance. Multipliez-le par le bénéfice par action : c’est une valeur estimée. Retirez une marge de sécurité, pour vos erreurs d’estimation.</p><p class="p">Le résultat est votre limite d’ordre : au-dessus, vous attendez. C’est ainsi que les professionnels évitent d’acheter dans l’enthousiasme.</p>')+'</div>';},
+  apres:function(c){var g=function(i){return parseFloat(String(document.getElementById(i).value).replace(/\s/g,'').replace(',','.'))||0},f=function(){var b=g('x-b'),p=g('x-p'),m=g('x-m'),co=g('x-c');c.S.r.px={b:document.getElementById('x-b').value,p:document.getElementById('x-p').value,m:document.getElementById('x-m').value,c:document.getElementById('x-c').value};c.sauver();if(!b||!p){document.getElementById('x-r').textContent='–';return;}var mx=b*p*(1-m/100),O=ECOLE.outils;document.getElementById('x-r').textContent=O.F(mx);document.getElementById('x-v').textContent=co?(co<=mx?'Le cours est sous votre prix maximum.':'Le cours dépasse votre prix maximum de '+O.PC((co/mx-1)*100)+' : vous attendez.'):'prix maximum pour votre ordre à cours limité';};['x-b','x-p','x-m','x-c'].forEach(function(i){document.getElementById(i).addEventListener('input',f)});f();}}
+],
+quiz:[
+ ["Que signifie un PER de 10 ?",[["A","Le cours vaut dix fois le bénéfice annuel par action"],["B","Le dividende est de 10 %"],["C","L’action a monté de 10 %"]],"A","PER = cours ÷ bénéfice par action."],
+ ["Une action à 60 000 F est-elle plus chère qu’une action à 3 000 F ?",[["A","Oui, toujours"],["B","On ne peut pas le dire sans comparer au bénéfice et au dividende"],["C","Non, jamais"]],"B","Le prix en francs ne dit rien ; seul le rapport au bénéfice et au dividende compte."],
+ ["Pourquoi comparer le rendement d’une action à celui d’une obligation d’État ?",[["A","Parce qu’une action, plus risquée, doit offrir davantage"],["B","Parce qu’elles ont le même risque"],["C","Ce n’est pas utile"]],"A","L’obligation d’État donne un repère de rendement peu risqué dans la région."],
+ ["Un rendement de 14 % affiché à la cote, alors que la société versait 5 % les années précédentes. Que vérifier ?",[["A","Rien, c’est une affaire"],["B","Si le dernier dividende était exceptionnel"],["C","Le cours de l’indice"]],"B","Un dividende exceptionnel gonfle le rendement une seule année."],
+ ["À quoi sert la marge de sécurité ?",[["A","À couvrir vos erreurs d’estimation de la valeur"],["B","À payer la SGI"],["C","À rien"]],"A","Personne n’estime la valeur avec précision ; la marge protège de l’excès d’optimisme."]
+]});
+
+/* ======================= B5 ======================= */
+MOD.push({id:"B5", titre:"Les ordres en détail", court:"Les ordres", duree:"≈ 60 min",
+retenir:"Le marché donne la priorité au <span class=\"s\">meilleur prix</span>, puis au <span class=\"s\">premier arrivé</span>. Une limite d’achat est un maximum : vous pouvez payer moins. Un cours ne peut pas varier sans limite en une séance, et l’argent d’une vente arrive <span class=\"c\">deux jours ouvrés</span> plus tard.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Une séance de la BRVM (heure d’Abidjan)</span><table class="tab"><tbody><tr><td>9 h 00</td><td>pré-ouverture : les ordres s’accumulent</td></tr><tr><td>9 h 45</td><td>fixing d’ouverture</td></tr><tr><td>9 h 45 – 14 h 00</td><td>négociation en continu</td></tr><tr><td>14 h 00 – 14 h 30</td><td>pré-clôture</td></tr><tr><td>14 h 30</td><td>fixing de clôture</td></tr><tr><td>14 h 30 – 15 h 00</td><td>négociation au dernier cours</td></tr><tr><td>15 h 00</td><td>fermeture, résultats officiels</td></tr></tbody></table>'},
+  sur:"La séance", h:"Les phases d’une journée de Bourse",
+  p:["Pendant la pré-ouverture, les ordres arrivent sans s’exécuter. Au fixing, la Bourse calcule le prix qui permet d’échanger le plus de titres. Entre les deux fixings, les ordres se rencontrent en continu.",
+   "Le cours de clôture, fixé à 14 h 30, sert de référence pour le lendemain. Après, on peut encore échanger, mais seulement à ce cours. Les veilles de fêtes, la séance est raccourcie."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Priorité dans le carnet</span><ol class="liste-n"><li><b>Le meilleur prix d’abord</b> : l’acheteur qui offre le plus, le vendeur qui demande le moins.</li><li><b>À prix égal, le premier arrivé</b>.</li></ol><span class="tabtitre" style="margin-top:8px">L’écart</span><span class="mot">Meilleur acheteur 4 900 F, meilleur vendeur 5 000 F : 100 F d’écart, soit 2 %. Un aller-retour immédiat le coûte, en plus des frais.</span>'},
+  sur:"Le carnet", h:"Meilleur prix d’abord, puis premier arrivé",
+  p:["Votre ordre passe devant ceux qui offrent moins bien, et derrière ceux qui sont arrivés avant au même prix. Sur un titre peu échangé, être servi peut prendre des jours.",
+   "L’écart entre le meilleur acheteur et le meilleur vendeur est un coût caché : plus il est large, plus acheter puis revendre vite coûte cher."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Trois règles de marché</span><table class="tab"><tbody><tr><td>Variation par séance</td><td>plafonnée, de l’ordre de 7,5 % pour les actions</td></tr><tr><td>Règlement-livraison</td><td>deux jours ouvrés après la séance</td></tr><tr><td>Cours de référence</td><td>la clôture de la veille</td></tr></tbody></table><span class="mot">Règles susceptibles d’évoluer : les instructions de la BRVM font foi.</span>'},
+  sur:"Les règles", h:"Limites de variation et délai de règlement",
+  p:["Pour éviter les emballements, le cours d’une action ne peut pas s’écarter au-delà d’un certain pourcentage de son cours de référence en une séance. Une très bonne ou très mauvaise nouvelle peut donc mettre plusieurs séances à se refléter.",
+   "Les titres et l’argent changent de main deux jours ouvrés après la séance. Si vous vendez lundi, l’argent est disponible au mieux mercredi : ne comptez pas dessus pour une dépense du lendemain."]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Le carnet ce matin (fictif)</span><table class="carnet"><thead><tr><th>Acheteurs</th><th>Prix</th><th>Vendeurs</th></tr></thead><tbody><tr><td></td><td class="ven">5 100 F</td><td class="ven">30</td></tr><tr><td></td><td class="ven">4 900 F</td><td class="ven">10</td></tr><tr><td class="ach">25</td><td class="ach">4 800 F</td><td></td></tr></tbody></table>'},
+  sur:"Exercice 1", h:"Koffi envoie un achat de 10 titres à cours limité à 5 000 F. À quel prix est-il servi ?",
+  opts:[["A","À 5 000 F, sa limite.","ko","<b>La limite est un maximum.</b> Un vendeur propose 10 titres à 4 900 F : Koffi les obtient à ce prix, meilleur que sa limite."],
+   ["B","À 4 900 F, le meilleur prix disponible sous sa limite.","ok","<b>Oui.</b> L’ordre s’exécute au meilleur prix disponible, dans la limite fixée. Koffi économise 1 000 F sur les 10 titres."],
+   ["C","À 5 100 F.","ko","<b>Impossible.</b> 5 100 F dépasse sa limite : son ordre ne prend jamais un prix plus élevé."]]},
+ {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Le carnet après une bonne nouvelle (fictif)</span><table class="carnet"><thead><tr><th>Acheteurs</th><th>Prix</th><th>Vendeurs</th></tr></thead><tbody><tr><td class="ach">40</td><td class="ach">5 350 F</td><td></td></tr><tr><td class="ach">80</td><td class="ach">5 300 F</td><td></td></tr><tr><td class="ach">300</td><td class="ach">5 000 F</td><td></td></tr></tbody></table><span class="mot">Koffi veut vendre 200 titres.</span>'},
+  sur:"Exercice 2", h:"Koffi veut vendre 200 titres. Quel ordre passe-t-il ?",
+  opts:[["A","Au marché, pour tout vendre vite.","ko","<b>Il brade la fin de son ordre.</b> 40 titres partent à 5 350 F, 80 à 5 300 F, et les 80 derniers à 5 000 F."],
+   ["B","À cours limité à 5 300 F, valable une semaine.","ok","<b>Bon équilibre.</b> 120 titres partent tout de suite à 5 350 F et 5 300 F ; le reste attend des acheteurs à son prix. Il ne vend pas en dessous de ce qu’il a décidé."],
+   ["C","À cours limité à 6 000 F.","mo","<b>Trop loin.</b> Aucun acheteur n’est proche de ce prix ; avec la limite de variation par séance, le cours ne peut pas y arriver en un jour."]]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Avant d’envoyer un ordre</span><ol class="liste-n"><li><b>Sens, titre, quantité</b> vérifiés deux fois.</li><li><b>Limite</b> égale à mon prix maximum, pas au dernier cours.</li><li><b>Validité</b> choisie et notée.</li><li><b>Volume moyen</b> du titre regardé.</li><li><b>Avis d’opéré</b> contrôlé à la réception.</li></ol>'},
+  sur:"La routine", h:"Cinq vérifications, à chaque ordre",
+  p:["Les professionnels ont des listes de contrôle pour une raison : la plupart des pertes évitables viennent d’erreurs simples. Un zéro de trop, le mauvais titre, un ordre oublié dans le carnet.",
+   "Gardez une trace écrite de chaque ordre et de chaque avis d’opéré dans votre cahier."]}
+],
+quiz:[
+ ["Dans le carnet, qui est servi en premier ?",[["A","Le meilleur prix, puis à prix égal le premier arrivé"],["B","Le plus gros ordre"],["C","Le client de la plus grande SGI"]],"A","Priorité prix, puis temps."],
+ ["Votre achat est limité à 5 000 F ; un vendeur propose à 4 900 F. Vous payez…",[["A","5 000 F"],["B","4 900 F"],["C","Le cours de clôture"]],"B","La limite est un maximum ; vous obtenez le meilleur prix disponible."],
+ ["Vous vendez lundi. Quand l’argent est-il disponible au mieux ?",[["A","Lundi soir"],["B","Deux jours ouvrés plus tard"],["C","Un mois plus tard"]],"B","Le règlement-livraison se fait deux jours ouvrés après la séance."],
+ ["Pourquoi une très bonne nouvelle peut-elle mettre plusieurs séances à se refléter dans le cours ?",[["A","Parce que la variation d’une séance est plafonnée"],["B","Parce que la Bourse ferme"],["C","Ce n’est jamais le cas"]],"A","La limite de variation par séance étale les grands mouvements."],
+ ["Qu’est-ce que l’écart entre meilleur acheteur et meilleur vendeur ?",[["A","Un coût caché quand on achète et revend vite"],["B","Une commission de la SGI"],["C","Un impôt"]],"A","Plus l’écart est large, plus un aller-retour rapide coûte."]
+]});
+
+/* ======================= B6 ======================= */
+MOD.push({id:"B6", titre:"Construire et suivre un portefeuille", court:"Le portefeuille", duree:"≈ 60 min",
+retenir:"Un portefeuille se construit <span class=\"s\">par couches</span> : réserve, obligations ou fonds, actions. Cinq à dix lignes, aucune au-delà d’un <span class=\"c\">cinquième</span>, un rééquilibrage par an et un tableau de bord à jour.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<div class="schema"><div><b>Couche 1 · la réserve</b>hors Bourse, disponible tout de suite</div><div><b>Couche 2 · obligations et fonds</b>revenus réguliers, risque modéré</div><div><b>Couche 3 · actions</b>croissance et dividendes, horizon long</div></div>'},
+  sur:"L’allocation", h:"Décider la répartition avant de choisir les titres",
+  p:["La décision la plus importante n’est pas le choix d’une action : c’est la part de votre argent placée en actions, en obligations et en réserve. Elle dépend de votre horizon et de votre capacité à supporter une baisse.",
+   "Plus l’échéance d’un projet approche, plus la part des actions doit baisser."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Règles de diversification</span><ol class="liste-n"><li><b>Cinq à dix lignes</b> en actions, ou un fonds.</li><li><b>Aucune ligne au-delà d’un cinquième</b> du portefeuille actions.</li><li><b>Plusieurs secteurs</b> : pas seulement des banques.</li><li><b>Plusieurs pays</b> de l’UEMOA.</li></ol>'},
+  sur:"Diversifier", h:"Répartir entre sociétés, secteurs et pays",
+  p:["À la BRVM, la tentation est forte de ne détenir que des banques : elles sont nombreuses et versent de bons dividendes. Mais une crise du crédit les toucherait toutes en même temps.",
+   "Répartir entre secteurs et pays protège d’un choc qui frappe un seul secteur ou une seule économie."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Rééquilibrer (fictif)</span><table class="tab"><thead><tr><th></th><th>Cible</th><th>Après un an</th></tr></thead><tbody><tr><td>Actions</td><td class="v">60 %</td><td class="v">72 %</td></tr><tr><td>Obligations et fonds</td><td class="v">40 %</td><td class="v">28 %</td></tr></tbody></table><span class="mot">On revient à 60 / 40 avec les nouveaux versements, ou en vendant un peu de ce qui a le plus monté.</span>'},
+  sur:"Rééquilibrer", h:"Une fois par an, revenir à sa répartition",
+  p:["Quand les actions montent, leur part grossit et votre risque avec. Une fois par an, comparez la répartition réelle à votre cible.",
+   "Le plus simple : orienter les nouveaux versements vers ce qui est en dessous de la cible. Cela évite des frais de vente."]},
+ {t:"info", illu:{c:"papier", html:'<span class="tabtitre fonce">Mon tableau de bord (modèle)</span><table class="tab clair"><thead><tr><th>Ligne</th><th>Poids</th><th>Raison</th><th>Je revends si</th></tr></thead><tbody><tr><td>Fonds diversifié</td><td>35 %</td><td>base</td><td>—</td></tr><tr><td>Société A</td><td>15 %</td><td>dividende</td><td>dividende coupé</td></tr><tr><td>Société B</td><td>15 %</td><td>croissance</td><td>2 ans sans croissance</td></tr><tr><td>Obligation</td><td>35 %</td><td>revenu</td><td>échéance</td></tr></tbody></table>'},
+  sur:"Suivre", h:"Une ligne par titre, quatre colonnes",
+  p:["Pour chaque ligne : son poids, la raison de l’avoir, et la condition qui vous ferait vendre. Mettez-le à jour à chaque publication de résultats, pas à chaque séance.",
+   "Sur l’impôt : les dividendes sont taxés à la source, à un taux qui dépend du pays de la société, souvent entre 10 et 15 %. Pour les plus-values, renseignez-vous sur les règles de votre pays de résidence."]},
+ {t:"choix", illu:{photo:"koffi-sourire.jpg", leg:"Sa banque a doublé en deux ans"}, sur:"Décider", h:"La banque de Koffi a doublé : elle pèse maintenant 55 % de ses actions. Que fait-il ?",
+  opts:[["A","Rien : c’est sa meilleure ligne.","ko","<b>Son risque a doublé avec.</b> Une mauvaise nouvelle sur cette seule banque toucherait plus de la moitié de ses actions."],
+   ["B","Il ramène la ligne vers un cinquième, par ses nouveaux versements ailleurs ou une vente partielle.","ok","<b>C’est le rééquilibrage.</b> Il garde une part de la banque, encaisse une partie du gain et répartit le risque."],
+   ["C","Il vend tout pour sécuriser le gain.","mo","<b>Possible, mais radical.</b> Si sa raison d’acheter tient toujours, réduire suffit. Vendre tout coûte des frais et l’oblige à réinvestir ailleurs."]]}
+],
+quiz:[
+ ["Quelle décision pèse le plus sur le résultat d’un portefeuille ?",[["A","La répartition entre actions, obligations et réserve"],["B","Le jour de la semaine où l’on achète"],["C","Le nom de la SGI"]],"A","L’allocation détermine l’essentiel du risque et du rendement."],
+ ["Pourquoi éviter de ne détenir que des banques ?",[["A","Parce qu’une crise du secteur les toucherait toutes en même temps"],["B","Parce qu’elles ne versent pas de dividende"],["C","Parce qu’elles ne sont pas cotées"]],"A","La diversification par secteur protège d’un choc sectoriel."],
+ ["Quelle part maximum donner à une seule ligne d’actions, selon la règle EFA ?",[["A","Environ un cinquième"],["B","La moitié"],["C","Tout"]],"A","Au-delà, une seule mauvaise nouvelle pèse trop lourd."],
+ ["Comment rééquilibrer en limitant les frais ?",[["A","En orientant les nouveaux versements vers ce qui est sous la cible"],["B","En vendant tout chaque mois"],["C","En ne faisant rien"]],"A","Les nouveaux versements corrigent la répartition sans frais de vente."],
+ ["Que noter pour chaque ligne du tableau de bord ?",[["A","Son poids, sa raison et la condition de revente"],["B","Seulement le cours du jour"],["C","Le nom du conseiller"]],"A","Ces trois colonnes vous permettent de décider à froid."]
+]});
+
+/* ======================= B7 ======================= */
+MOD.push({id:"B7", titre:"Emprunts obligataires et introductions en Bourse", court:"Emprunts et introductions", duree:"≈ 50 min",
+retenir:"Avant de souscrire : la <span class=\"s\">note d’information</span> visée par l’AMF-UMOA. Pour un emprunt : taux, durée, remboursement, garantie. Pour une introduction : usage des fonds, prix, et <span class=\"c\">aucune hausse garantie</span>.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Emprunt obligataire par appel public (fictif)</span><table class="tab"><tbody><tr><td>Émetteur</td><td>un État de l’UEMOA</td></tr><tr><td>Taux</td><td>6,25 % par an</td></tr><tr><td>Durée</td><td>7 ans</td></tr><tr><td>Remboursement</td><td>par septièmes, dès la 2e année</td></tr><tr><td>Valeur d’une obligation</td><td>10 000 F</td></tr><tr><td>Souscription</td><td>auprès des SGI, pendant 3 semaines</td></tr></tbody></table>'},
+  sur:"Les emprunts", h:"Souscrire à un emprunt d’État ou d’entreprise",
+  p:["États et entreprises de la région empruntent auprès du public. On souscrit par sa SGI pendant une période annoncée, souvent avec des obligations de 10 000 F l’unité. Les titres sont ensuite cotés à la BRVM.",
+   "Lisez dans la note d’information : le taux, la durée, le mode de remboursement (tout à la fin, ou par parts chaque année), l’éventuel différé, et la garantie. Les intérêts peuvent être soumis à un impôt selon l’émetteur et le pays."]},
+ {t:"perso", rendu:function(c){var v=c.S.r.ob||{m:'500 000',t:'6,25',d:'7'};return '<div class="illu nuit"><span class="tabtitre">Mes intérêts</span><div class="exo trois"><label>Montant<input id="o-m" inputmode="numeric" value="'+v.m+'"></label><label>Taux %<input id="o-t" inputmode="decimal" value="'+v.t+'"></label><label>Années<input id="o-d" inputmode="numeric" value="'+v.d+'"></label></div><table class="tab" style="margin-top:8px"><tbody><tr><td>Intérêts la 1re année</td><td id="o-1">–</td></tr><tr><td>Total des intérêts, remboursement à la fin</td><td id="o-2">–</td></tr><tr><td>Total, remboursement par parts égales</td><td id="o-3">–</td></tr></tbody></table></div><div class="texte"><p class="sur">Calculer</p><h2 class="h">Ce que rapporte un emprunt selon son remboursement</h2>'+ECOLE.outils.typo('<p class="p">Quand le capital est remboursé par parts chaque année, les intérêts portent sur un montant qui diminue : vous touchez moins d’intérêts au total, mais vous récupérez votre argent plus tôt.</p><p class="p">Calcul indicatif, avant impôt, sans différé.</p>')+'</div>';},
+  apres:function(c){var g=function(i){return parseFloat(String(document.getElementById(i).value).replace(/\s/g,'').replace(',','.'))||0},f=function(){var m=g('o-m'),t=g('o-t')/100,d=Math.round(g('o-d'));c.S.r.ob={m:document.getElementById('o-m').value,t:document.getElementById('o-t').value,d:document.getElementById('o-d').value};c.sauver();var O=ECOLE.outils;if(!m||!t||!d){['o-1','o-2','o-3'].forEach(function(i){document.getElementById(i).textContent='–'});return;}var am=0;for(var k=0;k<d;k++)am+=m*(1-k/d)*t;document.getElementById('o-1').textContent=O.F(m*t);document.getElementById('o-2').textContent=O.F(m*t*d);document.getElementById('o-3').textContent=O.F(am);};['o-m','o-t','o-d'].forEach(function(i){document.getElementById(i).addEventListener('input',f)});f();}},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Lire une note d’introduction</span><ol class="liste-n"><li><b>Pourquoi la société entre en Bourse</b> : lever de l’argent neuf, ou permettre à des actionnaires de vendre ?</li><li><b>Le prix proposé</b>, rapporté au bénéfice et au dividende.</li><li><b>La politique de dividende</b> annoncée.</li><li><b>Les risques</b> listés par la société elle-même.</li></ol>'},
+  sur:"Les introductions", h:"Entrer au capital d’une société qui arrive en Bourse",
+  p:["Lors d’une introduction, la société et ses actionnaires proposent des actions au public à un prix fixé, pendant une période de souscription. La note d’information, visée par l’AMF-UMOA, dit tout ce qu’il faut savoir.",
+   "Si la demande dépasse l’offre, chacun est servi en partie seulement. Le premier jour de cotation, le cours peut monter, ou descendre sous le prix d’introduction."]},
+ {t:"choix", illu:{c:"nuit", html:'<div class="wa"><small>Message reçu</small>Introduction en Bourse de la société X ! Déjà 3 fois sursouscrite, <b>hausse garantie le premier jour</b>. Envoie-moi ta souscription, je m’en occupe 👍</div>'},
+  sur:"Décider", h:"Un contact propose de « s’occuper » de la souscription de Koffi. Que fait-il ?",
+  opts:[["A","Il envoie l’argent : c’est sursouscrit, donc sûr.","ko","<b>Double erreur.</b> Aucune hausse n’est garantie, et une souscription se fait par sa propre SGI agréée, jamais par un intermédiaire informel."],
+   ["B","Il lit la note d’information et souscrit lui-même par sa SGI, s’il est convaincu.","ok","<b>Oui.</b> Il juge le prix comme pour n’importe quelle action, sait qu’il sera peut-être servi en partie, et garde la maîtrise de son argent."],
+   ["C","Il souscrit le maximum possible pour être bien servi.","mo","<b>Risqué.</b> Souscrire plus que ce qu’on veut vraiment, en comptant sur la réduction, peut se retourner : si la demande est plus faible que prévu, on est servi en totalité."]]}
+],
+quiz:[
+ ["Quel document lire avant de souscrire à un emprunt ou à une introduction ?",[["A","La note d’information visée par l’AMF-UMOA"],["B","Le message d’un contact"],["C","Le cours de l’indice"]],"A","Elle décrit l’opération, les risques et les conditions."],
+ ["Un emprunt remboursé par parts chaque année, comparé à un remboursement à la fin…",[["A","rapporte moins d’intérêts au total mais rend l’argent plus tôt"],["B","rapporte toujours plus"],["C","ne rend jamais le capital"]],"A","Les intérêts portent sur un capital qui diminue."],
+ ["Une introduction en Bourse sursouscrite garantit-elle une hausse ?",[["A","Oui"],["B","Non : le cours peut baisser sous le prix d’introduction"],["C","Oui, si la société est connue"]],"B","Aucune hausse n’est garantie, même après une forte demande."],
+ ["Par qui souscrire à une introduction en Bourse ?",[["A","Par sa SGI agréée"],["B","Par un contact sur WhatsApp"],["C","En liquide à la société"]],"A","Les souscriptions passent par les SGI agréées."],
+ ["Que vérifier sur l’usage de l’argent d’une introduction ?",[["A","S’il finance l’entreprise ou s’il permet surtout à des actionnaires de vendre"],["B","Rien"],["C","La couleur du logo"]],"A","Une introduction où les actionnaires vendent beaucoup mérite qu’on comprenne pourquoi."]
+]});
+
+/* ======================= B8 · Projet ======================= */
+MOD.push({id:"B8", titre:"Projet · Le comité d’investissement", court:"Comité d’investissement", duree:"≈ 45 min",
+retenir:"Une décision d’investissement tient sur une page : <span class=\"s\">la thèse</span>, <span class=\"c\">deux risques</span>, un <span class=\"s\">prix maximum</span>, un ordre, et les conditions de revente.",
+ecrans:[
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les trois sociétés fictives</span>'+tabSoc()},
+  sur:"Le projet", h:"Présenter un investissement comme devant un comité",
+  p:["Dans les fonds d’investissement, aucune décision ne se prend sans une note présentée à un comité : pourquoi investir, ce qui pourrait mal tourner, à quel prix, et quand sortir.",
+   "Choisissez l’une des trois sociétés fictives, ou une vraie société dont vous avez lu le rapport annuel. Remplissez votre fiche : elle vous servira de modèle pour chaque achat réel."]},
+ {t:"perso", bloque:function(c){return !(c.S.r.fi&&c.S.r.fi.ok)}, consigne:"Remplissez votre fiche <span class=\"c-l\">à gauche</span><span class=\"c-p\">ci-dessus</span>, puis touchez « Écrire ma fiche ».", rendu:function(c){var p=c.S.r.fi||{},v=function(k){return (p[k]||'').replace(/"/g,'&quot;')};
+  if(p.ok) return '<div class="illu papier"><span class="tabtitre fonce">Ma fiche de comité</span><div class="plan-sortie" id="fi-txt">'+p.txt+'</div><button class="copier" id="fi-copie" type="button">Copier ma fiche</button></div><div class="texte"><p class="sur">Fiche prête</p><h2 class="h">Votre décision tient sur une page</h2>'+ECOLE.outils.typo('<p class="p">Relisez-la demain, à froid. Si un point vous gêne, c’est le moment de corriger, pas après l’achat.</p><p class="p">Gardée sur ce téléphone seulement. <a href="#" id="fi-mod">Modifier ma fiche</a></p>')+'</div>';
+  return '<div class="illu papier"><span class="tabtitre fonce">Ma fiche de comité</span><div class="exo" style="width:100%"><label style="grid-column:1/-1">Société<input id="fi-s" value="'+v('s')+'" placeholder="ex. Distribution Lagune"></label><label style="grid-column:1/-1">Ma thèse en une phrase<input id="fi-t" value="'+v('t')+'" placeholder="ex. ventes en hausse, dividende couvert, dette modérée"></label><label>Risque 1<input id="fi-r1" value="'+v('r1')+'" placeholder="ex. litige fiscal"></label><label>Risque 2<input id="fi-r2" value="'+v('r2')+'" placeholder="ex. concurrence"></label><label>Bénéfice par action (F)<input id="fi-b" inputmode="numeric" value="'+v('b')+'" placeholder="290"></label><label>PER raisonnable<input id="fi-p" inputmode="decimal" value="'+v('p')+'" placeholder="12"></label><label>Montant investi (F)<input id="fi-m" inputmode="numeric" value="'+v('m')+'" placeholder="300 000"></label><label>Je revends si…<input id="fi-v" value="'+v('v')+'" placeholder="ex. dividende réduit deux ans"></label></div><button class="btn suiv" id="fi-ok" type="button">Écrire ma fiche</button></div>'+
+  '<div class="texte"><p class="sur">Votre fiche</p><h2 class="h">Huit cases, une décision</h2>'+ECOLE.outils.typo('<p class="p">La thèse porte sur l’entreprise. Les risques sont ceux qui contrediraient la thèse. Le prix maximum vient du bénéfice par action et d’un PER raisonnable, moins 15 % de marge de sécurité.</p><p class="p">La fiche calcule votre limite d’ordre et la quantité correspondante.</p>')+'</div>';},
+  apres:function(c){var mod=document.getElementById('fi-mod');if(mod)mod.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();c.S.r.fi.ok=false;c.sauver();c.refaire();});
+   var cp=document.getElementById('fi-copie');if(cp)cp.addEventListener('click',function(){try{navigator.clipboard.writeText(document.getElementById('fi-txt').innerText).then(function(){cp.textContent='Fiche copiée';},function(){});}catch(e){}});
+   var b=document.getElementById('fi-ok');if(!b)return;b.addEventListener('click',function(){var g=function(i){return document.getElementById(i).value.trim()},n=function(i){return parseFloat(g(i).replace(/\s/g,'').replace(',','.'))||0},O=ECOLE.outils,e=function(t){return t.replace(/[<>&]/g,'')};
+    var d={s:g('fi-s'),t:g('fi-t'),r1:g('fi-r1'),r2:g('fi-r2'),b:g('fi-b'),p:g('fi-p'),m:g('fi-m'),v:g('fi-v')};
+    var manque=['fi-s','fi-t','fi-r1','fi-b','fi-p','fi-m'].filter(function(i){return !g(i)})[0];if(manque){document.getElementById(manque).focus();return;}
+    var mx=Math.floor(n('fi-b')*n('fi-p')*0.85),q=mx?Math.floor(n('fi-m')/(mx*1.013)):0;
+    d.txt='<b>'+e(d.s)+'</b><br>Thèse&nbsp;: '+e(d.t)+'.<br>Risques&nbsp;: '+e(d.r1)+(d.r2?' ; '+e(d.r2):'')+'.<br>Prix maximum&nbsp;: <b>'+O.F(mx)+'</b> ('+e(d.b)+'&nbsp;F × PER '+e(d.p)+', moins 15&nbsp;%).<br>Ordre&nbsp;: achat de <b>'+q+' actions</b> à cours limité à '+O.F(mx)+', frais compris dans '+O.F(n('fi-m'))+'. Si le cours est au-dessus, l’ordre attend.<br>Je revends si '+e(d.v||'ma thèse est contredite')+'.';
+    d.ok=true;c.S.r.fi=d;c.sauver();O.compte('ecole-B8-fiche');if(window.EFA_SUIVI)EFA_SUIVI.planifier({id:'B8',titre:'Ma fiche de comité d’investissement',action:'Relire ma fiche à froid, puis passer ou non mon ordre à cours limité',lien:'bourse-pro.html#B8'});c.refaire();});}}
+]});
+</script>
+<script src="ecole-bourse-moteur.js?v=2026102703"></script>
+<script src="efa-suite.js?v=2026102902" defer></script>
+<script src="efa-compte.js?v=2026102701" defer></script>
+<script src="efa-chiffres.js?v=2026102701" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body></html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Africa 2075 n° 2 : trois voix de Davos, une question africaine · EFA</title>
+<meta name="description" content="À Davos, Christine Lagarde et Larry Fink appellent l’Occident à mutualiser données et échelle face à la Chine. Pour l’Afrique, 0,6 % de la capacité mondiale de calcul et 54 cadres différents, l’enjeu de mutualisation est vital. Africa 2075 n° 2.">
+<link rel="canonical" href="https://efa.africa/africa-2075-n2">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Trois voix de Davos, une question africaine : mutualiser pour exister">
+<meta property="og:description" content="Africa 2075 n° 2, par Élysée Johnson : face aux positionnements de Davos, l’Afrique a un réel enjeu de mutualisation.">
+<meta property="og:url" content="https://efa.africa/africa-2075-n2">
+<meta property="og:image" content="https://efa.africa/etudes/africa-2075-n2-entete.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Article","@id":"https://efa.africa/africa-2075-n2#article","headline":"Trois voix de Davos, une question africaine","alternativeHeadline":"Africa 2075 · Frontières de croissance, n° 2","isPartOf":{"@type":"Periodical","name":"Africa 2075 · Frontières de croissance","publisher":{"@id":"https://efa.africa/#organisation"}},"inLanguage":"fr","datePublished":"2026-10-24","author":{"@type":"Person","name":"Élysée Johnson","url":"https://efa.africa/auteur"},"publisher":{"@id":"https://efa.africa/#organisation"},"image":"https://efa.africa/etudes/africa-2075-n2-entete.jpg","mainEntityOfPage":"https://efa.africa/africa-2075-n2","about":[{"@type":"Thing","name":"Croissance économique en Afrique"},{"@type":"Thing","name":"Prospective"},{"@type":"Thing","name":"UEMOA"}]},
+ {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://efa.africa/"},{"@type":"ListItem","position":2,"name":"Prospective · Africa 2075","item":"https://efa.africa/methode#africa-2075"},{"@type":"ListItem","position":3,"name":"Africa 2075 n° 2","item":"https://efa.africa/africa-2075-n2"}]}
+]}
+</script>
+<style>
+/* Revue de prospective : grande image d'en-tête bleu nuit, puis colonne de lecture sur crème ; cartes papier, aplats corail et nuit. */
+:root{
+  --display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --sombre:#070C16; --creme:#F5EFE2; --papier:#FFFDF8; --line:#E2D8C4; --sable:#EBE2D0;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --corail:#DA3C1B; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nuit)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
+a{color:var(--bleu);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+
+/* Barre du site */
+.stick{position:sticky;top:0;z-index:30}
+.stick .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));background:#0B1220;color:#fff}
+.stick .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:12px;letter-spacing:.18em}
+.stick .brand img{width:36px;height:36px}
+.stick .nav{display:flex;gap:6px;align-items:center}
+.stick .nav a{color:#E8EDF5;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px}
+.stick .nav a[aria-current="page"]{background:#1C2842}
+.stick .nav a.nav-cta{background:#DA3C1B;color:#fff}
+.stick .menu-btn{display:none;background:transparent;color:#fff;border:1px solid #2A3446;border-radius:999px;padding:8px 14px;font:700 14px var(--body);cursor:pointer}
+.actbar{background:#DA3C1B;color:#fff}
+.actbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding-block:8px}
+.actbar p{margin:0;font-weight:700;font-size:14px;flex:1 1 220px;min-width:0}
+.actbar a{font:800 14px var(--body);text-decoration:none;border-radius:999px;padding:8px 14px;white-space:nowrap}
+.actbar .a1{background:#0B1220;color:#fff} .actbar .a2{background:#fff;color:#0B1220}
+.mission{background:var(--nuit);color:var(--creme)} .mission p{margin:0;padding-block:14px;text-align:center;font-size:16px}
+.mission .mc{color:#F0603F;font-weight:700} .mission .ms{color:#6DB8F2;font-weight:700}
+@media (max-width:860px){
+ .stick .menu-btn{display:inline-block;position:relative;z-index:41}
+ .stick .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:40;background:#0B1220;flex-direction:column;justify-content:center;gap:10px;display:none}
+ .stick .nav.open{display:flex}
+ .stick .nav a{font-size:20px}
+ .actbar p{display:none}
+ .actbar .wrap{flex-wrap:wrap;gap:8px}.actbar a,.actbar button{flex:1 1 auto;min-width:0;text-align:center;white-space:normal}
+ .actbar a{font-size:13px;padding:8px 12px}
+}
+
+/* En-tête de la revue */
+.une{background:var(--sombre);color:#E8EDF5}
+.une .wrap{padding-block:28px 40px;display:flex;flex-direction:column;gap:22px}
+.une img{display:block;width:100%;height:auto;border-radius:10px}
+.une .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:#C9D1DE}
+.une .meta b{color:#fff}
+.une .sous-titre{margin:-8px 0 0;font-family:var(--display);font-style:italic;font-size:clamp(20px,2.6vw,26px);color:var(--soft-corail)}
+.une h1{font-size:clamp(34px,5.2vw,58px);color:#fff;max-width:20ch}
+.une .chapeau{margin:0;font-size:clamp(17px,2vw,20px);color:#C9D1DE;max-width:62ch}
+.une .surtitre{color:var(--soft-corail)}
+
+main{padding-block:36px 56px}
+main .col{display:flex;flex-direction:column;gap:30px}
+
+/* Éditorial */
+.edito{background:var(--nuit);color:#E8EDF5;border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:12px}
+.edito .surtitre{color:var(--soft-corail)}
+.edito h2{font-size:clamp(24px,3.2vw,30px);color:#fff}
+.edito p{margin:0;color:#C9D1DE}
+.edito .sig{font-family:var(--display);font-style:italic;color:#fff}
+
+.ancre{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:center;background:var(--nuit);color:#E8EDF5;border-radius:28px;padding:22px;text-decoration:none}
+.ancre:hover .ancre-l{text-decoration:underline}
+.ancre-ic{width:96px;height:96px}
+.ancre-t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ancre-s{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#F09680}
+.ancre b{font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.25;color:#fff}
+.ancre-p{color:#C9D1DE;font-size:16px}
+.ancre-l{font-weight:800;color:#6DB8F2}
+.chantier{align-self:flex-start;background:var(--sable);color:var(--ink2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
+@media (max-width:480px){.ancre{grid-template-columns:minmax(0,1fr)}.ancre-ic{width:72px;height:72px}}
+.porte{background:var(--nuit);color:#E8EDF5;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.porte::before{content:"";position:absolute;left:0;right:0;top:-90px;height:90px;background:linear-gradient(rgba(245,239,226,0),var(--creme));pointer-events:none}
+.porte .surtitre{color:var(--soft-corail)}
+.porte h2{font-size:clamp(23px,3.2vw,29px);color:#fff}
+.porte p{margin:0;color:#C9D1DE}
+.a2075-form{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.a2075-ligne{display:flex;flex-wrap:wrap;gap:10px}
+.a2075-ligne input[type=email]{flex:1 1 220px;min-width:0;font:400 17px var(--body);padding:12px 14px;border-radius:8px;border:0;background:#fff;color:#0B1220;min-height:46px}
+.a2075-ligne button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:var(--corail);color:#fff;cursor:pointer}
+.a2075-ligne button:disabled{opacity:.6}
+.a2075-ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#C9D1DE}
+.a2075-ok a{color:#6DB8F2}
+.a2075-msg{font-size:14px;color:#F09680;min-height:1em}
+.a2075-hp{position:absolute;left:-9999px}
+.merci{background:var(--sable);border-radius:10px;padding:14px 16px;font-size:15px;color:var(--ink2)}
+.une-phrase{background:var(--corail);color:#fff;border-radius:2px;padding:20px 22px}
+.une-phrase .surtitre{color:#fff;opacity:.9}
+.une-phrase p{margin:6px 0 0;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.38}
+
+.sommaire{background:var(--papier);border-radius:14px;padding:22px}
+.sommaire ol{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.sommaire li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline}
+.sommaire .n{font-family:var(--display);font-weight:700;color:var(--corail)}
+.sommaire a{color:var(--ink);font-weight:600;text-decoration:none}
+.sommaire a:hover{text-decoration:underline}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+
+.tendance{background:var(--papier);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;scroll-margin-top:96px}
+.tendance .rang{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink3)}
+.tendance h2{font-size:clamp(25px,3.6vw,32px)}
+.bloc h3{font-family:var(--body);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 4px}
+.bloc p{margin:0}
+.bloc.sec p{color:var(--ink2)}
+.diff{background:var(--sable);border-radius:10px;padding:14px 16px}
+.retenir{background:var(--nuit);color:#fff;border-radius:2px;padding:16px 18px}
+.retenir span{display:block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail);margin-bottom:4px}
+.retenir p{margin:0;font-family:var(--display);font-size:18px;line-height:1.38}
+
+.section{display:flex;flex-direction:column;gap:14px}
+.section h2{font-size:clamp(26px,3.8vw,34px)}
+.agenda{background:var(--papier);border-radius:14px;padding:6px 22px}
+.agenda .ligne{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:12px;padding-block:14px;border-bottom:1px solid var(--line)}
+.agenda .ligne:last-child{border-bottom:0}
+.agenda dt{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;font-variant-numeric:tabular-nums}
+.agenda dd{margin:0;min-width:0}
+.agenda dd small{display:block;color:var(--ink3);font-size:14px}
+.agenda dl{margin:0}
+.sources ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--ink2)}
+.methode{font-size:15px;color:var(--ink2);margin:0}
+
+.cta{background:var(--nuit);color:#fff;border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.cta h2{font-size:clamp(22px,3vw,28px);color:#fff}
+.cta p{margin:0;color:#C9D1DE}
+.cta .btns{display:flex;flex-wrap:wrap;gap:10px}
+.cta .btns a{font:800 16px var(--body);text-decoration:none;border-radius:8px;padding:12px 20px;min-height:46px;display:inline-flex;align-items:center}
+.cta .p{background:var(--corail);color:#fff} .cta .s{background:var(--creme);color:var(--nuit)}
+
+footer.site{background:#0B1220;color:#C9D1DE;font-size:14px;padding-block:22px}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer.site a{color:#E8EDF5;text-decoration:none}
+@media (max-width:480px){.agenda .ligne{grid-template-columns:1fr;gap:2px}.tendance{padding:22px 18px}}
+.encadre-nuit{background:var(--nuit);color:#E8EDF5;border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.encadre-nuit .surtitre{color:var(--soft-corail)}
+.encadre-nuit h2{color:#fff;font-size:clamp(24px,3.2vw,30px)}
+.forces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.force b{display:block;font-family:var(--display);font-size:19px;color:#fff;margin-bottom:6px}
+.force p{margin:0;color:#C9D1DE;font-size:16px}
+.forces{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.forces{grid-template-columns:minmax(0,1fr)}}
+.prose{display:flex;flex-direction:column;gap:14px}
+.prose p{margin:0;font-size:18px;line-height:1.65}
+.prose .lettrine::first-letter{font-family:var(--display);font-weight:700;float:left;font-size:64px;line-height:.9;padding:6px 10px 0 0;color:var(--corail)}
+</style>
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<noscript><style>[data-a2075-suite][hidden]{display:block!important}</style></noscript>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective" aria-current="page">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<div class="stick">
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html" aria-current="page">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<div class="actbar"><div class="wrap"><p>Africa 2075 · Frontières de croissance · n° 2</p>
+<a class="a1" href="africa-2075-fondateur.html#t-cta" onclick="efaCompte('a2075-n2-abonnement-barre')">Recevoir chaque numéro</a>
+<a class="a2" href="methode.html#africa-2075">Tous les numéros</a></div></div>
+</div>
+<div class="mission"><p class="wrap">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p></div>
+
+<section class="une"><div class="wrap">
+  <img src="etudes/africa-2075-n1-entete.jpg" alt="Africa 2075, Frontières de croissance : la revue de prospective d’EFA, par Élysée Johnson" width="1600" height="900">
+  <div class="meta"><span><b>Africa 2075 · Frontières de croissance</b></span><span>N° 2 · octobre 2026</span><span>Par Élysée Johnson</span><span>Lecture : 7 minutes</span></div>
+  <span class="surtitre">La revue de prospective d’EFA</span>
+  <h1>Trois voix de Davos, une question africaine</h1>
+  <p class="sous-titre">Mutualiser pour exister</p>
+  <p class="chapeau">Christine Lagarde, Larry Fink et Ken Griffin ont débattu à Davos de l’avenir de l’IA. Personne n’a parlé de l’Afrique. Voici pourtant les trois leçons que leur débat contient pour nous.</p>
+</div></section>
+
+<main>
+  <div class="col">
+
+    <a class="ancre" href="africa-2075-fondateur.html" onclick="efaCompte('a2075-n2-vers-fondateur')">
+      <svg class="ancre-ic" viewBox="0 0 120 120" aria-hidden="true">
+        <g stroke="#F09680" stroke-width="1.5" stroke-linecap="round">
+          <line x1="60" y1="6" x2="60" y2="24"/><line x1="60" y1="96" x2="60" y2="114"/><line x1="6" y1="60" x2="24" y2="60"/><line x1="96" y1="60" x2="114" y2="60"/>
+          <line x1="21.8" y1="21.8" x2="34.6" y2="34.6"/><line x1="85.4" y1="85.4" x2="98.2" y2="98.2"/><line x1="98.2" y1="21.8" x2="85.4" y2="34.6"/><line x1="34.6" y1="85.4" x2="21.8" y2="98.2"/>
+        </g>
+        <circle cx="60" cy="60" r="30" fill="none" stroke="#6DB8F2" stroke-width="2"/>
+        <circle cx="60" cy="60" r="17" fill="none" stroke="#6DB8F2" stroke-width="1.2" stroke-dasharray="2 4"/>
+        <circle cx="60" cy="60" r="6" fill="#E44828"/>
+      </svg>
+      <span class="ancre-t">
+        <span class="ancre-s">Africa 2075 · N° 2 depuis l’article fondateur</span>
+        <b>2075 : l’Afrique, première puissance économique du monde</b>
+        <span class="ancre-p">Tout part de là : six chantiers à mener pour tenir cette promesse, le premier étant l’éducation financière. Ce numéro porte sur les chantiers n° 3, 4, 5 et 6, et revient au n° 1 : vos données.</span>
+        <span class="ancre-l">Relire l’article fondateur →</span>
+      </span>
+    </a>
+
+    <section class="une-phrase" aria-label="En une phrase">
+      <span class="surtitre">En une phrase</span>
+      <p>À Davos, Lagarde a dit « il faut de l’échelle », Fink « l’échelle qui compte, c’est l’usage », Griffin « n’attendez pas de sauveur ». Pour l’Afrique, ces trois voix disent la même chose : face à ces positionnements, nous avons un réel enjeu de mutualisation.</p>
+    </section>
+
+    <section class="porte" data-a2075-porte hidden aria-labelledby="t-porte">
+      <span class="surtitre">Lire la suite gratuitement</span>
+      <h2 id="t-porte">La suite d’Africa 2075 est réservée à nos lecteurs inscrits</h2>
+      <p>Laissez votre adresse email pour lire ce numéro en entier, avec les trois voix de Davos, la preuve que l’Afrique sait déjà mutualiser, nos quatre propositions et les sources, et recevoir les prochains numéros. C’est gratuit.</p>
+        <form class="a2075-form" novalidate>
+          <div class="a2075-ligne"><label class="a2075-hp" aria-hidden="true">Ne pas remplir<input name="email_address_check" tabindex="-1" autocomplete="off"></label><input type="email" id="porte-email" name="EMAIL" placeholder="Votre adresse email" autocomplete="email" required aria-label="Votre adresse email"><button type="submit">Lire la suite</button></div>
+          <label class="a2075-ok"><input type="checkbox" id="porte-email-ok" checked> J’accepte de recevoir Africa 2075 et la newsletter d’EFA par email. Désinscription en un clic. <a href="confidentialite.html">Vos données</a></label>
+          <p class="a2075-msg" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+    <div data-a2075-suite hidden>
+    <p class="merci" id="a2075-merci" hidden>Merci, bonne lecture. Un email de confirmation arrive dans quelques minutes : confirmez-le pour recevoir les prochains numéros.</p>
+    <nav class="sommaire" aria-label="Sommaire">
+      <span class="etiquette">Au sommaire</span>
+      <ol>
+        <li><span class="n">1</span><a href="#lagarde">Christine Lagarde : sans échelle, pas de révolution</a></li>
+        <li><span class="n">2</span><a href="#fink">Larry Fink : l’échelle qui compte, c’est l’usage</a></li>
+        <li><span class="n">3</span><a href="#griffin">Ken Griffin : n’attendez pas de sauveur</a></li>
+        <li><span class="n">4</span><a href="#miroir">Le miroir africain : nous savons déjà mutualiser</a></li>
+        <li><span class="n">5</span><a href="#mutualiser">Quatre chantiers de mutualisation</a></li>
+        <li><span class="n">6</span><a href="#vos-donnees">Vos données ont une valeur. Qui la capte ?</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+      <p class="lettrine">Le 21 janvier 2026, à Davos, quatre voix ont débattu de l’avenir de l’intelligence artificielle : Christine Lagarde, présidente de la Banque centrale européenne, Larry Fink, patron de BlackRock, Ken Griffin, fondateur de Citadel, et l’historien Adam Tooze, sous la conduite du journaliste Andrew Ross Sorkin. Le sujet : notre époque ressemble-t-elle aux années 1920, ce moment de révolution technologique qui s’est achevé dans la Grande Dépression ?</p>
+      <p>Pendant une heure, personne n’a parlé de l’Afrique. C’est précisément pour cela qu’il faut écouter ce qui s’est dit. Neuf mois plus tard, et à trois mois du prochain Davos, voici les trois leçons que ce débat contient pour nous.</p>
+    </div>
+
+    <article class="tendance" id="lagarde">
+      <span class="chantier">Chantier n° 5 · Coordonner</span>
+      <span class="surtitre">Voix n° 1 · Christine Lagarde, Banque centrale européenne</span>
+      <h2>Sans échelle, pas de révolution</h2>
+      <div class="bloc"><h3>Ce qu’elle a dit</h3>
+        <p>Dans les années 1920, une révolution technologique, le réseau électrique, le moteur, la chaîne de montage, coïncidait avec des Bourses euphoriques et un repli du commerce mondial, passé selon elle d’environ 21 % à 14 % du PIB en quelques années. Aujourd’hui, l’IA progresse, les marchés sont au plus haut et les restrictions commerciales se multiplient.</p>
+        <p>Mais il y a une différence décisive. L’électricité pouvait se diffuser à l’intérieur des frontières d’un pays. L’IA, non : un modèle de pointe coûte, selon son estimation, environ un milliard de dollars, et il faut le plus de données possible et une grande échelle pour l’amortir. Des lois sur les données incompatibles, des normes divergentes et des barrières commerciales menacent cette échelle. Son remède : une coopération qui accepte des visions du monde différentes. « C’est difficile », reconnaît-elle.</p></div>
+      <div class="retenir"><span>La leçon pour l’Afrique</span><p>Si vingt-sept pays européens, reliés par un marché unique, jugent leur fragmentation dangereuse, cinquante-quatre pays africains ne peuvent pas se permettre la leur. Mutualiser les règles est la première condition.</p></div>
+    </article>
+
+    <article class="tendance" id="fink">
+      <span class="chantier">Chantier n° 3 · Productivité</span>
+      <span class="surtitre">Voix n° 2 · Larry Fink, BlackRock</span>
+      <h2>L’échelle qui compte, c’est l’usage</h2>
+      <div class="bloc"><h3>Ce qu’il a dit</h3>
+        <p>Larry Fink « tourne la lentille ». Pour les économies occidentales, sans coopération et sans échelle, la Chine gagne : elle a la population et des lois sur la vie privée très différentes, donc une capacité à accumuler des données qui lui donne, selon lui, un avantage considérable. Bulle de l’IA ? Il prévoit de gros échecs, mais pas de bulle.</p>
+        <p>Puis il déplace le débat. La demande attendue ne viendra que si la technologie se diffuse dans de nombreux usages. Si l’IA reste le domaine des six géants du cloud, « nous échouerons ». Les facteurs décisifs : la vitesse de diffusion, d’adaptation et d’adoption. Et deux limites : la croissance suffira-t-elle à absorber les déficits, et les marchés de capitaux pourront-ils continuer à financer ces investissements ?</p></div>
+      <div class="retenir"><span>La leçon pour l’Afrique</span><p>Nous n’avons pas besoin d’entraîner des modèles à un milliard de dollars. Nous avons besoin que des outils utiles, en français et dans nos langues, se diffusent à des millions d’utilisateurs. Sur ce terrain-là, l’Afrique n’est pas hors jeu.</p></div>
+    </article>
+
+    <article class="tendance" id="griffin">
+      <span class="chantier">Chantiers n° 4 et 6 · Financer, tenir</span>
+      <span class="surtitre">Voix n° 3 · Ken Griffin, Citadel</span>
+      <h2>N’attendez pas de sauveur</h2>
+      <div class="bloc"><h3>Ce qu’il a dit</h3>
+        <p>Andrew Ross Sorkin rappelle que les années 1920 avaient leur slogan, « démocratiser la finance », et une montagne de dette pour financer la décennie. Pour Ken Griffin, le parallèle ne tient pas du côté des marchés privés : l’imprudence de notre époque, ce sont les dépenses des gouvernements, presque tous au-delà de leurs moyens. D’où l’espoir que l’IA apporte le gain de productivité qui permettra de les absorber : « le monde a besoin d’un sauveur ». Peut-être, peut-être pas.</p>
+        <p>Il reconnaît un emballement, en partie nécessaire pour lever les centaines de milliards investis, et estime à environ 600 milliards de dollars les investissements dans les centres de données aux États-Unis cette année. Larry Fink pense que ce sera davantage, et pose la vraie question : ces dépenses seront-elles rentabilisées ?</p></div>
+      <div class="bloc"><h3>Pour l’Afrique</h3>
+        <p>Nos États sont endettés eux aussi : selon la Banque mondiale, près de quatre pays africains sur cinq consacrent plus aux intérêts de leur dette qu’à la santé ou à l’éducation. Mais ils ne peuvent pas compter sur un sauveur qu’ils ne financent pas : les centaines de milliards de l’IA sont américaines.</p></div>
+      <div class="retenir"><span>La leçon pour l’Afrique</span><p>Le Nord espère que l’IA paiera ses dettes. Nous ne pouvons pas attendre ce miracle : notre productivité passera par l’usage, et notre financement par l’épargne de nos ménages.</p></div>
+    </article>
+
+    <article class="tendance" id="miroir">
+      <span class="chantier">Chantiers n° 3 et 5</span>
+      <span class="surtitre">Le miroir africain</span>
+      <h2>Nous savons déjà mutualiser</h2>
+      <div class="bloc"><h3>Le point de départ</h3>
+        <p>L’Afrique détient environ 0,6 % de la capacité mondiale de centres de données, concentrée en Afrique du Sud, au Nigeria, au Kenya et en Égypte. Hors Afrique du Sud, seul un tiers environ de la capacité construite est pleinement utilisé : le frein n’est donc pas seulement le manque de machines, mais le coût de l’énergie, les compétences et la taille des marchés. Les règles sur les données diffèrent d’un pays à l’autre ; une quinzaine d’États seulement ont ratifié la convention de Malabo de l’Union africaine sur la protection des données. La ZLECAf a adopté en février 2024 un protocole sur le commerce numérique qui pose le principe de la libre circulation des données, mais son annexe sur les transferts de données est encore en négociation.</p></div>
+      <div class="bloc"><h3>La preuve que c’est possible</h3>
+        <p>La mutualisation n’est pas une utopie : nous l’avons déjà faite. Depuis le 30 septembre 2025, la PI-SPI de la BCEAO permet des virements instantanés, à toute heure, entre les banques, la microfinance et la monnaie électronique des huit pays de l’UEMOA ; une cinquantaine d’établissements y étaient prêts au lancement. À l’échelle du continent, le système panafricain de paiement PAPSS, lancé en 2022 par Afreximbank, relie déjà plus d’une douzaine de banques centrales pour payer entre pays africains en monnaies locales.</p></div>
+      <div class="bloc diff"><h3>Ce qui est propre à l’Afrique francophone</h3>
+        <p>L’UEMOA a mutualisé sa monnaie, puis ses paiements. Elle a, plus que toute autre région du continent, l’habitude et les institutions pour franchir l’étape suivante : les données.</p></div>
+      <div class="retenir"><span>À retenir</span><p>Face aux positionnements de Davos, l’Afrique a un réel enjeu de mutualisation. Nous avons mis en commun la monnaie, puis les paiements. Les données et l’intelligence artificielle sont la prochaine étape.</p></div>
+    </article>
+
+    <section class="encadre-nuit" id="mutualiser" aria-labelledby="t-mut">
+      <span class="surtitre">Ce que nous proposons</span>
+      <h2 id="t-mut">Quatre chantiers de mutualisation</h2>
+      <div class="forces">
+        <div class="force"><b>L’accès au calcul</b><p>Plutôt que de multiplier les centres nationaux à moitié vides, mutualiser l’accès : achats groupés de capacité, cloud régional partagé par zone (UEMOA, CEMAC, Afrique de l’Est), contrats d’énergie communs. L’échelle fait baisser les coûts.</p></div>
+        <div class="force"><b>Les règles sur les données</b><p>Finaliser l’annexe de la ZLECAf sur les flux de données et harmoniser les lois nationales, pour qu’un service conçu à Dakar fonctionne à Douala sans recommencer à zéro. Les marchandises ont leur marché commun ; les données doivent avoir le leur.</p></div>
+        <div class="force"><b>Nos langues</b><p>Constituer ensemble des corpus en français et dans nos langues, du wolof au lingala, du dioula au swahili, en s’appuyant sur les communautés de recherche africaines qui y travaillent déjà. Ce sont eux qui feront des IA utiles à nos populations.</p></div>
+        <div class="force"><b>La puissance humaine</b><p>Mutualiser les talents, diaspora comprise : écoles et programmes de recherche partagés. Les métiers de la donnée peuvent créer des emplois, à condition qu’ils soient qualifiés et bien payés, pas une sous-traitance au rabais.</p></div>
+      </div>
+    </section>
+
+    <article class="tendance" id="vos-donnees">
+      <span class="chantier">Chantier n° 1 · Éducation financière</span>
+      <span class="surtitre">Ce que ça change pour vous</span>
+      <h2>Vos données ont une valeur. Qui la capte ?</h2>
+      <div class="bloc"><h3>Le lien avec votre argent</h3>
+        <p>Chaque paiement, chaque recherche, chaque message laisse une trace. Mises ensemble, ces traces font fonctionner les services d’IA et valent des milliards. Mutualiser ne veut pas dire tout donner : une mise en commun réussie protège les plus vulnérables et fait en sorte qu’une partie de la valeur créée reste sur le continent.</p></div>
+      <div class="bloc"><h3>Le réflexe à prendre</h3>
+        <p>Comprendre ce que vous partagez, avec qui et en échange de quoi, fait partie de l’éducation financière de demain. C’est le chantier n° 1 appliqué au numérique : savoir ce que vaut ce que vous possédez, y compris vos données.</p></div>
+      <div class="retenir"><span>À retenir</span><p>Au XXI<sup>e</sup> siècle, l’argent qui reste, ce sont aussi les données qui restent. Un continent qui n’organise pas les siennes les verra financer la croissance des autres.</p></div>
+    </article>
+
+    <section class="une-phrase" aria-label="Notre conviction">
+      <span class="surtitre">Notre conviction</span>
+      <p>L’Occident mutualise pour rattraper la Chine. L’Afrique doit mutualiser pour exister. Nous l’avons fait pour la monnaie et pour les paiements : faisons-le pour les données.</p>
+    </section>
+
+    <p class="merci">Pour aller plus loin sur l’IA et l’Afrique : le dossier n° 1 d’Africa 2075, <a href="africa-2075-dossier-1.html" onclick="efaCompte('a2075-n2-vers-dossier1')">« L’IA va multiplier les cerveaux. Combien seront africains ? »</a></p>
+
+    <section class="section" aria-labelledby="t-agenda">
+      <span class="surtitre">Agenda des grands rendez-vous</span>
+      <h2 id="t-agenda">Les prochaines dates</h2>
+      <div class="agenda"><dl>
+        <div class="ligne"><dt>18 – 22 janv. 2027</dt><dd>Forum économique mondial, Davos<small>L’IA et la coopération sur les données seront de nouveau au programme. L’Afrique y sera-t-elle ?</small></dd></div>
+        <div class="ligne"><dt>Avril 2027</dt><dd>Sommet Afrique du Forum économique mondial<small>Afrique du Sud ; ville et jours non encore publiés</small></dd></div>
+        <div class="ligne"><dt>3 – 4 mai 2027</dt><dd>Africa CEO Forum, Abidjan<small>Capitaux, intégration des marchés, champions africains</small></dd></div>
+      </dl></div>
+    </section>
+
+    <section class="cta" aria-labelledby="t-cta">
+      <h2 id="t-cta">Recevez les prochains numéros d’Africa 2075</h2>
+      <p>Par email, gratuitement. Chaque numéro mesure où nous en sommes sur les six chantiers.</p>
+      <div class="btns"><a class="p" href="africa-2075-fondateur.html#t-cta" onclick="efaCompte('a2075-n2-abonnement')">M’abonner gratuitement</a><a class="s" href="methode.html#africa-2075">Tous les numéros</a></div>
+    </section>
+
+    <section class="section sources" aria-labelledby="t-sources">
+      <span class="surtitre">Sources</span>
+      <h2 id="t-sources">Sur quoi repose ce numéro</h2>
+      <ul>
+        <li>Forum économique mondial, Davos, panel du 21 janvier 2026 animé par Andrew Ross Sorkin avec Christine Lagarde, Larry Fink, Ken Griffin et Adam Tooze (enregistrement de la session) ; compte rendu : <a href="https://breakbulk.news/davos-warns-trade-fragmentation-could-strangle-ai-gains-and-push-logistics-costs-higher/" target="_blank" rel="noopener">Breakbulk News</a> · 21 janv. 2026</li>
+        <li><a href="https://techeconomy.ng/africa-data-centre-capacity-0-6-percent-ai-1-2gw-2030" target="_blank" rel="noopener">TechEconomy, d’après le rapport « Data Centres in Africa 2026 »</a> · 17 févr. 2026</li>
+        <li><a href="https://www.iisd.org/articles/policy-analysis/afcfta-digital-protocol" target="_blank" rel="noopener">IISD, le protocole de la ZLECAf sur le commerce numérique</a> · oct. 2024</li>
+        <li><a href="https://ecdpm.org/work/interactive-tool-data-policies-african-countries" target="_blank" rel="noopener">ECDPM, politiques des données en Afrique et convention de Malabo</a> · oct. 2024</li>
+        <li><a href="https://fr.apanews.net/integration/effectivite-de-linteroperabilite-dans-luemoa/" target="_blank" rel="noopener">APA News, lancement de la PI-SPI de la BCEAO</a> · 30 sept. 2025</li>
+        <li><a href="https://www.thereporterethiopia.com/51533/" target="_blank" rel="noopener">The Reporter, Afreximbank et l’adoption de PAPSS</a> · 27 juin 2026</li>
+        <li><a href="https://www.semafor.com/article/10/14/2026/imf-raises-growth-outlook-for-sub-saharan-africa" target="_blank" rel="noopener">Semafor, citant la Banque mondiale sur le poids des intérêts de la dette</a> · 14 oct. 2026</li>
+      </ul>
+      <p class="methode">Les propos des intervenants de Davos sont repris d’après l’enregistrement de la session, paraphrasés ; les citations courtes sont traduites de l’anglais. Les chiffres qu’ils avancent (commerce mondial des années 1920, coût d’un modèle de pointe, investissements dans les centres de données) sont leurs estimations. Les passages « La leçon pour l’Afrique », « Ce que nous proposons » et « À retenir » sont des analyses d’EFA. EFA fait de l’éducation financière, pas du conseil en placement.</p>
+    </section>
+
+    </div>
+  </div>
+</main>
+
+<footer data-v1-cache class="site"><div class="wrap">
+  <span>Éducation Financière Afrique © 2026</span>
+  <span>Éducation financière, pas conseil en placement</span>
+  <a href="index.html">Accueil</a><a href="methode.html#etudes">Études</a><a href="methode.html#africa-2075">Africa 2075 · Prospective</a><a href="auteur.html#publications">Publications</a>
+  <a href="tontine.html">La tontine</a><a href="methode.html#methode">Notre méthode</a><a href="confidentialite.html">Confidentialité</a>
+</div></footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(!b)return;
+b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
+</script>
+<script src="africa-2075.js?v=2026102401" defer></script>
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Diagnostic financier gratuit : où en êtes-vous avec votre argent ? · EFA</title>
+<meta name="description" content="Un diagnostic financier gratuit en six minutes, pensé pour les réalités africaines : budget, épargne, dettes, tontines et ce que vous donnez à vos proches.">
+<link rel="canonical" href="https://efa.africa/diagnostic">
+<meta property="og:url" content="https://efa.africa/diagnostic">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Mon diagnostic financier complet · EFA">
+<meta property="og:description" content="Six dimensions, six minutes, gratuit. Le seul diagnostic qui compte aussi vos tontines et vos proches.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Questions sur fond crème, résultats sur fond bleu nuit. Corail = attention uniquement. */
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#1B71B2; --corail:#DA3C1B;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  /* jetons de la page (crème) — repris par le radar */
+  --bg:var(--creme); --ink:var(--nuit); --muted:#4E5566; --line:#D9D0BE; --surface:#FFFDF8;
+  --c1:var(--bleu); --sel:#E1EEFA; --alert-bg:#FBE4DD; --alert-ink:#9E2A12;
+  --btn:var(--nuit); --btn-ink:#fff;
+}
+body.nuit{
+  --bg:var(--nuit); --ink:#fff; --muted:#AEB6C6; --line:rgba(255,255,255,.18); --surface:#131D33;
+  --c1:var(--soft-bleu); --sel:#16304F; --alert-bg:rgba(228,72,40,.16); --alert-ink:#FFD2C6;
+  --btn:var(--creme); --btn-ink:var(--nuit);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:inherit}
+p{margin:0;max-width:62ch}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(38px,9.5vw,65px)}
+h2{font-size:clamp(26px,6vw,40px)}
+h3{font-size:21px;line-height:1.12}
+:focus-visible{outline:3px solid var(--soft-bleu);outline-offset:3px;border-radius:6px}
+[tabindex="-1"]:focus,[tabindex="-1"]:focus-visible{outline:0}
+
+/* En-tête du site */
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.top .cta{font-size:14px;font-weight:800;text-decoration:none;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.14);white-space:nowrap}
+@media (max-width:520px){.brand span{display:none}}
+
+.wrap{max-width:720px;margin:0 auto;padding:28px var(--gut) 56px;display:flex;flex-direction:column;gap:22px}
+main,.stack{display:flex;flex-direction:column;gap:16px;min-width:0}
+.step{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--bleu)}
+body.nuit .step{color:var(--soft-bleu)}
+.lead{font-size:18px;font-weight:600;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.dims{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dims div{border-top:3px solid var(--ink);padding-top:8px;display:grid;gap:0}
+.dims b{font-size:15px}.dims span{font-size:13px;color:var(--muted)}
+@media (min-width:620px){.dims{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:center}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+
+button{font:inherit}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:8px;border:0;background:var(--btn);color:var(--btn-ink);font:800 15px/1.1 var(--f-body);text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.12)}
+.btn[disabled]{opacity:.6;cursor:default;filter:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.on{background:var(--bleu);color:#fff;box-shadow:none}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:6px 0;font-size:15px;font-weight:600}
+@media (max-width:520px){.actions>.btn{width:100%}}
+
+/* Questions */
+.prog{display:flex;justify-content:space-between;font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--c1);border-radius:99px;transition:width .3s}
+.bar.warn>i{background:var(--corail)}
+.q{font-family:var(--f-body);text-transform:none;font-weight:800;font-size:clamp(22px,5.4vw,28px);line-height:1.25}
+.opt{display:block;width:100%;min-height:52px;text-align:left;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;font-weight:600;font-size:16px}
+.opt:hover{border-color:var(--bleu)}
+.opt.sel{border-color:var(--bleu);background:var(--sel)}
+
+/* Résultats */
+.row{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi{font-family:var(--f-display);font-weight:700;font-size:48px;line-height:1.12;font-variant-numeric:tabular-nums}
+.kpi.big{font-size:96px}
+.kpi small{font-size:22px;color:var(--muted)}
+.tag{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pill{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:4px;background:var(--line);color:var(--ink)}
+.box{border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.box.alert{background:var(--alert-bg);color:var(--alert-ink);border-left:4px solid var(--corail)}
+.box.alert h3{color:inherit}
+.b4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.card.lockd{border-style:dashed}
+.box.act{background:var(--corail);color:#fff}
+.box.act .tag{color:#FFE3DB}
+.box.act h3{color:#fff;font-family:var(--f-body);font-weight:700;text-transform:none;font-size:17px;line-height:1.4}
+.box.act .btn{background:#fff;color:var(--nuit)}
+.box.act .link{color:#fff}
+details.det summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+.box.blue{background:var(--bleu);color:#fff}
+.box.blue .btn{background:#fff;color:var(--nuit)}
+.box.blue .link{color:#fff}
+.box.blue .tag{color:#DCEBF8}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);font-weight:700}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend .dash{width:18px;height:0;border-top:2px dashed var(--muted);border-radius:0;vertical-align:4px}
+svg{max-width:100%;height:auto;display:block}
+svg text{font-family:var(--f-body);fill:var(--ink);font-size:14px;font-weight:700}
+
+/* Formulaires */
+form{display:flex;flex-direction:column;gap:14px}
+label{font-weight:700;font-size:15px;display:flex;flex-direction:column;gap:6px}
+label .hint{font-weight:500;color:var(--muted);font-size:13px}
+input[type=text],input[type=email],input[type=number],select{font:600 16px var(--f-body);color:var(--nuit);background:#fff;border:2px solid var(--line);border-radius:8px;padding:13px;width:100%}
+input:focus,select:focus{border-color:var(--bleu);outline:0}
+.check{flex-direction:row;align-items:flex-start;gap:10px;font-weight:500;font-size:14px}
+.check input{margin-top:2px;width:20px;height:20px;flex:none;accent-color:var(--bleu)}
+.err{color:var(--corail);font-weight:800;font-size:14px}
+body.nuit .err{color:var(--soft-corail)}
+.piege{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.scroll{overflow-x:auto}
+ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:62ch}
+
+footer{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted)}
+.mission{margin:0;font-size:14px;font-weight:700;line-height:1.45;color:var(--muted)}
+.mission .mc,.mission-f .mc{color:#D63A1A;font-weight:800}
+body.nuit .mission .mc,body.nuit .mission-f .mc{color:#EC6243}
+.mission .ms,.mission-f .ms{color:var(--c1);font-weight:800}
+.mission-f{font-weight:700;color:var(--ink)}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;font-weight:700;padding:6px 10px;border-radius:8px;z-index:20;max-width:240px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Encadrés EFA : un seul style sur toute la plateforme, aplat vermillon */
+:root{--verm:#E44828;--verm-ink:#FFFFFF;--verm-soft:#FFE1D8}
+.box.alert{background:var(--verm)!important;color:var(--verm-ink)!important;border:0!important;border-left:0!important;border-radius:2px;padding:16px 18px!important;box-shadow:none}
+.box.alert b,.box.alert strong,.box.alert h3,.box.alert .k,.box.alert small{color:var(--verm-ink)!important}
+.box.alert a,.box.alert .mini,.box.alert button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
+</style>
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <a class="cta" href="index.html">Retour au site</a>
+</header>
+
+<div class="wrap">
+  <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+  <main id="view" aria-live="polite"></main>
+  
+</div>
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="balade-economie.html">La balade de l’économie</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<div id="tip" hidden></div>
+
+<script src="efa-config.js"></script>
+<script src="efa-commun.js"></script>
+<script>
+const CFG = window.EFA_CONFIG, LOCAL = !CFG.BREVO_URL, ETAT = "efa_diag_v2";
+// APERCU : true = une première synthèse s'affiche avant l'email ; l'email donne le résultat complet et la première action.
+const APERCU = CFG.APERCU !== false;
+// Première action, selon la dimension à travailler en premier. f = fiche du guide « Construire sa stabilité financière ».
+const ACTIONS = {
+  savoir:{a:"Cette semaine, apprenez une notion : la différence entre ce qui passe (le flux) et ce qui reste (le stock). Puis notez vos sept chiffres dans la fiche 1.", f:"Fiche 1 · Mes sept chiffres", l:"auteur.html#publications", b:"Lire la leçon Flux (2 min)"},
+  habitudes:{a:"Retrouvez où est passé votre argent sur une période récente : ce que vous aviez, ce que vous avez reçu, ce qui est sorti et ce qu'il reste. Puis classez vos dépenses dans la fiche 2.", f:"Outil · Où est passé mon argent ? · puis fiche 2", l:"ou-est-passe-mon-argent.html?src=diagnostic", b:"Retrouver mon argent"},
+  projection:{a:"Écrivez un objectif avec un montant et une date. Puis calculez combien de rentrées il vous faut pour y arriver.", f:"Calcul : épargner pour un projet", l:"cercle-spirale.html#projet", b:"Calculer mon projet"},
+  resilience:{a:"Séparez une réserve de votre argent courant et fixez un premier palier : deux semaines de charges. Les paliers suivants sont dans la fiche 5.", f:"Fiche 5 · Ma réserve", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
+  rapport:{a:"Cette semaine, attendez 72 heures avant tout achat non prévu. Notez ceux auxquels vous avez renoncé, et la somme épargnée.", f:"Fiche 2 · Mes dépenses courantes", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
+  flux:{a:"Fixez un montant mensuel pour vos proches et annoncez-le. Inscrivez aussi funérailles, fêtes et cotisations dans une enveloppe sur douze mois (fiche 4).", f:"Fiche 4 · Mes obligations sociales", l:"preter-a-un-proche.html?src=diagnostic", b:"Faire le parcours « Prêter à un proche »"}
+};
+const APPUI = {
+  savoir:"Vous maîtrisez les mécanismes de base : inflation, intérêt, diversification.",
+  habitudes:"Vous avez déjà des réflexes de suivi : vous savez où va votre argent.",
+  projection:"Vous regardez loin : vous avez des objectifs et pensez à l'avenir.",
+  resilience:"Vous avez un coussin : un imprévu ne vous met pas tout de suite en difficulté.",
+  rapport:"Vous prenez vos décisions d'argent avec recul.",
+  flux:"Vous gérez déjà vos engagements envers vos proches avec méthode."
+};
+const total = Q.length + PROFIL_Q.length;
+const VIDE = {view: "accueil", i: 0, ans: [], prof: {}, lead: null, nl: false, src: "", p1ok: false, demandeP1: false,
+  interet: {projeter: false, batir: false}, f1: {}, p1: null, attente: false, vus: {}};
+let S = JSON.parse(JSON.stringify(VIDE));
+try { const e = JSON.parse(localStorage.getItem(ETAT) || "null"); if (e) S = {...S, ...e}; } catch (e) {}
+const garde = () => { try { localStorage.setItem(ETAT, JSON.stringify(S)); } catch (e) {} };
+const fini0 = () => S.ans.length === Q.length && Object.keys(S.prof).length === PROFIL_Q.length;
+
+// Provenance (?src=tiktok…) : on garde la première
+try { const src = (new URLSearchParams(location.search).get("src") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 30);
+  if (src && !S.src) { S.src = src; garde(); } } catch (e) {}
+
+/* ---------- Mesure d'audience, sans donnée personnelle ---------- */
+function mesure(ev, unique) {
+  if (unique) { if (S.vus[ev]) return; S.vus[ev] = 1; garde(); }
+  try { (window.dataLayer = window.dataLayer || []).push({event: ev}); if (window.plausible) window.plausible(ev);
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path: "diagnostic-" + ev, title: ev, event: true}); } catch (e) {}
+}
+
+/* ---------- Transmission vers Brevo ----------
+   Champs : EMAIL, PRENOM, EFA_PROFIL, EFA_SCORE, EFA_REPONSES, EFA_DETAIL.
+   EFA_DETAIL regroupe le reste en une ligne : cle=valeur|cle=valeur. Aucun montant en francs n'est transmis. */
+const net = x => String(x ?? "").replace(/[|=;\r\n]/g, " ").trim();
+// Format court, sans accents (Brevo refuse une ligne trop longue : 270 caractères refusés, 96 acceptés).
+// prof = index des réponses sexe;age;pays;activité dans PROFIL_Q. p1r = ratios en % entiers, réserve en dixièmes de mois.
+function detail(s) {
+  const pc = x => Math.round(x * 100);
+  const etatP1 = S.p1 ? "fait" : S.p1ok ? "ouvert" : S.demandeP1 ? "demande" : "non";
+  const d = [["v", CFG.VERSION], ["date", new Date().toISOString().slice(0, 10)],
+    ["dims", DIMS.map(x => s[x.k]).join(";")],
+    ["prof", PROFIL_Q.map(q => S.prof[q.k] ?? "").join(";")],
+    ["src", S.src || "direct"], ["nl", S.nl ? 1 : 0], ["p1", etatP1],
+    ["int", Object.keys(S.interet).filter(k => S.interet[k]).join(";") || "aucun"]];
+  if (S.p1) { const r = S.p1.ratios;
+    d.push(["p1s", S.p1.score], ["p1pil", S.p1.piliers.map(p => p.pts).join(";")],
+      ["p1r", [pc(r.epargne), pc(r.dette), pc(r.famille), pc(r.tontine), Math.round(r.mois * 10), r.sources].join(";")]); }
+  return d.map(([k, v]) => k + "=" + v).join("|").slice(0, 200);
+}
+async function transmettre() {
+  if (!S.lead || S.lead.piege || LOCAL) return;
+  const s = scores(S.ans), d = new FormData();
+  d.append("EMAIL", S.lead.email);
+  d.append("PRENOM", S.lead.prenom || "");
+  d.append("EFA_PROFIL", PROFILS[s.profil].n);
+  d.append("EFA_SCORE", String(s.global));
+  d.append("EFA_REPONSES", S.ans.join(""));
+  d.append("EFA_DETAIL", detail(s));
+  d.append("email_address_check", "");
+  d.append("locale", "fr");
+  try { await fetch(CFG.BREVO_URL, {method: "POST", mode: "no-cors", body: d}); S.attente = false; }
+  catch (e) { S.attente = true; }               // nouvel essai au retour du réseau
+  garde();
+}
+window.addEventListener("online", () => { if (S.attente) transmettre(); });
+
+/* ---------- Vues ---------- */
+const barre = (l, v, m) => { m = m || 100; return `<div class="stack" style="gap:5px"><div class="row"><span>${l}</span><span>${v} / ${m}</span></div><div class="bar ${v / m < .5 ? "warn" : ""}"><i style="width:${v / m * 100}%"></i></div></div>`; };
+const retour = `<button class="btn ghost" data-act="retour">Retour</button>`;
+
+const V = {
+ accueil() {
+  const enCours = S.ans.length > 0 && !fini0();
+  return `<div class="stack"><p class="step">Mon diagnostic financier complet · gratuit · 6 minutes</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
+   <p class="lead">Le seul diagnostic qui compte aussi vos tontines et ce que vous donnez à vos proches.</p></div>
+   <div class="dims">${DIMS.map(d => `<div><b>${d.n}</b><span>${Q.filter(q => q.d === d.k).length} questions</span></div>`).join("")}</div>
+   <div class="actions">${S.lead && fini0() ? `<button class="btn" data-go="resultat">Voir mon dernier résultat</button><button class="btn ghost" data-act="recommencer">Refaire le diagnostic</button>`
+     : enCours ? `<button class="btn" data-go="quiz">Reprendre où j'en étais</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
+     : `<button class="btn" data-act="start">Commencer</button>`}</div>
+   <p class="small muted">« Complet » désigne le parcours EFA proposé : ce n'est pas un audit exhaustif de votre patrimoine. Vous cherchez plutôt où est passé votre argent ? <a href="ou-est-passe-mon-argent.html?src=diagnostic">Essayez cet outil</a>.</p>
+   <p class="small muted">${Q.length} questions, puis ${PROFIL_Q.length} questions de profil. ${APERCU ? "Une première synthèse s'affiche tout de suite. Votre email vous est ensuite demandé pour recevoir le résultat complet et votre première action." : "Votre adresse email vous sera demandée pour afficher le résultat."}</p>`;
+ },
+ quiz() {
+  const inQ = S.i < Q.length, q = inQ ? Q[S.i] : PROFIL_Q[S.i - Q.length];
+  const dim = inQ ? DIMS.find(d => d.k === q.d).n : "Votre profil";
+  const opts = inQ ? q.o.map(o => o[0]) : q.o, cur = inQ ? S.ans[S.i] : S.prof[q.k];
+  return `<div class="stack" style="gap:8px"><div class="prog"><span>${dim.toUpperCase()}</span><span>${S.i + 1} / ${total}</span></div><div class="bar"><i style="width:${S.i / total * 100}%"></i></div></div>
+   <h2 class="q">${esc(q.q)}</h2><div class="stack" style="gap:10px">${opts.map((o, j) => `<button class="opt ${cur === j ? "sel" : ""}" data-rep="${j}">${esc(o)}</button>`).join("")}</div>
+   ${S.i > 0 ? `<button class="link" data-act="prev" style="align-self:flex-start">← Question précédente</button>` : ""}`;
+ },
+ apercu() {
+  const s = scores(S.ans), p = PROFILS[s.profil];
+  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1];
+  return `<div class="stack"><p class="step">Diagnostic terminé · première synthèse</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
+   <div class="b4">
+    <div class="card"><span class="tag">Votre situation</span><h3>${s.palier}</h3><p class="small muted">Une première lecture de vos ${Q.length} réponses, sur six dimensions.</p></div>
+    ${s[fort.k] >= 50 && s[fort.k] > s[faible.k] ? `<div class="card"><span class="tag">Votre point d'appui</span><h3>${fort.n}</h3><p class="small muted">${APPUI[fort.k]}</p></div>` : `<div class="card"><span class="tag">Votre point d'appui</span><h3>À construire</h3><p class="small muted">Aucune dimension ne se détache encore. Le premier module vous donne une base solide en 45 minutes.</p></div>`}
+    <div class="card"><span class="tag">Votre priorité</span><h3>${faible.n}</h3><p class="small muted">C'est le sujet à travailler en premier.</p></div>
+    <div class="card lockd"><span class="tag">Votre première action</span><h3>Une tâche concrète pour cette semaine</h3><p class="small muted">Avec votre score détaillé, votre radar et la fiche correspondante.</p></div>
+   </div>
+   <div class="actions"><button class="btn" data-go="gate">Recevoir mon résultat complet</button><button class="link" data-act="prev2">← Revoir mes réponses</button></div>
+   <p class="small muted">Gratuit. Votre email sert à vous envoyer votre résultat et ses ressources. Rien n'est vendu.</p>`;
+ },
+ gate() {
+  return `<div class="stack"><p class="step">Diagnostic terminé</p><h2>${APERCU ? "Votre résultat complet et votre première action" : "Votre résultat est prêt."}</h2><p class="lead">Indiquez votre adresse pour l'afficher. Vous recevrez ensuite un email pour la confirmer.</p></div>
+   <form id="fgate" class="card" novalidate>
+    <label for="prenom">Prénom <span class="hint">Facultatif</span><input id="prenom" type="text" autocomplete="given-name" maxlength="60"></label>
+    <label for="email">Adresse email<input id="email" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="vous@exemple.com"></label>
+    <div class="piege" aria-hidden="true"><label for="site">Ne pas remplir<input id="site" type="text" tabindex="-1" autocomplete="off"></label></div>
+    <label class="check" for="consent"><input id="consent" type="checkbox"><span>J'accepte qu'EFA conserve mon adresse, mes réponses et mes scores pour m'envoyer mon diagnostic et ses contenus d'éducation financière, et pour produire des statistiques anonymes. Je peux me désinscrire et demander la suppression à tout moment.</span></label>
+    <label class="check" for="nl"><input id="nl" type="checkbox"><span>Recevoir aussi « L'argent de la semaine », la newsletter EFA, chaque mardi. <span class="muted">Facultatif.</span></span></label>
+    <p class="err" id="gerr" role="alert" hidden></p>
+    <div class="actions"><button class="btn" type="submit">Voir mon résultat</button><button class="link" type="button" data-go="confidentialite">Comment mes données sont utilisées</button></div>
+   </form>`;
+ },
+ resultat() {
+  const s = scores(S.ans), p = PROFILS[s.profil];
+  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1], A = ACTIONS[faible.k];
+  const acces = S.p1ok ? `<div class="actions"><button class="btn" data-go="p1">${S.p1 ? "Revoir le niveau 2" : "Commencer le niveau 2"}</button></div>`
+    : `<div class="actions"><button class="btn" data-act="demande" ${S.demandeP1 ? "disabled" : ""}>${S.demandeP1 ? "Demande enregistrée" : "Demander l'accès"}</button><button class="link" data-go="cle">J'ai déjà une clé</button></div>
+       ${S.demandeP1 ? `<p class="small">Vous recevrez le lien et votre clé par email après validation par l'équipe EFA.</p>` : ""}`;
+  const ext = /^https?:/.test(A.l) ? ' target="_blank" rel="noopener"' : "";
+  return `<div class="stack"><p class="step">Votre résultat${S.lead.prenom ? ", " + esc(S.lead.prenom) : ""}</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
+   <div class="b4">
+    <div class="card"><span class="tag">1 · Votre situation</span><div class="kpi">${s.global}<small> / 100</small></div><span class="small muted">${s.palier}. La cible est ${CIBLE}. Un repère pédagogique, pas une note.</span></div>
+    ${s[fort.k] >= 50 && s[fort.k] > s[faible.k] ? `<div class="card"><span class="tag">2 · Votre point d'appui</span><h3>${fort.n} · ${s[fort.k]} / 100</h3><span class="small muted">${APPUI[fort.k]} Appuyez-vous dessus.</span></div>` : `<div class="card"><span class="tag">2 · Votre point d'appui</span><h3>À construire · ${s[fort.k]} / 100 au mieux</h3><span class="small muted">Aucune dimension ne se détache encore : c’est le point de départ le plus courant, et le premier module est fait pour lui.</span></div>`}
+    <div class="card"><span class="tag">3 · Votre priorité</span><h3>${faible.n} · ${s[faible.k]} / 100</h3><span class="small muted">${faible.conseil}</span></div>
+   </div>
+   <div class="box act"><span class="tag">4 · Votre première action cette semaine</span><h3>${esc(A.a)}</h3><p class="small">${esc(A.f)}</p>
+    <div class="actions"><a class="btn" href="${A.l}"${ext} data-goatcounter-click="diag-action">${A.b}</a><a class="link" href="${CFG.GUIDE}">Le guide complet, en complément</a></div></div>
+   ${(() => { const pid = s.flux < 34 ? "pilier" : s.profil; const R = {explorateur:["P1","Où passe mon argent ?"], averti:["P2","Un budget qui tient"], discipline:["P1","Où passe mon argent ?"], stratege:["P8","Premiers pas à la BRVM"], pilier:["P3","Aider mes proches sans me perdre"]}[pid] || ["P1","Où passe mon argent ?"]; return `<div class="box blue"><span class="tag">5 · Votre parcours</span><h3>Commencez par le parcours ${R[0].slice(1)} : ${R[1]}</h3><p class="small">Des étapes courtes, avec Koffi, jusqu'à un résultat concret. Votre progression dans l’école reste sur votre téléphone ; vos réponses au diagnostic ne sont envoyées que si vous l’avez accepté.</p><div class="actions"><a class="btn" href="parcours.html?profil=${pid}#${R[0]}" data-goatcounter-click="diag-parcours">Ouvrir mon parcours</a><a class="link" href="parcours.html?profil=${pid}">Voir tous les parcours</a></div></div>`; })()}
+   ${s.flux < 34 && faible.k !== "flux" ? `<div class="box alert"><h3>Pilier de famille sous pression</h3><p>Vous portez des charges pour vos proches sans les avoir budgétées. Ce n'est pas un défaut, c'est une ligne à inscrire dans votre budget.</p></div>` : ""}
+   <details class="card det"><summary>Voir le détail de mes six dimensions</summary><div class="two"><div>${radar([{n: "Vous", c: "var(--c1)", v: s, fill: true}], "Votre radar sur six dimensions")}</div>
+    <div class="stack" style="gap:10px">${DIMS.map(d => barre(d.n, s[d.k])).join("")}</div></div>
+    <div class="legend"><span><i style="background:var(--c1)"></i>Vous, sur 100</span><span><i class="dash"></i>Cible ${CIBLE}</span></div>
+    <p class="small muted">Limites : vos réponses sont déclaratives et les seuils sont des repères fixés par EFA. Ce diagnostic ne recommande aucun produit financier.</p></details>
+   <div class="box blue"><span class="tag">Aller plus loin · Niveau 2 · gratuit sur validation</span><h3>Passez des habitudes aux chiffres.</h3><p>Sept montants, un score de stabilité sur 100 et trois priorités chiffrées.</p>${acces}</div>
+   <div class="actions"><button class="btn ghost" data-act="partage">Partager le diagnostic</button><button class="link" data-act="recommencer">Refaire le diagnostic</button><button class="link" data-act="effacer">Effacer mes données de cet appareil</button></div>
+   <p class="small muted">${LOCAL ? "Mode local : rien ne quitte ce navigateur." : "Dernière étape : un email de confirmation doit vous arriver dans les minutes qui viennent. Confirmez votre adresse en cliquant sur son lien (regardez aussi dans Promotions ou Spam). Sans confirmation, nous ne pourrons pas vous écrire."}</p>`;
+ },
+ cle() {
+  return `<div class="stack"><p class="step">Niveau 2 · Assainir</p><h2>Votre clé d'accès</h2><p class="muted">Elle figure dans l'email envoyé par EFA après validation de votre demande.</p></div>
+   <form id="fcle" class="card" novalidate><label for="cle">Clé d'accès<input id="cle" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40"></label>
+    <p class="err" id="cerr" role="alert" hidden></p><div class="actions"><button class="btn" type="submit">Ouvrir le niveau 2</button><button class="link" type="button" data-go="resultat">Retour à mon résultat</button></div></form>`;
+ },
+ p1() {
+  const f = (id, l, h) => `<label for="${id}">${l}<span class="hint">${h}</span><input id="${id}" type="number" inputmode="numeric" min="0" step="1000" value="${esc(S.f1[id] ?? "")}"></label>`;
+  return `<div class="stack"><p class="step">Niveau 2 · Assainir</p><h2>Sept chiffres, par mois, en francs CFA.</h2><p class="muted">Un ordre de grandeur suffit. Ces montants restent sur votre appareil : seuls votre score et vos ratios sont transmis.</p></div>
+   <form id="f1" class="card" novalidate>
+    ${f("rev", "Revenus du mois", "Salaire, activité, loyers perçus : tout ce qui rentre")}
+    ${f("dep", "Dépenses courantes", "Loyer, nourriture, transport, factures, scolarité")}
+    ${f("det", "Remboursements de dettes", "Banque, microfinance, mobile money, dettes entre proches")}
+    ${f("fam", "Soutien aux proches et obligations sociales", "Envois à la famille, funérailles, mariages, cotisations de village (moyenne mensuelle)")}
+    ${f("ton", "Cotisations de tontine", "Total de vos cotisations du mois")}
+    ${f("epa", "Épargne disponible aujourd'hui", "Ce que vous pouvez retirer en moins d'une semaine, hors tontine")}
+    <label for="src">Sources de revenus<select id="src"><option value="1">Une seule</option><option value="2">Deux</option><option value="3">Trois ou plus</option></select></label>
+    <p class="err" id="ferr" role="alert" hidden></p>
+    <div class="actions"><button class="btn" type="submit">Calculer mon score</button><button class="link" type="button" data-act="exemple">Remplir avec un exemple</button></div></form>`;
+ },
+ r1() {
+  const r = S.p1;
+  return `<div class="stack"><p class="step">Score de stabilité</p><div class="kpi big">${r.score}<small> / 100</small></div><h2>${r.niveau}</h2>
+    <p class="muted">${r.reste >= 0 ? "Il vous reste " + fcfa(r.reste) + " par mois après toutes vos charges et votre tontine." : "Il vous manque " + fcfa(-r.reste) + " chaque mois : vos sorties dépassent vos revenus."}</p></div>
+   <div class="card">${r.piliers.map(p => `<div class="stack" style="gap:5px">${barre(p.k, p.pts, 25)}<span class="small muted">${p.d}</span></div>`).join("")}</div>
+   <div class="box alert"><h3>Vos priorités</h3><ul>${r.actions.map(a => `<li>${a}</li>`).join("")}</ul>${r.tontine ? `<p class="small">${r.tontine}</p>` : ""}</div>
+   <div class="box blue"><span class="tag">Guide gratuit EFA</span><h3>Construire sa stabilité financière</h3><p>Cinq fiches pour travailler chaque pilier avec vos propres chiffres.</p><div class="actions"><a class="btn" href="${CFG.GUIDE}">Voir le guide</a></div></div>
+   <div class="actions"><button class="btn ghost" data-go="p1">Modifier mes chiffres</button><button class="link" data-go="resultat">Retour à mon profil</button></div>`;
+ },
+ methode() {
+  return `<div class="stack"><p class="step">Méthode · version ${esc(CFG.VERSION)}</p><h1>Comment votre résultat est calculé</h1></div>
+   <div class="card"><h3>Niveau 1 · Comprendre</h3><ul>
+    <li>Six dimensions : ${DIMS.map(d => d.n).join(", ")}.</li>
+    <li>Savoir : quatre questions, un point par bonne réponse. Les cinq autres dimensions : trois questions notées de 0 à 2.</li>
+    <li>Chaque dimension est ramenée sur 100. Le score global est la moyenne des six.</li>
+    <li>Paliers : ${CIBLE} et plus, Maîtrise · 40 à ${CIBLE - 1}, En construction · moins de 40, Fragile.</li>
+    <li>Le profil croise le Savoir (au moins 3 bonnes réponses) et la Pratique (moyenne de Habitudes, Projection et Résilience, au moins 50).</li></ul></div>
+   <div class="card"><h3>Niveau 2 · Assainir</h3><div class="scroll"><table><tr><th>Pilier</th><th>Mesure</th><th>25 points</th><th>0 point</th></tr>
+    <tr><td>Marge mensuelle</td><td>(Revenus − dépenses − dettes − soutien aux proches) ÷ revenus. La tontine compte comme épargne.</td><td>20 % ou plus</td><td>0 % ou moins</td></tr>
+    <tr><td>Poids des dettes</td><td>Remboursements ÷ revenus</td><td>0 %</td><td>50 % ou plus</td></tr>
+    <tr><td>Résistance aux chocs</td><td>Épargne ÷ charges mensuelles, plus 5 points à partir de deux sources de revenus</td><td>3 mois et deux sources</td><td>Aucune réserve, une source</td></tr>
+    <tr><td>Flux communautaires</td><td>Soutien aux proches ÷ revenus</td><td>10 % ou moins</td><td>40 % ou plus</td></tr></table></div></div>
+   <div class="card"><h3>Limites</h3><ul><li>Les seuils sont des repères pédagogiques fixés par EFA. Ils seront ajustés à partir des diagnostics réalisés.</li>
+    <li>Vos réponses sont déclaratives : rien n'est vérifié.</li><li>Ce diagnostic ne recommande aucun produit financier.</li></ul></div>
+   <div class="actions">${retour}</div>`;
+ },
+ confidentialite() {
+  return `<div class="stack"><p class="step">Confidentialité</p><h1>Ce que nous faisons de vos données</h1></div>
+   <div class="card"><h3>Ce qui est conservé</h3><ul><li>Votre adresse email et, si vous le donnez, votre prénom.</li><li>Vos réponses au questionnaire, votre profil et vos scores, votre tranche d'âge, votre pays et votre activité.</li>
+    <li>Pour le niveau 2 : votre score, vos piliers et vos ratios. Vos montants en francs restent sur votre appareil.</li></ul></div>
+   <div class="card"><h3>À quoi cela sert</h3><ul><li>Vous envoyer votre diagnostic et les contenus d'éducation financière d'EFA.</li><li>Produire des statistiques anonymes, publiées uniquement par groupes d'au moins 50 personnes.</li><li>Vos données sont hébergées par Brevo, notre outil d'envoi d'emails. Elles ne sont ni vendues ni transmises à d'autres tiers.</li></ul></div>
+   <div class="card"><h3>Vos droits</h3><ul><li>Chaque email contient un lien de désinscription.</li><li>Vous pouvez demander la suppression de vos données en écrivant à <a href="mailto:${esc(CFG.CONTACT)}">${esc(CFG.CONTACT)}</a>. La demande est traitée sous 30 jours.</li></ul></div>
+   <div class="actions">${retour}<a class="link" href="confidentialite.html">Politique complète du site</a></div>`;
+ }
+};
+
+/* ---------- Navigation ---------- */
+let prec = "accueil";
+function go(v) {
+  // Jamais de résultat (ni de profil) sans un questionnaire complet sur cet appareil
+  if ((v === "resultat" || v === "cle") && !(S.lead && fini0())) v = fini0() ? "gate" : "accueil";
+  if (v === "p1" && !S.p1ok) v = S.lead ? "cle" : "accueil";
+  if (v === "r1" && !S.p1) v = "p1";
+  if (v === "quiz" && S.lead && fini0()) v = "resultat";
+  if ((v === "gate" || v === "apercu") && !fini0()) v = "accueil";
+  if (v === "apercu" && S.lead) v = "resultat";
+  if (S.view !== "methode" && S.view !== "confidentialite") prec = S.view;
+  S.view = v; garde(); render(); window.scrollTo(0, 0);
+}
+function render() {
+  document.body.classList.toggle("nuit", S.view === "resultat" || S.view === "r1");
+  document.getElementById("view").innerHTML = V[S.view] ? V[S.view]() : V.accueil();
+  if (S.view === "p1" && S.f1.src) document.getElementById("src").value = S.f1.src;
+  const f = document.querySelector("#view h1, #view h2"); if (f) { f.setAttribute("tabindex", "-1"); f.focus({preventScroll: true}); }
+}
+const msg = (id, t) => { const e = document.getElementById(id); e.textContent = t; e.hidden = false; };
+
+document.addEventListener("click", async e => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.go) return go(t.dataset.go);
+  if (t.dataset.rep !== undefined) {
+    if (S.i < Q.length) S.ans[S.i] = +t.dataset.rep; else S.prof[PROFIL_Q[S.i - Q.length].k] = +t.dataset.rep;
+    if (S.i === 9) mesure("diag_question_10", true);
+    if (S.i < total - 1) { S.i++; garde(); return render(); }
+    mesure("diag_fin_questions", true);
+    return go(APERCU ? "apercu" : "gate");
+  }
+  if (t.dataset.int) { const k = t.dataset.int; S.interet[k] = !S.interet[k]; if (S.interet[k]) mesure("diag_interet_" + k, true); garde(); transmettre(); return render(); }
+  const a = t.dataset.act;
+  if (a === "start") { S.i = 0; mesure("diag_debut"); return go("quiz"); }
+  if (a === "recommencer") { if (S.lead && !confirm("Refaire le diagnostic ? Votre résultat actuel sera remplacé sur cet appareil.")) return; const src = S.src; S = JSON.parse(JSON.stringify(VIDE)); S.src = src; garde(); mesure("diag_debut"); return go("quiz"); }
+  if (a === "prev") { S.i--; garde(); return render(); }
+  if (a === "prev2") { S.i = total - 1; garde(); return go("quiz"); }
+  if (a === "effacer") { try { localStorage.removeItem(ETAT); } catch (err) {} S = JSON.parse(JSON.stringify(VIDE)); return go("accueil"); }
+  if (a === "retour") return go(prec);
+  if (a === "demande") { S.demandeP1 = true; mesure("diag_p1_demande", true); garde(); transmettre(); return render(); }
+  if (a === "exemple") { S.f1 = {rev: 350000, dep: 190000, det: 60000, fam: 55000, ton: 25000, epa: 120000, src: "1"}; return render(); }
+  if (a === "partage") {
+    const url = (CFG.LIEN_PUBLIC || location.href.split(/[?#]/)[0]) + "?src=partage";
+    const txt = "Je viens de faire le diagnostic EFA : six dimensions pour savoir où j'en suis avec mon argent.";
+    mesure("diag_partage");
+    try { if (navigator.share) { await navigator.share({title: "Diagnostic EFA", text: txt, url}); return; }
+      await navigator.clipboard.writeText(txt + " " + url); t.textContent = "Message copié"; }
+    catch (err) { if (err && err.name !== "AbortError") t.textContent = "Copie impossible sur cet appareil"; }
+  }
+});
+document.addEventListener("submit", e => {
+  e.preventDefault();
+  if (e.target.id === "fgate") {
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return msg("gerr", "Saisissez une adresse email valide, par exemple prenom@exemple.com.");
+    if (!document.getElementById("consent").checked) return msg("gerr", "Cochez la case de consentement pour afficher votre résultat.");
+    S.lead = {email, prenom: document.getElementById("prenom").value.trim().slice(0, 60), at: new Date().toISOString(), piege: !!document.getElementById("site").value};
+    S.nl = document.getElementById("nl").checked;
+    mesure("diag_email_ok", true); transmettre(); go("resultat");
+  }
+  if (e.target.id === "fcle") {
+    const k = document.getElementById("cle").value.trim().toUpperCase();
+    if (!k) return msg("cerr", "Saisissez la clé reçue par email.");
+    if (k !== String(CFG.CLE_P1).toUpperCase()) return msg("cerr", "Clé non reconnue. Vérifiez l'email reçu d'EFA, ou demandez l'accès depuis votre résultat.");
+    S.p1ok = true; mesure("diag_p1_ouvert", true); transmettre(); go("p1");
+  }
+  if (e.target.id === "f1") {
+    const v = {}; ["rev", "dep", "det", "fam", "ton", "epa"].forEach(k => { S.f1[k] = document.getElementById(k).value; v[k] = Math.max(0, parseFloat(S.f1[k]) || 0); });
+    S.f1.src = document.getElementById("src").value; v.src = +S.f1.src;
+    if (!(v.rev > 0)) return msg("ferr", "Indiquez vos revenus du mois pour calculer le score.");
+    S.p1 = calcP1(v); mesure("diag_p1_fin", true); transmettre(); go("r1");
+  }
+});
+const tip = document.getElementById("tip");
+document.addEventListener("mousemove", e => { const t = e.target.closest && e.target.closest("[data-tip]"); if (!t) { tip.hidden = true; return; }
+  tip.textContent = t.dataset.tip; tip.hidden = false;
+  tip.style.left = Math.max(8, Math.min(window.innerWidth - tip.offsetWidth - 8, e.clientX + 12)) + "px"; tip.style.top = Math.max(8, e.clientY - tip.offsetHeight - 10) + "px"; });
+// À l'ouverture : on ne rouvre jamais une page annexe (méthode, confidentialité, clé) restée en mémoire.
+// On reprend le parcours là où il en était : résultat, questions en cours, ou accueil.
+// Un résultat déjà obtenu ne s'affiche jamais d'office : la personne choisit « Voir mon dernier résultat » ou « Refaire le diagnostic ».
+go(["resultat", "r1", "p1"].includes(S.view) ? "accueil" : ["methode", "confidentialite", "cle", "gate", "apercu"].includes(S.view)
+   ? (S.lead ? "accueil" : (S.ans.length && !fini0() ? "accueil" : (fini0() ? (APERCU ? "apercu" : "gate") : "accueil")))
+   : S.view);
+</script>
+<!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body>
+</html>

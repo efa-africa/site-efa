@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#070C16">
+<title>Min’Fin, la série d’éducation financière · EFA</title>
+<meta name="description" content="Min’Fin, la série d’Éducation Financière Afrique : des épisodes d’une minute avec Koffi pour comprendre où passe votre argent, la tontine, les prêts aux proches. Gratuit, en FCFA.">
+<link rel="canonical" href="https://efa.africa/minfin.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Min’Fin, la série EFA : l’argent s’apprend en une minute">
+<meta property="og:description" content="Suivez Koffi, épisode après épisode : où passe l’argent, la tontine, les prêts aux proches.">
+<meta property="og:url" content="https://efa.africa/minfin.html">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<style>
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#1B71B2; --corail:#DA3C1B;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#E2D8C4;
+  --hausse:#1E7A4C;
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--nuit);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;overflow-wrap:break-word}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:760px}
+
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-size:26px}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+
+.mission{font-weight:700;font-size:clamp(15px,1.8vw,18px);line-height:1.4;max-width:44em}
+.mission .mc{color:#EC6243;font-weight:800}.mission .ms{color:var(--soft-bleu);font-weight:800}
+.intro{background:var(--nuit);color:#fff;padding-block:36px 44px}
+.intro .mission{color:#E8EDF5}
+.crumbs{font-size:13px;color:#AEB6C6;margin-top:18px}
+.crumbs a{color:#E8EDF5}
+
+/* ===== Min’Fin : vitrine de la série (thème sombre du site) ===== */
+body.mf{background:#070C16;color:#E8EDF5}
+.mf .top{background:#070C16}
+.kick{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail)}
+.logo-mf{font-family:var(--f-body);font-weight:800;letter-spacing:.04em}
+.logo-mf .ap{color:var(--corail)}.logo-mf .fin{color:var(--soft-bleu)}
+
+/* Bannière : l’épisode à la une */
+.hero{position:relative;min-height:min(78svh,640px);display:flex;align-items:flex-end;overflow:hidden;background:#070C16}
+.hero-aff{position:absolute;z-index:1;right:max(16px,5vw);top:50%;transform:translateY(-50%);width:min(28vw,300px);height:auto;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+@media (max-width:820px){.hero-aff{display:none}}
+.hero-img{position:absolute;inset:0;background-size:cover;background-position:center 22%;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#070C16 0%,rgba(7,12,22,.82) 42%,rgba(7,12,22,.2) 100%),linear-gradient(0deg,#070C16 0%,rgba(7,12,22,0) 45%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:56px 44px}
+.hero .mission{color:#E8EDF5}
+.hero .crumbs{font-size:13px;color:#AEB6C6;margin-top:14px}
+.hero .crumbs a{color:#E8EDF5}
+.serie{margin-top:28px;font-size:clamp(28px,4vw,40px)}
+.hero h1{font-size:clamp(36px,6vw,68px);margin-top:12px;max-width:16ch}
+.hero .meta{margin-top:12px;font-size:15px;color:#C9D1DE;display:flex;flex-wrap:wrap;gap:6px 14px}
+.hero .meta b{color:#fff}
+.hero .lead{margin-top:14px;max-width:34em;font-size:clamp(17px,1.9vw,19px);color:#C9D1DE}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:12px 22px;border-radius:8px;border:0;font:800 16px/1.2 var(--f-body);text-decoration:none;cursor:pointer}
+.btn-play{background:#fff;color:#0B1220}
+.btn-play::before{content:"";width:0;height:0;border-left:13px solid currentColor;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.btn-sec{background:rgba(255,255,255,.16);color:#fff}
+.btn-cor{background:var(--corail);color:#fff}
+
+/* Rangées d’affiches */
+.rang{padding-block:28px 8px}
+.rang-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rang h2{font-size:clamp(24px,3.2vw,34px)}
+.rang .sous{color:#C9D1DE;max-width:46em;margin-top:8px}
+.rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;padding:18px 0 22px}
+@media (max-width:560px){.rail{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+
+.ep{position:relative;display:block;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#0D1525;color:#fff;text-decoration:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;transition:transform .2s ease}
+.ep:hover,.ep:focus-visible{transform:translateY(-4px)}
+.ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.ep::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070C16 6%,rgba(7,12,22,.7) 46%,rgba(7,12,22,.1) 100%)}
+.ep-in{position:absolute;inset:auto 0 0 0;z-index:1;padding:16px}
+.ep-num{font-family:var(--f-display);font-weight:700;font-size:54px;line-height:1;color:rgba(255,255,255,.9)}
+.ep-t{font-family:var(--f-display);font-weight:700;font-size:18px;line-height:1.2;margin-top:6px}
+.ep-d{font-size:13px;color:#C9D1DE;margin-top:6px}
+.badge{position:absolute;top:12px;left:12px;z-index:1;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--corail);color:#fff}
+.badge.bientot{background:#F2B84B;color:#0B1220}
+.ep.aff{aspect-ratio:auto;display:flex;flex-direction:column;background:#0D1525}
+.ep.aff img{position:static;width:100%;height:auto;aspect-ratio:1122/1402;object-fit:cover;object-position:top}
+.ep.aff::after{display:none}
+.ep.aff .ep-in{position:static;padding:12px 60px 14px 14px}
+.ep.aff .ep-num,.ep.aff .ep-t{display:none!important}
+.ep.aff .ep-d{margin-top:0;font-size:14px;color:#E8EDF5}
+.ep.aff .play{top:auto;bottom:62px}
+.ep.off{cursor:default}
+.ep.off img{filter:grayscale(.6) brightness(.6)}
+.ep.off:hover{transform:none}
+.play{position:absolute;top:12px;right:12px;z-index:1;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.play::before{content:"";border-left:12px solid #0B1220;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+
+/* Personnages */
+.onglets{position:relative;z-index:2;background:rgba(7,12,22,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #1F2C45}
+.onglets .wrap{display:flex;flex-wrap:wrap;gap:6px;padding-block:10px}
+.onglets a{flex:none;color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:8px 14px;border-radius:999px;background:#111B2F}
+.onglets a:hover,.onglets a:focus-visible{background:#DA3C1B}
+#personnages,#saisons,#h-une{scroll-margin-top:120px}
+.persos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
+.perso{display:flex;gap:14px;align-items:center;background:#0D1525;border-radius:14px;padding:14px}
+.perso img{width:76px;height:76px;border-radius:999px;object-fit:cover;flex:none}
+.perso h3{font-size:19px}
+.perso p{font-size:15px;color:#C9D1DE;margin-top:4px}
+
+/* Appel final */
+.fin-cta{padding-block:44px 56px}
+.fin-box{background:var(--corail);color:#fff;border-radius:14px;padding:clamp(22px,4vw,36px);display:grid;gap:12px;max-width:820px}
+.fin-box h2{font-size:clamp(24px,3.4vw,34px)}
+.fin-box p{max-width:36em}
+.fin-box .btn{background:#fff;color:#0B1220;justify-self:start}
+.note{font-size:13px;color:#8E98AA;margin-top:22px;max-width:52em}
+
+/* Lecteur */
+.lect{position:fixed;inset:0;z-index:60;background:rgba(3,6,12,.92);display:flex;align-items:center;justify-content:center;padding:16px}
+.lect[hidden]{display:none}
+.lect-box{width:min(420px,100%);display:grid;gap:12px}
+.lect-vid{position:relative;aspect-ratio:9/16;max-height:78svh;width:100%;margin:0 auto;border-radius:14px;overflow:hidden;background:#000}
+.lect-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lect-h{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lect-h p{font-weight:700}
+.lect-x{background:rgba(255,255,255,.16);color:#fff;border:0;border-radius:8px;min-height:44px;padding:8px 14px;font:700 14px var(--f-body);cursor:pointer}
+.lect-liens{display:flex;flex-wrap:wrap;gap:8px}
+.lect-liens a{color:#E8EDF5;font-size:14px}
+@media (prefers-reduced-motion:reduce){.ep{transition:none}.ep:hover{transform:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CreativeWorkSeries","name":"Min’Fin","alternateName":"Ma minute finance","description":"Série de mini-films d’éducation financière d’Éducation Financière Afrique.","inLanguage":"fr","url":"https://efa.africa/minfin.html","publisher":{"@type":"Organization","name":"Éducation Financière Afrique","url":"https://efa.africa"}}
+</script>
+<style>.lect-fait{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 6px}.lect-fait button{font:800 16px "Source Sans 3",system-ui,sans-serif;min-height:46px;padding:10px 18px;border-radius:8px;border:0;cursor:pointer;background:#DA3C1B;color:#fff}.lect-fait span{color:#3CCB7F;font-weight:800}.lect-fait a{background:#F5EFE2;color:#0B1220;font-weight:800;text-decoration:none;padding:10px 16px;border-radius:8px}</style>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head>
+<body class="mf">
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="h-une">
+  <div class="hero-img" id="hero-img" style="background-image:url('koffi.jpg')"></div>
+  <img class="hero-aff" id="hero-aff" src="" alt="" width="800" height="1000" hidden>
+  <div class="wrap">
+    <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+    <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › Min’Fin, la série</nav>
+    <p class="serie logo-mf" aria-label="Min’Fin">MIN<span class="ap">’</span><span class="fin">FIN</span></p>
+    <p class="kick" id="hero-kick">À la une · Saison 1</p>
+    <h1 id="h-une">Où est passé votre argent&nbsp;?</h1>
+    <p class="meta" id="hero-meta"><b>Épisode 1</b><span>1 min</span><span>Avec Koffi</span></p>
+    <p class="lead" id="hero-lead">Une minute, une situation que tout le monde a vécue, une règle à appliquer le soir même. L’argent s’apprend.</p>
+    <div class="actions">
+      <button class="btn btn-play" type="button" id="hero-play">Regarder</button>
+      <a class="btn btn-sec" href="#saison-1">Tous les épisodes</a>
+      <a class="btn btn-sec" href="#personnages">Découvrir les personnages</a>
+    </div>
+  </div>
+</section>
+
+<nav class="onglets" aria-label="Dans Min’Fin">
+  <div class="wrap"><a href="#h-une">Le nouvel épisode</a><a href="#saisons">Tous les épisodes</a><a href="#personnages">Découvrir les personnages</a></div>
+</nav>
+
+<div id="saisons"></div>
+
+<section class="rang" id="personnages" aria-labelledby="h-persos">
+  <div class="wrap">
+    <h2 id="h-persos">Les personnages</h2>
+    <div class="persos" id="persos"></div>
+  </div>
+</section>
+
+<section class="fin-cta">
+  <div class="wrap">
+    <div class="fin-box">
+      <h2>Et vous, où passe votre argent&nbsp;?</h2>
+      <p>Koffi a fait son diagnostic. Faites le vôtre&nbsp;: dix minutes, gratuit, pour savoir où vous en êtes et par quoi commencer.</p>
+      <a class="btn" href="diagnostic.html?src=minfin" data-goatcounter-click="minfin-diagnostic">Faire mon diagnostic</a>
+    </div>
+    <p class="note">Exemples pédagogiques réalisés avec l’aide de l’intelligence artificielle, relus par l’équipe EFA. Koffi, Tonton Bamba et Tantie Affoué sont des personnages fictifs&nbsp;; les montants sont illustratifs. EFA éduque&nbsp;: elle ne conseille aucun produit ni établissement.</p>
+  </div>
+</section>
+</main>
+
+<div class="lect" id="lect" role="dialog" aria-modal="true" aria-labelledby="lect-t" hidden>
+  <div class="lect-box">
+    <div class="lect-h"><p id="lect-t"></p><button class="lect-x" type="button" id="lect-x">Fermer</button></div>
+    <div class="lect-vid" id="lect-vid"></div>
+    <div class="lect-liens" id="lect-liens"></div>
+  </div>
+</div>
+
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="balade-economie.html">La balade de l’économie</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script src="minfin.js?v=2026102901"></script>
+<script src="efa-suite.js?v=2026102902" defer></script>
+<script src="efa-compte.js?v=2026102701" defer></script>
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){
+  var b=document.getElementById('menu'), n=document.getElementById('nav');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'&&n.classList.contains('open')){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='Menu';}});
+})();
+
+(function(){
+  var M=window.MINFIN; if(!M) return;
+  function esc(s){return String(s).replace(/ ([:?!;])/g,'\u00a0$1').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function idOk(id){return /^[A-Za-z0-9_-]{11}$/.test(id||'');}
+  var tous=[];
+
+  /* Rangées par saison */
+  var box=document.getElementById('saisons'), html='';
+  M.saisons.forEach(function(s){
+    var eps=s.episodes.filter(function(e){return e.statut!=='reserve';});
+    html+='<section class="rang" id="saison-'+s.n+'" aria-labelledby="h-s'+s.n+'"><div class="wrap">'
+      +'<div class="rang-h"><h2 id="h-s'+s.n+'">Saison '+s.n+' · '+esc(s.titre)+'</h2><span class="kick">'+eps.length+' épisodes</span></div>'
+      +'<p class="sous">'+esc(s.resume)+'</p><div class="rail" role="list">';
+    eps.forEach(function(e){
+      var on=e.statut==='publie'; e.saison=s.n; if(on) tous.push(e);
+      html+='<'+(on?'button type="button"':'div')+' class="ep'+(e.affiche?' aff':'')+(on?'':' off')+'" role="listitem"'+' id="ep-'+s.n+'-'+e.n+'"'+(on?' data-ep="'+s.n+'-'+e.n+'" aria-label="Regarder l’épisode '+e.n+' : '+esc(e.titre)+'"':' aria-label="Épisode '+e.n+', bientôt : '+esc(e.titre)+'"')+'>'
+        +'<img src="'+esc(e.vignette||e.image)+'" alt="" loading="lazy">'
+        +(on?'<span class="play" aria-hidden="true"></span>':'<span class="badge bientot">Bientôt</span>')
+        +'<span class="ep-in"><span class="ep-num">'+e.n+'</span><span class="ep-t" style="display:block">'+esc(e.titre)+'</span><span class="ep-d" style="display:block">'+esc(e.notion)+' · '+esc(e.duree)+'</span></span>'
+        +'</'+(on?'button':'div')+'>';
+    });
+    html+='</div></div></section>';
+  });
+  box.innerHTML=html;
+
+  /* Personnages */
+  document.getElementById('persos').innerHTML=M.personnages.map(function(p){
+    return '<div class="perso"><img src="'+esc(p.image)+'" alt="Portrait de '+esc(p.nom)+'" loading="lazy"><div><h3>'+esc(p.nom)+'</h3><p>'+esc(p.role)+'</p></div></div>';
+  }).join('');
+
+  /* À la une : le dernier épisode publié */
+  var une=tous[tous.length-1];
+  if(une){
+    document.getElementById('h-une').textContent=une.titre.replace(/ ([:?!;])/g,'\u00a0$1');
+    document.getElementById('hero-kick').textContent='Nouvel épisode · Saison '+une.saison;
+    document.getElementById('hero-meta').innerHTML='<b>Épisode '+une.n+'</b><span>'+esc(une.duree)+'</span><span>'+esc(une.notion)+'</span>';
+    document.getElementById('hero-img').style.backgroundImage="url('"+une.image+"')";if(une.affiche){var hv=document.getElementById('hero-aff');if(hv){hv.src=une.vignette;hv.alt='Affiche de l’épisode '+une.n;hv.hidden=false;if(innerWidth>820)document.getElementById('hero-img').style.opacity='.18';}}
+  }
+
+  /* Lecteur : vidéo intégrée si l’identifiant YouTube est connu, sinon liens */
+  var L=document.getElementById('lect'), V=document.getElementById('lect-vid'), T=document.getElementById('lect-t'), K=document.getElementById('lect-liens'), dernier=null;
+  function ouvrir(e){
+    efaCompte('minfin-ep'+e.saison+'-'+e.n);
+    T.textContent='Saison '+e.saison+' · Épisode '+e.n+' · '+e.titre;
+    var liens=[];
+    if(idOk(e.youtube)){
+      V.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+e.youtube+'?autoplay=1&rel=0&playsinline=1" title="'+esc(e.titre)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      liens.push('<a href="https://www.youtube.com/shorts/'+e.youtube+'" target="_blank" rel="noopener">Ouvrir sur YouTube</a>');
+    }else{
+      V.innerHTML='<img src="'+esc(e.image)+'" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5"><div style="position:absolute;inset:auto 0 0 0;padding:20px;display:grid;gap:10px"><p style="font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2">'+esc(e.titre)+'</p><a class="btn btn-play" href="'+esc(M.chaine)+'" target="_blank" rel="noopener" style="justify-self:start">Regarder sur YouTube</a></div>';
+    }
+    liens.push('<a href="'+esc(e.tiktok||M.tiktok)+'" target="_blank" rel="noopener">Voir sur TikTok</a>');
+    liens.push('<a href="diagnostic.html?src=minfin-ep'+e.n+'">Faire mon diagnostic</a>');
+    K.innerHTML=liens.join(' · ');
+    // Arrivé depuis un module de l'école : valider l'étape sans quitter la vidéo, puis passer à la suivante
+    if(/[?&]parcours=/.test(location.search)) (function essai(n){ var cb=document.getElementById('es-fait'); if(!cb){ if(n<30) setTimeout(function(){ if(!L.hidden) essai(n+1); },200); return; } if(L.querySelector('.lect-fait')) return;
+      var bx=document.createElement('div'); bx.className='lect-fait';
+      var maj=function(){var s=document.querySelector('.efa-ctx .ctx-suiv'); bx.innerHTML=cb.checked?'<span>✓ Vidéo marquée comme vue</span>'+(s?'<a href="'+s.getAttribute('href')+'">'+s.textContent+'</a>':''):'<button type="button">J’ai vu la vidéo : marquer comme fait</button>'; var b=bx.querySelector('button'); if(b) b.onclick=function(){cb.checked=true; cb.dispatchEvent(new Event('change')); maj();};};
+      maj(); K.parentNode.insertBefore(bx,K);
+    })(0);
+    dernier=document.activeElement; L.hidden=false; document.body.style.overflow='hidden';
+    document.getElementById('lect-x').focus();
+  }
+  function fermer(){var f=L.querySelector('.lect-fait'); if(f) f.remove(); L.hidden=true; V.innerHTML=''; document.body.style.overflow=''; if(dernier) dernier.focus();}
+  document.getElementById('lect-x').addEventListener('click',fermer);
+  L.addEventListener('click',function(ev){if(ev.target===L) fermer();});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!L.hidden) fermer();});
+  box.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-ep]'); if(!b) return;
+    var k=b.getAttribute('data-ep'); ouvrir(tous.filter(function(e){return e.saison+'-'+e.n===k;})[0]);
+  });
+  document.getElementById('hero-play').addEventListener('click',function(){ if(une) ouvrir(une); });
+  var hm=(location.hash||'').match(/^#ep-(\d+)-(\d+)$/);
+  if(hm){var cible=tous.filter(function(e){return e.saison==hm[1]&&e.n==hm[2];})[0]; if(cible){var c=document.querySelector('[data-ep="'+hm[1]+'-'+hm[2]+'"]'); if(c) c.scrollIntoView({block:'center'}); ouvrir(cible);}}
+})();
+</script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body>
+</html>

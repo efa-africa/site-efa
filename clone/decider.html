@@ -1,0 +1,250 @@
+<!doctype html>
+<html data-clone data-clone-plein lang="fr"><head>
+<base href="../"><meta charset="utf-8"><script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Simulateur de décisions · L’école EFA</title>
+<meta name="description" content="Cinq décisions d’argent à s’entraîner à prendre : un proche qui demande, le tour de tontine, une offre de crédit, une prime, le premier investissement. Vous choisissez, vous voyez ce qui peut arriver, vous rédigez votre réponse.">
+<link rel="canonical" href="https://efa.africa/decider">
+<meta property="og:title" content="Simulateur de décisions EFA : entraîner son jugement">
+<meta property="og:description" content="Un proche vous demande 100 000 F. Aide, prêt ou pas maintenant ? Choisissez, voyez ce qui peut arriver, rédigez votre réponse.">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:url" content="https://efa.africa/decider">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="ecole-bourse.css?v=2026102511">
+<style>
+.rep-types{display:flex;flex-wrap:wrap;gap:.6cqw}
+.rep-types button{all:unset;cursor:pointer;font-weight:800;font-size:max(12px,1.4cqw);padding:.7cqw 1.2cqw;border-radius:999px;background:rgba(255,255,255,.12);color:#fff}
+.rep-types button[aria-pressed="true"]{background:#DA3C1B}
+.rep-types button:focus-visible{outline:2px solid #6DB8F2}
+.rep-zone{width:100%;min-height:9em;font:inherit;font-size:max(12px,1.5cqw);line-height:1.45;border:0;border-radius:.8cqw;padding:1cqw 1.2cqw;background:#FFFDF8;color:#2A3142;resize:vertical}
+.rep-zone:focus{outline:2px solid #2188D6}
+.rep-act{display:flex;flex-wrap:wrap;gap:.8cqw}
+.rep-act a,.rep-act button{all:unset;cursor:pointer;font-weight:800;font-size:max(12px,1.45cqw);padding:.8cqw 1.4cqw;border-radius:.7cqw;background:#DA3C1B;color:#fff}
+.rep-act a.wa{background:#1E9E5A}
+.act-l{display:flex;flex-direction:column;gap:.7cqw}
+.act-l button{all:unset;cursor:pointer;background:var(--papier);color:var(--ink);border-radius:.8cqw;padding:1cqw 1.3cqw;font-weight:700;font-size:max(12px,1.55cqw);line-height:1.3}
+.act-l button[aria-pressed="true"]{background:#0B1220;color:#fff}
+.act-l button:focus-visible{outline:2px solid #2188D6}
+.suivis{display:flex;flex-direction:column;gap:.5cqw;margin-top:.6cqw}
+.suivis div{background:var(--papier);border-radius:.7cqw;padding:.7cqw 1cqw;font-size:max(11px,1.3cqw);color:var(--ink2)}
+.suivis b{color:var(--ink)}
+@media (orientation:portrait) and (max-width:700px){
+  .rep-types button{font-size:14px;padding:8px 12px}.rep-zone{font-size:15px;padding:12px;border-radius:10px}
+  .rep-act a,.rep-act button{font-size:15px;padding:10px 14px;border-radius:8px}.rep-act{gap:8px}
+  .act-l button{font-size:15px;padding:11px 13px;border-radius:10px}.act-l{gap:8px}.suivis div{font-size:14px;padding:9px 11px}
+}
+</style>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head><body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<div class="tourner" role="note">Tournez votre téléphone pour un meilleur confort de lecture</div>
+<div class="cadre-wrap">
+  <section class="cadre" aria-label="Écran d'apprentissage">
+    <div class="barre">
+      <span class="label">Décider</span>
+      <span class="titre-mod" id="titre">Simulateur de décisions</span>
+      <span class="compteur" id="compteur"></span>
+    </div>
+    <nav class="progres" id="progres" aria-label="Progression"></nav>
+    <div class="corps" id="corps" aria-live="polite"></div>
+    <div class="pied">
+      <a class="ely" href="https://efa.africa/ely" target="_blank" rel="noopener">Demander à Ely</a>
+      <span class="duree" id="duree"></span>
+      <button class="btn prec" id="som" type="button">Sommaire</button>
+      <button class="btn prec" id="prec" type="button">Précédent</button>
+      <button class="btn suiv" id="suiv" type="button">Suivant</button>
+    </div>
+  </section>
+</div>
+<p class="mention">Simulateur pédagogique d’EFA. Koffi, Tantie Affoué et leurs proches sont des personnages fictifs, comme les montants. Les conséquences décrites sont possibles, pas certaines : il n’y a pas une seule bonne réponse, il y a des choix que l’on fait en connaissant leur prix. Vos réponses et vos messages restent sur votre téléphone. EFA éduque, elle ne conseille aucun produit ni établissement.</p>
+
+<script src="efa-suivi.js?v=2026102501"></script>
+<script>
+window.ECOLE = {
+  cle: "efa_decider_v1",
+  titre: "Simulateur de décisions",
+  label: "Décider",
+  accueil: {
+    sur: "L’école EFA · Simulateur",
+    titre: "Décider avant que l’argent ne décide pour vous",
+    kick: "Cinq décisions · 5 à 8 minutes chacune",
+    h: "Choisissez, voyez ce qui peut arriver, rédigez votre réponse",
+    p: ["Chaque simulation part d’une situation que vous connaissez. Il n’y a pas une seule bonne réponse : vous voyez le prix de chaque choix, puis vous repartez avec votre message prêt à envoyer et une action à essayer. Dans 7 jours, EFA vous demande si vous avez pu essayer."],
+    plus: ''
+  },
+  final: '<a href="parcours.html?src=decider">Reprendre mes parcours <span>→</span></a>',
+  modules: []
+};
+var MOD = window.ECOLE.modules;
+
+/* ---------- Écrans communs : la réponse à rédiger, l’action à essayer ---------- */
+function ecranReponse(o) { // o: {types:[[cle,libelle]], parChoix:{A:cle}, modeles:{cle:texte}, titre, aide, destinataire}
+  return {t:"perso", rendu:function(c){
+    var S=c.S, choix=S.r.e2, t=S.r.rt||o.parChoix[choix]||o.types[0][0], txt=(S.r.rx&&S.r.rx[t])||o.modeles[t];
+    var b=o.types.map(function(x){return '<button type="button" data-rt="'+x[0]+'" aria-pressed="'+(x[0]===t)+'">'+x[1]+'</button>';}).join('');
+    return '<div class="illu nuit"><span class="tabtitre">'+o.destinataire+'</span><div class="rep-types" id="rt">'+b+'</div><label style="width:100%"><span class="mot" style="display:block;text-align:left;margin-bottom:4px">Modifiez le message à votre façon</span><textarea class="rep-zone" id="rx">'+txt.replace(/</g,'&lt;')+'</textarea></label><div class="rep-act"><button type="button" id="rc">Copier</button><a class="wa" id="rw" href="#" target="_blank" rel="noopener">Envoyer par WhatsApp</a></div><span class="mot" id="rm" aria-live="polite"></span></div>'
+     +'<div class="texte"><p class="sur">Votre réponse</p><h2 class="h">'+o.titre+'</h2>'+ECOLE.outils.typo('<p class="p">'+o.aide+'</p><p class="p">Le type de réponse a été choisi d’après votre décision. Changez-le si vous voulez, et réécrivez le message avec vos mots : il reste sur votre téléphone.</p>')+'</div>';
+  }, apres:function(c){
+    var S=c.S, z=document.getElementById('rx'), w=document.getElementById('rw');
+    var maj=function(){w.href='https://wa.me/?text='+encodeURIComponent(z.value);};
+    maj(); z.addEventListener('input',function(){var t=S.r.rt||o.parChoix[S.r.e2]||o.types[0][0];S.r.rx=S.r.rx||{};S.r.rx[t]=z.value;c.sauver();maj();});
+    document.getElementById('rt').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;e.stopPropagation();S.r.rt=b.getAttribute('data-rt');c.sauver();c.refaire();});
+    document.getElementById('rc').addEventListener('click',function(e){e.stopPropagation();var m=document.getElementById('rm');try{navigator.clipboard.writeText(z.value).then(function(){m.textContent='Message copié.';},function(){z.select();m.textContent='Sélectionné : copiez-le.';});}catch(x){z.select();}ECOLE.outils.compte('decider-'+c.M.id+'-copie');});
+    w.addEventListener('click',function(e){e.stopPropagation();ECOLE.outils.compte('decider-'+c.M.id+'-whatsapp');});
+  }};
+}
+/* Rappel à J+7 dans l'agenda du téléphone (.ics) ou Google Agenda : rien n'est envoyé par EFA */
+function rappelAgenda(it,action,M){
+  var d=new Date(it.j7),f=function(x){return x.toISOString().slice(0,10).replace(/-/g,'');},d2=new Date(d.getTime()+864e5);
+  var titre='EFA · ai-je essayé ? '+action, lien='https://efa.africa/decider#'+M.id, det='Cette semaine, j’ai choisi : '+action+'. Revenez sur '+lien+' pour noter ce qui s’est passé.';
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//EFA//Rappel//FR','BEGIN:VEVENT','UID:efa-'+M.id+'-'+it.j7+'@efa.africa','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;VALUE=DATE:'+f(d),'DTEND;VALUE=DATE:'+f(d2),'SUMMARY:'+titre.replace(/[,;]/g,' '),'DESCRIPTION:'+det.replace(/[,;]/g,' '),'URL:'+lien,'BEGIN:VALARM','TRIGGER:PT9H','ACTION:DISPLAY','DESCRIPTION:'+titre.replace(/[,;]/g,' '),'END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(titre)+'&dates='+f(d)+'/'+f(d2)+'&details='+encodeURIComponent(det);
+  return '<a href="data:text/calendar;charset=utf-8,'+encodeURIComponent(ics)+'" download="rappel-efa-'+M.id+'.ics">agenda du téléphone</a> ou <a href="'+g+'" target="_blank" rel="noopener">Google Agenda</a>.';
+}
+function ecranAction(o) { // o: {actions:[...], titre}
+  return {t:"perso", bloque:function(c){return !c.S.r.ac;}, rendu:function(c){
+    var S=c.S, a=S.r.ac, it=null;
+    try{it=(window.EFA_SUIVI&&EFA_SUIVI.liste()||[]).filter(function(x){return x.id===c.M.id;})[0];}catch(e){}
+    var l=o.actions.map(function(x,i){return '<button type="button" data-ac="'+i+'" aria-pressed="'+(a!=null&&+a===i)+'">'+x+'</button>';}).join('')+'<button type="button" data-ac="-1" aria-pressed="'+(a==="-1")+'">Pas maintenant</button>';
+    var conf=a!=null&&a!=="-1"&&it?'<p class="explic"><b>C’est noté.</b> Le '+new Date(it.j7).toLocaleDateString('fr-FR',{day:'numeric',month:'long'})+', EFA vous demandera si vous avez pu essayer, puis à nouveau dans 30 jours. Pour ne pas l’oublier, mettez-le dans votre agenda&nbsp;: '+rappelAgenda(it,o.actions[+a],c.M)+'</p>':(a==="-1"?'<p class="explic">Pas de souci. Vous pouvez revenir choisir une action quand vous voulez.</p>':'');
+    return '<div class="illu papier"><span class="tabtitre fonce">Cette semaine, j’essaie…</span><div class="act-l" id="al">'+l+'</div></div>'
+     +'<div class="texte"><p class="sur">Votre action</p><h2 class="h">'+o.titre+'</h2>'+ECOLE.outils.typo('<p class="p">Une décision ne change rien tant qu’on ne l’a pas essayée. Choisissez une seule action, petite et faisable cette semaine.</p>')+conf+'</div>';
+  }, apres:function(c){
+    document.getElementById('al').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;e.stopPropagation();var i=b.getAttribute('data-ac');c.S.r.ac=i;c.sauver();
+      if(i!=="-1"&&window.EFA_SUIVI)EFA_SUIVI.planifier({id:c.M.id,titre:c.M.titre,action:o.actions[+i],lien:'decider.html#'+c.M.id});
+      ECOLE.outils.compte('decider-'+c.M.id+'-action-'+i);c.refaire();});
+  }};
+}
+
+/* ======================= D1 · Un proche demande ======================= */
+MOD.push({id:"D1", titre:"Un proche me demande 100 000 F", court:"Un proche demande", duree:"≈ 7 min",
+retenir:"Avant de répondre : <span class=\"s\">urgence ou envie</span> ? Puis-je donner <span class=\"s\">sans m’endetter</span> ? Si je prête, suis-je prêt à <span class=\"c\">ne pas revoir</span> l’argent ? Dire ce que c’est, <span class=\"s\">aide ou prêt</span>, avant de donner.",
+ecrans:[
+ {t:"info", illu:{photo:"koffi-inquiet.jpg", leg:"Mardi soir, un message de Serge, son cousin"}, sur:"La situation", h:"« Grand frère, il me faut 100 000 F avant vendredi »",
+  p:["Serge écrit : « J’ai un problème, il me faut 100 000 F avant vendredi. Je te rembourse à la fin du mois, promis. » Il ne dit pas pourquoi. Il a déjà emprunté 40 000 F à Koffi l’an dernier ; il en a rendu 15 000.",
+   "Koffi gagne 400 000 F. Ce mois-ci, 340 000 F sont déjà engagés. Sa réserve de précaution est de 150 000 F."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Le mois de Koffi</span><table class="tab"><tbody><tr><td>Salaire</td><td>400 000 F</td></tr><tr><td>Déjà engagé</td><td class="m">− 340 000 F</td></tr><tr class="tot"><td>Reste ce mois-ci</td><td>60 000 F</td></tr><tr><td>Réserve de précaution</td><td>150 000 F</td></tr><tr><td>Prêt à Serge non rendu</td><td>25 000 F</td></tr></tbody></table>'},
+  sur:"Ce qu’il faut regarder", h:"Trois questions avant de répondre",
+  p:["<strong>Urgence ou envie ?</strong> Santé, école, loyer, funérailles : ce n’est pas la même chose qu’un projet ou un plaisir. Demander le motif n’est pas un manque de respect.",
+   "<strong>Puis-je donner sans m’endetter ni vider ma réserve ?</strong> Ici, il reste 60 000 F ce mois-ci. <strong>Et si je prête, suis-je prêt à ne jamais revoir cet argent ?</strong> Le dernier prêt n’est pas soldé."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"100 000 F demandés, 60 000 F de reste à vivre"}, sur:"Décider", h:"Que fait Koffi ?",
+  opts:[["A","Il prête les 100 000 F, en les prenant sur sa réserve.","mo","<b>Ce qui peut arriver.</b> Serge est soulagé. La réserve de Koffi tombe à 50 000 F : au prochain coup dur, c’est lui qui devra emprunter. Si Serge rend en retard, ou pas du tout, la relation se tend. Si Koffi prête, il écrit le montant et la date de remboursement, et en parle à voix haute."],
+   ["B","Il donne 30 000 F, sans attendre de retour, et le dit clairement.","ok","<b>Ce qui peut arriver.</b> Le budget de Koffi tient, sa réserve aussi. Il n’y a pas de dette entre eux, donc rien à réclamer plus tard. Serge doit trouver le reste ailleurs ; il peut être déçu, mais il sait sur quoi compter."],
+   ["C","Il dit « pas ce mois-ci » et propose d’en reparler, motif en main.","mo","<b>Ce qui peut arriver.</b> Koffi protège son mois, et ne rajoute pas un prêt à celui qui n’est pas soldé. Serge peut le prendre mal sur le moment. Proposer une alternative (aider à trouver une solution, reparler dans deux semaines) adoucit le refus."],
+   ["D","Il emprunte à un collègue pour pouvoir prêter à Serge.","ko","<b>Ce qui peut arriver.</b> Koffi porte maintenant deux dettes : celle qu’il doit à son collègue, et celle que Serge lui doit. Si Serge ne rend pas, c’est Koffi qui rembourse. C’est la façon la plus sûre d’abîmer deux relations."]]},
+ ecranReponse({destinataire:"Votre message à Serge", titre:"Dire ce que c’est, avant de donner", aide:"Le plus difficile n’est pas de dire oui ou non : c’est de dire clairement si c’est une aide ou un prêt. Un message écrit évite les malentendus des mois plus tard.",
+  types:[["aide","Une aide"],["pret","Un prêt"],["non","Pas maintenant"]], parChoix:{A:"pret",B:"aide",C:"non",D:"pret"},
+  modeles:{aide:"Serge, je ne peux pas te donner 100 000 F ce mois-ci. Je peux t’aider avec 30 000 F, c’est un cadeau, tu ne me dois rien. J’espère que ça va s’arranger, tiens-moi au courant.",
+   pret:"Serge, je peux te prêter 100 000 F. Je te demande de me les rendre le 30, en une fois. Je note aussi les 25 000 F qui restent du prêt de l’an dernier. Si tu as un souci pour la date, dis-le-moi avant, on s’arrangera.",
+   non:"Serge, je ne peux pas ce mois-ci : tout est déjà engagé, et je dois garder ma réserve pour les urgences de la maison. Dis-moi ce qui se passe exactement : si c’est la santé ou l’école, on cherche une solution ensemble."}}),
+ ecranAction({titre:"Une action pour vos prochaines demandes", actions:["Fixer mon enveloppe « solidarité » du mois, et m’y tenir","Noter par écrit chaque prêt en cours : qui, combien, quand","Répondre à la prochaine demande en disant « aide » ou « prêt »"]})
+]});
+
+/* ======================= D2 · Le tour de tontine ======================= */
+MOD.push({id:"D2", titre:"Mon tour de tontine arrive : 600 000 F", court:"Le tour de tontine", duree:"≈ 7 min",
+retenir:"Le tour n’est <span class=\"c\">pas un gain</span> : c’est votre argent, plus une avance du groupe. On décide de sa <span class=\"s\">répartition avant</span> de le recevoir, et on garde une part.",
+ecrans:[
+ {t:"info", illu:{photo:"affoue-portrait.jpg", leg:"Tantie Affoué, dans dix jours"}, sur:"La situation", h:"Dans dix jours, Tantie Affoué reçoit 600 000 F",
+  p:["Elle cotise 50 000 F par mois dans une tontine de douze personnes. C’est son tour dans dix jours. Déjà, les demandes arrivent : son fils veut une moto à 450 000 F, sa boutique manque de stock, une cousine prépare un mariage.",
+   "Elle n’a aucune réserve en dehors de la tontine. Et après son tour, elle devra encore cotiser 50 000 F chaque mois jusqu’à la fin du cycle."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Ce que représente le tour</span><table class="tab"><tbody><tr><td>Ses cotisations déjà versées</td><td>300 000 F</td></tr><tr><td>Avance du groupe, à rendre</td><td>300 000 F</td></tr><tr class="tot"><td>Le tour</td><td>600 000 F</td></tr></tbody></table><span class="mot">La moitié est une avance : elle la rembourse par ses cotisations des six prochains mois.</span>'},
+  sur:"Ce qu’il faut regarder", h:"La moitié du tour est une avance du groupe",
+  p:["Au milieu du cycle, la moitié du tour vient de ses propres cotisations ; l’autre moitié est une avance qu’elle rendra mois après mois. Dépenser tout le tour, c’est dépenser aussi de l’argent qu’elle doit encore.",
+   "La règle EFA : écrire la répartition avant de recevoir, et garder une part qui ne sort pas."]},
+ {t:"choix", illu:{photo:"affoue-soucieuse.jpg", leg:"Moto, stock, mariage : tout le monde a un projet"}, sur:"Décider", h:"Que fait Tantie Affoué de son tour ?",
+  opts:[["A","Elle achète la moto de son fils : c’est la plus grosse demande.","ko","<b>Ce qui peut arriver.</b> 450 000 F partent en un jour. Il reste 150 000 F pour le stock et le mariage, plus rien pour une réserve. Les six prochaines cotisations devront sortir de la boutique, déjà à court de stock."],
+   ["B","Elle écrit sa répartition avant : stock, réserve, une aide fixée pour la famille.","ok","<b>Ce qui peut arriver.</b> Par exemple : 300 000 F de stock, 150 000 F de réserve sur un compte séparé, 150 000 F pour la famille, à partager. Personne n’a tout ce qu’il voulait, mais la boutique tourne et une part reste."],
+   ["C","Elle laisse l’argent sur son mobile money et décidera au fil des besoins.","mo","<b>Ce qui peut arriver.</b> Sans plan écrit, un tour fond souvent en quelques semaines, en petites sommes difficiles à retracer. C’est l’histoire de l’épisode Min’Fin « 1 000 000 de tontine. Trois semaines plus tard ? »."],
+   ["D","Elle prête tout à une voisine qui promet 20 % d’intérêts en deux mois.","ko","<b>Ce qui peut arriver.</b> Un rendement aussi élevé signifie un risque très élevé. Si la voisine ne rend pas, Tantie Affoué perd son tour et doit quand même payer ses cotisations."]]},
+ ecranReponse({destinataire:"Votre message à la famille", titre:"Annoncer sa décision avant de recevoir", aide:"Les demandes sont plus faciles à gérer quand on annonce sa répartition avant que l’argent arrive. Après, chaque refus devient personnel.",
+  types:[["plan","J’annonce mon plan"],["non","Pas cette fois"]], parChoix:{A:"plan",B:"plan",C:"plan",D:"plan"},
+  modeles:{plan:"Bonjour la famille. Mon tour de tontine arrive. J’ai décidé à l’avance : la plus grande part va au stock de la boutique, une part reste de côté pour les urgences, et je garde 150 000 F pour aider la famille ce mois-ci. Je ne pourrai pas faire plus, parce que je continue à cotiser jusqu’à la fin du cycle.",
+   non:"Bonjour. Mon tour de tontine est déjà réparti : la boutique et ma réserve d’abord. Je ne pourrai pas aider cette fois, mais j’en reparlerai volontiers au prochain tour."}}),
+ ecranAction({titre:"Une action avant votre prochain tour", actions:["Écrire ma répartition avant de recevoir mon tour","Ouvrir un compte séparé pour la part qui reste","Annoncer à la famille, avant le tour, ce que je peux donner"]})
+]});
+
+/* ======================= D3 · Une offre de crédit ======================= */
+MOD.push({id:"D3", titre:"Une offre de crédit : 500 000 F", court:"Une offre de crédit", duree:"≈ 7 min",
+retenir:"On regarde le <span class=\"c\">coût total</span>, pas la mensualité. Les remboursements ne doivent pas dépasser <span class=\"s\">un tiers</span> des revenus. Et on compare <span class=\"s\">au moins deux offres</span> par écrit.",
+ecrans:[
+ {t:"info", illu:{photo:"koffi-portrait.jpg", leg:"Une offre au magasin d’électroménager"}, sur:"La situation", h:"« 500 000 F tout de suite, seulement 30 000 F par mois »",
+  p:["Koffi veut équiper la maison : réfrigérateur et télévision. Le vendeur lui propose un crédit : 500 000 F tout de suite, puis 30 000 F par mois pendant 24 mois. « Vous pouvez signer aujourd’hui. »",
+   "Koffi rembourse déjà 60 000 F par mois pour sa moto. Son salaire est de 400 000 F."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Ce que coûte vraiment l’offre</span><table class="tab"><tbody><tr><td>24 mensualités de 30 000 F</td><td>720 000 F</td></tr><tr><td>Somme empruntée</td><td>500 000 F</td></tr><tr class="tot"><td>Coût du crédit</td><td class="m">220 000 F</td></tr></tbody></table><table class="tab" style="margin-top:6px"><tbody><tr><td>Remboursements avec la moto</td><td>90 000 F</td></tr><tr><td>Part du salaire</td><td>22,5 %</td></tr></tbody></table>'},
+  sur:"Ce qu’il faut regarder", h:"220 000 F de plus, sur deux ans",
+  p:["La mensualité paraît petite ; le coût total, lui, est de 220 000 F, frais de dossier et assurance non compris. C’est 44 % de la somme empruntée.",
+   "Avec la moto, Koffi rembourserait 90 000 F par mois, soit 22,5 % de son salaire : sous le repère d’un tiers, mais il ne lui resterait que peu de marge pour un imprévu."]},
+ {t:"choix", illu:{photo:"koffi-inquiet.jpg", leg:"« Vous pouvez signer aujourd’hui »"}, sur:"Décider", h:"Que fait Koffi ?",
+  opts:[["A","Il signe : la mensualité passe dans son budget.","mo","<b>Ce qui peut arriver.</b> Il a son équipement tout de suite et paie 220 000 F de plus sur deux ans. Si un imprévu arrive, ses deux crédits passent avant tout le reste, et sa réserve servira à les payer."],
+   ["B","Il met 30 000 F de côté chaque mois et achète comptant dans un an.","ok","<b>Ce qui peut arriver.</b> Il attend un an, mais économise le coût du crédit. Au bout de douze mois, avec 360 000 F, il peut acheter le réfrigérateur seul, ou négocier un prix au comptant."],
+   ["C","Il demande l’offre par écrit, avec le TAEG et les frais, et la compare à une autre.","ok","<b>Ce qui peut arriver.</b> Il découvre les frais de dossier et l’assurance obligatoire. Une banque ou une microfinance propose peut-être moins cher. Comparer prend une semaine ; une mauvaise offre coûte deux ans."],
+   ["D","Il signe, et prévoit d’emprunter ailleurs si un mois est difficile.","ko","<b>Ce qui peut arriver.</b> Emprunter pour rembourser est le début de la spirale de dettes : chaque nouveau crédit coûte des intérêts sur les précédents."]]},
+ ecranReponse({destinataire:"Votre message au vendeur ou à la banque", titre:"Demander les chiffres avant de signer", aide:"Un professionnel sérieux donne ses conditions par écrit. Celui qui presse pour signer le jour même vous donne une raison de comparer.",
+  types:[["infos","Demander les conditions"],["non","Décliner"]], parChoix:{A:"infos",B:"non",C:"infos",D:"infos"},
+  modeles:{infos:"Bonjour, avant de décider, pouvez-vous m’envoyer par écrit : le taux annuel effectif global (TAEG), le coût total du crédit, les frais de dossier, le prix de l’assurance, et les pénalités en cas de retard ou de remboursement anticipé ? Je compare avec une autre offre et je vous réponds dans la semaine. Merci.",
+   non:"Bonjour, merci pour votre proposition. Je préfère mettre de côté et acheter comptant. Pouvez-vous me dire quel serait votre meilleur prix pour un paiement en une fois ?"}}),
+ ecranAction({titre:"Une action avant votre prochain crédit", actions:["Calculer le coût total avant de signer quoi que ce soit","Demander une deuxième offre, par écrit","Mettre de côté la mensualité pendant trois mois, pour voir si je tiens"]})
+]});
+
+/* ======================= D4 · Une prime ======================= */
+MOD.push({id:"D4", titre:"Je reçois une prime de 500 000 F", court:"Une prime", duree:"≈ 6 min",
+retenir:"Une grosse rentrée se <span class=\"s\">répartit le jour même</span>, sur papier : une part qui reste, une part pour un projet, une part pour la famille et le plaisir. Le reste <span class=\"c\">fond sans bruit</span>.",
+ecrans:[
+ {t:"info", illu:{photo:"koffi-sourire.jpg", leg:"Une prime annuelle, versée vendredi"}, sur:"La situation", h:"Vendredi, 500 000 F de prime arrivent sur le compte de Koffi",
+  p:["C’est la première fois. Dans son entourage, la nouvelle circule vite. Koffi a envie de se faire plaisir, sa mère attend un geste, et il a toujours une dette de 120 000 F auprès d’une microfinance, à 3 % par mois.",
+   "Sa réserve de précaution est de 150 000 F, soit moins de deux semaines de dépenses."]},
+ {t:"info", illu:{c:"bleu", html:'<span class="tabtitre">Une répartition possible (exemple)</span><table class="tab"><tbody><tr><td>Rembourser la dette à 3 % par mois</td><td>120 000 F</td></tr><tr><td>Renforcer la réserve</td><td>150 000 F</td></tr><tr><td>Un projet (formation, matériel)</td><td>100 000 F</td></tr><tr><td>Famille et plaisir</td><td>130 000 F</td></tr><tr class="tot"><td>Total</td><td>500 000 F</td></tr></tbody></table>'},
+  sur:"Ce qu’il faut regarder", h:"La dette chère d’abord, puis la réserve",
+  p:["Une dette à 3 % par mois coûte 36 % par an : la rembourser, c’est un rendement sûr qu’aucun placement n’offre. Ensuite, la réserve : c’est elle qui évitera la prochaine dette.",
+   "Une part pour la famille et le plaisir n’est pas une faute : c’est ce qui rend le plan tenable. Elle est fixée à l’avance, c’est tout."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"500 000 F, et tout le monde le sait"}, sur:"Décider", h:"Que fait Koffi de sa prime ?",
+  opts:[["A","Il se fait plaisir et aide la famille : c’est sa prime, il l’a méritée.","mo","<b>Ce qui peut arriver.</b> Un très bon mois, puis la même situation qu’avant : la dette court toujours à 3 % par mois, la réserve est trop courte. Dans six mois, il est difficile de dire où sont passés les 500 000 F."],
+   ["B","Il écrit sa répartition le jour même : dette, réserve, projet, famille et plaisir.","ok","<b>Ce qui peut arriver.</b> La dette disparaît, la réserve passe à 300 000 F, et la famille a sa part annoncée. Il en profite quand même, sans arrière-pensée."],
+   ["C","Il place tout en Bourse pour faire fructifier.","mo","<b>Ce qui peut arriver.</b> Le placement court le risque d’une baisse, alors qu’une dette à 36 % par an continue de courir. Et sans réserve, la première urgence l’obligera à vendre."],
+   ["D","Il laisse tout sur son compte en attendant d’avoir une idée.","mo","<b>Ce qui peut arriver.</b> L’argent sans destination fond en petites dépenses. Sans plan écrit, une prime se dépense souvent en quelques semaines."]]},
+ ecranReponse({destinataire:"Votre message à la famille", titre:"Annoncer ce que l’on peut faire", aide:"Annoncer un montant précis, et s’y tenir, protège la relation mieux qu’un « on verra ».",
+  types:[["plan","J’annonce ma part"],["non","Pas cette fois"]], parChoix:{A:"plan",B:"plan",C:"plan",D:"plan"},
+  modeles:{plan:"Maman, j’ai reçu une prime. J’ai décidé de rembourser une dette et de mettre de côté pour les urgences. Je mets 70 000 F pour la famille ce mois-ci, je te les envoie demain.",
+   non:"Maman, j’ai reçu une prime, mais elle sert d’abord à rembourser une dette qui me coûte cher et à mettre de côté pour les urgences. Je ne pourrai pas faire plus que d’habitude ce mois-ci."}}),
+ ecranAction({titre:"Une action pour votre prochaine rentrée", actions:["Virer la part « réserve » le jour même où l’argent arrive","Écrire ma répartition avant de toucher à l’argent","Rembourser d’abord la dette la plus chère"]})
+]});
+
+/* ======================= D5 · Le premier investissement ======================= */
+MOD.push({id:"D5", titre:"Mon premier investissement : 200 000 F", court:"Premier investissement", duree:"≈ 7 min",
+retenir:"Avant d’investir : <span class=\"s\">réserve en place, pas de dette chère</span>, argent qui peut attendre <span class=\"s\">cinq ans</span>. Une SGI agréée, un ordre à cours limité, plusieurs sociétés ou un fonds. Un rendement garanti, c’est une <span class=\"c\">arnaque</span>.",
+ecrans:[
+ {t:"info", illu:{photo:"koffi-sourire.jpg", leg:"Koffi a 200 000 F qui peuvent attendre"}, sur:"La situation", h:"Koffi veut que ses 200 000 F « travaillent »",
+  p:["Sa réserve couvre maintenant trois mois de dépenses, et il n’a plus de dette chère. Il a 200 000 F qui peuvent attendre cinq ans.",
+   "Sur WhatsApp, un ami lui conseille une action « qui a pris 30 % en un mois ». Un autre groupe propose « 5 % par mois garantis »."]},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les quatre vérifications</span><ol class="liste-n"><li><b>Réserve</b> de trois à six mois : oui.</li><li><b>Pas de dette chère</b> : oui.</li><li><b>Horizon de cinq ans</b> : oui.</li><li><b>Savoir expliquer</b> ce qu’il achète : pas encore.</li></ol>'},
+  sur:"Ce qu’il faut regarder", h:"Trois vérifications sur quatre",
+  p:["Koffi est prêt sur le plan financier. Il lui manque la quatrième : pouvoir dire en une phrase ce qu’il achète et pourquoi.",
+   "Le reste est une question de méthode : une SGI agréée par l’AMF-UMOA, des frais calculés, et plusieurs sociétés ou un fonds plutôt qu’un seul titre."]},
+ {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Deux messages, deux promesses"}, sur:"Décider", h:"Que fait Koffi de ses 200 000 F ?",
+  opts:[["A","Il achète l’action qui a pris 30 % le mois dernier.","ko","<b>Ce qui peut arriver.</b> Il achète après la hausse, sans savoir pourquoi le titre a monté. Une hausse passée ne dit rien de la suite, et tout son argent dépend d’une seule société."],
+   ["B","Il choisit une SGI agréée, puis un fonds ou trois sociétés qu’il sait expliquer, à cours limité.","ok","<b>Ce qui peut arriver.</b> Il paie des frais, et le cours peut baisser la première année. Mais il sait ce qu’il possède, son risque est réparti, et il pourra tenir pendant les baisses."],
+   ["C","Il rejoint le groupe qui promet 5 % par mois garantis.","ko","<b>Ce qui peut arriver.</b> Aucun placement sérieux ne garantit 5 % par mois. Ces promesses sont presque toujours des arnaques : l’argent disparaît quand les nouveaux entrants se font rares."],
+   ["D","Il attend d’avoir un million pour que les frais pèsent moins.","mo","<b>Ce qui peut arriver.</b> C’est vrai, les frais pèsent moins sur un gros montant. Mais il perd des années. Un fonds commun permet de commencer petit, avec des frais répartis."]]},
+ ecranReponse({destinataire:"Votre message à une SGI", titre:"Poser les bonnes questions avant d’ouvrir un compte", aide:"Une SGI agréée répond par écrit à ces questions. Envoyez le même message à deux ou trois SGI de la liste officielle, et comparez.",
+  types:[["sgi","Questions à une SGI"],["ami","Réponse à mon ami"]], parChoix:{A:"ami",B:"sgi",C:"ami",D:"sgi"},
+  modeles:{sgi:"Bonjour, je souhaite ouvrir un compte-titres. Pouvez-vous m’indiquer : votre numéro d’agrément AMF-UMOA, votre grille de frais (courtage, tenue de compte, conservation, retrait), le dépôt minimum, les moyens de versement, et le coût d’un transfert de mes titres vers une autre SGI ? Merci.",
+   ami:"Merci pour l’info. Avant d’acheter, je préfère comprendre l’entreprise et passer par une SGI agréée. Et pour le groupe à 5 % par mois : fais attention, aucun placement sérieux ne garantit ça."}}),
+ ecranAction({titre:"Une action avant votre premier ordre", actions:["Vérifier l’agrément de deux SGI sur amf-umoa.org","Faire la formation « Suis-je prêt à investir ? »","Calculer mes frais avec le calcul EFA"]})
+]});
+
+/* ---------- Sommaire : mes suivis en cours ---------- */
+(function(){
+  var l=[];try{l=(window.EFA_SUIVI?EFA_SUIVI.liste():[]).filter(function(x){return /^D\d$/.test(x.id);});}catch(e){}
+  if(!l.length)return;
+  var f=function(t){return new Date(t).toLocaleDateString('fr-FR',{day:'numeric',month:'long'});};
+  window.ECOLE.accueil.plus='<p class="sur" style="margin-top:6px">Mes actions en cours</p><div class="suivis">'+l.map(function(x){var r=x.r30||x.r7;return '<div><b>'+x.action.replace(/</g,'&lt;')+'</b><br>'+(r?('Réponse : '+(r==='oui'?'essayé':r==='partiel'?'en partie':'pas encore')+(x.r30?'':' · point à 30 jours le '+f(x.j30))):'Point à 7 jours le '+f(x.j7))+'</div>';}).join('')+'</div>';
+})();
+</script>
+<script src="ecole-bourse-moteur.js?v=2026102703"></script>
+<script src="efa-suite.js?v=2026102902" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body></html>

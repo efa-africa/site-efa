@@ -1,0 +1,112 @@
+/* EFA · Clone · habillage premium des pages de la V1, en blanc et bleu.
+   Fichier généré par scripts/clone/habiller.py : ne pas modifier clone/habillage.css à la main,
+   modifier ce fichier puis relancer le script.
+   Portée : uniquement les copies de /clone (balise <html data-clone>). Le site en ligne n'est pas touché.
+   Règle : plus aucun fond noir ni bleu nuit. Les fonds sombres restants sont convertis par clone/habillage.js. */
+
+html[data-clone]{
+  --navy:#071d38;--deep:#06172d;--blue:#0b63b0;--cyan:#21a4c2;--coral:#e34234;--cream:#faf8f4;
+  --clone-line:#e3eaef;--clone-soft:#f3f7fb;--clone-bleu-clair:#eaf3fc;--clone-encre:#142438;--clone-gris:#536174;
+  /* jetons de la V1 : le texte reste foncé, les fonds deviennent clairs */
+  --nuit:#142438;--corail:#e34234;--creme:#ffffff;--papier:#f3f7fb;--line:#e3eaef;--bleu:#0b63b0;--soft-bleu:#1b71b2;--soft-corail:#d2452f;
+  scroll-padding-top:96px;background:#fff
+}
+html[data-clone] body{padding-top:82px;background:#fff}
+@media(max-width:720px){html[data-clone] body{padding-top:68px}}
+
+/* Pendant la conversion des couleurs, la page apparaît en fondu (et s'affiche de toute façon après 1,2 s) */
+html[data-clone]:not([data-clair-pret]) body{opacity:0;animation:clone-apparaitre .01s 1.2s forwards}
+html[data-clone][data-clair-pret] body{opacity:1;transition:opacity .25s ease}
+@keyframes clone-apparaitre{to{opacity:1}}
+
+/* L'ancien en-tête et l'ancien pied restent dans la page (leurs scripts en dépendent) mais ne s'affichent plus */
+html[data-clone] [data-v1-cache]{display:none!important}
+
+/* ---------- En-tête et pied du Clone ---------- */
+/*SHELL*/
+
+/* En-tête blanc en permanence */
+html[data-clone] .header,html[data-clone] .header.scrolled{background:rgba(255,255,255,.96);color:var(--navy);box-shadow:0 1px 0 #e6eef2;-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px)}
+html[data-clone] .header .brand,html[data-clone] .header a{color:inherit;text-decoration:none}
+html[data-clone] .header .desktop-nav a[aria-current]{color:var(--blue)}
+html[data-clone] .header .desktop-nav a[aria-current]::after{content:"";display:block;height:2px;margin-top:6px;background:var(--coral);border-radius:2px}
+html[data-clone] .menu-panel a{color:var(--navy);text-decoration:none}
+html[data-clone] .menu-toggle{cursor:pointer}
+html[data-clone] footer.efa-foot.clone-foot{background:#fff;color:#536174;border-top:1px solid #e6eef2}
+html[data-clone] .clone-foot .ef-logo,html[data-clone] .clone-foot h2{color:#071d38}
+html[data-clone] .clone-foot .ef-mis,html[data-clone] .clone-foot a,html[data-clone] .clone-foot .ef-soc a{color:#536174}
+html[data-clone] .clone-foot a:hover{color:#0b63b0}
+html[data-clone] .clone-foot .ef-bot{border-top-color:#e6eef2;color:#7a8696}
+html[data-clone] .clone-foot .mc{color:#e34234}html[data-clone] .clone-foot .ms{color:#0b63b0}
+
+/* ---------- Bandeau d'ouverture : blanc et bleu ---------- */
+html[data-clone] section.intro{
+  background:radial-gradient(70% 120% at 100% 0%,#d8ebfb 0%,rgba(216,235,251,0) 60%),linear-gradient(180deg,#f3f8fd 0%,#ffffff 100%);
+  color:var(--clone-encre);padding-block:clamp(56px,8vw,112px) clamp(48px,6vw,88px);border-bottom:1px solid #e6eef2
+}
+html[data-clone] section.intro h1{font-size:clamp(38px,6vw,78px);letter-spacing:-.02em;line-height:1.05;color:#071d38}
+html[data-clone] section.intro .lead{color:var(--clone-gris);line-height:1.5}
+html[data-clone] section.intro .mission{color:var(--clone-encre)}
+html[data-clone] .mission .mc{color:#e34234}html[data-clone] .mission .ms{color:#0b63b0}
+html[data-clone] section.intro .crumbs{color:#7a8696}
+html[data-clone] section.intro .crumbs a,html[data-clone] section.intro .byline a{color:#0b63b0}
+html[data-clone] section.intro .byline{color:#7a8696}
+html[data-clone] .kick{color:#d2452f}
+html[data-clone] .crumbs a{text-decoration:none}
+html[data-clone] .crumbs a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- Encadrés : fond uni clair, sans liseré, coins doux ---------- */
+html[data-clone] .toc,
+html[data-clone] .faq details,
+html[data-clone] .names li,
+html[data-clone] .card,
+html[data-clone] .carte{border-color:transparent!important;background:var(--clone-soft)}
+html[data-clone] .toc{border-radius:24px;padding:26px 28px}
+html[data-clone] .toc a{color:#0b63b0}
+html[data-clone] .faq details{border-radius:20px;padding:20px 24px}
+html[data-clone] .faq summary::after{color:#0b63b0}
+html[data-clone] .quote{border-radius:28px;padding:34px 32px;background:var(--clone-bleu-clair)!important;color:#071d38}
+html[data-clone] .quote p{color:#071d38!important}
+html[data-clone] .quote small{color:#536174!important}
+html[data-clone] .box{border-radius:24px;padding:28px}
+html[data-clone] .box.bleu{background:#0b63b0}
+html[data-clone] table{border:0;border-radius:18px;background:var(--clone-soft)}
+html[data-clone] thead th{background:#e6eff8;color:#536174}
+html[data-clone] strong{color:#071d38}
+
+/* ---------- Boutons en pilule ---------- */
+html[data-clone] .cta,html[data-clone] .btn,html[data-clone] .bouton{border-radius:999px}
+html[data-clone] .cta{padding:14px 28px;min-height:52px;box-shadow:0 10px 24px rgba(227,66,52,.18)}
+html[data-clone] .cta.alt{background:#0b63b0;box-shadow:0 10px 24px rgba(11,99,176,.18)}
+
+/* ---------- Respiration ---------- */
+html[data-clone] article section{padding-top:clamp(48px,6vw,72px)}
+html[data-clone] article h2{letter-spacing:-.01em;scroll-margin-top:100px;color:#071d38}
+html[data-clone] .mid{border-color:var(--clone-line)}
+html[data-clone] a{text-decoration-color:rgba(11,99,176,.45)}
+
+/* ---------- Barres ajoutées par efa-suite.js ----------
+   La barre de navigation V1 fait doublon avec l'en-tête du Clone ;
+   la barre « Revenir / Poursuivre » reste, en clair, et ne flotte plus par-dessus l'en-tête. */
+html[data-clone] .efa-nav{display:none!important}
+html[data-clone] .efa-fil,html[data-clone] .efa-fil.flot{position:static!important;box-shadow:none!important;animation:none!important;background:#f3f7fb!important;border-bottom:0!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+html[data-clone] .efa-fil a{border-radius:999px;color:#071d38}
+html[data-clone] .efa-fil a.fil-p{background:#fff;color:#0b63b0;box-shadow:inset 0 0 0 1px #cfe0f0}
+html[data-clone] .efa-fil a.fil-s{background:#e34234;color:#fff}
+
+/* ---------- Protection de l'en-tête du Clone contre les règles .brand des pages V1 ---------- */
+html[data-clone] .header .brand>span{display:block!important;font-size:inherit;letter-spacing:inherit;line-height:inherit;max-width:none;font-weight:inherit;color:inherit}
+html[data-clone] .header .brand{font-size:29px;font-weight:900;letter-spacing:-.07em;gap:10px}
+@media(max-width:720px){html[data-clone] .header .brand{font-size:24px}}
+
+/* Surfaces converties par habillage.js : cartes posées sur une surface déjà claire */
+html[data-clone] [data-clair-carte]{box-shadow:0 12px 32px rgba(7,29,56,.07)}
+
+/* Bandeaux photo (Min'Fin…) : voile bleu au lieu du voile noir, texte blanc */
+html[data-clone] [data-clair-photo]::after{background:linear-gradient(90deg,rgba(8,62,118,.94) 0%,rgba(11,99,176,.72) 45%,rgba(11,99,176,.12) 100%),linear-gradient(0deg,rgba(8,62,118,.85) 0%,rgba(8,62,118,0) 45%)!important}
+html[data-clone] [data-clair-photo] .ms{color:#9fd0ff!important}
+html[data-clone] [data-clair-photo] .mc{color:#ffb4a3!important}
+html[data-clone] .header .brand .brand-dot{display:inline!important;color:var(--coral)}
+html[data-clone] .header .brand small{display:block!important}
+html[data-clone] .header .brand img{width:38px;height:38px}
+@media(max-width:720px){html[data-clone] .header .brand img{width:32px;height:32px}}

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Pour les organisations · Contact · EFA</title>
+<meta name="description" content="Pour les organisations · Contact : les programmes d’éducation financière EFA pour les organisations, les études sur commande, les rendez-vous de la semaine et un formulaire pour nous écrire.">
+<link rel="canonical" href="https://efa.africa/rendez-vous">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="EFA · Pour les organisations · Contact">
+<meta property="og:description" content="La lettre du mardi, EFA Community le jeudi, l’enquête tontine, et un formulaire pour nous écrire.">
+<meta property="og:url" content="https://efa.africa/rendez-vous">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Architecture : un écran = une étape du parcours, du cercle vers la spirale. Photo plein cadre, peu de mots, deux actions. */
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --bleu:#1B71B2; --corail:#DA3C1B;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --muted:#AEB6C6;
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{margin:0;background:var(--nuit);color:#fff;font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance}
+:focus-visible{outline:3px solid var(--soft-bleu);outline-offset:3px;border-radius:6px}
+
+/* Boutons façon showroom : un plein, un translucide */
+.btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:240px;min-height:46px;padding:12px 26px;border-radius:8px;border:0;font:700 15px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:filter .2s,background .2s}
+.btn-main{background:var(--corail);color:#fff}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-alt{background:rgba(244,244,244,.86);color:var(--nuit)}
+.btn-alt:hover{background:#fff}
+.btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85)}
+@media (max-width:620px){.btn{min-width:0;width:100%}.btns{flex-direction:column;width:100%;max-width:380px}}
+
+/* En-tête transparent */
+/* Barre EFA · BRVM (bleu nuit, sous le menu) */
+.tk{--tk-bg:#0E1A30;--tk-ink:#E8EDF5;--tk-ink2:#AEB9CC;--tk-line:rgba(255,255,255,.1);background:var(--tk-bg);color:var(--tk-ink);border-bottom:1px solid var(--tk-line);font:600 13px/1.3 "Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;transition:opacity .3s,transform .3s}
+.tk.off{opacity:0;pointer-events:none;transform:translateY(-6px)}
+.tk-in{display:flex;align-items:center;gap:8px;height:34px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tk-view{flex:1;min-width:0;overflow:hidden;white-space:nowrap;touch-action:pan-y}
+.tk-run{display:inline-flex;gap:34px;align-items:center;animation:tkrun var(--dur,60s) linear infinite}
+.tk.paused .tk-run,.tk:focus-within .tk-run{animation-play-state:paused}
+@media (hover:hover){.tk:hover .tk-run{animation-play-state:paused}}
+@keyframes tkrun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tk-it{display:inline-flex;align-items:center;gap:8px;color:var(--tk-ink2);text-decoration:none}
+.tk-it:hover .tk-t{color:var(--tk-ink);text-decoration:underline}
+.tk-it b{color:var(--tk-ink)}
+.tk-it em{font-style:normal}
+.tk-it .up{color:#3FCF8E}.tk-it .down{color:#FF7B7B}.tk-it .flat{color:#9AA5B8}
+.tk-cat{font:800 10px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.12em;padding:4px 6px;border-radius:4px}
+.tk-cat.e{background:#6DB8F2;color:#06182B}
+.tk-cat.n{display:inline-flex;align-items:center;gap:5px;background:#EC6243;color:#fff;padding:3px 7px 3px 5px;letter-spacing:.1em}.tk-cat.n svg{width:13px;height:13px;flex:none}.tk-cat.n i{display:inline-block;width:1.5px;height:10px;background:#fff;opacity:.9}
+.tk-cat.b{background:#F2B84B;color:#1A1205}
+.tk-btn,.tk-pause{background:transparent;border:1px solid var(--tk-line);color:var(--tk-ink);border-radius:6px;min-width:30px;height:26px;font:700 13px/1 system-ui,sans-serif;cursor:pointer}
+.tk-btn,.tk-n{display:none}
+.tk-n{font:600 11px/1 system-ui,sans-serif;color:var(--tk-ink2);min-width:3.2em;text-align:center}
+.tk.one .tk-btn,.tk.one .tk-n{display:inline-block}
+.tk.one .tk-btn,.tk.one .tk-pause{min-width:40px;height:40px;font-size:15px}
+.tk.one .tk-in{height:auto;min-height:52px;padding-block:6px;gap:6px}
+.tk.one .tk-view{white-space:normal}
+.tk.one .tk-run{display:block;animation:none}
+.tk.one .tk-it{display:flex;align-items:flex-start}
+.tk.one .tk-t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.tk-run{animation:none}}
+.tk{position:fixed;left:0;right:0;top:var(--hh,64px);z-index:29}
+.top{position:fixed;inset:0 0 auto;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);transition:background .3s}
+.top.solid,.top.has-tk{background:rgba(11,18,32,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.nav a.nav-cta:hover{filter:brightness(1.08);background:var(--corail)}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-weight:700;font-size:29px;text-transform:none}
+  .menu-btn{display:block;position:relative;z-index:31}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+}
+
+/* Écran type */
+.screen{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:max(120px,calc(var(--hh,64px) + var(--tkh,34px) + 22px)) var(--gut) 56px;overflow:hidden;scroll-snap-align:start;isolation:isolate}
+.screen > .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.screen::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,.62) 0%,rgba(11,18,32,.12) 38%,rgba(11,18,32,.18) 60%,rgba(11,18,32,.82) 100%)}
+.head{display:grid;gap:12px;justify-items:center;max-width:860px}
+.step{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
+.screen h1{font-size:clamp(52px,9.5vw,120px)}
+.screen h2{font-size:clamp(40px,6.9vw,89px)}
+.sub{font-size:clamp(16px,2vw,19px);font-weight:600;max-width:36em;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.sub a{font-weight:800}
+.foot{display:grid;gap:22px;justify-items:center;width:100%}
+.stat{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.stat div{display:grid;gap:2px;min-width:140px}
+.stat b{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,4.3vw,48px);line-height:1.12}
+.stat span{font-size:13px;font-weight:700;color:#E3E7EE;max-width:15em;margin:0 auto}
+.credit{position:absolute;right:var(--gut);bottom:10px;font-size:10px;color:rgba(255,255,255,.55);text-decoration:none}
+
+/* Couleurs de l'étape : le cercle reste froid, la spirale prend le bleu EFA */
+.s-cercle .stat b{color:#fff}
+.s-spirale .stat b{color:var(--soft-bleu)}
+/* Récit au défilement : l'écran reste fixe, la caméra et la spirale avancent avec le pouce */
+.story{position:relative;background:#060A13}
+.stage{position:relative;min-height:100vh;min-height:100svh;gap:14px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:calc(var(--hh,64px) + var(--tkh,34px) + 16px) var(--gut) 26px;isolation:isolate;touch-action:pan-y;background:radial-gradient(90% 60% at 50% 56%,#14223D 0%,#0B1220 58%,#070C16 100%)}
+.stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(6,10,19,.6) 0%,rgba(6,10,19,0) 32%,rgba(6,10,19,0) 60%,rgba(6,10,19,.75) 100%)}
+.stage .orbit{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.stage{cursor:ew-resize}
+.viz-space{flex:1 0 auto;width:100%;min-height:clamp(200px,25svh,560px)}
+@media (min-width:621px){.viz-space{min-height:clamp(280px,38svh,540px)}}
+.swipe-hint .h-s{display:none}
+.story .stage{padding-top:calc(var(--hh,64px) + 18px)}
+.swipe-hint{display:flex;justify-content:center;align-items:center;gap:10px;margin:0;padding:8px 14px;border-radius:999px;background:rgba(11,18,32,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-size:13px;font-weight:700;color:#E8EDF5;white-space:nowrap;pointer-events:none;transition:opacity .6s}
+.swipe-hint .ar{color:var(--soft-bleu);font-size:16px;animation:nudge 1.6s ease-in-out infinite;--d:-5px}
+.swipe-hint .ar:last-child{animation-delay:.8s;--d:5px}
+.swipe-hint.used{opacity:.55}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(var(--d))}}
+@media (max-width:420px){.swipe-hint{font-size:12px;padding:7px 11px;white-space:normal;max-width:100%;text-align:center}}
+.stage[data-c="3"] .chap h2{font-size:clamp(26px,3.6vw,50px)}
+.chaps{display:grid;width:100%;max-width:900px}
+.chap{grid-area:1/1;display:grid;gap:10px;justify-items:center;align-content:start;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .18s,transform .18s,visibility 0s .18s;pointer-events:none}
+.chap.on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .4s .2s,transform .4s .2s,visibility 0s .2s}
+.stage .res{font-size:15px;font-weight:600;max-width:34em;margin:0}
+.stage .res b{color:var(--soft-bleu);white-space:nowrap}
+.chap h2{font-size:clamp(33px,4.6vw,62px)}
+.chap .sub{max-width:38em;font-size:16px}
+.dock{display:grid;gap:14px;justify-items:center;width:100%}
+.prog{display:flex;gap:6px;width:min(340px,72%)}
+.prog button{flex:1;height:28px;padding:12px 0;border:0;background:transparent;cursor:pointer}
+.prog button i{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.22);overflow:hidden}
+.prog button i::after{content:"";display:block;height:100%;background:#fff;transform-origin:left;transform:scaleX(var(--f,0))}
+.cfg{display:flex;flex-wrap:wrap;gap:10px 12px;justify-content:center;align-items:center;max-width:1040px;transition:opacity .4s}
+.seg{display:inline-flex;padding:4px;border-radius:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.seg button{border:0;background:transparent;color:#fff;font:700 14px/1 var(--f-body);padding:10px 16px;border-radius:7px;cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:#F4F4F4;color:var(--nuit)}
+.part{display:flex;align-items:center;gap:10px;padding:6px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-size:14px;font-weight:700}
+.part input{width:clamp(120px,22vw,200px);accent-color:var(--soft-bleu)}
+.part output{font:700 19px/1.12 var(--f-display);min-width:3.2ch;color:var(--soft-bleu)}
+.spec{display:flex;justify-content:center;width:100%;max-width:640px}
+.spec div{flex:1;display:grid;gap:4px;padding:0 10px;min-width:0}
+.spec div + div{border-left:1px solid rgba(255,255,255,.22)}
+.spec b{font:700 clamp(22px,3.6vw,36px)/1.12 var(--f-display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.spec span{font-size:12px;font-weight:700;color:#C9D1DE}
+.spec .k b{color:var(--soft-bleu)}
+.stage .src{margin-top:-8px}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,220px));gap:10px;justify-content:center;width:100%}
+.links .lk{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border-radius:8px;text-decoration:none;font:800 15px/1.2 var(--f-body);box-shadow:inset 0 0 0 2px rgba(255,255,255,.75);color:#fff}
+.links .lk.p{background:var(--corail);box-shadow:none}
+.links .lk:hover{filter:brightness(1.1)}
+.jump{background:none;border:0;color:var(--soft-bleu);font:800 12px var(--f-body);letter-spacing:.02em;padding:12px 4px;margin:-12px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.amt{display:flex;align-items:center;gap:10px;padding:6px 8px 6px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-size:14px;font-weight:700}
+.amt-in{display:flex;align-items:center;gap:6px;background:#F5EFE2;border-radius:7px;padding:0 10px}
+.amt-in input{width:9ch;border:0;background:transparent;color:var(--nuit);font:800 17px var(--f-body);padding:9px 0;text-align:right}
+.amt-in span{color:#4E5566;font-size:13px;font-weight:800}
+.amt-in:focus-within{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.nb{display:flex;align-items:center;gap:6px;padding:6px 8px 6px 14px;border-radius:10px;background:rgba(255,255,255,.12);font-size:14px;font-weight:700}
+.nb button{width:32px;height:32px;border:0;border-radius:7px;background:rgba(255,255,255,.16);color:#fff;font:800 18px/1 var(--f-body);cursor:pointer}
+.nb button:hover{background:rgba(255,255,255,.28)}
+.nb input{width:3.2ch;border:0;border-radius:7px;background:#F5EFE2;color:var(--nuit);font:800 17px var(--f-body);padding:7px 4px;text-align:center}
+.nb input:focus{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.amt-err{flex-basis:100%;margin:0;font-size:13px;font-weight:700;color:var(--soft-corail)}
+/* Écrans intermédiaires : le menu reste sur une ligne */
+@media (min-width:901px) and (max-width:1200px){.nav a{padding-inline:10px}}
+.hint{font-size:12px;font-weight:700;color:#C9D1DE;letter-spacing:.04em}
+@media (max-width:620px){
+  .chap .sub{font-size:14.5px}
+  .chap[data-c="3"] .sub{font-size:14px}
+  .stage[data-c="3"] .cfg{gap:8px}
+  .dock{gap:11px}
+  .spec span{font-size:11px}
+  .seg button{padding:9px 11px;font-size:13px}
+  .part{font-size:13px}
+  .amt{font-size:13px}
+  .stage[data-c="3"] .chap h2{font-size:26px}
+  .stage[data-c="3"] .spec{display:none}
+  .stage[data-c="3"] .src{display:none}
+  .swipe-hint .h-l{display:none}.swipe-hint .h-s{display:inline}
+  .stage{gap:10px}
+  .stage[data-c="3"] .cfg{display:grid;gap:8px;width:100%}
+  .stage[data-c="3"] .amt,.stage[data-c="3"] .part,.stage[data-c="3"] .nb{justify-content:space-between}
+  .nb{font-size:13px}
+  .stage[data-c="3"] .amt,.stage[data-c="3"] .nb,.stage[data-c="3"] .part{padding-top:4px;padding-bottom:4px}
+  .nb span#nb-l{margin-right:auto}
+  .links .lk{font-size:14px}
+}
+.cue{width:26px;height:40px;border-radius:14px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7);position:relative}
+.cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.6s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* Repère de progression : la spirale de points avance avec la lecture */
+.rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:25;width:84px;height:84px}
+.rail svg{width:100%;height:100%;overflow:visible}
+.rail a circle{transition:r .3s,fill .3s}
+.rail .lbl{position:absolute;right:96px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;background:rgba(11,18,32,.75);padding:6px 10px;border-radius:6px;opacity:0;transition:opacity .3s}
+.rail:hover .lbl{opacity:1}
+@media (max-width:900px){.rail{display:none}}
+
+/* Étape 3 : les leçons */
+.lessons{background:var(--creme);color:var(--nuit);justify-content:center;gap:40px}
+.lessons::before{display:none}
+.lessons .step{color:var(--corail)}
+.lessons .sub{text-shadow:none;color:#4E5566}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;max-width:1180px;text-align:left}
+.card{position:relative;border-radius:18px;overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;isolation:isolate;background:var(--nuit)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.card:hover img{transform:scale(1.04)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,0) 20%,rgba(11,18,32,.92) 78%)}
+.card .in{padding:24px;display:grid;gap:10px}
+.card .n{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.card h3{font-size:34px}
+.card p{font-size:15px;color:#DDE2EA}
+.card .go{font-weight:800;font-size:15px;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.card .go::after{content:"→";transition:transform .2s}
+.card:hover .go::after{transform:translateX(4px)}
+.word{font-family:var(--f-display);font-weight:700;font-size:65px;line-height:1.12}
+details summary{list-style:none;cursor:pointer;font-weight:800;display:inline-flex;gap:8px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+"}
+details[open] summary::after{content:"–"}
+details .def{display:grid;gap:8px;margin-top:10px;font-size:15px;color:#DDE2EA}
+details .def b{color:#fff}
+@media (max-width:980px){
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+  .cards::-webkit-scrollbar{display:none}
+  .card{scroll-snap-align:center;min-height:460px}
+}
+
+/* Étape 4 : questions du visiteur */
+.ask{background:var(--nuit);justify-content:center;gap:36px}
+.ask::before{display:none}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;max-width:1180px;text-align:left}
+.tiles.t5{grid-template-columns:repeat(5,minmax(0,1fr));max-width:1280px}
+.ask-all{margin-top:22px}
+.tiles.t3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px}
+@media (max-width:980px){.tiles.t3{grid-template-columns:minmax(0,1fr)}.tiles.t3 .tile{aspect-ratio:auto;min-height:200px}}
+.enq-facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.enq-facts li{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 14px;font-size:15px;line-height:1.35;max-width:16em}
+.enq-facts b{display:block;font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1.12}
+.enq-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+.enq-links a{color:#fff;font-weight:800;text-underline-offset:3px}
+.bio .lab{font-size:15px;color:#C9D0DC;border-left:3px solid var(--soft-corail);padding-left:12px}
+.bio .lab b{color:#fff}
+.rdv{color:#fff;width:100%;max-width:1180px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:center;text-align:left;background:#141D30;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 24px}
+.rdv-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.rdv-t{font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(22px,2.9vw,33px);line-height:1.12;margin-top:6px}
+.rdv-s{font-size:15px;color:#C9D0DC;margin-top:6px}
+.rdv-x{grid-column:1/-1;font-size:14px;color:#AEB6C6}
+.rdv-x a{color:var(--soft-bleu);font-weight:700}
+@media (max-width:760px){.rdv{grid-template-columns:minmax(0,1fr)}.rdv .btn{width:100%}}
+.next-l{font-size:clamp(17px,2vw,20px);font-weight:800;text-align:center;max-width:30em;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.hero-note{font-size:14px;font-weight:600;color:#E8EDF5;text-shadow:0 2px 10px rgba(0,0,0,.8);text-align:center;max-width:30em}
+.hero-alt{font-size:15px;font-weight:800;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8);text-underline-offset:4px}
+.tile{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;text-decoration:none;isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s}
+.tile:hover img{transform:scale(1.05)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,18,32,0) 35%,rgba(11,18,32,.9))}
+.tile span{padding:18px;display:grid;gap:4px}
+.tile b{font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1.12;text-transform:none}
+.tile small{font-size:13px;font-weight:700;color:var(--soft-bleu)}
+.tile.soon small{color:var(--muted)}
+.tile b{font-size:clamp(19px,1.7vw,23px);line-height:1.18;overflow-wrap:break-word;hyphens:auto;-webkit-hyphens:auto}
+.tile small{line-height:1.35}
+@media (max-width:980px){.tiles,.tiles.t5{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{aspect-ratio:auto;min-height:clamp(210px,58vw,300px)}.tiles.t5 .tile:last-child{grid-column:1/-1;min-height:200px}.tile span{padding:14px}.tile{container-type:inline-size}.tile b{font-size:clamp(15px,11cqi,20px)}.tiles.t5 .tile:last-child b{font-size:clamp(17px,5.5cqi,22px)}}
+
+/* Étape 5 : le guide, photo et formulaire côte à côte */
+.guide{flex-direction:row;align-items:stretch;justify-content:flex-start;padding:0;text-align:left;background:var(--corail)}
+.guide::before{display:none}
+.guide .ph{position:relative;flex:1 1 50%;min-height:100svh}
+.guide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.guide .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(228,72,40,0) 60%,rgba(228,72,40,.35))}
+.guide .side{flex:1 1 50%;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:96px clamp(16px,5vw,72px) 56px}
+.guide .step{color:#FFE2D9}
+.guide h2{font-size:clamp(38px,5.2vw,69px)}
+.guide .sub{text-shadow:none}
+form{display:grid;gap:12px;max-width:440px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,select{width:100%;font:600 16px var(--f-body);padding:14px;border-radius:8px;border:0;background:rgba(255,255,255,.96);color:var(--nuit)}
+input::placeholder{color:#7A8090}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:600;color:#FFF3EE}
+.check input{width:20px;height:20px;flex:none;margin-top:1px;padding:0}
+.guide .btn-main{background:var(--nuit);width:100%}
+.formmsg{font-size:14px;font-weight:700;min-height:1.2em}
+.hp{position:absolute;left:-9999px}
+.small{font-size:13px;color:#FFE2D9}
+@media (max-width:900px){.guide{flex-direction:column}.guide .ph{min-height:46svh;flex:none}.guide .side{padding:40px 16px 56px}.row{grid-template-columns:1fr}}
+
+/* Étape 6 : fondateur */
+.founder{background:var(--nuit);justify-content:center;gap:40px}
+.founder::before{display:none}
+.founder canvas{width:min(300px,62vw);aspect-ratio:1;height:auto}
+.founder blockquote{margin:0;font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(41px,6.9vw,89px);line-height:1.12}
+.founder blockquote span{color:var(--soft-corail)}
+
+/* Le texte garde sa taille sur tous les téléphones (pas d’agrandissement automatique) */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+/* Catalogue des guides */
+.cat,.livre{scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.cat{background:var(--creme);color:var(--nuit);padding:88px var(--gut)}
+.cat .in,.livre .in{max-width:1180px;margin:0 auto}
+.cat .in{display:grid;gap:36px}
+.cat-head{display:grid;gap:12px;max-width:640px}
+.kick{margin:0;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--corail)}
+.cat h2,.livre h2{margin:0;font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;font-size:clamp(34px,5.2vw,62px);text-wrap:balance}
+.cat .lead{margin:0;font-size:17px;font-weight:600;color:#4E5566}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px}
+.gd{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:start;background:#FFFDF8;border:1px solid #E2D8C4;border-radius:16px;padding:16px}
+.gd-cv{aspect-ratio:3/4;border-radius:4px 10px 10px 4px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,#F5EFE2,#E6D9C0);box-shadow:0 10px 20px rgba(11,18,32,.18),inset 4px 0 0 rgba(11,18,32,.12);color:var(--nuit);overflow:hidden}
+.gd-cv.dark{background:linear-gradient(160deg,#18315A,#0B1220);color:#F5EFE2}
+.gd-cv img{width:22px;height:22px}
+.gd-cv b{font-family:var(--f-display);font-weight:700;text-transform:none;font-size:12px;line-height:1.12;overflow-wrap:anywhere}
+.gd-cv i{display:block;height:5px;width:40%;border-radius:3px;background:var(--bleu)}
+.gd-cv.dark i{background:var(--corail)}
+.gd-tx{display:grid;gap:8px;min-width:0}
+.gd-st{justify-self:start;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border-radius:4px;background:#E6DECE;color:#4E5566}
+.gd-st.ok{background:var(--bleu);color:#fff}
+.gd-tx h3{margin:0;font-size:15px;font-weight:700;line-height:1.25}
+.gd-tx p{margin:0;font-size:14px;color:#4E5566}
+.gd-tx a{justify-self:start;font-size:14px;font-weight:800;color:var(--nuit);text-decoration:none;border-bottom:2px solid var(--corail);padding-bottom:2px}
+.gd-tx a:hover{color:var(--corail)}
+.gd.soon-g{background:transparent;border-style:dashed}
+/* Le livre */
+.livre{background:var(--nuit);color:#fff;padding:96px var(--gut)}
+.livre .in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,80px);align-items:center}
+@media (max-width:860px){.livre .in{grid-template-columns:1fr}}
+.lv-cover{position:relative;width:min(360px,78vw);aspect-ratio:2/3;justify-self:center;transform:rotate(-3deg)}
+.lv-cover .lv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:4px 12px 12px 4px;opacity:0;transition:opacity .4s;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.lv-cover.has-img .lv-img{opacity:1}
+.lv-cover.has-img .lv-css{display:none}
+.lv-css{position:absolute;inset:0;border-radius:4px 12px 12px 4px;background:linear-gradient(160deg,#EC6243,#E2401C 55%,#B92F12);box-shadow:0 40px 80px rgba(0,0,0,.5),inset 8px 0 0 rgba(0,0,0,.14);padding:28px 26px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;color:#F5EFE2;overflow:hidden}
+.lv-css svg{position:absolute;left:8%;top:6%;width:84%}
+.lv-css strong{position:relative;font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(31px,6.9vw,45px);line-height:1.12}
+.lv-css em{position:relative;font-style:normal;font-size:14px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.lv-txt{display:grid;gap:16px;min-width:0}
+.lv-form{display:grid;gap:10px;max-width:520px}
+.lv-form label{font-weight:800;font-size:15px;color:#fff}
+.lv-row{display:flex;gap:10px;flex-wrap:wrap}
+.lv-row input{flex:1 1 220px;min-width:0}
+.lv-row .btn{min-width:0;flex:0 0 auto}
+.lv-txt .lv-note{font-size:13px;color:#AEB6C6}
+.lv-note a{color:#fff}
+.or{margin:4px 0 -4px;font-weight:700}
+.lv-txt .kick{color:var(--soft-corail)}
+.lv-sub{margin:0;font-size:20px;font-weight:700;color:#E8EDF5}
+.lv-txt p{margin:0;max-width:36em;color:#C9D1DE;font-size:16px;line-height:1.6}
+
+/* Mission EFA : en haut, au milieu, en bas */
+.mission{margin:0;max-width:34em;font-size:clamp(16px,2vw,20px);font-weight:700;line-height:1.4;color:#fff}
+.mission .mc{color:#EC6243;font-weight:800}
+.mission .ms,.mb-t .ms{color:var(--soft-bleu)}
+.hero .mission{text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.mband{background:var(--nuit);color:#fff;padding:72px var(--gut);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.mb-ico{width:76px;height:76px;color:#fff}
+.mb-t{margin:0;max-width:22em;font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(26px,4vw,48px);line-height:1.12;text-wrap:balance}
+.mb-t .mc{color:#EC6243}
+/* 0 · EFA | Éducation Financière Afrique, globe en arrière-plan */
+.efa-top{position:relative;overflow:hidden;isolation:isolate;background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 72px) var(--gut) 88px;min-height:min(86vh,760px);display:flex;align-items:center;scroll-snap-align:start}
+.g-wrap{position:absolute;z-index:-2;top:50%;right:-8%;width:min(78vh,820px,72vw);aspect-ratio:1/1;transform:translateY(-44%);pointer-events:none}
+.g-wrap img,.g-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.g-wrap canvas{opacity:0;transition:opacity .8s}
+.g-wrap canvas.on{opacity:1}
+.g-wrap img.off{opacity:0;transition:opacity .8s .2s}
+.g-voile{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(11,18,32,.94) 0%,rgba(11,18,32,.82) 34%,rgba(11,18,32,.38) 62%,rgba(11,18,32,.18) 100%),linear-gradient(180deg,rgba(11,18,32,.25),rgba(11,18,32,0) 30%,rgba(11,18,32,.45))}
+.efa-in{position:relative;max-width:1180px;width:100%;margin:0 auto;display:grid;gap:18px}
+.efa-in h1{font-family:var(--f-display);font-weight:700;text-transform:none;letter-spacing:-.02em;line-height:1.12;font-size:clamp(48px,4.6vw,62px);max-width:13em;text-wrap:balance;color:#fff}
+.efa-in .sep{color:var(--soft-bleu);font-weight:400}
+.efa-in .e2{white-space:nowrap}
+.efa-l{font-size:clamp(19px,1.8vw,23px);line-height:1.45;color:#E8EDF5;max-width:30em;font-weight:600}
+.efa-s{font-size:16px;line-height:1.6;color:#C9D1DE;max-width:34em}
+.efa-b{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:10px}
+.efa-c{font-weight:800;font-size:15px;color:#fff;text-decoration:none;border-bottom:2px solid var(--soft-bleu);padding-bottom:2px}
+.efa-c::after{content:"\00a0→"}
+.g-pause{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:18px;z-index:2;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(11,18,32,.6);color:#C9D1DE;font:600 12px var(--f-body);cursor:pointer}
+.g-pause:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.efa-top + .cs-top{padding-top:72px}
+@media (max-width:860px){
+  .efa-top{min-height:0;align-items:flex-start;padding:calc(var(--hh,64px) + var(--tkh,34px) + 34px) var(--gut) 72px}
+  .g-wrap{right:auto;left:50%;top:auto;bottom:-24%;width:min(120vw,620px);transform:translateX(-50%)}
+  .g-voile{background:linear-gradient(180deg,rgba(11,18,32,.9) 0%,rgba(11,18,32,.82) 46%,rgba(11,18,32,.48) 72%,rgba(11,18,32,.3) 100%)}
+  .efa-in h1{font-size:clamp(29px,8.6vw,38px);line-height:1.15}
+  .efa-in .sep{display:none}
+  .efa-in .e1,.efa-in .e2{display:block}
+  .efa-in .e2{white-space:normal}
+  .efa-b .btn{width:100%}
+  .efa-top + .cs-top{padding-top:48px}
+}
+/* Bloc 4 · Rester en lien */
+.liens{background:var(--nuit);color:#fff;padding:64px var(--gut) 72px;border-top:1px solid rgba(255,255,255,.08)}
+.liens .in{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+.lien-h h2{margin-top:10px;font-size:clamp(33px,4.6vw,55px);line-height:1.12}
+.lk3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lk3 article{display:grid;gap:10px;align-content:start;padding:24px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:#111A2C;min-width:0}
+.lk3 .lk-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-corail)}
+.lk3 h3{font-size:24px;line-height:1.12}
+.lk3 p{font-size:15px;line-height:1.55;color:#C9D1DE}
+.lk-a{justify-self:start;margin-top:6px;font-weight:800;font-size:15px;color:#fff;text-decoration:none;border-bottom:2px solid var(--corail);padding-bottom:2px}
+.lk-a::after{content:"\00a0→"}
+.lk-b{justify-self:start;font-size:14px;font-weight:700;color:var(--soft-bleu);text-decoration:none}
+.lk-enq{border-color:rgba(228,72,40,.5)!important}
+@media (max-width:900px){.lk3{grid-template-columns:minmax(0,1fr)}}
+/* Comprendre tout de suite (haut de page) */
+.cs-top{background:var(--nuit);color:#fff;padding:calc(var(--hh,64px) + var(--tkh,34px) + 48px) var(--gut) 64px;scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.08)}
+.cs-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px 64px;align-items:start}
+.cs-q,.cs-def{min-width:0}
+.cs-k{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--soft-corail)}
+.cs-q h2 .nw{white-space:nowrap}
+.cs-q h2{margin-top:14px;font-size:clamp(38px,5.5vw,72px);line-height:1.12}
+.cs-lead{margin-top:20px;font-size:clamp(17px,2vw,20px);line-height:1.55;color:#D3DAE6;max-width:32em}
+.cs-def{display:grid;gap:0;padding-top:6px}
+.cs-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;align-items:start;padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
+.cs-row:first-child{border-top-color:rgba(255,255,255,.5)}
+.cs-ic{width:52px;height:52px}
+.cs-row p{font-size:17px;line-height:1.55;color:#C9D1DE}
+.cs-row b{display:block;color:#fff;font-weight:700;font-size:19px;line-height:1.35;margin-bottom:4px}
+.cs-row .mc{color:#EC6243}.cs-row .ms{color:var(--soft-bleu)}
+.cs-nuance{padding:18px 0 0;border-top:1px solid rgba(255,255,255,.12);font-size:15px;line-height:1.55;color:var(--muted)}
+.cs-act{display:grid;gap:18px;margin-top:26px;justify-items:start}
+.cs-act .btn{min-width:280px}
+.cs-ex{width:100%}
+.cs-ex summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:700;font-size:15px;color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:6px}
+.cs-ex summary::-webkit-details-marker{display:none}
+.cs-ex summary::after{content:"";flex:none;width:8px;height:8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg);margin-bottom:4px;transition:transform .2s}
+.cs-ex[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+.cs-exb{margin-top:14px;padding:22px;background:#111A2C;border:1px solid rgba(255,255,255,.1);border-radius:10px;display:grid;gap:18px}
+.cs-ext{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--soft-bleu)}
+.cs-case{display:grid;gap:10px}
+.cs-case p{font-size:15px;line-height:1.55;color:#C9D1DE}
+.cs-case b{color:#fff;font-weight:700}
+.cs-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.08)}
+.cs-bar i{display:block;background:rgba(236,98,67,.75)}
+.cs-bar em{display:block;background:var(--soft-bleu)}
+.cs-steps{display:flex;align-items:flex-end;gap:5px;height:34px}
+.cs-steps i{flex:1;height:var(--h);min-height:3px;background:var(--soft-bleu);border-radius:2px 2px 0 0}
+.cs-note{font-size:13px;line-height:1.5;color:var(--muted)}
+.cs-diag{font-size:15px;font-weight:700;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+.cs-diag::after{content:"\00a0→"}
+.cs-more{justify-self:start;font-size:14px;font-weight:700;color:var(--soft-bleu);text-decoration:none;border-bottom:1px solid rgba(109,184,242,.4);padding-bottom:2px}
+.cs-top + .hero{padding-top:64px}
+@media (max-width:860px){.cs-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 30px);padding-bottom:44px}.cs-in{grid-template-columns:minmax(0,1fr);gap:26px}.cs-q h2 .nw{white-space:nowrap}
+.cs-q h2{font-size:clamp(34px,9.5vw,52px)}.cs-act{justify-items:stretch}.cs-act .btn{min-width:0;width:100%}.cs-top + .hero{padding-top:48px}}
+@media (max-width:380px){.cs-row{grid-template-columns:40px minmax(0,1fr);gap:14px}.cs-ic{width:40px;height:40px}.cs-exb{padding:18px 16px}}
+.mband-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 40px);padding-bottom:52px;border-top:0;scroll-snap-align:start}
+.mband-top + .hero{padding-top:64px}
+@media (max-width:860px){.mband-top{padding-top:calc(var(--hh,64px) + var(--tkh,34px) + 28px);padding-bottom:36px;gap:16px}.mband-top .mb-ico{width:60px;height:60px}.mband-top .mb-t{font-size:clamp(28px,8.4vw,40px)}.mband-top + .hero{padding-top:48px}}
+.m-foot{max-width:1180px;margin:0 auto 18px;text-align:center;font-size:15px;color:#E8EDF5}
+
+
+/* Enquête « L'argent de la tontine » : appel à répondre */
+.enq{background:var(--corail);color:#fff;padding:80px var(--gut);scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.enq .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:860px){.enq{padding-block:56px}.enq .in{grid-template-columns:minmax(0,1fr);gap:28px}}
+.enq-t{display:grid;gap:14px;min-width:0}
+.enq .kick{margin:0;font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#FFE3DB}
+.enq h2{margin:0;font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;font-size:clamp(34px,5.5vw,65px);text-wrap:balance;overflow-wrap:break-word}
+.enq .lead{margin:0;font-size:clamp(19px,2.3vw,24px);font-weight:800}
+.enq p{margin:0;font-size:16px;line-height:1.6;max-width:36em}
+.enq-box{background:#fff;color:var(--nuit);border-radius:20px;padding:26px;display:grid;gap:16px;min-width:0}
+.enq-who{display:grid;gap:10px}
+.enq-who div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;background:#F5EFE2;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.45}
+.enq-who b{display:block;font-size:16px}
+.enq-who i{font-style:normal;font-size:20px;line-height:1.2}
+.enq-bar{display:grid;gap:6px;font-size:13px;font-weight:700;color:#4E5566}
+.enq-bar .trk{height:10px;border-radius:6px;background:#EADFCB;overflow:hidden}
+.enq-bar .trk span{display:block;height:100%;width:84%;background:var(--corail);border-radius:6px}
+.enq-bar .row{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.enq .btn-enq{display:flex;justify-content:center;align-items:center;text-align:center;background:var(--nuit);color:#fff;font-weight:800;font-size:17px;padding:16px 20px;border-radius:12px;text-decoration:none}
+.enq .btn-enq:hover{background:#1B2638}
+.enq-note{font-size:13px!important;color:#4E5566;text-align:center}
+/* Rappel flottant */
+.enq-pill{position:fixed;z-index:24;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;background:var(--corail);color:#fff;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:calc(100vw - 32px);transform:translateY(140%);opacity:0;transition:transform .35s,opacity .35s}
+.enq-pill.on{transform:none;opacity:1}
+.enq-pill a{color:#fff;text-decoration:none;font-weight:800;font-size:14px;line-height:1.25;padding:11px 4px 11px 18px}
+.enq-pill a small{display:block;font-weight:600;font-size:12px;opacity:.9}
+.enq-pill button{flex:none;width:36px;height:36px;margin-right:4px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.enq-pill{transition:none}}
+/* Concrètement : à qui appartient la réserve */
+.cq-own{background:#FFFDF8;border:2px solid var(--nuit);border-radius:18px;padding:28px;display:grid;gap:14px;min-width:0}
+.cq-own-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.cq-own h3{margin:0;font-size:clamp(26px,3.4vw,38px)}
+.cq-own-l{margin:0;font-size:17px;line-height:1.55;color:#2A3142;max-width:46em}
+.cq-own-g{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:g}
+.cq-own-g li{background:#F5EFE2;border-radius:12px;padding:16px;display:grid;gap:6px;font-size:15px;line-height:1.5;color:#3A4152;counter-increment:g}
+.cq-own-g b{font-size:17px;color:var(--nuit)}
+.cq-own-g b::before{content:counter(g) " · ";color:var(--corail)}
+@media (max-width:860px){.cq-own{padding:22px}.cq-own-g{grid-template-columns:minmax(0,1fr)}}
+/* Concrètement, quoi ? */
+.concret{background:var(--creme);color:var(--nuit);padding:88px var(--gut);scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.concret .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px}
+.cq-head{display:grid;gap:12px;max-width:720px;min-width:0;overflow-wrap:break-word}
+.cq-head h2{margin:0;font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;font-size:clamp(38px,6vw,72px)}
+.cq-head .lead{margin:0;font-size:clamp(18px,2.2vw,22px);font-weight:700;color:#3A4152}
+.cq-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.cq-steps{grid-template-columns:1fr}}
+.cq-steps li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;background:#FFFDF8;border:1px solid #E2D8C4;border-radius:16px;padding:20px;min-width:0;overflow:hidden;overflow-wrap:break-word}
+.cq-steps li div{container-type:inline-size}
+.cq-n{width:34px;height:34px;border-radius:50%;background:var(--nuit);color:#fff;font-weight:800;display:grid;place-items:center}
+.cq-steps li div{display:grid;gap:8px;min-width:0}
+.cq-big{font-family:var(--f-display);font-weight:700;font-size:clamp(29px,3.4vw,40px);font-size:min(clamp(29px,3.4vw,40px),15cqi);line-height:1.12}
+.cq-keep{color:var(--bleu)}
+.cq-steps p{margin:0;font-size:16px;line-height:1.5;color:#3A4152}
+.cq-use{display:grid;gap:18px}
+.cq-use h3{margin:0;font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(26px,3.4vw,38px);line-height:1.12}
+.cq-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.cq-cards{grid-template-columns:1fr}}
+.cq-cards article{background:var(--nuit);color:#fff;border-radius:16px;padding:22px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-content:start;min-width:0;overflow:hidden;overflow-wrap:break-word}
+.cq-tag{justify-self:start;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;border-radius:4px;background:var(--bleu);color:#fff}
+.cq-cards h4{margin:0;font-size:20px;font-weight:800}
+.cq-cards p{margin:0;font-size:15px;line-height:1.55;color:#C9D1DE}
+.cq-note{margin:0;font-size:13px;line-height:1.5;color:#5A6172;max-width:62em}
+.cq-far{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.cq-far{grid-template-columns:1fr}}
+.cq-far-i{border-radius:18px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-content:start;background:#FFFDF8;border:1px solid #E2D8C4;min-width:0;overflow:hidden;overflow-wrap:break-word;container-type:inline-size}
+.cq-far-x{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.cq-q{margin:0;font-size:18px;font-weight:800}
+.cq-huge{font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(45px,6.9vw,83px);line-height:1.12;font-size:min(clamp(45px,6.9vw,83px),17cqi)}
+.cq-far-i:not(.cq-far-x) .cq-huge{color:var(--bleu)}
+.cq-far-i p:last-child{margin:0;font-size:16px;line-height:1.55;color:#3A4152}
+.cq-far-x p:last-child{color:#EAF4FD}
+.cq-swipe{display:none}
+@media (max-width:860px){
+  .cq-steps,.cq-cards,.cq-far{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut);scroll-padding-inline:var(--gut);padding-bottom:4px}
+  .cq-steps::-webkit-scrollbar,.cq-cards::-webkit-scrollbar,.cq-far::-webkit-scrollbar{display:none}
+  .cq-steps>*,.cq-cards>*,.cq-far>*{scroll-snap-align:start}
+  .cq-swipe{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:-30px 0 0;font-size:13px;font-weight:700;color:#4E5566}
+  .cq-use .cq-swipe{margin-top:-6px}
+  .cq-dots{display:flex;gap:6px}
+  .cq-dots i{width:8px;height:8px;border-radius:50%;background:#C9C0AE;transition:width .2s,background .2s}
+  .cq-dots i.on{width:20px;border-radius:4px;background:var(--corail)}
+}
+.cq-end{display:grid;gap:22px;justify-items:center;text-align:center;padding-top:8px;border-top:1px solid #E2D8C4}
+.cq-final{margin:22px 0 0;font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(34px,5.2vw,62px);line-height:1.12}
+.cq-final span{color:var(--bleu);display:block}
+
+/* Contact */
+.contact{background:var(--nuit);color:#fff;padding:88px var(--gut);border-top:1px solid rgba(255,255,255,.08);scroll-margin-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.contact .in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:860px){.contact .in{grid-template-columns:1fr}}
+.ct-txt{display:grid;gap:16px;min-width:0}
+.ct-txt .kick{color:var(--soft-corail)}
+.ct-txt h2{margin:0;font-family:var(--f-display);font-weight:700;text-transform:none;line-height:1.12;font-size:clamp(31px,4.3vw,52px);text-wrap:balance}
+.ct-txt p{margin:0;color:#C9D1DE;font-size:16px;line-height:1.6;max-width:36em}
+.ct-txt .ct-alt b{color:#fff;user-select:all}
+.ct-form{display:grid;gap:14px;max-width:none;min-width:0}
+.ct-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.ct-row{grid-template-columns:1fr}}
+.ct-form label{display:grid;gap:6px;font-size:14px;font-weight:700;color:#E8EDF5}
+.ct-form textarea{width:100%;font:600 16px/1.5 var(--f-body);padding:14px;border-radius:8px;border:0;background:rgba(255,255,255,.96);color:var(--nuit);resize:vertical;min-height:130px}
+.ct-form input:focus,.ct-form select:focus,.ct-form textarea:focus{outline:3px solid var(--soft-bleu);outline-offset:2px}
+.ct-form .ct-ok{display:flex;color:#C9D1DE;font-weight:600}
+.ct-form .ct-ok a{color:#fff}
+.ct-form .btn{justify-self:start}
+@media (max-width:560px){.ct-form .btn{justify-self:stretch}}
+
+/* Pied */
+.week{background:var(--creme);color:var(--nuit);padding:56px var(--gut)}
+.week .in{max-width:1180px;margin:0 auto;display:grid;gap:22px}
+.week h3{font-size:clamp(28px,3.4vw,38px)}
+.days{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.days div{border-top:3px solid var(--nuit);padding-top:10px;display:grid;gap:2px}
+.days small{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu)}
+.days b{font-size:16px}
+.days span{font-size:13px;color:#4E5566}
+@media (max-width:900px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+footer{background:#060B15;color:var(--muted);font-size:13px;padding:28px var(--gut)}
+footer .in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;text-align:center}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+/* Accueil : voile renforcé derrière le titre et la question pour rester lisible sur une photo chargée */
+.hero::before{background:linear-gradient(180deg,rgba(11,18,32,.78) 0%,rgba(11,18,32,.55) 45%,rgba(11,18,32,.15) 62%,rgba(11,18,32,.82) 100%)}
+.hero .sub{text-shadow:0 2px 14px rgba(0,0,0,.7)}
+/* Mention de source sous les chiffres d'enquête */
+.src{font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.78);margin-top:-10px;max-width:34em;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+/* Personnages : le visage reste dans le cadre */
+img.char{object-position:50% 18%}
+
+/* Repère de défilement des leçons (mobile) */
+.swipe{display:none;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#4E5566}
+.swipe .dots{display:flex;gap:6px}
+.swipe .dots i{width:8px;height:8px;border-radius:50%;background:#C9C0AE;transition:background .2s,width .2s}
+.swipe .dots i.on{background:var(--corail);width:20px;border-radius:4px}
+@media (max-width:980px){.swipe{display:flex}}
+
+/* Couverture du guide */
+.book-wrap{display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 30% 20%,#18315A 0%,var(--nuit) 70%)}
+.guide .book-wrap::after{display:none}
+.guide .book img{position:static;width:44px;height:44px;object-fit:contain}
+.cover-img{opacity:0;transition:opacity .4s}
+.book-wrap.has-img .cover-img{opacity:1}
+.book-wrap.has-img .book{display:none}
+.book{position:relative;width:min(300px,62vw);aspect-ratio:3/4;transform:rotate(-4deg)}
+.book .cover,.book .sheet{position:absolute;inset:0;border-radius:6px 14px 14px 6px}
+.book .cover{background:linear-gradient(160deg,#F5EFE2,#EADFC9);color:var(--nuit);padding:22px;display:flex;flex-direction:column;gap:8px;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 6px 0 0 rgba(11,18,32,.12)}
+.book .cover small{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--corail);margin-top:6px}
+.book .cover strong{font-family:var(--f-display);font-weight:700;text-transform:none;font-size:clamp(24px,5.2vw,33px);line-height:1.12}
+.book .cover em{font-style:normal;font-size:12px;font-weight:700;color:#4E5566}
+.book .cover svg{position:absolute;right:14px;bottom:14px;width:46%}
+.book .sheet{background:#fff;transform:rotate(9deg) translate(18%,4%);padding:20px;display:flex;flex-direction:column;gap:10px;color:var(--nuit);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.book .sheet b{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bleu)}
+.book .sheet span{font-weight:800;font-size:15px}
+.book .sheet i{display:block;height:22px;border-bottom:1px dashed #C9C0AE}
+
+/* Sommaire des fiches */
+.fiches{list-style:none;counter-reset:f;margin:0;padding:0;display:grid;gap:8px;max-width:440px}
+.fiches li{counter-increment:f;display:grid;grid-template-columns:28px 1fr;column-gap:10px;font-size:14px;color:#FFE9E2}
+.fiches li::before{content:counter(f);grid-row:span 2;width:24px;height:24px;border-radius:50%;background:var(--nuit);color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center}
+.fiches b{color:#fff;font-size:15px}
+.book .sheet i{font-style:normal;font-size:11px;font-weight:600;color:#4E5566;display:flex;align-items:flex-end;padding-bottom:3px}
+/* Inscriptions pas encore ouvertes */
+.soon{display:grid;gap:16px;max-width:440px;background:rgba(11,18,32,.14);border-radius:12px;padding:18px}
+.soon p{font-size:15px;color:#FFF3EE}
+.soon strong{color:#fff}
+.btns.left{justify-content:flex-start}
+.btn-dark{background:var(--nuit);color:#fff}
+.g-alt{font-size:15px;color:#FFF3EE;margin-top:4px}
+.g-alt a{color:#fff;font-weight:800;text-underline-offset:3px}
+.btn-dark:hover{filter:brightness(1.25)}
+.soon .btn{min-width:0}
+
+/* Fondateur : portrait et présentation */
+.bio{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;max-width:820px;text-align:left}
+.face{width:min(240px,48vw);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#141D30;box-shadow:0 0 0 4px rgba(109,184,242,.25)}
+.face img{width:100%;height:100%;object-fit:cover}
+.face canvas{width:100%;height:100%}
+.face img ~ canvas{display:none}
+.bio .txt{display:grid;gap:8px}
+.bio .name{font-family:var(--f-display);font-weight:700;text-transform:none;font-size:31px;line-height:1.12}
+.bio .role{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-corail)}
+.bio p{color:#C9D0DC;font-size:16px}
+.bio .go{font-weight:800;text-decoration:none;color:var(--soft-bleu);margin-top:4px}
+.bio .go::after{content:" →"}
+@media (max-width:700px){.bio{grid-template-columns:none;justify-items:center;text-align:center}}
+
+/* Mobile : seule l'ouverture et les photos prennent un écran entier */
+@media (max-width:900px){
+  .lessons,.ask,.founder{min-height:auto;padding-block:84px 56px;gap:28px}
+  .card{min-height:400px}
+  .founder blockquote{font-size:clamp(40px,11vw,64px)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* Page Pour les organisations · Contact */
+#lien{padding-top:40px}
+.rv{padding-top:calc(var(--hh,64px) + var(--tkh,0px))}
+.rv .liens{border-top:0;padding-top:clamp(40px,7vw,72px)}
+.rv .lien-h h1{margin:10px 0 0;font-family:var(--f-display);font-weight:700;line-height:1.12;font-size:clamp(33px,4.6vw,55px);text-wrap:balance}
+.rv .lien-h .lede{margin:14px 0 0;color:#C9D1DE;font-size:17px;line-height:1.6;max-width:40em}
+
+/* Grammaire des fonds (25/10/2026) : on écrit sur fond crème. */
+.contact{background:#F5EFE2;color:#0B1220;border-top-color:#E2D8C4}
+.ct-txt .kick{color:#B8341A}
+.ct-txt p{color:#4E5566}
+.ct-txt .ct-alt b{color:#0B1220}
+.ct-form label{color:#2A3142}
+.ct-form input,.ct-form select,.ct-form textarea{background:#FFFDF8;box-shadow:inset 0 0 0 1px #D9CDB5}
+.ct-form .ct-ok{color:#4E5566}.ct-form .ct-ok a{color:#0B1220}
+.contact .check{color:#4E5566}
+.contact .btn-main{background:#D23F20}
+</style>
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030g">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header data-v1-cache class="top" id="top">
+  <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<div class="tk" id="tk" role="region" aria-label="À la une : EFA et BRVM"><div class="tk-in"><button type="button" class="tk-btn tk-prev" aria-label="Information précédente">‹</button><div class="tk-view"><div class="tk-run"></div></div><span class="tk-n"></span><button type="button" class="tk-btn tk-next" aria-label="Information suivante">›</button><button type="button" class="tk-pause" aria-pressed="false" aria-label="Mettre en pause le défilement">❚❚</button></div></div>
+
+<main class="rv" id="rendez-vous">
+  <!-- Pour les organisations · Contact : programmes et études pour les organisations, puis nous écrire -->
+  <section class="liens" id="organisations" aria-labelledby="org-t">
+    <div class="in">
+      <div class="lien-h"><p class="kick">Pour les organisations · Contact</p><h1 id="org-t">Travaillons ensemble</h1><p class="lede">Entreprises, coopératives, fondations, écoles&nbsp;: EFA conçoit des programmes d’éducation financière pour votre public et mène des études sur commande. Particuliers, partenaires, presse&nbsp;: écrivez-nous.</p></div>
+      <div class="lk3">
+        <article><p class="lk-k">Pour les organisations</p><h3>Un programme pour votre public</h3><p>Diagnostic pédagogique, modules, supports d’animation et suivi de l’avancement de chacun et bilan collectif des besoins, sans jamais transmettre les montants ni les réponses financières individuelles.</p><a class="lk-a" href="organisations.html" data-goatcounter-click="oc-programmes">Voir les programmes</a></article>
+        <article><p class="lk-k">Sur commande</p><h3>Une étude sur votre question</h3><p>Usage de la tontine, solidarité familiale, revenus irréguliers&nbsp;: une enquête, sa méthode et ses limites publiées.</p><a class="lk-a" href="rendez-vous.html?sujet=etude#contact" data-goatcounter-click="oc-etude">Parler d’une étude</a></article>
+        <article><p class="lk-k">Nous écrire</p><h3>Une question, un partenariat, la presse</h3><p>Le formulaire est en bas de cette page. Nous répondons sous quelques jours.</p><a class="lk-a" href="#contact" data-goatcounter-click="oc-contact">Écrire à EFA</a></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Rester en lien : la lettre du mardi, EFA Community, l'enquête -->
+  <section class="liens" id="lien" aria-labelledby="lien-t">
+    <div class="in">
+      <div class="lien-h"><p class="kick">Rester en lien</p><h2 id="lien-t">Chaque semaine, un rendez-vous</h2><p class="lede">Trois façons de garder le fil avec EFA, et un formulaire pour nous écrire directement.</p></div>
+      <div class="lk3">
+        <article><p class="lk-k">Le mardi</p><h3>«&nbsp;L’argent de la semaine&nbsp;»</h3><p>Une leçon, une actualité décryptée, une action à faire. Cinq minutes de lecture, par email.</p><a class="lk-a" href="./#guide" data-goatcounter-click="lien-lettre">Recevoir la lettre</a></article>
+        <article><p class="lk-k">Le jeudi à 19&nbsp;h</p><h3>EFA Community</h3><p>Échanger sur l’argent, la tontine et les projets, avec la communauté, sur WhatsApp.</p><a class="lk-a" href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener" data-goatcounter-click="lien-community">Rejoindre la communauté</a></article>
+        <article class="lk-enq" id="enquete"><p class="lk-k">L’enquête est ouverte</p><h3>Tontine ou pas, votre réponse compte</h3><p>251 personnes ont déjà répondu à «&nbsp;L’argent de la tontine&nbsp;». Prochain cap&nbsp;: 300. Comprendre pourquoi on n’entre pas dans une tontine compte autant que savoir ce qu’on en fait.</p><a class="lk-a enq-lien" href="#enquete" target="_blank" rel="noopener" data-goatcounter-click="enquete-section">Répondre à l’enquête</a><a class="lk-b" href="methode.html#etudes">Lire l’étude</a></article>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact : formulaire envoyé par Web3Forms vers newsletter@efa.africa (clé WEB3_CLE, dans le script) -->
+<section class="contact" id="contact" aria-labelledby="ct-t">
+  <div class="in">
+    <div class="ct-txt">
+      <p class="kick">Nous écrire</p>
+      <h2 id="ct-t">Une question, un témoignage, un projet&nbsp;?</h2>
+      <p>Une question sur votre argent, votre expérience de la tontine, une proposition de partenariat ou une demande de la presse&nbsp;: écrivez-nous. Nous répondons sous quelques jours.</p>
+      <p class="ct-alt">Vous préférez l’email&nbsp;? <b>newsletter@efa.africa</b></p>
+    </div>
+    <form class="ct-form" id="ct-form" novalidate>
+      <div class="ct-row">
+        <label>Prénom et nom<input id="ct-nom" name="nom" type="text" autocomplete="name" maxlength="80" required></label>
+        <label>Adresse email<input id="ct-mail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required></label>
+      </div>
+      <label>Sujet<select id="ct-sujet" name="sujet">
+        <option>Une question sur mon argent</option>
+        <option>Un accompagnement individuel ou en groupe</option>
+        <option>Un témoignage sur la tontine</option>
+        <option>Un programme pour mon organisation</option>
+        <option>Une étude sur commande</option>
+        <option>Un partenariat</option>
+        <option>Devenir ambassadeur EFA</option>
+        <option>Relire un contenu (notaire, expert, professionnel)</option>
+        <option>La presse</option>
+        <option>Autre</option>
+      </select></label>
+      <label>Votre message<textarea id="ct-msg" name="message" rows="5" maxlength="3000" required></textarea></label>
+      <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="check ct-ok" for="ct-ok"><input id="ct-ok" type="checkbox" required><span>J’accepte qu’EFA utilise mon nom et mon email pour me répondre. Ils ne servent à rien d’autre. <a href="confidentialite.html">Vos données</a></span></label>
+      <button class="btn btn-main" type="submit">Envoyer le message</button>
+      <p class="formmsg" id="ct-msgbox" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="balade-economie.html">La balade de l’économie</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script src="donnees.js"></script>
+<script>
+// ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine ». Vide = les boutons mènent à la section #enquete.
+var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';
+
+/* Barre EFA · BRVM : deux catégories, chaque information cliquable.
+   Ordinateur : défilement lent, bouton pause. Mobile : une information à la fois, flèches et balayage. */
+function efaTickerItems(D){
+  var it=[
+    {c:'EFA',t:'Enquête « L’argent de la tontine » : répondez, même sans tontine',h:ENQUETE_LIEN||'./#enquete'},
+    {c:'EFA',t:'Nouvel outil gratuit : Où est passé mon argent ? Cinq questions pour savoir où chercher',h:'ou-est-passe-mon-argent.html?src=bandeau'},
+    {c:'EFA',t:'Mon diagnostic financier complet : six dimensions en six minutes',h:'diagnostic.html?src=bandeau'},
+    {c:'EFA',t:'Enquête en cours : « L’argent de la tontine », 251 répondants au 12 oct. 2026, résultats provisoires',h:'methode.html#etudes'},
+    {c:'EFA',t:'Enquête EFA : 71 % des participants à une tontine déclarent qu’elle redistribue tout',h:'methode.html#tont'},
+    {c:'EFA',t:'Nouveau : calculez votre spirale, seul ou avec votre groupe',h:'cercle-spirale.html'},
+    {c:'EFA',t:'Nouvelle tribune : « Avec nos téléphones, nous pouvons construire des usines »',h:'tribunes.html'},
+    {c:'EFA',t:'Nouveau module pratique : prêter à un proche, avec Koffi',h:'preter-a-un-proche.html?src=bandeau'},
+    {c:'EFA',t:'Nouveau : votre plan d’action et votre cahier, pour suivre vos défis semaine après semaine',h:'outils.html?src=bandeau#plan'},
+    {c:'EFA',t:'Nouvel outil : préparer ma retraite, six questions pour faire le point',h:'preparer-ma-retraite.html?src=bandeau'},
+    {c:'EFA',t:'Guide gratuit « Construire sa stabilité financière » : disponible',h:'./#guide'},
+    {c:'EFA',t:'Le livre « Le Cercle et la Spirale » : en cours d’écriture',h:'auteur.html#publications'}
+  ];
+  var B=D&&D.brvm, f=function(n,d){return Number(n).toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});};
+  var v=function(x){return '<em class="'+(x>0?'up':x<0?'down':'flat')+'">'+(x>0?'▲ +':x<0?'▼ −':'■ ')+f(Math.abs(x),2)+' %</em>';};
+  if(B&&B.indices&&B.indices.length){
+    B.indices.slice(0,3).forEach(function(i,k){it.splice(1+k*2,0,{c:'BRVM',t:i[0]+' <b>'+f(i[2],2)+'</b> '+v(i[3])+' · dernière séance '+B.seance,h:'methode.html#idx'});});
+    var a=(B.actions||[]).slice().sort(function(x,y){return y[4]-x[4];});
+    if(a.length){it.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4])+' · séance du '+B.seance,h:'methode.html#movr'});
+      it.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4])+' · séance du '+B.seance,h:'methode.html#movr'});}
+  }else it.splice(1,0,{c:'BRVM',t:'Cours de la dernière séance momentanément indisponibles · voir brvm.org',h:'https://www.brvm.org/fr/indices'});
+  /* les anciens écrans « Actualités » ne défilent plus : l’actualité vit dans EFA News (news.html) */
+  return it;
+}
+function EFATicker(root,items){
+  if(!root||!items||!items.length) return {hide:function(){}};
+  var view=root.querySelector('.tk-view'), run=root.querySelector('.tk-run'), pb=root.querySelector('.tk-pause'),
+      prev=root.querySelector('.tk-prev'), next=root.querySelector('.tk-next'), cnt=root.querySelector('.tk-n'),
+      narrow=matchMedia('(max-width:720px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)'),
+      i=0, timer=null, paused=false, hidden=false, busy=false, x0=null, swiped=false;
+  function one(){return narrow.matches||reduced.matches;}
+  function html(x){var ext=/^https?:/.test(x.h);return '<a class="tk-it" href="'+x.h+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+(x.c==='BRVM'?'<span class="tk-cat b">BRVM</span>':'<span class="tk-cat n" aria-label="EFA News"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 12a1.5 1.5 0 0 1 3 0a3 3 0 0 1-6 0a4.5 4.5 0 0 1 9 0a6 6 0 0 1-12 0a7.5 7.5 0 0 1 15 0"/></svg>EFA<i></i>NEWS</span>')+'<span class="tk-t">'+x.t+'</span></a>';}
+  // Mobile : une information toutes les 8 secondes, jamais pendant une lecture, un toucher ou une pause demandée
+  function plan(){clearTimeout(timer);if(one()&&!reduced.matches&&!paused&&!hidden&&!busy&&!document.hidden)timer=setTimeout(function(){go(1);},5000);}
+  function render(){
+    root.classList.toggle('one',one());
+    if(one()){run.style.animation='none';run.innerHTML=html(items[i]);cnt.textContent=(i+1)+'/'+items.length;}
+    else{var s=items.map(html).join('');run.innerHTML=s+s;run.style.animation='';run.style.setProperty('--dur',(items.length*4.5)+'s');}
+    plan();
+  }
+  function go(d){i=(i+d+items.length)%items.length;render();}
+  prev.addEventListener('click',function(){go(-1);});
+  next.addEventListener('click',function(){go(1);});
+  pb.addEventListener('click',function(){paused=!paused;root.classList.toggle('paused',paused);pb.setAttribute('aria-pressed',String(paused));
+    pb.setAttribute('aria-label',paused?'Reprendre le défilement':'Mettre en pause le défilement');pb.textContent=paused?'▶':'❚❚';plan();});
+  root.addEventListener('focusin',function(){busy=true;plan();});
+  root.addEventListener('focusout',function(e){busy=root.contains(e.relatedTarget);plan();});
+  view.addEventListener('pointerdown',function(e){x0=e.clientX;swiped=false;busy=true;plan();});
+  view.addEventListener('pointerup',function(e){busy=false;if(x0!==null&&one()&&Math.abs(e.clientX-x0)>40){swiped=true;go(e.clientX<x0?1:-1);}x0=null;plan();});
+  view.addEventListener('pointercancel',function(){x0=null;busy=false;plan();});
+  view.addEventListener('click',function(e){if(swiped)e.preventDefault();swiped=false;});
+  document.addEventListener('visibilitychange',plan);
+  [narrow,reduced].forEach(function(m){if(m.addEventListener)m.addEventListener('change',render);else m.addListener(render);});
+  render();
+  return {hide:function(h){h=!!h;if(h===hidden)return;hidden=h;root.classList.toggle('off',h);plan();}};
+}
+var TK=null;
+(function(){
+  function setHH(){var h=document.getElementById('top').offsetHeight,t=document.getElementById('tk');document.documentElement.style.setProperty('--hh',h+'px');document.documentElement.style.setProperty('--tkh',(t&&!t.hidden?t.offsetHeight:0)+'px');}
+  addEventListener('resize',setHH);
+  try{TK=EFATicker(document.getElementById('tk'),efaTickerItems(window.EFA_DATA||{}));document.getElementById('top').classList.add('has-tk');}
+  catch(e){var t=document.getElementById('tk');if(t)t.hidden=true;}
+  setHH(); setTimeout(setHH,500);
+})();
+// En-tête : devient opaque après le premier écran ; menu plein écran sur mobile
+(function(){
+  var top=document.getElementById('top'), nav=document.getElementById('nav'), mb=document.getElementById('menu');
+  function onScroll(){top.classList.toggle('solid',window.scrollY>window.innerHeight*0.6);}
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Fermer':'Menu';});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded',false);mb.textContent='Menu';}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='Menu';mb.focus();}});
+})();
+
+// Mesure d’audience : un événement GoatCounter, sans donnée personnelle
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){
+  document.querySelectorAll('.enq-lien').forEach(function(a){
+    if(ENQUETE_LIEN){a.href=ENQUETE_LIEN;} else {a.href='#enquete';a.removeAttribute('target');a.removeAttribute('rel');}
+  });
+})();
+// Contact → Web3Forms (le message arrive par email sur newsletter@efa.africa).
+// WEB3_CLE : clé d’accès reçue de web3forms.com. Vide = le formulaire renvoie vers l’adresse email.
+var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
+(function(){
+  var f=document.getElementById('ct-form'); if(!f) return;
+  var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
+  // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
+  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={accompagnement:'Un accompagnement individuel ou en groupe',organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat',ambassadeur:'Devenir ambassadeur EFA',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];if(q==='ambassadeur'){var am=document.getElementById('ct-msg');if(am&&!am.value)am.value='Bonjour,\n\nJe souhaite devenir ambassadeur EFA.\nMa communauté (réseau, nombre d’abonnés, lien) : …\nCe que je partage aujourd’hui : …\n';}}catch(e){}
+  try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation(\.html)?\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons recevoir les accès (clé d’organisation pour le tableau de bord, code pour nos participants) et, si possible, organiser une session avec EFA. Nombre de participants : … Nos disponibilités : …\n\nMerci.';}}catch(e){}
+  function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=document.getElementById('ct-nom').value.trim(), mail=document.getElementById('ct-mail').value.trim(), msg=document.getElementById('ct-msg').value.trim();
+    if(!nom){say('Indiquez votre nom.',1);return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mail)){say('Saisissez une adresse email valide.',1);return;}
+    if(msg.length<5){say('Écrivez votre message.',1);return;}
+    if(!document.getElementById('ct-ok').checked){say('Cochez la case pour que nous puissions vous répondre.',1);return;}
+    if(f.botcheck.checked) return;
+    if(!WEB3_CLE){say('L’envoi par formulaire arrive très bientôt. En attendant, écrivez-nous à <b>newsletter@efa.africa</b>.',1);return;}
+    var sujet=document.getElementById('ct-sujet').value;
+    b.disabled=true; say('Envoi en cours…'); efaCompte('contact-envoi');
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:WEB3_CLE,subject:'efa.africa · '+sujet,from_name:'Site efa.africa',name:nom,email:mail,replyto:mail,sujet:sujet,message:msg})})
+    .then(function(r){return r.json();}).then(function(j){
+      if(j&&j.success){f.reset();say('Merci, votre message est bien arrivé. Nous vous répondons à l’adresse indiquée.');}
+      else say('Le message n’a pas pu être envoyé. Réessayez, ou écrivez-nous à <b>newsletter@efa.africa</b>.',1);
+    }).catch(function(){say('Le message n’a pas pu partir (connexion&nbsp;?). Réessayez, ou écrivez-nous à <b>newsletter@efa.africa</b>.',1);})
+    .then(function(){b.disabled=false;});
+  });
+})();
+
+</script>
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030g" defer></script>
+</body>
+</html>
