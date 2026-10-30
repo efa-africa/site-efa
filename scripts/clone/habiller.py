@@ -14,7 +14,7 @@ import os, re, sys, glob, html as H
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261030k'
+VERSION = '20261030n'
 # Lot 4 : visuel du bandeau d'ouverture des pages clés (photos du Clone)
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
