@@ -58,8 +58,9 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
     if(a.length){brvm.push({c:'BRVM',t:'Plus forte hausse : '+a[0][1]+' '+v(a[0][4]),h:'../methode.html#brvm'});
       brvm.push({c:'BRVM',t:'Plus forte baisse : '+a[a.length-1][1]+' '+v(a[a.length-1][4]),h:'../methode.html#brvm'});}
   }
-  var n=Math.max(news.length,brvm.length);
-  for(var k=0;k<n;k++){if(brvm[k])it.push(brvm[k]);if(news[k])it.push(news[k]);}
+  var efa=(window.EFA_IT||[]).map(function(n){return {c:'EFA',t:n.t,h:n.h};});
+  var auto=efa.concat(news), n=Math.max(auto.length,brvm.length*3);
+  for(var k=0;k<auto.length;k++){if(k%3===0&&brvm[k/3])it.push(brvm[k/3]);it.push(auto[k]);}
   if(!it.length){document.getElementById('fil').hidden=true;return;}
   var h=it.map(function(x){return '<a class="fil-it" href="'+x.h+'"><span class="fil-cat '+(x.c==='BRVM'?'b':'n')+'">'+x.c+'</span>'+x.t+'</a>';}).join('');
   run.innerHTML=h+h;run.style.setProperty('--dur',(it.length*6)+'s');
