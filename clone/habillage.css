@@ -174,3 +174,47 @@ html[data-clone] .header .brand .brand-dot{display:inline!important;color:var(--
 html[data-clone] .header .brand small{display:block!important}
 html[data-clone] .header .brand img{width:38px;height:38px}
 @media(max-width:720px){html[data-clone] .header .brand img{width:32px;height:32px}}
+
+/* =================== Lot 4 · couche premium (style de l'accueil du Clone) =================== */
+html[data-clone]{--teal:#168da4}
+/* Titre principal en deux tons : la seconde partie en bleu canard, sur sa propre ligne */
+html[data-clone] h1 .clone-accent{display:block;color:var(--teal)!important}
+/* Surtitres : petites capitales espacées, bleu canard */
+html[data-clone] .kick,html[data-clone] .eyebrow,html[data-clone] .surtitre{color:var(--teal)!important;letter-spacing:.2em;font-weight:800;font-size:12px;text-transform:uppercase}
+html[data-clone] .kick a{color:inherit!important;text-decoration:none}
+
+/* Bandeau d'ouverture avec photo */
+html[data-clone] .clone-visuel{margin:28px 0 0;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:#eaf3fc;box-shadow:0 24px 60px rgba(7,29,56,.12)}
+html[data-clone] .clone-visuel img{display:block;width:100%;height:100%;object-fit:cover}
+@media(min-width:900px){
+  html[data-clone] .clone-hero-grille{display:grid!important;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);column-gap:clamp(36px,5vw,72px);align-items:start}
+  html[data-clone] .clone-hero-grille>*{grid-column:1;min-width:0}
+  html[data-clone] .clone-hero-grille>.clone-visuel{grid-column:2;grid-row:1/span 30;align-self:center;margin:0;aspect-ratio:4/5;max-height:620px}
+  html[data-clone] .clone-hero-grille h1{font-size:clamp(38px,4.3vw,66px)!important;line-height:1.06}
+}
+@media(max-width:899px){html[data-clone] .clone-visuel{aspect-ratio:16/10;border-radius:20px}}
+
+/* Titres de section : filet corail au-dessus, comme sur l'accueil du Clone */
+html[data-clone] article>section>h2,html[data-clone] main>section>h2{font-size:clamp(28px,3.3vw,44px);line-height:1.1;color:#071d38}
+html[data-clone] article>section>h2::before,html[data-clone] main>section>h2::before{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--coral);margin-bottom:18px}
+
+/* Questions fréquentes : lignes fines et « + » corail, sans encadré */
+html[data-clone] .faq details{background:transparent!important;border-radius:0!important;padding:22px 4px!important;border:0!important;border-bottom:1px solid #dce6ec!important;margin:0!important}
+html[data-clone] .faq details:first-of-type{border-top:1px solid #dce6ec!important}
+html[data-clone] .faq summary{font-weight:700;font-size:clamp(17px,1.6vw,20px);color:#071d38;list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px}
+html[data-clone] .faq summary::-webkit-details-marker{display:none}
+html[data-clone] .faq summary::after{content:"+"!important;color:var(--coral)!important;font-size:26px;line-height:1;font-weight:400;flex:none;transition:transform .2s}
+html[data-clone] .faq details[open] summary::after{transform:rotate(45deg)}
+
+/* Sommaire : carte blanche, numéros en bleu canard */
+html[data-clone] .toc{background:#fff!important;box-shadow:0 0 0 1px #dce6ec inset,0 18px 44px rgba(7,29,56,.06)}
+html[data-clone] .toc ol li::marker{color:var(--teal);font-weight:800}
+
+/* Cartes : coins plus ronds, élévation douce au survol */
+html[data-clone] .card,html[data-clone] .carte,html[data-clone] .names li{border-radius:20px!important;transition:transform .2s ease,box-shadow .2s ease}
+html[data-clone] a.card:hover,html[data-clone] a.carte:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(7,29,56,.10)}
+
+/* Citation : guillemet corail */
+html[data-clone] .quote{position:relative}
+html[data-clone] .quote::before{content:"“";position:absolute;top:6px;left:24px;font:700 64px/1 "Libre Baskerville",Georgia,serif;color:var(--coral);opacity:.9}
+html[data-clone] .quote p:first-of-type{padding-top:26px}

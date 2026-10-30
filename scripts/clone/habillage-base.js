@@ -81,6 +81,48 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', demarrer);
   else demarrer();
 
+  /* ---------------- Premium : titre en deux tons et visuel d'ouverture ----------------
+     Le titre principal passe en deux tons comme sur l'accueil du Clone (la seconde partie en bleu canard),
+     et les pages clés reçoivent une photo du Clone à droite du titre. */
+  function titrePrincipal() {
+    var l = document.querySelectorAll('h1');
+    for (var i = 0; i < l.length; i++) if (l[i].offsetHeight && !l[i].closest('#clone-haut,[data-v1-cache]')) return l[i];
+    return null;
+  }
+  function deuxTons(h) {
+    if (!h || h.hasAttribute('data-deux-tons')) return;
+    for (var n = h.firstChild; n; n = n.nextSibling) if (n.nodeType !== 3) return; // texte seul
+    var t = h.textContent, m = t.match(/^(.{6,}(?:\u00a0:|\s:|\.|,))\s+(.{6,})$/); // dernière coupure : accent court
+    if (!m) return;
+    h.textContent = '';
+    h.appendChild(document.createTextNode(m[1] + ' '));
+    var sp = document.createElement('span'); sp.className = 'clone-accent'; sp.textContent = m[2];
+    h.appendChild(sp); h.setAttribute('data-deux-tons', '');
+  }
+  function visuel(h) {
+    var src = document.documentElement.getAttribute('data-clone-visuel');
+    if (!h || !src || document.querySelector('.clone-visuel')) return;
+    // le conteneur du bandeau : premier ancêtre assez large pour deux colonnes
+    var chemin = h, hote = h.parentElement, large = window.innerWidth >= 900;
+    for (var k = 0; large && k < 4 && hote && hote !== document.body; k++) {
+      if (hote.offsetWidth >= 980 || k === 3) break;
+      chemin = hote; hote = hote.parentElement;
+    }
+    if (!hote || (large && hote.offsetWidth < 720)) return;
+    var f = document.createElement('figure'); f.className = 'clone-visuel'; f.setAttribute('aria-hidden', 'true');
+    var im = document.createElement('img'); im.src = racine + src; im.alt = ''; im.decoding = 'async';
+    f.appendChild(im);
+    var apres = chemin === h && h.nextElementSibling && /\blead\b/.test(h.nextElementSibling.className) ? h.nextElementSibling : chemin;
+    apres.parentNode.insertBefore(f, apres.nextSibling);
+    hote.classList.add('clone-hero-grille');
+  }
+  function premium() {
+    var h = titrePrincipal();
+    deuxTons(h); visuel(h);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', premium);
+  else premium();
+
   /* ---------------- Blanc et bleu : conversion des fonds sombres ----------------
      Aucun fond noir ni bleu nuit : chaque surface sombre devient claire (bleu très pâle ou blanc),
      puis chaque texte devenu illisible est recoloré (encre, bleu, corail, vert ou ocre selon sa teinte). */
