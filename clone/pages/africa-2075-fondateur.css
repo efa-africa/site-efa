@@ -32,7 +32,7 @@ html[data-clone] .a75-fc span{display:block;margin-top:6px;font-size:14px;font-w
 html[data-clone] ol.conditions{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;padding:0!important;margin:18px 0 0!important}
 html[data-clone] ol.conditions li{margin:0!important;background:#fff!important;border-radius:16px!important;padding:20px 22px!important;box-shadow:0 0 0 1px #e3e8ee,0 12px 28px rgba(7,29,56,.05)}
 /* La conviction en exergue */
-html[data-clone] .prose p.a75-exergue{margin:36px 0;padding:6px 0 6px 26px;border-left:4px solid var(--a75-verm);font:700 clamp(21px,2.1vw,26px)/1.45 "Libre Baskerville",Georgia,serif!important;color:var(--a75-nuit)!important}
+html[data-clone] .prose p.a75-exergue{margin:40px 0;padding:22px 0 0;border-top:3px solid var(--a75-verm);border-left:0;font:700 clamp(21px,2.1vw,26px)/1.45 "Libre Baskerville",Georgia,serif!important;color:var(--a75-nuit)!important}
 html[data-clone] .prose p.a75-exergue strong{color:var(--a75-verm)}
 /* Barre de lecture, sous l'en-tête */
 html[data-clone] .a75-lecture{position:fixed;left:0;right:0;top:82px;height:3px;z-index:60;background:transparent;pointer-events:none}

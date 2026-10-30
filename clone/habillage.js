@@ -333,4 +333,37 @@
      Le contenu ajouté ensuite par les scripts de la page est converti au fil de l'eau. */
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', blancEtBleu);
   else blancEtBleu();
+
+  /* ---------------- Articles : sommaire, barre de lecture, chiffres mis en valeur ---------------- */
+  function articles() {
+    var art = document.querySelector('article'); if (!art || art.closest('#clone-haut,.clone-foot')) return;
+    // chiffres dans le texte : un nombre suivi d'une unité, dans un passage en gras
+    var UNITE = /\d[\d\s  .,]*\s?(%|FCFA|F\b|Md|milliard|million|\$|€|ans\b|mois\b|jours?\b|fois\b|x\b|×)/i;
+    art.querySelectorAll('p strong, p b, li strong, li b').forEach(function (e) {
+      if (e.closest('.chiffres,.retenir,.reponse,.verif,.vc,.encadre,.box,[data-clair]')) return;
+      if (UNITE.test(e.textContent) && e.textContent.length < 60) e.classList.add('a-num');
+    });
+    // sommaire : les sections titrées (surtitre .bk + h2), s'il n'y en a pas déjà un
+    if (!document.querySelector('.toc,.a75-som,.a-som')) {
+      var secs = [].slice.call(art.querySelectorAll('section[id]')).filter(function (x) { return x.querySelector('h2') && !/^(sources|liees|qui)$/.test(x.id); });
+      if (secs.length >= 3) {
+        var nav = document.createElement('nav'); nav.className = 'a-som'; nav.setAttribute('aria-label', 'Sommaire');
+        nav.innerHTML = '<span>Dans cet article</span>' + secs.slice(0, 8).map(function (x, k) {
+          var bk = x.querySelector('.bk'), t = (bk && bk.textContent.trim()) || x.querySelector('h2').textContent.trim();
+          return '<a href="#' + x.id + '"><i>' + (k + 1) + '</i>' + t.replace(/\s+/g, ' ').slice(0, 38) + '</a>';
+        }).join('');
+        var avant = secs[0];
+        avant.parentNode.insertBefore(nav, avant);
+      }
+    }
+    // barre de lecture
+    if (!document.querySelector('.a75-lecture,.a-lecture') && art.offsetHeight > innerHeight * 1.6) {
+      var b = document.createElement('div'); b.className = 'a-lecture'; b.setAttribute('aria-hidden', 'true'); b.innerHTML = '<i></i>';
+      document.body.appendChild(b);
+      var i = b.firstChild;
+      var maj = function () { var r = art.getBoundingClientRect(), h = r.height - innerHeight; i.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, Math.max(0, -r.top / h)) : 0) + ')'; };
+      addEventListener('scroll', maj, { passive: true }); maj();
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', articles); else articles();
 })();
