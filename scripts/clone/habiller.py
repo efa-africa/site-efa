@@ -1,92 +1,110 @@
 #!/usr/bin/env python3
-"""EFA · Clone : recopie les pages de la V1 dans /clone avec l'en-tête, le pied et l'habillage du Clone.
+"""EFA · Site premium (ex-Clone) : habille toutes les pages du site efa.africa, à leur adresse d'origine.
 
 Usage (depuis la racine du dépôt) :  python3 scripts/clone/habiller.py
+Le script est sans effet de bord cumulatif : on peut le relancer après chaque nouvelle page (EFA News, leçon…).
 
-- Source unique : les pages de la V1 à la racine (et news/). Elles ne sont pas modifiées.
-- Les copies de /clone sont régénérées à chaque passage : ne pas les éditer à la main.
-- Chaque copie reçoit <base> vers la racine (scripts, images et données de la V1 fonctionnent tels quels),
-  noindex, l'en-tête et le pied du Clone, clone/habillage.css et clone/habillage.js.
-- Les liens des pages du Clone (accueil, coaching…) qui visaient ../page.html visent désormais la copie.
+Depuis la bascule du 30 octobre 2026 :
+- L'accueil efa.africa (index.html) et les pages Ateliers (coaching.html), Marchés (marches.html) et
+  Études et prospective (etudes-prospective.html) sont fabriqués à partir de leurs modèles clone/_*.html.
+  Modifier les modèles, jamais les pages fabriquées.
+- Toutes les autres pages (racine et news/) reçoivent, sur place, l'en-tête, le pied et l'habillage blanc et bleu
+  (clone/habillage.css, clone/habillage.js, et clone/pages/<page>.css|js quand ils existent).
+  L'ancien habillage est d'abord retiré : rien ne s'accumule.
+- Les anciennes adresses /clone/… redirigent vers les adresses du site.
+- L'ancienne page d'accueil est gardée, hors index, sous accueil-v1.html.
+Les feuilles de style, scripts et images du design restent dans clone/ (clone/assets, clone/styles.css…).
 """
-import os, re, sys, glob, html as H
+import os, re, sys, glob, shutil
 
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261030o'
-# Lot 4 : visuel du bandeau d'ouverture des pages clés (photos du Clone)
+VERSION = '20261030p'
+SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
     'news.html': 'carte-proches-900.webp',
     'preparer-ma-retraite.html': 'coach-patrimoine.webp', 'construire-son-budget.html': 'budget.webp',
     'methode.html': 'etudes-publiees.webp', 'auteur.html': 'elysee-portrait.jpg',
 }
-MANIFESTE = os.path.join(CLONE, 'v1-pages.txt')
-PAGES_CLONE = ['index.html', 'coaching.html', 'marches.html', 'etudes-prospective.html', 'v0.html']
-EXCLUES = {'index.html'}  # l'accueil V1 est remplacé par l'accueil du Clone
+# modèle (dans clone/) → page fabriquée à la racine ; indexée ou non
+MODELES = {'_index.html': ('index.html', True), '_coaching.html': ('coaching.html', True),
+           '_marches.html': ('marches.html', False), '_etudes-prospective.html': ('etudes-prospective.html', False)}
+FABRIQUEES = {v[0] for v in MODELES.values()}
+EXCLUES = FABRIQUEES | {'accueil-v1.html'}
 
-# ---------------------------------------------------------------- pages à recopier
-sources = sorted(f for f in glob.glob('*.html') if f not in EXCLUES)
-sources += sorted(glob.glob('news/*.html'))
-conflits = [f for f in sources if f in PAGES_CLONE]
-if conflits:
-    sys.exit('Conflit de nom avec une page du Clone : %s' % conflits)
-connues = set(sources)
+# ---------------------------------------------------------------- pages à habiller
+pages = sorted(f for f in glob.glob('*.html') if f not in EXCLUES) + sorted(glob.glob('news/*.html'))
+modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
-# ---------------------------------------------------------------- nettoyage de la génération précédente
-if os.path.exists(MANIFESTE):
-    for ligne in open(MANIFESTE, encoding='utf8'):
-        p = os.path.join(CLONE, ligne.strip())
-        if ligne.strip() and os.path.isfile(p) and ligne.strip() not in PAGES_CLONE:
-            os.remove(p)
-
-# ---------------------------------------------------------------- rubrique de chaque page (pour l'onglet actif)
-accueil = open(os.path.join(CLONE, 'index.html'), encoding='utf8').read()
+# ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
 RUBRIQUES = [('benefices', 'Apprendre'), ('pilier-progresser', 'S’entraîner'), ('pilier-agir', 'Se lancer'),
              ('pilier-media', 'Le média'), ('etudes-prospective', 'Études')]
 SECTION_DE = {'portes': 'benefices', 'benefices': 'benefices', 'calculateur': 'benefices',
               'pilier-progresser': 'pilier-progresser', 'pilier-agir': 'pilier-agir',
               'pilier-media': 'pilier-media', 'etudes-prospective': 'etudes-prospective'}
+connues = set(pages)
 rubrique = {}
-blocs = list(re.finditer(r'<section[^>]*\bid="([^"]+)"', accueil))
+blocs = list(re.finditer(r'<section[^>]*\bid="([^"]+)"', modele_accueil))
 for k, m in enumerate(blocs):
-    fin = blocs[k + 1].start() if k + 1 < len(blocs) else len(accueil)
+    fin = blocs[k + 1].start() if k + 1 < len(blocs) else len(modele_accueil)
     sec = SECTION_DE.get(m.group(1))
-    if not sec:
-        continue
-    for h in re.findall(r'href="(?:\.\./)?([^"#?:]+)', accueil[m.start():fin]):
-        if h in connues:
-            rubrique.setdefault(h, sec)
-for f in sources:
+    if sec:
+        for h in re.findall(r'href="(?:\.\./|\./)?([^"#?:]+)', modele_accueil[m.start():fin]):
+            if h in connues:
+                rubrique.setdefault(h, sec)
+for f in pages:
     if f.startswith('news/'):
         rubrique.setdefault(f, 'pilier-media')
+rubrique['coaching.html'] = 'pilier-progresser'
 
-# ---------------------------------------------------------------- en-tête et pied du Clone, adaptés à <base> = racine
-def lien_depuis_clone(h):
-    """Lien écrit dans une page de /clone (relatif à clone/) → lien relatif à la racine du site."""
-    if re.match(r'^(https?:|mailto:|tel:)', h):
+# ---------------------------------------------------------------- liens : modèle (clone/) → racine du site
+FICHIERS_CLONE = {os.path.basename(f) for f in glob.glob(os.path.join(CLONE, '*')) if os.path.isfile(f)}
+
+def lien_racine(h):
+    """Lien écrit dans un modèle de clone/ → lien relatif à la racine du site."""
+    if re.match(r'^(https?:|mailto:|tel:|data:|javascript:|//)', h):
         return h
     if h.startswith('#'):
-        return 'clone/index.html' + h
+        return 'index.html' + h
     if h.startswith('./'):
-        return 'clone/' + h[2:]
+        h = h[2:]
     if h.startswith('../'):
-        cible = h[3:]
-        chemin = re.split(r'[#?]', cible)[0]
-        return ('clone/' + cible) if chemin in connues else cible
-    return 'clone/' + h
+        return re.sub(r'^(\.\./)+', '', h)
+    chemin = re.split(r'[#?]', h)[0]
+    if chemin.startswith('assets/') or chemin.startswith('pages/'):
+        return 'clone/' + h
+    if chemin in FICHIERS_CLONE and not chemin.endswith('.html'):
+        return 'clone/' + h
+    if chemin.startswith('_') and chemin in MODELES:
+        return MODELES[chemin][0] + h[len(chemin):]
+    return h
 
-menu = re.search(r'<nav id="menu" class="menu-panel"[^>]*>(.*?)</nav>', accueil, re.S).group(1)
-menu = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_depuis_clone(m.group(1)), menu)
+def modele_vers_racine(s, garder_dieses):
+    """Réécrit un modèle de clone/ pour qu'il fonctionne à la racine."""
+    def attr(m):
+        v = m.group(3)
+        if garder_dieses and v.startswith('#'):
+            return m.group(0)
+        return '%s%s"%s"' % (m.group(1), m.group(2), lien_racine(v))
+    s = re.sub(r'(\b(?:href|src|poster|data-src)\s*)(=)"([^"]*)"', attr, s)
+    s = re.sub(r'\bsrcset="([^"]*)"', lambda m: 'srcset="%s"' % ', '.join(
+        ' '.join([lien_racine(x.strip().split(' ')[0])] + x.strip().split(' ')[1:]) for x in m.group(1).split(',')), s)
+    # chemins écrits dans les styles et les scripts de la page
+    s = re.sub(r'''(url\(\s*['"]?|['"])assets/''', r'\1clone/assets/', s)
+    s = re.sub(r'''(['"])\.\./([a-z0-9][^'"]*)''', r'\1\2', s)
+    return s
+
+menu = re.search(r'<nav id="menu" class="menu-panel"[^>]*>(.*?)</nav>', modele_accueil, re.S).group(1)
+menu = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_racine(m.group(1)), menu)
 
 def entete(page):
     actif = rubrique.get(page)
-    onglets = ''.join(
-        '<a href="clone/index.html#%s"%s>%s</a>' % (i, ' aria-current="page"' if i == actif else '', t)
-        for i, t in RUBRIQUES)
+    onglets = ''.join('<a href="index.html#%s"%s>%s</a>' % (i, ' aria-current="page"' if i == actif else '', t)
+                      for i, t in RUBRIQUES)
     return ('<header class="header clone-head" id="clone-haut"><div class="container head-inner">'
-            '<a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone">'
+            '<a class="brand" href="index.html" aria-label="EFA, accueil">'
             '<img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span>'
             '<small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a>'
             '<nav class="desktop-nav" aria-label="Navigation principale">%s</nav>'
@@ -94,10 +112,10 @@ def entete(page):
             'aria-label="Ouvrir le menu"><span></span><span></span></button></div>'
             '<nav id="clone-menu" class="menu-panel" aria-label="Menu">%s</nav></header>') % (onglets, menu)
 
-pied = re.search(r'<footer class="efa-foot">.*?</footer>', accueil, re.S).group(0)
+pied = re.search(r'<footer class="efa-foot">.*?</footer>', modele_accueil, re.S).group(0)
 pied = pied.replace('<footer class="efa-foot">', '<footer class="efa-foot clone-foot">', 1)
-pied = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_depuis_clone(m.group(1)), pied)
-pied = re.sub(r'src="\.\./', 'src="', pied)
+pied = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_racine(m.group(1)), pied)
+pied = re.sub(r'src="([^"]+)"', lambda m: 'src="%s"' % lien_racine(m.group(1)), pied)
 
 # ---------------------------------------------------------------- CSS et JS de l'habillage
 def regles_coquille():
@@ -131,8 +149,7 @@ def regles_coquille():
     out = []
     for sel, corps in lire(css):
         if isinstance(corps, list):
-            dedans = ['%s{%s}' % (','.join(garder(s)), b) for s, b in corps
-                      if not isinstance(b, list) and garder(s)]
+            dedans = ['%s{%s}' % (','.join(garder(s)), b) for s, b in corps if not isinstance(b, list) and garder(s)]
             if dedans:
                 out.append('%s{%s}' % (sel, ''.join(dedans)))
         elif garder(sel):
@@ -140,50 +157,49 @@ def regles_coquille():
     return '\n'.join(out)
 
 base_css = open('scripts/clone/habillage-base.css', encoding='utf8').read()
-open(os.path.join(CLONE, 'habillage.css'), 'w', encoding='utf8').write(
-    base_css.replace('/*SHELL*/', regles_coquille()))
+open(os.path.join(CLONE, 'habillage.css'), 'w', encoding='utf8').write(base_css.replace('/*SHELL*/', regles_coquille()))
+import json
 base_js = open('scripts/clone/habillage-base.js', encoding='utf8').read()
-liste = '[' + ','.join('"%s"' % p for p in sorted(connues)) + ']'
-open(os.path.join(CLONE, 'habillage.js'), 'w', encoding='utf8').write(base_js.replace('/*PAGES*/[]', liste))
+js = base_js.replace('/*PAGES*/[]', '[]')
+js = js.replace('/*ENTETE*/""', json.dumps(entete(None), ensure_ascii=False)).replace('/*PIED*/""', json.dumps(pied, ensure_ascii=False))
+open(os.path.join(CLONE, 'habillage.js'), 'w', encoding='utf8').write(js)
+os.makedirs(os.path.join(CLONE, 'pages'), exist_ok=True)
+for f in glob.glob('scripts/clone/pages/*'):
+    shutil.copy(f, os.path.join(CLONE, 'pages', os.path.basename(f)))
 
-# ---------------------------------------------------------------- transformation d'une page
+# ---------------------------------------------------------------- retirer l'habillage précédent
+def deshabiller(s):
+    s = re.sub(r'<header class="header clone-head" id="clone-haut">.*?</header>\n?', '', s, flags=re.S)
+    s = re.sub(r'\n?<footer class="efa-foot clone-foot">.*?</footer>', '', s, flags=re.S)
+    s = re.sub(r'<link rel="stylesheet" href="clone/(?:habillage|pages/[^"]+)\.css[^"]*">\n?', '', s)
+    s = re.sub(r'<script src="clone/(?:habillage|pages/[^"]+)\.js[^"]*" defer></script>\n?', '', s)
+    s = re.sub(r'(<html\b[^>]*?)\s+data-clone(?:-[a-z]+)?(?:="[^"]*")?', r'\1', s)
+    while re.search(r'<html\b[^>]*\sdata-clone', s):
+        s = re.sub(r'(<html\b[^>]*?)\s+data-clone(?:-[a-z]+)?(?:="[^"]*")?', r'\1', s)
+    s = s.replace(' data-v1-cache', '').replace('data-v1-cache ', '')
+    return s
+
+# ---------------------------------------------------------------- habiller une page sur place
 def habiller(s, page):
+    s = deshabiller(s)
     if '</head>' not in s:
-        # balises implicites (ex. ely.html) : on les écrit pour pouvoir insérer l'habillage
         m = re.search(r'</style>\s*(?=<(header|div|main|section|nav)\b)', s)
         if m:
             s = s[:m.end()] + '</head>\n<body>\n' + s[m.end():]
             s = s.replace('</html>', '</body>\n</html>', 1) if '</html>' in s else s + '\n</body>\n'
-    profondeur = page.count('/')
-    base = '../' * (profondeur + 1)
-    s = re.sub(r'<base\b[^>]*>\s*', '', s)
-    s = re.sub(r'<head([^>]*)>', lambda m: '<head%s>\n<base href="%s">' % (m.group(1), base), s, count=1)
-    s = re.sub(r'<html\b', '<html data-clone', s, count=1)
+    redirection = re.search(r'http-equiv="refresh"|location\.replace\(', s) is not None and len(s) < 3000
+    if redirection:
+        return s, 0
+    attrs = ' data-clone'
     if page in VISUELS:
-        s = s.replace('<html data-clone', '<html data-clone data-clone-visuel="clone/assets/%s"' % VISUELS[page], 1)
-    # pas de comptage d'audience sur les copies de travail
-    s = re.sub(r'<script[^>]*data-goatcounter[^>]*>\s*</script>\s*', '', s)
-    if re.search(r'<meta[^>]+name="robots"', s):
-        s = re.sub(r'(<meta[^>]+name="robots"[^>]+content=")[^"]*"', r'\1noindex, nofollow"', s)
-    else:
-        s = s.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
-    s = s.replace('</head>', '<link rel="stylesheet" href="clone/habillage.css?v=%s">\n</head>' % VERSION, 1)
+        attrs += ' data-clone-visuel="clone/assets/%s"' % VISUELS[page]
     coquille = re.search(r'<header class="top"', s) is not None
     if not coquille and re.search(r'<body[^>]*>\s*<header>', s) and '<footer class="efa-foot">' in s:
-        # page simple (confidentialité) : son en-tête devient la coquille du Clone
         s = re.sub(r'(<body[^>]*>\s*)<header>', r'\1<header class="top">', s, count=1)
         coquille = True
-    redirection = re.search(r'http-equiv="refresh"|location\.replace\(', s) is not None and len(s) < 3000
-    if not coquille and not redirection:
-        # pages plein écran (parcours, démo, appli Ely…) : en-tête du Clone, sans pied
-        s = s.replace('<html data-clone', '<html data-clone data-clone-plein', 1)
-        if re.search(r'<body\b', s):
-            s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + '\n' + entete(page), s, count=1)
-        else:
-            s = s.replace('</head>', '</head>\n' + entete(page), 1)
     if coquille:
+        attrs += ' data-clone-coquille'
         s = re.sub(r'<header class="top"', '<header data-v1-cache class="top"', s, count=1)
-        s = s.replace('<html data-clone', '<html data-clone data-clone-coquille', 1)
         s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + '\n' + entete(page), s, count=1)
         pieds = list(re.finditer(r'<footer\b[^>]*>.*?</footer>', s, re.S))
         if pieds:
@@ -192,55 +208,79 @@ def habiller(s, page):
             s = s[:p.start()] + ancien + '\n' + pied + s[p.end():]
         else:
             s = s.replace('</body>', pied + '\n</body>', 1)
+    else:
+        attrs += ' data-clone-plein'
+        if re.search(r'<body\b', s):
+            s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + '\n' + entete(page), s, count=1)
+        else:
+            s = s.replace('</head>', '</head>\n' + entete(page), 1)
+    s = re.sub(r'<html\b', '<html' + attrs, s, count=1)
+    s = s.replace('</head>', '<link rel="stylesheet" href="clone/habillage.css?v=%s">\n</head>' % VERSION, 1)
     balise_js = '<script src="clone/habillage.js?v=%s" defer></script>\n' % VERSION
     nom = os.path.splitext(page)[0]
     if os.path.exists('scripts/clone/pages/%s.css' % nom):
         s = s.replace('</head>', '<link rel="stylesheet" href="clone/pages/%s.css?v=%s">\n</head>' % (nom, VERSION), 1)
     if os.path.exists('scripts/clone/pages/%s.js' % nom):
         balise_js = '<script src="clone/pages/%s.js?v=%s" defer></script>\n' % (nom, VERSION) + balise_js
-    if '</body>' in s:
-        s = s.replace('</body>', balise_js + '</body>', 1)
-    else:
-        s = s.replace('</html>', balise_js + '</html>', 1)
-    # pages de redirection : rester dans /clone
-    def redir(m):
-        cible = m.group(2)
-        return m.group(1) + ('clone/' + cible if re.split(r'[#?]', cible)[0] in connues else cible)
-    s = re.sub(r'(http-equiv="refresh" content="\d+;\s*url=)([^"]+)', redir, s)
-    s = re.sub(r"(location\.replace\(')([^']+)", redir, s)
+    s = s.replace('</body>', balise_js + '</body>', 1) if '</body>' in s else s.replace('</html>', balise_js + '</html>', 1)
     return s, coquille
 
-# couches propres à certaines pages (scripts/clone/pages → clone/pages)
-import shutil
-os.makedirs(os.path.join(CLONE, 'pages'), exist_ok=True)
-for f in glob.glob('scripts/clone/pages/*'):
-    shutil.copy(f, os.path.join(CLONE, 'pages', os.path.basename(f)))
+n = c = 0
+for page in pages:
+    s0 = open(page, encoding='utf8').read()
+    s, co = habiller(s0, page)
+    c += bool(co)
+    if s != s0:
+        open(page, 'w', encoding='utf8').write(s)
+    n += 1
 
-ecrites, avec_coquille = [], 0
-for page in sources:
-    s = open(page, encoding='utf8').read()
-    s, c = habiller(s, page)
-    avec_coquille += c
-    cible = os.path.join(CLONE, page)
-    os.makedirs(os.path.dirname(cible), exist_ok=True)
-    open(cible, 'w', encoding='utf8').write(s)
-    ecrites.append(page)
-open(MANIFESTE, 'w', encoding='utf8').write('\n'.join(ecrites) + '\n')
+# ---------------------------------------------------------------- pages fabriquées à partir des modèles
+v1 = open('accueil-v1.html', encoding='utf8').read() if os.path.exists('accueil-v1.html') else ''
+def tete_v1():
+    """Les métadonnées de l'ancien accueil (titre, description, partage, données structurées, mesure d'audience)."""
+    h = v1[:v1.find('</head>')]
+    garder = re.findall(r'<title>.*?</title>|<meta (?:name="description"|property="og:[^"]+"|name="twitter:[^"]+")[^>]*>'
+                        r'|<link rel="(?:canonical|apple-touch-icon)"[^>]*>|<script type="application/ld\+json">.*?</script>', h, re.S)
+    return '\n'.join(garder)
+gc = '<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
+for modele, (sortie, indexee) in MODELES.items():
+    s = open(os.path.join(CLONE, modele), encoding='utf8').read()
+    s = modele_vers_racine(s, garder_dieses=True)
+    if sortie == 'index.html' and v1:
+        s = re.sub(r'<title>.*?</title>', '', s, flags=re.S)
+        s = re.sub(r'<meta name="description"[^>]*>', '', s)
+        s = s.replace('</head>', tete_v1() + '\n</head>', 1)
+    if indexee:
+        s = re.sub(r'<meta name="robots"[^>]*>', '', s)
+        if 'rel="canonical"' not in s:
+            s = s.replace('</head>', '<link rel="canonical" href="%s%s">\n</head>' % (SITE, sortie.replace('.html', '')), 1)
+    if 'data-goatcounter' not in s:
+        s = s.replace('</body>', gc + '\n</body>', 1)
+    open(sortie, 'w', encoding='utf8').write(s)
 
-# ---------------------------------------------------------------- les pages du Clone pointent vers les copies
-def vers_copie(m):
-    cible = m.group(1)
-    chemin = re.split(r'[#?]', cible)[0]
-    return 'href="%s"' % cible if chemin in connues else m.group(0)
-for p in PAGES_CLONE:
-    f = os.path.join(CLONE, p)
-    if os.path.exists(f):
-        s = open(f, encoding='utf8').read()
-        n = re.sub(r'href="\.\./([^"]+)"', vers_copie, s)
-        # liens écrits dans les données des bandeaux défilants : "h": "../page.html"
-        n = re.sub(r'"h": "\.\./([^"]+)"',
-                   lambda m: '"h": "%s"' % m.group(1) if re.split(r'[#?]', m.group(1))[0] in connues else m.group(0), n)
-        if n != s:
-            open(f, 'w', encoding='utf8').write(n)
+# l'ancien accueil, gardé pour mémoire, hors index
+if v1 and 'noindex' not in v1[:v1.find('</head>')]:
+    v1 = v1.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
+    open('accueil-v1.html', 'w', encoding='utf8').write(v1)
 
-print('%d pages recopiées dans /%s, dont %d avec l’en-tête et le pied du Clone.' % (len(ecrites), CLONE, avec_coquille))
+# ---------------------------------------------------------------- anciennes adresses /clone/… → adresses du site
+def renvoi(cible, profondeur):
+    retour = '../' * profondeur
+    return ('<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex">'
+            '<link rel="canonical" href="%s%s"><title>EFA</title>'
+            '<script>location.replace("%s%s"+location.search+location.hash)</script>'
+            '<meta http-equiv="refresh" content="0; url=%s%s"></head><body>'
+            '<p><a href="%s%s">Éducation Financière Afrique</a></p></body></html>\n') % (
+        SITE, cible, retour, cible, retour, cible, retour, cible)
+renvois = 0
+for page in pages + sorted(FABRIQUEES):
+    p = os.path.join(CLONE, page)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    cible = '' if page == 'index.html' else page
+    open(p, 'w', encoding='utf8').write(renvoi(cible, page.count('/') + 1))
+    renvois += 1
+if os.path.exists(os.path.join(CLONE, 'v1-pages.txt')):
+    os.remove(os.path.join(CLONE, 'v1-pages.txt'))
+
+print('%d pages habillées sur place (%d avec en-tête et pied), %d pages fabriquées, %d anciennes adresses /clone redirigées.'
+      % (n, c, len(MODELES), renvois))

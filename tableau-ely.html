@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html data-clone data-clone-plein lang="fr">
 <head>
 <meta charset="utf-8">
 <script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
@@ -58,8 +58,10 @@ input:focus,select:focus,button:focus-visible{outline:3px solid var(--bleu);outl
 .reponse{font-size:14.5px;color:var(--ink2)}
 [hidden]{display:none!important}
 </style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261030p">
 </head>
 <body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="index.html" aria-label="EFA, accueil"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="index.html#outils">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <main class="wrap">
   <header class="entete">
     <span class="logo-texte">EFA · Éducation Financière Afrique</span>
@@ -151,5 +153,6 @@ input:focus,select:focus,button:focus-visible{outline:3px solid var(--bleu);outl
   if($("cle").value)charger();
 })();
 </script>
+<script src="clone/habillage.js?v=20261030p" defer></script>
 </body>
 </html>

@@ -26,9 +26,9 @@
     var u;
     try { u = new URL(h, document.baseURI); } catch (e) { return; }
     var r = relatif(u);
-    if (r === null || r.indexOf('clone/') === 0) return;
-    if (r === '' || r === 'index.html') a.setAttribute('href', racine + 'clone/index.html' + u.search + u.hash);
-    else if (connues[r]) a.setAttribute('href', racine + 'clone/' + r + u.search + u.hash);
+    if (r === null) return;
+    // depuis la bascule, les pages vivent à leur adresse : seul un ancien lien /clone/… est ramené à la racine
+    if (r.indexOf('clone/') === 0 && /\.html$/.test(r)) a.setAttribute('href', racine + r.slice(6) + u.search + u.hash);
     else return;
     a.setAttribute('data-clone-ok', '');
   }
@@ -46,7 +46,24 @@
     if (a) corriger(a);
   }, true);
 
+  /* Page publiée après le dernier passage de scripts/clone/habiller.py (par exemple une nouvelle EFA News) :
+     efa-appli.js charge cet habillage et l'en-tête et le pied sont posés ici. */
+  var ENTETE = /*ENTETE*/"", PIED = /*PIED*/"";
+  function poserCoquille() {
+    var R = document.documentElement;
+    if (!R.hasAttribute('data-clone-auto') || document.getElementById('clone-haut') || !ENTETE) return;
+    var vieux = document.querySelector('body > header.top, body > header:first-of-type');
+    if (vieux) vieux.setAttribute('data-v1-cache', '');
+    document.body.insertAdjacentHTML('afterbegin', ENTETE);
+    var pieds = document.querySelectorAll('footer'), dernier = pieds[pieds.length - 1];
+    if (vieux && PIED) {
+      if (dernier && !dernier.closest('#clone-haut')) { dernier.setAttribute('data-v1-cache', ''); dernier.insertAdjacentHTML('afterend', PIED); }
+      else document.body.insertAdjacentHTML('beforeend', PIED);
+      R.setAttribute('data-clone-coquille', '');
+    } else R.setAttribute('data-clone-plein', '');
+  }
   function demarrer() {
+    poserCoquille();
     tout(document.body);
     new MutationObserver(function (m) {
       for (var i = 0; i < m.length; i++)
