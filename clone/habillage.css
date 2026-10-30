@@ -88,6 +88,8 @@ html[data-clone] .efa-foot .ef-cols-5{grid-template-columns:repeat(5,minmax(0,1f
 @media (max-width:1100px){html[data-clone] .efa-foot .ef-top{grid-template-columns:1fr}}
 @media (max-width:900px){html[data-clone] .efa-foot .ef-cols-5{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){html[data-clone] .efa-foot .ef-cols-5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+html[data-clone] .desktop-nav{display:none!important}
+html[data-clone] .menu-panel a.menu-cle{color:var(--coral)}
 
 /* En-tête blanc en permanence */
 html[data-clone] .header,html[data-clone] .header.scrolled{background:rgba(255,255,255,.96);color:var(--navy);box-shadow:0 1px 0 #e6eef2;-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px)}
