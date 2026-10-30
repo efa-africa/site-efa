@@ -14,8 +14,8 @@ html[data-clone]{
 html[data-clone] body{padding-top:82px;background:#fff}
 @media(max-width:720px){html[data-clone] body{padding-top:68px}}
 
-/* Pendant la conversion des couleurs, la page apparaît en fondu (et s'affiche de toute façon après 1,2 s) */
-html[data-clone]:not([data-clair-pret]) body{opacity:0;animation:clone-apparaitre .01s 1.2s forwards}
+/* Pendant la conversion des couleurs, la page apparaît en fondu (et s'affiche de toute façon après 0,8 s) */
+html[data-clone]:not([data-clair-pret]) body{opacity:0;animation:clone-apparaitre .01s .8s forwards}
 html[data-clone][data-clair-pret] body{opacity:1;transition:opacity .25s ease}
 @keyframes clone-apparaitre{to{opacity:1}}
 

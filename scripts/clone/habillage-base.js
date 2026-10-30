@@ -277,10 +277,8 @@
       }
     }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'hidden'] });
   }
-  if (document.readyState === 'complete') blancEtBleu();
-  else window.addEventListener('load', blancEtBleu);
-  // filet : si la page tarde à charger ses images, on convertit quand même après le DOM
-  document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(function () { if (!document.documentElement.hasAttribute('data-clair-pret')) blancEtBleu(); }, 500);
-  });
+  /* Conversion dès que la page est lue : les couleurs ne dépendent pas des images.
+     Le contenu ajouté ensuite par les scripts de la page est converti au fil de l'eau. */
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', blancEtBleu);
+  else blancEtBleu();
 })();

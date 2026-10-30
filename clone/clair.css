@@ -1,0 +1,35 @@
+/* EFA · Clone · plus de fonds bleu nuit : les blocs pleins passent en blanc et bleu.
+   Les grands bandeaux photo restent tels quels. Chargé après la feuille propre à chaque page. */
+:root{--cl-nuit:#071d38;--cl-texte:#4d5a6a;--cl-teal:#168da4;--cl-pale:#eef5fb;--cl-filet:#dbe6f0}
+.tools,.closing,.end,.interlude,.decision{background:radial-gradient(70% 120% at 85% 0%,#d9ebfa 0%,rgba(217,235,250,0) 60%),linear-gradient(180deg,#f3f8fd,#fff)!important;color:var(--cl-nuit)!important}
+:is(.tools,.closing,.end,.interlude,.decision) :is(h1,h2,h3,h4,strong,b,label,legend){color:var(--cl-nuit)}
+:is(.tools,.closing,.end,.interlude,.decision) :is(p,small,li,span):not(.eyebrow):not([class*=button]):not([class*=cta]){color:var(--cl-texte)}
+:is(.tools,.closing,.end,.interlude,.decision) em{color:var(--cl-teal)!important}
+:is(.tools,.closing,.end,.interlude,.decision) .eyebrow{color:var(--cl-teal)!important}
+:is(.tools,.closing,.end,.interlude,.decision) :is(.button,.vermilion,[class*=cta],a.red,.btn) {color:#fff}
+:is(.tools,.closing,.end,.interlude,.decision) :is(.button,.vermilion,[class*=cta],a.red,.btn) span{color:var(--coral,#e34234)!important}
+/* Accueil : bandeau d'actualité, encadré « Qui fait quoi », lien Études */
+.fil,.fil-tete,.fil-pause{background:#eef5fb!important;color:var(--cl-nuit)!important}
+.fil{border-top:1px solid var(--cl-filet);border-bottom:1px solid var(--cl-filet)}
+.fil-tete{color:#d2452f!important}
+.fil-it{color:var(--cl-nuit)!important;border-right-color:var(--cl-filet)!important}
+.fil-it em.up{color:#1e7a4c!important}.fil-it em.down{color:#d2452f!important}.fil-it em.flat{color:var(--cl-texte)!important}
+.aef-feature,.aef-feature[open]{background:var(--cl-pale)!important;color:var(--cl-nuit)!important}
+.aef-feature :is(h3,strong){color:var(--cl-nuit)!important}
+.aef-feature p{color:var(--cl-texte)!important}
+.aef-feature .eyebrow,.aef-feature h3 em{color:var(--cl-teal)!important}
+.aef-feature summary a,.aef-feature summary span{color:var(--cl-nuit)}
+.research-wide-link{background:var(--cl-pale)!important;color:var(--cl-nuit)!important}
+.research-wide-link span{color:var(--cl-teal)!important}
+/* Marchés : simulateur et portefeuille en clair */
+.decision-visual{background:radial-gradient(circle at 50% 40%,#ffffff,#e4f0fa 60%,#d4e6f6)!important}
+.wallet,.index-panel{background:#fff!important;color:var(--cl-nuit)!important;box-shadow:0 22px 50px rgba(7,29,56,.12)!important}
+:is(.wallet,.index-panel) :is(span,p,small){color:var(--cl-texte)!important}
+:is(.wallet,.index-panel) :is(strong,b,h3){color:var(--cl-nuit)!important}
+.wallet-holdings{border-top-color:var(--cl-filet)!important;color:var(--cl-texte)!important}
+.wallet button{background:var(--cl-pale)!important;color:var(--cl-nuit)!important;border-color:var(--cl-filet)!important}
+.decision :is(button,.choice,[role=radio]){background:#fff;color:var(--cl-nuit);border-color:var(--cl-filet)}
+/* Études : ruban, couverture d'étude, choix actif */
+.ribbon{background:var(--cl-pale)!important;color:var(--cl-teal)!important}
+.report-cover{background:linear-gradient(135deg,#0b63b0,#21a4c2)!important}
+.future-choice.active{background:#0b63b0!important;border-color:#0b63b0!important}
