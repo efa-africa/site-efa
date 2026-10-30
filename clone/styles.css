@@ -263,6 +263,30 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 .fil-pause:focus-visible{outline:3px solid #6DB8F2;outline-offset:-3px}
 @media(prefers-reduced-motion:reduce){.defil-droite,.fil-run{animation:none}.fil-vue{overflow-x:auto}.defil{overflow-x:auto}}
 @media(max-width:720px){.fil-it{font-size:13px;padding:0 20px}.fil-tete{padding-right:12px}}
+/* ===== Portes par section (3 à 4), contenu rangé derrière ===== */
+.portes{display:flex;flex-direction:column;gap:16px}
+.platform-benefits .portes{margin-top:10px}
+.porte{background:#f6f4ef;border-radius:26px;overflow:hidden;scroll-margin-top:90px}
+.platform-benefits .porte,.pilier-alt .porte{background:#fff}
+.porte summary{list-style:none;cursor:pointer;display:flex;align-items:stretch;min-height:170px}
+.porte summary::-webkit-details-marker{display:none}
+.porte summary:focus-visible{outline:3px solid var(--cyan);outline-offset:-3px;border-radius:26px}
+.porte .plus{flex:0 0 48px;align-self:center;margin-right:clamp(18px,2.5vw,32px)}
+.porte[open] .plus{transform:rotate(45deg);background:var(--coral)}
+.porte-corps{padding:6px clamp(16px,2.4vw,28px) 26px}
+.porte-groupe+.porte-groupe{margin-top:22px}
+.porte-groupe h4{margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#16849e}
+.porte-corps .res-grid{padding:0}
+.porte-corps .sgi-note{margin-bottom:16px}
+.retour-apprendre{margin:26px 0 0;color:var(--muted);font-size:16px}
+.retour-apprendre a{color:var(--navy);font-weight:800}
+.platform-benefits .platform-benefits-head{margin-bottom:34px}
+@media(max-width:720px){
+  .porte summary{min-height:0}
+  .porte .gain-img{flex-basis:96px;min-height:120px;border-radius:20px 0 0 20px}
+  .porte .plus{flex-basis:38px;width:38px;height:38px;margin-right:12px}
+  .porte{border-radius:20px}
+}
 
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;
