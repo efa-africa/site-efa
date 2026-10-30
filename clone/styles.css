@@ -328,6 +328,31 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
   .portes-3>.porte:first-child .pc-copy,.portes-4>.porte:first-child .pc-copy,.porte[open] .pc-copy{padding:24px 22px}
 }
 @media(min-width:901px) and (max-width:1100px){.portes-4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ===== Portes : une en haut, deux côte à côte (tablette et téléphone large) ===== */
+@media(max-width:900px){
+  .portes,.portes-2,.portes-3,.portes-4{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .portes-3>.porte:first-child,.portes-4>.porte:first-child,.porte[open]{grid-column:1/-1}
+  .portes-4>.porte:last-child:not([open]){grid-column:1/-1}
+  .portes-4>.porte:last-child:not([open]) summary{display:grid;grid-template-columns:.9fr 1.1fr}
+  .portes-4>.porte:last-child:not([open]) .pc-img{aspect-ratio:auto;min-height:260px}
+  .portes-3>.porte:first-child summary,.portes-4>.porte:first-child summary{display:grid;grid-template-columns:1fr 1fr;min-height:320px}
+  .portes-3>.porte:first-child .pc-img,.portes-4>.porte:first-child .pc-img{aspect-ratio:auto;min-height:320px}
+  .portes-3>.porte:first-child .pc-copy,.portes-4>.porte:first-child .pc-copy{padding:28px 26px}
+  .pc-copy{padding:20px 18px 18px}
+  .pc-titre{font-size:clamp(20px,3.4vw,28px)}
+  .pc-txt{font-size:14px;margin-bottom:16px}
+  .pc-pied .plus{flex-basis:38px;width:38px;height:38px}
+  .research-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .exp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .portes,.portes-2,.portes-3,.portes-4{grid-template-columns:1fr}
+  .portes-3>.porte:first-child summary,.portes-4>.porte:first-child summary,.portes-4>.porte:last-child:not([open]) summary,.porte[open] summary{display:flex;min-height:0}
+  .portes-3>.porte:first-child .pc-img,.portes-4>.porte:first-child .pc-img,.portes-4>.porte:last-child:not([open]) .pc-img,.porte[open] .pc-img{aspect-ratio:1.4;min-height:0}
+  .research-grid,.exp-grid{grid-template-columns:1fr}
+}
+.porte:not([open]){align-self:stretch}.porte:not([open]) summary{height:100%}
 
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;
