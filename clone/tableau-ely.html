@@ -1,0 +1,158 @@
+<!doctype html>
+<html data-clone lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<title>Ce que l'on demande à Ely · EFA</title>
+<link rel="icon" href="logo-efa-96.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Tableau de bord interne : en-tête, clé d'accès, chiffres clés, barres par thème, listes de questions */
+:root{
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --creme:#F5EFE2; --corail:#DA3C1B; --bleu:#1B71B2; --papier:#FFFDF8; --line:#E2D8C4;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --hausse:#3CCB7F; --erreur:#B3261E;
+  --r-bouton:8px; --r-carte:14px; --r-pastille:999px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right,0px)) 64px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0;color:var(--nuit)}
+h1{font-size:clamp(32px,5.5vw,56px)} h2{font-size:clamp(22px,2.8vw,30px)}
+p{margin:0}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.logo-texte{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
+.entete{display:flex;flex-direction:column;gap:12px}
+.note{font-size:14px;color:var(--ink3)}
+.carte{background:var(--papier);border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.acces{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.acces label{display:flex;flex-direction:column;gap:4px;flex:1;min-width:220px}
+input,select{font:400 16px var(--f-body);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--r-bouton);padding:11px 12px;min-height:46px}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--bleu);outline-offset:1px}
+.bouton{font:800 16px/1.2 var(--f-body);min-height:46px;padding:12px 22px;border-radius:var(--r-bouton);border:0;cursor:pointer}
+.principal{background:var(--corail);color:#fff} .sombre{background:var(--nuit);color:#fff}
+.erreur{color:var(--erreur);font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:700px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--papier);border-radius:var(--r-carte);padding:18px;display:flex;flex-direction:column;gap:2px}
+.kpi strong{font-family:var(--f-display);font-size:clamp(24px,3vw,32px);color:var(--nuit);font-variant-numeric:tabular-nums}
+.deux{display:grid;grid-template-columns:1.4fr 1fr;gap:12px} @media (max-width:760px){.deux{grid-template-columns:1fr}}
+.barres{display:flex;flex-direction:column;gap:8px}
+.barre{display:grid;grid-template-columns:120px 1fr 44px;gap:10px;align-items:center;font-size:15px}
+.barre .piste{background:var(--creme);border-radius:var(--r-pastille);height:12px;overflow:hidden}
+.barre .rempli{height:100%;background:var(--corail);border-radius:var(--r-pastille)}
+.barre.secondaire .rempli{background:var(--bleu)}
+.barre b{text-align:right;font-variant-numeric:tabular-nums}
+.jours{display:flex;align-items:flex-end;gap:3px;height:120px;border-bottom:1px solid var(--line)}
+.jours div{flex:1;background:var(--bleu);border-radius:3px 3px 0 0;min-height:2px}
+.questions{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.questions li{padding:12px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.questions .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--ink3)}
+.pastille{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 9px;border-radius:var(--r-pastille);background:var(--nuit);color:#fff}
+.pastille.non{background:var(--corail)} .pastille.oui{background:var(--hausse);color:var(--nuit)}
+.reponse{font-size:14.5px;color:var(--ink2)}
+[hidden]{display:none!important}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261030a">
+</head>
+<body>
+<main class="wrap">
+  <header class="entete">
+    <span class="logo-texte">EFA · Éducation Financière Afrique</span>
+    <span class="surtitre">Données · usage interne</span>
+    <h1>Ce que l'on demande à Ely</h1>
+    <p class="note">Questions posées à Ely, sans nom ni email. Accès réservé à l'équipe EFA : la clé ne quitte pas cet appareil.</p>
+  </header>
+
+  <form class="carte acces" id="acces">
+    <label for="cle"><span class="etiquette">Clé d'accès</span><input id="cle" type="password" autocomplete="current-password" required></label>
+    <label for="jours" style="flex:0 0 160px;min-width:0"><span class="etiquette">Période</span>
+      <select id="jours"><option value="7">7 jours</option><option value="30">30 jours</option><option value="90">90 jours</option><option value="365">12 mois</option></select></label>
+    <button class="bouton principal" type="submit">Afficher</button>
+    <button class="bouton sombre" type="button" id="exporter">Exporter en CSV</button>
+    <p class="erreur" id="erreur" hidden></p>
+  </form>
+
+  <div id="resultat" hidden>
+    <section class="kpis" aria-label="Chiffres clés">
+      <div class="kpi"><span class="etiquette">Questions</span><strong id="k-questions">0</strong></div>
+      <div class="kpi"><span class="etiquette">Conversations</span><strong id="k-sessions">0</strong></div>
+      <div class="kpi"><span class="etiquette">Réponses utiles</span><strong id="k-oui">0</strong></div>
+      <div class="kpi"><span class="etiquette">Pas utiles</span><strong id="k-non">0</strong></div>
+    </section>
+
+    <div class="deux" style="margin-top:12px">
+      <section class="carte"><span class="surtitre">Thèmes</span><h2>De quoi on parle</h2><div class="barres" id="themes"></div></section>
+      <section class="carte"><span class="surtitre">Origine</span><h2>D'où viennent les questions</h2><span class="etiquette">Pays</span><div class="barres" id="pays"></div><span class="etiquette">Source</span><div class="barres" id="sources"></div></section>
+    </div>
+
+    <section class="carte" style="margin-top:12px"><span class="surtitre">Rythme</span><h2>Questions par jour</h2><div class="jours" id="parjour" role="img" aria-label="Nombre de questions par jour"></div><p class="note" id="parjour-legende"></p></section>
+
+    <div class="deux" style="margin-top:12px">
+      <section class="carte"><span class="surtitre">Premières questions</span><h2>Ce qui fait venir les gens</h2><ul class="questions" id="premieres"></ul></section>
+      <section class="carte"><span class="surtitre">À reprendre</span><h2>Réponses jugées pas utiles</h2><ul class="questions" id="pasutiles"></ul></section>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  "use strict";
+  var API="https://ely.elysees-johnson.workers.dev";
+  var NOMS={budget:"Budget",tontine:"Tontine",proches:"Proches",epargne:"Épargne",dette:"Dette",bourse:"Bourse",retraite:"Retraite",mobile_money:"Mobile money",protection:"Se protéger",autre:"Autre"};
+  var $=function(id){return document.getElementById(id)};
+  try{$("cle").value=sessionStorage.getItem("efa-tableau-cle")||""}catch(e){}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function date(s){try{return new Date(s).toLocaleDateString("fr-FR",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}catch(e){return ""}}
+  function erreur(t){$("erreur").textContent=t;$("erreur").hidden=!t}
+  function barres(el,liste,cle,classe,nommer){
+    var max=Math.max.apply(null,liste.map(function(x){return x.n}).concat([1]));
+    el.innerHTML=liste.length?liste.map(function(x){
+      var nom=nommer?nommer(x[cle]):x[cle];
+      return '<div class="barre '+(classe||"")+'"><span>'+esc(nom)+'</span><span class="piste"><span class="rempli" style="display:block;width:'+Math.round(x.n/max*100)+'%"></span></span><b>'+x.n+'</b></div>';
+    }).join(""):'<p class="note">Rien sur la période.</p>';
+  }
+  function liste(el,items,avecReponse){
+    el.innerHTML=items.length?items.map(function(q){
+      var a=q.avis===1?'<span class="pastille oui">Utile</span>':q.avis===-1?'<span class="pastille non">Pas utile</span>':"";
+      return '<li><span class="meta"><span class="pastille">'+esc(NOMS[q.theme]||q.theme)+'</span>'+a+'<span>'+esc(date(q.cree_le))+(q.pays?' · '+esc(q.pays):'')+'</span></span><span>'+esc(q.question)+'</span>'+(avecReponse&&q.reponse?'<span class="reponse">Ely : '+esc(q.reponse)+'…</span>':'')+'</li>';
+    }).join(""):'<li class="note">Rien sur la période.</li>';
+  }
+  function cle(){var c=$("cle").value.trim();try{sessionStorage.setItem("efa-tableau-cle",c)}catch(e){}return c}
+  async function charger(){
+    erreur("");
+    var r;
+    try{r=await fetch(API+"/tableau?jours="+$("jours").value,{headers:{Authorization:"Bearer "+cle()}})}catch(e){erreur("Connexion impossible. Vérifiez le réseau.");return}
+    if(r.status===401){erreur("Clé incorrecte.");return}
+    if(!r.ok){var m="";try{m=(await r.json()).erreur}catch(e){}erreur(m||"Lecture impossible.");return}
+    var d=await r.json();
+    $("k-questions").textContent=d.questions;$("k-sessions").textContent=d.sessions;$("k-oui").textContent=d.avis_utiles;$("k-non").textContent=d.avis_negatifs;
+    barres($("themes"),d.par_theme,"theme","",function(t){return NOMS[t]||t||"Autre"});
+    barres($("pays"),d.par_pays,"pays","secondaire");
+    barres($("sources"),d.par_source,"source","secondaire");
+    var max=Math.max.apply(null,d.par_jour.map(function(x){return x.n}).concat([1]));
+    $("parjour").innerHTML=d.par_jour.map(function(x){return '<div title="'+esc(x.jour)+' : '+x.n+'" style="height:'+Math.max(2,Math.round(x.n/max*100))+'%"></div>'}).join("");
+    $("parjour-legende").textContent=d.par_jour.length?("Du "+d.par_jour[0].jour+" au "+d.par_jour[d.par_jour.length-1].jour+" · maximum "+max+" par jour"):"";
+    liste($("premieres"),d.premieres_questions,false);
+    liste($("pasutiles"),d.pas_utiles,true);
+    $("resultat").hidden=false;
+  }
+  $("acces").addEventListener("submit",function(e){e.preventDefault();charger()});
+  $("exporter").addEventListener("click",async function(){
+    erreur("");
+    var r;try{r=await fetch(API+"/export?jours="+$("jours").value,{headers:{Authorization:"Bearer "+cle()}})}catch(e){erreur("Connexion impossible.");return}
+    if(!r.ok){erreur(r.status===401?"Clé incorrecte.":"Export impossible.");return}
+    var blob=new Blob(["﻿"+await r.text()],{type:"text/csv;charset=utf-8"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ely-questions-"+new Date().toISOString().slice(0,10)+".csv";document.body.append(a);a.click();a.remove();
+  });
+  if($("cle").value)charger();
+})();
+</script>
+<script src="clone/habillage.js?v=20261030a" defer></script>
+</body>
+</html>

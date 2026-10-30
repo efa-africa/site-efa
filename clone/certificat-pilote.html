@@ -1,0 +1,1157 @@
+<!doctype html>
+<html data-clone lang="fr"><head>
+<base href="../"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Certificat local Fondations · Pilote</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="logo-efa-96.png">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Écran d'apprentissage A4 paysage centré ; page autour en tokens clair/sombre, cadre toujours en charte crème */
+:root{
+  --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --page:#E9E2D2; --page-ink:#4E5566;
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --corail:#DA3C1B; --bleu:#1B71B2;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#E2D8C4; --hausse:#1E9E5A;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}}
+:root[data-theme="dark"]{--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-block:16px}
+.cadre-wrap{width:min(100%, calc((100vh - 70px) * 1.4143), 1280px)}
+.cadre{container-type:inline-size;width:100%;aspect-ratio:297/210;background:var(--creme);color:var(--ink);border-radius:12px;overflow:hidden;
+  display:grid;grid-template-rows:auto auto 1fr auto;box-shadow:0 18px 50px rgba(11,18,32,.28)}
+/* bandeau */
+.barre{background:var(--nuit);color:#fff;display:flex;align-items:center;gap:2cqw;padding:1.5cqw 2.6cqw}
+.label{background:var(--corail);color:#fff;font-weight:800;font-size:max(9px,1.2cqw);letter-spacing:.18em;text-transform:uppercase;padding:.55cqw 1.2cqw;border-radius:999px;white-space:nowrap}
+.titre-mod{flex:1;min-width:0;font-weight:700;font-size:max(10px,1.5cqw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#C9D1DE}
+.compteur{font-family:var(--f-display);font-weight:700;font-size:max(12px,1.9cqw);font-variant-numeric:tabular-nums}
+.progres{display:grid;grid-template-columns:repeat(7,1fr);gap:.5cqw;padding:1.1cqw 2.6cqw 0}
+.progres button{all:unset;cursor:pointer;height:max(4px,.6cqw);border-radius:999px;background:var(--line)}
+.progres button.fait{background:var(--corail)}
+.progres button:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
+/* corps */
+.corps{display:grid;grid-template-columns:38% 1fr;gap:3cqw;padding:2.2cqw 3.4cqw;min-height:0;overflow:auto}
+.illu{border-radius:1.4cqw;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2cqw;padding:2cqw;min-height:0}
+.illu.bleu{background:var(--bleu);color:#fff}.illu.nuit{background:var(--nuit);color:#fff}.illu.papier{background:var(--papier);color:var(--ink)}.illu.corail{background:var(--corail);color:#fff}
+.illu svg.perso{width:62%;height:auto;max-height:70%}
+.illu.photo{position:relative;padding:0;margin:0;overflow:hidden;background:var(--nuit);justify-content:flex-end}
+.illu.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.illu.photo .legende{position:relative;width:100%;color:#fff;padding:5cqw 1.6cqw 1.6cqw;background:linear-gradient(to top,rgba(11,18,32,.92),rgba(11,18,32,0))}
+.legende{font-size:max(10px,1.4cqw);font-weight:700;text-align:center;line-height:1.3}
+.texte{display:flex;flex-direction:column;justify-content:center;gap:1.3cqw;min-width:0}
+.sur{font-size:max(9px,1.2cqw);font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#B8341A}
+.h{font-family:var(--f-display);font-weight:700;font-size:max(16px,3.2cqw);line-height:1.12;color:var(--nuit);margin:0;text-wrap:balance}
+.p{font-size:max(12px,1.75cqw);line-height:1.45;color:var(--ink2);margin:0}
+.p strong{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:.8cqw}
+.chip{font-size:max(10px,1.3cqw);font-weight:700;background:var(--nuit);color:#fff;padding:.55cqw 1.2cqw;border-radius:999px}
+.aplat{background:var(--nuit);color:#fff;border-radius:.4cqw;padding:1.4cqw 1.8cqw;font-family:var(--f-display);font-weight:700;font-size:max(13px,2.2cqw);line-height:1.25}
+.aplat .c{color:#F09680}.aplat .s{color:#6DB8F2}
+/* tableau chiffré */
+.tab{width:100%;border-collapse:collapse;font-size:max(10px,1.45cqw);font-variant-numeric:tabular-nums}
+.tab td{padding:.45cqw .3cqw;border-bottom:1px solid rgba(255,255,255,.18)}
+.tab td:last-child{text-align:right;font-weight:700}
+.tab tr.tot td{border-bottom:0;padding-top:.9cqw;font-weight:800}
+.tab .m{color:#F09680}
+.tabtitre{font-size:max(9px,1.15cqw);font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.75;align-self:flex-start}
+/* exercice */
+.exo{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw}
+.exo label{display:flex;flex-direction:column;gap:.4cqw;font-size:max(10px,1.3cqw);font-weight:700;color:var(--ink2)}
+.exo input{font:inherit;font-size:max(13px,1.9cqw);font-weight:700;padding:.8cqw 1cqw;border:1px solid var(--line);border-radius:.7cqw;background:var(--papier);color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
+.exo input:focus{outline:2px solid var(--bleu);border-color:transparent}
+.resultat{font-family:var(--f-display);font-weight:700;font-size:max(22px,4.6cqw);line-height:1;font-variant-numeric:tabular-nums}
+.verdict{font-size:max(11px,1.5cqw);font-weight:700;text-align:center;line-height:1.35}
+/* quiz */
+.q{display:flex;flex-direction:column;gap:1cqw}
+.q .enonce{font-family:var(--f-display);font-weight:700;font-size:max(14px,2.2cqw);line-height:1.25;color:var(--nuit);margin:0}
+.opts{display:flex;flex-direction:column;gap:.8cqw}
+.opt{all:unset;cursor:pointer;background:var(--papier);border-radius:.8cqw;padding:1cqw 1.4cqw;font-size:max(12px,1.65cqw);font-weight:600;color:var(--ink);display:flex;gap:1cqw;align-items:center}
+.opt:hover{background:#fff}
+.opt:focus-visible{outline:2px solid var(--bleu)}
+.opt .l{font-weight:800;color:var(--corail);min-width:1.6em}
+.opt.ok{background:var(--hausse);color:#fff}.opt.ok .l{color:#fff}
+.opt.ko{background:var(--corail);color:#fff}.opt.ko .l{color:#fff}
+.opt[disabled]{cursor:default}
+.explic{font-size:max(11px,1.5cqw);line-height:1.4;color:var(--ink2);background:var(--papier);border-radius:.8cqw;padding:1cqw 1.4cqw}
+.qnum{font-size:max(9px,1.2cqw);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.score{font-family:var(--f-display);font-weight:700;font-size:max(30px,7cqw);line-height:1}
+/* pied */
+.pied{display:flex;align-items:center;gap:1.6cqw;padding:1.3cqw 2.6cqw;background:var(--papier);border-top:1px solid var(--line)}
+.ely{margin-right:auto;font-size:max(11px,1.45cqw);font-weight:700;color:var(--bleu);text-decoration:none;white-space:nowrap}
+.ely:hover{text-decoration:underline}
+.duree{font-size:max(10px,1.3cqw);color:var(--ink3);white-space:nowrap}
+.btn{all:unset;cursor:pointer;font-size:max(12px,1.5cqw);font-weight:800;padding:.9cqw 2cqw;border-radius:.8cqw;white-space:nowrap}
+.btn:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
+.prec{background:var(--creme);color:var(--ink)}
+.suiv{background:var(--corail);color:#fff}
+.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed}
+.mention{font-size:12px;color:var(--page-ink);opacity:.8;text-align:center;max-width:70ch}
+.tourner{display:none;font-size:13px;font-weight:700;background:var(--nuit);color:#fff;padding:8px 14px;border-radius:999px}
+/* Téléphone tenu droit : le cadre devient une page qui défile, une colonne, boutons toujours à l'écran */
+@media (max-width:700px){
+  html,body{height:auto}
+  body{justify-content:flex-start}
+  .cadre-wrap{width:100%}
+  .cadre{aspect-ratio:auto;overflow:visible;grid-template-rows:auto auto auto auto}
+  .barre{padding:10px 12px;gap:8px;flex-wrap:wrap}
+  .titre-mod{flex-basis:100%;order:3;white-space:normal}
+  .progres{gap:4px;padding:8px 12px 0}
+  .progres button{height:8px}
+  .corps{grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 14px 18px;overflow:visible}
+  .illu{min-height:140px;max-height:320px;border-radius:12px}
+  .illu.photo{aspect-ratio:4/3}
+  .texte{gap:10px}
+  .chips,.exo{gap:8px}
+  .exo{grid-template-columns:minmax(0,1fr)}
+  .exo input{padding:10px 12px;border-radius:8px}
+  .opt{padding:12px 14px;border-radius:10px;min-height:24px}
+  .explic,.aplat{padding:12px 14px;border-radius:10px}
+  .pied{position:sticky;bottom:0;z-index:5;flex-wrap:wrap;gap:8px;padding:10px 12px;border-radius:0 0 12px 12px}
+  .ely{flex-basis:100%;order:3;margin:0;text-align:center}
+  .duree{display:none}
+  .btn{flex:1 1 0;text-align:center;padding:12px 10px;border-radius:8px;min-height:22px;white-space:normal}
+  .tourner{display:none!important}
+}
+@media (prefers-reduced-motion:no-preference){.corps{animation:entre .28s ease-out}}
+@keyframes entre{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+[hidden]{display:none!important}
+.tab td:last-child,.tab td.v{white-space:nowrap}
+html,body{height:auto;min-height:100%}
+body{justify-content:safe center}
+.exo.trois{grid-template-columns:repeat(3,1fr)}
+.tab th{font-size:max(9px,1.1cqw);font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;text-align:right;padding:.4cqw .3cqw}
+.tab th:first-child{text-align:left}
+.tab td.v{text-align:right;font-weight:700}
+.tab.clair td{border-bottom:1px solid var(--line);color:var(--ink)}
+.tab.clair td.faible{color:var(--corail)}
+.illu .mot{font-size:max(10px,1.3cqw);font-weight:700;opacity:.85;text-align:center}
+.illu .tabtitre.fonce,.resultat.fonce{color:var(--nuit);opacity:1}
+.illu.accueil{justify-content:center;text-align:center}
+.illu .logo{width:24%;height:auto}
+.illu .grand{font-family:var(--f-display);font-weight:700;font-size:max(18px,3.4cqw);line-height:1.12}
+.lienraz{all:unset;cursor:pointer;margin-top:1.6cqw;font-size:max(9px,1.1cqw);font-weight:700;color:#C9D1DE;text-decoration:underline;text-underline-offset:3px}
+.lienraz:focus-visible{outline:2px solid var(--soft-bleu,#6DB8F2)}
+.h.hs{font-size:max(15px,2.5cqw)}
+.tuiles{display:grid;grid-template-columns:1fr 1fr;gap:.8cqw}
+.tuile{all:unset;cursor:pointer;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1cqw;align-items:center;background:var(--papier);border-radius:.9cqw;padding:.9cqw 1.2cqw}
+.tuile:hover{background:#fff}.tuile:focus-visible{outline:2px solid var(--bleu)}
+.tuile .tnum{grid-row:span 2;font-family:var(--f-display);font-weight:700;font-size:max(15px,2.3cqw);color:var(--corail);min-width:1.3em;text-align:center}
+.tuile .tnom{font-weight:800;font-size:max(11px,1.45cqw);color:var(--ink);line-height:1.2}
+.tuile .tetat{font-size:max(9px,1.1cqw);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.tuile.ok .tetat{color:var(--hausse)}
+.tuile.exam{grid-column:span 2;background:var(--nuit)}
+.tuile.exam .tnom{color:#fff}.tuile.exam .tetat{color:#C9D1DE}.tuile.exam .tnum{color:#F09680}
+.tuile.exam.ok .tetat{color:#3CCB7F}
+.note{font-size:max(9px,1.15cqw);color:var(--ink3);margin:0;line-height:1.4}
+.opt.choisi{background:var(--nuit);color:#fff}.opt.choisi .l{color:#F09680}
+.progres button.ici{outline:2px solid var(--nuit);outline-offset:1px}
+.btn[hidden]{display:none}
+.retour{background:transparent;color:var(--ink2);padding-inline:1cqw}
+/* certificat */
+#certif-wrap{width:min(100%, calc((100vh - 150px) * 1.4143), 1280px);display:flex;flex-direction:column;gap:12px;align-items:center}
+.certificat{container-type:inline-size;width:100%;aspect-ratio:297/210;background:var(--creme);color:var(--ink);border-radius:6px;overflow:hidden;position:relative;
+  display:grid;grid-template-rows:auto 1fr auto;padding:4.2cqw 5.4cqw 3.4cqw;box-shadow:0 18px 50px rgba(11,18,32,.28)}
+.c-haut{display:flex;align-items:center;gap:1.4cqw}
+.c-haut img{width:5.6cqw;height:auto}
+.c-logo{font-weight:800;font-size:1.25cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--nuit)}
+.c-specimen{margin-left:auto;background:var(--provisoire,#F2B84B);color:var(--nuit);font-weight:800;font-size:1.05cqw;letter-spacing:.14em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:999px}
+.c-milieu{display:flex;flex-direction:column;justify-content:center;gap:1.1cqw}
+.c-sur{font-weight:800;font-size:1.25cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
+.c-titre{font-family:var(--f-display);font-weight:700;font-size:5.4cqw;line-height:1.05;color:var(--nuit);margin:0}
+.c-a{font-size:1.6cqw;color:var(--ink2);margin:.6cqw 0 0}
+.c-nom{font-family:var(--f-display);font-weight:700;font-size:4cqw;line-height:1.1;color:var(--nuit);margin:0;overflow-wrap:anywhere}
+.c-texte{font-size:1.55cqw;line-height:1.45;color:var(--ink2);margin:0;max-width:70%}
+.c-modules{list-style:none;margin:.6cqw 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:.5cqw 1.6cqw;font-size:1.2cqw;font-weight:700;color:var(--ink)}
+.c-modules li{display:flex;gap:.6cqw;align-items:baseline}
+.c-modules span{font-family:var(--f-display);color:var(--corail)}
+.c-bas{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:2cqw;align-items:end;border-top:1px solid var(--line);padding-top:1.4cqw}
+.c-et{font-weight:700;font-size:1cqw;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.c-val{font-family:var(--f-display);font-weight:700;font-size:1.6cqw;color:var(--nuit);margin-top:.3cqw}
+.c-signe{border-bottom:1.5px solid var(--nuit);height:2.6cqw;margin-bottom:.4cqw}
+.c-pied{position:absolute;left:5.4cqw;right:5.4cqw;bottom:1.1cqw;display:flex;justify-content:space-between;font-size:1.05cqw;color:var(--ink3)}
+.c-mission{font-weight:700;color:var(--ink2)}.c-mission .ce{color:#EC6243}.c-mission .sp{color:var(--bleu)}
+.c-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.c-actions button{all:unset;cursor:pointer;font-family:var(--f-body);font-size:15px;font-weight:800;min-height:46px;display:inline-flex;align-items:center;padding:0 20px;border-radius:8px;background:var(--nuit);color:#fff}
+.c-actions button.principal{background:var(--corail)}
+.c-actions button.discret{background:transparent;color:var(--page-ink);text-decoration:underline;text-underline-offset:4px}
+.c-actions button:focus-visible{outline:2px solid var(--bleu);outline-offset:2px}
+#apercu{max-width:420px;text-align:center;font-size:13px;color:var(--page-ink)}
+#apercu img{width:100%;border-radius:10px;margin-top:6px}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body{background:#fff;padding:0;display:block}
+  body>*:not(#certif-wrap){display:none!important}
+  #certif-wrap{width:297mm;display:block}
+  .c-actions,#apercu{display:none!important}
+  .certificat{width:297mm;height:210mm;border-radius:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261030a">
+</head><body>
+
+<div class="tourner" role="note">Tournez votre téléphone pour un meilleur confort de lecture</div>
+<div class="cadre-wrap" id="cadre-wrap">
+  <section class="cadre" aria-label="Écran d'apprentissage">
+    <div class="barre">
+      <span class="label">Écran d'apprentissage</span>
+      <span class="titre-mod" id="titre">Certificat local Fondations</span>
+      <span class="compteur" id="compteur"></span>
+    </div>
+    <nav class="progres" id="progres" aria-label="Progression"></nav>
+    <div class="corps" id="corps" aria-live="polite"></div>
+    <div class="pied">
+      <a class="ely" href="https://efa.africa/ely" target="_blank" rel="noopener">Demander à Ely</a>
+      <span class="duree" id="duree"></span>
+      <button class="btn retour" id="retour" type="button">Sommaire</button>
+      <button class="btn prec" id="prec" type="button">Précédent</button>
+      <button class="btn suiv" id="suiv" type="button">Suivant</button>
+    </div>
+  </section>
+</div>
+<div id="certif-wrap" hidden>
+  <article class="certificat" aria-label="Certificat local Fondations">
+    <div class="c-haut"><img src="certificat-pilote/logo-efa.png" alt="Logo EFA"><span class="c-logo">EFA · Éducation Financière Afrique</span><span class="c-specimen">Pilote 2026</span></div>
+    <div class="c-milieu">
+      <span class="c-sur">Certificat EFA · Niveau 1</span>
+      <h1 class="c-titre">Fondations</h1>
+      <p class="c-a">est attribué à</p>
+      <p class="c-nom" id="c-nom"></p>
+      <p class="c-texte">pour avoir suivi les huit modules du parcours Fondations d'éducation financière et réussi l'examen final avec un score de <strong id="c-score"></strong>.</p>
+      <ul class="c-modules" id="c-modules"></ul>
+    </div>
+    <div class="c-bas">
+      <div><div class="c-et">Date</div><div class="c-val" id="c-date"></div></div>
+      <div><div class="c-et">Numéro</div><div class="c-val" id="c-num"></div></div>
+      <div><div class="c-signe"></div><div class="c-et">Élysée Johnson · Président d'EFA</div></div>
+    </div>
+    <div class="c-pied"><span class="c-mission">EFA aide chacun à passer du <b class="ce">cercle</b>, l'argent qui tourne, à la <b class="sp">spirale</b>, l'argent qui reste.</span><span>Délivré pendant le pilote du Certificat EFA</span></div>
+  </article>
+  <div class="c-actions">
+    <button type="button" class="principal" id="b-print">Télécharger le certificat</button>
+    <button type="button" id="b-imprimer">Imprimer</button>
+    <button type="button" id="b-carre">Badge carré</button>
+    <button type="button" id="b-story">Badge statut</button>
+    <button type="button" class="discret" id="b-nom">Modifier le nom</button>
+    <button type="button" class="discret" id="b-retour">Retour au sommaire</button>
+  </div>
+  <div id="apercu" aria-live="polite"></div>
+</div>
+<p class="mention">Parcours réalisé avec l'aide de l'intelligence artificielle, vérifié par l'équipe EFA. Koffi et Tantie Affoué sont des personnages fictifs ; leurs montants sont fictifs. EFA éduque, elle ne conseille aucun produit ni établissement. Le certificat local Fondations est une attestation de parcours, pas un diplôme.</p>
+<script>
+var MODULES=[];
+function fcfa(n){return window.fcfa(n)}
+MODULES.push((function(){
+  var NUM=1, COURT=`Où passe mon argent ?`;
+  var SUITE=`Vous savez distinguer ce qui passe de ce qui reste. Le module 2, <strong>Budget</strong>, est débloqué.`;
+  var RAPPEL=`Le <span class="c">flux</span> dit ce qui passe.<br>Le <span class="s">stock</span> dit ce qui reste.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>salarié à Abidjan`,
+     corps:`<h2 class="h">Vous vous dites souvent que vous ne savez pas où votre argent est passé ?</h2>`
+      +`<p class="p">Beaucoup de gens gagnent correctement leur vie et n'ont pourtant rien à la fin du mois.</p>`
+      +`<p class="p">Ce module vous l'explique avec <strong>deux mots</strong> : le flux et le stock.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`La veille de la paie,<br>le compte de Koffi est vide`,
+     corps:`<h2 class="h">Un bon salaire, et rien à la fin du mois</h2>`
+      +`<p class="p">Koffi gagne <strong>400 000 F</strong> par mois. Il paie son loyer, aide sa famille, cotise à sa tontine.</p>`
+      +`<p class="p">La veille de la paie, il ne reste rien. Il a pourtant l'impression de bien gagner sa vie. <strong>Où est passé son argent ?</strong></p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">Le <span class="c">flux</span> dit ce qui passe.<br>Le <span class="s">stock</span> dit ce qui reste.</div>`,
+     corps:`<h2 class="h">Ce qui entre n'est pas ce qui reste</h2>`
+      +`<p class="p">Un <strong>flux</strong> se mesure sur une période : votre salaire du mois, vos dépenses du mois.</p>`
+      +`<p class="p">Un <strong>stock</strong> se mesure à une date : ce que vous possédez et ce que vous devez, le 31 au soir. Ce que vous possédez moins ce que vous devez, c'est votre <strong>patrimoine net</strong>.</p>`
+      +`<div class="chips"><span class="chip">Le Dico n° 004 · Flux</span><span class="chip">Le Dico n° 005 · Stock</span></div>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">Le mois de Koffi</span><table class="tab">`
+      +`<tr><td>Salaire</td><td>400 000</td></tr>`
+      +`<tr><td>Logement</td><td class="m">− 120 000</td></tr>`
+      +`<tr><td>Nourriture</td><td class="m">− 100 000</td></tr>`
+      +`<tr><td>Aide à la famille</td><td class="m">− 60 000</td></tr>`
+      +`<tr><td>Transport</td><td class="m">− 50 000</td></tr>`
+      +`<tr><td>Tontine</td><td class="m">− 50 000</td></tr>`
+      +`<tr><td>Téléphone, sorties</td><td class="m">− 40 000</td></tr>`
+      +`<tr class="tot"><td>Flux net</td><td class="m">− 20 000 F</td></tr></table>`,
+     corps:`<h2 class="h">Entrées − sorties = flux net</h2>`
+      +`<p class="p">Koffi reçoit 400 000 F mais en dépense 420 000. Son <strong>flux net est négatif : − 20 000 F</strong>.</p>`
+      +`<p class="p">Ces 20 000 F, quelque chose les paie : <strong>son épargne ou une dette</strong>. Mois après mois, son épargne disponible se vide.</p>`
+      +`<p class="p">Sa tontine est comptée ici en sortie : l'argent quitte son compte ce mois-ci. Le module 3 montre qu'elle déplace cet argent dans le temps, sans l'augmenter.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Calculez votre flux du dernier mois</h2>`
+      +`<p class="p">Mettez un ordre de grandeur, en francs CFA. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Pour aller plus loin : l'outil « Où est passé mon argent ? » sur efa.africa.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-sourire.jpg`, pos:`center 28%`, leg:`Koffi a compris<br>où passe son argent`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Flux net = entrées − sorties, sur une même période.</p>`
+      +`<p class="p"><strong>2.</strong> Un gros revenu ne garantit pas un flux positif.</p>`
+      +`<p class="p"><strong>3.</strong> Ce qui circule n'est pas ce qui reste. C'est le stock qui mesure votre richesse.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Votre flux net`,
+    champs:[{id:`ent`,label:`Ce qui est entré`,ph:`ex. 400 000`},{id:`sor`,label:`Ce qui est sorti`,ph:`ex. 420 000`}],
+    calc:function(v){var f=v[0]-v[1];
+      return {res:fcfa(f), ver: f>0 ? `Flux positif : votre stock peut grandir ce mois-ci.` : f<0 ? `Flux négatif : votre épargne ou une dette paie la différence.` : `Flux nul : tout ce qui est entré est sorti.`}}};
+  var questions=[
+    {e:`Votre salaire mensuel est…`, o:[`un flux`,`un stock`,`un patrimoine`], b:0,
+     x:`C'est un flux : il se mesure sur une période, ici un mois.`},
+    {e:`L'argent sur votre compte le 31 au soir est…`, o:[`un flux`,`un stock`,`une dépense`], b:1,
+     x:`C'est un stock : une quantité mesurée à une date précise.`},
+    {e:`Awa reçoit 300 000 F et dépense 320 000 F dans le mois. Son flux net est de…`, o:[`+ 20 000 F`,`− 20 000 F`,`300 000 F`], b:1,
+     x:`300 000 − 320 000 = − 20 000 F. Le flux net est négatif.`},
+    {e:`Quand votre flux net est négatif, qui paie la différence ?`, o:[`Personne, cela s'équilibre tout seul`,`Votre épargne ou une dette`,`Votre employeur`], b:1,
+     x:`La différence sort de votre épargne ou s'ajoute à vos dettes. Votre stock baisse.`},
+    {e:`Un ami gagne 1 500 000 F par mois. Que peut-on en conclure ?`, o:[`Qu'il s'enrichit forcément`,`Rien, tant qu'on ne connaît pas ses sorties`,`Que son stock augmente de 1 500 000 F`], b:1,
+     x:`Un gros revenu est un gros flux d'entrée. Sans les sorties, on ne sait rien de ce qui reste.`}
+  ];
+  var BANQUE=[
+    {e:`Le patrimoine net, c'est…`, o:[`ce que vous possédez moins ce que vous devez`,`vos revenus moins vos dépenses`,`votre salaire multiplié par douze`], b:0,
+     x:`Le patrimoine net est un stock : ce que vous possédez moins ce que vous devez, à une date donnée.`},
+    {e:`Ama possède une moto de 1 200 000 F et 300 000 F d'épargne. Elle doit 400 000 F. Son patrimoine net est de…`, o:[`1 100 000 F`,`1 900 000 F`,`400 000 F`], b:0,
+     x:`1 200 000 + 300 000 − 400 000 = 1 100 000 F.`},
+    {e:`Le loyer que vous payez chaque mois est…`, o:[`un flux`,`un stock`,`un patrimoine`], b:0,
+     x:`Il se mesure sur une période : c'est un flux de sortie.`},
+    {e:`La valeur de votre moto aujourd'hui est…`, o:[`un stock`,`un flux`,`une dépense`], b:0,
+     x:`C'est une valeur mesurée à une date : un stock.`},
+    {e:`Sur trois mois, les flux nets d'Ama sont + 30 000, − 10 000 et + 20 000 F. Son stock a varié de…`, o:[`+ 40 000 F`,`+ 60 000 F`,`− 10 000 F`], b:0,
+     x:`30 000 − 10 000 + 20 000 = + 40 000 F. Les flux s'additionnent dans le stock.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:'Où passe mon argent ? · Flux et stock', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Un budget qui tient`;
+  var NUM=2;
+  var SUITE=`Vous savez donner un rôle à chaque franc avant qu'il arrive. Le module 3, <strong>Tontine</strong>, est débloqué.`;
+  var RAPPEL=`Un budget, c'est décider <span class="c">avant</span> que l'argent arrive.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>salarié à Abidjan`,
+     corps:`<h2 class="h">Le salaire arrive, et une semaine après, la moitié est déjà partie ?</h2>`
+      +`<p class="p">Souvent, ce n'est pas un manque de volonté, mais un manque d'ordre.</p>`
+      +`<p class="p">Et parfois, c'est le revenu qui ne suffit pas. Ce module vous aide aussi à le voir clairement.</p>`
+      +`<p class="p">Ce module vous apprend à <strong>décider où va votre argent avant qu'il arrive</strong>.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`Le 1er du mois,<br>la moitié du salaire est partie`,
+     corps:`<h2 class="h">400 000 F le 25, 200 000 F le 1er</h2>`
+      +`<p class="p">Le salaire de Koffi tombe le 25. Une semaine plus tard, il a payé le loyer, fait le marché, envoyé de l'argent au village et fêté la paie avec ses amis.</p>`
+      +`<p class="p">Il lui reste <strong>200 000 F pour trois semaines</strong>. Il n'a rien décidé : il a réagi aux demandes, une par une.</p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">Un budget, c'est décider <span class="c">avant</span> que l'argent arrive.</div>`,
+     corps:`<h2 class="h">Trois cases, dans cet ordre</h2>`
+      +`<p class="p"><strong>1. Vous d'abord.</strong> La part à mettre de côté sort le jour de la paie, avant tout le reste.</p>`
+      +`<p class="p"><strong>2. Les dépenses fixes.</strong> Le même montant chaque mois : loyer, tontine, transport, forfait. On les connaît d'avance.</p>`
+      +`<p class="p"><strong>3. Les dépenses variables.</strong> Nourriture, sorties, aides ponctuelles. C'est là que vous pilotez, semaine après semaine.</p>`
+      +`<div class="chips"><span class="chip">Guide · Construire sa stabilité financière</span></div>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">Le nouveau budget de Koffi</span><table class="tab">`
+      +`<tr><td>Salaire</td><td>400 000</td></tr>`
+      +`<tr><td><strong>Lui d'abord : épargne</strong></td><td class="m">− 20 000</td></tr>`
+      +`<tr><td>Fixes : logement, tontine, transport, forfait</td><td class="m">− 235 000</td></tr>`
+      +`<tr><td>Variables : nourriture</td><td class="m">− 90 000</td></tr>`
+      +`<tr><td>Variables : aide à la famille, plafonnée</td><td class="m">− 40 000</td></tr>`
+      +`<tr><td>Variables : sorties</td><td class="m">− 15 000</td></tr>`
+      +`<tr class="tot"><td>Reste à décider</td><td>0 F</td></tr></table>`,
+     corps:`<h2 class="h">Chaque franc reçoit un rôle</h2>`
+      +`<p class="p">Au module 1, Koffi dépensait 20 000 F de plus qu'il ne gagnait. Il a réduit nourriture, aide à la famille, téléphone et sorties de 40 000 F au total : <strong>il ne finit plus à − 20 000 F, il met 20 000 F de côté</strong>.</p>`
+      +`<p class="p">Il n'a pas gagné plus. Il a décidé avant. Les 20 000 F partent le 25, par un virement automatique vers un compte séparé.</p>`
+      +`<p class="p">L'aide à la famille reste dans le budget : elle a un montant, fixé à l'avance. Le module 5 y revient.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Combien pouvez-vous mettre de côté ?</h2>`
+      +`<p class="p">Indiquez un ordre de grandeur mensuel, en francs CFA. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Revenu irrégulier ? Mettez celui de votre plus petit mois.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-sourire.jpg`, pos:`center 28%`, leg:`Koffi décide<br>avant que l'argent arrive`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Payez-vous en premier : l'épargne sort le jour de la paie, pas à la fin du mois.</p>`
+      +`<p class="p"><strong>2.</strong> Les fixes, on les connaît. Les variables, on les pilote.</p>`
+      +`<p class="p"><strong>3.</strong> Revenu irrégulier : bâtissez le budget sur un petit mois. Le surplus des bons mois va à l'épargne.</p>`
+      +`<p class="p">Si votre revenu ne couvre pas l'essentiel, le budget ne fait pas de miracle. Il montre l'écart exact : c'est ce chiffre qui sert pour chercher un revenu en plus, négocier un loyer ou une dette, ou demander de l'aide sans honte.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Ce qui reste pour vous`,
+    champs:[{id:`rev`,label:`Revenu du mois`,ph:`ex. 400 000`},{id:`fix`,label:`Dépenses fixes`,ph:`ex. 235 000`},{id:`var`,label:`Dépenses variables`,ph:`ex. 145 000`}],
+    calc:function(v){var r=v[0]-v[1]-v[2], p=v[0]>0?Math.round(r/v[0]*100):0;
+      return {res:fcfa(r), ver: r<0 ? `Vos dépenses dépassent votre revenu. Regardez d'abord les variables. Si l'écart vient de l'essentiel (logement, nourriture, santé, école), couper ailleurs ne suffira pas : il faudra agir sur le revenu, renégocier une charge ou demander un appui. Ce n'est pas un échec de votre part.` : r===0 ? `Rien ne reste. Commencez petit : 5 000 F mis de côté dès la paie.` : p>=10 ? `Soit ${p} % du revenu. Mettez-le de côté le jour de la paie.` : `Soit ${p} % du revenu. C'est un début : programmez-le le jour de la paie.`}}};
+  var questions=[
+    {e:`Le loyer est une dépense…`, o:[`fixe`,`variable`,`imprévue`], b:0,
+     x:`Le loyer revient chaque mois pour le même montant : c'est une dépense fixe.`},
+    {e:`« Se payer en premier » veut dire…`, o:[`mettre de côté le jour de la paie, avant les autres dépenses`,`épargner ce qui reste à la fin du mois`,`s'offrir un cadeau quand le salaire arrive`], b:0,
+     x:`Ce qui reste à la fin du mois est souvent zéro. L'épargne passe en premier, pas en dernier.`},
+    {e:`Fatou gagne 250 000 F. Ses fixes font 150 000 F, ses variables 80 000 F. Combien peut-elle mettre de côté ?`, o:[`20 000 F`,`30 000 F`,`100 000 F`], b:0,
+     x:`250 000 − 150 000 − 80 000 = 20 000 F.`},
+    {e:`Une commerçante gagne entre 150 000 F et 300 000 F selon les mois. Sur quel montant bâtir son budget ?`, o:[`300 000 F`,`225 000 F, la moyenne`,`150 000 F, le petit mois`], b:2,
+     x:`Un budget bâti sur le petit mois tient tous les mois. Les bons mois, le surplus va à l'épargne.`},
+    {e:`Pour réduire vite ses dépenses, on regarde d'abord…`, o:[`les dépenses variables`,`les dépenses fixes`,`l'épargne`], b:0,
+     x:`Les fixes sont liées à des engagements (bail, forfait). Les variables se pilotent dès cette semaine. Mais si le manque vient de l'essentiel, il faut aussi agir sur le revenu ou les charges fixes.`}
+  ];
+
+  var BANQUE=[
+    {e:`Laquelle de ces dépenses est variable ?`, o:[`les sorties du week-end`,`le loyer`,`la cotisation de tontine`], b:0,
+     x:`Les sorties changent d'un mois à l'autre : c'est une dépense variable, que l'on peut piloter.`},
+    {e:`Koffi gagne 400 000 F et veut mettre 10 % de côté. Combien met-il de côté ?`, o:[`40 000 F`,`4 000 F`,`10 000 F`], b:0,
+     x:`10 % de 400 000 = 40 000 F.`},
+    {e:`Pourquoi programmer un virement automatique le jour de la paie ?`, o:[`Pour que l'épargne ne dépende pas de la volonté du moment`,`Pour payer moins de frais`,`Parce que la banque l'exige`], b:0,
+     x:`Ce qui part automatiquement n'est plus exposé aux demandes et aux envies du mois.`},
+    {e:`Une commerçante bâtit son budget sur 150 000 F. Ce mois-ci, elle gagne 280 000 F. Que faire des 130 000 F en plus ?`, o:[`Les mettre de côté pour compenser les petits mois`,`Augmenter ses dépenses du mois`,`Les prêter à une amie`], b:0,
+     x:`Le surplus des bons mois finance les mois difficiles. C'est ce qui rend un revenu irrégulier vivable.`},
+    {e:`Un budget « à zéro » veut dire que…`, o:[`chaque franc reçoit un rôle, épargne comprise`,`l'on ne dépense rien`,`le compte est vide le 1er`], b:0,
+     x:`Revenu − épargne − fixes − variables = 0 : tout l'argent a une destination décidée d'avance.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:'Un budget qui tient · Décider avant de dépenser', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Ma tontine, du cercle à la spirale`;
+  var NUM=3;
+  var SUITE=`Vous savez ce que la tontine fait, et ce qu'elle ne fait pas. Le module 4, <strong>Épargne de précaution</strong>, est débloqué.`;
+  var RAPPEL=`La tontine <span class="c">avance</span> ou <span class="s">retarde</span> votre argent.<br>Elle ne l'augmente pas.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-portrait.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`Tantie Affoué<br>commerçante au marché`,
+     corps:`<h2 class="h">Vous cotisez depuis des années. Êtes-vous plus riche qu'au début ?</h2>`
+      +`<p class="p">La tontine est une force de nos économies : elle repose sur la confiance et oblige à mettre de côté.</p>`
+      +`<p class="p">Mais elle ne fait pas ce que beaucoup croient. Ce module vous montre <strong>ce qu'elle fait vraiment de votre argent</strong>.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-soucieuse.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`12 millions versés,<br>12 millions reçus`,
+     corps:`<h2 class="h">Vingt ans de tontines, et rien de plus</h2>`
+      +`<p class="p">Tantie Affoué vend des pagnes au marché. Depuis vingt ans, elle verse <strong>50 000 F par mois</strong> dans une tontine de dix membres. Tous les dix mois, elle reçoit 500 000 F.</p>`
+      +`<p class="p">Rentrée scolaire, funérailles, dépenses de la maison : chaque tour a été dépensé dès qu'il est arrivé. En vingt ans : <strong>12 000 000 F versés, 12 000 000 F reçus</strong>. Son stock n'a pas bougé.</p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">La tontine <span class="c">avance</span> ou <span class="s">retarde</span> votre argent.<br>Elle ne l'augmente pas.</div>`,
+     corps:`<h2 class="h">La tontine déplace votre argent dans le temps</h2>`
+      +`<p class="p">Dans une tontine simple, sans frais ni enchères, quand votre tour arrive, vous recevez <strong>ce que vous avez déjà versé ou ce que vous verserez ensuite</strong>. Vous avancez ou vous retardez votre argent. Vous ne l'augmentez pas.</p>`
+      +`<p class="p">C'est un <strong>décalage de trésorerie</strong> : un flux qui sort, puis revient (module 1). Ce qui enrichit, c'est l'usage que vous faites du tour.</p>`
+      +`<div class="chips"><span class="chip">Le Dico n° 006 · Décalage de trésorerie</span></div>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">Tontine de 10 membres · 50 000 F par mois</span><table class="tab">`
+      +`<tr><th>Votre rang</th><th>Versé avant le tour</th><th>Reste à verser</th></tr>`
+      +`<tr><td>1er</td><td class="v">0</td><td class="v">450 000</td></tr>`
+      +`<tr><td>5e</td><td class="v">200 000</td><td class="v">250 000</td></tr>`
+      +`<tr><td>10e</td><td class="v">450 000</td><td class="v">0</td></tr>`
+      +`<tr class="tot"><td colspan="2">Tour reçu, pour tous</td><td class="v">500 000 F</td></tr></table>`,
+     corps:`<h2 class="h">Le rang change le moment, pas le montant</h2>`
+      +`<p class="p">Au <strong>1er rang</strong>, vous recevez 500 000 F tout de suite et vous remboursez ensuite : c'est un <strong>prêt sans intérêt</strong>.</p>`
+      +`<p class="p">Au <strong>10e rang</strong>, vous avez tout versé avant de recevoir : c'est une <strong>épargne forcée, sans intérêt</strong>. Avec la hausse des prix, vos 500 000 F achètent même un peu moins.</p>`
+      +`<p class="p">Le risque : si un membre qui a déjà reçu son tour cesse de payer, <strong>ce sont les derniers rangs qui perdent</strong>.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Et votre tontine, que fait-elle ?</h2>`
+      +`<p class="p">Indiquez votre cotisation, le nombre de membres et votre rang. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Pour aller plus loin : les guides « Choisir sa tontine » et « Que faire de sa tontine ? Décider avant de recevoir ».</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-sourire.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`Son prochain tour<br>est déjà décidé`,
+     corps:`<div class="aplat">Le <span class="c">cercle</span> tourne. La <span class="s">spirale</span> monte.</div><h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> La tontine est un décalage de trésorerie : vous recevez ce que vous versez, sans intérêt.</p>`
+      +`<p class="p"><strong>2.</strong> Votre rang décide si vous empruntez (premiers rangs) ou si vous épargnez (derniers rangs).</p>`
+      +`<p class="p"><strong>3.</strong> Décidez l'usage du tour avant de le recevoir, et ne cotisez qu'avec des membres dont vous connaissez la fiabilité.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Votre tour`,
+    champs:[{id:`cot`,label:`Cotisation par tour`,ph:`ex. 50 000`},{id:`mem`,label:`Nombre de membres`,ph:`ex. 10`},{id:`rang`,label:`Votre rang`,ph:`ex. 3`}],
+    calc:function(v){var c=v[0],m=v[1],r=v[2];
+      if(m<2||r<1||r>m) return {res:`—`, ver:`Le rang doit être compris entre 1 et le nombre de membres.`};
+      var av=c*(r-1), ap=c*(m-r);
+      return {res:fcfa(c*m), ver: `Versé avant votre tour : ${fcfa(av)}. Reste à verser après : ${fcfa(ap)}. `+(av<ap ? `Vous êtes surtout emprunteur : décidez dès maintenant l'usage du tour.` : av>ap ? `Vous êtes surtout épargnant : votre argent attend, sans intérêt.` : `Vous êtes à mi-chemin entre prêt et épargne.`)}}};
+  var questions=[
+    {e:`Tontine de 10 membres, 20 000 F par mois chacun. Combien reçoit-on à son tour ?`, o:[`20 000 F`,`200 000 F`,`220 000 F`], b:1,
+     x:`10 membres × 20 000 F = 200 000 F. Vous recevez la somme des cotisations du tour, la vôtre comprise.`},
+    {e:`Pourquoi la tontine, à elle seule, ne vous enrichit-elle pas ?`, o:[`Vous recevez exactement ce que vous versez, sans intérêt`,`Elle est réservée aux commerçants`,`Elle est interdite par la loi`], b:0,
+     x:`Ce qui entre est égal à ce qui sort. La tontine déplace l'argent dans le temps, elle ne le fait pas grandir.`},
+    {e:`Recevoir son tour au 1er rang, c'est comme…`, o:[`un prêt sans intérêt`,`une épargne forcée`,`un cadeau du groupe`], b:0,
+     x:`Vous recevez tout de suite, puis vous remboursez par vos cotisations suivantes.`},
+    {e:`Quel est le principal risque d'une tontine ?`, o:[`Qu'un membre qui a déjà reçu son tour cesse de cotiser`,`Que l'argent rapporte trop d'intérêts`,`Que le tour arrive trop tôt`], b:0,
+     x:`Un membre qui fait défaut après son tour fait perdre les derniers rangs. D'où l'importance de la confiance.`},
+    {e:`Tantie Affoué veut que son prochain tour compte. Que doit-elle faire ?`, o:[`Décider avant de le recevoir ce qu'il financera`,`Attendre le tour pour voir ce qui se présente`,`Demander le dernier rang`], b:0,
+     x:`Un tour décidé d'avance (marchandise, équipement, réserve) fait monter la spirale. Un tour non décidé est vite absorbé par les demandes.`}
+  ];
+
+  var BANQUE=[
+    {e:`Dans une tontine, qu'est-ce qui change selon votre rang ?`, o:[`le moment où vous recevez votre tour`,`le montant de votre tour`,`le nombre de membres`], b:0,
+     x:`Le rang change le moment, pas le montant : tout le monde reçoit la même somme.`},
+    {e:`Au dernier rang, la tontine ressemble à…`, o:[`une épargne forcée, sans intérêt`,`un prêt sans intérêt`,`un placement qui rapporte`], b:0,
+     x:`Vous versez tout avant de recevoir : votre argent attend, sans rapporter.`},
+    {e:`Quand les prix montent, qui perd le plus de pouvoir d'achat dans une tontine ?`, o:[`le dernier rang`,`le premier rang`,`personne`], b:0,
+     x:`Le dernier rang reçoit la même somme, mais plus tard, quand elle achète moins.`},
+    {e:`Tontine de 10 membres à 30 000 F. Au 4e rang, combien avez-vous versé avant votre tour (sans compter le mois du tour) ?`, o:[`90 000 F`,`120 000 F`,`300 000 F`], b:0,
+     x:`Trois mois avant votre tour : 3 × 30 000 = 90 000 F.`},
+    {e:`Avant de rejoindre une tontine, que vérifier en priorité ?`, o:[`la fiabilité des membres et la règle prévue en cas de défaut`,`le nombre de tours déjà reçus par l'organisatrice`,`le jour de la semaine où l'on cotise`], b:0,
+     x:`Le risque d'une tontine, c'est le défaut d'un membre. La confiance et une règle claire en cas d'impayé protègent le groupe.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:'Ma tontine, du cercle à la spirale · Trésorerie ou épargne ?', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Ma réserve de sécurité`;
+  var NUM=4;
+  var SUITE=`Vous avez votre plan de réserve. Le module 5, <strong>L'argent de la famille</strong>, est débloqué.`;
+  var RAPPEL=`<span class="c">Disponible.</span><br>Séparée.<br><span class="s">Sûre.</span>`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>salarié à Abidjan`,
+     corps:`<h2 class="h">Si un imprévu de 150 000 F tombait demain, comment le paieriez-vous ?</h2>`
+      +`<p class="p">Emprunter à un collègue, demander une avance, vendre quelque chose… ou puiser dans une réserve prévue pour ça.</p>`
+      +`<p class="p">Ce module vous apprend à <strong>construire cette réserve</strong> : l'épargne de précaution.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`Dimanche soir,<br>il faut 150 000 F pour lundi matin`,
+     corps:`<h2 class="h">Une urgence un dimanche</h2>`
+      +`<p class="p">Dimanche soir, le frère de Koffi l'appelle : leur mère doit être soignée d'urgence. Il faut <strong>150 000 F pour lundi matin</strong>.</p>`
+      +`<p class="p">Koffi n'a que 20 000 F de côté. Il emprunte à un collègue et demande une avance sur salaire. <strong>Le mois suivant, son budget est déjà cassé.</strong></p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat"><span class="c">Disponible.</span><br>Séparée.<br><span class="s">Sûre.</span></div>`, leg:`Les trois règles de la réserve`,
+     corps:`<h2 class="h">Une réserve mesurée en mois de dépenses</h2>`
+      +`<p class="p">L'épargne de précaution paie les imprévus sans dette. Son objectif se compte en <strong>mois de dépenses essentielles</strong> : un repère courant est trois mois.</p>`
+      +`<p class="p"><strong>Disponible</strong> en un jour. <strong>Séparée</strong> du compte de tous les jours, pour ne pas y toucher. <strong>Sûre</strong> : pas de placement qui peut baisser, et pas la tontine, dont vous ne choisissez pas la date.</p>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">La réserve de Koffi</span><table class="tab">`
+      +`<tr><td>Dépenses essentielles par mois</td><td>275 000</td></tr>`
+      +`<tr><td><strong>Objectif : 3 mois</strong></td><td>825 000</td></tr>`
+      +`<tr><td>Tour de tontine, décidé d'avance</td><td>500 000</td></tr>`
+      +`<tr><td>Puis 20 000 F par mois, 17 mois</td><td>340 000</td></tr>`
+      +`<tr class="tot"><td>Réserve constituée</td><td>840 000 F</td></tr></table>`,
+     corps:`<h2 class="h">Trois mois de l'essentiel, en moins d'un an et demi</h2>`
+      +`<p class="p">Koffi ne compte que l'essentiel : logement, nourriture, transport, forfait, soit <strong>275 000 F par mois</strong>. En cas de coup dur, les sorties s'arrêtent.</p>`
+      +`<p class="p">Son prochain tour de tontine, décidé d'avance (module 3), lance la réserve. Ses 20 000 F mensuels (module 2) font le reste : <strong>objectif atteint en 17 mois</strong>.</p>`
+      +`<p class="p">S'il puise dedans, il la reconstitue avant tout autre projet.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Combien de mois tenez-vous ?</h2>`
+      +`<p class="p">Indiquez vos montants en francs CFA. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Commencez par un premier palier : un mois de dépenses essentielles. Le calcul ne compte pas un tour de tontine ou une prime attendus.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-sourire.jpg`, pos:`center 28%`, leg:`Koffi a sa réserve.<br>Le dimanche ne lui fait plus peur`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Objectif : trois mois de dépenses essentielles. Premier palier : un mois.</p>`
+      +`<p class="p"><strong>2.</strong> Gardez-la disponible, séparée et sûre.</p>`
+      +`<p class="p"><strong>3.</strong> Après un imprévu, reconstituez-la avant tout autre projet.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Vous tenez`,
+    champs:[{id:`dep`,label:`Dépenses essentielles / mois`,ph:`ex. 275 000`},{id:`res0`,label:`Épargne disponible`,ph:`ex. 20 000`},{id:`men`,label:`Mis de côté / mois`,ph:`ex. 20 000`}],
+    calc:function(v){var d=v[0],e=v[1],m=v[2];
+      if(d<=0) return {res:`—`, ver:`Indiquez vos dépenses essentielles.`};
+      var mois=e/d, obj=3*d, manque=obj-e;
+      var r= mois<1 ? Math.floor(mois*30)+` jours` : (Math.floor(mois*10)/10).toLocaleString('fr-FR')+` mois`;
+      if(manque<=0) return {res:r, ver:`Objectif de trois mois atteint (${fcfa(obj)}). Gardez-la intacte.`};
+      if(m<=0) return {res:r, ver:`Objectif : ${fcfa(obj)}. Sans montant mensuel, la réserve ne grandira pas.`};
+      return {res:r, ver:`Objectif : ${fcfa(obj)}. À ce rythme, vous l'atteignez en ${Math.ceil(manque/m)} mois.`}}};
+  var questions=[
+    {e:`L'épargne de précaution sert à…`, o:[`payer les imprévus sans s'endetter`,`acheter des actions`,`financer les vacances`], b:0,
+     x:`C'est une réserve pour les coups durs. Les projets ont leur propre épargne.`},
+    {e:`Koffi dépense 275 000 F par mois pour l'essentiel. Quel est son objectif de trois mois ?`, o:[`275 000 F`,`550 000 F`,`825 000 F`], b:2,
+     x:`3 × 275 000 = 825 000 F.`},
+    {e:`Où garder son épargne de précaution ?`, o:[`Sur un support disponible vite, séparé du compte courant, sans risque de perte`,`Dans une tontine`,`En actions, pour qu'elle rapporte plus`], b:0,
+     x:`La tontine ne vous laisse pas choisir la date. Des actions peuvent baisser au moment exact où vous en avez besoin.`},
+    {e:`Awa a 150 000 F de côté et dépense 300 000 F par mois pour l'essentiel. Elle tient…`, o:[`deux semaines`,`un mois`,`deux mois`], b:0,
+     x:`150 000 ÷ 300 000 = 0,5 mois, soit environ deux semaines.`},
+    {e:`Koffi a utilisé 100 000 F de sa réserve pour une urgence. Que fait-il ensuite ?`, o:[`Il la reconstitue en priorité`,`Il attend la prochaine prime`,`Il considère que la réserve a fait son travail`], b:0,
+     x:`Une réserve entamée ne protège plus. On la reconstitue avant tout autre projet.`}
+  ];
+
+  var BANQUE=[
+    {e:`Pourquoi ne compter que les dépenses essentielles pour fixer l'objectif ?`, o:[`Parce qu'en cas de coup dur, on coupe le reste`,`Pour payer moins d'impôts`,`Pour impressionner la banque`], b:0,
+     x:`Pendant un imprévu, sorties et achats non essentiels s'arrêtent. La réserve doit couvrir l'essentiel.`},
+    {e:`Un repère courant pour l'épargne de précaution est…`, o:[`trois mois de dépenses essentielles`,`un mois de salaire`,`un an de revenus`], b:0,
+     x:`Trois mois de dépenses essentielles, avec un premier palier à un mois.`},
+    {e:`Quel premier palier viser ?`, o:[`un mois de dépenses essentielles`,`trois ans de dépenses`,`rien tant qu'on n'a pas un million`], b:0,
+     x:`Un premier palier atteignable donne l'élan. On monte ensuite vers trois mois.`},
+    {e:`« Disponible » veut dire que la réserve est…`, o:[`accessible en un jour`,`bloquée trois ans`,`placée en bourse`], b:0,
+     x:`Un imprévu n'attend pas : la réserve doit pouvoir être mobilisée tout de suite.`},
+    {e:`Ama met 25 000 F de côté par mois. Son objectif est de 300 000 F. Combien de mois lui faut-il ?`, o:[`12 mois`,`10 mois`,`25 mois`], b:0,
+     x:`300 000 ÷ 25 000 = 12 mois.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:'Ma réserve de sécurité · Se protéger des imprévus', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Aider mes proches sans me perdre`;
+  var NUM=5;
+  var SUITE=`Vous savez aider sans vous mettre en danger. Le module 6, <strong>Dette et crédit</strong>, est débloqué.`;
+  var RAPPEL=`Un prêt se rend.<br>Un cadeau se donne.<br>Dites-le <span class="c">avant</span>.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>l'aîné de la famille`,
+     corps:`<h2 class="h">Vous avez déjà prêté de l'argent à un proche… sans jamais le revoir ?</h2>`
+      +`<p class="p">Dans nos familles, l'entraide est une force. Elle nous a tous portés un jour.</p>`
+      +`<p class="p">Mais quand on ne dit pas clairement <strong>s'il s'agit d'un prêt ou d'un cadeau</strong>, elle devient une source de tensions.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`« Je te rends ça<br>dans deux mois »`,
+     corps:`<h2 class="h">100 000 F « pour deux mois »</h2>`
+      +`<p class="p">Le cousin de Koffi lui demande <strong>100 000 F</strong>, à rendre dans deux mois. Koffi n'ose pas refuser.</p>`
+      +`<p class="p">Deux mois passent, puis six. Le cousin n'en parle plus, et Koffi n'ose pas en parler non plus. <strong>L'argent est perdu, et la relation est abîmée.</strong></p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">Un prêt se rend.<br>Un cadeau se donne.<br>Dites-le <span class="c">avant</span>.</div>`,
+     corps:`<h2 class="h">Prêt ou cadeau : la décision se prend avant</h2>`
+      +`<p class="p">Un <strong>prêt</strong> a un montant et une date de remboursement, dits à voix haute ou écrits. Un <strong>cadeau</strong> se donne sans attendre de retour.</p>`
+      +`<p class="p">La règle : <strong>ne prêtez que ce que vous accepteriez de perdre</strong>. Et fixez un budget de solidarité chaque mois (module 2).</p>`
+      +`<p class="p">L'aîné est souvent l'<strong>assureur non déclaré</strong> de la famille : il paie les imprévus de tous, sans plafond. Le budget de solidarité lui donne un plafond.</p>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">La solidarité de Koffi</span><table class="tab">`
+      +`<tr><td>Budget de solidarité par mois</td><td>40 000</td></tr>`
+      +`<tr><td>Envoi aux parents, chaque mois</td><td class="m">− 25 000</td></tr>`
+      +`<tr><td>Reste pour les autres demandes</td><td>15 000</td></tr>`
+      +`<tr><td>Mis de côté sur deux mois</td><td>30 000</td></tr>`
+      +`<tr class="tot"><td>Ce que Koffi peut donner au cousin</td><td>30 000 F</td></tr></table>`,
+     corps:`<h2 class="h">Aider à la mesure de ses moyens</h2>`
+      +`<p class="p">Koffi garde 40 000 F par mois pour la famille. 25 000 F partent chez ses parents ; il reste <strong>15 000 F</strong> pour les autres demandes.</p>`
+      +`<p class="p">Au cousin, il propose désormais <strong>30 000 F en cadeau</strong>, plutôt que 100 000 F « prêtés » qu'il ne reverrait pas. Il aide, sans toucher à sa réserve de précaution (module 4).</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Votre budget de solidarité tient-il ?</h2>`
+      +`<p class="p">Indiquez votre budget de solidarité du mois et le total des demandes reçues. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Pas encore de budget de solidarité ? Partez de ce que vous avez donné le mois dernier.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-sourire.jpg`, pos:`center 28%`, leg:`Koffi aide sa famille,<br>sans se mettre en danger`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Prêt ou cadeau : décidez-le et dites-le avant de donner l'argent.</p>`
+      +`<p class="p"><strong>2.</strong> Ne prêtez que ce que vous accepteriez de perdre.</p>`
+      +`<p class="p"><strong>3.</strong> Un budget de solidarité fixe le plafond. Au-delà, c'est votre épargne ou une dette qui paie.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Votre solidarité ce mois-ci`,
+    champs:[{id:`sol`,label:`Budget de solidarité`,ph:`ex. 40 000`},{id:`dem`,label:`Total des demandes`,ph:`ex. 65 000`}],
+    calc:function(v){var r=v[0]-v[1];
+      return {res:fcfa(r), ver: r>=0 ? `Votre budget couvre les demandes. Ce qui reste peut servir le mois prochain.` : `Les demandes dépassent votre budget de ${fcfa(-r)}. Proposez un montant plus petit, ou un autre mois.`}}};
+  var questions=[
+    {e:`Avant de donner de l'argent à un proche, la première chose à faire est de…`, o:[`dire clairement s'il s'agit d'un prêt ou d'un cadeau`,`attendre qu'il rembourse de lui-même`,`donner plus pour aider vraiment`], b:0,
+     x:`Ce qui n'est pas dit avant devient un malentendu après.`},
+    {e:`Quelle règle suivre pour prêter à un proche ?`, o:[`Ne prêter que ce qu'on accepterait de perdre`,`Prêter tout ce qu'on vous demande`,`Ne jamais aider personne`], b:0,
+     x:`Si l'argent ne revient pas, votre budget et la relation tiennent quand même.`},
+    {e:`Koffi a un budget de solidarité de 40 000 F et envoie 25 000 F à ses parents. Combien reste-t-il pour les autres demandes ?`, o:[`15 000 F`,`25 000 F`,`65 000 F`], b:0,
+     x:`40 000 − 25 000 = 15 000 F.`},
+    {e:`Que veut dire « l'aîné, assureur non déclaré de la famille » ?`, o:[`Il paie les imprévus de tous, sans plafond ni cotisation`,`Il vend des assurances à sa famille`,`Il est assuré par la famille`], b:0,
+     x:`Il joue le rôle d'une assurance, sans en avoir les règles. Le budget de solidarité fixe un plafond.`},
+    {e:`Un prêt bien posé entre proches comprend…`, o:[`un montant et une date de remboursement dits à l'avance`,`un intérêt élevé`,`une promesse vague de rembourser « quand ça ira mieux »`], b:0,
+     x:`Montant et date clairs : chacun sait à quoi il s'engage.`}
+  ];
+  var BANQUE=[
+    {e:`Ama reçoit trois demandes ce mois : 20 000, 15 000 et 30 000 F. Son budget de solidarité est de 50 000 F. Elle dépasse de…`, o:[`15 000 F`,`65 000 F`,`5 000 F`], b:0,
+     x:`20 000 + 15 000 + 30 000 = 65 000 F, soit 15 000 F de plus que son budget.`},
+    {e:`Koffi donne 30 000 F à son cousin au lieu de lui « prêter » 100 000 F. Pourquoi est-ce plus sain ?`, o:[`Le montant tient dans son budget et il n'y a rien à réclamer`,`Parce qu'un cadeau rapporte des intérêts`,`Parce que le cousin a fixé le montant`], b:0,
+     x:`Un cadeau à sa mesure ne met ni le budget ni la relation en danger.`},
+    {e:`Un cadeau, c'est…`, o:[`de l'argent donné sans attendre de retour`,`un prêt que l'on oublie`,`une dette de la famille`], b:0,
+     x:`Un cadeau est décidé comme tel. Il ne crée aucune dette.`},
+    {e:`Donner une partie seulement de ce qu'on vous demande, c'est…`, o:[`aider à la mesure de ses moyens`,`un manque de respect`,`interdit par la coutume`], b:0,
+     x:`Aider un peu, chaque mois, vaut mieux qu'un grand prêt qui met votre budget en danger.`},
+    {e:`Pourquoi écrire un prêt, même entre proches ?`, o:[`Pour éviter les malentendus sur le montant et la date`,`Pour pouvoir facturer des intérêts`,`Parce qu'un prêt non écrit est illégal`], b:0,
+     x:`Un petit mot écrit protège la relation autant que l'argent.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:"Aider mes proches sans me perdre · Prêt ou cadeau ?", suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Reprendre la main sur mes dettes`;
+  var NUM=6;
+  var SUITE=`Vous savez lire le vrai prix d'un crédit. Le module 7, <strong>Mobile money et frais</strong>, est débloqué.`;
+  var RAPPEL=`Le vrai prix d'un crédit,<br>c'est le <span class="c">coût total</span>.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>salarié à Abidjan`,
+     corps:`<h2 class="h">Quand vous empruntez, savez-vous combien vous rendez au total ?</h2>`
+      +`<p class="p">On regarde souvent la mensualité. Rarement le total.</p>`
+      +`<p class="p">Ce module vous apprend à lire <strong>le vrai prix d'un crédit</strong>, et à distinguer une dette qui aide d'une dette qui appauvrit.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`« Seulement 30 000 F<br>par mois »`,
+     corps:`<h2 class="h">« Seulement 30 000 F par mois »</h2>`
+      +`<p class="p">Koffi veut un téléphone à <strong>300 000 F</strong>. Le vendeur lui propose de payer « seulement 30 000 F par mois ».</p>`
+      +`<p class="p">Pendant douze mois. Au total, Koffi rendra <strong>360 000 F</strong>. Il ne l'a vu qu'en faisant le calcul.</p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">Le vrai prix d'un crédit,<br>c'est le <span class="c">coût total</span>.</div>`,
+     corps:`<h2 class="h">Coût total, taux, et deux sortes de dettes</h2>`
+      +`<p class="p"><strong>Coût total</strong> = ce que vous rendez − ce que vous avez emprunté. Comparez les offres sur ce chiffre, pour un même montant et une même durée.</p>`
+      +`<p class="p">Attention aux taux mensuels : <strong>2 % par mois, c'est au moins 24 % par an</strong>, près de 27 % si les intérêts s'ajoutent aux intérêts.</p>`
+      +`<p class="p">Une dette qui <strong>produit</strong> doit rapporter plus qu'elle ne coûte : de la marchandise qui se vend, par exemple. Une dette qui <strong>consomme</strong> avance une dépense et la rend plus chère.</p>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">Deux dettes, deux histoires</span><table class="tab">`
+      +`<tr><td>Koffi · téléphone, 12 × 30 000</td><td>360 000</td></tr>`
+      +`<tr><td>Prix comptant</td><td class="m">− 300 000</td></tr>`
+      +`<tr><td><strong>Coût du crédit</strong></td><td class="m">60 000</td></tr>`
+      +`<tr><td>Tantie Affoué · pagnes achetés</td><td>200 000</td></tr>`
+      +`<tr><td>Remboursé après 3 mois</td><td class="m">220 000</td></tr>`
+      +`<tr><td>Pagnes revendus</td><td>300 000</td></tr>`
+      +`<tr class="tot"><td>Gain de Tantie Affoué, après crédit</td><td>80 000 F</td></tr></table>`,
+     corps:`<h2 class="h">Même crédit, effet inverse</h2>`
+      +`<p class="p">Le téléphone de Koffi lui coûte <strong>60 000 F de plus</strong> qu'au comptant. Sa dette consomme.</p>`
+      +`<p class="p">Tantie Affoué emprunte 200 000 F pour acheter des pagnes, rend 220 000 F et revend ses pagnes 300 000 F. Le crédit lui coûte 20 000 F et <strong>lui rapporte 80 000 F</strong>. Sa dette produit.</p>`
+      +`<p class="p">Repère : si vos remboursements dépassent <strong>un tiers de vos revenus</strong>, la dette devient dangereuse.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Combien vous coûte ce crédit ?</h2>`
+      +`<p class="p">Prenez un crédit en cours ou une offre reçue. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Comparez toujours deux offres sur le même montant et la même durée.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-sourire.jpg`, pos:`center 28%`, leg:`Koffi regarde<br>le coût total`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Comparez le coût total, pas la mensualité.</p>`
+      +`<p class="p"><strong>2.</strong> Une dette qui produit peut enrichir. Une dette qui consomme rend la dépense plus chère.</p>`
+      +`<p class="p"><strong>3.</strong> Remboursements au-delà d'un tiers des revenus, ou emprunt pour rembourser : c'est le signal d'alerte.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Le coût de ce crédit`,
+    champs:[{id:`emp`,label:`Montant emprunté`,ph:`ex. 300 000`},{id:`tot`,label:`Total à rembourser`,ph:`ex. 360 000`},{id:`dur`,label:`Durée en mois`,ph:`ex. 12`}],
+    calc:function(v){var c=v[1]-v[0];
+      if(v[0]<=0||v[2]<=0) return {res:`—`, ver:`Indiquez un montant et une durée.`};
+      if(c<0) return {res:`—`, ver:`Le total à rembourser doit être au moins égal au montant emprunté.`};
+      var p=Math.round(c/v[0]*100);
+      return {res:fcfa(c), ver:`Soit ${p} % du montant emprunté, sur ${v[2]} mois. Mensualité : ${fcfa(v[1]/v[2])}.`}}};
+  var questions=[
+    {e:`Un téléphone coûte 200 000 F comptant, ou 10 mensualités de 24 000 F. Combien coûte le crédit ?`, o:[`40 000 F`,`24 000 F`,`240 000 F`], b:0,
+     x:`10 × 24 000 = 240 000 F rendus, pour 200 000 F : le crédit coûte 40 000 F.`},
+    {e:`Pour comparer deux crédits, on regarde…`, o:[`le coût total, pour un même montant et une même durée`,`la mensualité seulement`,`le nom du vendeur`], b:0,
+     x:`Une petite mensualité peut cacher une longue durée et un coût total élevé.`},
+    {e:`Laquelle est une dette qui produit ?`, o:[`Un crédit pour acheter de la marchandise revendue avec une marge`,`Un crédit pour une fête`,`Un crédit pour un téléphone`], b:0,
+     x:`La marchandise revendue rapporte plus que le crédit ne coûte. Les deux autres avancent une dépense.`},
+    {e:`Un taux de 2 % par mois représente, sur un an…`, o:[`au moins 24 %`,`2 %`,`12 %`], b:0,
+     x:`12 × 2 % = 24 %, et près de 27 % quand les intérêts s'ajoutent aux intérêts.`},
+    {e:`Lequel est un signe de surendettement ?`, o:[`Emprunter pour rembourser une autre dette`,`Rembourser en avance`,`Avoir une épargne de précaution`], b:0,
+     x:`Emprunter pour rembourser fait grossir la dette au lieu de la réduire.`}
+  ];
+  var BANQUE=[
+    {e:`Yao rembourse 150 000 F par mois pour un revenu de 400 000 F. Sa situation est…`, o:[`au-delà du repère d'un tiers des revenus`,`sous le repère d'un tiers`,`impossible à évaluer`], b:0,
+     x:`Un tiers de 400 000 F, c'est environ 133 000 F. 150 000 F dépasse ce repère.`},
+    {e:`Le coût total d'un crédit, c'est…`, o:[`le total remboursé moins le montant emprunté`,`la mensualité multipliée par deux`,`le montant emprunté`], b:0,
+     x:`C'est ce que l'argent emprunté vous coûte réellement.`},
+    {e:`Tantie Affoué emprunte 200 000 F, rend 220 000 F et dégage 100 000 F de marge sur ses pagnes. Son gain après le crédit est de…`, o:[`80 000 F`,`100 000 F`,`120 000 F`], b:0,
+     x:`100 000 F de marge − 20 000 F de coût du crédit = 80 000 F.`},
+    {e:`Koffi rembourse 30 000 F par mois sur un revenu de 400 000 F. Par rapport au repère d'un tiers des revenus, il est…`, o:[`nettement en dessous`,`au-dessus`,`exactement au repère`], b:0,
+     x:`Un tiers de 400 000 F, c'est environ 133 000 F. Avec 30 000 F, il en est loin.`},
+    {e:`Avant de signer un crédit, il faut connaître…`, o:[`le total à rembourser, la durée et les pénalités de retard`,`seulement la mensualité`,`seulement le nom du prêteur`], b:0,
+     x:`Ces trois éléments disent ce que le crédit vous coûtera, même en cas de difficulté.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:"Reprendre la main sur mes dettes · Ce que coûte l'argent emprunté", suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Mobile money et frais`;
+  var NUM=7;
+  var SUITE=`Vous savez ce que coûtent vos opérations et comment protéger votre compte. Le module 8, <strong>Assurance et arnaques</strong>, est débloqué.`;
+  var RAPPEL=`Petits frais × souvent<br>= <span class="c">gros coût</span>.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-portrait.jpg`, pos:`center 30%`, leg:`Koffi<br>salarié à Abidjan`,
+     corps:`<h2 class="h">Combien vous coûtent vos envois et vos retraits, sur un mois ?</h2>`
+      +`<p class="p">Chaque frais paraît petit. Additionnés sur un an, ils pèsent.</p>`
+      +`<p class="p">Ce module vous apprend à <strong>compter vos frais</strong>, à <strong>protéger votre compte</strong> et à utiliser votre téléphone pour mettre de côté.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-inquiet.jpg`, pos:`center 25%`, leg:`« Je me suis trompé<br>de numéro… »`,
+     corps:`<h2 class="h">Un SMS, un appel, et un solde qui n'a pas bougé</h2>`
+      +`<p class="p">Un dimanche, Koffi reçoit un SMS : « Vous avez reçu 50 000 F ». Puis un appel pressant : « Je me suis trompé de numéro, renvoyez-moi l'argent. »</p>`
+      +`<p class="p">Koffi vérifie dans son application : <strong>son solde n'a pas bougé</strong>. Le SMS était faux. Il raccroche, et ne renvoie rien.</p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">Petits frais × souvent<br>= <span class="c">gros coût</span>.</div>`,
+     corps:`<h2 class="h">Compter, protéger, mettre de côté</h2>`
+      +`<p class="p"><strong>Compter.</strong> Les frais dépendent de la grille de votre opérateur. Additionnez-les sur un mois. Payer directement par mobile plutôt que retirer pour payer réduit souvent la note.</p>`
+      +`<p class="p"><strong>Protéger.</strong> Votre code secret ne se donne jamais, à personne, même à un agent. Vérifiez votre solde dans l'application, jamais dans un SMS.</p>`
+      +`<p class="p"><strong>Mettre de côté.</strong> Une poche séparée, alimentée le jour de la paie (module 2).</p>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">Les frais de Koffi · 1 % illustratif</span><table class="tab">`
+      +`<tr><td>Retraits : 300 000 F en 15 fois</td><td class="m">3 000</td></tr>`
+      +`<tr><td>Envois à la famille : 40 000 F</td><td class="m">400</td></tr>`
+      +`<tr><td><strong>Frais du mois</strong></td><td class="m">3 400</td></tr>`
+      +`<tr><td>Sur un an</td><td class="m">40 800</td></tr>`
+      +`<tr><td>S'il paie directement, retraits : 100 000 F</td><td class="m">1 000</td></tr>`
+      +`<tr class="tot"><td>Économie sur un an</td><td>24 000 F</td></tr></table>`,
+     corps:`<h2 class="h">3 400 F par mois, 40 800 F par an</h2>`
+      +`<p class="p">Koffi retire presque tout son salaire en petites sommes, pour payer en liquide. À 1 % de frais (taux illustratif), cela fait <strong>40 800 F par an</strong>.</p>`
+      +`<p class="p">En payant loyer, électricité et courses directement depuis son téléphone, il ne retire plus que 100 000 F par mois. Il <strong>économise 2 000 F par mois, soit 24 000 F par an</strong>.</p>`
+      +`<p class="p">Les frais réels varient selon l'opérateur et le montant : vérifiez votre grille.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Vos frais sur un an</h2>`
+      +`<p class="p">Retrouvez les frais du mois dernier dans l'historique de votre application. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Le mois prochain, notez vos frais : c'est la première étape pour les réduire.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/koffi-sourire.jpg`, pos:`center 28%`, leg:`Koffi compte ses frais<br>et garde son code`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Additionnez vos frais sur un mois, puis sur un an. Payer directement coûte souvent moins que retirer.</p>`
+      +`<p class="p"><strong>2.</strong> Votre code secret ne se donne jamais. Votre solde se vérifie dans l'application, pas dans un SMS.</p>`
+      +`<p class="p"><strong>3.</strong> Le téléphone peut aussi servir à épargner : une poche séparée, alimentée le jour de la paie.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Vos frais sur un an`,
+    champs:[{id:`fra`,label:`Frais du mois dernier`,ph:`ex. 3 400`},{id:`rev`,label:`Revenu du mois`,ph:`ex. 400 000`}],
+    calc:function(v){var a=v[0]*12;
+      if(v[1]<=0) return {res:fcfa(a), ver:`Ajoutez votre revenu pour situer ce montant.`};
+      var p=(Math.round(a/v[1]*1000)/10).toLocaleString('fr-FR');
+      return {res:fcfa(a), ver:`Soit ${p} % d'un mois de revenu, chaque année, en frais.`}}};
+  var questions=[
+    {e:`Koffi fait 15 retraits de 20 000 F dans le mois, avec 1 % de frais. Combien paie-t-il de frais ?`, o:[`3 000 F`,`200 F`,`20 000 F`], b:0,
+     x:`15 × 20 000 = 300 000 F retirés ; 1 % de 300 000 = 3 000 F.`},
+    {e:`Un agent vous demande votre code secret pour « débloquer » un dépôt. Que faites-vous ?`, o:[`Je refuse : le code ne se donne jamais`,`Je le donne si l'agent est poli`,`Je l'envoie par SMS`], b:0,
+     x:`Aucune opération légitime ne demande votre code à un tiers.`},
+    {e:`Vous recevez un SMS de dépôt, puis un appel : « je me suis trompé de numéro ». Premier réflexe ?`, o:[`Vérifier mon solde dans l'application`,`Renvoyer l'argent tout de suite`,`Donner mon code pour annuler`], b:0,
+     x:`Le SMS peut être faux. Seul le solde affiché dans l'application fait foi.`},
+    {e:`Comment réduire ses frais de mobile money ?`, o:[`Payer directement par mobile plutôt que retirer pour payer`,`Retirer plus souvent de petites sommes`,`Ne jamais regarder la grille tarifaire`], b:0,
+     x:`Chaque retrait évité, c'est un frais évité.`},
+    {e:`3 400 F de frais par mois, cela fait sur un an…`, o:[`40 800 F`,`3 400 F`,`34 000 F`], b:0,
+     x:`12 × 3 400 = 40 800 F.`}
+  ];
+  var BANQUE=[
+    {e:`Où trouver les frais exacts de vos opérations ?`, o:[`Dans la grille tarifaire de votre opérateur`,`Auprès d'un ami`,`Nulle part, ils sont secrets`], b:0,
+     x:`Les opérateurs publient leurs grilles. Votre historique montre aussi les frais payés.`},
+    {e:`Pour épargner avec son téléphone, le plus efficace est…`, o:[`une poche séparée, alimentée le jour de la paie`,`tout garder sur le même solde`,`retirer en liquide et le garder à la maison`], b:0,
+     x:`Séparer et automatiser : les deux règles des modules 2 et 4.`},
+    {e:`Un appel pressant qui vous demande d'agir « tout de suite » est…`, o:[`un signal fréquent d'arnaque`,`la procédure normale`,`une obligation légale`], b:0,
+     x:`L'urgence empêche de vérifier. C'est exactement ce que cherche l'arnaqueur.`},
+    {e:`Koffi ne retire plus que 100 000 F au lieu de 300 000 F par mois, avec 1 % de frais. Il économise chaque mois…`, o:[`2 000 F`,`3 000 F`,`1 000 F`], b:0,
+     x:`3 000 − 1 000 = 2 000 F par mois.`},
+    {e:`Quelqu'un a vu votre code secret. Que faites-vous ?`, o:[`Je le change tout de suite dans l'application`,`J'attends de voir s'il s'en sert`,`Je le confie à un proche pour qu'il surveille`], b:0,
+     x:`Un code vu n'est plus secret : changez-le sans attendre.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:'Mobile money et frais · Frais et sécurité', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+MODULES.push((function(){
+  var COURT=`Se protéger, protéger sa famille`;
+  var NUM=8;
+  var SUITE=`Vous avez terminé les huit modules du Certificat local Fondations. <strong>L'examen final est débloqué.</strong>`;
+  var RAPPEL=`Rendement très élevé<br>+ « garanti »<br>= <span class="c">danger</span>.`;
+  var etapes=[
+    {sur:`Accroche`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-portrait.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`Tantie Affoué<br>commerçante au marché`,
+     corps:`<h2 class="h">On vous a déjà promis de doubler votre argent en quelques mois ?</h2>`
+      +`<p class="p">Les arnaques visent l'épargne de ceux qui travaillent dur, souvent à travers les groupes de confiance.</p>`
+      +`<p class="p">Ce module vous apprend à <strong>reconnaître une promesse trop belle</strong>, à <strong>vérifier un acteur</strong>, et à comprendre ce qu'une assurance couvre vraiment.</p>`},
+    {sur:`Le cas`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-soucieuse.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`« 10 % par mois,<br>garanti »`,
+     corps:`<h2 class="h">« 10 % par mois, garanti »</h2>`
+      +`<p class="p">Un homme bien habillé passe au marché. Il propose aux femmes de la tontine de Tantie Affoué un « placement » à <strong>10 % par mois, garanti</strong>.</p>`
+      +`<p class="p">Les premières à verser reçoivent leurs intérêts, et le bouche-à-oreille fait le reste. Trois mois plus tard, <strong>l'homme ne répond plus</strong>.</p>`},
+    {sur:`La notion`, duree:`≈ 2 min`, illu:`papier`, html:`<div class="aplat">Rendement très élevé<br>+ « garanti »<br>= <span class="c">danger</span>.</div>`,
+     corps:`<h2 class="h">Reconnaître, vérifier, s'assurer</h2>`
+      +`<p class="p"><strong>Les signaux.</strong> Rendement très élevé et « garanti », pression pour verser vite, paiement en espèces ou sur un numéro personnel.</p>`
+      +`<p class="p"><strong>Vérifier.</strong> Avant de verser, cherchez l'acteur sur les listes officielles : BCEAO pour les banques, la microfinance et la monnaie électronique ; AMF-UMOA pour les placements financiers et la bourse ; CIMA, ou la direction des assurances de votre pays, pour les assurances.</p>`
+      +`<p class="p"><strong>S'assurer.</strong> Une assurance met en commun les cotisations de beaucoup pour payer les sinistres de quelques-uns. Lisez ce qu'elle <strong>ne couvre pas</strong>.</p>`},
+    {sur:`L'exemple chiffré`, duree:`≈ 2 min`, illu:`nuit`, html:
+      `<span class="tabtitre">« 10 % par mois », c'est combien ?</span><table class="tab">`
+      +`<tr><td>Versé au départ</td><td>100 000</td></tr>`
+      +`<tr><td>Après 6 mois à 10 % par mois</td><td>177 156</td></tr>`
+      +`<tr><td>Après 12 mois, intérêts réinvestis</td><td>313 843</td></tr>`
+      +`<tr class="tot"><td>Promesse sur un an</td><td>+ 214 %</td></tr></table>`,
+     corps:`<h2 class="h">Une promesse impossible à tenir</h2>`
+      +`<p class="p">Intérêts réinvestis, 10 % par mois, c'est <strong>plus que tripler l'argent en un an</strong>. Aucune activité honnête ne peut le garantir.</p>`
+      +`<p class="p">Les premiers « intérêts » sont payés avec l'argent des nouveaux venus : c'est une <strong>pyramide</strong>. Elle s'effondre dès que les versements ralentissent.</p>`
+      +`<p class="p">Les dépôts et obligations réglementés de la zone rapportent en général <strong>moins de 10 % par an</strong>. Aucun placement réglementé ne garantit 10 % par mois.</p>`},
+    {sur:`À vous`, duree:`≈ 3 min`, exo:true,
+     corps:`<h2 class="h">Testez une promesse</h2>`
+      +`<p class="p">Indiquez le montant et le rendement mensuel promis. Rien n'est enregistré ni envoyé.</p>`,
+     apres:`<p class="p">Quel que soit le résultat, vérifiez l'agrément de l'acteur avant de verser.</p>`},
+    {sur:`À retenir`, duree:`≈ 1 min`, photo:`certificat-pilote/affoue-sourire.jpg`, alt:`Tantie Affoué`, pos:`center 22%`, leg:`Tantie Affoué vérifie<br>avant de verser`,
+     corps:`<h2 class="h">Trois idées à garder</h2>`
+      +`<p class="p"><strong>1.</strong> Rendement très élevé et « garanti » : c'est le signal d'alerte.</p>`
+      +`<p class="p"><strong>2.</strong> Avant de verser, vérifiez l'agrément auprès de l'autorité compétente.</p>`
+      +`<p class="p"><strong>3.</strong> Une assurance protège contre des risques précis. Lisez les exclusions et la franchise.</p>`},
+    {sur:`Quiz`, duree:`≈ 3 min`, quiz:true}
+  ];
+  var EXO={titre:`Valeur promise après un an`,
+    champs:[{id:`mon`,label:`Montant versé`,ph:`ex. 100 000`},{id:`tx`,label:`Rendement promis par mois (%)`,ph:`ex. 10`,dec:true}],
+    calc:function(v){var a=v[0]*Math.pow(1+v[1]/100,12), an=(Math.pow(1+v[1]/100,12)-1)*100;
+      var p=Math.round(an).toLocaleString('fr-FR');
+      return {res:fcfa(a), ver: an>10 ? `Soit + ${p} % par an. Signal d'alerte : vérifiez l'agrément avant de verser un franc.` : `Soit + ${p} % par an. Rendement dans la fourchette habituelle de la zone. Une garantie reste suspecte : vérifiez l'agrément.`}}};
+  var questions=[
+    {e:`Un placement promet 10 % par mois, garanti. C'est…`, o:[`un signal d'arnaque`,`une bonne affaire à saisir`,`un placement ordinaire`], b:0,
+     x:`10 % par mois, c'est 120 % par an, et plus de 200 % si les intérêts sont réinvestis. Aucune activité honnête ne le garantit.`},
+    {e:`Dans une pyramide, les premiers « intérêts » sont payés…`, o:[`avec l'argent des nouveaux venus`,`par l'activité de l'entreprise`,`par l'État`], b:0,
+     x:`Il n'y a pas d'activité derrière : l'argent des derniers paie les premiers, jusqu'à l'effondrement.`},
+    {e:`Avant de confier votre argent à un acteur, vous vérifiez…`, o:[`qu'il est agréé par l'autorité compétente`,`qu'il est sympathique`,`que des amis ont déjà versé`], b:0,
+     x:`Les autorités publient les listes des acteurs agréés. C'est la première vérification. Méfiez-vous aussi des imitations d'acteurs agréés.`},
+    {e:`Une assurance fonctionne parce que…`, o:[`beaucoup cotisent un peu pour payer les sinistres de quelques-uns`,`l'assureur garantit un rendement`,`chacun est remboursé tous les ans`], b:0,
+     x:`C'est la mise en commun du risque. On paie pour être protégé, pas pour gagner.`},
+    {e:`Avant de souscrire une assurance, on lit en priorité…`, o:[`ce qu'elle ne couvre pas : exclusions et franchise`,`la couleur de la brochure`,`le nom du vendeur`], b:0,
+     x:`Les exclusions disent quand l'assurance ne paiera pas. C'est là que se jouent les déceptions.`}
+  ];
+  var BANQUE=[
+    {e:`100 000 F placés à 10 % par mois pendant 12 mois, intérêts réinvestis chaque mois, deviendraient environ…`, o:[`314 000 F`,`112 000 F`,`220 000 F`], b:0,
+     x:`100 000 × 1,1 puissance 12 ≈ 313 843 F : les intérêts s'ajoutent aux intérêts chaque mois.`},
+    {e:`Dans la zone, les assurances sont encadrées par…`, o:[`la CIMA`,`la bourse régionale`,`les opérateurs de mobile money`], b:0,
+     x:`La CIMA réglemente et contrôle les compagnies d'assurance des pays membres.`},
+    {e:`Lequel est un signal d'alerte ?`, o:[`On vous presse de verser « avant ce soir »`,`On vous laisse le temps de lire le contrat`,`L'acteur figure sur la liste officielle`], b:0,
+     x:`La pression empêche de vérifier. Un acteur sérieux vous laisse le temps.`},
+    {e:`La franchise d'une assurance, c'est…`, o:[`la part du sinistre qui reste à votre charge`,`un cadeau de l'assureur`,`une réduction sur la cotisation`], b:0,
+     x:`Si la franchise est de 50 000 F, l'assureur ne paie qu'au-delà de ce montant.`},
+    {e:`Une amie a reçu ses premiers intérêts d'un placement à 10 % par mois. Cela prouve…`, o:[`rien : les pyramides paient les premiers pour attirer les suivants`,`que le placement est sûr`,`qu'il faut verser vite`], b:0,
+     x:`Payer les premiers est la stratégie même de la pyramide.`}
+  ];
+
+  return {num:NUM, court:COURT, titre:'Se protéger, protéger sa famille · Assurance et arnaques', suite:SUITE, rappel:RAPPEL, etapes:etapes, exo:EXO, questions:questions, banque:BANQUE};
+})());
+</script>
+<script>
+(function(){
+  // ---------- utilitaires
+  function fcfa(n){return (n<0?'− ':'')+Math.abs(Math.round(n)).toLocaleString('fr-FR').replace(/ | /g,' ')+' F'}
+  window.fcfa=fcfa;
+  function $(id){return document.getElementById(id)}
+  function melange(a){a=a.slice();for(var k=a.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=a[k];a[k]=a[r];a[r]=t}return a}
+  var CLE='efa-certificat-fondations-pilote';
+  function charger(){try{var s=localStorage.getItem(CLE);if(s)return JSON.parse(s)}catch(e){}return {valides:{},tentatives:[],reussite:null}}
+  function sauver(){try{localStorage.setItem(CLE,JSON.stringify(etat))}catch(e){}}
+  var etat=charger();
+  var EXAMEN={nb:24, parModule:3, minutes:30, seuil:17, essais:3};
+
+  var corps=$('corps'), compteur=$('compteur'), titre=$('titre'), duree=$('duree'), prec=$('prec'), suiv=$('suiv'), retour=$('retour'), progres=$('progres'), cadre=$('cadre-wrap'), certifWrap=$('certif-wrap');
+  var vue='sommaire', M=null, i=0, qi=0, rep=[], ordreQ=null;
+  var ex=null; // état de l'examen en cours
+
+  function nbValides(){return MODULES.filter(function(m){return etat.valides[m.num]}).length}
+  function anim(){corps.style.animation='none';void corps.offsetWidth;corps.style.animation=''}
+  function segments(n,faits,clic){
+    progres.innerHTML='';progres.style.gridTemplateColumns='repeat('+n+',1fr)';
+    for(var k=0;k<n;k++){var b=document.createElement('button');b.type='button';if(faits(k))b.classList.add('fait');
+      if(clic){(function(k){b.onclick=function(){clic(k)}})(k);b.setAttribute('aria-label','Écran '+(k+1))}else{b.tabIndex=-1;b.style.cursor='default'}
+      progres.appendChild(b)}
+  }
+  function boutons(o){
+    retour.hidden=!o.retour; prec.hidden=!o.prec; suiv.hidden=!o.suiv;
+    if(o.prec){prec.textContent=o.prec.t||'Précédent';prec.setAttribute('aria-disabled',o.prec.off?'true':'false');prec.onclick=o.prec.off?null:o.prec.f}
+    if(o.suiv){suiv.textContent=o.suiv.t;suiv.setAttribute('aria-disabled',o.suiv.off?'true':'false');suiv.onclick=o.suiv.off?null:o.suiv.f}
+    duree.textContent=o.duree||'';
+  }
+  retour.onclick=function(){if(ex&&ex.encours&&!confirmerAbandon())return;arreterChrono();sommaire()};
+  function confirmerAbandon(){ // pas de boîte de dialogue : l'abandon passe par un second clic
+    if(retour.dataset.arme){delete retour.dataset.arme;retour.textContent='Sommaire';ex.encours=false;return true}
+    retour.dataset.arme='1';retour.textContent='Abandonner l\'examen ?';setTimeout(function(){delete retour.dataset.arme;retour.textContent='Sommaire'},3000);return false;
+  }
+
+  // ---------- sommaire
+  function sommaire(){
+    vue='sommaire';cadre.hidden=false;certifWrap.hidden=true;
+    titre.textContent='Certificat local Fondations · Sommaire';
+    var v=nbValides(); compteur.textContent=v+' / 8';
+    segments(8,function(k){return etat.valides[k+1]});
+    var tuiles=MODULES.map(function(m){
+      var ok=etat.valides[m.num];
+      return '<button type="button" class="tuile'+(ok?' ok':'')+'" data-m="'+m.num+'"><span class="tnum">'+m.num+'</span><span class="tnom">'+m.court+'</span><span class="tetat">'+(ok?'Validé':(m.num<=4?'Pilote':'À faire'))+'</span></button>';
+    }).join('');
+    var r=etat.reussite;
+    tuiles+='<button type="button" class="tuile exam'+(r?' ok':'')+'" data-m="examen"><span class="tnum">✦</span><span class="tnom">Examen final</span><span class="tetat">'+(r?'Réussi · '+r.score+' / 24':'24 questions · 30 min')+'</span></button>';
+    corps.className='corps';
+    corps.innerHTML='<div class="illu nuit accueil"><img class="logo" src="certificat-pilote/logo-efa.png" alt="Logo EFA"><span class="tabtitre">Éducation Financière Afrique</span>'
+      +'<div class="grand">Certificat local<br>Fondations</div><div class="mot">8 modules · 1 examen · environ 2 h de modules et d’examen</div>'
+      +'<div class="mot">L\'argent s\'apprend.</div><button type="button" class="lienraz" id="raz">Réinitialiser ma progression</button></div>'
+      +'<div class="texte"><span class="sur">Sommaire</span><h2 class="h hs">Les bases pour reprendre la main sur votre argent</h2><div class="tuiles">'+tuiles+'</div>'
+      +'<p class="note">Version pilote : tous les modules sont ouverts. Suivez-les dans l\'ordre, un par jour suffit. Le pilote est ouvert jusqu\'au 30 novembre 2026.</p></div>';
+    Array.prototype.forEach.call(corps.querySelectorAll('.tuile'),function(b){b.onclick=function(){var d=b.dataset.m;if(d==='examen')examenIntro();else ouvrir(+d)}});
+    $('raz').onclick=function(){etat={valides:{},tentatives:[],reussite:null};sauver();sommaire()};
+    var prochain=MODULES.filter(function(m){return !etat.valides[m.num]})[0];
+    boutons({retour:false,prec:false,suiv:{t:prochain?(v?'Reprendre : module '+prochain.num:'Commencer le module 1'):(r?'Voir mon certificat':'Passer l\'examen'),f:function(){prochain?ouvrir(prochain.num):(r?certificat():examenIntro())}},duree:v+' module'+(v>1?'s':'')+' validé'+(v>1?'s':'')});
+    anim();
+  }
+
+  // ---------- modules
+  function ouvrir(n){M=MODULES[n-1];i=0;qi=0;rep=[];ordreQ=null;vue='module';titre.textContent='Certificat local Fondations · Module '+M.num+' · '+M.titre;rendre()}
+  function illu(e){
+    if(e.exo) return '<div class="illu bleu"><span class="tabtitre">'+M.exo.titre+'</span><div class="resultat" id="res">—</div><div class="verdict" id="ver">Saisissez vos montants</div></div>';
+    if(e.photo) return '<figure class="illu photo"><img src="'+e.photo+'" alt="'+(e.alt||'Koffi')+'" style="object-position:'+e.pos+'"><figcaption class="legende">'+e.leg+'</figcaption></figure>';
+    return '<div class="illu '+e.illu+'">'+e.html+(e.leg?'<div class="legende">'+e.leg+'</div>':'')+'</div>';
+  }
+  function champsHtml(){
+    return '<div class="exo'+(M.exo.champs.length===3?' trois':'')+'">'+M.exo.champs.map(function(c){return '<label for="'+c.id+'">'+c.label+'<input id="'+c.id+'" inputmode="'+(c.dec?'decimal':'numeric')+'" placeholder="'+c.ph+'"></label>'}).join('')+'</div>';
+  }
+  function exo(){
+    var champs=M.exo.champs.map(function(c){return $(c.id)}), res=$('res'), ver=$('ver');
+    function lire(c,k){return M.exo.champs[k].dec?parseFloat(String(c.value).replace(',','.')):parseInt(String(c.value).replace(/[^\d]/g,''),10)}
+    function calc(){
+      var v=champs.map(lire);
+      if(v.some(isNaN)){res.textContent='—';ver.textContent='Saisissez vos montants';return}
+      var r=M.exo.calc(v); res.textContent=r.res; ver.textContent=r.ver;
+    }
+    champs.forEach(function(c){c.oninput=calc});
+  }
+  function optionsHtml(q,ordre){return ordre.map(function(k,pos){return '<button type="button" class="opt" data-k="'+k+'"><span class="l">'+'ABC'[pos]+'</span><span>'+q.o[k]+'</span></button>'}).join('')}
+  function rendreQuiz(){
+    var qs=M.questions;
+    if(qi>=qs.length){
+      var s=rep.filter(Boolean).length, ok=s>=4;
+      if(ok){etat.valides[M.num]=true;sauver()}
+      corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">Votre score</span><div class="score">'+s+' / 5</div><div class="verdict">'+(ok?'Quiz réussi · module validé pour le certificat':'Seuil : 4 bonnes réponses')+'</div></div>'
+        +'<div class="texte"><span class="sur">Résultat</span><h2 class="h">'+(ok?'Bravo, le module '+M.num+' est validé':'Encore un effort')+'</h2>'
+        +'<p class="p">'+(ok?M.suite:'Relisez les écrans 3 et 4, puis recommencez le quiz. Il n\'y a pas de limite d\'essais.')+'</p>'
+        +'<div class="chips"><button class="btn prec" type="button" id="refaire">Refaire le quiz</button></div></div>';
+      $('refaire').onclick=function(){qi=0;rep=[];ordreQ=null;rendre()};
+      return;
+    }
+    var q=qs[qi]; if(!ordreQ) ordreQ=melange([0,1,2]);
+    corps.innerHTML='<div class="illu papier"><div class="aplat">'+M.rappel+'</div><div class="legende">Question '+(qi+1)+' sur 5</div></div>'
+      +'<div class="texte q"><span class="sur">Quiz · question '+(qi+1)+' / 5</span><p class="enonce">'+q.e+'</p><div class="opts" id="opts">'+optionsHtml(q,ordreQ)+'</div><div id="ex"></div></div>';
+    var box=$('opts');
+    Array.prototype.forEach.call(box.children,function(b){b.onclick=function(){
+      if(rep.length>qi) return;
+      var k=+b.dataset.k, bon=k===q.b; rep.push(bon);
+      Array.prototype.forEach.call(box.children,function(c){c.disabled=true;var j=+c.dataset.k;if(j===q.b)c.classList.add('ok');else if(j===k)c.classList.add('ko')});if(window.EFA_SONS)EFA_SONS.joue(k===q.b?'bon':'faux');
+      $('ex').innerHTML='<div class="explic"><strong>'+(bon?'Juste. ':'Pas tout à fait. ')+'</strong>'+q.x+'</div>';
+      majPied();
+    }});
+  }
+  function majPied(){
+    var dernier=i===M.etapes.length-1, fini=qi>=M.questions.length, valide=fini&&rep.filter(Boolean).length>=3;
+    var s;
+    if(!dernier) s={t:'Suivant',f:function(){aller(i+1)}};
+    else if(fini) s={t:M.num<8?'Module suivant':'Passer l\'examen',off:!valide,f:function(){M.num<8?ouvrir(M.num+1):examenIntro()}};
+    else if(rep.length>qi) s={t:qi===M.questions.length-1?'Voir mon score':'Question suivante',f:function(){qi++;ordreQ=null;rendre()}};
+    else s={t:'Choisissez une réponse',off:true};
+    boutons({retour:true,prec:{off:i===0,f:function(){aller(i-1)}},suiv:s,duree:M.etapes[i].duree});
+  }
+  function rendre(){
+    var e=M.etapes[i];
+    compteur.textContent=(i+1)+' / '+M.etapes.length;
+    segments(M.etapes.length,function(k){return k<=i},function(k){aller(k)});
+    corps.className='corps';
+    if(e.quiz) rendreQuiz();
+    else{corps.innerHTML=illu(e)+'<div class="texte"><span class="sur">'+e.sur+'</span>'+e.corps+(e.exo?champsHtml()+(e.apres||''):'')+'</div>';if(e.exo)exo()}
+    anim();majPied();
+  }
+  function aller(k){if(k<0||k>=M.etapes.length)return;i=k;if(M.etapes[k].quiz){qi=0;rep=[];ordreQ=null}rendre()}
+
+  // ---------- examen
+  function echecsRecents(){var t=Date.now();return etat.tentatives.filter(function(a){return !a.ok&&t-a.t<864e5})}
+  function examenIntro(){
+    vue='examen';arreterChrono();titre.textContent='Certificat local Fondations · Examen final';compteur.textContent='Examen';
+    segments(8,function(k){return etat.valides[k+1]});
+    var ech=echecsRecents(), bloque=!etat.reussite&&ech.length>=EXAMEN.essais, reste=EXAMEN.essais-ech.length;
+    var attente='';
+    if(bloque){var fin=Math.min.apply(null,ech.map(function(a){return a.t}))+864e5,h=Math.ceil((fin-Date.now())/36e5);attente='Vous avez utilisé vos trois tentatives. Nouvel essai possible dans '+h+' h.'}
+    var v=nbValides();
+    corps.className='corps';
+    corps.innerHTML='<div class="illu nuit"><span class="tabtitre">Examen final</span><div class="resultat">24</div><div class="mot">questions</div><div class="resultat">30 min</div><div class="mot">70 % pour réussir, soit 17 bonnes réponses</div></div>'
+      +'<div class="texte"><span class="sur">Avant de commencer</span><h2 class="h">L\'examen du Certificat local Fondations</h2>'
+      +'<p class="p"><strong>3 questions par module</strong>, tirées au hasard parmi 10. Vous pouvez revenir sur une question tant que vous n\'avez pas terminé.</p>'
+      +'<p class="p">Pas de correction pendant l\'examen : votre résultat s\'affiche à la fin, module par module.</p>'
+      +'<p class="p"><strong>3 tentatives</strong>, puis 24 heures d\'attente. '+(etat.reussite?'Vous avez déjà réussi l\'examen.':bloque?attente:'Tentatives restantes : <strong>'+reste+'</strong>.')+'</p>'
+      +(v<8&&!etat.reussite?'<p class="note">L\'examen s\'ouvre quand les 8 modules sont validés : '+v+' sur 8 pour l\'instant.</p>':'')+'</div>';
+    boutons({retour:true,prec:false,suiv:etat.reussite?{t:'Voir mon certificat',f:certificat}:v<8?{t:'Valider les modules d\'abord',off:true,f:function(){}}:{t:'Commencer l\'examen',off:bloque,f:examenDebut},duree:''});
+    anim();
+  }
+  var chrono=null;
+  function arreterChrono(){if(chrono){clearInterval(chrono);chrono=null}}
+  function examenDebut(){
+    var qs=[];
+    MODULES.forEach(function(m){melange(m.questions.concat(m.banque)).slice(0,EXAMEN.parModule).forEach(function(q){qs.push({q:q,m:m.num,ordre:melange([0,1,2])})})});
+    ex={qs:melange(qs),rep:{},k:0,fin:Date.now()+EXAMEN.minutes*6e4,encours:true};
+    chrono=setInterval(function(){var r=ex.fin-Date.now();if(r<=0){examenFin(true);return}var t=$('chrono');if(t)t.textContent=mmss(r)},1000);
+    examenQuestion();
+  }
+  function mmss(r){var s=Math.max(0,Math.ceil(r/1000));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+  function examenQuestion(){
+    var k=ex.k, it=ex.qs[k], m=MODULES[it.m-1];
+    compteur.textContent=(k+1)+' / '+ex.qs.length;
+    segments(ex.qs.length,function(j){return ex.rep[j]!==undefined},function(j){ex.k=j;examenQuestion()});
+    corps.className='corps';
+    corps.innerHTML='<div class="illu papier"><span class="tabtitre fonce">Temps restant</span><div class="resultat fonce" id="chrono">'+mmss(ex.fin-Date.now())+'</div><div class="legende">Module '+m.num+' · '+m.court+'</div></div>'
+      +'<div class="texte q"><span class="sur">Examen · question '+(k+1)+' / '+ex.qs.length+'</span><p class="enonce">'+it.q.e+'</p><div class="opts" id="opts">'+optionsHtml(it.q,it.ordre)+'</div></div>';
+    Array.prototype.forEach.call($('opts').children,function(b){
+      if(ex.rep[k]===+b.dataset.k) b.classList.add('choisi');
+      b.onclick=function(){ex.rep[k]=+b.dataset.k;Array.prototype.forEach.call($('opts').children,function(c){c.classList.toggle('choisi',c===b)});majExamen()};
+    });
+    anim();majExamen();
+  }
+  function majExamen(){
+    var k=ex.k, n=ex.qs.length, rep=Object.keys(ex.rep).length, der=k===n-1;
+    boutons({retour:true,prec:{off:k===0,f:function(){ex.k--;examenQuestion()}},
+      suiv:der?{t:rep<n?'Terminer ('+(n-rep)+' sans réponse)':'Terminer l\'examen',f:function(){examenFin(false)}}:{t:'Question suivante',f:function(){ex.k++;examenQuestion()}},
+      duree:rep+' / '+n+' répondues'});
+    Array.prototype.forEach.call(progres.children,function(b,j){b.classList.toggle('fait',ex.rep[j]!==undefined);b.classList.toggle('ici',j===k)});
+  }
+  function examenFin(tempsEcoule){
+    arreterChrono();ex.encours=false;
+    var parM={}, s=0;
+    ex.qs.forEach(function(it,j){var ok=ex.rep[j]===it.q.b;if(ok)s++;parM[it.m]=(parM[it.m]||0)+(ok?1:0)});
+    var ok=s>=EXAMEN.seuil, pct=Math.round(s/ex.qs.length*100);
+    etat.tentatives.push({t:Date.now(),score:s,ok:ok});
+    if(ok){etat.reussite={score:s,pct:pct,date:new Date().toISOString(),numero:'EFA-F-'+new Date().getFullYear()+'-'+('00000'+Math.floor(Math.random()*1e6)).slice(-6),nom:''}}
+    sauver();
+    compteur.textContent='Résultat';
+    var lignes=MODULES.map(function(m){var v=parM[m.num]||0;return '<tr><td>'+m.num+'. '+m.court+'</td><td class="v'+(v<2?' faible':'')+'">'+v+' / 3</td></tr>'}).join('');
+    var faibles=MODULES.filter(function(m){return (parM[m.num]||0)<2}).map(function(m){return m.num});
+    corps.innerHTML='<div class="illu '+(ok?'bleu':'nuit')+'"><span class="tabtitre">'+(tempsEcoule?'Temps écoulé · ':'')+'Votre score</span><div class="score">'+s+' / 24</div><div class="verdict">'+pct+' % · '+(ok?'Examen réussi':'Seuil : 17 bonnes réponses')+'</div></div>'
+      +'<div class="texte"><span class="sur">Résultat de l\'examen</span><h2 class="h">'+(ok?'Félicitations, vous avez réussi':'Pas encore, mais vous approchez')+'</h2>'
+      +'<table class="tab clair">'+lignes+'</table>'
+      +'<p class="p">'+(ok?'Votre Certificat local Fondations vous attend.':(faibles.length?'Revoyez en priorité le'+(faibles.length>1?'s modules ':' module ')+faibles.join(', ')+'. ':'')+'Tentatives restantes : '+Math.max(0,EXAMEN.essais-echecsRecents().length)+'.')+'</p></div>';
+    boutons({retour:true,prec:false,suiv:ok?{t:'Obtenir mon certificat',f:certificat}:{t:'Revenir à l\'examen',f:examenIntro},duree:''});
+    segments(8,function(k){return (parM[k+1]||0)>=2});
+    anim();
+  }
+
+  // ---------- certificat
+  function certificat(){
+    var r=etat.reussite; if(!r) return examenIntro();
+    if(!r.nom){
+      vue='certif';titre.textContent='Certificat local Fondations · Votre certificat';compteur.textContent='✦';
+      corps.className='corps';
+      corps.innerHTML='<div class="illu bleu"><span class="tabtitre">Examen réussi</span><div class="score">'+r.score+' / 24</div><div class="verdict">'+r.pct+' %</div></div>'
+        +'<div class="texte"><span class="sur">Votre certificat</span><h2 class="h">Quel nom inscrire sur votre certificat ?</h2>'
+        +'<p class="p">Écrivez votre prénom et votre nom tels que vous voulez les voir apparaître.</p>'
+        +'<div class="exo"><label for="nom">Prénom et nom<input id="nom" autocomplete="name" placeholder="ex. Aya Kouassi"></label></div></div>';
+      var champ=$('nom');
+      boutons({retour:true,prec:false,suiv:{t:'Créer mon certificat',off:true,f:function(){r.nom=champ.value.trim().replace(/\s+/g,' ');sauver();afficherCertif()}},duree:''});
+      champ.oninput=function(){suiv.setAttribute('aria-disabled',champ.value.trim().length<3?'true':'false');suiv.onclick=champ.value.trim().length<3?null:function(){r.nom=champ.value.trim().replace(/\s+/g,' ');sauver();afficherCertif()}};
+      champ.focus();anim();return;
+    }
+    afficherCertif();
+  }
+  function dateFr(iso){return new Date(iso).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function afficherCertif(){
+    var r=etat.reussite; vue='certif'; cadre.hidden=true; certifWrap.hidden=false;
+    $('c-nom').textContent=r.nom; $('c-date').textContent=dateFr(r.date); $('c-num').textContent=r.numero; $('c-score').textContent=r.pct+' %';
+    $('c-modules').innerHTML=MODULES.map(function(m){return '<li><span>'+m.num+'</span>'+esc(m.court)+'</li>'}).join('');
+    $('b-carre').onclick=function(){badge(1080,1080)}; $('b-story').onclick=function(){badge(1080,1920)};
+    $('b-print').onclick=function(){certifImage()}; $('b-imprimer').onclick=function(){try{window.print()}catch(e){}}; $('b-retour').onclick=function(){sommaire()};
+    $('b-nom').onclick=function(){r.nom='';sauver();cadre.hidden=false;certifWrap.hidden=true;certificat()};
+    window.scrollTo(0,0);
+  }
+  function badge(W,H){
+    var r=etat.reussite, cv=document.createElement('canvas'); cv.width=W; cv.height=H; var g=cv.getContext('2d');
+    var lg=new Image(); lg.src='certificat-pilote/logo-efa.png';
+    var pret=Promise.all([document.fonts.load('700 80px "Libre Baskerville"'),document.fonts.load('800 30px "Source Sans 3"'),new Promise(function(ok){lg.complete?ok():(lg.onload=ok,lg.onerror=ok)})]).catch(function(){});
+    Promise.race([pret,new Promise(function(ok){setTimeout(ok,2500)})]).then(function(){
+      dessiner(true);
+      var url;
+      try{url=cv.toDataURL('image/png')}catch(e){cv=document.createElement('canvas');cv.width=W;cv.height=H;g=cv.getContext('2d');dessiner(false);url=cv.toDataURL('image/png')}
+      offrir(cv,'badge-certificat-efa-fondations-'+(W===H?'carre':'statut')+'.png',url,'Badge Certificat local Fondations');
+    });
+    function dessiner(avecLogo){
+      g.fillStyle='#0B1220';g.fillRect(0,0,W,H);
+      var sq=H===1080, top=sq?90:420, ls=sq?92:96;
+      if(avecLogo&&lg.naturalWidth) g.drawImage(lg,W/2-70,top,140,140);
+      g.textAlign='center';g.fillStyle='#F09680';g.font='800 30px "Source Sans 3"';
+      espace(g,'CERTIFICAT EFA · FONDATIONS',W/2,top+(sq?210:250),7);
+      g.fillStyle='#FFFFFF';g.font='700 76px "Libre Baskerville"';
+      var l=["J'ai passé","le Certificat EFA","Fondations"],y=top+(sq?310:370);
+      l.forEach(function(t,k){g.fillStyle=k===2?'#6DB8F2':'#FFFFFF';g.fillText(t,W/2,y);y+=ls});
+      g.fillStyle='#C9D1DE';g.font='600 34px "Source Sans 3"';g.fillText('8 modules · examen réussi · '+dateFr(r.date),W/2,y+(sq?20:40));y+=sq?-30:0;
+      g.fillStyle='#E44828';rond(g,W/2-300,y+100,600,76,38);g.fill();
+      g.fillStyle='#FFFFFF';g.font='800 34px "Source Sans 3"';g.fillText('Faites votre diagnostic sur efa.africa',W/2,y+150);
+      g.fillStyle='#8E98AA';g.font='700 26px "Source Sans 3"';espace(g,'N° '+r.numero,W/2,H-(sq?60:260),4);
+      g.fillStyle='#C9D1DE';g.font='italic 400 30px "Libre Baskerville"';g.fillText("L'argent s'apprend.",W/2,H-(sq?110:320));
+    }
+  }
+  function espace(g,t,x,y,tr){var w=g.measureText(t).width+tr*(t.length-1),cx=x-w/2;g.textAlign='left';for(var k=0;k<t.length;k++){g.fillText(t[k],cx,y);cx+=g.measureText(t[k]).width+tr}g.textAlign='center'}
+  function rond(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
+
+
+  // ---------- enregistrer un fichier : lien de téléchargement classique
+  function offrir(cv,nom,url,alt){
+    $('apercu').innerHTML='<p>Image prête. Si l\'enregistrement ne s\'ouvre pas, appuyez longuement sur l\'image pour l\'enregistrer.</p><img alt="'+alt+'" src="'+url+'">';
+    cv.toBlob(function(blob){
+      var a=document.createElement('a');a.href=url;a.download=nom;document.body.appendChild(a);a.click();a.remove()
+    },'image/png');
+  }
+  // ---------- certificat en image A4 paysage (300 dpi)
+  function certifImage(){
+    var r=etat.reussite, W=3508, H=2480, cv=document.createElement('canvas');cv.width=W;cv.height=H;var g=cv.getContext('2d');
+    var lg=new Image();lg.src='certificat-pilote/logo-efa.png';
+    var pret=Promise.all([document.fonts.load('700 80px "Libre Baskerville"'),document.fonts.load('800 30px "Source Sans 3"'),new Promise(function(ok){lg.complete?ok():(lg.onload=ok,lg.onerror=ok)})]).catch(function(){});
+    Promise.race([pret,new Promise(function(ok){setTimeout(ok,2500)})]).then(function(){
+      dessiner(true);var url;
+      try{url=cv.toDataURL('image/png')}catch(e){cv=document.createElement('canvas');cv.width=W;cv.height=H;g=cv.getContext('2d');dessiner(false);url=cv.toDataURL('image/png')}
+      offrir(cv,'certificat-efa-fondations-'+r.numero+'.png',url,'Certificat local Fondations');
+    });
+    function dessiner(avecLogo){
+      var X=320;
+      g.fillStyle='#F5EFE2';g.fillRect(0,0,W,H);g.textAlign='left';g.textBaseline='alphabetic';
+      if(avecLogo&&lg.naturalWidth)g.drawImage(lg,X,250,190,190);
+      g.fillStyle='#0B1220';g.font='800 44px "Source Sans 3"';espaceG(g,'EFA · ÉDUCATION FINANCIÈRE AFRIQUE',X+(avecLogo?240:0),362,10);
+      g.font='800 36px "Source Sans 3"';var sp='PILOTE 2026',spw=g.measureText(sp).width+5*(sp.length-1)+96;g.fillStyle='#F2B84B';rond(g,W-X-spw,305,spw,92,46);g.fill();g.fillStyle='#0B1220';espaceG(g,sp,W-X-spw+48,364,5);
+      g.fillStyle='#E44828';g.font='800 46px "Source Sans 3"';espaceG(g,'CERTIFICAT EFA · NIVEAU 1',X,830,11);
+      g.fillStyle='#0B1220';g.font='700 190px "Libre Baskerville"';g.fillText('Fondations',X,1030);
+      g.fillStyle='#4E5566';g.font='400 56px "Source Sans 3"';g.fillText('est attribué à',X,1150);
+      g.fillStyle='#0B1220';g.font='700 140px "Libre Baskerville"';g.fillText(r.nom,X,1320,W-2*X);
+      g.fillStyle='#4E5566';g.font='400 54px "Source Sans 3"';
+      g.fillText("pour avoir suivi les huit modules du parcours Fondations d'éducation financière",X,1440);
+      g.fillText('et réussi l\'examen final avec un score de '+r.pct+' %.',X,1515);
+      g.font='700 42px "Source Sans 3"';
+      MODULES.forEach(function(m,k){var x=X+(k%4)*720,y=1650+Math.floor(k/4)*70;g.fillStyle='#E44828';g.fillText(m.num,x,y);g.fillStyle='#2A3142';g.fillText(m.court,x+45,y)});
+      g.fillStyle='#E2D8C4';g.fillRect(X,1930,W-2*X,3);
+      g.fillStyle='#7A8293';g.font='700 34px "Source Sans 3"';espaceG(g,'DATE',X,2010,3);espaceG(g,'NUMÉRO',X+1000,2010,3);
+      g.fillStyle='#0B1220';g.font='700 56px "Libre Baskerville"';g.fillText(dateFr(r.date),X,2090);g.fillText(r.numero,X+1000,2090);
+      g.fillRect(X+2000,2050,W-2*X-2000,4);g.fillStyle='#7A8293';g.font='700 34px "Source Sans 3"';espaceG(g,"ÉLYSÉE JOHNSON · PRÉSIDENT D'EFA",X+2000,2110,3);
+      g.font='700 36px "Source Sans 3"';g.fillStyle='#4E5566';g.fillText("EFA aide chacun à passer du cercle, l'argent qui tourne, à la spirale, l'argent qui reste.",X,2330);
+      g.textAlign='right';g.fillStyle='#7A8293';g.font='400 36px "Source Sans 3"';g.fillText('Délivré pendant le pilote du Certificat EFA',W-X,2330);g.textAlign='left';
+    }
+  }
+  function espaceG(g,t,x,y,tr){for(var k=0;k<t.length;k++){g.fillText(t[k],x,y);x+=g.measureText(t[k]).width+tr}}
+
+  document.addEventListener('keydown',function(ev){
+    if(ev.target.tagName==='INPUT'||cadre.hidden)return;
+    if(ev.key==='ArrowRight'&&!suiv.hidden)suiv.click();
+    if(ev.key==='ArrowLeft'&&!prec.hidden)prec.click();
+  });
+  var mq=+(new URLSearchParams(location.search).get('m')||0); if(mq>=1&&mq<=MODULES.length) ouvrir(mq); else sommaire();
+})();
+</script>
+<script src="efa-sons.js?v=2026102701" defer></script>
+<script src="efa-suite.js?v=2026102902" defer></script>
+<script src="efa-compte.js?v=2026102701" defer></script>
+<script src="clone/habillage.js?v=20261030a" defer></script>
+</body></html>

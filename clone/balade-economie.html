@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>La balade de l’économie · EFA</title>
+<meta name="description" content="Six salles et huit jeux pour comprendre l’économie avec nos marchés, nos banques et le franc CFA : échanger, la monnaie, les acteurs, l’État, les banques et l’inflation, la croissance.">
+<link rel="canonical" href="https://efa.africa/balade-economie">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="La balade de l’économie : du marché à la banque centrale">
+<meta property="og:description" content="Du troc au mobile money, du marché au coin de la rue à la BCEAO : une visite en six salles, avec un jeu dans chacune.">
+<meta property="og:url" content="https://efa.africa/balade-economie">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<link rel="stylesheet" href="musee-economie.css?v=2026102912">
+<script>/* Lien direct vers le musée : fond bleu nuit dès la première image, jamais d’écran blanc */if(/^#musee/.test(location.hash))document.documentElement.classList.add("musee-arrivee");</script>
+<style>html.musee-arrivee,html.musee-arrivee body{background:#070C16!important}html.musee-arrivee body>*{visibility:hidden}html.musee-arrivee #musee{visibility:visible}</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"La balade de l’économie : du marché à la banque centrale","description":"Six salles et huit jeux pour comprendre l’économie avec nos marchés, nos banques et le franc CFA : échanger, la monnaie, les acteurs, l’État, les banques et l’inflation, la croissance.","inLanguage":"fr","datePublished":"2026-10-28","dateModified":"2026-10-28","mainEntityOfPage":"https://efa.africa/balade-economie","author":{"@type":"Person","@id":"https://efa.africa/auteur#elysee","name":"Élysée Johnson","url":"https://efa.africa/auteur"},"publisher":{"@type":"Organization","name":"Éducation Financière Afrique","url":"https://efa.africa/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://efa.africa/"},{"@type":"ListItem","position":2,"name":"La balade de l’économie","item":"https://efa.africa/balade-economie"}]}]}
+</script>
+<style>
+:root{
+  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#1B71B2; --corail:#DA3C1B; --corail-t:#B8341A;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#E2D8C4;
+  --hausse:#1E7A4C; --erreur:#B3261E;
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--nuit);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;overflow-wrap:break-word}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:36px;height:36px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.14)}
+.nav a.nav-cta{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:8px;padding:8px 14px;min-height:44px;font:700 14px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .brand span{font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:30;background:var(--nuit);flex-direction:column;justify-content:center;align-items:center;gap:8px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-size:26px}
+  .nav a.nav-cta{background:none;color:var(--soft-corail)}
+  .menu-btn{display:block;position:relative;z-index:31}
+}
+
+.intro{background:var(--nuit);color:#fff;padding-block:30px 44px}
+.crumbs{font-size:13px;color:#AEB6C6}
+.crumbs a{color:#E8EDF5}
+.kick{margin-top:20px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail)}
+.intro h1{font-size:clamp(34px,5.6vw,62px);margin-top:10px;max-width:19ch}
+.chapo{margin-top:18px;max-width:44em;font-size:clamp(17px,1.9vw,19px);color:#E8EDF5}
+.signe{margin-top:16px;font-size:14px;color:#AEB6C6}
+.signe a{color:#fff;font-weight:700}
+
+.merci{margin-top:22px;max-width:46em;background:#F5EFE2;border-radius:16px;padding:20px;color:#0B1220;display:grid;grid-template-columns:132px minmax(0,1fr);grid-template-areas:"img id" "img txt";column-gap:22px;row-gap:10px;align-items:start}
+.merci img{grid-area:img;width:132px;height:160px;border-radius:12px;object-fit:cover;object-position:center 20%}
+.merci-id{grid-area:id;min-width:0}
+.merci-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#4E5566}
+.merci-n{margin:4px 0 0;font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,30px);line-height:1.1;color:#B8341A}
+.merci-a{margin:4px 0 0;font-size:15px;font-weight:700;color:#0B1220}
+.merci-t{grid-area:txt;margin:0;font-size:16px;line-height:1.55;color:#2A3142}
+.merci-t b{color:#0B1220}
+@media (max-width:560px){.merci{grid-template-columns:76px minmax(0,1fr);grid-template-areas:"img id" "txt txt";column-gap:14px;align-items:center;padding:18px}.merci img{width:76px;height:76px;border-radius:50%}}
+/* plan de la visite */
+.plan{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.plan a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:start;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-decoration:none;color:#fff;min-height:100%}
+.plan a:hover{background:rgba(255,255,255,.14)}
+.plan i{grid-row:span 2;font-style:normal;font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1;color:var(--soft-corail)}
+.plan b{font-size:16.5px;line-height:1.25}
+.plan span{font-size:14px;color:#C9D1DE}
+
+/* salles */
+.salle{padding-block:56px 8px;scroll-margin-top:64px}
+.salle-tete{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 18px;align-items:center;max-width:820px}
+.salle-n{grid-row:span 2;width:64px;height:64px;border-radius:50%;background:var(--corail);color:#fff;display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:28px}
+.bk{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-t)}
+.salle h2{font-size:clamp(28px,3.8vw,44px)}
+.salle-q{margin-top:14px;max-width:44em;font-size:18px;color:var(--ink)}
+@media (max-width:520px){.salle-n{width:48px;height:48px;font-size:22px}}
+
+.pans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px;margin-top:22px}
+.pan{background:var(--papier);border-radius:14px;padding:20px 20px 22px;min-width:0}
+.pan h3{font-size:clamp(19px,1.7vw,23px);line-height:1.18}
+.pan p{margin-top:10px;color:var(--ink)}
+.pan ul{margin:10px 0 0;padding-left:20px;color:var(--ink)}
+.pan li{margin:5px 0}
+.pan strong{color:var(--nuit)}
+.chez{margin-top:14px!important;background:var(--creme);border-radius:10px;padding:12px 14px;font-size:15.5px;color:var(--ink)!important}
+.chez b{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--corail-t);margin-bottom:3px}
+.pan.large{grid-column:1/-1}
+.mot{font-style:italic}
+
+/* vitrine (objets) */
+.vitrine{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
+.vitrine div{background:var(--nuit);color:#fff;border-radius:14px;padding:16px;min-width:0}
+.vitrine small{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft-corail)}
+.vitrine b{display:block;font-family:var(--f-display);font-size:19px;margin-top:4px;line-height:1.2}
+.vitrine span{display:block;font-size:14.5px;margin-top:6px;color:#C9D1DE}
+
+/* bornes interactives */
+.borne{margin-top:16px;background:var(--papier);border-radius:18px;padding:22px 20px 24px}
+.borne-t{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.pastille{display:inline-flex;align-items:center;min-height:28px;padding:4px 12px;border-radius:999px;background:var(--corail);color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.duree{font-size:14px;color:var(--ink2)}
+.borne h3{font-size:clamp(21px,2.4vw,28px);margin-top:10px}
+.borne > p{margin-top:10px;color:var(--ink);max-width:44em}
+.jeu{margin-top:16px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.b{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-size:16px;font-weight:800;line-height:1.2;min-height:46px;padding:12px 20px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;text-align:center;background:var(--nuit);color:#fff}
+.b.c{background:var(--corail)}
+.b.l{background:var(--creme);color:var(--nuit)}
+.b:disabled{opacity:.45;cursor:default}
+.choix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px;margin-top:12px}
+.choix button{font:inherit;font-size:16px;font-weight:700;text-align:left;min-height:52px;padding:12px 14px;border-radius:10px;border:0;background:var(--creme);color:var(--nuit);cursor:pointer;line-height:1.3}
+.choix button:hover{background:#EDE4D2}
+.choix button.ok{background:var(--hausse);color:#fff}
+.choix button.ko{background:var(--erreur);color:#fff}
+.choix button:disabled{cursor:default}
+.choix button small{display:block;font-weight:400;font-size:14px;margin-top:2px;opacity:.85}
+.retour{margin-top:12px;background:var(--nuit);color:#fff;border-radius:10px;padding:14px 16px;font-size:16px}
+.retour b{color:#fff}
+.retour.bon{background:var(--hausse)}
+.etat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px}
+.etat div{background:var(--creme);border-radius:10px;padding:10px 12px;min-width:0}
+.etat small{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.etat b{font-family:var(--f-display);font-size:clamp(17px,2vw,21px)}
+.etat b.neg{color:var(--erreur)}
+.scene{margin-top:14px;background:var(--creme);border-radius:12px;padding:16px}
+.scene h4{margin:0;font-family:var(--f-display);font-size:19px;line-height:1.25}
+.scene p{margin-top:8px;color:var(--ink)}
+.prog{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.marchands{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:8px;margin-top:12px}
+.marchands button{font:inherit;text-align:left;border:0;border-radius:12px;padding:14px;background:var(--creme);color:var(--nuit);cursor:pointer;min-height:92px;display:grid;gap:4px}
+.marchands button b{font-size:16.5px}
+.marchands button span{font-size:14.5px;color:var(--ink2)}
+.marchands button.fait{background:var(--hausse);color:#fff}
+.marchands button.fait span{color:#E6F4EC}
+.marchands button.non{background:#F3D6D0}
+.inv{margin-top:12px;font-weight:700}
+.inv span{display:inline-flex;align-items:center;min-height:34px;padding:4px 14px;border-radius:999px;background:var(--nuit);color:#fff;margin-left:6px}
+.barre{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--creme);margin-top:8px}
+.barre i{display:block;height:100%;transition:width .3s}
+.champs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin-top:14px}
+.champs label{display:grid;gap:6px;font-weight:700;font-size:15px;min-width:0}
+.champs small{font-weight:400;color:var(--ink2);font-size:13px}
+.champs input{font:inherit;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:var(--creme);color:var(--nuit);width:100%;min-width:0}
+.histo{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px;font-size:15px;color:var(--ink2)}
+.histo li{background:var(--creme);border-radius:8px;padding:8px 12px}
+.tab-wrap{overflow-x:auto;margin-top:12px}
+.tab{width:100%;border-collapse:collapse;font-size:15px;min-width:460px}
+.tab th,.tab td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tab thead th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+input[type=range]{width:100%;accent-color:var(--corail)}
+
+.salle-img{margin:22px 0 0;max-width:820px;border-radius:18px;overflow:hidden;background:var(--papier)}
+.salle-img img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.pan-img{display:block;width:calc(100% + 40px);max-width:none;margin:-20px -20px 14px;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:14px 14px 0 0}
+.photos{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
+.photos figure{margin:0;background:var(--papier);border-radius:14px;overflow:hidden}
+.photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.photos figcaption{padding:12px 14px;font-size:14.5px;color:var(--ink2)}
+.photos figcaption b{display:block;color:var(--nuit);font-size:15.5px}
+/* frise */
+.frise{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:8px;max-width:860px}
+.frise li{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:4px 16px;background:var(--papier);border-radius:12px;padding:14px 16px;align-items:baseline}
+.frise li.af{background:var(--nuit);color:#fff}
+.frise li.af span{color:#C9D1DE}
+.frise b{font-family:var(--f-display);font-size:22px;line-height:1.1}
+.frise li.af b{color:var(--soft-corail)}
+.frise strong{font-size:16.5px}
+.frise span{display:block;font-size:15px;color:var(--ink2);margin-top:2px}
+@media (max-width:520px){.frise li{grid-template-columns:minmax(0,1fr)}}
+.legende{margin-top:12px;font-size:14px;color:var(--ink2)}
+.legende i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--nuit);vertical-align:-1px;margin-right:6px}
+
+/* sortie */
+.aller{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin-top:18px}
+.aller a{display:grid;gap:4px;background:var(--nuit);color:#fff;text-decoration:none;border-radius:14px;padding:16px 18px;min-width:0}
+.aller a:nth-child(2){background:var(--corail)}
+.aller a:nth-child(3){background:var(--bleu)}
+.aller small{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.88}
+.aller b{font-size:17px;line-height:1.25}
+.aller span{font-size:14px;opacity:.88}
+.mots{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding:0;list-style:none}
+.mots a{display:inline-flex;min-height:40px;align-items:center;padding:8px 14px;border-radius:999px;background:var(--nuit);color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.qui{margin-top:18px;background:var(--papier);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:8px 16px;font-size:15.5px;max-width:860px}
+.qui dt{font-weight:700;color:var(--nuit)}
+.qui dd{margin:0;color:var(--ink)}
+@media (max-width:560px){.qui{grid-template-columns:minmax(0,1fr)}.qui dd{margin-bottom:6px}}
+.mention{margin-top:22px;font-size:14px;color:var(--ink2);max-width:860px}
+.lien-s{font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+.sortie{padding-block:56px 64px}
+.sortie h2{font-size:clamp(28px,3.8vw,44px);margin-top:8px}
+</style>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main>
+<section class="intro">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="methode.html">Comprendre</a> › La balade de l’économie</nav>
+    <p class="kick">EFA · Comprendre l’économie</p>
+    <h1>La balade de l’économie, du marché à la banque centrale</h1>
+    <p class="chapo">Six salles, six questions simples&nbsp;: pourquoi échange-t-on, à quoi sert la monnaie, qui fait l’économie, que fait l’État, que font les banques, d’où vient la croissance. Chaque salle a sa borne&nbsp;: un petit jeu de deux à cinq minutes, avec nos marchés, nos banques et le franc CFA.</p>
+    <button type="button" class="btn-musee" data-musee="entree" data-goatcounter-click="balade-musee-entree"><i>▶</i> Visiter notre musée de l’économie</button>
+    <p class="signe">Rédigé par <a href="auteur.html">Élysée Johnson</a>, Éducation Financière Afrique · 28 octobre 2026 · 25 minutes, ou une salle à la fois</p>
+    <div class="merci">
+      <img src="illus/pacome-kipre.webp?v=2810" alt="Pacôme Kipré, dit Peck Peckisblackman" width="418" height="480">
+      <div class="merci-id"><p class="merci-k">Une idée de</p><p class="merci-n">Pacôme Kipré</p><p class="merci-a">dit Peck Peckisblackman · écrivain ivoirien</p></div>
+      <p class="merci-t">Lors de sa visite du musée de l’économie de la Banque de France, à Paris, il en a partagé les panneaux et les jeux. EFA les a réécrits et transposés à nos marchés, à nos banques et au franc CFA. <b>Merci à lui.</b></p>
+    </div>
+    <ol class="plan" aria-label="Les salles de la balade">
+      <li><a href="#echanger" data-goatcounter-click="balade-plan-1"><i>1</i><b>Échanger</b><span>Besoins, valeur, troc</span></a></li>
+      <li><a href="#monnaie" data-goatcounter-click="balade-plan-2"><i>2</i><b>La monnaie</b><span>Du cauri au mobile money</span></a></li>
+      <li><a href="#acteurs" data-goatcounter-click="balade-plan-3"><i>3</i><b>Les acteurs</b><span>Le circuit, l’entreprise, le marché</span></a></li>
+      <li><a href="#etat" data-goatcounter-click="balade-plan-4"><i>4</i><b>L’État et les règles</b><span>Impôts, services, informel</span></a></li>
+      <li><a href="#banques" data-goatcounter-click="balade-plan-5"><i>5</i><b>Banques et inflation</b><span>Prêter, s’endetter, la BCEAO</span></a></li>
+      <li><a href="#croissance" data-goatcounter-click="balade-plan-6"><i>6</i><b>La croissance</b><span>Le monde, la frise du temps</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ============ SALLE 1 ============ -->
+<section class="salle" id="echanger" aria-labelledby="s1-t">
+  <div class="salle-tete"><span class="salle-n" aria-hidden="true">1</span><p class="bk">Salle 1 · Échanger</p><h2 id="s1-t">Pourquoi achète-t-on ce qu’on ne fabrique pas&nbsp;?</h2></div>
+  <p class="salle-q">Toute l’économie commence par un échange&nbsp;: un bien contre un autre, un service contre de l’argent. Encore faut-il savoir ce que vaut chaque chose, et se faire confiance.</p>
+  <figure class="salle-img"><img src="illus/h-routes.webp?v=2810" alt="Deux marchands échangent un pagne contre un sac de riz" width="480" height="300" loading="lazy"></figure>
+  <div class="pans">
+    <article class="pan">
+      <img class="pan-img" src="illus/h-nil.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Chacun se spécialise</h3>
+      <p>Rien n’est illimité&nbsp;: ni le temps, ni la terre, ni l’argent. Il faut donc choisir ce qu’on produit, ce qu’on achète et ce qu’on vend.</p>
+      <p>La couturière ne cultive pas son riz, le riziculteur ne coud pas ses habits. <strong>Chacun fait ce qu’il sait faire le mieux et échange le reste</strong>&nbsp;: tous deux y gagnent du temps et de la qualité.</p>
+      <p class="chez"><b>Essayez de tête</b>Coudre vous-même chaque vêtement de la famille&nbsp;: combien de soirées par an&nbsp;? Le tailleur du quartier le fait en quelques heures, et mieux.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-valeur.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Qu’est-ce qui a de la valeur&nbsp;?</h3>
+      <p>L’eau est vitale, le diamant ne sert presque à rien. Pourtant un sachet d’eau coûte quelques dizaines de francs, un diamant des millions. L’économiste écossais Adam Smith (1723-1790) a appelé cela <span class="mot">le paradoxe de l’eau et du diamant</span>.</p>
+      <p>La réponse&nbsp;: <strong>la valeur d’échange dépend de la rareté, pas seulement de l’utilité</strong>, et aussi du travail qu’il faut pour produire le bien. Au milieu du désert, l’eau devient rare et le diamant ne vaut plus rien.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-tontine.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Sans confiance, pas d’échange</h3>
+      <p>Pour échanger, chacun doit être sûr de recevoir quelque chose en retour. La parole donnée, la réputation, le contrat, la balance du marché, la monnaie&nbsp;: autant d’outils inventés pour se faire confiance.</p>
+      <p class="chez"><b>Chez nous</b>La tontine repose sur la même idée&nbsp;: on verse avant de recevoir, parce qu’on fait confiance au groupe et à celle qui le tient.</p>
+    </article>
+  </div>
+
+  <div class="borne" id="borne-troc">
+    <div class="borne-t"><span class="pastille">Borne 1</span><span class="duree">2 minutes</span></div>
+    <h3>Troc ou monnaie&nbsp;?</h3>
+    <p>Vous êtes au marché avec <strong>un régime de banane plantain</strong>. Il vous faut <strong>du poisson</strong> pour le repas. Pas d’argent&nbsp;: seulement le troc. Touchez un marchand pour lui proposer ce que vous avez.</p>
+    <div class="jeu" id="troc"></div>
+  </div>
+</section>
+
+<!-- ============ SALLE 2 ============ -->
+<section class="salle" id="monnaie" aria-labelledby="s2-t">
+  <div class="salle-tete"><span class="salle-n" aria-hidden="true">2</span><p class="bk">Salle 2 · La monnaie</p><h2 id="s2-t">Un billet ne vaut rien en lui-même. Alors pourquoi l’accepte-t-on&nbsp;?</h2></div>
+  <p class="salle-q">La monnaie est ce que nous appelons l’argent. Elle a changé de forme au fil des siècles, mais elle tient toujours sur la même chose&nbsp;: la confiance de ceux qui l’utilisent.</p>
+  <figure class="salle-img"><img src="illus/h-monnaie.webp?v=2810" alt="Du cauri au téléphone : les formes de la monnaie" width="480" height="300" loading="lazy"></figure>
+  <div class="pans">
+    <article class="pan">
+      <img class="pan-img" src="illus/h-fonctions.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Trois services en un</h3>
+      <ul>
+        <li><strong>Compter</strong>&nbsp;: tout s’exprime dans la même unité. Un kilo de riz, une course de taxi, un loyer&nbsp;: tout a un prix en francs CFA.</li>
+        <li><strong>Payer</strong>&nbsp;: elle sert d’intermédiaire. Plus besoin de trouver celui qui veut exactement vos bananes.</li>
+        <li><strong>Garder</strong>&nbsp;: on peut la mettre de côté pour plus tard. Attention, la hausse des prix la grignote (salle 5).</li>
+      </ul>
+      <p>Elle tient parce que chacun l’accepte, et que la loi l’impose&nbsp;: on ne peut pas refuser les billets en paiement, et ils servent à payer l’impôt. C’est ce qu’on appelle <span class="mot">le cours légal</span>.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-lydie.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>De l’objet rare à l’écriture sur un compte</h3>
+      <p>La monnaie a peu à peu perdu sa matière. D’abord des objets rares&nbsp;: <strong>cauris, perles, barres de sel, manilles de cuivre</strong>. Puis des pièces de métal, nées en Lydie, dans l’actuelle Turquie, vers 600 avant notre ère. Au 19<sup>e</sup>&nbsp;siècle, le billet, simple papier, se répand.</p>
+      <p>Aujourd’hui, l’essentiel de la monnaie n’est plus qu’une écriture sur un compte&nbsp;: c’est <span class="mot">la monnaie scripturale</span>. En zone euro, pièces et billets n’en représentent qu’environ un dixième.</p>
+      <p class="chez"><b>Chez nous</b>Les billets pèsent encore bien plus lourd qu’en Europe, mais le mobile money gagne du terrain chaque année&nbsp;: un solde sur un téléphone est, lui aussi, de la monnaie écrite.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-cfa-1945.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Le franc CFA en quatre repères</h3>
+      <ul>
+        <li><strong>1945</strong>&nbsp;: création du franc CFA, le 26&nbsp;décembre.</li>
+        <li><strong>Deux monnaies</strong>&nbsp;: le franc CFA d’Afrique de l’Ouest, émis par la BCEAO pour les huit pays de l’UEMOA, et celui d’Afrique centrale, émis par la BEAC pour les six pays de la CEMAC.</li>
+        <li><strong>Une parité fixe</strong>&nbsp;: 1&nbsp;euro = 655,957&nbsp;F.</li>
+        <li><strong>1994</strong>&nbsp;: dévaluation de moitié, le 12&nbsp;janvier. Les produits importés coûtent soudain beaucoup plus cher.</li>
+      </ul>
+    </article>
+  </div>
+  <div class="vitrine" aria-label="Dans la vitrine">
+    <div><small>Dans la vitrine</small><b>Le cauri</b><span>Petit coquillage venu de l’océan Indien, longtemps utilisé comme monnaie en Afrique de l’Ouest&nbsp;: rare, solide, impossible à contrefaire.</span></div>
+    <div><small>Dans la vitrine</small><b>Le billet de banque</b><span>Un papier qui ne vaut rien comme objet. Sa valeur tient à la promesse de la banque qui l’émet et à la confiance de tous.</span></div>
+    <div><small>Dans la vitrine</small><b>Le billet en polymère</b><span>Certains pays impriment sur du plastique&nbsp;: plus durable, plus difficile à copier. La forme change, la fonction reste.</span></div>
+  </div>
+
+  <div class="borne" id="borne-vf">
+    <div class="borne-t"><span class="pastille">Borne 2</span><span class="duree">2 minutes</span></div>
+    <h3>Vrai ou faux sur la monnaie</h3>
+    <p>Six affirmations entendues au marché ou en famille. Démêlez le vrai du faux.</p>
+    <div class="jeu" id="vf"></div>
+  </div>
+</section>
+
+<!-- ============ SALLE 3 ============ -->
+<section class="salle" id="acteurs" aria-labelledby="s3-t">
+  <div class="salle-tete"><span class="salle-n" aria-hidden="true">3</span><p class="bk">Salle 3 · Les acteurs</p><h2 id="s3-t">Qui fait l’économie&nbsp;? Nous tous, et chacun à sa place</h2></div>
+  <p class="salle-q">L’économie, ce sont des échanges continus entre des acteurs qui produisent, consomment, prêtent et prélèvent. L’argent que vous dépensez ce matin sera le salaire de quelqu’un ce soir.</p>
+  <figure class="salle-img"><img src="illus/h-famille.webp?v=2810" alt="Le circuit entre ménages, entreprises, État, banques et reste du monde" width="480" height="300" loading="lazy"></figure>
+  <div class="pans">
+    <article class="pan">
+      <img class="pan-img" src="illus/h-acteurs.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Six familles d’acteurs</h3>
+      <ul>
+        <li><strong>Les ménages</strong>&nbsp;: les personnes qui vivent sous le même toit. Elles travaillent, consomment, épargnent.</li>
+        <li><strong>Les entreprises</strong>&nbsp;: du maquis du quartier à la multinationale, elles produisent et vendent.</li>
+        <li><strong>Les banques, la microfinance et les assurances</strong>, avec au-dessus la banque centrale.</li>
+        <li><strong>L’État au sens large</strong>&nbsp;: ministères, communes, caisses de retraite et d’assurance maladie.</li>
+        <li><strong>Les associations</strong>&nbsp;: ONG, mutuelles, groupements.</li>
+        <li><strong>Le reste du monde</strong>&nbsp;: les acteurs installés à l’étranger, de l’acheteur de cacao au frère qui envoie de l’argent depuis Paris.</li>
+      </ul>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-atelier.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Qu’est-ce qu’une entreprise&nbsp;?</h3>
+      <p>Une organisation humaine qui <strong>produit des biens ou des services en combinant du travail et du capital</strong>&nbsp;: des personnes, des machines, des locaux, de l’argent. C’est ce que les économistes appellent les <span class="mot">facteurs de production</span>. Elle vit surtout de ses ventes.</p>
+      <p>La plupart cherchent un profit, dont une partie revient à leurs propriétaires. D’autres, comme les coopératives, les mutuelles ou les associations, gèrent et utilisent leurs bénéfices autrement.</p>
+      <p class="chez"><b>Chez nous</b>Une coopérative de planteurs de cacao vend la récolte de ses membres et leur redistribue le surplus&nbsp;: une entreprise, sans actionnaire qui encaisse.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-or-sel.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Qu’est-ce qu’un marché&nbsp;?</h3>
+      <p>Là où se rencontrent <strong>l’offre</strong>, ce que proposent tous les vendeurs, et <strong>la demande</strong>, ce que veulent tous les acheteurs. Leur rencontre fixe un prix. Au <span class="mot">prix d’équilibre</span>, ce qui est proposé égale ce qui est demandé.</p>
+      <p>Tous les marchés ont des règles&nbsp;: des poids et mesures, des contrats, des autorités qui surveillent.</p>
+      <p class="chez"><b>Au marché</b>En pleine saison, les tomates arrivent en masse et leur prix chute. En saison sèche, elles se font rares&nbsp;: le prix monte, et certains acheteurs renoncent.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-credit.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Le circuit économique</h3>
+      <p>Suivons 10&nbsp;000&nbsp;F. Une mère de famille achète du poisson. La vendeuse paie son grossiste, qui paie le pêcheur, sa pirogue, le carburant, ses taxes, et rembourse sa banque. Les revenus de l’un deviennent les dépenses de l’autre.</p>
+      <p>Trois gestes se répètent sans fin&nbsp;: <strong>produire, répartir les revenus, dépenser</strong>. C’est <span class="mot">le circuit économique</span>.</p>
+    </article>
+  </div>
+
+  <div class="borne" id="borne-circuit">
+    <div class="borne-t"><span class="pastille">Borne 3</span><span class="duree">3 minutes</span></div>
+    <h3>Reliez les acteurs</h3>
+    <p>Dix flux d’argent circulent entre les ménages, les entreprises, l’État, les banques et le reste du monde. Pour chaque flèche, choisissez ce qui passe.</p>
+    <div class="jeu" id="circuit"></div>
+  </div>
+
+  <div class="borne" id="borne-strat">
+    <div class="borne-t"><span class="pastille">Borne 4</span><span class="duree">3 minutes</span></div>
+    <h3>L’entrepreneur stratège</h3>
+    <p>Vous vendez des baskets au marché. En face, un concurrent vend les mêmes. Pendant six semaines, choisissez votre stratégie&nbsp;; il réagit à la vôtre. Qui gagnera le plus, et à quel prix&nbsp;?</p>
+    <div class="jeu" id="strat"></div>
+  </div>
+</section>
+
+<!-- ============ SALLE 4 ============ -->
+<section class="salle" id="etat" aria-labelledby="s4-t">
+  <div class="salle-tete"><span class="salle-n" aria-hidden="true">4</span><p class="bk">Salle 4 · L’État et les règles du jeu</p><h2 id="s4-t">Ce que l’État prélève, ce qu’il rend, et pourquoi il fixe des règles</h2></div>
+  <p class="salle-q">L’État n’est pas seulement le gouvernement&nbsp;: c’est l’ensemble des administrations. Il prélève une partie des richesses, la redistribue, et fixe les règles qui permettent aux autres de produire.</p>
+  <figure class="salle-img"><img src="illus/h-investir.webp?v=2810" alt="Un bâtiment public, une école, un centre de santé et une route" width="480" height="300" loading="lazy"></figure>
+  <div class="pans">
+    <article class="pan">
+      <img class="pan-img" src="illus/h-independances.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>L’État, c’est quoi&nbsp;?</h3>
+      <ul>
+        <li><strong>L’administration centrale</strong>&nbsp;: les ministères.</li>
+        <li><strong>Les collectivités</strong>&nbsp;: communes, régions, districts.</li>
+        <li><strong>Les organismes sociaux</strong>&nbsp;: retraite, assurance maladie, prestations familiales.</li>
+      </ul>
+      <p>Il assure des fonctions que lui seul exerce, <strong>police, justice, défense, diplomatie</strong>, et produit des services hors marché, comme l’école ou l’hôpital publics. Il verse aussi des pensions, des aides, des subventions.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-1960.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Prélever pour investir</h3>
+      <p>Sur les richesses créées, l’État prélève <strong>impôts, taxes et cotisations</strong>. Il les réinvestit&nbsp;: routes, ponts, électrification, écoles, centres de santé.</p>
+      <p>Certains services sont produits par l’État, d’autres par des entreprises privées, d’autres encore à deux, en <span class="mot">partenariat public-privé</span>&nbsp;: l’État confie la construction ou l’exploitation et fixe les règles.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-ajustement.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Pourquoi réguler&nbsp;?</h3>
+      <ul>
+        <li><strong>Orienter</strong> les moyens vers ce qui sert la population et une croissance durable.</li>
+        <li><strong>Stabiliser</strong>&nbsp;: éviter une croissance trop faible, le chômage, la flambée des prix, un déficit commercial qui dure.</li>
+        <li><strong>Réduire les inégalités</strong>, pour que la société tienne ensemble.</li>
+      </ul>
+      <p>Jusqu’où l’État doit-il intervenir&nbsp;? C’est un choix de société, différent selon les pays.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-externalite.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Les effets qu’on ne voit pas</h3>
+      <p>Une usine prospère rejette ses déchets dans la lagune&nbsp;: les pêcheurs en paient le prix sans avoir rien décidé. Les économistes appellent cela une <span class="mot">externalité</span>, ici négative. L’État peut fixer des normes ou taxer selon le principe <strong>pollueur-payeur</strong>.</p>
+      <p>Une externalité peut être positive&nbsp;: une route bitumée ouvre les marchés de la ville aux villages qu’elle traverse. L’État peut l’encourager, par exemple en allégeant temporairement des taxes.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-poches.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>L’informel n’est pas la fraude</h3>
+      <p>Certaines activités sont illégales&nbsp;: la contrebande, ou cacher une partie de ses revenus au fisc. Cette fraude prive l’État des moyens de ses écoles et de ses routes.</p>
+      <p>L’informel, c’est autre chose&nbsp;: <strong>une activité légale mais non enregistrée</strong>. La vendeuse d’attiéké, le mécanicien de quartier, le tailleur. Selon l’Organisation internationale du travail, environ 85&nbsp;% des emplois en Afrique sont informels (chiffres de 2018).</p>
+      <p class="chez"><b>Ce que cela change pour vous</b>Sans trace écrite, pas de crédit, pas de retraite, pas d’assurance. Garder un cahier de recettes est un premier pas, même sans s’enregistrer.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-inegalites.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Les inégalités de revenus</h3>
+      <p>On en observe presque partout. Elles peuvent refléter des différences de compétences, à condition que l’école et les responsabilités restent ouvertes à tous. L’impôt et les transferts peuvent les atténuer.</p>
+      <p>Depuis les années 1990, l’écart entre pays s’est réduit, porté par le commerce mondial. Mais à l’intérieur de nombreux pays, il s’est creusé à nouveau.</p>
+    </article>
+  </div>
+
+  <div class="borne" id="borne-pp">
+    <div class="borne-t"><span class="pastille">Borne 5</span><span class="duree">2 minutes</span></div>
+    <h3>Public, privé, ou les deux&nbsp;?</h3>
+    <p>Huit services de la vie quotidienne. Qui les produit&nbsp;?</p>
+    <div class="jeu" id="pp"></div>
+  </div>
+
+  <div class="borne" id="borne-temps">
+    <div class="borne-t"><span class="pastille">Borne 6</span><span class="duree">2 minutes</span></div>
+    <h3>Ce que vaut votre temps</h3>
+    <p>Le produit intérieur brut, qui mesure les richesses créées, ne compte pas le travail fait à la maison. C’est pourtant une production bien réelle&nbsp;: si vous la payiez à quelqu’un, elle coûterait de l’argent. Indiquez vos heures par semaine.</p>
+    <div class="jeu" id="temps"></div>
+  </div>
+</section>
+
+<!-- ============ SALLE 5 ============ -->
+<section class="salle" id="banques" aria-labelledby="s5-t">
+  <div class="salle-tete"><span class="salle-n" aria-hidden="true">5</span><p class="bk">Salle 5 · Banques, banque centrale et inflation</p><h2 id="s5-t">Qui prête l’argent, qui veille sur la monnaie, et ce que fait la hausse des prix</h2></div>
+  <p class="salle-q">Les uns ont de l’épargne, les autres des projets. Entre eux, des intermédiaires prêtent, assurent, placent. Au-dessus, la banque centrale veille à ce que la monnaie garde sa valeur et que le système tienne.</p>
+  <figure class="salle-img"><img src="illus/h-bceao.webp?v=2810" alt="Une banque, son coffre et une étiquette de prix qui monte" width="480" height="300" loading="lazy"></figure>
+  <div class="pans">
+    <article class="pan">
+      <img class="pan-img" src="illus/h-conseil.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Les acteurs financiers</h3>
+      <p>Banques, institutions de microfinance, assurances, sociétés de bourse et fonds&nbsp;: ils <strong>mettent en relation ceux qui ont de l’épargne et ceux qui ont besoin d’argent</strong>.</p>
+      <p>Ils transforment de l’épargne souvent placée à court terme en prêts plus longs, et aident ceux qui traversent un trou de trésorerie. Une banque le fait en accordant un crédit, une assurance ou un fonds en achetant des actions et des obligations.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-solvable.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Solvable ou liquide&nbsp;?</h3>
+      <p>On est <strong>solvable</strong> quand ce qu’on possède vaut plus que ce qu’on doit. On est <strong>liquide</strong> quand on peut payer tout de suite.</p>
+      <p class="chez"><b>L’exemple de Moussa</b>Il possède un terrain de 8&nbsp;millions et doit 3&nbsp;millions&nbsp;: il est solvable. Mais si son créancier exige l’argent demain, il ne vendra pas le terrain en une nuit au bon prix. Solvable, mais pas liquide.</p>
+      <p>Pour une banque, c’est pareil&nbsp;: assez de <strong>fonds propres</strong> face aux risques qu’elle prend, et assez d’argent disponible pour les retraits. Dans l’UMOA, la Commission bancaire contrôle ces règles&nbsp;; ne pas les respecter est une infraction.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-monnaies-crises.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Que fait la banque centrale&nbsp;?</h3>
+      <p>En Afrique de l’Ouest, c’est la <strong>BCEAO</strong>, installée à Dakar&nbsp;; en Afrique centrale, la <strong>BEAC</strong>, à Yaoundé. La banque centrale&nbsp;:</p>
+      <ul>
+        <li><strong>garde la valeur de la monnaie</strong>&nbsp;: la BCEAO vise une inflation entre 1 et 3&nbsp;% par an&nbsp;;</li>
+        <li><strong>émet les billets et les pièces</strong> et surveille leur qualité&nbsp;;</li>
+        <li><strong>veille à la stabilité du système financier</strong>, avec les autorités de contrôle des banques&nbsp;;</li>
+        <li><strong>gère les réserves de change</strong> et les systèmes de paiement entre banques.</li>
+      </ul>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-devaluation.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>L’inflation et votre pouvoir d’achat</h3>
+      <p>L’inflation, c’est <strong>la hausse durable du niveau général des prix</strong>. On la mesure en suivant le prix d’un panier de produits que les ménages achètent. Modérée, elle accompagne une économie qui tourne. Trop forte, elle ruine l’épargne&nbsp;; trop faible, elle freine l’activité.</p>
+      <p>Votre <strong>pouvoir d’achat</strong> dépend de deux choses&nbsp;: vos revenus, et les prix. Si votre salaire monte de 3&nbsp;% quand les prix montent de 5&nbsp;%, vous achetez moins qu’avant.</p>
+      <div class="champs" style="margin-top:12px">
+        <label>Inflation par an&nbsp;: <span id="inf-v">3&nbsp;%</span><input type="range" id="inf-t" min="0" max="15" step="0.5" value="3"></label>
+        <label>Dans combien d’années&nbsp;: <span id="inf-a">10 ans</span><input type="range" id="inf-n" min="1" max="30" step="1" value="10"></label>
+      </div>
+      <p class="chez" id="inf-out" aria-live="polite"></p>
+    </article>
+  </div>
+
+  <div class="photos" aria-label="Objets vus au musée">
+    <figure><img src="illus/musee-tampons.webp?v=2810" alt="Tampons et composteurs anciens de la Banque de France, en vitrine" loading="lazy" width="800" height="694"><figcaption><b>Les tampons du guichet</b>Avant l’informatique, chaque opération était datée et validée à la main, d’un coup de tampon.</figcaption></figure>
+    <figure><img src="illus/musee-registre.webp?v=2810" alt="Registre « Journal » d’une succursale de la Banque de France" loading="lazy" width="800" height="764"><figcaption><b>Le journal de la succursale</b>Toutes les opérations du jour, écrites dans l’ordre&nbsp;: l’ancêtre de la monnaie scripturale.</figcaption></figure>
+    <figure><img src="illus/musee-coffret.webp?v=2810" alt="Coffret de transport en cuir de la Banque de France" loading="lazy" width="800" height="625"><figcaption><b>Le coffret de transport</b>Billets et valeurs voyageaient d’une agence à l’autre dans des coffrets fermés à clé.</figcaption></figure>
+  </div>
+  <p class="note" style="margin-top:8px;font-size:14px;color:var(--ink2)">Photos&nbsp;: Pacôme Kipré, musée de l’économie de la Banque de France.</p>
+
+  <div class="borne" id="borne-banquier">
+    <div class="borne-t"><span class="pastille">Borne 7</span><span class="duree">5 minutes</span></div>
+    <h3>Dans la peau d’un banquier</h3>
+    <p>Vous dirigez une petite banque. Votre mission&nbsp;: financer le plus de projets possible, sans mettre la banque en danger. Règle du jeu, simplifiée&nbsp;: vos prêts ne peuvent pas dépasser <strong>huit fois vos fonds propres</strong>. Deux manches de quatre demandes.</p>
+    <div class="jeu" id="banquier"></div>
+  </div>
+
+  <div class="borne" id="borne-dette">
+    <div class="borne-t"><span class="pastille">Borne 8</span><span class="duree">4 minutes</span></div>
+    <h3>S’endetter jusqu’où&nbsp;?</h3>
+    <p>Six mois du budget de Mariam&nbsp;: 250&nbsp;000&nbsp;F de salaire, 175&nbsp;000&nbsp;F de dépenses courantes, 100&nbsp;000&nbsp;F d’épargne. Chaque mois, une décision. Gardez un œil sur la part du salaire qui part en remboursements.</p>
+    <div class="jeu" id="dette"></div>
+  </div>
+</section>
+
+<!-- ============ SALLE 6 ============ -->
+<section class="salle" id="croissance" aria-labelledby="s6-t">
+  <div class="salle-tete"><span class="salle-n" aria-hidden="true">6</span><p class="bk">Salle 6 · La croissance et le monde</p><h2 id="s6-t">Produire plus, ou produire mieux&nbsp;?</h2></div>
+  <p class="salle-q">La croissance d’un pays, c’est l’augmentation durable de ce qu’il produit. Elle a deux moteurs, et elle passe de plus en plus par le reste du monde.</p>
+  <figure class="salle-img"><img src="illus/h-equipe.webp?v=2810" alt="Un port à conteneurs et une courbe de croissance" width="480" height="300" loading="lazy"></figure>
+  <div class="pans">
+    <article class="pan">
+      <img class="pan-img" src="illus/h-cacao.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>D’où vient la croissance&nbsp;?</h3>
+      <p><strong>La croissance extensive</strong> vient de plus de moyens&nbsp;: plus de travailleurs, plus de machines, plus de terres cultivées.</p>
+      <p><strong>La croissance intensive</strong> vient de moyens mieux utilisés&nbsp;: la technologie, l’éducation, la formation, une meilleure organisation du travail. Dans les faits, les deux avancent ensemble.</p>
+      <p class="chez"><b>Le cacao, deux chemins</b>Défricher de nouvelles parcelles, c’est extensif. Mieux tailler, mieux sécher, transformer les fèves sur place, c’est intensif&nbsp;: plus de valeur sur la même terre.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-surplus.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Deux siècles d’économie</h3>
+      <p>La croissance des échanges et des richesses s’accompagne, sur le long terme, d’une vie plus longue. Vers 1800, l’espérance de vie dans le monde tournait autour de 30&nbsp;ans&nbsp;; elle dépasse aujourd’hui 70&nbsp;ans.</p>
+      <p>Le progrès n’a pas touché tous les pays au même moment, ni au même rythme. C’est tout l’enjeu des décennies qui viennent pour l’Afrique.</p>
+    </article>
+    <article class="pan">
+      <img class="pan-img" src="illus/h-conteneur-1956.webp?v=2810" alt="" width="480" height="300" loading="lazy">
+      <h3>Le commerce mondial et la boîte en métal</h3>
+      <p>Échanger au loin n’a rien de neuf. Mais le commerce mondial s’est emballé au 20<sup>e</sup>&nbsp;siècle&nbsp;: entre 1965 et 2015, le commerce par la mer a été multiplié par six.</p>
+      <p>En cause, une invention de 1956&nbsp;: <strong>le conteneur</strong>, une boîte aux dimensions standard qui passe du camion au train et au bateau sans être déchargée. Les coûts ont chuté, les volumes ont explosé.</p>
+      <p class="chez"><b>Chez nous</b>Abidjan, Lomé, Tema, Dakar&nbsp;: l’essentiel du commerce extérieur de la région passe par ces ports à conteneurs.</p>
+    </article>
+  </div>
+
+  <h3 style="margin-top:36px;font-size:clamp(22px,2.6vw,30px)">La frise du temps</h3>
+  <ol class="frise">
+    <li><b>−8500</b><div><strong>Apparition de l’agriculture et de l’élevage</strong><span>On produit plus qu’on ne consomme&nbsp;: le surplus rend l’échange possible.</span></div></li>
+    <li><b>−3300</b><div><strong>Débuts de la comptabilité en Mésopotamie</strong><span>Des tablettes d’argile pour noter qui doit quoi à qui.</span></div></li>
+    <li><b>−600</b><div><strong>Premières pièces de métal, en Lydie</strong><span>Un poids et un titre garantis par une autorité.</span></div></li>
+    <li class="af"><b>14<sup>e</sup> s.</b><div><strong>Les cauris circulent dans l’empire du Mali</strong><span>Le voyageur Ibn Battuta décrit leur usage comme monnaie.</span></div></li>
+    <li><b>1880</b><div><strong>Seconde révolution industrielle</strong><span>Électricité, moteur, chimie&nbsp;: la production change d’échelle.</span></div></li>
+    <li><b>1945</b><div><strong>Début des «&nbsp;Trente Glorieuses&nbsp;» en France</strong><span>Trois décennies de forte croissance en Europe de l’Ouest.</span></div></li>
+    <li class="af"><b>1945</b><div><strong>Création du franc CFA</strong><span>Le 26&nbsp;décembre.</span></div></li>
+    <li class="af"><b>1959</b><div><strong>Création de la BCEAO</strong><span>La banque centrale commune des États d’Afrique de l’Ouest.</span></div></li>
+    <li><b>1973</b><div><strong>Premier choc pétrolier</strong><span>Le prix du pétrole est multiplié par quatre en quelques mois.</span></div></li>
+    <li class="af"><b>1994</b><div><strong>Dévaluation du franc CFA</strong><span>Le 12&nbsp;janvier, de moitié face au franc français.</span></div></li>
+    <li class="af"><b>1998</b><div><strong>Ouverture de la BRVM</strong><span>La Bourse régionale commune aux huit pays de l’UEMOA, à Abidjan.</span></div></li>
+    <li class="af"><b>2007</b><div><strong>Lancement du mobile money au Kenya</strong><span>Le téléphone devient un porte-monnaie, puis un compte.</span></div></li>
+  </ol>
+  <p class="legende"><i></i>En bleu nuit, les repères africains ajoutés par EFA.</p>
+</section>
+
+<!-- ============ SORTIE ============ -->
+<section class="sortie" id="sortie" aria-labelledby="so-t">
+  <p class="bk">En sortant du musée</p>
+  <h2 id="so-t">Et pour votre argent, concrètement&nbsp;?</h2>
+  <p class="salle-q">Chaque salle a son prolongement dans l’école EFA&nbsp;: votre budget est un petit circuit économique, votre crédit une décision de banquier, votre épargne une course contre l’inflation.</p>
+  <div class="aller">
+    <a href="ou-est-passe-mon-argent.html?src=balade#questions" data-goatcounter-click="balade-sortie-budget"><small>Salle 3, appliquée</small><b>Où passe mon argent&nbsp;?</b><span>Le circuit de votre propre budget, en cinq questions.</span></a>
+    <a href="cout-total-credit.html?src=balade" data-goatcounter-click="balade-sortie-credit"><small>Salle 5, appliquée</small><b>Le coût total d’un crédit</b><span>Ce que vous rembourserez vraiment, avant de signer.</span></a>
+    <a href="news.html?src=balade&amp;c=economie" data-goatcounter-click="balade-sortie-news"><small>Pour suivre l’actualité</small><b>EFA News</b><span>L’économie africaine expliquée, article par article.</span></a>
+  </div>
+  <ul class="mots" aria-label="Les mots de la balade dans le Dico">
+    <li><a href="outils.html#dico/circuit-economique">Circuit économique</a></li>
+    <li><a href="outils.html#dico/inflation">Inflation</a></li>
+    <li><a href="outils.html#dico/liquidite">Liquidité</a></li>
+    <li><a href="outils.html#dico/credit">Crédit</a></li>
+    <li><a href="outils.html#dico/taux-d-interet">Taux d’intérêt</a></li>
+    <li><a href="outils.html#dico/risque">Risque</a></li>
+    <li><a href="outils.html#dico/capital">Capital</a></li>
+    <li><a href="outils.html#dico/valeur-ajoutee">Valeur ajoutée</a></li>
+  </ul>
+
+  <p class="bk" style="margin-top:44px">Qui a rédigé cette page</p>
+  <dl class="qui">
+    <dt>Rédaction</dt><dd><a class="lien-s" href="auteur.html">Élysée Johnson</a>, fondateur d’Éducation Financière Afrique</dd>
+    <dt>D’où vient la balade</dt><dd>Une idée et des photos de Pacôme Kipré, dit Peck Peckisblackman, lors de sa visite du musée de l’économie de la Banque de France, à Paris, en 2026. Les textes sont réécrits par EFA et transposés à l’Afrique de l’Ouest et centrale&nbsp;; les jeux sont des créations EFA inspirées des bornes du musée.</dd>
+    <dt>Repères africains</dt><dd>BCEAO, BEAC, Organisation internationale du travail. Montants des jeux fictifs, en FCFA.</dd>
+    <dt>Mise à jour</dt><dd>28 octobre 2026 · première version</dd>
+    <dt>Liens d’intérêts</dt><dd>EFA ne vend aucun produit financier.</dd>
+  </dl>
+  <p class="mention">Éducation financière, pas conseil personnalisé. Personnages et montants fictifs.</p>
+</section>
+
+</div>
+</main>
+
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="balade-economie.html" aria-current="page">La balade de l’économie</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
+var F=function(n){return (n<0?'− ':'')+Math.abs(Math.round(n)).toLocaleString('fr-FR').replace(/[   ]/g,' ')+' F';};
+var M=function(n){var a=Math.abs(n)/1e6;return (n<0?'− ':'')+a.toLocaleString('fr-FR',{maximumFractionDigits:1}).replace(/[   ]/g,' ')+' M';};
+function el(h){var d=document.createElement('div');d.innerHTML=h;return d;}
+var vus={};function vu(k){if(!vus[k]){vus[k]=1;efaCompte('balade-'+k);}}
+</script>
+
+<script>
+/* Borne 1 · Troc ou monnaie */
+(function(){
+  var z=document.getElementById('troc');
+  var M0=[
+    {n:"Koffi, pêcheur",a:"poisson",v:"savon"},
+    {n:"Ama, charbonnière",a:"charbon",v:"plantain"},
+    {n:"Fatou, maraîchère",a:"tomates",v:"poisson"},
+    {n:"Yao, savonnier",a:"savon",v:"charbon"},
+    {n:"Ibou, tailleur",a:"un pagne cousu",v:"tomates"}
+  ];
+  var inv,coups,essais,fini;
+  function init(){inv="plantain";coups=0;essais=0;fini=false;rendre();}
+  function rendre(msg,bon){
+    var h='<p class="inv">Dans votre panier&nbsp;:<span>'+inv+'</span></p><div class="marchands">';
+    M0.forEach(function(m,i){h+='<button type="button" data-i="'+i+'"'+(fini?' disabled':'')+'><b>'+m.n+'</b><span>A&nbsp;: '+m.a+' · cherche&nbsp;: '+m.v+'</span></button>';});
+    h+='</div>';
+    if(msg)h+='<p class="retour'+(bon?' bon':'')+'" aria-live="polite">'+msg+'</p>';
+    if(fini)h+='<div class="btns"><button class="b c" type="button" id="troc-m">Rejouer avec de l’argent</button><button class="b l" type="button" id="troc-r">Recommencer le troc</button></div>';
+    z.innerHTML=h;
+    z.querySelectorAll('.marchands button').forEach(function(b){b.addEventListener('click',function(){essayer(+b.dataset.i,b);});});
+    var m=document.getElementById('troc-m');if(m)m.addEventListener('click',monnaie);
+    var r=document.getElementById('troc-r');if(r)r.addEventListener('click',init);
+  }
+  function essayer(i){
+    vu('troc');essais++;var m=M0[i];
+    if(m.v!==inv){rendre('<b>'+m.n.split(',')[0]+' n’en veut pas.</b> Il a besoin de '+m.v+', pas de '+inv+'. Il faut trouver quelqu’un qui veut exactement ce que vous avez.');return;}
+    coups++;var avant=inv;inv=m.a;
+    if(inv==="poisson"){fini=true;rendre('<b>Vous avez votre poisson, après '+coups+' échanges et '+essais+' propositions.</b> Plantain contre charbon, charbon contre savon, savon contre poisson&nbsp;: il a fallu trouver, à chaque fois, quelqu’un qui voulait exactement ce que vous aviez. Les économistes parlent de <em>double coïncidence des besoins</em>.',true);return;}
+    rendre('<b>Échange fait&nbsp;: '+avant+' contre '+inv+'.</b> Le poisson n’est pas encore dans le panier. Qui veut du '+inv+'&nbsp;?');
+  }
+  function monnaie(){
+    vu('troc-monnaie');
+    z.innerHTML='<div class="scene"><p class="prog">Même marché, avec de l’argent</p><h4>Vous vendez votre régime à qui le veut, puis vous achetez votre poisson.</h4><p>Ama vous paie 1&nbsp;500&nbsp;F le régime. Koffi vous vend le poisson 1&nbsp;500&nbsp;F. <strong>Deux échanges, sans chercher qui veut quoi.</strong></p><p>C’est le premier service de la monnaie&nbsp;: elle sert d’intermédiaire. Chacun l’accepte, parce qu’il sait que tous les autres l’accepteront aussi.</p></div><div class="btns"><button class="b l" type="button" id="troc-r2">Rejouer le troc</button></div>';
+    document.getElementById('troc-r2').addEventListener('click',init);
+  }
+  init();
+})();
+</script>
+
+<script>
+/* Borne 2 · Vrai ou faux */
+(function(){
+  var Q=[
+    ["Un billet de 10 000 F vaut 10 000 F parce qu’il y a de l’or à la banque centrale pour chaque billet.",false,"Faux. Les billets ne sont plus échangeables contre de l’or. Leur valeur tient à la confiance, au cours légal et à la politique de la banque centrale."],
+    ["L’argent sur mon compte de mobile money est de la monnaie.",true,"Vrai. C’est de la monnaie électronique&nbsp;: elle sert à payer, et chaque franc est adossé à de l’argent déposé en banque par l’émetteur."],
+    ["Un commerçant peut refuser mes billets de francs CFA s’il préfère être payé autrement.",false,"Faux. Le billet a cours légal&nbsp;: on ne peut pas le refuser en paiement. Un commerçant peut en revanche refuser un chèque."],
+    ["Garder 500 000 F sous le matelas pendant dix ans, c’est garder la même chose.",false,"Faux. Si les prix montent de 3&nbsp;% par an, ces 500&nbsp;000&nbsp;F n’achèteront plus, dix ans plus tard, que l’équivalent d’environ 372&nbsp;000&nbsp;F d’aujourd’hui."],
+    ["Le franc CFA d’Afrique de l’Ouest et celui d’Afrique centrale sont deux monnaies différentes.",true,"Vrai. Même valeur face à l’euro, mais deux banques centrales, la BCEAO et la BEAC, et deux billets distincts."],
+    ["Les cauris ont servi de monnaie parce qu’ils étaient rares, solides et faciles à compter.",true,"Vrai. Rareté, durabilité, facilité à compter, difficulté à contrefaire&nbsp;: ce sont les qualités qu’on attend d’une monnaie."]
+  ];
+  var z=document.getElementById('vf'),i=0,bon=0;
+  function poser(){
+    if(i>=Q.length){z.innerHTML='<p class="retour bon"><b>'+bon+' bonne'+(bon>1?'s':'')+' réponse'+(bon>1?'s':'')+' sur '+Q.length+'.</b> '+(bon>=5?'Vous savez ce qui fait tenir une monnaie.':'Relisez le panneau « Trois services en un »&nbsp;: tout y est.')+'</p><div class="btns"><button class="b l" type="button" id="vf-r">Recommencer</button></div>';document.getElementById('vf-r').addEventListener('click',function(){i=0;bon=0;poser();});return;}
+    var q=Q[i];
+    z.innerHTML='<p class="prog">Affirmation '+(i+1)+' sur '+Q.length+'</p><div class="scene"><h4>«&nbsp;'+q[0]+'&nbsp;»</h4></div><div class="choix"><button type="button" data-v="1">Vrai</button><button type="button" data-v="0">Faux</button></div><div id="vf-o"></div>';
+    z.querySelectorAll('.choix button').forEach(function(b){b.addEventListener('click',function(){
+      vu('vf');var ok=(b.dataset.v==="1")===q[1];if(ok)bon++;
+      z.querySelectorAll('.choix button').forEach(function(x){x.disabled=true;if((x.dataset.v==="1")===q[1])x.classList.add('ok');else if(x===b)x.classList.add('ko');});
+      document.getElementById('vf-o').innerHTML='<p class="retour'+(ok?' bon':'')+'">'+q[2]+'</p><div class="btns"><button class="b" type="button" id="vf-n">'+(i+1<Q.length?'Suivante':'Voir mon résultat')+'</button></div>';
+      document.getElementById('vf-n').addEventListener('click',function(){i++;poser();});
+    });});
+  }
+  poser();
+})();
+</script>
+
+<script>
+/* Borne 3 · Reliez les acteurs */
+(function(){
+  var L=["Paiement des achats","Salaires","Impôts et cotisations","Pensions et aides","Impôts et taxes sur l’activité","Subventions et commandes publiques","Épargne déposée","Prêts aux entreprises","Prêts à l’État","Argent envoyé par la diaspora"];
+  var Q=[
+    ["Ménages","Entreprises",0,"Quand vous achetez du pain ou payez un taxi, votre argent devient la recette d’une entreprise."],
+    ["Entreprises","Ménages",1,"En échange de leur travail, les ménages reçoivent des salaires. C’est leur principale source de revenus."],
+    ["Ménages","État",2,"Impôt sur le salaire, taxes sur ce qu’on achète, cotisations de retraite et de santé."],
+    ["État","Ménages",3,"Pensions de retraite, allocations, aides&nbsp;: une partie de ce qui est prélevé revient aux ménages."],
+    ["Entreprises","État",4,"Impôt sur les bénéfices, taxes, droits de douane, cotisations patronales."],
+    ["État","Entreprises",5,"Construction d’une route, achat de médicaments, aide à une filière&nbsp;: l’État est aussi un gros client."],
+    ["Ménages","Banques",6,"Ce que les ménages ne dépensent pas, ils le déposent ou le placent. Cette épargne finance les prêts."],
+    ["Banques","Entreprises",7,"Crédit pour acheter une machine, financer un stock ou passer un trou de trésorerie."],
+    ["Banques","État",8,"Les banques achètent des titres du Trésor&nbsp;: c’est l’État qui emprunte, pour financer ses investissements."],
+    ["Reste du monde","Ménages",9,"Les transferts des parents installés à l’étranger pèsent lourd dans le revenu de nombreuses familles."]
+  ];
+  var z=document.getElementById('circuit'),i=0,bon=0;
+  function opts(k){var p=[k],t=0;while(p.length<3&&t<50){var r=Math.floor(Math.random()*L.length);if(p.indexOf(r)<0)p.push(r);t++;}return p.sort(function(){return Math.random()-.5;});}
+  function bilan(){
+    var h='<p class="retour bon"><b>'+bon+' flux bien reliés sur '+Q.length+'.</b> Voici le circuit complet&nbsp;: chaque franc qui sort d’un acteur entre chez un autre.</p><div class="tab-wrap"><table class="tab"><thead><tr><th>De</th><th>Vers</th><th>Ce qui passe</th></tr></thead><tbody>';
+    Q.forEach(function(q){h+='<tr><td>'+q[0]+'</td><td>'+q[1]+'</td><td>'+L[q[2]]+'</td></tr>';});
+    h+='</tbody></table></div><div class="btns"><button class="b l" type="button" id="ci-r">Recommencer</button></div>';
+    z.innerHTML=h;document.getElementById('ci-r').addEventListener('click',function(){i=0;bon=0;poser();});
+  }
+  function poser(){
+    if(i>=Q.length)return bilan();
+    var q=Q[i],o=opts(q[2]);
+    var h='<p class="prog">Flèche '+(i+1)+' sur '+Q.length+'</p><div class="scene"><h4>'+q[0]+'&nbsp;→&nbsp;'+q[1]+'</h4><p>Quel argent circule dans ce sens&nbsp;?</p></div><div class="choix">';
+    o.forEach(function(k){h+='<button type="button" data-k="'+k+'">'+L[k]+'</button>';});
+    z.innerHTML=h+'</div><div id="ci-o"></div>';
+    z.querySelectorAll('.choix button').forEach(function(b){b.addEventListener('click',function(){
+      vu('circuit');var ok=+b.dataset.k===q[2];if(ok)bon++;
+      z.querySelectorAll('.choix button').forEach(function(x){x.disabled=true;if(+x.dataset.k===q[2])x.classList.add('ok');else if(x===b)x.classList.add('ko');});
+      document.getElementById('ci-o').innerHTML='<p class="retour'+(ok?' bon':'')+'"><b>'+L[q[2]]+'.</b> '+q[3]+'</p><div class="btns"><button class="b" type="button" id="ci-n">'+(i+1<Q.length?'Flèche suivante':'Voir le circuit')+'</button></div>';
+      document.getElementById('ci-n').addEventListener('click',function(){i++;poser();});
+    });});
+  }
+  poser();
+})();
+</script>
+
+<script>
+/* Borne 4 · L'entrepreneur stratège */
+(function(){
+  var S={N:"Prix habituel",B:"Baisser les prix",Q:"Améliorer la qualité"};
+  var D={N:"15 000 F la paire",B:"12 000 F la paire",Q:"Meilleures semelles, service après-vente"};
+  /* bénéfices de la semaine en milliers de F : [vous, concurrent] */
+  var P={NN:[100,100],NB:[55,125],NQ:[90,80],BN:[125,55],BB:[45,45],BQ:[80,65],QN:[80,90],QB:[65,80],QQ:[75,75]};
+  var z=document.getElementById('strat'),sem,vous,lui,fid,sonFid,dern,hist;
+  function init(){sem=1;vous=0;lui=0;fid=0;sonFid=0;dern="N";hist=[];rendre();}
+  function reaction(){ if(dern==="B")return "B"; if(dern==="Q")return Math.random()<.5?"Q":"N"; return "N"; }
+  function rendre(msg){
+    var tot=vous+lui||1;
+    var h='<div class="etat"><div><small>Semaine</small><b>'+Math.min(sem,6)+' / 6</b></div><div><small>Vos bénéfices</small><b>'+F(vous*1000)+'</b></div><div><small>Ceux du concurrent</small><b>'+F(lui*1000)+'</b></div></div>';
+    h+='<div class="barre" aria-hidden="true"><i style="width:'+(100*vous/tot)+'%;background:var(--corail)"></i><i style="width:'+(100*lui/tot)+'%;background:var(--nuit)"></i></div>';
+    if(msg)h+='<p class="retour">'+msg+'</p>';
+    if(sem<=6){
+      h+='<div class="choix">';
+      ["N","B","Q"].forEach(function(k){h+='<button type="button" data-k="'+k+'">'+S[k]+'<small>'+D[k]+'</small></button>';});
+      h+='</div>';
+    } else {
+      var v=vous>lui?'Vous terminez devant.':vous<lui?'Votre concurrent termine devant.':'Égalité parfaite.';
+      var guerre=hist.filter(function(x){return x==="BB";}).length, qual=hist.filter(function(x){return x[0]==="Q";}).length;
+      h+='<p class="retour bon"><b>'+v+'</b> '+(guerre>=2?'Vous avez vécu '+guerre+' semaines de guerre des prix&nbsp;: les deux vendeurs y perdent, seuls les clients y gagnent. ':'')+(qual>=1?'Vos efforts de qualité coûtent au début, puis fidélisent&nbsp;: chaque amélioration vous rapporte un peu plus chaque semaine suivante. ':'')+'Baisser les prix attire les clients une semaine, jusqu’à ce que l’autre fasse pareil. Se distinguer dure plus longtemps.</p>';
+      h+='<ul class="histo">'+hist.map(function(x,j){return '<li>Semaine '+(j+1)+'&nbsp;: vous, '+S[x[0]].toLowerCase()+'&nbsp;; lui, '+S[x[1]].toLowerCase()+'</li>';}).join('')+'</ul>';
+      h+='<div class="btns"><button class="b l" type="button" id="st-r">Rejouer</button></div>';
+    }
+    z.innerHTML=h;
+    z.querySelectorAll('.choix button').forEach(function(b){b.addEventListener('click',function(){jouer(b.dataset.k);});});
+    var r=document.getElementById('st-r');if(r)r.addEventListener('click',init);
+  }
+  function jouer(k){
+    vu('strat');var l=reaction(),p=P[k+l];
+    var gv=p[0]+fid, gl=p[1]+sonFid;
+    vous+=gv;lui+=gl;hist.push(k+l);
+    if(k==="Q")fid+=12; if(l==="Q")sonFid+=12;
+    dern=k;sem++;
+    rendre('<b>Semaine '+(sem-1)+'&nbsp;: votre concurrent a choisi «&nbsp;'+S[l].toLowerCase()+'&nbsp;».</b> Vous gagnez '+F(gv*1000)+', lui '+F(gl*1000)+'.');
+  }
+  init();
+})();
+</script>
+
+<script>
+/* Borne 5 · Public, privé ou les deux */
+(function(){
+  var Q=[
+    ["L’école primaire publique du quartier","pub","Construite, financée et dirigée par l’État&nbsp;: un service non marchand, sans prix à payer pour l’enseignement."],
+    ["Le gbaka ou le woro-woro qui vous emmène au travail","pri","Des transporteurs privés, qui vivent de vos tickets. L’État fixe des règles et délivre les autorisations."],
+    ["La police et la justice","pub","Des fonctions que seul l’État exerce&nbsp;: on les appelle régaliennes, ou souveraines."],
+    ["Un pont à péage construit en partenariat public-privé","deux","Une entreprise construit et exploite, se rembourse avec le péage, et rend l’ouvrage à l’État au bout du contrat."],
+    ["La clinique privée","pri","Une entreprise de santé, qui facture ses soins. L’État contrôle les autorisations et les normes."],
+    ["L’eau courante au robinet","deux","Souvent, le réseau appartient à l’État, qui en confie l’exploitation à une entreprise dans le cadre d’une concession."],
+    ["Le centre hospitalier universitaire","pub","Un hôpital public, financé par l’État, qui soigne et forme les médecins."],
+    ["La téléphonie mobile","pri","Des opérateurs privés vendent le service. L’État attribue les fréquences et une autorité de régulation surveille."]
+  ];
+  var LB={pub:"Public",pri:"Privé",deux:"Les deux"};
+  var z=document.getElementById('pp'),i=0,bon=0;
+  function poser(){
+    if(i>=Q.length){z.innerHTML='<p class="retour bon"><b>'+bon+' sur '+Q.length+'.</b> Retenez la règle&nbsp;: l’État n’a pas besoin de tout produire lui-même pour qu’un service soit public. Il peut le confier, à condition de fixer et de contrôler les règles.</p><div class="btns"><button class="b l" type="button" id="pp-r">Recommencer</button></div>';document.getElementById('pp-r').addEventListener('click',function(){i=0;bon=0;poser();});return;}
+    var q=Q[i];
+    z.innerHTML='<p class="prog">Service '+(i+1)+' sur '+Q.length+'</p><div class="scene"><h4>'+q[0]+'</h4></div><div class="choix"><button type="button" data-k="pub">Public</button><button type="button" data-k="pri">Privé</button><button type="button" data-k="deux">Les deux</button></div><div id="pp-o"></div>';
+    z.querySelectorAll('.choix button').forEach(function(b){b.addEventListener('click',function(){
+      vu('public-prive');var ok=b.dataset.k===q[1];if(ok)bon++;
+      z.querySelectorAll('.choix button').forEach(function(x){x.disabled=true;if(x.dataset.k===q[1])x.classList.add('ok');else if(x===b)x.classList.add('ko');});
+      document.getElementById('pp-o').innerHTML='<p class="retour'+(ok?' bon':'')+'"><b>'+LB[q[1]]+'.</b> '+q[2]+'</p><div class="btns"><button class="b" type="button" id="pp-n">'+(i+1<Q.length?'Suivant':'Voir mon résultat')+'</button></div>';
+      document.getElementById('pp-n').addEventListener('click',function(){i++;poser();});
+    });});
+  }
+  poser();
+})();
+</script>
+
+<script>
+/* Borne 6 · Ce que vaut votre temps */
+(function(){
+  var A=[["cu","Cuisine et vaisselle",10],["me","Ménage et linge",6],["en","Enfants&nbsp;: soins, devoirs",7],["co","Courses et marché",3],["ai","Aide aux aînés ou malades",2],["ea","Corvée d’eau ou de bois",0],["br","Bricolage, jardin, couture",1]];
+  var z=document.getElementById('temps');
+  var h='<div class="champs">';
+  A.forEach(function(a){h+='<label>'+a[1]+'<input id="t-'+a[0]+'" inputmode="decimal" autocomplete="off" value="'+a[2]+'"><small>heures par semaine</small></label>';});
+  h+='<label>Valeur d’une heure<input id="t-h" inputmode="numeric" autocomplete="off" value="500"><small>Ce que vous paieriez quelqu’un, en FCFA</small></label></div>';
+  h+='<div class="etat" style="margin-top:14px"><div><small>Heures par semaine</small><b id="t-o1">–</b></div><div><small>Par mois</small><b id="t-o2">–</b></div><div><small>Par an</small><b id="t-o3">–</b></div></div><p class="retour" id="t-v" aria-live="polite"></p><p class="note" style="margin-top:10px;font-size:14px;color:var(--ink2)">Rien n’est enregistré ni envoyé.</p>';
+  z.innerHTML=h;
+  function n(id){var v=parseFloat(String(document.getElementById(id).value).replace(',','.').replace(/[^\d.]/g,''));return isFinite(v)?v:0;}
+  function maj(){
+    var hs=0;A.forEach(function(a){hs+=n('t-'+a[0]);});var vh=n('t-h');
+    var mois=hs*vh*52/12, an=hs*vh*52;
+    document.getElementById('t-o1').textContent=hs.toLocaleString('fr-FR')+' h';
+    document.getElementById('t-o2').textContent=F(mois);document.getElementById('t-o3').textContent=F(an);
+    document.getElementById('t-v').innerHTML=hs>0?'<b>Ce travail vaut environ '+F(an)+' par an.</b> Il n’apparaît dans aucune statistique, et ne donne droit ni à un salaire, ni à une retraite. C’est l’une des raisons pour lesquelles le produit intérieur brut ne dit pas tout de la richesse d’un pays.':'Indiquez au moins une activité.';
+  }
+  z.querySelectorAll('input').forEach(function(i){i.addEventListener('input',function(){vu('temps');maj();});});
+  maj();
+})();
+</script>
+
+<script>
+/* Inflation : ce que valent 100 000 F */
+(function(){
+  var t=document.getElementById('inf-t'),n=document.getElementById('inf-n'),o=document.getElementById('inf-out');
+  function maj(){var r=+t.value,a=+n.value,v=100000/Math.pow(1+r/100,a),p=100000*Math.pow(1+r/100,a);
+    document.getElementById('inf-v').textContent=String(r).replace('.',',')+' %';document.getElementById('inf-a').textContent=a+(a>1?' ans':' an');
+    o.innerHTML='<b>Avec '+String(r).replace('.',',')+'&nbsp;% d’inflation par an pendant '+a+(a>1?' ans':' an')+'</b>, 100&nbsp;000&nbsp;F gardés sans rapport n’achèteront plus que ce que '+F(v)+' achètent aujourd’hui. Ce qui coûte 100&nbsp;000&nbsp;F coûtera '+F(p)+'.';}
+  [t,n].forEach(function(x){x.addEventListener('input',function(){vu('inflation');maj();});});maj();
+})();
+</script>
+
+<script>
+/* Borne 7 · Dans la peau d'un banquier */
+(function(){
+  var RQ={f:{n:"Faible",p:.05,t:.08},m:{n:"Moyen",p:.2,t:.12},e:{n:"Élevé",p:.45,t:.18}};
+  var MANCHES=[
+    [{c:"Aïcha, pharmacienne",o:"Agrandir son officine",m:120e6,r:"f",g:.5},
+     {c:"Coopérative de Daloa",o:"Acheter un séchoir à cacao",m:80e6,r:"m",g:.8},
+     {c:"Kevin, jeune entrepreneur",o:"Ouvrir un restaurant, sans apport",m:150e6,r:"e",g:.2},
+     {c:"Transports Bamba",o:"Deux camions d’occasion",m:200e6,r:"m",g:.5}],
+    [{c:"Clinique des Lagunes",o:"Un scanner",m:250e6,r:"f",g:.6},
+     {c:"Promoteur immobilier",o:"Un immeuble sur plan, terrain contesté",m:300e6,r:"e",g:.3},
+     {c:"Atelier de couture Sika",o:"Dix machines et un stock de tissu",m:40e6,r:"m",g:.7},
+     {c:"Grossiste en riz",o:"Financer un stock avant la hausse",m:180e6,r:"m",g:.4}]
+  ];
+  var z=document.getElementById('banquier'),FP,enc,res,proj,man,k,acc,actio;
+  function init(){FP=100e6;enc=0;res=0;proj=0;man=0;k=0;acc=[];actio=false;rendre();}
+  function cap(){return FP*8-enc;}
+  function tete(){
+    return '<div class="etat"><div><small>Fonds propres</small><b>'+M(FP)+'</b></div><div><small>Encore prêtable</small><b'+(cap()<0?' class="neg"':'')+'>'+M(Math.max(0,cap()))+'</b></div><div><small>Résultats</small><b'+(res<0?' class="neg"':'')+'>'+M(res)+'</b></div><div><small>Projets financés</small><b>'+proj+'</b></div></div><div class="barre" aria-hidden="true"><i style="width:'+Math.min(100,100*enc/(FP*8))+'%;background:var(--corail)"></i></div>';
+  }
+  function rendre(msg){
+    if(man>=2)return fin();
+    var d=MANCHES[man][k],q=RQ[d.r],gain=d.m*q.t,perte=d.m*(1-d.g);
+    var h=tete()+(msg?'<p class="retour">'+msg+'</p>':'');
+    h+='<div class="scene"><p class="prog">Manche '+(man+1)+' · demande '+(k+1)+' sur 4</p><h4>'+d.c+'&nbsp;: '+d.o+'</h4>';
+    h+='<div class="etat" style="margin-top:10px"><div><small>Montant</small><b>'+M(d.m)+'</b></div><div><small>Risque</small><b>'+q.n+'</b></div><div><small>Gain espéré</small><b>'+M(gain)+'</b></div><div><small>Perte possible</small><b class="neg">'+M(-perte)+'</b></div></div>';
+    h+='<p style="font-size:15px;color:var(--ink2)">Taux '+Math.round(q.t*100)+'&nbsp;% · garantie couvrant '+Math.round(d.g*100)+'&nbsp;% du prêt · en cas de défaut, vous perdez le reste.</p></div>';
+    h+='<div class="choix"><button type="button" data-a="o"'+(d.m>cap()?' disabled':'')+'>Accorder le prêt'+(d.m>cap()?'<small>Plus assez de fonds propres</small>':'')+'</button><button type="button" data-a="n">Refuser</button>'+(actio?'':'<button type="button" data-a="k">Lever des capitaux<small>+60 M de fonds propres, un quart des résultats futurs aux nouveaux actionnaires</small></button>')+'</div>';
+    z.innerHTML=h;
+    z.querySelectorAll('.choix button').forEach(function(b){b.addEventListener('click',function(){agir(b.dataset.a,d);});});
+  }
+  function agir(a,d){
+    vu('banquier');
+    if(a==="k"){actio=true;FP+=60e6;rendre('<b>Vous avez levé 60&nbsp;millions auprès de nouveaux actionnaires.</b> Vous pouvez prêter davantage, mais un quart de vos futurs résultats leur reviendra.');return;}
+    var msg;
+    if(a==="o"){enc+=d.m;acc.push(d);proj++;msg='<b>Prêt accordé à '+d.c.split(',')[0]+'.</b> Vous saurez à la fin de la manche s’il est remboursé.';}
+    else msg='<b>Demande refusée.</b> Pas de risque, mais pas de gain, et un projet qui ne verra peut-être pas le jour.';
+    k++;
+    if(k>=4){clore();return;}
+    rendre(msg);
+  }
+  function clore(){
+    var lignes=[],r=0;
+    acc.forEach(function(d){var q=RQ[d.r];if(Math.random()<q.p){var p=d.m*(1-d.g);r-=p;lignes.push('<li><b>'+d.c+'</b>&nbsp;: défaut de paiement. La garantie couvre une partie, vous perdez '+M(p)+'.</li>');}else{var g=d.m*q.t;r+=g;lignes.push('<li><b>'+d.c+'</b>&nbsp;: remboursé avec les intérêts, '+M(g)+' gagnés.</li>');}});
+    if(actio&&r>0)r=r*.75;
+    res+=r;FP+=r*.5;enc=0;acc=[];
+    var h=tete()+'<div class="scene"><p class="prog">Fin de la manche '+(man+1)+'</p><h4>'+(r>=0?'Résultat de la manche&nbsp;: '+M(r):'Perte de la manche&nbsp;: '+M(r))+'</h4><ul class="histo">'+(lignes.join('')||'<li>Aucun prêt accordé.</li>')+'</ul><p>La moitié du résultat est mise en réserve&nbsp;: elle '+(r>=0?'augmente':'diminue')+' vos fonds propres, donc ce que vous pourrez prêter ensuite.</p></div>';
+    man++;k=0;
+    h+='<div class="btns"><button class="b" type="button" id="bq-n">'+(man<2?'Manche suivante':'Voir le bilan')+'</button></div>';
+    z.innerHTML=h;document.getElementById('bq-n').addEventListener('click',function(){rendre();});
+  }
+  function fin(){
+    var v=FP<=0?'<b>Votre banque n’a plus de fonds propres&nbsp;: elle est insolvable.</b> Les autorités de contrôle interviendraient.':res>0?'<b>Votre banque est en bonne santé.</b>':'<b>Votre banque a perdu de l’argent, mais elle tient.</b>';
+    z.innerHTML=tete()+'<p class="retour'+(res>0&&FP>0?' bon':'')+'">'+v+' '+proj+' projet'+(proj>1?'s':'')+' financé'+(proj>1?'s':'')+'. Un prêt à risque élevé rapporte un taux plus fort, mais la perte possible l’emporte souvent sur le gain. Une bonne garantie change tout. Et sans fonds propres, une banque ne peut plus prêter, même à de bons projets&nbsp;: c’est pour cela que les règles la forcent à en garder.</p><div class="btns"><button class="b l" type="button" id="bq-r">Rejouer</button></div>';
+    document.getElementById('bq-r').addEventListener('click',init);
+  }
+  init();
+})();
+</script>
+
+<script>
+/* Borne 8 · S'endetter jusqu'où */
+(function(){
+  var SAL=250000,DEP=175000;
+  var E=[
+    {t:"Une moto pour livrer le soir",d:"Votre cousin vend sa moto&nbsp;: 450&nbsp;000&nbsp;F à crédit, 42&nbsp;000&nbsp;F par mois pendant douze mois. Les livraisons du soir pourraient rapporter 45&nbsp;000&nbsp;F par mois, carburant payé.",a:["Prendre la moto à crédit",function(s){s.mens.push([42000,12]);s.bonus+=45000;}],b:["Ne pas la prendre",function(){}]},
+    {t:"Un grand écran sans apport",d:"Le magasin propose une télévision sans rien payer aujourd’hui&nbsp;: 25&nbsp;000&nbsp;F par mois pendant quinze mois.",a:["Signer",function(s){s.mens.push([25000,15]);}],b:["Attendre et épargner",function(){}]},
+    {t:"Une cérémonie dans la famille",d:"On attend votre contribution&nbsp;: 60&nbsp;000&nbsp;F.",a:["Donner 60 000 F",function(s){s.cout+=60000;}],b:["Donner 25 000 F et l’expliquer",function(s){s.cout+=25000;}]},
+    {t:"Une panne",d:"Votre téléphone, outil de travail, lâche&nbsp;: 70&nbsp;000&nbsp;F tout de suite.",a:["Payer avec l’épargne",function(s){s.cout+=70000;}],b:["Emprunter à un collègue, rendre 80 000 F le mois prochain",function(s){s.mens.push([80000,1,1]);}]},
+    {t:"Un prêt facile",d:"Un prêteur propose 200&nbsp;000&nbsp;F tout de suite, sans papiers, à rendre 25&nbsp;000&nbsp;F par mois pendant douze mois.",a:["Prendre les 200 000 F",function(s){s.cash+=200000;s.mens.push([25000,12]);}],b:["Refuser",function(){}]},
+    {t:"La rentrée scolaire",d:"Inscriptions, fournitures, uniformes&nbsp;: 120&nbsp;000&nbsp;F.",a:["Tout payer ce mois-ci",function(s){s.cout+=120000;}],b:["Payer 60 000 F et négocier le reste avec l’école",function(s){s.cout+=60000;s.mens.push([60000,1,1]);}]}
+  ];
+  var z=document.getElementById('dette'),s,m;
+  function init(){s={ep:100000,mens:[],bonus:0,cout:0,cash:0,dette:0};m=0;rendre();}
+  function mensu(){var t=0;s.mens.forEach(function(x){if(x[1]>0&&!x[2])t+=x[0];});return t;}
+  function aRendre(){var t=0;s.mens.forEach(function(x){t+=x[0]*x[1];});return t;}
+  function tete(){
+    var taux=Math.round(100*mensu()/SAL);
+    return '<div class="etat"><div><small>Mois</small><b>'+Math.min(m+1,6)+' / 6</b></div><div><small>Épargne</small><b'+(s.ep<0?' class="neg"':'')+'>'+F(s.ep)+'</b></div><div><small>Remboursements par mois</small><b>'+F(mensu())+'</b></div><div><small>Part du salaire</small><b'+(taux>33?' class="neg"':'')+'>'+taux+'&nbsp;%</b></div></div><div class="barre" aria-hidden="true"><i style="width:'+Math.min(100,taux*3)+'%;background:'+(taux>33?'var(--erreur)':'var(--corail)')+'"></i></div><p style="font-size:14px;color:var(--ink2);margin-top:6px">Repère courant&nbsp;: au-delà d’un tiers du revenu consacré aux remboursements, le budget devient fragile.</p>';
+  }
+  function rendre(msg){
+    if(m>=6)return fin();
+    var e=E[m];
+    z.innerHTML=tete()+(msg?'<p class="retour">'+msg+'</p>':'')+'<div class="scene"><p class="prog">Mois '+(m+1)+'</p><h4>'+e.t+'</h4><p>'+e.d+'</p></div><div class="choix"><button type="button" data-c="a">'+e.a[0]+'</button><button type="button" data-c="b">'+e.b[0]+'</button></div>';
+    z.querySelectorAll('.choix button').forEach(function(b){b.addEventListener('click',function(){choisir(b.dataset.c);});});
+  }
+  function choisir(c){
+    vu('dette');s.cout=0;s.cash=0;
+    E[m][c][1](s);
+    var payes=0;s.mens.forEach(function(x){if(x[1]>0){if(x[2]===1){x[2]=0;return;}payes+=x[0];x[1]--;}});
+    var solde=SAL+s.bonus+s.cash-DEP-payes-s.cout;
+    s.ep+=solde;
+    var msg='<b>Ce mois-ci&nbsp;: '+(solde>=0?'+':'')+F(solde)+'.</b> Salaire '+F(SAL)+(s.bonus?', livraisons '+F(s.bonus):'')+(s.cash?', prêt reçu '+F(s.cash):'')+', dépenses '+F(DEP)+(s.cout?', imprévu '+F(s.cout):'')+(payes?', remboursements '+F(payes):'')+'.';
+    if(s.ep<0)msg+=' <b>Votre épargne est épuisée&nbsp;: il faut emprunter pour finir le mois.</b>';
+    m++;rendre(msg);
+  }
+  function fin(){
+    var taux=Math.round(100*mensu()/SAL),reste=aRendre();
+    var v;
+    if(s.ep<0)v='<b>Le budget a craqué.</b> L’épargne ne suffit plus, et chaque nouveau prêt sert à rembourser le précédent. C’est ainsi que commence le surendettement.';
+    else if(taux>33)v='<b>Vous tenez, mais de justesse.</b> Plus d’un tiers du salaire part en remboursements&nbsp;: au prochain imprévu, il faudra emprunter.';
+    else v='<b>Budget tenu.</b> Les crédits que vous avez pris restent supportables, et votre épargne amortit les coups.';
+    z.innerHTML=tete()+'<p class="retour'+(s.ep>=0&&taux<=33?' bon':'')+'">'+v+' Il vous reste '+F(reste)+' à rembourser. Un crédit qui rapporte, comme la moto, se paie lui-même&nbsp;; un crédit pour consommer, comme l’écran ou le prêt facile, se paie avec le salaire de demain.</p><div class="btns"><button class="b l" type="button" id="de-r">Rejouer</button><a class="b c" href="cout-total-credit.html?src=balade" data-goatcounter-click="balade-dette-credit">Calculer un vrai crédit</a></div>';
+    document.getElementById('de-r').addEventListener('click',init);
+  }
+  init();
+})();
+</script>
+<button type="button" class="musee-flot" id="musee-flot" data-goatcounter-click="balade-musee-flottant"><i>▶</i> Visiter le musée</button>
+<script src="musee-economie.js?v=2026102915" defer></script>
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030a" defer></script>
+</body>
+</html>

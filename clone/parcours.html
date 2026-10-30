@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<title>L’école EFA : apprendre à gérer son argent, du diagnostic au certificat · EFA</title>
+<meta name="description" content="L’école EFA : un diagnostic pour savoir par où commencer, trois cycles (Fondations, Maîtrise, Patrimoine), une fiche à garder à la fin de chaque module et un certificat par cycle. Gratuit.">
+<link rel="canonical" href="https://efa.africa/parcours">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:title" content="L’école EFA">
+<meta property="og:description" content="Du diagnostic au certificat : trois cycles pour apprendre à gérer son argent, avec Koffi, Tonton Bamba et Tantie Affoué.">
+<meta property="og:url" content="https://efa.africa/parcours">
+<meta property="og:image" content="https://efa.africa/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Page « Mes parcours » : en-tête nuit, choix du problème, trois questions, parcours en cartes papier dépliables, programmes. Charte efa.africa du 23/10/2026. */
+:root{
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --creme:#F5EFE2; --corail:#DA3C1B; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+  --papier:#FFFDF8; --line:#E2D8C4; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --hausse:#3CCB7F; --provisoire:#F2B84B;
+  --r-bouton:8px; --r-carte:14px; --r-pastille:999px;
+  --gut:max(16px,env(safe-area-inset-left,0px)); --gutR:max(16px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--bleu)}
+p{margin:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-transform:none;text-wrap:balance;margin:0;color:var(--nuit)}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.col{max-width:1040px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+
+/* Barre du site (identique aux autres pages) */
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:0 var(--gutR) 0 var(--gut);background:var(--nuit);color:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-size:12px;font-weight:800;letter-spacing:.22em}
+.brand img{width:30px;height:30px}
+.nav{display:flex;gap:2px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:var(--r-bouton);white-space:nowrap;color:#D8DEE8}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav a.principal{background:var(--corail);color:#fff}
+.menu-btn{display:none;background:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:var(--r-bouton);padding:8px 14px;min-height:40px;font:700 13px var(--f-body);cursor:pointer}
+@media (max-width:1100px){.brand span{display:none}}
+@media (max-width:900px){
+  .brand span{display:inline;font-size:10px;letter-spacing:.12em;line-height:1.25;max-width:13em}
+  .nav{position:fixed;inset:0;width:100vw;height:100svh;z-index:40;background:var(--nuit);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 32px;gap:4px;display:none}
+  .nav.open{display:flex}
+  .nav a{font-family:var(--f-display);font-size:26px;font-weight:700;white-space:normal;color:#fff;padding:10px 0;background:none!important}
+  .menu-btn{display:block;position:relative;z-index:41}
+}
+
+/* Typographie commune */
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.titre-section{font-size:clamp(28px,3.8vw,44px)}
+.bouton{display:inline-flex;align-items:center;justify-content:center;font:800 16px/1.2 var(--f-body);min-height:46px;padding:12px 22px;border-radius:var(--r-bouton);border:0;text-decoration:none;cursor:pointer}
+.bouton-principal{background:var(--corail);color:#fff}
+.bouton-sombre{background:var(--nuit);color:#fff}
+.lien-souligne{font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* En-tête de page */
+.hero{background:var(--nuit);color:#E8EDF5;padding-block:36px 40px}
+.hero .mission{font-size:clamp(16px,2vw,20px);font-weight:700;line-height:1.4;color:#C9D1DE;max-width:34em}
+.hero .mission .cercle{color:#EC6243;font-weight:800}.hero .mission .spirale{color:var(--soft-bleu);font-weight:800}
+.hero .surtitre{color:var(--soft-corail);display:block;margin-top:36px}
+.hero h1{color:#fff;font-size:clamp(40px,6.9vw,76px);margin-top:12px}
+.hero .chapo{font-size:clamp(17px,2vw,20px);color:#C9D1DE;margin-top:18px;max-width:36em}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:30px}
+.hero .lien-souligne{color:#fff}
+.chiffres{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
+.chiffres div{display:flex;flex-direction:column}
+.chiffres strong{font-family:var(--f-display);font-size:clamp(20px,2.2vw,26px);color:#fff}
+.chiffres span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8E98AA}
+
+section.bloc{padding-block:40px 8px}
+section.bloc .intro{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;max-width:44em}
+section.bloc .intro p{color:var(--ink2)}
+
+
+.conseil{margin-top:14px;font-size:15px;color:var(--ink2)}
+.cote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.cote{grid-template-columns:minmax(0,1fr)}}
+#questions{display:flex;flex-direction:column;gap:12px;scroll-margin-top:76px}
+
+/* Parcours */
+.liste{display:flex;flex-direction:column;gap:12px}
+.parcours{background:var(--papier);border-radius:var(--r-carte);scroll-margin-top:76px;transition:opacity .2s}
+.parcours.estompe{opacity:.4}
+.cycle{font-family:var(--f-body);font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--corail);margin:18px 0 2px}
+.cycle:first-child{margin-top:0}
+.fiche{background:var(--creme);border-radius:12px;padding:16px 18px;margin:16px 0;display:grid;gap:8px;justify-items:start}
+.fiche p{margin:0}
+details.cy .fiche p,details.cy .fiche b{color:var(--ink)!important}details.cy .fiche .etiquette{color:var(--ink3)!important}
+.parcours.reco{box-shadow:0 0 0 3px var(--corail)}
+.parcours summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 16px;align-items:start}
+.parcours summary::-webkit-details-marker{display:none}
+.num{font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1;color:var(--corail);min-width:40px;padding-top:2px}
+.p-tete{display:flex;flex-direction:column;gap:4px;min-width:0}
+.p-tete h3{font-size:clamp(19px,1.7vw,23px);line-height:1.18}
+.p-tete .obj{font-size:15px;color:var(--ink2)}
+.p-cote{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.duree{font-size:13px;font-weight:700;color:var(--ink2);background:var(--creme);padding:4px 12px;border-radius:var(--r-pastille);white-space:nowrap}
+.fleche{font-size:20px;color:var(--ink3);transition:transform .2s}
+.parcours[open] .fleche{transform:rotate(90deg)}
+.barre{grid-column:2/4;height:6px;border-radius:var(--r-pastille);background:var(--creme);overflow:hidden}
+.barre i{display:block;height:100%;background:var(--corail);border-radius:var(--r-pastille);width:0}
+.barre-txt{grid-column:2/4;font-size:13px;color:var(--ink3)}
+@media (max-width:560px){.parcours summary{grid-template-columns:auto minmax(0,1fr)}.p-cote{grid-column:2;flex-direction:row;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between;min-width:0}.barre,.barre-txt{grid-column:1/3}}
+.p-corps{padding:0 22px 22px;display:flex;flex-direction:column;gap:18px}
+.arc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.arc div{background:var(--creme);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.arc p{font-size:15.5px;color:var(--ink)}
+@media (max-width:640px){.arc{grid-template-columns:1fr}}
+.etapes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.etapes li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.etapes input{width:22px;height:22px;accent-color:var(--corail);margin:0;cursor:pointer}
+.etapes input:disabled{cursor:default;opacity:.35}
+.e-txt{display:flex;flex-direction:column;min-width:0}
+.e-type{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.e-nom{font-size:16px;color:var(--ink)}
+.e-nom a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
+li.fait .e-nom a{text-decoration-color:var(--hausse)}
+.pill{font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:3px 10px;border-radius:var(--r-pastille);white-space:nowrap}
+.pill.bientot{background:var(--line);color:var(--ink2)}
+.pill.pilote{background:var(--bleu);color:#fff}
+.pill.dispo{background:#E3F5EA;color:#1D6B43}
+.pill.fait{background:var(--hausse);color:var(--nuit)}
+.tags-profils{display:flex;flex-wrap:wrap;gap:8px}
+.tp{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;flex-direction:column;gap:2px;background:var(--papier);border-radius:12px;padding:10px 16px;min-height:44px;font-family:var(--f-body)}
+.tp b{font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--nuit)}
+.tp span{font-size:13px;color:var(--ink2)}
+.tp[aria-pressed="true"]{background:var(--nuit)}.tp[aria-pressed="true"] b,.tp[aria-pressed="true"] span{color:#fff}
+.tp:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.p-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.p-tag{font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--creme);border-radius:var(--r-pastille);padding:3px 10px}
+details.plus{border-top:1px solid var(--line);padding-top:10px}
+details.plus>summary{cursor:pointer;font-weight:700;font-size:15px;color:var(--ink2);list-style:none;padding:6px 0}
+details.plus>summary::before{content:"+ ";color:var(--corail);font-weight:800}
+details.plus[open]>summary::before{content:"− "}
+.p-bas{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:start}
+.p-bas p{font-size:15px;color:var(--ink2)}
+.p-bas>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+@media (max-width:640px){.p-bas{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:14px;color:var(--ink);text-decoration:none;background:var(--creme);border-radius:var(--r-pastille);padding:5px 12px}
+.chip b{color:var(--corail)}
+.chip:hover{background:var(--line)}
+.p-acts{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center}
+
+
+/* École : chemin, cycles, certificats, boîte à outils */
+.chemin{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.chemin{grid-template-columns:1fr}}
+.chemin li{background:var(--papier);border-radius:var(--r-carte);padding:20px 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px}
+.chemin b{font-family:var(--f-display);font-size:30px;line-height:1;color:var(--corail)}
+.chemin h3{font-size:clamp(19px,1.7vw,23px);margin-bottom:6px}
+.chemin p{font-size:15.5px;color:var(--ink2)}
+.cycles{display:flex;flex-direction:column;gap:14px}
+details.cy{background:var(--nuit);border-radius:var(--r-carte);color:#E8EDF5;scroll-margin-top:76px}
+details.cy>summary{list-style:none;cursor:pointer;padding:22px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 16px;align-items:start}
+details.cy>summary::-webkit-details-marker{display:none}
+.cy-num{font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;color:var(--soft-corail);min-width:48px}
+.cy-t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cy-t .etiquette{color:#8E98AA}
+.cy-t h3{color:#fff;font-size:clamp(24px,3vw,32px)}
+.cy-t p{color:#C9D1DE;font-size:15.5px}
+.cy-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.cy-meta span{font-size:12.5px;font-weight:700;background:var(--panel,#111B2F);color:#C9D1DE;border-radius:var(--r-pastille);padding:4px 10px}
+.cy-next{font-size:14.5px;color:#C9D1DE;margin-top:4px}.cy-next b{color:#fff}
+.cy-meta span.ok{background:var(--hausse);color:var(--nuit)}
+.cy-meta span.ouvert{background:var(--corail);color:#fff}
+details.cy .fleche{color:#8E98AA}
+details.cy[open]>summary .fleche{transform:rotate(90deg)}
+.cy-corps{padding:0 12px 14px;display:flex;flex-direction:column;gap:10px}
+.cy-val{background:#111B2F;border-radius:12px;padding:16px 18px;color:#C9D1DE;font-size:15px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.cy-val b{color:#fff}
+.cy-val .bouton{min-height:42px;padding:10px 18px;font-size:15px}
+.pill.valide{background:var(--hausse);color:var(--nuit)}
+.reperes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.reperes>div{background:var(--papier,#FFFDF8);border-radius:12px;padding:14px 16px;display:grid;gap:4px;min-width:0}
+.reperes b{font-weight:800;color:#0B1220}.reperes span{font-size:15px;line-height:1.45;color:#4E5566}
+@media (max-width:760px){.reperes{grid-template-columns:minmax(0,1fr)}}
+.certs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.certs{grid-template-columns:1fr}}
+.cert{background:var(--papier);border-radius:var(--r-carte);padding:20px 22px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.cert h3{font-size:clamp(19px,1.7vw,23px)}
+.cert p{font-size:15.5px;color:var(--ink2)}
+.cert.plein{background:var(--corail);color:#fff}.cert.plein h3,.cert.plein p,.cert.plein .etiquette{color:#fff}
+.boite{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.boite{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.boite a{background:var(--papier);border-radius:var(--r-carte);padding:16px 18px;text-decoration:none;display:flex;flex-direction:column;gap:4px;min-height:84px}
+.boite b{font-family:var(--f-display);font-size:18px;color:var(--nuit)}
+.boite span{font-size:14px;color:var(--ink2)}
+.boite a:hover{background:var(--line)}
+.labo-t{margin:26px 0 12px;max-width:46em}.labo-t h3{font-size:clamp(22px,2.6vw,28px);color:var(--nuit)}.labo-t p{margin:6px 0 0;color:var(--ink2);font-size:16px}
+.boite-labo a{background:var(--nuit)}.boite-labo a:hover{background:#16213A}.boite-labo b{color:#fff}.boite-labo span{color:#C9D1DE}.boite-labo .bx-ic{background:#16213A;color:var(--soft-corail)}
+
+
+/* Premier écran : deux choix */
+.choix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+@media (max-width:640px){.choix{grid-template-columns:1fr}}
+.ch-b{display:flex;flex-direction:column;gap:4px;text-decoration:none;border-radius:12px;padding:16px 18px;background:#F5EFE2;color:var(--nuit);min-height:46px}
+.ch-b b{font-size:18px;font-weight:800}.ch-b span{font-size:14.5px;color:var(--ink2)}
+.ch-b.ch-p{background:var(--corail);color:#fff}.ch-b.ch-p span{color:#fff}
+.ch-diag{margin-top:16px}
+.ent-t{margin-top:22px!important}
+.ecoles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+@media (max-width:640px){.ecoles{grid-template-columns:minmax(0,1fr)}}
+.ec-c{display:flex;flex-direction:column;gap:8px;text-decoration:none;border-radius:14px;padding:20px;background:#F5EFE2;color:#0B1220;min-width:0}
+.ec-c:hover{background:#FFFDF8}.ec-c:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
+.ec-k{font-family:var(--f-display,"Libre Baskerville",Georgia,serif);font-weight:700;font-size:clamp(22px,2.4vw,28px);line-height:1.12}
+.ec-c b{font-weight:600;font-size:16px;line-height:1.45;color:#2A3142}
+.ec-c em{font-style:normal;margin-top:auto;padding-top:6px;font-weight:800;font-size:16px;color:#B8341A}
+.entrainer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+@media (max-width:640px){.entrainer{grid-template-columns:1fr}}
+.entrainer a{display:flex;flex-direction:column;gap:4px;text-decoration:none;border-radius:12px;padding:16px 18px;background:#13203A;color:#fff;border:1px solid #2E4366}
+.entrainer a:hover{background:#18294A}
+.entrainer a:focus-visible{outline:2px solid #6DB8F2;outline-offset:2px}
+.entrainer b{font-family:var(--f-display);font-size:19px;line-height:1.2}
+.entrainer span{font-size:14.5px;line-height:1.4;color:#C9D1DE}
+.entrainer .en-k{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0B1220;background:#6DB8F2;border-radius:999px;padding:3px 9px}
+.entrainer em{font-style:normal;font-weight:800;color:#6DB8F2;font-size:15px;margin-top:4px}
+.ch-qui{margin-top:24px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail)}
+.ch-qui+.choix{margin-top:10px}
+.ch-orga{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;background:#111B2F;border-radius:12px;padding:14px 16px;text-decoration:none;color:#E8EDF5}
+.ch-orga b{color:#fff;font-size:16px}.ch-orga span{font-size:15px;color:#C9D1DE;flex:1 1 260px}.ch-orga em{font-style:normal;font-weight:800;color:var(--soft-bleu);white-space:nowrap}.ch-orga:hover{background:#16233D}
+.ch-trame{margin-top:14px;font-size:15px;color:#C9D1DE;max-width:40em}
+.reprise{margin-top:20px;background:#111B2F;border-radius:12px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.reprise p{color:#E8EDF5;font-size:15.5px;flex:1 1 240px}.reprise b{color:#fff}
+.reprise .bouton{min-height:42px;padding:10px 18px;font-size:15px}
+.statut{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.statut.dispo{background:#E3F5EA;color:#1D6B43}.statut.pilote{background:var(--bleu);color:#fff}.statut.prep{background:var(--line);color:var(--ink2)}
+.p-go{font-size:14px;font-weight:800;color:var(--corail);white-space:nowrap}
+.cond{background:var(--creme);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--ink)}
+/* Ma progression */
+.progr{background:var(--papier);border-radius:var(--r-carte);padding:22px;display:flex;flex-direction:column;gap:12px;margin-top:40px}
+.progr h2{font-size:clamp(22px,2.6vw,28px)}
+.progr p{color:var(--ink2);font-size:15.5px}
+.progr .acts{display:flex;flex-wrap:wrap;gap:10px}
+.progr button,.progr label.bouton{font:800 15px/1.2 var(--f-body);min-height:44px;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;background:var(--creme);color:var(--nuit)}
+.progr .msg{font-weight:700;color:#1D6B43;min-height:1.3em}
+
+/* Route des cycles (en-tête) */
+.apres-route{margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+.route{list-style:none;margin:28px 0 0;padding:0;display:flex;align-items:stretch;gap:8px}
+.route li{display:flex}
+.route a{flex:1;display:flex;flex-direction:column;gap:2px;text-decoration:none;background:#111B2F;border-radius:12px;padding:14px 16px;min-width:0;color:#E8EDF5}
+.route a:hover{background:#1F2C45}
+.route .r-n{font-family:var(--f-display);font-weight:700;font-size:24px;line-height:1;color:var(--soft-corail)}
+.route b{font-family:var(--f-display);font-size:18px;color:#fff}
+.route small{font-size:13px;color:#C9D1DE;line-height:1.3}
+.route .r-fl{align-items:center;font-size:26px;font-weight:800;color:var(--soft-corail)}
+.route .r-fin a{background:var(--corail)}.route .r-fin .r-n,.route .r-fin small{color:#fff}
+.route li:not(.r-fl){flex:1}
+@media (max-width:760px){
+  .route{flex-direction:column;gap:0}
+  .route .r-fl{justify-content:center;font-size:0;height:26px}
+  .route .r-fl::after{content:"↓";font-size:20px;line-height:26px;color:var(--soft-corail)}
+  .route a{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:12px;padding:12px 16px}
+  .route small{flex-basis:100%;padding-left:40px}
+  .route .r-n{min-width:28px;font-size:22px}
+}
+/* Certificat CEFA */
+.diplome{background:var(--nuit);color:#E8EDF5;border-radius:var(--r-carte);padding:24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;margin-top:12px;align-items:start}
+.diplome .etoile{font-family:var(--f-display);font-size:44px;line-height:1;color:var(--corail)}
+.diplome h3{color:#fff;font-size:clamp(22px,2.6vw,28px);margin:6px 0 8px}
+.diplome p{color:#C9D1DE;font-size:15.5px;margin-bottom:8px}
+.diplome .etiquette{color:var(--soft-corail)}
+/* Icônes de la boîte à outils */
+.boite .bx-ic{color:var(--corail)}
+.bx-ic{display:inline-flex;width:44px;height:44px;border-radius:12px;background:var(--creme);color:var(--corail);align-items:center;justify-content:center;margin-bottom:6px}
+.bx-minfin img{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--corail);margin-bottom:6px}
+.bx-minfin{background:var(--nuit)!important}.bx-minfin b{color:#fff!important}.bx-minfin span{color:#C9D1DE!important}
+
+
+/* Couleurs des cycles : I vermillon, II bleu, III crème (la pureté) */
+details.cy[data-cy="fondations"]{background:#DA3C1B}
+details.cy[data-cy="maitrise"]{background:#1B71B2}
+details.cy[data-cy="patrimoine"]{background:#FFFDF8;color:var(--ink);box-shadow:0 2px 14px rgba(11,18,32,.08)}
+details.cy[data-cy="fondations"] .cy-num,details.cy[data-cy="maitrise"] .cy-num{color:#fff}
+details.cy[data-cy="fondations"] .cy-t .etiquette,details.cy[data-cy="maitrise"] .cy-t .etiquette,
+details.cy[data-cy="fondations"] .fleche,details.cy[data-cy="maitrise"] .fleche{color:#fff}
+details.cy[data-cy="fondations"] .cy-t p,details.cy[data-cy="maitrise"] .cy-t p,
+details.cy[data-cy="fondations"] .cy-next,details.cy[data-cy="maitrise"] .cy-next{color:#fff}
+details.cy[data-cy="fondations"] .cy-meta span,details.cy[data-cy="maitrise"] .cy-meta span{background:rgba(11,18,32,.22);color:#fff}
+details.cy[data-cy="fondations"] .cy-meta span.ouvert{background:#0B1220;color:#fff}
+details.cy[data-cy="fondations"] .cy-val,details.cy[data-cy="maitrise"] .cy-val{background:rgba(11,18,32,.25);color:#fff}
+details.cy[data-cy="fondations"] .cy-val .bouton-principal{background:#0B1220}
+details.cy[data-cy="patrimoine"] .cy-num{color:#E44828}
+details.cy[data-cy="patrimoine"] .cy-t h3,details.cy[data-cy="patrimoine"] .cy-next b,details.cy[data-cy="patrimoine"] .cy-val b{color:#0B1220}
+details.cy[data-cy="patrimoine"] .cy-t p,details.cy[data-cy="patrimoine"] .cy-next{color:var(--ink2)}
+details.cy[data-cy="patrimoine"] .cy-t .etiquette,details.cy[data-cy="patrimoine"] .fleche{color:var(--ink3)}
+details.cy[data-cy="patrimoine"] .cy-meta span{background:#F5EFE2;color:var(--ink)}
+details.cy[data-cy="patrimoine"] .cy-val{background:#F5EFE2;color:var(--ink2)}
+details.cy[data-cy="patrimoine"] .cy-val .etiquette{color:var(--ink3)!important}
+details.cy[data-cy="patrimoine"] .parcours{background:#F5EFE2}
+.route li:nth-child(1) a{background:#DA3C1B}.route li:nth-child(1) .r-n,.route li:nth-child(1) small{color:#fff}
+.route li:nth-child(3) a{background:#1B71B2}.route li:nth-child(3) .r-n,.route li:nth-child(3) small{color:#fff}
+.route li:nth-child(5) a{background:#F5EFE2}.route li:nth-child(5) b{color:#0B1220}.route li:nth-child(5) .r-n{color:#E44828}.route li:nth-child(5) small{color:var(--ink2)}.route li:nth-child(5) em{color:#B8341A}
+.route .r-fin a{background:#111B2F}.route .r-fin .r-n{color:#E44828}.route .r-fin small{color:#C9D1DE}
+.ch-b.ch-p{box-shadow:0 0 0 2px rgba(255,255,255,.0)}
+
+.route em{display:block;font-style:normal;font-size:12.5px;font-weight:800;margin-top:4px;opacity:.95}
+@media (max-width:760px){.route em{flex-basis:100%;padding-left:40px;margin-top:0}}
+.cy-cert{font-size:14.5px;font-weight:700;margin-top:2px}.cy-cert b{font-weight:800}
+/* Programmes */
+.progs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.progs{grid-template-columns:1fr}}
+.prog{background:var(--papier);border-radius:var(--r-carte);padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.prog-haut{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.prog h3{font-size:clamp(19px,1.7vw,23px)}
+.prog .pour{font-size:15px;color:var(--ink2)}
+.seq{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.seq a{display:flex;flex-direction:column;text-decoration:none;background:var(--creme);border-radius:8px;padding:6px 10px;max-width:150px}
+.seq a b{font-family:var(--f-display);color:var(--corail);font-size:14px}
+.seq a span{font-size:12.5px;color:var(--ink2);line-height:1.25}
+.seq .sep{color:var(--ink3);font-weight:800}
+.prog .arrivee{font-size:15px}
+
+/* Encadré final */
+.encadre{background:var(--nuit);color:#E8EDF5;border-radius:var(--r-carte);padding:26px;display:flex;flex-direction:column;gap:12px;margin-block:56px}
+.encadre h2{color:#fff;font-size:clamp(24px,3vw,34px)}
+.encadre p{color:#C9D1DE;max-width:44em}
+.encadre .surtitre{color:var(--soft-corail)}
+.mention{font-size:13px;color:var(--ink3);padding-bottom:40px}
+@media (prefers-reduced-motion:reduce){.parcours,.fleche{transition:none}}
+.demo-l{margin:14px 0 0}.demo-l a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font-weight:800;font-size:15px;text-decoration:none}.demo-l a:hover{background:rgba(255,255,255,.2)}
+.relu{margin-top:10px;font-size:14px;color:var(--ink3)}.relu b{color:var(--nuit)}
+.reprise .r-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#F09680;margin:0 0 4px}
+details.apres-route{margin-top:18px}details.apres-route>summary{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;font-weight:800;color:#fff;text-decoration:underline;text-decoration-color:#DA3C1B;text-decoration-thickness:2px;text-underline-offset:5px}
+</style>
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices" aria-current="page">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa-96.png" alt="" width="30" height="30"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="principal" href="parcours.html" aria-current="page">L’école</a>
+    <a href="methode.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main data-sans-appli>
+  <div class="hero">
+    <div class="col">
+      <p class="mission">EFA aide chacun à passer du <span class="cercle">cercle</span>, l’argent qui tourne, à la <span class="spirale">spirale</span>, l’argent qui reste.</p>
+      <span class="surtitre">L’école EFA</span>
+      <h1>L’école EFA</h1>
+      <p class="chapo"><strong style="color:#fff">Après EFA, vous savez où passe votre argent, combien en garder, et comment le faire grandir.</strong> Trois cycles pour progresser à votre rythme. Les trois certificats locaux et le certificat CEFA ★ sont ouverts en pilote.</p>
+      <p class="demo-l"><a href="demo.html?d=efa&amp;src=ecole" data-goatcounter-click="demo-lien-ecole">▶ Voir la démo · 1 à 2 min</a></p>
+      <div class="reprise" id="reprise" hidden></div>
+      <ol class="route" aria-label="Le parcours de l’école">
+        <li><a href="#cycle-fondations" data-cy-go="fondations"><span class="r-n">I</span><b>Fondations</b><small>Modules 1 à 8 · voir et tenir</small><em>Se termine par le certificat local Fondations</em></a></li>
+        <li aria-hidden="true" class="r-fl">›</li>
+        <li><a href="#cycle-maitrise" data-cy-go="maitrise"><span class="r-n">II</span><b>Maîtrise</b><small>Modules 9 à 16 · organiser</small><em>Se termine par le certificat local Maîtrise</em></a></li>
+        <li aria-hidden="true" class="r-fl">›</li>
+        <li><a href="#cycle-patrimoine" data-cy-go="patrimoine"><span class="r-n">III</span><b>Patrimoine</b><small>Modules 17 à 23 · faire travailler</small><em>Se termine par le certificat local Patrimoine</em></a></li>
+        <li aria-hidden="true" class="r-fl">›</li>
+        <li class="r-fin"><a href="certificat-cefa.html"><span class="r-n">★</span><b>Certificat CEFA</b><small>Les 3 certificats locaux réunis · devenir Passeur</small></a></li>
+      </ol>
+      <details class="apres-route"><summary>Autres façons de commencer</summary>
+      <div class="ecoles" aria-label="Les deux écoles">
+        <a class="ec-c" href="ecole-de-la-tontine.html?src=ecole" data-goatcounter-click="ecole-carte-tontine"><span class="ec-k">École de la tontine</span><b>Choisir une tontine, comprendre ses engagements et décider de ce que le groupe peut construire ensemble.</b><em>Explorer l’École de la tontine →</em></a>
+        <a class="ec-c" href="ecole-de-la-bourse.html?src=ecole" data-goatcounter-click="ecole-carte-bourse"><span class="ec-k">École de la Bourse</span><b>Comprendre les marchés, choisir comment investir et apprendre à suivre ses décisions.</b><em>Explorer l’École de la Bourse →</em></a>
+      </div>
+      <p class="ch-qui">Je suis un particulier, je veux apprendre</p>
+      <div class="choix">
+        <a class="ch-b ch-p" href="#P1" data-ouvrir="P1" data-goatcounter-click="ecole-choix-bases"><b>Je veux apprendre les bases</b><span>Commencer le module 1 du cycle Fondations</span></a>
+        <a class="ch-b" href="outils.html?src=ecole#parcours" data-goatcounter-click="ecole-choix-question"><b>J’ai une question précise</b><span>Les questions les plus fréquentes et leurs modules</span></a>
+      </div>
+      <p class="ch-qui ent-t">Je m’entraîne</p>
+      <div class="entrainer">
+        <a href="decider.html?src=ecole" data-goatcounter-click="ecole-entrainer-decider"><span class="en-k">Nouveau</span><b>Simulateur de décisions</b><span>Un proche demande, mon tour de tontine, un crédit, une prime : je choisis, je vois ce qui peut arriver, je rédige ma réponse.</span><em>5 cas · 7 min chacun →</em></a>
+        <a href="cercle-spirale.html?src=ecole" data-goatcounter-click="ecole-entrainer-spirale"><b>Cercle ou spirale ?</b><span>Ce que vous gardez à chaque rentrée d’argent, seul ou avec votre groupe de tontine.</span><em>Calculer · 3 min →</em></a>
+      </div>
+      <p class="ch-diag"><a class="lien-souligne" href="diagnostic.html?src=ecole" data-goatcounter-click="ecole-choix-diagnostic">Je ne sais pas par où commencer : faire mon diagnostic</a></p>
+      <a class="ch-orga" href="programme-organisation.html?src=ecole" data-goatcounter-click="ecole-choix-organisation"><b>Pour les organisations</b><span>Faites suivre L’école à vos collaborateurs, membres ou élèves : programme à la carte, comptes et tableau de bord.</span><em>Composer un programme →</em></a>
+      <p class="ch-trame">Chaque module : une situation concrète, une explication, un exercice avec vos chiffres et une fiche à garder.</p>
+      </details>
+    </div>
+  </div>
+
+  <section class="bloc col" id="chemin" aria-labelledby="t-chemin">
+    <div class="intro">
+      <span class="surtitre">Comment ça marche</span>
+      <h2 class="titre-section" id="t-chemin">Je fais le point, j’avance, je valide</h2>
+    </div>
+    <ol class="chemin">
+      <li><b>1</b><div><h3>Je fais le point</h3><p>Le diagnostic vous dit par quel module commencer. Vous pourrez le refaire à chaque fin de cycle pour mesurer le chemin.</p></div></li>
+      <li><b>2</b><div><h3>J’avance module par module</h3><p>Chaque module vous envoie au bon moment vers une vidéo, une leçon ou un outil, et se termine par une fiche que vous gardez. Le Dico est là quand un mot bloque.</p></div></li>
+      <li><b>3</b><div><h3>Je valide</h3><p>Un module terminé, avec sa fiche gardée, donne une attestation de réalisation. Les modules d’un cycle et l’examen final donnent le certificat local du cycle. Les trois certificats locaux donnent le certificat CEFA.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="bloc col" id="profil" aria-labelledby="t-profil">
+    <div class="intro">
+      <span class="surtitre">Vous avez fait le diagnostic ?</span>
+      <h2 class="titre-section" id="t-profil">Je connais mon profil</h2>
+      <p>Touchez votre profil pour voir les modules par lesquels commencer. Vous ne le connaissez pas ? <a class="lien-souligne" href="diagnostic.html?src=ecole-profil">Faire mon diagnostic, 6 min</a></p>
+    </div>
+    <div class="tags-profils" id="liste-profils"></div>
+  </section>
+
+  <p class="conseil col" id="conseil" hidden></p>
+
+  <section class="bloc col" id="tous" aria-labelledby="t-tous">
+    <div class="intro">
+      <span class="surtitre">Le parcours</span>
+      <h2 class="titre-section" id="t-tous">Trois cycles, un certificat local à la fin de chacun</h2>
+      <p>Ouvrez un cycle pour voir ses modules, puis un module pour voir ses étapes. Sans compte, votre progression reste sur ce téléphone et rien n’est envoyé à EFA. <a href="#ma-progression">Avec un compte</a>, seule votre progression est enregistrée, jamais vos montants ni le contenu de vos fiches.</p>
+    </div>
+    <div class="reperes" aria-label="Trois durées">
+      <div><b>La leçon courte</b><span>5 à 15 minutes&nbsp;: une idée, un exemple, un quiz. Les durées « leçons et quiz » des cycles additionnent ces leçons.</span></div>
+      <div><b>Le module</b><span>30 minutes à 1 heure&nbsp;: les leçons, puis un exercice sur votre situation et une fiche à garder.</span></div>
+      <div><b>Le suivi</b><span>7 jours, puis un point à 30 jours&nbsp;: quelques minutes par jour pour appliquer la décision. Il n’est pas compté dans la durée du module.</span></div>
+    </div>
+    <div data-efa-point data-efa-point-si="actif"></div>
+    <div class="cycles" id="liste-parcours"></div>
+  </section>
+
+  <section class="bloc col" id="certificats" aria-labelledby="t-cert">
+    <div class="intro">
+      <span class="surtitre">Valider ce qu’on a appris</span>
+      <h2 class="titre-section" id="t-cert">Des attestations, des certificats locaux, puis le CEFA</h2>
+      <p>On ne valide pas des heures passées, on valide ce que vous savez faire avec votre argent.</p>
+    </div>
+    <div class="reperes" aria-label="Ce que prouve chaque validation">
+      <div><b>Un quiz réussi</b><span>Vous avez compris la notion. 4 bonnes réponses sur 5.</span></div>
+      <div><b>Une fiche gardée</b><span>Vous l’avez appliquée à votre situation, avec vos chiffres. C’est ce qui donne l’attestation du module.</span></div>
+      <div><b>Un point à 30 jours</b><span>Vous dites vous-même si vous l’avez fait. EFA ne le vérifie pas&nbsp;: c’est votre suivi, pas une note.</span></div>
+    </div>
+    <div class="certs" id="liste-certs"></div>
+    <div class="diplome">
+      <span class="etoile" aria-hidden="true">★</span>
+      <div>
+        <span class="etiquette">Après les trois certificats locaux</span>
+        <h3>Le certificat CEFA ★</h3>
+        <p>Les examens Fondations, Maîtrise et Patrimoine réussis, et vos fiches gardées : vos connaissances sont vérifiées et vous les avez appliquées à votre situation. Le CEFA couvre toute l’école : il réunit vos trois certificats locaux et votre dossier de fiches. C’est une attestation de parcours EFA, pas un diplôme d’État.</p>
+        <p><a class="bouton bouton-principal" href="certificat-cefa.html" style="margin:4px 0 12px">Où j’en suis pour le CEFA ★</a></p>
+        <p><b style="color:#fff">Il ouvre le rôle de Passeur EFA</b> : animer un cercle d’apprentissage dans sa tontine, son entreprise ou sa famille, avec les supports de l’école. Celui qui a appris transmet à son tour.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc col" id="boite" aria-labelledby="t-boite">
+    <div class="intro">
+      <span class="surtitre">À côté du parcours</span>
+      <h2 class="titre-section" id="t-boite">La boîte à outils</h2>
+      <p>Les modules vous y envoient au bon moment. Vous pouvez aussi y aller directement.</p>
+    </div>
+    <div class="boite">
+      <a href="decider.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 5.5h10.5l2.5 2.5-2.5 2.5H5z"/><path d="M19 13.5H8.5L6 16l2.5 2.5H19z"/></svg></span><b>Simulateur de décisions</b><span>Cinq cas, une réponse rédigée, un suivi à 7 jours</span></a><a href="bourse-essentiel.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5.5 11v7M10 11v7M14 11v7M18.5 11v7"/><path d="M3 20.5h18"/></svg></span><b>École de la Bourse</b><span>L’essentiel, approfondi et simulation</span></a><a href="diagnostic.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 0 1 16 0"/><path d="M12 15l4-5"/><circle cx="12" cy="15" r="1.5"/><path d="M4 19h16"/></svg></span><b>Le diagnostic</b><span>Faire le point, 6 min</span></a>
+      <a href="outils.html#parcours"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M10 9.5a2 2 0 1 1 2.6 1.9c-.4.1-.6.5-.6.9"/><path d="M12 14.5h.01"/></svg></span><b>Mes questions</b><span>Partir d’une question qu’on se pose</span></a>
+      <a href="outils.html"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h.01M12 11h.01M16 11h.01M8 14.5h.01M12 14.5h.01M16 14.5h.01M8 18h.01M12 18h4"/></svg></span><b>Les outils</b><span>Calculer avec vos chiffres</span></a>
+      <a href="outils.html#dico"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5V19c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V4.5C17 4 14 4.5 12 6z"/><path d="M12 6v14.5"/></svg></span><b>Le Dico</b><span>Les mots de l’argent</span></a>
+      <a href="outils.html#cahier"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18"/><path d="M12 8h4M12 12h4"/><path d="M5 7H3M5 12H3M5 17H3"/></svg></span><b>Mon cahier</b><span>Mes fiches et mes défis</span></a>
+      <a href="bibliotheque.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4z"/><path d="M10 4h4v16h-4z"/><path d="m16 5 3.5-.9 2.5 15.5-3.5.9z"/></svg></span><b>La bibliothèque</b><span>Les grands livres sur l’argent, en format statut</span></a>
+      <a class="bx-minfin" href="minfin.html"><img src="koffi.jpg" alt="" width="56" height="56" loading="lazy"><b>Min’Fin</b><span>La série avec Koffi, épisode par épisode</span></a>
+    </div>
+    <div class="labo-t"><h3>Se former autrement</h3><p>Trois laboratoires pour aller plus loin que son budget : décider sur un marché simulé, analyser une entreprise, trancher comme un dirigeant. Pour les curieux, les étudiants, les entrepreneurs et les cadres.</p></div>
+    <div class="boite boite-labo">
+      <a href="traders.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5v17"/><rect x="5" y="8" width="4" height="7" rx="1"/><path d="M17 3v15"/><rect x="15" y="5.5" width="4" height="8" rx="1"/></svg></span><b>EFA Traders</b><span>Décider sur un marché simulé, sans argent réel</span></a>
+      <a href="corporate.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 13h18"/><path d="M12 12v2.5"/></svg></span><b>EFA Corporate Finance</b><span>Analyser une entreprise, investir, financer</span></a>
+      <a href="ceo.html?src=ecole-boite"><span class="bx-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><b>EFA CEO Challenge</b><span>Décider comme un dirigeant, sur des cas d’ici</span></a>
+    </div>
+  </section>
+
+  <section class="bloc col" id="programmes" aria-labelledby="t-prog">
+    <div class="intro">
+      <span class="surtitre">Des chemins tout tracés</span>
+      <h2 class="titre-section" id="t-prog">Selon votre objectif</h2>
+      <p>Pour aller d’un point de départ à un objectif précis, suivez ces modules dans l’ordre.</p>
+    </div>
+    <div class="progs" id="liste-programmes"></div>
+  </section>
+
+  <div class="col">
+    <div class="encadre" style="background:#DA3C1B">
+      <span class="surtitre" style="color:#fff">Ça vous a aidé ?</span>
+      <h2>Partagez-le à quelqu’un qui en a besoin.</h2>
+      <p style="color:#fff">EFA est gratuit et grandit grâce à vous. Un message à un proche, un groupe de tontine, un collègue : chaque partage compte.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px"><button type="button" class="bouton" style="background:#fff;color:#0B1220" data-efa-partager="whatsapp">Partager sur WhatsApp</button><button type="button" class="bouton bouton-sombre" data-efa-partager="facebook">Facebook</button><button type="button" class="bouton bouton-sombre" data-efa-partager="copier">Copier le lien</button></div>
+    </div>
+    <section class="progr" id="ma-progression" aria-labelledby="t-progr">
+      <h2 id="t-progr">Ma progression</h2>
+      <p><b>Sans compte</b>, votre progression et vos fiches restent dans ce navigateur, sur cet appareil : rien n’est envoyé à EFA. Si vous changez de téléphone ou videz votre navigateur, elles sont perdues. La sauvegarde garde tout votre EFA dans un fichier : école, cahier, défis, décisions suivies, outils et notes de l’appli.</p>
+      <p><b>Avec un compte</b> (Communauté EFA, ou programme de votre organisation), votre progression est enregistrée et vous la retrouvez sur n’importe quel téléphone. Ce qui est transmis, et à qui, est écrit avant la création du compte : votre nom, vos visites, les étapes cochées, les modules terminés et vos certificats, visibles par EFA et, dans un programme d’organisation, par les responsables désignés par celle-ci. <b>Jamais</b> les montants saisis, le contenu de vos fiches ni vos réponses aux quiz et aux examens. <a href="rejoindre.html">Mon compte</a></p>
+      <div class="acts">
+        <button type="button" id="pg-save">Sauvegarder tout mon EFA</button>
+        <label class="bouton" for="pg-file">Restaurer une sauvegarde</label><input type="file" id="pg-file" accept="application/json,.json" hidden>
+        <button type="button" id="pg-raz">Tout effacer</button>
+      </div>
+      <p class="msg" id="pg-msg" role="status" aria-live="polite"></p>
+    </section>
+    <p class="mention">Éducation financière, pas conseil en placement. Aucun produit financier recommandé. Parcours conçus par EFA avec l’aide de l’intelligence artificielle, relus par l’équipe EFA. Koffi, Tonton Bamba et Tantie Affoué sont des personnages fictifs.</p>
+  </div>
+<section class="amb" id="ambassadeur" aria-labelledby="amb-t">
+  <style>
+  .amb{padding:56px max(16px,env(safe-area-inset-left,0px));background:#F5EFE2}
+  .amb-c{max-width:1000px;margin:0 auto;background:#0B1220;color:#E8EDF5;border-radius:18px;padding:32px clamp(20px,4vw,44px);display:grid;gap:14px;font-family:"Source Sans 3","Source Sans Pro",system-ui,Arial,sans-serif;text-align:left}
+  .amb .amb-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680}
+  .amb h2{margin:0;font-family:"Libre Baskerville",Georgia,serif;font-weight:700;text-transform:none;line-height:1.15;font-size:clamp(26px,3.6vw,38px);color:#fff}
+  .amb p{margin:0;font-size:17px;line-height:1.55;color:#C9D1DE;max-width:720px}
+  .amb ul{margin:4px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+  .amb li{background:#111B2F;border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.4;color:#E8EDF5}
+  .amb li b{display:block;color:#fff;margin-bottom:2px}
+  .amb-a{justify-self:start;display:inline-flex;align-items:center;min-height:50px;padding:12px 22px;border-radius:10px;background:#DA3C1B;color:#fff;font-weight:800;font-size:17px;text-decoration:none}
+  .amb-a:hover{filter:brightness(1.08)}
+  .amb small{font-size:14px;color:#8E98AA}
+  </style>
+  <div class="amb-c">
+    <p class="amb-k">Créateurs, formateurs, communautés</p>
+    <h2 id="amb-t">Devenir ambassadeur EFA</h2>
+    <p>Vous parlez d’argent à une communauté&nbsp;? Faisons connaissance.</p>
+    <ul>
+      <li><b>Du contenu structuré</b>Proposez à votre communauté les modules de l’école EFA, et bientôt le quiz de la semaine.</li>
+      <li><b>Le statut ambassadeur EFA</b>Un statut EFA, après un parcours de l’école.</li>
+      <li><b>Et demain</b>D’autres avantages pour les ambassadeurs actifs sont à l’étude.</li>
+    </ul>
+    <a class="amb-a" href="rendez-vous.html?sujet=ambassadeur#contact" data-goatcounter-click="ambassadeur-ecole">Prendre contact</a>
+    <small>Un premier échange, sans engagement.</small>
+  </div>
+</section>
+</main>
+
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        <a class="ef-cta" href="parcours.html">L’école</a>
+      </div>
+      <nav class="ef-cols" aria-label="Plan du site">
+        <div><h2>Agir</h2><ul>
+          <li><a href="parcours.html">L’école</a></li>
+          <li><a href="outils.html#diagnostic">Faire le point</a></li>
+          <li><a href="outils.html#dico">Dico pratique</a></li>
+          <li><a href="traders.html">EFA Traders · simulateur</a></li>
+          <li><a href="corporate.html">EFA Corporate Finance</a></li>
+          <li><a href="ceo.html">EFA CEO Challenge</a></li>
+          <li><a href="app/" data-goatcounter-click="appli-pied">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>Comprendre</h2><ul>
+          <li><a href="methode.html#etudes">Études</a></li>
+          <li><a href="methode.html#africa-2075">Africa 2075 · Prospective</a></li>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="balade-economie.html">La balade de l’économie</a></li>
+          <li><a href="bibliotheque.html">La bibliothèque · livres sur l’argent</a></li>
+          <li><a href="methode.html#brvm">BRVM</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="auteur.html#efa">À propos</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+        </ul></div>
+        <div><h2>Suivre EFA</h2><ul>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script src="parcours-efa.js?v=2026102512"></script>
+<script src="parcours-ui.js?v=2026102512"></script>
+<script src="efa-reprise.js?v=2026102902"></script>
+<script>
+(function(){
+  "use strict";
+  var D = window.EFA_PARCOURS; if(!D) return;
+  var KEY = "efa_parcours_v1";
+  var $ = function(id){ return document.getElementById(id); };
+  var mb=$("menu"), nv=$("nav");
+  mb.addEventListener("click",function(){var o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"Fermer":"Menu";});
+
+  function lire(){ try{ return JSON.parse(localStorage.getItem(KEY)||"{}")||{}; }catch(e){ return {}; } }
+  function ecrire(s){ try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){} }
+  var etat = lire(); etat.faits = etat.faits || {};
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  var P = {}; D.parcours.forEach(function(p){ P[p.id]=p; });
+  var FU = D.fusions || {};
+  function vrai(id){ return FU[id] || id; }
+  function numero(id){ id=vrai(id); return P[id] && P[id].module ? String(P[id].module) : id.slice(1); }
+  function nomCourt(id){ id=vrai(id); return P[id] && P[id].nom ? P[id].nom : "Parcours " + numero(id); }
+  function mesure(ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:ev,title:ev,event:true}); }catch(e){} }
+  function lienEtape(s, pid){
+    if(!s.lien) return null;
+    if(/^https?:/.test(s.lien)) return s.lien;
+    var h = s.lien.split("#"), base = h[0], ancre = h[1] ? "#" + h.slice(1).join("#") : "";
+    return base + (base.indexOf("?")<0 ? "?" : "&") + "parcours=" + pid + ancre;
+  }
+
+  // Chiffres
+  var nbEt = 0, nbOk = 0; D.parcours.forEach(function(p){ p.etapes.forEach(function(s){ nbEt++; if(s.ok) nbOk++; }); });
+  if($("chiffres")) $("chiffres").innerHTML = '<div><strong>'+(D.cycles||[]).length+'</strong><span>Cycles</span></div><div><strong>'+D.parcours.length+'</strong><span>Modules</span></div><div><strong>'+nbOk+'</strong><span>Étapes en ligne</span></div><div><strong>Gratuit</strong><span>Sans inscription</span></div>';
+
+  // Problèmes et trois questions (parcours-ui.js)
+  function ouvrir(id){ var d=ouvrirModule(id); if(d){ d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+id);}catch(x){} } }
+  var QS = !$("questions") ? null : EFAParcoursUI.questions($("questions"), {choisir: ouvrir, lien: function(id){ return "#"+id; }, pied: false, quiz: {
+    lien: function(id){ return "#"+id; },
+    ouvrir: ouvrir,
+    resultat: function(L){ recommander(L, "D’après vos réponses", false); }
+  }});
+  // Profils : une conséquence du diagnostic, pas une porte d'entrée
+  var PARP = {};
+  D.profils.forEach(function(x){ x.parcours.forEach(function(id){ (PARP[id]=PARP[id]||[]).push(x.nom); }); });
+  $("liste-profils").innerHTML = D.profils.map(function(x){
+    return '<button class="tp" type="button" id="pr-'+x.id+'" aria-pressed="false"><b>'+esc(x.nom)+'</b><span>'+esc(x.lecture)+'</span></button>';
+  }).join("");
+  document.addEventListener("click",function(e){
+    var b = e.target.closest && e.target.closest(".tp"); if(!b) return;
+    var deja = b.getAttribute("aria-pressed")==="true";
+    document.querySelectorAll(".tp").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+    if(deja){ reco=[]; $("conseil").hidden=true; marquerReco(); return; }
+    b.setAttribute("aria-pressed","true");
+    var x = D.profils.filter(function(y){ return "pr-"+y.id===b.id; })[0];
+    recommander(x.parcours, "Profil « "+x.nom+" »", true);
+    mesure("parcours-profil-"+x.id);
+  });
+
+
+  // Parcours
+  function progression(p){
+    var dispo = p.etapes.filter(function(s){return s.ok && s.ess;}).length, faits = 0;
+    p.etapes.forEach(function(s,i){ if(s.ok && s.ess && etat.faits[p.id+"."+i]) faits++; });
+    var plus = p.etapes.filter(function(s){return s.ok && !s.ess;}).length, pf = 0;
+    p.etapes.forEach(function(s,i){ if(s.ok && !s.ess && etat.faits[p.id+"."+i]) pf++; });
+    return {dispo:dispo, faits:faits, plus:plus, pf:pf};
+  }
+  function ficheGardee(p){
+    if(etat.preuves && etat.preuves[p.id]) return true;
+    var F = etat.fiches || {}, pg = p.fiche ? p.fiche.lien.split("?")[0].split("#")[0] : "";
+    return !!(pg && F[pg]);
+  }
+  function valide(p){ var g = progression(p); return g.dispo > 0 && g.faits >= g.dispo && ficheGardee(p); }
+  // État unique du module, d'après les données : En préparation si une étape essentielle n'est pas en ligne, Pilote si une étape est en pilote, sinon Disponible
+  function dateFr(d){ try{ return new Date(d+"T12:00:00Z").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"}); }catch(e){ return d; } }
+  function statut(p){
+    var E = p.etapes.filter(function(s){ return s.ess; });
+    if(!E.length || E.some(function(s){ return !s.ok; })) return {c:"prep", t:"En préparation"};
+    if(E.some(function(s){ return s.pilote; })) return {c:"pilote", t:"Pilote"};
+    return {c:"dispo", t:"Disponible"};
+  }
+  function prochaine(p){ var r=null; p.etapes.some(function(s,i){ if(s.ess && s.ok && s.lien && !etat.faits[p.id+"."+i]){ r={s:s,i:i}; return true; } return false; }); return r; }
+  function carte(p){
+    var g = progression(p), ok = valide(p), st = statut(p);
+    function ligne(s,i){
+      var k = p.id+"."+i, fait = !!etat.faits[k], href = lienEtape(s,p.id), ext = href && /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : "";
+      var nom = s.ok && href ? '<a href="'+esc(href)+'"'+ext+'>'+esc(s.titre)+'</a>' : esc(s.titre);
+      var pill = !s.ok ? '<span class="pill bientot">En préparation</span>' : fait ? '<span class="pill fait">Fait</span>' : s.pilote ? '<span class="pill pilote">Pilote</span>' : '<span class="pill dispo">Disponible</span>';
+      return '<li class="'+(fait?"fait":"")+'"><input type="checkbox" aria-label="J’ai fait cette étape : '+esc(s.titre)+'" data-k="'+k+'" '+(fait?"checked":"")+' '+(s.ok?"":"disabled")+'><span class="e-txt"><span class="e-type">'+esc(s.type)+'</span><span class="e-nom">'+nom+'</span></span>'+pill+'</li>';
+    }
+    var ess = [], plus = [];
+    p.etapes.forEach(function(s,i){ (s.ess ? ess : plus).push(ligne(s,i)); });
+    var et = ess.join("") + '</ol>' + (plus.length ? '<details class="plus"><summary>Pour aller plus loin · '+plus.length+' ressource'+(plus.length>1?"s":"")+'</summary><ol class="etapes">'+plus.join("")+'</ol></details>' : '') + '<ol hidden>';
+    var premier = null; p.etapes.some(function(s,i){ if(s.ess && s.ok && s.lien && !etat.faits[p.id+"."+i]){ premier = lienEtape(s,p.id); return true; } return false; });
+    var suite = p.suite.map(vrai).map(function(id){ return '<a class="chip" href="#'+id+'" data-ouvrir="'+id+'"><b>'+numero(id)+'</b> '+esc(P[id].titre)+'</a>'; }).join(" ");
+    var ext1 = premier && /^https?:/.test(premier) ? ' target="_blank" rel="noopener"' : "";
+    return '<details class="parcours" id="'+p.id+'"><summary>'
+      + '<span class="num">'+numero(p.id)+'</span>'
+      + '<span class="p-tete"><span class="etiquette">'+esc(nomCourt(p.id))+' · '+esc(p.titre)+'</span><h3>« '+esc(p.probleme)+' »</h3><span class="obj">À l’arrivée : '+esc(p.objectif.charAt(0).toLowerCase()+p.objectif.slice(1))+'</span></span>'
+      + '<span class="p-cote"><span class="duree">'+esc(p.duree)+'</span><span class="statut '+st.c+'">'+st.t+'</span>'+(premier?'<span class="p-go">'+(g.faits?'Reprendre':'Commencer')+' ›</span>':'')+'<span class="fleche" aria-hidden="true">›</span></span>'
+      + '<span class="barre" aria-hidden="true"><i style="width:'+(g.dispo?Math.round(g.faits/g.dispo*100):0)+'%"></i></span>'
+      + '<span class="barre-txt">'+(ok ? '<span class="pill valide">Module validé · attestation de réalisation</span>' : !g.dispo ? 'Module en préparation' : 'Étapes essentielles : '+g.faits+' sur '+g.dispo+(g.plus?' · pour aller plus loin : '+g.pf+' sur '+g.plus:'')+(g.faits>=g.dispo ? ' · il reste votre fiche' : ''))+'</span>'
+      + '</summary><div class="p-corps">'
+      + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
+      + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
+      + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+', dont le quiz du module,'+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')
+      + '</p><p class="relu"><b>Statut : '+st.t+'</b> · relu par l’équipe EFA · version du '+dateFr(p.relu||D.date)+' · relecture par un expert extérieur en cours'+'</p>'
+      + '<ol class="etapes">'+et+'</ol>'
+      + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
+      + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
+      + (!g.dispo ? '<div class="p-acts"><span class="pill bientot">Module en préparation</span></div>' : premier ? '<div class="p-acts"><a class="bouton bouton-principal" href="'+esc(premier)+'"'+ext1+' data-goatcounter-click="parcours-'+p.id+'-continuer">'+(g.faits? "Continuer le module" : "Commencer le module")+'</a><button type="button" class="lien-souligne" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours#'+p.id+'">Partager ce module</button></div>'
+         : '<div class="p-acts"><span class="pill '+(ok?'valide':'fait')+'">'+(ok?'Module validé : attestation de réalisation obtenue':'Étapes faites : gardez votre fiche pour valider')+'</span><button type="button" class="bouton bouton-principal" data-efa-partager="whatsapp" data-titre="'+esc(p.titre)+'" data-url="https://efa.africa/parcours#'+p.id+'">Bravo ! Partagez ce module à un proche</button></div>')
+      + '</div></details>';
+  }
+  var CY = D.cycles || [];
+  function cycleDe(id){ id=vrai(id); return P[id] ? P[id].cycle : null; }
+  var cyOuvert = {fondations:1};
+  function rendre(){
+    var ouverts = {}; document.querySelectorAll(".parcours[open]").forEach(function(d){ ouverts[d.id]=1; });
+    document.querySelectorAll("details.cy").forEach(function(d){ if(d.open) cyOuvert[d.getAttribute("data-cy")]=1; else delete cyOuvert[d.getAttribute("data-cy")]; });
+    $("liste-parcours").innerHTML = CY.map(function(c){
+      var M = D.parcours.filter(function(p){ return p.cycle===c.id; }), nv = M.filter(valide).length;
+      var nd = M.filter(function(p){ return statut(p).c!=="prep"; }).length;
+      var pro = M.filter(function(p){ return !valide(p) && statut(p).c!=="prep"; })[0];
+      return '<details class="cy" id="cycle-'+c.id+'" data-cy="'+c.id+'"'+(cyOuvert[c.id]?' open':'')+'><summary>'
+        + '<span class="cy-num">'+esc(c.num)+'</span>'
+        + '<span class="cy-t"><span class="etiquette">Cycle '+esc(c.num)+' · modules '+esc(c.modules)+'</span><h3>'+esc(c.nom)+' · '+esc(c.sous)+'</h3><p>Ce que vous y gagnez : '+esc(c.gain.charAt(0).toLowerCase()+c.gain.slice(1))+'</p>'
+        + '<span class="cy-cert">Se termine par le <b>'+esc(c.certificat.replace(/^Certificat/,'certificat'))+'</b></span>'
+        + '<span class="cy-meta"><span>'+nd+' module'+(nd>1?'s':'')+' disponible'+(nd>1?'s':'')+' sur '+M.length+'</span><span>'+esc(c.duree)+'</span>'+(c.suivi?'<span>'+esc(c.suivi)+'</span>':'')+'<span class="'+(c.statut==="ouvert"?"ouvert":"")+'">'+(c.statut==="ouvert"?"Certificat ouvert en pilote":"Certificat en préparation")+'</span><span class="'+(nv?"ok":"")+'">'+nv+' sur '+M.length+' validés</span></span>'
+        + (pro ? '<span class="cy-next">Prochain module : <b>'+esc(pro.nom)+' · '+esc(pro.titre)+'</b></span>' : '')+'</span>'
+        + '<span class="fleche" aria-hidden="true">›</span></summary>'
+        + '<div class="cy-corps"><div class="liste">'+M.map(carte).join("")+'</div>'
+        + '<div class="cy-val"><span class="etiquette" style="color:#8E98AA">'+esc(c.certificat)+'</span><span>'+esc(c.validation)+'</span>'
+        + (c.statut==="ouvert" ? '<a class="bouton bouton-principal" href="'+esc(c.page||"certificat-pilote.html")+'">'+(c.id==="fondations"?"Ouvrir le certificat Fondations":"Quiz et examen du certificat "+esc(c.nom))+'</a>' : '<b>Certificat à l’ouverture du cycle.</b>')
+        + '</div></div></details>';
+    }).join("");
+    Object.keys(ouverts).forEach(function(id){ var d=$(id); if(d) d.open=true; });
+    if($("liste-certs")) $("liste-certs").innerHTML = '<article class="cert plein"><span class="etiquette">Pour chaque module</span><h3>L’attestation de réalisation</h3><p>Une attestation de réalisation : les étapes essentielles faites, dont le quiz du module, et la fiche du module gardée.</p></article>'
+      + CY.map(function(c){ var M=D.parcours.filter(function(p){return p.cycle===c.id;}); return '<article class="cert"><span class="etiquette">Cycle '+esc(c.num)+' · '+M.length+' modules</span><h3>'+esc(c.certificat)+'</h3><p>'+esc(c.validation)+'</p>'+(c.statut==="ouvert"?'<a class="lien-souligne" href="'+esc(c.page||"certificat-pilote.html")+'">Ouvert en pilote : y aller</a>':'<span class="etiquette">À l’ouverture du cycle</span>')+'</article>'; }).join("");
+    marquerReco();
+  }
+  function ouvrirModule(id){
+    id = vrai(id); var c = cycleDe(id); if(!c) return null;
+    var cy = $("cycle-"+c); if(cy && !cy.open){ cy.open = true; cyOuvert[c]=1; }
+    var d = $(id); if(d) d.open = true; return d;
+  }
+
+  // Programmes
+  $("liste-programmes").innerHTML = D.programmes.map(function(g){
+    var seq = g.sequence.map(vrai).map(function(id){ return '<a href="#'+id+'" data-ouvrir="'+id+'"><b>'+numero(id)+'</b><span>'+esc(P[id].titre)+'</span></a>'; }).join('<span class="sep" aria-hidden="true">›</span>');
+    return '<article class="prog"><div class="prog-haut"><h3>'+esc(g.nom)+'</h3><span class="duree">'+esc(g.duree)+'</span></div><p class="pour">'+esc(g.pour)+(g.personnage && g.personnage!=="—" ? " · avec "+esc(g.personnage) : "")+'</p><div class="seq">'+seq+'</div><p class="arrivee"><span class="etiquette">À l’arrivée</span> '+esc(g.arrivee)+'</p></article>';
+  }).join("");
+
+  // Mise en avant des parcours recommandés (questions ou diagnostic)
+  var reco = [];
+  function marquerReco(){
+    document.querySelectorAll(".parcours").forEach(function(d){
+      d.classList.toggle("reco", reco.indexOf(d.id)>=0);
+      d.classList.toggle("estompe", reco.length>0 && reco.indexOf(d.id)<0 && d.id!=="P0");
+    });
+  }
+  function recommander(L, origine, defiler){
+    L = L.map(vrai).filter(function(id,i,a){ return P[id] && a.indexOf(id)===i; }); if(!L.length) return;
+    reco = L.slice(); marquerReco(); L.forEach(function(id){ var cy=$("cycle-"+cycleDe(id)); if(cy) cy.open=true; });
+    $("conseil").hidden=false;
+    $("conseil").innerHTML = (origine ? esc(origine)+" : commencez" : "Commencez")+' par <a class="lien-souligne" href="#'+L[0]+'" data-ouvrir="'+L[0]+'">« '+esc(P[L[0]].probleme)+' »</a>'+(L.length>1?', puis '+L.slice(1).map(function(id){return esc(nomCourt(id));}).join(" et "):"")+'. <button class="lien-souligne" type="button" id="tout" style="background:none;border:0;padding:0;font:inherit;font-weight:700;cursor:pointer">Tout afficher</button>';
+    if(defiler){ var d=ouvrirModule(L[0]); if(d){ d.scrollIntoView({behavior:"smooth",block:"start"}); } }
+  }
+  document.addEventListener("click",function(e){
+    if(e.target.closest && e.target.closest("[data-quiz]")){ e.preventDefault(); if(QS) QS.quiz(); }
+  });
+
+  document.addEventListener("click",function(e){
+    var t = e.target.closest("[data-ouvrir]");
+    if(t){ var d=ouvrirModule(t.getAttribute("data-ouvrir")); if(d){ e.preventDefault(); d.scrollIntoView({behavior:"smooth",block:"start"}); try{history.replaceState(null,"","#"+d.id);}catch(x){} } return; }
+    if(e.target.id==="tout"){ reco=[]; $("conseil").hidden=true; etat.quiz=null; ecrire(etat); marquerReco(); }
+  });
+  document.addEventListener("change",function(e){
+    var k = e.target.getAttribute && e.target.getAttribute("data-k"); if(!k) return;
+    if(e.target.checked) etat.faits[k]=1; else delete etat.faits[k];
+    ecrire(etat); rendre();
+  });
+  document.addEventListener("toggle",function(e){ if(e.target.classList && e.target.classList.contains("parcours") && e.target.open){ etat.actif=e.target.id; ecrire(etat); } },true);
+
+  rendre();
+  // Reprendre là où on s'est arrêté
+  (function(){
+    var r = $("reprise"), a = etat.actif && P[vrai(etat.actif)], n = a && !valide(a) && prochaine(a), neuf = false;
+    if(!n){ a = D.parcours.filter(function(p){ return !valide(p) && statut(p).c!=="prep" && prochaine(p); })[0]; n = a && prochaine(a); neuf = !progression(a||{etapes:[]}).faits; }
+    if(!a || !n) return;
+    r.hidden = false;
+    r.innerHTML = '<p class="r-k">Votre prochaine étape</p><p><b>'+esc(a.nom)+' · '+esc(a.titre)+'</b><br>'+esc(n.s.type)+'\u00a0: '+esc(n.s.titre).replace(/ ([?!:;])/g,'\u00a0$1')+'</p><a class="bouton bouton-principal" href="'+esc(lienEtape(n.s,a.id))+'" data-goatcounter-click="'+(neuf?'ecole-prochaine-etape-debut':'ecole-reprendre')+'">'+(neuf?'Commencer':'Reprendre')+' ›</a>';
+    if(neuf) mesure("ecole-prochaine-etape-affichee");
+    var der = etat.vu ? (Date.now()-etat.vu)/864e5 : 0; if(der>2) mesure("ecole-reprise-apres-jours");
+  })();
+  etat.vu = Date.now(); ecrire(etat); mesure("ecole-entree");
+  // Ma progression : sauvegarde, restauration, effacement
+  function msg(t){ $("pg-msg").textContent = t; }
+  $("pg-save").addEventListener("click", function(){
+    var rs = window.EFA_SAUVEGARDE ? EFA_SAUVEGARDE.telecharger() : [];
+    msg("Sauvegarde téléchargée"+(rs.length?" : "+rs.join(", "):"")+". Gardez ce fichier : il permet de tout retrouver sur un autre appareil."); mesure("ecole-sauvegarde");
+  });
+  $("pg-file").addEventListener("change", function(e){
+    var f = e.target.files && e.target.files[0]; if(!f) return;
+    var rd = new FileReader(); rd.onload = function(){ try{ var rs = EFA_SAUVEGARDE.restaurer(rd.result); etat = lire() || {}; etat.faits = etat.faits||{}; rendre(); msg("Sauvegarde restaurée"+(rs.length?" : "+rs.join(", "):"")+"."); }catch(x){ msg("Ce fichier n’est pas une sauvegarde EFA."); } }; rd.readAsText(f);
+  });
+  var razConf = false;
+  $("pg-raz").addEventListener("click", function(){
+    if(!razConf){ razConf = true; this.textContent = "Confirmer : tout effacer"; msg("Cela efface vos étapes cochées et vos fiches sur cet appareil. Touchez à nouveau pour confirmer."); return; }
+    try{ localStorage.removeItem(KEY); }catch(x){} etat = {faits:{}}; razConf = false; this.textContent = "Tout effacer"; $("reprise").hidden = true; rendre(); msg("Progression et fiches effacées sur cet appareil.");
+  });
+  // Recommandation venant du diagnostic (?profil=…) ou des 3 questions déjà faites
+  var q = new URLSearchParams(location.search), pr = q.get("profil");
+  var PR = {}; D.profils.forEach(function(x){ PR[x.id]=x; });
+  var rq = (q.get("reco")||"").split(",").map(vrai).filter(function(id){ return P[id]; });
+  if(rq.length) recommander(rq, "D’après vos réponses", false);
+  else if(pr && PR[pr]){ recommander(PR[pr].parcours, "Votre profil « "+PR[pr].nom+" »", !location.hash); var bp=$("pr-"+pr); if(bp) bp.setAttribute("aria-pressed","true"); }
+  else if(etat.quiz && etat.quiz.length) recommander(etat.quiz, "D’après vos réponses", false);
+  // Ouverture par l'adresse (#P5)
+  var h = vrai((location.hash||"").slice(1));
+  document.addEventListener("click",function(e){ var r=e.target.closest&&e.target.closest("[data-cy-go]"); if(!r) return; var d=$("cycle-"+r.getAttribute("data-cy-go")); if(d){ e.preventDefault(); d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); } });
+  window.addEventListener("hashchange", function(){ var x=vrai((location.hash||"").slice(1)); if(P[x]){ var d=ouvrirModule(x); if(d) d.scrollIntoView({block:"start"}); } else if(/^cycle-/.test(x) && $(x)){ $(x).open=true; $(x).scrollIntoView({block:"start"}); } });
+  if(/^cycle-/.test(h) && $(h)){ $(h).open=true; setTimeout(function(){ $(h).scrollIntoView({block:"start"}); },60); }
+  if(h && P[h]){ var d=ouvrirModule(h); setTimeout(function(){ d.scrollIntoView({block:"start"}); },60); }
+})();
+</script>
+<script src="efa-appli.js?v=2026102905" defer></script>
+<script src="clone/habillage.js?v=20261030a" defer></script>
+</body>
+</html>

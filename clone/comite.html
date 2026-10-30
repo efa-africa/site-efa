@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo-efa.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<meta name="robots" content="noindex, nofollow">
+<title>Comité de lecture · Africa 2075 · EFA</title>
+<meta name="description" content="L’espace des membres du comité de lecture d’Africa 2075, la revue de prospective d’Éducation Financière Afrique.">
+<link rel="canonical" href="https://efa.africa/comite">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Espace membres : bandeau bleu nuit, accueil (se connecter / candidater), puis salle de lecture : liste à gauche, écran de publication au centre. */
+:root{
+  --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --nuit2:#111B2F; --creme:#F5EFE2; --papier:#FFFDF8; --line:#E2D8C4; --sable:#EBE2D0;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --corail:#DA3C1B; --corail-texte:#B8341A; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+  --ok:#1F7A4D; --prov:#9A6A00;
+  --gut:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--nuit)}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
+a{color:var(--bleu)}
+button,input,textarea,select{font:inherit}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte)}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.in{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+
+/* Bandeau */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--nuit);color:#fff}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.18em;min-width:0}
+.brand img{width:34px;height:34px}
+.brand b{color:var(--soft-corail);font-weight:800}
+.top nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.top nav a{color:#E8EDF5;text-decoration:none;font-weight:700;font-size:14px;padding:8px 12px;border-radius:8px}
+.top nav a:hover{background:rgba(255,255,255,.1)}
+.moi{display:flex;align-items:center;gap:8px;font-size:14px;color:#C9D1DE}
+.role{background:var(--corail);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px}
+.role.c{background:#1C2842}
+.lien-btn{background:none;border:1px solid #2A3446;color:#E8EDF5;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px;cursor:pointer}
+@media (max-width:640px){.brand span{font-size:10px;letter-spacing:.12em}.top nav a{display:none}}
+
+/* Boutons, champs */
+.btn{border:0;border-radius:8px;padding:12px 22px;min-height:46px;font-weight:800;font-size:16px;cursor:pointer}
+.btn.p{background:var(--corail);color:#fff}
+.btn.s{background:var(--sable);color:var(--ink)}
+.btn.n{background:var(--nuit);color:#fff}
+.btn:disabled{opacity:.55;cursor:default}
+.champ{display:grid;gap:5px;font-weight:700;font-size:14px}
+.champ input,.champ select,.champ textarea{font-weight:400;font-size:16px;background:var(--papier);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:11px 12px;min-width:0}
+.msg{font-size:15px;color:var(--ink2);margin:0;min-height:1.2em}
+.msg.err{color:var(--corail-texte)}
+.hp{position:absolute;left:-9999px}
+
+/* Accueil */
+.accueil{padding-block:44px 64px}
+.accueil-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:start}
+.accueil h1{font-size:clamp(34px,5vw,54px);margin-top:10px}
+.accueil .lead{color:var(--ink2);font-size:18px;max-width:52ch;margin:14px 0 0}
+.accueil ul{padding-left:20px;color:var(--ink2);display:grid;gap:6px;margin:18px 0}
+.carte{background:var(--papier);border-radius:16px;padding:24px}
+.onglets{display:flex;gap:6px;background:var(--sable);border-radius:10px;padding:4px;margin-bottom:18px}
+.onglets button{flex:1;border:0;background:none;border-radius:8px;padding:10px 12px;font-weight:800;font-size:15px;color:var(--ink2);cursor:pointer}
+.onglets button[aria-selected="true"]{background:var(--papier);color:var(--ink)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form .plein{grid-column:1/-1}
+.ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:var(--ink2);font-weight:400}
+.note{font-size:14px;color:var(--ink3);margin:0}
+.etat{background:var(--papier);border-radius:16px;padding:28px;max-width:720px}
+.etat h2{font-size:clamp(26px,3.6vw,34px);margin:8px 0 10px}
+.etat p{color:var(--ink2);margin:0 0 10px}
+
+/* Salle de lecture */
+.salle{padding-block:22px 64px;display:grid;grid-template-columns:280px minmax(0,1fr);gap:22px;align-items:start}
+.liste{background:var(--papier);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:4px;position:sticky;top:80px}
+.liste button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:12px;border-radius:10px}
+.liste button:hover,.liste button[aria-current="true"]{background:var(--sable)}
+.liste button:focus-visible{outline:3px solid var(--bleu)}
+.liste .t{font-family:var(--f-display);font-weight:700;font-size:16px;line-height:1.25}
+.liste .n{font-size:13px;color:var(--ink3)}
+.liste .sep{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);padding:12px 12px 4px}
+.pastille{align-self:flex-start;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px;background:var(--sable);color:var(--ink2)}
+.st-relecture{background:#1C2842;color:#fff}.st-enrichir,.st-creuser{background:var(--prov);color:#fff}.st-valide{background:var(--ok);color:#fff}.st-publie{background:var(--corail);color:#fff}.st-ecarte{background:var(--sable);color:var(--ink3)}
+.st-en_attente{background:var(--prov);color:#fff}.st-membre{background:var(--ok);color:#fff}.st-refuse{background:var(--sable);color:var(--ink3)}
+
+.profil{background:var(--papier);border-radius:14px;padding:14px 16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.profil .champ{flex:1 1 260px}
+.pilote{background:var(--nuit);color:#E8EDF5;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.pilote .surtitre{color:var(--soft-corail)}
+.pilote .ligne{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pilote select,.pilote textarea{background:var(--nuit2);color:#E8EDF5;border:1px solid #2A3446;border-radius:8px;padding:9px 10px}
+.pilote textarea{width:100%;min-height:64px;resize:vertical}
+.pilote .msg{color:#C9D1DE}
+
+.ecran{background:var(--papier);border-radius:18px;overflow:hidden;box-shadow:0 1px 0 var(--line),0 18px 40px -28px rgba(11,18,32,.45)}
+.ecran-barre{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--sable);font-size:13px;color:var(--ink3)}
+.ecran-barre i{width:10px;height:10px;border-radius:50%;background:var(--line);display:inline-block}
+.couv{background:var(--nuit);color:#fff;padding:30px 26px}
+.couv .surtitre{color:var(--soft-corail)}
+.couv h2{font-size:clamp(28px,4.4vw,44px);margin-top:10px}
+.couv .st{font-family:var(--f-display);font-style:italic;color:var(--soft-corail);font-size:clamp(18px,2.4vw,22px);margin:8px 0 0}
+.couv .chapeau{color:#C9D1DE;margin:12px 0 0;max-width:62ch}
+.note-ed{background:var(--sable);margin:18px 26px 0;border-radius:10px;padding:12px 14px;font-size:15px;color:var(--ink2)}
+.note-ed b{color:var(--ink)}
+.corps{padding:8px 26px 30px}
+.partie{padding-top:22px;border-top:1px solid var(--line);margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.partie:first-child{border-top:0;margin-top:0}
+.partie h3{font-size:clamp(21px,2.8vw,26px)}
+.partie p{margin:0;max-width:68ch}
+.encadre{background:var(--nuit);color:#fff;border-radius:2px;padding:14px 16px;font-family:var(--f-display);font-size:17px;line-height:1.4;max-width:68ch}
+.decision{background:var(--sable);border-radius:10px;padding:12px 14px;max-width:68ch}
+.decision b{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.decision ul{margin:0;padding-left:18px}
+
+.avis-zone{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.ouvrir{align-self:flex-start;background:none;border:1px dashed var(--line);color:var(--corail-texte);border-radius:999px;padding:6px 14px;font-weight:800;font-size:14px;cursor:pointer}
+.composer{background:var(--creme);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.composer textarea{width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);background:var(--papier);color:var(--ink);border-radius:8px;padding:10px 12px}
+.composer fieldset{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
+.composer legend{font-weight:700;font-size:14px;margin-bottom:4px}
+.composer .ligne{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.avis{border-radius:12px;padding:10px 12px;background:var(--creme);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.avis.partage{background:var(--sable)}
+.avis .qui{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:var(--ink3)}
+.avis .qui b{color:var(--ink)}
+.chip{font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:var(--sable);color:var(--ink2)}
+.avis p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.acts button{background:none;border:0;padding:0;color:var(--bleu);font-weight:700;font-size:13px;cursor:pointer}
+.titre-avis{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+
+/* Candidatures (éditeur) */
+.cands{display:flex;flex-direction:column;gap:12px}
+.cand{background:var(--papier);border-radius:14px;padding:16px 18px;display:grid;gap:6px}
+.cand .l1{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.cand .l1 b{font-family:var(--f-display);font-size:18px}
+.cand p{margin:0;color:var(--ink2);font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.cand .acts button{font-size:14px}
+.import textarea{width:100%;min-height:140px;font-family:ui-monospace,Menlo,monospace;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--papier);color:var(--ink)}
+
+@media (max-width:900px){
+  .accueil-g,.salle{grid-template-columns:minmax(0,1fr)}
+  .liste{position:static;flex-direction:row;overflow-x:auto}
+  .liste button{min-width:220px}
+  .liste .sep{display:none}
+  .form{grid-template-columns:minmax(0,1fr)}
+  .couv,.corps{padding-left:18px;padding-right:18px}.note-ed{margin-left:18px;margin-right:18px}
+}
+</style>
+<link rel="stylesheet" href="footer.css?v=2026102602">
+<link rel="stylesheet" href="clone/habillage.css?v=20261030a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="brand" href="clone/index.html" aria-label="EFA, accueil du Clone"><img src="clone/assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="clone/index.html#benefices">Apprendre</a><a href="clone/index.html#pilier-progresser">S’entraîner</a><a href="clone/index.html#pilier-agir">Se lancer</a><a href="clone/index.html#pilier-media">Le média</a><a href="clone/index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="clone/index.html#benefices">Apprendre <span>↗</span></a><a href="clone/index.html#seul">Apprendre seul <span>↗</span></a><a href="clone/index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="clone/index.html#outils">Outils et simulateurs <span>↗</span></a><a href="clone/index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="clone/index.html#coaching">Apprendre avec un coach <span>↗</span></a><a href="clone/index.html#pilier-agir">Se lancer <span>↗</span></a><a href="clone/index.html#marches">Investir à la BRVM <span>↗</span></a><a href="clone/index.html#pilier-media">Le média <span>↗</span></a><a href="clone/index.html#etudes-prospective">Études et prospective <span>↗</span></a><a href="clone/index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header data-v1-cache class="top"><div class="in">
+  <a class="brand" href="./"><img src="logo-efa-96.png" alt="" width="34" height="34"><span>AFRICA 2075 · <b>COMITÉ DE LECTURE</b></span></a>
+  <nav aria-label="Navigation">
+    <a href="methode.html#africa-2075">Les numéros publiés</a>
+    <span class="moi" id="moi" hidden><span id="moi-nom"></span><span class="role" id="moi-role"></span><button class="lien-btn" id="sortir" type="button">Se déconnecter</button></span>
+  </nav>
+</div></header>
+
+<main id="app">
+  <!-- Accueil : se connecter ou candidater -->
+  <section class="accueil in" id="v-accueil">
+    <div class="accueil-g">
+      <div>
+        <span class="surtitre">Éducation Financière Afrique · Prospective</span>
+        <h1>Le comité de lecture d’Africa 2075</h1>
+        <p class="lead">Économistes, dirigeants, chercheurs, praticiens : les membres du comité lisent les prochains numéros d’Africa 2075 avant leur publication et les enrichissent de leur regard.</p>
+        <ul>
+          <li>Les articles en avant-première, au format de publication.</li>
+          <li>Votre avis, partie par partie.</li>
+          <li>Pour chaque avis, le choix d’être cité comme contributeur ou de rester anonyme.</li>
+        </ul>
+        <p class="note">Les candidatures sont examinées par Élysée Johnson, fondateur d’EFA. Les articles en relecture sont des documents de travail confidentiels.</p>
+      </div>
+      <div class="carte">
+        <div class="onglets" role="tablist" aria-label="Accès">
+          <button type="button" role="tab" id="t-connexion" aria-selected="true" aria-controls="p-connexion">Je suis membre</button>
+          <button type="button" role="tab" id="t-candidature" aria-selected="false" aria-controls="p-candidature">Rejoindre le comité</button>
+        </div>
+        <div id="p-connexion" role="tabpanel" aria-labelledby="t-connexion">
+          <form id="f-connexion" class="form" novalidate>
+            <label class="champ plein">Votre adresse email<input id="cx-mail" type="email" autocomplete="email" required></label>
+            <div class="plein"><button class="btn p" type="submit">Recevoir mon lien de connexion</button></div>
+            <p class="msg plein" id="cx-msg" role="status" aria-live="polite"></p>
+            <p class="note plein">Pas de mot de passe : nous vous envoyons un lien de connexion par email, valable une heure. Utilisez l’adresse acceptée au comité.</p>
+          </form>
+        </div>
+        <div id="p-candidature" role="tabpanel" aria-labelledby="t-candidature" hidden>
+          <form id="f-candidature" class="form" novalidate>
+            <label class="champ">Nom et prénom<input id="ca-nom" autocomplete="name" required></label>
+            <label class="champ">Adresse email<input id="ca-mail" type="email" autocomplete="email" required></label>
+            <label class="champ">Fonction et organisation<input id="ca-fonction" placeholder="Ex. : économiste, institution financière" required></label>
+            <label class="champ">Pays<input id="ca-pays" autocomplete="country-name"></label>
+            <label class="champ">Domaine d’expertise<select id="ca-domaine"><option>Économie et politiques publiques</option><option>Banque, finance, marchés de capitaux</option><option>Numérique et intelligence artificielle</option><option>Entreprise et direction générale</option><option>Énergie, infrastructures, commerce</option><option>Recherche et enseignement</option><option>Autre</option></select></label>
+            <label class="champ">Profil en ligne (facultatif)<input id="ca-lien" type="url" placeholder="Lien LinkedIn ou page professionnelle"></label>
+            <label class="champ plein">Ce que vous aimeriez apporter<textarea id="ca-msg" rows="4" placeholder="Vos sujets, votre angle, ce que vous lisez dans Africa 2075…"></textarea></label>
+            <label class="ok plein"><input type="checkbox" id="ca-ok"> J’accepte qu’EFA conserve ces informations pour examiner ma candidature et me recontacter. <a href="confidentialite.html">Vos données</a></label>
+            <label class="hp" aria-hidden="true">Ne pas remplir<input type="checkbox" id="ca-bot" tabindex="-1"></label>
+            <div class="plein"><button class="btn p" type="submit">Proposer ma candidature</button></div>
+            <p class="msg plein" id="ca-msg-box" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Candidature en cours d'examen -->
+  <section class="in accueil" id="v-attente" hidden>
+    <div class="etat">
+      <span class="surtitre">Comité de lecture</span>
+      <h2>Votre candidature est en cours d’examen</h2>
+      <p>Merci. Élysée Johnson examine chaque candidature personnellement. Dès qu’elle est acceptée, vous recevez un email et vous accédez ici aux articles en relecture, avec la même adresse.</p>
+      <p class="note" id="att-detail"></p>
+    </div>
+  </section>
+
+  <!-- Candidature non retenue -->
+  <section class="in accueil" id="v-refuse" hidden>
+    <div class="etat">
+      <span class="surtitre">Comité de lecture</span>
+      <h2>Merci de votre intérêt</h2>
+      <p>Votre candidature n’a pas été retenue pour le moment. Vous pouvez continuer à lire les numéros publiés d’Africa 2075.</p>
+      <p><a href="methode.html#africa-2075">Lire les numéros publiés →</a></p>
+    </div>
+  </section>
+
+  <!-- Salle de lecture -->
+  <section class="salle in" id="v-salle" hidden>
+    <nav class="liste" id="liste" aria-label="Articles et candidatures"></nav>
+    <div id="vue"></div>
+  </section>
+</main>
+
+<footer data-v1-cache class="efa-foot">
+  <div class="ef-in">
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Africa 2075 · Comité de lecture — documents de travail confidentiels.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="methode.html#africa-2075">Africa 2075</a>
+    </div>
+  </div>
+</footer>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2>Apprendre</h2><ul>
+          <li><a href="clone/index.html#seul">J’apprends seul</a></li>
+          <li><a href="clone/index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="clone/index.html#ecoles">École de la tontine et de la Bourse</a></li>
+          <li><a href="clone/index.html#outils">Outils et simulateurs</a></li>
+          <li><a href="clone/diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li>
+        </ul></div>
+        <div><h2>S’entraîner</h2><ul>
+          <li><a href="clone/coaching.html">Apprendre avec un coach</a></li>
+          <li><a href="clone/index.html#coachs">Choisir son coach</a></li>
+          <li><a href="clone/index.html#ateliers">Ateliers et parcours</a></li>
+          <li><a href="clone/index.html#certificats">Certificats</a></li>
+          <li><a href="clone/index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2>Se lancer</h2><ul>
+          <li><a href="clone/index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="clone/index.html#sgi">Choisir sa SGI</a></li>
+          <li><a href="clone/index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="clone/index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2>Le média</h2><ul>
+          <li><a href="clone/news.html">EFA News</a></li>
+          <li><a href="clone/tribunes.html">Les tribunes</a></li>
+          <li><a href="clone/index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="clone/africa-2075-fondateur.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2>EFA</h2><ul>
+          <li><a href="clone/auteur.html#efa">À propos</a></li>
+          <li><a href="clone/organisations.html">Pour les organisations</a></li>
+          <li><a href="clone/rendez-vous.html">Contact</a></li>
+          <li><a href="index.html#guide">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 Éducation Financière Afrique</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="clone/confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script src="comite-config.js?v=2026102501"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  'use strict';
+  var STATUTS={relecture:'En relecture',enrichir:'À enrichir',creuser:'À creuser',valide:'Validé pour publication',publie:'Publié · retours bienvenus',ecarte:'Écarté'};
+  var CAND={en_attente:'À examiner',membre:'Membre',refuse:'Non retenu'};
+  var $=function(id){return document.getElementById(id);};
+  function h(tag,attrs,kids){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==='text')e.textContent=attrs[k];else if(k==='class')e.className=attrs[k];else e.setAttribute(k,attrs[k]);}(kids||[]).forEach(function(c){if(c!=null)e.appendChild(typeof c==='string'?document.createTextNode(c):c);});return e;}
+  function jour(s){try{return new Date(s).toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});}catch(e){return '';}}
+  function say(el,t,err){el.textContent=t;el.className='msg'+(el.classList.contains('plein')?' plein':'')+(err?' err':'');}
+  function compte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+  var mailOk=function(m){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m);};
+  var REDIRECT=location.origin+location.pathname.replace(/\/([^\/.]+)$/,"/$1.html"); // adresse déclarée chez le fournisseur de connexion
+
+  /* ---------- Onglets de l'accueil ---------- */
+  function onglet(n){['connexion','candidature'].forEach(function(k){var on=k===n;$('t-'+k).setAttribute('aria-selected',String(on));$('p-'+k).hidden=!on;});}
+  $('t-connexion').addEventListener('click',function(){onglet('connexion');});
+  $('t-candidature').addEventListener('click',function(){onglet('candidature');});
+  if((location.hash||'')==='#candidature') onglet('candidature');
+
+  function vue(n){['accueil','attente','refuse','salle'].forEach(function(k){$('v-'+k).hidden=k!==n;});}
+
+  var CONFIG=!!(window.COMITE_SUPABASE_URL&&window.COMITE_SUPABASE_CLE&&window.supabase);
+  var sb=CONFIG?window.supabase.createClient(COMITE_SUPABASE_URL,COMITE_SUPABASE_CLE,{auth:{persistSession:true,detectSessionInUrl:true,autoRefreshToken:true}}):null;
+
+  /* ---------- Candidature ---------- */
+  $('f-candidature').addEventListener('submit',function(e){
+    e.preventDefault();
+    var box=$('ca-msg-box'),b=this.querySelector('button[type=submit]');
+    var d={nom:$('ca-nom').value.trim(),email:$('ca-mail').value.trim().toLowerCase(),fonction:$('ca-fonction').value.trim(),pays:$('ca-pays').value.trim(),domaine:$('ca-domaine').value,lien:$('ca-lien').value.trim(),motivation:$('ca-msg').value.trim()};
+    if(!d.nom){say(box,'Indiquez votre nom.',1);return;}
+    if(!mailOk(d.email)){say(box,'Saisissez une adresse email valide.',1);return;}
+    if(!d.fonction){say(box,'Indiquez votre fonction et votre organisation.',1);return;}
+    if(!$('ca-ok').checked){say(box,'Cochez la case pour que nous puissions examiner votre candidature.',1);return;}
+    if($('ca-bot').checked) return;
+    b.disabled=true;say(box,'Envoi en cours…');compte('a2075-comite-candidature');
+    var envoi;
+    if(sb){
+      envoi=sb.auth.signInWithOtp({email:d.email,options:{emailRedirectTo:REDIRECT,shouldCreateUser:true,data:{comite:d}}}).then(function(r){
+        if(r.error) throw r.error;
+        say(box,'Merci. Un email vient de vous être envoyé : cliquez sur le lien pour confirmer votre adresse. Votre candidature sera ensuite examinée.');
+        $('f-candidature').reset();
+      });
+    } else {
+      envoi=fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({access_key:window.COMITE_WEB3_CLE,subject:'Candidature · Comité de lecture Africa 2075 · '+d.nom,from_name:'Site efa.africa',name:d.nom,email:d.email,replyto:d.email,fonction:d.fonction,pays:d.pays,domaine:d.domaine,profil:d.lien,message:d.motivation})})
+        .then(function(r){return r.json();}).then(function(j){if(!(j&&j.success))throw new Error('web3');say(box,'Merci, votre candidature est bien arrivée. Nous vous recontactons à l’adresse indiquée.');$('f-candidature').reset();});
+    }
+    envoi.catch(function(err){
+      var m=(err&&err.message)||'';
+      say(box,/rate|limit|seconds/i.test(m)?'Trop de demandes en peu de temps. Réessayez dans quelques minutes.':'La candidature n’a pas pu être envoyée. Réessayez, ou écrivez-nous à newsletter@efa.africa.',1);
+    }).then(function(){b.disabled=false;});
+  });
+
+  /* ---------- Connexion par lien email ---------- */
+  $('f-connexion').addEventListener('submit',function(e){
+    e.preventDefault();
+    var box=$('cx-msg'),b=this.querySelector('button[type=submit]'),m=$('cx-mail').value.trim().toLowerCase();
+    if(!mailOk(m)){say(box,'Saisissez une adresse email valide.',1);return;}
+    if(!sb){say(box,'L’espace des membres ouvre très prochainement. Vous recevrez un email dès son ouverture.',1);return;}
+    b.disabled=true;say(box,'Envoi en cours…');
+    sb.auth.signInWithOtp({email:m,options:{emailRedirectTo:REDIRECT,shouldCreateUser:false}}).then(function(r){
+      if(r.error){var t=r.error.message||'';say(box,/not found|signups not allowed|user/i.test(t)?'Cette adresse n’est pas encore inscrite. Proposez votre candidature dans l’onglet « Rejoindre le comité ».':/rate|seconds/i.test(t)?'Trop de demandes en peu de temps. Réessayez dans quelques minutes.':'L’envoi n’a pas abouti. Réessayez dans un instant.',1);return;}
+      say(box,'C’est envoyé. Ouvrez l’email « Africa 2075 » et cliquez sur le lien pour entrer (regardez aussi les dossiers Promotions et Spam).');
+    }).catch(function(){say(box,'L’envoi n’a pas abouti. Vérifiez votre connexion.',1);}).then(function(){b.disabled=false;});
+  });
+
+  /* ---------- Espace membre ---------- */
+  var E={moi:null,profil:null,articles:[],avis:[],partages:[],cands:[],courant:null,mode:'article'};
+
+  async function charger(){
+    var s=await sb.auth.getSession();var sess=s.data&&s.data.session;
+    if(!sess){vue('accueil');$('moi').hidden=true;return;}
+    E.moi=sess.user;
+    var p=await sb.from('comite_profils').select('*').eq('id',E.moi.id).maybeSingle();
+    E.profil=p.data;
+    $('moi').hidden=false;$('moi-nom').textContent=(E.profil&&E.profil.nom)||E.moi.email;
+    var r=$('moi-role');var ed=E.profil&&E.profil.role==='editeur'&&E.profil.statut==='membre';
+    r.textContent=ed?'Éditeur en chef':(E.profil&&E.profil.statut==='membre'?'Membre':'Candidat');r.className='role'+(ed?'':' c');
+    if(!E.profil||E.profil.statut==='en_attente'){vue('attente');$('att-detail').textContent='Adresse : '+E.moi.email;return;}
+    if(E.profil.statut==='refuse'){vue('refuse');return;}
+    vue('salle');
+    await rafraichir();
+  }
+  function estEditeur(){return E.profil&&E.profil.role==='editeur';}
+
+  async function rafraichir(){
+    var a=await sb.from('comite_articles').select('*').order('ordre',{ascending:false});
+    E.articles=a.data||[];
+    var v=await sb.from('comite_avis').select('*').order('cree_le',{ascending:true});
+    E.avis=v.data||[];
+    var pt=await sb.from('comite_partages').select('*').order('cree_le',{ascending:true});
+    E.partages=pt.data||[];
+    if(estEditeur()){var c=await sb.from('comite_profils').select('*').order('cree_le',{ascending:false});E.cands=c.data||[];}
+    try{if(!E.courant)E.courant=localStorage.getItem('comite-a2075-art');}catch(e){}
+    if(E.mode==='article'&&!E.articles.some(function(x){return x.id===E.courant;})) E.courant=E.articles.length?E.articles[0].id:null;
+    rendre();
+  }
+
+  function rendre(){rendreListe();if(E.mode==='cands')rendreCands();else if(E.mode==='import')rendreImport();else rendreArticle();}
+
+  function rendreListe(){
+    var l=$('liste');l.textContent='';
+    l.appendChild(h('span',{class:'sep',text:'Articles'}));
+    E.articles.forEach(function(a){
+      var b=h('button',{type:'button','aria-current':String(E.mode==='article'&&E.courant===a.id)},[
+        h('span',{class:'pastille st-'+(a.statut||'relecture'),text:STATUTS[a.statut]||'En relecture'}),h('span',{class:'t',text:a.titre||'Sans titre'}),h('span',{class:'n',text:a.numero||''})]);
+      b.addEventListener('click',function(){E.mode='article';E.courant=a.id;try{localStorage.setItem('comite-a2075-art',a.id);}catch(e){}rendre();});
+      l.appendChild(b);
+    });
+    if(estEditeur()){
+      l.appendChild(h('span',{class:'sep',text:'Éditeur en chef'}));
+      var att=E.cands.filter(function(c){return c.statut==='en_attente';}).length;
+      var bc=h('button',{type:'button','aria-current':String(E.mode==='cands')},[h('span',{class:'pastille '+(att?'st-en_attente':''),text:att?att+' à examiner':'Aucune en attente'}),h('span',{class:'t',text:'Candidatures et membres'})]);
+      bc.addEventListener('click',function(){E.mode='cands';rendre();});l.appendChild(bc);
+      var bi=h('button',{type:'button','aria-current':String(E.mode==='import')},[h('span',{class:'t',text:'Ajouter un article'}),h('span',{class:'n',text:'Coller la fiche fournie par la cellule de prospective'})]);
+      bi.addEventListener('click',function(){E.mode='import';rendre();});l.appendChild(bi);
+    }
+  }
+
+  function videVue(t,p){var v=$('vue');v.textContent='';v.appendChild(h('div',{class:'etat'},[h('h2',{text:t}),h('p',{text:p})]));}
+
+  function rendreArticle(){
+    var a=E.articles.find(function(x){return x.id===E.courant;});
+    if(!a){videVue('Aucun article en relecture pour l’instant','Les prochains numéros d’Africa 2075 apparaîtront ici dès qu’ils seront prêts. Vous serez prévenu par email.');return;}
+    var v=$('vue');v.textContent='';
+    if(!estEditeur()) v.appendChild(profilBloc());
+    if(estEditeur()) v.appendChild(pilote(a));
+    var ec=h('article',{class:'ecran'});
+    ec.appendChild(h('div',{class:'ecran-barre'},[h('i'),h('i'),h('i'),h('span',{text:'efa.africa · aperçu avant publication'})]));
+    var cv=h('div',{class:'couv'},[h('span',{class:'surtitre',text:a.numero||'Africa 2075'}),h('h2',{text:a.titre||''})]);
+    if(a.sous_titre)cv.appendChild(h('p',{class:'st',text:a.sous_titre}));
+    if(a.chapeau)cv.appendChild(h('p',{class:'chapeau',text:a.chapeau}));
+    ec.appendChild(cv);
+    if(a.note_editeur)ec.appendChild(h('p',{class:'note-ed'},[h('b',{text:'Note de l’éditeur en chef : '}),a.note_editeur]));
+    var c=h('div',{class:'corps'});
+    (Array.isArray(a.sections)?a.sections:[]).forEach(function(s){c.appendChild(partie(a,s));});
+    ec.appendChild(c);v.appendChild(ec);
+  }
+
+  function partie(a,s){
+    var p=h('section',{class:'partie'});
+    if(s.surtitre)p.appendChild(h('span',{class:'surtitre',text:s.surtitre}));
+    p.appendChild(h('h3',{text:s.titre||''}));
+    (s.paragraphes||[]).forEach(function(t){p.appendChild(h('p',{text:t}));});
+    if(s.encadre)p.appendChild(h('div',{class:'encadre',text:s.encadre}));
+    if(Array.isArray(s.decisions)&&s.decisions.length){var ul=h('ul');s.decisions.forEach(function(x){ul.appendChild(h('li',{text:x}));});p.appendChild(h('div',{class:'decision'},[h('b',{text:'Décisions structurantes'}),ul]));}
+    p.appendChild(zoneAvis(a,s.id));
+    return p;
+  }
+
+  function nomProfil(uid){var c=E.cands.find(function(x){return x.id===uid;});if(!c)return 'Un membre';return c.nom+(c.titre_cite?' · '+c.titre_cite:(c.fonction?' · '+c.fonction:''));}
+
+  function zoneAvis(a,sec){
+    var z=h('div',{class:'avis-zone'});
+    var parts=E.partages.filter(function(x){return x.article_id===a.id&&x.section===sec;});
+    if(parts.length){z.appendChild(h('span',{class:'titre-avis',text:'Échanges partagés avec le comité'}));parts.forEach(function(x){z.appendChild(carte(x,'partage'));});}
+    var lst=E.avis.filter(function(x){return x.article_id===a.id&&x.section===sec;});
+    if(lst.length){z.appendChild(h('span',{class:'titre-avis',text:estEditeur()?'Avis reçus':'Vos avis'}));lst.forEach(function(x){z.appendChild(carte(x,estEditeur()&&x.auteur!==E.moi.id?'recu':'mien'));});}
+    var bt=h('button',{class:'ouvrir',type:'button',text:estEditeur()?'Ajouter une note':'Donner mon avis'});
+    bt.addEventListener('click',function(){bt.hidden=true;z.appendChild(composer(a.id,sec,function(){bt.hidden=false;}));});
+    z.appendChild(bt);
+    return z;
+  }
+
+  function carte(x,genre){
+    var c=h('div',{class:'avis'+(genre==='partage'?' partage':'')});
+    var q=h('div',{class:'qui'});
+    if(genre==='partage') q.appendChild(h('b',{text:x.auteur_nom||'Un membre du comité (anonyme)'}));
+    else if(genre==='recu'){q.appendChild(h('b',{text:nomProfil(x.auteur)}));q.appendChild(h('span',{class:'chip',text:x.citer?'Accepte d’être cité':'Souhaite rester anonyme'}));}
+    else {q.appendChild(h('b',{text:'Vous'}));q.appendChild(h('span',{class:'chip',text:x.citer?'Cité comme contributeur':'Anonyme'}));}
+    q.appendChild(h('span',{text:jour(x.cree_le)}));
+    c.appendChild(q);c.appendChild(h('p',{text:x.texte||''}));
+    var acts=h('div',{class:'acts'});
+    if(genre==='recu'){
+      var deja=E.partages.find(function(p){return p.avis_id===x.id;});
+      var b=h('button',{type:'button',text:deja?'Retirer du partage':(x.citer?'Partager avec le comité (nommé)':'Partager avec le comité (anonyme)')});
+      b.addEventListener('click',async function(){b.disabled=true;
+        if(deja) await sb.from('comite_partages').delete().eq('id',deja.id);
+        else await sb.from('comite_partages').insert({avis_id:x.id,article_id:x.article_id,section:x.section,texte:x.texte,auteur_nom:x.citer?nomProfil(x.auteur):null});
+        rafraichir();});
+      acts.appendChild(b);
+    }
+    if(genre==='mien'){
+      var s=h('button',{type:'button',text:x.citer?'Passer en anonyme':'Accepter d’être cité'});
+      s.addEventListener('click',async function(){s.disabled=true;await sb.from('comite_avis').update({citer:!x.citer}).eq('id',x.id);rafraichir();});
+      var del=h('button',{type:'button',text:'Supprimer'});
+      del.addEventListener('click',async function(){if(!del.dataset.ok){del.dataset.ok='1';del.textContent='Confirmer la suppression';return;}await sb.from('comite_avis').delete().eq('id',x.id);rafraichir();});
+      acts.appendChild(s);acts.appendChild(del);
+    }
+    if(acts.childNodes.length)c.appendChild(acts);
+    return c;
+  }
+
+  function composer(art,sec,fermer){
+    var f=h('form',{class:'composer'});
+    var ta=h('textarea',{maxlength:'4000','aria-label':'Votre avis',placeholder:'Ce qui est juste, ce qui manque, une source, une décision à ajouter…'});
+    var n='c'+Math.random().toString(36).slice(2);
+    var fs=h('fieldset',{},[h('legend',{text:'Si cet avis enrichit l’article publié :'}),h('label',{},[h('input',{type:'radio',name:n,value:'1',checked:''}),' Me citer comme contributeur']),h('label',{},[h('input',{type:'radio',name:n,value:'0'}),' Rester anonyme'])]);
+    var m=h('p',{class:'msg'});var ok=h('button',{class:'btn p',type:'submit',text:'Envoyer'});var an=h('button',{class:'btn s',type:'button',text:'Annuler'});
+    an.addEventListener('click',function(){f.remove();fermer();});
+    f.appendChild(ta);if(!estEditeur())f.appendChild(fs);f.appendChild(h('div',{class:'ligne'},[ok,an]));f.appendChild(m);
+    f.addEventListener('submit',async function(e){e.preventDefault();var t=ta.value.trim();if(!t){m.textContent='Écrivez votre avis avant de l’envoyer.';return;}
+      var r=f.querySelector('input[name="'+n+'"]:checked');ok.disabled=true;m.textContent='Envoi…';
+      var res=await sb.from('comite_avis').insert({article_id:art,section:sec,texte:t,citer:r?r.value==='1':true});
+      if(res.error){ok.disabled=false;m.textContent='L’envoi n’a pas abouti. Réessayez.';return;}
+      compte('a2075-comite-avis');rafraichir();});
+    setTimeout(function(){ta.focus();},0);
+    return f;
+  }
+
+  function profilBloc(){
+    var p=h('div',{class:'profil'});
+    var inp=h('input',{maxlength:'120',value:(E.profil&&E.profil.titre_cite)||'',placeholder:'Ex. : Économiste, institution financière internationale'});
+    var lab=h('label',{class:'champ'},['Comment vous présenter si vous êtes cité',inp]);
+    var b=h('button',{class:'btn s',type:'button',text:'Enregistrer'});var m=h('p',{class:'msg'});
+    b.addEventListener('click',async function(){b.disabled=true;var r=await sb.rpc('comite_maj_titre',{p_titre:inp.value.trim()});m.textContent=r.error?'L’enregistrement n’a pas abouti.':'Enregistré.';b.disabled=false;});
+    p.appendChild(lab);p.appendChild(b);p.appendChild(m);return p;
+  }
+
+  function pilote(a){
+    var p=h('div',{class:'pilote'},[h('span',{class:'surtitre',text:'Votre décision d’éditeur en chef'})]);
+    var sel=h('select',{'aria-label':'Statut de l’article'});
+    Object.keys(STATUTS).forEach(function(k){var o=h('option',{value:k,text:STATUTS[k]});if((a.statut||'relecture')===k)o.selected=true;sel.appendChild(o);});
+    var ta=h('textarea',{'aria-label':'Note de l’éditeur',placeholder:'Note visible par le comité : ce qu’il faut creuser, l’échéance…'});ta.value=a.note_editeur||'';
+    var b=h('button',{class:'btn p',type:'button',text:'Enregistrer la décision'});
+    var nb=E.avis.filter(function(x){return x.article_id===a.id;}).length;
+    var m=h('p',{class:'msg',text:nb?nb+(nb>1?' avis reçus sur cet article.':' avis reçu sur cet article.'):'Aucun avis pour l’instant.'});
+    var del=h('button',{class:'lien-btn',type:'button',text:'Supprimer l’article'});
+    del.addEventListener('click',async function(){if(!del.dataset.ok){del.dataset.ok='1';del.textContent='Confirmer la suppression (avis compris)';return;}await sb.from('comite_articles').delete().eq('id',a.id);E.courant=null;rafraichir();});
+    b.addEventListener('click',async function(){b.disabled=true;var r=await sb.from('comite_articles').update({statut:sel.value,note_editeur:ta.value.trim(),maj:new Date().toISOString()}).eq('id',a.id);m.textContent=r.error?'L’enregistrement n’a pas abouti.':'Décision enregistrée.';b.disabled=false;rafraichir();});
+    p.appendChild(h('div',{class:'ligne'},[sel,b,del]));p.appendChild(ta);p.appendChild(m);return p;
+  }
+
+  function rendreCands(){
+    var v=$('vue');v.textContent='';
+    v.appendChild(h('div',{class:'etat',style:'margin-bottom:16px;max-width:none'},[h('span',{class:'surtitre',text:'Éditeur en chef'}),h('h2',{text:'Candidatures et membres'}),h('p',{text:'Acceptez une candidature : la personne accède aussitôt aux articles en relecture avec son adresse. Prévenez-la par email ou WhatsApp, avec le lien efa.africa/comite.html.'})]));
+    var box=h('div',{class:'cands'});
+    var ordre={en_attente:0,membre:1,refuse:2};
+    E.cands.slice().sort(function(a,b){return (ordre[a.statut]-ordre[b.statut])||(a.cree_le<b.cree_le?1:-1);}).forEach(function(c){
+      if(c.id===E.moi.id)return;
+      var k=h('div',{class:'cand'});
+      k.appendChild(h('div',{class:'l1'},[h('b',{text:c.nom||c.email}),h('span',{class:'pastille st-'+c.statut,text:CAND[c.statut]||c.statut}),h('span',{class:'note',text:jour(c.cree_le)})]));
+      k.appendChild(h('p',{text:[c.fonction,c.pays,c.domaine].filter(Boolean).join(' · ')}));
+      k.appendChild(h('p',{text:c.email}));
+      if(c.lien&&/^https?:\/\//i.test(c.lien))k.appendChild(h('p',{},[h('a',{href:c.lien,target:'_blank',rel:'noopener noreferrer',text:'Profil en ligne'})]));
+      if(c.motivation)k.appendChild(h('p',{text:'« '+c.motivation+' »'}));
+      var acts=h('div',{class:'acts'});
+      function bouton(t,st){var b=h('button',{type:'button',text:t});b.addEventListener('click',async function(){b.disabled=true;var r=await sb.rpc('comite_decider',{p_id:c.id,p_statut:st});if(r.error)b.textContent='Échec, réessayez';rafraichir();});return b;}
+      if(c.statut!=='membre')acts.appendChild(bouton('Accepter au comité','membre'));
+      if(c.statut!=='refuse')acts.appendChild(bouton(c.statut==='membre'?'Retirer du comité':'Ne pas retenir','refuse'));
+      if(c.statut!=='en_attente')acts.appendChild(bouton('Remettre à examiner','en_attente'));
+      k.appendChild(acts);box.appendChild(k);
+    });
+    if(!box.childNodes.length)box.appendChild(h('p',{class:'note',text:'Aucune candidature pour l’instant. Le lien à partager : efa.africa/comite.html#candidature'}));
+    v.appendChild(box);
+  }
+
+  function rendreImport(){
+    var v=$('vue');v.textContent='';
+    var ta=h('textarea',{'aria-label':'Fiche de l’article (JSON)',placeholder:'{"id":"n3-…","ordre":3,"numero":"Africa 2075 · N° 3","titre":"…","sections":[…]}'});
+    var b=h('button',{class:'btn p',type:'button',text:'Ajouter ou mettre à jour l’article'});var m=h('p',{class:'msg'});
+    b.addEventListener('click',async function(){var d;try{d=JSON.parse(ta.value);}catch(e){m.textContent='La fiche n’est pas lisible : vérifiez qu’elle est copiée en entier.';return;}
+      if(!d.id||!d.titre||!Array.isArray(d.sections)){m.textContent='La fiche doit contenir au moins id, titre et sections.';return;}
+      b.disabled=true;var r=await sb.from('comite_articles').upsert({id:String(d.id),ordre:d.ordre||0,numero:d.numero||'',titre:d.titre,sous_titre:d.sous_titre||d.sousTitre||'',chapeau:d.chapeau||'',statut:d.statut||'relecture',note_editeur:d.note_editeur||d.noteEditeur||'',sections:d.sections,maj:new Date().toISOString()});
+      b.disabled=false;if(r.error){m.textContent='L’ajout n’a pas abouti : '+r.error.message;return;}m.textContent='Article enregistré.';E.mode='article';E.courant=String(d.id);rafraichir();});
+    v.appendChild(h('div',{class:'etat import',style:'max-width:none'},[h('span',{class:'surtitre',text:'Éditeur en chef'}),h('h2',{text:'Ajouter un article en relecture'}),h('p',{text:'Collez ici la fiche fournie par la cellule de prospective (format JSON). Un article qui porte le même identifiant est mis à jour ; les avis déjà reçus sont conservés.'}),ta,h('div',{style:'margin-top:10px'},[b]),m]));
+  }
+
+  $('sortir').addEventListener('click',async function(){if(sb)await sb.auth.signOut();location.reload();});
+
+  if(sb){
+    sb.auth.onAuthStateChange(function(ev){if(ev==='SIGNED_IN'||ev==='SIGNED_OUT'){if(location.hash.indexOf('access_token')>-1)history.replaceState(null,'',location.pathname);charger();}});
+    charger();
+  } else vue('accueil');
+})();
+</script>
+<script src="clone/habillage.js?v=20261030a" defer></script>
+</body>
+</html>

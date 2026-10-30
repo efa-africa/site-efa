@@ -1,0 +1,79 @@
+/* EFA · Clone · habillage premium des pages de la V1.
+   Fichier généré par scripts/clone/habiller.py : ne pas modifier clone/habillage.css à la main,
+   modifier ce fichier puis relancer le script.
+   Portée : uniquement les copies de /clone (balise <html data-clone>). Le site en ligne n'est pas touché. */
+
+html[data-clone]{
+  --navy:#071d38;--deep:#06172d;--blue:#073e76;--cyan:#21a4c2;--coral:#e34234;--cream:#faf8f4;
+  --clone-line:#e3eaef;--clone-soft:#f3f6f8;
+  /* jetons de la V1 alignés sur la direction premium du Clone */
+  --nuit:#071d38;--corail:#e34234;--creme:#faf8f4;--papier:#ffffff;--line:#e3eaef;
+  scroll-padding-top:96px
+}
+html[data-clone] body{padding-top:82px}
+@media(max-width:720px){html[data-clone] body{padding-top:68px}}
+
+/* L'ancien en-tête et l'ancien pied restent dans la page (leurs scripts en dépendent) mais ne s'affichent plus */
+html[data-clone] [data-v1-cache]{display:none!important}
+
+/* ---------- En-tête et pied du Clone ---------- */
+/*SHELL*/
+
+html[data-clone] .header .brand,html[data-clone] .header a{color:inherit;text-decoration:none}
+html[data-clone] .header .desktop-nav a[aria-current]{color:var(--cyan)}
+html[data-clone] .header .desktop-nav a[aria-current]::after{content:"";display:block;height:2px;margin-top:6px;background:var(--coral);border-radius:2px}
+html[data-clone] .menu-panel a{color:var(--navy);text-decoration:none}
+html[data-clone] .menu-toggle{cursor:pointer}
+html[data-clone] footer.efa-foot.clone-foot{background:#fff;color:#536174;border-top:1px solid #e6eef2}
+html[data-clone] .clone-foot .ef-logo,html[data-clone] .clone-foot h2{color:#071d38}
+html[data-clone] .clone-foot .ef-mis,html[data-clone] .clone-foot a,html[data-clone] .clone-foot .ef-soc a{color:#536174}
+html[data-clone] .clone-foot a:hover{color:#071d38}
+html[data-clone] .clone-foot .ef-bot{border-top-color:#e6eef2;color:#7a8696}
+html[data-clone] .clone-foot .mc{color:#e34234}html[data-clone] .clone-foot .ms{color:#1b71b2}
+
+/* ---------- Habillage premium du contenu V1 ---------- */
+html[data-clone] section.intro{
+  background:radial-gradient(120% 95% at 88% -10%,#0d4a86 0%,#071d38 52%,#06172d 100%);
+  padding-block:clamp(56px,8vw,112px) clamp(52px,7vw,96px)
+}
+html[data-clone] section.intro h1{font-size:clamp(38px,6vw,78px);letter-spacing:-.02em;line-height:1.05}
+html[data-clone] section.intro .lead{color:#c9d6e6;line-height:1.5}
+html[data-clone] .kick{color:#f09680}
+html[data-clone] .crumbs a{text-decoration:none}
+html[data-clone] .crumbs a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Encadrés : fond uni, sans liseré, coins doux */
+html[data-clone] .toc,
+html[data-clone] .faq details,
+html[data-clone] .names li,
+html[data-clone] .card,
+html[data-clone] .carte{border-color:transparent!important;background:var(--clone-soft)}
+html[data-clone] .toc{border-radius:24px;padding:26px 28px}
+html[data-clone] .faq details{border-radius:20px;padding:20px 24px}
+html[data-clone] .quote{border-radius:28px;padding:34px 32px;background:var(--navy)}
+html[data-clone] .box{border-radius:24px;padding:28px}
+html[data-clone] table{border:0;border-radius:18px;background:var(--clone-soft)}
+html[data-clone] thead th{background:#e9eff3}
+
+/* Boutons en pilule, comme le Clone */
+html[data-clone] .cta,html[data-clone] .btn,html[data-clone] .bouton{border-radius:999px}
+html[data-clone] .cta{padding:14px 28px;min-height:52px;box-shadow:0 10px 24px rgba(227,66,52,.18)}
+html[data-clone] .cta.alt{box-shadow:none}
+
+/* Respiration */
+html[data-clone] article section{padding-top:clamp(48px,6vw,72px)}
+html[data-clone] article h2{letter-spacing:-.01em;scroll-margin-top:100px}
+html[data-clone] .mid{border-color:var(--clone-line)}
+
+/* Barres ajoutées par efa-suite.js : la barre de navigation V1 fait doublon avec l'en-tête du Clone,
+   la barre « Revenir / Poursuivre » reste mais ne flotte plus par-dessus l'en-tête. */
+html[data-clone-coquille] .efa-nav{display:none!important}
+html[data-clone-coquille] .efa-fil,html[data-clone-coquille] .efa-fil.flot{position:static!important;box-shadow:none!important;animation:none!important;background:#f3f6f8!important;border-bottom:0!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+html[data-clone-coquille] .efa-fil a{border-radius:999px;color:#071d38}
+html[data-clone-coquille] .efa-fil a.fil-p{background:#071d38;color:#fff}
+html[data-clone-coquille] .efa-fil a.fil-s{background:#e34234;color:#fff}
+
+/* Protection de l'en-tête du Clone contre les règles .brand des pages V1 */
+html[data-clone] .header .brand>span{font-size:inherit;letter-spacing:inherit;line-height:inherit;max-width:none;font-weight:inherit}
+html[data-clone] .header .brand{font-size:29px;font-weight:900;letter-spacing:-.07em;gap:10px}
+@media(max-width:720px){html[data-clone] .header .brand{font-size:24px}}
