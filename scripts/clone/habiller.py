@@ -14,11 +14,11 @@ import os, re, sys, glob, html as H
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261030i'
+VERSION = '20261030k'
 # Lot 4 : visuel du bandeau d'ouverture des pages clés (photos du Clone)
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
-    'news.html': 'carte-proches-900.webp', 'parcours.html': 'benefice-collectif.webp',
+    'news.html': 'carte-proches-900.webp',
     'preparer-ma-retraite.html': 'coach-patrimoine.webp', 'construire-son-budget.html': 'budget.webp',
     'methode.html': 'etudes-publiees.webp', 'auteur.html': 'elysee-portrait.jpg',
 }
@@ -193,6 +193,11 @@ def habiller(s, page):
         else:
             s = s.replace('</body>', pied + '\n</body>', 1)
     balise_js = '<script src="clone/habillage.js?v=%s" defer></script>\n' % VERSION
+    nom = os.path.splitext(page)[0]
+    if os.path.exists('scripts/clone/pages/%s.css' % nom):
+        s = s.replace('</head>', '<link rel="stylesheet" href="clone/pages/%s.css?v=%s">\n</head>' % (nom, VERSION), 1)
+    if os.path.exists('scripts/clone/pages/%s.js' % nom):
+        balise_js = '<script src="clone/pages/%s.js?v=%s" defer></script>\n' % (nom, VERSION) + balise_js
     if '</body>' in s:
         s = s.replace('</body>', balise_js + '</body>', 1)
     else:
@@ -204,6 +209,12 @@ def habiller(s, page):
     s = re.sub(r'(http-equiv="refresh" content="\d+;\s*url=)([^"]+)', redir, s)
     s = re.sub(r"(location\.replace\(')([^']+)", redir, s)
     return s, coquille
+
+# couches propres à certaines pages (scripts/clone/pages → clone/pages)
+import shutil
+os.makedirs(os.path.join(CLONE, 'pages'), exist_ok=True)
+for f in glob.glob('scripts/clone/pages/*'):
+    shutil.copy(f, os.path.join(CLONE, 'pages', os.path.basename(f)))
 
 ecrites, avec_coquille = [], 0
 for page in sources:
