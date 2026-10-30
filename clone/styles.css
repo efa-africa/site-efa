@@ -186,3 +186,30 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 .exp-grid .produit-img{max-width:none}
 .exp-grid .produit-txt h3{font-size:clamp(24px,2.2vw,32px)}
 @media(max-width:900px){.exp-grid{grid-template-columns:1fr}}
+/* ===== Parcours linéaire : piliers et bénéfices ===== */
+.pilier{padding:100px 0 90px;background:#fff;scroll-margin-top:60px}
+.pilier-alt{background:#f8f7f4}
+.pilier-alt .produit{background:#fff}
+.pilier .section-top{margin-bottom:36px}
+.gains-label{margin:56px 0 18px}
+.gains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.gains-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pilier .section-top+.gains-label{margin-top:0}
+.gain{min-width:0;display:flex;flex-direction:column;background:#f5f8f9;border-radius:24px;overflow:hidden;transition:transform .22s,box-shadow .22s}
+.pilier-alt .gain{background:#fff}
+.gain:hover{transform:translateY(-4px);box-shadow:0 16px 32px #071d3814}
+.gain-img{display:block;aspect-ratio:4/3;overflow:hidden;background:#dce8e9}
+.gain-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.gain-copy{display:flex;flex-direction:column;flex:1;padding:22px 22px 24px;gap:8px}
+.gain-sur{color:#16849e;letter-spacing:.14em;font-size:11px;font-weight:800}
+.gain-titre{font:700 clamp(21px,1.8vw,26px)/1.18 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.03em;color:var(--navy)}
+.gain-txt{color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:14px}
+.gain strong{margin-top:auto;border-top:1px solid #dbe5e9;padding-top:14px;display:flex;justify-content:space-between;align-items:center;color:var(--navy);font-size:14px}
+.gain strong b{color:var(--coral);font-size:20px;line-height:1}
+.catalogue-tete{padding:80px 0 10px;background:#fff;scroll-margin-top:60px}
+.catalogue-tete h2{font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-.04em;margin:12px 0 0}
+.catalogue-tete h2 em{color:#147f9b}
+.pilier .section-top h2 em{color:#147f9b}
+@media(max-width:1050px){.gains-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.pilier{padding:64px 0 56px}.gains,.gains-4{grid-template-columns:1fr}.gains-label{margin-top:40px}.catalogue-tete{padding-top:56px}}
+.gain-img img[src*="elysee"]{object-position:center 6%}
