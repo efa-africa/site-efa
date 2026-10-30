@@ -75,14 +75,15 @@
     fab.innerHTML = '<div class="ec-tete"><p class="ec-k">Ce que vous construisez</p><h2>Vous repartez avec plus <em>que des notions.</em></h2>' +
       '<p class="ec-lead">Un budget construit. Une réserve préparée. Des décisions mieux posées. Chaque module se termine par une fiche que vous gardez.</p></div>' +
       '<div class="ec-fab-grille">' +
-      fiche('ecole-fiche-budget.webp', 'Un budget construit', 'Votre fiche « Mon budget, en bref » : vos chiffres, votre méthode, trois gestes.', 'construire-son-budget.html') +
-      fiche('ecole-fiche-reserve.webp', 'Une réserve préparée', 'Ce que vous gardez à chaque rentrée, et en combien de rentrées votre projet est financé.', 'cercle-spirale.html#argent') +
-      fiche('ecole-fiche-decisions.webp', 'Des décisions mieux posées', 'Cinq situations à trancher : le prix de chaque choix, et votre réponse prête à envoyer.', 'decider.html') +
+      fiche('ecole-fiche-budget.webp', 'Ma fiche budget', 'Un budget construit', 'Votre fiche « Mon budget, en bref » : vos chiffres, votre méthode, trois gestes.', 'construire-son-budget.html') +
+      fiche('ecole-fiche-reserve.webp', 'Ma réserve', 'Une réserve préparée', 'Ce que vous gardez à chaque rentrée, et en combien de rentrées votre projet est financé.', 'cercle-spirale.html#argent') +
+      fiche('ecole-fiche-decisions.webp', 'Simulateur de décisions', 'Des décisions mieux posées', 'Cinq situations à trancher : le prix de chaque choix, et votre réponse prête à envoyer.', 'decider.html') +
       '</div>';
     cyc.parentNode.insertBefore(fab, cyc.nextSibling);
-    function fiche(img, t, d, h) {
-      return '<a class="ec-fiche" href="' + h + '"><span class="ec-fiche-img"><img src="' + A + img + '" alt="Capture de l’outil : ' + t.toLowerCase() + '" decoding="async" loading="lazy"></span>' +
-        '<b>' + t + '</b><span>' + d + '</span><span class="ec-fiche-go">Essayer l’outil →</span></a>';
+    function fiche(img, outil, t, d, h) {
+      return '<a class="ec-fiche" href="' + h + '"><span class="ec-fiche-img"><span class="ec-fiche-barre" aria-hidden="true"><i></i><i></i><i></i><em>' + outil + '</em></span>' +
+        '<span class="ec-fiche-ecran"><img src="' + A + img + '" alt="Capture de l’outil : ' + t.toLowerCase() + '" decoding="async" loading="lazy"></span></span>' +
+        '<span class="ec-fiche-num"></span><b>' + t + '</b><span class="ec-fiche-d">' + d + '</span><span class="ec-fiche-go">Essayer l’outil →</span></a>';
     }
 
     /* 5. Modules, puis certificats et ressources ; « Autres façons de commencer » rejoint les ressources */
