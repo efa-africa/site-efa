@@ -37,3 +37,14 @@
 h2 em{color:var(--cl-teal)!important}
 .index-panel button{color:var(--cl-texte)!important}
 .index-panel button[aria-pressed=true],.index-panel button.active,.index-panel button[aria-selected=true]{color:var(--cl-nuit)!important}
+/* Plus de beige : les cartes teintées passent en bleu très pâle */
+.concept-grid article:nth-child(3),.intro-grid a:nth-child(2),.method-grid article:nth-child(2){background:var(--cl-pale)!important}
+.lab-panel,.future-sheet{background:var(--cl-pale)!important}
+.product{background:var(--cl-pale)!important}
+/* Accueil : plus de crème ni de pêche, des fonds bleu très pâle */
+:root{--cream:#f3f7fb}
+.gain,.porte,.pilier:not(.pilier-alt):not(.platform-benefits) .porte,.aef-suite .produit,.feature-cream,.peach{background:#f3f7fb!important}
+.a-upcoming{background:#eaf3fb!important;color:#0b63b0!important}
+.phase-label span{background:#eaf3fb!important;color:#0b63b0!important}
+.res-tag.futur{background:#eaf3fb!important;color:#0b63b0!important}
+.sgi-note{background:#eaf3fb!important;color:#071d38!important}

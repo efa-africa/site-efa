@@ -186,6 +186,15 @@
     var cs = getComputedStyle(el);
     if (/url\(/.test(cs.backgroundImage)) return; // photo de fond : on garde
     var c = rgb(cs.backgroundColor), sombre = (c && c.a > .35 && lum(c) < .2) || gradientSombre(cs.backgroundImage);
+    /* Crème et beige de l'ancienne charte (#F5EFE2, #FFFDF8…) : bleu très pâle ou blanc */
+    if (!sombre && c && c.a > .5 && lum(c) > .62 && c.r - c.b > 6 && c.r >= c.g && !el.hasAttribute('data-clair')) {
+      var dansSurface = el.parentElement && el.parentElement.closest('[data-clair="creme"]');
+      el.style.setProperty('background-color', dansSurface ? '#ffffff' : '#f3f7fb', 'important');
+      var bd = rgb(cs.borderTopColor);
+      if (bd && parseFloat(cs.borderTopWidth) > 0 && bd.r - bd.b > 6) el.style.setProperty('border-color', '#dbe6f0', 'important');
+      el.setAttribute('data-clair', 'creme');
+      return;
+    }
     if (!sombre) return;
     // bandeau photo ou vidéo (Min'Fin…) : l'image reste, le texte reste blanc
     for (var k = el.firstElementChild; k; k = k.nextElementSibling) {
