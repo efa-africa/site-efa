@@ -179,3 +179,10 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 .experiences .produit{margin-bottom:22px}
 .produit{scroll-margin-top:100px}
 @media(max-width:720px){.experiences{padding:60px 0 30px}.produit{scroll-margin-top:84px}}
+/* Expériences juste sous l'accueil, côte à côte */
+.experiences{padding:56px 0 40px}
+.exp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:stretch}
+.exp-grid .produit{grid-template-columns:1fr;align-content:start;margin:0;gap:22px}
+.exp-grid .produit-img{max-width:none}
+.exp-grid .produit-txt h3{font-size:clamp(24px,2.2vw,32px)}
+@media(max-width:900px){.exp-grid{grid-template-columns:1fr}}
