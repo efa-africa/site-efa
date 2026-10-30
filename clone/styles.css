@@ -601,3 +601,12 @@ html.cl-hall #contact{margin-top:0}
 .a-hero-orga:hover{color:var(--a-cyan)}
 .a-hero-orga span{text-decoration:none}
 @media(max-width:899px){.a-hero-orga{font-size:14px}.a-depart .a-choices{display:grid}}
+
+/* ===== S'entraîner : on entre directement dans les ateliers (30 oct. 2026) ===== */
+.ancre{display:block;height:0;scroll-margin-top:90px}
+.atelier-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:22px}
+.atelier-actions small{color:#5b6a77;font-size:13px}
+.ateliers-suite{margin-top:34px;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.ateliers-aussi{display:flex;flex-direction:column;gap:8px;margin:0;color:#536174;font-size:15px}
+.ateliers-aussi a{color:#071d38;font-weight:700;text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:4px}
+.ateliers-suite small{color:#5b6a77;font-size:13px}
