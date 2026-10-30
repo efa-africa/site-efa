@@ -14,7 +14,14 @@ import os, re, sys, glob, html as H
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261030g'
+VERSION = '20261030i'
+# Lot 4 : visuel du bandeau d'ouverture des pages clés (photos du Clone)
+VISUELS = {
+    'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
+    'news.html': 'carte-proches-900.webp', 'parcours.html': 'benefice-collectif.webp',
+    'preparer-ma-retraite.html': 'coach-patrimoine.webp', 'construire-son-budget.html': 'budget.webp',
+    'methode.html': 'etudes-publiees.webp', 'auteur.html': 'elysee-portrait.jpg',
+}
 MANIFESTE = os.path.join(CLONE, 'v1-pages.txt')
 PAGES_CLONE = ['index.html', 'coaching.html', 'marches.html', 'etudes-prospective.html', 'v0.html']
 EXCLUES = {'index.html'}  # l'accueil V1 est remplacé par l'accueil du Clone
@@ -152,6 +159,8 @@ def habiller(s, page):
     s = re.sub(r'<base\b[^>]*>\s*', '', s)
     s = re.sub(r'<head([^>]*)>', lambda m: '<head%s>\n<base href="%s">' % (m.group(1), base), s, count=1)
     s = re.sub(r'<html\b', '<html data-clone', s, count=1)
+    if page in VISUELS:
+        s = s.replace('<html data-clone', '<html data-clone data-clone-visuel="clone/assets/%s"' % VISUELS[page], 1)
     # pas de comptage d'audience sur les copies de travail
     s = re.sub(r'<script[^>]*data-goatcounter[^>]*>\s*</script>\s*', '', s)
     if re.search(r'<meta[^>]+name="robots"', s):
