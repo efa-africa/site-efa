@@ -118,3 +118,27 @@
 #at-cle-msg.ko{color:#b3261e}#at-cle-msg.ok{color:#1e7a4c;font-weight:700}
 .at-dlg .at-cta{margin-top:14px}
 @media(max-width:560px){.at-coach{flex-direction:column;align-items:flex-start}.at-coach img{width:110px;height:110px}}
+
+/* ===== Entrée plein écran de la section coaching ===== */
+.at-entree{position:relative;height:calc(100svh - 82px);min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+.at-entree-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.at-entree-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,38,.82) 0%,rgba(4,18,38,.45) 42%,rgba(4,18,38,0) 70%),linear-gradient(0deg,rgba(4,18,38,.75) 0%,rgba(4,18,38,0) 45%)}
+.at-entree-txt{position:relative;width:min(1200px,calc(100% - 48px));margin:0 auto;padding-bottom:clamp(48px,8vh,96px)}
+.at-entree-k{margin:0 0 18px;font:800 12px/1 "Source Sans 3",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#ffb4a3}
+.at-entree h1{margin:0;font:700 clamp(52px,8.2vw,124px)/.98 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.035em;color:#fff}
+.at-entree h1 span{display:block}
+.at-entree h1 em{font-style:normal;color:#7fd3ea}
+.at-entree-p{max-width:500px;margin:24px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.86)}
+.at-entree-cta{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:15px 26px;border-radius:999px;background:var(--at-verm);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 14px 34px rgba(227,66,52,.35)}
+.at-entree-cta:hover{filter:brightness(1.06)}
+.page-ateliers .at-h{font-size:clamp(40px,5vw,68px);line-height:1.04}
+#choisir{scroll-margin-top:82px}
+@media(max-width:720px){.at-entree{height:calc(100svh - 68px)}.at-entree-img{object-position:62% 22%}.at-entree-voile{background:linear-gradient(0deg,rgba(4,18,38,.92) 0%,rgba(4,18,38,.55) 45%,rgba(4,18,38,0) 75%)}.at-entree-txt{width:calc(100% - 32px)}}
+/* Ordinateur : photo nette à droite, la même photo floutée en fond à gauche ; le texte ne couvre plus les visages */
+@media(min-width:900px){
+  .at-entree::before{content:"";position:absolute;inset:-40px;background:url(assets/coaching-entree.webp) center 30%/cover no-repeat;filter:blur(28px) saturate(1.1);transform:scale(1.1)}
+  .at-entree-img{left:auto;right:0;width:58%;object-position:center 26%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%);mask-image:linear-gradient(90deg,transparent 0%,#000 22%)}
+  .at-entree-voile{background:linear-gradient(90deg,rgba(4,18,38,.78) 0%,rgba(4,18,38,.5) 40%,rgba(4,18,38,0) 62%),linear-gradient(0deg,rgba(4,18,38,.55) 0%,rgba(4,18,38,0) 40%)}
+  .at-entree-txt{align-self:center;padding-bottom:0}
+  .at-entree h1{font-size:clamp(56px,6.6vw,108px)}
+}
