@@ -1184,40 +1184,6 @@ html.efa-perso .eh-frise{padding-block:5vh}
 .eh-portes a:hover{background:#EFE8DA}
 .eh-portes a:focus-visible{outline:3px solid #1B71B2;outline-offset:2px}
 @media (max-width:480px){.eh-portes{gap:8px}.eh-portes a{padding:10px 12px}.eh-portes b{font-size:15px}.eh-portes span{font-size:13px}}
-
-/* Accueil · photo plein cadre (reprise du clone, 30/10/2026), corail de la charte */
-.eh.ph{position:relative;isolation:isolate;overflow:hidden;background:#061B35;color:#fff;display:flex;flex-direction:column;align-items:stretch;justify-content:center;padding:var(--hh,72px) 0 0;min-height:min(940px,100svh);text-align:left}
-.ph-img,.ph-ombre{top:var(--hh,72px)!important}
-.ph-img{position:absolute;inset:0;z-index:-2;background:#061B35 url("accueil-photo.webp") center/cover no-repeat}
-.ph-ombre{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,16,34,.94) 0%,rgba(3,19,40,.85) 37%,rgba(3,19,40,.28) 73%,rgba(3,19,40,.12) 100%),linear-gradient(0deg,rgba(3,19,40,.35),transparent 45%)}
-.ph-ia{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:calc(var(--hh,72px) + 10px);z-index:1;font-size:11px;font-style:italic;color:rgba(255,255,255,.75);text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.ph-in{width:min(100% - 2*var(--gut,24px),1220px);margin:0 auto;padding:clamp(48px,8svh,96px) 0 clamp(56px,9svh,104px)}
-.eh.ph .ph-sur{color:#F09680;margin:0 0 22px}
-.eh.ph h1{color:#fff;font-size:clamp(46px,6vw,96px);line-height:1.02;max-width:12.5em;letter-spacing:-.02em}
-.eh.ph h1 span{color:#EC6243}
-.eh.ph .ph-lead{color:#E3ECF1;margin:24px 0 26px;max-width:32em}
-.ph-q>p:first-child{margin:0 0 12px;font-weight:800;font-size:17px;color:#fff}
-.ph-choix{display:flex;flex-wrap:wrap;gap:10px;max-width:780px}
-.ph-choix a{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-weight:700;font-size:16px;line-height:1.25;transition:background .2s,transform .2s}
-.ph-choix a:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
-.ph-choix a:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
-.ph-choix span{color:#F09680;font-weight:800;font-size:13px}
-.ph-autre{margin:16px 0 0;font-size:15px;color:#C9D1DE}
-.ph-autre a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:#DA3C1B;text-decoration-thickness:2px;text-underline-offset:5px}
-.eh.ph .eh-micro{color:#C9D1DE}.eh.ph .eh-micro a{color:#fff}
-@media (max-width:900px){.ph-ombre{background:linear-gradient(90deg,rgba(3,19,40,.9),rgba(3,19,40,.62) 62%,rgba(3,19,40,.25))}}
-@media (max-width:700px){
-  .eh.ph{display:block;min-height:0}
-  .ph-img{bottom:auto;height:min(46svh,410px);background-position:72% 36%}
-  .ph-ombre{bottom:0;background:linear-gradient(180deg,rgba(6,27,53,0) 0,rgba(6,27,53,.2) calc(min(46svh,410px) - 170px),#061B35 calc(min(46svh,410px) - 20px),#061B35 100%)}
-  .ph-ia{top:calc(var(--hh,72px) + 10px);bottom:auto}
-  .ph-in{padding:calc(min(46svh,410px) - 80px) 0 40px}
-  .eh.ph .ph-sur{font-size:11px;letter-spacing:.14em;margin-bottom:12px}
-  .eh.ph h1{font-size:clamp(38px,10.5vw,56px)}
-  .eh.ph .ph-lead{font-size:16px;margin:16px 0 18px}
-  .ph-choix{display:grid;gap:8px}
-  .ph-choix a{border-radius:12px;min-height:48px;padding:10px 14px;font-size:15px}
-}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
 <script type="application/ld+json">
@@ -1226,7 +1192,6 @@ html.efa-perso .eh-frise{padding-block:5vh}
 {"@type":"WebSite","@id":"https://efa.africa/#site","url":"https://efa.africa/","name":"Éducation Financière Afrique","alternateName":"EFA","inLanguage":"fr","publisher":{"@id":"https://efa.africa/#organisation"}}
 ]}
 </script>
-<link rel="preload" as="image" href="accueil-photo.webp" fetchpriority="high">
 </head>
 <body>
 
@@ -1252,33 +1217,56 @@ html.efa-perso .eh-frise{padding-block:5vh}
 
   <!-- 1. Votre besoin : on entre par le problème ; chaque tuile ouvre son plan d’action -->
   <!-- 0. La promesse : ce qu'est EFA, puis trois portes d'entrée -->
-  <section class="screen eh ph" id="accueil-hero" data-step="Accueil" aria-labelledby="eh-t">
-    <div class="ph-img" role="img" aria-label="Une femme réfléchit à ses projets devant un carnet, avec Abidjan la nuit en arrière-plan"></div>
-    <div class="ph-ombre" aria-hidden="true"></div>
-    <span class="ph-ia">Illustration · IA</span>
-    <div class="ph-in">
-      <p class="eh-sur ph-sur">L’argent s’apprend · Une expérience EFA</p>
-      <h1 id="eh-t">Votre argent a une histoire.<br><span>Écrivons la suite.</span></h1>
-      <p class="eh-lead ph-lead">Quel que soit votre point de départ, une question peut ouvrir un chemin.</p>
-      <div class="ph-q" id="ph-q" role="group" aria-labelledby="ph-qt">
-        <p id="ph-qt">Aujourd’hui, qu’aimeriez-vous résoudre&nbsp;?</p>
-        <div class="ph-choix">
-          <a href="ou-est-passe-mon-argent.html?src=accueil-q1#questions" data-goatcounter-click="accueil-q1-argent"><span>01</span>Voir plus clair dans mon argent</a>
-          <a href="ely.html?src=accueil-q2" data-goatcounter-click="accueil-q2-regard"><span>02</span>Avancer sur mon projet avec un regard extérieur</a>
-          <a href="decider.html?src=accueil-q3" data-goatcounter-click="accueil-q3-decision"><span>03</span>Préparer une décision financière</a>
-        </div>
-        <p class="ph-autre">Autre chose&nbsp;? <a href="point-de-depart.html?src=accueil-hero" data-goatcounter-click="accueil-hero-point-de-depart">Trouvez votre chemin en 2 questions →</a></p>
+  <section class="screen eh" id="accueil-hero" data-step="Accueil" aria-labelledby="eh-t">
+    <div class="eh-in">
+      <div class="eh-txt">
+        <p class="eh-sur">Apprendre. Comprendre. Décider.</p>
+        <h1 id="eh-t">Votre argent.<br>Vos décisions.<br>Votre <span>avenir.</span></h1>
+        <p class="eh-lead">Des leçons concrètes et des outils pratiques, à partir des réalités africaines. Pour vous, ou pour former votre équipe.</p>
+        <div class="eh-bt"><a class="eh-b1" href="point-de-depart.html?src=accueil-hero" data-goatcounter-click="accueil-hero-point-de-depart">Trouver mon chemin <span aria-hidden="true">→</span></a><p class="eh-micro">2 questions, 1 minute, sans inscription.</p></div>
+        <script src="efa-reprise.js?v=2026102902"></script>
+        <script>/* L’accueil suit l’avancement : défi en cours, résultat obtenu, objectif choisi, module en cours. Le bouton mène au geste exact. */
+        window.EFA_ETAPE=window.EFA_REPRISE?EFA_REPRISE.etape:function(){return null;};
+        (function(){var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro"),E=window.EFA_ETAPE();if(!b||!E)return;
+          var orga=E.o&&E.o.p==="orga",pt=null;document.documentElement.classList.add("efa-perso");
+          b.href=E.h;b.setAttribute("data-goatcounter-click","accueil-hero-etape-"+E.k);b.innerHTML=(orga?'Construire mon programme':'Ma prochaine action')+' <span aria-hidden="true">→</span>';
+          if(orga){var t=document.getElementById("eh-t"),l=document.querySelector(".eh-lead");if(t)t.innerHTML='Vos équipes.<br>Leurs décisions.<br>Leur <span>avenir.</span>';if(l)l.textContent="Un programme d’éducation financière pour vos salariés, étudiants ou membres : vous choisissez les sujets et le rythme, en ligne.";}
+          if(m)m.innerHTML=E.t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+(E.k==="objectif"?' <a href="point-de-depart.html?changer=1&amp;src=accueil">Changer mon objectif</a>':'');})();</script>
       </div>
-      <div class="eh-bt ph-perso" hidden><a class="eh-b1" href="point-de-depart.html?src=accueil-hero">Ma prochaine action <span aria-hidden="true">→</span></a><p class="eh-micro"></p></div>
-      <script src="efa-reprise.js?v=2026102902"></script>
-      <script>/* L’accueil suit l’avancement : pour qui revient (défi, résultat, objectif, module), un seul bouton vers le geste exact remplace les trois questions. */
-      window.EFA_ETAPE=window.EFA_REPRISE?EFA_REPRISE.etape:function(){return null;};
-      (function(){var b=document.querySelector(".eh-b1"),m=document.querySelector(".eh-micro"),E=window.EFA_ETAPE();if(!b||!E)return;
-        var orga=E.o&&E.o.p==="orga";document.documentElement.classList.add("efa-perso");
-        document.getElementById("ph-q").hidden=true;document.querySelector(".ph-perso").hidden=false;
-        b.href=E.h;b.setAttribute("data-goatcounter-click","accueil-hero-etape-"+E.k);b.innerHTML=(orga?'Construire mon programme':'Ma prochaine action')+' <span aria-hidden="true">→</span>';
-        if(orga){var t=document.getElementById("eh-t"),l=document.querySelector(".eh-lead");if(t)t.innerHTML='Vos équipes ont une histoire.<br><span>Écrivons la suite.</span>';if(l)l.textContent="Un programme d’éducation financière pour vos salariés, étudiants ou membres : vous choisissez les sujets et le rythme, en ligne.";}
-        if(m)m.innerHTML=E.t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+(E.k==="objectif"?' <a href="point-de-depart.html?changer=1&amp;src=accueil">Changer mon objectif</a>':'');})();</script>
+      <div class="eh-vis">
+        <div class="eh-art" id="eh-art">
+          <img class="eh-img" src="accueil-visuel.webp" alt="" width="1644" height="1468" fetchpriority="high" decoding="async">
+          <div class="eh-calque" id="eh-calque">
+            <a class="eh-scr" href="parcours.html?src=accueil-telephone" data-goatcounter-click="accueil-hero-telephone" aria-label="Entrer dans l’école EFA : Mon parcours, les Fondations, Mon budget et un exercice « À vous de décider »">
+              <div class="s-st"><b>9:41</b><i></i><span><u></u><u></u><u></u><u></u><em></em></span></div>
+              <div class="s-h"><img src="logo-efa-96.png" alt="" width="34" height="34"><span>ÉDUCATION<br>FINANCIÈRE AFRIQUE</span><s></s></div>
+              <p class="s-t">Mon parcours EFA</p>
+              <div class="s-c s-f"><span class="s-ic r"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a3 3 0 0 1 2 1 3 3 0 0 1 2-1h7v13h-7a2 2 0 0 0-2 2 2 2 0 0 0-2-2H3z"/><path d="M12 6v14"/></svg></span><span class="s-x"><b>Les Fondations</b><small>Module 3 sur 8</small></span><span class="s-ch">›</span><span class="s-pr"><i></i></span></div>
+              <div class="s-c s-b"><p class="s-bt"><span class="s-pie"></span><b>Mon budget</b></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/></svg><span>Alimentation</span><i style="--w:82%;--c:#F26A45"></i></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="13" rx="2"/><path d="M5 11h14M8 20v-3M16 20v-3"/></svg><span>Transport</span><i style="--w:66%;--c:#1B71B2"></i></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg><span>Logement</span><i style="--w:40%;--c:#38B6E8"></i></p>
+                <p class="s-l"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18" cy="12" r="1.3"/></svg><span>Autres</span><i style="--w:30%;--c:#B9C2CF"></i></p></div>
+              <div class="s-c s-d"><span class="s-ic b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></span><span class="s-x"><b>À vous de décider</b><small>Un besoin ou une envie ?<br>Faites le bon choix.</small></span><span class="s-go">Commencer l’exercice →</span></div>
+              <div class="s-n"><i class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a3 3 0 0 1 2 1 3 3 0 0 1 2-1h7v13h-7a2 2 0 0 0-2 2 2 2 0 0 0-2-2H3z"/><path d="M12 6v14"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></i></div>
+            </a>
+            <a class="eh-carte" href="cout-total-credit.html?src=accueil" data-goatcounter-click="accueil-hero-credit"><span class="s-ic b"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01"/></svg></span><span><b>Comprendre le coût d’un crédit</b><small>Exercice pratique</small></span><em>›</em></a>
+          </div>
+        </div>
+      </div>
+    </div>
+<script>(function(){var A=document.getElementById('eh-art'),C=document.getElementById('eh-calque');if(!A||!C)return;
+var I=A.querySelector('.eh-img');
+function f(){var w=A.clientWidth;if(w)C.style.transform='scale('+(w/822)+')';}
+function pret(){f();A.classList.add('pret');}
+f();if(window.ResizeObserver)new ResizeObserver(f).observe(A);else window.addEventListener('resize',f);
+if(!I||(I.complete&&I.naturalWidth))pret();else{I.addEventListener('load',pret);I.addEventListener('error',pret);setTimeout(pret,2500);}
+})();</script>
+<noscript><style>.eh-art{opacity:1}</style></noscript>
+    <div class="eh-bas">
+      <a href="construire-son-budget.html?src=accueil"><span class="eh-bi r"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><b>Comprendre votre budget</b></a>
+      <a href="parcours.html?src=accueil#M10"><span class="eh-bi n"><svg viewBox="0 0 24 24"><circle cx="11" cy="13" r="8"/><circle cx="11" cy="13" r="4"/><path d="m11 13 9-9M16 4h4v4"/></svg></span><b>Préparer vos projets</b></a>
+      <a href="parcours.html?src=accueil#P14"><span class="eh-bi r"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Évaluer les risques</b></a>
     </div>
   </section>
 
