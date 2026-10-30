@@ -1,0 +1,16 @@
+/* Composant autonome : oiseau original conserve, lettres minuscules. */
+.efa-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#081d33;white-space:nowrap;flex-shrink:0}
+.efa-brand__bird{display:block;width:48px;height:48px;object-fit:contain;flex-shrink:0}
+.efa-brand__word{display:inline-flex;align-items:baseline;gap:3px;font-family:Baskerville,"Libre Baskerville",Georgia,serif;font-size:48px;font-weight:700;line-height:1;letter-spacing:-2px}
+.efa-brand__dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e64432;flex-shrink:0}
+.efa-brand--dark{color:#fff}
+.efa-brand:focus-visible{outline:2px solid #159bb5;outline-offset:8px;border-radius:4px}
+@media(max-width:600px){.efa-brand{gap:10px}.efa-brand__bird{width:40px;height:40px}.efa-brand__word{font-size:40px}.efa-brand__dot{width:6px;height:6px}}
+
+/* Intégration au site : la couleur des lettres suit l'en-tête (blanches sur bleu nuit, bleu nuit sur blanc),
+   une seule signature à la fois. Protégée des règles anciennes des pages (header a, .brand…). */
+.header .efa-brand,.topbar .efa-brand{color:inherit}
+.efa-brand,.efa-brand:hover{text-decoration:none!important}
+.efa-brand .efa-brand__word{font-family:Baskerville,"Libre Baskerville",Georgia,serif!important;font-weight:700!important;font-size:48px!important;line-height:1!important;letter-spacing:-2px!important;text-transform:none!important;color:inherit!important;margin:0!important;padding:0!important}
+.efa-brand .efa-brand__bird{width:48px!important;height:48px!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+@media(max-width:600px){.efa-brand .efa-brand__word{font-size:40px!important}.efa-brand .efa-brand__bird{width:40px!important;height:40px!important}}
