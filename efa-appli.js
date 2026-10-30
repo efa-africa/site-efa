@@ -274,3 +274,15 @@
     if (window.MutationObserver) { var mo = new MutationObserver(function () { if (Object.keys(faits).length < P.length) plusTard(); else mo.disconnect(); }); mo.observe(document.body, { childList: true, subtree: true }); }
   } catch (e) {}
 })();
+
+/* Habillage du site (blanc et bleu, en-tête et pied) : une page publiée après le dernier passage de
+   scripts/clone/habiller.py le reçoit ici, sans attendre ce passage. */
+(function () {
+  try {
+    var R = document.documentElement;
+    if (R.hasAttribute("data-clone") || window.self !== window.top || /accueil-v1/.test(location.pathname)) return;
+    R.setAttribute("data-clone", ""); R.setAttribute("data-clone-auto", "");
+    var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "clone/habillage.css?v=auto1"; document.head.appendChild(l);
+    var s = document.createElement("script"); s.src = "clone/habillage.js?v=auto1"; s.defer = true; document.head.appendChild(s);
+  } catch (e) {}
+})();
