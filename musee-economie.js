@@ -221,7 +221,7 @@
   function nb(t) { return String(t).replace(/ ([?!:;»%])/g, "\u00a0$1"); }
   function img(n) { return n ? "illus/" + n + ".webp" + V : ""; }
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
-  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img data-src="' + img(n) + '" alt="" decoding="async">' + (h ? '<span class="mu-recon">' + (h === 3 ? 'Portrait · IA' : 'Illustration · IA') + '</span>' : '') + '</div>'; }
+  function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img data-src="' + img(n) + '" alt="" decoding="async">' + '' + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
   function chiffre(x) { return (x.c ? '<p class="mu-c"><b>' + esc(x.c[0]) + '</b><span>' + esc(x.c[1]) + '</span></p>' : '') + (typeof x.y === 'number' ? '<p class="mu-ilya">Il y a ' + (AN - x.y).toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g, '\u00a0') + ' ans</p>' : ''); }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
