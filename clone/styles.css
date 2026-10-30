@@ -24,7 +24,7 @@
 /* ===== V2 laboratoire : 4 onglets et blocs « + » ===== */
 .text-link{border-bottom:0;text-decoration:none}
 .tabbar{position:sticky;top:82px;z-index:20;background:#fff;box-shadow:0 1px 0 var(--line)}
-.tabbar-inner{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding-block:12px}
+.tabbar-inner{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding-block:12px}
 .tabbar button{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:0;border-radius:100px;background:#f2f5f7;color:var(--navy);font-weight:800;font-size:15px;padding:8px 14px;transition:background .2s,color .2s}
 .tabbar button span{font-size:11px;letter-spacing:.14em;color:#117f98}
 .tabbar button[aria-selected=true]{background:var(--navy);color:#fff}
@@ -79,7 +79,7 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 @media(max-width:1050px){.sgi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.learn-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){
   .tabbar{top:68px}
-  .tabbar-inner{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding-block:8px}
+  .tabbar-inner{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding-block:8px}
   .tabbar button{flex-direction:column;gap:2px;font-size:12px;min-height:52px;padding:6px 2px;border-radius:14px;letter-spacing:-.01em}
   .tabbar button span{font-size:10px}
   .panel-in{padding-top:50px}
@@ -92,6 +92,48 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
   .blocs-tete{margin-top:50px}
 }
 @media(prefers-reduced-motion:reduce){.plus,.res,.tabbar button{transition:none}}
-#marches .market-gateway{padding-top:80px}
-@media(max-width:720px){#marches .market-gateway{padding-top:50px}}
 @media(max-width:370px){.tabbar button{font-size:11px}}
+/* ===== Portes en images (Apprendre) ===== */
+.doors-label{margin:56px 0 16px}
+.section-top+.doors-label{margin-top:0}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.door{background:#f5f8f9;border-radius:24px;overflow:hidden;scroll-margin-top:170px;min-width:0}
+.door summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;grid-template-areas:"img img" "txt plus";gap:0 14px;padding:0 0 22px}
+.door summary::-webkit-details-marker{display:none}
+.door summary:focus-visible{outline:3px solid var(--cyan);outline-offset:-3px;border-radius:24px}
+.door-img{grid-area:img;display:block;aspect-ratio:16/9;overflow:hidden;background:#e6edf1;margin-bottom:18px}
+.door-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transition:transform .4s}
+.door:hover .door-img img{transform:scale(1.03)}
+.door-txt{grid-area:txt;display:flex;flex-direction:column;gap:5px;padding-left:22px;min-width:0}
+.door-txt .eyebrow{margin:0;font-size:10px}
+.door-titre{font-family:Baskerville,"Libre Baskerville",Georgia,serif;font-weight:700;font-size:clamp(21px,1.9vw,26px);line-height:1.15;color:var(--navy)}
+.door-acc{color:var(--muted);font-size:15px;line-height:1.45}
+.door .plus{grid-area:plus;align-self:end;margin-right:20px}
+.door[open]{grid-column:1/-1;background:#eef3f6}
+.door[open] summary{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) auto;grid-template-areas:"img txt plus";align-items:center;gap:0 28px;padding:0 24px 0 0}
+.door[open] .door-img{margin-bottom:0;height:100%}
+.door[open] .door-txt{padding:24px 0}
+.door[open] .door .plus,.door[open] .plus{align-self:center;margin-right:0}
+.door[open] .res-grid{padding-top:24px}
+/* ===== Produit Marchés (Agir) : image à sa taille, sans étirement ===== */
+.produit{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center;background:#f8f7f4;border-radius:28px;padding:clamp(18px,2.4vw,28px);margin-bottom:10px;scroll-margin-top:170px}
+.produit-img{position:relative;display:block;border-radius:20px;overflow:hidden;max-width:100%}
+.produit-img img{display:block;width:100%;height:auto;aspect-ratio:1200/675}
+.produit-img .market-gateway-tag{position:absolute;left:14px;bottom:14px;right:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 14px;background:#fff;color:var(--navy);border-radius:12px;font-size:10px;font-weight:800;letter-spacing:.13em;box-shadow:0 8px 30px #03182e44}
+.produit-img .market-gateway-tag b{color:var(--coral);font-size:18px;line-height:1}
+.produit-txt{min-width:0}
+.produit-txt h3{font-family:Baskerville,"Libre Baskerville",Georgia,serif;font-size:clamp(28px,2.8vw,40px);line-height:1.12;letter-spacing:-.03em;color:var(--navy);margin:10px 0 14px}
+.produit-txt h3 em{color:#147f9b}
+.produit-txt>p:not(.eyebrow){color:var(--muted);margin:0;max-width:520px}
+.produit-txt .market-gateway-benefits{margin:18px 0 22px}
+.produit-txt small{display:block;margin-top:14px;color:#667687;font-size:12px}
+@media(max-width:1050px){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}.produit{grid-template-columns:1fr}.produit-img{max-width:620px}}
+@media(max-width:720px){
+  .doors,.doors-3{grid-template-columns:1fr}
+  .door[open] summary{grid-template-columns:1fr auto;grid-template-areas:"img img" "txt plus";padding:0 0 4px}
+  .door[open] .door-txt{padding:18px 0 16px 22px}
+  .door[open] .plus{margin-right:20px}
+  .produit .button{width:100%;justify-content:center}
+}
+.door[open] .plus{transform:rotate(45deg);background:var(--coral)}
+.door-img img[src*="minfin"]{object-position:center 12%}
