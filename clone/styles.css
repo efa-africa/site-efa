@@ -513,6 +513,8 @@ footer.efa-foot{background:#fff;border-top:1px solid #e6eef2}
 .aig{padding-top:82px;background:#081c36}@media(max-width:720px){.aig{padding-top:68px}}#etudes .pc-img img,#africa2075 .pc-img img{object-position:center 45%}
 @media(min-width:561px) and (max-width:900px){.a-doors-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px}.a-doors-grid>.a-door:first-child{grid-column:1/-1}.a-doors-grid>.a-door:first-child .a-door-image{aspect-ratio:2.1}}
 
+a.a-choice{display:inline-flex;align-items:center;text-decoration:none}
+
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;
   padding:40px max(16px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
