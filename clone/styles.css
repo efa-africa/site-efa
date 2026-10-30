@@ -440,10 +440,16 @@ footer.efa-foot[hidden]{display:none}
 
 
 /* Rendu clair du pied de page (laboratoire) */
-footer.efa-foot{background:#F5EFE2;color:#2A3142;border-top:1px solid #E2D8C4}
+footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
 .efa-foot .ef-logo,.efa-foot h2{color:#0B1220}
 .efa-foot .ef-mis,.efa-foot li a,.efa-foot .ef-soc a,.efa-foot .ef-bot a{color:#2A3142}
 .efa-foot .ef-soc,.efa-foot .ef-bot{color:#5F6676}
-.efa-foot .ef-bot{border-top-color:#E2D8C4}
+.efa-foot .ef-bot{border-top-color:#E6EEF2}
 .efa-foot li a:hover,.efa-foot .ef-bot a:hover,.efa-foot .ef-soc a:hover{color:#0B1220}
 .efa-foot .mc{color:#B8341A}.efa-foot .ms{color:#1B71B2}
+
+.efa-foot .ef-top{grid-template-columns:minmax(0,.9fr) minmax(0,3.1fr)}
+.efa-foot .ef-cols-5{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+@media (max-width:1100px){.efa-foot .ef-top{grid-template-columns:1fr}}
+@media (max-width:900px){.efa-foot .ef-cols-5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.efa-foot .ef-cols-5{grid-template-columns:repeat(2,minmax(0,1fr))}}
