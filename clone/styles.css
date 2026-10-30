@@ -576,3 +576,7 @@ footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
   .a-question>p{margin-bottom:10px}
   .a-hero-cta{margin-top:16px;min-height:52px}
 }
+
+/* Hall d'entrée (30/10/2026) : seuls l'accueil, la phrase de clôture, les questions fréquentes et le pied de page sont visibles avant le premier choix */
+html.cl-hall .aig>*:not(.a-hero),html.cl-hall main>*:not(.aig):not(.faq):not(#contact):not(script){display:none!important}
+html.cl-hall #contact{margin-top:0}
