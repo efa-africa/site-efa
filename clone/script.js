@@ -79,3 +79,24 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
   setInterval(function(){if(pause||document.hidden)return;i++;var h=ul.children[0].offsetHeight;ul.style.transition='transform .7s ease';ul.style.transform='translateY(-'+(i*h)+'px)';
     if(i===items.length){setTimeout(function(){ul.style.transition='none';i=0;ul.style.transform='translateY(0)';},750);}},3500);
 })();
+
+(function(){
+const choices = [...document.querySelectorAll('.a-choice')];
+const cta = document.querySelector('#hero-cta');
+const feedback = document.querySelector('#hero-feedback');
+const labels = {
+  apprendre: 'Votre point de départ : comprendre avec les contenus gratuits d’EFA.',
+  progresser: 'Votre point de départ : découvrir les parcours accompagnés en préparation.',
+  agir: 'Votre point de départ : préparer une décision avant de vous engager.'
+};
+
+choices.forEach(choice => choice.addEventListener('click', () => {
+  const target = choice.dataset.door;
+  choices.forEach(item => item.setAttribute('aria-pressed', String(item === choice)));
+  document.querySelectorAll('.a-door').forEach(door => door.classList.toggle('selected', door.id === 'porte-'+target));
+  cta.href = `#porte-${target}`;
+  cta.firstChild.textContent = 'Voir mon point de départ ';
+  feedback.textContent = labels[target];
+}));
+
+})();
