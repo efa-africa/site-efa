@@ -14,7 +14,7 @@ import os, re, sys, glob, html as H
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261030a'
+VERSION = '20261030g'
 MANIFESTE = os.path.join(CLONE, 'v1-pages.txt')
 PAGES_CLONE = ['index.html', 'coaching.html', 'marches.html', 'etudes-prospective.html', 'v0.html']
 EXCLUES = {'index.html'}  # l'accueil V1 est remplacé par l'accueil du Clone
@@ -141,6 +141,12 @@ open(os.path.join(CLONE, 'habillage.js'), 'w', encoding='utf8').write(base_js.re
 
 # ---------------------------------------------------------------- transformation d'une page
 def habiller(s, page):
+    if '</head>' not in s:
+        # balises implicites (ex. ely.html) : on les écrit pour pouvoir insérer l'habillage
+        m = re.search(r'</style>\s*(?=<(header|div|main|section|nav)\b)', s)
+        if m:
+            s = s[:m.end()] + '</head>\n<body>\n' + s[m.end():]
+            s = s.replace('</html>', '</body>\n</html>', 1) if '</html>' in s else s + '\n</body>\n'
     profondeur = page.count('/')
     base = '../' * (profondeur + 1)
     s = re.sub(r'<base\b[^>]*>\s*', '', s)
@@ -154,6 +160,18 @@ def habiller(s, page):
         s = s.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
     s = s.replace('</head>', '<link rel="stylesheet" href="clone/habillage.css?v=%s">\n</head>' % VERSION, 1)
     coquille = re.search(r'<header class="top"', s) is not None
+    if not coquille and re.search(r'<body[^>]*>\s*<header>', s) and '<footer class="efa-foot">' in s:
+        # page simple (confidentialité) : son en-tête devient la coquille du Clone
+        s = re.sub(r'(<body[^>]*>\s*)<header>', r'\1<header class="top">', s, count=1)
+        coquille = True
+    redirection = re.search(r'http-equiv="refresh"|location\.replace\(', s) is not None and len(s) < 3000
+    if not coquille and not redirection:
+        # pages plein écran (parcours, démo, appli Ely…) : en-tête du Clone, sans pied
+        s = s.replace('<html data-clone', '<html data-clone data-clone-plein', 1)
+        if re.search(r'<body\b', s):
+            s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + '\n' + entete(page), s, count=1)
+        else:
+            s = s.replace('</head>', '</head>\n' + entete(page), 1)
     if coquille:
         s = re.sub(r'<header class="top"', '<header data-v1-cache class="top"', s, count=1)
         s = s.replace('<html data-clone', '<html data-clone data-clone-coquille', 1)
