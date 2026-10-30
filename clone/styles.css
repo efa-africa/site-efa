@@ -358,6 +358,34 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 .etapes-agir li::before{content:counter(e);grid-row:span 2;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
 .etapes-agir b{color:var(--navy);font-size:16px}
 .etapes-agir span{color:var(--muted);font-size:15px;line-height:1.45}
+/* ===== Section Le média (proposition jointe) ===== */
+.media-ef{padding:94px 0 112px;background:linear-gradient(180deg,#f6f9fa 0%,#fff 40%,#fff 100%);scroll-margin-top:60px}
+.mef-intro{display:grid;grid-template-columns:1.15fr .85fr;align-items:end;gap:45px;margin-bottom:42px}
+.mef-intro h2{font:700 clamp(42px,5.8vw,78px)/.99 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.04em;margin:16px 0 0;color:var(--navy)}
+.mef-intro h2 em{font-style:normal;color:#148aa5}
+.mef-intro p{max-width:455px;margin:0 0 4px;color:var(--muted);font-size:clamp(18px,1.7vw,23px);line-height:1.5}
+.mef-accent{width:60px;height:5px;background:var(--coral);border-radius:9px;margin-bottom:22px}
+.mef-grid{display:grid;grid-template-columns:minmax(0,1.17fr) minmax(0,.83fr);gap:22px}
+.mef-stack{display:grid;gap:22px;min-width:0}
+.mef-card{display:block;border:1px solid #dce8ed;border-radius:30px;overflow:hidden;background:#fff;min-width:0;box-shadow:0 15px 45px rgba(7,29,56,.06);transition:transform .2s}
+.mef-card:hover{transform:translateY(-4px)}
+.mef-card img{display:block;width:100%;object-fit:cover}
+.mef-main img{aspect-ratio:1.45;object-position:50% 43%}
+.mef-side{display:grid;grid-template-columns:45% 55%;min-height:280px}
+.mef-side img{height:100%;aspect-ratio:1;object-position:center}
+.mef-studies img{object-position:center 42%}
+.mef-copy{padding:30px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.mef-main .mef-copy{padding:33px 38px 36px}
+.mef-label{font-size:11px;text-transform:uppercase;font-weight:900;letter-spacing:.17em;color:#148aa5}
+.mef-card h3{font:700 clamp(28px,2.8vw,42px)/1.08 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.035em;margin:13px 0 14px;color:var(--navy)}
+.mef-card h3 em{font-style:normal;color:#148aa5}
+.mef-main h3{font-size:clamp(38px,4vw,57px);max-width:590px}
+.mef-card p{font-size:16px;line-height:1.52;color:var(--muted);margin:0 0 24px}
+.mef-main p{font-size:18px}
+.mef-cta{margin-top:auto;display:inline-flex;align-items:center;gap:12px;padding-bottom:4px;font-size:15px;font-weight:800;color:var(--navy)}
+.mef-cta span{color:var(--coral);font-size:22px;line-height:15px}
+@media(max-width:900px){.mef-intro{display:block}.mef-intro p{margin-top:24px}.mef-grid{grid-template-columns:1fr}.mef-stack{grid-template-columns:1fr 1fr}.mef-side{display:block}.mef-side img{height:auto;aspect-ratio:1.45}.mef-side .mef-copy{min-height:290px}}
+@media(max-width:560px){.media-ef{padding:62px 0 78px}.mef-intro{margin-bottom:28px}.mef-intro h2{font-size:clamp(41px,11vw,55px)}.mef-intro p{font-size:18px}.mef-grid,.mef-stack{grid-template-columns:1fr;gap:19px}.mef-card{border-radius:24px}.mef-main img,.mef-side img{aspect-ratio:1.5;height:auto}.mef-copy,.mef-main .mef-copy,.mef-side .mef-copy{padding:23px 23px 27px;min-height:0}.mef-card h3,.mef-main h3{font-size:clamp(31px,8vw,40px)}.mef-card p,.mef-main p{font-size:16px;margin-bottom:23px}}
 
 /* EFA · pied de page institutionnel commun à toutes les pages */
 footer.efa-foot{display:block;margin:0;background:#070C16;color:#C9D1DE;border-top:1px solid rgba(255,255,255,.08);text-align:left;
