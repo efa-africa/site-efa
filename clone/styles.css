@@ -558,3 +558,21 @@ footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
 @media (max-width:1100px){.efa-foot .ef-top{grid-template-columns:1fr}}
 @media (max-width:900px){.efa-foot .ef-cols-5{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.efa-foot .ef-cols-5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Accueil · corail de la charte, mention IA, trois questions visibles sur tablette, bouton personnalisé au retour (30/10/2026) */
+.a-hero .a-eyebrow{color:#F09680}
+.a-hero h1 em{color:#EC6243}
+.a-choice span{color:#F09680}
+.a-choice[aria-pressed=true]{border-color:#F09680}
+.a-hero-ia{position:absolute;top:14px;right:max(16px,env(safe-area-inset-right,0px));z-index:2;font-size:11px;font-style:italic;color:rgba(255,255,255,.78);text-shadow:0 1px 2px rgba(0,0,0,.6);pointer-events:none}
+.a-question[hidden]{display:none!important}
+.a-hero-cta-perso{gap:14px;font-size:16px}
+@media (min-width:701px) and (max-height:860px){
+  .a-hero{min-height:calc(100svh - 82px)}
+  .a-hero-inner{padding:clamp(28px,5svh,56px) 0 clamp(36px,6svh,64px)}
+  .a-hero .a-eyebrow{margin-bottom:16px}
+  .a-hero h1{font-size:clamp(46px,min(6vw,9.5svh),90px)}
+  .a-hero-intro{margin:16px 0 18px}
+  .a-question>p{margin-bottom:10px}
+  .a-hero-cta{margin-top:16px;min-height:52px}
+}

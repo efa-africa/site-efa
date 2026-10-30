@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Éducation Financière Afrique — apprendre l'argent à partir des réalités africaines.">
 <title>EFA · Clone V2</title><meta name="robots" content="noindex, nofollow"><link rel="icon" href="assets/efa-mark.png">
-<link rel="stylesheet" href="styles.css?v=20261030t"><script src="../donnees.js" defer></script><script src="script.js?v=20261030t" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261030u"><script src="../donnees.js" defer></script><script src="script.js?v=20261030t" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -12,6 +12,7 @@
 <main id="contenu"><div class="aig"><section class="a-hero" id="accueil" aria-labelledby="hero-title">
       <div class="a-hero-image" role="img" aria-label="Une femme réfléchit à ses projets devant un carnet, avec Abidjan en arrière-plan"></div>
       <div class="a-hero-shade" aria-hidden="true"></div>
+      <span class="a-hero-ia">Illustration · IA</span>
       <div class="a-hero-inner">
         <p class="a-eyebrow">L’ARGENT S’APPREND · UNE EXPÉRIENCE EFA</p>
         <h1 id="hero-title">Votre argent a une histoire.<br><em>Écrivons la suite.</em></h1>
@@ -26,6 +27,13 @@
         </div>
         <a class="a-hero-cta" href="#portes" id="hero-cta">Découvrir les trois chemins <span aria-hidden="true">↗</span></a>
         <p class="a-hero-footnote">Choisissez une question pour aller directement à la bonne section.</p>
+        <script src="../efa-reprise.js?v=2026102902"></script>
+        <script>/* Pour qui revient (défi, résultat, objectif, module), un seul bouton vers son étape remplace les trois questions. */
+        (function(){var E=window.EFA_REPRISE&&EFA_REPRISE.etape();if(!E)return;
+          var q=document.querySelector(".a-question"),b=document.getElementById("hero-cta"),n=document.querySelector(".a-hero-footnote"),orga=E.o&&E.o.p==="orga";
+          var h=E.h||"../point-de-depart.html";if(!/^(https?:|\/|\.\.\/)/.test(h))h="../"+h;
+          if(q)q.hidden=true;if(b){b.href=h;b.innerHTML=(orga?"Construire mon programme":"Ma prochaine action")+' <span aria-hidden="true">→</span>';b.classList.add("a-hero-cta-perso");}
+          if(n)n.textContent=E.t;document.documentElement.classList.add("efa-perso");})();</script>
       </div>
       <a class="a-scroll-cue" href="#portes">DÉFILER POUR DÉCOUVRIR <span aria-hidden="true">↓</span></a>
     </section>
