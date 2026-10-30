@@ -580,3 +580,24 @@ footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
 /* Hall d'entrée (30/10/2026) : seuls l'accueil, la phrase de clôture, les questions fréquentes et le pied de page sont visibles avant le premier choix */
 html.cl-hall .aig>*:not(.a-hero),html.cl-hall main>*:not(.aig):not(.faq):not(#contact):not(script){display:none!important}
 html.cl-hall #contact{margin-top:0}
+
+/* ===== Accueil, première section (30 oct. 2026) : bénéfice concret, point de départ, entrée organisations ===== */
+/* Navigation regroupée dans les trois barres */
+.desktop-nav{display:none!important}
+.menu-panel a.menu-cle{color:var(--coral)}
+/* Titre moins large : le portrait respire */
+@media(min-width:900px){
+  .a-hero h1{font-size:clamp(48px,4.9vw,84px);max-width:min(720px,52vw)}
+  .a-hero-intro{max-width:540px}
+  .a-depart,.a-hero-footnote{max-width:600px}
+}
+.a-hero-cta{gap:28px}
+.a-depart{margin-top:16px;max-width:640px;animation:a-depart-in .25s ease}
+.a-depart[hidden]{display:none}
+.a-depart-t{font-weight:800;font-size:16px;margin:0 0 12px;color:#fff}
+.a-choice-libre{border-style:dashed}
+@keyframes a-depart-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.a-hero-orga{display:inline-flex;gap:8px;margin-top:18px;color:#fff;font-weight:700;font-size:15px;text-decoration:underline;text-decoration-color:var(--a-verm);text-decoration-thickness:2px;text-underline-offset:6px}
+.a-hero-orga:hover{color:var(--a-cyan)}
+.a-hero-orga span{text-decoration:none}
+@media(max-width:899px){.a-hero-orga{font-size:14px}.a-depart .a-choices{display:grid}}

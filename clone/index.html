@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Éducation Financière Afrique — apprendre l'argent à partir des réalités africaines.">
 <title>EFA · Clone V2</title><meta name="robots" content="noindex, nofollow"><link rel="icon" href="assets/efa-mark.png">
-<link rel="stylesheet" href="styles.css?v=20261030w"><script src="../donnees.js" defer></script><script src="script.js?v=20261030t" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261030x"><script src="../donnees.js" defer></script><script src="script.js?v=20261030t" defer></script>
 <script>/* Le hall d'entrée : l'accueil, « Apprendre est ouvert », les questions fréquentes et le pied de page. Le premier choix fait entrer dans tout l'univers EFA, et le choix est retenu. */
 (function(){var h=location.hash.replace('#',''),u=null;try{if(/[?&]hall\b/.test(location.search))localStorage.removeItem('efa_clone_univers');u=localStorage.getItem('efa_clone_univers');}catch(e){}if(u!=='1'&&(!h||h==='accueil'||h==='contact'))document.documentElement.classList.add('cl-hall');})();</script>
 </head>
@@ -14,7 +14,7 @@
   addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!=='accueil'&&h!=='contact')entrer();});})();</script>
 
 <a class="skip" href="#contenu">Aller au contenu</a>
-<header class="header" id="haut"><div class="container head-inner"><a class="brand" href="#haut" aria-label="EFA, accueil"><img src="assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="#benefices">Apprendre</a><a href="#pilier-progresser">S’entraîner</a><a href="#pilier-agir">Se lancer</a><a href="#pilier-media">Le média</a><a href="#etudes-prospective">Études</a></nav><button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="menu" class="menu-panel" aria-label="Menu"><a href="#benefices">Apprendre <span>↗</span></a><a href="#seul">Apprendre seul <span>↗</span></a><a href="#organisation">Apprendre ensemble <span>↗</span></a><a href="#outils">Outils et simulateurs <span>↗</span></a><a href="#pilier-progresser">S’entraîner <span>↗</span></a><a href="#coaching">Apprendre avec un coach <span>↗</span></a><a href="#pilier-agir">Se lancer <span>↗</span></a><a href="#marches">Investir à la BRVM <span>↗</span></a><a href="#pilier-media">Le média <span>↗</span></a><a href="#etudes-prospective">Études et prospective <span>↗</span></a><a href="#contact">Nous contacter <span>↗</span></a></nav></header>
+<header class="header" id="haut"><div class="container head-inner"><a class="brand" href="#haut" aria-label="EFA, accueil"><img src="assets/efa-mark.png" alt=""><span>EFA<span class="brand-dot">.</span><small>ÉDUCATION FINANCIÈRE AFRIQUE</small></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="#benefices">Apprendre</a><a href="#pilier-progresser">S’entraîner</a><a href="#pilier-agir">Se lancer</a><a href="#pilier-media">Le média</a><a href="#etudes-prospective">Études</a></nav><button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="#benefices">Apprendre <span>↗</span></a><a href="#seul">Apprendre seul <span>↗</span></a><a href="#organisation">Apprendre ensemble <span>↗</span></a><a href="#outils">Outils et simulateurs <span>↗</span></a><a href="#pilier-progresser">S’entraîner <span>↗</span></a><a href="#coaching">Apprendre avec un coach <span>↗</span></a><a href="#pilier-agir">Se lancer <span>↗</span></a><a href="#marches">Investir à la BRVM <span>↗</span></a><a href="#pilier-media">Le média <span>↗</span></a><a href="#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="#contact">Nous contacter <span>↗</span></a></nav></header>
 <main id="contenu"><div class="aig"><section class="a-hero" id="accueil" aria-labelledby="hero-title">
       <div class="a-hero-image" role="img" aria-label="Une femme réfléchit à ses projets devant un carnet, avec Abidjan en arrière-plan"></div>
       <div class="a-hero-shade" aria-hidden="true"></div>
@@ -22,23 +22,31 @@
       <div class="a-hero-inner">
         <p class="a-eyebrow">L’ARGENT S’APPREND · UNE EXPÉRIENCE EFA</p>
         <h1 id="hero-title">Votre argent a une histoire.<br><em>Écrivons la suite.</em></h1>
-        <p class="a-hero-intro">Quel que soit votre point de départ, une question peut ouvrir un chemin.</p>
-        <div class="a-question" role="group" aria-labelledby="question-title">
-          <p id="question-title">Aujourd’hui, qu’aimeriez-vous résoudre ?</p>
+        <p class="a-hero-intro">Budget, épargne, projets&nbsp;: comprenez votre situation, essayez nos outils et choisissez votre prochain pas.</p>
+        <a class="a-hero-cta" href="point-de-depart.html" id="hero-cta" aria-controls="depart-choix" aria-expanded="false">Trouver mon point de départ <span aria-hidden="true">→</span></a>
+        <div class="a-depart" id="depart-choix" hidden>
+          <p class="a-depart-t">Par quoi voulez-vous commencer&nbsp;?</p>
           <div class="a-choices">
-            <a class="a-choice" href="#benefices"><span>01</span> Voir plus clair dans mon argent</a>
-            <a class="a-choice" href="#pilier-progresser"><span>02</span> Avancer sur mon projet avec un regard extérieur</a>
-            <a class="a-choice" href="#pilier-agir"><span>03</span> Préparer une décision financière</a>
+            <a class="a-choice" href="point-de-depart.html?pour=moi"><span>01</span> Mon budget et mes dépenses</a>
+            <a class="a-choice" href="point-de-depart.html?pour=cadre"><span>02</span> Un projet&nbsp;: épargner, se loger, préparer la suite</a>
+            <a class="a-choice" href="point-de-depart.html?pour=investir"><span>03</span> Investir à la BRVM</a>
+            <a class="a-choice a-choice-libre" href="point-de-depart.html"><span>?</span> Je ne sais pas encore&nbsp;: trois questions pour m’orienter</a>
           </div>
         </div>
-        <a class="a-hero-cta" href="#portes" id="hero-cta">Découvrir les trois chemins <span aria-hidden="true">↗</span></a>
-        <p class="a-hero-footnote">Choisissez une question pour aller directement à la bonne section.</p>
+        <p class="a-hero-footnote">Des contenus et des outils gratuits pour commencer.</p>
+        <a class="a-hero-orga" href="organisations.html">Former mon équipe ou ma communauté <span aria-hidden="true">↗</span></a>
         <script src="../efa-reprise.js?v=2026102902"></script>
-        <script>/* Pour qui revient (défi, résultat, objectif, module), un seul bouton vers son étape remplace les trois questions. */
-        (function(){var E=window.EFA_REPRISE&&EFA_REPRISE.etape();if(!E)return;
-          var q=document.querySelector(".a-question"),b=document.getElementById("hero-cta"),n=document.querySelector(".a-hero-footnote"),orga=E.o&&E.o.p==="orga";
-          var h=E.h||"../point-de-depart.html";if(!/^(https?:|\/|\.\.\/)/.test(h))h="../"+h;
-          if(q)q.hidden=true;if(b){b.href=h;b.innerHTML=(orga?"Construire mon programme":"Ma prochaine action")+' <span aria-hidden="true">→</span>';b.classList.add("a-hero-cta-perso");}
+        <script>/* Première visite : le bouton ouvre un choix court de situations (sans script, il mène au point de départ).
+           Pour qui revient (défi, résultat, objectif, module) : un seul bouton vers son étape. */
+        (function(){var b=document.getElementById("hero-cta"),c=document.getElementById("depart-choix"),n=document.querySelector(".a-hero-footnote");
+          var E=window.EFA_REPRISE&&EFA_REPRISE.etape();
+          if(!E){if(b&&c)b.addEventListener("click",function(e){e.preventDefault();var o=c.hidden;c.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){var f=c.querySelector("a");if(f)f.focus({preventScroll:true});}});return;}
+          var orga=E.o&&E.o.p==="orga",h=String(E.h||"point-de-depart.html").replace(/^(\.\.\/)+/,"");if(/^app(\/|$)/.test(h))h="../"+h; /* les pages du site existent aussi dans le Clone */
+          /* Défi de sept jours : « terminé » seulement si les sept jours ont été notés */
+          if(E.k==="bilan"){try{var C=JSON.parse(localStorage.getItem("efa_cahier_v1")||"null"),S=C&&C.semaines&&C.semaines.filter(function(x){return!x.fini}).pop(),f=S?(S.jours||[]).filter(function(x){return x!=null}).length:7;
+            if(f<7)E.t="Les sept jours de votre défi sont passés ("+f+" jour"+(f>1?"s":"")+" noté"+(f>1?"s":"")+" sur 7)\u00a0: faites le bilan et choisissez la suite.";}catch(x){}}
+          if(c)c.remove();b.removeAttribute("aria-controls");b.removeAttribute("aria-expanded");
+          b.href=h;b.innerHTML=(orga?"Construire mon programme":(E.b||"Ma prochaine action"))+' <span aria-hidden="true">→</span>';b.classList.add("a-hero-cta-perso");
           if(n)n.textContent=E.t;document.documentElement.classList.add("efa-perso");})();</script>
       </div>
       <a class="a-scroll-cue" href="#portes">DÉFILER POUR DÉCOUVRIR <span aria-hidden="true">↓</span></a>
