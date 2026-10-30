@@ -7,3 +7,4 @@ Disallow: /outils-news/
 Sitemap: https://efa.africa/sitemap.xml
 Disallow: /tableau-ely.html
 Disallow: /accueil-v1.html
+Disallow: /ateliers-cles.html
