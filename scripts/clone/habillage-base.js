@@ -249,7 +249,16 @@
     el.setAttribute('data-clair', '');
     if (fond === '#ffffff') el.setAttribute('data-clair-carte', '');
   }
+  /* Filets beiges de l'ancienne charte (#E2D8C4, #D9CDB5…) : filet bleu-gris */
+  function filet(el, cs) {
+    var b = rgb(cs.borderTopColor);
+    if (b && b.a > .3 && parseFloat(cs.borderTopWidth) > 0 && b.r - b.b > 12 && b.r >= b.g && lum(b) > .45 && lum(b) < .9)
+      el.style.setProperty('border-color', '#dbe6f0', 'important');
+    var sh = cs.boxShadow;
+    if (sh && sh !== 'none' && /rgb\(2[0-5]\d, 2[0-2]\d, 1[6-9]\d\)/.test(sh)) el.style.setProperty('box-shadow', 'none', 'important');
+  }
   function recolorer(el) {
+    if (!EXCLU.test(el.tagName) && !hors(el)) filet(el, getComputedStyle(el));
     if (EXCLU.test(el.tagName) || hors(el) || el.getAttribute('data-clair') === 'bouton') return;
     var a = false;
     for (var n = el.firstChild; n; n = n.nextSibling) if (n.nodeType === 3 && n.nodeValue.trim()) { a = true; break; }
