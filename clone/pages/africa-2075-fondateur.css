@@ -1,0 +1,46 @@
+/* EFA · Africa 2075, article fondateur */
+html[data-clone]{--a75-nuit:#071d38;--a75-teal:#168da4;--a75-verm:#e34234;--a75-texte:#3f4b5b}
+/* Lecture : une colonne plus confortable */
+html[data-clone] .col .prose p{font-size:19px;line-height:1.72;color:var(--a75-texte)}
+html[data-clone] .col .prose h2{font-size:clamp(28px,3vw,40px);line-height:1.12;margin-top:56px;color:var(--a75-nuit)}
+html[data-clone] .col :is(figure,section)[id^="a75-s"]{scroll-margin-top:110px}
+/* L'essentiel */
+html[data-clone] .a75-essentiel{margin:8px 0 48px;padding:clamp(24px,3vw,40px);border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e3e8ee,0 24px 60px rgba(7,29,56,.08)}
+html[data-clone] .a75-k{margin:0 0 10px;font:800 12px/1 "Source Sans 3",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--a75-verm)}
+html[data-clone] .a75-essentiel h2{margin:0 0 24px;font:700 clamp(26px,2.8vw,36px)/1.1 "Libre Baskerville",Georgia,serif;color:var(--a75-nuit)}
+html[data-clone] .a75-chiffres{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid #e3e8ee}
+html[data-clone] .a75-chiffres div{padding:20px 18px 6px 0;border-right:1px solid #e3e8ee;margin-right:18px}
+html[data-clone] .a75-chiffres div:last-child{border-right:0;margin-right:0}
+html[data-clone] .a75-chiffres b{display:block;font:700 clamp(34px,3.6vw,50px)/1 "Libre Baskerville",Georgia,serif;letter-spacing:-.02em;color:var(--a75-nuit)}
+html[data-clone] .a75-chiffres div:nth-child(1) b{color:var(--a75-verm)}
+html[data-clone] .a75-chiffres div:nth-child(2) b{color:#0b63b0}
+html[data-clone] .a75-chiffres div:nth-child(3) b{color:var(--a75-teal)}
+html[data-clone] .a75-chiffres div:nth-child(4) b{color:#1e7a4c}
+html[data-clone] .a75-chiffres small{font-size:.45em;letter-spacing:0}
+html[data-clone] .a75-chiffres sup{font-size:.45em}
+html[data-clone] .a75-chiffres span{display:block;margin-top:10px;font-size:15px;line-height:1.45;color:var(--a75-texte)}
+html[data-clone] .a75-these{margin:24px 0 0;padding:18px 20px;border-radius:14px;background:#eef5fb;font-size:17px;line-height:1.55;color:var(--a75-nuit)}
+html[data-clone] .a75-som{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+html[data-clone] .a75-som a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px 9px 9px;border-radius:999px;background:#f3f7fb;color:var(--a75-nuit);font-weight:700;font-size:15px;text-decoration:none}
+html[data-clone] .a75-som a:hover{background:#e3eef8}
+html[data-clone] .a75-som i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--a75-nuit);color:#fff;font:700 12px/1 "Source Sans 3",sans-serif;font-style:normal}
+/* Trois forces : le chiffre d'abord */
+html[data-clone] .a75-fc{margin:0 0 12px!important;padding-bottom:12px;border-bottom:1px solid rgba(7,29,56,.12)}
+html[data-clone] .a75-fc b{display:block;font:700 clamp(30px,3vw,42px)/1 "Libre Baskerville",Georgia,serif;color:var(--a75-teal)!important}
+html[data-clone] .a75-fc span{display:block;margin-top:6px;font-size:14px;font-weight:700;color:var(--a75-nuit)}
+/* Six chantiers : des cartes numérotées */
+html[data-clone] ol.conditions{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;padding:0!important;margin:18px 0 0!important}
+html[data-clone] ol.conditions li{margin:0!important;background:#fff!important;border-radius:16px!important;padding:20px 22px!important;box-shadow:0 0 0 1px #e3e8ee,0 12px 28px rgba(7,29,56,.05)}
+/* La conviction en exergue */
+html[data-clone] .prose p.a75-exergue{margin:36px 0;padding:6px 0 6px 26px;border-left:4px solid var(--a75-verm);font:700 clamp(21px,2.1vw,26px)/1.45 "Libre Baskerville",Georgia,serif!important;color:var(--a75-nuit)!important}
+html[data-clone] .prose p.a75-exergue strong{color:var(--a75-verm)}
+/* Barre de lecture, sous l'en-tête */
+html[data-clone] .a75-lecture{position:fixed;left:0;right:0;top:82px;height:3px;z-index:60;background:transparent;pointer-events:none}
+html[data-clone] .a75-lecture i{display:block;height:100%;background:var(--a75-verm);transform-origin:left;transform:scaleX(0)}
+@media(max-width:860px){html[data-clone] .a75-chiffres{grid-template-columns:1fr 1fr}html[data-clone] .a75-chiffres div:nth-child(2){border-right:0;margin-right:0}}
+@media(max-width:720px){html[data-clone] .a75-lecture{top:68px}html[data-clone] .col .prose p{font-size:17.5px}}
+/* La colonne de lecture est étroite : chiffres en 2 × 2, sur une ligne chacun */
+html[data-clone] .a75-chiffres{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 28px}
+html[data-clone] .a75-chiffres div,html[data-clone] .a75-chiffres div:nth-child(2){border-right:0!important;margin-right:0!important;padding:20px 0 16px;border-bottom:1px solid #e3e8ee}
+html[data-clone] .a75-chiffres b{white-space:nowrap;font-size:clamp(34px,3.2vw,46px)}
+@media(max-width:560px){html[data-clone] .a75-chiffres{gap:0 16px}html[data-clone] .a75-chiffres b{font-size:29px;white-space:normal}html[data-clone] .a75-chiffres small{display:block;font-size:14px;margin-top:4px}}
