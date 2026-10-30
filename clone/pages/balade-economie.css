@@ -1,0 +1,22 @@
+/* EFA · La balade de l'économie : une couleur de la charte par salle */
+html[data-clone] .salle,html[data-clone] .plan li:nth-child(1){--sc:#0b63b0}
+html[data-clone] #monnaie,html[data-clone] .plan li:nth-child(2){--sc:#075440;--sor:#c5a466}
+html[data-clone] #acteurs,html[data-clone] .plan li:nth-child(3){--sc:#168da4}
+html[data-clone] #etat,html[data-clone] .plan li:nth-child(4){--sc:#073e76}
+html[data-clone] #banques,html[data-clone] .plan li:nth-child(5){--sc:#e34234}
+html[data-clone] #croissance,html[data-clone] .plan li:nth-child(6){--sc:#1e7a4c}
+/* Plan des salles */
+html[data-clone] .plan li a{border-top:3px solid var(--sc);padding-top:12px;border-radius:0}
+html[data-clone] .plan li i{color:var(--sc)!important;background:transparent!important}
+/* En-tête de chaque salle */
+html[data-clone] .salle{position:relative;padding-top:clamp(64px,8vw,104px)!important}
+html[data-clone] .salle::before{content:"";display:block;width:72px;height:4px;border-radius:4px;background:var(--sc);margin-bottom:28px}
+html[data-clone] .salle-n{background:var(--sc)!important;color:#fff!important;box-shadow:0 10px 24px color-mix(in srgb,var(--sc) 35%,transparent)}
+html[data-clone] #monnaie .salle-n{box-shadow:0 0 0 3px var(--sor),0 10px 24px rgba(7,84,64,.35)}
+html[data-clone] .salle .bk{color:var(--sc)!important}
+html[data-clone] .salle h2{color:#071d38!important}
+/* Panneaux : blancs, filet de la couleur de la salle */
+html[data-clone] .salle .pan{background:#fff!important;border:1px solid #e3e8ee;border-top:3px solid var(--sc);box-shadow:0 14px 34px rgba(7,29,56,.06)}
+html[data-clone] .salle .pan-img{border-radius:0!important}
+html[data-clone] .salle .borne{background:#f3f7fb!important;border-left:0;box-shadow:inset 0 3px 0 var(--sc)}
+html[data-clone] .salle .borne .pastille,html[data-clone] .salle .borne-t .pastille{background:var(--sc)!important;color:#fff!important}

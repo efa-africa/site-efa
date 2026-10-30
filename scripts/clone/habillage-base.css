@@ -186,3 +186,17 @@ html[data-clone] :is(input[type=checkbox],input[type=radio],input[type=range],pr
 html[data-clone] input[type=checkbox]{width:20px;height:20px}
 html[data-clone] label{color:#071d38}
 html[data-clone] :is(form,.ct-form) :is(button[type=submit],.bouton-principal){border-radius:999px!important}
+
+/* ---------- Musée de l'économie (mode visite) : salle d'exposition aux murs bleu profond ----------
+   Seule exception au « plus de bleu nuit » : un vrai bleu de la charte, les œuvres encadrées de blanc. */
+html[data-clone] #musee{--mn:#0b3a6b;--mp:#0e4a85;--mc:#ffb4a3;--mt:#d6e6f5;
+  background:radial-gradient(80% 60% at 50% 0%,#145a9c 0%,rgba(20,90,156,0) 70%),#0b3a6b!important;color:#fff!important}
+html[data-clone] #musee .mu-cadre,html[data-clone] #musee .mu-med{background:#fff!important;box-shadow:0 30px 70px rgba(2,20,45,.45),0 0 0 1px rgba(255,255,255,.6)!important}
+html[data-clone] #musee .mu-txt{color:#fff}
+html[data-clone] #musee .mu-plan{background:rgba(11,58,107,.98)!important}
+html[data-clone] #musee .mu-num,html[data-clone] #musee .mu-suiv,html[data-clone] #musee .mu-lieu{background:#e34234!important}
+html[data-clone] #musee .mu-prec{background:rgba(255,255,255,.14)!important;color:#fff!important}
+html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,.mu-merci,.mu-parts button,.mu-indice){background:#0e4a85!important;color:#fff!important}
+html[data-clone] #musee .mu-parts button[aria-pressed=true],html[data-clone] #musee .mu-parts button.on{background:#e34234!important}
+html[data-clone] #musee :is(.mu-form textarea,.mu-form input[type=email]){background:#fff!important;color:#071d38!important}
+html[data-clone] .musee-flot{background:#0b63b0!important}
