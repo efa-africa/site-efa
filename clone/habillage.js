@@ -149,6 +149,13 @@
     var p = m[1].split(/[ ,\/]+/).filter(Boolean).map(parseFloat);
     return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 };
   }
+  /* « Sombre » = noir ou bleu nuit. Les aplats vifs de la charte (corail, bleu) restent tels quels. */
+  function nuit(c) {
+    if (!c) return false;
+    var mx = Math.max(c.r, c.g, c.b), mn = Math.min(c.r, c.g, c.b), sat = mx ? (mx - mn) / mx : 0, L = lum(c);
+    var chaud = c.r > c.b + 20; // corail, rouge, orange, ocre : jamais assombris ni éclaircis
+    return !chaud && (L < .06 || (L < .2 && sat < .55));
+  }
   function lum(c) {
     var f = function (v) { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); };
     return .2126 * f(c.r) + .7152 * f(c.g) + .0722 * f(c.b);
@@ -163,7 +170,7 @@
   function gradientSombre(img) {
     if (!img || img === 'none' || /url\(/.test(img)) return false;
     var l = img.match(/rgba?\([^)]+\)/g) || [], n = 0, s = 0;
-    for (var i = 0; i < l.length; i++) { var c = rgb(l[i]); if (c && c.a > .3) { n++; if (lum(c) < .2) s++; } }
+    for (var i = 0; i < l.length; i++) { var c = rgb(l[i]); if (c && c.a > .3) { n++; if (nuit(c)) s++; } }
     return n > 0 && s / n >= .5;
   }
   var EXCLU = /^(IMG|SVG|VIDEO|CANVAS|SCRIPT|STYLE|PICTURE|IFRAME|svg|path|g|circle|rect|line|polyline|polygon|text|tspan|defs|use)$/;
@@ -185,7 +192,7 @@
     if (EXCLU.test(el.tagName) || el.hasAttribute('data-clair') || hors(el)) return;
     var cs = getComputedStyle(el);
     if (/url\(/.test(cs.backgroundImage)) return; // photo de fond : on garde
-    var c = rgb(cs.backgroundColor), sombre = (c && c.a > .35 && lum(c) < .2) || gradientSombre(cs.backgroundImage);
+    var c = rgb(cs.backgroundColor), sombre = (c && c.a > .35 && nuit(c)) || gradientSombre(cs.backgroundImage);
     /* Crème et beige de l'ancienne charte (#F5EFE2, #FFFDF8…) : bleu très pâle ou blanc */
     if (!sombre && c && c.a > .5 && lum(c) > .62 && c.r - c.b > 6 && c.r >= c.g && !el.hasAttribute('data-clair')) {
       var dansSurface = el.parentElement && el.parentElement.closest('[data-clair="creme"]');
@@ -207,6 +214,16 @@
     }
     var bouton = el.tagName === 'A' || el.tagName === 'BUTTON' || /\b(btn|bouton|cta|chip|pill|tag)\b/.test(el.className || '');
     if (bouton && el.offsetHeight < 90) {
+      var fp = el.parentElement ? fondEffectif(el.parentElement) : null;
+      if (fp && fp.r > fp.b + 20 && lum(fp) < .35) {
+        // bouton sombre posé sur un aplat corail : contour blanc, texte blanc
+        el.style.setProperty('background-color', 'transparent', 'important');
+        el.style.setProperty('background-image', 'none', 'important');
+        el.style.setProperty('border', '1.5px solid rgba(255,255,255,.75)', 'important');
+        el.style.setProperty('color', '#fff', 'important');
+        el.setAttribute('data-clair', 'bouton');
+        return;
+      }
       el.style.setProperty('background-color', '#0b63b0', 'important');
       el.style.setProperty('background-image', 'none', 'important');
       el.style.setProperty('border-color', '#0b63b0', 'important');
