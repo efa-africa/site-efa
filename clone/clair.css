@@ -48,3 +48,7 @@ h2 em{color:var(--cl-teal)!important}
 .phase-label span{background:#eaf3fb!important;color:#0b63b0!important}
 .res-tag.futur{background:#eaf3fb!important;color:#0b63b0!important}
 .sgi-note{background:#eaf3fb!important;color:#071d38!important}
+/* Le fil des actualités, juste sous la barre du menu, en haut de l'accueil (reste visible en défilant) */
+main>.fil{position:sticky;top:82px;z-index:25;box-shadow:0 6px 18px rgba(7,29,56,.06)}
+html.cl-hall body #contenu>#fil.fil{display:flex!important}
+@media(max-width:720px){main>.fil{top:68px}}
