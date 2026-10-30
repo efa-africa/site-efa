@@ -200,3 +200,32 @@ html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,
 html[data-clone] #musee .mu-parts button[aria-pressed=true],html[data-clone] #musee .mu-parts button.on{background:#e34234!important}
 html[data-clone] #musee :is(.mu-form textarea,.mu-form input[type=email]){background:#fff!important;color:#071d38!important}
 html[data-clone] .musee-flot{background:#0b63b0!important}
+
+/* =================== Articles (leçons, EFA News, Africa 2075, tribunes) : les chiffres d'abord =================== */
+/* Lecture confortable */
+html[data-clone] article :is(section,.prose)>p:not([class]),html[data-clone] article section>ul:not([class])>li{font-size:18px;line-height:1.7}
+/* Les chiffres d'un article : grands, colorés, en cartes blanches */
+html[data-clone] article .chiffres{gap:14px!important;margin-top:20px!important}
+html[data-clone] article .chiffres>*{--n:#0b63b0;background:#fff!important;color:#071d38!important;border:1px solid #e3e8ee!important;border-top:3px solid var(--n)!important;border-radius:16px!important;padding:18px 18px 16px!important;box-shadow:0 12px 30px rgba(7,29,56,.06)}
+html[data-clone] article .chiffres>*:nth-child(3n+2){--n:#168da4}
+html[data-clone] article .chiffres>*:nth-child(3n+3){--n:#e34234}
+html[data-clone] article .chiffres>* b,html[data-clone] article .chiffres>* strong{display:block;font:700 clamp(28px,3vw,40px)/1.05 "Libre Baskerville",Georgia,serif!important;letter-spacing:-.02em;color:var(--n)!important}
+html[data-clone] article .chiffres>* :is(span,small){color:#4d5a6a!important}
+html[data-clone] article .chiffres>* small:first-child{display:block;font:800 11px/1.3 "Source Sans 3",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7a8696!important;margin-bottom:6px}
+/* Les chiffres dans le texte */
+html[data-clone] .a-num{color:#0b63b0;font-weight:800;background:linear-gradient(transparent 62%,rgba(33,164,194,.18) 62%)}
+/* À retenir : la phrase à garder, en grand */
+html[data-clone] article .retenir{background:#eef5fb!important;color:#071d38!important;border-radius:18px!important;padding:22px 24px!important;font-size:clamp(20px,2.2vw,24px)!important}
+html[data-clone] article .retenir small{color:#d2452f!important}
+/* Sommaire de l'article */
+html[data-clone] .a-som{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 8px;padding:16px 18px;border-radius:16px;background:#f3f7fb}
+html[data-clone] .a-som>span{flex-basis:100%;font:800 11px/1.2 "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#168da4;margin-bottom:2px}
+html[data-clone] .a-som a{display:inline-flex;align-items:center;gap:8px;padding:8px 13px 8px 8px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px #e3e8ee;color:#071d38;font-weight:700;font-size:14.5px;text-decoration:none}
+html[data-clone] .a-som a:hover{box-shadow:0 0 0 1.5px #0b63b0}
+html[data-clone] .a-som i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#071d38;color:#fff;font:700 11px/1 "Source Sans 3",sans-serif;font-style:normal}
+html[data-clone] article section[id]{scroll-margin-top:150px}
+/* Barre de lecture */
+html[data-clone] .a-lecture{position:fixed;left:0;right:0;top:82px;height:3px;z-index:60;pointer-events:none}
+html[data-clone] .a-lecture i{display:block;height:100%;background:#e34234;transform-origin:left;transform:scaleX(0)}
+@media(max-width:720px){html[data-clone] .a-lecture{top:68px}html[data-clone] article :is(section,.prose)>p:not([class]){font-size:17px}}
+@media(max-width:560px){html[data-clone] article .chiffres>*{padding:14px 12px 12px!important;min-width:0}html[data-clone] article .chiffres>* :is(b,strong){font-size:clamp(20px,6vw,28px)!important;overflow-wrap:anywhere}}
