@@ -561,8 +561,8 @@ footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
 
 /* Accueil · corail de la charte, mention IA, trois questions visibles sur tablette, bouton personnalisé au retour (30/10/2026) */
 .a-hero .a-eyebrow{color:#F09680}
-.a-hero h1 em{color:#EC6243}
-.a-choice span{color:#F09680}
+.a-hero h1 em{color:#6DB8F2}
+.a-choice span{color:#6DB8F2}
 .a-choice[aria-pressed=true]{border-color:#F09680}
 .a-hero-ia{position:absolute;top:14px;right:max(16px,env(safe-area-inset-right,0px));z-index:2;font-size:11px;font-style:italic;color:rgba(255,255,255,.78);text-shadow:0 1px 2px rgba(0,0,0,.6);pointer-events:none}
 .a-question[hidden]{display:none!important}
