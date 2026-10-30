@@ -173,3 +173,9 @@ a.res:hover{transform:translateY(-2px);box-shadow:0 10px 24px #00152a14}
 }
 .door[open] .plus{transform:rotate(45deg);background:var(--coral)}
 .door-img img[src*="minfin"]{object-position:center 12%}
+/* ===== Expériences visibles sur l'accueil ===== */
+.experiences{padding:90px 0 60px;background:#fff}
+.experiences .section-top{margin-bottom:30px}
+.experiences .produit{margin-bottom:22px}
+.produit{scroll-margin-top:100px}
+@media(max-width:720px){.experiences{padding:60px 0 30px}.produit{scroll-margin-top:84px}}
