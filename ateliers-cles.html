@@ -1,0 +1,52 @@
+<!doctype html>
+<html data-clone data-clone-plein lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Clés de test des ateliers · EFA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700;800&display=swap">
+<style>
+body{margin:0;font:17px/1.55 "Source Sans 3",system-ui,sans-serif;color:#071d38;background:#fff}
+main{max-width:760px;margin:0 auto;padding:48px 20px}
+h1{font:700 clamp(30px,5vw,44px)/1.1 "Libre Baskerville",Georgia,serif;margin:0 0 10px}
+p{color:#4d5a6a}
+.bloc{background:#f3f7fb;border-radius:18px;padding:22px;margin-top:22px}
+label{font-weight:800}
+.ligne{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;align-items:center}
+input{padding:12px 14px;border:1.5px solid #cfdbe6;border-radius:12px;font:700 16px "Source Sans 3",sans-serif;width:120px}
+button{border:0;border-radius:999px;padding:12px 22px;background:#e34234;color:#fff;font:800 16px "Source Sans 3",sans-serif;cursor:pointer}
+button.b{background:#0b63b0}
+textarea{width:100%;box-sizing:border-box;min-height:220px;margin-top:12px;padding:14px;border:1.5px solid #cfdbe6;border-radius:12px;font:700 16px/1.7 ui-monospace,Menlo,monospace;letter-spacing:.04em}
+#ok{color:#1e7a4c;font-weight:700;min-height:1.4em}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261030v">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="index.html#outils">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<main>
+<p style="font-weight:800;letter-spacing:.2em;font-size:12px;color:#168da4;text-transform:uppercase;margin:0 0 10px">Page interne · non référencée</p>
+<h1>Clés de test des ateliers</h1>
+<p>Chaque clé donne accès gratuitement à un atelier (50 000 FCFA) pendant la période de test, jusqu’au <b id="fin"></b>. Une clé est valable pour un atelier, sur le téléphone de la personne qui la saisit. Envoyez une clé par personne.</p>
+<div class="bloc">
+<label for="nb">Combien de clés ?</label>
+<div class="ligne"><input id="nb" type="number" min="1" max="200" value="10"><button id="gen" type="button">Générer</button><button id="cop" class="b" type="button">Copier la liste</button></div>
+<textarea id="liste" readonly aria-label="Clés générées"></textarea>
+<p id="ok" role="status"></p>
+</div>
+<div class="bloc">
+<label for="v">Vérifier une clé</label>
+<div class="ligne"><input id="v" style="width:220px;text-transform:uppercase" placeholder="EFA-XXXX-XXXX"><button id="ver" class="b" type="button">Vérifier</button></div>
+<p id="vr" role="status"></p>
+</div>
+</main>
+<script src="clone/ateliers-data.js?v=20261030b"></script>
+<script>
+(function(){var D=window.EFA_ATELIERS;document.getElementById('fin').textContent=new Date(D.FIN_TEST).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+var L=document.getElementById('liste'),ok=document.getElementById('ok');
+document.getElementById('gen').onclick=function(){var n=Math.max(1,Math.min(200,+document.getElementById('nb').value||10)),a=[];for(var i=0;i<n;i++)a.push(D.nouvelleCle());L.value=a.join('\n');ok.textContent=n+' clé'+(n>1?'s':'')+' générée'+(n>1?'s':'')+'.'};
+document.getElementById('cop').onclick=function(){if(!L.value)return;(navigator.clipboard?navigator.clipboard.writeText(L.value):Promise.reject()).then(function(){ok.textContent='Liste copiée.'},function(){L.select();document.execCommand('copy');ok.textContent='Liste copiée.'})};
+document.getElementById('ver').onclick=function(){var v=document.getElementById('v').value;document.getElementById('vr').textContent=D.cleValide(v)?'✓ Clé valide.':'✗ Clé non reconnue (ou période de test terminée).'};})();
+</script>
+<script src="clone/habillage.js?v=20261030v" defer></script>
+</body>
+</html>
