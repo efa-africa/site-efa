@@ -52,3 +52,21 @@ h2 em{color:var(--cl-teal)!important}
 main>.fil{position:sticky;top:82px;z-index:25;box-shadow:0 6px 18px rgba(7,29,56,.06)}
 html.cl-hall body #contenu>#fil.fil{display:flex!important}
 @media(max-width:720px){main>.fil{top:68px}}
+/* Apprendre : le premier pas en tête de chaque carte, l'école EFA comme parcours principal */
+.ecole-principale{max-width:760px;margin:18px auto 0;font-size:17px;line-height:1.55;color:var(--cl-texte)}
+.ecole-principale a{color:var(--cl-nuit);text-decoration:underline;text-decoration-color:var(--coral,#e34234);text-decoration-thickness:2px;text-underline-offset:5px}
+.prem{background:#fff;border:1px solid var(--cl-filet);border-radius:20px;padding:22px clamp(18px,2.4vw,28px) 6px;margin:6px 0 26px;box-shadow:0 14px 34px rgba(7,29,56,.06)}
+.prem-k{margin:0 0 14px;font:800 12px/1.2 "Source Sans 3",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#d2452f}
+.prem-k2{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--cl-filet);color:var(--cl-teal)}
+.prem-g{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.prem-a{position:relative;display:flex;flex-direction:column;gap:4px;padding:18px 52px 18px 20px;border-radius:14px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.prem-a:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(7,29,56,.12)}
+.prem-1{background:#e34234;color:#fff}
+.prem-2{background:#eaf3fb;color:var(--cl-nuit)}
+.prem-t{font:700 19px/1.25 Baskerville,"Libre Baskerville",Georgia,serif}
+.prem-s{font-size:15px;opacity:.85}
+.prem-a b{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400}
+.prem-2 b{color:#e34234}
+.pc-nb{font-size:12px;font-weight:700;letter-spacing:.06em;color:#7a8696;opacity:.85}
+@media(max-width:700px){.prem-g{grid-template-columns:1fr}}
+section,.porte,#seul-contenus,[id]{scroll-margin-top:150px}
