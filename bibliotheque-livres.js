@@ -1,7 +1,7 @@
 /* La bibliothèque EFA : les fiches de lecture, au format statut.
    Chaque fiche : le livre en une phrase, 5 idées reformulées, ce qui marche ici, ce qui ne marche pas tel quel,
    ce qu'EFA en retient et nuance, une décision, un quiz de 3 questions, le module de l'école qui va avec.
-   Rédigées par EFA avec l'aide de l'intelligence artificielle et vérifiées par l'équipe : idées reformulées, jamais le texte des livres.
+   Rédigées par EFA : idées reformulées, jamais le texte des livres.
    Quiz : [question, [3 réponses], indice de la bonne réponse, explication]. */
 window.EFA_LIVRES = [
   {

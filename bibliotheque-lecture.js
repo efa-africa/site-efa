@@ -81,7 +81,7 @@
       + b.modules.map(function (m, k) { return '<a class="btn ' + (k ? "btn-clair" : "btn-main") + '" href="parcours.html?src=bibliotheque#' + m[0] + '">' + (k ? "Ou " : "Ouvrir le module ") + "« " + esc(m[1]) + " »</a>"; }).join("")
       + (autre ? '<button type="button" class="btn btn-ghost" data-b="livre" data-id="' + autre.id + '">Fiche suivante : ' + esc(autre.titre) + "</button>" : "")
       + '<button type="button" class="btn btn-ghost" data-b="biblio">Toute la bibliothèque</button></div>'
-      + '<p class="mention up d3">Fiche de lecture rédigée par EFA avec l’aide de l’intelligence artificielle et vérifiée par l’équipe : idées reformulées, sans reproduction du texte. Le livre est disponible en librairie et en ligne. Les personnages et montants d’exemple sont fictifs. Éducation financière, pas conseil en placement.</p>');
+      + '<p class="mention up d3">Fiche de lecture rédigée par EFA : idées reformulées, sans reproduction du texte. Le livre est disponible en librairie et en ligne. Les personnages et montants d’exemple sont fictifs. Éducation financière, pas conseil en placement.</p>');
     return s;
   }
   function quiz() {
