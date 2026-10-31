@@ -1,0 +1,61 @@
+{
+ "maj": "2026-10-31",
+ "criteres": "Pertinence pour le marché de l’UMOA, contribution documentée, sources indépendantes ou institutionnelles, diversité des métiers et des pays.",
+ "personnalites": [
+  {
+   "slug": "stephane-tchriffo",
+   "statut_publication": "publie",
+   "nom": "Stéphane Tchriffo",
+   "initiales": "ST",
+   "fonction": "Journaliste économique et présentateur",
+   "fonction_source": "Intitulé relevé en 2023 : présentateur et journaliste économique à la RTI (Africa CEO Forum).",
+   "categorie": "Journaliste et pédagogue",
+   "reglemente": false,
+   "pays": "Côte d’Ivoire",
+   "angle": "Il rend les enjeux d’épargne et d’investissement accessibles au public.",
+   "chapo": "Stéphane Tchriffo est journaliste économique et présentateur. À travers ses interventions et des initiatives autour de l’épargne, il contribue à rendre les questions financières plus proches du public.",
+   "role": [
+    "Journaliste économique et présentateur à la RTI, la télévision publique ivoirienne.",
+    "Il a présenté pendant environ sept ans « Made in Africa », une émission consacrée à l’actualité économique africaine et à l’effet des politiques publiques.",
+    "Il a animé des événements et des émissions pour des institutions comme la Banque mondiale, la Banque africaine de développement, l’UEMOA, la BCEAO, l’AMF-UMOA et la BRVM."
+   ],
+   "parcours": [
+    "2004 : chargé de communication bilingue pour un cabinet de conseil agricole, à Tel-Aviv.",
+    "2007 : consultant en communication à la Banque africaine de développement, auprès du bureau de l’économiste en chef.",
+    "Formation : École supérieure de journalisme de Lille (management des médias et journalisme), diplôme en droit et science politique, MBA en entrepreneuriat.",
+    "Membre du bureau exécutif d’EmergeLead, une ONG panafricaine qui forme de jeunes leaders francophones."
+   ],
+   "initiatives": [],
+   "initiatives_a_verifier": [
+    {
+     "titre": "Le Rendez-vous des épargnants",
+     "note": "Documenté par l’APIF-CI pour juin 2023 selon la spécification ; source non consultable le 31 octobre 2026.",
+     "url": "https://www.apif2022.finances.gouv.ci/index.php?Itemid=230&catid=5&id=261&option=com_content&view=article"
+    },
+    {
+     "titre": "Challenge épargne",
+     "note": "Mentionné publiquement par l’intéressé ; nom exact, statut et organisateur à vérifier. Lien seulement avec son accord (V1.1)."
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Profil d’intervenant, Africa CEO Forum 2023",
+     "editeur": "Africa CEO Forum",
+     "date": "2023",
+     "url": "https://www.theafricaceoforum.com/forum-2023/en/intervenant/stephane-tchriffo/"
+    }
+   ],
+   "sources_a_verifier": [
+    {
+     "titre": "Investir à la BRVM avec M. Stéphane Tchriffo, journaliste économique",
+     "editeur": "BRVM TV",
+     "url": "https://www.brvmtv.org/investir-brvm/investir-a-la-brvm-avec-m-stephane-tchriffo-journaliste-economique/"
+    }
+   ],
+   "portrait": null,
+   "liens_externes": [],
+   "date_verification": "2026-10-31",
+   "responsable": "Rédaction EFA"
+  }
+ ]
+}
