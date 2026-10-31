@@ -3,17 +3,207 @@
  "criteres": "Pertinence pour le marché de l’UMOA, contribution documentée, sources indépendantes ou institutionnelles, diversité des métiers et des pays.",
  "personnalites": [
   {
+   "slug": "jean-claude-kassi-brou",
+   "statut_publication": "publie",
+   "nom": "Jean-Claude Kassi Brou",
+   "initiales": "JB",
+   "fonction": "Gouverneur de la BCEAO",
+   "categorie": "Banque centrale",
+   "reglemente": true,
+   "angle": "Il conduit la politique monétaire des huit pays de l’UMOA.",
+   "chapo": "Jean-Claude Kassi Brou est gouverneur de la Banque centrale des États de l’Afrique de l’Ouest depuis juillet 2022. Il conduit la politique monétaire des huit pays de l’Union monétaire ouest-africaine.",
+   "role": [
+    "Gouverneur de la BCEAO : il a prêté serment le 8 juillet 2022, après sa nomination par la Conférence des chefs d’État et de gouvernement de l’UMOA.",
+    "La BCEAO émet le franc CFA, fixe les taux directeurs et veille à la stabilité du système financier de l’Union."
+   ],
+   "parcours": [
+    "1982 : entre au Fonds monétaire international, économiste principal pour la Guinée-Bissau, le Togo, le Cap-Vert et le Sénégal, puis représentant résident au Sénégal.",
+    "1991-1999 : conseiller économique et financier, puis directeur de cabinet du Premier ministre de Côte d’Ivoire.",
+    "2000-2008 : à la BCEAO, directeur des relations internationales, directeur des études, contrôleur général puis conseiller spécial du gouverneur.",
+    "2010 : représentant résident de la Banque mondiale au Tchad.",
+    "2012 : ministre de l’Industrie et des Mines de Côte d’Ivoire.",
+    "2018-2022 : président de la Commission de la CEDEAO.",
+    "Formation : maîtrise de sciences économiques (Université Félix Houphouët-Boigny), MBA en finance et doctorat en économie (Université de Cincinnati)."
+   ],
+   "initiatives": [],
+   "sources": [
+    {
+     "titre": "Le Gouverneur",
+     "editeur": "BCEAO",
+     "date": "consulté le 31 octobre 2026",
+     "url": "https://www.bceao.int/fr/content/le-gouverneur"
+    }
+   ],
+   "portrait": null,
+   "liens_externes": [],
+   "date_verification": "2026-10-31",
+   "responsable": "Rédaction EFA"
+  },
+  {
+   "slug": "edoh-kossi-amenounve",
+   "statut_publication": "publie",
+   "nom": "Edoh Kossi Amenounve",
+   "initiales": "EA",
+   "fonction": "Directeur général de la BRVM",
+   "categorie": "Bourse",
+   "reglemente": true,
+   "angle": "Il dirige la bourse commune des huit pays de l’UEMOA.",
+   "chapo": "Edoh Kossi Amenounve est directeur général de la Bourse régionale des valeurs mobilières, la bourse commune des huit pays de l’UEMOA, installée à Abidjan.",
+   "role": [
+    "Il dirige la BRVM, où s’échangent chaque jour de séance les actions et les obligations cotées de l’Union.",
+    "Mars 2018 : désigné président d’AfricaFinlab, un laboratoire de la finance africaine basé à Abidjan."
+   ],
+   "parcours": [],
+   "initiatives": [],
+   "sources": [
+    {
+     "titre": "Direction générale",
+     "editeur": "BRVM",
+     "date": "consulté le 31 octobre 2026",
+     "url": "https://www.brvm.org/fr/direction-generale"
+    },
+    {
+     "titre": "Le DG de la BRVM désigné nouveau président de l’AfricaFinlab",
+     "editeur": "Abidjan.net (AIP)",
+     "date": "28 mars 2018",
+     "url": "https://news.abidjan.net/articles/634638/index"
+    }
+   ],
+   "portrait": null,
+   "liens_externes": [],
+   "date_verification": "2026-10-31",
+   "responsable": "Rédaction EFA"
+  },
+  {
+   "slug": "kossi-tenou",
+   "statut_publication": "publie",
+   "nom": "Kossi Tenou",
+   "initiales": "KT",
+   "fonction": "Président de l’AMF-UMOA",
+   "categorie": "Régulateur",
+   "reglemente": true,
+   "angle": "Il préside le régulateur du marché financier régional.",
+   "chapo": "Kossi Tenou préside l’Autorité des marchés financiers de l’UMOA, le régulateur du marché financier régional, depuis novembre 2025.",
+   "role": [
+    "Nommé à l’unanimité président de l’AMF-UMOA par le Conseil des ministres de l’UMOA, le 25 novembre 2025. Il succède à Badanam Patoki.",
+    "L’AMF-UMOA agrée et contrôle les SGI et les autres acteurs du marché, et veille à l’information des épargnants."
+   ],
+   "parcours": [
+    "Longtemps directeur national de la BCEAO pour le Togo.",
+    "Fin 2023 : conseiller du gouverneur de la BCEAO.",
+    "Octobre 2025 : ministre délégué chargé du Commerce et du Contrôle de la qualité, au Togo."
+   ],
+   "initiatives": [],
+   "sources": [
+    {
+     "titre": "Conseil des ministres de l’UEMOA : le Togolais Kossi Tenou nommé président de l’AMF-UMOA",
+     "editeur": "Sidwaya",
+     "date": "25 novembre 2025",
+     "url": "https://www.sidwaya.info/conseil-des-ministres-de-luemoa-le-togolais-kossi-tenou-nomme-president-de-lamf-umoa/"
+    },
+    {
+     "titre": "AMF-UMOA : Kossi Tenou, le nouveau régulateur en chef",
+     "editeur": "Orishas Finance",
+     "date": "novembre 2025",
+     "url": "https://orishas-finance.com/actualite/amf-umoa-kossi-tenou-le-nouveau-regulateur-en-chef"
+    }
+   ],
+   "portrait": null,
+   "liens_externes": [],
+   "date_verification": "2026-10-31",
+   "responsable": "Rédaction EFA"
+  },
+  {
+   "slug": "birahim-diouf",
+   "statut_publication": "publie",
+   "nom": "Birahim Diouf",
+   "initiales": "BD",
+   "fonction": "Directeur général du DC/BR",
+   "categorie": "Dépositaire central",
+   "reglemente": true,
+   "angle": "Il dirige l’institution qui conserve les titres et règle les échanges.",
+   "chapo": "Birahim Diouf dirige le Dépositaire central / Banque de règlement, qui conserve les titres cotés à la BRVM et règle les échanges entre acheteurs et vendeurs.",
+   "role": [
+    "Directeur général du DC/BR depuis le 1er juillet 2022, nommé par le conseil d’administration réuni le 7 juin 2022.",
+    "Le DC/BR conserve les titres et assure le dénouement des opérations de bourse de l’UEMOA."
+   ],
+   "parcours": [
+    "Janvier 2021 : nommé directeur général adjoint du DC/BR."
+   ],
+   "initiatives": [],
+   "sources": [
+    {
+     "titre": "Birahim Diouf nommé directeur général du DC/BR",
+     "editeur": "Financial Afrik",
+     "date": "10 août 2022",
+     "url": "https://financialafrik.com/2022/08/10/birahim-diouf-nomme-directeur-general-du-depositaire-central-banque-de-reglement-dc-br"
+    },
+    {
+     "titre": "Birahim Diouf nommé directeur général adjoint du DC/BR",
+     "editeur": "Financial Afrik",
+     "date": "15 janvier 2021",
+     "url": "https://www.financialafrik.com/2021/01/15/bourse-birahim-diouf-nomme-directeur-general-adjoint-du-dc-br/"
+    }
+   ],
+   "portrait": null,
+   "liens_externes": [],
+   "date_verification": "2026-10-31",
+   "responsable": "Rédaction EFA"
+  },
+  {
+   "slug": "roselyne-abe",
+   "statut_publication": "publie",
+   "nom": "Roselyne Abé",
+   "initiales": "RA",
+   "fonction": "Présidente de l’APSGI-UEMOA",
+   "categorie": "Les SGI",
+   "reglemente": true,
+   "angle": "Elle préside l’association qui réunit les SGI du marché régional.",
+   "chapo": "Roselyne Abé préside l’Association professionnelle des sociétés de gestion et d’intermédiation de l’UEMOA, qui réunit les SGI du marché régional. Elle dirige aussi la SGI du groupe Ecobank.",
+   "role": [
+    "Élue présidente de l’APSGI-UEMOA par ses pairs le 24 juin 2021. Elle succède à Isidore Niamkey Tanoh.",
+    "Directrice générale d’EDC Investment Corporation, la SGI du groupe Ecobank dans la région.",
+    "L’association organise « Les Rendez-vous de l’APSGI » pour faire connaître la Bourse au public : à Abidjan en décembre 2024, à Dakar en avril 2025."
+   ],
+   "parcours": [],
+   "initiatives": [],
+   "sources": [
+    {
+     "titre": "Roseline Abé prend les commandes de l’APSGI-UEMOA",
+     "editeur": "Sika Finance",
+     "date": "24 juin 2021",
+     "url": "https://www.sikafinance.com/marches/roseline-abe-prend-les-commandes-de-apsgi-uemoa-lassociation-regionale-des-sgi_28883"
+    },
+    {
+     "titre": "L’APSGI veut vulgariser la Bourse à son 2e Rendez-vous",
+     "editeur": "Financial Afrik",
+     "date": "6 décembre 2024",
+     "url": "https://www.financialafrik.com/2024/12/06/marche-financier-de-lespace-uemoa-lapsgi-veut-vulgariser-la-bourse-a-son-2eme-rdv-les-12-et-13-decembre-a-abidjan"
+    },
+    {
+     "titre": "Les Rendez-vous de l’APSGI",
+     "editeur": "AllAfrica",
+     "date": "2025",
+     "url": "https://fr.allafrica.com/stories/202508250524.html"
+    }
+   ],
+   "portrait": null,
+   "liens_externes": [],
+   "date_verification": "2026-10-31",
+   "responsable": "Rédaction EFA"
+  },
+  {
    "slug": "stephane-tchriffo",
    "statut_publication": "publie",
    "nom": "Stéphane Tchriffo",
    "initiales": "ST",
    "fonction": "Journaliste économique et présentateur",
    "fonction_source": "Intitulé relevé en 2023 : présentateur et journaliste économique à la RTI (Africa CEO Forum).",
-   "categorie": "Journaliste et pédagogue",
+   "categorie": "Journaliste",
    "reglemente": false,
    "pays": "Côte d’Ivoire",
    "angle": "Il rend les enjeux d’épargne et d’investissement accessibles au public.",
-   "chapo": "Stéphane Tchriffo est journaliste économique et présentateur. À travers ses interventions et des initiatives autour de l’épargne, il contribue à rendre les questions financières plus proches du public.",
+   "chapo": "Stéphane Tchriffo est journaliste économique et présentateur. Par ses émissions et ses interventions, il rend les questions financières plus proches du public.",
    "role": [
     "Journaliste économique et présentateur à la RTI, la télévision publique ivoirienne.",
     "Il a présenté pendant environ sept ans « Made in Africa », une émission consacrée à l’actualité économique africaine et à l’effet des politiques publiques.",
