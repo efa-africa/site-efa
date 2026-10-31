@@ -105,3 +105,14 @@
 .vt-fiche dd{overflow-wrap:anywhere;min-width:0}
 @media(max-width:640px){.vt-outils{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-left:2px;padding-right:2px}.vt-outils::-webkit-scrollbar{display:none}.vt-outils>*{flex:none}.vt .vt-cmp{width:auto;margin-left:0}}
 .vt-cache{margin:0;font-size:15px;line-height:1.5;color:#4d5a6a}
+
+.vt .vt-etq-ok{background:rgba(60,203,127,.15);color:#0b1220}
+.vt-sec{margin-top:10px}
+.vt-sec h2{font-size:clamp(24px,2.8vw,32px)}
+.vt-sec-p{margin:8px 0 16px;max-width:70ch;color:#4d5a6a;line-height:1.55}
+.vt-grille{display:grid;gap:16px}
+.vt-sec+.vt-sec{margin-top:40px}
+.vt-incomplet{flex-basis:100%;margin:0;font-size:13.5px;color:#7a4b00}
+html[data-clone] .vt .vt-etq:not(.vt-etq-ok){background:#0b1220!important;color:#fff!important}
+html[data-clone] .vt .vt-etq-ok{background:rgba(60,203,127,.15)!important;color:#0b1220!important}
+html[data-clone] .vt .vt-logo-v{background:#0b1220!important;color:#fff!important}
