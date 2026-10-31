@@ -104,3 +104,4 @@
 .vt-dlg .vt-form{margin-top:6px}
 .vt-fiche dd{overflow-wrap:anywhere;min-width:0}
 @media(max-width:640px){.vt-outils{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-left:2px;padding-right:2px}.vt-outils::-webkit-scrollbar{display:none}.vt-outils>*{flex:none}.vt .vt-cmp{width:auto;margin-left:0}}
+.vt-cache{margin:0;font-size:15px;line-height:1.5;color:#4d5a6a}
