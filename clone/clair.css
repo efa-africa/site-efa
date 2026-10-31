@@ -94,3 +94,22 @@ section,.porte,#seul-contenus,[id]{scroll-margin-top:150px}
 .concept-cs-l{display:inline-flex;gap:8px;margin-top:22px;font-weight:800;color:#147e9c!important;text-decoration:underline;text-decoration-color:#e34234;text-decoration-thickness:2px;text-underline-offset:5px}
 .concept-cs-l span{color:#147e9c!important}
 @media(max-width:700px){.concept-v canvas{max-width:280px}}
+
+/* Accueil · le fondateur, visible dès la première visite (aussi en mode hall) · 31/10/2026 */
+html.cl-hall .aig>section.fondateur{display:block!important}
+.fondateur{background:#fff;padding:clamp(44px,6vw,80px) 0}
+.fondateur-in{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;max-width:980px}
+.fondateur-img{width:clamp(120px,15vw,190px);aspect-ratio:2/3;height:auto;object-fit:cover;object-position:50% 20%;border-radius:18px;box-shadow:0 18px 40px rgba(7,29,56,.14)}
+.fondateur .eyebrow{margin:0;color:#168da4!important}
+.fondateur h2{margin:10px 0 0;font:700 clamp(28px,3.4vw,44px)/1.12 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.025em;color:#071d38}
+.fondateur h2 em{font-style:normal;color:#168da4}
+.fondateur p:not(.eyebrow){margin:14px 0 0;max-width:58ch;font-size:17.5px;line-height:1.6;color:#4d5a6a}
+.fondateur-b{display:inline-flex;align-items:center;gap:14px;margin-top:22px;min-height:50px;padding:12px 22px;border-radius:999px;background:#071d38;color:#fff!important;font-weight:800;font-size:15.5px;text-decoration:none}
+.fondateur-b:hover{background:#0b63b0}
+@media(max-width:620px){.fondateur-in{grid-template-columns:1fr}.fondateur-img{width:130px}}
+
+/* Signature du fondateur : « Une idée d'Élysée Johnson, fondateur d'EFA » · 31/10/2026 */
+.efa-sig{margin:18px 0 0}
+.efa-sig a{display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px #dbe6f0;color:#071d38!important;font:700 14.5px/1.25 "Source Sans 3",sans-serif;text-decoration:none!important}
+.efa-sig a:hover{box-shadow:0 0 0 1.5px #0b63b0}
+.efa-sig img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none}

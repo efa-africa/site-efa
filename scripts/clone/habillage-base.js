@@ -367,3 +367,19 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', articles); else articles();
 })();
+
+/* Signature du fondateur sur les pages où sa voix compte (tribunes, méthode, école, cercle et spirale) */
+(function () {
+  var P = /(?:^|\/)(methode|parcours|cercle-spirale)(?:\.html)?$/;
+  function signer() {
+    if (!P.test(location.pathname.replace(/\/$/, '')) || document.querySelector('.efa-sig')) return;
+    var h = [].slice.call(document.querySelectorAll('main h1, #contenu h1, h1')).filter(function (x) { return x.offsetHeight && !x.closest('header,#clone-haut,[data-v1-cache],.ec-fab'); })[0];
+    if (!h) return;
+    var apres = h, n = h.nextElementSibling;
+    if (n && n.tagName === 'P') apres = n;
+    var d = document.createElement('p'); d.className = 'efa-sig';
+    d.innerHTML = '<a href="auteur.html#auteur"><img src="clone/assets/elysee-portrait.jpg" alt="" width="34" height="34" loading="lazy">Une idée d’Élysée Johnson, fondateur d’EFA</a>';
+    apres.insertAdjacentElement('afterend', d);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(signer, 50); }); else setTimeout(signer, 50);
+})();
