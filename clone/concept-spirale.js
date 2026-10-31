@@ -8,11 +8,11 @@
   function dot(x, y, r, col) { c.beginPath(); c.arc(x, y, r, 0, 7); c.fillStyle = col; c.fill(); }
   function dessiner(q) {
     c.clearRect(0, 0, S, S);
-    for (var k = 0; k < 12; k++) { var a = -Math.PI / 2 + k * Math.PI / 6; dot(C + Math.cos(a) * R, C + Math.sin(a) * R, S * .018, '#2A3550'); }
-    for (var i = 0; i < M; i++) { var u = i / (M - 1), p = pt(u); dot(p[0], p[1], S * (.006 + .02 * u), u <= q ? '#2188D6' : '#A9D3F5'); }
+    for (var k = 0; k < 12; k++) { var a = -Math.PI / 2 + k * Math.PI / 6; dot(C + Math.cos(a) * R, C + Math.sin(a) * R, S * .018, '#071d38'); }
+    for (var i = 0; i < M; i++) { var u = i / (M - 1), p = pt(u); dot(p[0], p[1], S * (.006 + .02 * u), u <= q ? '#168da4' : '#a9dbe5'); }
     var p2 = pt(q), rr = S * (.016 + .014 * q), g = c.createRadialGradient(p2[0], p2[1], 0, p2[0], p2[1], S * .08);
-    g.addColorStop(0, 'rgba(240,96,63,.55)'); g.addColorStop(1, 'rgba(240,96,63,0)'); c.fillStyle = g; c.fillRect(0, 0, S, S);
-    dot(p2[0], p2[1], rr, '#F0603F');
+    g.addColorStop(0, 'rgba(227,66,52,.5)'); g.addColorStop(1, 'rgba(227,66,52,0)'); c.fillStyle = g; c.fillRect(0, 0, S, S);
+    dot(p2[0], p2[1], rr, '#e34234');
   }
   var vu = true;
   if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vu = e[0].isIntersecting; }).observe(cv);
