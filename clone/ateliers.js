@@ -9,7 +9,7 @@
   function carte(a, n) {
     var ok = etat.ok[a.id] || a.gratuit;
     return '<article class="at-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '">' +
-      '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/atelier-' + (n < 10 ? '0' : '') + n + '.webp" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
+      '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/atelier-' + (n < 10 ? '0' : '') + n + '.webp?v=2" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
       '<div class="at-c-corps"><span class="at-c-type">' + (a.c ? 'Avec Élysée Johnson · 3 séances · 8 places' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
