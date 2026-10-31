@@ -287,3 +287,8 @@ html.musee-ouvert #efa-ely,html.musee-ouvert .musee-flot,html.musee-ouvert .efa-
   #musee .mu-etape.s[data-k="0"]:has(> .mu-cadre) > .mu-merci{grid-column:1;grid-row:2;margin:0!important;max-width:none;font-size:14.5px!important}
   #musee .mu-etape.s[data-k="0"]:has(> .mu-cadre) > .mu-txt{grid-column:2;grid-row:1/4}
 }
+
+/* Les murs du musée : le bleu nuit et la matière du hall d'entrée (31/10/2026) */
+#musee{--mur:#182540 url("clone/assets/musee-mur.webp") repeat;background:var(--mur)!important;background-size:280px auto!important}
+#musee .mu-haut,#musee .mu-bas,#musee .mu-scene{background:transparent!important}
+#musee .mu-etape.n .mu-txt,#musee .mu-q{background:rgba(9,17,32,.78)}
