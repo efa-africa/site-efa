@@ -1,10 +1,13 @@
-/* EFA · Worker Cloudflare « vitrine » : comptage anonyme et facturable de la vitrine des SGI.
-   Variables : SUPABASE_URL, SUPABASE_SERVICE_KEY (secret), ADMIN_KEY (secret), SITE_ORIGIN (https://efa.africa).
-   Routes : POST /evenement · GET /rapport?sgi=&du=&au= · GET /rapport.csv?du=&au=  (rapports : en-tête x-admin-key) */
-const TYPES = ['vue_carte', 'vue_fiche', 'clic_canal', 'ajout_comparer'];
+/* EFA · Worker Cloudflare « vitrine » : comptage anonyme de la vitrine des SGI et envoi des coordonnées (« Contacter la SGI »).
+   Variables : SUPABASE_URL, SITE_ORIGIN (https://efa.africa), BREVO_TEMPLATE_ID (modèle « EFA · Coordonnées SGI »),
+               BREVO_LISTE_DEMANDES (id de la liste « Vitrine SGI · demandes »), BREVO_LISTE_NEWSLETTER (4).
+   Secrets   : SUPABASE_SERVICE_KEY, ADMIN_KEY, BREVO_API_KEY, TURNSTILE_SECRET (facultatif : sans lui, pas de contrôle Turnstile).
+   Routes : POST /evenement · POST /contact · GET /rapport?sgi=&du=&au= · GET /rapport.csv?du=&au=  (rapports : en-tête x-admin-key)
+   Règle : l'adresse du visiteur n'est jamais transmise à la SGI ni enregistrée dans vitrine_evenements. */
+const TYPES = ['vue_carte', 'vue_fiche', 'demande_contact', 'clic_canal', 'ajout_comparer'];
 const CANAUX = ['formulaire', 'whatsapp', 'tel', 'email'];
 const ROBOTS = /bot|crawl|spider|slurp|facebookexternalhit|preview|headless|lighthouse|curl|wget|python|axios/i;
-let SGI_CACHE = { t: 0, ids: null };
+let SGI_CACHE = { t: 0, ids: null, par: null };
 
 function cors(env) { return { 'Access-Control-Allow-Origin': env.SITE_ORIGIN || 'https://efa.africa', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, x-admin-key' }; }
 function json(o, s, env) { return new Response(JSON.stringify(o), { status: s || 200, headers: Object.assign({ 'Content-Type': 'application/json' }, cors(env)) }); }
@@ -14,7 +17,7 @@ async function sb(env, path, init) {
 async function idsSGI(env) {
   if (SGI_CACHE.ids && Date.now() - SGI_CACHE.t < 600000) return SGI_CACHE.ids;
   const r = await fetch((env.SITE_ORIGIN || 'https://efa.africa') + '/data/sgi.json', { cf: { cacheTtl: 300 } });
-  const d = await r.json(); SGI_CACHE = { t: Date.now(), ids: new Set(d.sgi.map(s => s.id)) }; return SGI_CACHE.ids;
+  const d = await r.json(); const par = {}; d.sgi.forEach(s => { par[s.id] = s; }); SGI_CACHE = { t: Date.now(), ids: new Set(d.sgi.map(s => s.id)), par }; return SGI_CACHE.ids;
 }
 async function evenement(req, env) {
   if (ROBOTS.test(req.headers.get('user-agent') || '')) return json({ ok: true, ignore: 'robot' }, 202, env);
@@ -35,6 +38,46 @@ async function evenement(req, env) {
   const r = await sb(env, 'vitrine_evenements', { method: 'POST', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ type, sgi, position: pos, payee: !!b.payee, canal, pays, session }) });
   return r.ok ? json({ ok: true }, 201, env) : json({ erreur: 'enregistrement' }, 500, env);
 }
+async function sha(t) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
+async function brevo(env, path, body) {
+  return fetch('https://api.brevo.com/v3/' + path, { method: 'POST', headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json', accept: 'application/json' }, body: JSON.stringify(body) });
+}
+async function contact(req, env) {
+  if (ROBOTS.test(req.headers.get('user-agent') || '')) return json({ message: 'Refusé.' }, 403, env);
+  let b; try { b = await req.json(); } catch (e) { return json({ message: 'Demande illisible.' }, 400, env); }
+  const email = String(b.email || '').trim().toLowerCase();
+  if (b.consentement !== true) return json({ message: 'Cochez la case d’accord.' }, 400, env);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 160) return json({ message: 'Adresse e-mail invalide.' }, 400, env);
+  await idsSGI(env); const s = SGI_CACHE.par[String(b.sgi || '')];
+  if (!s) return json({ message: 'SGI inconnue.' }, 400, env);
+  if (env.TURNSTILE_SECRET) {
+    const fd = new FormData(); fd.append('secret', env.TURNSTILE_SECRET); fd.append('response', String(b.turnstile || '')); fd.append('remoteip', req.headers.get('cf-connecting-ip') || '');
+    const t = await (await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: fd })).json();
+    if (!t.success) return json({ message: 'Vérification anti-robot échouée. Réessayez.' }, 403, env);
+  }
+  // 5 demandes par adresse et par jour (empreinte seulement)
+  const emp = await sha('efa-vitrine|' + email), jour = new Date().toISOString().slice(0, 10);
+  const q = await sb(env, 'vitrine_quota?select=nb&empreinte=eq.' + emp + '&jour=eq.' + jour); const ex = q.ok ? await q.json() : [];
+  const nb = ex.length ? ex[0].nb : 0;
+  if (nb >= 5) return json({ message: 'Vous avez déjà fait 5 demandes aujourd’hui. Réessayez demain.' }, 429, env);
+  await sb(env, 'vitrine_quota', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates,return=minimal' }, body: JSON.stringify({ empreinte: emp, jour, nb: nb + 1 }) });
+  const c = s.contact || {}, prenom = String(b.prenom || '').slice(0, 60);
+  // 1. E-mail transactionnel au visiteur (modèle Brevo « EFA · Coordonnées SGI »)
+  const e1 = await brevo(env, 'smtp/email', { templateId: Number(env.BREVO_TEMPLATE_ID), to: [{ email }], params: { NOM_SGI: s.nom, TELEPHONE: c.telephone || 'Non communiqué', EMAIL_SGI: c.email || 'Non communiqué', SITE: s.site || 'Non communiqué', ADRESSE: c.agence || 'Non communiquée', PRENOM: prenom } });
+  if (!e1.ok) return json({ message: 'L’envoi de l’e-mail n’a pas abouti. Réessayez dans un instant.' }, 502, env);
+  // 2. Contact dans la liste « Vitrine SGI · demandes », avec les SGI demandées (cumulées)
+  let deja = [];
+  try { const g = await fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email), { headers: { 'api-key': env.BREVO_API_KEY, accept: 'application/json' } }); if (g.ok) { const j = await g.json(); deja = String((j.attributes || {}).EFA_SGI_DEMANDEES || '').split(',').filter(Boolean); } } catch (e) {}
+  if (deja.indexOf(s.id) < 0) deja.push(s.id);
+  const listes = [Number(env.BREVO_LISTE_DEMANDES)]; if (b.newsletter === true && env.BREVO_LISTE_NEWSLETTER) listes.push(Number(env.BREVO_LISTE_NEWSLETTER));
+  const attrs = { EFA_SGI_DEMANDEES: deja.join(',') }; if (prenom) attrs.PRENOM = prenom; if (b.pays) attrs.EFA_PAYS = String(b.pays).slice(0, 40);
+  await brevo(env, 'contacts', { email, attributes: attrs, listIds: listes.filter(Boolean), updateEnabled: true });
+  // 3. Comptage anonyme : aucune adresse dans vitrine_evenements
+  const pos = b.position == null ? null : parseInt(b.position, 10);
+  await sb(env, 'vitrine_evenements', { method: 'POST', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ type: 'demande_contact', sgi: s.id, position: pos >= 1 && pos <= 200 ? pos : null, payee: !!b.payee, canal: null, pays: req.cf && req.cf.country ? String(req.cf.country).slice(0, 2) : null, session: String(b.session || '').slice(0, 64) || null }) });
+  // Régime B (envoi à la SGI) : non développé, attend la validation juridique.
+  return json({ ok: true }, 200, env);
+}
 function autorise(req, env) { return env.ADMIN_KEY && req.headers.get('x-admin-key') === env.ADMIN_KEY; }
 async function lignes(env, u) {
   const p = ['select=cree_le,type,sgi,position,payee,canal,pays', 'order=cree_le.asc', 'limit=100000'];
@@ -49,6 +92,7 @@ export default {
     const u = new URL(req.url);
     if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env) });
     if (req.method === 'POST' && u.pathname === '/evenement') return evenement(req, env);
+    if (req.method === 'POST' && u.pathname === '/contact') return contact(req, env);
     if (req.method === 'GET' && (u.pathname === '/rapport' || u.pathname === '/rapport.csv')) {
       if (!autorise(req, env)) return json({ erreur: 'accès refusé' }, 401, env);
       const L = await lignes(env, u);

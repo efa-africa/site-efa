@@ -26,5 +26,7 @@ window.EFA_CONFIG = {
   // Vitrine des SGI : adresse du Worker « vitrine » (comptage anonyme des vues et des clics). Vide = rien n'est envoyé.
   VITRINE_URL: "",
   // EFA Invest : adresse « action » du formulaire Brevo « EFA Invest attente (site) ». Vide = la demande arrive par e-mail (Web3Forms).
-  INVEST_BREVO_URL: ""
+  INVEST_BREVO_URL: "",
+  // Cloudflare Turnstile (anti-robot du bouton « Contacter la SGI »). Vide = pas de contrôle.
+  TURNSTILE_SITEKEY: ""
 };

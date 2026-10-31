@@ -1,259 +1,1399 @@
 {
  "maj": "2026-10-31",
- "demo": true,
  "sgi": [
   {
-   "id": "demo-a",
-   "nom": "SGI Démonstration A",
-   "agrement": "SGI/DEMO/01",
-   "pays_siege": "CI",
-   "pays_couverts": [
-    "CI",
-    "SN",
-    "BJ",
-    "Diaspora"
-   ],
-   "logo": null,
-   "site": null,
-   "contact": {
-    "formulaire": "https://example.org",
-    "telephone": "+225 00 00 00 00",
-    "whatsapp": "+225 00 00 00 00",
-    "email": "contact@example.org",
-    "agence": "Abidjan, Plateau"
-   },
-   "frais": {
-    "courtage": "1 % · min. 5 000 FCFA",
-    "droits_garde": "0,3 % par an",
-    "tenue_compte": "10 000 FCFA par an",
-    "source": "Données de démonstration, sans valeur réelle"
-   },
-   "acces": {
-    "minimum_ouverture_fcfa": 50000,
-    "ouverture_distance": "oui",
-    "delai_ouverture": "5 jours ouvrés"
-   },
-   "service": {
-    "application": "oui",
-    "canaux": [
-     "téléphone",
-     "WhatsApp",
-     "agence"
-    ],
-    "horaires": "Lun.–ven. 8 h–17 h"
-   },
-   "relue": true,
-   "relue_le": "2026-10-31",
-   "qualite_ok": true
-  },
-  {
-   "id": "demo-b",
-   "nom": "SGI Démonstration B",
-   "agrement": "SGI/DEMO/02",
+   "id": "abco-bourse",
+   "nom": "ABCO Bourse",
+   "agrement": null,
    "pays_siege": "SN",
    "pays_couverts": [
-    "SN",
-    "ML",
-    "CI"
+    "SN"
    ],
-   "logo": null,
-   "site": null,
+   "logo": "img/sgi/abco-bourse.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/abco_0.png?itok=q_Bo85wx",
+   "presentation": null,
+   "site": "https://www.abcobourse.com",
    "contact": {
     "formulaire": null,
-    "telephone": "+221 00 000 00 00",
+    "telephone": "(+221) 33 822 68 00 / (+221) 33 822 68 01",
     "whatsapp": null,
-    "email": null,
-    "agence": "Dakar, Plateau"
-   },
-   "frais": {
-    "courtage": "1,2 %",
-    "droits_garde": "0,25 % par an",
-    "tenue_compte": null,
-    "source": "Données de démonstration, sans valeur réelle"
-   },
-   "acces": {
-    "minimum_ouverture_fcfa": 100000,
-    "ouverture_distance": "partielle",
-    "delai_ouverture": "5 jours ouvrés"
-   },
-   "service": {
-    "application": "non",
-    "canaux": [
-     "téléphone",
-     "agence"
-    ],
-    "horaires": "Lun.–ven. 8 h–17 h"
-   },
-   "relue": false,
-   "relue_le": null,
-   "qualite_ok": false
-  },
-  {
-   "id": "demo-c",
-   "nom": "SGI Démonstration C",
-   "agrement": "SGI/DEMO/03",
-   "pays_siege": "BJ",
-   "pays_couverts": [
-    "BJ",
-    "TG",
-    "NE"
-   ],
-   "logo": null,
-   "site": null,
-   "contact": {
-    "formulaire": null,
-    "telephone": null,
-    "whatsapp": "+229 00 00 00 00",
-    "email": "info@example.org",
-    "agence": null
-   },
-   "frais": {
-    "courtage": "0,9 % · min. 3 000 FCFA",
-    "droits_garde": "0,3 % par an",
-    "tenue_compte": "Gratuite",
-    "source": "Données de démonstration, sans valeur réelle"
-   },
-   "acces": {
-    "minimum_ouverture_fcfa": 25000,
-    "ouverture_distance": "oui",
-    "delai_ouverture": "5 jours ouvrés"
-   },
-   "service": {
-    "application": "oui",
-    "canaux": [
-     "WhatsApp",
-     "e-mail"
-    ],
-    "horaires": "Lun.–ven. 8 h–17 h"
-   },
-   "relue": true,
-   "relue_le": "2026-10-31",
-   "qualite_ok": true
-  },
-  {
-   "id": "demo-d",
-   "nom": "SGI Démonstration D",
-   "agrement": null,
-   "pays_siege": "BF",
-   "pays_couverts": [
-    "BF",
-    "ML"
-   ],
-   "logo": null,
-   "site": null,
-   "contact": {
-    "formulaire": null,
-    "telephone": null,
-    "whatsapp": null,
-    "email": null,
-    "agence": "Ouagadougou"
+    "email": "contact@abcobourse.com",
+    "agence": "Résidence Moumtazz, Avenue Cheikh Anta Diop, Mermoz - Face 2ème Porte, 6956 Dakar – Etoile"
    },
    "frais": {
     "courtage": null,
     "droits_garde": null,
     "tenue_compte": null,
-    "source": "Données de démonstration, sans valeur réelle"
+    "source": null
    },
    "acces": {
     "minimum_ouverture_fcfa": null,
-    "ouverture_distance": "non",
+    "ouverture_distance": null,
     "delai_ouverture": null
    },
    "service": {
     "application": null,
-    "canaux": [
-     "agence"
-    ],
-    "horaires": "Lun.–ven. 8 h–17 h"
+    "canaux": null,
+    "horaires": null
    },
    "relue": false,
    "relue_le": null,
-   "qualite_ok": true
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
   },
   {
-   "id": "demo-e",
-   "nom": "SGI Démonstration E",
-   "agrement": "SGI/DEMO/05",
-   "pays_siege": "CI",
+   "id": "africaine-de-gestion-et-d-intermediation",
+   "nom": "Africaine de Gestion et d'Intermédiation (AGI)",
+   "agrement": null,
+   "pays_siege": "BJ",
    "pays_couverts": [
-    "CI",
-    "BF",
-    "Diaspora"
+    "BJ"
    ],
-   "logo": null,
-   "site": null,
+   "logo": "img/sgi/africaine-de-gestion-et-d-intermediation.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logoagi.png?itok=1wqGLRAe",
+   "presentation": null,
+   "site": "https://www.sgi-agi.com",
    "contact": {
-    "formulaire": "https://example.org",
-    "telephone": "+225 00 00 00 01",
+    "formulaire": null,
+    "telephone": "+229 21 31 87 33 / +229 21 31 60 65",
     "whatsapp": null,
-    "email": "contact@example.org",
-    "agence": "Abidjan, Cocody"
+    "email": "contact@sgi-agi.com",
+    "agence": "Av. Jean Paul II, Carré 1269, Immeuble de l'Africaine des Assurances, 01 BP 8668 RP Cotonou"
    },
    "frais": {
-    "courtage": "1 %",
-    "droits_garde": "0,2 % par an",
-    "tenue_compte": "15 000 FCFA par an",
-    "source": "Données de démonstration, sans valeur réelle"
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
    },
    "acces": {
-    "minimum_ouverture_fcfa": 200000,
-    "ouverture_distance": "oui",
-    "delai_ouverture": "5 jours ouvrés"
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
    },
    "service": {
-    "application": "oui",
-    "canaux": [
-     "téléphone",
-     "WhatsApp",
-     "e-mail",
-     "agence"
-    ],
-    "horaires": "Lun.–ven. 8 h–17 h"
+    "application": null,
+    "canaux": null,
+    "horaires": null
    },
-   "relue": true,
-   "relue_le": "2026-10-31",
-   "qualite_ok": true
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
   },
   {
-   "id": "demo-f",
-   "nom": "SGI Démonstration F",
-   "agrement": "SGI/DEMO/06",
-   "pays_siege": "TG",
+   "id": "atlantique-finance",
+   "nom": "Atlantique Finance",
+   "agrement": null,
+   "pays_siege": "CI",
    "pays_couverts": [
-    "TG",
-    "BJ",
-    "GW"
+    "CI"
    ],
-   "logo": null,
+   "logo": "img/sgi/atlantique-finance.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_afin.jpg?itok=4mr_MxCz",
+   "presentation": null,
+   "site": "https://www.atlantiquefinance.net/",
+   "contact": {
+    "formulaire": null,
+    "telephone": "27 20 31 21 21 / 27 20 31 21 23",
+    "whatsapp": null,
+    "email": "atlantiquefinance@banqueatlantique.net",
+    "agence": "15, Av. Joseph Anoma, Abidjan-Plateau, 10ème étage, 04 BP 1036 Abidjan 04"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "attijari-securities-west-africa",
+   "nom": "Attijari Securities West Africa",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/attijari-securities-west-africa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logoaswa.jpg?itok=hNV7Korl",
+   "presentation": null,
+   "site": "https://www.sib.ci",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 20 21 98 26 / (225) 27 20 21 98 27",
+    "whatsapp": null,
+    "email": "aswa@sib.ci",
+    "agence": "Rue Gourgas - Tour Immeuble Alpha 2000, 3ème étage, 1300 Abidjan"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "boa-capital-securities",
+   "nom": "BOA Capital Securities",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/boa-capital-securities.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/boa_cap.jpeg?itok=_JEJ9oFZ",
+   "presentation": null,
+   "site": "https://www.boacapital.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 20 30 21 22 / (225) 27 20 32 04 68",
+    "whatsapp": null,
+    "email": "info@boacapital.com",
+    "agence": "Plateau - Boulevard de la République, Avenue Crozet, Immeuble XL, 2ème étage, 01 BP 4854 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "bridge-securities",
+   "nom": "Bridge Securities",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/bridge-securities.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_bridge_secu.jpg?itok=Gs0mqCmE",
+   "presentation": null,
+   "site": "https://www.bridge-securities.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 05 85 74 98 98 / 05 74 80 80 31",
+    "whatsapp": null,
+    "email": "info@bridge-securities.com",
+    "agence": "Immeuble THE ONE, Cocody 33, Rue de la Cannebière, 01 BP 13002 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "bsic-capital-sa",
+   "nom": "BSIC Capital SA",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/bsic-capital-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/bsic_capital.jpeg?itok=ru0ncCzC",
+   "presentation": null,
+   "site": "https://bsiccapital.com/",
+   "contact": {
+    "formulaire": null,
+    "telephone": "+225 27 20 31 71 11 / +225 27 20 31 71 12",
+    "whatsapp": null,
+    "email": "bsic.capital@bsicbank.com",
+    "agence": "Avenue Noguès, Immeuble Broadway Center, 3ème étage, Plateau, 01 BP 7032 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "compagnie-d-ingenierie-financiere-et-d-assistance-en-bourse",
+   "nom": "Compagnie d'Ingénierie Financière et d'Assistance en Bourse (CIFA Bourse)",
+   "agrement": null,
+   "pays_siege": "ML",
+   "pays_couverts": [
+    "ML"
+   ],
+   "logo": "img/sgi/compagnie-d-ingenierie-financiere-et-d-assistance-en-bourse.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-cifa.jpg?itok=2yiJwTxr",
+   "presentation": null,
+   "site": "https://www.cifabourse.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "00223 20 23 50 20",
+    "whatsapp": null,
+    "email": "info@cifabourse.com",
+    "agence": "Immeuble SANLAM, 3ème étage, Boulevard du 22 Octobre 1946, Quartier du Fleuve, Bamako"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "everest-finance",
+   "nom": "Everest Finance",
+   "agrement": null,
+   "pays_siege": "SN",
+   "pays_couverts": [
+    "SN"
+   ],
+   "logo": "img/sgi/everest-finance.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_hd_everest.png?itok=Lv_366m6",
+   "presentation": null,
+   "site": "https://www.everestfin.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(221) 33 82 28 700",
+    "whatsapp": null,
+    "email": "all@everestfin.com",
+    "agence": "Immeuble Platinum, 4ème étage, 18 Bd de la République, BP 11659 Dakar"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "finance-gestion-intermediation",
+   "nom": "Finance Gestion Intermédiation (FGI)",
+   "agrement": null,
+   "pays_siege": "SN",
+   "pays_couverts": [
+    "SN"
+   ],
+   "logo": "img/sgi/finance-gestion-intermediation.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/fgi.jpg?itok=IhCYKRpJ",
+   "presentation": null,
+   "site": "https://www.fgi-bourse.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(+221) 33 867 60 42 / (+221) 78 152 05 05",
+    "whatsapp": null,
+    "email": "contact@fgi-bourse.com",
+    "agence": "Point E, Immeuble EPI, 1er étage, Boulevard du Sud x Rue 1, BP 25672 Dakar"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "gek-capital",
+   "nom": "GEK Capital",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/gek-capital.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logogek-capital.png?itok=bcF4rU1O",
+   "presentation": null,
+   "site": "https://www.gekcapital.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "+225 27 22 22 43 60",
+    "whatsapp": null,
+    "email": "info@gekcapital.com",
+    "agence": "Cocody, Riviera Golf, Cité Riviera Beach, Villa Emeraude, 17 BP 41 Abidjan 17"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "global-capital",
+   "nom": "Global Capital",
+   "agrement": null,
+   "pays_siege": "ML",
+   "pays_couverts": [
+    "ML"
+   ],
+   "logo": "img/sgi/global-capital.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_global-capiatal_0.jpg?itok=NQAV0D1S",
+   "presentation": null,
+   "site": "https://www.sgiglobalcapital.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "+223 44 90 59 74 / 44 90 59 75",
+    "whatsapp": null,
+    "email": "contact@sgiglobalcapital.com",
+    "agence": "Bamako ACI 2000, Rue 239, Parcelle 2355, 1er étage, BP E3407"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "image-finances-internationales",
+   "nom": "Image Finances Internationales (IFI)",
+   "agrement": null,
+   "pays_siege": "BF",
+   "pays_couverts": [
+    "BF"
+   ],
+   "logo": "img/sgi/image-finances-internationales.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/ifi.jpg?itok=4p2Uh_hw",
+   "presentation": null,
+   "site": "https://www.image-finance.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "+226 25 66 78 78 / +226 04 00 00 46",
+    "whatsapp": null,
+    "email": "contact@image-finance.com",
+    "agence": "Ouaga 2000, côté Est de la mosquée Kanazoé, 05 BP 30130 Ouagadougou 05"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "invictus-capital-finance",
+   "nom": "Invictus Capital & Finance",
+   "agrement": null,
+   "pays_siege": "SN",
+   "pays_couverts": [
+    "SN"
+   ],
+   "logo": "img/sgi/invictus-capital-finance.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/invictus.jpg?itok=cvK6gdeJ",
+   "presentation": null,
+   "site": "https://www.invictuscapfin.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(221) 33 864 58 58 / (221) 33 820 02 25",
+    "whatsapp": null,
+    "email": "contact@invictuscapfin.com",
+    "agence": "Immeuble El Hadji Rey Tall Amar, Lot 46, 21 Av. Lamine Gueye x Dodds, 12ème étage, BP 15498 Dakar"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "matha-securities",
+   "nom": "Matha Securities",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/matha-securities.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_matha_securities_ok.jpeg?itok=57SmJlpr",
+   "presentation": null,
+   "site": "https://mathasecurities.com/",
+   "contact": {
+    "formulaire": null,
+    "telephone": "+225 27 20 24 30 30",
+    "whatsapp": null,
+    "email": null,
+    "agence": "Immeuble Tropique 3, 3ème étage, Boulevard de la République, Plateau, 01 BP 10762 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "nsia-finance",
+   "nom": "NSIA Finance",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/nsia-finance.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-nsia-finance.jpg?itok=HRh8UESl",
+   "presentation": null,
+   "site": "https://www.nsiafinance.com/",
+   "contact": {
+    "formulaire": null,
+    "telephone": "27 20 20 06 53",
+    "whatsapp": null,
+    "email": "nsiafinance@nsiafinance.com",
+    "agence": "8 et 10, Avenue Joseph Anoma, Tour BIAO, 14ème étage, 18 BP 2294 Abidjan 18"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "oragroup-securities",
+   "nom": "Oragroup Securities",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/oragroup-securities.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_oragroupsecurities_0.jpg?itok=GTyxAmuC",
+   "presentation": null,
+   "site": "https://www.oragroupsecurities.net",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(00225) 07 88 77 15 69",
+    "whatsapp": null,
+    "email": "contactOGS@orabank.net",
+    "agence": "Cocody Mermoz, Rue Jeanne Gervais, Lot 7B et 8, 08 BP 701 Abidjan 08"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "phoenix-capital-management",
+   "nom": "Phoenix Capital Management",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/phoenix-capital-management.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_60_1.jpg?itok=u9g2v3yi",
+   "presentation": null,
+   "site": "https://phoenixafricaholding.com/pcm/",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 22 59 85 80",
+    "whatsapp": null,
+    "email": "cms@phoenixafrica.com",
+    "agence": "Cocody Riviera 4 Golf, face à l'annexe de l'Ambassade des USA, 01 BP 12686 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-africabourse",
+   "nom": "SGI Africabourse",
+   "agrement": null,
+   "pays_siege": "BJ",
+   "pays_couverts": [
+    "BJ"
+   ],
+   "logo": "img/sgi/sgi-africabourse.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_44.jpg?itok=YkqR_CtW",
+   "presentation": null,
+   "site": "https://www.africabourse.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(229) 21 31 88 35/36, (229) 21 31 14 54",
+    "whatsapp": null,
+    "email": "africabourse@africabourse.com",
+    "agence": "Avenue Steinmetz, en face de DHL ex-Air Gabon, 01 BP 6002 Cotonou"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-benin-sa",
+   "nom": "SGI Bénin SA",
+   "agrement": null,
+   "pays_siege": "BJ",
+   "pays_couverts": [
+    "BJ"
+   ],
+   "logo": "img/sgi/sgi-benin-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-sgi-benin.png?itok=welXGLFL",
+   "presentation": null,
+   "site": "https://www.sgibenin.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(229) 21 31 15 41/71 ; (229) 21 31 15 60",
+    "whatsapp": null,
+    "email": "sgibenin@sgibenin.com",
+    "agence": "Carré 211 Saint Michel, Immeuble SGI-Bénin, 01 BP 4546 Cotonou"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-bici-bourse",
+   "nom": "SGI BICI Bourse",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/sgi-bici-bourse.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_48.jpg?itok=2XWYbo-p",
+   "presentation": null,
    "site": null,
    "contact": {
     "formulaire": null,
-    "telephone": "+228 00 00 00 00",
+    "telephone": "(225) 27 20 20 16 68 ; (225) 27 20 21 47 22",
     "whatsapp": null,
-    "email": null,
-    "agence": null
+    "email": "bicibourse@africa.bnpparibas.com",
+    "agence": "1er étage de l'agence BICICI Aghien, Cocody II Plateaux, Boulevard Latrille, Carrefour Duncan, 01 BP 1298 Abidjan"
    },
    "frais": {
-    "courtage": "1,1 %",
+    "courtage": null,
     "droits_garde": null,
-    "tenue_compte": "12 000 FCFA par an",
-    "source": "Données de démonstration, sans valeur réelle"
+    "tenue_compte": null,
+    "source": null
    },
    "acces": {
-    "minimum_ouverture_fcfa": 75000,
-    "ouverture_distance": "partielle",
-    "delai_ouverture": "5 jours ouvrés"
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
    },
    "service": {
-    "application": "non",
-    "canaux": [
-     "téléphone"
-    ],
-    "horaires": "Lun.–ven. 8 h–17 h"
+    "application": null,
+    "canaux": null,
+    "horaires": null
    },
    "relue": false,
    "relue_le": null,
-   "qualite_ok": true
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-biic-financial-services",
+   "nom": "SGI BIIC Financial Services (BFS)",
+   "agrement": null,
+   "pays_siege": "BJ",
+   "pays_couverts": [
+    "BJ"
+   ],
+   "logo": "img/sgi/sgi-biic-financial-services.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-sgi-benin_0.png?itok=pezm23Z1",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(229) 21 32 48 75/76 ; (229) 21 32 44 67",
+    "whatsapp": null,
+    "email": "sgibfs@biic-financialservices.com",
+    "agence": "Boulevard St Michel, 7700 Cotonou 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-bni-finances",
+   "nom": "SGI BNI Finances",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/sgi-bni-finances.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/bni_finance_logotype.png?itok=0XeNwssV",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 20 31 07 77 ; (225) 27 20 31 07 78",
+    "whatsapp": null,
+    "email": "bnifinances@bni.ci",
+    "agence": "Plateau, Avenue Delafosse prolongée, Immeuble Belle Rive, 14ème étage, 670 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-cgf-bourse",
+   "nom": "SGI CGF Bourse",
+   "agrement": null,
+   "pays_siege": "SN",
+   "pays_couverts": [
+    "SN"
+   ],
+   "logo": "img/sgi/sgi-cgf-bourse.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_55.jpg?itok=1c_q9gwx",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(221) 33 864 97 97 ; (221) 33 824 03 34",
+    "whatsapp": null,
+    "email": "cgfbourse@cgfbourse.com",
+    "agence": "Km 6, Av. Cheikh Anta Diop, Immeuble El Hadji Serigne Bassirou Mbacké, Dakar"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-coris-bourse-sa",
+   "nom": "SGI Coris Bourse SA",
+   "agrement": null,
+   "pays_siege": "BF",
+   "pays_couverts": [
+    "BF"
+   ],
+   "logo": "img/sgi/sgi-coris-bourse-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_52.jpg?itok=mHW0goLk",
+   "presentation": null,
+   "site": "https://www.coris-bourse.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(00226) 25 33 14 85 ; (226) 50 33 14 83",
+    "whatsapp": null,
+    "email": "corisbourse@coris-bourse.com",
+    "agence": "Avenue Loudun, Rue 05, Secteur 04, Parcelle 08, Lot 04, Section 020, 01 BP 6585 Ouagadougou 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-edc-investment-corporation",
+   "nom": "SGI EDC Investment Corporation",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/sgi-edc-investment-corporation.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/2016-08-31_1.png?itok=aZeBaHGN",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 20 21 10 44 ; (225) 27 20 21 10 46",
+    "whatsapp": null,
+    "email": "eic@ecobank.com",
+    "agence": "Avenue Houdaille, 2ème étage, Immeuble Ecobank, 01 BP 4107 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-hudson-cie",
+   "nom": "SGI Hudson & Cie",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/sgi-hudson-cie.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo_hudson.jpg?itok=BxHGTrBr",
+   "presentation": null,
+   "site": "http://www.hudson-cie.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 20 31 55 00 ; (225) 27 20 33 22 24",
+    "whatsapp": null,
+    "email": "info@hudson-cie.com",
+    "agence": "24 Boulevard Clozel, Avenue Lamblin, Immeuble Le 24, 4ème étage, 18 BP 2294 Abidjan 18"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-impaxis-securities-sa",
+   "nom": "SGI Impaxis Securities SA",
+   "agrement": null,
+   "pays_siege": "SN",
+   "pays_couverts": [
+    "SN"
+   ],
+   "logo": "img/sgi/sgi-impaxis-securities-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_56.jpg?itok=1a2u9f-v",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(221) 33 869 31 40/47 ; (221) 33 864 53 41",
+    "whatsapp": null,
+    "email": "impaxis.securities@impaxis-securities.com",
+    "agence": "Sacré Cœur 3 Extension VDN n° 10077, BP 45545 Dakar"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-mac-african",
+   "nom": "SGI Mac African",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/sgi-mac-african.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/mac.jpg?itok=UfGCrzao",
+   "presentation": null,
+   "site": "https://www.macafricansgi.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 07 68 31 11 25 ; (225) 27 22 46 28 92",
+    "whatsapp": null,
+    "email": "macafrican@macafrican.com",
+    "agence": "Cocody Riviera M'Badon, à 300 mètres de l'Ambassade de Chine, Abidjan"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-mali-sa",
+   "nom": "SGI Mali SA",
+   "agrement": null,
+   "pays_siege": "ML",
+   "pays_couverts": [
+    "ML"
+   ],
+   "logo": "img/sgi/sgi-mali-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_63_0.jpg?itok=dyucca9t",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(223) 20 29 41 19 ; (223) 20 29 29 75",
+    "whatsapp": null,
+    "email": "sgi@sgimali.com",
+    "agence": "Immeuble Ali Baba (ABK II), 2ème étage, Bureaux 209-210, Bamako"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-niger-sa",
+   "nom": "SGI Niger SA",
+   "agrement": null,
+   "pays_siege": "NE",
+   "pays_couverts": [
+    "NE"
+   ],
+   "logo": "img/sgi/sgi-niger-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_64_0.jpg?itok=8eBbWdS1",
+   "presentation": null,
+   "site": "https://www.sginiger.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(227) 20 73 78 18 ; (227) 20 73 78 16",
+    "whatsapp": null,
+    "email": "sginiger@sginiger.com",
+    "agence": "258 B Rue du Grand Hôtel, BP 10812 Niamey"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-sbif",
+   "nom": "SGI SBIF",
+   "agrement": null,
+   "pays_siege": "BF",
+   "pays_couverts": [
+    "BF"
+   ],
+   "logo": "img/sgi/sgi-sbif.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_61.jpg?itok=ev8ck7Bk",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(226) 25 33 04 91/92 ; (226) 25 33 04 90",
+    "whatsapp": null,
+    "email": "sbif@fasonet.bf",
+    "agence": "Avenue John Kennedy, 01 BP 5394 Ouagadougou 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-togo-sa",
+   "nom": "SGI Togo SA",
+   "agrement": null,
+   "pays_siege": "TG",
+   "pays_couverts": [
+    "TG"
+   ],
+   "logo": "img/sgi/sgi-togo-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/plan_de_travail_65_0.jpg?itok=6J0P9PyS",
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "(228) 22 22 31 45 ; (228) 22 22 31 47",
+    "whatsapp": null,
+    "email": "sgiI-togo@ids.tg",
+    "agence": "Place Van Vollenhoven, UTB Centrale, 3ème étage, BP 2312 Lomé"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sirius-capital",
+   "nom": "Sirius Capital",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": "img/sgi/sirius-capital.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-siruis-capital.jpg?itok=02QFb7ju",
+   "presentation": null,
+   "site": "https://www.sirius.ci",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(225) 27 20 24 24 65 ; (225) 27 20 24 24 74",
+    "whatsapp": null,
+    "email": "contact@sirius.ci",
+    "agence": "Rue Jesse Owens, Immeuble Sciam, Plateau, 01 BP 12916 Abidjan 01"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": null
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
   }
  ]
 }

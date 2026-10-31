@@ -95,3 +95,12 @@
 .vt .vt-tab tbody th,.vt .vt-tab thead th:first-child,.vt .vt-tab tfoot th{width:170px;min-width:170px;max-width:170px}
 @media(max-width:640px){.vt-tab-wrap{scroll-padding-left:118px}.vt .vt-tab tbody th,.vt .vt-tab thead th:first-child,.vt .vt-tab tfoot th{width:118px;min-width:118px;max-width:118px}.vt .vt-tab td,.vt .vt-tab thead th:not(:first-child){min-width:calc(100vw - 32px - 118px)}}
 .vt .vt-tab th,.vt .vt-tab td{box-sizing:border-box}
+
+.vt .vt-logo-v{width:auto;min-width:40px;padding:0 8px;background:#0b1220;color:#fff;font:800 13px "Source Sans 3",sans-serif;letter-spacing:.04em}
+.vt-logo{background:#fff;border-radius:6px}
+.vt .vt-pres{grid-column:1/-1}.vt-pres p{margin:0;line-height:1.55;color:#142438}
+.vt-nb{margin:6px 0 0;font-size:15px;color:#4d5a6a}.vt-nb b{color:#071d38}
+.vt-outils select{max-width:100%}
+.vt-dlg .vt-form{margin-top:6px}
+.vt-fiche dd{overflow-wrap:anywhere;min-width:0}
+@media(max-width:640px){.vt-outils{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-left:2px;padding-right:2px}.vt-outils::-webkit-scrollbar{display:none}.vt-outils>*{flex:none}.vt .vt-cmp{width:auto;margin-left:0}}

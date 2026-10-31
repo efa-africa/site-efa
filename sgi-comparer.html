@@ -7,7 +7,7 @@
 <meta name="description" content="Comparer 2 à 4 SGI agréées sur les mêmes critères : frais, accès, service.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700;800&display=swap">
 <style>body{margin:0;background:#fff}</style>
-<link rel="stylesheet" href="clone/vitrine.css?v=20261031d">
+<link rel="stylesheet" href="clone/vitrine.css?v=20261031g">
 <link rel="stylesheet" href="clone/habillage.css?v=20261031k">
 </head>
 <body>
@@ -21,13 +21,13 @@
 <p style="padding-bottom:60px"><a class="vt-lien" href="sgi.html">← Revenir à toutes les SGI</a></p>
 </div>
 </main>
-<script src="efa-config.js?v=2026103101"></script>
-<script src="clone/vitrine.js?v=20261031a"></script>
+<script src="efa-config.js?v=2026103102"></script>
+<script src="clone/vitrine.js?v=20261031b"></script>
 <script>(function(){var T=window.EFA_VT,Z=document.getElementById('vt-tab');var ids=(new URLSearchParams(location.search).get('ids')||'').split(',').filter(Boolean).slice(0,4);
 T.charger().then(function(r){var D=r[0],par={};D.sgi.forEach(function(s){par[s.id]=s;});if(D.demo)document.getElementById('vt-demo').hidden=false;document.querySelectorAll('[data-maj]').forEach(function(x){x.textContent=T.dateFr(D.maj);});
 var L=ids.map(function(i){return par[i];}).filter(Boolean);if(L.length<2){Z.innerHTML='<p class="vt-chapo" style="padding:20px">Choisissez au moins deux SGI dans <a class="vt-lien" href="sgi.html">la liste</a>.</p>';return;}
 var C=[['Courtage',function(s){return T.v((s.frais||{}).courtage);}],['Droits de garde',function(s){return T.v((s.frais||{}).droits_garde);}],['Tenue de compte',function(s){return T.v((s.frais||{}).tenue_compte);}],['Minimum d’ouverture',function(s){return T.fcfa((s.acces||{}).minimum_ouverture_fcfa);}],['Ouverture à distance',function(s){return T.ouiNon((s.acces||{}).ouverture_distance);}],['Délai',function(s){return T.v((s.acces||{}).delai_ouverture);}],['Application',function(s){return T.ouiNon((s.service||{}).application);}],['Canaux',function(s){var c=(s.service||{}).canaux;return c&&c.length?T.esc(c.join(', ')):T.v(null);}],['Pays couverts',function(s){return (s.pays_couverts||[]).map(function(p){return T.esc(T.NOMS[p]||p);}).join(', ')||T.v(null);}],['Fiche relue',function(s){return s.relue&&s.relue_le?'Oui, le '+T.dateFr(s.relue_le):'Non';}]];
-Z.innerHTML='<table class="vt-tab"><thead><tr><th scope="col"><span style="position:absolute;left:-9999px">Critère</span></th>'+L.map(function(s){return '<th scope="col">'+T.esc(s.nom)+'</th>';}).join('')+'</tr></thead><tbody>'+C.map(function(c){return '<tr><th scope="row">'+c[0]+'</th>'+L.map(function(s){return '<td>'+c[1](s)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody><tfoot><tr><th scope="row" style="background:#f3f7fb"></th>'+L.map(function(s,i){return '<td><button type="button" class="vt-rel" data-i="'+i+'" style="margin:0">Entrer en relation</button></td>';}).join('')+'</tr></tfoot></table>';
+Z.innerHTML='<table class="vt-tab"><thead><tr><th scope="col"><span style="position:absolute;left:-9999px">Critère</span></th>'+L.map(function(s){return '<th scope="col">'+T.esc(s.nom)+'</th>';}).join('')+'</tr></thead><tbody>'+C.map(function(c){return '<tr><th scope="row">'+c[0]+'</th>'+L.map(function(s){return '<td>'+c[1](s)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody><tfoot><tr><th scope="row" style="background:#f3f7fb"></th>'+L.map(function(s,i){return '<td><button type="button" class="vt-rel" data-i="'+i+'" style="margin:0">Contacter la SGI</button></td>';}).join('')+'</tr></tfoot></table>';
 Z.querySelectorAll('.vt-rel').forEach(function(b){b.onclick=function(){T.relation(L[+b.dataset.i],null,false);};});
 }).catch(function(){Z.innerHTML='<p class="vt-chapo" style="padding:20px">La comparaison n’a pas pu être chargée.</p>';});})();</script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
