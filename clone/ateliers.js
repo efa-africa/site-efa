@@ -7,13 +7,13 @@
   var etat = lire(); etat.ok = etat.ok || {};
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function carte(a, n) {
-    var ok = etat.ok[a.id];
+    var ok = etat.ok[a.id] || a.gratuit;
     return '<article class="at-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '">' +
       '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/atelier-' + (n < 10 ? '0' : '') + n + '.webp" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
       '<div class="at-c-corps"><span class="at-c-type">' + (a.c ? 'Avec Élysée Johnson · 3 séances · 8 places' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
-      '<div class="at-c-pied"><b>' + D.prix() + '</b><button type="button" class="at-c-btn">' + (ok ? 'Accès débloqué ✓' : 'Réserver') + '</button></div></div></article>';
+      '<div class="at-c-pied"><b>' + D.prix(a) + '</b><button type="button" class="at-c-btn">' + (a.gratuit ? 'Commencer gratuitement' : ok ? 'Accès débloqué ✓' : 'Réserver') + '</button></div></div></article>';
   }
   var n = 0;
   document.querySelectorAll('.at-cat').forEach(function (c) {
@@ -27,14 +27,15 @@
   var champ = document.getElementById('at-cle'), msg = document.getElementById('at-cle-msg'), go = document.getElementById('at-dlg-go');
   function lien(a) {
     return 'rendez-vous.html?sujet=accompagnement&atelier=' + encodeURIComponent(a.id) + '&t=' + encodeURIComponent(a.t) +
-      (etat.ok[a.id] ? '&cle=' + encodeURIComponent(etat.ok[a.id]) : '') + '#contact';
+      (etat.ok[a.id] ? '&cle=' + encodeURIComponent(etat.ok[a.id]) : '') + (a.gratuit ? '&gratuit=1' : '') + '#contact';
   }
   function majDlg() {
-    var ok = !!etat.ok[cour.id];
+    var ok = !!etat.ok[cour.id] || !!cour.gratuit;
+    document.querySelector('.at-dlg-p').innerHTML = '<b>' + D.prix(cour) + '</b>';
     document.querySelector('.at-dlg-cle div').hidden = ok; document.querySelector('.at-dlg-cle label').hidden = ok;
     document.querySelector('.at-dlg-pay').hidden = ok;
     go.hidden = !ok; go.href = lien(cour);
-    msg.textContent = ok ? 'Accès débloqué avec la clé ' + etat.ok[cour.id] + '. Réservez votre place.' : '';
+    msg.textContent = cour.gratuit ? 'Cet atelier est gratuit. Réservez votre place.' : ok ? 'Accès débloqué avec la clé ' + etat.ok[cour.id] + '. Réservez votre place.' : '';
   }
   function ouvrir(id) {
     cour = D.liste.filter(function (a) { return a.id === id; })[0]; if (!cour) return;
