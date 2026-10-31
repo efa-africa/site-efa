@@ -21,5 +21,10 @@ window.EFA_CONFIG = {
 
   // Formulaire Brevo « Diagnostic EFA test 2 » (liste #3). Vide = mode local, rien n'est envoyé.
   // Champs du formulaire : EMAIL, EFA_PROFIL, EFA_SCORE, EFA_REPONSES, et EFA_DETAIL (bloc à ajouter sur ordinateur).
-  BREVO_URL: "https://b46b1615.sibforms.com/serve/MUIFACVKrrzAejdFTf7fjSmbEWmeEpDLlvJv6fz5rNzzcpOjiGf1s2QIrACyH5qzal4L1gaT2UkJ0IuXg3-Pt0x2BV66Oh771_vK-04Dxoi4_p4nYnErjNXdJb5_T5taqweO2TL8Fdh7na8Gjz368F2mnWogvfcnrkqc2xUXMaUKl_Mx-EFCPOp8M-OWNyOL05--VBO8midcFSCv_w=="
+  BREVO_URL: "https://b46b1615.sibforms.com/serve/MUIFACVKrrzAejdFTf7fjSmbEWmeEpDLlvJv6fz5rNzzcpOjiGf1s2QIrACyH5qzal4L1gaT2UkJ0IuXg3-Pt0x2BV66Oh771_vK-04Dxoi4_p4nYnErjNXdJb5_T5taqweO2TL8Fdh7na8Gjz368F2mnWogvfcnrkqc2xUXMaUKl_Mx-EFCPOp8M-OWNyOL05--VBO8midcFSCv_w==",
+
+  // Vitrine des SGI : adresse du Worker « vitrine » (comptage anonyme des vues et des clics). Vide = rien n'est envoyé.
+  VITRINE_URL: "",
+  // EFA Invest : adresse « action » du formulaire Brevo « EFA Invest attente (site) ». Vide = la demande arrive par e-mail (Web3Forms).
+  INVEST_BREVO_URL: ""
 };

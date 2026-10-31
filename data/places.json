@@ -1,0 +1,21 @@
+{
+ "periode": {
+  "debut": "2026-10-31",
+  "fin": "2027-01-14"
+ },
+ "type": "fondateur",
+ "places": [
+  {
+   "rang": 1,
+   "sgi": "demo-e"
+  },
+  {
+   "rang": 2,
+   "sgi": "demo-b"
+  },
+  {
+   "rang": 3,
+   "sgi": null
+  }
+ ]
+}

@@ -1,0 +1,259 @@
+{
+ "maj": "2026-10-31",
+ "demo": true,
+ "sgi": [
+  {
+   "id": "demo-a",
+   "nom": "SGI Démonstration A",
+   "agrement": "SGI/DEMO/01",
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI",
+    "SN",
+    "BJ",
+    "Diaspora"
+   ],
+   "logo": null,
+   "site": null,
+   "contact": {
+    "formulaire": "https://example.org",
+    "telephone": "+225 00 00 00 00",
+    "whatsapp": "+225 00 00 00 00",
+    "email": "contact@example.org",
+    "agence": "Abidjan, Plateau"
+   },
+   "frais": {
+    "courtage": "1 % · min. 5 000 FCFA",
+    "droits_garde": "0,3 % par an",
+    "tenue_compte": "10 000 FCFA par an",
+    "source": "Données de démonstration, sans valeur réelle"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 50000,
+    "ouverture_distance": "oui",
+    "delai_ouverture": "5 jours ouvrés"
+   },
+   "service": {
+    "application": "oui",
+    "canaux": [
+     "téléphone",
+     "WhatsApp",
+     "agence"
+    ],
+    "horaires": "Lun.–ven. 8 h–17 h"
+   },
+   "relue": true,
+   "relue_le": "2026-10-31",
+   "qualite_ok": true
+  },
+  {
+   "id": "demo-b",
+   "nom": "SGI Démonstration B",
+   "agrement": "SGI/DEMO/02",
+   "pays_siege": "SN",
+   "pays_couverts": [
+    "SN",
+    "ML",
+    "CI"
+   ],
+   "logo": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "+221 00 000 00 00",
+    "whatsapp": null,
+    "email": null,
+    "agence": "Dakar, Plateau"
+   },
+   "frais": {
+    "courtage": "1,2 %",
+    "droits_garde": "0,25 % par an",
+    "tenue_compte": null,
+    "source": "Données de démonstration, sans valeur réelle"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 100000,
+    "ouverture_distance": "partielle",
+    "delai_ouverture": "5 jours ouvrés"
+   },
+   "service": {
+    "application": "non",
+    "canaux": [
+     "téléphone",
+     "agence"
+    ],
+    "horaires": "Lun.–ven. 8 h–17 h"
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": false
+  },
+  {
+   "id": "demo-c",
+   "nom": "SGI Démonstration C",
+   "agrement": "SGI/DEMO/03",
+   "pays_siege": "BJ",
+   "pays_couverts": [
+    "BJ",
+    "TG",
+    "NE"
+   ],
+   "logo": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": null,
+    "whatsapp": "+229 00 00 00 00",
+    "email": "info@example.org",
+    "agence": null
+   },
+   "frais": {
+    "courtage": "0,9 % · min. 3 000 FCFA",
+    "droits_garde": "0,3 % par an",
+    "tenue_compte": "Gratuite",
+    "source": "Données de démonstration, sans valeur réelle"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 25000,
+    "ouverture_distance": "oui",
+    "delai_ouverture": "5 jours ouvrés"
+   },
+   "service": {
+    "application": "oui",
+    "canaux": [
+     "WhatsApp",
+     "e-mail"
+    ],
+    "horaires": "Lun.–ven. 8 h–17 h"
+   },
+   "relue": true,
+   "relue_le": "2026-10-31",
+   "qualite_ok": true
+  },
+  {
+   "id": "demo-d",
+   "nom": "SGI Démonstration D",
+   "agrement": null,
+   "pays_siege": "BF",
+   "pays_couverts": [
+    "BF",
+    "ML"
+   ],
+   "logo": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": null,
+    "whatsapp": null,
+    "email": null,
+    "agence": "Ouagadougou"
+   },
+   "frais": {
+    "courtage": null,
+    "droits_garde": null,
+    "tenue_compte": null,
+    "source": "Données de démonstration, sans valeur réelle"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": null,
+    "ouverture_distance": "non",
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": [
+     "agence"
+    ],
+    "horaires": "Lun.–ven. 8 h–17 h"
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true
+  },
+  {
+   "id": "demo-e",
+   "nom": "SGI Démonstration E",
+   "agrement": "SGI/DEMO/05",
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI",
+    "BF",
+    "Diaspora"
+   ],
+   "logo": null,
+   "site": null,
+   "contact": {
+    "formulaire": "https://example.org",
+    "telephone": "+225 00 00 00 01",
+    "whatsapp": null,
+    "email": "contact@example.org",
+    "agence": "Abidjan, Cocody"
+   },
+   "frais": {
+    "courtage": "1 %",
+    "droits_garde": "0,2 % par an",
+    "tenue_compte": "15 000 FCFA par an",
+    "source": "Données de démonstration, sans valeur réelle"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 200000,
+    "ouverture_distance": "oui",
+    "delai_ouverture": "5 jours ouvrés"
+   },
+   "service": {
+    "application": "oui",
+    "canaux": [
+     "téléphone",
+     "WhatsApp",
+     "e-mail",
+     "agence"
+    ],
+    "horaires": "Lun.–ven. 8 h–17 h"
+   },
+   "relue": true,
+   "relue_le": "2026-10-31",
+   "qualite_ok": true
+  },
+  {
+   "id": "demo-f",
+   "nom": "SGI Démonstration F",
+   "agrement": "SGI/DEMO/06",
+   "pays_siege": "TG",
+   "pays_couverts": [
+    "TG",
+    "BJ",
+    "GW"
+   ],
+   "logo": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": "+228 00 00 00 00",
+    "whatsapp": null,
+    "email": null,
+    "agence": null
+   },
+   "frais": {
+    "courtage": "1,1 %",
+    "droits_garde": null,
+    "tenue_compte": "12 000 FCFA par an",
+    "source": "Données de démonstration, sans valeur réelle"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 75000,
+    "ouverture_distance": "partielle",
+    "delai_ouverture": "5 jours ouvrés"
+   },
+   "service": {
+    "application": "non",
+    "canaux": [
+     "téléphone"
+    ],
+    "horaires": "Lun.–ven. 8 h–17 h"
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true
+  }
+ ]
+}
