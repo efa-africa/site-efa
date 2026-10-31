@@ -24,7 +24,7 @@
     plus.addEventListener('click', function () {
       var caches = b.filter(function (x) { return x.hidden; }), suite = caches.slice(0, 2);
       suite.forEach(function (x) { x.hidden = false; c.insertBefore(x, plus); });
-      if (suite[0]) suite[0].focus();
+      if (suite[0]) { suite[0].focus({ preventScroll: true }); var r = (suite[suite.length - 1]).getBoundingClientRect(), hd = document.querySelector('header'), hh = hd ? hd.offsetHeight : 0; if (r.bottom > innerHeight - 20 || suite[0].getBoundingClientRect().top < hh) scrollTo({ top: scrollY + suite[0].getBoundingClientRect().top - hh - 24, behavior: 'smooth' }); suite.forEach(function (x) { x.classList.remove('pdd-neuf'); void x.offsetWidth; x.classList.add('pdd-neuf'); }); }
       if (caches.length <= 2) plus.remove(); else libelle(false);
     });
     c.appendChild(plus);
