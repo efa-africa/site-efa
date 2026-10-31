@@ -70,3 +70,4 @@ html.cl-hall body #contenu>#fil.fil{display:flex!important}
 .pc-nb{font-size:12px;font-weight:700;letter-spacing:.06em;color:#7a8696;opacity:.85}
 @media(max-width:700px){.prem-g{grid-template-columns:1fr}}
 section,.porte,#seul-contenus,[id]{scroll-margin-top:150px}
+.a-depart-plus{margin:12px 0 0}.a-depart-plus a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:#e34234;text-decoration-thickness:2px;text-underline-offset:5px}

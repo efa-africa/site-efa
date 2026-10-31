@@ -1,0 +1,5 @@
+html[data-clone] .pdd-choix .pdd-plus{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:14px 18px;border-radius:14px;border:1.5px dashed #b9cde0;color:#0b63b0}
+html[data-clone] .pdd-choix .pdd-plus b{font-weight:800}
+html[data-clone] .pdd-choix .pdd-plus span{font-size:14px;color:#7a8696}
+html[data-clone] .pdd-choix .pdd-plus:hover{border-color:#0b63b0;background:#f3f7fb}
+html[data-clone] .pdd-choix button[hidden]{display:none!important}
