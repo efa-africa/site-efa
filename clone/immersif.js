@@ -23,7 +23,7 @@
     });
   }
   var largeur = innerWidth;
-  function hauteur(S) { var top = S.getBoundingClientRect().top + scrollY; S.style.setProperty('--imm-h', Math.max(420, innerHeight - top) + 'px'); }
+  function hauteur(S) { var top = S.getBoundingClientRect().top + scrollY; S.style.setProperty('--imm-top', Math.round(top) + 'px'); }
   function toutes() { document.querySelectorAll('.imm').forEach(hauteur); }
   addEventListener('resize', function () { if (innerWidth !== largeur) { largeur = innerWidth; toutes(); } });
   addEventListener('orientationchange', function () { setTimeout(toutes, 300); });

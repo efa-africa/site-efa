@@ -30,3 +30,6 @@
 }
 @media(max-width:720px){.me{height:calc(100svh - 68px)}}
 @media(prefers-reduced-motion:reduce){.me-img{animation:none}}
+
+/* Téléphone : cadrer à droite pour garder la carte de l'Afrique et les gratte-ciel au fond */
+@media(max-aspect-ratio:4/5){.me-img{object-position:100% 50%!important}}
