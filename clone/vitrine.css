@@ -1,0 +1,97 @@
+/* EFA · Vitrine des SGI, comparateur, EFA Invest · 31/10/2026 */
+.vt{--n:#071d38;--t:#4d5a6a;--b:#0b63b0;--c:#da3c1b;--p:#f3f7fb;font-family:"Source Sans 3",system-ui,sans-serif;color:var(--n)}
+.vt h1,.vt h2,.vt h3{font-family:"Libre Baskerville",Baskerville,Georgia,serif;font-weight:700;letter-spacing:-.02em;margin:0;color:var(--n)}
+.vt-in{width:min(1120px,calc(100% - 32px));margin:0 auto}
+.vt-tete{padding:clamp(40px,6vw,80px) 0 26px}
+.vt-k{margin:0;font:800 12px/1.3 "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#168da4}
+.vt-tete h1{margin-top:12px;font-size:clamp(36px,5vw,62px);line-height:1.08}
+.vt-chapo{margin:16px 0 0;max-width:62ch;font-size:18.5px;line-height:1.6;color:var(--t)}
+.vt-lien{color:var(--b);font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.vt-demo{margin:18px 0 0;padding:12px 16px;border-radius:12px;background:#fff4e5;color:#7a4b00;font-weight:700;font-size:15px}
+.vt-outils{position:sticky;top:82px;z-index:20;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 0;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.vt-outils select,.vt-outils label.vt-chk{min-height:44px;border:1.5px solid #cfdbe6;border-radius:999px;padding:0 16px;font:700 15px "Source Sans 3",sans-serif;background:#fff;color:var(--n);display:inline-flex;align-items:center;gap:8px}
+.vt-outils input[type=checkbox]{width:18px;height:18px;accent-color:var(--b)}
+.vt-cmp{margin-left:auto;min-height:46px;padding:0 22px;border:0;border-radius:999px;background:var(--n);color:#fff;font:800 15.5px "Source Sans 3",sans-serif;cursor:pointer}
+.vt-cmp:disabled{background:#b8c3cf;cursor:not-allowed}
+.vt-liste{display:grid;gap:16px;padding:10px 0 40px}
+.vt-carte{background:#fff;border-radius:18px;padding:22px clamp(18px,2.4vw,28px);box-shadow:0 12px 32px rgba(7,29,56,.07)}
+.vt-carte:focus-within{box-shadow:0 0 0 3px #9ddfea,0 12px 32px rgba(7,29,56,.07)}
+.vt-etqs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.vt-etq{display:inline-block;padding:5px 11px;border-radius:999px;background:#0b1220;color:#fff;font:700 12px/1.2 "Source Sans 3",sans-serif;letter-spacing:.04em}
+.vt-id{display:flex;align-items:center;gap:14px}
+.vt-logo{height:40px;max-width:120px;object-fit:contain}
+.vt-logo-v{width:40px;height:40px;border-radius:10px;background:var(--p);display:grid;place-items:center;font:800 15px "Source Sans 3",sans-serif;color:var(--b);flex:none}
+.vt-carte h3{font-size:24px}
+.vt-agr{margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;color:var(--t);font-size:15px}
+.vt-pays{display:inline-flex;flex-wrap:wrap;gap:5px}
+.vt-pays i{font-style:normal;padding:2px 8px;border-radius:999px;background:#e3f2f5;color:#0f6f82;font-weight:800;font-size:12px}
+.vt-reperes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0 0}
+.vt-reperes div{background:var(--p);border-radius:12px;padding:10px 12px}
+.vt-reperes small{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7a8696}
+.vt-reperes b{font-size:16px}
+.vt-nc{color:#7a8696;font-weight:600}
+.vt-act{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:16px}
+.vt-voir{background:none;border:0;padding:0;color:var(--b);font:800 15.5px "Source Sans 3",sans-serif;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.vt-act label{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer}
+.vt-act input{width:20px;height:20px;accent-color:var(--b)}
+.vt-rel{margin-left:auto;min-height:46px;padding:0 22px;border:0;border-radius:999px;background:var(--c);color:#fff;font:800 15.5px "Source Sans 3",sans-serif;cursor:pointer}
+.vt-fiche{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.vt-fiche section{background:var(--p);border-radius:14px;padding:14px 16px}
+.vt-fiche h4{margin:0 0 8px;font:800 12px "Source Sans 3",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#168da4}
+.vt-fiche dl{margin:0;display:grid;gap:6px}
+.vt-fiche dl div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px;font-size:15px}
+.vt-fiche dt{color:var(--t)}
+.vt-fiche dd{margin:0;font-weight:700}
+.vt-relue{grid-column:1/-1;margin:0;font-size:14px;color:var(--t)}
+.vt-bas{padding:30px 0 70px}
+.vt-bas h2{font-size:clamp(26px,3vw,36px)}
+.vt-bas p{max-width:72ch;color:var(--t);line-height:1.6}
+.vt-mention{font-size:14.5px;color:#7a8696!important}
+/* Fenêtre « Entrer en relation » */
+.vt-dlg{border:0;border-radius:22px;padding:0;width:min(480px,calc(100% - 24px));box-shadow:0 30px 80px rgba(7,29,56,.3)}
+.vt-dlg::backdrop{background:rgba(7,29,56,.5)}
+.vt-dlg-in{padding:26px 24px 22px}
+.vt-dlg h2{font-size:26px}
+.vt-dlg p{color:var(--t);line-height:1.55}
+.vt-canaux{display:grid;gap:10px;margin:16px 0}
+.vt-canaux a{display:flex;justify-content:center;min-height:50px;align-items:center;border-radius:999px;background:var(--n);color:#fff;font-weight:800;text-decoration:none}
+.vt-canaux a:first-child{background:var(--c)}
+.vt-agence{margin:0 0 10px;font-weight:700}
+.vt-fermer{position:absolute;right:12px;top:12px;width:40px;height:40px;border:0;border-radius:50%;background:var(--p);font-size:20px;cursor:pointer}
+@media(max-width:640px){
+  .vt-outils{top:68px}.vt-cmp{margin-left:0;width:100%}
+  .vt-reperes{grid-template-columns:1fr}
+  .vt-fiche{grid-template-columns:1fr}
+  .vt-rel{margin-left:0;width:100%}
+  .vt-dlg{margin:auto 0 0;width:100%;max-width:none;border-radius:22px 22px 0 0}
+}
+/* Comparateur : toutes les colonnes identiques */
+.vt-tab-wrap{overflow-x:auto;scroll-snap-type:x mandatory;margin:20px 0;border-radius:18px;box-shadow:0 12px 32px rgba(7,29,56,.07);background:#fff}
+.vt-tab{border-collapse:separate;border-spacing:0;width:100%;min-width:560px}
+.vt-tab th,.vt-tab td{padding:13px 14px;border-bottom:1px solid #e3e8ee;text-align:left;vertical-align:top;font-size:15.5px}
+.vt-tab thead th{font:700 18px "Libre Baskerville",Georgia,serif;background:#fff}
+.vt-tab tbody th{position:sticky;left:0;background:var(--p);font-weight:700;color:var(--n);width:170px;z-index:1}
+.vt-tab td{scroll-snap-align:start}
+.vt-tab tfoot td{border-bottom:0}
+@media(max-width:640px){.vt-tab{min-width:0}.vt-tab td,.vt-tab thead th:not(:first-child){min-width:calc(100vw - 32px - 130px)}.vt-tab tbody th{width:130px;font-size:14px}}
+/* EFA Invest */
+.vt-blocs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:26px 0}
+.vt-bloc{background:var(--p);border-radius:22px;padding:clamp(22px,3vw,34px)}
+.vt-bloc h2{font-size:clamp(23px,2.4vw,30px)}
+.vt-bloc p{color:var(--t);line-height:1.55}
+.vt-form{display:grid;gap:12px;margin-top:14px}
+.vt-form input[type=email],.vt-form input[type=text],.vt-form select{min-height:48px;border:1.5px solid #cfdbe6;border-radius:12px;padding:0 14px;font:600 16px "Source Sans 3",sans-serif;background:#fff;color:var(--n)}
+.vt-form label.c{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--t);line-height:1.45}
+.vt-form label.c input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--b)}
+.vt-b{display:inline-flex;justify-content:center;align-items:center;gap:10px;min-height:50px;padding:0 24px;border:0;border-radius:999px;background:var(--c);color:#fff;font:800 16px "Source Sans 3",sans-serif;text-decoration:none;cursor:pointer}
+.vt-b.s{background:var(--n)}
+.vt-ok{font-weight:700;color:#1e7a4c;min-height:1.4em}
+.vt-attente{display:flex;flex-wrap:wrap;gap:12px 24px;margin:8px 0 20px}
+@media(max-width:760px){.vt-blocs{grid-template-columns:1fr}}
+.vt .vt-fiche section{padding:14px 16px!important;margin:0!important;min-height:0!important}
+.vt .vt-tab tbody th,.vt .vt-tab tfoot th,.vt .vt-tab thead th:first-child{position:sticky;left:0;z-index:2;background:#f3f7fb!important}
+.vt .vt-tab td,.vt .vt-tab thead th{background:#fff!important}
+.vt-tab-wrap{scroll-padding-left:170px}
+.vt .vt-tab tbody th,.vt .vt-tab thead th:first-child,.vt .vt-tab tfoot th{width:170px;min-width:170px;max-width:170px}
+@media(max-width:640px){.vt-tab-wrap{scroll-padding-left:118px}.vt .vt-tab tbody th,.vt .vt-tab thead th:first-child,.vt .vt-tab tfoot th{width:118px;min-width:118px;max-width:118px}.vt .vt-tab td,.vt .vt-tab thead th:not(:first-child){min-width:calc(100vw - 32px - 118px)}}
+.vt .vt-tab th,.vt .vt-tab td{box-sizing:border-box}
