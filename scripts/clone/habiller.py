@@ -20,7 +20,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261031v'
+VERSION = '20261031w'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp',
@@ -39,8 +39,9 @@ pages = sorted(f for f in glob.glob('*.html') if f not in EXCLUES) + sorted(glob
 modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
-RUBRIQUES = [('benefices', 'Apprendre'), ('pilier-progresser', 'S’entraîner'), ('pilier-agir', 'Se lancer'),
-             ('pilier-media', 'Le média'), ('etudes-prospective', 'Études')]
+RUBRIQUES = [('benefices', 'Apprendre et former'), ('pilier-progresser', 'Être accompagné'), ('pilier-agir', 'Se lancer'),
+             ('pilier-media', 'EFA News'), ('apropos', 'À propos')]
+LIEN_RUBRIQUE = {'pilier-media': 'news.html', 'apropos': 'auteur.html#auteur'}
 SECTION_DE = {'portes': 'benefices', 'benefices': 'benefices', 'calculateur': 'benefices',
               'pilier-progresser': 'pilier-progresser', 'pilier-agir': 'pilier-agir',
               'pilier-media': 'pilier-media', 'etudes-prospective': 'etudes-prospective'}
@@ -101,7 +102,9 @@ menu = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_racine(m.group(1))
 
 def entete(page):
     actif = rubrique.get(page)
-    onglets = ''.join('<a href="index.html#%s"%s>%s</a>' % (i, ' aria-current="page"' if i == actif else '', t)
+    if actif == 'etudes-prospective': actif = 'pilier-media'
+    if page in ('auteur.html', 'methode.html', 'rendez-vous.html'): actif = 'apropos'
+    onglets = ''.join('<a href="%s"%s>%s</a>' % (LIEN_RUBRIQUE.get(i, 'index.html#' + i), ' aria-current="page"' if i == actif else '', t)
                       for i, t in RUBRIQUES)
     return ('<header class="header clone-head" id="clone-haut"><div class="container head-inner">'
             '<a class="efa-brand" href="/" aria-label="EFA — Accueil">'
