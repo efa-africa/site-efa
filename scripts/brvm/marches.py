@@ -94,9 +94,18 @@ def main():
     for r in ind:
         series[r['indice']].append([r['date_seance'], nombre(r['cloture']), nombre(r['variation_pct']), nombre(r['variation_annuelle_pct'])])
         cat[r['indice']] = r['categorie']
+    # Variation depuis le 31 décembre : calculée à partir des clôtures de fin d'année du bulletin officiel (references.json).
+    # La colonne « Variation 31 décembre » de brvm.org/fr/indices ne correspond pas au bulletin officiel : on ne l'utilise pas.
+    try:
+        REF = json.load(open(D('data', 'brvm', 'references.json'), encoding='utf-8'))
+        BASE = REF['cloture_31_decembre_%d' % (int(jour[:4]) - 1)]
+    except Exception:
+        BASE = {}
     def bloc(n):
         s = sorted(series[n]); d = s[-1]
-        return {'nom': n, 'niveau': d[1], 'var_jour': d[2], 'var_ytd': d[3], 'date': d[0], 'serie': [[x[0], x[1]] for x in s]}
+        b = BASE.get(n)
+        ytd = round((d[1] / b - 1) * 100, 2) if b and d[1] else None
+        return {'nom': n, 'niveau': d[1], 'var_jour': d[2], 'var_ytd': ytd, 'date': d[0], 'serie': [[x[0], x[1]] for x in s]}
     principaux = [bloc(n) for n in ('BRVM - COMPOSITE', 'BRVM-30', 'BRVM - PRESTIGE') if n in series]
     secteurs = [bloc(n) for n in series if cat[n] == 'sectoriel']
     vals = [x for x in liste if x['date'] == jour and x['var_jour'] is not None]

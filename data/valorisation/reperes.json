@@ -1,0 +1,393 @@
+{
+ "maj": "2026-10-31",
+ "sources": {
+  "bbs": {
+   "titre": "Industry Valuation Multiples : ventes de petites entreprises du 3e trimestre 2021 au 2e trimestre 2026",
+   "editeur": "BizBuySell",
+   "pays": "États-Unis",
+   "url": "https://www.bizbuysell.com/learning-center/industry-valuation-multiples/",
+   "base": "Prix de vente ÷ cash annuel avant la rémunération du dirigeant (« Seller's Discretionary Earnings »)",
+   "consulte_le": "2026-10-31"
+  },
+  "bbs_annee": {
+   "titre": "2025 Year in Review",
+   "editeur": "BizBuySell",
+   "pays": "États-Unis",
+   "url": "https://www.bizbuysell.com/blog/2025-year-in-review/",
+   "valeur": 2.61,
+   "base": "Multiple moyen du cash annuel, toutes petites entreprises vendues en 2025",
+   "consulte_le": "2026-10-31"
+  },
+  "boc": {
+   "titre": "Bulletin officiel de la cote n° 206 du 29 octobre 2026",
+   "editeur": "BRVM",
+   "pays": "UEMOA",
+   "url": "https://www.brvm.org/sites/default/files/boc_eng_20261029_2.pdf",
+   "marche": 17.46,
+   "base": "PER moyen : cours de Bourse ÷ bénéfice net par action",
+   "consulte_le": "2026-10-31"
+  },
+  "argos": {
+   "titre": "Argos Index mid-market, 2e trimestre 2026",
+   "editeur": "Argos et Epsilon Research",
+   "pays": "Zone euro",
+   "url": "https://argos.fund/wp-content/uploads/2026/09/ARGOS-INDEX-Q2-2026_FR.pdf",
+   "valeur": 8.8,
+   "base": "Valeur d'entreprise ÷ EBITDA, rachats majoritaires de sociétés non cotées dont les fonds propres valent entre 15 et 500 M€",
+   "consulte_le": "2026-10-31"
+  }
+ },
+ "brvm_secteurs": {
+  "Télécommunications": 13.86,
+  "Consommation discrétionnaire": 41.68,
+  "Services financiers": 16.39,
+  "Consommation de base": 12.4,
+  "Industriels": 145.55,
+  "Énergie": 18.05,
+  "Services publics": 22.06
+ },
+ "proposition_sans_repere": 2.5,
+ "activites": [
+  {
+   "id": "commerce",
+   "nom": "Commerce, boutique, distribution",
+   "comparables": [
+    {
+     "nom": "Supérettes",
+     "multiple": 2.41
+    },
+    {
+     "nom": "Magasins de vêtements",
+     "multiple": 2.32
+    },
+    {
+     "nom": "Épiceries et supermarchés",
+     "multiple": 2.68
+    },
+    {
+     "nom": "Grossistes en biens courants",
+     "multiple": 2.89
+    }
+   ],
+   "bas": 2.32,
+   "central": 2.54,
+   "haut": 2.89,
+   "brvm": {
+    "secteur": "Consommation discrétionnaire",
+    "per": 41.68
+   }
+  },
+  {
+   "id": "restauration",
+   "nom": "Restauration, maquis, boulangerie, traiteur",
+   "comparables": [
+    {
+     "nom": "Restaurants",
+     "multiple": 2.18
+    },
+    {
+     "nom": "Boulangeries",
+     "multiple": 2.44
+    },
+    {
+     "nom": "Traiteurs",
+     "multiple": 2.07
+    },
+    {
+     "nom": "Cafés",
+     "multiple": 2.27
+    }
+   ],
+   "bas": 2.07,
+   "central": 2.23,
+   "haut": 2.44,
+   "brvm": {
+    "secteur": "Consommation discrétionnaire",
+    "per": 41.68
+   }
+  },
+  {
+   "id": "agro",
+   "nom": "Agriculture, agroalimentaire",
+   "comparables": [
+    {
+     "nom": "Fabricants de produits alimentaires",
+     "multiple": 2.7
+    },
+    {
+     "nom": "Brasseries",
+     "multiple": 3.34
+    },
+    {
+     "nom": "Jardineries et pépinières",
+     "multiple": 3.28
+    }
+   ],
+   "bas": 2.7,
+   "central": 3.28,
+   "haut": 3.34,
+   "brvm": {
+    "secteur": "Consommation de base",
+    "per": 12.4
+   }
+  },
+  {
+   "id": "transport",
+   "nom": "Transport et logistique",
+   "comparables": [
+    {
+     "nom": "Transport de marchandises",
+     "multiple": 3.0
+    },
+    {
+     "nom": "Livraison et tournées",
+     "multiple": 1.75
+    },
+    {
+     "nom": "Transport de personnes",
+     "multiple": 2.49
+    },
+    {
+     "nom": "Entrepôts et stockage",
+     "multiple": 3.41
+    }
+   ],
+   "bas": 1.75,
+   "central": 2.75,
+   "haut": 3.41,
+   "brvm": {
+    "secteur": "Industriels",
+    "per": 145.55
+   }
+  },
+  {
+   "id": "btp",
+   "nom": "Bâtiment, travaux, artisanat du bâtiment",
+   "comparables": [
+    {
+     "nom": "Gros œuvre",
+     "multiple": 2.78
+    },
+    {
+     "nom": "Électricité et mécanique",
+     "multiple": 2.77
+    },
+    {
+     "nom": "Plomberie",
+     "multiple": 2.61
+    },
+    {
+     "nom": "Béton",
+     "multiple": 2.54
+    }
+   ],
+   "bas": 2.54,
+   "central": 2.69,
+   "haut": 2.78,
+   "brvm": {
+    "secteur": "Industriels",
+    "per": 145.55
+   }
+  },
+  {
+   "id": "services",
+   "nom": "Services aux entreprises, conseil",
+   "comparables": [
+    {
+     "nom": "Services informatiques",
+     "multiple": 3.22
+    },
+    {
+     "nom": "Design graphique et web",
+     "multiple": 2.72
+    },
+    {
+     "nom": "Agences d'intérim",
+     "multiple": 2.66
+    },
+    {
+     "nom": "Cabinets comptables",
+     "multiple": 2.27
+    }
+   ],
+   "bas": 2.27,
+   "central": 2.69,
+   "haut": 3.22,
+   "brvm": null
+  },
+  {
+   "id": "numerique",
+   "nom": "Numérique, logiciel, vente en ligne",
+   "comparables": [
+    {
+     "nom": "Logiciels et applications",
+     "multiple": 3.25
+    },
+    {
+     "nom": "Sites web et vente en ligne",
+     "multiple": 3.37
+    },
+    {
+     "nom": "Réparation de téléphones",
+     "multiple": 1.88
+    }
+   ],
+   "bas": 1.88,
+   "central": 3.25,
+   "haut": 3.37,
+   "brvm": {
+    "secteur": "Télécommunications",
+    "per": 13.86
+   }
+  },
+  {
+   "id": "sante",
+   "nom": "Santé, pharmacie, clinique",
+   "comparables": [
+    {
+     "nom": "Pharmacies",
+     "multiple": 2.85
+    },
+    {
+     "nom": "Cabinets médicaux",
+     "multiple": 2.39
+    },
+    {
+     "nom": "Cabinets dentaires",
+     "multiple": 2.75
+    },
+    {
+     "nom": "Soins à domicile",
+     "multiple": 3.0
+    }
+   ],
+   "bas": 2.39,
+   "central": 2.8,
+   "haut": 3.0,
+   "brvm": null
+  },
+  {
+   "id": "education",
+   "nom": "École privée, crèche, formation",
+   "comparables": [
+    {
+     "nom": "Écoles",
+     "multiple": 2.63
+    },
+    {
+     "nom": "Écoles maternelles",
+     "multiple": 3.09
+    },
+    {
+     "nom": "Crèches",
+     "multiple": 3.28
+    }
+   ],
+   "bas": 2.63,
+   "central": 3.09,
+   "haut": 3.28,
+   "brvm": null
+  },
+  {
+   "id": "beaute",
+   "nom": "Coiffure, beauté, bien-être",
+   "comparables": [
+    {
+     "nom": "Salons de coiffure",
+     "multiple": 2.1
+    },
+    {
+     "nom": "Onglerie",
+     "multiple": 1.74
+    },
+    {
+     "nom": "Spas",
+     "multiple": 2.31
+    }
+   ],
+   "bas": 1.74,
+   "central": 2.1,
+   "haut": 2.31,
+   "brvm": null
+  },
+  {
+   "id": "industrie",
+   "nom": "Industrie, fabrication",
+   "comparables": [
+    {
+     "nom": "Produits alimentaires",
+     "multiple": 2.7
+    },
+    {
+     "nom": "Emballage",
+     "multiple": 2.85
+    },
+    {
+     "nom": "Produits métalliques",
+     "multiple": 3.27
+    },
+    {
+     "nom": "Plastique et caoutchouc",
+     "multiple": 4.24
+    },
+    {
+     "nom": "Textile et habillement",
+     "multiple": 2.76
+    }
+   ],
+   "bas": 2.7,
+   "central": 2.85,
+   "haut": 4.24,
+   "brvm": {
+    "secteur": "Industriels",
+    "per": 145.55
+   }
+  },
+  {
+   "id": "energie",
+   "nom": "Énergie, station-service",
+   "comparables": [
+    {
+     "nom": "Stations-service",
+     "multiple": 3.78
+    },
+    {
+     "nom": "Production d'énergie",
+     "multiple": 3.44
+    }
+   ],
+   "bas": 3.44,
+   "central": 3.61,
+   "haut": 3.78,
+   "brvm": {
+    "secteur": "Énergie",
+    "per": 18.05
+   }
+  },
+  {
+   "id": "finance",
+   "nom": "Assurance, crédit, services financiers",
+   "comparables": [
+    {
+     "nom": "Agences d'assurance",
+     "multiple": 2.87
+    },
+    {
+     "nom": "Crédit et prêts",
+     "multiple": 2.54
+    },
+    {
+     "nom": "Encaissement de chèques et transferts",
+     "multiple": 1.76
+    }
+   ],
+   "bas": 1.76,
+   "central": 2.54,
+   "haut": 2.87,
+   "brvm": {
+    "secteur": "Services financiers",
+    "per": 16.39
+   }
+  }
+ ]
+}

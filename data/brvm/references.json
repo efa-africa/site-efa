@@ -1,0 +1,22 @@
+{
+ "_note": "Niveaux de clôture au 31 décembre 2025, déduits du Bulletin officiel de la cote du 29 octobre 2026 (clôture ÷ (1 + variation depuis le 31 décembre)). La colonne « Variation 31 décembre » de la page Indices de brvm.org ne correspond pas au bulletin officiel : elle n'est pas utilisée.",
+ "source": {
+  "titre": "Bulletin officiel de la cote n° 206 du 29 octobre 2026",
+  "editeur": "BRVM",
+  "url": "https://www.brvm.org/sites/default/files/boc_eng_20261029_2.pdf"
+ },
+ "cloture_31_decembre_2025": {
+  "BRVM - COMPOSITE": 345.76,
+  "BRVM - PRESTIGE": 144.25,
+  "BRVM-30": 166.24,
+  "BRVM - PRINCIPAL": 217.65,
+  "BRVM - TELECOMMUNICATIONS": 94.9,
+  "BRVM - CONSOMMATION DISCRETIONNAIRE": 173.02,
+  "BRVM - SERVICES FINANCIERS": 145.86,
+  "BRVM - CONSOMMATION DE BASE": 216.07,
+  "BRVM - INDUSTRIELS": 132.33,
+  "BRVM - ENERGIE": 110.91,
+  "BRVM - SERVICES PUBLICS": 105.9,
+  "BRVM – COMPOSITE TOTAL RETURN": 133.14
+ }
+}
