@@ -337,6 +337,9 @@ html[data-clone] .efa-sig a{display:inline-flex;align-items:center;gap:10px;padd
 html[data-clone] .efa-sig a:hover{box-shadow:0 0 0 1.5px #0b63b0}
 html[data-clone] .efa-sig img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none}
 
+/* Le menu garde sa largeur sur toutes les pages */
+html[data-clone] .menu-panel,html[data-clone] .menu-panel *{box-sizing:border-box}
+
 /* Signature efa. (clone/efa-logo.css) */
 /* Composant autonome : oiseau original conserve, lettres minuscules. */
 .efa-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#081d33;white-space:nowrap;flex-shrink:0}

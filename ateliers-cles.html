@@ -19,10 +19,10 @@ button.b{background:#0b63b0}
 textarea{width:100%;box-sizing:border-box;min-height:220px;margin-top:12px;padding:14px;border:1.5px solid #cfdbe6;border-radius:12px;font:700 16px/1.7 ui-monospace,Menlo,monospace;letter-spacing:.04em}
 #ok{color:#1e7a4c;font-weight:700;min-height:1.4em}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261031v">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031w">
 </head>
 <body>
-<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être accompagné</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a href="index.html#pilier-progresser">Être accompagné <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a></nav></header>
 <main>
 <p style="font-weight:800;letter-spacing:.2em;font-size:12px;color:#168da4;text-transform:uppercase;margin:0 0 10px">Page interne · non référencée</p>
 <h1>Clés de test des ateliers</h1>
@@ -48,6 +48,9 @@ textarea{width:100%;box-sizing:border-box;min-height:220px;margin-top:12px;paddi
 
 
 
+
+
+
 <script src="clone/ateliers-data.js?v=20261031g"></script>
 <script>
 (function(){var D=window.EFA_ATELIERS;document.getElementById('fin').textContent=new Date(D.FIN_TEST).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
@@ -56,6 +59,6 @@ document.getElementById('gen').onclick=function(){var n=Math.max(1,Math.min(200,
 document.getElementById('cop').onclick=function(){if(!L.value)return;(navigator.clipboard?navigator.clipboard.writeText(L.value):Promise.reject()).then(function(){ok.textContent='Liste copiée.'},function(){L.select();document.execCommand('copy');ok.textContent='Liste copiée.'})};
 document.getElementById('ver').onclick=function(){var v=document.getElementById('v').value;document.getElementById('vr').textContent=D.cleValide(v)?'✓ Clé valide.':'✗ Clé non reconnue (ou période de test terminée).'};})();
 </script>
-<script src="clone/habillage.js?v=20261031v" defer></script>
+<script src="clone/habillage.js?v=20261031w" defer></script>
 </body>
 </html>
