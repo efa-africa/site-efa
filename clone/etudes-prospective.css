@@ -11,3 +11,20 @@
 @media(max-width:950px){.product-grid,.future-grid,.lab-grid,.future-layout{grid-template-columns:1fr}.product-image{aspect-ratio:1.5}.future-grid .product-image{order:-1;aspect-ratio:1.5}.lab-visual{min-height:420px}.report-cover{min-height:330px}.report-symbol{font-size:125px}.future-sheet{min-height:530px}.future-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.future-choice{min-height:180px}}
 @media(max-width:720px){.frame{width:min(100% - 34px,540px)}.topbar{height:68px;padding:0 18px}.brand{font-size:24px}.brand img{width:32px;height:32px}.brand small{font-size:7px}#study-menu{right:16px;top:62px}.hero{height:100svh;min-height:710px}.hero-image{object-position:72% center}.hero-overlay{background:linear-gradient(0deg,#031329f5 0%,#031329bf 46%,#03132910 90%),linear-gradient(90deg,#03132950,transparent)}.hero-meta{top:92px;display:block;font-size:9px}.hero-meta span{display:block;margin-bottom:5px}.hero-copy{left:20px;right:20px;bottom:42px;max-width:none;padding:0}.hero h1{font-size:clamp(56px,13vw,78px);margin:13px 0 15px}.hero-copy>p:not(.eyebrow){font-size:16px;line-height:1.45}.hero-actions{gap:8px;margin-top:20px}.ghost-link{font-size:13px}.hero-copy small{font-size:10px;margin-top:12px}.scroll{display:none}.ribbon{justify-content:flex-start}.section{padding:75px 0}h2{font-size:clamp(38px,9vw,54px)}.intro>p:not(.eyebrow),.section-head>p:last-child{font-size:16px}.intro-grid,.method-grid{grid-template-columns:1fr;gap:12px;margin-top:30px}.intro-grid a{min-height:0;padding:25px}.intro-grid strong{font-size:26px}.product-image,.future-grid .product-image{aspect-ratio:1.12;border-radius:23px}.product-image img{object-position:center center}.product-copy h2{font-size:clamp(39px,9vw,55px)}.product-copy>p:not(.eyebrow){font-size:16px}.image-badge{left:13px;bottom:13px;right:13px;padding:12px;font-size:9px}.lab-visual{min-height:350px}.report-cover{width:62%;min-height:270px;padding:20px}.report-cover strong{font-size:26px}.report-cover>span,.report-cover>small{font-size:8px}.report-symbol{font-size:105px}.report-symbol i{font-size:50px}.lab-panel{padding:22px}.tablist button{font-size:11px}.lab-panel [role=tabpanel]{min-height:0}.lab-panel h3{font-size:31px}.lab-panel [role=tabpanel] p{font-size:16px}.interlude{padding:75px 0}.future-picker{display:flex}.future-choice{min-height:0;padding:18px}.future-sheet{padding:23px;min-height:0}.sheet-year{font-size:105px}.future-sheet h3{font-size:33px}.sheet-columns{grid-template-columns:1fr;gap:14px}.method-grid{margin-top:0}.method-grid article{padding:24px}.method-grid h3{margin:15px 0 7px}.closing{padding:75px 0}.closing p:not(.eyebrow){font-size:16px}footer .frame{display:block}footer p{margin:12px 0}}
 @media(max-width:380px){.hero{min-height:750px}.hero h1{font-size:52px}.hero-copy{bottom:25px}.button{padding:12px 15px 12px 19px}.hero-actions{display:block}.ghost-link{display:inline-block;margin-top:8px}.report-cover{width:67%}}
+
+/* Déjà publié */
+.pub{background:#fff;padding:clamp(56px,8vw,96px) 0}
+.pub-in{width:min(1180px,calc(100% - 32px));margin:0 auto;font-family:"Source Sans 3",Arial,sans-serif;color:#132b43}
+.pub-k,.pub-sur{margin:0;font:800 12px/1.3 "Source Sans 3",Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#158cab}
+.pub h2{margin:10px 0 28px;font:700 clamp(30px,4vw,48px)/1.1 "Libre Baskerville",Georgia,serif;color:#071d38}
+.pub h2 em{font-style:normal;color:#158cab}
+.pub-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.pub-c{background:#EEF5FC;border-radius:20px;padding:24px}
+.pub-c h3{margin:6px 0 14px;font:700 clamp(21px,2.2vw,26px)/1.2 "Libre Baskerville",Georgia,serif;color:#071d38}
+.pub-l{display:flex;flex-direction:column;gap:2px;padding:14px 16px;margin-top:8px;background:#fff;border-radius:14px;color:#071d38;text-decoration:none}
+.pub-l:hover{background:#f7fafd}
+.pub-l small{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#1B71B2}
+.pub-l b{font-size:17px}
+.pub-l span{font-size:15px;color:#526374}
+.pub-l span:empty{display:none}
+@media(max-width:760px){.pub-g{grid-template-columns:1fr}}
