@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Synthèse de la semaine (ou du mois) à la BRVM, à partir de la base de relevés EFA.
+"""Synthèse de la semaine (ou du mois) à la Bourse (BRVM), à partir de la base de relevés EFA.
 
-Produit data/brvm/syntheses/AAAA-MM-JJ.md : matière brute pour rédiger « La semaine à la BRVM ».
+Produit data/brvm/syntheses/AAAA-MM-JJ.md : matière brute pour rédiger « La semaine à la Bourse (BRVM) ».
 Les sociétés du groupe Orange (SNTS, ORAC) sont exclues des palmarès publiés (règle EFA) mais reste dans la base.
 
 Usage : python scripts/brvm/semaine.py [--fin AAAA-MM-JJ] [--jours 7]
@@ -47,7 +47,7 @@ def main():
         raise SystemExit("Aucune séance sur la période.")
     s0, s1 = seances[0], seances[-1]
 
-    lignes = [f"# La BRVM du {s0} au {s1}", "",
+    lignes = [f"# La Bourse (BRVM) du {s0} au {s1}", "",
               f"Séances couvertes : {len(seances)} ({', '.join(seances)})", "",
               "Source : BRVM, cours de clôture officiels (brvm.org), relevés EFA.",
               "Contenu pédagogique, ne constitue pas un conseil en investissement.", ""]

@@ -43,7 +43,7 @@
     etudes: [
       ["Enquête EFA « L’argent de la tontine » : 71 % des participants déclarent que leur tontine…", ["Garde une réserve commune", "Redistribue tout", "Prête à intérêt"], 1, "71 % déclarent que tout est redistribué : rien n’est gardé en commun. C’est un sondage déclaratif, non représentatif."],
       ["La BRVM, c’est…", ["La banque centrale", "La Bourse commune aux 8 pays de l’UEMOA", "Un fonds d’investissement"], 1, "La Bourse Régionale des Valeurs Mobilières sert les huit pays de l’UEMOA."],
-      ["Où siège la BRVM ?", ["Abidjan", "Dakar", "Lomé"], 0, "La BRVM a son siège à Abidjan, en Côte d’Ivoire."],
+      ["Où siège la Bourse (BRVM) ?", ["Abidjan", "Dakar", "Lomé"], 0, "La Bourse (BRVM) a son siège à Abidjan, en Côte d’Ivoire."],
       ["La BCEAO est…", ["Une banque commerciale", "La banque centrale des pays de l’UEMOA", "La Bourse de Dakar"], 1, "La BCEAO émet le franc CFA de l’UEMOA et fixe les taux directeurs."],
       ["Une obligation, c’est…", ["Une part d’entreprise", "Un prêt que vous faites à un émetteur", "Un compte d’épargne garanti"], 1, "L’émetteur vous verse un intérêt, puis vous rembourse. Ce n’est pas un compte garanti."],
       ["Une action divisée par dix (fractionnement) devient…", ["Dix fois moins chère", "Ni plus ni moins chère : l’entreprise vaut pareil", "Dix fois plus rentable"], 1, "Le prix par action baisse, le nombre d’actions augmente : la valeur détenue ne change pas."],

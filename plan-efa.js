@@ -55,10 +55,10 @@
       etapes: [
         ["Une Bourse est d’abord un marché d’occasion", "Vous achetez le plus souvent à un autre investisseur, pas à l’entreprise. Le prix se fixe entre acheteurs et vendeurs, séance après séance."],
         ["Une action fait de vous un copropriétaire", "Vous partagez la réussite et les difficultés de l’entreprise. Propriétaire, pas créancier : rien ne vous est dû."],
-        ["Une obligation, c’est un prêt", "Vous prêtez à un État ou à une entreprise, pour une durée et à un taux connus d’avance. La BRVM cote des actions et des obligations."],
+        ["Une obligation, c’est un prêt", "Vous prêtez à un État ou à une entreprise, pour une durée et à un taux connus d’avance. La Bourse (BRVM) cote des actions et des obligations."],
         ["On gagne de deux façons, sans garantie", "Le dividende, si l’assemblée générale le vote, et la plus-value, si vous revendez plus cher. Un dividende récompense l’année passée, il ne promet rien pour la suivante."],
         ["Un cours peut baisser longtemps", "La Bourse se juge sur des années, pas sur une séance."],
-        ["On passe par un intermédiaire agréé", "À la BRVM, une SGI agréée par l’AMF-UMOA passe vos ordres et conserve vos titres. Pas d’agrément, pas d’argent."],
+        ["On passe par un intermédiaire agréé", "À la Bourse (BRVM), une SGI agréée par l’AMF-UMOA passe vos ordres et conserve vos titres. Pas d’agrément, pas d’argent."],
         ["Les frais mangent les petits ordres", "Avec 1,2 % de courtage à l’achat et à la vente, 50 000 FCFA coûtent environ 1 200 FCFA aller-retour : il faut une hausse d’environ 2,4 % pour rentrer dans ses frais."],
         ["Certains titres s’échangent peu", "C’est la liquidité. Préférez l’ordre à cours limité : vous fixez le prix maximum que vous acceptez de payer."],
         ["Ne pas tout mettre sur une seule société", "Répartir sur plusieurs sociétés et secteurs limite le choc. Avec un petit budget, un fonds commun de placement (FCP) le fait pour vous."],
@@ -79,7 +79,7 @@
       ]
     },
     "bourse-seance": {
-      titre: "Lire une séance de la BRVM", dispo: true,
+      titre: "Lire une séance de la Bourse (BRVM)", dispo: true,
       resume: "L’indice, la variation avec le volume, et jamais une séance seule. Puis les chiffres du jour.",
       etapes: [
         ["L’indice d’abord", "Le BRVM Composite résume l’évolution de toutes les actions cotées à la Bourse régionale d’Abidjan, commune aux huit pays de l’UEMOA. Il dit l’humeur du marché, pas celle de votre société."],
@@ -109,7 +109,7 @@
     preter: P("preter-a-un-proche", "Prêter à un proche", "preter-a-un-proche.html?src=plan"),
     retraite: P("preparer-ma-retraite", "Préparer ma retraite", "preparer-ma-retraite.html?src=plan"),
     spirale: P("cercle-spirale", "Le simulateur Cercle & Spirale", "cercle-spirale.html#argent"),
-    brvm: P("premiers-pas-brvm", "Premiers pas à la BRVM", "premiers-pas-brvm.html?src=plan")
+    brvm: P("premiers-pas-brvm", "Premiers pas à la Bourse (BRVM)", "premiers-pas-brvm.html?src=plan")
   };
 
   var SUJETS = [
@@ -117,7 +117,7 @@
      intro: "L’argent rentre, et à la fin du mois il n’en reste rien, sans savoir vraiment pourquoi. On commence par repérer où chercher, puis on observe un poste pendant une semaine.",
      diagnostic: {titre: "Où est passé mon argent ?", url: "ou-est-passe-mon-argent.html?src=plan", texte: "Cinq questions, sans relevé, pour savoir où chercher en premier."},
      modules: ["traces", "poches", "engagements", "exceptions"], defis: ["poste-7j", "plafond-7j"], parcours: ["mm", "budget"], poste: ""},
-    {slug: "investir-brvm", titre: "Je veux investir à la BRVM",
+    {slug: "investir-brvm", titre: "Je veux investir à la Bourse (BRVM)",
      intro: "Acheter des actions à la Bourse d’Abidjan commence avant la Bourse : une réserve de sécurité, pas de dette chère, de l’argent qui peut attendre. Puis dix choses à comprendre avant le premier ordre.",
      diagnostic: {titre: "Mon diagnostic financier complet", url: "diagnostic.html?src=brvm", texte: "Pour vérifier que votre réserve et vos dettes permettent d’investir."},
      modules: ["bourse-pret", "bourse-10", "bourse-ordre", "bourse-seance"], defis: [], parcours: ["brvm"], poste: ""},

@@ -182,7 +182,7 @@
         { t: "Financement externe", liste: [
           "Le crédit bancaire, à court terme (découvert, escompte) ou à moyen et long terme (investissement).",
           "Le crédit-bail : on loue un équipement avec option d'achat, sans l'acheter d'emblée.",
-          "L'emprunt obligataire, pour les plus grandes entreprises, par appel public à l'épargne, puis cotation à la BRVM.",
+          "L'emprunt obligataire, pour les plus grandes entreprises, par appel public à l'épargne, puis cotation à la Bourse (BRVM).",
           "L'augmentation de capital : de nouveaux associés, éventuellement par introduction en Bourse.",
           "Le capital-investissement : des fonds qui entrent au capital de PME pour quelques années.",
           "La microfinance, pour les très petites entreprises."] },
@@ -194,7 +194,7 @@
           fb: ["Non : un découvert finance des besoins courts.", "Juste : location avec option d'achat.", "Possible, mais lourd pour des camions."] },
         { type: "qcm", q: "Financer la construction d'une usine par un découvert renouvelé chaque année : quel risque principal ?", choix: ["Un coût un peu plus élevé", "Devoir rembourser avant que l'usine produise : un risque de liquidité", "Aucun"], bonne: 1,
           fb: ["Le coût est le moindre problème.", "Juste : la banque peut ne pas renouveler le découvert.", "Non."] },
-        { type: "qcm", transfert: true, q: "Une PME rentable mais sans garanties veut doubler sa capacité. Quelle piste examiner en premier ?", choix: ["Un emprunt obligataire à la BRVM", "Un fonds de capital-investissement ou un crédit-bail", "Un découvert"], bonne: 1,
+        { type: "qcm", transfert: true, q: "Une PME rentable mais sans garanties veut doubler sa capacité. Quelle piste examiner en premier ?", choix: ["Un emprunt obligataire à la Bourse (BRVM)", "Un fonds de capital-investissement ou un crédit-bail", "Un découvert"], bonne: 1,
           fb: ["Non : l'obligataire est réservé aux grandes signatures.", "Juste : fonds propres apportés par un investisseur, ou équipement financé par le crédit-bail.", "Non : besoin long."] }
       ],
       pratique: { texte: "Le cas « Financer 10 magasins : dette ou capital ? » vous fait choisir le mélange.", lien: "cas:financement" } },

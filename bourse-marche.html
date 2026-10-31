@@ -61,7 +61,7 @@
     </div>
   </section>
 </div>
-<p class="mention">Formation pédagogique d’EFA. Palmeraie du Golfe, Banque du Fleuve, Ciments du Sahel, Distribution Lagune et Énergie du Littoral sont des sociétés fictives, comme leurs cours et leurs graphiques. Les données de séance affichées sont celles de la BRVM ; le cas SAPH reprend des chiffres publiés (Financial Afrik, Capmad, Daba Finance, cote BRVM). Les règles citées peuvent évoluer : les textes de la BRVM et de l’AMF-UMOA font foi. EFA éduque, elle ne recommande aucun titre ni établissement. Les performances passées ne préjugent pas des performances futures.</p>
+<p class="mention">Formation pédagogique d’EFA. Palmeraie du Golfe, Banque du Fleuve, Ciments du Sahel, Distribution Lagune et Énergie du Littoral sont des sociétés fictives, comme leurs cours et leurs graphiques. Les données de séance affichées sont celles de la Bourse (BRVM) ; le cas SAPH reprend des chiffres publiés (Financial Afrik, Capmad, Daba Finance, cote BRVM). Les règles citées peuvent évoluer : les textes de la Bourse (BRVM) et de l’AMF-UMOA font foi. EFA éduque, elle ne recommande aucun titre ni établissement. Les performances passées ne préjugent pas des performances futures.</p>
 
 <script src="efa-suivi.js?v=2026102501"></script>
 <script src="donnees.js"></script>
@@ -75,7 +75,7 @@ window.ECOLE = {
     titre: "Lire le marché",
     kick: "Une introduction et huit modules · environ 6 heures",
     h: "De la séance du jour à votre stratégie",
-    p: ["On commence par la séance de la BRVM, telle que vous la voyez dans l’onglet BRVM. Puis on apprend à lire les indices composites, les graphiques et les tendances, à repérer les chiffres qui trompent, à analyser une entreprise, et à garder les bons réflexes. On finit par votre stratégie et un cas complet.",
+    p: ["On commence par la séance de la Bourse (BRVM), telle que vous la voyez dans l’onglet BRVM. Puis on apprend à lire les indices composites, les graphiques et les tendances, à repérer les chiffres qui trompent, à analyser une entreprise, et à garder les bons réflexes. On finit par votre stratégie et un cas complet.",
        "Les cas sont fictifs, les graphiques aussi : on peut s’y tromper sans rien perdre."],
     plus: '<p class="p" style="font-size:.9em">Pour passer votre premier ordre : <a href="bourse-essentiel.html?src=marche">L’essentiel de la Bourse</a>. Pour aller plus loin : <a href="bourse-pro.html?src=marche">le parcours approfondi</a>.</p>'
   },
@@ -194,12 +194,12 @@ retenir:"Une séance se lit <span class=\"c\">de l’ensemble au détail</span> 
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">L’École de la Bourse</span><div class="schema"><div><b>Lire</b>La séance, les indices, les graphiques, les tendances</div><div><b>Comprendre</b>Les chiffres qui trompent, une entreprise sous la loupe</div><div><b>Décider</b>Les réflexes de l’investisseur, votre stratégie, un cas complet</div></div>'},
   sur:"Bienvenue", h:"Ce que vous saurez faire à la fin",
-  p:["Lire une séance de la BRVM sans vous laisser impressionner par une hausse du jour. Comprendre ce que mesure un indice composite. Lire un graphique, repérer une tendance, un support, une résistance.",
+  p:["Lire une séance de la Bourse (BRVM) sans vous laisser impressionner par une hausse du jour. Comprendre ce que mesure un indice composite. Lire un graphique, repérer une tendance, un support, une résistance.",
    "Puis éviter les pièges les plus courants, analyser une entreprise en cinq minutes, garder les bons réflexes et choisir une stratégie qui vous ressemble. Chaque module se termine par un quiz : trois bonnes réponses sur cinq le valident."]},
- {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Le chemin d’un ordre</span><div class="schema"><div><b>Vous</b>Vous donnez un ordre d’achat ou de vente</div><div class="fl">↓</div><div><b>Votre SGI</b>Société de gestion et d’intermédiation agréée par l’AMF-UMOA</div><div class="fl">↓</div><div><b>La BRVM, à Abidjan</b>Elle rapproche acheteurs et vendeurs pendant la séance</div><div class="fl">↓</div><div><b>Le DC/BR</b>Il inscrit les titres et l’argent sur les bons comptes</div></div>'},
-  sur:"La BRVM", h:"Une Bourse pour huit pays",
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Le chemin d’un ordre</span><div class="schema"><div><b>Vous</b>Vous donnez un ordre d’achat ou de vente</div><div class="fl">↓</div><div><b>Votre SGI</b>Société de gestion et d’intermédiation agréée par l’AMF-UMOA</div><div class="fl">↓</div><div><b>La Bourse (BRVM), à Abidjan</b>Elle rapproche acheteurs et vendeurs pendant la séance</div><div class="fl">↓</div><div><b>Le DC/BR</b>Il inscrit les titres et l’argent sur les bons comptes</div></div>'},
+  sur:"La Bourse (BRVM)", h:"Une Bourse pour huit pays",
   p:["La Bourse régionale des valeurs mobilières sert les huit pays de l’UEMOA : Bénin, Burkina Faso, Côte d’Ivoire, Guinée-Bissau, Mali, Niger, Sénégal et Togo. On y échange des actions de sociétés et des obligations d’États et d’entreprises.",
-   "Chaque jour ouvré, une séance fixe des prix. Le soir, la BRVM publie les cours de clôture : ce sont eux que vous lisez dans l’onglet BRVM d’EFA, pas des cours en direct."]},
+   "Chaque jour ouvré, une séance fixe des prix. Le soir, la Bourse (BRVM) publie les cours de clôture : ce sont eux que vous lisez dans l’onglet BRVM d’EFA, pas des cours en direct."]},
  P({illu:function(){ var I = D0.indices || []; if (!I.length) return sansDonnees();
     return illu("Séance du " + (D0.seance || "") + " · données BRVM", '<table class="tab nuit-t"><thead><tr><th>Indice</th><th>Clôture</th><th>Jour</th></tr></thead><tbody>' + I.map(function(i){ return '<tr><td>' + esc(i[0]) + '</td><td class="v">' + fr(i[2], 2) + '</td><td class="v ' + cl(i[3]) + '">' + pc(i[3], 2) + '</td></tr>'; }).join("") + '</tbody></table>'); },
   sur:"Étape 1 · L’ensemble", h:"D’abord les indices",
@@ -208,7 +208,7 @@ ecrans:[
  P({illu:function(){ var S = (D0.secteurs || []).slice().sort(function(a, b){ return b[2] - a[2]; }); if (!S.length) return sansDonnees();
     return illu("Variation des indices sectoriels · " + (D0.seance || ""), G.barres(S.map(function(s){ return [s[0], s[2]]; }), {fmt:function(v){ return pc(v, 2); }, aria:"Variation du jour par secteur"})); },
   sur:"Étape 2 · Les secteurs", h:"Puis les secteurs",
-  p:["La BRVM classe les sociétés en sept secteurs, chacun avec son indice. Un jour, les banques montent et l’énergie baisse ; un autre jour, c’est l’inverse.",
+  p:["La Bourse (BRVM) classe les sociétés en sept secteurs, chacun avec son indice. Un jour, les banques montent et l’énergie baisse ; un autre jour, c’est l’inverse.",
    "Regarder les secteurs évite une erreur courante : croire qu’une société monte pour ses propres mérites, alors que tout son secteur monte avec elle."]}),
  P({illu:function(){ var A = actions(); if (!A.length) return sansDonnees();
     var h = A.filter(function(a){ return a[4] > 0; }).length, b = A.filter(function(a){ return a[4] < 0; }).length, s = A.length - h - b, t = A.slice().sort(function(x, y){ return y[4] - x[4]; });
@@ -222,11 +222,11 @@ ecrans:[
     A.forEach(function(a){ c[a[2]] = (c[a[2]] || 0) + 1; }); var L = Object.keys(c).map(function(k){ return [N[k] || k, c[k]]; }).sort(function(a, b){ return b[1] - a[1]; });
     return illu("Actions cotées par pays · " + A.length + " titres", G.barres(L, {col:"#6DB8F2", fmt:function(v){ return v; }, aria:"Nombre d’actions cotées par pays"})); },
   sur:"Étape 4 · La cote", h:"Une cote très ivoirienne",
-  p:["La plupart des sociétés cotées sont ivoiriennes. Acheter « la BRVM », c’est donc surtout acheter l’économie ivoirienne, et quelques grandes sociétés du Sénégal, du Burkina Faso, du Bénin, du Mali, du Togo et du Niger.",
+  p:["La plupart des sociétés cotées sont ivoiriennes. Acheter « la Bourse (BRVM) », c’est donc surtout acheter l’économie ivoirienne, et quelques grandes sociétés du Sénégal, du Burkina Faso, du Bénin, du Mali, du Togo et du Niger.",
    "Dans l’onglet BRVM, la cote complète se filtre par pays et par sens de variation."]}),
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les mots pour lire la cote</span><table class="tab def"><tbody><tr><td><b>Dividende</b></td><td>la part du bénéfice versée aux actionnaires</td></tr><tr><td><b>Liquidité</b></td><td>la facilité à acheter ou vendre un titre sans faire bouger son prix</td></tr><tr><td><b>Capitalisation</b></td><td>le cours multiplié par le nombre d’actions</td></tr><tr><td><b>Indice</b></td><td>un panier de titres résumé en un chiffre</td></tr><tr><td><b>Rendement</b></td><td>le dividende rapporté au cours</td></tr></tbody></table>'},
   sur:"Le vocabulaire", h:"Cinq mots suffisent pour commencer",
-  p:["Ces cinq mots reviennent dans tous les modules. Le plus sous-estimé est la liquidité : à la BRVM, beaucoup de titres s’échangent peu. Un cours qui ne bouge pas peut simplement signifier que personne n’a acheté ni vendu.",
+  p:["Ces cinq mots reviennent dans tous les modules. Le plus sous-estimé est la liquidité : à la Bourse (BRVM), beaucoup de titres s’échangent peu. Un cours qui ne bouge pas peut simplement signifier que personne n’a acheté ni vendu.",
    "Chaque mot a sa fiche dans le Dico pratique d’EFA."]},
  {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Message reçu ce soir</span><div class="grand">« Palmeraie du Golfe + 7 % aujourd’hui ! »</div><span class="mot">Société fictive</span>'}, sur:"Décider", h:"Une action a pris 7 % aujourd’hui. Que regardez-vous d’abord ?",
   opts:[["A","J’achète demain matin avant que ça monte encore","ko","Acheter sur une seule séance, c’est acheter l’enthousiasme des autres. Le cours de demain peut être plus haut ou plus bas : rien dans le chiffre ne le dit."],
@@ -239,11 +239,11 @@ ecrans:[
   plus:'<p class="p"><a href="bourse-essentiel.html?src=marche#A1">Suis-je prêt à investir ? Le module A1 →</a></p>'}
 ],
 quiz:[
- ["Les cours affichés dans l’onglet BRVM d’EFA sont…",[["A","des cours en direct, à la seconde"],["B","les cours de clôture de la dernière séance"],["C","des prévisions pour demain"]],"B","EFA relève les cours de clôture publiés par la BRVM après chaque séance."],
+ ["Les cours affichés dans l’onglet BRVM d’EFA sont…",[["A","des cours en direct, à la seconde"],["B","les cours de clôture de la dernière séance"],["C","des prévisions pour demain"]],"B","EFA relève les cours de clôture publiés par la Bourse (BRVM) après chaque séance."],
  ["Dans quel ordre lire une séance ?",[["A","Les plus fortes hausses, puis rien d’autre"],["B","Les indices, les secteurs, la largeur du marché, puis les lignes"],["C","Le titre que l’on possède, et c’est tout"]],"B","On va de l’ensemble au détail : c’est ce qui évite de prendre un mouvement de secteur pour une bonne nouvelle d’entreprise."],
  ["Le Composite monte mais 30 titres baissent et 12 montent. Que se passe-t-il probablement ?",[["A","Quelques grandes sociétés tirent l’indice vers le haut"],["B","L’indice est faux"],["C","Tout le marché monte"]],"A","L’indice est pondéré par la taille des sociétés : quelques grandes peuvent l’emporter sur beaucoup de petites."],
  ["Que veut dire « liquidité » pour une action ?",[["A","Le montant du dividende"],["B","La facilité à l’acheter ou la vendre sans faire bouger son prix"],["C","L’argent liquide de l’entreprise"]],"B","Un titre peu liquide peut rester des jours sans échange, puis bouger fortement sur quelques ordres."],
- ["Combien de pays la BRVM sert-elle ?",[["A","Trois"],["B","Huit, ceux de l’UEMOA"],["C","Quinze, ceux de la CEDEAO"]],"B","Bénin, Burkina Faso, Côte d’Ivoire, Guinée-Bissau, Mali, Niger, Sénégal et Togo."]
+ ["Combien de pays la Bourse (BRVM) sert-elle ?",[["A","Trois"],["B","Huit, ceux de l’UEMOA"],["C","Quinze, ceux de la CEDEAO"]],"B","Bénin, Burkina Faso, Côte d’Ivoire, Guinée-Bissau, Mali, Niger, Sénégal et Togo."]
 ]});
 
 /* ======================= C2 · Les indices composites ======================= */
@@ -254,12 +254,12 @@ ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Base 100</span><div class="grand">100 → 529</div><span class="mot">Si un indice parti de 100 vaut 529, le panier vaut 5,29 fois sa valeur de départ, hors dividendes</span>'},
   sur:"Le principe", h:"Un indice, c’est un panier qu’on pèse chaque soir",
   p:["On choisit des actions, on additionne leur valeur en Bourse, et on fixe le total de départ à 100 points. Chaque soir, on recalcule : si le panier vaut 3 % de plus, l’indice gagne 3 %.",
-   "Le BRVM Composite est parti de 100 points au lancement de la BRVM, en 1998. Son niveau ne s’interprète donc qu’en comparaison : avec hier, avec il y a un an, avec un autre indice."]},
+   "Le BRVM Composite est parti de 100 points au lancement de la Bourse (BRVM), en 1998. Son niveau ne s’interprète donc qu’en comparaison : avec hier, avec il y a un an, avec un autre indice."]},
  P({illu:function(){ var I = D0.indices || [], S = D0.secteurs || [];
     return illu("La famille des indices BRVM", '<table class="tab nuit-t def"><tbody><tr><td><b>BRVM Composite</b></td><td>toutes les actions cotées</td></tr><tr><td><b>BRVM 30</b></td><td>les trente actions les plus échangées</td></tr><tr><td><b>BRVM Prestige</b></td><td>le compartiment Prestige</td></tr><tr><td><b>BRVM Principal</b></td><td>le compartiment Principal</td></tr><tr><td><b>Sept indices sectoriels</b></td><td>' + (S.length ? S.map(function(s){ return esc(s[0]); }).join(", ") : "un par secteur") + '</td></tr></tbody></table>'); },
-  sur:"À la BRVM", h:"Un indice pour l’ensemble, d’autres pour regarder de plus près",
+  sur:"À la Bourse (BRVM)", h:"Un indice pour l’ensemble, d’autres pour regarder de plus près",
   p:["Le Composite donne la tendance générale. Le BRVM 30 suit les titres les plus échangés, ceux dont le prix reflète le plus d’ordres. Les indices sectoriels permettent de comparer une société à ses voisines.",
-   "La composition et la méthode de chaque indice sont publiées par la BRVM sur brvm.org."]}),
+   "La composition et la méthode de chaque indice sont publiées par la Bourse (BRVM) sur brvm.org."]}),
  P({illu:function(){ var t = CAP.reduce(function(a, x){ return a + x[1]; }, 0);
     return illu("Un indice de trois sociétés fictives", '<table class="tab nuit-t"><thead><tr><th>Société</th><th>Capitalisation</th><th>Poids</th></tr></thead><tbody>' + CAP.map(function(x){ return '<tr><td>' + x[0] + '</td><td class="v">' + x[1] + ' Md F</td><td class="v">' + fr(x[1] / t * 100) + ' %</td></tr>'; }).join("") + '<tr class="tot"><td>Total</td><td class="v">' + t + ' Md F</td><td class="v">100 %</td></tr></tbody></table>' + G.barres(CAP.map(function(x){ return [x[0], Math.round(x[1] / t * 100)]; }), {col:"#6DB8F2", fmt:function(v){ return v + " %"; }})); },
   sur:"La pondération", h:"Chaque société pèse selon sa taille",
@@ -280,10 +280,10 @@ ecrans:[
   opts:[["A","Il monte : la majorité des titres est en hausse","ko","Non. Il baisse d’environ 1,75 % : − 4 × 0,75 = − 3 points de pourcentage, que les + 0,75 et + 0,5 des deux autres ne compensent pas."],
    ["B","Il baisse d’environ 1,75 %","ok","Juste : − 3 + 0,75 + 0,5 = − 1,75 %. La plus grosse société l’emporte. C’est pourquoi on regarde aussi la largeur du marché."],
    ["C","Il ne bouge pas : les hausses compensent la baisse","ko","Non. On ne compte pas les titres, on pondère par leur taille. L’indice baisse d’environ 1,75 %."]]}),
- {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">La BRVM en août 2026</span><table class="tab"><tbody><tr><td>Capitalisation totale des actions</td><td>≈ 20 000 Md F</td></tr><tr><td>Part réellement disponible à l’achat (flottant)</td><td>≈ 20 %</td></tr><tr><td>Part du flottant détenue dans cinq sociétés</td><td>≈ 59 %</td></tr></tbody></table><span class="mot">Source : allAfrica, 27 août 2026, d’après les données publiées par la BRVM</span>'},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">La Bourse (BRVM) en août 2026</span><table class="tab"><tbody><tr><td>Capitalisation totale des actions</td><td>≈ 20 000 Md F</td></tr><tr><td>Part réellement disponible à l’achat (flottant)</td><td>≈ 20 %</td></tr><tr><td>Part du flottant détenue dans cinq sociétés</td><td>≈ 59 %</td></tr></tbody></table><span class="mot">Source : allAfrica, 27 août 2026, d’après les données publiées par la Bourse (BRVM)</span>'},
   sur:"La concentration", h:"Quelques grandes sociétés pèsent très lourd",
-  p:["Les indices de la BRVM sont dominés par quelques très grandes sociétés, souvent des télécoms et des banques. Un jour où elles bougent fortement, le Composite suit, même si le reste de la cote est calme.",
-   "Le flottant, c’est la part des actions qui peut vraiment s’échanger : le reste est gardé par l’actionnaire principal, un État ou un groupe. À la BRVM, environ quatre actions sur cinq ne sont pas sur le marché."]},
+  p:["Les indices de la Bourse (BRVM) sont dominés par quelques très grandes sociétés, souvent des télécoms et des banques. Un jour où elles bougent fortement, le Composite suit, même si le reste de la cote est calme.",
+   "Le flottant, c’est la part des actions qui peut vraiment s’échanger : le reste est gardé par l’actionnaire principal, un État ou un groupe. À la Bourse (BRVM), environ quatre actions sur cinq ne sont pas sur le marché."]},
  P({illu:function(){ var I = D0.indices || []; if (!I.length) return sansDonnees();
     return illu("Les indices de la séance du " + (D0.seance || ""), G.barres(I.map(function(i){ return [i[0], i[3]]; }), {fmt:function(v){ return pc(v, 2); }, aria:"Variation du jour des indices"})); },
   sur:"Comparer", h:function(){ var I = D0.indices || []; if (I.length < 3) return "Comparer deux indices"; var c = I[0], p = I[2]; return p[3] > c[3] ? "Le Prestige a fait mieux que le Composite" : p[3] < c[3] ? "Le Prestige a fait moins bien que le Composite" : "Le Prestige et le Composite ont fait pareil"; },
@@ -291,7 +291,7 @@ ecrans:[
    "Sur une séance, l’écart dit peu. Sur un an, il raconte quelle partie du marché a créé de la valeur."]}),
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Deux façons de compter (fictif)</span><table class="tab"><tbody><tr><td>Indice de prix sur un an</td><td>+ 6 %</td></tr><tr><td>Dividendes versés par les sociétés du panier</td><td>+ 7 %</td></tr><tr class="tot"><td>Ce qu’a gagné un actionnaire du panier</td><td>≈ + 13 %</td></tr></tbody></table>'},
   sur:"La limite", h:"Un indice de prix oublie les dividendes",
-  p:["Le Composite suit les cours, pas les dividendes versés. Or à la BRVM, les dividendes représentent souvent une grande part de ce que gagne un actionnaire.",
+  p:["Le Composite suit les cours, pas les dividendes versés. Or à la Bourse (BRVM), les dividendes représentent souvent une grande part de ce que gagne un actionnaire.",
    "Pour comparer votre portefeuille à l’indice, comptez de la même façon : sans vos dividendes, ou en ajoutant aux cours les dividendes du panier. Sinon la comparaison est fausse."]},
  {t:"choix", illu:{c:"nuit", html:'<span class="tabtitre">Le bilan de Koffi sur un an</span><table class="tab"><tbody><tr><td>Ses titres, cours seulement</td><td>+ 4 %</td></tr><tr><td>Ses dividendes encaissés</td><td>+ 5 %</td></tr><tr><td>BRVM Composite</td><td>+ 9 %</td></tr></tbody></table>'}, sur:"Décider", h:"Koffi conclut qu’il a fait moins bien que le marché. A-t-il raison ?",
   opts:[["A","Oui, 4 % c’est moins que 9 %","ko","La comparaison mélange deux choses : ses cours sans dividendes et un indice sans dividendes, c’est 4 % contre 9 % ; mais avec ses dividendes il est à 9 %, face à un indice qui n’en compte pas. Il faut comparer avec les mêmes règles."],
@@ -334,7 +334,7 @@ ecrans:[
  P({illu:function(){ return illu("Vingt séances en bougies (fictif)", G.bougies({d:BG, vol:BV, xl:[[0, "S1"], [5, "S6"], [10, "S11"], [15, "S16"], [19, "S20"]], vise:15}) + G.leg([[G.VE, "clôture au-dessus de l’ouverture"], [G.CO, "clôture au-dessous"], ["#C9D1DE", "aucun échange"]])); },
   sur:"Les bougies", h:"Une bougie raconte une séance entière",
   p:["Le corps de la bougie va du cours d’ouverture au cours de clôture : vert si la séance a fini plus haut qu’elle n’a commencé, corail sinon. Les traits fins, les mèches, montrent le plus haut et le plus bas atteints.",
-   "Un simple trait horizontal : ouverture, clôture, plus haut et plus bas identiques. À la BRVM, c’est souvent le signe qu’aucun titre n’a changé de main ce jour-là."]}),
+   "Un simple trait horizontal : ouverture, clôture, plus haut et plus bas identiques. À la Bourse (BRVM), c’est souvent le signe qu’aucun titre n’a changé de main ce jour-là."]}),
  CG("g3", {illu:function(){ return illu("La séance 16, entourée de blanc", G.bougies({d:BG, vol:BV, xl:[[0, "S1"], [15, "S16"], [19, "S20"]], vise:15})); },
   sur:"Lire", h:"Que dit la grande bougie corail de la séance 16 ?",
   opts:[["A","Le titre a ouvert vers 2 610 F, est descendu jusqu’à 2 470 F et a fini près de son plus bas, avec beaucoup de volume","ok","Oui. Un grand corps corail, presque sans mèche en bas, et le plus gros volume des vingt séances : les vendeurs ont dominé toute la séance. Cela mérite de chercher pourquoi."],
@@ -401,9 +401,9 @@ ecrans:[
   opts:[["A","Une occasion : il faut acheter puisque c’est moins cher","ko","Moins cher n’est pas une raison. Le marché vient de changer d’avis avec du volume : avant d’acheter, il faut savoir pourquoi."],
    ["B","Un signal que la tendance devient baissière, à expliquer par l’analyse de l’entreprise","ok","Oui. Le graphique dit qu’il se passe quelque chose ; les annonces et les comptes disent quoi. On verra Palmeraie du Golfe en détail dans le cas final."],
    ["C","La preuve que la société va faire faillite","ko","Un graphique ne prouve rien sur l’entreprise. Il décrit les échanges. Seule l’analyse des comptes peut dire si la société va bien ou mal."]]}),
- {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les limites à la BRVM</span><ol class="liste-n"><li><b>Peu d’échanges</b> sur beaucoup de titres : une courbe se dessine avec quelques ordres.</li><li><b>Une variation plafonnée</b> par séance, de l’ordre de 7,5 % pour les actions : un choc s’étale sur plusieurs jours.</li><li><b>Peu d’informations publiées</b> par certaines sociétés : le graphique réagit tard.</li><li><b>Le passé</b> ne garantit rien : une tendance s’arrête un jour.</li></ol>'},
+ {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les limites à la Bourse (BRVM)</span><ol class="liste-n"><li><b>Peu d’échanges</b> sur beaucoup de titres : une courbe se dessine avec quelques ordres.</li><li><b>Une variation plafonnée</b> par séance, de l’ordre de 7,5 % pour les actions : un choc s’étale sur plusieurs jours.</li><li><b>Peu d’informations publiées</b> par certaines sociétés : le graphique réagit tard.</li><li><b>Le passé</b> ne garantit rien : une tendance s’arrête un jour.</li></ol>'},
   sur:"Les limites", h:"Un graphique dit ce qui s’est passé, pas pourquoi",
-  p:["L’analyse graphique est née sur de grands marchés où des milliers d’ordres font chaque prix. Sur un titre peu échangé de la BRVM, une moyenne mobile ou un support se dessinent avec bien moins d’ordres : ils sont moins fiables.",
+  p:["L’analyse graphique est née sur de grands marchés où des milliers d’ordres font chaque prix. Sur un titre peu échangé de la Bourse (BRVM), une moyenne mobile ou un support se dessinent avec bien moins d’ordres : ils sont moins fiables.",
    "La règle des professionnels : on choisit un titre pour son entreprise, ses comptes, son dividende ; on utilise le graphique pour choisir le moment et éviter d’acheter au plus mauvais."]},
  CG("g8", {illu:function(){ return illu("Énergie du Littoral · dix mois de séances (fictif)", G.ligne({s:[{d:EDL.c}, {d:G.mm(EDL.c, 50), col:G.CO, ep:2.2}], vol:EDL.v, xl:[[0, "janv."], [105, "juin"], [209, "oct."]], aria:"Cours fictif d’Énergie du Littoral"}) + G.leg([[G.BL, "cours"], [G.CO, "moyenne 50 séances"]])); },
   sur:"Lire comme un analyste", h:"Laquelle de ces lectures d’Énergie du Littoral est la plus prudente ?",
@@ -415,7 +415,7 @@ quiz:[
  ["Une tendance haussière se reconnaît à…",[["A","des sommets et des creux de plus en plus hauts"],["B","une seule forte séance"],["C","un gros dividende"]],"A","On regarde la succession des sommets et des creux, pas une séance."],
  ["La moyenne mobile 50 séances, c’est…",[["A","le cours moyen de l’année"],["B","chaque jour, la moyenne des 50 dernières clôtures"],["C","la moyenne des 50 plus grosses sociétés"]],"B","Elle glisse avec le temps et lisse les petites variations."],
  ["Un support est…",[["A","un niveau où des acheteurs se manifestent souvent"],["B","un prix garanti par la Bourse"],["C","le plus haut historique"]],"A","Ce n’est pas une garantie : un support peut être franchi."],
- ["Pourquoi l’analyse graphique est-elle moins fiable sur un titre peu échangé ?",[["A","Parce que la courbe se dessine avec peu d’ordres"],["B","Parce que la BRVM interdit les graphiques"],["C","Elle est plus fiable"]],"A","Quelques ordres isolés suffisent à faire un prix, donc une figure."],
+ ["Pourquoi l’analyse graphique est-elle moins fiable sur un titre peu échangé ?",[["A","Parce que la courbe se dessine avec peu d’ordres"],["B","Parce que la Bourse (BRVM) interdit les graphiques"],["C","Elle est plus fiable"]],"A","Quelques ordres isolés suffisent à faire un prix, donc une figure."],
  ["Le cours casse son support avec du volume. Que faites-vous ?",[["A","J’achète, c’est moins cher"],["B","Je cherche pourquoi dans les annonces et les comptes"],["C","Je vends tout sans regarder"]],"B","Le graphique signale ; l’analyse de l’entreprise explique."]
 ]});
 
@@ -529,10 +529,10 @@ ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les cinq réflexes</span><ol class="liste-n"><li><b>Je vérifie la source.</b></li><li><b>Je regarde le volume et la période.</b></li><li><b>Je décide avant, pas pendant.</b></li><li><b>Je répartis.</b></li><li><b>Je garde une réserve.</b></li></ol>'},
   sur:"Les réflexes", h:"Ce qui distingue un investisseur d’un joueur",
   p:["Les investisseurs qui durent ne sont pas ceux qui devinent le mieux les cours. Ce sont ceux qui évitent les grosses erreurs : acheter sur une rumeur, vendre dans la panique, tout miser sur un titre.",
-   "Ce module vous met devant des situations fictives, inspirées de ce que vivent les investisseurs de la BRVM. À chaque fois, un réflexe fait la différence."]},
+   "Ce module vous met devant des situations fictives, inspirées de ce que vivent les investisseurs de la Bourse (BRVM). À chaque fois, un réflexe fait la différence."]},
  {t:"choix", illu:{photo:"koffi-inquiet.jpg", leg:"Koffi reçoit un message dans un groupe WhatsApp"}, sur:"Cas 1 · La rumeur", h:"« Palmeraie du Golfe va doubler, une grosse annonce arrive. Achetez avant lundi ! » Que fait Koffi ?",
   opts:[["A","Il achète vite, pour ne pas rater l’occasion","ko","C’est la peur de manquer, le biais le plus coûteux. Si l’information était vraie et publique, le cours l’aurait déjà intégrée ; si elle est fausse, Koffi achète au sommet d’une rumeur."],
-   ["B","Il cherche une annonce officielle sur brvm.org et sur le site de la société, et ne décide rien avant","ok","Oui. Une vraie annonce est publiée par la société et la BRVM. Une information « à saisir avant lundi » qui n’existe nulle part ailleurs est un signal d’alarme."],
+   ["B","Il cherche une annonce officielle sur brvm.org et sur le site de la société, et ne décide rien avant","ok","Oui. Une vraie annonce est publiée par la société et la Bourse (BRVM). Une information « à saisir avant lundi » qui n’existe nulle part ailleurs est un signal d’alarme."],
    ["C","Il transfère le message à ses amis","ko","Il propage peut-être une fausse information. Le réflexe est de vérifier la source avant tout."]]},
  {t:"choix", illu:{photo:"koffi-portrait.jpg", leg:"Le titre de Koffi a perdu 18 % en trois semaines"}, sur:"Cas 2 · La baisse", h:"Aucune annonce de la société, tout son secteur baisse. Que fait Koffi ?",
   opts:[["A","Il vend tout pour arrêter de perdre","ko","Vendre dans la panique transforme une baisse temporaire en perte définitive. Tout le secteur baisse : rien ne dit que son entreprise va moins bien."],
@@ -560,7 +560,7 @@ ecrans:[
   apres:function(c){ [].forEach.call(document.querySelectorAll("[data-rg]"), function(b){ b.addEventListener("click", function(){ var R = c.S.r.rg || [], k = b.getAttribute("data-rg"), i = R.indexOf(k); if (i >= 0) R.splice(i, 1); else if (R.length < 3) R.push(k); c.S.r.rg = R; c.sauver(); c.refaire(); }); }); }}
 ],
 quiz:[
- ["Une information « à saisir avant lundi » circule sur WhatsApp. Premier réflexe ?",[["A","Acheter vite"],["B","Chercher l’annonce officielle de la société et de la BRVM"],["C","La partager"]],"B","Une vraie information est publiée officiellement. Sinon, c’est une rumeur."],
+ ["Une information « à saisir avant lundi » circule sur WhatsApp. Premier réflexe ?",[["A","Acheter vite"],["B","Chercher l’annonce officielle de la société et de la Bourse (BRVM)"],["C","La partager"]],"B","Une vraie information est publiée officiellement. Sinon, c’est une rumeur."],
  ["Garder un titre perdant en attendant qu’il revienne à son prix d’achat, c’est…",[["A","l’ancrage"],["B","la diversification"],["C","l’effet de levier"]],"A","Le marché ignore votre prix d’achat."],
  ["Un titre pèse 70 % de votre portefeuille après une forte hausse. Le réflexe ?",[["A","Le garder tel quel"],["B","Rééquilibrer en vendant une partie"],["C","En racheter"]],"B","On réduit le poids pour ne pas dépendre d’une seule société."],
  ["Un argent à dépenser dans trois mois…",[["A","peut aller en Bourse s’il fait beau"],["B","ne va pas en Bourse"],["C","doit aller sur un seul titre"]],"B","La Bourse est pour l’argent qui peut attendre plusieurs années."],
@@ -580,7 +580,7 @@ ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Quatre stratégies d’investisseur particulier</span><div class="schema"><div><b>Investir régulièrement</b>la même somme, à dates fixes</div><div><b>Viser le rendement</b>des sociétés solides qui versent un dividende</div><div><b>Répartir</b>plusieurs titres, secteurs, pays, ou un fonds commun</div><div><b>Rééquilibrer</b>revenir chaque année à sa répartition de départ</div></div>'},
   sur:"Les stratégies", h:"Pas besoin de deviner le marché",
   p:["Ces quatre stratégies se combinent. Aucune ne demande de prévoir les cours : elles organisent vos décisions pour qu’une erreur ne coûte pas trop cher.",
-   "Ce que ce module ne vous apprendra pas : acheter et revendre chaque semaine. Avec les frais de la BRVM et le peu d’échanges sur beaucoup de titres, la spéculation rapide coûte cher aux particuliers."]},
+   "Ce que ce module ne vous apprendra pas : acheter et revendre chaque semaine. Avec les frais de la Bourse (BRVM) et le peu d’échanges sur beaucoup de titres, la spéculation rapide coûte cher aux particuliers."]},
  P({illu:function(c){ var k = c.S.r.sc || "c", p = SCN[k][1], r = simu(p), F = ECOLE.outils.F;
     return illu("300 000 F à investir sur un an · titre fictif", '<div class="bts">' + Object.keys(SCN).map(function(x){ return '<button class="bt-g" type="button" data-sc="' + x + '" aria-pressed="' + (x === k) + '">' + SCN[x][0] + '</button>'; }).join("") + '</div>' + G.ligne({s:[{d:p}], H:190, xl:[[0, "janv."], [3, "avr."], [6, "juil."], [9, "oct."], [11, "déc."]], aria:"Cours mensuel fictif, scénario " + SCN[k][0]}) +
       '<table class="tab nuit-t"><thead><tr><th>Méthode</th><th>Titres</th><th>Prix moyen</th><th>Valeur en déc.</th></tr></thead><tbody>' +
@@ -630,8 +630,8 @@ ecrans:[
 ],
 quiz:[
  ["Investir la même somme chaque mois permet surtout…",[["A","de lisser son prix d’achat moyen"],["B","de garantir un gain"],["C","d’éviter tous les frais"]],"A","On achète plus de titres quand le cours est bas, moins quand il est haut."],
- ["Avec 25 000 F par mois, pourquoi grouper ses ordres par trimestre ?",[["A","Pour réduire le poids des frais minimums par ordre"],["B","Parce que la BRVM ferme deux mois sur trois"],["C","Pour payer plus d’impôts"]],"A","Un minimum de frais par ordre pèse lourd sur un petit montant."],
- ["Réinvestir ses dividendes…",[["A","fait travailler les dividendes à leur tour"],["B","est interdit à la BRVM"],["C","ne change rien sur dix ans"]],"A","L’écart grandit avec les années."],
+ ["Avec 25 000 F par mois, pourquoi grouper ses ordres par trimestre ?",[["A","Pour réduire le poids des frais minimums par ordre"],["B","Parce que la Bourse (BRVM) ferme deux mois sur trois"],["C","Pour payer plus d’impôts"]],"A","Un minimum de frais par ordre pèse lourd sur un petit montant."],
+ ["Réinvestir ses dividendes…",[["A","fait travailler les dividendes à leur tour"],["B","est interdit à la Bourse (BRVM)"],["C","ne change rien sur dix ans"]],"A","L’écart grandit avec les années."],
  ["Répartir son argent sur cinq titres permet…",[["A","d’obtenir le meilleur résultat possible"],["B","d’éviter que le pire titre emporte tout"],["C","d’éviter toute baisse"]],"B","La répartition ne cherche pas le meilleur, elle évite le pire."],
  ["Rééquilibrer, c’est…",[["A","vendre un peu de ce qui a monté pour revenir à sa répartition"],["B","tout vendre chaque année"],["C","acheter seulement ce qui monte"]],"A","On revient à la répartition fixée à l’avance, une fois par an."]
 ]});
@@ -641,7 +641,7 @@ var IDXS = G.serie(10000, [[250, .008, .7]], 515, 0).c.map(function(x){ return x
 MOD.push({id:"C9", titre:"Cas final · Le dossier Palmeraie du Golfe", court:"Cas final", duree:"Dès 2 min",
 retenir:"Vous avez lu un graphique, comparé à un indice, lu une annonce, vérifié un dividende et écrit votre décision avec une limite. C’est la méthode complète ; il ne reste qu’à l’appliquer à une vraie société, sans précipitation.",
 ecrans:[
- {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Société fictive</span><div class="grand">Palmeraie du Golfe</div><span class="mot">Huile de palme · plantations et usine · cotée à la BRVM dans ce cas d’école</span>'},
+ {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Société fictive</span><div class="grand">Palmeraie du Golfe</div><span class="mot">Huile de palme · plantations et usine · cotée à la Bourse (BRVM) dans ce cas d’école</span>'},
   sur:"Le cas", h:"Un ami vous demande s’il doit acheter Palmeraie du Golfe",
   p:["Le titre a beaucoup monté en début d’année, puis il a reculé. Votre ami a lu qu’il verse un beau dividende. Vous allez mener l’analyse complète, avec tout ce que vous avez appris.",
    "Quatre étapes : le graphique, la comparaison avec son secteur, l’annonce de la société, puis votre décision écrite."]},

@@ -65,7 +65,7 @@ window.EFA_LIVRES = [
       ["Prévoyez une marge pour l’imprévu.", "Les plans échouent toujours un peu : une marge de sécurité permet de rester debout quand ça arrive."]
     ],
     marche: [["La marge de sécurité.", "C’est exactement la réserve de précaution : elle évite de s’endetter au premier coup dur."], ["Résister à la pression sociale.", "Cérémonies, apparences : « assez » aide à dire non sans honte."], ["La patience.", "Une cotisation régulière, même petite, est la base de toute spirale."]],
-    pasIci: [["Les exemples de Bourse américaine.", "Le livre s’appuie sur des décennies de marché américain. La BRVM est plus petite et moins liquide : on ne transpose pas les chiffres."], ["Épargner « sans but ».", "Conseil utile quand on a un surplus. Avec un revenu juste, il faut d’abord un budget et une réserve."], ["La monnaie et les prix.", "Le livre parle peu de la hausse des prix et des frais, qui grignotent l’épargne ici aussi."]],
+    pasIci: [["Les exemples de Bourse américaine.", "Le livre s’appuie sur des décennies de marché américain. La Bourse (BRVM) est plus petite et moins liquide : on ne transpose pas les chiffres."], ["Épargner « sans but ».", "Conseil utile quand on a un surplus. Avec un revenu juste, il faut d’abord un budget et une réserve."], ["La monnaie et les prix.", "Le livre parle peu de la hausse des prix et des frais, qui grignotent l’épargne ici aussi."]],
     garde: "<b>Une marge pour l’imprévu</b> et la patience : deux comportements simples qui protègent plus qu’un bon placement.",
     nuance: "C’est un livre d’idées, pas un manuel : <b>il ne dit pas quoi faire de votre argent</b>, il aide à comprendre pourquoi on fait ce qu’on fait.",
     decision: ["Écrivez votre « assez ».", "La somme qui, chaque mois, vous suffirait pour vivre tranquille. C’est votre repère face aux tentations et aux pressions."],
@@ -136,12 +136,12 @@ window.EFA_LIVRES = [
       ["Défensif ou entreprenant.", "L’investisseur défensif veut peu d’efforts et de risques ; l’entreprenant y consacre du temps. Chacun choisit sa voie."],
       ["Diversifier.", "Ne pas tout mettre sur un seul titre ni un seul secteur."]
     ],
-    marche: [["Lire avant d’acheter.", "Résultats, dette, dividendes : les sociétés cotées à la BRVM publient leurs comptes."], ["Ignorer les rumeurs.", "Un titre qui monte sur les réseaux n’est pas une raison d’acheter : c’est Monsieur Marché qui s’agite."], ["Le long terme.", "Les dividendes réguliers de certaines sociétés de la BRVM se lisent sur plusieurs années, pas sur une séance."]],
-    pasIci: [["Un marché étroit.", "La BRVM compte peu de sociétés et certains titres s’échangent rarement : acheter et revendre peut prendre du temps."], ["Des exemples anciens.", "Le livre s’appuie sur le marché américain du siècle dernier ; les chiffres ne se transposent pas."], ["Commencer par la Bourse.", "Avant la Bourse : une réserve de sécurité et pas de crédit cher."]],
+    marche: [["Lire avant d’acheter.", "Résultats, dette, dividendes : les sociétés cotées à la Bourse (BRVM) publient leurs comptes."], ["Ignorer les rumeurs.", "Un titre qui monte sur les réseaux n’est pas une raison d’acheter : c’est Monsieur Marché qui s’agite."], ["Le long terme.", "Les dividendes réguliers de certaines sociétés de la Bourse (BRVM) se lisent sur plusieurs années, pas sur une séance."]],
+    pasIci: [["Un marché étroit.", "La Bourse (BRVM) compte peu de sociétés et certains titres s’échangent rarement : acheter et revendre peut prendre du temps."], ["Des exemples anciens.", "Le livre s’appuie sur le marché américain du siècle dernier ; les chiffres ne se transposent pas."], ["Commencer par la Bourse.", "Avant la Bourse : une réserve de sécurité et pas de crédit cher."]],
     garde: "<b>La marge de sécurité et Monsieur Marché</b> : deux idées qui évitent la plupart des pertes des débutants.",
     nuance: "Livre exigeant, écrit pour un autre marché et une autre époque. <b>EFA n’y voit pas une liste de titres à acheter</b> : c’est une façon de penser.",
     decision: ["Écrivez votre règle avant votre premier ordre.", "Combien, sur quelle durée, et ce que vous ferez si le cours baisse de 20 %. Une phrase, relue avant chaque achat."],
-    modules: [["P8", "La BRVM"], ["M17", "Épargner ou investir"]],
+    modules: [["P8", "La Bourse (BRVM)"], ["M17", "Épargner ou investir"]],
     quiz: [
       ["Pour l’auteur, la différence entre investir et spéculer tient à…", ["La somme engagée", "L’étude de l’entreprise et la protection du capital", "La vitesse"], 1, "L’investisseur analyse et protège ; le spéculateur parie sur le prix."],
       ["« Monsieur Marché », c’est…", ["Le directeur de la Bourse", "Un associé lunatique dont on n’est pas obligé de suivre l’humeur", "Un courtier"], 1, "Le prix du jour peut être trop haut ou trop bas : on décide selon la valeur, pas l’humeur."],

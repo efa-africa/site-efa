@@ -239,7 +239,7 @@ body.nuit .mission .mc,body.nuit .mission-f .mc{color:#EC6243}
           <li><a href="index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
         </ul></div>
         <div><h2><a class="ef-h" href="index.html#pilier-agir">Se lancer</a></h2><ul>
-          <li><a href="index.html#marches">Investir à la BRVM</a></li>
+          <li><a href="index.html#marches">Investir à la Bourse (BRVM)</a></li>
           <li><a href="marches.html">Marchés : la Bourse du jour</a></li><li><a href="sgi.html">Choisir sa SGI</a></li>
           <li><a href="index.html#avant-de-signer">Les questions à poser</a></li>
           <li><a href="index.html#solutions">D’autres acteurs, demain</a></li>
@@ -412,7 +412,7 @@ const V = {
    </div>
    <div class="box act"><span class="tag">4 · Votre première action cette semaine</span><h3>${esc(A.a)}</h3><p class="small">${esc(A.f)}</p>
     <div class="actions"><a class="btn" href="${A.l}"${ext} data-goatcounter-click="diag-action">${A.b}</a><a class="link" href="${CFG.GUIDE}">Le guide complet, en complément</a></div></div>
-   ${(() => { const pid = s.flux < 34 ? "pilier" : s.profil; const R = {explorateur:["P1","Où passe mon argent ?"], averti:["P2","Un budget qui tient"], discipline:["P1","Où passe mon argent ?"], stratege:["P8","Premiers pas à la BRVM"], pilier:["P3","Aider mes proches sans me perdre"]}[pid] || ["P1","Où passe mon argent ?"]; return `<div class="box blue"><span class="tag">5 · Votre parcours</span><h3>Commencez par le parcours ${R[0].slice(1)} : ${R[1]}</h3><p class="small">Des étapes courtes, avec Koffi, jusqu'à un résultat concret. Votre progression dans l’école reste sur votre téléphone ; vos réponses au diagnostic ne sont envoyées que si vous l’avez accepté.</p><div class="actions"><a class="btn" href="parcours.html?profil=${pid}#${R[0]}" data-goatcounter-click="diag-parcours">Ouvrir mon parcours</a><a class="link" href="parcours.html?profil=${pid}">Voir tous les parcours</a></div></div>`; })()}
+   ${(() => { const pid = s.flux < 34 ? "pilier" : s.profil; const R = {explorateur:["P1","Où passe mon argent ?"], averti:["P2","Un budget qui tient"], discipline:["P1","Où passe mon argent ?"], stratege:["P8","Premiers pas à la Bourse (BRVM)"], pilier:["P3","Aider mes proches sans me perdre"]}[pid] || ["P1","Où passe mon argent ?"]; return `<div class="box blue"><span class="tag">5 · Votre parcours</span><h3>Commencez par le parcours ${R[0].slice(1)} : ${R[1]}</h3><p class="small">Des étapes courtes, avec Koffi, jusqu'à un résultat concret. Votre progression dans l’école reste sur votre téléphone ; vos réponses au diagnostic ne sont envoyées que si vous l’avez accepté.</p><div class="actions"><a class="btn" href="parcours.html?profil=${pid}#${R[0]}" data-goatcounter-click="diag-parcours">Ouvrir mon parcours</a><a class="link" href="parcours.html?profil=${pid}">Voir tous les parcours</a></div></div>`; })()}
    ${s.flux < 34 && faible.k !== "flux" ? `<div class="box alert"><h3>Pilier de famille sous pression</h3><p>Vous portez des charges pour vos proches sans les avoir budgétées. Ce n'est pas un défaut, c'est une ligne à inscrire dans votre budget.</p></div>` : ""}
    <details class="card det"><summary>Voir le détail de mes six dimensions</summary><div class="two"><div>${radar([{n: "Vous", c: "var(--c1)", v: s, fill: true}], "Votre radar sur six dimensions")}</div>
     <div class="stack" style="gap:10px">${DIMS.map(d => barre(d.n, s[d.k])).join("")}</div></div>
