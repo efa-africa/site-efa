@@ -258,11 +258,11 @@ html[data-clone] :is(form,.ct-form) :is(button[type=submit],.bouton-principal){b
 html[data-clone] #musee{--mu-bg:#0f192f;--mu-panel:rgba(12,22,42,.82);--mu-accent:#f0b29b;--mu-wood:#d5a77a;--mu-action:#da3c1b;--mu-action-t:#fff;
   --mn:var(--mu-bg);--mp:var(--mu-panel);--mc:var(--mu-accent);--mt:#e4eaf0;
   background-color:var(--mu-bg)!important;background-image:url("assets/musee-mur-2.webp")!important;background-repeat:repeat!important;background-size:280px auto!important;color:#fff!important}
-html[data-clone] #musee[data-era=origines]{--mu-accent:#e6b789;--mu-wood:#b98652}
-html[data-clone] #musee[data-era=traites]{--mu-accent:#e8ddd0;--mu-wood:#8a6854;--mu-action:#e8ddd0;--mu-action-t:#102c4a;transition:none}
+html[data-clone] #musee[data-era=origines]{--mu-accent:#efe4d3;--mu-wood:#b98652}
+html[data-clone] #musee[data-era=traites]{--mu-accent:#c79d78;--mu-wood:#8a6854;--mu-action:#8f674c;--mu-action-t:#fff;transition:none}
 html[data-clone] #musee[data-era=colonies]{--mu-accent:#c79d78;--mu-wood:#8f674c}
-html[data-clone] #musee[data-era=independances]{--mu-accent:#e0b48b;--mu-wood:#a77852}
-html[data-clone] #musee[data-era=investir]{--mu-accent:#78c6d2;--mu-wood:#9d7558}
+html[data-clone] #musee[data-era=independances]{--mu-accent:#78c6d2;--mu-wood:#a77852}
+html[data-clone] #musee[data-era=investir]{--mu-accent:#ef5f43;--mu-onglet:#da3c1b;--mu-onglet-t:#fff;--mu-wood:#9d7558}
 html[data-clone] #musee :is(.mu-haut,.mu-bas){background:transparent!important}
 html[data-clone] #musee[data-era=traites] :is(.mu-haut,.mu-bas){transition:none}
 html[data-clone] #musee .mu-cadre,html[data-clone] #musee .mu-med{background:#f6efe3!important;box-shadow:0 18px 45px rgba(3,16,29,.34),inset 0 0 0 1.5px var(--mu-wood),0 0 0 1px color-mix(in srgb,var(--mu-wood) 55%,#fff)!important}
@@ -278,7 +278,7 @@ html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,
 html[data-clone] #musee .mu-plan li.ok i{background:#da3c1b!important}
 html[data-clone] #musee .mu-parts button[aria-pressed=true],html[data-clone] #musee .mu-parts button.on{background:#da3c1b!important}
 html[data-clone] #musee .mu-prog i.c b{background:var(--mu-accent)!important}
-html[data-clone] #musee .mu-epo button.c{background:var(--mu-accent)!important;color:var(--mu-bg)!important;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+html[data-clone] #musee .mu-epo button.c{background:var(--mu-onglet,var(--mu-accent))!important;color:var(--mu-onglet-t,var(--mu-bg))!important;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
 html[data-clone] #musee .mu-epo button.c b::before{content:"● "}
 /* Salle 4 · les traites : gravité. Pas de grand numéro rouge, bouton ivoire, aucun effet. */
 html[data-clone] #musee[data-era=traites] .mu-num{background:#8a6854!important;color:#fff!important;transform:scale(.85)}
