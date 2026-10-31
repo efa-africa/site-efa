@@ -227,7 +227,7 @@
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
   function etapeHtml(x) {
-    if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i).replace('</div>', '<p class="mu-merci">En visitant un musée de l’économie en France, M. Pacôme Kipré, dit Peck Peckisblackman, a spontanément partagé ses idées avec EFA. Ce musée en est né&nbsp;: merci à lui.</p></div>') + '<div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p>'
+    if (x.k === "a") return '<div class="mu-etape s">' + cadre(ACCUEIL.i) + '<p class="mu-merci">Ce musée est né des idées de M.&nbsp;Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p><div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">Musée EFA · 12 salles</p><h2>' + esc(ACCUEIL.t) + "</h2><p>" + esc(ACCUEIL.p) + '</p>'
       + '<p class="mu-et">Visite guidée</p><p class="mu-aide">On vous emmène dans les douze salles, dans l’ordre du temps, au rythme d’une lecture&nbsp;: <span data-min="-1"></span>. Touchez «&nbsp;Visite guidée&nbsp;» en bas.</p>'
       + '<p class="mu-et">Ou visitez librement une partie</p><div class="mu-parts" id="mu-parts" aria-label="Partie de l’histoire"><button type="button" data-p="-1"><b>Depuis le début</b><small>12 salles · <span data-min="-1"></span></small></button>'
       + EPOQUES.map(function (P, i) { return '<button type="button" data-p="' + i + '"><b>' + esc(P.t) + '</b><small>Salles ' + (P.a + 1) + ' à ' + (P.b + 1) + ' · <span data-min="' + i + '"></span></small></button>'; }).join("")

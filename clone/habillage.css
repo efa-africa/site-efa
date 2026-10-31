@@ -262,7 +262,7 @@ html[data-clone] #musee .mu-txt{color:#fff}
 html[data-clone] #musee .mu-plan{background:rgba(11,58,107,.98)!important}
 html[data-clone] #musee .mu-num,html[data-clone] #musee .mu-suiv,html[data-clone] #musee .mu-lieu{background:#e34234!important}
 html[data-clone] #musee .mu-prec{background:rgba(255,255,255,.14)!important;color:#fff!important}
-html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,.mu-merci,.mu-parts button,.mu-indice){background:#0e4a85!important;color:#fff!important}
+html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,.mu-parts button,.mu-indice){background:#0e4a85!important;color:#fff!important}
 html[data-clone] #musee .mu-parts button[aria-pressed=true],html[data-clone] #musee .mu-parts button.on{background:#e34234!important}
 html[data-clone] #musee :is(.mu-form textarea,.mu-form input[type=email]){background:#fff!important;color:#071d38!important}
 html[data-clone] .musee-flot{background:#0b63b0!important}
@@ -295,6 +295,8 @@ html[data-clone] .a-lecture{position:fixed;left:0;right:0;top:82px;height:3px;z-
 html[data-clone] .a-lecture i{display:block;height:100%;background:#e34234;transform-origin:left;transform:scaleX(0)}
 @media(max-width:720px){html[data-clone] .a-lecture{top:68px}html[data-clone] article :is(section,.prose)>p:not([class]){font-size:17px}}
 @media(max-width:560px){html[data-clone] article .chiffres>*{padding:14px 12px 12px!important;min-width:0}html[data-clone] article .chiffres>* :is(b,strong){font-size:clamp(20px,6vw,28px)!important;overflow-wrap:anywhere}}
+
+html[data-clone] #musee .mu-merci{background:none!important;color:rgba(255,255,255,.8)!important;padding:0!important}
 
 /* Signature efa. (clone/efa-logo.css) */
 /* Composant autonome : oiseau original conserve, lettres minuscules. */
