@@ -75,7 +75,7 @@
     "methode.html": ["etudes", "#sommaire"],
     "organisations.html": ["orga", "main > section"],
     "auteur.html": ["efa", ".au-nav, main > section, .hero"],
-    "news.html": ["etudes", "main > section, .hero"]
+    "news.html": ["etudes", "#articles, main > section, .hero"]
   };
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }

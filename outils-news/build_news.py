@@ -262,10 +262,18 @@ def tail(pre):
 </html>
 """
 
+def change_court(a):
+    t = a["change"].strip().replace("'", "’")
+    m = re.match(r"(.+?[.!?])(\s|$)", t)
+    t = m.group(1) if m else t
+    if len(t) > 150:
+        t = t[:147].rsplit(" ", 1)[0] + "…"
+    return t
+
 def carte(a, pre, h="h3"):
     return (f'<article class="carte-n"><a class="lien" href="{pre}news/{a["id"]}.html">'
             f'<p class="meta-n"><span class="rub">{typo(a["rubrique"])}</span><time datetime="{a["publication"]}">{date_fr(a["publication"])}</time></p>'
-            f'<{h}>{typo(a["titre"])}</{h}><p>{typo(a["resume"])}</p>'
+            f'<{h}>{typo(a["titre"])}</{h}><p>{typo(a["resume"])}</p><p class="chg"><b>Pour vous</b>{typo(change_court(a))}</p>'
             f'<p class="pied-n"><span>{lecture(a)} min de lecture</span><span>{typo(CAT[a["categorie"]])}</span></p></a></article>')
 
 CALC = '<span class="calc">Calcul EFA</span>'
@@ -427,7 +435,7 @@ def index_json():
     for a in PUB:
         L.append({"id": a["id"], "t": a["titre"].replace("'", "’"), "r": a["resume"].replace("'", "’"),
                   "rub": a["rubrique"], "c": a["categorie"], "d": a["publication"], "dl": date_fr(a["publication"]),
-                  "min": lecture(a), "p": a["pays"], "e": a["entites"], "n": a["notions"],
+                  "min": lecture(a), "ch": change_court(a), "p": a["pays"], "e": a["entites"], "n": a["notions"],
                   "x": texte_complet(a).replace("'", "’"), "une": a is UNE})
     return json.dumps(L, ensure_ascii=False, separators=(",", ":"))
 
@@ -454,12 +462,13 @@ def page_home():
     filtres = '<button type="button" data-c="" aria-pressed="true">Tous</button>' + "".join(
         f'<button type="button" data-c="{k}" aria-pressed="false">{typo(v)}</button>' for k, v in CATEGORIES)
     statiques = "".join(carte(a, pre) for a in PUB if a is not UNE)
-    out += f"""<section class="intro">
-  <div class="wrap">
-    <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › EFA News</nav>
-    <p class="kick"><span class="pill-news">EFA | NEWS</span></p>
-    <h1>Comprendre ce que l’actualité change pour votre argent</h1>
-    <p class="lead">Chaque actualité en huit blocs courts&nbsp;: le fait, le chiffre, le mécanisme, ce que cela peut changer, ce qu’on ne sait pas encore, la question à se poser, la leçon pour aller plus loin et les sources.</p>
+    out += f"""<section class="nw-hero" data-photo aria-labelledby="nw-t">
+  <img class="nw-hero-img" src="illus/news-hero.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+  <div class="nw-hero-voile" aria-hidden="true"></div>
+  <div class="nw-hero-txt">
+    <p class="nw-k"><span class="pill-news">EFA | NEWS</span></p>
+    <h1 id="nw-t">L’actualité, et ce qu’elle change <em>pour votre argent.</em></h1>
+    <p class="nw-p">Les faits, les chiffres et leurs conséquences concrètes, expliqués sans jargon.</p>
   </div>
 </section>
 <div class="wrap">
@@ -469,7 +478,7 @@ def page_home():
       <p class="meta-n"><span class="rub">{typo(u['rubrique'])}</span><time datetime="{u['publication']}">{date_fr(u['publication'])}</time><span>· {lecture(u)} min de lecture</span></p>
       <h2 id="une-t"><a href="news/{u['id']}.html">{typo(u['titre'])}</a></h2>
       <p>{typo(u['resume'])}</p>
-      <a class="bt" href="news/{u['id']}.html" data-goatcounter-click="news-une">Comprendre cette actualité →</a>
+      <a class="bt" href="news/{u['id']}.html" data-goatcounter-click="news-une">Comprendre ce que cela change →</a>
     </div>
     <div class="fig" aria-hidden="true"><small>Le chiffre</small><b>{typo(c0[0])}</b><span>{typo(c0[1])}</span></div>
   </section>
@@ -540,7 +549,7 @@ def page_home():
   }}
   function carte(a,mots){{
     var r=mots.length?'<span class="pourquoi">'+esc(raison(a,mots))+'</span>':'<span>'+esc(CAT[a.c])+'</span>';
-    return '<article class="carte-n"><a class="lien" href="news/'+a.id+'.html"><p class="meta-n"><span class="rub">'+esc(a.rub)+'</span><time datetime="'+a.d+'">'+a.dl+'</time></p><h3>'+surligne(a.t,mots)+'</h3><p>'+surligne(a.r,mots)+'</p><p class="pied-n"><span>'+a.min+' min de lecture</span>'+r+'</p></a></article>';
+    return '<article class="carte-n"><a class="lien" href="news/'+a.id+'.html"><p class="meta-n"><span class="rub">'+esc(a.rub)+'</span><time datetime="'+a.d+'">'+a.dl+'</time></p><h3>'+surligne(a.t,mots)+'</h3><p>'+surligne(a.r,mots)+'</p><p class="chg"><b>Pour vous</b>'+esc(a.ch||'')+'</p><p class="pied-n"><span>'+a.min+' min de lecture</span>'+r+'</p></a></article>';
   }}
   function lireURL(){{
     var p=new URLSearchParams(location.search);
