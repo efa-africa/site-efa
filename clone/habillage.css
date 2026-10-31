@@ -255,22 +255,22 @@ html[data-clone] :is(form,.ct-form) :is(button[type=submit],.bouton-principal){b
 
 /* ---------- Musée de l'économie (mode visite) : murs bleus dont la nuance suit l'époque, cadres ivoire filetés de bois ----------
    Seule exception au « plus de bleu nuit ». Époque posée par musee-economie.js sur #musee[data-era]. */
-html[data-clone] #musee{--mu-bg:#0b3a6b;--mu-panel:#124b80;--mu-accent:#f0b29b;--mu-wood:#d5a77a;--mu-action:#da3c1b;--mu-action-t:#fff;
+html[data-clone] #musee{--mu-bg:#182540;--mu-panel:rgba(12,22,42,.82);--mu-accent:#f0b29b;--mu-wood:#d5a77a;--mu-action:#da3c1b;--mu-action-t:#fff;
   --mn:var(--mu-bg);--mp:var(--mu-panel);--mc:var(--mu-accent);--mt:#e4eaf0;
-  background-color:var(--mu-bg)!important;background-image:radial-gradient(80% 60% at 50% 0%,color-mix(in srgb,var(--mu-panel) 70%,#5aa0d8) 0%,transparent 70%)!important;color:#fff!important;transition:background-color .55s ease}
-html[data-clone] #musee[data-era=origines]{--mu-bg:#123a61;--mu-panel:#194a70;--mu-accent:#e6b789;--mu-wood:#b98652}
-html[data-clone] #musee[data-era=traites]{--mu-bg:#102c4a;--mu-panel:#19344f;--mu-accent:#e8ddd0;--mu-wood:#8a6854;--mu-action:#e8ddd0;--mu-action-t:#102c4a;transition:none}
-html[data-clone] #musee[data-era=colonies]{--mu-bg:#172d42;--mu-panel:#223c50;--mu-accent:#c79d78;--mu-wood:#8f674c}
-html[data-clone] #musee[data-era=independances]{--mu-bg:#174a65;--mu-panel:#205771;--mu-accent:#e0b48b;--mu-wood:#a77852}
-html[data-clone] #musee[data-era=investir]{--mu-bg:#0e3b58;--mu-panel:#15506c;--mu-accent:#78c6d2;--mu-wood:#9d7558}
-html[data-clone] #musee :is(.mu-haut,.mu-bas){background:var(--mu-bg)!important;transition:background-color .55s ease}
+  background-color:var(--mu-bg)!important;background-image:url("assets/musee-mur.webp")!important;background-repeat:repeat!important;background-size:280px auto!important;color:#fff!important}
+html[data-clone] #musee[data-era=origines]{--mu-accent:#e6b789;--mu-wood:#b98652}
+html[data-clone] #musee[data-era=traites]{--mu-accent:#e8ddd0;--mu-wood:#8a6854;--mu-action:#e8ddd0;--mu-action-t:#102c4a;transition:none}
+html[data-clone] #musee[data-era=colonies]{--mu-accent:#c79d78;--mu-wood:#8f674c}
+html[data-clone] #musee[data-era=independances]{--mu-accent:#e0b48b;--mu-wood:#a77852}
+html[data-clone] #musee[data-era=investir]{--mu-accent:#78c6d2;--mu-wood:#9d7558}
+html[data-clone] #musee :is(.mu-haut,.mu-bas){background:transparent!important}
 html[data-clone] #musee[data-era=traites] :is(.mu-haut,.mu-bas){transition:none}
 html[data-clone] #musee .mu-cadre,html[data-clone] #musee .mu-med{background:#f6efe3!important;box-shadow:0 18px 45px rgba(3,16,29,.34),inset 0 0 0 1.5px var(--mu-wood),0 0 0 1px color-mix(in srgb,var(--mu-wood) 55%,#fff)!important}
 html[data-clone] #musee .mu-cadre.pret{background:#f6efe3!important}
 html[data-clone] #musee .mu-txt{color:#fff}
 html[data-clone] #musee .mu-txt p{color:#e4eaf0}
 html[data-clone] #musee :is(.mu-date,.mu-role){color:var(--mu-accent)!important}
-html[data-clone] #musee .mu-plan{background:color-mix(in srgb,var(--mu-bg) 97%,#000)!important}
+html[data-clone] #musee .mu-plan{background:#121d33 url("assets/musee-mur.webp") repeat!important;background-size:280px auto!important}
 html[data-clone] #musee .mu-num,html[data-clone] #musee .mu-lieu{background:var(--mu-action)!important;color:var(--mu-action-t)!important}
 html[data-clone] #musee .mu-suiv{background:#da3c1b!important;color:#fff!important}
 html[data-clone] #musee .mu-prec{background:rgba(255,255,255,.14)!important;color:#fff!important}
