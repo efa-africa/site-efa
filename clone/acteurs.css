@@ -133,7 +133,7 @@ body.page-acteurs{margin:0;background:#fff;color:var(--ac-nuit);font-family:"Sou
 .ac-pers-entree:hover{box-shadow:0 18px 44px rgba(7,29,56,.14)}
 .ac-affiche{aspect-ratio:16/9;background:linear-gradient(135deg,#eaf3fb,#dcebf7);display:flex;align-items:center;justify-content:center;gap:12px}
 .ac-affiche span{width:74px;height:74px;border-radius:50%;background:#fff;display:grid;place-items:center;font:700 24px "Libre Baskerville",Georgia,serif;color:var(--ac-bleu);box-shadow:0 8px 20px rgba(7,29,56,.08)}
-.ac-affiche span+span{opacity:.55;color:#9fb6cc}
+.ac-affiche span+span{color:#7fa6c9}
 .ac-pers-t{margin-top:30px!important;font-size:clamp(24px,2.6vw,32px)}
 .ac-pers-s{margin:8px 0 0;color:var(--ac-texte);font-size:17px}
 .ac-pers{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-top:26px}
@@ -157,3 +157,8 @@ a.ac-pc:hover{box-shadow:0 18px 44px rgba(7,29,56,.14)}
   .ac-nav a{padding:13px 14px;font-size:17px}
   .ac-nav a.ac-retour{margin:8px 0 0;text-align:center}
 }
+
+/* Carte « Les personnalités » : bandeau pleine largeur sous les six organisations */
+.ac-acteurs .ac-large{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);align-items:center}
+.ac-acteurs .ac-large .ac-affiche{aspect-ratio:auto;height:100%;min-height:200px}
+@media(max-width:720px){.ac-acteurs .ac-large{grid-template-columns:1fr}.ac-acteurs .ac-large .ac-affiche{min-height:160px}}
