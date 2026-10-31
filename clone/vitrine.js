@@ -156,6 +156,7 @@
     ['vt-min', 'vt-app', 'vt-complete'].forEach(function (k) { var x = document.getElementById(k); if (x) x.onchange = rendre; });
     var nb = document.getElementById('vt-nb'); if (nb) nb.textContent = tous.length;
     rendre();
+    (function () { var m = /^#sgi-(.+)$/.exec(location.hash); if (!m) return; var el = Z.querySelector('.vt-carte[data-id="' + m[1].replace(/"/g, '') + '"]'); if (!el) return; var b = el.querySelector('.vt-voir'); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); })();
     var lo = document.querySelector('a[href="#ordre"]'); if (lo) lo.addEventListener('click', function () { compte('sgi-ordre-lire'); });
   }).catch(function () { Z.innerHTML = '<p class="vt-chapo">La liste n’a pas pu être chargée. Réessayez dans un instant.</p>'; });
 })();

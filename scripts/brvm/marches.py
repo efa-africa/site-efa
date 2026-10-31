@@ -44,6 +44,23 @@ def main():
         c = nombre(r['cours_cloture'])
         if c is None: continue
         par_titre[r['symbole']][r['date_seance']] = {'c': c, 'v': int(nombre(r['volume']) or 0), 'p': nombre(r['variation_pct'])}
+    # Fractionnements et regroupements d'actions : la variation officielle du jour se calcule sur un cours de veille ajusté.
+    # Si la clôture précédente ne correspond pas à ce cours ajusté (écart de plus de 1,8 fois), on ajuste tout l'historique antérieur,
+    # pour que courbes et performances restent comparables.
+    AJUST = collections.defaultdict(list)
+    for code, serie in par_titre.items():
+        ds = sorted(serie)
+        for a, b in zip(ds, ds[1:]):
+            p = serie[b]['p']
+            if p is None or p <= -100 or not serie[a]['c']: continue
+            f = serie[a]['c'] / (serie[b]['c'] / (1 + p / 100))
+            if 0.55 < f < 1.8: continue
+            k = float(round(f)) if f > 1 else 1 / round(1 / f)
+            for d in ds:
+                if d <= a:
+                    serie[d]['c'] = round(serie[d]['c'] / k, 2); serie[d]['v'] = int(round(serie[d]['v'] * k))
+            AJUST[code].append({'date': b, 'facteur': k})
+            print('Ajustement %s au %s : facteur %s' % (code, b, k))
     seances = sorted({d for t in par_titre.values() for d in t})
     if not seances: erreur('aucune séance')
     jour = seances[-1]
@@ -77,12 +94,13 @@ def main():
         if na: cap = round(dern['c'] * na)
         item = {'code': code, 'nom': s.get('nom'), 'nom_court': s.get('nom_court'), 'pays': s.get('pays'), 'secteur': s.get('secteur'),
                 'date': dates[-1], 'cours': dern['c'], 'var_jour': dern['p'], 'volume': dern['v'], 'valeur_echangee': round(dern['c'] * dern['v']),
-                'perf': perf, 'capitalisation': cap, 'mini': [serie[d]['c'] for d in dates[-63:]]}
+                'perf': perf, 'capitalisation': cap, 'mini': [serie[d]['c'] for d in dates[-63:]], 'mini_du': dates[-63:][0] if dates else None}
         liste.append(item)
         fiche = dict(item)
         fiche.update({'identite': {k: s.get(k) for k in ('date_introduction', 'nombre_actions', 'flottant_pct', 'site')},
                       'texte_efa': None if s.get('texte_efa_bloque') else s.get('texte_efa'),
                       'texte_bloque': bool(s.get('texte_efa_bloque')),
+                      'ajustements': AJUST.get(code, []),
                       'historique': [[d, serie[d]['c'], serie[d]['v']] for d in dates],
                       'source': 's-brvm-cote'})
         json.dump(fiche, open(os.path.join(SORTIE, 'fiches', code + '.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))

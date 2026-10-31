@@ -21,11 +21,14 @@
     var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
     return '<svg class="mk-spark" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" role="img" aria-label="' + esc(label || '') + '"><path d="' + d + ' L' + w + ' ' + h + ' L0 ' + h + ' Z" fill="rgba(11,18,32,.06)"/><path d="' + d + '" fill="none" stroke="#0b1220" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>';
   }
+  /* Période d'une courbe, en clair */
+  function court(d) { var p = d.split('-'); return (+p[2] === 1 ? '1er' : +p[2]) + ' ' + MOIS[+p[1] - 1]; }
+  function periode(d1, d2, n) { if (!d1 || !d2) return ''; var a = d1.slice(0, 4) === d2.slice(0, 4) ? court(d1) : date(d1); return 'Du ' + a + ' au ' + date(d2) + (n ? ' · ' + n + ' séance' + (n > 1 ? 's' : '') : ''); }
   /* Couleur des tuiles de secteur : 5 paliers de −3 % à +3 % */
   var PAL = [[-1e9, -1.5, '#f2c4c0'], [-1.5, -0.25, '#f8e1de'], [-0.25, 0.25, '#eef1f5'], [0.25, 1.5, '#d8f2e3'], [1.5, 1e9, '#b4e8cb']];
   function teinte(x) { for (var i = 0; i < PAL.length; i++) if (x >= PAL[i][0] && x < PAL[i][1]) return PAL[i][2]; return '#eef1f5'; }
   function legende() { return '<div class="mk-legende" aria-hidden="true"><span>−3 %</span>' + PAL.map(function (p) { return '<i style="background:' + p[2] + '"></i>'; }).join('') + '<span>+3 %</span></div>'; }
-  window.EFA_MK = { esc: esc, nb: nb, vr: vr, date: date, titre: titre, spark: spark, compte: compte, json: json, PAYS: PAYS, DRAP: DRAP, SECT: SECT, teinte: teinte, legende: legende };
+  window.EFA_MK = { periode: periode, esc: esc, nb: nb, vr: vr, date: date, titre: titre, spark: spark, compte: compte, json: json, PAYS: PAYS, DRAP: DRAP, SECT: SECT, teinte: teinte, legende: legende };
 
   /* Bandeau de séance */
   function seance(d) {
@@ -45,7 +48,7 @@
       var j = r[0], S = {}; r[1].societes.forEach(function (s) { S[s.code] = s; }); seance(j.date);
       document.getElementById('mk-indices').innerHTML = j.indices.map(function (i) {
         return '<div class="mk-carte" role="group" aria-label="' + esc(i.nom) + '"><span class="mk-ind-nom">' + esc(i.nom.replace('BRVM - ', 'BRVM ').replace('BRVM-30', 'BRVM 30')) + '</span><strong class="mk-ind-niv">' + nb(i.niveau, 2) + '</strong>'
-          + '<div class="mk-ligne"><span>Jour ' + vr(i.var_jour) + '</span><span>Depuis le 1er janvier ' + vr(i.var_ytd) + '</span></div>' + spark(i.serie.map(function (x) { return x[1]; }), 300, 56, 'Évolution de ' + i.nom) + '</div>';
+          + '<div class="mk-ligne"><span>Jour ' + vr(i.var_jour) + '</span><span>Depuis le 1er janvier ' + vr(i.var_ytd) + '</span></div>' + spark(i.serie.map(function (x) { return x[1]; }), 300, 56, 'Évolution de ' + i.nom) + (function () { var v = i.serie.map(function (x) { return x[1]; }); return '<p class="mk-per">' + periode(i.serie[0][0], i.serie[i.serie.length - 1][0], i.serie.length) + ' · clôtures<br>Plus haut ' + nb(Math.max.apply(null, v), 2) + ' · plus bas ' + nb(Math.min.apply(null, v), 2) + '</p>'; })() + '</div>';
       }).join('');
       document.getElementById('mk-secteurs').innerHTML = j.secteurs.map(function (s) {
         var n = ({ 'CONSOMMATION DE BASE': 'Consommation de base', 'CONSOMMATION DISCRETIONNAIRE': 'Consommation discrétionnaire', 'ENERGIE': 'Énergie', 'INDUSTRIELS': 'Industriels', 'SERVICES FINANCIERS': 'Services financiers', 'SERVICES PUBLICS': 'Services publics', 'TELECOMMUNICATIONS': 'Télécommunications' })[s.nom.replace('BRVM - ', '')] || s.nom;
@@ -76,10 +79,10 @@
         var R = L.filter(function (s) { var h = (s.nom + ' ' + s.code + ' ' + (s.nom_court || '')).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); return (!t || h.indexOf(t) > -1) && (!fp.value || s.pays === fp.value) && (!fs.value || s.secteur === fs.value); });
         var k = tri.value;
         R.sort(function (a, b) { if (k === 'nom') return titre(a).localeCompare(titre(b), 'fr'); var va = k === 'jour' ? a.var_jour : k === 'a1' ? a.perf.a1 : a.capitalisation, vb = k === 'jour' ? b.var_jour : k === 'a1' ? b.perf.a1 : b.capitalisation; if (va == null) return 1; if (vb == null) return -1; return vb - va; });
-        document.getElementById('mk-tri-lib').textContent = 'Trié par : ' + LIB[k] + ' · ' + R.length + ' société' + (R.length > 1 ? 's' : '');
+        document.getElementById('mk-tri-lib').textContent = 'Trié par : ' + LIB[k] + ' · ' + R.length + ' société' + (R.length > 1 ? 's' : '') + ' · Courbes : cours de clôture des 3 derniers mois, ou depuis le début de l’historique d’EFA s’il est plus court.';
         A.innerHTML = !R.length ? '<p class="mk-sous">Aucune société ne correspond.' + (fs.value ? ' Le secteur de chaque société est en cours de saisie.' : '') + '</p>' : tab
           ? '<table class="mk-tab"><thead><tr><th>Société</th><th>Code</th><th>Cours</th><th>Jour</th><th>1 an</th><th>Capitalisation</th></tr></thead><tbody>' + R.map(function (s) { return '<tr><td><a class="mk-lien" href="societe.html?c=' + s.code + '">' + esc(titre(s)) + '</a></td><td>' + s.code + '</td><td>' + nb(s.cours) + '</td><td>' + vr(s.var_jour) + '</td><td>' + vr(s.perf.a1) + '</td><td>' + (s.capitalisation ? nb(s.capitalisation / 1e9, 1) + ' Md' : '<span class="mk-nc">Non communiqué</span>') + '</td></tr>'; }).join('') + '</tbody></table>'
-          : '<div class="mk-soc">' + R.map(function (s) { return '<a href="societe.html?c=' + s.code + '"><div class="mk-soc-h"><b>' + esc(titre(s)) + '</b><span class="mk-code">' + s.code + '</span></div><div class="mk-ligne"><span>' + (DRAP[s.pays] || '') + ' ' + esc(PAYS[s.pays] || '') + '</span><span>' + (s.secteur ? esc(s.secteur) : '<span class="mk-nc">Secteur à compléter</span>') + '</span></div><div class="mk-soc-c"><strong>' + nb(s.cours) + ' FCFA</strong>' + vr(s.var_jour) + '</div>' + spark(s.mini, 240, 38, 'Cours sur 3 mois de ' + titre(s)) + '</a>'; }).join('') + '</div>';
+          : '<div class="mk-soc">' + R.map(function (s) { return '<a href="societe.html?c=' + s.code + '"><div class="mk-soc-h"><b>' + esc(titre(s)) + '</b><span class="mk-code">' + s.code + '</span></div><div class="mk-ligne"><span>' + (DRAP[s.pays] || '') + ' ' + esc(PAYS[s.pays] || '') + '</span><span>' + (s.secteur ? esc(s.secteur) : '<span class="mk-nc">Secteur à compléter</span>') + '</span></div><div class="mk-soc-c"><strong>' + nb(s.cours) + ' FCFA</strong>' + vr(s.var_jour) + '</div>' + spark(s.mini, 240, 38, 'Cours de ' + titre(s) + ', ' + periode(s.mini_du, s.date, s.mini.length)) + '<span class="mk-per">' + periode(s.mini_du, s.date, s.mini.length) + '</span></a>'; }).join('') + '</div>';
       }
       [q, fp, fs, tri].forEach(function (x) { x.addEventListener('input', function () { if (x !== q) compte(x === tri ? 'societes-tri' : 'societes-filtre'); rendre(); }); });
       vue.onclick = function () { tab = !tab; vue.textContent = tab ? 'Vue cartes' : 'Vue tableau'; rendre(); };
@@ -98,9 +101,9 @@
       document.getElementById('mk-nom').textContent = titre(s);
       document.getElementById('mk-meta').innerHTML = s.code + ' · ' + (DRAP[s.pays] || '') + ' ' + esc(PAYS[s.pays] || '') + ' · ' + (s.secteur ? esc(s.secteur) : '<span class="mk-nc">secteur à compléter</span>');
       document.getElementById('mk-cours').innerHTML = '<span class="mk-cours">' + nb(s.cours) + ' FCFA</span><div class="mk-ligne"><span>' + vr(s.var_jour) + '</span><span>clôture du ' + date(s.date, true) + '</span></div>';
-      var H = s.historique, J0 = new Date(s.date), per = [['1M', 30], ['6M', 182], ['1A', 365], ['5A', 1826], ['Max', 1e6]];
-      var dispo = per.filter(function (p, i) { if (p[0] === 'Max') return true; var lim = new Date(J0 - p[1] * 864e5).toISOString().slice(0, 10); return H.length && H[0][0] <= lim; });
-      if (!dispo.some(function (p) { return p[0] !== 'Max'; })) dispo = [['Max', 1e6]];
+      var H = s.historique, J0 = new Date(s.date), per = [['1M', 30], ['6M', 182], ['1A', 365], ['5A', 1826], ['Tout', 1e6]];
+      var dispo = per.filter(function (p, i) { if (p[0] === 'Tout') return true; var lim = new Date(J0 - p[1] * 864e5).toISOString().slice(0, 10); return H.length && H[0][0] <= lim; });
+      if (!dispo.some(function (p) { return p[0] !== 'Tout'; })) dispo = [['Tout', 1e6]];
       var P = document.getElementById('mk-periodes'), G = document.getElementById('mk-g'), bulle = document.getElementById('mk-bulle');
       function trace(p) {
         var lim = p[1] > 1e5 ? '0000' : new Date(J0 - p[1] * 864e5).toISOString().slice(0, 10), pts = H.filter(function (x) { return x[0] >= lim; });
@@ -110,13 +113,15 @@
         var d = pts.map(function (x, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(x[1]).toFixed(1); }).join(' ');
         var g = [mn, mn + r / 2, mx].map(function (v) { return '<text x="' + (W - 4) + '" y="' + (Y(v) - 4) + '" text-anchor="end" font-size="11" fill="#7a8293">' + nb(v) + '</text><line x1="0" x2="' + W + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="#eef2f6"/>'; }).join('');
         var bars = pts.map(function (x, i) { var bh = (x[2] / vm) * (hv - 6); return '<rect x="' + (X(i) - 1.5) + '" y="' + (Hh - bh) + '" width="3" height="' + bh + '" fill="#c9d3df"/>'; }).join('');
+        var cap = document.getElementById('mk-percap'); if (!cap) { cap = document.createElement('p'); cap.id = 'mk-percap'; cap.className = 'mk-per'; G.parentNode.insertBefore(cap, G.nextSibling); }
+        cap.innerHTML = (s.ajustements && s.ajustements.length ? '<span style="flex-basis:100%;text-align:left">Cours antérieurs ajustés : ' + s.ajustements.map(function (a) { return a.facteur >= 1 ? 'fractionnement du ' + date(a.date, true) + ' (1 action ancienne = ' + nb(a.facteur) + ' nouvelles)' : 'regroupement du ' + date(a.date, true); }).join(', ') + '.</span>' : '') + '<span>' + date(pts[0][0]) + '</span><span>Période affichée : ' + periode(pts[0][0], pts[pts.length - 1][0], pts.length) + ' · cours de clôture en FCFA, barres grises : volumes échangés</span><span>' + date(pts[pts.length - 1][0]) + '</span>';
         G.setAttribute('viewBox', '0 0 ' + W + ' ' + Hh);
         G.setAttribute('aria-label', 'Cours de ' + titre(s) + ' du ' + date(pts[0][0], true) + ' au ' + date(pts[pts.length - 1][0], true) + ' : de ' + nb(pts[0][1]) + ' à ' + nb(pts[pts.length - 1][1]) + ' FCFA');
         G.innerHTML = g + bars + '<path d="' + d + ' L' + W + ' ' + (Hh - hv) + ' L0 ' + (Hh - hv) + ' Z" fill="rgba(11,18,32,.06)"/><path d="' + d + '" fill="none" stroke="#0b1220" stroke-width="2"/><line id="mk-cur" y1="0" y2="' + Hh + '" stroke="#da3c1b" stroke-width="1" opacity="0"/>';
         function bouge(e) { var b = G.getBoundingClientRect(), x = ((e.touches ? e.touches[0].clientX : e.clientX) - b.left) / b.width, i = Math.max(0, Math.min(pts.length - 1, Math.round(x * (pts.length - 1)))), c = document.getElementById('mk-cur'); c.setAttribute('x1', X(i)); c.setAttribute('x2', X(i)); c.setAttribute('opacity', 1); bulle.innerHTML = date(pts[i][0], true) + ' · <b>' + nb(pts[i][1]) + ' FCFA</b> · ' + vr((pts[i][1] / pts[0][1] - 1) * 100) + ' depuis le début de la période'; }
         G.onpointermove = bouge; G.ontouchmove = bouge; G.onpointerleave = function () { bulle.innerHTML = ''; var c = document.getElementById('mk-cur'); if (c) c.setAttribute('opacity', 0); };
       }
-      P.innerHTML = dispo.map(function (p, i) { return '<button type="button" aria-pressed="' + (i === dispo.length - 1 ? 'true' : 'false') + '" data-i="' + i + '">' + p[0] + '</button>'; }).join('');
+      P.innerHTML = dispo.map(function (p, i) { return '<button type="button" aria-pressed="' + (i === dispo.length - 1 ? 'true' : 'false') + '" data-i="' + i + '">' + ({ '1M': '1 mois', '6M': '6 mois', '1A': '1 an', '5A': '5 ans', 'Tout': 'Depuis le ' + court(H[0][0]) })[p[0]] + '</button>'; }).join('');
       P.querySelectorAll('button').forEach(function (b) { b.onclick = function () { P.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); compte('fiche-periode'); trace(dispo[+b.dataset.i]); }; });
       trace(dispo[dispo.length - 1]);
       var pf = s.perf; document.getElementById('mk-perf').innerHTML = [['1 semaine', pf.s1], ['1 mois', pf.m1], ['Depuis le 1er janvier', pf.ytd], ['1 an', pf.a1], ['5 ans', pf.a5]].map(function (x) { return '<div><span class="mk-et">' + x[0] + '</span><b>' + vr(x[1]) + '</b></div>'; }).join('');
