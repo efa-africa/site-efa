@@ -7,12 +7,8 @@ Disallow: /outils-news/
 Sitemap: https://efa.africa/sitemap.xml
 Disallow: /tableau-ely.html
 Disallow: /accueil-v1.html
-Disallow: /merci-invest
-Disallow: /invest
 Disallow: /sgi-comparer
 Disallow: /sgi
-Disallow: /merci-invest.html
-Disallow: /invest.html
 Disallow: /sgi-comparer.html
 Disallow: /sgi.html
 Disallow: /ateliers-cles.html
