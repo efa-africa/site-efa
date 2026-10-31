@@ -20,11 +20,10 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261031g'
+VERSION = '20261031h'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
-    'news.html': 'carte-proches-900.webp',
     'preparer-ma-retraite.html': 'coach-patrimoine.webp', 'construire-son-budget.html': 'budget.webp',
     'methode.html': 'etudes-publiees.webp',
 }

@@ -1,0 +1,17 @@
+/* EFA News : en-tête photo, la une juste dessous, « Pour vous » sur chaque carte · 31/10/2026 */
+html[data-clone] .nw-hero{position:relative;min-height:min(600px,calc(100svh - 82px));display:flex;align-items:center;overflow:hidden;background:#0b2440;color:#fff}
+html[data-clone] .nw-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+html[data-clone] .nw-hero-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,22,44,.88) 0%,rgba(5,22,44,.6) 34%,rgba(5,22,44,0) 60%)}
+html[data-clone] .nw-hero-txt{position:relative;z-index:1;width:min(1180px,calc(100% - 48px));margin:0 auto;padding:80px 0}
+html[data-clone] .nw-hero-txt>*{max-width:540px}
+html[data-clone] .nw-hero h1{margin:16px 0 0;font:700 clamp(38px,4.4vw,62px)/1.1 Baskerville,"Libre Baskerville",Georgia,serif!important;letter-spacing:-.03em;color:#fff!important}
+html[data-clone] .nw-hero h1 em{font-style:normal;color:#ffb4a3!important}
+html[data-clone] .nw-p{margin:20px 0 0;font-size:clamp(17px,1.7vw,20px);line-height:1.55;color:#e6edf1!important}
+html[data-clone] .une{margin-top:28px!important}
+html[data-clone] .carte-n .chg{margin:2px 0 0!important;padding-top:10px;border-top:1px solid #e3e8ee;font-size:14.5px!important;line-height:1.45;color:#142438!important}
+html[data-clone] .carte-n .chg b{display:block;margin-bottom:2px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#d2452f}
+@media (max-width:720px){
+  html[data-clone] .nw-hero-img{object-position:74% 45%}
+  html[data-clone] .nw-hero-txt{padding:26px 0 36px}
+  html[data-clone] .nw-hero h1{font-size:34px}
+}
