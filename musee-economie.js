@@ -184,7 +184,7 @@
     { t: "Les origines", per: "−8500 → XVIe s.", a: 0, b: 2 },
     { t: "Traites et colonies", per: "VIIe s. → 1945", a: 3, b: 4 },
     { t: "Indépendances et crises", per: "1956 → 1994", a: 5, b: 8 },
-    { t: "L’Afrique qui investit", per: "1998 → 2026", a: 9, b: 11 }
+    { t: "L’Afrique contemporaine", per: "1998 → 2026", a: 9, b: 11 }
   ];
   var QUIZ = [
     ["Que permet d’abord l’agriculture, vers −8500 ?", ["Le surplus", "La monnaie", "La Bourse"], 0, "Ce qui n’est pas consommé peut se garder ou s’échanger : c’est le surplus."],
