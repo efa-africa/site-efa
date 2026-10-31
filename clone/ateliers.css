@@ -80,7 +80,7 @@
 .at-bloc h2{font-size:clamp(30px,3.6vw,48px);line-height:1.06}
 .at-intro{color:var(--at-texte);font-size:18px;max-width:640px;margin:14px 0 30px}
 .at-coach{display:flex;gap:28px;align-items:center;margin-bottom:36px;max-width:860px}
-.at-coach img{width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:top;flex:none;box-shadow:0 0 0 4px #fff,0 0 0 6px var(--at-teal)}
+.at-coach img{width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:center;flex:none;box-shadow:0 0 0 4px #fff,0 0 0 6px var(--at-teal)}
 .at-coach p:not(.at-k){color:var(--at-texte);font-size:17px;line-height:1.55;margin:12px 0 0}
 .at-cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:22px}
 .at-c{display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px var(--at-filet),0 14px 34px rgba(7,29,56,.06);scroll-margin-top:96px;transition:transform .2s ease,box-shadow .2s ease}
