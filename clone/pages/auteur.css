@@ -74,3 +74,16 @@ html[data-clone] .au-coda span{color:#0b63b0}
   html[data-clone] .au-hero h1{font-size:34px}
   html[data-clone] .au-perso h2{font-size:54px}
 }
+
+/* En-tête « Du cercle à la spirale » : image verticale à droite, texte à gauche sur la même image floutée · 31/10/2026 */
+html[data-clone] .au-hero{min-height:calc(100svh - 82px)}
+html[data-clone] .au-hero::before{content:"";position:absolute;inset:-40px;background:url(../../illus/auteur-spirale.webp) center 70%/cover no-repeat;filter:blur(30px) saturate(1.1) brightness(.55);transform:scale(1.1)}
+html[data-clone] .au-hero-img{left:auto;right:0;width:46%;object-position:center 60%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
+html[data-clone] .au-hero-voile{background:linear-gradient(90deg,rgba(5,22,44,.72) 0%,rgba(5,22,44,.4) 45%,rgba(5,22,44,0) 60%)}
+html[data-clone] .au-hero h1 em{display:block;font-style:normal;color:#f2c48d!important}
+html[data-clone] .au-hero-act{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;max-width:none}
+html[data-clone] .au-hero .au-b{margin-top:0}
+html[data-clone] .au-b2{display:inline-flex;align-items:center;min-height:52px;padding:12px 24px;border-radius:999px;color:#fff!important;font:800 16px/1.2 "Source Sans 3",sans-serif;text-decoration:none;box-shadow:inset 0 0 0 1.5px rgba(242,196,141,.85);background:rgba(255,255,255,.08)}
+html[data-clone] .au-b2:hover{background:rgba(255,255,255,.16)}
+@media (max-width:1000px) and (min-width:721px){html[data-clone] .au-hero-img{width:52%}}
+@media (max-width:720px){html[data-clone] .au-hero::before{display:none}html[data-clone] .au-hero-img{width:100%;object-position:center 50%}html[data-clone] .au-hero h1{font-size:32px}}
