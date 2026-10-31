@@ -99,7 +99,7 @@
       var ih = intro && $('h2', intro), ik = intro && $('.kick,.surtitre,.etiquette', intro);
       if (ih) ih.innerHTML = 'Les modules, <em>cycle par cycle.</em>';
       if (ik) ik.textContent = 'Les modules';
-      if (intro && !$('.ec-pilote', tous)) intro.appendChild(el('p', 'ec-pilote', 'Parcours en pilote : modules relus par l’équipe EFA, relecture par un expert extérieur en cours.'));
+      if (intro && !$('.ec-pilote', tous)) intro.appendChild(el('p', 'ec-pilote', 'Parcours en pilote : chaque module est relu par l’équipe EFA.'));
       // en-tête visuel de chaque cycle
       ['fondations', 'maitrise', 'patrimoine'].forEach(function (k) {
         var d = document.getElementById('cycle-' + k), s = d && $('summary', d);
