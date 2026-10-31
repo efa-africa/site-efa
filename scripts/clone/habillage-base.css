@@ -187,18 +187,51 @@ html[data-clone] input[type=checkbox]{width:20px;height:20px}
 html[data-clone] label{color:#071d38}
 html[data-clone] :is(form,.ct-form) :is(button[type=submit],.bouton-principal){border-radius:999px!important}
 
-/* ---------- Musée de l'économie (mode visite) : salle d'exposition aux murs bleu profond ----------
-   Seule exception au « plus de bleu nuit » : un vrai bleu de la charte, les œuvres encadrées de blanc. */
-html[data-clone] #musee{--mn:#0b3a6b;--mp:#0e4a85;--mc:#ffb4a3;--mt:#d6e6f5;
-  background:radial-gradient(80% 60% at 50% 0%,#145a9c 0%,rgba(20,90,156,0) 70%),#0b3a6b!important;color:#fff!important}
-html[data-clone] #musee .mu-cadre,html[data-clone] #musee .mu-med{background:#fff!important;box-shadow:0 30px 70px rgba(2,20,45,.45),0 0 0 1px rgba(255,255,255,.6)!important}
+/* ---------- Musée de l'économie (mode visite) : murs bleus dont la nuance suit l'époque, cadres ivoire filetés de bois ----------
+   Seule exception au « plus de bleu nuit ». Époque posée par musee-economie.js sur #musee[data-era]. */
+html[data-clone] #musee{--mu-bg:#0b3a6b;--mu-panel:#124b80;--mu-accent:#f0b29b;--mu-wood:#d5a77a;--mu-action:#da3c1b;--mu-action-t:#fff;
+  --mn:var(--mu-bg);--mp:var(--mu-panel);--mc:var(--mu-accent);--mt:#e4eaf0;
+  background-color:var(--mu-bg)!important;background-image:radial-gradient(80% 60% at 50% 0%,color-mix(in srgb,var(--mu-panel) 70%,#5aa0d8) 0%,transparent 70%)!important;color:#fff!important;transition:background-color .55s ease}
+html[data-clone] #musee[data-era=origines]{--mu-bg:#123a61;--mu-panel:#194a70;--mu-accent:#e6b789;--mu-wood:#b98652}
+html[data-clone] #musee[data-era=traites]{--mu-bg:#102c4a;--mu-panel:#19344f;--mu-accent:#e8ddd0;--mu-wood:#8a6854;--mu-action:#e8ddd0;--mu-action-t:#102c4a;transition:none}
+html[data-clone] #musee[data-era=colonies]{--mu-bg:#172d42;--mu-panel:#223c50;--mu-accent:#c79d78;--mu-wood:#8f674c}
+html[data-clone] #musee[data-era=independances]{--mu-bg:#174a65;--mu-panel:#205771;--mu-accent:#e0b48b;--mu-wood:#a77852}
+html[data-clone] #musee[data-era=investir]{--mu-bg:#0e3b58;--mu-panel:#15506c;--mu-accent:#78c6d2;--mu-wood:#9d7558}
+html[data-clone] #musee :is(.mu-haut,.mu-bas){background:var(--mu-bg)!important;transition:background-color .55s ease}
+html[data-clone] #musee[data-era=traites] :is(.mu-haut,.mu-bas){transition:none}
+html[data-clone] #musee .mu-cadre,html[data-clone] #musee .mu-med{background:#f6efe3!important;box-shadow:0 18px 45px rgba(3,16,29,.34),inset 0 0 0 1.5px var(--mu-wood),0 0 0 1px color-mix(in srgb,var(--mu-wood) 55%,#fff)!important}
+html[data-clone] #musee .mu-cadre.pret{background:#f6efe3!important}
 html[data-clone] #musee .mu-txt{color:#fff}
-html[data-clone] #musee .mu-plan{background:rgba(11,58,107,.98)!important}
-html[data-clone] #musee .mu-num,html[data-clone] #musee .mu-suiv,html[data-clone] #musee .mu-lieu{background:#e34234!important}
+html[data-clone] #musee .mu-txt p{color:#e4eaf0}
+html[data-clone] #musee :is(.mu-date,.mu-role){color:var(--mu-accent)!important}
+html[data-clone] #musee .mu-plan{background:color-mix(in srgb,var(--mu-bg) 97%,#000)!important}
+html[data-clone] #musee .mu-num,html[data-clone] #musee .mu-lieu{background:var(--mu-action)!important;color:var(--mu-action-t)!important}
+html[data-clone] #musee .mu-suiv{background:#da3c1b!important;color:#fff!important}
 html[data-clone] #musee .mu-prec{background:rgba(255,255,255,.14)!important;color:#fff!important}
-html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,.mu-parts button,.mu-indice){background:#0e4a85!important;color:#fff!important}
-html[data-clone] #musee .mu-parts button[aria-pressed=true],html[data-clone] #musee .mu-parts button.on{background:#e34234!important}
-html[data-clone] #musee :is(.mu-form textarea,.mu-form input[type=email]){background:#fff!important;color:#071d38!important}
+html[data-clone] #musee :is(.mu-act .l,.mu-plan li i,.mu-etape.dz .mu-txt,.mu-c,.mu-parts button,.mu-indice){background:var(--mu-panel)!important;color:#fff!important}
+html[data-clone] #musee .mu-plan li.ok i{background:#da3c1b!important}
+html[data-clone] #musee .mu-parts button[aria-pressed=true],html[data-clone] #musee .mu-parts button.on{background:#da3c1b!important}
+html[data-clone] #musee .mu-prog i.c b{background:var(--mu-accent)!important}
+html[data-clone] #musee .mu-epo button.c{background:var(--mu-accent)!important;color:var(--mu-bg)!important;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+html[data-clone] #musee .mu-epo button.c b::before{content:"● "}
+/* Salle 4 · les traites : gravité. Pas de grand numéro rouge, bouton ivoire, aucun effet. */
+html[data-clone] #musee[data-era=traites] .mu-num{background:#8a6854!important;color:#fff!important;transform:scale(.85)}
+html[data-clone] #musee[data-era=traites] .mu-lieu{background:#8a6854!important;color:#fff!important}
+html[data-clone] #musee[data-era=traites] .mu-suiv{background:#e8ddd0!important;color:#102c4a!important}
+html[data-clone] #musee[data-era=traites] .mu-plan li.ok i{background:#8a6854!important}
+html[data-clone] #musee[data-era=traites] .mu-etape{transition-duration:.01ms!important}
+html[data-clone] #musee :focus-visible{outline:3px solid #9ddfea;outline-offset:3px}
+/* Plan groupé par époque */
+html[data-clone] #musee .mu-plan li.mu-plan-ep{padding:18px 0 6px;font:800 12px/1.2 "Source Sans 3",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--mu-accent)}
+html[data-clone] #musee .mu-plan li.mu-plan-ep::before{display:none}
+html[data-clone] #musee .mu-plan li.mu-plan-ep small{display:block;margin-top:3px;font-weight:400;letter-spacing:.02em;text-transform:none;color:#c9d6e3}
+/* Sortie : bilan et deux chemins */
+html[data-clone] #musee .mu-bilan{display:inline-block;margin:6px 0 2px!important;padding:6px 14px;border-radius:999px;background:var(--mu-panel);color:#fff!important;font-weight:800;font-size:14px}
+html[data-clone] #musee .mu-sortie{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+html[data-clone] #musee .mu-sortie :is(a,button){min-height:46px;padding:11px 20px;border-radius:999px;border:0;font:800 15.5px/1.2 "Source Sans 3",sans-serif;text-decoration:none;cursor:pointer}
+html[data-clone] #musee .mu-sortie a{background:#da3c1b;color:#fff}
+html[data-clone] #musee .mu-sortie button{background:rgba(255,255,255,.14);color:#fff}
+@media (prefers-reduced-motion:reduce){html[data-clone] #musee,html[data-clone] #musee *{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 html[data-clone] .musee-flot{background:#0b63b0!important}
 
 /* =================== Articles (leçons, EFA News, Africa 2075, tribunes) : les chiffres d'abord =================== */
