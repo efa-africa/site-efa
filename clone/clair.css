@@ -135,3 +135,11 @@ html.cl-hall .aig>section.fondateur{display:block!important}
 .pv-l{color:#0b63b0!important;font-weight:800;font-size:15.5px;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
 @media(max-width:700px){.pv-img{aspect-ratio:4/3}.pv-img img{object-position:72% 25%}.pv-badge{width:88px;height:88px;top:-44px}.pv-sp{width:66px;height:66px}.pv-act{flex-direction:column;align-items:flex-start}.pv-b{width:100%;justify-content:center}.pv-p{padding-right:6px}}
 @media(prefers-reduced-motion:reduce){.pv-sp animateMotion{display:none}}
+
+/* Se lancer : les deux cartes 02 et 03 de même hauteur, liens alignés en bas · 31/10/2026 */
+.aef-cards{align-items:stretch!important}
+.aef-cards>.aef-card:not([open]){height:100%}
+.aef-card summary,.aef-card>.aef-copy{flex:1 1 auto}
+.aef-card summary .aef-copy,.aef-card>.aef-copy{flex:1 1 auto;display:flex;flex-direction:column}
+.aef-card .aef-copy .aef-cta{margin-top:auto}
+@media(max-width:1100px){.aef-suite .produit{grid-template-columns:1fr}.aef-suite .produit-img{width:100%;max-width:none!important}}
