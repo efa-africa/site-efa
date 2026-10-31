@@ -125,6 +125,16 @@
         + '<button type="button" class="vt-rel">Contacter la SGI</button></div></article>';
       return h;
     }
+    function norm(x) { return String(x).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
+    function trouve(s, q) { var n = norm(s.nom + ' ' + (s.sigle || '') + ' ' + (s.alias || []).join(' ')), c = n.replace(/ /g, ''); return n.indexOf(q) > -1 || c.indexOf(q.replace(/ /g, '')) > -1; }
+    function verdict(q) {
+      var V = document.getElementById('vt-verdict'); if (!V) return;
+      if (!q || q.length < 2) { V.className = 'vt-verdict'; V.innerHTML = ''; return; }
+      var t = tous.filter(function (s) { return trouve(s, q); });
+      if (t.length) { V.className = 'vt-verdict ok'; V.innerHTML = t.length === 1 ? '✓ <b>' + esc(t[0].nom) + '</b> figure dans la liste des SGI agréées.' : '✓ ' + t.length + ' SGI agréées correspondent à votre recherche.'; }
+      else if (q.length >= 3) { V.className = 'vt-verdict ko'; V.innerHTML = 'Aucune SGI de ce nom dans la liste des ' + tous.length + ' SGI agréées. Vérifiez l’orthographe. Si le nom est exact, ne versez pas d’argent avant de l’avoir vérifié auprès de l’<a href="https://www.amf-umoa.org" target="_blank" rel="noopener">AMF-UMOA</a>.'; }
+      else { V.className = 'vt-verdict'; V.innerHTML = ''; }
+    }
     var vus = {};
     var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
       es.forEach(function (e) { var el = e.target; if (e.isIntersecting) { el._t = setTimeout(function () { if (!vus[el.dataset.id]) { vus[el.dataset.id] = 1; evenement('vue_carte', el.dataset.id, +el.dataset.pos, el.dataset.payee === '1'); } }, 1000); } else clearTimeout(el._t); });
@@ -133,7 +143,8 @@
     var ordreP = melange(tous.filter(function (x) { return !x.fiche_complete; }).map(function (x) { return x.id; }), graine() + 7);
     function rendre() {
       var pays = fP.value, dist = fD.checked, mini = +(document.getElementById('vt-min') || {}).value || 0, app = (document.getElementById('vt-app') || {}).checked, fc = (document.getElementById('vt-complete') || {}).checked;
-      function ok(s) { var a = s.acces || {}, m = a.minimum_ouverture_fcfa; return (!pays || (s.pays_couverts || []).indexOf(pays) > -1) && (!dist || a.ouverture_distance === 'oui') && (!mini || (m != null && m < mini)) && (!app || (s.service && s.service.application === 'oui')) && (!fc || s.fiche_complete); }
+      var q = norm((document.getElementById('vt-q') || {}).value || '');
+      function ok(s) { var a = s.acces || {}, m = a.minimum_ouverture_fcfa; return (!q || trouve(s, q)) && (!pays || (s.pays_couverts || []).indexOf(pays) > -1) && (!dist || a.ouverture_distance === 'oui') && (!mini || (m != null && m < mini)) && (!app || (s.service && s.service.application === 'oui')) && (!fc || s.fiche_complete); }
       var tete = [];
       if (enPeriode) (PL.places || []).slice().sort(function (a, b) { return a.rang - b.rang; }).slice(0, 3).forEach(function (p) { var s = p.sgi && par[p.sgi]; if (s && ok(s) && s.qualite_ok && s.fiche_complete && tete.indexOf(s.id) < 0) tete.push(s.id); });
       var compl = ordreC.filter(function (id) { return tete.indexOf(id) < 0 && ok(par[id]); });
@@ -141,7 +152,8 @@
       var s1 = tete.concat(compl), pos = 0, h = '';
       if (s1.length) h += '<section class="vt-sec" aria-labelledby="vt-s1"><h2 id="vt-s1">Les SGI qui se présentent en détail</h2><div class="vt-grille">' + s1.map(function (id, i) { pos++; return carte(par[id], pos, i < tete.length); }).join('') + '</div></section>';
       if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI agréées</h2><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
-      Z.innerHTML = h || '<p class="vt-chapo">Aucune SGI ne correspond à ces filtres.</p>';
+      Z.innerHTML = h || (q ? '' : '<p class="vt-chapo">Aucune SGI ne correspond à ces filtres.</p>');
+      verdict(q);
       Z.querySelectorAll('.vt-carte').forEach(function (el, i) {
         var s = par[el.dataset.id], payee = i < tete.length; el.dataset.pos = i + 1; el.dataset.payee = payee ? '1' : '0';
         if (io) io.observe(el);
@@ -152,6 +164,7 @@
       });
       majCmp();
     }
+    var fQ = document.getElementById('vt-q'), tq; if (fQ) fQ.oninput = function () { clearTimeout(tq); tq = setTimeout(function () { rendre(); if (norm(fQ.value).length >= 3) compte('sgi-verifier'); }, 200); };
     fP.onchange = function () { compte('sgi-filtre-pays'); rendre(); }; fD.onchange = rendre;
     ['vt-min', 'vt-app', 'vt-complete'].forEach(function (k) { var x = document.getElementById(k); if (x) x.onchange = rendre; });
     var nb = document.getElementById('vt-nb'); if (nb) nb.textContent = tous.length;
