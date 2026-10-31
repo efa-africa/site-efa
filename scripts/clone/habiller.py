@@ -40,8 +40,8 @@ modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read(
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
 RUBRIQUES = [('benefices', 'Apprendre et former'), ('pilier-progresser', 'Être accompagné'), ('pilier-agir', 'Se lancer'),
-             ('pilier-media', 'EFA News'), ('apropos', 'À propos')]
-LIEN_RUBRIQUE = {'pilier-media': 'news.html', 'apropos': 'auteur.html#auteur'}
+             ('pilier-media', 'EFA News'), ('etudes', 'Études et prospective'), ('apropos', 'À propos')]
+LIEN_RUBRIQUE = {'pilier-media': 'news.html', 'etudes': 'etudes-prospective.html', 'apropos': 'auteur.html#auteur'}
 SECTION_DE = {'portes': 'benefices', 'benefices': 'benefices', 'calculateur': 'benefices',
               'pilier-progresser': 'pilier-progresser', 'pilier-agir': 'pilier-agir',
               'pilier-media': 'pilier-media', 'etudes-prospective': 'etudes-prospective'}
@@ -102,7 +102,7 @@ menu = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_racine(m.group(1))
 
 def entete(page):
     actif = rubrique.get(page)
-    if actif == 'etudes-prospective': actif = 'pilier-media'
+    if actif == 'etudes-prospective' or (page or '').startswith(('etude', 'africa-2075', 'enquete')): actif = 'etudes'
     if page in ('auteur.html', 'methode.html', 'rendez-vous.html'): actif = 'apropos'
     onglets = ''.join('<a href="%s"%s>%s</a>' % (LIEN_RUBRIQUE.get(i, 'index.html#' + i), ' aria-current="page"' if i == actif else '', t)
                       for i, t in RUBRIQUES)
