@@ -589,6 +589,13 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
   </div>
 </div>
 
+<div id="ap-maj" hidden role="status" aria-live="polite" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(11,18,32,.92);color:#fff;font-family:'Source Sans 3',system-ui,sans-serif;text-align:center"><div><div style="width:44px;height:44px;margin:0 auto 18px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:#fff;animation:apmaj 1s linear infinite"></div><p style="margin:0;font:700 22px/1.25 'Libre Baskerville',Georgia,serif">Mise à jour de l’appli</p><p style="margin:8px 0 0;font-size:16px;color:#C9D1DE">Nous installons la dernière version. Encore quelques secondes.</p></div></div>
+<style>@keyframes apmaj{to{transform:rotate(360deg)}}#ap-maj[hidden]{display:none!important}</style>
+<script>/* Chargement long ou nouvelle version : on annonce une mise à jour */
+(function(){var prete=false;function montrer(){var m=document.getElementById("ap-maj");if(m&&!prete)m.hidden=false;}
+window.EFA_MAJ=function(){var m=document.getElementById("ap-maj");if(m)m.hidden=false;};
+var t=setTimeout(montrer,2500);
+addEventListener("load",function(){prete=true;clearTimeout(t);var m=document.getElementById("ap-maj");if(m&&!window.EFA_MAJ_EN_COURS)m.hidden=true;});})();</script>
 <!--donnees-site-->
 <script src="../parcours-efa.js" charset="utf-8"></script>
 <script src="../plan-efa.js" charset="utf-8"></script>
@@ -1370,9 +1377,9 @@ var NEWSD=null;function newsData(){if(NEWSD!==null)return NEWSD;NEWSD=false;try{
 function vAccueil(){
   /* L’accueil reprend la structure du site (31/10/2026) : l’accroche, votre suite, les trois portes, le média, l’enquête, les outils. Des images ponctuent la lecture. */
   var A=window.EFA_A_LA_UNE||{nouveautes:[],outils:[]},mr=monRetour(),cc=contCarte(),h='',IMG=function(n){return esc(siteUrl("clone/assets/"+n));};
-  function porte(img,sur,t,x,b,act){return '<button class="ap-porte" '+act+'><span class="ap-img"><img src="'+IMG(img)+'" alt="" loading="lazy" decoding="async"><i>Illustration · IA</i></span><span class="ap-txt"><span class="sur">'+sur+'</span><b>'+t+'<span class="ap-pt">.</span></b><span class="ap-x">'+x+'</span><span class="ap-go">'+b+' →</span></span></button>';}
+  function porte(img,sur,t,x,b,act){return '<button class="ap-porte" '+act+'><span class="ap-img"><img src="'+IMG(img)+'" alt="" loading="lazy" decoding="async"></span><span class="ap-txt"><span class="sur">'+sur+'</span><b>'+t+'<span class="ap-pt">.</span></b><span class="ap-x">'+x+'</span><span class="ap-go">'+b+' →</span></span></button>';}
   // 1. L’accroche, en image
-  h+='<section class="ap-hero"><img src="'+IMG("aig-hero.webp")+'" alt="" fetchpriority="high" decoding="async"><span class="ap-ia">Illustration · IA</span><div class="ap-hin"><span class="sur" style="color:#F09680">L’argent s’apprend · Une expérience EFA</span><h1>'+(mr||cc?'Bon retour.':'C’est fait pour vous.')+'<br><em>La finance, avec nos réalités africaines.</em></h1>'
+  h+='<section class="ap-hero"><img src="'+IMG("aig-hero.webp")+'" alt="" fetchpriority="high" decoding="async"><div class="ap-hin"><span class="sur" style="color:#F09680">L’argent s’apprend · Une expérience EFA</span><h1>'+(mr||cc?'Bon retour.':'C’est fait pour vous.')+'<br><em>La finance, avec nos réalités africaines.</em></h1>'
     +(cc?'':'<p>Pensé pour nous. Plusieurs formats, dès 1 min. EFA vous accompagne dans votre apprentissage et dans vos décisions.</p><div class="ap-choix"><button data-act="web" data-url="point-de-depart.html?pour=moi&src=appli" data-t="Mon point de départ"><span>01</span>Mon budget et mes dépenses</button><button data-act="web" data-url="point-de-depart.html?pour=investir&src=appli" data-t="Mon point de départ"><span>02</span>Investir à la BRVM</button><button data-act="web" data-url="point-de-depart.html?src=appli" data-t="Mon point de départ"><span>03</span>Autre chose, ou je ne sais pas encore</button></div>')
     +'</div></section>';
   // 2. Votre suite (pour qui revient)
@@ -1624,7 +1631,7 @@ document.addEventListener("input",function(ev){if(ev.target.id==="xq"){ui.q=ev.t
 document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&ui.sheet)closeSheet();});
 function tick(){var d=new Date();document.getElementById("clock").textContent=d.getHours()+":"+pad(d.getMinutes());}tick();setInterval(tick,30000);
 try{if("serviceWorker" in navigator&&((location.protocol==="https:"&&/(^|\.)efa\.africa$/.test(location.hostname))||/^localhost$|^127\.0\.0\.1$/.test(location.hostname)))(function(){var avait=!!navigator.serviceWorker.controller,fait=false;
-  navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(function(reg){reg.update();document.addEventListener("visibilitychange",function(){if(!document.hidden)reg.update();});setInterval(function(){reg.update();},30*60*1000);}).catch(function(){});
+  navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(function(reg){reg.addEventListener("updatefound",function(){if(avait){window.EFA_MAJ_EN_COURS=true;if(window.EFA_MAJ)window.EFA_MAJ();setTimeout(function(){if(!fait){window.EFA_MAJ_EN_COURS=false;var m=document.getElementById("ap-maj");if(m)m.hidden=true;}},15000);}});reg.update();document.addEventListener("visibilitychange",function(){if(!document.hidden)reg.update();});setInterval(function(){reg.update();},30*60*1000);}).catch(function(){});
   navigator.serviceWorker.addEventListener("controllerchange",function(){if(avait&&!fait){fait=true;location.reload();}});})();}catch(e){}
 render(true);
 var vInst=/[?&]installer=1/.test(location.search);
