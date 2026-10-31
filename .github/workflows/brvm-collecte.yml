@@ -31,11 +31,14 @@ jobs:
       - run: pip install requests beautifulsoup4
       - name: Relever la séance
         run: python scripts/brvm/collecte.py ${{ inputs.verifier && '--verifier' || '' }}
+      - name: Fabriquer les données de l'onglet Marchés
+        if: ${{ !inputs.verifier }}
+        run: python scripts/brvm/marches.py
       - name: Enregistrer dans le dépôt
         run: |
           git config user.name "EFA robot BRVM"
           git config user.email "robot-brvm@efa.africa"
-          git add data/brvm donnees.js
+          git add data/brvm data/marches donnees.js
           if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
           git commit -m "BRVM : relevé de la séance"
           git pull --rebase origin main
