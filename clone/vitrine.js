@@ -23,7 +23,13 @@
   /* Mélange Fisher-Yates avec une graine par visite */
   function graine() { var g = null; try { g = sessionStorage.getItem('efa_vt_g'); if (!g) { g = String(Math.floor(Math.random() * 2147483647)); sessionStorage.setItem('efa_vt_g', g); } } catch (e) {} return +(g || Math.floor(Math.random() * 2147483647)); }
   function melange(a, s) { a = a.slice(); var x = s || 1; function r() { x = (x * 16807) % 2147483647; return (x - 1) / 2147483646; } for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
-  function charger() { return Promise.all([fetch('data/sgi.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }), fetch('data/places.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return null; })]); }
+  /* Fiche complète (v1.2 § 4.1) : calculée, jamais saisie */
+  function ficheComplete(s) {
+    var f = s.frais || {}, a = s.acces || {}, sv = s.service || {}, nn = function (x) { return x !== null && x !== undefined && x !== ''; };
+    if (!(nn(s.agrement) && s.pays_couverts && s.pays_couverts.length && nn(f.courtage) && nn(f.droits_garde) && nn(f.tenue_compte) && nn(f.source) && nn(a.minimum_ouverture_fcfa) && nn(a.ouverture_distance) && nn(a.delai_ouverture) && sv.canaux && sv.canaux.length && s.relue === true && s.relue_le)) return false;
+    var d = new Date(s.relue_le + 'T00:00:00'); d.setFullYear(d.getFullYear() + 1); return d >= new Date();
+  }
+  function charger() { return Promise.all([fetch('data/sgi.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) { d.sgi.forEach(function (x) { x.fiche_complete = ficheComplete(x); }); return d; }), fetch('data/places.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return null; })]); }
 
   /* ---------- « Contacter la SGI » : adresse e-mail, puis coordonnées (régime A, spécifications v1.1 § 3.5) ---------- */
   var dlg, PAYS_L = ['Côte d’Ivoire','Sénégal','Bénin','Burkina Faso','Mali','Niger','Togo','Guinée-Bissau','Diaspora','Autre'];
@@ -84,7 +90,7 @@
     try { var mem = localStorage.getItem('efa_vt_email'); if (mem) f.email.value = mem; } catch (x) {}
     setTimeout(function () { f.email.focus(); }, 50);
   }
-  window.EFA_VT = { relation: relation, charger: charger, esc: esc, v: v, ouiNon: ouiNon, fcfa: fcfa, dateFr: dateFr, NOMS: NOMS, compte: compte, evenement: evenement };
+  window.EFA_VT = { ficheComplete: ficheComplete, relation: relation, charger: charger, esc: esc, v: v, ouiNon: ouiNon, fcfa: fcfa, dateFr: dateFr, NOMS: NOMS, compte: compte, evenement: evenement };
 
   /* ---------- Vitrine ---------- */
   var Z = document.getElementById('vt-liste'); if (!Z) return;
@@ -103,8 +109,8 @@
       var nom = esc(s.nom), ini = (function () { var p = s.nom.match(/\(([^)]+)\)/); if (p) return p[1].replace(/\s.*$/, '').slice(0, 4).toUpperCase(); return s.nom.replace(/^SGI\s+/i, '').split(/[\s&'-]+/).filter(function (w) { return w && /^[A-ZÉ0-9]/.test(w) && !/^(SA|de|et|la|le)$/i.test(w); }).map(function (w) { return w[0]; }).join('').slice(0, 3).toUpperCase(); })();
       var f = s.frais || {}, a = s.acces || {}, sv = s.service || {}, c = s.contact || {};
       var h = '<article class="vt-carte" data-id="' + esc(s.id) + '">'
-        + (payee ? '<div class="vt-etqs"><span class="vt-etq">' + etiquette + '</span></div>' : '')
-        + '<div class="vt-id">' + (s.logo && s.logo_autorise !== false ? '<img class="vt-logo" src="' + esc(s.logo) + '" alt="" loading="lazy" data-ini="' + esc(ini) + '">' : '<span class="vt-logo-v" aria-hidden="true">' + esc(ini) + '</span>') + '<h3>' + nom + '</h3></div>'
+        + (payee || s.fiche_complete ? '<div class="vt-etqs">' + (payee ? '<span class="vt-etq" data-garde>' + etiquette + '</span>' : '') + (s.fiche_complete ? '<span class="vt-etq vt-etq-ok">Fiche complète</span>' : '') + '</div>' : '')
+        + '<div class="vt-id">' + (s.logo && s.logo_autorise !== false ? '<img class="vt-logo" src="' + esc(s.logo) + '" alt="" loading="lazy" data-ini="' + esc(ini) + '">' : '<span class="vt-logo-v" data-garde aria-hidden="true">' + esc(ini) + '</span>') + '<h3>' + nom + '</h3></div>'
         + '<p class="vt-agr"><span>Agréée AMF-UMOA · n° ' + (s.agrement ? esc(s.agrement) : NC) + '</span><span class="vt-pays">' + (s.pays_couverts || []).map(function (p) { return '<i title="' + esc(NOMS[p] || p) + '">' + esc(p === 'Diaspora' ? 'Diaspora' : p) + '</i>'; }).join('') + '</span></p>'
         + '<div class="vt-reperes"><div><small>Minimum d’ouverture</small><b>' + fcfa(a.minimum_ouverture_fcfa) + '</b></div><div><small>Ouverture à distance</small><b>' + ouiNon(a.ouverture_distance) + '</b></div><div><small>Courtage</small><b>' + v(f.courtage) + '</b></div></div>'
         + '<div class="vt-fiche" id="fiche-' + esc(s.id) + '" hidden>' + (s.presentation ? '<section class="vt-pres"><h4>Présentation</h4><p>' + esc(s.presentation) + '</p></section>' : '')
@@ -115,6 +121,7 @@
         + '<p class="vt-relue">' + (s.relue && s.relue_le ? 'Fiche relue par la SGI le ' + dateFr(s.relue_le) + '.' : 'Fiche établie à partir d’informations publiques, non relue par la SGI.') + '</p></div>'
         + '<div class="vt-act"><button type="button" class="vt-voir" aria-expanded="false" aria-controls="fiche-' + esc(s.id) + '">Voir la fiche</button>'
         + '<label><input type="checkbox" class="vt-coche"' + (choix.indexOf(s.id) > -1 ? ' checked' : '') + '> Comparer <span class="sr" style="position:absolute;left:-9999px">' + nom + '</span></label>'
+        + (s.fiche_complete ? '' : '<p class="vt-incomplet"' + (choix.indexOf(s.id) > -1 ? '' : ' hidden') + '>Fiche incomplète : certaines lignes de la comparaison seront «&nbsp;Non communiqué&nbsp;».</p>')
         + '<button type="button" class="vt-rel">Contacter la SGI</button></div></article>';
       return h;
     }
@@ -122,26 +129,31 @@
     var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
       es.forEach(function (e) { var el = e.target; if (e.isIntersecting) { el._t = setTimeout(function () { if (!vus[el.dataset.id]) { vus[el.dataset.id] = 1; evenement('vue_carte', el.dataset.id, +el.dataset.pos, el.dataset.payee === '1'); } }, 1000); } else clearTimeout(el._t); });
     }, { threshold: .5 }) : null;
+    var ordreC = melange(tous.filter(function (x) { return x.fiche_complete; }).map(function (x) { return x.id; }), graine());
+    var ordreP = melange(tous.filter(function (x) { return !x.fiche_complete; }).map(function (x) { return x.id; }), graine() + 7);
     function rendre() {
-      var pays = fP.value, dist = fD.checked, mini = +(document.getElementById('vt-min') || {}).value || 0, app = (document.getElementById('vt-app') || {}).checked, rel = (document.getElementById('vt-relue') || {}).checked;
-      function ok(s) { var a = s.acces || {}, m = a.minimum_ouverture_fcfa; return (!pays || (s.pays_couverts || []).indexOf(pays) > -1) && (!dist || a.ouverture_distance === 'oui') && (!mini || (m != null && m < mini)) && (!app || (s.service && s.service.application === 'oui')) && (!rel || s.relue === true); }
+      var pays = fP.value, dist = fD.checked, mini = +(document.getElementById('vt-min') || {}).value || 0, app = (document.getElementById('vt-app') || {}).checked, fc = (document.getElementById('vt-complete') || {}).checked;
+      function ok(s) { var a = s.acces || {}, m = a.minimum_ouverture_fcfa; return (!pays || (s.pays_couverts || []).indexOf(pays) > -1) && (!dist || a.ouverture_distance === 'oui') && (!mini || (m != null && m < mini)) && (!app || (s.service && s.service.application === 'oui')) && (!fc || s.fiche_complete); }
       var tete = [];
-      if (enPeriode) (PL.places || []).slice().sort(function (a, b) { return a.rang - b.rang; }).slice(0, 3).forEach(function (p) { var s = p.sgi && par[p.sgi]; if (s && ok(s) && s.qualite_ok && tete.indexOf(s.id) < 0) tete.push(s.id); });
-      var reste = ordreRest.filter(function (id) { return tete.indexOf(id) < 0 && ok(par[id]); });
-      var ordre = tete.concat(reste);
-      Z.innerHTML = ordre.length ? ordre.map(function (id, i) { return carte(par[id], i + 1, i < tete.length); }).join('') : '<p class="vt-chapo">Aucune SGI ne correspond à ces filtres.</p>';
+      if (enPeriode) (PL.places || []).slice().sort(function (a, b) { return a.rang - b.rang; }).slice(0, 3).forEach(function (p) { var s = p.sgi && par[p.sgi]; if (s && ok(s) && s.qualite_ok && s.fiche_complete && tete.indexOf(s.id) < 0) tete.push(s.id); });
+      var compl = ordreC.filter(function (id) { return tete.indexOf(id) < 0 && ok(par[id]); });
+      var part = ordreP.filter(function (id) { return ok(par[id]); });
+      var s1 = tete.concat(compl), pos = 0, h = '';
+      if (s1.length) h += '<section class="vt-sec" aria-labelledby="vt-s1"><h2 id="vt-s1">Les SGI qui se présentent en détail</h2><p class="vt-sec-p">Ces SGI nous ont transmis leurs frais et leurs conditions d’ouverture&nbsp;: vous pouvez les comparer sur les mêmes critères. Celles marquées «&nbsp;Annonce&nbsp;» ont aussi payé leur place.</p><div class="vt-grille">' + s1.map(function (id, i) { pos++; return carte(par[id], pos, i < tete.length); }).join('') + '</div></section>';
+      if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI agréées</h2><p class="vt-sec-p">Ces SGI n’ont pas encore complété leur fiche. Les informations affichées sont celles qu’elles publient&nbsp;; le reste est indiqué «&nbsp;Non communiqué&nbsp;».</p><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
+      Z.innerHTML = h || '<p class="vt-chapo">Aucune SGI ne correspond à ces filtres.</p>';
       Z.querySelectorAll('.vt-carte').forEach(function (el, i) {
         var s = par[el.dataset.id], payee = i < tete.length; el.dataset.pos = i + 1; el.dataset.payee = payee ? '1' : '0';
         if (io) io.observe(el);
-        var lg = el.querySelector('img.vt-logo'); if (lg) { var rp = function () { var sp = document.createElement('span'); sp.className = 'vt-logo-v'; sp.setAttribute('aria-hidden', 'true'); sp.textContent = lg.dataset.ini; lg.replaceWith(sp); }; if (lg.complete && !lg.naturalWidth) rp(); else lg.onerror = rp; }
+        var lg = el.querySelector('img.vt-logo'); if (lg) { var rp = function () { var sp = document.createElement('span'); sp.className = 'vt-logo-v'; sp.setAttribute('aria-hidden', 'true'); sp.setAttribute('data-garde', ''); sp.textContent = lg.dataset.ini; lg.replaceWith(sp); }; if (lg.complete && !lg.naturalWidth) rp(); else lg.onerror = rp; }
         el.querySelector('.vt-voir').onclick = function () { var f = el.querySelector('.vt-fiche'), o = f.hidden; f.hidden = !o; this.setAttribute('aria-expanded', o ? 'true' : 'false'); this.textContent = o ? 'Masquer la fiche' : 'Voir la fiche'; if (o) { compte('sgi-fiche'); evenement('vue_fiche', s.id, i + 1, payee); } };
-        el.querySelector('.vt-coche').onchange = function () { var k = choix.indexOf(s.id); if (this.checked) { if (choix.length >= 4) { this.checked = false; var et = document.getElementById('vt-etat'); if (et) et.textContent = 'Vous pouvez comparer 4 SGI au plus.'; return; } if (k < 0) choix.push(s.id); evenement('ajout_comparer', s.id, i + 1, payee); } else if (k > -1) choix.splice(k, 1); var et2 = document.getElementById('vt-etat'); if (et2) et2.textContent = ''; majCmp(); };
+        el.querySelector('.vt-coche').onchange = function () { var k = choix.indexOf(s.id), et = document.getElementById('vt-etat'), inc = el.querySelector('.vt-incomplet'); if (this.checked) { if (choix.length >= 4) { this.checked = false; if (et) et.textContent = 'Vous pouvez comparer 4 SGI au plus.'; return; } if (k < 0) choix.push(s.id); evenement('ajout_comparer', s.id, i + 1, payee); } else if (k > -1) choix.splice(k, 1); if (inc) inc.hidden = !this.checked; if (et) et.textContent = ''; majCmp(); };
         el.querySelector('.vt-rel').onclick = function () { relation(s, i + 1, payee); };
       });
       majCmp();
     }
     fP.onchange = function () { compte('sgi-filtre-pays'); rendre(); }; fD.onchange = rendre;
-    ['vt-min', 'vt-app', 'vt-relue'].forEach(function (k) { var x = document.getElementById(k); if (x) x.onchange = rendre; });
+    ['vt-min', 'vt-app', 'vt-complete'].forEach(function (k) { var x = document.getElementById(k); if (x) x.onchange = rendre; });
     var nb = document.getElementById('vt-nb'); if (nb) nb.textContent = tous.length;
     rendre();
     var lo = document.querySelector('a[href="#ordre"]'); if (lo) lo.addEventListener('click', function () { compte('sgi-ordre-lire'); });
