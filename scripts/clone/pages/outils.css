@@ -30,3 +30,12 @@
 .bo-mf img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
 .bo-mf>span{display:flex;flex-direction:column;gap:4px}
 @media(max-width:640px){.bo-tete{padding:30px 0 24px!important}.bo-onglets{top:60px}.bo-grille{grid-template-columns:minmax(0,1fr)}}
+
+.bo-rac{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}
+.bo-rac>span{font:700 12px/1.3 "Source Sans 3",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#465062;margin-right:4px}
+.bo-rac a{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 18px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #C9D3E0;color:#0B1220;font:700 16px/1.2 "Source Sans 3",sans-serif;text-decoration:none}
+.bo-rac a:hover{box-shadow:inset 0 0 0 1.5px #0B1220}
+.bo-rac a:first-of-type{background:#0B1220;color:#fff;box-shadow:none}
+.bo-rac a:first-of-type small{color:#6DB8F2}
+.bo-rac small{font-size:12px;font-weight:800;color:#1B71B2;text-transform:uppercase;letter-spacing:.04em}
+@media(max-width:640px){.bo-rac>span{flex-basis:100%}.bo-rac a{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.bo-rac a:first-of-type{flex-basis:100%}}
