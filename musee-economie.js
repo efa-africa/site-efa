@@ -203,7 +203,7 @@
   function epoque(s) { for (var i = 0; i < EPOQUES.length; i++) if (s >= EPOQUES[i].a && s <= EPOQUES[i].b) return i; return -1; }
   function kSalle(s) { for (var k = 0; k < E.length; k++) if (E[k].k === "s" && E[k].s === s) return k; return 0; }
 
-  var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false, auto = true, minuteur = null, indic = null;
+  var M, SC, cur = 0, vus = {}, au = null, son = true, avant = null, dejaIndice = false, auto = false, minuteur = null, indic = null;
   /* Défilement : le temps d'une lecture tranquille (environ 170 mots par minute), plus le temps de regarder l'image */
   var INTERACTIF = { a: 1, d: 1, pp: 1, qz: 1, av: 1, z: 1 };
   function duree(el) { var t = (el && el.querySelector(".mu-txt") || {}).textContent || "", mots = t.split(/\s+/).filter(Boolean).length, im = el && el.querySelector(".mu-cadre") ? 3 : 0; return Math.min(60, Math.max(8, Math.round(mots / 2.8) + im + 2)) * 1000; }
@@ -214,7 +214,7 @@
     if (b) { void b.offsetWidth; b.style.transition = "width " + ms + "ms linear"; b.style.width = "100%"; }
     minuteur = setTimeout(function () { aller(cur + 1); }, ms);
   }
-  function majAuto() { var b = document.getElementById("mu-auto"); if (!b) return; b.setAttribute("aria-pressed", auto ? "true" : "false"); b.setAttribute("aria-label", auto ? "Mettre la visite en pause" : "Reprendre la visite"); b.innerHTML = auto ? '‖<span class="t"> Pause</span>' : '▶<span class="t"> Lecture</span>'; }
+  function majAuto() { var b = document.getElementById("mu-auto"); if (!b) return; b.setAttribute("aria-pressed", auto ? "true" : "false"); b.setAttribute("aria-label", auto ? "Lecture auto : activée. Mettre en pause" : "Lecture auto : désactivée. Lancer la lecture"); b.innerHTML = auto ? '‖<span class="t"> Lecture auto : oui</span>' : '▶<span class="t"> Lecture auto : non</span>'; }
   /* Les bords s'allument quelques secondes à chaque étape au début, puis de temps en temps */
   function indiquer() { if (!M) return; clearTimeout(indic); M.classList.add("mu-montre"); indic = setTimeout(function () { M.classList.remove("mu-montre"); }, 2600); }
   function esc(t) { return String(t == null ? "" : t).replace(/ ([?!:;»%])/g, "\u00a0$1").replace(/« /g, "«\u00a0").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -223,7 +223,7 @@
   function compte(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) {} }
   function cadre(n, port, h) { return '<div class="mu-cadre' + (port ? " port" : "") + '"><img data-src="' + img(n) + '" alt="" decoding="async">' + '' + '</div>'; }
   function actions(a) { return a ? '<div class="mu-act">' + a.map(function (x, j) { return '<a href="' + x[1] + '"' + (j ? ' class="l"' : "") + ' data-mu-lien>' + esc(x[0]) + "</a>"; }).join("") + "</div>" : ""; }
-  function chiffre(x) { return (x.c ? '<p class="mu-c"><b>' + esc(x.c[0]) + '</b><span>' + esc(x.c[1]) + '</span></p>' : '') + (typeof x.y === 'number' ? '<p class="mu-ilya">Il y a ' + (AN - x.y).toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g, '\u00a0') + ' ans</p>' : ''); }
+  function chiffre(x) { return (x.c ? '<p class="mu-c"><b>' + esc(x.c[0]) + '</b><span>' + esc(x.c[1]) + '</span></p>' : '') + (typeof x.y === 'number' ? '<p class="mu-ilya">' + (AN - x.y < 1 ? 'Cette année' : AN - x.y === 1 ? 'L’an dernier' : 'Il y a ' + (AN - x.y).toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g, '\u00a0') + ' ans') + '</p>' : ''); }
   function q(x) { return x ? '<p class="mu-q"><small>À méditer</small>' + esc(x) + "</p>" : ""; }
 
   function etapeHtml(x) {
@@ -234,7 +234,7 @@
       + '</div><p class="mu-aide">Vous passez quand vous voulez. En haut, touchez une époque pour y aller.</p></div></div>';
     if (x.k === "z") {
       var t = SALLES.map(function (S, i) { return '<i class="' + (vus[i] ? "ok" : "") + '" title="' + esc(S.t) + '">' + (i + 1) + "</i>"; }).join("");
-      return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p style="font-size:13.5px">Une idée de Pacôme Kipré, dit Peck Peckisblackman. Merci à lui.</p></div></div>';
+      return '<div class="mu-etape z">' + cadre(SORTIE.i, 0, SORTIE.h) + '<div class="mu-txt"><div class="mu-date">' + esc(SORTIE.d) + '</div><span class="mu-lieu">📍 ' + esc(SORTIE.l) + "</span><h2>" + esc(SORTIE.t) + "</h2><p>" + esc(SORTIE.p) + '</p><p class="mu-bilan" id="mu-bilan"></p><div class="mu-sortie"><a href="index.html#benefices" data-mu-lien>Explorer un jeu ou une leçon</a><button type="button" data-mu-revoir>Revoir une salle</button></div></div></div>';
     }
     if (x.k === "lv") return '<div class="mu-etape s lv"><div class="mu-livre"><img src="livre-couverture.jpg" alt="Couverture du livre « Le Cercle et la Spirale », d’Élysée Johnson" width="900" height="1350" loading="lazy"></div><div class="mu-txt"><p class="mu-lieu" style="background:#DA3C1B">En cours d’écriture</p><h2>Le Cercle et la Spirale</h2><span class="mu-role" style="font-size:16px">Élysée Johnson, fondateur d’EFA</span><p>Le livre qui prolonge cette visite&nbsp;: comment l’argent qui tourne devient l’argent qui reste.</p></div></div>';
     if (x.k === "pp") return '<div class="mu-etape s dz pp"><div class="mu-txt" style="align-self:center"><p class="mu-lieu" style="background:#DA3C1B">Votre passeport du musée</p><h2>Douze salles, douze portes</h2><p>Touchez le numéro d’une salle pour prolonger la visite par un jeu ou une leçon. Vous revenez ensuite au musée, ici même.</p><div class="mu-tampons" id="mu-tampons"></div><div id="mu-pro" class="mu-pro" aria-live="polite"></div><div class="mu-act" style="justify-content:center"><button type="button" class="l" data-mu-salles>Voir la balade en six salles</button><button type="button" class="l" data-mu-debut>Revoir le musée</button></div></div></div>';
@@ -251,9 +251,9 @@
   function construire() {
     M = document.createElement("div"); M.id = "musee"; M.hidden = true;
     M.setAttribute("role", "dialog"); M.setAttribute("aria-modal", "true"); M.setAttribute("aria-label", "Le musée de l’économie EFA");
-    M.innerHTML = '<div class="mu-haut"><div class="mu-prog" id="mu-prog">' + SALLES.map(function () { return "<i><b></b></i>"; }).join("") + '</div>'
+    M.innerHTML = '<div class="mu-haut"><div class="mu-prog" id="mu-prog" aria-hidden="true">' + SALLES.map(function () { return "<i><b></b></i>"; }).join("") + '</div>'
       + '<div class="mu-epo" id="mu-epo" aria-label="Les époques">' + EPOQUES.map(function (P, i) { return '<button type="button" data-e="' + i + '"><b>' + esc(P.t) + '</b><small>' + esc(P.per) + '</small></button>'; }).join("") + '</div>'
-      + '<div class="mu-barre"><span class="mu-salle" id="mu-salle"></span><div class="mu-cmd"><button type="button" id="mu-plan-b" aria-label="Plan du musée">☰<span class="t"> Plan</span></button><button type="button" id="mu-auto" aria-pressed="true" aria-label="Mettre la visite en pause">‖<span class="t"> Pause</span></button><button type="button" id="mu-son" aria-pressed="true">♪</button><button type="button" id="mu-x" aria-label="Fermer le musée">✕</button></div></div></div>'
+      + '<div class="mu-barre"><span class="mu-salle" id="mu-salle"></span><div class="mu-cmd"><button type="button" id="mu-plan-b" aria-label="Plan du musée">☰<span class="t"> Plan</span></button><button type="button" id="mu-auto" aria-pressed="false" aria-label="Lecture auto : désactivée. Lancer la lecture">▶<span class="t"> Lecture auto : non</span></button><button type="button" id="mu-son" aria-pressed="true">♪</button><button type="button" id="mu-x" aria-label="Fermer le musée">✕</button></div></div></div>'
       + '<div class="mu-scene" id="mu-scene" aria-live="polite"><button type="button" class="mu-bord g" id="mu-g" aria-label="Étape précédente"></button><button type="button" class="mu-bord d" id="mu-d" aria-label="Étape suivante"></button><span class="mu-indice" id="mu-indice">Touchez les bords pour avancer ou revenir</span><div class="mu-temps" aria-hidden="true"><i id="mu-temps"></i></div></div>'
       + '<div class="mu-bas"><button type="button" class="mu-prec" id="mu-prec" aria-label="Revenir">‹</button><button type="button" class="mu-passe" id="mu-passe">Passer la salle »</button><button type="button" class="mu-suiv" id="mu-suiv">Suivant ›</button></div>'
       + '<div class="mu-plan" id="mu-plan" hidden><div class="mu-plan-t"><h2 style="font-size:24px">Le plan du musée</h2><button type="button" class="mu-prec" id="mu-plan-x" aria-label="Fermer le plan" style="min-height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.12);color:#fff;font:800 14px Source Sans\\ 3,sans-serif;padding:0 14px">✕</button></div><ol id="mu-plan-l"></ol></div>';
@@ -265,7 +265,7 @@
     // le cadre prend la proportion exacte de son image : rien n’est rogné, pas de bandes
     SC.querySelectorAll(".mu-cadre img").forEach(function (im) { var f = function () { if (!im.getAttribute("src")) return; if (im.naturalWidth) { im.parentNode.classList.add("pret"); var c = im.parentNode, r = im.naturalWidth / im.naturalHeight; c.style.aspectRatio = im.naturalWidth + " / " + im.naturalHeight; if (!c.classList.contains("port")) c.style.width = "min(100%, calc(46svh * " + r.toFixed(3) + "), 980px)"; } }; im.addEventListener("load", f); im.addEventListener("error", function () { im.parentNode.classList.add("pret"); }); if (im.complete) f(); });
     // le plan
-    document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { return '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.per) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
+    document.getElementById("mu-plan-l").innerHTML = SALLES.map(function (S, i) { var P = null; EPOQUES.forEach(function (Q) { if (Q.a === i) P = Q; }); return (P ? '<li class="mu-plan-ep" aria-hidden="true">' + esc(P.t) + '<small>' + esc(P.per) + '</small></li>' : '') + '<li data-s="' + i + '"><i>' + (i + 1) + '</i><button type="button" class="go" data-s="' + i + '"><b>' + esc(S.t) + "</b><small>" + esc(S.per) + " · " + S.e.length + " étapes</small></button></li>"; }).join("");
     // commandes
     var $ = function (id) { return document.getElementById(id); };
     $("mu-g").onclick = function () { aller(cur - 1); }; $("mu-d").onclick = function () { aller(cur + 1); };
@@ -279,11 +279,11 @@
     (function () { var tot = {}; SC.querySelectorAll(".mu-etape").forEach(function (el) { var x = E[+el.dataset.k]; if (!x || x.s < 0 || x.s >= SALLES.length) return; var d = duree(el), ep = epoque(x.s); tot[-1] = (tot[-1] || 0) + d; tot[ep] = (tot[ep] || 0) + d; });
       SC.querySelectorAll("[data-min]").forEach(function (sp) { var m = Math.max(1, Math.round((tot[sp.dataset.min] || 0) / 60000)); sp.textContent = "environ " + m + " min"; }); })();
     $("mu-auto").onclick = function () { auto = !auto; majAuto(); if (auto) programmer(); else arreter(); compte("musee-auto-" + (auto ? "on" : "off")); };
-    document.addEventListener("visibilitychange", function () { if (M && !M.hidden) { if (document.hidden) arreter(); else programmer(); } });
+    document.addEventListener("visibilitychange", function () { if (M && !M.hidden) { if (document.hidden && auto) { auto = false; majAuto(); } arreter(); } });
     // un formulaire ou un lien touché : la visite attend
     SC.addEventListener("focusin", function (e) { if (e.target.closest("textarea,input,select")) arreter(); });
-    $("mu-plan-b").onclick = function () { arreter(); majPlan(); $("mu-plan").hidden = false; $("mu-plan-x").focus(); };
-    $("mu-plan-x").onclick = function () { $("mu-plan").hidden = true; programmer(); };
+    $("mu-plan-b").onclick = function () { arreter(); if (auto) { auto = false; majAuto(); } majPlan(); $("mu-plan").hidden = false; $("mu-plan-x").focus(); };
+    $("mu-plan-x").onclick = function () { $("mu-plan").hidden = true; var b = $("mu-plan-b"); if (b) b.focus(); };
     $("mu-plan-l").onclick = function (e) { var b = e.target.closest("button.go"); if (!b) return; $("mu-plan").hidden = true; var s = +b.dataset.s; for (var k = 0; k < E.length; k++) if (E[k].k === "s" && E[k].s === s) { aller(k); return; } };
     try { son = localStorage.getItem("efa_musee_son") !== "0"; } catch (e) {}
     majSon();
@@ -292,6 +292,7 @@
     /* Le navigateur bloque souvent le son avant un premier geste : le premier toucher dans le musée le lance */
     M.addEventListener("pointerdown", function (e) { if (son && (!au || au.paused) && !e.target.closest("#mu-son")) jouer(); }, true);
     SC.addEventListener("click", function (e) {
+      if (e.target.closest("[data-mu-revoir]")) { var pb = document.getElementById("mu-plan-b"); if (pb) pb.click(); return; }
       var a = e.target.closest("[data-mu-lien]"), sa = e.target.closest("[data-mu-salles]"), de = e.target.closest("[data-mu-debut]");
       if (de) { aller(0); return; }
       if (sa) { fermer(); setTimeout(function () { var x = document.getElementById("echanger"); if (x) x.scrollIntoView({ behavior: "smooth" }); }, 60); return; }
@@ -342,7 +343,7 @@
     b.innerHTML = joue ? "♪<span class=\"t\"> Son</span>" : "<s>♪</s><span class=\"t\"> " + (son ? "Activer le son" : "Muet") + "</span>";
     b.setAttribute("aria-pressed", joue ? "true" : "false"); b.setAttribute("aria-label", joue ? "Couper la musique" : "Lancer la musique"); }
   function jouer() { if (!son) return; try { if (!au) { au = new Audio("demo-musique.mp3"); au.loop = true; au.volume = 0.5; au.addEventListener("play", majSon); au.addEventListener("pause", majSon); } var p = au.play(); if (p && p.then) p.then(majSon, majSon); } catch (e) {} majSon(); }
-  function majPlan() { document.querySelectorAll("#mu-plan-l li").forEach(function (li) { var s = +li.dataset.s; li.classList.toggle("ok", !!vus[s]); li.classList.toggle("c", E[cur].s === s); }); }
+  function majPlan() { setTimeout(function () { var c = document.querySelector("#mu-plan-l li.c"); if (c && c.scrollIntoView) c.scrollIntoView({ block: "center" }); }, 30); document.querySelectorAll("#mu-plan-l li[data-s]").forEach(function (li) { var s = +li.dataset.s; li.classList.toggle("ok", !!vus[s]); li.classList.toggle("c", E[cur].s === s); }); }
   function demarrer(m) {
     if (m !== "libre") partie = -1;
     mode = m === "libre" ? "libre" : "guide"; auto = mode === "guide"; majAuto();
@@ -366,12 +367,15 @@
     });
     var ep = s >= 0 && s < SALLES.length ? epoque(s) : -1;
     document.querySelectorAll("#mu-epo button").forEach(function (b, i) { var P = EPOQUES[i], tous = true; for (var z = P.a; z <= P.b; z++) if (!vus[z]) tous = false; b.classList.toggle("c", i === ep); b.classList.toggle("ok", tous); if (i === ep && b.scrollIntoView && b.parentNode.scrollWidth > b.parentNode.clientWidth) b.parentNode.scrollLeft = b.offsetLeft - 14; });
-    document.getElementById("mu-salle").innerHTML = x.k === "a" ? "<b>Bienvenue</b> · Musée de l’économie" : s >= SALLES.length ? "<b>Sortie</b> · " + ({ z: "Et demain ?", lv: "En cours d’écriture", pp: "Votre passeport", qz: "Le quiz du musée", av: "Votre avis" })[x.k] : "<b>Salle " + (s + 1) + "/12</b> · " + esc(SALLES[s].t);
+    var etp = "", nEt = 0; if (s >= 0 && s < SALLES.length) { nEt = SALLES[s].e.length + 1; etp = " · étape " + (x.k === "s" ? 1 : SALLES[s].e.indexOf(x) + 2) + " sur " + nEt; }
+    document.getElementById("mu-salle").innerHTML = x.k === "a" ? "<b>Bienvenue</b> · Musée de l’économie" : s >= SALLES.length ? "<b>Sortie</b> · " + ({ z: "Et demain ?", lv: "En cours d’écriture", pp: "Votre passeport", qz: "Le quiz du musée", av: "Votre avis" })[x.k] : "<b>Salle " + (s + 1) + " sur 12</b>" + etp + " · " + esc(SALLES[s].t);
+    M.dataset.era = s < 0 || s >= SALLES.length ? (s < 0 ? "accueil" : "sortie") : s <= 2 ? "origines" : s === 3 ? "traites" : s === 4 ? "colonies" : s <= 8 ? "independances" : "investir"; M.dataset.room = s >= 0 && s < SALLES.length ? String(s + 1) : "";
     document.getElementById("mu-prec").disabled = k === 0;
-    document.getElementById("mu-suiv").textContent = k === E.length - 1 ? "Terminer ✓" : k === 0 ? "Visite guidée ›" : "Suivant ›";
+    var dm = SC.querySelector('[data-min="-1"]'), dmt = dm && /(\d+)/.test(dm.textContent) ? " · " + RegExp.$1 + " min" : "";
+    document.getElementById("mu-suiv").textContent = k === E.length - 1 ? "Terminer ✓" : k === 0 ? "Visite guidée" + dmt + " ›" : "Suivant ›";
     document.getElementById("mu-passe").textContent = k === 0 ? "Visite libre" : "Passer la salle »";
     document.getElementById("mu-passe").style.visibility = (s >= SALLES.length) ? "hidden" : "visible";
-    if (x.k === "z") compte("musee-fin");
+    if (x.k === "z") { compte("musee-fin"); var nv = 0; for (var z2 = 0; z2 < SALLES.length; z2++) if (vus[z2]) nv++; var bl = document.getElementById("mu-bilan"); if (bl) bl.textContent = nv >= SALLES.length ? "12 salles traversées" : nv + (nv > 1 ? " salles traversées" : " salle traversée") + " sur 12"; }
     if (x.k === "pp") { var tp = document.getElementById("mu-tampons"); if (tp) tp.innerHTML = SALLES.map(function (S, i) { return '<button type="button" class="' + (vus[i] ? "ok" : "") + '" data-sal="' + i + '" aria-label="Salle ' + (i + 1) + ' : ' + esc(S.t) + '">' + (i + 1) + "</button>"; }).join(""); }
     if (x.k === "qz") quiz();
     if (k > 0 && !dejaIndice) { dejaIndice = true; var ind = document.getElementById("mu-indice"); if (ind) ind.style.opacity = 0; }
