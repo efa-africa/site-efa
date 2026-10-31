@@ -20,13 +20,13 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261031e'
+VERSION = '20261031f'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
     'news.html': 'carte-proches-900.webp',
     'preparer-ma-retraite.html': 'coach-patrimoine.webp', 'construire-son-budget.html': 'budget.webp',
-    'methode.html': 'etudes-publiees.webp', 'auteur.html': 'elysee-portrait.jpg',
+    'methode.html': 'etudes-publiees.webp',
 }
 # modèle (dans clone/) → page fabriquée à la racine ; indexée ou non
 MODELES = {'_index.html': ('index.html', True), '_coaching.html': ('coaching.html', True),

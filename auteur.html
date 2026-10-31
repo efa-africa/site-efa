@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-clone data-clone-visuel="clone/assets/elysee-portrait.jpg" data-clone-coquille lang="fr">
+<html data-clone data-clone-coquille lang="fr">
 <head>
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
@@ -264,7 +264,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 .drapeaux{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}.drapeaux img{width:36px;height:24px;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.18);flex:none}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
-<link rel="stylesheet" href="clone/habillage.css?v=20261031e">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031f">
+<link rel="stylesheet" href="clone/pages/auteur.css?v=20261031f">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -279,20 +280,24 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
 </header>
 
 <main>
-  <section class="intro">
-    <div class="wrap">
-      <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
-      <p class="kick" style="margin-top:22px">À propos</p>
-      <h1 class="ih">Éducation Financière Afrique</h1>
-      <p class="lead" style="margin-top:14px">Comprendre l’argent à partir des réalités africaines. Qui nous sommes, qui écrit, ce que nous publions et ce que nous défendons.</p>
+  <section class="au-hero" data-photo aria-labelledby="au-hero-t">
+    <img class="au-hero-img" src="illus/auteur-hero.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+    <div class="au-hero-voile" aria-hidden="true"></div>
+    <div class="au-hero-txt">
+      <p class="au-k">À propos · Éducation Financière Afrique</p>
+      <h1 id="au-hero-t">Comprendre l’argent <br>à partir de nos réalités.</h1>
+      <p class="au-hero-p">Une école, des études et des idées pour mieux décider de ce que notre argent peut devenir.</p>
+      <a class="au-b" href="#efa" data-tab="efa">Découvrir EFA <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+  <nav class="au-nav" aria-label="À propos"><div class="wrap">
       <div class="ptabs" role="tablist" aria-label="À propos">
         <a href="#efa" role="tab" id="t-efa" aria-controls="efa" aria-selected="true"><b>EFA</b><small>Ce que nous faisons</small></a>
         <a href="#auteur" role="tab" id="t-auteur" aria-controls="auteur" aria-selected="false"><b>L’auteur</b><small>Élysée Johnson</small></a>
         <a href="#publications" role="tab" id="t-publications" aria-controls="publications" aria-selected="false"><b>Publications</b><small>Études, livre, tribunes, guides</small></a>
         <a href="#convictions" role="tab" id="t-convictions" aria-controls="convictions" aria-selected="false"><b>Convictions</b><small>Le cercle et la spirale</small></a>
       </div>
-    </div>
-  </section>
+  </div></nav>
 
   <div class="panel" id="efa" role="tabpanel" aria-labelledby="t-efa">
   <!-- Mission (venue de l'accueil) -->
@@ -354,42 +359,35 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   </div>
 
   <div class="panel" id="auteur" role="tabpanel" aria-labelledby="t-auteur" hidden>
-  <section class="wrap hero" aria-labelledby="nom" style="padding-top:44px">
-    <figure class="face" style="margin:0">
-      <img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909">
-      <figcaption class="drapeaux"><img src="illus/drapeau-ci.svg" alt="Drapeau de la Côte d’Ivoire" width="36" height="24"><img src="illus/drapeau-ua.svg" alt="Drapeau de l’Union africaine" width="36" height="24"><span>Ivoirien · Panafricain</span></figcaption>
-    </figure>
-    <div class="hero-t">
-      <p class="kick">L’auteur</p>
-      <h1 id="nom">Élysée <span>Johnson</span></h1>
-      <p class="lead">Économiste, financier, auteur et fondateur d’<b>Éducation Financière Afrique</b>. Il relie la finance du quotidien à une question de long terme&nbsp;: à qui appartiendra le capital africain&nbsp;?</p>
-      <div class="facts">
-        <div><small>Métiers</small><b>Banque d’investissement, capital-investissement, conseil</b></div>
-        <div><small>Villes</small><b>Paris, New York, Abidjan</b></div>
-        <div><small>Formation</small><b>ENSEA, ESCP</b></div>
-        <div><small>Fondateur</small><b>Éducation Financière Afrique</b></div>
+  <section class="wrap au-perso" aria-labelledby="nom">
+    <div class="au-perso-t">
+      <p class="au-k">L’auteur · Fondateur d’EFA</p>
+      <h2 id="nom">Élysée <span>Johnson</span></h2>
+      <p class="au-deck">Économiste, financier et auteur. Une décennie à observer où va le capital&nbsp;; aujourd’hui, une école pour expliquer comment l’argent circule et comment il peut rester.</p>
+      <p class="au-these">«&nbsp;À qui appartiendra le capital africain&nbsp;?&nbsp;»</p>
+      <div class="au-actions">
+        <a class="au-b" href="#convictions" data-tab="convictions">Lire ses convictions <span aria-hidden="true">→</span></a>
+        <a class="au-lien" href="#biographie">Bio pour la presse</a>
       </div>
-      <div class="jump">
-        <a class="main" href="#convictions" data-tab="convictions">Lire ses convictions</a>
-        <a href="#biographie">Biographie pour la presse</a>
-      </div>
+      <p class="au-cred">ENSEA · ESCP <span aria-hidden="true">/</span> Paris · New York · Abidjan</p>
     </div>
+    <figure class="au-portrait">
+      <img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909">
+      <figcaption><img src="illus/drapeau-ci.svg" alt="Drapeau de la Côte d’Ivoire" width="27" height="18"><img src="illus/drapeau-ua.svg" alt="Drapeau de l’Union africaine" width="27" height="18"><span>Élysée Johnson · Ivoirien, panafricain · Fondateur d’Éducation Financière Afrique</span></figcaption>
+    </figure>
   </section>
 
   <!-- 1. Parcours professionnel -->
-  <section class="band" id="parcours" aria-labelledby="t-parcours">
+  <section class="band au-parcours" id="parcours" aria-labelledby="t-parcours">
     <div class="wrap">
-      <div class="head">
-        <div><p class="kick">Parcours professionnel</p><h2 id="t-parcours">Une décennie dans la finance</h2></div>
-        <p>Conseil, banque, capital-investissement&nbsp;: trois métiers qui posent la même question, celle de savoir où va le capital, à quelles conditions et pour combien de temps.</p>
+      <div class="au-tete"><p class="au-k">Parcours</p><h2 id="t-parcours">Trois métiers. Une question.</h2><p>Où va le capital, à quelles conditions, et pour combien de temps&nbsp;?</p></div>
+      <div class="au-metiers">
+        <article><span>01</span><h3>Conseiller</h3><p>Voir comment une décision transforme une entreprise.</p><small>Conseil en stratégie · Chappuis Halder · Capgemini Invent · Onpoint Africa</small></article>
+        <article><span>02</span><h3>Financer</h3><p>Comprendre comment un projet rencontre ses ressources.</p><small>Banque d’investissement · BPCE · Citibank</small></article>
+        <article><span>03</span><h3>Investir</h3><p>Accompagner la croissance en partageant le risque.</p><small>Capital-investissement · I&amp;P, Investisseurs &amp; Partenaires</small></article>
       </div>
-      <dl class="ledger">
-        <div><dt>Conseil en stratégie</dt><dd>Chappuis Halder · Capgemini Invent · Onpoint Africa</dd></div>
-        <div><dt>Banque d’investissement</dt><dd>BPCE · Citibank</dd></div>
-        <div><dt>Capital-investissement</dt><dd>I&amp;P, Investisseurs &amp; Partenaires</dd></div>
-        <div><dt>Formation</dt><dd>ENSEA · ESCP<br><span class="note">A présidé l’African Business Club (Paris) et l’association des élèves ingénieurs de l’ENSEA (Abidjan).</span></dd></div>
-      </dl>
-      <p class="coda">Exercés à Paris, New York et Abidjan, ces métiers lui ont appris à lire un bilan. EFA applique ce regard à <span>l’argent des familles</span>.</p>
+      <p class="au-form"><b>Formation</b> ENSEA · ESCP <span aria-hidden="true">·</span> A présidé l’African Business Club (Paris) et l’association des élèves ingénieurs de l’ENSEA (Abidjan).</p>
+      <p class="au-coda">Exercés à Paris, New York et Abidjan, ces métiers lui ont appris à lire un bilan. EFA met ce regard au service de <span>l’argent des familles</span> et des projets africains.</p>
     </div>
   </section>
 
@@ -685,7 +683,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   var IDS=["efa","auteur","publications","convictions"], ALIAS={parcours:"auteur",biographie:"auteur",pensee:"convictions",realisations:"efa"};
   function montre(id){ IDS.forEach(function(k){ document.getElementById(k).hidden=k!==id; document.getElementById("t-"+k).setAttribute("aria-selected",String(k===id)); }); }
   function depuisAncre(scroll){ var h=(location.hash||"").slice(1), id=IDS.indexOf(h)>=0?h:(ALIAS[h]||(document.getElementById(h)&&document.getElementById(h).closest(".panel")?document.getElementById(h).closest(".panel").id:"efa"));
-    montre(id); if(scroll&&h){ var el=ALIAS[h]?document.getElementById(h):(IDS.indexOf(h)>=0?document.querySelector(".ptabs"):document.getElementById(h)); if(el) setTimeout(function(){ window.scrollTo({top:el.getBoundingClientRect().top+scrollY-70}); },30); } }
+    montre(id); if(scroll&&h){ var el=ALIAS[h]?document.getElementById(h):(IDS.indexOf(h)>=0?document.getElementById(id):document.getElementById(h)); if(el) setTimeout(function(){ var hd=document.querySelector(".clone-head,.header"), nv=document.querySelector(".au-nav"), dec=(hd?hd.offsetHeight:0)+(nv?nv.offsetHeight:0)+8; window.scrollTo({top:el.getBoundingClientRect().top+scrollY-dec}); },30); } }
   document.querySelectorAll(".ptabs a,[data-tab]").forEach(function(a){ a.addEventListener("click",function(e){ e.preventDefault(); var h=a.getAttribute("href"); history.replaceState(null,"",h); depuisAncre(!!a.dataset.tab); }); });
   addEventListener("hashchange",function(){ depuisAncre(true); }); depuisAncre(true);
   var mb=document.getElementById("menu"), nv=document.getElementById("nav");
@@ -752,7 +750,8 @@ show('courte');
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="etude-pdf.js?v=2026102301" defer></script>
-<script src="efa-appli.js?v=2026103001" defer></script>
-<script src="clone/habillage.js?v=20261031e" defer></script>
+<script src="efa-appli.js?v=2026103101" defer></script>
+<script src="clone/pages/auteur.js?v=20261031f" defer></script>
+<script src="clone/habillage.js?v=20261031f" defer></script>
 </body>
 </html>

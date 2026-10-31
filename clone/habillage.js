@@ -174,7 +174,7 @@
     return n > 0 && s / n >= .5;
   }
   var EXCLU = /^(IMG|SVG|VIDEO|CANVAS|SCRIPT|STYLE|PICTURE|IFRAME|svg|path|g|circle|rect|line|polyline|polygon|text|tspan|defs|use)$/;
-  function hors(el) { return el.closest && el.closest('#clone-haut,.clone-foot,[data-v1-cache],#musee'); }
+  function hors(el) { return el.closest && el.closest('#clone-haut,.clone-foot,[data-v1-cache],#musee,[data-photo]'); }
   function fondEffectif(el) {
     while (el && el.nodeType === 1) {
       if (el.hasAttribute('data-clair-photo')) return { r: 7, g: 12, b: 22, a: 1 };

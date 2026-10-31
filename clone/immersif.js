@@ -3,6 +3,7 @@
 (function () {
   var C = [
     { s: '.me', m: '.me picture', v: '.me-voile', t: '.me-txt' },
+    { s: '.au-hero', m: '.au-hero-img', v: '.au-hero-voile', t: '.au-hero-txt' },
     { s: '.at-entree', m: '.at-entree-img', v: '.at-entree-voile', t: '.at-entree-txt' },
     { s: '.cover', m: '.cover-image', v: '.cover-shade', t: '.cover-copy', x: '.cover-top,.scroll-prompt' },
     { s: 'section.hero', m: '.hero-image', v: '.hero-overlay', t: '.hero-copy', x: '.hero-meta,.scroll' }

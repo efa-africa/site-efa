@@ -74,7 +74,7 @@
     "outils.html": ["argent", ".hero, header + main > section, main > section"],
     "methode.html": ["etudes", "#sommaire"],
     "organisations.html": ["orga", "main > section"],
-    "auteur.html": ["efa", "main > section, .hero"],
+    "auteur.html": ["efa", ".au-nav, main > section, .hero"],
     "news.html": ["etudes", "main > section, .hero"]
   };
 
