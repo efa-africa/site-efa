@@ -108,7 +108,6 @@
   var SUIVANT = {
     "index.html": ["parcours.html", "L’école"],
     "auteur.html": ["parcours.html", "L’école"],
-    "outils.html": ["parcours.html", "L’école"],
     "diagnostic.html": ["parcours.html", "L’école"],
     "methode.html": ["etude-tontine-en-chiffres.html?src=suivant", "La dernière étude"],
     "news.html": ["methode.html", "Études & prospective"],
@@ -119,7 +118,7 @@
     "bourse-marche.html": ["traders.html", "EFA Traders, le simulateur"],
     "traders.html": ["bourse-essentiel.html", "L’École de la Bourse"]
   };
-  var SANS_FIL = ["admin-ecole.html", "tableau-ely.html", "ely.html", "index.html"]; // l'accueil est le point de départ : ses deux portes suffisent
+  var SANS_FIL = ["admin-ecole.html", "tableau-ely.html", "ely.html", "index.html", "outils.html"]; // l'accueil est le point de départ : ses deux portes suffisent
   var FIL = "efa_fil";
   function court(t) { t = String(t || "").replace(/\s*·\s*EFA.*$/, "").replace(/\s*\|.*$/, "").trim(); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, "") + "…" : t; }
   function filSuivant(href, label) {

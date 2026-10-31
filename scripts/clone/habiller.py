@@ -23,7 +23,7 @@ CLONE = 'clone'
 VERSION = '20261031p'
 SITE = 'https://efa.africa/'
 VISUELS = {
-    'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
+    'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp',
     'preparer-ma-retraite.html': 'coach-patrimoine.webp', 'construire-son-budget.html': 'budget.webp',
     'methode.html': 'etudes-publiees.webp',
 }

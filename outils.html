@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-clone data-clone-visuel="clone/assets/q1.webp" data-clone-coquille lang="fr">
+<html data-clone data-clone-coquille lang="fr">
 <head>
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
 <meta name="author" content="EFA · Éducation Financière Afrique">
@@ -407,6 +407,7 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 <script src="parcours-efa.js?v=2026102512"></script>
 <script src="parcours-ui.js?v=2026102512"></script>
 <link rel="stylesheet" href="clone/habillage.css?v=20261031p">
+<link rel="stylesheet" href="clone/pages/outils.css?v=20261031p">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -420,27 +421,30 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
   </nav>
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
-<section class="intro">
+<section class="intro bo-tete" data-garde>
   <div class="wrap">
-    <p class="mission">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
-    <p class="kick"><a href="parcours.html" style="color:inherit">L’école EFA</a> · La boîte à outils</p>
-    <h1>Comprendre votre argent. Et agir.</h1>
-    <p class="lead">Partez de votre question et suivez votre module. Faites le point en quelques minutes, suivez vos progrès dans votre cahier, et comprenez les mots de l’argent.</p>
+    <p class="bo-k"><a href="parcours.html">L’école EFA</a> · La boîte à outils</p>
+    <h1>Tous les outils EFA, au même endroit.</h1>
+    <p class="bo-lede">Faire le point, calculer avec vos chiffres, décider, apprendre, suivre vos progrès. Gratuit, et vos montants restent sur votre téléphone.</p>
     <form class="rech" role="search" id="rech-f" onsubmit="return false">
       <label for="rq">Rechercher une question, un outil ou un mot</label>
       <div class="rech-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="rq" type="search" autocomplete="off" enterkeyhint="search" placeholder="Par exemple : budget, tontine, retraite, prêter, assurance…"><button type="button" class="rech-x" id="rq-x" hidden>Effacer</button></div>
       <p class="rech-sug" id="rech-sug">Recherches fréquentes : <button type="button">budget</button><button type="button">tontine</button><button type="button">mobile money</button><button type="button">retraite</button><button type="button">prêter</button><button type="button">dépenses</button></p>
     </form>
-    <div class="tabs" role="tablist" aria-label="Choisir un espace">
-      <a href="#parcours" role="tab" id="t-parcours" aria-controls="parcours" aria-selected="true"><b>Mes questions</b><small>Elles mènent à mon parcours</small></a>
-      <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="false" tabindex="-1"><b>Faire le point</b><small>Mon résultat en quelques minutes</small></a>
-      <a href="#cahier" role="tab" id="t-cahier" aria-controls="cahier" aria-selected="false" tabindex="-1"><b>Mon cahier</b><small>Suivre mes progrès</small></a>
-      <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1"><b>Dico pratique</b><small>Les mots de l’argent</small></a>
-      <a href="#certificat" role="tab" id="t-certificat" class="t-cert" aria-controls="certificat" aria-selected="false" tabindex="-1"><b>Les Fondations</b><small><span class="pil">Pilote</span> Certificat EFA</small></a>
-    </div>
   </div>
 </section>
+<div class="bo-onglets" id="espaces" data-garde><div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Choisir un espace">
+      <a href="#tout" role="tab" id="t-tout" aria-controls="tout" aria-selected="true">Tout voir</a>
+      <a href="#parcours" role="tab" id="t-parcours" aria-controls="parcours" aria-selected="false" tabindex="-1">Mes questions</a>
+      <a href="#diagnostic" role="tab" id="t-diagnostic" aria-controls="diagnostic" aria-selected="false" tabindex="-1">Faire le point</a>
+      <a href="#cahier" role="tab" id="t-cahier" aria-controls="cahier" aria-selected="false" tabindex="-1">Mon cahier</a>
+      <a href="#dico" role="tab" id="t-dico" aria-controls="dico" aria-selected="false" tabindex="-1">Dico pratique</a>
+      <a href="#certificat" role="tab" id="t-certificat" aria-controls="certificat" aria-selected="false" tabindex="-1">Les Fondations <small>Pilote</small></a>
+    </div>
+</div></div>
 <main class="wrap">
+  <section class="pan bo-cat" id="tout" role="tabpanel" aria-labelledby="t-tout" data-garde><div class="bo-g"><div class="bo-gh"><h2>Faire le point</h2><p>Un résultat en quelques minutes.</p></div><div class="bo-grille"><a class="bo-c" href="diagnostic.html?src=boite"><span class="bo-t">6 min</span><b>Le diagnostic complet</b><span class="bo-d">Votre profil, votre priorité et le module qui vous correspond.</span></a><a class="bo-c" href="point-de-depart.html?src=boite"><span class="bo-t">2 min</span><b>Trouver mon point de départ</b><span class="bo-d">Deux ou trois questions pour savoir par où commencer.</span></a><a class="bo-c" href="ou-est-passe-mon-argent.html?src=boite"><span class="bo-t">10 min</span><b>Où est passé mon argent ?</b><span class="bo-d">Cinq questions, puis vos chiffres : où part votre argent.</span></a><a class="bo-c" href="bourse-essentiel.html?src=boite#A1"><span class="bo-t">3 min</span><b>Suis-je prêt à investir ?</b><span class="bo-d">Réserve, dette chère, horizon : savoir si c’est le moment.</span></a></div></div><div class="bo-g"><div class="bo-gh"><h2>Calculer avec vos chiffres</h2><p>Vous entrez vos montants, vous obtenez un calcul. Ils restent sur votre téléphone.</p></div><div class="bo-grille"><a class="bo-c" href="cercle-spirale.html?src=boite#argent"><span class="bo-t">Simulateur</span><b>Combien garder à chaque rentrée ?</b><span class="bo-d">Ce que devient une petite part gardée, rentrée après rentrée.</span></a><a class="bo-c" href="cercle-spirale.html?src=boite#groupe"><span class="bo-t">Simulateur</span><b>Ma tontine, tour par tour</b><span class="bo-d">Ce que votre groupe garderait avec une réserve commune.</span></a><a class="bo-c" href="preparer-ma-retraite.html?src=boite"><span class="bo-t">Simulateur</span><b>Préparer ma retraite</b><span class="bo-d">Six questions, une estimation et un premier plan.</span></a><a class="bo-c" href="valoriser-mon-entreprise.html?src=boite"><span class="bo-t">Simulateur · <i>Nouveau</i></span><b>Combien vaut mon entreprise ?</b><span class="bo-d">Entrepreneur : le cash de votre activité, une revente, une valeur.</span></a></div></div><div class="bo-g"><div class="bo-gh"><h2>Décider</h2><p>Avant de dire oui, de prêter ou d’acheter.</p></div><div class="bo-grille"><a class="bo-c" href="decider.html?src=boite"><span class="bo-t">Décision</span><b>Le simulateur de décisions</b><span class="bo-d">Cinq cas, une réponse rédigée, un suivi à 7 jours.</span></a><a class="bo-c" href="#questions"><span class="bo-t">100 questions</span><b>Mes questions</b><span class="bo-d">Partez d’une question que vous vous posez : elle mène au bon module.</span></a></div></div><div class="bo-g"><div class="bo-gh"><h2>Apprendre à votre rythme</h2><p>Vidéo, mots, certificat, livres.</p></div><div class="bo-grille"><a class="bo-c bo-mf" href="minfin.html"><img src="koffi.jpg" alt="" width="52" height="52" loading="lazy"><span><span class="bo-t">Vidéo</span><b>Min’Fin</b><span class="bo-d">Les questions de Koffi, en une minute par épisode.</span></span></a><a class="bo-c" href="#dico"><span class="bo-t">Les mots de l’argent</span><b>Le Dico pratique</b><span class="bo-d">Un mot, une définition claire, un exemple en FCFA.</span></a><a class="bo-c" href="#certificat"><span class="bo-t">Certificat · Pilote</span><b>Les Fondations</b><span class="bo-d">Huit modules et un examen pour valider vos bases. Gratuit.</span></a><a class="bo-c" href="bourse-essentiel.html?src=boite"><span class="bo-t">Bourse</span><b>L’école de la Bourse</b><span class="bo-d">L’essentiel, l’approfondissement et la simulation.</span></a><a class="bo-c" href="bibliotheque.html?src=boite"><span class="bo-t">Lecture</span><b>La bibliothèque</b><span class="bo-d">Les grands livres sur l’argent, en format court.</span></a><a class="bo-c" href="musee.html?src=boite"><span class="bo-t">Visite · 16 min</span><b>Le musée de l’économie</b><span class="bo-d">Douze salles pour traverser l’histoire de l’économie.</span></a></div></div><div class="bo-g"><div class="bo-gh"><h2>Suivre mes progrès</h2></div><div class="bo-grille"><a class="bo-c" href="#cahier"><span class="bo-t">Suivi</span><b>Mon cahier</b><span class="bo-d">Vos fiches, vos défis et vos résultats, au même endroit.</span></a></div></div><div class="bo-g"><div class="bo-gh"><h2>Les marchés</h2><p>La Bourse régionale, en clair.</p></div><div class="bo-grille"><a class="bo-c" href="marches.html"><span class="bo-t">BRVM</span><b>Le marché du jour</b><span class="bo-d">Les indices, les secteurs et ce qui a bougé à la BRVM.</span></a><a class="bo-c" href="societes.html"><span class="bo-t">BRVM</span><b>Les sociétés cotées</b><span class="bo-d">Les 48 titres, leur cours et leur fiche.</span></a><a class="bo-c" href="marches-labo.html"><span class="bo-t">Entraînement</span><b>M’exercer sans argent</b><span class="bo-d">Un portefeuille fictif pour essayer sans risque.</span></a><a class="bo-c" href="acheter-des-actions.html"><span class="bo-t">Se lancer</span><b>Acheter des actions</b><span class="bo-d">Passer par une SGI : les étapes et la liste.</span></a></div></div><div class="bo-g"><div class="bo-gh"><h2>Se former autrement</h2><p>Trois laboratoires pour les curieux, les étudiants, les entrepreneurs et les cadres.</p></div><div class="bo-grille"><a class="bo-c" href="traders.html?src=boite"><span class="bo-t">Laboratoire</span><b>EFA Traders</b><span class="bo-d">Décider sur un marché simulé, sans argent réel.</span></a><a class="bo-c" href="corporate.html?src=boite"><span class="bo-t">Laboratoire</span><b>EFA Corporate Finance</b><span class="bo-d">Analyser une entreprise, investir, financer.</span></a><a class="bo-c" href="ceo.html?src=boite"><span class="bo-t">Laboratoire</span><b>EFA CEO Challenge</b><span class="bo-d">Décider comme un dirigeant, sur des cas d’ici.</span></a></div></div></section>
   <section class="pan" id="resultats" aria-live="polite" hidden></section>
   <section class="pan" id="parcours" role="tabpanel" aria-labelledby="t-parcours">
     <div class="pan-h"><p>Partez de la question que vous vous posez : elle vous mène au parcours qui y répond, étape par étape, jusqu’à un résultat concret. Pour obtenir un bilan chiffré, passez à l’onglet « Faire le point ».</p></div>
@@ -1116,9 +1120,9 @@ var OUTILS = [
   dc.addEventListener("click",function(e){ var a=e.target.closest("a[data-fiche]"); if(a) mesure("dico-fiche-"+a.dataset.fiche); });
 
   /* ---------- Onglets et adresses : #diagnostic · #plan · #plan/sujet · #cahier · #cahier/nouveau/poste · #dico · #dico/slug ---------- */
-  var TABS=["parcours","diagnostic","plan","cahier","dico","certificat"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
+  var TABS=["tout","parcours","diagnostic","plan","cahier","dico","certificat"], ANCIENS={point:"diagnostic",agir:"plan","preter-a-un-proche":"plan"};
   function montre(id){ TABS.forEach(function(k){ document.getElementById(k).hidden=k!==id; var t=document.getElementById("t-"+k); if(!t) return; t.setAttribute("aria-selected",String(k===id||(k==="parcours"&&id==="plan"))); t.tabIndex=(k===id||(k==="parcours"&&id==="plan"))?0:-1; });
-    document.getElementById("how").hidden=id!=="diagnostic"; mesure("onglet-"+id); }
+    document.getElementById("how").hidden=id!=="diagnostic"; mesure("onglet-"+id); var tb=document.getElementById("t-"+(id==="plan"?"parcours":id)); if(tb&&tb.parentNode) tb.parentNode.scrollLeft=Math.max(0,tb.offsetLeft-16); }
   // Après un lien interne : ramener le haut de l'espace ouvert à l'écran
   function cadrer(id,force){ var el=document.getElementById(id); if(!el) return; var r=el.getBoundingClientRect(); if(force||r.top<0) el.scrollIntoView({block:"start"}); }
   function depuisAncre(){
@@ -1130,14 +1134,15 @@ var OUTILS = [
         if(!r) return; var pp=id&&DP?DP.parcours.filter(function(x){return x.id===id;})[0]:null;
         r.innerHTML=pp?'Ce plan fait partie du parcours '+id.slice(1)+' : « '+esc(pp.probleme)+' ». <a href="parcours.html#'+id+'">Suivre le parcours étape par étape →</a>':'Les plans d’action font désormais partie des parcours. <a href="#parcours">Retrouver ma question →</a>'; })(); cadrer("plan",!!parts[1]); if(parts[1]){ var ht=document.getElementById("sj-t"); if(ht) ht.focus({preventScroll:true}); } return; }
     if(k==="certificat"){ montre("certificat"); vueCertificat(); cadrer("certificat",false); return; }
-    if(k===""||k==="parcours"||k==="questions"){ montre("parcours"); if(k) cadrer("parcours",false); if(MQ&&parts[1]==="toutes") MQ.toutes(parts[2]||null); if(MQ&&parts[1]==="choisir") MQ.quiz(); return; }
+    if(k===""||k==="tout"){ montre("tout"); return; }
+    if(k==="parcours"||k==="questions"){ montre("parcours"); if(k) cadrer("parcours",false); if(MQ&&parts[1]==="toutes") MQ.toutes(parts[2]||null); if(MQ&&parts[1]==="choisir") MQ.quiz(); return; }
     if(k==="cahier"){ montre("cahier"); rendreCahier(parts.slice(1).join("/")); cadrer("cahier",!!parts[1]);
       if(parts[1]==="nouveau") setTimeout(function(){ var b=document.querySelector('#cahier [data-act="demarrer"]'); if(!b) return; var sec=b.closest("section")||b; if(parts[2]) b.scrollIntoView({block:"center"}); else sec.scrollIntoView({block:"start"}); },60);
       return; }
     var outil=OUTILS.filter(function(o){return o.id===k;})[0];
     if(outil&&(outil.famille==="agir"||outil.famille==="labo")){ montre("plan"); rendrePlan(""); var el=document.getElementById(k); if(el) setTimeout(function(){ el.scrollIntoView({block:"start"}); },30); return; }
     if(k==="diagnostic"||outil){ montre("diagnostic"); if(outil){ var el2=document.getElementById(k); if(el2) el2.scrollIntoView({block:"start"}); } return; }
-    montre("parcours");
+    montre("tout");
   }
   var MQ=window.EFAParcoursUI&&EFAParcoursUI.questions?EFAParcoursUI.questions(document.getElementById("mes-questions")):null;
   var tabs=[].slice.call(document.querySelectorAll(".tabs a"));
@@ -1145,7 +1150,8 @@ var OUTILS = [
     a.addEventListener("click",function(e){ e.preventDefault(); if(location.hash!==a.getAttribute("href")) history.pushState(null,"",a.getAttribute("href")); depuisAncre(); });
     a.addEventListener("keydown",function(e){ var k=e.key, j=k==="ArrowRight"?i+1:k==="ArrowLeft"?i-1:k==="Home"?0:k==="End"?tabs.length-1:null; if(j===null) return; e.preventDefault(); j=(j+tabs.length)%tabs.length; tabs[j].focus(); tabs[j].click(); });
   });
-  window.addEventListener("hashchange",depuisAncre); window.addEventListener("popstate",depuisAncre); depuisAncre();
+  function versEspace(){ var k=(location.hash||"").slice(1).split("/")[0]; if(!k||k==="tout") return; var e=document.getElementById("espaces"); if(e&&e.getBoundingClientRect().top>window.innerHeight*.4) setTimeout(function(){ e.scrollIntoView({block:"start",behavior:"smooth"}); },60); }
+  window.addEventListener("hashchange",function(){ depuisAncre(); versEspace(); }); window.addEventListener("popstate",depuisAncre); depuisAncre(); versEspace();
 
   /* ---------- Recherche : outils, plans d'action, méthodes, parcours, fiches du Dico ---------- */
   var MOTS={
@@ -1229,7 +1235,7 @@ var OUTILS = [
 </script>
 <script src="prevenir.js?v=2026102601" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026103101" defer></script>
+<script src="efa-appli.js?v=2026103103" defer></script>
 <script src="minfin.js?v=2026102901"></script>
 <script>
 (function(){
