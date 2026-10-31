@@ -1,0 +1,20 @@
+{
+ "sources": [
+  {
+   "id": "s-brvm-cote",
+   "titre": "Cours de clôture officiels",
+   "editeur": "BRVM",
+   "url": "https://www.brvm.org/fr/cours-actions/0",
+   "date_publication": null,
+   "consulte_le": "chaque séance"
+  },
+  {
+   "id": "s-brvm-indices",
+   "titre": "Indices de la BRVM",
+   "editeur": "BRVM",
+   "url": "https://www.brvm.org/fr/indices",
+   "date_publication": null,
+   "consulte_le": "chaque séance"
+  }
+ ]
+}

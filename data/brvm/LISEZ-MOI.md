@@ -13,3 +13,8 @@ pas de la base.
 
 Relance manuelle : onglet Actions du dépôt → « Collecte BRVM » → Run workflow.
 Synthèse sur une autre période : `python scripts/brvm/semaine.py --fin AAAA-MM-JJ --jours 30`.
+
+## Onglet Marchés
+
+`scripts/brvm/marches.py` (lancé après chaque collecte) fabrique `data/marches/` : `jour.json`, `societes.json`, `fiches/[CODE].json`, `calendrier.json`.
+Référentiel à compléter par EFA : `data/brvm/societes.json` (secteur, nombre d’actions, flottant, date d’introduction, site, texte_efa), avec une source dans `data/brvm/sources.json`. `texte_efa` est bloqué pour SNTS et ORAC : la génération échoue s’il est rempli. Calendrier : `data/brvm/evenements.json`. Historique antérieur : `data/brvm/historique/actions_AAAA.csv` (même format que actions.csv).
