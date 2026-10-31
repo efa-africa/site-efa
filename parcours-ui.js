@@ -192,7 +192,7 @@
         res.innerHTML = "<strong>Commencez par : « " + esc(P[L[0]].probleme) + " »</strong><ol>"
           + L.map(function (id) { return '<li><a href="' + esc(lien(id, L)) + '" data-pb-ouvrir="' + id + '">' + esc(nomCourt(id)) + " · " + esc(P[id].titre) + "</a></li>"; }).join("")
           + '</ol><a class="go" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:10px 20px;border-radius:8px;font-weight:800" href="' + esc(lien(L[0], L)) + '" data-pb-ouvrir="' + L[0] + '">Ouvrir ce parcours</a>'
-          + '<small>Un doute ? <a href="diagnostic.html?src=parcours-quiz">Le diagnostic gratuit (6 min)</a> creuse votre situation et vous donne votre profil.</small>';
+          + '<small>Un doute ? <a href="diagnostic.html?src=parcours-quiz">Le diagnostic gratuit (Dès 2 min)</a> creuse votre situation et vous donne votre profil.</small>';
         try { var s = JSON.parse(localStorage.getItem("efa_parcours_v1") || "{}") || {}; s.quiz = L; localStorage.setItem("efa_parcours_v1", JSON.stringify(s)); } catch (x) {}
         mesure("quiz-" + L[0]);
         if (opts.resultat) opts.resultat(L);

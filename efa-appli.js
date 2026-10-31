@@ -13,13 +13,13 @@
   var APP = "/app/";
   var TEXTE = {
     titre: "Allez plus loin avec l’appli EFA",
-    corps: "Des leçons de 5 minutes avec Koffi, votre cahier, vos challenges de 7 jours et votre progression, au même endroit. Gratuite, sans compte : vos réponses restent sur votre téléphone.",
+    corps: "Des leçons avec Koffi, dès 2 min, votre cahier, vos challenges de 7 jours et votre progression, au même endroit. Gratuite, sans compte : vos réponses restent sur votre téléphone.",
     bouton: "Ouvrir l’appli",
     aide: "Sur Android : dans Chrome, menu ⋮ puis « Ajouter à l’écran d’accueil ».",
     pied: "L’appli EFA",
     menu: "L’appli",
     colonne: "L’appli",
-    liens: ["Ouvrir l’appli EFA", "Leçons de 5 minutes avec Koffi", "Suivre ma progression"]
+    liens: ["Ouvrir l’appli EFA", "Leçons avec Koffi, dès 2 min", "Suivre ma progression"]
   };
   // Pages qui reçoivent la carte (nom du fichier, sans le dossier)
   var PAGES_CARTE = ["outils.html", "diagnostic.html", "ou-est-passe-mon-argent.html", "preparer-ma-retraite.html", "preter-a-un-proche.html", "construire-son-budget.html", "budget-mobile-money.html", "cercle-spirale.html"];

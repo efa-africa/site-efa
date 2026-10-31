@@ -62,6 +62,10 @@ def texte_complet(a):
     t += a["mecanisme"] + a["limites"] + [c[0] + " " + c[1] for c in a["chiffres"]]
     return " ".join(t)
 
+def des(n):
+    """Durée affichée : « dès 1 min » ou « dès 2 min », pour ne pas décourager."""
+    return 1 if n <= 3 else 2
+
 def lecture(a):
     n = len(texte_complet(a).split()) + sum(len(s[0].split()) for s in a["sources"])
     return max(2, round(n / 180))
@@ -274,7 +278,7 @@ def carte(a, pre, h="h3"):
     return (f'<article class="carte-n"><a class="lien" href="{pre}news/{a["id"]}.html">'
             f'<p class="meta-n"><span class="rub">{typo(a["rubrique"])}</span><time datetime="{a["publication"]}">{date_fr(a["publication"])}</time></p>'
             f'<{h}>{typo(a["titre"])}</{h}><p>{typo(a["resume"])}</p><p class="chg"><b>Pour vous</b>{typo(change_court(a))}</p>'
-            f'<p class="pied-n"><span>{lecture(a)} min de lecture</span><span>{typo(CAT[a["categorie"]])}</span></p></a></article>')
+            f'<p class="pied-n"><span>Dès {des(lecture(a))} min de lecture</span><span>{typo(CAT[a["categorie"]])}</span></p></a></article>')
 
 CALC = '<span class="calc">Calcul EFA</span>'
 LIB_BOUTON = {"Leçon": "Lire la leçon", "Calcul": "Faire le calcul", "Outil": "Ouvrir l’outil", "Exercice": "Faire l’exercice"}
@@ -475,7 +479,7 @@ def page_home():
   <section class="une" id="une" aria-labelledby="une-t">
     <div class="txt">
       <p class="lbl">À la une · choix de la rédaction</p>
-      <p class="meta-n"><span class="rub">{typo(u['rubrique'])}</span><time datetime="{u['publication']}">{date_fr(u['publication'])}</time><span>· {lecture(u)} min de lecture</span></p>
+      <p class="meta-n"><span class="rub">{typo(u['rubrique'])}</span><time datetime="{u['publication']}">{date_fr(u['publication'])}</time><span>· dès {des(lecture(u))} min de lecture</span></p>
       <h2 id="une-t"><a href="news/{u['id']}.html">{typo(u['titre'])}</a></h2>
       <p>{typo(u['resume'])}</p>
       <a class="bt" href="news/{u['id']}.html" data-goatcounter-click="news-une">Comprendre ce que cela change →</a>
@@ -549,7 +553,7 @@ def page_home():
   }}
   function carte(a,mots){{
     var r=mots.length?'<span class="pourquoi">'+esc(raison(a,mots))+'</span>':'<span>'+esc(CAT[a.c])+'</span>';
-    return '<article class="carte-n"><a class="lien" href="news/'+a.id+'.html"><p class="meta-n"><span class="rub">'+esc(a.rub)+'</span><time datetime="'+a.d+'">'+a.dl+'</time></p><h3>'+surligne(a.t,mots)+'</h3><p>'+surligne(a.r,mots)+'</p><p class="chg"><b>Pour vous</b>'+esc(a.ch||'')+'</p><p class="pied-n"><span>'+a.min+' min de lecture</span>'+r+'</p></a></article>';
+    return '<article class="carte-n"><a class="lien" href="news/'+a.id+'.html"><p class="meta-n"><span class="rub">'+esc(a.rub)+'</span><time datetime="'+a.d+'">'+a.dl+'</time></p><h3>'+surligne(a.t,mots)+'</h3><p>'+surligne(a.r,mots)+'</p><p class="chg"><b>Pour vous</b>'+esc(a.ch||'')+'</p><p class="pied-n"><span>Dès '+(a.min<=3?1:2)+' min de lecture</span>'+r+'</p></a></article>';
   }}
   function lireURL(){{
     var p=new URLSearchParams(location.search);

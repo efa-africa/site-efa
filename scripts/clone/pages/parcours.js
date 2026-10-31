@@ -36,7 +36,7 @@
       '<p class="ec-lead">Du premier budget aux premières décisions patrimoniales, avancez avec des exercices concrets et des outils adaptés à votre quotidien.</p>' +
       '<div class="ec-actions"><a class="ec-cta" href="' + (lien ? lien.getAttribute('href') : '#cycle-fondations') + '">' +
       (revient ? 'Reprendre mon module' : 'Commencer mon parcours') + ' <span aria-hidden="true">→</span></a>' +
-      (demo ? '<a class="ec-demo" href="' + demo.getAttribute('href') + '">▶ Voir la démo · 2 min</a>' : '') + '</div>' +
+      (demo ? '<a class="ec-demo" href="' + demo.getAttribute('href') + '">▶ Voir la démo · dès 1 min</a>' : '') + '</div>' +
       '<p class="ec-note">Gratuit · à votre rythme · parcours en pilote</p></div>' +
       '<figure class="ec-hero-img"><img src="' + A + 'q1.webp" alt="" decoding="async" fetchpriority="high"></figure>';
     hero.insertBefore(h, hero.firstChild);

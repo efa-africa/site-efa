@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <link rel="stylesheet" href="ecole-bourse.css?v=2026102511">
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="stylesheet" href="clone/habillage.css?v=20261031q">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031r">
 </head><body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
 
@@ -65,7 +65,7 @@ function tabSoc(){var r='';for(var k in SOC){var s=SOC[k];r+='<tr><td>'+s.nom+'<
  return '<div class="defile"><table class="tab large"><thead><tr><th>Société</th><th>Cours</th><th>PER</th><th>Rdt</th><th>Ventes</th><th>Dette</th></tr></thead><tbody>'+r+'</tbody></table></div>';}
 
 /* ======================= B1 ======================= */
-MOD.push({id:"B1", titre:"Lire la cote et les indices", court:"La cote", duree:"≈ 60 min",
+MOD.push({id:"B1", titre:"Lire la cote et les indices", court:"La cote", duree:"Dès 2 min",
 retenir:"Une ligne de cote se lit <span class=\"s\">avec son volume</span> : une forte variation sur dix titres échangés ne dit presque rien. Un indice résume, il ne <span class=\"c\">remplace pas</span> la lecture de vos lignes.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Chaque soir de séance</span><div class="grand">Le Bulletin officiel de la cote</div><span class="mot">Publié par la BRVM sur brvm.org : cours, volumes, indices, dividendes, annonces</span>'},
@@ -101,7 +101,7 @@ quiz:[
 ]});
 
 /* ======================= B2 ======================= */
-MOD.push({id:"B2", titre:"Lire les annonces des sociétés", court:"Les annonces", duree:"≈ 60 min",
+MOD.push({id:"B2", titre:"Lire les annonces des sociétés", court:"Les annonces", duree:"Dès 2 min",
 retenir:"Une annonce se lit en trois temps : <span class=\"s\">qu’est-ce qui change</span> pour l’entreprise, pour <span class=\"c\">mon nombre de titres</span>, et pour ma thèse. Le fractionnement ne crée pas de valeur ; des résultats en baisse se lisent avec leur explication.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Où trouver l’information</span><ol class="liste-n"><li><b>brvm.org</b> : avis de la Bourse et publications des sociétés cotées.</li><li><b>Le Bulletin officiel de la cote</b> : avis du jour.</li><li><b>Le site de la société</b> : rapports annuels, présentations.</li><li><b>Votre SGI</b> : opérations sur titres qui vous concernent.</li></ol>'},
@@ -140,7 +140,7 @@ quiz:[
 ]});
 
 /* ======================= B3 ======================= */
-MOD.push({id:"B3", titre:"Lire une entreprise", court:"Les comptes", duree:"≈ 75 min",
+MOD.push({id:"B3", titre:"Lire une entreprise", court:"Les comptes", duree:"Dès 2 min",
 retenir:"Trois documents, cinq ratios : <span class=\"s\">marge</span>, <span class=\"s\">rentabilité des fonds propres</span>, <span class=\"c\">endettement</span>, part distribuée, bénéfice par action. Et une règle : un bénéfice qui ne se transforme pas en <span class=\"c\">trésorerie</span> se surveille.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<div class="schema"><div><b>Compte de résultat</b>ce que l’entreprise a vendu et gagné sur l’année</div><div><b>Bilan</b>ce qu’elle possède et ce qu’elle doit, à une date</div><div><b>Tableau des flux de trésorerie</b>l’argent réellement entré et sorti</div></div>'},
@@ -180,7 +180,7 @@ quiz:[
 ]});
 
 /* ======================= B4 ======================= */
-MOD.push({id:"B4", titre:"Apprécier le prix", court:"Le prix", duree:"≈ 70 min",
+MOD.push({id:"B4", titre:"Apprécier le prix", court:"Le prix", duree:"Dès 2 min",
 retenir:"Le prix se juge <span class=\"s\">relativement</span> : PER comparé au secteur et à la croissance, rendement comparé à l’<span class=\"s\">obligation d’État</span>. On se fixe un <span class=\"c\">prix maximum</span> avant d’acheter, avec une marge de sécurité.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">La règle des investisseurs</span><div class="grand">Le prix, c’est ce que vous payez. La valeur, ce que vous obtenez.</div>'},
@@ -216,7 +216,7 @@ quiz:[
 ]});
 
 /* ======================= B5 ======================= */
-MOD.push({id:"B5", titre:"Les ordres en détail", court:"Les ordres", duree:"≈ 60 min",
+MOD.push({id:"B5", titre:"Les ordres en détail", court:"Les ordres", duree:"Dès 2 min",
 retenir:"Le marché donne la priorité au <span class=\"s\">meilleur prix</span>, puis au <span class=\"s\">premier arrivé</span>. Une limite d’achat est un maximum : vous pouvez payer moins. Un cours ne peut pas varier sans limite en une séance, et l’argent d’une vente arrive <span class=\"c\">deux jours ouvrés</span> plus tard.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Une séance de la BRVM (heure d’Abidjan)</span><table class="tab"><tbody><tr><td>9 h 00</td><td>pré-ouverture : les ordres s’accumulent</td></tr><tr><td>9 h 45</td><td>fixing d’ouverture</td></tr><tr><td>9 h 45 – 14 h 00</td><td>négociation en continu</td></tr><tr><td>14 h 00 – 14 h 30</td><td>pré-clôture</td></tr><tr><td>14 h 30</td><td>fixing de clôture</td></tr><tr><td>14 h 30 – 15 h 00</td><td>négociation au dernier cours</td></tr><tr><td>15 h 00</td><td>fermeture, résultats officiels</td></tr></tbody></table>'},
@@ -255,7 +255,7 @@ quiz:[
 ]});
 
 /* ======================= B6 ======================= */
-MOD.push({id:"B6", titre:"Construire et suivre un portefeuille", court:"Le portefeuille", duree:"≈ 60 min",
+MOD.push({id:"B6", titre:"Construire et suivre un portefeuille", court:"Le portefeuille", duree:"Dès 2 min",
 retenir:"Un portefeuille se construit <span class=\"s\">par couches</span> : réserve, obligations ou fonds, actions. Cinq à dix lignes, aucune au-delà d’un <span class=\"c\">cinquième</span>, un rééquilibrage par an et un tableau de bord à jour.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<div class="schema"><div><b>Couche 1 · la réserve</b>hors Bourse, disponible tout de suite</div><div><b>Couche 2 · obligations et fonds</b>revenus réguliers, risque modéré</div><div><b>Couche 3 · actions</b>croissance et dividendes, horizon long</div></div>'},
@@ -288,7 +288,7 @@ quiz:[
 ]});
 
 /* ======================= B7 ======================= */
-MOD.push({id:"B7", titre:"Emprunts obligataires et introductions en Bourse", court:"Emprunts et introductions", duree:"≈ 50 min",
+MOD.push({id:"B7", titre:"Emprunts obligataires et introductions en Bourse", court:"Emprunts et introductions", duree:"Dès 2 min",
 retenir:"Avant de souscrire : la <span class=\"s\">note d’information</span> visée par l’AMF-UMOA. Pour un emprunt : taux, durée, remboursement, garantie. Pour une introduction : usage des fonds, prix, et <span class=\"c\">aucune hausse garantie</span>.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Emprunt obligataire par appel public (fictif)</span><table class="tab"><tbody><tr><td>Émetteur</td><td>un État de l’UEMOA</td></tr><tr><td>Taux</td><td>6,25 % par an</td></tr><tr><td>Durée</td><td>7 ans</td></tr><tr><td>Remboursement</td><td>par septièmes, dès la 2e année</td></tr><tr><td>Valeur d’une obligation</td><td>10 000 F</td></tr><tr><td>Souscription</td><td>auprès des SGI, pendant 3 semaines</td></tr></tbody></table>'},
@@ -316,7 +316,7 @@ quiz:[
 ]});
 
 /* ======================= B8 · Projet ======================= */
-MOD.push({id:"B8", titre:"Projet · Le comité d’investissement", court:"Comité d’investissement", duree:"≈ 45 min",
+MOD.push({id:"B8", titre:"Projet · Le comité d’investissement", court:"Comité d’investissement", duree:"Dès 2 min",
 retenir:"Une décision d’investissement tient sur une page : <span class=\"s\">la thèse</span>, <span class=\"c\">deux risques</span>, un <span class=\"s\">prix maximum</span>, un ordre, et les conditions de revente.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les trois sociétés fictives</span>'+tabSoc()},
@@ -341,5 +341,5 @@ ecrans:[
 <script src="efa-suite.js?v=2026102902" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 <script src="efa-chiffres.js?v=2026102701" defer></script>
-<script src="clone/habillage.js?v=20261031q" defer></script>
+<script src="clone/habillage.js?v=20261031r" defer></script>
 </body></html>

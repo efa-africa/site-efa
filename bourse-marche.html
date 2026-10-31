@@ -38,7 +38,7 @@
 }
 </style>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="stylesheet" href="clone/habillage.css?v=20261031q">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031r">
 </head><body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
 
@@ -248,7 +248,7 @@ quiz:[
 
 /* ======================= C2 · Les indices composites ======================= */
 var CAP = [["Banque du Fleuve", 600], ["Ciments du Sahel", 120], ["Palmeraie du Golfe", 80]];
-MOD.push({id:"C2", titre:"Les indices composites", court:"Les indices", duree:"≈ 40 min",
+MOD.push({id:"C2", titre:"Les indices composites", court:"Les indices", duree:"Dès 2 min",
 retenir:"Un indice composite est un <span class=\"c\">panier pondéré par la taille</span> des sociétés : les plus grosses le font bouger. Il ne compte pas les dividendes, et il ne dit rien de vos propres titres.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Base 100</span><div class="grand">100 → 529</div><span class="mot">Si un indice parti de 100 vaut 529, le panier vaut 5,29 fois sa valeur de départ, hors dividendes</span>'},
@@ -313,7 +313,7 @@ var BV = [420,610,0,880,350,520,0,700,1900,640,580,0,1250,900,410,3900,2100,0,76
 var V30 = (function(){ var b = G.serie(2300, [[30, .05, 1.1]], 77, .3), c = [b.c[0]];
   for (var i = 1; i < 30; i++){ var r = b.c[i] / b.c[i - 1]; if (i === 11) r = 1.074; if (i === 21) r = 1.031; c.push(Math.round(c[i - 1] * r / 5) * 5); }
   b.v[11] = 12; b.v[21] = 8400; return {c:c, v:b.v}; })();
-MOD.push({id:"C3", titre:"Lire un graphique de cours", court:"Les graphiques", duree:"≈ 40 min",
+MOD.push({id:"C3", titre:"Lire un graphique de cours", court:"Les graphiques", duree:"Dès 2 min",
 retenir:"Avant de lire une courbe, lisez <span class=\"c\">la période et l’échelle</span>. Un mouvement compte s’il s’accompagne de volume ; un cours plat peut être un cours sans échanges.",
 ecrans:[
  P({illu:function(){ return illu("Palmeraie du Golfe · une année de séances (fictif)", G.ligne({s:[{d:PDG.c}], xl:XL, marque:[{i:SP.ihi, t:"plus haut", col:G.VE}, {i:SP.ilo, t:"plus bas", col:G.CO}], aria:"Cours fictif de Palmeraie du Golfe sur un an"}) +
@@ -366,7 +366,7 @@ quiz:[
 /* ======================= C4 · Analyser une tendance ======================= */
 var TB = G.serie(2600, [[60, -.3, 1.1]], 31, .1), TL = G.serie(1800, [[60, 0, 1.3, 1800]], 53, .1), TH = G.serie(1200, [[60, .32, 1.1]], 97, .1);
 var EDL = G.serie(3000, [[150, .12, 1.1], [20, -1.1, 1.2, 0, 3.2], [40, -.1, 1.1]], 808, .12);
-MOD.push({id:"C4", titre:"Analyser une tendance", court:"Les tendances", duree:"≈ 50 min",
+MOD.push({id:"C4", titre:"Analyser une tendance", court:"Les tendances", duree:"Dès 2 min",
 retenir:"Une tendance se lit dans les <span class=\"c\">plus hauts et plus bas successifs</span>, se confirme par la moyenne mobile et le volume, et ne dit jamais pourquoi : le graphique choisit le moment, l’analyse de l’entreprise choisit le titre.",
 ecrans:[
  P({illu:function(){ var f = function(s, t){ return '<figure>' + G.ligne({s:[{d:s.c}], W:240, H:220, nu:1, aria:t}) + '<figcaption>' + t + '</figcaption></figure>'; };
@@ -420,7 +420,7 @@ quiz:[
 ]});
 
 /* ======================= C5 · Les chiffres qui trompent ======================= */
-MOD.push({id:"C5", titre:"Les chiffres qui trompent", court:"Les pièges", duree:"≈ 35 min",
+MOD.push({id:"C5", titre:"Les chiffres qui trompent", court:"Les pièges", duree:"Dès 2 min",
 retenir:"Un dividende <span class=\"c\">regarde en arrière</span>, un rendement élevé peut cacher un doute, une baisse de 50 % demande 100 % pour revenir, et un point d’indice n’est pas un pour cent.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">SAPH · cas réel</span><table class="tab"><tbody><tr><td>Dividende versé le 28 août 2026</td><td>12,5 Md F</td></tr><tr><td>Bénéfice du 1er semestre 2026</td><td>2,2 Md F</td></tr><tr><td>Évolution sur un an</td><td>− 88 %</td></tr></tbody></table><span class="mot">Sources : Financial Afrik, 25 mars et 13 août · Capmad, 10 septembre 2026</span>'},
@@ -467,7 +467,7 @@ quiz:[
 ]});
 
 /* ======================= C6 · Une entreprise sous la loupe ======================= */
-MOD.push({id:"C6", titre:"Une entreprise sous la loupe", court:"Une entreprise", duree:"≈ 45 min",
+MOD.push({id:"C6", titre:"Une entreprise sous la loupe", court:"Une entreprise", duree:"Dès 2 min",
 retenir:"Quand les coûts fixes sont lourds, le bénéfice <span class=\"c\">baisse bien plus vite</span> que les ventes. Lisez trois lignes avec leur période, séparez bénéfice et cours, regardez trois risques, concluez en une phrase avec une limite.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">SAPH · Côte d’Ivoire</span><div class="grand">Caoutchouc naturel</div><span class="mot">24 400 hectares de plantations · environ 29 000 planteurs villageois encadrés · 336 des 341 Md F de ventes 2025 venus de ses usines</span>'},
@@ -523,7 +523,7 @@ quiz:[
 
 /* ======================= C7 · Les réflexes de l'investisseur ======================= */
 var REGLES = [["r1", "Je ne décide jamais le jour où je reçois une rumeur"], ["r2", "Je fixe mon prix maximum avant de passer un ordre"], ["r3", "Aucune ligne ne dépasse un quart de mon portefeuille"], ["r4", "Je n’investis que l’argent qui peut attendre cinq ans"], ["r5", "Je relis ma raison d’acheter avant de vendre"], ["r6", "Je vérifie toute information sur brvm.org ou auprès de ma SGI"]];
-MOD.push({id:"C7", titre:"Les réflexes de l’investisseur", court:"Les réflexes", duree:"≈ 40 min",
+MOD.push({id:"C7", titre:"Les réflexes de l’investisseur", court:"Les réflexes", duree:"Dès 2 min",
 retenir:"Vérifier la source, regarder le volume et la période, <span class=\"c\">décider avant et pas pendant</span>, répartir, garder une réserve. Les biais sont humains ; des règles écrites à l’avance les désarment.",
 ecrans:[
  {t:"info", illu:{c:"nuit", html:'<span class="tabtitre">Les cinq réflexes</span><ol class="liste-n"><li><b>Je vérifie la source.</b></li><li><b>Je regarde le volume et la période.</b></li><li><b>Je décide avant, pas pendant.</b></li><li><b>Je répartis.</b></li><li><b>Je garde une réserve.</b></li></ol>'},
@@ -574,7 +574,7 @@ function simu(p, tous){ var r = {}, last = p[11];
   var t = 0, inv = 0; p.forEach(function(x){ var k = Math.floor(25000 / x); t += k; inv += k * x; }); r.m = {t:t, inv:inv, v:t * last + (300000 - inv)};
   t = 0; inv = 0; [0, 3, 6, 9].forEach(function(i){ var k = Math.floor(75000 / p[i]); t += k; inv += k * p[i]; }); r.q = {t:t, inv:inv, v:t * last + (300000 - inv)};
   return r; }
-MOD.push({id:"C8", titre:"Les stratégies d’investisseur", court:"Les stratégies", duree:"≈ 50 min",
+MOD.push({id:"C8", titre:"Les stratégies d’investisseur", court:"Les stratégies", duree:"Dès 2 min",
 retenir:"Investir <span class=\"c\">régulièrement</span>, en ordres groupés pour limiter les frais ; répartir entre plusieurs titres ou un fonds ; réinvestir ses dividendes ; rééquilibrer une fois par an. Une stratégie simple, tenue dix ans, bat les coups de génie.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Quatre stratégies d’investisseur particulier</span><div class="schema"><div><b>Investir régulièrement</b>la même somme, à dates fixes</div><div><b>Viser le rendement</b>des sociétés solides qui versent un dividende</div><div><b>Répartir</b>plusieurs titres, secteurs, pays, ou un fonds commun</div><div><b>Rééquilibrer</b>revenir chaque année à sa répartition de départ</div></div>'},
@@ -638,7 +638,7 @@ quiz:[
 
 /* ======================= C9 · Cas final ======================= */
 var IDXS = G.serie(10000, [[250, .008, .7]], 515, 0).c.map(function(x){ return x / 100; });
-MOD.push({id:"C9", titre:"Cas final · Le dossier Palmeraie du Golfe", court:"Cas final", duree:"≈ 30 min",
+MOD.push({id:"C9", titre:"Cas final · Le dossier Palmeraie du Golfe", court:"Cas final", duree:"Dès 2 min",
 retenir:"Vous avez lu un graphique, comparé à un indice, lu une annonce, vérifié un dividende et écrit votre décision avec une limite. C’est la méthode complète ; il ne reste qu’à l’appliquer à une vraie société, sans précipitation.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Société fictive</span><div class="grand">Palmeraie du Golfe</div><span class="mot">Huile de palme · plantations et usine · cotée à la BRVM dans ce cas d’école</span>'},
@@ -686,5 +686,5 @@ ecrans:[
 <script src="efa-suite.js?v=2026102902" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 <script src="efa-chiffres.js?v=2026102701" defer></script>
-<script src="clone/habillage.js?v=20261031q" defer></script>
+<script src="clone/habillage.js?v=20261031r" defer></script>
 </body></html>
