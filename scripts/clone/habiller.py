@@ -20,7 +20,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261031d'
+VERSION = '20261031e'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
@@ -31,7 +31,7 @@ VISUELS = {
 # modèle (dans clone/) → page fabriquée à la racine ; indexée ou non
 MODELES = {'_index.html': ('index.html', True), '_coaching.html': ('coaching.html', True),
            '_marches.html': ('marches.html', False), '_etudes-prospective.html': ('etudes-prospective.html', False),
-           '_ely.html': ('ely.html', True)}
+           '_ely.html': ('ely.html', True), '_musee.html': ('musee.html', True)}
 FABRIQUEES = {v[0] for v in MODELES.values()}
 EXCLUES = FABRIQUEES | {'accueil-v1.html'}
 

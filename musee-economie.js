@@ -407,7 +407,7 @@
     if (flot) { flot.addEventListener("click", function () { if (flot.dataset.retour) { ouvrir("retour", KPP); } else ouvrir("flottant"); }); if ("IntersectionObserver" in window && ref) new IntersectionObserver(function (es) { flot.classList.toggle("vu", !es[0].isIntersecting); }).observe(ref); }
     var ret = false; try { ret = sessionStorage.getItem("efa_musee_retour") === "1"; sessionStorage.removeItem("efa_musee_retour"); } catch (z) {}
     if (location.hash === "#musee-fin" || (location.hash === "#musee" && ret)) ouvrir("retour", KPP);
-    else if (location.hash === "#musee") ouvrir("lien-direct");
+    else if (location.hash === "#musee") { var vg = new URLSearchParams(location.search).get("visite") === "guidee"; ouvrir(vg ? "entree-guidee" : "lien-direct"); if (vg) { partie = -1; demarrer("guide"); } }
     document.documentElement.classList.remove("musee-arrivee");
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
