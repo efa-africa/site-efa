@@ -20,7 +20,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261031t'
+VERSION = '20261031u'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp',
@@ -114,6 +114,8 @@ def entete(page):
 
 pied = re.search(r'<footer class="efa-foot">.*?</footer>', modele_accueil, re.S).group(0)
 pied = pied.replace('<footer class="efa-foot">', '<footer class="efa-foot clone-foot">', 1)
+BANDEAU = open('scripts/clone/bandeau-pourvous.html', encoding='utf8').read()
+pied = BANDEAU + pied
 pied = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % lien_racine(m.group(1)), pied)
 pied = re.sub(r'src="([^"]+)"', lambda m: 'src="%s"' % lien_racine(m.group(1)), pied)
 
@@ -173,6 +175,7 @@ for f in glob.glob('scripts/clone/pages/*'):
 # ---------------------------------------------------------------- retirer l'habillage précédent
 def deshabiller(s):
     s = re.sub(r'<header class="header clone-head" id="clone-haut">.*?</header>\n?', '', s, flags=re.S)
+    s = re.sub(r'<section class="efa-pourvous".*?</section>\n?', '', s, flags=re.S)
     s = re.sub(r'\n?<footer class="efa-foot clone-foot">.*?</footer>', '', s, flags=re.S)
     s = re.sub(r'<link rel="stylesheet" href="clone/(?:habillage|pages/[^"]+)\.css[^"]*">\n?', '', s)
     s = re.sub(r'<script src="clone/(?:habillage|pages/[^"]+)\.js[^"]*" defer></script>\n?', '', s)
@@ -221,6 +224,7 @@ def habiller(s, page):
             s = s.replace('</body>', pied + '\n</body>', 1)
     else:
         attrs += ' data-clone-plein'
+        if '</main>' in s: s = s.replace('</main>', '</main>\n' + BANDEAU, 1)
         if re.search(r'<body\b', s):
             s = re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + '\n' + entete(page), s, count=1)
         else:
@@ -257,6 +261,7 @@ gc = '<script data-goatcounter="https://efa-africa.goatcounter.com/count" async 
 for modele, (sortie, indexee) in MODELES.items():
     s = open(os.path.join(CLONE, modele), encoding='utf8').read()
     s = modele_vers_racine(s, garder_dieses=True)
+    if 'efa-pourvous' not in s: s = s.replace('<footer class="efa-foot">', BANDEAU + '<footer class="efa-foot">', 1)
     if sortie == 'index.html' and v1:
         s = re.sub(r'<title>.*?</title>', '', s, flags=re.S)
         s = re.sub(r'<meta name="description"[^>]*>', '', s)
