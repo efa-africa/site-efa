@@ -620,3 +620,4 @@ a.produit-lien .eyebrow{display:block}
 a.produit-lien:hover .produit-img img{transform:scale(1.02)}
 .produit-lien .produit-img img{transition:transform .5s ease}
 a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
+@media(max-width:720px){.pv-enquete .pv-p{padding-top:34px}}
