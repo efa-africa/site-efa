@@ -455,8 +455,8 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
 </style>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <link rel="stylesheet" href="footer.css?v=2026102602">
-<link rel="stylesheet" href="clone/habillage.css?v=20261031x">
-<link rel="stylesheet" href="clone/pages/point-de-depart.css?v=20261031x">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031y">
+<link rel="stylesheet" href="clone/pages/point-de-depart.css?v=20261031y">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre et former</a><a href="index.html#pilier-progresser">Être accompagné</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être accompagné <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -494,11 +494,12 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
     ["dirigeant","Diriger mon entreprise","Trésorerie, financement, valorisation, succession."],
     ["orga","Construire un programme de formation","Pour vos salariés, étudiants ou membres : sujets et rythme choisis en ligne."],
     ["eco","Comprendre l’économie","Actualités, études, marchés africains."]]};
-  var DIRECT=["investir","cadre","dirigeant","patrimoine"]; /* ces profils passent directement au choix du format */
-  var DEMO={moi:"efa",orga:"organisations",eco:"decideurs"};
+  var DIRECT=["cadre","dirigeant","patrimoine"]; /* ces profils passent directement au choix du format */
+  var DEMO={moi:"efa",orga:"organisations",eco:"decideurs",investir:"bourse"};
 
   /* Questions 2 et 3, selon le profil */
   var Q={
+    investir:[{q:"Avez-vous déjà investi en Bourse ?",choix:[["debut","Je débute","Je n’ai encore jamais acheté d’action."],["exp","J’ai déjà investi","J’ai un compte-titres ou des actions."]]}],
     moi:[{q:"Quelle question voulez-vous résoudre ?",choix:[["budget","Mon budget"],["dettes","Mes dettes"],["proches","Les demandes de mes proches"],["tontine","Ma tontine"]]},
          {q:"Aujourd’hui, vous préférez…",choix:[["essai","Faire un premier essai"],["lecon","Comprendre les bases"],["parcours","Suivre un parcours"]]}],
     orga:[{q:"Pour quel public construire le programme ?",choix:[["salaries","Des salariés"],["etudiants","Des étudiants · finances personnelles"],["etudiants-gestion","Des étudiants en gestion ou finance"],["entrepreneurs","Des entrepreneurs"],["cadres","Des cadres ou un comité de direction"],["membres","Les membres d’un groupe"]]},
@@ -543,6 +544,16 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
         lecon:["Comprendre","Recevoir une grosse somme : décider avant que les demandes n’arrivent","parcours.html?src=depart#M14"],
         parcours:["Suivre le parcours","EFA Cadres : un parcours qui part de vos réponses","cadres.html?src=depart#parcours"]}
     },
+    investir:{
+      debut:{titre:"Vous débutez : choisissez votre rythme.",
+        rapide:["Aller vite, accompagné","Mes premiers pas en Bourse : l’atelier avec Élysée Johnson pour ouvrir votre compte et préparer votre premier ordre","coaching.html?src=depart#atelier-premier-ordre-brvm"],
+        gratuit:["Apprendre gratuitement","L’École de la Bourse : les bases, à votre rythme","ecole-de-la-bourse.html?src=depart"],
+        suite:["S’entraîner sans risque","Une année en Bourse, en simulation · dès 2 min","ecole-bourse.html?src=depart"]},
+      exp:{titre:"Vous avez déjà investi : suivez le marché, comparez les SGI.",
+        rapide:["Voir le marché du jour","Les indices, les secteurs et les sociétés cotées à la BRVM","marches.html?src=depart"],
+        gratuit:["Comparer les SGI","Frais, minimum, ouverture à distance : les SGI agréées","sgi.html?src=depart#sgi-liste"],
+        suite:["Approfondir","Lire la BRVM en investisseur averti","bourse-pro.html?src=depart"]}
+    },
     orga:{
       _base:{decouvrir:["Voir une démonstration","Le fonctionnement d’un programme EFA, en 30 secondes","demo.html?d=organisations&src=depart"],
              tester:["Essayer un module","Vivre l’expérience d’un participant : le module 1 des Fondations","certificat-pilote.html?src=depart&m=1"],
@@ -585,9 +596,9 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
         etude:["Approfondir","L’étude « La tontine en chiffres »","etude-tontine-en-chiffres.html?src=depart"]}
     }
   };
-  var DEF={moi:"essai",orga:"preparer",eco:"synthese"}; /* pas de question de format : EFA propose d’abord un premier essai */
-  var ORDRE={moi:["essai","lecon","parcours"],orga:["decouvrir","tester","preparer"],eco:["synthese","explication","etude"]};
-  var LIB={moi:"Mieux gérer mon argent",orga:"Construire un programme de formation",eco:"Comprendre l’économie"};
+  var DEF={moi:"essai",orga:"preparer",eco:"synthese",investir:"rapide"}; /* pas de question de format : EFA propose d’abord un premier essai */
+  var ORDRE={investir:["rapide","gratuit","suite"],moi:["essai","lecon","parcours"],orga:["decouvrir","tester","preparer"],eco:["synthese","explication","etude"]};
+  var LIB={investir:"Investir en Bourse",moi:"Mieux gérer mon argent",orga:"Construire un programme de formation",eco:"Comprendre l’économie"};
 
   function actions(o){
     var g=R[o.p][o.q2]||{}, base=R[o.p]._base||{}, ord=ORDRE[o.p].slice();
@@ -617,7 +628,7 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
       +'<div class="pdd-main"><small>'+esc(m[0])+'</small><p>'+esc(m[1])+'</p><a class="pdd-go" href="'+m[2]+'" data-goatcounter-click="depart-action-1">'+esc(m[0])+' <span aria-hidden="true">→</span></a></div>'
       +(alt?'<p style="margin:0"><a class="pdd-lien" href="'+alt[2]+'" data-goatcounter-click="depart-action-2">'+(o.p==="moi"?"Je préfère commencer par une leçon":esc(alt[0]))+'</a></p>':'')
       +(autres.length?'<details class="pdd-autres"><summary>Aller plus loin</summary><ol class="pdd-res">'+autres.map(function(x,i){return '<li><a href="'+x[2]+'" data-goatcounter-click="depart-action-'+(i+2)+'"><small>'+esc(x[0])+'</small><b>'+esc(x[1])+'</b><span aria-hidden="true">→</span></a></li>';}).join("")+'</ol></details>':'')
-      +(function(){var d=o.q2==="tontine"?"tontine":o.q2==="investir"?"bourse":DIRECT.indexOf(o.q2)>=0?"":DEMO[o.p];return d&&!/^demo\.html/.test(m[2])?'<p style="margin:0"><a class="pdd-lien" href="demo.html?d='+d+'&amp;src=depart" data-goatcounter-click="depart-demo">Voir d’abord une démo</a></p>':"";})()
+      +(function(){var d=o.q2==="tontine"?"tontine":(o.q2==="investir"||o.p==="investir")?"bourse":DIRECT.indexOf(o.q2)>=0?"":DEMO[o.p];return d&&!/^demo\.html/.test(m[2])?'<p style="margin:0"><a class="pdd-lien" href="demo.html?d='+d+'&amp;src=depart" data-goatcounter-click="depart-demo">Voir d’abord une démo</a></p>':"";})()
       +'<div class="pdd-bas"><a class="pdd-lien" href="index.html#ecole">Explorer librement</a><button type="button" class="pdd-lien" data-changer>Changer mon objectif</button></div>';
     var ch=vue.querySelector("[data-changer]");ch.onclick=function(){suivi("changer");try{localStorage.removeItem(CLE);}catch(e){}etat={};v1();window.scrollTo(0,0);};
   }
@@ -689,7 +700,7 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
         
       </div>
       <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
-        <div><h2>Apprendre</h2><ul>
+        <div><h2><a class="ef-h" href="index.html#benefices">Apprendre</a></h2><ul>
           <li><a href="index.html#seul">J’apprends seul</a></li>
           <li><a href="index.html#organisation">Nous apprenons ensemble</a></li>
           <li><a href="musee.html">Le musée de l’économie</a></li>
@@ -697,25 +708,25 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
           <li><a href="diagnostic.html">Faire le point</a></li>
           <li><a href="app/">L’appli EFA</a></li>
         </ul></div>
-        <div><h2>S’entraîner</h2><ul>
+        <div><h2><a class="ef-h" href="index.html#pilier-progresser">S’entraîner</a></h2><ul>
           <li><a href="index.html#pilier-progresser">Choisir son atelier</a></li>
           <li><a href="coaching.html">Tous les ateliers</a></li>
           <li><a href="index.html#certificats">Certificats</a></li>
           <li><a href="index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
         </ul></div>
-        <div><h2>Se lancer</h2><ul>
+        <div><h2><a class="ef-h" href="index.html#pilier-agir">Se lancer</a></h2><ul>
           <li><a href="index.html#marches">Investir à la BRVM</a></li>
           <li><a href="marches.html">Marchés : la BRVM du jour</a></li><li><a href="sgi.html">Choisir sa SGI</a></li>
           <li><a href="index.html#avant-de-signer">Les questions à poser</a></li>
           <li><a href="index.html#solutions">D’autres acteurs, demain</a></li>
         </ul></div>
-        <div><h2>Le média</h2><ul>
+        <div><h2><a class="ef-h" href="news.html">Le média</a></h2><ul>
           <li><a href="news.html">EFA News</a></li>
           <li><a href="tribunes.html">La tribune d’Élysée Johnson</a></li>
           <li><a href="index.html#etudes-prospective">Études et prospective</a></li>
           <li><a href="africa-2075-fondateur.html">Africa 2075</a></li>
         </ul></div>
-        <div><h2>EFA</h2><ul>
+        <div><h2><a class="ef-h" href="auteur.html#auteur">EFA</a></h2><ul>
           <li><a href="auteur.html#auteur">EFA et son fondateur</a></li>
           <li><a href="organisations.html">Pour les organisations</a></li>
           <li><a href="rendez-vous.html">Contact</a></li>
@@ -737,6 +748,6 @@ form.tr-num{width:auto;height:auto;border-radius:0;background:none;color:inherit
 (function(){var b=document.getElementById("menu"),n=document.getElementById("nav");b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Fermer":"Menu";});})();
 </script>
 <script src="efa-suite.js?v=2026102902" defer></script>
-<script src="clone/pages/point-de-depart.js?v=20261031x" defer></script>
-<script src="clone/habillage.js?v=20261031x" defer></script>
+<script src="clone/pages/point-de-depart.js?v=20261031y" defer></script>
+<script src="clone/habillage.js?v=20261031y" defer></script>
 </body></html>
