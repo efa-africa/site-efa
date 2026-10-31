@@ -41,7 +41,7 @@
 
 
 <script src="efa-config.js?v=2026103102"></script>
-<script src="clone/vitrine.js?v=20261031g"></script>
+<script src="clone/vitrine.js?v=20261031i"></script>
 <script>(function(){var T=window.EFA_VT,Z=document.getElementById('vt-tab');var ids=(new URLSearchParams(location.search).get('ids')||'').split(',').filter(Boolean).slice(0,4);
 T.charger().then(function(r){var D=r[0],par={};D.sgi.forEach(function(s){par[s.id]=s;});if(D.demo)document.getElementById('vt-demo').hidden=false;document.querySelectorAll('[data-maj]').forEach(function(x){x.textContent=T.dateFr(D.maj);});
 var L=ids.map(function(i){return par[i];}).filter(Boolean);if(L.length<2){Z.innerHTML='<p class="vt-chapo" style="padding:20px">Choisissez au moins deux SGI dans <a class="vt-lien" href="sgi.html">la liste</a>.</p>';return;}

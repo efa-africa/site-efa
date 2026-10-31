@@ -170,3 +170,11 @@ html[data-clone] .vt .vt-logo-v{background:#0b1220!important;color:#fff!importan
   .vt-outils select{width:100%}
   .vt .vt-cmp{width:100%}
 }
+
+/* Contact pour les SGI */
+.vt-pro{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;margin:0 0 22px;background:#EEF5FC;border-radius:18px;padding:22px 24px}
+.vt-pro>div{flex:1 1 380px}
+.vt .vt-pro-t{margin-top:8px;font-size:clamp(22px,2.6vw,30px);line-height:1.15}
+.vt-pro-t em{font-style:normal;color:#147f9b}
+.vt-pro p:not(.vt-k){margin:8px 0 0;color:#465062;max-width:60ch}
+.vt-pro-b{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;background:#0B1220;color:#fff!important;font-weight:800;text-decoration:none}
