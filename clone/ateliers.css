@@ -142,3 +142,11 @@
   .at-entree-txt{align-self:center;padding-bottom:0}
   .at-entree h1{font-size:clamp(56px,6.6vw,108px)}
 }
+
+/* ===== Les affiches des ateliers (31 oct. 2026) : l'affiche porte le titre ===== */
+.at-c-affiche{aspect-ratio:4/5!important;background:#0b1e38}
+.at-c-affiche img{object-fit:cover;object-position:top}
+.at-c-affiche i{display:none}
+.at-c .at-c-titre{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.at-c-corps{gap:12px}
+.at-cat{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
