@@ -61,7 +61,7 @@ body{margin:0;background:#fff}
   var h='';
   h+='<section class="pz-sec"><h2>Son rôle</h2><ul>'+p.role.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul></section>';
   if(p.parcours&&p.parcours.length)h+='<section class="pz-sec"><h2>Son parcours</h2><ul>'+p.parcours.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul></section>';
-  h+='<section class="pz-sec"><h2>Ses initiatives</h2>'+(p.initiatives&&p.initiatives.length?'<ul>'+p.initiatives.map(function(x){return '<li><b>'+e(x.titre)+'</b>'+(x.date?' · '+e(x.date):'')+(x.texte?'. '+e(x.texte):'')+'</li>'}).join('')+'</ul>':'<p class="pz-vide">Ses initiatives autour de l’épargne seront présentées ici dès qu’elles auront été vérifiées auprès de sources publiques.</p>')+'</section>';
+  if(p.initiatives&&p.initiatives.length)h+='<section class="pz-sec"><h2>Ses initiatives</h2><ul>'+p.initiatives.map(function(x){return '<li><b>'+e(x.titre)+'</b>'+(x.date?' · '+e(x.date):'')+(x.texte?'. '+e(x.texte):'')+'</li>'}).join('')+'</ul></section>';
   if(p.liens_externes&&p.liens_externes.length)h+='<section class="pz-sec"><h2>Liens</h2><ul>'+p.liens_externes.filter(function(l){return l.statut==='valide'}).map(function(l){return '<li><a href="'+e(l.url)+'" target="_blank" rel="noopener">'+e(l.libelle)+'</a>'+(l.commercial?' <small>(lien commercial)</small>':'')+'</li>'}).join('')+'</ul></section>';
   h+='<section class="pz-sec pz-src"><h2>Pour aller plus loin</h2><ul>'+p.sources.map(function(s){return '<li><a href="'+e(s.url)+'" target="_blank" rel="noopener">'+e(s.titre)+'</a> <small>· '+e(s.editeur)+(s.date?', '+e(s.date):'')+'</small></li>'}).join('')+'</ul></section>';
   h+='<div class="pz-pied"><p>Mise à jour le '+dateFr(p.date_verification)+'.</p></div>';
