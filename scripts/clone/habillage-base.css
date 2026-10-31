@@ -273,3 +273,7 @@ html[data-clone] .efa-sig img{width:34px;height:34px;border-radius:50%;object-fi
 
 /* Le menu garde sa largeur sur toutes les pages */
 html[data-clone] .menu-panel,html[data-clone] .menu-panel *{box-sizing:border-box}
+
+/* Sous-entrées du menu */
+html[data-clone] .menu-panel a.menu-sous{padding:10px 0 12px 18px;font-size:15px;font-weight:600;color:#465062;border-bottom:1px solid var(--line)}
+html[data-clone] .menu-panel a.menu-sous span{font-size:13px}
