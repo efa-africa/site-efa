@@ -331,6 +331,12 @@ html[data-clone] .a-lecture i{display:block;height:100%;background:#e34234;trans
 
 html[data-clone] #musee .mu-merci{background:none!important;color:rgba(255,255,255,.8)!important;padding:0!important}
 
+/* Signature du fondateur : « Une idée d'Élysée Johnson, fondateur d'EFA » · 31/10/2026 */
+html[data-clone] .efa-sig{margin:18px 0 0}
+html[data-clone] .efa-sig a{display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px #dbe6f0;color:#071d38!important;font:700 14.5px/1.25 "Source Sans 3",sans-serif;text-decoration:none!important}
+html[data-clone] .efa-sig a:hover{box-shadow:0 0 0 1.5px #0b63b0}
+html[data-clone] .efa-sig img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none}
+
 /* Signature efa. (clone/efa-logo.css) */
 /* Composant autonome : oiseau original conserve, lettres minuscules. */
 .efa-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#081d33;white-space:nowrap;flex-shrink:0}

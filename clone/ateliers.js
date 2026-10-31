@@ -10,7 +10,7 @@
     var ok = etat.ok[a.id];
     return '<article class="at-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '">' +
       '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/atelier-' + (n < 10 ? '0' : '') + n + '.webp" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
-      '<div class="at-c-corps"><span class="at-c-type">' + (a.c ? 'Coaching · 3 séances · 8 places' : 'Enregistré · à votre rythme') + '</span>' +
+      '<div class="at-c-corps"><span class="at-c-type">' + (a.c ? 'Avec Élysée Johnson · 3 séances · 8 places' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
       '<div class="at-c-pied"><b>' + D.prix() + '</b><button type="button" class="at-c-btn">' + (ok ? 'Accès débloqué ✓' : 'Réserver') + '</button></div></div></article>';
@@ -38,7 +38,7 @@
   }
   function ouvrir(id) {
     cour = D.liste.filter(function (a) { return a.id === id; })[0]; if (!cour) return;
-    document.getElementById('at-dlg-k').textContent = cour.c ? 'Coaching avec Élysée Johnson' : 'Atelier enregistré';
+    document.getElementById('at-dlg-k').textContent = cour.c ? 'Avec Élysée Johnson · coaching en petit groupe' : 'Atelier enregistré';
     document.getElementById('at-dlg-t').textContent = cour.t;
     champ.value = ''; msg.className = ''; majDlg();
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
