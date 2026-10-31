@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Les coordonnées de {{ params.NOM_SGI }}</title></head>
+<body style="margin:0;background:#f3f7fb;font-family:Arial,Helvetica,sans-serif;color:#071d38">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f7fb"><tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px">
+<tr><td style="padding:28px 28px 8px"><p style="margin:0;font-size:12px;font-weight:bold;letter-spacing:2px;color:#168da4">EFA · INVESTIR À LA BRVM</p>
+<h1 style="margin:12px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.2;color:#071d38">Les coordonnées de {{ params.NOM_SGI }}</h1></td></tr>
+<tr><td style="padding:12px 28px 0;font-size:16px;line-height:1.6;color:#4d5a6a">Bonjour {{ params.PRENOM | default : "" }},<br>voici comment contacter {{ params.NOM_SGI }}. EFA ne lui a pas transmis votre adresse&nbsp;: c’est vous qui faites le premier pas.</td></tr>
+<tr><td style="padding:18px 28px 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f7fb;border-radius:12px">
+<tr><td style="padding:16px 18px;font-size:15px;line-height:1.7">
+<b>Téléphone</b> : {{ params.TELEPHONE }}<br><b>E-mail</b> : {{ params.EMAIL_SGI }}<br><b>Site</b> : {{ params.SITE }}<br><b>Adresse</b> : {{ params.ADRESSE }}</td></tr></table></td></tr>
+<tr><td style="padding:22px 28px 0"><h2 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:20px;color:#071d38">7 questions à poser avant d’ouvrir un compte</h2>
+<ol style="margin:10px 0 0;padding-left:20px;font-size:15px;line-height:1.7;color:#142438">
+<li>Quel est votre numéro d’agrément AMF-UMOA&nbsp;?</li>
+<li>Combien coûtent l’ouverture et la tenue du compte, chaque année&nbsp;?</li>
+<li>Quels frais prenez-vous sur chaque ordre d’achat ou de vente&nbsp;?</li>
+<li>Quel montant faut-il pour ouvrir un compte&nbsp;?</li>
+<li>Puis-je ouvrir le compte et passer mes ordres à distance&nbsp;?</li>
+<li>Combien de temps pour récupérer mon argent après une vente&nbsp;?</li>
+<li>Qui est mon interlocuteur, et comment le joindre&nbsp;?</li></ol>
+<p style="margin:14px 0 0"><a href="https://efa.africa/questions-a-poser-a-sa-sgi" style="color:#0b63b0;font-weight:bold">Lire la fiche complète sur EFA</a></p></td></tr>
+<tr><td style="padding:24px 28px 28px;font-size:12.5px;line-height:1.55;color:#7a8696">EFA est une plateforme d’éducation financière. EFA ne reçoit ni fonds ni titres, ne fournit aucun service d’investissement et ne transmet pas vos coordonnées aux SGI. Vous recevez ce message parce que vous avez demandé ces coordonnées sur efa.africa.<br><a href="{{ unsubscribe }}" style="color:#7a8696">Se désinscrire</a></td></tr>
+</table></td></tr></table></body></html>

@@ -1,0 +1,1 @@
+Logos des SGI : un fichier [id].png par SGI (240 px de large, fond transparent si possible). Sans fichier, la vitrine affiche un monogramme.
