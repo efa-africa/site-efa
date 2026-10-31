@@ -33,7 +33,7 @@
    "description": "Vous voulez investir à la Bourse (BRVM) ? Dix questions à poser à votre SGI avant d’ouvrir un compte-titres : agrément AMF-UMOA, frais de courtage, frais annuels, dividendes, sortie. Calcul des frais avec vos chiffres.",
    "inLanguage": "fr",
    "datePublished": "2026-10-24",
-   "dateModified": "2026-10-24",
+   "dateModified": "2026-10-31",
    "mainEntityOfPage": "https://efa.africa/questions-a-poser-a-sa-sgi",
    "author": {
     "@type": "Person",
@@ -203,6 +203,52 @@ strong{color:var(--nuit)}
 @media (max-width:560px){.qui{grid-template-columns:minmax(0,1fr)}.qui dd{margin-bottom:6px}}
 .mention{margin-top:28px;font-size:14px;color:var(--ink2)}
 .lien-s{font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+
+.intro-sous{margin-top:12px;font-size:clamp(17px,1.8vw,20px);color:#E8EDF5;max-width:52ch}
+.intro-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:22px}
+.bt-p{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:8px;border:0;background:var(--corail);color:#fff!important;font:800 16px var(--f-body);text-decoration:none;cursor:pointer}
+.bt-s{min-height:48px;padding:12px 20px;border-radius:8px;border:0;background:var(--nuit);color:#fff;font:800 16px var(--f-body);cursor:pointer}
+.bt-l{background:none;border:0;padding:0;font:700 16px var(--f-body);color:inherit;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px;cursor:pointer}
+.intro-meta{margin-top:14px;font-size:14.5px;color:#C9D1DE}
+.intro h1{max-width:22ch}
+.reponse{padding:16px 18px}
+.fc-noms{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.fc-noms label,.fc-m,.fc-chiffre{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14.5px;color:var(--ink2)}
+.fc-noms input,.fc-m input,.fc-chiffre input,.fc-col textarea,.fc-col select{width:100%;min-height:44px;padding:10px 12px;border:1.5px solid #cfdbe6;border-radius:10px;font:500 16px var(--f-body);color:var(--nuit);background:#fff}
+.fc-col textarea{min-height:64px;resize:vertical}
+.fc-tabs{display:none;gap:8px;margin-top:16px}
+.fc-tabs button{flex:1;min-height:44px;border-radius:999px;border:1.5px solid #cfdbe6;background:#fff;font:800 15px var(--f-body);color:var(--nuit);cursor:pointer}
+.fc-tabs button[aria-selected="true"]{background:var(--nuit);color:#fff;border-color:var(--nuit)}
+.fc-etape{margin-top:26px!important;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu)}
+.fc-q{margin-top:12px;background:var(--papier);border-radius:14px;padding:16px}
+.fc-qt{margin:0!important;font-weight:700;color:var(--nuit)}
+.fc-pq{margin-top:6px}.fc-pq summary{cursor:pointer;color:var(--bleu);font-weight:700;font-size:14.5px}.fc-pq p{margin-top:6px!important;font-size:15px;color:var(--ink2)}
+.fc-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.fc-col{display:flex;flex-direction:column;gap:8px}
+.fc-lab{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.fc-calc{margin-top:28px;background:var(--papier);border-radius:14px;padding:20px}
+.fc-calc h3{margin-bottom:12px}
+.fc-t{width:100%;border-collapse:collapse;margin-top:14px;font-size:15.5px}
+.fc-t th,.fc-t td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.fc-t td{font-weight:800;color:var(--nuit)}
+.fc-nr{font-weight:600;color:var(--ink3);font-style:italic}
+.fc-sortie{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:22px}
+.fc-suite{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.fc-suite a{display:flex;flex-direction:column;gap:2px;background:var(--papier);border-radius:14px;padding:16px;text-decoration:none}
+.fc-suite small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--bleu)}
+.fc-suite span{font-size:15px;color:var(--ink2)}
+@media (max-width:640px){
+  .fc-noms,.fc-suite{grid-template-columns:1fr}
+  .fc-tabs{display:flex}
+  .fc-cols{grid-template-columns:1fr}
+  .fc-liste[data-col="a"] .fc-b,.fc-liste[data-col="b"] .fc-a{display:none}
+}
+@media print{
+  header,footer,.efa-pourvous,.intro,#reponse,#sgi,#verifier,#alarme,#cas,#aller,#qui,.fc-tabs,.fc-sortie,.fc-suite,.efa-fil,nav{display:none!important}
+  body{background:#fff}.fc-q,.fc-calc{background:#fff;border:1px solid #ccc;break-inside:avoid}
+  .fc-cols{grid-template-columns:1fr 1fr!important}.fc-liste .fc-a,.fc-liste .fc-b{display:flex!important}
+  .fc-pq{display:none}
+}
 </style>
 <style>
 .poches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
@@ -247,8 +293,11 @@ strong{color:var(--nuit)}
   <div class="wrap">
     <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="parcours.html#P8">L’école</a> › Premiers pas à la Bourse (BRVM)</nav>
     <p class="kick">Leçon · Premiers pas à la Bourse (BRVM)</p>
-    <h1>Vous voulez investir en Bourse&nbsp;? Dix questions à poser à votre SGI avant de signer</h1>
-    <p class="signe">Rédigé par <a href="auteur.html">Élysée Johnson</a>, Éducation Financière Afrique · Mis à jour le 24 octobre 2026 · dès 2 min</p>
+    <h1>Avant de choisir une SGI, obtenez ces dix réponses.</h1>
+    <p class="intro-sous">Comparez les frais, les services et les conditions de sortie avant d’ouvrir un compte-titres.</p>
+    <div class="intro-act"><a class="bt-p" href="#fiche">Préparer ma fiche de comparaison <span aria-hidden="true">→</span></a><a class="bt-l" href="#verifier">Lire les dix questions</a></div>
+    <p class="intro-meta">Gratuit · environ 10 min · vos notes restent sur cet appareil</p>
+    <p class="signe">Rédigé par <a href="auteur.html">Élysée Johnson</a>, Éducation Financière Afrique · Mis à jour le 31 octobre 2026 · Résumé&nbsp;: 2 min · Comparaison&nbsp;: 10 min</p>
   </div>
 </section>
 
@@ -269,7 +318,7 @@ strong{color:var(--nuit)}
   <section id="verifier" aria-labelledby="ver-t">
     <p class="bk">Avant de signer</p>
     <h2 id="ver-t">Dix questions à poser à votre SGI</h2>
-    <ol class="verif"><li><b>Êtes-vous agréée par l’AMF-UMOA&nbsp;?</b><span>Demandez le numéro d’agrément, puis vérifiez le nom exact sur amf-umoa.org. Un logo ou une affiche ne prouvent rien.</span></li><li><b>Combien me coûte un ordre, tout compris&nbsp;?</b><span>La commission de la SGI, souvent autour de 1&nbsp;%, s’ajoute aux commissions de la place (Bourse, dépositaire, régulateur), de l’ordre de 0,3&nbsp;%. Demandez si les prix sont hors taxes ou toutes taxes comprises, et s’il existe un minimum par ordre.</span></li><li><b>Que vais-je payer chaque année, même sans rien faire&nbsp;?</b><span>Tenue de compte, conservation, droits de garde, valorisation&nbsp;: ces frais fixes pèsent lourd sur un petit portefeuille.</span></li><li><b>Combien faut-il pour ouvrir le compte&nbsp;?</b><span>Ouverture gratuite ou payante, dépôt minimum&nbsp;: selon les SGI, il va de zéro à plus de 150&nbsp;000&nbsp;F.</span></li><li><b>Comment j’envoie et je récupère mon argent&nbsp;?</b><span>Virement, mobile money, espèces&nbsp;; délai pour que l’argent soit disponible, frais de retrait.</span></li><li><b>Comment je passe un ordre, et comment je sais qu’il est exécuté&nbsp;?</b><span>Agence, téléphone, application&nbsp;? Exigez un avis d’opéré après chaque exécution&nbsp;: il donne le prix obtenu et les frais prélevés.</span></li><li><b>Où et quand arrivent mes dividendes&nbsp;?</b><span>Ils sont crédités sur votre compte, après l’impôt retenu à la source. Demandez le délai et s’ils sont reversés sans frais.</span></li><li><b>Comment mes titres sont-ils protégés&nbsp;?</b><span>Vos titres doivent être inscrits à votre nom et séparés des biens de la SGI. Demandez qu’on vous explique comment, et ce qui se passe si la SGI cesse son activité.</span></li><li><b>Quels relevés vais-je recevoir&nbsp;?</b><span>Un relevé au moins chaque trimestre, avec vos titres, leur valeur et tous les frais de la période. Suivre son compte en ligne est un plus.</span></li><li><b>Combien coûte le départ&nbsp;?</b><span>Transférer ses titres vers une autre SGI ou fermer son compte se paie, parfois par titre. Mieux vaut le savoir avant d’entrer.</span></li></ol>
+    <ol class="verif"><li><b>Êtes-vous agréée par l’AMF-UMOA&nbsp;?</b><span>Demandez le numéro d’agrément, puis comparez le nom exact et le numéro avec la <a class="lien-s" href="https://www.amf-umoa.org" target="_blank" rel="noopener">liste officielle de l’AMF-UMOA</a>. Un logo ou une affiche ne prouvent rien. Vous pouvez aussi <a class="lien-s" href="sgi.html#sgi-liste">vérifier un nom dans notre liste des SGI agréées</a>.</span></li><li><b>Combien me coûte un ordre, tout compris&nbsp;?</b><span>La commission de la SGI, souvent autour de 1&nbsp;%, s’ajoute aux commissions de la place (Bourse, dépositaire, régulateur), de l’ordre de 0,3&nbsp;%. Demandez si les prix sont hors taxes ou toutes taxes comprises, et s’il existe un minimum par ordre.</span></li><li><b>Que vais-je payer chaque année, même sans rien faire&nbsp;?</b><span>Tenue de compte, conservation, droits de garde, valorisation&nbsp;: ces frais fixes pèsent lourd sur un petit portefeuille.</span></li><li><b>Combien faut-il pour ouvrir le compte&nbsp;?</b><span>Ouverture gratuite ou payante, dépôt minimum&nbsp;: selon les SGI, il va de zéro à plus de 150&nbsp;000&nbsp;F.</span></li><li><b>Comment j’envoie et je récupère mon argent&nbsp;?</b><span>Virement, mobile money, espèces&nbsp;; délai pour que l’argent soit disponible, frais de retrait.</span></li><li><b>Comment je passe un ordre, et comment je sais qu’il est exécuté&nbsp;?</b><span>Agence, téléphone, application&nbsp;? Exigez un avis d’opéré après chaque exécution&nbsp;: il donne le prix obtenu et les frais prélevés.</span></li><li><b>Où et quand arrivent mes dividendes&nbsp;?</b><span>Ils sont crédités sur votre compte, après l’impôt retenu à la source. Demandez le délai et s’ils sont reversés sans frais.</span></li><li><b>Comment mes titres sont-ils protégés&nbsp;?</b><span>Vos titres doivent être inscrits à votre nom et séparés des biens de la SGI. Demandez qu’on vous explique comment, et ce qui se passe si la SGI cesse son activité.</span></li><li><b>Quels relevés vais-je recevoir&nbsp;?</b><span>Un relevé au moins chaque trimestre, avec vos titres, leur valeur et tous les frais de la période. Suivre son compte en ligne est un plus.</span></li><li><b>Combien coûte le départ&nbsp;?</b><span>Transférer ses titres vers une autre SGI ou fermer son compte se paie, parfois par titre. Mieux vaut le savoir avant d’entrer.</span></li></ol>
   </section>
   <section id="alarme" aria-labelledby="al2-t">
     <p class="bk">Signaux d’alarme</p>
@@ -289,17 +338,26 @@ strong{color:var(--nuit)}
       <div><p>Koffi veut acheter des actions pour 100&nbsp;000&nbsp;F. Avec une commission de 1&nbsp;%, plus 0,3&nbsp;% pour la place, l’achat lui coûte 1&nbsp;300&nbsp;F. La revente coûtera autant. Avec 5&nbsp;000&nbsp;F de frais annuels, sa première année lui coûte 7&nbsp;600&nbsp;F&nbsp;: ses actions doivent monter de 7,6&nbsp;% avant qu’il gagne le moindre franc.</p><p>Il décide d’attendre d’avoir 500&nbsp;000&nbsp;F et de les investir en une fois. Avec les mêmes frais, sa première année lui coûte 3,6&nbsp;%. Le premier ordre est souvent le plus cher&nbsp;: mieux vaut grouper ses achats que multiplier les petits ordres.</p></div>
     </div>
   </section>
-  <section id="calcul" aria-labelledby="calc-t">
-    <p class="bk">Essayer avec mes chiffres</p>
-    <h2 id="calc-t">Combien me coûtent les frais de ma SGI&nbsp;?</h2>
-    <div class="calc">
-      <div class="champs"><label>Montant de mon ordre<input id="x-m" inputmode="numeric" autocomplete="off" placeholder="ex. 100 000"></label><label>Commission de la SGI, en %<input id="x-c" inputmode="numeric" autocomplete="off" placeholder="ex. 1"><small>Sur sa grille tarifaire</small></label><label>Minimum par ordre, s’il existe<input id="x-mi" inputmode="numeric" autocomplete="off" placeholder="ex. 0"></label><label>Frais fixes par an<input id="x-f" inputmode="numeric" autocomplete="off" placeholder="ex. 5 000"><small>Tenue de compte, conservation, garde</small></label></div>
-      <div class="res" id="x-out" aria-live="polite" hidden>
-        <div class="l"><div><small>Frais à l’achat</small><b id="x-o1">–</b></div><div><small>Achat, revente et une année</small><b id="x-o2">–</b></div><div><small>Hausse nécessaire pour ne rien perdre</small><b id="x-o3">–</b></div></div>
-        <p class="verdict" id="x-v"></p>
-      </div>
-      <p class="note" style="margin-top:12px">Calcul indicatif&nbsp;: commissions de la place comptées à 0,3&nbsp;%, revente au même prix, taxes non comprises. Rien n’est enregistré ni envoyé.</p>
+  <section id="fiche" aria-labelledby="fiche-t">
+    <p class="bk">Mon outil de rendez-vous</p>
+    <h2 id="fiche-t">Ma fiche de comparaison</h2>
+    <p>Notez les réponses de deux SGI, question par question. Tout reste sur cet appareil&nbsp;: rien n’est envoyé.</p>
+    <div class="fc-noms"><label>SGI A<input id="fc-na" autocomplete="off" placeholder="Nom de la première SGI"></label><label>SGI B<input id="fc-nb" autocomplete="off" placeholder="Nom de la deuxième SGI"></label></div>
+    <div class="fc-tabs" role="tablist" aria-label="SGI affichée"><button type="button" role="tab" aria-selected="true" data-col="a" id="fc-ta">SGI A</button><button type="button" role="tab" aria-selected="false" data-col="b" id="fc-tb">SGI B</button></div>
+    <div id="fc-liste" class="fc-liste" data-col="a"></div>
+    <div class="fc-calc">
+      <h3>Ce que coûteraient les frais</h3>
+      <label class="fc-m">Montant de mon ordre<input id="fc-m" inputmode="numeric" autocomplete="off" placeholder="ex. 100 000"></label>
+      <div class="fc-res" id="fc-res" aria-live="polite"></div>
+      <p class="note">Simulation indicative&nbsp;: commissions de place estimées à 0,3&nbsp;%, achat et revente au même prix, taxes non comprises. Demandez la grille écrite de chaque SGI.</p>
     </div>
+    <div class="fc-sortie">
+      <button type="button" class="bt-p" id="fc-imp">Imprimer ma comparaison</button>
+      <button type="button" class="bt-s" id="fc-tel">Télécharger ma fiche</button>
+      <button type="button" class="bt-l" id="fc-raz">Effacer mes notes</button>
+    </div>
+    <div class="fc-suite"><a href="sgi.html?src=questions#sgi-liste"><small>Ensuite</small><b>Voir les SGI agréées</b><span>Fiches, filtres et comparateur.</span></a><a href="bourse-essentiel.html?src=questions#A4"><small>Ensuite</small><b>Comprendre les étapes du premier ordre</b><span>Ouvrir le compte, l’alimenter, passer un ordre.</span></a></div>
+    <p class="note">EFA ne recommande aucune SGI, ne reçoit aucune commission et ne transmet pas vos notes.</p>
   </section>
   <section id="aller" aria-labelledby="al-t">
     <p class="bk">Pour aller plus loin</p>
@@ -313,7 +371,7 @@ strong{color:var(--nuit)}
     <dl class="qui">
       <dt>Rédaction</dt><dd><a class="lien-s" href="auteur.html">Élysée Johnson</a>, fondateur d’Éducation Financière Afrique</dd>
       <dt>Méthode</dt><dd>Méthode EFA, parcours «&nbsp;Premiers pas à la Bourse (BRVM)&nbsp;». Frais indiqués en ordre de grandeur, d’après des grilles tarifaires publiées par des SGI&nbsp;: seule la grille de votre SGI fait foi.</dd>
-      <dt>Mise à jour</dt><dd>24 octobre 2026 · première version</dd>
+      <dt>Mise à jour</dt><dd>31 octobre 2026 · fiche de comparaison et calcul à deux colonnes</dd>
       <dt>Corrections</dt><dd>Aucune pour l’instant. Une erreur&nbsp;? Écrivez à newsletter@efa.africa.</dd>
       <dt>Liens d’intérêts</dt><dd>EFA ne recommande aucune SGI et ne reçoit aucune commission.</dd>
     </dl>
@@ -433,25 +491,49 @@ function efaChamps(ids,maj){ids.forEach(function(i){var el=document.getElementBy
 </script>
 <script>
 (function(){
-  var vu=false, out=document.getElementById('x-out'), set=function(i,v){document.getElementById(i).textContent=v;}, V=function(h){document.getElementById('x-v').innerHTML=h;}, N=EFA_NUM, F=EFA_F;
-  var P=function(id){var t=String((document.getElementById(id)||{}).value||'').replace(',','.').replace(/[^\d.]/g,'');return t===''?null:parseFloat(t);};
-  var pc=function(x,d){d=(d==null?1:d);return (Math.round(x*Math.pow(10,d))/Math.pow(10,d)).toString().replace('.',',')+' %';};
-  function maj(){
-
-    var m=N('x-m'), c=P('x-c'), mi=N('x-mi')||0, f=N('x-f')||0; if(!m||c==null){out.hidden=true;return;}
-    var sgi=Math.max(m*c/100,mi), place=m*0.003, achat=sgi+place, an=2*achat+f, h=an/m*100;
-    set('x-o1',F(achat)); set('x-o2',F(an)); set('x-o3',pc(h));
-    V(h>5?'<b>Sur ce montant, les frais sont lourds&nbsp;: '+pc(h)+' la première année.</b> Groupez vos achats en un seul ordre plus important, comparez une autre SGI, ou regardez un fonds commun.'
-      :(h>3?'<b>Des frais raisonnables, sans plus&nbsp;: '+pc(h)+' la première année.</b> Évitez d’acheter et de revendre souvent&nbsp;: chaque aller-retour recoûte '+F(2*achat)+'.'
-      :'<b>Des frais maîtrisés&nbsp;: '+pc(h)+' la première année.</b> Gardez vos titres longtemps&nbsp;: les frais fixes se répartissent sur plusieurs années.'));
-    out.hidden=false; if(!vu){vu=true;efaCompte('sgi-frais');}
-  }
-  efaChamps(["x-m", "x-mi", "x-f"],maj);
-  ["x-c"].forEach(function(i){var el=document.getElementById(i);el.addEventListener('input',function(){clearTimeout(el._t);el._t=setTimeout(maj,400);});el.addEventListener('change',maj);});
+  var Q=[["Agrément", [[1, "Êtes-vous agréée par l’AMF-UMOA ?", "Seule une SGI agréée peut passer vos ordres. Notez le numéro d’agrément et vérifiez-le sur la liste officielle.", null]]], ["Coût total", [[2, "Combien me coûte un ordre, tout compris ?", "Commission de la SGI, commissions de la place, minimum par ordre, taxes : demandez le total.", ["com", "Commission (%)", "Minimum par ordre (F)"]], [3, "Que vais-je payer chaque année, même sans rien faire ?", "Tenue de compte, conservation, garde : ces frais fixes pèsent lourd sur un petit portefeuille.", ["an", "Frais par an (F)"]], [4, "Combien faut-il pour ouvrir le compte ?", "Frais d’ouverture et dépôt minimum varient beaucoup d’une SGI à l’autre.", ["dep", "Dépôt minimum à l’ouverture (F)"]]]], ["Fonctionnement du compte", [[5, "Comment j’envoie et je récupère mon argent ?", "Virement, mobile money, espèces : délais et frais de retrait.", null], [6, "Comment je passe un ordre, et comment je sais qu’il est exécuté ?", "Exigez un avis d’opéré après chaque exécution : prix obtenu et frais prélevés.", null], [7, "Où et quand arrivent mes dividendes ?", "Délai de versement, impôt retenu à la source, frais éventuels.", null], [9, "Quels relevés vais-je recevoir ?", "Au moins un relevé par trimestre, avec titres, valeur et frais.", null]]], ["Sortie et protection", [[8, "Comment mes titres sont-ils protégés ?", "Vos titres doivent être à votre nom, séparés des biens de la SGI.", null], [10, "Combien coûte le départ ?", "Transfert des titres ou fermeture du compte : le prix est parfois compté par titre.", null]]]], CLE='efa_fiche_sgi_v1', E=['À demander','Réponse obtenue','Document à vérifier'];
+  var d={a:{},b:{},na:'',nb:'',m:''};try{d=Object.assign(d,JSON.parse(localStorage.getItem(CLE)||'{}'))}catch(e){}
+  function sauver(){try{localStorage.setItem(CLE,JSON.stringify(d))}catch(e){}}
+  function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var L=document.getElementById('fc-liste'),h='';
+  Q.forEach(function(g,gi){h+='<p class="fc-etape">Étape '+(gi+1)+' · '+esc(g[0])+'</p>';
+    g[1].forEach(function(q){var n=q[0];h+='<div class="fc-q"><p class="fc-qt"><b>'+n+'.</b> '+esc(q[1])+'</p><details class="fc-pq"><summary>Pourquoi la poser ?</summary><p>'+esc(q[2])+'</p></details><div class="fc-cols">';
+      ['a','b'].forEach(function(c){var r=d[c][n]||{};h+='<div class="fc-col fc-'+c+'"><span class="fc-lab" data-nom="'+c+'">SGI '+c.toUpperCase()+'</span>'
+        +(q[3]?'<label class="fc-chiffre">'+esc(q[3][1])+'<input data-c="'+c+'" data-n="'+n+'" data-k="v" inputmode="decimal" autocomplete="off" value="'+esc(r.v)+'"></label>':'')+(q[3]&&q[3][2]?'<label class="fc-chiffre">'+esc(q[3][2])+'<input data-c="'+c+'" data-n="'+n+'" data-k="v2" inputmode="decimal" autocomplete="off" value="'+esc(r.v2)+'"></label>':'')
+        +'<textarea data-c="'+c+'" data-n="'+n+'" data-k="t" rows="2" placeholder="Réponse obtenue">'+esc(r.t)+'</textarea>'
+        +'<select data-c="'+c+'" data-n="'+n+'" data-k="e" aria-label="État">'+E.map(function(x,i){return '<option value="'+i+'"'+((+r.e||0)===i?' selected':'')+'>'+x+'</option>'}).join('')+'</select></div>';});
+      h+='</div></div>';});});
+  L.innerHTML=h;
+  var na=document.getElementById('fc-na'),nb=document.getElementById('fc-nb'),M=document.getElementById('fc-m');na.value=d.na||'';nb.value=d.nb||'';M.value=d.m||'';
+  function noms(){document.querySelectorAll('[data-nom]').forEach(function(x){var v=x.dataset.nom==='a'?d.na:d.nb;x.textContent=v||('SGI '+x.dataset.nom.toUpperCase())});document.getElementById('fc-ta').textContent=d.na||'SGI A';document.getElementById('fc-tb').textContent=d.nb||'SGI B';}
+  na.oninput=function(){d.na=na.value.trim();noms();sauver();calc()};nb.oninput=function(){d.nb=nb.value.trim();noms();sauver();calc()};
+  L.addEventListener('input',function(e){var x=e.target;if(!x.dataset.c)return;var o=d[x.dataset.c][x.dataset.n]=d[x.dataset.c][x.dataset.n]||{};o[x.dataset.k]=x.value;if(x.dataset.k!=='e'&&x.value&&!(+o.e)){o.e=1;var s=x.parentNode.parentNode.querySelector('select')||x.parentNode.querySelector('select');if(s)s.value='1';}sauver();calc();});
+  L.addEventListener('change',function(e){var x=e.target;if(x.tagName==='SELECT'){var o=d[x.dataset.c][x.dataset.n]=d[x.dataset.c][x.dataset.n]||{};o.e=x.value;sauver();}});
+  document.querySelectorAll('.fc-tabs button').forEach(function(b){b.onclick=function(){L.dataset.col=b.dataset.col;document.querySelectorAll('.fc-tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b?'true':'false')})}});
+  function num(v){v=String(v==null?'':v).replace(/\s/g,'').replace(',','.').replace(/[^\d.]/g,'');return v===''?null:parseFloat(v)}
+  function F(n){return Math.round(n).toLocaleString('fr-FR').replace(/[\u202f\u00a0]/g,' ')+' F'}
+  function P(x){return (Math.round(x*10)/10).toString().replace('.',',')+' %'}
+  M.oninput=function(){d.m=M.value;sauver();calc()};
+  function calc(){var m=num(d.m),R=document.getElementById('fc-res');if(!m){R.innerHTML='<p class="note">Saisissez un montant pour comparer les frais des deux SGI.</p>';return;}
+    var t='<table class="fc-t"><thead><tr><th></th><th>'+esc(d.na||'SGI A')+'</th><th>'+esc(d.nb||'SGI B')+'</th></tr></thead><tbody>',rows=[['Frais à l’achat'],['Achat, revente et une année'],['Seuil indicatif lié aux frais']];
+    ['a','b'].forEach(function(c){var com=num((d[c][2]||{}).v),an=num((d[c][3]||{}).v),mi=num((d[c][2]||{}).v2)||0;
+      if(com==null){rows.forEach(function(r){r.push('<span class="fc-nr">montant non renseigné</span>')});return;}
+      var ach=Math.max(m*com/100,mi)+m*0.003;rows[0].push(F(ach));
+      if(an==null){rows[1].push('<span class="fc-nr">frais annuels non renseignés</span>');rows[2].push('<span class="fc-nr">montant non renseigné</span>');return;}
+      var tot=2*ach+an;rows[1].push(F(tot));rows[2].push(P(tot/m*100));});
+    rows.forEach(function(r){t+='<tr><th>'+r[0]+'</th><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'});
+    R.innerHTML=t+'</tbody></table><p class="note">Le seuil indicatif est la hausse du cours qui couvrirait ces frais la première année. Pistes à examiner&nbsp;: le montant de chaque ordre, la durée pendant laquelle vous garderez vos titres, un fonds commun si le montant est modeste.</p>';
+    try{if(!window._fcv){window._fcv=1;efaCompte('sgi-fiche-calcul')}}catch(e){}}
+  function texte(){var o=['MA FICHE DE COMPARAISON SGI · EFA','',(d.na||'SGI A')+'  /  '+(d.nb||'SGI B'),''];Q.forEach(function(g,gi){o.push('ÉTAPE '+(gi+1)+' · '+g[0].toUpperCase());g[1].forEach(function(q){o.push(q[0]+'. '+q[1]);['a','b'].forEach(function(c){var r=d[c][q[0]]||{};o.push('   '+(c==='a'?(d.na||'SGI A'):(d.nb||'SGI B'))+' : '+(r.v?r.v+' · ':'')+(r.v2?'min. '+r.v2+' · ':'')+(r.t||'—')+' ['+E[+r.e||0]+']')});});o.push('');});
+    o.push('Montant simulé : '+(d.m||'—'));o.push('Hypothèses : commissions de place 0,3 %, achat et revente au même prix, taxes non comprises.');o.push('Pièces à demander : grille tarifaire écrite, convention de compte, numéro d’agrément.');o.push('');o.push('EFA ne recommande aucune SGI et ne reçoit aucune commission. efa.africa');return o.join('\n');}
+  document.getElementById('fc-tel').onclick=function(){var b=new Blob([texte()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='fiche-comparaison-sgi.txt';document.body.appendChild(a);a.click();a.remove();try{efaCompte('sgi-fiche-telecharger')}catch(e){}};
+  document.getElementById('fc-imp').onclick=function(){document.documentElement.classList.add('fc-print');L.dataset.col='ab';setTimeout(function(){window.print();setTimeout(function(){document.documentElement.classList.remove('fc-print');L.dataset.col='a'},500)},50);try{efaCompte('sgi-fiche-imprimer')}catch(e){}};
+  document.getElementById('fc-raz').onclick=function(){if(!confirm('Effacer toutes vos notes ?'))return;try{localStorage.removeItem(CLE)}catch(e){}location.reload()};
+  noms();calc();
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026103103" defer></script>
+<script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261031y" defer></script>
 </body>
 </html>
