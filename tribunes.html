@@ -304,6 +304,25 @@ footer{display:block!important}
 .info a,.info .mini,.info button.lien,.ctx p a,.ctx p .mini,.ctx p button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
+<style>
+.tr-entree{position:relative;height:calc(100svh - 82px);min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;background:#041226;font-family:"Source Sans 3",system-ui,sans-serif}
+.tr-entree-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.tr-entree-voile{position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,18,38,.88) 0%,rgba(4,18,38,.45) 40%,rgba(4,18,38,0) 70%)}
+.tr-entree-txt{position:relative;width:min(1200px,calc(100% - 48px));margin:0 auto;padding-bottom:clamp(48px,8vh,96px)}
+.tr-entree-k{margin:0 0 16px;font:800 12px/1 "Source Sans 3",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#ffb4a3}
+.tr-entree-t{margin:0;font:700 clamp(46px,7vw,104px)/1 "Libre Baskerville",Georgia,serif;letter-spacing:-.03em;color:#fff}
+.tr-entree-t span{display:block}.tr-entree-t em{font-style:normal;color:#7fd3ea}
+.tr-entree-p{max-width:480px;margin:22px 0 0;font-size:17px;line-height:1.55;color:rgba(255,255,255,.88)}
+.tr-entree-cta{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:15px 26px;border-radius:999px;background:#E44828;color:#fff!important;font-weight:800;text-decoration:none;box-shadow:0 14px 34px rgba(227,66,52,.35)}
+@media(max-width:720px){.tr-entree{height:calc(100svh - 68px)}.tr-entree-txt{width:calc(100% - 32px)}}
+@media(min-width:721px){
+ .tr-entree::before{content:"";position:absolute;inset:-40px;background:url(clone/assets/tribunes-entree.webp) center 60%/cover no-repeat;filter:blur(28px) saturate(1.1);transform:scale(1.1)}
+ .tr-entree .tr-entree-img{left:auto;right:0;width:46%;object-position:center 45%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 25%);mask-image:linear-gradient(90deg,transparent 0%,#000 25%)}
+ .tr-entree-voile{background:linear-gradient(90deg,rgba(4,18,38,.85) 0%,rgba(4,18,38,.55) 45%,rgba(4,18,38,0) 70%)}
+ .tr-entree-txt{align-self:center;padding-bottom:0}
+}
+</style>
+<link rel="stylesheet" href="clone/immersif.css?v=20261031h"><script src="clone/immersif.js?v=20261031h" defer></script>
 <link rel="stylesheet" href="clone/habillage.css?v=20261031w">
 </head>
 <body>
@@ -320,9 +339,11 @@ footer{display:block!important}
   <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 </header>
 
+<section class="tr-entree" data-garde aria-label="La tribune d’Élysée Johnson"><img class="tr-entree-img" src="clone/assets/tribunes-entree.webp" alt="Un homme en costume regarde la ville au crépuscule depuis la fenêtre de son bureau" fetchpriority="high" decoding="async" width="1055" height="1491"><div class="tr-entree-voile" aria-hidden="true"></div><div class="tr-entree-txt" id="tr-entree-txt"><p class="tr-entree-k">La tribune d’Élysée Johnson</p><p class="tr-entree-t"><span>Une idée.</span><span>Chaque semaine.</span><span><em>Pour débattre.</em></span></p><p class="tr-entree-p">L’argent tel qu’il circule chez nous : la tontine, le cercle et la spirale, ce qui passe et ce qui reste.</p><a class="tr-entree-cta" href="#une">Découvrir les tribunes d’Élysée Johnson <span aria-hidden="true">↓</span></a></div></section>
+
 <section class="hero tri dark">
   <div class="col">
-    <p class="over">La Tribune · chaque semaine</p>
+    <p class="over">La tribune d’Élysée Johnson · chaque semaine</p>
     <h1 class="t1" style="margin-top:14px">Mes tribunes</h1>
     <p class="lede">Une idée par semaine sur l’argent tel qu’il circule chez nous : la tontine, le cercle et la spirale, ce qui passe et ce qui reste. Toutes les tribunes parues sont ici.</p>
     <div class="face"><img src="elysee.jpg" alt="" width="52" height="52" onerror="this.remove()"><div><b>Élysée Johnson</b><span>Fondateur d’Éducation Financière Afrique</span></div></div>
@@ -426,7 +447,7 @@ footer{display:block!important}
         </ul></div>
         <div><h2>Le média</h2><ul>
           <li><a href="news.html">EFA News</a></li>
-          <li><a href="tribunes.html">Les tribunes</a></li>
+          <li><a href="tribunes.html">La tribune d’Élysée Johnson</a></li>
           <li><a href="index.html#etudes-prospective">Études et prospective</a></li>
           <li><a href="africa-2075-fondateur.html">Africa 2075</a></li>
         </ul></div>
