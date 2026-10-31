@@ -6,6 +6,7 @@
     var m = document.getElementById('ct-msg'), s = document.getElementById('ct-sujet');
     if (!id || !t || !m) return;
     t = String(t).slice(0, 120);
+    if (q.get('sujet') === 'code-atelier') return;
     if (s) s.value = 'Un accompagnement individuel ou en groupe';
     if (!m.value) m.value = 'Bonjour,\n\nJe réserve ma place pour l’atelier « ' + t + ' ».' +
       (cle ? '\nClé de test : ' + String(cle).slice(0, 20) : '') +

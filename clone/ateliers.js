@@ -34,7 +34,7 @@
     document.querySelector('.at-dlg-p').innerHTML = '<b>' + D.prix(cour) + '</b>';
     document.querySelector('.at-dlg-cle div').hidden = ok; document.querySelector('.at-dlg-cle label').hidden = ok;
     document.querySelector('.at-dlg-pay').hidden = ok;
-    go.hidden = !ok; go.href = lien(cour);
+    go.hidden = !ok; go.href = lien(cour); var dc = document.getElementById('at-dlg-code'); if (dc) dc.href = 'rendez-vous.html?sujet=code-atelier&atelier=' + encodeURIComponent(cour.id) + '&t=' + encodeURIComponent(cour.t) + '#contact';
     msg.textContent = cour.gratuit ? 'Cet atelier est gratuit. Réservez votre place.' : ok ? 'Accès débloqué avec la clé ' + etat.ok[cour.id] + '. Réservez votre place.' : '';
   }
   function ouvrir(id) {

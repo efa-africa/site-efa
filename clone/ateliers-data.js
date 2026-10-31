@@ -51,6 +51,6 @@ window.EFA_ATELIERS = (function () {
     if (new Date() > new Date(FIN_TEST + 'T23:59:59')) return false;
     return controle(m[1]) === m[2];
   }
-  function prix(a) { if (a && a.gratuit) return 'Gratuit'; return PRIX.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' FCFA'; }
+  function prix(a) { if (a && a.gratuit) return 'Gratuit'; return 'Gratuit pour le lancement'; return PRIX.toLocaleString('fr-FR').replace(/ | /g, ' ') + ' FCFA'; }
   return { liste: A, prix: prix, PRIX: PRIX, FIN_TEST: FIN_TEST, nouvelleCle: nouvelleCle, cleValide: cleValide };
 })();
