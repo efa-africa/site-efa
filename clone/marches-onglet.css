@@ -92,8 +92,8 @@ button.mk-carte{border:0;text-align:left;font:inherit;color:inherit;cursor:point
 .mk-per{margin:6px 0 0;font-size:12.5px;line-height:1.4;color:#5F6676}
 .mk-soc .mk-per{display:block}
 #mk-percap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
-#mk-percap span:nth-child(2){flex:1;text-align:center;min-width:200px}
-@media(max-width:600px){#mk-percap span:first-child,#mk-percap span:last-child{display:none}#mk-percap span:nth-child(2){text-align:left}}
+#mk-percap .mk-pa{flex:1;text-align:center;min-width:200px}#mk-percap .mk-aj{flex-basis:100%;color:#0B1220;font-weight:600}
+@media(max-width:600px){#mk-percap .mk-d{display:none}#mk-percap .mk-pa{text-align:left}}
 /* Acheter des actions */
 .mk-achat{background:#EEF5FC;border-radius:18px;padding:26px 28px;margin-top:8px}
 .mk-achat h2{font-size:clamp(22px,2.6vw,30px);margin:6px 0 10px}
