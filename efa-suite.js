@@ -331,7 +331,7 @@
     if (!candidats.length) {
       placer('<div><span class="es-sur">Et ensuite ?</span><h2>' + (page === "outils.html" ? "Apprenez pas à pas, jusqu’à un résultat." : "Passez de la lecture à l’action.") + '</h2>'
         + '<p>L’école EFA&nbsp;: trois cycles de modules gratuits, qui partent de votre situation et se terminent par une fiche que vous gardez&nbsp;: un budget qui tient, une réserve, une tontine décidée.</p></div>'
-        + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Entrer dans l’école</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, 6 min</a></div>');
+        + '<div class="es-acts"><a class="es-btn" href="parcours.html" data-goatcounter-click="suite-generique">Entrer dans l’école</a><a class="es-lien" href="diagnostic.html?src=suite">Ou faire mon diagnostic, dès 2 min</a></div>');
       return;
     }
 

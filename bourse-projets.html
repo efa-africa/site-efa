@@ -24,7 +24,7 @@
 @media (orientation:portrait) and (max-width:700px){.sc-l{font-size:13px;gap:8px}.sc-l .b{height:9px}.note-s{font-size:12.5px}.regle{font-size:14.5px;padding:10px 12px}}
 </style>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<link rel="stylesheet" href="clone/habillage.css?v=20261031q">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031r">
 </head><body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir" aria-current="page">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
 
@@ -58,7 +58,7 @@ window.ECOLE = {
   accueil: {
     sur: "École de la Bourse · Cas pratiques",
     titre: "J’investis pour quel projet ?",
-    kick: "Cinq cas chiffrés · 10 à 15 minutes chacun",
+    kick: "Cinq cas chiffrés · dès 2 min chacun",
     h: "La Bourse a-t-elle sa place dans votre projet ?",
     p: ["La retraite, les études des enfants, une maison, une transmission, une dépense proche : la question n’est pas « combien la Bourse va-t-elle me rapporter ? », mais « dans combien de temps ai-je besoin de cet argent, et que se passe-t-il si les cours baissent juste avant ? ».",
        "Chaque cas vous fait choisir un horizon, montre plusieurs issues possibles, la mauvaise comprise, puis vous fait décider. Aucun ne promet qu’un placement financera votre projet."],
@@ -95,7 +95,7 @@ function SIM(cle, def, o){ return {t:"perso", rendu:function(c){ var v = c.S.r[c
 function REGLE(sur, h, regle, p, liens){ return {t:"perso", rendu:function(){ return '<div class="illu nuit"><span class="tabtitre">La règle EFA</span><div class="regle">' + T(regle) + '</div></div><div class="texte"><p class="sur">' + T(sur) + '</p><h2 class="h">' + T(h) + '</h2>' + p.map(function(x){ return '<p class="p">' + T(x) + '</p>'; }).join("") + '<div class="liens">' + liens.map(function(l){ return '<a href="' + l[0] + '" target="_blank" rel="noopener">' + T(l[1]) + ' <span>→</span></a>'; }).join("") + '</div></div>'; }}; }
 
 /* ======================= J1 · Retraite ======================= */
-MOD.push({id:"J1", titre:"La Bourse peut-elle m’aider à préparer ma retraite ?", court:"Retraite", duree:"≈ 15 min",
+MOD.push({id:"J1", titre:"La Bourse peut-elle m’aider à préparer ma retraite ?", court:"Retraite", duree:"Dès 2 min",
 retenir:"Pour la retraite, la Bourse peut servir parce que l’horizon est long : vingt ou trente ans laissent le temps de traverser les baisses. Mais rien n’est garanti, et <span class=\"c\">on réduit la part en actions</span> à l’approche de la date, pour qu’une chute de dernière minute ne décide pas de vos vieux jours.",
 ecrans:[
  {t:"info", illu:{photo:"koffi-portrait.jpg", leg:"Koffi, 30 ans, salarié à Abidjan"}, sur:"Le cas", h:"Koffi a 30 ans et pense déjà à ses 60 ans",
@@ -123,7 +123,7 @@ ecrans:[
 ]});
 
 /* ======================= J2 · Études des enfants ======================= */
-MOD.push({id:"J2", titre:"Puis-je investir pour les études de mes enfants ?", court:"Études", duree:"≈ 12 min",
+MOD.push({id:"J2", titre:"Puis-je investir pour les études de mes enfants ?", court:"Études", duree:"Dès 2 min",
 retenir:"Les études dans quinze ans et la rentrée de septembre ne sont pas le même argent. <span class=\"c\">La rentrée proche reste hors Bourse</span>, sur un compte séparé. Les études lointaines peuvent en partie être investies, avec une sécurisation progressive à l’approche de l’université.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Awa, deux enfants</span><table class="tab"><tbody><tr><td>Aminata, 3 ans</td><td>université dans 15 ans</td></tr><tr><td>Yao, 11 ans</td><td>rentrée en septembre, dans 8 mois</td></tr><tr class="tot"><td>Awa met de côté</td><td>40 000 F par mois</td></tr></tbody></table>'},
@@ -148,7 +148,7 @@ ecrans:[
 ]});
 
 /* ======================= J3 · Maison ======================= */
-MOD.push({id:"J3", titre:"Je veux acheter une maison : quelle part de mon apport exposer au risque ?", court:"Maison", duree:"≈ 12 min",
+MOD.push({id:"J3", titre:"Je veux acheter une maison : quelle part de mon apport exposer au risque ?", court:"Maison", duree:"Dès 2 min",
 retenir:"Un apport a une date. <span class=\"c\">N’exposez que la part dont la perte ne décalerait pas votre achat</span>, et sortez-la de la Bourse dès que la date approche. La Bourse ne fournit pas une somme déterminée à une date choisie.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Le projet de Koffi</span><table class="tab"><tbody><tr><td>Apport demandé par la banque</td><td>6 000 000 F</td></tr><tr><td>Déjà de côté</td><td>1 500 000 F</td></tr><tr><td>Épargne possible par mois</td><td>90 000 F</td></tr><tr class="tot"><td>Achat visé</td><td>dans 4 ans</td></tr></tbody></table>'},
@@ -173,7 +173,7 @@ ecrans:[
 ]});
 
 /* ======================= J4 · Transmission ======================= */
-MOD.push({id:"J4", titre:"Comment préparer une transmission à mes enfants ?", court:"Transmission", duree:"≈ 12 min",
+MOD.push({id:"J4", titre:"Comment préparer une transmission à mes enfants ?", court:"Transmission", duree:"Dès 2 min",
 retenir:"Des actions se transmettent si l’on peut <span class=\"c\">prouver qu’elles existent et à qui elles appartiennent</span> : compte-titres à votre nom, relevés de la SGI, papiers rangés et connus de la famille. Leur valeur, elle, varie : un portefeuille n’est jamais un héritage garanti.",
 ecrans:[
  {t:"info", illu:{c:"nuit", accueil:true, html:'<span class="tabtitre">Tonton Bamba, 62 ans</span><div class="grand">Des actions depuis 15 ans</div><span class="mot">Il veut qu’elles reviennent à ses enfants et petits-enfants</span>'},
@@ -202,7 +202,7 @@ ecrans:[
 ]});
 
 /* ======================= J5 · Dépense proche ======================= */
-MOD.push({id:"J5", titre:"J’ai besoin de cet argent pour une dépense proche : dois-je le placer ?", court:"Dépense proche", duree:"≈ 10 min",
+MOD.push({id:"J5", titre:"J’ai besoin de cet argent pour une dépense proche : dois-je le placer ?", court:"Dépense proche", duree:"Dès 2 min",
 retenir:"Une dépense à date fixe et proche, les fêtes, la rentrée, un loyer, <span class=\"c\">ne dépend jamais d’un cours de Bourse</span>. En quelques mois, les frais seuls font perdre de l’argent, et une baisse peut arriver juste avant la date. Cet argent va sur un compte séparé.",
 ecrans:[
  {t:"info", illu:{photo:"affoue-sourire.jpg", leg:"Tantie Affoué prépare les fêtes de fin d’année"}, sur:"Le cas", h:"300 000 F pour les fêtes, dans deux mois",
@@ -230,5 +230,5 @@ ecrans:[
 <script src="efa-suite.js?v=2026102902" defer></script>
 <script src="efa-compte.js?v=2026102701" defer></script>
 <script src="efa-chiffres.js?v=2026102701" defer></script>
-<script src="clone/habillage.js?v=20261031q" defer></script>
+<script src="clone/habillage.js?v=20261031r" defer></script>
 </body></html>

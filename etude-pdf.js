@@ -66,7 +66,7 @@
       '<a class="dl" id="ep-dl" href="' + CFG.pdf + '" target="_blank" rel="noopener">Ouvrir le rapport PDF</a>' +
       '<p id="ep-conf">Un email de confirmation va arriver (regardez aussi Promotions et Spam)&nbsp;: confirmez pour recevoir la lettre du mardi et les prochaines études.</p>' +
       '</div>' +
-      '<p class="alt">L’étude se poursuit avec vous&nbsp;: <a href="' + CFG.enquete + '" target="_blank" rel="noopener" data-ep-enq>répondez à l’enquête «&nbsp;L’argent de la tontine&nbsp;»</a> (tontine ou pas, 3 minutes).</p>' +
+      '<p class="alt">L’étude se poursuit avec vous&nbsp;: <a href="' + CFG.enquete + '" target="_blank" rel="noopener" data-ep-enq>répondez à l’enquête «&nbsp;L’argent de la tontine&nbsp;»</a> (tontine ou pas, dès 1 min).</p>' +
       '</div>';
     document.body.appendChild(ov);
     box = document.getElementById("ep-box");

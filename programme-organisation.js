@@ -171,14 +171,14 @@
   function bouton(id, label, pressed, sous, em, rond) { return '<button type="button" class="ch' + (rond ? " rond" : "") + '" data-v="' + id + '" aria-pressed="' + (pressed ? "true" : "false") + '"><b>' + esc(label) + "</b>" + (sous ? "<small>" + esc(sous) + "</small>" : "") + (em ? "<em>" + esc(em) + "</em>" : "") + "</button>"; }
   function aller(n) { etape = n; if ($("etapes") && n !== 2) $("etapes").hidden = false; pastilles(); [null, e1, e2, e3, e4, e5][n](); try { window.scrollTo({ top: $("etapes").getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" }); } catch (e) {} mesure("orga-programme-etape-" + n); }
 
-  /* L'enquête anonyme (facultative) : l'organisation crée un lien, ses salariés répondent en 3 minutes,
+  /* L'enquête anonyme (facultative) : l'organisation crée un lien, ses salariés répondent dès 1 min,
      les résultats (à partir de 5 réponses) cochent les situations et leur importance. */
   var API = "https://efa-ecole.elysees-johnson.workers.dev";
   function mesEnquetes() { try { return JSON.parse(localStorage.getItem("efa_enquetes") || "[]") || []; } catch (e) { return []; } }
   function enqueteHtml() {
     var L = mesEnquetes();
     return '<div class="enq"><p class="sur">Facultatif</p><h3>Vous n’êtes pas sûr ? Demandez-leur.</h3>'
-      + '<p>Une enquête anonyme de 3 minutes, à envoyer à vos salariés ou à vos membres : 15 situations, oui ou non. Ni nom, ni email, ni montant. Dès 5 réponses, les résultats cochent les situations et leur importance à votre place.</p><p class="aide"><b>Ce qui se passe ensuite :</b> vous obtenez aussitôt un lien à envoyer (WhatsApp, email) et un lien privé pour lire vos résultats.</p>'
+      + '<p>Une enquête anonyme rapide, dès 1 min,, à envoyer à vos salariés ou à vos membres : 15 situations, oui ou non. Ni nom, ni email, ni montant. Dès 5 réponses, les résultats cochent les situations et leur importance à votre place.</p><p class="aide"><b>Ce qui se passe ensuite :</b> vous obtenez aussitôt un lien à envoyer (WhatsApp, email) et un lien privé pour lire vos résultats.</p>'
       + '<div class="acts"><button type="button" class="bt bt-n" id="enq-c">Créer une enquête anonyme</button><a class="bt bt-l" href="enquete.html?apercu=1" target="_blank" rel="noopener">Voir les questions</a></div><p class="aide" id="enq-m" role="status" aria-live="polite"></p><div id="enq-r"></div>'
       + (L.length ? '<p class="aide"><b>Vos enquêtes sur ce téléphone :</b> ' + L.map(function (x) { return '<a href="enquete.html?resultats=' + encodeURIComponent(x.cle) + '">' + esc(x.nom) + ' · résultats</a>'; }).join(" · ") + '</p>' : '')
       + '</div>';
@@ -193,7 +193,7 @@
         .then(function (j) {
           var L = mesEnquetes(); L.unshift({ nom: j.nom, code: j.code, cle: j.cle, d: new Date().toISOString().slice(0, 10) }); try { localStorage.setItem("efa_enquetes", JSON.stringify(L.slice(0, 10))); } catch (e) {}
           var lien = location.origin + "/enquete.html?e=" + j.code, res = location.origin + "/enquete.html?resultats=" + encodeURIComponent(j.cle);
-          var msg = "Bonjour,\n\nPour préparer un programme d’éducation financière adapté, " + j.nom + " vous propose une enquête anonyme de 3 minutes : 15 questions, oui ou non. Ni nom, ni email, ni montant ne sont demandés.\n\n" + lien + "\n\nMerci !";
+          var msg = "Bonjour,\n\nPour préparer un programme d’éducation financière adapté, " + j.nom + " vous propose une enquête anonyme rapide, dès 1 min : 15 questions, oui ou non. Ni nom, ni email, ni montant ne sont demandés.\n\n" + lien + "\n\nMerci !";
           m.textContent = ""; mesure("orga-enquete-creee");
           $("enq-r").innerHTML = '<div class="enq-ok"><p><b>Le lien à envoyer</b> (WhatsApp, email, affichage)</p><div class="lien">' + esc(lien) + '</div><div class="acts"><a class="bt bt-p" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(msg) + '">Envoyer par WhatsApp</a><button type="button" class="bt" id="enq-cop">Copier le message</button></div>'
             + '<p><b>Le lien de vos résultats</b> : gardez-le pour vous, il n’est montré qu’une fois. Il est aussi gardé sur ce téléphone.</p><div class="lien">' + esc(res) + '</div><div class="acts"><a class="bt bt-n" href="' + esc(res) + '">Voir les résultats</a></div>'
@@ -364,7 +364,7 @@
   function enTete() {
     var c = S.type === "communaute";
     try {
-      $("h-sur").textContent = c ? "Pour les communautés · En ligne, en 5 minutes" : "Pour les organisations · En ligne, en 5 minutes";
+      $("h-sur").textContent = c ? "Pour les communautés · En ligne, dès 2 min" : "Pour les organisations · En ligne, dès 2 min";
       $("h-t").textContent = c ? "Composez le parcours de votre communauté, à vos couleurs" : "Composez le programme d’éducation financière de votre organisation";
       $("h-c").textContent = c ? "Influenceur, leader de communauté ou partenaire EFA : vous choisissez ce que votre communauté apprend, vous ajoutez votre photo et votre logo, et vous partagez un code. Vos membres s’inscrivent en une minute et vous suivez leur avancement, jamais leurs montants." : "Vous choisissez ce que votre public doit apprendre ; nous vous proposons les arbitrages ; vous repartez avec un programme semaine par semaine que vos participants suivent sur leur téléphone. EFA peut ensuite venir animer une session pour répondre aux questions, challenger et faciliter.";
     } catch (e) {}

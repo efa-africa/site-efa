@@ -20,7 +20,7 @@ window.EFA_CONTENU = {
 
   rythmes: [
     { id: "quotidien", label: "Un peu chaque jour", detail: "5 minutes, 5 jours sur 7" },
-    { id: "hebdo3", label: "Trois fois par semaine", detail: "environ 10 minutes" },
+    { id: "hebdo3", label: "Trois fois par semaine", detail: "Dès 2 min" },
     { id: "hebdo1", label: "Une fois par semaine", detail: "une séance de 15 à 20 minutes" }
   ],
 

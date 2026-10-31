@@ -93,7 +93,7 @@ NAVCSS
 HEADER<main>
 <section class="hero"><div class="wrap">
   <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="organisations.html">Pour les organisations</a> › <span id="fil">Composer un programme</span></nav>
-  <span class="sur" id="h-sur">Pour les organisations · En ligne, en 5 minutes</span>
+  <span class="sur" id="h-sur">Pour les organisations · En ligne, dès 2 min</span>
   <h1 id="h-t">Composez le programme d’éducation financière de votre organisation</h1>
   <p class="chapo" id="h-c">Vous choisissez ce que votre public doit apprendre ; nous vous proposons les arbitrages ; vous repartez avec un programme semaine par semaine que vos participants suivent sur leur téléphone. EFA peut ensuite venir animer une session pour répondre aux questions, challenger et faciliter.</p>
   <div class="promesse" id="h-p">

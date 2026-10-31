@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>Enquête anonyme · EFA</title>
-<meta name="description" content="Une enquête anonyme de 3 minutes pour préparer un programme d’éducation financière adapté : 15 situations, oui ou non, sans nom ni montant.">
+<meta name="description" content="Une enquête anonyme rapide, dès 1 min, pour préparer un programme d’éducation financière adapté : 15 situations, oui ou non, sans nom ni montant.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,7 +88,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .lt b{display:block;font-weight:600;color:var(--nuit);font-size:15.5px}.lt small{color:var(--ink3);font-size:13.5px}
 .lv{font-weight:800;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--nuit)}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261031q">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031r">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -106,7 +106,7 @@ table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 <main>
 <section class="hero"><div class="wrap">
   <nav class="crumbs" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="organisations.html">Organisations</a> › Enquête</nav>
-  <span class="sur" id="h-sur">Enquête anonyme · 3 minutes</span>
+  <span class="sur" id="h-sur">Enquête anonyme · dès 1 min</span>
   <h1 id="h-t">Votre situation, en 15 questions</h1>
   <p class="chapo" id="h-c">Répondez par oui ou par non. Ni nom, ni email, ni montant ne sont demandés : seules vos 15 réponses sont gardées, mélangées à celles des autres.</p>
 </div></section>
@@ -253,7 +253,7 @@ function questionnaire(nom, demo) {
 }
 function merci(nom) {
   vue.innerHTML = '<section class="carte"><p class="sur">Merci</p><h2>Vos réponses sont envoyées</h2><p class="aide">Elles aideront ' + esc(nom) + ' à choisir les sujets de son programme d’éducation financière. Personne ne peut savoir ce que vous avez répondu.</p>'
-    + '<p class="aide">En attendant, vous pouvez déjà commencer : une question, un module de 15 minutes, une fiche à garder.</p><div class="acts"><a class="bt bt-p" href="parcours.html?src=enquete">Découvrir L’école EFA</a><a class="bt bt-l" href="diagnostic.html?src=enquete">Faire mon diagnostic, 6 min</a></div></section>';
+    + '<p class="aide">En attendant, vous pouvez déjà commencer : une question, un module de 15 minutes, une fiche à garder.</p><div class="acts"><a class="bt bt-p" href="parcours.html?src=enquete">Découvrir L’école EFA</a><a class="bt bt-l" href="diagnostic.html?src=enquete">Faire mon diagnostic, dès 2 min</a></div></section>';
 }
 
 /* ---------- Les résultats (organisation, avec le lien secret) ---------- */
@@ -262,7 +262,7 @@ function resultats() {
   vue.innerHTML = '<section class="carte"><p class="aide">Chargement des résultats…</p></section>';
   appel("/enquete/resultats", null, cle).then(function (j) {
     var lien = location.origin + "/enquete.html?e=" + j.code;
-    var tete = '<section class="carte"><p class="sur">' + esc(j.nom) + '</p><h2>' + j.n + ' réponse' + (j.n > 1 ? "s" : "") + '</h2><p class="aide" style="overflow-wrap:anywhere">Lien à continuer de diffuser : <b>' + esc(lien) + '</b></p><div class="acts"><a class="bt" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent("Enquête anonyme de 3 minutes, 15 questions oui ou non, sans nom ni montant : " + lien) + '">Relancer par WhatsApp</a></div></section>';
+    var tete = '<section class="carte"><p class="sur">' + esc(j.nom) + '</p><h2>' + j.n + ' réponse' + (j.n > 1 ? "s" : "") + '</h2><p class="aide" style="overflow-wrap:anywhere">Lien à continuer de diffuser : <b>' + esc(lien) + '</b></p><div class="acts"><a class="bt" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent("Enquête anonyme rapide, dès 1 min, 15 questions oui ou non, sans nom ni montant : " + lien) + '">Relancer par WhatsApp</a></div></section>';
     if (!j.oui) { vue.innerHTML = tete + '<section class="carte"><h2>Encore ' + (j.seuil - j.n) + ' réponse' + (j.seuil - j.n > 1 ? "s" : "") + ' avant les résultats</h2><p class="aide">En dessous de ' + j.seuil + ' réponses, on pourrait deviner qui a répondu quoi : les totaux restent cachés.</p></section>'; return; }
     var L = Q.map(function (x, i) { var p = j.oui[i] / j.n; return { k: x[0], t: x[1], p: p, n: NIV(p) }; }).sort(function (a, b) { return b.p - a.p; });
     var retenues = L.filter(function (x) { return x.n > 0; });
@@ -290,6 +290,6 @@ else if (/^ENQ-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)) {
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103103" defer></script>
-<script src="clone/habillage.js?v=20261031q" defer></script>
+<script src="clone/habillage.js?v=20261031r" defer></script>
 </body>
 </html>

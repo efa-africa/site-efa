@@ -16,12 +16,12 @@ window.MINFIN = {
       titre: "Le million de Koffi",
       resume: "Koffi est salarié à Abidjan. Il gagne bien sa vie, soutient sa famille, cotise en tontine… et ne sait jamais où passe son argent. Une saison pour comprendre pourquoi l'argent tourne sans rester.",
       episodes: [
-        {n: 1, titre: "Où est passé votre argent ?", notion: "L'argent qui file sans qu'on sache où", image: "koffi.jpg", vignette: "minfin/ep-1.jpg", affiche: true, duree: "1 min", statut: "publie", youtube: "TLPBoOPa5L0", tiktok: ""},
-        {n: 2, titre: "+200 000 FCFA de salaire. Toujours rien ?", notion: "Quand le train de vie monte aussi vite que le salaire", image: "koffi.jpg", vignette: "minfin/ep-2.jpg", affiche: true, duree: "1 min", statut: "publie", youtube: "MqusG9AAdCI", tiktok: ""},
-        {n: 3, titre: "Prêter à un proche : prêt ou cadeau ?", notion: "Ce que coûte vraiment un prêt dans la famille", image: "koffi.jpg", vignette: "minfin/ep-3.jpg", affiche: true, duree: "1 min", statut: "publie", youtube: "vtK09o9n_1M", tiktok: ""},
+        {n: 1, titre: "Où est passé votre argent ?", notion: "L'argent qui file sans qu'on sache où", image: "koffi.jpg", vignette: "minfin/ep-1.jpg", affiche: true, duree: "Dès 1 min", statut: "publie", youtube: "TLPBoOPa5L0", tiktok: ""},
+        {n: 2, titre: "+200 000 FCFA de salaire. Toujours rien ?", notion: "Quand le train de vie monte aussi vite que le salaire", image: "koffi.jpg", vignette: "minfin/ep-2.jpg", affiche: true, duree: "Dès 1 min", statut: "publie", youtube: "MqusG9AAdCI", tiktok: ""},
+        {n: 3, titre: "Prêter à un proche : prêt ou cadeau ?", notion: "Ce que coûte vraiment un prêt dans la famille", image: "koffi.jpg", vignette: "minfin/ep-3.jpg", affiche: true, duree: "Dès 1 min", statut: "publie", youtube: "vtK09o9n_1M", tiktok: ""},
         {n: 4, titre: "1 000 000 de tontine. Trois semaines plus tard ?", notion: "Le tour n'est pas un gain : c'est votre argent, plus une avance du groupe", image: "koffi.jpg", vignette: "minfin/ep-4.jpg", affiche: true, duree: "54 s", statut: "publie", youtube: "w34pG9APpIQ", tiktok: ""},
-        {n: 5, titre: "Un proche vous demande 50 000. Vous dites oui ?", notion: "Regarder ce qui est déjà engagé avant de dire oui", image: "koffi.jpg", vignette: "minfin/ep-5.jpg", affiche: true, duree: "1 min 28", statut: "publie", youtube: "oNh-TwxnGTE", tiktok: ""},
-        {n: 6, titre: "Vous êtes payé le 25. Le 2, il ne reste rien ?", notion: "Quand le salaire part dans la première semaine", image: "koffi.jpg", vignette: "minfin/ep-6.jpg", affiche: true, duree: "1 min", statut: "publie", youtube: "VjeOBfy4HJE", tiktok: ""},
+        {n: 5, titre: "Un proche vous demande 50 000. Vous dites oui ?", notion: "Regarder ce qui est déjà engagé avant de dire oui", image: "koffi.jpg", vignette: "minfin/ep-5.jpg", affiche: true, duree: "Dès 1 min 28", statut: "publie", youtube: "oNh-TwxnGTE", tiktok: ""},
+        {n: 6, titre: "Vous êtes payé le 25. Le 2, il ne reste rien ?", notion: "Quand le salaire part dans la première semaine", image: "koffi.jpg", vignette: "minfin/ep-6.jpg", affiche: true, duree: "Dès 1 min", statut: "publie", youtube: "VjeOBfy4HJE", tiktok: ""},
         {n: 7, titre: "Emprunter pour cotiser ?", notion: "Recevoir le tour n'efface pas la dette", image: "koffi.jpg", vignette: "minfin/ep-6.svg", duree: "46 s", statut: "reserve", youtube: "", tiktok: ""}
       ]
     }

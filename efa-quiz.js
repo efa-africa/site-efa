@@ -51,7 +51,7 @@
       ["La monnaie commune de l’UEMOA est…", ["Le franc CFA (XOF)", "Le cedi", "Le naira"], 0, "Le franc CFA de l’Afrique de l’Ouest (XOF), émis par la BCEAO."]
     ],
     orga: [
-      ["Combien de temps pour composer un programme en ligne ?", ["Environ 5 minutes", "Une semaine", "Un mois"], 0, "Cycles ou sujets, rythme, format : le programme se compose en ligne, en quelques minutes."],
+      ["Combien de temps pour composer un programme en ligne ?", ["Dès 2 min", "Une semaine", "Un mois"], 0, "Cycles ou sujets, rythme, format : le programme se compose en ligne, en quelques minutes."],
       ["Dans son tableau de bord, le responsable voit…", ["Les montants saisis par chacun", "Le nom, les visites et l’avancement de chacun", "Les réponses aux quiz"], 1, "Avancement, modules terminés, certificat. Jamais les montants, les fiches ni les réponses."],
       ["Comment un salarié rejoint-il le programme ?", ["Avec le code de son organisation", "Avec la clé du tableau de bord", "Par un email de sa banque"], 0, "Il crée son compte avec le code du programme ; la clé du tableau de bord reste aux responsables."],
       ["Qui garde la clé du tableau de bord ?", ["Tous les participants", "Les responsables désignés", "Personne"], 1, "La clé d’organisation est réservée aux responsables du programme (RH, formation, direction)."],

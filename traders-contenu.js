@@ -42,7 +42,7 @@
   };
 
   var SCENARIOS = [
-    { id: "hesitant", version: 1, titre: "Marché hésitant", niveau: "Débutant", duree: "15 min",
+    { id: "hesitant", version: 1, titre: "Marché hésitant", niveau: "Débutant", duree: "Dès 2 min",
       competence: "Distinguer observation et anticipation",
       situation: "Deux valeurs montent et baissent sans direction durable. Rien ne dit ce qui viendra ensuite.",
       consigne: "Décidez si vous investissez, combien, ou si vous attendez. Justifiez chaque décision.",
@@ -53,7 +53,7 @@
         { seance: 24, actif: "BNY", titre: "Banque Nyota : résultats trimestriels conformes aux attentes", texte: "Les chiffres correspondent à ce que le marché attendait.", choc: 0.5 }
       ],
       transfert: "Sur un marché sans direction claire, qu'est-ce qui distingue une observation (« le cours a monté 3 jours ») d'une anticipation (« il va continuer ») ?" },
-    { id: "retournement", version: 1, titre: "Hausse puis retournement", niveau: "Débutant", duree: "15 min",
+    { id: "retournement", version: 1, titre: "Hausse puis retournement", niveau: "Débutant", duree: "Dès 2 min",
       competence: "Comprendre le risque d'extrapolation",
       situation: "Énergie Soleya monte régulièrement depuis plusieurs semaines. Tout le monde en parle.",
       consigne: "Décidez d'entrer, de rester ou de sortir. Notez ce que vous pensez au moment de chaque décision.",
@@ -64,7 +64,7 @@
         { seance: 18, actif: "SOL", titre: "L'État client annonce des retards de paiement", texte: "Une partie des factures d'électricité sera payée avec six mois de retard.", choc: -6 }
       ],
       transfert: "Une valeur a monté 10 séances de suite. Quelles informations vous manquent pour savoir si la hausse va durer ?" },
-    { id: "nouvelle", version: 1, titre: "Mauvaise nouvelle", niveau: "Intermédiaire", duree: "15 min",
+    { id: "nouvelle", version: 1, titre: "Mauvaise nouvelle", niveau: "Intermédiaire", duree: "Dès 2 min",
       competence: "Mesurer l'exposition",
       situation: "Vous pouvez répartir votre capital entre une banque et une société agricole. Une information inattendue va tomber.",
       consigne: "Avant chaque achat, calculez la part de votre capital exposée à chaque entreprise.",
@@ -74,7 +74,7 @@
         { seance: 20, actif: "AGD", titre: "Agro Djeli obtient un contrat d'export", texte: "Le contrat compense une partie des volumes perdus.", choc: 2 }
       ],
       transfert: "Si 70 % de votre capital était dans une seule entreprise et qu'elle perdait 20 %, combien perdrait votre portefeuille ?" },
-    { id: "frais", version: 1, titre: "Frais répétés", niveau: "Débutant", duree: "10 min",
+    { id: "frais", version: 1, titre: "Frais répétés", niveau: "Débutant", duree: "Dès 2 min",
       competence: "Comprendre le coût de l'activité",
       situation: "Frais fictifs de 0,50 % par ordre. Vous pouvez acheter et vendre aussi souvent que vous voulez.",
       consigne: "Comparez à la fin vos frais cumulés et votre résultat. Que se serait-il passé avec moins d'ordres ?",
@@ -82,7 +82,7 @@
       regimes: { KLT: [{ tendance: 0.02, volat: 1.4 }], KNG: [{ tendance: 0.02, volat: 1.2 }] },
       evenements: [],
       transfert: "Avec 0,50 % de frais à l'achat et à la vente, de combien un titre doit-il monter pour couvrir un aller-retour ?" },
-    { id: "concentre", version: 1, titre: "Portefeuille concentré", niveau: "Intermédiaire", duree: "15 min",
+    { id: "concentre", version: 1, titre: "Portefeuille concentré", niveau: "Intermédiaire", duree: "Dès 2 min",
       competence: "Comprendre la concentration",
       situation: "Ciments Bakar a de très bons résultats. Il est tentant d'y mettre presque tout son capital.",
       consigne: "Construisez votre portefeuille parmi quatre valeurs, puis observez ce qu'il traverse.",
@@ -93,7 +93,7 @@
         { seance: 14, actif: "CBK", titre: "Arrêt d'un grand chantier public", texte: "Le premier client de Ciments Bakar suspend un chantier pour un an.", choc: -16 }
       ],
       transfert: "Pourquoi un bénéfice record ne protège-t-il pas une entreprise d'une baisse forte et rapide de son cours ?" },
-    { id: "secteurs", version: 1, titre: "Secteurs divergents", niveau: "Intermédiaire", duree: "20 min",
+    { id: "secteurs", version: 1, titre: "Secteurs divergents", niveau: "Intermédiaire", duree: "Dès 2 min",
       competence: "Explorer la diversification",
       situation: "Six entreprises de six secteurs. Elles ne réagissent pas aux mêmes événements.",
       consigne: "Comparez au moins deux répartitions. Diversifier ne garantit pas un bénéfice : observez ce que cela change.",
@@ -105,7 +105,7 @@
         { seance: 30, actif: "KNG", titre: "L'inflation ralentit", texte: "Les ménages retrouvent un peu de pouvoir d'achat.", choc: 1.5 }
       ],
       transfert: "Deux entreprises différentes peuvent-elles baisser en même temps ? Donnez un exemple de cause commune." },
-    { id: "change", version: 1, titre: "Change défavorable", niveau: "Débutant", duree: "15 min",
+    { id: "change", version: 1, titre: "Change défavorable", niveau: "Débutant", duree: "Dès 2 min",
       competence: "Comprendre la cotation et la perte de change",
       situation: "Compte de 10 000 USD fictifs. Vous pouvez acheter des euros ou des livres sterling, puis les revendre.",
       consigne: "Avant chaque achat, lisez le cours acheteur (bid), le cours vendeur (ask) et l'écart (spread).",
@@ -143,7 +143,7 @@
         { t: "nombre", transfert: true, question: "Une action cote 4 250 FCFA. Combien coûtent 10 actions, avant frais ?", reponse: function () { return 42500; }, tol: 0, unite: "FCFA",
           correction: "10 × 4 250 = 42 500 FCFA. Les frais s'ajoutent ensuite." }
       ] },
-    { id: "t2", titre: "Comprendre une variation", marche: "actions", competence: "Calculer une hausse ou une baisse", duree: "6 min",
+    { id: "t2", titre: "Comprendre une variation", marche: "actions", competence: "Calculer une hausse ou une baisse", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Une variation se calcule toujours depuis le point de départ : (arrivée − départ) ÷ départ. De 5 000 à 5 400 : 400 ÷ 5 000 = +8 %." },
         { t: "nombre", question: "Le cours passe de 5 400 à 5 000 FCFA. Quelle est la variation, en % ? (avec le signe, par exemple −3,5)", reponse: function () { return -7.41; }, tol: 0.02, unite: "%",
@@ -155,7 +155,7 @@
         { t: "nombre", transfert: true, question: "Une action perd 50 %. De combien doit-elle monter (en %) pour revenir à son prix de départ ?", reponse: function () { return 100; }, tol: 0, unite: "%",
           correction: "Après −50 %, 10 000 devient 5 000. Pour revenir à 10 000, il faut +5 000 sur une base de 5 000, soit +100 %. Les pertes se rattrapent plus difficilement qu'elles ne se font." }
       ] },
-    { id: "t3", titre: "Lire une bougie", marche: "actions", competence: "Repérer ouverture, clôture et extrêmes", duree: "6 min",
+    { id: "t3", titre: "Lire une bougie", marche: "actions", competence: "Repérer ouverture, clôture et extrêmes", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Une bougie résume une séance : l'ouverture (Open), le plus haut (High), le plus bas (Low) et la clôture (Close). Le corps va de l'ouverture à la clôture ; les mèches montent au plus haut et descendent au plus bas. Ici, le corps est vert avec ▲ si la séance finit en hausse, rouge avec ▼ si elle finit en baisse." },
         { t: "action", consigne: "Passez le graphique en « Bougies ».", test: function (st, c) { return c.ui.vue === "bougies"; } },
@@ -165,7 +165,7 @@
         { t: "qcm", transfert: true, question: "Une bougie a une longue mèche basse et une clôture proche du plus haut. Que s'est-il passé pendant la séance ?", choix: ["Le cours n'est jamais descendu", "Le cours est descendu bas, puis est remonté avant la clôture", "La séance annonce une hausse demain"], bonne: 1,
           correction: "La mèche basse montre que le cours est allé bas pendant la séance ; la clôture haute montre qu'il est remonté. Cela décrit la séance, cela ne prédit pas la suivante." }
       ] },
-    { id: "t4", titre: "Acheter avec un budget limité", marche: "actions", competence: "Vérifier quantité, coût et liquidités", duree: "6 min",
+    { id: "t4", titre: "Acheter avec un budget limité", marche: "actions", competence: "Vérifier quantité, coût et liquidités", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Vous décidez de ne pas engager plus de 200 000 FCFA sur Kalao Télécom. Les frais fictifs sont de 0,20 % du montant, et ils comptent dans le budget." },
         { t: "nombre", question: function (c) { return "Au cours de " + c.F(c.dernier("KLT").c) + ", combien d'actions Kalao Télécom au maximum pour 200 000 FCFA, frais compris ?"; },
@@ -177,7 +177,7 @@
         { t: "qcm", transfert: true, question: "Avec 50 000 FCFA et une action à 12 500 FCFA (frais 0,20 %), combien d'actions pouvez-vous acheter ?", choix: ["4", "3", "5"], bonne: 1,
           correction: "4 actions coûtent 50 000 + 100 de frais = 50 100 FCFA : c'est trop. 3 actions coûtent 37 575 FCFA." }
       ] },
-    { id: "t5", titre: "Comprendre les frais", marche: "actions", competence: "Comparer résultat brut et résultat net", duree: "8 min",
+    { id: "t5", titre: "Comprendre les frais", marche: "actions", competence: "Comparer résultat brut et résultat net", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Objectif : distinguer la hausse d'un titre et votre bénéfice net. Capital : 1 million de FCFA fictifs. Frais : 0,20 % à l'achat et à la vente." },
         { t: "action", consigne: "Achetez 100 actions Kalao Télécom.", test: function (st) { return executes(st).some(function (o) { return o.actif === "KLT" && o.sens === "achat" && o.qte >= 100; }); } },
@@ -189,7 +189,7 @@
         { t: "nombre", transfert: true, question: "Avec 0,20 % de frais à l'achat et à la vente, quelle hausse minimale du cours (en %, deux décimales) couvre les frais ?", reponse: function () { return 0.4; }, tol: 0.02, unite: "%",
           correction: "Il faut couvrir environ 0,20 % + 0,20 % = 0,40 % (précisément 0,4008 %). En dessous, l'aller-retour perd de l'argent même si le cours a monté." }
       ] },
-    { id: "t6", titre: "Gain latent et gain réalisé", marche: "actions", competence: "Acheter, observer puis vendre", duree: "7 min",
+    { id: "t6", titre: "Gain latent et gain réalisé", marche: "actions", competence: "Acheter, observer puis vendre", duree: "Dès 2 min",
       etapes: [
         { t: "action", consigne: "Achetez des actions Banque Nyota (la quantité de votre choix).", test: function (st) { return !!st.positions.BNY; } },
         { t: "action", consigne: "Avancez de 3 séances et regardez la ligne « Résultat latent » du portefeuille.", test: function (st, c) { return st.seance >= c.depart.seance + 3 && !!st.positions.BNY; } },
@@ -199,7 +199,7 @@
         { t: "qcm", transfert: true, question: "Vous avez 30 000 FCFA de gain latent, puis le cours chute et vous vendez avec 5 000 FCFA de perte. Qu'avez-vous gagné ?", choix: ["30 000 FCFA", "Rien : le résultat réalisé est une perte de 5 000 FCFA", "25 000 FCFA"], bonne: 1,
           correction: "Le gain latent n'a jamais été encaissé. Seul compte le résultat réalisé à la vente." }
       ] },
-    { id: "t7", titre: "Mesurer son exposition", marche: "actions", competence: "Calculer la part du capital engagée", duree: "6 min",
+    { id: "t7", titre: "Mesurer son exposition", marche: "actions", competence: "Calculer la part du capital engagée", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "L'exposition est la part de votre portefeuille placée sur un actif : valeur de la position ÷ valeur totale du portefeuille." },
         { t: "action", consigne: "Achetez pour environ 300 000 FCFA d'Énergie Soleya.", test: function (st, c) { return !!st.positions.SOL && c.valeurPos("SOL") >= 200000; } },
@@ -208,7 +208,7 @@
         { t: "nombre", transfert: true, question: function (c) { return "Si Énergie Soleya perdait 20 %, combien perdrait votre portefeuille, en % (arrondi à l'unité) ?"; }, reponse: function (c) { return Math.round(c.valeurPos("SOL") / c.valeurTotale() * 20); }, tol: 1, unite: "%",
           correction: "Perte du portefeuille ≈ exposition × baisse de l'actif. Avec 30 % d'exposition, une baisse de 20 % coûte environ 6 % du portefeuille." }
       ] },
-    { id: "t8", titre: "Explorer la diversification", marche: "actions", competence: "Comparer deux allocations", duree: "8 min",
+    { id: "t8", titre: "Explorer la diversification", marche: "actions", competence: "Comparer deux allocations", duree: "Dès 2 min",
       etapes: [
         { t: "qcm", question: "Portefeuille A : 100 % dans une entreprise. Portefeuille B : un tiers dans trois entreprises de secteurs différents. Laquelle de ces phrases est juste ?", choix: ["B gagne toujours plus que A", "B dépend moins d'un seul événement que A", "B ne peut pas perdre"], bonne: 1,
           correction: "Répartir réduit la dépendance à une seule entreprise. Cela ne garantit ni un gain, ni un meilleur résultat que A." },
@@ -217,7 +217,7 @@
         { t: "qcm", transfert: true, question: "Pourquoi deux entreprises de secteurs différents peuvent-elles baisser le même jour ?", choix: ["C'est impossible", "Une cause commune peut toucher tout le marché : hausse des taux, crise, inflation", "Seulement si elles ont le même dirigeant"], bonne: 1,
           correction: "Certains risques touchent tout le marché. La diversification réduit le risque propre à une entreprise, pas celui de tout le marché." }
       ] },
-    { id: "t9", titre: "Réagir à une information", marche: "info", competence: "Expliquer une décision ou une attente", duree: "8 min",
+    { id: "t9", titre: "Réagir à une information", marche: "info", competence: "Expliquer une décision ou une attente", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Une information va être publiée. Attendre est une décision possible. Ici, l'ordre est exécuté à l'ouverture de la séance suivante, à un prix que vous ne connaissez pas encore." },
         { t: "action", consigne: "Avancez jusqu'à ce qu'une information apparaisse dans « Événements ».", test: function (st, c) { return c.evenementsVus().length > 0; } },
@@ -227,7 +227,7 @@
         { t: "qcm", transfert: true, question: "Une bonne nouvelle est publiée et le cours baisse. Est-ce possible ?", choix: ["Non, jamais", "Oui : la nouvelle était peut-être déjà attendue, ou jugée insuffisante", "Seulement en cas d'erreur"], bonne: 1,
           correction: "Le cours reflète ce que les acheteurs et vendeurs attendaient déjà. Une bonne nouvelle n'entraîne pas toujours une hausse." }
       ] },
-    { id: "t10", titre: "Comprendre une paire de devises", marche: "forex", competence: "Identifier base et cotation", duree: "6 min",
+    { id: "t10", titre: "Comprendre une paire de devises", marche: "forex", competence: "Identifier base et cotation", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "EUR/USD : EUR est la devise achetée ou vendue (la base). USD est la devise utilisée pour exprimer son prix (la cotation). Un cours de 1,1000 signifie qu'un euro vaut 1,10 dollar." },
         { t: "qcm", question: "Dans GBP/USD, quelle est la devise de base ?", choix: ["USD", "GBP"], bonne: 1, correction: "La base est la première devise : GBP, la livre sterling. Le cours dit combien de dollars vaut une livre." },
@@ -236,7 +236,7 @@
         { t: "nombre", transfert: true, question: "Le franc CFA est arrimé à l'euro : 1 euro = 655,957 FCFA. Combien de FCFA pour 100 euros (arrondi à l'unité) ?", reponse: function () { return 65596; }, tol: 1, unite: "FCFA",
           correction: "100 × 655,957 = 65 595,7, soit 65 596 FCFA. Ce cours est fixe ; EUR/USD, lui, bouge chaque jour." }
       ] },
-    { id: "t11", titre: "Comprendre le spread", marche: "forex", competence: "Comparer achat et revente immédiate", duree: "6 min",
+    { id: "t11", titre: "Comprendre le spread", marche: "forex", competence: "Comparer achat et revente immédiate", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Vous achetez au cours vendeur (ask), vous revendez au cours acheteur (bid). L'ask est toujours un peu plus haut que le bid : l'écart s'appelle le spread." },
         { t: "action", consigne: "Achetez 1 000 euros.", test: function (st) { return executes(st).some(function (o) { return o.actif === "EURUSD" && o.sens === "achat" && o.qte >= 1000; }); } },
@@ -246,7 +246,7 @@
         { t: "nombre", transfert: true, question: "GBP/USD : bid 1,2700, ask 1,2703. Achat puis revente immédiate de 2 000 livres : perte en USD ?", reponse: function () { return 0.6; }, tol: 0.005, unite: "USD",
           correction: "2 000 × 0,0003 = 0,60 USD. Plus vous faites d'allers-retours, plus le spread s'additionne." }
       ] },
-    { id: "t12", titre: "Analyser ses décisions", marche: "actions", competence: "Produire un bilan argumenté", duree: "10 min",
+    { id: "t12", titre: "Analyser ses décisions", marche: "actions", competence: "Produire un bilan argumenté", duree: "Dès 2 min",
       etapes: [
         { t: "info", texte: "Une bonne décision peut perdre de l'argent, et une mauvaise décision peut en gagner. On juge une décision avec ce que l'on savait au moment de la prendre." },
         { t: "qcm", question: "Vous avez acheté sur une rumeur et gagné 40 000 FCFA. Votre décision était-elle bonne ?", choix: ["Oui, puisque j'ai gagné", "Pas forcément : il faut juger le raisonnement et le risque pris, pas seulement le résultat", "Non, puisque c'était une rumeur"], bonne: 1,

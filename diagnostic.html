@@ -153,7 +153,7 @@ body.nuit .mission .mc,body.nuit .mission-f .mc{color:#EC6243}
 .box.alert a,.box.alert .mini,.box.alert button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
-<link rel="stylesheet" href="clone/habillage.css?v=20261031q">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031r">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -277,7 +277,7 @@ const CFG = window.EFA_CONFIG, LOCAL = !CFG.BREVO_URL, ETAT = "efa_diag_v2";
 const APERCU = CFG.APERCU !== false;
 // Première action, selon la dimension à travailler en premier. f = fiche du guide « Construire sa stabilité financière ».
 const ACTIONS = {
-  savoir:{a:"Cette semaine, apprenez une notion : la différence entre ce qui passe (le flux) et ce qui reste (le stock). Puis notez vos sept chiffres dans la fiche 1.", f:"Fiche 1 · Mes sept chiffres", l:"auteur.html#publications", b:"Lire la leçon Flux (2 min)"},
+  savoir:{a:"Cette semaine, apprenez une notion : la différence entre ce qui passe (le flux) et ce qui reste (le stock). Puis notez vos sept chiffres dans la fiche 1.", f:"Fiche 1 · Mes sept chiffres", l:"auteur.html#publications", b:"Lire la leçon Flux (Dès 1 min)"},
   habitudes:{a:"Retrouvez où est passé votre argent sur une période récente : ce que vous aviez, ce que vous avez reçu, ce qui est sorti et ce qu'il reste. Puis classez vos dépenses dans la fiche 2.", f:"Outil · Où est passé mon argent ? · puis fiche 2", l:"ou-est-passe-mon-argent.html?src=diagnostic", b:"Retrouver mon argent"},
   projection:{a:"Écrivez un objectif avec un montant et une date. Puis calculez combien de rentrées il vous faut pour y arriver.", f:"Calcul : épargner pour un projet", l:"cercle-spirale.html#projet", b:"Calculer mon projet"},
   resilience:{a:"Séparez une réserve de votre argent courant et fixez un premier palier : deux semaines de charges. Les paliers suivants sont dans la fiche 5.", f:"Fiche 5 · Ma réserve", l:CFG.GUIDE, b:"Recevoir la fiche avec le guide"},
@@ -354,7 +354,7 @@ const retour = `<button class="btn ghost" data-act="retour">Retour</button>`;
 const V = {
  accueil() {
   const enCours = S.ans.length > 0 && !fini0();
-  return `<div class="stack"><p class="step">Mon diagnostic financier complet · gratuit · 6 minutes</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
+  return `<div class="stack"><p class="step">Mon diagnostic financier complet · gratuit · dès 2 min</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
    <p class="lead">Le seul diagnostic qui compte aussi vos tontines et ce que vous donnez à vos proches.</p></div>
    <div class="dims">${DIMS.map(d => `<div><b>${d.n}</b><span>${Q.filter(q => q.d === d.k).length} questions</span></div>`).join("")}</div>
    <div class="actions">${S.lead && fini0() ? `<button class="btn" data-go="resultat">Voir mon dernier résultat</button><button class="btn ghost" data-act="recommencer">Refaire le diagnostic</button>`
@@ -377,7 +377,7 @@ const V = {
   return `<div class="stack"><p class="step">Diagnostic terminé · première synthèse</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
    <div class="b4">
     <div class="card"><span class="tag">Votre situation</span><h3>${s.palier}</h3><p class="small muted">Une première lecture de vos ${Q.length} réponses, sur six dimensions.</p></div>
-    ${s[fort.k] >= 50 && s[fort.k] > s[faible.k] ? `<div class="card"><span class="tag">Votre point d'appui</span><h3>${fort.n}</h3><p class="small muted">${APPUI[fort.k]}</p></div>` : `<div class="card"><span class="tag">Votre point d'appui</span><h3>À construire</h3><p class="small muted">Aucune dimension ne se détache encore. Le premier module vous donne une base solide en 45 minutes.</p></div>`}
+    ${s[fort.k] >= 50 && s[fort.k] > s[faible.k] ? `<div class="card"><span class="tag">Votre point d'appui</span><h3>${fort.n}</h3><p class="small muted">${APPUI[fort.k]}</p></div>` : `<div class="card"><span class="tag">Votre point d'appui</span><h3>À construire</h3><p class="small muted">Aucune dimension ne se détache encore. Le premier module vous donne une base solide, dès 2 min.</p></div>`}
     <div class="card"><span class="tag">Votre priorité</span><h3>${faible.n}</h3><p class="small muted">C'est le sujet à travailler en premier.</p></div>
     <div class="card lockd"><span class="tag">Votre première action</span><h3>Une tâche concrète pour cette semaine</h3><p class="small muted">Avec votre score détaillé, votre radar et la fiche correspondante.</p></div>
    </div>
@@ -563,6 +563,6 @@ go(["resultat", "r1", "p1"].includes(S.view) ? "accueil" : ["methode", "confiden
 <!-- Mesure d’audience GoatCounter : sans cookie, sans donnée personnelle -->
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103103" defer></script>
-<script src="clone/habillage.js?v=20261031q" defer></script>
+<script src="clone/habillage.js?v=20261031r" defer></script>
 </body>
 </html>
