@@ -3,136 +3,149 @@
 <head>
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Combien vaut mon entreprise ? Outil gratuit · EFA</title>
-<meta name="description" content="Entrepreneur, estimez la valeur de votre activité à partir du cash qu’elle produit : trois chiffres, une revente dans cinq ans appuyée sur des comparables sourcés, une valeur aujourd’hui.">
+<meta name="description" content="Entrepreneur : en quelques chiffres, comprenez ce qui crée la valeur de votre activité. Le cash qu’elle produit, une hypothèse de revente, une estimation en scénarios.">
 <link rel="canonical" href="https://efa.africa/valoriser-mon-entreprise">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:title" content="Combien vaut mon entreprise ? · un outil gratuit EFA">
-<meta property="og:description" content="Trois chiffres, cinq années, une revente appuyée sur des comparables : une première estimation à comprendre.">
+<meta property="og:description" content="En quelques chiffres, comprenez ce qui crée la valeur de votre activité.">
 <meta property="og:url" content="https://efa.africa/valoriser-mon-entreprise"><meta property="og:image" content="https://efa.africa/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
-.vz{--nuit:#0B1220;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--corail:#DA3C1B;--corail-t:#B8341A;--bleu:#1B71B2;--pale:#EEF5FC;--pale2:#F6FAFE;--line:#DCE6F0;--ok:#1d8a52;--err:#B3261E;
+.vz{--nuit:#0B1220;--ink:#2A3142;--ink2:#465062;--ink3:#5F6676;--bleu:#1B71B2;--cyan:#2188D6;--pale:#EEF5FC;--pale2:#F7FAFD;--line:#DCE6F0;--champ:#8E9BB0;--err:#B3261E;
   --fd:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;--fb:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
 body{margin:0;background:#fff}
 .vz *{box-sizing:border-box}.vz [hidden]{display:none!important}
-.vz-in{max-width:1120px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px))}
+.vz-in{max-width:1080px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px))}
 .vz h1,.vz h2,.vz h3{font-family:var(--fd);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;color:var(--nuit);text-wrap:balance}
-.vz h1 em,.vz h2 em{font-style:italic;color:var(--bleu)}
-.vz-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-t);margin:0}
-.vz-et{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.vz-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--bleu);margin:0}
+.vz-et{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin:0}
 .vz button,.vz input,.vz select{font:inherit;color:inherit}
-.vz :focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.vz :focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+/* Boutons : bleu nuit pour l'action, contour pour le reste */
+.vz-b{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:12px 24px;border-radius:8px;border:0;background:var(--nuit);color:#fff;font-weight:800;font-size:16px;cursor:pointer;text-decoration:none;transition:background .15s}
+.vz-b:hover{background:#1C2840}
+.vz-b2{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 20px;border-radius:8px;border:1.5px solid #C9D3E0;background:#fff;color:var(--nuit);font-weight:700;font-size:16px;cursor:pointer}
+.vz-b2:hover{border-color:var(--nuit)}
+.vz-lien{background:none;border:0;padding:6px 0;color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:16px}
 /* Tête */
-.vz-tete{background:var(--pale);padding:56px 0 110px}
-.vz-tete-g{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
-.vz-tete h1{font-size:clamp(40px,6vw,72px);margin-top:14px}
-.vz-tete p.vz-lede{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);max-width:600px;margin:20px 0 22px}
-.vz-faits{display:flex;flex-wrap:wrap;gap:8px}.vz-faits span{background:#fff;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;color:var(--ink2)}
-.vz-trois{list-style:none;margin:0;padding:24px;background:#fff;border-radius:18px;box-shadow:0 18px 40px rgba(11,18,32,.06)}
-.vz-trois li{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink2)}
-.vz-trois li:first-child{border-top:0;padding-top:0}.vz-trois li:last-child{padding-bottom:0}
-.vz-trois b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--pale);color:var(--bleu);display:grid;place-items:center;font-weight:800}
-/* Calculateur */
-.vz-calc{margin-top:-72px;background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(11,18,32,.10);overflow:hidden}
-.vz-etape{padding:34px 40px;border-top:1px solid var(--line)}.vz-etape:first-child{border-top:0}
-.vz-etape h2{font-size:clamp(24px,2.6vw,30px);margin:6px 0 8px}
-.vz-etape>p.vz-intro{color:var(--ink2);margin:0 0 24px;max-width:680px}
+.vz-tete{background:var(--pale);padding:44px 0 84px}
+.vz-tete-g{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.vz-tete h1{font-size:clamp(38px,5.2vw,64px);margin-top:12px}
+.vz-lede{font-size:clamp(17px,1.6vw,20px);color:var(--ink2);max-width:560px;margin:16px 0 18px}
+.vz-faits{display:flex;flex-wrap:wrap;gap:8px}.vz-faits span{background:#fff;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700;color:var(--ink2)}
+.vz-fil{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin:18px 0 0;font-weight:700;color:var(--nuit);font-size:15px}
+.vz-fil i{font-style:normal;color:var(--bleu)}
+.vz-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#dfe9f3}
+.vz-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:35% 50%}
+/* Carte de calcul */
+.vz-calc{margin-top:-52px;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(11,18,32,.09);overflow:hidden;position:relative}
+.vz-ecran{padding:32px 38px 34px}
+.vz-ecran+.vz-ecran{border-top:1px solid var(--line)}
+.vz-ecran h2{font-size:clamp(23px,2.5vw,29px);margin:6px 0 8px}
+.vz-intro{color:var(--ink2);margin:0 0 20px;max-width:680px;font-size:16.5px}
+.vz-unite{display:inline-flex;background:var(--pale);border-radius:10px;padding:4px;margin:0 0 20px}
+.vz-unite button{border:0;background:none;padding:8px 14px;border-radius:7px;font-weight:700;font-size:15px;color:var(--ink2);cursor:pointer}
+.vz-unite button[aria-pressed="true"]{background:#fff;color:var(--nuit);box-shadow:0 1px 4px rgba(11,18,32,.12)}
 .vz-champs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .vz-champs.vz-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
 .vz-champ{display:flex;flex-direction:column;gap:6px}
-.vz-champ label{font-weight:700;font-size:15px}
-.vz-champ small{color:var(--ink3);font-size:13px;line-height:1.4;min-height:36px}
-.vz-saisie{display:flex;align-items:center;border:1.5px solid #C9D6E3;border-radius:10px;background:#fff;overflow:hidden}
-.vz-saisie:focus-within{border-color:var(--bleu);box-shadow:0 0 0 3px rgba(27,113,178,.15)}
-.vz-saisie input,.vz-saisie select{flex:1;min-width:0;border:0;outline:0;padding:13px 14px;font-weight:700;background:transparent;font-size:17px}
+.vz-champ label{font-weight:700;font-size:16px;color:var(--nuit)}
+.vz-aide{color:var(--ink2);font-size:14.5px;line-height:1.4;margin:0}
+.vz-saisie{display:flex;align-items:center;border:1.5px solid var(--champ);border-radius:10px;background:#fff;overflow:hidden;margin-top:auto}
+.vz-saisie:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(33,136,214,.18)}
+.vz-saisie input,.vz-saisie select{flex:1;min-width:0;width:100%;border:0;outline:0;padding:13px 14px;font-weight:700;background:transparent;font-size:17px;color:var(--nuit)}
 .vz-saisie select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231B71B2' stroke-width='2'/%3E%3C/svg%3E") right 14px center no-repeat;padding-right:40px;cursor:pointer}
-.vz-u{background:var(--pale2);padding:14px 12px;color:var(--ink3);font-size:13px;font-weight:700;white-space:nowrap}
-.vz-ex{margin-top:16px;background:none;border:0;padding:6px 0;color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
-.vz-cash{margin-top:18px;font-size:15px;color:var(--ink2);min-height:24px}.vz-cash b{color:var(--nuit)}
-/* Choix */
+.vz-u{padding:0 14px;color:var(--ink3);font-size:14px;font-weight:700;white-space:nowrap}
+.vz-sortie{margin-top:22px;background:var(--pale2);border-radius:14px;padding:16px 20px;min-height:58px;font-size:16.5px;color:var(--ink2)}
+.vz-sortie b{font-family:var(--fd);font-size:20px;color:var(--nuit)}
+.vz-sortie.vz-neg b{color:var(--err)}
+.vz-actions{display:flex;align-items:center;gap:14px 20px;flex-wrap:wrap;margin-top:24px}
+.vz-err{color:var(--err);font-weight:700;font-size:15px;margin:12px 0 0;min-height:0}
+.vz-err:empty{display:none}
+/* Choix : deux à la fois */
 .vz-choix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:760px}
-.vz-c{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:16px 18px;border-radius:14px;border:1.5px solid #C9D6E3;background:#fff;cursor:pointer;min-height:76px}
-.vz-c b{font-size:17px;color:var(--nuit)}.vz-c span{font-size:14px;color:var(--ink3);line-height:1.35}
-.vz-c:hover{border-color:var(--bleu)}
+.vz-c{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:15px 18px;border-radius:12px;border:1.5px solid #C9D3E0;background:#fff;cursor:pointer;min-height:72px}
+.vz-c b{font-size:17px;color:var(--nuit)}.vz-c span{font-size:14.5px;color:var(--ink2);line-height:1.35}
+.vz-c:hover{border-color:var(--nuit)}
 .vz-c[aria-pressed="true"]{background:var(--pale);border-color:var(--bleu)}
-.vz-c[aria-pressed="true"] b{color:var(--bleu)}
-.vz-autre{margin-top:12px;background:none;border:0;padding:6px 0;font-weight:700;color:var(--ink2);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px;cursor:pointer}
-.vz-pan{margin-top:22px;max-width:860px}
-.vz-rep{margin-top:18px;background:var(--pale2);border-radius:16px;padding:22px 24px}
-.vz-rep h3{font-size:20px;margin:6px 0 4px}
-.vz-rep .vz-sous{margin:0 0 14px;font-size:14px;color:var(--ink3)}
-.vz-lignes{list-style:none;margin:0;padding:0}
-.vz-lignes li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
-.vz-lignes li:first-child{border-top:0}
-.vz-lignes b{white-space:nowrap;color:var(--nuit)}
-.vz-bloc{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
-.vz-bloc p{margin:4px 0 0;font-size:15px;color:var(--ink2)}.vz-bloc p.vz-et{font-size:12px;margin:0 0 4px;color:var(--ink3)}.vz-bloc p.vz-src{font-size:13px;color:var(--ink3);margin-top:8px}
-.vz-src{font-size:13px;color:var(--ink3);margin:10px 0 0}.vz-src a{color:var(--bleu)}
-.vz-prop{margin-top:18px;background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 8px 22px rgba(11,18,32,.05)}
-.vz-prop p{margin:0 0 12px;font-size:16px}.vz-prop p b{color:var(--nuit)}
-.vz-prop .vz-champ{max-width:260px}.vz-prop .vz-champ small{min-height:0}
-.vz-mini{background:none;border:0;padding:4px 0;margin-top:8px;color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:15px}
-.vz-lu{margin:12px 0 0;font-size:15px;color:var(--ink2);min-height:22px}.vz-lu b{color:var(--nuit)}
-/* Affiner */
-.vz-aff summary{cursor:pointer;font-weight:800;color:var(--nuit);list-style:none}
-.vz-aff summary::-webkit-details-marker{display:none}
-.vz-aff summary::after{content:" +";color:var(--bleu)}.vz-aff[open] summary::after{content:" −"}
-.vz-aff summary span{display:block;font-weight:400;color:var(--ink3);font-size:14px;margin-top:2px}
-.vz-aff .vz-champs{margin-top:20px}
-.vz-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:26px 40px 34px;background:var(--pale2)}
-.vz-b{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:12px 24px;border-radius:8px;border:0;background:var(--corail);color:#fff;font-weight:800;font-size:16px;cursor:pointer;text-decoration:none}
-.vz-b:hover{filter:brightness(1.06)}
-.vz-err{color:var(--err);font-weight:700;font-size:15px;margin:0}
-.vz-prive{font-size:13px;color:var(--ink3);margin:0;flex-basis:100%}
+.vz-pan{margin-top:20px;max-width:820px}
+.vz-lu{margin:16px 0 0;font-size:16px;color:var(--ink2)}.vz-lu b{color:var(--nuit)}
+.vz-curseur{display:flex;align-items:center;gap:18px;max-width:560px}
+.vz-curseur input{flex:1;accent-color:var(--nuit)}
+.vz-curseur output{font-family:var(--fd);font-weight:700;font-size:22px;color:var(--nuit);min-width:90px;text-align:right}
+.vz-note{background:var(--pale);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--ink2);margin:14px 0 0}
+.vz-note b{color:var(--nuit)}
+/* Repères documentaires */
+.vz-acc{margin-top:22px;border-top:1px solid var(--line)}
+.vz-acc>summary{cursor:pointer;list-style:none;padding:16px 0 4px;font-weight:800;color:var(--nuit);display:flex;justify-content:space-between;gap:12px}
+.vz-acc>summary::-webkit-details-marker{display:none}
+.vz-acc>summary::after{content:"+";color:var(--bleu);font-size:22px;line-height:1}
+.vz-acc[open]>summary::after{content:"−"}
+.vz-acc>summary small{display:block;font-weight:400;color:var(--ink2);font-size:14.5px}
+.vz-rep{margin-top:14px;background:var(--pale2);border-radius:14px;padding:20px 22px}
+.vz-lignes{list-style:none;margin:6px 0 0;padding:0}
+.vz-lignes li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-top:1px solid var(--line);font-size:15.5px}
+.vz-lignes li:first-child{border-top:0}.vz-lignes b{white-space:nowrap;color:var(--nuit)}
+.vz-bloc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.vz-bloc p{margin:4px 0 0;font-size:15.5px;color:var(--ink2)}
+.vz-src{font-size:13.5px!important;color:var(--ink3)!important;margin-top:8px!important}.vz-src a{color:var(--bleu)}
 /* Résultat */
-.vz-res{margin-top:24px;background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(11,18,32,.10);overflow:hidden;scroll-margin-top:90px}
-.vz-res-t{padding:36px 40px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;background:var(--pale)}
-.vz-val{font-family:var(--fd);font-weight:700;font-size:clamp(36px,5vw,58px);line-height:1.05;color:var(--nuit);margin:10px 0 8px}
-.vz-res-t p{margin:0;color:var(--ink2);font-size:15px}
-.vz-barres{display:grid;gap:10px}
-.vz-barre{display:grid;grid-template-columns:44px 1fr 96px;gap:12px;align-items:center;font-size:14px;color:var(--ink2)}
-.vz-piste{background:#fff;height:14px;border-radius:8px;overflow:hidden}.vz-rempli{height:100%;background:var(--bleu);border-radius:8px}
-.vz-barre b{text-align:right;color:var(--nuit)}
-.vz-chiffres{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
-.vz-chiffres div{padding:18px 26px;border-left:1px solid var(--line)}.vz-chiffres div:first-child{border-left:0}
-.vz-chiffres span{display:block;font-size:13px;color:var(--ink3)}
-.vz-chiffres strong{font-family:var(--fd);font-size:22px;color:var(--nuit)}
-.vz-res-b{padding:28px 40px 34px;display:grid;grid-template-columns:1fr 1fr;gap:36px;border-top:1px solid var(--line)}
-.vz-res-b h3{font-size:20px;margin-bottom:10px}
-.vz-res-b p{margin:0 0 10px;font-size:15px;color:var(--ink2)}
-.vz-part{display:flex;height:16px;border-radius:8px;overflow:hidden;margin:6px 0 8px}
-.vz-part i{display:block;height:100%}.vz-part .a{background:var(--bleu)}.vz-part .b{background:#9CC7EA}
-.vz-leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--ink2)}
+.vz-res{margin-top:24px;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(11,18,32,.09);overflow:hidden;scroll-margin-top:84px}
+.vz-res-t{padding:32px 38px;background:var(--pale)}
+.vz-val{font-family:var(--fd);font-weight:700;font-size:clamp(36px,5vw,56px);line-height:1.05;color:var(--nuit);margin:8px 0 6px}
+.vz-res-t>p{margin:0;color:var(--ink2);font-size:16px}
+.vz-delta{display:inline-block;margin-top:10px;background:#fff;border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700;color:var(--bleu)}
+.vz-eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin-top:22px}
+.vz-eq div{background:#fff;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;gap:6px}
+.vz-eq i{align-self:center}
+.vz-eq span{display:block;font-size:14px;color:var(--ink2)}
+.vz-eq strong{font-family:var(--fd);font-size:20px;color:var(--nuit)}
+.vz-eq i{font-style:normal;font-weight:800;font-size:22px;color:var(--ink3);text-align:center}
+.vz-eq .vz-tot{background:var(--nuit)}.vz-eq .vz-tot span{color:#C9D1DE}.vz-eq .vz-tot strong{color:#fff}
+.vz-part{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:16px 0 6px;background:#fff}
+.vz-part i{display:block;height:100%}.vz-part .a{background:var(--bleu)}.vz-part .b{background:#A9CDEB}
+.vz-leg{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:14px;color:var(--ink2)}
 .vz-leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--bleu)}
-.vz-leg span.b::before{background:#9CC7EA}
-.vz-alerte{background:var(--corail);color:#fff;border-radius:2px;padding:14px 16px;font-size:15px;margin-top:14px}
-.vz-sens{list-style:none;margin:0;padding:0}
-.vz-sens li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
-.vz-sens li:first-child{border-top:0}.vz-sens b{white-space:nowrap}.vz-sens li.ici{font-weight:800;color:var(--bleu)}
-.vz-risque{grid-column:1/-1;font-size:13px!important;color:var(--ink3)!important;margin:0!important}
-/* Sections */
-.vz-sec{padding:84px 0}.vz-sec.vz-alt{background:var(--pale2)}
-.vz-sec h2{font-size:clamp(28px,3.8vw,44px);margin:12px 0 30px;max-width:780px}
-.vz-princ{display:grid;grid-template-columns:1.1fr .9fr;gap:56px}
-.vz-recit p{margin:0 0 18px;font-size:17px;line-height:1.7}.vz-recit strong{color:var(--nuit)}
-.vz-exemple{background:#fff;border-radius:16px;padding:26px;box-shadow:0 12px 30px rgba(11,18,32,.06);align-self:start}
-.vz-exemple h3{font-size:20px;margin:8px 0 16px}
-.vz-eq{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:10px 0;font-size:15px}
-.vz-eq b{white-space:nowrap}.vz-eq.t{border-top:2px solid var(--nuit);font-weight:800;color:var(--nuit)}
-.vz-exemple small{display:block;color:var(--ink3);margin-top:12px;font-size:13px}
-.vz-banq{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px}
-.vz-banq p{color:var(--ink2)}
-.vz-cartes{display:grid;gap:12px}
-.vz-carte{background:#fff;border-radius:14px;padding:18px 22px}
-.vz-carte b{display:block;font-size:16px;color:var(--nuit)}.vz-carte span{font-size:15px;color:var(--ink2)}
-.vz-sources ol{margin:0;padding-left:20px;font-size:15px;color:var(--ink2)}.vz-sources li{margin:0 0 10px}
-.vz-sources a{color:var(--bleu);font-weight:700}
-.vz-mention{font-size:14px;color:var(--ink3);margin-top:26px}
-@media(max-width:900px){.vz-tete-g,.vz-princ,.vz-banq,.vz-res-t,.vz-res-b{grid-template-columns:1fr;gap:26px}.vz-trois{display:none}.vz-champs{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.vz-tete{padding:40px 0 96px}.vz-etape{padding:26px 20px}.vz-actions{padding:22px 20px 28px}.vz-champs,.vz-champs.vz-2,.vz-choix{grid-template-columns:1fr}.vz-champ small{min-height:0}.vz-b{width:100%;justify-content:center}
-  .vz-res-t,.vz-res-b{padding:26px 20px}.vz-chiffres{grid-template-columns:1fr}.vz-chiffres div{border-left:0;border-top:1px solid var(--line);padding:14px 20px}.vz-chiffres div:first-child{border-top:0}.vz-barre{grid-template-columns:40px 1fr 80px}.vz-sec{padding:60px 0}.vz-rep{padding:18px}.vz-lignes li{font-size:14px}}
+.vz-leg span.b::before{background:#A9CDEB}
+.vz-res-c{padding:28px 38px;border-top:1px solid var(--line)}
+.vz-res-c h3{font-size:21px;margin-bottom:6px}
+.vz-res-c>p{margin:0 0 14px;color:var(--ink2);font-size:15.5px}
+.vz-scen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.vz-sc{border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}
+.vz-sc.ici{border-color:var(--bleu);background:var(--pale2)}
+.vz-sc .vz-et{color:var(--bleu)}
+.vz-sc strong{display:block;font-family:var(--fd);font-size:22px;color:var(--nuit);margin:6px 0 8px}
+.vz-sc ul{list-style:none;margin:0;padding:0;font-size:14.5px;color:var(--ink2)}
+.vz-sc li{padding:3px 0}
+.vz-parts{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin-top:14px}
+.vz-detail summary{cursor:pointer;font-weight:700;color:var(--bleu);text-decoration:underline;text-underline-offset:4px;list-style:none}
+.vz-detail summary::-webkit-details-marker{display:none}
+.vz-barres{display:grid;gap:9px;margin-top:14px;max-width:640px}
+.vz-barre{display:grid;grid-template-columns:44px 1fr 110px;gap:12px;align-items:center;font-size:14.5px;color:var(--ink2)}
+.vz-piste{background:var(--pale);height:12px;border-radius:6px;overflow:hidden}.vz-rempli{height:100%;background:var(--bleu);border-radius:6px}
+.vz-barre b{text-align:right;color:var(--nuit)}
+.vz-res-pied{padding:22px 38px 30px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.vz-res-pied p{flex-basis:100%;margin:0;font-size:14px;color:var(--ink3)}
+/* Comprendre */
+.vz-plus{padding:56px 0 80px}
+.vz-plus h2{font-size:clamp(26px,3.2vw,36px);margin:10px 0 18px}
+.vz-plus .vz-acc{max-width:860px}
+.vz-plus .vz-acc>summary{padding:20px 0;font-size:19px;font-family:var(--fd)}
+.vz-corps{padding:0 0 22px;color:var(--ink2);font-size:16.5px;line-height:1.65}
+.vz-corps p{margin:0 0 14px}.vz-corps strong{color:var(--nuit)}
+.vz-ex{background:var(--pale2);border-radius:14px;padding:20px 22px;max-width:560px}
+.vz-ex div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:9px 0;font-size:15.5px}
+.vz-ex div:first-of-type{border-top:0}.vz-ex b{white-space:nowrap;color:var(--nuit)}
+.vz-ex .t{border-top:2px solid var(--nuit);font-weight:800;color:var(--nuit)}
+.vz-cartes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vz-carte{background:var(--pale2);border-radius:12px;padding:16px 18px}.vz-carte b{display:block;color:var(--nuit)}.vz-carte span{font-size:15px}
+.vz-corps ol{margin:0;padding-left:20px}.vz-corps li{margin:0 0 10px;font-size:15.5px}.vz-corps a{color:var(--bleu);font-weight:700}
+.vz-mention{font-size:14px;color:var(--ink3);margin-top:22px;max-width:860px}
+@media(max-width:900px){.vz-tete-g{grid-template-columns:1fr}.vz-img{display:none}.vz-champs{grid-template-columns:minmax(0,1fr)}.vz-scen{grid-template-columns:1fr}.vz-eq{grid-template-columns:1fr;gap:6px}.vz-eq i{line-height:1}.vz-cartes{grid-template-columns:1fr}}
+@media(max-width:640px){.vz-tete{padding:30px 0 70px}.vz-ecran{padding:24px 20px 26px}.vz-champs.vz-2,.vz-choix,.vz-parts{grid-template-columns:minmax(0,1fr)}.vz-actions .vz-b,.vz-actions .vz-b2{width:100%}
+ .vz-res-t,.vz-res-c,.vz-res-pied{padding-left:20px;padding-right:20px}.vz-barre{grid-template-columns:40px 1fr 92px}.vz-rep{padding:16px}.vz-lignes li{font-size:14.5px}.vz-res-pied .vz-b,.vz-res-pied .vz-b2{width:100%}}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261031o">
 </head>
@@ -140,205 +153,228 @@ body{margin:0;background:#fff}
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <main id="contenu" class="vz" data-garde>
 <header class="vz-tete"><div class="vz-in vz-tete-g">
- <div><p class="vz-k">Boîte à outils · Entrepreneurs</p><h1>Combien vaut <em>mon entreprise&nbsp;?</em></h1>
- <p class="vz-lede">Trois chiffres, cinq années à imaginer, une revente appuyée sur des ventes comparables. Une première estimation, pour comprendre d’où vient la valeur de votre activité.</p>
- <div class="vz-faits"><span>10 minutes</span><span>Gratuit, sans inscription</span><span>Vos chiffres restent sur votre appareil</span></div></div>
- <ol class="vz-trois" aria-label="La méthode en trois temps"><li><b>1</b><span>Le cash qui reste après le fonctionnement et les investissements.</span></li><li><b>2</b><span>Ce cash sur cinq ans, puis un prix de revente à la fin.</span></li><li><b>3</b><span>Ces sommes futures, ramenées à leur valeur d’aujourd’hui.</span></li></ol>
+ <div><p class="vz-k">Boîte à outils · Entrepreneurs</p><h1>Combien vaut mon entreprise&nbsp;?</h1>
+ <p class="vz-lede">En quelques chiffres, comprenez ce qui crée la valeur de votre activité.</p>
+ <div class="vz-faits"><span>Gratuit</span><span>10 minutes</span><span>Vos chiffres restent sur cet appareil</span></div>
+ <p class="vz-fil" aria-label="La méthode">Le cash produit <i aria-hidden="true">→</i> les cinq prochaines années <i aria-hidden="true">→</i> la valeur d’aujourd’hui</p></div>
+ <div class="vz-img"><img src="clone/assets/benefice-entreprise.webp" alt="Deux entrepreneures font leurs comptes dans leur atelier de transformation" decoding="async" fetchpriority="high"></div>
 </div></header>
 
 <div class="vz-in">
-<form class="vz-calc" id="vz-form" novalidate aria-label="Estimer la valeur de mon entreprise">
- <section class="vz-etape" aria-labelledby="t1"><p class="vz-et">Étape 1 sur 3 · En millions de FCFA</p><h2 id="t1">Ce que produit votre activité</h2>
-  <p class="vz-intro">Des montants moyens et réalistes. Les dépenses comprennent votre propre rémunération normale et les impôts de l’activité.</p>
+<div class="vz-calc" id="vz-calc">
+ <section class="vz-ecran" id="e1" aria-labelledby="t1"><p class="vz-et">1 · Mon activité</p><h2 id="t1">Ce que votre activité encaisse et dépense</h2>
+  <div class="vz-unite" role="group" aria-label="Unité des montants"><button type="button" data-u="f" aria-pressed="true">En FCFA</button><button type="button" data-u="m" aria-pressed="false">En millions de FCFA</button></div>
   <div class="vz-champs">
-   <div class="vz-champ"><label for="enc">Argent encaissé par mois</label><small>Les ventes effectivement payées par vos clients.</small><div class="vz-saisie"><input id="enc" inputmode="decimal" autocomplete="off" placeholder="Ex. 5"><span class="vz-u">M FCFA</span></div></div>
-   <div class="vz-champ"><label for="dep">Dépenses courantes par mois</label><small>Salaires, fournisseurs, loyer, impôts. Sans les achats d’équipement.</small><div class="vz-saisie"><input id="dep" inputmode="decimal" autocomplete="off" placeholder="Ex. 3"><span class="vz-u">M FCFA</span></div></div>
-   <div class="vz-champ"><label for="inv">Investissements par an</label><small>Machines, matériel, véhicules, logiciels à renouveler ou à acheter.</small><div class="vz-saisie"><input id="inv" inputmode="decimal" autocomplete="off" placeholder="Ex. 6"><span class="vz-u">M FCFA</span></div></div>
+   <div class="vz-champ"><label for="enc">Encaissements par mois</label><p class="vz-aide">Ce que vos clients vous paient réellement, en moyenne.</p><div class="vz-saisie"><input id="enc" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
+   <div class="vz-champ"><label for="dep">Dépenses courantes par mois</label><p class="vz-aide">Salaires, fournisseurs, loyer, impôts, et une rémunération normale pour votre travail. Sans les remboursements d’emprunt ni les achats d’équipement.</p><div class="vz-saisie"><input id="dep" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
+   <div class="vz-champ"><label for="inv">Investissements par an</label><p class="vz-aide">Équipement, véhicules, logiciels à acheter ou à renouveler. À ne pas compter aussi dans les dépenses.</p><div class="vz-saisie"><input id="inv" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
   </div>
-  <p class="vz-cash" id="vz-cash" aria-live="polite"></p>
-  <button type="button" class="vz-ex" id="vz-exemple">Essayer avec un exemple</button>
+  <div class="vz-sortie" id="sortie1" aria-live="polite">Entrez vos trois montants : le cash de votre activité s’affiche ici.</div>
+  <div class="vz-actions"><button type="button" class="vz-b" id="go1">Calculer le cash de mon activité <span aria-hidden="true">→</span></button><button type="button" class="vz-lien" id="exemple">Essayer avec un exemple</button></div>
+  <p class="vz-err" id="err1" role="alert"></p>
  </section>
 
- <section class="vz-etape" aria-labelledby="t2"><p class="vz-et">Étape 2 sur 3 · La revente</p><h2 id="t2">Dans cinq ans, combien un acheteur paierait-il&nbsp;?</h2>
-  <p class="vz-intro">On l’exprime en nombre de fois le cash annuel de la cinquième année. C’est souvent l’hypothèse qui pèse le plus. Choisissez comment la fixer.</p>
-  <div class="vz-choix" role="group" aria-label="Comment fixer le prix de revente">
-   <button type="button" class="vz-c" data-mode="activite" aria-pressed="false"><b>Je décris mon activité</b><span>Nous vous montrons des ventes comparables et leurs sources.</span></button>
-   <button type="button" class="vz-c" data-mode="montant" aria-pressed="false"><b>J’ai un montant en tête</b><span>Vous entrez un prix, nous le comparons aux repères.</span></button>
-   <button type="button" class="vz-c" data-mode="vente" aria-pressed="false" hidden><b>Je connais une vente comparable</b><span>Le prix et le cash d’une entreprise vendue près de chez vous.</span></button>
-   <button type="button" class="vz-c" data-mode="aucun" aria-pressed="false" hidden><b>Je n’ai pas de repère</b><span>Nous vous faisons une proposition, à vous de voir.</span></button>
+ <section class="vz-ecran" id="e2" aria-labelledby="t2" hidden><p class="vz-et">2 · Mon hypothèse de revente</p><h2 id="t2">Dans cinq ans, à quel prix l’activité pourrait-elle se revendre&nbsp;?</h2>
+  <p class="vz-intro">C’est souvent l’hypothèse qui pèse le plus. Choisissez d’où elle vient&nbsp;: la page l’affichera avec le résultat.</p>
+  <div class="vz-choix" role="group" aria-label="D’où vient votre hypothèse de revente">
+   <button type="button" class="vz-c" data-mode="prix" aria-pressed="false"><b>Je connais un prix</b><span>Un montant que vous visez ou qu’on vous a proposé.</span></button>
+   <button type="button" class="vz-c" data-mode="vente" aria-pressed="false"><b>Je connais une vente comparable</b><span>Une activité proche, vendue à un prix connu.</span></button>
+   <button type="button" class="vz-c" data-mode="scenario" aria-pressed="false" hidden><b>Je veux explorer un scénario</b><span>Vous faites varier le prix de revente et vous regardez l’effet.</span></button>
   </div>
-  <button type="button" class="vz-autre" id="vz-autre" aria-expanded="false">Autre chose</button>
-
-  <div class="vz-pan" id="p-activite" hidden>
-   <div class="vz-champ" style="max-width:520px"><label for="act">Votre activité ressemble surtout à…</label><div class="vz-saisie"><select id="act"><option value="">Choisir une activité</option></select></div></div>
-   <div id="vz-rep"></div>
-  </div>
-  <div class="vz-pan" id="p-montant" hidden>
-   <div class="vz-champs vz-2"><div class="vz-champ"><label for="mt">Prix de revente visé, dans cinq ans</label><small>Le prix que vous pensez obtenir d’un acheteur.</small><div class="vz-saisie"><input id="mt" inputmode="decimal" autocomplete="off" placeholder="Ex. 40"><span class="vz-u">M FCFA</span></div></div></div>
-   <p class="vz-lu" id="lu-montant" aria-live="polite"></p>
+  <button type="button" class="vz-lien" id="autre" style="margin-top:10px">Autre chose</button>
+  <div class="vz-pan" id="p-prix" hidden>
+   <div class="vz-champs vz-2"><div class="vz-champ"><label for="mt">Prix de revente, dans cinq ans</label><p class="vz-aide">Pour l’activité entière, avant de rembourser ses dettes.</p><div class="vz-saisie"><input id="mt" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div></div>
+   <p class="vz-lu" id="lu-prix" aria-live="polite"></p>
   </div>
   <div class="vz-pan" id="p-vente" hidden>
    <div class="vz-champs vz-2">
-    <div class="vz-champ"><label for="vp">Prix de vente de cette entreprise</label><small>Ce que l’acheteur a payé, dettes non comprises.</small><div class="vz-saisie"><input id="vp" inputmode="decimal" autocomplete="off" placeholder="Ex. 30"><span class="vz-u">M FCFA</span></div></div>
-    <div class="vz-champ"><label for="vc">Son cash annuel au moment de la vente</label><small>Ce qui lui restait par an après dépenses et investissements.</small><div class="vz-saisie"><input id="vc" inputmode="decimal" autocomplete="off" placeholder="Ex. 10"><span class="vz-u">M FCFA</span></div></div>
+    <div class="vz-champ"><label for="vp">Prix payé pour cette activité</label><p class="vz-aide">Ce que l’acheteur a versé, dettes non comprises.</p><div class="vz-saisie"><input id="vp" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
+    <div class="vz-champ"><label for="vc">Son cash annuel au moment de la vente</label><p class="vz-aide">Calculé comme le vôtre&nbsp;: après rémunération normale du dirigeant, impôts et investissements.</p><div class="vz-saisie"><input id="vc" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
    </div>
    <p class="vz-lu" id="lu-vente" aria-live="polite"></p>
   </div>
-  <div class="vz-pan" id="p-aucun" hidden><div class="vz-prop" id="vz-prop-aucun"></div></div>
- </section>
+  <div class="vz-pan" id="p-scenario" hidden>
+   <label class="vz-et" for="sc">Revente en nombre de fois le cash de l’année 5</label>
+   <div class="vz-curseur" style="margin-top:8px"><input type="range" id="sc" min="0" max="8" step="0.5" value="3"><output id="sc-o" for="sc">3 fois</output></div>
+   <p class="vz-note"><b>Scénario d’exploration, pas un prix de marché.</b> Il sert à voir combien la revente pèse dans la valeur. À 0, personne ne rachète&nbsp;: seule compte le cash des cinq années.</p>
+  </div>
 
- <section class="vz-etape" aria-labelledby="t3"><p class="vz-et">Étape 3 sur 3 · Facultatif</p>
-  <details class="vz-aff" id="vz-aff"><summary id="t3">Affiner la croissance et le taux<span>Deux hypothèses, déjà remplies. Vous pouvez les modifier.</span></summary>
-   <div class="vz-champs vz-2">
-    <div class="vz-champ"><label for="cr">Croissance du cash chaque année</label><small>0 % si le cash reste au même niveau pendant cinq ans.</small><div class="vz-saisie"><input id="cr" inputmode="decimal" value="0"><span class="vz-u">% par an</span></div></div>
-    <div class="vz-champ"><label for="tx">Taux pour ramener les sommes à aujourd’hui</label><small>Plus l’activité est risquée, plus le taux est élevé. 18 % est une hypothèse d’apprentissage.</small><div class="vz-saisie"><input id="tx" inputmode="decimal" value="18"><span class="vz-u">%</span></div></div>
-   </div>
+  <details class="vz-acc" id="reperes"><summary><span>Repères&nbsp;: à combien se vendent des activités comparables&nbsp;?<small>Pour information. Ces chiffres ne sont pas appliqués à votre calcul.</small></span></summary>
+   <div class="vz-champ" style="max-width:520px;margin-top:12px"><label for="act">Votre activité ressemble surtout à…</label><div class="vz-saisie"><select id="act"><option value="">Choisir une activité</option></select></div></div>
+   <div id="rep"></div>
   </details>
+  <div class="vz-actions"><button type="button" class="vz-b" id="go2">Voir mon estimation <span aria-hidden="true">→</span></button><button type="button" class="vz-b2" id="retour1"><span aria-hidden="true">←</span> Modifier mes chiffres</button></div>
+  <p class="vz-err" id="err2" role="alert"></p>
  </section>
- <div class="vz-actions"><button class="vz-b" type="submit">Voir une première valeur <span aria-hidden="true">→</span></button><p class="vz-err" id="vz-err" role="alert"></p><p class="vz-prive">Aucun chiffre n’est envoyé : le calcul se fait sur votre appareil.</p></div>
-</form>
-
-<section class="vz-res" id="vz-res" hidden tabindex="-1" aria-labelledby="t-res">
- <div class="vz-res-t"><div><p class="vz-et" id="t-res">Estimation de la valeur de l’activité aujourd’hui</p><div class="vz-val" id="r-val">—</div><p id="r-sous"></p></div><div class="vz-barres" id="r-barres" aria-label="Cash projeté sur cinq ans"></div></div>
- <div class="vz-chiffres"><div><span>Cash de l’année 1</span><strong id="r-c1">—</strong></div><div><span>Cash cumulé sur cinq ans</span><strong id="r-c5">—</strong></div><div><span>Revente supposée fin de l’année 5</span><strong id="r-rv">—</strong></div></div>
- <div class="vz-res-b">
-  <div><h3>D’où vient cette valeur</h3><div class="vz-part" id="r-part" aria-hidden="true"></div><div class="vz-leg" id="r-leg"></div><p id="r-lect" style="margin-top:14px"></p><div id="r-alerte"></div></div>
-  <div><h3>Et si la revente changeait&nbsp;?</h3><p>La même activité, avec d’autres prix de revente&nbsp;:</p><ul class="vz-sens" id="r-sens"></ul></div>
-  <p class="vz-risque">Cette estimation porte sur l’activité, avant ses dettes et sa trésorerie. Pour la valeur de vos parts, il faut retirer les dettes et ajouter la trésorerie disponible. Les repères de revente sont des ordres de grandeur tirés de ventes et de cotations réelles, pas un prix garanti.</p>
- </div>
-</section>
 </div>
 
-<section class="vz-sec" id="comprendre"><div class="vz-in"><p class="vz-k">Le principe, sans jargon</p><h2>On achète une entreprise pour le cash qu’elle pourra produire.</h2>
- <div class="vz-princ"><div class="vz-recit">
-  <p>Vous partez de ce que l’entreprise encaisse. Vous retirez ce qu’il faut payer pour fonctionner, puis ce qu’il faut investir pour continuer. <strong>Ce qui reste, c’est le cash produit par l’activité.</strong></p>
-  <p>Vous faites le calcul pour une année, puis vous imaginez les cinq suivantes. Au bout de cinq ans, l’entreprise vaut encore quelque chose&nbsp;: c’est le prix qu’un acheteur pourrait payer pour la reprendre. Pour le fixer, on regarde à combien se vendent des entreprises qui ressemblent à la vôtre.</p>
-  <p>Vous additionnez le cash de ces années et la revente. Puis vous posez la vraie question&nbsp;: <strong>combien valent aujourd’hui des sommes que vous ne toucherez que plus tard&nbsp;?</strong> Plus elles sont lointaines et incertaines, moins elles valent aujourd’hui.</p>
+<section class="vz-res" id="res" hidden tabindex="-1" aria-labelledby="t-res">
+ <div class="vz-res-t"><p class="vz-et" id="t-res">Valeur de l’activité aujourd’hui</p><div class="vz-val" id="r-val">—</div><p>Estimation pédagogique de l’activité · selon vos hypothèses</p><span class="vz-delta" id="r-delta" hidden></span>
+  <div class="vz-eq" aria-label="Construction de la valeur"><div><span>Valeur aujourd’hui des 5 années de cash</span><strong id="r-vf">—</strong></div><i aria-hidden="true">+</i><div><span>Valeur aujourd’hui de la revente</span><strong id="r-vr">—</strong></div><i aria-hidden="true">=</i><div class="vz-tot"><span>Valeur de l’activité</span><strong id="r-vt">—</strong></div></div>
+  <div class="vz-part" id="r-part" aria-hidden="true"></div><div class="vz-leg" id="r-leg"></div>
+  <p class="vz-note" id="r-note" hidden></p>
  </div>
- <div class="vz-exemple"><p class="vz-et">Un exemple simple</p><h3>Une activité qui laisse 1 M FCFA par mois</h3>
-  <div class="vz-eq"><span>Cash sur un an</span><b>1 × 12 = 12 M</b></div>
-  <div class="vz-eq"><span>Cash sur cinq ans, s’il reste stable</span><b>12 × 5 = 60 M</b></div>
-  <div class="vz-eq"><span>Revente à 2,5 fois 12 M</span><b>30 M</b></div>
-  <div class="vz-eq t"><span>Sommes futures, avant le temps et le risque</span><b>90 M FCFA</b></div>
-  <small>90 M n’est pas le prix à payer aujourd’hui. Une fois le temps et le risque pris en compte, la valeur actuelle est nettement plus basse.</small></div>
- </div></div></section>
+ <div class="vz-res-c"><h3>Trois lectures</h3><p>La même activité, avec des hypothèses plus ou moins favorables.</p><div class="vz-scen" id="r-scen"></div></div>
+ <div class="vz-res-c"><h3>Vos parts peuvent valoir autre chose</h3><p>Pour passer de l’activité à vos parts, il faut notamment retirer les dettes et ajouter la trésorerie disponible. Facultatif&nbsp;:</p>
+  <div class="vz-parts">
+   <div class="vz-champ"><label for="dt">Dettes de l’entreprise</label><p class="vz-aide">Emprunts restant à rembourser.</p><div class="vz-saisie"><input id="dt" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
+   <div class="vz-champ"><label for="tr">Trésorerie disponible</label><p class="vz-aide">Ce qui est sur les comptes, au-delà des besoins courants.</p><div class="vz-saisie"><input id="tr" inputmode="decimal" autocomplete="off"><span class="vz-u" data-unite>FCFA</span></div></div>
+  </div>
+  <p class="vz-lu" id="r-parts" aria-live="polite"></p>
+ </div>
+ <div class="vz-res-c"><h3>Affiner</h3><p>Deux hypothèses déjà remplies. Le résultat se met à jour et indique l’écart.</p>
+  <div class="vz-parts">
+   <div class="vz-champ"><label for="cr">Croissance du cash chaque année</label><p class="vz-aide">0 % si le cash reste au même niveau.</p><div class="vz-saisie"><input id="cr" inputmode="decimal" value="0"><span class="vz-u">% par an</span></div></div>
+   <div class="vz-champ"><label for="tx">Taux pour ramener à aujourd’hui</label><p class="vz-aide">Plus l’activité est risquée, plus il est élevé. 18 % est une hypothèse d’apprentissage.</p><div class="vz-saisie"><input id="tx" inputmode="decimal" value="18"><span class="vz-u">%</span></div></div>
+  </div>
+  <p class="vz-err" id="err3" role="alert"></p>
+  <details class="vz-detail" id="r-det" style="margin-top:18px"><summary>Voir le cash année par année</summary><div class="vz-barres" id="r-barres"></div></details>
+ </div>
+ <div class="vz-res-pied"><button type="button" class="vz-b2" id="retour2"><span aria-hidden="true">←</span> Modifier mes hypothèses</button><button type="button" class="vz-lien" id="zero">Recommencer</button>
+  <p>Outil d’apprentissage&nbsp;: ni une expertise, ni une évaluation certifiée, ni une offre d’achat. Vos chiffres sont gardés sur cet appareil le temps de votre visite, et ne sont envoyés nulle part.</p></div>
+</section>
 
-<section class="vz-sec vz-alt"><div class="vz-in vz-banq"><div><p class="vz-k">Pour aller plus loin</p><h2>Et les banquiers, que font-ils&nbsp;?</h2>
- <p>Ils partent de la même idée, puis ils poussent chaque hypothèse beaucoup plus loin. Cette méthode s’appelle l’actualisation des flux de trésorerie, souvent abrégée DCF.</p>
- <p>Cette page vous donne une première lecture. Une vente réelle demande des comptes vérifiés, plusieurs scénarios et une négociation.</p></div>
- <div class="vz-cartes">
-  <div class="vz-carte"><b>Ils reconstruisent le cash disponible.</b><span>Résultat d’exploitation, impôts, investissements et variation du besoin en fonds de roulement.</span></div>
-  <div class="vz-carte"><b>Ils projettent chaque année séparément.</b><span>Clients, prix, marges, salaires et investissements n’évoluent pas tous au même rythme.</span></div>
-  <div class="vz-carte"><b>Ils testent la valeur finale de deux façons.</b><span>Avec des multiples de ventes comparables, et avec une croissance sans fin à un rythme modéré. Puis ils confrontent les deux.</span></div>
-  <div class="vz-carte"><b>Ils passent de l’entreprise à vos parts.</b><span>Ils retirent les dettes, ajoutent la trésorerie, puis examinent les conditions de la vente.</span></div>
- </div></div></section>
-
-<section class="vz-sec vz-sources"><div class="vz-in"><p class="vz-k">Sources des repères</p><h2>D’où viennent les chiffres de comparaison</h2>
- <ol id="vz-sources"></ol>
- <p class="vz-mention">Outil d’apprentissage. Ce n’est ni une expertise, ni une évaluation certifiée, ni une offre d’achat. Les ventes de petites entreprises recensées viennent des États-Unis, faute de données publiques comparables dans l’UEMOA&nbsp;: elles donnent un ordre de grandeur, que les conditions locales (moins d’acheteurs, crédit plus cher) tirent plutôt vers le bas.</p>
-</div></section>
+<section class="vz-plus"><p class="vz-k">Pour aller plus loin</p><h2>Comprendre le résultat</h2>
+ <details class="vz-acc"><summary>Comprendre le calcul</summary><div class="vz-corps">
+  <p>Vous partez de ce que l’activité encaisse. Vous retirez ce qu’il faut payer pour fonctionner, y compris votre travail, puis ce qu’il faut investir pour continuer. <strong>Ce qui reste, c’est le cash produit par l’activité.</strong></p>
+  <p>Vous imaginez ce cash sur cinq ans. Au bout de cinq ans, l’activité vaut encore quelque chose&nbsp;: c’est le prix de revente. Puis vous posez la vraie question&nbsp;: <strong>combien valent aujourd’hui des sommes que vous ne toucherez que plus tard&nbsp;?</strong> Plus elles sont lointaines et incertaines, moins elles valent aujourd’hui.</p>
+  <div class="vz-ex"><p class="vz-et">Un exemple</p><div><span>Cash qui reste chaque mois</span><b>1 M</b></div><div><span>Sur un an</span><b>12 M</b></div><div><span>Sur cinq ans, s’il reste stable</span><b>60 M</b></div><div><span>Revente supposée à 3 fois 12 M</span><b>36 M</b></div><div class="t"><span>Sommes futures</span><b>96 M FCFA</b></div></div>
+  <p style="margin-top:14px">96 M n’est pas la valeur d’aujourd’hui&nbsp;: avec un taux de 18 %, ces sommes valent environ 53 M FCFA aujourd’hui.</p>
+ </div></details>
+ <details class="vz-acc"><summary>La méthode utilisée par les professionnels</summary><div class="vz-corps">
+  <p>Les banquiers et les investisseurs partent de la même idée, appelée actualisation des flux de trésorerie (DCF). Ils poussent ensuite chaque hypothèse beaucoup plus loin.</p>
+  <div class="vz-cartes">
+   <div class="vz-carte"><b>Ils reconstruisent le cash disponible.</b><span>Résultat d’exploitation, impôts, investissements et variation du besoin en fonds de roulement.</span></div>
+   <div class="vz-carte"><b>Ils projettent chaque année séparément.</b><span>Clients, prix, marges et salaires n’évoluent pas tous au même rythme.</span></div>
+   <div class="vz-carte"><b>Ils testent la valeur finale de deux façons.</b><span>Par des ventes comparables, mesurées sur le même cash, et par une croissance modérée sans fin. Puis ils confrontent les deux.</span></div>
+   <div class="vz-carte"><b>Ils passent de l’activité aux parts.</b><span>Ils retirent les dettes, ajoutent la trésorerie, puis examinent les conditions de la vente.</span></div>
+  </div>
+ </div></details>
+ <details class="vz-acc"><summary>Sources et limites des comparaisons</summary><div class="vz-corps">
+  <p>Les repères de l’étape 2 sont donnés pour information. <strong>Ils ne sont pas appliqués à votre calcul</strong>, parce qu’ils ne mesurent pas le même cash&nbsp;: les ventes de petites entreprises sont rapportées à un cash avant la rémunération du dirigeant, les sociétés cotées à leur bénéfice net.</p>
+  <p>Il n’existe pas de données publiques sur les ventes de petites entreprises dans l’UEMOA. Les ventes recensées viennent des États-Unis. Des prix plus bas dans l’UEMOA, avec moins d’acheteurs et un crédit plus cher, sont une hypothèse à vérifier, pas un fait établi.</p>
+  <ol id="sources"></ol>
+ </div></details>
+ <p class="vz-mention">Outil d’apprentissage EFA. Il ne remplace ni une évaluation par un professionnel, ni des comptes vérifiés.</p>
+</section>
+</div>
 </main>
 <script>
 (function(){
  var $=function(i){return document.getElementById(i)};
- var nf=function(n,d){return new Intl.NumberFormat('fr-FR',{maximumFractionDigits:d==null?1:d,minimumFractionDigits:0}).format(n)};
- var M=function(n){return nf(n,n<10&&n>-10?2:1)+' M FCFA'};
- var X=function(n){return nf(n,2)+' fois'};
- var lire=function(id){var v=($(id).value||'').replace(/\s/g,'').replace(',','.');return v===''?NaN:Number(v)};
- var R=null, mode=null, multiple=null, origine='';
  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+ var nf=function(n,d){return new Intl.NumberFormat('fr-FR',{maximumFractionDigits:d,minimumFractionDigits:0}).format(n)};
+ var U='f';
+ function money(n){var a=Math.abs(n);if(a>=1e9)return nf(n/1e9,2)+' Md FCFA';if(a>=1e6)return nf(n/1e6,a<1e7?2:1)+' M FCFA';return nf(Math.round(n/1000)*1000,0)+' FCFA'}
+ var fois=function(m){return nf(m,2)+' fois'};
+ /* Lecture d'un montant, en FCFA */
+ function lire(id){var v=($(id).value||'').replace(/[\s  ]/g,'');if(v==='')return NaN;
+  if(U==='f'){v=v.replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.');return Number(v)}
+  return Number(v.replace(',','.'))*1e6}
+ function lireP(id){var v=($(id).value||'').replace(/[\s  %]/g,'').replace(',','.');return v===''?NaN:Number(v)}
+ function ecrire(id,f){$(id).value=isNaN(f)?'':(U==='f'?nf(Math.round(f),0):nf(f/1e6,3))}
+ var MONTANTS=['enc','dep','inv','mt','vp','vc','dt','tr'];
 
+ /* Mémoire de la visite (sur cet appareil) */
+ function garder(){try{var o={U:U,mode:mode};MONTANTS.forEach(function(k){o[k]=lire(k)});o.cr=$('cr').value;o.tx=$('tx').value;o.sc=$('sc').value;sessionStorage.setItem('efa-valoriser',JSON.stringify(o))}catch(e){}}
+ function reprendre(){try{var o=JSON.parse(sessionStorage.getItem('efa-valoriser')||'null');if(!o)return;U=o.U||'f';majUnite();MONTANTS.forEach(function(k){if(o[k]!=null)ecrire(k,o[k])});if(o.cr)$('cr').value=o.cr;if(o.tx)$('tx').value=o.tx;if(o.sc)$('sc').value=o.sc;if(o.mode){$('e2').hidden=false;if(o.mode==='scenario')montrerAutre();choisir(o.mode,false)}majSortie1()}catch(e){}}
+
+ /* Unité */
+ var ub=[].slice.call(document.querySelectorAll('.vz-unite button'));
+ function majUnite(){ub.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.u===U?'true':'false')});[].forEach.call(document.querySelectorAll('[data-unite]'),function(s){s.textContent=U==='f'?'FCFA':'M FCFA'});MONTANTS.forEach(function(k){$(k).placeholder=''});var ph=U==='f'?{enc:'Ex. 1 500 000',dep:'Ex. 900 000',inv:'Ex. 2 400 000'}:{enc:'Ex. 1,5',dep:'Ex. 0,9',inv:'Ex. 2,4'};for(var k in ph)$(k).placeholder=ph[k]}
+ ub.forEach(function(b){b.addEventListener('click',function(){var vals={};MONTANTS.forEach(function(k){vals[k]=lire(k)});U=b.dataset.u;majUnite();MONTANTS.forEach(function(k){ecrire(k,vals[k])});majSortie1();garder()})});
+
+ /* Écran 1 */
  function cashAn(){var e=lire('enc'),d=lire('dep'),i=lire('inv');if([e,d,i].some(isNaN))return null;return (e-d)*12-i}
- function cash5(){var c=cashAn();if(c==null)return null;var g=lire('cr');g=isNaN(g)?0:g/100;return c*Math.pow(1+g,4)}
- function majCash(){var c=cashAn();$('vz-cash').innerHTML=c==null?'':(c>0?'Cash qui reste chaque année&nbsp;: <b>'+M(c)+'</b>.':'<b>Cash annuel nul ou négatif ('+M(c)+').</b> Cette méthode simplifiée ne s’applique pas&nbsp;: revoyez les chiffres.');majLu()}
- ['enc','dep','inv','cr'].forEach(function(k){$(k).addEventListener('input',function(){majCash();if(!$('vz-res').hidden)calculer(false)})});
- $('tx').addEventListener('input',function(){if(!$('vz-res').hidden)calculer(false)});
+ function verif1(){var e=lire('enc'),d=lire('dep'),i=lire('inv');
+  if([e,d,i].some(isNaN))return 'Entrez les trois montants (0 si vous n’avez pas d’investissement).';
+  if(e<0||d<0||i<0)return 'Les montants ne peuvent pas être négatifs.';
+  if(Math.max(e,d,i)>1e12)return 'Ce montant semble très élevé. Vérifiez l’unité choisie (FCFA ou millions).';
+  if(e===0)return 'Sans encaissements, il n’y a pas d’activité à valoriser.';
+  return ''}
+ function majSortie1(){var s=$('sortie1'),c=cashAn();s.classList.remove('vz-neg');
+  if(c==null||verif1()){s.innerHTML=c==null?'Entrez vos trois montants : le cash de votre activité s’affiche ici.':esc(verif1());return}
+  if(c<=0){s.classList.add('vz-neg');s.innerHTML='Avec ces chiffres, l’activité consomme <b>'+money(-c)+'</b> par an. Elle ne produit pas de cash à valoriser par cette méthode&nbsp;: revoyez vos chiffres ou faites une analyse détaillée.';return}
+  s.innerHTML='Il resterait environ <b>'+money(c/12)+'</b> par mois, soit <b>'+money(c)+'</b> par an.'}
+ ['enc','dep','inv'].forEach(function(k){$(k).addEventListener('input',function(){majSortie1();$('err1').textContent='';majLu();if(!$('res').hidden)calculer(false);garder()})});
+ $('exemple').addEventListener('click',function(){U='f';majUnite();ecrire('enc',5e6);ecrire('dep',3e6);ecrire('inv',6e6);majSortie1();garder();$('enc').focus()});
+ $('go1').addEventListener('click',function(){var m=verif1();if(m){$('err1').textContent=m;return}if(cashAn()<=0){$('err1').textContent='Le cash annuel est nul ou négatif : l’estimation ne peut pas continuer.';return}
+  $('err1').textContent='';$('e2').hidden=false;garder();defiler($('e2'))});
+ function defiler(el){setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'})},30)}
 
- /* Choix du mode : deux options, puis « Autre chose » */
- var boutons=[].slice.call(document.querySelectorAll('.vz-c'));
- $('vz-autre').addEventListener('click',function(){boutons.forEach(function(b){b.hidden=false});this.hidden=true;boutons[2].focus()});
- boutons.forEach(function(b){b.addEventListener('click',function(){choisir(b.dataset.mode,true)})});
- function choisir(m,defiler){mode=m;boutons.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===m?'true':'false')});
-  ['activite','montant','vente','aucun'].forEach(function(k){$('p-'+k).hidden=k!==m});
-  if(m==='aucun')propAucun();
-  if(m==='activite'){var v=$('act').value;multiple=v==='autre'&&$('m-autre')?lire('m-autre'):v&&$('m-act')?lire('m-act'):null;origine=v==='autre'?'Proposition EFA, sans comparable':'Pour « '+($('act').selectedOptions[0]||{}).text+' »'}
-  if(m==='montant'||m==='vente')multiple=null;
-  majLu();
-  if(defiler){var p=$('p-'+m);setTimeout(function(){var r=p.getBoundingClientRect();if(r.top>window.innerHeight*.7||r.top<0)p.scrollIntoView({behavior:'smooth',block:'start'})},40)}
-  if(!$('vz-res').hidden)calculer(false)}
+ /* Écran 2 : deux choix, puis « Autre chose » */
+ var mode=null,cb=[].slice.call(document.querySelectorAll('.vz-c'));
+ function montrerAutre(){cb[2].hidden=false;$('autre').hidden=true}
+ $('autre').addEventListener('click',function(){montrerAutre();cb[2].focus()});
+ cb.forEach(function(b){b.addEventListener('click',function(){choisir(b.dataset.mode,true)})});
+ function choisir(m,dfl){mode=m;cb.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===m?'true':'false')});['prix','vente','scenario'].forEach(function(k){$('p-'+k).hidden=k!==m});majLu();$('err2').textContent='';if(dfl)defiler($('p-'+m));if(!$('res').hidden)calculer(false);garder()}
+ function cash5(){var c=cashAn(),g=lireP('cr');g=isNaN(g)?0:g/100;return c==null?null:c*Math.pow(1+g,4)}
+ function multiple(){var c5=cash5();
+  if(mode==='prix'){var p=lire('mt');return isNaN(p)||!c5||c5<=0?null:{m:p/c5,o:'votre prix de '+money(p)}}
+  if(mode==='vente'){var vp=lire('vp'),vc=lire('vc');return isNaN(vp)||isNaN(vc)||vc<=0?null:{m:vp/vc,o:'une vente comparable à '+fois(vp/vc)+' son cash'}}
+  if(mode==='scenario'){return {m:+$('sc').value,o:'scénario d’exploration'}}
+  return null}
+ function majLu(){var c5=cash5(),r=multiple();
+  $('lu-prix').innerHTML=mode==='prix'&&r?'Votre prix correspond à <b>'+fois(r.m)+'</b> le cash de l’année 5 ('+money(c5)+').':'';
+  $('lu-vente').innerHTML=mode==='vente'&&r?'Cette activité s’est vendue <b>'+fois(r.m)+'</b> son cash annuel. Appliqué à votre année 5 ('+money(c5)+'), cela donne une revente de <b>'+money(r.m*c5)+'</b>.':(mode==='vente'&&!isNaN(lire('vc'))&&lire('vc')<=0?'Le cash de cette activité doit être positif pour servir de repère.':'');
+  $('sc-o').textContent=nf(+$('sc').value,1)+' fois'}
+ ['mt','vp','vc'].forEach(function(k){$(k).addEventListener('input',function(){majLu();$('err2').textContent='';if(!$('res').hidden)calculer(false);garder()})});
+ $('sc').addEventListener('input',function(){majLu();if(!$('res').hidden)calculer(false);garder()});
+ $('retour1').addEventListener('click',function(){defiler($('e1'));setTimeout(function(){$('enc').focus({preventScroll:true})},400)});
+ $('go2').addEventListener('click',function(){
+  if(!mode){$('err2').textContent='Choisissez d’où vient votre hypothèse de revente.';return}
+  var r=multiple();if(!r){$('err2').textContent=mode==='prix'?'Entrez un prix de revente.':'Entrez le prix et le cash annuel de l’activité vendue.';return}
+  if(r.m<0){$('err2').textContent='Le prix de revente ne peut pas être négatif.';return}
+  if(r.m>30){$('err2').textContent='Plus de 30 fois le cash annuel : ce prix n’a pas de sens pour cette méthode. Vérifiez le montant et l’unité.';return}
+  $('err2').textContent='';avant=null;calculer(true)});
 
- /* Repères */
+ /* Repères documentaires */
  var D=null;
  fetch('data/valorisation/reperes.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){D=d;
-  $('act').insertAdjacentHTML('beforeend',d.activites.map(function(a){return '<option value="'+a.id+'">'+esc(a.nom)+'</option>'}).join('')+'<option value="autre">Autre activité</option>');
-  var S=d.sources;$('vz-sources').innerHTML=['bbs','bbs_annee','boc','argos'].map(function(k){var s=S[k];return '<li><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.titre)+'</a>, '+esc(s.editeur)+' ('+esc(s.pays)+'). '+esc(s.base)+'. Consulté le 31 octobre 2026.</li>'}).join('');
- }).catch(function(){});
- function lienS(k){var s=D.sources[k];return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.editeur)+', '+esc(s.titre)+'</a>'}
- function champMultiple(id,val){return '<div class="vz-champ"><label for="'+id+'">Le multiple retenu</label><div class="vz-saisie"><input id="'+id+'" inputmode="decimal" value="'+nf(val,2)+'"><span class="vz-u">fois le cash de l’année 5</span></div></div>'}
- function brancher(id,orig){var el=$(id);multiple=lire(id);origine=orig;if(el.dataset.b)return;el.dataset.b=1;el.addEventListener('input',function(){multiple=lire(id);origine=orig+' (modifié par vous)';majLu();if(!$('vz-res').hidden)calculer(false)})}
- $('act').addEventListener('change',function(){var v=this.value,box=$('vz-rep');multiple=null;
-  if(!v||!D){box.innerHTML='';return}
-  if(v==='autre'){box.innerHTML='<div class="vz-rep"><p class="vz-et">Pas de comparable recensé</p><h3>Nous n’avons pas de ventes publiées pour cette activité.</h3><p class="vz-sous">Voici notre proposition, à vous de voir.</p>'+propHTML('m-autre')+'</div>';brancher('m-autre','Proposition EFA, sans comparable');majLu();return}
-  var a=D.activites.filter(function(x){return x.id===v})[0];
-  var h='<div class="vz-rep"><p class="vz-et">Ce que montrent les ventes et les cotations</p><h3>'+esc(a.nom)+'</h3><p class="vz-sous">Prix payé, en nombre de fois le cash annuel.</p>'+
-   '<p class="vz-et" style="margin-top:6px">Petites entreprises vendues · États-Unis</p><ul class="vz-lignes">'+a.comparables.map(function(c){return '<li><span>'+esc(c.nom)+'</span><b>'+X(c.multiple)+'</b></li>'}).join('')+'</ul>'+
-   '<p class="vz-src">Source&nbsp;: '+lienS('bbs')+'. Cash avant la rémunération du dirigeant.</p>';
-  if(a.brvm){var p=a.brvm.per,ok=p<=30;h+='<div class="vz-bloc"><p class="vz-et">Sociétés cotées à la BRVM · secteur '+esc(a.brvm.secteur)+'</p><p>'+(ok?'Cours égal à <b>'+nf(p,1)+' fois</b> le bénéfice net, en moyenne. Ce sont de grandes sociétés, cotées et faciles à revendre&nbsp;: une petite entreprise non cotée se vend beaucoup moins cher.':'Cours égal à '+nf(p,1)+' fois le bénéfice net, en moyenne. <b>Chiffre peu utilisable ici</b>&nbsp;: quelques sociétés aux bénéfices très faibles le font grimper.')+'</p><p class="vz-src">Source&nbsp;: '+lienS('boc')+'.</p></div>'}
-  else h+='<div class="vz-bloc"><p class="vz-et">Sociétés cotées à la BRVM</p><p>Aucun secteur coté ne correspond à cette activité.</p></div>';
-  h+='<div class="vz-bloc"><p class="vz-et">Pour situer · Entreprises moyennes non cotées, zone euro</p><p>Rachetées autour de <b>'+nf(D.sources.argos.valeur,1)+' fois</b> (médiane) leur résultat d’exploitation avant amortissements. Des sociétés valant de 15 à 500 M€&nbsp;: c’est un plafond, pas une cible.</p><p class="vz-src">Source&nbsp;: '+lienS('argos')+'.</p></div>';
-  h+='<div class="vz-prop"><p>Fourchette des petites entreprises comparables&nbsp;: <b>'+X(a.bas)+' à '+X(a.haut)+'</b>, au milieu '+X(a.central)+'.</p><p><b>Notre proposition&nbsp;: '+X(a.bas)+'</b>, le bas de la fourchette. Dans l’UEMOA, les acheteurs sont moins nombreux et le crédit plus cher. À vous de voir.</p>'+champMultiple('m-act',a.bas)+'<button type="button" class="vz-mini" data-v="'+a.central+'">Prendre le milieu de la fourchette ('+X(a.central)+')</button></div></div>';
-  box.innerHTML=h;brancher('m-act','Proposition EFA pour « '+a.nom+' »');
-  box.querySelector('.vz-mini').addEventListener('click',function(){$('m-act').value=nf(+this.dataset.v,2);multiple=+this.dataset.v;origine='Milieu de la fourchette pour « '+a.nom+' »';majLu();if(!$('vz-res').hidden)calculer(false)});
-  majLu();
- });
- function propHTML(id){var p=D?D.proposition_sans_repere:2.5,m=D?D.sources.bbs_annee.valeur:2.61;
-  return '<div class="vz-prop"><p><b>Notre proposition&nbsp;: '+X(p)+'</b> le cash de l’année 5.</p><p>Repère&nbsp;: en 2025, les petites entreprises vendues l’ont été en moyenne '+X(m)+' leur cash annuel. Nous arrondissons vers le bas pour tenir compte des conditions de l’UEMOA.</p>'+champMultiple(id,p)+(D?'<p class="vz-src">Source&nbsp;: '+lienS('bbs_annee')+'.</p>':'')+'</div>'}
- function propAucun(){if(!$('m-aucun')){$('vz-prop-aucun').innerHTML=propHTML('m-aucun')}brancher('m-aucun','Proposition EFA, sans repère')}
- function situer(m){if(!D)return '';var lo=1.74,hi=4.24;return m<lo?'C’est en dessous des petites entreprises vendues recensées (de '+X(lo)+' à '+X(hi)+')&nbsp;: une hypothèse prudente.':m>hi*1.5?'C’est bien au-dessus des petites entreprises vendues recensées (de '+X(lo)+' à '+X(hi)+')&nbsp;: il faudra le justifier devant un acheteur.':m>hi?'C’est un peu au-dessus des petites entreprises vendues recensées (de '+X(lo)+' à '+X(hi)+').':'C’est dans la fourchette des petites entreprises vendues recensées (de '+X(lo)+' à '+X(hi)+').'}
- function majLu(){
-  if(mode==='montant'){var mt=lire('mt'),c5=cash5();if(isNaN(mt)||c5==null||c5<=0){$('lu-montant').textContent='';return}multiple=mt/c5;origine='Votre prix visé';$('lu-montant').innerHTML='Votre prix correspond à <b>'+X(multiple)+'</b> le cash de l’année 5 ('+M(c5)+'). '+situer(multiple)}
-  if(mode==='vente'){var vp=lire('vp'),vc=lire('vc');if(isNaN(vp)||isNaN(vc)||vc<=0){$('lu-vente').textContent='';multiple=null;return}multiple=vp/vc;origine='Une vente que vous connaissez';$('lu-vente').innerHTML='Cette entreprise s’est vendue <b>'+X(multiple)+'</b> son cash annuel. Nous appliquons ce multiple à votre cinquième année. '+situer(multiple)}
- }
- ['mt','vp','vc'].forEach(function(k){$(k).addEventListener('input',function(){majLu();if(!$('vz-res').hidden)calculer(false)})});
+  $('act').insertAdjacentHTML('beforeend',d.activites.map(function(a){return '<option value="'+a.id+'">'+esc(a.nom)+'</option>'}).join(''));
+  $('sources').innerHTML=['bbs','boc','argos'].map(function(k){var s=d.sources[k];return '<li><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.titre)+'</a>, '+esc(s.editeur)+' ('+esc(s.pays)+'). '+esc(s.base)+'. Consulté le 31 octobre 2026.</li>'}).join('')}).catch(function(){});
+ function lien(k){var s=D.sources[k];return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.editeur)+', '+esc(s.titre)+'</a>'}
+ $('act').addEventListener('change',function(){var a=D&&D.activites.filter(function(x){return x.id===this.value},this)[0];if(!a){$('rep').innerHTML='';return}
+  var h='<div class="vz-rep"><p class="vz-et">Petites entreprises vendues · États-Unis</p><ul class="vz-lignes">'+a.comparables.map(function(c){return '<li><span>'+esc(c.nom)+'</span><b>'+fois(c.multiple)+'</b></li>'}).join('')+'</ul><p class="vz-src">Prix ÷ cash <b>avant</b> la rémunération du dirigeant. Source&nbsp;: '+lien('bbs')+'.</p>';
+  h+='<div class="vz-bloc"><p class="vz-et">Sociétés cotées à la BRVM</p>'+(a.brvm?(a.brvm.per<=30?'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: cours égal à <b>'+nf(a.brvm.per,1)+' fois</b> le bénéfice net, en moyenne. De grandes sociétés, faciles à revendre en Bourse.</p>':'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: '+nf(a.brvm.per,1)+' fois le bénéfice net, en moyenne. Chiffre peu parlant&nbsp;: quelques sociétés aux bénéfices très faibles le font grimper.</p>')+'<p class="vz-src">Source&nbsp;: '+lien('boc')+'.</p>':'<p>Aucun secteur coté ne correspond à cette activité.</p>')+'</div>';
+  h+='<div class="vz-bloc"><p class="vz-et">Entreprises moyennes non cotées · zone euro</p><p>Rachetées autour de <b>'+nf(D.sources.argos.valeur,1)+' fois</b> (médiane) leur résultat d’exploitation avant amortissements. Des sociétés de 15 à 500 M€.</p><p class="vz-src">Source&nbsp;: '+lien('argos')+'.</p></div>';
+  h+='<p class="vz-note"><b>Ces multiples ne mesurent pas le même cash que le vôtre.</b> Ils ne sont pas appliqués à votre calcul. Pour fixer votre hypothèse, partez d’un prix que vous connaissez ou explorez un scénario.</p></div>';
+  $('rep').innerHTML=h});
 
- $('vz-exemple').addEventListener('click',function(){$('enc').value='5';$('dep').value='3';$('inv').value='6';$('cr').value='0';$('tx').value='18';majCash();if(!mode){choisir('activite',false)}$('enc').focus()});
-
- function calculer(defiler){
-  $('vz-err').textContent='';
-  var e=lire('enc'),d=lire('dep'),i=lire('inv'),g=lire('cr'),r=lire('tx');
-  if([e,d,i].some(isNaN)){$('vz-err').textContent='Entrez les trois montants de l’étape 1.';return}
-  if(e<0||d<0||i<0){$('vz-err').textContent='Les montants ne peuvent pas être négatifs.';return}
-  if(isNaN(g)||g<-50||g>100){$('vz-err').textContent='La croissance doit être comprise entre −50 % et 100 %.';return}
-  if(isNaN(r)||r<=0||r>100){$('vz-err').textContent='Le taux doit être compris entre 0 et 100 %.';return}
-  var c=(e-d)*12-i;
-  if(c<=0){$('vz-res').hidden=true;$('vz-err').textContent='Avec ces chiffres, le cash annuel est nul ou négatif. Cette méthode simplifiée ne donne pas de valeur fiable.';return}
-  if(!mode){$('vz-err').textContent='Choisissez à l’étape 2 comment fixer le prix de revente.';$('t2').scrollIntoView({behavior:'smooth',block:'center'});return}
-  majLu();
-  if(multiple==null||isNaN(multiple)||multiple<0){$('vz-err').textContent=mode==='activite'?'Choisissez votre activité à l’étape 2.':'Complétez le prix de revente à l’étape 2.';return}
-  if(multiple>30){$('vz-err').textContent='Un multiple au-delà de 30 fois n’a pas de sens pour une petite entreprise. Revoyez le prix de revente.';return}
-  g/=100;r/=100;
-  var f=[0,1,2,3,4].map(function(k){return c*Math.pow(1+g,k)});
-  var somme=f.reduce(function(a,b){return a+b},0),rv=f[4]*multiple;
-  var vaF=f.reduce(function(a,x,k){return a+x/Math.pow(1+r,k+1)},0),vaR=rv/Math.pow(1+r,5),va=vaF+vaR;
-  $('r-val').textContent=M(va);
-  $('r-sous').textContent='Valeur indicative de l’activité, avec une revente à '+X(multiple)+' le cash de l’année 5 · '+origine+'.';
-  $('r-c1').textContent=M(c);$('r-c5').textContent=M(somme);$('r-rv').textContent=M(rv);
-  var mx=Math.max.apply(0,f);$('r-barres').innerHTML=f.map(function(x,k){return '<div class="vz-barre"><span>An '+(k+1)+'</span><div class="vz-piste"><div class="vz-rempli" style="width:'+Math.max(2,100*x/mx)+'%"></div></div><b>'+nf(x,1)+' M</b></div>'}).join('');
-  var pa=Math.round(100*vaF/va),pb=100-pa;
+ /* Calcul */
+ var avant=null;
+ function valeur(c,g,r,m){var f=[0,1,2,3,4].map(function(k){return c*Math.pow(1+g,k)});var vf=f.reduce(function(a,x,k){return a+x/Math.pow(1+r,k+1)},0),rv=f[4]*m,vr=rv/Math.pow(1+r,5);return {f:f,vf:vf,rv:rv,vr:vr,v:vf+vr}}
+ function calculer(dfl){
+  var c=cashAn(),g=lireP('cr'),r=lireP('tx'),x=multiple();$('err3').textContent='';
+  if(c==null||c<=0||!x)return;
+  if(isNaN(g)||g<-50||g>100){$('err3').textContent='La croissance doit être comprise entre −50 % et 100 % par an.';return}
+  if(isNaN(r)||r<=0||r>100){$('err3').textContent='Le taux doit être supérieur à 0 % et au plus 100 %.';return}
+  var m=x.m,V=valeur(c,g/100,r/100,m);
+  $('r-val').textContent=money(V.v);$('r-vf').textContent=money(V.vf);$('r-vr').textContent=money(V.vr);$('r-vt').textContent=money(V.v);
+  if(avant!=null&&Math.abs(V.v-avant)>1){var d=V.v-avant;$('r-delta').hidden=false;$('r-delta').textContent=(d>0?'+ ':'− ')+money(Math.abs(d))+' par rapport à l’estimation précédente'}else $('r-delta').hidden=true;
+  if(avant==null)avant=V.v;
+  var pa=Math.round(100*V.vf/V.v),pb=100-pa;
   $('r-part').innerHTML='<i class="a" style="width:'+pa+'%"></i><i class="b" style="width:'+pb+'%"></i>';
   $('r-leg').innerHTML='<span>Cash des cinq années · '+pa+' %</span><span class="b">Revente · '+pb+' %</span>';
-  $('r-lect').textContent='Sur cinq ans, l’activité produirait '+M(somme)+', puis serait revendue '+M(rv)+'. Ces '+M(somme+rv)+' sont des sommes futures. Avec un taux de '+nf(r*100,1)+' %, elles valent environ '+M(va)+' aujourd’hui.';
-  $('r-alerte').innerHTML=pb>=60?'<p class="vz-alerte">Plus de la moitié de la valeur vient de la revente supposée. C’est l’hypothèse à vérifier en premier.</p>':'';
-  var liste=[0];var a=null;
-  if(mode==='activite'&&D){a=D.activites.filter(function(x){return x.id===$('act').value})[0]}
-  if(a)liste=liste.concat([a.bas,a.central,a.haut]);else liste=liste.concat([Math.max(0,multiple-1),multiple+1]);
-  liste.push(multiple);liste=liste.filter(function(v,k,t){return t.indexOf(v)===k}).sort(function(x,y){return x-y});
-  $('r-sens').innerHTML=liste.map(function(m){var v=vaF+f[4]*m/Math.pow(1+r,5);return '<li'+(m===multiple?' class="ici"':'')+'><span>'+(m===0?'Personne ne rachète':'Revente à '+X(m))+(m===multiple?' · votre choix':'')+'</span><b>'+M(v)+'</b></li>'}).join('');
-  $('vz-res').hidden=false;
-  if(defiler){$('vz-res').scrollIntoView({behavior:'smooth',block:'start'});$('vz-res').focus({preventScroll:true})}
-  try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'valoriser-calcul-'+mode,title:'valoriser',event:true})}catch(x){}
+  var n=$('r-note');if(pb>=50){n.hidden=false;n.innerHTML='<b>'+pb+' % de la valeur vient de la revente supposée</b> ('+fois(m)+' le cash de l’année 5, d’après '+esc(x.o)+'). C’est l’hypothèse à vérifier en premier.'}else n.hidden=true;
+  var S=[{t:'Prudent',r:r+4,g:Math.min(g,0),m:m/2},{t:'Central · vos hypothèses',r:r,g:g,m:m,ici:1},{t:'Haut',r:Math.max(1,r-4),g:g+2,m:m*1.5}];
+  $('r-scen').innerHTML=S.map(function(s){var v=valeur(c,s.g/100,s.r/100,s.m);return '<div class="vz-sc'+(s.ici?' ici':'')+'"><p class="vz-et">'+s.t+'</p><strong>'+money(v.v)+'</strong><ul><li>Taux&nbsp;: '+nf(s.r,1)+' %</li><li>Croissance&nbsp;: '+nf(s.g,1)+' % par an</li><li>Revente&nbsp;: '+(s.m===0?'aucune':fois(s.m)+' le cash, soit '+money(v.rv))+'</li></ul></div>'}).join('');
+  var mx=Math.max.apply(0,V.f);$('r-barres').innerHTML=V.f.map(function(y,k){return '<div class="vz-barre"><span>An '+(k+1)+'</span><div class="vz-piste"><div class="vz-rempli" style="width:'+Math.max(2,100*y/mx)+'%"></div></div><b>'+money(y)+'</b></div>'}).join('');
+  if(g!==0)$('r-det').open=true;
+  majParts(V.v);
+  $('res').hidden=false;
+  if(dfl){defiler($('res'));$('res').focus({preventScroll:true})}
+  try{if(dfl&&window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'valoriser-estimation-'+mode,title:'valoriser',event:true})}catch(e){}
  }
- $('vz-form').addEventListener('submit',function(ev){ev.preventDefault();calculer(true)});
+ function majParts(v){var dt=lire('dt'),tr=lire('tr');if(isNaN(dt)&&isNaN(tr)){$('r-parts').textContent='';return}dt=isNaN(dt)?0:dt;tr=isNaN(tr)?0:tr;var p=v-dt+tr;
+  $('r-parts').innerHTML=p>0?'Valeur indicative de vos parts&nbsp;: <b>'+money(v)+'</b> − '+money(dt)+' de dettes + '+money(tr)+' de trésorerie = <b>'+money(p)+'</b>.':'Les dettes dépassent la valeur estimée de l’activité et sa trésorerie&nbsp;: <b>avec ces hypothèses, les parts n’ont pas de valeur positive.</b>'}
+ MONTANTS.forEach(function(k){$(k).addEventListener('blur',function(){var v=lire(k);if(!isNaN(v))ecrire(k,v)})});
+ ['dt','tr'].forEach(function(k){$(k).addEventListener('input',function(){if(!$('res').hidden)calculer(false);garder()})});
+ ['cr','tx'].forEach(function(k){$(k).addEventListener('input',function(){majLu();if(!$('res').hidden)calculer(false);garder()})});
+ $('retour2').addEventListener('click',function(){defiler($('e2'))});
+ $('zero').addEventListener('click',function(){try{sessionStorage.removeItem('efa-valoriser')}catch(e){}MONTANTS.forEach(function(k){$(k).value=''});$('cr').value='0';$('tx').value='18';$('sc').value='3';mode=null;avant=null;cb.forEach(function(b){b.setAttribute('aria-pressed','false')});['prix','vente','scenario'].forEach(function(k){$('p-'+k).hidden=true});$('res').hidden=true;$('e2').hidden=true;majLu();majSortie1();defiler($('e1'))});
+
+ majUnite();reprendre();
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -46,7 +46,6 @@
   "Énergie": 18.05,
   "Services publics": 22.06
  },
- "proposition_sans_repere": 2.5,
  "activites": [
   {
    "id": "commerce",
@@ -69,9 +68,6 @@
      "multiple": 2.89
     }
    ],
-   "bas": 2.32,
-   "central": 2.54,
-   "haut": 2.89,
    "brvm": {
     "secteur": "Consommation discrétionnaire",
     "per": 41.68
@@ -98,9 +94,6 @@
      "multiple": 2.27
     }
    ],
-   "bas": 2.07,
-   "central": 2.23,
-   "haut": 2.44,
    "brvm": {
     "secteur": "Consommation discrétionnaire",
     "per": 41.68
@@ -123,9 +116,6 @@
      "multiple": 3.28
     }
    ],
-   "bas": 2.7,
-   "central": 3.28,
-   "haut": 3.34,
    "brvm": {
     "secteur": "Consommation de base",
     "per": 12.4
@@ -152,9 +142,6 @@
      "multiple": 3.41
     }
    ],
-   "bas": 1.75,
-   "central": 2.75,
-   "haut": 3.41,
    "brvm": {
     "secteur": "Industriels",
     "per": 145.55
@@ -181,9 +168,6 @@
      "multiple": 2.54
     }
    ],
-   "bas": 2.54,
-   "central": 2.69,
-   "haut": 2.78,
    "brvm": {
     "secteur": "Industriels",
     "per": 145.55
@@ -210,9 +194,6 @@
      "multiple": 2.27
     }
    ],
-   "bas": 2.27,
-   "central": 2.69,
-   "haut": 3.22,
    "brvm": null
   },
   {
@@ -232,9 +213,6 @@
      "multiple": 1.88
     }
    ],
-   "bas": 1.88,
-   "central": 3.25,
-   "haut": 3.37,
    "brvm": {
     "secteur": "Télécommunications",
     "per": 13.86
@@ -261,9 +239,6 @@
      "multiple": 3.0
     }
    ],
-   "bas": 2.39,
-   "central": 2.8,
-   "haut": 3.0,
    "brvm": null
   },
   {
@@ -283,9 +258,6 @@
      "multiple": 3.28
     }
    ],
-   "bas": 2.63,
-   "central": 3.09,
-   "haut": 3.28,
    "brvm": null
   },
   {
@@ -305,9 +277,6 @@
      "multiple": 2.31
     }
    ],
-   "bas": 1.74,
-   "central": 2.1,
-   "haut": 2.31,
    "brvm": null
   },
   {
@@ -335,9 +304,6 @@
      "multiple": 2.76
     }
    ],
-   "bas": 2.7,
-   "central": 2.85,
-   "haut": 4.24,
    "brvm": {
     "secteur": "Industriels",
     "per": 145.55
@@ -356,9 +322,6 @@
      "multiple": 3.44
     }
    ],
-   "bas": 3.44,
-   "central": 3.61,
-   "haut": 3.78,
    "brvm": {
     "secteur": "Énergie",
     "per": 18.05
@@ -381,13 +344,11 @@
      "multiple": 1.76
     }
    ],
-   "bas": 1.76,
-   "central": 2.54,
-   "haut": 2.87,
    "brvm": {
     "secteur": "Services financiers",
     "per": 16.39
    }
   }
- ]
+ ],
+ "_usage": "Repères documentaires uniquement : ces multiples portent sur un cash avant la rémunération du dirigeant (SDE) ou sur le bénéfice net (PER). Ils ne sont pas appliqués au cash calculé par l'outil."
 }
