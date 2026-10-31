@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="clone/styles.css?v=20261030z"><script src="donnees.js" defer></script><script src="clone/script.js?v=20261031a" defer></script>
 <script>/* Le hall d'entrée : l'accueil, « Apprendre est ouvert », les questions fréquentes et le pied de page. Le premier choix fait entrer dans tout l'univers EFA, et le choix est retenu. */
 (function(){var h=location.hash.replace('#',''),u=null;try{if(/[?&]hall\b/.test(location.search))localStorage.removeItem('efa_clone_univers');u=localStorage.getItem('efa_clone_univers');}catch(e){}if(u!=='1'&&(!h||h==='accueil'||h==='contact'))document.documentElement.classList.add('cl-hall');})();</script>
-<link rel="stylesheet" href="clone/clair.css?v=20261031n">
+<link rel="stylesheet" href="clone/clair.css?v=20261031o">
 <link rel="stylesheet" href="clone/efa-logo.css?v=20261030a">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Éducation financière en Afrique : apprendre à gérer son argent · EFA</title>
@@ -63,7 +63,7 @@
            Pour qui revient (défi, résultat, objectif, module) : un seul bouton vers son étape. */
         (function(){var b=document.getElementById("hero-cta"),c=document.getElementById("depart-choix"),n=document.querySelector(".a-hero-footnote");
           var E=window.EFA_REPRISE&&EFA_REPRISE.etape();
-          if(!E){if(b&&c)b.addEventListener("click",function(e){e.preventDefault();var o=c.hidden;c.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){var f=c.querySelector("a");if(f)f.focus({preventScroll:true});}});return;}
+          if(!E){if(b&&c)b.addEventListener("click",function(e){e.preventDefault();var o=c.hidden;c.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){var f=c.querySelector("a");if(f)f.focus({preventScroll:true});setTimeout(function(){var r=c.getBoundingClientRect(),hd=document.querySelector(".header"),hh=hd?hd.offsetHeight:0;if(r.bottom>innerHeight-16||r.top<hh)scrollTo({top:scrollY+r.top-hh-24,behavior:"smooth"});c.classList.remove("a-depart-flash");void c.offsetWidth;c.classList.add("a-depart-flash");},30);}});return;}
           var orga=E.o&&E.o.p==="orga",h=String(E.h||"point-de-depart.html").replace(/^(\.\.\/)+/,"");if(/^app(\/|$)/.test(h))h="../"+h; /* les pages du site existent aussi dans le Clone */
           /* Défi de sept jours : « terminé » seulement si les sept jours ont été notés */
           if(E.k==="bilan"){try{var C=JSON.parse(localStorage.getItem("efa_cahier_v1")||"null"),S=C&&C.semaines&&C.semaines.filter(function(x){return!x.fini}).pop(),f=S?(S.jours||[]).filter(function(x){return x!=null}).length:7;
@@ -192,5 +192,6 @@
 <dialog id="lesson-dialog" aria-labelledby="lesson-title"><button class="dialog-close" aria-label="Fermer">×</button><div id="lesson-content"></div></dialog>
 <script>/* Apprendre : une seule carte ouverte à la fois */(function(){var L=document.querySelectorAll("#benefices details.porte");L.forEach(function(d){d.addEventListener("toggle",function(){if(!d.open)return;L.forEach(function(x){if(x!==d)x.open=false;});});});document.querySelectorAll('#benefices a[href="#seul-contenus"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.getElementById("seul-contenus");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});});})();</script>
 <script src="clone/concept-spirale.js?v=20261031b" defer></script>
+<script src="/clone/cartes.js?v=20261031b" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>

@@ -20,7 +20,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261031k'
+VERSION = '20261031l'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp', 'outils.html': 'q1.webp',
@@ -163,7 +163,9 @@ import json
 base_js = open('scripts/clone/habillage-base.js', encoding='utf8').read()
 js = base_js.replace('/*PAGES*/[]', '[]')
 js = js.replace('/*ENTETE*/""', json.dumps(entete(None), ensure_ascii=False)).replace('/*PIED*/""', json.dumps(pied, ensure_ascii=False))
+js += '\n' + open('scripts/clone/cartes.js', encoding='utf8').read()
 open(os.path.join(CLONE, 'habillage.js'), 'w', encoding='utf8').write(js)
+shutil.copy('scripts/clone/cartes.js', os.path.join(CLONE, 'cartes.js'))
 os.makedirs(os.path.join(CLONE, 'pages'), exist_ok=True)
 for f in glob.glob('scripts/clone/pages/*'):
     shutil.copy(f, os.path.join(CLONE, 'pages', os.path.basename(f)))
