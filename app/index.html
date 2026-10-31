@@ -509,6 +509,39 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .inst-cours{background:#DDEBF7;color:#0E3A5C;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.45}
 .inst li::marker{font-weight:800;color:#DA3C1B}
 .ico-i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:#F5EFE2;vertical-align:middle;color:#1B71B2}
+
+/* Accueil de l’appli · structure du site, avec des images (31/10/2026) */
+.ap-hero{position:relative;border-radius:22px;overflow:hidden;background:#061B35;color:#fff;min-height:440px;display:flex;align-items:flex-end;isolation:isolate}
+.ap-hero>img{position:absolute;inset:0 0 auto 0;width:100%;height:62%;object-fit:cover;object-position:72% 36%;z-index:-2}
+.ap-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,27,53,0) 18%,rgba(6,27,53,.55) 42%,#061B35 62%)}
+.ap-ia{position:absolute;top:10px;right:12px;font-size:10.5px;font-style:italic;color:rgba(255,255,255,.8);text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.ap-hin{padding:20px 18px 20px}
+.ap-hero h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.08;margin:8px 0 0;color:#fff}
+.ap-hero h1 em{font-style:normal;color:#6DB8F2;font-size:.78em;line-height:1.15;display:inline-block;margin-top:4px}
+.ap-hero p{margin:12px 0 0;color:#E3ECF1;font-size:15px;line-height:1.45}
+.ap-choix{display:grid;gap:8px;margin-top:14px}
+.ap-choix button{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;font:700 15px/1.25 var(--body,inherit);text-align:left;cursor:pointer}
+.ap-choix span{color:#6DB8F2;font-weight:800;font-size:12.5px}
+.ap-porte{display:block;width:100%;border:0;padding:0;text-align:left;font:inherit;color:inherit;background:var(--card,#FFFDF8);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(11,18,32,.08);cursor:pointer}
+.ap-img{position:relative;display:block;aspect-ratio:16/9;background:#E2D8C4}
+.ap-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ap-img i{position:absolute;right:10px;bottom:8px;font-size:10px;color:rgba(255,255,255,.85);text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.ap-txt{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px}
+.ap-txt b{font-family:var(--display);font-size:26px;line-height:1.1}
+.ap-pt{color:#DA3C1B}
+.ap-x{font-size:14.5px;line-height:1.45;color:var(--ink2,#4E5566)}
+.ap-go{font-weight:800;font-size:14.5px;color:var(--coral2);margin-top:4px}
+.ap-media{display:flex;gap:12px;align-items:center;width:100%;border:0;text-align:left;font:inherit;color:inherit;background:var(--card,#FFFDF8);border-radius:16px;padding:10px;cursor:pointer}
+.ap-media img{flex:none;width:112px;height:72px;border-radius:10px;object-fit:cover}
+.ap-media b{display:block;font-family:var(--display);font-size:16px;line-height:1.25;margin-top:3px}
+.ap-media .s{display:block;font-size:13px;color:var(--ink3,#5F6676);margin-top:3px}
+.ap-enq{position:relative;border-radius:20px;overflow:hidden;background:#0B1220;color:#fff}
+.ap-enq img{width:100%;aspect-ratio:16/8;object-fit:cover;display:block}
+.ap-enq>div{padding:16px 16px 18px}
+.ap-enq h2,.ap-fin h2{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.15;margin:6px 0 0;color:#fff}
+.ap-enq h2 em,.ap-fin h2 em{font-style:normal;color:#6DB8F2}
+.ap-enq p{margin:10px 0 14px;color:#C9D1DE;font-size:14.5px;line-height:1.45}
+.ap-fin{border-radius:20px;background:radial-gradient(circle at 50% 20%,#12457A,#0B1F3A 70%);color:#fff;padding:28px 18px;text-align:center}
 </style>
 
 <div class="stage">
@@ -1334,29 +1367,42 @@ function vDecouvrir(){
   return h;}
 /* ───── Accueil : ce qui est nouveau chez EFA, ce que l'on pousse, et où reprendre ───── */
 var NEWSD=null;function newsData(){if(NEWSD!==null)return NEWSD;NEWSD=false;try{fetch(siteUrl("news/news-data.json"),{cache:"no-cache"}).then(function(r){return r.json();}).then(function(d){NEWSD=d;if(ui.view==="accueil")render(false);}).catch(function(){});}catch(e){}return false;}
-function uneCarte(k,t,x,act){return '<button class="news" '+act+'><span class="k">'+esc(k)+'</span><b>'+esc(t)+'</b>'+(x?'<span class="lg">'+esc(x)+'</span>':'')+'</button>';}
 function vAccueil(){
-  var A=window.EFA_A_LA_UNE||{nouveautes:[],outils:[]},mr=monRetour(),h='';
-  h+='<section class="stack" style="gap:6px"><p class="sur" style="margin:0;color:#B8341A">EFA · Éducation Financière Afrique</p><h1 class="h2" style="margin:0">'+(mr?"Bon retour":"Bienvenue")+'</h1><p class="sub" style="font-size:15px;margin:0">Ce qui est nouveau chez EFA, et les outils pour avancer.</p></section>';
-  h+=contCarte()+mr;
-  // Nouveau chez EFA : les nouveautés choisies, puis le dernier épisode de Min’Fin et la dernière Tribune
-  var cartes=(A.nouveautes||[]).slice(0,4).map(function(n){return uneCarte(n.k||"Nouveau",n.titre,n.texte,n.vue?'data-act="go" data-view="'+esc(n.vue)+'"':'data-act="web" data-url="'+esc(n.url)+'" data-t="'+esc(n.titre)+'"');});
+  /* L’accueil reprend la structure du site (31/10/2026) : l’accroche, votre suite, les trois portes, le média, l’enquête, les outils. Des images ponctuent la lecture. */
+  var A=window.EFA_A_LA_UNE||{nouveautes:[],outils:[]},mr=monRetour(),cc=contCarte(),h='',IMG=function(n){return esc(siteUrl("clone/assets/"+n));};
+  function porte(img,sur,t,x,b,act){return '<button class="ap-porte" '+act+'><span class="ap-img"><img src="'+IMG(img)+'" alt="" loading="lazy" decoding="async"><i>Illustration · IA</i></span><span class="ap-txt"><span class="sur">'+sur+'</span><b>'+t+'<span class="ap-pt">.</span></b><span class="ap-x">'+x+'</span><span class="ap-go">'+b+' →</span></span></button>';}
+  // 1. L’accroche, en image
+  h+='<section class="ap-hero"><img src="'+IMG("aig-hero.webp")+'" alt="" fetchpriority="high" decoding="async"><span class="ap-ia">Illustration · IA</span><div class="ap-hin"><span class="sur" style="color:#F09680">L’argent s’apprend · Une expérience EFA</span><h1>'+(mr||cc?'Bon retour.':'C’est fait pour vous.')+'<br><em>La finance, avec nos réalités africaines.</em></h1>'
+    +(cc?'':'<p>Pensé pour nous. Plusieurs formats, dès 1 min. EFA vous accompagne dans votre apprentissage et dans vos décisions.</p><div class="ap-choix"><button data-act="web" data-url="point-de-depart.html?pour=moi&src=appli" data-t="Mon point de départ"><span>01</span>Mon budget et mes dépenses</button><button data-act="web" data-url="point-de-depart.html?pour=investir&src=appli" data-t="Mon point de départ"><span>02</span>Investir à la BRVM</button><button data-act="web" data-url="point-de-depart.html?src=appli" data-t="Mon point de départ"><span>03</span>Autre chose, ou je ne sais pas encore</button></div>')
+    +'</div></section>';
+  // 2. Votre suite (pour qui revient)
+  h+=cc+mr;
+  // 3. Les trois portes
+  h+='<section class="stack"><div class="secth"><h2>Trois portes</h2></div><p class="sub" style="font-size:15px;margin-top:-6px">Commencez facilement, soyez accompagné, et trouvez tout au même endroit.</p><div class="stack" style="gap:14px">'
+    +porte("accueil-apprendre-ecole-3.webp","01 / Commencez facilement","Apprendre","Dès 1 min, gratuit : un sujet qui vous concerne, une explication claire et des outils pour essayer avec vos chiffres.","Commencer à apprendre",'data-act="go" data-view="ecole"')
+    +porte("accueil-entrainer-elysee.webp","02 / Vous êtes accompagné","S’entraîner","Des ateliers sur votre cas, avec Élysée Johnson ou à votre rythme. Les trois premiers sont gratuits.","Choisir mon atelier",'data-act="web" data-url="coaching.html?src=appli" data-t="Être accompagné"')
+    +porte("accueil-lancer-brvm.webp","03 / Tout au même endroit","Se lancer","Les acteurs du marché, le marché du jour, les SGI et les questions à poser avant de signer.","Préparer mon lancement",'data-act="web" data-url="index.html?src=appli#pilier-agir" data-t="Se lancer"')
+    +'</div><div class="list">'+webRow("Marchés : la BRVM du jour","Les cours, expliqués simplement","marches.html?src=appli","chart","var(--cyan)")+'</div></section>';
+  // 4. Le média : Min’Fin, la Tribune en image, puis EFA News
+  h+='<section class="stack"><div class="secth"><h2>Le média</h2><button class="link" data-act="go" data-view="news">Tout lire</button></div><div class="stack" style="gap:10px">';
   var dern=null;if(MF&&MF.saisons)MF.saisons.forEach(function(sa){sa.episodes.forEach(function(e){if(e.statut==="publie"&&e.youtube)dern={sa:sa,e:e};});});
-  if(dern)cartes.splice(1,0,uneCarte("Min’Fin · épisode "+dern.e.n,dern.e.titre,dern.e.notion,'data-act="video" data-id="'+dern.sa.n+"-"+dern.e.n+'"'));
-  var T=TRIBS();if(T&&T[0])cartes.splice(2,0,uneCarte("Tribune n° "+T[0].n,T[0].titre,"",T[0].lien?'data-act="go" data-view="tribune" data-id="'+T[0].n+'"':'data-act="go" data-view="tribunes"'));
-  h+='<section class="stack"><div class="secth"><h2>Nouveau chez EFA</h2></div><div class="stack" style="gap:10px">'+cartes.join("")+'</div></section>';
-  // EFA News : les trois derniers articles
+  if(dern)h+='<button class="ap-media" data-act="video" data-id="'+dern.sa.n+"-"+dern.e.n+'"><img src="'+esc(siteUrl(dern.e.vignette||dern.e.image||"koffi.jpg"))+'" alt="" loading="lazy"><span><span class="sur">Min’Fin · épisode '+dern.e.n+'</span><b>'+esc(dern.e.titre)+'</b><span class="s">'+esc(dern.e.notion||"")+(dern.e.duree?" · "+esc(dern.e.duree):"")+'</span></span></button>';
+  var T=TRIBS();if(T&&T[0])h+='<button class="ap-media" '+(T[0].lien?'data-act="go" data-view="tribune" data-id="'+T[0].n+'"':'data-act="go" data-view="tribunes"')+'><img src="'+IMG("accueil-tribunes.webp")+'" alt="" loading="lazy"><span><span class="sur">Tribune n° '+T[0].n+'</span><b>'+esc(T[0].titre)+'</b><span class="s">La tribune d’Élysée Johnson</span></span></button>';
   var N=newsData();
-  h+='<section class="stack"><div class="secth"><h2>À la une d’EFA News</h2><button class="link" data-act="go" data-view="news">Tout lire</button></div>';
   if(N&&N.articles){var L=N.articles.filter(function(a){return /publi/.test(a.statut||"");}).sort(function(a,b){return String(b.publication||"").localeCompare(String(a.publication||""));}).slice(0,3);
-    h+='<div class="stack" style="gap:10px">'+L.map(function(a){return uneCarte((N.categories&&N.categories[a.categorie])||"EFA News",a.titre,a.resume,'data-act="web" data-url="news/'+esc(a.id)+'.html?src=appli" data-t="EFA News"');}).join("")+'</div>';}
-  else h+='<button class="news" data-act="go" data-view="news"><span class="k">EFA News</span><b>L’actualité économique africaine, expliquée</b><span class="lg">Les faits, les chiffres et ce qu’ils changent pour vous.</span></button>';
-  h+='</section>';
-  // Outils à pousser
+    h+=L.map(function(a){return uneCarte((N.categories&&N.categories[a.categorie])||"EFA News",a.titre,a.resume,'data-act="web" data-url="news/'+esc(a.id)+'.html?src=appli" data-t="EFA News"');}).join("");}
+  h+='</div></section>';
+  // 5. L’enquête en cours, en image
+  h+='<section class="ap-enq"><img src="'+IMG("etudes-terrain.webp")+'" alt="" loading="lazy"><div><span class="sur" style="color:#F09680">L’enquête en cours</span><h2>L’argent de la tontine. <em>Votre réponse compte.</em></h2><p>Ce que deviennent les tours de tontine, dit par celles et ceux qui cotisent. Répondez en dix minutes.</p><a class="btn sm" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener">Répondre à l’enquête</a> <button class="lien" style="color:#fff" data-act="web" data-url="methode.html?src=appli#tont" data-t="Les premières tendances">Voir les premières tendances</button></div></section>';
+  // 6. Les outils
   h+='<section class="stack"><div class="secth"><h2>Des outils pour avancer</h2></div><div class="list">'+(A.outils||[]).map(function(o){return webRow(o.titre,o.texte,o.url,"chart","var(--coral2)");}).join("")+'</div></section>';
-  h+='<div class="list"><button class="row" data-act="go" data-view="decouvrir"><span class="sq" style="color:var(--cyan)">'+ICON.compass+'</span><span class="grow"><span class="t">Découvrir EFA</span><span class="s">L’école, les questions, les laboratoires</span></span>'+ICON.chev+'</button></div>';
+  // 7. Nouveau chez EFA (court)
+  var nv=(A.nouveautes||[]).slice(0,3);
+  if(nv.length)h+='<section class="stack"><div class="secth"><h2>Nouveau chez EFA</h2></div><div class="stack" style="gap:10px">'+nv.map(function(n){return uneCarte(n.k||"Nouveau",n.titre,n.texte,n.vue?'data-act="go" data-view="'+esc(n.vue)+'"':'data-act="web" data-url="'+esc(n.url)+'" data-t="'+esc(n.titre)+'"');}).join("")+'</div></section>';
+  h+='<section class="ap-fin"><span class="sur" style="color:#F09680">L’argent s’apprend.</span><h2>Apprendre est ouvert.<br><em>La suite se construit.</em></h2></section>';
   h+='<p class="fine" style="text-align:center">Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</p>';
   return h;}
+function uneCarte(k,t,x,act){return '<button class="news" '+act+'><span class="k">'+esc(k)+'</span><b>'+esc(t)+'</b>'+(x?'<span class="lg">'+esc(x)+'</span>':'')+'</button>';}
 /* ───── Mon cahier : mon école d’abord, puis tout ce que j’ai appris, décidé et commencé ───── */
 function vMonCahier(){var h=headerT("Mon cahier","Mon école, mes défis, mes fiches, mes notes");
   var s=PST(),nm=modsFaits(),tot=MODL.length,r=repriseCard();
@@ -1418,7 +1464,10 @@ function TRIBS(){return ETRIB||C.tribunes||[];}
 /* ───── Onglet 5 : Plus ───── */
 function vPlus(){var h=headerT("Menu","Tout EFA");
   h+='<section class="stack"><div class="list">'
-    +'<button class="row" data-act="go" data-view="ecole"><span class="sq" style="color:var(--coral2)">'+ICON.book+'</span><span class="grow"><span class="t">L’école</span><span class="s">Trois cycles, module après module</span></span>'+ICON.chev+'</button>'
+    +'<button class="row" data-act="go" data-view="ecole"><span class="sq" style="color:var(--coral2)">'+ICON.book+'</span><span class="grow"><span class="t">Apprendre et former</span><span class="s">L’école : trois cycles, module après module</span></span>'+ICON.chev+'</button>'
+    +webRow("Être accompagné","Ateliers avec Élysée Johnson ou à votre rythme","coaching.html?src=appli","people","var(--cyan)")
+    +webRow("Se lancer","Les acteurs, les SGI, les questions à poser avant de signer","index.html?src=appli#pilier-agir","chart","var(--green)")
+    +webRow("Marchés : la BRVM du jour","Les cours, expliqués simplement","marches.html?src=appli","chart","var(--cyan)")
     +'<button class="row" data-act="seg" data-s="outils"><span class="sq" style="color:var(--coral2)">'+ICON.plus+'</span><span class="grow"><span class="t">Mes outils</span><span class="s">Simuler, décider, s’organiser</span></span>'+ICON.chev+'</button>'
     +'<button class="row" data-act="go" data-view="questions"><span class="sq" style="color:var(--cyan)">'+ICON.search+'</span><span class="grow"><span class="t">Questions</span><span class="s">Qu’est-ce qui vous préoccupe ?</span></span>'+ICON.chev+'</button>'
     +webRow("La bibliothèque","Le musée, la balade, les livres, les capitaines d’industrie","bibliotheque.html?src=appli","book","var(--green)")
