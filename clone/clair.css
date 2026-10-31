@@ -71,3 +71,30 @@ html.cl-hall body #contenu>#fil.fil{display:flex!important}
 @media(max-width:700px){.prem-g{grid-template-columns:1fr}}
 section,.porte,#seul-contenus,[id]{scroll-margin-top:150px}
 .a-depart-plus{margin:12px 0 0}.a-depart-plus a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:#e34234;text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* Apprendre : deux lieux à explorer, le musée (immersif) et la bibliothèque (calme) · 31/10/2026 */
+.lieux{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:16px;margin:28px 0 30px}
+.lieu{position:relative;display:block;overflow:hidden;border-radius:20px;text-decoration:none;min-height:360px;transition:transform .25s ease,box-shadow .25s ease}
+.lieu:hover{transform:translateY(-3px)}
+.lieu img{display:block;width:100%;height:100%;object-fit:cover}
+.lieu-musee{background:#0b3a6b;color:#fff;box-shadow:0 24px 50px rgba(7,29,56,.22),inset 0 0 0 1.5px #b98652}
+.lieu-musee img{position:absolute;inset:0;transition:transform .8s ease}
+.lieu-musee:hover img{transform:scale(1.03)}
+.lieu-musee::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,24,48,.94) 0%,rgba(6,24,48,.6) 38%,rgba(6,24,48,0) 68%)}
+.lieu-musee .lieu-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:26px clamp(20px,2.6vw,32px)}
+.lieu-txt{display:flex;flex-direction:column;gap:8px}
+.lieu-k{font:800 12px/1.2 "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.lieu-musee .lieu-k{color:#f0b29b}
+.lieu strong{font:700 clamp(26px,2.8vw,38px)/1.1 Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.01em}
+.lieu-p{font-size:16.5px;line-height:1.5;max-width:34em}
+.lieu-musee .lieu-p{color:rgba(255,255,255,.88)}
+.lieu-b{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:8px;padding:12px 22px;border-radius:999px;font-weight:800;font-size:16px}
+.lieu-musee .lieu-b{background:#da3c1b;color:#fff}
+.lieu-biblio{display:flex;flex-direction:column;background:#fbf8f2;color:#071d38;box-shadow:0 0 0 1px #e6ddcd,0 14px 34px rgba(7,29,56,.06)}
+.lieu-biblio img{height:190px;flex:none}
+.lieu-biblio .lieu-txt{padding:22px 24px 24px;flex:1}
+.lieu-biblio .lieu-k{color:#0b63b0}
+.lieu-biblio strong{font-size:clamp(23px,2.2vw,30px)}
+.lieu-biblio .lieu-p{color:#4d5a6a}
+.lieu-biblio .lieu-b{margin-top:auto;background:#fff;color:#0b63b0;box-shadow:inset 0 0 0 1.5px #0b63b0}
+@media(max-width:820px){.lieux{grid-template-columns:1fr}.lieu-musee{min-height:440px}.lieu-biblio{min-height:0}.lieu-biblio img{height:170px}}
