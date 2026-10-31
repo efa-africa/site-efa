@@ -8,6 +8,13 @@
    Gardez la virgule entre deux blocs. Une apostrophe dans le texte s'écrit ’ ou \' */
 window.EFA_TRIBUNES = [
   {
+    n: 7,
+    date: "2026-10-31",
+    titre: "Votre tontine a constitué une réserve. À qui appartient-elle ?",
+    idee: "Le tour fait circuler, la réserve patrimoniale accumule, le fonds de solidarité protège : quatre règles connues d’avance pour que la réserve ait des propriétaires clairement identifiés.",
+    lien: "https://educationfinanciereafrique.substack.com/p/tribune-7-votre-tontine-a-constitue"
+  },
+  {
     n: 6,
     date: "2026-10-24",
     titre: "Votre tontine réunit un million chaque mois. Que gardez-vous ensemble ?",
