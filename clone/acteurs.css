@@ -162,3 +162,7 @@ a.ac-pc:hover{box-shadow:0 18px 44px rgba(7,29,56,.14)}
 .ac-acteurs .ac-large{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);align-items:center}
 .ac-acteurs .ac-large .ac-affiche{aspect-ratio:auto;height:100%;min-height:200px}
 @media(max-width:720px){.ac-acteurs .ac-large{grid-template-columns:1fr}.ac-acteurs .ac-large .ac-affiche{min-height:160px}}
+
+.ac-affiche-photo{padding:0;overflow:hidden}.ac-affiche-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.ac-demain-img{display:block;width:calc(100% + 2*clamp(26px,3.4vw,44px));max-width:none;margin:calc(-1*clamp(26px,3.4vw,44px)) calc(-1*clamp(26px,3.4vw,44px)) 22px;aspect-ratio:16/9;object-fit:cover;border-radius:28px 28px 0 0}
+.ac-demain{overflow:hidden;justify-content:flex-start!important}
