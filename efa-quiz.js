@@ -71,7 +71,6 @@
   var PAGES = {
     "index.html": ["moi", "#ecole"],
     "parcours.html": ["ecole", ".ch-trame, .hero"],
-    "outils.html": ["argent", ".hero, header + main > section, main > section"],
     "methode.html": ["etudes", "#sommaire"],
     "organisations.html": ["orga", "main > section"],
     "auteur.html": ["efa", ".au-nav, main > section, .hero"],
