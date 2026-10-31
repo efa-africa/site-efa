@@ -111,3 +111,12 @@ button.mk-carte{border:0;text-align:left;font:inherit;color:inherit;cursor:point
 .mk-sgi-l a span{font-weight:600;color:#5F6676;font-size:14px;white-space:nowrap}
 .mk-sgi-l a:hover b{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:720px){.mk-etapes,.mk-deux,.mk-sgi-l{grid-template-columns:minmax(0,1fr)}.mk-achat{padding:20px}}
+
+/* Axe des dates sous les courbes */
+.mk-sp{margin-top:10px}
+.mk-sp .mk-spark{margin-top:0}
+.mk-axe{position:relative;height:22px;border-top:1px solid #c9d3df;margin-top:0}
+.mk-axe span{position:absolute;top:0;transform:translateX(-50%);padding-top:6px;font-size:11.5px;line-height:1;color:#5F6676;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mk-axe span::before{content:"";position:absolute;left:50%;top:0;width:1px;height:4px;background:#8E9BB0}
+.mk-axe span.g{transform:none}.mk-axe span.g::before{left:0}
+.mk-axe span.d{transform:translateX(-100%)}.mk-axe span.d::before{left:auto;right:0}

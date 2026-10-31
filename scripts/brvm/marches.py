@@ -94,7 +94,7 @@ def main():
         if na: cap = round(dern['c'] * na)
         item = {'code': code, 'nom': s.get('nom'), 'nom_court': s.get('nom_court'), 'pays': s.get('pays'), 'secteur': s.get('secteur'),
                 'date': dates[-1], 'cours': dern['c'], 'var_jour': dern['p'], 'volume': dern['v'], 'valeur_echangee': round(dern['c'] * dern['v']),
-                'perf': perf, 'capitalisation': cap, 'mini': [serie[d]['c'] for d in dates[-63:]], 'mini_du': dates[-63:][0] if dates else None}
+                'perf': perf, 'capitalisation': cap, 'mini': [serie[d]['c'] for d in dates[-63:]], 'mini_du': dates[-63:][0] if dates else None, 'mini_d': dates[-63:]}
         liste.append(item)
         fiche = dict(item)
         fiche.update({'identite': {k: s.get(k) for k in ('date_introduction', 'nombre_actions', 'flottant_pct', 'site')},
