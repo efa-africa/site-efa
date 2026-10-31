@@ -146,6 +146,16 @@ body{margin:0;background:#fff}
 @media(max-width:900px){.vz-tete-g{grid-template-columns:1fr}.vz-img{display:none}.vz-champs{grid-template-columns:minmax(0,1fr)}.vz-scen{grid-template-columns:1fr}.vz-eq{grid-template-columns:1fr;gap:6px}.vz-eq i{line-height:1}.vz-cartes{grid-template-columns:1fr}}
 @media(max-width:640px){.vz-tete{padding:30px 0 70px}.vz-ecran{padding:24px 20px 26px}.vz-champs.vz-2,.vz-choix,.vz-parts{grid-template-columns:minmax(0,1fr)}.vz-actions .vz-b,.vz-actions .vz-b2{width:100%}
  .vz-res-t,.vz-res-c,.vz-res-pied{padding-left:20px;padding-right:20px}.vz-barre{grid-template-columns:40px 1fr 92px}.vz-rep{padding:16px}.vz-lignes li{font-size:14.5px}.vz-res-pied .vz-b,.vz-res-pied .vz-b2{width:100%}}
+
+/* Protection contre les styles généraux du site (habillage) */
+.vz .vz-b,.vz .vz-b *{color:#fff!important;-webkit-text-fill-color:#fff}
+.vz .vz-b{background:#0B1220!important;opacity:1!important;font-weight:800!important;font-family:var(--fb)!important}
+.vz .vz-b:hover{background:#1C2840!important}
+.vz .vz-b2{color:#0B1220!important;background:#fff!important}
+.vz .vz-lien{color:#1B71B2!important;background:none!important}
+html[data-clone] #contenu .vz-saisie input,html[data-clone] #contenu .vz-saisie select,html[data-clone] #contenu .vz-saisie input:focus,html[data-clone] #contenu .vz-saisie input:hover,html[data-clone] #contenu .vz-saisie select:focus{border:0!important;box-shadow:none!important;border-radius:0!important;background-color:transparent!important;outline:0!important;color:#0B1220!important;margin:0!important;height:auto!important}
+.vz .vz-saisie input::placeholder{color:#8A93A3;opacity:1}
+.vz .vz-c,.vz .vz-unite button{color:#0B1220!important}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261031q">
 </head>
