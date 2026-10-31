@@ -138,7 +138,7 @@
       p: "Autofinancement, prêt, obligation, action : quatre façons de financer, quatre façons de partager le risque.",
       a: [["Jouer au banquier", "#borne-banquier"], ["Suis-je prêt à investir ?", "bourse-essentiel.html?src=musee#A1"]],
       e: [
-        { k: "o", d: "1998", y: 1998, l: "Abidjan", t: "La BRVM ouvre", i: "h-brvm-1998", h: 2,
+        { k: "o", d: "1998", y: 1998, l: "Abidjan", t: "La Bourse (BRVM) ouvre", i: "h-brvm-1998", h: 2,
           c: ["8", "pays, une seule Bourse"],
           p: "La Bourse régionale des huit pays de l’UEMOA. Chacun peut devenir copropriétaire d’entreprises de la région, et recevoir une part de leurs bénéfices." },
         { k: "o", d: "La différence clé", l: "Marché primaire, marché secondaire", t: "Qui reçoit votre argent ?", i: "musee-coffret",

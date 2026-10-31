@@ -122,7 +122,7 @@ PATRIMOINE = [
          objectif='Comprendre les placements de la zone, leurs risques et leurs frais.',
          fiche=dict(titre='Les placements que je comprends', desc='Les placements de la zone, ce qu’ils rapportent et ce qu’ils risquent, sans aucun produit recommandé.', lien='opcvm-fcpe.html?src=parcours'),
          etapes=[e('P9', 4, True), e('P8', 10, True), neuf('Leçon', 'DAT et emprunts d’État : comment ça marche', 'dat-emprunts-etat.html')]),
-    dict(id='P8', module=19, titre='La BRVM', duree='3 h',
+    dict(id='P8', module=19, titre='La Bourse (BRVM)', duree='3 h',
          fiche=dict(titre='Suis-je prêt ? et mon plan écrit', desc='Les quatre vérifications avant d’investir, puis votre plan, sans aucun titre recommandé.', lien='bourse-essentiel.html?src=parcours#A5'),
          etapes=[e('P8', i, True) for i in (0, 1, 2, 3, 4, 5)] + [e('P8', i, False) for i in (6, 11, 12, 14)]),
     dict(id='P13', module=20, titre='Terrain et maison', fiche=dict(titre='Mes vérifications avant de verser', desc='La liste cochée des papiers à vérifier et le budget du projet.', lien='acheter-un-terrain.html?src=parcours')),
@@ -185,7 +185,7 @@ P0['cycles'] = [
          duree='Leçons et outils : environ 5 h', outils='', suivi='Suivi proposé sur 2 mois', certificat='Certificat local Maîtrise', statut='ouvert', page='certificat-maitrise.html',
          validation='Chaque module validé donne une attestation de réalisation. Le quiz de chaque module, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local. Projet conseillé : « Mon plan sur 12 mois ».'),
     dict(id='patrimoine', num='III', nom='Patrimoine', sous='Faire travailler son argent', modules='17 à 23',
-         gain='Comprendre les placements de la zone, la BRVM, préparer un projet, sa retraite et la transmission.',
+         gain='Comprendre les placements de la zone, la Bourse (BRVM), préparer un projet, sa retraite et la transmission.',
          duree='Leçons et outils : environ 6 h', outils='', suivi='Suivi proposé sur 3 mois', certificat='Certificat local Patrimoine', statut='ouvert', page='certificat-patrimoine.html',
          validation='Chaque module validé donne une attestation de réalisation. Le quiz de chaque module, puis l’examen final (au moins 17 bonnes réponses sur 24, 30 min, 3 tentatives), donnent le certificat local. Projet conseillé : un plan patrimonial à 10 ans.'),
 ]

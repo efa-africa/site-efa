@@ -12,7 +12,7 @@
   var CY = {
     fondations: { img: 'cycle-fondations.webp', n: 'I', t: 'Fondations', b: 'Savoir où passe son argent, tenir un mois, commencer une réserve, protéger sa famille.', m: '8 modules' },
     maitrise: { img: 'cycle-maitrise.webp', n: 'II', t: 'Maîtrise', b: 'Un mois de réserve, des dettes ordonnées, l’année entière prévue, la solidarité organisée.', m: '8 modules' },
-    patrimoine: { img: 'cycle-patrimoine.webp', n: 'III', t: 'Patrimoine', b: 'Les placements de la zone, la BRVM, un projet, la retraite et la transmission.', m: '7 modules' }
+    patrimoine: { img: 'cycle-patrimoine.webp', n: 'III', t: 'Patrimoine', b: 'Les placements de la zone, la Bourse (BRVM), un projet, la retraite et la transmission.', m: '7 modules' }
   };
   function avance(cy) {
     var e = document.getElementById('cycle-' + cy);

@@ -371,7 +371,7 @@ page('dat-emprunts-etat', 'DAT et emprunts d’État : comment ça marche',
     <h2 id="al-t">Les autres placements de la zone</h2>
     <div class="aller">
       <a href="opcvm-fcpe.html"><small>Module</small><b>OPCVM et FCPE expliqués</b><span>Placer à plusieurs, géré par un professionnel.</span></a>
-      <a href="bourse-essentiel.html"><small>Formation</small><b>L’essentiel de la Bourse</b><span>Actions et obligations à la BRVM.</span></a>
+      <a href="bourse-essentiel.html"><small>Formation</small><b>L’essentiel de la Bourse</b><span>Actions et obligations à la Bourse (BRVM).</span></a>
     </div>
     <ul class="mots"><li><a href="outils.html#dico/obligation">Obligation</a></li><li><a href="outils.html#dico/rendement">Rendement</a></li><li><a href="outils.html#dico/risque">Risque</a></li></ul>
   </section>

@@ -292,6 +292,7 @@ html[data-clone] #contenu .vz-saisie input,html[data-clone] #contenu .vz-saisie 
 
 
 
+
 <script>
 (function(){
  var $=function(i){return document.getElementById(i)};
@@ -369,7 +370,7 @@ html[data-clone] #contenu .vz-saisie input,html[data-clone] #contenu .vz-saisie 
  function lien(k){var s=D.sources[k];return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.editeur)+', '+esc(s.titre)+'</a>'}
  $('act').addEventListener('change',function(){var a=D&&D.activites.filter(function(x){return x.id===this.value},this)[0];if(!a){$('rep').innerHTML='';return}
   var h='<div class="vz-rep"><p class="vz-et">Petites entreprises vendues · États-Unis</p><ul class="vz-lignes">'+a.comparables.map(function(c){return '<li><span>'+esc(c.nom)+'</span><b>'+fois(c.multiple)+'</b></li>'}).join('')+'</ul><p class="vz-src">Prix ÷ cash <b>avant</b> la rémunération du dirigeant. Source&nbsp;: '+lien('bbs')+'.</p>';
-  h+='<div class="vz-bloc"><p class="vz-et">Sociétés cotées à la BRVM</p>'+(a.brvm?(a.brvm.per<=30?'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: cours égal à <b>'+nf(a.brvm.per,1)+' fois</b> le bénéfice net, en moyenne. De grandes sociétés, faciles à revendre en Bourse.</p>':'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: '+nf(a.brvm.per,1)+' fois le bénéfice net, en moyenne. Chiffre peu parlant&nbsp;: quelques sociétés aux bénéfices très faibles le font grimper.</p>')+'<p class="vz-src">Source&nbsp;: '+lien('boc')+'.</p>':'<p>Aucun secteur coté ne correspond à cette activité.</p>')+'</div>';
+  h+='<div class="vz-bloc"><p class="vz-et">Sociétés cotées à la Bourse (BRVM)</p>'+(a.brvm?(a.brvm.per<=30?'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: cours égal à <b>'+nf(a.brvm.per,1)+' fois</b> le bénéfice net, en moyenne. De grandes sociétés, faciles à revendre en Bourse.</p>':'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: '+nf(a.brvm.per,1)+' fois le bénéfice net, en moyenne. Chiffre peu parlant&nbsp;: quelques sociétés aux bénéfices très faibles le font grimper.</p>')+'<p class="vz-src">Source&nbsp;: '+lien('boc')+'.</p>':'<p>Aucun secteur coté ne correspond à cette activité.</p>')+'</div>';
   h+='<div class="vz-bloc"><p class="vz-et">Entreprises moyennes non cotées · zone euro</p><p>Rachetées autour de <b>'+nf(D.sources.argos.valeur,1)+' fois</b> (médiane) leur résultat d’exploitation avant amortissements. Des sociétés de 15 à 500 M€.</p><p class="vz-src">Source&nbsp;: '+lien('argos')+'.</p></div>';
   h+='</div>';
   $('rep').innerHTML=h});

@@ -39,7 +39,7 @@
     ["annee", "Prévoir les grosses dépenses et les primes", ["M10", "M14"]],
     ["conso", "Consommer, acheter à crédit, négocier", ["M16"]],
     ["protection", "Protéger sa famille et transmettre", ["M13", "M23"]],
-    ["placer", "Épargner, placer, comprendre la BRVM", ["M17", "M18", "P8"]],
+    ["placer", "Épargner, placer, comprendre la Bourse (BRVM)", ["M17", "M18", "P8"]],
     ["logement", "Terrain et maison", ["P13"]],
     ["retraite", "Préparer sa retraite", ["P9"]],
     ["club", "Investir à plusieurs", ["M21"]]
