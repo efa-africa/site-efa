@@ -744,7 +744,7 @@ details.apres-route{margin-top:18px}details.apres-route>summary{cursor:pointer;d
       + (PARP[p.id] && PARP[p.id].length ? '<div class="p-tags"><span class="etiquette">Profils du diagnostic concernés</span>'+PARP[p.id].map(function(n){return '<span class="p-tag">'+esc(n)+'</span>';}).join("")+'</div>' : '')
       + '<div class="arc"><div><span class="etiquette">Point de départ</span><p>'+esc(p.depart)+'</p></div><div><span class="etiquette">À l’arrivée</span><p>'+esc(p.objectif)+'</p></div></div>'
       + '<p class="cond"><b>Pour valider ce module</b> : faire '+(g.dispo>1?'les '+g.dispo+' étapes essentielles':'l’étape essentielle')+', dont le quiz du module,'+' et garder votre fiche. Vous obtenez alors une attestation de réalisation du module.'+(st.c==="prep"?' Une partie de ce module est encore en préparation.':'')
-      + '</p><p class="relu"><b>Statut : '+st.t+'</b> · relu par l’équipe EFA · version du '+dateFr(p.relu||D.date)+' · relecture par un expert extérieur en cours'+'</p>'
+      + '</p><p class="relu"><b>Statut : '+st.t+'</b> · relu par l’équipe EFA · version du '+dateFr(p.relu||D.date)+''+'</p>'
       + '<ol class="etapes">'+et+'</ol>'
       + (p.fiche ? '<div class="fiche"><span class="etiquette">Ce que vous gardez</span><p><b>'+esc(p.fiche.titre)+'</b>. '+esc(p.fiche.desc)+'</p><a class="bouton bouton-sombre" href="'+esc(lienEtape(p.fiche,p.id))+'" data-goatcounter-click="parcours-'+p.id+'-fiche">Faire ma fiche</a></div>' : '')
       + '<div class="p-bas"><div><span class="etiquette">Comment savoir que c’est acquis</span><p>'+esc(p.preuve)+'</p></div><div><span class="etiquette">Ensuite</span><div class="chips">'+suite+'</div></div></div>'
