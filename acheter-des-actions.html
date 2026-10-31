@@ -22,7 +22,7 @@
 </div></section>
 <section class="mk-sec mk-in" id="liste-sgi" aria-labelledby="t-liste" style="scroll-margin-top:140px"><h2 id="t-liste">Une sélection de SGI</h2><p class="mk-sous" id="mk-sel-p">Surtout en Côte d’Ivoire, et quelques-unes au Sénégal, au Bénin ou au Togo. Touchez une SGI pour ouvrir sa fiche.</p>
 <ul class="mk-sgi-l" id="mk-sgi-l"><li><a href="sgi.html"><b>Voir toutes les SGI</b><span>→</span></a></li></ul>
-<p class="mk-sous" id="mk-sel-regle" style="margin-top:16px;font-size:14px"></p><p style="margin-top:18px"><a class="mk-b" href="sgi.html">Voir et comparer toutes les SGI →</a></p></section>
+<p style="margin-top:18px"><a class="mk-b" href="sgi.html">Voir et comparer toutes les SGI →</a></p></section>
 <footer class="mk-pied"><div class="mk-in"><p>Contenu pédagogique, ne constitue pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures.</p><p>Sources&nbsp;: BRVM (cours de clôture officiels, bulletin officiel de la cote), publications des sociétés cotées, AMF-UMOA. Calculs EFA. EFA n’est pas affiliée à la BRVM.</p></div></footer>
 </main>
 <script>(function(){
@@ -46,8 +46,6 @@ Promise.all([fetch('data/sgi.json',{cache:'no-cache'}).then(function(r){return r
  var au=[];AUTRES.forEach(function(p){var x=trier(L.filter(function(s){return s.pays_siege===p}));if(x.length)au.push(x[0])});au=trier(au).slice(0,NB_AUTRES);
  var sel=ci.concat(au);
  document.getElementById('mk-sgi-l').innerHTML=sel.map(function(s){var et=s._rang===0?'<em class="mk-etq">Partenaire · Annonce</em>':s._rang===1?'<em class="mk-etq ok">Fiche complète</em>':'';return '<li><a href="sgi.html#sgi-'+encodeURIComponent(s.id)+'"><b>'+e(s.nom)+et+'</b><span>'+e(P[s.pays_siege]||s.pays_siege||'')+'</span></a></li>'}).join('');
- var np=sel.filter(function(s){return s._rang===0}).length,nc=sel.filter(function(s){return s._rang===1}).length;
- document.getElementById('mk-sel-regle').innerHTML='Comment cette sélection est faite&nbsp;: d’abord les SGI partenaires d’EFA (marquées «&nbsp;Annonce&nbsp;»), puis celles qui ont complété et relu leur fiche, puis celles dont les informations publiques sont les plus complètes. '+(np+nc?'':'Aucune SGI n’est encore partenaire et aucune n’a complété sa fiche&nbsp;: la sélection est donc faite sur les informations publiques. ')+'À égalité, l’ordre est tiré au hasard à chaque visite. Ce n’est ni un classement ni un conseil&nbsp;: les '+L.length+' SGI agréées sont sur la page de comparaison.';
 }).catch(function(){});
 })();</script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

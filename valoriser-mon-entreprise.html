@@ -209,7 +209,7 @@ html[data-clone] #contenu .vz-saisie input,html[data-clone] #contenu .vz-saisie 
    <p class="vz-note"><b>Scénario d’exploration, pas un prix de marché.</b> Il sert à voir combien la revente pèse dans la valeur. À 0, personne ne rachète&nbsp;: seule compte le cash des cinq années.</p>
   </div>
 
-  <details class="vz-acc" id="reperes"><summary><span>Repères&nbsp;: à combien se vendent des activités comparables&nbsp;?<small>Pour information. Ces chiffres ne sont pas appliqués à votre calcul.</small></span></summary>
+  <details class="vz-acc" id="reperes"><summary><span>Repères&nbsp;: à combien se vendent des activités comparables&nbsp;?</span></summary>
    <div class="vz-champ" style="max-width:520px;margin-top:12px"><label for="act">Votre activité ressemble surtout à…</label><div class="vz-saisie"><select id="act"><option value="">Choisir une activité</option></select></div></div>
    <div id="rep"></div>
   </details>
@@ -259,11 +259,6 @@ html[data-clone] #contenu .vz-saisie input,html[data-clone] #contenu .vz-saisie 
    <div class="vz-carte"><b>Ils testent la valeur finale de deux façons.</b><span>Par des ventes comparables, mesurées sur le même cash, et par une croissance modérée sans fin. Puis ils confrontent les deux.</span></div>
    <div class="vz-carte"><b>Ils passent de l’activité aux parts.</b><span>Ils retirent les dettes, ajoutent la trésorerie, puis examinent les conditions de la vente.</span></div>
   </div>
- </div></details>
- <details class="vz-acc"><summary>Sources et limites des comparaisons</summary><div class="vz-corps">
-  <p>Les repères de l’étape 2 sont donnés pour information. <strong>Ils ne sont pas appliqués à votre calcul</strong>, parce qu’ils ne mesurent pas le même cash&nbsp;: les ventes de petites entreprises sont rapportées à un cash avant la rémunération du dirigeant, les sociétés cotées à leur bénéfice net.</p>
-  <p>Il n’existe pas de données publiques sur les ventes de petites entreprises dans l’UEMOA. Les ventes recensées viennent des États-Unis. Des prix plus bas dans l’UEMOA, avec moins d’acheteurs et un crédit plus cher, sont une hypothèse à vérifier, pas un fait établi.</p>
-  <ol id="sources"></ol>
  </div></details>
  <p class="vz-mention">Outil d’apprentissage EFA. Il ne remplace ni une évaluation par un professionnel, ni des comptes vérifiés.</p>
 </section>
@@ -342,13 +337,13 @@ html[data-clone] #contenu .vz-saisie input,html[data-clone] #contenu .vz-saisie 
  var D=null;
  fetch('data/valorisation/reperes.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){D=d;
   $('act').insertAdjacentHTML('beforeend',d.activites.map(function(a){return '<option value="'+a.id+'">'+esc(a.nom)+'</option>'}).join(''));
-  $('sources').innerHTML=['bbs','boc','argos'].map(function(k){var s=d.sources[k];return '<li><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.titre)+'</a>, '+esc(s.editeur)+' ('+esc(s.pays)+'). '+esc(s.base)+'. Consulté le 31 octobre 2026.</li>'}).join('')}).catch(function(){});
+  if($('sources'))$('sources').innerHTML=['bbs','boc','argos'].map(function(k){var s=d.sources[k];return '<li><a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.titre)+'</a>, '+esc(s.editeur)+' ('+esc(s.pays)+'). '+esc(s.base)+'. Consulté le 31 octobre 2026.</li>'}).join('')}).catch(function(){});
  function lien(k){var s=D.sources[k];return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.editeur)+', '+esc(s.titre)+'</a>'}
  $('act').addEventListener('change',function(){var a=D&&D.activites.filter(function(x){return x.id===this.value},this)[0];if(!a){$('rep').innerHTML='';return}
   var h='<div class="vz-rep"><p class="vz-et">Petites entreprises vendues · États-Unis</p><ul class="vz-lignes">'+a.comparables.map(function(c){return '<li><span>'+esc(c.nom)+'</span><b>'+fois(c.multiple)+'</b></li>'}).join('')+'</ul><p class="vz-src">Prix ÷ cash <b>avant</b> la rémunération du dirigeant. Source&nbsp;: '+lien('bbs')+'.</p>';
   h+='<div class="vz-bloc"><p class="vz-et">Sociétés cotées à la BRVM</p>'+(a.brvm?(a.brvm.per<=30?'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: cours égal à <b>'+nf(a.brvm.per,1)+' fois</b> le bénéfice net, en moyenne. De grandes sociétés, faciles à revendre en Bourse.</p>':'<p>Secteur '+esc(a.brvm.secteur)+'&nbsp;: '+nf(a.brvm.per,1)+' fois le bénéfice net, en moyenne. Chiffre peu parlant&nbsp;: quelques sociétés aux bénéfices très faibles le font grimper.</p>')+'<p class="vz-src">Source&nbsp;: '+lien('boc')+'.</p>':'<p>Aucun secteur coté ne correspond à cette activité.</p>')+'</div>';
   h+='<div class="vz-bloc"><p class="vz-et">Entreprises moyennes non cotées · zone euro</p><p>Rachetées autour de <b>'+nf(D.sources.argos.valeur,1)+' fois</b> (médiane) leur résultat d’exploitation avant amortissements. Des sociétés de 15 à 500 M€.</p><p class="vz-src">Source&nbsp;: '+lien('argos')+'.</p></div>';
-  h+='<p class="vz-note"><b>Ces multiples ne mesurent pas le même cash que le vôtre.</b> Ils ne sont pas appliqués à votre calcul. Pour fixer votre hypothèse, partez d’un prix que vous connaissez ou explorez un scénario.</p></div>';
+  h+='</div>';
   $('rep').innerHTML=h});
 
  /* Calcul */

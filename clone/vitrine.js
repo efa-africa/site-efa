@@ -139,8 +139,8 @@
       var compl = ordreC.filter(function (id) { return tete.indexOf(id) < 0 && ok(par[id]); });
       var part = ordreP.filter(function (id) { return ok(par[id]); });
       var s1 = tete.concat(compl), pos = 0, h = '';
-      if (s1.length) h += '<section class="vt-sec" aria-labelledby="vt-s1"><h2 id="vt-s1">Les SGI qui se présentent en détail</h2><p class="vt-sec-p">Ces SGI nous ont transmis leurs frais et leurs conditions d’ouverture&nbsp;: vous pouvez les comparer sur les mêmes critères. Celles marquées «&nbsp;Annonce&nbsp;» ont aussi payé leur place.</p><div class="vt-grille">' + s1.map(function (id, i) { pos++; return carte(par[id], pos, i < tete.length); }).join('') + '</div></section>';
-      if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI agréées</h2><p class="vt-sec-p">Ces SGI n’ont pas encore complété leur fiche. Les informations affichées sont celles qu’elles publient&nbsp;; le reste est indiqué «&nbsp;Non communiqué&nbsp;».</p><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
+      if (s1.length) h += '<section class="vt-sec" aria-labelledby="vt-s1"><h2 id="vt-s1">Les SGI qui se présentent en détail</h2><div class="vt-grille">' + s1.map(function (id, i) { pos++; return carte(par[id], pos, i < tete.length); }).join('') + '</div></section>';
+      if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI agréées</h2><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
       Z.innerHTML = h || '<p class="vt-chapo">Aucune SGI ne correspond à ces filtres.</p>';
       Z.querySelectorAll('.vt-carte').forEach(function (el, i) {
         var s = par[el.dataset.id], payee = i < tete.length; el.dataset.pos = i + 1; el.dataset.payee = payee ? '1' : '0';
