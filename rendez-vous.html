@@ -680,7 +680,7 @@ img.char{object-position:50% 18%}
 .contact .btn-main{background:#D23F20}
 </style>
 <link rel="stylesheet" href="footer.css?v=2026102602">
-<link rel="stylesheet" href="clone/habillage.css?v=20261031u">
+<link rel="stylesheet" href="clone/habillage.css?v=20261031v">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre</a><a href="index.html#pilier-progresser">S’entraîner</a><a href="index.html#pilier-agir">Se lancer</a><a href="index.html#pilier-media">Le média</a><a href="index.html#etudes-prospective">Études</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a class="menu-cle" href="point-de-depart.html">Trouver mon point de départ <span>→</span></a><a href="index.html#benefices">Apprendre <span>↗</span></a><a href="index.html#seul">Apprendre seul <span>↗</span></a><a href="index.html#organisation">Apprendre ensemble <span>↗</span></a><a href="outils.html">Outils et simulateurs <span>↗</span></a><a href="musee.html">Le musée de l’économie <span>↗</span></a><a href="index.html#pilier-progresser">S’entraîner <span>↗</span></a><a href="index.html#pilier-progresser">Choisir son atelier <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a href="index.html#marches">Investir à la BRVM <span>↗</span></a><a href="marches.html">Marchés : la BRVM du jour <span>↗</span></a><a href="index.html#pilier-media">Le média <span>↗</span></a><a href="index.html#etudes-prospective">Études et prospective <span>↗</span></a><a class="menu-cle" href="organisations.html">Former mon équipe ou ma communauté <span>↗</span></a><a href="methode.html#methode">Notre méthode <span>↗</span></a><a href="auteur.html#auteur">EFA et son fondateur <span>↗</span></a><a href="index.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -738,6 +738,7 @@ img.char{object-position:50% 18%}
       </div>
       <label>Sujet<select id="ct-sujet" name="sujet">
         <option>Une question sur mon argent</option>
+        <option>Un code gratuit pour un atelier</option>
         <option>Un accompagnement individuel ou en groupe</option>
         <option>Un témoignage sur la tontine</option>
         <option>Un programme pour mon organisation</option>
@@ -957,7 +958,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
   var f=document.getElementById('ct-form'); if(!f) return;
   var box=document.getElementById('ct-msgbox'), b=f.querySelector('button[type=submit]');
   // ?sujet=organisation ou ?sujet=etude (liens de la page Pour les organisations) : sujet déjà choisi
-  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={accompagnement:'Un accompagnement individuel ou en groupe',organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat','partenariat-sgi':'Partenariat SGI',ambassadeur:'Devenir ambassadeur EFA',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];if(q==='ambassadeur'){var am=document.getElementById('ct-msg');if(am&&!am.value)am.value='Bonjour,\n\nJe souhaite devenir ambassadeur EFA.\nMa communauté (réseau, nombre d’abonnés, lien) : …\nCe que je partage aujourd’hui : …\n';}}catch(e){}
+  try{var q=(new URLSearchParams(location.search)).get('sujet'),SJ={accompagnement:'Un accompagnement individuel ou en groupe',organisation:'Un programme pour mon organisation',etude:'Une étude sur commande',partenariat:'Un partenariat','partenariat-sgi':'Partenariat SGI',ambassadeur:'Devenir ambassadeur EFA',expert:'Relire un contenu (notaire, expert, professionnel)',presse:'La presse','code-atelier':'Un code gratuit pour un atelier'};if(q&&SJ[q])document.getElementById('ct-sujet').value=SJ[q];if(q==='code-atelier'){var cm=document.getElementById('ct-msg'),tt=(new URLSearchParams(location.search)).get('t');if(cm&&!cm.value)cm.value='Bonjour,\n\nJe souhaite recevoir un code gratuit pour l’atelier'+(tt?' « '+tt+' »':'')+'.\n';}if(q==='ambassadeur'){var am=document.getElementById('ct-msg');if(am&&!am.value)am.value='Bonjour,\n\nJe souhaite devenir ambassadeur EFA.\nMa communauté (réseau, nombre d’abonnés, lien) : …\nCe que je partage aujourd’hui : …\n';}}catch(e){}
   try{var pg=(new URLSearchParams(location.search)).get('programme');if(pg&&/\/programme-organisation(\.html)?\?p=[A-Za-z0-9_-]+$/.test(pg)&&pg.indexOf(location.origin)===0){var mm=document.getElementById('ct-msg');if(mm&&!mm.value)mm.value='Bonjour,\n\nNous avons composé notre programme en ligne : '+pg+'\n\nNous souhaitons recevoir les accès (clé d’organisation pour le tableau de bord, code pour nos participants) et, si possible, organiser une session avec EFA. Nombre de participants : … Nos disponibilités : …\n\nMerci.';}}catch(e){}
   function say(t,err){box.innerHTML=t;box.style.color=err?'var(--soft-corail)':'';}
   f.addEventListener('submit',function(e){
@@ -984,7 +985,7 @@ var WEB3_CLE='426191fb-4812-4de4-b602-5857464c5916';
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103103" defer></script>
-<script src="clone/pages/rendez-vous.js?v=20261031u" defer></script>
-<script src="clone/habillage.js?v=20261031u" defer></script>
+<script src="clone/pages/rendez-vous.js?v=20261031v" defer></script>
+<script src="clone/habillage.js?v=20261031v" defer></script>
 </body>
 </html>
