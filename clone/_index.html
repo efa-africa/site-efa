@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="styles.css?v=20261030z"><script src="../donnees.js" defer></script><script src="script.js?v=20261030t" defer></script>
 <script>/* Le hall d'entrée : l'accueil, « Apprendre est ouvert », les questions fréquentes et le pied de page. Le premier choix fait entrer dans tout l'univers EFA, et le choix est retenu. */
 (function(){var h=location.hash.replace('#',''),u=null;try{if(/[?&]hall\b/.test(location.search))localStorage.removeItem('efa_clone_univers');u=localStorage.getItem('efa_clone_univers');}catch(e){}if(u!=='1'&&(!h||h==='accueil'||h==='contact'))document.documentElement.classList.add('cl-hall');})();</script>
-<link rel="stylesheet" href="clair.css?v=20261030g">
+<link rel="stylesheet" href="clair.css?v=20261031a">
 <link rel="stylesheet" href="efa-logo.css?v=20261030a">
 </head>
 <body>
@@ -30,9 +30,10 @@
           <p class="a-depart-t">Par quoi voulez-vous commencer&nbsp;?</p>
           <div class="a-choices">
             <a class="a-choice" href="point-de-depart.html?pour=moi"><span>01</span> Mon budget et mes dépenses</a>
-            <a class="a-choice" href="point-de-depart.html?pour=cadre"><span>02</span> Un projet&nbsp;: épargner, se loger, préparer la suite</a>
-            <a class="a-choice" href="point-de-depart.html?pour=investir"><span>03</span> Investir à la BRVM</a>
-            <a class="a-choice a-choice-libre" href="point-de-depart.html"><span>?</span> Je ne sais pas encore&nbsp;: trois questions pour m’orienter</a>
+            <a class="a-choice" href="point-de-depart.html?pour=investir"><span>02</span> Investir à la BRVM</a>
+          </div>
+          <p class="a-depart-plus"><a href="point-de-depart.html">Autre chose, ou je ne sais pas encore <span aria-hidden="true">→</span></a></p>
+          <div hidden>
           </div>
         </div>
         <p class="a-hero-footnote">Des contenus et des outils gratuits pour commencer.</p>
