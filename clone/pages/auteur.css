@@ -87,3 +87,10 @@ html[data-clone] .au-b2{display:inline-flex;align-items:center;min-height:52px;p
 html[data-clone] .au-b2:hover{background:rgba(255,255,255,.16)}
 @media (max-width:1000px) and (min-width:721px){html[data-clone] .au-hero-img{width:52%}}
 @media (max-width:720px){html[data-clone] .au-hero::before{display:none}html[data-clone] .au-hero-img{width:100%;object-position:center 50%}html[data-clone] .au-hero h1{font-size:32px}}
+
+/* Plein écran : l'affiche seule à l'arrivée, sans barre Revenir / Poursuivre · 31/10/2026 */
+html[data-clone] .efa-fil-place,html[data-clone] .efa-fil{display:none!important}
+html[data-clone] .au-hero.imm-all .au-hero-img{object-position:50% 45%!important}
+html[data-clone] .au-hero.imm-all .au-hero-txt{padding:clamp(36px,5vw,64px) max(24px,calc((100% - 1180px)/2)) clamp(44px,5vw,72px)!important}
+html[data-clone] .au-hero.imm-all .au-hero-txt>*{max-width:640px}
+@media (max-width:720px){html[data-clone] .au-hero.imm-all .au-hero-txt{padding:26px 16px 40px!important}html[data-clone] .au-hero.imm-all .au-hero-img{object-position:50% 50%!important}}
