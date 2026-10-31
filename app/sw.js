@@ -1,7 +1,7 @@
 /* EFA · L'appli : fonctionnement hors connexion. Changer VERSION à chaque mise en ligne.
    Les données de l'école, du cahier, de Min'Fin, du Dico, des Tribunes et des études viennent du site (../*.js) :
    elles sont mises en cache pour rester disponibles sans connexion, et rafraîchies à chaque ouverture en ligne. */
-var VERSION = "efa-app-2.7";
+var VERSION = "efa-app-2.8";
 var FICHIERS = ["./", "./index.html", "./content.js", "./manifest.webmanifest", "./confidentialite.html",
   "./koffi.jpg", "./bamba.jpg", "./affoue.jpg", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./fonts.css",
   "./libre-baskerville-latin-400-normal.woff2", "./libre-baskerville-latin-700-normal.woff2", "./libre-baskerville-latin-400-italic.woff2",
