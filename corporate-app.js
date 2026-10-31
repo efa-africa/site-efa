@@ -76,7 +76,7 @@
     h += '<div class="tr-ret"><p class="etiquette">À retenir</p><ul>' + c.retenir.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ul></div><section class="tr-exos"><h3>Exercices</h3><p class="tr-note">La correction s’affiche après votre réponse. Le dernier exercice est un cas différent.</p>' + c.exos.map(function (e, k) { return '<div class="tr-exo" data-k="' + k + '"></div>'; }).join("") + "</section>";
     if (c.pratique) h += '<div class="tr-prat"><div><p class="etiquette">En pratique</p><p>' + esc(c.pratique.texte) + "</p></div>" + (c.pratique.lien ? '<a class="bouton bouton-sombre" href="#cas-' + c.pratique.lien.slice(4) + '">Ouvrir le cas</a>' : "") + "</div>";
     h += '<nav class="tr-chnav">' + (prev ? '<a class="bouton bouton-clair" href="#cours-' + prev.id + '">← ' + esc(prev.titre) + "</a>" : '<a class="bouton bouton-clair" href="#cours">← Le cours</a>') + '<button class="lien-souligne" id="tr-print" type="button">Imprimer ce chapitre</button>' + (next ? '<a class="bouton bouton-principal" href="#cours-' + next.id + '">' + esc(next.titre) + " →</a>" : '<a class="bouton bouton-principal" href="#cas">Passer aux cas pratiques</a>') + "</nav>" +
-      '<p class="tr-note">Contenu pédagogique réalisé avec l’aide de l’intelligence artificielle et relu par l’équipe EFA. Entreprises et montants fictifs. Éducation financière, pas conseil.</p></article>';
+      '<p class="tr-note"> Entreprises et montants fictifs. Éducation financière, pas conseil.</p></article>';
     vue.innerHTML = h;
     $$(".tr-exo", vue).forEach(function (z) { exo(c, +z.dataset.k, z); });
     $("#tr-print").onclick = function () { window.print(); };

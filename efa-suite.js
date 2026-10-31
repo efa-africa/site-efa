@@ -45,7 +45,7 @@
     if (["admin-ecole.html", "espace-organisation.html", "tableau-ely.html"].indexOf(pg) >= 0 || document.querySelector(".efa-mentions")) return;
     var t = (document.body.innerText || "").toLowerCase(), m = [];
     /* La mention de l'IA ne figure que sur la page Méthode ; ailleurs, seulement les personnages fictifs. */
-    if (pg === "methode.html") { if (t.indexOf("intelligence artificielle") < 0) m.push("Contenus pédagogiques réalisés avec l’aide de l’intelligence artificielle et relus par l’équipe EFA. Les personnages et leurs montants sont fictifs."); }
+    if (pg === "methode.html") { if (t.indexOf("intelligence artificielle") < 0) m.push(" Les personnages et leurs montants sont fictifs."); }
     else if (t.indexOf("fictif") < 0) m.push("Les personnages et leurs montants sont fictifs.");
     if (!/pas (un )?conseil|ni conseil|aucun conseil|éducation, pas conseil|pas de conseil/.test(t)) m.push("EFA fait de l’éducation financière : ni conseil en investissement, ni vente de produits financiers.");
     if (!m.length) return;
