@@ -1389,7 +1389,7 @@ function vAccueil(){
     +porte("accueil-apprendre-ecole-3.webp","01 / Commencez facilement","Apprendre","Dès 1 min, gratuit : un sujet qui vous concerne, une explication claire et des outils pour essayer avec vos chiffres.","Commencer à apprendre",'data-act="go" data-view="ecole"')
     +porte("accueil-entrainer-elysee.webp","02 / Vous êtes accompagné","S’entraîner","Des ateliers sur votre cas, avec Élysée Johnson ou à votre rythme. Les trois premiers sont gratuits.","Choisir mon atelier",'data-act="web" data-url="coaching.html?src=appli" data-t="Être accompagné"')
     +porte("accueil-lancer-brvm.webp","03 / Tout au même endroit","Se lancer","Les acteurs du marché, le marché du jour, les SGI et les questions à poser avant de signer.","Préparer mon lancement",'data-act="web" data-url="index.html?src=appli#pilier-agir" data-t="Se lancer"')
-    +'</div><div class="list">'+webRow("Marchés : la BRVM du jour","Les cours, expliqués simplement","marches.html?src=appli","chart","var(--cyan)")+'</div></section>';
+    +'</div><div class="list">'+webRow("Marchés : la Bourse du jour","Les cours, expliqués simplement","marches.html?src=appli","chart","var(--cyan)")+'</div></section>';
   // 4. Le média : Min’Fin, la Tribune en image, puis EFA News
   h+='<section class="stack"><div class="secth"><h2>Le média</h2><button class="link" data-act="go" data-view="news">Tout lire</button></div><div class="stack" style="gap:10px">';
   var dern=null;if(MF&&MF.saisons)MF.saisons.forEach(function(sa){sa.episodes.forEach(function(e){if(e.statut==="publie"&&e.youtube)dern={sa:sa,e:e};});});
@@ -1474,7 +1474,7 @@ function vPlus(){var h=headerT("Menu","Tout EFA");
     +'<button class="row" data-act="go" data-view="ecole"><span class="sq" style="color:var(--coral2)">'+ICON.book+'</span><span class="grow"><span class="t">Apprendre et former</span><span class="s">L’école : trois cycles, module après module</span></span>'+ICON.chev+'</button>'
     +webRow("Être accompagné","Ateliers avec Élysée Johnson ou à votre rythme","coaching.html?src=appli","people","var(--cyan)")
     +webRow("Se lancer","Les acteurs, les SGI, les questions à poser avant de signer","index.html?src=appli#pilier-agir","chart","var(--green)")
-    +webRow("Marchés : la BRVM du jour","Les cours, expliqués simplement","marches.html?src=appli","chart","var(--cyan)")
+    +webRow("Marchés : la Bourse du jour","Les cours, expliqués simplement","marches.html?src=appli","chart","var(--cyan)")
     +'<button class="row" data-act="seg" data-s="outils"><span class="sq" style="color:var(--coral2)">'+ICON.plus+'</span><span class="grow"><span class="t">Mes outils</span><span class="s">Simuler, décider, s’organiser</span></span>'+ICON.chev+'</button>'
     +'<button class="row" data-act="go" data-view="questions"><span class="sq" style="color:var(--cyan)">'+ICON.search+'</span><span class="grow"><span class="t">Questions</span><span class="s">Qu’est-ce qui vous préoccupe ?</span></span>'+ICON.chev+'</button>'
     +webRow("La bibliothèque","Le musée, la balade, les livres, les capitaines d’industrie","bibliotheque.html?src=appli","book","var(--green)")
