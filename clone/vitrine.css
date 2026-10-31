@@ -116,3 +116,39 @@
 html[data-clone] .vt .vt-etq:not(.vt-etq-ok){background:#0b1220!important;color:#fff!important}
 html[data-clone] .vt .vt-etq-ok{background:rgba(60,203,127,.15)!important;color:#0b1220!important}
 html[data-clone] .vt .vt-logo-v{background:#0b1220!important;color:#fff!important}
+
+/* Entrée immersive de la page des SGI (même gabarit que « S’entraîner ») */
+.vt-tete .vt-titre{margin-top:12px;font-size:clamp(36px,5vw,62px);line-height:1.08}
+.sg-entree{position:relative;height:calc(100svh - 82px);min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;background:#041226}
+.sg-entree-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.sg-entree-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,38,.82) 0%,rgba(4,18,38,.45) 42%,rgba(4,18,38,0) 70%),linear-gradient(0deg,rgba(4,18,38,.75) 0%,rgba(4,18,38,0) 45%)}
+.sg-entree-txt{position:relative;width:min(1200px,calc(100% - 48px));margin:0 auto;padding-bottom:clamp(48px,8vh,96px)}
+.sg-entree-k{margin:0 0 18px;font:800 12px/1 "Source Sans 3",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#ffb4a3}
+.vt .sg-entree h1{margin:0;font:700 clamp(52px,8.2vw,124px)/.98 "Libre Baskerville",Georgia,serif;letter-spacing:-.035em;color:#fff}
+.sg-entree h1 span{display:block}
+.sg-entree h1 em{font-style:normal;color:#7fd3ea}
+.sg-entree-p{max-width:500px;margin:24px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.86)}
+.sg-entree-cta{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:15px 26px;border-radius:999px;background:#E44828;color:#fff;font-weight:800;text-decoration:none;box-shadow:0 14px 34px rgba(227,66,52,.35)}
+.sg-entree-cta:hover{filter:brightness(1.06)}
+#sgi-liste{scroll-margin-top:80px}
+@media(max-width:720px){.sg-entree{height:calc(100svh - 68px)}.sg-entree-voile{background:linear-gradient(0deg,rgba(4,18,38,.92) 0%,rgba(4,18,38,.55) 45%,rgba(4,18,38,0) 75%)}.sg-entree-txt{width:calc(100% - 32px)}}
+@media(min-width:721px){
+  .sg-entree::before{content:"";position:absolute;inset:-40px;background:url(assets/sgi-entree.webp) center 50%/cover no-repeat;filter:blur(28px) saturate(1.1);transform:scale(1.1)}
+  .sg-entree .sg-entree-img{left:auto;right:0;width:58%;object-position:center 45%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%);mask-image:linear-gradient(90deg,transparent 0%,#000 22%)}
+  .sg-entree-voile{background:linear-gradient(90deg,rgba(4,18,38,.78) 0%,rgba(4,18,38,.5) 40%,rgba(4,18,38,0) 62%),linear-gradient(0deg,rgba(4,18,38,.55) 0%,rgba(4,18,38,0) 40%)}
+  .sg-entree-txt{align-self:center;padding-bottom:0}
+  .vt .sg-entree h1{font-size:clamp(56px,6.6vw,108px)}
+}
+/* Et ensuite : deux cartes entièrement cliquables */
+.sg-suite{padding:10px 0 80px}
+.sg-suite h2{margin-top:10px;font-size:clamp(28px,3.4vw,42px);line-height:1.12}
+.sg-suite h2 em{font-style:normal;color:#147f9b}
+.sg-suite-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.sg-carte{position:relative;display:flex;flex-direction:column;gap:6px;padding:24px 56px 24px 24px;border-radius:18px;background:#EEF5FC;color:#0B1220;text-decoration:none;transition:background .2s}
+.sg-carte:hover{background:#E1EDF9}
+.sg-carte:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
+.sg-carte-k{font:800 11.5px/1.3 "Source Sans 3",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1B71B2}
+.sg-carte strong{font:700 clamp(20px,2vw,24px)/1.2 "Libre Baskerville",Georgia,serif}
+.sg-carte span:not(.sg-carte-k){color:#465062;font-size:16px;line-height:1.5}
+.sg-carte b{position:absolute;right:22px;top:22px;color:#E44828;font-size:20px}
+@media(max-width:720px){.sg-suite-g{grid-template-columns:1fr}}
