@@ -6,7 +6,7 @@
 <meta name="description" content="On n’achète pas une action directement à la BRVM : il faut passer par une SGI agréée. Les trois étapes, la liste des SGI et les acteurs du marché.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700;800&display=swap">
 <style>body{margin:0;background:#fff}</style>
-<link rel="stylesheet" href="clone/marches-onglet.css?v=20261031e">
+<link rel="stylesheet" href="clone/marches-onglet.css?v=20261031f">
 <link rel="stylesheet" href="clone/habillage.css?v=20261031r">
 </head>
 <body>
@@ -20,13 +20,36 @@
 <ol class="mk-etapes"><li><b>Choisir une SGI</b>Agrément, frais, montant minimum, ouverture à distance.</li><li><b>Ouvrir un compte-titres</b>Pièce d’identité, justificatif de domicile, premier versement.</li><li><b>Passer un ordre</b>Le titre, la quantité, le prix maximum que vous acceptez.</li></ol>
 <div class="mk-deux"><a href="#liste-sgi"><b>Voir la liste des SGI ↓</b><span>Les sociétés agréées, avec leur fiche et un bouton pour les contacter.</span></a><a href="acteurs.html#acteurs"><b>Connaître les acteurs du marché →</b><span>La BRVM, les SGI, l’AMF-UMOA, le dépositaire, les émetteurs : qui fait quoi.</span></a></div>
 </div></section>
-<section class="mk-sec mk-in" id="liste-sgi" aria-labelledby="t-liste" style="scroll-margin-top:140px"><h2 id="t-liste">Les SGI agréées</h2><p class="mk-sous">Par ordre alphabétique. Touchez une SGI pour ouvrir sa fiche&nbsp;; vous pourrez aussi les comparer. EFA n’en recommande aucune.</p>
+<section class="mk-sec mk-in" id="liste-sgi" aria-labelledby="t-liste" style="scroll-margin-top:140px"><h2 id="t-liste">Une sélection de SGI</h2><p class="mk-sous" id="mk-sel-p">Surtout en Côte d’Ivoire, et quelques-unes au Sénégal, au Bénin ou au Togo. Touchez une SGI pour ouvrir sa fiche.</p>
 <ul class="mk-sgi-l" id="mk-sgi-l"><li><a href="sgi.html"><b>Voir toutes les SGI</b><span>→</span></a></li></ul>
-<p style="margin-top:22px"><a class="mk-b" href="sgi.html">Comparer les SGI →</a></p></section>
+<p class="mk-sous" id="mk-sel-regle" style="margin-top:16px;font-size:14px"></p><p style="margin-top:18px"><a class="mk-b" href="sgi.html">Voir et comparer toutes les SGI →</a></p></section>
 <footer class="mk-pied"><div class="mk-in"><p>Contenu pédagogique, ne constitue pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures.</p><p>Sources&nbsp;: BRVM (cours de clôture officiels, bulletin officiel de la cote), publications des sociétés cotées, AMF-UMOA. Calculs EFA. EFA n’est pas affiliée à la BRVM.</p></div></footer>
 </main>
-<script>(function(){var P={CI:'Côte d’Ivoire',SN:'Sénégal',BJ:'Bénin',BF:'Burkina Faso',ML:'Mali',NE:'Niger',TG:'Togo',GW:'Guinée-Bissau'};function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-fetch('data/sgi.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){var L=d.sgi.slice().sort(function(a,b){return a.nom.localeCompare(b.nom,'fr')});document.getElementById('mk-sgi-l').innerHTML=L.map(function(s){return '<li><a href="sgi.html#sgi-'+encodeURIComponent(s.id)+'"><b>'+e(s.nom)+'</b><span>'+e(P[s.pays_siege]||s.pays_siege||'')+'</span></a></li>'}).join('')}).catch(function(){})})();</script>
+<script>(function(){
+/* Sélection affichée : d'abord les partenaires d'EFA (places payées en cours), puis les SGI à fiche complète et relue,
+   puis, à défaut, celles dont les informations publiques sont les plus complètes. Ordre tiré au hasard à chaque visite parmi les ex aequo.
+   Réglages : NB_CI SGI en Côte d'Ivoire, NB_AUTRES dans les pays AUTRES. */
+var NB_CI=8, NB_AUTRES=2, AUTRES=['SN','BJ','TG'];
+var P={CI:'Côte d’Ivoire',SN:'Sénégal',BJ:'Bénin',BF:'Burkina Faso',ML:'Mali',NE:'Niger',TG:'Togo',GW:'Guinée-Bissau'};
+function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var graine;try{graine=+sessionStorage.getItem('efa-sel-sgi')||0;if(!graine){graine=Math.floor(Math.random()*1e9)+1;sessionStorage.setItem('efa-sel-sgi',graine)}}catch(x){graine=Math.floor(Math.random()*1e9)+1}
+function alea(){graine=(graine*1103515245+12345)%2147483648;return graine/2147483648}
+function melange(t){for(var i=t.length-1;i>0;i--){var j=Math.floor(alea()*(i+1)),k=t[i];t[i]=t[j];t[j]=k}return t}
+function remplie(v){return v!==null&&v!==undefined&&v!==''&&!(Array.isArray(v)&&!v.length)}
+function infos(s){var c=s.contact||{},f=s.frais||{},a=s.acces||{};return [s.agrement,s.site,c.telephone,c.email,c.agence,s.presentation,f.courtage,a.minimum_ouverture_fcfa].filter(remplie).length}
+Promise.all([fetch('data/sgi.json',{cache:'no-cache'}).then(function(r){return r.json()}),fetch('data/places.json',{cache:'no-cache'}).then(function(r){return r.json()}).catch(function(){return {}})]).then(function(R){
+ var L=R[0].sgi,PL=R[1]||{},auj=new Date().toISOString().slice(0,10),enP=PL.periode&&PL.periode.debut&&auj>=PL.periode.debut&&auj<=PL.periode.fin;
+ var part={};if(enP)(PL.places||[]).forEach(function(p){if(p.sgi)part[p.sgi]=1});
+ L.forEach(function(s){s._rang=part[s.id]?0:(s.fiche_complete&&s.relue?1:2);s._infos=infos(s)});
+ function trier(t){melange(t);return t.sort(function(a,b){return a._rang-b._rang||b._infos-a._infos})}
+ var ci=trier(L.filter(function(s){return s.pays_siege==='CI'})).slice(0,NB_CI);
+ var au=[];AUTRES.forEach(function(p){var x=trier(L.filter(function(s){return s.pays_siege===p}));if(x.length)au.push(x[0])});au=trier(au).slice(0,NB_AUTRES);
+ var sel=ci.concat(au);
+ document.getElementById('mk-sgi-l').innerHTML=sel.map(function(s){var et=s._rang===0?'<em class="mk-etq">Partenaire · Annonce</em>':s._rang===1?'<em class="mk-etq ok">Fiche complète</em>':'';return '<li><a href="sgi.html#sgi-'+encodeURIComponent(s.id)+'"><b>'+e(s.nom)+et+'</b><span>'+e(P[s.pays_siege]||s.pays_siege||'')+'</span></a></li>'}).join('');
+ var np=sel.filter(function(s){return s._rang===0}).length,nc=sel.filter(function(s){return s._rang===1}).length;
+ document.getElementById('mk-sel-regle').innerHTML='Comment cette sélection est faite&nbsp;: d’abord les SGI partenaires d’EFA (marquées «&nbsp;Annonce&nbsp;»), puis celles qui ont complété et relu leur fiche, puis celles dont les informations publiques sont les plus complètes. '+(np+nc?'':'Aucune SGI n’est encore partenaire et aucune n’a complété sa fiche&nbsp;: la sélection est donc faite sur les informations publiques. ')+'À égalité, l’ordre est tiré au hasard à chaque visite. Ce n’est ni un classement ni un conseil&nbsp;: les '+L.length+' SGI agréées sont sur la page de comparaison.';
+}).catch(function(){});
+})();</script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="clone/habillage.js?v=20261031r" defer></script>
 </body>

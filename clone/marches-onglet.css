@@ -120,3 +120,6 @@ button.mk-carte{border:0;text-align:left;font:inherit;color:inherit;cursor:point
 .mk-axe span::before{content:"";position:absolute;left:50%;top:0;width:1px;height:4px;background:#8E9BB0}
 .mk-axe span.g{transform:none}.mk-axe span.g::before{left:0}
 .mk-axe span.d{transform:translateX(-100%)}.mk-axe span.d::before{left:auto;right:0}
+
+.mk-etq{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#FFF3E0;color:#8A4B00;font-style:normal;font-size:11.5px;font-weight:800;vertical-align:2px}
+.mk-etq.ok{background:#E6F4EC;color:#1d6b40}
