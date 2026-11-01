@@ -60,7 +60,7 @@
     var surCoaching = /\/coaching(\.html)?$/.test(location.pathname);
     var b = document.createElement('div'); b.className = 'efa-promo'; b.setAttribute('role', 'region'); b.setAttribute('aria-label', 'Promotion d’ouverture');
     b.innerHTML = '<div class="efa-promo-in"><span class="p-r">Promotion</span><span class="p-j">Ouverture</span>'
-      + '<span class="p-t"><span class="p-long">Phase de test : 2 crédits offerts pour ouvrir vos premiers cours, +1 crédit à chaque avis.</span><span class="p-court">2 crédits offerts, +1 par avis</span></span>'
+      + '<span class="p-t"><span class="p-long">Phase de test : 3 crédits offerts avec votre email (1 crédit = 10 000 FCFA), +1 crédit à chaque avis.</span><span class="p-court">3 crédits offerts, +1 par avis</span></span>'
       + '<a class="p-v" href="' + (surCoaching ? '#premiers-pas' : 'coaching.html#premiers-pas') + '" data-goatcounter-click="promo-bandeau">Utiliser mes crédits →</a>'
       + '<button class="p-x" type="button" aria-label="Fermer le bandeau">×</button></div>';
     var fil = document.getElementById('fil'), main = document.querySelector('main');
