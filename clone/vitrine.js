@@ -73,7 +73,7 @@
       var corps = { email: em, prenom: f.prenom.value.trim().slice(0, 60), pays: f.pays.value, sgi: s.id, position: pos || null, payee: !!payee, newsletter: f.newsletter.checked, consentement: true, session: session() };
       var tk = f.querySelector('[name="cf-turnstile-response"]'); if (tk) corps.turnstile = tk.value;
       var envoi = CFG.VITRINE_URL
-        ? fetch(CFG.VITRINE_URL.replace(/\/$/, '') + '/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corps) }).then(function (r) { return r.json().then(function (j) { if (!r.ok) throw j; return { mail: true }; }); })
+        ? fetch(CFG.VITRINE_URL.replace(/\/$/, '') + '/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corps) }).then(function (r) { return r.json().then(function (j) { if (!r.ok) throw j; return { mail: j.mail !== false }; }); })
         : fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: '426191fb-4812-4de4-b602-5857464c5916', subject: 'efa.africa · Vitrine SGI · demande de coordonnées : ' + s.nom, from_name: 'Vitrine SGI', email: em, prenom: corps.prenom, pays: corps.pays, sgi: s.nom, newsletter: corps.newsletter ? 'oui' : 'non', consentement: 'oui' }) }).then(function () { return { mail: false }; });
       envoi.then(function (r) {
         try { localStorage.setItem('efa_vt_email', em); } catch (x) {}
