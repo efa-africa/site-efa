@@ -8,7 +8,7 @@ window.EFA_ATELIERS = (function () {
   var PRIX = 50000, FIN_TEST = '2026-12-31';
   var A = [
     // Cours à votre rythme (hors catalogue des vingt ateliers)
-    { id: 'premiers-pas-bourse', cours: 1, prix: 15000, lien: 'premiers-pas-bourse.html', aff: 'cours-premiers-pas.webp', t: 'Mes premiers pas en Bourse', c: 0, img: 'sgi-entree.webp', pour: 'Vous voulez investir à la Bourse (BRVM) et partez de zéro.', rep: 'Votre réserve et votre horizon écrits, le marché compris, une entreprise lue, et votre SGI choisie.' },
+    { id: 'premiers-pas-bourse', cours: 1, prix: 25000, lien: 'premiers-pas-bourse.html', aff: 'cours-premiers-pas.webp?v=2', t: 'Mes premiers pas en Bourse', c: 0, img: 'sgi-entree.webp', pour: 'Vous voulez investir à la Bourse (BRVM) et partez de zéro.', rep: 'Votre réserve et votre horizon écrits, le marché compris, une entreprise lue, et votre SGI choisie.' },
     // Ateliers approfondis avec Élysée Johnson
     { id: 'premier-ordre-brvm', prix: 50000, lien: 'coach-bourse.html', t: 'Mon premier ordre à la Bourse (BRVM)', c: 1, img: 'carte-bourse-900.webp', pour: 'Vous voulez investir à la Bourse (BRVM) et ne savez pas par où commencer.', rep: 'Votre compte-titres ouvert, votre SGI choisie, votre premier ordre préparé.' },
     { id: 'lire-societe-cotee', prix: 50000, t: 'Lire une société cotée comme un investisseur', c: 1, img: 'marches-entree.webp', pour: 'Vous suivez Sonatel, Orange CI ou la SGBCI sans savoir lire leurs chiffres.', rep: 'Une méthode pour lire résultats, dividende et cours, appliquée à trois sociétés.' },

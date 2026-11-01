@@ -8,7 +8,7 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function bouton(a, ok) {
     if (ok) return 'Accès débloqué ✓';
-    var m = D.acces(a); return m === 'gratuit' ? 'Commencer gratuitement' : m === 'contact' ? 'Demander l’accès' : 'Obtenir ma clé';
+    var m = D.acces(a); return m === 'gratuit' ? 'Commencer gratuitement' : m === 'contact' ? 'Demander l’accès' : 'Obtenir mon code promo';
   }
   function carte(a, n) {
     var ok = etat.ok[a.id];
@@ -17,7 +17,7 @@
       '<div class="at-c-corps"><span class="at-c-type">' + (a.cours ? 'Cours à votre rythme · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
-      '<div class="at-c-pied"><span class="at-c-prix"><b>' + D.prix(a) + '</b>' + (a.gratuit ? '' : '<small>Offert pour le lancement</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
+      '<div class="at-c-pied"><span class="at-c-prix">' + (a.gratuit ? '<b>' + D.prix(a) + '</b>' : '<span class="promo-pastille">Promo d’ouverture</span><b><s>' + D.prix(a) + '</s></b><small>' + (D.acces(a) === 'contact' ? 'Offert sur demande' : 'Offert avec le code promo') + '</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
   }
   var n = 0;
   document.querySelectorAll('.at-cat').forEach(function (c) {
@@ -34,16 +34,16 @@
   function majDlg() {
     var ok = !!etat.ok[cour.id], m = D.acces(cour);
     $('at-dlg-prix').textContent = D.prix(cour);
-    $('at-dlg-offre').textContent = m === 'gratuit' ? '' : m === 'contact' ? 'Offert pour le lancement, sur demande' : 'Offert pour le lancement';
-    $('at-mail-l').textContent = m === 'gratuit' ? 'Votre email suffit' : 'Pas de clé ? Générez-la avec votre email';
-    $('at-mail-ok').textContent = m === 'gratuit' ? 'Débloquer' : 'Générer';
+    $('at-dlg-offre').textContent = m === 'gratuit' ? '' : m === 'contact' ? 'Promotion d’ouverture : offert sur demande' : 'Promotion d’ouverture : offert avec le code promo';
+    $('at-mail-l').textContent = m === 'gratuit' ? 'Votre email suffit' : 'Gagnez votre code promo avec votre email';
+    $('at-mail-ok').textContent = m === 'gratuit' ? 'Débloquer' : 'Obtenir mon code';
     fm.hidden = ok || m === 'contact';
     $('at-dlg-contact').hidden = ok || m !== 'contact';
     $('at-dlg-contact').href = 'rendez-vous.html?sujet=code-atelier&atelier=' + encodeURIComponent(cour.id) + '&t=' + encodeURIComponent(cour.t) + '#contact';
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
     var go = $('at-dlg-go'); go.hidden = !(ok && cour.lien); if (cour.lien) go.href = cour.lien;
     var suite = cour.lien ? '' : ' Votre place est réservée : nous vous envoyons le lien par email dès l’ouverture de la prochaine session.';
-    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' débloqué avec la clé <b>' + etat.ok[cour.id] + '</b>.') + suite; }
+    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' débloqué avec le code promo <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
   }
   function ouvrir(id) {
@@ -69,12 +69,12 @@
     etat.mail = m;
     if (cour.gratuit) { debloquer('email'); A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); return; }
     var k = D.nouvelleCle(); debloquer(k);
-    msg.innerHTML = 'Votre clé d’accès : <b>' + k + '</b>. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué et nous vous l’envoyons aussi à ' + m.replace(/[<>&]/g, '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
-    A.envoyer(m, 'Clé d’accès générée · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · clé ' + k);
+    msg.innerHTML = 'Votre code promo : <b>' + k + '</b>. Il est appliqué : ' + (cour.cours ? 'le cours' : 'l’atelier') + ' est offert, et nous vous envoyons le code à ' + m.replace(/[<>&]/g, '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
+    A.envoyer(m, 'Code promo généré · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · clé ' + k);
   });
   function valider() {
     var v = champ.value.trim().toUpperCase().replace(/\s+/g, '');
-    if (!D.cleValide(v)) { msg.textContent = 'Cette clé n’est pas reconnue. Vérifiez les lettres et les tirets.'; msg.className = 'ko'; return; }
+    if (!D.cleValide(v)) { msg.textContent = 'Ce code promo n’est pas reconnu. Vérifiez les lettres et les tirets.'; msg.className = 'ko'; return; }
     debloquer(v);
     try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'atelier-cle-' + cour.id, title: 'Clé atelier', event: true }); } catch (x) {}
   }
