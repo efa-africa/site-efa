@@ -621,3 +621,30 @@ a.produit-lien:hover .produit-img img{transform:scale(1.02)}
 .produit-lien .produit-img img{transition:transform .5s ease}
 a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 @media(max-width:720px){.pv-enquete .pv-p{padding-top:34px}}
+
+/* Témoignages : encadrés EFA (aplats, guillemet corail, phrase forte en Baskerville) */
+.tm{padding:clamp(64px,8vw,110px) 0;background:#fff}
+.tm h2{font-family:"Libre Baskerville",Georgia,serif;font-size:clamp(32px,4.4vw,56px);line-height:1.08;color:#071d38;margin:10px 0 0;max-width:20ch}
+.tm h2 em{color:#147f9b;font-style:normal}
+.tm-sous{max-width:60ch;margin:14px 0 0;color:#536174;font-size:17px}
+.tm-grille{columns:3 300px;column-gap:18px;margin-top:34px}
+.tm-c,.tm-img{break-inside:avoid;margin:0 0 18px;display:block}
+.tm-c{position:relative;border-radius:22px;padding:26px 24px 22px;background:#EEF5FC}
+.tm-c1{background:#fff;box-shadow:0 14px 34px rgba(7,29,56,.09)}
+.tm-c2{background:#F5EFE2}
+.tm-g{position:absolute;top:6px;right:18px;font:700 76px/1 "Libre Baskerville",Georgia,serif;color:#E44828;opacity:.9}
+.tm blockquote{margin:0}
+.tm-fort{margin:0;padding-right:40px;font:700 clamp(19px,1.8vw,23px)/1.25 "Libre Baskerville",Georgia,serif;color:#071d38}
+
+.tm-txt{margin:12px 0 0;font-size:16px;line-height:1.55;color:#465062}
+
+.tm figcaption{display:flex;align-items:center;gap:12px;margin-top:18px}
+.tm-ini{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#071d38;color:#fff;font:700 15px "Source Sans 3",sans-serif;letter-spacing:.02em}
+.tm-c1 .tm-ini{background:#E44828}
+.tm figcaption b{display:block;font-size:16px;color:#071d38}
+
+.tm figcaption small{display:block;font-size:13.5px;color:#5F6676}
+
+.tm-img img{display:block;width:100%;height:auto;border-radius:22px;aspect-ratio:1/1;object-fit:cover}
+.tm-note{margin:6px 0 0;font-size:12.5px;color:#7A8293}
+@media(max-width:720px){.tm-grille{columns:1}.tm-img{display:none}.tm-img:first-of-type{display:block}}
