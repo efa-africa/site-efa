@@ -56,7 +56,8 @@
   }
   function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
   function inscrit() { return !!(etat.mail || (A && A.mail())); }
-  function credits() { return (inscrit() ? D.CREDITS_OFFERTS + (etat.jeu || 0) : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
+  function mpts() { try { return (JSON.parse(localStorage.getItem('efa_missions_v1') || '{}').pts) || 0; } catch (x) { return 0; } }
+  function credits() { return (inscrit() ? D.CREDITS_OFFERTS + (etat.jeu || 0) + mpts() : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
   function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; try { window.dispatchEvent(new Event('efa-credits')); } catch (x) {} }
   function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
   function remplirAvis(vise) {
@@ -91,7 +92,7 @@
     if (!inscrit()) {
       var m0 = cm.value.trim();
       if (!A || !A.valide(m0)) { msg.textContent = 'Indiquez une adresse email valide pour activer vos crédits.'; msg.className = 'ko'; cm.focus(); return; }
-      etat.mail = m0; ecrire(etat); A.envoyer(m0, 'Inscription phase de test · ' + D.CREDITS_OFFERTS + ' crédits', cour.id);
+      etat.mail = m0; ecrire(etat); var par = ''; try { par = localStorage.getItem('efa_parrain') || ''; } catch (x) {} A.envoyer(m0, 'Inscription phase de test · ' + D.CREDITS_OFFERTS + ' crédits' + (par ? ' · parrain ' + par : ''), cour.id + (par ? ' · parrainé par ' + par + ' : envoyer un code de 1 crédit au parrain' : ''));
       soldeAffiche(); majDlg(); msg.className = 'ok'; msg.textContent = 'Bienvenue : ' + pl(D.CREDITS_OFFERTS) + ' ajoutés à votre solde.'; return;
     }
     var m = etat.mail || A.mail();
@@ -135,7 +136,7 @@
   function $$moyens(b) { document.querySelectorAll('#at-moyens button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }
   $('at-cle-ok').addEventListener('click', valider);
   champ.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); valider(); } });
-  soldeAffiche();
+  soldeAffiche(); window.addEventListener('efa-credits', function () { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; });
   // Carte à gratter de l'ouverture : une carte par jour, environ une sur trois gagne 1 à 3 crédits, un seul gain par personne.
   (function () {
     var cv = $('gr-c'), res = $('gr-res'), gm = $('gr-msg'); if (!cv) return;

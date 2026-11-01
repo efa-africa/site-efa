@@ -19,7 +19,7 @@ button.b{background:#0b63b0}
 textarea{width:100%;box-sizing:border-box;min-height:220px;margin-top:12px;padding:14px;border:1.5px solid #cfdbe6;border-radius:12px;font:700 16px/1.7 ui-monospace,Menlo,monospace;letter-spacing:.04em}
 #ok{color:#1e7a4c;font-weight:700;min-height:1.4em}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261101g">
+<link rel="stylesheet" href="clone/habillage.css?v=20261101h">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -32,6 +32,13 @@ textarea{width:100%;box-sizing:border-box;min-height:220px;margin-top:12px;paddi
 <div class="ligne"><input id="nb" type="number" min="1" max="200" value="10"><button id="gen" type="button">Générer</button><button id="cop" class="b" type="button">Copier la liste</button></div>
 <textarea id="liste" readonly aria-label="Clés générées"></textarea>
 <p id="ok" role="status"></p>
+</div>
+<div class="bloc" id="credits">
+<label for="cn">Codes crédits (missions validées)</label>
+<p style="margin:0 0 8px;font-size:15px">Quand une mission est bonne, générez un code de la valeur indiquée dans l’email et envoyez-le à la personne. Chaque code s’utilise une fois.</p>
+<div class="ligne"><select id="cn"><option value="1">1 crédit</option><option value="2" selected>2 crédits</option><option value="3">3 crédits</option></select><input id="cnb" type="number" min="1" max="50" value="1" style="width:80px"><button id="cgen" type="button">Générer</button><button id="ccop" class="b" type="button">Copier</button></div>
+<textarea id="cliste" readonly aria-label="Codes crédits générés"></textarea>
+<p id="cok" role="status"></p>
 </div>
 <div class="bloc">
 <label for="v">Vérifier une clé</label>
@@ -75,14 +82,21 @@ textarea{width:100%;box-sizing:border-box;min-height:220px;margin-top:12px;paddi
 
 
 
+
+
+
+
 <script src="clone/ateliers-data.js?v=20261031g"></script>
 <script>
 (function(){var D=window.EFA_ATELIERS;document.getElementById('fin').textContent=new Date(D.FIN_TEST).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
 var L=document.getElementById('liste'),ok=document.getElementById('ok');
 document.getElementById('gen').onclick=function(){var n=Math.max(1,Math.min(200,+document.getElementById('nb').value||10)),a=[];for(var i=0;i<n;i++)a.push(D.nouvelleCle());L.value=a.join('\n');ok.textContent=n+' clé'+(n>1?'s':'')+' générée'+(n>1?'s':'')+'.'};
 document.getElementById('cop').onclick=function(){if(!L.value)return;(navigator.clipboard?navigator.clipboard.writeText(L.value):Promise.reject()).then(function(){ok.textContent='Liste copiée.'},function(){L.select();document.execCommand('copy');ok.textContent='Liste copiée.'})};
-document.getElementById('ver').onclick=function(){var v=document.getElementById('v').value;document.getElementById('vr').textContent=D.cleValide(v)?'✓ Clé valide.':'✗ Clé non reconnue (ou période de test terminée).'};})();
+document.getElementById('ver').onclick=function(){var v=document.getElementById('v').value,C=window.EFA_CREDITS,n=C&&C.lireCode(v);document.getElementById('vr').textContent=n?'✓ Code crédit valide : '+n+' crédit'+(n>1?'s':'')+'.':D.cleValide(v)?'✓ Clé valide.':'✗ Code non reconnu (ou période de test terminée).'};
+var CL=document.getElementById('cliste'),cok=document.getElementById('cok');
+document.getElementById('cgen').onclick=function(){var C=window.EFA_CREDITS;if(!C){cok.textContent='Patientez une seconde, puis recommencez.';return;}var n=+document.getElementById('cn').value,k=Math.max(1,Math.min(50,+document.getElementById('cnb').value||1)),a=[];for(var i=0;i<k;i++)a.push(C.codeCredit(n));CL.value=a.join('\n');cok.textContent=k+' code'+(k>1?'s':'')+' de '+n+' crédit'+(n>1?'s':'')+'.'};
+document.getElementById('ccop').onclick=function(){if(!CL.value)return;(navigator.clipboard?navigator.clipboard.writeText(CL.value):Promise.reject()).then(function(){cok.textContent='Copié.'},function(){CL.select();document.execCommand('copy');cok.textContent='Copié.'})};})();
 </script>
-<script src="clone/habillage.js?v=20261101g" defer></script>
+<script src="clone/habillage.js?v=20261101h" defer></script>
 </body>
 </html>
