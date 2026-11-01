@@ -21,6 +21,13 @@ DOSSIERS = [
   meca=['2026-10-13-airtel-money-bourse','2026-10-24-opay-introduction-bourse'], change=['2026-10-13-airtel-money-bourse','2026-10-24-opay-introduction-bourse'],
   form=[('Formation','Emprunts obligataires et introductions en Bourse','Lire une offre : qui vend, combien, à quel prix.','bourse-pro.html?src=decryptage#B7'),('Formation','Une entreprise sous la loupe','Lire les chiffres d’une société cotée.','bourse-marche.html?src=decryptage#C6')]),
 ]
+# Actus décryptées publiées sur Substack (les plus récentes en premier)
+ACTUS = [
+ dict(date='1er novembre 2026', titre='Ce que Yan Diomandé, Aliko Dangote et Koné Dossongui enseignent à notre argent',
+  sous='« Le talent ne suffit pas. La méthode, si. »',
+  resume='Du parcours de Yan Diomandé au Real Madrid à ceux de deux capitaines d’industrie africains : six leçons pour gérer son argent, se fixer des objectifs, accepter d’être conseillé, passer de la consommation à la production et investir avec patience.',
+  img='illus/cap-dossongui.webp', url='https://educationfinanciereafrique.substack.com/p/actu-decryptee-ce-que-yan-diomande'),
+]
 def lien(a): return 'news/%s.html' % a['id']
 sec = []
 for d in DOSSIERS:
@@ -44,6 +51,7 @@ for d in DOSSIERS:
 src = open('personnalite.html', encoding='utf8').read()
 hdr = src[src.index('<header class="header clone-head"'):src.index('</header>', src.index('<header class="header clone-head"')) + 9]
 pv = src[src.index('<section class="efa-pourvous"'):src.index('</section>', src.index('<section class="efa-pourvous"')) + 10]
+actus = ''.join('<a class="dc-actu" href="%s" target="_blank" rel="noopener"><img src="%s" alt="" loading="lazy" decoding="async"><span class="dc-actu-t"><small>Actu décryptée · %s</small><b>%s</b><em>%s</em><span>%s</span><i>Lire l’actu décryptée →</i></span></a>' % (E(a['url']), E(a['img']), E(a['date']), E(a['titre']), E(a['sous']), E(a['resume'])) for a in ACTUS)
 sommaire = ''.join('<a href="#%s"><small>%s</small><b>%s</b></a>' % (d['slug'], E(d['k']), re.sub('<[^>]+>', '', d['t']).replace('&nbsp;', ' ')) for d in DOSSIERS)
 page = '''<!doctype html>
 <html data-clone data-clone-plein lang="fr">
@@ -101,6 +109,16 @@ body{margin:0;background:#fff}
 .dc-form a{display:flex;flex-direction:column;gap:2px;background:#fff;border-radius:14px;padding:16px;text-decoration:none;color:var(--n);box-shadow:0 6px 18px rgba(11,18,32,.05)}
 .dc-form small{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#DA3C1B}
 .dc-form span{font-size:15px;color:var(--t)}
+.dc-actus{padding:clamp(40px,6vw,64px) 0 0}.dc-actus h2{font-size:clamp(26px,3.4vw,38px);margin-top:8px}.dc-actus-g{margin-top:20px}
+.dc-actu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:0;border-radius:18px;overflow:hidden;background:#fff;text-decoration:none;color:var(--n);box-shadow:0 14px 34px rgba(11,18,32,.09)}
+.dc-actu img{width:100%;height:100%;min-height:220px;object-fit:cover}
+.dc-actu-t{display:flex;flex-direction:column;gap:6px;padding:22px 24px}
+.dc-actu small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#DA3C1B}
+.dc-actu b{font-family:"Libre Baskerville",Georgia,serif;font-size:clamp(20px,2.2vw,26px);line-height:1.2}
+.dc-actu em{color:var(--c);font-style:italic}
+.dc-actu span span,.dc-actu-t>span{color:var(--t);font-size:15.5px}
+.dc-actu i{font-style:normal;font-weight:800;color:var(--b);margin-top:4px}
+@media(max-width:820px){.dc-actu{grid-template-columns:1fr}.dc-actu img{min-height:180px;aspect-ratio:16/9}}
 .dc-pied{padding:36px 0 60px;font-size:15px;color:var(--t3)}
 .dc-pied a{color:var(--b);font-weight:700}
 @media(max-width:820px){.dc-som,.dc-g,.dc-form>div{grid-template-columns:1fr}.dc-som{margin-top:18px}}
@@ -112,6 +130,7 @@ body{margin:0;background:#fff}
 <main id="contenu" class="dc" data-garde>
 <header class="dc-tete"><img src="clone/assets/accueil-tribunes.webp" alt="" fetchpriority="high" decoding="async"><div class="dc-in"><p class="dc-k">EFA News · Décryptage</p><h1>Derrière l’actualité, <em>le mécanisme.</em></h1><p class="dc-chapo">Plusieurs actualités, une même question. Les faits, comment ça marche, et ce que ça change pour votre argent.</p></div></header>
 <div class="dc-in"><nav class="dc-som" aria-label="Les dossiers">''' + sommaire + '''</nav></div>
+<section class="dc-actus" id="actus" aria-labelledby="t-actus"><div class="dc-in"><p class="dc-k">La dernière</p><h2 id="t-actus">L’actu décryptée</h2><div class="dc-actus-g">''' + actus + '''</div></div></section>
 ''' + '\n'.join(sec) + '''
 <div class="dc-in dc-pied"><p>Chaque fait renvoie à son article EFA News, avec ses sources, sa date et ses réserves. <a href="news.html">Toute l’actualité EFA News</a> · <a href="methode.html">Notre méthode</a></p><p>Éducation financière, pas conseil en investissement.</p></div>
 </main>
