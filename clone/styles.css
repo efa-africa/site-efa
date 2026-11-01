@@ -648,3 +648,5 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 .tm-img img{display:block;width:100%;height:auto;border-radius:22px;aspect-ratio:1/1;object-fit:cover}
 .tm-note{margin:6px 0 0;font-size:12.5px;color:#7A8293}
 @media(max-width:720px){.tm-grille{columns:1}.tm-img{display:none}.tm-img:first-of-type{display:block}}
+
+.tm-c,.tm-img{will-change:transform}
