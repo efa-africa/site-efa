@@ -227,12 +227,21 @@
         return '<div class="pf-mi' + (ouverte === x[0] ? ' on' : '') + '"><button type="button" data-mission="' + x[0] + '" aria-expanded="' + (ouverte === x[0]) + '"><span><b>' + x[2] + '</b><small>' + x[3] + '</small></span>' + st + '</button>' + (ouverte === x[0] ? '<div class="pf-mc">' + (F[x[0]] && x[0] !== 'parrain' ? '<p>Mission faite. Merci !</p>' : corpsMission(x[0], M)) + '</div>' : '') + '</div>'; }).join('')
       + '<div class="pf-r" role="status"></div></div>';
   }
+  /* Code de fin d'enquête : « SPIRALE 2026 » en novembre 2026, puis « SPIRALE » + le mois en cours (DÉCEMBRE, JANVIER…).
+     Le code du mois précédent reste accepté les 3 premiers jours du mois. */
+  function codesEnquete() {
+    var MO = ['JANVIER', 'FEVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOUT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DECEMBRE'];
+    var d = new Date(), y = d.getFullYear(), m = d.getMonth(), L = [];
+    function du(yy, mm) { return (yy < 2026 || (yy === 2026 && mm <= 10)) ? 'SPIRALE2026' : 'SPIRALE' + MO[mm]; }
+    L.push(du(y, m)); if (d.getDate() <= 3) { var pm = m ? m - 1 : 11, py = m ? y : y - 1; L.push(du(py, pm)); }
+    return L;
+  }
   function val(id) { var e = dlg.querySelector('#' + id); return e ? (e.type === 'checkbox' ? e.checked : e.value.trim()) : ''; }
   function dire(t, ko) { var r = dlg.querySelector('.pf-r'); if (r) r.innerHTML = '<p class="' + (ko ? 'pf-ko' : 'pf-ok') + '">' + t + '</p>'; }
   function action(a, b) {
     var M = lireM();
     if (a === 'code') { var c = val('pf-cc').toUpperCase().replace(/\s+/g, ''), n = lireCode(c); M.codes = M.codes || []; if (!n) return dire('Ce code crédit n’est pas reconnu.', 1); if (M.codes.indexOf(c) >= 0) return dire('Ce code a déjà été utilisé.', 1); M.codes.push(c); ecrireM(M); crediter(n); rendre(); return dire('+' + n + ' crédit' + (n > 1 ? 's' : '') + ' ajouté' + (n > 1 ? 's' : '') + '. Merci pour votre aide !'); }
-    if (a === 'code-enquete') { if (['SPIRALE2026', 'SPIRALE'].indexOf(val('pfm-code').toUpperCase().replace(/[^A-Z0-9]/g, '')) < 0) return dire('Ce code ne correspond pas. Il s’affiche à la fin de l’enquête.', 1); crediter(1, 'enquete'); rendre(); return dire('+1 crédit : merci d’avoir répondu.'); }
+    if (a === 'code-enquete') { if (codesEnquete().indexOf(val('pfm-code').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '')) < 0) return dire('Ce code ne correspond pas. Il s’affiche à la fin de l’enquête.', 1); crediter(1, 'enquete'); rendre(); return dire('+1 crédit : merci d’avoir répondu.'); }
     if (a === 'diag') { crediter(1, 'diag'); rendre(); return dire('+1 crédit : merci pour votre diagnostic.'); }
     if (a === 'copier') { var l = val('pfm-lien-p'); (navigator.clipboard ? navigator.clipboard.writeText(l) : Promise.reject()).then(function () { dire('Lien copié.'); }, function () { dlg.querySelector('#pfm-lien-p').select(); dire('Sélectionnez et copiez le lien.'); }); return; }
     if (a === 'lien-parrain') { var m0 = val('pfm-mail'); if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m0)) return dire('Indiquez une adresse email valide.', 1); try { localStorage.setItem('efa_email_v1', m0); } catch (x) {} rendre(); return; }
