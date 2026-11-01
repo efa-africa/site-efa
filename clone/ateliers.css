@@ -241,4 +241,3 @@ details.at-dlg-cle[hidden]{display:none}
 .at-moyens button{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 10px;border:0;border-radius:9px;background:#fff;box-shadow:inset 0 0 0 1.5px #E2D8C4;font:700 14px/1.2 "Source Sans 3",system-ui,sans-serif;color:#0B1220;cursor:pointer;text-align:left}
 .at-moyens button i{flex:0 0 14px;height:14px;border-radius:50%}
 .at-moyens button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px #1E8E57}
-.at-moyens button:last-child{grid-column:1/-1}
