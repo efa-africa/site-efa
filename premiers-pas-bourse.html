@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html data-clone data-clone-plein lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mes premiers pas en Bourse · Cours EFA</title>
+<meta name="description" content="Le cours « Mes premiers pas en Bourse » : cinq étapes, de « suis-je prêt ? » au choix de votre SGI.">
+<link rel="canonical" href="https://efa.africa/premiers-pas-bourse">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --creme:#F5EFE2; --corail:#DA3C1B; --corail-texte:#B8341A;
+  --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+  --papier:#FFFDF8; --line:#E2D8C4; --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --hausse:#3CCB7F; --r-bouton:8px; --r-carte:14px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance}
+a{color:var(--bleu);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:4px}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte)}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px}
+
+/* Couverture */
+.couv{background:var(--nuit);color:#fff;padding:22px 0 34px}
+.logo-texte{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#C9D1DE}
+.couv .surtitre{color:var(--soft-corail);display:block;margin:34px 0 12px}
+.couv h1{font-size:clamp(34px,6.4vw,62px);color:#fff}
+.couv .chapeau{font-size:clamp(17px,2.2vw,20px);color:#E8EDF5;margin:16px 0 0;max-width:640px}
+.arc{display:grid;grid-template-columns:1fr;gap:10px;margin-top:26px}
+@media(min-width:640px){.arc{grid-template-columns:1fr 1fr}}
+.arc div{background:#111B2F;border-radius:12px;padding:14px 16px}
+.arc .etiquette{color:#C9D1DE}
+.arc p{margin:6px 0 0;color:#fff;font-weight:600}
+.chiffres{display:flex;flex-wrap:wrap;gap:22px;margin-top:22px}
+.chiffres b{display:block;font-family:var(--f-display);font-size:26px;color:#fff}
+.chiffres span{font-size:13px;color:#C9D1DE}
+
+/* Barre de progression */
+.prog{position:relative;background:var(--papier);border-bottom:1px solid var(--line)}
+.prog .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.barre{flex:1;height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+.barre i{display:block;height:100%;width:0;background:var(--corail);transition:width .35s}
+.prog-txt{font-size:14px;font-weight:800;white-space:nowrap}
+
+/* Mot du coach */
+.intro{padding:30px 0 6px}
+.intro h2{font-size:clamp(26px,3.8vw,38px)}
+.intro p{color:var(--ink2);margin:12px 0 0}
+.regles{background:var(--corail);color:#fff;border-radius:2px;padding:16px 18px;margin:20px 0 0}
+.regles b{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px}
+.regles ul{margin:0;padding-left:18px}
+.regles li{margin:4px 0}
+
+/* Phases */
+.phases{padding:18px 0 40px}
+.phase{background:var(--papier);border-radius:var(--r-carte);margin:14px 0;overflow:hidden}
+.phase>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:18px}
+.phase>button:focus-visible{outline:3px solid var(--bleu);outline-offset:-3px}
+.num{width:42px;height:42px;border-radius:999px;background:var(--nuit);color:#fff;display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:17px}
+.phase.fini .num{background:var(--corail)}
+.ph-titre h3{font-size:clamp(19px,2.4vw,23px);line-height:1.18;margin-top:3px}
+.ph-meta{font-size:13px;color:var(--ink3);font-weight:700;margin-top:4px}
+.chev{font-size:22px;color:var(--ink3);transition:transform .25s}
+.phase.ouverte .chev{transform:rotate(90deg)}
+.ph-corps{display:none;padding:0 18px 18px}
+.phase.ouverte .ph-corps{display:block}
+.but{background:var(--creme);border-radius:10px;padding:12px 14px;margin-bottom:6px}
+.but p{margin:4px 0 0;font-weight:600}
+
+.etape{border-top:1px solid var(--line);padding:18px 0 4px}
+.et-haut{display:flex;gap:10px;align-items:baseline}
+.et-n{font-family:var(--f-display);font-weight:700;color:var(--corail-texte);font-size:15px;min-width:26px}
+.et-haut h4{font-family:var(--f-display);font-size:18px;line-height:1.25;margin:0}
+.faire{margin:8px 0 0 36px}
+.faire ul{margin:6px 0 0;padding-left:18px}
+.faire li{margin:4px 0}
+.coach{background:var(--creme);border-radius:10px;padding:12px 14px;margin:12px 0 0 36px}
+.coach .surtitre{font-size:11px}
+.coach p{margin:4px 0 0;font-style:italic;color:var(--ink)}
+.preuve{display:flex;gap:12px;align-items:flex-start;margin:12px 0 10px 36px;cursor:pointer;font-weight:700;font-size:15px}
+.preuve input{appearance:none;-webkit-appearance:none;flex:0 0 24px;width:24px;height:24px;border-radius:6px;background:#fff;border:2px solid var(--ink3);margin:0;cursor:pointer;display:grid;place-items:center}
+.preuve input:checked{background:var(--corail);border-color:var(--corail)}
+.preuve input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.preuve input:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
+.preuve.ok span{color:var(--ink3);text-decoration:line-through}
+.lien{margin:8px 0 0 36px;font-size:15px}
+
+/* Tableaux */
+table{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+td b{white-space:nowrap}
+
+/* Calculateur */
+.calc{background:var(--nuit);color:#fff;border-radius:var(--r-carte);padding:18px;margin:14px 0 6px 36px}
+.calc h5{font-family:var(--f-display);font-size:18px;margin:0 0 4px}
+.calc .note{font-size:13px;color:#C9D1DE;margin:0 0 12px}
+.champs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.champs label{font-size:13px;font-weight:700;color:#C9D1DE;display:flex;flex-direction:column;justify-content:flex-end}
+.champs input{width:100%;margin-top:4px;font:inherit;font-size:17px;padding:10px 12px;border-radius:8px;border:0;background:#fff;color:var(--nuit)}
+.res{margin-top:14px;background:#111B2F;border-radius:10px;padding:12px 14px}
+.res div{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:15px}.res div span:last-child{white-space:nowrap;text-align:right}
+.res .tot{border-top:1px solid #1F2C45;margin-top:6px;padding-top:8px;font-weight:800;font-size:17px}
+.res .alerte{display:block;margin-top:8px;color:var(--soft-corail);font-weight:700;font-size:14px}
+
+/* Arrivée */
+.arrivee{background:var(--nuit);color:#fff;padding:34px 0 40px}
+.arrivee .surtitre{color:var(--soft-corail)}
+.arrivee h2{font-size:clamp(26px,3.8vw,38px);margin-top:10px}
+.arrivee ol{padding-left:20px;color:#E8EDF5}
+.arrivee li{margin:6px 0}
+.bouton{display:inline-block;text-decoration:none;font-family:var(--f-body);font-size:16px;font-weight:800;min-height:46px;padding:12px 22px;border-radius:var(--r-bouton);border:0;background:var(--corail);color:#fff;cursor:pointer;margin-top:12px}
+.bouton.clair{background:var(--creme);color:var(--nuit)}
+.pied{background:#070C16;color:#8E98AA;font-size:13px;padding:22px 0}
+.pied p{margin:4px 0}
+.sim{background:var(--nuit);color:#fff;border-radius:var(--r-carte);padding:18px;margin:14px 0 6px}
+.sim-tete .surtitre{color:var(--soft-corail);font-size:11px}
+.sim-tete h4{font-family:var(--f-display);font-size:20px;line-height:1.2;margin:6px 0}
+.sim-tete p{font-size:14px;color:#C9D1DE;margin:0 0 12px}
+.onglets{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px;scrollbar-width:none}
+.onglets button{all:unset;cursor:pointer;white-space:nowrap;font-size:13px;font-weight:800;padding:8px 12px;border-radius:999px;background:#111B2F;color:#C9D1DE}
+.onglets button[aria-selected="true"]{background:var(--corail);color:#fff}
+.onglets button:focus-visible{outline:3px solid var(--soft-bleu)}
+.sim-corps{display:grid;gap:16px}
+@media(min-width:720px){.sim-corps{grid-template-columns:340px 1fr;align-items:start}}
+.tel{background:#fff;color:#1a2233;border:8px solid #1F2C45;border-radius:30px;overflow:hidden;max-width:340px;width:100%;margin:0 auto;font-size:14px;line-height:1.4}
+.tel-barre{display:flex;align-items:center;gap:8px;background:#F2F4F7;padding:10px 12px;font-size:12px;font-weight:700;color:#4E5566;border-bottom:1px solid #E3E6EB}
+.tel-logo{width:18px;height:18px;border-radius:5px;background:#9AA3B2}
+.tel-h{margin-left:auto}
+.ecran{padding:12px;min-height:470px}
+.ecran h6{font-size:16px;margin:0 0 2px;font-weight:800;color:#0B1220}
+.e-sous{font-size:12px;color:#6B7385}
+.e-prix{display:flex;align-items:baseline;gap:8px;margin:8px 0}
+.e-prix b{font-size:26px;color:#0B1220}
+.hausse{color:#1E8E57;font-weight:800}.baisse{color:#B3261E;font-weight:800}
+.e-grille{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:12px;background:#F7F8FA;border-radius:10px;padding:8px 10px;margin:8px 0}
+.e-grille span{color:#6B7385}.e-grille b{text-align:right;color:#0B1220}
+.carnet{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+.carnet th{font-size:10px;color:#6B7385;text-transform:uppercase;letter-spacing:.04em;padding:4px;border-bottom:1px solid #E3E6EB;text-align:right}
+.carnet td{padding:4px;text-align:right;border-bottom:1px solid #F0F1F4}
+.carnet .a{color:#1E8E57;font-weight:700}.carnet .v{color:#B3261E;font-weight:700}
+.e-champ{margin:9px 0}
+.e-champ label{display:block;font-size:11px;font-weight:800;color:#6B7385;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.e-champ input,.e-champ select{width:100%;font:inherit;font-size:16px;padding:9px 10px;border:1px solid #C9CED8;border-radius:8px;background:#fff;color:#0B1220}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#EEF0F4;border-radius:9px;padding:3px}
+.seg button{all:unset;text-align:center;padding:8px;border-radius:7px;font-weight:800;cursor:pointer;color:#4E5566}
+.seg button.on.ach{background:#1E8E57;color:#fff}.seg button.on.ven{background:#B3261E;color:#fff}.seg button.on{background:#0B1220;color:#fff}
+.e-alerte{font-size:12px;font-weight:700;color:#B3261E;margin-top:4px}
+.e-info{font-size:12px;color:#4E5566;margin-top:4px}
+.e-ligne{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid #F0F1F4;font-size:13px}
+.e-ligne span:last-child{font-weight:700;text-align:right;white-space:nowrap}
+.e-total{font-weight:800;font-size:15px;border-bottom:0;border-top:2px solid #0B1220;margin-top:4px;padding-top:8px}
+.e-btn{display:block;width:100%;text-align:center;font:inherit;font-weight:800;font-size:15px;padding:12px;border:0;border-radius:10px;margin-top:12px;cursor:pointer;background:#1E8E57;color:#fff}
+.e-btn.gris{background:#E3E6EB;color:#0B1220}
+.e-btn:disabled{opacity:.4;cursor:not-allowed}
+.statut{display:inline-block;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px}
+.st-att{background:#FFF3D6;color:#8A5A00}.st-part{background:#E3F0FF;color:#1B4F8A}.st-ok{background:#DDF5E8;color:#1E6B45}
+.avis{border:1px dashed #9AA3B2;border-radius:8px;padding:10px;font-size:12px}
+.avis h6{text-align:center;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+.otp{display:flex;gap:6px;justify-content:center;margin:10px 0}
+.otp span{width:34px;height:42px;border:1px solid #C9CED8;border-radius:8px;display:grid;place-items:center;font-size:18px;font-weight:800}
+.notes{color:#E8EDF5}
+.notes .etiquette{color:#C9D1DE}
+.notes ol{padding-left:20px;margin:8px 0}
+.notes li{margin:7px 0;font-size:15px}
+.notes li b{color:#fff}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.bouton.sec{background:#111B2F;color:#fff}
+
+.choix-sim{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--creme);border-radius:12px;padding:4px;margin:14px 0 0}
+.choix-sim button{all:unset;text-align:center;cursor:pointer;font-weight:800;font-size:14px;padding:10px 8px;border-radius:9px;color:var(--ink2)}
+.choix-sim button.on{background:var(--nuit);color:#fff}
+.choix-sim button:focus-visible{outline:3px solid var(--bleu)}
+.cache{display:none}
+.v-ligne{display:flex;align-items:center;gap:10px;padding:9px 4px;border-bottom:1px solid #F0F1F4;cursor:pointer}
+.v-ligne:hover{background:#F7F8FA}
+.v-pastille{width:34px;height:34px;border-radius:999px;background:#E8ECF4;display:grid;place-items:center;font-size:10px;font-weight:800;color:#4E5566;flex:0 0 34px}
+.v-nom{flex:1;min-width:0}.v-nom b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v-nom span{font-size:11px;color:#6B7385}
+.v-prix{text-align:right;font-size:13px;font-weight:700}.v-prix span{display:block;font-size:11px}
+.filtre{display:inline-block;font-size:11px;font-weight:700;border:1px solid #C9CED8;border-radius:999px;padding:3px 9px;margin:4px 0 6px}
+.plage{height:8px;border-radius:999px;background:linear-gradient(90deg,#B3261E,#E6A23C,#1E8E57);position:relative;margin:14px 0 4px}
+.plage i{position:absolute;top:-7px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #0B1220;transform:translateX(-7px)}
+.tuiles{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.tuiles div{background:#F7F8FA;border-radius:10px;padding:8px}.tuiles span{display:block;font-size:11px;color:#6B7385}.tuiles b{font-size:15px}
+.bandeau{background:#EAF6EF;color:#1E6B45;border-radius:10px;padding:8px 10px;font-size:12px;margin:8px 0}
+.mention{font-size:11px;color:#6B7385;text-align:center;margin:6px 0}
+.choix-mt{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.choix-mt button{all:unset;cursor:pointer;border:1px solid #DDE1E8;border-radius:10px;padding:8px;font-size:11px;color:#6B7385}
+.choix-mt button b{display:block;font-size:14px;color:#0B1220}
+.choix-mt button.on{border:2px solid #1B71B2;background:#EEF5FC}
+.solde{background:#0B1220;color:#fff;border-radius:14px;padding:12px;margin:6px 0}
+.solde span{display:block;font-size:11px;color:#C9D1DE}.solde b{font-size:22px}
+.solde .duo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.solde .duo div{background:#111B2F;border-radius:10px;padding:8px}.solde .duo b{font-size:15px}
+.attente{background:#111B2F;border-radius:10px;padding:8px;margin-top:8px;font-size:12px}
+.mail{background:#F7F8FA;border-radius:10px;padding:10px;font-size:12px;margin:8px 0}
+.mail b{display:block;font-size:13px;margin-bottom:4px}
+.comp{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}.comp td,.comp th{padding:5px;border-bottom:1px solid #F0F1F4;text-align:right}.comp td:first-child,.comp th:first-child{text-align:left}
+
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261031y">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être accompagné</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être accompagné <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<header class="couv" data-garde>
+  <div class="wrap">
+    <span class="surtitre">Être coaché · Cours à votre rythme</span>
+    <h1>Mes premiers pas en Bourse</h1>
+    <p class="chapeau">Vous entrez avec l'envie d'investir à la Bourse (BRVM). Vous sortez prêt, avec le marché compris, une entreprise lue et votre SGI choisie. Le coach vous accompagne à chaque marche.</p>
+    <div class="arc">
+      <div><span class="etiquette">Point de départ</span><p>« Je veux investir à la Bourse (BRVM), mais je ne sais pas par où commencer. »</p></div>
+      <div><span class="etiquette">À l'arrivée</span><p>Prêt à investir, le marché compris, une entreprise lue, et votre SGI choisie pour une bonne raison.</p></div>
+    </div>
+    <div class="chiffres">
+      <div><b id="nbEtapes">31</b><span>exercices concrets</span></div>
+      <div><b>5</b><span>étapes</span></div>
+      <div><b>3 à 4</b><span>semaines</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="prog" aria-live="polite">
+  <div class="wrap">
+    <div class="barre"><i id="barre"></i></div>
+    <span class="prog-txt" id="progTxt">0 / 31</span>
+  </div>
+</div>
+
+<main>
+  <section class="intro wrap">
+    <span class="surtitre">Le mot du coach</span>
+    <h2>On ne saute aucune marche</h2>
+    <p>Ce parcours est volontairement long. Chaque étape se termine par une preuve : un chiffre écrit, un document reçu, une décision notée. Cochez-la seulement quand elle est faite pour de vrai. Le cours s'arrête au choix de votre SGI : l'ouverture du compte et le premier ordre se font dans l'atelier « Mon premier ordre ». Les deux premières semaines, vous n'achetez rien : vous apprenez à lire le marché.</p>
+    <div class="regles">
+      <b>Les trois règles du coach</b>
+      <ul>
+        <li>EFA ne vous dira jamais quel titre acheter. Le coach vous apprend à choisir seul.</li>
+        <li>La Bourse ne finance pas un projet à date fixe : elle peut être en baisse le jour où vous avez besoin de l'argent.</li>
+        <li>Vous ne versez jamais d'argent à une personne. Seulement à une SGI agréée, sur un compte à son nom.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="phases wrap" id="phases"></section>
+
+  <section class="arrivee" data-garde>
+    <div class="wrap">
+      <span class="surtitre">À l'arrivée</span>
+      <h2>Vos premiers pas sont faits</h2>
+      <p style="color:#E8EDF5">Si vous avez suivi le coach, vous avez entre les mains :</p>
+      <ol>
+        <li>Votre réserve chiffrée et votre horizon écrit.</li>
+        <li>Un tableau de 10 séances suivies sans acheter.</li>
+        <li>Une fiche « Lire une entreprise » avec une limite écrite.</li>
+        <li>La grille tarifaire de votre SGI et la raison de votre choix.</li>
+      </ol>
+      <p style="color:#E8EDF5;margin-top:18px">La suite : ouvrir votre compte, approvisionner, bâtir votre plan et passer votre premier ordre, avec Élysée Johnson.</p>
+      <a class="bouton" href="coaching.html#atelier-premier-ordre-brvm">Continuer avec « Mon premier ordre »</a><br>
+      <button class="bouton clair" id="raz" type="button">Recommencer le parcours</button>
+    </div>
+  </section>
+</main>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+
+
+<section class="pied" data-garde><div class="wrap"><p>Contenu éducatif. Aucune recommandation d'achat ou de vente d'un titre. Les frais, horaires et taux cités sont ceux publiés au 30 octobre 2026 : vérifiez-les auprès de votre SGI et sur brvm.org au moment d'investir.</p><p><a href="coaching.html#atelier-premiers-pas-bourse" style="color:#fff">Retour au cours</a></p></div></section>
+
+<script>
+const PHASES = [
+{ t:"Suis-je prêt à investir ?", d:"Semaine 1 · 1 h", but:"Vérifier que la Bourse arrive au bon moment dans votre vie financière.",
+  e:[
+  { t:"Ma réserve de sécurité est en place",
+    f:["Calculez vos dépenses essentielles d'un mois (logement, nourriture, transport, école, santé, solidarité).","Multipliez par trois : c'est votre réserve minimale.","Vérifiez qu'elle est disponible ailleurs qu'en Bourse : compte d'épargne, dépôt, caisse."],
+    c:"La Bourse n'est pas une réserve. Sans réserve, le premier coup dur vous oblige à vendre, souvent au mauvais moment.",
+    p:"J'ai écrit le montant de ma réserve et où elle se trouve." },
+  { t:"Je n'ai plus de dette chère",
+    f:["Listez vos dettes : montant, mensualité, taux.","Remboursez d'abord les dettes les plus chères : découvert, crédit à la consommation, avances sur salaire, prêts entre particuliers à intérêt."],
+    c:"Rembourser une dette à 15 % vous rapporte 15 % sans aucun risque. Aucune action ne vous garantit cela.",
+    p:"Ma liste de dettes est faite, et aucune n'est à taux élevé." },
+  { t:"Mon horizon est d'au moins cinq ans",
+    f:["Pour l'argent que vous voulez placer, écrivez la date la plus proche à laquelle vous pourriez en avoir besoin.","Si c'est dans moins de cinq ans, cet argent ne va pas en actions."],
+    c:"Sur un an, une action peut perdre 20 % ou 30 %. Sur cinq ans et plus, vous laissez au temps la chance de jouer pour vous. Ce n'est pas une garantie.",
+    p:"J'ai écrit mon horizon : au moins cinq ans." },
+  { t:"Je sais pour quel projet j'investis",
+    f:["Choisissez : retraite, études des enfants, maison, transmission, ou simplement faire grandir un capital.","Pour ce projet, imaginez trois issues : le marché a monté, il est stable, il a baissé. Votre projet tient-il dans les trois cas ?"],
+    c:"Le coach ne vous dira jamais « la Bourse va payer votre maison ». Il vous demande : si elle baisse l'année où vous en avez besoin, quel est votre plan B ?",
+    p:"Mon projet, mon horizon et mon plan B sont écrits." },
+  { t:"Je fixe mon montant de départ et mon montant mensuel",
+    f:["Montant de départ : une somme que vous pouvez oublier cinq ans.","Montant mensuel : prélevé le jour de la paie, avant les autres dépenses (« se payer en premier »).","Gardez à côté un budget de solidarité, pour que la famille ne pioche pas dans votre placement."],
+    c:"On peut commencer petit. Mais un très petit ordre peut être mangé par les frais : vous le vérifierez dans l'atelier « Mon premier ordre ».",
+    p:"Mon montant de départ et mon montant mensuel sont écrits." },
+  { t:"Je passe le test « Suis-je prêt ? »",
+    f:["Faites les quatre vérifications EFA : réserve, dette chère, horizon de cinq ans, savoir expliquer ce qu'on achète.","Si une réponse est non, le coach vous renvoie au parcours qui correspond (réserve ou dettes), puis vous revenez ici."],
+    l:["Le test « Suis-je prêt ? » sur efa.africa","bourse-essentiel.html#A1"],
+    c:"Revenir en arrière n'est pas un échec. C'est la meilleure décision d'investissement que vous prendrez cette année.",
+    p:"J'ai quatre « oui »." }
+  ]},
+{ t:"Comprendre le terrain", d:"Semaine 1 · 1 h 30", but:"Savoir qui fait quoi, et ce que vous achetez vraiment.",
+  e:[
+  { t:"Je sais ce qu'est la Bourse (BRVM)",
+    f:["La Bourse régionale des valeurs mobilières est commune aux huit pays de l'UEMOA : Bénin, Burkina Faso, Côte d'Ivoire, Guinée-Bissau, Mali, Niger, Sénégal, Togo.","Son siège est à Abidjan. On y achète et vend des actions et des obligations, en francs CFA.","Ouvrez brvm.org et repérez la liste des sociétés cotées, avec leur pays."],
+    l:["brvm.org","https://www.brvm.org"],
+    c:"Une seule Bourse pour huit pays : en achetant à Abidjan, vous pouvez être actionnaire d'une société à Dakar ou à Ouagadougou.",
+    p:"J'ai ouvert la liste des sociétés cotées." },
+  { t:"Je connais les cinq acteurs",
+    f:["L'AMF-UMOA, le gendarme : elle agrée les professionnels et contrôle le marché.","La BRVM : elle organise les séances de cotation.","Le DC/BR (Dépositaire central / Banque de règlement) : il conserve les titres et règle les échanges.","La SGI (société de gestion et d'intermédiation) : la seule autorisée à passer vos ordres.","Les émetteurs : les sociétés et les États qui ont mis leurs titres en Bourse."],
+    c:"Retenez une chose : personne d'autre qu'une SGI agréée ne peut acheter des titres pour vous. Un « ami qui investit pour les autres » n'est pas une SGI.",
+    p:"Je peux expliquer le rôle de chacun en une phrase." },
+  { t:"Je distingue une action d'une obligation",
+    f:["Action : une part de propriété de l'entreprise. Elle peut verser un dividende. Son prix monte et descend.","Obligation : un prêt à une entreprise ou à un État. Elle verse un intérêt fixe (le coupon) et vous rembourse à une date prévue. Le risque : que l'emprunteur ne paie pas, ou devoir revendre avant l'échéance."],
+    l:["Dico EFA : Action, Obligation","outils.html#dico/action"],
+    c:"Propriétaire ou prêteur : posez-vous toujours cette question avant d'acheter.",
+    p:"J'explique la différence à un proche sans regarder mes notes." },
+  { t:"Je sais comment on gagne, et comment on perd",
+    f:["On gagne de deux façons : le dividende versé chaque année (s'il y en a un) et la hausse du prix (la plus-value, quand on revend).","On perd de quatre façons : le prix baisse, le dividende est réduit ou supprimé, l'entreprise fait faillite, ou on ne trouve pas d'acheteur au moment voulu."],
+    c:"Le rendement de l'an dernier ne dit rien de l'an prochain. Méfiez-vous de quiconque vous promet un chiffre.",
+    p:"J'ai écrit les deux façons de gagner et les quatre de perdre." },
+  { t:"Je sais lire les indices",
+    f:["BRVM Composite : toutes les actions cotées.","BRVM 30 : les trente actions les plus échangées.","BRVM Prestige : une sélection de sociétés qui remplissent des critères plus exigeants.","Il existe aussi des indices par secteur (finance, agriculture, distribution…)."],
+    c:"Un indice, c'est la température du marché. Il ne dit rien d'une entreprise en particulier.",
+    p:"J'ai noté le niveau du BRVM Composite aujourd'hui." },
+  { t:"Je comprends la liquidité",
+    f:["Certains titres s'échangent tous les jours, d'autres très peu.","Sur un titre peu échangé, vous pouvez attendre plusieurs séances pour acheter ou revendre, ou devoir accepter un prix moins bon."],
+    c:"Avant d'acheter, regardez toujours combien de titres ont été échangés ces dernières semaines. Entrer est facile ; sortir l'est parfois moins.",
+    p:"J'ai repéré un titre très échangé et un titre peu échangé." }
+  ]},
+{ t:"Lire une séance, sans acheter", d:"Semaines 2 et 3 · 10 min par jour", but:"Deux semaines d'observation. Vous n'achetez rien : vous apprenez à lire.",
+  e:[
+  { t:"Je connais les horaires",
+    h:true,
+    c:"Les heures sont en temps universel : c'est l'heure d'Abidjan, de Dakar ou de Lomé. Les veilles de fêtes, la BRVM peut raccourcir la séance : elle le publie par avis.",
+    p:"J'ai noté les horaires." },
+  { t:"Je télécharge le Bulletin officiel de la cote",
+    f:["La BRVM publie chaque jour le Bulletin officiel de la cote sur brvm.org.","Repérez pour une action : le symbole, le cours précédent, le cours d'ouverture et de clôture, la variation, le volume (nombre de titres échangés), la valeur (montant échangé)."],
+    c:"Ce document est gratuit et officiel. C'est votre source de référence, avant les réseaux sociaux.",
+    p:"J'ai lu une ligne complète du bulletin." },
+  { t:"J'apprends les mots de la cote",
+    f:["Cours de référence : le prix qui sert de base à la séance.","Capitalisation : nombre d'actions × cours. La taille de l'entreprise en Bourse.","Rendement : dividende ÷ cours.","PER : cours ÷ bénéfice par action. Combien d'années de bénéfice vous payez.","Ex-dividende : à partir de cette date, l'acheteur ne touche plus le dividende de l'année."],
+    l:["Lire une séance de la Bourse (BRVM), sur efa.africa","methode.html#brvm"],
+    c:"Cinq mots suffisent pour lire 90 % de ce qu'on vous montrera.",
+    p:"Je définis les cinq mots sans aide." },
+  { t:"Je comprends les limites de variation",
+    f:["Pour éviter les emballements, la variation d'une action est plafonnée à chaque séance, à 7,5 % à la hausse comme à la baisse.","Quand un titre touche cette limite, il peut être « réservé » : les échanges attendent que l'offre et la demande se rapprochent."],
+    c:"Une action qui fait +7 % trois jours de suite n'est pas une opportunité automatique. Demandez-vous pourquoi.",
+    p:"J'ai repéré un titre qui a beaucoup varié et cherché pourquoi." },
+  { t:"Je lis le carnet d'ordres",
+    f:["Sur la plateforme de votre future SGI (ou une démonstration), regardez les meilleurs prix proposés à l'achat et à la vente.","L'écart entre les deux montre si le titre est facile à échanger."],
+    c:"Un écart large, c'est un péage : vous le payez en entrant et en sortant.",
+    p:"J'ai observé un carnet d'ordres." },
+  { t:"Je tiens un carnet d'entraînement pendant 10 séances",
+    f:["Choisissez trois sociétés de secteurs et de pays différents.","Chaque soir, notez pour chacune : cours de clôture, variation, volume.","Le samedi, relisez : qu'avez-vous appris ? Qu'est-ce qui vous a surpris ?"],
+    l:["Recevoir le bulletin de la Bourse (BRVM)","methode.html#brvm-bulletin"],
+    c:"Ces dix séances valent plus que dix vidéos. Vous verrez qu'un cours bouge, sans que cela change l'entreprise.",
+    p:"Mon tableau de 10 séances est rempli." }
+  ]},
+{ t:"Lire une entreprise en cinq minutes", d:"Semaine 3 · 2 h", but:"Savoir expliquer en une phrase ce que vous achetez, et pourquoi.",
+  e:[
+  { t:"Je trouve les documents de l'entreprise",
+    f:["Sur brvm.org, ouvrez la fiche de la société : rapports annuels, états financiers, communiqués.","Complétez avec le site de l'entreprise."],
+    c:"Lisez ce que l'entreprise publie avant de lire ce qu'on dit d'elle.",
+    p:"J'ai téléchargé le dernier rapport annuel d'une société." },
+  { t:"Je dis ce qu'elle vend, et à qui",
+    f:["Une phrase : « Elle gagne de l'argent en vendant … à … dans … pays. »"],
+    c:"Si vous n'arrivez pas à écrire cette phrase, vous n'êtes pas prêt à acheter cette action.",
+    p:"Ma phrase est écrite." },
+  { t:"Je regarde le chiffre d'affaires et le bénéfice sur 3 à 5 ans",
+    f:["Notez les ventes et le bénéfice net de chaque année.","Tendance : en hausse, stable, en baisse, irrégulière ?"],
+    c:"Une seule bonne année ne fait pas une bonne entreprise. Cherchez la régularité.",
+    p:"Mon tableau sur 3 à 5 ans est rempli." },
+  { t:"Je vérifie la solidité",
+    f:["Comparez les dettes aux fonds propres. Des dettes qui grossissent plus vite que les bénéfices sont un signal.","Pour une banque, regardez plutôt la qualité des prêts et le coût du risque : la lecture est différente."],
+    c:"Une entreprise endettée souffre la première quand l'activité ralentit.",
+    p:"J'ai noté le niveau de dette et sa tendance." },
+  { t:"J'étudie l'historique du dividende",
+    f:["Notez le dividende par action des cinq dernières années.","Est-il régulier ? Quelle part du bénéfice est distribuée ?"],
+    c:"Un dividende très élevé n'est pas toujours une bonne nouvelle : il peut annoncer une baisse si la société distribue plus qu'elle ne gagne.",
+    p:"Mon historique sur cinq ans est écrit." },
+  { t:"Je juge le prix",
+    f:["Calculez le PER (cours ÷ bénéfice par action) et le rendement (dividende ÷ cours).","Comparez-les à ceux d'entreprises du même secteur, jamais dans l'absolu."],
+    c:"Une bonne entreprise achetée trop cher peut être un mauvais placement.",
+    p:"J'ai comparé PER et rendement à deux concurrents." },
+  { t:"Je liste les risques",
+    f:["Pays et politique, prix des matières premières, dépendance à un gros client ou à l'État, gouvernance, faible liquidité du titre."],
+    c:"Écrire les risques, c'est savoir à l'avance ce qui doit vous faire réagir.",
+    p:"Trois risques sont écrits." },
+  { t:"Je rédige ma fiche, avec une limite",
+    f:["Une page : ce qu'elle fait, ses chiffres, son prix, ses risques.","Terminez par : « J'achète parce que … Je revois ma décision si … »"],
+    l:["Le cas SAPH, sur efa.africa","methode.html#brvm"],
+    c:"La limite écrite vous protège de vous-même le jour où le cours baisse.",
+    p:"Ma fiche « Lire une entreprise » est terminée." }
+  ]},
+{ t:"Choisir sa SGI", d:"Semaine 4 · 2 h", but:"Choisir l'intermédiaire qui gardera vos titres, en connaissant ses frais.",
+  e:[
+  { t:"Je vérifie l'agrément",
+    f:["Consultez la liste des SGI agréées sur le site de l'AMF-UMOA ou de la BRVM.","Vérifiez aussi qu'une plateforme en ligne est bien autorisée, ou qu'elle travaille avec une SGI agréée."],
+    l:["amf-umoa.org","https://www.amf-umoa.org"],
+    c:"Pas sur la liste, pas d'argent. Il n'y a pas d'exception.",
+    p:"La SGI que j'envisage est sur la liste officielle." },
+  { t:"Je demande la grille tarifaire",
+    f:["Chaque SGI doit remettre ses tarifs, homologués par l'AMF-UMOA.","Relevez : frais d'ouverture, courtage par ordre (et son minimum éventuel), droits de garde annuels, tenue de compte, frais de virement ou de retrait.","À cela s'ajoutent sur chaque ordre 0,2 % pour la BRVM et 0,1 % pour le DC/BR, identiques dans toutes les SGI."],
+    c:"Les droits de garde se paient chaque année, même si vous ne faites rien. Sur un petit portefeuille, ce sont eux qui pèsent le plus.",
+    p:"J'ai les grilles de trois SGI." },
+  { t:"Je compare les services",
+    f:["Ouverture de compte à distance ? Plateforme ou appli de Bourse en ligne ?","Dépôt possible par mobile money ? Montant minimum pour ouvrir ?","Relevés réguliers ? Accepte-t-elle les clients de la diaspora ?"],
+    c:"Le moins cher n'est pas toujours le meilleur. Une SGI qui répond vite vous évitera des ordres mal passés.",
+    p:"Mon tableau de comparaison est rempli." },
+  { t:"Je teste leur sérieux avec cinq questions",
+    f:["Combien me coûte, tout compris, un achat de 100 000 F ?","Quels sont vos droits de garde par an ?","Comment passe-t-on un ordre à cours limité ?","Sous quel délai reçoit-on l'avis d'opéré ?","Comment fait-on une réclamation ?"],
+    c:"Une réponse floue sur les frais est une réponse.",
+    p:"J'ai posé les cinq questions et noté les réponses." },
+  { t:"Je choisis, et j'écris pourquoi",
+    f:["Une ligne : « Je choisis … parce que … »"],
+    c:"Vous pourrez changer de SGI plus tard : vos titres se transfèrent. Ce choix n'est pas définitif.",
+    p:"Ma SGI est choisie, la raison est écrite." }
+  ]},
+{ t:"Ouvrir son compte-titres", d:"Semaine 4 · 1 h, puis l'attente", but:"Avoir un compte à votre nom, prêt à recevoir des titres.",
+  e:[
+  { t:"Je rassemble les pièces",
+    f:["En général : pièce d'identité en cours de validité, justificatif de domicile récent, photo d'identité, coordonnées bancaires ou de mobile money.","Selon la SGI : numéro fiscal, justificatif de revenus. Depuis l'étranger, des copies parfois certifiées.","Demandez la liste exacte à votre SGI : elle varie."],
+    c:"Un dossier complet du premier coup vous fait gagner deux semaines.",
+    p:"Toutes les pièces demandées sont prêtes." },
+  { t:"Je remplis la fiche de connaissance client",
+    f:["La SGI vous interroge sur vos revenus, votre expérience, votre tolérance au risque.","Répondez avec sincérité."],
+    c:"Ce questionnaire vous protège : il oblige la SGI à vous proposer ce qui vous convient.",
+    p:"Ma fiche est remplie honnêtement." },
+  { t:"Je lis la convention avant de signer",
+    f:["Vérifiez : les frais, la façon de passer un ordre, les délais, la procédure de réclamation, comment clôturer le compte."],
+    c:"On ne signe pas ce qu'on n'a pas lu. Soulignez ce que vous ne comprenez pas et demandez.",
+    p:"Convention lue, signée, copie gardée." },
+  { t:"Je reçois mon numéro de compte et mes accès",
+    f:["Vérifiez que le compte est bien à votre nom exact.","Testez vos accès à la plateforme, si la SGI en a une."],
+    c:"Vos titres sont inscrits à votre nom chez la SGI et chez le DC/BR. Ils restent à vous, même si la SGI rencontre des difficultés.",
+    p:"J'ai mon numéro de compte et mes accès fonctionnent." }
+  ]},
+{ t:"Approvisionner son compte", d:"Semaine 5 · 30 min", but:"Mettre de l'argent sur le compte sans prendre de risque inutile.",
+  e:[
+  { t:"Je verse uniquement au nom de la SGI",
+    f:["Virement, dépôt en agence ou mobile money, selon ce que propose la SGI.","Le bénéficiaire est toujours la SGI, jamais une personne, jamais le compte personnel d'un conseiller.","Gardez la preuve du versement."],
+    c:"C'est la règle qui protège le plus. Aucune urgence ne justifie de la contourner.",
+    p:"Mon versement est fait, la preuve est gardée." },
+  { t:"Je vérifie que l'argent est arrivé",
+    f:["Attendez de voir le montant sur votre relevé ou votre plateforme avant de passer un ordre."],
+    c:"Un ordre passé sans provision sera refusé ou retardé.",
+    p:"Le montant apparaît sur mon compte espèces." }
+  ]},
+{ t:"Bâtir son plan", d:"Semaine 5 · 1 h", but:"Décider à l'avance : combien, quand, dans quoi, et quand revoir.",
+  e:[
+  { t:"Je décide de ma répartition",
+    f:["Actions, obligations, fonds communs de placement (FCP) : quelle part pour chacun, selon votre horizon ?","Plus l'horizon est court, plus la part d'actions doit être faible."],
+    c:"Votre répartition compte plus que le choix de tel ou tel titre.",
+    p:"Ma répartition est écrite en pourcentages." },
+  { t:"Je diversifie",
+    f:["Plusieurs sociétés, plusieurs secteurs, plusieurs pays.","Au début, qu'aucune ligne ne pèse plus d'un quart de votre portefeuille.","Avec un petit montant, un FCP donne d'emblée une diversification qu'on ne peut pas construire seul."],
+    c:"Ne mettez pas tous vos œufs dans le même panier, ni tous vos paniers dans le même pays.",
+    p:"Ma règle de diversification est écrite." },
+  { t:"Je simule les frais avant d'acheter",
+    calc:true,
+    c:"Comptez toujours les frais deux fois : à l'achat et à la revente. Si un ordre est trop petit, regroupez vos versements et achetez tous les deux ou trois mois.",
+    p:"J'ai simulé mon premier ordre." },
+  { t:"Je fixe mon rythme",
+    f:["Une date fixe, après la paie. Le même montant à chaque fois.","Vous achetez ainsi parfois cher, parfois moins cher : votre prix moyen se lisse."],
+    c:"La régularité bat le talent. Le rythme vous évite d'essayer de deviner le bon moment.",
+    p:"Ma date et mon montant sont fixés." },
+  { t:"J'écris mes règles de vente dès maintenant",
+    f:["Je vends si la raison de mon achat a disparu.","Je vends si mon projet arrive et que l'horizon est atteint.","Je réduis une ligne si elle dépasse la part que je me suis fixée.","Je ne vends pas parce que le cours a baissé une semaine."],
+    c:"Les règles écrites à froid vous protègent des décisions prises à chaud.",
+    p:"Mes règles de vente sont écrites." }
+  ]},
+{ t:"Passer son premier ordre", d:"Semaine 6 · 1 h", sim:true, but:"Acheter, en sachant exactement ce que vous faites.",
+  e:[
+  { t:"Je choisis le type d'ordre",
+    f:["À cours limité : vous fixez le prix maximum que vous acceptez de payer. Il ne s'exécute pas au-dessus.","Au marché : vous achetez au prix disponible. Rapide, mais risqué sur un titre peu échangé."],
+    c:"Pour un premier ordre, le coach vous conseille le cours limité. Vous gardez la main sur le prix.",
+    p:"J'ai choisi mon type d'ordre et je sais pourquoi." },
+  { t:"Je fixe le prix limite",
+    f:["Regardez les derniers cours et le carnet d'ordres.","Fixez une limite proche du dernier cours. Trop basse, votre ordre risque de ne jamais passer."],
+    c:"Courir après le prix est la première erreur. Si l'ordre ne passe pas aujourd'hui, il passera peut-être demain.",
+    p:"Mon prix limite est fixé." },
+  { t:"Je choisis la durée de validité",
+    f:["Pour la journée, jusqu'à une date précise, ou jusqu'à annulation, selon ce que propose votre SGI."],
+    c:"Un ordre oublié peut s'exécuter un mois plus tard, quand vous ne le souhaitez plus. Notez-le.",
+    p:"Ma durée de validité est choisie." },
+  { t:"Je calcule la quantité",
+    f:["Quantité = montant disponible, moins les frais, divisé par le prix limite. Arrondissez à l'unité inférieure."],
+    c:"On achète des titres entiers. Il vaut mieux un titre de moins qu'un ordre refusé faute d'argent.",
+    p:"Ma quantité est calculée." },
+  { t:"Je passe l'ordre et je relis",
+    f:["Sur la plateforme, ou par écrit selon la procédure de votre SGI. Entraînez-vous d'abord sur les écrans types en haut de cette phase.","Relisez avant de valider : sens (achat), titre (symbole), quantité, prix limite, validité.","Demandez une confirmation de réception."],
+    c:"Cinq vérifications, trente secondes. Une erreur de symbole vous ferait acheter une autre société.",
+    p:"Mon ordre est passé et sa réception confirmée." },
+  { t:"Je suis l'exécution",
+    f:["Trois cas : exécuté en entier, exécuté en partie, pas exécuté.","S'il n'est pas exécuté, attendez ou revoyez la limite. Ne la montez pas par impatience."],
+    c:"Une exécution partielle est normale sur un titre peu échangé. Le reste peut suivre aux séances suivantes.",
+    p:"Je sais où en est mon ordre." },
+  { t:"Je vérifie l'avis d'opéré",
+    f:["La SGI vous envoie un avis d'opéré : c'est la preuve que l'ordre a été exécuté.","Contrôlez : prix, quantité, courtage, commissions BRVM et DC/BR, taxes, montant net."],
+    c:"Si un chiffre ne correspond pas à la grille tarifaire, réclamez. C'est votre droit.",
+    p:"Mon avis d'opéré est vérifié ligne par ligne." },
+  { t:"Je retrouve mes titres sur mon compte",
+    f:["Depuis décembre 2025, le règlement-livraison se fait deux jours ouvrés après l'exécution (J+2).","Vérifiez que les titres apparaissent bien sur votre relevé."],
+    c:"À cet instant, vous êtes actionnaire. Notez la date.",
+    p:"Mes titres apparaissent sur mon relevé." }
+  ]},
+{ t:"Vivre avec son portefeuille", d:"Toute l'année", but:"Tenir dans la durée, sans regarder les cours tous les jours.",
+  e:[
+  { t:"Je fixe un rythme de suivi",
+    f:["Une fois par mois : les cours, votre versement.","Une fois par an : les résultats de vos sociétés et leurs assemblées générales."],
+    c:"Regarder les cours tous les jours fait prendre de mauvaises décisions. Vous avez choisi cinq ans, pas cinq jours.",
+    p:"Mon rythme de suivi est noté dans mon agenda." },
+  { t:"Je comprends le versement des dividendes",
+    f:["Pour toucher le dividende, il faut détenir le titre avant la date ex-dividende.","Il est versé sur votre compte espèces à la date de paiement, après un impôt retenu à la source (l'IRVM). Son taux dépend du pays du siège de la société : en Côte d'Ivoire, 12 % pour les particuliers.","Décidez à l'avance : réinvestir ou retirer."],
+    c:"Réinvestir les dividendes, c'est faire travailler l'argent qui vient de votre argent.",
+    p:"Je sais quand et comment mes dividendes arrivent." },
+  { t:"Je contrôle mes relevés",
+    f:["Chaque trimestre : titres, quantités, espèces, frais prélevés.","Comparez avec votre journal."],
+    c:"Une erreur repérée tôt se corrige facilement.",
+    p:"Mon premier relevé est contrôlé." },
+  { t:"J'ouvre mon journal d'investisseur",
+    f:["À chaque ordre : la date, le titre, le prix, les frais, la raison, et ce que vous ressentiez."],
+    c:"Dans un an, votre journal sera votre meilleur professeur.",
+    p:"Mon journal contient mon premier ordre." },
+  { t:"Je me protège des arnaques",
+    f:["Fuyez : rendement garanti, « doublez votre argent », groupe WhatsApp de « signaux », particulier qui collecte de l'argent pour investir à votre place, pression pour décider vite.","En cas de doute, vérifiez sur la liste de l'AMF-UMOA."],
+    c:"En Bourse, personne ne peut garantir un rendement. Celui qui le promet ment, ou ne sait pas.",
+    p:"Je connais les cinq signaux d'alerte." },
+  { t:"Je fais ma révision annuelle",
+    f:["Ma réserve est-elle toujours complète ? Ai-je repris une dette chère ?","Mon horizon a-t-il changé ? Ma répartition a-t-elle dérivé ?","Mes revenus ont augmenté ? J'augmente mon versement d'une partie de la hausse."],
+    c:"Une fois par an, une heure. C'est ce qui sépare un épargnant d'un investisseur.",
+    p:"La date de ma révision annuelle est fixée." }
+  ]},
+{ t:"Aller plus loin", d:"Après six mois", but:"Élargir vos placements, seul ou à plusieurs.",
+  e:[
+  { t:"Je découvre les obligations et les emprunts d'État",
+    f:["Les États et les entreprises de l'UEMOA lèvent régulièrement de l'argent par des emprunts, souscrits par l'intermédiaire des SGI.","Repérez : le taux, la durée, les dates de remboursement, l'émetteur."],
+    c:"Un revenu plus prévisible, mais un argent bloqué plus longtemps. Lisez la durée avant le taux.",
+    p:"J'ai lu la note d'information d'un emprunt." },
+  { t:"Je compare des fonds communs de placement",
+    f:["Un FCP rassemble l'argent de nombreux épargnants, géré par une société agréée.","Comparez : ce que le fonds achète, ses frais, son historique sur plusieurs années."],
+    c:"Un fonds vous fait gagner du temps. Ses frais, eux, courent chaque année.",
+    p:"J'ai comparé deux FCP." },
+  { t:"J'envisage d'investir à plusieurs",
+    f:["Un club d'investissement réunit des personnes qui mettent en commun une somme chaque mois et décident ensemble.","C'est le prolongement naturel de la tontine : on ne se contente plus de faire tourner l'argent, on le fait grandir."],
+    c:"Investir ensemble demande des règles écrites, comme une bonne tontine. EFA prépare un module pour vous y aider.",
+    p:"J'ai parlé du club d'investissement à mon cercle." }
+  ]}
+];
+PHASES.length = 5;
+
+const HORAIRES = '<table><thead><tr><th>Phase</th><th>Heure (UTC)</th></tr></thead><tbody>'+
+ '<tr><td>Pré-ouverture : les ordres s\'accumulent</td><td><b>9 h 00 – 9 h 45</b></td></tr>'+
+ '<tr><td>Fixing d\'ouverture : premier prix du jour</td><td><b>9 h 45</b></td></tr>'+
+ '<tr><td>Négociation en continu</td><td><b>9 h 45 – 14 h 00</b></td></tr>'+
+ '<tr><td>Pré-clôture</td><td><b>14 h 00 – 14 h 30</b></td></tr>'+
+ '<tr><td>Fixing de clôture : cours du jour</td><td><b>14 h 30</b></td></tr>'+
+ '<tr><td>Négociation au dernier cours</td><td><b>14 h 30 – 15 h 00</b></td></tr>'+
+ '</tbody></table><p style="margin:4px 0 0;font-size:14px;color:var(--ink3)">Du lundi au vendredi, hors jours fériés. Les ordres peuvent être transmis à votre SGI en dehors de ces heures.</p>';
+
+const CALC = `<div class="calc" data-garde>
+ <h5>Combien coûte mon ordre ?</h5>
+ <p class="note">Remplacez le taux et le minimum de courtage par ceux de votre SGI. BRVM et DC/BR sont fixes.</p>
+ <div class="champs">
+  <label>Montant de l'achat (F)<input id="cMont" type="number" inputmode="numeric" value="100000" min="0"></label>
+  <label>Courtage SGI (%)<input id="cTaux" type="number" inputmode="decimal" value="1" step="0.1" min="0"></label>
+  <label>Courtage minimum (F)<input id="cMin" type="number" inputmode="numeric" value="0" min="0"></label>
+  <label>Taxe sur courtage (%)<input id="cTaxe" type="number" inputmode="decimal" value="0" step="0.5" min="0"></label>
+ </div>
+ <div class="res" id="cRes"></div>
+</div>`;
+
+const SIM2HTML = '<div class="choix-sim" role="tablist"><button type="button" class="on" data-sim="app">Application d\'investissement</button><button type="button" data-sim="sgi">Plateforme de SGI</button></div><div class="sim" id="sim2" data-garde> <div class="sim-tete"><span class="surtitre">Les écrans, pas à pas · application mobile</span><h4>Investir depuis une application d\'investissement</h4><p>Écrans reconstitués d\'après les captures d\'un investisseur, sur une application réelle, le 30 octobre 2026. La marque est retirée. Les cours, les frais et les étapes sont ceux qui s\'affichaient ce jour-là. Ce n\'est pas une recommandation d\'achat.</p></div> <div class="onglets" id="s2Tabs"></div> <div class="sim-corps">  <div class="tel"><div class="tel-barre"><span class="tel-logo"></span><span>Application d\'investissement</span><span class="tel-h">11:05</span></div><div class="ecran" id="s2Ecran"></div></div>  <div class="notes"><span class="etiquette">Ce que le coach regarde sur cet écran</span><ol id="s2Notes"></ol><div class="nav"><button type="button" class="bouton sec" id="s2Prec">← Précédent</button><button type="button" class="bouton" id="s2Suiv">Suivant →</button></div></div> </div></div>';
+const SIMHTML = '<div class="sim" id="sim" data-garde> <div class="sim-tete"><span class="surtitre">Les écrans, pas à pas · plateforme de SGI</span><h4>Passer un ordre comme sur la plateforme de votre SGI</h4><p>Écrans types reconstitués par EFA à partir des plateformes de Bourse en ligne. La valeur « EXMC » est fictive. L\'écran de votre SGI peut différer : les champs, eux, sont les mêmes partout.</p></div> <div class="onglets" role="tablist" id="simTabs"></div> <div class="sim-corps">  <div class="tel"><div class="tel-barre"><span class="tel-logo"></span><span>Votre SGI · Bourse en ligne</span><span class="tel-h">10:12</span></div><div class="ecran" id="ecran"></div></div>  <div class="notes"><span class="etiquette">Ce que le coach regarde sur cet écran</span><ol id="notes"></ol><div class="nav"><button type="button" class="bouton sec" id="prec">← Précédent</button><button type="button" class="bouton" id="suiv">Suivant →</button></div></div> </div></div>';
+const fmt = n => Math.round(n).toLocaleString('fr-FR').replace(/ /g,' ') + ' F';
+function calc(){
+  if(!document.getElementById('cMont')) return;
+  const m = +document.getElementById('cMont').value||0;
+  const t = +document.getElementById('cTaux').value||0;
+  const mi = +document.getElementById('cMin').value||0;
+  const tx = +document.getElementById('cTaxe').value||0;
+  const court = Math.max(m*t/100, m>0?mi:0);
+  const taxe = court*tx/100, brvm = m*0.002, dcbr = m*0.001;
+  const tot = court+taxe+brvm+dcbr, pct = m? tot/m*100:0;
+  let html = `<div><span>Courtage SGI</span><span>${fmt(court)}</span></div>`+
+   `<div><span>Taxe sur courtage</span><span>${fmt(taxe)}</span></div>`+
+   `<div><span>Commission BRVM (0,2 %)</span><span>${fmt(brvm)}</span></div>`+
+   `<div><span>Commission DC/BR (0,1 %)</span><span>${fmt(dcbr)}</span></div>`+
+   `<div class="tot"><span>Frais à l'achat</span><span>${fmt(tot)} · ${pct.toLocaleString('fr-FR',{maximumFractionDigits:2})} %</span></div>`+
+   `<div><span>Aller-retour (achat + revente)</span><span>≈ ${(pct*2).toLocaleString('fr-FR',{maximumFractionDigits:2})} %</span></div>`;
+  if(pct*2 > 4) html += `<span class="alerte">L'aller-retour dépasse 4 % : votre placement doit d'abord regagner ces frais. Envisagez de regrouper vos achats.</span>`;
+  document.getElementById('cRes').innerHTML = html;
+}
+
+// Rendu
+let KEY='efa-coach-brvm-v1', etat={};
+try{ etat = JSON.parse(localStorage.getItem(KEY)||'{}') }catch(e){ etat={} }
+const save=()=>{ try{ localStorage.setItem(KEY, JSON.stringify(etat)) }catch(e){} };
+
+const cont = document.getElementById('phases');
+let n=0, total=0;
+PHASES.forEach((ph,i)=>{
+  const sec = document.createElement('article');
+  sec.className='phase'+(i===0?' ouverte':'');
+  let corps = `<div class="but"><span class="etiquette">Objectif de la phase</span><p>${ph.but}</p></div>`;
+  if(ph.sim) corps += SIM2HTML + SIMHTML;
+  ph.e.forEach(e=>{
+    n++; total++;
+    const id='s'+n;
+    let f = '';
+    if(e.f) f = `<div class="faire"><span class="etiquette">Ce que vous faites</span><ul>${e.f.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+    if(e.h) f = `<div class="faire"><span class="etiquette">La journée de cotation</span>${HORAIRES}</div>`;
+    if(e.calc) f = CALC;
+    const l = e.l ? `<p class="lien"><a href="${e.l[1]}"${/^https?:/.test(e.l[1])?' target="_blank" rel="noopener"':''}>${e.l[0]} →</a></p>` : '';
+    corps += `<div class="etape" id="${id}">
+      <div class="et-haut"><span class="et-n">${n}</span><h4>${e.t}</h4></div>
+      ${f}${l}
+      <div class="coach"><span class="surtitre">Le coach</span><p>${e.c}</p></div>
+      <label class="preuve${etat[id]?' ok':''}"><input type="checkbox" data-id="${id}" ${etat[id]?'checked':''}><span>${e.p}</span></label>
+    </div>`;
+  });
+  sec.innerHTML = `<button type="button" aria-expanded="${i===0}"><span class="num">${i+1}</span><span class="ph-titre"><span class="surtitre">Phase ${i+1}</span><h3>${ph.t}</h3><div class="ph-meta">${ph.d} · ${ph.e.length} étapes · <span class="faites"></span></div></span><span class="chev" aria-hidden="true">›</span></button><div class="ph-corps">${corps}</div>`;
+  sec.querySelector('button').addEventListener('click',ev=>{
+    const o = sec.classList.toggle('ouverte');
+    ev.currentTarget.setAttribute('aria-expanded',o);
+  });
+  cont.appendChild(sec);
+});
+document.getElementById('nbEtapes').textContent = total;
+
+function maj(){
+  const done = document.querySelectorAll('.preuve input:checked').length;
+  document.getElementById('barre').style.width = (done/total*100)+'%';
+  document.getElementById('progTxt').textContent = done+' / '+total;
+  document.querySelectorAll('.phase').forEach(ph=>{
+    const boxes = ph.querySelectorAll('.preuve input');
+    const c = [...boxes].filter(b=>b.checked).length;
+    ph.querySelector('.faites').textContent = c+' faite'+(c>1?'s':'');
+    ph.classList.toggle('fini', c===boxes.length);
+  });
+}
+cont.addEventListener('change',ev=>{
+  const b = ev.target;
+  if(b.matches('.preuve input')){
+    etat[b.dataset.id]=b.checked; save();
+    b.closest('.preuve').classList.toggle('ok',b.checked);
+    maj();
+  } else if(b.closest('.calc')) calc();
+});
+cont.addEventListener('input',ev=>{ if(ev.target.closest('.calc')) calc(); });
+document.getElementById('raz').addEventListener('click',()=>{
+  etat={}; save();
+  document.querySelectorAll('.preuve input').forEach(b=>{b.checked=false;b.closest('.preuve').classList.remove('ok')});
+  maj(); window.scrollTo({top:0,behavior:'smooth'});
+});
+calc(); maj();
+(function(){
+const COURS=8200, FP=0.0515, FF=257.5, SOLDE=491000;
+const LISTE=[["BBGC","Bridge Bank Group","Finance",9880,null],["BICB","Banque Internationale pour…","Finance",8395,-0.53],["LNBB","Loterie Nationale du Bénin","Divertissement",3970,-0.13],["UNXC","Uniwax Côte d'Ivoire","Industrie",2100,null],["UNLC","Unilever Côte d'Ivoire","Industrie",49000,6.52],["STBC","Sitab Côte d'Ivoire","Industrie",21350,0.23],["STAC","Setao Côte d'Ivoire","Construction",1755,0.57],["TTLC","Total Côte d'Ivoire","Distribution",3025,null],["SPHC","Saph Côte d'Ivoire","Agriculture",8200,0.61]];
+const F=n=>Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,'\u00a0')+'\u00a0F';
+const D=n=>n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/\u202f/g,'\u00a0')+'\u00a0F';
+const PCT=n=>n.toLocaleString('fr-FR',{maximumFractionDigits:2})+'\u00a0%';
+const frais=m=>m*FP+FF, sgi=m=>m*(0.01*1.18+0.003);
+const OPTS=[9,18,28,37,47,56];
+let q=9, i=0, depot='cours';
+const ECR=[
+{t:"1 · Approvisionner",h:()=>`<h6>Dépôt</h6><div class="e-sous">Mobile money ou virement</div>
+ <div class="mail"><b>${depot==='cours'?'Votre dépôt de 500 000 F est en cours de traitement':'Votre dépôt de 500 000 F a bien été effectué'}</b>${depot==='cours'?'Nous vous préviendrons dès qu\'il sera crédité. Vous pouvez suivre son statut dans l\'application.':'Votre solde et l\'historique de vos opérations sont à jour.'}</div>
+ <div class="e-grille"><span>Statut</span><b>${depot==='cours'?'<span class="statut st-att">En traitement</span>':'<span class="statut st-ok">Crédité</span>'}</b><span>Montant</span><b>500 000 F</b></div>
+ <button class="e-btn ${depot==='ok'?'gris':''}" data-dep="1">${depot==='cours'?'Simuler la réception':'Revoir le dépôt en cours'}</button>
+ <button class="e-btn" data-go="1" ${depot==='ok'?'':'disabled'}>Voir les valeurs</button>`,
+ n:["<b>Un dépôt n'est pas instantané.</b> Il passe par « en traitement » avant d'être crédité. N'investissez qu'après la confirmation.","<b>Deux messages officiels</b> : la réception de la demande, puis la confirmation. Gardez-les : ce sont vos preuves.","<b>L'expéditeur</b> doit être l'adresse officielle de la plateforme. Un message qui demande votre code ou vos identifiants est une arnaque."]},
+{t:"2 · Les valeurs",h:()=>`<h6>Actions</h6><span class="filtre">Bourse : BRVM ✕</span>
+ ${LISTE.map(v=>`<div class="v-ligne" ${v[0]==='SPHC'?'data-go="2"':''}><span class="v-pastille">${v[0]}</span><span class="v-nom"><b>${v[1]}</b><span>${v[0]} · ${v[2]}</span></span><span class="v-prix">${F(v[3])}${v[4]===null?'':`<span class="${v[4]<0?'baisse':'hausse'}">${v[4]>0?'+':''}${PCT(v[4])}</span>`}</span></div>`).join('')}
+ <div class="e-info" style="margin-top:8px">Touchez SPHC pour ouvrir sa fiche.</div>`,
+ n:["<b>Le prix d'une action va de 1 755 F à 49 000 F</b> sur cette seule liste. Avec 50 000 F, vous pouvez acheter 28 actions Setao… ou une seule Unilever.","<b>Une action chère n'est pas une meilleure action.</b> Le prix dépend du nombre d'actions émises, pas de la qualité de l'entreprise.","<b>La variation du jour</b> (+6,52 %, −0,53 %) ne dit rien de l'entreprise. Ne choisissez jamais sur cette colonne.","<b>Les valeurs ont été relevées le 30 octobre 2026.</b> Elles servent d'exemple, pas de conseil."]},
+{t:"3 · La fiche",h:()=>`<h6>Saph Côte d'Ivoire</h6><div class="e-sous">SPHC · Abidjan · Agriculture</div>
+ <div class="e-prix"><b>8 200 F</b><span class="hausse">1 mois : +205 F (+2,56 %)</span></div>
+ <div class="bandeau">Sur un an, l'action a pris 6,56 %. 10 000 F investis il y a un an vaudraient environ 10 656 F aujourd'hui.</div>
+ <div class="tuiles"><div><span>Capitalisation</span><b>209,58 Md F</b></div><div><span>Bourse</span><b>BRVM</b></div><div><span>Rang par taille</span><b>21e</b></div><div><span>Volume du jour</span><b>1 981 titres</b></div></div>
+ <div style="font-size:12px;font-weight:800;margin-top:10px">Plage sur 52 semaines</div>
+ <div class="plage"><i style="left:${(8200-6720)/(10300-6720)*100}%"></i></div>
+ <div class="e-ligne" style="border:0"><span class="baisse">6 720 F · plus bas</span><span class="hausse">10 300 F · plus haut</span></div>
+ <div class="mention">Faits de marché, pas des recommandations. Les performances passées ne préjugent pas des performances futures.</div>
+ <button class="e-btn" data-go="3">Acheter</button>`,
+ n:["<b>« 10 000 F seraient devenus 10 656 F »</b> : ce calcul ignore les frais (plus de 5 % ici, voir l'écran suivant) et les dividendes. Un acheteur réel il y a un an serait à peu près à l'équilibre.","<b>Un mois de graphique ne dit rien.</b> Changez d'horizon (1 an, 5 ans) et lisez le rapport annuel avant d'acheter.","<b>La plage sur 52 semaines</b> : 8 200 F est dans le bas de la fourchette. Cela ne veut pas dire « pas cher » : il faut savoir pourquoi le cours a baissé.","<b>Le volume</b> (1 981 titres) indique qu'on peut acheter et revendre sans trop attendre.","<b>Faites votre fiche « Lire une entreprise »</b> avant d'aller plus loin. Le cas SAPH existe sur efa.africa."]},
+{t:"4 · Achat rapide",h:()=>{const m=q*COURS,f=frais(m);return `<h6>Achat rapide au marché</h6><div class="e-sous">1 action = 8 200 F · solde ${F(SOLDE)}</div>
+ <div class="choix-mt">${OPTS.map((x,k)=>{const mm=x*COURS,ff=frais(mm);return `<button type="button" data-q="${x}" class="${x===q?'on':''}"><b>${D(mm+ff)}</b>${k===0?'Minimum · ':k===OPTS.length-1?'Maximum · ':''}dont ${D(ff)} de frais<br>≈ ${x} actions</button>`}).join('')}</div>
+ <div class="e-ligne"><span>Actions (${q} × 8 200 F)</span><span>${F(m)}</span></div>
+ <div class="e-ligne"><span>Frais de l'application</span><span>${D(f)}</span></div>
+ <div class="e-ligne e-total"><span>Total débité</span><span>${D(m+f)}</span></div>
+ <div class="e-alerte">Frais : ${PCT(f/m*100)} du montant investi.</div>
+ <button class="e-btn" data-go="4">Continuer</button>`},
+ n:["<b>« Achat rapide au marché »</b> : il n'y a pas de prix limite. Vous achetez au prix disponible, quel qu'il soit.","<b>Le minimum</b> est d'environ 9 actions, soit près de 78 000 F. « Investir dès 10 000 F » ne vaut pas pour toutes les actions.","<b>Les frais relevés</b> : 5,15 % du montant + 257,50 F, soit plus de 5 % à chaque achat. Passer par une SGI en direct coûte plutôt 1,3 % à 1,5 % : comparez à l'écran 6.","<b>Pour regagner ces frais</b>, l'action doit monter de plus de 5 % rien que pour l'achat. La revente vous coûtera aussi des frais.","<b>Demandez le détail des frais</b> : courtage de la SGI partenaire, commissions de la BRVM et du DC/BR, et la marge de l'application."]},
+{t:"5 · En attente",h:()=>{const m=q*COURS,f=frais(m);return `<h6>Accueil</h6><div class="e-sous">Construire aujourd'hui son patrimoine de demain</div>
+ <div class="solde"><span>Solde total</span><b>${F(SOLDE)}</b><div class="duo"><div><span>Espèces</span><b>${F(SOLDE-m-f)}</b></div><div><span>Portefeuille</span><b>0 F</b></div></div><div class="attente">⏳ Investissement en attente d'allocation : <b>${F(m+f)}</b></div></div>
+ <div class="mail"><b>Votre document est disponible</b>Votre acceptation des conditions et vos relevés sont dans votre espace « Relevés et documents ».</div>
+ <button class="e-btn" data-go="5">Comparer avec une SGI</button>`},
+ n:["<b>« En attente d'allocation »</b> : votre argent est parti, mais vos actions ne sont pas encore achetées. L'application transmet l'ordre à sa SGI partenaire, qui l'exécute ensuite.","<b>Le prix final peut changer</b> entre votre clic et l'exécution, puisque l'ordre est au marché.","<b>Vos documents</b> (conditions acceptées, avis, relevés, certificat d'investissement) sont dans l'espace documents. Téléchargez-les et gardez-les.","<b>Récompenses, classements, introductions en Bourse à l'étranger</b> : ces boutons poussent à agir vite. Une introduction au Nigeria se fait en naira, avec un risque de change en plus."]},
+{t:"6 · Comparer",h:()=>{const rows=[50000,100000,500000].map(m=>{const a=frais(m),s=sgi(m);return `<tr><td>${F(m)}</td><td>${F(a)}<br><span class="e-sous">${PCT(a/m*100)}</span></td><td>${F(s)}<br><span class="e-sous">${PCT(s/m*100)}</span></td></tr>`}).join('');
+ return `<h6>Application ou SGI en direct ?</h6><div class="e-sous">Frais d'un achat, hors droits de garde</div>
+ <table class="comp"><thead><tr><th>Montant</th><th>Application</th><th>SGI type</th></tr></thead><tbody>${rows}</tbody></table>
+ <div class="e-info" style="margin-top:8px">Application : frais relevés le 30/10/2026 (5,15 % + 257,50 F), sur un compte ouvert depuis l'étranger et tenu en euros : une part peut venir du change, à vérifier pour un compte en francs CFA. SGI type : courtage 1 % + taxe 18 % + BRVM 0,2 % + DC/BR 0,1 %. À vérifier sur la grille de votre SGI.</div>
+ <table class="comp" style="margin-top:10px"><thead><tr><th></th><th>Application</th><th>SGI</th></tr></thead><tbody>
+ <tr><td>Ouverture</td><td>Minutes, en ligne</td><td>Jours à semaines</td></tr><tr><td>Dépôt minimum</td><td>Faible</td><td>Souvent 50 000 à 250 000 F</td></tr><tr><td>Type d'ordre</td><td>Au marché</td><td>Limité ou au mieux</td></tr><tr><td>Frais par achat</td><td>≈ 5 %</td><td>≈ 1,3 à 1,5 %</td></tr></tbody></table>`},
+ n:["<b>L'application achète la simplicité</b> : ouverture rapide, interface claire, petit dépôt. Elle la fait payer à chaque ordre.","<b>Sur 500 000 F</b>, l'écart dépasse 19 000 F à l'achat, puis autant à la revente.","<b>Règle du coach</b> : l'application peut servir à apprendre avec un petit montant. Au-delà, comparez les frais réels avant d'investir davantage.","<b>Dans les deux cas</b>, vos titres sont conservés par une SGI agréée et inscrits au DC/BR. Demandez laquelle."]}
+];
+if(!document.getElementById('s2Tabs')) return;
+const tabs=document.getElementById('s2Tabs'),ecr=document.getElementById('s2Ecran'),notes=document.getElementById('s2Notes');
+tabs.innerHTML=ECR.map((e,k)=>`<button type="button" role="tab" data-i="${k}">${e.t}</button>`).join('');
+function rend(){ecr.innerHTML=ECR[i].h();notes.innerHTML=ECR[i].n.map(x=>`<li>${x}</li>`).join('');
+ tabs.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-selected',k===i));
+ document.getElementById('s2Prec').disabled=i===0;document.getElementById('s2Suiv').disabled=i===ECR.length-1;}
+function aller(k){i=Math.max(0,Math.min(ECR.length-1,k));rend();}
+tabs.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)aller(+b.dataset.i)});
+document.getElementById('s2Prec').addEventListener('click',()=>aller(i-1));
+document.getElementById('s2Suiv').addEventListener('click',()=>aller(i+1));
+ecr.addEventListener('click',e=>{const t=e.target.closest('[data-go],[data-q],[data-dep]');if(!t||t.disabled)return;
+ if(t.dataset.dep){depot=depot==='cours'?'ok':'cours';rend()}else if(t.dataset.q){q=+t.dataset.q;rend()}else aller(+t.dataset.go)});
+document.querySelectorAll('.choix-sim button').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.choix-sim button').forEach(x=>x.classList.toggle('on',x===b));
+ document.getElementById('sim2').classList.toggle('cache',b.dataset.sim!=='app');
+ document.getElementById('sim').classList.toggle('cache',b.dataset.sim!=='sgi');}));
+document.getElementById('sim').classList.add('cache');
+rend();
+})();
+
+(function(){
+const V={sym:"EXMC",nom:"Société Exemple Côte d'Ivoire",ref:2420,dernier:2450,vol:3812,val:9338400,
+ achats:[[120,2445],[300,2440],[85,2430],[500,2420],[60,2400]],
+ ventes:[[40,2450],[150,2455],[200,2460],[90,2475],[400,2500]]};
+const SOLDE=250000, COURT=0.01, TAXE=0.18, BRVM=0.002, DCBR=0.001;
+const hautS=Math.floor(V.ref*1.075), basS=Math.ceil(V.ref*0.925);
+const F=n=>Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,'\u00a0')+'\u00a0F';
+const N=n=>Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,'\u00a0');
+let o={sens:'A',type:'L',qte:40,lim:2455,val:'J'}, i=0, fills=null;
+const frais=m=>{const c=m*COURT,t=c*TAXE,b=m*BRVM,d=m*DCBR;return{c,t,b,d,tot:c+t+b+d}};
+function exec(){ // achat contre les ventes du carnet
+  let reste=o.qte, out=[], limite=o.type==='L'?o.lim:V.ventes[0][1];
+  for(const [q,p] of V.ventes){ if(reste<=0||p>limite) break; const x=Math.min(q,reste); out.push([x,p]); reste-=x; }
+  return {out,reste,limite};
+}
+const ECR=[
+{t:"1 · Cotation",
+ h:()=>`<h6>${V.sym}</h6><div class="e-sous">${V.nom} · Actions</div>
+ <div class="e-prix"><b>${N(V.dernier)}</b><span class="hausse">+${((V.dernier/V.ref-1)*100).toFixed(2).replace('.',',')} %</span></div>
+ <div class="e-grille"><span>Cours de référence</span><b>${N(V.ref)}</b><span>Volume du jour</span><b>${N(V.vol)} titres</b><span>Valeur échangée</span><b>${F(V.val)}</b><span>Seuils du jour</span><b>${N(basS)} – ${N(hautS)}</b></div>
+ <table class="carnet"><thead><tr><th>Qté</th><th>Achat</th><th>Vente</th><th>Qté</th></tr></thead><tbody>
+ ${V.achats.map((a,k)=>`<tr><td>${N(a[0])}</td><td class="a">${N(a[1])}</td><td class="v">${N(V.ventes[k][1])}</td><td>${N(V.ventes[k][0])}</td></tr>`).join('')}</tbody></table>
+ <button class="e-btn" data-go="1">Acheter</button>`,
+ n:["<b>Le symbole</b> (ici EXMC) : vérifiez-le toujours. Deux sociétés d'un même groupe peuvent avoir des noms proches.","<b>Le cours de référence</b> sert de base à la séance. Les <b>seuils du jour</b> en découlent (±7,5 %) : un ordre hors seuils ne peut pas s'exécuter.","<b>Le carnet d'ordres</b> : à gauche, ceux qui veulent acheter ; à droite, ceux qui veulent vendre. Le meilleur vendeur est à 2 450 F pour 40 titres seulement.","<b>Le volume</b> : 3 812 titres aujourd'hui. Sur un titre qui en échange 50, votre ordre attendra."]},
+{t:"2 · Saisir l'ordre",
+ h:()=>{const m=o.qte*(o.type==='L'?o.lim:V.ventes[0][1]),f=frais(m),need=m+f.tot;
+ let al=[]; if(o.type==='L'&&(o.lim>hautS||o.lim<basS)) al.push(`Limite hors des seuils du jour (${N(basS)} – ${N(hautS)}).`);
+ if(need>SOLDE) al.push('Provision insuffisante pour cet ordre.'); if(!(o.qte>0)) al.push('Indiquez une quantité.');
+ return `<h6>Nouvel ordre</h6><div class="e-sous">${V.sym} · dernier ${N(V.dernier)} F</div>
+ <div class="e-champ"><label>Sens</label><div class="seg"><button type="button" class="${o.sens==='A'?'on ach':''}" data-sens="A">Achat</button><button type="button" class="${o.sens==='V'?'on ven':''}" data-sens="V">Vente</button></div>${o.sens==='V'?'<div class="e-alerte">Vous ne détenez pas encore de titres EXMC : une vente serait refusée.</div>':''}</div>
+ <div class="e-champ"><label>Type d'ordre</label><div class="seg"><button type="button" class="${o.type==='L'?'on':''}" data-type="L">À cours limité</button><button type="button" class="${o.type==='M'?'on':''}" data-type="M">Au mieux</button></div></div>
+ <div class="e-champ"><label>Quantité</label><input type="number" inputmode="numeric" min="1" id="sQte" value="${o.qte}"></div>
+ ${o.type==='L'?`<div class="e-champ"><label>Prix limite (F)</label><input type="number" inputmode="numeric" id="sLim" value="${o.lim}"></div>`:'<div class="e-info">Au mieux : l\'ordre prend le meilleur prix vendeur disponible (2 450 F). S\'il n\'est servi qu\'en partie, le reste devient un ordre limité à ce prix.</div>'}
+ <div class="e-champ"><label>Validité</label><select id="sVal"><option value="J"${o.val==='J'?' selected':''}>Jour (séance en cours)</option><option value="D"${o.val==='D'?' selected':''}>Jusqu'à une date</option><option value="R"${o.val==='R'?' selected':''}>À révocation</option></select></div>
+ <div class="e-ligne"><span>Montant estimé</span><span>${F(m)}</span></div><div class="e-ligne"><span>Frais estimés</span><span>${F(f.tot)}</span></div><div class="e-ligne"><span>Disponible</span><span>${F(SOLDE)}</span></div>
+ ${al.map(a=>`<div class="e-alerte">${a}</div>`).join('')}
+ <button class="e-btn" data-go="2" ${al.length||o.sens==='V'?'disabled':''}>Vérifier l'ordre</button>`},
+ n:["<b>Sens</b> : Achat. Une vente par erreur sur une ligne que vous détenez est l'erreur la plus coûteuse.","<b>Type</b> : à cours limité pour un premier ordre. Essayez « Au mieux » pour voir la différence de prix à l'écran suivant.","<b>Prix limite</b> : essayez 2 700 F. La plateforme refuse, car c'est au-dessus du seuil du jour.","<b>Quantité</b> : essayez 100. Il n'y a que 40 titres à 2 450 F et 150 à 2 455 F : regardez ce que donne l'exécution.","<b>Validité</b> : « Jour » par défaut. « À révocation » reste actif tant que vous ne l'annulez pas : notez-le dans votre journal."]},
+{t:"3 · Vérifier",
+ h:()=>{const p=o.type==='L'?o.lim:V.ventes[0][1],m=o.qte*p,f=frais(m);
+ return `<h6>Récapitulatif</h6><div class="e-sous">Relisez avant de confirmer</div>
+ <div class="e-ligne"><span>Sens</span><span class="hausse">ACHAT</span></div>
+ <div class="e-ligne"><span>Valeur</span><span>${V.sym} · ${V.nom}</span></div>
+ <div class="e-ligne"><span>Quantité</span><span>${N(o.qte)} titres</span></div>
+ <div class="e-ligne"><span>Type</span><span>${o.type==='L'?'Cours limité à '+N(o.lim)+' F':'Au mieux'}</span></div>
+ <div class="e-ligne"><span>Validité</span><span>${{J:'Jour',D:'Jusqu\'à une date',R:'À révocation'}[o.val]}</span></div>
+ <div class="e-ligne"><span>Montant brut maximum</span><span>${F(m)}</span></div>
+ <div class="e-ligne"><span>Courtage SGI (1 %)</span><span>${F(f.c)}</span></div>
+ <div class="e-ligne"><span>Taxe sur courtage (ex. 18 %)</span><span>${F(f.t)}</span></div>
+ <div class="e-ligne"><span>Commission BRVM (0,2 %)</span><span>${F(f.b)}</span></div>
+ <div class="e-ligne"><span>Commission DC/BR (0,1 %)</span><span>${F(f.d)}</span></div>
+ <div class="e-ligne e-total"><span>Total maximum débité</span><span>${F(m+f.tot)}</span></div>
+ <div class="e-info" style="text-align:center;margin-top:10px">Code de confirmation reçu par SMS</div><div class="otp"><span>4</span><span>8</span><span>2</span><span>9</span></div>
+ <button class="e-btn" data-go="3">Confirmer l'ordre</button><button class="e-btn gris" data-go="1">Modifier</button>`},
+ n:["<b>Les cinq vérifications</b> : sens, valeur, quantité, prix, validité. Trente secondes.","<b>Le total maximum</b> : c'est ce qui sera bloqué sur votre compte espèces. Avec une limite, vous pouvez payer moins, jamais plus.","<b>Les frais</b> : les taux de courtage et de taxe sont des exemples. Prenez ceux de la grille de votre SGI.","<b>Le code de confirmation</b> : ne le donnez jamais à personne, même à quelqu'un qui dit appeler de la part de votre SGI."]},
+{t:"4 · Suivre",
+ h:()=>{const e=exec(),fait=o.qte-e.reste,st=e.reste===0?'<span class="statut st-ok">Exécuté</span>':fait>0?'<span class="statut st-part">Partiellement exécuté</span>':'<span class="statut st-att">En attente</span>';
+ fills=e; return `<h6>Mes ordres</h6><div class="e-sous">Séance du jour · négociation en continu</div>
+ <div class="e-grille"><span>Ordre</span><b>Achat ${V.sym}</b><span>Statut</span><b>${st}</b><span>Exécuté</span><b>${N(fait)} / ${N(o.qte)}</b><span>Reste au carnet</span><b>${N(e.reste)}${e.reste?' à '+N(e.limite)+' F':''}</b></div>
+ ${e.out.length?`<table class="carnet"><thead><tr><th>Heure</th><th>Qté</th><th>Prix</th></tr></thead><tbody>${e.out.map((x,k)=>`<tr><td>10:1${2+k}</td><td>${N(x[0])}</td><td>${N(x[1])}</td></tr>`).join('')}</tbody></table>`:'<div class="e-info">Aucun vendeur à votre prix pour l\'instant. Votre ordre attend dans le carnet.</div>'}
+ ${e.reste?'<button class="e-btn gris">Modifier / annuler le reste</button>':''}
+ <button class="e-btn" data-go="4" ${fait?'':'disabled'}>Voir l'avis d'opéré</button>`},
+ n:["<b>Trois statuts</b> : en attente, partiellement exécuté, exécuté. Le statut change pendant la séance.","<b>Exécution en plusieurs prix</b> : un ordre de 100 titres peut être servi à 2 450 F puis 2 455 F. Votre limite reste le prix maximum.","<b>Le reste</b> d'un ordre partiel attend dans le carnet jusqu'à la fin de sa validité. Annulez-le si vous ne le voulez plus.","<b>Ne montez pas la limite</b> par impatience. Revenez à la séance suivante."]},
+{t:"5 · Avis d'opéré",
+ h:()=>{const e=fills||exec(),q=e.out.reduce((s,x)=>s+x[0],0),m=e.out.reduce((s,x)=>s+x[0]*x[1],0),f=frais(m);
+ return `<div class="avis"><h6>Avis d'opéré</h6><div class="e-sous" style="text-align:center">N° 2026-104812 · Compte 00123456 · ${new Date().toLocaleDateString('fr-FR')}</div>
+ <div class="e-ligne"><span>Opération</span><span>Achat</span></div><div class="e-ligne"><span>Valeur</span><span>${V.sym}</span></div>
+ <div class="e-ligne"><span>Quantité exécutée</span><span>${N(q)}</span></div><div class="e-ligne"><span>Cours moyen</span><span>${q?N(m/q):0} F</span></div>
+ <div class="e-ligne"><span>Montant brut</span><span>${F(m)}</span></div><div class="e-ligne"><span>Courtage</span><span>${F(f.c)}</span></div><div class="e-ligne"><span>Taxe sur courtage</span><span>${F(f.t)}</span></div><div class="e-ligne"><span>Commission BRVM</span><span>${F(f.b)}</span></div><div class="e-ligne"><span>Commission DC/BR</span><span>${F(f.d)}</span></div>
+ <div class="e-ligne e-total"><span>Net débité</span><span>${F(m+f.tot)}</span></div>
+ <div class="e-ligne"><span>Date de règlement-livraison</span><span>J+2 ouvrés</span></div></div>
+ <button class="e-btn" data-go="5">Voir mon portefeuille</button>`},
+ n:["<b>L'avis d'opéré</b> est la preuve officielle de votre achat. Gardez-le.","<b>Le cours moyen</b> : si l'ordre a été servi à plusieurs prix, c'est leur moyenne pondérée.","<b>Comparez chaque frais</b> à la grille tarifaire de votre SGI. Une erreur se réclame par écrit.","<b>La date de règlement-livraison</b> : les titres sont à vous deux jours ouvrés après l'exécution."]},
+{t:"6 · Portefeuille",
+ h:()=>{const e=fills||exec(),q=e.out.reduce((s,x)=>s+x[0],0),m=e.out.reduce((s,x)=>s+x[0]*x[1],0),f=frais(m),pr=q?(m+f.tot)/q:0,val=q*V.dernier;
+ return `<h6>Mon portefeuille</h6><div class="e-sous">Après règlement-livraison (J+2)</div>
+ <div class="e-grille"><span>Espèces disponibles</span><b>${F(SOLDE-m-f.tot)}</b><span>Valeur des titres</span><b>${F(val)}</b></div>
+ <table class="carnet"><thead><tr><th>Valeur</th><th>Qté</th><th>PRU</th><th>Cours</th><th>+/- latent</th></tr></thead><tbody><tr><td>${V.sym}</td><td>${N(q)}</td><td>${N(pr)}</td><td>${N(V.dernier)}</td><td class="${val-q*pr<0?'v':'a'}">${F(val-q*pr)}</td></tr></tbody></table>
+ <div class="e-info" style="margin-top:10px">PRU : prix de revient unitaire, frais d'achat compris.</div>`},
+ n:["<b>Le PRU</b> (prix de revient unitaire) inclut les frais : il est plus élevé que le cours payé.","<b>Le +/- latent est négatif</b> juste après l'achat : ce sont les frais. C'est normal, et c'est pourquoi on investit pour longtemps.","<b>Les espèces restantes</b> attendent votre prochain ordre, ou vos prochains dividendes.","<b>Notez tout</b> dans votre journal d'investisseur : date, prix, frais, raison."]}
+];
+if(!document.getElementById('simTabs')) return;
+const tabs=document.getElementById('simTabs'),ecr=document.getElementById('ecran'),notes=document.getElementById('notes');
+tabs.innerHTML=ECR.map((e,k)=>`<button type="button" role="tab" data-i="${k}">${e.t}</button>`).join('');
+function rend(){ecr.innerHTML=ECR[i].h();notes.innerHTML=ECR[i].n.map(x=>`<li>${x}</li>`).join('');
+ tabs.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-selected',k===i));
+ document.getElementById('prec').disabled=i===0;document.getElementById('suiv').disabled=i===ECR.length-1;}
+function aller(k){i=Math.max(0,Math.min(ECR.length-1,k));rend();}
+tabs.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)aller(+b.dataset.i)});
+document.getElementById('prec').addEventListener('click',()=>aller(i-1));
+document.getElementById('suiv').addEventListener('click',()=>aller(i+1));
+ecr.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.go)aller(+t.dataset.go);else if(t.dataset.sens){o.sens=t.dataset.sens;rend()}else if(t.dataset.type){o.type=t.dataset.type;rend()}});
+ecr.addEventListener('change',e=>{const id=e.target.id;
+ if(id==='sQte')o.qte=Math.max(0,Math.floor(+e.target.value||0));if(id==='sLim')o.lim=Math.floor(+e.target.value||0);if(id==='sVal')o.val=e.target.value;rend()});
+rend();
+})();
+
+</script>
+<script src="clone/habillage.js?v=20261031y" defer></script>
+</body>
+</html>
