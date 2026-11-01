@@ -7,6 +7,7 @@
   var CFG = window.EFA_CONFIG || {};
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function v(x) { return x === null || x === undefined || x === '' ? NC : esc(x); }
+  function enLigne(s) { var a = s.acces || {}, e = s.en_ligne; if (a.ouverture_distance !== 'oui') return ouiNon(a.ouverture_distance); if (!e || !e.teste_par_efa) return 'À confirmer'; return ({ complet: 'En ligne · testé par EFA', partiel: 'En partie en ligne · testé par EFA', contact: 'Sur rappel · testé par EFA' })[e.niveau] || 'Oui'; }
   function ouiNon(x) { return x == null ? NC : ({ oui: 'Oui', non: 'Non', partielle: 'En partie' })[x] || esc(x); }
   function fcfa(n) { return n == null ? NC : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' FCFA'; }
   function dateFr(d) { if (!d) return ''; var m = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'], p = d.split('-'); return (+p[2] === 1 ? '1er' : +p[2]) + ' ' + m[+p[1] - 1] + ' ' + p[0]; }
@@ -90,7 +91,7 @@
     try { var mem = localStorage.getItem('efa_vt_email'); if (mem) f.email.value = mem; } catch (x) {}
     setTimeout(function () { f.email.focus(); }, 50);
   }
-  window.EFA_VT = { ficheComplete: ficheComplete, relation: relation, charger: charger, esc: esc, v: v, ouiNon: ouiNon, fcfa: fcfa, dateFr: dateFr, NOMS: NOMS, compte: compte, evenement: evenement };
+  window.EFA_VT = { ficheComplete: ficheComplete, relation: relation, charger: charger, esc: esc, v: v, ouiNon: ouiNon, enLigne: enLigne, fcfa: fcfa, dateFr: dateFr, NOMS: NOMS, compte: compte, evenement: evenement };
 
   /* ---------- Vitrine ---------- */
   var Z = document.getElementById('vt-liste'); if (!Z) return;
@@ -115,7 +116,7 @@
         + '<div class="vt-reperes"><div><small>Minimum d’ouverture</small><b>' + fcfa(a.minimum_ouverture_fcfa) + '</b></div><div><small>Ouverture à distance</small><b>' + ouiNon(a.ouverture_distance) + '</b></div><div><small>Courtage</small><b>' + v(f.courtage) + '</b></div></div>'
         + '<div class="vt-fiche" id="fiche-' + esc(s.id) + '" hidden>' + (s.presentation ? '<section class="vt-pres"><h4>Présentation</h4><p>' + esc(s.presentation) + '</p></section>' : '')
         + '<section><h4>Frais</h4><dl><div><dt>Courtage</dt><dd>' + v(f.courtage) + '</dd></div><div><dt>Droits de garde</dt><dd>' + v(f.droits_garde) + '</dd></div><div><dt>Tenue de compte</dt><dd>' + v(f.tenue_compte) + '</dd></div><div><dt>Source</dt><dd>' + v(f.source) + '</dd></div></dl></section>'
-        + '<section><h4>Accès</h4><dl><div><dt>Minimum</dt><dd>' + fcfa(a.minimum_ouverture_fcfa) + '</dd></div><div><dt>Ouverture à distance</dt><dd>' + ouiNon(a.ouverture_distance) + '</dd></div><div><dt>Délai</dt><dd>' + v(a.delai_ouverture) + '</dd></div></dl></section>'
+        + '<section><h4>Accès</h4><dl><div><dt>Minimum</dt><dd>' + fcfa(a.minimum_ouverture_fcfa) + '</dd></div><div><dt>Ouverture à distance</dt><dd>' + enLigne(s) + '</dd></div><div><dt>Délai</dt><dd>' + v(a.delai_ouverture) + '</dd></div></dl></section>'
         + '<section><h4>Service</h4><dl><div><dt>Application</dt><dd>' + ouiNon(sv.application) + '</dd></div><div><dt>Canaux</dt><dd>' + (sv.canaux && sv.canaux.length ? esc(sv.canaux.join(', ')) : NC) + '</dd></div><div><dt>Horaires</dt><dd>' + v(sv.horaires) + '</dd></div></dl></section>'
         + '<section><h4>Contact</h4><p class="vt-cache">Téléphone, e-mail, site et adresse de l’agence : touchez «&nbsp;Contacter la SGI&nbsp;».</p></section>'
         + '<p class="vt-relue">' + (s.relue && s.relue_le ? 'Fiche relue par la SGI le ' + dateFr(s.relue_le) + '.' : 'Fiche établie à partir d’informations publiques, non relue par la SGI.') + ' <a class="vt-lien" href="sgi-fiche.html?sgi=' + encodeURIComponent(s.id) + '">Vous représentez cette SGI&nbsp;? Complétez la fiche</a></p></div>'
@@ -144,7 +145,7 @@
     function rendre() {
       var pays = fP.value, dist = fD.checked, mini = +(document.getElementById('vt-min') || {}).value || 0, app = (document.getElementById('vt-app') || {}).checked, fc = (document.getElementById('vt-complete') || {}).checked;
       var q = norm((document.getElementById('vt-q') || {}).value || '');
-      function ok(s) { var a = s.acces || {}, m = a.minimum_ouverture_fcfa; return (!q || trouve(s, q)) && (!pays || (s.pays_couverts || []).indexOf(pays) > -1) && (!dist || a.ouverture_distance === 'oui') && (!mini || (m != null && m < mini)) && (!app || (s.service && s.service.application === 'oui')) && (!fc || s.fiche_complete); }
+      function ok(s) { var a = s.acces || {}, m = a.minimum_ouverture_fcfa; return (!q || trouve(s, q)) && (!pays || (s.pays_couverts || []).indexOf(pays) > -1) && (!dist || (a.ouverture_distance === 'oui' && s.en_ligne && s.en_ligne.teste_par_efa)) && (!mini || (m != null && m < mini)) && (!app || (s.service && s.service.application === 'oui')) && (!fc || s.fiche_complete); }
       var tete = [];
       if (enPeriode) (PL.places || []).slice().sort(function (a, b) { return a.rang - b.rang; }).slice(0, 3).forEach(function (p) { var s = p.sgi && par[p.sgi]; if (s && ok(s) && s.qualite_ok && s.fiche_complete && tete.indexOf(s.id) < 0) tete.push(s.id); });
       var compl = ordreC.filter(function (id) { return tete.indexOf(id) < 0 && ok(par[id]); });
