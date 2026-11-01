@@ -41,6 +41,10 @@
     $('at-credits').textContent = !ins ? '1 crédit = 10 000 FCFA. Votre email active vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue.' : prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
     $('at-mail-zone').hidden = ins; cm.required = !ins;
     fm.hidden = ok || avisMode;
+    var ach = $('at-achat'); ach.hidden = ok || !prixC || !ins;
+    if (!ach.hidden) { var manq = Math.max(0, prixC - reste), nb = manq || prixC; ach.dataset.nb = nb;
+      $('at-achat-titre').textContent = manq ? 'Ou acheter les ' + pl(manq) + ' qui manquent' : 'Ou payer ce contenu';
+      $('at-achat-p').textContent = pl(nb) + ' · ' + (nb * 10000).toLocaleString('fr-FR') + ' FCFA. Paiement par mobile money ou carte bancaire, à venir.'; }
     $('at-avis').hidden = !avisMode; if (avisMode) remplirAvis();
     $('at-dlg-contact').hidden = true;
     $('at-dlg-contact').href = 'rendez-vous.html?sujet=code-atelier&atelier=' + encodeURIComponent(cour.id) + '&t=' + encodeURIComponent(cour.t) + '#contact';
@@ -122,6 +126,13 @@
     debloquer(v);
     try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'atelier-cle-' + cour.id, title: 'Clé atelier', event: true }); } catch (x) {}
   }
+  $('at-moyens').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-moyen]'); if (!b || !cour) return;
+    $$moyens(b); var nb = +$('at-achat').dataset.nb || D.cout(cour);
+    msg.className = 'ok'; msg.textContent = 'Le paiement par ' + b.dataset.moyen + ' arrive bientôt. Nous vous prévenons par email dès son ouverture.';
+    A.envoyer(etat.mail || A.mail(), 'Achat de crédits demandé · ' + b.dataset.moyen, cour.id + ' · ' + pl(nb) + ' · ' + (nb * 10000) + ' FCFA');
+  });
+  function $$moyens(b) { document.querySelectorAll('#at-moyens button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }
   $('at-cle-ok').addEventListener('click', valider);
   champ.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); valider(); } });
   soldeAffiche();
