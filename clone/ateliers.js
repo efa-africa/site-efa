@@ -8,7 +8,7 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function bouton(a, ok) {
     if (ok) return 'Accès débloqué ✓';
-    var m = D.acces(a); return m === 'gratuit' ? 'Commencer gratuitement' : m === 'contact' ? 'Demander l’accès' : 'Obtenir mon code promo';
+    var c = D.cout(a); return c ? 'Ouvrir avec ' + c + ' crédit' + (c > 1 ? 's' : '') : 'Commencer gratuitement';
   }
   function carte(a, n) {
     var ok = etat.ok[a.id];
@@ -17,7 +17,7 @@
       '<div class="at-c-corps"><span class="at-c-type">' + (a.cours ? 'Cours à votre rythme · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
-      '<div class="at-c-pied"><span class="at-c-prix">' + (a.gratuit ? '<b>' + D.prix(a) + '</b>' : '<span class="promo-pastille">Promo d’ouverture</span><b><s>' + D.prix(a) + '</s></b><small>' + (D.acces(a) === 'contact' ? 'Offert sur demande' : 'Offert avec le code promo') + '</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
+      '<div class="at-c-pied"><span class="at-c-prix">' + (a.gratuit ? '<b>' + D.prix(a) + '</b>' : '<span class="promo-pastille">Phase de test</span><b><s>' + D.prix(a) + '</s></b><small>' + D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '') + '</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
   }
   var n = 0;
   document.querySelectorAll('.at-cat').forEach(function (c) {
@@ -34,13 +34,13 @@
   function majDlg() {
     var ok = !!etat.ok[cour.id], m = D.acces(cour);
     $('at-dlg-prix').textContent = D.prix(cour);
-    $('at-dlg-offre').textContent = m === 'gratuit' ? '' : m === 'contact' ? 'Promotion d’ouverture : offert sur demande' : 'Promotion d’ouverture : offert avec le code promo';
-    var reste = credits(), avisMode = !ok && m === 'cle' && reste <= 0;
-    $('at-mail-ok').textContent = m === 'gratuit' ? 'Débloquer' : 'Obtenir mon code';
-    $('at-credits').textContent = m === 'cle' ? (reste > 1 ? reste + ' codes offerts restants' : reste === 1 ? 'Dernier code offert' : '') : '';
-    fm.hidden = ok || m === 'contact' || avisMode;
+    var prixC = D.cout(cour), reste = credits(), avisMode = !ok && prixC > reste;
+    $('at-dlg-offre').textContent = prixC ? 'Phase de test : ' + prixC + ' crédit' + (prixC > 1 ? 's' : '') : '';
+    $('at-mail-ok').textContent = prixC ? 'Ouvrir avec ' + prixC + ' crédit' + (prixC > 1 ? 's' : '') : 'Débloquer';
+    $('at-credits').textContent = prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
+    fm.hidden = ok || avisMode;
     $('at-avis').hidden = !avisMode; if (avisMode) remplirAvis();
-    $('at-dlg-contact').hidden = ok || m !== 'contact';
+    $('at-dlg-contact').hidden = true;
     $('at-dlg-contact').href = 'rendez-vous.html?sujet=code-atelier&atelier=' + encodeURIComponent(cour.id) + '&t=' + encodeURIComponent(cour.t) + '#contact';
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
     var go = $('at-dlg-go'); go.hidden = !(ok && cour.lien); if (cour.lien) go.href = cour.lien;
@@ -48,13 +48,16 @@
     if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' débloqué avec le code promo <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
   }
-  var OFFERTS = 2;
-  function credits() { return OFFERTS + (etat.bonus || 0) - (etat.codes || 0); }
+  function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
+  function credits() { return D.CREDITS_OFFERTS + (etat.bonus || 0) - (etat.depense != null ? etat.depense : (etat.codes || 0)); }
+  function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = pl(Math.max(0, credits())); }
   function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
   function remplirAvis(vise) {
     var s = $('at-avis-c'), L = testes(); s.innerHTML = '';
     L.forEach(function (a) { var o = document.createElement('option'); o.value = a.id; o.textContent = a.t; if (a.id === vise) o.selected = true; s.appendChild(o); });
-    $('at-avis-t').textContent = L.length ? (credits() <= 0 ? 'Vous avez utilisé vos deux codes offerts. Donnez votre avis sur un contenu que vous avez testé : un nouveau code s’ouvre aussitôt.' : 'Votre avis nous aide à améliorer le contenu, et vous ouvre un code de plus.') : 'Testez d’abord un contenu débloqué, puis revenez donner votre avis.';
+    var manque = cour ? D.cout(cour) - credits() : 0;
+    $('at-avis-t').textContent = L.length ? (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Chaque avis sur un contenu testé vous rapporte 1 crédit.' : 'Votre avis améliore le contenu et vous rapporte 1 crédit.') : (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Ouvrez d’abord un contenu à 1 crédit ou gratuit, testez-le, puis donnez votre avis : chaque avis rapporte 1 crédit.' : 'Testez d’abord un contenu, puis revenez donner votre avis.');
+    $('at-avis').querySelectorAll('select,fieldset,textarea,input,button,label').forEach(function (x) { x.hidden = !L.length; });
   }
   function ouvrir(id) {
     cour = D.liste.filter(function (a) { return a.id === id; })[0]; if (!cour) return;
@@ -82,11 +85,12 @@
     if (m && (!A || !A.valide(m))) { msg.textContent = 'Cette adresse email ne semble pas valide. Corrigez-la ou laissez le champ vide.'; msg.className = 'ko'; cm.focus(); return; }
     if (m) etat.mail = m;
     if (cour.gratuit) { debloquer('email'); if (m) A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); else notifier('Atelier gratuit débloqué · ' + cour.t, { atelier: cour.id }); return; }
-    if (credits() <= 0) { majDlg(); return; }
-    var k = D.nouvelleCle(); etat.codes = (etat.codes || 0) + 1; debloquer(k);
-    msg.innerHTML = 'Votre code promo : <b>' + k + '</b>. Il est appliqué : ' + (cour.cours ? 'le cours' : 'l’atelier') + ' est offert' + (m ? ', et nous vous envoyons le code à ' + m.replace(/[<>&]/g, '') : '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
-    if (m) A.envoyer(m, 'Code promo généré · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · code ' + k);
-    else notifier('Code promo généré · ' + cour.t, { atelier: cour.id, code: k });
+    var c = D.cout(cour); if (c > credits()) { majDlg(); return; }
+    if (etat.depense == null) etat.depense = etat.codes || 0;
+    var k = D.nouvelleCle(); etat.depense += c; debloquer(k); soldeAffiche();
+    msg.innerHTML = (cour.cours ? 'Le cours' : 'L’atelier') + ' est ouvert avec ' + pl(c) + '. Il vous reste ' + pl(credits()) + '.' + (m ? ' Votre code d’accès <b>' + k + '</b> part à ' + m.replace(/[<>&]/g, '') + '.' : ' Votre code d’accès : <b>' + k + '</b>.') + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
+    if (m) A.envoyer(m, 'Ouvert avec ' + pl(c) + ' · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · code ' + k);
+    else notifier('Ouvert avec ' + pl(c) + ' · ' + cour.t, { atelier: cour.id, code: k });
   });
   $('at-avis').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -95,11 +99,11 @@
     if (!n) { msg.className = 'ko'; msg.textContent = 'Choisissez une note de 1 à 5.'; return; }
     if (t.length < 40) { msg.className = 'ko'; msg.textContent = 'Écrivez une ou deux phrases : ce qui vous a servi, ce qui vous a manqué.'; $('at-avis-txt').focus(); return; }
     var a = D.liste.filter(function (x) { return x.id === id; })[0] || { t: id };
-    etat.avis = etat.avis || {}; etat.avis[id] = +n; etat.bonus = (etat.bonus || 0) + 1; ecrire(etat);
+    etat.avis = etat.avis || {}; etat.avis[id] = +n; etat.bonus = (etat.bonus || 0) + 1; ecrire(etat); soldeAffiche();
     notifier('Avis · ' + a.t + ' · ' + n + '/5', { contenu: id, note: n, avis: t, citation_autorisee: $('at-avis-pub').checked ? 'oui' : 'non', prenom: $('at-avis-prenom').value.trim(), email: etat.mail || '' });
     $('at-avis').reset();
-    if (cour && !etat.ok[cour.id]) { majDlg(); msg.className = 'ok'; msg.textContent = 'Merci pour votre avis. Un nouveau code est disponible : cliquez sur « Obtenir mon code ».'; }
-    else { $('at-avis').hidden = true; msg.className = 'ok'; msg.textContent = 'Merci pour votre avis. Un nouveau code est disponible pour le contenu de votre choix.'; }
+    if (cour && !etat.ok[cour.id]) { majDlg(); msg.className = 'ok'; msg.textContent = 'Merci pour votre avis : +1 crédit. Votre solde : ' + pl(credits()) + '.'; }
+    else { $('at-avis').hidden = true; msg.className = 'ok'; msg.textContent = 'Merci pour votre avis : +1 crédit. Votre solde : ' + pl(credits()) + '.'; }
   });
   // Donner son avis depuis un cours : coaching.html?avis=<id>#avis
   var pa = (location.search.match(/[?&]avis=([a-z0-9-]+)/) || [])[1];
@@ -115,6 +119,7 @@
   }
   $('at-cle-ok').addEventListener('click', valider);
   champ.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); valider(); } });
+  soldeAffiche();
   // Prochains ateliers : liste + email
   var pf = $('at-prochains');
   if (pf) {
