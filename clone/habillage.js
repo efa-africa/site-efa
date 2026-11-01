@@ -465,8 +465,22 @@
     var e = {}, m = '';
     try { e = JSON.parse(localStorage.getItem('efa_ateliers_v1') || '{}') || {}; m = localStorage.getItem('efa_email_v1') || ''; } catch (x) {}
     if (!(e.mail || m)) return null;
-    return Math.max(0, 3 + (e.jeu || 0) + (e.bonus || 0) - (e.dep10 || 0));
+    return Math.max(0, 3 + (e.jeu || 0) + (e.bonus || 0) + (lireM().pts || 0) - (e.dep10 || 0));
   }
+  /* Missions : crédits gagnés en aidant EFA. Stockage séparé pour ne pas croiser les ateliers. */
+  var KM = 'efa_missions_v1';
+  function lireM() { try { return JSON.parse(localStorage.getItem(KM) || '{}') || {}; } catch (x) { return {}; } }
+  function ecrireM(o) { try { localStorage.setItem(KM, JSON.stringify(o)); } catch (x) {} try { window.dispatchEvent(new Event('efa-credits')); } catch (x) {} }
+  function mail() { try { return localStorage.getItem('efa_email_v1') || (JSON.parse(localStorage.getItem('efa_ateliers_v1') || '{}').mail) || ''; } catch (x) { return ''; } }
+  var ALPHA = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  function ctrl(x) { var h = 2166136261, t = 'efa-credits-2026|' + x; for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } var o = ''; for (var k = 0; k < 4; k++) { o += ALPHA[h % ALPHA.length]; h = Math.floor(h / ALPHA.length) ^ (k * 7919); } return o; }
+  function codeCredit(n) { var x = '', a = new Uint32Array(4); try { crypto.getRandomValues(a); } catch (e) { for (var j = 0; j < 4; j++) a[j] = Math.random() * 1e9; } for (var i = 0; i < 4; i++) x += ALPHA[a[i] % ALPHA.length]; return 'EFAC-' + n + '-' + x + '-' + ctrl(n + '|' + x); }
+  function lireCode(c) { var m = String(c || '').trim().toUpperCase().replace(/\s+/g, '').match(/^EFAC-([1-9])-([A-Z2-9]{4})-([A-Z2-9]{4})$/); return m && ctrl(m[1] + '|' + m[2]) === m[3] ? +m[1] : 0; }
+  function crediter(n, id) { var M = lireM(); M.pts = (M.pts || 0) + n; M.faits = M.faits || {}; if (id) M.faits[id] = new Date().toISOString().slice(0, 10); ecrireM(M); }
+  function codeParrain(m) { var h = 0; for (var i = 0; i < m.length; i++) h = (Math.imul(h, 31) + m.charCodeAt(i)) >>> 0; var o = ''; for (var k = 0; k < 6; k++) { o += ALPHA[h % 32]; h = (Math.floor(h / 32) ^ Math.imul(k + 1, 2654435761)) >>> 0; } return o; }
+  // un lien de parrainage ouvert sur ce téléphone est retenu (une seule fois)
+  try { var pr = (location.search.match(/[?&]parrain=([A-Z2-9]{6})/i) || [])[1]; if (pr && !localStorage.getItem('efa_parrain')) localStorage.setItem('efa_parrain', pr.toUpperCase()); } catch (x) {}
+  window.EFA_CREDITS = { solde: solde, codeCredit: codeCredit, lireCode: lireCode, missions: lireM };
   function poser() {
     var h = document.getElementById('clone-haut') || document.getElementById('haut'); if (!h) return;
     var tg = h.querySelector('.menu-toggle'), inn = h.querySelector('.head-inner'); if (!inn) return;
@@ -493,7 +507,7 @@
     a.addEventListener('click', function (e) { e.preventDefault(); ouvrirPorte(); });
   }
   /* Fenêtre « Mon portefeuille » : solde, promotion en cours, achat de crédits (bientôt). Aucun champ de paiement n'est actif. */
-  var dlg = null, pack = 3, moyen = 'om';
+  var dlg = null, pack = 3, moyen = 'om', onglet = 'gagner', ouverte = '';
   var MOYENS = [['om', 'Orange Money', '#FF7900'], ['wave', 'Wave', '#1DC8F2'], ['mtn', 'MTN MoMo', '#FFCB05'], ['carte', 'Carte bancaire', '#1A1F71']];
   function fc(n) { return n.toLocaleString('fr-FR').replace(/ /g, ' ') + ' FCFA'; }
   function ouvrirPorte() {
@@ -524,7 +538,20 @@
         + '.pf-payer{display:block;width:100%;margin-top:12px;min-height:48px;border:0;border-radius:9px;background:#C9CED8;color:#4E5566;font:800 16px "Source Sans 3",system-ui,sans-serif;cursor:not-allowed}'
         + '.pf-note{font-size:13px;color:#7A8293;margin:8px 0 0}'
         + '.pf-prev{display:block;width:100%;margin-top:10px;min-height:46px;border:0;border-radius:9px;background:#1E8E57;color:#fff;font:800 15px "Source Sans 3",system-ui,sans-serif;cursor:pointer}'
-        + '.pf-ok{margin:10px 0 0;font-weight:700;color:#14532D}';
+        + '.pf-ok{margin:10px 0 0;font-weight:700;color:#14532D}.pf-ko{margin:10px 0 0;font-weight:700;color:#B3261E}'
+        + '.pf-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#EFE7D6;border-radius:12px;padding:4px;margin-top:16px}'
+        + '.pf-tabs button{border:0;border-radius:9px;background:none;font:800 14px "Source Sans 3",system-ui,sans-serif;color:#4E5566;min-height:40px;cursor:pointer}'
+        + '.pf-tabs button[aria-selected="true"]{background:#fff;color:#0B1220;box-shadow:0 2px 6px rgba(11,18,32,.08)}'
+        + '.pf-g{margin-top:12px}.pf-code{border-radius:12px;background:#E3F5EC;padding:10px 12px;margin-bottom:10px}.pf-code label{display:block;font-size:13px;font-weight:800;color:#14532D;margin-bottom:6px}'
+        + '.pf-code input,.pf-mc input,.pf-mc textarea{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #D9D2C2;border-radius:9px;background:#fff;color:#0B1220}'
+        + '.pf-mi{border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px #E2D8C4;margin-bottom:8px;overflow:hidden}.pf-mi.on{box-shadow:inset 0 0 0 2px #1E8E57}'
+        + '.pf-mi>button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;gap:10px;padding:11px 12px}'
+        + '.pf-mi>button span{flex:1}.pf-mi b{display:block;font-size:15px;color:#0B1220}.pf-mi small{font-size:12px;color:#7A8293;font-weight:700}'
+        + '.pf-mi em{font-style:normal;font-weight:800;font-size:13px;border-radius:999px;padding:5px 10px;white-space:nowrap}'
+        + '.pf-cr{background:#E44828;color:#fff}.pf-fait{background:#DDF5E8;color:#14532D}.pf-att{background:#FFF3D6;color:#5A3D00}'
+        + '.pf-mc{padding:0 12px 12px;font-size:15px}.pf-mc p{margin:0 0 8px}.pf-mc label{display:block;font-size:13px;font-weight:700;color:#4E5566;margin:8px 0 4px}'
+        + '.pf-mc .pf-ck{display:flex;gap:8px;align-items:flex-start;font-weight:400}.pf-mc .pf-ck input{width:auto}'
+        + '.pf-lien{color:#1B71B2;font-weight:800}';
       document.head.appendChild(st);
       dlg = document.createElement('dialog'); dlg.className = 'pf'; dlg.setAttribute('data-garde', ''); dlg.setAttribute('aria-label', 'Mon portefeuille de crédits');
       document.body.appendChild(dlg);
@@ -532,7 +559,10 @@
         if (e.target === dlg || e.target.closest('.pf-x')) { dlg.close(); return; }
         var p = e.target.closest('[data-pack]'); if (p) { pack = +p.dataset.pack; rendre(); return; }
         var m = e.target.closest('[data-moy]'); if (m) { moyen = m.dataset.moy; rendre(); return; }
-        if (e.target.closest('.pf-prev') && !e.target.closest('.pf-r')) prevenir();
+        if (e.target.closest('.pf-prev') && !e.target.closest('.pf-r') && !e.target.closest('[data-act]') && !e.target.closest('.pf-mc a')) prevenir();
+        var o = e.target.closest('[data-onglet]'); if (o) { onglet = o.dataset.onglet; rendre(); return; }
+        var mi = e.target.closest('[data-mission]'); if (mi) { ouverte = ouverte === mi.dataset.mission ? '' : mi.dataset.mission; rendre(); return; }
+        var ac = e.target.closest('[data-act]'); if (ac) action(ac.dataset.act, ac);
       });
     }
     rendre(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
@@ -543,13 +573,67 @@
       ? '<div class="pf-logos"><span style="background:#1A1F71">VISA</span><span style="background:#EB001B">Mastercard</span></div><label>Numéro de carte</label><input disabled placeholder="1234 5678 9012 3456" autocomplete="off"><div class="pf-2"><div><label>Expiration</label><input disabled placeholder="MM / AA" autocomplete="off"></div><div><label>Code de sécurité</label><input disabled placeholder="CVC" autocomplete="off"></div></div><label>Nom sur la carte</label><input disabled placeholder="Prénom Nom" autocomplete="off">'
       : '<label>Numéro ' + M[1] + '</label><input disabled placeholder="07 00 00 00 00" autocomplete="off"><p class="pf-note">Vous confirmerez le paiement sur votre téléphone, avec votre code ' + M[1] + '.</p>';
     dlg.innerHTML = '<div class="pf-t"><button type="button" class="pf-x" aria-label="Fermer">×</button><small>Mon portefeuille</small><b>' + (s === null ? '0' : s) + '<span>crédit' + (s > 1 ? 's' : '') + '</span></b></div>'
-      + '<div class="pf-c"><div class="pf-promo"><b>Promotion d’ouverture : vos crédits sont offerts.</b><p>' + (s === null ? '3 crédits avec votre email, ' : '') + 'une carte à gratter par jour, +1 crédit par avis. <a href="' + sur + '#gratter">Gratter ma carte</a> · <a href="' + sur + '#choisir">Utiliser mes crédits</a></p></div>'
+      + '<div class="pf-c"><div class="pf-promo"><b>Promotion d’ouverture : vos crédits sont offerts.</b><p>' + (s === null ? '3 crédits avec votre email, une' : 'Une') + ' carte à gratter par jour, +1 crédit par avis. <a href="' + sur + '#gratter">Gratter ma carte</a> · <a href="' + sur + '#choisir">Utiliser mes crédits</a></p></div>'
+      + '<div class="pf-tabs" role="tablist"><button type="button" role="tab" data-onglet="gagner" aria-selected="' + (onglet === 'gagner') + '">Gagner des crédits</button><button type="button" role="tab" data-onglet="acheter" aria-selected="' + (onglet === 'acheter') + '">Acheter des crédits</button></div>'
+      + (onglet === 'gagner' ? gagner() + '</div>' : '')
       + '<p class="pf-h">Acheter des crédits <span class="pf-bt">Bientôt</span></p>'
       + '<div class="pf-packs">' + [1, 3, 5, 10].map(function (n) { return '<button type="button" data-pack="' + n + '" aria-pressed="' + (n === pack) + '"><b>' + n + '</b><span>' + fc(n * 10000) + '</span></button>'; }).join('') + '</div>'
       + '<div class="pf-moy">' + MOYENS.map(function (x) { return '<button type="button" data-moy="' + x[0] + '" aria-pressed="' + (x[0] === moyen) + '"><i style="background:' + x[2] + '"></i>' + x[1] + '</button>'; }).join('') + '</div>'
       + '<div class="pf-f">' + champs + '<button type="button" class="pf-payer" disabled>Payer ' + fc(pack * 10000) + ' · bientôt</button></div>'
       + '<p class="pf-note">Le paiement par mobile money et par carte arrive bientôt. 1 crédit = 10 000 FCFA.</p>'
       + '<button type="button" class="pf-prev">Me prévenir à l’ouverture du paiement</button><div class="pf-r" role="status"></div></div>';
+    if (onglet === 'gagner') dlg.innerHTML = dlg.innerHTML.split('<p class="pf-h">Acheter des crédits')[0];
+  }
+  var MISSIONS = [
+    ['sgi', 2, 'Relever les frais réels de votre SGI', 'Validée par EFA'],
+    ['enquete', 1, 'Répondre à l’enquête sur la tontine', 'Code de fin d’enquête'],
+    ['diag', 1, 'Faire le diagnostic financier', 'Automatique'],
+    ['parrain', 1, 'Parrainer un proche (3 au plus)', 'Validée par EFA, par proche inscrit'],
+    ['temoignage', 2, 'Témoigner, avec votre accord de publication', 'Validée par EFA'],
+    ['erreur', 1, 'Signaler une erreur ou une amélioration', 'Si elle est retenue'],
+    ['beta', 2, 'Tester un nouvel outil avant tout le monde', 'Validée par EFA']
+  ];
+  function champ(id, lab, ph, area) { return '<label for="' + id + '">' + lab + '</label>' + (area ? '<textarea id="' + id + '" rows="3" placeholder="' + (ph || '') + '"></textarea>' : '<input id="' + id + '" placeholder="' + (ph || '') + '">'); }
+  function corpsMission(id, M) {
+    var envoyerB = function (t) { return '<button type="button" class="pf-prev" data-act="envoyer-' + id + '">' + (t || 'Envoyer à EFA') + '</button>'; };
+    var mm = mail(), besoinMail = mm ? '' : champ('pfm-mail', 'Votre email', 'vous@exemple.com');
+    if (id === 'sgi') return '<p>Les frais de votre SGI, tels qu’ils figurent sur sa grille ou votre relevé. Vous aidez des milliers de lecteurs à comparer.</p>' + champ('pfm-sgi', 'Votre SGI', 'ex. SGI Hudson & Cie') + '<div class="pf-2"><div>' + champ('pfm-ouv', 'Frais d’ouverture (F)', '0') + '</div><div>' + champ('pfm-crt', 'Courtage par ordre (%)', '1') + '</div></div><div class="pf-2"><div>' + champ('pfm-gar', 'Droits de garde / an', '10 000 F ou 0,2 %') + '</div><div>' + champ('pfm-min', 'Dépôt minimum (F)', '50 000') + '</div></div>' + champ('pfm-lien', 'Lien vers une photo de la grille (facultatif)', 'Google Drive, WhatsApp Web…') + besoinMail + envoyerB();
+    if (id === 'enquete') return '<p>Répondez à l’enquête, puis saisissez le code affiché à la fin.</p><p><a class="pf-lien" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener">Ouvrir l’enquête →</a></p>' + champ('pfm-code', 'Code de fin d’enquête', 'Le code affiché à la fin') + '<button type="button" class="pf-prev" data-act="code-enquete">Valider mon code</button>';
+    if (id === 'diag') return localStorage.getItem('efa_mission_diag') ? '<p>Votre diagnostic est fait. Votre crédit vous attend.</p><button type="button" class="pf-prev" data-act="diag">Recevoir mon crédit</button>' : '<p>Six minutes pour faire le point sur votre budget, votre épargne et vos dettes. Le crédit arrive dès votre résultat.</p><p><a class="pf-lien" href="diagnostic.html?src=mission">Faire mon diagnostic →</a></p>';
+    if (id === 'parrain') { if (!mm) return '<p>Indiquez d’abord votre email : votre lien de parrainage en dépend.</p>' + champ('pfm-mail', 'Votre email', 'vous@exemple.com') + '<button type="button" class="pf-prev" data-act="lien-parrain">Créer mon lien</button>'; var cp = codeParrain(mm), L = 'https://efa.africa/coaching?parrain=' + cp; if (!M.parrainSignale) { M.parrainSignale = cp; ecrireM(M); try { fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: '426191fb-4812-4de4-b602-5857464c5916', subject: 'efa.africa · Lien de parrainage créé · ' + cp, from_name: 'Missions efa.africa', email: mm, replyto: mm, code_parrain: cp, a_faire: 'Quand une inscription porte « parrain ' + cp + ' », envoyer un code de 1 crédit à ' + mm + ' (3 au plus).' }) }); } catch (x) {} } return '<p>Partagez votre lien. Quand un proche s’inscrit avec son email, EFA vous envoie un code d’1 crédit (3 proches au plus).</p><input readonly value="' + L + '" id="pfm-lien-p"><div class="pf-2" style="margin-top:8px"><button type="button" class="pf-prev" data-act="copier">Copier le lien</button><a class="pf-prev" style="text-align:center;line-height:46px;text-decoration:none" href="https://wa.me/?text=' + encodeURIComponent('Je me forme à la Bourse et à l’argent avec EFA. 3 crédits offerts pour commencer : ' + L) + '" target="_blank" rel="noopener">WhatsApp</a></div>'; }
+    if (id === 'temoignage') return '<p>Ce qu’EFA a changé pour vous, en quelques phrases.</p>' + champ('pfm-tem', 'Votre témoignage', 'Avant… Depuis…', true) + champ('pfm-pre', 'Prénom et ville', 'ex. Ibrahima, Dakar') + '<label class="pf-ck"><input type="checkbox" id="pfm-ok"> J’autorise EFA à publier ce témoignage avec mon prénom.</label>' + besoinMail + envoyerB();
+    if (id === 'erreur') return '<p>Un chiffre faux, un lien cassé, une explication peu claire ? Dites-nous où.</p>' + champ('pfm-ou', 'Où ? (page ou cours)', location.pathname.replace(/^\//, '') || 'accueil') + champ('pfm-quoi', 'Ce qui ne va pas, ou votre idée', '', true) + besoinMail + envoyerB();
+    if (id === 'beta') return '<p>Inscrivez-vous comme testeur : vous recevrez le prochain outil avant sa sortie, avec une fiche de test courte. Les crédits arrivent après la fiche.</p>' + champ('pfm-sujet', 'Ce qui vous intéresse', 'Bourse, tontine, budget, entreprise…') + besoinMail + envoyerB('Devenir testeur');
+    return '';
+  }
+  function gagner() {
+    var M = lireM(), F = M.faits || {}, A = M.attente || {};
+    return '<div class="pf-g"><div class="pf-code"><label for="pf-cc">J’ai un code crédit</label><div class="pf-2"><input id="pf-cc" placeholder="EFAC-2-XXXX-XXXX" autocomplete="off" style="text-transform:uppercase"><button type="button" class="pf-prev" style="margin:0" data-act="code">Valider</button></div></div>'
+      + MISSIONS.map(function (x) { var st = F[x[0]] ? '<em class="pf-fait">Fait ✓</em>' : A[x[0]] ? '<em class="pf-att">En attente</em>' : '<em class="pf-cr">+' + x[1] + '</em>';
+        return '<div class="pf-mi' + (ouverte === x[0] ? ' on' : '') + '"><button type="button" data-mission="' + x[0] + '" aria-expanded="' + (ouverte === x[0]) + '"><span><b>' + x[2] + '</b><small>' + x[3] + '</small></span>' + st + '</button>' + (ouverte === x[0] ? '<div class="pf-mc">' + (F[x[0]] && x[0] !== 'parrain' ? '<p>Mission faite. Merci !</p>' : corpsMission(x[0], M)) + '</div>' : '') + '</div>'; }).join('')
+      + '<div class="pf-r" role="status"></div></div>';
+  }
+  function val(id) { var e = dlg.querySelector('#' + id); return e ? (e.type === 'checkbox' ? e.checked : e.value.trim()) : ''; }
+  function dire(t, ko) { var r = dlg.querySelector('.pf-r'); if (r) r.innerHTML = '<p class="' + (ko ? 'pf-ko' : 'pf-ok') + '">' + t + '</p>'; }
+  function action(a, b) {
+    var M = lireM();
+    if (a === 'code') { var c = val('pf-cc').toUpperCase().replace(/\s+/g, ''), n = lireCode(c); M.codes = M.codes || []; if (!n) return dire('Ce code crédit n’est pas reconnu.', 1); if (M.codes.indexOf(c) >= 0) return dire('Ce code a déjà été utilisé.', 1); M.codes.push(c); ecrireM(M); crediter(n); rendre(); return dire('+' + n + ' crédit' + (n > 1 ? 's' : '') + ' ajouté' + (n > 1 ? 's' : '') + '. Merci pour votre aide !'); }
+    if (a === 'code-enquete') { if (val('pfm-code').toUpperCase() !== 'SPIRALE') return dire('Ce code ne correspond pas. Il s’affiche à la fin de l’enquête.', 1); crediter(1, 'enquete'); rendre(); return dire('+1 crédit : merci d’avoir répondu.'); }
+    if (a === 'diag') { crediter(1, 'diag'); rendre(); return dire('+1 crédit : merci pour votre diagnostic.'); }
+    if (a === 'copier') { var l = val('pfm-lien-p'); (navigator.clipboard ? navigator.clipboard.writeText(l) : Promise.reject()).then(function () { dire('Lien copié.'); }, function () { dlg.querySelector('#pfm-lien-p').select(); dire('Sélectionnez et copiez le lien.'); }); return; }
+    if (a === 'lien-parrain') { var m0 = val('pfm-mail'); if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m0)) return dire('Indiquez une adresse email valide.', 1); try { localStorage.setItem('efa_email_v1', m0); } catch (x) {} rendre(); return; }
+    if (a.indexOf('envoyer-') === 0) {
+      var id = a.slice(8), m = mail() || val('pfm-mail'), X = MISSIONS.filter(function (x) { return x[0] === id; })[0], champs = {};
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)) return dire('Indiquez votre email : c’est là que nous envoyons votre code crédit.', 1);
+      if (id === 'sgi') { if (!val('pfm-sgi') || !(val('pfm-crt') || val('pfm-gar') || val('pfm-ouv'))) return dire('Indiquez la SGI et au moins un de ses frais.', 1); champs = { sgi: val('pfm-sgi'), frais_ouverture: val('pfm-ouv'), courtage: val('pfm-crt'), droits_de_garde: val('pfm-gar'), depot_minimum: val('pfm-min'), photo: val('pfm-lien') }; }
+      if (id === 'temoignage') { if (val('pfm-tem').length < 40) return dire('Écrivez au moins deux phrases.', 1); champs = { temoignage: val('pfm-tem'), prenom_ville: val('pfm-pre'), publication_autorisee: val('pfm-ok') ? 'oui' : 'non' }; }
+      if (id === 'erreur') { if (val('pfm-quoi').length < 15) return dire('Précisez ce qui ne va pas.', 1); champs = { ou: val('pfm-ou'), signalement: val('pfm-quoi') }; }
+      if (id === 'beta') champs = { interets: val('pfm-sujet') };
+      try { localStorage.setItem('efa_email_v1', m); } catch (x) {}
+      try { fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(Object.assign({ access_key: '426191fb-4812-4de4-b602-5857464c5916', subject: 'efa.africa · Mission à valider · ' + X[2] + ' · +' + X[1] + ' crédit' + (X[1] > 1 ? 's' : ''), from_name: 'Missions efa.africa', email: m, replyto: m, mission: id, credits: X[1], a_faire: 'Si la contribution est bonne : générer un code crédit de ' + X[1] + ' sur efa.africa/ateliers-cles et l’envoyer à ' + m }, champs)) }); } catch (x) {}
+      M.attente = M.attente || {}; M.attente[id] = new Date().toISOString().slice(0, 10); ecrireM(M); rendre();
+      return dire('Envoyé. Après vérification, nous vous écrivons à ' + m.replace(/[<>&]/g, '') + ' avec votre code crédit.');
+    }
   }
   function prevenir() {
     var M = MOYENS.filter(function (x) { return x[0] === moyen; })[0], m = '';
