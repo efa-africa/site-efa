@@ -188,3 +188,19 @@ details.at-dlg-cle[hidden]{display:none}
 .promo-pastille{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#F2B84B;color:#0B1220;border-radius:999px;padding:3px 10px;margin:0 0 4px}
 .at-c-prix s{color:#7A8293;font-weight:700;text-decoration-color:#E44828;text-decoration-thickness:2px}
 .at-c-prix small{color:#1E8E57;font-weight:800}
+.at-prix-bandeau .promo-pastille{color:#0B1220;font-size:11px}
+.at-obtenir{display:block;width:100%;min-height:50px;border:0;border-radius:8px;background:#1E8E57;color:#fff;font:800 16px/1.2 "Source Sans 3",system-ui,sans-serif;cursor:pointer;margin-top:6px}
+.at-obtenir:hover{background:#17764A}
+.at-credits{margin:6px 0 10px;font-size:13px;font-weight:700;color:#8A5A00}
+.at-credits:empty{display:none}
+.at-dlg-mail label i,.at-avis label i{font-weight:400;color:#7A8293}
+.at-avis{margin-top:12px;display:grid;gap:8px}
+.at-avis-t{margin:0;background:#FFF3D6;color:#5A3D00;border-radius:10px;padding:10px 12px;font-size:15px}
+.at-avis label{font-size:14px;font-weight:700}
+.at-avis select,.at-avis textarea,.at-avis input[type=text],.at-avis #at-avis-prenom{font:inherit;font-size:16px;padding:10px;border:1px solid #C9CED8;border-radius:8px;width:100%;box-sizing:border-box}
+.at-notes{border:0;padding:0;margin:0;display:flex;gap:6px;flex-wrap:wrap}
+.at-notes legend{font-size:14px;font-weight:700;margin-bottom:4px;padding:0}
+.at-notes label{display:grid;place-items:center;min-width:44px;min-height:44px;border:1px solid #C9CED8;border-radius:8px;cursor:pointer;font-size:16px}
+.at-notes input{position:absolute;opacity:0;pointer-events:none}
+.at-notes label:has(input:checked){background:#F2B84B;border-color:#F2B84B;color:#0B1220}
+.at-avis-ok{font-weight:400!important;display:flex;gap:8px;align-items:flex-start}
