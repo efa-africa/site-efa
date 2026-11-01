@@ -232,3 +232,13 @@ details.at-dlg-cle[hidden]{display:none}
 .gr-f{margin-top:12px}.gr-f label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
 .gr-f div{display:flex;gap:8px}.gr-f input{flex:1;min-width:0;font:inherit;font-size:16px;padding:11px;border:1px solid #CFC5B0;border-radius:8px}
 .gr-f button{border:0;border-radius:8px;background:#1E8E57;color:#fff;font-weight:800;padding:0 16px;cursor:pointer}
+/* Achat de crédits (bientôt) */
+.at-achat{margin-top:14px;border-radius:12px;background:#F7F4EC;padding:12px 14px}
+.at-achat-t{display:flex;align-items:center;gap:8px;margin:0;font-size:15px}
+.at-bientot{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:#F2B84B;color:#0B1220;border-radius:999px;padding:3px 9px}
+.at-achat-p{margin:4px 0 10px;font-size:14px;color:#4E5566}
+.at-moyens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.at-moyens button{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 10px;border:0;border-radius:9px;background:#fff;box-shadow:inset 0 0 0 1.5px #E2D8C4;font:700 14px/1.2 "Source Sans 3",system-ui,sans-serif;color:#0B1220;cursor:pointer;text-align:left}
+.at-moyens button i{flex:0 0 14px;height:14px;border-radius:50%}
+.at-moyens button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px #1E8E57}
+.at-moyens button:last-child{grid-column:1/-1}
