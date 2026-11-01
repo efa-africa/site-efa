@@ -39,7 +39,7 @@ pages = sorted(f for f in glob.glob('*.html') if f not in EXCLUES) + sorted(glob
 modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
-RUBRIQUES = [('benefices', 'Apprendre et former'), ('pilier-progresser', 'Être accompagné'), ('pilier-agir', 'Se lancer'),
+RUBRIQUES = [('benefices', 'Apprendre et former'), ('pilier-progresser', 'Être coaché'), ('pilier-agir', 'Se lancer'),
              ('pilier-media', 'EFA News'), ('etudes', 'Études et prospective'), ('apropos', 'À propos')]
 LIEN_RUBRIQUE = {'pilier-media': 'news.html', 'etudes': 'etudes-prospective.html', 'apropos': 'auteur.html#auteur'}
 SECTION_DE = {'portes': 'benefices', 'benefices': 'benefices', 'calculateur': 'benefices',
