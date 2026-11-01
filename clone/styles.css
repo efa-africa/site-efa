@@ -660,3 +660,5 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 @keyframes tmBalaye{0%{transform:translateX(-120%);opacity:1}100%{transform:translateX(120%);opacity:1}}
 @keyframes tmHalo{0%,100%{box-shadow:0 0 0 0 rgba(228,72,40,0)}40%{box-shadow:0 0 0 3px rgba(228,72,40,.35),0 18px 40px rgba(7,29,56,.14)}}
 @keyframes tmGuil{0%,100%{transform:scale(1)}40%{transform:scale(1.25)}}
+.tm-ph{flex:none;width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 5px #E44828}
+.tm-drap{display:inline-block;vertical-align:-1px;margin-left:6px;border-radius:2px;box-shadow:0 0 0 1px rgba(11,18,32,.15)}
