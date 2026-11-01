@@ -52,7 +52,7 @@
   }
   function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
   function inscrit() { return !!(etat.mail || (A && A.mail())); }
-  function credits() { return (inscrit() ? D.CREDITS_OFFERTS : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
+  function credits() { return (inscrit() ? D.CREDITS_OFFERTS + (etat.jeu || 0) : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
   function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; }
   function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
   function remplirAvis(vise) {
@@ -125,6 +125,76 @@
   $('at-cle-ok').addEventListener('click', valider);
   champ.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); valider(); } });
   soldeAffiche();
+  // Carte à gratter de l'ouverture : une carte par jour, environ une sur trois gagne 1 à 3 crédits, un seul gain par personne.
+  (function () {
+    var cv = $('gr-c'), res = $('gr-res'), gm = $('gr-msg'); if (!cv) return;
+    var auj = new Date().toISOString().slice(0, 10);
+    function gainTexte(n) { return '<b>+' + n + ' crédit' + (n > 1 ? 's' : '') + '</b><span>soit ' + (n * 10000).toLocaleString('fr-FR') + ' FCFA de cours</span>'; }
+    function formMail(n) {
+      gm.innerHTML = '<form class="gr-f" novalidate><label for="gr-m">Votre email pour recevoir ce gain (' + pl(n) + '), en plus des ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue</label><div><input id="gr-m" type="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.com"><button type="submit">Recevoir</button></div></form>';
+      gm.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault(); var m = $('gr-m').value.trim();
+        if (!A || !A.valide(m)) { $('gr-m').focus(); return; }
+        etat.mail = m; ecrire(etat); A.envoyer(m, 'Carte à gratter gagnante · ' + pl(n), 'inscription + jeu');
+        soldeAffiche(); gm.innerHTML = '<p class="ok">C’est ajouté. Votre solde : <b>' + pl(credits()) + '</b>. <a href="#premiers-pas">Ouvrir un cours →</a></p>';
+      });
+    }
+    function etatFixe() {
+      cv.hidden = !!(etat.jeu || etat.jeuJour === auj);
+      if (etat.jeu) { res.className = 'gr-res gr-gagne'; res.innerHTML = '<small>Votre carte d’ouverture</small>' + gainTexte(etat.jeu); gm.innerHTML = inscrit() ? '<p>Vous avez déjà gagné pendant l’ouverture. Vos crédits sont dans votre solde : <b>' + pl(credits()) + '</b>.</p>' : ''; if (!inscrit()) formMail(etat.jeu); return true; }
+      if (etat.jeuJour === auj) { res.className = 'gr-res gr-perdu'; res.innerHTML = '<small>Carte du jour</small><b>Pas cette fois</b><span>Une nouvelle carte vous attend demain.</span>'; gm.innerHTML = '<p>En attendant, vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue suffisent pour ouvrir le cours <a href="#premiers-pas">Mes premiers pas en Bourse</a>.</p>'; return true; }
+      return false;
+    }
+    if (etatFixe()) return;
+    // tirage décidé au premier geste, puis gardé : recharger la page ne relance pas la carte
+    var tire = null;
+    function tirer() {
+      if (tire !== null) return;
+      var r = Math.random(); tire = r < 1 / 3 ? (r < 0.2 ? 1 : r < 0.3 ? 2 : 3) : 0;
+      etat.jeuJour = auj; if (tire) etat.jeu = tire; ecrire(etat);
+      try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'gratter-' + (tire ? 'gagne-' + tire : 'perdu'), title: 'Carte à gratter', event: true }); } catch (x) {}
+      res.className = 'gr-res ' + (tire ? 'gr-gagne' : 'gr-perdu');
+      res.innerHTML = tire ? '<small>Gagné</small>' + gainTexte(tire) : '<small>Carte du jour</small><b>Pas cette fois</b><span>Revenez demain : une nouvelle carte vous attend.</span>';
+    }
+    res.className = 'gr-res'; res.innerHTML = '<small>Carte du jour</small><b>…</b>';
+    var ctx = cv.getContext('2d'), fini = false, bas = false, dpr = window.devicePixelRatio || 1;
+    function peindre() {
+      var r = cv.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; ctx.scale(dpr, dpr);
+      var g = ctx.createLinearGradient(0, 0, r.width, r.height); g.addColorStop(0, '#E44828'); g.addColorStop(.5, '#F2B84B'); g.addColorStop(1, '#3CCB7F');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, r.width, r.height);
+      ctx.fillStyle = 'rgba(255,255,255,.18)'; for (var i = -r.height; i < r.width; i += 18) { ctx.fillRect(i, 0, 6, r.height); ctx.setTransform(dpr, 0, 0.0, dpr, 0, 0); }
+      ctx.fillStyle = '#0B1220'; ctx.font = '800 22px "Source Sans 3",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('Grattez ici', r.width / 2, r.height / 2 - 10); ctx.font = '700 14px "Source Sans 3",system-ui,sans-serif'; ctx.fillText('avec le doigt ou la souris', r.width / 2, r.height / 2 + 16);
+      ctx.globalCompositeOperation = 'destination-out';
+    }
+    peindre();
+    function point(e) { var r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    function gratter(e) {
+      if (!bas || fini) return; tirer(); var p = point(e);
+      ctx.beginPath(); ctx.arc(p[0], p[1], 22, 0, Math.PI * 2); ctx.fill();
+    }
+    function part() {
+      var d = ctx.getImageData(0, 0, cv.width, cv.height).data, n = 0, t = 0;
+      for (var i = 3; i < d.length; i += 64) { t++; if (d[i] === 0) n++; } return n / t;
+    }
+    function verifier() {
+      if (fini || tire === null) return;
+      if (part() > 0.45) {
+        fini = true; cv.style.transition = 'opacity .5s'; cv.style.opacity = '0'; setTimeout(function () { cv.hidden = true; }, 520);
+        if (tire) {
+          res.classList.add('gr-eclat');
+          if (inscrit()) { soldeAffiche(); A.envoyer(etat.mail || A.mail(), 'Carte à gratter gagnante · ' + pl(tire), 'jeu'); gm.innerHTML = '<p class="ok">Ajouté à votre solde : <b>' + pl(credits()) + '</b>. <a href="#premiers-pas">Ouvrir un cours →</a></p>'; }
+          else formMail(tire);
+        } else gm.innerHTML = '<p>Pas de gain aujourd’hui. Revenez demain pour gratter une nouvelle carte.</p>';
+      }
+    }
+    cv.addEventListener('pointerdown', function (e) { bas = true; cv.setPointerCapture && cv.setPointerCapture(e.pointerId); gratter(e); });
+    cv.addEventListener('pointermove', gratter);
+    cv.addEventListener('pointerup', function () { bas = false; verifier(); });
+    cv.addEventListener('pointercancel', function () { bas = false; verifier(); });
+    cv.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tirer(); ctx.fillRect(0, 0, cv.width, cv.height); verifier(); } });
+    cv.tabIndex = 0;
+  })();
   // Prochains ateliers : liste + email
   var pf = $('at-prochains');
   if (pf) {
