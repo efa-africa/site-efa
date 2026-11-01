@@ -13,16 +13,16 @@
   function carte(a, n) {
     var ok = etat.ok[a.id];
     return '<article class="at-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '">' +
-      '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/atelier-' + (n < 10 ? '0' : '') + n + '.webp?v=3" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
-      '<div class="at-c-corps"><span class="at-c-type">' + (a.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Enregistré · à votre rythme') + '</span>' +
+      '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/' + (a.aff || ('atelier-' + (n < 10 ? '0' : '') + n + '.webp?v=3')) + '" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
+      '<div class="at-c-corps"><span class="at-c-type">' + (a.cours ? 'Cours à votre rythme · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
       '<div class="at-c-pied"><span class="at-c-prix"><b>' + D.prix(a) + '</b>' + (a.gratuit ? '' : '<small>Offert pour le lancement</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
   }
   var n = 0;
   document.querySelectorAll('.at-cat').forEach(function (c) {
-    var t = c.getAttribute('data-type') === '1';
-    c.innerHTML = D.liste.filter(function (a) { return !!a.c === t; }).map(function (a) { n++; return carte(a, n); }).join('');
+    var ty = c.getAttribute('data-type'), t = ty === '1';
+    c.innerHTML = D.liste.filter(function (a) { return ty === 'cours' ? !!a.cours : !a.cours && !!a.c === t; }).map(function (a) { if (!a.cours) n++; return carte(a, n); }).join('');
   });
   // ancienne adresse #atelier-xxx : défiler jusqu'à la carte
   if (location.hash) { var t0 = document.getElementById(location.hash.slice(1)); if (t0) setTimeout(function () { t0.scrollIntoView({ block: 'start' }); t0.classList.add('vise'); }, 60); }
@@ -43,12 +43,12 @@
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
     var go = $('at-dlg-go'); go.hidden = !(ok && cour.lien); if (cour.lien) go.href = cour.lien;
     var suite = cour.lien ? '' : ' Votre place est réservée : nous vous envoyons le lien par email dès l’ouverture de la prochaine session.';
-    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. L’atelier est débloqué.' : 'Atelier débloqué avec la clé <b>' + etat.ok[cour.id] + '</b>.') + suite; }
+    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' débloqué avec la clé <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
   }
   function ouvrir(id) {
     cour = D.liste.filter(function (a) { return a.id === id; })[0]; if (!cour) return;
-    $('at-dlg-k').textContent = cour.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Atelier enregistré';
+    $('at-dlg-k').textContent = cour.cours ? 'Cours à votre rythme' : cour.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Atelier enregistré';
     $('at-dlg-t').textContent = cour.t;
     champ.value = ''; cm.value = (A && A.mail()) || ''; majDlg();
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
@@ -69,7 +69,7 @@
     etat.mail = m;
     if (cour.gratuit) { debloquer('email'); A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); return; }
     var k = D.nouvelleCle(); debloquer(k);
-    msg.innerHTML = 'Votre clé d’accès : <b>' + k + '</b>. L’atelier est débloqué et nous vous l’envoyons aussi à ' + m.replace(/[<>&]/g, '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
+    msg.innerHTML = 'Votre clé d’accès : <b>' + k + '</b>. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué et nous vous l’envoyons aussi à ' + m.replace(/[<>&]/g, '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
     A.envoyer(m, 'Clé d’accès générée · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · clé ' + k);
   });
   function valider() {
