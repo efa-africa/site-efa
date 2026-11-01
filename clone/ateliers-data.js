@@ -57,7 +57,7 @@ window.EFA_ATELIERS = (function () {
   function fcfa(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + ' FCFA'; }
   function prix(a) { return a && a.gratuit ? 'Gratuit' : fcfa(a.prix || PRIX); }
   function acces(a) { return a.gratuit ? 'gratuit' : 'cle'; }
-  // Phase de test : chaque contenu coûte des crédits selon sa valeur. 2 crédits offerts, +1 crédit par avis.
-  function cout(a) { if (a.gratuit) return 0; var p = a.prix || PRIX; return p <= 25000 ? 1 : p <= 50000 ? 2 : p <= 100000 ? 3 : 4; }
-  return { liste: A, prix: prix, acces: acces, cout: cout, CREDITS_OFFERTS: 2, PRIX: PRIX, FIN_TEST: FIN_TEST, nouvelleCle: nouvelleCle, cleValide: cleValide };
+  // Phase de test : 1 crédit = 10 000 FCFA. 3 crédits offerts à l'inscription par email, +1 crédit par avis.
+  function cout(a) { return a.gratuit ? 0 : Math.ceil((a.prix || PRIX) / 10000); }
+  return { liste: A, prix: prix, acces: acces, cout: cout, CREDITS_OFFERTS: 3, PRIX: PRIX, FIN_TEST: FIN_TEST, nouvelleCle: nouvelleCle, cleValide: cleValide };
 })();

@@ -36,8 +36,10 @@
     $('at-dlg-prix').textContent = D.prix(cour);
     var prixC = D.cout(cour), reste = credits(), avisMode = !ok && prixC > reste;
     $('at-dlg-offre').textContent = prixC ? 'Phase de test : ' + prixC + ' crédit' + (prixC > 1 ? 's' : '') : '';
-    $('at-mail-ok').textContent = prixC ? 'Ouvrir avec ' + prixC + ' crédit' + (prixC > 1 ? 's' : '') : 'Débloquer';
-    $('at-credits').textContent = prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
+    var ins = inscrit(); if (!ins) avisMode = false;
+    $('at-mail-ok').textContent = !ins ? 'Recevoir mes ' + pl(D.CREDITS_OFFERTS) : prixC ? 'Ouvrir avec ' + pl(prixC) : 'Débloquer';
+    $('at-credits').textContent = !ins ? '1 crédit = 10 000 FCFA. Votre email active vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue.' : prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
+    $('at-mail-zone').hidden = ins; cm.required = !ins;
     fm.hidden = ok || avisMode;
     $('at-avis').hidden = !avisMode; if (avisMode) remplirAvis();
     $('at-dlg-contact').hidden = true;
@@ -45,18 +47,19 @@
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
     var go = $('at-dlg-go'); go.hidden = !(ok && cour.lien); if (cour.lien) go.href = cour.lien;
     var suite = cour.lien ? '' : ' Votre place est réservée : nous vous envoyons le lien par email dès l’ouverture de la prochaine session.';
-    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' débloqué avec le code promo <b>' + etat.ok[cour.id] + '</b>.') + suite; }
+    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' ouvert, code d’accès <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
   }
   function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
-  function credits() { return D.CREDITS_OFFERTS + (etat.bonus || 0) - (etat.depense != null ? etat.depense : (etat.codes || 0)); }
-  function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = pl(Math.max(0, credits())); }
+  function inscrit() { return !!(etat.mail || (A && A.mail())); }
+  function credits() { return (inscrit() ? D.CREDITS_OFFERTS : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
+  function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; }
   function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
   function remplirAvis(vise) {
     var s = $('at-avis-c'), L = testes(); s.innerHTML = '';
     L.forEach(function (a) { var o = document.createElement('option'); o.value = a.id; o.textContent = a.t; if (a.id === vise) o.selected = true; s.appendChild(o); });
     var manque = cour ? D.cout(cour) - credits() : 0;
-    $('at-avis-t').textContent = L.length ? (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Chaque avis sur un contenu testé vous rapporte 1 crédit.' : 'Votre avis améliore le contenu et vous rapporte 1 crédit.') : (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Ouvrez d’abord un contenu à 1 crédit ou gratuit, testez-le, puis donnez votre avis : chaque avis rapporte 1 crédit.' : 'Testez d’abord un contenu, puis revenez donner votre avis.');
+    $('at-avis-t').textContent = L.length ? (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Chaque avis sur un contenu testé vous rapporte 1 crédit.' : 'Votre avis améliore le contenu et vous rapporte 1 crédit.') : (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Ouvrez d’abord un contenu gratuit ou à votre portée, testez-le, puis donnez votre avis : chaque avis rapporte 1 crédit.' : 'Testez d’abord un contenu, puis revenez donner votre avis.');
     $('at-avis').querySelectorAll('select,fieldset,textarea,input,button,label').forEach(function (x) { x.hidden = !L.length; });
   }
   function ouvrir(id) {
@@ -81,16 +84,18 @@
   }
   fm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var m = cm.value.trim();
-    if (m && (!A || !A.valide(m))) { msg.textContent = 'Cette adresse email ne semble pas valide. Corrigez-la ou laissez le champ vide.'; msg.className = 'ko'; cm.focus(); return; }
-    if (m) etat.mail = m;
-    if (cour.gratuit) { debloquer('email'); if (m) A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); else notifier('Atelier gratuit débloqué · ' + cour.t, { atelier: cour.id }); return; }
+    if (!inscrit()) {
+      var m0 = cm.value.trim();
+      if (!A || !A.valide(m0)) { msg.textContent = 'Indiquez une adresse email valide pour activer vos crédits.'; msg.className = 'ko'; cm.focus(); return; }
+      etat.mail = m0; ecrire(etat); A.envoyer(m0, 'Inscription phase de test · ' + D.CREDITS_OFFERTS + ' crédits', cour.id);
+      soldeAffiche(); majDlg(); msg.className = 'ok'; msg.textContent = 'Bienvenue : ' + pl(D.CREDITS_OFFERTS) + ' ajoutés à votre solde.'; return;
+    }
+    var m = etat.mail || A.mail();
+    if (cour.gratuit) { debloquer('email'); A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); return; }
     var c = D.cout(cour); if (c > credits()) { majDlg(); return; }
-    if (etat.depense == null) etat.depense = etat.codes || 0;
-    var k = D.nouvelleCle(); etat.depense += c; debloquer(k); soldeAffiche();
-    msg.innerHTML = (cour.cours ? 'Le cours' : 'L’atelier') + ' est ouvert avec ' + pl(c) + '. Il vous reste ' + pl(credits()) + '.' + (m ? ' Votre code d’accès <b>' + k + '</b> part à ' + m.replace(/[<>&]/g, '') + '.' : ' Votre code d’accès : <b>' + k + '</b>.') + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
-    if (m) A.envoyer(m, 'Ouvert avec ' + pl(c) + ' · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · code ' + k);
-    else notifier('Ouvert avec ' + pl(c) + ' · ' + cour.t, { atelier: cour.id, code: k });
+    var k = D.nouvelleCle(); etat.dep10 = (etat.dep10 || 0) + c; debloquer(k); soldeAffiche();
+    msg.innerHTML = (cour.cours ? 'Le cours' : 'L’atelier') + ' est ouvert avec ' + pl(c) + '. Il vous reste ' + pl(credits()) + '. Votre code d’accès : <b>' + k + '</b> (notez-le pour un autre appareil).' + (cour.lien ? '' : ' Votre place est réservée : nous vous écrivons dès l’ouverture de la prochaine session.');
+    A.envoyer(m, 'Ouvert avec ' + pl(c) + ' · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · code ' + k);
   });
   $('at-avis').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -100,7 +105,7 @@
     if (t.length < 40) { msg.className = 'ko'; msg.textContent = 'Écrivez une ou deux phrases : ce qui vous a servi, ce qui vous a manqué.'; $('at-avis-txt').focus(); return; }
     var a = D.liste.filter(function (x) { return x.id === id; })[0] || { t: id };
     etat.avis = etat.avis || {}; etat.avis[id] = +n; etat.bonus = (etat.bonus || 0) + 1; ecrire(etat); soldeAffiche();
-    notifier('Avis · ' + a.t + ' · ' + n + '/5', { contenu: id, note: n, avis: t, citation_autorisee: $('at-avis-pub').checked ? 'oui' : 'non', prenom: $('at-avis-prenom').value.trim(), email: etat.mail || '' });
+    notifier('Avis · ' + a.t + ' · ' + n + '/5', { contenu: id, note: n, avis: t, citation_autorisee: $('at-avis-pub').checked ? 'oui' : 'non', prenom: $('at-avis-prenom').value.trim(), email: etat.mail || (A && A.mail()) || '' });
     $('at-avis').reset();
     if (cour && !etat.ok[cour.id]) { majDlg(); msg.className = 'ok'; msg.textContent = 'Merci pour votre avis : +1 crédit. Votre solde : ' + pl(credits()) + '.'; }
     else { $('at-avis').hidden = true; msg.className = 'ok'; msg.textContent = 'Merci pour votre avis : +1 crédit. Votre solde : ' + pl(credits()) + '.'; }
