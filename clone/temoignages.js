@@ -34,9 +34,26 @@
     if (P.length) { var p = P[Math.floor(Math.random() * P.length)]; echanger(p[0], p[1]); }
     sens = sens === 'v' ? 'h' : 'v';
   }
+  /* À l'arrivée sur la section : les encadrés scintillent l'un après l'autre (en partant d'en haut à gauche),
+     puis le premier échange a lieu dès la fin du scintillement, vers 2,5 s. */
+  function scintiller() {
+    var L = items().filter(function (e) { return e.classList.contains('tm-c'); });
+    L.sort(function (a, b) { var A = r(a), B = r(b); return (A.top - B.top) || (A.left - B.left); });
+    var premier = L.shift(); for (var i = L.length - 1; i > 0; i--) { var k = Math.floor(Math.random() * (i + 1)), x = L[i]; L[i] = L[k]; L[k] = x; }
+    L.unshift(premier);
+    L.slice(0, 6).forEach(function (e, i) {
+      setTimeout(function () { e.classList.remove('tm-scint'); void e.offsetWidth; e.classList.add('tm-scint'); setTimeout(function () { e.classList.remove('tm-scint'); }, 1100); }, i * 280);
+    });
+  }
+  var dernier = 0;
+  function arrivee() {
+    var mtn = Date.now(); if (mtn - dernier < 15000) return; dernier = mtn;
+    clearInterval(t); clearTimeout(window._tmT);
+    scintiller();
+    window._tmT = setTimeout(function () { tour(); t = setInterval(tour, PAUSE); }, 2500);
+  }
   ['mouseenter', 'focusin', 'touchstart'].forEach(function (ev) { G.addEventListener(ev, function () { pause = true; }, { passive: true }); });
   ['mouseleave', 'focusout'].forEach(function (ev) { G.addEventListener(ev, function () { pause = false; }); });
   G.addEventListener('touchend', function () { setTimeout(function () { pause = false; }, 4000); }, { passive: true });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: .25 }).observe(G); else visible = true;
-  t = setInterval(tour, PAUSE);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) arrivee(); }, { threshold: .08 }).observe(G); else { visible = true; arrivee(); }
 })();
