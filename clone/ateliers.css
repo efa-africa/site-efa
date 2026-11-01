@@ -204,3 +204,4 @@ details.at-dlg-cle[hidden]{display:none}
 .at-notes input{position:absolute;opacity:0;pointer-events:none}
 .at-notes label:has(input:checked){background:#F2B84B;border-color:#F2B84B;color:#0B1220}
 .at-avis-ok{font-weight:400!important;display:flex;gap:8px;align-items:flex-start}
+.at-prix-bandeau #at-solde{color:#1E8E57;font:inherit;font-weight:800}
