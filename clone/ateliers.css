@@ -205,3 +205,30 @@ details.at-dlg-cle[hidden]{display:none}
 .at-notes label:has(input:checked){background:#F2B84B;border-color:#F2B84B;color:#0B1220}
 .at-avis-ok{font-weight:400!important;display:flex;gap:8px;align-items:flex-start}
 .at-prix-bandeau #at-solde{color:#1E8E57;font:inherit;font-weight:800}
+/* Carte à gratter */
+.gr{background:#F5EFE2;padding:36px 0}
+.gr-in{display:grid;gap:22px;align-items:center}
+@media(min-width:820px){.gr-in{grid-template-columns:1fr 420px}}
+.gr-pastilles{display:flex;gap:8px;margin:0 0 10px}
+.gr-r,.gr-j{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 10px}
+.gr-r{background:#E44828;color:#fff}.gr-j{background:#F2B84B;color:#0B1220}
+.gr h2{font:700 clamp(30px,4.4vw,44px)/1.1 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:0}
+.gr h2 em{font-style:normal;color:#1E8E57}
+.gr-txt p{color:#4E5566;margin:10px 0 0}
+.gr-carte{position:relative;height:190px;border-radius:18px;overflow:hidden;box-shadow:0 14px 34px rgba(11,18,32,.16);touch-action:none}
+.gr-res{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#fff;text-align:center;padding:10px}
+.gr-res small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A8293}
+.gr-res b{font:700 34px/1.1 "Libre Baskerville",Georgia,serif;color:#0B1220}
+.gr-res span{font-size:15px;color:#4E5566;font-weight:600}
+.gr-gagne{background:#E3F5EC}.gr-gagne b{color:#1E8E57}
+.gr-perdu{background:#FFF3D6}
+.gr-eclat{animation:grE .8s ease}
+@keyframes grE{0%{transform:scale(.9)}60%{transform:scale(1.05)}100%{transform:none}}
+#gr-c{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+#gr-c:focus-visible{outline:3px solid #2188D6;outline-offset:-3px}
+.gr-msg p{margin:12px 0 0;font-size:16px}
+.gr-msg .ok{color:#14532D;font-weight:700}
+.gr-msg a{color:#1B71B2;font-weight:800}
+.gr-f{margin-top:12px}.gr-f label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+.gr-f div{display:flex;gap:8px}.gr-f input{flex:1;min-width:0;font:inherit;font-size:16px;padding:11px;border:1px solid #CFC5B0;border-radius:8px}
+.gr-f button{border:0;border-radius:8px;background:#1E8E57;color:#fff;font-weight:800;padding:0 16px;cursor:pointer}
