@@ -17,7 +17,7 @@
   function evenement(type, sgi, pos, payee, canal) {
     if (!CFG.VITRINE_URL) return;
     try { var b = JSON.stringify({ type: type, sgi: sgi, position: pos || null, payee: !!payee, canal: canal || null, session: session() });
-      if (navigator.sendBeacon) navigator.sendBeacon(CFG.VITRINE_URL.replace(/\/$/, '') + '/evenement', new Blob([b], { type: 'application/json' }));
+      if (navigator.sendBeacon) navigator.sendBeacon(CFG.VITRINE_URL.replace(/\/$/, '') + '/evenement', new Blob([b], { type: 'text/plain' }));
       else fetch(CFG.VITRINE_URL.replace(/\/$/, '') + '/evenement', { method: 'POST', body: b, headers: { 'Content-Type': 'application/json' }, keepalive: true });
     } catch (e) {}
   }
