@@ -196,6 +196,6 @@ var t;addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function
 <dialog id="lesson-dialog" aria-labelledby="lesson-title"><button class="dialog-close" aria-label="Fermer">×</button><div id="lesson-content"></div></dialog>
 <script>/* Apprendre : une seule carte ouverte à la fois */(function(){var L=document.querySelectorAll("#benefices details.porte");L.forEach(function(d){d.addEventListener("toggle",function(){if(!d.open)return;L.forEach(function(x){if(x!==d)x.open=false;});});});document.querySelectorAll('#benefices a[href="#seul-contenus"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.getElementById("seul-contenus");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});});})();</script>
 <script src="clone/concept-spirale.js?v=20261031b" defer></script>
-<script src="/clone/cartes.js?v=20261101j" defer></script>
+<script src="/clone/cartes.js?v=20261101k" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>

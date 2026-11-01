@@ -37,18 +37,65 @@ button{font:inherit}
 .pp-ph[aria-current="true"] i em{background:var(--pt)}
 .pp-ph:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px}
 @media(max-width:560px){.pp-ph span{display:none}.pp-ph{min-height:54px;align-items:center}}
+/* Couverture v2 */
+.pp-cv{display:grid;gap:18px;align-items:center}
+@media(min-width:820px){.pp-cv{grid-template-columns:1.25fr 1fr}}
+.pp-couv h1{font-size:clamp(28px,4.6vw,46px)!important;line-height:1.14}
+.pp-promesse{font-size:clamp(17px,2vw,19px)!important;color:#E8EDF5!important;margin:12px 0 0!important;max-width:40ch}
+.pp-meta{font-size:14px!important;color:#C9D1DE!important;margin:10px 0 0!important}
+.pp-go{margin-top:16px;border:0;border-radius:8px;min-height:50px;padding:0 22px;background:var(--corail);color:#fff;font-weight:800;font-size:17px;cursor:pointer}
+.pp-img{width:100%;height:auto;border-radius:16px;display:none}
+@media(min-width:820px){.pp-img{display:block}}
+.pp-couv.court{padding:14px 0}.pp-couv.court .pp-promesse,.pp-couv.court .pp-meta,.pp-couv.court .pp-go,.pp-couv.court .pp-img{display:none}
+.pp-couv.court h1{font-size:clamp(20px,3vw,26px)!important}
+.pp-couv.court .pp-cv{grid-template-columns:1fr}
+/* Acquis et chapitres */
+.acq{display:grid;gap:10px}
+@media(min-width:700px){.acq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ch5{background:var(--papier);border-radius:16px;padding:16px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 6px 18px rgba(11,18,32,.06)}
+.ch5 .no{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:18px;background:var(--cc);color:var(--cx2)}
+.ch5 h3{font-family:var(--f-display);font-size:19px;line-height:1.2;color:var(--nuit)}
+.ch5 small{display:block;font-size:13px;font-weight:700;color:var(--ink3);margin-top:3px}
+.ch5 .bar{height:6px;border-radius:9px;background:#EFE7D6;margin:10px 0 0;overflow:hidden}.ch5 .bar i{display:block;height:100%;background:var(--cc)}
+.ch5 button{margin-top:10px;border:0;border-radius:8px;min-height:42px;padding:0 14px;font-weight:800;font-size:15px;cursor:pointer;background:var(--nuit);color:#fff}
+.ch5.actif{box-shadow:0 0 0 2.5px var(--corail),0 6px 18px rgba(11,18,32,.06)}
+.ch5.actif button{background:var(--corail)}
+.ch5.fini button{background:#fff;color:var(--nuit);box-shadow:inset 0 0 0 1.5px var(--line)}
+.vue-t{font-family:var(--f-display);font-size:clamp(24px,3.4vw,32px);color:var(--nuit);margin:4px 0 6px}
+.vue-p{margin:0 0 16px;color:var(--ink2)}
+.q1{display:grid;gap:10px;margin-top:6px}
+.q1 button{all:unset;box-sizing:border-box;cursor:pointer;background:var(--papier);border-radius:14px;padding:14px 16px;font-weight:700;font-size:16px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.q1 button[aria-pressed="true"]{box-shadow:inset 0 0 0 2.5px var(--nuit)}
+.q1 button.bon{box-shadow:inset 0 0 0 2.5px #1E8E57;background:#F2FBF6}
+.q1 button:focus-visible{outline:3px solid var(--bleu)}
+.cta{display:inline-block;border:0;border-radius:8px;min-height:50px;padding:0 22px;background:var(--corail);color:#fff;font-weight:800;font-size:16px;cursor:pointer;text-decoration:none;line-height:50px;margin-top:14px}
+.cta.sec{background:#fff;color:var(--nuit);box-shadow:inset 0 0 0 1.5px var(--line)}
+.prog2{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:14px;font-weight:800;color:var(--nuit)}
+.prog2 .b{flex:0 0 90px;height:6px;border-radius:9px;background:#E2D8C4;overflow:hidden}.prog2 .b i{display:block;height:100%;background:var(--c)}
+.prog2 a{margin-left:auto;font-weight:700;color:var(--bleu);text-decoration:underline;text-decoration-color:var(--corail);cursor:pointer;background:none;border:0;font-size:14px;padding:0}
+.ecn{font-size:12px;color:var(--ink3);font-weight:700}
+.exemple{background:#FFF3D6;border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:15px}
+.fiche-r{background:var(--papier);border-radius:16px;padding:6px 16px;margin-top:14px}
+.fiche-r div{display:flex;gap:12px;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.fiche-r div:last-child{border-bottom:0}.fiche-r span{color:var(--ink2)}.fiche-r b{text-align:right}.fiche-r b.vide{color:#B8341A;font-weight:700}
+.suites{display:grid;gap:12px;margin-top:16px}
+@media(min-width:700px){.suites{grid-template-columns:1fr 1fr}}
+.suite{background:var(--papier);border-radius:16px;padding:16px}
+.suite h3{font-family:var(--f-display);font-size:20px;color:var(--nuit)}
+.suite p{margin:8px 0 0;font-size:15px;color:var(--ink2)}
+@media print{.pp-couv,.prog2,.suites,.cta,.mention,header,footer,.efa-pourvous{display:none!important}}
 /* Écran */
 .pp-scene{padding:18px 0 34px}
 .ec{background:var(--papier);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(11,18,32,.10)}
-.ec-tete{background:var(--c);color:var(--cx);padding:18px 20px 20px;position:relative;overflow:hidden}
-.ec-tete::after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.12)}
-.ec-tete::before{content:"";position:absolute;right:40px;bottom:-60px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.08)}
-.ec-k{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.92;position:relative}
-.ec-tete h2{font-size:clamp(23px,3.4vw,32px);margin-top:8px;position:relative;max-width:30ch;color:var(--cx)}
+.ec-tete{background:var(--ct);color:var(--nuit);padding:16px 20px 18px;position:relative;overflow:hidden}
+.ec-tete::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:var(--c);opacity:.12}
+.ec-tete::before{content:none}
+.ec-k{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;position:relative;color:var(--ink2)}.ec-k i{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--c);color:var(--cx);font-style:normal;letter-spacing:0}
+.ec-tete h2{font-size:clamp(22px,3.2vw,30px);margin-top:6px;position:relative;max-width:30ch;color:var(--nuit)}
 .ec-pts{display:flex;gap:5px;margin-top:14px;position:relative;flex-wrap:wrap}
-.ec-pts i{width:22px;height:6px;border-radius:9px;background:rgba(255,255,255,.35)}
-.ec-pts i.on{background:var(--cx)}
-.ec-pts i.ok{background:rgba(255,255,255,.75)}
+.ec-pts i{width:22px;height:6px;border-radius:9px;background:rgba(11,18,32,.12)}
+.ec-pts i.on{background:var(--nuit)}
+.ec-pts i.ok{background:var(--c)}
 .ec-corps{padding:20px}
 .ec-anim{animation:ecIn .38s ease both}
 @keyframes ecIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
@@ -59,7 +106,7 @@ button{font:inherit}
 .tu b.n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--c);color:var(--cx);display:grid;place-items:center;font-size:14px}
 .tu p{margin:0;font-size:16px}
 /* Coach */
-.coach{display:flex;gap:12px;align-items:flex-start;margin-top:18px}
+.coach{display:flex;gap:12px;align-items:flex-start;margin:0 0 16px}
 .coach img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:0 0 46px;border:2px solid var(--c)}
 .coach div{background:#fff;border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:10px 14px}
 .coach small{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
@@ -73,7 +120,7 @@ button{font:inherit}
 .nav{display:flex;gap:10px;margin-top:16px}
 .nav button{border:0;border-radius:8px;min-height:48px;padding:0 18px;font-weight:800;font-size:16px;cursor:pointer}
 .nav .prec{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line)}
-.nav .suiv{flex:1;background:var(--nuit);color:#fff}
+.nav .suiv{flex:1;background:var(--corail);color:#fff}
 .nav button:disabled{opacity:.35;cursor:default}
 /* Widgets : champs */
 .w-k{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 8px}
@@ -173,16 +220,20 @@ input[type=range]{width:100%;accent-color:var(--c)}
 .bouton{display:inline-block;text-decoration:none;font-weight:800;font-size:16px;min-height:46px;padding:12px 22px;border-radius:8px;background:var(--corail);color:#fff;margin-top:14px}
 .mention{font-size:13px;color:var(--ink3);margin:18px 0 0}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261101j">
+<link rel="stylesheet" href="clone/habillage.css?v=20261101k">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <header class="pp-couv" data-garde>
-  <div class="pp-w">
-    <span class="pp-k">Être coaché · Cours à votre rythme</span>
-    <h1>Mes premiers pas en Bourse</h1>
-    <p>5 étapes, 31 écrans. De « suis-je prêt ? » au choix de votre SGI.</p>
-    <nav class="pp-phases" id="phases" aria-label="Les cinq étapes"></nav>
+  <div class="pp-w pp-cv">
+    <div class="pp-cv-t">
+      <span class="pp-k">Mes premiers pas en Bourse · cours à votre rythme</span>
+      <h1 id="pp-h1">Votre premier investissement commence avant votre premier ordre.</h1>
+      <p class="pp-promesse">Apprenez à vérifier votre situation, lire le marché et choisir votre intermédiaire, à votre rythme.</p>
+      <p class="pp-meta">5 chapitres · 3 à 4 semaines, quelques minutes par jour · vous reprenez là où vous vous êtes arrêté</p>
+      <button type="button" class="pp-go" id="pp-go">Commencer par une question</button>
+    </div>
+    <img class="pp-img" src="clone/assets/accueil-lancer-brvm.webp" alt="" width="1672" height="941">
   </div>
 </header>
 <main class="pp-scene" data-garde>
@@ -190,6 +241,8 @@ input[type=range]{width:100%;accent-color:var(--c)}
   <p class="mention">Contenu éducatif. Aucune recommandation d’achat ou de vente d’un titre. Horaires et frais cités au 30 octobre 2026 : vérifiez-les auprès de votre SGI et sur brvm.org.</p></div>
 </main>
 <section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+
 
 
 
@@ -222,7 +275,7 @@ var KEY='efa-coach-brvm-v1', KD='efa-pp-v1', etat={}, D={};
 try{ etat=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){}
 try{ D=JSON.parse(localStorage.getItem(KD)||'{}')||{}; }catch(e){}
 function sv(){ try{ localStorage.setItem(KEY,JSON.stringify(etat)); localStorage.setItem(KD,JSON.stringify(D)); }catch(e){} }
-var cur = Math.min(+(D._pos||0), ETAPES.length);
+var cur = Math.min(+(D._pos||0), ETAPES.length-1);
 function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 function F(n){ return Math.round(n||0).toLocaleString('fr-FR').replace(/ /g,' ')+' F'; }
 function N(v){ v=String(v==null?'':v).replace(/[^\d.,-]/g,'').replace(',','.'); return +v||0; }
@@ -236,7 +289,7 @@ function flips(list){ return '<div class="flip">'+list.map(function(x,i){ return
 
 /* ------------ Widgets : html + vie ------------ */
 var W = {};
-W[1]={h:function(){ return '<p class="w-k">Vos dépenses essentielles d’un mois</p><div class="champs c3">'+num('r_log','Logement')+num('r_nou','Nourriture')+num('r_tra','Transport')+num('r_eco','École')+num('r_san','Santé')+num('r_sol','Solidarité')+'</div>'
+W[1]={h:function(){ return '<p class="exemple"><b>Exemple :</b> Awa dépense 180 000 F par mois pour l’essentiel. Sa réserve minimale est de 3 × 180 000 = 540 000 F, gardée ailleurs qu’en Bourse.</p><p class="w-k">À vous : vos dépenses essentielles d’un mois</p><div class="champs c3">'+num('r_log','Logement')+num('r_nou','Nourriture')+num('r_tra','Transport')+num('r_eco','École')+num('r_san','Santé')+num('r_sol','Solidarité')+'</div>'
   +'<div class="mois"><div><span>Mois 1</span><i></i></div><div><span>Mois 2</span><i></i></div><div><span>Mois 3</span><i></i></div></div>'
   +'<div class="gros"><small>Votre réserve minimale (3 mois)</small><b id="r_tot">0 F</b><p id="r_m"></p></div>'
   +'<p class="w-k" style="margin-top:16px">Où est-elle aujourd’hui ?</p>'+puces('r_ou',['Compte d’épargne','Dépôt à terme','Caisse ou tontine','Mobile money','Pas encore constituée']);},
@@ -251,7 +304,7 @@ W[3]={h:function(){ var v=D.h_ans||3; return '<p class="w-k">Dans combien d’an
 W[4]={h:function(){ return '<p class="w-k">Votre projet</p>'+puces('p_proj',['Retraite','Études des enfants','Maison','Transmission','Faire grandir un capital'])+'<div style="margin-top:14px">'+num('p_m','Montant placé (F)','1 000 000')+'</div><p class="w-k" style="margin-top:14px">Le jour où vous en avez besoin, le marché a…</p><div class="scen" id="p_s"></div><p class="w-k" style="margin-top:14px">Votre projet tient-il même en baisse ?</p>'+puces('p_tient',['Oui','Non, il me faut un plan B'])+'<div id="p_v"></div>';},
  v:function(){ var m=N(D.p_m)||1000000, s=[['monté',1.3,'#1E8E57'],['stagné',1,'#F2B84B'],['baissé',.7,'#B3261E']]; $('#p_s').innerHTML=s.map(function(x){ return '<div><i style="height:'+(x[1]*90)+'px;background:'+x[2]+'"></i><b>'+F(m*x[1])+'</b><span>'+x[0]+' ('+(x[1]>1?'+30':x[1]<1?'−30':'0')+' %)</span></div>'; }).join('');
   $('#p_v').innerHTML=D.p_tient?'<div class="verdict '+(D.p_tient==='Oui'?'v-ok':'v-mid')+'">'+(D.p_tient==='Oui'?'Votre projet supporte une baisse : vous pouvez avancer.':'Écrivez votre plan B : décaler la date, garder une part en épargne disponible, ou réduire le montant placé.')+'</div>':''; }};
-W[5]={h:function(){ return '<div class="champs">'+num('m_dep','Montant de départ (F)','100 000')+num('m_mens','Chaque mois (F)','25 000')+'</div>'+num('m_sol','Budget solidarité, à côté (F/mois)','10 000')+'<p class="w-k" style="margin-top:14px">Le jour de la paie, dans cet ordre</p><div class="flux" id="m_f"></div><div class="gros"><small>Versé en cinq ans, hors rendement</small><b id="m_t"></b><p id="m_p"></p></div>';},
+W[5]={h:function(){ return '<p class="exemple"><b>Exemple :</b> Koffi place 100 000 F au départ, puis 25 000 F le jour de la paie, et garde 10 000 F par mois pour la solidarité.</p><div class="champs">'+num('m_dep','Montant de départ (F)','100 000')+num('m_mens','Chaque mois (F)','25 000')+'</div>'+num('m_sol','Budget solidarité, à côté (F/mois)','10 000')+'<p class="w-k" style="margin-top:14px">Le jour de la paie, dans cet ordre</p><div class="flux" id="m_f"></div><div class="gros"><small>Versé en cinq ans, hors rendement</small><b id="m_t"></b><p id="m_p"></p></div>';},
  v:function(){ var d=N(D.m_dep), m=N(D.m_mens), s=N(D.m_sol); $('#m_f').innerHTML='<div style="background:#E44828">1 · Je me paie : placement<span>'+F(m)+'</span></div><div style="background:#F2B84B;color:#0B1220">2 · Solidarité, prévue<span>'+F(s)+'</span></div><div style="background:#2188D6">3 · Le reste : dépenses du mois<span>…</span></div>'; $('#m_t').textContent=F(d+m*60); $('#m_p').textContent=m&&m<25000?'Petits montants : regroupez vos achats tous les deux ou trois mois, pour que les frais ne mangent pas votre ordre.':'Le même montant, à la même date : c’est la régularité qui compte.'; }};
 W[6]={h:function(){ var a=[['t_res','Ma réserve de trois mois est en place',D.r_total>0&&D.r_ou&&D.r_ou!=='Pas encore constituée'],['t_det','Je n’ai pas de dette chère',D.d_cher===0],['t_hor','Mon horizon est d’au moins cinq ans',(D.h_ans||0)>=5],['t_exp','Je sais expliquer ce que j’achète',!!D.t_exp]];
   return '<p class="w-k">Vos quatre vérifications</p><div class="tuiles" id="t_l">'+a.map(function(x){ var on=D[x[0]]!=null?D[x[0]]:x[2]; return '<button type="button" class="preuve" style="margin:0" data-t="'+x[0]+'" aria-pressed="'+!!on+'"><span class="bx">'+(on?'✓':'')+'</span>'+x[1]+'</button>'; }).join('')+'</div><div id="t_v"></div>';},
@@ -306,29 +359,57 @@ W[31]={h:function(){ return txt('ch_n','Je choisis','le nom de votre SGI')+'<div
  v:function(){ $('#ch_p2').textContent='Je choisis '+(D.ch_n||'…')+' parce que '+(D.ch_p||'…')+'.'; }};
 
 /* ------------ Rendu ------------ */
-var nav=$('#phases');
-nav.innerHTML=P.map(function(ph,i){ var c=COUL[i]; return '<button type="button" class="pp-ph" data-ph="'+i+'" style="--pc:'+c.c+';--pt:'+c.x+'"><b>'+(i+1)+'</b><span>'+esc(ph.t)+'</span><i><em></em></i></button>'; }).join('');
-nav.addEventListener('click',function(e){ var b=e.target.closest('[data-ph]'); if(!b) return; var i=+b.dataset.ph; aller(ETAPES.findIndex(function(x){return x.ph===i;})); });
-function majPhases(){ $$('.pp-ph').forEach(function(b,i){ var L=ETAPES.filter(function(x){return x.ph===i;}), f=L.filter(function(x){return etat['s'+x.n];}).length; b.querySelector('em').style.width=(f/L.length*100)+'%'; b.setAttribute('aria-current', cur<ETAPES.length&&ETAPES[cur].ph===i?'true':'false'); }); }
-function aller(k){ cur=Math.max(0,Math.min(ETAPES.length,k)); D._pos=cur; sv(); rendu(); var s=$('#scene'); if(s.getBoundingClientRect().top<0) s.scrollIntoView({behavior:'smooth',block:'start'}); }
+var ACQ=['Je connais ma limite','Je comprends le marché','Je lis une séance','Je lis une entreprise','Je compare des SGI'];
+var DESC=['Réserve, dettes, horizon, projet : savoir si c’est le bon moment.','Qui fait quoi, ce que vous achetez, comment on gagne et on perd.','Horaires, cote, seuils, carnet d’ordres : dix séances observées.','Chiffres, dette, dividende, prix et risques, en cinq minutes.','Agrément, frais, services : choisir votre intermédiaire.'];
+function faitsCh(i){ return ETAPES.filter(function(x){return x.ph===i&&etat['s'+x.n];}).length; }
+function totCh(i){ return ETAPES.filter(function(x){return x.ph===i;}).length; }
+function totFaits(){ return ETAPES.filter(function(x){return etat['s'+x.n];}).length; }
+function chActif(){ for(var i=0;i<5;i++) if(faitsCh(i)<totCh(i)) return i; return 4; }
+var vue = D._vue || (totFaits()||D._pos ? 'chapitres' : 'accueil');
+function voir(v,k){ vue=v; if(k!=null) cur=Math.max(0,Math.min(ETAPES.length-1,k)); D._vue=v; D._pos=cur; sv(); rendu(); var s=$('#scene'); if(s.getBoundingClientRect().top<0||v!=='ecran') s.scrollIntoView({behavior:'smooth',block:'start'}); }
+function aller(k){ if(k>=ETAPES.length) return voir('fin'); if(k<0) return voir('chapitres'); var a=ETAPES[cur], b=ETAPES[k]; if(a&&b&&b.ph!==a.ph&&k>cur) return voir('chapitres', k); voir('ecran',k); }
+$('#pp-go').onclick=function(){ voir('question'); };
+function carteCh(i){ var f=faitsCh(i), t=totCh(i), c=COUL[i], act=i===chActif()&&f<t, fin=f===t;
+  return '<div class="ch5'+(act?' actif':'')+(fin?' fini':'')+'" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div style="flex:1"><h3>'+ACQ[i]+'</h3><small>Chapitre '+(i+1)+' · '+esc(P[i].t)+'</small><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+DESC[i]+'</p><div class="bar"><i style="width:'+(f/t*100)+'%"></i></div><small>'+f+' activité'+(f>1?'s':'')+' sur '+t+'</small><button type="button" data-ch="'+i+'">'+(fin?'Revoir le chapitre':f?'Continuer le chapitre':'Commencer le chapitre')+'</button></div></div>'; }
 function rendu(){
-  var z=$('#scene'); majPhases();
-  if(cur>=ETAPES.length){ var faits=ETAPES.filter(function(x){return etat['s'+x.n];}).length;
-    z.innerHTML='<div class="fin ec-anim"><span class="pp-k">À l’arrivée · '+faits+' / 31 écrans faits</span><h2>Vos premiers pas sont faits</h2><ol><li>Votre réserve chiffrée et votre horizon écrit.</li><li>Un carnet de dix séances suivies sans acheter.</li><li>Une fiche « Lire une entreprise » avec une limite écrite.</li><li>La grille de votre SGI et la raison de votre choix.</li></ol><p style="color:#E8EDF5">La suite : ouvrir votre compte, approvisionner, bâtir votre plan et passer votre premier ordre, avec Élysée Johnson.</p><a class="bouton" href="coaching.html#atelier-premier-ordre-brvm">Continuer avec « Mon premier ordre »</a><p style="color:#C9D1DE;margin:16px 0 0">Votre avis améliore le cours et vous rapporte 1 crédit. <a href="coaching.html?avis=premiers-pas-bourse#avis" style="color:#fff;font-weight:700">Donner mon avis</a> · <button type="button" id="raz" style="all:unset;cursor:pointer;color:#fff;text-decoration:underline">Recommencer</button></p></div>';
-    $('#raz').onclick=function(){ ETAPES.forEach(function(x){ delete etat['s'+x.n]; }); aller(0); }; return; }
-  var e=ETAPES[cur], ph=P[e.ph], c=COUL[e.ph], L=ETAPES.filter(function(x){return x.ph===e.ph;}), w=W[e.n], on=!!etat['s'+e.n];
+  var z=$('#scene'); document.querySelector('.pp-couv').classList.toggle('court', vue!=='accueil');
+  $('#pp-h1').textContent = vue==='accueil' ? 'Votre premier investissement commence avant votre premier ordre.' : 'Mes premiers pas en Bourse';
+  if(vue==='accueil'){ z.innerHTML='<div class="ec-anim"><p class="vue-t">Ce que vous saurez faire</p><p class="vue-p">Cinq acquis concrets, un chapitre chacun.</p><div class="acq">'+[0,1,2,3,4].map(function(i){ var c=COUL[i]; return '<div class="ch5" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div><h3>'+ACQ[i]+'</h3><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+DESC[i]+'</p></div></div>'; }).join('')+'</div><button type="button" class="cta" id="go2">Commencer par une question</button></div>'; $('#go2').onclick=function(){ voir('question'); }; return; }
+  if(vue==='question'){ var R=[['a','J’achète l’action qui a le plus monté ce mois-ci.','Ce qui a monté hier ne dit rien de demain. Et si la hausse s’arrête, vous achetez au plus haut.'],['b','Je vérifie d’abord ma réserve et mes dettes.','C’est le bon réflexe : sans réserve, le premier imprévu vous oblige à vendre, souvent au mauvais moment. C’est le chapitre 1.'],['c','Je confie l’argent à un ami qui investit pour les autres.','Seule une SGI agréée peut acheter des titres pour vous, sur un compte à votre nom. C’est le chapitre 5.'],['d','Je cherche la SGI la moins chère.','Utile, mais après : on choisit son intermédiaire une fois prêt et le marché compris. C’est le chapitre 5.']], r=D.q1;
+    z.innerHTML='<div class="ec-anim"><p class="vue-t">Si vous aviez 100 000 FCFA à investir, par quoi commenceriez-vous ?</p><p class="vue-p">Une seule réponse. Il n’y a pas de piège : chacune vous apprend quelque chose.</p><div class="q1">'+R.map(function(x){ return '<button type="button" data-q="'+x[0]+'" aria-pressed="'+(r===x[0])+'" class="'+(r&&x[0]==='b'?'bon':'')+'">'+x[1]+'</button>'; }).join('')+'</div>'+(r?'<div class="verdict '+(r==='b'?'v-ok':'v-mid')+'">'+R.filter(function(x){return x[0]===r;})[0][2]+(r!=='b'?' Le bon point de départ : vérifier sa réserve et ses dettes.':'')+'</div><button type="button" class="cta" id="go3">Découvrir mon parcours</button>':'')+'</div>';
+    $$('.q1 button').forEach(function(b){ b.onclick=function(){ D.q1=b.dataset.q; sv(); rendu(); }; }); if(r) $('#go3').onclick=function(){ voir('chapitres'); }; return; }
+  if(vue==='chapitres'){ var tf=totFaits();
+    z.innerHTML='<div class="ec-anim"><p class="vue-t">Votre parcours</p><p class="vue-p">'+(tf?tf+' activité'+(tf>1?'s':'')+' validée'+(tf>1?'s':'')+' sur 31. Reprenez où vous en êtes.':'Commencez par le chapitre 1, ou par celui qui vous parle le plus.')+'</p><div class="acq">'+[0,1,2,3,4].map(carteCh).join('')+'</div><button type="button" class="cta sec" id="vfiche">Voir ma fiche</button></div>';
+    $$('[data-ch]').forEach(function(b){ b.onclick=function(){ var i=+b.dataset.ch, L=ETAPES.filter(function(x){return x.ph===i;}), k=L.filter(function(x){return !etat['s'+x.n];})[0]||L[0]; voir('ecran', ETAPES.indexOf(k)); }; });
+    $('#vfiche').onclick=function(){ voir('fin'); }; return; }
+  if(vue==='fin'){ var tf2=totFaits(), mq=[0,1,2,3,4].filter(function(i){return faitsCh(i)<totCh(i);});
+    function li(l,v){ return '<div><span>'+l+'</span><b'+(v?'':' class="vide"')+'>'+(v?esc(v):'à compléter')+'</b></div>'; }
+    var per=N(D.px_b)?(N(D.px_c)/N(D.px_b)).toFixed(1).replace('.',','):'';
+    var titre=tf2===31?'Vos premiers pas sont faits':tf2===0?'Vous avez exploré le cours':'Vous avez bien avancé';
+    var sous=tf2===31?'31 activités validées sur 31.':tf2===0?'0 activité validée pour l’instant. Les exercices font la différence : reprenez-les à votre rythme.':tf2+' activités validées sur 31. Il reste '+mq.map(function(i){return '« '+ACQ[i]+' »';}).join(', ')+'.';
+    z.innerHTML='<div class="ec-anim"><span class="pp-k" style="color:#B8341A">Ma fiche de préparation</span><p class="vue-t">'+titre+'</p><p class="vue-p">'+sous+'</p>'
+     +'<div class="fiche-r">'+li('Réserve minimale',D.r_total?F(D.r_total):'')+li('Où elle se trouve',D.r_ou)+li('Dettes chères',!etat.s2?'':(D.d_cher?D.d_cher+' à rembourser d’abord':'aucune'))+li('Horizon',(etat.s3||D.h_set)&&D.h_ans?D.h_ans+' ans':'')+li('Projet',D.p_proj)+li('Départ et chaque mois',D.m_dep||D.m_mens?F(N(D.m_dep))+' puis '+F(N(D.m_mens)):'')+li('Sociétés suivies',[D.e_s0,D.e_s1,D.e_s2].filter(Boolean).join(', '))+li('PER calculé',per)+li('Ma limite écrite',D.fi_si)+li('SGI choisie',D.ch_n)+li('Pourquoi',D.ch_p)+'</div>'
+     +(tf2<31?'<button type="button" class="cta" id="repr">Reprendre mes exercices</button> ':'')+'<button type="button" class="cta sec" id="impr">Enregistrer ma fiche (PDF)</button>'
+     +'<div class="suites"><div class="suite"><h3>Revoir ma préparation</h3><p>Reprenez un chapitre, complétez votre fiche, refaites un exercice avec de nouveaux chiffres. Gratuit, à votre rythme.</p><button type="button" class="cta sec" id="revoir">Voir les chapitres</button></div>'
+     +'<div class="suite"><h3>L’atelier « Mon premier ordre »</h3><p>Avec Élysée Johnson : ouvrir votre compte-titres, l’approvisionner, bâtir votre plan et passer votre premier ordre, vérifié ligne par ligne. 50 000 FCFA, soit 5 crédits : pendant l’ouverture, vos crédits suffisent.</p><a class="cta" href="coaching.html#atelier-premier-ordre-brvm">Découvrir l’atelier</a></div></div>'
+     +'<p style="margin:16px 0 0;font-size:15px">Votre avis améliore le cours et vous rapporte 1 crédit : <a class="lien" href="coaching.html?avis=premiers-pas-bourse#avis">donner mon avis</a> · <button type="button" id="raz" style="all:unset;cursor:pointer;color:var(--bleu);text-decoration:underline">tout recommencer</button></p></div>';
+    if($('#repr')) $('#repr').onclick=function(){ var i=mq[0], L=ETAPES.filter(function(x){return x.ph===i;}), k=L.filter(function(x){return !etat['s'+x.n];})[0]; voir('ecran', ETAPES.indexOf(k)); };
+    $('#impr').onclick=function(){ window.print(); }; $('#revoir').onclick=function(){ voir('chapitres'); };
+    $('#raz').onclick=function(){ ETAPES.forEach(function(x){ delete etat['s'+x.n]; }); D._vue='accueil'; D._pos=0; sv(); voir('accueil',0); }; return; }
+  var e=ETAPES[cur], ph=P[e.ph], c=COUL[e.ph], L=ETAPES.filter(function(x){return x.ph===e.ph;}), w=W[e.n], on=!!etat['s'+e.n], fc=faitsCh(e.ph);
   z.style.cssText='--c:'+c.c+';--ct:'+c.t+';--cx:'+c.x;
-  z.innerHTML='<article class="ec ec-anim"><div class="ec-tete"><span class="ec-k">Étape '+(e.ph+1)+' · '+esc(ph.t)+' · écran '+e.n+' / 31</span><h2>'+esc(e.t)+'</h2><div class="ec-pts">'+L.map(function(x){ return '<i class="'+(x.n===e.n?'on':etat['s'+x.n]?'ok':'')+'"></i>'; }).join('')+'</div></div>'
-   +'<div class="ec-corps">'+(w?w.h():(e.f?tuiles(e.f):''))
-   +'<div class="coach"><img src="clone/assets/elysee-portrait-carre.jpg" alt=""><div><small>Le coach</small><p>'+esc(e.c)+'</p></div></div>'
+  z.innerHTML='<div class="prog2"><span>Chapitre '+(e.ph+1)+' sur 5 · '+fc+' activité'+(fc>1?'s':'')+' sur '+L.length+'</span><span class="b"><i style="width:'+(fc/L.length*100)+'%"></i></span><a id="tous">Tous les chapitres</a></div>'
+   +'<article class="ec ec-anim"><div class="ec-tete"><span class="ec-k"><i>'+(e.ph+1)+'</i>'+esc(ACQ[e.ph])+'</span><h2>'+esc(e.t)+'</h2><div class="ec-pts">'+L.map(function(x){ return '<i class="'+(x.n===e.n?'on':etat['s'+x.n]?'ok':'')+'"></i>'; }).join('')+'</div></div>'
+   +'<div class="ec-corps"><div class="coach"><img src="clone/assets/elysee-portrait-carre.jpg" alt=""><div><small>Le coach</small><p>'+esc(e.c)+'</p></div></div>'
+   +(w?w.h():(e.f?tuiles(e.f):''))
    +'<button type="button" class="preuve" id="pv" aria-pressed="'+on+'"><span class="bx">'+(on?'✓':'')+'</span>'+esc(e.p)+'</button>'
-   +'<div class="nav"><button type="button" class="prec" id="prec"'+(cur?'':' disabled')+'>←</button><button type="button" class="suiv" id="suiv">'+(cur===ETAPES.length-1?'Terminer':'Écran suivant')+' →</button></div></div></article>';
+   +'<div class="nav"><button type="button" class="prec" id="prec" aria-label="Écran précédent">←</button><button type="button" class="suiv" id="suiv">Continuer →</button></div><p class="ecn">Écran '+e.n+' sur 31</p></div></article>';
   if(w&&w.v) w.v();
-  $('#pv').onclick=function(){ var v=!etat['s'+e.n]; etat['s'+e.n]=v; sv(); this.setAttribute('aria-pressed',v); this.querySelector('.bx').textContent=v?'✓':''; majPhases(); };
-  $('#prec').onclick=function(){ aller(cur-1); }; $('#suiv').onclick=function(){ aller(cur+1); };
+  $('#pv').onclick=function(){ var v=!etat['s'+e.n]; etat['s'+e.n]=v; sv(); this.setAttribute('aria-pressed',v); this.querySelector('.bx').textContent=v?'✓':''; var f2=faitsCh(e.ph); $('.prog2 span').textContent='Chapitre '+(e.ph+1)+' sur 5 · '+f2+' activité'+(f2>1?'s':'')+' sur '+L.length; $('.prog2 .b i').style.width=(f2/L.length*100)+'%'; };
+  $('#prec').onclick=function(){ cur===0?voir('chapitres'):aller(cur-1); }; $('#suiv').onclick=function(){ aller(cur+1); }; $('#tous').onclick=function(){ voir('chapitres'); };
 }
 var sc=$('#scene');
-sc.addEventListener('input',function(ev){ var t=ev.target; if(!t.id) return; D[t.id]=t.value; sv(); var w=W[ETAPES[cur]&&ETAPES[cur].n]; if(w&&w.v) w.v(); });
+sc.addEventListener('input',function(ev){ var t=ev.target; if(!t.id) return; D[t.id]=t.value; if(t.id==='h_ans') D.h_set=1; sv(); var w=W[ETAPES[cur]&&ETAPES[cur].n]; if(w&&w.v) w.v(); });
 sc.addEventListener('click',function(ev){
   var p=ev.target.closest('.pu'); if(p){ var g=p.parentNode, id=g.dataset.p, m=g.hasAttribute('data-m'); if(m){ var a=D[id]||[], i=a.indexOf(p.dataset.v); if(i>=0) a.splice(i,1); else a.push(p.dataset.v); D[id]=a; p.setAttribute('aria-pressed',i<0); } else { D[id]=p.dataset.v; $$('.pu',g).forEach(function(x){ x.setAttribute('aria-pressed',x===p); }); } sv(); var w=W[ETAPES[cur].n]; if(w&&w.v) w.v(); return; }
   var f=ev.target.closest('.fc'); if(f){ var o=f.getAttribute('aria-pressed')==='true'; f.setAttribute('aria-pressed',!o); f.querySelector('b').textContent=o?f.dataset.face:f.dataset.dos; f.querySelector('small').textContent=o?'Touchez pour découvrir':f.dataset.face; return; }
@@ -338,10 +419,10 @@ sc.addEventListener('click',function(ev){
   var pt=ev.target.closest('.points button'); if(pt){ var k=pt.dataset.k, v2=!D[k]; D[k]=v2; pt.setAttribute('aria-pressed',v2); sv(); W[18].v(); return; }
 });
 sc.addEventListener('change',function(ev){ var t=ev.target; if(t.tagName==='SELECT'&&t.id){ D[t.id]=t.value; sv(); var w=W[ETAPES[cur].n]; if(w&&w.v) w.v(); } });
-document.addEventListener('keydown',function(e){ if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return; if(e.key==='ArrowRight') aller(cur+1); if(e.key==='ArrowLeft') aller(cur-1); });
+document.addEventListener('keydown',function(e){ if(vue!=='ecran'||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return; if(e.key==='ArrowRight') aller(cur+1); if(e.key==='ArrowLeft') aller(cur-1); });
 rendu();
 })();
 </script>
-<script src="clone/habillage.js?v=20261101j" defer></script>
+<script src="clone/habillage.js?v=20261101k" defer></script>
 </body>
 </html>

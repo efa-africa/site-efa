@@ -428,6 +428,7 @@
   function poser() {
     if (document.querySelector('.efa-promo')) return;
     try { if (sessionStorage.getItem('efa_promo_ferme')) return; } catch (e) {}
+    if (/\/(premiers-pas-bourse|coach-bourse)(\.html)?$/.test(location.pathname)) return; // pas de promotion au milieu d'un cours
     var h = document.getElementById('clone-haut') || document.getElementById('haut') || document.querySelector('body > header');
     if (!h) return;
     var st = document.createElement('style');
