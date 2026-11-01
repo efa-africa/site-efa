@@ -53,7 +53,7 @@
   function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
   function inscrit() { return !!(etat.mail || (A && A.mail())); }
   function credits() { return (inscrit() ? D.CREDITS_OFFERTS + (etat.jeu || 0) : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
-  function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; }
+  function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; try { window.dispatchEvent(new Event('efa-credits')); } catch (x) {} }
   function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
   function remplirAvis(vise) {
     var s = $('at-avis-c'), L = testes(); s.innerHTML = '';

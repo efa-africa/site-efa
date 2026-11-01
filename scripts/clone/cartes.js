@@ -71,3 +71,38 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', poser); else poser();
 })();
+
+/* EFA · Portefeuille de crédits dans l'en-tête (solde de la phase de test). */
+(function () {
+  if (window.__efaPorte) return; window.__efaPorte = 1;
+  function solde() {
+    var e = {}, m = '';
+    try { e = JSON.parse(localStorage.getItem('efa_ateliers_v1') || '{}') || {}; m = localStorage.getItem('efa_email_v1') || ''; } catch (x) {}
+    if (!(e.mail || m)) return null;
+    return Math.max(0, 3 + (e.jeu || 0) + (e.bonus || 0) - (e.dep10 || 0));
+  }
+  function poser() {
+    var h = document.getElementById('clone-haut') || document.getElementById('haut'); if (!h) return;
+    var tg = h.querySelector('.menu-toggle'), inn = h.querySelector('.head-inner'); if (!inn) return;
+    var st = document.createElement('style');
+    st.textContent = '.efa-porte{display:inline-flex;align-items:center;gap:7px;margin-left:auto;margin-right:12px;padding:6px 12px 6px 6px;border-radius:999px;background:#fff;box-shadow:0 0 0 1.5px #E2D8C4,0 4px 12px rgba(11,18,32,.08);font:800 14px/1 "Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220;text-decoration:none;white-space:nowrap;flex:0 0 auto}'
+      + '.efa-porte i{width:24px;height:24px;border-radius:50%;background:conic-gradient(#E44828 0 33%,#F2B84B 0 66%,#3CCB7F 0);display:grid;place-items:center;font-style:normal}'
+      + '.efa-porte i::after{content:"";width:12px;height:12px;border-radius:50%;background:#fff}'
+      + '.efa-porte b{color:#1E8E57;font-size:16px}.efa-porte span{color:#4E5566;font-weight:700}'
+      + '.efa-porte:hover{box-shadow:0 0 0 1.5px #1E8E57,0 4px 12px rgba(11,18,32,.1)}'
+      + '.efa-porte:focus-visible{outline:3px solid #2188D6;outline-offset:2px}'
+      + '@media(max-width:420px){.efa-porte{padding:5px 10px 5px 5px;margin-right:8px;font-size:13px}}@media(max-width:350px){.efa-porte span{display:none}}';
+    document.head.appendChild(st);
+    var a = document.createElement('a'); a.className = 'efa-porte';
+    a.href = /\/coaching(\.html)?$/.test(location.pathname) ? '#choisir' : 'coaching.html#choisir';
+    a.setAttribute('data-goatcounter-click', 'porte-credits');
+    if (tg) inn.insertBefore(a, tg); else inn.appendChild(a);
+    function maj() {
+      var s = solde();
+      a.innerHTML = '<i aria-hidden="true"></i>' + (s === null ? '<b>3</b><span>crédits offerts</span>' : '<b>' + s + '</b><span>crédit' + (s > 1 ? 's' : '') + '</span>');
+      a.setAttribute('aria-label', s === null ? 'Portefeuille : 3 crédits offerts avec votre email' : 'Mon solde : ' + s + ' crédit' + (s > 1 ? 's' : ''));
+    }
+    maj(); window.addEventListener('storage', maj); window.addEventListener('efa-credits', maj);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', poser); else poser();
+})();
