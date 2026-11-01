@@ -8,7 +8,7 @@ window.EFA_ATELIERS = (function () {
   var PRIX = 50000, FIN_TEST = '2026-12-31';
   var A = [
     // Ateliers approfondis avec Élysée Johnson
-    { id: 'premier-ordre-brvm', prix: 50000, t: 'Mon premier ordre à la Bourse (BRVM)', c: 1, img: 'carte-bourse-900.webp', pour: 'Vous voulez investir à la Bourse (BRVM) et ne savez pas par où commencer.', rep: 'Votre compte-titres ouvert, votre SGI choisie, votre premier ordre préparé.' },
+    { id: 'premier-ordre-brvm', prix: 50000, lien: 'coach-bourse.html', t: 'Mon premier ordre à la Bourse (BRVM)', c: 1, img: 'carte-bourse-900.webp', pour: 'Vous voulez investir à la Bourse (BRVM) et ne savez pas par où commencer.', rep: 'Votre compte-titres ouvert, votre SGI choisie, votre premier ordre préparé.' },
     { id: 'lire-societe-cotee', prix: 50000, t: 'Lire une société cotée comme un investisseur', c: 1, img: 'marches-entree.webp', pour: 'Vous suivez Sonatel, Orange CI ou la SGBCI sans savoir lire leurs chiffres.', rep: 'Une méthode pour lire résultats, dividende et cours, appliquée à trois sociétés.' },
     { id: 'ipo-emprunts-etat', prix: 40000, t: 'Introductions en Bourse et emprunts d’État : y aller ou pas ?', c: 1, img: 'efa-news.webp', pour: 'Une offre publique arrive (introduction en Bourse, emprunt obligataire) et vous hésitez.', rep: 'Une grille de décision, appliquée aux offres du moment.' },
     { id: 'tontine-spirale', prix: 40000, t: 'Ma tontine devient une spirale', c: 1, img: 'etudes-terrain.webp', alias: 'atelier-tontine', pour: 'Vous organisez une tontine ou vous en êtes membre.', rep: 'La part gardée à chaque tour, fixée, et la réserve du groupe lancée.' },
