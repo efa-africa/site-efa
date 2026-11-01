@@ -185,3 +185,6 @@ details.at-dlg-cle[hidden]{display:none}
 .at-sr{position:absolute;left:-9999px}
 #at-dlg-contact[hidden]{display:none}
 .at-dlg [hidden]{display:none!important}
+.promo-pastille{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#F2B84B;color:#0B1220;border-radius:999px;padding:3px 10px;margin:0 0 4px}
+.at-c-prix s{color:#7A8293;font-weight:700;text-decoration-color:#E44828;text-decoration-thickness:2px}
+.at-c-prix small{color:#1E8E57;font-weight:800}
