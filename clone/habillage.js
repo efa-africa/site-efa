@@ -486,11 +486,11 @@
     var h = document.getElementById('clone-haut') || document.getElementById('haut'); if (!h) return;
     var tg = h.querySelector('.menu-toggle'), inn = h.querySelector('.head-inner'); if (!inn) return;
     var st = document.createElement('style');
-    st.textContent = '.efa-porte{display:inline-flex;align-items:center;gap:7px;margin-left:auto;margin-right:12px;padding:6px 12px 6px 6px;border-radius:999px;background:#fff;box-shadow:0 0 0 1.5px #E2D8C4,0 4px 12px rgba(11,18,32,.08);font:800 14px/1 "Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220;text-decoration:none;white-space:nowrap;flex:0 0 auto}'
-      + '.efa-porte i{width:24px;height:24px;border-radius:50%;background:conic-gradient(#E44828 0 33%,#F2B84B 0 66%,#3CCB7F 0);display:grid;place-items:center;font-style:normal}'
+    st.textContent = '.efa-porte{display:inline-flex;align-items:center;gap:7px;margin-left:auto;margin-right:12px;padding:6px 12px 6px 6px;border-radius:999px;background:#fff;box-shadow:0 0 0 1.5px #DCE4E8,0 4px 12px rgba(9,32,57,.08);font:800 14px/1 "Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220;text-decoration:none;white-space:nowrap;flex:0 0 auto}'
+      + '.efa-porte i{width:24px;height:24px;border-radius:50%;background:conic-gradient(#092039 0 50%,#136B94 0 78%,#6DB8F2 0);display:grid;place-items:center;font-style:normal}'
       + '.efa-porte i::after{content:"";width:12px;height:12px;border-radius:50%;background:#fff}'
-      + '.efa-porte b{color:#1E8E57;font-size:16px}.efa-porte span{color:#4E5566;font-weight:700}'
-      + '.efa-porte:hover{box-shadow:0 0 0 1.5px #1E8E57,0 4px 12px rgba(11,18,32,.1)}'
+      + '.efa-porte b{color:#136B94;font-size:16px}.efa-porte span{color:#4E5566;font-weight:700}'
+      + '.efa-porte:hover{box-shadow:0 0 0 1.5px #136B94,0 4px 12px rgba(9,32,57,.1)}'
       + '.efa-porte:focus-visible{outline:3px solid #2188D6;outline-offset:2px}'
       + '@media(max-width:420px){.efa-porte{padding:5px 10px 5px 5px;margin-right:8px;font-size:13px}}@media(max-width:350px){.efa-porte span{display:none}}';
     document.head.appendChild(st);
@@ -514,50 +514,62 @@
   function ouvrirPorte() {
     if (!dlg) {
       var st = document.createElement('style');
-      st.textContent = '.pf{border:0;padding:0;border-radius:18px;width:min(460px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#2A3142;background:#FFFDF8}'
-        + '.pf::backdrop{background:rgba(11,18,32,.55)}'
-        + '.pf-t{background:#0B1220;color:#fff;padding:18px 20px;position:relative}.pf-t small{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#C9D1DE}'
-        + '.pf-t b{display:block;font:700 34px/1.1 "Libre Baskerville",Georgia,serif;margin-top:6px}.pf-t b span{font:700 16px "Source Sans 3",system-ui,sans-serif;color:#3CCB7F;margin-left:6px}'
-        + '.pf-x{position:absolute;right:12px;top:10px;border:0;background:none;color:#fff;font-size:26px;cursor:pointer;line-height:1;padding:4px 8px}'
-        + '.pf-c{padding:16px 20px 20px}'
-        + '.pf-promo{border-radius:12px;background:#FFF3D6;padding:12px 14px;font-size:15px}.pf-promo b{color:#5A3D00}'
-        + '.pf-promo p{margin:4px 0 0}.pf-promo a{color:#1B71B2;font-weight:800}'
-        + '.pf-h{display:flex;align-items:center;gap:8px;margin:18px 0 8px;font:700 20px/1.2 "Libre Baskerville",Georgia,serif;color:#0B1220}'
-        + '.pf-bt{font:800 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;background:#F2B84B;color:#0B1220;border-radius:999px;padding:4px 9px}'
+      st.textContent = '.pf{border:0;padding:0;border-radius:22px;width:min(560px,calc(100vw - 32px));max-height:min(760px,90vh);margin:auto;overflow:hidden;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#132739;background:#FFFEFA;box-shadow:0 24px 80px rgba(6,24,44,.4)}'
+        + '.pf::backdrop{background:rgba(6,24,42,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}'
+        + '.pf-l{display:flex;flex-direction:column;max-height:inherit;min-height:0}'
+        + '.pf-t{flex:none;background:#07182B;color:#fff;padding:20px 24px 18px}'
+        + '.pf-top{display:flex;align-items:center;justify-content:space-between;gap:12px}'
+        + '.pf-t small{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#A9C5D8}'
+        + '.pf-x{display:grid;place-items:center;width:36px;height:36px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:transparent;color:#fff;font-size:22px;line-height:1;cursor:pointer}'
+        + '.pf-sol{display:flex;align-items:baseline;gap:9px;margin:6px 0 14px}.pf-sol b{font:700 40px/1 "Libre Baskerville",Georgia,serif}.pf-sol span{font-size:16px;color:#C8E5EF}'
+        + '.pf-use{display:block;text-align:center;border-radius:12px;background:#DC4B34;color:#fff;font-weight:700;font-size:16px;padding:13px 18px;text-decoration:none}.pf-use:hover{background:#BD3D2B}'
+        + '.pf-s{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 24px 24px}'
+        + '.pf-promo{margin:0 0 18px;padding:12px 14px;background:#EEF5F8;border-radius:12px;font-size:15px;line-height:1.4}.pf-promo b{display:block;margin-bottom:2px;color:#092039}'
+        + '.pf-promo a{color:#136B94;font-weight:700;text-decoration:underline;text-underline-offset:2px}'
+        + '.pf-tabs{display:flex;gap:6px;padding:4px;background:#E9EFF1;border-radius:12px;margin-bottom:18px}'
+        + '.pf-tabs button{flex:1;min-height:42px;border:0;border-radius:9px;background:transparent;font:700 15px "Source Sans 3",system-ui,sans-serif;color:#415568;cursor:pointer}'
+        + '.pf-tabs button[aria-selected="true"]{background:#fff;color:#092039;box-shadow:0 2px 8px rgba(12,48,67,.1)}'
+        + '.pf-h{display:flex;align-items:center;gap:8px;margin:0 0 4px;font:700 18px/1.4 "Libre Baskerville",Georgia,serif;color:#092039}'
+        + '.pf-in{margin:0 0 12px;color:#5B6C79;font-size:15px}'
+        + '.pf-bt{font:700 11px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;background:#E1EEF5;color:#136B94;border-radius:999px;padding:5px 9px}'
         + '.pf-packs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}'
-        + '.pf-packs button,.pf-moy button{border:0;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #E2D8C4;cursor:pointer;font:inherit;color:#0B1220}'
-        + '.pf-packs button{padding:10px 4px;text-align:center}.pf-packs b{display:block;font-size:20px}.pf-packs span{font-size:10.5px;font-weight:700;color:#4E5566;white-space:nowrap}'
-        + '.pf-packs button[aria-pressed="true"],.pf-moy button[aria-pressed="true"]{box-shadow:inset 0 0 0 2.5px #1E8E57;background:#F2FBF6}'
-        + '.pf-moy{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}'
-        + '.pf-moy button{display:flex;align-items:center;gap:8px;min-height:46px;padding:0 10px;font-weight:800;font-size:15px;text-align:left}'
-        + '.pf-moy i{flex:0 0 16px;height:16px;border-radius:50%}'
-        + '.pf-f{margin-top:12px;border-radius:12px;background:#F7F4EC;padding:12px}'
-        + '.pf-f label{display:block;font-size:13px;font-weight:700;color:#4E5566;margin:8px 0 4px}.pf-f label:first-child{margin-top:0}'
-        + '.pf-f input{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #D9D2C2;border-radius:9px;background:#EFEBE1;color:#7A8293}'
+        + '.pf-packs button,.pf-moy button{border:1px solid #DCE4E8;border-radius:12px;background:#fff;cursor:pointer;font:inherit;color:#132739}'
+        + '.pf-packs button{padding:10px 4px;text-align:center}.pf-packs b{display:block;font-size:20px}.pf-packs span{font-size:10.5px;font-weight:600;color:#5B6C79;white-space:nowrap}'
+        + '.pf-packs button[aria-pressed="true"],.pf-moy button[aria-pressed="true"]{border-color:#136B94;box-shadow:0 0 0 1px #136B94;background:#F3F9FC}'
+        + '.pf-moy{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}'
+        + '.pf-moy button{display:flex;align-items:center;gap:8px;min-height:46px;padding:0 10px;font-weight:700;font-size:15px;text-align:left}'
+        + '.pf-moy i{flex:0 0 14px;height:14px;border-radius:50%}'
+        + '.pf-f{margin-top:12px;border-radius:14px;background:#EEF5F8;padding:14px}'
+        + '.pf-f label{display:block;font-size:13px;font-weight:600;color:#415568;margin:8px 0 4px}.pf-f label:first-child{margin-top:0}'
+        + '.pf-f input{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #CFDDE4;border-radius:10px;background:#F7FAFB;color:#8A9AA6}'
         + '.pf-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}'
-        + '.pf-logos{display:flex;gap:6px;margin-bottom:6px}.pf-logos span{font:800 12px/1 "Source Sans 3",system-ui,sans-serif;padding:5px 8px;border-radius:5px;color:#fff}'
-        + '.pf-payer{display:block;width:100%;margin-top:12px;min-height:48px;border:0;border-radius:9px;background:#C9CED8;color:#4E5566;font:800 16px "Source Sans 3",system-ui,sans-serif;cursor:not-allowed}'
-        + '.pf-note{font-size:13px;color:#7A8293;margin:8px 0 0}'
-        + '.pf-prev{display:block;width:100%;margin-top:10px;min-height:46px;border:0;border-radius:9px;background:#1E8E57;color:#fff;font:800 15px "Source Sans 3",system-ui,sans-serif;cursor:pointer}'
+        + '.pf-logos{display:flex;gap:6px;margin-bottom:6px}.pf-logos span{font:700 12px/1 "Source Sans 3",system-ui,sans-serif;padding:5px 8px;border-radius:5px;color:#fff}'
+        + '.pf-payer{display:block;width:100%;margin-top:12px;min-height:48px;border:0;border-radius:12px;background:#D5DEE3;color:#5B6C79;font:700 16px "Source Sans 3",system-ui,sans-serif;cursor:not-allowed}'
+        + '.pf-note{font-size:13px;color:#5B6C79;margin:8px 0 0}'
+        + '.pf-prev{display:block;width:100%;margin-top:10px;min-height:46px;border:0;border-radius:12px;background:#092039;color:#fff;font:700 15px "Source Sans 3",system-ui,sans-serif;cursor:pointer;text-align:center;text-decoration:none}.pf-prev:hover{background:#136B94}'
         + '.pf-ok{margin:10px 0 0;font-weight:700;color:#14532D}.pf-ko{margin:10px 0 0;font-weight:700;color:#B3261E}'
-        + '.pf-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#EFE7D6;border-radius:12px;padding:4px;margin-top:16px}'
-        + '.pf-tabs button{border:0;border-radius:9px;background:none;font:800 14px "Source Sans 3",system-ui,sans-serif;color:#4E5566;min-height:40px;cursor:pointer}'
-        + '.pf-tabs button[aria-selected="true"]{background:#fff;color:#0B1220;box-shadow:0 2px 6px rgba(11,18,32,.08)}'
-        + '.pf-g{margin-top:12px}.pf-code{border-radius:12px;background:#E3F5EC;padding:10px 12px;margin-bottom:10px}.pf-code label{display:block;font-size:13px;font-weight:800;color:#14532D;margin-bottom:6px}'
-        + '.pf-code input,.pf-mc input,.pf-mc textarea{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #D9D2C2;border-radius:9px;background:#fff;color:#0B1220}'
-        + '.pf-mi{border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px #E2D8C4;margin-bottom:8px;overflow:hidden}.pf-mi.on{box-shadow:inset 0 0 0 2px #1E8E57}'
-        + '.pf-mi>button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;gap:10px;padding:11px 12px}'
-        + '.pf-mi>button span{flex:1}.pf-mi b{display:block;font-size:15px;color:#0B1220}.pf-mi small{font-size:12px;color:#7A8293;font-weight:700}'
-        + '.pf-mi em{font-style:normal;font-weight:800;font-size:13px;border-radius:999px;padding:5px 10px;white-space:nowrap}'
-        + '.pf-cr{background:#E44828;color:#fff}.pf-fait{background:#DDF5E8;color:#14532D}.pf-att{background:#FFF3D6;color:#5A3D00}'
-        + '.pf-mc{padding:0 12px 12px;font-size:15px}.pf-mc p{margin:0 0 8px}.pf-mc label{display:block;font-size:13px;font-weight:700;color:#4E5566;margin:8px 0 4px}'
+        + '.pf-mis{display:grid;gap:8px}'
+        + '.pf-mi{border:1px solid #DCE4E8;border-radius:12px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s}.pf-mi:hover{border-color:#92B7C7;box-shadow:0 3px 12px rgba(10,39,50,.05)}.pf-mi.on{border-color:#136B94;box-shadow:0 0 0 1px #136B94}'
+        + '.pf-mi>button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px}'
+        + '.pf-mi>button span{flex:1}.pf-mi b{display:block;font-size:16px;line-height:1.25;color:#132739}.pf-mi small{display:block;margin-top:3px;font-size:13px;color:#5B6C79}'
+        + '.pf-mi em{flex:none;font-style:normal;font-weight:700;font-size:13.5px;border-radius:100px;padding:5px 10px;white-space:nowrap}'
+        + '.pf-cr{background:#FFF0EC;color:#B83624}.pf-fait{background:#E3F4EA;color:#1D6A43}.pf-att{background:#E1EEF5;color:#136B94}'
+        + '.pf-mc{padding:0 13px 13px;font-size:15px}.pf-mc p{margin:0 0 8px}.pf-mc label{display:block;font-size:13px;font-weight:600;color:#415568;margin:8px 0 4px}'
+        + '.pf-mc input,.pf-mc textarea,.pf-code input{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #B9C9D1;border-radius:10px;background:#fff;color:#132739}'
         + '.pf-mc .pf-ck{display:flex;gap:8px;align-items:flex-start;font-weight:400}.pf-mc .pf-ck input{width:auto}'
-        + '.pf-lien{color:#1B71B2;font-weight:800}';
+        + '.pf-plus,.pf-ctog{display:block;width:100%;margin:10px 0 0;border:0;background:transparent;color:#136B94;font:700 15px "Source Sans 3",system-ui,sans-serif;text-align:left;padding:8px 2px;cursor:pointer}'
+        + '.pf-code{margin-top:16px;border-top:1px solid #DCE4E8;padding-top:6px}.pf-cf{display:flex;gap:8px;margin-top:8px}.pf-cf input{flex:1;min-width:0;text-transform:uppercase}'
+        + '.pf-cf button{border:0;border-radius:10px;background:#092039;color:#fff;font:700 15px "Source Sans 3",system-ui,sans-serif;padding:10px 16px;cursor:pointer}'
+        + '.pf-lien{color:#136B94;font-weight:700}'
+        + '.pf :focus-visible{outline:3px solid #6AB2D2;outline-offset:3px}'
+        + '@media(max-width:640px){.pf{width:100vw;max-width:100vw;max-height:92vh;margin:auto 0 0;border-radius:20px 20px 0 0}.pf-t{padding:18px 20px 16px}.pf-s{padding:16px 20px calc(20px + env(safe-area-inset-bottom))}.pf-sol b{font-size:36px}}'
+        + '@media(prefers-reduced-motion:no-preference){.pf[open]{animation:pfIn .18s ease-out}@keyframes pfIn{from{transform:translateY(12px);opacity:.7}to{transform:none;opacity:1}}}';
       document.head.appendChild(st);
       dlg = document.createElement('dialog'); dlg.className = 'pf'; dlg.setAttribute('data-garde', ''); dlg.setAttribute('aria-label', 'Mon portefeuille de crédits');
       document.body.appendChild(dlg);
       dlg.addEventListener('click', function (e) {
         if (e.target === dlg || e.target.closest('.pf-x')) { dlg.close(); return; }
+        if (e.target.closest('.pf-use')) { dlg.close(); }
         var p = e.target.closest('[data-pack]'); if (p) { pack = +p.dataset.pack; rendre(); return; }
         var m = e.target.closest('[data-moy]'); if (m) { moyen = m.dataset.moy; rendre(); return; }
         if (e.target.closest('.pf-prev') && !e.target.closest('.pf-r') && !e.target.closest('[data-act]') && !e.target.closest('.pf-mc a')) prevenir();
@@ -569,21 +581,23 @@
     rendre(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
   }
   function rendre() {
-    var s = solde(), sur = /\/coaching(\.html)?$/.test(location.pathname) ? '' : 'coaching.html', M = MOYENS.filter(function (x) { return x[0] === moyen; })[0];
+    var s = solde(), sur = /\/coaching(\.html)?$/.test(location.pathname) ? '' : 'coaching.html', M = MOYENS.filter(function (x) { return x[0] === moyen; })[0], ins = s !== null;
     var champs = moyen === 'carte'
       ? '<div class="pf-logos"><span style="background:#1A1F71">VISA</span><span style="background:#EB001B">Mastercard</span></div><label>Numéro de carte</label><input disabled placeholder="1234 5678 9012 3456" autocomplete="off"><div class="pf-2"><div><label>Expiration</label><input disabled placeholder="MM / AA" autocomplete="off"></div><div><label>Code de sécurité</label><input disabled placeholder="CVC" autocomplete="off"></div></div><label>Nom sur la carte</label><input disabled placeholder="Prénom Nom" autocomplete="off">'
       : '<label>Numéro ' + M[1] + '</label><input disabled placeholder="07 00 00 00 00" autocomplete="off"><p class="pf-note">Vous confirmerez le paiement sur votre téléphone, avec votre code ' + M[1] + '.</p>';
-    dlg.innerHTML = '<div class="pf-t"><button type="button" class="pf-x" aria-label="Fermer">×</button><small>Mon portefeuille</small><b>' + (s === null ? '0' : s) + '<span>crédit' + (s > 1 ? 's' : '') + '</span></b></div>'
-      + '<div class="pf-c"><div class="pf-promo"><b>Promotion d’ouverture : vos crédits sont offerts.</b><p>' + (s === null ? '3 crédits avec votre email, une' : 'Une') + ' carte à gratter par jour, +1 crédit par avis. <a href="' + sur + '#gratter">Gratter ma carte</a> · <a href="' + sur + '#choisir">Utiliser mes crédits</a></p></div>'
-      + '<div class="pf-tabs" role="tablist"><button type="button" role="tab" data-onglet="gagner" aria-selected="' + (onglet === 'gagner') + '">Gagner des crédits</button><button type="button" role="tab" data-onglet="acheter" aria-selected="' + (onglet === 'acheter') + '">Acheter des crédits</button></div>'
-      + (onglet === 'gagner' ? gagner() + '</div>' : '')
-      + '<p class="pf-h">Acheter des crédits <span class="pf-bt">Bientôt</span></p>'
+    var acheter = '<p class="pf-h">Acheter des crédits <span class="pf-bt">Bientôt</span></p><p class="pf-in">1 crédit = 10 000 FCFA. Le coût total s’affiche avant tout paiement.</p>'
       + '<div class="pf-packs">' + [1, 3, 5, 10].map(function (n) { return '<button type="button" data-pack="' + n + '" aria-pressed="' + (n === pack) + '"><b>' + n + '</b><span>' + fc(n * 10000) + '</span></button>'; }).join('') + '</div>'
       + '<div class="pf-moy">' + MOYENS.map(function (x) { return '<button type="button" data-moy="' + x[0] + '" aria-pressed="' + (x[0] === moyen) + '"><i style="background:' + x[2] + '"></i>' + x[1] + '</button>'; }).join('') + '</div>'
       + '<div class="pf-f">' + champs + '<button type="button" class="pf-payer" disabled>Payer ' + fc(pack * 10000) + ' · bientôt</button></div>'
-      + '<p class="pf-note">Le paiement par mobile money et par carte arrive bientôt. 1 crédit = 10 000 FCFA.</p>'
-      + '<button type="button" class="pf-prev">Me prévenir à l’ouverture du paiement</button><div class="pf-r" role="status"></div></div>';
-    if (onglet === 'gagner') dlg.innerHTML = dlg.innerHTML.split('<p class="pf-h">Acheter des crédits')[0];
+      + '<p class="pf-note">Le paiement par mobile money et par carte arrive bientôt.</p>'
+      + '<button type="button" class="pf-prev">Me prévenir à l’ouverture du paiement</button><div class="pf-r" role="status"></div>';
+    dlg.innerHTML = '<div class="pf-l"><div class="pf-t"><div class="pf-top"><small id="pf-titre">Mon portefeuille</small><button type="button" class="pf-x" aria-label="Fermer le portefeuille">×</button></div>'
+      + '<div class="pf-sol" aria-live="polite"><b>' + (ins ? s : 3) + '</b><span>' + (ins ? 'crédit' + (s > 1 ? 's' : '') + ' disponible' + (s > 1 ? 's' : '') : 'crédits offerts avec votre email') + '</span></div>'
+      + '<a class="pf-use" href="' + sur + '#choisir">' + (ins ? 'Utiliser mes crédits' : 'Activer mes crédits') + ' <span aria-hidden="true">→</span></a></div>'
+      + '<div class="pf-s"><p class="pf-promo"><b>Crédits offerts à l’ouverture</b>Une carte à gratter par jour et 1 crédit par avis. <a href="' + sur + '#gratter">Gratter ma carte</a>.</p>'
+      + '<div class="pf-tabs" role="tablist" aria-label="Options de crédits"><button type="button" role="tab" data-onglet="gagner" aria-selected="' + (onglet === 'gagner') + '">Gagner</button><button type="button" role="tab" data-onglet="acheter" aria-selected="' + (onglet === 'acheter') + '">Acheter</button></div>'
+      + (onglet === 'gagner' ? gagner() : acheter) + '</div></div>';
+    dlg.setAttribute('aria-labelledby', 'pf-titre');
   }
   var MISSIONS = [
     ['sgi', 2, 'Relever les frais réels de votre SGI', 'Validée par EFA'],
@@ -607,12 +621,18 @@
     if (id === 'beta') return '<p>Inscrivez-vous comme testeur : vous recevrez le prochain outil avant sa sortie, avec une fiche de test courte. Les crédits arrivent après la fiche.</p>' + champ('pfm-sujet', 'Ce qui vous intéresse', 'Bourse, tontine, budget, entreprise…') + besoinMail + envoyerB('Devenir testeur');
     return '';
   }
+  var plus = false, codeVu = false;
   function gagner() {
-    var M = lireM(), F = M.faits || {}, A = M.attente || {};
-    return '<div class="pf-g"><div class="pf-code"><label for="pf-cc">J’ai un code crédit</label><div class="pf-2"><input id="pf-cc" placeholder="EFAC-2-XXXX-XXXX" autocomplete="off" style="text-transform:uppercase"><button type="button" class="pf-prev" style="margin:0" data-act="code">Valider</button></div></div>'
-      + MISSIONS.map(function (x) { var st = F[x[0]] ? '<em class="pf-fait">Fait ✓</em>' : A[x[0]] ? '<em class="pf-att">En attente</em>' : '<em class="pf-cr">+' + x[1] + '</em>';
-        return '<div class="pf-mi' + (ouverte === x[0] ? ' on' : '') + '"><button type="button" data-mission="' + x[0] + '" aria-expanded="' + (ouverte === x[0]) + '"><span><b>' + x[2] + '</b><small>' + x[3] + '</small></span>' + st + '</button>' + (ouverte === x[0] ? '<div class="pf-mc">' + (F[x[0]] && x[0] !== 'parrain' ? '<p>Mission faite. Merci !</p>' : corpsMission(x[0], M)) + '</div>' : '') + '</div>'; }).join('')
-      + '<div class="pf-r" role="status"></div></div>';
+    var M = lireM(), F = M.faits || {}, A = M.attente || {}, idx = MISSIONS.map(function (x) { return x[0]; }).indexOf(ouverte);
+    if (idx > 2) plus = true;
+    function carte(x) { var st = F[x[0]] ? '<em class="pf-fait">Fait ✓</em>' : A[x[0]] ? '<em class="pf-att">En attente</em>' : '<em class="pf-cr">+' + x[1] + ' crédit' + (x[1] > 1 ? 's' : '') + '</em>';
+      return '<div class="pf-mi' + (ouverte === x[0] ? ' on' : '') + '"><button type="button" data-mission="' + x[0] + '" aria-expanded="' + (ouverte === x[0]) + '"><span><b>' + x[2] + '</b><small>' + x[3] + '</small></span>' + st + '</button>' + (ouverte === x[0] ? '<div class="pf-mc">' + (F[x[0]] && x[0] !== 'parrain' ? '<p>Mission faite. Merci !</p>' : corpsMission(x[0], M)) + '</div>' : '') + '</div>'; }
+    return '<p class="pf-h">Gagner des crédits</p><p class="pf-in">Des actions utiles à EFA, créditées tout de suite ou après validation.</p>'
+      + '<div class="pf-mis">' + MISSIONS.slice(0, 3).map(carte).join('') + (plus ? MISSIONS.slice(3).map(carte).join('') : '') + '</div>'
+      + '<button type="button" class="pf-plus" data-act="plus" aria-expanded="' + plus + '">' + (plus ? 'Masquer les autres missions ↑' : 'Voir les 4 autres missions ↓') + '</button>'
+      + '<div class="pf-code"><button type="button" class="pf-ctog" data-act="codevu" aria-expanded="' + codeVu + '">' + (codeVu ? 'Masquer le code crédit −' : 'J’ai un code crédit ＋') + '</button>'
+      + (codeVu ? '<div class="pf-cf"><input id="pf-cc" placeholder="EFAC-2-XXXX-XXXX" autocomplete="off" aria-label="Code crédit"><button type="button" data-act="code">Valider</button></div>' : '') + '</div>'
+      + '<div class="pf-r" role="status"></div>';
   }
   /* Code de fin d'enquête : « SPIRALE 2026 » en novembre 2026, puis « SPIRALE » + le mois en cours (DÉCEMBRE, JANVIER…).
      Le code du mois précédent reste accepté les 3 premiers jours du mois. */
@@ -627,6 +647,8 @@
   function dire(t, ko) { var r = dlg.querySelector('.pf-r'); if (r) r.innerHTML = '<p class="' + (ko ? 'pf-ko' : 'pf-ok') + '">' + t + '</p>'; }
   function action(a, b) {
     var M = lireM();
+    if (a === 'plus') { plus = !plus; if (!plus && MISSIONS.map(function (x) { return x[0]; }).indexOf(ouverte) > 2) ouverte = ''; rendre(); return; }
+    if (a === 'codevu') { codeVu = !codeVu; rendre(); if (codeVu) { var ci = dlg.querySelector('#pf-cc'); if (ci) ci.focus(); } return; }
     if (a === 'code') { var c = val('pf-cc').toUpperCase().replace(/\s+/g, ''), n = lireCode(c); M.codes = M.codes || []; if (!n) return dire('Ce code crédit n’est pas reconnu.', 1); if (M.codes.indexOf(c) >= 0) return dire('Ce code a déjà été utilisé.', 1); M.codes.push(c); ecrireM(M); crediter(n); rendre(); return dire('+' + n + ' crédit' + (n > 1 ? 's' : '') + ' ajouté' + (n > 1 ? 's' : '') + '. Merci pour votre aide !'); }
     if (a === 'code-enquete') { if (codesEnquete().indexOf(val('pfm-code').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '')) < 0) return dire('Ce code ne correspond pas. Il s’affiche à la fin de l’enquête.', 1); crediter(1, 'enquete'); rendre(); return dire('+1 crédit : merci d’avoir répondu.'); }
     if (a === 'diag') { crediter(1, 'diag'); rendre(); return dire('+1 crédit : merci pour votre diagnostic.'); }
