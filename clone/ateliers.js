@@ -41,7 +41,9 @@
     $('at-dlg-contact').hidden = ok || m !== 'contact';
     $('at-dlg-contact').href = 'rendez-vous.html?sujet=code-atelier&atelier=' + encodeURIComponent(cour.id) + '&t=' + encodeURIComponent(cour.t) + '#contact';
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
-    if (ok) { msg.className = 'ok'; msg.innerHTML = etat.ok[cour.id] === 'email' ? 'C’est fait. L’atelier est débloqué.' : 'Atelier débloqué avec la clé <b>' + etat.ok[cour.id] + '</b>.'; }
+    var go = $('at-dlg-go'); go.hidden = !(ok && cour.lien); if (cour.lien) go.href = cour.lien;
+    var suite = cour.lien ? '' : ' Votre place est réservée : nous vous envoyons le lien par email dès l’ouverture de la prochaine session.';
+    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. L’atelier est débloqué.' : 'Atelier débloqué avec la clé <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
   }
   function ouvrir(id) {
@@ -67,7 +69,7 @@
     etat.mail = m;
     if (cour.gratuit) { debloquer('email'); A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); return; }
     var k = D.nouvelleCle(); debloquer(k);
-    msg.innerHTML = 'Votre clé d’accès : <b>' + k + '</b>. L’atelier est débloqué et nous vous l’envoyons aussi à ' + m.replace(/[<>&]/g, '') + '.';
+    msg.innerHTML = 'Votre clé d’accès : <b>' + k + '</b>. L’atelier est débloqué et nous vous l’envoyons aussi à ' + m.replace(/[<>&]/g, '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
     A.envoyer(m, 'Clé d’accès générée · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · clé ' + k);
   });
   function valider() {

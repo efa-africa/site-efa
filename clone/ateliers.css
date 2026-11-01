@@ -184,3 +184,4 @@ details.at-dlg-cle[hidden]{display:none}
 #at-pr-msg{margin:10px 0 0;font-weight:700}#at-pr-msg.ok{color:#0b6b3a}#at-pr-msg.ko{color:#B3261E}
 .at-sr{position:absolute;left:-9999px}
 #at-dlg-contact[hidden]{display:none}
+.at-dlg [hidden]{display:none!important}
