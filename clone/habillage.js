@@ -446,8 +446,8 @@
     var surCoaching = /\/coaching(\.html)?$/.test(location.pathname);
     var b = document.createElement('div'); b.className = 'efa-promo'; b.setAttribute('role', 'region'); b.setAttribute('aria-label', 'Promotion d’ouverture');
     b.innerHTML = '<div class="efa-promo-in"><span class="p-r">Promotion</span><span class="p-j">Ouverture</span>'
-      + '<span class="p-t"><span class="p-long">Cours et ateliers offerts : gagnez votre code promo avec votre email.</span><span class="p-court">Cours offerts avec un code promo</span></span>'
-      + '<a class="p-v" href="' + (surCoaching ? '#premiers-pas' : 'coaching.html#premiers-pas') + '" data-goatcounter-click="promo-bandeau">Gagner mon code →</a>'
+      + '<span class="p-t"><span class="p-long">Cours et ateliers offerts pour l’ouverture : cliquez pour obtenir votre code promo.</span><span class="p-court">Cours offerts avec un code promo</span></span>'
+      + '<a class="p-v" href="' + (surCoaching ? '#premiers-pas' : 'coaching.html#premiers-pas') + '" data-goatcounter-click="promo-bandeau">Obtenir mon code →</a>'
       + '<button class="p-x" type="button" aria-label="Fermer le bandeau">×</button></div>';
     var fil = document.getElementById('fil'), main = document.querySelector('main');
     if (fil && fil.nextElementSibling) { var apres = fil.nextElementSibling; apres.parentNode.insertBefore(b, apres.nextSibling); }

@@ -35,9 +35,11 @@
     var ok = !!etat.ok[cour.id], m = D.acces(cour);
     $('at-dlg-prix').textContent = D.prix(cour);
     $('at-dlg-offre').textContent = m === 'gratuit' ? '' : m === 'contact' ? 'Promotion d’ouverture : offert sur demande' : 'Promotion d’ouverture : offert avec le code promo';
-    $('at-mail-l').textContent = m === 'gratuit' ? 'Votre email suffit' : 'Gagnez votre code promo avec votre email';
+    var reste = credits(), avisMode = !ok && m === 'cle' && reste <= 0;
     $('at-mail-ok').textContent = m === 'gratuit' ? 'Débloquer' : 'Obtenir mon code';
-    fm.hidden = ok || m === 'contact';
+    $('at-credits').textContent = m === 'cle' ? (reste > 1 ? reste + ' codes offerts restants' : reste === 1 ? 'Dernier code offert' : '') : '';
+    fm.hidden = ok || m === 'contact' || avisMode;
+    $('at-avis').hidden = !avisMode; if (avisMode) remplirAvis();
     $('at-dlg-contact').hidden = ok || m !== 'contact';
     $('at-dlg-contact').href = 'rendez-vous.html?sujet=code-atelier&atelier=' + encodeURIComponent(cour.id) + '&t=' + encodeURIComponent(cour.t) + '#contact';
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
@@ -45,6 +47,14 @@
     var suite = cour.lien ? '' : ' Votre place est réservée : nous vous envoyons le lien par email dès l’ouverture de la prochaine session.';
     if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' débloqué avec le code promo <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
+  }
+  var OFFERTS = 2;
+  function credits() { return OFFERTS + (etat.bonus || 0) - (etat.codes || 0); }
+  function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
+  function remplirAvis(vise) {
+    var s = $('at-avis-c'), L = testes(); s.innerHTML = '';
+    L.forEach(function (a) { var o = document.createElement('option'); o.value = a.id; o.textContent = a.t; if (a.id === vise) o.selected = true; s.appendChild(o); });
+    $('at-avis-t').textContent = L.length ? (credits() <= 0 ? 'Vous avez utilisé vos deux codes offerts. Donnez votre avis sur un contenu que vous avez testé : un nouveau code s’ouvre aussitôt.' : 'Votre avis nous aide à améliorer le contenu, et vous ouvre un code de plus.') : 'Testez d’abord un contenu débloqué, puis revenez donner votre avis.';
   }
   function ouvrir(id) {
     cour = D.liste.filter(function (a) { return a.id === id; })[0]; if (!cour) return;
@@ -62,16 +72,41 @@
     var c = document.querySelector('.at-c[data-id="' + cour.id + '"]');
     if (c) { c.classList.add('debloque'); c.querySelector('.at-c-btn').textContent = 'Accès débloqué ✓'; }
   }
+  var WEB3 = '426191fb-4812-4de4-b602-5857464c5916';
+  function notifier(objet, champs) {
+    try { fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(Object.assign({ access_key: WEB3, subject: 'efa.africa · ' + objet, from_name: 'Site efa.africa', page: location.pathname }, champs)) }); } catch (x) {}
+  }
   fm.addEventListener('submit', function (e) {
     e.preventDefault();
     var m = cm.value.trim();
-    if (!A || !A.valide(m)) { msg.textContent = 'Saisissez une adresse email valide.'; msg.className = 'ko'; cm.focus(); return; }
-    etat.mail = m;
-    if (cour.gratuit) { debloquer('email'); A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); return; }
-    var k = D.nouvelleCle(); debloquer(k);
-    msg.innerHTML = 'Votre code promo : <b>' + k + '</b>. Il est appliqué : ' + (cour.cours ? 'le cours' : 'l’atelier') + ' est offert, et nous vous envoyons le code à ' + m.replace(/[<>&]/g, '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
-    A.envoyer(m, 'Code promo généré · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · clé ' + k);
+    if (m && (!A || !A.valide(m))) { msg.textContent = 'Cette adresse email ne semble pas valide. Corrigez-la ou laissez le champ vide.'; msg.className = 'ko'; cm.focus(); return; }
+    if (m) etat.mail = m;
+    if (cour.gratuit) { debloquer('email'); if (m) A.envoyer(m, 'Atelier gratuit · ' + cour.t, cour.id); else notifier('Atelier gratuit débloqué · ' + cour.t, { atelier: cour.id }); return; }
+    if (credits() <= 0) { majDlg(); return; }
+    var k = D.nouvelleCle(); etat.codes = (etat.codes || 0) + 1; debloquer(k);
+    msg.innerHTML = 'Votre code promo : <b>' + k + '</b>. Il est appliqué : ' + (cour.cours ? 'le cours' : 'l’atelier') + ' est offert' + (m ? ', et nous vous envoyons le code à ' + m.replace(/[<>&]/g, '') : '') + '.' + (cour.lien ? '' : ' Votre place est réservée : le lien suit dès l’ouverture de la prochaine session.');
+    if (m) A.envoyer(m, 'Code promo généré · ' + cour.t, cour.id + ' · ' + D.prix(cour) + ' · code ' + k);
+    else notifier('Code promo généré · ' + cour.t, { atelier: cour.id, code: k });
   });
+  $('at-avis').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var id = $('at-avis-c').value, n = (document.querySelector('#at-avis input[name=note]:checked') || {}).value, t = $('at-avis-txt').value.trim();
+    if (!id) { msg.className = 'ko'; msg.textContent = 'Testez d’abord un contenu débloqué.'; return; }
+    if (!n) { msg.className = 'ko'; msg.textContent = 'Choisissez une note de 1 à 5.'; return; }
+    if (t.length < 40) { msg.className = 'ko'; msg.textContent = 'Écrivez une ou deux phrases : ce qui vous a servi, ce qui vous a manqué.'; $('at-avis-txt').focus(); return; }
+    var a = D.liste.filter(function (x) { return x.id === id; })[0] || { t: id };
+    etat.avis = etat.avis || {}; etat.avis[id] = +n; etat.bonus = (etat.bonus || 0) + 1; ecrire(etat);
+    notifier('Avis · ' + a.t + ' · ' + n + '/5', { contenu: id, note: n, avis: t, citation_autorisee: $('at-avis-pub').checked ? 'oui' : 'non', prenom: $('at-avis-prenom').value.trim(), email: etat.mail || '' });
+    $('at-avis').reset();
+    if (cour && !etat.ok[cour.id]) { majDlg(); msg.className = 'ok'; msg.textContent = 'Merci pour votre avis. Un nouveau code est disponible : cliquez sur « Obtenir mon code ».'; }
+    else { $('at-avis').hidden = true; msg.className = 'ok'; msg.textContent = 'Merci pour votre avis. Un nouveau code est disponible pour le contenu de votre choix.'; }
+  });
+  // Donner son avis depuis un cours : coaching.html?avis=<id>#avis
+  var pa = (location.search.match(/[?&]avis=([a-z0-9-]+)/) || [])[1];
+  if (/#avis$/.test(location.hash) || pa) setTimeout(function () {
+    cour = D.liste.filter(function (a) { return a.id === pa; })[0] || testes()[0] || D.liste[0];
+    ouvrir(cour.id); fm.hidden = true; $('at-avis').hidden = false; remplirAvis(pa); $('at-dlg-go').hidden = true; msg.textContent = '';
+  }, 120);
   function valider() {
     var v = champ.value.trim().toUpperCase().replace(/\s+/g, '');
     if (!D.cleValide(v)) { msg.textContent = 'Ce code promo n’est pas reconnu. Vérifiez les lettres et les tirets.'; msg.className = 'ko'; return; }
