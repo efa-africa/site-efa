@@ -46,7 +46,7 @@
     var h = document.getElementById('clone-haut') || document.getElementById('haut') || document.querySelector('body > header');
     if (!h) return;
     var st = document.createElement('style');
-    st.textContent = '.efa-promo{position:relative;z-index:4;background:#F5EFE2;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220}'
+    st.textContent = '.efa-promo{position:relative;z-index:4;background:#F1F7FA;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220}'
       + '.efa-promo::before{content:"";display:block;height:4px;background:linear-gradient(90deg,#E44828 0 33.3%,#F2B84B 33.3% 66.6%,#3CCB7F 66.6%)}'
       + '.efa-promo-in{max-width:1180px;margin:0 auto;padding:9px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;flex-wrap:wrap}'
       + '.efa-promo .p-r,.efa-promo .p-j{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 10px}'

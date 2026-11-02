@@ -631,7 +631,7 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 .tm-c,.tm-img{break-inside:avoid;margin:0 0 18px;display:block}
 .tm-c{position:relative;border-radius:22px;padding:26px 24px 22px;background:#EEF5FC}
 .tm-c1{background:#fff;box-shadow:0 14px 34px rgba(7,29,56,.09)}
-.tm-c2{background:#F5EFE2}
+.tm-c2{background:#F1F7FA}
 .tm-g{position:absolute;top:6px;right:18px;font:700 76px/1 "Libre Baskerville",Georgia,serif;color:#E44828;opacity:.9}
 .tm blockquote{margin:0}
 .tm-fort{margin:0;padding-right:40px;font:700 clamp(19px,1.8vw,23px)/1.25 "Libre Baskerville",Georgia,serif;color:#071d38}

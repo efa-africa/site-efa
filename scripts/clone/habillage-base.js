@@ -193,7 +193,7 @@
     var cs = getComputedStyle(el);
     if (/url\(/.test(cs.backgroundImage)) return; // photo de fond : on garde
     var c = rgb(cs.backgroundColor), sombre = (c && c.a > .35 && nuit(c)) || gradientSombre(cs.backgroundImage);
-    /* Crème et beige de l'ancienne charte (#F5EFE2, #FFFDF8…) : bleu très pâle ou blanc */
+    /* Crème et beige de l'ancienne charte (#F1F7FA, #FFFFFF…) : bleu très pâle ou blanc */
     if (!sombre && c && c.a > .5 && lum(c) > .62 && c.r - c.b > 6 && c.r >= c.g && !el.hasAttribute('data-clair')) {
       var dansSurface = el.parentElement && el.parentElement.closest('[data-clair="creme"]');
       el.style.setProperty('background-color', dansSurface ? '#ffffff' : '#f3f7fb', 'important');
@@ -249,7 +249,7 @@
     el.setAttribute('data-clair', '');
     if (fond === '#ffffff') el.setAttribute('data-clair-carte', '');
   }
-  /* Filets beiges de l'ancienne charte (#E2D8C4, #D9CDB5…) : filet bleu-gris */
+  /* Filets beiges de l'ancienne charte (#DCE8ED, #C3D6E0…) : filet bleu-gris */
   function filet(el, cs) {
     var b = rgb(cs.borderTopColor);
     if (b && b.a > .3 && parseFloat(cs.borderTopWidth) > 0 && b.r - b.b > 12 && b.r >= b.g && lum(b) > .45 && lum(b) < .9)

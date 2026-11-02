@@ -20,7 +20,7 @@
 /* Terminal EFA : un univers sombre unique, assumé. Données en mono, titres en Big Shoulders. */
 :root{
   --bg:#070C16; --panel:#0D1525; --panel2:#111B2F; --line:#1F2C45; --ink:#E8EDF5; --ink2:#A9B4C6; --mute:#7A879D;
-  --bleu:#6DB8F2; --bleu-d:#2188D6; --corail:#F0603F; --amber:#F2B84B; --creme:#F5EFE2;
+  --bleu:#6DB8F2; --bleu-d:#2188D6; --corail:#F0603F; --amber:#F2B84B; --creme:#F1F7FA;
   --up:#3FCF8E; --down:#FF6B6B; --flat:#8C97AB;
   --mono:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --disp:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
@@ -454,7 +454,7 @@ a.st-card{text-decoration:none}
 .subtabs a small{font-size:13px}
 .subtabs a[aria-current="page"]{background:#0B1220;color:#C9D1DE;box-shadow:none}
 .subtabs a[aria-current="page"] b{color:#fff}
-.tab:not(#tab-brvm) .subtabs a:not([aria-current="page"]){background:#FFFDF8;box-shadow:none}
+.tab:not(#tab-brvm) .subtabs a:not([aria-current="page"]){background:#FFFFFF;box-shadow:none}
 #tab-brvm .subtabs a{background:#1A2A47;color:#C9D1DE;box-shadow:none}#tab-brvm .subtabs a b{color:#fff}
 #tab-brvm .subtabs a[aria-current="page"]{background:#DA3C1B;color:#fff;box-shadow:none}
 .subtabs a:hover{color:var(--ink)}
@@ -571,7 +571,7 @@ a.st-card{text-decoration:none}
 
 
 /* Grammaire des fonds (25/10/2026) : la Bourse (BRVM) garde son terminal sombre ; études, actualités, prospective, simulateurs et méthode passent en crème, pour lire. */
-.tab:not(#tab-brvm){--bg:#F5EFE2;--panel:#FFFDF8;--panel2:#FFFFFF;--line:#E2D8C4;--ink:#0B1220;--ink2:#4E5566;--mute:#5F6676;--bleu:#1A6FB3;--corail:#B8341A;background:var(--bg);color:var(--ink);color-scheme:light}
+.tab:not(#tab-brvm){--bg:#F1F7FA;--panel:#FFFFFF;--panel2:#FFFFFF;--line:#DCE8ED;--ink:#0B1220;--ink2:#4E5566;--mute:#5F6676;--bleu:#1A6FB3;--corail:#B8341A;background:var(--bg);color:var(--ink);color-scheme:light}
 .tab:not(#tab-brvm) .rubs a[aria-current="page"]{color:var(--ink)}
 /* Contrastes lisibles sur fond clair (WCAG AA) */
 .tab:not(#tab-brvm){--up:#1E7A4C}
@@ -580,10 +580,10 @@ a.st-card{text-decoration:none}
 .tab:not(#tab-brvm) .garant .g-lien{color:var(--ink)}
 .mainnav a.mn-cta{background:#DA3C1B}
 .tab:not(#tab-brvm) .big.b{color:#fff}
-.tab:not(#tab-brvm) select,.tab:not(#tab-brvm) input[type="search"],.tab:not(#tab-brvm) input[type="text"]{background:#FFFDF8;color:#0B1220;border:1px solid #E2D8C4}
+.tab:not(#tab-brvm) select,.tab:not(#tab-brvm) input[type="search"],.tab:not(#tab-brvm) input[type="text"]{background:#FFFFFF;color:#0B1220;border:1px solid #DCE8ED}
 </style>
-<link rel="stylesheet" href="footer.css?v=2026102602">
-<link rel="stylesheet" href="clone/habillage.css?v=20261102e">
+<link rel="stylesheet" href="footer.css?v=20261102z">
+<link rel="stylesheet" href="clone/habillage.css?v=20261102z">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur" aria-current="page">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -1742,14 +1742,14 @@ setHH(); route();
   });
 })();
 </script>
-<script src="prevenir.js?v=2026102601" defer></script>
+<script src="prevenir.js?v=20261102z" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 // ENQUETE_LIEN : lien du questionnaire « L'argent de la tontine » (le même que dans index.html).
 (function(){var ENQUETE_LIEN='https://forms.gle/Sczi5p58q9ijuKqp9';var a=document.getElementById('enq-l-a');if(a&&ENQUETE_LIEN){a.href=ENQUETE_LIEN;a.target='_blank';a.rel='noopener';}})();
 </script>
-<script src="etude-pdf.js?v=2026102301" defer></script>
-<script src="efa-appli.js?v=2026103104" defer></script>
+<script src="etude-pdf.js?v=20261102z" defer></script>
+<script src="efa-appli.js?v=20261102z" defer></script>
 
 <script>
 /* Bulletin « La semaine à la Bourse (BRVM) » → Brevo (liste dédiée, double confirmation).
@@ -1783,6 +1783,6 @@ var BRVM_FORM_URL='https://b46b1615.sibforms.com/serve/MUIFAAPqeKYInXpC5639w_t_3
   });
 })();
 </script>
-<script src="clone/habillage.js?v=20261102e" defer></script>
+<script src="clone/habillage.js?v=20261102z" defer></script>
 </body>
 </html>

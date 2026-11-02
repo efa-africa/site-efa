@@ -11,7 +11,7 @@ NAVCSS = T[T.index('.top{position:sticky'):T.index('.intro{background:var(--nuit
 V = '2026102506'
 
 CSS = '''
-:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#E2D8C4;--hausse:#3CCB7F;
+:root{--nuit:#0B1220;--creme:#F1F7FA;--papier:#FFFFFF;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#DCE8ED;--hausse:#3CCB7F;
 --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--gut:max(16px,env(safe-area-inset-left,0px))}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -61,7 +61,7 @@ main{padding-bottom:40px}
 .etat3{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
 .etat3 li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;border-radius:12px;padding:14px 16px;color:#fff}
 .etat3 li b{font-family:var(--f-display);font-size:24px}.etat3 li span{font-weight:700}.etat3 em.ok{font-style:normal;font-size:13px;font-weight:800;background:var(--hausse);color:var(--nuit);border-radius:999px;padding:3px 10px}
-.etat3 .c-fondations{background:#E44828}.etat3 .c-maitrise{background:#2188D6}.etat3 .c-patrimoine{background:#FFFDF8;color:var(--nuit);box-shadow:0 1px 0 var(--line)}.etat3 .c-patrimoine b{color:var(--corail)}
+.etat3 .c-fondations{background:#E44828}.etat3 .c-maitrise{background:#2188D6}.etat3 .c-patrimoine{background:#FFFFFF;color:var(--nuit);box-shadow:0 1px 0 var(--line)}.etat3 .c-patrimoine b{color:var(--corail)}
 @media (max-width:520px){.etat3 li{grid-template-columns:36px minmax(0,1fr)}.etat3 li>:last-child{grid-column:2}}
 .cert{background:var(--creme);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 18px rgba(11,18,32,.1);color:var(--nuit)}
 .cert-h{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;flex-wrap:wrap}
@@ -145,7 +145,7 @@ page('certificat-maitrise', 'maitrise', 'Certificat local Maîtrise', 'Cycle II 
 dp, np_ = donnees('patrimoine', 'III', '#E44828')
 page('certificat-patrimoine', 'patrimoine', 'Certificat local Patrimoine', 'Cycle III · Certificat local · Pilote',
      'Les quiz des 7 modules du cycle Patrimoine, puis l’examen final : 24 questions, 30 minutes, 17 bonnes réponses pour réussir.',
-     '#FFFDF8', '#0B1220', '#4E5566', '#E44828', dp, 'cycle-patrimoine')
+     '#FFFFFF', '#0B1220', '#4E5566', '#E44828', dp, 'cycle-patrimoine')
 page('certificat-cefa', 'cefa', 'Certificat CEFA ★', 'Le certificat EFA complet · Pilote',
      'Les trois certificats locaux, Fondations, Maîtrise et Patrimoine, réunis : toute l’école EFA. Il ouvre le rôle de Passeur EFA.',
      '#0B1220', '#fff', '#C9D1DE', '#F09680', '', 'certificats')

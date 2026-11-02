@@ -138,7 +138,7 @@
     S = S.slice(-30); try { sessionStorage.setItem(FIL, JSON.stringify(S)); } catch (e) {}
     var prev = S.length > 1 ? S[S.length - 2] : (pg !== "index.html" ? { u: "index.html", t: "Accueil" } : null);
     var st = document.createElement("style");
-    st.textContent = ".efa-fil{background:#F5EFE2;border-bottom:1px solid #E2D8C4;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;align-self:stretch;width:100%;box-sizing:border-box}"
+    st.textContent = ".efa-fil{background:#F1F7FA;border-bottom:1px solid #DCE8ED;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;align-self:stretch;width:100%;box-sizing:border-box}"
       + ".efa-fil-in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px max(12px,env(safe-area-inset-left,0px))}"
       + ".efa-fil-place{width:100%;max-width:100%;min-width:0;align-self:stretch}.efa-fil{max-width:100%;overflow:hidden}.efa-fil-in{min-width:0}.efa-fil-in>a{flex:0 1 auto;min-width:0}"
       + ".efa-fil a{display:inline-block;line-height:26px;min-height:38px;padding:6px 12px;border-radius:8px;font-size:14.5px;font-weight:800;text-decoration:none;color:#0B1220;max-width:48%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"
@@ -146,7 +146,7 @@
       + ".efa-fil a span{font-weight:600;opacity:.85}.efa-fil a .fp{font-weight:800}"
       + "@media (max-width:520px){.efa-fil a.fil-s .fp{display:none}.efa-fil a.fil-s span{opacity:1;font-weight:800}}"
       + "@media (max-width:520px){.efa-fil a{font-size:14px;padding:6px 12px}.efa-fil a.fil-p span{display:none}.efa-fil a.fil-s{max-width:calc(100% - 104px)}}"
-      + ".efa-fil.flot{position:fixed;left:0;right:0;z-index:45;background:rgba(245,239,226,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(11,18,32,.12);animation:efaFil .18s ease-out}"
+      + ".efa-fil.flot{position:fixed;left:0;right:0;z-index:45;background:rgba(241,247,250,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(11,18,32,.12);animation:efaFil .18s ease-out}"
       + ".efa-fil.flot .efa-fil-in{padding-top:4px;padding-bottom:4px}.efa-fil.flot a{min-height:34px;line-height:22px;padding:6px 12px}"
       + "@keyframes efaFil{from{transform:translateY(-8px);opacity:0}to{transform:none;opacity:1}}"
       + "@media (prefers-reduced-motion:reduce){.efa-fil.flot{animation:none}}"
@@ -240,7 +240,7 @@
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
     var s = document.createElement("script");
-    s.src = "parcours-efa.js?v=2026102512"; s.onload = cb; s.onerror = function () {};
+    s.src = "parcours-efa.js?v=20261102z"; s.onload = cb; s.onerror = function () {};
     document.head.appendChild(s);
   }
   function lire() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -289,7 +289,7 @@
     + ".efa-ctx .ctx-acts{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}"
     + ".efa-ctx button.ctx-fait{font:800 14.5px \"Source Sans 3\",system-ui,sans-serif;min-height:40px;padding:8px 14px;border-radius:8px;border:0;cursor:pointer;background:#DA3C1B;color:#fff}"
     + ".efa-ctx button.ctx-fait[aria-pressed=true]{background:#3CCB7F;color:#0B1220}"
-    + ".efa-ctx a.ctx-suiv{background:#F5EFE2;color:#0B1220;text-decoration:none;padding:8px 14px;border-radius:8px}"
+    + ".efa-ctx a.ctx-suiv{background:#F1F7FA;color:#0B1220;text-decoration:none;padding:8px 14px;border-radius:8px}"
     + "@media print{.efa-suite,.efa-ctx{display:none}}";
 
   var LIGNE = '<div class="es-partage"><p><b>Ça vous a aidé ?</b> Partagez-le à quelqu’un qui en a besoin : c’est comme ça qu’EFA grandit.</p>'
@@ -434,7 +434,7 @@
   st.textContent="html.efa-vert .top,html.efa-vert .efa-nav{background:#0F2E2A;border-bottom-color:#163E38}"
     +"html.efa-vert .nav a.nav-cta,html.efa-vert .efa-nav a.efa-nav-p{background:#C9A35C;color:#0F2E2A}"
     +"@media (max-width:900px){html.efa-vert .nav{background:#0F2E2A}html.efa-vert .nav a.nav-cta{background:none;color:#E2C893}}"
-    +"html.efa-vert .efa-fil{background:#F6F1E6;border-bottom-color:#E4DCC9}"
+    +"html.efa-vert .efa-fil{background:#F1F7FA;border-bottom-color:#DCE8ED}"
     +"html.efa-vert .efa-fil a.fil-p{background:#0F2E2A;color:#fff}"
     +"html.efa-vert .efa-fil a.fil-s{background:#C9A35C;color:#0F2E2A}"
     +"html.efa-vert .efa-suite .es-btn,html.efa-vert .efa-suite .es-pb.wa,html.efa-vert .efa-suite .es-merci,html.efa-vert .efa-ctx button.ctx-fait{background:#C9A35C;color:#0F2E2A}"

@@ -2,8 +2,8 @@
 Style : aplats, palette de la charte, sans texte ni logo. Usage : python3 illus/generer.py
 Chaque fonction renvoie le contenu d'un SVG 480 × 300 (bannière) ; les fichiers sont écrits dans illus/."""
 import os, math
-N = "#0B1220"; C = "#DA3C1B"; CS = "#F09680"; B = "#1B71B2"; BS = "#6DB8F2"; CR = "#F5EFE2"; P = "#FFFDF8"
-L = "#E2D8C4"; S = "#E9DCC2"; G = "#1E7A4C"; GS = "#7CC49A"; Y = "#F2B84B"; BR = "#7A4A2A"; GR = "#AEB6C6"
+N = "#0B1220"; C = "#DA3C1B"; CS = "#F09680"; B = "#1B71B2"; BS = "#6DB8F2"; CR = "#F1F7FA"; P = "#FFFFFF"
+L = "#DCE8ED"; S = "#DCE8ED"; G = "#1E7A4C"; GS = "#7CC49A"; Y = "#F2B84B"; BR = "#7A4A2A"; GR = "#AEB6C6"
 W, H = 480, 300
 D = os.path.dirname(os.path.abspath(__file__))
 

@@ -9,9 +9,9 @@
 :root{
   --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --page:#E9E2D2; --page-ink:#4E5566;
-  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --corail:#DA3C1B; --bleu:#1B71B2;
-  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#E2D8C4; --hausse:#1E9E5A;
+  --page:#DCE8ED; --page-ink:#4E5566;
+  --nuit:#0B1220; --creme:#F1F7FA; --papier:#FFFFFF; --corail:#DA3C1B; --bleu:#1B71B2;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676; --line:#DCE8ED; --hausse:#1E9E5A;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}}
 :root[data-theme="dark"]{--page:#070C16;--page-ink:#C9D1DE;color-scheme:dark}
@@ -190,7 +190,7 @@ body{justify-content:safe center}
   .certificat{width:297mm;height:210mm;border-radius:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261102e">
+<link rel="stylesheet" href="clone/habillage.css?v=20261102z">
 </head><body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser" aria-current="page">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 
@@ -1118,7 +1118,7 @@ MODULES.push((function(){
     });
     function dessiner(avecLogo){
       var X=320;
-      g.fillStyle='#F5EFE2';g.fillRect(0,0,W,H);g.textAlign='left';g.textBaseline='alphabetic';
+      g.fillStyle='#F1F7FA';g.fillRect(0,0,W,H);g.textAlign='left';g.textBaseline='alphabetic';
       if(avecLogo&&lg.naturalWidth)g.drawImage(lg,X,250,190,190);
       g.fillStyle='#0B1220';g.font='800 44px "Source Sans 3"';espaceG(g,'EFA · ÉDUCATION FINANCIÈRE AFRIQUE',X+(avecLogo?240:0),362,10);
       g.font='800 36px "Source Sans 3"';var sp='PILOTE 2026',spw=g.measureText(sp).width+5*(sp.length-1)+96;g.fillStyle='#F2B84B';rond(g,W-X-spw,305,spw,92,46);g.fill();g.fillStyle='#0B1220';espaceG(g,sp,W-X-spw+48,364,5);
@@ -1131,7 +1131,7 @@ MODULES.push((function(){
       g.fillText('et réussi l\'examen final avec un score de '+r.pct+' %.',X,1515);
       g.font='700 42px "Source Sans 3"';
       MODULES.forEach(function(m,k){var x=X+(k%4)*720,y=1650+Math.floor(k/4)*70;g.fillStyle='#E44828';g.fillText(m.num,x,y);g.fillStyle='#2A3142';g.fillText(m.court,x+45,y)});
-      g.fillStyle='#E2D8C4';g.fillRect(X,1930,W-2*X,3);
+      g.fillStyle='#DCE8ED';g.fillRect(X,1930,W-2*X,3);
       g.fillStyle='#7A8293';g.font='700 34px "Source Sans 3"';espaceG(g,'DATE',X,2010,3);espaceG(g,'NUMÉRO',X+1000,2010,3);
       g.fillStyle='#0B1220';g.font='700 56px "Libre Baskerville"';g.fillText(dateFr(r.date),X,2090);g.fillText(r.numero,X+1000,2090);
       g.fillRect(X+2000,2050,W-2*X-2000,4);g.fillStyle='#7A8293';g.font='700 34px "Source Sans 3"';espaceG(g,"ÉLYSÉE JOHNSON · PRÉSIDENT D'EFA",X+2000,2110,3);
@@ -1149,8 +1149,8 @@ MODULES.push((function(){
   var mq=+(new URLSearchParams(location.search).get('m')||0); if(mq>=1&&mq<=MODULES.length) ouvrir(mq); else sommaire();
 })();
 </script>
-<script src="efa-sons.js?v=2026102701" defer></script>
-<script src="efa-suite.js?v=2026102902" defer></script>
-<script src="efa-compte.js?v=2026102701" defer></script>
-<script src="clone/habillage.js?v=20261102e" defer></script>
+<script src="efa-sons.js?v=20261102z" defer></script>
+<script src="efa-suite.js?v=20261102z" defer></script>
+<script src="efa-compte.js?v=20261102z" defer></script>
+<script src="clone/habillage.js?v=20261102z" defer></script>
 </body></html>

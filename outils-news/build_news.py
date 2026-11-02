@@ -147,7 +147,7 @@ CSS = """<style>
 .sources a{color:var(--bleu);font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .sources span{display:block;font-size:14px;color:var(--ink3)}
 .sources .st{display:block;width:max-content;max-width:100%;font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:2px 9px;margin:0 0 4px}
-.sources .st.p{background:#DDEDF8;color:#0F4E80}.sources .st.m{background:#EFE8DA;color:#4E5566}
+.sources .st.p{background:#DDEDF8;color:#0F4E80}.sources .st.m{background:#F1F7FA;color:#4E5566}
 .verif{margin-top:14px;background:var(--papier);border-radius:14px;padding:18px;display:grid;gap:10px}
 .verif .vq{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(18px,2vw,21px);line-height:1.35;color:var(--nuit)}
 .verif .vc{display:grid;gap:8px}
@@ -198,7 +198,7 @@ CSS_HOME = """<style>
 .cherche input::-webkit-search-cancel-button{display:none}
 .cherche .bt{min-height:52px}
 .filtres{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
-.filtres button{flex:0 0 auto;min-height:44px;padding:10px 16px;border-radius:999px;border:0;background:var(--papier);color:var(--nuit);font:700 15px var(--f-body);cursor:pointer;box-shadow:inset 0 0 0 1.5px #D9CDB5}
+.filtres button{flex:0 0 auto;min-height:44px;padding:10px 16px;border-radius:999px;border:0;background:var(--papier);color:var(--nuit);font:700 15px var(--f-body);cursor:pointer;box-shadow:inset 0 0 0 1.5px #C3D6E0}
 .filtres button[aria-pressed="true"]{background:var(--nuit);color:#fff;box-shadow:none}
 .filtres button:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
 .etat{margin-top:14px;font-size:15px;color:var(--ink2);min-height:1.5em}
@@ -249,7 +249,7 @@ def head(titre, desc, canon, pre, og_type="website", image=None, extra=""):
 {extra}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
-<link rel="stylesheet" href="{pre}footer.css?v=2026102602">
+<link rel="stylesheet" href="{pre}footer.css?v=20261102z">
 """
 
 JS_MENU = """<script>
@@ -261,7 +261,7 @@ def tail(pre):
     return f"""{reloc(footer, pre)}
 {JS_MENU}
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="{pre}efa-appli.js?v=2026102904" defer></script>
+<script src="{pre}efa-appli.js?v=20261102z" defer></script>
 </body>
 </html>
 """

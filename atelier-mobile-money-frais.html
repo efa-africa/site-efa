@@ -11,8 +11,8 @@
 :root{
   --f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--corail:#E44828;--bleu:#2188D6;--vert:#1E8E57;--vert-c:#3CCB7F;--jaune:#F2B84B;--rouge:#B3261E;
-  --ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#E2D8C4;
+  --nuit:#0B1220;--creme:#F1F7FA;--papier:#FFFFFF;--corail:#E44828;--bleu:#2188D6;--vert:#1E8E57;--vert-c:#3CCB7F;--jaune:#F2B84B;--rouge:#B3261E;
+  --ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#DCE8ED;
   --c:#E44828;--ct:#FDEBE6;--cx:#fff;
 }
 *{box-sizing:border-box}
@@ -56,7 +56,7 @@ button{font:inherit}
 .ch5 .no{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:18px;background:var(--cc);color:var(--cx2)}
 .ch5 h3{font-family:var(--f-display);font-size:19px;line-height:1.2;color:var(--nuit)}
 .ch5 small{display:block;font-size:13px;font-weight:700;color:var(--ink3);margin-top:3px}
-.ch5 .bar{height:6px;border-radius:9px;background:#EFE7D6;margin:10px 0 0;overflow:hidden}.ch5 .bar i{display:block;height:100%;background:var(--cc)}
+.ch5 .bar{height:6px;border-radius:9px;background:#F1F7FA;margin:10px 0 0;overflow:hidden}.ch5 .bar i{display:block;height:100%;background:var(--cc)}
 .ch5 button{margin-top:10px;border:0;border-radius:8px;min-height:42px;padding:0 14px;font-weight:800;font-size:15px;cursor:pointer;background:var(--nuit);color:#fff}
 .ch5.actif{box-shadow:0 0 0 2.5px var(--corail),0 6px 18px rgba(11,18,32,.06)}
 .ch5.actif button{background:var(--corail)}
@@ -71,7 +71,7 @@ button{font:inherit}
 .cta{display:inline-block;border:0;border-radius:8px;min-height:50px;padding:0 22px;background:var(--corail);color:#fff;font-weight:800;font-size:16px;cursor:pointer;text-decoration:none;line-height:50px;margin-top:14px}
 .cta.sec{background:#fff;color:var(--nuit);box-shadow:inset 0 0 0 1.5px var(--line)}
 .prog2{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:14px;font-weight:800;color:var(--nuit)}
-.prog2 .b{flex:0 0 90px;height:6px;border-radius:9px;background:#E2D8C4;overflow:hidden}.prog2 .b i{display:block;height:100%;background:var(--c)}
+.prog2 .b{flex:0 0 90px;height:6px;border-radius:9px;background:#DCE8ED;overflow:hidden}.prog2 .b i{display:block;height:100%;background:var(--c)}
 .prog2 a{margin-left:auto;font-weight:700;color:var(--bleu);text-decoration:underline;text-decoration-color:var(--corail);cursor:pointer;background:none;border:0;font-size:14px;padding:0}
 .ecn{font-size:12px;color:var(--ink3);font-weight:700}
 .exemple{background:#FFF3D6;border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:15px}
@@ -129,7 +129,7 @@ button{font:inherit}
 .ch{display:flex;flex-direction:column;justify-content:flex-end}
 @media(max-width:520px){.champs:not(.c3){grid-template-columns:1fr}}
 .ch label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:4px}
-.ch input,.ch select,.ch textarea,.w input[type=text]{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #CFC5B0;border-radius:10px;background:#fff;color:var(--nuit)}
+.ch input,.ch select,.ch textarea,.w input[type=text]{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:var(--nuit)}
 .ch textarea{min-height:72px;resize:vertical}
 .ch input:focus,.ch select:focus,.ch textarea:focus{outline:3px solid var(--c);outline-offset:0;border-color:transparent}
 .gros{margin-top:14px;border-radius:14px;padding:16px;background:var(--nuit);color:#fff}
@@ -137,14 +137,14 @@ button{font:inherit}
 .gros b{display:block;font-family:var(--f-display);font-size:clamp(28px,6vw,40px);line-height:1.1;margin-top:4px}
 .gros p{margin:6px 0 0;color:#E8EDF5;font-size:15px}
 .puces{display:flex;flex-wrap:wrap;gap:8px}
-.pu{all:unset;cursor:pointer;padding:9px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #CFC5B0;font-weight:700;font-size:15px}
+.pu{all:unset;cursor:pointer;padding:9px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #C3D6E0;font-weight:700;font-size:15px}
 .pu[aria-pressed="true"]{background:var(--c);color:var(--cx);box-shadow:none}
 .pu:focus-visible{outline:3px solid var(--bleu)}
 .verdict{margin-top:14px;border-radius:12px;padding:12px 14px;font-weight:700;font-size:16px}
 .v-ok{background:#DDF5E8;color:#14532D}.v-ko{background:#FDE2DE;color:#7F1D16}.v-mid{background:#FFF3D6;color:#5A3D00}
 /* Blocs réserve */
 .mois{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.mois div{height:64px;border-radius:10px;background:#EFE7D6;position:relative;overflow:hidden}
+.mois div{height:64px;border-radius:10px;background:#F1F7FA;position:relative;overflow:hidden}
 .mois div i{position:absolute;inset:auto 0 0 0;height:0;background:var(--c);transition:height .5s}
 .mois div span{position:absolute;left:8px;top:6px;font-size:12px;font-weight:800;color:var(--nuit);z-index:1}
 /* Dettes */
@@ -176,7 +176,7 @@ input[type=range]{width:100%;accent-color:var(--c)}
 .qz{background:var(--ct);border-radius:12px;padding:12px 14px;margin-bottom:10px}
 .qz p{margin:0 0 8px;font-weight:600}
 .qz .b{display:flex;gap:8px}
-.qz button{all:unset;cursor:pointer;flex:1;text-align:center;padding:9px;border-radius:9px;background:#fff;font-weight:800;box-shadow:inset 0 0 0 1.5px #CFC5B0}
+.qz button{all:unset;cursor:pointer;flex:1;text-align:center;padding:9px;border-radius:9px;background:#fff;font-weight:800;box-shadow:inset 0 0 0 1.5px #C3D6E0}
 .qz button.bon{background:#1E8E57;color:#fff;box-shadow:none}.qz button.faux{background:#B3261E;color:#fff;box-shadow:none}
 .qz em{display:block;margin-top:6px;font-size:14px;font-style:normal;color:var(--ink2)}
 /* Deux colonnes */
@@ -208,7 +208,7 @@ input[type=range]{width:100%;accent-color:var(--c)}
 .carnet tr.top td{background:#FFF3D6}
 /* Points d'entraînement */
 .points{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-.points button{all:unset;cursor:pointer;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 2px #CFC5B0;display:grid;place-items:center;font-size:11px;font-weight:800;color:var(--ink3)}
+.points button{all:unset;cursor:pointer;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 2px #C3D6E0;display:grid;place-items:center;font-size:11px;font-weight:800;color:var(--ink3)}
 .points button[aria-pressed="true"]{background:var(--c);color:var(--cx);box-shadow:none}
 /* Carte fiche */
 .fiche{margin-top:12px;border-radius:14px;background:var(--nuit);color:#fff;padding:16px}
@@ -257,7 +257,7 @@ input[type=range]{width:100%;accent-color:var(--c)}
 .pp-couv.court .pp-bvn{display:none}
 .voix[hidden],.pp-ecoute[hidden]{display:none!important}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261102e">
+<link rel="stylesheet" href="clone/habillage.css?v=20261102z">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -309,8 +309,9 @@ input[type=range]{width:100%;accent-color:var(--c)}
 
 
 
-<script src="ateliers-guides/mobile-money-frais.js?v=1"></script>
-<script src="atelier-moteur.js?v=4"></script>
-<script src="clone/habillage.js?v=20261102e" defer></script>
+
+<script src="ateliers-guides/mobile-money-frais.js?v=20261102z"></script>
+<script src="atelier-moteur.js?v=20261102z"></script>
+<script src="clone/habillage.js?v=20261102z" defer></script>
 </body>
 </html>

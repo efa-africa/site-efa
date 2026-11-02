@@ -123,7 +123,7 @@ body{margin:0;background:#fff}
 .dc-pied a{color:var(--b);font-weight:700}
 @media(max-width:820px){.dc-som,.dc-g,.dc-form>div{grid-template-columns:1fr}.dc-som{margin-top:18px}}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261031y">
+<link rel="stylesheet" href="clone/habillage.css?v=20261102z">
 </head>
 <body>
 ''' + hdr + '''
@@ -136,7 +136,7 @@ body{margin:0;background:#fff}
 </main>
 ''' + pv + '''
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="clone/habillage.js?v=20261031y" defer></script>
+<script src="clone/habillage.js?v=20261102z" defer></script>
 </body>
 </html>
 '''
