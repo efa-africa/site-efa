@@ -259,7 +259,7 @@ strong{color:var(--nuit)}
   <section class="iv"><p class="bk">Commencer gratuitement</p><h2>Dès 1 min, sans rien payer</h2><ul class="iv-grille" data-l="g"></ul></section>
   <section class="iv"><p class="bk">Les ateliers et cours</p><h2>Aller jusqu’au bout, accompagné</h2><ul class="iv-grille" data-l="p"></ul></section>
   <section class="iv"><p class="bk">Bientôt</p><h2>Les prochains ateliers</h2><ul class="iv-grille" data-l="b"></ul></section>
-  <section class="uv-plus"><p class="bk">Pour aller plus loin</p><ul class="proches"><li><a href="acteurs.html">Qui fait quoi sur le marché ?</a></li><li><a href="marches.html">Marchés : la Bourse du jour</a></li><li><a href="marches-labo.html">S’exercer avec un portefeuille fictif</a></li></ul></section>
+  <section class="uv-plus" id="aller-plus-loin"><p class="bk">Passer à l’action</p><h2>Votre premier portefeuille, pas à pas</h2><div class="aller"><a href="sgi.html"><small>Votre premier portefeuille</small><b>Choisir sa SGI, ouvrir son compte</b><span>Les SGI agréées comparées, et les étapes pour ouvrir votre compte-titres.</span></a><a href="coach-bourse.html"><small>Avec Élysée Johnson</small><b>Mon premier ordre à la Bourse (BRVM)</b><span>Sur votre cas : compte-titres ouvert, SGI choisie, premier ordre préparé.</span></a><a href="acteurs.html"><small>Les acteurs</small><b>Qui fait quoi sur le marché ?</b><span>La Bourse, les SGI, les autorités : savoir à qui s’adresser.</span></a><a href="marches-labo.html"><small>S’exercer</small><b>Passer à l’action, d’abord pour de faux</b><span>Un portefeuille fictif pour voir les conséquences de vos choix.</span></a><a href="bourse-projets.html"><small>Cas pratiques</small><b>J’investis pour quel projet ?</b><span>Un horizon, plusieurs issues possibles.</span></a><a href="marches.html"><small>Marchés</small><b>La Bourse du jour</b><span>Les indices et les cours de la dernière séance.</span></a></div></section>
   <p class="mention">Éducation financière, pas conseil personnalisé. EFA ne vend aucun produit financier.</p>
 </article>
 </div>
@@ -308,6 +308,8 @@ a.iv-p:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
 .uv-val li::before{content:counter(v);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:999px;background:#DA3C1B;color:#fff;font-weight:800;margin-bottom:8px}
 .uv-val b{display:block;font-family:var(--f-display);font-size:19px;line-height:1.2;color:#0B1220}
 .uv-val span{display:block;margin-top:4px;color:#4E5566;font-size:16px}
+@media(min-width:760px){.uv-plus .aller{grid-template-columns:repeat(2,1fr)}}
+.uv-plus{margin-top:clamp(28px,4vw,44px)}
 .uv .iv h2{font-size:clamp(22px,3vw,30px);margin:6px 0 14px}
 .uv a.iv-p,.uv a.iv-p *{text-decoration:none!important}.uv .iv-prix strong{color:#0B1220!important}.uv .iv-prix strong.g{color:#1E7A4C!important}
 </style>
