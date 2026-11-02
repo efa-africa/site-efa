@@ -17,7 +17,7 @@
       '<div class="at-c-corps"><span class="at-c-type">' + (a.cours ? 'Cours à votre rythme · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
-      '<div class="at-c-pied"><span class="at-c-prix">' + (a.gratuit ? '<b>' + D.prix(a) + '</b>' : '<span class="promo-pastille">Phase de test</span><b><s>' + D.prix(a) + '</s></b><small>' + D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '') + '</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
+      '<div class="at-c-pied"><span class="at-c-prix">' + (a.gratuit ? '<b>' + D.prix(a) + '</b>' : a.cours ? '<span class="promo-pastille">Gratuit pendant l’ouverture</span><b><s>' + D.prix(a) + '</s></b><small>avec vos ' + D.CREDITS_OFFERTS + ' crédits offerts</small>' : '<span class="promo-pastille">Phase de test</span><b><s>' + D.prix(a) + '</s></b><small>' + D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '') + '</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
   }
   var n = 0;
   document.querySelectorAll('.at-cat').forEach(function (c) {
