@@ -468,7 +468,7 @@ function vxUI(){ var b=$('#voix'), joue=!VX.a.paused&&!VX.a.ended; b.classList.t
   $('#vx-lire').innerHTML=joue?IC_PAUSE:IC_PLAY; $('#vx-lire').setAttribute('aria-label',joue?'Mettre en pause':'Écouter cet écran');
   var ec=$('#pp-ecoute'); if(ec) ec.hidden=!(vue==='accueil'&&VX.on&&!joue); }
 function vxJouer(force){ var k=vxCle(); if(!k||!VX.on) { vxUI(); return; }
-  if(k!==VX.cle){ VX.cle=k; VX.a.src=VX.dir+k+'.mp3?v=2'; } else if(!force&&VX.a.ended){ vxUI(); return; }
+  if(k!==VX.cle){ VX.cle=k; VX.a.src=VX.dir+k+'.mp3?v=3'; } else if(!force&&VX.a.ended){ vxUI(); return; }
   if(force) try{ VX.a.currentTime=0; }catch(e){}
   var p=VX.a.play(); if(p&&p.then) p.then(function(){ VX.ok=true; vxUI(); },function(){ vxUI(); }); vxUI(); }
 function vxStop(){ try{ VX.a.pause(); }catch(e){} vxUI(); }
