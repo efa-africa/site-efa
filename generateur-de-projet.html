@@ -193,15 +193,39 @@
 .etapes p{margin:0;color:var(--ink2);font-size:16px}
 
 /* Offre plan */
-.offre{background:var(--nuit);color:var(--texte-sombre);padding:40px 0}
-.offre h2{color:#fff;font-size:clamp(28px,3.8vw,44px);margin:8px 0 10px}
-.offre p{color:var(--texte-sombre2);max-width:60ch;margin:0 0 10px}
-.offre .duo{display:grid;gap:12px;grid-template-columns:1fr;margin-top:18px}
-@media(min-width:760px){.offre .duo{grid-template-columns:1fr 1fr}}
-.offre .duo a{display:block;background:var(--panel);border-radius:var(--r-carte);padding:18px;color:#fff;text-decoration:none}
-.offre .duo a small{display:block;color:var(--soft-corail);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-.offre .duo a b{display:block;font-family:var(--f-display);font-size:21px;margin:6px 0 4px}
-.offre .duo a span{color:var(--texte-sombre2);font-size:15.5px}
+.offre{background:var(--nuit)!important;color:var(--texte-sombre);padding:44px 0}
+.of-grille{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.of-grille{grid-template-columns:1.2fr 1fr;align-items:center}}
+.offre .of-sur{color:var(--soft-corail)!important}
+.offre h2{color:#fff!important;font-size:clamp(28px,3.8vw,44px);margin:8px 0 10px}
+.offre p{color:var(--texte-sombre2)!important;max-width:60ch;margin:0 0 10px}
+.of-btns{display:grid;gap:12px;margin-top:18px;max-width:520px}
+.of-b1,.of-b2{display:block;border-radius:10px;padding:16px 20px;text-decoration:none!important;font-weight:800;font-size:18px;line-height:1.25}
+.of-b1{background:var(--corail)!important;color:#fff!important;animation:brille 1.8s ease-in-out infinite}
+.of-b1 small{display:block;font-weight:600;font-size:14px;color:#FFE3DA!important;margin-top:3px}
+.of-b2{background:#fff!important;color:var(--nuit)!important}
+.of-b1:hover,.of-b2:hover{transform:translateY(-1px)}
+.of-b1 span,.of-b2 span{margin-left:6px}
+.of-jeu{background:#F5EFE2;border-radius:18px;padding:20px;color:var(--nuit)}
+.of-jeu h3{font-family:var(--f-display);font-size:clamp(21px,2.4vw,26px);color:var(--nuit)!important;margin:8px 0 6px}
+.of-jeu .of-regle{color:var(--ink2)!important;font-size:15.5px;margin:0 0 12px}
+.of-pastilles{display:flex;gap:6px;margin:0!important}
+.of-pastilles span{background:var(--corail);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px}
+.of-pastilles .j{background:#F2B84B;color:var(--nuit)}
+.jx-carte{position:relative;height:170px;border-radius:14px;overflow:hidden;background:#fff}
+.jx-carte canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+.jx-carte canvas[hidden]{display:none}
+.jx-res{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px}
+.jx-res small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.jx-res b{font-family:var(--f-display);font-size:28px;color:var(--nuit);margin:4px 0}
+.jx-res span{font-size:15px;color:var(--ink2)}
+.jx-res.gagne{background:linear-gradient(135deg,#FFF4E8,#FDE3DC)}.jx-res.gagne b{color:var(--corail-texte)}
+.jx-res.eclat{animation:eclat2 1.2s ease 2}@keyframes eclat2{50%{transform:scale(1.04)}}
+.jx-msg{margin-top:10px;font-size:15px;color:var(--ink2)}
+.jx-msg b{color:var(--nuit)}
+.jx-msg .jx-cle{display:inline-block;font:800 15px ui-monospace,Menlo,Consolas,monospace;background:#fff;border-radius:6px;padding:2px 8px;color:var(--nuit)}
+.jx-msg a,.jx-msg button{display:inline-block;margin-top:8px;border:0;background:var(--corail);color:#fff!important;font-weight:800;font-size:15px;border-radius:8px;padding:10px 14px;text-decoration:none;cursor:pointer}
+.cle-ok{display:block;background:#DDF5E8;color:#1E6B45;font-weight:800;font-size:14px;border-radius:8px;padding:6px 10px;margin:8px 0}
 
 /* Placer */
 .placer{padding:36px 0}
@@ -383,14 +407,22 @@ body.fige{overflow:hidden}
   </div>
 </div></section>
 
-<section class="offre sombre" id="plan" aria-labelledby="of-t" data-garde><div class="wrap">
-  <span class="sur">Pour aller plus loin</span>
+<section class="offre sombre" id="plan" aria-labelledby="of-t" data-garde><div class="wrap of-grille">
+  <div class="of-txt">
+  <span class="sur of-sur">Pour aller plus loin</span>
   <h2 id="of-t">Votre business plan de démarrage</h2>
-  <p>Construit à partir de vos réponses&nbsp;: client, offre, dépenses de départ, trois scénarios de trésorerie, risques et plan des 30 premiers jours. Chaque chiffre dit d’où il vient&nbsp;: vous, une hypothèse EFA ou une source datée.</p>
-  <p>Votre plan vit dans votre espace EFA, ouvert par un code personnel. Il s’enrichit au fil de vos échanges avec nous.</p>
-  <div class="duo">
-    <a href="mon-espace-business-plan.html?demo=1"><small>Avant de commander</small><b>Voir un plan complet</b><span>Un exemple réel de document, avec son code de démonstration.</span></a>
-    <a href="mon-espace-business-plan.html"><small>J’ai déjà un code</small><b>Ouvrir mon espace</b><span>Retrouver mon business plan et ses mises à jour.</span></a>
+  <p>Construit à partir de vos réponses&nbsp;: client, offre, dépenses de départ, trois scénarios de trésorerie, risques et plan des 30 premiers jours. Il vit dans votre espace EFA, ouvert par votre code personnel, et s’enrichit au fil de vos échanges avec nous.</p>
+  <div class="of-btns">
+    <a class="of-b1" href="mon-espace-business-plan.html?demo=1">Voir un plan complet <span aria-hidden="true">→</span><small>Exemple réel, ouvert avec un code de démonstration</small></a>
+    <a class="of-b2" href="mon-espace-business-plan.html">J’ai un code : ouvrir mon espace <span aria-hidden="true">→</span></a>
+  </div>
+  </div>
+  <div class="of-jeu" id="jeu">
+    <p class="of-pastilles"><span>Promotion</span><span class="j">Lancement</span></p>
+    <h3>Grattez&nbsp;: une clé vous attend peut-être.</h3>
+    <p class="of-regle">Une carte par jour. Une clé réduit le prix de votre business plan, ou l’offre.</p>
+    <div class="jx-carte"><div class="jx-res" id="jx-res"></div><canvas id="jx-c" aria-label="Carte à gratter : frottez avec le doigt ou la souris"></canvas></div>
+    <div class="jx-msg" id="jx-msg" role="status"></div>
   </div>
 </div></section>
 
@@ -442,10 +474,12 @@ body.fige{overflow:hidden}
 
 
 
+
+
 <script src="generateur-idees.js?v=20261102b"></script>
 <script src="efa-config.js?v=20261102"></script>
-<script src="efa-commande.js?v=20261102c"></script>
-<script src="generateur-de-projet.js?v=20261102d"></script>
+<script src="efa-commande.js?v=20261102d"></script>
+<script src="generateur-de-projet.js?v=20261102e"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261102b" defer></script>
