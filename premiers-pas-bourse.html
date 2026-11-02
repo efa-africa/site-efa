@@ -243,6 +243,15 @@ input[type=range]{width:100%;accent-color:var(--c)}
 @keyframes vxb{0%,100%{height:4px}50%{height:14px}}
 @media(prefers-reduced-motion:reduce){.voix.joue .barres i{animation:none;height:10px}}
 @media print{.voix,.pp-ecoute{display:none!important}}
+/* Bienvenue d'Élysée */
+.pp-bvn{margin:0;display:grid;grid-template-columns:42% 1fr;gap:16px;align-items:end}
+.pp-bvn img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;border-radius:16px;display:block}
+.pp-bvn-t{display:flex;flex-direction:column;gap:8px;padding-bottom:4px}
+.pp-bvn-t b{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.05;color:#fff}
+.pp-bvn-t span{font-size:16px;line-height:1.45;color:#E8EDF5}
+.pp-bvn-t small{font-size:13px;font-weight:700;color:#F09680}
+@media(min-width:820px){.pp-cv{grid-template-columns:minmax(0,340px) 1fr!important;gap:40px!important;align-items:center}.pp-bvn{grid-template-columns:1fr}.pp-bvn img{aspect-ratio:4/5}.pp-bvn-t{padding:0}.pp-bvn-t b{font-size:30px}}
+.pp-couv.court .pp-bvn{display:none}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261101l">
 </head>
@@ -250,14 +259,15 @@ input[type=range]{width:100%;accent-color:var(--c)}
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <header class="pp-couv" data-garde>
   <div class="pp-w pp-cv">
+    <figure class="pp-bvn"><img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909"><figcaption class="pp-bvn-t"><b>Bienvenue.</b><span>Vous avez fait le bon choix : apprendre avant d’investir. Je vous accompagne, écran par écran.</span><small>Élysée Johnson, fondateur d’EFA</small></figcaption></figure>
     <div class="pp-cv-t">
       <span class="pp-k">Mes premiers pas en Bourse · cours à votre rythme</span>
       <h1 id="pp-h1">Votre premier investissement commence avant votre premier ordre.</h1>
       <p class="pp-promesse">Apprenez à vérifier votre situation, lire le marché et choisir votre intermédiaire, à votre rythme.</p>
       <p class="pp-meta">5 chapitres · 3 à 4 semaines, quelques minutes par jour · vous reprenez là où vous vous êtes arrêté</p>
-      <button type="button" class="pp-go" id="pp-go">Commencer par une question</button><button type="button" class="pp-ecoute" id="pp-ecoute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>Écouter Élysée</button>
+      <button type="button" class="pp-go" id="pp-go">Commencer par une question</button><button type="button" class="pp-ecoute" id="pp-ecoute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>Écouter mon mot de bienvenue</button>
     </div>
-    <img class="pp-img" src="clone/assets/accueil-lancer-brvm.webp" alt="" width="1672" height="941">
+    
   </div>
 </header>
 <main class="pp-scene" data-garde>
