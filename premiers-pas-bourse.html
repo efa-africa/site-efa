@@ -219,6 +219,30 @@ input[type=range]{width:100%;accent-color:var(--c)}
 .fin ol{padding-left:20px;color:#E8EDF5}.fin li{margin:6px 0}
 .bouton{display:inline-block;text-decoration:none;font-weight:800;font-size:16px;min-height:46px;padding:12px 22px;border-radius:8px;background:var(--corail);color:#fff;margin-top:14px}
 .mention{font-size:13px;color:var(--ink3);margin:18px 0 0}
+/* Voix d'Élysée */
+.pp-go{margin-right:10px}
+.pp-ecoute{display:inline-flex;align-items:center;gap:10px;margin:16px 0 0 0;border:0;border-radius:8px;min-height:50px;padding:0 20px;background:#fff;color:var(--nuit);font-weight:800;font-size:17px;cursor:pointer}
+.pp-ecoute[hidden]{display:none}
+.pp-ecoute svg{width:18px;height:18px;flex:0 0 18px}
+.voix{position:sticky;top:90px;z-index:20;display:flex;align-items:center;gap:10px;background:var(--nuit);color:#fff;border-radius:999px;padding:6px 6px 6px 6px;margin:14px 0 4px;box-shadow:0 6px 18px rgba(11,18,32,.18)}
+@media(max-width:720px){.voix{top:64px}}
+.voix img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:0 0 34px}
+.voix .vx-t{flex:1;min-width:0;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.voix .vx-t small{display:block;font-weight:400;color:#C9D1DE;font-size:12px}
+.voix button{border:0;border-radius:999px;min-height:38px;padding:0 14px;font-weight:800;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.voix .vx-lire{background:#1F2C45;color:#fff;width:38px;padding:0;justify-content:center}
+.voix .vx-lire svg{width:16px;height:16px}
+.voix .vx-couper{background:var(--corail);color:#fff}
+.voix.coupee .vx-couper{background:#fff;color:var(--nuit)}
+.voix.coupee .vx-lire{display:none}
+.voix .barres{display:none;gap:2px;align-items:flex-end;height:14px;margin-left:6px;vertical-align:middle}
+.voix .barres i{width:3px;background:#6DB8F2;border-radius:2px;height:4px}
+.voix.joue .barres{display:inline-flex}
+.voix.joue .barres i{animation:vxb .9s ease-in-out infinite}
+.voix.joue .barres i:nth-child(2){animation-delay:.15s}.voix.joue .barres i:nth-child(3){animation-delay:.3s}
+@keyframes vxb{0%,100%{height:4px}50%{height:14px}}
+@media(prefers-reduced-motion:reduce){.voix.joue .barres i{animation:none;height:10px}}
+@media print{.voix,.pp-ecoute{display:none!important}}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261101l">
 </head>
@@ -231,13 +255,13 @@ input[type=range]{width:100%;accent-color:var(--c)}
       <h1 id="pp-h1">Votre premier investissement commence avant votre premier ordre.</h1>
       <p class="pp-promesse">Apprenez à vérifier votre situation, lire le marché et choisir votre intermédiaire, à votre rythme.</p>
       <p class="pp-meta">5 chapitres · 3 à 4 semaines, quelques minutes par jour · vous reprenez là où vous vous êtes arrêté</p>
-      <button type="button" class="pp-go" id="pp-go">Commencer par une question</button>
+      <button type="button" class="pp-go" id="pp-go">Commencer par une question</button><button type="button" class="pp-ecoute" id="pp-ecoute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>Écouter Élysée</button>
     </div>
     <img class="pp-img" src="clone/assets/accueil-lancer-brvm.webp" alt="" width="1672" height="941">
   </div>
 </header>
 <main class="pp-scene" data-garde>
-  <div class="pp-w"><div id="scene" aria-live="polite"></div>
+  <div class="pp-w"><div class="voix" id="voix" role="region" aria-label="Voix d'Élysée"><img src="clone/assets/elysee-portrait-carre.jpg" alt=""><span class="vx-t" id="vx-t">Voix d’Élysée<span class="barres" aria-hidden="true"><i></i><i></i><i></i></span><small id="vx-s">Elle guide chaque écran</small></span><button type="button" class="vx-lire" id="vx-lire" aria-label="Écouter cet écran"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></button><button type="button" class="vx-couper" id="vx-couper">Couper la voix</button></div><div id="scene" aria-live="polite"></div>
   <p class="mention">Contenu éducatif. Aucune recommandation d’achat ou de vente d’un titre. Horaires et frais cités au 30 octobre 2026 : vérifiez-les auprès de votre SGI et sur brvm.org.</p></div>
 </main>
 <section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
@@ -422,6 +446,27 @@ sc.addEventListener('click',function(ev){
 });
 sc.addEventListener('change',function(ev){ var t=ev.target; if(t.tagName==='SELECT'&&t.id){ D[t.id]=t.value; sv(); var w=W[ETAPES[cur].n]; if(w&&w.v) w.v(); } });
 document.addEventListener('keydown',function(e){ if(vue!=='ecran'||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return; if(e.key==='ArrowRight') aller(cur+1); if(e.key==='ArrowLeft') aller(cur-1); });
+/* ------------ Voix d'Élysée ------------ */
+var VX={dir:'audio/premiers-pas-bourse/',on:true,ok:false,cle:'',a:new Audio()};
+try{ VX.on=localStorage.getItem('efa-voix')!=='off'; }catch(e){}
+VX.a.preload='auto';
+var IC_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>', IC_PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>';
+function vxCle(){ if(vue==='accueil') return '00-accueil'; if(vue==='question') return '01-question'; if(vue==='chapitres') return '02-parcours'; if(vue==='fin') return '99-fin'; var e=ETAPES[cur]; return e?'e'+(e.n<10?'0':'')+e.n:''; }
+function vxUI(){ var b=$('#voix'), joue=!VX.a.paused&&!VX.a.ended; b.classList.toggle('coupee',!VX.on); b.classList.toggle('joue',VX.on&&joue);
+  $('#vx-couper').textContent=VX.on?'Couper la voix':'Réactiver la voix';
+  $('#vx-s').textContent=VX.on?(joue?'Élysée vous parle':'Touchez ▶ pour écouter'):'Vous avancez seul';
+  $('#vx-lire').innerHTML=joue?IC_PAUSE:IC_PLAY; $('#vx-lire').setAttribute('aria-label',joue?'Mettre en pause':'Écouter cet écran');
+  var ec=$('#pp-ecoute'); if(ec) ec.hidden=!(vue==='accueil'&&VX.on&&!joue); }
+function vxJouer(force){ var k=vxCle(); if(!k||!VX.on) { vxUI(); return; }
+  if(k!==VX.cle){ VX.cle=k; VX.a.src=VX.dir+k+'.mp3'; } else if(!force&&VX.a.ended){ vxUI(); return; }
+  if(force) try{ VX.a.currentTime=0; }catch(e){}
+  var p=VX.a.play(); if(p&&p.then) p.then(function(){ VX.ok=true; vxUI(); },function(){ vxUI(); }); vxUI(); }
+function vxStop(){ try{ VX.a.pause(); }catch(e){} vxUI(); }
+['play','pause','ended'].forEach(function(ev){ VX.a.addEventListener(ev,vxUI); });
+$('#vx-couper').onclick=function(){ VX.on=!VX.on; try{ localStorage.setItem('efa-voix',VX.on?'on':'off'); }catch(e){} if(VX.on){ VX.cle=''; vxJouer(true); } else vxStop(); };
+$('#vx-lire').onclick=function(){ if(!VX.a.paused&&!VX.a.ended) vxStop(); else vxJouer(VX.a.ended||vxCle()!==VX.cle); };
+$('#pp-ecoute').onclick=function(){ VX.on=true; try{ localStorage.setItem('efa-voix','on'); }catch(e){} VX.cle=''; vxJouer(true); };
+var _rendu=rendu; rendu=function(){ _rendu(); if(VX.on&&vxCle()!==VX.cle) vxJouer(false); else vxUI(); };
 rendu();
 })();
 </script>
