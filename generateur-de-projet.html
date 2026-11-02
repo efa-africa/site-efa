@@ -167,6 +167,13 @@
 .ensuite{margin-top:22px;background:var(--papier);border-radius:var(--r-carte);padding:18px}
 .ensuite ol{margin:10px 0 14px}
 
+.flou-w{position:relative;background:#fff;border-radius:12px;padding:10px;overflow:hidden}
+.flou-t{width:100%;border-collapse:collapse;font-size:14px}
+.flou-t th,.flou-t td{padding:6px 4px;border-bottom:1px solid #EEE7D8;text-align:right}
+.flou-t th:first-child,.flou-t td:first-child{text-align:left;color:#0B1220}
+.flou-t i{white-space:nowrap;font-style:normal;filter:blur(6px);-webkit-user-select:none;user-select:none;color:#0B1220;font-weight:700}
+.flou-msg{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);background:#0B1220;color:#fff;font-weight:800;font-size:14px;border-radius:999px;padding:8px 14px;white-space:nowrap;box-shadow:0 6px 20px rgba(11,18,32,.25)}
+@media(max-width:420px){.flou-msg{white-space:normal;text-align:center;width:86%}}
 /* Bande comparer */
 .bande{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--nuit);color:#fff;padding:10px 92px 10px var(--g) calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px}
 .bande[hidden]{display:none}
@@ -432,8 +439,13 @@ body.fige{overflow:hidden}
 
 
 
+
+
+
 <script src="generateur-idees.js?v=20261102b"></script>
-<script src="generateur-de-projet.js?v=20261102b"></script>
+<script src="efa-config.js?v=20261102"></script>
+<script src="efa-commande.js?v=20261102c"></script>
+<script src="generateur-de-projet.js?v=20261102d"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261102b" defer></script>

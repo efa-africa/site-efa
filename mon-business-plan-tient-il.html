@@ -323,6 +323,16 @@ strong{color:var(--nuit)}
 .bp-chiffres{display:grid;gap:8px;grid-template-columns:1fr 1fr;margin:6px 0 4px}.bp-chiffres div{background:#fff;border-radius:10px;padding:10px 12px}
 .bp-chiffres span{display:block;font-size:12.5px;color:var(--ink3)}.bp-chiffres strong{font-size:17px;color:var(--nuit)}
 .bp-fin{margin-top:14px}.bp-fin li{margin:4px 0}
+.bp-plus{margin-top:18px;background:#fff;border-radius:14px;padding:16px}
+.bp-plus h3{font-family:"Libre Baskerville",Georgia,serif;font-size:21px;line-height:1.2;color:var(--nuit);margin:4px 0 6px}
+.bp-plus>p{margin:0 0 10px;font-size:15.5px;color:var(--ink2)}
+.flou-w{position:relative;background:var(--creme);border-radius:12px;padding:10px;overflow:hidden}
+.flou-t{width:100%;border-collapse:collapse;font-size:14px}
+.flou-t th,.flou-t td{padding:6px 4px;border-bottom:1px solid #E2D8C4;text-align:right}
+.flou-t th:first-child,.flou-t td:first-child{text-align:left;color:#0B1220}
+.flou-t i{white-space:nowrap;font-style:normal;filter:blur(6px);-webkit-user-select:none;user-select:none;color:#0B1220;font-weight:700}
+.flou-msg{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);background:#0B1220;color:#fff;font-weight:800;font-size:14px;border-radius:999px;padding:8px 14px;white-space:nowrap}
+@media(max-width:420px){.flou-msg{white-space:normal;text-align:center;width:86%}}
 .bp-refaire{font:inherit;font-weight:800;border:0;background:none;color:#1B71B2;text-decoration:underline;cursor:pointer;padding:0;margin-top:10px}
 </style>
 <script>
@@ -372,7 +382,7 @@ function analyse(){
  var score=max?Math.round(sc/max*100):0,verd=score>=75?'Votre plan tient la route. Préparez les justificatifs.':score>=50?'Votre plan est à retravailler sur quelques points.':'Votre plan n’est pas encore prêt à être présenté.';
  var h='<p class="bk">Le verdict</p><h2>Ce qu’un financeur verra</h2><div class="bp-score"><b>'+score+'</b><div><small>sur 100</small><p>'+verd+'</p></div></div>';
  if(ca)h+='<div class="bp-chiffres"><div><span>Bénéfice recalculé, année 1</span><strong>'+F(net)+'</strong></div><div><span>Bénéfice annoncé</span><strong>'+(ben?F(ben):'non renseigné')+'</strong></div></div>';
- h+=P.join('')+'<div class="bp-fin"><b>Ce qu’on vous demandera presque toujours</b><ul><li>Vos relevés ou cahiers de ventes des derniers mois.</li><li>Le détail de l’usage du financement, poste par poste.</li><li>Un tableau de trésorerie mois par mois sur la première année.</li><li>Les devis des équipements et le contrat de bail.</li></ul></div><button type="button" class="bp-refaire" id="bp-haut">Modifier mes chiffres</button>';
+ h+=P.join('')+'<div class="bp-plus"><p class="bk">Pour aller plus loin</p><h3>Votre analyse complète, comme un comité de crédit</h3><p>Votre trésorerie mois par mois sur 12 mois, trois scénarios, les questions exactes qu’un financeur posera sur votre dossier et les pièces à préparer.</p><div class="flou-w"><table class="flou-t"><tr><th>Mois</th><th>Ventes</th><th>Charges</th><th>En caisse</th></tr><tr><td>Mois 1</td><td><i>888 888 F</i></td><td><i>888 888 F</i></td><td><i>8 888 888 F</i></td></tr><tr><td>Mois 2</td><td><i>888 888 F</i></td><td><i>888 888 F</i></td><td><i>8 888 888 F</i></td></tr><tr><td>Mois 3</td><td><i>888 888 F</i></td><td><i>888 888 F</i></td><td><i>8 888 888 F</i></td></tr><tr><td>…</td><td><i>888 888 F</i></td><td><i>888 888 F</i></td><td><i>8 888 888 F</i></td></tr><tr><td>Mois 12</td><td><i>888 888 F</i></td><td><i>888 888 F</i></td><td><i>8 888 888 F</i></td></tr></table><div class="flou-msg">🔒 Votre analyse détaillée arrive dans votre espace</div></div><div id="bp-cm"></div></div><div class="bp-fin"><b>Ce qu’on vous demandera presque toujours</b><ul><li>Vos relevés ou cahiers de ventes des derniers mois.</li><li>Le détail de l’usage du financement, poste par poste.</li><li>Un tableau de trésorerie mois par mois sur la première année.</li><li>Les devis des équipements et le contrat de bail.</li></ul></div><button type="button" class="bp-refaire" id="bp-haut">Modifier mes chiffres</button>';
  return h;}
 var T=[];
 $('bp').addEventListener('submit',function(ev){ev.preventDefault();
@@ -383,6 +393,7 @@ $('bp').addEventListener('submit',function(ev){ev.preventDefault();
  li.forEach(function(x,k){T.push(setTimeout(function(){li.forEach(function(y,j){y.className=j<k?'ok':j===k?'en':'';});},k*pas));});
  T.push(setTimeout(function(){var r=$('bp-res');r.innerHTML=analyse();r.hidden=false;A.hidden=true;b.disabled=false;b.textContent='Relancer l’analyse';
   $('bp-haut').onclick=function(){$('bp').scrollIntoView({behavior:'smooth'});};
+  try{EFACommande.ouvrir($('bp-cm'),{produit:'Analyse complète de mon business plan',detail:'12 mois de trésorerie, 3 scénarios, questions du financeur',cle:'analyse-bp',prix:15000,prixNormal:30000,extra:{financement:String(S.bp_fin||''),ca_an1:String(S.bp_ca||''),benefice_annonce:String(S.bp_benef||''),score:String((r.querySelector('.bp-score b')||{}).textContent||'')}});}catch(e){}
   try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'business-plan-analyse',title:'Analyse de business plan',event:true});}catch(e){}
   r.scrollIntoView({behavior:red?'auto':'smooth',block:'start'});},E.length*pas+250));});
 function alert0(){var r=$('bp-res');r.hidden=false;r.innerHTML='<div class="bp-pt o"><span class="t">Il manque des chiffres</span><b>Renseignez au moins le financement demandé et le chiffre d’affaires prévu.</b><p>Plus vous remplissez, plus l’analyse est précise.</p></div>';}
@@ -506,6 +517,8 @@ function efaChamps(ids,maj){ids.forEach(function(i){var el=document.getElementBy
 .liste span{color:var(--ink);font-size:15.5px}
 </style>
 
+<script src="efa-config.js?v=20261102"></script>
+<script src="efa-commande.js?v=20261102c"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261102b" defer></script>

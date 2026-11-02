@@ -337,7 +337,7 @@ function b64(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;
 function mes(){try{return JSON.parse(localStorage.getItem(K)||"[]")||[];}catch(e){return [];}}
 function sauver(L){try{localStorage.setItem(K,JSON.stringify(L));}catch(e){}}
 function listeMes(){var L=mes().filter(function(x){return x.c!==norm(DEMO);});var m=$("es-mes");if(!L.length){m.hidden=true;return;}
-  m.hidden=false;m.innerHTML="<b>Mes plans sur ce téléphone</b>"+L.map(function(x){return '<div class="es-ligne"><span>'+esc(x.t)+'</span><button type="button" class="o" data-c="'+x.c+'">Ouvrir</button><button type="button" class="x" data-x="'+x.c+'" aria-label="Oublier ce code sur ce téléphone">Oublier</button></div>';}).join("");
+  m.hidden=false;m.innerHTML="<b>Mes plans sur ce téléphone</b>"+L.map(function(x){return '<div class="es-ligne"><span>'+esc(x.t)+(x.attente?' <em style="font-style:normal;font-weight:700;color:#8A4B00;font-size:13px">· en préparation</em>':'')+'</span><button type="button" class="o" data-c="'+x.c+'">Ouvrir</button><button type="button" class="x" data-x="'+x.c+'" aria-label="Oublier ce code sur ce téléphone">Oublier</button></div>';}).join("");
   [].forEach.call(m.querySelectorAll("[data-c]"),function(b){b.onclick=function(){$("es-code").value=joli(b.dataset.c);ouvrir(b.dataset.c,false);};});
   [].forEach.call(m.querySelectorAll("[data-x]"),function(b){b.onclick=function(){sauver(mes().filter(function(x){return x.c!==b.dataset.x;}));listeMes();};});}
 function erreur(t){var e=$("es-err");e.hidden=!t;e.textContent=t||"";}
@@ -353,10 +353,10 @@ async function ouvrir(code,retenir){var c=norm(code);erreur("");
     var cle=await crypto.subtle.deriveKey({name:"PBKDF2",salt:b64(f.sel),iterations:f.it,hash:"SHA-256"},base,{name:"AES-GCM",length:256},false,["decrypt"]);
     var clair=await crypto.subtle.decrypt({name:"AES-GCM",iv:b64(f.iv)},cle,b64(f.ct));
     var P=JSON.parse(new TextDecoder().decode(clair));
-    if(retenir&&c!==norm(DEMO)){var L=mes().filter(function(x){return x.c!==c;});L.unshift({c:c,t:P.titre});sauver(L.slice(0,10));listeMes();}
+    if(retenir&&c!==norm(DEMO)||mes().some(function(x){return x.c===c;})){var L=mes().filter(function(x){return x.c!==c;});L.unshift({c:c,t:P.titre});sauver(L.slice(0,10));listeMes();}
     afficher(P,c);
     try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:c===norm(DEMO)?"espace-bp-demo":"espace-bp-ouvert",title:"Espace business plan",event:true});}catch(e){}
-  }catch(e){erreur("Ce code n’ouvre aucun plan. Vérifiez chaque caractère : un code ne contient jamais les lettres O et I, ni les chiffres 0 et 1.");}
+  }catch(e){if(mes().some(function(x){return x.c===c&&x.attente;})){erreur("Votre document est en préparation. Il apparaîtra ici, avec ce même code, dès qu’il sera prêt : EFA vous prévient.");btn.disabled=false;btn.textContent="Ouvrir mon plan";return;}erreur("Ce code n’ouvre aucun plan. Vérifiez chaque caractère : un code ne contient jamais les lettres O et I, ni les chiffres 0 et 1.");}
   btn.disabled=false;btn.textContent="Ouvrir mon plan";}
 var ORIG={vous:["o-vous","Fourni par vous"],efa:["o-efa","Hypothèse EFA"],calcul:["o-calcul","Calcul EFA"]};
 function origine(o){if(!o)return "";if(ORIG[o])return '<span class="o-t '+ORIG[o][0]+'">'+ORIG[o][1]+'</span>';if(/^src:/.test(o))return '<span class="o-t o-src">Source : '+esc(o.slice(4))+'</span>';return "";}
