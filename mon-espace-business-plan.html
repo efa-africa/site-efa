@@ -313,6 +313,11 @@ strong{color:var(--nuit)}
 .bp-tab table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px;background:#fff;border-radius:10px}
 .bp-tab th,.bp-tab td{padding:8px 10px;border-bottom:1px solid #F1F7FA;text-align:left;vertical-align:top}
 .bp-tab th{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#5F6676}
+.bp-v1{background:#E5F6EC;color:#1E6B45;border-radius:12px;padding:12px 14px;margin:0 0 12px;font-size:15px}.bp-v1 b{color:#14532d}
+.bp-verrou{position:relative;background:#F1F7FA;border-radius:10px;padding:10px;margin:6px 0 10px;overflow:hidden}
+.bp-verrou table{width:100%;border-collapse:collapse;font-size:14px}.bp-verrou td{padding:6px 4px;border-bottom:1px solid #DCE8ED;text-align:right}.bp-verrou td:first-child{text-align:left}
+.bp-verrou i{font-style:normal;filter:blur(6px);user-select:none;font-weight:700;white-space:nowrap}
+.bp-verrou p{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;background:#0B1220;color:#fff;font-weight:800;font-size:14px;border-radius:12px;padding:8px 14px;text-align:center;width:max-content;max-width:88%}
 .bp-enc{background:#0B1220;color:#E8EDF5;border-radius:10px;padding:12px 14px;margin:6px 0 10px;font-size:15.5px}
 .bp-suivi{background:#FFFFFF;border-radius:14px;padding:18px;margin-top:12px}
 .bp-suivi h3{font-family:"Libre Baskerville",Georgia,serif;font-size:21px;color:#0B1220;margin:0 0 8px}
@@ -356,20 +361,22 @@ async function ouvrir(code,retenir){var c=norm(code);erreur("");
     if(retenir&&c!==norm(DEMO)||mes().some(function(x){return x.c===c;})){var L=mes().filter(function(x){return x.c!==c;});L.unshift({c:c,t:P.titre});sauver(L.slice(0,10));listeMes();}
     afficher(P,c);
     try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:c===norm(DEMO)?"espace-bp-demo":"espace-bp-ouvert",title:"Espace business plan",event:true});}catch(e){}
-  }catch(e){if(mes().some(function(x){return x.c===c&&x.attente;})){erreur("Votre document est en préparation. Il apparaîtra ici, avec ce même code, dès qu’il sera prêt : EFA vous prévient.");btn.disabled=false;btn.textContent="Ouvrir mon plan";return;}erreur("Ce code n’ouvre aucun plan. Vérifiez chaque caractère : un code ne contient jamais les lettres O et I, ni les chiffres 0 et 1.");}
+  }catch(e){var Bz={};try{Bz=JSON.parse(localStorage.getItem("efa_bp_brouillons")||"{}")||{};}catch(x){}if(!Bz[c]){var M=mes().filter(function(x){return x.c===c&&x.attente;})[0],T=M&&String(M.t||"").split(" · ").slice(1).join(" · "),X=T&&(window.GEN_IDEES||[]).filter(function(i){return i[1]===T;})[0];if(X&&window.EFACommande&&EFACommande.version1){Bz[c]=EFACommande.version1(X,{});try{localStorage.setItem("efa_bp_brouillons",JSON.stringify(Bz));}catch(x){}}}
+    if(Bz[c]){afficher(Bz[c],c);btn.disabled=false;btn.textContent="Ouvrir mon plan";try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"espace-bp-version1",title:"Espace business plan v1",event:true});}catch(x){}return;}if(mes().some(function(x){return x.c===c&&x.attente;})){erreur("Votre document est en préparation. Il apparaîtra ici, avec ce même code, dès qu’il sera prêt : EFA vous prévient.");btn.disabled=false;btn.textContent="Ouvrir mon plan";return;}erreur("Ce code n’ouvre aucun plan. Vérifiez chaque caractère : un code ne contient jamais les lettres O et I, ni les chiffres 0 et 1.");}
   btn.disabled=false;btn.textContent="Ouvrir mon plan";}
 var ORIG={vous:["o-vous","Fourni par vous"],efa:["o-efa","Hypothèse EFA"],calcul:["o-calcul","Calcul EFA"]};
 function origine(o){if(!o)return "";if(ORIG[o])return '<span class="o-t '+ORIG[o][0]+'">'+ORIG[o][1]+'</span>';if(/^src:/.test(o))return '<span class="o-t o-src">Source : '+esc(o.slice(4))+'</span>';return "";}
 function bloc(b){
   if(b.p)return "<p>"+md(b.p)+"</p>";
   if(b.liste)return "<ul>"+b.liste.map(function(x){return "<li>"+md(x)+"</li>";}).join("")+"</ul>";
+  if(b.verrou)return '<div class="bp-verrou"><table><tr><td>Hypothèse</td><td><i>88 888 F</i></td><td><i>888 888 F</i></td></tr><tr><td>Mois 1</td><td><i>88 888 F</i></td><td><i>888 888 F</i></td></tr><tr><td>Mois 2</td><td><i>88 888 F</i></td><td><i>888 888 F</i></td></tr><tr><td>Mois 3</td><td><i>88 888 F</i></td><td><i>888 888 F</i></td></tr></table><p>🔒 '+md(b.verrou)+'</p></div>';
   if(b.encart)return '<div class="bp-enc">'+md(b.encart)+"</div>";
   if(b.chiffres)return '<div class="bp-chif">'+b.chiffres.map(function(x){return "<div><span>"+md(x.l)+"</span><strong>"+md(x.v)+"</strong>"+origine(x.o)+"</div>";}).join("")+"</div>";
   if(b.tableau){var T=b.tableau;return '<div class="bp-tab"><table><thead><tr>'+T.tete.map(function(h){return "<th>"+md(h)+"</th>";}).join("")+"</tr></thead><tbody>"+T.lignes.map(function(l){return "<tr>"+l.map(function(c){return "<td>"+md(c)+"</td>";}).join("")+"</tr>";}).join("")+"</tbody></table></div>"+(T.o?'<p style="margin:-4px 0 10px">'+origine(T.o)+"</p>":"");}
   return "";}
 function afficher(P,c){var V=P.versions||[],v=V[V.length-1]||{};
   var h='<div class="filigrane" aria-hidden="true"><div>'+Array(120).join(esc(P.porteur||"")+" · "+joli(c).slice(0,8)+"… · efa.africa ")+'</div></div>'
-   +'<header class="bp-tete"><small>Business plan de démarrage</small><h2>'+esc(P.titre)+'</h2><p>'+esc([P.porteur,P.lieu,P.budget?"Budget : "+P.budget:""].filter(Boolean).join(" · "))+'</p>'+(v.v?'<span class="v">Version '+v.v+' · '+esc(v.date)+'</span>':'')+'</header>'
+   +(P.version1?'<div class="bp-v1"><b>Version 1, prête tout de suite.</b> Elle part de votre idée et de votre budget. Les chapitres chiffrés 🔒 sont calculés par EFA avec vos réponses, après le paiement, et apparaissent ici avec ce même code.</div>':'')+'<header class="bp-tete"><small>Business plan de démarrage</small><h2>'+esc(P.titre)+'</h2><p>'+esc([P.porteur,P.lieu,P.budget?"Budget : "+P.budget:""].filter(Boolean).join(" · "))+'</p>'+(v.v?'<span class="v">Version '+v.v+' · '+esc(v.date)+'</span>':'')+'</header>'
    +(P.resume?'<div class="bp-resume">'+md(P.resume)+(P.legende?'<div class="bp-leg">Chaque chiffre dit d’où il vient : '+origine("vous")+origine("efa")+origine("calcul")+'</div>':'')+'</div>':'')
    +'<nav class="bp-som" aria-label="Sommaire"><b>Sommaire</b><ol>'+P.chapitres.map(function(ch,i){return '<li><a href="#bp-c'+(i+1)+'">'+esc(ch.t)+'</a></li>';}).join("")+'</ol></nav>'
    +P.chapitres.map(function(ch,i){return '<div class="bp-ch" id="bp-c'+(i+1)+'"><h3><span>'+(i+1)+'</span>'+esc(ch.t)+'</h3>'+ch.blocs.map(bloc).join("")+'</div>';}).join("")
@@ -503,6 +510,8 @@ function efaChamps(ids,maj){ids.forEach(function(i){var el=document.getElementBy
 .liste span{color:var(--ink);font-size:15.5px}
 </style>
 
+<script src="generateur-idees.js?v=20261102z"></script>
+<script src="efa-commande.js?v=20261102y2"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=20261102z" defer></script>
 <script src="clone/habillage.js?v=20261102z" defer></script>
