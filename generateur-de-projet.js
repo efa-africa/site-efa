@@ -1,0 +1,148 @@
+(function(){
+"use strict";
+var PAS=[10000,25000,50000,100000,150000,200000,300000,500000,750000,1000000,1500000,2000000,3000000,5000000,7500000,10000000,15000000,20000000,30000000,50000000];
+var RAPIDES=[100000,500000,1000000,5000000];
+var SECTEURS={num:["Numérique","projet-numerique.webp",1],commerce:["Commerce","projet-numerique.webp",1.1],alim:["Alimentation","projet-repas.webp",1.2],elevage:["Élevage","",1.2],agri:["Agriculture","",1.2],services:["Services","coach-entreprise.webp",1.1],artisanat:["Artisanat","projet-textile.webp",1.1],mobilite:["Transport","",1.1],immo:["Immobilier","univers-terrain.webp",1.2],educ:["Formation","benefice-collectif.webp",1]};
+var SAVOIR=[["","Je découvre"],["num","Créer avec le numérique"],["vente","Vendre, convaincre"],["cuisine","Cuisiner, transformer"],["agri","Élever, cultiver"],["tech","Réparer, fabriquer"],["gestion","Organiser, enseigner"],["zero","Je pars de zéro"]];
+var TEMPS=[["","À définir"],["1","Quelques heures : soirs et week-ends"],["2","À mi-temps"],["3","À plein temps"]];
+var LIEU=[["","Je suis ouvert"],["salon","Chez moi"],["ville","En ville, au contact"],["terrain","Sur un terrain"]];
+var LIEUX_TXT={salon:"depuis chez vous",ville:"en ville",terrain:"sur un terrain"};
+function lieux(x){var t=x[5].map(function(l){return LIEUX_TXT[l];}).join(" ou ");return t.charAt(0).toUpperCase()+t.slice(1);}
+var TEMPS_TXT={1:"Soirs et week-ends",2:"Mi-temps",3:"Plein temps"};
+var CLE_W3F="426191fb-4812-4de4-b602-5857464c5916";
+var I=window.GEN_IDEES||[],PAYS=window.GEN_PAYS||{},PLACER=window.GEN_PLACER||[];
+var K="efa_gen_v2";
+var etat={budget:300000,libre:false,savoir:"",temps:"",lieu:"",pays:"ci",decal:0,vus:3,ouverte:null,onglet:"idee",cmp:[],gardees:[],precedent:null};
+try{var s=JSON.parse(localStorage.getItem(K)||"{}");["budget","libre","savoir","temps","lieu","pays","gardees"].forEach(function(k){if(s[k]!=null)etat[k]=s[k];});}catch(e){}
+function sv(){try{localStorage.setItem(K,JSON.stringify({budget:etat.budget,libre:etat.libre,savoir:etat.savoir,temps:etat.temps,lieu:etat.lieu,pays:etat.pays,gardees:etat.gardees}));}catch(e){}}
+var $=function(id){return document.getElementById(id);};
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function F(n){return Math.round(n).toLocaleString("fr-FR").replace(/[\s ]/g," ")+" F";}
+function FC(n){if(n>=1e6){return (Math.round(n/1e5)/10).toString().replace(".",",")+" M F";}return F(n);}
+function idee(id){for(var i=0;i<I.length;i++)if(I[i][0]===id)return I[i];return null;}
+function sec(x){return SECTEURS[x[2]]||["Activité","benefice-entreprise.webp",1.1];}
+function img(x){return sec(x)[1]?"clone/assets/"+sec(x)[1]:"";}
+function visuel(x,cls){var u=img(x);return u?'<img src="'+u+'" alt="" loading="lazy">':'<div class="sans-photo" aria-hidden="true"><span>'+esc(sec(x)[0])+'</span></div>';}
+function varier(L){var out=[],reste=L.slice();while(reste.length){var vus={},lot=[];for(var i=0;i<reste.length&&lot.length<3;i++){if(!vus[reste[i][2]]){vus[reste[i][2]]=1;lot.push(reste[i]);}}if(lot.length<3)for(var j=0;j<reste.length&&lot.length<3;j++){if(lot.indexOf(reste[j])<0)lot.push(reste[j]);}lot.forEach(function(x){out.push(x);reste.splice(reste.indexOf(x),1);});}return out;}
+function B(){return etat.libre?Infinity:etat.budget;}
+
+function score(x){var s=0,sav=x[7],P=PAYS[etat.pays];
+  if(etat.savoir){if(sav.indexOf(etat.savoir)>-1)s+=5;}
+  if(etat.lieu){s+=x[5].indexOf(etat.lieu)>-1?2:-2;}
+  if(etat.temps){s+=x[6]<=+etat.temps?2:-3;}
+  if(P){if(P.ids.indexOf(x[0])>-1)s+=1.5;else if(P.s.indexOf(x[2])>-1)s+=.7;}
+  if(!etat.libre){var r=x[3]/etat.budget;s+=r>=.25?1.5:r>=.05?.6:0;}
+  return s;}
+function criteres(x){var c=[];
+  if(etat.savoir&&x[7].indexOf(etat.savoir)>-1)c.push("ce que vous aimez faire");
+  if(etat.temps&&x[6]<=+etat.temps)c.push("votre temps");
+  if(etat.lieu&&x[5].indexOf(etat.lieu)>-1)c.push("votre lieu");
+  return c;}
+function liste(){var b=B();return I.filter(function(x){return x[3]<=b;}).map(function(x){return [score(x),x];}).sort(function(a,c){return c[0]-a[0]||c[1][3]-a[1][3];}).map(function(a){return a[1];});}
+function listeVue(){return varier(liste());}
+
+function carte(x,n){var g=etat.gardees.indexOf(x[0])>-1,c=criteres(x),S=sec(x);
+  var lieu=lieux(x);
+  return '<article class="carte" style="animation-delay:'+(n*50)+'ms"><div class="img">'+visuel(x)+'<span class="tag">'+esc(S[0])+'</span></div><div class="corps"><span class="meta">'+esc(lieu)+' · '+TEMPS_TXT[x[6]]+'</span><h3>'+esc(x[1])+'</h3><span class="prix">Dès '+(x[3]?FC(x[3]):"0 F")+'<small>Estimation à vérifier sur votre marché</small></span><p class="pas">«&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir" data-o="'+x[0]+'">Explorer →</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+g+'" aria-label="'+(g?"Retirer":"Garder")+' cette idée">'+(g?"♥":"♡")+'</button></div></div></article>';}
+
+function rendre(){var L=listeVue(),n=L.length,P=PAYS[etat.pays];
+  var nouv=etat.precedent!=null&&n>etat.precedent?n-etat.precedent:0;etat.precedent=n;
+  $("statut").innerHTML=n?n+" piste"+(n>1?"s":"")+" accessible"+(n>1?"s":"")+(P?" · "+esc(P.n):"")+(nouv?'<span class="nouv">+'+nouv+' nouvelle'+(nouv>1?"s":"")+'</span>':''):"";
+  if(!n){$("cartes").innerHTML='<div class="vide">Avec ce montant, commencez par une réserve et un premier test sans dépense. Essayez à partir de 25 000 F pour voir des pistes.</div>';$("voir-plus").hidden=true;$("surprise").hidden=true;placer();return;}
+  $("surprise").hidden=n<=etat.vus;
+  var v=[];for(var i=0;i<Math.min(etat.vus,n);i++)v.push(L[(etat.decal+i)%n]);
+  $("cartes").innerHTML=v.map(carte).join("");
+  var reste=n-etat.vus;$("voir-plus").hidden=reste<=0;$("voir-plus").textContent=etat.vus===3?"Voir d’autres pistes ("+(n-3)+")":"Voir encore "+Math.min(6,reste)+" pistes";
+  $("gardees-n").textContent=etat.gardees.length;
+  placer();}
+function placer(){var b=B(),P=PAYS[etat.pays],cemac=P&&P.z==="cemac";
+  $("placer-titre").textContent=etat.libre?"Placer plutôt que lancer":"Avec "+FC(b).replace(" F"," F")+", placer plutôt que lancer";
+  $("marches").innerHTML=PLACER.map(function(p,j){var m=p[0],t=p[1],d=p[2];
+    if(t==="La Bourse"){t=cemac?"La Bourse régionale d’Afrique centrale (BVMAC)":"La Bourse (BRVM)";if(cemac)d="Un compte-titres s’ouvre chez un intermédiaire agréé. Les montants de départ et les frais varient : demandez-les avant d’ouvrir.";}
+    var ok=m<=b;return '<div class="marche'+(ok?"":" verrou")+'"><small>'+(m===0?"Pour tous les montants":ok?"Accessible dès "+FC(m):"À partir de "+FC(m))+'</small><b>'+esc(t)+'</b><p>'+esc(d)+'</p></div>';}).join("");}
+
+function majMontant(){$("montant").textContent=etat.libre?"Sans limite":F(etat.budget);
+  var k=0;PAS.forEach(function(p,i){if(Math.abs(p-etat.budget)<Math.abs(PAS[k]-etat.budget))k=i;});$("budget").value=etat.libre?19:k;
+  [].forEach.call($("raccourcis").children,function(b){b.setAttribute("aria-pressed",!etat.libre&&+b.dataset.v===etat.budget);});
+  $("sans-budget").textContent=etat.libre?"Revenir à mon budget":"Je préfère explorer sans budget";}
+function setBudget(v,garderExact){etat.libre=false;etat.budget=Math.min(50000000,Math.max(10000,Math.round(+v||10000)));if(!garderExact)$("exact").value="";etat.decal=0;etat.vus=3;majMontant();sv();rendre();}
+
+/* Panneau */
+var dernierFocus=null;
+function ouvrir(id){var x=idee(id);if(!x)return;dernierFocus=document.activeElement;etat.ouverte=id;etat.onglet="idee";$("panneau").hidden=false;$("voile").hidden=false;document.body.classList.add("fige");panneau();$("pn-fermer").focus();
+  try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"generateur-idee-"+id,title:x[1],event:true});}catch(e){}}
+function fermer(){etat.ouverte=null;$("panneau").hidden=true;$("voile").hidden=true;document.body.classList.remove("fige");if(dernierFocus)try{dernierFocus.focus();}catch(e){}}
+function prix(x){var base=Math.min(Math.max(etat.libre?x[3]:etat.budget,x[3]),x[4]||x[3]);return Math.min(25000,Math.max(5000,Math.round(base*.01*sec(x)[2]/1000)*1000));}
+function panneau(){var x=idee(etat.ouverte);if(!x)return;var S=sec(x),L=listeVue(),k=L.indexOf(x);
+  $("pn-imgw").innerHTML=visuel(x);$("pn-sec").textContent=S[0];$("pn-titre").textContent=x[1];$("pn-num").textContent=k>-1?"Idée "+(k+1)+" sur "+L.length:"Explorer une idée";
+  $("pn-meta").innerHTML=["Dès "+(x[3]?FC(x[3]):"0 F"),lieux(x),TEMPS_TXT[x[6]]].map(function(t){return "<span>"+esc(t)+"</span>";}).join("");
+  [].forEach.call(document.querySelectorAll(".onglets button"),function(b){b.setAttribute("aria-selected",b.dataset.o===etat.onglet);});
+  var C={idee:'<h3>À quoi ressemble cette activité&nbsp;?</h3><p>'+esc(x[8])+'</p><div class="encart"><b>Budget de départ indicatif</b>'+(x[3]?FC(x[3]):"0 F")+(x[4]?" à "+FC(x[4]):"")+'. Il dépend du lieu, de l’équipement et des prix autour de vous.</div>',
+    test:'<h3>Un premier test cette semaine</h3><p>'+esc(x[9])+'</p><div class="encart"><b>Votre but</b>Obtenir une réaction réelle, d’un client ou d’un fournisseur, avant de dépenser tout le budget.</div>',
+    verif:'<h3>Deux choses à regarder de près</h3><div class="encart"><b>À vérifier</b>'+esc(x[10])+'</div><div class="encart"><b>Le piège courant</b>'+esc(x[11])+'</div>',
+    plan:'<h3>Et si l’idée tient la route&nbsp;?</h3><p>Un business plan de démarrage met vos hypothèses à plat&nbsp;: le client, l’offre, les dépenses de départ, trois scénarios de trésorerie et les 30 premiers jours.</p><div class="encart"><b>Prix pour cette idée</b>'+F(prix(x))+', paiement unique. Vous voyez le sommaire et un extrait avant de décider.</div>'};
+  $("onglet").innerHTML=C[etat.onglet];
+  var g=etat.gardees.indexOf(x[0])>-1;$("pn-garder").setAttribute("aria-pressed",g);$("pn-garder").textContent=g?"♥ Gardée":"♡ Garder";
+  var c=etat.cmp.indexOf(x[0])>-1;$("pn-comparer").setAttribute("aria-pressed",c);$("pn-comparer").textContent=c?"✓ À comparer":"⇄ Comparer";}
+function garder(id){var i=etat.gardees.indexOf(id);if(i>-1)etat.gardees.splice(i,1);else etat.gardees.push(id);sv();rendre();if(etat.ouverte)panneau();}
+function comparer(id){var i=etat.cmp.indexOf(id);if(i>-1)etat.cmp.splice(i,1);else{if(etat.cmp.length===2)etat.cmp.shift();etat.cmp.push(id);}
+  $("bande").hidden=!etat.cmp.length;$("bande-t").textContent=etat.cmp.length===2?"Deux idées à comparer":"Ouvrez une deuxième idée à comparer";$("bande-go").hidden=etat.cmp.length<2;if(etat.ouverte)panneau();}
+function autre(){var L=listeVue();if(!L.length)return;var k=L.indexOf(idee(etat.ouverte));ouvrir(L[(k+1)%L.length][0]);}
+
+/* Modale */
+function modale(h){$("md-corps").innerHTML=h;$("modale").hidden=false;document.body.classList.add("fige");$("md-fermer").focus();}
+function fermerModale(){$("modale").hidden=true;if(!etat.ouverte)document.body.classList.remove("fige");else $("pn-fermer").focus();}
+var CHAP=["Le client et son problème","L’offre et le prix test","Le test terrain","Les dépenses de départ","Les coûts de chaque mois","Les hypothèses de ventes","La trésorerie en trois scénarios","Les risques","Les 30 premiers jours","Ce qu’il reste à vérifier"];
+function apercu(){var x=idee(etat.ouverte);if(!x)return;var p=prix(x);
+  modale('<span class="sur">Aperçu gratuit · '+esc(sec(x)[0])+'</span><h2>Votre business plan de démarrage</h2><p>Pour «&nbsp;'+esc(x[1])+'&nbsp;». Le document part de vos réponses. Ce que vous ne savez pas encore reste marqué «&nbsp;à vérifier&nbsp;», sans chiffre inventé.</p>'
+  +'<div class="chapitres">'+CHAP.map(function(c,i){return '<div><b>'+(i+1)+'</b>'+c+'</div>';}).join("")+'</div>'
+  +'<div class="extrait"><b>Extrait d’un plan&nbsp;: la trésorerie en trois scénarios</b><table><tr><th></th><th>Prudent</th><th>Central</th><th>Favorable</th></tr><tr><td>Repas par jour</td><td>8</td><td>15</td><td>22</td></tr><tr><td>Résultat du mois</td><td>−13 200 F</td><td>71 500 F</td><td>156 200 F</td></tr><tr><td>En caisse après 3 mois</td><td>80 400 F</td><td>334 500 F</td><td>588 600 F</td></tr></table><p class="md-note" style="margin:6px 0 0">Exemple&nbsp;: déjeuners sur commande. Chaque chiffre porte son origine dans le plan.</p></div>'
+  +'<div class="prix-box"><div><b>Business plan de démarrage</b><br><span>Paiement unique · consultable dans votre espace EFA</span></div><strong>'+F(p)+'</strong></div>'
+  +'<p class="md-note">Le prix dépend de la taille du projet et de son secteur. Une étude de marché sur le terrain ou un avis d’expert fait l’objet d’un devis à part.</p>'
+  +'<div class="md-act"><button type="button" class="bouton" id="md-cmd">Commander mon plan</button><a class="bouton second" href="mon-espace-business-plan.html?demo=1">Voir un plan complet d’exemple</a></div>');
+  $("md-cmd").onclick=commande;}
+function commande(){var x=idee(etat.ouverte);if(!x)return;var p=prix(x),deja="";
+  modale('<span class="sur">Commande · '+F(p)+'</span><h2>Quelques mots sur votre projet</h2><p>Nous vous écrivons sur WhatsApp pour le paiement par mobile money et quelques questions. Votre plan arrive ensuite dans votre espace EFA, avec un code personnel.</p>'
+  +'<form class="cmd" id="cmd" novalidate><label>Prénom et nom<input name="nom" autocomplete="name" required></label><label>Numéro WhatsApp<input name="whatsapp" inputmode="tel" autocomplete="tel" required placeholder="+225 …"></label><label>Email (facultatif)<input name="email" type="email" autocomplete="email"></label><label>Ville<input name="ville" autocomplete="address-level2"></label><label>Votre client principal, en une phrase<input name="client" placeholder="ex. les employés de bureau du Plateau"></label>'
+  +'<label>Avez-vous déjà vendu ce produit ou ce service&nbsp;?</label><div class="deux" id="deja"><button type="button" data-v="Oui">Oui</button><button type="button" data-v="Pas encore">Pas encore</button></div>'
+  +'<label>Paiement</label><div class="deux"><button type="button" aria-pressed="true">Mobile money</button><button type="button" disabled style="opacity:.5">Carte bancaire · bientôt</button></div>'
+  +'<p class="err" id="cmd-err" hidden></p><div class="md-act"><button type="submit" class="bouton">Envoyer ma commande</button></div><p class="md-note">Rien n’est prélevé maintenant. Vos réponses servent uniquement à préparer votre plan.</p></form>');
+  [].forEach.call($("deja").children,function(b){b.onclick=function(){deja=b.dataset.v;[].forEach.call($("deja").children,function(c){c.setAttribute("aria-pressed",c===b);});};});
+  $("cmd").onsubmit=function(ev){ev.preventDefault();var f=ev.target,v={};["nom","whatsapp","email","ville","client"].forEach(function(k){v[k]=f[k].value.trim();});
+    if(!v.nom||v.whatsapp.replace(/\D/g,"").length<8){$("cmd-err").hidden=false;$("cmd-err").textContent="Indiquez votre nom et un numéro WhatsApp joignable.";return;}
+    var btn=f.querySelector("[type=submit]");btn.disabled=true;btn.textContent="Envoi…";
+    var data={access_key:CLE_W3F,subject:"efa.africa · Commande business plan · "+x[1]+" · "+F(p).replace(/ /g," "),from_name:"Business plan · efa.africa",idee:x[1],secteur:sec(x)[0],budget:etat.libre?"sans limite":String(etat.budget),prix:String(p),pays:(PAYS[etat.pays]||{}).n||"",deja_vendu:deja,a_faire:"Contacter sur WhatsApp, encaisser, produire le plan, le publier dans l’espace et envoyer le code."};
+    for(var k in v)data[k]=v[k];if(v.email)data.replyto=v.email;
+    fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)}).then(function(r){return r.json();}).then(function(r){if(!r.success)throw 0;
+      try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"business-plan-commande",title:"Commande business plan",event:true});}catch(e){}
+      modale('<span class="sur">Commande reçue</span><h2>Merci, '+esc(v.nom.split(" ")[0])+'.</h2><p>Nous vous écrivons sur WhatsApp au '+esc(v.whatsapp)+' pour le paiement et quelques questions.</p><p>Ensuite, votre business plan arrive dans votre espace EFA. Vous recevrez un code personnel&nbsp;: gardez-le précieusement, c’est la seule clé de votre plan.</p><div class="md-act"><a class="bouton" href="mon-espace-business-plan.html?demo=1">Voir un plan d’exemple en attendant</a></div>');
+    }).catch(function(){btn.disabled=false;btn.textContent="Envoyer ma commande";$("cmd-err").hidden=false;$("cmd-err").textContent="L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.";});};}
+function vueComparer(){var S=etat.cmp.map(idee).filter(Boolean);if(S.length<2)return;
+  modale('<span class="sur">Comparer</span><h2>Deux pistes, deux premiers pas</h2><div class="cmp">'+S.map(function(x){return '<div><h3>'+esc(x[1])+'</h3><b>Dès '+(x[3]?FC(x[3]):"0 F")+'</b><br><small>'+TEMPS_TXT[x[6]]+' · '+lieux(x)+'</small><p><strong>Premier test</strong><br>'+esc(x[9])+'</p><p><strong>À vérifier</strong><br>'+esc(x[10])+'</p><p><strong>Le piège</strong><br>'+esc(x[11])+'</p></div>';}).join("")+'</div><p class="md-note">Le budget de départ est une estimation de travail&nbsp;: il ne dit pas quelle idée rapportera le plus.</p>');}
+function vueGardees(){var L=etat.gardees.map(idee).filter(Boolean);
+  modale('<span class="sur">Mes pistes</span><h2>Vos idées gardées</h2>'+(L.length?L.map(function(x){return '<button type="button" class="gardee" data-o="'+x[0]+'">'+esc(x[1])+' →</button>';}).join(""):'<p>Ouvrez une idée et touchez «&nbsp;Garder&nbsp;» pour la retrouver ici.</p>')+'<p class="md-note">Elles restent sur ce téléphone, sans compte.</p>');
+  [].forEach.call(document.querySelectorAll("#md-corps [data-o]"),function(b){b.onclick=function(){fermerModale();ouvrir(b.dataset.o);};});}
+
+/* Démarrage */
+function remplir(id,L,val){var s=$(id);s.innerHTML=L.map(function(o){return '<option value="'+o[0]+'">'+esc(o[1])+'</option>';}).join("");s.value=val;s.onchange=function(){etat[id]=s.value;etat.decal=0;sv();rendre();};}
+remplir("savoir",SAVOIR,etat.savoir);remplir("temps",TEMPS,etat.temps);remplir("lieu",LIEU,etat.lieu);
+remplir("pays",Object.keys(PAYS).map(function(k){return [k,PAYS[k].n];}),etat.pays);
+RAPIDES.forEach(function(v){var b=document.createElement("button");b.type="button";b.dataset.v=v;b.textContent=v>=1e6?(v/1e6)+" M F":(v/1000)+" 000 F";b.onclick=function(){setBudget(v);};$("raccourcis").appendChild(b);});
+$("budget").addEventListener("input",function(e){setBudget(PAS[+e.target.value]);});
+$("exact").addEventListener("input",function(e){var v=+String(e.target.value).replace(/\D/g,"");if(v>=1000)setBudget(v,true);});
+$("sans-budget").onclick=function(){etat.libre=!etat.libre;etat.decal=0;etat.vus=3;majMontant();sv();rendre();};
+$("affiner").onclick=function(){var o=$("affinage").hidden;$("affinage").hidden=!o;$("affiner").setAttribute("aria-expanded",o);$("affiner-s").textContent=o?"−":"＋";};
+if(etat.savoir||etat.temps||etat.lieu){$("affinage").hidden=false;$("affiner").setAttribute("aria-expanded","true");$("affiner-s").textContent="−";}
+$("surprise").onclick=function(){etat.decal+=etat.vus;rendre();};
+$("voir-plus").onclick=function(){etat.vus+=etat.vus===3?3:6;rendre();};
+$("cartes").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]");if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
+[].forEach.call(document.querySelectorAll(".onglets button"),function(b){b.onclick=function(){etat.onglet=b.dataset.o;panneau();};});
+$("pn-fermer").onclick=fermer;$("voile").onclick=fermer;
+$("pn-garder").onclick=function(){garder(etat.ouverte);};$("pn-comparer").onclick=function(){comparer(etat.ouverte);};$("pn-autre").onclick=autre;$("pn-planb").onclick=apercu;
+$("md-fermer").onclick=fermerModale;$("modale").addEventListener("click",function(e){if(e.target===$("modale"))fermerModale();});
+$("bande-go").onclick=vueComparer;$("bande-x").onclick=function(){etat.cmp=[];$("bande").hidden=true;if(etat.ouverte)panneau();};
+$("gardees-b").onclick=vueGardees;
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){if(!$("modale").hidden)fermerModale();else if(!$("panneau").hidden)fermer();}});
+majMontant();rendre();
+try{$("gp-maj").textContent="Idées mises à jour en "+window.GEN_MAJ+" · tickets d’entrée indicatifs, en francs CFA, à vérifier sur votre marché.";}catch(e){}
+})();
