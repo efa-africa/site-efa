@@ -115,38 +115,64 @@
 .iv .mi{max-width:1180px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
 .iv .k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A;margin:0}
 .iv h2{font:700 clamp(28px,3.8vw,44px)/1.12 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:10px 0 8px;text-wrap:balance}
-.iv .s{font-size:18px;color:#4E5566;margin:0 0 28px;max-width:60ch}
-.iv>.mi>ol{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:1fr}
-@media(min-width:640px){.iv>.mi>ol{grid-template-columns:1fr 1fr}}
-@media(min-width:1000px){.iv>.mi>ol{grid-template-columns:repeat(3,1fr)}}
-.iv-c{display:flex;flex-direction:column;height:100%;background:#F5EFE2;border-radius:16px;overflow:hidden;text-decoration:none;color:#2A3142;transition:transform .2s,box-shadow .2s}
-.iv-c:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(11,18,32,.10)}
-.iv-c:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
-.iv-c img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.iv-t{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
-.iv-t small{font-size:12px;font-weight:800;letter-spacing:.14em;color:#B8341A}
-.iv-t b{font:700 clamp(20px,1.8vw,23px)/1.18 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:6px 0 6px}
-.iv-t>span{font-size:16px;line-height:1.5;color:#4E5566;flex:1;margin:0 0 12px}
-.iv-t em{font-style:normal;font-weight:800;font-size:15px;color:#0B1220}
-.iv-autres{background:#0B1220;border-radius:16px}
-.iv-autres .iv-t b{color:#fff}.iv-autres .iv-t>span{color:#C9D1DE;flex:0}.iv-autres small{color:#F09680}
-.iv-autres ul{list-style:none;margin:0;padding:0}
-.iv-autres ul a{display:block;padding:11px 0;border-top:1px solid #1F2C45;color:#fff;font-weight:700;text-decoration:none}
-.iv-autres ul a::after{content:" →";color:#6DB8F2}
-.iv-autres ul a:hover{color:#6DB8F2}
+.iv .s{font-size:18px;color:#4E5566;margin:0 0 22px;max-width:60ch}
+.iv-onglets{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 18px;padding:2px 16px 6px;scroll-snap-type:x proximity}
+.iv-onglets::-webkit-scrollbar{display:none}
+.iv-onglets button{flex:none;scroll-snap-align:start;font:inherit;font-weight:800;font-size:15px;border:0;border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer;background:#F5EFE2;color:#0B1220;white-space:nowrap}
+.iv-onglets button i{font-style:normal;color:#B8341A;margin-right:6px}
+.iv-onglets button[aria-selected="true"]{background:#0B1220;color:#fff}
+.iv-onglets button[aria-selected="true"] i{color:#F09680}
+.iv-onglets button:focus-visible{outline:3px solid #2188D6;outline-offset:2px}
+.iv-grille{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:760px){.iv-grille{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+@media(min-width:1040px){.iv-grille{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.iv-p{display:flex;flex-direction:column;height:100%;background:#fff;border-radius:14px;overflow:hidden;text-decoration:none;color:#2A3142;box-shadow:0 0 0 1px #EDE6D6;transition:transform .2s,box-shadow .2s}
+a.iv-p:hover{transform:translateY(-3px);box-shadow:0 0 0 1px #EDE6D6,0 14px 28px rgba(11,18,32,.10)}
+a.iv-p:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
+.iv-im{position:relative;display:block;aspect-ratio:4/5;background:#F5EFE2}
+.iv-im img{display:block;width:100%;height:100%;object-fit:cover}
+.iv-fmt{position:absolute;left:8px;bottom:8px;background:#fff;color:#0B1220;font-size:12.5px;font-weight:800;border-radius:7px;padding:4px 8px}
+.iv-bientot .iv-im::after{content:"BIENTÔT";position:absolute;inset:0;display:grid;place-items:center;background:rgba(11,18,32,.55);color:#fff;font-weight:800;font-size:clamp(18px,3.4vw,26px);letter-spacing:.06em}
+.iv-in{display:flex;flex-direction:column;flex:1;padding:12px 12px 14px}
+.iv-in b{font-size:16px;line-height:1.3;font-weight:700;color:#0B1220;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+.iv-car{display:flex;gap:6px;align-items:center;margin:8px 0 0;font-size:13.5px;color:#4E5566;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.iv-car svg{flex:none;width:16px;height:16px}
+.iv-car span{overflow:hidden;text-overflow:ellipsis}
+.iv-prix{margin:10px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.iv-prix strong{font-size:19px;font-weight:800;color:#0B1220}
+.iv-prix .g{color:#1E7A4C}
+.iv-prix .r{color:#DA3C1B;font-weight:800;font-size:15px}
+.iv-prix s{color:#7A8293;font-size:14px;flex-basis:100%}
+.iv-prix small{color:#5F6676;font-size:13px;font-weight:700}
+.iv-top{margin:10px 0 0;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:#FEF4DF;color:#8A4B00;border-radius:8px;padding:4px 8px;font-size:12.5px;font-weight:800}
+.iv-top::before{content:"#1";background:#DA3C1B;color:#fff;border-radius:5px;padding:1px 5px;font-size:11px}
 </style>
 <div class="mi">
 <p class="k">Investir</p>
 <h2 id="iv-titre">Toutes les façons de faire grandir votre argent. Et de ne pas le perdre.</h2>
 <p class="s">La Bourse, la pierre, les placements sûrs, la retraite&nbsp;: comparez avant de choisir, et apprenez à reconnaître ce qui n’est pas un investissement.</p>
-<ol><li><a class="iv-c" href="premiers-pas-bourse.html"><img src="clone/assets/accueil-lancer-brvm.webp" alt="Façade de la Bourse régionale" width="1672" height="941" loading="lazy" decoding="async"><span class="iv-t"><small>01</small><b>La Bourse (BRVM)</b><span>Acheter des actions et des obligations, pas à pas, jusqu’à votre premier ordre passé et compris.</span><em>Mes premiers pas en Bourse →</em></span></a></li><li><a class="iv-c" href="acheter-un-terrain.html"><img src="clone/assets/benefice-patrimoine.webp" alt="Une mère et son fils étudient un projet de maison" width="1672" height="941" loading="lazy" decoding="async"><span class="iv-t"><small>02</small><b>Terrain et immobilier</b><span>Acheter un terrain sans se faire avoir, construire par étapes, faire le budget du chantier.</span><em>Les papiers à vérifier →</em></span></a></li><li><a class="iv-c" href="arnaques.html"><img src="clone/assets/accueil-avant-signer.webp" alt="Deux femmes vérifient un document avant de signer" width="1672" height="941" loading="lazy" decoding="async"><span class="iv-t"><small>03</small><b>Les arnaques</b><span>Rendement garanti, urgence, faux projets : sept signaux d’alarme avant de verser un franc.</span><em>Faire le test →</em></span></a></li><li><a class="iv-c" href="atelier-placements-expliques.html"><img src="clone/assets/q2.webp" alt="Un couple compare des documents à la maison" width="1672" height="941" loading="lazy" decoding="async"><span class="iv-t"><small>04</small><b>Placements sans risque de marché</b><span>Compte d’épargne, dépôt à terme, emprunts d’État : ce que rapporte votre argent quand il ne doit pas baisser.</span><em>Les placements expliqués →</em></span></a></li><li><a class="iv-c" href="preparer-ma-retraite.html"><img src="clone/assets/coach-patrimoine.webp" alt="Un conseiller échange avec une cliente" width="1672" height="941" loading="lazy" decoding="async"><span class="iv-t"><small>05</small><b>Assurance-vie et épargne retraite</b><span>Combien mettre de côté chaque mois, et où, quand on n’aura pas de pension suffisante.</span><em>Où en est ma retraite ? →</em></span></a></li><li class="iv-autres"><div class="iv-t"><small>06</small><b>Et aussi</b><span>D’autres façons de faire grandir votre argent.</span><ul>
-<li><a href="atelier-tontine-spirale.html">La tontine qui devient une spirale</a></li>
-<li><a href="club-investissement.html">De la tontine au club d’investissement</a></li>
-<li><a href="valoriser-mon-entreprise.html">Investir dans une activité : combien vaut mon entreprise ?</a></li>
-<li><a href="atelier-grosse-somme.html">Recevoir une grosse somme : décider avant</a></li>
-<li><a href="cotiser-depuis-l-etranger.html">Investir au pays depuis l’étranger</a></li>
-</ul></div></li></ol>
+<div class="iv-onglets" role="tablist" aria-label="Les portes de l’investissement"></div>
+<ul class="iv-grille" id="iv-grille" role="tabpanel" aria-live="polite"></ul>
+<noscript><p><a href="premiers-pas-bourse.html">Mes premiers pas en Bourse</a> · <a href="acheter-un-terrain.html">Acheter un terrain</a> · <a href="arnaques.html">Les arnaques</a> · <a href="atelier-placements-expliques.html">Les placements expliqués</a> · <a href="preparer-ma-retraite.html">Ma retraite</a></p></noscript>
 </div>
+<script>
+(function(){var D={"portes": [["bourse", "La Bourse (BRVM)"], ["terrain", "Terrain et immobilier"], ["arnaques", "Les arnaques"], ["placements", "Placements sans risque"], ["retraite", "Assurance-vie et retraite"], ["autres", "Et aussi"]], "items": {"bourse": [["premiers-pas-bourse.html", "ateliers/cours-premiers-pas.webp", "Cours", "Mes premiers pas en Bourse", "5 chapitres · 31 écrans", "promo", 25000, "Par où commencer"], ["coach-bourse.html", "ateliers/atelier-01.webp", "Atelier", "Mon premier ordre à la Bourse (BRVM)", "Le coach à chaque marche", "prix", 40000, ""], ["atelier-lire-societe-cotee.html", "ateliers/atelier-02.webp", "Atelier", "Lire une société cotée comme un investisseur", "Calculs en direct, fiche à garder", "prix", 30000, ""], ["", "ateliers/atelier-03.webp", "Atelier", "Introductions en Bourse et emprunts d’État", "Une grille pour décider", "prix", 30000, ""], ["bourse-essentiel.html", "accueil-lancer-brvm.webp", "Leçon", "L’essentiel de la Bourse", "Être prêt, comprendre ce qu’on achète", "gratuit", 0, ""], ["simulateur-bourse.html", "simulation.webp", "Outil", "Et si j’avais investi ?", "Simulateur sur les vrais cours", "gratuit", 0, ""], ["questions-a-poser-a-sa-sgi.html", "questions.webp", "Fiche", "10 questions à poser à votre SGI", "Avant de signer", "gratuit", 0, ""]], "terrain": [["acheter-un-terrain.html", "benefice-patrimoine.webp", "Leçon", "Acheter un terrain : les papiers à vérifier", "Six vérifications avant de payer", "gratuit", 0, "Par où commencer"], ["budget-chantier.html", "transition-agir.webp", "Outil", "Construire par étapes : le budget du chantier", "Dès 1 min", "gratuit", 0, ""], ["cout-total-credit.html", "q2.webp", "Outil", "Combien ce crédit me coûtera au total ?", "Dès 1 min", "gratuit", 0, ""], ["", "ateliers/atelier-18.webp", "Atelier", "Acheter un terrain sans se faire avoir", "Étape par étape, jusqu’au titre foncier", "prix", 40000, ""], ["", "ateliers/atelier-07.webp", "Atelier", "Mon patrimoine sur 10 ans", "Un plan écrit et un cap", "prix", 200000, ""]], "arnaques": [["arnaques.html", "accueil-avant-signer.webp", "Leçon", "Avant de confier votre argent : les arnaques", "Sept signaux d’alarme à tester", "gratuit", 0, "Par où commencer"], ["atelier-mobile-money-frais.html", "ateliers/atelier-15.webp", "Atelier", "Mobile money et frais", "Frais chiffrés, réflexes de sécurité", "prix", 15000, ""], ["atelier-preter-ou-donner.html", "ateliers/atelier-16.webp", "Atelier", "Prêter à un proche, ou donner ?", "Le message prêt à envoyer", "prix", 15000, ""], ["questions-a-poser-a-sa-sgi.html", "questions.webp", "Fiche", "10 questions à poser à votre SGI", "Vérifier un intermédiaire", "gratuit", 0, ""]], "placements": [["atelier-reserve-securite.html", "ateliers/atelier-13.webp", "Atelier", "Ma réserve de sécurité", "D’abord la réserve, ensuite le placement", "gratuit", 0, "Par où commencer"], ["atelier-placements-expliques.html", "ateliers/atelier-19.webp", "Atelier", "DAT, OPCVM, FCPE : les placements expliqués", "Rendement, risque, disponibilité", "prix", 15000, ""], ["ou-garder-sa-reserve.html", "q1.webp", "Leçon", "Où garder sa réserve : banque, microfinance ou mobile money ?", "Dès 2 min", "gratuit", 0, ""], ["dat-emprunts-etat.html", "q3.webp", "Leçon", "DAT et emprunts d’État : comment ça marche", "Ce qu’on prête, ce qu’on récupère", "gratuit", 0, ""], ["opcvm-fcpe.html", "investir.webp", "Leçon", "OPCVM et FCPE expliqués", "FCP, SICAV, FCPE et leurs frais", "gratuit", 0, ""], ["atelier-grosse-somme.html", "ateliers/atelier-17.webp", "Atelier", "Recevoir une grosse somme", "Décider avant le jour J", "prix", 40000, ""]], "retraite": [["preparer-ma-retraite.html", "coach-patrimoine.webp", "Outil", "Où en est ma retraite ?", "Dès 2 min", "gratuit", 0, "Par où commencer"], ["atelier-retraite-sans-pension.html", "ateliers/atelier-20.webp", "Atelier", "Préparer sa retraite sans pension", "Un montant, un horizon, un plan", "prix", 40000, ""], ["cotiser-depuis-l-etranger.html", "globe.webp", "Leçon", "Cotiser depuis l’étranger", "Envoyer, financer, préparer sa retraite", "gratuit", 0, ""], ["", "ateliers/atelier-07.webp", "Atelier", "Mon patrimoine sur 10 ans", "Terrain, maison, placements, retraite", "prix", 200000, ""]], "autres": [["atelier-tontine-spirale.html", "ateliers/atelier-04.webp", "Atelier", "Ma tontine devient une spirale", "La part gardée à chaque tour", "prix", 40000, "Par où commencer"], ["club-investissement.html", "tontine.webp", "Leçon", "De la tontine au club d’investissement", "Les règles d’un club", "gratuit", 0, ""], ["valoriser-mon-entreprise.html", "benefice-entreprise.webp", "Outil", "Combien vaut mon entreprise ?", "Dès 1 min", "gratuit", 0, ""], ["", "ateliers/atelier-05.webp", "Atelier", "Du club de tontine au club d’investissement", "Statuts, règles, premier placement", "prix", 50000, ""], ["", "ateliers/atelier-08.webp", "Atelier", "Dirigeant : séparer l’entreprise et la maison", "Salaire fixé, trésorerie suivie", "prix", 100000, ""], ["", "ateliers/atelier-10.webp", "Atelier", "Diaspora : investir au pays sans se faire avoir", "Envois budgétés, papiers en ordre", "prix", 200000, ""]]}};
+var ref=document.querySelector('.fondateur-img'),B=ref?ref.getAttribute('src').replace(/[^\/]*$/,''):'clone/assets/';
+var IC='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#0B1220"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function F(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u202f')+'\u00a0F';}
+function e(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function prix(x){var k=x[5],p=x[6];
+  if(k==='gratuit')return '<strong class="g">Gratuit</strong>';
+  if(k==='promo')return '<strong>Offert</strong><span class="r">−100&nbsp;%</span><s>'+F(p)+'</s><small>avec le code d’ouverture</small>';
+  return '<strong>'+F(p)+'</strong><small>ou '+Math.ceil(p/10000)+' crédit'+(p>10000?'s':'')+'</small>';}
+function carte(x){var bt=!x[0],tag=bt?'div':'a',h=bt?'':' href="'+e(x[0])+'"';
+  return '<li><'+tag+' class="iv-p'+(bt?' iv-bientot':'')+'"'+h+'><span class="iv-im"><img src="'+B+e(x[1])+'" alt="" loading="lazy" decoding="async"><span class="iv-fmt">'+e(x[2])+'</span></span><span class="iv-in"><b>'+e(x[3])+'</b><span class="iv-car">'+IC+'<span>'+e(x[4])+'</span></span><span class="iv-prix">'+prix(x)+'</span>'+(x[7]?'<span class="iv-top">'+e(x[7])+'</span>':'')+'</span></'+tag+'></li>';}
+var O=document.querySelector('#investir .iv-onglets'),G=document.getElementById('iv-grille');
+function voir(k){[].forEach.call(O.children,function(b){b.setAttribute('aria-selected',b.dataset.k===k);});G.innerHTML=D.items[k].map(carte).join('');try{sessionStorage.setItem('efa_iv',k);}catch(x){}}
+O.innerHTML=D.portes.map(function(p,i){return '<button type="button" role="tab" data-k="'+p[0]+'"><i>'+(i+1)+'</i>'+e(p[1])+'</button>';}).join('');
+O.addEventListener('click',function(ev){var b=ev.target.closest('button');if(b){voir(b.dataset.k);b.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});}});
+var k0='bourse';try{k0=sessionStorage.getItem('efa_iv')||k0;}catch(x){}if(!D.items[k0])k0='bourse';voir(k0);})();
+</script>
 </section>
     <section class="a-doors" id="portes" aria-labelledby="doors-title">
       <div class="a-section-inner">
