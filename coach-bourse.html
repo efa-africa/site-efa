@@ -201,6 +201,7 @@ td b{white-space:nowrap}
 .mail b{display:block;font-size:13px;margin-bottom:4px}
 .comp{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}.comp td,.comp th{padding:5px;border-bottom:1px solid #F0F1F4;text-align:right}.comp td:first-child,.comp th:first-child{text-align:left}
 
+.intro-audio{margin:16px 0 0}.intro-audio button{border:0;border-radius:999px;background:#fff;color:#092039;font-weight:800;font-size:15px;padding:10px 16px;cursor:pointer}.intro-audio span{display:block;margin-top:6px;font-size:13px;color:#C9D1DE}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261102b">
 </head>
@@ -212,6 +213,7 @@ td b{white-space:nowrap}
     <span class="surtitre">Être coaché · Atelier « Mon premier ordre »</span>
     <h1>Investir à la Bourse (BRVM), étape par étape</h1>
     <p class="chapeau">Vous entrez avec l'envie d'investir. Vous sortez avec un compte ouvert, un premier ordre passé et compris, et un plan écrit pour la suite. Le coach vous accompagne à chaque marche.</p>
+    <p class="intro-audio" hidden><button type="button" id="intro-audio">▶ Écouter Élysée Johnson · 1 min</button> <span>Vous pouvez couper la voix à tout moment et continuer seul.</span></p>
     <div class="arc">
       <div><span class="etiquette">Point de départ</span><p>« Je veux investir à la Bourse (BRVM), mais je ne sais pas par où commencer. »</p></div>
       <div><span class="etiquette">À l'arrivée</span><p>Premier ordre passé, vérifié, documenté. Un rythme d'investissement et des règles écrites.</p></div>
@@ -269,6 +271,8 @@ td b{white-space:nowrap}
   </section>
 </main>
 <section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+
 
 
 
@@ -856,6 +860,145 @@ ecr.addEventListener('change',e=>{const id=e.target.id;
 rend();
 })();
 
+
+/* Les documents, pas à pas : reconstitutions pédagogiques (chiffres d'exemple), avec repères numérotés et notes du coach. */
+(function(){
+const M=n=>'<b class="dk">'+n+'</b>';
+const DOCS={
+'boc-1':{t:"1 · La une du bulletin",doc:"Bulletin officiel de la cote",
+ h:()=>`<div class="pp-h"><span>BULLETIN OFFICIEL DE LA COTE</span><span>N° 209 · Séance du 30 octobre 2026 ${M(1)}</span></div>
+ <table class="pp-t"><tr><th>Indice ${M(2)}</th><th>Valeur</th><th>Variation</th><th>Depuis le 1er janvier</th></tr>
+ <tr><td>BRVM Composite</td><td>534,71</td><td class="up">+1,22 %</td><td class="up">+12,4 %</td></tr>
+ <tr><td>BRVM 30</td><td>266,10</td><td class="up">+1,05 %</td><td class="up">+10,8 %</td></tr>
+ <tr><td>BRVM Prestige</td><td>121,32</td><td class="dn">−0,18 %</td><td class="up">+6,1 %</td></tr></table>
+ <div class="pp-kpi"><div><small>Capitalisation des actions ${M(3)}</small><b>13 850 Md F</b></div><div><small>Valeur échangée ${M(4)}</small><b>2 140 M F</b></div><div><small>Titres en hausse / baisse ${M(5)}</small><b>21 / 14</b></div></div>`,
+ n:["<b>La date et le numéro</b> : un bulletin par séance. Vérifiez toujours que vous lisez celui du jour.","<b>Les indices</b> : la température du marché. La colonne « depuis le 1er janvier » est plus utile que la variation d'un seul jour.","<b>La capitalisation</b> : la valeur de toutes les sociétés cotées. Elle donne la taille du marché.","<b>La valeur échangée</b> : l'argent qui a circulé dans la séance. Un marché calme échange peu.","<b>Hausse et baisse</b> : si la plupart des titres montent, le mouvement est large ; si quelques-uns seulement montent, il est fragile."]},
+'boc-2':{t:"2 · Le tableau des actions",doc:"Bulletin officiel de la cote",
+ h:()=>`<div class="pp-h"><span>MARCHÉ DES ACTIONS</span><span>Compartiment prestige et principal</span></div><div class="pp-sc"><table class="pp-t pp-s"><tr><th>Symbole ${M(1)}</th><th>Préc.</th><th>Clôture ${M(2)}</th><th>Var.</th><th>Volume ${M(3)}</th><th>Dernier dividende net ${M(4)}</th><th>Rdt net ${M(5)}</th><th>PER ${M(6)}</th></tr>
+ <tr><td><b>SNTS</b> Sonatel</td><td>25 900</td><td>26 100</td><td class="up">+0,77 %</td><td>3 120</td><td>1 655 · 15/05/26</td><td>6,3 %</td><td>10,2</td></tr>
+ <tr><td><b>ORAC</b> Orange CI</td><td>14 600</td><td>14 600</td><td>0,00 %</td><td>412</td><td>855 · 10/06/26</td><td>5,9 %</td><td>11,4</td></tr>
+ <tr><td><b>SPHC</b> Saph CI</td><td>8 150</td><td>8 200</td><td class="up">+0,61 %</td><td>1 981</td><td>410 · 30/07/26</td><td>5,0 %</td><td>9,8</td></tr>
+ <tr><td><b>XYZC</b> Exemple CI</td><td>2 450</td><td>2 280</td><td class="dn">−6,94 %</td><td>18</td><td>—</td><td>—</td><td>—</td></tr></table></div>`,
+ n:["<b>Le symbole</b> : quatre lettres, la dernière indique le pays (C pour la Côte d'Ivoire, S pour le Sénégal…).","<b>La clôture</b> : le cours du jour, celui qu'affichera votre relevé. Comparez-le au cours précédent.","<b>Le volume</b> : 18 titres seulement pour la dernière ligne. Une forte baisse sur un tout petit volume dit peu de chose.","<b>Le dernier dividende</b> : montant net par action et date de paiement. Un tiret : pas de dividende récent, cherchez pourquoi.","<b>Le rendement net</b> : dividende ÷ cours. Il change chaque jour avec le cours.","<b>Le PER</b> : combien d'années de bénéfice vous payez. À comparer entre sociétés d'un même secteur."]},
+'boc-3':{t:"3 · Les obligations",doc:"Bulletin officiel de la cote",
+ h:()=>`<div class="pp-h"><span>MARCHÉ DES OBLIGATIONS</span><span>Cours en % du nominal</span></div><div class="pp-sc"><table class="pp-t pp-s"><tr><th>Emprunt ${M(1)}</th><th>Coupon ${M(2)}</th><th>Échéance ${M(3)}</th><th>Cours ${M(4)}</th><th>Volume</th></tr>
+ <tr><td>État de Côte d'Ivoire 6,25 % 2024-2031</td><td>6,25 %</td><td>2031</td><td>99,50 %</td><td>1 200</td></tr>
+ <tr><td>État du Sénégal 6,40 % 2025-2032</td><td>6,40 %</td><td>2032</td><td>98,00 %</td><td>350</td></tr>
+ <tr><td>Société Exemple 7,00 % 2023-2028</td><td>7,00 %</td><td>2028</td><td>101,00 %</td><td>0</td></tr></table></div>`,
+ n:["<b>L'emprunteur</b> : un État ou une entreprise. C'est lui qui doit vous rembourser.","<b>Le coupon</b> : l'intérêt annuel, calculé sur la valeur de départ (le nominal).","<b>L'échéance</b> : la date à laquelle on vous rembourse. Plus elle est lointaine, plus l'argent est bloqué.","<b>Le cours en pourcentage</b> : 98 % veut dire que 10 000 F de nominal s'achètent 9 800 F. Un volume nul : personne n'a échangé ce jour-là."]},
+'boc-4':{t:"4 · Les avis et événements",doc:"Bulletin officiel de la cote",
+ h:()=>`<div class="pp-h"><span>AVIS ET COMMUNIQUÉS</span><span>À lire avant d'acheter</span></div>
+ <div class="pp-avis"><p>${M(1)}<b>Paiement de dividende · SPHC</b> Dividende net de 410 F par action. Date de détachement (ex-dividende) : 27 juillet 2026. Paiement : 30 juillet 2026.</p>
+ <p>${M(2)}<b>Suspension de cotation · XYZC</b> La cotation est suspendue dans l'attente d'une communication de la société.</p>
+ <p>${M(3)}<b>Assemblée générale · ORAC</b> Assemblée générale ordinaire convoquée le 25 mai 2026 : approbation des comptes et du dividende.</p>
+ <p>${M(4)}<b>Admission d'une nouvelle valeur</b> Première cotation d'une société introduite en Bourse : cours d'introduction et calendrier.</p></div>`,
+ n:["<b>L'ex-dividende</b> : achetez avant cette date pour toucher le dividende. Le jour du détachement, le cours baisse souvent d'à peu près le montant du dividende.","<b>Une suspension</b> : vous ne pouvez ni acheter ni vendre. Lisez la communication de la société avant toute décision.","<b>L'assemblée générale</b> : c'est là que le dividende est voté. Vous pouvez y assister comme actionnaire.","<b>Une introduction</b> : ne vous précipitez pas. Lisez la note d'information et attendez quelques séances."]},
+'doc-ra':{t:"Le compte de résultat",doc:"Rapport annuel",
+ h:()=>`<div class="pp-h"><span>RAPPORT ANNUEL · SOCIÉTÉ EXEMPLE CI</span><span>Compte de résultat, en millions de F</span></div>
+ <table class="pp-t"><tr><th></th><th>2023</th><th>2024</th><th>2025</th></tr>
+ <tr><td>Chiffre d'affaires ${M(1)}</td><td>182 400</td><td>195 100</td><td>204 900</td></tr>
+ <tr><td>Résultat d'exploitation ${M(2)}</td><td>31 200</td><td>33 900</td><td>30 100</td></tr>
+ <tr><td>Résultat net ${M(3)}</td><td>21 800</td><td>23 600</td><td>20 500</td></tr>
+ <tr><td>Bénéfice par action ${M(4)}</td><td>2 180 F</td><td>2 360 F</td><td>2 050 F</td></tr>
+ <tr><td>Dividende par action ${M(5)}</td><td>1 300 F</td><td>1 400 F</td><td>1 400 F</td></tr></table>`,
+ n:["<b>Le chiffre d'affaires</b> : ce que la société vend. Il monte chaque année ici : bon signe.","<b>Le résultat d'exploitation</b> : ce que rapporte le métier lui-même. Il baisse en 2025 alors que les ventes montent : les coûts ont grimpé. Cherchez pourquoi dans le rapport.","<b>Le résultat net</b> : ce qui reste après les intérêts et les impôts.","<b>Le bénéfice par action</b> : il sert à calculer le PER.","<b>Le dividende</b> : maintenu en 2025 malgré la baisse du bénéfice. La société distribue 68 % de son bénéfice : surveillez si cela dure."]},
+'doc-bilan':{t:"Le bilan",doc:"Rapport annuel",
+ h:()=>`<div class="pp-h"><span>RAPPORT ANNUEL · SOCIÉTÉ EXEMPLE CI</span><span>Bilan au 31 décembre, en millions de F</span></div>
+ <div class="pp-2c"><table class="pp-t"><tr><th>Ce qu'elle possède</th><th>2025</th></tr><tr><td>Usines, terrains, matériel</td><td>148 000</td></tr><tr><td>Stocks et créances clients ${M(1)}</td><td>61 500</td></tr><tr><td>Trésorerie ${M(2)}</td><td>18 200</td></tr><tr><td><b>Total</b></td><td><b>227 700</b></td></tr></table>
+ <table class="pp-t"><tr><th>Ce qui la finance</th><th>2025</th></tr><tr><td>Fonds propres ${M(3)}</td><td>112 300</td></tr><tr><td>Dettes financières ${M(4)}</td><td>64 900</td></tr><tr><td>Fournisseurs et autres</td><td>50 500</td></tr><tr><td><b>Total</b></td><td><b>227 700</b></td></tr></table></div>`,
+ n:["<b>Stocks et créances</b> : l'argent immobilisé dans l'activité. S'ils grossissent plus vite que les ventes, la trésorerie souffre.","<b>La trésorerie</b> : l'argent disponible. C'est le coussin de l'entreprise.","<b>Les fonds propres</b> : l'argent des actionnaires, accumulé au fil des ans.","<b>Les dettes financières</b> : ici 0,58 fois les fonds propres. Comparez d'une année à l'autre : la tendance compte plus que le chiffre."]},
+'doc-grille':{t:"La grille tarifaire",doc:"SGI",
+ h:()=>`<div class="pp-h"><span>GRILLE TARIFAIRE · SGI EXEMPLE</span><span>Homologuée par l'AMF-UMOA ${M(1)}</span></div>
+ <table class="pp-t"><tr><th>Prestation</th><th>Tarif</th></tr>
+ <tr><td>Ouverture du compte-titres ${M(2)}</td><td>Gratuite</td></tr>
+ <tr><td>Courtage par ordre, actions ${M(3)}</td><td>1,00 % (minimum 2 000 F)</td></tr>
+ <tr><td>Droits de garde ${M(4)}</td><td>0,30 % par an (minimum 10 000 F)</td></tr>
+ <tr><td>Commissions BRVM et DC/BR ${M(5)}</td><td>0,20 % + 0,10 %</td></tr>
+ <tr><td>Virement sortant</td><td>2 500 F</td></tr>
+ <tr><td>Taxe ${M(6)}</td><td>18 % sur les commissions de la SGI</td></tr></table>`,
+ n:["<b>L'homologation</b> : la grille est déposée auprès du régulateur. Demandez-la toujours par écrit.","<b>L'ouverture</b> : souvent gratuite. Ce n'est pas là que se jouent les frais.","<b>Le courtage et son minimum</b> : sur un ordre de 50 000 F, le minimum de 2 000 F fait 4 %. Regroupez vos petits achats.","<b>Les droits de garde</b> : payés chaque année, même si vous ne faites rien. Sur un petit portefeuille, c'est souvent le plus gros frais.","<b>BRVM et DC/BR</b> : les mêmes dans toutes les SGI.","<b>La taxe</b> : elle s'ajoute aux commissions de la SGI. Comptez-la dans vos calculs."]},
+'doc-conv':{t:"La convention de compte",doc:"SGI",
+ h:()=>`<div class="pp-h"><span>CONVENTION DE COMPTE-TITRES</span><span>Extraits à lire avant de signer</span></div>
+ <div class="pp-avis"><p>${M(1)}<b>Article 3 · Transmission des ordres</b> Les ordres sont transmis par écrit, par la plateforme en ligne ou par téléphone enregistré.</p>
+ <p>${M(2)}<b>Article 7 · Tarification</b> Les frais applicables sont ceux de la grille tarifaire annexée. Toute modification est notifiée au client.</p>
+ <p>${M(3)}<b>Article 9 · Relevés</b> Un relevé de portefeuille est adressé au client au moins une fois par trimestre.</p>
+ <p>${M(4)}<b>Article 12 · Réclamations</b> Toute réclamation est adressée par écrit au service client, qui répond sous trente jours.</p>
+ <p>${M(5)}<b>Article 15 · Clôture</b> Le client peut clôturer son compte à tout moment ; ses titres sont transférés vers l'intermédiaire de son choix.</p></div>`,
+ n:["<b>Comment passer un ordre</b> : un ordre par téléphone doit être enregistré. Gardez une trace écrite.","<b>Les frais</b> : la grille doit être annexée. Si elle manque, demandez-la avant de signer.","<b>Les relevés</b> : notez leur rythme. Un relevé qui n'arrive pas se réclame.","<b>Les réclamations</b> : le délai de réponse est écrit. Au-delà, vous pouvez saisir le régulateur.","<b>La sortie</b> : vos titres vous suivent. Vérifiez les frais de transfert dans la grille."]},
+'doc-releve':{t:"Le relevé de portefeuille",doc:"Votre portefeuille",
+ h:()=>`<div class="pp-h"><span>RELEVÉ DE PORTEFEUILLE · AU 30 SEPTEMBRE 2026</span><span>Compte 00123456 ${M(1)}</span></div>
+ <div class="pp-sc"><table class="pp-t pp-s"><tr><th>Valeur</th><th>Quantité</th><th>PRU ${M(2)}</th><th>Cours ${M(3)}</th><th>Valorisation</th><th>+/- latent ${M(4)}</th></tr>
+ <tr><td>SNTS</td><td>4</td><td>24 820</td><td>26 100</td><td>104 400</td><td class="up">+5 120</td></tr>
+ <tr><td>SPHC</td><td>10</td><td>8 470</td><td>8 200</td><td>82 000</td><td class="dn">−2 700</td></tr></table></div>
+ <div class="pp-kpi"><div><small>Espèces disponibles ${M(5)}</small><b>13 600 F</b></div><div><small>Droits de garde prélevés ${M(6)}</small><b>2 500 F</b></div><div><small>Total</small><b>200 000 F</b></div></div>`,
+ n:["<b>Votre compte</b> : vérifiez le nom et le numéro à chaque relevé.","<b>Le PRU</b> : votre prix de revient par titre, frais compris.","<b>Le cours</b> : celui de la date du relevé, pas d'aujourd'hui.","<b>Le latent</b> : un gain ou une perte tant que vous n'avez pas vendu. Ce n'est pas de l'argent encaissé.","<b>Les espèces</b> : dividendes reçus et restes d'ordres. Décidez : réinvestir ou retirer.","<b>Les frais prélevés</b> : comparez-les à la grille. Une erreur se réclame par écrit."]},
+'doc-div':{t:"L'avis de dividende",doc:"Votre portefeuille",
+ h:()=>`<div class="pp-h"><span>AVIS D'OPÉRATION SUR TITRES</span><span>Paiement de dividende · SPHC</span></div>
+ <table class="pp-t"><tr><td>Titres détenus à la date de détachement ${M(1)}</td><td>10</td></tr><tr><td>Dividende brut par action ${M(2)}</td><td>466 F</td></tr><tr><td>Impôt retenu à la source (IRVM 12 %) ${M(3)}</td><td>−56 F</td></tr><tr><td>Dividende net par action</td><td>410 F</td></tr><tr><td><b>Montant crédité ${M(4)}</b></td><td><b>4 100 F</b></td></tr></table>`,
+ n:["<b>La date de détachement</b> : seuls les titres détenus la veille donnent droit au dividende.","<b>Le brut</b> : le montant voté en assemblée générale.","<b>L'impôt</b> : retenu à la source. Son taux dépend du pays du siège de la société.","<b>Le net crédité</b> : il arrive sur votre compte espèces. Vérifiez-le sur votre relevé."]},
+'doc-note':{t:"La note d'information",doc:"Emprunt obligataire",
+ h:()=>`<div class="pp-h"><span>NOTE D'INFORMATION · EMPRUNT EXEMPLE 6,50 % 2026-2033</span><span>Visa de l'AMF-UMOA ${M(1)}</span></div>
+ <table class="pp-t"><tr><td>Montant recherché</td><td>100 Md F</td></tr><tr><td>Valeur d'une obligation ${M(2)}</td><td>10 000 F</td></tr><tr><td>Taux d'intérêt ${M(3)}</td><td>6,50 % par an</td></tr><tr><td>Durée ${M(4)}</td><td>7 ans, dont 2 ans de différé</td></tr><tr><td>Remboursement ${M(5)}</td><td>Par cinquièmes, de la 3e à la 7e année</td></tr><tr><td>Période de souscription ${M(6)}</td><td>Du 2 au 20 novembre 2026, auprès des SGI</td></tr></table>`,
+ n:["<b>Le visa</b> : le régulateur a vérifié que l'information est complète. Ce n'est pas un avis sur la qualité de l'emprunt.","<b>La valeur unitaire</b> : on souscrit par multiples de 10 000 F.","<b>Le taux</b> : versé chaque année sur le capital restant dû.","<b>La durée et le différé</b> : pendant le différé, vous ne touchez que les intérêts.","<b>L'amortissement</b> : le capital revient par tranches. Votre argent n'est pas bloqué sept ans d'un bloc.","<b>La souscription</b> : elle se fait par votre SGI, dans les dates indiquées."]}
+};
+const PAR_PHASE={2:['boc-1','boc-2','boc-3','boc-4'],3:['doc-ra','doc-bilan'],4:['doc-grille'],5:['doc-conv'],9:['doc-releve','doc-div'],10:['doc-note']};
+const st=document.createElement('style');
+st.textContent=`.docs{background:#EEF5F8;border-radius:14px;padding:16px;margin:14px 0 6px}
+.docs .surtitre{color:#136B94}.docs h4{font-family:var(--f-display);font-size:20px;margin:6px 0 4px;color:#092039}.docs>p{margin:0 0 10px;font-size:14px;color:#5B6C79}
+.docs .ong{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px;scrollbar-width:none}
+.docs .ong button{all:unset;cursor:pointer;white-space:nowrap;font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px;background:#fff;color:#415568;box-shadow:inset 0 0 0 1px #DCE4E8}
+.docs .ong button[aria-selected="true"]{background:#092039;color:#fff;box-shadow:none}
+.docs .ong button:focus-visible{outline:3px solid #6AB2D2}
+.docs .cps{display:grid;gap:14px}.docs .cps>*{min-width:0}.docs .ecoute[hidden]{display:none}.papier{overflow-x:auto}@media(min-width:900px){.docs .cps{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start}}
+.papier{background:#fff;border-radius:6px;box-shadow:0 10px 26px rgba(9,32,57,.12);padding:14px;font-size:13.5px;color:#132739;font-family:var(--f-body)}
+.pp-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;border-bottom:2px solid #092039;padding-bottom:8px;margin-bottom:10px;font-size:11.5px;font-weight:700;letter-spacing:.04em}
+.pp-h span:first-child{color:#092039}.pp-h span:last-child{color:#5B6C79;font-weight:600}
+.pp-t{width:100%;border-collapse:collapse;font-size:13px;margin:0}.pp-t th{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:#5B6C79;text-align:left;padding:6px;border-bottom:1px solid #DCE4E8;white-space:nowrap}
+.pp-t td{padding:7px 6px;border-bottom:1px solid #EEF1F3;vertical-align:top}.pp-t td:not(:first-child){white-space:nowrap}
+.pp-s td,.pp-s th{font-size:12px}.pp-sc{overflow-x:auto}
+.pp-t .up{color:#1E8E57;font-weight:700}.pp-t .dn{color:#B3261E;font-weight:700}
+.pp-kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}.pp-kpi div{background:#F3F7F9;border-radius:6px;padding:8px}.pp-kpi small{display:block;font-size:11px;color:#5B6C79}.pp-kpi b{font-size:15px}
+.pp-2c{display:grid;gap:10px}@media(min-width:520px){.pp-2c{grid-template-columns:1fr 1fr}}
+.pp-avis p{margin:0 0 10px;padding:0 0 10px;border-bottom:1px solid #EEF1F3;line-height:1.45}.pp-avis p:last-child{border:0;margin:0;padding:0}.pp-avis b:not(.dk){display:block;color:#092039}
+.dk{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#DC4B34;color:#fff;font-size:11px;font-weight:800;margin:0 4px;vertical-align:1px;font-style:normal;letter-spacing:0}
+.docs .notes2 .etiquette{color:#5B6C79}.docs .notes2 ol{margin:8px 0 0;padding:0;list-style:none;counter-reset:n}
+.docs .notes2 li{counter-increment:n;position:relative;padding:0 0 10px 32px;font-size:15px;line-height:1.45;color:#132739}
+.docs .notes2 li::before{content:counter(n);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:#DC4B34;color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
+.docs .nav2{display:flex;gap:8px;margin-top:6px}.docs .nav2 button{border:0;border-radius:8px;min-height:44px;padding:0 14px;font-weight:800;cursor:pointer;background:#fff;color:#092039;box-shadow:inset 0 0 0 1px #DCE4E8}.docs .nav2 button.sv{background:#092039;color:#fff;flex:1}.docs .nav2 button:disabled{opacity:.4}
+.docs .ecoute{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:#fff;color:#092039;font-weight:800;font-size:14px;padding:8px 14px;cursor:pointer;box-shadow:inset 0 0 0 1px #DCE4E8;margin-bottom:10px}.docs .ecoute[aria-pressed="true"]{background:#092039;color:#fff}
+.docs .mention2{font-size:12px;color:#5B6C79;margin:8px 0 0}`;
+document.head.appendChild(st);
+const audioOk={};
+function verifAudio(id,cb){ if(id in audioOk) return cb(audioOk[id]); fetch('audio/coach-bourse/'+id+'.mp3',{method:'HEAD'}).then(r=>{audioOk[id]=r.ok;cb(r.ok);}).catch(()=>{audioOk[id]=false;cb(false);}); }
+let lecteur=null;
+document.querySelectorAll('.phase').forEach((sec,i)=>{
+  const L=PAR_PHASE[i]; if(!L) return;
+  const box=document.createElement('div'); box.className='docs'; box.dataset.garde='';
+  const corps=sec.querySelector('.ph-corps'); const but=corps.querySelector('.but'); but.after(box);
+  let k=0;
+  function rendre(){ const d=DOCS[L[k]];
+    box.innerHTML=`<span class="surtitre">Les documents, pas à pas · ${d.doc}</span><h4>${d.t.replace(/^\d · /,'')}</h4><p>Reconstitution pédagogique, chiffres d'exemple. Touchez les repères numérotés et lisez les notes du coach.</p>`
+     +(L.length>1?`<div class="ong" role="tablist">${L.map((id,j)=>`<button type="button" role="tab" data-j="${j}" aria-selected="${j===k}">${DOCS[id].t}</button>`).join('')}</div>`:'')
+     +`<button type="button" class="ecoute" data-a="${L[k]}" hidden aria-pressed="false">▶ Écouter le coach</button>`
+     +`<div class="cps"><div class="papier">${d.h()}</div><div class="notes2"><span class="etiquette">Ce que le coach regarde</span><ol>${d.n.map(x=>`<li>${x}</li>`).join('')}</ol>`
+     +(L.length>1?`<div class="nav2"><button type="button" data-p ${k?'':'disabled'}>← Précédent</button><button type="button" class="sv" data-s ${k<L.length-1?'':'disabled'}>Document suivant →</button></div>`:'')+`</div></div>`;
+    const eb=box.querySelector('.ecoute'); verifAudio(L[k],ok=>{ eb.hidden=!ok; });
+  }
+  box.addEventListener('click',e=>{ const t=e.target.closest('[data-j]'); if(t){k=+t.dataset.j;rendre();return;}
+    if(e.target.closest('[data-p]')){k--;rendre();return;} if(e.target.closest('[data-s]')){k++;rendre();return;}
+    const a=e.target.closest('.ecoute'); if(a){ if(lecteur&&!lecteur.paused&&lecteur.dataset.id===a.dataset.a){lecteur.pause();a.setAttribute('aria-pressed','false');a.textContent='▶ Écouter le coach';return;}
+      if(lecteur) lecteur.pause(); lecteur=new Audio('audio/coach-bourse/'+a.dataset.a+'.mp3'); lecteur.dataset.id=a.dataset.a; lecteur.play(); a.setAttribute('aria-pressed','true'); a.textContent='❚❚ Couper la voix';
+      lecteur.onended=()=>{a.setAttribute('aria-pressed','false');a.textContent='▶ Écouter le coach';}; }
+  });
+  rendre();
+});
+})();
+
+
+(function(){ var z=document.querySelector('.intro-audio'), b=document.getElementById('intro-audio'), a=null; if(!z) return;
+fetch('audio/coach-bourse/intro.mp3',{method:'HEAD'}).then(function(r){ if(r.ok) z.hidden=false; }).catch(function(){});
+b.onclick=function(){ if(a&&!a.paused){ a.pause(); b.textContent='▶ Reprendre la voix'; return; } if(!a){ a=new Audio('audio/coach-bourse/intro.mp3'); a.onended=function(){ b.textContent='▶ Réécouter'; }; } a.play(); b.textContent='❚❚ Couper la voix'; };
+})();
 </script>
 <script src="clone/habillage.js?v=20261102b" defer></script>
 </body>
