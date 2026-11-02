@@ -39,7 +39,7 @@ window.ATELIER = {
       { t: "Ici ou à l’étranger, et la hausse des frais", c: "Les frais montent presque chaque année. Le même lycée coûtera plus cher dans 5 ans : il faut le compter dès maintenant.",
         w: { ex: "Une année de lycée à 300 000 F aujourd’hui, avec une hausse d’environ 5 % par an, coûtera environ 383 000 F dans 5 ans.", puces: { id:"ee_lieu", k:"Le supérieur, vous l’imaginez", l:["Ici, dans la zone","À l’étranger"] }, champs: [ {id:"ee_hau", l:"Hausse des frais par an (%)", ph:"5"} ],
           v: function(D,H){ var R=window.ATELIER._calc(D,H); if(!R||!R.saisi) return ''; var h=H.N(D.ee_hau);
-            var o='<div class="gros"><small>Total des études restantes'+(h?', avec '+h+' % de hausse par an':'')+'</small><b>'+H.F(R.total)+'</b><p>Besoin pour le supérieur, à payer à partir de '+(R.ans?'dans '+R.ans+' an'+(R.ans>1?'s':''):'maintenant')+' : '+H.F(R.besoin)+'.</p></div>';
+            var o='<div class="gros"><small>Total des études restantes'+(h?', avec '+h+' % de hausse par an':'')+'</small><b>'+H.F(R.total)+'</b><p>Besoin pour le supérieur, à payer '+(R.ans?'dans '+R.ans+' an'+(R.ans>1?'s':''):'dès maintenant')+' : '+H.F(R.besoin)+'.</p></div>';
             if(D.ee_lieu==="À l’étranger") o+='<div class="verdict v-mid">À l’étranger, vérifiez que votre coût annuel compte aussi le logement, le billet, le visa, l’assurance et les mois de caution.</div>';
             return o; } },
         p: "Je connais le coût total des études et le besoin pour le supérieur." }
