@@ -3,7 +3,7 @@ function lsSignaux(D,H){
   var L=[], ca1=H.N(D.ls_ca1), ca2=H.N(D.ls_ca2), ca3=H.N(D.ls_ca3), rn1=H.N(D.ls_rn1), rn2=H.N(D.ls_rn2), rn3=H.N(D.ls_rn3),
       df=H.N(D.ls_df), df0=H.N(D.ls_df0), fp=H.N(D.ls_fp), nba=H.N(D.ls_nba), div=H.N(D.ls_div);
   var bpa=(rn3&&nba)?rn3*1000000/nba:0;
-  if(div&&bpa&&div>bpa) L.push("Dividende supérieur au bénéfice par action");
+  if(div&&bpa>0&&div>bpa) L.push("Dividende supérieur au bénéfice par action");
   if(div&&rn3<0) L.push("Dividende versé malgré une perte");
   if(df&&df0&&df>df0) L.push("Dettes financières en hausse");
   if(df&&fp>0&&df/fp>1) L.push("Dettes supérieures aux fonds propres");
