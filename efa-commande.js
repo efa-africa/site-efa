@@ -42,6 +42,7 @@
       if (!mailOk && !waOk) { err.hidden = false; err.textContent = "Laissez votre email ou votre numéro WhatsApp : c’est là que vous recevez votre code."; return; }
       var c = code(), btn = f.querySelector(".cm-go"); btn.disabled = true; btn.textContent = "Création de votre code…";
       garder(c, o.produit + (o.titre ? " · " + o.titre : ""));
+      if (o.brouillon) { try { var Bz = JSON.parse(localStorage.getItem("efa_bp_brouillons") || "{}") || {}; Bz[c.replace(/[^A-Z0-9]/g, "")] = o.brouillon(c, v); localStorage.setItem("efa_bp_brouillons", JSON.stringify(Bz)); } catch (e) {} }
       var data = { access_key: CLE, subject: "efa.africa · Commande · " + o.produit + (o.titre ? " · " + o.titre : "") + " · " + c, from_name: "Commandes · efa.africa", code: c, produit: o.produit, titre: o.titre || "", prix_lancement: String(o.prix), prix_normal: String(o.prixNormal), page: location.pathname, a_faire: "Contacter le client, encaisser par mobile money, produire le document, le publier avec CE code : python3 scripts/plans/publier_plan.py plan.json --code " + c };
       for (var k in v) data[k] = v[k]; for (var k2 in (o.extra || {})) data[k2] = o.extra[k2]; if (mailOk) data.replyto = v.email;
       var envois = [fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) }).then(function (r) { return r.json(); }).then(function (r) { return !!r.success; }).catch(function () { return false; })];
@@ -54,12 +55,32 @@
         var wa = waOk ? "https://wa.me/" + v.whatsapp.replace(/\D/g, "").replace(/^00/, "") + "?text=" + encodeURIComponent(msg) : "";
         box.innerHTML = '<p style="margin:0;font-weight:700;color:#0B1220">Merci' + (v.nom ? ", " + esc(v.nom.split(" ")[0]) : "") + '. Votre commande est enregistrée.</p>'
           + '<div class="cm-code"><small>Votre code personnel</small><b>' + c + '</b><span style="font-size:14px;color:#4E5566">Gardez-le : il est la seule clé de votre document.</span></div>'
-          + '<p class="cm-note" style="margin-top:0">' + (B && mailOk ? "Il vient aussi de partir par email à " + esc(v.email) + ". " : "") + 'EFA vous contacte' + (waOk ? " sur WhatsApp" : " par email") + (o.prix ? ' pour le paiement de ' + F(o.prix) : ' pour préparer votre document, offert avec votre clé') + '. Votre document arrive dans votre espace, avec ce code.</p>'
+          + '<p class="cm-note" style="margin-top:0">' + (B && mailOk ? "Il vient aussi de partir par email à " + esc(v.email) + ". " : "") + (o.brouillon ? '<b>La version 1 de votre plan est déjà dans votre espace.</b> ' : '') + 'EFA vous contacte' + (waOk ? " sur WhatsApp" : " par email") + (o.prix ? ' pour le paiement de ' + F(o.prix) : ' pour préparer votre document, offert avec votre clé') + '. Votre document arrive dans votre espace, avec ce code.</p>'
           + '<div class="cm-act">' + (wa ? '<a class="cm-wa" href="' + wa + '" target="_blank" rel="noopener">Garder mon code dans WhatsApp</a>' : '') + '<button type="button" class="cm-cp">Copier mon code</button><a class="cm-es" href="mon-espace-business-plan.html">Ouvrir mon espace</a></div>';
         box.querySelector(".cm-cp").onclick = function () { var b = this; (navigator.clipboard ? navigator.clipboard.writeText(c) : Promise.reject()).then(function () { b.textContent = "Code copié ✓"; }).catch(function () { b.textContent = c; }); };
         if (o.retour) o.retour(c);
       });
     };
   }
-  window.EFACommande = { ouvrir: ouvrir, prixBloc: prixBloc, F: F };
+  function FC(n) { return n >= 1e6 ? (Math.round(n / 1e5) / 10).toString().replace(".", ",") + " M F" : F(n); }
+  function sansInsec(t) { return String(t).replace(/[  ]/g, " "); }
+  /* Version 1 d'un business plan, disponible tout de suite dans l'espace : construite à partir de l'idée du catalogue et du budget. */
+  function version1(x, o) {
+    var b = o.budget || (x[4] || x[3]), d = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }), tk = sansInsec((x[3] ? FC(x[3]) : "0 F") + " à " + FC(x[4] || x[3])), bud = o.budget ? sansInsec(F(b)) : "à préciser";
+    return { version1: 1, titre: x[1], porteur: o.nom || "", lieu: o.pays || "", budget: bud,
+      versions: [{ v: 1, date: d, note: "Version de départ, à partir de votre idée et de votre budget." }], legende: true, resume: x[8],
+      chapitres: [
+        { t: "Le client et son problème", blocs: [{ p: "**Votre client principal :** " + (o.client || "à préciser avec vous.") }, { liste: ["Qui achète, et à quelle fréquence ?", "Combien paie-t-il aujourd’hui pour une solution proche ?", "Où le trouver : quartier, bureau, marché, réseau ?"] }] },
+        { t: "L’offre et le prix test", blocs: [{ p: x[8] }, { encart: "Commencez par une offre courte et un seul prix. On élargit quand les ventes sont régulières." }] },
+        { t: "Le test terrain", blocs: [{ p: "**Votre premier test :** " + x[9] }, { encart: "Votre but : obtenir une réaction réelle d’un client ou d’un fournisseur avant de dépenser tout le budget." }] },
+        { t: "Les dépenses de départ", blocs: [{ chiffres: [{ l: "Votre budget", v: bud, o: "vous" }, { l: "Ticket de départ observé pour cette activité", v: tk, o: "efa" }] }, { verrou: "Le détail poste par poste arrive dans votre espace" }] },
+        { t: "Les coûts de chaque mois", blocs: [{ verrou: "Calculés par EFA avec vos réponses" }] },
+        { t: "Les hypothèses de ventes", blocs: [{ verrou: "Trois niveaux de ventes, à partir de votre test" }] },
+        { t: "La trésorerie en trois scénarios", blocs: [{ verrou: "Prudent, central, favorable : mois par mois" }] },
+        { t: "Les risques", blocs: [{ liste: ["**À vérifier :** " + x[10], "**Le piège courant :** " + x[11]] }] },
+        { t: "Les 30 premiers jours", blocs: [{ tableau: { tete: ["Semaine", "Action"], lignes: [["1", "Préparer le test : " + x[9]], ["2", "Faire le test et noter chaque réaction, chaque vente."], ["3", "Vérifier : " + x[10]], ["4", "Faire le point avec EFA : ce que le test a montré, et la suite."]] } }] },
+        { t: "Ce qu’il reste à vérifier", blocs: [{ liste: [x[10], "Les autorisations et formalités applicables à votre activité, auprès de la mairie ou de la chambre de commerce.", "Les prix réels chez deux fournisseurs."] }, { encart: "Ce plan est un outil de travail : il ne vaut ni étude de marché, ni accord de financement. Il s’enrichit ici, avec ce même code." }] }
+      ], suivi: [{ date: d, texte: "Commande reçue. EFA vous contacte pour compléter les chapitres chiffrés." }] };
+  }
+  window.EFACommande = { ouvrir: ouvrir, prixBloc: prixBloc, F: F, version1: version1 };
 })();
