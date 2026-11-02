@@ -53,11 +53,15 @@ window.EFA_ATELIERS = (function () {
     if (new Date() > new Date(FIN_TEST + 'T23:59:59')) return false;
     return controle(m[1]) === m[2];
   }
+  // Codes équipe de test : EFAT-XXXX-YYYY, ouvrent tous les ateliers et cours jusqu'à la fin de la période de test.
+  function ctrlEq(x) { var h = 2166136261, t = 'efa-equipe-2026|' + x; for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } var o = ''; for (var k = 0; k < 4; k++) { o += ALPHA[h % ALPHA.length]; h = Math.floor(h / ALPHA.length) ^ (k * 7919); } return o; }
+  function codeEquipe() { var x = '', a = new Uint32Array(4); try { crypto.getRandomValues(a); } catch (e) { for (var j = 0; j < 4; j++) a[j] = Math.random() * 1e9; } for (var i = 0; i < 4; i++) x += ALPHA[a[i] % ALPHA.length]; return 'EFAT-' + x + '-' + ctrlEq(x); }
+  function equipeValide(c) { var m = String(c || '').trim().toUpperCase().replace(/\s+/g, '').match(/^EFAT-([A-Z2-9]{4})-([A-Z2-9]{4})$/); if (!m) return false; if (new Date() > new Date(FIN_TEST + 'T23:59:59')) return false; return ctrlEq(m[1]) === m[2]; }
   // Prix affichés. Pour le lancement, l'accès est offert : clé générée avec un email (jusqu'à 50 000 FCFA), sur demande au-delà.
   function fcfa(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + ' FCFA'; }
   function prix(a) { return a && a.gratuit ? 'Gratuit' : fcfa(a.prix || PRIX); }
   function acces(a) { return a.gratuit ? 'gratuit' : 'cle'; }
   // Phase de test : 1 crédit = 10 000 FCFA. 3 crédits offerts à l'inscription par email, +1 crédit par avis.
   function cout(a) { return a.gratuit ? 0 : Math.ceil((a.prix || PRIX) / 10000); }
-  return { liste: A, prix: prix, acces: acces, cout: cout, CREDITS_OFFERTS: 3, PRIX: PRIX, FIN_TEST: FIN_TEST, nouvelleCle: nouvelleCle, cleValide: cleValide };
+  return { liste: A, prix: prix, acces: acces, cout: cout, CREDITS_OFFERTS: 3, codeEquipe: codeEquipe, equipeValide: equipeValide, PRIX: PRIX, FIN_TEST: FIN_TEST, nouvelleCle: nouvelleCle, cleValide: cleValide };
 })();

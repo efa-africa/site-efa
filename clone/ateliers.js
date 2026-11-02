@@ -52,7 +52,7 @@
     $('at-dlg-cle').hidden = ok || m === 'gratuit';
     var go = $('at-dlg-go'); go.hidden = !(ok && cour.lien); if (cour.lien) go.href = cour.lien;
     var suite = cour.lien ? '' : ' Votre place est réservée : nous vous envoyons le lien par email dès l’ouverture de la prochaine session.';
-    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' ouvert, code d’accès <b>' + etat.ok[cour.id] + '</b>.') + suite; }
+    if (ok) { msg.className = 'ok'; msg.innerHTML = (etat.ok[cour.id] === 'équipe' ? 'Ouvert avec votre accès équipe.' : etat.ok[cour.id] === 'email' ? 'C’est fait. ' + (cour.cours ? 'Le cours' : 'L’atelier') + ' est débloqué.' : (cour.cours ? 'Cours' : 'Atelier') + ' ouvert, code d’accès <b>' + etat.ok[cour.id] + '</b>.') + suite; }
     else { msg.className = ''; msg.textContent = ''; }
   }
   function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
@@ -122,8 +122,11 @@
     cour = D.liste.filter(function (a) { return a.id === pa; })[0] || testes()[0] || D.liste[0];
     ouvrir(cour.id); fm.hidden = true; $('at-avis').hidden = false; remplirAvis(pa); $('at-dlg-go').hidden = true; msg.textContent = '';
   }, 120);
+  function toutOuvrir(v) { D.liste.forEach(function (a) { if (!etat.ok[a.id]) { etat.ok[a.id] = 'équipe'; var c = document.querySelector('.at-c[data-id="' + a.id + '"]'); if (c) { c.classList.add('debloque'); c.querySelector('.at-c-btn').textContent = 'Accès débloqué ✓'; } } }); etat.equipe = v; ecrire(etat); }
+  try { var eq0 = localStorage.getItem('efa_equipe'); if (eq0 && D.equipeValide(eq0) && etat.equipe !== eq0) toutOuvrir(eq0); } catch (x) {}
   function valider() {
     var v = champ.value.trim().toUpperCase().replace(/\s+/g, '');
+    if (D.equipeValide(v)) { try { localStorage.setItem('efa_equipe', v); } catch (x) {} toutOuvrir(v); majDlg(); msg.className = 'ok'; msg.textContent = 'Accès équipe activé : tous les ateliers et cours sont ouverts sur cet appareil.'; try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'acces-equipe', title: 'Accès équipe', event: true }); } catch (x) {} return; }
     if (!D.cleValide(v)) { msg.textContent = 'Ce code promo n’est pas reconnu. Vérifiez les lettres et les tirets.'; msg.className = 'ko'; return; }
     debloquer(v);
     try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'atelier-cle-' + cour.id, title: 'Clé atelier', event: true }); } catch (x) {}
