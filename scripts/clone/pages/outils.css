@@ -37,10 +37,17 @@
 .bo-rac a:hover{box-shadow:inset 0 0 0 1.5px #0B1220}
 .bo-rac a:first-of-type{background:#0B1220;color:#fff;box-shadow:none}
 .bo-rac a:first-of-type small{color:#6DB8F2}
-.bo-rac a.bo-rouge{background:#DA3C1B;color:#fff;box-shadow:none}
+.bo-rac a.bo-rouge{background:#E8341C;color:#fff;box-shadow:0 0 0 0 rgba(232,52,28,.6);animation:bo-brille 1.8s ease-in-out infinite}
+@keyframes bo-brille{0%,100%{box-shadow:0 0 0 0 rgba(232,52,28,.55)}50%{box-shadow:0 0 0 9px rgba(232,52,28,0)}}
+@media(prefers-reduced-motion:reduce){.bo-rac a.bo-rouge{animation:none}}
 .bo-rac a.bo-rouge small{color:#FFE3DA}
 .bo-rac a.bo-rouge:hover{background:#B8341A}
 .bo-rac-bas{margin:34px 0 8px}
 .bo-rac-bas a:first-of-type{background:#fff;color:#0B1220;box-shadow:inset 0 0 0 1.5px #C9D3E0}
 .bo-rac small{font-size:12px;font-weight:800;color:#1B71B2;text-transform:uppercase;letter-spacing:.04em}
-@media(max-width:640px){.bo-rac>span{flex-basis:100%}.bo-rac a{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.bo-rac a:first-of-type,.bo-rac a.bo-rouge{flex-basis:100%}.bo-rac-bas a:first-of-type{flex-basis:calc(50% - 8px)}.bo-rac a.bo-rouge small{display:none}}
+@media(max-width:640px){.bo-rac>span{flex-basis:100%}.bo-rac a{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.bo-rac:not(.bo-rac-bas) a{flex:1 1 0;min-width:0;padding:10px 12px;font-size:15.5px;line-height:1.25;flex-direction:column;gap:2px}.bo-rac:not(.bo-rac-bas) a small{font-size:11px}.bo-rac-bas a:first-of-type{flex-basis:calc(50% - 8px)}.bo-rac a.bo-rouge small{display:block}}
+
+/* Accès directs : les deux produits d’appel côte à côte, sur toutes les largeurs */
+.bo-rac:not(.bo-rac-bas){display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px}
+.bo-rac:not(.bo-rac-bas)>span{grid-column:1/-1}
+.bo-rac:not(.bo-rac-bas) a{flex-direction:column;justify-content:center;text-align:center;min-width:0;gap:2px;padding:12px 14px;font-size:17px}.bo-rac:not(.bo-rac-bas) a small{display:block;font-size:11.5px}
