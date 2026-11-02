@@ -151,10 +151,23 @@
 .un-ban{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:16px;background:#0B1220;color:#E8EDF5;border-radius:18px;padding:20px 22px;text-decoration:none}
 .un-ban b{font:700 clamp(19px,2vw,23px)/1.2 "Libre Baskerville",Georgia,serif;color:#fff;display:block}
 .un-ban span{color:#C9D1DE;font-size:16px}
+.un-outils{margin-top:16px;background:#DA3C1B;border-radius:18px;padding:20px 18px}
+.un-outils-t{margin:0 0 12px;font:700 clamp(21px,2.2vw,26px)/1.2 "Libre Baskerville",Georgia,serif;color:#fff}
+.un-outils-g{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:860px){.un-outils-g{grid-template-columns:repeat(3,1fr)}}
+.un-outils-g a{display:flex;flex-direction:column;background:#0B1220;border-radius:14px;padding:16px 18px;text-decoration:none;color:#C9D1DE}
+.un-outils-g small{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#F09680}
+.un-outils-g b{font:700 clamp(18px,1.8vw,21px)/1.2 "Libre Baskerville",Georgia,serif;color:#fff;margin:6px 0 6px}
+.un-outils-g span{font-size:15.5px;line-height:1.45;color:#C9D1DE}
+.un-outils-g i{font-style:normal;font-weight:800;color:#fff;margin-top:auto;padding-top:12px}
 .un-ban i{font-style:normal;font-weight:800;background:#DA3C1B;color:#fff;border-radius:8px;padding:12px 18px;white-space:nowrap}
 </style>
 <div class="un-g"><a class="un-c" id="marches" href="investir-bourse.html"><img src="assets/accueil-lancer-brvm-2.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"><span class="un-t"><small>01 / LA BOURSE (BRVM)</small><b>Investir pas à pas, <em>jusqu’à votre premier ordre.</em></b><span>Comprendre ce qu’on achète, choisir sa SGI, passer son premier ordre et le comprendre.</span><i>Entrer →</i></span></a><a class="un-c" href="investir-terrain-immobilier.html"><img src="assets/univers-terrain.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"><span class="un-t"><small>02 / TERRAIN ET IMMOBILIER</small><b>Un toit à vous, <em>avec les bons chiffres.</em></b><span>Acheter, construire ou attendre selon vos revenus, et vérifier les papiers avant de payer.</span><i>Entrer →</i></span></a><a class="un-c" href="investir-assurance-epargne.html"><img src="assets/univers-epargne.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"><span class="un-t"><small>03 / ASSURANCE-VIE ET ÉPARGNE</small><b>Faire travailler votre argent, <em>sans le mettre en danger.</em></b><span>Placer selon votre horizon, comprendre un contrat d’assurance-vie, préparer la retraite.</span><i>Entrer →</i></span></a><a class="un-c" href="investir-gagner-plus.html"><img src="assets/benefice-entreprise.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"><span class="un-t"><small>04 / GAGNER PLUS</small><b>Faire grandir vos revenus, <em>avec de vrais chiffres.</em></b><span>Ce que votre montant permet de lancer, ce qu’une activité rapporte vraiment, et les mirages à éviter.</span><i>Entrer →</i></span></a></div>
-<a class="un-ban" id="generateur" href="generateur-de-projet.html?src=accueil" style="background:#DA3C1B"><span><b>Avec mon budget, je lance quoi ?</b><span style="color:#fff">Mon générateur de projet : glissez votre montant, de 10 000 F à 50 millions, et voyez ce que vous pouvez lancer.</span></span><i style="background:#0B1220">Générer mes idées →</i></a>
+<div class="un-outils" id="generateur" data-garde><p class="un-outils-t">Trois outils pour se lancer</p><div class="un-outils-g">
+<a href="generateur-de-projet.html?src=accueil"><small>Explorer</small><b>Avec ce que j’ai, je lance quoi&nbsp;?</b><span>Votre montant, de 10 000 F à 50 millions : des idées à tester, avec le premier pas.</span><i>Explorer mes idées →</i></a>
+<a href="mon-business-plan-tient-il.html?src=accueil"><small>Vérifier</small><b>Mon business plan tient-il la route&nbsp;?</b><span>Vos chiffres relus comme par un financeur : marge, croissance, réserve.</span><i>Tester mon plan →</i></a>
+<a href="valoriser-mon-entreprise.html?src=accueil"><small>Estimer</small><b>Combien vaut mon entreprise&nbsp;?</b><span>Une première estimation de la valeur de votre activité, dès 1 min.</span><i>Estimer ma valeur →</i></a>
+</div></div>
 <a class="un-ban" id="avant-de-signer" href="se-proteger-des-arnaques.html"><span><b>Avant de confier votre argent : les arnaques.</b><span>Rendement garanti, faux conseiller, faux placement : ce qu’il faut vérifier avant de payer.</span></span><i>Vérifier une offre →</i></a>
 </div>
 <div class="aef-plus"><p class="aef-demain" id="solutions"><b>Demain, avec EFA</b>Des partenaires sélectionnés et des clubs d’investissement : nous l’annoncerons ici, avec le rôle d’EFA affiché avant tout engagement.</p></div><p class="aef-note">Aucun acteur représenté n’est présenté comme partenaire d’EFA. Le rôle et la rémunération éventuelle d’EFA seront indiqués avant toute mise en relation.</p>
