@@ -3,7 +3,7 @@ window.ATELIER = {
   id: "ou-passe-mon-argent",
   titre: "Où est passé mon argent ?",
   h1: "Votre argent ne disparaît pas. Il change de main sans que vous le voyiez.",
-  voix: false,
+  voix: "auto",
   question: {
     t: "Le 20 du mois, il ne vous reste presque rien. Quelle est la première chose à faire ?",
     r: [

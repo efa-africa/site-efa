@@ -3,7 +3,7 @@ window.ATELIER = {
   id: "retraite-sans-pension",
   titre: "Préparer ma retraite sans pension",
   h1: "Votre retraite, c’est vous qui la financez. Autant commencer maintenant.",
-  voix: false,
+  voix: "auto",
   question: {
     t: "Vous n’avez pas de pension prévue. Quelle est la meilleure première étape ?",
     r: [

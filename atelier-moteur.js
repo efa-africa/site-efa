@@ -101,7 +101,10 @@ sc.addEventListener('click',function(ev){
 document.addEventListener('keydown',function(e){ if(vue!=='ecran'||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return; if(e.key==='ArrowRight') aller(cur+1); if(e.key==='ArrowLeft') aller(cur-1); });
 
 /* ---------- Voix d'Élysée ---------- */
-var VX={dir:'audio/'+A.id+'/',on:true,cle:'',a:new Audio(),v:A.voixVersion||1};
+var VX={dir:'audio/'+A.id+'/',on:true,cle:'',a:new Audio(),v:A.voixVersion||1,auto:A.voix==='auto',ex:{}};
+/* voix « auto » : chaque écran n'a sa voix que si son MP3 est en ligne ; sinon rien ne s'affiche */
+function dispo(k,cb){ if(!VX.auto) return cb(true); if(k in VX.ex) return cb(VX.ex[k]); VX.ex[k]=null;
+  fetch(VX.dir+k+'.mp3?v='+VX.v,{method:'HEAD',cache:'no-store'}).then(function(r){ VX.ex[k]=r.ok; },function(){ VX.ex[k]=false; }).then(function(){ cb(VX.ex[k]); }); }
 var bar=$('#voix'), ec=$('#pp-ecoute');
 if(!A.voix){ if(bar) bar.hidden=true; if(ec) ec.hidden=true; rendu(); return; }
 try{ VX.on=localStorage.getItem('efa-voix')!=='off'; }catch(e){}
@@ -112,8 +115,10 @@ function vxUI(){ var joue=!VX.a.paused&&!VX.a.ended; bar.classList.toggle('coupe
   $('#vx-couper').textContent=VX.on?'Couper la voix':'Réactiver la voix';
   $('#vx-s').textContent=VX.on?(joue?'Élysée vous parle':'Touchez ▶ pour écouter'):'Vous avancez seul';
   $('#vx-lire').innerHTML=joue?IC_PAUSE:IC_PLAY; $('#vx-lire').setAttribute('aria-label',joue?'Mettre en pause':'Écouter cet écran');
-  if(ec) ec.hidden=!(vue==='accueil'&&VX.on&&!joue); }
+  if(ec) ec.hidden=!(vue==='accueil'&&VX.on&&!joue&&(!VX.auto||VX.ex['00-accueil']===true));
+  if(VX.auto) bar.hidden=VX.ex[vxCle()]!==true; }
 function vxJouer(force){ var k=vxCle(); if(!k||!VX.on){ vxUI(); return; }
+  if(VX.auto&&VX.ex[k]!==true){ if(!(k in VX.ex)) dispo(k,function(){ if(k===vxCle()) vxJouer(force); }); if(VX.cle!==k){ try{ VX.a.pause(); }catch(e){} } vxUI(); return; }
   if(k!==VX.cle){ VX.cle=k; VX.a.src=VX.dir+k+'.mp3?v='+VX.v; } else if(!force&&VX.a.ended){ vxUI(); return; }
   if(force) try{ VX.a.currentTime=0; }catch(e){}
   var p=VX.a.play(); if(p&&p.then) p.then(vxUI,vxUI); vxUI(); }
@@ -122,6 +127,8 @@ function vxStop(){ try{ VX.a.pause(); }catch(e){} vxUI(); }
 $('#vx-couper').onclick=function(){ VX.on=!VX.on; try{ localStorage.setItem('efa-voix',VX.on?'on':'off'); }catch(e){} if(VX.on){ VX.cle=''; vxJouer(true); } else vxStop(); };
 $('#vx-lire').onclick=function(){ if(!VX.a.paused&&!VX.a.ended) vxStop(); else vxJouer(VX.a.ended||vxCle()!==VX.cle); };
 if(ec) ec.onclick=function(){ VX.on=true; try{ localStorage.setItem('efa-voix','on'); }catch(e){} VX.cle=''; vxJouer(true); };
-var _rendu=rendu; rendu=function(){ _rendu(); if(VX.on&&vxCle()!==VX.cle) vxJouer(false); else vxUI(); };
+var _rendu=rendu; rendu=function(){ _rendu(); var k=vxCle(); if(VX.auto&&VX.ex[k]!==true&&VX.cle!==k){ try{ VX.a.pause(); }catch(e){} }
+  dispo(k,function(){ if(k!==vxCle()) return; if(VX.on&&k!==VX.cle) vxJouer(false); else vxUI(); }); };
+if(VX.auto){ bar.hidden=true; if(ec) ec.hidden=true; dispo('00-accueil',function(){ vxUI(); }); }
 rendu();
 })();

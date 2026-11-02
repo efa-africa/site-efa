@@ -3,7 +3,7 @@ window.ATELIER = {
   id: "sortir-dettes",
   titre: "Sortir de mes dettes",
   h1: "Une dette se rembourse mieux quand on la regarde en face.",
-  voix: false,
+  voix: "auto",
   question: {
     t: "Vous avez trois dettes et un peu d’argent en plus ce mois-ci. Laquelle remboursez-vous en premier ?",
     r: [
