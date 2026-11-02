@@ -41,9 +41,10 @@
     $('at-credits').textContent = !ins ? '1 crédit = 10 000 FCFA. Votre email active vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue.' : prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
     $('at-mail-zone').hidden = ins; cm.required = !ins;
     fm.hidden = ok || avisMode;
+    $('at-gagner').hidden = ok || !ins || !(prixC > reste); if (!$('at-gagner').hidden) $('at-gagner-t').textContent = 'Gagner ' + (prixC - reste > 1 ? 'les ' + pl(prixC - reste) + ' qui manquent' : 'le crédit qui manque');
     var ach = $('at-achat'); ach.hidden = ok || !prixC || !ins;
     if (!ach.hidden) { var manq = Math.max(0, prixC - reste), nb = manq || prixC; ach.dataset.nb = nb;
-      $('at-achat-titre').textContent = manq ? 'Ou acheter les ' + pl(manq) + ' qui manquent' : 'Ou payer ce contenu';
+      $('at-achat-titre').textContent = manq ? (manq > 1 ? 'Ou acheter les ' + pl(manq) + ' qui manquent' : 'Ou acheter le crédit qui manque') : 'Ou payer ce contenu';
       $('at-achat-p').textContent = pl(nb) + ' · ' + (nb * 10000).toLocaleString('fr-FR') + ' FCFA. Paiement par mobile money ou carte bancaire, à venir.'; }
     $('at-avis').hidden = !avisMode; if (avisMode) remplirAvis();
     $('at-dlg-contact').hidden = true;
@@ -64,7 +65,7 @@
     var s = $('at-avis-c'), L = testes(); s.innerHTML = '';
     L.forEach(function (a) { var o = document.createElement('option'); o.value = a.id; o.textContent = a.t; if (a.id === vise) o.selected = true; s.appendChild(o); });
     var manque = cour ? D.cout(cour) - credits() : 0;
-    $('at-avis-t').textContent = L.length ? (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Chaque avis sur un contenu testé vous rapporte 1 crédit.' : 'Votre avis améliore le contenu et vous rapporte 1 crédit.') : (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Ouvrez d’abord un contenu gratuit ou à votre portée, testez-le, puis donnez votre avis : chaque avis rapporte 1 crédit.' : 'Testez d’abord un contenu, puis revenez donner votre avis.');
+    $('at-avis-t').textContent = L.length ? (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Donnez votre avis sur un contenu testé (+1 crédit), ou faites une des actions ci-dessous.' : 'Votre avis améliore le contenu et vous rapporte 1 crédit.') : (manque > 0 ? 'Il vous manque ' + pl(manque) + '. Faites une des actions ci-dessous pour ' + (manque > 1 ? 'les' : 'le') + ' gagner.' : 'Testez d’abord un contenu, puis revenez donner votre avis.');
     $('at-avis').querySelectorAll('select,fieldset,textarea,input,button,label').forEach(function (x) { x.hidden = !L.length; });
   }
   function ouvrir(id) {
@@ -127,6 +128,11 @@
     debloquer(v);
     try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'atelier-cle-' + cour.id, title: 'Clé atelier', event: true }); } catch (x) {}
   }
+  $('at-gagner').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-mis]'); if (!b) return;
+    if (dlg.open) dlg.close();
+    if (window.EFA_CREDITS && EFA_CREDITS.ouvrir) EFA_CREDITS.ouvrir('gagner', b.dataset.mis);
+  });
   $('at-moyens').addEventListener('click', function (e) {
     var b = e.target.closest('[data-moyen]'); if (!b || !cour) return;
     $$moyens(b); var nb = +$('at-achat').dataset.nb || D.cout(cour);

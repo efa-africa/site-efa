@@ -481,7 +481,7 @@
   function codeParrain(m) { var h = 0; for (var i = 0; i < m.length; i++) h = (Math.imul(h, 31) + m.charCodeAt(i)) >>> 0; var o = ''; for (var k = 0; k < 6; k++) { o += ALPHA[h % 32]; h = (Math.floor(h / 32) ^ Math.imul(k + 1, 2654435761)) >>> 0; } return o; }
   // un lien de parrainage ouvert sur ce téléphone est retenu (une seule fois)
   try { var pr = (location.search.match(/[?&]parrain=([A-Z2-9]{6})/i) || [])[1]; if (pr && !localStorage.getItem('efa_parrain')) localStorage.setItem('efa_parrain', pr.toUpperCase()); } catch (x) {}
-  window.EFA_CREDITS = { solde: solde, codeCredit: codeCredit, lireCode: lireCode, missions: lireM };
+  window.EFA_CREDITS = { solde: solde, codeCredit: codeCredit, lireCode: lireCode, missions: lireM, ouvrir: function (tab, mission) { if (window.__efaOuvrirPorte) window.__efaOuvrirPorte(tab, mission); } };
   function poser() {
     var h = document.getElementById('clone-haut') || document.getElementById('haut'); if (!h) return;
     var tg = h.querySelector('.menu-toggle'), inn = h.querySelector('.head-inner'); if (!inn) return;
@@ -511,6 +511,7 @@
   var dlg = null, pack = 3, moyen = 'om', onglet = 'gagner', ouverte = '';
   var MOYENS = [['om', 'Orange Money', '#FF7900'], ['wave', 'Wave', '#1DC8F2'], ['mtn', 'MTN MoMo', '#FFCB05'], ['carte', 'Carte bancaire', '#1A1F71']];
   function fc(n) { return n.toLocaleString('fr-FR').replace(/ /g, ' ') + ' FCFA'; }
+  window.__efaOuvrirPorte = function (tab, mission) { onglet = tab || 'gagner'; ouverte = mission || ''; if (['parrain', 'temoignage', 'erreur', 'beta'].indexOf(ouverte) >= 0) plus = true; ouvrirPorte(); };
   function ouvrirPorte() {
     if (!dlg) {
       var st = document.createElement('style');
