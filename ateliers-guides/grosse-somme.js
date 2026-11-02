@@ -79,7 +79,7 @@ window.ATELIER = {
         p: "Ma phrase pour la famille est prête." },
       { t: "Le point à 3 mois", c: "Trois mois après, on vérifie que la part gardée est toujours là. C’est le vrai résultat de l’atelier.",
         w: { champs: [ {id:"gs_rdv", l:"Date de mon point à 3 mois", type:"txt", ph:"fin février", large:1} ],
-          v: function(D,H){ var g=H.N(D.gs_garde); if(!g&&!D.gs_rdv) return ''; return '<div class="gros"><small>'+(D.gs_rdv?'Le '+H.esc(D.gs_rdv)+', je vérifie':'À mon point à 3 mois, je vérifie')+'</small><b>'+(g?H.F(g)+' toujours là':'Ma part gardée toujours là')+'</b><p>Si une partie a été prise, je l’écris et je reprends le plan dès le mois suivant.</p></div>'; } },
+          v: function(D,H){ var g=H.N(D.gs_garde); if(!g&&!D.gs_rdv) return ''; return '<div class="gros"><small>'+(D.gs_rdv?'Mon point ('+H.esc(D.gs_rdv)+') : je vérifie':'À mon point à 3 mois, je vérifie')+'</small><b>'+(g?H.F(g)+' toujours là':'Ma part gardée toujours là')+'</b><p>Si une partie a été prise, je l’écris et je reprends le plan dès le mois suivant.</p></div>'; } },
         p: "Mon point à 3 mois est noté." }
     ]}
   ],

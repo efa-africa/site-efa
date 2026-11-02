@@ -75,7 +75,7 @@ window.ATELIER = {
       { t: "Mon message prêt à envoyer", c: "Voici un message construit avec vos réponses. Ajustez-le avec vos mots, puis envoyez-le quand vous êtes prêt.",
         w: { ex: "« Bonjour Moussa, j’ai bien pensé à ta demande. Je ne peux pas tout, mais je t’envoie 50 000 F : c’est un don, tu ne me dois rien. Je peux aussi t’accompagner à l’école lundi. Je suis de cœur avec toi. »", champs: [ {id:"pd_msg", type:"area", l:"Mon message final", ph:"Copiez ici le message proposé, puis mettez-y vos mots."} ],
           v: function(D,H){ var g=H.N(D.pd_don), p=H.N(D.pd_pret), e=H.N(D.pd_ech), m=H.N(D.pd_mt), a=D.pd_aut||[]; if(!D.pd_qui&&!g&&!p&&!a.length) return '';
-            var nom=String(D.pd_qui||'').trim().split(/\s+/).pop()||'', s='Bonjour'+(nom?' '+nom:'')+', j’ai bien pensé à ta demande. ';
+            var nom=String(D.pd_qui||'').replace(/[,.;:]/g,' ').trim().split(/\s+/).filter(function(w){return /^[A-ZÀ-Ý]/.test(w)&&!/^(Mon|Ma|Mes|Le|La|Les)$/.test(w);}).pop()||'', s='Bonjour'+(nom?' '+nom:'')+', j’ai bien pensé à ta demande. ';
             if(g&&m&&g>=m&&!p) s+='Je t’envoie '+H.F(g)+' : c’est un don, tu ne me dois rien. ';
             else if(g) s+='Je ne peux pas tout, mais je t’envoie '+H.F(g)+' : c’est un don, tu ne me dois rien. ';
             if(p) s+=(g?'Je peux aussi te prêter ':'Je peux te prêter ')+H.F(p)+(e?', remboursés '+H.F(e)+' par mois'+(D.pd_deb?' à partir du '+D.pd_deb:''):'')+'. On le note sur un petit papier'+(D.pd_tem?', avec '+D.pd_tem+' comme témoin':'')+'. ';
