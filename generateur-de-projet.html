@@ -99,6 +99,74 @@
 .voir-plus{display:block;margin:14px auto 0;border:0;background:none;color:var(--bleu);font-weight:800;font-size:16px;text-decoration:underline;text-underline-offset:5px;min-height:44px}
 .astuce{font-size:14px;color:var(--ink3);margin:10px 0 0}
 
+
+/* Guidage */
+.etape{display:flex;align-items:center;gap:8px;margin:18px 0 8px;font-weight:800;font-size:15px;color:var(--nuit)}
+.etape:first-child{margin-top:0}
+.etape span{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--nuit);color:#fff;font-size:14px}
+.etape em{font-style:normal;font-weight:600;color:var(--ink3);font-size:13px}
+.lancer{display:block;width:100%;min-height:54px;border:0;border-radius:var(--r-bouton);background:var(--corail);color:#fff;font-weight:800;font-size:17px;margin-top:4px}
+.lancer:disabled{opacity:.7;cursor:wait}
+.brille{animation:brille 1.6s ease-in-out infinite}
+@keyframes brille{0%,100%{box-shadow:0 0 0 0 rgba(218,60,27,.55)}50%{box-shadow:0 0 0 10px rgba(218,60,27,0)}}
+@media(prefers-reduced-motion:reduce){.brille{animation:none;outline:3px solid rgba(218,60,27,.5)}}
+.zone{min-width:0}
+.guide{background:var(--papier);border-radius:var(--r-carte);padding:22px}
+.guide h2{font-size:clamp(24px,3vw,32px);color:var(--nuit);margin:8px 0 14px}
+.g-etapes,.ensuite ol{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:10px}
+.g-etapes li,.ensuite li{display:flex;gap:12px;align-items:flex-start;background:var(--creme);border-radius:12px;padding:12px 14px;font-size:16px}
+.g-etapes li b,.ensuite li b{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--nuit);color:#fff;font-size:14px}
+.g-etapes li.g-go{background:#FDE3DC}.g-etapes li.g-go b{background:var(--corail)}
+.g-plan{margin:14px 0 0;font-size:15px;color:var(--ink2)}.g-plan a{color:var(--bleu);font-weight:700}
+.analyse{background:var(--nuit);color:#fff;border-radius:var(--r-carte);padding:22px;scroll-margin-top:90px}
+.analyse[hidden]{display:none}
+.an-t{display:flex;align-items:center;gap:12px;font-size:18px}
+.anneau{flex:none;width:30px;height:30px;border-radius:50%;border:4px solid #1F2C45;border-top-color:var(--corail);animation:tourne .8s linear infinite}
+@keyframes tourne{to{transform:rotate(360deg)}}
+.an-piste{height:6px;background:#1F2C45;border-radius:999px;margin:16px 0 12px;overflow:hidden}
+.an-piste i{display:block;height:100%;width:0;background:var(--corail);transition:width 1.2s ease}
+#an-l{list-style:none;margin:0;padding:0}
+#an-l li{position:relative;padding-left:26px;margin:6px 0;color:#7A8293;font-size:16px}
+#an-l li.en{color:#fff;font-weight:700}
+#an-l li.en::before{content:"";position:absolute;left:4px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--corail);animation:brille 1s infinite}
+#an-l li.ok{color:var(--texte-sombre2)}#an-l li.ok::before{content:"✓";position:absolute;left:2px;color:var(--hausse);font-weight:800}
+.perime{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;background:#FEF4DF;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-weight:700;color:#8A4B00}
+.perime[hidden]{display:none}
+.perime button{border:0;background:var(--corail);color:#fff;font-weight:800;min-height:44px;padding:8px 14px;border-radius:var(--r-bouton)}
+.est-perime #vedette,.est-perime #proposition,.est-perime #autres{opacity:.45}
+.recap{margin:0 0 10px;font-size:14.5px;color:var(--ink3);font-weight:600}
+.vedette{display:grid;grid-template-columns:1fr;background:var(--papier);border-radius:18px;overflow:hidden;box-shadow:0 0 0 3px var(--corail);scroll-margin-top:90px}
+@media(min-width:760px){.vedette{grid-template-columns:42% 1fr}}
+.vedette.eclat{animation:eclat 1.4s ease 3}
+@keyframes eclat{0%,100%{box-shadow:0 0 0 3px var(--corail)}50%{box-shadow:0 0 0 3px var(--corail),0 0 34px 6px rgba(218,60,27,.45)}}
+@media(prefers-reduced-motion:reduce){.vedette.eclat{animation:none}}
+.v-img{position:relative;min-height:200px;background:#DCE3EA}
+.v-img img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+.v-img .ici{position:absolute;left:12px;top:12px;background:var(--corail);color:#fff;font-weight:800;font-size:14px;border-radius:999px;padding:6px 14px;animation:brille 1.6s ease-in-out infinite}
+.v-corps{padding:18px}
+.v-corps h3{font-size:clamp(22px,2.6vw,28px);color:var(--nuit);margin:6px 0 6px}
+.v-corps p{margin:0 0 8px;color:var(--ink2);font-size:16px}
+.v-corps .v-h{font-weight:800;color:var(--nuit)}
+.v-corps .pas{font-style:italic}
+.v-corps .act{display:flex;gap:8px;margin-top:12px}
+.v-corps .ouvrir{flex:1;border:0;background:var(--corail);color:#fff;font-weight:800;font-size:16px;min-height:50px;border-radius:var(--r-bouton)}
+.propo{background:var(--nuit);color:#fff;border-radius:var(--r-carte);padding:18px;margin-top:14px}
+.propo h3{color:#fff;font-size:21px;margin:6px 0 12px}
+.pl-l{display:grid;grid-template-columns:1fr auto;gap:2px 12px;margin:10px 0}
+.pl-t small{display:block;color:var(--soft-corail);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.pl-t b{font-size:16px;color:#fff;font-weight:700}
+.pl-l strong{color:#fff!important;font-family:var(--f-display);font-size:19px;align-self:end;white-space:nowrap}
+.pl-barre{grid-column:1/-1;height:8px;background:#1F2C45;border-radius:999px;overflow:hidden}
+.pl-barre i{display:block;height:100%;border-radius:999px}
+.pl-barre .p1{background:var(--corail)}.pl-barre .p2{background:var(--soft-corail)}.pl-barre .pl{background:var(--soft-bleu)}.pl-barre .rs{background:var(--hausse)}
+.propo .md-note{color:#9AA5B8;margin:8px 0 0}
+#autres{margin-top:22px}
+#autres[hidden]{display:none}
+.autres-t{font-size:22px;color:var(--nuit)}
+.statut{margin:0 0 10px;font-size:15px;color:var(--ink2);font-weight:600}
+.ensuite{margin-top:22px;background:var(--papier);border-radius:var(--r-carte);padding:18px}
+.ensuite ol{margin:10px 0 14px}
+
 /* Bande comparer */
 .bande{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--nuit);color:#fff;padding:10px 92px 10px var(--g) calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px}
 .bande[hidden]{display:none}
@@ -236,13 +304,15 @@ body.fige{overflow:hidden}
 
 <section class="explorer" id="explorer" aria-label="Explorer des idées" data-garde><div class="wrap ex-grille">
   <aside class="reglages" aria-label="Vos choix" data-garde>
-    <div class="montant-l"><span>Mon budget</span><strong id="montant" aria-live="polite">300 000 F</strong></div>
+    <p class="etape"><span>1</span>Mon budget</p>
+    <div class="montant-l"><span>Montant</span><strong id="montant" aria-live="polite">300 000 F</strong></div>
     <input type="range" id="budget" min="0" max="19" step="1" value="6" aria-label="Choisir mon budget de départ">
     <div class="bornes"><span>10 000 F</span><span>50 M F</span></div>
     <div class="puces" id="raccourcis" aria-label="Montants rapides"></div>
     <label class="exact" for="exact">Ou mon montant exact</label>
     <div class="exact-w"><input id="exact" inputmode="numeric" placeholder="ex. 375 000" autocomplete="off"><span>F CFA</span></div>
     <button type="button" class="sans-budget" id="sans-budget">Je préfère explorer sans budget</button>
+    <p class="etape"><span>2</span>Affiner pour moi <em>facultatif</em></p>
     <button type="button" class="affiner" id="affiner" aria-expanded="false" aria-controls="affinage">Affiner pour moi <span id="affiner-s" aria-hidden="true">＋</span></button>
     <div class="affinage" id="affinage" hidden>
       <div class="q"><b>Ce que j’aime faire</b><select id="savoir"></select></div>
@@ -250,14 +320,49 @@ body.fige{overflow:hidden}
       <div class="q"><b>Où je peux commencer</b><select id="lieu"></select></div>
       <div class="q"><b>Mon pays</b><select id="pays"></select></div>
     </div>
+    <p class="etape"><span>3</span>Lancer l’analyse</p>
+    <button type="button" class="lancer brille" id="lancer">Lancer l’analyse →</button>
     <button type="button" class="gardees-b" id="gardees-b">♡ Mes idées gardées · <span id="gardees-n">0</span></button>
     <p class="prive">Les montants sont indicatifs, à vérifier sur votre marché.</p>
   </aside>
-  <div>
-    <div class="res-tete"><p class="statut" id="statut" aria-live="polite"></p><button type="button" class="surprise" id="surprise">Une autre idée ↻</button></div>
-    <div class="cartes" id="cartes"></div>
-    <button type="button" class="voir-plus" id="voir-plus" hidden></button>
-    <p class="astuce">Ouvrez une idée pour voir le premier test, ce qu’il faut vérifier et le piège à éviter.</p>
+  <div class="zone">
+    <div class="guide" id="guide">
+      <span class="sur">Comment ça marche</span>
+      <h2>Trois gestes, et votre meilleure piste apparaît.</h2>
+      <ol class="g-etapes">
+        <li><b>1</b><span><strong>Indiquez votre budget</strong> avec le curseur, un raccourci ou le montant exact.</span></li>
+        <li><b>2</b><span><strong>Affinez si vous voulez</strong> : ce que vous aimez faire, votre temps, votre lieu.</span></li>
+        <li class="g-go"><b>3</b><span><strong>Lancez l’analyse.</strong> EFA classe les idées à la hauteur de votre budget et vous propose une répartition.</span></li>
+      </ol>
+      <button type="button" class="lancer brille" onclick="document.getElementById('lancer').click()">Lancer l’analyse →</button>
+      <p class="g-plan">Vous avez déjà commandé un business plan&nbsp;? <a href="mon-espace-business-plan.html">Ouvrir mon espace avec mon code</a></p>
+    </div>
+    <div class="analyse" id="analyse" hidden aria-live="polite">
+      <div class="an-t"><span class="anneau" aria-hidden="true"></span><b>EFA analyse votre situation</b></div>
+      <div class="an-piste"><i id="an-barre"></i></div>
+      <ol id="an-l"></ol>
+    </div>
+    <div id="resultats" hidden>
+      <div class="perime" id="perime" hidden><span>Vos choix ont changé.</span><button type="button" id="perime-b">Relancer l’analyse</button></div>
+      <p class="recap" id="recap"></p>
+      <div id="vedette"></div>
+      <div id="proposition"></div>
+      <div id="autres">
+        <div class="res-tete"><h3 class="autres-t">Les autres pistes</h3><button type="button" class="surprise" id="surprise">Une autre idée ↻</button></div>
+        <p class="statut" id="statut"></p>
+        <div class="cartes" id="cartes"></div>
+        <button type="button" class="voir-plus" id="voir-plus" hidden></button>
+      </div>
+      <div class="ensuite">
+        <span class="sur">Et ensuite&nbsp;?</span>
+        <ol>
+          <li><b>1</b><span>Ouvrez une piste : premier test, points à vérifier, piège à éviter.</span></li>
+          <li><b>2</b><span>Dans l’onglet «&nbsp;Le plan&nbsp;», commandez votre business plan de démarrage.</span></li>
+          <li><b>3</b><span>Vous recevez un code. Votre plan s’ouvre dans votre espace, avec ses mises à jour.</span></li>
+        </ol>
+        <a class="bouton" href="mon-espace-business-plan.html">Mon espace business plan</a>
+      </div>
+    </div>
   </div>
 </div></section>
 
@@ -325,8 +430,10 @@ body.fige{overflow:hidden}
 
 
 
+
+
 <script src="generateur-idees.js?v=20261102b"></script>
-<script src="generateur-de-projet.js?v=20261102a"></script>
+<script src="generateur-de-projet.js?v=20261102b"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261102b" defer></script>
