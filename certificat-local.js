@@ -47,7 +47,7 @@
     var lg = new Image(); lg.src = "certificat-pilote/logo-efa.png";
     var pret = Promise.all([document.fonts.load('700 80px "Libre Baskerville"'), document.fonts.load('800 30px "Source Sans 3"'), new Promise(function (ok) { lg.complete ? ok() : (lg.onload = ok, lg.onerror = ok); })]).catch(function () {});
     Promise.race([pret, new Promise(function (ok) { setTimeout(ok, 2500); })]).then(function () {
-      var X = 320, fond = o.fond || "#F5EFE2", encre = o.encre || "#0B1220";
+      var X = 320, fond = o.fond || "#F1F7FA", encre = o.encre || "#0B1220";
       g.fillStyle = fond; g.fillRect(0, 0, W, H); g.textBaseline = "alphabetic"; g.textAlign = "left";
       try { if (lg.naturalWidth) g.drawImage(lg, X, 250, 190, 190); } catch (e) {}
       g.fillStyle = encre; g.font = '800 44px "Source Sans 3"'; g.fillText("EFA · ÉDUCATION FINANCIÈRE AFRIQUE", X + 240, 362);

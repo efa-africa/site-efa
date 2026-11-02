@@ -193,7 +193,7 @@
     var cs = getComputedStyle(el);
     if (/url\(/.test(cs.backgroundImage)) return; // photo de fond : on garde
     var c = rgb(cs.backgroundColor), sombre = (c && c.a > .35 && nuit(c)) || gradientSombre(cs.backgroundImage);
-    /* Crème et beige de l'ancienne charte (#F5EFE2, #FFFDF8…) : bleu très pâle ou blanc */
+    /* Crème et beige de l'ancienne charte (#F1F7FA, #FFFFFF…) : bleu très pâle ou blanc */
     if (!sombre && c && c.a > .5 && lum(c) > .62 && c.r - c.b > 6 && c.r >= c.g && !el.hasAttribute('data-clair')) {
       var dansSurface = el.parentElement && el.parentElement.closest('[data-clair="creme"]');
       el.style.setProperty('background-color', dansSurface ? '#ffffff' : '#f3f7fb', 'important');
@@ -249,7 +249,7 @@
     el.setAttribute('data-clair', '');
     if (fond === '#ffffff') el.setAttribute('data-clair-carte', '');
   }
-  /* Filets beiges de l'ancienne charte (#E2D8C4, #D9CDB5…) : filet bleu-gris */
+  /* Filets beiges de l'ancienne charte (#DCE8ED, #C3D6E0…) : filet bleu-gris */
   function filet(el, cs) {
     var b = rgb(cs.borderTopColor);
     if (b && b.a > .3 && parseFloat(cs.borderTopWidth) > 0 && b.r - b.b > 12 && b.r >= b.g && lum(b) > .45 && lum(b) < .9)
@@ -432,7 +432,7 @@
     var h = document.getElementById('clone-haut') || document.getElementById('haut') || document.querySelector('body > header');
     if (!h) return;
     var st = document.createElement('style');
-    st.textContent = '.efa-promo{position:relative;z-index:4;background:#F5EFE2;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220}'
+    st.textContent = '.efa-promo{position:relative;z-index:4;background:#F1F7FA;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220}'
       + '.efa-promo::before{content:"";display:block;height:4px;background:linear-gradient(90deg,#E44828 0 33.3%,#F2B84B 33.3% 66.6%,#3CCB7F 66.6%)}'
       + '.efa-promo-in{max-width:1180px;margin:0 auto;padding:9px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;flex-wrap:wrap}'
       + '.efa-promo .p-r,.efa-promo .p-j{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 10px}'

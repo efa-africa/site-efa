@@ -28,7 +28,7 @@ HTML = r'''<!DOCTYPE html>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <link rel="stylesheet" href="footer.css">
 <style>
-:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#E2D8C4;--hausse:#3CCB7F;--provisoire:#F2B84B;
+:root{--nuit:#0B1220;--creme:#F1F7FA;--papier:#FFFFFF;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#DCE8ED;--hausse:#3CCB7F;--provisoire:#F2B84B;
 --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--gut:max(16px,env(safe-area-inset-left,0px))}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -78,11 +78,11 @@ NAVCSS
 .mod b{display:block;font-size:16px;color:var(--nuit)}.mod span{font-size:14px;color:var(--ink2)}
 .mod .d{font-size:13px;font-weight:800;color:var(--ink2);white-space:nowrap}
 .mod.c-maitrise .n{color:var(--bleu)}.mod.c-patrimoine .n{color:var(--nuit)}
-.session{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px}.session b{color:#fff}.session span{color:#C9D1DE;font-size:14px;display:block}.session.prat{background:#EFE6D3}.session.prat b{color:var(--nuit)}.session.prat span{color:var(--ink2)}
+.session{background:var(--nuit);color:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px}.session b{color:#fff}.session span{color:#C9D1DE;font-size:14px;display:block}.session.prat{background:#F1F7FA}.session.prat b{color:var(--nuit)}.session.prat span{color:var(--ink2)}
 .limites{font-size:14.5px;color:var(--ink2)}.limites li{margin:4px 0}
 .bienvenue{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:center;background:#0B1220;color:#E8EDF5;border-radius:14px;padding:20px}.bienvenue img{width:120px;height:150px;object-fit:cover;object-position:top;border-radius:10px;display:block}.bienvenue .sur{color:#F09680}.bienvenue h2{color:#fff;margin:4px 0 8px}.bienvenue p{margin:0 0 8px;color:#C9D1DE;font-size:16px;line-height:1.5}.bienvenue .sig{margin:6px 0 0;color:#fff;font-weight:700}.bienvenue .sig small{display:block;font-weight:400;color:#AEB6C6;font-size:14px}@media (max-width:560px){.bienvenue{grid-template-columns:84px minmax(0,1fr);gap:14px;padding:16px}.bienvenue img{width:84px;height:110px}}
-.suite li.go .champ{color:#E8EDF5}.suite li.go .champ input{background:#FFFDF8}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media (max-width:640px){.g2{grid-template-columns:minmax(0,1fr)}}.cle{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:clamp(16px,2.6vw,21px);font-weight:700;letter-spacing:.05em;background:#FFFDF8;color:#0B1220;border-radius:10px;padding:12px 14px;word-break:break-all}.acces-ok{background:#E3F5EA!important;color:#0B1220!important}.acces-ok b,.acces-ok span{color:#0B1220!important}.acces-ok .cle{background:#0B1220;color:#fff}.alerte-cle{background:#FBE3DC;border-radius:10px;padding:10px 12px;font-size:15px;color:#7A1F10}
-.suite{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}.suite li{background:#F5EFE2;border-radius:12px;padding:14px 16px;display:grid;gap:6px}.suite li.go{background:#0B1220;color:#E8EDF5}.suite li.go b{color:#fff}.suite b{font-size:17px;color:var(--nuit)}.suite span{font-size:15px;color:var(--ink2)}.suite li.go span{color:#C9D1DE}.suite .n{display:inline-block;min-width:1.6em;color:var(--corail);font-weight:800}.suite a{font-weight:700}.ok-case{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;margin:4px 0;cursor:pointer}.ok-case input{width:20px;height:20px;margin-top:2px;accent-color:#E44828}.bt[aria-disabled="true"]{opacity:.55}.valid{margin-top:14px}.valid summary{cursor:pointer;font-weight:700;color:var(--ink2);font-size:15px}
+.suite li.go .champ{color:#E8EDF5}.suite li.go .champ input{background:#FFFFFF}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media (max-width:640px){.g2{grid-template-columns:minmax(0,1fr)}}.cle{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:clamp(16px,2.6vw,21px);font-weight:700;letter-spacing:.05em;background:#FFFFFF;color:#0B1220;border-radius:10px;padding:12px 14px;word-break:break-all}.acces-ok{background:#E3F5EA!important;color:#0B1220!important}.acces-ok b,.acces-ok span{color:#0B1220!important}.acces-ok .cle{background:#0B1220;color:#fff}.alerte-cle{background:#FBE3DC;border-radius:10px;padding:10px 12px;font-size:15px;color:#7A1F10}
+.suite{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}.suite li{background:#F1F7FA;border-radius:12px;padding:14px 16px;display:grid;gap:6px}.suite li.go{background:#0B1220;color:#E8EDF5}.suite li.go b{color:#fff}.suite b{font-size:17px;color:var(--nuit)}.suite span{font-size:15px;color:var(--ink2)}.suite li.go span{color:#C9D1DE}.suite .n{display:inline-block;min-width:1.6em;color:var(--corail);font-weight:800}.suite a{font-weight:700}.ok-case{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;margin:4px 0;cursor:pointer}.ok-case input{width:20px;height:20px;margin-top:2px;accent-color:#E44828}.bt[aria-disabled="true"]{opacity:.55}.valid{margin-top:14px}.valid summary{cursor:pointer;font-weight:700;color:var(--ink2);font-size:15px}
 .mention{font-size:13.5px;color:var(--ink3);margin-top:8px}
 @media print{header,footer,.hero,.etapes-c,.acts,.efa-suite,#efa-ely,.no-print{display:none!important}.carte{padding:0}}
 </style>
@@ -108,10 +108,10 @@ HEADER<main>
 </div>
 </main>
 FOOTER<script>(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();</script>
-<script src="parcours-efa.js?v=VV"></script>
-<script src="programme-organisation.js?v=VV"></script>
+<script src="parcours-efa.js?v=20261102z"></script>
+<script src="programme-organisation.js?v=20261102z"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=VV" defer></script>
+<script src="efa-appli.js?v=20261102z" defer></script>
 </body>
 </html>
 '''

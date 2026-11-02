@@ -45,10 +45,10 @@
     + ".efa-fiche h2{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:clamp(20px,2.4vw,24px);line-height:1.18;margin:0 0 6px;color:#fff}"
     + ".efa-fiche p{margin:0 0 12px;font-size:15px;line-height:1.5;color:#C9D1DE}"
     + ".efa-fiche label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C9D1DE;margin:0 0 6px}"
-    + ".efa-fiche textarea{box-sizing:border-box;width:100%;min-height:150px;border:0;border-radius:8px;padding:12px;font:inherit;font-size:15px;line-height:1.45;background:#FFFDF8;color:#2A3142;resize:vertical}"
+    + ".efa-fiche textarea{box-sizing:border-box;width:100%;min-height:150px;border:0;border-radius:8px;padding:12px;font:inherit;font-size:15px;line-height:1.45;background:#FFFFFF;color:#2A3142;resize:vertical}"
     + ".efa-fiche textarea:focus{outline:3px solid #6DB8F2;outline-offset:2px}"
     + ".efa-fiche .ff-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}"
-    + ".efa-fiche button{font:inherit;font-size:15px;font-weight:800;min-height:44px;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;background:#F5EFE2;color:#0B1220}"
+    + ".efa-fiche button{font:inherit;font-size:15px;font-weight:800;min-height:44px;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;background:#F1F7FA;color:#0B1220}"
     + ".efa-fiche button.ff-p{background:#DA3C1B;color:#fff}"
     + ".efa-fiche .ff-ok{min-height:1.4em;margin:10px 0 0;font-weight:700;color:#3CCB7F}"
     + ".efa-fiche .ff-ok a{color:#6DB8F2;font-weight:700}"
@@ -77,13 +77,13 @@
   /* Après la première fiche gardée : proposer de garder sa progression (compte Communauté EFA)
      et, sur demande, de recevoir chaque semaine sa prochaine étape (liste Newsletter EFA, double confirmation). */
   var BREVO_NL = "https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhlcS3Knrj0HOrhpnsbgPHCoa1GSLsbsCmk1lvMWF8o_An6q6BYBz85koQiVVRpHhage71-PdxWrT1OFhCY5iidi-UIq-C34WPbWb-FGUjhGa5kXw3NytB242VM_LTd9sbakiFejMRUqseZNiyuN8LB_U_cvRkJ7v0E1SyaD-_RVTlQfAI7JLVRw";
-  var CSS_C = ".efa-cpt{background:#FFFDF8;color:#2A3142;border-radius:14px;padding:20px 22px;margin:10px 0 6px;display:flex;flex-direction:column;gap:12px;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif}"
+  var CSS_C = ".efa-cpt{background:#FFFFFF;color:#2A3142;border-radius:14px;padding:20px 22px;margin:10px 0 6px;display:flex;flex-direction:column;gap:12px;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif}"
     + ".efa-cpt .c-s{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A;margin:0}"
     + ".efa-cpt h3{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:clamp(19px,2.2vw,23px);line-height:1.18;margin:0;color:#0B1220}"
     + ".efa-cpt p{margin:0;font-size:15.5px;line-height:1.5;color:#4E5566}"
     + ".efa-cpt .c-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media (max-width:520px){.efa-cpt .c-g{grid-template-columns:minmax(0,1fr)}}"
     + ".efa-cpt label.c-f{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:700;color:#0B1220}"
-    + ".efa-cpt input[type=text],.efa-cpt input[type=email]{font:inherit;font-weight:400;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:#F5EFE2;color:#0B1220;width:100%;box-sizing:border-box;min-width:0}"
+    + ".efa-cpt input[type=text],.efa-cpt input[type=email]{font:inherit;font-weight:400;font-size:17px;padding:11px 12px;border-radius:8px;border:0;background:#F1F7FA;color:#0B1220;width:100%;box-sizing:border-box;min-width:0}"
     + ".efa-cpt input:focus-visible,.efa-cpt button:focus-visible{outline:3px solid #1B71B2;outline-offset:2px}"
     + ".efa-cpt label.c-c{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#2A3142}.efa-cpt label.c-c input{width:20px;height:20px;margin:2px 0 0;accent-color:#DA3C1B;flex:none}"
     + ".efa-cpt .c-a{display:flex;flex-wrap:wrap;gap:10px;align-items:center}"
@@ -183,7 +183,7 @@
   // Les données des parcours servent à nommer la fiche du module ; on les charge si la page ne l'a pas fait.
   function charger(cb) {
     if (window.EFA_PARCOURS) return cb();
-    var s = document.createElement("script"); s.src = "parcours-efa.js?v=2026102512"; s.onload = cb; s.onerror = cb; document.head.appendChild(s);
+    var s = document.createElement("script"); s.src = "parcours-efa.js?v=20261102z"; s.onload = cb; s.onerror = cb; document.head.appendChild(s);
   }
   function go() { charger(demarrer); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", go); else go();

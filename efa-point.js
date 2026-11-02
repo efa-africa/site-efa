@@ -33,23 +33,23 @@
     j30: ["Mon point à 30 jours", "Il y a un mois, vous avez répondu à ces trois questions. Et aujourd’hui ?"],
     j90: ["Mon point à 90 jours", "Trois mois après votre point de départ : qu’est-ce qui a changé ?"]
   };
-  var CSS = ".efa-pt{background:#FFFDF8;color:#2A3142;border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;margin:0 0 16px}"
+  var CSS = ".efa-pt{background:#FFFFFF;color:#2A3142;border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;margin:0 0 16px}"
     + ".efa-pt .pt-s{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A;margin:0}"
     + ".efa-pt h3{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:clamp(19px,2vw,22px);line-height:1.18;margin:0;color:#0B1220}"
     + ".efa-pt p{margin:0;font-size:15.5px;line-height:1.5;color:#4E5566}"
     + ".efa-pt ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}"
-    + ".efa-pt li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center;background:#F5EFE2;border-radius:10px;padding:10px 12px}"
+    + ".efa-pt li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center;background:#F1F7FA;border-radius:10px;padding:10px 12px}"
     + "@media (max-width:520px){.efa-pt li{grid-template-columns:minmax(0,1fr)}}"
     + ".efa-pt li span{font-size:15.5px;font-weight:600;color:#0B1220}"
     + ".efa-pt .pt-b{display:flex;gap:6px}"
-    + ".efa-pt button{font:inherit;font-size:15px;font-weight:800;min-height:42px;min-width:64px;padding:8px 14px;border-radius:8px;border:0;cursor:pointer;background:#FFFDF8;color:#0B1220}"
+    + ".efa-pt button{font:inherit;font-size:15px;font-weight:800;min-height:42px;min-width:64px;padding:8px 14px;border-radius:8px;border:0;cursor:pointer;background:#FFFFFF;color:#0B1220}"
     + ".efa-pt button[aria-pressed=true]{background:#0B1220;color:#fff}"
     + ".efa-pt button:focus-visible{outline:3px solid #1B71B2;outline-offset:2px}"
     + ".efa-pt .pt-ok{background:#DA3C1B;color:#fff;align-self:flex-start;padding:10px 20px}"
     + ".efa-pt .pt-ok[disabled]{opacity:.45;cursor:default}"
     + ".efa-pt .pt-r{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}"
     + "@media (max-width:620px){.efa-pt .pt-r{grid-template-columns:minmax(0,1fr)}}"
-    + ".efa-pt .pt-r div{background:#F5EFE2;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}"
+    + ".efa-pt .pt-r div{background:#F1F7FA;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}"
     + ".efa-pt .pt-r b{font-size:14px;color:#0B1220}.efa-pt .pt-r small{font-size:14px;color:#4E5566}"
     + ".efa-pt .pt-r .mieux small{color:#1D6B43;font-weight:700}";
   var enCours = {};

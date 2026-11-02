@@ -21,8 +21,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
 :root{
-  --nuit:#0B1220; --creme:#F5EFE2; --papier:#FFFDF8; --bleu:#1B71B2; --corail:#DA3C1B;
-  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --line:#E2D8C4;
+  --nuit:#0B1220; --creme:#F1F7FA; --papier:#FFFFFF; --bleu:#1B71B2; --corail:#DA3C1B;
+  --soft-bleu:#6DB8F2; --soft-corail:#F09680; --ink:#2A3142; --ink2:#4E5566; --line:#DCE8ED;
   --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
   --f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --gut:max(16px,env(safe-area-inset-left,0px));
@@ -120,7 +120,7 @@ footer a{color:#E8EDF5;text-decoration:none}
 .sec{font-size:clamp(24px,3vw,30px);margin-top:18px}
 .lede{font-size:17px;color:var(--ink);max-width:40em}
 .tag.ok{background:#E3F2E8;color:#14532D}
-.tag.soon{background:#EEE7D8;color:var(--ink2)}
+.tag.soon{background:#F1F7FA;color:var(--ink2)}
 .tool .meta{font-size:14px;color:var(--ink2)}
 .btn-line{background:none;border:1.5px solid var(--nuit);color:var(--nuit)}
 button.btn{border:0;cursor:pointer;width:100%}
@@ -180,7 +180,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .wk h3{font-size:clamp(22px,2.8vw,28px)}
 .wk .over{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--corail)}
 .wk .small{font-size:14px;color:var(--ink2)}
-.jauge{height:10px;border-radius:6px;background:#EEE7D8;overflow:hidden}
+.jauge{height:10px;border-radius:6px;background:#F1F7FA;overflow:hidden}
 .jauge i{display:block;height:100%;background:var(--bleu);border-radius:6px}
 .jauge.trop i{background:var(--corail)}
 .jours{display:grid;gap:8px}
@@ -257,7 +257,7 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .ce-cond{margin:14px 0 0;font-size:15.5px;line-height:1.5;color:var(--ink2,#4E5566)}.ce-cond b{display:block;color:var(--nuit,#0B1220);font-size:15.5px}
 .tabs a.t-cert{background:var(--corail);color:#fff;position:relative}
 .d-ass,.dproches{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0}.d-ass span,.dproches span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3,#7A8293);margin-right:4px}
-.d-ass a,.dproches a{font-size:14px;font-weight:700;color:var(--nuit,#0B1220);background:var(--creme,#F5EFE2);border-radius:999px;padding:5px 12px;text-decoration:none}.d-ass a:hover,.dproches a:hover{background:var(--line,#E2D8C4)}
+.d-ass a,.dproches a{font-size:14px;font-weight:700;color:var(--nuit,#0B1220);background:var(--creme,#F1F7FA);border-radius:999px;padding:5px 12px;text-decoration:none}.d-ass a:hover,.dproches a:hover{background:var(--line,#DCE8ED)}
 .dq-lien a{color:var(--ink,#2A3142);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-decoration-thickness:2px;text-underline-offset:4px}
 .creuse-g{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3,#7A8293)}
 .creuse-pied{grid-column:1/-1;font-size:16px;margin:6px 0 0}.creuse-pied a{color:var(--ink,#2A3142);font-weight:700;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-decoration-thickness:2px;text-underline-offset:4px}
@@ -267,10 +267,10 @@ button.btn.btn-line{border:1.5px solid var(--nuit)}
 .cote-t{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail)}
 .creuse-tete{grid-column:1/-1;margin-top:8px}
 .pv-z{grid-column:1/-1}
-details.pv{background:var(--creme,#F5EFE2);border-radius:10px;padding:10px 14px}
+details.pv{background:var(--creme,#F1F7FA);border-radius:10px;padding:10px 14px}
 details.pv>summary{cursor:pointer;font-weight:700;font-size:14.5px;list-style:none}
 details.pv>summary::before{content:"✎ ";color:var(--corail,#E44828)}
-details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);padding:10px 12px;border:1px solid var(--line,#E2D8C4);border-radius:8px;background:#fff;color:var(--ink,#2A3142)}
+details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);padding:10px 12px;border:1px solid var(--line,#DCE8ED);border-radius:8px;background:#fff;color:var(--ink,#2A3142)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .pv-r{font-size:13.5px;color:var(--ink2,#4E5566);margin:8px 0 0}
 .pv-point{margin-top:8px;background:var(--nuit,#0B1220);color:#fff;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
@@ -282,15 +282,15 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 .ce-etat .mods span.ok{background:#3CCB7F;color:#0B1220}
 .ce-etat a.btn{align-self:flex-start}
 .pc-liste{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-.pc-l{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--line,#E2D8C4)}
+.pc-l{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--line,#DCE8ED)}
 .pc-l b{font-family:var(--f-display);font-size:16px;color:var(--nuit,#0B1220);display:block}
 .pc-l small{display:block;font-size:13.5px;color:var(--ink2,#4E5566);margin-top:2px}
-.pc-b{display:block;height:6px;border-radius:999px;background:var(--line,#E2D8C4);overflow:hidden;margin-top:8px;max-width:360px}.pc-b i{display:block;height:100%;background:var(--corail,#E44828)}
+.pc-b{display:block;height:6px;border-radius:999px;background:var(--line,#DCE8ED);overflow:hidden;margin-top:8px;max-width:360px}.pc-b i{display:block;height:100%;background:var(--corail,#E44828)}
 .d-parc{font-size:13.5px;font-weight:700;margin:0}.d-parc a{color:var(--ink,#2A3142);text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
 .ce-parc{margin:8px 0 0;font-size:13.5px;font-weight:700}.ce-parc a{color:inherit;text-decoration:underline;text-decoration-color:var(--corail,#E44828);text-underline-offset:4px}
 .creuse-intro{margin:4px 0 0;font-size:15px;color:var(--ink2,#4E5566)}
 .creuse-liste{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
-.creuse{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:10px 18px;align-items:center;background:var(--papier,#FFFDF8);border-radius:12px;padding:14px 18px}
+.creuse{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:10px 18px;align-items:center;background:var(--papier,#FFFFFF);border-radius:12px;padding:14px 18px}
 @media (max-width:640px){.creuse{grid-template-columns:minmax(0,1fr)}}
 .creuse-t{display:flex;flex-direction:column;gap:2px;min-width:0}
 .creuse-t q{font-family:var(--f-display);font-weight:700;font-size:16px;color:var(--nuit,#0B1220);quotes:"«\00a0" "\00a0»"}
@@ -403,11 +403,11 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
 .mfq-t{left:12px;right:12px;bottom:12px;font:700 16px/1.22 var(--f-display)}
 .suite3 .s3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px;margin-top:12px}.suite3 .s3 a{display:grid;gap:4px;background:#0B1220;color:#fff;border-radius:12px;padding:14px 16px;text-decoration:none}.suite3 .s3 a:first-child{background:#DA3C1B}.suite3 .s3 b{font-size:17px}.suite3 .s3 span{font-size:14.5px;opacity:.88}
 </style>
-<link rel="stylesheet" href="footer.css?v=2026102602">
-<script src="parcours-efa.js?v=2026102512"></script>
-<script src="parcours-ui.js?v=2026102512"></script>
-<link rel="stylesheet" href="clone/habillage.css?v=20261102e">
-<link rel="stylesheet" href="clone/pages/outils.css?v=20261102e">
+<link rel="stylesheet" href="footer.css?v=20261102z">
+<script src="parcours-efa.js?v=20261102z"></script>
+<script src="parcours-ui.js?v=20261102z"></script>
+<link rel="stylesheet" href="clone/habillage.css?v=20261102z">
+<link rel="stylesheet" href="clone/pages/outils.css?v=20261102z">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -659,8 +659,8 @@ details.pv textarea{width:100%;margin:8px 0;font:400 15px/1.45 var(--f-body);pad
   </div>
 </footer>
 <script src="dico.js"></script>
-<script src="plan-efa.js?v=2026102801"></script>
-<script src="efa-reprise.js?v=2026102902"></script>
+<script src="plan-efa.js?v=20261102z"></script>
+<script src="efa-reprise.js?v=20261102z"></script>
 <script>
 // Catalogue extensible. Un outil payant futur affichera son prix et ce qui est inclus avant toute saisie.
 var OUTILS = [
@@ -1237,10 +1237,10 @@ var OUTILS = [
   });
 })();
 </script>
-<script src="prevenir.js?v=2026102601" defer></script>
+<script src="prevenir.js?v=20261102z" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="efa-appli.js?v=2026103104" defer></script>
-<script src="minfin.js?v=2026102901"></script>
+<script src="efa-appli.js?v=20261102z" defer></script>
+<script src="minfin.js?v=20261102z"></script>
 <script>
 (function(){
   var M=window.MINFIN, r=document.getElementById('mfq-rail'); if(!M||!r) return;
@@ -1251,6 +1251,6 @@ var OUTILS = [
   r.innerHTML=h;
 })();
 </script>
-<script src="clone/habillage.js?v=20261102e" defer></script>
+<script src="clone/habillage.js?v=20261102z" defer></script>
 </body>
 </html>

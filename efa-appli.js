@@ -28,12 +28,12 @@
 
   var css = "" +
     ".efa-appli{max-width:1080px;margin:40px auto;padding:0 16px;box-sizing:border-box}" +
-    ".efa-appli__c{display:flex;gap:20px;align-items:center;background:#0B1220;color:#F5EFE2;border-radius:24px;padding:24px;box-sizing:border-box}" +
+    ".efa-appli__c{display:flex;gap:20px;align-items:center;background:#0B1220;color:#F1F7FA;border-radius:24px;padding:24px;box-sizing:border-box}" +
     ".efa-appli__img{flex:0 0 auto;width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #3FD69A}" +
     ".efa-appli__k{margin:0 0 4px;font-size:12px;font-weight:800;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;color:#6DB8F2}" +
-    ".efa-appli__t{margin:0 0 8px;font-size:clamp(20px,3.2vw,26px);line-height:1.2;font-weight:800;color:#F5EFE2}" +
+    ".efa-appli__t{margin:0 0 8px;font-size:clamp(20px,3.2vw,26px);line-height:1.2;font-weight:800;color:#F1F7FA}" +
     ".efa-appli__p{margin:0 0 14px;font-size:16px;line-height:1.55;color:#C9CFDA}" +
-    ".efa-appli__b{display:inline-block;background:#F5EFE2;color:#0B1220;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:999px}" +
+    ".efa-appli__b{display:inline-block;background:#F1F7FA;color:#0B1220;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:999px}" +
     ".efa-appli__b:hover{background:#fff}" +
     ".efa-appli__a{margin:10px 0 0;font-size:13px;color:#8A93A6}" +
     ".efa-appli-pied{font-weight:700}" +
@@ -122,7 +122,7 @@
     css.textContent =
       "#efa-ely{position:fixed;z-index:9999;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-family:Manrope,system-ui,-apple-system,sans-serif}" +
       "#efa-ely a{text-decoration:none;color:inherit}" +
-      "#efa-ely .bulle{position:relative;background:#F5EFE2;color:#0B1220;border-radius:18px 18px 6px 18px;padding:8px 30px 8px 12px;box-shadow:0 8px 22px rgba(0,0,0,.35);max-width:170px}" +
+      "#efa-ely .bulle{position:relative;background:#F1F7FA;color:#0B1220;border-radius:18px 18px 6px 18px;padding:8px 30px 8px 12px;box-shadow:0 8px 22px rgba(0,0,0,.35);max-width:170px}" +
       "#efa-ely .bulle small{display:block;font-size:11px;font-weight:600;color:#5B5648;margin-bottom:2px}" +
       "#efa-ely .bulle b{display:block;font-size:13px;font-weight:800;line-height:1.2}" +
       "#efa-ely .fermer{position:absolute;top:4px;right:4px;width:24px;height:24px;border:0;border-radius:50%;background:transparent;color:#5B5648;font-size:18px;line-height:1;cursor:pointer}" +
@@ -181,20 +181,20 @@
     if (!v.d || now - v.d > 36e5) { v.d = now; localStorage.setItem("efa_vu", JSON.stringify(v)); }
   } catch (e) {}
   /* Reprise, sauvegarde et cohorte de 30 jours : efa-reprise.js (chargé ici sur les pages qui ne l'ont pas déjà) */
-  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=2026102902"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
+  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=20261102z"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
 })();
 
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
-  var s = document.createElement("script"); s.src = "efa-suite.js?v=2026103105"; s.defer = true; document.head.appendChild(s);
-  var f = document.createElement("script"); f.src = "efa-fiche.js?v=2026102901"; f.defer = true; document.head.appendChild(f);
-  var pt = document.createElement("script"); pt.src = "efa-point.js?v=2026102701"; pt.defer = true; document.head.appendChild(pt);
-  if (!window.EFA_CHIFFRES) { var ch = document.createElement("script"); ch.src = "efa-chiffres.js?v=2026102710"; ch.defer = true; document.head.appendChild(ch); }
-  if (!window.EFA_SONS) { var so = document.createElement("script"); so.src = "efa-sons.js?v=2026102701"; so.defer = true; document.head.appendChild(so); }
-  var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=2026103103"; qz.defer = true; document.head.appendChild(qz);
-  if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=2026102710"; u.defer = true; document.head.appendChild(u); }
-  if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=2026102710"; k.defer = true; document.head.appendChild(k); }
+  var s = document.createElement("script"); s.src = "efa-suite.js?v=20261102z"; s.defer = true; document.head.appendChild(s);
+  var f = document.createElement("script"); f.src = "efa-fiche.js?v=20261102z"; f.defer = true; document.head.appendChild(f);
+  var pt = document.createElement("script"); pt.src = "efa-point.js?v=20261102z"; pt.defer = true; document.head.appendChild(pt);
+  if (!window.EFA_CHIFFRES) { var ch = document.createElement("script"); ch.src = "efa-chiffres.js?v=20261102z"; ch.defer = true; document.head.appendChild(ch); }
+  if (!window.EFA_SONS) { var so = document.createElement("script"); so.src = "efa-sons.js?v=20261102z"; so.defer = true; document.head.appendChild(so); }
+  var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=20261102z"; qz.defer = true; document.head.appendChild(qz);
+  if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=20261102z"; u.defer = true; document.head.appendChild(u); }
+  if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=20261102z"; k.defer = true; document.head.appendChild(k); }
 })();
 
 /* Menu replié sous trois barres, sur téléphone comme sur ordinateur, avec « Mon parcours » en tête quand on a commencé. */
@@ -282,7 +282,7 @@
     var R = document.documentElement;
     if (R.hasAttribute("data-clone") || window.self !== window.top || /accueil-v1/.test(location.pathname)) return;
     R.setAttribute("data-clone", ""); R.setAttribute("data-clone-auto", "");
-    var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "clone/habillage.css?v=auto1"; document.head.appendChild(l);
-    var s = document.createElement("script"); s.src = "clone/habillage.js?v=auto1"; s.defer = true; document.head.appendChild(s);
+    var l = document.createElement("link"); l.rel = "stylesheet"; l.href = "clone/habillage.css?v=20261102z"; document.head.appendChild(l);
+    var s = document.createElement("script"); s.src = "clone/habillage.js?v=20261102z"; s.defer = true; document.head.appendChild(s);
   } catch (e) {}
 })();

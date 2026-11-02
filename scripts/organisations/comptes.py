@@ -9,7 +9,7 @@ FOOTER = T[T.index('<footer class="efa-foot">'):T.index('<script>\nfunction efaC
 NAVCSS = T[T.index('.top{position:sticky'):T.index('.intro{background:var(--nuit)')]
 V = '2026102512'
 CSS = '''
-:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#E2D8C4;--hausse:#3CCB7F;--erreur:#B3261E;
+:root{--nuit:#0B1220;--creme:#F1F7FA;--papier:#FFFFFF;--bleu:#2188D6;--corail:#E44828;--soft-bleu:#6DB8F2;--soft-corail:#F09680;--ink:#2A3142;--ink2:#4E5566;--ink3:#7A8293;--line:#DCE8ED;--hausse:#3CCB7F;--erreur:#B3261E;
 --f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--gut:max(16px,env(safe-area-inset-left,0px))}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
