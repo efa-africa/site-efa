@@ -301,7 +301,7 @@ def page_article(a):
          "author": {"@type": "Organization", "name": "Rédaction EFA", "url": BASEURL},
          "publisher": {"@type": "Organization", "name": "Éducation Financière Afrique", "url": BASEURL,
                        "logo": {"@type": "ImageObject", "url": BASEURL + "logo-efa-96.png"}},
-         "citation": [s[3] for s in a["sources"]]},
+         "citation": [s[3] for s in a["sources"] if s[3]]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Accueil", "item": BASEURL},
             {"@type": "ListItem", "position": 2, "name": "EFA News", "item": BASEURL + "news.html"},
@@ -368,7 +368,8 @@ def page_article(a):
         return "Reuters" if org.startswith("Reuters") else GROUPES.get(org, org)
     for (ti, org, d, u, cons), ty in zip(a["sources"], a["types"]):
         badge = '<em class="st p">Document primaire consulté</em>' if ty == "primaire" else '<em class="st m">Information rapportée par un média</em>'
-        so += (f'<li>{badge}<a href="{html.escape(u)}" target="_blank" rel="noopener">{typo(ti)}</a>'
+        lien = f'<a href="{html.escape(u)}" target="_blank" rel="noopener">{typo(ti)}</a>' if u else f'<b>{typo(ti)}</b>'
+        so += (f'<li>{badge}{lien}'
                f'<span>{typo(org)} · {typo(d)} · consulté le {date_fr(cons)}</span></li>')
     gm = [groupe(o) for (t_, o, *_), ty in zip(a["sources"], a["types"]) if ty != "primaire"]
     meme = sorted({x for x in gm if gm.count(x) > 1})
