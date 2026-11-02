@@ -59,7 +59,29 @@
   function inscrit() { return !!(etat.mail || (A && A.mail())); }
   function mpts() { try { return (JSON.parse(localStorage.getItem('efa_missions_v1') || '{}').pts) || 0; } catch (x) { return 0; } }
   function credits() { return (inscrit() ? D.CREDITS_OFFERTS + (etat.jeu || 0) + mpts() : 0) + (etat.bonus || 0) - (etat.dep10 || 0); }
-  function soldeAffiche() { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; try { window.dispatchEvent(new Event('efa-credits')); } catch (x) {} }
+  function soldeAffiche() {
+    var n = $('at-solde-n'), u = $('at-solde'), pp = $('at-solde-p'), act = $('at-solde-act');
+    if (n && u && pp && act) {
+      var eq = etat.equipe, s0 = Math.max(0, credits()), ins = inscrit();
+      if (eq) { n.textContent = '∞'; u.textContent = 'accès équipe'; pp.textContent = 'Tous les ateliers et cours sont ouverts sur cet appareil.'; act.innerHTML = '<a class="sc-b" href="#premiers-pas">Voir les contenus</a>'; }
+      else if (!ins) { n.textContent = D.CREDITS_OFFERTS; u.textContent = 'crédits offerts'; pp.textContent = 'Activez-les avec votre email : de quoi ouvrir le cours « Mes premiers pas en Bourse ».';
+        if (!act.querySelector('form')) act.innerHTML = '<form class="sc-f" novalidate><label for="sc-m" class="at-sr">Votre email</label><input id="sc-m" type="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.com"><button type="submit" class="sc-b">Activer mes crédits</button><p class="sc-e" role="status"></p></form>'; }
+      else { n.textContent = s0; u.textContent = 'crédit' + (s0 > 1 ? 's' : '') + ' disponible' + (s0 > 1 ? 's' : ''); pp.textContent = s0 >= 3 ? 'De quoi ouvrir un cours. +1 crédit à chaque avis, et des missions utiles à EFA.' : 'Gagnez-en d’autres : +1 crédit à chaque avis, et des missions utiles à EFA.';
+        act.innerHTML = '<button type="button" class="sc-b" data-sc="gagner">Gagner des crédits</button><a class="sc-l" href="#gratter">Gratter ma carte du jour</a>'; }
+    }
+    try { window.dispatchEvent(new Event('efa-credits')); } catch (x) {}
+  }
+  (function () {
+    var act = $('at-solde-act'); if (!act) return;
+    act.addEventListener('click', function (e) { if (e.target.closest('[data-sc="gagner"]') && window.EFA_CREDITS) EFA_CREDITS.ouvrir('gagner'); });
+    act.addEventListener('submit', function (e) {
+      e.preventDefault(); var m = $('sc-m').value.trim(), er = act.querySelector('.sc-e');
+      if (!A || !A.valide(m)) { er.textContent = 'Indiquez une adresse email valide.'; $('sc-m').focus(); return; }
+      etat.mail = m; ecrire(etat); var par = ''; try { par = localStorage.getItem('efa_parrain') || ''; } catch (x) {}
+      A.envoyer(m, 'Inscription phase de test · ' + D.CREDITS_OFFERTS + ' crédits' + (par ? ' · parrain ' + par : ''), 'solde' + (par ? ' · parrainé par ' + par + ' : envoyer un code de 1 crédit au parrain' : ''));
+      soldeAffiche();
+    });
+  })();
   function testes() { return D.liste.filter(function (a) { return etat.ok[a.id] && !(etat.avis || {})[a.id]; }); }
   function remplirAvis(vise) {
     var s = $('at-avis-c'), L = testes(); s.innerHTML = '';
@@ -145,7 +167,7 @@
   function $$moyens(b) { document.querySelectorAll('#at-moyens button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }
   $('at-cle-ok').addEventListener('click', valider);
   champ.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); valider(); } });
-  soldeAffiche(); window.addEventListener('efa-credits', function () { var z = document.getElementById('at-solde'); if (z) z.textContent = inscrit() ? pl(Math.max(0, credits())) : 'à activer avec votre email'; });
+  soldeAffiche(); var _maj = false; window.addEventListener('efa-credits', function () { if (_maj) return; _maj = true; soldeAffiche(); _maj = false; });
   // Carte à gratter de l'ouverture : une carte par jour, environ une sur trois gagne 1 à 3 crédits, un seul gain par personne.
   (function () {
     var cv = $('gr-c'), res = $('gr-res'), gm = $('gr-msg'); if (!cv) return;
