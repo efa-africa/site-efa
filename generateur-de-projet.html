@@ -4,7 +4,7 @@
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
-<title>Mon générateur de projet · EFA</title>
+<title>Avec ce que j’ai, je lance quoi ? · EFA</title>
 <meta name="description" content="Glissez votre budget, de 10 000 F à 50 millions : les projets que vous pouvez lancer, de votre salon jusqu'au placement. Des idées, pas des promesses.">
 <link rel="canonical" href="https://efa.africa/generateur-de-projet">
 <meta property="og:type" content="website">
@@ -27,154 +27,199 @@
   --nuit:#0B1220;--creme:#F5EFE2;--corail:#DA3C1B;--corail-texte:#B8341A;--bleu:#1B71B2;
   --soft-bleu:#6DB8F2;--soft-corail:#F09680;--papier:#FFFDF8;--line:#E2D8C4;
   --ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--panel:#0D1525;--panel2:#111B2F;
-  --texte-sombre:#E8EDF5;--texte-sombre2:#C9D1DE;--hausse:#3CCB7F;--provisoire:#F2B84B;
-  --r-bouton:8px;--r-carte:14px;--g:max(18px,env(safe-area-inset-left,0px));
+  --texte-sombre:#E8EDF5;--texte-sombre2:#C9D1DE;--hausse:#3CCB7F;
+  --r-bouton:8px;--r-carte:14px;--g:max(16px,env(safe-area-inset-left,0px));
 }
 #gp,#gp *{box-sizing:border-box}
-
 #gp{background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-#gp h1,#gp h2,#gp h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
+#gp h1,#gp h2,#gp h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0;text-transform:none}
 #gp button{font-family:inherit;cursor:pointer}
-.wrap{max-width:1080px;margin:0 auto;padding:0 var(--g)}
-.gp-sur{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte)}
-.sombre .gp-sur{color:var(--soft-corail)}
-.gp-etiq{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+#gp img{max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--g)}
+.sur{display:block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte)}
+.sombre .sur{color:var(--soft-corail)}
 
-/* ---------- Couverture ---------- */
-.hero{background:var(--nuit);color:var(--texte-sombre);position:relative;overflow:hidden;padding:26px 0 40px}
-.hero .wrap{position:relative;z-index:2}
-.hero h1{font-size:clamp(36px,6.4vw,74px);color:#fff;margin:12px 0 10px;max-width:14ch}
-.hero .gp-mission{font-size:clamp(16px,2vw,20px);font-weight:700;line-height:1.4;color:var(--texte-sombre2);max-width:36ch}
-.gp-mission .cercle{color:#EC6243;font-weight:800}.gp-mission .spirale{color:var(--soft-bleu);font-weight:800}
-#spirale{position:absolute;right:-60px;top:20px;width:min(560px,92vw);height:auto;z-index:1;opacity:.95}
-.jauge{margin-top:30px;background:rgba(13,21,37,.82);backdrop-filter:blur(6px);border-radius:18px;padding:22px 20px 18px;max-width:640px}
-.jauge .gp-etiq{color:var(--texte-sombre2)}
-.montant{font-family:var(--f-display);font-weight:700;color:#fff;font-size:clamp(46px,9vw,84px);line-height:1;margin:8px 0 2px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.montant small{font-size:.42em;color:var(--soft-bleu);margin-left:.15em}
-.palier{font-weight:800;color:var(--soft-corail);font-size:15px;letter-spacing:.02em;min-height:22px}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:10px 0 0}
-input[type=range]:focus{outline:none}
-input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--corail) 0%,var(--corail) var(--p,30%),#22314F var(--p,30%))}
-input[type=range]::-moz-range-track{height:10px;border-radius:999px;background:#22314F}
-input[type=range]::-moz-range-progress{height:10px;border-radius:999px;background:var(--corail)}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;margin-top:-12px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 7px rgba(218,60,27,.35),0 4px 14px rgba(0,0,0,.4);transition:box-shadow .2s}
-input[type=range]::-moz-range-thumb{width:34px;height:34px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 7px rgba(218,60,27,.35)}
-input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 9px rgba(109,184,242,.6)}
-.reperes{display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:#8E98AA;margin-top:2px}
-.raccourcis{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.raccourcis button{background:var(--panel2);color:var(--texte-sombre);border:0;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700}
-.raccourcis button.sel{background:#fff;color:var(--nuit)}
-.prive{font-size:13px;color:#8E98AA;margin-top:12px}
+/* Entrée */
+.entree{background:var(--nuit);color:#fff;padding:34px 0 30px}
+.entree h1{font-size:clamp(34px,5.6vw,64px);color:#fff;margin:10px 0 10px;max-width:16ch}
+.entree p{margin:0;color:var(--texte-sombre2);font-size:clamp(17px,2vw,20px);max-width:52ch}
+.entree .note{margin-top:12px;font-size:14px;color:#9AA5B8}
 
-/* ---------- Questions ---------- */
-.questions{padding:34px 0 8px}
-.questions h2{font-size:clamp(26px,3.6vw,40px);margin:8px 0 18px}
-.qgrid{display:grid;grid-template-columns:1fr;gap:14px}
-@media(min-width:860px){.qgrid{grid-template-columns:repeat(2,1fr)}}
-.q{background:var(--papier);border-radius:var(--r-carte);padding:18px 18px 16px}
-.q h3{font-size:19px;margin:6px 0 12px}
-.choix{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.choix button{min-height:58px;border:0;border-radius:12px;background:var(--creme);color:var(--ink);font-size:16px;font-weight:700;padding:10px 12px;text-align:left;line-height:1.25;transition:transform .15s,background .15s}
-.choix button:active{transform:scale(.97)}
-.choix button.sel{background:var(--bleu);color:#fff}
-.autre{margin-top:10px;background:none;border:0;color:var(--bleu);font-weight:800;font-size:15px;padding:6px 0}
-.choisi{font-size:14px;color:var(--ink3);margin-top:6px;min-height:20px}
-.choisi b{color:var(--ink)}
-select{width:100%;min-height:52px;border-radius:12px;border:0;background:var(--creme);font:700 16px var(--f-body);color:var(--ink);padding:0 14px}
+/* Exploration */
+.explorer{padding:26px 0 10px}
+.ex-grille{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}.ex-grille>*{min-width:0}
+@media(min-width:960px){.ex-grille{grid-template-columns:340px 1fr;align-items:start}.reglages{position:sticky;top:86px}}
+.reglages{background:var(--papier);border-radius:var(--r-carte);padding:18px}
+.montant-l{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.montant-l span{font-weight:700;color:var(--ink2);font-size:15px}
+.montant-l strong{font-family:var(--f-display);font-size:clamp(26px,3vw,32px);color:var(--nuit);white-space:nowrap}
+#budget{width:100%;margin:12px 0 4px;accent-color:var(--corail);height:30px}
+.bornes{display:flex;justify-content:space-between;font-size:13px;color:var(--ink3)}
+.puces{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.puces button{border:0;background:var(--creme);color:var(--nuit);font-weight:700;font-size:15px;min-height:44px;padding:8px 14px;border-radius:999px}
+.puces button[aria-pressed="true"]{background:var(--nuit);color:#fff}
+.exact{display:block;margin:14px 0 0;font-size:14px;font-weight:700;color:var(--ink2)}
+.exact-w{display:flex;align-items:center;gap:8px;margin-top:5px}
+.exact-w input{flex:1;min-width:0;font:inherit;font-weight:700;font-size:17px;padding:10px 12px;border:1px solid #CFC5B0;border-radius:10px;background:#fff;color:var(--nuit)}
+.exact-w span{font-weight:700;color:var(--ink3);font-size:14px}
+.sans-budget{display:inline-block;margin-top:10px;border:0;background:none;padding:6px 0;color:var(--bleu);font-weight:700;font-size:15px;text-decoration:underline;text-underline-offset:4px}
+.affiner{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:14px;border:0;background:var(--nuit);color:#fff;font-weight:800;font-size:16px;min-height:48px;padding:10px 16px;border-radius:var(--r-bouton)}
+.affinage{margin-top:6px}
+.affinage[hidden]{display:none}
+.affinage .q{margin-top:14px}
+.affinage .q>b{display:block;font-size:15px;color:var(--nuit);margin-bottom:6px}
+.affinage select{width:100%;font:inherit;font-weight:700;font-size:16px;min-height:46px;padding:8px 10px;border:1px solid #CFC5B0;border-radius:10px;background:#fff;color:var(--nuit)}
+.prive{margin:14px 0 0;font-size:13px;color:var(--ink3)}
+.gardees-b{margin-top:12px;width:100%;border:0;background:var(--creme);color:var(--nuit);font-weight:700;font-size:15px;min-height:44px;border-radius:var(--r-bouton)}
 
-/* ---------- Résultats ---------- */
-.resultats{padding:30px 0 10px}
-.compteur{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.compteur .gros{font-family:var(--f-display);font-weight:700;font-size:clamp(54px,10vw,96px);color:var(--corail);line-height:.9}
-.compteur h2{font-size:clamp(24px,3.4vw,38px)}
-.pays-bande{margin:16px 0 4px;background:var(--bleu);color:#fff;border-radius:2px;padding:14px 16px;font-size:16px;display:none}
-.pays-bande b{font-weight:800}
-.secteurs{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 8px}
-.bulle{border:0;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;flex-direction:column;font-weight:800;line-height:1.1;text-align:center;padding:6px;transition:transform .25s,opacity .25s;animation:pop .45s both}
-.bulle span{font-size:11px;font-weight:700;letter-spacing:.02em;max-width:9em}
-.bulle b{font-family:var(--f-display);font-size:1.25em}
-.bulle.off{opacity:.28}
-.bulle.sel{transform:scale(1.08);box-shadow:0 0 0 4px var(--papier),0 0 0 7px var(--nuit)}
-@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
-.liste{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
-@media(min-width:760px){.liste{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1040px){.liste{grid-template-columns:repeat(3,1fr)}}
-.idee{background:var(--papier);border-radius:var(--r-carte);padding:18px;cursor:pointer;text-align:left;border:0;color:inherit;font:inherit;width:100%;display:block;position:relative;overflow:hidden;animation:monte .4s both;transition:transform .2s,box-shadow .2s}
-.idee:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(11,18,32,.09)}
-@keyframes monte{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
-.idee .pastille{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
-.idee h3{font-size:20px;line-height:1.2;margin:10px 0 6px}
-.idee .ticket{font-family:var(--f-display);font-weight:700;font-size:22px;color:var(--ink)}
-.idee .ticket small{font-family:var(--f-body);font-size:13px;font-weight:700;color:var(--ink3);display:block;letter-spacing:.04em;text-transform:uppercase}
-.idee .resume{color:var(--ink2);margin:8px 0 10px;font-size:16px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font-size:13px;font-weight:700;background:var(--creme);border-radius:999px;padding:4px 10px;color:var(--ink2)}
-.tags span.porteur{background:var(--nuit);color:#fff}
-.tags span.top{background:var(--corail);color:#fff}
-.detail{display:none;margin-top:14px;padding-top:4px}
-.idee.ouverte .detail{display:block}
-.detail div{background:var(--creme);border-radius:10px;padding:12px 14px;margin-top:8px;font-size:15.5px}
-.detail div b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--corail-texte);margin-bottom:2px}
-.ouvrir{font-size:14px;font-weight:800;color:var(--bleu);margin-top:12px;display:block}
-.idee.ouverte .ouvrir{display:none}
-.plus{display:block;margin:22px auto 0;min-height:48px;padding:12px 24px;border-radius:var(--r-bouton);border:0;background:var(--nuit);color:#fff;font-size:16px;font-weight:800}
-.vide{background:var(--papier);border-radius:var(--r-carte);padding:22px;margin-top:18px}
-.effort{margin-top:20px;font-size:16px;color:var(--ink2)}
-.effort button{background:none;border:0;padding:0;font:inherit;font-weight:800;color:var(--ink);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+.res-tete{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.res-tete .statut{font-weight:700;color:var(--nuit);font-size:16px}
+.res-tete .nouv{display:inline-block;margin-left:6px;background:#DDF5E8;color:#1E6B45;font-size:13px;font-weight:800;border-radius:999px;padding:2px 10px}
+.surprise{border:0;background:var(--corail);color:#fff;font-weight:800;font-size:15px;min-height:44px;padding:8px 16px;border-radius:var(--r-bouton)}
+.cartes{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:700px){.cartes{grid-template-columns:repeat(3,1fr)}}
+.carte{background:var(--papier);border-radius:var(--r-carte);overflow:hidden;display:flex;flex-direction:column;animation:entre .26s ease both}
+@keyframes entre{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.carte{animation:none}}
+.carte .img{position:relative;aspect-ratio:16/10;background:#DCE3EA}
+.carte .img img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+.carte .img .tag{position:absolute;left:10px;top:10px;background:rgba(11,18,32,.82);color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px}
+.carte .corps{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.carte .meta{font-size:13.5px;color:var(--ink3);font-weight:600}
+.carte h3{font-size:clamp(19px,1.7vw,22px);line-height:1.18;margin:6px 0 8px;color:var(--nuit)}
+.carte .prix{font-weight:800;color:var(--nuit);font-size:16px}
+.carte .prix small{display:block;font-weight:400;color:var(--ink3);font-size:13px}
+.carte .pas{margin:10px 0 0;font-size:15.5px;color:var(--ink2);font-style:italic}
+.carte .match{margin-top:10px;font-size:13px;font-weight:700;color:#1E6B45;background:#E5F6EC;border-radius:8px;padding:6px 10px}
+.carte .act{display:flex;gap:8px;margin-top:auto;padding-top:14px}
+.carte .act .ouvrir{flex:1;border:0;background:var(--nuit);color:#fff;font-weight:800;font-size:15.5px;min-height:46px;border-radius:var(--r-bouton)}
+.coeur{border:0;background:var(--creme);color:var(--corail);font-size:22px;width:46px;min-height:46px;border-radius:var(--r-bouton);flex:none}
+.coeur[aria-pressed="true"]{background:#FDE3DC}
+.vide{background:var(--papier);border-radius:var(--r-carte);padding:18px}
+.voir-plus{display:block;margin:14px auto 0;border:0;background:none;color:var(--bleu);font-weight:800;font-size:16px;text-decoration:underline;text-underline-offset:5px;min-height:44px}
+.astuce{font-size:14px;color:var(--ink3);margin:10px 0 0}
 
-/* ---------- Encadré promesse ---------- */
-.promesse{margin:34px 0 0;background:var(--corail);color:#fff;border-radius:2px;padding:20px 20px}
-.promesse h3{font-size:clamp(22px,3vw,30px);color:#fff}
-.promesse p{margin:8px 0 0;font-size:16.5px;max-width:62ch}
+/* Bande comparer */
+.bande{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--nuit);color:#fff;padding:10px 92px 10px var(--g) calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px}
+.bande[hidden]{display:none}
+.bande b{flex:1;font-size:15px}
+.bande button{border:0;font-weight:800;border-radius:var(--r-bouton);min-height:44px;padding:8px 14px}
+.bande .go{background:var(--corail);color:#fff}
+.bande .x{background:var(--panel2);color:#fff}
 
-/* ---------- Placement ---------- */
-.placer{background:var(--nuit);color:var(--texte-sombre);margin-top:44px;padding:42px 0 46px}
-.placer h2{color:#fff;font-size:clamp(28px,3.8vw,44px);margin:10px 0 8px}
-.placer .gp-intro{color:var(--texte-sombre2);max-width:58ch;font-size:17px}
-.marches{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}
-@media(min-width:760px){.marches{grid-template-columns:repeat(2,1fr)}}
-.marche{background:var(--panel);border-radius:var(--r-carte);padding:18px;display:grid;grid-template-columns:44px 1fr;gap:14px;animation:monte .4s both}
-.marche .num{width:44px;height:44px;border-radius:50%;background:var(--panel2);color:var(--soft-bleu);font-family:var(--f-display);font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center}
-.marche.dispo .num{background:var(--bleu);color:#fff}
-.marche h3{font-size:19px;color:#fff;margin:2px 0 4px}
-.marche .des{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft-corail)}
-.marche p{margin:6px 0 0;font-size:15.5px;color:var(--texte-sombre2)}
-.marche.verrou{opacity:.45}
-.avant{margin-top:22px;font-size:14px;color:#8E98AA;max-width:70ch}
+/* Chemin */
+.chemin{padding:34px 0}
+.chemin h2{font-size:clamp(28px,3.8vw,44px);color:var(--nuit);margin:8px 0 16px}
+.etapes{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:760px){.etapes{grid-template-columns:repeat(3,1fr)}}
+.etapes div{background:var(--papier);border-radius:var(--r-carte);padding:18px}
+.etapes span{font-family:var(--f-display);font-weight:700;color:var(--corail-texte);font-size:22px}
+.etapes h3{font-size:21px;margin:4px 0 4px;color:var(--nuit)}
+.etapes p{margin:0;color:var(--ink2);font-size:16px}
 
-/* ---------- Action finale ---------- */
-.action{padding:44px 0 50px;text-align:center}
-.action h2{font-size:clamp(28px,4vw,46px);max-width:18ch;margin:10px auto 12px}
-.action p{color:var(--ink2);max-width:46ch;margin:0 auto 22px}
-.gp-bouton{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 26px;border-radius:var(--r-bouton);background:var(--corail);color:#fff;font-weight:800;font-size:17px;text-decoration:none}
-.partage{margin-top:22px;font-size:15px;color:var(--ink3)}
+/* Offre plan */
+.offre{background:var(--nuit);color:var(--texte-sombre);padding:40px 0}
+.offre h2{color:#fff;font-size:clamp(28px,3.8vw,44px);margin:8px 0 10px}
+.offre p{color:var(--texte-sombre2);max-width:60ch;margin:0 0 10px}
+.offre .duo{display:grid;gap:12px;grid-template-columns:1fr;margin-top:18px}
+@media(min-width:760px){.offre .duo{grid-template-columns:1fr 1fr}}
+.offre .duo a{display:block;background:var(--panel);border-radius:var(--r-carte);padding:18px;color:#fff;text-decoration:none}
+.offre .duo a small{display:block;color:var(--soft-corail);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.offre .duo a b{display:block;font-family:var(--f-display);font-size:21px;margin:6px 0 4px}
+.offre .duo a span{color:var(--texte-sombre2);font-size:15.5px}
 
-/* ---------- Valider ---------- */
-.valider{padding:26px 0 6px;text-align:center}
-.gp-valider{min-height:56px;padding:14px 34px;border:0;border-radius:var(--r-bouton);background:var(--corail);color:#fff;font:inherit;font-size:18px;font-weight:800;cursor:pointer;width:100%;max-width:420px}
-.gp-valider:disabled{opacity:.6;cursor:wait}
-.analyse{display:flex;gap:16px;align-items:flex-start;justify-content:center;margin:22px auto 0;max-width:520px;background:var(--papier);border-radius:var(--r-carte);padding:18px;text-align:left}
-.analyse[hidden]{display:none}
-.anneau{flex:none;width:34px;height:34px;border-radius:50%;border:4px solid var(--creme);border-top-color:var(--corail);animation:tourne .8s linear infinite}
-@keyframes tourne{to{transform:rotate(360deg)}}
-.analyse ol{list-style:none;margin:0;padding:0}
-.analyse li{font-size:15.5px;color:var(--ink3);margin:3px 0;padding-left:24px;position:relative;opacity:.5}
-.analyse li.en{opacity:1;color:var(--ink);font-weight:700}
-.analyse li.ok{opacity:1;color:var(--ink2)}
-.analyse li.ok::before{content:"✓";position:absolute;left:0;color:#1E8E57;font-weight:800}
-.recap{margin:0 0 10px;font-size:15px;color:var(--ink2)}
-.recap b{color:var(--ink)}
-.relancer{display:block;width:100%;margin:0 0 14px;min-height:48px;border:0;border-radius:var(--r-bouton);background:var(--nuit);color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
-.relancer[hidden]{display:none}
-.perime .liste,.perime .secteurs,.perime .compteur,.perime .marches{opacity:.35;filter:grayscale(.6);transition:opacity .2s}
-/* ---------- Spirale sur téléphone : à côté du texte, jamais dessous ---------- */
-@media(max-width:759px){
- #spirale{position:absolute;right:-70px;top:-40px;width:220px;opacity:.35}
- .hero h1{max-width:12ch}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Placer */
+.placer{padding:36px 0}
+.placer h2{font-size:clamp(26px,3.4vw,38px);color:var(--nuit);margin:8px 0 8px}
+.placer>.wrap>p{color:var(--ink2);max-width:62ch;margin:0}
+.marches{display:grid;gap:10px;margin-top:16px;grid-template-columns:1fr}
+@media(min-width:760px){.marches{grid-template-columns:1fr 1fr}}
+.marche{background:var(--papier);border-radius:12px;padding:14px 16px}
+.marche.verrou{opacity:.55}
+.marche small{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.marche b{display:block;font-size:17px;color:var(--nuit);margin:2px 0}
+.marche p{margin:0;font-size:15px;color:var(--ink2)}
+.avant{font-size:14px;color:var(--ink3);margin-top:12px}
 
-#gp .gp-maj{font-size:13px;color:var(--ink3);text-align:center;padding:0 0 26px}
+/* Fin */
+.fin{padding:34px 0 46px}
+.fin h2{font-size:clamp(26px,3.4vw,38px);color:var(--nuit);margin:8px 0 8px}
+.fin p{color:var(--ink2);max-width:58ch}
+.bouton{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:var(--r-bouton);background:var(--corail);color:#fff!important;font-weight:800;font-size:16px;text-decoration:none;border:0}
+.gp-maj{font-size:13px;color:var(--ink3);padding:0 var(--g) 24px;max-width:1180px;margin:0 auto}
+
+/* Panneau fiche */
+.voile{position:fixed;inset:0;background:rgba(11,18,32,.55);z-index:60}
+.voile[hidden],.panneau[hidden],.modale[hidden]{display:none}
+.panneau{position:fixed;z-index:61;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--papier);display:flex;flex-direction:column;animation:glisse .28s ease both;font-family:var(--f-body);color:var(--ink)}
+@keyframes glisse{from{transform:translateX(30px);opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.panneau{animation:none}}
+.pn-haut{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--nuit);color:#fff}
+.pn-haut span{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.fermer{border:0;background:var(--panel2);color:#fff;font-size:15px;font-weight:800;min-height:44px;padding:8px 14px;border-radius:var(--r-bouton)}
+.pn-defile{overflow:auto;flex:1;-webkit-overflow-scrolling:touch}
+.pn-img{aspect-ratio:16/9;position:relative;background:#DCE3EA}
+.pn-img img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+.pn-in{padding:16px 18px 26px}
+.pn-in h2{font-size:clamp(24px,3vw,30px);color:var(--nuit);margin:6px 0 8px}
+.pn-meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}
+.pn-meta span{background:var(--creme);color:var(--nuit);font-size:13.5px;font-weight:700;border-radius:999px;padding:4px 10px}
+.onglets{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--creme);border-radius:10px;padding:4px}
+.onglets button{border:0;background:none;color:var(--ink2);font-weight:800;font-size:14px;min-height:44px;border-radius:8px;padding:4px}
+.onglets button[aria-selected="true"]{background:var(--nuit);color:#fff}
+.onglet{padding:14px 2px 4px}
+.onglet h3{font-size:20px;color:var(--nuit);margin:0 0 8px}
+.onglet p{margin:0 0 10px}
+.onglet .encart{background:var(--creme);border-radius:12px;padding:12px 14px;margin:10px 0}
+.onglet .encart b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--corail-texte);margin-bottom:2px}
+.pn-act{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
+.pn-act button{border:0;background:var(--creme);color:var(--nuit);font-weight:800;font-size:14.5px;min-height:48px;border-radius:var(--r-bouton);padding:6px}
+.pn-act button[aria-pressed="true"]{background:var(--nuit);color:#fff}
+.pn-plan{margin-top:18px;background:var(--nuit);color:#fff;border-radius:var(--r-carte);padding:18px}
+.pn-plan small{display:block;color:var(--soft-corail);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.pn-plan h3{color:#fff;font-size:21px;margin:6px 0 6px}
+.pn-plan p{color:var(--texte-sombre2);margin:0 0 12px;font-size:15.5px}
+.pn-plan button{width:100%}
+
+/* Modale */
+.modale{position:fixed;inset:0;z-index:70;background:rgba(11,18,32,.6);display:flex;align-items:flex-end;justify-content:center;font-family:var(--f-body);color:var(--ink)}
+@media(min-width:760px){.modale{align-items:center}}
+.md-carte{background:var(--papier);width:min(680px,100%);max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:20px 18px calc(22px + env(safe-area-inset-bottom,0px));position:relative}
+@media(min-width:760px){.md-carte{border-radius:18px;padding:26px}}
+.md-carte .fermer{position:absolute;right:12px;top:12px}
+.md-carte{padding-top:66px!important}
+.sans-photo{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px 16px;background:linear-gradient(135deg,#0B1220 0%,#14325A 60%,#1B71B2 100%)}
+.sans-photo span{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,30px);color:#fff;opacity:.92}
+.carte .img .sans-photo~.tag,.carte .img:has(.sans-photo) .tag{display:none}
+.md-carte h2{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,30px);line-height:1.15;color:var(--nuit);margin:6px 50px 10px 0}
+.md-carte .sur{margin-right:60px}
+.chapitres{display:grid;gap:6px;grid-template-columns:1fr;margin:12px 0}
+@media(min-width:560px){.chapitres{grid-template-columns:1fr 1fr}}
+.chapitres div{background:var(--creme);border-radius:10px;padding:9px 12px;font-size:15px;color:var(--nuit)}
+.chapitres b{color:var(--corail-texte);margin-right:6px}
+.extrait{background:#fff;border-radius:12px;padding:14px;margin:10px 0;font-size:15px}
+.extrait table{width:100%;border-collapse:collapse;font-size:14px}
+.extrait th,.extrait td{text-align:right;padding:5px 4px;border-bottom:1px solid #EEE7D8}
+.extrait th:first-child,.extrait td:first-child{text-align:left}
+.prix-box{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--nuit);color:#fff;border-radius:12px;padding:14px 16px;margin:12px 0}
+.prix-box span{font-size:14px;color:var(--texte-sombre2)}
+.prix-box strong{font-family:var(--f-display);font-size:28px;white-space:nowrap}
+.md-note{font-size:13.5px;color:var(--ink3)}
+.md-act{display:grid;gap:8px;margin-top:12px}
+.md-act .second{background:var(--creme);color:var(--nuit)!important}
+.cmd label{display:block;margin-top:10px;font-size:14px;font-weight:700;color:var(--ink2)}
+.cmd input,.cmd textarea{display:block;width:100%;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #CFC5B0;border-radius:10px;background:#fff;color:var(--nuit)}
+.cmd .deux{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.cmd .deux button{border:0;background:var(--creme);color:var(--nuit);font-weight:700;min-height:46px;border-radius:10px}
+.cmd .deux button[aria-pressed="true"]{background:var(--bleu);color:#fff}
+.cmd .err{color:#A3260F;font-weight:700;font-size:14px;margin-top:8px}
+.cmp{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:560px){.cmp{grid-template-columns:1fr 1fr}}
+.cmp>div{background:#fff;border-radius:12px;padding:14px}
+.cmp h3{font-family:var(--f-display);font-size:18px;color:var(--nuit);margin:0 0 6px;line-height:1.2}
+.cmp p{font-size:14.5px;margin:8px 0 0}
+.gardee{display:block;width:100%;text-align:left;border:0;background:#fff;border-radius:10px;padding:12px 14px;margin-top:8px;font-weight:700;color:var(--nuit);font-size:16px;min-height:48px}
+body.fige{overflow:hidden}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261102b">
 </head>
@@ -182,240 +227,106 @@ select{width:100%;min-height:52px;border-radius:12px;border:0;background:var(--c
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir" aria-current="page">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <main id="gp">
 
+<section class="entree sombre" aria-labelledby="titre"><div class="wrap">
+  <span class="sur">Se lancer avec EFA</span>
+  <h1 id="titre">Avec ce que j’ai, je pourrais lancer quoi&nbsp;?</h1>
+  <p>Choisissez un montant. Explorez des idées. Testez celle qui vous ressemble.</p>
+  <p class="note">Des idées à tester, jamais des gains promis.</p>
+</div></section>
 
-<section class="hero sombre" aria-labelledby="titre">
-  <svg id="spirale" viewBox="-300 -300 600 600" aria-hidden="true">
-    <path id="sp-fond" fill="none" stroke="#D3E2F0" stroke-width="3"/>
-    <path id="sp" fill="none" stroke="#6DB8F2" stroke-width="5" stroke-linecap="round"/>
-    <circle id="sp-pt" r="11" fill="#DA3C1B"/>
-  </svg>
-  <div class="wrap">
-    <span class="gp-sur">Se lancer · Mon générateur de projet</span>
-    <h1 id="titre">Avec mon budget, je lance quoi ?</h1>
-    <p class="gp-mission">Glissez votre montant. EFA vous montre ce que vous pouvez lancer, de votre <span class="cercle">salon</span> jusqu'au <span class="spirale">placement</span>.</p>
-
-    <div class="jauge">
-      <span class="gp-etiq">Mon budget de départ</span>
-      <div class="montant" id="montant" aria-live="polite">300 000<small>F</small></div>
-      <div class="palier" id="palier"></div>
-      <input type="range" id="budget" min="0" max="19" step="1" value="6" aria-label="Choisir mon budget de départ">
-      <div class="reperes"><span>10 000</span><span>500 000</span><span>5 M</span><span>50 M</span></div>
-      <div class="raccourcis" id="raccourcis"></div>
-      <p class="prive">EFA ne garde pas votre montant : tout reste sur votre téléphone. On commence dès 1 min.</p>
+<section class="explorer" id="explorer" aria-label="Explorer des idées" data-garde><div class="wrap ex-grille">
+  <aside class="reglages" aria-label="Vos choix" data-garde>
+    <div class="montant-l"><span>Mon budget</span><strong id="montant" aria-live="polite">300 000 F</strong></div>
+    <input type="range" id="budget" min="0" max="19" step="1" value="6" aria-label="Choisir mon budget de départ">
+    <div class="bornes"><span>10 000 F</span><span>50 M F</span></div>
+    <div class="puces" id="raccourcis" aria-label="Montants rapides"></div>
+    <label class="exact" for="exact">Ou mon montant exact</label>
+    <div class="exact-w"><input id="exact" inputmode="numeric" placeholder="ex. 375 000" autocomplete="off"><span>F CFA</span></div>
+    <button type="button" class="sans-budget" id="sans-budget">Je préfère explorer sans budget</button>
+    <button type="button" class="affiner" id="affiner" aria-expanded="false" aria-controls="affinage">Affiner pour moi <span id="affiner-s" aria-hidden="true">＋</span></button>
+    <div class="affinage" id="affinage" hidden>
+      <div class="q"><b>Ce que j’aime faire</b><select id="savoir"></select></div>
+      <div class="q"><b>Mon temps</b><select id="temps"></select></div>
+      <div class="q"><b>Où je peux commencer</b><select id="lieu"></select></div>
+      <div class="q"><b>Mon pays</b><select id="pays"></select></div>
     </div>
-  </div>
-</section>
-
-<section class="questions"><div class="wrap">
-  <span class="gp-sur">Trois questions pour affiner</span>
-  <h2>C'est pensé pour vous, avec vos réalités</h2>
-  <div class="qgrid">
-    <div class="q"><span class="gp-etiq">1 · Ce que je sais faire</span><h3>Mon point fort</h3><div class="choix" id="q-savoir"></div><button class="autre" id="q-savoir-autre" type="button">Autre chose →</button><div class="choisi" id="q-savoir-choisi"></div></div>
-    <div class="q"><span class="gp-etiq">2 · Où je travaille</span><h3>Mon terrain de jeu</h3><div class="choix" id="q-lieu"></div><button class="autre" id="q-lieu-autre" type="button">Autre chose →</button><div class="choisi" id="q-lieu-choisi"></div></div>
-    <div class="q"><span class="gp-etiq">3 · Mon temps</span><h3>Ce que je peux y consacrer</h3><div class="choix" id="q-temps"></div><button class="autre" id="q-temps-autre" type="button">Autre chose →</button><div class="choisi" id="q-temps-choisi"></div></div>
-    <div class="q"><span class="gp-etiq">Mon pays</span><h3>Où je me lance</h3>
-      <select id="pays" aria-label="Mon pays"></select>
-    </div>
+    <button type="button" class="gardees-b" id="gardees-b">♡ Mes idées gardées · <span id="gardees-n">0</span></button>
+    <p class="prive">Les montants sont indicatifs, à vérifier sur votre marché.</p>
+  </aside>
+  <div>
+    <div class="res-tete"><p class="statut" id="statut" aria-live="polite"></p><button type="button" class="surprise" id="surprise">Une autre idée ↻</button></div>
+    <div class="cartes" id="cartes"></div>
+    <button type="button" class="voir-plus" id="voir-plus" hidden></button>
+    <p class="astuce">Ouvrez une idée pour voir le premier test, ce qu’il faut vérifier et le piège à éviter.</p>
   </div>
 </div></section>
 
-<section class="valider"><div class="wrap">
-  <button type="button" class="gp-valider" id="valider">Voir mes idées</button>
-  <div class="analyse" id="analyse" hidden aria-live="polite"><span class="anneau" aria-hidden="true"></span><ol id="analyse-l"></ol></div>
-</div></section>
-
-<section class="resultats" id="resultats" hidden><div class="wrap">
-  <button type="button" class="relancer" id="relancer" hidden>Vos choix ont changé : relancer l’analyse →</button>
-  <p class="recap" id="recap"></p>
-  <div class="compteur"><span class="gros" id="nb">0</span><h2 id="nb-texte">idées à lancer</h2></div>
-  <div class="pays-bande" id="pays-bande"></div>
-  <div class="secteurs" id="secteurs" aria-label="Filtrer par secteur"></div>
-  <div class="liste" id="liste"></div>
-  <button class="plus" id="plus" type="button">Voir plus d'idées</button>
-  <p class="effort" id="effort"></p>
-
-  <div class="promesse">
-    <h3>Des idées, pas des promesses.</h3>
-    <p>Ici, aucune marge annoncée, aucun « 200 000 qui deviennent un million ». Chaque idée dit ce qu'il faut pour démarrer, ce qu'il faut vérifier avant, et le piège à éviter. Le reste, c'est votre terrain qui le dira.</p>
+<section class="chemin" aria-labelledby="ch-t"><div class="wrap">
+  <span class="sur">Un chemin, pas un catalogue</span>
+  <h2 id="ch-t">De l’envie au premier test.</h2>
+  <div class="etapes">
+    <div><span>1</span><h3>Explorer</h3><p>Des pistes qui tiennent dans votre budget, votre temps et votre lieu.</p></div>
+    <div><span>2</span><h3>Comprendre</h3><p>Le premier pas, ce qu’il faut vérifier, le piège courant.</p></div>
+    <div><span>3</span><h3>Préparer</h3><p>Un business plan de démarrage, si vous décidez d’aller plus loin.</p></div>
   </div>
 </div></section>
 
-<section class="placer sombre" id="placer" hidden data-garde><div class="wrap">
-  <span class="gp-sur">Et si je ne lance rien ?</span>
+<section class="offre sombre" id="plan" aria-labelledby="of-t" data-garde><div class="wrap">
+  <span class="sur">Pour aller plus loin</span>
+  <h2 id="of-t">Votre business plan de démarrage</h2>
+  <p>Construit à partir de vos réponses&nbsp;: client, offre, dépenses de départ, trois scénarios de trésorerie, risques et plan des 30 premiers jours. Chaque chiffre dit d’où il vient&nbsp;: vous, une hypothèse EFA ou une source datée.</p>
+  <p>Votre plan vit dans votre espace EFA, ouvert par un code personnel. Il s’enrichit au fil de vos échanges avec nous.</p>
+  <div class="duo">
+    <a href="mon-espace-business-plan.html?demo=1"><small>Avant de commander</small><b>Voir un plan complet</b><span>Un exemple réel de document, avec son code de démonstration.</span></a>
+    <a href="mon-espace-business-plan.html"><small>J’ai déjà un code</small><b>Ouvrir mon espace</b><span>Retrouver mon business plan et ses mises à jour.</span></a>
+  </div>
+</div></section>
+
+<section class="placer" id="placer" aria-labelledby="placer-titre" data-garde><div class="wrap">
+  <span class="sur">Et si je ne lance rien&nbsp;?</span>
   <h2 id="placer-titre">Placer plutôt que lancer</h2>
-  <p class="gp-intro">Avant d'investir, on met de l'ordre. Puis on investit, accompagné. Voici les marches accessibles avec votre montant, de la plus prudente à la plus exposée.</p>
+  <p>Avant d’investir, on met de l’ordre. Voici les marches accessibles avec votre montant, de la plus prudente à la plus exposée.</p>
   <div class="marches" id="marches"></div>
-  <p class="avant">Une valeur peut baisser autant que monter, et un placement n'est jamais garanti sauf mention écrite. Pour approfondir et avant de décider, voir une SGI, une banque ou un conseiller agréé.</p>
+  <p class="avant">Une valeur peut baisser autant que monter, et un placement n’est jamais garanti sauf mention écrite. Avant de décider, voyez une SGI, une banque ou un conseiller agréé.</p>
 </div></section>
 
-<section class="action"><div class="wrap">
-  <span class="gp-sur">Avant de vous lancer</span>
-  <h2>Faites le point sur votre argent d'abord</h2>
-  <p>Le meilleur projet est celui qui ne met pas en danger votre fin de mois. En 1 minute, EFA vous dit d'où vous partez.</p>
-  <a class="gp-bouton" href="https://efa.africa/diagnostic.html?src=generateur">Faire mon diagnostic</a>
-  <p class="partage">Ça vous a donné une idée ? Partagez EFA autour de vous : on n'est pas seul.</p>
+<section class="fin" aria-labelledby="fin-t"><div class="wrap">
+  <span class="sur">Avant de vous lancer</span>
+  <h2 id="fin-t">Faites le point sur votre argent d’abord</h2>
+  <p>Le meilleur projet est celui qui ne met pas en danger votre fin de mois. En 1 minute, EFA vous dit d’où vous partez.</p>
+  <a class="bouton" href="diagnostic.html?src=generateur" data-garde>Faire mon diagnostic</a>
 </div></section>
 
 <p class="gp-maj" id="gp-maj"></p>
+
+<div class="bande" id="bande" hidden data-garde><b id="bande-t">Choisissez une deuxième idée</b><button type="button" class="go" id="bande-go">Comparer</button><button type="button" class="x" id="bande-x" aria-label="Vider la comparaison">✕</button></div>
+<div class="voile" id="voile" hidden></div>
+<aside class="panneau" id="panneau" role="dialog" aria-modal="true" aria-labelledby="pn-titre" hidden data-garde>
+  <div class="pn-haut"><span id="pn-num">Explorer une idée</span><button type="button" class="fermer" id="pn-fermer">Fermer ✕</button></div>
+  <div class="pn-defile">
+    <div class="pn-img" id="pn-imgw"></div>
+    <div class="pn-in">
+      <span class="sur" id="pn-sec"></span>
+      <h2 id="pn-titre"></h2>
+      <div class="pn-meta" id="pn-meta"></div>
+      <div class="onglets" role="tablist" aria-label="Détails de l’idée">
+        <button type="button" role="tab" data-o="idee">L’idée</button><button type="button" role="tab" data-o="test">Premier test</button><button type="button" role="tab" data-o="verif">À vérifier</button><button type="button" role="tab" data-o="plan">Le plan</button>
+      </div>
+      <div class="onglet" id="onglet" role="tabpanel"></div>
+      <div class="pn-act"><button type="button" id="pn-garder">♡ Garder</button><button type="button" id="pn-comparer">⇄ Comparer</button><button type="button" id="pn-autre">Une autre ↻</button></div>
+      <div class="pn-plan"><small>Pour aller plus loin</small><h3>Construisez votre business plan de démarrage.</h3><p>Vous voyez d’abord les chapitres, un extrait et le prix. Puis vous décidez.</p><button type="button" class="bouton" id="pn-planb">Voir le plan et son prix</button></div>
+    </div>
+  </div>
+</aside>
+<div class="modale" id="modale" role="dialog" aria-modal="true" aria-label="Détails" hidden data-garde><div class="md-carte"><button type="button" class="fermer" id="md-fermer">Fermer ✕</button><div id="md-corps"></div></div></div>
 </main>
 <section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
 
 
+
+
 <script src="generateur-idees.js?v=20261102b"></script>
-<script>
-/* ===================== Données ===================== */
-const PAS=[10000,25000,50000,100000,150000,200000,300000,500000,750000,1000000,1500000,2000000,3000000,5000000,7500000,10000000,15000000,20000000,30000000,50000000];
-const RACCOURCIS=[[3,"100 000"],[7,"500 000"],[9,"1 M"],[13,"5 M"],[15,"10 M"]];
-const PALIERS=[[50000,"Je démarre avec mon téléphone"],[200000,"Le petit capital"],[500000,"Le premier stock"],[1000000,"Le vrai départ"],[3000000,"Le petit atelier"],[10000000,"L'entreprise"],[1e12,"Le capital qui construit"]];
-
-const SECTEURS={
- num:{n:"Numérique & IA",c:"#1B71B2",t:"#fff"},
- commerce:{n:"Commerce",c:"#DA3C1B",t:"#fff"},
- alim:{n:"Alimentation",c:"#F2B84B",t:"#0B1220"},
- elevage:{n:"Élevage",c:"#3CCB7F",t:"#0B1220"},
- agri:{n:"Agriculture",c:"#2E8B57",t:"#fff"},
- services:{n:"Services",c:"#6DB8F2",t:"#0B1220"},
- artisanat:{n:"Artisanat",c:"#F09680",t:"#0B1220"},
- mobilite:{n:"Transport",c:"#0B1220",t:"#fff"},
- immo:{n:"Immobilier",c:"#4E5566",t:"#fff"},
- educ:{n:"Formation",c:"#19A7B8",t:"#fff"}
-};
-const SAVOIR=[["num","Le numérique, les réseaux"],["vente","Vendre, convaincre"],["cuisine","Cuisiner, transformer"],["agri","Élever, cultiver"],["tech","Réparer, fabriquer"],["gestion","Organiser, enseigner"],["zero","Je pars de zéro"]];
-const LIEU=[["salon","Depuis mon salon"],["ville","En ville, au contact"],["terrain","Sur un terrain"]];
-const TEMPS=[["1","Soirs et week-ends"],["2","À mi-temps"],["3","À plein temps"]];
-const LIEUX_TXT={salon:"Depuis le salon",ville:"En ville",terrain:"Sur un terrain"};
-const TEMPS_TXT={1:"Soirs et week-ends",2:"Mi-temps",3:"Plein temps"};
-
-const I=window.GEN_IDEES,PAYS=window.GEN_PAYS,PLACER=window.GEN_PLACER;
-/* ===================== État ===================== */
-const etat={i:6,savoir:null,lieu:null,temps:null,pays:"ci",secteur:null,vus:9,ouverte:null};
-const $=id=>document.getElementById(id);
-const fmt=n=>n>=1000000?(Math.round(n/100000)/10).toString().replace(".",",")+"\u00a0M":n.toLocaleString("fr-FR").replace(/[\s\u202f\u00a0]/g,"\u00a0");
-const fmtLong=n=>n.toLocaleString("fr-FR").replace(/ /g," ");
-const B=()=>PAS[etat.i];
-
-/* ===================== Spirale ===================== */
-const SP_PTS=[];(function(){const tours=5,n=900,a=52;for(let k=0;k<=n;k++){const t=k/n*tours*2*Math.PI;const r=8+a*t/(2*Math.PI);SP_PTS.push([r*Math.cos(t-Math.PI/2),r*Math.sin(t-Math.PI/2)])}})();
-const dSp="M"+SP_PTS.map(p=>p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" L");
-$("sp").setAttribute("d",dSp);$("sp-fond").setAttribute("d",dSp);
-const spLen=$("sp").getTotalLength();$("sp").style.strokeDasharray=spLen;
-let spCur=0,spAnim;
-function spirale(frac){const cible=frac;cancelAnimationFrame(spAnim);const dep=spCur,t0=performance.now();
- const step=t=>{const k=Math.min(1,(t-t0)/600),e=1-Math.pow(1-k,3);spCur=dep+(cible-dep)*e;
-  $("sp").style.strokeDashoffset=spLen*(1-spCur);const p=$("sp").getPointAtLength(Math.max(1,spLen*spCur));
-  $("sp-pt").setAttribute("cx",p.x);$("sp-pt").setAttribute("cy",p.y);if(k<1)spAnim=requestAnimationFrame(step)};spAnim=requestAnimationFrame(step)}
-
-/* ===================== Montant animé ===================== */
-let mCur=300000,mAnim;
-function montant(v){cancelAnimationFrame(mAnim);const dep=mCur,t0=performance.now();
- const step=t=>{const k=Math.min(1,(t-t0)/420),e=1-Math.pow(1-k,3);mCur=Math.round(dep+(v-dep)*e);
-  $("montant").innerHTML=fmtLong(mCur)+"<small>F</small>";if(k<1)mAnim=requestAnimationFrame(step)};mAnim=requestAnimationFrame(step)}
-
-/* ===================== Questions à 2 choix ===================== */
-function question(id,opts,cle){let page=0;const box=$(id),btn=$(id+"-autre"),ch=$(id+"-choisi");
- const rendu=()=>{const items=opts.slice(page*2,page*2+2);box.innerHTML="";
-  items.forEach(([v,l])=>{const b=document.createElement("button");b.type="button";b.textContent=l;if(etat[cle]===v)b.className="sel";b.setAttribute("aria-pressed",etat[cle]===v);
-   b.onclick=()=>{etat[cle]=etat[cle]===v?null:v;etat.vus=9;rendu();maj()};box.appendChild(b)});
-  btn.style.display=opts.length>2?"":"none";
-  const sel=opts.find(o=>o[0]===etat[cle]);ch.innerHTML=sel&&!items.some(o=>o[0]===etat[cle])?"Choisi : <b>"+sel[1]+"</b>":""};
- btn.onclick=()=>{page=(page+1)%Math.ceil(opts.length/2);rendu()};rendu()}
-
-/* ===================== Score ===================== */
-function score(x){const [id,,sec,min,,lieux,t,sav]=x;let s=0;
- if(etat.savoir){if(sav.includes(etat.savoir))s+=4;else if(etat.savoir==="zero"&&sav.includes("zero"))s+=4}
- if(etat.lieu){s+=lieux.includes(etat.lieu)?3:-2}
- if(etat.temps){const u=+etat.temps;s+=t<=u?1.5:-3}
- const P=PAYS[etat.pays];if(P){if(P.ids.includes(id))s+=2.5;else if(P.s.includes(sec))s+=1}
- const r=min/B();s+=r>=.25?1.5:r>=.05?.6:0; // idées qui utilisent vraiment le budget
- return s}
-
-/* ===================== Rendu ===================== */
-function rendre(){const b=etat.bv;
- const perso=!!(etat.savoir||etat.lieu||etat.temps);
- const dispo=I.filter(x=>x[3]<=b).map(x=>({x,s:score(x)})).sort((a,c)=>perso?(c.s-a.s||c.x[3]-a.x[3]):(c.x[3]-a.x[3]||c.s-a.s));
- // compteur
- $("nb").textContent=dispo.length;$("nb-texte").textContent=(dispo.length>1?"idées à lancer":"idée à lancer")+" avec "+fmt(b)+" F";
- // pays
- const P=PAYS[etat.pays];const pb=$("pays-bande");
- if(P){pb.style.display="block";pb.innerHTML="En "+(["Côte d'Ivoire","Guinée-Bissau"].includes(P.n)?"":"")+"<b>"+P.n+"</b>, ça bouge dans : "+P.txt+"."}
- // secteurs
- const cpt={};dispo.forEach(({x})=>cpt[x[2]]=(cpt[x[2]]||0)+1);
- const ordre=Object.keys(cpt).sort((a,c)=>cpt[c]-cpt[a]);const mx=Math.max(1,...Object.values(cpt));
- if(etat.secteur&&!cpt[etat.secteur])etat.secteur=null;
- $("secteurs").innerHTML="";ordre.forEach((k,j)=>{const S=SECTEURS[k];const d=Math.round(76+50*Math.sqrt(cpt[k]/mx));
-  const el=document.createElement("button");el.type="button";el.className="bulle"+(etat.secteur===k?" sel":etat.secteur?" off":"");
-  el.style.cssText=`width:${d}px;height:${d}px;background:${S.c};color:${S.t};animation-delay:${j*40}ms;font-size:${12+d/14}px`;
-  el.innerHTML=`<b>${cpt[k]}</b><span>${S.n}</span>`;el.setAttribute("aria-pressed",etat.secteur===k);el.title="Voir les idées "+S.n;
-  el.onclick=()=>{etat.secteur=etat.secteur===k?null:k;etat.vus=9;rendre();$("liste").scrollIntoView({behavior:"smooth",block:"start"})};$("secteurs").appendChild(el)});
- // liste
- const filtre=dispo.filter(({x})=>!etat.secteur||x[2]===etat.secteur);
- const L=$("liste");L.innerHTML="";
- if(!filtre.length){L.innerHTML='<div class="vide">Avec ce montant, commencez par une idée de service depuis votre téléphone, ou montez un peu la jauge.</div>'}
- filtre.slice(0,etat.vus).forEach(({x,s},j)=>{const [id,titre,sec,min,max,lieux,t,,principe,pas,verif,piege]=x;const S=SECTEURS[sec];
-  const card=document.createElement("button");card.type="button";card.className="idee"+(etat.ouverte===id?" ouverte":"");card.style.animationDelay=Math.min(j,8)*45+"ms";
-  card.setAttribute("aria-expanded",etat.ouverte===id);
-  const porteur=P&&P.ids.includes(id)?`<span class="porteur">Porteur · ${P.n}</span>`:"";
-  const top=j<3&&!etat.secteur&&(etat.savoir||etat.lieu||etat.temps)?'<span class="top">Pour vous</span>':"";
-  card.innerHTML=`<span class="pastille" style="background:${S.c};color:${S.t}">${S.n}</span>
-   <h3>${titre}</h3>
-   <div class="ticket"><small>Ticket d'entrée indicatif</small>${min===0?"Presque rien":"Dès "+fmt(min)+"\u00a0F"}<span style="font-size:15px;color:#5F6676;font-family:var(--f-body);font-weight:700"> · confortable vers ${fmt(max)}\u00a0F</span></div>
-   <p class="resume">${principe}</p>
-   <div class="tags">${top}${porteur}<span>${lieux.map(l=>LIEUX_TXT[l]).join(" · ")}</span><span>${TEMPS_TXT[t]}</span></div>
-   <div class="detail"><div><b>Premier pas cette semaine</b>${pas}</div><div><b>À vérifier avant</b>${verif}</div><div><b>Le piège courant</b>${piege}</div></div>
-   <span class="ouvrir">Voir le premier pas →</span>`;
-  card.onclick=()=>{etat.ouverte=etat.ouverte===id?null:id;rendre()};L.appendChild(card)});
- $("plus").style.display=filtre.length>etat.vus?"block":"none";
- // effort
- const ef=$("effort");const suiv=PAS.findIndex(v=>v>b&&I.some(x=>x[3]>b&&x[3]<=v));
- if(suiv>-1){const n=I.filter(x=>x[3]>b&&x[3]<=PAS[suiv]).length;ef.innerHTML=`Avec ${fmt(PAS[suiv])} F, <button type="button" id="ef-b">${n} idée${n>1?"s":""} de plus s'ouvre${n>1?"nt":""}</button>.`;$("ef-b").onclick=()=>{$("budget").value=suiv;change();analyser()}}else ef.innerHTML="";
- // placement
- const M=$("marches");M.innerHTML="";const cemac=P&&P.z==="cemac";
- PLACER.forEach(([m,t,d],j)=>{let tt=t,dd=d;
-  if(t==="La Bourse"){tt=cemac?"La Bourse régionale d'Afrique centrale (BVMAC)":"La Bourse (BRVM)";if(cemac)dd="Un compte-titres s'ouvre chez un intermédiaire agréé. Les montants de départ et les frais varient : demandez-les avant d'ouvrir."}
-  if(t.startsWith("Les emprunts")&&cemac)dd="Les États émettent régulièrement des emprunts ouverts au public. L'intérêt est fixé à l'avance ; l'argent est engagé jusqu'à l'échéance.";
-  const ok=m<=b;const el=document.createElement("div");el.className="marche"+(ok?" dispo":" verrou");el.style.animationDelay=j*50+"ms";
-  el.innerHTML=`<div class="num">${j+1}</div><div><span class="des">${m===0?"Pour tous les montants":ok?"Accessible dès "+fmt(m)+" F":"À partir de "+fmt(m)+" F"}</span><h3>${tt}</h3><p>${dd}</p></div>`;M.appendChild(el)});
- $("placer-titre").textContent="Avec "+fmt(b)+" F, placer plutôt que lancer";
-}
-
-/* ===================== Valider et analyser ===================== */
-let analyseT=[];
-function maj(){ // un choix a changé : les résultats affichés ne correspondent plus
- if(etat.bv==null) return; document.getElementById("resultats").classList.add("perime"); document.getElementById("placer").classList.add("perime");
- const r=$("relancer"); if(r) r.hidden=false; }
-function resume(){const t=[fmt(B())+" F"];[["savoir",SAVOIR],["lieu",LIEU],["temps",TEMPS]].forEach(([k,L])=>{const o=L.find(x=>x[0]===etat[k]);if(o)t.push(o[1])});const P=PAYS[etat.pays];if(P)t.push(P.n);return t}
-function analyser(){analyseT.forEach(clearTimeout);analyseT=[];
- const A=$("analyse"),btn=$("valider"),reduit=matchMedia("(prefers-reduced-motion:reduce)").matches;
- btn.disabled=true;$("relancer").hidden=true;A.hidden=false;
- const T=["J’analyse votre budget de "+fmt(B())+" F…",(etat.savoir||etat.lieu||etat.temps)?"Je croise avec votre savoir-faire, votre terrain et votre temps…":"Je regarde ce qui se lance avec ce montant…","Je vérifie ce qui bouge en "+(PAYS[etat.pays]?PAYS[etat.pays].n:"Afrique")+"…","Je classe les idées, de la plus ambitieuse à la plus légère…"];
- const L=$("analyse-l");L.innerHTML=T.map(t=>'<li>'+t+'</li>').join("");const li=[...L.children];
- const pas=reduit?60:420;
- li.forEach((x,k)=>analyseT.push(setTimeout(()=>{li.forEach((y,j)=>y.className=j<k?"ok":j===k?"en":"");},k*pas)));
- analyseT.push(setTimeout(()=>{li.forEach(y=>y.className="ok");
-  etat.bv=B();etat.vus=9;etat.ouverte=null;etat.secteur=null;rendre();
-  document.getElementById("resultats").classList.remove("perime");document.getElementById("placer").classList.remove("perime");
-  $("resultats").hidden=false;$("placer").hidden=false;
-  $("recap").innerHTML="Résultat pour : "+resume().map(x=>"<b>"+x+"</b>").join(" · ");
-  A.hidden=true;btn.disabled=false;btn.textContent="Relancer l’analyse";
-  $("resultats").scrollIntoView({behavior:reduit?"auto":"smooth",block:"start"});},T.length*pas+250));}
-
-function change(){etat.i=+$("budget").value;etat.vus=9;etat.ouverte=null;const b=B();
- $("budget").style.setProperty("--p",(etat.i/(PAS.length-1)*100)+"%");
- montant(b);$("palier").textContent=PALIERS.find(p=>b<p[0])[1];spirale(.12+.88*etat.i/(PAS.length-1));
- document.querySelectorAll("#raccourcis button").forEach(x=>x.classList.toggle("sel",+x.dataset.i===etat.i));maj()}
-
-/* ===================== Démarrage ===================== */
-RACCOURCIS.forEach(([i,l])=>{const b=document.createElement("button");b.type="button";b.dataset.i=i;b.textContent=l+" F";b.onclick=()=>{$("budget").value=i;change()};$("raccourcis").appendChild(b)});
-Object.entries(PAYS).forEach(([k,p])=>{const o=document.createElement("option");o.value=k;o.textContent=p.n;$("pays").appendChild(o)});
-$("pays").value=etat.pays;$("pays").onchange=e=>{etat.pays=e.target.value;etat.vus=9;maj()};
-$("budget").addEventListener("input",change);
-$("plus").onclick=()=>{etat.vus+=9;rendre()};
-$("valider").onclick=analyser;$("relancer").onclick=()=>{$("valider").scrollIntoView({behavior:"smooth",block:"center"});analyser()};
-question("q-savoir",SAVOIR,"savoir");question("q-lieu",LIEU,"lieu");question("q-temps",TEMPS,"temps");
-change();
-
-try{document.getElementById("gp-maj").textContent="Idées mises à jour en "+window.GEN_MAJ+" · tickets d'entrée indicatifs, en francs CFA, à vérifier sur votre marché";}catch(e){}
-</script>
+<script src="generateur-de-projet.js?v=20261102a"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261102b" defer></script>
