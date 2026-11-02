@@ -37,5 +37,10 @@
 .bo-rac a:hover{box-shadow:inset 0 0 0 1.5px #0B1220}
 .bo-rac a:first-of-type{background:#0B1220;color:#fff;box-shadow:none}
 .bo-rac a:first-of-type small{color:#6DB8F2}
+.bo-rac a.bo-rouge{background:#DA3C1B;color:#fff;box-shadow:none}
+.bo-rac a.bo-rouge small{color:#FFE3DA}
+.bo-rac a.bo-rouge:hover{background:#B8341A}
+.bo-rac-bas{margin:34px 0 8px}
+.bo-rac-bas a:first-of-type{background:#fff;color:#0B1220;box-shadow:inset 0 0 0 1.5px #C9D3E0}
 .bo-rac small{font-size:12px;font-weight:800;color:#1B71B2;text-transform:uppercase;letter-spacing:.04em}
-@media(max-width:640px){.bo-rac>span{flex-basis:100%}.bo-rac a{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.bo-rac a:first-of-type{flex-basis:100%}}
+@media(max-width:640px){.bo-rac>span{flex-basis:100%}.bo-rac a{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.bo-rac a:first-of-type,.bo-rac a.bo-rouge{flex-basis:100%}.bo-rac-bas a:first-of-type{flex-basis:calc(50% - 8px)}.bo-rac a.bo-rouge small{display:none}}
