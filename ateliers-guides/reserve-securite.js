@@ -3,7 +3,7 @@ window.ATELIER = {
   id: "reserve-securite",
   titre: "Ma réserve de sécurité",
   h1: "Le premier coup dur ne doit pas devenir une dette.",
-  voix: false,
+  voix: "auto",
   question: {
     t: "Une urgence de santé vous coûte 150 000 F demain. Où prenez-vous l’argent ?",
     r: [

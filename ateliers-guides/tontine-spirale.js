@@ -3,7 +3,7 @@ window.ATELIER = {
   id: "tontine-spirale",
   titre: "Ma tontine devient une spirale",
   h1: "Votre tontine sait réunir de l’argent. Apprenez-lui à en garder.",
-  voix: false,
+  voix: "auto",
   question: {
     t: "Votre tontine réunit un million chaque mois. À la fin du cycle, que reste-t-il au groupe ?",
     r: [
