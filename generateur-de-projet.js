@@ -105,7 +105,7 @@ function panneau(){var x=idee(etat.ouverte);if(!x)return;var S=sec(x),L=liste(),
   var C={idee:'<h3>À quoi ressemble cette activité&nbsp;?</h3><p>'+esc(x[8])+'</p><div class="encart"><b>Budget de départ indicatif</b>'+(x[3]?FC(x[3]):"0 F")+(x[4]?" à "+FC(x[4]):"")+'. Il dépend du lieu, de l’équipement et des prix autour de vous.</div>',
     test:'<h3>Un premier test cette semaine</h3><p>'+esc(x[9])+'</p><div class="encart"><b>Votre but</b>Obtenir une réaction réelle, d’un client ou d’un fournisseur, avant de dépenser tout le budget.</div>',
     verif:'<h3>Deux choses à regarder de près</h3><div class="encart"><b>À vérifier</b>'+esc(x[10])+'</div><div class="encart"><b>Le piège courant</b>'+esc(x[11])+'</div>',
-    plan:'<h3>Et si l’idée tient la route&nbsp;?</h3><p>Un business plan de démarrage met vos hypothèses à plat&nbsp;: le client, l’offre, les dépenses de départ, trois scénarios de trésorerie et les 30 premiers jours.</p><div class="encart"><b>Prix de lancement</b><s style="color:#B8341A">'+F(prixN(x))+'</s> → <strong>'+F(prix(x))+'</strong>, paiement unique. Le document arrive dans votre espace, ouvert par votre code.</div>'};
+    plan:'<h3>Et si l’idée tient la route&nbsp;?</h3><p>Un business plan de démarrage met vos hypothèses à plat&nbsp;: le client, l’offre, les dépenses de départ, trois scénarios de trésorerie et les 30 premiers jours.</p><div class="encart"><b>Prix de lancement</b><s style="color:#B8341A">'+F(prixN(x))+'</s> → <strong>'+(prixF(x)?F(prixF(x)):"Offert")+'</strong>'+cleTxt()+', paiement unique. Le document arrive dans votre espace, ouvert par votre code.</div>'};
   $("onglet").innerHTML=C[etat.onglet];
   var g=etat.gardees.indexOf(x[0])>-1;$("pn-garder").setAttribute("aria-pressed",g);$("pn-garder").textContent=g?"♥ Gardée":"♡ Garder";
   var c=etat.cmp.indexOf(x[0])>-1;$("pn-comparer").setAttribute("aria-pressed",c);$("pn-comparer").textContent=c?"✓ À comparer":"⇄ Comparer";}
@@ -119,17 +119,20 @@ function modale(h){$("md-corps").innerHTML=h;$("modale").hidden=false;document.b
 function fermerModale(){$("modale").hidden=true;if(!etat.ouverte)document.body.classList.remove("fige");else $("pn-fermer").focus();}
 var CHAP=["Le client et son problème","L’offre et le prix test","Le test terrain","Les dépenses de départ","Les coûts de chaque mois","Les hypothèses de ventes","La trésorerie en trois scénarios","Les risques","Les 30 premiers jours","Ce qu’il reste à vérifier"];
 function prixN(x){return prix(x)*2;}
+var KC="efa_cle_bp";function cleBP(){try{return JSON.parse(localStorage.getItem(KC)||"null");}catch(e){return null;}}
+function prixF(x){var c=cleBP(),r=c&&c.r?c.r:0;return r>=1?0:Math.round(prix(x)*(1-r)/500)*500;}
+function cleTxt(){var c=cleBP();if(!c||!c.r)return "";return '<span class="cle-ok">🔑 Votre clé '+(c.r>=1?"« plan offert »":"−"+Math.round(c.r*100)+" %")+' est appliquée</span>';}
 function flou(){return '<div class="flou-w"><table class="flou-t"><tr><th>Hypothèse</th><th>Prudent</th><th>Central</th><th>Favorable</th></tr><tr><td>Ventes par mois</td><td><i>88 888 F</i></td><td><i>888 888 F</i></td><td><i>888 888 F</i></td></tr><tr><td>Coût de chaque vente</td><td><i>88 %</i></td><td><i>88 %</i></td><td><i>88 %</i></td></tr><tr><td>Charges fixes du mois</td><td><i>88 888 F</i></td><td><i>88 888 F</i></td><td><i>88 888 F</i></td></tr><tr><td>Mois pour couvrir la mise</td><td><i>88</i></td><td><i>88</i></td><td><i>88</i></td></tr><tr><td>Reste en caisse à 6 mois</td><td><i>888 888 F</i></td><td><i>888 888 F</i></td><td><i>888 888 F</i></td></tr></table><div class="flou-msg">🔒 Vos hypothèses et vos chiffres arrivent dans votre espace</div></div>';}
 function apercu(){var x=idee(etat.ouverte);if(!x)return;var p=prix(x);
   modale('<span class="sur">Aperçu · '+esc(sec(x)[0])+'</span><h2>Votre business plan de démarrage</h2><p>Pour «&nbsp;'+esc(x[1])+'&nbsp;», calculé avec vos réponses et livré dans votre espace.</p>'
   +'<p style="margin:12px 0 6px;font-weight:800;color:#0B1220">Votre trésorerie en trois scénarios</p>'+flou()
-  +EFACommande.prixBloc({produit:"Business plan de démarrage",detail:"Paiement unique · livré dans votre espace EFA",prix:p,prixNormal:prixN(x)})
+  +cleTxt()+EFACommande.prixBloc({produit:"Business plan de démarrage",detail:"Paiement unique · livré dans votre espace EFA",prix:prixF(x),prixNormal:prixN(x),etiquette:cleBP()&&cleBP().r?"Avec votre clé":"Prix de lancement"})
   +'<div class="md-act"><button type="button" class="bouton" id="md-cmd">Commander et recevoir mon code</button><a class="bouton second" href="mon-espace-business-plan.html?demo=1">Voir un plan complet d’exemple</a></div>'
   +'<p style="margin:16px 0 6px;font-weight:800;color:#0B1220">Les 10 chapitres du document</p><div class="chapitres">'+CHAP.map(function(c,i){return '<div><b>'+(i+1)+'</b>'+c+'</div>';}).join("")+'</div>');
   $("md-cmd").onclick=commande;}
 function commande(){var x=idee(etat.ouverte);if(!x)return;var p=prix(x);
   modale('<span class="sur">Commande</span><h2>Recevez votre code</h2><p>Laissez votre email ou votre numéro WhatsApp. Votre code personnel s’affiche aussitôt.</p><div id="cm-box"></div>');
-  EFACommande.ouvrir($("cm-box"),{produit:"Business plan de démarrage",titre:x[1],cle:"business-plan",prix:p,prixNormal:prixN(x),champs:[["client","Votre client principal, en une phrase","ex. les employés de bureau du Plateau"]],extra:{secteur:sec(x)[0],budget:etat.libre?"sans limite":String(etat.budget),pays:(PAYS[etat.pays]||{}).n||""}});}
+  var C=cleBP()||{};EFACommande.ouvrir($("cm-box"),{produit:"Business plan de démarrage",titre:x[1],cle:"business-plan",prix:prixF(x),prixNormal:prixN(x),etiquette:C.r?"Avec votre clé":"Prix de lancement",champs:[["client","Votre client principal, en une phrase","ex. les employés de bureau du Plateau"]],extra:{cle_gagnee:C.k?C.k+" ("+(C.r>=1?"offert":"-"+Math.round(C.r*100)+" %")+")":"",secteur:sec(x)[0],budget:etat.libre?"sans limite":String(etat.budget),pays:(PAYS[etat.pays]||{}).n||""}});}
 function vueComparer(){var S=etat.cmp.map(idee).filter(Boolean);if(S.length<2)return;
   modale('<span class="sur">Comparer</span><h2>Deux pistes, deux premiers pas</h2><div class="cmp">'+S.map(function(x){return '<div><h3>'+esc(x[1])+'</h3><b>Dès '+(x[3]?FC(x[3]):"0 F")+'</b><br><small>'+TEMPS_TXT[x[6]]+' · '+lieux(x)+'</small><p><strong>Premier test</strong><br>'+esc(x[9])+'</p><p><strong>À vérifier</strong><br>'+esc(x[10])+'</p><p><strong>Le piège</strong><br>'+esc(x[11])+'</p></div>';}).join("")+'</div><p class="md-note">Le budget de départ est une estimation de travail&nbsp;: il ne dit pas quelle idée rapportera le plus.</p>');}
 function vueGardees(){var L=etat.gardees.map(idee).filter(Boolean);
@@ -159,5 +162,31 @@ $("bande-go").onclick=vueComparer;$("bande-x").onclick=function(){etat.cmp=[];$(
 $("gardees-b").onclick=vueGardees;
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){if(!$("modale").hidden)fermerModale();else if(!$("panneau").hidden)fermer();}});
 majMontant();rendre();
+/* Carte à gratter : une carte par jour, environ une sur trois donne une clé (−20 %, −50 % ou plan offert), une seule clé par personne. */
+(function(){var cv=$("jx-c"),res=$("jx-res"),gm=$("jx-msg");if(!cv)return;var KJ="efa_jeu_bp",auj=new Date().toISOString().slice(0,10),J={};try{J=JSON.parse(localStorage.getItem(KJ)||"{}")||{};}catch(e){}
+  function sJ(){try{localStorage.setItem(KJ,JSON.stringify(J));}catch(e){}}
+  function nom(r){return r>=1?"Votre business plan offert":"−"+Math.round(r*100)+" % sur votre business plan";}
+  function gagne(c,eclat){res.className="jx-res gagne"+(eclat?" eclat":"");res.innerHTML='<small>Votre clé</small><b>'+(c.r>=1?"Plan offert":"−"+Math.round(c.r*100)+" %")+'</b><span>'+esc(nom(c.r))+'</span>';
+    gm.innerHTML='Votre clé <span class="jx-cle">'+c.k+'</span> est gardée sur ce téléphone et s’applique d’elle-même à votre commande.<br><a href="#explorer">Choisir mon idée et commander →</a>';}
+  var C=cleBP();if(C&&C.r){cv.hidden=true;gagne(C,false);return;}
+  if(J.jour===auj){cv.hidden=true;res.className="jx-res";res.innerHTML='<small>Carte du jour</small><b>Pas cette fois</b><span>Une nouvelle carte vous attend demain.</span>';gm.textContent="Le prix de lancement reste valable en attendant.";return;}
+  var tire=null;function tirer(){if(tire!==null)return;var r=Math.random();tire=r<1/3?(r<.2?.2:r<.3?.5:1):0;J.jour=auj;sJ();
+    if(tire){var o=new Uint8Array(8),A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",k="";crypto.getRandomValues(o);for(var i=0;i<8;i++)k+=A[o[i]%32];var c={r:tire,k:"CLE-"+k.slice(0,4)+"-"+k.slice(4),d:auj};try{localStorage.setItem(KC,JSON.stringify(c));}catch(e){}}
+    try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"cle-bp-"+(tire?"gagne-"+Math.round(tire*100):"perdu"),title:"Carte à gratter business plan",event:true});}catch(e){}
+    if(tire){res.className="jx-res gagne";res.innerHTML='<small>Gagné</small><b>'+(tire>=1?"Plan offert":"−"+Math.round(tire*100)+" %")+'</b><span>'+esc(nom(tire))+'</span>';}else{res.className="jx-res";res.innerHTML='<small>Carte du jour</small><b>Pas cette fois</b><span>Revenez demain.</span>';}}
+  res.className="jx-res";res.innerHTML="<small>Carte du jour</small><b>…</b>";
+  var ctx=cv.getContext("2d"),fini=false,bas=false,dpr=window.devicePixelRatio||1;
+  function peindre(){var r=cv.getBoundingClientRect();cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.scale(dpr,dpr);var g=ctx.createLinearGradient(0,0,r.width,r.height);g.addColorStop(0,"#DA3C1B");g.addColorStop(.5,"#F2B84B");g.addColorStop(1,"#3CCB7F");ctx.fillStyle=g;ctx.fillRect(0,0,r.width,r.height);
+    ctx.fillStyle="#0B1220";ctx.textAlign="center";ctx.textBaseline="middle";ctx.font='800 24px "Source Sans 3",system-ui,sans-serif';ctx.fillText("Grattez ici",r.width/2,r.height/2-12);ctx.font='700 14px "Source Sans 3",system-ui,sans-serif';ctx.fillText("avec le doigt ou la souris",r.width/2,r.height/2+16);ctx.globalCompositeOperation="destination-out";}
+  peindre();
+  function pt(e){var r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];}
+  function gratter(e){if(!bas||fini)return;tirer();var p=pt(e);ctx.beginPath();ctx.arc(p[0],p[1],24,0,Math.PI*2);ctx.fill();}
+  function part(){var d=ctx.getImageData(0,0,cv.width,cv.height).data,n=0,t=0;for(var i=3;i<d.length;i+=64){t++;if(d[i]===0)n++;}return n/t;}
+  function verifier(){if(fini||tire===null)return;if(part()>.45){fini=true;cv.style.transition="opacity .5s";cv.style.opacity="0";setTimeout(function(){cv.hidden=true;},520);
+    if(tire){gagne(cleBP(),true);if(etat.ouverte)panneau();}else gm.textContent="Pas de clé aujourd’hui. Le prix de lancement reste valable, et une nouvelle carte vous attend demain.";}}
+  cv.addEventListener("pointerdown",function(e){bas=true;cv.setPointerCapture&&cv.setPointerCapture(e.pointerId);gratter(e);});
+  cv.addEventListener("pointermove",gratter);cv.addEventListener("pointerup",function(){bas=false;verifier();});cv.addEventListener("pointercancel",function(){bas=false;verifier();});
+  cv.tabIndex=0;cv.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();tirer();ctx.fillRect(0,0,cv.width,cv.height);verifier();}});
+})();
 try{$("gp-maj").textContent="Idées mises à jour en "+window.GEN_MAJ+" · tickets d’entrée indicatifs, en francs CFA, à vérifier sur votre marché.";}catch(e){}
 })();

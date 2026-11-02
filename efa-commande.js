@@ -14,7 +14,7 @@
   function garder(c, t) { try { var L = JSON.parse(localStorage.getItem(K) || "[]") || []; var n = c.replace(/[^A-Z0-9]/g, ""); L = L.filter(function (x) { return x.c !== n; }); L.unshift({ c: n, t: t, attente: 1, d: Date.now() }); localStorage.setItem(K, JSON.stringify(L.slice(0, 10))); } catch (e) {} }
   function prixBloc(o) {
     css();
-    return '<div class="cm-prix"><div><span class="cm-promo">Prix de lancement</span><b>' + esc(o.produit) + '</b>' + (o.detail ? '<small>' + esc(o.detail) + '</small>' : '') + '</div><div class="cm-montants"><s>' + F(o.prixNormal) + '</s><strong>' + F(o.prix) + '</strong></div></div>';
+    return '<div class="cm-prix"><div><span class="cm-promo">' + (o.etiquette || 'Prix de lancement') + '</span><b>' + esc(o.produit) + '</b>' + (o.detail ? '<small>' + esc(o.detail) + '</small>' : '') + '</div><div class="cm-montants"><s>' + F(o.prixNormal) + '</s><strong>' + (o.prix ? F(o.prix) : 'Offert') + '</strong></div></div>';
   }
   function css() {
     if (document.getElementById("cm-css")) return;
@@ -54,7 +54,7 @@
         var wa = waOk ? "https://wa.me/" + v.whatsapp.replace(/\D/g, "").replace(/^00/, "") + "?text=" + encodeURIComponent(msg) : "";
         box.innerHTML = '<p style="margin:0;font-weight:700;color:#0B1220">Merci' + (v.nom ? ", " + esc(v.nom.split(" ")[0]) : "") + '. Votre commande est enregistrée.</p>'
           + '<div class="cm-code"><small>Votre code personnel</small><b>' + c + '</b><span style="font-size:14px;color:#4E5566">Gardez-le : il est la seule clé de votre document.</span></div>'
-          + '<p class="cm-note" style="margin-top:0">' + (B && mailOk ? "Il vient aussi de partir par email à " + esc(v.email) + ". " : "") + 'EFA vous contacte' + (waOk ? " sur WhatsApp" : " par email") + ' pour le paiement de ' + F(o.prix) + '. Votre document arrive dans votre espace, avec ce code.</p>'
+          + '<p class="cm-note" style="margin-top:0">' + (B && mailOk ? "Il vient aussi de partir par email à " + esc(v.email) + ". " : "") + 'EFA vous contacte' + (waOk ? " sur WhatsApp" : " par email") + (o.prix ? ' pour le paiement de ' + F(o.prix) : ' pour préparer votre document, offert avec votre clé') + '. Votre document arrive dans votre espace, avec ce code.</p>'
           + '<div class="cm-act">' + (wa ? '<a class="cm-wa" href="' + wa + '" target="_blank" rel="noopener">Garder mon code dans WhatsApp</a>' : '') + '<button type="button" class="cm-cp">Copier mon code</button><a class="cm-es" href="mon-espace-business-plan.html">Ouvrir mon espace</a></div>';
         box.querySelector(".cm-cp").onclick = function () { var b = this; (navigator.clipboard ? navigator.clipboard.writeText(c) : Promise.reject()).then(function () { b.textContent = "Code copié ✓"; }).catch(function () { b.textContent = c; }); };
         if (o.retour) o.retour(c);
