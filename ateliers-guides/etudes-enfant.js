@@ -9,9 +9,9 @@ window.ATELIER = {
     var s=String(D.ee_age==null?'':D.ee_age).trim(); if(s==='') return null;
     var a=Math.max(0,Math.floor(H.N(D.ee_age))), h=H.N(D.ee_hau)/100, ns=Math.max(0,Math.round(H.N(D.ee_supn)||3));
     var c={pri:H.N(D.ee_pri),col:H.N(D.ee_col),lyc:H.N(D.ee_lyc),sup:H.N(D.ee_sup)};
-    var t0=0, t=0, b=0, fin=19+ns;
-    for(var y=Math.max(a,6); y<fin; y++){ var k=y<12?c.pri:y<16?c.col:y<19?c.lyc:c.sup, f=Math.pow(1+h,y-a); t0+=k; t+=k*f; if(y>=19) b+=k*f; }
-    return { age:a, ans:Math.max(0,19-a), ns:ns, total0:t0, total:t, besoin:b, saisi:!!(c.pri||c.col||c.lyc||c.sup) };
+    var t0=0, t=0, b=0, b0=0, fin=19+ns;
+    for(var y=Math.max(a,6); y<fin; y++){ var k=y<12?c.pri:y<16?c.col:y<19?c.lyc:c.sup, f=Math.pow(1+h,y-a); t0+=k; t+=k*f; if(y>=19){ b+=k*f; b0+=k; } }
+    return { age:a, ans:Math.max(0,19-a), ns:ns, total0:t0, total:t, besoin:b, besoin0:b0, saisi:!!(c.pri||c.col||c.lyc||c.sup) };
   },
   /* versement mensuel pour réunir B dans T ans, avec d déjà de côté et un rendement r % par an */
   _mens: function(B,d,T,r){ if(!T||!B) return 0; var n=T*12, g=Math.pow(1+r/100,T), rest=B-d*g; if(rest<=0) return 0; if(!r) return rest/n; var i=Math.pow(1+r/100,1/12)-1; return rest*i/(Math.pow(1+i,n)-1); },
@@ -27,14 +27,14 @@ window.ATELIER = {
       { t: "Où en est mon enfant ?", c: "Tout part de l’âge de l’enfant. Il dit combien d’années il reste avant chaque cycle, et surtout avant le supérieur.",
         w: { ex: "Mariam, la fille d’Awa, a 8 ans. Repères : collège vers 12 ans, lycée vers 16 ans, supérieur vers 19 ans. Mariam entre au collège dans 4 ans et dans le supérieur dans 11 ans.", champs: [ {id:"ee_nom", l:"Prénom de l’enfant", type:"txt", ph:"Mariam"}, {id:"ee_age", l:"Son âge aujourd’hui", ph:"8"} ],
           v: function(D,H){ var R=window.ATELIER._calc(D,H); if(!R) return ''; var n=H.esc(D.ee_nom||'Votre enfant'), a=R.age, et=[];
-            if(a<12) et.push('collège dans '+(12-Math.max(a,6)+(a<6?6-a:0))+' an'+((12-a)>1?'s':''));
+            if(a<12) et.push('collège dans '+(12-a)+' an'+((12-a)>1?'s':''));
             if(a<16) et.push('lycée dans '+(16-a)+' an'+((16-a)>1?'s':''));
             if(a<19) return '<div class="gros"><small>'+n+', '+a+' an'+(a>1?'s':'')+'</small><b>Supérieur dans '+R.ans+' an'+(R.ans>1?'s':'')+'</b><p>'+(et.length?'Avant cela : '+et.join(', ')+'.':'')+'</p></div>';
             return '<div class="gros"><small>'+n+', '+a+' ans</small><b>Déjà en âge du supérieur</b><p>Le besoin est à financer maintenant : on le chiffre à l’écran suivant.</p></div>'; } },
         p: "J’ai écrit l’âge de mon enfant et les années qui restent." },
       { t: "Le coût de chaque cycle", c: "Comptez une année complète : inscription, scolarité, fournitures, uniformes, transport, cantine. Ce sont vos chiffres, pas une moyenne.",
         w: { ex: "Pour Mariam, Awa compte par an 250 000 F au primaire, 350 000 F au collège, 450 000 F au lycée et 1 500 000 F dans le supérieur, pendant 3 ans. Il reste 8 250 000 F à financer, sans compter la hausse des frais.", k: "Coût d’une année, aux prix d’aujourd’hui (F)", c3: 1, champs: [ {id:"ee_pri", l:"Primaire"}, {id:"ee_col", l:"Collège"}, {id:"ee_lyc", l:"Lycée"}, {id:"ee_sup", l:"Supérieur, par an"}, {id:"ee_supn", l:"Années de supérieur", ph:"3"} ],
-          v: function(D,H){ var R=window.ATELIER._calc(D,H); if(!R) return '<div class="verdict v-mid">Indiquez d’abord l’âge de l’enfant à l’écran précédent.</div>'; if(!R.saisi) return ''; return '<div class="gros"><small>Reste à financer, aux prix d’aujourd’hui</small><b>'+H.F(R.total0)+'</b><p>Dont '+H.F(R.besoin && H.N(D.ee_hau) ? R.ns*H.N(D.ee_sup) : R.besoin)+' pour '+R.ns+' an'+(R.ns>1?'s':'')+' de supérieur.</p></div>'; } },
+          v: function(D,H){ var R=window.ATELIER._calc(D,H); if(!R) return '<div class="verdict v-mid">Indiquez d’abord l’âge de l’enfant à l’écran précédent.</div>'; if(!R.saisi) return ''; return '<div class="gros"><small>Reste à financer, aux prix d’aujourd’hui</small><b>'+H.F(R.total0)+'</b><p>Dont '+H.F(R.besoin0)+' pour le supérieur.</p></div>'; } },
         p: "Le coût annuel de chaque cycle est écrit." },
       { t: "Ici ou à l’étranger, et la hausse des frais", c: "Les frais montent presque chaque année. Le même lycée coûtera plus cher dans 5 ans : il faut le compter dès maintenant.",
         w: { ex: "Une année de lycée à 300 000 F aujourd’hui, avec une hausse d’environ 5 % par an, coûtera environ 383 000 F dans 5 ans.", puces: { id:"ee_lieu", k:"Le supérieur, vous l’imaginez", l:["Ici, dans la zone","À l’étranger"] }, champs: [ {id:"ee_hau", l:"Hausse des frais par an (%)", ph:"5"} ],
