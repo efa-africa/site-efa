@@ -431,7 +431,7 @@
    "change": "La baisse vient de vérifications et de reclassements, pas d'un remboursement. Pour les prêteurs, et donc pour le coût des futurs emprunts, c'est le chiffre validé qui comptera.",
    "limites": [
     "Les chiffres ne sont pas validés par le FMI.",
-    "La circulaire et la dépêche Reuters originale n'ont pas été consultées ; chiffres de Sika Finance, recoupés par EcoMatin.",
+    "La circulaire et la dépêche Reuters originale n'ont pas été consultées ; chiffres rapportés par la presse (Financial Afrik, EcoMatin).",
     "Le montant de 11 700 Md FCFA est un ordre de grandeur (« près de »)."
    ],
    "question": "Un chiffre de dette, qui l'a vérifié ?",
@@ -455,14 +455,6 @@
     }
    ],
    "sources": [
-    {
-     "titre": "Gabon : l'audit de la dette remis à l'examen du FMI",
-     "organisme": "Sika Finance",
-     "date": "19 oct. 2026",
-     "url": "https://www.sikafinance.com/marches/gabon-les-conclusions-de-l-audit-de-la-dette-remises-a-l-examen-du-fmi-une-revision-des-chiffres-envisagee_65053",
-     "consulte_le": "2026-10-23",
-     "type": "media"
-    },
     {
      "titre": "Le gouvernement soumet l'audit de sa dette au FMI",
      "organisme": "Financial Afrik",
@@ -1096,14 +1088,6 @@
      "type": "media"
     },
     {
-     "titre": "338 Md FCFA mobilisés grâce au deuxième emprunt de l'année",
-     "organisme": "Sika Finance",
-     "date": "15 oct. 2026",
-     "url": "https://www.sikafinance.com/marches/senegal-338-milliards-fcfa-mobilises-grace-au-deuxieme-emprunt-obligataire-de-lannee_64964",
-     "consulte_le": "2026-10-17",
-     "type": "media"
-    },
-    {
      "titre": "Le Journal de l'Économie sénégalaise",
      "organisme": "allAfrica",
      "date": "16 oct. 2026",
@@ -1665,7 +1649,7 @@
      "titre": "Sénégal : un excédent commercial de 160 Md FCFA en août 2026",
      "organisme": "Sika Finance",
      "date": "14 oct. 2026",
-     "url": "https://www.sikafinance.com/marches/senegal-un-excedent-commercial-de-160-milliards-fcfa-enregistre-en-aout-2026_64866",
+     "url": "",
      "consulte_le": "2026-10-27",
      "type": "media"
     }
@@ -1770,8 +1754,16 @@
      "titre": "Niger : le FMI ouvre la voie à un nouveau programme de 203 M$",
      "organisme": "Sika Finance",
      "date": "12 oct. 2026",
-     "url": "https://www.sikafinance.com/marches/niger-le-fmi-ouvre-la-voie-a-un-nouveau-programme-de-203-millions-de-dollars_64869",
+     "url": "",
      "consulte_le": "2026-10-27",
+     "type": "media"
+    },
+    {
+     "titre": "Niger Reaches IMF Staff-Level Deal on $203 Million Financing Programme",
+     "organisme": "Ecofin Agency",
+     "date": "9 oct. 2026",
+     "url": "https://www.ecofinagency.com/news/0910-59600-niger-reaches-imf-staff-level-deal-on-203-million-financing-programme",
+     "consulte_le": "2026-11-02",
      "type": "media"
     }
    ],
@@ -1986,7 +1978,7 @@
      "titre": "Tchad : l'examen des politiques de la CEMAC retarde les décaissements du FMI",
      "organisme": "Sika Finance",
      "date": "12 oct. 2026",
-     "url": "https://www.sikafinance.com/marches/tchad-lexamen-des-politiques-economiques-de-la-cemac-retarde-les-decaissements-du-fmi_64880",
+     "url": "",
      "consulte_le": "2026-10-27",
      "type": "media"
     }
