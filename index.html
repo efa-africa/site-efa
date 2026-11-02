@@ -46,17 +46,7 @@
         <h1 id="hero-title" class="a-hero-pourvous">C’est fait pour vous.</h1>
         <p class="a-hero-sous">La finance, avec nos réalités africaines.</p>
         <p class="a-hero-intro"><b>Avant d’investir, on met de l’ordre. Puis on investit, accompagné.</b><br>Pensé pour nous, dès 1 min.</p>
-        <a class="a-hero-cta" href="point-de-depart.html" id="hero-cta" aria-controls="depart-choix" aria-expanded="false">Trouver mon point de départ <span aria-hidden="true">→</span></a>
-        <div class="a-depart" id="depart-choix" hidden>
-          <p class="a-depart-t">Par quoi voulez-vous commencer&nbsp;?</p>
-          <div class="a-choices">
-            <a class="a-choice" href="point-de-depart.html?pour=moi"><span>01</span> Mon budget et mes dépenses</a>
-            <a class="a-choice" href="point-de-depart.html?pour=investir"><span>02</span> Investir à la Bourse (BRVM)</a>
-          </div>
-          <p class="a-depart-plus"><a href="point-de-depart.html">Autre chose, ou je ne sais pas encore <span aria-hidden="true">→</span></a></p>
-          <div hidden>
-          </div>
-        </div>
+        <a class="a-hero-cta" href="#commencer" id="hero-cta">Trouver mon point de départ <span aria-hidden="true">→</span></a>
         <p class="a-hero-footnote">Des contenus et des outils gratuits pour commencer.</p>
         <a class="a-hero-orga" href="organisations.html">Former mon équipe ou ma communauté <span aria-hidden="true">↗</span></a>
         <script src="efa-reprise.js?v=2026102902"></script>
@@ -64,7 +54,8 @@
            Pour qui revient (défi, résultat, objectif, module) : un seul bouton vers son étape. */
         (function(){var b=document.getElementById("hero-cta"),c=document.getElementById("depart-choix"),n=document.querySelector(".a-hero-footnote");
           var E=window.EFA_REPRISE&&EFA_REPRISE.etape();
-          if(!E){if(b&&c)b.addEventListener("click",function(e){e.preventDefault();var o=c.hidden;c.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){var f=c.querySelector("a");if(f)f.focus({preventScroll:true});setTimeout(function(){var r=c.getBoundingClientRect(),hd=document.querySelector(".header"),hh=hd?hd.offsetHeight:0;if(r.bottom>innerHeight-16||r.top<hh)scrollTo({top:scrollY+r.top-hh-24,behavior:"smooth"});c.classList.remove("a-depart-flash");void c.offsetWidth;c.classList.add("a-depart-flash");},30);}});return;}
+          if(!E){if(b)b.addEventListener("click",function(e){var k=document.getElementById("commencer");if(!k)return;e.preventDefault();var hd=document.querySelector(".header"),hh=hd?hd.offsetHeight:0;scrollTo({top:scrollY+k.getBoundingClientRect().top-hh-64,behavior:"smooth"});k.classList.remove("cm4-flash");void k.offsetWidth;k.classList.add("cm4-flash");});return;}
+          if(false){if(b&&c)b.addEventListener("click",function(e){e.preventDefault();var o=c.hidden;c.hidden=!o;b.setAttribute("aria-expanded",o?"true":"false");if(o){var f=c.querySelector("a");if(f)f.focus({preventScroll:true});setTimeout(function(){var r=c.getBoundingClientRect(),hd=document.querySelector(".header"),hh=hd?hd.offsetHeight:0;if(r.bottom>innerHeight-16||r.top<hh)scrollTo({top:scrollY+r.top-hh-24,behavior:"smooth"});c.classList.remove("a-depart-flash");void c.offsetWidth;c.classList.add("a-depart-flash");},30);}});return;}
           var orga=E.o&&E.o.p==="orga",h=String(E.h||"point-de-depart.html").replace(/^(\.\.\/)+/,"");if(/^app(\/|$)/.test(h))h="../"+h; /* les pages du site existent aussi dans le Clone */
           /* Défi de sept jours : « terminé » seulement si les sept jours ont été notés */
           if(E.k==="bilan"){try{var C=JSON.parse(localStorage.getItem("efa_cahier_v1")||"null"),S=C&&C.semaines&&C.semaines.filter(function(x){return!x.fini}).pop(),f=S?(S.jours||[]).filter(function(x){return x!=null}).length:7;
@@ -74,7 +65,31 @@
           if(n)n.textContent=E.t;document.documentElement.classList.add("efa-perso");})();</script>
       </div>
       <a class="a-scroll-cue" href="#portes">DÉFILER POUR DÉCOUVRIR <span aria-hidden="true">↓</span></a>
-    </section><section class="fondateur" id="fondateur" aria-labelledby="fondateur-t"><div class="container fondateur-in"><img class="fondateur-img" src="clone/assets/elysee-portrait.jpg" alt="Portrait d’Élysée Johnson, fondateur d’EFA" width="606" height="909" loading="lazy" decoding="async"><div class="fondateur-txt"><p class="eyebrow">Le fondateur</p><h2 id="fondateur-t">EFA a été fondée par <em>Élysée Johnson.</em></h2><p>Après une décennie dans la banque, l’investissement et le conseil, il a créé EFA pour rendre l’argent plus compréhensible à partir des réalités africaines.</p></div></div></section>
+    </section><section class="cm4" id="commencer" aria-labelledby="cm4-t" data-garde><div class="container"><p class="cm4-k">Commencer tout de suite</p><h2 id="cm4-t">Par où voulez-vous commencer&nbsp;?</h2><div class="cm4-g"><a class="cm4-c cm4-1" href="generateur-de-projet.html?src=accueil-4"><span class="cm4-img"><img src="clone/assets/projet-numerique.webp" alt="" width="1672" height="941" loading="eager" decoding="async"></span><span class="cm4-t"><b>Avec ce que j’ai, je lance quoi&nbsp;?</b><span>Des idées de projets adaptées à mon budget.</span><i>Trouver mon idée <span aria-hidden="true">→</span></i></span></a><a class="cm4-c" href="atelier-ou-passe-mon-argent.html?src=accueil-4"><span class="cm4-img"><img src="clone/assets/coach-budget.webp" alt="" width="1672" height="941" loading="eager" decoding="async"></span><span class="cm4-t"><b>Où est passé mon argent&nbsp;?</b><span>Comprendre mon mois et retrouver une marge.</span><i>Voir où va mon argent <span aria-hidden="true">→</span></i></span></a><a class="cm4-c" href="premiers-pas-bourse.html?src=accueil-4"><span class="cm4-img"><img src="clone/assets/accueil-lancer-brvm-2.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></span><span class="cm4-t"><b>Je veux découvrir la Bourse (BRVM).</b><span>Apprendre avant de passer mon premier ordre.</span><i>Faire mes premiers pas <span aria-hidden="true">→</span></i></span></a><a class="cm4-c" href="valoriser-mon-entreprise.html?src=accueil-4"><span class="cm4-img"><img src="clone/assets/coach-entreprise.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></span><span class="cm4-t"><b>Combien vaut mon entreprise&nbsp;?</b><span>Explorer ce qui crée la valeur de mon activité.</span><i>Estimer mon entreprise <span aria-hidden="true">→</span></i></span></a></div><p class="cm4-plus"><a href="point-de-depart.html">Autre chose, ou je ne sais pas encore <span aria-hidden="true">→</span></a></p></div>
+<style>
+html.cl-hall .aig>section.cm4{display:block!important}
+.cm4{background:#F5EFE2;padding:30px 0 34px;font-family:"Source Sans 3",system-ui,sans-serif}
+.cm4 .container{max-width:1180px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+.cm4-k{margin:0;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+.cm4 h2{font:700 clamp(26px,3.6vw,40px)/1.12 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:8px 0 16px;text-transform:none}
+.cm4-g{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:700px){.cm4-g{grid-template-columns:1fr 1fr}}
+@media(min-width:1080px){.cm4-g{grid-template-columns:repeat(4,1fr)}}
+.cm4-c{display:flex;flex-direction:column;background:#FFFDF8;border-radius:16px;overflow:hidden;text-decoration:none!important;color:#2A3142;transition:transform .15s}
+.cm4-c:hover{transform:translateY(-2px)}
+.cm4-img{position:relative;aspect-ratio:16/9;background:#DCE3EA;display:block}
+.cm4-img img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+.cm4-t{display:flex;flex-direction:column;flex:1;padding:14px 16px 16px}
+.cm4-t b{font:700 clamp(19px,1.7vw,22px)/1.18 "Libre Baskerville",Georgia,serif;color:#0B1220}
+.cm4-t>span{margin:6px 0 12px;font-size:16px;line-height:1.45;color:#4E5566}
+.cm4-t i{margin-top:auto;font-style:normal;display:block;text-align:center;background:#0B1220;color:#fff;font-weight:800;font-size:16px;border-radius:8px;padding:12px 14px}
+.cm4-1{box-shadow:0 0 0 3px #DA3C1B}
+.cm4-1 .cm4-t i{background:#DA3C1B;animation:cm4-b 1.8s ease-in-out infinite}
+@keyframes cm4-b{0%,100%{box-shadow:0 0 0 0 rgba(218,60,27,.5)}50%{box-shadow:0 0 0 8px rgba(218,60,27,0)}}
+.cm4-flash .cm4-g{animation:cm4-f .9s ease 2}@keyframes cm4-f{50%{transform:scale(1.01)}}
+@media(prefers-reduced-motion:reduce){.cm4-1 .cm4-t i,.cm4-flash .cm4-g{animation:none}}
+.cm4-plus{margin:14px 0 0;font-weight:700}.cm4-plus a{color:#1B71B2}
+</style></section><section class="fondateur" id="fondateur" aria-labelledby="fondateur-t"><div class="container fondateur-in"><img class="fondateur-img" src="clone/assets/elysee-portrait.jpg" alt="Portrait d’Élysée Johnson, fondateur d’EFA" width="606" height="909" loading="lazy" decoding="async"><div class="fondateur-txt"><p class="eyebrow">Le fondateur</p><h2 id="fondateur-t">EFA a été fondée par <em>Élysée Johnson.</em></h2><p>Après une décennie dans la banque, l’investissement et le conseil, il a créé EFA pour rendre l’argent plus compréhensible à partir des réalités africaines.</p></div></div></section>
 
     <section class="a-doors" id="portes" aria-labelledby="doors-title">
       <div class="a-section-inner">

@@ -174,6 +174,11 @@
 .flou-t i{white-space:nowrap;font-style:normal;filter:blur(6px);-webkit-user-select:none;user-select:none;color:#0B1220;font-weight:700}
 .flou-msg{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);background:#0B1220;color:#fff;font-weight:800;font-size:14px;border-radius:999px;padding:8px 14px;white-space:nowrap;box-shadow:0 6px 20px rgba(11,18,32,.25)}
 @media(max-width:420px){.flou-msg{white-space:normal;text-align:center;width:86%}}
+.pn-partager{display:block;width:100%;margin-top:8px;border:0;background:#1E8E57;color:#fff;font-weight:800;font-size:16px;min-height:48px;border-radius:var(--r-bouton)}
+.partage-b{font-size:20px!important;color:var(--nuit)!important;font-weight:800}
+.pt-ap{display:flex;justify-content:center;background:var(--creme);border-radius:12px;padding:10px;margin:10px 0}
+.pt-ap img{width:min(220px,60vw);aspect-ratio:9/16;border-radius:10px;box-shadow:0 8px 24px rgba(11,18,32,.25);background:#0B1220}
+.pt-wa{background:#1E8E57!important;color:#fff!important}
 /* Bande comparer */
 .bande{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--nuit);color:#fff;padding:10px 92px 10px var(--g) calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px}
 .bande[hidden]{display:none}
@@ -457,7 +462,7 @@ body.fige{overflow:hidden}
         <button type="button" role="tab" data-o="idee">L’idée</button><button type="button" role="tab" data-o="test">Premier test</button><button type="button" role="tab" data-o="verif">À vérifier</button><button type="button" role="tab" data-o="plan">Le plan</button>
       </div>
       <div class="onglet" id="onglet" role="tabpanel"></div>
-      <div class="pn-act"><button type="button" id="pn-garder">♡ Garder</button><button type="button" id="pn-comparer">⇄ Comparer</button><button type="button" id="pn-autre">Une autre ↻</button></div>
+      <div class="pn-act"><button type="button" id="pn-garder">♡ Garder</button><button type="button" id="pn-comparer">⇄ Comparer</button><button type="button" id="pn-autre">Une autre ↻</button></div><button type="button" class="pn-partager" id="pn-partager">Partager cette idée ↗</button>
       <div class="pn-plan"><small>Pour aller plus loin</small><h3>Construisez votre business plan de démarrage.</h3><p>Vous voyez d’abord les chapitres, un extrait et le prix. Puis vous décidez.</p><button type="button" class="bouton" id="pn-planb">Voir le plan et son prix</button></div>
     </div>
   </div>
@@ -479,10 +484,12 @@ body.fige{overflow:hidden}
 
 
 
+
+
 <script src="generateur-idees.js?v=20261102b"></script>
 <script src="efa-config.js?v=20261102"></script>
 <script src="efa-commande.js?v=20261102d"></script>
-<script src="generateur-de-projet.js?v=20261102e"></script>
+<script src="generateur-de-projet.js?v=20261102f"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="efa-appli.js?v=2026103104" defer></script>
 <script src="clone/habillage.js?v=20261102e" defer></script>

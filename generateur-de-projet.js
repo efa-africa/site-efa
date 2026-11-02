@@ -46,7 +46,7 @@ function listeVue(){return varier(liste());}
 
 function carte(x,n){var g=etat.gardees.indexOf(x[0])>-1,c=criteres(x),S=sec(x);
   var lieu=lieux(x);
-  return '<article class="carte" style="animation-delay:'+(n*50)+'ms"><div class="img">'+visuel(x)+'<span class="tag">'+esc(S[0])+'</span></div><div class="corps"><span class="meta">'+esc(lieu)+' · '+TEMPS_TXT[x[6]]+'</span><h3>'+esc(x[1])+'</h3><span class="prix">'+hauteur(x)+'<small>Ticket indicatif : '+(x[3]?FC(x[3]):"0 F")+' à '+FC(x[4]||x[3])+', à vérifier</small></span><p class="pas">«&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir" data-o="'+x[0]+'">Explorer →</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+g+'" aria-label="'+(g?"Retirer":"Garder")+' cette idée">'+(g?"♥":"♡")+'</button></div></div></article>';}
+  return '<article class="carte" style="animation-delay:'+(n*50)+'ms"><div class="img">'+visuel(x)+'<span class="tag">'+esc(S[0])+'</span></div><div class="corps"><span class="meta">'+esc(lieu)+' · '+TEMPS_TXT[x[6]]+'</span><h3>'+esc(x[1])+'</h3><span class="prix">'+hauteur(x)+'<small>Ticket indicatif : '+(x[3]?FC(x[3]):"0 F")+' à '+FC(x[4]||x[3])+', à vérifier</small></span><p class="pas">«&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir" data-o="'+x[0]+'">Explorer →</button><button type="button" class="coeur partage-b" data-p="'+x[0]+'" aria-label="Partager cette idée">↗</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+g+'" aria-label="'+(g?"Retirer":"Garder")+' cette idée">'+(g?"♥":"♡")+'</button></div></div></article>';}
 
 function proposition(L){if(etat.libre||!L.length)return "";var b=etat.budget,res=Math.round(b*.1/1000)*1000,dispo=b-res,P1=L[0],m1=Math.min(P1[4]||P1[3],dispo);if(m1<P1[3])m1=Math.min(P1[3],b);
   var reste=Math.max(0,b-res-m1),lignes=[[P1[1],m1,"Projet principal","p1"]],P2=null;
@@ -56,7 +56,7 @@ function proposition(L){if(etat.libre||!L.length)return "";var b=etat.budget,res
   if(res>0)lignes.push(["Réserve de précaution, à ne pas toucher",res,"Réserve","rs"]);
   return '<div class="propo"><span class="sur">Notre proposition pour '+FC(b)+'</span><h3>Voici comment votre budget pourrait travailler</h3>'+lignes.map(function(l){var pc=Math.round(l[1]/b*100);return '<div class="pl-l"><div class="pl-t"><small>'+l[2]+'</small><b>'+esc(l[0])+'</b></div><strong>'+FC(l[1])+'</strong><span class="pl-barre"><i class="'+l[3]+'" style="width:'+Math.max(3,pc)+'%"></i></span></div>';}).join("")+'<p class="md-note">Répartition indicative : chaque montant se confirme par des devis et un premier test.</p></div>';}
 function vedette(x){var c=criteres(x);
-  return '<article class="vedette" id="vedette-c"><div class="v-img">'+visuel(x)+'<span class="ici">Commencez ici</span></div><div class="v-corps"><span class="sur">Votre meilleure piste · '+esc(sec(x)[0])+'</span><h3>'+esc(x[1])+'</h3><p class="v-h">'+hauteur(x)+'</p><p>'+esc(x[8])+'</p><p class="pas">Premier pas : «&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir brille" data-o="'+x[0]+'">Voir cette piste en détail →</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+(etat.gardees.indexOf(x[0])>-1)+'" aria-label="Garder cette idée">'+(etat.gardees.indexOf(x[0])>-1?"♥":"♡")+'</button></div></div></article>';}
+  return '<article class="vedette" id="vedette-c"><div class="v-img">'+visuel(x)+'<span class="ici">Commencez ici</span></div><div class="v-corps"><span class="sur">Votre meilleure piste · '+esc(sec(x)[0])+'</span><h3>'+esc(x[1])+'</h3><p class="v-h">'+hauteur(x)+'</p><p>'+esc(x[8])+'</p><p class="pas">Premier pas : «&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir brille" data-o="'+x[0]+'">Voir cette piste en détail →</button><button type="button" class="coeur partage-b" data-p="'+x[0]+'" aria-label="Partager cette idée">↗</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+(etat.gardees.indexOf(x[0])>-1)+'" aria-label="Garder cette idée">'+(etat.gardees.indexOf(x[0])>-1?"♥":"♡")+'</button></div></div></article>';}
 function rendre(){$("gardees-n").textContent=etat.gardees.length;placer();if(!etat.analyse)return;
   var L=liste(),n=L.length,P=PAYS[etat.pays];
   $("recap").textContent=[etat.libre?"Sans limite de budget":"Budget : "+F(etat.budget)].concat([[SAVOIR,etat.savoir],[TEMPS,etat.temps],[LIEU,etat.lieu]].filter(function(a){return a[1];}).map(function(a){for(var i=0;i<a[0].length;i++)if(a[0][i][0]===a[1])return a[0][i][1];})).concat(P?[P.n]:[]).join(" · ");
@@ -133,6 +133,35 @@ function apercu(){var x=idee(etat.ouverte);if(!x)return;var p=prix(x);
 function commande(){var x=idee(etat.ouverte);if(!x)return;var p=prix(x);
   modale('<span class="sur">Commande</span><h2>Recevez votre code</h2><p>Laissez votre email ou votre numéro WhatsApp. Votre code personnel s’affiche aussitôt.</p><div id="cm-box"></div>');
   var C=cleBP()||{};EFACommande.ouvrir($("cm-box"),{produit:"Business plan de démarrage",titre:x[1],cle:"business-plan",prix:prixF(x),prixNormal:prixN(x),etiquette:C.r?"Avec votre clé":"Prix de lancement",champs:[["client","Votre client principal, en une phrase","ex. les employés de bureau du Plateau"]],extra:{cle_gagnee:C.k?C.k+" ("+(C.r>=1?"offert":"-"+Math.round(C.r*100)+" %")+")":"",secteur:sec(x)[0],budget:etat.libre?"sans limite":String(etat.budget),pays:(PAYS[etat.pays]||{}).n||""}});}
+/* Partager une idée : carte image (format Story 1080×1920) + partage natif, WhatsApp, téléchargement. */
+function lignes(ctx,t,max){var m=String(t).split(" "),L=[],l="";m.forEach(function(w){var e=l?l+" "+w:w;if(ctx.measureText(e).width>max&&l){L.push(l);l=w;}else l=e;});if(l)L.push(l);return L;}
+function imagePartage(x){var c=document.createElement("canvas");c.width=1080;c.height=1920;var g=c.getContext("2d");
+  g.fillStyle="#0B1220";g.fillRect(0,0,1080,1920);
+  g.strokeStyle="rgba(109,184,242,.18)";g.lineWidth=6;g.beginPath();for(var k=0;k<=600;k++){var t=k/600*4*2*Math.PI,r=20+46*t/(2*Math.PI);var X=900+r*Math.cos(t),Y=330+r*Math.sin(t);k?g.lineTo(X,Y):g.moveTo(X,Y);}g.stroke();
+  g.fillStyle="#fff";g.font='800 64px "Source Sans 3",system-ui,sans-serif';g.fillText("efa",90,170);g.fillStyle="#DA3C1B";g.beginPath();g.arc(210,160,11,0,7);g.fill();
+  g.fillStyle="#F09680";g.font='800 34px "Source Sans 3",system-ui,sans-serif';g.fillText((etat.libre?"SANS LIMITE DE BUDGET":"AVEC "+FC(etat.budget).replace(/ /g," ").toUpperCase()),90,560);
+  g.fillStyle="#C9D1DE";g.font='400 46px "Source Sans 3",system-ui,sans-serif';g.fillText("je pourrais lancer",90,630);
+  g.fillStyle="#fff";g.font='700 86px "Libre Baskerville",Georgia,serif';var y=760;lignes(g,x[1],900).slice(0,5).forEach(function(l){g.fillText(l,90,y);y+=104;});
+  y+=40;g.fillStyle="#DA3C1B";g.fillRect(90,y,120,8);y+=80;
+  g.fillStyle="#F09680";g.font='800 34px "Source Sans 3",system-ui,sans-serif';g.fillText("MON PREMIER TEST",90,y);y+=66;
+  g.fillStyle="#E8EDF5";g.font='400 46px "Source Sans 3",system-ui,sans-serif';lignes(g,x[9],900).slice(0,6).forEach(function(l){g.fillText(l,90,y);y+=62;});
+  g.fillStyle="#DA3C1B";g.beginPath();if(g.roundRect)g.roundRect(90,1610,900,170,24);else g.rect(90,1610,900,170);g.fill();
+  g.fillStyle="#fff";g.font='800 50px "Source Sans 3",system-ui,sans-serif';g.fillText("Et toi, que pourrais-tu lancer ?",130,1690);g.font='600 38px "Source Sans 3",system-ui,sans-serif';g.fillText("efa.africa · Mon générateur de projet",130,1748);
+  return c;}
+function partager(id){var x=idee(id);if(!x)return;var url="https://efa.africa/generateur-de-projet.html?src=partage";
+  var txt=(etat.libre?"":"Avec "+FC(etat.budget).replace(/ /g," ")+", ")+"je pourrais lancer : "+x[1]+".\nMon premier test : "+x[9]+"\n\nEt toi, que pourrais-tu lancer ?";
+  modale('<span class="sur">Partager cette idée</span><h2>'+esc(x[1])+'</h2><p class="md-note">Seule cette idée est partagée, avec votre budget et le premier test. Rien d’autre.</p><div class="pt-ap"><img id="pt-img" alt="Aperçu de l’image à partager"></div><div class="md-act"><button type="button" class="bouton" id="pt-go">Partager</button><a class="bouton pt-wa" id="pt-wa" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(txt+"\n"+url)+'">Envoyer sur WhatsApp</a><button type="button" class="bouton second" id="pt-dl">Télécharger l’image (Story)</button><button type="button" class="bouton second" id="pt-cp">Copier le lien</button></div>');
+  var pret=(document.fonts&&document.fonts.load)?Promise.all([document.fonts.load('700 86px "Libre Baskerville"'),document.fonts.load('800 50px "Source Sans 3"'),document.fonts.load('400 46px "Source Sans 3"')]).catch(function(){}):Promise.resolve();
+  var cv=null;pret.then(function(){cv=imagePartage(x);$("pt-img").src=cv.toDataURL("image/jpeg",.86);});
+  function blob(){return new Promise(function(r){if(!cv){cv=imagePartage(x);}cv.toBlob(r,"image/jpeg",.9);});}
+  function compter(m){try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"partage-idee-"+m,title:"Partage idée "+x[0],event:true});}catch(e){}}
+  $("pt-go").onclick=function(){blob().then(function(b){var f=b&&window.File?new File([b],"efa-mon-idee.jpg",{type:"image/jpeg"}):null;
+    if(navigator.share){var d={title:"Mon idée de projet · EFA",text:txt,url:url};if(f&&navigator.canShare&&navigator.canShare({files:[f]}))d.files=[f];navigator.share(d).then(function(){compter("natif");}).catch(function(){});}
+    else{window.open($("pt-wa").href,"_blank","noopener");compter("whatsapp");}});};
+  $("pt-wa").onclick=function(){compter("whatsapp");};
+  $("pt-dl").onclick=function(){blob().then(function(b){var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="efa-mon-idee-"+x[0]+".jpg";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},800);compter("image");});};
+  $("pt-cp").onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(txt+"\n"+url):Promise.reject()).then(function(){b.textContent="Lien copié ✓";compter("lien");}).catch(function(){b.textContent=url;});};}
+
 function vueComparer(){var S=etat.cmp.map(idee).filter(Boolean);if(S.length<2)return;
   modale('<span class="sur">Comparer</span><h2>Deux pistes, deux premiers pas</h2><div class="cmp">'+S.map(function(x){return '<div><h3>'+esc(x[1])+'</h3><b>Dès '+(x[3]?FC(x[3]):"0 F")+'</b><br><small>'+TEMPS_TXT[x[6]]+' · '+lieux(x)+'</small><p><strong>Premier test</strong><br>'+esc(x[9])+'</p><p><strong>À vérifier</strong><br>'+esc(x[10])+'</p><p><strong>Le piège</strong><br>'+esc(x[11])+'</p></div>';}).join("")+'</div><p class="md-note">Le budget de départ est une estimation de travail&nbsp;: il ne dit pas quelle idée rapportera le plus.</p>');}
 function vueGardees(){var L=etat.gardees.map(idee).filter(Boolean);
@@ -152,11 +181,11 @@ if(etat.savoir||etat.temps||etat.lieu){$("affinage").hidden=false;$("affiner").s
 $("surprise").onclick=function(){etat.decal+=etat.vus;rendre();};
 $("voir-plus").onclick=function(){etat.vus+=etat.vus===3?3:6;rendre();};
 $("lancer").onclick=analyser;$("perime-b").onclick=analyser;
-$("vedette").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]");if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
-$("cartes").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]");if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
+$("vedette").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]"),pp=e.target.closest("[data-p]");if(pp){partager(pp.dataset.p);return;}if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
+$("cartes").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]"),pp=e.target.closest("[data-p]");if(pp){partager(pp.dataset.p);return;}if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
 [].forEach.call(document.querySelectorAll(".onglets button"),function(b){b.onclick=function(){etat.onglet=b.dataset.o;panneau();};});
 $("pn-fermer").onclick=fermer;$("voile").onclick=fermer;
-$("pn-garder").onclick=function(){garder(etat.ouverte);};$("pn-comparer").onclick=function(){comparer(etat.ouverte);};$("pn-autre").onclick=autre;$("pn-planb").onclick=apercu;
+$("pn-garder").onclick=function(){garder(etat.ouverte);};$("pn-comparer").onclick=function(){comparer(etat.ouverte);};$("pn-autre").onclick=autre;if($("pn-partager"))$("pn-partager").onclick=function(){partager(etat.ouverte);};$("pn-planb").onclick=apercu;
 $("md-fermer").onclick=fermerModale;$("modale").addEventListener("click",function(e){if(e.target===$("modale"))fermerModale();});
 $("bande-go").onclick=vueComparer;$("bande-x").onclick=function(){etat.cmp=[];$("bande").hidden=true;if(etat.ouverte)panneau();};
 $("gardees-b").onclick=vueGardees;
