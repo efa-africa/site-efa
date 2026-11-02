@@ -48,16 +48,16 @@ a{color:var(--bleu);font-weight:700;text-decoration:underline;text-decoration-co
 .prog-txt{font-size:14px;font-weight:800;white-space:nowrap}
 
 /* Mot du coach */
-.intro{padding:30px 0 6px}
-.intro h2{font-size:clamp(26px,3.8vw,38px)}
-.intro p{color:var(--ink2);margin:12px 0 0}
+.motcoach{padding:30px 18px 6px}
+.motcoach h2{font-size:clamp(26px,3.8vw,38px)}
+.motcoach p{color:var(--ink2);margin:12px 0 0}
 .regles{background:var(--corail);color:#fff;border-radius:2px;padding:16px 18px;margin:20px 0 0}
 .regles b{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px}
 .regles ul{margin:0;padding-left:18px}
 .regles li{margin:4px 0}
 
 /* Phases */
-.phases{padding:18px 0 40px}
+.phases{padding:18px 18px 40px}
 .phase{background:var(--papier);border-radius:var(--r-carte);margin:14px 0;overflow:hidden}
 .phase>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:18px}
 .phase>button:focus-visible{outline:3px solid var(--bleu);outline-offset:-3px}
@@ -201,6 +201,16 @@ td b{white-space:nowrap}
 .mail b{display:block;font-size:13px;margin-bottom:4px}
 .comp{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}.comp td,.comp th{padding:5px;border-bottom:1px solid #F0F1F4;text-align:right}.comp td:first-child,.comp th:first-child{text-align:left}
 
+/* Bienvenue d'Élysée */
+.bvn{margin:20px 0 0;display:grid;grid-template-columns:38% 1fr;gap:16px;align-items:end}
+.bvn img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;border-radius:16px;display:block}
+.bvn figcaption{display:flex;flex-direction:column;gap:8px;padding-bottom:4px}
+.bvn figcaption b{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.05;color:#fff}
+.bvn figcaption span{font-size:16px;line-height:1.45;color:#E8EDF5}
+.bvn figcaption small{font-size:13px;font-weight:700;color:#F09680}
+.couv-g{display:block}
+@media(min-width:820px){.couv-g{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:40px;align-items:start}.couv-g .bvn{grid-template-columns:1fr;margin-top:34px}.couv-g .bvn figcaption b{font-size:30px}}
+
 .intro-audio{margin:16px 0 0}.intro-audio button{border:0;border-radius:999px;background:#fff;color:#092039;font-weight:800;font-size:15px;padding:10px 16px;cursor:pointer}.intro-audio span{display:block;margin-top:6px;font-size:13px;color:#C9D1DE}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261102b">
@@ -209,11 +219,13 @@ td b{white-space:nowrap}
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 
 <header class="couv" data-garde>
-  <div class="wrap">
+  <div class="wrap couv-g">
+    <figure class="bvn"><img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909"><figcaption><b>Bienvenue.</b><span>Vous avez fait le bon choix : passer de l’envie à un premier ordre maîtrisé. Je vous accompagne, marche par marche.</span><small>Élysée Johnson, fondateur d’EFA</small></figcaption></figure>
+    <div>
     <span class="surtitre">Être coaché · Atelier « Mon premier ordre »</span>
     <h1>Investir à la Bourse (BRVM), étape par étape</h1>
     <p class="chapeau">Vous entrez avec l'envie d'investir. Vous sortez avec un compte ouvert, un premier ordre passé et compris, et un plan écrit pour la suite. Le coach vous accompagne à chaque marche.</p>
-    <p class="intro-audio" hidden><button type="button" id="intro-audio">▶ Écouter Élysée Johnson · 1 min</button> <span>Vous pouvez couper la voix à tout moment et continuer seul.</span></p>
+    <p class="intro-audio" hidden><button type="button" id="intro-audio">▶ Écouter mon mot de bienvenue · 1 min</button> <span>Vous pouvez couper la voix à tout moment et continuer seul.</span></p>
     <div class="arc">
       <div><span class="etiquette">Point de départ</span><p>« Je veux investir à la Bourse (BRVM), mais je ne sais pas par où commencer. »</p></div>
       <div><span class="etiquette">À l'arrivée</span><p>Premier ordre passé, vérifié, documenté. Un rythme d'investissement et des règles écrites.</p></div>
@@ -222,6 +234,7 @@ td b{white-space:nowrap}
       <div><b id="nbEtapes">59</b><span>étapes concrètes</span></div>
       <div><b>11</b><span>phases</span></div>
       <div><b>6 à 8</b><span>semaines</span></div>
+    </div>
     </div>
   </div>
 </header>
@@ -234,7 +247,7 @@ td b{white-space:nowrap}
 </div>
 
 <main>
-  <section class="intro wrap">
+  <section class="motcoach wrap">
     <span class="surtitre">Le mot du coach</span>
     <h2>On ne saute aucune marche</h2>
     <p>Ce parcours est volontairement long. Chaque étape se termine par une preuve : un chiffre écrit, un document reçu, une décision notée. Cochez-la seulement quand elle est faite pour de vrai. Les deux premières semaines, vous n'achetez rien : vous apprenez à lire le marché.</p>
