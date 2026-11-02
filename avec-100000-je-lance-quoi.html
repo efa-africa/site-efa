@@ -259,14 +259,14 @@ strong{color:var(--nuit)}
     <h2 id="calc-t">Combien pouvez-vous mettre&nbsp;?</h2>
     <div class="calc">
       <label class="al-m"><span>Mon capital de départ (F)</span><input id="al-m" inputmode="numeric" value="100 000" autocomplete="off"></label>
-      <div class="al-rap" role="group" aria-label="Montants rapides"><button type="button" data-v="50000">50 000</button><button type="button" data-v="100000">100 000</button><button type="button" data-v="300000">300 000</button><button type="button" data-v="1000000">1 million</button></div>
-      <p class="verdict" id="al-v" aria-live="polite"></p>
+      <div class="al-rap" data-garde role="group" aria-label="Montants rapides"><button type="button" data-v="50000">50 000</button><button type="button" data-v="100000">100 000</button><button type="button" data-v="300000">300 000</button><button type="button" data-v="1000000">1 million</button></div>
+      <p class="verdict" id="al-v" data-garde aria-live="polite"></p>
     </div>
   </section>
   <section id="activites" aria-labelledby="act-t">
     <p class="bk">Ce que vous pouvez lancer</p>
     <h2 id="act-t">Les activités à votre portée</h2>
-    <div id="al-liste" class="al-liste"></div>
+    <div id="al-liste" class="al-liste" data-garde></div>
     <p class="note">Marge par mois&nbsp;: ce qui reste après les achats et les charges courantes, avant de vous payer. Ce sont des exemples prudents, observés en Côte d’Ivoire&nbsp;: les prix changent selon la ville et le quartier. Vérifiez sur place avant de verser un franc.</p>
   </section>
   <section id="approfondir" aria-labelledby="ap-t">
@@ -285,7 +285,8 @@ strong{color:var(--nuit)}
 .al-m input{width:100%;max-width:320px;font:inherit;font-size:24px;font-weight:800;padding:10px 14px;border:1px solid #CFC5B0;border-radius:10px;background:#fff;color:var(--nuit)}
 .al-rap{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
 .al-rap button{font:inherit;font-weight:800;border:0;border-radius:999px;padding:9px 14px;min-height:44px;background:#F5EFE2;color:#0B1220;cursor:pointer}
-.al-rap button[aria-pressed="true"]{background:#0B1220;color:#fff}
+html[data-clone] .al-rap button{background:#F5EFE2!important;color:#0B1220!important;border:0!important;box-shadow:none!important}html[data-clone] .al-rap button[aria-pressed="true"]{background:#0B1220!important;color:#fff!important}
+
 .al-liste{display:grid;gap:12px;grid-template-columns:1fr;margin-top:14px}
 @media(min-width:760px){.al-liste{grid-template-columns:1fr 1fr}}
 .al-c{background:#FFFDF8;border-radius:14px;padding:16px 18px}
