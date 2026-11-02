@@ -23,6 +23,10 @@ window.EFA_CONFIG = {
   // Champs du formulaire : EMAIL, EFA_PROFIL, EFA_SCORE, EFA_REPONSES, et EFA_DETAIL (bloc à ajouter sur ordinateur).
   BREVO_URL: "https://b46b1615.sibforms.com/serve/MUIFACVKrrzAejdFTf7fjSmbEWmeEpDLlvJv6fz5rNzzcpOjiGf1s2QIrACyH5qzal4L1gaT2UkJ0IuXg3-Pt0x2BV66Oh771_vK-04Dxoi4_p4nYnErjNXdJb5_T5taqweO2TL8Fdh7na8Gjz368F2mnWogvfcnrkqc2xUXMaUKl_Mx-EFCPOp8M-OWNyOL05--VBO8midcFSCv_w==",
 
+  // Codes des documents personnels (business plan, analyse complète) : formulaire Brevo qui reçoit EMAIL, EFA_CODE_BP, EFA_COMMANDE.
+  // Une automatisation Brevo envoie l'email « Votre code EFA » à chaque ajout dans la liste. Vide = pas d'email automatique.
+  BREVO_CODE_URL: "",
+
   // Vitrine des SGI : adresse du Worker « vitrine » (comptage anonyme des vues et des clics). Vide = rien n'est envoyé.
   VITRINE_URL: "https://vitrine.elysees-johnson.workers.dev",
   // Cloudflare Turnstile (anti-robot du bouton « Contacter la SGI »). Vide = pas de contrôle.
