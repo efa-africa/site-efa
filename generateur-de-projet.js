@@ -21,7 +21,9 @@ function F(n){return Math.round(n).toLocaleString("fr-FR").replace(/[\s ]/g,"�
 function FC(n){if(n>=1e6){return (Math.round(n/1e5)/10).toString().replace(".",",")+" M F";}return F(n);}
 function idee(id){for(var i=0;i<I.length;i++)if(I[i][0]===id)return I[i];return null;}
 function sec(x){return SECTEURS[x[2]]||["Activité","benefice-entreprise.webp",1.1];}
-function img(x){return sec(x)[1]?"clone/assets/"+sec(x)[1]:"";}
+/* Images propres à une idée (sinon l'image du secteur) */
+var IMG_IDEE={"escargots": "gen-escargots.webp", "poulets": "gen-poulets.webp", "pondeuses": "gen-pondeuses.webp", "lapins": "gen-lapins.webp", "cailles": "gen-cailles.webp", "poissons": "gen-poissons.webp", "porcs": "gen-porcs.webp", "embouche": "gen-embouche.webp", "insectes": "gen-insectes.webp", "maraichage": "gen-maraichage.webp", "champignons": "gen-champignons.webp", "micropousses": "gen-micropousses.webp", "pepiniere": "gen-pepiniere.webp", "serre": "gen-serre.webp", "plantation": "gen-plantation.webp", "moto": "gen-moto.webp", "tricycle": "gen-tricycle.webp", "location-materiel": "gen-location-materiel.webp", "vtc": "gen-vtc.webp"};
+function img(x){var f=IMG_IDEE[x[0]]||sec(x)[1];return f?"clone/assets/"+f:"";}
 function visuel(x,cls){var u=img(x);return u?'<img src="'+u+'" alt="" loading="lazy">':'<div class="sans-photo" aria-hidden="true"><span>'+esc(sec(x)[0])+'</span></div>';}
 function varier(L){var out=[],reste=L.slice();while(reste.length){var vus={},lot=[];for(var i=0;i<reste.length&&lot.length<3;i++){if(!vus[reste[i][2]]){vus[reste[i][2]]=1;lot.push(reste[i]);}}if(lot.length<3)for(var j=0;j<reste.length&&lot.length<3;j++){if(lot.indexOf(reste[j])<0)lot.push(reste[j]);}lot.forEach(function(x){out.push(x);reste.splice(reste.indexOf(x),1);});}return out;}
 function B(){return etat.libre?Infinity:etat.budget;}
