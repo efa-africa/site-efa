@@ -246,12 +246,14 @@ strong{color:var(--nuit)}
 <main class="tf">
 <style>
 .tf{font-family:"Source Sans 3",system-ui,sans-serif;color:#2A3142;background:#F5EFE2}
-.tf-entree{position:relative;height:calc(100svh - 68px);min-height:520px;max-height:900px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;background:#041226}
-.tf-entree img{max-width:none!important;max-height:none!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
-.tf-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,38,.86) 0%,rgba(4,18,38,.5) 42%,rgba(4,18,38,0) 70%),linear-gradient(0deg,rgba(4,18,38,.7) 0%,rgba(4,18,38,0) 45%)}
-.tf-txt{position:relative;width:min(1200px,calc(100% - 32px));margin:0 auto;padding-bottom:clamp(44px,9vh,100px)}
+.tf-entree{position:relative;height:calc(100svh - 68px);min-height:520px;max-height:900px;overflow:hidden;color:#fff;display:flex;align-items:center;background:#041226}
+.tf-entree picture{position:absolute;inset:0}.tf-entree img{max-width:none!important;max-height:none!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center}
+.tf-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,22,48,.55) 0%,rgba(11,22,48,.2) 38%,rgba(11,22,48,0) 55%)}
+.tf-txt{position:relative;width:min(1200px,calc(100% - 32px));margin:0 auto;padding:40px 0}
+.tf-txt>*{max-width:min(470px,37vw)}
+@media(min-width:760px){.tf-entree{align-items:flex-start}.tf-txt{width:auto;margin:0 0 0 max(24px,4vw);padding-top:clamp(40px,9vh,100px)}.tf-txt>*{max-width:min(470px,34vw)!important}.tf-entree p.s{max-width:min(470px,34vw)}}
 .tf-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680;margin:0 0 14px}
-.tf-entree h1{font:700 clamp(34px,6.9vw,82px)/1.08 "Libre Baskerville",Georgia,serif;margin:0;max-width:14ch;text-wrap:balance;color:#fff}
+.tf-entree h1{font:700 clamp(34px,5vw,66px)/1.08 "Libre Baskerville",Georgia,serif;margin:0;max-width:14ch;text-wrap:balance;color:#fff}
 .tf-entree h1 em{font-style:normal;color:#6DB8F2}
 .tf-entree p.s{font-size:clamp(17px,2vw,21px);line-height:1.45;color:#E8EDF5;max-width:44ch;margin:16px 0 26px}
 .tf-btn{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:12px 22px;border-radius:8px;background:#DA3C1B;color:#fff;font-weight:800;font-size:16px;text-decoration:none}
@@ -286,7 +288,7 @@ strong{color:var(--nuit)}
 .tf-pts i.on{width:22px;background:#DA3C1B}
 .tf-autre{font:inherit;font-weight:800;font-size:16px;background:#0B1220;color:#fff;border:0;border-radius:8px;min-height:46px;padding:12px 20px;cursor:pointer;white-space:nowrap}
 .tf-autre:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
-@media(max-width:759px){.tf-entree{height:auto!important;min-height:0!important;max-height:none!important;padding-top:52vw}.tf-txt{padding-bottom:36px!important}.tf-entree p.s{margin:12px 0 20px}.tf-pts span{display:none}}
+@media(max-width:759px){.tf-entree{height:auto!important;min-height:0!important;max-height:none!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;background:#102C50!important}.tf-entree picture{position:static!important;order:2;display:block}.tf-entree img{position:relative!important;z-index:0;height:auto!important;display:block;margin-top:-28vw}.tf-voile{display:none}.tf-txt{order:1;z-index:1;padding:30px 0 6px!important}.tf-txt>*{max-width:none}.tf-entree p.s{margin:12px 0 20px}.tf-pts span{display:none}}
 .tf-ac{background:#0B1220;color:#E8EDF5}
 .tf-ac .tf-sec .k{color:#F09680}.tf-ac .tf-sec h2{color:#fff}.tf-ac .tf-sec h2 em{color:#6DB8F2}.tf-ac .tf-sec p.s{color:#C9D1DE}
 .tf-roles{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px;grid-template-columns:1fr}
@@ -302,8 +304,7 @@ strong{color:var(--nuit)}
 </style>
 
 <section class="tf-entree" data-photo>
-  <!-- Affiche d'immersion : remplacer clone/assets/investir-entree.webp -->
-  <img src="clone/assets/investir-entree.webp" alt="Une galerie présente les façons d’investir : le terrain, la Bourse, l’épargne et la famille" width="1254" height="1254" fetchpriority="high">
+  <picture><source media="(max-width:759px)" srcset="clone/assets/investir-entree-portrait.webp"><img src="clone/assets/investir-entree-paysage.webp" alt="Une femme découvre une salle où sont posés une maquette de maison sur un plan, un carnet d’épargne, un dossier d’assurance et un rapport de Bourse, face à la lagune" width="1491" height="1055" fetchpriority="high"></picture>
   <div class="tf-voile"></div>
   <div class="tf-txt">
     <p class="tf-k">Se lancer · Investir</p>
