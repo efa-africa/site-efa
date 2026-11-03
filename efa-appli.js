@@ -37,6 +37,7 @@
     ".efa-appli__b:hover{background:#fff}" +
     ".efa-appli__a{margin:10px 0 0;font-size:13px;color:#8A93A6}" +
     ".efa-appli-pied{font-weight:700}" +
+    ".efa-appli .efa-appli__c{background:#0B1220!important;color:#F1F7FA!important;border:0!important}.efa-appli .efa-appli__img{box-shadow:none!important;border-radius:50%;object-fit:contain;background:transparent}.efa-appli .efa-appli__k{color:#6DB8F2!important}.efa-appli .efa-appli__t{color:#fff!important}.efa-appli .efa-appli__p{color:#C9D1DE!important}.efa-appli .efa-appli__a{color:#9FB4CC!important}.efa-appli .efa-appli__b{background:#fff!important;color:#0B1220!important}" +
     "@media (max-width:560px){.efa-appli__c{flex-direction:column;align-items:flex-start;padding:20px}.efa-appli__img{width:72px;height:72px}}";
 
   function ajouter() {
@@ -95,10 +96,10 @@
     // 2. Carte sur les pages d'outils et de diagnostic
     if (PAGES_CARTE.indexOf(page) >= 0 && !document.querySelector(".efa-appli")) {
       var s = document.createElement("section");
-      s.className = "efa-appli";
+      s.className = "efa-appli"; s.setAttribute("data-garde", "");
       s.setAttribute("aria-label", "L'appli EFA");
       s.innerHTML = '<div class="efa-appli__c">' +
-        '<img class="efa-appli__img" src="' + APP + 'koffi.jpg" alt="Koffi, personnage EFA" width="88" height="88" loading="lazy">' +
+        '<img class="efa-appli__img" src="/logo-efa-96.png" alt="Logo EFA" width="88" height="88" loading="lazy">' +
         '<div><p class="efa-appli__k">L’appli EFA Compagnon</p>' +
         '<h2 class="efa-appli__t">' + TEXTE.titre + '</h2>' +
         '<p class="efa-appli__p">' + TEXTE.corps + '</p>' +
