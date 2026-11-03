@@ -133,7 +133,7 @@ html[data-clone] .vt .vt-logo-v{background:#0b1220!important;color:#fff!importan
 #sgi-liste{scroll-margin-top:80px}
 @media(max-width:720px){.sg-entree{height:calc(100svh - 68px)}.sg-entree-voile{background:linear-gradient(0deg,rgba(4,18,38,.92) 0%,rgba(4,18,38,.55) 45%,rgba(4,18,38,0) 75%)}.sg-entree-txt{width:calc(100% - 32px)}}
 @media(min-width:721px){
-  .sg-entree::before{content:"";position:absolute;inset:-40px;background:url(assets/sgi-entree.webp) center 50%/cover no-repeat;filter:blur(28px) saturate(1.1);transform:scale(1.1)}
+  .sg-entree::before{content:"";position:absolute;inset:-40px;background:url(assets/sgi-entree-2.webp) center 50%/cover no-repeat;filter:blur(28px) saturate(1.1);transform:scale(1.1)}
   .sg-entree .sg-entree-img{left:auto;right:0;width:58%;object-position:center 45%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%);mask-image:linear-gradient(90deg,transparent 0%,#000 22%)}
   .sg-entree-voile{background:linear-gradient(90deg,rgba(4,18,38,.78) 0%,rgba(4,18,38,.5) 40%,rgba(4,18,38,0) 62%),linear-gradient(0deg,rgba(4,18,38,.55) 0%,rgba(4,18,38,0) 40%)}
   .sg-entree-txt{align-self:center;padding-bottom:0}
