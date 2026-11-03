@@ -1,0 +1,24 @@
+{
+  "semaine": "2026-11-03",
+  "label": "Semaine 0 · du 3 au 9 novembre",
+  "titre": "Faire connaissance et choisir son terrain",
+  "objectif": "Avant de partager EFA, on se met d’accord sur ce que chacun connaît, le temps qu’il peut donner et les personnes autour de lui qui ont une vraie question d’argent.",
+  "missions": [
+    {
+      "t": "Un échange de 20 minutes avec Élysée",
+      "d": "Vos motivations, les sujets que vous connaissez bien, le temps que vous pouvez donner chaque semaine. Proposez deux créneaux dans le groupe."
+    },
+    {
+      "t": "Utiliser EFA pour une question à vous",
+      "d": "Choisissez une vraie question d’argent qui vous concerne et essayez l’outil qui y répond. Notez en une phrase ce qu’il vous a apporté.",
+      "lien": "generateur-de-projet.html",
+      "lien_titre": "Par exemple, le générateur de projet"
+    },
+    {
+      "t": "Penser à deux personnes",
+      "d": "Deux personnes de votre entourage qui ont une question d’argent en ce moment. Pas besoin de les contacter cette semaine : gardez-les en tête pour la semaine 1."
+    }
+  ],
+  "mot": "Vous avez découvert EFA, vous l’avez adoptée, et vous en parlez déjà mieux que moi. Cette semaine, on prend le temps de se connaître. Le reste viendra.",
+  "point": "Le premier point du cercle est fixé cette semaine dans le groupe WhatsApp."
+}
