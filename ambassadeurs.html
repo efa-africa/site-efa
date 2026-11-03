@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html data-clone data-clone-plein lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B1220">
+<title>Ambassadeurs EFA · EFA</title>
+<meta name="description" content="Le parcours des ambassadeurs EFA : ils ont découvert, adopté, et aujourd’hui ils portent EFA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=20261102z">
+<style>
+.am{--nuit:#071d38;--corail:#DA3C1B;--bleu:#1B71B2;--teal:#147f9b;--clair:#EEF5FC;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:var(--ink);font-size:17px;line-height:1.55;background:#fff}
+.am *{box-sizing:border-box}
+.am-w{max-width:1120px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+.am h1,.am h2,.am h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;line-height:1.12;text-wrap:balance;margin:0;color:var(--nuit)}
+.am-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail);margin:0 0 12px}
+.am-sec{padding-block:clamp(48px,7vw,88px)}
+.am-sec h2{font-size:clamp(28px,3.8vw,44px)}
+.am-sec h2 em,.am-hero h1 em{font-style:normal;color:var(--teal)}
+.am-lead{max-width:62ch;color:var(--ink2);margin:14px 0 0;font-size:18px}
+/* Héros */
+.am-hero{background:var(--nuit);color:#E8EDF5;padding-block:clamp(56px,9vw,110px)}
+.am-hero .am-k{color:#F09680}
+.am-hero h1{color:#fff;font-size:clamp(36px,6vw,72px);max-width:18ch}
+.am-hero h1 em{color:#6DB8F2}
+.am-hero p{max-width:58ch;color:#C9D1DE;font-size:clamp(17px,2vw,20px);margin:18px 0 0}
+.am-trio{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding:0;list-style:none}
+.am-trio li{background:#111B2F;color:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15px}
+.am-trio li b{color:#F09680;margin-right:6px}
+/* Les cinq */
+.am-cinq{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:14px;margin-top:30px;padding:0;list-style:none}
+.am-p{background:var(--clair);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.am-p.moi{background:var(--nuit);color:#fff}
+.am-ini{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--nuit);color:#fff;font:700 22px "Libre Baskerville",Georgia,serif}
+.am-p.moi .am-ini{background:var(--corail)}
+.am-p h3{font-size:22px}
+.am-p.moi h3{color:#fff}
+.am-p small{color:var(--ink3);font-size:14px;line-height:1.35}
+.am-p.moi small{color:#C9D1DE}
+.am-badge{align-self:flex-start;background:var(--corail);color:#fff;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px}
+.am-moi-b{margin-top:auto;align-self:flex-start;background:none;border:0;padding:4px 0;font:700 15px "Source Sans 3",sans-serif;color:var(--bleu);text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px;cursor:pointer}
+.am-p.moi .am-moi-b{color:#6DB8F2}
+/* Parcours */
+.am-fond{background:var(--clair)}
+.am-etapes{list-style:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:e}
+.am-e{background:#fff;border-radius:18px;padding:22px 20px 24px;min-width:0;position:relative}
+.am-e .n{font:700 40px/1 "Libre Baskerville",Georgia,serif;color:var(--teal)}
+.am-e h3{font-size:21px;margin-top:10px}
+.am-e p{margin:8px 0 0;color:var(--ink2);font-size:16px}
+.am-e .etat{display:inline-block;margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:5px 11px;background:var(--clair);color:var(--nuit)}
+.am-e.fait .etat{background:#1F8A4C;color:#fff}
+.am-e.ici{background:var(--nuit)}
+.am-e.ici h3{color:#fff}.am-e.ici p{color:#C9D1DE}.am-e.ici .n{color:#6DB8F2}
+.am-e.ici .etat{background:var(--corail);color:#fff}
+/* Ce que vous recevez */
+.am-dons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
+.am-d{background:var(--clair);border-radius:18px;padding:22px 22px 24px;min-width:0}
+.am-d h3{font-size:20px}
+.am-d p{margin:8px 0 0;color:var(--ink2);font-size:16px}
+.am-d.plein{background:var(--corail);color:#fff}
+.am-d.plein h3{color:#fff}.am-d.plein p{color:#fff}
+.am-paliers{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.am-pal{border-radius:18px;padding:20px;background:var(--nuit);color:#fff;min-width:0}
+.am-pal b{display:block;font:700 clamp(30px,3.4vw,40px)/1 "Libre Baskerville",Georgia,serif;color:#6DB8F2}
+.am-pal span{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C9D1DE;margin-top:6px}
+.am-pal p{margin:10px 0 0;font-size:16px;color:#E8EDF5}
+/* Kit */
+.am-lien{margin-top:26px;background:var(--nuit);color:#fff;border-radius:18px;padding:20px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.am-lien code{flex:1 1 240px;min-width:0;overflow-wrap:anywhere;font:700 18px "Source Sans 3",sans-serif;color:#6DB8F2}
+.am-lien small{flex-basis:100%;color:#C9D1DE;font-size:14px}
+.am-btn{font:800 16px/1.2 "Source Sans 3",sans-serif;min-height:46px;padding:12px 22px;border-radius:8px;border:0;background:var(--corail);color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.am-btn.cl{background:#fff;color:var(--nuit)}
+.am-msgs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:22px}
+.am-m{background:var(--clair);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.am-m .t{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.am-m p{margin:0;font-size:16px;white-space:pre-line;overflow-wrap:anywhere}
+.am-m .act{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+.am-m .act .am-btn{min-height:42px;padding:10px 16px;font-size:15px}
+.am-note{margin:22px 0 0;color:var(--ink3);font-size:14px;max-width:70ch}
+.am-ok{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--nuit);color:#fff;border-radius:999px;padding:10px 18px;font-weight:700;font-size:15px;z-index:50}
+@media(max-width:900px){.am-etapes{grid-template-columns:repeat(2,minmax(0,1fr))}.am-msgs{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.am-etapes,.am-dons,.am-paliers{grid-template-columns:minmax(0,1fr)}.am-cinq{grid-template-columns:repeat(2,minmax(0,1fr))}.am-p{padding:18px 16px}.am-p h3{font-size:20px}.am-badge{font-size:10.5px;padding:4px 9px}}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261102z">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<main class="am" data-garde>
+  <section class="am-hero" data-garde>
+    <div class="am-w">
+      <p class="am-k">Ambassadeurs EFA · promotion fondatrice 2026</p>
+      <h1>Ils ont découvert EFA. <em>Aujourd’hui, ils la portent.</em></h1>
+      <p>Avant les campagnes et les annonces, il y a eu des personnes qui ont essayé, adopté, puis parlé d’EFA autour d’elles. Cette page les reconnaît et leur ouvre un parcours.</p>
+      <ul class="am-trio"><li><b>1</b>Découvrir</li><li><b>2</b>Adopter</li><li><b>3</b>Partager</li><li><b>4</b>Porter</li></ul>
+    </div>
+  </section>
+
+  <section class="am-sec" id="les-cinq">
+    <div class="am-w">
+      <p class="am-k">La promotion fondatrice</p>
+      <h2>Les cinq premiers <em>ambassadeurs.</em></h2>
+      <p class="am-lead">Ils sont les premiers à recevoir le titre. Choisissez votre nom : la page se règle sur vous, avec votre lien et vos messages prêts à envoyer.</p>
+      <ul class="am-cinq" id="am-cinq"></ul>
+    </div>
+  </section>
+
+  <section class="am-sec am-fond" id="parcours">
+    <div class="am-w">
+      <p class="am-k">Le parcours</p>
+      <h2>Quatre étapes, <em>vous en avez franchi deux.</em></h2>
+      <ol class="am-etapes">
+        <li class="am-e fait"><span class="n">1</span><h3>Découvrir</h3><p>Vous avez essayé EFA : un test, un atelier, un outil, une lecture.</p><span class="etat">Fait</span></li>
+        <li class="am-e fait"><span class="n">2</span><h3>Adopter</h3><p>EFA fait partie de vos habitudes, et vous en parlez avec vos propres mots.</p><span class="etat">Fait</span></li>
+        <li class="am-e ici"><span class="n">3</span><h3>Partager</h3><p>Vous envoyez votre lien personnel. Chaque personne qui s’inscrit par lui vous est comptée.</p><span class="etat">Vous êtes ici</span></li>
+        <li class="am-e"><span class="n">4</span><h3>Porter</h3><p>Vous représentez EFA : un live, un atelier, une rencontre dans votre ville ou votre communauté.</p><span class="etat">Prochaine étape</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="am-sec" id="ce-que-vous-recevez">
+    <div class="am-w">
+      <p class="am-k">Ce que vous recevez</p>
+      <h2>Être reconnu, <em>pas seulement remercié.</em></h2>
+      <div class="am-dons">
+        <div class="am-d plein"><h3>Le titre d’Ambassadeur EFA</h3><p>À afficher sur LinkedIn, WhatsApp ou votre CV. Votre nom figure sur cette page, dans la promotion fondatrice.</p></div>
+        <div class="am-d"><h3>Un crédit par inscription</h3><p>Chaque personne qui s’inscrit par votre lien vous rapporte 1 crédit EFA, à utiliser dans les ateliers.</p></div>
+        <div class="am-d"><h3>Le cercle des ambassadeurs</h3><p>Un groupe avec Élysée Johnson : les nouveautés avant tout le monde, et votre avis demandé avant chaque lancement.</p></div>
+        <div class="am-d"><h3>À venir : une part sur les rendez-vous</h3><p>Une part de chaque rendez-vous avec Élysée réservé par votre lien. Le montant sera annoncé à l’ouverture des réservations.</p></div>
+      </div>
+      <div class="am-paliers">
+        <div class="am-pal"><b>5</b><span>inscriptions par votre lien</span><p>Votre témoignage mis en avant sur l’accueil d’efa.africa.</p></div>
+        <div class="am-pal"><b>10</b><span>inscriptions par votre lien</span><p>Un rendez-vous de 30 minutes avec Élysée Johnson, offert.</p></div>
+        <div class="am-pal"><b>25</b><span>inscriptions par votre lien</span><p>L’étape « Porter » : co-animer un live ou un atelier EFA.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="am-sec am-fond" id="kit">
+    <div class="am-w">
+      <p class="am-k">Votre kit</p>
+      <h2>Votre lien, <em>et trois messages prêts.</em></h2>
+      <div class="am-lien"><code id="am-url">efa.africa/?ref=votre-prenom</code><button type="button" class="am-btn" id="am-copier">Copier mon lien</button><small id="am-aide">Choisissez d’abord votre nom plus haut : le lien et les messages se règlent sur vous.</small></div>
+      <div class="am-msgs" id="am-msgs"></div>
+      <p class="am-note">Votre lien fonctionne sur toutes les pages : ajoutez simplement ?ref=votre-prenom à la fin d’une adresse efa.africa. La personne reste rattachée à vous pendant 60 jours, et chaque mois Élysée vous transmet votre décompte.</p>
+    </div>
+  </section>
+</main>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+<script>
+(function(){
+  var A=[["ibrahima","Ibrahima"],["audrey","Audrey"],["michel","Michel"],["guillaume","Guillaume"],["stephanie","Stéphanie"]];
+  var K="efa_amb_moi",moi=null,$=function(i){return document.getElementById(i);};
+  try{var q=new URLSearchParams(location.search).get("a");moi=q||localStorage.getItem(K);}catch(e){}
+  if(!A.some(function(a){return a[0]===moi;}))moi=null;
+  function lien(){return "https://efa.africa/?ref="+(moi||"votre-prenom");}
+  function court(){return lien().replace("https://","");}
+  var MSG=[
+    ["WhatsApp · à un proche","J’utilise EFA pour mieux gérer mon argent : budget, tontine, épargne, et même un générateur d’idées selon son budget. C’est gratuit pour commencer, fait pour nos réalités. Essaie : "],
+    ["Statut ou groupe","Comment faire travailler 100 000 F, 1 million ou 5 millions ? Sur EFA, on glisse son budget et l’outil propose des idées de projets, avec le premier pas à faire cette semaine. "],
+    ["Pour un collègue","Tu me parlais de placements et de la Bourse (BRVM). EFA explique tout simplement, avec des ateliers courts et un test pour savoir où tu en es. Je te conseille de commencer ici : "]
+  ];
+  function ok(t){var b=document.createElement("div");b.className="am-ok";b.textContent=t;document.body.appendChild(b);setTimeout(function(){b.remove();},1800);}
+  function copier(t){function rep(){var x=document.createElement("textarea");x.value=t;document.body.appendChild(x);x.select();try{document.execCommand("copy");}catch(e){}x.remove();ok("Copié");}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){ok("Copié");},rep);else rep();}
+  function rendre(){
+    $("am-cinq").innerHTML=A.map(function(a){var m=a[0]===moi;return '<li class="am-p'+(m?' moi':'')+'"><span class="am-ini" aria-hidden="true">'+a[1].charAt(0)+'</span><span class="am-badge">Ambassadeur</span><h3>'+a[1]+'</h3><small>Promotion fondatrice · novembre 2026</small><button type="button" class="am-moi-b" data-a="'+a[0]+'">'+(m?'C’est vous ✓':'C’est moi')+'</button></li>';}).join("");
+    $("am-url").textContent=court();
+    $("am-aide").hidden=!!moi;
+    $("am-msgs").innerHTML=MSG.map(function(m,i){var t=m[1]+court();return '<div class="am-m"><span class="t">'+m[0]+'</span><p>'+t.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</p><div class="act"><a class="am-btn" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(m[1]+lien())+'">Envoyer sur WhatsApp</a><button type="button" class="am-btn cl" data-c="'+i+'">Copier</button></div></div>';}).join("");
+  }
+  document.addEventListener("click",function(e){
+    var b=e.target.closest("[data-a]");if(b){moi=b.dataset.a;try{localStorage.setItem(K,moi);}catch(x){}rendre();try{$("kit").scrollIntoView({behavior:"smooth",block:"start"});}catch(x){}return;}
+    var c=e.target.closest("[data-c]");if(c){copier(MSG[+c.dataset.c][1]+lien());return;}
+    if(e.target.closest("#am-copier"))copier(lien());
+  });
+  rendre();
+})();
+</script>
+<script src="clone/habillage.js?v=20261103b" defer></script>
+<script src="/clone/ambassadeur.js?v=20261103a" defer></script>
+</body>
+</html>
