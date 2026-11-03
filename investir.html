@@ -246,12 +246,12 @@ strong{color:var(--nuit)}
 <main class="tf">
 <style>
 .tf{font-family:"Source Sans 3",system-ui,sans-serif;color:#2A3142;background:#F5EFE2}
-.tf-entree{position:relative;height:calc(100svh - 68px);min-height:560px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;background:#041226}
-.tf-entree picture,.tf-entree img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.tf-entree{position:relative;height:calc(100svh - 68px);min-height:520px;max-height:900px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;background:#041226}
+.tf-entree img{max-width:none!important;max-height:none!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
 .tf-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,38,.86) 0%,rgba(4,18,38,.5) 42%,rgba(4,18,38,0) 70%),linear-gradient(0deg,rgba(4,18,38,.7) 0%,rgba(4,18,38,0) 45%)}
 .tf-txt{position:relative;width:min(1200px,calc(100% - 32px));margin:0 auto;padding-bottom:clamp(44px,9vh,100px)}
 .tf-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680;margin:0 0 14px}
-.tf-entree h1{font:700 clamp(40px,6.9vw,82px)/1.08 "Libre Baskerville",Georgia,serif;margin:0;max-width:14ch;text-wrap:balance;color:#fff}
+.tf-entree h1{font:700 clamp(34px,6.9vw,82px)/1.08 "Libre Baskerville",Georgia,serif;margin:0;max-width:14ch;text-wrap:balance;color:#fff}
 .tf-entree h1 em{font-style:normal;color:#6DB8F2}
 .tf-entree p.s{font-size:clamp(17px,2vw,21px);line-height:1.45;color:#E8EDF5;max-width:44ch;margin:16px 0 26px}
 .tf-btn{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:12px 22px;border-radius:8px;background:#DA3C1B;color:#fff;font-weight:800;font-size:16px;text-decoration:none}
@@ -260,20 +260,33 @@ strong{color:var(--nuit)}
 .tf-sec h2{font:700 clamp(28px,3.8vw,44px)/1.12 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:10px 0 8px;text-wrap:balance}
 .tf-sec h2 em{font-style:normal;color:#1B71B2}
 .tf-sec p.s{font-size:18px;color:#4E5566;margin:0 0 26px;max-width:58ch}
-.tf-g{display:grid;gap:18px;grid-template-columns:1fr}
-@media(min-width:720px){.tf-g{grid-template-columns:1fr 1fr}}
-.tf-p{display:flex;flex-direction:column;background:#FFFDF8;border-radius:18px;overflow:hidden;text-decoration:none;color:#2A3142;transition:transform .2s,box-shadow .2s}
-.tf-p:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(11,18,32,.10)}
+.tf-g{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:760px){.tf-g{grid-template-columns:1fr 1fr;gap:18px}}
+.tf-p{position:relative;display:grid;grid-template-columns:104px 1fr;align-items:center;gap:14px;background:#FFFDF8;border-radius:16px;padding:10px 14px 10px 10px;text-decoration:none;color:#2A3142;transition:transform .2s,box-shadow .2s}
+.tf-p:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(11,18,32,.10)}
 .tf-p:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
-.tf-p img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.tf-p .t{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
-.tf-p small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1B71B2}
-.tf-p b{font:700 clamp(21px,2vw,26px)/1.18 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:10px 0 8px}
-.tf-p span{font-size:16.5px;line-height:1.5;color:#4E5566;flex:1}
-.tf-p i{font-style:normal;font-weight:800;color:#0B1220;margin-top:14px}
+.tf-p .im{display:block;width:104px;height:104px;border-radius:12px;overflow:hidden;background:#0B1220}
+.tf-p .im img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;aspect-ratio:auto!important;object-fit:cover!important;margin:0!important;border-radius:0!important}
+.tf-p .t{display:flex;flex-direction:column;min-width:0;padding-right:34px}
+.tf-p small{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1B71B2}
+.tf-p b{font:700 19px/1.2 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:5px 0 4px;text-wrap:balance}
+.tf-p .d{font-size:15px;line-height:1.4;color:#4E5566}
+.tf-p .go{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:999px;background:#DA3C1B;color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;font-style:normal}
+@media(min-width:760px){
+.tf-p{grid-template-columns:1fr;padding:0;overflow:hidden;align-items:stretch;gap:0}
+.tf-p .im{width:100%;height:240px;border-radius:0}
+.tf-p .t{padding:20px 70px 22px 22px}
+.tf-p b{font-size:24px}
+.tf-p .d{font-size:16.5px}
+.tf-p .go{top:auto;bottom:22px;transform:none;width:40px;height:40px;font-size:18px}}
 .tf-it[hidden]{display:none!important}
-.tf-autre{margin-top:18px;font:inherit;font-weight:800;font-size:16px;background:transparent;color:#0B1220;border:2px dashed #C9BFA9;border-radius:12px;padding:14px 22px;cursor:pointer}
+.tf-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}
+.tf-pts{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:700;color:#5F6676}
+.tf-pts i{width:8px;height:8px;border-radius:999px;background:#D6CCB6}
+.tf-pts i.on{width:22px;background:#DA3C1B}
+.tf-autre{font:inherit;font-weight:800;font-size:16px;background:#0B1220;color:#fff;border:0;border-radius:8px;min-height:46px;padding:12px 20px;cursor:pointer;white-space:nowrap}
 .tf-autre:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
+@media(max-width:759px){.tf-entree{height:auto!important;min-height:0!important;max-height:none!important;padding-top:52vw}.tf-txt{padding-bottom:36px!important}.tf-entree p.s{margin:12px 0 20px}.tf-pts span{display:none}}
 .tf-ac{background:#0B1220;color:#E8EDF5}
 .tf-ac .tf-sec .k{color:#F09680}.tf-ac .tf-sec h2{color:#fff}.tf-ac .tf-sec h2 em{color:#6DB8F2}.tf-ac .tf-sec p.s{color:#C9D1DE}
 .tf-roles{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px;grid-template-columns:1fr}
@@ -303,16 +316,16 @@ strong{color:var(--nuit)}
 <section class="tf-sec" id="portes" aria-labelledby="portes-t">
   <p class="k">Choisir sa porte</p>
   <h2 id="portes-t">Par où voulez-vous <em>entrer&nbsp;?</em></h2>
-  <p class="s">Deux portes à la fois. Si aucune ne vous parle, voyez les deux suivantes.</p>
+  <p class="s">Deux portes à la fois. Touchez celle qui vous parle.</p>
   <div class="tf-g" id="tf-liste">
-    <a class="tf-p tf-it" data-p="0" href="investir-bourse.html"><img src="clone/assets/accueil-lancer-brvm-2.webp" alt="" loading="lazy" width="1672" height="941"><span class="t"><small>La Bourse (BRVM)</small><b>Acheter des actions et des obligations</b><span>Qui fait quoi sur le marché, choisir sa SGI, passer son premier ordre et le comprendre.</span><i>Entrer par la Bourse →</i></span></a>
-    <a class="tf-p tf-it" data-p="0" href="investir-terrain-immobilier.html"><img src="clone/assets/univers-terrain.webp" alt="" loading="lazy" width="1672" height="941"><span class="t"><small>La pierre</small><b>Terrain et immobilier</b><span>Acheter un terrain sans se faire avoir, construire, louer : les papiers à vérifier à chaque étape.</span><i>Entrer par la pierre →</i></span></a>
-    <a class="tf-p tf-it" data-p="1" href="investir-assurance-epargne.html" hidden><img src="clone/assets/univers-epargne.webp" alt="" loading="lazy" width="1672" height="941"><span class="t"><small>Épargne et assurance</small><b>Épargne et assurance-vie</b><span>Une réserve qui tient, une assurance-vie qui protège la famille : comment elles marchent, ce qu’elles coûtent.</span><i>Entrer par l’épargne →</i></span></a>
-    <a class="tf-p tf-it" data-p="1" href="opcvm-fcpe.html" hidden><img src="clone/assets/atelier-placements.webp" alt="" loading="lazy" width="1448" height="1086"><span class="t"><small>Les placements</small><b>DAT, OPCVM, FCPE, obligations</b><span>Les placements de la zone comparés : rendement, risque, disponibilité de votre argent.</span><i>Entrer par les placements →</i></span></a>
-    <a class="tf-p tf-it" data-p="2" href="club-investissement.html" hidden><img src="clone/assets/atelier-club-investissement-2.webp" alt="" loading="lazy" width="1448" height="1086"><span class="t"><small>À plusieurs</small><b>Tontine et club d’investissement</b><span>Faire travailler l’argent du groupe : des règles écrites, une réserve commune, un premier placement.</span><i>Investir à plusieurs →</i></span></a>
-    <a class="tf-p tf-it" data-p="2" href="investir-gagner-plus.html" hidden><img src="clone/assets/benefice-entreprise.webp" alt="" loading="lazy" width="1672" height="941"><span class="t"><small>Une activité</small><b>Investir dans une activité</b><span>Un commerce ou un projet à lancer : vérifier que ça rapporte avant d’engager un franc.</span><i>Entrer par une activité →</i></span></a>
+    <a class="tf-p tf-it" data-p="0" href="investir-bourse.html"><span class="im"><img src="clone/assets/accueil-lancer-brvm-2.webp" alt="" loading="lazy"></span><span class="t"><small>La Bourse (BRVM)</small><b>Actions et obligations</b><span class="d">Choisir sa SGI, passer son premier ordre.</span></span><i class="go" aria-hidden="true">→</i></a>
+    <a class="tf-p tf-it" data-p="0" href="investir-terrain-immobilier.html"><span class="im"><img src="clone/assets/univers-terrain.webp" alt="" loading="lazy"></span><span class="t"><small>La pierre</small><b>Terrain et immobilier</b><span class="d">Acheter, construire, louer sans se faire avoir.</span></span><i class="go" aria-hidden="true">→</i></a>
+    <a class="tf-p tf-it" data-p="1" href="investir-assurance-epargne.html" hidden><span class="im"><img src="clone/assets/univers-epargne.webp" alt="" loading="lazy"></span><span class="t"><small>Épargne et assurance</small><b>Épargne et assurance-vie</b><span class="d">Une réserve qui tient, la famille protégée.</span></span><i class="go" aria-hidden="true">→</i></a>
+    <a class="tf-p tf-it" data-p="1" href="opcvm-fcpe.html" hidden><span class="im"><img src="clone/assets/atelier-placements.webp" alt="" loading="lazy"></span><span class="t"><small>Les placements</small><b>DAT, OPCVM, FCPE</b><span class="d">Rendement, risque, disponibilité comparés.</span></span><i class="go" aria-hidden="true">→</i></a>
+    <a class="tf-p tf-it" data-p="2" href="club-investissement.html" hidden><span class="im"><img src="clone/assets/atelier-club-investissement-2.webp" alt="" loading="lazy"></span><span class="t"><small>À plusieurs</small><b>Tontine et club d’investissement</b><span class="d">Faire travailler l’argent du groupe.</span></span><i class="go" aria-hidden="true">→</i></a>
+    <a class="tf-p tf-it" data-p="2" href="investir-gagner-plus.html" hidden><span class="im"><img src="clone/assets/benefice-entreprise.webp" alt="" loading="lazy"></span><span class="t"><small>Une activité</small><b>Investir dans une activité</b><span class="d">Vérifier que ça rapporte avant de se lancer.</span></span><i class="go" aria-hidden="true">→</i></a>
   </div>
-  <button type="button" class="tf-autre" id="tf-autre" data-page="0">Voir deux autres portes →</button>
+  <div class="tf-nav"><span class="tf-pts" aria-live="polite"><i class="on"></i><i></i><i></i><span id="tf-n">Portes 1-2 sur 6</span></span><button type="button" class="tf-autre" id="tf-autre" data-page="0">Deux autres portes →</button></div>
 </section>
 
 <section class="tf-ac" id="qui-fait-quoi" aria-labelledby="ac-t" data-garde>
@@ -332,8 +345,8 @@ strong{color:var(--nuit)}
   </div>
 </section>
 <p class="tf-note">Éducation financière, pas conseil personnalisé. EFA ne vend aucun produit financier, et aucun acteur cité n’est présenté comme partenaire d’EFA.</p>
-<script>(function(){var b=document.getElementById("tf-autre");if(!b)return;var its=document.querySelectorAll("#tf-liste .tf-it"),np=3;
-b.addEventListener("click",function(){var pg=(+b.dataset.page+1)%np;b.dataset.page=pg;its.forEach(function(x){x.hidden=+x.dataset.p!==pg;});b.textContent=pg===np-1?"Revenir aux premières portes →":"Voir deux autres portes →";try{document.getElementById("portes").scrollIntoView({behavior:"smooth",block:"start"});}catch(e){}});})();</script>
+<script>(function(){var b=document.getElementById("tf-autre");if(!b)return;var its=document.querySelectorAll("#tf-liste .tf-it"),pts=document.querySelectorAll(".tf-pts i"),n=document.getElementById("tf-n"),np=3;
+b.addEventListener("click",function(){var pg=(+b.dataset.page+1)%np;b.dataset.page=pg;its.forEach(function(x){x.hidden=+x.dataset.p!==pg;});pts.forEach(function(x,k){x.className=k===pg?"on":"";});n.textContent="Portes "+(pg*2+1)+"-"+(pg*2+2)+" sur 6";b.textContent=pg===np-1?"Revenir au début →":"Deux autres portes →";var t=document.getElementById("portes").getBoundingClientRect().top;if(t<0||t>innerHeight*.5)try{document.getElementById("portes").scrollIntoView({behavior:"smooth",block:"start"});}catch(e){}});})();</script>
 </main>
 
 <footer data-v1-cache class="efa-foot">
