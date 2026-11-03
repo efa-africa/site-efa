@@ -64,6 +64,12 @@
 .rv-ck input{margin-top:3px;width:18px;height:18px}
 .rv-m{margin:10px 0 0;color:#fff;font-weight:700;min-height:1.2em}
 .rv-hp{position:absolute;left:-9999px}
+.rv-go{display:inline-flex;align-items:center;gap:12px;margin:22px 0 0;min-height:48px;padding:12px 24px;border:0;border-radius:8px;background:#DA3C1B;color:#fff;font:inherit;font-weight:800;font-size:17px;cursor:pointer}
+.rv-go[aria-expanded="true"]{display:none}
+.rv-go:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
+.rv-det{margin-top:26px}
+.rv-promo{display:inline-block;margin:0 0 12px;background:#DA3C1B;color:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.rv-px{display:flex;align-items:baseline;gap:12px;margin-top:8px}.rv-px s{color:#7A8293;font-size:18px}.rv-px strong{font-size:26px;font-weight:800;color:#DA3C1B}
 .rv-org{margin:18px 0 0;font-size:15px;color:#4E5566}.rv-org a{color:#1B71B2;font-weight:700}
 </style>
 <div class="rv-in">
@@ -71,8 +77,15 @@
 <h2 id="rv-t">Un rendez-vous <em>avec Élysée Johnson.</em></h2>
 <p class="rv-s">Votre situation, vos chiffres, une heure ou trente minutes en direct pour décider. Les créneaux sont limités chaque mois.</p>
 <div class="rv-g">
-<div class="rv-c"><small>Échange court</small><b>30 minutes</b><span class="p">75 000 F</span><p>Une question précise, une décision à prendre : on va droit au but.</p></div>
-<div class="rv-c"><small>Échange approfondi</small><b>1 heure</b><span class="p">125 000 F</span><p>Le tour complet de votre situation et un plan d’action concret.</p></div>
+<div class="rv-c"><small>Échange court</small><b>30 minutes</b><p>Une question précise, une décision à prendre : on va droit au but.</p></div>
+<div class="rv-c"><small>Échange approfondi</small><b>1 heure</b><p>Le tour complet de votre situation et un plan d’action concret.</p></div>
+</div>
+<button type="button" class="rv-go" id="rv-go" aria-expanded="false" aria-controls="rv-det">Réserver un rendez-vous <span aria-hidden="true">→</span></button>
+<div class="rv-det" id="rv-det" hidden>
+<p class="rv-promo">Prix d’ouverture</p>
+<div class="rv-g">
+<div class="rv-c"><small>30 minutes</small><span class="rv-px"><s>100 000 F</s><strong>75 000 F</strong></span></div>
+<div class="rv-c"><small>1 heure</small><span class="rv-px"><s>175 000 F</s><strong>125 000 F</strong></span></div>
 </div>
 <ul class="rv-l">
 <li>Paiement à la réservation.</li>
@@ -88,9 +101,11 @@
 <label class="rv-ck"><input type="checkbox" required> J’accepte qu’EFA m’écrive à l’ouverture des réservations.</label>
 <p class="rv-m" role="status" aria-live="polite"></p>
 </form>
+</div>
 <p class="rv-org">Pour une organisation : <a href="organisations.html">un échange sur devis →</a></p>
 </div>
-<script>(function(){var f=document.getElementById('rv-form');if(!f)return;var m=f.querySelector('.rv-m'),em=f.querySelector('input[type=email]'),ok=f.querySelector('input[type=checkbox]'),hp=f.querySelector('.rv-hpi'),s=f.querySelector('button');
+<script>(function(){var g=document.getElementById('rv-go'),d=document.getElementById('rv-det');if(g&&d)g.addEventListener('click',function(){d.hidden=false;g.setAttribute('aria-expanded','true');try{d.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}});})();
+(function(){var f=document.getElementById('rv-form');if(!f)return;var m=f.querySelector('.rv-m'),em=f.querySelector('input[type=email]'),ok=f.querySelector('input[type=checkbox]'),hp=f.querySelector('.rv-hpi'),s=f.querySelector('button');
 f.addEventListener('submit',function(e){e.preventDefault();var v=em.value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)){m.textContent='Saisissez une adresse email valide.';return;}if(!ok.checked){m.textContent='Cochez la case pour être prévenu.';return;}if(hp.value)return;s.disabled=true;m.textContent='Envoi en cours…';
 fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:'426191fb-4812-4de4-b602-5857464c5916',subject:'efa.africa · Rendez-vous avec Élysée · être prévenu',from_name:'Site efa.africa',email:v,replyto:v,offre:'rendez-vous-elysee',message:'Demande « être prévenu à l’ouverture des réservations » (rendez-vous 30 min / 1 h avec Élysée Johnson)'})}).then(function(r){return r.json();}).then(function(j){if(j&&j.success){f.reset();m.textContent='C’est noté. Nous vous écrirons dès l’ouverture.';}else m.textContent='La demande n’a pas pu partir. Réessayez dans un instant.';}).catch(function(){m.textContent='La demande n’a pas pu partir (connexion ?). Réessayez.';}).then(function(){s.disabled=false;});});})();</script>
 </section>
