@@ -179,7 +179,26 @@ $("exact").addEventListener("input",function(e){var v=+String(e.target.value).re
 $("sans-budget").onclick=function(){etat.libre=!etat.libre;majMontant();change();};
 $("affiner").onclick=function(){var o=$("affinage").hidden;$("affinage").hidden=!o;$("affiner").setAttribute("aria-expanded",o);$("affiner-s").textContent=o?"−":"＋";};
 if(etat.savoir||etat.temps||etat.lieu){$("affinage").hidden=false;$("affiner").setAttribute("aria-expanded","true");$("affiner-s").textContent="−";}
+
+/* Soumettre sa propre idée et demander un business plan (3 nov. 2026). Le document est construit par EFA : pas de version 1 automatique. */
+function prixPropre(){var b=etat.libre?2000000:etat.budget,p=Math.min(25000,Math.max(5000,Math.round(b*.01/1000)*1000)),c=cleBP(),r=c&&c.r?c.r:0;return {n:p*2,f:r>=1?0:Math.round(p*(1-r)/500)*500};}
+function soumettre(){
+  modale('<span class="sur">Votre idée</span><h2>Soumettre mon idée</h2><p>Quelques lignes suffisent. EFA s’en sert pour construire votre business plan de démarrage.</p>'
+  +'<form class="pi-f" id="pi-f" novalidate><label>Mon idée, en une phrase<input name="titre" maxlength="120" placeholder="ex. un service de repas livrés au bureau"></label>'
+  +'<label>Ce que je vends, à qui, et où<textarea name="desc" maxlength="1200" placeholder="ex. des plats du jour livrés aux employés du Plateau, commandés sur WhatsApp"></textarea></label>'
+  +'<label>Mon budget de départ<input name="budget" value="'+(etat.libre?"":esc(FC(etat.budget)))+'" placeholder="ex. 500 000 F"></label>'
+  +'<p class="pi-err" hidden></p><div class="md-act"><button type="submit" class="bouton">Continuer <span aria-hidden="true">→</span></button></div></form>'
+  +'<p class="md-note">Vos réponses servent seulement à préparer votre document.</p>');
+  var f=$("pi-f");f.onsubmit=function(e){e.preventDefault();var t=f.titre.value.trim(),d=f.desc.value.trim(),bu=f.budget.value.trim(),er=f.querySelector(".pi-err");
+    if(t.length<4||d.length<15){er.hidden=false;er.textContent="Donnez un titre à votre idée et décrivez-la en une ou deux phrases.";return;}
+    var P=prixPropre(),C=cleBP()||{};
+    modale('<span class="sur">Commande</span><h2>Votre business plan de démarrage</h2><p>Pour «&nbsp;'+esc(t)+'&nbsp;». Laissez votre email ou votre numéro WhatsApp&nbsp;: votre code personnel s’affiche aussitôt.</p><div id="cm-box"></div>');
+    EFACommande.ouvrir($("cm-box"),{produit:"Business plan de démarrage · idée personnelle",titre:t,cle:"business-plan-idee",prix:P.f,prixNormal:P.n,etiquette:C.r?"Avec votre clé":"Prix de lancement",
+      champs:[["client","Votre client principal, en une phrase","ex. les employés de bureau du Plateau"]],
+      extra:{idee:t,description:d,budget:bu||(etat.libre?"sans limite":String(etat.budget)),pays:(PAYS[etat.pays]||{}).n||"",cle_gagnee:C.k?C.k+" ("+(C.r>=1?"offert":"-"+Math.round(C.r*100)+" %")+")":"",source:"générateur · idée soumise"}});
+    try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"idee-soumise",title:"Idée soumise",event:true});}catch(x){}};}
 $("surprise").onclick=function(){etat.decal+=etat.vus;rendre();};
+if($("propre-go"))$("propre-go").onclick=soumettre;
 $("voir-plus").onclick=function(){etat.vus+=etat.vus===3?3:6;rendre();};
 $("lancer").onclick=analyser;$("perime-b").onclick=analyser;
 $("vedette").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]"),pp=e.target.closest("[data-p]");if(pp){partager(pp.dataset.p);return;}if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});

@@ -325,6 +325,10 @@
 .gardee{display:block;width:100%;text-align:left;border:0;background:#fff;border-radius:10px;padding:12px 14px;margin-top:8px;font-weight:700;color:var(--nuit);font-size:16px;min-height:48px}
 body.fige{overflow:hidden}
 #explorer>.efa-local{box-sizing:border-box;width:calc(100% - 2*var(--g));max-width:calc(1180px - 2*var(--g));margin:10px auto 12px}
+.propre{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:26px 0 0;background:#DA3C1B;color:#fff;border-radius:16px;padding:22px}
+.propre>div{flex:1 1 320px;min-width:0}.propre .sur{color:#fff;opacity:.92}.propre h3{margin:6px 0 6px;font:700 clamp(20px,2.4vw,26px)/1.18 "Libre Baskerville",Georgia,serif;color:#fff}.propre p{margin:0;color:#fff;font-size:16px;line-height:1.5}
+.propre .bouton{background:#0B1220!important;color:#fff!important;white-space:nowrap}
+.pi-f label{display:block;margin-top:12px;font-size:14px;font-weight:700;color:#4E5566}.pi-f input,.pi-f textarea{display:block;width:100%;box-sizing:border-box;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:#0B1220}.pi-f textarea{min-height:96px;resize:vertical}.pi-err{color:#B3261E;font-weight:700;margin:10px 0 0}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261102z">
 </head>
@@ -389,6 +393,10 @@ body.fige{overflow:hidden}
         <p class="statut" id="statut"></p>
         <div class="cartes" id="cartes"></div>
         <button type="button" class="voir-plus" id="voir-plus" hidden></button>
+      </div>
+      <div class="propre" id="propre">
+        <div><span class="sur">Vous avez déjà votre idée&nbsp;?</span><h3>Soumettez-la, recevez votre business plan.</h3><p>Décrivez votre projet en quelques lignes&nbsp;: EFA construit votre business plan de démarrage à partir de votre idée, de votre budget et de votre pays.</p></div>
+        <button type="button" class="bouton" id="propre-go">Soumettre mon idée <span aria-hidden="true">→</span></button>
       </div>
       <div class="ensuite">
         <span class="sur">Et ensuite&nbsp;?</span>
@@ -494,7 +502,7 @@ body.fige{overflow:hidden}
 <script src="generateur-idees.js?v=20261102z"></script>
 <script src="efa-config.js?v=20261102z"></script>
 <script src="efa-commande.js?v=20261102y2"></script>
-<script src="generateur-de-projet.js?v=20261102y2"></script>
+<script src="generateur-de-projet.js?v=20261103a"></script>
 <script>window.EFA_VOIX={pendant:{src:"audio/accueil/generateur-pendant.mp3",duree:25,ancre:"#guide h2",place:"after"},fin:{src:"audio/accueil/generateur-fin.mp3",duree:26,quand:function(){return document.getElementById("vedette-c");},ancre:"#vedette",place:"before"}};</script>
 <script src="efa-voix-elysee.js?v=20261102v1" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
