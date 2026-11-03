@@ -175,7 +175,8 @@ remplir("savoir",SAVOIR,etat.savoir);remplir("temps",TEMPS,etat.temps);remplir("
 remplir("pays",Object.keys(PAYS).map(function(k){return [k,PAYS[k].n];}),etat.pays);
 RAPIDES.forEach(function(v){var b=document.createElement("button");b.type="button";b.dataset.v=v;b.textContent=v>=1e6?(v/1e6)+" M F":(v/1000)+" 000 F";b.onclick=function(){setBudget(v);};$("raccourcis").appendChild(b);});
 $("budget").addEventListener("input",function(e){setBudget(PAS[+e.target.value]);});
-$("exact").addEventListener("input",function(e){var v=+String(e.target.value).replace(/\D/g,"");if(v>=1000)setBudget(v,true);});
+/* Montant exact : séparation des milliers pendant la saisie (100 000), curseur conservé */
+$("exact").addEventListener("input",function(e){var el=e.target,brut=String(el.value),pos=el.selectionStart==null?brut.length:el.selectionStart,avant=brut.slice(0,pos).replace(/\D/g,"").length,ch=brut.replace(/\D/g,"");if(e.inputType==="deleteContentBackward"&&ch===(el._ch||"")&&avant>0){ch=ch.slice(0,avant-1)+ch.slice(avant);avant--;}ch=ch.replace(/^0+(?=\d)/,"").slice(0,8);el._ch=ch;var f=ch.replace(/\B(?=(\d{3})+(?!\d))/g,"\u00a0");el.value=f;if(document.activeElement===el){var i=0,n=0;while(i<f.length&&n<avant){if(/\d/.test(f[i]))n++;i++;}try{el.setSelectionRange(i,i);}catch(x){}}var v=+ch;if(v>=1000)setBudget(v,true);});
 $("sans-budget").onclick=function(){etat.libre=!etat.libre;majMontant();change();};
 $("affiner").onclick=function(){var o=$("affinage").hidden;$("affinage").hidden=!o;$("affiner").setAttribute("aria-expanded",o);$("affiner-s").textContent=o?"−":"＋";};
 if(etat.savoir||etat.temps||etat.lieu){$("affinage").hidden=false;$("affiner").setAttribute("aria-expanded","true");$("affiner-s").textContent="−";}
