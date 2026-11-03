@@ -662,3 +662,15 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 @keyframes tmGuil{0%,100%{transform:scale(1)}40%{transform:scale(1.25)}}
 .tm-ph{flex:none;width:56px;height:56px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 5px #E44828}
 .tm-drap{display:inline-block;vertical-align:-1px;margin-left:6px;border-radius:2px;box-shadow:0 0 0 1px rgba(11,18,32,.15)}
+
+/* Témoignages, 3 nov. 2026 : encadrés de taille fixe, quelques-uns visibles à la fois, qui se relaient en fondu */
+.tm-grille{columns:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tm-grille>.tm-c,.tm-grille>.tm-img{margin:0;height:350px;display:flex;flex-direction:column;transition:opacity .6s ease,transform .6s ease}
+.tm-grille>[hidden]{display:none!important}
+.tm-grille>.tm-sort{opacity:0;transform:translateY(10px)}
+.tm-grille .tm-fort{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tm-grille .tm-txt{display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+.tm-grille figcaption{margin-top:auto;padding-top:14px}
+.tm-grille>.tm-img img{height:100%;aspect-ratio:auto}
+@media(max-width:980px){.tm-grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.tm-grille{grid-template-columns:minmax(0,1fr)}.tm-grille>.tm-c,.tm-grille>.tm-img{height:350px}}
