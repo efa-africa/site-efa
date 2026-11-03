@@ -595,7 +595,7 @@
     dlg.innerHTML = '<div class="pf-l"><div class="pf-t"><div class="pf-top"><small id="pf-titre">Mon portefeuille</small><button type="button" class="pf-x" aria-label="Fermer le portefeuille">×</button></div>'
       + '<div class="pf-sol" aria-live="polite"><b>' + (ins ? s : 3) + '</b><span>' + (ins ? 'crédit' + (s > 1 ? 's' : '') + ' disponible' + (s > 1 ? 's' : '') : 'crédits offerts avec votre email') + '</span></div>'
       + '<a class="pf-use" href="' + sur + '#choisir">' + (ins ? 'Utiliser mes crédits' : 'Activer mes crédits') + ' <span aria-hidden="true">→</span></a></div>'
-      + '<div class="pf-s"><p class="pf-promo"><b>Crédits offerts à l’ouverture</b>Une carte à gratter par jour et 1 crédit par avis. <a href="' + sur + '#gratter">Gratter ma carte</a>.</p>'
+      + '<div class="pf-s"><p class="pf-promo"><b>Une carte à gratter chaque jour</b>Revenez chaque jour tenter votre chance : vous débloquez des ateliers au fur et à mesure. Conservez bien vos crédits. <a href="' + sur + '#gratter">Gratter ma carte</a>.</p>'
       + '<div class="pf-tabs" role="tablist" aria-label="Options de crédits"><button type="button" role="tab" data-onglet="gagner" aria-selected="' + (onglet === 'gagner') + '">Gagner</button><button type="button" role="tab" data-onglet="acheter" aria-selected="' + (onglet === 'acheter') + '">Acheter</button></div>'
       + (onglet === 'gagner' ? gagner() : acheter) + '</div></div>';
     dlg.setAttribute('aria-labelledby', 'pf-titre');
