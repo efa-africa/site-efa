@@ -73,8 +73,13 @@ def lecture(a):
 # ------------------------------------------------------------------ gabarit commun
 base = open(os.path.join(SITE, "question-preter-a-ma-soeur.html"), encoding="utf-8").read()
 css0 = base[base.index("<style>"):base.index("/* 1 ·")] + "</style>"
-header = base[base.index('<header class="top">'):base.index("</header>") + 9]
-footer = base[base.index('<footer class="efa-foot">'):base.index("</footer>") + 9]
+def bloc(tag, motif):
+    """Extrait le bloc <tag …> qui correspond au motif, même si des attributs ont été ajoutés (ex. data-v1-cache)."""
+    m = re.search(motif, base)
+    i = m.start()
+    return base[i:base.index("</%s>" % tag, i) + len(tag) + 3]
+header = bloc("header", r'<header[^>]*class="top"[^>]*>')
+footer = bloc("footer", r'<footer[^>]*class="efa-foot"[^>]*>')
 
 def reloc(fragment, pre):
     if not pre:

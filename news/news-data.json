@@ -9,6 +9,135 @@
  },
  "articles": [
   {
+   "id": "2026-11-03-uemoa-transferts-mobile-money-gratuits",
+   "statut": "publié",
+   "categorie": "paiements",
+   "rubrique": "Mobile money",
+   "titre": "Mobile money : vos petits envois sont gratuits depuis le 2 novembre",
+   "resume": "Dans l'UEMOA, envoyer jusqu'à 8 000 F par jour ne coûte plus rien, recevoir est gratuit, et au-delà les frais sont plafonnés à 0,8 %.",
+   "pays": [
+    "Bénin",
+    "Burkina Faso",
+    "Côte d'Ivoire",
+    "Guinée-Bissau",
+    "Mali",
+    "Niger",
+    "Sénégal",
+    "Togo"
+   ],
+   "entites": [
+    "BCEAO",
+    "PI-SPI",
+    "Orange Money",
+    "Wave",
+    "MTN MoMo",
+    "Moov Money"
+   ],
+   "notions": [
+    "frais de transfert",
+    "interopérabilité",
+    "plafond de solde",
+    "budget"
+   ],
+   "evenement": "2026-11-02",
+   "evenement_label": "2 novembre 2026",
+   "publication": "2026-11-03",
+   "maj": "2026-11-03",
+   "fait": "Depuis le 2 novembre 2026, la BCEAO impose que les transferts de monnaie électronique passent par sa plateforme PI-SPI. Les envois nationaux sont gratuits tant que leur cumul ne dépasse pas 8 000 FCFA par jour, par utilisateur et par établissement, sans limite du nombre d'opérations. Recevoir est gratuit. Au-delà de 8 000 F, les frais vont de 0 à 0,8 % du montant hors taxes.",
+   "chiffres": [
+    {
+     "valeur": "8 000 F",
+     "libelle": "envois gratuits par jour, cumulés, chez un même opérateur",
+     "periode": "depuis le 2 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "400 F",
+     "libelle": "frais maximum pour envoyer 50 000 F (0,8 %)",
+     "periode": "hors taxes",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "75 %",
+     "libelle": "part des transactions couvertes par le seuil de 8 000 F",
+     "periode": "selon la BCEAO",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Chaque opérateur (Orange Money, Wave, MTN, Moov…) se branche sur PI-SPI, la plateforme de la BCEAO : un envoi peut aller d'un opérateur ou d'une banque à l'autre.",
+    "Le compteur de 8 000 F se calcule par jour, par personne et par établissement : au-delà, les frais s'appliquent sur l'envoi.",
+    "Les frais ne peuvent plus dépasser 0,8 % hors taxes : 0,8 × 50 000 ÷ 100 = 400 F au plus."
+   ],
+   "change": "Les petits envois du quotidien (famille, repas, transport) ne devraient plus rien coûter. Pour les grosses sommes, comparer les frais reste utile : 0,8 % est un plafond, chaque opérateur peut faire moins. Le plafond de solde passe aussi de 2 à 4 millions de FCFA par opérateur, selon la presse.",
+   "limites": [
+    "Le retrait d'argent liquide, le paiement chez un commerçant et le paiement de factures ne sont pas concernés.",
+    "Les envois vers un autre pays de l'UEMOA n'auront les mêmes conditions qu'au 1er juin 2027.",
+    "Le relèvement du plafond de solde (4 millions F) et des rechargements (15 millions F par mois) est rapporté par la presse ; le communiqué consulté ne le mentionne pas.",
+    "Les taxes de l'État s'ajoutent éventuellement aux frais : 0,8 % est un montant hors taxes."
+   ],
+   "question": "Si vous envoyez 5 000 F le matin et 5 000 F le soir chez le même opérateur, payez-vous des frais sur le second envoi ?",
+   "mot": {
+    "terme": "Interopérabilité",
+    "definition": "La possibilité d'envoyer de l'argent d'un opérateur ou d'une banque à un autre, comme un appel passe d'un réseau téléphonique à l'autre."
+   },
+   "retenir": "Moins de 8 000 F par jour : l'envoi est gratuit. Au-delà, jamais plus de 0,8 %.",
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Budget et mobile money",
+     "description": "Suivre vos petites dépenses et vos frais d'envoi, mois après mois.",
+     "url": "budget-mobile-money.html#calcul"
+    },
+    {
+     "type": "Calcul",
+     "titre": "Où garder sa réserve ?",
+     "description": "Comparer compte, épargne et mobile money pour votre argent de côté.",
+     "url": "ou-garder-sa-reserve.html#calcul"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Communiqué du 2 octobre 2026 sur PI-SPI et la gratuité des transferts",
+     "organisme": "BCEAO",
+     "date": "2 oct. 2026",
+     "url": "https://www.bceao.int/sites/default/files/2026-10/Communiqu%C3%A9%20du%202%20octobre%202026.pdf",
+     "consulte_le": "2026-11-03",
+     "type": "primaire"
+    },
+    {
+     "titre": "UEMOA : la BCEAO rend PI-SPI obligatoire et élargit la gratuité des transferts",
+     "organisme": "Droit Médias Finance",
+     "date": "oct. 2026",
+     "url": "https://droitmediasfinance.com/index.php/actualites/droit-tech-fintech/1402-uemoa-la-bceao-rend-pi-spi-obligatoire-et-elargit-la-gratuite-des-transferts-de-monnaie-electronique-des-le-2-novembre-2026",
+     "consulte_le": "2026-11-03",
+     "type": "media"
+    },
+    {
+     "titre": "La banque centrale de l'UEMOA impose la gratuité des virements par mobile pour les petits montants",
+     "organisme": "Dabafinance",
+     "date": "6 oct. 2026",
+     "url": "https://dabafinance.com/fr/nouvelles/la-banque-centrale-de-l-uemoa-impose-la-gratuite-des-virements-par-mobile-pour-les-petits-montants-2026-10-06",
+     "consulte_le": "2026-11-03",
+     "type": "media"
+    }
+   ],
+   "une": true,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition spéciale du 2026-11-03",
+   "verif": {
+    "q": "Vous envoyez 6 000 F le matin puis 6 000 F le soir avec le même opérateur. Que se passe-t-il ?",
+    "choix": [
+     "Les deux envois sont gratuits, car chacun est sous 8 000 F",
+     "Le second peut être facturé, car le cumul du jour dépasse 8 000 F",
+     "Les deux sont facturés à 0,8 %"
+    ],
+    "bonne": 1,
+    "explication": "Le seuil de 8 000 F est un cumul par jour, par personne et par opérateur : au-delà, des frais (0,8 % hors taxes au plus) peuvent s'appliquer."
+   }
+  },
+  {
    "id": "2026-10-24-opay-introduction-bourse",
    "statut": "publié",
    "categorie": "brvm",
@@ -236,7 +365,7 @@
      "type": "media"
     }
    ],
-   "une": true,
+   "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
    "origine": "veille EFA News du 2026-10-24",
