@@ -38,7 +38,7 @@
       (revient ? 'Reprendre mon module' : 'Commencer mon parcours') + ' <span aria-hidden="true">→</span></a>' +
       (demo ? '<a class="ec-demo" href="' + demo.getAttribute('href') + '">▶ Voir la démo · dès 1 min</a>' : '') + '</div>' +
       '<p class="ec-note">Gratuit · à votre rythme · parcours en pilote</p></div>' +
-      '<figure class="ec-hero-img"><img src="' + A + 'q1.webp" alt="" decoding="async" fetchpriority="high"></figure>';
+      '<figure class="ec-hero-img"><img src="' + A + 'ecole-hero-2.webp" alt="" decoding="async" fetchpriority="high"></figure>';
     hero.insertBefore(h, hero.firstChild);
     if (col) col.classList.add('ec-ancien');
 
