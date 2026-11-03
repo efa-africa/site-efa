@@ -271,3 +271,25 @@ details.at-dlg-cle[hidden]{display:none}
 .sc-f input:focus{outline:3px solid #6AB2D2;outline-offset:1px}
 .sc-e{font-size:14px;font-weight:700;color:#B3261E;min-height:0}
 .sc-e:empty{display:none}
+
+/* Ateliers enregistrés · nouvelle carte (03/11/2026) */
+.at-cat.ae-grille{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px}
+.ae-c{overflow:hidden;background:#fff;border:1px solid #d9e4e9;border-radius:21px;box-shadow:0 13px 35px rgba(16,37,61,.06);display:flex;flex-direction:column;scroll-margin-top:120px}
+.ae-c[hidden]{display:none!important}
+.ae-vis{height:252px;position:relative;overflow:hidden;background:#c9dbe2}.ae-vis img{width:100%;height:100%;object-fit:cover;display:block}
+.ae-vis:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(9,28,47,.35))}
+.ae-dur{position:absolute;bottom:16px;left:19px;z-index:1;color:#fff;font:800 13px "Source Sans 3",sans-serif;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 5px #152737}
+.ae-corps{padding:25px 28px 28px;display:flex;flex:1;flex-direction:column}
+.ae-meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font:900 11px "Source Sans 3",sans-serif;letter-spacing:.13em;color:#188e9b;text-transform:uppercase}
+.ae-free{background:#e8f6ef;color:#237a51;border-radius:50px;padding:4px 8px;letter-spacing:.06em}
+.ae-t{font:700 clamp(24px,2.6vw,32px)/1.14 "Libre Baskerville",Georgia,serif;color:#10253d;margin:14px 0 9px;letter-spacing:-.02em}
+.ae-pb{font-size:18px;color:#445567;margin:0 0 19px}
+.ae-fin{padding:15px 17px;background:#f0f7fa;border-radius:12px;font-size:16px;line-height:1.42;margin-top:auto;color:#23354a}
+.ae-fin strong{display:block;font:800 11px "Source Sans 3",sans-serif;letter-spacing:.13em;color:#188e9b;text-transform:uppercase;margin-bottom:4px}
+.ae-pied{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:20px}
+.ae-st{font-size:13px;color:#597080;font-weight:700}
+.ae-cta{display:inline-flex;align-items:center;gap:16px;background:#E44828;color:#fff;border:0;padding:12px 17px;border-radius:9px;font:800 16px "Source Sans 3",sans-serif;white-space:nowrap;cursor:pointer;box-shadow:0 7px 15px rgba(232,71,60,.15)}
+.ae-cta:hover{background:#ce372e}.ae-cta span{font-size:20px;line-height:1}
+.ae-autre{display:block;margin:20px 0 0;min-height:48px;padding:10px 20px;border:1px dashed #b9c8d6;border-radius:14px;background:none;color:#10253d;font:800 16px "Source Sans 3",sans-serif;cursor:pointer}
+@media(max-width:660px){.at-cat.ae-grille{grid-template-columns:1fr!important;gap:20px}.ae-vis{height:auto;aspect-ratio:16/9}.ae-corps{padding:21px 20px 22px}.ae-t{font-size:26px}.ae-pb{font-size:17px}.ae-cta{padding:11px 14px}}
+@media(max-width:370px){.ae-pied{flex-direction:column;align-items:stretch}}
