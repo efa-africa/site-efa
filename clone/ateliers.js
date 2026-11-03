@@ -20,23 +20,23 @@
       '<div class="at-c-pied"><span class="at-c-prix">' + (a.gratuit ? '<b>' + D.prix(a) + '</b>' : a.cours ? '<span class="promo-pastille">Gratuit pendant l’ouverture</span><b><s>' + D.prix(a) + '</s></b><small>avec vos ' + D.CREDITS_OFFERTS + ' crédits offerts</small>' : '<span class="promo-pastille">Phase de test</span><b><s>' + D.prix(a) + '</s></b><small>' + D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '') + '</small>') + '</span><button type="button" class="at-c-btn">' + bouton(a, ok) + '</button></div></div></article>';
   }
   /* Ateliers enregistrés : cartes en paysage (vidéo · exercice · fiche), deux à la fois (03/11/2026) */
-  var ENR = { 'ou-passe-mon-argent': ['Dépenses', 'atelier-enr-depenses.webp'], 'budget-qui-tient': ['Budget', 'atelier-enr-budget.webp'], 'reserve-securite': ['Épargne'], 'sortir-dettes': ['Dettes'], 'mobile-money-frais': ['Mobile money'], 'preter-ou-donner': ['Famille'], 'grosse-somme': ['Décider'], 'terrain-sans-se-faire-avoir': ['Terrain'], 'placements-expliques': ['Placements'], 'retraite-sans-pension': ['Retraite'] };
+  var ENR = { 'ou-passe-mon-argent': ['Dépenses', 'atelier-enr-depenses.webp'], 'budget-qui-tient': ['Budget', 'atelier-enr-budget.webp'], 'reserve-securite': ['Épargne'], 'sortir-dettes': ['Dettes'], 'mobile-money-frais': ['Mobile money'], 'preter-ou-donner': ['Famille'], 'grosse-somme': ['Décider'], 'terrain-sans-se-faire-avoir': ['Terrain'], 'placements-expliques': ['Placements'], 'retraite-sans-pension': ['Retraite'], 'premiers-pas-bourse': ['Bourse'], 'premier-ordre-brvm': ['Bourse'], 'lire-societe-cotee': ['Bourse'], 'ipo-emprunts-etat': ['Placements'], 'tontine-spirale': ['Tontine'], 'club-investissement': ['Investir à plusieurs'], 'pilier-famille': ['Famille'], 'patrimoine-10-ans': ['Patrimoine'], 'dirigeant-entreprise-maison': ['Entreprise'], 'cadres-train-de-vie': ['Cadres'], 'diaspora-investir': ['Diaspora'] };
   function carteEnr(a, n, k) {
     var ok = etat.ok[a.id], E = ENR[a.id] || [''], img = E[1] || a.img;
     return '<article class="at-c ae-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '" data-pg="' + Math.floor(k / 2) + '"' + (k > 1 ? ' hidden' : '') + '>' +
-      '<div class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">Vidéo · exercice · fiche</span></div>' +
-      '<div class="ae-corps"><div class="ae-meta"><span>' + (n < 10 ? '0' : '') + n + ' / ' + esc(E[0]) + '</span>' + (a.gratuit ? '<span class="ae-free">Gratuit</span>' : '') + '</div>' +
+      '<div class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">' + (a.cours ? 'Cours · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · approfondi' : 'Vidéo · exercice · fiche') + '</span></div>' +
+      '<div class="ae-corps"><div class="ae-meta"><span>' + (n < 10 ? '0' : '') + n + ' / ' + esc(E[0]) + '</span>' + (a.gratuit || a.cours ? '<span class="ae-free">' + (a.cours ? 'Gratuit pendant l’ouverture' : 'Gratuit') + '</span>' : '') + '</div>' +
       '<h3 class="ae-t">' + esc(a.t) + '</h3><p class="ae-pb">' + esc(a.pour) + '</p>' +
       '<div class="ae-fin"><strong>À la fin</strong>' + esc(a.rep) + '</div>' +
-      '<div class="ae-pied"><span class="ae-st">' + (ok ? 'Accès débloqué ✓' : a.gratuit ? 'Accès ouvert' : D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '')) + '</span><button type="button" class="at-c-btn ae-cta">Découvrir l’atelier <span aria-hidden="true">→</span></button></div></div></article>';
+      '<div class="ae-pied"><span class="ae-st">' + (ok ? 'Accès débloqué ✓' : a.gratuit ? 'Accès ouvert' : D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '')) + '</span><button type="button" class="at-c-btn ae-cta">Découvrir ' + (a.cours ? 'le cours' : 'l’atelier') + ' <span aria-hidden="true">→</span></button></div></div></article>';
   }
   var n = 0;
   document.querySelectorAll('.at-cat').forEach(function (c) {
     var ty = c.getAttribute('data-type'), t = ty === '1';
     var L = D.liste.filter(function (a) { return ty === 'cours' ? !!a.cours : !a.cours && !!a.c === t; });
-    if (ty === '0') {
+    if (true) {
       c.classList.add('ae-grille');
-      c.innerHTML = L.map(function (a, k) { n++; return carteEnr(a, k + 1, k); }).join('');
+      c.innerHTML = L.map(function (a, k) { if (!a.cours) n++; return carteEnr(a, k + 1, k); }).join('');
       if (L.length > 2) { var au = document.createElement('button'); au.type = 'button'; au.className = 'ae-autre'; au.textContent = 'Voir deux autres ateliers →'; au.dataset.p = '0';
         au.onclick = function () { var np = Math.ceil(L.length / 2), pg = (+au.dataset.p + 1) % np; au.dataset.p = pg; c.querySelectorAll('.ae-c').forEach(function (x) { x.hidden = +x.dataset.pg !== pg; }); au.textContent = pg === np - 1 ? 'Revenir aux premiers ateliers →' : 'Voir deux autres ateliers →'; c.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
         c.parentNode.insertBefore(au, c.nextSibling); }
