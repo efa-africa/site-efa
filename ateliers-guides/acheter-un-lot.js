@@ -1,6 +1,6 @@
 /* Atelier guidé · Acheter un lot : l'état domanial d'abord
    Extrait d'un entretien au guichet unique du ministère de la Construction (Côte d'Ivoire),
-   propos recueillis par Stéphane Trifot. Atelier gratuit. */
+   propos recueillis par Stéphane Tchriffo. Atelier gratuit. */
 window.ATELIER = {
   id: "acheter-un-lot",
   titre: "Acheter un lot",
