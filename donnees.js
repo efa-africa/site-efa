@@ -4,50 +4,50 @@
 window.EFA_DATA = {
 
   brvm: {
-    seance: "02/11/2026",
-    source: "BRVM, cours de clôture du 02/11/2026",
+    seance: "03/11/2026",
+    source: "BRVM, cours de clôture du 03/11/2026",
     capitalisation: null,
     // [nom, clôture précédente, clôture, variation % du jour]
     indices: [
-      ["BRVM Composite", 534.71, 525.3, -1.76],
-      ["BRVM 30", 259.18, 254.21, -1.92],
-      ["BRVM Prestige", 198.32, 195.63, -1.36],
-      ["BRVM Principal", 372.81, 366.29, -1.75]
+      ["BRVM Composite", 525.3, 529.41, 0.78],
+      ["BRVM 30", 254.21, 256.5, 0.9],
+      ["BRVM Prestige", 195.63, 198.02, 1.22],
+      ["BRVM Principal", 366.29, 365.44, -0.23]
     ],
     secteurs: [
-      ["Consommation de base", 258.03, -2.62],
-      ["Consommation discrétionnaire", 174.11, -4.18],
-      ["Énergie", 159.49, 0.57],
-      ["Industriels", 212.51, -0.18],
-      ["Services financiers", 239.38, -1.07],
-      ["Services publics", 233.92, -3.88],
-      ["Télécommunications", 146.18, -2.27]
+      ["Consommation de base", 259.62, 0.62],
+      ["Consommation discrétionnaire", 172.62, -0.86],
+      ["Énergie", 161.91, 1.52],
+      ["Industriels", 210.13, -1.12],
+      ["Services financiers", 239.29, -0.04],
+      ["Services publics", 230.92, -1.28],
+      ["Télécommunications", 149.15, 2.03]
     ],
     // [symbole, nom, pays, cours de clôture FCFA, variation % du jour]
     actions: [
-      ["ABJC","Servair Abidjan","CI",3300,-1.49], ["BBGC","Bridge Bank Group","CI",9785,-0.66],
-      ["BICB","BIIC Bénin","BJ",8300,-1.19], ["BICC","BICI Côte d'Ivoire","CI",32000,-0.47],
-      ["BNBC","Bernabé","CI",1980,-1.0], ["BOAB","Bank of Africa Bénin","BJ",9100,-2.83],
-      ["BOABF","Bank of Africa Burkina","BF",7950,0.0], ["BOAC","Bank of Africa CI","CI",11700,0.0],
-      ["BOAM","Bank of Africa Mali","ML",5845,0.26], ["BOAN","Bank of Africa Niger","NE",5195,-1.05],
-      ["BOAS","Bank of Africa Sénégal","SN",8210,-0.61], ["CABC","Sicable","CI",2705,-7.36],
-      ["CBIBF","Coris Bank International","BF",32000,0.31], ["CFAC","CFAO Motors","CI",1300,-7.14],
-      ["CIEC","CIE","CI",5295,-3.73], ["ECOC","Ecobank CI","CI",15885,0.03],
-      ["ETIT","Ecobank Transnational","TG",61,-3.17], ["FTSC","Filtisac","CI",1720,-4.18],
-      ["LNBB","Loterie nationale du Bénin","BJ",3935,-0.38], ["NEIC","NEI-CEDA","CI",2145,-6.33],
-      ["NSBC","NSIA Banque CI","CI",17995,-3.51], ["NTLC","Nestlé CI","CI",13495,0.71],
-      ["ONTBF","Onatel Burkina","BF",3070,0.66], ["ORGT","Oragroup","TG",2700,-0.18],
-      ["PALC","Palm CI","CI",7380,0.27], ["PRSC","Tractafric Motors","CI",3750,1.08],
-      ["SAFC","Safca","CI",3700,-1.6], ["SCRC","Sucrivoire","CI",2200,-3.08],
-      ["SDCC","SODE CI","CI",12300,-4.28], ["SDSC","Africa Global Logistics","CI",3080,1.15],
-      ["SEMC","Eviosys Packaging Siem","CI",1495,0.0], ["SGBC","Société Générale CI","CI",38505,-1.82],
-      ["SHEC","Vivo Energy CI","CI",2120,0.24], ["SIBC","Société Ivoirienne de Banque","CI",8800,-0.06],
-      ["SICC","Sicor","CI",8400,0.0], ["SIVC","Erium","CI",1700,0.29],
-      ["SLBC","Solibra","CI",38995,-2.49], ["SMBC","SMB","CI",15695,7.5],
-      ["SOGC","SOGB","CI",7775,1.57], ["SPHC","SAPH","CI",7700,-7.23],
-      ["STAC","Setao","CI",1770,-0.56], ["STBC","Sitab","CI",20175,-6.16],
-      ["TTLC","TotalEnergies Marketing CI","CI",3010,-2.9], ["TTLS","TotalEnergies Marketing Sénégal","SN",3700,0.0],
-      ["UNLC","Unilever CI","CI",48000,-2.04], ["UNXC","Uniwax","CI",2115,-0.24]
+      ["ABJC","Servair Abidjan","CI",3280,-0.61], ["BBGC","Bridge Bank Group","CI",9730,-0.56],
+      ["BICB","BIIC Bénin","BJ",8115,-2.23], ["BICC","BICI Côte d'Ivoire","CI",32000,0.0],
+      ["BNBC","Bernabé","CI",1935,-2.27], ["BOAB","Bank of Africa Bénin","BJ",9350,2.75],
+      ["BOABF","Bank of Africa Burkina","BF",7995,0.57], ["BOAC","Bank of Africa CI","CI",11900,1.71],
+      ["BOAM","Bank of Africa Mali","ML",5850,0.09], ["BOAN","Bank of Africa Niger","NE",5135,-1.15],
+      ["BOAS","Bank of Africa Sénégal","SN",8400,2.31], ["CABC","Sicable","CI",2505,-7.39],
+      ["CBIBF","Coris Bank International","BF",32010,0.03], ["CFAC","CFAO Motors","CI",1290,-0.77],
+      ["CIEC","CIE","CI",5200,-1.79], ["ECOC","Ecobank CI","CI",15900,0.09],
+      ["ETIT","Ecobank Transnational","TG",60,-1.64], ["FTSC","Filtisac","CI",1595,-7.27],
+      ["LNBB","Loterie nationale du Bénin","BJ",3945,0.25], ["NEIC","NEI-CEDA","CI",2140,-0.23],
+      ["NSBC","NSIA Banque CI","CI",17500,-2.75], ["NTLC","Nestlé CI","CI",13400,-0.7],
+      ["ONTBF","Onatel Burkina","BF",3045,-0.81], ["ORGT","Oragroup","TG",2675,-0.93],
+      ["PALC","Palm CI","CI",7450,0.95], ["PRSC","Tractafric Motors","CI",3750,0.0],
+      ["SAFC","Safca","CI",3945,6.62], ["SCRC","Sucrivoire","CI",2035,-7.5],
+      ["SDCC","SODE CI","CI",12310,0.08], ["SDSC","Africa Global Logistics","CI",3045,-1.14],
+      ["SEMC","Eviosys Packaging Siem","CI",1495,0.0], ["SGBC","Société Générale CI","CI",38895,1.01],
+      ["SHEC","Vivo Energy CI","CI",2120,0.0], ["SIBC","Société Ivoirienne de Banque","CI",8800,0.0],
+      ["SICC","Sicor","CI",8400,0.0], ["SIVC","Erium","CI",1690,-0.59],
+      ["SLBC","Solibra","CI",39000,0.01], ["SMBC","SMB","CI",16870,7.49],
+      ["SOGC","SOGB","CI",7800,0.32], ["SPHC","SAPH","CI",7980,3.64],
+      ["STAC","Setao","CI",1900,7.34], ["STBC","Sitab","CI",20760,2.9],
+      ["TTLC","TotalEnergies Marketing CI","CI",3045,1.16], ["TTLS","TotalEnergies Marketing Sénégal","SN",3615,-2.3],
+      ["UNLC","Unilever CI","CI",48000,0.0], ["UNXC","Uniwax","CI",2025,-4.26]
     ]
   },
 
