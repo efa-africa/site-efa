@@ -254,7 +254,7 @@ strong{color:var(--nuit)}
 </section>
 <div class="wrap">
 <article class="col uv">
-  <figure class="illu"><img src="clone/assets/accueil-lancer-brvm-2.webp" alt="" width="1672" height="941"></figure>
+  <figure class="illu"><img src="clone/assets/accueil-lancer-brvm-2-r.webp" alt="" width="1672" height="941"></figure>
   <ol class="uv-val"><li><b>Comprendre avant d’acheter</b><span>Ce qu’on achète, qui fait quoi, ce que coûtent les frais.</span></li><li><b>Passer à l’action, accompagné</b><span>Choisir sa SGI, ouvrir son compte, passer son premier ordre.</span></li><li><b>Lire et décider seul</b><span>Lire une société cotée, ses résultats, son dividende, son cours.</span></li></ol>
   <section class="iv"><p class="bk">Commencer gratuitement</p><h2>Dès 1 min, sans rien payer</h2><ul class="iv-grille" data-l="g"></ul></section>
   <section class="iv"><p class="bk">Les ateliers et cours</p><h2>Aller jusqu’au bout, accompagné</h2><ul class="iv-grille" data-l="p"></ul></section>
@@ -335,7 +335,7 @@ a.iv-p:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
 .uv a.iv-p,.uv a.iv-p *{text-decoration:none!important}.uv .iv-prix strong{color:#0B1220!important}.uv .iv-prix strong.g{color:#1E7A4C!important}
 </style>
 <script>
-(function(){var D={"g": [["bourse-essentiel.html", "accueil-lancer-brvm-2.webp", "Leçon", "L’essentiel de la Bourse", "Être prêt, comprendre ce qu’on achète", "gratuit", 0, ""], ["simulateur-bourse.html", "outil-et-si-investi.webp", "Outil", "Et si j’avais investi ?", "Simulateur sur les vrais cours", "gratuit", 0, ""], ["questions-a-poser-a-sa-sgi.html", "fiche-questions-sgi.webp", "Fiche", "10 questions à poser à votre SGI", "Avant de signer", "gratuit", 0, ""]], "p": [["premiers-pas-bourse.html", "ateliers/cours-premiers-pas.webp", "Cours", "Mes premiers pas en Bourse", "5 chapitres · 31 écrans", "promo", 25000, "Par où commencer"], ["coach-bourse.html", "ateliers/atelier-01.webp", "Atelier", "Mon premier ordre à la Bourse (BRVM)", "Le coach à chaque marche", "prix", 40000, ""], ["atelier-lire-societe-cotee.html", "ateliers/atelier-02.webp", "Atelier", "Lire une société cotée comme un investisseur", "Calculs en direct, fiche à garder", "prix", 30000, ""], ["atelier-portefeuille-factures.html", "atelier-portefeuille-factures.webp", "Atelier", "Un portefeuille qui paie mes factures : la stratégie des dividendes", "Charges couvertes, calendrier, prudence", "prix", 30000, ""]], "b": [["", "ateliers/atelier-03.webp", "Atelier", "Introductions en Bourse et emprunts d’État", "Une grille pour décider", "prix", 30000, ""]]};
+(function(){var D={"g": [["bourse-essentiel.html", "accueil-lancer-brvm-2-r.webp", "Leçon", "L’essentiel de la Bourse", "Être prêt, comprendre ce qu’on achète", "gratuit", 0, ""], ["simulateur-bourse.html", "outil-et-si-investi.webp", "Outil", "Et si j’avais investi ?", "Simulateur sur les vrais cours", "gratuit", 0, ""], ["questions-a-poser-a-sa-sgi.html", "fiche-questions-sgi.webp", "Fiche", "10 questions à poser à votre SGI", "Avant de signer", "gratuit", 0, ""]], "p": [["premiers-pas-bourse.html", "ateliers/cours-premiers-pas.webp", "Cours", "Mes premiers pas en Bourse", "5 chapitres · 31 écrans", "promo", 25000, "Par où commencer"], ["coach-bourse.html", "ateliers/atelier-01.webp", "Atelier", "Mon premier ordre à la Bourse (BRVM)", "Le coach à chaque marche", "prix", 40000, ""], ["atelier-lire-societe-cotee.html", "ateliers/atelier-02.webp", "Atelier", "Lire une société cotée comme un investisseur", "Calculs en direct, fiche à garder", "prix", 30000, ""], ["atelier-portefeuille-factures.html", "atelier-portefeuille-factures.webp", "Atelier", "Un portefeuille qui paie mes factures : la stratégie des dividendes", "Charges couvertes, calendrier, prudence", "prix", 30000, ""]], "b": [["", "ateliers/atelier-03.webp", "Atelier", "Introductions en Bourse et emprunts d’État", "Une grille pour décider", "prix", 30000, ""]]};
 var IC='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#0B1220"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function F(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u202f')+'\u00a0F';}
 function e(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -343,7 +343,7 @@ function prix(x){var k=x[5],p=x[6];if(k==='gratuit')return '<strong class="g">Gr
 function carte(x){var bt=!x[0],tag=bt?'div':'a',h=bt?'':' href="'+e(x[0])+'"';return '<li><'+tag+' class="iv-p'+(bt?' iv-bientot':'')+'"'+h+'><span class="iv-im"><img src="clone/assets/'+e(x[1])+'" alt="" loading="lazy" decoding="async"><span class="iv-fmt">'+e(x[2])+'</span></span><span class="iv-in"><b>'+e(x[3])+'</b><span class="iv-car">'+IC+'<span>'+e(x[4])+'</span></span><span class="iv-prix">'+prix(x)+'</span>'+(x[7]?'<span class="iv-top">'+e(x[7])+'</span>':'')+'</span></'+tag+'></li>';}
 window.EFA_UNIV=D;})();
 </script>
-<script src="clone/ateliers-data.js?v=20261103g"></script><script src="clone/univers-ateliers.js?v=20261103b"></script>
+<script src="clone/ateliers-data.js?v=20261103h"></script><script src="clone/univers-ateliers.js?v=20261103b"></script>
 <script src="clone/retours.js?v=20261102z" defer></script>
 </main>
 
