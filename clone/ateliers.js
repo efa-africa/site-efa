@@ -28,7 +28,7 @@
       '<div class="ae-corps"><div class="ae-meta"><span>' + (n < 10 ? '0' : '') + n + ' / ' + esc(E[0]) + '</span>' + (a.gratuit || a.cours ? '<span class="ae-free">' + (a.cours ? 'Gratuit pendant l’ouverture' : 'Gratuit') + '</span>' : '') + '</div>' +
       '<h3 class="ae-t">' + esc(a.t) + '</h3><p class="ae-pb">' + esc(a.pour) + '</p>' +
       '<div class="ae-fin"><strong>À la fin</strong>' + esc(a.rep) + '</div>' +
-      (a.c && !a.cours ? '<p class="ae-plus"><b>En plus :</b> une question ou un cas que vous envoyez par écrit, auquel Élysée Johnson répond personnellement sous 72 h, et votre fiche validée par Élysée Johnson.</p>' : '') +
+      (a.c && !a.cours ? '<p class="ae-plus"><b>En plus :</b> une question ou un cas que vous envoyez par écrit, auquel Élysée Johnson répond personnellement sous 72 h, et votre fiche validée par Élysée Johnson. <i class="ae-plaf">20 cas par mois au plus.</i></p>' : '') +
       '<div class="ae-pied"><span class="ae-st">' + (ok ? 'Accès débloqué ✓' : a.gratuit ? 'Accès ouvert' : D.cout(a) + ' crédit' + (D.cout(a) > 1 ? 's' : '')) + '</span><button type="button" class="at-c-btn ae-cta">Découvrir ' + (a.cours ? 'le cours' : 'l’atelier') + ' <span aria-hidden="true">→</span></button></div></div></article>';
   }
   var n = 0;
