@@ -293,3 +293,4 @@ details.at-dlg-cle[hidden]{display:none}
 .ae-autre{display:block;margin:20px 0 0;min-height:48px;padding:10px 20px;border:1px dashed #b9c8d6;border-radius:14px;background:none;color:#10253d;font:800 16px "Source Sans 3",sans-serif;cursor:pointer}
 @media(max-width:660px){.at-cat.ae-grille{grid-template-columns:1fr!important;gap:20px}.ae-vis{height:auto;aspect-ratio:16/9}.ae-corps{padding:21px 20px 22px}.ae-t{font-size:26px}.ae-pb{font-size:17px}.ae-cta{padding:11px 14px}}
 @media(max-width:370px){.ae-pied{flex-direction:column;align-items:stretch}}
+.ae-plus{margin:12px 0 0;font-size:15px;line-height:1.45;color:#10253d}.ae-plus b{color:#E44828}
