@@ -117,6 +117,6 @@ var CL=document.getElementById('cliste'),cok=document.getElementById('cok');
 document.getElementById('cgen').onclick=function(){var C=window.EFA_CREDITS;if(!C){cok.textContent='Patientez une seconde, puis recommencez.';return;}var n=+document.getElementById('cn').value,k=Math.max(1,Math.min(50,+document.getElementById('cnb').value||1)),a=[];for(var i=0;i<k;i++)a.push(C.codeCredit(n));CL.value=a.join('\n');cok.textContent=k+' code'+(k>1?'s':'')+' de '+n+' crédit'+(n>1?'s':'')+'.'};
 document.getElementById('ccop').onclick=function(){if(!CL.value)return;(navigator.clipboard?navigator.clipboard.writeText(CL.value):Promise.reject()).then(function(){cok.textContent='Copié.'},function(){CL.select();document.execCommand('copy');cok.textContent='Copié.'})};})();
 </script>
-<script src="clone/habillage.js?v=20261103a" defer></script>
+<script src="clone/habillage.js?v=20261103b" defer></script>
 </body>
 </html>
