@@ -18,11 +18,11 @@
   function lancer() {
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
     box = document.createElement('div'); box.className = 'bv'; box.setAttribute('role', 'region'); box.setAttribute('aria-label', 'Message d’accueil d’Élysée Johnson');
-    box.innerHTML = '<img src="clone/assets/elysee-portrait-carre.jpg" alt=""><div class="bv-t"><b>Élysée vous accueille</b><span>Bienvenue chez EFA · 23 s</span><div class="bv-bar"><i></i></div></div>' +
+    box.innerHTML = '<img src="clone/assets/elysee-portrait-carre.jpg" alt=""><div class="bv-t"><b>Élysée vous accueille</b><span>Bienvenue chez EFA · 22 s</span><div class="bv-bar"><i></i></div></div>' +
       '<button type="button" class="bv-p" aria-label="Mettre en pause">❚❚</button><button type="button" class="bv-x" aria-label="Fermer le message">✕</button>';
     document.body.appendChild(box);
     var p = box.querySelector('.bv-p'), bar = box.querySelector('.bv-bar i');
-    a = new Audio('clone/assets/bienvenue-elysee-2.mp3'); a.preload = 'auto';
+    a = new Audio('clone/assets/bienvenue-elysee-3.mp3'); a.preload = 'auto';
     a.addEventListener('timeupdate', function () { if (a.duration) bar.style.width = (a.currentTime / a.duration * 100) + '%'; });
     a.addEventListener('ended', function () { setTimeout(fermer, 600); });
     p.onclick = function () { if (a.paused) { a.play(); p.textContent = '❚❚'; p.setAttribute('aria-label', 'Mettre en pause'); } else { a.pause(); p.textContent = '▶'; p.setAttribute('aria-label', 'Reprendre'); } };
