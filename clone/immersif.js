@@ -8,6 +8,7 @@
     { s: '.at-entree', m: '.at-entree-img', v: '.at-entree-voile', t: '.at-entree-txt' },
     { s: '.tr-entree', m: '.tr-entree-img', v: '.tr-entree-voile', t: '.tr-entree-txt' },
     { s: '.sg-entree', m: '.sg-entree-img', v: '.sg-entree-voile', t: '.sg-entree-txt' },
+    { s: '.or-entree', m: '.or-entree-img', v: '.or-entree-voile', t: '.or-entree-txt' },
     { s: '.cover', m: '.cover-image', v: '.cover-shade', t: '.cover-copy', x: '.cover-top,.scroll-prompt' },
     { s: 'section.hero', m: '.hero-image', v: '.hero-overlay', t: '.hero-copy', x: '.hero-meta,.scroll' }
   ];
