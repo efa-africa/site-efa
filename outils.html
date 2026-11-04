@@ -458,6 +458,7 @@ html[data-clone] .bx-hero h1 em,.bx-hero h1 em{font-style:normal;color:#6DB8F2!i
 <script src="parcours-ui.js?v=20261102z"></script>
 <link rel="stylesheet" href="clone/habillage.css?v=20261104a">
 <link rel="stylesheet" href="clone/pages/outils.css?v=20261104a">
+<style>.bx-art .bx-photo{position:absolute;left:30px;right:0;top:0;bottom:36px;width:calc(100% - 30px);height:calc(100% - 36px);object-fit:cover;border-radius:20px;box-shadow:0 24px 50px rgba(0,0,0,.35)}.bx-art{min-height:400px}.bx-art .bx-chip1{right:-8px;top:auto;bottom:90px}.bx-art .bx-chip2{left:0;bottom:12px}.bx-ph-img{display:block;width:100%;height:190px;object-fit:cover;border-radius:14px;margin:6px 0}html[data-clone] .bx-ph-n>strong,.bx-ph-n>strong{color:#fff!important}</style>
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices" aria-current="page">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -483,10 +484,8 @@ html[data-clone] .bx-hero h1 em,.bx-hero h1 em{font-style:normal;color:#6DB8F2!i
       <p class="rech-sug" id="rech-sug">Questions fréquentes : <button type="button">budget</button><button type="button">tontine</button></p>
     </form>
     </div>
-    <div class="bx-art" aria-hidden="true">
-      <div class="bx-c bx-c1"></div><div class="bx-c bx-c2"></div>
-      <div class="bx-sheet bx-back"><span>Mes choix</span><i class="l1"></i><i></i><i class="l3"></i></div>
-      <div class="bx-sheet bx-main"><div class="bx-top"><span>Mon budget</span><i>●</i></div><div class="bx-fig">Ce qui entre.<br><strong>Ce qui reste.</strong></div><div class="bx-bars"><b></b><b></b><b></b><b></b><b></b><b></b></div><div class="bx-bot"><span>Comprendre</span><span>→</span><span>Décider</span></div></div>
+    <div class="bx-art" aria-hidden="true" data-photo>
+      <img class="bx-photo" src="clone/assets/outils-entree-budget.webp" alt="" width="1536" height="1024" decoding="async">
       <div class="bx-chip bx-chip1">01 / Faire le point</div><div class="bx-chip bx-chip2">Un prochain pas clair ↗</div>
     </div>
   </div>
@@ -504,7 +503,7 @@ html[data-clone] .bx-hero h1 em,.bx-hero h1 em{font-style:normal;color:#6DB8F2!i
   <p class="bx-k bx-kd bx-k2"><span></span>À essayer maintenant</p>
   <div class="bx-phares">
     <a class="bx-ph bx-ph-n" href="diagnostic.html?src=boite"><small>Faire le point · dès 2 min</small><span class="bx-dr bx-dr-diag" aria-hidden="true"><i></i><i></i><b>?</b></span><strong>Qu’est-ce qui mérite votre attention en premier&nbsp;?</strong><span>Un diagnostic pour repérer votre priorité et le module adapté.</span><em>Faire le diagnostic ↗</em></a>
-    <a class="bx-ph bx-ph-c" href="ou-est-passe-mon-argent.html?src=boite"><small>Mon argent · dès 2 min</small><span class="bx-dr bx-dr-cash" aria-hidden="true"><span>Ce qui entre</span><b>↘</b><span>Ce qui reste</span><strong>?</strong></span><strong>Où est passé mon argent&nbsp;?</strong><span>Cinq questions, puis vos chiffres pour comprendre ce qui sort.</span><em>Essayer l’outil ↗</em></a>
+    <a class="bx-ph bx-ph-c" href="ou-est-passe-mon-argent.html?src=boite"><small>Mon argent · dès 2 min</small><img class="bx-ph-img" src="clone/assets/outils-ou-passe-argent.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async"><strong>Où est passé mon argent&nbsp;?</strong><span>Cinq questions, puis vos chiffres pour comprendre ce qui sort.</span><em>Essayer l’outil ↗</em></a>
   </div>
 </div></section>
 <script>(function(){var R=document.getElementById("besoins");if(!R)return;
