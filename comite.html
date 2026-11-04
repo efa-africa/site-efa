@@ -326,7 +326,9 @@ button,input,textarea,select{font:inherit}
   function say(el,t,err){el.textContent=t;el.className='msg'+(el.classList.contains('plein')?' plein':'')+(err?' err':'');}
   function compte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
   var mailOk=function(m){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m);};
-  var REDIRECT=location.origin+location.pathname.replace(/\/([^\/.]+)$/,"/$1.html"); // adresse déclarée chez le fournisseur de connexion
+  var REDIRECT=location.origin+location.pathname.replace(/\/([^\/.]+)$/,"/$1.html");
+  /* Lien direct vers un document : comite.html?article=efa-academy (gardé sur l'appareil, même après la connexion par email) */
+  try{var qArt=new URLSearchParams(location.search).get('article');if(qArt)localStorage.setItem('comite-a2075-art',qArt);}catch(e){} // adresse déclarée chez le fournisseur de connexion
 
   /* ---------- Onglets de l'accueil ---------- */
   function onglet(n){['connexion','candidature'].forEach(function(k){var on=k===n;$('t-'+k).setAttribute('aria-selected',String(on));$('p-'+k).hidden=!on;});}
@@ -473,7 +475,7 @@ button,input,textarea,select{font:inherit}
     if(parts.length){z.appendChild(h('span',{class:'titre-avis',text:'Échanges partagés avec le comité'}));parts.forEach(function(x){z.appendChild(carte(x,'partage'));});}
     var lst=E.avis.filter(function(x){return x.article_id===a.id&&x.section===sec;});
     if(lst.length){z.appendChild(h('span',{class:'titre-avis',text:estEditeur()?'Avis reçus':'Vos avis'}));lst.forEach(function(x){z.appendChild(carte(x,estEditeur()&&x.auteur!==E.moi.id?'recu':'mien'));});}
-    var bt=h('button',{class:'ouvrir',type:'button',text:estEditeur()?'Ajouter une note':'Donner mon avis'});
+    var bt=h('button',{class:'ouvrir',type:'button',text:estEditeur()?'+ Ajouter une note':'+ Commenter cette partie'});
     bt.addEventListener('click',function(){bt.hidden=true;z.appendChild(composer(a.id,sec,function(){bt.hidden=false;}));});
     z.appendChild(bt);
     return z;
@@ -576,6 +578,7 @@ button,input,textarea,select{font:inherit}
     var v=$('vue');v.textContent='';
     var ta=h('textarea',{'aria-label':'Fiche de l’article (JSON)',placeholder:'{"id":"n3-…","ordre":3,"numero":"Africa 2075 · N° 3","titre":"…","sections":[…]}'});
     var b=h('button',{class:'btn p',type:'button',text:'Ajouter ou mettre à jour l’article'});var m=h('p',{class:'msg'});
+    [['Charger la fiche EFA Academy','comite-fiches/efa-academy.json']].forEach(function(f){var c=h('button',{class:'btn s',type:'button',text:f[0]});c.addEventListener('click',function(){c.disabled=true;fetch(f[1]+'?v='+Date.now()).then(function(r){return r.text();}).then(function(t){ta.value=t;m.textContent='Fiche chargée : touchez « Ajouter ou mettre à jour l’article ».';c.disabled=false;},function(){m.textContent='La fiche n’a pas pu être chargée.';c.disabled=false;});});fiches.appendChild(c);});
     b.addEventListener('click',async function(){var d;try{d=JSON.parse(ta.value);}catch(e){m.textContent='La fiche n’est pas lisible : vérifiez qu’elle est copiée en entier.';return;}
       if(!d.id||!d.titre||!Array.isArray(d.sections)){m.textContent='La fiche doit contenir au moins id, titre et sections.';return;}
       b.disabled=true;var r=await sb.from('comite_articles').upsert({id:String(d.id),ordre:d.ordre||0,numero:d.numero||'',titre:d.titre,sous_titre:d.sous_titre||d.sousTitre||'',chapeau:d.chapeau||'',statut:d.statut||'relecture',note_editeur:d.note_editeur||d.noteEditeur||'',sections:d.sections,maj:new Date().toISOString()});
