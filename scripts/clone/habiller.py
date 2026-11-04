@@ -7,7 +7,8 @@ Le script est sans effet de bord cumulatif : on peut le relancer après chaque n
 Depuis la bascule du 30 octobre 2026 :
 - L'accueil efa.africa (index.html) et les pages Ateliers (coaching.html), Marchés (marches.html) et
   Études et prospective (etudes-prospective.html) sont fabriqués à partir de leurs modèles clone/_*.html.
-  Modifier les modèles, jamais les pages fabriquées.
+  Les pages fabriquées sont souvent modifiées directement : avant de relancer ce script,
+  lancer scripts/clone/synchro-modeles.py, qui recopie ces pages dans leurs modèles (vérifié chaque matin).
 - Toutes les autres pages (racine et news/) reçoivent, sur place, l'en-tête, le pied et l'habillage blanc et bleu
   (clone/habillage.css, clone/habillage.js, et clone/pages/<page>.css|js quand ils existent).
   L'ancien habillage est d'abord retiré : rien ne s'accumule.
@@ -20,7 +21,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261102z'
+VERSION = '20261104a'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp',
