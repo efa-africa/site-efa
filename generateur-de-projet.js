@@ -8,6 +8,9 @@ var TEMPS=[["","À définir"],["1","Quelques heures : soirs et week-ends"],["2",
 var LIEU=[["","Je suis ouvert"],["salon","Chez moi"],["ville","En ville, au contact"],["terrain","Sur un terrain"]];
 var LIEUX_TXT={salon:"depuis chez vous",ville:"en ville",terrain:"sur un terrain"};
 function lieux(x){var t=x[5].map(function(l){return LIEUX_TXT[l];}).join(" ou ");return t.charAt(0).toUpperCase()+t.slice(1);}
+/* Pour les activités qui se tiennent tous les jours : la question de l'équipe, souvent le vrai problème (retour terrain, 4 nov. 2026) */
+var EQUIPE={elevage:"Un élevage se tient tous les jours, week-ends compris. Avant d’acheter les animaux : une personne qui a déjà tenu un élevage, ou un proche formé quelques semaines dans une ferme qui tourne, et un vétérinaire qui passe régulièrement. Commencez par une seule bande pour voir qui tient la discipline.",
+  agri:"Arrosage, traitements, récolte : prévoyez qui sera sur place chaque jour, et formez-le avant la première saison, chez un producteur qui réussit déjà."};
 var TEMPS_TXT={1:"Soirs et week-ends",2:"Mi-temps",3:"Plein temps"};
 var CLE_W3F="426191fb-4812-4de4-b602-5857464c5916";
 var I=window.GEN_IDEES||[],PAYS=window.GEN_PAYS||{},PLACER=window.GEN_PLACER||[];
@@ -114,7 +117,7 @@ function panneau(){var x=idee(etat.ouverte);if(!x)return;var S=sec(x),L=liste(),
   [].forEach.call(document.querySelectorAll(".onglets button"),function(b){b.setAttribute("aria-selected",b.dataset.o===etat.onglet);});
   var C={idee:'<h3>À quoi ressemble cette activité&nbsp;?</h3><p>'+esc(x[8])+'</p><div class="encart"><b>Budget de départ indicatif</b>'+(x[3]?FC(x[3]):"0 F")+(x[4]?" à "+FC(x[4]):"")+'. Il dépend du lieu, de l’équipement et des prix autour de vous.</div>',
     test:'<h3>Un premier test cette semaine</h3><p>'+esc(x[9])+'</p><div class="encart"><b>Votre but</b>Obtenir une réaction réelle, d’un client ou d’un fournisseur, avant de dépenser tout le budget.</div>',
-    verif:'<h3>Deux choses à regarder de près</h3><div class="encart"><b>À vérifier</b>'+esc(x[10])+'</div><div class="encart"><b>Le piège courant</b>'+esc(x[11])+'</div>',
+    verif:(EQUIPE[x[2]]?'<h3>Trois choses à regarder de près</h3>':'<h3>Deux choses à regarder de près</h3>')+'<div class="encart"><b>À vérifier</b>'+esc(x[10])+'</div><div class="encart"><b>Le piège courant</b>'+esc(x[11])+'</div>'+(EQUIPE[x[2]]?'<div class="encart"><b>Qui va s’en occuper chaque jour ?</b>'+esc(EQUIPE[x[2]])+'</div>':''),
     plan:'<h3>Et si l’idée tient la route&nbsp;?</h3><p>Un business plan de démarrage met vos hypothèses à plat&nbsp;: le client, l’offre, les dépenses de départ, trois scénarios de trésorerie et les 30 premiers jours.</p><div class="encart"><b>Prix de lancement</b><s style="color:#B8341A">'+F(prixN(x))+'</s> → <strong>'+(prixF(x)?F(prixF(x)):"Offert")+'</strong>'+cleTxt()+', paiement unique. Le document arrive dans votre espace, ouvert par votre code.</div>'};
   $("onglet").innerHTML=C[etat.onglet];
   var g=etat.gardees.indexOf(x[0])>-1;$("pn-garder").setAttribute("aria-pressed",g);$("pn-garder").textContent=g?"♥ Gardée":"♡ Garder";
