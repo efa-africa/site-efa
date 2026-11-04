@@ -422,41 +422,50 @@
   if ('MutationObserver' in window) { var t; new MutationObserver(function () { clearTimeout(t); t = setTimeout(marquer, 200); }).observe(document.documentElement, { childList: true, subtree: true }); }
 })();
 
-/* EFA · Bandeau « Promotion d'ouverture » sur toutes les pages (sous l'en-tête). */
+/* EFA · Carte à gratter : elle n'apparaît plus d'office sous l'en-tête. Elle se découvre au moment
+   où l'on a besoin d'un contenu payant (bouton « crédits », « débloquer », bloc verrouillé…), en bas d'écran. */
 (function () {
   if (window.__efaPromo) return; window.__efaPromo = 1;
-  function poser() {
-    if (document.querySelector('.efa-promo')) return;
-    try { if (sessionStorage.getItem('efa_promo_ferme')) return; } catch (e) {}
-    if (/\/(premiers-pas-bourse|coach-bourse)(\.html)?$/.test(location.pathname)) return; // pas de promotion au milieu d'un cours
-    var h = document.getElementById('clone-haut') || document.getElementById('haut') || document.querySelector('body > header');
-    if (!h) return;
+  var vu = false;
+  function ferme() { try { return !!sessionStorage.getItem('efa_promo_ferme'); } catch (e) { return false; } }
+  function afficher(source) {
+    if (vu || ferme() || document.querySelector('.efa-promo')) return;
+    if (/\/(premiers-pas-bourse|coach-bourse)(\.html)?$/.test(location.pathname)) return; // pas au milieu d'un cours
+    vu = true;
     var st = document.createElement('style');
-    st.textContent = '.efa-promo{position:relative;z-index:4;background:#F1F7FA;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220}'
+    st.textContent = '.efa-promo{position:fixed;z-index:60;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translate(-50%,24px);opacity:0;transition:opacity .35s,transform .35s;width:min(640px,calc(100% - 24px));background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(11,18,32,.28);font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220;overflow:hidden}'
+      + '.efa-promo.on{opacity:1;transform:translate(-50%,0)}'
       + '.efa-promo::before{content:"";display:block;height:4px;background:linear-gradient(90deg,#E44828 0 33.3%,#F2B84B 33.3% 66.6%,#3CCB7F 66.6%)}'
-      + '.efa-promo-in{max-width:1180px;margin:0 auto;padding:9px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;flex-wrap:wrap}'
-      + '.efa-promo .p-r,.efa-promo .p-j{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 10px}'
-      + '.efa-promo .p-r{background:#E44828;color:#fff}.efa-promo .p-j{background:#F2B84B;color:#0B1220}'
-      + '.efa-promo .p-t{font-size:15px;font-weight:600;flex:1 1 220px}'
-      + '.efa-promo .p-v{display:inline-block;background:#1E8E57;color:#fff;font-size:14px;font-weight:800;border-radius:8px;padding:8px 14px;text-decoration:none;white-space:nowrap}'
+      + '.efa-promo-in{padding:14px 16px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}'
+      + '.efa-promo .p-t{flex:1 1 260px;font-size:15.5px;line-height:1.35}.efa-promo .p-t b{display:block;font:700 18px/1.25 "Libre Baskerville",Georgia,serif;margin-bottom:3px}'
+      + '.efa-promo .p-v{display:inline-block;background:#1E8E57;color:#fff;font-size:15px;font-weight:800;border-radius:10px;padding:11px 16px;text-decoration:none;white-space:nowrap}'
       + '.efa-promo .p-v:hover{background:#17764A}'
-      + '.efa-promo .p-x{all:unset;cursor:pointer;font-size:20px;line-height:1;color:#4E5566;padding:4px 6px}'
-      + '.efa-promo .p-court{display:none}'
-      + '@media(max-width:620px){.efa-promo .p-long{display:none}.efa-promo .p-court{display:inline}.efa-promo .p-r{order:1}.efa-promo .p-j{order:2}.efa-promo .p-x{order:3;margin-left:auto}.efa-promo .p-t{font-size:14px;flex:1 1 55%;order:4}.efa-promo .p-v{order:5;padding:7px 11px;font-size:13px}.efa-promo-in{gap:6px 8px;padding-top:7px;padding-bottom:9px}.efa-promo .p-r,.efa-promo .p-j{font-size:10px;padding:3px 8px}}';
+      + '.efa-promo .p-x{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;font-size:22px;line-height:1;color:#4E5566;padding:4px 7px}'
+      + '@media(max-width:620px){.efa-promo .p-v{width:100%;text-align:center}}';
     document.head.appendChild(st);
     var surCoaching = /\/coaching(\.html)?$/.test(location.pathname);
-    var b = document.createElement('div'); b.className = 'efa-promo'; b.setAttribute('role', 'region'); b.setAttribute('aria-label', 'Promotion d’ouverture');
-    b.innerHTML = '<div class="efa-promo-in"><span class="p-r">Promotion</span><span class="p-j">Ouverture</span>'
-      + '<span class="p-t"><span class="p-long">Promotion d’ouverture : grattez votre carte chaque jour, et recevez 3 crédits offerts avec votre email.</span><span class="p-court">Une carte à gratter par jour</span></span>'
-      + '<a class="p-v" href="' + (surCoaching ? '#gratter' : 'coaching.html#gratter') + '" data-goatcounter-click="promo-bandeau">Gratter ma carte →</a>'
-      + '<button class="p-x" type="button" aria-label="Fermer le bandeau">×</button></div>';
-    var fil = document.getElementById('fil'), main = document.querySelector('main');
-    if (fil && fil.nextElementSibling) { var apres = fil.nextElementSibling; apres.parentNode.insertBefore(b, apres.nextSibling); }
-    else if (getComputedStyle(h).position === 'fixed' && main) main.insertBefore(b, main.firstChild);
-    else h.parentNode.insertBefore(b, h.nextSibling);
+    var b = document.createElement('div'); b.className = 'efa-promo'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', 'Carte à gratter du jour');
+    b.innerHTML = '<div class="efa-promo-in"><span class="p-t"><b>Ce contenu se débloque avec des crédits.</b>Grattez votre carte du jour : des crédits à gagner chaque jour, et 3 crédits offerts avec votre email.</span>'
+      + '<a class="p-v" href="' + (surCoaching ? '#gratter' : 'coaching.html#gratter') + '" data-goatcounter-click="promo-carte-' + (source || 'payant') + '">Gratter ma carte →</a>'
+      + '<button class="p-x" type="button" aria-label="Fermer">×</button></div>';
+    document.body.appendChild(b); requestAnimationFrame(function () { requestAnimationFrame(function () { b.classList.add('on'); }); });
     b.querySelector('.p-x').addEventListener('click', function () { b.remove(); try { sessionStorage.setItem('efa_promo_ferme', '1'); } catch (e) {} });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', poser); else poser();
+  window.efaCarteDuJour = afficher;
+  var PAYANT = '.verrou,.bp-verrou,[data-payant]', MOTS = /cr[ée]dits?\b|d[ée]bloquer|acheter|payer|r[ée]server ma place/i;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('a,button,' + PAYANT); if (!t) return;
+    if (t.closest('.efa-promo,#clone-haut,header,.pf-l,dialog')) return;
+    if (t.matches(PAYANT) || t.closest(PAYANT) || MOTS.test(t.textContent || '')) setTimeout(function () { afficher('clic'); }, 600);
+  }, true);
+  function observer() {
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (L) { L.forEach(function (x) { if (x.isIntersecting) { afficher('verrou'); io.disconnect(); } }); }, { threshold: .6 });
+    var vus = new WeakSet();
+    function suivre() { document.querySelectorAll(PAYANT).forEach(function (el) { if (!vus.has(el)) { vus.add(el); io.observe(el); } }); }
+    suivre(); new MutationObserver(suivre).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observer); else observer();
 })();
 
 /* EFA · Portefeuille de crédits dans l'en-tête (solde de la phase de test). */
