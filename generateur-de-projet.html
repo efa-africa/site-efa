@@ -58,6 +58,8 @@
 .puces{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
 .puces button{border:0;background:var(--creme);color:var(--nuit);font-weight:700;font-size:15px;min-height:44px;padding:8px 14px;border-radius:999px}
 .puces button[aria-pressed="true"]{background:var(--nuit);color:#fff}
+.securite{margin-top:10px}.securite b{display:block;font-size:15px;line-height:1.35}.securite .puces{margin-top:8px}
+.hyp{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px}.hyp li{font-size:14.5px;line-height:1.45;color:var(--ink2);padding-left:18px;position:relative}.hyp li::before{content:"";position:absolute;left:2px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--corail)}.propo .hyp li{color:#C9D1DE}.propo .hyp-t{color:#9AA4B5}.hyp-t{margin:16px 0 0;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
 .exact{display:block;margin:14px 0 0;font-size:14px;font-weight:700;color:var(--ink2)}
 .exact-w{display:flex;align-items:center;gap:8px;margin-top:5px}
 .exact-w input{flex:1;min-width:0;font:inherit;font-weight:700;font-size:17px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:var(--nuit)}
@@ -361,7 +363,10 @@ body.fige{overflow:hidden}
       <div class="q"><b>Où je peux commencer</b><select id="lieu"></select></div>
       <div class="q"><b>Mon pays</b><select id="pays"></select></div>
     </div>
-    <p class="etape"><span>3</span>Lancer l’analyse</p>
+    <p class="etape"><span>3</span>Ma sécurité d’abord</p>
+    <div class="q securite"><b>Avez-vous déjà une réserve de sécurité (3 mois de dépenses) ?</b><div class="puces" id="q-reserve"><button type="button" data-v="oui">Oui</button><button type="button" data-v="non">Pas encore</button></div></div>
+    <div class="q securite"><b>Cet argent peut-il rester engagé plusieurs mois sans vous gêner ?</b><div class="puces" id="q-bloque"><button type="button" data-v="oui">Oui</button><button type="button" data-v="non">J’en aurai peut-être besoin</button></div></div>
+    <p class="etape"><span>4</span>Lancer l’analyse</p>
     <button type="button" class="lancer brille" id="lancer">Lancer l’analyse →</button>
     <button type="button" class="gardees-b" id="gardees-b">♡ Mes idées gardées · <span id="gardees-n">0</span></button>
     <p class="prive">Les montants sont indicatifs, à vérifier sur votre marché.</p>
@@ -369,7 +374,7 @@ body.fige{overflow:hidden}
   <div class="zone">
     <div class="guide" id="guide">
       <span class="sur">Comment ça marche</span>
-      <h2>Trois gestes, et votre meilleure piste apparaît.</h2>
+      <h2>Quelques réponses, et une première piste à tester apparaît.</h2>
       <ol class="g-etapes">
         <li><b>1</b><span><strong>Indiquez votre budget</strong> avec le curseur, un raccourci ou le montant exact.</span></li>
         <li><b>2</b><span><strong>Affinez si vous voulez</strong> : ce que vous aimez faire, votre temps, votre lieu.</span></li>
@@ -503,7 +508,7 @@ body.fige{overflow:hidden}
 <script src="generateur-idees.js?v=20261102z"></script>
 <script src="efa-config.js?v=20261102z"></script>
 <script src="efa-commande.js?v=20261102y2"></script>
-<script src="generateur-de-projet.js?v=20261103f"></script>
+<script src="generateur-de-projet.js?v=20261104b"></script>
 <script>window.EFA_VOIX={pendant:{src:"audio/accueil/generateur-pendant.mp3",duree:25,ancre:"#guide h2",place:"after"},fin:{src:"audio/accueil/generateur-fin.mp3",duree:26,quand:function(){return document.getElementById("vedette-c");},ancre:"#vedette",place:"before"}};</script>
 <script src="efa-voix-elysee.js?v=20261102v1" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

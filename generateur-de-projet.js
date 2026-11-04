@@ -12,9 +12,9 @@ var TEMPS_TXT={1:"Soirs et week-ends",2:"Mi-temps",3:"Plein temps"};
 var CLE_W3F="426191fb-4812-4de4-b602-5857464c5916";
 var I=window.GEN_IDEES||[],PAYS=window.GEN_PAYS||{},PLACER=window.GEN_PLACER||[];
 var K="efa_gen_v2";
-var etat={budget:300000,libre:false,savoir:"",temps:"",lieu:"",pays:"ci",decal:0,vus:3,ouverte:null,onglet:"idee",cmp:[],gardees:[],precedent:null,analyse:false,perime:false};
-try{var s=JSON.parse(localStorage.getItem(K)||"{}");["budget","libre","savoir","temps","lieu","pays","gardees"].forEach(function(k){if(s[k]!=null)etat[k]=s[k];});}catch(e){}
-function sv(){try{localStorage.setItem(K,JSON.stringify({budget:etat.budget,libre:etat.libre,savoir:etat.savoir,temps:etat.temps,lieu:etat.lieu,pays:etat.pays,gardees:etat.gardees}));}catch(e){}}
+var etat={budget:300000,libre:false,reserve:"",bloque:"",savoir:"",temps:"",lieu:"",pays:"ci",decal:0,vus:3,ouverte:null,onglet:"idee",cmp:[],gardees:[],precedent:null,analyse:false,perime:false};
+try{var s=JSON.parse(localStorage.getItem(K)||"{}");["budget","libre","reserve","bloque","savoir","temps","lieu","pays","gardees"].forEach(function(k){if(s[k]!=null)etat[k]=s[k];});}catch(e){}
+function sv(){try{localStorage.setItem(K,JSON.stringify({budget:etat.budget,libre:etat.libre,reserve:etat.reserve,bloque:etat.bloque,savoir:etat.savoir,temps:etat.temps,lieu:etat.lieu,pays:etat.pays,gardees:etat.gardees}));}catch(e){}}
 var $=function(id){return document.getElementById(id);};
 function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function F(n){return Math.round(n).toLocaleString("fr-FR").replace(/[\s ]/g," ")+" F";}
@@ -26,39 +26,47 @@ var IMG_IDEE={"escargots": "gen-escargots.webp", "poulets": "gen-poulets.webp", 
 function img(x){var f=IMG_IDEE[x[0]]||sec(x)[1];return f?"clone/assets/"+f:"";}
 function visuel(x,cls){var u=img(x);return u?'<img src="'+u+'" alt="" loading="lazy">':'<div class="sans-photo" aria-hidden="true"><span>'+esc(sec(x)[0])+'</span></div>';}
 function varier(L){var out=[],reste=L.slice();while(reste.length){var vus={},lot=[];for(var i=0;i<reste.length&&lot.length<3;i++){if(!vus[reste[i][2]]){vus[reste[i][2]]=1;lot.push(reste[i]);}}if(lot.length<3)for(var j=0;j<reste.length&&lot.length<3;j++){if(lot.indexOf(reste[j])<0)lot.push(reste[j]);}lot.forEach(function(x){out.push(x);reste.splice(reste.indexOf(x),1);});}return out;}
-function B(){return etat.libre?Infinity:etat.budget;}
+/* Prudence : la part mise de côté dépend de la réserve existante ; si l’argent peut servir bientôt, le projet n’en prend que la moitié. */
+function partRes(){return etat.reserve==="oui"?.1:etat.reserve==="non"?.3:.2;}
+function BP(){if(etat.libre)return Infinity;var b=etat.budget*(1-partRes());if(etat.bloque==="non")b=b*.5;return Math.round(b/1000)*1000;}
+function B(){return etat.libre?Infinity:BP();}
 
 function score(x){var s=0,sav=x[7],P=PAYS[etat.pays];
   if(etat.savoir){if(sav.indexOf(etat.savoir)>-1)s+=5;}
   if(etat.lieu){s+=x[5].indexOf(etat.lieu)>-1?2:-2;}
   if(etat.temps){s+=x[6]<=+etat.temps?2:-3;}
   if(P){if(P.ids.indexOf(x[0])>-1)s+=1.5;else if(P.s.indexOf(x[2])>-1)s+=.7;}
-  if(!etat.libre){var r=x[3]/etat.budget;s+=r>=.25?1.5:r>=.05?.6:0;}
+  if(!etat.libre){var r=x[3]/BP();s+=r>=.25?1.5:r>=.05?.6:0;}
   return s;}
 function criteres(x){var c=[];
   if(etat.savoir&&x[7].indexOf(etat.savoir)>-1)c.push("ce que vous aimez faire");
   if(etat.temps&&x[6]<=+etat.temps)c.push("votre temps");
   if(etat.lieu&&x[5].indexOf(etat.lieu)>-1)c.push("votre lieu");
   return c;}
-function echelle(x){return etat.libre?(x[4]||x[3]):Math.min(x[4]||x[3],etat.budget);}
-function rang(x){if(etat.libre)return 0;var f=echelle(x)/etat.budget;return f>=.5?0:f>=.15?1:2;}
+function echelle(x){return etat.libre?(x[4]||x[3]):Math.min(x[4]||x[3],BP());}
+function rang(x){if(etat.libre)return 0;var f=echelle(x)/BP();return f>=.5?0:f>=.15?1:2;}
 function liste(){var b=B();return I.filter(function(x){return x[3]<=b;}).map(function(x){return [rang(x),score(x),echelle(x),x];}).sort(function(a,c){return a[0]-c[0]||c[1]-a[1]||c[2]-a[2];}).map(function(a){return a[3];});}
-function hauteur(x){if(etat.libre)return "De "+(x[3]?FC(x[3]):"0 F")+" à "+FC(x[4]||x[3]);var e=echelle(x);return e>=etat.budget?"Peut employer tout votre budget":"Emploie jusqu’à "+FC(e)+" de votre budget";}
+function hauteur(x){if(etat.libre)return "De "+(x[3]?FC(x[3]):"0 F")+" à "+FC(x[4]||x[3]);var e=echelle(x);return e>=BP()?"Peut employer toute la part prévue pour un projet ("+FC(BP())+")":"Emploie jusqu’à "+FC(e)+" de votre budget";}
 function listeVue(){return varier(liste());}
 
 function carte(x,n){var g=etat.gardees.indexOf(x[0])>-1,c=criteres(x),S=sec(x);
   var lieu=lieux(x);
   return '<article class="carte" style="animation-delay:'+(n*50)+'ms"><div class="img">'+visuel(x)+'<span class="tag">'+esc(S[0])+'</span></div><div class="corps"><span class="meta">'+esc(lieu)+' · '+TEMPS_TXT[x[6]]+'</span><h3>'+esc(x[1])+'</h3><span class="prix">'+hauteur(x)+'<small>Ticket indicatif : '+(x[3]?FC(x[3]):"0 F")+' à '+FC(x[4]||x[3])+', à vérifier</small></span><p class="pas">«&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir" data-o="'+x[0]+'">Explorer →</button><button type="button" class="coeur partage-b" data-p="'+x[0]+'" aria-label="Partager cette idée">↗</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+g+'" aria-label="'+(g?"Retirer":"Garder")+' cette idée">'+(g?"♥":"♡")+'</button></div></div></article>';}
 
-function proposition(L){if(etat.libre||!L.length)return "";var b=etat.budget,res=Math.round(b*.1/1000)*1000,dispo=b-res,P1=L[0],m1=Math.min(P1[4]||P1[3],dispo);if(m1<P1[3])m1=Math.min(P1[3],b);
-  var reste=Math.max(0,b-res-m1),lignes=[[P1[1],m1,"Projet principal","p1"]],P2=null;
-  if(reste>=b*.15){for(var i=1;i<L.length;i++){if(L[i][2]!==P1[2]&&L[i][3]<=reste){P2=L[i];break;}}
-    if(P2){var m2=Math.min(P2[4]||P2[3],reste);lignes.push([P2[1],m2,"Deuxième projet","p2"]);reste-=m2;}}
-  if(reste>=1000)lignes.push(["Placer ce qui reste, sans risque inutile",reste,"Placement","pl"]);
-  if(res>0)lignes.push(["Réserve de précaution, à ne pas toucher",res,"Réserve","rs"]);
-  return '<div class="propo"><span class="sur">Notre proposition pour '+FC(b)+'</span><h3>Voici comment votre budget pourrait travailler</h3>'+lignes.map(function(l){var pc=Math.round(l[1]/b*100);return '<div class="pl-l"><div class="pl-t"><small>'+l[2]+'</small><b>'+esc(l[0])+'</b></div><strong>'+FC(l[1])+'</strong><span class="pl-barre"><i class="'+l[3]+'" style="width:'+Math.max(3,pc)+'%"></i></span></div>';}).join("")+'<p class="md-note">Répartition indicative : chaque montant se confirme par des devis et un premier test.</p></div>';}
+function proposition(L){if(etat.libre||!L.length)return "";var b=etat.budget,res=Math.round(b*partRes()/1000)*1000,dispo=BP(),P1=L[0],m1=Math.min(P1[4]||P1[3],dispo);if(m1<P1[3])m1=Math.min(P1[3],dispo);
+  var pool=Math.max(0,dispo-m1),reste=Math.max(0,b-res-m1),lignes=[[P1[1],m1,"Projet principal","p1"]],P2=null;
+  if(pool>=b*.15){for(var i=1;i<L.length;i++){if(L[i][2]!==P1[2]&&L[i][3]<=pool){P2=L[i];break;}}
+    if(P2){var m2=Math.min(P2[4]||P2[3],pool);lignes.push([P2[1],m2,"Deuxième projet","p2"]);reste-=m2;}}
+  if(reste>=1000)lignes.push([etat.bloque==="non"?"Garder disponible, sur un compte ou un placement retirable":"Placer ce qui reste, sans risque inutile",reste,etat.bloque==="non"?"Disponible":"Placement","pl"]);
+  if(res>0)lignes.push([etat.reserve==="oui"?"Complément de réserve, à ne pas toucher":"Votre réserve de sécurité, à constituer d’abord",res,"Réserve","rs"]);
+  return '<div class="propo"><span class="sur">Notre proposition pour '+FC(b)+'</span><h3>Voici comment votre budget pourrait travailler</h3>'+lignes.map(function(l){var pc=Math.round(l[1]/b*100);return '<div class="pl-l"><div class="pl-t"><small>'+l[2]+'</small><b>'+esc(l[0])+'</b></div><strong>'+FC(l[1])+'</strong><span class="pl-barre"><i class="'+l[3]+'" style="width:'+Math.max(3,pc)+'%"></i></span></div>';}).join("")+hypotheses()+'<p class="md-note">Répartition indicative : chaque montant se confirme par des devis et un premier test.</p></div>';}
+function hypotheses(){var h=[];
+  h.push(etat.reserve==="oui"?"Vous avez déjà une réserve : 10 % seulement restent de côté.":etat.reserve==="non"?"Vous n’avez pas encore de réserve : 30 % sont mis de côté avant tout projet.":"Réserve non précisée : 20 % sont mis de côté par prudence. Répondez à « Ma sécurité d’abord » pour ajuster.");
+  h.push(etat.bloque==="non"?"Vous aurez peut-être besoin de cet argent : le projet n’en prend que la moitié, le reste reste disponible.":etat.bloque==="oui"?"Cet argent peut rester engagé plusieurs mois.":"Durée non précisée : on suppose que l’argent peut rester engagé quelques mois.");
+  h.push("Ni vos charges ni vos revenus ne sont connus ici : avant de dépenser, testez petit et gardez de quoi tenir.");
+  return '<p class="hyp-t">Ce que suppose cette proposition</p><ul class="hyp">'+h.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul>';}
 function vedette(x){var c=criteres(x);
-  return '<article class="vedette" id="vedette-c"><div class="v-img">'+visuel(x)+'<span class="ici">Commencez ici</span></div><div class="v-corps"><span class="sur">Votre meilleure piste · '+esc(sec(x)[0])+'</span><h3>'+esc(x[1])+'</h3><p class="v-h">'+hauteur(x)+'</p><p>'+esc(x[8])+'</p><p class="pas">Premier pas : «&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir brille" data-o="'+x[0]+'">Voir cette piste en détail →</button><button type="button" class="coeur partage-b" data-p="'+x[0]+'" aria-label="Partager cette idée">↗</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+(etat.gardees.indexOf(x[0])>-1)+'" aria-label="Garder cette idée">'+(etat.gardees.indexOf(x[0])>-1?"♥":"♡")+'</button></div></div></article>';}
+  return '<article class="vedette" id="vedette-c"><div class="v-img">'+visuel(x)+'<span class="ici">À tester d’abord</span></div><div class="v-corps"><span class="sur">Une piste à tester d’abord · '+esc(sec(x)[0])+'</span><h3>'+esc(x[1])+'</h3><p class="v-h">'+hauteur(x)+'</p><p>'+esc(x[8])+'</p><p class="pas">Premier pas : «&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir brille" data-o="'+x[0]+'">Voir cette piste en détail →</button><button type="button" class="coeur partage-b" data-p="'+x[0]+'" aria-label="Partager cette idée">↗</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+(etat.gardees.indexOf(x[0])>-1)+'" aria-label="Garder cette idée">'+(etat.gardees.indexOf(x[0])>-1?"♥":"♡")+'</button></div></div></article>';}
 function rendre(){$("gardees-n").textContent=etat.gardees.length;placer();if(!etat.analyse)return;
   var L=liste(),n=L.length,P=PAYS[etat.pays];
   $("recap").textContent=[etat.libre?"Sans limite de budget":"Budget : "+F(etat.budget)].concat([[SAVOIR,etat.savoir],[TEMPS,etat.temps],[LIEU,etat.lieu]].filter(function(a){return a[1];}).map(function(a){for(var i=0;i<a[0].length;i++)if(a[0][i][0]===a[1])return a[0][i][1];})).concat(P?[P.n]:[]).join(" · ");
@@ -73,8 +81,8 @@ function rendre(){$("gardees-n").textContent=etat.gardees.length;placer();if(!et
 function change(){etat.decal=0;etat.vus=3;sv();if(etat.analyse){etat.perime=true;$("perime").hidden=false;$("resultats").classList.add("est-perime");}$("lancer").classList.add("brille");placer();}
 var T=[];
 function analyser(){T.forEach(clearTimeout);T=[];etat.perime=false;$("perime").hidden=true;$("resultats").classList.remove("est-perime");$("lancer").classList.remove("brille");
-  var b=etat.libre?"sans limite":FC(etat.budget),n=I.filter(function(x){return x[3]<=B();}).length,red=matchMedia("(prefers-reduced-motion:reduce)").matches,pas=red?150:1500;
-  var E=["Je passe en revue les "+I.length+" idées du catalogue…","J’en garde "+n+" qui tiennent dans votre budget ("+b+")…","Je place en tête celles qui sont à la hauteur de votre budget…","Je tiens compte de ce que vous aimez faire, de votre temps et de votre lieu…","Je compose une proposition : projet, réserve, placement…","Je choisis votre meilleure piste."];
+  var b=etat.libre?"sans limite":FC(etat.budget),n=I.filter(function(x){return x[3]<=B();}).length,red=matchMedia("(prefers-reduced-motion:reduce)").matches,pas=red?150:1200;
+  var E=["Je passe en revue les "+I.length+" idées du catalogue…","Je mets d’abord de côté votre sécurité ("+(etat.libre?"selon vos réponses":FC(etat.budget-BP())+" sur "+b)+")…","J’en garde "+n+" qui tiennent dans la part prévue pour un projet…","Je place en tête celles qui sont à la hauteur de votre budget…","Je tiens compte de ce que vous aimez faire, de votre temps et de votre lieu…","Je compose une proposition : projet, réserve, placement…","Je retiens une piste à tester d’abord, avec ses hypothèses."];
   $("guide").hidden=true;$("resultats").hidden=true;var A=$("analyse");A.hidden=false;$("an-l").innerHTML=E.map(function(t){return "<li>"+esc(t)+"</li>";}).join("");var li=[].slice.call($("an-l").children);$("an-barre").style.width="0%";
   $("lancer").disabled=true;$("lancer").textContent="Analyse en cours…";
   if(window.innerWidth<960)A.scrollIntoView({behavior:red?"auto":"smooth",block:"start"});
@@ -101,7 +109,7 @@ function ouvrir(id){var x=idee(id);if(!x)return;dernierFocus=document.activeElem
 function fermer(){etat.ouverte=null;$("panneau").hidden=true;$("voile").hidden=true;document.body.classList.remove("fige");if(dernierFocus)try{dernierFocus.focus();}catch(e){}}
 function prix(x){var base=Math.min(Math.max(etat.libre?x[3]:etat.budget,x[3]),x[4]||x[3]);return Math.min(25000,Math.max(5000,Math.round(base*.01*sec(x)[2]/1000)*1000));}
 function panneau(){var x=idee(etat.ouverte);if(!x)return;var S=sec(x),L=liste(),k=L.indexOf(x);
-  $("pn-imgw").innerHTML=visuel(x);$("pn-sec").textContent=S[0];$("pn-titre").textContent=x[1];$("pn-num").textContent=k===0?"Votre meilleure piste":k>-1?"Piste "+(k+1)+" sur "+L.length:"Explorer une idée";
+  $("pn-imgw").innerHTML=visuel(x);$("pn-sec").textContent=S[0];$("pn-titre").textContent=x[1];$("pn-num").textContent=k===0?"La piste à tester d’abord":k>-1?"Piste "+(k+1)+" sur "+L.length:"Explorer une idée";
   $("pn-meta").innerHTML=["Dès "+(x[3]?FC(x[3]):"0 F"),lieux(x),TEMPS_TXT[x[6]]].map(function(t){return "<span>"+esc(t)+"</span>";}).join("");
   [].forEach.call(document.querySelectorAll(".onglets button"),function(b){b.setAttribute("aria-selected",b.dataset.o===etat.onglet);});
   var C={idee:'<h3>À quoi ressemble cette activité&nbsp;?</h3><p>'+esc(x[8])+'</p><div class="encart"><b>Budget de départ indicatif</b>'+(x[3]?FC(x[3]):"0 F")+(x[4]?" à "+FC(x[4]):"")+'. Il dépend du lieu, de l’équipement et des prix autour de vous.</div>',
@@ -209,6 +217,8 @@ function soumettre(){
 $("surprise").onclick=function(){etat.decal+=etat.vus;rendre();};
 if($("propre-go"))$("propre-go").onclick=soumettre;
 $("voir-plus").onclick=function(){etat.vus+=etat.vus===3?3:6;rendre();};
+["reserve","bloque"].forEach(function(k){var box=$("q-"+k);if(!box)return;function maj(){[].forEach.call(box.children,function(b){b.setAttribute("aria-pressed",b.dataset.v===etat[k]);});}
+  [].forEach.call(box.children,function(b){b.onclick=function(){etat[k]=etat[k]===b.dataset.v?"":b.dataset.v;maj();change();};});maj();});
 $("lancer").onclick=analyser;$("perime-b").onclick=analyser;
 $("vedette").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]"),pp=e.target.closest("[data-p]");if(pp){partager(pp.dataset.p);return;}if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
 $("cartes").addEventListener("click",function(e){var o=e.target.closest("[data-o]"),g=e.target.closest("[data-g]"),pp=e.target.closest("[data-p]");if(pp){partager(pp.dataset.p);return;}if(o)ouvrir(o.dataset.o);if(g)garder(g.dataset.g);});
