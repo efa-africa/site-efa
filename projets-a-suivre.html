@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html data-clone data-clone-plein lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1220">
+<title>Projets à suivre · EFA Déclic</title>
+<meta name="description" content="Des porteurs de projets passés par EFA Déclic présentent leur projet en une page. Suivez-les, échangez, décidez par vous-même.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=20261102z">
+<style>
+.ps{--nuit:#071d38;--corail:#DA3C1B;--bleu:#1B71B2;--teal:#147f9b;--clair:#EEF5FC;--papier:#fff;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:var(--ink);font-size:17px;line-height:1.55;background:var(--clair)}
+.ps *{box-sizing:border-box}
+.ps-w{max-width:1120px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+.ps h1,.ps h2,.ps h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;line-height:1.12;text-wrap:balance;margin:0;color:var(--nuit)}
+.ps-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail);margin:0 0 12px}
+.ps-hero{position:relative;min-height:min(78svh,680px);display:flex;align-items:flex-end;background:#0B1220;overflow:hidden}
+.ps-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.ps-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,29,56,.94) 0%,rgba(7,29,56,.75) 38%,rgba(7,29,56,.05) 78%)}
+.ps-hero .ps-w{position:relative;z-index:1;width:100%;padding-block:0 clamp(40px,6vw,72px)}
+.ps-hero .ps-k{color:#F09680}
+.ps-hero h1{color:#fff;font-size:clamp(40px,6.5vw,76px)}
+.ps-hero h1 i{font-style:normal;color:#E5462E}
+.ps-hero p{color:#C9D1DE;max-width:56ch;font-size:clamp(17px,2vw,20px);margin:16px 0 0}
+.ps-portes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:-34px;position:relative;z-index:2}
+.ps-porte{all:unset;cursor:pointer;display:block;background:var(--papier);border-radius:16px;padding:24px 24px 22px;box-shadow:0 12px 34px rgba(7,29,56,.10)}
+.ps-porte:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
+.ps-porte small{display:block;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.ps-porte b{display:block;font:700 clamp(22px,2.4vw,28px)/1.2 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin:8px 0 6px}
+.ps-porte span{color:var(--ink2)}
+.ps-porte em{display:inline-block;margin-top:14px;font-style:normal;font-weight:800;color:#fff;background:var(--corail);border-radius:10px;padding:10px 16px}
+.ps-porte.inv em{background:var(--nuit)}
+.ps-sec{padding-block:clamp(48px,7vw,84px)}
+.ps-sec h2{font-size:clamp(28px,3.6vw,42px)}
+.ps-lead{color:var(--ink2);max-width:62ch;margin:12px 0 0}
+.ps-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:28px}
+.ps-c{background:var(--papier);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.ps-c .tags{display:flex;flex-wrap:wrap;gap:6px}.ps-c .tags span{background:var(--clair);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;color:var(--nuit)}
+.ps-c h3{font-size:22px}.ps-c p{margin:0;color:var(--ink2)}
+.ps-c dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:4px 0 0;font-size:15px}.ps-c dt{color:var(--ink3)}.ps-c dd{margin:0;font-weight:700;color:var(--nuit)}
+.ps-c button{all:unset;cursor:pointer;margin-top:auto;align-self:flex-start;background:var(--nuit);color:#fff;font-weight:800;border-radius:10px;padding:11px 16px}
+.ps-vide{background:var(--papier);border-radius:16px;padding:26px;margin-top:28px;max-width:720px}
+.ps-vide b{display:block;font:700 22px/1.25 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin-bottom:6px}
+.ps-vide p{margin:0;color:var(--ink2)}
+.ps-etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;padding:0;list-style:none;counter-reset:e}
+.ps-etapes li{background:var(--papier);border-radius:16px;padding:22px;counter-increment:e}
+.ps-etapes li::before{content:counter(e);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--nuit);color:#fff;font-weight:800;margin-bottom:10px}
+.ps-etapes b{display:block;color:var(--nuit);font-size:18px;margin-bottom:4px}.ps-etapes span{color:var(--ink2)}
+.ps-regle{background:var(--nuit);color:#E8EDF5;border-radius:16px;padding:clamp(24px,4vw,40px)}
+.ps-regle h2{color:#fff}.ps-regle .ps-k{color:#F09680}
+.ps-regle ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px;max-width:70ch}
+.ps-regle li{padding-left:28px;position:relative}.ps-regle li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:50%;background:#E5462E}
+.ps-regle li b{color:#fff}
+.ps-modal{position:fixed;inset:0;z-index:80;background:rgba(7,18,32,.62);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.ps-modal[hidden]{display:none!important}
+.ps-form{position:relative;background:#fff;border-radius:18px;width:min(620px,100%);max-height:calc(100svh - 24px);overflow:auto;padding:26px 22px 22px;font-family:"Source Sans 3",system-ui,sans-serif}
+.ps-form[hidden]{display:none!important}
+@media(min-width:700px){.ps-modal{align-items:center}}
+.ps-form h3{font-size:24px;margin-bottom:6px}
+.ps-form .note{color:var(--ink3);font-size:14.5px;margin:0 0 6px}
+.ps-form label{display:block;margin-top:12px;font-size:14px;font-weight:700;color:var(--ink2)}
+.ps-form input,.ps-form select,.ps-form textarea{display:block;width:100%;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:#0B1220}
+.ps-form textarea{min-height:110px;resize:vertical}
+.ps-form .ck{display:flex;gap:10px;align-items:flex-start;font-weight:600}.ps-form .ck input{width:auto;margin-top:3px}
+.ps-form .deux{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.ps-x{all:unset;cursor:pointer;position:absolute;top:12px;right:14px;font-size:26px;line-height:1;color:var(--ink2)}
+.ps-btn{all:unset;cursor:pointer;display:block;text-align:center;margin-top:18px;background:var(--corail);color:#fff;font-weight:800;font-size:17px;border-radius:12px;padding:14px}
+.ps-btn[disabled]{opacity:.6;cursor:wait}
+.ps-err{color:#B3261E;font-weight:700;margin:10px 0 0}
+.ps-ok{text-align:left}
+@media(max-width:700px){.ps-hero{display:block;min-height:0;background:#071d38}.ps-hero img{position:relative;display:block;height:52svh}.ps-hero::after{display:none}.ps-hero .ps-w{padding-top:26px;padding-bottom:58px}}
+@media(max-width:760px){.ps-portes{grid-template-columns:1fr;margin-top:-24px}.ps-etapes{grid-template-columns:1fr}.ps-form .deux{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261104b">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<main class="ps" data-garde>
+<section class="ps-hero" data-photo aria-labelledby="ps-t"><img src="clone/assets/projets-a-suivre.webp" alt="Trois personnes étudient un projet ensemble autour d’une table, carnet et calculatrice" fetchpriority="high">
+  <div class="ps-w"><p class="ps-k">EFA Déclic · après le business plan</p><h1 id="ps-t">Projets à suivre<i>.</i></h1>
+  <p>Des porteurs de projets passés par EFA Déclic présentent leur projet en une page. Vous suivez, vous échangez, vous décidez par vous-même.</p></div>
+</section>
+<div class="ps-w"><div class="ps-portes">
+  <button type="button" class="ps-porte" data-ouvrir="porteur"><small>J’ai un projet</small><b>Présenter mon projet</b><span>Une page, relue par EFA avant publication.</span><br><em>Présenter mon projet →</em></button>
+  <button type="button" class="ps-porte inv" data-ouvrir="suiveur"><small>Je veux soutenir</small><b>Suivre des projets</b><span>Recevez les nouveaux projets et demandez une mise en relation.</span><br><em>Suivre des projets →</em></button>
+</div></div>
+
+<section class="ps-sec" aria-labelledby="ps-liste-t"><div class="ps-w">
+  <p class="ps-k">Les projets</p><h2 id="ps-liste-t">Sélectionnés par EFA, présentés par leurs porteurs.</h2>
+  <div id="ps-liste" class="ps-grille" hidden></div>
+  <div id="ps-vide" class="ps-vide"><b>La première sélection est en cours.</b><p>Les premiers projets seront publiés ici. Inscrivez-vous pour les recevoir dès leur publication, ou présentez le vôtre.</p></div>
+</div></section>
+
+<section class="ps-sec" style="padding-top:0" aria-labelledby="ps-c-t"><div class="ps-w">
+  <p class="ps-k">Comment ça marche</p><h2 id="ps-c-t">Trois étapes, et l’on se parle directement.</h2>
+  <ol class="ps-etapes">
+    <li><b>Le porteur présente son projet</b><span>Une page : le besoin, le premier test, ce qu’il apporte déjà, ce qu’il recherche.</span></li>
+    <li><b>EFA relit et publie</b><span>Les projets passés par EFA Déclic et le business plan sont présentés en priorité.</span></li>
+    <li><b>Vous demandez une mise en relation</b><span>EFA vous met en contact. La suite se décide entre vous.</span></li>
+  </ol>
+</div></section>
+
+<section class="ps-sec" style="padding-top:0" aria-labelledby="ps-r-t"><div class="ps-w"><div class="ps-regle">
+  <p class="ps-k">Nos règles</p><h2 id="ps-r-t">EFA présente et met en relation. Vous décidez.</h2>
+  <ul>
+    <li><b>Aucun argent ne passe par EFA.</b> EFA ne collecte pas de fonds et ne reçoit aucune commission sur les sommes engagées.</li>
+    <li><b>Aucun gain n’est promis.</b> Un projet peut réussir, prendre du retard ou échouer : on peut perdre tout ou partie de ce que l’on engage.</li>
+    <li><b>Vérifiez par vous-même.</b> Rencontrez le porteur, demandez les pièces, et faites-vous accompagner par un professionnel avant de vous engager.</li>
+    <li><b>Les montants sont ceux du porteur.</b> EFA les relit, mais ne les garantit pas.</li>
+  </ul>
+</div></div></section>
+
+<section class="ps-sec" style="padding-top:0"><div class="ps-w"><div class="ps-vide" style="margin-top:0">
+  <b>Pas encore de projet prêt ?</b><p>Commencez par EFA Déclic : votre budget, votre réserve d’abord, puis une idée à tester. <a href="generateur-de-projet.html" style="font-weight:800;color:#147f9b">Ouvrir EFA Déclic →</a></p>
+</div></div></section>
+</main>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+
+
+<div class="ps-modal" id="ps-modal" hidden data-garde role="dialog" aria-modal="true">
+  <form class="ps-form" id="f-porteur" data-type="porteur" hidden novalidate>
+    <button type="button" class="ps-x" data-fermer aria-label="Fermer">×</button>
+    <p class="ps-k">J’ai un projet</p><h3>Présenter mon projet</h3>
+    <p class="note">EFA relit chaque projet avant publication et vous recontacte. Rien n’est publié sans votre accord.</p>
+    <div class="deux"><label>Votre prénom<input name="prenom" required maxlength="60"></label><label>Pays et ville<input name="lieu" maxlength="80" placeholder="ex. Abidjan, Côte d’Ivoire"></label></div>
+    <div class="deux"><label>Votre email<input name="email" type="email" required autocomplete="email"></label><label>WhatsApp (facultatif)<input name="whatsapp" inputmode="tel" maxlength="30"></label></div>
+    <label>Nom du projet<input name="projet" required maxlength="80" placeholder="ex. Jus de bissap de quartier"></label>
+    <div class="deux"><label>Secteur<select name="secteur"><option>Commerce et distribution</option><option>Alimentation et restauration</option><option>Agriculture et élevage</option><option>Services</option><option>Numérique</option><option>Artisanat et mode</option><option>Transport et logistique</option><option>Autre</option></select></label>
+    <label>Où en êtes-vous ?<select name="stade"><option>C’est une idée</option><option>Premier test en cours</option><option>Déjà des ventes</option></select></label></div>
+    <div class="deux"><label>Montant recherché (F CFA)<input name="montant" inputmode="numeric" maxlength="20" placeholder="ex. 2 000 000"></label><label>Ce que vous apportez déjà<input name="apport" maxlength="120" placeholder="ex. 500 000 F, un local, du matériel"></label></div>
+    <label>Votre projet en quelques lignes<textarea name="resume" required maxlength="900" placeholder="Le besoin, vos clients, votre premier test, ce que vous ferez avec le soutien recherché."></textarea></label>
+    <label>Business plan EFA<select name="business_plan"><option>Pas encore</option><option>Oui, j’ai un business plan EFA</option><option>J’ai mon propre business plan</option></select></label>
+    <label class="ck"><input type="checkbox" name="accord" value="oui"> J’accepte qu’EFA publie un résumé de mon projet après relecture et validation avec moi.</label>
+    <p class="ps-err" hidden></p><button type="submit" class="ps-btn">Envoyer mon projet</button>
+  </form>
+  <form class="ps-form" id="f-suiveur" data-type="suiveur" hidden novalidate>
+    <button type="button" class="ps-x" data-fermer aria-label="Fermer">×</button>
+    <p class="ps-k">Je veux soutenir</p><h3 id="fs-t">Suivre des projets</h3>
+    <p class="note" id="fs-n">Recevez les nouveaux projets dès leur publication, et demandez une mise en relation quand un projet vous intéresse.</p>
+    <input type="hidden" name="projet_vise">
+    <div class="deux"><label>Votre prénom<input name="prenom" required maxlength="60"></label><label>Pays et ville<input name="lieu" maxlength="80"></label></div>
+    <div class="deux"><label>Votre email<input name="email" type="email" required autocomplete="email"></label><label>WhatsApp (facultatif)<input name="whatsapp" inputmode="tel" maxlength="30"></label></div>
+    <div class="deux"><label>Vous êtes<select name="profil"><option>Particulier</option><option>Club d’investissement ou tontine</option><option>Entreprise</option><option>Mentor, sans financer</option></select></label>
+    <label>Montant envisagé<select name="montant"><option>Je ne sais pas encore</option><option>Moins de 500 000 F</option><option>500 000 à 2 millions F</option><option>2 à 10 millions F</option><option>Plus de 10 millions F</option></select></label></div>
+    <label>Les secteurs qui vous intéressent<input name="secteurs" maxlength="160" placeholder="ex. agriculture, alimentation"></label>
+    <label class="ck"><input type="checkbox" name="risques" value="compris"> J’ai compris qu’aucun gain n’est promis, qu’EFA ne collecte pas d’argent et que je décide par moi-même.</label>
+    <p class="ps-err" hidden></p><button type="submit" class="ps-btn">M’inscrire</button>
+  </form>
+  <div class="ps-form ps-ok" id="ps-ok" hidden><button type="button" class="ps-x" data-fermer aria-label="Fermer">×</button><p class="ps-k">Bien reçu</p><h3 id="ok-t">Merci, c’est arrivé chez EFA.</h3><p class="note" id="ok-p"></p><button type="button" class="ps-btn" data-fermer>Fermer</button></div>
+</div>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i);},M=$("ps-modal"),P=[];
+  function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function ouvrir(type,projet){["f-porteur","f-suiveur","ps-ok"].forEach(function(i){$(i).hidden=true;});var f=$("f-"+type);f.hidden=false;
+    if(type==="suiveur"){f.elements.projet_vise.value=projet||"";$("fs-t").textContent=projet?"Être mis en relation":"Suivre des projets";$("fs-n").textContent=projet?"Projet : "+projet+". EFA transmet votre demande au porteur et vous met en contact.":"Recevez les nouveaux projets dès leur publication, et demandez une mise en relation quand un projet vous intéresse.";f.querySelector(".ps-btn").textContent=projet?"Demander la mise en relation":"M’inscrire";}
+    M.hidden=false;document.body.style.overflow="hidden";var x=f.querySelector("input:not([type=hidden])");if(x)setTimeout(function(){x.focus();},60);}
+  function fermer(){M.hidden=true;document.body.style.overflow="";}
+  document.addEventListener("click",function(e){var o=e.target.closest("[data-ouvrir]");if(o){ouvrir(o.dataset.ouvrir,o.dataset.projet);return;}
+    if(e.target.closest("[data-fermer]")||e.target===M)fermer();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!M.hidden)fermer();});
+  [$("f-porteur"),$("f-suiveur")].forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();
+    var er=f.querySelector(".ps-err"),d={},t=f.dataset.type;[].forEach.call(f.elements,function(x){if(!x.name)return;d[x.name]=x.type==="checkbox"?(x.checked?x.value:"non"):x.value.trim();});
+    var manque=!d.prenom?"Indiquez votre prénom.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||"")?"Indiquez un email valide.":t==="porteur"&&!d.projet?"Donnez un nom à votre projet.":t==="porteur"&&(d.resume||"").length<40?"Décrivez votre projet en quelques lignes.":t==="porteur"&&d.accord!=="oui"?"Cochez l’accord de publication après relecture.":t==="suiveur"&&d.risques!=="compris"?"Cochez la case : aucun gain n’est promis et vous décidez par vous-même.":"";
+    if(manque){er.hidden=false;er.textContent=manque;return;}
+    er.hidden=true;var bt=f.querySelector(".ps-btn"),lab=bt.textContent;bt.disabled=true;bt.textContent="Envoi…";
+    var sujet=t==="porteur"?"Projets à suivre · nouveau projet · "+d.projet:(d.projet_vise?"Projets à suivre · mise en relation · "+d.projet_vise:"Projets à suivre · inscription suiveur");
+    fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign({access_key:"426191fb-4812-4de4-b602-5857464c5916",subject:sujet,from_name:"EFA · Projets à suivre",formulaire:"projets-a-suivre-"+t},d))})
+      .then(function(r){return r.json();}).then(function(j){if(!j.success)throw 0;f.reset();f.hidden=true;$("ps-ok").hidden=false;
+        $("ok-t").textContent=t==="porteur"?"Merci, votre projet est arrivé chez EFA.":"Merci, vous êtes inscrit.";
+        $("ok-p").textContent=t==="porteur"?"EFA relit votre projet et vous recontacte pour valider la page avant toute publication.":(d.projet_vise?"EFA transmet votre demande au porteur et revient vers vous pour la mise en relation.":"Vous recevrez les nouveaux projets dès leur publication.");
+        try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"projets-"+t+(d.projet_vise?"-relation":""),event:true});}catch(x){}})
+      .catch(function(){er.hidden=false;er.textContent="L’envoi n’a pas abouti. Réessayez dans un instant.";})
+      .then(function(){bt.disabled=false;bt.textContent=lab;});
+  });});
+  function carte(p){return '<article class="ps-c"><div class="tags">'+[p.secteur,p.pays,p.stade].filter(Boolean).map(function(x){return '<span>'+esc(x)+'</span>';}).join("")+'</div><h3>'+esc(p.nom)+'</h3><p>'+esc(p.resume)+'</p><dl>'+(p.recherche?'<dt>Recherche</dt><dd>'+esc(p.recherche)+'</dd>':'')+(p.apport?'<dt>Apport du porteur</dt><dd>'+esc(p.apport)+'</dd>':'')+(p.porteur?'<dt>Porteur</dt><dd>'+esc(p.porteur)+'</dd>':'')+'</dl><button type="button" data-ouvrir="suiveur" data-projet="'+esc(p.nom)+'">Être mis en relation →</button></article>';}
+  fetch("projets-a-suivre.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();}).then(function(j){P=(j&&j.projets||[]).filter(function(p){return p.publie!==false;});
+    if(P.length){$("ps-liste").innerHTML=P.map(carte).join("");$("ps-liste").hidden=false;$("ps-vide").hidden=true;}}).catch(function(){});
+})();
+</script>
+<script src="/clone/ambassadeur.js?v=20261103a" defer></script>
+<script src="/clone/mesure.js?v=20261104a" defer></script>
+<script src="clone/habillage.js?v=20261104b" defer></script>
+</body>
+</html>
