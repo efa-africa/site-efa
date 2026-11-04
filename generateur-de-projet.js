@@ -264,4 +264,13 @@ majMontant();rendre();
   cv.tabIndex=0;cv.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();tirer();ctx.fillRect(0,0,cv.width,cv.height);verifier();}});
 })();
 try{$("gp-maj").textContent="Idées mises à jour en "+window.GEN_MAJ+" · tickets d’entrée indicatifs, en francs CFA, à vérifier sur votre marché.";}catch(e){}
+
+/* Aperçu dans la colonne de droite avant l'analyse : trois idées à la hauteur du budget, mises à jour en direct. */
+function apercuGuide(){var g=$("guide");if(!g)return;var z=$("guide-apercu");
+  if(!z){z=document.createElement("div");z.id="guide-apercu";z.className="g-apercu";g.appendChild(z);
+    z.addEventListener("click",function(e){var t=e.target.closest("[data-ga]");if(t)ouvrir(t.getAttribute("data-ga"));});}
+  var L=listeVue().slice(0,3);if(!L.length){z.innerHTML="";return;}
+  z.innerHTML='<p class="g-ap-t">'+(etat.libre?"Des idées pour tous les budgets":"Des idées pour "+FC(etat.budget)+", réserve d’abord")+'</p><div class="g-ap-l">'+L.map(function(x){var f=img(x);return '<button type="button" class="g-ap-c" data-ga="'+x[0]+'">'+(f?'<img src="'+f+'" alt="" loading="lazy" width="480" height="320">':'')+'<span><b>'+esc(x[1])+'</b><small>Ticket indicatif dès '+(x[3]?FC(x[3]):"0 F")+'</small></span></button>';}).join("")+'</div><p class="g-ap-n">Lancez l’analyse pour voir toutes les idées, votre réserve et une piste à tester.</p>';}
+var _placerGuide=placer;placer=function(){_placerGuide.apply(this,arguments);try{apercuGuide();}catch(e){}};
+
 })();
