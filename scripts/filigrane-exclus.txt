@@ -1,0 +1,13 @@
+# Images de fond avec texte par-dessus (en-têtes) : jamais de filigrane
+clone/assets/aig-hero-2.webp
+clone/assets/coach-hero.webp
+clone/assets/coaching-entree.webp
+clone/assets/koffi.jpg
+clone/assets/marches-hero.webp
+clone/assets/q1.webp
+clone/assets/q2.webp
+clone/assets/q3.webp
+clone/assets/q4.webp
+clone/assets/sgi-entree-paysage.webp
+clone/assets/tribunes-entree.webp
+illus/auteur-chantier.webp

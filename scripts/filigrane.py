@@ -14,6 +14,7 @@ DOSSIERS = ['clone/assets', 'illus', 'accueil']
 EXCLU = re.compile(r'(logo|oiseau|efa-mark|portrait|temoin|avatar|icon|favicon|apple-touch|og-|og_|^ely\.|^por-|qr|sticker|autocollant|signature|visage|profil|globe)', re.I)
 LB = 'scripts/fonts/LibreBaskerville-700.ttf'
 fait = json.load(open(FAIT)) if os.path.exists(FAIT) else {}
+SANS = {l.strip() for l in open('scripts/filigrane-exclus.txt') if l.strip() and not l.startswith('#')} if os.path.exists('scripts/filigrane-exclus.txt') else set()
 _o = Image.open('clone/assets/efa-oiseau.png').convert('RGBA')
 BLANC = (255, 255, 255)
 
@@ -61,7 +62,7 @@ if __name__ == '__main__':
     cibles = sys.argv[1:] or [f for d in DOSSIERS for f in sorted(glob.glob(d + '/*')) if f.lower().endswith(('.webp', '.jpg', '.jpeg', '.png'))]
     n = 0
     for f in cibles:
-        if EXCLU.search(os.path.basename(f)): continue
+        if EXCLU.search(os.path.basename(f)) or f in SANS: continue
         if f in fait and fait[f] == empreinte(f): continue
         try: w, h = Image.open(f).size
         except Exception: continue
