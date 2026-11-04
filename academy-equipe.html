@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07101e">
+<title>EFA Academy · Espace équipe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#07101e;--navy2:#0d2135;--panel:#102137;--line:#22405a;--blue:#61c8ff;--red:#E44828;--txt:#eef4f9;--txt2:#b9c9d6;--f-t:"Libre Baskerville",Georgia,serif;--f-b:"Source Sans 3",Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--navy);color:var(--txt);font-family:var(--f-b);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}button,input,textarea{font:inherit}button{cursor:pointer}
+.tete{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;padding:14px max(20px,5vw);background:rgba(7,16,30,.94);backdrop-filter:blur(8px)}
+.marque{display:flex;align-items:center;gap:10px;text-decoration:none}.marque img{width:34px;height:34px}
+.marque b{font-family:var(--f-t);font-size:26px;letter-spacing:-.06em}.marque b i{font-style:normal;color:var(--red)}
+.marque span{font-size:11px;font-weight:800;letter-spacing:.22em;padding-left:12px;margin-left:4px;border-left:1px solid #5f7489}
+.tete .moi{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--txt2)}
+.lien{background:none;border:0;color:var(--blue);font-weight:700;padding:6px 0}
+.hero{position:relative;min-height:340px;display:flex;align-items:flex-end;padding:120px max(20px,5vw) 44px;background:linear-gradient(90deg,rgba(3,10,21,.96),rgba(3,10,21,.7) 60%,rgba(3,10,21,.45)),linear-gradient(0deg,var(--navy),transparent 50%),url("academy-equipe/campus.webp") center 45%/cover}
+.hero .sur,.sur{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+.hero h1{font-family:var(--f-t);font-weight:700;font-size:clamp(34px,6vw,64px);line-height:1.1;margin:14px 0 10px;letter-spacing:-.02em}
+.hero p{max-width:620px;color:var(--txt2);margin:0}
+main{max-width:920px;margin:0 auto;padding:36px 20px 80px}
+.carte{background:var(--panel);border-radius:14px;padding:26px}
+.porte{max-width:520px;margin:0 auto}
+.porte h2{font-family:var(--f-t);font-size:28px;line-height:1.2;margin:10px 0 8px}
+.porte p{color:var(--txt2);margin:0 0 18px}
+.champ{display:flex;gap:8px;flex-wrap:wrap}
+.champ input{flex:1;min-width:200px;min-height:48px;border:0;border-radius:8px;padding:12px 14px;font-size:17px;color:#0B1220;background:#fff}
+.bt{min-height:48px;border:0;border-radius:8px;padding:12px 22px;background:var(--red);color:#fff;font-weight:800;font-size:16px}
+.bt:disabled{opacity:.55}
+.bt.s{background:#1d3a55}
+.msg{font-size:15px;color:var(--txt2);margin:12px 0 0;min-height:1em}.msg.err{color:#ffb4a8}
+.partie{background:var(--panel);border-radius:14px;padding:26px 26px 20px;margin:0 0 18px}
+.partie-h{display:flex;gap:16px;align-items:flex-start}
+.partie-h div{flex:1;min-width:0}
+.partie h2{font-family:var(--f-t);font-weight:700;font-size:clamp(22px,3vw,28px);line-height:1.2;margin:8px 0 0}
+.plus{flex:0 0 auto;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:28px;line-height:1;display:grid;place-items:center}
+.plus[aria-expanded=true]{background:#1d3a55}
+.partie p.t{color:var(--txt2);margin:14px 0 0}
+.compte{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--blue)}
+.coms{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.com{background:var(--navy2);border-radius:10px;padding:14px 16px}
+.com .qui{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px;color:var(--txt2);margin-bottom:4px}.com .qui b{color:var(--txt);font-size:14px}
+.com p{margin:0;white-space:pre-wrap}
+.com .eff{margin-left:auto;background:none;border:0;color:#9fb3c4;font-size:13px;padding:0}
+.composer{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.composer[hidden]{display:none}
+.composer textarea{min-height:110px;border:0;border-radius:8px;padding:12px 14px;font-size:16px;color:#0B1220;background:#fff;resize:vertical}
+.composer input{min-height:44px;border:0;border-radius:8px;padding:10px 14px;font-size:16px;color:#0B1220;background:#fff}
+.composer .act{display:flex;gap:8px}
+.equipe h2{font-family:var(--f-t);font-size:24px;margin:6px 0 12px}
+.equipe ul{list-style:none;padding:0;margin:0 0 16px}.equipe li{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.equipe li span{color:var(--txt2)}.equipe li .lien{margin-left:auto;color:#ffb4a8}
+.note{font-size:14px;color:var(--txt2)}
+[hidden]{display:none!important}
+@media(max-width:600px){.carte,.partie{padding:20px}.marque span{display:none}.hero{min-height:280px;padding-top:100px}}
+</style>
+</head>
+<body>
+<header class="tete"><a class="marque" href="academy-equipe.html"><img src="academy-equipe/efa-oiseau.png" alt=""><b>efa<i>.</i></b><span>ACADEMY</span></a>
+<div class="moi" id="moi" hidden><span id="moi-mail"></span><button class="lien" id="sortir" type="button">Se déconnecter</button></div></header>
+
+<section class="hero"><div><p class="sur">Espace équipe · accès réservé</p><h1>EFA Academy, la Coupe des 8</h1><p>Le document de travail de l’équipe. Touchez le « + » à côté d’une partie pour ajouter votre commentaire : toute l’équipe le voit.</p></div></section>
+
+<main>
+  <div id="v-charge" class="note">Chargement…</div>
+
+  <section id="v-porte" class="carte porte" hidden>
+    <p class="sur">Connexion</p>
+    <h2>Entrez votre adresse email</h2>
+    <p>Vous recevez un lien de connexion. L’accès est ouvert aux personnes invitées par Élysée Johnson.</p>
+    <form id="f-mail"><div class="champ"><input id="mail" type="email" autocomplete="email" placeholder="vous@exemple.com" required><button class="bt" type="submit">Recevoir mon lien</button></div></form>
+    <p class="msg" id="m-mail" role="status"></p>
+  </section>
+
+  <section id="v-refus" class="carte porte" hidden>
+    <p class="sur">Accès réservé</p>
+    <h2>Cette adresse n’est pas encore dans l’équipe</h2>
+    <p>Demandez à Élysée Johnson d’ajouter <b id="refus-mail"></b>, puis rechargez cette page.</p>
+    <button class="bt s" type="button" id="recharger">Recharger</button>
+  </section>
+
+  <div id="v-doc" hidden>
+    <div id="parties"></div>
+    <section class="carte equipe" id="admin" hidden>
+      <p class="sur">Réservé à l’administrateur</p>
+      <h2>L’équipe</h2>
+      <ul id="membres"></ul>
+      <form id="f-membre" class="champ"><input id="nv-mail" type="email" placeholder="Email à inviter" required><input id="nv-nom" type="text" placeholder="Nom (facultatif)"><button class="bt" type="submit">Ajouter</button></form>
+      <p class="msg" id="m-membre" role="status"></p>
+      <p class="note">Envoyez ensuite le lien de cette page à la personne : efa.africa/academy-equipe</p>
+    </section>
+  </div>
+</main>
+
+<script src="comite-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i);};
+  var sb=(window.supabase&&window.COMITE_SUPABASE_URL&&window.COMITE_SUPABASE_CLE)?supabase.createClient(COMITE_SUPABASE_URL,COMITE_SUPABASE_CLE,{auth:{persistSession:true,detectSessionInUrl:true,autoRefreshToken:true,storageKey:'efa-academy-equipe'}}):null;
+  var RETOUR=location.origin+'/academy-equipe.html';
+  var S={moi:null,admin:false,sections:[],coms:[],membres:[]};
+  function vue(n){['charge','porte','refus','doc'].forEach(function(k){$('v-'+k).hidden=k!==n;});}
+  function h(tag,attrs,kids){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==='text')e.textContent=attrs[k];else e.setAttribute(k,attrs[k]);}(kids||[]).forEach(function(c){e.appendChild(typeof c==='string'?document.createTextNode(c):c);});return e;}
+  function jour(d){try{return new Date(d).toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});}catch(e){return '';}}
+  function say(el,t,err){el.textContent=t;el.className='msg'+(err?' err':'');}
+  function nomDe(mail){var m=S.membres.find(function(x){return x.email===mail;});return (m&&m.nom)||(mail||'').split('@')[0];}
+  var NOM_KEY='efa-academy-nom';function monNom(){try{return localStorage.getItem(NOM_KEY)||'';}catch(e){return '';}}
+
+  if(!sb){vue('porte');say($('m-mail'),'Connexion indisponible pour le moment.',1);return;}
+  if(location.hash.indexOf('access_token')>-1||location.search.indexOf('code=')>-1){setTimeout(function(){history.replaceState(null,'',location.pathname);},800);}
+
+  $('f-mail').addEventListener('submit',function(e){e.preventDefault();var m=$('mail').value.trim().toLowerCase(),b=e.target.querySelector('button');if(!m)return;b.disabled=true;say($('m-mail'),'Envoi en cours…');
+    sb.auth.signInWithOtp({email:m,options:{emailRedirectTo:RETOUR,shouldCreateUser:true}}).then(function(r){b.disabled=false;if(r.error){say($('m-mail'),'L’envoi n’a pas abouti : '+r.error.message,1);return;}say($('m-mail'),'C’est envoyé. Ouvrez l’email reçu à '+m+' et touchez le lien, sur ce même téléphone.');});});
+  $('sortir').addEventListener('click',function(){sb.auth.signOut().then(function(){location.reload();});});
+  $('recharger').addEventListener('click',function(){location.reload();});
+
+  async function demarrer(){
+    var s=(await sb.auth.getSession()).data.session;
+    if(!s){vue('porte');$('moi').hidden=true;return;}
+    S.moi=(s.user.email||'').toLowerCase();$('moi').hidden=false;$('moi-mail').textContent=S.moi;
+    var mem=await sb.rpc('academy_est_membre');
+    if(mem.error){vue('refus');$('refus-mail').textContent=S.moi;return;}
+    if(!mem.data){vue('refus');$('refus-mail').textContent=S.moi;return;}
+    S.admin=!!(await sb.rpc('academy_est_admin')).data;
+    await charger();vue('doc');
+  }
+  async function charger(){
+    var a=await sb.from('academy_sections').select('*').order('ordre',{ascending:true});
+    var c=await sb.from('academy_commentaires').select('*').order('cree_le',{ascending:true});
+    var m=await sb.from('academy_membres').select('*').order('ajoute_le',{ascending:true});
+    S.sections=a.data||[];S.coms=c.data||[];S.membres=m.data||[];
+    rendre();
+  }
+  function rendre(){
+    var box=$('parties');var ouverts={};box.querySelectorAll('.composer:not([hidden])').forEach(function(f){ouverts[f.dataset.s]=f.querySelector('textarea').value;});
+    box.textContent='';
+    if(!S.sections.length)box.appendChild(h('p',{class:'note',text:'Le document n’est pas encore chargé.'}));
+    S.sections.forEach(function(sec){box.appendChild(partie(sec,ouverts));});
+    $('admin').hidden=!S.admin;if(S.admin)rendreMembres();
+  }
+  function partie(sec,ouverts){
+    var p=h('section',{class:'partie',id:'s-'+sec.id});
+    var plus=h('button',{class:'plus',type:'button','aria-expanded':'false','aria-label':'Commenter : '+sec.titre,text:'+'});
+    p.appendChild(h('div',{class:'partie-h'},[h('div',{},[h('p',{class:'sur',text:sec.surtitre||''}),h('h2',{text:sec.titre})]),plus]));
+    (sec.texte||[]).forEach(function(t){p.appendChild(h('p',{class:'t',text:t}));});
+    var lst=S.coms.filter(function(x){return x.section_id===sec.id;});
+    if(lst.length){p.appendChild(h('span',{class:'compte',text:lst.length+' commentaire'+(lst.length>1?'s':'')}));var cs=h('div',{class:'coms'});lst.forEach(function(x){cs.appendChild(com(x));});p.appendChild(cs);}
+    var f=h('form',{class:'composer'});f.dataset.s=sec.id;f.hidden=!(sec.id in ouverts);
+    var ta=h('textarea',{maxlength:'4000','aria-label':'Votre commentaire',placeholder:'Ce qui est juste, ce qui manque, ce qu’il faut changer…'});if(sec.id in ouverts)ta.value=ouverts[sec.id];
+    var nm=h('input',{type:'text','aria-label':'Votre nom',placeholder:'Votre nom'});nm.value=monNom()||nomDe(S.moi);
+    var ok=h('button',{class:'bt',type:'submit',text:'Publier'});var an=h('button',{class:'bt s',type:'button',text:'Annuler'});var m=h('p',{class:'msg'});
+    f.appendChild(ta);f.appendChild(nm);f.appendChild(h('div',{class:'act'},[ok,an]));f.appendChild(m);
+    plus.addEventListener('click',function(){f.hidden=!f.hidden;plus.setAttribute('aria-expanded',String(!f.hidden));plus.textContent=f.hidden?'+':'×';if(!f.hidden)setTimeout(function(){ta.focus();},30);});
+    an.addEventListener('click',function(){f.hidden=true;ta.value='';plus.setAttribute('aria-expanded','false');plus.textContent='+';});
+    f.addEventListener('submit',async function(e){e.preventDefault();var t=ta.value.trim();if(!t){say(m,'Écrivez votre commentaire.',1);return;}
+      var nom=nm.value.trim();try{if(nom)localStorage.setItem(NOM_KEY,nom);}catch(x){}
+      ok.disabled=true;say(m,'Publication…');
+      var r=await sb.from('academy_commentaires').insert({section_id:sec.id,texte:t,auteur_nom:nom||null,auteur_email:S.moi});
+      ok.disabled=false;if(r.error){say(m,'Le commentaire n’a pas été publié : '+r.error.message,1);return;}
+      f.hidden=true;ta.value='';await charger();});
+    if(sec.id in ouverts){plus.setAttribute('aria-expanded','true');plus.textContent='×';}
+    p.appendChild(f);return p;
+  }
+  function com(x){
+    var q=h('div',{class:'qui'},[h('b',{text:x.auteur_nom||nomDe(x.auteur_email)}),h('span',{text:jour(x.cree_le)})]);
+    if(x.auteur_email===S.moi||S.admin){var d=h('button',{class:'eff',type:'button',text:'Supprimer'});d.addEventListener('click',async function(){if(!d.dataset.ok){d.dataset.ok='1';d.textContent='Confirmer';return;}await sb.from('academy_commentaires').delete().eq('id',x.id);charger();});q.appendChild(d);}
+    return h('div',{class:'com'},[q,h('p',{text:x.texte})]);
+  }
+  function rendreMembres(){
+    var ul=$('membres');ul.textContent='';
+    S.membres.forEach(function(x){var li=h('li',{},[h('b',{text:x.nom||x.email}),h('span',{text:x.nom?x.email:''}),h('span',{text:x.role==='admin'?'· administrateur':''})]);
+      if(x.role!=='admin'){var r=h('button',{class:'lien',type:'button',text:'Retirer'});r.addEventListener('click',async function(){if(!r.dataset.ok){r.dataset.ok='1';r.textContent='Confirmer';return;}await sb.from('academy_membres').delete().eq('email',x.email);charger();});li.appendChild(r);}
+      ul.appendChild(li);});
+  }
+  $('f-membre').addEventListener('submit',async function(e){e.preventDefault();var m=$('nv-mail').value.trim().toLowerCase(),n=$('nv-nom').value.trim();if(!m)return;
+    var r=await sb.from('academy_membres').upsert({email:m,nom:n||null});
+    if(r.error){say($('m-membre'),'L’ajout n’a pas abouti : '+r.error.message,1);return;}
+    $('nv-mail').value='';$('nv-nom').value='';say($('m-membre'),m+' fait maintenant partie de l’équipe.');charger();});
+
+  sb.auth.onAuthStateChange(function(ev){if(ev==='SIGNED_IN'||ev==='SIGNED_OUT')demarrer();});
+  demarrer();
+})();
+</script>
+</body>
+</html>
