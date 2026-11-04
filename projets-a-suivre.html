@@ -66,6 +66,7 @@
 .ps-form input,.ps-form select,.ps-form textarea{display:block;width:100%;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:#0B1220}
 .ps-form textarea{min-height:110px;resize:vertical}
 .ps-form .ck{display:flex;gap:10px;align-items:flex-start;font-weight:600}.ps-form .ck input{width:auto;margin-top:3px}
+.ps-form .secret{background:#EEF5FC;border-radius:10px;padding:10px 12px;font-size:14.5px;color:#2A3142;margin:10px 0 0}.ps-form .secret a,.ps-form .ck a{color:#147f9b;font-weight:800}
 .ps-form .deux{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 .ps-x{all:unset;cursor:pointer;position:absolute;top:12px;right:14px;font-size:26px;line-height:1;color:var(--ink2)}
 .ps-btn{all:unset;cursor:pointer;display:block;text-align:center;margin-top:18px;background:var(--corail);color:#fff;font-weight:800;font-size:17px;border-radius:12px;padding:14px}
@@ -73,7 +74,8 @@
 .ps-err{color:#B3261E;font-weight:700;margin:10px 0 0}
 .ps-ok{text-align:left}
 @media(max-width:700px){.ps-hero{display:block;min-height:0;background:#071d38}.ps-hero img{position:relative;display:block;height:52svh}.ps-hero::after{display:none}.ps-hero .ps-w{padding-top:26px;padding-bottom:58px}}
-@media(max-width:760px){.ps-portes{grid-template-columns:1fr;margin-top:-24px}.ps-etapes{grid-template-columns:1fr}.ps-form .deux{grid-template-columns:1fr}}
+@media(max-width:760px){.ps-portes{grid-template-columns:1fr;margin-top:-24px}.ps-etapes{grid-template-columns:1fr}.ps-form .secret{background:#EEF5FC;border-radius:10px;padding:10px 12px;font-size:14.5px;color:#2A3142;margin:10px 0 0}.ps-form .secret a,.ps-form .ck a{color:#147f9b;font-weight:800}
+.ps-form .deux{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261104b">
 </head>
@@ -111,6 +113,7 @@
     <li><b>Aucun gain n’est promis.</b> Un projet peut réussir, prendre du retard ou échouer : on peut perdre tout ou partie de ce que l’on engage.</li>
     <li><b>Vérifiez par vous-même.</b> Rencontrez le porteur, demandez les pièces, et faites-vous accompagner par un professionnel avant de vous engager.</li>
     <li><b>Les montants sont ceux du porteur.</b> EFA les relit, mais ne les garantit pas.</li>
+    <li><b>Les projets restent à leurs porteurs.</b> Le dossier complet n’est transmis qu’avec leur accord, et ceux qui le reçoivent s’engagent à ne pas le copier ni le diffuser. <a href="confidentialite.html#projets" style="color:#6DB8F2;font-weight:800">Nos règles</a></li>
   </ul>
 </div></div></section>
 
@@ -128,6 +131,7 @@
     <button type="button" class="ps-x" data-fermer aria-label="Fermer">×</button>
     <p class="ps-k">J’ai un projet</p><h3>Présenter mon projet</h3>
     <p class="note">EFA relit chaque projet et vous recontacte. S’il est retenu, nous le présenterons à des clubs d’investissement ou à des investisseurs potentiels. Rien n’est publié sans votre accord.</p>
+    <p class="secret"><b>Envoyez un résumé, pas votre secret.</b> Pas de recette, de code, de contrat ni de chiffre sensible : le besoin, vos clients et votre premier test suffisent. EFA ne signe pas d’accord de confidentialité. <a href="confidentialite.html#projets">Nos règles</a></p>
     <div class="deux"><label>Votre prénom<input name="prenom" required maxlength="60"></label><label>Pays et ville<input name="lieu" maxlength="80" placeholder="ex. Abidjan, Côte d’Ivoire"></label></div>
     <div class="deux"><label>Votre email<input name="email" type="email" required autocomplete="email"></label><label>WhatsApp (facultatif)<input name="whatsapp" inputmode="tel" maxlength="30"></label></div>
     <label>Nom du projet<input name="projet" required maxlength="80" placeholder="ex. Jus de bissap de quartier"></label>
@@ -136,6 +140,7 @@
     <div class="deux"><label>Montant recherché (F CFA)<input name="montant" inputmode="numeric" maxlength="20" placeholder="ex. 2 000 000"></label><label>Ce que vous apportez déjà<input name="apport" maxlength="120" placeholder="ex. 500 000 F, un local, du matériel"></label></div>
     <label>Votre projet en quelques lignes<textarea name="resume" required maxlength="900" placeholder="Le besoin, vos clients, votre premier test, ce que vous ferez avec le soutien recherché."></textarea></label>
     <label>Business plan EFA<select name="business_plan"><option>Pas encore</option><option>Oui, j’ai un business plan EFA</option><option>J’ai mon propre business plan</option></select></label>
+    <label>Sur la page publique<select name="affichage"><option>Afficher mon prénom et ma ville</option><option>Plutôt anonyme (secteur et pays seulement)</option></select></label>
     <label class="ck"><input type="checkbox" name="accord" value="oui"> J’accepte qu’EFA publie un résumé de mon projet après relecture et validation avec moi.</label>
     <p class="ps-err" hidden></p><button type="submit" class="ps-btn">Envoyer mon projet</button>
   </form>
@@ -150,6 +155,7 @@
     <label>Montant envisagé<select name="montant"><option>Je ne sais pas encore</option><option>Moins de 500 000 F</option><option>500 000 à 2 millions F</option><option>2 à 10 millions F</option><option>Plus de 10 millions F</option></select></label></div>
     <label>Les secteurs qui vous intéressent<input name="secteurs" maxlength="160" placeholder="ex. agriculture, alimentation"></label>
     <label class="ck"><input type="checkbox" name="risques" value="compris"> J’ai compris qu’aucun gain n’est promis, qu’EFA ne collecte pas d’argent et que je décide par moi-même.</label>
+    <label class="ck"><input type="checkbox" name="charte" value="acceptee"> Je m’engage à ne pas copier ni diffuser les projets présentés, et à contacter les porteurs par EFA. <a href="confidentialite.html#projets">Charte</a></label>
     <p class="ps-err" hidden></p><button type="submit" class="ps-btn">M’inscrire</button>
   </form>
   <div class="ps-form ps-ok" id="ps-ok" hidden><button type="button" class="ps-x" data-fermer aria-label="Fermer">×</button><p class="ps-k">Bien reçu</p><h3 id="ok-t">Merci, c’est arrivé chez EFA.</h3><p class="note" id="ok-p"></p><button type="button" class="ps-btn" data-fermer>Fermer</button></div>
@@ -167,7 +173,7 @@
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!M.hidden)fermer();});
   [$("f-porteur"),$("f-suiveur")].forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault();
     var er=f.querySelector(".ps-err"),d={},t=f.dataset.type;[].forEach.call(f.elements,function(x){if(!x.name)return;d[x.name]=x.type==="checkbox"?(x.checked?x.value:"non"):x.value.trim();});
-    var manque=!d.prenom?"Indiquez votre prénom.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||"")?"Indiquez un email valide.":t==="porteur"&&!d.projet?"Donnez un nom à votre projet.":t==="porteur"&&(d.resume||"").length<40?"Décrivez votre projet en quelques lignes.":t==="porteur"&&d.accord!=="oui"?"Cochez l’accord de publication après relecture.":t==="suiveur"&&d.risques!=="compris"?"Cochez la case : aucun gain n’est promis et vous décidez par vous-même.":"";
+    var manque=!d.prenom?"Indiquez votre prénom.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||"")?"Indiquez un email valide.":t==="porteur"&&!d.projet?"Donnez un nom à votre projet.":t==="porteur"&&(d.resume||"").length<40?"Décrivez votre projet en quelques lignes.":t==="porteur"&&d.accord!=="oui"?"Cochez l’accord de publication après relecture.":t==="suiveur"&&d.risques!=="compris"?"Cochez la case : aucun gain n’est promis et vous décidez par vous-même.":t==="suiveur"&&d.charte!=="acceptee"?"Acceptez la charte de confidentialité des projets.":"";
     if(manque){er.hidden=false;er.textContent=manque;return;}
     er.hidden=true;var bt=f.querySelector(".ps-btn"),lab=bt.textContent;bt.disabled=true;bt.textContent="Envoi…";
     var sujet=t==="porteur"?"Projets à suivre · nouveau projet · "+d.projet:(d.projet_vise?"Projets à suivre · mise en relation · "+d.projet_vise:"Projets à suivre · inscription suiveur");
