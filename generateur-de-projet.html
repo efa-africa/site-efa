@@ -4,14 +4,14 @@
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
-<title>Avec ce que j’ai, je lance quoi ? · EFA</title>
+<title>EFA Déclic · J’ai mis de côté, je lance quoi ?</title>
 <meta name="description" content="Glissez votre budget, de 10 000 F à 50 millions : les projets que vous pouvez lancer, de votre salon jusqu'au placement. Des idées, pas des promesses.">
 <link rel="canonical" href="https://efa.africa/generateur-de-projet">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Éducation Financière Afrique">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Avec mon budget, je lance quoi ?">
-<meta property="og:description" content="Mon générateur de projet EFA : votre budget, vos idées, de votre salon jusqu'au placement.">
+<meta property="og:title" content="EFA Déclic · J’ai mis de côté. Je lance quoi ?">
+<meta property="og:description" content="EFA Déclic : votre budget, votre réserve d’abord, puis une idée à tester. Des pistes, jamais des gains promis.">
 <meta property="og:url" content="https://efa.africa/generateur-de-projet">
 <meta property="og:image" content="https://efa.africa/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -44,6 +44,27 @@
 .entree h1{font-size:clamp(34px,5.6vw,64px);color:#fff;margin:10px 0 10px;max-width:16ch}
 .entree p{margin:0;color:var(--texte-sombre2);font-size:clamp(17px,2vw,20px);max-width:52ch}
 .entree .note{margin-top:12px;font-size:14px;color:#9AA5B8}
+
+/* Entrée EFA Déclic, façon affiche */
+.dce{padding:30px 0 30px;background:#071a33}
+.dce-g{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+.dce .dce-mot{font:700 clamp(64px,10vw,124px)/.95 var(--f-display);letter-spacing:-.045em;color:#1FC6F0!important;margin:12px 0 4px!important;max-width:none!important}
+.dce .dce-mot i{font-style:normal;color:#E5462E}
+.dce h1{font-size:clamp(28px,4.2vw,50px);max-width:20ch;margin:12px 0 10px}
+.dce h1 em{font-style:normal}
+#gp .dce h1{margin-bottom:14px}
+.dce-bud{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+#gp .dce-bud button{border:0;background:#fff;color:#091d36;border-radius:999px;min-height:44px;padding:8px 15px;font-weight:800;font-size:15px}
+#gp .dce-bud button.on{background:#E5462E;color:#fff}
+.dce-ph{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dce-ph span{position:relative;display:block;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:#0f2a48}
+.dce-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dce-ph em{position:absolute;left:8px;bottom:10px;max-width:calc(100% - 16px);background:#fff;color:#091d36;font-style:normal;font-weight:800;font-size:14px;line-height:1.2;border-radius:8px;padding:6px 9px}
+.dce-b{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:52px;background:#E5462E;color:#fff!important;text-decoration:none!important;font-weight:800;font-size:18px;border-radius:8px;padding:13px 20px;animation:dceb 1.8s ease-in-out infinite}
+@keyframes dceb{0%,100%{box-shadow:0 0 0 0 rgba(229,70,46,.5)}50%{box-shadow:0 0 0 9px rgba(229,70,46,0)}}
+@media(min-width:900px){.dce{padding:44px 0 46px}.dce-g{grid-template-columns:1fr 1fr;column-gap:40px;align-items:center}.dce-t{grid-column:1;grid-row:1}.dce-go{grid-column:1;grid-row:2}.dce-ph{grid-column:2;grid-row:1/3}.dce-ph span:nth-child(2){transform:translateY(18px)}}
+@media(max-width:899px){.dce-ph span{aspect-ratio:4/5}.dce-ph em{font-size:11.5px;left:5px;bottom:6px;padding:5px 6px;max-width:calc(100% - 10px)}.dce-b{display:flex;width:100%}}
+@media(prefers-reduced-motion:reduce){.dce-b{animation:none}}
 
 /* Exploration */
 .explorer{padding:26px 0 10px}
@@ -339,12 +360,22 @@ body.fige{overflow:hidden}
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir" aria-current="page">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <main id="gp">
 
-<section class="entree sombre" aria-labelledby="titre"><div class="wrap">
-  <span class="sur">Se lancer avec EFA</span>
-  <h1 id="titre">Avec ce que j’ai, je pourrais lancer quoi&nbsp;?</h1>
-  <p>Choisissez un montant. Explorez des idées. Testez celle qui vous ressemble.</p>
-  <p class="note">Des idées à tester, jamais des gains promis.</p>
+<section class="entree sombre dce" aria-labelledby="titre"><div class="wrap dce-g">
+  <div class="dce-t">
+    <span class="sur">EFA Déclic · se lancer avec EFA</span>
+    <p class="dce-mot" aria-hidden="true">déclic<i>.</i></p>
+    <h1 id="titre">J’ai mis de côté. <em>Je lance quoi&nbsp;?</em></h1>
+    <p>Votre budget, votre réserve d’abord, puis une idée à tester.</p>
+    <div class="dce-bud" role="group" aria-label="Choisir un budget pour commencer"><button type="button" data-v="100000">100 000 F</button><button type="button" data-v="300000" class="on">300 000 F</button><button type="button" data-v="5000000">5 millions F</button></div>
+  </div>
+  <div class="dce-ph" aria-hidden="true"><span><img src="clone/assets/gen-social-selling.webp" alt="" width="960" height="640" decoding="async"><em>vendre en ligne</em></span><span><img src="clone/assets/gen-dejeuners.webp" alt="" width="960" height="640" decoding="async"><em>repas pour bureaux</em></span><span><img src="clone/assets/gen-couture.webp" alt="" width="960" height="640" decoding="async"><em>atelier couture</em></span></div>
+  <div class="dce-go"><a class="dce-b" href="#explorer" id="dce-b">Trouver ma première idée <span aria-hidden="true">↓</span></a><p class="note">Dès 10 000 F CFA · Sans compte · Des pistes, jamais des gains promis.</p></div>
 </div></section>
+<script>(function(){var B=document.querySelectorAll(".dce-bud button"),go=document.getElementById("dce-b");
+function aller(){var x=document.getElementById("explorer");if(!x)return;var hd=document.querySelector(".header"),hh=hd?hd.offsetHeight:0;scrollTo({top:scrollY+x.getBoundingClientRect().top-hh-8,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});}
+function poser(v){var r=document.getElementById("budget"),P=[10000,25000,50000,100000,150000,200000,300000,500000,750000,1000000,1500000,2000000,3000000,5000000,7500000,10000000,15000000,20000000,30000000,50000000],i=P.indexOf(+v);if(r&&i>=0){r.value=i;r.dispatchEvent(new Event("input",{bubbles:true}));}}
+[].forEach.call(B,function(b){b.addEventListener("click",function(){[].forEach.call(B,function(c){c.classList.toggle("on",c===b);});poser(b.dataset.v);aller();});});
+if(go)go.addEventListener("click",function(e){e.preventDefault();aller();});})();</script>
 
 <section class="explorer" id="explorer" aria-label="Explorer des idées" data-garde><div class="wrap ex-grille">
   <aside class="reglages" aria-label="Vos choix" data-garde>
@@ -485,6 +516,7 @@ body.fige{overflow:hidden}
 <div class="modale" id="modale" role="dialog" aria-modal="true" aria-label="Détails" hidden data-garde><div class="md-carte"><button type="button" class="fermer" id="md-fermer">Fermer ✕</button><div id="md-corps"></div></div></div>
 </main>
 <section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
 
 
 

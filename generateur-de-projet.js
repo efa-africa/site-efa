@@ -164,7 +164,7 @@ function imagePartage(x){var c=document.createElement("canvas");c.width=1080;c.h
   g.fillStyle="#F09680";g.font='800 34px "Source Sans 3",system-ui,sans-serif';g.fillText("MON PREMIER TEST",90,y);y+=66;
   g.fillStyle="#E8EDF5";g.font='400 46px "Source Sans 3",system-ui,sans-serif';lignes(g,x[9],900).slice(0,6).forEach(function(l){g.fillText(l,90,y);y+=62;});
   g.fillStyle="#DA3C1B";g.beginPath();if(g.roundRect)g.roundRect(90,1610,900,170,24);else g.rect(90,1610,900,170);g.fill();
-  g.fillStyle="#fff";g.font='800 50px "Source Sans 3",system-ui,sans-serif';g.fillText("Et toi, que pourrais-tu lancer ?",130,1690);g.font='600 38px "Source Sans 3",system-ui,sans-serif';g.fillText("efa.africa · Mon générateur de projet",130,1748);
+  g.fillStyle="#fff";g.font='800 50px "Source Sans 3",system-ui,sans-serif';g.fillText("Et toi, que pourrais-tu lancer ?",130,1690);g.font='600 38px "Source Sans 3",system-ui,sans-serif';g.fillText("efa.africa/declic · EFA Déclic",130,1748);
   return c;}
 function partager(id){var x=idee(id);if(!x)return;var url="https://efa.africa/generateur-de-projet.html?src=partage";
   var txt=(etat.libre?"":"Avec "+FC(etat.budget).replace(/ /g," ")+", ")+"je pourrais lancer : "+x[1]+".\nMon premier test : "+x[9]+"\n\nEt toi, que pourrais-tu lancer ?";
@@ -214,7 +214,7 @@ function soumettre(){
     var mailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email),waOk=v.whatsapp.replace(/\D/g,"").length>=8;
     if(!mailOk&&!waOk){er.hidden=false;er.textContent="Laissez votre email ou votre numéro WhatsApp, pour que nous puissions revenir vers vous.";return;}
     var bt=f.querySelector("button[type=submit]");bt.disabled=true;bt.textContent="Envoi…";er.hidden=true;
-    var d={access_key:"426191fb-4812-4de4-b602-5857464c5916",subject:"efa.africa · Idée soumise · "+v.titre,from_name:"Générateur de projet · efa.africa",idee:v.titre,description:v.desc,budget:v.budget||(etat.libre?"sans limite":String(etat.budget)),pays:(PAYS[etat.pays]||{}).n||"",nom:v.nom,email:v.email,whatsapp:v.whatsapp,a_faire:"Étudier l’idée et revenir vers la personne (business plan éventuel)."};if(mailOk)d.replyto=v.email;
+    var d={access_key:"426191fb-4812-4de4-b602-5857464c5916",subject:"efa.africa · Idée soumise · "+v.titre,from_name:"EFA Déclic · efa.africa",idee:v.titre,description:v.desc,budget:v.budget||(etat.libre?"sans limite":String(etat.budget)),pays:(PAYS[etat.pays]||{}).n||"",nom:v.nom,email:v.email,whatsapp:v.whatsapp,a_faire:"Étudier l’idée et revenir vers la personne (business plan éventuel)."};if(mailOk)d.replyto=v.email;
     fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(function(r){return r.json();}).then(function(r){
       if(!r||!r.success)throw 0;
       $("md-corps").innerHTML='<span class="sur">Idée reçue</span><h2>Merci pour votre idée&nbsp;!</h2><p>Elle est bien arrivée chez EFA. Nous l’étudions et revenons vers vous'+(waOk?" sur WhatsApp":" par email")+'.</p><div class="md-act"><button type="button" class="bouton" id="pi-ok">Fermer</button></div>';

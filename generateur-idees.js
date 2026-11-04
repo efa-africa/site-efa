@@ -1,4 +1,4 @@
-/* EFA · Mon générateur de projet · données
+/* EFA Déclic (générateur de projet) · données
    Mis à jour par la veille hebdomadaire. Tickets d'entrée indicatifs, en FCFA. Aucune marge, aucun revenu promis.
    Format d'une idée : [id, titre, secteur, min, max, lieux, temps mini (1 soirs, 2 mi-temps, 3 plein temps), savoir-faire, principe, premier pas, à vérifier, piège, alertes facultatives]
    Alertes : [[type, texte]], type = reglemente (soumis à réglementation) · technique · risque. Une idée technique ou encadrée n'est jamais écartée : elle reçoit une alerte. */
