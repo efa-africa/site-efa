@@ -4,7 +4,7 @@
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B1220">
 <title>Projets à suivre · EFA Déclic</title>
-<meta name="description" content="Des porteurs de projets passés par EFA Déclic présentent leur projet en une page. Suivez-les, échangez, décidez par vous-même.">
+<meta name="description" content="Bientôt sur EFA : des projets et des entrepreneurs à potentiel, à suivre et à soutenir.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
@@ -31,6 +31,7 @@
 .ps-porte span{color:var(--ink2)}
 .ps-porte em{display:inline-block;margin-top:14px;font-style:normal;font-weight:800;color:#fff;background:var(--corail);border-radius:10px;padding:10px 16px}
 .ps-porte.inv em{background:var(--nuit)}
+.ps-porte.off{cursor:default}.ps-porte.off em{background:#D5DCE4;color:#5F6676}
 .ps-sec{padding-block:clamp(48px,7vw,84px)}
 .ps-sec h2{font-size:clamp(28px,3.6vw,42px)}
 .ps-lead{color:var(--ink2);max-width:62ch;margin:12px 0 0}
@@ -79,17 +80,17 @@
 <main class="ps" data-garde>
 <section class="ps-hero" data-photo aria-labelledby="ps-t"><img src="clone/assets/projets-a-suivre.webp" alt="Trois personnes étudient un projet ensemble autour d’une table, carnet et calculatrice" fetchpriority="high">
   <div class="ps-w"><p class="ps-k">EFA Déclic · après le business plan</p><h1 id="ps-t">Projets à suivre<i>.</i></h1>
-  <p>Des porteurs de projets passés par EFA Déclic présentent leur projet en une page. Vous suivez, vous échangez, vous décidez par vous-même.</p></div>
+  <p>Ici, EFA proposera des projets et des entrepreneurs à potentiel. Vous suivrez, vous échangerez, vous déciderez par vous-même.</p></div>
 </section>
 <div class="ps-w"><div class="ps-portes">
-  <button type="button" class="ps-porte" data-ouvrir="porteur"><small>J’ai un projet</small><b>Présenter mon projet</b><span>Une page, relue par EFA avant publication.</span><br><em>Présenter mon projet →</em></button>
-  <button type="button" class="ps-porte inv" data-ouvrir="suiveur"><small>Je veux soutenir</small><b>Suivre des projets</b><span>Recevez les nouveaux projets et demandez une mise en relation.</span><br><em>Suivre des projets →</em></button>
+  <div class="ps-porte off" aria-disabled="true"><small>J’ai un projet</small><b>Présenter mon projet</b><span>Une page, relue par EFA avant publication.</span><br><em>Bientôt</em></div>
+  <div class="ps-porte inv off" aria-disabled="true"><small>Je veux soutenir</small><b>Suivre des projets</b><span>Recevez les nouveaux projets et demandez une mise en relation.</span><br><em>Bientôt</em></div>
 </div></div>
 
 <section class="ps-sec" aria-labelledby="ps-liste-t"><div class="ps-w">
   <p class="ps-k">Les projets</p><h2 id="ps-liste-t">Sélectionnés par EFA, présentés par leurs porteurs.</h2>
   <div id="ps-liste" class="ps-grille" hidden></div>
-  <div id="ps-vide" class="ps-vide"><b>La première sélection est en cours.</b><p>Les premiers projets seront publiés ici. Inscrivez-vous pour les recevoir dès leur publication, ou présentez le vôtre.</p></div>
+  <div id="ps-vide" class="ps-vide"><b>Bientôt : des projets et des entrepreneurs à potentiel.</b><p>EFA sélectionnera ici les projets qui méritent d’être suivis. La première sélection arrive bientôt.</p></div>
 </div></section>
 
 <section class="ps-sec" style="padding-top:0" aria-labelledby="ps-c-t"><div class="ps-w">
