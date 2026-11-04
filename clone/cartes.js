@@ -36,6 +36,97 @@
   if ('MutationObserver' in window) { var t; new MutationObserver(function () { clearTimeout(t); t = setTimeout(marquer, 200); }).observe(document.documentElement, { childList: true, subtree: true }); }
 })();
 
+/* EFA · Carte à gratter du jour, ouvrable depuis n'importe quelle page (sans aller dans les ateliers).
+   Même état que la carte de la page Coaching (efa_ateliers_v1 : jeu, jeuJour, mail) : une carte par jour, un seul gain par personne. */
+(function () {
+  if (window.efaGratter) return;
+  var CLE = 'efa_ateliers_v1', WEB3 = '426191fb-4812-4de4-b602-5857464c5916', OFFERTS = 3;
+  function lire() { try { return JSON.parse(localStorage.getItem(CLE) || '{}') || {}; } catch (e) { return {}; } }
+  function ecrire(o) { try { localStorage.setItem(CLE, JSON.stringify(o)); } catch (e) {} try { window.dispatchEvent(new Event('efa-credits')); } catch (e) {} }
+  function mailGarde() { try { return localStorage.getItem('efa_email_v1') || ''; } catch (e) { return ''; } }
+  function pl(n) { return n + ' crédit' + (n > 1 ? 's' : ''); }
+  function valide(m) { return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(m); }
+  function envoyer(m, objet, detail) {
+    try { localStorage.setItem('efa_email_v1', m); } catch (e) {}
+    return fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ access_key: WEB3, subject: 'efa.africa · ' + objet, from_name: 'Site efa.africa', email: m, replyto: m, acces: objet, detail: detail || '', page: location.pathname }) }).catch(function () {});
+  }
+  function solde(e) { var m = 0; try { m = (JSON.parse(localStorage.getItem('efa_missions_v1') || '{}') || {}).pts || 0; } catch (x) {} return Math.max(0, OFFERTS + (e.jeu || 0) + (e.bonus || 0) + m - (e.dep10 || 0)); }
+  var dlg = null;
+  function style() {
+    var st = document.createElement('style');
+    st.textContent = '.efg{position:fixed;inset:0;z-index:90;background:rgba(7,18,32,.62);display:flex;align-items:flex-end;justify-content:center;padding:12px;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif}'
+      + '@media(min-width:700px){.efg{align-items:center}}'
+      + '.efg-b{position:relative;background:#fff;border-radius:18px;width:min(460px,100%);padding:24px 20px 20px;color:#0B1220;box-shadow:0 24px 60px rgba(0,0,0,.3)}'
+      + '.efg-b::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;border-radius:18px 18px 0 0;background:linear-gradient(90deg,#E44828 0 33.3%,#F2B84B 33.3% 66.6%,#3CCB7F 66.6%)}'
+      + '.efg-x{all:unset;cursor:pointer;position:absolute;top:12px;right:14px;font-size:26px;line-height:1;color:#4E5566}'
+      + '.efg h2{font:700 26px/1.15 "Libre Baskerville",Georgia,serif;margin:4px 0 6px}.efg h2 em{font-style:normal;color:#1E8E57}'
+      + '.efg p{margin:0;color:#4E5566;font-size:15.5px}'
+      + '.efg-c{position:relative;height:170px;border-radius:16px;overflow:hidden;margin-top:16px;box-shadow:0 10px 28px rgba(11,18,32,.14)}'
+      + '.efg-r{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;background:#F1F7FA;padding:12px}'
+      + '.efg-r small{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#4E5566}.efg-r b{font:700 32px/1.1 "Libre Baskerville",Georgia,serif}.efg-r span{font-size:15px;color:#4E5566;font-weight:600}'
+      + '.efg-g{background:#E3F5EC}.efg-g b{color:#1E8E57}.efg-p{background:#FFF3D6}'
+      + '.efg canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer}'
+      + '.efg-m p{margin-top:12px}.efg-m .ok{color:#14532D;font-weight:700}.efg-m a{color:#1B71B2;font-weight:800}'
+      + '.efg-f label{display:block;margin-top:12px;font-weight:700;font-size:14px;color:#2A3142}.efg-f div{display:flex;gap:8px;margin-top:6px}.efg-f input{flex:1;min-width:0;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px}.efg-f button{all:unset;cursor:pointer;background:#1E8E57;color:#fff;font-weight:800;border-radius:10px;padding:10px 14px}';
+    document.head.appendChild(st);
+  }
+  function ouvrir() {
+    if (dlg) { dlg.hidden = false; document.body.style.overflow = 'hidden'; return; }
+    style(); var e = lire(), auj = new Date().toISOString().slice(0, 10), inscrit = function () { return !!(lire().mail || mailGarde()); };
+    dlg = document.createElement('div'); dlg.className = 'efg'; dlg.setAttribute('data-garde', ''); dlg.setAttribute('role', 'dialog'); dlg.setAttribute('aria-modal', 'true'); dlg.setAttribute('aria-labelledby', 'efg-t');
+    dlg.innerHTML = '<div class="efg-b"><button type="button" class="efg-x" aria-label="Fermer">×</button><h2 id="efg-t">Grattez <em>votre carte.</em></h2>'
+      + '<p>Une carte par jour pendant l’ouverture. Environ une sur trois fait gagner 1 à 3 crédits. Un seul gain par personne.</p>'
+      + '<div class="efg-c"><div class="efg-r" id="efg-r"><small>Carte du jour</small><b>…</b></div><canvas id="efg-cv" aria-label="Carte à gratter : frottez avec le doigt ou la souris" tabindex="0"></canvas></div><div class="efg-m" id="efg-m" role="status"></div></div>';
+    document.body.appendChild(dlg); document.body.style.overflow = 'hidden';
+    function fermer() { dlg.hidden = true; document.body.style.overflow = ''; }
+    dlg.addEventListener('click', function (x) { if (x.target === dlg || x.target.closest('.efg-x')) fermer(); });
+    document.addEventListener('keydown', function (x) { if (x.key === 'Escape' && dlg && !dlg.hidden) fermer(); });
+    var cv = dlg.querySelector('canvas'), res = dlg.querySelector('#efg-r'), gm = dlg.querySelector('#efg-m');
+    function gainTexte(n) { return '<b>+' + pl(n) + '</b><span>soit ' + (n * 10000).toLocaleString('fr-FR') + ' FCFA de cours</span>'; }
+    function suite() { return '<a href="coaching.html#choisir">Voir les ateliers →</a>'; }
+    function formMail(n) {
+      gm.innerHTML = '<form class="efg-f" novalidate><label for="efg-mail">Votre email pour recevoir ce gain (' + pl(n) + '), en plus des ' + pl(OFFERTS) + ' de bienvenue</label><div><input id="efg-mail" type="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.com"><button type="submit">Recevoir</button></div></form>';
+      gm.querySelector('form').addEventListener('submit', function (x) { x.preventDefault(); var m = gm.querySelector('input').value.trim(); if (!valide(m)) { gm.querySelector('input').focus(); return; }
+        var o = lire(); o.mail = m; ecrire(o); envoyer(m, 'Carte à gratter gagnante · ' + pl(n), 'inscription + jeu');
+        gm.innerHTML = '<p class="ok">C’est ajouté. Votre solde : <b>' + pl(solde(lire())) + '</b>. ' + suite() + '</p>'; });
+    }
+    if (e.jeu) { cv.hidden = true; res.className = 'efg-r efg-g'; res.innerHTML = '<small>Votre carte d’ouverture</small>' + gainTexte(e.jeu); if (inscrit()) gm.innerHTML = '<p>Vous avez déjà gagné pendant l’ouverture. Votre solde : <b>' + pl(solde(e)) + '</b>. ' + suite() + '</p>'; else formMail(e.jeu); return; }
+    if (e.jeuJour === auj) { cv.hidden = true; res.className = 'efg-r efg-p'; res.innerHTML = '<small>Carte du jour</small><b>Pas cette fois</b><span>Une nouvelle carte vous attend demain.</span>'; gm.innerHTML = '<p>En attendant, vos ' + pl(OFFERTS) + ' de bienvenue ouvrent déjà un cours. ' + suite() + '</p>'; return; }
+    var tire = null, ctx = cv.getContext('2d'), fini = false, bas = false, dpr = window.devicePixelRatio || 1;
+    function tirer() { if (tire !== null) return; var r = Math.random(); tire = r < 1 / 3 ? (r < 0.2 ? 1 : r < 0.3 ? 2 : 3) : 0;
+      var o = lire(); o.jeuJour = auj; if (tire) o.jeu = tire; ecrire(o);
+      try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'gratter-' + (tire ? 'gagne-' + tire : 'perdu'), title: 'Carte à gratter', event: true }); } catch (x) {}
+      res.className = 'efg-r ' + (tire ? 'efg-g' : 'efg-p'); res.innerHTML = tire ? '<small>Gagné</small>' + gainTexte(tire) : '<small>Carte du jour</small><b>Pas cette fois</b><span>Revenez demain : une nouvelle carte vous attend.</span>'; }
+    requestAnimationFrame(function () {
+      var r = cv.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; ctx.scale(dpr, dpr);
+      var g = ctx.createLinearGradient(0, 0, r.width, r.height); g.addColorStop(0, '#E44828'); g.addColorStop(.5, '#F2B84B'); g.addColorStop(1, '#3CCB7F');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, r.width, r.height); ctx.fillStyle = 'rgba(255,255,255,.18)'; for (var i = -r.height; i < r.width; i += 18) ctx.fillRect(i, 0, 6, r.height);
+      ctx.fillStyle = '#0B1220'; ctx.font = '800 22px "Source Sans 3",system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('Grattez ici', r.width / 2, r.height / 2 - 10); ctx.font = '700 14px "Source Sans 3",system-ui,sans-serif'; ctx.fillText('avec le doigt ou la souris', r.width / 2, r.height / 2 + 16);
+      ctx.globalCompositeOperation = 'destination-out';
+    });
+    function point(x) { var r = cv.getBoundingClientRect(); return [x.clientX - r.left, x.clientY - r.top]; }
+    function gratter(x) { if (!bas || fini) return; tirer(); var p = point(x); ctx.beginPath(); ctx.arc(p[0], p[1], 22, 0, Math.PI * 2); ctx.fill(); }
+    function part() { var d = ctx.getImageData(0, 0, cv.width, cv.height).data, n = 0, t = 0; for (var i = 3; i < d.length; i += 64) { t++; if (d[i] === 0) n++; } return n / t; }
+    function verifier() { if (fini || tire === null) return; if (part() > 0.45) { fini = true; cv.style.transition = 'opacity .5s'; cv.style.opacity = '0'; setTimeout(function () { cv.hidden = true; }, 520);
+      if (tire) { if (inscrit()) { var m = lire().mail || mailGarde(); envoyer(m, 'Carte à gratter gagnante · ' + pl(tire), 'jeu'); gm.innerHTML = '<p class="ok">Ajouté à votre solde : <b>' + pl(solde(lire())) + '</b>. ' + suite() + '</p>'; } else formMail(tire); }
+      else gm.innerHTML = '<p>Pas de gain aujourd’hui. Revenez demain pour gratter une nouvelle carte.</p>'; } }
+    cv.addEventListener('pointerdown', function (x) { bas = true; cv.setPointerCapture && cv.setPointerCapture(x.pointerId); gratter(x); });
+    cv.addEventListener('pointermove', gratter);
+    cv.addEventListener('pointerup', function () { bas = false; verifier(); });
+    cv.addEventListener('pointercancel', function () { bas = false; verifier(); });
+    cv.addEventListener('keydown', function (x) { if (x.key === 'Enter' || x.key === ' ') { x.preventDefault(); tirer(); ctx.fillRect(0, 0, cv.width, cv.height); verifier(); } });
+  }
+  window.efaGratter = ouvrir;
+  // Partout sauf sur la page Coaching (qui a sa propre carte) : un lien « …#gratter » ouvre la carte sur place.
+  document.addEventListener('click', function (x) {
+    var a = x.target.closest && x.target.closest('a[href$="#gratter"]'); if (!a) return;
+    if (/\/coaching(\.html)?$/.test(location.pathname) && document.getElementById('gratter')) return;
+    x.preventDefault(); ouvrir();
+  });
+})();
+
 /* EFA · Carte à gratter : elle n'apparaît plus d'office sous l'en-tête. Elle se découvre au moment
    où l'on a besoin d'un contenu payant (bouton « crédits », « débloquer », bloc verrouillé…), en bas d'écran. */
 (function () {
