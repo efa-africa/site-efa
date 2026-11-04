@@ -33,3 +33,8 @@
 
 /* Téléphone : cadrer à droite pour garder la carte de l'Afrique et les gratte-ciel au fond */
 @media(max-aspect-ratio:4/5){.me-img{object-position:100% 50%!important}}
+
+/* Le texte de l'entrée n'est jamais coupé : la hauteur s'adapte au contenu, avec une marge sous l'en-tête */
+.me{height:auto!important;min-height:calc(100svh - 82px)}
+.me-txt{padding-top:116px;padding-bottom:44px}
+@media(max-width:720px){.me{min-height:calc(100svh - 68px)}.me-txt{padding-top:96px;padding-bottom:28px}}
