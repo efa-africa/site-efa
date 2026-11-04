@@ -71,7 +71,7 @@
 <div class="q4-head"><div><p class="q4-k">Votre premier pas avec EFA</p><h2 id="q4-t">Qu’est-ce qui vous ferait avancer aujourd’hui&nbsp;?</h2></div><p>Une question, un outil, <strong>une première réponse concrète.</strong> Choisissez ce qui compte pour vous maintenant.</p></div>
 
 <div class="q4-ch">
-<a class="q4-c" href="atelier-ou-passe-mon-argent.html?src=accueil-4"><span class="q4-top"><span class="q4-n">01 / Mon quotidien</span><span class="q4-art q4-a1"><span class="q4-wallet"></span></span></span><b>Où est passé mon argent&nbsp;?</b><span class="q4-d">Voir ce qui entre, ce qui sort et ce qui pourrait rester.</span><span class="q4-go">Comprendre mon mois <i aria-hidden="true">↗</i></span></a>
+<a class="q4-c" href="atelier-ou-passe-mon-argent.html?src=accueil-4"><span class="q4-top"><span class="q4-n">01 / Mon quotidien</span><span class="q4-art q4-a1"><span class="q4-wallet"></span></span></span><span class="vc-mot" aria-label="Voir clair">voir clair<i>.</i><svg class="vc-lun" viewBox="0 0 120 60" aria-hidden="true"><circle class="vc-v" cx="30" cy="34" r="20" fill="rgba(31,198,240,.10)"/><circle class="vc-v" cx="90" cy="34" r="20" fill="rgba(31,198,240,.10)"/><path d="M50 30c4-5 16-5 20 0 M10 30 3 20 M110 30l7-10" fill="none" stroke="#0D6588" stroke-width="6" stroke-linecap="round"/><circle cx="30" cy="34" r="20" fill="none" stroke="#0D6588" stroke-width="6"/><circle cx="90" cy="34" r="20" fill="none" stroke="#0D6588" stroke-width="6"/><path class="vc-n" d="M20 44 38 24 M80 44l18-20" stroke="#1FC6F0" stroke-width="5" stroke-linecap="round"/></svg></span><b>Où est passé mon argent&nbsp;?</b><span class="q4-d">Voir ce qui entre, ce qui sort et ce qui pourrait rester.</span><span class="q4-go">Comprendre mon mois <i aria-hidden="true">↗</i></span></a>
 <a class="q4-c" href="premiers-pas-bourse.html?src=accueil-4"><span class="q4-top"><span class="q4-n">02 / Mon avenir</span><span class="q4-art q4-a2"><svg viewBox="0 0 90 55" fill="none" aria-hidden="true"><path d="M4 47h82M8 5v42" stroke="#7BA5B8" stroke-width="1.3"/><path d="M10 38 25 31 35 35 52 18 63 23 82 6" stroke="#0D6588" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="6" r="4" fill="#E5462E"/></svg></span></span><b>Je veux découvrir la Bourse (BRVM).</b><span class="q4-d">Apprendre le marché avant de passer un premier ordre.</span><span class="q4-go">Faire mes premiers pas <i aria-hidden="true">↗</i></span></a>
 <a class="q4-c" href="valoriser-mon-entreprise.html?src=accueil-4"><span class="q4-top"><span class="q4-n">03 / Mon entreprise</span><span class="q4-art q4-a3"><span class="q4-bars"><i></i><i></i><i></i></span></span></span><b>Combien vaut mon entreprise&nbsp;?</b><span class="q4-d">Explorer la trésorerie de l’activité et sa valeur possible.</span><span class="q4-go">Estimer mon activité <i aria-hidden="true">↗</i></span></a>
 </div>
@@ -226,6 +226,15 @@ html.cl-hall .aig>section.q4{display:block!important}
 .dc .q4-foot{padding:14px 20px 20px}}
 @media(max-width:760px){.dc-mot{align-self:flex-start}.dc{display:flex!important;flex-direction:column}.dc .q4-copy{display:contents}.dc .q4-fk{margin:24px 20px 0}.dc-mot,.dc .q4-h,.dc-bud,.dc .q4-p{margin-left:20px;margin-right:20px}.dc .q4-voix{margin:0 20px 14px}.dc-stage{order:1}.dc .q4-cta{order:2;margin:18px 20px 0;justify-content:space-between}.dc .q4-foot{order:3}}
 @media(prefers-reduced-motion:reduce){.dc-ph img{transition:none}}
+.vc-mot{position:relative;display:block;width:fit-content;font:700 30px/1 "Libre Baskerville",Georgia,serif;letter-spacing:-.04em;color:#0D6588;margin:14px 0 -6px}
+.vc-mot i{font-style:normal;color:#E5462E}
+.vc-lun{position:absolute;width:1.15em;right:-1.35em;top:.08em;overflow:visible}
+.vc-n{stroke-dasharray:40;stroke-dashoffset:40;opacity:0;animation:vcn 6s ease-in-out infinite}
+@keyframes vcn{0%,20%{stroke-dashoffset:40;opacity:0}32%{stroke-dashoffset:0;opacity:1}55%,100%{stroke-dashoffset:-40;opacity:0}}
+.vc-v{animation:vcv 6s ease-in-out infinite}
+@keyframes vcv{0%,10%{fill:rgba(120,145,160,.35)}30%,88%{fill:rgba(31,198,240,.10)}100%{fill:rgba(120,145,160,.35)}}
+@media(max-width:760px){.vc-mot{font-size:23px;margin:0 0 6px}}
+@media(prefers-reduced-motion:reduce){.vc-n,.vc-v{animation:none}}
 @media(prefers-reduced-motion:reduce){.q4-c,.q4-cta{transition:none;animation:none}}
 </style></section><section class="fondateur" id="fondateur" aria-labelledby="fondateur-t"><div class="container fondateur-in"><img class="fondateur-img" src="clone/assets/elysee-portrait.jpg" alt="Portrait d’Élysée Johnson, fondateur d’EFA" width="606" height="909" loading="lazy" decoding="async"><div class="fondateur-txt"><p class="eyebrow">Le fondateur</p><h2 id="fondateur-t">EFA a été fondée par <em>Élysée Johnson.</em></h2><p>Après une décennie dans la banque, l’investissement et le conseil, il a créé EFA pour rendre l’argent plus compréhensible à partir des réalités africaines.</p></div></div></section>
 
