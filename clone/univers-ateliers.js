@@ -22,7 +22,7 @@
       fin = '<div class="ae-fin"><strong>À la fin</strong>' + esc(a.rep) + '</div>';
       if (a.c && !a.cours) plus = '<p class="ae-plus"><b>En plus :</b> une question ou un cas que vous envoyez par écrit, auquel Élysée Johnson répond personnellement sous 72 h, et votre fiche validée par Élysée Johnson. <i class="ae-plaf">20 cas par mois au plus.</i></p>';
       h = a.lien || ('coaching.html#' + (a.alias || ('atelier-' + a.id)));
-      st = bientot ? 'Bientôt · réservez votre place' : gratuit ? 'Accès ouvert' : a.cours ? 'Gratuit pendant l’ouverture' : cr(D.cout(a));
+      st = (a.cours && !bientot) ? 'Offert avec vos 3 crédits' : a.gratuit ? 'Gratuit' : cr(D.cout(a));
       cta = bientot ? 'Réserver ma place' : 'Découvrir ' + (a.cours ? 'le cours' : 'l’atelier');
       if (a.cours) gratuit = true;
     } else {
@@ -30,14 +30,14 @@
       img = x[1]; lab = x[2]; titre = x[3]; pb = x[4]; gratuit = x[5] !== 'prix';
       dur = outil ? x[2] + ' · gratuit' : 'Vidéo · exercice · fiche';
       h = x[0] || 'coaching.html';
-      st = bientot ? 'Bientôt' : gratuit ? 'Accès ouvert' : cr(Math.ceil(x[6] / 10000));
+      st = gratuit ? 'Gratuit' : cr(Math.ceil(x[6] / 10000));
       cta = bientot ? 'Voir les ateliers' : outil ? 'Commencer' : 'Découvrir l’atelier';
     }
     return '<li class="ae-it" data-pg="' + Math.floor(k / 2) + '"' + (k > 1 ? ' hidden' : '') + '><a class="ae-c' + (bientot ? ' ae-bt' : '') + '" href="' + esc(h) + '">' +
       '<span class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">' + esc(dur) + '</span></span>' +
-      '<span class="ae-corps"><span class="ae-meta"><span>' + n + ' / ' + esc(lab) + '</span>' + (gratuit && !bientot ? '<span class="ae-free">Gratuit</span>' : '') + '</span>' +
+      '<span class="ae-corps"><span class="ae-meta"><span>' + n + ' / ' + esc(lab) + '</span>' + (gratuit && !bientot ? '<span class="ae-free">' + (a && a.cours ? 'Offert avec vos 3 crédits' : 'Gratuit') + '</span>' : '') + '</span>' +
       '<span class="ae-t">' + esc(titre) + '</span><span class="ae-pb">' + esc(pb) + '</span>' + fin + plus +
-      '<span class="ae-pied"><span class="ae-st">' + esc(st) + '</span><span class="at-c-btn ae-cta">' + esc(cta) + ' <span aria-hidden="true">→</span></span></span></span></a></li>';
+      '<span class="ae-pied"><span class="ae-st"><span class="ae-etat' + (bientot ? ' venir' : '') + '">' + (bientot ? 'À venir' : 'Disponible') + '</span>' + esc(st) + '</span><span class="at-c-btn ae-cta">' + esc(cta) + ' <span aria-hidden="true">→</span></span></span></span></a></li>';
   }
   [].forEach.call(document.querySelectorAll('.iv-grille[data-l]'), function (g) {
     var X = U[g.dataset.l] || []; g.classList.add('ae-grille'); g.setAttribute('data-garde', '');
