@@ -31,6 +31,8 @@
 .ps-porte span{color:var(--ink2)}
 .ps-porte em{display:inline-block;margin-top:14px;font-style:normal;font-weight:800;color:#fff;background:var(--corail);border-radius:10px;padding:10px 16px}
 .ps-porte.inv em{background:var(--nuit)}
+.ps-haut{all:unset;cursor:pointer;display:inline-block;margin-top:22px;background:#DA3C1B;color:#fff;font-weight:800;font-size:17px;border-radius:12px;padding:15px 22px}.ps-haut:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
+.ps-bas{background:#fff;border-radius:16px;padding:clamp(24px,4vw,40px);display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between}.ps-bas h2{font-size:clamp(24px,3vw,34px)}.ps-bas p{margin:8px 0 0;color:var(--ink2)}.ps-bas .ps-k{margin-bottom:8px}.ps-bas .ps-haut{margin-top:0}
 .ps-porte.off{cursor:default}.ps-porte.off em{background:#D5DCE4;color:#5F6676}
 .ps-sec{padding-block:clamp(48px,7vw,84px)}
 .ps-sec h2{font-size:clamp(28px,3.6vw,42px)}
@@ -80,17 +82,17 @@
 <main class="ps" data-garde>
 <section class="ps-hero" data-photo aria-labelledby="ps-t"><img src="clone/assets/projets-a-suivre.webp" alt="Trois personnes étudient un projet ensemble autour d’une table, carnet et calculatrice" fetchpriority="high">
   <div class="ps-w"><p class="ps-k">EFA Déclic · après le business plan</p><h1 id="ps-t">Projets à suivre<i>.</i></h1>
-  <p>Ici, EFA proposera des projets et des entrepreneurs à potentiel. Vous suivrez, vous échangerez, vous déciderez par vous-même.</p></div>
+  <p>Ici, EFA proposera des projets et des entrepreneurs à potentiel. Entrepreneurs : soumettez votre projet dès maintenant.</p></div>
 </section>
 <div class="ps-w"><div class="ps-portes">
-  <div class="ps-porte off" aria-disabled="true"><small>J’ai un projet</small><b>Présenter mon projet</b><span>Une page, relue par EFA avant publication.</span><br><em>Bientôt</em></div>
+  <button type="button" class="ps-porte" data-ouvrir="porteur"><small>Entrepreneurs · ouvert maintenant</small><b>Soumettre mon projet</b><span>Une page, relue par EFA avant toute publication.</span><br><em>Soumettre mon projet →</em></button>
   <div class="ps-porte inv off" aria-disabled="true"><small>Je veux soutenir</small><b>Suivre des projets</b><span>Recevez les nouveaux projets et demandez une mise en relation.</span><br><em>Bientôt</em></div>
 </div></div>
 
 <section class="ps-sec" aria-labelledby="ps-liste-t"><div class="ps-w">
   <p class="ps-k">Les projets</p><h2 id="ps-liste-t">Sélectionnés par EFA, présentés par leurs porteurs.</h2>
   <div id="ps-liste" class="ps-grille" hidden></div>
-  <div id="ps-vide" class="ps-vide"><b>Bientôt : des projets et des entrepreneurs à potentiel.</b><p>EFA sélectionnera ici les projets qui méritent d’être suivis. La première sélection arrive bientôt.</p></div>
+  <div id="ps-vide" class="ps-vide"><b>Bientôt : des projets et des entrepreneurs à potentiel.</b><p>EFA sélectionnera ici les projets qui méritent d’être suivis. Les soumissions sont ouvertes dès maintenant.</p></div>
 </div></section>
 
 <section class="ps-sec" style="padding-top:0" aria-labelledby="ps-c-t"><div class="ps-w">
@@ -112,6 +114,7 @@
   </ul>
 </div></div></section>
 
+<section class="ps-sec" style="padding-top:0" aria-labelledby="ps-b-t"><div class="ps-w"><div class="ps-bas"><div><p class="ps-k">Entrepreneurs</p><h2 id="ps-b-t">Votre projet a du potentiel&nbsp;? Soumettez-le.</h2><p>EFA relit chaque projet et vous recontacte. Rien n’est publié sans votre accord.</p></div><button type="button" class="ps-haut" data-ouvrir="porteur">Soumettre mon projet →</button></div></div></section>
 <section class="ps-sec" style="padding-top:0"><div class="ps-w"><div class="ps-vide" style="margin-top:0">
   <b>Pas encore de projet prêt ?</b><p>Commencez par EFA Déclic : votre budget, votre réserve d’abord, puis une idée à tester. <a href="generateur-de-projet.html" style="font-weight:800;color:#147f9b">Ouvrir EFA Déclic →</a></p>
 </div></div></section>
@@ -177,6 +180,7 @@
       .then(function(){bt.disabled=false;bt.textContent=lab;});
   });});
   function carte(p){return '<article class="ps-c"><div class="tags">'+[p.secteur,p.pays,p.stade].filter(Boolean).map(function(x){return '<span>'+esc(x)+'</span>';}).join("")+'</div><h3>'+esc(p.nom)+'</h3><p>'+esc(p.resume)+'</p><dl>'+(p.recherche?'<dt>Recherche</dt><dd>'+esc(p.recherche)+'</dd>':'')+(p.apport?'<dt>Apport du porteur</dt><dd>'+esc(p.apport)+'</dd>':'')+(p.porteur?'<dt>Porteur</dt><dd>'+esc(p.porteur)+'</dd>':'')+'</dl><button type="button" data-ouvrir="suiveur" data-projet="'+esc(p.nom)+'">Être mis en relation →</button></article>';}
+  if(location.hash==="#soumettre")setTimeout(function(){ouvrir("porteur");},400);
   fetch("projets-a-suivre.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();}).then(function(j){P=(j&&j.projets||[]).filter(function(p){return p.publie!==false;});
     if(P.length){$("ps-liste").innerHTML=P.map(carte).join("");$("ps-liste").hidden=false;$("ps-vide").hidden=true;}}).catch(function(){});
 })();
