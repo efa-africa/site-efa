@@ -364,31 +364,16 @@ body.fige{overflow:hidden}
 .dci img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 38%}
 .dci::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(0deg,rgba(11,18,32,.72),rgba(11,18,32,0))}
 .dci a{position:absolute;z-index:2;left:50%;bottom:max(34px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;background:#DA3C1B;color:#fff;font:800 18px/1.2 'Source Sans 3',system-ui,sans-serif;padding:17px 28px;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.dci-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:899px){#gp .guide{display:none}}
 .dci a:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
 @media(min-width:900px){.dci img{object-position:50% 30%}}
 </style>
-<section class="dci" data-photo aria-label="EFA Déclic"><img src="clone/assets/declic-immersif.webp" alt="Une couturière concentrée sur sa machine à coudre, dans son atelier" width="1055" height="1491" fetchpriority="high"><a href="#titre" id="dci-b">Découvrir ma prochaine idée <span aria-hidden="true">↓</span></a></section>
+<section class="dci" data-photo aria-labelledby="titre"><h1 id="titre" class="dci-sr">EFA Déclic : j’ai mis de côté, je lance quoi&nbsp;?</h1><img src="clone/assets/declic-immersif.webp" alt="Une couturière concentrée sur sa machine à coudre, dans son atelier" width="1055" height="1491" fetchpriority="high"><a href="#explorer" id="dci-b">Découvrir ma prochaine idée <span aria-hidden="true">↓</span></a></section>
 <script>(function(){var b=document.getElementById("dci-b"),h=document.querySelector(".header"),S=b.parentNode,w=innerWidth;
 function H(){S.style.setProperty("--dci-h",Math.max(460,innerHeight-(S.getBoundingClientRect().top+scrollY))+"px");}
 H();addEventListener("load",H);setTimeout(H,800);addEventListener("resize",function(){if(innerWidth!==w){w=innerWidth;H();}});
-b.addEventListener("click",function(e){e.preventDefault();var x=document.querySelector(".entree.dce"),hh=h?h.offsetHeight:0;scrollTo({top:scrollY+x.getBoundingClientRect().top-hh,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});});})();</script>
-
-<section class="entree sombre dce" aria-labelledby="titre"><div class="wrap dce-g">
-  <div class="dce-t">
-    <span class="sur">EFA Déclic · se lancer avec EFA</span>
-    <p class="dce-mot" aria-hidden="true">déclic<i>.</i></p>
-    <h1 id="titre">J’ai mis de côté. <em>Je lance quoi&nbsp;?</em></h1>
-    <p>Votre budget, votre réserve d’abord, puis une idée à tester.</p>
-    <div class="dce-bud" role="group" aria-label="Choisir un budget pour commencer"><button type="button" data-v="100000">100 000 F</button><button type="button" data-v="300000" class="on">300 000 F</button><button type="button" data-v="5000000">5 millions F</button></div>
-  </div>
-  <div class="dce-ph" aria-hidden="true"><span><img src="clone/assets/gen-social-selling.webp" alt="" width="960" height="640" decoding="async"><em>vendre en ligne</em></span><span><img src="clone/assets/gen-dejeuners.webp" alt="" width="960" height="640" decoding="async"><em>repas pour bureaux</em></span><span><img src="clone/assets/gen-couture.webp" alt="" width="960" height="640" decoding="async"><em>atelier couture</em></span></div>
-  <div class="dce-go"><a class="dce-b" href="#explorer" id="dce-b">Trouver ma première idée <span aria-hidden="true">↓</span></a><p class="note">Dès 10 000 F CFA · Sans compte · Des pistes, jamais des gains promis.</p></div>
-</div></section>
-<script>(function(){var B=document.querySelectorAll(".dce-bud button"),go=document.getElementById("dce-b");
-function aller(){var x=document.getElementById("explorer");if(!x)return;var hd=document.querySelector(".header"),hh=hd?hd.offsetHeight:0;scrollTo({top:scrollY+x.getBoundingClientRect().top-hh-8,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});}
-function poser(v){var r=document.getElementById("budget"),P=[10000,25000,50000,100000,150000,200000,300000,500000,750000,1000000,1500000,2000000,3000000,5000000,7500000,10000000,15000000,20000000,30000000,50000000],i=P.indexOf(+v);if(r&&i>=0){r.value=i;r.dispatchEvent(new Event("input",{bubbles:true}));}}
-[].forEach.call(B,function(b){b.addEventListener("click",function(){[].forEach.call(B,function(c){c.classList.toggle("on",c===b);});poser(b.dataset.v);aller();});});
-if(go)go.addEventListener("click",function(e){e.preventDefault();aller();});})();</script>
+b.addEventListener("click",function(e){e.preventDefault();var x=document.getElementById("explorer"),hh=h?h.offsetHeight:0;scrollTo({top:scrollY+x.getBoundingClientRect().top-hh-8,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});});})();</script>
 
 <section class="explorer" id="explorer" aria-label="Explorer des idées" data-garde><div class="wrap ex-grille">
   <aside class="reglages" aria-label="Vos choix" data-garde>
