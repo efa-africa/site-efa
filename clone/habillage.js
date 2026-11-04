@@ -442,7 +442,7 @@
   function style() {
     var st = document.createElement('style');
     st.textContent = '.efg{position:fixed;inset:0;z-index:90;background:rgba(7,18,32,.62);display:flex;align-items:flex-end;justify-content:center;padding:12px;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif}'
-      + '@media(min-width:700px){.efg{align-items:center}}'
+      + '.efg[hidden]{display:none!important}@media(min-width:700px){.efg{align-items:center}}'
       + '.efg-b{position:relative;background:#fff;border-radius:18px;width:min(460px,100%);padding:24px 20px 20px;color:#0B1220;box-shadow:0 24px 60px rgba(0,0,0,.3)}'
       + '.efg-b::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;border-radius:18px 18px 0 0;background:linear-gradient(90deg,#E44828 0 33.3%,#F2B84B 33.3% 66.6%,#3CCB7F 66.6%)}'
       + '.efg-x{all:unset;cursor:pointer;position:absolute;top:12px;right:14px;font-size:26px;line-height:1;color:#4E5566}'
