@@ -74,6 +74,8 @@ main{max-width:920px;margin:0 auto;padding:36px 20px 80px}
     <p>Vous recevez un lien de connexion. L’accès est ouvert aux personnes invitées par Élysée Johnson.</p>
     <form id="f-mail"><div class="champ"><input id="mail" type="email" autocomplete="email" placeholder="vous@exemple.com" required><button class="bt" type="submit">Recevoir mon lien</button></div></form>
     <p class="msg" id="m-mail" role="status"></p>
+    <form id="f-code" hidden style="margin-top:18px"><p class="sur" style="margin:0 0 8px">Code reçu par email</p><div class="champ"><input id="code" inputmode="numeric" autocomplete="one-time-code" placeholder="Code à 6 chiffres" maxlength="10" required><button class="bt" type="submit">Entrer</button></div></form>
+    <p class="msg" id="m-code" role="status"></p>
   </section>
 
   <section id="v-refus" class="carte porte" hidden>
@@ -115,7 +117,12 @@ main{max-width:920px;margin:0 auto;padding:36px 20px 80px}
   if(location.hash.indexOf('access_token')>-1||location.search.indexOf('code=')>-1){setTimeout(function(){history.replaceState(null,'',location.pathname);},800);}
 
   $('f-mail').addEventListener('submit',function(e){e.preventDefault();var m=$('mail').value.trim().toLowerCase(),b=e.target.querySelector('button');if(!m)return;b.disabled=true;say($('m-mail'),'Envoi en cours…');
-    sb.auth.signInWithOtp({email:m,options:{emailRedirectTo:RETOUR,shouldCreateUser:true}}).then(function(r){b.disabled=false;if(r.error){say($('m-mail'),'L’envoi n’a pas abouti : '+r.error.message,1);return;}say($('m-mail'),'C’est envoyé. Ouvrez l’email reçu à '+m+' et touchez le lien, sur ce même téléphone.');});});
+    sb.auth.signInWithOtp({email:m,options:{emailRedirectTo:RETOUR,shouldCreateUser:true}}).then(function(r){b.disabled=false;if(r.error){say($('m-mail'),'L’envoi n’a pas abouti : '+r.error.message,1);return;}say($('m-mail'),'C’est envoyé à '+m+'. Entrez ci-dessous le code reçu par email (ou touchez le lien de l’email, sur ce même appareil).');$('f-code').hidden=false;$('code').focus();});});
+  $('f-code').addEventListener('submit',async function(e){e.preventDefault();var m=$('mail').value.trim().toLowerCase(),t=$('code').value.replace(/\s/g,''),b=e.target.querySelector('button');if(!t)return;b.disabled=true;say($('m-code'),'Vérification…');
+    var r=await sb.auth.verifyOtp({email:m,token:t,type:'email'});
+    if(r.error){var r2=await sb.auth.verifyOtp({email:m,token:t,type:'signup'});if(!r2.error)r=r2;}
+    b.disabled=false;if(r.error){say($('m-code'),'Ce code ne fonctionne pas : vérifiez-le ou demandez un nouveau lien.',1);return;}
+    say($('m-code'),'');demarrer();});
   $('sortir').addEventListener('click',function(){sb.auth.signOut().then(function(){location.reload();});});
   $('recharger').addEventListener('click',function(){location.reload();});
 
