@@ -274,5 +274,6 @@ function apercuGuide(){var g=$("guide");if(!g)return;var z=$("guide-apercu");
   z.innerHTML='<p class="g-ap-t">'+(etat.libre?"Des idées pour tous les budgets":"Des idées pour "+FC(etat.budget)+", réserve d’abord")+'</p><div class="g-ap-l">'+L.map(function(x){var f=img(x);return '<button type="button" class="g-ap-c" data-ga="'+x[0]+'">'+(f?'<img src="'+f+'" alt="" loading="lazy" width="480" height="320">':'')+'<span><b>'+esc(x[1])+'</b><small>Ticket indicatif dès '+(x[3]?FC(x[3]):"0 F")+'</small></span></button>';}).join("")+'</div><p class="g-ap-n">Lancez l’analyse pour voir toutes les idées, votre réserve et une piste à tester.</p>';}
 document.addEventListener("click",function(e){if(!e.target.closest("[data-affiner]"))return;var a=$("affinage");if(a&&a.hidden)$("affiner").click();var r=document.querySelector(".reglages");if(r){var hd=document.querySelector(".header");scrollTo({top:scrollY+$("affiner").getBoundingClientRect().top-(hd?hd.offsetHeight:0)-12,behavior:"smooth"});}});
 var _placerGuide=placer;placer=function(){_placerGuide.apply(this,arguments);try{apercuGuide();}catch(e){}};
+try{apercuGuide();}catch(e){}
 
 })();

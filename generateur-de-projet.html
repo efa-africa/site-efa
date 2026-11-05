@@ -136,8 +136,9 @@
 @media(prefers-reduced-motion:reduce){.brille{animation:none;outline:3px solid rgba(218,60,27,.5)}}
 .zone{min-width:0}
 .guide{background:var(--papier);border-radius:var(--r-carte);padding:22px}
-.g-apercu{margin-top:22px;border-top:1px solid #E1E8F0;padding-top:18px}.g-ap-t{margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#147f9b}.g-ap-l{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.g-ap-c{all:unset;cursor:pointer;display:block;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(7,29,56,.08)}.g-ap-c:focus-visible{outline:3px solid #6DB8F2}.g-ap-c img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}.g-ap-c span{display:block;padding:10px 12px 12px}.g-ap-c b{display:block;font-size:15px;line-height:1.25;color:#0B1220}.g-ap-c small{display:block;margin-top:4px;font-size:12.5px;color:#5F6676}.g-ap-n{margin:14px 0 0;color:#4E5566;font-size:14.5px}
+.g-apercu{margin-top:22px;border-top:1px solid #E1E8F0;padding-top:18px}.g-ap-t{margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#147f9b}.g-ap-l{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.g-ap-c{all:unset;cursor:pointer;display:block;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(7,29,56,.08)}.g-ap-c:focus-visible{outline:3px solid #6DB8F2}.g-ap-c img{display:block;width:100%!important;height:130px!important;max-height:none;margin:0!important;object-fit:cover}.g-ap-c span{display:block;padding:10px 12px 12px}.g-ap-c b{display:block;font-size:15px;line-height:1.25;color:#0B1220}.g-ap-c small{display:block;margin-top:4px;font-size:12.5px;color:#5F6676}.g-ap-n{margin:14px 0 0;color:#4E5566;font-size:14.5px}
 .v-ex{background:#EEF5FC;border-radius:10px;padding:10px 12px;font-size:15px;color:#2A3142;margin:8px 0}.v-ex-b{all:unset;cursor:pointer;font-weight:800;color:#147f9b;text-decoration:underline}
+@media(min-width:960px){#gp .guide{position:sticky;top:86px}}
 .guide h2{font-size:clamp(24px,3vw,32px);color:var(--nuit);margin:8px 0 14px}
 .g-etapes,.ensuite ol{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:10px}
 .g-etapes li,.ensuite li{display:flex;gap:12px;align-items:flex-start;background:var(--creme);border-radius:12px;padding:12px 14px;font-size:16px}
@@ -547,7 +548,7 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
 <script src="generateur-idees.js?v=20261104c"></script>
 <script src="efa-config.js?v=20261102z"></script>
 <script src="efa-commande.js?v=20261102y2"></script>
-<script src="generateur-de-projet.js?v=20261105a"></script>
+<script src="generateur-de-projet.js?v=20261105b"></script>
 <script>window.EFA_VOIX={pendant:{src:"audio/accueil/generateur-pendant.mp3",duree:25,ancre:"#guide h2",place:"after"},fin:{src:"audio/accueil/generateur-fin.mp3",duree:26,quand:function(){return document.getElementById("vedette-c");},ancre:"#vedette",place:"before"}};</script>
 <script src="efa-voix-elysee.js?v=20261102v1" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
