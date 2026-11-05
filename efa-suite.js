@@ -134,9 +134,13 @@
     try { S = JSON.parse(sessionStorage.getItem(FIL) || "[]") || []; } catch (e) {}
     if (S.length && S[S.length - 1].u === cur) { /* rechargement */ }
     else if (S.length > 1 && S[S.length - 2].u === cur) S.pop(); // retour en arrière
-    else S.push({ u: cur, t: ({ "index.html": "Accueil", "parcours.html": "L’école", "methode.html": "Études & prospective", "organisations.html": "Pour les organisations", "outils.html": "Mes outils", "auteur.html": "À propos" })[pg] || court((document.querySelector("h1") || {}).textContent || document.title) });
+    else S.push({ u: cur, t: ({ "index.html": "Accueil", "parcours.html": "L’école", "methode.html": "Études & prospective", "organisations.html": "Pour les organisations", "outils.html": "Mes outils", "auteur.html": "À propos" })[pg] || court(document.title || (document.querySelector("h1") || {}).textContent) });
     S = S.slice(-30); try { sessionStorage.setItem(FIL, JSON.stringify(S)); } catch (e) {}
-    var prev = S.length > 1 ? S[S.length - 2] : (pg !== "index.html" ? { u: "index.html", t: "Accueil" } : null);
+    // « Revenir » ne reprend la page précédente que si l'on vient vraiment d'elle ; sinon (menu, lien direct) : Mes outils ou l'accueil
+    var ref = ""; try { ref = document.referrer && new URL(document.referrer).origin === location.origin ? new URL(document.referrer).pathname + new URL(document.referrer).search : ""; } catch (e) {}
+    var avant = S.length > 1 ? S[S.length - 2] : null, depuisMenu = !!(window.__efaClicMenu);
+    var OUTILS = /^(generateur-de-projet|diagnostic|point-de-depart|ou-est-passe-mon-argent|valoriser-mon-entreprise|projets-a-suivre|budget|simulateur)/;
+    var prev = avant && ref && ref === avant.u && !depuisMenu ? avant : (pg === "index.html" ? null : OUTILS.test(pg) ? { u: "outils.html", t: "Mes outils" } : { u: "index.html", t: "Accueil" });
     var st = document.createElement("style");
     st.textContent = ".efa-fil{background:#F1F7FA;border-bottom:1px solid #DCE8ED;font-family:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;align-self:stretch;width:100%;box-sizing:border-box}"
       + ".efa-fil-in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px max(12px,env(safe-area-inset-left,0px))}"
