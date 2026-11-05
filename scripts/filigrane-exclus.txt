@@ -14,3 +14,4 @@ illus/auteur-chantier.webp
 clone/assets/declic-immersif.webp
 clone/assets/projets-a-suivre.webp
 clone/assets/pass-etudiant.webp
+clone/assets/etudiants-campus.webp
