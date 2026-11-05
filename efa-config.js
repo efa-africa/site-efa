@@ -11,7 +11,7 @@ window.EFA_CONFIG = {
   LIEN_PUBLIC: "",
 
   SUBSTACK: "https://educationfinanciereafrique.substack.com",
-  GUIDE: "index.html#guide",
+  GUIDE: "lettre.html",
 
   // true = une première synthèse s'affiche avant l'email (situation, point d'appui, priorité) ; false = l'email est demandé avant tout résultat.
   APERCU: true,

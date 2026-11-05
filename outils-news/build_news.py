@@ -518,7 +518,7 @@ def page_home():
 
   <section class="lettre">
     <p><b>La lettre du mardi</b>L’actualité qui compte pour votre argent, une leçon, un outil.</p>
-    <a class="bt" href="index.html#guide">Recevoir la lettre</a>
+    <a class="bt" href="lettre.html">Recevoir la lettre</a>
   </section>
 </div>
 </main>

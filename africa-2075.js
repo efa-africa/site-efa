@@ -12,7 +12,12 @@
   function valide(em){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);}
   function envoyer(em){
     var d=new FormData(); d.append('EMAIL',em); d.append('email_address_check',''); d.append('locale','fr');
-    return fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'});
+    var brevo=fetch(BREVO_URL,{method:'POST',body:d,mode:'no-cors'});
+    // Copie à EFA (Web3Forms) : chaque inscription est vue même avant la confirmation Brevo
+    var w=new FormData(); w.append('access_key','426191fb-4812-4de4-b602-5857464c5916'); w.append('subject','Africa 2075 · nouvel inscrit'); w.append('from_name','EFA · Africa 2075');
+    w.append('email',em); w.append('page',location.pathname);
+    var copie=fetch('https://api.web3forms.com/submit',{method:'POST',body:w}).catch(function(){});
+    return Promise.all([brevo,copie]);
   }
   function brancher(f,apres){
     var m=f.querySelector('.a2075-msg'), b=f.querySelector('button[type=submit]'), ok=f.querySelector('input[type=checkbox]');
@@ -44,8 +49,18 @@
   // 2. Article fondateur : en accès libre, inscription pour être prévenu des prochains numéros
   document.querySelectorAll('[data-a2075-inscription]').forEach(function(f){
     brancher(f,function(m){
-      noter(); compte('a2075-fondateur-email'); f.reset();
+      noter(); compte('a2075-inscription-email'); f.reset();
       m.textContent='C’est noté. Un email de confirmation arrive dans quelques minutes (regardez aussi Promotions et Spam). Les numéros d’Africa 2075 vous sont désormais ouverts sur cet appareil.';
+      if(suite&&porte&&porte.hidden===false){suite.hidden=false;porte.hidden=true;document.documentElement.classList.add('a2075-ouvert');}
+    });
+  });
+  // Bouton « Recevoir chaque numéro » : aller au formulaire et mettre le curseur dans le champ
+  document.querySelectorAll('a[href="#t-cta"],a[href="#recevoir"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var h=(a.getAttribute('href')||'').replace(/^.*#/,'#'), c=/^#[\w-]+$/.test(h)?document.getElementById(h.slice(1)):null; if(!c)return;
+      e.preventDefault(); c.scrollIntoView({behavior:'smooth',block:'start'});
+      var i=c.querySelector('input[type=email]')||(c.parentElement&&c.parentElement.querySelector('input[type=email]'));
+      if(i)setTimeout(function(){i.focus({preventScroll:true});},500);
     });
   });
 })();

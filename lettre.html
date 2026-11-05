@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><script>/* Adresses sans « .html » */(function(){try{var p=location.pathname,n=p.replace(/\/index\.html$/,"/").replace(/\.html$/,"");if(n!==p&&history.replaceState)history.replaceState(history.state,"",n+location.search+location.hash);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>La lettre du mardi · EFA</title>
+<meta name="description" content="La lettre du mardi d’EFA : chaque semaine, l’argent de la semaine en Afrique, expliqué simplement, et le guide gratuit « Construire sa stabilité financière » en cadeau.">
+<link rel="canonical" href="https://efa.africa/lettre">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Éducation Financière Afrique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="La lettre du mardi · EFA">
+<meta property="og:description" content="L’argent de la semaine, chaque mardi, et le guide gratuit en cadeau.">
+<meta property="og:url" content="https://efa.africa/lettre">
+<meta property="og:image" content="https://efa.africa/logo-efa-96.png">
+<meta property="og:image:width" content="96">
+<meta property="og:image:height" content="96">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Revue de prospective : grande image d'en-tête bleu nuit, puis colonne de lecture sur crème ; cartes papier, aplats corail et nuit. */
+:root{
+  --display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --nuit:#0B1220; --sombre:#070C16; --creme:#F1F7FA; --papier:#FFFFFF; --line:#DCE8ED; --sable:#DCE8ED;
+  --ink:#2A3142; --ink2:#4E5566; --ink3:#5F6676;
+  --corail:#DA3C1B; --bleu:#1B71B2; --soft-bleu:#6DB8F2; --soft-corail:#F09680;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nuit)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;margin:0}
+a{color:var(--bleu);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A}
+
+/* Barre du site */
+.stick{position:sticky;top:0;z-index:30}
+.stick .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));background:#0B1220;color:#fff}
+.stick .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:12px;letter-spacing:.18em}
+.stick .brand img{width:36px;height:36px}
+.stick .nav{display:flex;gap:6px;align-items:center}
+.stick .nav a{color:#E8EDF5;text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:999px}
+.stick .nav a[aria-current="page"]{background:#1C2842}
+.stick .nav a.nav-cta{background:#DA3C1B;color:#fff}
+.stick .menu-btn{display:none;background:transparent;color:#fff;border:1px solid #2A3446;border-radius:999px;padding:8px 14px;font:700 14px var(--body);cursor:pointer}
+.actbar{background:#DA3C1B;color:#fff}
+.actbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding-block:8px}
+.actbar p{margin:0;font-weight:700;font-size:14px;flex:1 1 220px;min-width:0}
+.actbar a{font:800 14px var(--body);text-decoration:none;border-radius:999px;padding:8px 14px;white-space:nowrap}
+.actbar .a1{background:#0B1220;color:#fff} .actbar .a2{background:#fff;color:#0B1220}
+.mission{background:var(--nuit);color:var(--creme)} .mission p{margin:0;padding-block:14px;text-align:center;font-size:16px}
+.mission .mc{color:#F0603F;font-weight:700} .mission .ms{color:#6DB8F2;font-weight:700}
+@media (max-width:860px){
+ .stick .menu-btn{display:inline-block;position:relative;z-index:41}
+ .stick .nav{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:40;background:#0B1220;flex-direction:column;justify-content:center;gap:10px;display:none}
+ .stick .nav.open{display:flex}
+ .stick .nav a{font-size:20px}
+ .actbar p{display:none}
+ .actbar .wrap{flex-wrap:wrap;gap:8px}.actbar a,.actbar button{flex:1 1 auto;min-width:0;text-align:center;white-space:normal}
+ .actbar a{font-size:13px;padding:8px 12px}
+}
+
+/* En-tête de la revue */
+.une{background:var(--sombre);color:#E8EDF5}
+.une .wrap{padding-block:28px 40px;display:flex;flex-direction:column;gap:22px}
+.une img{display:block;width:100%;height:auto;border-radius:10px}
+.une .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:#C9D1DE}
+.une .meta b{color:#fff}
+.une h1{font-size:clamp(34px,5.2vw,58px);color:#fff;max-width:20ch}
+.une .chapeau{margin:0;font-size:clamp(17px,2vw,20px);color:#C9D1DE;max-width:62ch}
+.une .surtitre{color:var(--soft-corail)}
+
+main{padding-block:36px 56px}
+main .col{display:flex;flex-direction:column;gap:30px}
+
+/* Éditorial */
+.edito{background:var(--nuit);color:#E8EDF5;border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:12px}
+.edito .surtitre{color:var(--soft-corail)}
+.edito h2{font-size:clamp(24px,3.2vw,30px);color:#fff}
+.edito p{margin:0;color:#C9D1DE}
+.edito .sig{font-family:var(--display);font-style:italic;color:#fff}
+
+.porte{background:var(--nuit);color:#E8EDF5;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;position:relative}
+.porte .surtitre{color:var(--soft-corail)}
+.porte h2{font-size:clamp(23px,3.2vw,29px);color:#fff}
+.porte p{margin:0;color:#C9D1DE}
+.a2075-form{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.a2075-ligne{display:flex;flex-wrap:wrap;gap:10px}
+.a2075-ligne input[type=email]{flex:1 1 220px;min-width:0;font:400 17px var(--body);padding:12px 14px;border-radius:8px;border:0;background:#fff;color:#0B1220;min-height:46px}
+.a2075-ligne button{font:800 16px var(--body);border:0;border-radius:8px;padding:12px 22px;min-height:46px;background:var(--corail);color:#fff;cursor:pointer}
+.a2075-ligne button:disabled{opacity:.6}
+.a2075-ok{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#C9D1DE}
+.a2075-ok a{color:#6DB8F2}
+.a2075-msg{font-size:14px;color:#F09680;min-height:1em}
+.a2075-hp{position:absolute;left:-9999px}
+.merci{background:var(--sable);border-radius:10px;padding:14px 16px;font-size:15px;color:var(--ink2)}
+.une-phrase{background:var(--corail);color:#fff;border-radius:2px;padding:20px 22px}
+.une-phrase .surtitre{color:#fff;opacity:.9}
+.une-phrase p{margin:6px 0 0;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.38}
+
+.sommaire{background:var(--papier);border-radius:14px;padding:22px}
+.sommaire ol{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.sommaire li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline}
+.sommaire .n{font-family:var(--display);font-weight:700;color:var(--corail)}
+.sommaire a{color:var(--ink);font-weight:600;text-decoration:none}
+.sommaire a:hover{text-decoration:underline}
+.etiquette{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+
+.tendance{background:var(--papier);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;scroll-margin-top:96px}
+.tendance .rang{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink3)}
+.tendance h2{font-size:clamp(25px,3.6vw,32px)}
+.bloc h3{font-family:var(--body);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 4px}
+.bloc p{margin:0}
+.bloc.sec p{color:var(--ink2)}
+.diff{background:var(--sable);border-radius:10px;padding:14px 16px}
+.retenir{background:var(--nuit);color:#fff;border-radius:2px;padding:16px 18px}
+.retenir span{display:block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail);margin-bottom:4px}
+.retenir p{margin:0;font-family:var(--display);font-size:18px;line-height:1.38}
+
+.section{display:flex;flex-direction:column;gap:14px}
+.section h2{font-size:clamp(26px,3.8vw,34px)}
+.agenda{background:var(--papier);border-radius:14px;padding:6px 22px}
+.agenda .ligne{display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:12px;padding-block:14px;border-bottom:1px solid var(--line)}
+.agenda .ligne:last-child{border-bottom:0}
+.agenda dt{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;font-variant-numeric:tabular-nums}
+.agenda dd{margin:0;min-width:0}
+.agenda dd small{display:block;color:var(--ink3);font-size:14px}
+.agenda dl{margin:0}
+.sources ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--ink2)}
+.methode{font-size:15px;color:var(--ink2);margin:0}
+
+.cta{background:var(--nuit);color:#fff;border-radius:14px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.cta h2{font-size:clamp(22px,3vw,28px);color:#fff}
+.cta p{margin:0;color:#C9D1DE}
+.cta .btns{display:flex;flex-wrap:wrap;gap:10px}
+.cta .btns a{font:800 16px var(--body);text-decoration:none;border-radius:8px;padding:12px 20px;min-height:46px;display:inline-flex;align-items:center}
+.cta .p{background:var(--corail);color:#fff} .cta .s{background:var(--creme);color:var(--nuit)}
+
+footer.site{background:#0B1220;color:#C9D1DE;font-size:14px;padding-block:22px}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer.site a{color:#E8EDF5;text-decoration:none}
+@media (max-width:480px){.agenda .ligne{grid-template-columns:1fr;gap:2px}.tendance{padding:22px 18px}}
+
+/* Article fondateur */
+.prose{display:flex;flex-direction:column;gap:14px}
+.prose h2{font-size:clamp(25px,3.6vw,32px);margin-top:6px}
+.prose p{margin:0;font-size:18px;line-height:1.65}
+.prose .lettrine::first-letter{font-family:var(--display);font-weight:700;float:left;font-size:64px;line-height:.9;padding:6px 10px 0 0;color:var(--corail)}
+.prose .aveu{background:var(--sable);border-radius:10px;padding:14px 16px;font-size:16px;color:var(--ink2)}
+.prose .signature{font-family:var(--display);font-weight:700;font-size:19px;margin-top:6px}
+.prose .signature span{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--ink3)}
+.graphe{margin:0;background:var(--papier);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.graphe h2{font-size:clamp(22px,3vw,27px)}
+.g-zone{overflow-x:auto}
+.g-zone svg{display:block;width:100%;min-width:520px;height:auto}
+.g-axe line{stroke:var(--ink3);stroke-width:1}
+.g-axe .g-grille{stroke:var(--line)}
+.g-axe text,.g-lib text{font:600 13px var(--body);fill:var(--ink2)}
+.g-lib text{font-size:15px;fill:var(--ink)}
+.g-axe .g-unite{font-weight:400;fill:var(--ink3)}
+.g-lib .g-af{font-weight:800;fill:var(--corail)}
+.g-lib .g-note{font-size:12px;fill:var(--ink3)}
+.g-neutre{fill:#9AA3B2}
+.g-s1{fill:#E44828;background:#DA3C1B}.g-s2{fill:#EC6243;background:#EC6243}.g-s3{fill:#F09680;background:#F09680}.g-s4{fill:#F6C2B4;background:#F6C2B4}
+.g-reste{fill:none;stroke:#E44828;stroke-width:1.5;stroke-dasharray:5 4}
+.g-reste-t{font:700 13px var(--body);fill:#E44828}
+.g-val{font:700 14px var(--body);fill:var(--ink)}
+.g-val.g-af{fill:#E44828;font-size:15px}
+.g-leg{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--ink2)}
+.g-leg li{display:flex;align-items:center;gap:8px}
+.g-leg i{display:inline-block;width:14px;height:14px;border-radius:3px}
+.graphe figcaption{font-size:14px;color:var(--ink3)}
+.gb-cles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gb-cle{background:#fff;border-radius:12px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.gb-cle b{font:700 clamp(24px,3vw,32px)/1.1 var(--display,'Libre Baskerville',Georgia,serif);color:var(--nuit,#0B1220)}
+.gb-cle span{font-size:15px;line-height:1.45;color:var(--ink2)}
+.gb-cle.on{background:#DA3C1B}.gb-cle.on b,.gb-cle.on span{color:#fff}
+.gb{display:grid;gap:12px;margin-top:4px}
+.gb-u{margin:0;font-size:13px;font-weight:700;color:var(--ink3)}
+.gb-r{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+.gb-l{display:grid;line-height:1.25}.gb-l b{font-size:15.5px;color:var(--ink)}.gb-l small{font-size:12.5px;color:var(--ink3)}
+.gb-t{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:8px;align-items:center;min-width:0}
+.gb-k{display:block;min-width:0}
+.gb-b{display:block;height:26px;border-radius:0 4px 4px 0;background:#9AA3B2}
+.gb-t em{font-style:normal;font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap}
+.gb-pile{display:flex;height:26px}
+.gb-af .gb-pile{width:55%}
+.gb-s{display:block;height:100%;flex-basis:0}
+.g-s1.gb-s{flex-grow:13.1}.g-s2.gb-s{flex-grow:10.4}.g-s3.gb-s{flex-grow:6.2}.g-s4.gb-s{flex-grow:3.3}
+.gb-s{width:auto!important}
+.gb-grp{display:flex;flex:0 0 55%;height:100%}
+.gb-reste{flex:1 1 auto;display:flex;align-items:center;justify-content:center;border:2px dashed #DA3C1B;border-left:0;border-radius:0 4px 4px 0;font-size:12.5px;font-weight:800;color:#B8341A;white-space:nowrap;overflow:hidden}
+.gb-ng .gb-b{background:#DA3C1B}.gb-ng .gb-l b,.gb-ng em,.gb-af .gb-l b,.gb-af em,.gb-tout .gb-l b,.gb-tout em{color:#B8341A}
+.gb-ax{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:4px}
+.gb-ax span:first-child{margin-left:-3px}.gb-ax span:last-child{margin-right:-8px}
+.g-rl{border:2px dashed #DA3C1B;background:none!important}
+@media (max-width:640px){.gb-cles{grid-template-columns:minmax(0,1fr)}.gb-r{grid-template-columns:minmax(0,1fr);gap:4px}.gb-cle{grid-template-columns:auto 1fr;align-items:center;column-gap:14px}}
+.encadre-nuit{background:var(--nuit);color:#E8EDF5;border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.encadre-nuit .surtitre{color:var(--soft-corail)}
+.encadre-nuit h2{color:#fff;font-size:clamp(24px,3.2vw,30px)}
+.forces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.force b{display:block;font-family:var(--display);font-size:19px;color:#fff;margin-bottom:6px}
+.force p{margin:0;color:#C9D1DE;font-size:16px}
+.chantier-un{background:var(--corail);color:#fff;border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;gap:12px}
+.chantier-un h2{font-size:clamp(25px,3.6vw,32px);color:#fff}
+.chantier-un p{margin:0;font-size:17px;line-height:1.6}
+.c-badge{align-self:flex-start;background:#fff;color:var(--corail);font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:999px;padding:6px 12px}
+.conditions{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.conditions li{background:var(--papier);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.conditions .c-n{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;color:var(--corail)}
+.conditions b{font-size:18px}
+.conditions p{margin:4px 0 0;color:var(--ink2)}
+@media (max-width:760px){.forces{grid-template-columns:minmax(0,1fr)}}
+
+/* Page d'accueil de la revue */
+.hub{background:var(--sombre);color:#E8EDF5}
+.hub .wrap{padding-block:34px 44px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+.hub h1{font-size:clamp(34px,5vw,56px);color:#fff}
+.hub .chapeau{margin:12px 0 0;font-size:clamp(17px,2vw,20px);color:#C9D1DE;max-width:56ch}
+.hub .surtitre{color:var(--soft-corail)}
+.hub img{display:block;width:100%;height:auto;border-radius:12px}
+.recevoir{background:var(--nuit);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;scroll-margin-top:90px}
+.recevoir h2{font-size:clamp(22px,2.8vw,27px);color:#fff}
+.recevoir p{margin:0;color:#C9D1DE;font-size:16px}
+.recevoir .a2075-ligne button{min-width:170px}
+.recevoir .deja{font-size:14px;color:#C9D1DE}.recevoir .deja a{color:#6DB8F2;font-weight:700}
+@media (max-width:860px){.hub .wrap{grid-template-columns:1fr;gap:22px}}
+.numeros{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media (max-width:700px){.numeros{grid-template-columns:1fr}}
+.num{background:var(--papier);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);transition:transform .15s}
+.num:hover{transform:translateY(-2px)}
+.num img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.num .corps{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px}
+.num .kick{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#B8341A;margin:0}
+.num h3{font-size:clamp(19px,1.8vw,23px);line-height:1.18;color:var(--nuit)}
+.num p{margin:0;color:var(--ink2);font-size:16px}
+.num .lire{margin-top:auto;padding-top:6px;font-weight:800;color:var(--bleu)}
+.num.vedette{grid-column:1/-1;flex-direction:row}
+.num.vedette img{width:46%;aspect-ratio:auto;height:auto;min-height:100%}
+.num.vedette .corps{flex:1}
+@media (max-width:700px){.num.vedette{flex-direction:column}.num.vedette img{width:100%;aspect-ratio:16/9}}
+.sec-h{display:flex;flex-direction:column;gap:6px}
+.sec-h h2{font-size:clamp(26px,3.4vw,36px)}
+.sec-h p{margin:0;color:var(--ink2)}
+.quoi{background:var(--papier);border-radius:14px;padding:24px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:760px){.quoi{grid-template-columns:1fr}}
+.quoi div{display:flex;flex-direction:column;gap:6px}
+.quoi b{font-family:var(--display);font-size:19px;color:var(--nuit)}
+.quoi p{margin:0;color:var(--ink2);font-size:16px}
+.chantiers{background:var(--nuit);color:#fff;border-radius:2px;padding:20px 22px}
+.chantiers span{display:block;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft-corail);margin-bottom:6px}
+.chantiers p{margin:0;font-family:var(--display);font-size:18px;line-height:1.4}
+.chantiers a{color:#6DB8F2;font-weight:800}
+</style>
+<link rel="stylesheet" href="footer.css?v=20261102z">
+<link rel="stylesheet" href="clone/habillage.css?v=20261105c">
+<link rel="stylesheet" href="clone/pages/africa-2075-fondateur.css?v=20261104a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html" aria-current="page">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+
+<div class="stick">
+<header data-v1-cache class="top">
+  <a class="brand" href="index.html"><img src="logo-efa.png" alt="" width="36" height="36"><span>ÉDUCATION FINANCIÈRE AFRIQUE</span></a>
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a class="nav-cta" href="parcours.html">L’école</a>
+    <a href="etudes-prospective.html">Études &amp; prospective</a>
+    <a href="organisations.html">Pour les organisations</a>
+    <a href="auteur.html">À propos</a>
+  </nav>
+  <button class="menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<div class="actbar"><div class="wrap"><p>La lettre du mardi · chaque semaine, l’argent de la semaine en Afrique</p>
+<a class="a1" href="#recevoir" onclick="efaCompte('lettre-barre')">Recevoir la lettre</a>
+<a class="a2" href="news.html">EFA News</a></div></div>
+</div>
+<div class="mission"><p class="wrap">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p></div>
+
+
+
+<section class="hub"><div class="wrap">
+  <div>
+    <span class="surtitre">La lettre du mardi</span>
+    <h1>L’argent de la semaine, expliqué simplement</h1>
+    <p class="chapeau">Chaque mardi, un email court&nbsp;: ce qui a bougé pour l’argent des Africains (BRVM, BCEAO, dette, prix, mobile money), ce que cela change pour vous, et un outil EFA à essayer. En cadeau, le guide «&nbsp;Construire sa stabilité financière&nbsp;». Gratuit, désinscription en un clic.</p>
+  </div>
+  <section class="recevoir" id="recevoir" aria-labelledby="t-recevoir">
+    <h2 id="t-recevoir">Recevoir la lettre</h2>
+    <p>Le guide vous est envoyé dès la confirmation de votre adresse.</p>
+    <form class="a2075-form" id="lettre-form" novalidate>
+      <div class="a2075-ligne"><label class="a2075-hp" aria-hidden="true">Ne pas remplir<input name="email_address_check" tabindex="-1" autocomplete="off"></label><input type="email" id="lettre-email" name="EMAIL" placeholder="Votre adresse email" autocomplete="email" required aria-label="Votre adresse email"><button type="submit">Je m’inscris</button></div>
+      <label class="a2075-ok"><input type="checkbox" id="lettre-ok" checked> J’accepte de recevoir la lettre d’EFA chaque mardi et le guide. <a href="confidentialite.html">Vos données</a></label>
+      <p class="a2075-msg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="deja">Sans email&nbsp;: <a href="https://forms.gle/5CsRvJYxoFArJbNa8" target="_blank" rel="noopener">recevez le guide par le questionnaire</a></p>
+  </section>
+</div></section>
+
+<main><div class="wrap" style="display:flex;flex-direction:column;gap:34px">
+  <section aria-labelledby="t-quoi" style="display:flex;flex-direction:column;gap:18px">
+    <div class="sec-h"><span class="surtitre">Ce que vous recevez</span><h2 id="t-quoi">Trois choses, chaque mardi</h2></div>
+    <div class="quoi">
+      <div><b>Ce qui a bougé</b><p>Deux ou trois faits de la semaine, vérifiés à la source, en langage clair.</p></div>
+      <div><b>Ce que cela change pour vous</b><p>Pour un salarié, un commerçant, un épargnant ou une famille d’ici.</p></div>
+      <div><b>Un pas à faire</b><p>Un outil, un module ou une question EFA à essayer, dès 1 min.</p></div>
+    </div>
+    <div class="chantiers"><span>Vous préférez la prospective ?</span><p><a href="africa-2075.html">Africa 2075</a>, la revue de prospective d’EFA, a sa propre inscription.</p></div>
+  </section>
+</div></main>
+
+<script>
+(function(){
+  var URL='https://b46b1615.sibforms.com/serve/MUIFAKh7190-xVONttcMGx9z5uLhlcS3Knrj0HOrhpnsbgPHCoa1GSLsbsCmk1lvMWF8o_An6q6BYBz85koQiVVRpHhage71-PdxWrT1OFhCY5iidi-UIq-C34WPbWb-FGUjhGa5kXw3NytB242VM_LTd9sbakiFejMRUqseZNiyuN8LB_U_cvRkJ7v0E1SyaD-_RVTlQfAI7JLVRw==';
+  var f=document.getElementById('lettre-form'); if(!f)return;
+  var m=f.querySelector('.a2075-msg'), b=f.querySelector('button'), ok=document.getElementById('lettre-ok');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=f.querySelector('input[type=email]').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){m.textContent='Saisissez une adresse email valide.';return;}
+    if(!ok.checked){m.textContent='Cochez la case pour recevoir la lettre.';return;}
+    if(f.email_address_check.value)return;
+    b.disabled=true; m.textContent='Envoi en cours…';
+    var d=new FormData(); d.append('EMAIL',em); d.append('email_address_check',''); d.append('locale','fr');
+    var w=new FormData(); w.append('access_key','426191fb-4812-4de4-b602-5857464c5916'); w.append('subject','Lettre du mardi · nouvel inscrit'); w.append('from_name','EFA · Lettre'); w.append('email',em); w.append('page',location.pathname);
+    Promise.all([fetch(URL,{method:'POST',body:d,mode:'no-cors'}),fetch('https://api.web3forms.com/submit',{method:'POST',body:w}).catch(function(){})]).then(function(){
+      f.reset(); ok.checked=true; try{if(window.efaCompte)efaCompte('lettre-email');}catch(x){}
+      m.textContent='C’est noté. Un email de confirmation arrive dans quelques minutes (regardez aussi Promotions et Spam) : confirmez-le pour recevoir le guide et la lettre.';
+    }).catch(function(){m.textContent='L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.';}).then(function(){b.disabled=false;});
+  });
+  document.querySelectorAll('a[href$="#recevoir"]').forEach(function(a){a.addEventListener('click',function(e){var c=document.getElementById('recevoir');e.preventDefault();c.scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('lettre-email').focus({preventScroll:true});},500);});});
+})();
+</script>
+<footer data-v1-cache class="site"><div class="wrap">
+  <span>© 2026 EFA · Tous droits réservés</span>
+  <span>Éducation financière, pas conseil en placement</span>
+  <a href="index.html">Accueil</a><a href="methode.html#etudes">Études</a><a href="methode.html#africa-2075">Africa 2075 · Prospective</a><a href="auteur.html#publications">Publications</a>
+  <a href="tontine.html">La tontine</a><a href="methode.html#methode">Notre méthode</a><a href="confidentialite.html">Confidentialité</a>
+</div></footer>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2><a class="ef-h" href="index.html#benefices">Apprendre</a></h2><ul>
+          <li><a href="index.html#seul">J’apprends seul</a></li>
+          <li><a href="index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="musee.html">Le musée de l’économie</a></li>
+          <li><a href="outils.html">Outils et simulateurs</a></li>
+          <li><a href="diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li><li><a href="etudiants.html">Pass Étudiant</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-progresser">Être coaché</a></h2><ul>
+          <li><a href="index.html#pilier-progresser">Choisir son atelier</a></li>
+          <li><a href="coaching.html">Tous les ateliers</a></li>
+          <li><a href="index.html#certificats">Certificats</a></li>
+          <li><a href="index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-agir">Se lancer</a></h2><ul>
+          <li><a href="generateur-de-projet.html">EFA Déclic</a></li><li><a href="projets-a-suivre.html">Projets à suivre</a></li>
+          <li><a href="index.html#marches">Investir à la Bourse (BRVM)</a></li>
+          <li><a href="marches.html">Marchés : la Bourse du jour</a></li><li><a href="sgi.html">Choisir sa SGI</a></li>
+          <li><a href="index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="news.html">Le média</a></h2><ul>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="decryptage.html">Décryptage</a></li>
+          <li><a href="tribunes.html">La tribune d’Élysée Johnson</a></li>
+          <li><a href="index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="africa-2075.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="auteur.html#auteur">EFA</a></h2><ul>
+          <li><a href="auteur.html#auteur">EFA et son fondateur</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+          <li><a href="lettre.html">La lettre du mardi</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 EFA · Tous droits réservés</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function efaCompte(ev){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ev,title:ev,event:true});}catch(e){}}
+(function(){var b=document.getElementById('menu'),n=document.getElementById('nav');if(!b)return;
+b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Fermer':'Menu';});})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=20261105a" defer></script>
+<script src="/clone/ambassadeur.js?v=20261103a" defer></script>
+<script src="/clone/mesure.js?v=20261104a" defer></script>
+<script src="clone/habillage.js?v=20261105c" defer></script>
+</body>
+</html>
