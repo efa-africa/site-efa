@@ -469,7 +469,7 @@ var t;addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function
           <li><a href="musee.html">Le musée de l’économie</a></li>
           <li><a href="outils.html">Outils et simulateurs</a></li>
           <li><a href="diagnostic.html">Faire le point</a></li>
-          <li><a href="app/">L’appli EFA</a></li>
+          <li><a href="app/">L’appli EFA</a></li><li><a href="etudiants.html">Pass Étudiant</a></li>
         </ul></div>
         <div><h2><a class="ef-h" href="#pilier-progresser">Être coaché</a></h2><ul>
           <li><a href="#pilier-progresser">Choisir son atelier</a></li>
@@ -512,7 +512,7 @@ var t;addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function
 <dialog id="lesson-dialog" aria-labelledby="lesson-title"><button class="dialog-close" aria-label="Fermer">×</button><div id="lesson-content"></div></dialog>
 <script>/* Apprendre : une seule carte ouverte à la fois */(function(){var L=document.querySelectorAll("#benefices details.porte");L.forEach(function(d){d.addEventListener("toggle",function(){if(!d.open)return;L.forEach(function(x){if(x!==d)x.open=false;});});});document.querySelectorAll('#benefices a[href="#seul-contenus"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.getElementById("seul-contenus");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});});})();</script>
 <script src="clone/concept-spirale.js?v=20261102z" defer></script>
-<script src="/clone/cartes.js?v=20261105a" defer></script>
+<script src="/clone/cartes.js?v=20261105b" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="clone/bienvenue.js?v=20261104d" defer></script>
 <script src="/clone/ambassadeur.js?v=20261103a" defer></script>

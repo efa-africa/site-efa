@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html data-clone data-clone-plein lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1220">
+<title>Pass Étudiant · EFA</title>
+<meta name="description" content="Étudiants : votre école demande l’accès, EFA ouvre les ateliers enregistrés, les cours et 10 crédits à tous ses étudiants. Gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="stylesheet" href="footer.css?v=20261102z">
+<style>
+.et{--nuit:#071d38;--corail:#DA3C1B;--bleu:#1B71B2;--teal:#147f9b;--clair:#EEF5FC;--papier:#fff;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:var(--ink);font-size:17px;line-height:1.55;background:var(--clair)}
+.et *{box-sizing:border-box}
+.et-w{max-width:1120px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+.et h1,.et h2,.et h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;line-height:1.12;text-wrap:balance;margin:0;color:var(--nuit)}
+.et-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail);margin:0 0 12px}
+.et-hero{position:relative;min-height:min(72svh,640px);display:flex;align-items:flex-end;background:#0B1220;overflow:hidden}
+.et-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.et-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,29,56,.94) 0%,rgba(7,29,56,.72) 40%,rgba(7,29,56,.05) 78%)}
+.et-hero .et-w{position:relative;z-index:1;width:100%;padding-block:0 clamp(40px,6vw,72px)}
+.et-hero .et-k{color:#F09680}.et-hero h1{color:#fff;font-size:clamp(40px,6.5vw,76px)}.et-hero h1 i{font-style:normal;color:#E5462E}
+.et-hero p{color:#C9D1DE;max-width:56ch;font-size:clamp(17px,2vw,20px);margin:16px 0 0}
+@media(max-width:700px){.et-hero{display:block;min-height:0;background:#071d38}.et-hero img{position:relative;display:block;height:48svh}.et-hero::after{display:none}.et-hero .et-w{padding-top:26px;padding-bottom:58px}}
+.et-portes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:-34px;position:relative;z-index:2}
+.et-porte{display:block;background:var(--papier);border-radius:16px;padding:24px 24px 22px;box-shadow:0 12px 34px rgba(7,29,56,.10);text-decoration:none;color:inherit}
+.et-porte small{display:block;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.et-porte b{display:block;font:700 clamp(22px,2.4vw,28px)/1.2 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin:8px 0 6px}
+.et-porte span{color:var(--ink2)}
+.et-porte em{display:inline-block;margin-top:14px;font-style:normal;font-weight:800;color:#fff;background:var(--corail);border-radius:10px;padding:10px 16px}
+.et-porte.inv em{background:var(--nuit)}
+.et-sec{padding-block:clamp(48px,7vw,84px)}.et-sec h2{font-size:clamp(28px,3.6vw,42px)}
+.et-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.et-c{background:var(--papier);border-radius:16px;padding:22px}.et-c b{display:block;font:700 20px/1.25 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin-bottom:6px}.et-c p{margin:0;color:var(--ink2)}
+.et-c .tag{display:inline-block;margin-bottom:10px;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#1E8E57;border-radius:999px;padding:5px 10px}
+.et-regle{background:var(--nuit);color:#E8EDF5;border-radius:16px;padding:clamp(24px,4vw,40px)}.et-regle h2{color:#fff}.et-regle .et-k{color:#F09680}
+.et-regle ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px;max-width:70ch}.et-regle li{padding-left:28px;position:relative}.et-regle li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:50%;background:#E5462E}.et-regle li b{color:#fff}
+.et-form{background:var(--papier);border-radius:18px;padding:clamp(22px,4vw,36px);max-width:760px}
+.et-form label{display:block;margin-top:14px;font-size:14px;font-weight:700;color:var(--ink2)}
+.et-form input,.et-form select,.et-form textarea{display:block;width:100%;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:#0B1220}
+.et-form textarea{min-height:100px;resize:vertical}.et-form .deux{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.et-btn{all:unset;cursor:pointer;display:block;text-align:center;margin-top:20px;background:var(--corail);color:#fff;font-weight:800;font-size:17px;border-radius:12px;padding:14px}.et-btn[disabled]{opacity:.6;cursor:wait}
+.et-err{color:#B3261E;font-weight:700;margin:10px 0 0}.et-ok{color:#14532D;font-weight:700;margin:14px 0 0}
+.et-code{display:flex;gap:8px;margin-top:10px}.et-code input{flex:1;min-width:0;text-transform:uppercase;letter-spacing:.06em}.et-code button{all:unset;cursor:pointer;background:var(--nuit);color:#fff;font-weight:800;border-radius:10px;padding:10px 16px}
+@media(max-width:760px){.et-portes{grid-template-columns:1fr;margin-top:-24px}.et-g{grid-template-columns:1fr}.et-form .deux{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261105b">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<main class="et" data-garde>
+<section class="et-hero" data-photo aria-labelledby="et-t"><img src="clone/assets/pass-etudiant.webp" alt="Des étudiants travaillent ensemble autour d’une table" fetchpriority="high">
+  <div class="et-w"><p class="et-k">Pass Étudiant · par votre école</p><h1 id="et-t">Étudiant, apprenez plus loin<i>.</i></h1>
+  <p>Votre école demande l’accès à EFA. Nous l’ouvrons volontiers à tous ses étudiants : les ateliers enregistrés, les cours et 10 crédits, gratuitement.</p></div>
+</section>
+<div class="et-w"><div class="et-portes">
+  <a class="et-porte" href="#demande"><small>Pour une école</small><b>Demander l’accès pour mon école</b><span>Direction, enseignant référent ou bureau des étudiants : une demande, un code pour toute l’école.</span><br><em>Faire la demande →</em></a>
+  <div class="et-porte inv"><small>Pour un étudiant</small><b>J’ai le code de mon école</b><span>Entrez-le : vos accès s’ouvrent sur ce téléphone.</span><div class="et-code"><label for="et-c" class="at-sr" style="position:absolute;left:-9999px">Code de l’école</label><input id="et-c" autocomplete="off" spellcheck="false" placeholder="EFAE-XXXX-XXXX"><button type="button" id="et-c-ok">Activer</button></div><p id="et-c-msg" role="status" style="margin:10px 0 0;font-weight:700"></p></div>
+</div></div>
+
+<section class="et-sec" aria-labelledby="et-d-t"><div class="et-w">
+  <p class="et-k">Ce que le pass ouvre</p><h2 id="et-d-t">Tout pour apprendre, rien à payer.</h2>
+  <div class="et-g">
+    <div class="et-c"><span class="tag">Ouvert</span><b>Les ateliers enregistrés</b><p>Budget, dettes, réserve, mobile money, placements : tous les ateliers à votre rythme, sans crédit à dépenser.</p></div>
+    <div class="et-c"><span class="tag">Ouvert</span><b>Les cours</b><p>« Mes premiers pas en Bourse » et les cours à venir, avec leurs exercices et leurs fiches.</p></div>
+    <div class="et-c"><span class="tag">10 crédits</span><b>Les ateliers avec Élysée Johnson</b><p>Votre solde passe de 3 à 10 crédits pour les ateliers approfondis. Les rendez-vous individuels restent payants.</p></div>
+  </div>
+</div></section>
+
+<section class="et-sec" style="padding-top:0" aria-labelledby="et-c-t"><div class="et-w">
+  <p class="et-k">Comment ça marche</p><h2 id="et-c-t">Ça passe par l’école, et c’est tout.</h2>
+  <div class="et-g">
+    <div class="et-c"><b>1 · L’école demande</b><p>Un responsable, un enseignant référent ou le bureau des étudiants remplit la demande ci-dessous.</p></div>
+    <div class="et-c"><b>2 · EFA envoie un code</b><p>Un code pour l’école, valable toute l’année scolaire, que l’école diffuse à ses étudiants.</p></div>
+    <div class="et-c"><b>3 · L’étudiant active</b><p>Il entre le code ici ou dans son portefeuille EFA : les accès s’ouvrent sur son téléphone.</p></div>
+  </div>
+</div></section>
+
+<section class="et-sec" style="padding-top:0" id="demande" aria-labelledby="et-f-t"><div class="et-w">
+  <p class="et-k">Pour une école</p><h2 id="et-f-t">Demander l’accès pour mon école</h2>
+  <form class="et-form" id="et-f" novalidate style="margin-top:22px">
+    <div class="deux"><label>École ou université<input name="ecole" required maxlength="120"></label><label>Ville et pays<input name="lieu" required maxlength="80" placeholder="ex. Abidjan, Côte d’Ivoire"></label></div>
+    <div class="deux"><label>Vous êtes<select name="role"><option>Direction ou administration</option><option>Enseignant référent</option><option>Bureau des étudiants ou association</option><option>Étudiant qui porte la demande</option></select></label><label>Nombre d’étudiants concernés<select name="effectif"><option>Moins de 50</option><option>50 à 200</option><option>200 à 1 000</option><option>Plus de 1 000</option></select></label></div>
+    <div class="deux"><label>Votre nom<input name="nom" required maxlength="80"></label><label>Votre fonction<input name="fonction" maxlength="80"></label></div>
+    <div class="deux"><label>Email (de préférence celui de l’école)<input name="email" type="email" required autocomplete="email"></label><label>WhatsApp (facultatif)<input name="whatsapp" inputmode="tel" maxlength="30"></label></div>
+    <label>Un mot sur votre école et vos étudiants (facultatif)<textarea name="message" maxlength="800" placeholder="Filières, projets en cours, ce que vous attendez d’EFA."></textarea></label>
+    <p class="et-err" hidden></p><button type="submit" class="et-btn">Envoyer la demande</button>
+    <p class="et-ok" hidden></p>
+    <p style="margin:14px 0 0;font-size:14.5px;color:#5F6676">EFA vérifie la demande, puis envoie le code à l’adresse indiquée, en général sous 48 h. Une école peut aussi ouvrir un programme complet avec comptes et suivi : <a href="programme-organisation.html?src=etudiants" style="color:#147f9b;font-weight:800">Pour les organisations</a>.</p>
+  </form>
+</div></section>
+
+<section class="et-sec" style="padding-top:0" aria-labelledby="et-r-t"><div class="et-w"><div class="et-regle">
+  <p class="et-k">Nos règles</p><h2 id="et-r-t">Simple, et honnête.</h2>
+  <ul>
+    <li><b>Le code vient de l’école.</b> EFA ne délivre pas de pass sur simple déclaration : la demande passe par un responsable, un enseignant ou le bureau des étudiants.</li>
+    <li><b>Une année scolaire.</b> Le code est valable jusqu’au 31 juillet, puis l’école le renouvelle en un message.</li>
+    <li><b>Des contenus, pas de l’argent.</b> Les crédits étudiants ouvrent des ateliers ; ils ne se convertissent jamais en argent.</li>
+    <li><b>Aucun gain promis.</b> EFA apprend à décider avec ses propres chiffres ; elle ne vend aucun produit financier.</li>
+  </ul>
+</div></div></section>
+</main>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i);};
+  $("et-c-ok").addEventListener("click",function(){var D=window.EFA_ATELIERS,v=$("et-c").value.trim().toUpperCase().replace(/\s+/g,""),m=$("et-c-msg");
+    if(!D||!D.ecoleValide(v)){m.style.color="#B3261E";m.textContent=v?"Ce code n’est pas reconnu. Vérifiez-le auprès de votre école.":"Entrez le code remis par votre école.";return;}
+    try{localStorage.setItem("efa_ecole",v);}catch(e){}
+    try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"acces-ecole",title:"Pass Étudiant",event:true});}catch(e){}
+    m.style.color="#14532D";m.innerHTML="Pass Étudiant activé sur ce téléphone. <a href=\"coaching.html#choisir\" style=\"color:#147f9b\">Voir les ateliers ouverts →</a>";});
+  $("et-c").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("et-c-ok").click();}});
+  $("et-f").addEventListener("submit",function(e){e.preventDefault();var f=e.target,er=f.querySelector(".et-err"),ok=f.querySelector(".et-ok"),d={};
+    [].forEach.call(f.elements,function(x){if(x.name)d[x.name]=x.value.trim();});
+    var manque=!d.ecole?"Indiquez le nom de l’école.":!d.lieu?"Indiquez la ville et le pays.":!d.nom?"Indiquez votre nom.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||"")?"Indiquez un email valide.":"";
+    if(manque){er.hidden=false;er.textContent=manque;return;}er.hidden=true;var bt=f.querySelector(".et-btn");bt.disabled=true;bt.textContent="Envoi…";
+    fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign({access_key:"426191fb-4812-4de4-b602-5857464c5916",subject:"Pass Étudiant · demande d’accès · "+d.ecole,from_name:"EFA · Pass Étudiant",formulaire:"pass-etudiant"},d))})
+      .then(function(r){return r.json();}).then(function(j){if(!j.success)throw 0;f.reset();ok.hidden=false;ok.textContent="Demande reçue. EFA revient vers vous avec le code de votre école, en général sous 48 h.";try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"pass-etudiant-demande",event:true});}catch(x){}})
+      .catch(function(){er.hidden=false;er.textContent="L’envoi n’a pas abouti. Réessayez dans un instant.";})
+      .then(function(){bt.disabled=false;bt.textContent="Envoyer la demande";});});
+})();
+</script>
+<script src="clone/ateliers-data.js?v=20261105b"></script>
+<script src="/clone/ambassadeur.js?v=20261103a" defer></script>
+<script src="/clone/mesure.js?v=20261104a" defer></script>
+<script src="clone/habillage.js?v=20261105b" defer></script>
+</body>
+</html>
