@@ -295,3 +295,6 @@ details.at-dlg-cle[hidden]{display:none}
 @media(max-width:370px){.ae-pied{flex-direction:column;align-items:stretch}}
 .ae-plus{margin:12px 0 0;font-size:15px;line-height:1.45;color:#10253d}.ae-plus b{color:#E44828}
 .ae-plaf{display:block;font-style:normal;font-size:13px;color:#597080;margin-top:4px}
+
+/* Fiche du cours dans la fenêtre, avant l’email (lot 2, 5 nov. 2026) */
+.at-fiche{margin:6px 0 14px}.at-fi-l{list-style:none;margin:0;padding:0;display:grid;gap:8px}.at-fi-l li{background:#F1F7FA;border-radius:10px;padding:9px 12px}.at-fi-l span{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#5F6676}.at-fi-l b{display:block;font-size:15px;color:#0B1220;font-weight:700;line-height:1.35}.at-fi-l em{display:block;margin-top:3px;font-style:normal;font-weight:800;color:#1E8E57;font-size:14.5px}

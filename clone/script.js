@@ -65,7 +65,10 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
   var h=it.map(function(x){return '<a class="fil-it" href="'+x.h+'"><span class="fil-cat '+(x.c==='BRVM'?'b':'n')+'">'+x.c+'</span>'+x.t+'</a>';}).join('');
   run.innerHTML=h+h;run.style.setProperty('--dur',(it.length*6)+'s');
   var root=document.getElementById('fil'),pb=root.querySelector('.fil-pause');
-  pb.addEventListener('click',function(){var p=root.classList.toggle('pause');pb.setAttribute('aria-pressed',String(p));pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre le défilement':'Mettre en pause le défilement');});
+  function etatPause(p){root.classList.toggle('pause',p);pb.setAttribute('aria-pressed',String(p));pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre le défilement':'Mettre en pause le défilement');}
+  try{if(sessionStorage.getItem('efa_fil_pause')==='1')etatPause(true);}catch(e){}
+  pb.addEventListener('click',function(){var p=!root.classList.contains('pause');try{sessionStorage.setItem('efa_fil_pause',p?'1':'0');}catch(e){}etatPause(p);});
+  if(false)pb.addEventListener('click',function(){var p=root.classList.toggle('pause');pb.setAttribute('aria-pressed',String(p));pb.textContent=p?'▶':'❚❚';pb.setAttribute('aria-label',p?'Reprendre le défilement':'Mettre en pause le défilement');});
 })();
 /* Actualités EFA News : une ligne monte toutes les 3,5 s, pause au survol */
 (function(){

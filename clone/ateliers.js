@@ -55,10 +55,15 @@
   function majDlg() {
     var ok = !!etat.ok[cour.id], m = D.acces(cour);
     $('at-dlg-prix').textContent = D.prix(cour);
+    var fi = $('at-dlg-fiche'); if (fi) { var pc0 = D.cout(cour), ins0 = inscrit(), sol0 = credits(), dispo = cour.lien ? 'Disponible maintenant' : 'À venir : votre place est réservée';
+      fi.innerHTML = '<ul class="at-fi-l"><li><span>Format</span><b>' + (cour.cours ? 'Cours à votre rythme · 5 étapes, 31 exercices' : cour.c ? 'Atelier approfondi avec Élysée Johnson' : 'Atelier enregistré · à votre rythme') + '</b></li>'
+        + (cour.pour ? '<li><span>Pour qui</span><b>' + esc(cour.pour) + '</b></li>' : '') + (cour.rep ? '<li><span>Vous repartez avec</span><b>' + esc(cour.rep) + '</b></li>' : '')
+        + '<li><span>Disponibilité</span><b>' + dispo + '</b></li>'
+        + (pc0 ? '<li class="at-fi-prix"><span>Prix</span><b>' + D.prix(cour) + ' · ' + pl(pc0) + '</b><em>À payer aujourd’hui : ' + (!ins0 ? (pc0 <= D.CREDITS_OFFERTS ? '0 F avec vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue' : pl(pc0 - D.CREDITS_OFFERTS) + ' de plus après vos crédits de bienvenue') : (pc0 <= sol0 ? '0 F avec vos crédits' : pl(pc0 - sol0) + ' de plus')) + '</em></li>' : '<li><span>Prix</span><b>Gratuit</b></li>') + '</ul>'; }
     var prixC = D.cout(cour), reste = credits(), avisMode = !ok && prixC > reste;
     $('at-dlg-offre').textContent = prixC ? 'Phase de test : ' + prixC + ' crédit' + (prixC > 1 ? 's' : '') : '';
     var ins = inscrit(); if (!ins) avisMode = false;
-    $('at-mail-ok').textContent = !ins ? 'Recevoir mes ' + pl(D.CREDITS_OFFERTS) : prixC ? 'Ouvrir avec ' + pl(prixC) : 'Débloquer';
+    $('at-mail-ok').textContent = !ins ? (prixC && prixC <= D.CREDITS_OFFERTS ? 'Ouvrir gratuitement avec mes ' + pl(D.CREDITS_OFFERTS) : 'Recevoir mes ' + pl(D.CREDITS_OFFERTS)) : prixC ? 'Ouvrir avec ' + pl(prixC) : 'Débloquer';
     $('at-credits').textContent = !ins ? '1 crédit = 10 000 FCFA. Votre email active vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue.' : prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
     $('at-mail-zone').hidden = ins; cm.required = !ins;
     fm.hidden = ok || avisMode;

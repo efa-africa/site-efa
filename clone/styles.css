@@ -674,3 +674,16 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 .tm-grille>.tm-img img{height:100%;aspect-ratio:auto}
 @media(max-width:980px){.tm-grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.tm-grille{grid-template-columns:minmax(0,1fr)}.tm-grille>.tm-c,.tm-grille>.tm-img{height:350px}}
+
+/* Raccourcis en tête du menu (lot 2) */
+.menu-panel .menu-rac{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px 0 14px;margin-bottom:4px;border-bottom:1px solid #E1E8F0}
+.menu-panel .menu-rac a{display:block!important;text-align:center;padding:12px 8px!important;border:0!important;border-radius:10px;font:800 14.5px/1.2 "Source Sans 3",system-ui,sans-serif!important;color:#fff!important;background:#DA3C1B;text-decoration:none}
+.menu-panel .menu-rac a+a{background:#0B1220}
+/* Même menu « classe » que les autres pages : titres en Baskerville, sous-entrées en retrait (5 nov. 2026) */
+.menu-panel a{font-family:"Libre Baskerville",Baskerville,Georgia,serif;color:var(--navy);text-decoration:none}
+.menu-panel a span{color:var(--coral)}
+.menu-panel a.menu-sous{padding:10px 0 12px 18px;font-size:15px;font-weight:600;color:#465062}
+.menu-panel a.menu-sous span{font-size:13px}
+.menu-panel a.menu-cle{color:var(--coral)}
+.menu-panel .menu-rac a{font-family:"Source Sans 3",system-ui,sans-serif!important}
+.menu-panel .menu-rac a{display:flex!important;align-items:center;justify-content:center}

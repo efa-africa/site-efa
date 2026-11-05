@@ -365,3 +365,9 @@ html[data-clone] .efa-foot h2 a.ef-h:hover{text-decoration:underline;text-underl
 .efa-brand .efa-brand__word{font-family:Baskerville,"Libre Baskerville",Georgia,serif!important;font-weight:700!important;font-size:48px!important;line-height:1!important;letter-spacing:-2px!important;text-transform:none!important;color:inherit!important;margin:0!important;padding:0!important}
 .efa-brand .efa-brand__bird{width:48px!important;height:48px!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
 @media(max-width:600px){.efa-brand .efa-brand__word{font-size:40px!important}.efa-brand .efa-brand__bird{width:40px!important;height:40px!important}}
+
+/* Raccourcis en tête du menu (lot 2, 5 nov. 2026) */
+html[data-clone] .menu-panel .menu-rac{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px 0 14px;margin-bottom:4px;border-bottom:1px solid #E1E8F0}
+html[data-clone] .menu-panel .menu-rac a{display:block!important;text-align:center;padding:12px 8px!important;border:0!important;border-radius:10px;font:800 14.5px/1.2 "Source Sans 3",system-ui,sans-serif!important;color:#fff!important;background:#DA3C1B;text-decoration:none}
+html[data-clone] .menu-panel .menu-rac a+a{background:#0B1220}
+html[data-clone] .menu-panel .menu-rac a{display:flex!important;align-items:center;justify-content:center}

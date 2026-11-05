@@ -56,7 +56,7 @@
   function style() {
     var st = document.createElement('style');
     st.textContent = '.efg{position:fixed;inset:0;z-index:90;background:rgba(7,18,32,.62);display:flex;align-items:flex-end;justify-content:center;padding:12px;font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif}'
-      + '.efg[hidden]{display:none!important}@media(min-width:700px){.efg{align-items:center}}'
+      + 'body:has(.efg:not([hidden])) #efa-ely{display:none!important}.efg[hidden]{display:none!important}@media(min-width:700px){.efg{align-items:center}}'
       + '.efg-b{position:relative;background:#fff;border-radius:18px;width:min(460px,100%);padding:24px 20px 20px;color:#0B1220;box-shadow:0 24px 60px rgba(0,0,0,.3)}'
       + '.efg-b::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;border-radius:18px 18px 0 0;background:linear-gradient(90deg,#E44828 0 33.3%,#F2B84B 33.3% 66.6%,#3CCB7F 66.6%)}'
       + '.efg-x{all:unset;cursor:pointer;position:absolute;top:12px;right:14px;font-size:26px;line-height:1;color:#4E5566}'
@@ -146,7 +146,7 @@
       + '.efa-promo .p-v{display:inline-block;background:#1E8E57;color:#fff;font-size:15px;font-weight:800;border-radius:10px;padding:11px 16px;text-decoration:none;white-space:nowrap}'
       + '.efa-promo .p-v:hover{background:#17764A}'
       + '.efa-promo .p-x{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;font-size:22px;line-height:1;color:#4E5566;padding:4px 7px}'
-      + '@media(max-width:620px){.efa-promo .p-v{width:100%;text-align:center}}';
+      + '@media(max-width:620px){.efa-promo .p-v{width:100%;text-align:center}}body:has(.efa-promo) #efa-ely{display:none!important}';
     document.head.appendChild(st);
     var surCoaching = /\/coaching(\.html)?$/.test(location.pathname);
     var b = document.createElement('div'); b.className = 'efa-promo'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', 'Carte à gratter du jour');
