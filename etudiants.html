@@ -20,6 +20,7 @@
 .et-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,29,56,.94) 0%,rgba(7,29,56,.72) 40%,rgba(7,29,56,.05) 78%)}
 .et-hero .et-w{position:relative;z-index:1;width:100%;padding-block:0 clamp(40px,6vw,72px)}
 .et-hero .et-k{color:#F09680}.et-hero h1{color:#fff;font-size:clamp(40px,6.5vw,76px)}.et-hero h1 i{font-style:normal;color:#E5462E}
+.et-sans{margin-top:14px!important}.et-sans a{color:#6DB8F2;font-weight:700;text-decoration:none}.et-f-err{display:block;color:#B3261E;font-size:14px;font-weight:700;margin-top:4px}.et-form .bad{border-color:#B3261E!important}
 .et-hero p{color:#C9D1DE;max-width:56ch;font-size:clamp(17px,2vw,20px);margin:16px 0 0}
 @media(max-width:700px){.et-hero{display:block;min-height:0;background:#071d38}.et-hero img{position:relative;display:block;height:48svh}.et-hero::after{display:none}.et-hero .et-w{padding-top:26px;padding-bottom:58px}}
 .et-portes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:-34px;position:relative;z-index:2}
@@ -51,7 +52,7 @@
 <main class="et" data-garde>
 <section class="et-hero" data-photo aria-labelledby="et-t"><img src="clone/assets/pass-etudiant.webp?v=2" alt="Quatre étudiants devant leur campus regardent ensemble un téléphone" fetchpriority="high">
   <div class="et-w"><p class="et-k">Pass Étudiant · par votre école</p><h1 id="et-t">Étudiant, apprenez plus loin<i>.</i></h1>
-  <p>Votre école demande l’accès à EFA. Nous l’ouvrons volontiers à tous ses étudiants : les ateliers enregistrés, les cours et 10 crédits, gratuitement.</p></div>
+  <p>Apprendre sur EFA est gratuit pour tous. Avec le Pass Étudiant de votre école, accédez aussi aux ateliers enregistrés, aux cours et à 10 crédits pour les ateliers approfondis.</p><p class="et-sans"><a href="parcours.html?src=etudiants">Mon école ne participe pas encore : découvrir EFA sans code →</a></p></div>
 </section>
 <div class="et-w"><div class="et-portes">
   <a class="et-porte" href="#demande"><small>Pour une école</small><b>Demander l’accès pour mon école</b><span>Direction, enseignant référent ou bureau des étudiants : une demande, un code pour toute l’école.</span><br><em>Faire la demande →</em></a>
@@ -59,11 +60,11 @@
 </div></div>
 
 <section class="et-sec" aria-labelledby="et-d-t"><div class="et-w">
-  <p class="et-k">Ce que le pass ouvre</p><h2 id="et-d-t">Tout pour apprendre, rien à payer.</h2>
+  <p class="et-k">Ce que le pass ouvre</p><h2 id="et-d-t">Ce que le pass ajoute à l’accès gratuit.</h2>
   <div class="et-g">
     <div class="et-c"><span class="tag">Ouvert</span><b>Les ateliers enregistrés</b><p>Budget, dettes, réserve, mobile money, placements : tous les ateliers à votre rythme, sans crédit à dépenser.</p></div>
     <div class="et-c"><span class="tag">Ouvert</span><b>Les cours</b><p>« Mes premiers pas en Bourse » et les cours à venir, avec leurs exercices et leurs fiches.</p></div>
-    <div class="et-c"><span class="tag">10 crédits</span><b>Les ateliers avec Élysée Johnson</b><p>Votre solde passe de 3 à 10 crédits pour les ateliers approfondis. Les rendez-vous individuels restent payants.</p></div>
+    <div class="et-c"><span class="tag">10 crédits</span><b>Les ateliers avec Élysée Johnson</b><p>Tout le monde reçoit 3 crédits offerts ; avec le pass, votre solde passe à 10 crédits pour les ateliers approfondis. Les rendez-vous individuels restent payants.</p></div>
   </div>
 </div></section>
 
@@ -115,8 +116,9 @@
   $("et-c").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("et-c-ok").click();}});
   $("et-f").addEventListener("submit",function(e){e.preventDefault();var f=e.target,er=f.querySelector(".et-err"),ok=f.querySelector(".et-ok"),d={};
     [].forEach.call(f.elements,function(x){if(x.name)d[x.name]=x.value.trim();});
-    var manque=!d.ecole?"Indiquez le nom de l’école.":!d.lieu?"Indiquez la ville et le pays.":!d.nom?"Indiquez votre nom.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||"")?"Indiquez un email valide.":"";
-    if(manque){er.hidden=false;er.textContent=manque;return;}er.hidden=true;var bt=f.querySelector(".et-btn");bt.disabled=true;bt.textContent="Envoi…";
+    f.querySelectorAll(".et-f-err").forEach(function(x){x.remove();});f.querySelectorAll(".bad").forEach(function(x){x.classList.remove("bad");});
+    var champ=!d.ecole?["ecole","Indiquez le nom de l’école."]:!d.lieu?["lieu","Indiquez la ville et le pays."]:!d.nom?["nom","Indiquez votre nom."]:!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email||"")?["email","Indiquez un email valide."]:null;
+    if(champ){var x=f.elements[champ[0]];x.classList.add("bad");var m=document.createElement("span");m.className="et-f-err";m.setAttribute("role","alert");m.textContent=champ[1];x.insertAdjacentElement("afterend",m);x.focus();x.addEventListener("input",function o(){x.classList.remove("bad");m.remove();x.removeEventListener("input",o);});er.hidden=true;return;}er.hidden=true;var bt=f.querySelector(".et-btn");bt.disabled=true;bt.textContent="Envoi…";
     fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign({access_key:"426191fb-4812-4de4-b602-5857464c5916",subject:"Pass Étudiant · demande d’accès · "+d.ecole,from_name:"EFA · Pass Étudiant",formulaire:"pass-etudiant"},d))})
       .then(function(r){return r.json();}).then(function(j){if(!j.success)throw 0;f.reset();ok.hidden=false;ok.textContent="Demande reçue. EFA revient vers vous avec le code de votre école, en général sous 48 h.";try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:"pass-etudiant-demande",event:true});}catch(x){}})
       .catch(function(){er.hidden=false;er.textContent="L’envoi n’a pas abouti. Réessayez dans un instant.";})
