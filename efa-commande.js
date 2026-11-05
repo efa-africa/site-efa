@@ -65,6 +65,7 @@
   function FC(n) { return n >= 1e6 ? (Math.round(n / 1e5) / 10).toString().replace(".", ",") + " M F" : F(n); }
   function sansInsec(t) { return String(t).replace(/[  ]/g, " "); }
   /* Version 1 d'un business plan, disponible tout de suite dans l'espace : construite à partir de l'idée du catalogue et du budget. */
+  function alertes(x) { var A = x && x[12]; return Array.isArray(A) ? A.filter(function (a) { return a && a[1]; }) : []; }
   function version1(x, o) {
     var b = o.budget || (x[4] || x[3]), d = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }), tk = sansInsec((x[3] ? FC(x[3]) : "0 F") + " à " + FC(x[4] || x[3])), bud = o.budget ? sansInsec(F(b)) : "à préciser";
     return { version1: 1, titre: x[1], porteur: o.nom || "", lieu: o.pays || "", budget: bud,
@@ -77,9 +78,9 @@
         { t: "Les coûts de chaque mois", blocs: [{ verrou: "Calculés par EFA avec vos réponses" }] },
         { t: "Les hypothèses de ventes", blocs: [{ verrou: "Trois niveaux de ventes, à partir de votre test" }] },
         { t: "La trésorerie en trois scénarios", blocs: [{ verrou: "Prudent, central, favorable : mois par mois" }] },
-        { t: "Les risques", blocs: [{ liste: ["**À vérifier :** " + x[10], "**Le piège courant :** " + x[11]] }] },
+        { t: "Les risques", blocs: [{ liste: ["**À vérifier :** " + x[10], "**Le piège courant :** " + x[11]].concat(alertes(x).map(function (a) { return "**" + ({ reglemente: "Soumis à la réglementation", technique: "Point technique", risque: "Risque à maîtriser" })[a[0]] + " :** " + a[1]; })) }, { encart: "Aucun gain n’est promis : un projet peut réussir, prendre du retard ou échouer. Le test terrain sert à le savoir tôt, à petit coût." }] },
         { t: "Les 30 premiers jours", blocs: [{ tableau: { tete: ["Semaine", "Action"], lignes: [["1", "Préparer le test : " + x[9]], ["2", "Faire le test et noter chaque réaction, chaque vente."], ["3", "Vérifier : " + x[10]], ["4", "Faire le point avec EFA : ce que le test a montré, et la suite."]] } }] },
-        { t: "Ce qu’il reste à vérifier", blocs: [{ liste: [x[10], "Les autorisations et formalités applicables à votre activité, auprès de la mairie ou de la chambre de commerce.", "Les prix réels chez deux fournisseurs."] }, { encart: "Ce plan est un outil de travail : il ne vaut ni étude de marché, ni accord de financement. Il s’enrichit ici, avec ce même code." }] }
+        { t: "Ce qu’il reste à vérifier", blocs: [{ liste: [x[10]].concat(alertes(x).filter(function (a) { return a[0] === "reglemente"; }).map(function (a) { return a[1]; })).concat(["Les autorisations et formalités applicables à votre activité, auprès de la mairie ou de la chambre de commerce.", "Les prix réels chez deux fournisseurs."]) }, { encart: "Ce plan est un outil de travail : il ne vaut ni étude de marché, ni accord de financement. Il s’enrichit ici, avec ce même code." }] }
       ], suivi: [{ date: d, texte: "Commande reçue. EFA vous contacte pour compléter les chapitres chiffrés." }] };
   }
   window.EFACommande = { ouvrir: ouvrir, prixBloc: prixBloc, F: F, version1: version1 };

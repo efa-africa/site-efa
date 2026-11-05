@@ -52,7 +52,7 @@ function criteres(x){var c=[];
   return c;}
 function echelle(x){return etat.libre?(x[4]||x[3]):Math.min(x[4]||x[3],BP());}
 function rang(x){if(etat.libre)return 0;var f=echelle(x)/BP();return f>=.5?0:f>=.15?1:2;}
-function liste(){var b=B();return I.filter(function(x){return x[3]<=b;}).map(function(x){return [rang(x),score(x),echelle(x),x];}).sort(function(a,c){return a[0]-c[0]||c[1]-a[1]||c[2]-a[2];}).map(function(a){return a[3];});}
+function liste(){var b=B(),pref=!!(etat.savoir||etat.temps||etat.lieu);return I.filter(function(x){return x[3]<=b;}).map(function(x){return [rang(x),score(x),echelle(x),x];}).sort(function(a,c){return pref?(c[1]-a[1]||a[0]-c[0]||c[2]-a[2]):(a[0]-c[0]||c[1]-a[1]||c[2]-a[2]);}).map(function(a){return a[3];});}
 function hauteur(x){if(etat.libre)return "De "+(x[3]?FC(x[3]):"0 F")+" à "+FC(x[4]||x[3]);var e=echelle(x);return e>=BP()?"Peut employer toute la part prévue pour un projet ("+FC(BP())+")":"Emploie jusqu’à "+FC(e)+" de votre budget";}
 function listeVue(){return varier(liste());}
 
@@ -61,7 +61,9 @@ function carte(x,n){var g=etat.gardees.indexOf(x[0])>-1,c=criteres(x),S=sec(x);
   return '<article class="carte" style="animation-delay:'+(n*50)+'ms"><div class="img">'+visuel(x)+'<span class="tag">'+esc(S[0])+'</span></div><div class="corps"><span class="meta">'+esc(lieu)+' · '+TEMPS_TXT[x[6]]+'</span><h3>'+esc(x[1])+'</h3>'+pastilles(x)+'<span class="prix">'+hauteur(x)+'<small>Ticket indicatif : '+(x[3]?FC(x[3]):"0 F")+' à '+FC(x[4]||x[3])+', à vérifier</small></span><p class="pas">«&nbsp;'+esc(x[9])+'&nbsp;»</p>'+(c.length?'<p class="match">Correspond à vos choix : '+c.join(", ")+'</p>':'')+'<div class="act"><button type="button" class="ouvrir" data-o="'+x[0]+'">Explorer →</button><button type="button" class="coeur partage-b" data-p="'+x[0]+'" aria-label="Partager cette idée">↗</button><button type="button" class="coeur" data-g="'+x[0]+'" aria-pressed="'+g+'" aria-label="'+(g?"Retirer":"Garder")+' cette idée">'+(g?"♥":"♡")+'</button></div></div></article>';}
 
 function proposition(L){if(etat.libre||!L.length)return "";var b=etat.budget,res=Math.round(b*partRes()/1000)*1000,dispo=BP(),P1=L[0],m1=Math.min(P1[4]||P1[3],dispo);if(m1<P1[3])m1=Math.min(P1[3],dispo);
-  var pool=Math.max(0,dispo-m1),reste=Math.max(0,b-res-m1),lignes=[[P1[1],m1,"Projet principal","p1"]],P2=null;
+  var t1=Math.min(m1,Math.max(P1[3]||0,Math.round(m1*.4/1000)*1000)),suite=m1-t1;if(suite<Math.max(m1*.15,10000)){t1=m1;suite=0;}
+  var pool=Math.max(0,dispo-m1),reste=Math.max(0,b-res-m1),lignes=[[P1[1]+(suite?" · premier test":""),t1,"Projet principal","p1"]],P2=null;
+  if(suite>=1000)lignes.push(["La suite du projet, engagée seulement si le test est concluant",suite,"Après le test","p1s"]);
   if(pool>=b*.15){for(var i=1;i<L.length;i++){if(L[i][2]!==P1[2]&&L[i][3]<=pool){P2=L[i];break;}}
     if(P2){var m2=Math.min(P2[4]||P2[3],pool);lignes.push([P2[1],m2,"Deuxième projet","p2"]);reste-=m2;}}
   if(reste>=1000)lignes.push([etat.bloque==="non"?"Garder disponible, sur un compte ou un placement retirable":"Placer ce qui reste, sans risque inutile",reste,etat.bloque==="non"?"Disponible":"Placement","pl"]);
@@ -70,6 +72,7 @@ function proposition(L){if(etat.libre||!L.length)return "";var b=etat.budget,res
 function hypotheses(){var h=[];
   h.push(etat.reserve==="oui"?"Vous avez déjà une réserve : 10 % seulement restent de côté.":etat.reserve==="non"?"Vous n’avez pas encore de réserve : 30 % sont mis de côté avant tout projet.":"Réserve non précisée : 20 % sont mis de côté par prudence. Répondez à « Ma sécurité d’abord » pour ajuster.");
   h.push(etat.bloque==="non"?"Vous aurez peut-être besoin de cet argent : le projet n’en prend que la moitié, le reste reste disponible.":etat.bloque==="oui"?"Cet argent peut rester engagé plusieurs mois.":"Durée non précisée : on suppose que l’argent peut rester engagé quelques mois.");
+  h.push("Avant d’engager toute la part du projet, un premier test à petit coût : le reste n’est dépensé que s’il est concluant.");
   h.push("Ni vos charges ni vos revenus ne sont connus ici : avant de dépenser, testez petit et gardez de quoi tenir.");
   return '<p class="hyp-t">Ce que suppose cette proposition</p><ul class="hyp">'+h.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul>';}
 function incomplet(){return !(etat.savoir&&etat.temps&&etat.lieu&&etat.reserve);}
