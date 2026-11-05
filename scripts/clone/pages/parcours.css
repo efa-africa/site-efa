@@ -196,3 +196,11 @@ html[data-clone] #programmes .prog .arrivee{margin:14px 28px 26px!important;padd
 html[data-clone] #programmes .prog .arrivee .etiquette{display:block;margin-bottom:4px;color:var(--c)!important;font-weight:800;letter-spacing:.16em}
 html[data-clone] #programmes .prog .arrivee .etiquette::before{content:"✓";display:inline-grid;place-items:center;width:20px;height:20px;margin-right:8px;border-radius:50%;background:var(--c);color:#fff;font-size:12px;letter-spacing:0;vertical-align:-3px}
 @media(max-width:860px){html[data-clone] #programmes .progs{grid-template-columns:1fr}}
+/* Vue d'entrée : le programme complet replié (5 nov. 2026) */
+html[data-clone] .ec-note a{color:inherit;font-weight:700}
+html[data-clone] .ec-ouvrir{text-align:center;padding-block:8px 48px}
+html[data-clone] .ec-ouvrir-b{all:unset;cursor:pointer;display:inline-flex;flex-direction:column;align-items:center;gap:4px;background:#fff;color:var(--ec-nuit,#0B1220);border-radius:16px;padding:18px 30px;box-shadow:0 10px 30px rgba(7,29,56,.08);font:700 20px/1.2 "Libre Baskerville",Georgia,serif;text-align:center}
+html[data-clone] .ec-ouvrir-b small{font:600 14.5px/1.3 "Source Sans 3",system-ui,sans-serif;color:#4E5566}
+html[data-clone] .ec-ouvrir-b span{color:#DA3C1B;font-size:22px;margin-top:2px}
+html[data-clone] .ec-ouvrir-b:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
+html[data-clone] .ec-tout[hidden]{display:none!important}

@@ -360,11 +360,12 @@ const V = {
   return `<div class="stack"><p class="step">Mon diagnostic financier complet · gratuit · dès 2 min</p><h1>Où en êtes-vous avec votre argent&nbsp;?</h1>
    <p class="lead">Le seul diagnostic qui compte aussi vos tontines et ce que vous donnez à vos proches.</p></div>
    <div class="dims">${DIMS.map(d => `<div><b>${d.n}</b><span>${Q.filter(q => q.d === d.k).length} questions</span></div>`).join("")}</div>
+   <p class="avant" style="margin:0 0 10px;font:600 15.5px/1.45 'Source Sans 3',system-ui,sans-serif;color:#2A3142">${Q.length + PROFIL_Q.length} questions courtes, dès 2 min, à votre rythme. <b>Une première synthèse sans email ; le résultat complet et votre première action envoyés par email.</b></p>
    <div class="actions">${S.lead && fini0() ? `<button class="btn" data-go="resultat">Voir mon dernier résultat</button><button class="btn ghost" data-act="recommencer">Refaire le diagnostic</button>`
      : enCours ? `<button class="btn" data-go="quiz">Reprendre où j'en étais</button><button class="btn ghost" data-act="recommencer">Recommencer</button>`
      : `<button class="btn" data-act="start">Commencer</button>`}</div>
-   <p class="small muted">« Complet » désigne le parcours EFA proposé : ce n'est pas un audit exhaustif de votre patrimoine. Vous cherchez plutôt où est passé votre argent ? <a href="ou-est-passe-mon-argent.html?src=diagnostic">Essayez cet outil</a>.</p>
-   <p class="small muted">${Q.length} questions, puis ${PROFIL_Q.length} questions de profil. ${APERCU ? "Une première synthèse s'affiche tout de suite. Votre email vous est ensuite demandé pour recevoir le résultat complet et votre première action." : "Votre adresse email vous sera demandée pour afficher le résultat."}</p>`;
+   <p class="small muted">« Complet » désigne le parcours EFA proposé : ce n'est pas un audit exhaustif de votre patrimoine.</p>
+   <p class="small muted">Vous voulez une réponse immédiate sur votre budget ? <a href="ou-est-passe-mon-argent.html?src=diagnostic">« Où est passé mon argent ? », dès 1 min</a>.</p>`;
  },
  quiz() {
   const inQ = S.i < Q.length, q = inQ ? Q[S.i] : PROFIL_Q[S.i - Q.length];

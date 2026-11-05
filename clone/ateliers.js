@@ -67,6 +67,11 @@
     $('at-credits').textContent = !ins ? '1 crédit = 10 000 FCFA. Votre email active vos ' + pl(D.CREDITS_OFFERTS) + ' de bienvenue.' : prixC ? 'Votre solde : ' + pl(reste) + (prixC <= reste ? ' · après ouverture : ' + pl(reste - prixC) : '') : '';
     $('at-mail-zone').hidden = ins; cm.required = !ins;
     fm.hidden = ok || avisMode;
+    /* Deux temps : d'abord la fiche (programme), puis l'ouverture avec les crédits ; l'email n'est demandé qu'au second temps */
+    var deux = !ok && !avisMode && !ins && !dlg.dataset.lu; var fi2 = $('at-dlg-fiche');
+    if (deux) { fm.hidden = true; if (fi2 && !$('at-lire')) { var bl = document.createElement('button'); bl.type = 'button'; bl.id = 'at-lire'; bl.className = 'at-cta at-lire'; bl.innerHTML = (prixC ? 'L’ouvrir avec mes ' + pl(D.CREDITS_OFFERTS) + ' offerts' : 'Commencer gratuitement') + ' <span aria-hidden="true">→</span>'; fi2.insertAdjacentElement('afterend', bl);
+        bl.addEventListener('click', function () { dlg.dataset.lu = '1'; bl.remove(); majDlg(); var m = $('at-mail'); if (m) m.focus(); }); } }
+    else { var bl2 = $('at-lire'); if (bl2) bl2.remove(); }
     $('at-gagner').hidden = ok || !ins || !(prixC > reste); if (!$('at-gagner').hidden) $('at-gagner-t').textContent = 'Gagner ' + (prixC - reste > 1 ? 'les ' + pl(prixC - reste) + ' qui manquent' : 'le crédit qui manque');
     var ach = $('at-achat'); ach.hidden = ok || !prixC || !ins;
     if (!ach.hidden) { var manq = Math.max(0, prixC - reste), nb = manq || prixC; ach.dataset.nb = nb;
@@ -120,7 +125,7 @@
     cour = D.liste.filter(function (a) { return a.id === id; })[0]; if (!cour) return;
     $('at-dlg-k').textContent = cour.cours ? 'Cours à votre rythme' : cour.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Atelier enregistré';
     $('at-dlg-t').textContent = cour.t;
-    champ.value = ''; cm.value = (A && A.mail()) || ''; majDlg();
+    delete dlg.dataset.lu; champ.value = ''; cm.value = (A && A.mail()) || ''; majDlg();
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
   }
   document.addEventListener('click', function (e) {

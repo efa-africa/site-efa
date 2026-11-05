@@ -34,10 +34,10 @@
       '<div class="ec-hero-txt"><p class="ec-k">L’école EFA</p>' +
       '<h1>Votre argent s’apprend.<em>Votre avenir se construit.</em></h1>' +
       '<p class="ec-lead">Du premier budget aux premières décisions patrimoniales, avancez avec des exercices concrets et des outils adaptés à votre quotidien.</p>' +
-      '<div class="ec-actions"><a class="ec-cta" href="' + (lien ? lien.getAttribute('href') : '#cycle-fondations') + '">' +
-      (revient ? 'Reprendre mon module' : 'Commencer mon parcours') + ' <span aria-hidden="true">→</span></a>' +
-      (demo ? '<a class="ec-demo" href="' + demo.getAttribute('href') + '">▶ Voir la démo · dès 1 min</a>' : '') + '</div>' +
-      '<p class="ec-note">Gratuit · à votre rythme · parcours en pilote</p></div>' +
+      '<div class="ec-actions"><a class="ec-cta" href="' + (lien ? lien.getAttribute('href') : '#P1') + '" data-ec-tout>' +
+      (revient ? 'Continuer mon parcours' : 'Commencer au module 1') + ' <span aria-hidden="true">→</span></a>' +
+      '<a class="ec-demo ec-sujet" href="outils.html?src=ecole#parcours">Choisir un sujet</a></div>' +
+      '<p class="ec-note">Gratuit · sans compte pour commencer · à votre rythme' + (demo ? ' · <a href="' + demo.getAttribute('href') + '">▶ voir la démo, dès 1 min</a>' : '') + '</p></div>' +
       '<figure class="ec-hero-img"><img src="' + A + 'ecole-hero-2.webp" alt="" decoding="async" fetchpriority="high"></figure>';
     hero.insertBefore(h, hero.firstChild);
     if (col) col.classList.add('ec-ancien');
@@ -121,6 +121,20 @@
         var go = $('.p-go', s); if (go) go.textContent = go.textContent.replace('›', '→');
       });
     }
+
+    /* 5b. Vue d'entrée : le détail (modules, certificats, ressources, profils) se replie derrière « Voir tout le programme » */
+    var tout = el('div', 'ec-tout'); tout.id = 'ec-tout';
+    var premier = tous || certs; if (premier) { premier.parentNode.insertBefore(tout, premier); }
+    [tous, certs, boite, prog, chemin, profil, conseil, document.getElementById('ma-progression')].forEach(function (s) { if (s && tout.parentNode) tout.appendChild(s); });
+    var ouv = el('div', 'ec-bloc ec-ouvrir');
+    ouv.innerHTML = '<button type="button" class="ec-ouvrir-b" aria-expanded="false" aria-controls="ec-tout">Voir tout le programme <small>23 modules, certificats, ressources et profils</small><span aria-hidden="true">↓</span></button>';
+    tout.parentNode.insertBefore(ouv, tout); tout.hidden = true;
+    function ouvrirTout() { if (!tout.hidden) return; tout.hidden = false; ouv.hidden = true; }
+    ouv.querySelector('button').addEventListener('click', function () { ouvrirTout(); var k = tous || tout; setTimeout(function () { k.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30); });
+    function cibleDedans(hash) { if (!hash || hash.length < 2) return false; var t = null; try { t = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) {} return !!(t && tout.contains(t)); }
+    document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href*="#"]'); if (!a) return; var h = a.getAttribute('href') || ''; var i = h.indexOf('#'); if (cibleDedans(h.slice(i))) ouvrirTout(); }, true);
+    window.addEventListener('hashchange', function () { if (cibleDedans(location.hash)) ouvrirTout(); });
+    if (cibleDedans(location.hash) || revient || /[?&](tout|src=ecole-profil)/.test(location.search)) { ouvrirTout(); if (cibleDedans(location.hash)) setTimeout(function () { var t = document.getElementById(location.hash.slice(1)); t && t.scrollIntoView(); }, 60); }
 
     /* 6. Ambassadeurs : transmettre */
     var amb = $('#ambassadeur'), c = amb && $('.amb-c', amb);
