@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-31",
+ "maj": "2026-11-07",
  "sgi": [
   {
    "id": "abco-bourse",
@@ -21,13 +21,14 @@
     "agence": "Résidence Moumtazz, Avenue Cheikh Anta Diop, Mermoz - Face 2ème Porte, 6956 Dakar – Etoile"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1 à 1,8 %"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -62,13 +63,14 @@
     "agence": "Av. Jean Paul II, Carré 1269, Immeuble de l'Africaine des Assurances, 01 BP 8668 RP Cotonou"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,3 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,1 à 2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -103,13 +105,14 @@
     "agence": "15, Av. Joseph Anoma, Abidjan-Plateau, 10ème étage, 04 BP 1036 Abidjan 04"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "0,65 à 1 %",
+    "droits_garde": "0,3 à 0,5 % / trimestre (unité à confirmer)",
+    "tenue_compte": "15 625 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,3 à 2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 2000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -144,13 +147,14 @@
     "agence": "Rue Gourgas - Tour Immeuble Alpha 2000, 3ème étage, 1300 Abidjan"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "2 000 F / an",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0 (non facturée ou non proposée)"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 1000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -185,13 +189,14 @@
     "agence": "Plateau - Boulevard de la République, Avenue Crozet, Immeuble XL, 2ème étage, 01 BP 4854 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,22 à 0,27 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0 (non facturée ou non proposée)"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 1000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -226,13 +231,14 @@
     "agence": "Immeuble THE ONE, Cocody 33, Rue de la Cannebière, 01 BP 13002 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "2 500 F / trimestre",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 250000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -267,13 +273,14 @@
     "agence": "Avenue Noguès, Immeuble Broadway Center, 3ème étage, Plateau, 01 BP 7032 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "0,8 %",
+    "droits_garde": "0,08 % au-delà de 10 M F",
+    "tenue_compte": "2 500 F / trimestre",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,375 % / trimestre"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 500000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -390,13 +397,14 @@
     "agence": "Point E, Immeuble EPI, 1er étage, Boulevard du Sud x Rue 1, BP 25672 Dakar"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1,5 %"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -554,13 +562,14 @@
     "agence": "Immeuble El Hadji Rey Tall Amar, Lot 46, 21 Av. Lamine Gueye x Dodds, 12ème étage, BP 15498 Dakar"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "0,9 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1,5 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -595,13 +604,14 @@
     "agence": "Immeuble Tropique 3, 3ème étage, Boulevard de la République, Plateau, 01 BP 10762 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 % / an",
+    "tenue_compte": "10 000 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -636,13 +646,14 @@
     "agence": "8 et 10, Avenue Joseph Anoma, Tour BIAO, 14ème étage, 18 BP 2294 Abidjan 18"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,33 à 1,8 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 200000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -718,13 +729,14 @@
     "agence": "Cocody Riviera 4 Golf, face à l'annexe de l'Ambassade des USA, 01 BP 12686 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,4 % / an",
+    "tenue_compte": "25 000 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 2000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -737,6 +749,48 @@
    "relue_le": null,
    "qualite_ok": true,
    "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sa2if",
+   "nom": "SA2IF",
+   "agrement": null,
+   "pays_siege": "BF",
+   "pays_couverts": [
+    "BF"
+   ],
+   "logo": null,
+   "logo_source": null,
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": null,
+    "whatsapp": null,
+    "email": null,
+    "agence": null
+   },
+   "frais": {
+    "courtage": "0,2 à 1 %",
+    "droits_garde": "0,1 à 0,2 %",
+    "tenue_compte": "2 000 F",
+    "gestion_mandat": "0,1 à 0,2 % / an",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 68000,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "Relevé public des tarifs SGI, 7 novembre 2026 (absente de l’annuaire brvm.org relevé le 31 octobre 2026, agrément à vérifier)",
    "logo_autorise": true
   },
   {
@@ -759,54 +813,14 @@
     "agence": "Avenue Steinmetz, en face de DHL ex-Air Gabon, 01 BP 6002 Cotonou"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 à 0,35 % / an",
+    "tenue_compte": "1 000 F / an",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
-    "ouverture_distance": null,
-    "delai_ouverture": null
-   },
-   "service": {
-    "application": null,
-    "canaux": null,
-    "horaires": null
-   },
-   "relue": false,
-   "relue_le": null,
-   "qualite_ok": true,
-   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
-   "logo_autorise": true
-  },
-  {
-   "id": "sgi-benin-sa",
-   "nom": "SGI Bénin SA",
-   "agrement": null,
-   "pays_siege": "BJ",
-   "pays_couverts": [
-    "BJ"
-   ],
-   "logo": "img/sgi/sgi-benin-sa.png",
-   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-sgi-benin.png?itok=welXGLFL",
-   "presentation": null,
-   "site": "https://www.sgibenin.com",
-   "contact": {
-    "formulaire": null,
-    "telephone": "(229) 21 31 15 41/71 ; (229) 21 31 15 60",
-    "whatsapp": null,
-    "email": "sgibenin@sgibenin.com",
-    "agence": "Carré 211 Saint Michel, Immeuble SGI-Bénin, 01 BP 4546 Cotonou"
-   },
-   "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
-   },
-   "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 100000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -841,13 +855,14 @@
     "agence": "1er étage de l'agence BICICI Aghien, Cocody II Plateaux, Boulevard Latrille, Carrefour Duncan, 01 BP 1298 Abidjan"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "0,4 à 1 %",
+    "droits_garde": "0,1 à 0,5 % / an",
+    "tenue_compte": "5 000 F / an",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0 (non facturée ou non proposée)"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -923,6 +938,48 @@
     "agence": "Plateau, Avenue Delafosse prolongée, Immeuble Belle Rive, 14ème étage, 670 Abidjan 01"
    },
    "frais": {
+    "courtage": "1 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "0 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0 (non facturée ou non proposée)"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 1000000,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sgi-benin-sa",
+   "nom": "SGI Bénin SA",
+   "agrement": null,
+   "pays_siege": "BJ",
+   "pays_couverts": [
+    "BJ"
+   ],
+   "logo": "img/sgi/sgi-benin-sa.png",
+   "logo_source": "https://www.brvm.org/sites/default/files/styles/logo_intervenant/public/logo-sgi-benin.png?itok=welXGLFL",
+   "presentation": null,
+   "site": "https://www.sgibenin.com",
+   "contact": {
+    "formulaire": null,
+    "telephone": "(229) 21 31 15 41/71 ; (229) 21 31 15 60",
+    "whatsapp": null,
+    "email": "sgibenin@sgibenin.com",
+    "agence": "Carré 211 Saint Michel, Immeuble SGI-Bénin, 01 BP 4546 Cotonou"
+   },
+   "frais": {
     "courtage": null,
     "droits_garde": null,
     "tenue_compte": null,
@@ -964,13 +1021,14 @@
     "agence": "Km 6, Av. Cheikh Anta Diop, Immeuble El Hadji Serigne Bassirou Mbacké, Dakar"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 % / an",
+    "tenue_compte": "1 500 F / trimestre",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1,5 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 100000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1005,13 +1063,14 @@
     "agence": "Avenue Loudun, Rue 05, Secteur 04, Parcelle 08, Lot 04, Section 020, 01 BP 6585 Ouagadougou 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,3 à 0,5 % / trimestre (unité à confirmer)",
+    "tenue_compte": "2 500 F / trimestre",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,3 à 2 % / trimestre (unité à confirmer)"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 100000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1046,13 +1105,14 @@
     "agence": "Avenue Houdaille, 2ème étage, Immeuble Ecobank, 01 BP 4107 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "0,4 à 1 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "5 000 à 15 625 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,3 à 2 % / trimestre (unité à confirmer)"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 1000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1087,13 +1147,14 @@
     "agence": "24 Boulevard Clozel, Avenue Lamblin, Immeuble Le 24, 4ème étage, 18 BP 2294 Abidjan 18"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 % maximum",
+    "droits_garde": "0,5 % maximum",
+    "tenue_compte": "15 625 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1 à 1,8 %"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 50000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1128,13 +1189,14 @@
     "agence": "Sacré Cœur 3 Extension VDN n° 10077, BP 45545 Dakar"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "0,8 % maximum",
+    "droits_garde": "0,05 % / trimestre",
+    "tenue_compte": "2 000 F / an",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 250000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1169,13 +1231,14 @@
     "agence": "Cocody Riviera M'Badon, à 300 mètres de l'Ambassade de Chine, Abidjan"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 % maximum",
+    "droits_garde": "0,5 % / an maximum",
+    "tenue_compte": "10 000 F / an",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1,8 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1210,13 +1273,14 @@
     "agence": "Immeuble Ali Baba (ABK II), 2ème étage, Bureaux 209-210, Bamako"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "12 500 à 15 500 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "0,8 à 2 %"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 50000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1251,13 +1315,14 @@
     "agence": "258 B Rue du Grand Hôtel, BP 10812 Niamey"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,25 %",
+    "tenue_compte": "1 500 F / trimestre",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "1 % maximum"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 0,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1374,13 +1439,14 @@
     "agence": "Rue Jesse Owens, Immeuble Sciam, Plateau, 01 BP 12916 Abidjan 01"
    },
    "frais": {
-    "courtage": null,
-    "droits_garde": null,
-    "tenue_compte": null,
-    "source": null
+    "courtage": "1 %",
+    "droits_garde": "0,5 % / an",
+    "tenue_compte": "2 500 F",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
+    "gestion_mandat": "2 % / an"
    },
    "acces": {
-    "minimum_ouverture_fcfa": null,
+    "minimum_ouverture_fcfa": 1000000,
     "ouverture_distance": null,
     "delai_ouverture": null
    },
@@ -1393,6 +1459,48 @@
    "relue_le": null,
    "qualite_ok": true,
    "source_donnees": "brvm.org/fr/intervenants/sgi/tous, relevé du 31 octobre 2026",
+   "logo_autorise": true
+  },
+  {
+   "id": "sg-capital-securities-west-africa",
+   "nom": "Société Générale Capital Securities West Africa",
+   "agrement": null,
+   "pays_siege": "CI",
+   "pays_couverts": [
+    "CI"
+   ],
+   "logo": null,
+   "logo_source": null,
+   "presentation": null,
+   "site": null,
+   "contact": {
+    "formulaire": null,
+    "telephone": null,
+    "whatsapp": null,
+    "email": null,
+    "agence": null
+   },
+   "frais": {
+    "courtage": "0,8 %",
+    "droits_garde": "0,25 à 0,5 % / an",
+    "tenue_compte": "2 500 F / trimestre",
+    "gestion_mandat": "0 (non facturée ou non proposée)",
+    "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI"
+   },
+   "acces": {
+    "minimum_ouverture_fcfa": 0,
+    "ouverture_distance": null,
+    "delai_ouverture": null
+   },
+   "service": {
+    "application": null,
+    "canaux": null,
+    "horaires": null
+   },
+   "relue": false,
+   "relue_le": null,
+   "qualite_ok": true,
+   "source_donnees": "Relevé public des tarifs SGI, 7 novembre 2026 (absente de l’annuaire brvm.org relevé le 31 octobre 2026, agrément à vérifier)",
    "logo_autorise": true
   }
  ]

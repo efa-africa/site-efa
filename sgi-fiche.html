@@ -63,6 +63,7 @@ form.sf-f{padding:10px 0 50px}
 <label>Courtage<input id="f-courtage" placeholder="ex. 1 % HT, minimum 2 500 F"></label>
 <label>Droits de garde<input id="f-garde" placeholder="ex. 0,3 % par an"></label>
 <label>Tenue de compte<input id="f-tenue" placeholder="ex. 10 000 F par an"></label>
+<label>Gestion sous mandat<input id="f-mandat" placeholder="ex. 1,5 % par an"></label>
 <label>Grille tarifaire publiée<input id="f-grille" type="url" placeholder="Lien vers votre grille, si elle est en ligne"></label>
 </div></fieldset>
 <fieldset><legend>Ouverture du compte</legend><div class="sf-g">
@@ -161,7 +162,7 @@ form.sf-f{padding:10px 0 50px}
  function v(i){return ($(i).value||'').trim()}
  function remplir(s){if(!s)return;var f=s.frais||{},a=s.acces||{},sv=s.service||{},c=s.contact||{};
   $('f-agrement').value=s.agrement||'';$('f-site').value=s.site||'';$('f-presentation').value=s.presentation||'';
-  $('f-courtage').value=f.courtage||'';$('f-garde').value=f.droits_garde||'';$('f-tenue').value=f.tenue_compte||'';$('f-grille').value=f.source||'';
+  $('f-courtage').value=f.courtage||'';$('f-garde').value=f.droits_garde||'';$('f-tenue').value=f.tenue_compte||'';$('f-mandat').value=f.gestion_mandat||'';$('f-grille').value=f.source||'';
   $('f-min').value=a.minimum_ouverture_fcfa!=null?a.minimum_ouverture_fcfa:'';$('f-delai').value=a.delai_ouverture||'';$('f-dist').value=a.ouverture_distance||'';
   $('f-app').value=sv.application||'';$('f-horaires').value=sv.horaires||'';
   document.querySelectorAll('#f-canaux input').forEach(function(x){x.checked=(sv.canaux||[]).indexOf(x.value)>=0});
@@ -187,7 +188,7 @@ form.sf-f{padding:10px 0 50px}
    enl={lien:L,niveau:niv,pieces:v('l-pieces')||null,alimentation:[].slice.call(document.querySelectorAll('#l-alim input:checked')).map(function(x){return x.value}),android:v('l-android')||null,ios:v('l-ios')||null,teste_par_efa:false}}
   var canaux=[].slice.call(document.querySelectorAll('#f-canaux input:checked')).map(function(x){return x.value});
   var prop={id:id,nom:s.nom,agrement:v('f-agrement')||null,site:v('f-site')||null,presentation:v('f-presentation')||null,
-   frais:{courtage:v('f-courtage')||null,droits_garde:v('f-garde')||null,tenue_compte:v('f-tenue')||null,source:v('f-grille')||null},
+   frais:{courtage:v('f-courtage')||null,droits_garde:v('f-garde')||null,tenue_compte:v('f-tenue')||null,gestion_mandat:v('f-mandat')||null,source:v('f-grille')||null},
    acces:{minimum_ouverture_fcfa:v('f-min')?+v('f-min').replace(/[^\d]/g,''):null,ouverture_distance:v('f-dist')||null,delai_ouverture:v('f-delai')||null},
    service:{application:v('f-app')||null,canaux:canaux.length?canaux:null,horaires:v('f-horaires')||null},
    contact:{formulaire:v('f-form')||null,telephone:v('f-tel')||null,whatsapp:v('f-wa')||null,email:v('f-email')||null,agence:v('f-agence')||null},
