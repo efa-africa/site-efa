@@ -279,4 +279,15 @@ document.addEventListener("click",function(e){if(!e.target.closest("[data-affine
 var _placerGuide=placer;placer=function(){_placerGuide.apply(this,arguments);try{apercuGuide();}catch(e){}};
 try{apercuGuide();}catch(e){}
 
+/* Test de réalisme (7 nov. 2026) : budget + revenu visé → taux annuel implicite. Aucun gain promis. */
+function realisme(){var box=$("realisme"),i=$("vise");if(!box||!i)return;
+  var v=+String(i.value).replace(/\D/g,""),b=etat.budget;
+  if(!v||etat.libre||!b){box.hidden=true;return;}
+  var t=v*12/b*100,ts=(t<10?Math.round(t*10)/10:Math.round(t)).toLocaleString("fr-FR"),dat=F(b*0.05/12),txt,al=false;
+  if(t<=6)txt="Vous visez <b>"+ts+" % par an</b>. C’est l’ordre de grandeur des placements prudents (dépôt à terme, titres publics), sans garantie de rendement.";
+  else if(t<=20)txt="Vous visez <b>"+ts+" % par an</b>. C’est au-delà des placements prudents&nbsp;: un dépôt à terme à 5 % par an rapporterait environ "+dat+" par mois. Une activité peut l’atteindre, avec du travail et du risque.";
+  else{al=true;txt="Vous visez <b>"+ts+" % par an</b>. Aucun placement sérieux ne le garantit&nbsp;: méfiez-vous de toute offre qui le promet. Une activité peut l’atteindre, avec du travail, du risque, et rarement dès la première année. Pour comparer, un dépôt à terme à 5 % par an rapporterait environ "+dat+" par mois.";}
+  box.className="realisme"+(al?" alerte":"");box.innerHTML=txt+"<small>Repère de calcul, pas un conseil en placement. Les pistes ci-dessous ne promettent aucun revenu.</small>";box.hidden=false;}
+(function(){var i=$("vise");if(!i)return;i.addEventListener("input",function(){var d=i.value.replace(/\D/g,"");i.value=d?(+d).toLocaleString("fr-FR").replace(/[\s\u202f]/g," "):"";realisme();});
+  var m=$("montant");if(m&&window.MutationObserver)new MutationObserver(realisme).observe(m,{childList:true,characterData:true,subtree:true});})();
 })();

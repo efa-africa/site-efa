@@ -358,6 +358,7 @@ body.fige{overflow:hidden}
 .pi-f label{display:block;margin-top:12px;font-size:14px;font-weight:700;color:#4E5566}.pi-f input,.pi-f textarea{display:block;width:100%;box-sizing:border-box;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:#0B1220}.pi-f textarea{min-height:96px;resize:vertical}.pi-err{color:#B3261E;font-weight:700;margin:10px 0 0}
 .prix-bp{margin:0 0 14px;padding:12px 14px;border-radius:10px;background:#EAF3FB;color:#0B1220;font-size:15px;line-height:1.45}.prix-bp strong{color:#B8341A;font-weight:800}.prix-bp s{color:#5F6676;margin-left:2px}
 .v-prix{margin:10px 0 0;font-size:15px;color:#0B1220}.v-prix b{color:#B8341A}.v-prix s{color:#5F6676;margin-right:4px}
+.realisme{margin:10px 0 4px;padding:12px 14px;border-radius:10px;font-size:15px;line-height:1.45;color:#0B1220;background:#EAF3FB}.realisme b{font-weight:800}.realisme.alerte{background:#FBE7E2}.realisme small{display:block;margin-top:6px;color:#5F6676;font-size:13px}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261105c">
 </head>
@@ -390,6 +391,9 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
     <div class="puces" id="raccourcis" aria-label="Montants rapides"></div>
     <label class="exact" for="exact">Ou mon montant exact</label>
     <div class="exact-w"><input id="exact" inputmode="numeric" placeholder="ex. 375 000" autocomplete="off"><span>F CFA</span></div>
+    <label class="exact" for="vise">Le revenu que je vise par mois <em>facultatif</em></label>
+    <div class="exact-w"><input id="vise" inputmode="numeric" placeholder="ex. 500 000" autocomplete="off"><span>F / mois</span></div>
+    <div class="realisme" id="realisme" hidden aria-live="polite"></div>
     <button type="button" class="sans-budget" id="sans-budget">Je préfère explorer sans budget</button>
     <p class="etape"><span>2</span>Affiner pour moi <em>facultatif</em></p>
     <button type="button" class="affiner" id="affiner" aria-expanded="false" aria-controls="affinage">Affiner pour moi <span id="affiner-s" aria-hidden="true">＋</span></button>
@@ -551,7 +555,7 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
 <script src="generateur-idees.js?v=20261104c"></script>
 <script src="efa-config.js?v=20261105a"></script>
 <script src="efa-commande.js?v=20261105a"></script>
-<script src="generateur-de-projet.js?v=20261107a"></script>
+<script src="generateur-de-projet.js?v=20261107b"></script>
 <script>window.EFA_VOIX={pendant:{src:"audio/accueil/generateur-pendant.mp3",duree:25,ancre:"#guide h2",place:"after"},fin:{src:"audio/accueil/generateur-fin.mp3",duree:26,quand:function(){return document.getElementById("vedette-c");},ancre:"#vedette",place:"before"}};</script>
 <script src="efa-voix-elysee.js?v=20261102v1" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
