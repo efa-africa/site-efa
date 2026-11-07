@@ -97,3 +97,5 @@ html[data-clone] .au-hero.imm-all .au-hero-txt>*{max-width:640px}
 
 html[data-clone] .au-nav .ptabs a[aria-selected="true"] b{background:#eaf3fb;padding:9px 16px;border-radius:999px;color:#0b63b0!important}
 html[data-clone] .au-nav .ptabs a b{padding:9px 16px}
+/* Téléphone : les 4 rubriques visibles, sur deux lignes */
+@media (max-width:760px){html[data-clone] .au-nav{position:static}html[data-clone] .au-nav .ptabs{flex-wrap:wrap;overflow:visible;gap:2px 22px;padding:6px 0}html[data-clone] .au-nav .ptabs a{min-height:44px}}

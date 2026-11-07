@@ -203,6 +203,7 @@ CSS_HOME = """<style>
 .cherche input::-webkit-search-cancel-button{display:none}
 .cherche .bt{min-height:52px}
 .filtres{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+@media (max-width:760px){.filtres{flex-wrap:wrap;overflow:visible;padding-bottom:0}.filtres button{min-height:40px;padding:8px 14px;font-size:14.5px}}
 .filtres button{flex:0 0 auto;min-height:44px;padding:10px 16px;border-radius:999px;border:0;background:var(--papier);color:var(--nuit);font:700 15px var(--f-body);cursor:pointer;box-shadow:inset 0 0 0 1.5px #C3D6E0}
 .filtres button[aria-pressed="true"]{background:var(--nuit);color:#fff;box-shadow:none}
 .filtres button:focus-visible{outline:3px solid var(--bleu);outline-offset:2px}
