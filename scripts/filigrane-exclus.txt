@@ -15,3 +15,5 @@ clone/assets/declic-immersif.webp
 clone/assets/projets-a-suivre.webp
 clone/assets/pass-etudiant.webp
 clone/assets/etudiants-campus.webp
+musee-entree-2026.webp
+musee-entree-portrait-2026.webp
