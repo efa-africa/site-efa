@@ -97,7 +97,7 @@
   var Z = document.getElementById('vt-liste'); if (!Z) return;
   compte('sgi-page');
   charger().then(function (r) {
-    var D = r[0], PL = r[1], tous = D.sgi, par = {}; tous.forEach(function (s) { par[s.id] = s; });
+    var D = r[0], PL = r[1], tous = D.sgi, par = {}; tous.forEach(function (s) { par[s.id] = s; }); var nbT = tous.filter(function (s) { return s.frais && s.frais.courtage; }).length, eT = document.getElementById('vt-nb-tarifs'); if (eT && nbT) eT.textContent = 'tarifs relevés pour ' + nbT + ' d’entre elles (novembre 2026, à confirmer auprès de chaque SGI)'; var eN = document.getElementById('vt-nb'); if (eN) eN.textContent = tous.length;
     if (D.demo) document.getElementById('vt-demo').hidden = false;
     document.querySelectorAll('[data-maj]').forEach(function (x) { x.textContent = dateFr(D.maj); });
     var auj = new Date().toISOString().slice(0, 10), enPeriode = PL && PL.periode && PL.periode.debut && auj >= PL.periode.debut && auj <= PL.periode.fin;
@@ -126,6 +126,30 @@
         + '<button type="button" class="vt-rel">Contacter la SGI</button></div></article>';
       return h;
     }
+
+    /* Repères du marché : calculés sur les SGI affichées dont le tarif est renseigné. Aucun classement. */
+    function nums(t) { return (String(t || '').match(/\d+(?:[.,]\d+)?/g) || []).map(function (x) { return +x.replace(',', '.'); }); }
+    function pct(x) { return String(Math.round(x * 100) / 100).replace('.', ',') + '&nbsp;%'; }
+    function mediane(a) { a = a.slice().sort(function (x, y) { return x - y; }); var m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; }
+    function reperes(L) {
+      var R = document.getElementById('vt-rep'); if (!R) return;
+      var T = L.filter(function (s) { return s.frais && s.frais.courtage; }), n = T.length;
+      if (n < 3) { R.hidden = true; return; }
+      var mins = T.map(function (s) { return (s.acces || {}).minimum_ouverture_fcfa; }).filter(function (m) { return m != null; });
+      var zero = mins.filter(function (m) { return m === 0; }).length, med = mediane(mins);
+      var crt = [], un = 0; T.forEach(function (s) { var v = nums(s.frais.courtage).filter(function (x) { return x <= 5; }); if (v.length) { crt = crt.concat(v); if (Math.max.apply(null, v) === 1) un++; } });
+      var gar = []; T.forEach(function (s) { var g = s.frais.droits_garde || ''; if (/trimestre|confirmer|au-delà/.test(g)) return; gar = gar.concat(nums(g).filter(function (x) { return x <= 5; })); });
+      var tg = T.filter(function (s) { return /^0\b/.test(s.frais.tenue_compte || ''); }).length;
+      function c(k, big, sub, ex) { return '<div class="vt-rep-c"><p class="vt-rep-k">' + k + '</p><p class="vt-rep-v">' + big + '</p><p class="vt-rep-s">' + sub + '</p>' + (ex ? '<p class="vt-rep-x">' + ex + '</p>' : '') + '</div>'; }
+      R.innerHTML = '<div class="vt-rep-h"><h2 id="vt-rep-t">Repères du marché</h2><p>Calculés sur les <b>' + n + ' SGI affichées</b> dont les tarifs sont renseignés · ils suivent vos filtres</p></div>'
+        + '<div class="vt-rep-g">'
+        + c('Minimum d’ouverture', zero + ' SGI <small>sur ' + mins.length + '</small>', 'ouvrent un compte dès 0 FCFA', 'Minimum médian&nbsp;: ' + fcfa(med).replace(/ /g, '&nbsp;'))
+        + c('Courtage', crt.length ? (Math.min.apply(null, crt) === Math.max.apply(null, crt) ? pct(crt[0]) : pct(Math.min.apply(null, crt)) + ' à ' + pct(Math.max.apply(null, crt))) : NC, 'fourchette constatée par ordre', un + ' SGI sur ' + n + ' plafonnent à 1&nbsp;%. Sur un achat de 100&nbsp;000&nbsp;F, 1&nbsp;% = 1&nbsp;000&nbsp;F.')
+        + c('Droits de garde', gar.length ? pct(Math.min.apply(null, gar)) + ' à ' + pct(Math.max.apply(null, gar)) : NC, 'par an, sur la valeur de vos titres', 'Sur 500&nbsp;000&nbsp;F de titres, 0,5&nbsp;% = 2&nbsp;500&nbsp;F par an.')
+        + c('Tenue de compte', tg + ' SGI <small>sur ' + n + '</small>', 'ne facturent pas la tenue de compte', 'Les autres : de 1&nbsp;000&nbsp;F à 25&nbsp;000&nbsp;F, par an ou par trimestre.')
+        + '</div><details class="vt-rep-d"><summary>Comment sont calculés ces repères&nbsp;?</summary><p>À partir d’un relevé public des tarifs de novembre 2026, données indicatives à confirmer auprès de chaque SGI. Les montants dont l’unité reste à confirmer sont écartés des fourchettes. Ces repères décrivent le marché&nbsp;: ils ne classent pas les SGI et ne recommandent aucune d’entre elles. Le bon choix dépend aussi du service, de l’ouverture à distance et de ce que vous comptez faire.</p></details>';
+      R.hidden = false;
+    }
     function norm(x) { return String(x).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
     function trouve(s, q) { var n = norm(s.nom + ' ' + (s.sigle || '') + ' ' + (s.alias || []).join(' ')), c = n.replace(/ /g, ''); return n.indexOf(q) > -1 || c.indexOf(q.replace(/ /g, '')) > -1; }
     function verdict(q) {
@@ -150,6 +174,7 @@
       if (enPeriode) (PL.places || []).slice().sort(function (a, b) { return a.rang - b.rang; }).slice(0, 3).forEach(function (p) { var s = p.sgi && par[p.sgi]; if (s && ok(s) && s.qualite_ok && s.fiche_complete && tete.indexOf(s.id) < 0) tete.push(s.id); });
       var compl = ordreC.filter(function (id) { return tete.indexOf(id) < 0 && ok(par[id]); });
       var part = ordreP.filter(function (id) { return ok(par[id]); });
+      reperes(tous.filter(ok));
       var s1 = tete.concat(compl), pos = 0, h = '';
       if (s1.length) h += '<section class="vt-sec" aria-labelledby="vt-s1"><h2 id="vt-s1">Les SGI qui se présentent en détail</h2><div class="vt-grille">' + s1.map(function (id, i) { pos++; return carte(par[id], pos, i < tete.length); }).join('') + '</div></section>';
       if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI agréées</h2><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
