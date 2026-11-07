@@ -356,6 +356,8 @@ body.fige{overflow:hidden}
 .propre>div{flex:1 1 320px;min-width:0}.propre .sur{color:#fff;opacity:.92}.propre h3{margin:6px 0 6px;font:700 clamp(20px,2.4vw,26px)/1.18 "Libre Baskerville",Georgia,serif;color:#fff}.propre p{margin:0;color:#fff;font-size:16px;line-height:1.5}
 .propre .bouton{background:#0B1220!important;color:#fff!important;white-space:nowrap}
 .pi-f label{display:block;margin-top:12px;font-size:14px;font-weight:700;color:#4E5566}.pi-f input,.pi-f textarea{display:block;width:100%;box-sizing:border-box;margin-top:4px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #C3D6E0;border-radius:10px;background:#fff;color:#0B1220}.pi-f textarea{min-height:96px;resize:vertical}.pi-err{color:#B3261E;font-weight:700;margin:10px 0 0}
+.prix-bp{margin:0 0 14px;padding:12px 14px;border-radius:10px;background:#EAF3FB;color:#0B1220;font-size:15px;line-height:1.45}.prix-bp strong{color:#B8341A;font-weight:800}.prix-bp s{color:#5F6676;margin-left:2px}
+.v-prix{margin:10px 0 0;font-size:15px;color:#0B1220}.v-prix b{color:#B8341A}.v-prix s{color:#5F6676;margin-right:4px}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261105c">
 </head>
@@ -380,6 +382,7 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
 
 <section class="explorer" id="explorer" aria-label="Explorer des idées" data-garde><div class="wrap ex-grille">
   <aside class="reglages" aria-label="Vos choix" data-garde>
+    <p class="prix-bp"><b>Les idées sont gratuites.</b> Business plan de démarrage&nbsp;: <strong>dès 5&nbsp;000&nbsp;F</strong>, prix de lancement <s>10&nbsp;000&nbsp;F</s></p>
     <p class="etape"><span>1</span>Mon budget</p>
     <div class="montant-l"><span>Montant</span><strong id="montant" aria-live="polite">300 000 F</strong></div>
     <input type="range" id="budget" min="0" max="19" step="1" value="6" aria-label="Choisir mon budget de départ">
@@ -433,7 +436,7 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
         <button type="button" class="voir-plus" id="voir-plus" hidden></button>
       </div>
       <div class="propre" id="propre">
-        <div><span class="sur">Vous avez déjà votre idée&nbsp;?</span><h3>Faites-en le business plan avec EFA.</h3><p>Décrivez votre idée en quelques lignes. EFA l’étudie et revient vers vous pour en construire le business plan de démarrage.</p></div>
+        <div><span class="sur">Vous avez déjà votre idée&nbsp;?</span><h3>Faites-en le business plan avec EFA.</h3><p>Décrivez votre idée en quelques lignes. EFA l’étudie et revient vers vous pour en construire le business plan de démarrage, dès 5&nbsp;000&nbsp;F au prix de lancement.</p></div>
         <button type="button" class="bouton" id="propre-go">Soumettre mon idée <span aria-hidden="true">→</span></button>
       </div>
       <div class="ensuite">
@@ -548,7 +551,7 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
 <script src="generateur-idees.js?v=20261104c"></script>
 <script src="efa-config.js?v=20261105a"></script>
 <script src="efa-commande.js?v=20261105a"></script>
-<script src="generateur-de-projet.js?v=20261105c"></script>
+<script src="generateur-de-projet.js?v=20261107a"></script>
 <script>window.EFA_VOIX={pendant:{src:"audio/accueil/generateur-pendant.mp3",duree:25,ancre:"#guide h2",place:"after"},fin:{src:"audio/accueil/generateur-fin.mp3",duree:26,quand:function(){return document.getElementById("vedette-c");},ancre:"#vedette",place:"before"}};</script>
 <script src="efa-voix-elysee.js?v=20261102v1" defer></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
