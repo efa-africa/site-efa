@@ -687,3 +687,11 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 .menu-panel a.menu-cle{color:var(--coral)}
 .menu-panel .menu-rac a{font-family:"Source Sans 3",system-ui,sans-serif!important}
 .menu-panel .menu-rac a{display:flex!important;align-items:center;justify-content:center}
+
+/* Témoignages : flèches pour faire défiler soi-même (7 nov. 2026) */
+.tm-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:22px}
+.tm-fl{width:48px;height:48px;border-radius:50%;border:0;background:#E44828;color:#fff;font:800 22px/1 "Source Sans 3",system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
+.tm-fl:hover{background:#DA3C1B;transform:scale(1.06)}
+.tm-fl:focus-visible{outline:3px solid #2188D6;outline-offset:3px}
+.tm-nav-t{font:700 15px "Source Sans 3",system-ui,sans-serif;color:#4E5566}
+.tm-grille .tm-g{cursor:pointer}
