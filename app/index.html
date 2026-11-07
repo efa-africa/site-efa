@@ -543,6 +543,21 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .ap-enq p{margin:10px 0 14px;color:#C9D1DE;font-size:14.5px;line-height:1.45}
 .ap-fin{border-radius:20px;background:radial-gradient(circle at 50% 20%,#12457A,#0B1F3A 70%);color:#fff;padding:28px 18px;text-align:center}
 .pp-atelier{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:stretch;width:100%;background:#0B1220;color:#fff;border-radius:16px;padding:12px}.pp-atelier img{width:96px;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;border-radius:12px;flex:0 0 96px}.pp-atelier .grow{display:flex;flex-direction:column;gap:4px;min-width:0}.pp-atelier .sur{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#6DB8F2}.pp-atelier b{font-family:"Libre Baskerville",Georgia,serif;font-size:19px;line-height:1.15}.pp-atelier span{font-size:14px;line-height:1.4;color:#C9D1DE}.pp-atelier .go{margin-top:auto;font-weight:800;color:#F09680;font-size:14px}.pp-atelier:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px}
+
+/* Le fil EFA : les publications de l'accueil, comme sur les réseaux (données : a-la-une.js, publications) */
+.fil{display:flex;flex-direction:column;gap:14px}
+.post{background:var(--papier,#FFFDF8);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(11,18,32,.05),0 6px 20px rgba(11,18,32,.07)}
+.post-h{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.post-h img{width:36px;height:36px;border-radius:50%;flex:none}
+.post-h b{display:block;font-size:15px;line-height:1.2}
+.post-h span{display:block;font-size:13px;color:var(--ink3)}
+.post-img{display:block;width:100%;height:auto;aspect-ratio:1122/1402;object-fit:cover;background:#0B1220}
+.post-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.post-b .ttl{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.2}
+.post-b p{margin:0;font-size:16px;line-height:1.55;color:var(--ink)}
+.post-b p.cut{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post-tags{font-size:14px;line-height:1.6;color:#1B71B2;font-weight:600}
+.post-act{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 </style>
 
 <div class="stage">
@@ -1393,6 +1408,14 @@ function vDecouvrir(){
   return h;}
 /* ───── Accueil : ce qui est nouveau chez EFA, ce que l'on pousse, et où reprendre ───── */
 var NEWSD=null;function newsData(){if(NEWSD!==null)return NEWSD;NEWSD=false;try{fetch(siteUrl("news/news-data.json"),{cache:"no-cache"}).then(function(r){return r.json();}).then(function(d){NEWSD=d;if(ui.view==="accueil")render(false);}).catch(function(){});}catch(e){}return false;}
+function filEFA(A){var P=(A&&A.publications)||[];if(!P.length)return "";var ouvert=ui.filOuvert||{};
+  return '<section class="stack"><div class="secth"><h2>Le fil EFA</h2><span class="meta">Nos dernières publications</span></div><div class="fil">'+P.slice(0,5).map(function(p,i){var tx=p.texte||[],long=!ouvert[i]&&tx.length>1;
+    return '<article class="post"><div class="post-h"><img src="icon-192.png" alt=""><div><b>'+esc(p.rubrique||"EFA")+'</b><span>Éducation Financière Afrique · '+esc(dLong(p.date))+'</span></div></div>'+
+      (p.image?'<img class="post-img" src="'+esc(siteUrl(p.image))+'" alt="'+esc(p.alt||p.titre||"")+'" loading="lazy" decoding="async">':'')+
+      '<div class="post-b">'+(p.titre?'<p class="ttl">'+esc(p.titre)+'</p>':'')+
+      (long?'<p class="cut">'+esc(tx[0])+'</p><button class="link" style="align-self:flex-start;padding:0" data-act="filPlus" data-id="'+i+'">Lire la suite</button>':tx.map(function(t){return '<p>'+esc(t).replace(/\n/g,"<br>")+'</p>';}).join(""))+
+      (!long&&p.tags&&p.tags.length?'<p class="post-tags">'+p.tags.map(function(t){return "#"+esc(t);}).join(" ")+'</p>':'')+
+      '<div class="post-act">'+(p.bouton?'<button class="btn sm" data-act="web" data-url="'+esc(p.bouton.url)+'" data-t="'+esc(p.rubrique||"EFA")+'">'+esc(p.bouton.texte)+'</button>':'')+'<button class="btn ghost sm" data-act="partager" data-id="'+i+'">Partager</button></div></div></article>';}).join("")+'</div></section>';}
 function vAccueil(){
   /* L’accueil reprend la structure du site (31/10/2026) : l’accroche, votre suite, les trois portes, le média, l’enquête, les outils. Des images ponctuent la lecture. */
   var A=window.EFA_A_LA_UNE||{nouveautes:[],outils:[]},mr=monRetour(),cc=contCarte(),h='',IMG=function(n){return esc(siteUrl("clone/assets/"+n));};
@@ -1403,6 +1426,8 @@ function vAccueil(){
     +'</div></section>';
   // 2. Votre suite (pour qui revient)
   h+=cc+mr;
+  // 2 bis. Le fil EFA : nos publications, comme sur les réseaux
+  h+=filEFA(A);
   // 3. Les trois portes
   h+='<section class="stack"><div class="secth"><h2>Trois portes</h2></div><p class="sub" style="font-size:15px;margin-top:-6px">Commencez facilement, soyez accompagné, et trouvez tout au même endroit.</p><div class="stack" style="gap:14px">'
     +porte("appli-apprendre-famille.webp","01 / Commencez facilement","Apprendre","Dès 1 min, gratuit : un sujet qui vous concerne, une explication claire et des outils pour essayer avec vos chiffres.","Commencer à apprendre",'data-act="go" data-view="ecole"')
@@ -1547,6 +1572,9 @@ document.addEventListener("click",function(ev){
   var b=ev.target.closest("[data-act]");if(!b||b.disabled)return;var a=b.dataset.act,id=b.dataset.id,s=ui.sheet;
   if(a==="go"){nav(b.dataset.view,{id:id});return;}
   if(a==="webRetry"){ev.preventDefault();render();return;}
+  if(a==="filPlus"){ui.filOuvert=ui.filOuvert||{};ui.filOuvert[id]=1;render();return;}
+  if(a==="partager"){var PP=((window.EFA_A_LA_UNE||{}).publications||[])[+id];if(PP){var lien="https://efa.africa/"+String(PP.bouton?PP.bouton.url:"").replace(/src=[^&#]*/,"src=partage"),txt=(PP.titre?PP.titre+"\n\n":"")+(PP.texte||[]).join("\n\n");
+      if(navigator.share){navigator.share({title:PP.titre||"EFA",text:txt,url:lien}).catch(function(){});}else{try{navigator.clipboard.writeText(txt+"\n\n"+lien);toast("Texte et lien copiés");}catch(x){toast("Lien : "+lien);}}}return;}
   if(a==="web"){ev.preventDefault();compte("page");nav("web",{url:b.dataset.url,t:b.dataset.t,local:!!b.dataset.local});return;}
   if(a==="webBack"){var wf=document.getElementById("webf");try{if(wf&&ui.webN>1&&wf.contentWindow.history.length>1){ui.webN-=2;wf.contentWindow.history.back();return;}}catch(x){}var hw=hist.pop();if(hw)go(hw.view,hw.p);else go("outils");return;}
   if(a==="seg"&&b.dataset.s==="cahier"){nav("moncahier",{});return;}
