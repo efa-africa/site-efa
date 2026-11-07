@@ -17,3 +17,4 @@ clone/assets/pass-etudiant.webp
 clone/assets/etudiants-campus.webp
 musee-entree-2026.webp
 musee-entree-portrait-2026.webp
+tribunes-entree-2026.webp
