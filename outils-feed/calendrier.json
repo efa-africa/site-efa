@@ -1,0 +1,277 @@
+{
+  "regles": {
+    "visage_elysee_max_par_semaine": 2,
+    "creneaux": {
+      "lun": "12:30", "mar": "12:30", "mer": "19:00", "jeu": "12:30", "jeu_soir": "19:00",
+      "ven": "12:30", "sam": "10:00", "dim_news": "18:00", "dim": "20:00"
+    },
+    "liens": {
+      "declic": "https://efa.africa/generateur-de-projet.html",
+      "voir-clair": "https://efa.africa/ou-est-passe-mon-argent.html",
+      "reserve": "https://efa.africa/ou-garder-sa-reserve.html",
+      "proches": "https://efa.africa/solidarite-assureur-de-la-famille.html",
+      "tontine": "https://efa.africa/tontine.html",
+      "diagnostic": "https://efa.africa/diagnostic.html",
+      "budget": "https://efa.africa/construire-son-budget.html",
+      "dettes": "https://efa.africa/renegocier-une-dette.html",
+      "retraite": "https://efa.africa/preparer-ma-retraite.html",
+      "bourse": "https://efa.africa/premiers-pas-brvm.html",
+      "sgi": "https://efa.africa/questions-a-poser-a-sa-sgi.html",
+      "valo": "https://efa.africa/patrimoine.html",
+      "minfin": "https://efa.africa/minfin.html",
+      "news": "https://efa.africa/news.html",
+      "accueil": "https://efa.africa/",
+      "lettre": "https://efa.africa/lettre.html",
+      "whatsapp": "https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a",
+      "enquete": "https://forms.gle/Sczi5p58q9ijuKqp9"
+    }
+  },
+  "visages": {
+    "elysee": "Élysée Johnson, le fondateur : photo officielle du site, jamais générée, jamais retouchée. Pour la doctrine (samedi) et un lancement par semaine au plus.",
+    "koffi": "Koffi, 28 ans, jeune salarié d'Abidjan : cheveux bouclés courts dégradés, lunettes rectangulaires noires, bouc et fine moustache, chemise bleu marine ouverte sur t-shirt blanc. Pour les questions du quotidien et Min'Fin.",
+    "affoue": "Tantie Affoué, 52 ans, tante de Koffi : organise ses tontines depuis vingt ans, pagne et foulard sobres, regard vif. Pour la tontine et la famille.",
+    "bamba": "Tonton Bamba, 60 ans, mentor : cheveux courts grisonnants, barbe grise, lunettes noires rectangulaires, tunique bleu marine brodée. Pour la réserve, la patience, le long terme.",
+    "aminata": "Aminata, 34 ans, commerçante et entrepreneure : tresses attachées, tablier ou boubou de travail, mains occupées. Pour Déclic et valo.",
+    "yao": "Yao, 22 ans, étudiant : sac à dos, t-shirt uni, téléphone à la main. Pour le Pass Étudiant, les premiers pas en Bourse, le premier budget.",
+    "kone": "Madame Koné, 45 ans, cadre : tailleur sobre, cheveux courts naturels, bureau ou voiture. Pour la retraite, le patrimoine, la famille élargie."
+  },
+  "consignes_images": "Réalisme photographique, lumière tamisée et naturelle, jamais de lueur orange, jaune, dorée ni bleue, pas d'effet futuriste. Peau réaliste sans texture craquelée. Un seul personnage par image, regard franc, aucun texte dans l'image, aucun logo. Format 4:5 (1080 × 1350), sujet dans le tiers gauche ou central, le tiers droit plus calme pour accueillir le texte. Pas de documents tournés vers le public. Mêmes vêtements et mêmes traits pour un personnage d'une image à l'autre.",
+  "semaines": [
+    {
+      "num": 1, "lundi": "2026-11-09", "mois": "Novembre · Déclic",
+      "campagne": "J'ai mis de côté. Je lance quoi ?",
+      "message": "Partez de votre budget, même petit, et repartez avec une idée concrète.",
+      "objectifs": {"tiktok": 22000, "facebook": 3300, "emails": 120, "declic": 1500},
+      "note": "Semaine déjà produite le 8 nov. (EFA-Feed-9-15-novembre-2026.zip).",
+      "posts": []
+    },
+    {
+      "num": 2, "lundi": "2026-11-16", "mois": "Novembre · Déclic",
+      "campagne": "Une idée, puis un test.",
+      "message": "On ne lance pas, on teste : dix clients, une semaine, puis on décide.",
+      "objectifs": {"tiktok": 24000, "facebook": 3600, "emails": 180, "declic": 2500},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "déclic", "titre": "Une idée se teste avant de se lancer.", "secondaire": "Dix clients, une semaine, puis vous décidez.", "lien": "declic"},
+        {"jour": "mar", "type": "typo", "cle": "voir clair", "titre": "Où est passé mon argent ?", "secondaire": "EFA vous aide à faire le point, en 5 questions.", "lien": "voir-clair"},
+        {"jour": "mer", "type": "carrousel", "visage": "aminata", "titre": "Vendre en ligne sans stock", "planches": [
+          "Aminata photographie un produit (sac, tissu) avec son téléphone, sur une table simple",
+          "Aminata montre son écran de téléphone à une cliente, sourire discret",
+          "Aminata note des commandes dans un cahier, concentrée",
+          "Aminata emballe un colis dans du papier kraft",
+          "Aminata remet le colis à un livreur à moto, devant une boutique",
+          "Aminata compte des billets de FCFA posés sur le cahier, calme"
+        ], "textes": ["Vendre en ligne sans stock : 20 000 à 100 000 F pour démarrer.", "Le premier pas : dix produits, dix photos, un seul canal.", "On vérifie : le prix que les gens acceptent vraiment.", "On livre d'abord, on achète ensuite : pas de stock qui dort.", "Le piège : promettre un délai qu'on ne tient pas.", "Une piste parmi d'autres sur EFA Déclic. Des idées, pas des gains promis."], "lien": "declic"},
+        {"jour": "jeu", "type": "scene", "visage": "bamba", "cle": "réserve", "titre": "Et si un imprévu arrive ?", "secondaire": "Trois mois de dépenses de côté, d'abord.", "scene": "Tonton Bamba assis sur une terrasse, une tasse de thé, regard vers l'objectif, lumière du matin", "lien": "reserve"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Mon salaire disparaît trop vite ?", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi dans un bureau, regarde son téléphone avec une légère inquiétude, chemise bleu marine", "lien": "minfin"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Ce qui circule n'est pas ce qui reste.", "secondaire": "La tontine fait circuler. La réserve fait rester.", "lien": "tontine"},
+        {"jour": "dim", "type": "typo", "cle": "gratuit", "titre": "Apprendre sur EFA, gratuit.", "secondaire": "On commence dès 1 min.", "lien": "accueil"}
+      ]
+    },
+    {
+      "num": 3, "lundi": "2026-11-23", "mois": "Novembre · Déclic",
+      "campagne": "Des idées, pas des gains promis.",
+      "message": "EFA ne vend pas de rêve : avant l'idée, on regarde la réserve.",
+      "objectifs": {"tiktok": 26000, "facebook": 3900, "emails": 240, "declic": 3500},
+      "posts": [
+        {"jour": "lun", "type": "portrait", "cle": "déclic", "titre": "Des idées, pas des gains promis.", "secondaire": "On ne vous vend pas du rêve. On regarde votre réserve avant de parler de lancer.", "lien": "declic"},
+        {"jour": "mar", "type": "typo", "cle": "déclic", "titre": "Mon idée tient-elle la route ?", "secondaire": "Le premier pas, ce qu'il faut vérifier, le piège à éviter.", "lien": "declic"},
+        {"jour": "mer", "type": "carrousel", "visage": "yao", "titre": "Cours particuliers : lancer avec 0 F", "planches": [
+          "Yao explique un exercice à un collégien à une table, cahiers ouverts",
+          "Yao écrit une petite annonce manuscrite, assis sur un banc de campus",
+          "Yao montre son emploi du temps sur son téléphone",
+          "Yao reçoit un paiement mobile, sourire discret",
+          "Yao marche avec son sac à dos dans une rue d'Abidjan, déterminé"
+        ], "textes": ["Cours particuliers : 0 F pour commencer, votre savoir suffit.", "Le premier pas : un élève, une matière, deux séances par semaine.", "On vérifie : le créneau tient-il avec vos propres cours ?", "On se fait payer à la séance, pas à la fin du mois.", "Une piste parmi d'autres sur EFA Déclic. Des idées, pas des gains promis."], "lien": "declic"},
+        {"jour": "jeu", "type": "scene", "visage": "affoue", "cle": "tontine", "titre": "C'est votre tour de tontine ?", "secondaire": "Décidez avant de recevoir.", "scene": "Tantie Affoué devant sa maison, carnet de tontine à la main, regard droit, fin d'après-midi", "lien": "tontine"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Prêt ou cadeau ?", "secondaire": "Vous avez déjà prêté à un proche ?", "scene": "Koffi au téléphone dans la rue, expression partagée entre affection et gêne", "lien": "proches"},
+        {"jour": "sam", "type": "portrait", "cle": "tontine", "titre": "La tontine n'est pas de l'épargne.", "secondaire": "Construisez une réserve. Passez à la spirale.", "lien": "tontine"},
+        {"jour": "dim", "type": "typo", "cle": "enquête", "titre": "Plus de 250 personnes nous ont raconté leur tontine.", "secondaire": "Même sans tontine, votre réponse compte.", "lien": "enquete"}
+      ]
+    },
+    {
+      "num": 4, "lundi": "2026-11-30", "mois": "Décembre · Les fêtes sans casser la réserve",
+      "campagne": "Décembre arrive. Votre argent est prêt ?",
+      "message": "Les fêtes se préparent en novembre : on fixe une enveloppe avant de dépenser.",
+      "objectifs": {"tiktok": 29000, "facebook": 4200, "emails": 320, "declic": 4500},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "voir clair", "titre": "Décembre arrive. Votre argent est prêt ?", "secondaire": "Fixez l'enveloppe des fêtes avant la première dépense.", "lien": "voir-clair"},
+        {"jour": "mar", "type": "typo", "cle": "budget", "titre": "Mon budget tient-il le mois ?", "secondaire": "EFA vous aide à tenir votre budget en FCFA.", "lien": "budget"},
+        {"jour": "mer", "type": "carrousel", "visage": "kone", "titre": "L'enveloppe des fêtes", "planches": [
+          "Madame Koné à son bureau, liste manuscrite devant elle, stylo en main",
+          "Madame Koné au marché, choisit un tissu, calme",
+          "Madame Koné compte des billets et les range dans trois enveloppes de papier",
+          "Madame Koné en voiture, regarde l'heure, sereine",
+          "Madame Koné à table en famille, repas simple, sourire"
+        ], "textes": ["Les fêtes coûtent ce qu'on décide avant, pas ce qu'on constate après.", "Une liste : cadeaux, repas, déplacements, famille. Rien d'autre.", "Trois enveloppes, trois montants. Quand une est vide, elle est vide.", "Le 13e mois n'est pas un bonus : c'est janvier qui est déjà payé.", "Fixez votre enveloppe sur efa.africa, gratuit."], "lien": "voir-clair"},
+        {"jour": "jeu", "type": "scene", "visage": "bamba", "cle": "réserve", "titre": "Le 13e mois n'est pas un bonus.", "secondaire": "C'est janvier qui est déjà payé.", "scene": "Tonton Bamba debout devant une fenêtre, bras croisés, regard bienveillant", "lien": "reserve"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "+200 000 F de prime. Toujours rien ?", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi devant un distributeur de billets, reçu à la main, perplexe", "lien": "minfin"},
+        {"jour": "sam", "type": "portrait", "cle": "proches", "titre": "L'aîné est un assureur non déclaré.", "secondaire": "Aider la famille sans se fragiliser : fixez votre enveloppe.", "lien": "proches"},
+        {"jour": "dim", "type": "typo", "cle": "lettre", "titre": "L'argent de la semaine, chaque mardi.", "secondaire": "Gratuit, et le guide en cadeau.", "lien": "lettre"}
+      ]
+    },
+    {
+      "num": 5, "lundi": "2026-12-07", "mois": "Décembre · Les fêtes sans casser la réserve",
+      "campagne": "Aider sans se fragiliser.",
+      "message": "Décembre est le mois des demandes : préparez votre réponse avant qu'on vous la pose.",
+      "objectifs": {"tiktok": 32000, "facebook": 4500, "emails": 420, "declic": 5500},
+      "posts": [
+        {"jour": "lun", "type": "portrait", "cle": "proches", "titre": "La famille compte sur vous ?", "secondaire": "EFA vous aide à aider sans vous fragiliser.", "lien": "proches"},
+        {"jour": "mar", "type": "typo", "cle": "proches", "titre": "Prêt ou cadeau ? Décidez avant de donner.", "secondaire": "Une réponse préparée protège la relation.", "lien": "proches"},
+        {"jour": "mer", "type": "carrousel", "visage": "affoue", "titre": "La demande du cousin", "planches": [
+          "Tantie Affoué lit un message sur son téléphone, sourcils légèrement froncés",
+          "Tantie Affoué assise, carnet ouvert, écrit un montant",
+          "Tantie Affoué parle au téléphone, calme et ferme",
+          "Tantie Affoué remet une enveloppe à un jeune homme, poignée de main",
+          "Tantie Affoué seule, sereine, tasse de thé"
+        ], "textes": ["La demande arrive toujours au mauvais moment. La réponse, elle, se prépare.", "Mon enveloppe d'entraide du mois : un montant, pas plus.", "« Je peux t'aider à hauteur de… » : la phrase qui protège tout le monde.", "Si c'est un prêt, on écrit la date. Si c'est un cadeau, on le dit.", "Fixez votre enveloppe sur efa.africa, gratuit."], "lien": "proches"},
+        {"jour": "jeu", "type": "scene", "visage": "aminata", "cle": "déclic", "titre": "Les fêtes, c'est aussi une saison de vente.", "secondaire": "Une idée à tester avant le 20 décembre.", "scene": "Aminata prépare des paniers garnis sur un comptoir, concentrée", "lien": "declic"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Il m'a demandé 50 000 F.", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi assis sur un lit, téléphone en main, hésite", "lien": "proches"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Recevoir 1 million ne vous enrichit pas d'un million.", "secondaire": "Ce qui compte, c'est ce qu'il en reste trois mois après.", "lien": "tontine"},
+        {"jour": "dim", "type": "typo", "cle": "diagnostic", "titre": "Où en êtes-vous avec votre argent ?", "secondaire": "Six dimensions, dès 1 min.", "lien": "diagnostic"}
+      ]
+    },
+    {
+      "num": 6, "lundi": "2026-12-14", "mois": "Décembre · Les fêtes sans casser la réserve",
+      "campagne": "La réserve, c'est la liberté.",
+      "message": "Trois mois de dépenses de côté : le seul cadeau qu'on se fait vraiment.",
+      "objectifs": {"tiktok": 35000, "facebook": 4800, "emails": 550, "declic": 6500},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "réserve", "titre": "Avant d'investir, mettez de l'ordre.", "secondaire": "3 mois de dépenses de côté d'abord : épargne de précaution.", "lien": "reserve"},
+        {"jour": "mar", "type": "typo", "cle": "réserve", "titre": "Où garder sa réserve ?", "secondaire": "Disponible, séparée, à l'abri de vous-même.", "lien": "reserve"},
+        {"jour": "mer", "type": "carrousel", "visage": "bamba", "titre": "Trois mois devant soi", "planches": [
+          "Tonton Bamba montre trois doigts, sourire tranquille, intérieur sobre",
+          "Tonton Bamba écrit une liste de dépenses mensuelles sur une feuille",
+          "Tonton Bamba range un carnet d'épargne dans un tiroir",
+          "Tonton Bamba face à un jeune homme, lui parle avec attention",
+          "Tonton Bamba marche dans un quartier calme, le soir"
+        ], "textes": ["Trois mois de dépenses de côté. Pas de revenus : de dépenses.", "Loyer, nourriture, transport, école : on additionne, on multiplie par trois.", "La réserve dort sur un compte séparé. On ne la voit pas, on ne la touche pas.", "Elle ne rapporte rien, et c'est son travail : être là le jour où tout s'arrête.", "Calculez la vôtre sur efa.africa, gratuit."], "lien": "reserve"},
+        {"jour": "jeu", "type": "scene", "visage": "kone", "cle": "retraite", "titre": "À quoi ressemblera votre retraite ?", "secondaire": "6 questions pour le savoir.", "scene": "Madame Koné regarde par la fenêtre de son bureau, pensive, lumière douce", "lien": "retraite"},
+        {"jour": "ven", "type": "scene", "visage": "yao", "cle": "étudiants", "titre": "Étudiant ? Votre école a un Pass.", "secondaire": "Gratuit, demandé par votre école.", "scene": "Yao devant l'entrée d'une école, sac à dos, sourire", "lien": "accueil"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Votre tontine réunit un million chaque mois. Que gardez-vous ensemble ?", "secondaire": "La confiance précède le capital.", "lien": "tontine"},
+        {"jour": "dim", "type": "typo", "cle": "EFA", "titre": "Décider avec ce que vous avez.", "secondaire": "La finance avec nos réalités africaines.", "lien": "accueil"}
+      ]
+    },
+    {
+      "num": 7, "lundi": "2026-12-21", "mois": "Décembre · Les fêtes sans casser la réserve",
+      "campagne": "Joyeuses fêtes, la réserve intacte.",
+      "message": "Semaine légère : trois publications, le bilan de l'année, et un merci à la communauté.",
+      "objectifs": {"tiktok": 38000, "facebook": 5100, "emails": 700, "declic": 7000},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "voir clair", "titre": "Ce que vous avez appris sur EFA en 2026.", "secondaire": "Où passe votre argent, combien en garder, comment le faire grandir.", "lien": "accueil"},
+        {"jour": "mer", "type": "carrousel", "visage": "koffi", "titre": "L'année de Koffi", "planches": [
+          "Koffi en janvier, bureau, l'air dépassé devant des factures",
+          "Koffi écrit son premier budget dans un cahier",
+          "Koffi ouvre une enveloppe marquée d'un trait, calme",
+          "Koffi au téléphone, refuse poliment, sourire gêné",
+          "Koffi en décembre, détendu, même bureau, rangé"
+        ], "textes": ["Janvier : « je ne sais pas où passe mon argent. »", "Février : premier budget. Pas parfait, mais écrit.", "Juin : une réserve d'un mois. Puis deux.", "Septembre : « je peux t'aider à hauteur de… »", "Décembre : la même paie, une autre vie. On n'est pas seul."], "lien": "accueil"},
+        {"jour": "sam", "type": "portrait", "cle": "merci", "titre": "Merci.", "secondaire": "Vous êtes des dizaines de milliers à apprendre avec EFA. En 2027, on passe à la spirale.", "lien": "accueil"}
+      ]
+    },
+    {
+      "num": 8, "lundi": "2026-12-28", "mois": "Janvier · Mettre de l'ordre, puis investir",
+      "campagne": "2027 commence par un budget.",
+      "message": "Pas de résolution : un budget écrit, une réserve ciblée, une dette à régler.",
+      "objectifs": {"tiktok": 42000, "facebook": 5500, "emails": 850, "declic": 7500},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "budget", "titre": "2027 commence par un budget.", "secondaire": "Écrit, en FCFA, en 10 minutes. Ensuite seulement, les projets.", "lien": "budget"},
+        {"jour": "mar", "type": "typo", "cle": "dettes", "titre": "Trop de dettes ?", "secondaire": "EFA vous aide à en sortir, une par une.", "lien": "dettes"},
+        {"jour": "mer", "type": "carrousel", "visage": "aminata", "titre": "Le budget d'une commerçante", "planches": [
+          "Aminata devant son étal, cahier de comptes ouvert",
+          "Aminata sépare des billets en deux tas sur le comptoir",
+          "Aminata paie un fournisseur, poignée de main",
+          "Aminata met de côté une petite liasse dans une boîte en fer",
+          "Aminata ferme sa boutique le soir, satisfaite"
+        ], "textes": ["Une commerçante a deux argents : celui de la boutique et le sien.", "Chaque soir, deux tas. On ne mélange jamais.", "Le fournisseur est payé avant le loyer de la maison. Toujours.", "Un peu dans la boîte chaque jour : la réserve de la boutique.", "Séparer les poches, sur efa.africa, gratuit."], "lien": "budget"},
+        {"jour": "jeu", "type": "scene", "visage": "kone", "cle": "diagnostic", "titre": "Où en êtes-vous, vraiment ?", "secondaire": "Six dimensions, un profil, un plan.", "scene": "Madame Koné au volant, arrêtée, regarde l'objectif, déterminée", "lien": "diagnostic"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Je rembourse quoi en premier ?", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi devant trois reçus posés sur une table, réfléchit", "lien": "dettes"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Avant d'investir, on met de l'ordre. Puis on investit, accompagné.", "secondaire": "Le chemin EFA en quatre marches, la Bourse en dernier.", "lien": "diagnostic"},
+        {"jour": "dim", "type": "typo", "cle": "gratuit", "titre": "Apprendre sur EFA, gratuit.", "secondaire": "Tout au même endroit. On commence dès 1 min.", "lien": "accueil"}
+      ]
+    },
+    {
+      "num": 9, "lundi": "2027-01-04", "mois": "Janvier · Mettre de l'ordre, puis investir",
+      "campagne": "La réserve d'abord.",
+      "message": "Janvier est le mois où l'on constitue la réserve que décembre a entamée.",
+      "objectifs": {"tiktok": 48000, "facebook": 6000, "emails": 1000, "declic": 8500},
+      "posts": [
+        {"jour": "lun", "type": "portrait", "cle": "réserve", "titre": "Et si un imprévu arrive ?", "secondaire": "EFA vous aide à construire votre réserve avant d'investir.", "lien": "reserve"},
+        {"jour": "mar", "type": "typo", "cle": "réserve", "titre": "Un mois. Puis deux. Puis trois.", "secondaire": "La réserve se construit par paliers, pas d'un coup.", "lien": "reserve"},
+        {"jour": "mer", "type": "carrousel", "visage": "yao", "titre": "Ma première réserve avec 15 000 F par mois", "planches": [
+          "Yao reçoit une bourse ou un transfert, écran de téléphone",
+          "Yao met de côté une petite somme dans une enveloppe",
+          "Yao refuse une sortie, sourire, montre son téléphone",
+          "Yao compte trois enveloppes sur son lit",
+          "Yao marche léger sur le campus"
+        ], "textes": ["15 000 F par mois. Ça paraît rien. En six mois, c'est un mois de dépenses.", "Le jour où l'argent arrive, la réserve est servie en premier.", "Dire non à une sortie, c'est dire oui à sa tranquillité.", "Trois enveloppes : urgence, projet, plaisir. Dans cet ordre.", "Construisez la vôtre sur efa.africa, gratuit."], "lien": "reserve"},
+        {"jour": "jeu", "type": "scene", "visage": "bamba", "cle": "réserve", "titre": "Où garder sa réserve ?", "secondaire": "Séparée, disponible, loin de la tentation.", "scene": "Tonton Bamba au guichet d'une agence, calme, reçu en main", "lien": "reserve"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Mon compte épargne, c'est mon compte courant.", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi regarde deux cartes bancaires dans sa main, dubitatif", "lien": "reserve"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "La réserve fait la spirale.", "secondaire": "Sans réserve, l'argent circule et ne construit rien.", "lien": "tontine"},
+        {"jour": "dim", "type": "typo", "cle": "enquête", "titre": "300 réponses : l'étude arrive.", "secondaire": "L'argent de la tontine, raconté par vous.", "lien": "enquete"}
+      ]
+    },
+    {
+      "num": 10, "lundi": "2027-01-11", "mois": "Janvier · Mettre de l'ordre, puis investir",
+      "campagne": "La Bourse, par où commencer ?",
+      "message": "Une fois la réserve en place, on apprend la Bourse (BRVM) sans argent réel.",
+      "objectifs": {"tiktok": 54000, "facebook": 6500, "emails": 1250, "declic": 9500},
+      "posts": [
+        {"jour": "lun", "type": "portrait", "cle": "bourse", "titre": "Investir en Bourse. Par où commencer ?", "secondaire": "Comprendre la Bourse (BRVM). Préparer son premier ordre.", "lien": "bourse"},
+        {"jour": "mar", "type": "typo", "cle": "bourse", "titre": "S'entraîner à la Bourse (BRVM), sans argent réel.", "secondaire": "EFA Traders : un capital fictif, de vraies décisions.", "lien": "bourse"},
+        {"jour": "mer", "type": "carrousel", "visage": "yao", "titre": "Mon premier ordre, en simulation", "planches": [
+          "Yao devant un ordinateur portable, écran de cours de Bourse flou, attentif",
+          "Yao lit un rapport annuel imprimé, surligneur en main",
+          "Yao note trois noms d'entreprises sur un carnet",
+          "Yao clique sur son téléphone, concentré",
+          "Yao regarde par la fenêtre, patient"
+        ], "textes": ["On n'achète pas une action, on achète un morceau d'entreprise.", "Lire avant d'acheter : que vend-elle, à qui, gagne-t-elle de l'argent ?", "Trois noms, pas trente. On apprend à suivre avant d'apprendre à choisir.", "Un ordre, c'est un prix et une quantité. Rien de plus.", "Entraînez-vous sur EFA Traders, sans argent réel, gratuit."], "lien": "bourse"},
+        {"jour": "jeu", "type": "scene", "visage": "kone", "cle": "bourse", "titre": "Quelle SGI choisir ?", "secondaire": "Les questions à poser avant d'ouvrir un compte.", "scene": "Madame Koné en rendez-vous, face à un bureau, posture d'écoute", "lien": "sgi"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "On m'a promis 20 % par mois.", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi lit un message sur son téléphone, sourcils levés, méfiant", "lien": "bourse"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Avec nos téléphones, nous pouvons construire des usines.", "secondaire": "Après le paiement, le capital.", "lien": "bourse"},
+        {"jour": "dim", "type": "typo", "cle": "EFA News", "titre": "L'actualité de votre argent, expliquée simplement.", "secondaire": "Chaque dimanche, cinq informations.", "lien": "news"}
+      ]
+    },
+    {
+      "num": 11, "lundi": "2027-01-18", "mois": "Janvier · Mettre de l'ordre, puis investir",
+      "campagne": "Faire grandir, ensemble.",
+      "message": "Ce qu'on garde ensemble dans une tontine peut devenir un capital commun.",
+      "objectifs": {"tiktok": 60000, "facebook": 7000, "emails": 1500, "declic": 10500},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "tontine", "titre": "Votre tontine fait tourner l'argent. Et si elle le faisait grandir ?", "secondaire": "Une réserve commune, décidée avant le cycle.", "lien": "tontine"},
+        {"jour": "mar", "type": "typo", "cle": "tontine", "titre": "110 000 F de cotisation, 10 000 F de réserve.", "secondaire": "La tontine qui garde une part.", "lien": "tontine"},
+        {"jour": "mer", "type": "carrousel", "visage": "affoue", "titre": "La tontine qui garde", "planches": [
+          "Tantie Affoué réunit cinq femmes autour d'une table, carnet au centre",
+          "Tantie Affoué écrit un règlement sur une feuille, les autres regardent",
+          "Tantie Affoué remet une enveloppe à une membre, applaudissements discrets",
+          "Tantie Affoué montre une ligne du carnet : la réserve",
+          "Tantie Affoué et le groupe, photo de groupe sobre, fières"
+        ], "textes": ["Une tontine, c'est de la confiance organisée.", "La règle s'écrit avant le premier tour, jamais après.", "Le tour est versé. Et une part reste : 10 % pour le groupe.", "À la fin du cycle, la réserve commune existe. Elle n'existait pas avant.", "C'est ça, passer du cercle à la spirale. Sur efa.africa."], "lien": "tontine"},
+        {"jour": "jeu", "type": "scene", "visage": "bamba", "cle": "la spirale", "titre": "Le capital patient.", "secondaire": "Ce qui reste, placé longtemps, construit.", "scene": "Tonton Bamba plante un jeune arbre dans une cour, mains dans la terre", "lien": "tontine"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "On a fini le cycle. Et maintenant ?", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi avec deux amis, discussion animée autour d'un téléphone", "lien": "tontine"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Tontine de Bourse : comment faire ?", "secondaire": "Avant de placer ensemble, fixons les règles.", "lien": "tontine"},
+        {"jour": "dim", "type": "typo", "cle": "organisations", "titre": "Formez vos équipes à l'argent.", "secondaire": "Entreprises, coopératives, associations.", "lien": "accueil"}
+      ]
+    },
+    {
+      "num": 12, "lundi": "2027-01-25", "mois": "Janvier · Mettre de l'ordre, puis investir",
+      "campagne": "Trois mois d'EFA : où en êtes-vous ?",
+      "message": "Bilan des trois mois, preuve par les chiffres, et la promesse de février.",
+      "objectifs": {"tiktok": 70000, "facebook": 8000, "emails": 2000, "declic": 12000},
+      "posts": [
+        {"jour": "lun", "type": "typo", "cle": "preuve", "titre": "[N] personnes ont utilisé Déclic en trois mois.", "secondaire": "Chiffre réel à insérer le jour même.", "lien": "declic"},
+        {"jour": "mar", "type": "typo", "cle": "voir clair", "titre": "Où est passé mon argent ?", "secondaire": "La question qui a tout commencé. Toujours gratuite.", "lien": "voir-clair"},
+        {"jour": "mer", "type": "carrousel", "visage": "kone", "titre": "Trois mois après", "planches": [
+          "Madame Koné relit une liste cochée, satisfaite",
+          "Madame Koné montre un relevé à son mari, table de cuisine",
+          "Madame Koné dépose un dossier sur un bureau, rendez-vous",
+          "Madame Koné dehors, téléphone à l'oreille, sourire",
+          "Madame Koné face caméra, calme, bureau rangé"
+        ], "textes": ["Novembre : voir clair. Décembre : la réserve. Janvier : le budget.", "On en parle à la maison. Les chiffres sur la table, pas dans la tête.", "Le rendez-vous avec la SGI est pris. Pas pour acheter : pour comprendre.", "Trois mois, trois habitudes. Le reste suivra.", "Et vous, où en êtes-vous ? Faites le point sur efa.africa."], "lien": "diagnostic"},
+        {"jour": "jeu", "type": "scene", "visage": "aminata", "cle": "valo", "titre": "Combien vaut mon entreprise ?", "secondaire": "Entrepreneurs, faites le calcul en 1 minute.", "scene": "Aminata devant sa boutique agrandie, bras croisés, fière", "lien": "valo"},
+        {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Trois mois après, Koffi.", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi, même bureau qu'en novembre, rangé, sourire tranquille", "lien": "minfin"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "En février, on passe à l'étape suivante.", "secondaire": "Ceux qui ont mis de l'ordre vont pouvoir investir, accompagnés.", "lien": "accueil"},
+        {"jour": "dim", "type": "typo", "cle": "lettre", "titre": "Soyez prévenu en premier.", "secondaire": "La lettre du mardi, gratuite.", "lien": "lettre"}
+      ]
+    }
+  ]
+}
