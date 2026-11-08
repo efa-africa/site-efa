@@ -195,6 +195,8 @@ def briefs(lundi):
 def build(lundi):
     from playwright.sync_api import sync_playwright
     s = semaine(lundi); L = CAL["regles"]["liens"]; ENT = os.path.join(ROOT, "entrants", lundi)
+    if not s["posts"]:
+        print("SEMAINE DÉJÀ PRODUITE : " + s.get("note", "rien à produire")); return
     O = os.path.join(ROOT, "sortie", f"EFA-Feed-{lundi}"); shutil.rmtree(O, ignore_errors=True); os.makedirs(O)
     plan = [f"EFA — FEED DE LA SEMAINE DU {lundi}", f"Campagne : « {s['campagne']} »", s["message"], "",
             "OBJECTIFS DE FIN DE SEMAINE : " + " · ".join(f"{k} {v:,}".replace(",", " ") for k, v in s["objectifs"].items()), "",
