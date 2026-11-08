@@ -8,7 +8,7 @@
   function e(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function mail() { try { return localStorage.getItem('efa_email_v1') || (JSON.parse(localStorage.getItem('efa_ateliers_v1') || '{}').mail) || ''; } catch (x) { return ''; } }
   function carte(r) {
-    var av = r.photo ? '<img src="' + e(r.photo) + '" alt="">' : '<span>' + e((r.prenom || '?').charAt(0)) + '</span>';
+    var av = r.photo ? '<img loading="lazy" decoding="async" src="' + e(r.photo) + '" alt="">' : '<span>' + e((r.prenom || '?').charAt(0)) + '</span>';
     return '<article class="ilf-c"><p class="ilf-t">' + e(r.titre) + '</p><p class="ilf-r">' + e(r.recit) + '</p>' +
       (r.depart || r.resultat ? '<dl class="ilf-ch">' + (r.depart ? '<div><dt>Au départ</dt><dd>' + e(r.depart) + '</dd></div>' : '') + (r.resultat ? '<div><dt>Aujourd’hui</dt><dd>' + e(r.resultat) + '</dd></div>' : '') + '</dl>' : '') +
       (r.conseil ? '<p class="ilf-k"><b>Son conseil :</b> ' + e(r.conseil) + '</p>' : '') +

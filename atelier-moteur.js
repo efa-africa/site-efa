@@ -80,7 +80,7 @@ function rendu(){
   z.style.cssText='--c:'+c.c+';--ct:'+c.t+';--cx:'+c.x;
   z.innerHTML='<div class="prog2"><span>Chapitre '+(e.ph+1)+' sur '+P.length+' · '+fc+' activité'+(fc>1?'s':'')+' sur '+L.length+'</span><span class="b"><i style="width:'+(fc/L.length*100)+'%"></i></span><a id="tous">Tous les chapitres</a></div>'
    +'<article class="ec ec-anim"><div class="ec-tete"><span class="ec-k"><i>'+(e.ph+1)+'</i>'+esc(P[e.ph].acq)+'</span><h2>'+esc(e.t)+'</h2><div class="ec-pts">'+L.map(function(x){ return '<i class="'+(x.n===e.n?'on':etat['s'+x.n]?'ok':'')+'"></i>'; }).join('')+'</div></div>'
-   +'<div class="ec-corps"><div class="coach"><img src="clone/assets/elysee-portrait-carre.jpg" alt=""><div><small>Le coach</small><p>'+esc(e.c)+'</p></div></div>'
+   +'<div class="ec-corps"><div class="coach"><img loading="lazy" decoding="async" src="clone/assets/elysee-portrait-carre.jpg" alt=""><div><small>Le coach</small><p>'+esc(e.c)+'</p></div></div>'
    +widget(e)
    +'<button type="button" class="preuve" id="pv" aria-pressed="'+on+'"><span class="bx">'+(on?'✓':'')+'</span>'+esc(e.p)+'</button>'
    +'<div class="nav"><button type="button" class="prec" id="prec" aria-label="Écran précédent">←</button><button type="button" class="suiv" id="suiv">Continuer →</button></div><p class="ecn">Écran '+e.n+' sur '+NB+'</p></div></article>';

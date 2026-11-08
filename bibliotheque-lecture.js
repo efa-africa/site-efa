@@ -66,7 +66,7 @@
   // court : l'essentiel en 4 écrans (la phrase, l'idée clé, ce qui ne marche pas ici, la décision) ; sinon la fiche complète
   function scenes(b, court) {
     var s = [];
-    s.push('<p class="k up">La bibliothèque EFA · n° ' + b.n + '</p><img class="livre up d1" src="bibliotheque/couv-' + b.id + '-400.webp" srcset="bibliotheque/couv-' + b.id + '-400.webp 400w, bibliotheque/couv-' + b.id + '-800.webp 800w" sizes="190px" width="400" height="600" alt="' + esc(b.titre + ", " + b.auteur) + '"><h1 class="mid up d2">Les idées essentielles, en format statut</h1><p class="lead up d3">Ce qu’il dit, ce qui marche chez nous, ce qui ne marche pas. Et une décision à prendre cette semaine.</p>');
+    s.push('<p class="k up">La bibliothèque EFA · n° ' + b.n + '</p><img loading="lazy" decoding="async" class="livre up d1" src="bibliotheque/couv-' + b.id + '-400.webp" srcset="bibliotheque/couv-' + b.id + '-400.webp 400w, bibliotheque/couv-' + b.id + '-800.webp 800w" sizes="190px" width="400" height="600" alt="' + esc(b.titre + ", " + b.auteur) + '"><h1 class="mid up d2">Les idées essentielles, en format statut</h1><p class="lead up d3">Ce qu’il dit, ce qui marche chez nous, ce qui ne marche pas. Et une décision à prendre cette semaine.</p>');
     s.push('<p class="k up">Le livre en une phrase</p><h2 class="big up d1">' + b.phrase + '</h2><p class="lead up d2">' + b.phraseSuite + "</p>");
     b.idees.forEach(function (x, k) { s.push(ideeHtml(x, k)); });
     s.push('<p class="k up">Ce qui marche ici</p><div class="liste">' + b.marche.map(function (x, k) { return '<div class="ok up d' + (k + 1) + '"><span><b>' + x[0] + "</b> " + x[1] + "</span></div>"; }).join("") + "</div>");

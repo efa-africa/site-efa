@@ -253,7 +253,7 @@
     function fiche(p) {
       var o = document.querySelector(".efa-pf"); if (o) o.remove();
       var d = document.createElement("div"); d.className = "efa-pf"; d.setAttribute("role", "dialog"); d.setAttribute("aria-label", p.nom + ", " + p.t);
-      d.innerHTML = (p.img ? '<img src="' + p.img + '" alt="">' : '<span class="i">' + p.nom.charAt(0) + "</span>") + "<div><small>" + p.t + "</small><b>" + p.nom + "</b><p>" + p.r + "</p></div>"
+      d.innerHTML = (p.img ? '<img loading="lazy" decoding="async" src="' + p.img + '" alt="">' : '<span class="i">' + p.nom.charAt(0) + "</span>") + "<div><small>" + p.t + "</small><b>" + p.nom + "</b><p>" + p.r + "</p></div>"
         + '<div class="a">' + (p.mf ? '<a href="minfin.html?src=' + encodeURIComponent(page.replace(/\.html$/, "")) + '#personnages">Découvrir Min’Fin</a>' : "") + '<button type="button">Revenir à ma lecture</button></div>';
       d.querySelector("button").onclick = function () { d.remove(); };
       document.body.appendChild(d);

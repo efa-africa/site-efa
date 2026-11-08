@@ -39,7 +39,7 @@
       '<a class="ec-demo ec-sujet" href="outils.html?src=ecole#parcours">Choisir un sujet</a></div>' +
       '<p class="ec-note">Gratuit · sans compte pour commencer · à votre rythme' + (demo ? ' · <a href="' + demo.getAttribute('href') + '">▶ voir la démo, dès 1 min</a>' : '') + '</p>' +
       '<p class="ec-note ec-etu"><a href="etudiants.html?src=ecole"><b>Étudiant ?</b> Demandez votre Pass Étudiant par votre école : ateliers et cours ouverts, gratuitement.</a></p></div>' +
-      '<figure class="ec-hero-img"><img src="' + A + 'ecole-hero-2.webp" alt="" decoding="async" fetchpriority="high"></figure>';
+      '<figure class="ec-hero-img"><img loading="lazy" decoding="async" src="' + A + 'ecole-hero-2.webp" alt="" decoding="async" fetchpriority="high"></figure>';
     hero.insertBefore(h, hero.firstChild);
     if (col) col.classList.add('ec-ancien');
 
@@ -55,7 +55,7 @@
     Object.keys(CY).forEach(function (k) {
       var c = CY[k], p = avance(k), pct = p && p.t ? Math.round(100 * p.f / p.t) : 0;
       cartes += '<a class="ec-cy ec-cy-' + k + '" href="#cycle-' + k + '" data-cy-go="' + k + '"' + (k === 'patrimoine' ? ' data-clair="garder"' : '') + '>' +
-        '<span class="ec-cy-img"><img src="' + A + c.img + '" alt="" decoding="async"></span>' +
+        '<span class="ec-cy-img"><img loading="lazy" decoding="async" src="' + A + c.img + '" alt="" decoding="async"></span>' +
         '<span class="ec-cy-corps"><span class="ec-cy-n">Cycle ' + c.n + '</span><b>' + c.t + '</b><span class="ec-cy-b">' + c.b + '</span>' +
         '<span class="ec-cy-pied"><span>' + c.m + (p && p.f ? ' · ' + p.f + ' validé' + (p.f > 1 ? 's' : '') : '') + '</span><span class="ec-cy-go">Voir le cycle →</span></span>' +
         (p && p.f ? '<span class="ec-cy-barre" role="img" aria-label="' + pct + ' % du cycle validé"><i style="width:' + pct + '%"></i></span>' : '') +
@@ -63,7 +63,7 @@
     });
     cyc.innerHTML = '<div class="ec-tete"><p class="ec-k">Le parcours</p><h2 id="ec-cycles-t">Trois cycles, <em>à votre rythme.</em></h2></div>' +
       '<div class="ec-cy-grille">' + cartes + '</div>' +
-      '<a class="ec-cefa" href="certificat-cefa.html"><span class="ec-cefa-img"><img src="' + A + 'cycle-cefa.webp" alt="" decoding="async"></span>' +
+      '<a class="ec-cefa" href="certificat-cefa.html"><span class="ec-cefa-img"><img loading="lazy" decoding="async" src="' + A + 'cycle-cefa.webp" alt="" decoding="async"></span>' +
       '<span class="ec-cefa-txt"><span class="ec-k">L’aboutissement</span><b>Le certificat CEFA ★</b>' +
       '<span>Un certificat local à la fin de chaque cycle, puis le CEFA qui les réunit : vos connaissances vérifiées, appliquées à votre situation.</span>' +
       '<span class="ec-cefa-go">Découvrir le certificat →</span></span></a>';

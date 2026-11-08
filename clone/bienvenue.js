@@ -36,7 +36,7 @@
   function montrer() {
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
     box = document.createElement('div'); box.className = 'bv'; box.setAttribute('role', 'region'); box.setAttribute('aria-label', 'Message d’accueil d’Élysée Johnson');
-    box.innerHTML = '<img src="clone/assets/elysee-portrait-carre.jpg" alt="">' +
+    box.innerHTML = '<img loading="lazy" decoding="async" src="clone/assets/elysee-portrait-carre.jpg" alt="">' +
       '<span class="bv-t"><b>Élysée vous accueille</b><small>Message de 22 s</small><span class="bv-bar" hidden><i></i></span></span>' +
       '<button type="button" class="bv-e">▶ Écouter</button><button type="button" class="bv-x" aria-label="Fermer">×</button>';
     B.insertAdjacentElement('afterend', box);

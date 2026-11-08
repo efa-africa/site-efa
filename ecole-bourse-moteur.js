@@ -35,7 +35,7 @@
   }
   function illu(I) {
     if (!I) return "";
-    if (I.photo) return '<figure class="illu photo"><img src="certificat-pilote/' + I.photo + '" alt=""><figcaption class="legende">' + typo(I.leg || "") + "</figcaption></figure>";
+    if (I.photo) return '<figure class="illu photo"><img loading="lazy" decoding="async" src="certificat-pilote/' + I.photo + '" alt=""><figcaption class="legende">' + typo(I.leg || "") + "</figcaption></figure>";
     return '<div class="illu ' + (I.c || "nuit") + (I.accueil ? " accueil" : "") + '">' + typo(I.html) + "</div>";
   }
   function paras(p) { return (p || []).map(function (x) { return '<p class="p">' + typo(x) + "</p>"; }).join(""); }

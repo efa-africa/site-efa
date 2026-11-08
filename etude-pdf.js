@@ -50,7 +50,7 @@
       '<button type="button" id="ep-x" aria-label="Fermer">×</button>' +
       '<p class="k">EFA Études · rapport gratuit</p>' +
       '<h2 id="ep-t">' + CFG.titre + '</h2>' +
-      '<div class="cov"><img src="' + CFG.couverture + '" alt="Couverture du rapport ' + CFG.titre + '" width="1280" height="720"><span>' + CFG.sous + '. 42 pages, 19 fiches pays.</span></div>' +
+      '<div class="cov"><img loading="lazy" decoding="async" src="' + CFG.couverture + '" alt="Couverture du rapport ' + CFG.titre + '" width="1280" height="720"><span>' + CFG.sous + '. 42 pages, 19 fiches pays.</span></div>' +
       '<div id="ep-f">' +
       '<p>Laissez votre email&nbsp;: le rapport complet en PDF s’affiche aussitôt.</p>' +
       '<form id="ep-form" novalidate>' +

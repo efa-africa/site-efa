@@ -65,7 +65,7 @@
       g.fillRect(X + 2000, 2050, W - 2 * X - 2000, 4); g.fillStyle = o.encre2 || "#4E5566"; g.font = '700 34px "Source Sans 3"'; g.fillText(SIGNATURE.toUpperCase(), X + 2000, 2110);
       g.font = '700 36px "Source Sans 3"'; g.fillText("EFA aide chacun à passer du cercle, l’argent qui tourne, à la spirale, l’argent qui reste.", X, 2330);
       var url; try { url = cv.toDataURL("image/png"); } catch (e) { return; }
-      $("apercu").innerHTML = '<p class="note">Image prête. Si le téléchargement ne démarre pas, appuyez longuement sur l’image pour l’enregistrer.</p><img alt="' + esc(o.titreLong) + '" src="' + url + '">';
+      $("apercu").innerHTML = '<p class="note">Image prête. Si le téléchargement ne démarre pas, appuyez longuement sur l’image pour l’enregistrer.</p><img loading="lazy" decoding="async" alt="' + esc(o.titreLong) + '" src="' + url + '">';
       var a = document.createElement("a"); a.href = url; a.download = (o.fichier || "certificat-efa") + "-" + o.numero + ".png"; document.body.appendChild(a); a.click(); a.remove();
       mesure("certificat-png-" + CYCLE);
     });

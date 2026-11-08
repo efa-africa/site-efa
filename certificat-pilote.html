@@ -1101,7 +1101,7 @@ MODULES.push((function(){
 
   // ---------- enregistrer un fichier : lien de téléchargement classique
   function offrir(cv,nom,url,alt){
-    $('apercu').innerHTML='<p>Image prête. Si l\'enregistrement ne s\'ouvre pas, appuyez longuement sur l\'image pour l\'enregistrer.</p><img alt="'+alt+'" src="'+url+'">';
+    $('apercu').innerHTML='<p>Image prête. Si l\'enregistrement ne s\'ouvre pas, appuyez longuement sur l\'image pour l\'enregistrer.</p><img alt="'+alt+'" src="'+url+'" loading="lazy" decoding="async">';
     cv.toBlob(function(blob){
       var a=document.createElement('a');a.href=url;a.download=nom;document.body.appendChild(a);a.click();a.remove()
     },'image/png');

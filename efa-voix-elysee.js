@@ -24,7 +24,7 @@
     css(); opt = opt || {};
     var b = document.createElement("button"); b.type = "button"; b.className = "ve" + (opt.sombre ? " ve-sombre" : "") + (opt.fin ? " ve-fin" : "");
     b.setAttribute("aria-label", (lib || "Écouter Élysée") + ", " + (duree || "") + " secondes");
-    b.innerHTML = '<img src="' + racine() + 'clone/assets/elysee-portrait-carre.jpg" alt=""><span><span class="ve-l">' + (lib || "Écouter Élysée") + '</span><small>' + (duree ? duree + " s · " : "") + 'vous pouvez couper à tout moment</small></span><span class="ve-i" aria-hidden="true">▶</span><span class="ve-b"></span>';
+    b.innerHTML = '<img loading="lazy" decoding="async" src="' + racine() + 'clone/assets/elysee-portrait-carre.jpg" alt=""><span><span class="ve-l">' + (lib || "Écouter Élysée") + '</span><small>' + (duree ? duree + " s · " : "") + 'vous pouvez couper à tout moment</small></span><span class="ve-i" aria-hidden="true">▶</span><span class="ve-b"></span>';
     var a = null;
     b.addEventListener("click", function (e) {
       e.preventDefault(); e.stopPropagation();
