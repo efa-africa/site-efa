@@ -238,7 +238,7 @@ def build(lundi):
         b.close()
     plan += ["=" * 70, "RENDEZ-VOUS FIXES : newsletter mardi 7 h (test unique sur l'adresse d'Élysée, puis validation) · EFA Community jeudi 19 h · EFA News dimanche 18 h.", ""]
     if manques: plan += ["IMAGES MANQUANTES (affiche typographique utilisée à la place) : " + ", ".join(manques)]
-    open(os.path.join(O, "00-PLAN-DE-LA-SEMAINE.txt"), "w", encoding="utf-8").write(typo_fr("\n".join(plan)))
+    open(os.path.join(O, "00-PLAN-DE-LA-SEMAINE.txt"), "w", encoding="utf-8-sig").write(typo_fr("\n".join(plan)))
     z = O + ".zip"
     with zipfile.ZipFile(z, "w", zipfile.ZIP_DEFLATED) as zf:
         for r, _, fs in os.walk(O):
