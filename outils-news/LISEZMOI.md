@@ -13,4 +13,5 @@ Source unique : `news/news-data.json`. Tout le reste est généré.
      Ajouter `type` : `primaire` (document de l'émetteur, de la banque centrale, de l'État, de l'institut statistique) ou `media` (information rapportée par la presse). Deux médias du même groupe ne font qu'une confirmation : le générateur le signale.
    - `verif` : une question de compréhension, `{q, choix: [3 réponses], bonne: indice, explication}`. Elle vérifie que le lecteur a compris une limite ou un mécanisme de l'article (pas une opinion).
 2. `python3 outils-news/build_news.py . AAAA-MM-JJ` : régénère news.html, news/<id>.html et le sitemap.
-3. `node outils-news/og.js .` puis relancer l'étape 2 : crée les images de partage manquantes.
+   Puis **obligatoirement** `python3 scripts/clone/habiller.py --news` : remet l'en-tête, le menu et le pied du site sur les pages EFA News (sans toucher au reste du site). Sans cette étape, les pages News perdent le menu du site.
+3. `node outils-news/og.js .` puis relancer l'étape 2 (build puis habiller --news) : crée les images de partage manquantes.

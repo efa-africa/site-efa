@@ -168,7 +168,7 @@ def regles_coquille():
 
 base_css = open('scripts/clone/habillage-base.css', encoding='utf8').read()
 signature = open(os.path.join(CLONE, 'efa-logo.css'), encoding='utf8').read().replace('url(', 'url(')
-open(os.path.join(CLONE, 'habillage.css'), 'w', encoding='utf8').write(base_css.replace('/*SHELL*/', regles_coquille()) + '\n/* Signature efa. (clone/efa-logo.css) */\n' + signature)
+if not NEWS_SEUL: open(os.path.join(CLONE, 'habillage.css'), 'w', encoding='utf8').write(base_css.replace('/*SHELL*/', regles_coquille()) + '\n/* Signature efa. (clone/efa-logo.css) */\n' + signature)
 import json
 base_js = open('scripts/clone/habillage-base.js', encoding='utf8').read()
 js = base_js.replace('/*PAGES*/[]', '[]')
