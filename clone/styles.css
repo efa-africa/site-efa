@@ -456,7 +456,7 @@ footer.efa-foot{background:#fff;border-top:1px solid #e6eef2}
 
 .a-hero{position:relative;min-height:min(860px,calc(100svh - 82px));isolation:isolate;background:#081c36;color:white;overflow:hidden;display:flex;align-items:center}
 .a-hero-image,.a-hero-shade{position:absolute;inset:0;z-index:-1}
-.a-hero-image{background:url('assets/aig-hero-2.webp') 80% 30% / cover no-repeat}
+.a-hero-image{background:url('assets/aig-hero-awa.webp') 80% 30% / cover no-repeat}
 .a-hero-shade{background:linear-gradient(90deg,rgba(2,16,34,.94) 0%,rgba(3,19,40,.85) 37%,rgba(3,19,40,.28) 73%,rgba(3,19,40,.12) 100%),linear-gradient(0deg,rgba(3,19,40,.35),transparent 45%)}
 .a-hero-inner{width:min(100% - 64px,1380px);margin:0 auto;padding:82px 0 102px}
 .a-eyebrow{font-size:11px;font-weight:900;letter-spacing:.23em;line-height:1.5}
