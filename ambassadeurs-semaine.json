@@ -1,24 +1,24 @@
 {
-  "semaine": "2026-11-03",
-  "label": "Semaine 0 · du 3 au 9 novembre",
-  "titre": "Faire connaissance et choisir son terrain",
-  "objectif": "Avant de partager EFA, on se met d’accord sur ce que chacun connaît, le temps qu’il peut donner et les personnes autour de lui qui ont une vraie question d’argent.",
+  "semaine": "2026-11-09",
+  "label": "Semaine 1 · du 9 au 15 novembre",
+  "titre": "Un premier point, un même outil",
+  "objectif": "Cette semaine, on se retrouve pour la première fois et chacun teste le même outil EFA sur une vraie question. On repart avec une charte courte, écrite ensemble.",
   "missions": [
     {
-      "t": "Un échange de 20 minutes avec Élysée",
-      "d": "Vos motivations, les sujets que vous connaissez bien, le temps que vous pouvez donner chaque semaine. Proposez deux créneaux dans le groupe."
+      "t": "Le premier point du cercle",
+      "d": "Indiquez dans le groupe deux créneaux où vous êtes libre 45 minutes cette semaine. Si nous n’avons pas encore eu notre échange de 20 minutes, il se fera ce jour-là."
     },
     {
-      "t": "Utiliser EFA pour une question à vous",
-      "d": "Choisissez une vraie question d’argent qui vous concerne et essayez l’outil qui y répond. Notez en une phrase ce qu’il vous a apporté.",
-      "lien": "generateur-de-projet.html",
-      "lien_titre": "Par exemple, EFA Déclic"
+      "t": "Un même outil, chacun son cas",
+      "d": "Prenez un problème concret, le vôtre ou celui d’un proche sans le nommer, et passez-le dans l’outil budget. Notez en une phrase ce qui vous a aidé et ce qui vous a bloqué.",
+      "lien": "construire-son-budget.html",
+      "lien_titre": "Maîtriser son salaire"
     },
     {
-      "t": "Penser à deux personnes",
-      "d": "Deux personnes de votre entourage qui ont une question d’argent en ce moment. Pas besoin de les contacter cette semaine : gardez-les en tête pour la semaine 1."
+      "t": "Une règle pour notre charte",
+      "d": "Proposez dans le groupe une seule règle que vous voulez pour le cercle : ce qu’on dit, ce qu’on ne promet jamais, comment on s’entraide. On les assemble au point."
     }
   ],
-  "mot": "Vous avez découvert EFA, vous l’avez adoptée, et vous en parlez déjà mieux que moi. Cette semaine, on prend le temps de se connaître. Le reste viendra.",
-  "point": "Le premier point du cercle est fixé cette semaine dans le groupe WhatsApp."
+  "mot": "Merci d’avoir dit oui. Cette semaine, je veux surtout vous écouter : ce que l’outil vous apporte, et ce qu’il faut encore corriger.",
+  "point": "Le point du cercle est fixé dans le groupe"
 }
