@@ -37,6 +37,10 @@ EXCLUES = FABRIQUEES | {'accueil-v1.html'}
 
 # ---------------------------------------------------------------- pages à habiller
 pages = sorted(f for f in glob.glob('*.html') if f not in EXCLUES) + sorted(glob.glob('news/*.html'))
+# --news : n'habille que EFA News (news.html et news/*.html), sans toucher au reste du site (utilisé après build_news.py)
+NEWS_SEUL = '--news' in sys.argv
+if NEWS_SEUL:
+    pages = ['news.html'] + sorted(glob.glob('news/*.html'))
 modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
@@ -262,7 +266,7 @@ def tete_v1():
                         r'|<link rel="(?:canonical|apple-touch-icon)"[^>]*>|<script type="application/ld\+json">.*?</script>', h, re.S)
     return '\n'.join(garder)
 gc = '<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
-for modele, (sortie, indexee) in MODELES.items():
+for modele, (sortie, indexee) in ({} if NEWS_SEUL else MODELES).items():
     s = open(os.path.join(CLONE, modele), encoding='utf8').read()
     s = modele_vers_racine(s, garder_dieses=True)
     if 'efa-pourvous' not in s: s = s.replace('<footer class="efa-foot">', BANDEAU + '<footer class="efa-foot">', 1)
@@ -293,7 +297,7 @@ def renvoi(cible, profondeur):
             '<p><a href="%s%s">Éducation Financière Afrique</a></p></body></html>\n') % (
         SITE, cible, retour, cible, retour, cible, retour, cible)
 renvois = 0
-for page in pages + sorted(FABRIQUEES):
+for page in ([] if NEWS_SEUL else pages + sorted(FABRIQUEES)):
     p = os.path.join(CLONE, page)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     cible = '' if page == 'index.html' else page

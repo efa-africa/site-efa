@@ -9,6 +9,353 @@
  },
  "articles": [
   {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition de rattrapage du 2026-11-09",
+   "publication": "2026-11-09",
+   "maj": "2026-11-09",
+   "id": "2026-11-09-bceao-laboratoire-fintech-30-novembre",
+   "categorie": "banques-centrales",
+   "rubrique": "Banque centrale",
+   "titre": "La BCEAO teste les nouveaux services financiers : candidatures jusqu'au 30 novembre",
+   "resume": "Le « laboratoire d'innovation financière » de la BCEAO choisit sa première promotion de fintechs ; les projets de crypto-actifs en sont exclus.",
+   "pays": [
+    "Bénin",
+    "Burkina Faso",
+    "Côte d'Ivoire",
+    "Guinée-Bissau",
+    "Mali",
+    "Niger",
+    "Sénégal",
+    "Togo"
+   ],
+   "entites": [
+    "BCEAO",
+    "LIF-BCEAO"
+   ],
+   "notions": [
+    "fintech",
+    "bac à sable réglementaire",
+    "crypto-actifs",
+    "protection du client"
+   ],
+   "evenement": "2026-10-14",
+   "evenement_label": "appel du 14 octobre 2026, clôture le 30 novembre",
+   "fait": "La BCEAO a ouvert le 14 octobre 2026 l'appel à candidatures de la première promotion de son Laboratoire d'innovation financière (LIF-BCEAO). Fintechs et établissements agréés de l'UEMOA peuvent y tester un nouveau service sous la surveillance de la banque centrale, jusqu'au 30 novembre 2026. Les projets liés aux crypto-actifs ne sont pas concernés.",
+   "chiffres": [
+    {
+     "valeur": "30 nov.",
+     "libelle": "date limite de candidature",
+     "periode": "2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "3 à 6 mois",
+     "libelle": "durée initiale des tests, selon la presse",
+     "periode": "première promotion",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "0",
+     "libelle": "projet de crypto-actifs admis dans cette promotion",
+     "periode": "appel du 14 oct. 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Une fintech propose un service nouveau (paiement, crédit, épargne numérique, tontine en ligne…) et décrit sa clientèle test, ses plafonds et ses risques.",
+    "La BCEAO l'autorise à le tester sur un petit nombre de clients, pendant quelques mois, avec certaines règles assouplies mais sous surveillance.",
+    "À la fin, un test réussi donne une attestation de participation : ce n'est pas un agrément, il faut encore obtenir l'autorisation avant de vendre au grand public."
+   ],
+   "mot": {
+    "terme": "Bac à sable réglementaire",
+    "definition": "Un cadre où la banque centrale laisse tester un service financier nouveau, à petite échelle et sous surveillance, avant de décider s'il peut être proposé à tous."
+   },
+   "change": "Pour vous, client : un service en test doit vous dire qu'il est expérimental et obtenir votre accord sur les risques, selon la presse qui a lu le guide du candidat. Une application qui se dit « testée par la BCEAO » n'est pas pour autant agréée. Et aucune offre de crypto-actifs ne fait partie de ce laboratoire.",
+   "retenir": "Testé sous surveillance ne veut pas dire agréé : avant de confier votre argent, demandez l'agrément.",
+   "limites": [
+    "Le nombre de projets retenus et la date de début des tests ne sont pas encore publiés.",
+    "Les conditions détaillées (clients informés, indemnisation des pertes) viennent du guide du candidat tel que rapporté par la presse.",
+    "Le laboratoire ne dit rien d'un futur cadre pour les crypto-actifs dans l'UEMOA, qui reste sans réglementation."
+   ],
+   "question": "L'application que vous utilisez pour épargner ou emprunter est-elle agréée, et par qui ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Où garder sa réserve ?",
+     "description": "Comparer les endroits sûrs pour votre argent de côté.",
+     "url": "ou-garder-sa-reserve.html#calcul"
+    },
+    {
+     "type": "Outil",
+     "titre": "Budget et mobile money",
+     "description": "Suivre ce que vos applications vous coûtent chaque mois.",
+     "url": "budget-mobile-money.html"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Appel à candidatures relatif à la première cohorte du Laboratoire d'innovation financière",
+     "organisme": "BCEAO",
+     "date": "14 oct. 2026",
+     "url": "https://www.bceao.int/fr/appel-candidatures-relatif-la-premiere-cohorte-du-laboratoire-dinnovation",
+     "consulte_le": "2026-11-09",
+     "type": "primaire"
+    },
+    {
+     "titre": "La BCEAO ouvre ses tests aux fintechs, les candidatures attendues avant le 30 novembre",
+     "organisme": "Bénin Web TV",
+     "date": "16 oct. 2026",
+     "url": "https://beninwebtv.com/bceao-fintechs-laboratoire-candidatures-30-novembre-2026/",
+     "consulte_le": "2026-11-09",
+     "type": "media"
+    },
+    {
+     "titre": "Crypto-actifs : exclus du bac à sable de la BCEAO",
+     "organisme": "Socialnetlink",
+     "date": "2 nov. 2026",
+     "url": "https://www.socialnetlink.org/2026/11/02/crypto-actifs-bceao-bac-a-sable-abcc-2026/",
+     "consulte_le": "2026-11-09",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "Une application vous dit qu'elle a passé le laboratoire de la BCEAO. Qu'est-ce que cela signifie ?",
+    "choix": [
+     "Elle est agréée et peut tout proposer au public",
+     "Elle a été testée sous surveillance, mais doit encore obtenir son autorisation",
+     "Elle est garantie par la BCEAO"
+    ],
+    "bonne": 1,
+    "explication": "Un test réussi donne une attestation de participation, pas un agrément : l'autorisation reste à obtenir avant de vendre au grand public."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition de rattrapage du 2026-11-09",
+   "publication": "2026-11-09",
+   "maj": "2026-11-09",
+   "id": "2026-11-09-cote-divoire-leve-44-milliards-titres-publics",
+   "categorie": "finance",
+   "rubrique": "Titres publics",
+   "titre": "La Côte d'Ivoire emprunte 44 milliards : jusqu'à 7,17 % sur sept ans",
+   "resume": "Le 3 novembre, l'État a retenu 44,2 milliards de FCFA sur 129 milliards proposés par les investisseurs ; plus la durée est longue, plus il paie cher.",
+   "pays": [
+    "Côte d'Ivoire"
+   ],
+   "entites": [
+    "Trésor public de Côte d'Ivoire",
+    "UMOA-Titres"
+   ],
+   "notions": [
+    "taux d'intérêt",
+    "rendement",
+    "durée",
+    "obligation"
+   ],
+   "evenement": "2026-11-03",
+   "evenement_label": "3 novembre 2026",
+   "fait": "Le 3 novembre 2026, le Trésor ivoirien a mis aux enchères 80 milliards de FCFA de bons à 364 jours et d'obligations à 3, 5 et 7 ans. Les investisseurs ont proposé 129,264 milliards ; l'État n'en a retenu que 44,212 milliards. Le rendement moyen va de 3,85 % pour les bons à un an à 7,17 % pour les obligations à sept ans.",
+   "chiffres": [
+    {
+     "valeur": "44,2 Md F",
+     "libelle": "montant retenu sur 80 milliards demandés",
+     "periode": "enchère du 3 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "3,85 %",
+     "libelle": "rendement moyen des bons à 364 jours",
+     "periode": "3 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "7,17 %",
+     "libelle": "rendement moyen des obligations à 7 ans",
+     "periode": "3 nov. 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Le Trésor annonce combien il veut emprunter et sur quelles durées ; banques et investisseurs proposent des montants et des taux.",
+    "L'État ne retient que les offres aux taux qu'il juge acceptables : ici un peu plus d'un tiers des 129 milliards proposés.",
+    "Plus l'argent est prêté longtemps, plus le prêteur demande d'intérêts : 3,85 % sur un an, 7,17 % sur sept ans."
+   ],
+   "mot": {
+    "terme": "Rendement",
+    "definition": "Ce que rapporte réellement un titre par an, selon le prix auquel on l'a acheté ; il peut différer du taux du coupon écrit sur le titre."
+   },
+   "change": "Ces enchères sont réservées aux banques et grands investisseurs, mais elles donnent le prix de l'argent dans le pays. Quand l'État paie 7 % sur sept ans, un dépôt à terme bien négocié ou un emprunt d'État ouvert au public peuvent servir de point de comparaison. Méfiance aussi : une offre qui promet bien plus, sans risque, n'est pas crédible.",
+   "retenir": "Plus on prête longtemps, plus on demande d'intérêts : c'est le prix du temps.",
+   "limites": [
+    "Ces titres ne sont pas accessibles directement aux particuliers : l'enchère passe par les banques et intermédiaires agréés.",
+    "Les rendements cités sont des moyennes pondérées des offres retenues, pas un taux garanti pour un épargnant.",
+    "Les chiffres viennent de la presse, à partir des résultats de l'enchère publiés par UMOA-Titres."
+   ],
+   "question": "Votre épargne de côté rapporte-t-elle plus ou moins que les 3,85 % que l'État paie sur un an ?",
+   "actions": [
+    {
+     "type": "Calcul",
+     "titre": "Dépôt à terme ou emprunt d'État",
+     "description": "Calculer ce que rapporterait votre épargne, après frais.",
+     "url": "dat-emprunts-etat.html#calcul"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Les obligations",
+     "description": "Comprendre coupon, durée et risque avant d'acheter.",
+     "url": "bourse-marche.html#C5"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "La Côte d'Ivoire lève 44,212 milliards de FCFA sur le marché financier de l'UEMOA",
+     "organisme": "Le Journal de l'Économie Sénégalaise (Lejecos)",
+     "date": "4 nov. 2026",
+     "url": "https://www.lejecos.com/La-Cote-d-Ivoire-leve-44212-milliards-de-FCFA-sur-le-marche-financier-de-l-UEMOA_a31777.html",
+     "consulte_le": "2026-11-09",
+     "type": "media"
+    },
+    {
+     "titre": "La Côte d'Ivoire lève 44,212 milliards de FCFA sur le marché financier de l'UEMOA (reprise)",
+     "organisme": "AllAfrica",
+     "date": "4 nov. 2026",
+     "url": "https://fr.allafrica.com/stories/202611040559.html",
+     "consulte_le": "2026-11-09",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "Le 3 novembre, pourquoi l'obligation à 7 ans rapporte-t-elle plus que le bon à 1 an ?",
+    "choix": [
+     "Parce que l'État préfère les investisseurs à long terme",
+     "Parce que prêter plus longtemps est plus risqué et immobilise l'argent : le prêteur demande plus",
+     "Parce que les obligations sont garanties par la BCEAO"
+    ],
+    "bonne": 1,
+    "explication": "Le rendement monte avec la durée : immobiliser son argent sept ans, avec plus d'incertitude, se paie par un taux plus élevé (7,17 % contre 3,85 %)."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition de rattrapage du 2026-11-09",
+   "publication": "2026-11-09",
+   "maj": "2026-11-09",
+   "id": "2026-11-09-brvm-chute-5-novembre-volatilite",
+   "categorie": "brvm",
+   "rubrique": "La Bourse (BRVM)",
+   "titre": "La Bourse (BRVM) perd 1,57 % en une séance, après 50 % depuis janvier",
+   "resume": "Le 5 novembre, l'indice composite est tombé de 528 à 520 points : 325 milliards de FCFA de capitalisation effacés en un jour.",
+   "pays": [
+    "Côte d'Ivoire",
+    "Sénégal",
+    "Bénin",
+    "Burkina Faso",
+    "Mali",
+    "Niger",
+    "Togo",
+    "Guinée-Bissau"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "volatilité",
+    "capitalisation",
+    "horizon de placement"
+   ],
+   "evenement": "2026-11-05",
+   "evenement_label": "5 novembre 2026",
+   "fait": "Le 5 novembre 2026, l'indice BRVM Composite a reculé de 1,57 %, de 528,49 à 520,20 points. La capitalisation des actions a perdu 325 milliards de FCFA en une séance, à 20 399 milliards. Depuis le 1er janvier, l'indice reste pourtant en hausse d'environ 50 %.",
+   "chiffres": [
+    {
+     "valeur": "−1,57 %",
+     "libelle": "BRVM Composite sur la séance",
+     "periode": "5 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "−325 Md F",
+     "libelle": "capitalisation des actions perdue en un jour",
+     "periode": "5 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "≈ +50 %",
+     "libelle": "hausse de l'indice depuis le 1er janvier",
+     "periode": "au 6 nov. 2026, données EFA Marchés",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Un indice suit la valeur d'un panier d'actions : quand les grandes sociétés baissent, il baisse.",
+    "Après une forte hausse, certains investisseurs vendent pour encaisser leurs gains : les prix reculent.",
+    "Sur une journée, le mouvement compte peu ; c'est l'horizon de placement (plusieurs années) qui décide."
+   ],
+   "mot": {
+    "terme": "Volatilité",
+    "definition": "L'ampleur des variations d'un prix, à la hausse comme à la baisse. Plus elle est forte, plus la valeur de votre placement peut bouger d'un jour à l'autre."
+   },
+   "change": "Pour qui place en Bourse, une séance à −1,57 % rappelle que la valeur peut baisser à tout moment, même après une très bonne année. L'argent dont vous aurez besoin bientôt n'a rien à faire en actions. Ce qui compte : la durée que vous pouvez attendre et ce que vous pouvez perdre sans difficulté.",
+   "retenir": "Une Bourse qui monte de 50 % peut aussi reculer : n'y placez que l'argent qui peut attendre.",
+   "limites": [
+    "Une séance ne dit rien de la tendance des semaines suivantes.",
+    "Les variations par société citées par la presse ne sont pas reprises ici.",
+    "EFA ne recommande aucun titre ; ce rappel est pédagogique."
+   ],
+   "question": "L'argent que vous placeriez en Bourse pourrait-il attendre au moins cinq ans sans que vous en ayez besoin ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Le risque en Bourse",
+     "description": "Comprendre pourquoi les cours montent et descendent.",
+     "url": "bourse-marche.html#C2"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Avant le premier ordre",
+     "description": "Les questions à se poser avant d'investir.",
+     "url": "bourse-pro.html#B2"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "BRVM : plongeon des indices phares au terme de la journée du 5 novembre 2026",
+     "organisme": "Le Journal de l'Économie Sénégalaise (Lejecos)",
+     "date": "5 nov. 2026",
+     "url": "https://www.lejecos.com/BRVM-Plongeon-des-indices-phares-au-terme-de-la-journee-du-5-novembre-2026_a31790.html",
+     "consulte_le": "2026-11-09",
+     "type": "media"
+    },
+    {
+     "titre": "Bulletins officiels de la cote",
+     "organisme": "BRVM",
+     "date": "nov. 2026",
+     "url": "https://www.brvm.org/fr/bulletins-officiels-de-la-cote",
+     "consulte_le": "2026-11-09",
+     "type": "primaire"
+    }
+   ],
+   "verif": {
+    "q": "L'indice a pris environ 50 % depuis janvier puis perd 1,57 % en un jour. Que faut-il en retenir ?",
+    "choix": [
+     "La hausse est terminée, il faut tout vendre",
+     "Une forte hausse n'empêche pas les baisses : seul l'argent qui peut attendre va en Bourse",
+     "Une baisse d'un jour annule les gains de l'année"
+    ],
+    "bonne": 1,
+    "explication": "Les cours varient chaque jour ; une baisse de 1,57 % est faible au regard de la hausse annuelle, mais elle rappelle que la Bourse convient à un horizon long."
+   }
+  },
+  {
    "id": "2026-11-03-uemoa-transferts-mobile-money-gratuits",
    "statut": "publié",
    "categorie": "paiements",

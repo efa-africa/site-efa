@@ -267,7 +267,7 @@ def tail(pre):
     return f"""{reloc(footer, pre)}
 {JS_MENU}
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="{pre}efa-appli.js?v=20261102z" defer></script>
+<script src="{pre}efa-appli.js?v=20261105a" defer></script>
 <script src="/clone/ambassadeur.js?v=20261103a" defer></script>
 <script src="/clone/mesure.js?v=20261104a" defer></script>
 </body>
@@ -333,7 +333,7 @@ def page_article(a):
       <div><dt>Date du fait</dt><dd>{typo(a['evenement_label'])}</dd></div>
       <div><dt>Publié par EFA</dt><dd><time datetime="{a['publication']}">{date_fr(a['publication'])}</time></dd></div>
       {maj}
-      <div><dt>Lecture</dt><dd>{lecture(a)} min</dd></div>
+      <div><dt>Lecture</dt><dd>Dès {1 if lecture(a) <= 1 else 2} min</dd></div>
     </dl>
     <div class="partage">
       <button type="button" class="bt" data-partager>Partager</button>
