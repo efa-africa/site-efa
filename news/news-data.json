@@ -13,6 +13,215 @@
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
+   "origine": "édition de rattrapage du 2026-11-10",
+   "publication": "2026-11-10",
+   "maj": "2026-11-10",
+   "id": "2026-11-10-burkina-leve-30-milliards-personne-pour-sept-ans",
+   "categorie": "finance",
+   "rubrique": "Titres publics",
+   "titre": "Burkina Faso : 30 milliards levés, mais personne pour prêter sept ans",
+   "resume": "Le 4 novembre, le Trésor burkinabè a obtenu les 30 milliards de FCFA demandés, presque tous sur 3 et 5 ans : l'obligation à 7 ans n'a reçu qu'une offre et n'a rien levé.",
+   "pays": [
+    "Burkina Faso"
+   ],
+   "entites": [
+    "Trésor public du Burkina Faso",
+    "UMOA-Titres"
+   ],
+   "notions": [
+    "taux de couverture",
+    "durée",
+    "rendement",
+    "obligation"
+   ],
+   "evenement": "2026-11-04",
+   "evenement_label": "4 novembre 2026",
+   "fait": "Le 4 novembre 2026, le Burkina Faso a mis aux enchères 30 milliards de FCFA de bons à un an et d'obligations à 3, 5 et 7 ans. Les investisseurs ont proposé environ 50,3 milliards et l'État a retenu les 30 milliards, dont 20,3 milliards sur 3 ans. L'obligation à 7 ans n'a reçu qu'une offre de 500 millions, non retenue.",
+   "chiffres": [
+    {
+     "valeur": "30 Md F",
+     "libelle": "montant levé, égal au montant demandé",
+     "periode": "enchère du 4 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "≈ 168 %",
+     "libelle": "taux de couverture : 50,3 milliards proposés pour 30 demandés",
+     "periode": "4 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "6,93 %",
+     "libelle": "rendement moyen de l'obligation à 3 ans (3,59 % sur un an)",
+     "periode": "4 nov. 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Le Trésor annonce un montant et plusieurs durées ; les investisseurs choisissent la durée sur laquelle ils acceptent de prêter.",
+    "Ici, ils se sont bousculés sur 3 ans (24,8 milliards proposés) et ont boudé 7 ans (une seule offre).",
+    "Le total est couvert, mais la répartition montre jusqu'où les prêteurs sont prêts à s'engager dans le temps."
+   ],
+   "mot": {
+    "terme": "Taux de couverture",
+    "definition": "Montant proposé par les investisseurs divisé par le montant demandé : au-dessus de 100 %, la demande dépasse l'offre de titres."
+   },
+   "change": "Une enchère réussie au total peut cacher une limite : les prêteurs acceptent 3 ou 5 ans, pas 7. Pour un épargnant, c'est la même logique : avant de bloquer son argent longtemps, on regarde ce que l'on gagne en plus et ce que l'on risque. Le rendement d'un an (3,59 %) donne aussi un repère pour juger une offre d'épargne.",
+   "retenir": "Une dette bien couverte au total peut ne trouver personne sur le long terme : la durée a un prix, et parfois pas de preneur.",
+   "limites": [
+    "Le taux de couverture et le total proposé sont calculés par EFA à partir des chiffres publiés par UMOA-Titres.",
+    "Ces enchères sont réservées aux banques et grands investisseurs ; un particulier n'y accède pas directement.",
+    "Une seule enchère ne suffit pas à juger l'appétit des investisseurs pour le Burkina Faso sur le long terme."
+   ],
+   "question": "Combien de temps pourriez-vous bloquer votre épargne sans risquer d'en avoir besoin avant ?",
+   "actions": [
+    {
+     "type": "Calcul",
+     "titre": "Dépôt à terme ou emprunt d'État",
+     "description": "Comparer ce que rapporte votre épargne selon la durée.",
+     "url": "dat-emprunts-etat.html#calcul"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Les obligations",
+     "description": "Coupon, durée et risque, avant d'acheter.",
+     "url": "bourse-marche.html#C5"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Émission simultanée de Bons et d'Obligations du Trésor du Burkina du 04.11.2026",
+     "organisme": "UMOA-Titres",
+     "date": "4 nov. 2026",
+     "url": "https://www.umoatitres.org/fr/emission/emission-simultanee-de-bons-et-dobligations-du-tresor-du-burkina-du-04-11-2026/",
+     "consulte_le": "2026-11-10",
+     "type": "primaire"
+    }
+   ],
+   "verif": {
+    "q": "Que signifie un taux de couverture d'environ 168 % ?",
+    "choix": [
+     "L'État a emprunté 168 % de ce qu'il voulait",
+     "Les investisseurs ont proposé environ 1,7 fois le montant demandé",
+     "Le rendement moyen est de 168 %"
+    ],
+    "bonne": 1,
+    "explication": "Le taux de couverture compare les offres au montant demandé : 50,3 milliards proposés pour 30 milliards, soit environ 1,7 fois."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition de rattrapage du 2026-11-10",
+   "publication": "2026-11-10",
+   "maj": "2026-11-10",
+   "id": "2026-11-10-brvm-rebond-9-novembre-indices-moyennes",
+   "categorie": "brvm",
+   "rubrique": "BRVM",
+   "titre": "BRVM : le Composite remonte à 521,88 points, mais pas toutes les actions",
+   "resume": "Le 9 novembre, les grands indices de la BRVM ont gagné un peu plus de 0,2 % alors que l'indice BRVM Principal reculait de 0,55 % et que plusieurs titres perdaient 5 à 7 %.",
+   "pays": [
+    "UEMOA",
+    "Côte d'Ivoire"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "indice boursier",
+    "capitalisation",
+    "volatilité"
+   ],
+   "evenement": "2026-11-09",
+   "evenement_label": "9 novembre 2026",
+   "fait": "Le lundi 9 novembre 2026, le BRVM Composite a clôturé à 521,88 points (+0,22 %) et le BRVM 30 à 252,36 points (+0,23 %). Dans le même temps, le BRVM Principal a reculé de 0,55 % et cinq titres ont perdu entre 4,8 % et 7,3 %. Les échanges sont tombés à 1,588 milliard de FCFA, contre 3,340 milliards le 6 novembre.",
+   "chiffres": [
+    {
+     "valeur": "+0,22 %",
+     "libelle": "BRVM Composite, à 521,88 points",
+     "periode": "séance du 9 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "−0,55 %",
+     "libelle": "BRVM Principal, à 363,20 points",
+     "periode": "séance du 9 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "20 466 Md F",
+     "libelle": "capitalisation du marché des actions",
+     "periode": "9 nov. 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Un indice résume le marché en pondérant les actions, souvent selon leur taille.",
+    "Si quelques grosses sociétés montent, l'indice monte, même si beaucoup de petites baissent.",
+    "D'où une séance « contrastée » : indices en hausse, mais des titres en baisse de 5 à 7 %."
+   ],
+   "mot": {
+    "terme": "Indice boursier",
+    "definition": "Un chiffre qui résume l'évolution d'un groupe d'actions ; il donne une tendance, pas le sort de chaque action."
+   },
+   "change": "Un indice en hausse ne dit pas que votre action monte. Si vous suivez la BRVM, regardez la ligne de vos titres, pas seulement le Composite. Une baisse de 7 % en une séance sur un titre rappelle aussi qu'on n'investit en Bourse que l'argent dont on n'a pas besoin à court terme.",
+   "retenir": "L'indice donne la météo du marché, pas celle de votre action.",
+   "limites": [
+    "Une séance isolée ne dit rien de la tendance de fond.",
+    "Les volumes du jour sont faibles : quelques ordres suffisent à faire bouger un titre peu échangé.",
+    "Chiffres tirés de la presse sur la base du bulletin de la BRVM."
+   ],
+   "question": "Savez-vous ce que contient l'indice que vous regardez, et vos titres en font-ils partie ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Lire un indice",
+     "description": "Comprendre ce que mesure le BRVM Composite.",
+     "url": "bourse-marche.html#C2"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Gérer la volatilité",
+     "description": "Les réflexes avant une baisse brutale.",
+     "url": "bourse-pro.html#B4"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "BRVM : Situation contrastée des activités du marché ce lundi 9 novembre 2026",
+     "organisme": "Le Journal de l'Économie Sénégalaise (Lejecos)",
+     "date": "9 nov. 2026",
+     "url": "https://www.lejecos.com/BRVM-Situation-contrastee-des-activites-du-marche-ce-lundi-9-novembre-2026_a31816.html",
+     "consulte_le": "2026-11-10",
+     "type": "media"
+    },
+    {
+     "titre": "Bulletins officiels de la cote",
+     "organisme": "BRVM",
+     "date": "9 nov. 2026",
+     "url": "https://www.brvm.org/fr/bulletins-officiels-de-la-cote",
+     "consulte_le": "2026-11-10",
+     "type": "primaire"
+    }
+   ],
+   "verif": {
+    "q": "Le Composite monte de 0,22 % : qu'en déduire pour une action précise ?",
+    "choix": [
+     "Elle a forcément monté",
+     "Rien de certain : elle a pu baisser",
+     "Elle a monté d'au moins 0,22 %"
+    ],
+    "bonne": 1,
+    "explication": "L'indice est une moyenne pondérée : ce jour-là, il montait alors que plusieurs titres perdaient 5 à 7 %."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
    "origine": "édition de rattrapage du 2026-11-09",
    "publication": "2026-11-09",
    "maj": "2026-11-09",
