@@ -48,7 +48,7 @@ html[data-clone] .au-tete{display:grid;grid-template-columns:1fr 1fr;gap:12px 50
 html[data-clone] .au-tete .au-k{grid-column:1/-1}
 html[data-clone] .au-tete h2{margin:0;font:700 clamp(32px,3.8vw,50px)/1.15 Baskerville,"Libre Baskerville",Georgia,serif!important;letter-spacing:-.03em;color:#071d38!important}
 html[data-clone] .au-tete>p:last-child{margin:0;font-size:19px;line-height:1.5;color:#536174!important}
-html[data-clone] .au-metiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+html[data-clone] .au-metiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px}
 html[data-clone] .au-metiers article{display:flex;flex-direction:column;min-height:240px;padding:30px;background:#fff;border-radius:18px;border-top:4px solid #0b63b0;box-shadow:0 14px 34px rgba(7,29,56,.06)}
 html[data-clone] .au-metiers span{font:800 13px "Source Sans 3",sans-serif;letter-spacing:.1em;color:#da3c1b}
 html[data-clone] .au-metiers h3{margin:12px 0 0;font:700 26px/1.2 Baskerville,"Libre Baskerville",Georgia,serif!important;color:#071d38!important}
@@ -59,6 +59,7 @@ html[data-clone] .au-form b{margin-right:10px;color:#071d38;font-size:12px;lette
 html[data-clone] .au-coda{margin:30px 0 0;max-width:840px;font:700 clamp(20px,2.2vw,27px)/1.45 Baskerville,"Libre Baskerville",Georgia,serif;color:#071d38!important}
 html[data-clone] .au-coda span{color:#0b63b0}
 
+@media (max-width:1100px) and (min-width:821px){html[data-clone] .au-metiers{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:820px){
   html[data-clone] .au-perso{grid-template-columns:1fr}
   html[data-clone] .au-portrait{justify-self:start;width:min(100%,360px)}
