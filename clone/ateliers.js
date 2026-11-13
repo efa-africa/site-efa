@@ -5,6 +5,11 @@
   function lire() { try { return JSON.parse(localStorage.getItem(CLE) || '{}') || {}; } catch (e) { return {}; } }
   function ecrire(o) { try { localStorage.setItem(CLE, JSON.stringify(o)); } catch (e) {} }
   var etat = lire(); etat.ok = etat.ok || {};
+  /* efa. abonnement : une formule active ouvre les ateliers du catalogue ; à son terme, ces ouvertures se referment. */
+  try { var fo = JSON.parse(localStorage.getItem('efa_formule') || 'null'), foOk = fo && fo.f && new Date() <= new Date(fo.fin + 'T23:59:59');
+    Object.keys(etat.ok).forEach(function (k) { if (etat.ok[k] === 'formule' && !(foOk && fo.f !== 'essentiel')) delete etat.ok[k]; });
+    if (foOk && fo.f !== 'essentiel') D.liste.forEach(function (x) { if (!etat.ok[x.id]) etat.ok[x.id] = 'formule'; });
+    ecrire(etat); } catch (x) {}
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function bouton(a, ok) {
     if (ok) return 'Accès débloqué ✓';
