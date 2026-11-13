@@ -1,7 +1,7 @@
 /* EFA · Verrou des ateliers payants (13 nov. 2026)
    Une page d'atelier payant s'ouvre si l'une de ces conditions est remplie :
      - l'atelier a été ouvert sur cet appareil (crédits, code promo EFA-…) : efa_ateliers_v1.ok[id] ;
-     - une formule efa. abonnement active : Intégral, Cercle, Privilège = tous ; Essentiel = l'atelier choisi ;
+     - une formule efa. abonnement active : Intégral, Proximité, Privilège = tous ; Essentiel = l'atelier choisi ;
      - un accès équipe (EFAT-…) : tous ; un Pass Étudiant (EFAE-…) : tous sauf les ateliers avec Élysée Johnson.
    Sinon le contenu est masqué et la page propose : les crédits (3 offerts avec l'email), ou efa. abonnement.
    Les ateliers gratuits ne chargent pas ce fichier. */
@@ -136,7 +136,7 @@
     var bc = document.getElementById('v-choisir');
     if (bc) bc.addEventListener('click', function () {
       bc.disabled = true;
-      (window.EFA_FORMULE ? Promise.resolve() : charger('efa-formule.js?v=20261113c')).then(function () { return window.EFA_FORMULE.choisir(fichier); })
+      (window.EFA_FORMULE ? Promise.resolve() : charger('efa-formule.js?v=20261113e')).then(function () { return window.EFA_FORMULE.choisir(fichier); })
         .then(function (o) { if (o && o.at === fichier) ouvrir(); else { bc.disabled = false; erreur('Le choix n’a pas été enregistré. Réessayez.'); } },
           function (t) { bc.disabled = false; erreur(typeof t === 'string' ? t : 'Le choix n’a pas été enregistré. Vérifiez votre connexion et réessayez.'); });
     });
@@ -162,7 +162,7 @@
   function verifierFormule() {
     var o = formule(); if (!o || !o.j || dejaOuvert()) return;
     pret(function () {
-      charger('efa-formule.js?v=20261113c').then(function () { return window.EFA_FORMULE.rafraichir(); }).then(function () { if (!parFormule() && !dejaOuvert()) location.reload(); }, function () {});
+      charger('efa-formule.js?v=20261113e').then(function () { return window.EFA_FORMULE.rafraichir(); }).then(function () { if (!parFormule() && !dejaOuvert()) location.reload(); }, function () {});
     });
   }
 })();

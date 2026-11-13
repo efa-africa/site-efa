@@ -53,7 +53,7 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 <h2>Créer un accès</h2>
 <form id="f-creer" class="carte" style="padding:0">
 <div class="deux"><label>Prénom<input name="prenom" required maxlength="60"></label><label>Nom<input name="nom" required maxlength="60"></label></div>
-<div class="deux"><label>Formule<select name="formule"><option value="essentiel">Essentiel · 10 000 F</option><option value="integral">Intégral · 30 000 F</option><option value="cercle">Cercle · 50 000 F</option><option value="privilege">Privilège · 100 000 F</option></select></label>
+<div class="deux"><label>Formule<select name="formule"><option value="essentiel">Essentiel · 10 000 F</option><option value="integral">Intégral · 30 000 F</option><option value="cercle">Proximité · 50 000 F</option><option value="privilege">Privilège · 100 000 F</option></select></label>
 <label>Durée, en jours<input name="jours" type="number" inputmode="numeric" min="1" max="400" value="30" required></label></div>
 <label>Numéro ou adresse de la personne (facultatif)<input name="contact" maxlength="120"></label>
 <label>Note (facultatif) : payé par, référence du paiement…<input name="note" maxlength="300"></label>
@@ -72,7 +72,7 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 <script>
 (function () {
   var API = 'https://efa-abonnement.elysees-johnson.workers.dev', CLE = 'efa_abo_admin';
-  var NOMS = { essentiel: 'Essentiel', integral: 'Intégral', cercle: 'Cercle', privilege: 'Privilège' };
+  var NOMS = { essentiel: 'Essentiel', integral: 'Intégral', cercle: 'Proximité', privilege: 'Privilège' };
   var $ = function (i) { return document.getElementById(i); };
   function cle() { try { return sessionStorage.getItem(CLE) || ''; } catch (e) { return cle.m || ''; } }
   function garder(v) { cle.m = v; try { if (v) sessionStorage.setItem(CLE, v); else sessionStorage.removeItem(CLE); } catch (e) {} }
