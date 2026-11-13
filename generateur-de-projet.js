@@ -170,7 +170,7 @@ function imagePartage(x){var c=document.createElement("canvas");c.width=1080;c.h
   g.fillStyle="#DA3C1B";g.beginPath();if(g.roundRect)g.roundRect(90,1610,900,170,24);else g.rect(90,1610,900,170);g.fill();
   g.fillStyle="#fff";g.font='800 50px "Source Sans 3",system-ui,sans-serif';g.fillText("Et toi, que pourrais-tu lancer ?",130,1690);g.font='600 38px "Source Sans 3",system-ui,sans-serif';g.fillText("efa.africa/declic · EFA Déclic",130,1748);
   return c;}
-function partager(id){var x=idee(id);if(!x)return;var url="https://efa.africa/generateur-de-projet.html?src=partage";
+function partager(id){var x=idee(id);if(!x)return;var url="https://efa.africa/generateur-de-projet.html?src=partage&idee="+encodeURIComponent(id);
   var txt=(etat.libre?"":"Avec "+FC(etat.budget).replace(/ /g," ")+", ")+"je pourrais lancer : "+x[1]+".\nMon premier test : "+x[9]+"\n\nEt toi, que pourrais-tu lancer ?";
   modale('<span class="sur">Partager cette idée</span><h2>'+esc(x[1])+'</h2><p class="md-note">Seule cette idée est partagée, avec votre budget et le premier test. Rien d’autre.</p><div class="pt-ap"><img loading="lazy" decoding="async" id="pt-img" alt="Aperçu de l’image à partager"></div><div class="md-act"><button type="button" class="bouton" id="pt-go">Partager</button><a class="bouton pt-wa" id="pt-wa" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(txt+"\n"+url)+'">Envoyer sur WhatsApp</a><button type="button" class="bouton second" id="pt-dl">Télécharger l’image (Story)</button><button type="button" class="bouton second" id="pt-cp">Copier le lien</button></div>');
   var pret=(document.fonts&&document.fonts.load)?Promise.all([document.fonts.load('700 86px "Libre Baskerville"'),document.fonts.load('800 50px "Source Sans 3"'),document.fonts.load('400 46px "Source Sans 3"')]).catch(function(){}):Promise.resolve();
@@ -290,4 +290,6 @@ function realisme(){var box=$("realisme"),i=$("vise");if(!box||!i)return;
   box.className="realisme"+(al?" alerte":"");box.innerHTML=txt+"<small>Repère de calcul, pas un conseil en placement. Les pistes ci-dessous ne promettent aucun revenu.</small>";box.hidden=false;}
 (function(){var i=$("vise");if(!i)return;i.addEventListener("input",function(){var d=i.value.replace(/\D/g,"");i.value=d?(+d).toLocaleString("fr-FR").replace(/[\s\u202f]/g," "):"";realisme();});
   var m=$("montant");if(m&&window.MutationObserver)new MutationObserver(realisme).observe(m,{childList:true,characterData:true,subtree:true});})();
+/* Lien direct vers une idée : generateur-de-projet.html?idee=identifiant */
+(function(){try{var q=new URLSearchParams(location.search).get("idee");if(q&&idee(q))setTimeout(function(){try{ouvrir(q);}catch(e){}},600);}catch(e){}})();
 })();
