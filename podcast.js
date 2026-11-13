@@ -24,10 +24,10 @@ window.PODCAST = {
           resume: "Le dirigeant d’Invesco, l’un des plus grands gestionnaires d’actifs au monde, s’est livré dans un long entretien. Élysée Johnson en retient cinq leçons et les traduit pour nos poches : épargne, patience, risque, et ce qu’on peut appliquer avec quelques milliers de francs.",
           duree: "Dès 5 min",
           image: "podcast/ep1.jpg",
-          statut: "bientot",
-          date: "",
+          statut: "publie",
+          date: "2026-11-13",
           audio: "",
-          youtube: "",
+          youtube: "UP0kAKS8v4g",
           spotify: ""
         },
         {
