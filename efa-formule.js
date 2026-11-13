@@ -31,7 +31,24 @@
       return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: e.encode(SEL + norme(p, n)), iterations: iter }, k, 128);
     }).then(hex);
   }
+  /* Service efa-abonnement (serveur/05-worker-efa-abonnement.js). Tant qu'il ne répond pas, le site vérifie avec ses empreintes locales. */
+  var API = 'https://efa-abonnement.elysees-johnson.workers.dev';
+  function appel(chemin, corps, jeton) {
+    var ctl = window.AbortController ? new AbortController() : null, t = ctl && setTimeout(function () { ctl.abort(); }, 7000);
+    return fetch(API + chemin, { method: 'POST', headers: jeton ? { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jeton } : { 'Content-Type': 'application/json' },
+      body: JSON.stringify(corps || {}), signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { clearTimeout(t); return r.json().then(function (j) { return { s: r.status, j: j || {} }; }, function () { return { s: r.status, j: {} }; }); }, function () { clearTimeout(t); return { s: 0, j: {} }; });
+  }
   function activer(prenom, nom, code) {
+    var c6 = String(code || '').replace(/\D/g, '');
+    if (!prenom.trim() || !nom.trim() || c6.length !== 6) return activerLocal(prenom, nom, code);
+    return appel('/entrer', { prenom: prenom, nom: nom, code: c6 }).then(function (r) {
+      if (r.s === 200 && r.j.jeton) { var o = { f: r.j.f, fin: r.j.fin, n: r.j.n || prenom.trim(), j: r.j.jeton, at: r.j.at || null }; ecrire(o); return o; }
+      if ((r.s === 403 || r.s === 429) && r.j.erreur) throw r.j.erreur;   /* accès connu du service : fermé, terminé ou trop d'essais */
+      return activerLocal(prenom, nom, code);                             /* service absent ou nom inconnu de lui */
+    });
+  }
+  function activerLocal(prenom, nom, code) {
     code = String(code || '').replace(/\D/g, '');
     if (!prenom.trim() || !nom.trim()) return Promise.reject('Indiquez votre prénom et votre nom, comme vous nous les avez donnés.');
     if (code.length !== 6) return Promise.reject('Votre code compte 6 chiffres.');
@@ -49,8 +66,25 @@
     }, function () { throw 'La vérification n’a pas abouti. Vérifiez votre connexion et réessayez.'; });
   }
   function date(s) { try { return new Date(s + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return s; } }
-  function choisir(url) { var o = actif(); if (o && o.f === 'essentiel' && !o.at) { o.at = url; ecrire(o); } return o; }
-  window.EFA_FORMULE = { actif: actif, activer: activer, quitter: function () { ecrire(null); }, choisir: choisir, NOMS: NOMS, ATELIERS: ATELIERS, date: date };
+  function choisir(url) {
+    var o = actif(); if (!o || o.f !== 'essentiel' || o.at) return Promise.resolve(o);
+    if (!o.j) { o.at = url; ecrire(o); return Promise.resolve(o); }
+    return appel('/choisir', { at: url }, o.j).then(function (r) {
+      if (r.s === 200 || r.s === 409) { o.at = r.j.at || url; ecrire(o); return o; }
+      throw r.j.erreur || 'Le choix n’a pas été enregistré. Vérifiez votre connexion et réessayez.';
+    });
+  }
+  /* À chaque visite : l'accès est-il toujours ouvert, prolongé, fermé ? */
+  function rafraichir() {
+    var o = lire(); if (!o || !o.j) return Promise.resolve(false);
+    return appel('/moi', {}, o.j).then(function (r) {
+      if (r.s === 200 && r.j.f) { var av = JSON.stringify(o); o.f = r.j.f; o.fin = r.j.fin; o.at = r.j.at || null; if (r.j.n) o.n = r.j.n; ecrire(o); return JSON.stringify(o) !== av; }
+      if (r.s === 401) { ecrire(null); return true; }
+      return false;
+    });
+  }
+  function quitter() { var o = lire(); if (o && o.j) appel('/sortir', {}, o.j); ecrire(null); }
+  window.EFA_FORMULE = { actif: actif, activer: activer, quitter: quitter, choisir: choisir, rafraichir: rafraichir, NOMS: NOMS, ATELIERS: ATELIERS, date: date };
 
   /* Espace membre de la page efa. abonnement */
   var z = document.getElementById('ab-acces'); if (!z) return;
@@ -75,8 +109,9 @@
         + '<p class="ab-note"><button type="button" id="ab-quitter" style="all:unset;cursor:pointer;text-decoration:underline">Fermer mon accès sur cet appareil</button></p></div>';
     }
     z.innerHTML = h;
-    var c = document.getElementById('ab-choix'); if (c) c.addEventListener('submit', function (e) { e.preventDefault(); choisir(c.at.value); rendre(); });
-    var q = document.getElementById('ab-quitter'); if (q) q.addEventListener('click', function () { ecrire(null); rendre(); });
+    var c = document.getElementById('ab-choix'); if (c) c.addEventListener('submit', function (e) { e.preventDefault(); var b = c.querySelector('button'); b.disabled = true; choisir(c.at.value).then(rendre, function (m) { b.disabled = false; var k = c.querySelector('.ab-form-ko') || c.appendChild(document.createElement('p')); k.className = 'ab-form-ko'; k.setAttribute('role', 'alert'); k.textContent = typeof m === 'string' ? m : 'Réessayez.'; }); });
+    var q = document.getElementById('ab-quitter'); if (q) q.addEventListener('click', function () { quitter(); rendre(); });
   }
   rendre();
+  rafraichir().then(function (change) { if (change) rendre(); });
 })();

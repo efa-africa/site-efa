@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1220">
+<title>Codes d’accès · efa. abonnement</title>
+<meta name="description" content="Avec la clé maîtresse : créer un accès efa. abonnement, donner son code à 6 chiffres, prolonger, fermer.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700;800&display=swap">
+<style>
+:root{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--corail:#DA3C1B;--bleu:#1B71B2;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--line:#E2D8C4;--erreur:#B3261E;
+--f-display:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}[hidden]{display:none!important}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--f-display);font-weight:700;line-height:1.12;margin:0;text-wrap:balance;color:var(--nuit)}
+h1{font-size:clamp(30px,6vw,44px)}h2{font-size:22px}p{margin:0}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.haut{background:var(--nuit);color:#fff}.haut a{display:inline-block;padding:16px 0;color:#fff;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{padding-block:28px 60px;display:grid;gap:18px}
+.sur{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A;margin-bottom:8px}
+.carte{background:var(--papier);border-radius:14px;padding:22px;display:grid;gap:14px}
+label{display:grid;gap:5px;font-weight:700;font-size:15px;color:var(--nuit)}
+input,select{font:inherit;font-size:17px;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);width:100%;min-height:46px}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.deux{grid-template-columns:1fr}}
+button{font:inherit;font-size:16px;font-weight:800;min-height:46px;padding:12px 22px;border-radius:8px;border:0;background:var(--corail);color:#fff;cursor:pointer}
+button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{min-height:38px;padding:7px 12px;font-size:14px;background:var(--creme);color:var(--nuit)}
+.note{font-size:14px;color:var(--ink3)}.ko{background:var(--erreur);color:#fff;padding:12px 14px;border-radius:2px;font-weight:600}
+.code{background:var(--nuit);color:#fff;border-radius:14px;padding:22px;display:grid;gap:10px}
+.code b{font-family:var(--f-display);font-size:44px;letter-spacing:.14em;line-height:1.1}
+.code textarea{font:inherit;font-size:15px;width:100%;min-height:150px;border:0;border-radius:8px;padding:12px;background:#111B2F;color:#E8EDF5;resize:vertical}
+.ligne{display:grid;gap:8px;padding:14px 0;border-top:1px solid var(--line)}.ligne:first-of-type{border-top:0;padding-top:0}
+.ligne strong{color:var(--nuit)}.ligne .act{display:flex;flex-wrap:wrap;gap:8px}
+.pastille{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;background:var(--creme);color:var(--ink2)}
+.pastille.ok{background:#DDF3E6;color:#14603A}.pastille.fin{background:#F4DCD6;color:#8A2413}
+</style>
+</head>
+<body>
+<div class="haut"><div class="wrap"><a href="abonnement.html">EFA · efa. abonnement</a></div></div>
+<main class="wrap">
+<div><p class="sur">Réservé à EFA</p><h1>Codes d’accès</h1></div>
+
+<section class="carte" id="porte">
+<h2>Ma clé maîtresse</h2>
+<form id="f-cle" class="carte" style="padding:0"><label>Clé maîtresse<input type="password" name="cle" autocomplete="current-password" required></label>
+<button type="submit">Ouvrir</button><p class="note">La clé reste sur cet appareil, le temps de cette session. Elle n’est jamais écrite dans le site.</p><p class="ko" id="ko-cle" hidden></p></form>
+</section>
+
+<div id="dedans" hidden style="display:grid;gap:18px">
+<section class="carte">
+<h2>Créer un accès</h2>
+<form id="f-creer" class="carte" style="padding:0">
+<div class="deux"><label>Prénom<input name="prenom" required maxlength="60"></label><label>Nom<input name="nom" required maxlength="60"></label></div>
+<div class="deux"><label>Formule<select name="formule"><option value="essentiel">Essentiel · 10 000 F</option><option value="integral">Intégral · 30 000 F</option><option value="cercle">Cercle · 50 000 F</option><option value="privilege">Privilège · 100 000 F</option></select></label>
+<label>Durée, en jours<input name="jours" type="number" inputmode="numeric" min="1" max="400" value="30" required></label></div>
+<label>Numéro ou adresse de la personne (facultatif)<input name="contact" maxlength="120"></label>
+<label>Note (facultatif) : payé par, référence du paiement…<input name="note" maxlength="300"></label>
+<button type="submit">Créer l’accès et voir le code</button><p class="ko" id="ko-creer" hidden></p>
+</form>
+<div id="resultat"></div>
+</section>
+
+<section class="carte">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h2>Accès ouverts</h2><button type="button" class="petit" id="recharger">Actualiser</button></div>
+<div id="liste"><p class="note">Chargement…</p></div>
+<p class="note"><button type="button" class="petit" id="sortir">Fermer la session sur cet appareil</button></p>
+</section>
+</div>
+</main>
+<script>
+(function () {
+  var API = 'https://efa-abonnement.elysees-johnson.workers.dev', CLE = 'efa_abo_admin';
+  var NOMS = { essentiel: 'Essentiel', integral: 'Intégral', cercle: 'Cercle', privilege: 'Privilège' };
+  var $ = function (i) { return document.getElementById(i); };
+  function cle() { try { return sessionStorage.getItem(CLE) || ''; } catch (e) { return cle.m || ''; } }
+  function garder(v) { cle.m = v; try { if (v) sessionStorage.setItem(CLE, v); else sessionStorage.removeItem(CLE); } catch (e) {} }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function date(s) { try { return new Date(s + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return s; } }
+  function appel(methode, chemin, corps) {
+    return fetch(API + chemin, { method: methode, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + cle() }, body: corps ? JSON.stringify(corps) : undefined })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw (j && j.erreur) || 'Erreur ' + r.status; return j; }); },
+        function () { throw 'Le service ne répond pas. Vérifiez la connexion, ou que le Worker « efa-abonnement » est bien déployé.'; });
+  }
+  function ko(el, m) { el.textContent = typeof m === 'string' ? m : 'Réessayez.'; el.hidden = false; }
+  function montrerCode(a, nouveau) {
+    var msg = 'Bonjour ' + a.prenom + ',\n\nVotre accès efa. abonnement est ouvert : formule ' + NOMS[a.formule] + ', jusqu’au ' + date(a.fin) + '.\n\n'
+      + '1. Ouvrez efa.africa/abonnement\n2. Descendez à « J’ai déjà mon code »\n3. Écrivez votre prénom (' + a.prenom + '), votre nom (' + a.nom + ') et votre code : ' + a.code + '\n\nGardez ce code pour vous. Bonne séance.\nEFA';
+    $('resultat').innerHTML = '<div class="code" role="status"><span>' + (nouveau ? 'Nouveau code' : 'Code') + ' de ' + esc(a.prenom) + ' ' + esc(a.nom) + ' · ' + NOMS[a.formule] + ' · jusqu’au ' + date(a.fin) + '</span><b>' + esc(a.code) + '</b>'
+      + '<span style="font-size:14px;color:#C9D1DE">Ce code ne sera plus jamais affiché. Message prêt à envoyer :</span><textarea id="msg" readonly></textarea><button type="button" id="copier">Copier le message</button></div>';
+    $('msg').value = msg;
+    $('copier').addEventListener('click', function () { var b = this, t = $('msg');
+      (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject()).then(function () { b.textContent = 'Message copié'; }, function () { t.select(); b.textContent = 'Sélectionné : copiez-le'; }); });
+    $('resultat').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function charger() {
+    return appel('GET', '/admin/liste').then(function (d) {
+      var auj = d.aujourdhui, L = d.acces || [];
+      $('liste').innerHTML = L.length ? L.map(function (a) {
+        var ouvert = a.actif && a.fin >= auj;
+        return '<div class="ligne"><div><strong>' + esc(a.prenom) + ' ' + esc(a.nom) + '</strong> · ' + NOMS[a.formule] + ' <span class="pastille ' + (ouvert ? 'ok' : 'fin') + '">' + (!a.actif ? 'fermé' : ouvert ? 'ouvert' : 'terminé') + '</span></div>'
+          + '<div class="note">Du ' + date(a.debut) + ' au ' + date(a.fin) + ' · ' + (a.connexions || 0) + ' connexion' + (a.connexions > 1 ? 's' : '') + (a.atelier ? ' · atelier : ' + esc(a.atelier.replace(/\.html$/, '')) : '') + (a.contact ? ' · ' + esc(a.contact) : '') + (a.note ? ' · ' + esc(a.note) : '') + '</div>'
+          + '<div class="act"><button class="petit" data-a="plus" data-id="' + esc(a.id) + '">+ 30 jours</button><button class="petit" data-a="code" data-id="' + esc(a.id) + '">Nouveau code</button>'
+          + (a.atelier ? '<button class="petit" data-a="atelier" data-id="' + esc(a.id) + '">Rouvrir le choix d’atelier</button>' : '')
+          + '<button class="petit" data-a="' + (a.actif ? 'fermer' : 'rouvrir') + '" data-id="' + esc(a.id) + '">' + (a.actif ? 'Fermer' : 'Rouvrir') + '</button></div></div>';
+      }).join('') : '<p class="note">Aucun accès pour l’instant.</p>';
+    });
+  }
+  function entrer() {
+    $('ko-cle').hidden = true;
+    return charger().then(function () { $('porte').hidden = true; $('dedans').hidden = false; }, function (m) { garder(''); $('porte').hidden = false; $('dedans').hidden = true; ko($('ko-cle'), m); });
+  }
+  $('f-cle').addEventListener('submit', function (e) { e.preventDefault(); garder(this.cle.value.trim()); this.cle.value = ''; entrer(); });
+  $('f-creer').addEventListener('submit', function (e) {
+    e.preventDefault(); var f = this, b = f.querySelector('button'); $('ko-creer').hidden = true; b.disabled = true;
+    appel('POST', '/admin/creer', { prenom: f.prenom.value, nom: f.nom.value, formule: f.formule.value, jours: f.jours.value, contact: f.contact.value, note: f.note.value })
+      .then(function (a) { b.disabled = false; montrerCode(a); f.prenom.value = f.nom.value = f.contact.value = f.note.value = ''; charger(); }, function (m) { b.disabled = false; ko($('ko-creer'), m); });
+  });
+  $('liste').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-a]'); if (!b) return;
+    var id = b.getAttribute('data-id'), a = b.getAttribute('data-a');
+    if ((a === 'fermer' || a === 'code') && b.getAttribute('data-sur') !== '1') { b.setAttribute('data-sur', '1'); b.textContent = a === 'fermer' ? 'Confirmer la fermeture' : 'Confirmer : l’ancien code ne marchera plus'; return; }
+    b.disabled = true;
+    var p = a === 'code' ? appel('POST', '/admin/nouveau-code', { id: id }).then(function (r) { montrerCode(r, true); })
+      : appel('POST', '/admin/maj', a === 'plus' ? { id: id, jours_en_plus: 30 } : a === 'atelier' ? { id: id, atelier: null } : { id: id, actif: a === 'rouvrir' });
+    p.then(charger, function (m) { b.disabled = false; b.textContent = typeof m === 'string' ? m : 'Réessayez'; });
+  });
+  $('recharger').addEventListener('click', charger);
+  $('sortir').addEventListener('click', function () { garder(''); $('dedans').hidden = true; $('porte').hidden = false; $('resultat').innerHTML = ''; });
+  if (cle()) entrer();
+})();
+</script>
+</body>
+</html>
