@@ -18,7 +18,8 @@
     ['Grandir avec le crédit', 'atelier-grandir-avec-le-credit.html'],
     ['Financer les études de mon enfant', 'atelier-etudes-enfant.html'], ['DAT, OPCVM, FCPE : les placements expliqués', 'atelier-placements-expliques.html'],
     ['Assurance-vie : comprendre ce que je signe', 'atelier-assurance-vie.html'], ['Recevoir une grosse somme', 'atelier-grosse-somme.html'],
-    ['Préparer sa retraite sans pension', 'atelier-retraite-sans-pension.html'], ['Ma tontine devient une spirale', 'atelier-tontine-spirale.html']
+    ['Préparer sa retraite sans pension', 'atelier-retraite-sans-pension.html'], ['Ma tontine devient une spirale', 'atelier-tontine-spirale.html'],
+    ['Sortir de mes dettes', 'atelier-sortir-dettes.html'], ['Mobile money et frais', 'atelier-mobile-money-frais.html'], ['Prêter à un proche, ou donner ?', 'atelier-preter-ou-donner.html']
   ];
   function lire() { try { var o = JSON.parse(localStorage.getItem(CLE) || 'null'); return o && o.f && o.fin ? o : null; } catch (e) { return null; } }
   function ecrire(o) { try { if (o) localStorage.setItem(CLE, JSON.stringify(o)); else localStorage.removeItem(CLE); } catch (e) {} }

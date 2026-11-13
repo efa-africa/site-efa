@@ -79,7 +79,7 @@ fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':
 .then(function(r){return r.json();}).then(function(d){if(!d.success)throw 0;f.outerHTML='<div class="ab-form-ok" role="status"><b>Demande envoyée.</b><br>Nous vous écrivons avec les modalités de paiement et le délai d’activation. Aucun accès n’est ouvert avant vérification du paiement.</div>';try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'formules-demande-'+(sel.selectedOptions[0].getAttribute('data-f')||''),title:'Demande de formule',event:true});}catch(x){}})
 .catch(function(){b.disabled=false;ko.textContent='L’envoi n’a pas abouti. Réessayez, ou écrivez à contact@efa.africa.';ko.hidden=false;});});})();
 </script>
-<script src="efa-formule.js?v=20261113b"></script>
+<script src="efa-formule.js?v=20261113c"></script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="clone/habillage.js?v=20261105c" defer></script>
 </body>
