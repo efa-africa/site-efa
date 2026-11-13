@@ -89,12 +89,18 @@
 
   /* Espace membre de la page efa. abonnement */
   var z = document.getElementById('ab-acces'); if (!z) return;
+  function bandeau() {
+    var t = document.getElementById('ab-bandeau-t'), a = document.getElementById('ab-bandeau-a'); if (!t || !a) return;
+    var o = actif();
+    t.textContent = o ? 'Bienvenue, ' + o.n + ' · formule ' + NOMS[o.f] + ' jusqu’au ' + date(o.fin) : 'Déjà abonné ?';
+    a.innerHTML = (o ? 'Mes ateliers' : 'Entrer mon code') + ' <span aria-hidden="true">→</span>';
+  }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function rendre() {
     var o = actif();
     if (!o) {
       z.innerHTML = '<form class="ab-form" id="ab-code-form" novalidate><label>Mon prénom<input name="prenom" autocomplete="given-name" required></label><label>Mon nom<input name="nom" autocomplete="family-name" required></label><label>Mon code à 6 chiffres<input name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="000000" required style="font-size:22px;letter-spacing:.3em;font-weight:700"></label><p class="ab-form-ko" id="ab-code-ko" hidden></p><button class="ab-button" type="submit">Ouvrir mon accès <span aria-hidden="true">→</span></button><p class="ab-note">Votre code vous est remis par EFA après vérification de votre paiement.</p></form>';
-      var f = document.getElementById('ab-code-form'), ko = document.getElementById('ab-code-ko');
+      bandeau(); var f = document.getElementById('ab-code-form'), ko = document.getElementById('ab-code-ko');
       f.addEventListener('submit', function (e) { e.preventDefault(); ko.hidden = true; var b = f.querySelector('button'); b.disabled = true;
         activer(f.prenom.value, f.nom.value, f.code.value).then(function () { rendre(); try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'abonnement-acces-ouvert', title: 'Accès ouvert', event: true }); } catch (x) {} },
           function (m) { b.disabled = false; ko.textContent = typeof m === 'string' ? m : 'La vérification n’a pas abouti. Réessayez.'; ko.hidden = false; }); });
@@ -109,7 +115,7 @@
         + (o.f === 'cercle' || o.f === 'privilege' ? '<p class="ab-note" style="font-size:15px">Votre question du mois' + (o.f === 'privilege' ? ' et votre rendez-vous de 30 minutes' : '') + ' : écrivez à <a href="mailto:contact@efa.africa" style="text-decoration:underline">contact@efa.africa</a> avec votre prénom, votre nom et votre formule.</p>' : '')
         + '<p class="ab-note"><button type="button" id="ab-quitter" style="all:unset;cursor:pointer;text-decoration:underline">Fermer mon accès sur cet appareil</button></p></div>';
     }
-    z.innerHTML = h;
+    z.innerHTML = h; bandeau();
     var c = document.getElementById('ab-choix'); if (c) c.addEventListener('submit', function (e) { e.preventDefault(); var b = c.querySelector('button'); b.disabled = true; choisir(c.at.value).then(rendre, function (m) { b.disabled = false; var k = c.querySelector('.ab-form-ko') || c.appendChild(document.createElement('p')); k.className = 'ab-form-ko'; k.setAttribute('role', 'alert'); k.textContent = typeof m === 'string' ? m : 'Réessayez.'; }); });
     var q = document.getElementById('ab-quitter'); if (q) q.addEventListener('click', function () { quitter(); rendre(); });
   }
