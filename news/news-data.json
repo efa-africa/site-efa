@@ -13,6 +13,116 @@
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
+   "origine": "édition de rattrapage du 2026-11-13",
+   "publication": "2026-11-13",
+   "maj": "2026-11-13",
+   "id": "2026-11-13-mali-49-milliards-coupon-6-rendement-7-6",
+   "categorie": "finance",
+   "rubrique": "Titres publics",
+   "titre": "Mali : 49,5 milliards levés, coupon de 6 % mais rendement de 7,6 %",
+   "resume": "Le 11 novembre, le Mali a levé 49,5 milliards de FCFA ; sur ses obligations, les investisseurs touchent plus que le taux affiché, parce qu'ils ont payé moins que la valeur du titre.",
+   "pays": [
+    "Mali"
+   ],
+   "entites": [
+    "Trésor public du Mali",
+    "UMOA-Titres"
+   ],
+   "notions": [
+    "coupon",
+    "rendement",
+    "prix d'émission",
+    "taux de couverture"
+   ],
+   "evenement": "2026-11-11",
+   "evenement_label": "11 novembre 2026",
+   "fait": "Le 11 novembre 2026, le Mali a mis aux enchères 45 milliards de FCFA de bons à un an et d'obligations à 3 et 5 ans. Les investisseurs ont proposé 65,36 milliards ; l'État a retenu 49,5 milliards. Les obligations versent un coupon de 6 % (3 ans) et 6,20 % (5 ans), mais leur rendement moyen ressort à 7,59 % et 7,61 %.",
+   "chiffres": [
+    {
+     "valeur": "49,5 Md F",
+     "libelle": "montant retenu, pour 45 milliards annoncés",
+     "periode": "enchère du 11 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "145,24 %",
+     "libelle": "taux de couverture : 65,36 milliards proposés",
+     "periode": "11 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "6 % → 7,59 %",
+     "libelle": "coupon et rendement moyen de l'obligation à 3 ans",
+     "periode": "11 nov. 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Le coupon est fixé à l'avance : 6 % de la valeur du titre, versés chaque année.",
+    "Aux enchères, les investisseurs proposent un prix ; s'ils paient moins que la valeur du titre, ils touchent le même coupon pour une mise plus faible.",
+    "Leur gain réel, le rendement, dépasse alors le coupon : 7,59 % au lieu de 6 % sur 3 ans."
+   ],
+   "mot": {
+    "terme": "Rendement",
+    "definition": "Ce que rapporte vraiment un placement par rapport à la somme payée, en tenant compte du prix d'achat et pas seulement du taux affiché."
+   },
+   "change": "Pour l'État, emprunter coûte plus cher que le taux écrit sur le titre : c'est le rendement qui compte. Pour un épargnant, la leçon vaut pour toute offre : un taux affiché ne suffit pas, il faut savoir ce que l'on paie pour l'obtenir. Les 4,32 % du bon à un an donnent aussi un repère pour juger une offre d'épargne à un an.",
+   "retenir": "Le coupon est le taux promis ; le rendement est ce que l'on gagne vraiment, selon le prix payé.",
+   "limites": [
+    "Ces enchères sont réservées aux banques et grands investisseurs ; un particulier n'y accède pas directement.",
+    "Les rendements sont des moyennes pondérées : chaque investisseur a obtenu son propre prix.",
+    "Le rendement suppose que l'État rembourse à l'échéance ; il dépend de la solidité de l'émetteur.",
+    "Chiffres tirés de la presse, sur la base des résultats publiés par UMOA-Titres."
+   ],
+   "question": "Quand une offre vous annonce un taux, savez-vous ce qu'elle vous rapporte vraiment après le prix, les frais et la durée ?",
+   "actions": [
+    {
+     "type": "Calcul",
+     "titre": "Dépôt à terme ou emprunt d'État",
+     "description": "Comparer ce que rapporte votre épargne selon la durée.",
+     "url": "dat-emprunts-etat.html#calcul"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Les obligations",
+     "description": "Coupon, prix, rendement : ce qu'il faut regarder.",
+     "url": "bourse-marche.html#C5"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Le Mali encaisse 49,5 milliards FCFA de bons et obligations du trésor au niveau du marché financier de l'UEMOA",
+     "organisme": "Le Journal de l'Économie Sénégalaise (Lejecos)",
+     "date": "11 nov. 2026",
+     "url": "https://www.lejecos.com/Le-Mali-encaisse-495-milliards-FCFA-de-bons-et-obligations-du-tresor-au-niveau-du-marche-financier-de-l-UEMOA_a31832.html",
+     "consulte_le": "2026-11-13",
+     "type": "media"
+    },
+    {
+     "titre": "Table des données des émissions",
+     "organisme": "UMOA-Titres",
+     "date": "nov. 2026",
+     "url": "https://www.umoatitres.org/fr/emissions/",
+     "consulte_le": "2026-11-13",
+     "type": "primaire"
+    }
+   ],
+   "verif": {
+    "q": "Une obligation verse un coupon de 6 % mais rapporte 7,59 %. Pourquoi ?",
+    "choix": [
+     "L'État a augmenté le coupon après l'enchère",
+     "Les investisseurs l'ont payée moins cher que sa valeur",
+     "Le rendement inclut les frais de courtage"
+    ],
+    "bonne": 1,
+    "explication": "En payant le titre sous sa valeur, l'investisseur touche le même coupon pour une mise plus faible : son rendement dépasse le coupon."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
    "origine": "édition de rattrapage du 2026-11-10",
    "publication": "2026-11-10",
    "maj": "2026-11-10",
