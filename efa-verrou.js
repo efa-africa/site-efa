@@ -51,7 +51,8 @@
   function parFormule() { var o = formule(); return active(o) && (o.f !== 'essentiel' || o.at === fichier); }
   function dejaOuvert() { var v = etat().ok[ID]; return !!v && v !== 'formule' && v !== 'équipe' && v !== 'école'; }
 
-  if (dejaOuvert() || parFormule()) { verifierFormule(); return; }
+  function noterVisite() { try { localStorage.setItem('efa_dernier_atelier', fichier); } catch (e) {} }
+  if (dejaOuvert() || parFormule()) { noterVisite(); verifierFormule(); return; }
   html.classList.add('efa-verrou');
   var st = document.createElement('style');
   st.textContent = 'html.efa-verrou body>*:not(#clone-haut):not(#efa-verrou):not(script):not(style){display:none!important}'
@@ -70,7 +71,7 @@
   (document.head || html).appendChild(st);
 
   function charger(src) { return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
-  function ouvrir() { html.classList.remove('efa-verrou'); var g = document.getElementById('efa-verrou'); if (g) g.remove(); try { window.scrollTo(0, 0); } catch (e) {} }
+  function ouvrir() { noterVisite(); html.classList.remove('efa-verrou'); var g = document.getElementById('efa-verrou'); if (g) g.remove(); try { window.scrollTo(0, 0); } catch (e) {} }
   function pret(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
 
   pret(function () {
@@ -136,7 +137,7 @@
     var bc = document.getElementById('v-choisir');
     if (bc) bc.addEventListener('click', function () {
       bc.disabled = true;
-      (window.EFA_FORMULE ? Promise.resolve() : charger('efa-formule.js?v=20261113e')).then(function () { return window.EFA_FORMULE.choisir(fichier); })
+      (window.EFA_FORMULE ? Promise.resolve() : charger('efa-formule.js?v=20261113f')).then(function () { return window.EFA_FORMULE.choisir(fichier); })
         .then(function (o) { if (o && o.at === fichier) ouvrir(); else { bc.disabled = false; erreur('Le choix n’a pas été enregistré. Réessayez.'); } },
           function (t) { bc.disabled = false; erreur(typeof t === 'string' ? t : 'Le choix n’a pas été enregistré. Vérifiez votre connexion et réessayez.'); });
     });
@@ -162,7 +163,7 @@
   function verifierFormule() {
     var o = formule(); if (!o || !o.j || dejaOuvert()) return;
     pret(function () {
-      charger('efa-formule.js?v=20261113e').then(function () { return window.EFA_FORMULE.rafraichir(); }).then(function () { if (!parFormule() && !dejaOuvert()) location.reload(); }, function () {});
+      charger('efa-formule.js?v=20261113f').then(function () { return window.EFA_FORMULE.rafraichir(); }).then(function () { if (!parFormule() && !dejaOuvert()) location.reload(); }, function () {});
     });
   }
 })();
