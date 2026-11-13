@@ -3,7 +3,7 @@
    L'accès actif est gardé sur l'appareil : localStorage « efa_formule » = {f, fin, n, at}. */
 (function () {
   var CLE = 'efa_formule', SEL = 'efa-abonnement-2026|';
-  var NOMS = { essentiel: 'Essentiel', integral: 'Intégral', cercle: 'Cercle', privilege: 'Privilège' };
+  var NOMS = { essentiel: 'Essentiel', integral: 'Intégral', cercle: 'Proximité', privilege: 'Privilège' };
   var ATELIERS = [
     ['Mes premiers pas en Bourse', 'premiers-pas-bourse.html'], ['Mon premier ordre à la Bourse (BRVM)', 'coach-bourse.html'],
     ['Lire une société cotée comme un investisseur', 'atelier-lire-societe-cotee.html'], ['Construire son portefeuille à la Bourse', 'atelier-construire-son-portefeuille.html'],

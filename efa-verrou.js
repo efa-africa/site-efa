@@ -1,7 +1,7 @@
 /* EFA · Verrou des ateliers payants (13 nov. 2026)
    Une page d'atelier payant s'ouvre si l'une de ces conditions est remplie :
      - l'atelier a été ouvert sur cet appareil (crédits, code promo EFA-…) : efa_ateliers_v1.ok[id] ;
-     - une formule efa. abonnement active : Intégral, Cercle, Privilège = tous ; Essentiel = l'atelier choisi ;
+     - une formule efa. abonnement active : Intégral, Proximité (identifiant « cercle »), Privilège = tous ; Essentiel = l'atelier choisi ;
      - un accès équipe (EFAT-…) : tous ; un Pass Étudiant (EFAE-…) : tous sauf les ateliers avec Élysée Johnson.
    Sinon le contenu est masqué et la page propose : les crédits (3 offerts avec l'email), ou efa. abonnement.
    Les ateliers gratuits ne chargent pas ce fichier. */
