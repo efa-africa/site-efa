@@ -41,6 +41,10 @@ pages = sorted(f for f in glob.glob('*.html') if f not in EXCLUES) + sorted(glob
 NEWS_SEUL = '--news' in sys.argv
 if NEWS_SEUL:
     pages = ['news.html'] + sorted(glob.glob('news/*.html'))
+# --page fichier.html : n'habille qu'une page (nouvelle page ajoutée au site), sans toucher au reste
+if '--page' in sys.argv:
+    NEWS_SEUL = True
+    pages = [sys.argv[sys.argv.index('--page') + 1]]
 modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
