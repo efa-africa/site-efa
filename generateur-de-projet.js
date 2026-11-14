@@ -201,6 +201,8 @@ $("exact").addEventListener("input",function(e){var el=e.target,brut=String(el.v
 $("sans-budget").onclick=function(){etat.libre=!etat.libre;majMontant();change();};
 $("affiner").onclick=function(){var o=$("affinage").hidden;$("affinage").hidden=!o;$("affiner").setAttribute("aria-expanded",o);$("affiner-s").textContent=o?"−":"＋";};
 if(etat.savoir||etat.temps||etat.lieu){$("affinage").hidden=false;$("affiner").setAttribute("aria-expanded","true");$("affiner-s").textContent="−";}
+/* Arrivée depuis « Explorer plus d’idées » (accueil) : budget et préférences ouverts, curseur sur le montant */
+if(/[?&]affiner=1/.test(location.search)){$("affinage").hidden=false;$("affiner").setAttribute("aria-expanded","true");$("affiner-s").textContent="−";setTimeout(function(){var ex=$("explorer");if(ex)ex.scrollIntoView({block:"start"});var m=$("budget");if(m&&m.focus)try{m.focus({preventScroll:true});}catch(e){}},350);}
 
 /* Soumettre sa propre idée (3 nov. 2026) : on remercie, EFA revient vers la personne. Aucun document ni code automatique. */
 function soumettre(){
