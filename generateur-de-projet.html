@@ -367,15 +367,15 @@ body.fige{overflow:hidden}
 <main id="gp">
 <style>
 .dci{position:relative;height:var(--dci-h,calc(100svh - 72px));min-height:460px;overflow:hidden;background:#0B1220}
-.dci img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:73% 30%}
+.dci img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 28%}
 .dci::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(0deg,rgba(11,18,32,.72),rgba(11,18,32,0))}
 .dci a{position:absolute;z-index:2;left:50%;bottom:max(34px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;background:#DA3C1B;color:#fff;font:800 18px/1.2 'Source Sans 3',system-ui,sans-serif;padding:17px 28px;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .dci-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media(max-width:899px){#gp .guide{display:none}}
 .dci a:focus-visible{outline:3px solid #6DB8F2;outline-offset:3px}
-@media(min-width:900px){.dci img{object-position:72% 30%}}
+@media(min-width:900px){.dci img{object-position:64% 28%}}
 </style>
-<section class="dci" data-photo aria-labelledby="titre"><h1 id="titre" class="dci-sr">EFA Déclic : j’ai mis de côté, je lance quoi&nbsp;?</h1><img src="clone/assets/declic-portrait.webp" alt="Une entrepreneuse, sereine, dans son bureau" width="1672" height="941" fetchpriority="high"><a href="#explorer" id="dci-b">Découvrir ma prochaine idée <span aria-hidden="true">↓</span></a></section>
+<section class="dci" data-photo aria-labelledby="titre"><h1 id="titre" class="dci-sr">EFA Déclic : j’ai mis de côté, je lance quoi&nbsp;?</h1><img src="clone/assets/declic-bureau.webp" alt="Une entrepreneuse dans son bureau, avec Abidjan en arrière-plan" width="2560" height="941" fetchpriority="high"><a href="#explorer" id="dci-b">Découvrir ma prochaine idée <span aria-hidden="true">↓</span></a></section>
 <script>(function(){var b=document.getElementById("dci-b"),h=document.querySelector(".header"),S=b.parentNode,w=innerWidth;
 function H(){S.style.setProperty("--dci-h",Math.max(460,innerHeight-(S.getBoundingClientRect().top+scrollY))+"px");}
 H();addEventListener("load",H);setTimeout(H,800);addEventListener("resize",function(){if(innerWidth!==w){w=innerWidth;H();}});
