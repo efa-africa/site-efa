@@ -75,7 +75,7 @@
   function pret(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
 
   pret(function () {
-    charger('clone/ateliers-data.js?v=20261113c').then(decider, function () { montrer(null); });
+    charger('clone/ateliers-data.js?v=20261114a').then(decider, function () { montrer(null); });
   });
 
   function decider() {
