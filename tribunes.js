@@ -5,35 +5,52 @@
    - titre  : le titre exact, entre guillemets droits " "
    - idee   : une phrase qui résume l'idée (facultatif)
    - lien   : l'adresse Substack de la tribune (laisser "" tant qu'elle n'est pas connue)
+   - c      : pour une conviction seulement, son numéro de conviction (une conviction toutes les quatre tribunes : n° 5, 10, 15…)
    Gardez la virgule entre deux blocs. Une apostrophe dans le texte s'écrit ’ ou \' */
 window.EFA_TRIBUNES = [
   {
-    n: 8,
+    n: 10,
+    c: 2,
+    date: "2026-11-14",
+    titre: "La confiance précède le capital. Elle ne le remplace pas.",
+    idee: "Après huit tribunes, ce que la tontine nous apprend : la confiance fait circuler l’argent ; des droits clairs permettent d’en garder une part ensemble.",
+    lien: "https://educationfinanciereafrique.substack.com/p/conviction-2-la-confiance-precede"
+  },
+  {
+    n: 9,
     date: "2026-11-07",
     titre: "Votre tontine a une réserve. Comment la faire travailler sans la mettre en danger ?",
     idee: "Chemin vers la spirale. Entre l’argent qui dort et l’argent qui s’envole, quatre questions, quatre familles de solutions et un relevé partagé.",
     lien: "https://educationfinanciereafrique.substack.com/p/tribune-8-votre-tontine-a-une-reserve"
   },
   {
-    n: 7,
+    n: 8,
     date: "2026-10-31",
     titre: "Votre tontine a constitué une réserve. À qui appartient-elle ?",
     idee: "Le tour fait circuler, la réserve patrimoniale accumule, le fonds de solidarité protège : quatre règles connues d’avance pour que la réserve ait des propriétaires clairement identifiés.",
     lien: "https://educationfinanciereafrique.substack.com/p/tribune-7-votre-tontine-a-constitue"
   },
   {
-    n: 6,
+    n: 7,
     date: "2026-10-24",
     titre: "Votre tontine réunit un million chaque mois. Que gardez-vous ensemble ?",
     idee: "La tontine sait faire circuler l’argent grâce à la confiance ; un groupe peut aussi décider de garder une réserve commune, avec des règles claires sur la propriété, les retraits et les risques.",
     lien: "https://educationfinanciereafrique.substack.com/p/tribune-6-votre-tontine-reunit-un"
   },
   {
-    n: 5,
+    n: 6,
     date: "2026-10-17",
     titre: "Avec nos téléphones, nous pouvons construire des usines",
     idee: "Après le paiement, le capital : le mobile money sait rassembler des millions de petites sommes ; l’étape suivante est de les orienter vers des actifs productifs.",
     lien: "https://educationfinanciereafrique.substack.com/p/tribune-5-avec-nos-telephones-nous"
+  },
+  {
+    n: 5,
+    c: 1,
+    date: "2026-10-10",
+    titre: "Ce qui circule n’est pas ce qui reste",
+    idee: "Compter les sommes qui transitent ne dit rien de ce qui subsiste : un patrimoine ne se forme que si une part de l’argent cesse d’être dépensée et travaille dans la durée.",
+    lien: "https://educationfinanciereafrique.substack.com/p/conviction-1-ce-qui-circule-nest"
   },
   {
     n: 4,

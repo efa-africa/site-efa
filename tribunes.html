@@ -302,6 +302,7 @@ footer{display:block!important}
 .info,.ctx p{background:var(--verm)!important;color:var(--verm-ink)!important;border:0!important;border-left:0!important;border-radius:2px;padding:16px 18px!important;box-shadow:none}
 .info b,.info strong,.info h3,.info .k,.info small,.ctx p b,.ctx p strong,.ctx p h3,.ctx p .k,.ctx p small{color:var(--verm-ink)!important}
 .info a,.info .mini,.info button.lien,.ctx p a,.ctx p .mini,.ctx p button.lien{color:var(--verm-ink)!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6)}
+.cv{display:inline-block;margin-right:8px;padding:2px 9px;border-radius:999px;background:#E44828;color:#fff;font:800 11px/1.5 "Source Sans 3",sans-serif;letter-spacing:.08em;text-transform:uppercase;vertical-align:2px}
 </style>
 <link rel="stylesheet" href="footer.css?v=20261102z">
 <style>
@@ -477,7 +478,7 @@ footer{display:block!important}
   </div>
 </footer>
 
-<script src="tribunes.js?v=20261107a"></script>
+<script src="tribunes.js?v=20261114a"></script>
 <script>
 (function(){
   var mb=document.getElementById("menu"), nv=document.getElementById("nav");
@@ -492,9 +493,9 @@ footer{display:block!important}
   if(!L.length){ une.innerHTML='<p class="lede" style="padding-top:40px">Les tribunes arrivent bientôt.</p>'; return; }
   var t=L[0], lien=lienDe(t);
   une.innerHTML='<p class="over">La dernière tribune'+(t.date?' · '+esc(dFR(t.date)):'')+'</p>'+
-    '<a class="carte" href="'+esc(lien)+'" target="_blank" rel="noopener" data-goatcounter-click="tribune-'+esc(t.n)+'"><span class="num" aria-hidden="true">'+esc(t.n)+'</span><div class="b"><p class="over">Tribune n° '+esc(t.n)+'</p><h2 class="t2">'+esc(t.titre)+'</h2>'+(t.idee?'<p class="idee">'+esc(t.idee)+'</p>':'')+'<span class="go">Lire la tribune sur Substack →</span></div></a>';
+    '<a class="carte" href="'+esc(lien)+'" target="_blank" rel="noopener" data-goatcounter-click="tribune-'+esc(t.n)+'"><span class="num" aria-hidden="true">'+esc(t.n)+'</span><div class="b"><p class="over">'+(t.c?'Conviction '+esc(t.c)+' · n° '+esc(t.n):'Tribune n° '+esc(t.n))+'</p><h2 class="t2">'+esc(t.titre)+'</h2>'+(t.idee?'<p class="idee">'+esc(t.idee)+'</p>':'')+'<span class="go">Lire la tribune sur Substack →</span></div></a>';
   liste.innerHTML=L.map(function(x){
-    var inner='<span class="n" aria-hidden="true">'+esc(x.n)+'</span><span class="tt"><span class="sr" style="position:absolute;left:-9999px">Tribune n° '+esc(x.n)+' : </span>'+esc(x.titre)+'</span>'+
+    var inner='<span class="n" aria-hidden="true">'+esc(x.n)+'</span><span class="tt"><span class="sr" style="position:absolute;left:-9999px">'+(x.c?'Conviction '+esc(x.c)+', n° ':'Tribune n° ')+esc(x.n)+' : </span>'+(x.c?'<b class="cv">Conviction '+esc(x.c)+'</b>':'')+esc(x.titre)+'</span>'+
       '<span class="fl" aria-hidden="true">→</span>'+
       '<span class="i">'+(x.date?'<span class="d">'+esc(dFR(x.date))+'</span>'+(x.idee?' · ':''):'')+esc(x.idee||"")+'</span><span class="lire">Lire la tribune →</span>';
     return '<li><a href="'+esc(lienDe(x))+'" target="_blank" rel="noopener" data-goatcounter-click="tribune-'+esc(x.n)+'">'+inner+'</a></li>';
