@@ -6,7 +6,7 @@
     { s: '.au-hero', m: '.au-hero-img', v: '.au-hero-voile', t: '.au-hero-txt', all: true },
     { s: '.nw-hero', m: '.nw-hero-img', v: '.nw-hero-voile', t: '.nw-hero-txt' },
     { s: '.at-entree', m: '.at-entree-img', v: '.at-entree-voile', t: '.at-entree-txt' },
-    { s: '.tr-entree', m: '.tr-entree-img', v: '.tr-entree-voile', t: '.tr-entree-txt' },
+    { s: '.tr-entree', m: '.tr-entree-img', v: '.tr-entree-voile', t: '.tr-entree-txt', nob: true },
     { s: '.sg-entree', m: '.sg-entree-img', v: '.sg-entree-voile', t: '.sg-entree-txt' },
     { s: '.or-entree', m: '.or-entree-img', v: '.or-entree-voile', t: '.or-entree-txt' },
     { s: '.cover', m: '.cover-image', v: '.cover-shade', t: '.cover-copy', x: '.cover-top,.scroll-prompt' },
@@ -20,6 +20,7 @@
       M.classList.add('imm-media'); var V = c.v && S.querySelector(c.v); if (V) V.classList.add('imm-voile');
       T.classList.add('imm-txt'); if (!T.id) T.id = 'imm-txt';
       if (c.x) S.querySelectorAll(c.x).forEach(function (e) { e.classList.add('imm-cache'); });
+      if (c.nob) { hauteur(S); return; }
       var B = document.createElement('a'); B.className = 'imm-dec'; B.href = '#' + T.id;
       B.innerHTML = 'Découvrir <span aria-hidden="true">↓</span>';
       B.addEventListener('click', function (e) { e.preventDefault(); var h = document.querySelector('header'), hh = h && getComputedStyle(h).position !== 'static' ? h.offsetHeight : 0; scrollTo({ top: T.getBoundingClientRect().top + scrollY - hh, behavior: 'smooth' }); });
