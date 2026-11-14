@@ -23,3 +23,4 @@ clone/assets/declic-awa.webp
 clone/assets/abonnement-hero.webp
 clone/assets/aig-hero-bureau.webp
 clone/assets/declic-bureau.webp
+clone/assets/tribunes-entree-elysee.webp
