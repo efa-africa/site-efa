@@ -461,9 +461,9 @@ footer.efa-foot{background:#fff;border-top:1px solid #e6eef2}
 .a-hero-inner{width:min(100% - 64px,1380px);margin:0 auto;padding:82px 0 102px}
 .a-eyebrow{font-size:11px;font-weight:900;letter-spacing:.23em;line-height:1.5}
 .a-hero .a-eyebrow{color:var(--a-cyan);margin:0 0 27px}
-.a-hero h1,.a-doors h2,.a-door h3{font-family:Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.055em}
-.a-hero h1{font-size:clamp(54px,6vw,98px);line-height:.98;max-width:850px;margin:0}
-.a-hero h1 em{color:var(--a-cyan);font-style:normal}
+.a-hero .a-h1,.a-doors h2,.a-door h3{font-family:Baskerville,"Libre Baskerville",Georgia,serif;letter-spacing:-.055em}
+.a-hero .a-h1{font-size:clamp(54px,6vw,98px);line-height:.98;max-width:850px;margin:0}
+.a-hero .a-h1 em{color:var(--a-cyan);font-style:normal}
 .a-hero-intro{font-size:clamp(17px,1.6vw,22px);line-height:1.5;max-width:610px;margin:28px 0 30px;color:#e3ecf1}
 .a-question{max-width:690px}
 .a-question>p{font-weight:800;font-size:17px;margin:0 0 14px}
@@ -505,8 +505,8 @@ footer.efa-foot{background:#fff;border-top:1px solid #e6eef2}
 .a-door a:hover{color:var(--a-teal)}
 .a-doors-note{color:#6b7982;font-size:13px;margin:24px 0 0}
 @media(max-width:900px){.a-hero{min-height:780px}.a-hero-shade{background:linear-gradient(90deg,rgba(3,19,40,.88),rgba(3,19,40,.58) 62%,rgba(3,19,40,.2))}.a-doors-heading{gap:26px}.a-doors-grid{gap:10px}.a-door-content{padding:20px 17px}.a-door h3{font-size:36px}.a-door p{font-size:14px}}
-@media(max-width:700px){.a-hero{min-height:0;display:block}.a-hero-image{height:50%;bottom:auto;background-position:63% 26%}.a-hero-shade{background:linear-gradient(0deg,#061b35 0%,#061b35 33%,rgba(6,27,53,.92) 49%,rgba(6,27,53,.05) 88%)}.a-hero-inner{padding:clamp(225px,39svh,390px) 0 62px}.a-hero .a-eyebrow{font-size:9px;letter-spacing:.16em;margin-bottom:14px}.a-hero h1{font-size:clamp(43px,10.8vw,68px);max-width:570px;line-height:1.01}.a-hero-intro{font-size:16px;margin:19px 0 21px}.a-question>p{font-size:16px}.a-choices{display:grid;gap:7px}.a-choice{width:100%;border-radius:12px;padding:10px 12px;font-size:13px}.a-hero-cta{margin-top:18px;min-height:54px;width:100%;font-size:14px}.a-hero-footnote{font-size:11px}.a-scroll-cue{display:none}.a-doors{padding:66px 0 72px}.a-doors-heading{display:block;margin-bottom:25px}.a-doors h2{font-size:clamp(42px,10.5vw,62px)}.a-doors-heading>p{font-size:16px;margin-top:18px}.a-doors-grid{grid-template-columns:1fr;gap:17px}.a-door-image{aspect-ratio:1.55}.a-door-image img{object-position:center 36%}.a-door:nth-child(2) .a-door-image img{object-position:55% 40%}.a-door-content{padding:21px 22px 24px}.a-door h3{font-size:42px;margin:19px 0 8px}.a-door p{font-size:15px;margin-bottom:20px}}
-@media(max-width:380px){.a-hero-inner{padding-top:220px}.a-hero h1{font-size:41px}.a-choice{font-size:12px}.a-doors h2{font-size:40px}}
+@media(max-width:700px){.a-hero{min-height:0;display:block}.a-hero-image{height:50%;bottom:auto;background-position:63% 26%}.a-hero-shade{background:linear-gradient(0deg,#061b35 0%,#061b35 33%,rgba(6,27,53,.92) 49%,rgba(6,27,53,.05) 88%)}.a-hero-inner{padding:clamp(225px,39svh,390px) 0 62px}.a-hero .a-eyebrow{font-size:9px;letter-spacing:.16em;margin-bottom:14px}.a-hero .a-h1{font-size:clamp(43px,10.8vw,68px);max-width:570px;line-height:1.01}.a-hero-intro{font-size:16px;margin:19px 0 21px}.a-question>p{font-size:16px}.a-choices{display:grid;gap:7px}.a-choice{width:100%;border-radius:12px;padding:10px 12px;font-size:13px}.a-hero-cta{margin-top:18px;min-height:54px;width:100%;font-size:14px}.a-hero-footnote{font-size:11px}.a-scroll-cue{display:none}.a-doors{padding:66px 0 72px}.a-doors-heading{display:block;margin-bottom:25px}.a-doors h2{font-size:clamp(42px,10.5vw,62px)}.a-doors-heading>p{font-size:16px;margin-top:18px}.a-doors-grid{grid-template-columns:1fr;gap:17px}.a-door-image{aspect-ratio:1.55}.a-door-image img{object-position:center 36%}.a-door:nth-child(2) .a-door-image img{object-position:55% 40%}.a-door-content{padding:21px 22px 24px}.a-door h3{font-size:42px;margin:19px 0 8px}.a-door p{font-size:15px;margin-bottom:20px}}
+@media(max-width:380px){.a-hero-inner{padding-top:220px}.a-hero .a-h1{font-size:41px}.a-choice{font-size:12px}.a-doors h2{font-size:40px}}
 .a-door-meta{justify-content:flex-start}
 .a-door{scroll-margin-top:90px}
 @media(max-width:700px){.aig .a-section-inner{width:min(100% - 36px,1380px)}}
@@ -561,7 +561,7 @@ footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
 
 /* Accueil · corail de la charte, mention IA, trois questions visibles sur tablette, bouton personnalisé au retour (30/10/2026) */
 .a-hero .a-eyebrow{color:#F09680}
-.a-hero h1 em{color:#6DB8F2}
+.a-hero .a-h1 em{color:#6DB8F2}
 .a-choice span{color:#6DB8F2}
 .a-choice[aria-pressed=true]{border-color:#F09680}
 .a-hero-ia{position:absolute;top:14px;right:max(16px,env(safe-area-inset-right,0px));z-index:2;font-size:11px;font-style:italic;color:rgba(255,255,255,.78);text-shadow:0 1px 2px rgba(0,0,0,.6);pointer-events:none}
@@ -571,7 +571,7 @@ footer.efa-foot{background:#FFFFFF;color:#2A3142;border-top:1px solid #E6EEF2}
   .a-hero{min-height:calc(100svh - 82px)}
   .a-hero-inner{padding:clamp(28px,5svh,56px) 0 clamp(36px,6svh,64px)}
   .a-hero .a-eyebrow{margin-bottom:16px}
-  .a-hero h1{font-size:clamp(46px,min(6vw,9.5svh),90px)}
+  .a-hero .a-h1{font-size:clamp(46px,min(6vw,9.5svh),90px)}
   .a-hero-intro{margin:16px 0 18px}
   .a-question>p{margin-bottom:10px}
   .a-hero-cta{margin-top:16px;min-height:52px}
@@ -587,7 +587,7 @@ html.cl-hall #contact{margin-top:0}
 .menu-panel a.menu-cle{color:var(--coral)}
 /* Titre moins large : le portrait respire */
 @media(min-width:900px){
-  .a-hero h1{font-size:clamp(48px,4.9vw,84px);max-width:min(720px,52vw)}
+  .a-hero .a-h1{font-size:clamp(48px,4.9vw,84px);max-width:min(720px,52vw)}
   .a-hero-intro{max-width:540px}
   .a-depart,.a-hero-footnote{max-width:600px}
 }
@@ -611,7 +611,7 @@ html.cl-hall #contact{margin-top:0}
 .ateliers-aussi a{color:#071d38;font-weight:700;text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:4px}
 .ateliers-suite small{color:#5b6a77;font-size:13px}
 /* Accueil : « C'est fait pour vous » en premier */
-.a-hero h1.a-hero-pourvous{font-size:clamp(52px,8vw,112px);line-height:1;margin-bottom:14px}
+.a-hero .a-h1.a-hero-pourvous{font-size:clamp(52px,8vw,112px);line-height:1;margin-bottom:14px}
 .a-hero-sous{margin:0 0 18px;font:italic 400 clamp(22px,2.6vw,34px)/1.25 "Libre Baskerville",Georgia,serif;color:#9cc9f0}
 
 /* Carte « Investir à la BRVM » : une seule action, toute la carte cliquable */
@@ -698,3 +698,6 @@ a.produit-lien:focus-visible{outline:3px solid #2188D6;outline-offset:4px}
 
 /* Menu : défile dans la hauteur de l’écran (13 nov. 2026) */
 .menu-panel{max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 22px calc(18px + env(safe-area-inset-bottom,0px))}.menu-panel a{padding:12px 0}.menu-panel a.menu-sous{padding:7px 0 9px 16px}.menu-panel .menu-rac{position:sticky;top:-14px;z-index:1;background:#fff;padding-top:14px;margin-top:-14px}@media (max-height:700px){.menu-panel a{padding:10px 0;font-size:15.5px}.menu-panel a.menu-sous{padding:6px 0 7px 16px;font-size:14px}}
+
+.a-hero h1.a-eyebrow{text-transform:uppercase;font-family:inherit;font-size:11px;font-weight:900;letter-spacing:.23em;line-height:1.5}.a-hero .a-h1{display:block;font-weight:700;color:#fff}
+@media(max-width:700px){.a-hero h1.a-eyebrow{font-size:9px;letter-spacing:.16em}}
