@@ -76,7 +76,7 @@
 [
 "a3",
 "Choisir sa voie",
-"Maintenant, une vraie décision. Choisir vous-même vos titres, ou confier votre argent à un fonds ? Si vous hésitez, c'est très bien : je vous montre les deux côte à côte."
+"Maintenant, une vraie décision : qui décidera de vos placements ? Vous-même, un professionnel, ou un groupe. Si vous hésitez, c'est très bien : je vous montre les trois côte à côte."
 ],
 [
 "a3-resultat",
@@ -91,7 +91,7 @@
 [
 "a4-verif-2",
 "Avant la SGI, question deux",
-"Et vous, plutôt titres, ou plutôt fonds ? Votre réponse change l'intermédiaire à choisir."
+"Et vous, qui décidera ? Vous-même, un professionnel, ou un groupe ? Votre réponse change l'intermédiaire à choisir."
 ],
 [
 "a4-verif-fin",
