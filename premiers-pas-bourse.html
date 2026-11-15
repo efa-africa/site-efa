@@ -417,6 +417,8 @@ function totCh(i){ return ETAPES.filter(function(x){return x.ph===i;}).length; }
 function totFaits(){ return ETAPES.filter(function(x){return etat['s'+x.n];}).length; }
 function chActif(){ for(var i=0;i<5;i++) if(faitsCh(i)<totCh(i)) return i; return 4; }
 var vue = D._vue || (totFaits()||D._pos ? 'chapitres' : 'accueil');
+/* Lien profond depuis la porte Bourse : ?chapitre=1 à 5 ouvre le premier écran du chapitre, ?vue=parcours ouvre la liste */
+(function(){ try{ var q=new URLSearchParams(location.search), c=parseInt(q.get('chapitre'),10); if(c>=1&&c<=5){ for(var i=0;i<ETAPES.length;i++) if(ETAPES[i].ph===c-1){ vue='ecran'; cur=i; break; } } else if(q.get('vue')==='parcours'){ vue='chapitres'; } }catch(e){} })();
 function voir(v,k){ vue=v; if(k!=null) cur=Math.max(0,Math.min(ETAPES.length-1,k)); D._vue=v; D._pos=cur; sv(); rendu(); var s=$('#scene'); if(s.getBoundingClientRect().top<0||v!=='ecran') s.scrollIntoView({behavior:'smooth',block:'start'}); }
 function aller(k){ if(k>=ETAPES.length) return voir('fin'); if(k<0) return voir('chapitres'); var a=ETAPES[cur], b=ETAPES[k]; if(a&&b&&b.ph!==a.ph&&k>cur) return voir('chapitres', k); voir('ecran',k); }
 $('#pp-go').onclick=function(){ voir('question'); };

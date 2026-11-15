@@ -156,8 +156,8 @@
       var V = document.getElementById('vt-verdict'); if (!V) return;
       if (!q || q.length < 2) { V.className = 'vt-verdict'; V.innerHTML = ''; return; }
       var t = tous.filter(function (s) { return trouve(s, q); });
-      if (t.length) { V.className = 'vt-verdict ok'; V.innerHTML = t.length === 1 ? '✓ <b>' + esc(t[0].nom) + '</b> figure dans la liste des SGI agréées.' : '✓ ' + t.length + ' SGI agréées correspondent à votre recherche.'; }
-      else if (q.length >= 3) { V.className = 'vt-verdict ko'; V.innerHTML = 'Aucune SGI de ce nom dans la liste des ' + tous.length + ' SGI agréées. Vérifiez l’orthographe. Si le nom est exact, ne versez pas d’argent avant de l’avoir vérifié auprès de l’<a href="https://www.amf-umoa.org" target="_blank" rel="noopener">AMF-UMOA</a>.'; }
+      if (t.length) { V.className = 'vt-verdict ok'; V.innerHTML = t.length === 1 ? '✓ <b>' + esc(t[0].nom) + '</b> figure dans la liste des SGI publiée par la BRVM. Confirmez son agrément sur le registre de l’AMF-UMOA.' : '✓ ' + t.length + ' SGI correspondent à votre recherche.'; }
+      else if (q.length >= 3) { V.className = 'vt-verdict ko'; V.innerHTML = 'Aucune SGI de ce nom dans la liste des ' + tous.length + ' SGI listées par la BRVM. Vérifiez l’orthographe. Si le nom est exact, ne versez pas d’argent avant de l’avoir vérifié auprès de l’<a href="https://www.amf-umoa.org" target="_blank" rel="noopener">AMF-UMOA</a>.'; }
       else { V.className = 'vt-verdict'; V.innerHTML = ''; }
     }
     var vus = {};
@@ -177,7 +177,7 @@
       reperes(tous.filter(ok));
       var s1 = tete.concat(compl), pos = 0, h = '';
       if (s1.length) h += '<section class="vt-sec" aria-labelledby="vt-s1"><h2 id="vt-s1">Les SGI qui se présentent en détail</h2><div class="vt-grille">' + s1.map(function (id, i) { pos++; return carte(par[id], pos, i < tete.length); }).join('') + '</div></section>';
-      if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI agréées</h2><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
+      if (part.length) h += '<section class="vt-sec" aria-labelledby="vt-s2"><h2 id="vt-s2">Les autres SGI</h2><div class="vt-grille">' + part.map(function (id) { pos++; return carte(par[id], pos, false); }).join('') + '</div></section>';
       Z.innerHTML = h || (q ? '' : '<p class="vt-chapo">Aucune SGI ne correspond à ces filtres.</p>');
       verdict(q);
       Z.querySelectorAll('.vt-carte').forEach(function (el, i) {
