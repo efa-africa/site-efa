@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://efa.africa/bourse-marche">
 <meta name="author" content="EFA · Éducation Financière Afrique">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
-<link rel="stylesheet" href="ecole-bourse.css?v=20261102z">
+<link rel="stylesheet" href="ecole-bourse.css?v=20261115a">
 <style>
 .lg{display:flex;flex-wrap:wrap;gap:.4cqw 1.6cqw;font-size:max(10px,1.25cqw);color:#C9D1DE;width:100%}
 .lg i{display:inline-block;width:1.6em;height:3px;vertical-align:middle;margin-right:.4em;border-radius:2px}
@@ -166,12 +166,12 @@ var G = (function(){
   }
   /* barres horizontales, centrées sur zéro si des valeurs sont négatives */
   function barres(list, o){
-    o = o || {}; var W = 640, fs = 17, rh = 32, H = list.length * rh + 8, Lb = 285, R = 80, neg = list.some(function(x){ return x[1] < 0; });
+    o = o || {}; var W = 640, fs = 17, rh = 32, H = list.length * rh + 8, Lb = 285, R = 96, neg = list.some(function(x){ return x[1] < 0; });
     var mx = Math.max.apply(null, list.map(function(x){ return Math.abs(x[1]); })) || 1, z = neg ? Lb + (W - Lb - R) / 2 : Lb, sc = (neg ? (W - Lb - R) / 2 : W - Lb - R) / mx;
     var g = svg(W, H, fs, o.aria || "Diagramme en barres");
     list.forEach(function(x, i){ var y = 4 + i * rh, w = Math.abs(x[1]) * sc, xx = x[1] < 0 ? z - w : z, c = o.col ? o.col : x[1] > 0 ? VE : x[1] < 0 ? CO : "#C9D1DE";
       g += '<text x="' + (Lb - 10) + '" y="' + (y + 21) + '" text-anchor="end">' + esc(x[0]) + '</text><rect x="' + xx.toFixed(1) + '" y="' + (y + 6) + '" width="' + Math.max(2, w).toFixed(1) + '" height="20" rx="3" fill="' + c + '"/>';
-      g += '<text x="' + (x[1] < 0 ? xx - 6 : xx + Math.max(2, w) + 6).toFixed(1) + '" y="' + (y + 21) + '" text-anchor="' + (x[1] < 0 ? "end" : "start") + '" style="fill:#fff;font-weight:700">' + (o.fmt ? o.fmt(x[1]) : x[1]) + '</text>'; });
+      g += '<text x="' + (W - 4) + '" y="' + (y + 21) + '" text-anchor="end" style="fill:#fff;font-weight:700">' + (o.fmt ? o.fmt(x[1]) : x[1]) + '</text>'; });
     if (neg) g += '<line x1="' + z + '" x2="' + z + '" y1="0" y2="' + H + '" stroke="rgba(255,255,255,.35)"/>';
     return g + '</svg>';
   }

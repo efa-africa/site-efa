@@ -269,3 +269,16 @@ body{justify-content:safe center}
 @container (max-width:900px){.tab.large td:first-child{white-space:normal!important;min-width:5.5em}.tab.large{font-size:10.5px}.tab.large th,.tab.large td{padding-left:2px;padding-right:2px;letter-spacing:0}}
 /* Cases alignées dans une même rangée, même quand un intitulé passe sur deux lignes */
 .exo label>input,.exo label>select,.exo label>textarea{margin-top:auto}
+/* 15/11/2026 · graphiques lisibles quand l'habillage blanc et bleu éclaircit les panneaux sombres (data-clair) */
+.illu[data-clair] .courbe text{fill:#536174}
+.illu[data-clair] .courbe text[style*="fill:#fff"]{fill:#142438!important}
+.illu[data-clair] .courbe line[stroke^="rgba(255"]{stroke:#d5e1ec}
+.illu[data-clair] .courbe path[stroke="#6DB8F2"]{stroke:#1B71B2}
+.illu[data-clair] .courbe path[stroke="#F09680"],.illu[data-clair] .courbe rect[fill="#F09680"]{stroke:none}
+.illu[data-clair] .courbe rect[fill="#F09680"]{fill:#E44828}
+.illu[data-clair] .courbe rect[fill="#3CCB7F"]{fill:#1E8E57}
+.illu[data-clair] .courbe line[stroke="#F09680"]{stroke:#E44828}
+.illu[data-clair] .courbe line[stroke="#3CCB7F"]{stroke:#1E8E57}
+.illu[data-clair] .courbe rect[fill^="rgba(109,184,242"]{fill:rgba(27,113,178,.35)}
+.illu[data-clair] .lg,.illu[data-clair] .tabtitre{color:#536174}
+.illu .courbe{align-self:stretch;width:100%!important;max-width:100%}
