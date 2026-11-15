@@ -12,7 +12,7 @@
 <meta property="og:title" content="Je veux investir à la BRVM. Par où commencer ?">
 <meta property="og:description" content="Où que vous en soyez, EFA vous indique le prochain pas utile.">
 <meta property="og:url" content="https://efa.africa/bourse.html">
-<meta property="og:image" content="https://efa.africa/clone/assets/accueil-lancer-brvm.webp">
+<meta property="og:image" content="https://efa.africa/clone/assets/affiche-bourse-par-ou-commencer.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
@@ -45,6 +45,17 @@ body{margin:0;background:#F1F7FA}
 .el b{display:block;font-family:var(--fd);font-size:20px;color:#fff}
 .el p{color:#C9D1DE;font-size:15px;margin-top:4px}
 .el small{display:block;color:#F09680;font-size:13px;font-weight:700;margin-top:6px}
+.aff{background:#0B1220;display:flex;justify-content:center}
+.aff-b{display:block;border:0;padding:0;margin:0;background:none;cursor:pointer;width:100%;max-width:calc((100vh - 84px) * 1122 / 1402)}
+.aff-b img{display:block;width:100%!important;height:auto!important;aspect-ratio:1122/1402!important;object-fit:contain!important;max-width:none}
+.aff-b:focus-visible{outline:3px solid var(--cyan);outline-offset:-3px}
+.aff.cache{display:none}
+.couv.bienv{padding-block:20px}
+.couv.bienv .bw{grid-template-columns:1fr}
+.couv.bienv .bw>div:first-child>:not(.btns){display:none}.couv.bienv #bz-go{display:none}
+.couv.bienv .bw>div:first-child{order:2}
+.couv.bienv .el{grid-template-columns:96px 1fr;max-width:640px}
+.couv.bienv .el img{max-width:96px}
 .couv.court{padding-block:14px}
 .couv.court .bw{grid-template-columns:1fr}
 .couv.court .chapo,.couv.court .meta,.couv.court .btns,.couv.court .el{display:none}
@@ -153,6 +164,7 @@ body{margin:0;background:#F1F7FA}
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <div class="bz" data-garde>
 <main id="contenu">
+  <section class="aff" id="aff" aria-label="La Bourse régionale BRVM : par où commencer ?"><button type="button" class="aff-b" id="aff-go"><img src="clone/assets/affiche-bourse-par-ou-commencer.webp" alt="La Bourse régionale BRVM. Par où commencer ? Comprendre le marché. Préparer son premier investissement. Découvrir le parcours Bourse." width="1122" height="1402" fetchpriority="high"></button></section>
   <section class="couv" id="couv" aria-labelledby="bz-t">
     <div class="bw">
       <div>
@@ -204,7 +216,7 @@ function carte(o){ var a=o.href?'a href="'+o.href+'"':'button type="button"', fi
   return '<'+a+' class="c'+(o.sug?' sug':'')+'"'+data+'>'+(o.sug?'<span class="badge">Conseillé</span>':'')+(o.img?'<img src="'+IMG+o.img+'" alt="" loading="lazy" decoding="async">':'')+'<span class="ci"><b>'+o.t+'</b>'+(o.d?'<span>'+o.d+'</span>':'')+'<span class="go">'+(o.cta||'Choisir')+' →</span></span></'+fin+'>'; }
 function reponses(cle,opts,sug){ return '<div class="rep" role="group">'+opts.map(function(o,i){ return '<button type="button" class="c'+(i===sug?' sug':'')+'" data-rep="'+cle+'" data-v="'+i+'"><b>'+o+'</b>'+(i===sug?'<span class="badge">Conseillé</span>':'')+'</button>'; }).join('')+'</div>'; }
 function liens(L){ return '<div class="liens">'+L.map(function(x){ return '<a href="'+x[0]+'"><span>'+x[1]+(x[2]?'<small>'+x[2]+'</small>':'')+'</span>'+(x[3]||'<span aria-hidden="true">→</span>')+'</a>'; }).join('')+'</div>'; }
-function poser(h,v){ var im=v&&ILL[v]; if(im){ var i=h.indexOf('<p class="sur">'); if(i>=0) h=h.slice(0,i)+'<figure class="ill"><img src="'+IMG+im+'" alt="" width="1600" height="700" decoding="async"></figure>'+h.slice(i); } E.innerHTML=h; var cv=document.getElementById('couv'); if(cv) cv.classList.toggle('court',v!=='accueil'); vxEcran(v); window.scrollTo({top:Math.max(0,E.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); var t=E.querySelector('h2'); if(t){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
+function poser(h,v){ var im=v&&ILL[v]; if(im){ var i=h.indexOf('<p class="sur">'); if(i>=0) h=h.slice(0,i)+'<figure class="ill"><img src="'+IMG+im+'" alt="" width="1600" height="700" decoding="async"></figure>'+h.slice(i); } E.innerHTML=h; var cv=document.getElementById('couv'); if(cv){ cv.classList.toggle('court',v!=='accueil'); cv.classList.toggle('bienv',v==='accueil'); } var af=document.getElementById('aff'); if(af) af.classList.toggle('cache',v!=='accueil'); vxEcran(v); window.scrollTo({top:Math.max(0,E.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); var t=E.querySelector('h2'); if(t){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
 function telecharger(nom,titre,lignes){ var h='<!doctype html><meta charset="utf-8"><title>'+esc(titre)+'</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:720px;margin:32px auto;padding:0 16px;color:#2A3142}h1{font:700 26px Georgia,serif;color:#0B1220}h2{font:700 18px Georgia,serif;margin-top:22px;color:#0B1220}li{margin:4px 0}small{color:#5F6676}</style><h1>'+esc(titre)+'</h1><p><small>EFA · efa.africa/bourse · '+new Date().toLocaleDateString('fr-FR')+'</small></p>'+lignes+'<p><small>Document personnel d’apprentissage. Ce n’est pas un conseil en investissement. Vos relevés et avis d’opéré de la SGI restent les pièces de référence.</small></p>';
   try{ var b=new Blob([h],{type:'text/html'}), a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=nom+'.html'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },500); }catch(e){} compte('fiche-'+nom); }
 
@@ -446,6 +458,7 @@ document.getElementById('vx-lire').onclick=function(){ if(!VX.a.paused&&!VX.a.en
 if(ecoute) ecoute.onclick=function(){ VX.geste=true; VX.on=true; try{ localStorage.setItem('efa-voix','on'); }catch(e){} VX.cle=''; vxJouer(true); };
 document.addEventListener('pointerdown',function(){ VX.geste=true; },{capture:true});
 document.getElementById('bz-go').onclick=function(){ VX.geste=true; aller('commencer'); };
+document.getElementById('aff-go').onclick=function(){ VX.geste=true; aller('commencer'); };
 
 /* ---------- Navigation ---------- */
 function aller(v,push){ if(!V[v]) v='accueil'; var h0=V[v](); if(v!=='accueil'){ S.der=v; sv(); } poser(h0,v); if(push!==false){ var h=v==='accueil'?location.pathname+location.search:'#'+v; try{ history.pushState({v:v},'',h); }catch(e){} } compte(v); }

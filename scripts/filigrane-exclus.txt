@@ -24,3 +24,4 @@ clone/assets/abonnement-hero.webp
 clone/assets/aig-hero-bureau.webp
 clone/assets/declic-bureau.webp
 clone/assets/tribunes-entree-elysee.webp
+clone/assets/affiche-bourse-par-ou-commencer.webp
