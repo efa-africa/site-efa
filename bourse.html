@@ -106,6 +106,7 @@ body{margin:0;background:#F1F7FA}
 .c.sug{box-shadow:0 0 0 2.5px var(--corail),0 6px 18px rgba(11,18,32,.06)}
 .c.sug .go{color:var(--ct)}
 .badge{position:absolute;top:12px;left:12px;z-index:1;background:var(--corail);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:4px 10px}
+.bz .c .badge,.bz .badge{background:var(--corail)!important;color:#fff!important}
 .c:not(:has(img)) .badge{position:static;align-self:flex-start;margin-bottom:2px}
 .pourquoi{margin-top:14px;font-size:15px;color:var(--ink2)}
 .pourquoi b{color:var(--nuit)}
@@ -270,7 +271,7 @@ V['a1-sortie']=function(){
     proche:['Cet argent sert à un projet proche.','Pour une somme dont vous aurez besoin dans moins de cinq ans, ou qui ne supporte pas une baisse, les actions sont risquées. Vous pouvez apprendre la Bourse sans y placer cet argent.']}[i];
   var f=S.fiche||{};
   return fil('a1-baisse')+prog('projet')+'<p class="sur">Votre résultat</p><h2 class="q">'+T[0]+'</h2><p class="q-s">'+T[1]+'</p>'
-  +(i!=='ok'?'<div class="carte"><h3>Ce que nous vous proposons</h3>'+liens(i==='clarifier'?[['atelier-reserve-securite.html?src=bourse','Construire ma réserve de sécurité','L’atelier pas à pas',PAYANT],['diagnostic.html?src=bourse','Faire mon diagnostic','Gratuit, en quelques minutes']]:[['atelier-placer-selon-horizon.html?src=bourse','Placer selon mon horizon','Où mettre un argent dont j’aurai besoin bientôt',PAYANT],['ou-garder-sa-reserve.html?src=bourse','Où garder une somme à court terme','Gratuit']])+'</div>':'')
+  +(i!=='ok'?'<div class="carte"><h3>Ce que nous vous proposons</h3>'+liens(i==='clarifier'?[['atelier-reserve-securite.html?src=bourse','Construire ma réserve de sécurité','L’atelier pas à pas','<em>gratuit</em>'],['diagnostic.html?src=bourse','Faire mon diagnostic','Gratuit, en quelques minutes']]:[['atelier-placer-selon-horizon.html?src=bourse','Placer selon mon horizon','Où mettre un argent dont j’aurai besoin bientôt','<em>gratuit</em>'],['ou-garder-sa-reserve.html?src=bourse','Où garder une somme à court terme','Gratuit']])+'</div>':'')
   +'<div class="carte"><h3>Ma fiche Projet et horizon</h3><p class="note" style="margin-top:0">Facultatif. Elle reste sur votre appareil.</p>'
   +'<div class="champ"><label for="f-obj">Mon objectif</label><input id="f-obj" maxlength="120" placeholder="Ex. : préparer la retraite, les études des enfants" value="'+esc(f.obj)+'"></div>'
   +'<div class="champ"><label for="f-date">Quand j’en aurai besoin</label><input id="f-date" maxlength="60" placeholder="Ex. : en 2035" value="'+esc(f.date)+'"></div>'
@@ -408,7 +409,7 @@ function ficheEntLignes(){ var e=S.ent||{}; if(!e.nom) return '';
   return '<h2>Ma fiche entreprise : '+esc(e.nom)+'</h2><p><b>Source :</b> '+esc(e.type||'—')+' · '+esc(e.titre||'')+' · publié le '+esc(e.date||'—')+' · consulté le '+esc(e.vu||'—')+(e.url?' · '+esc(e.url):'')+'</p><p><b>Extrait :</b> « '+esc(e.extrait||'—')+' »</p><p><b>Ma lecture :</b> '+esc(e.lecture||'—')+'</p><h2>Trois raisons favorables</h2><p>'+esc(e.pour||'—')+'</p><h2>Trois risques</h2><p>'+esc(e.risques||'—')+'</p><h2>Trois inconnues</h2><p>'+esc(e.inconnues||'—')+'</p><h2>Je réexamine ma décision si</h2><p>'+esc(e.reexamen||'—')+'</p>'; }
 V['a5-ordre']=function(){ return fil('a5')+prog('decision')+'<p class="sur">Préparer mon premier ordre</p><h2 class="q">Votre premier ordre se passe chez votre SGI. Voici comment le préparer.</h2>'
   +'<div class="carte"><ol><li><b>Ouvrez et alimentez votre compte</b> selon les instructions écrites de la SGI.</li><li><b>Précisez votre ordre :</b> le titre, la quantité, le type d’ordre et votre prix limite. Un ordre à cours limité vous protège d’un prix inattendu.</li><li><b>Demandez un récapitulatif</b> avec les frais estimés avant de valider.</li><li><b>Récupérez l’avis d’opéré</b> et vérifiez le prix, la quantité et les frais.</li></ol><p class="note">EFA ne reçoit ni fonds ni ordre. L’exécution se fait exclusivement chez votre SGI.</p></div>'
-  +'<div class="carte"><h3>Être accompagné, si vous le souhaitez</h3>'+liens([['coach-bourse.html?src=bourse','Mon premier ordre, parcours coaché','Un accompagnement approfondi, facultatif'],['premiers-pas-bourse.html?src=bourse&chapitre=5','Mes premiers pas · chapitre 5','Choisir sa SGI',PAYANT]])+'</div>'
+  +'<div class="carte"><h3>Être accompagné, si vous le souhaitez</h3>'+liens([['coach-bourse.html?src=bourse','Mon premier ordre, parcours coaché','Un accompagnement approfondi, facultatif',PAYANT],['premiers-pas-bourse.html?src=bourse&chapitre=5','Mes premiers pas · chapitre 5','Choisir sa SGI',PAYANT]])+'</div>'
   +'<div class="actions"><button type="button" class="bt p" data-act="ordre-lu">J’ai compris la méthode →</button></div>';
 };
 V.dossier=function(){ var f=S.fiches, pret=f.projet&&f.voie&&f.comparaison&&f.decision;
