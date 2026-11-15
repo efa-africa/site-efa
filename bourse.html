@@ -208,7 +208,7 @@ var ILL={'a1-horizon':'atelier-retraite.webp','a1-sortie':'benefice-patrimoine.w
  'a3':'atelier-diaspora.webp','a3-resultat':'atelier-placements.webp','a4-verif':'fiche-questions-sgi.webp',
  'a4-pays':'atelier-diaspora.webp','a4-resultat':'sgi-entree-paysage.webp','a4-fonds':'atelier-placements.webp',
  'a5-entreprise':'atelier-societe-cotee.webp','a5-ordre':'atelier-premier-ordre.webp','dossier':'accueil-coache-elysee.webp',
- 'b1':'accueil-investir.webp','b1-saisie':'efa-news-carnet.webp','b1-bilan':'accueil-investir.webp','b2-resultat':'accueil-investir.webp','b2-ligne':'acteurs-marche-jour.webp','analyses':'acteur-dcbr.webp'};
+ 'b1':'accueil-investir.webp','b1-saisie':'bourse-portefeuille-releve.webp','b1-bilan':'accueil-investir.webp','b2-resultat':'accueil-investir.webp','b2-ligne':'acteurs-marche-jour.webp','analyses':'acteur-dcbr.webp'};
 var PAYANT='<em>avec abonnement ou crédits</em>';
 var PRIX={'premiers-pas-bourse':'<em>2 chapitres offerts · puis 30 000 F</em>','atelier-lire-societe-cotee':'<em>1er chapitre offert · puis 50 000 F</em>','atelier-construire-son-portefeuille':'<em>1er chapitre offert · puis 30 000 F</em>','coach-bourse':'<em>1er module offert · puis 50 000 F</em>','atelier-placements-expliques':'<em>20 000 F ou abonnement</em>','atelier-portefeuille-factures':'<em>30 000 F ou abonnement</em>'};
 
@@ -254,7 +254,7 @@ V.accueil=function(){
   var reprise=S.der&&S.der!=='accueil'&&V[S.der];
   return '<p class="sur">Votre point de départ</p><h2 class="q">La Bourse, à votre point de départ.</h2><p class="q-s">Deux chemins. Vous pourrez passer de l’un à l’autre à tout moment.</p>'
   +'<div class="cartes">'+carte({go:'commencer',img:'bourse-premiers-pas.webp',t:'Je veux commencer',d:'Je découvre la BRVM, j’ai quelques bases, ou je cherche une SGI.',sug:!reprise&&!S.portefeuille,cta:'Commencer'})
-  +carte({go:'mon-portefeuille',img:'efa-news-carnet.webp',t:'J’ai déjà un portefeuille',d:'Je veux suivre, comprendre et analyser les titres que je possède.',cta:'Entrer'})+'</div>'
+  +carte({go:'mon-portefeuille',img:'bourse-portefeuille-releve.webp',t:'J’ai déjà un portefeuille',d:'Je veux suivre, comprendre et analyser les titres que je possède.',cta:'Entrer'})+'</div>'
   +(reprise?'<div class="actions"><button type="button" class="bt s" data-go="'+S.der+'">Reprendre mon parcours →</button><span class="note" style="margin:0">Vos réponses restent sur cet appareil.</span></div>':'');
 };
 V.commencer=function(){
@@ -435,7 +435,7 @@ V.dossier=function(){ var f=S.fiches, pret=f.projet&&f.voie&&f.comparaison&&f.de
 /* ---------- Parcours B ---------- */
 V['mon-portefeuille']=function(){ S.portefeuille=1; sv();
   return fil('accueil')+'<p class="sur">Je suis déjà sur le marché</p><h2 class="q">Vous avez déjà des titres. Comprenez ce qu’ils font dans votre portefeuille.</h2><p class="q-s">Entrez directement par votre besoin. Aucune saisie n’est obligatoire pour lire les analyses publiques.</p>'
-  +'<div class="cartes">'+carte({go:'b1',img:'efa-news-carnet.webp',t:'Comprendre mon portefeuille',d:'Ce que j’ai versé, ce que cela vaut, ce que cela m’a rapporté et coûté.',sug:true,cta:'Comprendre'})
+  +'<div class="cartes">'+carte({go:'b1',img:'bourse-portefeuille-releve.webp',t:'Comprendre mon portefeuille',d:'Ce que j’ai versé, ce que cela vaut, ce que cela m’a rapporté et coûté.',sug:true,cta:'Comprendre'})
   +carte({go:'analyses',img:'accueil-lancer-brvm-2.webp',t:'Voir les analyses qui me concernent',d:'Le marché, les sociétés, les documents officiels.',cta:'Lire'})
   +carte({go:'b2',img:'atelier-societe-cotee-2.webp',t:'Prendre une décision',d:'Un résultat, un cours qui bouge, un choix à revoir.',cta:'Décider avec méthode'})+'</div>';
 };
