@@ -18,88 +18,133 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
 <link rel="stylesheet" href="footer.css?v=20261102z">
 <style>
-body{margin:0;background:#F5EFE2}
-.bz{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--ligne:#E2D8C4;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--corail:#DA3C1B;--ct:#B8341A;--bleu:#1B71B2;--cyan:#56d3ee;--ok:#1E7A4C;
+body{margin:0;background:#F1F7FA}
+.bz{--nuit:#0B1220;--fond:#F1F7FA;--papier:#FFFFFF;--line:#DCE8ED;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--corail:#E44828;--ct:#B8341A;--bleu:#2188D6;--bleu-f:#1B71B2;--bleu-c:#EAF3FC;--cyan:#56d3ee;--vert:#1E8E57;
   --fd:"Libre Baskerville",Baskerville,Georgia,"Times New Roman",serif;--fb:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  background:var(--creme);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  background:var(--fond);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .bz *{box-sizing:border-box}.bz [hidden]{display:none!important}
 .bz h1,.bz h2,.bz h3{font-family:var(--fd);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;color:var(--nuit)}
 .bz p{margin:0}.bz h2:focus{outline:none}
-.bw{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-/* Porte */
-.bh{position:relative;background:var(--nuit);color:#fff;overflow:hidden}
-.bh img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
-.bh:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,18,32,.92) 0%,rgba(11,18,32,.6) 60%,rgba(11,18,32,.35) 100%)}
-.bh .bw{position:relative;z-index:1;padding-block:clamp(40px,7vw,84px) clamp(30px,5vw,56px)}
+.bw{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* Couverture, comme les ateliers */
+.couv{background:var(--nuit);color:#fff;padding-block:28px 26px}
+.couv .bw{display:grid;gap:22px;align-items:center}
+@media(min-width:820px){.couv .bw{grid-template-columns:1.3fr 1fr}}
 .sur{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ct)}
-.bh .sur{color:#F09680}
-.bh h1{color:#fff;font-size:clamp(34px,5.6vw,64px);max-width:15ch;margin-top:12px}
-.bh .chapo{color:#C9D1DE;font-size:clamp(17px,1.8vw,20px);max-width:56ch;margin-top:16px}
-.bh .prom{margin-top:18px;max-width:60ch;color:#E8EDF5;font-weight:600}
+.couv .sur{color:#F09680}
+.couv h1{color:#fff!important;font-size:clamp(30px,4.8vw,48px);margin-top:10px}
+.couv h1 em{font-style:normal;color:var(--cyan)}
+.couv .chapo{color:#E8EDF5;font-size:clamp(17px,2vw,19px);margin-top:12px;max-width:44ch}
+.couv .meta{color:#C9D1DE;font-size:14px;margin-top:10px}
+.couv .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.el{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:end}
+@media(min-width:820px){.el{grid-template-columns:1fr}}
+.el img{width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 20%;border-radius:16px;background:#111B2F}
+@media(min-width:820px){.el img{aspect-ratio:4/4.2}}
+.el b{display:block;font-family:var(--fd);font-size:20px;color:#fff}
+.el p{color:#C9D1DE;font-size:15px;margin-top:4px}
+.el small{display:block;color:#F09680;font-size:13px;font-weight:700;margin-top:6px}
+.couv.court{padding-block:14px}
+.couv.court .bw{grid-template-columns:1fr}
+.couv.court .chapo,.couv.court .meta,.couv.court .btns,.couv.court .el{display:none}
+.couv.court h1{font-size:clamp(20px,3vw,26px)}
+/* Voix d'Élysée, comme les ateliers */
+.voix{position:sticky;top:90px;z-index:20;display:flex;align-items:center;gap:10px;background:var(--nuit);color:#fff;border-radius:999px;padding:6px;margin:16px 0 0;box-shadow:0 6px 18px rgba(11,18,32,.18)}
+@media(max-width:720px){.voix{top:64px}}
+.voix img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:0 0 34px}
+.voix .vx-t{flex:1;min-width:0;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.voix .vx-t small{display:block;font-weight:400;color:#C9D1DE;font-size:12px}
+.voix button{border:0;border-radius:999px;min-height:38px;padding:0 14px;font:800 14px var(--fb);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.voix .vx-lire{background:#1F2C45;color:#fff;width:38px;padding:0;justify-content:center}
+.voix .vx-lire svg{width:16px;height:16px}
+.voix .vx-couper{background:var(--corail);color:#fff}
+.voix.coupee .vx-couper{background:#fff;color:var(--nuit)}.voix.coupee .vx-lire{display:none}
+.voix .barres{display:none;gap:2px;align-items:flex-end;height:14px;margin-left:6px;vertical-align:middle}
+.voix .barres i{width:3px;background:#6DB8F2;border-radius:2px;height:4px}
+.voix.joue .barres{display:inline-flex}.voix.joue .barres i{animation:vxb .9s ease-in-out infinite}
+.voix.joue .barres i:nth-child(2){animation-delay:.15s}.voix.joue .barres i:nth-child(3){animation-delay:.3s}
+@keyframes vxb{0%,100%{height:4px}50%{height:14px}}
+@media(prefers-reduced-motion:reduce){.voix.joue .barres i{animation:none;height:10px}}
 /* Écran */
-.ecr{padding-block:28px 56px}
-.fil{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-bottom:18px;font-size:14px}
-.fil button,.lien2{font:inherit;font-weight:700;color:var(--ink2);background:none;border:0;padding:6px 0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--ligne);text-underline-offset:4px}
-.prog{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 20px;padding:0;list-style:none}
-.prog li{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;background:#ece3d1;color:var(--ink3)}
-.prog li.on{background:var(--nuit);color:#fff}.prog li.ok{background:#dcefe3;color:var(--ok)}
-.q{font-size:clamp(26px,3.6vw,40px);max-width:24ch}
-.q-s{color:var(--ink2);margin-top:10px;max-width:62ch}
-.cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:22px}
-.c{position:relative;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;background:var(--papier);border:0;border-radius:14px;padding:0;overflow:hidden;cursor:pointer;text-decoration:none;box-shadow:0 1px 0 rgba(11,18,32,.06);transition:transform .15s,box-shadow .15s}
+.ecr{padding-block:20px 48px}
+.fil{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;margin-bottom:14px;font-size:14px}
+.fil button,.lien2{font:700 15px var(--fb);color:var(--bleu-f);background:none;border:0;padding:6px 0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+.fil button{font-size:14px;color:var(--ink2);text-decoration-color:var(--line)}
+.prog{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 18px;padding:0;list-style:none}
+.prog li{font-size:13px;font-weight:700;padding:8px 8px 7px;border-radius:12px;background:var(--papier);color:var(--ink3);line-height:1.15}
+.prog li i{display:block;height:5px;border-radius:9px;background:var(--line);margin-top:6px}
+.prog li.on{background:var(--nuit);color:#fff}.prog li.on i{background:var(--cyan)}
+.prog li.ok i{background:var(--vert)}.prog li.ok{color:var(--vert)}
+@media(max-width:480px){.prog li{font-size:12px;padding:7px 6px}}
+.ill{margin:0 0 18px;border-radius:16px;overflow:hidden;background:#dfe9ef}
+.ill img{display:block;width:100%;height:260px!important;max-height:none;object-fit:cover;object-position:50% 35%}
+@media(max-width:600px){.ill img{height:170px!important}}
+.c img{height:auto}
+.q{font-size:clamp(24px,3.4vw,34px);max-width:26ch;margin-top:6px}
+.q-s{color:var(--ink2);margin-top:8px;max-width:60ch}
+.cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:20px}
+.c{position:relative;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;background:var(--papier);border:0;border-radius:16px;padding:0;overflow:hidden;cursor:pointer;text-decoration:none;box-shadow:0 6px 18px rgba(11,18,32,.06);transition:transform .15s,box-shadow .15s}
 .c:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(11,18,32,.1)}
-.c:focus-visible,.bt:focus-visible,.fil button:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
-.c img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.c .ci{display:flex;flex-direction:column;gap:6px;padding:18px 20px 20px;flex:1}
-.c b{font-family:var(--fd);font-size:clamp(19px,1.7vw,22px);line-height:1.18;color:var(--nuit)}
-.c span{color:var(--ink2)}
-.c .go{margin-top:auto;padding-top:8px;font-weight:800;color:var(--ct)}
-.c.sug{box-shadow:0 0 0 3px var(--nuit)}
-.badge{position:absolute;top:12px;left:12px;z-index:1;background:var(--nuit);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:4px 10px}
-.c:not(:has(img)) .badge{position:static;align-self:flex-start;margin-bottom:4px}
+.c:focus-visible,.bt:focus-visible,.fil button:focus-visible,.lien2:focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.c img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.c .ci{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px;flex:1}
+.c b{font-family:var(--fd);font-size:clamp(18px,1.7vw,21px);line-height:1.18;color:var(--nuit)}
+.c span{color:var(--ink2);font-size:16px}
+.c .go{margin-top:auto;padding-top:6px;font-weight:800;color:var(--bleu-f)}
+.c.sug{box-shadow:0 0 0 2.5px var(--corail),0 6px 18px rgba(11,18,32,.06)}
+.c.sug .go{color:var(--ct)}
+.badge{position:absolute;top:12px;left:12px;z-index:1;background:var(--corail);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:4px 10px}
+.c:not(:has(img)) .badge{position:static;align-self:flex-start;margin-bottom:2px}
 .pourquoi{margin-top:14px;font-size:15px;color:var(--ink2)}
 .pourquoi b{color:var(--nuit)}
-.rep{display:grid;gap:10px;margin-top:22px;max-width:640px}
-.rep .c{flex-direction:row;align-items:center;padding:16px 18px;gap:12px}
-.rep .c b{font-family:var(--fb);font-size:18px;font-weight:700}
+.rep{display:grid;gap:10px;margin-top:18px;max-width:640px}
+.rep .c{flex-direction:row;align-items:center;padding:15px 18px;gap:12px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.rep .c:hover{box-shadow:inset 0 0 0 2px var(--nuit)}
+.rep .c.sug{box-shadow:inset 0 0 0 2.5px var(--corail)}
+.rep .c b{font-family:var(--fb);font-size:17px;font-weight:700}
 .rep .c .badge{position:static;margin:0 0 0 auto;flex:none}
-.carte{background:var(--papier);border-radius:14px;padding:22px;margin-top:18px}
-.carte h3{font-size:clamp(20px,2vw,24px);margin-bottom:8px}
-.carte ul,.carte ol{margin:8px 0 0;padding-left:20px}.carte li{margin:5px 0}
-.encadre{background:var(--nuit);color:#fff;border-radius:14px;padding:18px 20px;margin-top:18px}
+.rep .c:disabled{cursor:default;transform:none}
+.carte{background:var(--papier);border-radius:16px;padding:20px;margin-top:16px;box-shadow:0 6px 18px rgba(11,18,32,.06)}
+.carte h3{font-size:clamp(19px,2vw,22px);margin-bottom:8px}
+.carte ul,.carte ol{margin:8px 0 0;padding-left:20px}.carte li{margin:6px 0}
+.encadre{background:var(--nuit);color:#fff;border-radius:16px;padding:18px 20px;margin-top:16px}
 .encadre b{color:#fff}.encadre p+p{margin-top:8px}
-.verdict{background:var(--corail);color:#fff;border-radius:2px;padding:16px 18px;margin-top:18px;font-weight:600}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center}
-.bt{display:inline-flex;align-items:center;gap:8px;font:800 16px/1.2 var(--fb);min-height:46px;padding:12px 22px;border-radius:8px;border:0;cursor:pointer;text-decoration:none!important}
-.bt.p{background:var(--corail);color:#fff!important}.bt.s{background:var(--nuit);color:#fff!important}.bt.g{background:#ece3d1;color:var(--nuit)!important}
-.liens{display:grid;gap:10px;margin-top:14px}
-.liens a{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff;border-radius:10px;padding:13px 16px;text-decoration:none;color:var(--nuit);font-weight:700}
+.exemple{background:var(--bleu-c);border-radius:12px;padding:12px 16px;margin-top:12px;font-size:16px}
+.actions{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:20px;align-items:center}
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:800 16px/1.2 var(--fb);min-height:50px;padding:12px 22px;border-radius:8px;border:0;cursor:pointer;text-decoration:none!important}
+.bt.p{background:var(--corail);color:#fff!important}.bt.s{background:var(--nuit);color:#fff!important}.bt.b{background:var(--bleu-f);color:#fff!important}.bt.w{background:#fff;color:var(--nuit)!important}
+.bt svg{width:16px;height:16px}
+.liens{display:grid;gap:8px;margin-top:12px}
+.liens a{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--fond);border-radius:12px;padding:12px 16px;text-decoration:none;color:var(--nuit);font-weight:700}
 .liens a small{display:block;font-weight:400;color:var(--ink2);font-size:14px}
 .liens a em{font-style:normal;font-size:12px;font-weight:800;color:var(--ink3);white-space:nowrap}
-.liens a:hover{background:#fff8ec}
-.seq{display:grid;gap:12px;margin-top:16px}
-.seq div{background:#fff;border-radius:10px;padding:14px 16px}
-.seq h4{margin:0 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
-.quiz{margin-top:16px}
-.quiz .rep{margin-top:10px}
-.expl{margin-top:12px;padding:14px 16px;border-radius:10px;background:#e8f2ea;color:#173d29}
-.expl.ko{background:#fbe7e1;color:#5b1d10}
+.liens a:hover{background:var(--bleu-c)}
+.seq{display:grid;gap:10px;margin-top:16px}
+@media(min-width:700px){.seq{grid-template-columns:1fr 1fr}.seq .large{grid-column:1/-1}}
+.seq div{background:var(--papier);border-radius:14px;padding:14px 16px;box-shadow:0 6px 18px rgba(11,18,32,.05)}
+.seq h4{margin:0 0 4px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--bleu-f)}
+.seq .large{background:var(--bleu-c);box-shadow:none}
+.expl{margin-top:12px;padding:14px 16px;border-radius:12px;background:#F2FBF6;color:#173d29}
+.expl.ko{background:#FDEBE6;color:#5b1d10}
 .champ{display:grid;gap:6px;margin-top:14px;max-width:560px}
 .champ label{font-weight:700;color:var(--nuit)}
-.champ input,.champ select,.champ textarea{font:inherit;padding:11px 12px;border-radius:8px;border:1px solid var(--ligne);background:#fff;color:var(--ink)}
-.tab{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border-radius:10px;overflow:hidden}
-.tab th,.tab td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid #efe7d6}
-.tab th{background:#f3ecdd;color:var(--nuit);font-weight:800}
-.scroll{overflow-x:auto;margin-top:14px}
+.champ input,.champ select,.champ textarea{font:inherit;padding:11px 12px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:#fff;color:var(--ink)}
+.champ input:focus,.champ select:focus,.champ textarea:focus{outline:none;box-shadow:inset 0 0 0 2px var(--bleu)}
+.tab{width:100%;border-collapse:collapse;font-size:15px;background:#fff}
+.tab th,.tab td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tab thead th{background:var(--nuit);color:#fff;font-weight:800}
+.tab tbody th{color:var(--nuit);font-weight:800}
+.scroll{overflow-x:auto;margin-top:14px;border-radius:14px;box-shadow:0 6px 18px rgba(11,18,32,.06)}
 .note{font-size:14px;color:var(--ink3);margin-top:14px}
-.src{display:grid;gap:10px;margin-top:14px}
-.src a{display:block;background:#fff;border-radius:10px;padding:12px 16px;text-decoration:none;color:var(--nuit)}
+.src{display:grid;gap:8px;margin-top:12px}
+.src a{display:block;background:var(--fond);border-radius:12px;padding:12px 16px;text-decoration:none;color:var(--nuit)}
 .src a b{display:block}.src a small{color:var(--ink2)}
-.onglets{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-.onglets button{font:700 15px var(--fb);padding:9px 16px;border-radius:999px;border:0;background:#ece3d1;color:var(--nuit);cursor:pointer}
-.onglets button[aria-selected=true]{background:var(--nuit);color:#fff}
-.cadre{font-size:14px;color:var(--ink3);border-top:1px solid var(--ligne);margin-top:36px;padding-top:16px;max-width:72ch}
-@media(max-width:600px){.bh h1{max-width:none}.rep .c{flex-wrap:wrap}.rep .c .badge{margin-left:0}}
+.onglets{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.onglets button{font:700 15px var(--fb);padding:9px 16px;border-radius:999px;border:0;background:#fff;color:var(--nuit);cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--line)}
+.onglets button[aria-selected=true]{background:var(--nuit);color:#fff;box-shadow:none}
+.cadre{font-size:14px;color:var(--ink3);border-top:1px solid var(--line);margin-top:32px;padding-top:16px;max-width:72ch}
+.cadre a{color:var(--bleu-f)}
+@media(max-width:600px){.rep .c{flex-wrap:wrap}.rep .c .badge{margin-left:0}}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261113a">
 </head>
@@ -107,16 +152,22 @@ body{margin:0;background:#F5EFE2}
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <div class="bz" data-garde>
 <main id="contenu">
-  <section class="bh" aria-labelledby="bz-t">
-    <img src="clone/assets/accueil-lancer-brvm.webp" alt="" width="1600" height="900" fetchpriority="high">
+  <section class="couv" id="couv" aria-labelledby="bz-t">
     <div class="bw">
-      <p class="sur">Investir à la Bourse (BRVM)</p>
-      <h1 id="bz-t">Je veux investir à la BRVM. Par où commencer ?</h1>
-      <p class="chapo">Vous découvrez la Bourse ou vous avez déjà des titres ? Nous vous guidons vers la prochaine décision utile.</p>
-      <p class="prom">Où que vous en soyez, EFA vous indique le prochain pas utile. Vous comprenez ce que vous possédez, ce que cela coûte et ce qu’il reste à vérifier avant de décider.</p>
+      <div>
+        <p class="sur">Investir à la Bourse (BRVM)</p>
+        <h1 id="bz-t">Je veux investir à la BRVM. <em>Par où commencer ?</em></h1>
+        <p class="chapo">Où que vous en soyez, nous vous indiquons le prochain pas utile : ce que vous possédez, ce que cela coûte, ce qu’il reste à vérifier.</p>
+        <p class="meta">Gratuit · Sans compte · Vos réponses restent sur votre téléphone</p>
+        <div class="btns"><button type="button" class="bt p" id="bz-go">Commencer</button><button type="button" class="bt w" id="bz-ecoute" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>Écouter mon mot de bienvenue</button></div>
+      </div>
+      <div class="el"><img src="clone/assets/elysee-bienvenue.jpg" alt="Élysée Johnson, fondateur d’EFA" width="600" height="600"><div><b>Bienvenue.</b><p>Je vous accompagne à chaque écran, de votre première question à votre première décision.</p><small>Élysée Johnson, fondateur d’EFA</small></div></div>
     </div>
   </section>
-  <section class="ecr" aria-live="polite"><div class="bw" id="ecran"></div></section>
+  <section class="ecr" aria-live="polite"><div class="bw">
+    <div class="voix" id="voix" role="region" aria-label="Voix d’Élysée" hidden><img src="clone/assets/elysee-portrait-carre.jpg" alt=""><span class="vx-t">Voix d’Élysée<span class="barres" aria-hidden="true"><i></i><i></i><i></i></span><small id="vx-s">Touchez ▶ pour écouter</small></span><button type="button" class="vx-lire" id="vx-lire" aria-label="Écouter cet écran"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></button><button type="button" class="vx-couper" id="vx-couper">Couper la voix</button></div>
+    <div id="ecran" style="margin-top:16px"></div>
+  </div></section>
   <div class="bw"><p class="cadre">EFA est une plateforme d’éducation financière. Nous ne recevons ni argent ni ordre, ne fournissons aucun service d’investissement et ne recommandons aucun titre. L’agrément d’une SGI ou d’un fonds n’est pas une garantie de rendement. Les ordres se passent uniquement chez votre SGI. <a href="methode.html">Notre méthode</a></p></div>
   <div style="height:40px"></div>
 </main>
@@ -133,6 +184,13 @@ var E=document.getElementById('ecran');
 function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 function compte(n){ try{ if(window.goatcounter&&goatcounter.count) goatcounter.count({path:'bourse-'+n,title:'Porte Bourse',event:true}); }catch(e){} }
 var IMG='clone/assets/';
+var ILL={'a1-horizon':'atelier-retraite.webp','a1-reserve':'univers-epargne.webp','a1-baisse':'atelier-ipo-emprunts.webp','a1-sortie':'benefice-patrimoine.webp',
+ 'a2-action':'acteur-emetteurs.webp','a2-obligation':'acteurs-simulation-jour.webp','a2-fonds':'atelier-placements.webp',
+ 'a2-acquis':'atelier-cadres.webp','a2-acquis-2':'atelier-cadres.webp','a2-acquis-3':'atelier-cadres.webp','a2-acquis-fin':'accueil-coache-elysee.webp',
+ 'a3':'atelier-diaspora.webp','a3-resultat':'atelier-placements.webp','a4-verif':'fiche-questions-sgi.webp','a4-verif-2':'fiche-questions-sgi.webp','a4-verif-fin':'fiche-questions-sgi.webp',
+ 'a4-pays':'atelier-diaspora.webp','a4-montant':'univers-epargne.webp','a4-service':'coach-patrimoine.webp','a4-resultat':'sgi-entree-paysage.webp','a4-fonds':'atelier-placements.webp',
+ 'a5-entreprise':'atelier-societe-cotee.webp','a5-ordre':'atelier-premier-ordre.webp','dossier':'accueil-coache-elysee.webp',
+ 'b1':'accueil-investir.webp','b2-resultat':'accueil-investir.webp','b2-ligne':'acteurs-marche-jour.webp','analyses':'acteur-dcbr.webp'};
 var PAYANT='<em>avec abonnement ou crédits</em>';
 
 /* ---------- Composants ---------- */
@@ -145,7 +203,7 @@ function carte(o){ var a=o.href?'a href="'+o.href+'"':'button type="button"', fi
   return '<'+a+' class="c'+(o.sug?' sug':'')+'"'+data+'>'+(o.sug?'<span class="badge">Conseillé</span>':'')+(o.img?'<img src="'+IMG+o.img+'" alt="" loading="lazy" decoding="async">':'')+'<span class="ci"><b>'+o.t+'</b>'+(o.d?'<span>'+o.d+'</span>':'')+'<span class="go">'+(o.cta||'Choisir')+' →</span></span></'+fin+'>'; }
 function reponses(cle,opts,sug){ return '<div class="rep" role="group">'+opts.map(function(o,i){ return '<button type="button" class="c'+(i===sug?' sug':'')+'" data-rep="'+cle+'" data-v="'+i+'"><b>'+o+'</b>'+(i===sug?'<span class="badge">Conseillé</span>':'')+'</button>'; }).join('')+'</div>'; }
 function liens(L){ return '<div class="liens">'+L.map(function(x){ return '<a href="'+x[0]+'"><span>'+x[1]+(x[2]?'<small>'+x[2]+'</small>':'')+'</span>'+(x[3]||'<span aria-hidden="true">→</span>')+'</a>'; }).join('')+'</div>'; }
-function poser(h,dataSug){ E.innerHTML=h; window.scrollTo({top:Math.max(0,E.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); var t=E.querySelector('h2'); if(t){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
+function poser(h,v){ var im=v&&ILL[v]; if(im){ var i=h.indexOf('<p class="sur">'); if(i>=0) h=h.slice(0,i)+'<figure class="ill"><img src="'+IMG+im+'" alt="" width="1600" height="700" decoding="async"></figure>'+h.slice(i); } E.innerHTML=h; var cv=document.getElementById('couv'); if(cv) cv.classList.toggle('court',v!=='accueil'); vxEcran(v); window.scrollTo({top:Math.max(0,E.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); var t=E.querySelector('h2'); if(t){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
 function telecharger(nom,titre,lignes){ var h='<!doctype html><meta charset="utf-8"><title>'+esc(titre)+'</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:720px;margin:32px auto;padding:0 16px;color:#2A3142}h1{font:700 26px Georgia,serif;color:#0B1220}h2{font:700 18px Georgia,serif;margin-top:22px;color:#0B1220}li{margin:4px 0}small{color:#5F6676}</style><h1>'+esc(titre)+'</h1><p><small>EFA · efa.africa/bourse · '+new Date().toLocaleDateString('fr-FR')+'</small></p>'+lignes+'<p><small>Document personnel d’apprentissage. Ce n’est pas un conseil en investissement. Vos relevés et avis d’opéré de la SGI restent les pièces de référence.</small></p>';
   try{ var b=new Blob([h],{type:'text/html'}), a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=nom+'.html'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },500); }catch(e){} compte('fiche-'+nom); }
 
@@ -166,7 +224,7 @@ function r(k){ return S.rep[k]; }
 var V={};
 V.accueil=function(){
   var reprise=S.der&&S.der!=='accueil'&&V[S.der];
-  return '<p class="sur">Votre point de départ</p><h2 class="q">La Bourse, à votre point de départ.</h2><p class="q-s">Deux chemins. Choisissez celui qui vous ressemble aujourd’hui : vous pourrez passer de l’un à l’autre à tout moment.</p>'
+  return '<p class="sur">Votre point de départ</p><h2 class="q">La Bourse, à votre point de départ.</h2><p class="q-s">Deux chemins. Vous pourrez passer de l’un à l’autre à tout moment.</p>'
   +'<div class="cartes">'+carte({go:'commencer',img:'bourse-premiers-pas.webp',t:'Je veux commencer',d:'Je découvre la BRVM, j’ai quelques bases, ou je cherche une SGI.',sug:!reprise&&!S.portefeuille,cta:'Commencer'})
   +carte({go:'mon-portefeuille',img:'efa-news-carnet.webp',t:'J’ai déjà un portefeuille',d:'Je veux suivre, comprendre et analyser les titres que je possède.',cta:'Entrer'})+'</div>'
   +(reprise?'<div class="actions"><button type="button" class="bt s" data-go="'+S.der+'">Reprendre mon parcours →</button><span class="note" style="margin:0">Vos réponses restent sur cet appareil.</span></div>':'');
@@ -231,13 +289,13 @@ var ACTIFS={
   q:['Un fonds agréé est-il garanti ?',['Oui, l’agrément protège mon capital','Non, l’agrément n’est pas une garantie de rendement'],1,'C’est cela : l’agrément contrôle la société et ses règles, il ne garantit ni le capital ni le rendement.']}
 };
 V.a2=function(){ var vu=S.vus||{}, n=Object.keys(vu).length;
-  return fil('commencer')+prog('voie')+'<p class="sur">Comprendre</p><h2 class="q">Qu’est-ce que je peux posséder ?</h2><p class="q-s">Trois familles. Chacune se lit en deux à quatre minutes, avec un exemple en francs et une question pour vérifier.</p>'
+  return fil('commencer')+prog('voie')+'<p class="sur">Comprendre</p><h2 class="q">Qu’est-ce que je peux posséder ?</h2><p class="q-s">Trois familles, deux à quatre minutes chacune, avec un exemple en francs.</p>'
   +'<div class="cartes">'+['action','obligation','fonds'].map(function(k,i){ var a=ACTIFS[k]; return carte({go:'a2-'+k,img:a.img,t:a.t+(vu[k]?' ✓':''),d:a.d,sug:!vu[k]&&Object.keys(vu).length===i,cta:vu[k]?'Revoir':'Lire'}); }).join('')+'</div>'
   +'<div class="actions"><button type="button" class="bt '+(n>=3?'p':'g')+'" data-go="a3">J’ai compris, choisir ma voie →</button>'+(n<3?'<span class="note" style="margin:0">'+n+' sur 3 lues</span>':'')+'</div>'
   +'<div class="carte"><h3>Pour aller plus loin</h3>'+liens([['premiers-pas-bourse.html?src=bourse&chapitre=2','Mes premiers pas en Bourse · chapitre 2','Comprendre le terrain : la BRVM, ses acteurs, actions et obligations',PAYANT],['bourse-essentiel.html?src=bourse','L’essentiel de la Bourse','Les notions de base, en révision rapide'],['opcvm-fcpe.html?src=bourse','OPCVM et FCPE','Comprendre les fonds']])+'</div>';
 };
 ['action','obligation','fonds'].forEach(function(k){ V['a2-'+k]=function(){ var a=ACTIFS[k];
-  return fil('a2','Les trois familles')+prog('voie')+'<p class="sur">Ce que je peux posséder</p><h2 class="q">'+a.t+'</h2><div class="seq">'+a.s.map(function(x){ return '<div><h4>'+x[0]+'</h4><p>'+x[1]+'</p></div>'; }).join('')+'</div>'
+  return fil('a2','Les trois familles')+prog('voie')+'<p class="sur">Ce que je peux posséder</p><h2 class="q">'+a.t+'</h2><div class="seq">'+a.s.map(function(x,j){ return '<div'+(j===a.s.length-1?' class="large"':'')+'><h4>'+x[0]+'</h4><p>'+x[1]+'</p></div>'; }).join('')+'</div>'
   +'<div class="carte quiz"><h3>'+a.q[0]+'</h3><div class="rep">'+a.q[1].map(function(o,i){ return '<button type="button" class="c" data-quiz="'+k+'" data-v="'+i+'"><b>'+o+'</b></button>'; }).join('')+'</div><div id="qz"></div></div>';
 }; });
 /* Contrôle des acquis, pour « J'ai déjà les bases » */
@@ -282,7 +340,7 @@ V['a4-resultat']=function(){ var m=r('montant'), s=r('service'), p=r('pays');
   var conseil=[ 'Avec moins de 100 000 F, le courtage minimum par ordre et les droits de garde annuels peuvent peser lourd : demandez le montant minimum facturé par ordre, en francs.', 'Entre 100 000 F et 1 million, comparez le coût total d’un achat, d’une vente et d’une année de garde pour votre montant.', 'Au-delà de 1 million, demandez si les taux de courtage baissent par palier et ce que coûte le transfert de vos titres vers une autre SGI.'][m];
   var serv=['Demandez la grille tarifaire écrite à au moins deux SGI et calculez le coût d’un achat de votre montant chez chacune.','Demandez si l’ouverture se fait entièrement à distance, quels justificatifs sont demandés et si le compte se suit en ligne.','Demandez qui sera votre interlocuteur, comment le joindre et dans quel délai il répond.'][s];
   return fil('a4-service')+prog('comparaison')+'<p class="sur">Votre comparaison</p><h2 class="q">Données insuffisantes pour classer les SGI.</h2>'
-  +'<p class="q-s">Nous n’avons pas encore vérifié, pour chaque SGI, son agrément sur le registre de l’AMF-UMOA et sa grille tarifaire écrite. Tant que ce n’est pas fait, nous ne vous montrons aucun classement ni aucune « meilleure SGI ». Voici comment comparer vous-même, avec vos critères.</p>'
+  +'<p class="q-s">Tant que l’agrément et la grille écrite de chaque SGI ne sont pas vérifiés, nous ne montrons aucun classement. Voici comment comparer vous-même.</p>'
   +'<div class="encadre"><p><b>Vos critères :</b> '+esc(Q.pays[p])+' · '+esc(Q.montant[m])+' · '+esc(Q.service[s])+'.</p><p>'+conseil+'</p><p>'+serv+'</p></div>'
   +'<div class="carte"><h3>Trois étapes</h3><ol><li><b>Listez deux ou trois SGI</b> qui couvrent votre pays, dans la liste publiée par la BRVM.</li><li><b>Vérifiez leur agrément</b> sur le registre officiel de l’AMF-UMOA : nom exact et numéro.</li><li><b>Posez-leur les mêmes questions</b>, par écrit, et comparez les réponses. Une information manquante ne vaut jamais zéro.</li></ol>'
   +liens([['sgi.html?src=bourse','La liste des SGI de la BRVM','Coordonnées et frais relevés, à confirmer auprès de chaque SGI'],['https://www.amf-umoa.org/pratique/verification/agrement','Vérifier un agrément · AMF-UMOA','Le registre officiel','<em>site officiel ↗</em>'],['questions-a-poser-a-sa-sgi.html?src=bourse','Dix questions à poser à sa SGI','Avec la fiche à imprimer']])+'</div>'
@@ -362,13 +420,39 @@ V.analyses=function(){ var o=S.ong||'marche';
   +'<div class="carte"><h3>Les documents officiels</h3><div class="src">'+[['https://bfin.brvm.org/boc.aspx','Bulletin officiel de la cote (BOC)','BRVM · cours et volumes de chaque séance'],['https://www.brvm.org/fr/rapports-societes-cotees','Rapports des sociétés cotées','BRVM · états financiers et rapports annuels'],['https://www.brvm.org/fr/marche/avis-et-publications/avis','Avis et publications','BRVM · dividendes, suspensions, opérations'],['https://www.brvm.org/fr/valeurs-liquidative','Valeurs liquidatives des OPCVM','BRVM'],['https://www.amf-umoa.org/pratique/verification/agrement','Vérification d’agrément','AMF-UMOA · SGI, sociétés de gestion']].map(function(x){ return '<a href="'+x[0]+'"><b>'+x[1]+' ↗</b><small>'+x[2]+'</small></a>'; }).join('')+'</div><p class="note">Toujours lire la date du document. Une analyse EFA se distingue de la source : elle ne la remplace pas.</p></div>';
 };
 
+/* ---------- Voix d'Élysée : un clip par écran, affiché seulement si le MP3 est en ligne ---------- */
+var VX={dir:'audio/bourse/',v:1,on:true,cle:'',a:new Audio(),ex:{},geste:false}, bar=document.getElementById('voix'), ecoute=document.getElementById('bz-ecoute');
+try{ VX.on=localStorage.getItem('efa-voix')!=='off'; }catch(e){}
+VX.a.preload='auto';
+var IC_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>', IC_PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>';
+function dispo(k,cb){ if(k in VX.ex&&VX.ex[k]!==null) return cb(VX.ex[k]); VX.ex[k]=null;
+  fetch(VX.dir+k+'.mp3?v='+VX.v,{method:'HEAD',cache:'no-store'}).then(function(r){ VX.ex[k]=r.ok; },function(){ VX.ex[k]=false; }).then(function(){ cb(VX.ex[k]); }); }
+function vxUI(){ var joue=!VX.a.paused&&!VX.a.ended; bar.classList.toggle('coupee',!VX.on); bar.classList.toggle('joue',VX.on&&joue);
+  document.getElementById('vx-couper').textContent=VX.on?'Couper la voix':'Réactiver la voix';
+  document.getElementById('vx-s').textContent=VX.on?(joue?'Élysée vous parle':'Touchez ▶ pour écouter'):'Vous avancez seul';
+  var l=document.getElementById('vx-lire'); l.innerHTML=joue?IC_PAUSE:IC_PLAY; l.setAttribute('aria-label',joue?'Mettre en pause':'Écouter cet écran');
+  bar.hidden=VX.ex[VX.ecran]!==true; if(ecoute) ecoute.hidden=!(VX.ecran==='accueil'&&VX.ex.accueil===true&&!(joue&&VX.cle==='accueil')); }
+function vxJouer(force){ var k=VX.ecran; if(!k||!VX.on||VX.ex[k]!==true){ vxUI(); return; }
+  if(k!==VX.cle){ VX.cle=k; VX.a.src=VX.dir+k+'.mp3?v='+VX.v; } else if(!force&&VX.a.ended){ vxUI(); return; }
+  if(force) try{ VX.a.currentTime=0; }catch(e){}
+  var p=VX.a.play(); if(p&&p.then) p.then(vxUI,vxUI); vxUI(); }
+var VX_ALIAS={'b2-resultat':'b1'};
+function vxEcran(v){ v=VX_ALIAS[v]||v; VX.ecran=v; if(VX.cle&&VX.cle!==v){ try{ VX.a.pause(); }catch(e){} }
+  dispo(v,function(){ if(VX.ecran!==v) return; if(VX.on&&VX.geste&&v!==VX.cle) vxJouer(false); else vxUI(); }); }
+['play','pause','ended'].forEach(function(ev){ VX.a.addEventListener(ev,vxUI); });
+document.getElementById('vx-couper').onclick=function(){ VX.on=!VX.on; try{ localStorage.setItem('efa-voix',VX.on?'on':'off'); }catch(e){} if(VX.on){ VX.cle=''; vxJouer(true); } else { try{ VX.a.pause(); }catch(e){} vxUI(); } };
+document.getElementById('vx-lire').onclick=function(){ if(!VX.a.paused&&!VX.a.ended){ VX.a.pause(); } else vxJouer(VX.a.ended||VX.ecran!==VX.cle); };
+if(ecoute) ecoute.onclick=function(){ VX.geste=true; VX.on=true; try{ localStorage.setItem('efa-voix','on'); }catch(e){} VX.cle=''; vxJouer(true); };
+document.addEventListener('pointerdown',function(){ VX.geste=true; },{capture:true});
+document.getElementById('bz-go').onclick=function(){ VX.geste=true; aller('commencer'); };
+
 /* ---------- Navigation ---------- */
-function aller(v,push){ if(!V[v]) v='accueil'; var h0=V[v](); if(v!=='accueil'){ S.der=v; sv(); } poser(h0); if(push!==false){ var h=v==='accueil'?location.pathname+location.search:'#'+v; try{ history.pushState({v:v},'',h); }catch(e){} } compte(v); }
+function aller(v,push){ if(!V[v]) v='accueil'; var h0=V[v](); if(v!=='accueil'){ S.der=v; sv(); } poser(h0,v); if(push!==false){ var h=v==='accueil'?location.pathname+location.search:'#'+v; try{ history.pushState({v:v},'',h); }catch(e){} } compte(v); }
 window.addEventListener('popstate',function(e){ aller((e.state&&e.state.v)||(location.hash.slice(1)||'accueil'),false); });
 E.addEventListener('click',function(ev){
   var b=ev.target.closest('[data-go],[data-rep],[data-act],[data-quiz],[data-acq],[data-ong]'); if(!b) return;
   if(b.dataset.go){ ev.preventDefault(); aller(b.dataset.go); return; }
-  if(b.dataset.ong){ S.ong=b.dataset.ong; sv(); poser(V.analyses()); return; }
+  if(b.dataset.ong){ S.ong=b.dataset.ong; sv(); poser(V.analyses(),'analyses'); return; }
   if(b.dataset.rep){ var k=b.dataset.rep; S.rep[k]=+b.dataset.v; sv(); aller(SUITE[k]); return; }
   if(b.dataset.quiz){ var a=ACTIFS[b.dataset.quiz], ok=+b.dataset.v===a.q[2]; S.vus=S.vus||{}; S.vus[b.dataset.quiz]=1; sv();
     E.querySelectorAll('[data-quiz]').forEach(function(x){ x.disabled=true; });
@@ -392,7 +476,7 @@ E.addEventListener('click',function(ev){
 });
 var dep=(location.hash||'').slice(1); if(!V[dep]) dep='accueil';
 try{ history.replaceState({v:dep},'',dep==='accueil'?location.pathname+location.search:'#'+dep); }catch(e){}
-var h1=V[dep](); if(dep!=='accueil'){ S.der=dep; sv(); } poser(h1); E.ownerDocument.defaultView.scrollTo(0,0);
+var h1=V[dep](); if(dep!=='accueil'){ S.der=dep; sv(); } poser(h1,dep); E.ownerDocument.defaultView.scrollTo(0,0);
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
