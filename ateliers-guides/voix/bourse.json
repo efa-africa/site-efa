@@ -1,37 +1,192 @@
-{"id":"bourse","titre":"Porte Bourse · Je veux investir à la BRVM","dossier":"audio/bourse/","clips":[
-["accueil","Accueil de la porte","Bonjour, et bienvenue. Moi, c'est Élysée Johnson. Vous voulez investir à la BRVM, mais vous ne savez pas par où commencer ? C'est normal, et c'est exactement pour ça que cette page existe. Choisissez votre chemin : je vous accompagne à chaque écran."],
-["commencer","Où en êtes-vous ?","Pas de mauvaise réponse ici. Dites-moi simplement où vous en êtes, et je vous emmène au bon endroit. Vous partez de zéro ? Commencez par la première carte."],
-["a1-horizon","Quand aurez-vous besoin de cet argent ?","Première question, la plus importante. Quand aurez-vous besoin de cet argent ? Répondez honnêtement : tout le reste en dépend."],
-["a1-reserve","Votre réserve","Deuxième question : votre réserve. C'est l'argent qui vous protège d'un imprévu. Sans elle, la Bourse devient dangereuse."],
-["a1-baisse","Une baisse de vingt pour cent","Dernière question. Imaginez que votre argent baisse de vingt pour cent pendant un an. Ça arrive. Est-ce que votre projet tiendrait ?"],
-["a1-sortie","Votre résultat","Voici votre résultat. Quel qu'il soit, c'est une bonne nouvelle : vous savez maintenant où vous en êtes. Remplissez votre fiche si vous le souhaitez, puis on continue."],
-["a2","Les trois familles","Avant d'acheter, il faut savoir ce qu'on achète. Action, obligation, part de fonds : trois familles, trois façons de gagner et de perdre. Ouvrez-les une par une."],
-["a2-action","Une action","Une action, c'est un morceau d'entreprise. Regardez bien l'exemple en bas : on peut toucher un dividende et perdre de l'argent quand même."],
-["a2-obligation","Une obligation","Une obligation, c'est un prêt. Vous devenez le banquier d'un État ou d'une entreprise. Le piège, c'est de devoir vendre avant la fin."],
-["a2-fonds","Une part de fonds","Un fonds, c'est un panier déjà composé, géré par des professionnels. Pratique, mais pas gratuit, et jamais garanti."],
-["a2-acquis","Contrôle des acquis, question une","Vous connaissez déjà les bases ? Vérifions-le en trois questions. Si tout est juste, vous passez directement à la suite."],
-["a2-acquis-2","Contrôle des acquis, question deux","Deuxième question. Celle-ci vous protège des arnaques."],
-["a2-acquis-3","Contrôle des acquis, question trois","Dernière question. Elle parle de temps, et le temps compte beaucoup en Bourse."],
-["a2-acquis-fin","Résultat du contrôle","Voilà votre résultat. S'il reste un point à revoir, prenez deux minutes : c'est ce qui vous évitera une erreur coûteuse."],
-["a3","Choisir sa voie","Maintenant, une vraie décision. Choisir vous-même vos titres, ou confier votre argent à un fonds ? Si vous hésitez, c'est très bien : je vous montre les deux côte à côte."],
-["a3-resultat","Votre voie","Regardez le tableau ligne par ligne. Aucune voie n'est meilleure que l'autre. La bonne, c'est celle que vous comprenez."],
-["a4-verif","Avant la SGI, question une","Vous êtes prêt à choisir votre SGI ? Très bien. Une vérification rapide d'abord, pour être sûr que c'est le bon moment."],
-["a4-verif-2","Avant la SGI, question deux","Et vous, plutôt titres, ou plutôt fonds ? Votre réponse change l'intermédiaire à choisir."],
-["a4-verif-fin","Prêt à comparer","C'est noté. On passe à la comparaison, avec vos propres critères."],
-["a4-pays","Où résidez-vous ?","Pour choisir votre SGI, je commence par votre pays. Toutes ne vous ouvriront pas un compte à distance."],
-["a4-montant","Votre premier versement","Combien pensez-vous verser au départ ? Pas pour vous juger : pour savoir quels frais vont peser le plus."],
-["a4-service","Ce qui compte pour vous","Dernière question : qu'est-ce qui compte le plus pour vous ? Les frais, la distance, ou quelqu'un à qui parler ?"],
-["a4-resultat","Comparer les SGI","Je vais être franc avec vous : nous ne classons pas encore les SGI, parce que nous n'avons pas tout vérifié. Mais avec ces trois étapes, vous pouvez comparer vous-même, sans vous faire avoir."],
-["a4-fonds","Examiner un fonds","Pour un fonds, une règle : on ne signe rien sans avoir lu le document d'information. Cette liste vous dit exactement quoi demander."],
-["a5","Votre première décision","On arrive à la décision. Vous voulez savoir quelles entreprises regarder ? Je ne vous donnerai pas de liste. Je vais faire mieux : vous apprendre à en lire une."],
-["a5-entreprise","Examiner une entreprise","Dix questions, et chacune avec sa source. Si vous ne pouvez pas répondre à une question, c'est un signal : prenez le temps de chercher."],
-["a5-ordre","Préparer votre premier ordre","Votre premier ordre se passe chez votre SGI, jamais chez nous. Préparez-le calmement, et gardez toujours votre avis d'opéré."],
-["dossier","Votre dossier","Bravo. Votre dossier est prêt. Téléchargez-le et gardez-le. Et le jour où vous aurez vos premiers titres, revenez : je vous apprendrai à les suivre."],
-["mon-portefeuille","J'ai déjà un portefeuille","Vous avez déjà des titres ? Bienvenue. Ici, pas besoin de refaire les bases. Entrez directement par ce qui vous occupe aujourd'hui."],
-["b1","Mon portefeuille en clair","Prenez votre dernier relevé. Quatre chiffres suffisent pour comprendre votre portefeuille. Et attention au piège juste en dessous : il trompe beaucoup de monde."],
-["b2","La question du moment","Qu'est-ce qui vous occupe aujourd'hui ? Un résultat, un cours qui bouge, ou un choix à revoir ? Choisissez, je vous guide."],
-["b2-cours","Un cours vous interroge","Un cours qui bouge fort, ça inquiète. Avant de réagir, cherchez le fait : un résultat, une annonce, ou rien du tout. Une seule séance ne prouve rien."],
-["b2-choix","Revoir vos choix","Revoir ses choix, c'est une bonne habitude d'investisseur. Une ligne, votre diversification, ou votre SGI : par quoi commence-t-on ?"],
-["b2-ligne","Pourquoi ai-je acheté ?","Avant de vendre ou de racheter, une seule question : pourquoi aviez-vous acheté ? Si la raison tient toujours, vous avez déjà une partie de la réponse."],
-["analyses","Les analyses","Ici, toujours dans cet ordre : d'abord les faits, ensuite l'analyse. Et pour chaque fait, le document officiel, avec sa date."]
-]}
+{
+"id": "bourse",
+"titre": "Porte Bourse · Je veux investir à la BRVM",
+"dossier": "audio/bourse/",
+"clips": [
+[
+"accueil",
+"Accueil de la porte",
+"Bonjour, et bienvenue. Moi, c'est Élysée Johnson. Vous voulez investir à la BRVM, mais vous ne savez pas par où commencer ? C'est normal, et c'est exactement pour ça que cette page existe. Choisissez votre chemin : je vous accompagne à chaque écran."
+],
+[
+"commencer",
+"Où en êtes-vous ?",
+"Pas de mauvaise réponse ici. Dites-moi simplement où vous en êtes, et je vous emmène au bon endroit. Vous partez de zéro ? Commencez par la première carte."
+],
+[
+"a1-horizon",
+"Quand aurez-vous besoin de cet argent ?",
+"Première question, la plus importante. Quand aurez-vous besoin de cet argent ? Répondez honnêtement : tout le reste en dépend."
+],
+[
+"a1-reserve",
+"Votre réserve",
+"Deuxième question : votre réserve. C'est l'argent qui vous protège d'un imprévu. Sans elle, la Bourse devient dangereuse."
+],
+[
+"a1-baisse",
+"Une baisse de vingt pour cent",
+"Dernière question. Imaginez que votre argent baisse de vingt pour cent pendant un an. Ça arrive. Est-ce que votre projet tiendrait ?"
+],
+[
+"a1-sortie",
+"Votre résultat",
+"Voici votre résultat. Quel qu'il soit, c'est une bonne nouvelle : vous savez maintenant où vous en êtes. Remplissez votre fiche si vous le souhaitez, puis on continue."
+],
+[
+"a2",
+"Les trois familles",
+"Avant d'acheter, il faut savoir ce qu'on achète. Action, obligation, part de fonds : trois familles, trois façons de gagner et de perdre. Ouvrez-les une par une."
+],
+[
+"a2-action",
+"Une action",
+"Une action, c'est un morceau d'entreprise. Regardez bien l'exemple en bas : on peut toucher un dividende et perdre de l'argent quand même."
+],
+[
+"a2-obligation",
+"Une obligation",
+"Une obligation, c'est un prêt. Vous devenez le banquier d'un État ou d'une entreprise. Le piège, c'est de devoir vendre avant la fin."
+],
+[
+"a2-fonds",
+"Une part de fonds",
+"Un fonds, c'est un panier déjà composé, géré par des professionnels. Pratique, mais pas gratuit, et jamais garanti."
+],
+[
+"a2-acquis",
+"Contrôle des acquis, question une",
+"Vous connaissez déjà les bases ? Vérifions-le en trois questions. Si tout est juste, vous passez directement à la suite."
+],
+[
+"a2-acquis-2",
+"Contrôle des acquis, question deux",
+"Deuxième question. Celle-ci vous protège des arnaques."
+],
+[
+"a2-acquis-3",
+"Contrôle des acquis, question trois",
+"Dernière question. Elle parle de temps, et le temps compte beaucoup en Bourse."
+],
+[
+"a2-acquis-fin",
+"Résultat du contrôle",
+"Voilà votre résultat. S'il reste un point à revoir, prenez deux minutes : c'est ce qui vous évitera une erreur coûteuse."
+],
+[
+"a3",
+"Choisir sa voie",
+"Maintenant, une vraie décision. Choisir vous-même vos titres, ou confier votre argent à un fonds ? Si vous hésitez, c'est très bien : je vous montre les deux côte à côte."
+],
+[
+"a3-resultat",
+"Votre voie",
+"Regardez le tableau ligne par ligne. Aucune voie n'est meilleure que l'autre. La bonne, c'est celle que vous comprenez."
+],
+[
+"a4-verif",
+"Avant la SGI, question une",
+"Vous êtes prêt à choisir votre SGI ? Très bien. Une vérification rapide d'abord, pour être sûr que c'est le bon moment."
+],
+[
+"a4-verif-2",
+"Avant la SGI, question deux",
+"Et vous, plutôt titres, ou plutôt fonds ? Votre réponse change l'intermédiaire à choisir."
+],
+[
+"a4-verif-fin",
+"Prêt à comparer",
+"C'est noté. On passe à la comparaison, avec vos propres critères."
+],
+[
+"a4-pays",
+"Où résidez-vous ?",
+"Pour choisir votre SGI, je commence par votre pays. Toutes ne vous ouvriront pas un compte à distance."
+],
+[
+"a4-montant",
+"Votre premier versement",
+"Combien pensez-vous verser au départ ? Pas pour vous juger : pour savoir quels frais vont peser le plus."
+],
+[
+"a4-service",
+"Ce qui compte pour vous",
+"Dernière question : qu'est-ce qui compte le plus pour vous ? Les frais, la distance, ou quelqu'un à qui parler ?"
+],
+[
+"a4-resultat",
+"Comparer les SGI",
+"Je vais être franc avec vous : nous ne classons pas encore les SGI, parce que nous n'avons pas tout vérifié. Mais avec ces trois étapes, vous pouvez comparer vous-même, sans vous faire avoir."
+],
+[
+"a4-fonds",
+"Examiner un fonds",
+"Pour un fonds, une règle : on ne signe rien sans avoir lu le document d'information. Cette liste vous dit exactement quoi demander."
+],
+[
+"a5",
+"Votre première décision",
+"On arrive à la décision. Vous voulez savoir quelles entreprises regarder ? Je ne vous donnerai pas de liste. Je vais faire mieux : vous apprendre à en lire une."
+],
+[
+"a5-entreprise",
+"Examiner une entreprise",
+"Maintenant, on passe à la pratique. Choisissez une vraie société dans la liste, ouvrez son dernier rapport, et relevez deux ou trois chiffres. C'est comme ça qu'on décide : avec un document, pas avec une rumeur."
+],
+[
+"a5-ordre",
+"Préparer votre premier ordre",
+"Votre premier ordre se passe chez votre SGI, jamais chez nous. Fixez toujours un prix limite, demandez le récapitulatif des frais, et gardez votre avis d'opéré."
+],
+[
+"dossier",
+"Votre dossier",
+"Voici votre dossier. Regardez ce qui est coché, et ce qui reste à faire. Tant que votre fiche entreprise n'est pas remplie, ne vous pressez pas : une décision se prépare. Et le jour où vous aurez vos premiers titres, revenez, je vous apprendrai à les suivre."
+],
+[
+"mon-portefeuille",
+"J'ai déjà un portefeuille",
+"Vous avez déjà des titres ? Bienvenue. Ici, pas besoin de refaire les bases. Entrez directement par ce qui vous occupe aujourd'hui."
+],
+[
+"b1",
+"Mon portefeuille en clair",
+"Prenez votre dernier relevé. Quatre chiffres suffisent pour comprendre votre portefeuille. Et attention au piège juste en dessous : il trompe beaucoup de monde."
+],
+[
+"b1-saisie",
+"Saisir votre relevé",
+"Prenez votre relevé et recopiez ce que vous voyez. Si vous ne savez pas, laissez vide : je préfère un inconnu honnête à un zéro inventé. Et rassurez-vous, rien ne quitte votre téléphone."
+],
+[
+"b1-bilan",
+"Votre bilan",
+"Voilà votre bilan, en francs. Ce n'est pas un taux de rendement, et c'est voulu. Lisez surtout les points d'attention : c'est là que se cachent vos prochaines décisions."
+],
+[
+"b2",
+"La question du moment",
+"Qu'est-ce qui vous occupe aujourd'hui ? Un résultat, un cours qui bouge, ou un choix à revoir ? Choisissez, je vous guide."
+],
+[
+"b2-cours",
+"Un cours vous interroge",
+"Un cours qui bouge fort, ça inquiète. Avant de réagir, cherchez le fait : un résultat, une annonce, ou rien du tout. Une seule séance ne prouve rien."
+],
+[
+"b2-choix",
+"Revoir vos choix",
+"Revoir ses choix, c'est une bonne habitude d'investisseur. Une ligne, votre diversification, ou votre SGI : par quoi commence-t-on ?"
+],
+[
+"b2-ligne",
+"Pourquoi ai-je acheté ?",
+"Avant de vendre ou de racheter, une seule question : pourquoi aviez-vous acheté ? Si la raison tient toujours, vous avez déjà une partie de la réponse."
+],
+[
+"analyses",
+"Les analyses",
+"Ici, toujours dans cet ordre : d'abord les faits, ensuite l'analyse. Et pour chaque fait, le document officiel, avec sa date."
+]
+]
+}
