@@ -40,7 +40,8 @@ body{margin:0;background:#F1F7FA}
 .el{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:end}
 @media(min-width:820px){.el{grid-template-columns:1fr}}
 .el img{width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 20%;border-radius:16px;background:#111B2F}
-@media(min-width:820px){.el img{aspect-ratio:1;object-position:50% 40%}}
+@media(min-width:820px){.el img{object-position:50% 40%;max-width:380px}}
+.el img{height:auto!important;aspect-ratio:1/1!important}
 .el b{display:block;font-family:var(--fd);font-size:20px;color:#fff}
 .el p{color:#C9D1DE;font-size:15px;margin-top:4px}
 .el small{display:block;color:#F09680;font-size:13px;font-weight:700;margin-top:6px}
