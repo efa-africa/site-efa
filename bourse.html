@@ -535,7 +535,7 @@ V.analyses=function(){ var o=S.ong||'marche';
 };
 
 /* ---------- Voix d'Élysée : un clip par écran, affiché seulement si le MP3 est en ligne ---------- */
-var VX={dir:'audio/bourse/',v:1,on:true,cle:'',a:new Audio(),ex:{},geste:false}, bar=document.getElementById('voix'), ecoute=document.getElementById('bz-ecoute');
+var VX={dir:'audio/bourse/',v:2,on:true,cle:'',a:new Audio(),ex:{},geste:false}, bar=document.getElementById('voix'), ecoute=document.getElementById('bz-ecoute');
 try{ VX.on=localStorage.getItem('efa-voix')!=='off'; }catch(e){}
 VX.a.preload='auto';
 var IC_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>', IC_PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>';
