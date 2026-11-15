@@ -63,7 +63,7 @@
         ], "textes": ["Vendre en ligne sans stock : 20 000 à 100 000 F pour démarrer.", "Le premier pas : dix produits, dix photos, un seul canal.", "On vérifie : le prix que les gens acceptent vraiment.", "On livre d'abord, on achète ensuite : pas de stock qui dort.", "Le piège : promettre un délai qu'on ne tient pas.", "Une piste parmi d'autres sur EFA Déclic. Des idées, pas des gains promis."], "lien": "declic"},
         {"jour": "jeu", "type": "scene", "visage": "bamba", "cle": "réserve", "titre": "Et si un imprévu arrive ?", "secondaire": "Trois mois de dépenses de côté, d'abord.", "scene": "Tonton Bamba assis sur une terrasse, une tasse de thé, regard vers l'objectif, lumière du matin", "lien": "reserve"},
         {"jour": "ven", "type": "scene", "visage": "koffi", "cle": "Min'Fin", "titre": "Mon salaire disparaît trop vite ?", "secondaire": "Une question d'argent, une minute.", "scene": "Koffi dans un bureau, regarde son téléphone avec une légère inquiétude, chemise bleu marine", "lien": "minfin"},
-        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Ce qui circule n'est pas ce qui reste.", "secondaire": "La tontine fait circuler. La réserve fait rester.", "lien": "tontine"},
+        {"jour": "sam", "type": "portrait", "cle": "la spirale", "titre": "Ce qui<br>circule<br>n'est pas<br>ce qui reste.", "secondaire": "La tontine fait circuler. La réserve fait rester.", "lien": "tontine"},
         {"jour": "dim", "type": "typo", "cle": "gratuit", "titre": "Apprendre sur EFA, gratuit.", "secondaire": "On commence dès 1 min.", "lien": "accueil"}
       ]
     },
