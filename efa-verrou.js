@@ -6,11 +6,11 @@
    Sinon le contenu est masqué et la page propose : les crédits (3 offerts avec l'email), ou efa. abonnement.
    Les ateliers gratuits ne chargent pas ce fichier. */
 (function () {
-  /* fichier : [id, prix FCFA, titre, avec Élysée Johnson] */
+  /* fichier : [id, prix FCFA, titre, avec Élysée Johnson, chapitres offerts en avant-goût] */
   var P = {
-    'premiers-pas-bourse': ['premiers-pas-bourse', 30000, 'Mes premiers pas en Bourse'],
-    'coach-bourse': ['premier-ordre-brvm', 50000, 'Mon premier ordre à la Bourse (BRVM)', 1],
-    'atelier-lire-societe-cotee': ['lire-societe-cotee', 50000, 'Lire une société cotée comme un investisseur', 1],
+    'premiers-pas-bourse': ['premiers-pas-bourse', 30000, 'Mes premiers pas en Bourse', 0, 2],
+    'coach-bourse': ['premier-ordre-brvm', 50000, 'Mon premier ordre à la Bourse (BRVM)', 1, 1],
+    'atelier-lire-societe-cotee': ['lire-societe-cotee', 50000, 'Lire une société cotée comme un investisseur', 1, 1],
     'atelier-tontine-spirale': ['tontine-spirale', 50000, 'Ma tontine devient une spirale', 1],
     'atelier-sortir-dettes': ['sortir-dettes', 20000, 'Sortir de mes dettes : lister, classer, renégocier'],
     'atelier-mobile-money-frais': ['mobile-money-frais', 20000, 'Mobile money et frais : ce que coûtent les petits transferts'],
@@ -20,7 +20,7 @@
     'atelier-retraite-sans-pension': ['retraite-sans-pension', 20000, 'Préparer sa retraite sans pension'],
     'atelier-etudes-enfant': ['etudes-enfant', 15000, 'Financer les études de mon enfant'],
     'atelier-assurance-vie': ['assurance-vie', 15000, 'Assurance-vie : comprendre ce que je signe'],
-    'atelier-construire-son-portefeuille': ['construire-son-portefeuille', 30000, 'Construire son portefeuille à la Bourse'],
+    'atelier-construire-son-portefeuille': ['construire-son-portefeuille', 30000, 'Construire son portefeuille à la Bourse', 0, 1],
     'atelier-portefeuille-factures': ['portefeuille-factures', 30000, 'Un portefeuille qui paie mes factures'],
     'atelier-investir-activite': ['investir-activite', 15000, 'Investir dans une activité : est-ce que ça rapporte ?'],
     'atelier-lire-business-plan': ['lire-business-plan', 15000, 'Lire un business plan comme un financeur'],
@@ -52,7 +52,12 @@
   function dejaOuvert() { var v = etat().ok[ID]; return !!v && v !== 'formule' && v !== 'équipe' && v !== 'école'; }
 
   function noterVisite() { try { localStorage.setItem('efa_dernier_atelier', fichier); } catch (e) {} }
-  if (dejaOuvert() || parFormule()) { noterVisite(); verifierFormule(); return; }
+  if (dejaOuvert() || parFormule()) { window.EFA_VERROU.libre = true; noterVisite(); verifierFormule(); return; }
+  /* Avant-goût : les premiers chapitres sont offerts ; la page appelle EFA_VERROU.exiger() pour la suite */
+  var APERCU = A[4] || 0, verrouille = false;
+  if (APERCU) { window.EFA_VERROU.apercu = APERCU; window.EFA_VERROU.exiger = function () { if (!verrouille) verrouiller(); else { html.classList.add('efa-verrou'); montrer(window.EFA_ATELIERS || null); } try { window.scrollTo(0, 0); } catch (e) {} }; noterVisite(); return; }
+  verrouiller();
+  function verrouiller() { verrouille = true;
   html.classList.add('efa-verrou');
   var st = document.createElement('style');
   st.textContent = 'html.efa-verrou body>*:not(#clone-haut):not(#efa-verrou):not(script):not(style){display:none!important}'
@@ -69,14 +74,14 @@
     + '#efa-verrou a.v-l{font-weight:700;color:#0B1220;text-decoration:underline;text-decoration-color:#DA3C1B;text-decoration-thickness:2px;text-underline-offset:5px}'
     + '#efa-verrou details summary{cursor:pointer;font-weight:700;color:#0B1220}#efa-verrou details form{margin-top:10px}';
   (document.head || html).appendChild(st);
-
-  function charger(src) { return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
-  function ouvrir() { noterVisite(); html.classList.remove('efa-verrou'); var g = document.getElementById('efa-verrou'); if (g) g.remove(); try { window.scrollTo(0, 0); } catch (e) {} }
-  function pret(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
-
   pret(function () {
     charger('clone/ateliers-data.js?v=20261114b').then(decider, function () { montrer(null); });
   });
+  }
+
+  function charger(src) { return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
+  function ouvrir() { noterVisite(); window.EFA_VERROU.libre = true; html.classList.remove('efa-verrou'); var g = document.getElementById('efa-verrou'); if (g) g.remove(); try { window.scrollTo(0, 0); } catch (e) {} }
+  function pret(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
 
   function decider() {
     var D = window.EFA_ATELIERS;
@@ -118,11 +123,14 @@
     else if (fo && !active(fo)) c2 = '<p>Votre formule s’est terminée le ' + date(fo.fin) + '.</p><a class="v-b s" href="abonnement.html">Renouveler ma formule</a>';
     else c2 = '<p>Cet atelier et tous les autres, pour 30 jours. Essentiel dès 10 000 F : un atelier de votre choix.</p><a class="v-b s" href="abonnement.html">Voir les formules</a><p class="v-n">Déjà abonné ? <a class="v-l" href="abonnement.html#acces">Entrer mon code à 6 chiffres</a></p>';
     g.innerHTML = '<div class="v-in"><p class="v-sur">Atelier · ' + fcfa(A[1]) + ' · ' + pl(COUT) + '</p><h1 id="v-t">' + esc(A[2]) + '</h1>'
-      + '<p>Cet atelier fait partie de l’école EFA. Deux façons de l’ouvrir :</p>'
+      + (APERCU ? '<p>' + (APERCU > 1 ? 'Les ' + APERCU + ' premiers chapitres vous étaient offerts.' : 'Le premier chapitre vous était offert.') + ' Pour continuer, deux façons d’ouvrir la suite :</p>' : '<p>Cet atelier fait partie de l’école EFA. Deux façons de l’ouvrir :</p>')
       + '<div class="v-c"><h2>Avec mes crédits</h2>' + c1 + '</div>'
       + '<div class="v-c"><h2>Avec efa<span style="color:#DA3C1B">.</span> abonnement</h2>' + c2 + '</div>'
       + (D ? '<details><summary>J’ai un code d’accès</summary><form id="v-code" novalidate><label class="v-n" for="v-k">Code promo, accès équipe ou Pass Étudiant</label><input id="v-k" autocomplete="off" autocapitalize="characters" placeholder="EFA-XXXX-XXXX"><button class="v-b s" type="submit">Valider</button></form></details>' : '')
-      + '<p class="v-ko" id="v-ko" role="alert" hidden></p></div>';
+      + '<p class="v-ko" id="v-ko" role="alert" hidden></p>'
+      + (APERCU ? '<p><button type="button" class="v-l" id="v-retour" style="background:none;border:0;padding:0;font:inherit;cursor:pointer">← Revenir ' + (APERCU > 1 ? 'aux chapitres offerts' : 'au chapitre offert') + '</button></p>' : '') + '</div>';
+    var vr = document.getElementById('v-retour');
+    if (vr) vr.addEventListener('click', function () { html.classList.remove('efa-verrou'); var gg = document.getElementById('efa-verrou'); if (gg) gg.remove(); try { if (window.EFA_VERROU.retour) window.EFA_VERROU.retour(); window.scrollTo(0, 0); } catch (e) {} });
     var ko = document.getElementById('v-ko');
     function erreur(t) { ko.textContent = t; ko.hidden = false; }
     var fm = document.getElementById('v-mail');

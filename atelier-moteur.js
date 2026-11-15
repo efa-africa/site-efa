@@ -49,7 +49,9 @@ function aller(k){ if(k>=NB) return voir('fin'); if(k<0) return voir('chapitres'
 function carteCh(i){ var f=faitsCh(i), t=totCh(i), c=COUL[i%5], act=i===chActif()&&f<t, fin=f===t;
   return '<div class="ch5'+(act?' actif':'')+(fin?' fini':'')+'" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div style="flex:1"><h3>'+esc(P[i].acq)+'</h3><small>Chapitre '+(i+1)+' · '+esc(P[i].t)+'</small><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+esc(P[i].desc)+'</p><div class="bar"><i style="width:'+(f/t*100)+'%"></i></div><small>'+f+' activité'+(f>1?'s':'')+' sur '+t+'</small><button type="button" data-ch="'+i+'">'+(fin?'Revoir le chapitre':f?'Continuer le chapitre':'Commencer le chapitre')+'</button></div></div>'; }
 
-function rendu(){
+function ppBloque(){ var V=window.EFA_VERROU; if(!V||!V.exiger||V.libre) return false; var n=V.apercu||0; return (vue==='ecran'&&ETAPES[cur]&&ETAPES[cur].ph>=n)||vue==='fin'; }
+if(window.EFA_VERROU) window.EFA_VERROU.retour=function(){ voir('chapitres'); };
+function rendu(){ if(ppBloque()) window.EFA_VERROU.exiger();
   var z=$('#scene'); document.querySelector('.pp-couv').classList.toggle('court',vue!=='accueil');
   $('#pp-h1').textContent=vue==='accueil'?A.h1:A.titre;
   z.style.cssText='';
