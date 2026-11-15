@@ -151,7 +151,7 @@
     "droits_garde": "0,5 % / an",
     "tenue_compte": "2 000 F / an",
     "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
-    "gestion_mandat": "0 (non facturée ou non proposée)"
+    "gestion_mandat": "À confirmer : la grille relevée indique 0, sans préciser si le service est gratuit ou non proposé"
    },
    "acces": {
     "minimum_ouverture_fcfa": 1000000,
@@ -193,7 +193,7 @@
     "droits_garde": "0,22 à 0,27 % / an",
     "tenue_compte": "0 F",
     "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
-    "gestion_mandat": "0 (non facturée ou non proposée)"
+    "gestion_mandat": "À confirmer : la grille relevée indique 0, sans préciser si le service est gratuit ou non proposé"
    },
    "acces": {
     "minimum_ouverture_fcfa": 1000000,
@@ -859,7 +859,7 @@
     "droits_garde": "0,1 à 0,5 % / an",
     "tenue_compte": "5 000 F / an",
     "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
-    "gestion_mandat": "0 (non facturée ou non proposée)"
+    "gestion_mandat": "À confirmer : la grille relevée indique 0, sans préciser si le service est gratuit ou non proposé"
    },
    "acces": {
     "minimum_ouverture_fcfa": 0,
@@ -942,7 +942,7 @@
     "droits_garde": "0,5 % / an",
     "tenue_compte": "0 F",
     "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI",
-    "gestion_mandat": "0 (non facturée ou non proposée)"
+    "gestion_mandat": "À confirmer : la grille relevée indique 0, sans préciser si le service est gratuit ou non proposé"
    },
    "acces": {
     "minimum_ouverture_fcfa": 1000000,
@@ -1484,7 +1484,7 @@
     "courtage": "0,8 %",
     "droits_garde": "0,25 à 0,5 % / an",
     "tenue_compte": "2 500 F / trimestre",
-    "gestion_mandat": "0 (non facturée ou non proposée)",
+    "gestion_mandat": "À confirmer : la grille relevée indique 0, sans préciser si le service est gratuit ou non proposé",
     "source": "Relevé public des tarifs, novembre 2026 · données indicatives, à confirmer auprès de la SGI"
    },
    "acces": {

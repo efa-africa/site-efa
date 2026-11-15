@@ -154,6 +154,10 @@ body{margin:0;background:#F1F7FA}
 .onglets{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 .onglets button{font:700 15px var(--fb);padding:9px 16px;border-radius:999px;border:0;background:#fff;color:var(--nuit);cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--line)}
 .onglets button[aria-selected=true]{background:var(--nuit);color:#fff;box-shadow:none}
+.pf{display:grid;gap:10px;margin-bottom:10px}
+.pf-l{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:8px}
+@media(max-width:640px){.pf-l{grid-template-columns:1fr 1fr 1fr;padding-bottom:10px;border-bottom:1px solid var(--line)}.pf-l input:first-child{grid-column:1/-1}}
+.pf-l input{font:inherit;font-size:16px;padding:10px 12px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);min-width:0}
 .cadre{font-size:14px;color:var(--ink3);border-top:1px solid var(--line);margin-top:32px;padding-top:16px;max-width:72ch}
 .cadre a{color:var(--bleu-f)}
 @media(max-width:600px){.rep .c{flex-wrap:wrap}.rep .c .badge{margin-left:0}}
@@ -203,7 +207,7 @@ var ILL={'a1-horizon':'atelier-retraite.webp','a1-reserve':'univers-epargne.webp
  'a3':'atelier-diaspora.webp','a3-resultat':'atelier-placements.webp','a4-verif':'fiche-questions-sgi.webp','a4-verif-2':'fiche-questions-sgi.webp','a4-verif-fin':'fiche-questions-sgi.webp',
  'a4-pays':'atelier-diaspora.webp','a4-montant':'univers-epargne.webp','a4-service':'coach-patrimoine.webp','a4-resultat':'sgi-entree-paysage.webp','a4-fonds':'atelier-placements.webp',
  'a5-entreprise':'atelier-societe-cotee.webp','a5-ordre':'atelier-premier-ordre.webp','dossier':'accueil-coache-elysee.webp',
- 'b1':'accueil-investir.webp','b2-resultat':'accueil-investir.webp','b2-ligne':'acteurs-marche-jour.webp','analyses':'acteur-dcbr.webp'};
+ 'b1':'accueil-investir.webp','b1-saisie':'efa-news-carnet.webp','b1-bilan':'accueil-investir.webp','b2-resultat':'accueil-investir.webp','b2-ligne':'acteurs-marche-jour.webp','analyses':'acteur-dcbr.webp'};
 var PAYANT='<em>avec abonnement ou crédits</em>';
 
 /* ---------- Composants ---------- */
@@ -378,16 +382,39 @@ V['a5-entreprise']=function(){ return fil('a5')+prog('decision')+'<p class="sur"
   +'<div class="carte"><ol><li>Que vend-elle, à qui, dans quels pays ?</li><li>Comment évoluent ses ventes et son résultat sur trois à cinq ans ?</li><li>Quelle est sa dette, face à sa trésorerie et à ses fonds propres ?</li><li>Son dividende est-il régulier, et peut-elle le soutenir ?</li><li>Son prix est-il raisonnable face à des entreprises du même secteur ?</li><li>Le titre s’échange-t-il souvent ?</li><li>Dépend-elle d’un client, d’un produit ou d’un pays ?</li><li>Trois raisons favorables, trois risques, trois inconnues.</li><li>Qu’est-ce qui me ferait réexaminer ma décision ?</li><li>Pour chaque chiffre : quel document, quelle date ?</li></ol></div>'
   +'<div class="carte"><h3>Les documents officiels</h3><div class="src"><a href="https://www.brvm.org/fr/rapports-societes-cotees"><b>Rapports des sociétés cotées · BRVM</b><small>États financiers et rapports annuels publiés</small></a><a href="https://bfin.brvm.org/boc.aspx"><b>Bulletin officiel de la cote (BOC) · BRVM</b><small>Cours, volumes et variations de chaque séance, datés</small></a></div></div>'
   +'<div class="carte"><h3>Apprendre à le faire</h3>'+liens([['atelier-lire-societe-cotee.html?src=bourse','Lire une société cotée','L’atelier pas à pas',PAYANT],['premiers-pas-bourse.html?src=bourse&chapitre=4','Mes premiers pas · chapitre 4','Lire une entreprise en cinq minutes',PAYANT],['bourse-pro.html?src=bourse','Investisseur averti','Lecture des comptes, du prix et des ordres']])+'</div>'
-  +'<div class="actions"><button type="button" class="bt p" data-act="fiche-decision">Enregistrer, et constituer mon dossier →</button></div>';
+  +ficheEntForm()
+  +'<div class="actions"><button type="button" class="bt p" data-act="fiche-ent">Enregistrer ma fiche entreprise →</button><button type="button" class="lien2" data-act="dl-ent">Télécharger ma fiche</button></div><div id="fe-msg"></div>';
 };
+var DOCS=['Rapport annuel','États financiers semestriels ou trimestriels','Communiqué de l’entreprise','Avis officiel de la BRVM','Bulletin officiel de la cote (BOC)'];
+function ficheEntForm(){ var e=S.ent||{}, v=function(k){ return esc(e[k]||''); };
+  function ch(id,lab,ph,area){ return '<div class="champ"><label for="fe-'+id+'">'+lab+'</label>'+(area?'<textarea id="fe-'+id+'" rows="3" maxlength="900" placeholder="'+ph+'">'+v(id)+'</textarea>':'<input id="fe-'+id+'" maxlength="200" placeholder="'+ph+'" value="'+v(id)+'">')+'</div>'; }
+  return '<div class="carte"><h3>Ma fiche entreprise</h3><p class="note" style="margin-top:0">Une entreprise, un document officiel, votre lecture. La fiche reste sur votre appareil.</p>'
+  +ch('nom','L’entreprise','Ex. : le nom de la société cotée')
+  +'<div class="champ"><label for="fe-type">Le document officiel utilisé</label><select id="fe-type"><option value="">Choisir</option>'+DOCS.map(function(d){ return '<option'+(e.type===d?' selected':'')+'>'+d+'</option>'; }).join('')+'</select></div>'
+  +ch('titre','Son titre exact','Ex. : Rapport annuel 2025')+ch('date','Sa date de publication','Ex. : 30 avril 2026')+ch('url','Son adresse (lien vers l’original)','https://www.brvm.org/…')
+  +ch('extrait','L’extrait qui compte, recopié tel quel','Le chiffre ou la phrase du document',1)
+  +ch('lecture','Ma lecture de cet extrait','Ce que cela dit, en mes mots',1)
+  +ch('pour','Trois raisons favorables','',1)+ch('risques','Trois risques','',1)+ch('inconnues','Trois inconnues','',1)
+  +ch('reexamen','Ce qui me ferait réexaminer ma décision','Ex. : si le résultat baisse deux années de suite')+'</div>'
+  +(entComplete()?sourceBloc():''); }
+function entComplete(){ var e=S.ent||{}; return !!(e.nom&&e.type&&e.date&&(e.url||e.titre)&&e.extrait); }
+function sourceBloc(){ var e=S.ent||{}; var org=/BRVM|BOC/.test(e.type)?'BRVM':'L’entreprise ('+esc(e.nom)+')';
+  return '<div class="carte"><h3>Source officielle</h3><div class="seq"><div><h4>Le document</h4><p><b>'+esc(e.titre||e.type)+'</b><br>'+org+' · publié le '+esc(e.date)+'<br><small>Consulté le '+esc(e.vu||'')+'</small></p>'+(e.url?'<p style="margin-top:8px"><a class="lien2" href="'+esc(e.url)+'">Ouvrir l’original ↗</a></p>':'')+'</div><div><h4>L’extrait</h4><p>« '+esc(e.extrait)+' »</p></div><div class="large"><h4>Ma lecture</h4><p>'+esc(e.lecture||'À écrire.')+'</p></div></div></div>'; }
+function lireEnt(){ var g=function(id){ var x=document.getElementById('fe-'+id); return x?x.value.trim():''; };
+  var e={}; ['nom','type','titre','date','url','extrait','lecture','pour','risques','inconnues','reexamen'].forEach(function(k){ e[k]=g(k); });
+  if(e.url&&!/^https?:\/\//i.test(e.url)) e.url='';
+  e.vu=(S.ent&&S.ent.vu)||new Date().toLocaleDateString('fr-FR'); S.ent=e; sv(); }
+function ficheEntLignes(){ var e=S.ent||{}; if(!e.nom) return '';
+  return '<h2>Ma fiche entreprise : '+esc(e.nom)+'</h2><p><b>Source :</b> '+esc(e.type||'—')+' · '+esc(e.titre||'')+' · publié le '+esc(e.date||'—')+' · consulté le '+esc(e.vu||'—')+(e.url?' · '+esc(e.url):'')+'</p><p><b>Extrait :</b> « '+esc(e.extrait||'—')+' »</p><p><b>Ma lecture :</b> '+esc(e.lecture||'—')+'</p><h2>Trois raisons favorables</h2><p>'+esc(e.pour||'—')+'</p><h2>Trois risques</h2><p>'+esc(e.risques||'—')+'</p><h2>Trois inconnues</h2><p>'+esc(e.inconnues||'—')+'</p><h2>Je réexamine ma décision si</h2><p>'+esc(e.reexamen||'—')+'</p>'; }
 V['a5-ordre']=function(){ return fil('a5')+prog('decision')+'<p class="sur">Préparer mon premier ordre</p><h2 class="q">Votre premier ordre se passe chez votre SGI. Voici comment le préparer.</h2>'
   +'<div class="carte"><ol><li><b>Ouvrez et alimentez votre compte</b> selon les instructions écrites de la SGI.</li><li><b>Précisez votre ordre :</b> le titre, la quantité, le type d’ordre et votre prix limite. Un ordre à cours limité vous protège d’un prix inattendu.</li><li><b>Demandez un récapitulatif</b> avec les frais estimés avant de valider.</li><li><b>Récupérez l’avis d’opéré</b> et vérifiez le prix, la quantité et les frais.</li></ol><p class="note">EFA ne reçoit ni fonds ni ordre. L’exécution se fait exclusivement chez votre SGI.</p></div>'
   +'<div class="carte"><h3>Être accompagné, si vous le souhaitez</h3>'+liens([['coach-bourse.html?src=bourse','Mon premier ordre, parcours coaché','Un accompagnement approfondi, facultatif'],['premiers-pas-bourse.html?src=bourse&chapitre=5','Mes premiers pas · chapitre 5','Choisir sa SGI',PAYANT]])+'</div>'
-  +'<div class="actions"><button type="button" class="bt p" data-act="fiche-decision">Enregistrer, et constituer mon dossier →</button></div>';
+  +'<div class="actions"><button type="button" class="bt p" data-act="ordre-lu">J’ai compris la méthode →</button></div>';
 };
-V.dossier=function(){ var f=S.fiches;
-  return fil('a5')+prog('decision')+'<p class="sur">Votre dossier</p><h2 class="q">Votre dossier personnel est prêt.</h2><p class="q-s">Il rassemble ce que vous avez décidé et ce qu’il reste à vérifier. Il est enregistré sur cet appareil.</p>'
-  +'<div class="carte"><ul><li>'+(f.projet?'✓':'○')+' Ma fiche Projet et horizon</li><li>'+(f.voie?'✓':'○')+' Ma voie à examiner</li><li>'+(f.comparaison?'✓':'○')+' Ma comparaison</li><li>'+(f.decision?'✓':'○')+' Ma décision préparée</li></ul></div>'
+V.dossier=function(){ var f=S.fiches, pret=f.projet&&f.voie&&f.comparaison&&f.decision;
+  var dec=f.decision&&S.ent&&S.ent.nom?'✓ Ma fiche entreprise remplie : '+esc(S.ent.nom):(f.ordre||S.ent?'◐ Méthode découverte, fiche entreprise à remplir':'○ Ma décision préparée');
+  return fil('a5')+prog('decision')+'<p class="sur">Votre dossier</p><h2 class="q">'+(pret?'Votre dossier personnel est prêt.':'Votre dossier est en cours.')+'</h2><p class="q-s">'+(pret?'Il rassemble ce que vous avez décidé et ce qu’il reste à vérifier.':'Voici ce qui est fait, et ce qu’il reste à faire avant de décider.')+' Il est enregistré sur cet appareil.</p>'
+  +'<div class="carte"><ul style="list-style:none;padding-left:0"><li>'+(f.projet?'✓':'○')+' Ma fiche Projet et horizon</li><li>'+(f.voie?'✓':'○')+' Ma voie à examiner</li><li>'+(f.comparaison?'✓':'○')+' Ma comparaison</li><li>'+dec+'</li></ul>'+(f.decision?'':'<div class="actions"><button type="button" class="bt b" data-go="a5-entreprise">Remplir ma fiche entreprise →</button></div>')+'</div>'
   +'<div class="actions"><button type="button" class="bt s" data-act="dl-dossier">Télécharger mon dossier</button><button type="button" class="bt p" data-act="vers-portefeuille">J’ai un portefeuille : apprendre à le suivre →</button></div>';
 };
 /* ---------- Parcours B ---------- */
@@ -401,8 +428,37 @@ V.b1=function(){ return fil('mon-portefeuille')+'<p class="sur">Mon portefeuille
   +'<div class="carte"><ol><li><b>Vos versements nets :</b> tout ce que vous avez versé, moins ce que vous avez retiré.</li><li><b>La valeur actuelle :</b> titres et espèces, à la date du relevé.</li><li><b>Les revenus encaissés :</b> dividendes et coupons reçus.</li><li><b>Les frais connus :</b> courtages, droits de garde, tenue de compte.</li></ol></div>'
   +'<div class="encadre"><p><b>Attention à un piège.</b> « Valeur actuelle moins versements » donne un résultat en francs, pas un taux de rendement : si vous avez versé à des dates différentes, ce calcul ne suffit pas.</p><p>Séparez toujours le gain réalisé (titres vendus), la variation non réalisée (titres gardés) et les revenus encaissés. Si une date ou un frais manque, le résultat n’est que partiel : notez-le.</p></div>'
   +'<div class="carte"><h3>Aller plus loin</h3>'+liens([['atelier-construire-son-portefeuille.html?src=bourse','Construire son portefeuille','L’atelier : répartition, concentration, frais',PAYANT],['bourse-pro.html?src=bourse','Investisseur averti','Lecture des comptes, du prix et du portefeuille']])
-  +'<p class="note">Bientôt : saisir votre relevé pour obtenir votre bilan, avec la méthode affichée. Vos données resteront sur votre appareil.</p></div>'
-  +'<div class="actions"><button type="button" class="bt p" data-go="b2">Prendre une décision →</button></div>';
+  +'</div>'
+  +'<div class="actions"><button type="button" class="bt p" data-go="b1-saisie">Saisir mon relevé et voir mon bilan →</button><button type="button" class="lien2" data-go="b2">Prendre une décision</button></div>';
+};
+function pfLigneHtml(l,i){ l=l||{}; return '<div class="pf-l" data-i="'+i+'"><input aria-label="Titre" placeholder="Titre (ex. : nom de la société)" maxlength="60" value="'+esc(l.t||'')+'"><input aria-label="Quantité" inputmode="decimal" placeholder="Quantité" value="'+esc(l.q||'')+'"><input aria-label="Cours actuel en francs" inputmode="decimal" placeholder="Cours (F)" value="'+esc(l.c||'')+'"><input aria-label="Prix de revient en francs, si connu" inputmode="decimal" placeholder="Revient (F)" value="'+esc(l.p||'')+'"></div>'; }
+V['b1-saisie']=function(){ var P=S.pf||{l:[{},{},{}]}, L=P.l.length?P.l:[{}];
+  function ch(id,lab,ph){ return '<div class="champ"><label for="pf-'+id+'">'+lab+'</label><input id="pf-'+id+'" inputmode="decimal" placeholder="'+ph+'" value="'+esc(P[id]||'')+'"></div>'; }
+  return fil('b1')+'<p class="sur">Mon portefeuille en clair</p><h2 class="q">Recopiez votre relevé. Laissez vide ce que vous ne savez pas.</h2><p class="q-s">Rien n’est envoyé : le calcul se fait sur votre téléphone. Une case vide reste « inconnue », jamais zéro.</p>'
+  +'<div class="carte"><h3>Mes titres</h3><p class="note" style="margin:0 0 10px">Pour chaque titre : son nom, la quantité, le cours actuel et, si vous le connaissez, votre prix de revient.</p><div id="pf-lignes" class="pf">'+L.map(pfLigneHtml).join('')+'</div><button type="button" class="lien2" data-act="pf-plus">+ Ajouter une ligne</button></div>'
+  +'<div class="carte"><h3>Mes flux d’argent</h3>'+ch('verse','Total versé sur le compte depuis l’ouverture (F)','Ex. : 500 000')+ch('retire','Total retiré du compte (F)','0 si rien retiré')+ch('esp','Espèces sur le compte aujourd’hui (F)','Sur le relevé')+ch('rev','Dividendes et coupons encaissés (F)','Si connus')+ch('frais','Frais connus : courtages, garde, tenue (F)','Si connus')+'<div class="champ"><label for="pf-date">Date du relevé</label><input id="pf-date" maxlength="30" placeholder="Ex. : 14 novembre 2026" value="'+esc(P.date||'')+'"></div></div>'
+  +'<div class="actions"><button type="button" class="bt p" data-act="pf-calc">Voir mon bilan →</button></div>';
+};
+function num(x){ if(x==null) return null; x=String(x).replace(/[\s ]/g,'').replace(',', '.'); if(x==='') return null; var n=parseFloat(x); return isFinite(n)?n:null; }
+function F(n){ return Math.round(n).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g,' ')+' F'; }
+function bilan(){ var P=S.pf||{l:[]}, L=P.l.filter(function(l){ return l.t||num(l.q)!=null; }), manques=[], att=[];
+  var vt=0, vtOk=true, lat=0, latOk=L.length>0, plus=null;
+  L.forEach(function(l){ var q=num(l.q), c=num(l.c), p=num(l.p); if(q==null||c==null){ vtOk=false; manques.push('la quantité ou le cours de '+(l.t||'une ligne')); return; } var v=q*c; vt+=v; l._v=v; if(!plus||v>plus._v) plus=l; if(p==null){ latOk=false; } else lat+=q*(c-p); });
+  var esp=num(P.esp), ver=num(P.verse), ret=num(P.retire), rev=num(P.rev), fr=num(P.frais);
+  if(esp==null) manques.push('les espèces sur le compte'); if(ver==null) manques.push('le total versé'); if(ret==null) manques.push('le total retiré'); if(fr==null) manques.push('les frais'); if(!latOk&&L.length) manques.push('le prix de revient de chaque ligne');
+  var tot=vtOk?vt+(esp||0):null, res=(tot!=null&&esp!=null&&ver!=null&&ret!=null)?tot+ret-ver:null;
+  if(plus&&vtOk&&vt>0&&plus._v/vt>.4) att.push('Concentration : '+esc(plus.t||'une ligne')+' pèse '+Math.round(plus._v/vt*100)+' % de vos titres. Une mauvaise nouvelle sur cette entreprise pèserait lourd.');
+  if(fr==null) att.push('Vos frais ne sont pas connus : demandez le détail à votre SGI. Ils réduisent ce que vous gardez vraiment.');
+  if(L.length&&L.length<3) att.push('Avec '+L.length+' titre'+(L.length>1?'s':'')+', votre portefeuille est peu diversifié.');
+  return {L:L,vt:vtOk?vt:null,tot:tot,res:res,lat:latOk?lat:null,rev:rev,fr:fr,manques:manques,att:att.slice(0,3),P:P}; }
+V['b1-bilan']=function(){ var B=bilan(), P=B.P;
+  function ligne(lab,v,note){ return '<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)"><span>'+lab+(note?'<br><small style="color:var(--ink3)">'+note+'</small>':'')+'</span><b style="text-align:right;white-space:nowrap;'+(v==null?'color:var(--ct)':'')+'">'+(v==null?'Inconnu':F(v))+'</b></div>'; }
+  return fil('b1-saisie','Modifier')+'<p class="sur">Bilan de mon portefeuille'+(P.date?' · relevé du '+esc(P.date):'')+'</p><h2 class="q">'+(B.manques.length?'Votre bilan, partiel.':'Votre bilan.')+'</h2>'
+  +'<div class="carte">'+ligne('Valeur des titres',B.vt)+ligne('Valeur totale (titres et espèces)',B.tot)+ligne('Versements nets (versé moins retiré)',num(P.verse)!=null&&num(P.retire)!=null?num(P.verse)-num(P.retire):null)+ligne('Résultat global en francs',B.res,'Valeur totale + retraits − versements. Ce n’est pas un taux de rendement.')+ligne('Variation non réalisée (titres gardés)',B.lat,'Calculée seulement si chaque prix de revient est connu.')+ligne('Revenus encaissés',B.rev)+ligne('Frais connus',B.fr)+'</div>'
+  +(B.manques.length?'<div class="exemple"><b>Données manquantes :</b> '+B.manques.join(', ')+'. Le bilan reste partiel tant qu’elles manquent.</div>':'')
+  +(B.att.length?'<div class="encadre"><p><b>Points d’attention</b></p>'+B.att.map(function(a){ return '<p>'+a+'</p>'; }).join('')+'</div>':'')
+  +'<p class="note">Méthode : montants en francs à la date du relevé. Aucun taux de rendement n’est calculé, car il faudrait les dates de chaque versement. Votre relevé et vos avis d’opéré restent les pièces de référence.</p>'
+  +'<div class="actions"><button type="button" class="bt s" data-act="dl-bilan">Télécharger mon bilan</button><button type="button" class="bt p" data-act="vers-titres">Voir les analyses de mes titres →</button></div>';
 };
 V.b2=function(){ return fil('mon-portefeuille')+'<p class="sur">La question du moment</p><h2 class="q">Qu’est-ce qui vous occupe aujourd’hui ?</h2>'
   +'<div class="cartes">'+carte({go:'b2-resultat',t:'Je veux comprendre mon résultat',d:'Versements, revenus, frais, variation.',sug:true})+carte({go:'b2-cours',t:'Une entreprise ou un cours m’interroge',d:'Des résultats, une annonce ou un mouvement de cours.'})+carte({go:'b2-choix',t:'Je veux revoir mes choix',d:'Une ligne, ma diversification ou ma SGI.'})+'</div>';
@@ -425,10 +481,14 @@ V['b2-ligne']=function(){ return fil('b2-choix')+'<p class="sur">Pourquoi ai-je 
   +'<p class="note">Atelier complet en préparation. EFA ne donne aucun signal d’achat ou de vente.</p>';
 };
 /* Analyses */
+function mesTitres(){ var noms=[]; ((S.pf&&S.pf.l)||[]).forEach(function(l){ if(l.t&&noms.indexOf(l.t)<0) noms.push(l.t); }); (S.suivis||[]).forEach(function(t){ if(noms.indexOf(t)<0) noms.push(t); });
+  return '<div class="carte"><h3>Mes titres</h3>'+(noms.length?'<p class="note" style="margin-top:0">Vos titres viennent de votre relevé ou de votre liste de suivi. Rien n’est envoyé.</p>'+noms.map(function(t){ return '<div class="liens" style="margin-top:10px"><a href="https://www.brvm.org/fr/rapports-societes-cotees"><span>'+esc(t)+'<small>Ses rapports et états financiers · BRVM</small></span><em>officiel ↗</em></a><a href="https://www.brvm.org/fr/marche/avis-et-publications/avis"><span>Ses avis : dividende, suspension, opération<small>BRVM</small></span><em>officiel ↗</em></a></div>'; }).join(''):'<p>Ajoutez une entreprise à suivre, sans compte. Le suivi d’un titre est une information, jamais un conseil.</p>')
+  +'<div class="champ"><label for="suivi">Suivre une entreprise</label><input id="suivi" maxlength="60" placeholder="Nom de la société cotée"></div><div class="actions" style="margin-top:10px"><button type="button" class="bt b" data-act="suivre">Ajouter à mon suivi</button></div>'
+  +'<div class="actions"><button type="button" class="lien2" data-go="a5-entreprise">Analyser une de ces entreprises avec sa source →</button></div></div>'; }
 V.analyses=function(){ var o=S.ong||'marche';
   var T={marche:'<div class="carte"><h3>Le marché</h3>'+liens([['methode.html?src=bourse','La BRVM du jour','Indices, cours et séance, avec la date des données'],['marches.html?src=bourse','Marchés','La Bourse du jour et nos repères'],['news.html?src=bourse','EFA News','L’actualité financière décryptée']])+'</div>',
     apprendre:'<div class="carte"><h3>Apprendre à analyser</h3>'+liens([['bourse-marche.html?src=bourse','Lire le marché','Une introduction et huit modules'],['bourse-pro.html?src=bourse','Investisseur averti','Comptes, prix, ordres et portefeuille'],['atelier-lire-societe-cotee.html?src=bourse','Lire une société cotée','L’atelier',PAYANT]])+'</div>',
-    titres:'<div class="carte"><h3>Mes titres</h3><p>Bientôt : suivre une entreprise, sans compte, et retrouver nos analyses dès qu’elle publie. Le suivi d’un titre sera une information, jamais un conseil.</p><p class="note">En attendant, les documents officiels ci-dessous restent la référence.</p></div>'};
+    titres:mesTitres()};
   return fil('mon-portefeuille')+'<p class="sur">Analyses BRVM</p><h2 class="q">Les faits d’abord, l’analyse ensuite.</h2><div class="onglets" role="tablist">'+[['titres','Mes titres'],['marche','Le marché'],['apprendre','Apprendre à analyser']].map(function(x){ return '<button type="button" role="tab" aria-selected="'+(o===x[0])+'" data-ong="'+x[0]+'">'+x[1]+'</button>'; }).join('')+'</div>'+T[o]
   +'<div class="carte"><h3>Les documents officiels</h3><div class="src">'+[['https://bfin.brvm.org/boc.aspx','Bulletin officiel de la cote (BOC)','BRVM · cours et volumes de chaque séance'],['https://www.brvm.org/fr/rapports-societes-cotees','Rapports des sociétés cotées','BRVM · états financiers et rapports annuels'],['https://www.brvm.org/fr/marche/avis-et-publications/avis','Avis et publications','BRVM · dividendes, suspensions, opérations'],['https://www.brvm.org/fr/valeurs-liquidative','Valeurs liquidatives des OPCVM','BRVM'],['https://www.amf-umoa.org/pratique/verification/agrement','Vérification d’agrément','AMF-UMOA · SGI, sociétés de gestion']].map(function(x){ return '<a href="'+x[0]+'"><b>'+x[1]+' ↗</b><small>'+x[2]+'</small></a>'; }).join('')+'</div><p class="note">Toujours lire la date du document. Une analyse EFA se distingue de la source : elle ne la remplace pas.</p></div>';
 };
@@ -483,10 +543,18 @@ E.addEventListener('click',function(ev){
   if(act==='dl-voie'){ telecharger('efa-ma-voie','Ma voie à examiner',ficheVoieLignes()); return; }
   if(act==='fiche-comparaison'){ S.fiches.comparaison=1; sv(); aller('a5'); return; }
   if(act==='dl-comparaison'){ telecharger('efa-ma-comparaison','Ma comparaison',ficheCompLignes()); return; }
-  if(act==='fiche-decision'){ S.fiches.decision=1; sv(); aller('dossier'); return; }
-  if(act==='dl-dossier'){ telecharger('efa-mon-dossier-bourse','Mon dossier Bourse',ficheProjetLignes()+ficheVoieLignes()+ficheCompLignes()); return; }
+  if(act==='fiche-ent'||act==='dl-ent'){ lireEnt(); if(!entComplete()){ var m=document.getElementById('fe-msg'); if(m) m.innerHTML='<div class="expl ko">Pour enregistrer une décision préparée, il faut au moins : l’entreprise, le document officiel, sa date, son titre ou son lien, et l’extrait. Sinon, vous avez découvert la méthode, sans encore l’appliquer.</div>'; if(act==='fiche-ent'){ S.fiches.decision=0; sv(); } return; }
+    if(act==='dl-ent'){ telecharger('efa-fiche-entreprise','Ma fiche entreprise',ficheEntLignes()); return; } S.fiches.decision=1; sv(); aller('dossier'); return; }
+  if(act==='ordre-lu'){ S.fiches.ordre=1; sv(); aller('dossier'); return; }
+  if(act==='dl-dossier'){ telecharger('efa-mon-dossier-bourse','Mon dossier Bourse',ficheProjetLignes()+ficheVoieLignes()+ficheCompLignes()+(ficheEntLignes()||'<h2>Ma décision</h2><p>Méthode découverte. Fiche entreprise à remplir.</p>')); return; }
   if(act==='dl-ligne'){ telecharger('efa-pourquoi-ai-je-achete','Pourquoi ai-je acheté ?','<h2>Le titre</h2><p>……………………</p>'+['Ma raison d’achat, le jour de l’achat','Les faits nouveaux (document et date)','Ce qui a changé dans l’entreprise','Ce qui a changé dans ma situation','Mon critère de réexamen : atteint ?','Ma décision et pourquoi'].map(function(l){return '<h2>'+l+'</h2><p>……………………………………………………</p>';}).join('')); return; }
   if(act==='vers-portefeuille'){ aller('mon-portefeuille'); return; }
+  function lirePf(){ var P={l:[]}; E.querySelectorAll('.pf-l').forEach(function(d){ var i=d.querySelectorAll('input'); P.l.push({t:i[0].value.trim(),q:i[1].value.trim(),c:i[2].value.trim(),p:i[3].value.trim()}); }); ['verse','retire','esp','rev','frais','date'].forEach(function(k){ var x=document.getElementById('pf-'+k); P[k]=x?x.value.trim():''; }); S.pf=P; sv(); }
+  if(act==='pf-plus'){ lirePf(); if(S.pf.l.length<12){ S.pf.l.push({}); sv(); } poser(V['b1-saisie'](),'b1-saisie'); return; }
+  if(act==='pf-calc'){ lirePf(); aller('b1-bilan'); return; }
+  if(act==='dl-bilan'){ var B=bilan(); telecharger('efa-bilan-portefeuille','Bilan de mon portefeuille','<p>Relevé du '+esc(B.P.date||'—')+'</p><h2>Mes titres</h2><ul>'+B.L.map(function(l){ return '<li>'+esc(l.t||'—')+' · '+esc(l.q||'?')+' titres · cours '+esc(l.c||'?')+' F · prix de revient '+esc(l.p||'inconnu')+'</li>'; }).join('')+'</ul><h2>Bilan</h2><ul><li>Valeur des titres : '+(B.vt==null?'inconnue':F(B.vt))+'</li><li>Valeur totale : '+(B.tot==null?'inconnue':F(B.tot))+'</li><li>Résultat global en francs : '+(B.res==null?'inconnu':F(B.res))+'</li><li>Variation non réalisée : '+(B.lat==null?'inconnue':F(B.lat))+'</li><li>Revenus encaissés : '+(B.rev==null?'inconnus':F(B.rev))+'</li><li>Frais connus : '+(B.fr==null?'inconnus':F(B.fr))+'</li></ul>'+(B.manques.length?'<p><b>Données manquantes :</b> '+B.manques.join(', ')+'.</p>':'')+'<p><small>Aucun taux de rendement calculé : il faudrait la date de chaque versement.</small></p>'); return; }
+  if(act==='vers-titres'){ S.ong='titres'; sv(); aller('analyses'); return; }
+  if(act==='suivre'){ var x=document.getElementById('suivi'), t=x&&x.value.trim(); if(t){ S.suivis=S.suivis||[]; if(S.suivis.indexOf(t)<0) S.suivis.push(t); sv(); } poser(V.analyses(),'analyses'); return; }
 });
 var dep=(location.hash||'').slice(1); if(!V[dep]) dep='accueil';
 try{ history.replaceState({v:dep},'',dep==='accueil'?location.pathname+location.search:'#'+dep); }catch(e){}
