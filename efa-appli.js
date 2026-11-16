@@ -229,7 +229,7 @@
 })();
 
 /* Pastille « Mon EFA » (efa-moi.js) */
-(function () { try { if (window.EFA_MOI || document.querySelector('script[src^="efa-moi.js"],script[src^="/efa-moi.js"]')) return; var s = document.createElement("script"); s.src = "/efa-moi.js?v=20261116b"; s.defer = true; document.head.appendChild(s); } catch (e) {} })();
+(function () { try { if (window.EFA_MOI || document.querySelector('script[src^="efa-moi.js"],script[src^="/efa-moi.js"]')) return; var s = document.createElement("script"); s.src = "/efa-moi.js?v=20261116c"; s.defer = true; document.head.appendChild(s); } catch (e) {} })();
 
 /* Personnages : à la première mention de Koffi, Tonton Bamba, Tantie Affoué (ou d'un personnage d'un cas pratique),
    une petite fiche dit qu'il s'agit d'un personnage fictif, avec un lien vers Min'Fin et retour possible. */
