@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Mon portefeuille face à la baisse · 5 décisions à la Bourse · EFA</title>
+<link rel="canonical" href="https://efa.africa/jeu-portefeuille-baisse">
+<meta name="description" content="Votre portefeuille perd 40 %. Votre formation arrive dans huit mois. Cinq décisions, cinq minutes, pour comprendre le cours, le dividende, l’échéance et la liquidité. Situation fictive, aucun ordre passé.">
+<meta property="og:title" content="Mon portefeuille face à la baisse · EFA">
+<meta property="og:description" content="Votre portefeuille baisse. Votre formation approche. Que décidez-vous ? 5 décisions, 5 minutes.">
+<meta property="og:image" content="https://efa.africa/clone/assets/jeu-baisse-decision.webp">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<link rel="preload" as="image" href="clone/assets/jeu-baisse-decision.webp" media="(min-width:721px)">
+<link rel="preload" as="image" href="clone/assets/jeu-baisse-decision-900.webp" media="(max-width:720px)">
+<style>
+:root{--nuit:#0B1220;--nuit2:#13203A;--fond:#F1F7FA;--papier:#FFFFFF;--line:#DCE8ED;--corail:#DA3C1B;--corail-texte:#B8341A;--soft-corail:#F09680;--bleu:#1B71B2;--soft-bleu:#6DB8F2;--bleu-pale:#E6F2FC;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;
+--f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+--gut-g:max(16px,env(safe-area-inset-left,0px));--gut-d:max(16px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fond);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.jb p{margin:0}.jb h1,.jb h2,.jb h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;text-transform:none}
+.jb :focus-visible{outline:3px solid var(--soft-bleu);outline-offset:3px}
+.jb button{font:inherit}
+.jb .k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.jb .bouton{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-body);font-size:16px;font-weight:800;line-height:1.2;min-height:48px;padding:13px 24px;border-radius:8px;border:0;text-decoration:none;cursor:pointer}
+.jb .bouton.p{background:var(--corail);color:#fff}.jb .bouton.p:hover{background:#c13416}
+.jb .bouton.s{background:var(--nuit);color:#fff}
+.jb .bouton.c{background:var(--bleu-pale);color:var(--nuit)}
+.jb .lien{background:none;border:0;padding:0;cursor:pointer;color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px}
+
+/* ---------- Ouverture ---------- */
+.jb .ouv{position:relative;background:var(--nuit);color:#fff;min-height:min(78vh,640px);display:grid;align-items:center;overflow:hidden}
+.jb .ouv picture,.jb .ouv img.fond{position:absolute;inset:0;width:100%;height:100%}
+.jb .ouv img.fond{object-fit:cover;object-position:70% 50%}
+.jb .ouv::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,18,32,.96) 0%,rgba(11,18,32,.86) 38%,rgba(11,18,32,.15) 70%,rgba(11,18,32,0) 100%)}
+.jb .ouv .in{position:relative;z-index:1;width:100%;max-width:1180px;margin:0 auto;padding:56px var(--gut-d) 56px var(--gut-g)}
+.jb .ouv .txt{max-width:560px;display:grid;gap:18px}
+.jb .ouv .k{color:var(--soft-corail)}
+.jb .ouv h1{font-size:clamp(32px,4.6vw,54px);color:#fff}
+.jb .ouv .corps{color:#D7DEEA;font-size:clamp(17px,1.7vw,19px)}
+.jb .ouv .trois{display:flex;flex-wrap:wrap;gap:8px}
+.jb .ouv .trois span{background:rgba(255,255,255,.1);border-radius:999px;padding:6px 12px;font-size:14.5px;font-weight:700;color:#fff;white-space:nowrap}
+.jb .ouv .trois b{color:var(--soft-bleu);font-weight:800}
+.jb .ouv .note{font-size:14px;color:#9FB0C8}
+.jb .ouv .reprise{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.jb .ouv .reprise .lien{color:#fff;text-decoration-color:var(--soft-corail)}
+@media (max-width:720px){
+  .jb .ouv{min-height:0;align-items:end}
+  .jb .ouv picture,.jb .ouv img.fond{position:relative;height:30vh;min-height:190px;display:block}
+  .jb .ouv img.fond{object-position:78% 40%}
+  .jb .ouv::after{display:none}
+  .jb .ouv .in{padding-top:26px;padding-bottom:34px}
+}
+
+/* ---------- Le jeu ---------- */
+.jb .jeu{max-width:1180px;margin:0 auto;padding:22px var(--gut-d) 56px var(--gut-g)}
+.jb .tdb{position:sticky;top:var(--haut,env(safe-area-inset-top,0px));z-index:20;background:var(--fond);padding:10px 0 12px;display:grid;gap:10px}
+.jb .tdb-l{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.jb .jetons{display:flex;gap:8px;align-items:center}
+.jb .jeton{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:var(--papier);color:var(--ink3);border:0}
+.jb .jeton.fait{background:var(--nuit);color:#fff}
+.jb .jeton.ici{background:var(--corail);color:#fff;transform:scale(1.12)}
+.jb .jeton:disabled{cursor:default}
+.jb .etape{font-size:14.5px;font-weight:700;color:var(--ink2)}
+.jb .compteurs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.jb .cpt{background:var(--papier);border-radius:12px;padding:10px 12px;min-width:0}
+.jb .cpt small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jb .cpt b{display:block;font-family:var(--f-display);font-size:clamp(17px,2.2vw,24px);color:var(--nuit);line-height:1.15;white-space:nowrap}
+.jb .cpt i{display:block;font-style:normal;font-size:13px;color:var(--ink3);min-height:1.3em}
+.jb .cpt.baisse b{color:var(--corail-texte)}
+.jb .cpt.manque i{color:var(--corail-texte);font-weight:700}
+.jb .cpt.flash{animation:flash 1.2s ease}
+@keyframes flash{0%{background:#FFE7DF}100%{background:var(--papier)}}
+
+.jb .scene{margin-top:14px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);background:var(--papier);border-radius:18px;overflow:hidden}
+.jb .scene .img{position:relative;background:var(--nuit);min-height:100%}
+.jb .scene .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 45%}
+.jb .scene .cont{padding:clamp(22px,3.2vw,38px);display:grid;gap:16px;align-content:start;order:-1}
+.jb .scene .k{color:var(--corail-texte)}
+.jb .scene h2{font-size:clamp(26px,3.2vw,36px);color:var(--nuit)}
+.jb .scene .sit{font-size:clamp(17px,1.7vw,19px);color:var(--ink)}
+.jb .scene .sit .cle{display:inline-block;font-family:var(--f-display);font-weight:700;color:var(--nuit);background:#FFE7DF;border-radius:6px;padding:0 6px}
+.jb .choix{display:grid;gap:10px;margin-top:4px}
+.jb .choix button{display:flex;gap:14px;align-items:center;text-align:left;width:100%;min-height:56px;padding:14px 16px;border-radius:12px;border:0!important;background:#EAF2F7!important;color:var(--nuit)!important;box-shadow:none!important;font-weight:700;font-size:16.5px;line-height:1.35;cursor:pointer;transition:background .15s,transform .15s}
+.jb .choix button:hover{background:#DCEBF6!important;transform:translateX(3px)}
+.jb .choix button .n{flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--papier);color:var(--bleu);font-weight:800;font-size:14px}
+.jb .choix button[aria-pressed="true"]{background:var(--nuit)!important;color:#fff!important}.jb .choix button[aria-pressed="true"] .n{background:var(--corail);color:#fff}
+.jb .mention{font-size:13.5px;color:var(--ink3)}
+@media (max-width:820px){
+  .jb .scene{grid-template-columns:1fr}
+  .jb .scene .img{height:28vh;min-height:170px;order:-2}
+  .jb .scene .cont{order:0}
+}
+@media (max-width:420px){.jb .cpt{padding:8px 9px}.jb .cpt small{font-size:11px;letter-spacing:.03em}.jb .cpt i{font-size:12px}}
+
+/* ---------- Le retour (feuille du bas sur téléphone, dialogue au centre sur ordinateur) ---------- */
+.jb .voile{position:fixed;inset:0;z-index:2147482500;background:rgba(11,18,32,.55);display:flex;align-items:flex-end;justify-content:center}
+.jb .voile[hidden]{display:none}
+.jb .feuille{background:var(--papier);color:var(--ink);width:100%;max-height:88vh;max-height:88svh;border-radius:20px 20px 0 0;display:flex;flex-direction:column;animation:monte .28s ease-out}
+@keyframes monte{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.jb .feuille .haut{padding:22px var(--gut-d) 0 var(--gut-g);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.jb .feuille .fermer{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:0;background:var(--fond);color:var(--nuit);font-size:22px;cursor:pointer}
+.jb .feuille .defil{padding:8px var(--gut-d) 8px var(--gut-g);overflow:auto;display:grid;gap:14px}
+.jb .feuille h2{font-size:clamp(21px,2.4vw,26px);color:var(--nuit)}
+.jb .feuille .vous{font-size:15px;color:var(--ink3)}.jb .feuille .vous b{color:var(--ink)}
+.jb .feuille .ex{font-size:17px}
+.jb .feuille .bas{padding:12px var(--gut-d) calc(16px + env(safe-area-inset-bottom,0px)) var(--gut-g);display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;border-top:1px solid var(--line)}
+@media (min-width:721px){.jb .voile{align-items:center}.jb .feuille{max-width:520px;border-radius:18px;max-height:86vh}}
+/* calculs en HTML */
+.jb .calc{background:var(--fond);border-radius:12px;padding:14px 16px;display:grid;gap:8px}
+.jb .calc .l{display:flex;justify-content:space-between;gap:12px;font-weight:700}
+.jb .calc .l span:last-child{font-family:var(--f-display);white-space:nowrap}
+.jb .calc .t{border-top:2px solid var(--nuit);padding-top:8px}
+.jb .calc small{color:var(--ink3);font-size:13.5px}
+.jb .grille100{display:grid;grid-template-columns:repeat(20,1fr);gap:3px}
+.jb .grille100 i{display:block;aspect-ratio:1;border-radius:3px;background:#D5E2EA}
+.jb .grille100 i.v{background:var(--bleu)}
+.jb .leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--ink2)}
+.jb .leg span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:#D5E2EA}
+.jb .leg span.v::before{background:var(--bleu)}
+.jb .echeance{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
+.jb .echeance i{height:10px;border-radius:999px;background:var(--bleu)}
+.jb .echeance i.r{background:#D5E2EA}
+
+/* ---------- Synthèse ---------- */
+.jb .fin{max-width:900px;margin:0 auto;display:grid;gap:20px}
+.jb .fin>h2{font-size:clamp(28px,3.8vw,42px);color:var(--nuit)}
+.jb .cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.jb .carte{background:var(--papier);border-radius:14px;padding:18px 20px;display:grid;gap:8px;align-content:start;animation:monte .35s ease-out both}
+.jb .carte:nth-child(2){animation-delay:.12s}.jb .carte:nth-child(3){animation-delay:.24s}
+.jb .carte .k{color:var(--bleu);font-size:11.5px;letter-spacing:.16em}
+.jb .carte .e{font-size:13px;font-weight:800;color:var(--ink3)}
+.jb .carte p.t{font-weight:700;color:var(--nuit)}
+.jb .carte .q{font-size:15px;color:var(--ink2)}
+.jb .question{background:var(--nuit);color:#fff;border-radius:18px;padding:clamp(22px,3.4vw,34px);display:grid;gap:16px}
+.jb .question .k{color:var(--soft-corail)}
+.jb .question h3{font-size:clamp(21px,2.6vw,28px);color:#fff}
+.jb .question .opts{display:flex;flex-wrap:wrap;gap:10px}
+.jb .question .opts button{min-height:48px;padding:12px 18px;border-radius:999px;border:0;font-weight:800;cursor:pointer;background:rgba(255,255,255,.12);color:#fff}
+.jb .question .opts button[aria-pressed="true"]{background:#fff;color:var(--nuit)}
+.jb .question label{font-weight:700;color:#D7DEEA;font-size:15px}
+.jb .question .mt{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:4px 14px;max-width:320px}
+.jb .question .mt input{border:0;outline:0;font:700 20px var(--f-display);color:var(--nuit);width:100%;min-height:44px;background:transparent}
+.jb .question .mt span{font-weight:800;color:var(--ink3)}
+.jb .question .aide{font-size:14.5px;color:#C9D1DE}
+.jb .question .aide a{color:#fff;font-weight:700}
+.jb .actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.jb .ok{font-weight:700;color:#BFF0D5}.jb .err{font-weight:700;color:#FFB4A6}
+.jb .rejouer{font-size:15px;color:var(--ink3)}
+.jb .rejouer .lien{color:var(--nuit)}
+.jb [hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.jb *{animation:none!important;transition:none!important}}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261116a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · où j’en suis</a><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<header data-v1-cache class="top"></header>
+<main class="jb" id="jeu-baisse" data-garde>
+
+  <section class="ouv" id="ouverture" aria-labelledby="t-ouv">
+    <picture><source media="(max-width:720px)" srcset="clone/assets/jeu-baisse-decision-900.webp"><img class="fond" src="clone/assets/jeu-baisse-decision.webp" alt="" width="1600" height="900" fetchpriority="high"></picture>
+    <div class="in"><div class="txt">
+      <p class="k" id="o-eyebrow">5 décisions · environ 5 minutes</p>
+      <h1 id="t-ouv">Votre portefeuille baisse. Votre formation approche. Que décidez-vous ?</h1>
+      <p class="corps" id="o-corps">Vous disposez de 1 000 000 FCFA : 700 000 FCFA investis en actions, 300 000 FCFA disponibles. Une formation de 350 000 FCFA est à payer dans huit mois. Vos choix vous aident à comprendre ; ils ne déclenchent aucun ordre.</p>
+      <div class="trois" aria-hidden="true"><span>Actions <b>700 000 F</b></span><span>Disponible <b>300 000 F</b></span><span>Formation <b>350 000 F</b> dans 8 mois</span></div>
+      <div class="reprise"><button type="button" class="bouton p" id="go">Je prends les décisions</button><button type="button" class="lien" id="go-reprendre" hidden>Reprendre à la décision <span id="go-n"></span></button></div>
+      <p class="note">Situation fictive · aucun ordre exécuté · aucun compte demandé</p>
+    </div></div>
+  </section>
+
+  <section class="jeu" id="jeu" hidden aria-live="polite">
+    <div class="tdb" id="tdb">
+      <div class="tdb-l"><div class="jetons" id="jetons" aria-label="Vos cinq décisions"></div><p class="etape" id="etape">Décision 1 sur 5</p></div>
+      <div class="compteurs" aria-label="Ma situation">
+        <div class="cpt" id="c-act"><small>Mes actions</small><b id="v-act">700 000 F</b><i id="i-act">valeur affichée</i></div>
+        <div class="cpt" id="c-dispo"><small>Disponible</small><b id="v-dispo">300 000 F</b><i>sur mon compte</i></div>
+        <div class="cpt" id="c-form"><small>Formation</small><b id="v-form">350 000 F</b><i id="i-form">dans 8 mois</i></div>
+      </div>
+    </div>
+    <article class="scene" id="scene" aria-labelledby="s-titre">
+      <div class="img"><picture><source media="(max-width:820px)" id="s-src"><img id="s-img" alt="" width="1600" height="900"></picture></div>
+      <div class="cont">
+        <p class="k" id="s-k">Décision 1 · Le cours chute</p>
+        <h2 id="s-titre" tabindex="-1">Le cours chute</h2>
+        <p class="sit" id="s-sit"></p>
+        <div class="choix" id="s-choix"></div>
+        <p class="mention">Situation fictive · aucun ordre exécuté</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="jeu" id="synthese" hidden>
+    <div class="fin">
+      <p class="k" style="color:var(--corail-texte)">Vos cinq décisions</p>
+      <h2 id="f-titre" tabindex="-1">Votre décision commence avant l’achat</h2>
+      <div class="cartes" id="f-cartes"></div>
+      <div class="question" id="f-q">
+        <p class="k">Votre décision à vous</p>
+        <h3 id="f-question">Quelle somme pouvez-vous laisser investie plusieurs années sans en avoir besoin pour une dépense prévue ?</h3>
+        <div class="opts" role="group" aria-labelledby="f-question"><button type="button" data-int="known" aria-pressed="false">Je connais le montant</button><button type="button" data-int="calculate" aria-pressed="false">Je dois d’abord le calculer</button></div>
+        <div id="f-montant" hidden><label for="mt">Montant que je pourrais laisser investi (facultatif)</label><div class="mt"><input id="mt" inputmode="numeric" autocomplete="off" placeholder="0"><span>FCFA</span></div><p class="aide" style="margin-top:8px">Ce montant reste sur votre téléphone. Il ne sert à recommander aucun titre.</p></div>
+        <p class="aide" id="f-calc" hidden>Faites la liste de vos dépenses prévues des trois prochaines années, puis gardez de côté votre réserve de sécurité. Ce qui reste peut être investi longtemps. <a href="atelier-reserve-securite.html?src=jeu-baisse">L’atelier « Ma réserve de sécurité »</a> vous guide, gratuitement.</p>
+        <div class="actions"><button type="button" class="bouton p" id="f-garder">Garder ma décision dans Mon cahier</button><a class="bouton c" id="f-bourse" href="bourse.html?src=jeu-baisse" data-goatcounter-click="jeu-baisse-bourse">Comprendre comment commencer à la BRVM</a></div>
+        <p id="f-msg" role="status"></p>
+      </div>
+      <p class="rejouer">Vous voulez essayer d’autres réponses ? <button type="button" class="lien" id="f-rejouer">Rejouer les cinq décisions</button> · <a class="lien" href="mon-efa.html">Mon EFA</a></p>
+    </div>
+  </section>
+
+  <div class="voile" id="voile" hidden>
+    <div class="feuille" role="dialog" aria-modal="true" aria-labelledby="d-titre" id="dialogue">
+      <div class="haut"><p class="k" style="color:var(--corail-texte)" id="d-k">Votre choix</p><button type="button" class="fermer" id="d-fermer" aria-label="Fermer et continuer">×</button></div>
+      <div class="defil">
+        <h2 id="d-titre"></h2>
+        <p class="vous">Vous avez choisi : <b id="d-choix"></b></p>
+        <p class="ex" id="d-ex"></p>
+        <div id="d-calc"></div>
+      </div>
+      <div class="bas"><button type="button" class="bouton p" id="d-suite">Compris, continuer</button><button type="button" class="lien" id="d-modifier">Modifier ma réponse</button></div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+'use strict';
+var CLE='efa_jeu_baisse_v1', LIEN_BOURSE='bourse.html?src=jeu-baisse';
+var $=function(id){ return document.getElementById(id); };
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function F(n){ return (n<0?'−':'')+String(Math.abs(Math.round(n))).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' F'; }
+function lire(){ try{ return JSON.parse(localStorage.getItem(CLE)||'null'); }catch(e){ return null; } }
+function garder(){ try{ localStorage.setItem(CLE,JSON.stringify(E)); }catch(e){} }
+function compte(ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:'jeu-baisse-'+ev,title:'jeu-baisse-'+ev,event:true}); }catch(e){} }
+var calme=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var C=null, E=null, ouvreur=null;
+
+/* Mise en valeur du chiffre clé dans la situation */
+var CLES={course:['−40\u00a0%'],dividend:['500\u00a0FCFA'],exit_return:[],training:['il manque 50\u202f000\u00a0FCFA'],liquidity:['seules 20 actions']};
+function situation(s){ var t=esc(s.situation); (CLES[s.id]||[]).forEach(function(k){ t=t.replace(esc(k),'<span class="cle">'+esc(k)+'</span>'); }); return t; }
+
+/* Compteurs : actions 700 000 → 420 000 dès la décision 1 ; formation dans 8 mois → 2 mois à la décision 4 */
+function anime(el,de,a){ if(calme||de===a){ el.textContent=F(a); return; } var t0=null,d=900; function p(t){ if(!t0) t0=t; var x=Math.min(1,(t-t0)/d), v=de+(a-de)*(1-Math.pow(1-x,3)); el.textContent=F(v); if(x<1) requestAnimationFrame(p); } requestAnimationFrame(p); }
+var dernierAct=null;
+function compteurs(i){
+  var sc=C.scenario, act=i>=0?sc.portfolioAfterDrop:sc.initialInvested;
+  if(dernierAct!==act){ anime($('v-act'),dernierAct==null?act:dernierAct,act); if(dernierAct!=null){ $('c-act').classList.remove('flash'); void $('c-act').offsetWidth; $('c-act').classList.add('flash'); } dernierAct=act; }
+  $('c-act').classList.toggle('baisse',act<sc.initialInvested); $('i-act').innerHTML=act<sc.initialInvested?'valeur affichée<br>−40 %':'valeur affichée';
+  $('v-dispo').textContent=F(sc.cashAvailable);
+  var mois=i>=3?2:sc.trainingMonthsAway; $('i-form').innerHTML=i>=3?'dans 2 mois<br>il manque '+F(sc.cashShortfall):'dans '+mois+' mois';
+  $('c-form').classList.toggle('manque',i>=3);
+  if(i===3&&!$('c-form').dataset.vu){ $('c-form').dataset.vu=1; $('c-form').classList.add('flash'); }
+}
+function jetons(i){
+  $('jetons').innerHTML=C.scenes.map(function(s,k){ var f=!!E.answers[s.id], ici=k===i;
+    return '<button type="button" class="jeton'+(f?' fait':'')+(ici?' ici':'')+'" data-aller="'+k+'"'+(f||ici?'':' disabled')+' aria-label="Décision '+(k+1)+(f?', répondue':'')+(ici?', en cours':'')+'"'+(ici?' aria-current="step"':'')+'>'+(k+1)+'</button>'; }).join('');
+  $('etape').textContent=C.common.progress.replace('{index}',i+1);
+}
+function scene(i,focus){
+  E.sceneIndex=i; garder();
+  var s=C.scenes[i];
+  $('ouverture').hidden=true; $('synthese').hidden=true; $('jeu').hidden=false;
+  $('s-img').src='clone/assets/'+s.asset+'.webp'; $('s-src').srcset='clone/assets/'+s.asset+'-900.webp';
+  $('s-k').textContent='Décision '+(i+1)+' · '+s.title; $('s-titre').textContent=s.title; $('s-sit').innerHTML=situation(s);
+  $('s-choix').innerHTML=s.options.map(function(o,k){ return '<button type="button" data-opt="'+esc(o.id)+'" aria-pressed="'+(E.answers[s.id]===o.id)+'"><span class="n" aria-hidden="true">'+(k+1)+'</span><span>'+esc(o.label)+'</span></button>'; }).join('');
+  jetons(i); compteurs(i);
+  if(focus){ try{ window.scrollTo({top:$('jeu').offsetTop-8,behavior:calme?'auto':'smooth'}); }catch(e){ window.scrollTo(0,$('jeu').offsetTop); } $('s-titre').focus({preventScroll:true}); }
+}
+
+/* ---------- Le retour ---------- */
+var occupe=false;
+function calcul(s,o){
+  if(s.id==='dividend'){ var c=s.calculation; return '<div class="calc" aria-label="Le calcul de l’exemple"><div class="l"><span>Variation du cours</span><span>'+F(c.courseChange)+'</span></div><div class="l"><span>Dividende net reçu</span><span>+ '+F(c.netDividend).replace('−','')+'</span></div><div class="l t"><span>Dans cet exemple</span><span>'+F(c.illustrativeTotal)+'</span></div><small>Par action, hors autres frais et variations.</small></div>'; }
+  if(s.id==='liquidity'){ var g=''; for(var k=0;k<100;k++) g+='<i'+(k<20?' class="v"':'')+'></i>'; return '<div class="calc"><div class="grille100" role="img" aria-label="100 actions, dont 20 trouvent preneur à 1 000 FCFA à cet instant">'+g+'</div><div class="leg"><span class="v">20 trouvent preneur à 1 000 F : 20 000 F à ce prix pour l’instant</span><span>80 restent détenues</span></div></div>'; }
+  if(s.id==='training'){ var b=''; for(var m=0;m<8;m++) b+='<i'+(m>=6?' class="r"':'')+'></i>'; return '<div class="calc"><div class="echeance" role="img" aria-label="Six mois écoulés sur huit">'+b+'</div><div class="l"><span>Formation à payer dans 2 mois</span><span>'+F(C.scenario.trainingDue)+'</span></div><div class="l"><span>Disponible</span><span>'+F(C.scenario.cashAvailable)+'</span></div><div class="l t"><span>Il manque</span><span>'+F(C.scenario.cashShortfall)+'</span></div><small>La valeur affichée de vos actions n’est pas de l’argent disponible.</small></div>'; }
+  if(s.id==='course'){ return '<div class="calc"><div class="l"><span>Valeur affichée avant</span><span>'+F(C.scenario.initialInvested)+'</span></div><div class="l"><span>Valeur affichée aujourd’hui</span><span>'+F(C.scenario.portfolioAfterDrop)+'</span></div><small>Rien n’a été vendu : c’est une valeur affichée, pas une somme encaissée.</small></div>'; }
+  return '';
+}
+function ouvrir(i,optId,btn){
+  if(occupe) return; occupe=true; setTimeout(function(){ occupe=false; },400);
+  var s=C.scenes[i], o=s.options.filter(function(x){ return x.id===optId; })[0]; if(!o) return;
+  E.answers[s.id]=optId; garder(); compte('scene-'+s.id+'-'+optId);
+  [].forEach.call($('s-choix').querySelectorAll('button'),function(b){ b.setAttribute('aria-pressed',b.getAttribute('data-opt')===optId); });
+  jetons(i);
+  ouvreur=btn;
+  $('d-k').textContent='Décision '+(i+1)+' sur 5'; $('d-titre').textContent=o.feedbackTitle; $('d-choix').textContent=o.label; $('d-ex').textContent=o.feedback; $('d-calc').innerHTML=calcul(s,o);
+  $('d-suite').textContent=i<C.scenes.length-1?C.common.continue:'Voir ce que j’ai regardé';
+  $('voile').hidden=false; document.body.style.overflow='hidden';
+  setTimeout(function(){ $('d-suite').focus(); },30);
+}
+function fermer(suite){
+  if($('voile').hidden) return;
+  $('voile').hidden=true; document.body.style.overflow='';
+  if(suite){ var i=E.sceneIndex; if(i<C.scenes.length-1) scene(i+1,true); else synthese(true); }
+  else if(ouvreur) ouvreur.focus();
+}
+$('d-suite').onclick=function(){ fermer(true); };
+$('d-fermer').onclick=function(){ fermer(true); };
+$('d-modifier').onclick=function(){ fermer(false); };
+$('voile').addEventListener('click',function(e){ if(e.target===this) fermer(false); });
+document.addEventListener('keydown',function(e){
+  if($('voile').hidden) return;
+  if(e.key==='Escape'){ e.preventDefault(); fermer(true); return; }
+  if(e.key==='Tab'){ var f=[].slice.call($('dialogue').querySelectorAll('button,a[href]')), a=f[0], z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); } else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); } }
+});
+$('s-choix').addEventListener('click',function(e){ var b=e.target.closest('button[data-opt]'); if(b) ouvrir(E.sceneIndex,b.getAttribute('data-opt'),b); });
+$('jetons').addEventListener('click',function(e){ var b=e.target.closest('button[data-aller]'); if(b&&!b.disabled) scene(+b.getAttribute('data-aller'),true); });
+
+/* ---------- Synthèse : trois cartes, sans note ---------- */
+var QUESTIONS={check_thesis:'Qu’est-ce qui a changé dans les résultats de l’entreprise ?',dividend_review:'Le dividende reçu compense-t-il la variation du cours ?',reserve_due:'Quelles dépenses ont une date dans les douze prochains mois ?',check_liquidity:'Combien de titres s’échangent vraiment chaque jour ?'};
+function tag(id){ var s=C.scenes.filter(function(x){ return x.id===id; })[0], a=E.answers[id], o=s&&s.options.filter(function(x){ return x.id===a; })[0]; return o?o.tag:null; }
+function synthese(focus){
+  $('ouverture').hidden=true; $('jeu').hidden=true; $('synthese').hidden=false;
+  if(!E.completedAt){ E.completedAt=new Date().toISOString(); garder(); compte('termine'); }
+  var res=tag('course'); if(res==='check_thesis'&&tag('exit_return')==='reviewed_thesis') res='reviewed_thesis';
+  var L=[['Les résultats',res],['L’échéance',tag('training')],['La liquidité',tag('liquidity')]];
+  $('f-cartes').innerHTML=L.map(function(x){ var t=x[1], v=/^(reviewed|planned)/.test(t||'');
+    return '<div class="carte"><p class="k">Ce que vous avez regardé · '+esc(x[0])+'</p><p class="e">'+(v?'Vous avez vérifié':'À vérifier la prochaine fois')+'</p><p class="t">'+esc(C.final.cards[t]||'')+'</p>'+(!v&&QUESTIONS[t]?'<p class="q">Votre question : '+esc(QUESTIONS[t])+'</p>':'')+'</div>'; }).join('');
+  intention(E.finalIntent);
+  if(E.optionalAmount) $('mt').value=String(E.optionalAmount).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  if(focus){ window.scrollTo(0,0); $('f-titre').focus({preventScroll:true}); }
+}
+function intention(v){
+  E.finalIntent=v||null; garder();
+  [].forEach.call(document.querySelectorAll('[data-int]'),function(b){ b.setAttribute('aria-pressed',b.getAttribute('data-int')===v); });
+  $('f-montant').hidden=v!=='known'; $('f-calc').hidden=v!=='calculate';
+}
+document.querySelector('#f-q .opts').addEventListener('click',function(e){ var b=e.target.closest('[data-int]'); if(b) intention(b.getAttribute('data-int')); });
+$('mt').addEventListener('input',function(){ var n=this.value.replace(/\D/g,'').slice(0,12); this.value=n.replace(/\B(?=(\d{3})+(?!\d))/g,' '); E.optionalAmount=n?+n:null; garder(); });
+$('f-garder').onclick=function(){
+  var msg=$('f-msg'); msg.className='';
+  try{
+    var st=JSON.parse(localStorage.getItem('efa_parcours_v1')||'{}')||{}; st.fiches=st.fiches||{};
+    var d=new Date(), jour=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+    var t=E.finalIntent==='known'?(E.optionalAmount?'Je peux laisser '+F(E.optionalAmount)+'CFA investis plusieurs années, sans en avoir besoin pour une dépense prévue.':'Je connais la somme que je peux laisser investie plusieurs années.')
+      :E.finalIntent==='calculate'?'Je calcule d’abord : mes dépenses prévues des trois prochaines années, puis ma réserve de sécurité. Ce qui reste peut être investi longtemps.':'Avant d’investir, je sépare l’argent dont j’aurai besoin bientôt.';
+    t+=' Avant d’agir sur un cours qui baisse, je regarde les résultats de l’entreprise, l’échéance de mes dépenses et la liquidité du titre.';
+    st.fiches['jeu-portefeuille-baisse.html']={titre:'Mon portefeuille face à la baisse · ma décision',t:t,d:jour,url:'jeu-portefeuille-baisse.html'};
+    localStorage.setItem('efa_parcours_v1',JSON.stringify(st));
+    var ok=JSON.parse(localStorage.getItem('efa_parcours_v1')).fiches['jeu-portefeuille-baisse.html'];
+    if(!ok) throw new Error('relecture');
+    compte('cahier');
+    var cpt=null; try{ cpt=JSON.parse(localStorage.getItem('efa_compte')||'null'); }catch(e){}
+    msg.className='ok'; msg.innerHTML='C’est gardé dans Mon cahier, sur ce téléphone'+(cpt&&cpt.cle?' (votre compte reçoit seulement le repère, pas le montant)':'')+'. Retrouvez-la dans <a href="mon-efa.html#b-fiches" style="color:#fff">Mon EFA</a>.';
+    $('f-garder').textContent='Mettre à jour dans Mon cahier';
+  }catch(e){ msg.className='err'; msg.innerHTML='La fiche n’a pas pu être gardée sur ce téléphone (navigation privée ou stockage plein). <button type="button" class="lien" style="color:#fff" onclick="document.getElementById(\'f-garder\').click()">Réessayer</button>'; }
+};
+$('f-bourse').href=(C&&C.final.learnUrl)||LIEN_BOURSE;
+$('f-rejouer').onclick=function(){ E={scenarioVersion:C.version,sceneIndex:0,answers:{},finalIntent:null,optionalAmount:null,completedAt:null}; garder(); dernierAct=null; compte('rejouer'); scene(0,true); };
+
+/* Le tableau de bord se colle sous l'en-tête du site */
+function haut(){ var h=document.getElementById('clone-haut')||document.querySelector('header.header'); var v=0; if(h){ var p=getComputedStyle(h).position; if(p==='sticky'||p==='fixed') v=Math.round(h.getBoundingClientRect().height); } document.getElementById('jeu-baisse').style.setProperty('--haut',v+'px'); }
+haut(); window.addEventListener('resize',haut); setTimeout(haut,600); setTimeout(haut,2000);
+/* ---------- Démarrage ---------- */
+function demarrer(){
+  var o=C.intro; $('o-eyebrow').textContent=o.eyebrow; $('t-ouv').textContent=o.heading; $('o-corps').textContent=o.body; $('go').textContent=o.cta;
+  $('f-titre').textContent=C.final.title; $('f-question').textContent=C.final.question; $('f-garder').textContent=C.final.save; $('f-bourse').textContent=C.final.learn; $('f-bourse').href=C.final.learnUrl||LIEN_BOURSE;
+  E=lire();
+  if(!E||E.scenarioVersion!==C.version) E={scenarioVersion:C.version,sceneIndex:0,answers:{},finalIntent:null,optionalAmount:null,completedAt:null};
+  var n=Object.keys(E.answers).length;
+  if(E.completedAt){ $('go').textContent='Revoir mes décisions'; $('go-reprendre').hidden=false; $('go-reprendre').textContent='Voir ma synthèse'; $('go-reprendre').onclick=function(){ synthese(true); }; }
+  else if(n){ $('go-reprendre').hidden=false; $('go-n').textContent=String(Math.min(E.sceneIndex,4)+1); $('go-reprendre').onclick=function(){ scene(Math.min(E.sceneIndex,4),true); }; }
+  $('go').onclick=function(){ compte('debut'); if(E.completedAt){ scene(0,true); return; } scene(n&&E.sceneIndex<5?E.sceneIndex:0,true); };
+  if(location.hash==='#synthese'&&E.completedAt) synthese(false);
+}
+fetch('data/jeu-portefeuille-baisse.json?v=20261116b').then(function(r){ return r.json(); }).then(function(d){ C=d; demarrer(); },function(){ $('o-corps').textContent='Le jeu n’a pas pu se charger. Vérifiez votre connexion, puis rechargez la page.'; $('go').hidden=true; });
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=20261116a" defer></script>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2><a class="ef-h" href="index.html#benefices">Apprendre</a></h2><ul>
+          <li><a href="index.html#seul">J’apprends seul</a></li>
+          <li><a href="index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="musee.html">Le musée de l’économie</a></li>
+          <li><a href="outils.html">Outils et simulateurs</a></li>
+          <li><a href="diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li><li><a href="etudiants.html">Pass Étudiant</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-progresser">Être coaché</a></h2><ul>
+          <li><a href="index.html#pilier-progresser">Choisir son atelier</a></li>
+          <li><a href="coaching.html">Tous les ateliers</a></li>
+          <li><a href="abonnement.html">efa<span style="color:#E44828">.</span> abonnement</a></li>
+          <li><a href="index.html#certificats">Certificats</a></li>
+          <li><a href="index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-agir">Se lancer</a></h2><ul>
+          <li><a href="generateur-de-projet.html">EFA Déclic</a></li><li><a href="projets-a-suivre.html">Projets à suivre</a></li>
+          <li><a href="index.html#marches">Investir à la Bourse (BRVM)</a></li>
+          <li><a href="marches.html">Marchés : la Bourse du jour</a></li><li><a href="sgi.html">Choisir sa SGI</a></li>
+          <li><a href="index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="news.html">Le média</a></h2><ul>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="decryptage.html">Décryptage</a></li>
+          <li><a href="tribunes.html">La tribune d’Élysée Johnson</a></li>
+          <li><a href="index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="africa-2075.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="auteur.html#auteur">EFA</a></h2><ul>
+          <li><a href="auteur.html#auteur">EFA et son fondateur</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+          <li><a href="lettre.html">La lettre du mardi</a></li>
+          <li><a href="podcast.html">Le podcast EFA</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 EFA · Tous droits réservés</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<script src="clone/habillage.js?v=20261116a" defer></script>
+</body>
+</html>

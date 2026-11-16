@@ -25,3 +25,10 @@ clone/assets/aig-hero-bureau.webp
 clone/assets/declic-bureau.webp
 clone/assets/tribunes-entree-elysee.webp
 clone/assets/affiche-bourse-par-ou-commencer.webp
+# Jeu « Mon portefeuille face à la baisse » : texte posé sur la partie sombre (16/11/2026)
+clone/assets/jeu-baisse-decision.webp
+clone/assets/jeu-baisse-decision-900.webp
+clone/assets/jeu-baisse-echeance.webp
+clone/assets/jeu-baisse-echeance-900.webp
+clone/assets/jeu-baisse-liquidite.webp
+clone/assets/jeu-baisse-liquidite-900.webp

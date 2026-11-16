@@ -1,0 +1,206 @@
+{
+ "version": "1.0.0",
+ "brand": "EFA",
+ "title": "Mon portefeuille face à la baisse",
+ "intro": {
+  "eyebrow": "5 décisions · environ 5 minutes",
+  "heading": "Votre portefeuille baisse. Votre formation approche. Que décidez-vous ?",
+  "body": "Vous disposez de 1 000 000 FCFA : 700 000 FCFA investis en actions, 300 000 FCFA disponibles. Une formation de 350 000 FCFA est à payer dans huit mois. Vos choix vous aident à comprendre ; ils ne déclenchent aucun ordre.",
+  "cta": "Je prends les décisions",
+  "asset": "jeu-baisse-decision"
+ },
+ "scenario": {
+  "initialInvested": 700000,
+  "cashAvailable": 300000,
+  "trainingDue": 350000,
+  "trainingMonthsAway": 8,
+  "portfolioAfterDrop": 420000,
+  "cashShortfall": 50000
+ },
+ "common": {
+  "continue": "Compris, continuer",
+  "changeAnswer": "Modifier ma réponse",
+  "progress": "Décision {index} sur 5",
+  "exampleLabel": "Situation fictive · aucun ordre exécuté"
+ },
+ "scenes": [
+  {
+   "id": "course",
+   "title": "Le cours chute",
+   "asset": "jeu-baisse-decision",
+   "situation": "Votre portefeuille d'actions passe de 700 000 à 420 000 FCFA : −40 %. L'entreprise que vous suivez publie pourtant des bénéfices stables. Qu'envisagez-vous ?",
+   "options": [
+    {
+     "id": "sell",
+     "label": "Je vendrais immédiatement.",
+     "feedbackTitle": "Le cours a baissé. Pourquoi ?",
+     "feedback": "Vendre peut répondre à une raison valable. Ici, le seul chiffre du cours ne dit pas encore ce qui a changé dans l'entreprise. Avant d'agir, relisez ses résultats et la raison pour laquelle vous l'aviez achetée.",
+     "tag": "check_thesis"
+    },
+    {
+     "id": "buy",
+     "label": "J'achèterais davantage : c'est moins cher.",
+     "feedbackTitle": "Moins cher qu'hier n'est pas forcément bon marché.",
+     "feedback": "Un prix en baisse mérite une analyse, pas un achat automatique. Comparez les nouveaux résultats, la dette et le prix demandé. Les bénéfices stables ne garantissent pas qu'ils le resteront.",
+     "tag": "check_thesis"
+    },
+    {
+     "id": "investigate",
+     "label": "Je vérifierais les résultats et ma raison d'achat.",
+     "feedbackTitle": "Vous cherchez ce qui a changé.",
+     "feedback": "Vous distinguez le cours de l'activité de l'entreprise. Cette vérification peut conduire à conserver, réduire ou renforcer une position selon votre situation. Elle ne prédit pas le prochain cours.",
+     "tag": "reviewed_thesis"
+    }
+   ]
+  },
+  {
+   "id": "dividend",
+   "title": "Le dividende rassure",
+   "asset": "jeu-baisse-decision",
+   "situation": "Autre exemple : une action achetée 10 000 FCFA cote maintenant 7 000 FCFA et a versé 500 FCFA de dividende net. Un ami dit : « Avec le dividende, tu es protégé. » Quelle question posez-vous ?",
+   "calculation": {
+    "courseChange": -3000,
+    "netDividend": 500,
+    "illustrativeTotal": -2500,
+    "unit": "FCFA par action, hors autres frais et variations"
+   },
+   "options": [
+    {
+     "id": "date",
+     "label": "Quand recevrai-je les 500 FCFA ?",
+     "feedbackTitle": "Le paiement a une date ; la perte aussi existe.",
+     "feedback": "Le cours a baissé de 3 000 FCFA et l'action a versé 500 FCFA. Dans cet exemple, le résultat est de −2 500 FCFA par action, hors frais. Le dividende n'efface pas la baisse.",
+     "tag": "dividend_review"
+    },
+    {
+     "id": "sustainability",
+     "label": "L'entreprise peut-elle maintenir ce dividende ?",
+     "feedbackTitle": "Un dividende n'est jamais acquis.",
+     "feedback": "Le cours a baissé de 3 000 FCFA et 500 FCFA ont été distribués : −2 500 FCFA par action dans cet exemple, hors frais. Examinez aussi les bénéfices et l'historique des distributions.",
+     "tag": "reviewed_dividend"
+    },
+    {
+     "id": "buy_yield",
+     "label": "Puis-je en acheter pour ce rendement ?",
+     "feedbackTitle": "Un taux élevé peut venir d'un cours qui chute.",
+     "feedback": "Le rendement affiché augmente quand le prix baisse, même sans hausse du dividende. Ici, recevoir 500 FCFA n'a pas annulé une baisse de 3 000 FCFA du cours.",
+     "tag": "dividend_review"
+    }
+   ]
+  },
+  {
+   "id": "exit_return",
+   "title": "Vendre, puis revenir",
+   "asset": "jeu-baisse-decision",
+   "situation": "Le marché reste faible. Vous pensez vendre et revenir quand il ira mieux. Quel serait votre plan ?",
+   "options": [
+    {
+     "id": "everyone_calm",
+     "label": "Je reviendrais quand tout le monde serait rassuré.",
+     "feedbackTitle": "L'ambiance n'est pas un calendrier.",
+     "feedback": "Le marché peut rebondir avant que les conversations redeviennent optimistes. Vendre et revenir sont deux décisions. Que devrez-vous observer concrètement pour reprendre position ?",
+     "tag": "define_return"
+    },
+    {
+     "id": "after_rebound",
+     "label": "Je reviendrais après une forte remontée.",
+     "feedbackTitle": "À quel moment la hausse vous convaincra-t-elle ?",
+     "feedback": "Attendre un signal peut être cohérent, mais « une forte remontée » reste vague. Décidez à l'avance de ce que vous surveillez et de ce qui aurait changé dans l'entreprise ou votre situation.",
+     "tag": "define_return"
+    },
+    {
+     "id": "criteria",
+     "label": "J'écrirais mes critères de sortie et de retour.",
+     "feedbackTitle": "Vous préparez les deux décisions.",
+     "feedback": "Un critère écrit rend votre raisonnement vérifiable. Il peut porter sur vos besoins d'argent, la taille de la position et les résultats de l'entreprise. Il ne rend pas le bon moment prévisible.",
+     "tag": "planned_return"
+    },
+    {
+     "id": "hold",
+     "label": "Je conserverais si ma situation et ma raison d'achat tiennent toujours.",
+     "feedbackTitle": "Conserver peut être une décision réfléchie.",
+     "feedback": "Vérifiez votre horizon, vos besoins à venir et les résultats de l'entreprise. Rester investi par inertie et rester parce que les raisons demeurent valables ne sont pas la même décision.",
+     "tag": "reviewed_thesis"
+    }
+   ]
+  },
+  {
+   "id": "training",
+   "title": "La formation approche",
+   "asset": "jeu-baisse-echeance",
+   "situation": "Six mois ont passé. La formation coûte 350 000 FCFA dans deux mois. Vous avez 300 000 FCFA disponibles : il manque 50 000 FCFA. Quelle décision aurait mieux préparé cette échéance ?",
+   "options": [
+    {
+     "id": "hope_rebound",
+     "label": "Compter sur une remontée avant le paiement.",
+     "feedbackTitle": "La date de la formation ne suit pas la Bourse.",
+     "feedback": "Un rebond est possible, mais il n'obéit pas à votre échéance. Si vous manquez de liquidités, une vente peut être nécessaire au cours disponible. Anticipez cette contrainte avant de placer l'argent.",
+     "tag": "reserve_due"
+    },
+    {
+     "id": "reserve_first",
+     "label": "Réserver d'abord les 350 000 FCFA de la formation.",
+     "feedbackTitle": "Vous protégez une dépense qui a une date.",
+     "feedback": "La formation était connue dès le départ. En réservant ce montant avant d'investir, vous évitez de dépendre d'une remontée du marché pour la payer. Examinez aussi vos autres dépenses et imprévus.",
+     "tag": "planned_due"
+    },
+    {
+     "id": "dividend_only",
+     "label": "Miser sur les dividendes pour compléter la somme.",
+     "feedbackTitle": "Le dividende ne suit pas votre échéance.",
+     "feedback": "Le paiement, son montant et sa date peuvent varier. Une dépense obligatoire dans deux mois ne devrait pas reposer sur un dividende espéré.",
+     "tag": "reserve_due"
+    }
+   ]
+  },
+  {
+   "id": "liquidity",
+   "title": "Qui achète ?",
+   "asset": "jeu-baisse-liquidite",
+   "situation": "Une ligne du portefeuille affiche 100 actions à 1 000 FCFA, soit 100 000 FCFA. À cet instant, seules 20 actions trouvent preneur à 1 000 FCFA. Que pouvez-vous en conclure ?",
+   "options": [
+    {
+     "id": "all_cash",
+     "label": "Les 100 000 FCFA sont disponibles tout de suite.",
+     "feedbackTitle": "Un cours affiché n'est pas du cash disponible.",
+     "feedback": "À cet instant, 20 actions peuvent être cédées à 1 000 FCFA, soit 20 000 FCFA à ce prix. Les 80 autres restent détenues ; leur vente dépendra des acheteurs et des prix proposés.",
+     "tag": "check_liquidity"
+    },
+    {
+     "id": "partial",
+     "label": "20 000 FCFA sont réalisables à ce prix pour l'instant.",
+     "feedbackTitle": "Vous distinguez valeur affichée et liquidité.",
+     "feedback": "20 × 1 000 FCFA = 20 000 FCFA à ce prix pour l'instant. Les 80 actions restantes ne valent pas zéro : elles n'ont simplement pas trouvé preneur immédiatement à 1 000 FCFA.",
+     "tag": "reviewed_liquidity"
+    },
+    {
+     "id": "guarantee",
+     "label": "Les 80 autres seront forcément vendues plus tard à 1 000 FCFA.",
+     "feedbackTitle": "Le prochain prix n'est pas garanti.",
+     "feedback": "D'autres acheteurs peuvent arriver, mais leur prix et leur délai ne sont pas connus. Avant d'acheter une ligne, regardez aussi la fréquence et le volume de ses échanges.",
+     "tag": "check_liquidity"
+    }
+   ]
+  }
+ ],
+ "final": {
+  "title": "Votre décision commence avant l'achat",
+  "question": "Quelle somme pouvez-vous laisser investie plusieurs années sans en avoir besoin pour une dépense prévue ?",
+  "known": "Je connais le montant",
+  "calculate": "Je dois d'abord le calculer",
+  "amountLabel": "Montant que je pourrais laisser investi (facultatif)",
+  "save": "Garder ma décision dans Mon cahier",
+  "learn": "Comprendre comment commencer à la BRVM",
+  "cards": {
+   "reviewed_thesis": "Vous avez regardé l'entreprise avant de réagir au cours.",
+   "check_thesis": "La prochaine fois, regardez ce qui a changé dans l'entreprise avant d'agir.",
+   "reviewed_dividend": "Vous avez vérifié si le dividende pouvait durer.",
+   "dividend_review": "La prochaine fois, comparez le dividende reçu à la variation du cours.",
+   "planned_due": "Vous avez donné la priorité à une dépense dont la date est connue.",
+   "reserve_due": "Une dépense proche mérite sa propre réserve avant l'investissement.",
+   "reviewed_liquidity": "Vous avez distingué le prix affiché de la somme immédiatement vendable.",
+   "check_liquidity": "La prochaine fois, demandez combien de titres trouvent réellement preneur."
+  },
+  "learnUrl": "bourse.html?src=jeu-baisse"
+ }
+}

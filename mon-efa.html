@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html data-clone data-clone-coquille lang="fr">
 <head>
-<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0B1220">
 <title>Mon EFA · où j’en suis et mon prochain pas · EFA</title>
@@ -186,6 +185,11 @@ if(B && (B.der || (B.fiches && Object.keys(B.fiches).length) || (B.pf && B.pf.l 
   if(nf) liens+='<a class="lien" href="bourse.html#dossier">Mon dossier Bourse</a>';
   if(titres||suiv) liens='<a class="lien" href="bourse.html#analyses">Mes titres'+(titres?' ('+titres+')':'')+'</a>'+liens;
   cartes.push({o:1, h:'<div class="carte"><div class="meta"><span class="pastille">Porte Bourse</span><span>'+meta+'</span>'+(suiv?'<span>'+suiv+' société'+(suiv>1?'s':'')+' suivie'+(suiv>1?'s':'')+'</span>':'')+'</div><h3>Je veux investir à la BRVM : par où commencer ?</h3>'+barre(nf/5,nf>=5)+'<div class="bas">'+liens+'</div></div>'});
+}
+/* jeu « Mon portefeuille face à la baisse » */
+var JB=L('efa_jeu_baisse_v1');
+if(JB && JB.answers && Object.keys(JB.answers).length){ var jn=Object.keys(JB.answers).length, jf=!!JB.completedAt;
+  cartes.push({o:jf?6:1, h:'<div class="carte"><div class="meta"><span class="pastille'+(jf?' ok':' cours')+'">Jeu · 5 décisions</span><span>'+(jf?'Terminé':jn+' décision'+(jn>1?'s':'')+' sur 5')+'</span></div><h3>Mon portefeuille face à la baisse</h3>'+barre(jf?1:jn/5,jf)+'<div class="bas"><a class="lien" href="jeu-portefeuille-baisse.html?src=mon-efa'+(jf?'#synthese':'')+'">'+(jf?'Revoir ma synthèse':'Reprendre le jeu')+'</a></div></div>'});
 }
 /* ateliers : chargés depuis le catalogue */
 var AT=L('efa_ateliers_v1')||{}, OK=AT.ok||{};

@@ -10,7 +10,7 @@
     try {
       for (var i = 0; i < localStorage.length && !a; i++) {
         var k = localStorage.key(i);
-        if (/^(efa_parcours_v1|efa_objectif|efa_suivi_v1|efa_cahier_v1|efa_compte|efa_formule|efa_ateliers_v1|efa_point_v1|efa-bourse-v1|efa-pp-v1)$|^efa-at-|^efa-certificat-/.test(k)) a = true;
+        if (/^(efa_parcours_v1|efa_objectif|efa_suivi_v1|efa_cahier_v1|efa_compte|efa_formule|efa_ateliers_v1|efa_point_v1|efa_jeu_baisse_v1|efa-bourse-v1|efa-pp-v1)$|^efa-at-|^efa-certificat-/.test(k)) a = true;
       }
     } catch (e) {}
     if (!a && page !== "mon-efa.html") return;
