@@ -39,7 +39,7 @@
       '<a class="ec-demo ec-sujet" href="outils.html?src=ecole#parcours">Choisir un sujet</a></div>' +
       '<p class="ec-note">Gratuit · sans compte pour commencer · à votre rythme' + (demo ? ' · <a href="' + demo.getAttribute('href') + '">▶ voir la démo, dès 1 min</a>' : '') + '</p>' +
       '<p class="ec-note ec-etu"><a href="etudiants.html?src=ecole"><b>Étudiant ?</b> Demandez votre Pass Étudiant par votre école : ateliers et cours ouverts, gratuitement.</a></p></div>' +
-      '<figure class="ec-hero-img"><img loading="lazy" decoding="async" src="' + A + 'ecole-hero-2.webp" alt="" decoding="async" fetchpriority="high"></figure>';
+      '<figure class="ec-hero-img"><img loading="lazy" decoding="async" src="' + A + 'ecole-hero-3.webp" alt="" decoding="async" fetchpriority="high"></figure>';
     hero.insertBefore(h, hero.firstChild);
     if (col) col.classList.add('ec-ancien');
 
