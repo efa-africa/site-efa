@@ -82,4 +82,5 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
   setInterval(function(){if(pause||document.hidden)return;i++;var h=ul.children[0].offsetHeight;ul.style.transition='transform .7s ease';ul.style.transform='translateY(-'+(i*h)+'px)';
     if(i===items.length){setTimeout(function(){ul.style.transition='none';i=0;ul.style.transform='translateY(0)';},750);}},3500);
 })();
-
+/* Pastille « Mon EFA » (efa-moi.js) */
+(function () { try { if (window.EFA_MOI || document.querySelector('script[src^="efa-moi.js"],script[src^="/efa-moi.js"]')) return; var s = document.createElement("script"); s.src = "/efa-moi.js?v=20261116a"; s.defer = true; document.head.appendChild(s); } catch (e) {} })();

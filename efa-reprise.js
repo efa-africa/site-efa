@@ -41,6 +41,16 @@
       if (C && C.pistes && C.pistes.liste && C.pistes.liste.length) return { t: "Votre prochaine action : choisir un poste à suivre pendant sept jours.", b: "Choisir mon poste", h: BASE + "outils.html#cahier/nouveau", k: "poste" };
       /* 4. Un challenge commencé dans l'appli */
       if (A && A.challenges.length) return { t: "Vous avez un challenge en cours dans l’appli.", b: "Continuer mon challenge", h: BASE + "app/", k: "challenge" };
+      /* 4 bis. Le dernier atelier ouvert, commencé et pas terminé */
+      var der = String(localStorage.getItem("efa_dernier_atelier") || ""), mA = der.match(/^atelier-(.+)\.html$/);
+      if (mA) { var at = lire("efa-at-" + mA[1]), fa = 0; if (at && at.etat) Object.keys(at.etat).forEach(function (k) { if (/^s\d+$/.test(k) && at.etat[k]) fa++; });
+        if (fa > 0 && !(at.D && at.D._vue === "fiche")) return { t: "Reprenez votre atelier là où vous l’avez laissé.", b: "Reprendre mon atelier", h: BASE + der + "?src=reprise", k: "atelier" }; }
+      var pp = lire("efa-pp-v1");
+      if (der === "premiers-pas-bourse.html" && pp && +pp._pos > 0) return { t: "Reprenez « Mes premiers pas en Bourse » là où vous l’avez laissé.", b: "Reprendre mes premiers pas", h: BASE + "premiers-pas-bourse.html?src=reprise", k: "atelier" };
+      /* 4 ter. La porte Bourse commencée, dossier pas encore complet */
+      var B = lire("efa-bourse-v1");
+      if (B && B.der && B.der !== "accueil" && B.der !== "dossier") { var nf = ["projet", "voie", "comparaison", "decision", "ordre"].filter(function (x) { return B.fiches && B.fiches[x]; }).length;
+        if (nf < 5) return { t: "Votre porte Bourse vous attend : " + (nf ? nf + " étape" + (nf > 1 ? "s" : "") + " de votre dossier sur 5." : "reprenez là où vous en étiez."), b: "Reprendre ma porte Bourse", h: BASE + "bourse.html#" + B.der, k: "bourse" }; }
       /* 5. L'objectif choisi au point de départ */
       var pageDe = function (u) { return String(u || "").replace(/^(\.\.\/)+/, "").split("#")[0].split("?")[0]; };
       var objFait = O && O.next && P && P.fiches && Object.keys(P.fiches).some(function (k) { return pageDe(k) === pageDe(O.next) || pageDe(k).replace(/\.html$/, "") === pageDe(O.next).replace(/\.html$/, ""); });
@@ -56,9 +66,11 @@
   /* ---------- Sauvegarde ---------- */
   /* Exclus : les clés d'accès (compte personnel, organisation), qui ne doivent pas circuler dans un fichier, et les réglages passagers. */
   var EXCLUS = /^(efa_compte|efa_compte_sync|efa_cle_orga|efa_compte_plus_tard|efa_appli_install|efa_musee_retour|efa_son|efa_musee_son|efa_biblio_son|efa_partage_rappel|efa_vu)$/;
+  /* Enregistrements nommés avec un tiret : porte Bourse, ateliers guidés, premiers pas, certificats */
+  var AVEC_TIRET = /^efa-(bourse-v1|pp-v1|coach-brvm-v1|at-[a-z0-9-]+|certificat-[a-z-]+)$/;
   function cles() {
     var out = [];
-    try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && k.indexOf("efa_") === 0 && !EXCLUS.test(k)) out.push(k); } } catch (e) {}
+    try { for (var i = 0; i < localStorage.length; i++) { var k = localStorage.key(i); if (k && (k.indexOf("efa_") === 0 || AVEC_TIRET.test(k)) && !EXCLUS.test(k)) out.push(k); } } catch (e) {}
     return out.sort();
   }
   function exporter() {
@@ -77,7 +89,10 @@
     if (C) r.push("le cahier" + (C.semaines && C.semaines.length ? " (" + C.semaines.length + " défi" + (C.semaines.length > 1 ? "s" : "") + ")" : ""));
     if (S && S.items && S.items.length) r.push(S.items.length + " décision" + (S.items.length > 1 ? "s" : "") + " suivie" + (S.items.length > 1 ? "s" : ""));
     if (A && !A.demo && A.cahier && A.cahier.length) r.push(A.cahier.length + " note" + (A.cahier.length > 1 ? "s" : "") + " de l’appli");
-    var autres = Object.keys(K).filter(function (k) { return !/^efa_(parcours_v1|cahier_v1|suivi_v1|app_v1)$/.test(k); }).length;
+    var ats = Object.keys(K).filter(function (k) { return /^efa-at-/.test(k); }).length + (K["efa-pp-v1"] ? 1 : 0);
+    if (ats) r.push(ats + " atelier" + (ats > 1 ? "s" : ""));
+    if (K["efa-bourse-v1"]) r.push("la porte Bourse");
+    var autres = Object.keys(K).filter(function (k) { return !/^efa_(parcours_v1|cahier_v1|suivi_v1|app_v1)$/.test(k) && !/^efa-(at-|pp-v1|bourse-v1|coach-brvm-v1)/.test(k); }).length;
     if (autres) r.push(autres + " outil" + (autres > 1 ? "s" : "") + " et réglage" + (autres > 1 ? "s" : ""));
     return r;
   }
@@ -98,7 +113,7 @@
     else throw new Error("format");
     var n = 0;
     Object.keys(K).forEach(function (k) {
-      if (k.indexOf("efa_") !== 0 || EXCLUS.test(k) || typeof K[k] !== "string" || K[k].length > 2e6) return;
+      if ((k.indexOf("efa_") !== 0 && !AVEC_TIRET.test(k)) || EXCLUS.test(k) || typeof K[k] !== "string" || K[k].length > 2e6) return;
       try { JSON.parse(K[k]); } catch (e) { if (!/^[\w\s.,:;\-]*$/.test(K[k])) return; }
       try { localStorage.setItem(k, K[k]); n++; } catch (e) {}
     });

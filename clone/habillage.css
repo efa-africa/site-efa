@@ -90,6 +90,21 @@ html[data-clone] .efa-foot .ef-cols-5{grid-template-columns:repeat(5,minmax(0,1f
 @media (max-width:560px){html[data-clone] .efa-foot .ef-cols-5{grid-template-columns:repeat(2,minmax(0,1fr))}}
 html[data-clone] .desktop-nav{display:none!important}
 html[data-clone] .menu-panel a.menu-cle{color:var(--coral)}
+html[data-clone] .menu-panel .menu-rac{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px 0 14px;margin-bottom:4px;border-bottom:1px solid #E1E8F0}
+html[data-clone] .menu-panel .menu-rac a{display:block!important;text-align:center;padding:12px 8px!important;border:0!important;border-radius:10px;font:800 14.5px/1.2 "Source Sans 3",system-ui,sans-serif!important;color:#fff!important;background:#DA3C1B;text-decoration:none}
+html[data-clone] .menu-panel .menu-rac a+a{background:#0B1220}
+html[data-clone] .menu-panel a{font-family:"Libre Baskerville",Baskerville,Georgia,serif;color:var(--navy);text-decoration:none}
+html[data-clone] .menu-panel a span{color:var(--coral)}
+html[data-clone] .menu-panel a.menu-sous{padding:10px 0 12px 18px;font-size:15px;font-weight:600;color:#465062}
+html[data-clone] .menu-panel a.menu-sous span{font-size:13px}
+html[data-clone] .menu-panel a.menu-cle{color:var(--coral)}
+html[data-clone] .menu-panel .menu-rac a{font-family:"Source Sans 3",system-ui,sans-serif!important}
+html[data-clone] .menu-panel .menu-rac a{display:flex!important;align-items:center;justify-content:center}
+html[data-clone] .menu-panel{max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 22px calc(18px + env(safe-area-inset-bottom,0px))}
+html[data-clone] .menu-panel a{padding:12px 0}
+html[data-clone] .menu-panel a.menu-sous{padding:7px 0 9px 16px}
+html[data-clone] .menu-panel .menu-rac{position:sticky;top:-14px;z-index:1;background:#fff;padding-top:14px;margin-top:-14px}
+@media (max-height:700px){html[data-clone] .menu-panel a{padding:10px 0;font-size:15.5px}html[data-clone] .menu-panel a.menu-sous{padding:6px 0 7px 16px;font-size:14px}}
 
 /* En-tête blanc en permanence */
 html[data-clone] .header,html[data-clone] .header.scrolled{background:rgba(255,255,255,.96);color:var(--navy);box-shadow:0 1px 0 #e6eef2;-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px)}
@@ -348,6 +363,9 @@ html[data-clone] .menu-panel a.menu-sous span{font-size:13px}
 html[data-clone] .efa-foot h2 a.ef-h{color:inherit;text-decoration:none}
 html[data-clone] .efa-foot h2 a.ef-h:hover{text-decoration:underline;text-underline-offset:4px}
 
+/* Menu : défile dans la hauteur de l’écran (13 nov. 2026) */
+html[data-clone] .menu-panel{max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 22px calc(18px + env(safe-area-inset-bottom,0px))}html[data-clone] .menu-panel a{padding:12px 0}html[data-clone] .menu-panel a.menu-sous{padding:7px 0 9px 16px}html[data-clone] .menu-panel .menu-rac{position:sticky;top:-14px;z-index:1;background:#fff;padding-top:14px;margin-top:-14px}@media (max-height:700px){html[data-clone] .menu-panel a{padding:10px 0;font-size:15.5px}html[data-clone] .menu-panel a.menu-sous{padding:6px 0 7px 16px;font-size:14px}}
+
 /* Signature efa. (clone/efa-logo.css) */
 /* Composant autonome : oiseau original conserve, lettres minuscules. */
 .efa-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#081d33;white-space:nowrap;flex-shrink:0}
@@ -365,12 +383,3 @@ html[data-clone] .efa-foot h2 a.ef-h:hover{text-decoration:underline;text-underl
 .efa-brand .efa-brand__word{font-family:Baskerville,"Libre Baskerville",Georgia,serif!important;font-weight:700!important;font-size:48px!important;line-height:1!important;letter-spacing:-2px!important;text-transform:none!important;color:inherit!important;margin:0!important;padding:0!important}
 .efa-brand .efa-brand__bird{width:48px!important;height:48px!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
 @media(max-width:600px){.efa-brand .efa-brand__word{font-size:40px!important}.efa-brand .efa-brand__bird{width:40px!important;height:40px!important}}
-
-/* Raccourcis en tête du menu (lot 2, 5 nov. 2026) */
-html[data-clone] .menu-panel .menu-rac{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px 0 14px;margin-bottom:4px;border-bottom:1px solid #E1E8F0}
-html[data-clone] .menu-panel .menu-rac a{display:block!important;text-align:center;padding:12px 8px!important;border:0!important;border-radius:10px;font:800 14.5px/1.2 "Source Sans 3",system-ui,sans-serif!important;color:#fff!important;background:#DA3C1B;text-decoration:none}
-html[data-clone] .menu-panel .menu-rac a+a{background:#0B1220}
-html[data-clone] .menu-panel .menu-rac a{display:flex!important;align-items:center;justify-content:center}
-
-/* Menu : défile dans la hauteur de l’écran (13 nov. 2026) */
-html[data-clone] .menu-panel{max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 22px calc(18px + env(safe-area-inset-bottom,0px))}html[data-clone] .menu-panel a{padding:12px 0}html[data-clone] .menu-panel a.menu-sous{padding:7px 0 9px 16px}html[data-clone] .menu-panel .menu-rac{position:sticky;top:-14px;z-index:1;background:#fff;padding-top:14px;margin-top:-14px}@media (max-height:700px){html[data-clone] .menu-panel a{padding:10px 0;font-size:15.5px}html[data-clone] .menu-panel a.menu-sous{padding:6px 0 7px 16px;font-size:14px}}

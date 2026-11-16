@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0B1220">
+<title>Mon EFA · où j’en suis et mon prochain pas · EFA</title>
+<link rel="canonical" href="https://efa.africa/mon-efa">
+<meta name="description" content="Votre espace EFA : votre prochain pas, vos ateliers, vos parcours, vos décisions suivies, vos fiches et vos certificats, au même endroit. Sans compte : tout reste sur votre téléphone.">
+<meta name="robots" content="noindex">
+<meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+:root{--nuit:#0B1220;--fond:#F1F7FA;--papier:#FFFFFF;--line:#DCE8ED;--corail:#DA3C1B;--corail-texte:#B8341A;--bleu:#1B71B2;--bleu-pale:#E6F2FC;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--hausse:#1E8E57;--provisoire:#F2B84B;
+--f-display:"Libre Baskerville",Baskerville,"Baskerville Old Face",Georgia,"Times New Roman",serif;--f-body:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+--gut-g:max(16px,env(safe-area-inset-left,0px));--gut-d:max(16px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fond);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.me a{color:inherit}.me p{margin:0}
+.me h1,.me h2,.me h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;color:var(--nuit);text-transform:none}
+.me :focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
+.me{max-width:1080px;margin:0 auto;padding:clamp(28px,5vw,56px) var(--gut-d) 56px var(--gut-g)}
+.me .surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte);margin-bottom:12px}
+.me .tete h1{font-size:clamp(34px,5.6vw,60px)}
+.me .tete .chapo{margin-top:14px;max-width:62ch;font-size:clamp(17px,1.9vw,19px);color:var(--ink2)}
+.me .tete .obj{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:15.5px;color:var(--ink2)}
+.me .tete .obj b{color:var(--nuit)}
+.me .pastille{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:var(--bleu-pale);color:var(--bleu);white-space:nowrap}
+.me .pastille.ok{background:#E3F5EC;color:#156B41}.me .pastille.cours{background:#FEF4DF;color:#7A5200}.me .pastille.corail{background:var(--corail);color:#fff}
+.me .lien{font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px;background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--nuit);cursor:pointer}
+/* prochain pas : un aplat plein */
+.me .pas{margin-top:28px;background:var(--corail);color:#fff;border-radius:18px;padding:clamp(22px,3.4vw,34px);display:grid;gap:14px}
+.me .pas .k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#FFE2DA}
+.me .pas h2{color:#fff;font-size:clamp(24px,3.4vw,36px);max-width:26ch}
+.me .pas p{color:#FFEFEA;max-width:60ch}
+.me .pas .act{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:4px}
+.me .bouton{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-size:16px;font-weight:800;line-height:1.2;min-height:46px;padding:12px 22px;border-radius:8px;border:0;text-decoration:none;cursor:pointer}
+.me .bouton.blanc{background:#fff;color:var(--nuit)}.me .bouton.principal{background:var(--corail);color:#fff}.me .bouton.sombre{background:var(--nuit);color:#fff}
+.me .pas .alt{color:#fff;font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.6)}
+/* blocs */
+.me .bloc{margin-top:44px}
+.me .bloc>h2{font-size:clamp(24px,3vw,32px)}
+.me .bloc>.aide{margin-top:6px;color:var(--ink3);font-size:15.5px;max-width:64ch}
+.me .grille{margin-top:18px;display:grid;align-items:start;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.me .carte{background:var(--papier);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.me .carte h3{font-size:clamp(18px,1.7vw,21px);line-height:1.2}
+.me .carte .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:14.5px;color:var(--ink3)}
+.me .carte .bas{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.me .barre{height:8px;border-radius:999px;background:#E4EEF3;overflow:hidden}.me .barre i{display:block;height:100%;background:var(--bleu);border-radius:999px}
+.me .barre.ok i{background:var(--hausse)}
+.me .liste{margin-top:18px;background:var(--papier);border-radius:14px;padding:6px 22px}
+.me .ligne{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+.me .ligne:last-child{border-bottom:0}
+.me .ligne .t{min-width:0;flex:1 1 260px}.me .ligne .t b{display:block;color:var(--nuit);font-weight:700}.me .ligne .t small{display:block;color:var(--ink3);font-size:14.5px}
+.me .chiffre{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,2.4vw,28px);color:var(--nuit);line-height:1.1}
+.me .offre{margin-top:18px;background:var(--bleu-pale);border-radius:14px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between}
+.me .offre p{max-width:60ch}.me .offre b{color:var(--nuit)}
+.me .vide{color:var(--ink3);font-size:15.5px}
+.me .garder{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px}
+.me .note{margin-top:28px;font-size:14px;color:var(--ink3);max-width:70ch}
+.me .msg{font-size:14.5px;color:var(--ink2)}
+.me [hidden]{display:none!important}
+.me .point-z:empty{display:none}
+@media (max-width:560px){.me .pas .act{flex-direction:column;align-items:stretch}.me .pas .act .bouton{width:100%}.me .pas .alt{text-align:center}}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261116a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · où j’en suis</a><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<header data-v1-cache class="top"></header>
+<main class="me" id="mon-efa" data-garde>
+  <div class="tete">
+    <p class="surtitre">Mon EFA</p>
+    <h1 id="titre">Voici où vous en êtes.</h1>
+    <p class="chapo">Vous n’avez pas besoin de tout faire aujourd’hui. Votre prochain pas, ce que vous avez commencé et ce que vous avez gardé, au même endroit.</p>
+    <p class="obj" id="objectif" hidden></p>
+  </div>
+
+  <section class="pas" id="pas" aria-labelledby="pas-t">
+    <p class="k">Mon prochain pas</p>
+    <h2 id="pas-t">Votre espace se remplit à mesure que vous avancez.</h2>
+    <p id="pas-p">Commencez par deux questions : nous vous proposons une première étape adaptée à ce que vous cherchez.</p>
+    <div class="act"><a class="bouton blanc" id="pas-b" href="point-de-depart.html?src=mon-efa" data-goatcounter-click="mon-efa-pas">Trouver mon point de départ</a><a class="alt" id="pas-a" href="diagnostic.html?src=mon-efa">Ou faire mon diagnostic</a></div>
+  </section>
+
+  <section class="bloc" id="b-apprends" hidden>
+    <h2>J’apprends</h2>
+    <p class="aide">Vos ateliers, vos parcours et votre porte Bourse, là où vous les avez laissés.</p>
+    <div class="grille" id="apprends"></div>
+  </section>
+
+  <section class="bloc" id="b-decisions" hidden>
+    <h2>Mes décisions</h2>
+    <p class="aide">Les actions que vous avez choisi de suivre. Nous vous demandons où vous en êtes à 7 jours, puis à 30 jours.</p>
+    <div class="liste" id="decisions"></div>
+  </section>
+
+  <section class="bloc" id="b-fiches" hidden>
+    <h2>Mes fiches et documents</h2>
+    <p class="aide">Ce que vous avez écrit et gardé. Ouvrez-le pour le relire ou le télécharger à nouveau.</p>
+    <div class="liste" id="fiches"></div>
+  </section>
+
+  <section class="bloc" id="b-certificats" hidden>
+    <h2>Mes certificats</h2>
+    <div class="grille" id="certificats"></div>
+  </section>
+
+  <section class="bloc" id="b-point" hidden>
+    <h2>Mes progrès</h2>
+    <p class="aide">Trois questions au départ, à 30 jours puis à 90 jours. On mesure ce que vous faites, jamais vos montants.</p>
+    <div class="point-z" data-efa-point></div>
+  </section>
+
+  <section class="bloc" id="b-acces">
+    <h2>Mon accès</h2>
+    <div class="grille" id="acces"></div>
+    <div class="offre" id="offre" hidden></div>
+  </section>
+
+  <section class="bloc" id="b-garder">
+    <h2>Garder mon espace</h2>
+    <p class="aide">Sans compte, votre espace vit sur ce téléphone. Si vous changez de téléphone ou videz votre navigateur, il disparaît. Deux façons de le garder.</p>
+    <div class="garder">
+      <div class="carte" id="compte"></div>
+      <div class="carte">
+        <h3>Une sauvegarde sur mon téléphone</h3>
+        <p>Un fichier avec tout votre espace. Vous le rouvrez ici sur n’importe quel appareil.</p>
+        <div class="bas"><button type="button" class="bouton sombre" id="sv-dl">Télécharger ma sauvegarde</button><label class="lien" for="sv-in">Restaurer une sauvegarde</label><input type="file" id="sv-in" accept="application/json,.json" hidden></div>
+        <p class="msg" id="sv-msg" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <p class="note">Ce qui est sur cette page est calculé sur votre téléphone. Avec un compte, EFA reçoit seulement des repères de progression (étapes faites, numéros de certificat), jamais vos montants ni le contenu de vos fiches. <a class="lien" href="confidentialite.html">Confidentialité</a></p>
+</main>
+
+<script src="parcours-efa.js?v=20261105a"></script>
+<script src="efa-reprise.js?v=20261116a"></script>
+<script>
+(function(){
+'use strict';
+function L(k){ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } }
+function S(k){ try{ return localStorage.getItem(k)||''; }catch(e){ return ''; } }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+var MOIS=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+function dateFr(t){ var d=typeof t==='number'?new Date(t):new Date(String(t).replace(/-/g,'/')); if(isNaN(d)) return ''; return d.getDate()+' '+MOIS[d.getMonth()]+(d.getFullYear()!==new Date().getFullYear()?' '+d.getFullYear():''); }
+function F(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' F'; }
+function $(id){ return document.getElementById(id); }
+function montrer(id){ $(id).hidden=false; }
+function barre(f,ok){ return '<div class="barre'+(ok?' ok':'')+'" aria-hidden="true"><i style="width:'+Math.max(4,Math.min(100,Math.round(f*100)))+'%"></i></div>'; }
+var aQuelqueChose=false;
+
+/* ---------- Nom et objectif ---------- */
+var compte=L('efa_compte');
+if(compte && compte.nom && !compte.retire){ var pn=String(compte.nom).trim().split(/\s+/)[0]; if(pn) $('titre').textContent='Bonjour '+pn+', voici où vous en êtes.'; }
+var O=L('efa_objectif');
+var LIB={investir:'Investir en Bourse',moi:'Mieux gérer mon argent',orga:'Construire un programme de formation',eco:'Comprendre l’économie'};
+if(O && O.p){ aQuelqueChose=true; var ob=$('objectif'); ob.hidden=false;
+  ob.innerHTML='<span>Mon objectif : <b>'+esc(LIB[O.p]||'mon point de départ')+'</b></span><a class="lien" href="point-de-depart.html?src=mon-efa">Changer</a>'; }
+
+/* ---------- J'apprends ---------- */
+var cartes=[];
+var P=L('efa_parcours_v1')||{}, faits=P.faits||{}, D=window.EFA_PARCOURS, PAR=D&&D.parcours||[];
+PAR.forEach(function(p){
+  var n=(p.etapes||[]).length, f=0; for(var k=0;k<n;k++) if(faits[p.id+'.'+k]) f++;
+  if(!f) return;
+  var fini=f>=n;
+  cartes.push({o:(P.actif===p.id?0:2)+(fini?5:0), h:'<div class="carte"><div class="meta"><span class="pastille'+(fini?' ok':'')+'">'+(fini?'Parcours terminé':'Parcours')+'</span><span>'+f+' étape'+(f>1?'s':'')+' sur '+n+'</span></div><h3>'+esc(p.titre)+'</h3>'+barre(f/n,fini)+'<div class="bas"><a class="lien" href="parcours.html?src=mon-efa#'+esc(p.id)+'">'+(fini?'Revoir le parcours':'Reprendre le parcours')+'</a></div></div>'});
+});
+/* porte Bourse */
+var B=L('efa-bourse-v1');
+if(B && (B.der || (B.fiches && Object.keys(B.fiches).length) || (B.pf && B.pf.l && B.pf.l.length) || (B.suivis && B.suivis.length))){
+  var fb=B.fiches||{}, ET=['projet','voie','comparaison','decision','ordre'], nf=ET.filter(function(x){ return fb[x]; }).length, titres=(B.pf&&B.pf.l||[]).filter(function(l){ return l&&l.t; }).length, suiv=(B.suivis||[]).length;
+  var meta=nf?nf+' étape'+(nf>1?'s':'')+' du dossier sur 5':'Commencée';
+  var liens='<a class="lien" href="bourse.html'+(B.der&&B.der!=='accueil'?'#'+esc(B.der):'')+'">Reprendre là où j’en étais</a>';
+  if(nf) liens+='<a class="lien" href="bourse.html#dossier">Mon dossier Bourse</a>';
+  if(titres||suiv) liens='<a class="lien" href="bourse.html#analyses">Mes titres'+(titres?' ('+titres+')':'')+'</a>'+liens;
+  cartes.push({o:1, h:'<div class="carte"><div class="meta"><span class="pastille">Porte Bourse</span><span>'+meta+'</span>'+(suiv?'<span>'+suiv+' société'+(suiv>1?'s':'')+' suivie'+(suiv>1?'s':'')+'</span>':'')+'</div><h3>Je veux investir à la BRVM : par où commencer ?</h3>'+barre(nf/5,nf>=5)+'<div class="bas">'+liens+'</div></div>'});
+}
+/* ateliers : chargés depuis le catalogue */
+var AT=L('efa_ateliers_v1')||{}, OK=AT.ok||{};
+function ateliers(C){
+  var der=S('efa_dernier_atelier');
+  Object.keys(C).forEach(function(id){
+    var a=C[id], cle=a.cle||('efa-at-'+id), st=L(cle), D2=(id==='premiers-pas-bourse')?L('efa-pp-v1'):(st&&st.D);
+    var et=(id==='premiers-pas-bourse'||id==='premier-ordre-brvm')?st:(st&&st.etat);
+    var f=0; if(et) Object.keys(et).forEach(function(k){ if(/^s\d+$/.test(k)&&et[k]) f++; });
+    var pos=D2&&+D2._pos||0, ouvert=!!OK[id], commence=f>0||pos>0||(id==='premier-ordre-brvm'&&et&&Object.keys(et).length);
+    if(!commence && !ouvert) return;
+    var n=a.n||0, fini=n&&f>=n, page=a.page, recent=der===page;
+    var meta=fini?'Terminé':n&&f?f+' écran'+(f>1?'s':'')+' sur '+n:commence?'Commencé':'Ouvert, pas encore commencé';
+    var typ=a.prix?(ouvert?'Atelier ouvert':'Atelier · '+(a.offerts?a.offerts+' chapitre'+(a.offerts>1?'s':'')+' offert'+(a.offerts>1?'s':''):'payant')):'Atelier gratuit';
+    cartes.push({o:(recent?0:3)+(fini?5:0), h:'<div class="carte"><div class="meta"><span class="pastille'+(fini?' ok':commence?' cours':'')+'">'+esc(typ)+'</span><span>'+esc(meta)+'</span></div><h3>'+esc(a.t)+'</h3>'+(n?barre(n?f/n:0,fini):'')+'<div class="bas"><a class="lien" href="'+esc(page)+'?src=mon-efa">'+(fini?'Revoir':commence?'Reprendre':'Commencer')+'</a></div></div>'});
+  });
+  if(cartes.length){ aQuelqueChose=true; cartes.sort(function(x,y){ return x.o-y.o; }); $('apprends').innerHTML=cartes.map(function(c){ return c.h; }).join(''); montrer('b-apprends'); }
+  offre(C); pas();
+}
+fetch('data/mon-efa-ateliers.json?v=20261116a').then(function(r){ return r.json(); }).then(ateliers,function(){ ateliers({}); });
+
+/* ---------- Mes décisions ---------- */
+var SU=L('efa_suivi_v1'), its=SU&&SU.items||[];
+var C=L('efa_cahier_v1'); if(!C){ try{ C=JSON.parse(sessionStorage.getItem('efa_cahier_v1')||'null'); }catch(e){} }
+var lignes=[], now=Date.now();
+var sem=C&&C.semaines&&C.semaines.filter(function(x){ return !x.fini; }).pop();
+if(sem){ var jf=(sem.jours||[]).filter(function(x){ return x!=null; }).length; lignes.push('<div class="ligne"><div class="t"><b>Mon défi de sept jours'+(sem.poste==='autre'&&sem.libre?' · '+esc(sem.libre):'')+'</b><small>'+jf+' jour'+(jf>1?'s':'')+' noté'+(jf>1?'s':'')+' sur 7</small></div><a class="lien" href="outils.html#cahier">Mon cahier</a></div>'); }
+its.slice().reverse().forEach(function(x){
+  var r=x.r30||x.r7, du=(x.report&&x.report>now)?null:(!x.r7&&now>=x.j7)||(x.r7&&!x.r30&&now>=x.j30);
+  var etat=r==='oui'?'<span class="pastille ok">Fait</span>':r==='partiel'?'<span class="pastille cours">En partie</span>':r==='non'?'<span class="pastille">Pas encore</span>':'';
+  var quand=du?'<span class="pastille corail">Point à faire</span>':(!x.r7?'Point le '+dateFr(x.j7):(!x.r30?'Point le '+dateFr(x.j30):''));
+  lignes.push('<div class="ligne"><div class="t"><b>'+esc(x.action||x.titre)+'</b><small>'+(x.titre&&x.action?esc(x.titre)+' · ':'')+(quand||'Suivi terminé')+'</small></div><span style="display:flex;gap:10px;align-items:center">'+etat+(du?'<a class="lien" href="outils.html#cahier">Faire le point</a>':x.lien?'<a class="lien" href="'+esc(x.lien)+'">Revoir</a>':'')+'</span></div>');
+});
+if(lignes.length){ aQuelqueChose=true; $('decisions').innerHTML=lignes.join(''); montrer('b-decisions'); }
+
+/* ---------- Mes fiches et documents ---------- */
+var fl=[], FI=P.fiches||{};
+Object.keys(FI).forEach(function(k){ var x=FI[k]||{}; fl.push({d:x.d||'', h:'<div class="ligne"><div class="t"><b>'+esc(x.titre||'Ma fiche')+'</b><small>'+(x.d?'Gardée le '+esc(dateFr(x.d)):'Gardée')+(x.t?' · '+esc(String(x.t).slice(0,90))+(String(x.t).length>90?'…':''):'')+'</small></div><a class="lien" href="'+esc(x.url||k)+'">Ouvrir</a></div>'}); });
+if(B && B.fiches && Object.keys(B.fiches).length) fl.push({d:'9', h:'<div class="ligne"><div class="t"><b>Mon dossier Bourse</b><small>Projet, voie, comparaison des SGI et décision, en un document</small></div><a class="lien" href="bourse.html#dossier">Ouvrir et télécharger</a></div>'});
+if(B && B.pf && B.pf.l && B.pf.l.some(function(l){ return l&&l.t; })) fl.push({d:'9', h:'<div class="ligne"><div class="t"><b>Le bilan de mon portefeuille</b><small>Vos titres et vos quatre chiffres</small></div><a class="lien" href="bourse.html#b1-bilan">Ouvrir</a></div>'});
+var BP=L('efa_bp_brouillons'); var nbp=BP?(Array.isArray(BP)?BP.length:Object.keys(BP).length):0;
+if(nbp) fl.push({d:'9', h:'<div class="ligne"><div class="t"><b>Mes business plans</b><small>'+nbp+' brouillon'+(nbp>1?'s':'')+'</small></div><a class="lien" href="mon-espace-business-plan.html">Ouvrir</a></div>'});
+if(C) fl.push({d:'8', h:'<div class="ligne"><div class="t"><b>Mon cahier</b><small>Vos défis, vos notes et vos pistes d’action</small></div><a class="lien" href="outils.html#cahier">Ouvrir</a></div>'});
+if(fl.length){ aQuelqueChose=true; fl.sort(function(a,b){ return a.d<b.d?1:-1; }); $('fiches').innerHTML=fl.map(function(x){ return x.h; }).join(''); montrer('b-fiches'); }
+
+/* ---------- Certificats ---------- */
+var CE=[['efa-certificat-fondations-pilote','EFA Fondations','certificat-pilote.html'],['efa-certificat-maitrise-pilote','EFA Maîtrise','certificat-maitrise.html'],['efa-certificat-patrimoine-pilote','EFA Patrimoine','certificat-patrimoine.html']], cl=[];
+CE.forEach(function(c){ var e=L(c[0]); if(!e) return; var num=e.reussite&&e.reussite.numero;
+  cl.push('<div class="carte"><div class="meta"><span class="pastille'+(num?' ok':' cours')+'">'+(num?'Obtenu':'En cours')+'</span>'+(num?'<span>N° '+esc(num)+'</span>':'')+'</div><h3>Certificat '+esc(c[1])+'</h3><div class="bas"><a class="lien" href="'+c[2]+'">'+(num?'Voir mon certificat':'Reprendre')+'</a></div></div>'); });
+var cf=L('efa-certificat-cefa'); if(cf&&cf.numero) cl.push('<div class="carte"><div class="meta"><span class="pastille ok">Obtenu</span><span>N° '+esc(cf.numero)+'</span></div><h3>Certificat CEFA</h3><div class="bas"><a class="lien" href="certificat-cefa.html">Voir mon certificat</a></div></div>');
+if(cl.length){ aQuelqueChose=true; $('certificats').innerHTML=cl.join(''); montrer('b-certificats'); }
+
+/* ---------- Mes progrès (efa-point.js remplit le bloc) ---------- */
+if(L('efa_point_v1')||aQuelqueChose) montrer('b-point');
+
+/* ---------- Mon accès ---------- */
+var fo=L('efa_formule'), NOMS={essentiel:'Essentiel',integral:'Intégral',cercle:'Proximité',privilege:'Privilège'};
+var actif=fo&&fo.f&&fo.fin&&new Date()<=new Date(fo.fin+'T23:59:59');
+var mail=S('efa_email_v1'), mis=L('efa_missions_v1'), credits=(mail?3+(AT.jeu||0)+((mis&&mis.pts)||0):0)+(AT.bonus||0)-(AT.dep10||0);
+var ouverts=Object.keys(OK).filter(function(k){ return OK[k]&&OK[k]!=='formule'; }).length;
+var ac=[];
+ac.push('<div class="carte"><p class="meta">Ma formule</p>'+(actif?'<p class="chiffre">'+esc(NOMS[fo.f]||fo.f)+'</p><p class="meta">Active jusqu’au '+esc(dateFr(fo.fin))+'</p><div class="bas"><a class="lien" href="abonnement.html">Ma formule</a></div>':'<p class="chiffre">Gratuit</p><p class="meta">Les outils, la porte Bourse et les ateliers gratuits sont ouverts.</p><div class="bas"><a class="lien" href="abonnement.html?src=mon-efa">Voir les formules · dès 10 000 F</a></div>')+'</div>');
+ac.push('<div class="carte"><p class="meta">Mes crédits</p>'+(mail?'<p class="chiffre">'+Math.max(0,credits)+' crédit'+(credits>1?'s':'')+'</p><p class="meta">Un crédit vaut 10 000 F d’atelier.'+(ouverts?' '+ouverts+' atelier'+(ouverts>1?'s':'')+' ouvert'+(ouverts>1?'s':'')+'.':'')+'</p>':'<p class="chiffre">3 offerts</p><p class="meta">Avec votre email, pour ouvrir un premier atelier.</p>')+'<div class="bas"><a class="lien" href="coaching.html?src=mon-efa">Choisir un atelier</a></div></div>');
+$('acces').innerHTML=ac.join('');
+
+function offre(Cat){
+  var o=$('offre'), h='';
+  var pp=L('efa-pp-v1'), ppOuvert=OK['premiers-pas-bourse']||(actif&&fo.f!=='essentiel');
+  if(B && B.der && !ppOuvert && !(pp&&pp._pos>0)) h='<p><b>Vous avancez sur la porte Bourse.</b> L’atelier « Mes premiers pas en Bourse » vous accompagne écran par écran, avec la voix d’Élysée. 2 chapitres offerts.</p><a class="bouton principal" href="premiers-pas-bourse.html?src=mon-efa">Essayer les chapitres offerts</a>';
+  else if(!actif && cartes.some(function(c){ return /Terminé/.test(c.h)&&/Atelier gratuit/.test(c.h); })) h='<p><b>Vous avez terminé un atelier gratuit.</b> Les ateliers approfondis vont plus loin, sur votre situation. Vos 3 crédits offerts suffisent pour en ouvrir un premier.</p><a class="bouton principal" href="coaching.html?src=mon-efa-fin">Choisir mon atelier</a>';
+  if(h){ o.innerHTML=h; o.hidden=false; }
+}
+
+/* ---------- Garder mon espace ---------- */
+var ck=$('compte');
+if(compte && compte.cle && !compte.retire) ck.innerHTML='<h3>Mon compte EFA</h3><p>Connecté'+(compte.nom?' · '+esc(compte.nom):'')+(compte.programme&&compte.programme.nom?' · '+esc(compte.programme.nom):'')+'. Votre progression est enregistrée'+(compte.vu?' (dernière fois le '+esc(dateFr(Date.parse(compte.vu)))+')':'')+'.</p><div class="bas"><a class="lien" href="rejoindre.html">Mon compte</a></div>';
+else ck.innerHTML='<h3>Un compte gratuit</h3><p>Votre progression vous suit sur tous vos téléphones. Ni vos montants ni vos fiches ne quittent votre appareil.</p><div class="bas"><a class="bouton principal" href="rejoindre.html?communaute&amp;src=mon-efa" data-goatcounter-click="mon-efa-compte">Créer mon compte</a><a class="lien" href="rejoindre.html?src=mon-efa">J’ai déjà un compte</a></div>';
+var msg=$('sv-msg');
+$('sv-dl').onclick=function(){ try{ var r=window.EFA_SAUVEGARDE.telecharger(); msg.textContent=r.length?'Sauvegarde téléchargée : '+r.join(', ')+'.':'Sauvegarde téléchargée.'; }catch(e){ msg.textContent='Le téléchargement n’a pas marché sur ce navigateur.'; } };
+$('sv-in').onchange=function(){ var f=this.files&&this.files[0]; if(!f) return; var rd=new FileReader(); rd.onload=function(){ try{ var r=window.EFA_SAUVEGARDE.restaurer(String(rd.result)); msg.textContent='Espace restauré : '+r.join(', ')+'. La page se met à jour.'; setTimeout(function(){ location.reload(); },1400); }catch(e){ msg.textContent='Ce fichier n’est pas une sauvegarde EFA.'; } }; rd.readAsText(f); };
+
+/* ---------- Prochain pas ---------- */
+function pas(){
+  var e=window.EFA_REPRISE&&window.EFA_REPRISE.etape(), t=$('pas-t'), p=$('pas-p'), b=$('pas-b'), a=$('pas-a');
+  if(e){ t.textContent=e.t; p.textContent=e.p||'Une seule chose à faire maintenant. Le reste attend.'; b.textContent=e.b; b.href=e.h;
+    if(e.k==='suivi'||e.k==='bilan'){ a.textContent='Voir toutes mes décisions'; a.href='#b-decisions'; }
+    else if(aQuelqueChose){ a.textContent='Voir tout ce que j’ai commencé'; a.href='#b-apprends'; if($('b-apprends').hidden) a.hidden=true; }
+    else a.hidden=true;
+    return; }
+  if(aQuelqueChose){ t.textContent='Vous avez déjà avancé. Choisissez par quoi continuer.'; p.textContent='Tout ce que vous avez commencé est juste en dessous.'; b.textContent='Voir ce que j’ai commencé'; b.href='#b-apprends'; a.textContent='Ou changer de point de départ'; a.href='point-de-depart.html?src=mon-efa'; }
+}
+pas();
+})();
+</script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=20261116a" defer></script>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2><a class="ef-h" href="index.html#benefices">Apprendre</a></h2><ul>
+          <li><a href="index.html#seul">J’apprends seul</a></li>
+          <li><a href="index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="musee.html">Le musée de l’économie</a></li>
+          <li><a href="outils.html">Outils et simulateurs</a></li>
+          <li><a href="diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li><li><a href="etudiants.html">Pass Étudiant</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-progresser">Être coaché</a></h2><ul>
+          <li><a href="index.html#pilier-progresser">Choisir son atelier</a></li>
+          <li><a href="coaching.html">Tous les ateliers</a></li>
+          <li><a href="abonnement.html">efa<span style="color:#E44828">.</span> abonnement</a></li>
+          <li><a href="index.html#certificats">Certificats</a></li>
+          <li><a href="index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-agir">Se lancer</a></h2><ul>
+          <li><a href="generateur-de-projet.html">EFA Déclic</a></li><li><a href="projets-a-suivre.html">Projets à suivre</a></li>
+          <li><a href="index.html#marches">Investir à la Bourse (BRVM)</a></li>
+          <li><a href="marches.html">Marchés : la Bourse du jour</a></li><li><a href="sgi.html">Choisir sa SGI</a></li>
+          <li><a href="index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="news.html">Le média</a></h2><ul>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="decryptage.html">Décryptage</a></li>
+          <li><a href="tribunes.html">La tribune d’Élysée Johnson</a></li>
+          <li><a href="index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="africa-2075.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="auteur.html#auteur">EFA</a></h2><ul>
+          <li><a href="auteur.html#auteur">EFA et son fondateur</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+          <li><a href="lettre.html">La lettre du mardi</a></li>
+          <li><a href="podcast.html">Le podcast EFA</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 EFA · Tous droits réservés</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<script src="clone/habillage.js?v=20261116a" defer></script>
+</body>
+</html>

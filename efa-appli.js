@@ -184,13 +184,13 @@
     if (!v.d || now - v.d > 36e5) { v.d = now; localStorage.setItem("efa_vu", JSON.stringify(v)); }
   } catch (e) {}
   /* Reprise, sauvegarde et cohorte de 30 jours : efa-reprise.js (chargé ici sur les pages qui ne l'ont pas déjà) */
-  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=20261102z"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
+  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=20261116a"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
 })();
 
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
 (function () {
   try { if (window.self !== window.top) return; } catch (e) { return; }
-  var s = document.createElement("script"); s.src = "efa-suite.js?v=20261102z"; s.defer = true; document.head.appendChild(s);
+  var s = document.createElement("script"); s.src = "efa-suite.js?v=20261116a"; s.defer = true; document.head.appendChild(s);
   var f = document.createElement("script"); f.src = "efa-fiche.js?v=20261102z"; f.defer = true; document.head.appendChild(f);
   var pt = document.createElement("script"); pt.src = "efa-point.js?v=20261102z"; pt.defer = true; document.head.appendChild(pt);
   if (!window.EFA_CHIFFRES) { var ch = document.createElement("script"); ch.src = "efa-chiffres.js?v=20261102z"; ch.defer = true; document.head.appendChild(ch); }
@@ -227,6 +227,9 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && n.classList.contains("open")) { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
   } catch (e) {}
 })();
+
+/* Pastille « Mon EFA » (efa-moi.js) */
+(function () { try { if (window.EFA_MOI || document.querySelector('script[src^="efa-moi.js"],script[src^="/efa-moi.js"]')) return; var s = document.createElement("script"); s.src = "/efa-moi.js?v=20261116a"; s.defer = true; document.head.appendChild(s); } catch (e) {} })();
 
 /* Personnages : à la première mention de Koffi, Tonton Bamba, Tantie Affoué (ou d'un personnage d'un cas pratique),
    une petite fiche dit qu'il s'agit d'un personnage fictif, avec un lien vers Min'Fin et retour possible. */

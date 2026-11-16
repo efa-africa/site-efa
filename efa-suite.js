@@ -118,7 +118,7 @@
     "bourse-marche.html": ["traders.html", "EFA Traders, le simulateur"],
     "traders.html": ["bourse-essentiel.html", "L’École de la Bourse"]
   };
-  var SANS_FIL = ["questions-a-poser-a-sa-sgi.html", "admin-ecole.html", "tableau-ely.html", "ely.html", "index.html", "outils.html"]; // l'accueil est le point de départ : ses deux portes suffisent
+  var SANS_FIL = ["mon-efa.html", "questions-a-poser-a-sa-sgi.html", "admin-ecole.html", "tableau-ely.html", "ely.html", "index.html", "outils.html"]; // l'accueil est le point de départ : ses deux portes suffisent
   var FIL = "efa_fil";
   function court(t) { t = String(t || "").replace(/\s*·\s*EFA.*$/, "").replace(/\s*\|.*$/, "").trim(); return t.length > 34 ? t.slice(0, 32).replace(/\s+\S*$/, "") + "…" : t; }
   function filSuivant(href, label) {
@@ -232,7 +232,7 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", filNav); else filNav();
 
   var EXCLUS = ["point-de-depart.html", "parcours.html", "diagnostic.html", "confidentialite.html", "merci-guide.html", "rendez-vous.html",
-    "organisations.html", "programme-organisation.html", "rejoindre.html", "espace-organisation.html", "admin-ecole.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
+    "organisations.html", "programme-organisation.html", "rejoindre.html", "mon-efa.html", "espace-organisation.html", "admin-ecole.html", "auteur.html", "ely.html", "index.html", "tableau-ely.html"];
   var page = (location.pathname.split("/").pop() || "index").replace(/^([^.]+)$/, "$1.html");
   if (EXCLUS.indexOf(page) >= 0) return;
   // Publications (études, prospective, actualités) : pas de bloc de progression, sauf arrivée depuis un module (?parcours=)
