@@ -32,3 +32,5 @@ clone/assets/jeu-baisse-echeance.webp
 clone/assets/jeu-baisse-echeance-900.webp
 clone/assets/jeu-baisse-liquidite.webp
 clone/assets/jeu-baisse-liquidite-900.webp
+clone/assets/mon-efa-entree.webp
+clone/assets/mon-efa-entree-900.webp
