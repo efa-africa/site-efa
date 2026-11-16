@@ -68,11 +68,55 @@ html[data-clone] .me-ouv h1 .clone-accent,.me-ouv h1 .clone-accent{color:#6DB8F2
 .me .ligne .t{min-width:0;flex:1 1 260px}.me .ligne .t b{display:block;color:var(--nuit);font-weight:700}.me .ligne .t small{display:block;color:var(--ink3);font-size:14.5px}
 .me .chiffre{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,2.4vw,28px);color:var(--nuit);line-height:1.1}
 .me .offre{margin-top:18px;background:var(--bleu-pale);border-radius:14px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between}
+.me .offre{padding:0;overflow:hidden;flex-wrap:nowrap;align-items:stretch}.me .offre .o-img{flex:0 0 34%;min-height:150px;background:#DCE8ED center/cover}.me .offre .o-t{padding:20px 22px;display:grid;gap:12px;align-content:center}
+@media (max-width:620px){.me .offre{flex-direction:column}.me .offre .o-img{flex-basis:auto;height:150px}}
 .me .offre p{max-width:60ch}.me .offre b{color:var(--nuit)}
 .me .vide{color:var(--ink3);font-size:15.5px}
 .me .garder{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px}
 .me .note{margin-top:28px;font-size:14px;color:var(--ink3);max-width:70ch}
 .me .msg{font-size:14.5px;color:var(--ink2)}
+/* prochain pas avec image */
+.me .pas{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);padding:0;overflow:hidden;gap:0}
+.me .pas .pas-txt{padding:clamp(22px,3.4vw,34px);display:grid;gap:14px;align-content:center}
+.me .pas .pas-img{position:relative;min-height:220px;background:#B8341A}
+.me .pas .pas-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.me .pas .pas-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(218,60,27,.55),rgba(218,60,27,0) 45%)}
+@media (max-width:720px){.me .pas{grid-template-columns:1fr}.me .pas .pas-img{order:-1;min-height:150px;height:34vw;max-height:200px}.me .pas .pas-img::after{background:linear-gradient(0deg,rgba(218,60,27,.6),rgba(218,60,27,0) 55%)}}
+/* tableau de bord */
+.me .bord{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.me .tuile{background:var(--papier);border-radius:14px;padding:14px 16px;text-decoration:none;display:grid;gap:2px;transition:transform .15s}
+.me .tuile:hover{transform:translateY(-2px)}
+.me .tuile b{font-family:var(--f-display);font-size:clamp(26px,3.2vw,36px);line-height:1.05;color:var(--nuit)}
+.me .tuile span{font-size:14px;font-weight:700;color:var(--ink2);line-height:1.25}
+.me .tuile.vide b{color:#B9C6CF}
+@media (max-width:560px){.me .bord{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* cartes illustrées */
+.me .carte.ic{padding:0;overflow:hidden;gap:0;transition:transform .18s,box-shadow .18s}
+.me .carte.ic:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(11,18,32,.12)}
+.me .ic-img{position:relative;display:block;aspect-ratio:16/9;background:#DCE8ED;overflow:hidden}
+.me .ic-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.me .carte.ic:hover .ic-img img{transform:scale(1.04)}
+.me .ic-img .pastille{position:absolute;left:12px;top:12px;box-shadow:0 2px 8px rgba(11,18,32,.18)}
+.me .ic-c{padding:16px 18px 18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.me .ic-c h3 a{text-decoration:none;color:var(--nuit)}
+.me .ic-c .meta{font-size:14px}
+.me .rail{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.me .rail .carte{height:100%}
+@media (min-width:621px){.me .rail.deux{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.me .rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.me .rail{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin-left:calc(-1*var(--gut-g));margin-right:calc(-1*var(--gut-d));padding-left:var(--gut-g);padding-right:var(--gut-d);scroll-padding-left:var(--gut-g);-webkit-overflow-scrolling:touch}.me .rail>*{scroll-snap-align:start}}
+.me .tete-bloc{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.me .glisser{font-size:13.5px;color:var(--ink3);font-weight:700}
+@media (min-width:621px){.me .glisser{display:none}}
+/* décisions et fiches illustrées */
+.me .ligne .ico{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:18px;background:var(--bleu-pale);color:var(--bleu)}
+.me .ligne .ico.ok{background:#E3F5EC;color:#156B41}.me .ligne .ico.cours{background:#FEF4DF;color:#7A5200}.me .ligne .ico.corail{background:var(--corail);color:#fff}
+.me .ligne .vign{flex:0 0 auto;width:64px;height:48px;border-radius:10px;overflow:hidden;background:#DCE8ED}
+.me .ligne .vign img{width:100%;height:100%;object-fit:cover;display:block}
+.me .ligne .gauche{display:flex;gap:14px;align-items:center;min-width:0;flex:1 1 260px}
+.me .bandeau{margin-top:14px;position:relative;border-radius:14px;overflow:hidden;height:120px;background:#0B1220}
+.me .bandeau img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.me .bandeau p{position:absolute;left:18px;bottom:14px;right:18px;color:#fff;font-weight:700;font-size:15.5px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .me [hidden]{display:none!important}
 .me .point-z:empty{display:none}
 @media (max-width:560px){.me .pas .act{flex-direction:column;align-items:stretch}.me .pas .act .bouton{width:100%}.me .pas .alt{text-align:center}}
@@ -94,27 +138,33 @@ html[data-clone] .me-ouv h1 .clone-accent,.me-ouv h1 .clone-accent{color:#6DB8F2
 <main class="me" id="mon-efa" data-garde>
 
   <section class="pas" id="pas" aria-labelledby="pas-t">
+    <div class="pas-txt">
     <p class="k">Mon prochain pas</p>
     <h2 id="pas-t">Votre espace se remplit à mesure que vous avancez.</h2>
     <p id="pas-p">Commencez par deux questions : nous vous proposons une première étape adaptée à ce que vous cherchez.</p>
     <div class="act"><a class="bouton blanc" id="pas-b" href="point-de-depart.html?src=mon-efa" data-goatcounter-click="mon-efa-pas">Trouver mon point de départ</a><a class="alt" id="pas-a" href="diagnostic.html?src=mon-efa">Ou faire mon diagnostic</a></div>
+    </div>
+    <div class="pas-img" aria-hidden="true"><img id="pas-img" src="clone/assets/q1.webp" alt="" loading="eager"></div>
   </section>
 
+  <nav class="bord" id="b-bord" aria-label="Mon espace en chiffres" hidden></nav>
+
   <section class="bloc" id="b-apprends" hidden>
-    <h2>J’apprends</h2>
+    <div class="tete-bloc"><h2>J’apprends</h2><span class="glisser" aria-hidden="true">Glissez →</span></div>
     <p class="aide">Vos ateliers, vos parcours et votre porte Bourse, là où vous les avez laissés.</p>
-    <div class="grille" id="apprends"></div>
+    <div class="rail" id="apprends"></div>
   </section>
 
   <section class="bloc" id="b-outils" hidden>
     <h2>Mes outils</h2>
     <p class="aide">Vos diagnostics et vos simulations, gardés sur ce téléphone. Rouvrez-les pour les mettre à jour.</p>
-    <div class="grille" id="outils"></div>
+    <div class="rail" id="outils"></div>
   </section>
 
   <section class="bloc" id="b-decisions" hidden>
     <h2>Mes décisions</h2>
     <p class="aide">Les actions que vous avez choisi de suivre. Nous vous demandons où vous en êtes à 7 jours, puis à 30 jours.</p>
+    <div class="bandeau" aria-hidden="true"><img src="clone/assets/q2.webp" alt="" loading="lazy"><p>Une décision, un petit pas, puis on fait le point.</p></div>
     <div class="liste" id="decisions"></div>
   </section>
 
@@ -126,7 +176,7 @@ html[data-clone] .me-ouv h1 .clone-accent,.me-ouv h1 .clone-accent{color:#6DB8F2
 
   <section class="bloc" id="b-certificats" hidden>
     <h2>Mes certificats</h2>
-    <div class="grille" id="certificats"></div>
+    <div class="rail" id="certificats"></div>
   </section>
 
   <section class="bloc" id="b-point" hidden>
@@ -135,9 +185,15 @@ html[data-clone] .me-ouv h1 .clone-accent,.me-ouv h1 .clone-accent{color:#6DB8F2
     <div class="point-z" data-efa-point></div>
   </section>
 
+  <section class="bloc" id="b-decouvrir" hidden>
+    <div class="tete-bloc"><h2>À découvrir</h2><span class="glisser" aria-hidden="true">Glissez →</span></div>
+    <p class="aide">Ce que vous n’avez pas encore ouvert. Tout est gratuit pour commencer.</p>
+    <div class="rail" id="decouvrir"></div>
+  </section>
+
   <section class="bloc" id="b-acces">
     <h2>Mon accès</h2>
-    <div class="grille" id="acces"></div>
+    <div class="rail deux" id="acces"></div>
     <div class="offre" id="offre" hidden></div>
   </section>
 
@@ -174,6 +230,19 @@ function $(id){ return document.getElementById(id); }
 function montrer(id){ $(id).hidden=false; }
 function barre(f,ok){ return '<div class="barre'+(ok?' ok':'')+'" aria-hidden="true"><i style="width:'+Math.max(4,Math.min(100,Math.round(f*100)))+'%"></i></div>'; }
 var aQuelqueChose=false;
+/* Carte illustrée : image, pastille, titre, progression, liens */
+function carte(o){
+  var h=o.h||'#', bar=(o.prog!=null)?barre(o.prog,o.ok):'';
+  return '<article class="carte ic"><a class="ic-img" href="'+esc(h)+'" tabindex="-1" aria-hidden="true"><img src="clone/assets/'+esc(o.img||'q1.webp')+'" alt="" loading="lazy" width="640" height="360"><span class="pastille'+(o.cls?' '+o.cls:'')+'">'+esc(o.tag)+'</span></a>'
+    +'<div class="ic-c">'+(o.meta?'<p class="meta">'+o.meta+'</p>':'')+'<h3><a href="'+esc(h)+'">'+esc(o.t)+'</a></h3>'+(o.p?'<p class="meta">'+o.p+'</p>':'')+bar+'<div class="bas">'+(o.liens||'')+'</div></div></article>';
+}
+function imgParcours(p){ var t=(p.titre||'')+' '+(p.theme||'');
+  var M=[[/Bourse|placements|club/i,'marches-entree-r.webp'],[/dette/i,'q3.webp'],[/tontine|solidarit/i,'tontine.webp'],[/réserve|garder son argent|Épargner/i,'univers-epargne.webp'],[/proches|famille|Transmettre/i,'accueil-apprendre-famille.webp'],[/Mobile money/i,'simulation-r.webp'],[/Terrain/i,'univers-terrain.webp'],[/Retraite/i,'coach-patrimoine.webp'],[/irrégulier|activité/i,'coach-entreprise.webp'],[/grosse somme/i,'q4.webp'],[/budget|calendrier|Consommer/i,'budget-2.webp'],[/argent/i,'coach-budget-3.webp']];
+  for(var i=0;i<M.length;i++) if(M[i][0].test(t)) return M[i][1];
+  return {fondations:'cycle-fondations.webp',maitrise:'cycle-maitrise.webp',patrimoine:'cycle-patrimoine.webp'}[p.cycle]||'q1.webp'; }
+/* Image du prochain pas, selon la page visée */
+var IMG_PAGE=[[/bourse|brvm|premiers-pas|coach-bourse|sgi/,'accueil-porte-bourse-tour-f.webp'],[/jeu-portefeuille/,'jeu-baisse-decision-900.webp'],[/ou-passe|ou-est-passe/,'accueil-porte-voir-clair.webp'],[/budget/,'budget.webp'],[/reserve/,'univers-epargne.webp'],[/dette|P6/,'q3.webp'],[/generateur|declic/,'accueil-porte-declic.webp'],[/diagnostic/,'etudes-donnees.webp'],[/point-de-depart/,'q1.webp'],[/parcours|certificat|ecole/,'ecole-hero-3.webp'],[/cahier|outils/,'outils-entree-budget.webp'],[/preter|proche/,'benefice-collectif.webp'],[/cercle-spirale|tontine/,'tontine.webp']];
+function imgPage(h){ h=String(h||''); for(var i=0;i<IMG_PAGE.length;i++) if(IMG_PAGE[i][0].test(h)) return IMG_PAGE[i][1]; return 'q1.webp'; }
 
 /* ---------- Nom et objectif ---------- */
 var compte=L('efa_compte');
@@ -190,7 +259,8 @@ PAR.forEach(function(p){
   var n=(p.etapes||[]).length, f=0; for(var k=0;k<n;k++) if(faits[p.id+'.'+k]) f++;
   if(!f) return;
   var fini=f>=n;
-  cartes.push({o:(P.actif===p.id?0:2)+(fini?5:0), h:'<div class="carte"><div class="meta"><span class="pastille'+(fini?' ok':'')+'">'+(fini?'Parcours terminé':'Parcours')+'</span><span>'+f+' étape'+(f>1?'s':'')+' sur '+n+'</span></div><h3>'+esc(p.titre)+'</h3>'+barre(f/n,fini)+'<div class="bas"><a class="lien" href="parcours.html?src=mon-efa#'+esc(p.id)+'">'+(fini?'Revoir le parcours':'Reprendre le parcours')+'</a></div></div>'});
+  var hp='parcours.html?src=mon-efa#'+p.id;
+  cartes.push({o:(P.actif===p.id?0:2)+(fini?5:0), cours:!fini, h:carte({img:imgParcours(p),h:hp,tag:fini?'Parcours terminé':'Parcours',cls:fini?'ok':'cours',meta:f+' étape'+(f>1?'s':'')+' sur '+n,t:p.titre,prog:f/n,ok:fini,liens:'<a class="lien" href="'+esc(hp)+'">'+(fini?'Revoir le parcours':'Reprendre le parcours')+'</a>'})});
 });
 /* porte Bourse */
 var B=L('efa-bourse-v1');
@@ -200,12 +270,13 @@ if(B && (B.der || (B.fiches && Object.keys(B.fiches).length) || (B.pf && B.pf.l 
   var liens='<a class="lien" href="bourse.html'+(B.der&&B.der!=='accueil'?'#'+esc(B.der):'')+'">Reprendre là où j’en étais</a>';
   if(nf) liens+='<a class="lien" href="bourse.html#dossier">Mon dossier Bourse</a>';
   if(titres||suiv) liens='<a class="lien" href="bourse.html#analyses">Mes titres'+(titres?' ('+titres+')':'')+'</a>'+liens;
-  cartes.push({o:1, h:'<div class="carte"><div class="meta"><span class="pastille">Porte Bourse</span><span>'+meta+'</span>'+(suiv?'<span>'+suiv+' société'+(suiv>1?'s':'')+' suivie'+(suiv>1?'s':'')+'</span>':'')+'</div><h3>Je veux investir à la BRVM : par où commencer ?</h3>'+barre(nf/5,nf>=5)+'<div class="bas">'+liens+'</div></div>'});
+  cartes.push({o:1, cours:nf<5, h:carte({img:'accueil-porte-bourse-tour-f.webp',h:'bourse.html'+(B.der&&B.der!=='accueil'?'#'+B.der:''),tag:'Porte Bourse',cls:nf>=5?'ok':'cours',meta:meta+(suiv?' · '+suiv+' société'+(suiv>1?'s':'')+' suivie'+(suiv>1?'s':''):''),t:'La BRVM : par où commencer ?',prog:nf/5,ok:nf>=5,liens:liens})});
 }
 /* jeu « Mon portefeuille face à la baisse » */
 var JB=L('efa_jeu_baisse_v1');
 if(JB && JB.answers && Object.keys(JB.answers).length){ var jn=Object.keys(JB.answers).length, jf=!!JB.completedAt;
-  cartes.push({o:jf?6:1, h:'<div class="carte"><div class="meta"><span class="pastille'+(jf?' ok':' cours')+'">Jeu · 5 décisions</span><span>'+(jf?'Terminé':jn+' décision'+(jn>1?'s':'')+' sur 5')+'</span></div><h3>Mon portefeuille face à la baisse</h3>'+barre(jf?1:jn/5,jf)+'<div class="bas"><a class="lien" href="jeu-portefeuille-baisse.html?src=mon-efa'+(jf?'#synthese':'')+'">'+(jf?'Revoir ma synthèse':'Reprendre le jeu')+'</a></div></div>'});
+  var hj='jeu-portefeuille-baisse.html?src=mon-efa'+(jf?'#synthese':'');
+  cartes.push({o:jf?6:1, cours:!jf, h:carte({img:'jeu-baisse-decision-900.webp',h:hj,tag:'Jeu · 5 décisions',cls:jf?'ok':'cours',meta:jf?'Terminé':jn+' décision'+(jn>1?'s':'')+' sur 5',t:'Mon portefeuille face à la baisse',prog:jf?1:jn/5,ok:jf,liens:'<a class="lien" href="'+esc(hj)+'">'+(jf?'Revoir ma synthèse':'Reprendre le jeu')+'</a>'})});
 }
 /* ateliers : chargés depuis le catalogue */
 var AT=L('efa_ateliers_v1')||{}, OK=AT.ok||{};
@@ -220,10 +291,11 @@ function ateliers(C){
     var n=a.n||0, fini=n&&f>=n, page=a.page, recent=der===page;
     var meta=fini?'Terminé':n&&f?f+' écran'+(f>1?'s':'')+' sur '+n:commence?'Commencé':'Ouvert, pas encore commencé';
     var typ=a.prix?(ouvert?'Atelier ouvert':'Atelier · '+(a.offerts?a.offerts+' chapitre'+(a.offerts>1?'s':'')+' offert'+(a.offerts>1?'s':''):'payant')):'Atelier gratuit';
-    cartes.push({o:(recent?0:3)+(fini?5:0), h:'<div class="carte"><div class="meta"><span class="pastille'+(fini?' ok':commence?' cours':'')+'">'+esc(typ)+'</span><span>'+esc(meta)+'</span></div><h3>'+esc(a.t)+'</h3>'+(n?barre(n?f/n:0,fini):'')+'<div class="bas"><a class="lien" href="'+esc(page)+'?src=mon-efa">'+(fini?'Revoir':commence?'Reprendre':'Commencer')+'</a></div></div>'});
+    var ha=page+'?src=mon-efa';
+    cartes.push({o:(recent?0:3)+(fini?5:0), cours:!fini, h:carte({img:a.img,h:ha,tag:typ,cls:fini?'ok':commence?'cours':'',meta:esc(meta),t:a.t,prog:n?f/n:null,ok:fini,liens:'<a class="lien" href="'+esc(ha)+'">'+(fini?'Revoir':commence?'Reprendre':'Commencer')+'</a>'})});
   });
   if(cartes.length){ aQuelqueChose=true; cartes.sort(function(x,y){ return x.o-y.o; }); $('apprends').innerHTML=cartes.map(function(c){ return c.h; }).join(''); montrer('b-apprends'); }
-  offre(C); pas();
+  offre(C); pas(); bord(); decouvrir(C);
 }
 fetch('data/mon-efa-ateliers.json?v=20261116a').then(function(r){ return r.json(); }).then(ateliers,function(){ ateliers({}); });
 
@@ -235,16 +307,16 @@ try{ if(DG && DG.ans && typeof Q!=='undefined' && DG.ans.length===Q.length && ty
 if(RES && RES.faible){
   var nomDim=function(k){ var d=(typeof DIMS!=='undefined')&&DIMS.filter(function(x){ return x.k===k; })[0]; return d?d.n:k; };
   var prof=(typeof PROFILS!=='undefined')&&PROFILS[RES.profil];
-  ol.push('<div class="carte"><div class="meta"><span class="pastille ok">Diagnostic fait</span>'+(RES.d?'<span>le '+esc(dateFr(RES.d))+'</span>':'')+'</div><h3>Mon diagnostic'+(prof?' · '+esc(prof.n):'')+'</h3><p class="meta">'+esc(RES.palier||'')+(RES.fort?' · point d’appui : '+esc(nomDim(RES.fort)):'')+'</p><p><b>Ma priorité : '+esc(nomDim(RES.faible))+'</b></p><div class="bas"><a class="lien" href="diagnostic.html?src=mon-efa">Revoir mon résultat</a></div></div>');
+  ol.push(carte({img:'etudes-donnees.webp',h:'diagnostic.html?src=mon-efa',tag:'Diagnostic fait',cls:'ok',meta:(RES.d?'Le '+esc(dateFr(RES.d))+' · ':'')+esc(RES.palier||''),t:'Mon diagnostic'+(prof?' · '+prof.n:''),p:(RES.fort?'Point d’appui : '+esc(nomDim(RES.fort))+'<br>':'')+'<b style="color:var(--nuit)">Ma priorité : '+esc(nomDim(RES.faible))+'</b>',liens:'<a class="lien" href="diagnostic.html?src=mon-efa">Revoir mon résultat</a>'}));
 }
 var OE=L('efa_oepma_v2'); if(!OE){ try{ OE=JSON.parse(sessionStorage.getItem('efa_oepma_v2')||'null'); }catch(e){} }
 if(OE && OE.reperage && (OE.reperage.q>0||OE.reperage.termine||(OE.bilan&&OE.bilan.etape>1))){
   var oeF=OE.bilan&&OE.bilan.fini, oeR=OE.reperage.termine;
-  ol.push('<div class="carte"><div class="meta"><span class="pastille'+(oeF?' ok':' cours')+'">'+(oeF?'Bilan fait':oeR?'Repérage fait':'Commencé')+'</span><span>Voir clair</span></div><h3>Où est passé mon argent ?</h3>'+(OE.preferences&&!OE.preferences.sauvegarde_locale?'<p class="meta">Gardé le temps de la visite. Cochez « garder sur ce téléphone » dans l’outil pour le retrouver.</p>':'')+'<div class="bas"><a class="lien" href="ou-est-passe-mon-argent.html?src=mon-efa">'+(oeF?'Mettre à jour':'Reprendre')+'</a></div></div>');
+  ol.push(carte({img:'accueil-porte-voir-clair.webp',h:'ou-est-passe-mon-argent.html?src=mon-efa',tag:oeF?'Bilan fait':oeR?'Repérage fait':'Commencé',cls:oeF?'ok':'cours',meta:'Voir clair',t:'Où est passé mon argent ?',p:(OE.preferences&&!OE.preferences.sauvegarde_locale?'Gardé le temps de la visite. Cochez « garder sur ce téléphone » dans l’outil pour le retrouver.':''),liens:'<a class="lien" href="ou-est-passe-mon-argent.html?src=mon-efa">'+(oeF?'Mettre à jour':'Reprendre')+'</a>'}));
 }
-[['efa_budget_v1','Mon budget en FCFA','construire-son-budget.html'],['efa_mobilemoney_v1','Budget et mobile money','budget-mobile-money.html'],['efa_retraite_v1','Préparer ma retraite','preparer-ma-retraite.html'],['efa_preter_v1','Prêter à un proche','preter-a-un-proche.html'],['efa_gen_v2','EFA Déclic · mon projet','generateur-de-projet.html'],['efa_bp_v1','Mon business plan tient-il ?','mon-business-plan-tient-il.html'],['efa_decider_v1','Simulateur de décisions','decider.html'],['efa_avant_cotiser_v1','Avant de cotiser dans une tontine','avant-de-cotiser.html'],['efa_terrain_v1','Acheter un terrain','acheter-un-terrain.html'],['efa_arnaques_v1','Reconnaître les signaux d’alerte','arnaques.html'],['efa_papiers_v1','Les papiers de ma famille','papiers-famille.html'],['efa_questions_investir_v1','10 questions avant d’investir','questions-avant-d-investir.html'],['efa_fiche_sgi_v1','10 questions à poser à ma SGI','questions-a-poser-a-sa-sgi.html'],['efa_patrimoine_test_v1','Mon test patrimoine','patrimoine.html']].forEach(function(o){
+[['efa_budget_v1','Mon budget en FCFA','construire-son-budget.html','outils-entree-budget.webp'],['efa_mobilemoney_v1','Budget et mobile money','budget-mobile-money.html','simulation-r.webp'],['efa_retraite_v1','Préparer ma retraite','preparer-ma-retraite.html','atelier-retraite.webp'],['efa_preter_v1','Prêter à un proche','preter-a-un-proche.html','benefice-collectif.webp'],['efa_gen_v2','EFA Déclic · mon projet','generateur-de-projet.html','accueil-porte-declic.webp'],['efa_bp_v1','Mon business plan tient-il ?','mon-business-plan-tient-il.html','valo-entreprise.webp'],['efa_decider_v1','Simulateur de décisions','decider.html','q4.webp'],['efa_avant_cotiser_v1','Avant de cotiser dans une tontine','avant-de-cotiser.html','tontine.webp'],['efa_terrain_v1','Acheter un terrain','acheter-un-terrain.html','univers-terrain.webp'],['efa_arnaques_v1','Reconnaître les signaux d’alerte','arnaques.html','gen-arnaques.webp'],['efa_papiers_v1','Les papiers de ma famille','papiers-famille.html','accueil-apprendre-famille.webp'],['efa_questions_investir_v1','10 questions avant d’investir','questions-avant-d-investir.html','marches-entree-r.webp'],['efa_fiche_sgi_v1','10 questions à poser à ma SGI','questions-a-poser-a-sa-sgi.html','sgi-entree-2.webp'],['efa_patrimoine_test_v1','Mon test patrimoine','patrimoine.html','benefice-patrimoine.webp']].forEach(function(o){
   if(!S(o[0])) return;
-  ol.push('<div class="carte"><div class="meta"><span class="pastille">Gardé sur ce téléphone</span></div><h3>'+esc(o[1])+'</h3><div class="bas"><a class="lien" href="'+o[2]+'?src=mon-efa">Rouvrir</a></div></div>');
+  ol.push(carte({img:o[3],h:o[2]+'?src=mon-efa',tag:'Gardé sur ce téléphone',t:o[1],liens:'<a class="lien" href="'+o[2]+'?src=mon-efa">Rouvrir</a>'}));
 });
 if(ol.length){ aQuelqueChose=true; $('outils').innerHTML=ol.join(''); montrer('b-outils'); }
 
@@ -253,30 +325,32 @@ var SU=L('efa_suivi_v1'), its=SU&&SU.items||[];
 var C=L('efa_cahier_v1'); if(!C){ try{ C=JSON.parse(sessionStorage.getItem('efa_cahier_v1')||'null'); }catch(e){} }
 var lignes=[], now=Date.now();
 var sem=C&&C.semaines&&C.semaines.filter(function(x){ return !x.fini; }).pop();
-if(sem){ var jf=(sem.jours||[]).filter(function(x){ return x!=null; }).length; lignes.push('<div class="ligne"><div class="t"><b>Mon défi de sept jours'+(sem.poste==='autre'&&sem.libre?' · '+esc(sem.libre):'')+'</b><small>'+jf+' jour'+(jf>1?'s':'')+' noté'+(jf>1?'s':'')+' sur 7</small></div><a class="lien" href="outils.html#cahier">Mon cahier</a></div>'); }
+if(sem){ var jf=(sem.jours||[]).filter(function(x){ return x!=null; }).length; lignes.push('<div class="ligne"><div class="gauche"><span class="ico cours" aria-hidden="true">'+jf+'/7</span><div class="t"><b>Mon défi de sept jours'+(sem.poste==='autre'&&sem.libre?' · '+esc(sem.libre):'')+'</b><small>'+jf+' jour'+(jf>1?'s':'')+' noté'+(jf>1?'s':'')+' sur 7</small></div></div><a class="lien" href="outils.html#cahier">Mon cahier</a></div>'); }
 its.slice().reverse().forEach(function(x){
   var r=x.r30||x.r7, du=(x.report&&x.report>now)?null:(!x.r7&&now>=x.j7)||(x.r7&&!x.r30&&now>=x.j30);
   var etat=r==='oui'?'<span class="pastille ok">Fait</span>':r==='partiel'?'<span class="pastille cours">En partie</span>':r==='non'?'<span class="pastille">Pas encore</span>':'';
   var quand=du?'<span class="pastille corail">Point à faire</span>':(!x.r7?'Point le '+dateFr(x.j7):(!x.r30?'Point le '+dateFr(x.j30):''));
-  lignes.push('<div class="ligne"><div class="t"><b>'+esc(x.action||x.titre)+'</b><small>'+(x.titre&&x.action?esc(x.titre)+' · ':'')+(quand||'Suivi terminé')+'</small></div><span style="display:flex;gap:10px;align-items:center">'+etat+(du?'<a class="lien" href="outils.html#cahier" data-point="1">Faire le point</a>':x.lien?'<a class="lien" href="'+esc(x.lien)+'">Revoir</a>':'')+'</span></div>');
+  var ico=du?'<span class="ico corail" aria-hidden="true">!</span>':r==='oui'?'<span class="ico ok" aria-hidden="true">✓</span>':r==='partiel'?'<span class="ico cours" aria-hidden="true">½</span>':r==='non'?'<span class="ico" aria-hidden="true">↻</span>':'<span class="ico" aria-hidden="true">7j</span>';
+  lignes.push('<div class="ligne"><div class="gauche">'+ico+'<div class="t"><b>'+esc(x.action||x.titre)+'</b><small>'+(x.titre&&x.action?esc(x.titre)+' · ':'')+(quand||'Suivi terminé')+'</small></div></div><span style="display:flex;gap:10px;align-items:center">'+etat+(du?'<a class="lien" href="outils.html#cahier" data-point="1">Faire le point</a>':x.lien?'<a class="lien" href="'+esc(x.lien)+'">Revoir</a>':'')+'</span></div>');
 });
 if(lignes.length){ aQuelqueChose=true; $('decisions').innerHTML=lignes.join(''); montrer('b-decisions'); }
 
 /* ---------- Mes fiches et documents ---------- */
 var fl=[], FI=P.fiches||{};
-Object.keys(FI).forEach(function(k){ var x=FI[k]||{}; fl.push({d:x.d||'', h:'<div class="ligne"><div class="t"><b>'+esc(x.titre||'Ma fiche')+'</b><small>'+(x.d?'Gardée le '+esc(dateFr(x.d)):'Gardée')+(x.t?' · '+esc(String(x.t).slice(0,90))+(String(x.t).length>90?'…':''):'')+'</small></div><a class="lien" href="'+esc(x.url||k)+'">Ouvrir</a></div>'}); });
-if(B && B.fiches && Object.keys(B.fiches).length) fl.push({d:'9', h:'<div class="ligne"><div class="t"><b>Mon dossier Bourse</b><small>Projet, voie, comparaison des SGI et décision, en un document</small></div><a class="lien" href="bourse.html#dossier">Ouvrir et télécharger</a></div>'});
-if(B && B.pf && B.pf.l && B.pf.l.some(function(l){ return l&&l.t; })) fl.push({d:'9', h:'<div class="ligne"><div class="t"><b>Le bilan de mon portefeuille</b><small>Vos titres et vos quatre chiffres</small></div><a class="lien" href="bourse.html#b1-bilan">Ouvrir</a></div>'});
+function vign(im){ return '<span class="vign" aria-hidden="true"><img src="clone/assets/'+im+'" alt="" loading="lazy"></span>'; }
+Object.keys(FI).forEach(function(k){ var x=FI[k]||{}; fl.push({d:x.d||'', h:'<div class="ligne"><div class="gauche">'+vign(imgPage(x.url||k).replace('q1.webp','ecole-fiche-budget.webp'))+'<div class="t"><b>'+esc(x.titre||'Ma fiche')+'</b><small>'+(x.d?'Gardée le '+esc(dateFr(x.d)):'Gardée')+(x.t?' · '+esc(String(x.t).slice(0,90))+(String(x.t).length>90?'…':''):'')+'</small></div></div><a class="lien" href="'+esc(x.url||k)+'">Ouvrir</a></div>'}); });
+if(B && B.fiches && Object.keys(B.fiches).length) fl.push({d:'9', h:'<div class="ligne"><div class="gauche">'+vign('accueil-porte-bourse-tour-f.webp')+'<div class="t"><b>Mon dossier Bourse</b><small>Projet, voie, comparaison des SGI et décision, en un document</small></div></div><a class="lien" href="bourse.html#dossier">Ouvrir et télécharger</a></div>'});
+if(B && B.pf && B.pf.l && B.pf.l.some(function(l){ return l&&l.t; })) fl.push({d:'9', h:'<div class="ligne"><div class="gauche">'+vign('bourse-portefeuille-releve.webp')+'<div class="t"><b>Le bilan de mon portefeuille</b><small>Vos titres et vos quatre chiffres</small></div></div><a class="lien" href="bourse.html#b1-bilan">Ouvrir</a></div>'});
 var BP=L('efa_bp_brouillons'); var nbp=BP?(Array.isArray(BP)?BP.length:Object.keys(BP).length):0;
-if(nbp) fl.push({d:'9', h:'<div class="ligne"><div class="t"><b>Mes business plans</b><small>'+nbp+' brouillon'+(nbp>1?'s':'')+'</small></div><a class="lien" href="mon-espace-business-plan.html">Ouvrir</a></div>'});
-if(C) fl.push({d:'8', h:'<div class="ligne"><div class="t"><b>Mon cahier</b><small>Vos défis, vos notes et vos pistes d’action</small></div><a class="lien" href="outils.html#cahier">Ouvrir</a></div>'});
+if(nbp) fl.push({d:'9', h:'<div class="ligne"><div class="gauche">'+vign('valo-entreprise.webp')+'<div class="t"><b>Mes business plans</b><small>'+nbp+' brouillon'+(nbp>1?'s':'')+'</small></div></div><a class="lien" href="mon-espace-business-plan.html">Ouvrir</a></div>'});
+if(C) fl.push({d:'8', h:'<div class="ligne"><div class="gauche">'+vign('outils-entree-budget.webp')+'<div class="t"><b>Mon cahier</b><small>Vos défis, vos notes et vos pistes d’action</small></div></div><a class="lien" href="outils.html#cahier">Ouvrir</a></div>'});
 if(fl.length){ aQuelqueChose=true; fl.sort(function(a,b){ return a.d<b.d?1:-1; }); $('fiches').innerHTML=fl.map(function(x){ return x.h; }).join(''); montrer('b-fiches'); }
 
 /* ---------- Certificats ---------- */
-var CE=[['efa-certificat-fondations-pilote','EFA Fondations','certificat-pilote.html'],['efa-certificat-maitrise-pilote','EFA Maîtrise','certificat-maitrise.html'],['efa-certificat-patrimoine-pilote','EFA Patrimoine','certificat-patrimoine.html']], cl=[];
+var CE=[['efa-certificat-fondations-pilote','EFA Fondations','certificat-pilote.html','cycle-fondations.webp'],['efa-certificat-maitrise-pilote','EFA Maîtrise','certificat-maitrise.html','cycle-maitrise.webp'],['efa-certificat-patrimoine-pilote','EFA Patrimoine','certificat-patrimoine.html','cycle-patrimoine.webp']], cl=[];
 CE.forEach(function(c){ var e=L(c[0]); if(!e) return; var num=e.reussite&&e.reussite.numero;
-  cl.push('<div class="carte"><div class="meta"><span class="pastille'+(num?' ok':' cours')+'">'+(num?'Obtenu':'En cours')+'</span>'+(num?'<span>N° '+esc(num)+'</span>':'')+'</div><h3>Certificat '+esc(c[1])+'</h3><div class="bas"><a class="lien" href="'+c[2]+'">'+(num?'Voir mon certificat':'Reprendre')+'</a></div></div>'); });
-var cf=L('efa-certificat-cefa'); if(cf&&cf.numero) cl.push('<div class="carte"><div class="meta"><span class="pastille ok">Obtenu</span><span>N° '+esc(cf.numero)+'</span></div><h3>Certificat CEFA</h3><div class="bas"><a class="lien" href="certificat-cefa.html">Voir mon certificat</a></div></div>');
+  cl.push(carte({img:c[3],h:c[2],tag:num?'Obtenu':'En cours',cls:num?'ok':'cours',meta:num?'N° '+esc(num):'',t:'Certificat '+c[1],liens:'<a class="lien" href="'+c[2]+'">'+(num?'Voir mon certificat':'Reprendre')+'</a>'})); });
+var cf=L('efa-certificat-cefa'); if(cf&&cf.numero) cl.push(carte({img:'cycle-cefa.webp',h:'certificat-cefa.html',tag:'Obtenu',cls:'ok',meta:'N° '+esc(cf.numero),t:'Certificat CEFA',liens:'<a class="lien" href="certificat-cefa.html">Voir mon certificat</a>'}));
 if(cl.length){ aQuelqueChose=true; $('certificats').innerHTML=cl.join(''); montrer('b-certificats'); }
 
 /* ---------- Mes progrès (efa-point.js remplit le bloc) ---------- */
@@ -288,8 +362,8 @@ var actif=fo&&fo.f&&fo.fin&&new Date()<=new Date(fo.fin+'T23:59:59');
 var mail=S('efa_email_v1'), mis=L('efa_missions_v1'), credits=(mail?3+(AT.jeu||0)+((mis&&mis.pts)||0):0)+(AT.bonus||0)-(AT.dep10||0);
 var ouverts=Object.keys(OK).filter(function(k){ return OK[k]&&OK[k]!=='formule'; }).length;
 var ac=[];
-ac.push('<div class="carte"><p class="meta">Ma formule</p>'+(actif?'<p class="chiffre">'+esc(NOMS[fo.f]||fo.f)+'</p><p class="meta">Active jusqu’au '+esc(dateFr(fo.fin))+'</p><div class="bas"><a class="lien" href="abonnement.html">Ma formule</a></div>':'<p class="chiffre">Gratuit</p><p class="meta">Les outils, la porte Bourse et les ateliers gratuits sont ouverts.</p><div class="bas"><a class="lien" href="abonnement.html?src=mon-efa">Voir les formules · dès 10 000 F</a></div>')+'</div>');
-ac.push('<div class="carte"><p class="meta">Mes crédits</p>'+(mail?'<p class="chiffre">'+Math.max(0,credits)+' crédit'+(credits>1?'s':'')+'</p><p class="meta">Un crédit vaut 10 000 F d’atelier.'+(ouverts?' '+ouverts+' atelier'+(ouverts>1?'s':'')+' ouvert'+(ouverts>1?'s':'')+'.':'')+'</p>':'<p class="chiffre">3 offerts</p><p class="meta">Avec votre email, pour ouvrir un premier atelier.</p>')+'<div class="bas"><a class="lien" href="coaching.html?src=mon-efa">Choisir un atelier</a></div></div>');
+ac.push(carte({img:'benefice-individuel.webp',h:'abonnement.html?src=mon-efa',tag:'Ma formule',cls:actif?'ok':'',t:actif?(NOMS[fo.f]||fo.f):'Gratuit',p:actif?'Active jusqu’au '+esc(dateFr(fo.fin)):'Les outils, la porte Bourse et les ateliers gratuits sont ouverts.',liens:'<a class="lien" href="abonnement.html?src=mon-efa">'+(actif?'Ma formule':'Voir les formules · dès 10\u202f000\u00a0F')+'</a>'}));
+ac.push(carte({img:'gen-ateliers-savoirfaire.webp',h:'coaching.html?src=mon-efa',tag:'Mes crédits',t:mail?Math.max(0,credits)+' crédit'+(credits>1?'s':''):'3 crédits offerts',p:mail?'Un crédit vaut 10 000 F d’atelier.'+(ouverts?' '+ouverts+' atelier'+(ouverts>1?'s':'')+' ouvert'+(ouverts>1?'s':'')+'.':''):'Avec votre email, pour ouvrir un premier atelier.',liens:'<a class="lien" href="coaching.html?src=mon-efa">Choisir un atelier</a>'}));
 $('acces').innerHTML=ac.join('');
 
 function offre(Cat){
@@ -297,7 +371,7 @@ function offre(Cat){
   var pp=L('efa-pp-v1'), ppOuvert=OK['premiers-pas-bourse']||(actif&&fo.f!=='essentiel');
   if(B && B.der && !ppOuvert && !(pp&&pp._pos>0)) h='<p><b>Vous avancez sur la porte Bourse.</b> L’atelier « Mes premiers pas en Bourse » vous accompagne écran par écran, avec la voix d’Élysée. 2 chapitres offerts.</p><a class="bouton principal" href="premiers-pas-bourse.html?src=mon-efa">Essayer les chapitres offerts</a>';
   else if(!actif && cartes.some(function(c){ return /Terminé/.test(c.h)&&/Atelier gratuit/.test(c.h); })) h='<p><b>Vous avez terminé un atelier gratuit.</b> Les ateliers approfondis vont plus loin, sur votre situation. Vos 3 crédits offerts suffisent pour en ouvrir un premier.</p><a class="bouton principal" href="coaching.html?src=mon-efa-fin">Choisir mon atelier</a>';
-  if(h){ o.innerHTML=h; o.hidden=false; }
+  if(h){ var im=/premiers-pas/.test(h)?'accueil-porte-bourse-tour-f.webp':'gen-ateliers-savoirfaire.webp'; o.innerHTML='<div class="o-img" style="background-image:url(clone/assets/'+im+')" aria-hidden="true"></div><div class="o-t">'+h+'</div>'; o.hidden=false; }
 }
 
 /* ---------- Garder mon espace ---------- */
@@ -308,9 +382,33 @@ var msg=$('sv-msg');
 $('sv-dl').onclick=function(){ try{ var r=window.EFA_SAUVEGARDE.telecharger(); msg.textContent=r.length?'Sauvegarde téléchargée : '+r.join(', ')+'.':'Sauvegarde téléchargée.'; }catch(e){ msg.textContent='Le téléchargement n’a pas marché sur ce navigateur.'; } };
 $('sv-in').onchange=function(){ var f=this.files&&this.files[0]; if(!f) return; var rd=new FileReader(); rd.onload=function(){ try{ var r=window.EFA_SAUVEGARDE.restaurer(String(rd.result)); msg.textContent='Espace restauré : '+r.join(', ')+'. La page se met à jour.'; setTimeout(function(){ location.reload(); },1400); }catch(e){ msg.textContent='Ce fichier n’est pas une sauvegarde EFA.'; } }; rd.readAsText(f); };
 
+/* ---------- Tableau de bord : quatre chiffres ---------- */
+function bord(){
+  var enCours=cartes.filter(function(c){ return c.cours; }).length, dec=its.length+(sem?1:0), fi=fl.length, ce=cl.length;
+  if(!aQuelqueChose) return;
+  var T=[[enCours,enCours>1?'en cours':'en cours','#b-apprends'],[dec,dec>1?'décisions suivies':'décision suivie','#b-decisions'],[fi,fi>1?'fiches gardées':'fiche gardée','#b-fiches'],[ce,ce>1?'certificats':'certificat','#b-certificats']];
+  $('b-bord').innerHTML=T.map(function(x){ return '<a class="tuile'+(x[0]?'':' vide')+'" href="'+(x[0]?x[2]:'#b-decouvrir')+'"><b>'+x[0]+'</b><span>'+x[1]+'</span></a>'; }).join('');
+  $('b-bord').hidden=false;
+}
+/* ---------- À découvrir : ce qui n'est pas encore ouvert ---------- */
+function decouvrir(Cat){
+  var dejaBourse=!!(B&&B.der), dejaJeu=!!(JB&&JB.answers&&Object.keys(JB.answers).length), dejaOE=!!(OE&&OE.reperage), dejaDiag=!!(RES&&RES.faible), dejaParcours=Object.keys(faits).length>0, dejaGen=!!S('efa_gen_v2');
+  var I=[
+    [!dejaOE,{img:'accueil-porte-voir-clair.webp',h:'ou-est-passe-mon-argent.html?src=mon-efa-decouvrir',tag:'Voir clair · gratuit',t:'Où est passé mon argent ?',p:'Retrouvez où part l’argent du mois, poste par poste.',liens:'<a class="lien" href="ou-est-passe-mon-argent.html?src=mon-efa-decouvrir">Commencer</a>'}],
+    [!dejaDiag,{img:'etudes-donnees.webp',h:'diagnostic.html?src=mon-efa-decouvrir',tag:'Diagnostic · 5 min',t:'Mon diagnostic',p:'Votre point d’appui et votre priorité, en quelques questions.',liens:'<a class="lien" href="diagnostic.html?src=mon-efa-decouvrir">Faire mon diagnostic</a>'}],
+    [!dejaBourse,{img:'accueil-porte-bourse-tour-f.webp',h:'bourse.html?src=mon-efa-decouvrir',tag:'Bourse',t:'La BRVM : par où commencer ?',p:'Cinq étapes pour préparer votre dossier, sans rien acheter.',liens:'<a class="lien" href="bourse.html?src=mon-efa-decouvrir">Ouvrir la porte</a>'}],
+    [!dejaJeu,{img:'jeu-baisse-decision-900.webp',h:'jeu-portefeuille-baisse.html?src=mon-efa-decouvrir',tag:'Jeu · 5 minutes',t:'Mon portefeuille face à la baisse',p:'Votre portefeuille perd 40 %. Que décidez-vous ?',liens:'<a class="lien" href="jeu-portefeuille-baisse.html?src=mon-efa-decouvrir">Jouer</a>'}],
+    [!dejaGen,{img:'accueil-porte-declic.webp',h:'generateur-de-projet.html?src=mon-efa-decouvrir',tag:'Déclic',t:'Trouver mon idée de business',p:'Des idées selon votre budget, votre secteur et votre pays.',liens:'<a class="lien" href="generateur-de-projet.html?src=mon-efa-decouvrir">Trouver mon idée</a>'}],
+    [!dejaParcours,{img:'ecole-hero-3.webp',h:'parcours.html?src=mon-efa-decouvrir',tag:'L’école EFA',t:'Votre argent s’apprend',p:'Du premier budget aux décisions de patrimoine, à votre rythme.',liens:'<a class="lien" href="parcours.html?src=mon-efa-decouvrir">Choisir un sujet</a>'}]
+  ].filter(function(x){ return x[0]; }).slice(0,4);
+  if(!I.length) return;
+  $('decouvrir').innerHTML=I.map(function(x){ return carte(x[1]); }).join(''); montrer('b-decouvrir');
+}
+
 /* ---------- Prochain pas ---------- */
 function pas(){
   var e=window.EFA_REPRISE&&window.EFA_REPRISE.etape(), t=$('pas-t'), p=$('pas-p'), b=$('pas-b'), a=$('pas-a');
+  $('pas-img').src='clone/assets/'+imgPage(e?e.h:'point-de-depart');
   if(e){ t.textContent=e.t; p.textContent=e.p?('Pourquoi cette piste : '+e.p):'Une seule chose à faire maintenant. Le reste attend.'; b.textContent=e.b; b.href=e.h;
     b.onclick=(e.k==='suivi')?function(ev){ if(window.EFA_SUIVI&&window.EFA_SUIVI.point&&window.EFA_SUIVI.point()){ ev.preventDefault(); } }:null;
     if(/^piste-/.test(e.k)){ a.textContent='Voir ce que j’ai déjà commencé'; a.href='#b-apprends'; a.hidden=$('b-apprends').hidden; return; }
