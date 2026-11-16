@@ -33,3 +33,4 @@ Indicateur central : personnes ayant essayé une ressource et identifié un proc
 ## Journal des semaines
 - 2026-11-03 · S0 publiée sur la page. Annonce envoyée par Élysée. Groupe WhatsApp à créer cette semaine.
 - 2026-11-09 · S0 : aucune confirmation reçue dans les conversations de la création du groupe WhatsApp, des échanges de 20 min ni de retours ; S1 publiée en version allégée (premier point de 45 min, même outil pour tous : « Maîtriser son salaire », une règle chacun pour la charte), l’échange de 20 min est rattrapé au point.
+- 2026-11-16 · S1 : toujours aucune confirmation dans les conversations du groupe WhatsApp, du premier point ni de retours d’essai de l’outil budget. Même étape reprise en plus simple pour la semaine du 16 nov. : un créneau de 30 min pour le premier point, dix minutes avec « Maîtriser son salaire » et une phrase chacun ; la charte passe au point.
