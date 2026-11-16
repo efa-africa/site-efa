@@ -184,7 +184,7 @@
     if (!v.d || now - v.d > 36e5) { v.d = now; localStorage.setItem("efa_vu", JSON.stringify(v)); }
   } catch (e) {}
   /* Reprise, sauvegarde et cohorte de 30 jours : efa-reprise.js (chargé ici sur les pages qui ne l'ont pas déjà) */
-  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=20261116a"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
+  try { if (!window.EFA_REPRISE) { var r = document.createElement("script"); r.src = "efa-reprise.js?v=20261116b"; r.defer = true; document.head.appendChild(r); } } catch (e) {}
 })();
 
 /* Parcours d’apprentissage : bloc « Et ensuite ? » sur chaque page (voir efa-suite.js). */
@@ -196,7 +196,7 @@
   if (!window.EFA_CHIFFRES) { var ch = document.createElement("script"); ch.src = "efa-chiffres.js?v=20261102z"; ch.defer = true; document.head.appendChild(ch); }
   if (!window.EFA_SONS) { var so = document.createElement("script"); so.src = "efa-sons.js?v=20261102z"; so.defer = true; document.head.appendChild(so); }
   var qz = document.createElement("script"); qz.src = "efa-quiz.js?v=20261102z"; qz.defer = true; document.head.appendChild(qz);
-  if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=20261102z"; u.defer = true; document.head.appendChild(u); }
+  if (!window.EFA_SUIVI) { var u = document.createElement("script"); u.src = "efa-suivi.js?v=20261116a"; u.defer = true; document.head.appendChild(u); }
   if (!window.EFA_ECOLE) { var k = document.createElement("script"); k.src = "efa-compte.js?v=20261102z"; k.defer = true; document.head.appendChild(k); }
 })();
 

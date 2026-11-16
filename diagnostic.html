@@ -304,6 +304,8 @@ const VIDE = {view: "accueil", i: 0, ans: [], prof: {}, lead: null, nl: false, s
 let S = JSON.parse(JSON.stringify(VIDE));
 try { const e = JSON.parse(localStorage.getItem(ETAT) || "null"); if (e) S = {...S, ...e}; } catch (e) {}
 const garde = () => { try { localStorage.setItem(ETAT, JSON.stringify(S)); } catch (e) {} };
+// Résumé pour Mon EFA et le prochain pas (aucune réponse détaillée, aucun montant)
+const resumer = (s, fort, faible) => { try { localStorage.setItem("efa_diag_resume", JSON.stringify({d: new Date().toISOString().slice(0, 10), profil: s.profil, palier: s.palier, global: s.global, fort: fort.k, faible: faible.k})); } catch (e) {} };
 const fini0 = () => S.ans.length === Q.length && Object.keys(S.prof).length === PROFIL_Q.length;
 
 // Provenance (?src=tiktok…) : on garde la première
@@ -380,7 +382,7 @@ const V = {
  },
  apercu() {
   const s = scores(S.ans), p = PROFILS[s.profil];
-  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1];
+  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1]; resumer(s, fort, faible);
   return `<div class="stack"><p class="step">Diagnostic terminé · première synthèse</p><h1>${p.n}</h1><p class="lead">${p.t}</p></div>
    <div class="b4">
     <div class="card"><span class="tag">Votre situation</span><h3>${s.palier}</h3><p class="small muted">Une première lecture de vos ${Q.length} réponses, sur six dimensions.</p></div>
@@ -406,7 +408,7 @@ const V = {
  resultat() {
   try { localStorage.setItem('efa_mission_diag', '1'); } catch (e) {}
   const s = scores(S.ans), p = PROFILS[s.profil];
-  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1], A = ACTIONS[faible.k];
+  const tri = DIMS.slice().sort((a, b) => s[b.k] - s[a.k]), fort = tri[0], faible = tri[tri.length - 1], A = ACTIONS[faible.k]; resumer(s, fort, faible);
   const acces = S.p1ok ? `<div class="actions"><button class="btn" data-go="p1">${S.p1 ? "Revoir le niveau 2" : "Commencer le niveau 2"}</button></div>`
     : `<div class="actions"><button class="btn" data-act="demande" ${S.demandeP1 ? "disabled" : ""}>${S.demandeP1 ? "Demande enregistrée" : "Demander l'accès"}</button><button class="link" data-go="cle">J'ai déjà une clé</button></div>
        ${S.demandeP1 ? `<p class="small">Vous recevrez le lien et votre clé par email après validation par l'équipe EFA.</p>` : ""}`;

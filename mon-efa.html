@@ -91,6 +91,12 @@ body{margin:0;background:var(--fond);color:var(--ink);font-family:var(--f-body);
     <div class="grille" id="apprends"></div>
   </section>
 
+  <section class="bloc" id="b-outils" hidden>
+    <h2>Mes outils</h2>
+    <p class="aide">Vos diagnostics et vos simulations, gardés sur ce téléphone. Rouvrez-les pour les mettre à jour.</p>
+    <div class="grille" id="outils"></div>
+  </section>
+
   <section class="bloc" id="b-decisions" hidden>
     <h2>Mes décisions</h2>
     <p class="aide">Les actions que vous avez choisi de suivre. Nous vous demandons où vous en êtes à 7 jours, puis à 30 jours.</p>
@@ -138,7 +144,8 @@ body{margin:0;background:var(--fond);color:var(--ink);font-family:var(--f-body);
 </main>
 
 <script src="parcours-efa.js?v=20261105a"></script>
-<script src="efa-reprise.js?v=20261116a"></script>
+<script src="efa-commun.js"></script>
+<script src="efa-reprise.js?v=20261116b"></script>
 <script>
 (function(){
 'use strict';
@@ -200,6 +207,27 @@ function ateliers(C){
 }
 fetch('data/mon-efa-ateliers.json?v=20261116a').then(function(r){ return r.json(); }).then(ateliers,function(){ ateliers({}); });
 
+/* ---------- Mes outils ---------- */
+var ol=[];
+var DG=L('efa_diag_v2'), RES=L('efa_diag_resume');
+try{ if(DG && DG.ans && typeof Q!=='undefined' && DG.ans.length===Q.length && typeof scores==='function'){ var sc=scores(DG.ans), tr=DIMS.slice().sort(function(a,b){ return sc[b.k]-sc[a.k]; });
+  if(!RES||!RES.faible){ RES={d:(RES&&RES.d)||'',profil:sc.profil,palier:sc.palier,global:sc.global,fort:tr[0].k,faible:tr[tr.length-1].k}; try{ localStorage.setItem('efa_diag_resume',JSON.stringify(RES)); }catch(e){} } } }catch(e){}
+if(RES && RES.faible){
+  var nomDim=function(k){ var d=(typeof DIMS!=='undefined')&&DIMS.filter(function(x){ return x.k===k; })[0]; return d?d.n:k; };
+  var prof=(typeof PROFILS!=='undefined')&&PROFILS[RES.profil];
+  ol.push('<div class="carte"><div class="meta"><span class="pastille ok">Diagnostic fait</span>'+(RES.d?'<span>le '+esc(dateFr(RES.d))+'</span>':'')+'</div><h3>Mon diagnostic'+(prof?' · '+esc(prof.n):'')+'</h3><p class="meta">'+esc(RES.palier||'')+(RES.fort?' · point d’appui : '+esc(nomDim(RES.fort)):'')+'</p><p><b>Ma priorité : '+esc(nomDim(RES.faible))+'</b></p><div class="bas"><a class="lien" href="diagnostic.html?src=mon-efa">Revoir mon résultat</a></div></div>');
+}
+var OE=L('efa_oepma_v2'); if(!OE){ try{ OE=JSON.parse(sessionStorage.getItem('efa_oepma_v2')||'null'); }catch(e){} }
+if(OE && OE.reperage && (OE.reperage.q>0||OE.reperage.termine||(OE.bilan&&OE.bilan.etape>1))){
+  var oeF=OE.bilan&&OE.bilan.fini, oeR=OE.reperage.termine;
+  ol.push('<div class="carte"><div class="meta"><span class="pastille'+(oeF?' ok':' cours')+'">'+(oeF?'Bilan fait':oeR?'Repérage fait':'Commencé')+'</span><span>Voir clair</span></div><h3>Où est passé mon argent ?</h3>'+(OE.preferences&&!OE.preferences.sauvegarde_locale?'<p class="meta">Gardé le temps de la visite. Cochez « garder sur ce téléphone » dans l’outil pour le retrouver.</p>':'')+'<div class="bas"><a class="lien" href="ou-est-passe-mon-argent.html?src=mon-efa">'+(oeF?'Mettre à jour':'Reprendre')+'</a></div></div>');
+}
+[['efa_budget_v1','Mon budget en FCFA','construire-son-budget.html'],['efa_mobilemoney_v1','Budget et mobile money','budget-mobile-money.html'],['efa_retraite_v1','Préparer ma retraite','preparer-ma-retraite.html'],['efa_preter_v1','Prêter à un proche','preter-a-un-proche.html'],['efa_gen_v2','EFA Déclic · mon projet','generateur-de-projet.html'],['efa_bp_v1','Mon business plan tient-il ?','mon-business-plan-tient-il.html'],['efa_decider_v1','Simulateur de décisions','decider.html'],['efa_avant_cotiser_v1','Avant de cotiser dans une tontine','avant-de-cotiser.html'],['efa_terrain_v1','Acheter un terrain','acheter-un-terrain.html'],['efa_arnaques_v1','Reconnaître les signaux d’alerte','arnaques.html'],['efa_papiers_v1','Les papiers de ma famille','papiers-famille.html'],['efa_questions_investir_v1','10 questions avant d’investir','questions-avant-d-investir.html'],['efa_fiche_sgi_v1','10 questions à poser à ma SGI','questions-a-poser-a-sa-sgi.html'],['efa_patrimoine_test_v1','Mon test patrimoine','patrimoine.html']].forEach(function(o){
+  if(!S(o[0])) return;
+  ol.push('<div class="carte"><div class="meta"><span class="pastille">Gardé sur ce téléphone</span></div><h3>'+esc(o[1])+'</h3><div class="bas"><a class="lien" href="'+o[2]+'?src=mon-efa">Rouvrir</a></div></div>');
+});
+if(ol.length){ aQuelqueChose=true; $('outils').innerHTML=ol.join(''); montrer('b-outils'); }
+
 /* ---------- Mes décisions ---------- */
 var SU=L('efa_suivi_v1'), its=SU&&SU.items||[];
 var C=L('efa_cahier_v1'); if(!C){ try{ C=JSON.parse(sessionStorage.getItem('efa_cahier_v1')||'null'); }catch(e){} }
@@ -210,7 +238,7 @@ its.slice().reverse().forEach(function(x){
   var r=x.r30||x.r7, du=(x.report&&x.report>now)?null:(!x.r7&&now>=x.j7)||(x.r7&&!x.r30&&now>=x.j30);
   var etat=r==='oui'?'<span class="pastille ok">Fait</span>':r==='partiel'?'<span class="pastille cours">En partie</span>':r==='non'?'<span class="pastille">Pas encore</span>':'';
   var quand=du?'<span class="pastille corail">Point à faire</span>':(!x.r7?'Point le '+dateFr(x.j7):(!x.r30?'Point le '+dateFr(x.j30):''));
-  lignes.push('<div class="ligne"><div class="t"><b>'+esc(x.action||x.titre)+'</b><small>'+(x.titre&&x.action?esc(x.titre)+' · ':'')+(quand||'Suivi terminé')+'</small></div><span style="display:flex;gap:10px;align-items:center">'+etat+(du?'<a class="lien" href="outils.html#cahier">Faire le point</a>':x.lien?'<a class="lien" href="'+esc(x.lien)+'">Revoir</a>':'')+'</span></div>');
+  lignes.push('<div class="ligne"><div class="t"><b>'+esc(x.action||x.titre)+'</b><small>'+(x.titre&&x.action?esc(x.titre)+' · ':'')+(quand||'Suivi terminé')+'</small></div><span style="display:flex;gap:10px;align-items:center">'+etat+(du?'<a class="lien" href="outils.html#cahier" data-point="1">Faire le point</a>':x.lien?'<a class="lien" href="'+esc(x.lien)+'">Revoir</a>':'')+'</span></div>');
 });
 if(lignes.length){ aQuelqueChose=true; $('decisions').innerHTML=lignes.join(''); montrer('b-decisions'); }
 
@@ -263,7 +291,9 @@ $('sv-in').onchange=function(){ var f=this.files&&this.files[0]; if(!f) return; 
 /* ---------- Prochain pas ---------- */
 function pas(){
   var e=window.EFA_REPRISE&&window.EFA_REPRISE.etape(), t=$('pas-t'), p=$('pas-p'), b=$('pas-b'), a=$('pas-a');
-  if(e){ t.textContent=e.t; p.textContent=e.p||'Une seule chose à faire maintenant. Le reste attend.'; b.textContent=e.b; b.href=e.h;
+  if(e){ t.textContent=e.t; p.textContent=e.p?('Pourquoi cette piste : '+e.p):'Une seule chose à faire maintenant. Le reste attend.'; b.textContent=e.b; b.href=e.h;
+    b.onclick=(e.k==='suivi')?function(ev){ if(window.EFA_SUIVI&&window.EFA_SUIVI.point&&window.EFA_SUIVI.point()){ ev.preventDefault(); } }:null;
+    if(/^piste-/.test(e.k)){ a.textContent='Voir ce que j’ai déjà commencé'; a.href='#b-apprends'; a.hidden=$('b-apprends').hidden; return; }
     if(e.k==='suivi'||e.k==='bilan'){ a.textContent='Voir toutes mes décisions'; a.href='#b-decisions'; }
     else if(aQuelqueChose){ a.textContent='Voir tout ce que j’ai commencé'; a.href='#b-apprends'; if($('b-apprends').hidden) a.hidden=true; }
     else a.hidden=true;
@@ -271,6 +301,7 @@ function pas(){
   if(aQuelqueChose){ t.textContent='Vous avez déjà avancé. Choisissez par quoi continuer.'; p.textContent='Tout ce que vous avez commencé est juste en dessous.'; b.textContent='Voir ce que j’ai commencé'; b.href='#b-apprends'; a.textContent='Ou changer de point de départ'; a.href='point-de-depart.html?src=mon-efa'; }
 }
 pas();
+document.addEventListener('click',function(ev){ var x=ev.target.closest&&ev.target.closest('[data-point]'); if(x&&window.EFA_SUIVI&&window.EFA_SUIVI.point&&window.EFA_SUIVI.point()) ev.preventDefault(); });
 })();
 </script>
 <script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

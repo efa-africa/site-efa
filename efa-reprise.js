@@ -22,6 +22,41 @@
     return { notes: notes, challenges: ch, actions: actions };
   }
 
+  /* ---------- Règles de recommandation ----------
+     Des règles simples, lisibles, à partir de ce que la personne a dit elle-même. Ce sont des pistes d'apprentissage,
+     jamais un conseil financier personnalisé. Une piste déjà faite est sautée. */
+  var PISTES = {
+    savoir: { b: "Le module Flux et stock", h: "certificat-pilote.html?m=1&src=reprise", t: "Commencez par la différence entre ce qui passe et ce qui reste : tout le reste s’appuie dessus." },
+    habitudes: { b: "Retrouver où passe mon argent", h: "atelier-ou-passe-mon-argent.html?src=reprise", at: "ou-passe-mon-argent", t: "Retrouvez où est parti l’argent du mois : c’est la première habitude à installer." },
+    projection: { b: "Calculer mon projet", h: "cercle-spirale.html?src=reprise#projet", t: "Écrivez un objectif avec un montant et une date, puis voyez combien de rentrées il demande." },
+    resilience: { b: "Construire ma réserve", h: "atelier-reserve-securite.html?src=reprise", at: "reserve-securite", t: "Séparez une réserve de votre argent courant, palier par palier." },
+    rapport: { b: "Mon budget qui tient", h: "atelier-budget-qui-tient.html?src=reprise", at: "budget-qui-tient", t: "Un budget décidé à l’avance vous aide à dire non aux achats non prévus." },
+    flux: { b: "Prêter à un proche, ou donner ?", h: "preter-a-un-proche.html?src=reprise", t: "Fixez ce que vous donnez à vos proches avant qu’on vous le demande." },
+    dettes: { b: "Reprendre la main sur mes dettes", h: "parcours.html?src=reprise#P6", t: "On commence par la dette chère : la lister, la classer, puis décider laquelle rembourser d’abord." },
+    bourse: { b: "Ouvrir la porte Bourse", h: "bourse.html?src=reprise", t: "Cinq étapes pour préparer votre dossier, sans rien acheter : projet, voie, intermédiaire, décision." }
+  };
+  var NOMS_DIM = { savoir: "le savoir", habitudes: "vos habitudes", projection: "vous projeter", resilience: "votre réserve", rapport: "votre rapport à l’argent", flux: "les flux avec vos proches" };
+  function atelierFait(id) { var a = lire("efa-at-" + id); return !!(a && a.D && a.D._vue === "fiche"); }
+  function recommandation(O) {
+    var ok = function (k) { var p = PISTES[k]; return p && !(p.at && atelierFait(p.at)); };
+    var pis = function (k, pourquoi) { var p = PISTES[k]; return { t: p.t, p: pourquoi, b: p.b, h: BASE + p.h, k: "piste-" + k }; };
+    /* Mon point : la réponse la plus récente */
+    var pt = lire("efa_point_v1"), rep = pt && (pt.j90 || pt.j30 || pt.j0);
+    if (rep && /^[01]{3}$/.test(rep)) {
+      if (rep[2] === "0" && ok("dettes")) return pis("dettes", "Vous avez indiqué une dette chère en cours.");
+      if (rep[1] === "0" && ok("resilience")) return pis("resilience", "Vous avez indiqué ne pas avoir un mois de dépenses de côté.");
+      if (rep[0] === "0" && ok("habitudes")) return pis("habitudes", "Vous avez indiqué ne pas savoir où passe votre argent chaque mois.");
+    }
+    /* Diagnostic : la dimension la plus basse */
+    var dg = lire("efa_diag_resume");
+    if (dg && dg.faible && ok(dg.faible)) return pis(dg.faible, "Votre diagnostic" + (dg.d ? " du " + jourCourt(dg.d) : "") + " : la priorité est " + (NOMS_DIM[dg.faible] || "à travailler") + ".");
+    /* Objectif « investir » sans porte Bourse commencée */
+    var B = lire("efa-bourse-v1");
+    if (O && (O.p === "investir" || O.q2 === "investir") && !(B && B.der)) return pis("bourse", "Votre objectif : investir en Bourse.");
+    return null;
+  }
+  function jourCourt(d) { var M = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]; var x = new Date(String(d || "").replace(/-/g, "/")); return isNaN(x) ? "" : x.getDate() + " " + M[x.getMonth()]; }
+
   function etape() {
     try {
       var C = lire("efa_cahier_v1"), O = lire("efa_objectif"), P = lire("efa_parcours_v1"), S = lire("efa_suivi_v1"), A = appli();
@@ -57,7 +92,10 @@
       if (O && O.p && O.q2 && !objFait) return { t: "Votre première étape : " + (O.nextT || "votre point de départ") + ".", b: "Commencer", h: O.next || BASE + "point-de-depart.html?src=reprise", k: "objectif", o: O };
       /* 6. Le module en cours dans l'école */
       if (P && P.actif && P.faits && Object.keys(P.faits).some(function (k) { return k.indexOf(P.actif + ".") === 0; })) return { t: "Vous en étiez à votre module en cours.", b: "Reprendre mon module", h: BASE + "parcours.html?src=reprise#" + P.actif, k: "module" };
-      /* 7. La première étape est faite : choisir la suite */
+      /* 7. Recommandation : ce que la personne a déclaré (Mon point, diagnostic, objectif), quand rien n'est en cours */
+      var r = recommandation(O);
+      if (r) return r;
+      /* 8. La première étape est faite : choisir la suite */
       if (objFait) return { t: "Première étape faite et gardée dans votre cahier. Choisissez la suite.", b: "Choisir la suite", h: BASE + "outils.html#cahier", k: "suite" };
     } catch (x) {}
     return null;
@@ -143,7 +181,7 @@
     } catch (e) {}
   }
   try { cohorte(); } catch (e) {}
-  window.EFA_REPRISE = { etape: etape, appli: appli };
+  window.EFA_REPRISE = { etape: etape, appli: appli, recommandation: recommandation, PISTES: PISTES };
   window.EFA_SAUVEGARDE = { exporter: exporter, telecharger: telecharger, restaurer: restaurer, resume: resume };
   if (!window.EFA_ETAPE) window.EFA_ETAPE = etape;
 })();

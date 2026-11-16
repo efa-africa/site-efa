@@ -61,12 +61,38 @@
         + '<div class="b">' + BLOCAGES.map(function (x) { return '<button type="button" data-bl="' + x[0] + '">' + x[1] + '</button>'; }).join("") + '</div>';
       corps.dataset.r = r;
     }
-    function merci(r) {
-      var t = r === "oui" ? "Bravo. C’est en essayant qu’on change ses habitudes." : "Merci. Un petit pas suffit : réessayez cette semaine, avec une action plus petite si besoin.";
-      corps.innerHTML = '<button class="x" type="button" aria-label="Fermer">×</button><p class="k">Votre suivi</p><p class="q">' + t + '</p>'
-        + (quand === "7" ? '<p class="a">Nous vous redemanderons le ' + jourFr(it.j30) + '.</p>' : '')
-        + '<p class="a"><a href="' + esc(it.lien) + '">Revoir la décision →</a></p>';
-      setTimeout(fermer, 9000);
+    /* Après « en partie » ou « pas encore » : ajuster l'action selon ce qui a bloqué, ou revoir la méthode */
+    var CONSEIL = {
+      temps: "Prenez une action de cinq minutes, à un moment fixe de la semaine.",
+      argent: "Gardez la règle, baissez le montant : même 1 000 F mis de côté installe l’habitude.",
+      famille: "Prévoyez une part pour la famille, à côté de votre action, pas à sa place.",
+      oubli: "Accrochez l’action à un moment qui existe déjà : le jour de la paie, le dimanche soir.",
+      comment: "Revoyez d’abord la méthode, en quelques minutes. Puis réessayez."
+    };
+    function merci(r, bl) {
+      if (r === "oui") {
+        corps.innerHTML = '<button class="x" type="button" aria-label="Fermer">×</button><p class="k">Votre suivi</p><p class="q">Bravo. C’est en essayant qu’on change ses habitudes.</p>'
+          + (quand === "7" ? '<p class="a">Nous vous redemanderons le ' + jourFr(it.j30) + '.</p>' : '')
+          + '<p class="a"><a href="mon-efa.html">Mon prochain pas →</a></p>';
+        setTimeout(fermer, 9000); return;
+      }
+      var methode = bl === "comment";
+      corps.innerHTML = '<button class="x" type="button" aria-label="Fermer">×</button><p class="k">Votre suivi · on ajuste</p><p class="q">' + esc(CONSEIL[bl] || "Un petit pas suffit : réessayez avec une action plus petite.") + '</p>'
+        + '<label class="a" for="efa-suivi-a" style="display:block">Mon action, en plus petit&nbsp;:</label>'
+        + '<input id="efa-suivi-a" type="text" maxlength="200" value="' + esc(it.action) + '" style="width:100%;box-sizing:border-box;font:600 15px/1.3 \'Source Sans 3\',system-ui,sans-serif;padding:10px 12px;border-radius:8px;border:0;margin:0 0 10px;background:#fff;color:#0B1220">'
+        + '<div class="b">' + (methode ? '<a class="m p" href="' + esc(it.lien) + '" style="font:800 14.5px/1.1 \'Source Sans 3\',system-ui,sans-serif;border-radius:8px;padding:10px 13px;background:#DA3C1B;color:#fff;text-decoration:none">Revoir la méthode</a><button type="button" data-aj="1">Je réessaie dans 7 jours</button>'
+          : '<button class="p" type="button" data-aj="1">Je réessaie dans 7 jours</button><a href="' + esc(it.lien) + '" style="padding:10px 4px">Revoir la méthode</a>') + '</div>';
+    }
+    function ajuster() {
+      var champ = document.getElementById("efa-suivi-a"), a = champ ? champ.value.trim().slice(0, 200) : "";
+      var v = lire(), x = v.items.filter(function (y) { return y.id === it.id; })[0]; if (!x) { fermer(); return; }
+      var now = Date.now();
+      x.essais = (x.essais || []).concat([{ a: x.action, r7: x.r7, r30: x.r30, b7: x.b7, b30: x.b30, d: x.cree }]).slice(-5);
+      if (a) x.action = a;
+      x.cree = now; x.j7 = now + 7 * JOUR; x.j30 = now + 30 * JOUR; x.r7 = null; x.r30 = null; x.b7 = null; x.b30 = null; x.report = 0;
+      ecrire(v); it = x; compte("suivi-ajuste");
+      corps.innerHTML = '<button class="x" type="button" aria-label="Fermer">×</button><p class="k">Votre suivi</p><p class="q">C’est noté. Nous vous redemanderons le ' + jourFr(x.j7) + '.</p><p class="a"><b>' + esc(x.action) + '</b></p>';
+      setTimeout(fermer, 7000);
     }
     function enregistrer(r, bl) {
       var v = lire(), x = v.items.filter(function (y) { return y.id === it.id; })[0]; if (!x) return;
@@ -82,7 +108,8 @@
       if (r === "plus-tard") { reporter(2); compte("suivi-plus-tard"); fermer(); return; }
       if (r === "oui") { enregistrer("oui"); merci("oui"); return; }
       if (r) { etape2(r); return; }
-      if (bl) { var rr = corps.dataset.r; enregistrer(rr, bl); merci(rr); }
+      if (b.getAttribute("data-aj")) { ajuster(); return; }
+      if (bl) { var rr = corps.dataset.r; enregistrer(rr, bl); merci(rr, bl); }
     });
     function reporter(j) { var v = lire(), x = v.items.filter(function (y) { return y.id === it.id; })[0]; if (x) { x.report = Date.now() + j * JOUR; ecrire(v); } }
     etape1(); document.body.appendChild(d);
@@ -96,6 +123,7 @@
     for (var i = 0; i < v.items.length; i++) { var q = du(v.items[i], now); if (q) { var it = v.items[i]; setTimeout(function () { carte(it, q); }, 4000); return; } }
   }
 
-  window.EFA_SUIVI = { planifier: planifier, liste: function () { return lire().items; }, bilan: bilan, BLOCAGES: BLOCAGES };
+  function point() { var v = lire(), now = Date.now(); for (var i = 0; i < v.items.length; i++) { var q = du(v.items[i], now); if (q) { var o = document.getElementById("efa-suivi"); if (o) o.remove(); carte(v.items[i], q); return true; } } return false; }
+  window.EFA_SUIVI = { planifier: planifier, point: point, liste: function () { return lire().items; }, bilan: bilan, BLOCAGES: BLOCAGES };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", verifier); else verifier();
 })();
