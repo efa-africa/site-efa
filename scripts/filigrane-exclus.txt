@@ -34,3 +34,4 @@ clone/assets/jeu-baisse-liquidite.webp
 clone/assets/jeu-baisse-liquidite-900.webp
 clone/assets/mon-efa-entree.webp
 clone/assets/mon-efa-entree-900.webp
+clone/assets/affiche-bourse-tour-f.webp
