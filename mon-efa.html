@@ -9,6 +9,7 @@
 <meta name="description" content="Votre espace EFA : votre prochain pas, vos ateliers, vos parcours, vos décisions suivies, vos fiches et vos certificats, au même endroit. Sans compte : tout reste sur votre téléphone.">
 <meta name="robots" content="noindex">
 <meta name="author" content="EFA · Éducation Financière Afrique">
+<link rel="preload" as="image" href="clone/assets/accueil-apprendre-ecole-3.webp" media="(min-width:721px)"><link rel="preload" as="image" href="clone/assets/accueil-apprendre-ecole-3-900.webp" media="(max-width:720px)">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
@@ -20,17 +21,28 @@ body{margin:0;background:var(--fond);color:var(--ink);font-family:var(--f-body);
 .me a{color:inherit}.me p{margin:0}
 .me h1,.me h2,.me h3{font-family:var(--f-display);font-weight:700;line-height:1.12;letter-spacing:-.005em;margin:0;text-wrap:balance;color:var(--nuit);text-transform:none}
 .me :focus-visible{outline:3px solid var(--bleu);outline-offset:3px}
-.me{max-width:1080px;margin:0 auto;padding:clamp(28px,5vw,56px) var(--gut-d) 56px var(--gut-g)}
+.me{max-width:1080px;margin:0 auto;padding:0 var(--gut-d) 56px var(--gut-g)}
 .me .surtitre{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--corail-texte);margin-bottom:12px}
-.me .tete h1{font-size:clamp(34px,5.6vw,60px)}
-.me .tete .chapo{margin-top:14px;max-width:62ch;font-size:clamp(17px,1.9vw,19px);color:var(--ink2)}
-.me .tete .obj{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:15.5px;color:var(--ink2)}
-.me .tete .obj b{color:var(--nuit)}
+/* entrée immersive */
+.me-ouv{position:relative;background:#0B1220;color:#fff;min-height:min(70vh,600px);display:grid;align-items:end;overflow:hidden}
+.me-ouv picture,.me-ouv img{position:absolute;inset:0;width:100%;height:100%}
+.me-ouv img{object-fit:cover;object-position:50% 38%;animation:me-zoom 18s ease-out both}
+@keyframes me-zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.me-ouv::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,18,32,.94) 0%,rgba(11,18,32,.72) 34%,rgba(11,18,32,.18) 68%,rgba(11,18,32,.05) 100%),linear-gradient(90deg,rgba(11,18,32,.55) 0%,rgba(11,18,32,0) 60%)}
+.me-ouv .in{position:relative;z-index:1;width:100%;max-width:1080px;margin:0 auto;padding:120px var(--gut-d) 96px var(--gut-g)}
+.me-ouv .ouv-k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F09680!important;margin:0 0 12px}
+.me-ouv h1{font-family:var(--f-display);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin:0;text-wrap:balance;color:#fff;font-size:clamp(36px,6vw,66px);max-width:16ch}
+.me-ouv .chapo{margin:14px 0 0;max-width:56ch;font-size:clamp(17px,1.9vw,20px);color:#E2E8F1}
+.me-ouv .obj{margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:15.5px;color:#C9D1DE}
+.me-ouv .obj b{color:#fff}.me-ouv .obj .lien{color:#fff;text-decoration-color:#F09680}
+.me>.pas:first-child{position:relative;z-index:2;margin-top:-64px}
+@media (max-width:720px){.me-ouv{min-height:72vh;min-height:72svh}.me-ouv .in{padding-bottom:84px}.me-ouv img{object-position:42% 40%}}
+@media (prefers-reduced-motion:reduce){.me-ouv img{animation:none}}
 .me .pastille{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:var(--bleu-pale);color:var(--bleu);white-space:nowrap}
 .me .pastille.ok{background:#E3F5EC;color:#156B41}.me .pastille.cours{background:#FEF4DF;color:#7A5200}.me .pastille.corail{background:var(--corail);color:#fff}
 .me .lien{font-weight:700;text-decoration:underline;text-decoration-color:var(--corail);text-decoration-thickness:2px;text-underline-offset:5px;background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--nuit);cursor:pointer}
 /* prochain pas : un aplat plein */
-.me .pas{margin-top:28px;background:var(--corail);color:#fff;border-radius:18px;padding:clamp(22px,3.4vw,34px);display:grid;gap:14px}
+.me .pas{margin-top:28px;box-shadow:0 18px 40px rgba(11,18,32,.18);background:var(--corail);color:#fff;border-radius:18px;padding:clamp(22px,3.4vw,34px);display:grid;gap:14px}
 .me .pas .k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#FFE2DA}
 .me .pas h2{color:#fff;font-size:clamp(24px,3.4vw,36px);max-width:26ch}
 .me .pas p{color:#FFEFEA;max-width:60ch}
@@ -69,13 +81,16 @@ body{margin:0;background:var(--fond);color:var(--ink);font-family:var(--f-body);
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · où j’en suis</a><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <header data-v1-cache class="top"></header>
-<main class="me" id="mon-efa" data-garde>
-  <div class="tete">
-    <p class="surtitre">Mon EFA</p>
+<section class="me-ouv" data-garde aria-labelledby="titre">
+  <picture><source media="(max-width:720px)" srcset="clone/assets/accueil-apprendre-ecole-3-900.webp"><img src="clone/assets/accueil-apprendre-ecole-3.webp" alt="" width="1600" height="900" fetchpriority="high"></picture>
+  <div class="in">
+    <p class="ouv-k">Mon EFA</p>
     <h1 id="titre">Voici où vous en êtes.</h1>
     <p class="chapo">Vous n’avez pas besoin de tout faire aujourd’hui. Votre prochain pas, ce que vous avez commencé et ce que vous avez gardé, au même endroit.</p>
     <p class="obj" id="objectif" hidden></p>
   </div>
+</section>
+<main class="me" id="mon-efa" data-garde>
 
   <section class="pas" id="pas" aria-labelledby="pas-t">
     <p class="k">Mon prochain pas</p>
