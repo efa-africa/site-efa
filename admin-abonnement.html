@@ -67,7 +67,7 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 <h2>Achat à l’unité · code d’un atelier</h2>
 <p class="note">Après réception du paiement (Orange Money ou Wave), créez le code de l’atelier acheté et envoyez-le sur WhatsApp. Il ouvre cet atelier seul, sans date de fin.</p>
 <form id="f-unite" class="carte" style="padding:0">
-<label>Atelier<select name="at"><option value="economie-pour-investir">Comprendre l’économie pour mieux investir · 5 000 F</option><option value="retraite-droits">Préparer ma retraite : droits, besoins et décisions · 5 000 F</option></select></label>
+<label>Atelier<select name="at"><option value="economie-pour-investir">Comprendre l’économie pour mieux investir · 5 000 F</option><option value="retraite-droits">Préparer ma retraite : droits, besoins et décisions · 5 000 F</option><option value="revenu-fixe">Investir dans les placements à revenu fixe · 5 000 F</option><option value="strategie-investissement">Construire sa stratégie d’investissement · 5 000 F</option></select></label>
 <button type="submit">Créer le code</button>
 </form>
 <div id="r-unite"></div>
@@ -152,7 +152,7 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 <script src="clone/ateliers-data.js?v=20261117a"></script>
 <script>
 (function(){ var f=document.getElementById('f-unite'); if(!f) return;
-  var PAGES={'economie-pour-investir':['atelier-economie-pour-investir.html','Comprendre l’économie pour mieux investir'],'retraite-droits':['atelier-retraite-droits.html','Préparer ma retraite : droits, besoins et décisions']};
+  var PAGES={'economie-pour-investir':['atelier-economie-pour-investir.html','Comprendre l’économie pour mieux investir'],'retraite-droits':['atelier-retraite-droits.html','Préparer ma retraite : droits, besoins et décisions'],'revenu-fixe':['atelier-revenu-fixe.html','Investir dans les placements à revenu fixe'],'strategie-investissement':['atelier-strategie-investissement.html','Construire sa stratégie d’investissement']};
   f.addEventListener('submit',function(e){ e.preventDefault(); var id=f.at.value, c=window.EFA_ATELIERS.codeUnite(id), p=PAGES[id];
     var msg='Merci pour votre paiement. Votre code pour l’atelier « '+p[1]+' » : '+c+'\nOuvrez https://efa.africa/'+p[0]+' puis « J’ai un code d’accès ». L’atelier reste ensuite dans votre espace Mon EFA.';
     document.getElementById('r-unite').innerHTML='<p style="font:800 24px/1.2 monospace;letter-spacing:.06em;margin:12px 0">'+c+'</p><p class="note">Message à envoyer :</p><textarea readonly rows="4" style="width:100%;box-sizing:border-box;font:inherit">'+msg.replace(/</g,'&lt;')+'</textarea><p><a class="petit" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(msg)+'">Ouvrir WhatsApp avec ce message</a></p>'; });

@@ -38,7 +38,9 @@
     'atelier-grandir-avec-le-credit': ['grandir-avec-le-credit', 30000, 'Grandir avec le crédit'],
     /* « unite » : réservé aux abonnés, ou acheté à l'unité (code EFAU-…) ; pas d'ouverture par crédits */
     'atelier-economie-pour-investir': ['economie-pour-investir', 5000, 'Comprendre l’économie pour mieux investir', 0, 1, 'unite'],
-    'atelier-retraite-droits': ['retraite-droits', 5000, 'Préparer ma retraite : droits, besoins et décisions', 0, 1, 'unite']
+    'atelier-retraite-droits': ['retraite-droits', 5000, 'Préparer ma retraite : droits, besoins et décisions', 0, 1, 'unite'],
+    'atelier-revenu-fixe': ['revenu-fixe', 5000, 'Investir dans les placements à revenu fixe', 0, 1, 'unite'],
+    'atelier-strategie-investissement': ['strategie-investissement', 5000, 'Construire sa stratégie d’investissement', 0, 1, 'unite']
   };
   var nom = (location.pathname.split('/').pop() || '').replace(/\.html$/, ''), A = P[nom];
   window.EFA_VERROU = { pages: P };
