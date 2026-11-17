@@ -52,7 +52,8 @@
     'atelier-etats-financiers': ['etats-financiers', 5000, 'Lire les états financiers d’une entreprise cotée', 0, 1, 'unite'],
     'atelier-finances-personnelles': ['finances-personnelles', 5000, 'Maîtriser ses finances personnelles', 0, 1, 'unite'],
     'atelier-investir-dividendes': ['investir-dividendes', 5000, 'Investir pour les dividendes', 0, 1, 'unite'],
-    'atelier-budget-zero': ['budget-zero', 5000, 'Mon budget à zéro', 0, 1, 'unite']
+    'atelier-budget-zero': ['budget-zero', 5000, 'Mon budget à zéro', 0, 1, 'unite'],
+    'atelier-tontine-bourse': ['tontine-bourse', 5000, 'Ma tontine devient un club d’investissement', 0, 1, 'unite']
   };
   var nom = (location.pathname.split('/').pop() || '').replace(/\.html$/, ''), A = P[nom];
   window.EFA_VERROU = { pages: P };
