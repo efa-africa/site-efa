@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html data-clone data-clone-coquille lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1220">
+<title>Mon budget à zéro · l’outil EFA pour donner une mission à chaque franc</title>
+<link rel="canonical" href="https://efa.africa/outil-budget">
+<meta name="description" content="Outil gratuit : entrez ce qui entre et ce qui sort, en FCFA. Chaque franc reçoit une mission, vous voyez la différence, les repères EFA, et vous téléchargez votre budget et vos orientations en PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFFFFF;color:#2A3142;font-family:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bz{max-width:980px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 120px max(16px,env(safe-area-inset-left,0px))}
+.bz h1,.bz h2,.bz h3{font-family:"Libre Baskerville",Baskerville,Georgia,serif;font-weight:700;line-height:1.15;margin:0;color:#0B1220;text-wrap:balance;text-transform:none}
+.bz p{margin:0}.bz a{color:#1B71B2}
+.bz :focus-visible{outline:3px solid #1B71B2;outline-offset:3px}
+.k{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B8341A;margin-bottom:10px!important}
+.bz h1{font-size:clamp(32px,5.4vw,52px)}
+.chapo{font-size:clamp(17px,2vw,19px);color:#4E5566;max-width:62ch;margin-top:12px!important}
+.etape{margin-top:36px}
+.etape h2{font-size:clamp(24px,3.2vw,32px)}
+.etape .sous{color:#4E5566;margin-top:6px!important;max-width:62ch}
+.grp{margin-top:18px;background:#EEF5FC;border-radius:14px;padding:18px}
+.grp h3{font-size:19px}
+.grp .gd{font-size:15px;color:#5F6676;margin-top:4px!important}
+.lignes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px 14px;margin-top:12px}
+.li{display:flex;flex-direction:column;gap:4px;min-width:0}
+.li label{font-weight:700;font-size:15.5px;color:#0B1220}
+.li small{font-size:13.5px;color:#5F6676}
+.li .in{display:flex;align-items:center;background:#fff;border-radius:8px;padding:0 12px;min-height:46px}
+.li input{flex:1;min-width:0;border:0!important;box-shadow:none!important;border-radius:0!important;background:transparent!important;font:700 17px/1.2 "Source Sans 3",system-ui,sans-serif;color:#0B1220;padding:10px 0!important;outline:none;margin:0!important;height:auto!important}
+.li .in:focus-within{box-shadow:0 0 0 3px #1B71B2}
+html[data-clone] .bz .li .in input,html[data-clone] .bz .li .in input:hover,html[data-clone] .bz .li .in input:focus{border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;padding:10px 0!important;min-height:0!important}
+.li .in span{font-weight:700;color:#5F6676;font-size:14px}
+.li .rp{font-size:13px;font-weight:700}
+.rp.ok{color:#1E8E57}.rp.ko{color:#B3261E}.rp.ne{color:#5F6676}
+.tot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-weight:800;color:#0B1220}
+.barre{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#0B1220;color:#fff;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.barre .in2{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px 18px;flex-wrap:wrap}
+.barre b{font-family:"Libre Baskerville",Georgia,serif;font-size:22px}
+.barre small{display:block;font-size:13px;color:#C9D1DE;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.barre .msg{font-size:15px;color:#C9D1DE;flex:1 1 260px;min-width:0}
+@media (max-width:560px){.barre .msg{display:none}.barre .in2{flex-wrap:nowrap}}
+.barre.rouge b{color:#F09680}.barre.vert b{color:#3CCB7F}.barre.zero b{color:#6DB8F2}
+.bouton{display:inline-flex;align-items:center;justify-content:center;font:800 16px/1.2 "Source Sans 3",system-ui,sans-serif;min-height:46px;padding:12px 22px;border-radius:8px;border:0;background:#DA3C1B;color:#fff;cursor:pointer;text-decoration:none}
+.bouton.b2{background:#EEF5FC;color:#0B1220}
+.ori{margin-top:16px;display:grid;gap:10px}
+.or{background:#EEF5FC;border-radius:14px;padding:16px 18px}
+.or.alerte{background:#FDEBE6}.or.bien{background:#E3F4EA}
+.or b{display:block;color:#0B1220;font-size:17px}
+.or p{color:#2A3142;margin-top:4px!important}
+.or a{font-weight:700}
+.rep{width:100%;border-collapse:collapse;margin-top:14px;font-size:15.5px}
+.rep th,.rep td{text-align:left;padding:8px 6px;border-bottom:1px solid #DCE8ED}
+.rep td.n{text-align:right;font-weight:700;white-space:nowrap}
+.tw{overflow-x:auto}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.note{font-size:14px;color:#5F6676;margin-top:14px!important}
+.sec4{margin-top:14px;background:#0B1220;color:#fff;border-radius:14px;padding:18px}
+.sec4 h3{color:#fff!important;font-size:19px}.sec4 p{color:#C9D1DE;margin-top:6px!important}
+.sec4 ol{margin:10px 0 0;padding-left:20px;color:#fff;font-weight:700}
+</style>
+<link rel="stylesheet" href="clone/habillage.css?v=20261117a">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · où j’en suis</a><a href="ateliers.html" style="grid-column:1/-1;background:#DA3C1B;color:#fff!important">Tous les ateliers, par thème</a><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a class="menu-sous" href="ateliers.html">Tous les ateliers, par thème <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
+<header data-v1-cache class="top"></header>
+<main class="bz" id="budget" data-garde>
+  <p class="k">Outil EFA · gratuit · budget à zéro</p>
+  <h1>Chaque franc reçoit une mission, avant le début du mois.</h1>
+  <p class="chapo">Entrez ce qui entre, puis ce qui sort. Quand la différence arrive à zéro, chaque franc a un travail. À la fin, téléchargez votre budget et vos orientations en PDF. Vos chiffres restent sur votre téléphone.</p>
+
+  <section class="etape" aria-labelledby="e1"><h2 id="e1">1. Ce qui entre ce mois-ci</h2><p class="sous">Partez de ce que vous recevez vraiment, après retenues : le salaire net, pas le brut.</p>
+    <div class="grp"><div class="lignes" id="entrees"></div><p class="tot"><span>Total de ce qui entre</span><span id="t-in">0 F</span></p></div>
+  </section>
+
+  <section class="etape" aria-labelledby="e2"><h2 id="e2">2. Ce qui sort : donnez une mission à chaque franc</h2><p class="sous">Commencez par vous payer vous-même, puis les essentiels. Une ligne inconnue ? Estimez-la, vous la corrigerez le mois prochain.</p>
+    <div id="groupes"></div>
+  </section>
+
+  <section class="etape" aria-labelledby="e3" id="resultat"><h2 id="e3">3. Vos orientations</h2><p class="sous">Des repères, pas des règles : votre situation compte. Ils s’affichent dès que vos chiffres sont entrés.</p>
+    <div class="ori" id="ori"></div>
+    <div class="sec4"><h3>Quand l’argent manque, protégez d’abord quatre choses</h3><p>Avant les dettes, avant les envies : ce qui vous permet de vivre et de continuer à gagner votre vie.</p><ol><li>Manger</li><li>Se loger, avec l’eau et l’électricité</li><li>Se déplacer pour travailler</li><li>Se soigner</li></ol></div>
+    <div class="tw"><table class="rep" id="rep"><thead><tr><th>Poste</th><th>Votre part</th><th>Repère EFA</th></tr></thead><tbody></tbody></table></div>
+    <div class="acts"><button type="button" class="bouton" id="pdf">Télécharger mon budget en PDF</button><button type="button" class="bouton b2" id="raz">Tout effacer</button></div>
+    <p class="note">Éducation financière, pas conseil en placement. Les repères sont des points de comparaison, à adapter à votre situation.</p>
+    <p class="note">Pour comprendre la méthode pas à pas : <a href="atelier-budget-zero.html">l’atelier « Mon budget à zéro »</a>.</p>
+  </section>
+</main>
+<div class="barre zero" id="barre" data-garde role="status" aria-live="polite"><div class="in2"><div><small>Différence</small><b id="diff">0 F</b></div><p class="msg" id="msg">Entrez ce qui entre, puis donnez une mission à chaque franc.</p><a class="bouton" href="#resultat" style="min-height:40px;padding:8px 16px">Mes orientations</a></div></div>
+<script src="lib/jspdf-2.5.1.umd.min.js" defer></script>
+<script>
+(function(){
+var CLE='efa_budget_zero_v1';
+var ENTREES=[['in_sal','Salaire net','après retenues'],['in_act','Revenus d’activité','commerce, missions, ventes'],['in_aut','Autres rentrées','loyers perçus, envois reçus, pension']];
+/* [id, libellé, aide, repère min %, repère max %, texte repère] */
+var GROUPES=[
+ ['moi','Moi d’abord','Ce que vous vous payez avant tout le reste.',[['s_res','Réserve pour les imprévus','jusqu’à 3 à 6 mois de dépenses essentielles'],['s_proj','Épargne pour un projet','formation, équipement, logement'],['s_inv','Investissement, retraite','à long terme']]],
+ ['ess','Les essentiels','Ce qui vous permet de vivre et de gagner votre vie.',[['e_log','Logement','loyer ou crédit, charges'],['e_nour','Nourriture','marché, courses, repas'],['e_trans','Transport','trajets, carburant, entretien'],['e_eau','Eau, électricité, gaz',''],['e_sante','Santé','consultations, médicaments, mutuelle'],['e_scol','Scolarité des enfants','frais, fournitures, transport scolaire']]],
+ ['eng','Engagements','Ce que vous vous êtes engagé à payer.',[['g_det','Remboursements de dettes','toutes vos mensualités'],['g_ton','Tontine','votre cotisation du mois'],['g_ass','Assurances','auto, habitation, vie']]],
+ ['fam','Famille et solidarité','Une enveloppe décidée à l’avance, pas au fil des demandes.',[['f_aide','Aide aux proches','parents, frères et sœurs, enfants'],['f_dons','Dons et contributions','événements, associations, lieu de culte']]],
+ ['vie','Vie courante','Ce qui rend la vie agréable, dans une limite choisie.',[['v_tel','Téléphone, internet, frais mobile money',''],['v_hab','Habillement, coiffure, soins',''],['v_loi','Loisirs et sorties',''],['v_div','Divers et imprévus du mois','']]]
+];
+var D={}; try{ D=JSON.parse(localStorage.getItem(CLE)||'{}')||{}; }catch(e){ D={}; }
+function N(v){ v=String(v==null?'':v).replace(/[\s  ]/g,'').replace(',','.'); var n=parseFloat(v); return isNaN(n)||n<0?0:Math.round(n); }
+function F(n){ var s=Math.round(Math.abs(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' '); return (n<0?'−':'')+s+' F'; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function champ(c){ return '<div class="li"><label for="'+c[0]+'">'+esc(c[1])+'</label>'+(c[2]?'<small>'+esc(c[2])+'</small>':'')+'<div class="in"><input id="'+c[0]+'" inputmode="numeric" autocomplete="off" placeholder="0" value="'+(D[c[0]]?esc(D[c[0]]):'')+'"><span>F</span></div><span class="rp" id="rp-'+c[0]+'"></span></div>'; }
+document.getElementById('entrees').innerHTML=ENTREES.map(champ).join('');
+document.getElementById('groupes').innerHTML=GROUPES.map(function(g){ return '<div class="grp" id="g-'+g[0]+'"><h3>'+esc(g[1])+'</h3><p class="gd">'+esc(g[2])+'</p><div class="lignes">'+g[3].map(champ).join('')+'</div><p class="tot"><span>Total</span><span id="t-'+g[0]+'">0 F</span></p></div>'; }).join('');
+function somme(L){ return L.reduce(function(a,c){ return a+N(D[c[0]]); },0); }
+function calc(){
+  var R={rev:somme(ENTREES)}; GROUPES.forEach(function(g){ R[g[0]]=somme(g[3]); });
+  R.sorties=GROUPES.reduce(function(a,g){return a+R[g[0]];},0); R.diff=R.rev-R.sorties;
+  R.log=N(D.e_log); R.det=N(D.g_det); R.aide=N(D.f_aide); R.loisirs=N(D.v_loi)+N(D.v_div); R.res=N(D.s_res); R.trans=N(D.e_trans);
+  R.essMois=R.ess; R.cible=R.ess*3; return R;
+}
+function pc(x,r){ return r?Math.round(x/r*100):0; }
+function REPERES(R){ return [
+  ['Moi d’abord (épargne)',R.moi,'au moins 10 %',function(p){return p>=10;}],
+  ['Logement',R.log,'25 % ou moins',function(p){return p<=25;}],
+  ['Transport',R.trans,'15 % ou moins',function(p){return p<=15;}],
+  ['Remboursements de dettes',R.det,'moins d’un tiers (33 %)',function(p){return p<33;}],
+  ['Aide aux proches',R.aide,'une enveloppe fixe, souvent 10 à 15 %',function(p){return p<=15;}],
+  ['Loisirs et divers',R.loisirs,'10 % ou moins',function(p){return p<=10;}]
+]; }
+function orientations(R){
+  var O=[], r=R.rev;
+  if(!r) return [['','Commencez par ce qui entre','Entrez votre salaire net et vos autres rentrées : tout le reste se calcule à partir de là.']];
+  if(R.diff<0) O.push(['alerte','Vous prévoyez '+F(-R.diff)+' de plus que ce qui entre','Réduisez d’abord la vie courante et les loisirs, puis revoyez les engagements. Si les dettes pèsent, l’atelier <a href="atelier-sortir-dettes.html">Sortir de mes dettes</a> vous aide à les classer et à renégocier.']);
+  else if(R.diff>0) O.push(['',F(R.diff)+' n’ont pas encore de mission','Donnez-leur un travail avant le début du mois : compléter la réserve d’abord, puis rembourser plus vite une dette chère, puis un projet daté. Sinon, ils disparaîtront en petits achats.']);
+  else O.push(['bien','Budget à zéro : chaque franc a une mission','Il reste à le tenir. Faites le point 20 minutes chaque mois et ajustez les lignes qui ont bougé.']);
+  var pe=pc(R.moi,r);
+  if(pe<10) O.push(['alerte','Vous vous payez '+pe+' % de ce qui entre','Visez au moins 10 %, même en commençant petit : '+F(Math.round(r*0.05/1000)*1000)+' par mois, mis de côté dès que l’argent arrive, c’est un début.']);
+  else O.push(['bien','Vous vous payez '+pe+' % de ce qui entre','C’est le bon réflexe : votre épargne passe avant les dépenses, pas après.']);
+  if(R.cible) O.push([R.res?'':'alerte','Votre réserve cible : '+F(R.cible),'Trois mois de dépenses essentielles ('+F(R.ess)+' par mois). '+(R.res?'À '+F(R.res)+' par mois, vous l’atteindrez en environ '+Math.ceil(R.cible/R.res)+' mois.':'Aucune ligne « réserve » pour l’instant : c’est la priorité, avant d’investir. Voir <a href="atelier-reserve-securite.html">Ma réserve de sécurité</a>.')]);
+  var pl=pc(R.log,r); if(pl>30) O.push(['alerte','Le logement prend '+pl+' % de ce qui entre','Au-delà de 25 à 30 %, il reste peu pour le reste. À la prochaine occasion (fin de bail, déménagement), c’est le levier le plus puissant.']);
+  var pd=pc(R.det,r); if(pd>=33) O.push(['alerte','Vos dettes prennent '+pd+' % de ce qui entre','Au-delà d’un tiers, chaque imprévu peut créer une nouvelle dette. Ne prenez pas de nouveau crédit ; voyez <a href="atelier-eviter-le-surendettement.html">Éviter le surendettement</a>.']);
+  else if(R.det) O.push(['','Vos dettes prennent '+pd+' % de ce qui entre','En dessous d’un tiers. Remboursez en priorité la plus chère, et n’ajoutez pas de dette non prévue.']);
+  var pa=pc(R.aide,r); if(pa>15) O.push(['alerte','L’aide aux proches prend '+pa+' % de ce qui entre','Fixez une enveloppe famille au début du mois et tenez-la : au-delà, dites « ce mois-ci, c’est déjà donné ». Voir <a href="atelier-preter-ou-donner.html">Prêter à un proche, ou donner ?</a>']);
+  if(N(D.g_ton)) O.push(['','Votre tontine : '+F(N(D.g_ton))+' par mois','C’est une sortie réelle. Donnez dès maintenant une destination à votre tour, et ne le comptez pas deux fois.']);
+  var pli=pc(R.loisirs,r); if(pli>10) O.push(['','Loisirs et divers : '+pli+' % de ce qui entre','C’est la ligne la plus facile à ajuster si la différence est négative ou si la réserve n’avance pas.']);
+  return O;
+}
+var TOUS=ENTREES.concat.apply(ENTREES,GROUPES.map(function(g){return g[3];}));
+function rendre(){
+  var R=calc(), r=R.rev;
+  document.getElementById('t-in').textContent=F(r);
+  GROUPES.forEach(function(g){ document.getElementById('t-'+g[0]).textContent=F(R[g[0]])+(r?' · '+pc(R[g[0]],r)+' %':''); });
+  TOUS.forEach(function(c){ var e=document.getElementById('rp-'+c[0]); if(!e) return; var v=N(D[c[0]]); e.textContent=(r&&v&&c[0].indexOf('in_')!==0)?pc(v,r)+' % de ce qui entre':''; e.className='rp ne'; });
+  var b=document.getElementById('barre'), m=document.getElementById('msg');
+  document.getElementById('diff').textContent=F(R.diff);
+  b.className='barre '+(R.diff<0?'rouge':R.diff>0?'vert':'zero');
+  m.textContent=!r?'Entrez ce qui entre, puis donnez une mission à chaque franc.':R.diff<0?'Vous prévoyez plus que ce qui entre : réduisez une ligne.':R.diff>0?'Ces francs attendent encore une mission.':'Chaque franc a une mission.';
+  document.getElementById('ori').innerHTML=orientations(R).map(function(o){ return '<div class="or '+o[0]+'"><b>'+esc(o[1])+'</b><p>'+o[2]+'</p></div>'; }).join('');
+  document.querySelector('#rep tbody').innerHTML=REPERES(R).map(function(x){ var p=pc(x[1],r), ok=x[3](p); return '<tr><td>'+esc(x[0])+'</td><td class="n" style="color:'+(!r?'#5F6676':ok?'#1E8E57':'#B3261E')+'">'+(r?p+' %':'–')+'</td><td>'+esc(x[2])+'</td></tr>'; }).join('');
+}
+document.addEventListener('input',function(ev){ var t=ev.target; if(!t.id||!document.getElementById('rp-'+t.id)) return; D[t.id]=t.value; try{ localStorage.setItem(CLE,JSON.stringify(D)); }catch(e){} rendre(); });
+document.getElementById('raz').onclick=function(){ D={}; try{ localStorage.removeItem(CLE); }catch(e){} TOUS.forEach(function(c){ var i=document.getElementById(c[0]); if(i) i.value=''; }); rendre(); };
+/* ---------- PDF ---------- */
+function pdfTxt(s){ return String(s).replace(/<[^>]+>/g,'').replace(/[’‘]/g,"'").replace(/[  ]/g,' ').replace(/−/g,'-').replace(/–|—/g,'-').replace(/…/g,'...'); }
+document.getElementById('pdf').onclick=function(){
+  var J=window.jspdf&&window.jspdf.jsPDF; if(!J){ alertTxt('Le générateur de PDF se charge encore. Réessayez dans quelques secondes.'); return; }
+  var R=calc(); if(!R.rev){ alertTxt('Entrez d’abord ce qui entre ce mois-ci.'); return; }
+  var doc=new J({unit:'mm',format:'a4'}), W=210, M=16, y=0, NUIT=[11,18,32], COR=[218,60,27], BLEU=[27,113,178], GRIS=[95,102,118], ENC=[42,49,66];
+  var dt=new Date(), date=dt.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  function bandeau(){ doc.setFillColor.apply(doc,NUIT); doc.rect(0,0,W,26,'F'); doc.setFont('times','bold'); doc.setFontSize(22); doc.setTextColor(255,255,255); doc.text('efa',M,16); doc.setTextColor.apply(doc,COR); doc.text('.',M+doc.getTextWidth('efa'),16); doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(201,209,222); doc.text(pdfTxt('Éducation Financière Afrique · efa.africa'),W-M,16,{align:'right'}); }
+  function pied(n){ doc.setFontSize(8); doc.setTextColor.apply(doc,GRIS); doc.text(pdfTxt('Éducation financière, pas conseil en placement. Repères indicatifs, à adapter à votre situation.  ·  Page '+n),M,289); }
+  function titre(t){ doc.setFont('times','bold'); doc.setFontSize(14); doc.setTextColor.apply(doc,NUIT); doc.text(pdfTxt(t),M,y); y+=7; }
+  function para(t,taille,coul){ doc.setFont('helvetica','normal'); doc.setFontSize(taille||10); doc.setTextColor.apply(doc,coul||ENC); var L=doc.splitTextToSize(pdfTxt(t),W-2*M); doc.text(L,M,y); y+=L.length*(taille||10)*0.42+2; }
+  bandeau(); y=40;
+  doc.setFont('times','bold'); doc.setFontSize(22); doc.setTextColor.apply(doc,NUIT); doc.text(pdfTxt('Mon budget à zéro'),M,y); y+=7;
+  doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor.apply(doc,GRIS); doc.text(pdfTxt('Établi le '+date+'. Chaque franc reçoit une mission avant le début du mois.'),M,y); y+=10;
+  /* chiffres clés */
+  var cles=[['Ce qui entre',F(R.rev)],['Ce qui sort',F(R.sorties)],['Différence',F(R.diff)]];
+  cles.forEach(function(c,i){ var x=M+i*((W-2*M)/3); doc.setFillColor(238,245,252); doc.roundedRect(x,y,(W-2*M)/3-4,20,3,3,'F'); doc.setFontSize(8); doc.setTextColor.apply(doc,GRIS); doc.text(pdfTxt(c[0].toUpperCase()),x+4,y+7); doc.setFont('helvetica','bold'); doc.setFontSize(14); if(i===2) doc.setTextColor.apply(doc,R.diff<0?COR:R.diff>0?[30,142,87]:BLEU); else doc.setTextColor.apply(doc,NUIT); doc.text(pdfTxt(c[1]),x+4,y+15); doc.setFont('helvetica','normal'); });
+  y+=28;
+  titre('Ma répartition');
+  doc.setFontSize(9.5);
+  GROUPES.forEach(function(g){
+    if(y>255){ pied(doc.getNumberOfPages()); doc.addPage(); bandeau(); y=38; }
+    doc.setFillColor.apply(doc,NUIT); doc.rect(M,y-4,W-2*M,6.5,'F'); doc.setFont('helvetica','bold'); doc.setTextColor(255,255,255); doc.text(pdfTxt(g[1]),M+2,y); doc.text(pdfTxt(F(R[g[0]])+'  ·  '+pc(R[g[0]],R.rev)+' %'),W-M-2,y,{align:'right'}); y+=6.5;
+    doc.setFont('helvetica','normal'); doc.setTextColor.apply(doc,ENC);
+    g[3].forEach(function(c){ var v=N(D[c[0]]); if(!v) return; doc.text(pdfTxt(c[1]),M+4,y); doc.text(pdfTxt(F(v)),W-M-2,y,{align:'right'}); doc.setDrawColor(220,232,237); doc.line(M,y+1.8,W-M,y+1.8); y+=5.6; });
+    y+=2.5;
+  });
+  pied(doc.getNumberOfPages()); doc.addPage(); bandeau(); y=40;
+  titre('Mes orientations');
+  orientations(R).forEach(function(o){
+    if(y>262){ pied(doc.getNumberOfPages()); doc.addPage(); bandeau(); y=38; }
+    var c=o[0]==='alerte'?COR:o[0]==='bien'?[30,142,87]:BLEU; doc.setFillColor.apply(doc,c); doc.circle(M+1.2,y-1.3,1.2,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(10.5); doc.setTextColor.apply(doc,NUIT); var L=doc.splitTextToSize(pdfTxt(o[1]),W-2*M-5); doc.text(L,M+4,y); y+=L.length*4.6;
+    doc.setFont('helvetica','normal'); doc.setFontSize(9.5); doc.setTextColor.apply(doc,ENC); var P=doc.splitTextToSize(pdfTxt(o[2]),W-2*M-5); doc.text(P,M+4,y); y+=P.length*4.1+4;
+  });
+  y+=2; titre('Mes repères');
+  doc.setFontSize(9.5);
+  REPERES(R).forEach(function(x){ var p=pc(x[1],R.rev), ok=x[3](p); doc.setFont('helvetica','normal'); doc.setTextColor.apply(doc,ENC); doc.text(pdfTxt(x[0]),M,y); doc.setFont('helvetica','bold'); doc.setTextColor.apply(doc,ok?[30,142,87]:COR); doc.text(p+' %',M+78,y); doc.setFont('helvetica','normal'); doc.setTextColor.apply(doc,GRIS); doc.text(pdfTxt('repère : '+x[2]),M+96,y); y+=5.6; });
+  y+=4; titre('Quand l’argent manque, je protège d’abord');
+  para('1. Manger   2. Me loger, avec l’eau et l’électricité   3. Me déplacer pour travailler   4. Me soigner',10);
+  y+=2; titre('Mes trois prochaines actions');
+  var A=[]; if(R.diff!==0) A.push(R.diff<0?'Réduire une ligne de vie courante jusqu’à revenir à zéro.':'Donner une mission aux '+F(R.diff)+' restants avant le début du mois.'); if(!R.res) A.push('Ouvrir une ligne « réserve », même petite, et la verser dès que l’argent arrive.'); else A.push('Verser la réserve dès que l’argent arrive, avant toute dépense.'); A.push('Fixer un rendez-vous de 20 minutes en fin de mois pour comparer prévu et réel.'); A=A.slice(0,3);
+  A.forEach(function(a,i){ para((i+1)+'.  '+a,10); });
+  y+=2; para('Pour aller plus loin : efa.africa/ateliers.html', 9, GRIS);
+  pied(doc.getNumberOfPages());
+  doc.save('mon-budget-efa-'+dt.toISOString().slice(0,10)+'.pdf');
+  try{ localStorage.setItem('efa_budget_zero_pdf',new Date().toISOString()); }catch(e){}
+};
+function alertTxt(t){ var o=document.getElementById('ori'); o.insertAdjacentHTML('afterbegin','<div class="or alerte"><b>'+esc(t)+'</b></div>'); o.scrollIntoView({behavior:'smooth',block:'start'}); }
+rendre();
+})();
+</script>
+<footer data-v1-cache class="efa-foot"></footer>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+<footer class="efa-foot clone-foot">
+  <div class="ef-in">
+    <div class="ef-top">
+      <div class="ef-brand">
+        <a class="ef-logo" href="index.html"><img src="logo-efa-96.png" alt="" width="40" height="40"><span>Éducation Financière Afrique</span></a>
+        <p class="ef-mis">EFA aide chacun à passer du <span class="mc">cercle</span>, l’argent qui tourne, à la <span class="ms">spirale</span>, l’argent qui reste.</p>
+        
+      </div>
+      <nav class="ef-cols ef-cols-5" aria-label="Plan du site">
+        <div><h2><a class="ef-h" href="index.html#benefices">Apprendre</a></h2><ul>
+          <li><a href="index.html#seul">J’apprends seul</a></li>
+          <li><a href="index.html#organisation">Nous apprenons ensemble</a></li>
+          <li><a href="musee.html">Le musée de l’économie</a></li>
+          <li><a href="outils.html">Outils et simulateurs</a></li>
+          <li><a href="diagnostic.html">Faire le point</a></li>
+          <li><a href="app/">L’appli EFA</a></li><li><a href="etudiants.html">Pass Étudiant</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-progresser">Être coaché</a></h2><ul>
+          <li><a href="ateliers.html">Tous les ateliers, par thème</a></li>
+          <li><a href="ateliers-elysee.html">Ateliers avec Élysée Johnson</a></li>
+          <li><a href="abonnement.html">efa<span style="color:#E44828">.</span> abonnement</a></li>
+          <li><a href="index.html#certificats">Certificats</a></li>
+          <li><a href="index.html#espaces">Cadres, patrimoine, dirigeants</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="index.html#pilier-agir">Se lancer</a></h2><ul>
+          <li><a href="generateur-de-projet.html">EFA Déclic</a></li><li><a href="projets-a-suivre.html">Projets à suivre</a></li>
+          <li><a href="index.html#marches">Investir à la Bourse (BRVM)</a></li>
+          <li><a href="marches.html">Marchés : la Bourse du jour</a></li><li><a href="sgi.html">Choisir sa SGI</a></li>
+          <li><a href="index.html#avant-de-signer">Les questions à poser</a></li>
+          <li><a href="index.html#solutions">D’autres acteurs, demain</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="news.html">Le média</a></h2><ul>
+          <li><a href="news.html">EFA News</a></li>
+          <li><a href="decryptage.html">Décryptage</a></li>
+          <li><a href="tribunes.html">La tribune d’Élysée Johnson</a></li>
+          <li><a href="index.html#etudes-prospective">Études et prospective</a></li>
+          <li><a href="africa-2075.html">Africa 2075</a></li>
+        </ul></div>
+        <div><h2><a class="ef-h" href="auteur.html#auteur">EFA</a></h2><ul>
+          <li><a href="auteur.html#auteur">EFA et son fondateur</a></li>
+          <li><a href="organisations.html">Pour les organisations</a></li>
+          <li><a href="rendez-vous.html">Contact</a></li>
+          <li><a href="lettre.html">La lettre du mardi</a></li>
+          <li><a href="podcast.html">Le podcast EFA</a></li>
+          <li><a href="https://chat.whatsapp.com/Dm1l569bAwlAa1honQiV3a" target="_blank" rel="noopener">EFA Community</a></li>
+        </ul>
+        <p class="ef-soc"><a href="https://www.tiktok.com/@efa.afrique" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/share/19sTpHPsGP/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@efaeducationfinanciereafrique" target="_blank" rel="noopener">YouTube</a> · <a href="https://educationfinanciereafrique.substack.com" target="_blank" rel="noopener">Substack</a></p></div>
+      </nav>
+    </div>
+    <div class="ef-bot">
+      <span>© 2026 EFA · Tous droits réservés</span>
+      <span>Éducation financière, pas conseil en placement. Aucun produit financier à vendre.</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mailto:newsletter@efa.africa">newsletter@efa.africa</a>
+    </div>
+  </div>
+</footer>
+<script src="clone/habillage.js?v=20261117a" defer></script>
+</body>
+</html>
