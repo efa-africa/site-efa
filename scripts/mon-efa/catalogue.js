@@ -7,7 +7,7 @@ const PAY = window.EFA_VERROU.pages, out = {};
 /* Images : celles du catalogue des ateliers, sinon une image proche du thème */
 window.EFA_ATELIERS = null; eval(fs.readFileSync('clone/ateliers-data.js', 'utf8'));
 const IMGS = {}; (window.EFA_ATELIERS.liste || []).forEach(a => { if (a.img) IMGS[a.id] = a.img.replace(/\?.*$/, ''); });
-const THEME = [[/economie/, 'etudes-donnees.webp'], [/retraite-droits/, 'atelier-retraite.webp'], [/revenu-fixe|strategie-investissement|premiere-action|fonds-commun/, 'marches-entree-r.webp'], [/bourse|brvm|portefeuille|societe|placer|placements|ordre/, 'marches-entree-r.webp'], [/credit|dette|surendettement|rembourser|banque|preter-moi/, 'q3.webp'],
+const THEME = [[/economie/, 'etudes-donnees.webp'], [/inflation/, 'coach-entreprise.webp'], [/retraite-droits/, 'atelier-retraite.webp'], [/revenu-fixe|strategie-investissement|premiere-action|fonds-commun|marche-emergent/, 'marches-entree-r.webp'], [/bourse|brvm|portefeuille|societe|placer|placements|ordre/, 'marches-entree-r.webp'], [/credit|dette|surendettement|rembourser|banque|preter-moi/, 'q3.webp'],
   [/activite|commerce|business|investir-activite|factures/, 'coach-entreprise.webp'], [/retraite|etudes-enfant|deces|assurance|transmettre/, 'coach-patrimoine.webp'],
   [/faux|rendement|reseau|confier|arnaque/, 'gen-arnaques.webp'], [/tontine/, 'tontine.webp'], [/microfinance|mobile/, 'simulation-r.webp'],
   [/lot|terrain|construire/, 'univers-terrain.webp'], [/budget|argent|grosse/, 'budget.webp'], [/reserve|epargne/, 'univers-epargne.webp'], [/preter|donner|famille/, 'benefice-collectif.webp']];
