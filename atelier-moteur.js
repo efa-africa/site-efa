@@ -18,6 +18,48 @@ function $(s,r){ return (r||document).querySelector(s); }
 function $$(s,r){ return [].slice.call((r||document).querySelectorAll(s)); }
 var H={F:F,N:N,esc:esc};
 
+/* ---------- Visuels : affiches photoréalistes entre les étapes (17 nov. 2026) ----------
+   Chaque atelier reçoit une série de photos selon son thème (ou A.images). Elles ouvrent l'atelier,
+   chaque chapitre, chaque fin de chapitre et la fiche. Photos du site, déjà marquées « efa. ». */
+var BANQ={
+ budget:'budget-entree coach-budget-3 atelier-enr-depenses voir-clair-mois outils-entree-budget budget-couple atelier-mobile-money pour-vous-calcul-2 accueil-porte-voir-clair atelier-grosse-somme-2',
+ credit:'theme-credit-900 accueil-avant-signer budget-couple atelier-preter-donner koffi-telephone outils-ou-passe-argent fiche-questions-sgi',
+ bourse:'theme-bourse-900 atelier-societe-cotee atelier-premier-ordre bourse-premiers-pas bourse-portefeuille-releve marches-entree simulation accueil-porte-bourse acteurs-marche-jour atelier-portefeuille-factures',
+ placer:'theme-placer atelier-placements univers-epargne accueil-investir-2 simulateurs-duo atelier-ipo-emprunts questions atelier-cadres-2',
+ activite:'theme-activite-900 coach-entreprise-2 benefice-entreprise valo-entreprise projet-textile projet-repas accueil-porte-declic',
+ famille:'atelier-retraite coach-patrimoine benefice-patrimoine atelier-pilier-famille accueil-apprendre-famille-3 atelier-diaspora appli-apprendre-famille',
+ terrain:'atelier-terrain univers-terrain accueil-investir-2 benefice-patrimoine',
+ arnaques:'theme-arnaques-900 gen-arnaques koffi-telephone enquete-tontine-2 accueil-avant-signer',
+ tontine:'tontine-bourse-900 atelier-club-investissement club-investissement etudes-terrain enquete-tontine-2 benefice-collectif'};
+var THEMES=[[/tontine|club/,'tontine'],[/arnaque|rendement-garanti|faux-conseiller|vente-en-reseau|avant-de-confier|crypto/,'arnaques'],
+ [/terrain|lot|acheter-construire/,'terrain'],[/retraite|deces|etudes-enfant|assurance|preter-ou-donner|famille/,'famille'],
+ [/activite|commerce|business|investir-activite|inflation/,'activite'],[/credit|dette|surendettement|rembourser|banque|microfinance/,'credit'],
+ [/bourse|action|societe|portefeuille|dividende|etats-financiers|marche|strategie|economie/,'bourse'],
+ [/placement|placer|revenu-fixe|fonds|court-terme|bons|epargner/,'placer']];
+function banque(){ if(A.images&&A.images.length) return A.images; var t='budget'; for(var i=0;i<THEMES.length;i++) if(THEMES[i][0].test(A.id)){ t=THEMES[i][1]; break; } return BANQ[t].split(' '); }
+var IMGS=banque();
+function img(i){ var n=IMGS[((i%IMGS.length)+IMGS.length)%IMGS.length]; return /\//.test(n)?n:'clone/assets/'+n+'.webp'; }
+function imgCh(i){ return img(i+1); }
+function affiche(src,k,t,p,cl){ return '<figure class="aff'+(cl?' '+cl:'')+'" data-garde><img src="'+src+'" alt="" loading="lazy" decoding="async"><figcaption>'+(k?'<span class="aff-k">'+k+'</span>':'')+(t?'<b>'+t+'</b>':'')+(p?'<span class="aff-p">'+p+'</span>':'')+'</figcaption></figure>'; }
+(function(){ if(document.getElementById('aff-css')) return; var st=document.createElement('style'); st.id='aff-css'; st.textContent=
+ '.aff{position:relative;margin:0 0 18px;border-radius:18px;overflow:hidden;background:#0B1220;aspect-ratio:16/9;max-height:440px;width:100%}'
++'.aff img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:50% 35%;animation:aff-zoom 14s ease-out both}'
++'@keyframes aff-zoom{from{transform:scale(1.07)}to{transform:scale(1)}}'
++'.aff::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,32,0) 30%,rgba(11,18,32,.55) 62%,rgba(11,18,32,.92) 100%)}'
++'.aff figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20px 22px;display:flex;flex-direction:column;gap:6px}'
++'.aff .aff-k{font:800 12px/1.3 "Source Sans 3",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F09680}'
++'.aff b{font:700 clamp(22px,3.4vw,34px)/1.15 "Libre Baskerville",Georgia,serif;color:#fff;text-wrap:balance}'
++'.aff .aff-p{font-size:16px;line-height:1.45;color:#E8EDF5;max-width:58ch}'
++'.aff.court{aspect-ratio:21/9;max-height:300px}.aff.court b{font-size:clamp(20px,2.6vw,26px)}'
++'@media(max-width:560px){.aff{aspect-ratio:4/5;max-height:none;border-radius:14px}.aff.court{aspect-ratio:4/3}.aff figcaption{padding:16px}}'
++'.ch5 .ch-im{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:10px;margin:0 0 12px;max-width:100%}'
++'.bravo{text-align:left}.bravo .acq-ok{display:flex;gap:12px;align-items:flex-start;background:#E3F5EC;border-radius:14px;padding:14px 16px;margin:4px 0 16px}'
++'.bravo .acq-ok i{flex:0 0 auto;width:32px;height:32px;border-radius:999px;background:#1E8E57;color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center}'
++'.bravo .acq-ok b{display:block;color:#0B1220;font-size:17px}.bravo .acq-ok span{color:#4E5566;font-size:15px}'
++'.bravo .pts{display:flex;gap:6px;margin:0 0 16px}.bravo .pts i{flex:1;height:6px;border-radius:99px;background:#DCE8ED}.bravo .pts i.ok{background:#1E8E57}.bravo .pts i.on{background:#DA3C1B}'
++'.bravo .acts{display:flex;flex-wrap:wrap;gap:10px}';
+ document.head.appendChild(st); })();
+
 /* ---------- Widgets génériques ---------- */
 function champ(c){ var v=D[c.id]==null?'':D[c.id];
   if(c.type==='area') return '<div class="ch" style="grid-column:1/-1"><label for="'+c.id+'">'+esc(c.l)+'</label><textarea id="'+c.id+'" placeholder="'+esc(c.ph||'')+'">'+esc(v)+'</textarea></div>';
@@ -45,9 +87,9 @@ function totFaits(){ return ETAPES.filter(function(x){return etat['s'+x.n];}).le
 function chActif(){ for(var i=0;i<P.length;i++) if(faitsCh(i)<totCh(i)) return i; return P.length-1; }
 var vue=D._vue||(totFaits()||D._pos?'chapitres':'accueil');
 function voir(v,k){ vue=v; if(k!=null) cur=Math.max(0,Math.min(NB-1,k)); D._vue=v; D._pos=cur; sv(); rendu(); var s=$('#scene'); if(s.getBoundingClientRect().top<0||v!=='ecran') s.scrollIntoView({behavior:'smooth',block:'start'}); }
-function aller(k){ if(k>=NB) return voir('fin'); if(k<0) return voir('chapitres'); var a=ETAPES[cur], b=ETAPES[k]; if(a&&b&&b.ph!==a.ph&&k>cur) return voir('chapitres',k); voir('ecran',k); }
+function aller(k){ if(k>=NB) return voir('fin'); if(k<0) return voir('chapitres'); var a=ETAPES[cur], b=ETAPES[k]; if(a&&b&&b.ph!==a.ph&&k>cur){ D._bravo=a.ph; return voir('bravo',k); } voir('ecran',k); }
 function carteCh(i){ var f=faitsCh(i), t=totCh(i), c=COUL[i%5], act=i===chActif()&&f<t, fin=f===t;
-  return '<div class="ch5'+(act?' actif':'')+(fin?' fini':'')+'" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div style="flex:1"><h3>'+esc(P[i].acq)+'</h3><small>Chapitre '+(i+1)+' · '+esc(P[i].t)+'</small><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+esc(P[i].desc)+'</p><div class="bar"><i style="width:'+(f/t*100)+'%"></i></div><small>'+f+' activité'+(f>1?'s':'')+' sur '+t+'</small><button type="button" data-ch="'+i+'">'+(fin?'Revoir le chapitre':f?'Continuer le chapitre':'Commencer le chapitre')+'</button></div></div>'; }
+  return '<div class="ch5'+(act?' actif':'')+(fin?' fini':'')+'" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div style="flex:1;min-width:0"><img class="ch-im" src="'+imgCh(i)+'" alt="" loading="lazy" decoding="async"><h3>'+esc(P[i].acq)+'</h3><small>Chapitre '+(i+1)+' · '+esc(P[i].t)+'</small><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+esc(P[i].desc)+'</p><div class="bar"><i style="width:'+(f/t*100)+'%"></i></div><small>'+f+' activité'+(f>1?'s':'')+' sur '+t+'</small><button type="button" data-ch="'+i+'">'+(fin?'Revoir le chapitre':f?'Continuer le chapitre':'Commencer le chapitre')+'</button></div></div>'; }
 
 function ppBloque(){ var V=window.EFA_VERROU; if(!V||!V.exiger||V.libre) return false; var n=V.apercu||0; return (vue==='ecran'&&ETAPES[cur]&&ETAPES[cur].ph>=n)||vue==='fin'; }
 if(window.EFA_VERROU) window.EFA_VERROU.retour=function(){ voir('chapitres'); };
@@ -55,10 +97,16 @@ function rendu(){ if(ppBloque()) window.EFA_VERROU.exiger();
   var z=$('#scene'); document.querySelector('.pp-couv').classList.toggle('court',vue!=='accueil');
   $('#pp-h1').textContent=vue==='accueil'?A.h1:A.titre;
   z.style.cssText='';
-  if(vue==='accueil'){ z.innerHTML='<div class="ec-anim"><p class="vue-t">Ce que vous saurez faire</p><p class="vue-p">'+P.length+' acquis concrets, un chapitre chacun.</p><div class="acq">'+P.map(function(ph,i){ var c=COUL[i%5]; return '<div class="ch5" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div><h3>'+esc(ph.acq)+'</h3><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+esc(ph.desc)+'</p></div></div>'; }).join('')+'</div><button type="button" class="cta" id="go2">Commencer par une question</button></div>'; $('#go2').onclick=function(){ voir('question'); }; return; }
+  if(vue==='accueil'){ z.innerHTML='<div class="ec-anim">'+affiche(img(0),'Atelier EFA · '+P.length+' chapitres · '+NB+' activités',esc(A.titre),esc(A.h1))+'<p class="vue-t">Ce que vous saurez faire</p><p class="vue-p">'+P.length+' acquis concrets, un chapitre chacun.</p><div class="acq">'+P.map(function(ph,i){ var c=COUL[i%5]; return '<div class="ch5" style="--cc:'+c.c+';--cx2:'+c.x+'"><span class="no">'+(i+1)+'</span><div><h3>'+esc(ph.acq)+'</h3><p style="margin:6px 0 0;font-size:15px;color:var(--ink2)">'+esc(ph.desc)+'</p></div></div>'; }).join('')+'</div><button type="button" class="cta" id="go2">Commencer par une question</button></div>'; $('#go2').onclick=function(){ voir('question'); }; return; }
   if(vue==='question'){ var Q=A.question, r=D.q1, bon=Q.r.filter(function(x){return x[3];})[0];
     z.innerHTML='<div class="ec-anim"><p class="vue-t">'+esc(Q.t)+'</p><p class="vue-p">Une seule réponse. Il n’y a pas de piège : chacune vous apprend quelque chose.</p><div class="q1">'+Q.r.map(function(x){ return '<button type="button" data-q="'+x[0]+'" aria-pressed="'+(r===x[0])+'" class="'+(r&&x[3]?'bon':'')+'">'+esc(x[1])+'</button>'; }).join('')+'</div>'+(r?'<div class="verdict '+(r===bon[0]?'v-ok':'v-mid')+'">'+esc(Q.r.filter(function(x){return x[0]===r;})[0][2])+'</div><button type="button" class="cta" id="go3">Découvrir mon parcours</button>':'')+'</div>';
     $$('.q1 button').forEach(function(b){ b.onclick=function(){ D.q1=b.dataset.q; sv(); rendu(); }; }); if(r) $('#go3').onclick=function(){ voir('chapitres'); }; return; }
+  if(vue==='bravo'){ var bi=+(D._bravo||0), nx=bi+1<P.length?bi+1:null, fb=faitsCh(bi), tb=totCh(bi);
+    z.innerHTML='<div class="ec-anim bravo">'+affiche(nx!=null?imgCh(nx):img(0),'Chapitre '+(bi+1)+' sur '+P.length+' terminé',nx!=null?'Prochaine étape : '+esc(P[nx].t):'Votre fiche vous attend',nx!=null?esc(P[nx].desc):'')
+     +'<div class="acq-ok"><i>✓</i><div><b>'+esc(P[bi].acq)+'</b><span>'+fb+' activité'+(fb>1?'s':'')+' validée'+(fb>1?'s':'')+' sur '+tb+(fb<tb?' : vous pourrez revenir sur les autres.':'.')+'</span></div></div>'
+     +'<div class="pts" aria-hidden="true">'+P.map(function(_,i){ return '<i class="'+(i<=bi?'ok':i===nx?'on':'')+'"></i>'; }).join('')+'</div>'
+     +'<div class="acts">'+(nx!=null?'<button type="button" class="cta" id="bnext">Commencer le chapitre '+(nx+1)+' →</button>':'<button type="button" class="cta" id="bfin">Voir ma fiche</button>')+'<button type="button" class="cta sec" id="btous">Tous les chapitres</button></div></div>';
+    if($('#bnext')) $('#bnext').onclick=function(){ voir('ecran',cur); }; if($('#bfin')) $('#bfin').onclick=function(){ voir('fin'); }; $('#btous').onclick=function(){ voir('chapitres'); }; return; }
   if(vue==='chapitres'){ var tf=totFaits();
     z.innerHTML='<div class="ec-anim"><p class="vue-t">Votre parcours</p><p class="vue-p">'+(tf?tf+' activité'+(tf>1?'s':'')+' validée'+(tf>1?'s':'')+' sur '+NB+'. Reprenez où vous en êtes.':'Commencez par le chapitre 1, ou par celui qui vous parle le plus.')+'</p><div class="acq">'+P.map(function(_,i){return carteCh(i);}).join('')+'</div><button type="button" class="cta sec" id="vfiche">Voir ma fiche</button></div>';
     $$('[data-ch]').forEach(function(b){ b.onclick=function(){ var i=+b.dataset.ch, L=ETAPES.filter(function(x){return x.ph===i;}), k=L.filter(function(x){return !etat['s'+x.n];})[0]||L[0]; voir('ecran',ETAPES.indexOf(k)); }; });
@@ -68,7 +116,7 @@ function rendu(){ if(ppBloque()) window.EFA_VERROU.exiger();
     var titre=tf2===NB?A.fin.titre:tf2===0?'Vous avez exploré l’atelier':'Vous avez bien avancé';
     var sous=tf2===NB?NB+' activités validées sur '+NB+'.':tf2===0?'0 activité validée pour l’instant. Les exercices font la différence : reprenez-les à votre rythme.':tf2+' activités validées sur '+NB+'. Il reste '+mq.map(function(i){return '« '+P[i].acq+' »';}).join(', ')+'.';
     var S=A.fin.suite;
-    z.innerHTML='<div class="ec-anim"><span class="pp-k" style="color:#B8341A">'+esc(A.fin.k||'Ma fiche')+'</span><p class="vue-t">'+esc(titre)+'</p><p class="vue-p">'+esc(sous)+'</p>'
+    z.innerHTML='<div class="ec-anim">'+affiche(img(0),esc(A.fin.k||'Ma fiche'),esc(A.titre),'','court')+'<p class="vue-t">'+esc(titre)+'</p><p class="vue-p">'+esc(sous)+'</p>'
      +'<div class="fiche-r">'+A.fin.fiche.map(function(x){ var v=''; try{ v=x[1](D,H)||''; }catch(e){} return li(x[0],v); }).join('')+'</div>'
      +(tf2<NB?'<button type="button" class="cta" id="repr">Reprendre mes exercices</button> ':'')+'<button type="button" class="cta sec" id="impr">Enregistrer ma fiche (PDF)</button>'
      +'<div class="suites"><div class="suite"><h3>Revoir l’atelier</h3><p>Reprenez un chapitre, complétez votre fiche, refaites un exercice avec de nouveaux chiffres. À votre rythme.</p><button type="button" class="cta sec" id="revoir">Voir les chapitres</button></div>'
@@ -81,7 +129,8 @@ function rendu(){ if(ppBloque()) window.EFA_VERROU.exiger();
     $('#raz').onclick=function(){ etat={}; D={_vue:'accueil',_pos:0}; sv(); voir('accueil',0); }; return; }
   var e=ETAPES[cur], c=COUL[e.ph%5], L=ETAPES.filter(function(x){return x.ph===e.ph;}), on=!!etat['s'+e.n], fc=faitsCh(e.ph);
   z.style.cssText='--c:'+c.c+';--ct:'+c.t+';--cx:'+c.x;
-  z.innerHTML='<div class="prog2"><span>Chapitre '+(e.ph+1)+' sur '+P.length+' · '+fc+' activité'+(fc>1?'s':'')+' sur '+L.length+'</span><span class="b"><i style="width:'+(fc/L.length*100)+'%"></i></span><a id="tous">Tous les chapitres</a></div>'
+  var prem=L[0]===e;
+  z.innerHTML=(prem?affiche(imgCh(e.ph),'Chapitre '+(e.ph+1)+' sur '+P.length,esc(P[e.ph].t),esc(P[e.ph].desc),'court'):'')+'<div class="prog2"><span>Chapitre '+(e.ph+1)+' sur '+P.length+' · '+fc+' activité'+(fc>1?'s':'')+' sur '+L.length+'</span><span class="b"><i style="width:'+(fc/L.length*100)+'%"></i></span><a id="tous">Tous les chapitres</a></div>'
    +'<article class="ec ec-anim"><div class="ec-tete"><span class="ec-k"><i>'+(e.ph+1)+'</i>'+esc(P[e.ph].acq)+'</span><h2>'+esc(e.t)+'</h2><div class="ec-pts">'+L.map(function(x){ return '<i class="'+(x.n===e.n?'on':etat['s'+x.n]?'ok':'')+'"></i>'; }).join('')+'</div></div>'
    +'<div class="ec-corps"><div class="coach"><img loading="lazy" decoding="async" src="clone/assets/elysee-portrait-carre.jpg" alt=""><div><small>Le coach</small><p>'+esc(e.c)+'</p></div></div>'
    +widget(e)
@@ -115,7 +164,7 @@ if(!A.voix){ if(bar) bar.hidden=true; if(ec) ec.hidden=true; rendu(); return; }
 try{ VX.on=localStorage.getItem('efa-voix')!=='off'; }catch(e){}
 VX.a.preload='auto';
 var IC_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>', IC_PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>';
-function vxCle(){ if(vue==='accueil') return '00-accueil'; if(vue==='question') return '01-question'; if(vue==='chapitres') return '02-parcours'; if(vue==='fin') return '99-fin'; var e=ETAPES[cur]; return e?'e'+(e.n<10?'0':'')+e.n:''; }
+function vxCle(){ if(vue==='accueil') return '00-accueil'; if(vue==='question') return '01-question'; if(vue==='chapitres') return '02-parcours'; if(vue==='fin') return '99-fin'; if(vue==='bravo') return ''; var e=ETAPES[cur]; return e?'e'+(e.n<10?'0':'')+e.n:''; }
 function vxUI(){ var joue=!VX.a.paused&&!VX.a.ended; bar.classList.toggle('coupee',!VX.on); bar.classList.toggle('joue',VX.on&&joue);
   $('#vx-couper').textContent=VX.on?'Couper la voix':'Réactiver la voix';
   $('#vx-s').textContent=VX.on?(joue?'Élysée vous parle':'Touchez ▶ pour écouter'):'Vous avancez seul';
@@ -133,6 +182,7 @@ $('#vx-couper').onclick=function(){ VX.on=!VX.on; try{ localStorage.setItem('efa
 $('#vx-lire').onclick=function(){ if(!VX.a.paused&&!VX.a.ended) vxStop(); else vxJouer(VX.a.ended||vxCle()!==VX.cle); };
 if(ec) ec.onclick=function(){ VX.on=true; try{ localStorage.setItem('efa-voix','on'); }catch(e){} VX.cle=''; vxJouer(true); };
 var _rendu=rendu; rendu=function(){ _rendu(); var k=vxCle(); if(VX.auto&&VX.ex[k]!==true&&VX.cle!==k){ try{ VX.a.pause(); }catch(e){} }
+  if(!k){ vxUI(); return; }
   dispo(k,function(){ if(k!==vxCle()) return; if(VX.on&&k!==VX.cle) vxJouer(false); else vxUI(); }); };
 if(VX.auto){ bar.hidden=true; if(ec) ec.hidden=true; dispo('00-accueil',function(){ vxUI(); }); }
 rendu();
