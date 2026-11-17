@@ -40,7 +40,9 @@
     'atelier-economie-pour-investir': ['economie-pour-investir', 5000, 'Comprendre l’économie pour mieux investir', 0, 1, 'unite'],
     'atelier-retraite-droits': ['retraite-droits', 5000, 'Préparer ma retraite : droits, besoins et décisions', 0, 1, 'unite'],
     'atelier-revenu-fixe': ['revenu-fixe', 5000, 'Investir dans les placements à revenu fixe', 0, 1, 'unite'],
-    'atelier-strategie-investissement': ['strategie-investissement', 5000, 'Construire sa stratégie d’investissement', 0, 1, 'unite']
+    'atelier-strategie-investissement': ['strategie-investissement', 5000, 'Construire sa stratégie d’investissement', 0, 1, 'unite'],
+    'atelier-premiere-action': ['premiere-action', 5000, 'Acheter sa première action à la BRVM', 0, 1, 'unite'],
+    'atelier-fonds-commun': ['fonds-commun', 5000, 'Comment fonctionne un fonds commun de placement ?', 0, 1, 'unite']
   };
   var nom = (location.pathname.split('/').pop() || '').replace(/\.html$/, ''), A = P[nom];
   window.EFA_VERROU = { pages: P };
