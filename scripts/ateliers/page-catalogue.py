@@ -17,7 +17,7 @@ THEMES = [
   ('placer', 'Placer mon épargne', 'Choisir un placement selon la date de vos projets, et le comprendre avant de signer.', 'theme-placer-900.webp',
    ['epargner-ne-suffit-pas', 'placer-selon-horizon', 'placements-expliques', 'revenu-fixe', 'fonds-commun', 'strategie-investissement'], ['court-terme', 'bons-du-tresor', 'economie-pour-investir', 'inflation', 'crypto-reseaux', 'assurance-vie', 'tontine-spirale']),
   ('bourse', 'La Bourse (BRVM)', 'De zéro à votre portefeuille : comprendre, choisir une action, construire, encaisser des dividendes.', 'marches-entree-r.webp',
-   ['premiers-pas-bourse', 'premiere-action', 'lire-societe-cotee', 'construire-son-portefeuille', 'portefeuille-factures'], ['etats-financiers', 'marche-emergent', 'premier-ordre-brvm', 'economie-pour-investir', 'jeu-portefeuille-baisse']),
+   ['premiers-pas-bourse', 'premiere-action', 'lire-societe-cotee', 'construire-son-portefeuille', 'portefeuille-factures'], ['investir-dividendes', 'etats-financiers', 'marche-emergent', 'premier-ordre-brvm', 'economie-pour-investir', 'jeu-portefeuille-baisse']),
   ('credit', 'Crédit et dettes', 'Emprunter quand c’est utile, en connaître le vrai coût, et sortir des dettes.', 'q3.webp',
    ['credit-fait-pour-moi', 'cout-reel-de-mon-credit', 'ma-banque-va-t-elle-me-preter', 'bien-utiliser-mon-credit', 'rembourser-sans-se-noyer'],
    ['eviter-le-surendettement', 'sortir-dettes', 'quand-le-credit-va-mal', 'grandir-avec-le-credit', 'choisir-sa-microfinance']),
