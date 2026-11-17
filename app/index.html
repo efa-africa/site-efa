@@ -543,6 +543,24 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
 .ap-enq p{margin:10px 0 14px;color:#C9D1DE;font-size:14.5px;line-height:1.45}
 .ap-fin{border-radius:20px;background:radial-gradient(circle at 50% 20%,#12457A,#0B1F3A 70%);color:#fff;padding:28px 18px;text-align:center}
 .pp-atelier{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:stretch;width:100%;background:#0B1220;color:#fff;border-radius:16px;padding:12px}.pp-atelier img{width:96px;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;border-radius:12px;flex:0 0 96px}.pp-atelier .grow{display:flex;flex-direction:column;gap:4px;min-width:0}.pp-atelier .sur{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#6DB8F2}.pp-atelier b{font-family:"Libre Baskerville",Georgia,serif;font-size:19px;line-height:1.15}.pp-atelier span{font-size:14px;line-height:1.4;color:#C9D1DE}.pp-atelier .go{margin-top:auto;font-weight:800;color:#F09680;font-size:14px}.pp-atelier:focus-visible{outline:3px solid #6DB8F2;outline-offset:2px}
+/* Mon EFA dans l'appli (17 nov. 2026) */
+.mef-ouv{position:relative;margin:0 -18px 6px;min-height:300px;display:flex;align-items:flex-end;overflow:hidden;background:#0B1220;color:#fff}
+.mef-ouv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.mef-ouv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,32,.1) 20%,rgba(11,18,32,.65) 60%,rgba(11,18,32,.95))}
+.mef-ouv div{position:relative;z-index:1;padding:22px 18px}
+.mef-ouv small{font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#F09680}
+.mef-ouv h1{font-family:"Libre Baskerville",Georgia,serif;font-size:calc(28px*var(--scale));line-height:1.15;margin:8px 0 6px;color:#fff}
+.mef-ouv p{margin:0;color:#E8EDF5;font-size:15.5px}
+.mef-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mef-stats div{background:var(--glass);border-radius:14px;padding:12px;text-align:center}
+.mef-stats b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-size:24px}
+.mef-stats span{font-size:13px;color:var(--ink3,#5F6676)}
+.mef-c{flex:none;width:78%;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:var(--glass);display:flex;flex-direction:column;border:0;padding:0;text-align:left;font:inherit;color:inherit}
+.mef-c img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.mef-c .in{padding:14px;display:flex;flex-direction:column;gap:8px}
+.mef-c .t{font-weight:700;font-size:16px;line-height:1.3}
+.mef-c .bar{height:6px;border-radius:99px;background:rgba(127,140,160,.25);overflow:hidden}.mef-c .bar i{display:block;height:100%;background:#3CCB7F}
+.mef-c .s{font-size:13.5px;color:var(--ink3,#5F6676)}
 </style>
 
 <div class="stage">
@@ -577,7 +595,7 @@ main.webmode{padding-bottom:12px;gap:10px;padding-top:calc(10px + env(safe-area-
         <div class="scroll" id="scroll"><main id="main"></main></div>
         <nav class="tabbar" id="tabbar" aria-label="Navigation principale">
           <button data-act="go" data-view="accueil"><svg viewBox="0 0 24 24"><path d="M4 11 12 4.5 20 11v9H4z"/><path d="M10 20v-5h4v5"/></svg>Accueil</button>
-          <button data-act="go" data-view="moncahier"><svg viewBox="0 0 24 24"><path d="M6 3.5h11a1.5 1.5 0 0 1 1.5 1.5v14.5H7A1.5 1.5 0 0 1 5.5 18V4A.5.5 0 0 1 6 3.5z"/><path d="M5.5 18A1.5 1.5 0 0 1 7 16.5h11.5M9 7.5h6M9 11h4"/></svg>Mon cahier</button>
+          <button data-act="go" data-view="monefa"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Mon EFA</button>
           <button data-act="go" data-view="news"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M7 8.5h10M7 12h10M7 15.5h6"/></svg>EFA News</button>
           <button data-act="go" data-view="minfin"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m10.5 9.5 4 2.5-4 2.5z"/></svg>Min’Fin</button>
           <button data-act="go" data-view="plus"><svg viewBox="0 0 24 24"><path d="M4.5 7h15M4.5 12h15M4.5 17h15"/></svg>Menu</button>
@@ -1430,6 +1448,28 @@ function vAccueil(){
   return h;}
 function uneCarte(k,t,x,act){return '<button class="news" '+act+'><span class="k">'+esc(k)+'</span><b>'+esc(t)+'</b>'+(x?'<span class="lg">'+esc(x)+'</span>':'')+'</button>';}
 /* ───── Mon cahier : mon école d’abord, puis tout ce que j’ai appris, décidé et commencé ───── */
+/* ---------- Mon EFA : l'espace de l'apprenant dans l'appli (17 nov. 2026) ----------
+   Lit les mêmes données que efa.africa/mon-efa.html (même origine) : ateliers commencés, formule. */
+var MEC=null;
+function chargerMEC(){if(MEC!==null)return;MEC=false;fetch("../data/mon-efa-ateliers.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){MEC=d;if(ui.view==="monefa")render();}).catch(function(){});}
+function mesAteliers(){var L=[];try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(!k||k.indexOf("efa-at-")!==0)continue;var id=k.slice(7),o=JSON.parse(localStorage.getItem(k)||"{}")||{},e=o.etat||{},f=Object.keys(e).filter(function(x){return e[x];}).length,c=MEC&&MEC[id];if(!c)continue;L.push({id:id,t:c.t,page:c.page,img:c.img,n:c.n||0,f:f});}}catch(x){}
+  return L.sort(function(a,b){return (b.f/(b.n||1))-(a.f/(a.n||1));});}
+function vMonEfa(){chargerMEC();var L=mesAteliers(),enc=L.filter(function(a){return a.f>0&&a.f<a.n;}),fin=L.filter(function(a){return a.n&&a.f>=a.n;}),act=L.reduce(function(s,a){return s+a.f;},0),form="";
+  try{form=localStorage.getItem("efa_formule")||"";}catch(x){}
+  var h='<section class="mef-ouv"><img src="../clone/assets/mon-efa-entree-900.webp" alt=""><div><small>Mon EFA</small><h1>Voici où vous en êtes.</h1><p>Vos ateliers, votre école, vos outils et votre accès, au même endroit.</p></div></section>';
+  h+='<div class="mef-stats"><div><b>'+L.length+'</b><span>ateliers ouverts</span></div><div><b>'+fin.length+'</b><span>terminés</span></div><div><b>'+act+'</b><span>activités validées</span></div></div>';
+  var cont=enc.length?enc:L.filter(function(a){return a.f<a.n;});
+  h+='<section class="stack"><div class="secth"><h2>Je continue</h2><button class="link" data-act="web" data-url="ateliers.html?src=appli-monefa" data-t="Les ateliers">Tous les ateliers</button></div>';
+  if(cont.length)h+='<div class="rail">'+cont.slice(0,8).map(function(a){var p=a.n?Math.round(a.f/a.n*100):0;return '<button class="mef-c" data-act="web" data-url="'+esc(a.page)+'?src=appli-monefa" data-t="'+esc(a.t)+'"><img src="../clone/assets/'+esc(a.img||"budget.webp")+'" alt="" loading="lazy"><span class="in"><span class="t">'+esc(a.t)+'</span><span class="bar"><i style="width:'+p+'%"></i></span><span class="s">'+a.f+' activité'+(a.f>1?'s':'')+' sur '+a.n+' · Continuer ›</span></span></button>';}).join("")+'</div>';
+  else h+='<div class="glass"><p class="h3">'+(MEC===false||MEC===null?"Chargement de vos ateliers…":"Vous n’avez pas encore commencé d’atelier")+'</p><p class="sub" style="font-size:14.5px">Choisissez un thème : budget, épargne, Bourse, crédit, activité, famille. Un parcours par thème, le reste à la carte.</p><button class="btn sm" data-act="web" data-url="ateliers.html?src=appli-monefa" data-t="Les ateliers">Choisir mon premier atelier</button></div>';
+  h+='</section>';
+  if(fin.length)h+='<section class="stack"><div class="secth"><h2>Terminés</h2></div><div class="list">'+fin.map(function(a){return webRow(a.t,"Revoir ma fiche",a.page+"?src=appli-monefa","shield","var(--green)");}).join("")+'</div></section>';
+  h+='<section class="stack"><div class="secth"><h2>Mon école et mes outils</h2></div><div class="list"><button class="row" data-act="go" data-view="moncahier"><span class="sq" style="color:var(--coral2)">'+ICON.book+'</span><span class="grow"><span class="t">Mon cahier</span><span class="s">Modules, défis, fiches et notes</span></span>'+ICON.chev+'</button>'
+   +webRow("Mon budget à zéro","Une mission pour chaque franc, et votre PDF","outil-budget.html?src=appli-monefa","chart","var(--cyan)")
+   +webRow("Mon diagnostic","Votre profil et votre priorité","diagnostic.html?src=appli-monefa","search","var(--coral2)")+'</div></section>';
+  h+='<section class="stack"><div class="secth"><h2>Mon accès</h2></div><div class="glass"><p class="h3">'+(form?"Formule "+esc(form):"Les ateliers gratuits vous sont ouverts")+'</p><p class="sub" style="font-size:14.5px">'+(form?"Vos ateliers inclus s’ouvrent directement.":"Les autres sont inclus dans l’abonnement, ou à 5 000 F l’atelier.")+'</p>'+(form?'':'<button class="btn sm" data-act="web" data-url="abonnement.html?src=appli-monefa" data-t="L’abonnement">Découvrir l’abonnement</button>')+'</div></section>';
+  h+='<div class="list">'+webRow("Mon espace complet sur le site","Fiches, certificats, décisions suivies","mon-efa.html?src=appli","people","var(--cyan)")+'</div>';
+  return h;}
 function vMonCahier(){var h=headerT("Mon cahier","Mon école, mes défis, mes fiches, mes notes");
   var s=PST(),nm=modsFaits(),tot=MODL.length,r=repriseCard();
   h+='<section class="stack"><div class="secth"><h2>Mon école</h2><button class="link" data-act="go" data-view="ecole">Toute l’école</button></div>';
@@ -1532,11 +1572,11 @@ function render(anim){ui.anim=!!anim;document.documentElement.style.setProperty(
   if(ui.view==="aujourdhui")ui.view="outils";if(ui.view==="cahier")ui.view="moncahier";if(ui.view==="actions"){ui.view="outils";ui.seg="defis";}if(ui.view==="explorer")ui.view="plus";
   var v=ui.view,full={onboarding:1,lecon:1,diag:1,parcours:1,challenge:1,profil:1,web:1,tribunes:1,tribune:1,module:1,video:1}[v];
   $tab.hidden=!!full;$main.className=(full?"player":"")+(anim&&!full?" enter":"")+(v==="onboarding"&&!ui.ob?" ob":"");var h="";
-  try{h={accueil:vAccueil,onboarding:vOnboarding,aujourdhui:vAujourdhui,apprendre:vApprendre,parcours:vParcours,lecon:vLecon,cahier:vCahier,actions:vActions,challenge:vChallenge,explorer:vExplorer,diag:vDiag,profil:vProfil,web:vWeb,tribunes:vTribunes,tribune:vTribune,outils:vOutils,moncahier:vMonCahier,news:vNews,minfin:vMinfin,decouvrir:vDecouvrir,ecole:vEcole,module:vModule,questions:vQuestions,video:vVideo,etudes:vEtudes,plus:vPlus}[v]();}
+  try{h={accueil:vAccueil,onboarding:vOnboarding,aujourdhui:vAujourdhui,apprendre:vApprendre,parcours:vParcours,lecon:vLecon,cahier:vCahier,actions:vActions,challenge:vChallenge,explorer:vExplorer,diag:vDiag,profil:vProfil,web:vWeb,tribunes:vTribunes,tribune:vTribune,outils:vOutils,moncahier:vMonCahier,monefa:vMonEfa,news:vNews,minfin:vMinfin,decouvrir:vDecouvrir,ecole:vEcole,module:vModule,questions:vQuestions,video:vVideo,etudes:vEtudes,plus:vPlus}[v]();}
   catch(err){h='<div class="glass"><p class="h3">Cet écran n’a pas pu s’afficher.</p><p class="fine">'+esc(err.message)+'</p><button class="btn sm" data-act="go" data-view="outils">Revenir à Mes outils</button></div>';if(window.console)console.error(err);}
   document.getElementById("fabroot").innerHTML=(v==="moncahier"||(v==="outils"&&ui.seg==="cahier"))?'<button class="fab" data-act="sheet" data-k="entry" aria-label="Nouvelle note">'+ICON.plus+'</button>':"";
   $main.innerHTML=h;
-  var map={accueil:0,moncahier:1,ecole:1,apprendre:1,outils:1,news:2,minfin:3,plus:4,questions:4,etudes:4,decouvrir:0};$tab.querySelectorAll("button").forEach(function(b,i){if(map[v]===i)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
+  var map={accueil:0,monefa:1,moncahier:1,ecole:1,apprendre:1,outils:1,news:2,minfin:3,plus:4,questions:4,etudes:4,decouvrir:0};$tab.querySelectorAll("button").forEach(function(b,i){if(map[v]===i)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
   var xq=document.getElementById("xq");if(xq&&ui.fq){try{xq.focus({preventScroll:true});}catch(e){xq.focus();}var L=xq.value.length;xq.setSelectionRange(L,L);ui.fq=false;var sc=$scroll,r=xq.getBoundingClientRect(),r0=sc.getBoundingClientRect();sc.scrollTop+=r.top-r0.top-80;}
   if(v==="web"||v==="news")webAfter();
   $main.classList.toggle("webmode",v==="web"||v==="news");
