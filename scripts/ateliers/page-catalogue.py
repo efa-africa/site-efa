@@ -12,7 +12,7 @@ verrou = open('efa-verrou.js', encoding='utf-8').read()
 UNITE = set(re.findall(r"'atelier-[^']+': \['([^']+)', \d+, '[^']*', \d, \d, 'unite'\]", verrou))
 
 THEMES = [
-  ('budget', 'Mon budget au quotidien', 'Savoir où part l’argent, tenir un budget et se constituer une réserve.', 'coach-budget-3.webp',
+  ('budget', 'Mon budget au quotidien', 'Savoir où part l’argent, tenir un budget et se constituer une réserve.', 'theme-budget-900.webp',
    ['ou-passe-mon-argent', 'budget-qui-tient', 'reserve-securite', 'mobile-money-frais'], ['budget-zero', 'finances-personnelles', 'epargner-ne-suffit-pas', 'grosse-somme', 'preter-ou-donner']),
   ('placer', 'Placer mon épargne', 'Choisir un placement selon la date de vos projets, et le comprendre avant de signer.', 'theme-placer-900.webp',
    ['epargner-ne-suffit-pas', 'placer-selon-horizon', 'placements-expliques', 'revenu-fixe', 'fonds-commun', 'strategie-investissement'], ['court-terme', 'bons-du-tresor', 'economie-pour-investir', 'inflation', 'crypto-reseaux', 'assurance-vie', 'tontine-spirale']),
