@@ -15,7 +15,7 @@ THEMES = [
   ('budget', 'Mon budget au quotidien', 'Savoir où part l’argent, tenir un budget et se constituer une réserve.', 'coach-budget-3.webp',
    ['ou-passe-mon-argent', 'budget-qui-tient', 'reserve-securite', 'mobile-money-frais'], ['epargner-ne-suffit-pas', 'grosse-somme', 'preter-ou-donner']),
   ('placer', 'Placer mon épargne', 'Choisir un placement selon la date de vos projets, et le comprendre avant de signer.', 'efa-etudes.webp',
-   ['epargner-ne-suffit-pas', 'placer-selon-horizon', 'placements-expliques', 'revenu-fixe', 'fonds-commun', 'strategie-investissement'], ['economie-pour-investir', 'inflation', 'crypto-reseaux', 'assurance-vie', 'tontine-spirale']),
+   ['epargner-ne-suffit-pas', 'placer-selon-horizon', 'placements-expliques', 'revenu-fixe', 'fonds-commun', 'strategie-investissement'], ['court-terme', 'bons-du-tresor', 'economie-pour-investir', 'inflation', 'crypto-reseaux', 'assurance-vie', 'tontine-spirale']),
   ('bourse', 'La Bourse (BRVM)', 'De zéro à votre portefeuille : comprendre, choisir une action, construire, encaisser des dividendes.', 'marches-entree-r.webp',
    ['premiers-pas-bourse', 'premiere-action', 'lire-societe-cotee', 'construire-son-portefeuille', 'portefeuille-factures'], ['marche-emergent', 'premier-ordre-brvm', 'economie-pour-investir', 'jeu-portefeuille-baisse']),
   ('credit', 'Crédit et dettes', 'Emprunter quand c’est utile, en connaître le vrai coût, et sortir des dettes.', 'q3.webp',
