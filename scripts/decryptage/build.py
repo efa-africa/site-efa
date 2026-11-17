@@ -23,6 +23,10 @@ DOSSIERS = [
 ]
 # Actus décryptées publiées sur Substack (les plus récentes en premier)
 ACTUS = [
+ dict(date='16 novembre 2026', titre='La SIR à la BRVM ? Une action que beaucoup d’investisseurs voudraient regarder',
+  sous='« Une entreprise peut vendre davantage et gagner moins. »',
+  resume='La Société ivoirienne de raffinage envisage d’entrer en Bourse. Ses chiffres 2023-2024, qui recevrait l’argent des acheteurs, et les cinq réponses à attendre avant d’envisager une action SIR.',
+  img='clone/assets/theme-bourse-900.webp', url='decryptage-sir-brvm.html'),
  dict(date='1er novembre 2026', titre='Ce que Yan Diomandé, Aliko Dangote et Koné Dossongui enseignent à notre argent',
   sous='« Le talent ne suffit pas. La méthode, si. »',
   resume='Du parcours de Yan Diomandé au Real Madrid à ceux de deux capitaines d’industrie africains : six leçons pour gérer son argent, se fixer des objectifs, accepter d’être conseillé, passer de la consommation à la production et investir avec patience.',
