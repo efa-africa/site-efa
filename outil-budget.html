@@ -10,8 +10,25 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
 <style>
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+.bz-ouv{position:relative;background:#0B1220;color:#fff;min-height:min(78vh,620px);display:grid;align-items:end;overflow:hidden}
+.bz-ouv picture,.bz-ouv img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important}
+.bz-ouv img{object-fit:cover;object-position:40% 35%;animation:bz-zoom 18s ease-out both}
+@keyframes bz-zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.bz-ouv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,32,.05) 20%,rgba(11,18,32,.55) 55%,rgba(11,18,32,.92) 100%)}
+.bz-ouv .in{position:relative;z-index:1;width:100%;max-width:980px;margin:0 auto;padding:120px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.bz-ouv .ok{font:800 12px/1.3 "Source Sans 3",system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F09680;margin:0 0 12px}
+.bz-ouv h1{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:clamp(32px,5.4vw,56px);line-height:1.12;color:#fff!important;margin:0;max-width:20ch;text-wrap:balance}
+html[data-clone] .bz-ouv h1 .clone-accent,.bz-ouv h1 .clone-accent{color:#6DB8F2!important}
+.bz-ouv .ch{font-size:clamp(17px,2vw,20px);color:#E8EDF5;max-width:58ch;margin:14px 0 0}
+.bz-ouv .ac{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px}
+.bz-ouv .ac span{font-size:14.5px;color:#C9D1DE}
+.bande{position:relative;margin:40px 0 0;border-radius:16px;overflow:hidden;background:#0B1220}
+.bande img{display:block;width:100%!important;height:auto;aspect-ratio:16/7;object-fit:cover;object-position:50% 40%;opacity:.92}
+.bande figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 16px;background:linear-gradient(180deg,transparent,rgba(11,18,32,.85));color:#fff;font-weight:700;font-size:16px}
+@media (max-width:640px){.bande img{aspect-ratio:4/3}}
+
 body{margin:0;background:#FFFFFF;color:#2A3142;font-family:"Source Sans 3","Source Sans Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.bz{max-width:980px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 120px max(16px,env(safe-area-inset-left,0px))}
+.bz{max-width:980px;margin:0 auto;padding:8px max(16px,env(safe-area-inset-right,0px)) 120px max(16px,env(safe-area-inset-left,0px))}
 .bz h1,.bz h2,.bz h3{font-family:"Libre Baskerville",Baskerville,Georgia,serif;font-weight:700;line-height:1.15;margin:0;color:#0B1220;text-wrap:balance;text-transform:none}
 .bz p{margin:0}.bz a{color:#1B71B2}
 .bz :focus-visible{outline:3px solid #1B71B2;outline-offset:3px}
@@ -66,10 +83,11 @@ html[data-clone] .bz .li .in input,html[data-clone] .bz .li .in input:hover,html
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · où j’en suis</a><a href="ateliers.html" style="grid-column:1/-1;background:#DA3C1B;color:#fff!important">Tous les ateliers, par thème</a><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a class="menu-sous" href="ateliers.html">Tous les ateliers, par thème <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
 <header data-v1-cache class="top"></header>
+<section class="bz-ouv" data-garde aria-labelledby="bz-t">
+  <picture><source media="(max-width:720px)" srcset="clone/assets/budget-entree-900.webp"><img src="clone/assets/budget-entree.webp" alt="Une femme reporte ses tickets de caisse dans son carnet de budget, à la table de son salon" width="1672" height="941" fetchpriority="high"></picture>
+  <div class="in"><p class="ok">Outil EFA · gratuit · budget à zéro</p><h1 id="bz-t">Chaque franc reçoit une mission, avant le début du mois.</h1><p class="ch">Entrez ce qui entre, puis ce qui sort. Quand la différence arrive à zéro, chaque franc a un travail. À la fin, téléchargez votre budget et vos orientations en PDF.</p><div class="ac"><a class="bouton" href="#e1">Commencer mon budget</a><span>3 étapes · 5 minutes · vos chiffres restent sur votre téléphone</span></div></div>
+</section>
 <main class="bz" id="budget" data-garde>
-  <p class="k">Outil EFA · gratuit · budget à zéro</p>
-  <h1>Chaque franc reçoit une mission, avant le début du mois.</h1>
-  <p class="chapo">Entrez ce qui entre, puis ce qui sort. Quand la différence arrive à zéro, chaque franc a un travail. À la fin, téléchargez votre budget et vos orientations en PDF. Vos chiffres restent sur votre téléphone.</p>
 
   <section class="etape" aria-labelledby="e1"><h2 id="e1">1. Ce qui entre ce mois-ci</h2><p class="sous">Partez de ce que vous recevez vraiment, après retenues : le salaire net, pas le brut.</p>
     <div class="grp"><div class="lignes" id="entrees"></div><p class="tot"><span>Total de ce qui entre</span><span id="t-in">0 F</span></p></div>
@@ -79,6 +97,7 @@ html[data-clone] .bz .li .in input,html[data-clone] .bz .li .in input:hover,html
     <div id="groupes"></div>
   </section>
 
+  <figure class="bande"><picture><source media="(max-width:720px)" srcset="clone/assets/budget-couple-900.webp"><img src="clone/assets/budget-couple.webp" alt="Un couple fait ses comptes à table, avec une calculatrice et un agenda" width="1672" height="941" loading="lazy"></picture><figcaption>Un budget se fait mieux à deux : chacun voit où va l’argent, et ce qu’il construit.</figcaption></figure>
   <section class="etape" aria-labelledby="e3" id="resultat"><h2 id="e3">3. Vos orientations</h2><p class="sous">Des repères, pas des règles : votre situation compte. Ils s’affichent dès que vos chiffres sont entrés.</p>
     <div class="ori" id="ori"></div>
     <div class="sec4"><h3>Quand l’argent manque, protégez d’abord quatre choses</h3><p>Avant les dettes, avant les envies : ce qui vous permet de vivre et de continuer à gagner votre vie.</p><ol><li>Manger</li><li>Se loger, avec l’eau et l’électricité</li><li>Se déplacer pour travailler</li><li>Se soigner</li></ol></div>
