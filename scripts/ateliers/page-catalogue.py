@@ -14,7 +14,7 @@ UNITE = set(re.findall(r"'atelier-[^']+': \['([^']+)', \d+, '[^']*', \d, \d, 'un
 THEMES = [
   ('budget', 'Mon budget au quotidien', 'Savoir où part l’argent, tenir un budget et se constituer une réserve.', 'coach-budget-3.webp',
    ['ou-passe-mon-argent', 'budget-qui-tient', 'reserve-securite', 'mobile-money-frais'], ['epargner-ne-suffit-pas', 'grosse-somme', 'preter-ou-donner']),
-  ('placer', 'Placer mon épargne', 'Choisir un placement selon la date de vos projets, et le comprendre avant de signer.', 'efa-etudes.webp',
+  ('placer', 'Placer mon épargne', 'Choisir un placement selon la date de vos projets, et le comprendre avant de signer.', 'theme-placer-900.webp',
    ['epargner-ne-suffit-pas', 'placer-selon-horizon', 'placements-expliques', 'revenu-fixe', 'fonds-commun', 'strategie-investissement'], ['court-terme', 'bons-du-tresor', 'economie-pour-investir', 'inflation', 'crypto-reseaux', 'assurance-vie', 'tontine-spirale']),
   ('bourse', 'La Bourse (BRVM)', 'De zéro à votre portefeuille : comprendre, choisir une action, construire, encaisser des dividendes.', 'marches-entree-r.webp',
    ['premiers-pas-bourse', 'premiere-action', 'lire-societe-cotee', 'construire-son-portefeuille', 'portefeuille-factures'], ['marche-emergent', 'premier-ordre-brvm', 'economie-pour-investir', 'jeu-portefeuille-baisse']),
