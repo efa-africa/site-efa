@@ -29,7 +29,7 @@ VISUELS = {
     'methode.html': 'etudes-publiees.webp',
 }
 # modèle (dans clone/) → page fabriquée à la racine ; indexée ou non
-MODELES = {'_index.html': ('index.html', True), '_coaching.html': ('coaching.html', True),
+MODELES = {'_index.html': ('index.html', True), '_coaching.html': ('ateliers-elysee.html', True),
            '_marches-labo.html': ('marches-labo.html', False), '_etudes-prospective.html': ('etudes-prospective.html', False),
            '_ely.html': ('ely.html', True), '_musee.html': ('musee.html', True), '_acteurs.html': ('acteurs.html', True)}
 FABRIQUEES = {v[0] for v in MODELES.values()}
@@ -68,6 +68,8 @@ for f in pages:
     if f.startswith('news/'):
         rubrique.setdefault(f, 'pilier-media')
 rubrique['coaching.html'] = 'pilier-progresser'
+rubrique['ateliers-elysee.html'] = 'pilier-progresser'
+rubrique['ateliers.html'] = 'pilier-progresser'
 
 # ---------------------------------------------------------------- liens : modèle (clone/) → racine du site
 FICHIERS_CLONE = {os.path.basename(f) for f in glob.glob(os.path.join(CLONE, '*')) if os.path.isfile(f)}

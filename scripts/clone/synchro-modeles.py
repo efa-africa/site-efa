@@ -11,7 +11,7 @@ Sortie : « modèles à jour » (rien changé), « modèles resynchronisés : �
 import os, re, sys, shutil, subprocess, tempfile
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
-MOD = {'_index.html': 'index.html', '_coaching.html': 'coaching.html', '_marches-labo.html': 'marches-labo.html',
+MOD = {'_index.html': 'index.html', '_coaching.html': 'ateliers-elysee.html', '_marches-labo.html': 'marches-labo.html',
        '_etudes-prospective.html': 'etudes-prospective.html', '_ely.html': 'ely.html', '_musee.html': 'musee.html',
        '_acteurs.html': 'acteurs.html'}
 

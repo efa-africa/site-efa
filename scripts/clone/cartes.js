@@ -84,7 +84,7 @@
     document.addEventListener('keydown', function (x) { if (x.key === 'Escape' && dlg && !dlg.hidden) fermer(); });
     var cv = dlg.querySelector('canvas'), res = dlg.querySelector('#efg-r'), gm = dlg.querySelector('#efg-m');
     function gainTexte(n) { return '<b>+' + pl(n) + '</b><span>soit ' + (n * 10000).toLocaleString('fr-FR') + ' FCFA de cours</span>'; }
-    function suite() { return '<a href="coaching.html#choisir">Voir les ateliers →</a>'; }
+    function suite() { return '<a href="ateliers.html">Voir les ateliers →</a>'; }
     function formMail(n) {
       gm.innerHTML = '<form class="efg-f" novalidate><label for="efg-mail">Votre email pour recevoir ce gain (' + pl(n) + '), en plus des ' + pl(OFFERTS) + ' de bienvenue</label><div><input id="efg-mail" type="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.com"><button type="submit">Recevoir</button></div></form>';
       gm.querySelector('form').addEventListener('submit', function (x) { x.preventDefault(); var m = gm.querySelector('input').value.trim(); if (!valide(m)) { gm.querySelector('input').focus(); return; }
@@ -122,7 +122,7 @@
   // Partout sauf sur la page Coaching (qui a sa propre carte) : un lien « …#gratter » ouvre la carte sur place.
   document.addEventListener('click', function (x) {
     var a = x.target.closest && x.target.closest('a[href$="#gratter"]'); if (!a) return;
-    if (/\/coaching(\.html)?$/.test(location.pathname) && document.getElementById('gratter')) return;
+    if (/\/(coaching|ateliers-elysee)(\.html)?$/.test(location.pathname) && document.getElementById('gratter')) return;
     x.preventDefault(); ouvrir();
   });
 })();
@@ -149,10 +149,10 @@
       + '.efa-promo .p-x{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;font-size:22px;line-height:1;color:#4E5566;padding:4px 7px}'
       + '@media(max-width:620px){.efa-promo .p-v{width:100%;text-align:center}}body:has(.efa-promo) #efa-ely{display:none!important}';
     document.head.appendChild(st);
-    var surCoaching = /\/coaching(\.html)?$/.test(location.pathname);
+    var surCoaching = /\/(coaching|ateliers-elysee)(\.html)?$/.test(location.pathname);
     var b = document.createElement('div'); b.className = 'efa-promo'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', 'Carte à gratter du jour');
     b.innerHTML = '<div class="efa-promo-in"><span class="p-t"><b>Ce contenu se débloque avec des crédits.</b>Grattez votre carte du jour : des crédits à gagner chaque jour, et 3 crédits offerts avec votre email.</span>'
-      + '<a class="p-v" href="' + (surCoaching ? '#gratter' : 'coaching.html#gratter') + '" data-goatcounter-click="promo-carte-' + (source || 'payant') + '">Gratter ma carte →</a>'
+      + '<a class="p-v" href="' + (surCoaching ? '#gratter' : 'ateliers-elysee.html#gratter') + '" data-goatcounter-click="promo-carte-' + (source || 'payant') + '">Gratter ma carte →</a>'
       + '<button class="p-x" type="button" aria-label="Fermer">×</button></div>';
     document.body.appendChild(b); requestAnimationFrame(function () { requestAnimationFrame(function () { b.classList.add('on'); }); });
     b.querySelector('.p-x').addEventListener('click', function () { b.remove(); try { sessionStorage.setItem('efa_promo_ferme', '1'); } catch (e) {} });
@@ -210,7 +210,7 @@
       + '@media(max-width:420px){.efa-porte{padding:5px 10px 5px 5px;margin-right:8px;font-size:13px}}@media(max-width:350px){.efa-porte span{display:none}}';
     document.head.appendChild(st);
     var a = document.createElement('a'); a.className = 'efa-porte';
-    a.href = /\/coaching(\.html)?$/.test(location.pathname) ? '#choisir' : 'coaching.html#choisir';
+    a.href = /\/(coaching|ateliers-elysee)(\.html)?$/.test(location.pathname) ? '#choisir' : 'ateliers.html';
     a.setAttribute('data-goatcounter-click', 'porte-credits');
     if (tg) inn.insertBefore(a, tg); else inn.appendChild(a);
     function maj() {
@@ -297,7 +297,7 @@
     rendre(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
   }
   function rendre() {
-    var s = solde(), sur = /\/coaching(\.html)?$/.test(location.pathname) ? '' : 'coaching.html', M = MOYENS.filter(function (x) { return x[0] === moyen; })[0], ins = s !== null;
+    var s = solde(), sur = /\/(coaching|ateliers-elysee)(\.html)?$/.test(location.pathname) ? '' : 'ateliers-elysee.html', M = MOYENS.filter(function (x) { return x[0] === moyen; })[0], ins = s !== null;
     var champs = moyen === 'carte'
       ? '<div class="pf-logos"><span style="background:#1A1F71">VISA</span><span style="background:#EB001B">Mastercard</span></div><label>Numéro de carte</label><input disabled placeholder="1234 5678 9012 3456" autocomplete="off"><div class="pf-2"><div><label>Expiration</label><input disabled placeholder="MM / AA" autocomplete="off"></div><div><label>Code de sécurité</label><input disabled placeholder="CVC" autocomplete="off"></div></div><label>Nom sur la carte</label><input disabled placeholder="Prénom Nom" autocomplete="off">'
       : '<label>Numéro ' + M[1] + '</label><input disabled placeholder="07 00 00 00 00" autocomplete="off"><p class="pf-note">Vous confirmerez le paiement sur votre téléphone, avec votre code ' + M[1] + '.</p>';
@@ -331,7 +331,7 @@
     if (id === 'sgi') return '<p>Les frais de votre SGI, tels qu’ils figurent sur sa grille ou votre relevé. Vous aidez des milliers de lecteurs à comparer.</p>' + champ('pfm-sgi', 'Votre SGI', 'ex. SGI Hudson & Cie') + '<div class="pf-2"><div>' + champ('pfm-ouv', 'Frais d’ouverture (F)', '0') + '</div><div>' + champ('pfm-crt', 'Courtage par ordre (%)', '1') + '</div></div><div class="pf-2"><div>' + champ('pfm-gar', 'Droits de garde / an', '10 000 F ou 0,2 %') + '</div><div>' + champ('pfm-min', 'Dépôt minimum (F)', '50 000') + '</div></div>' + champ('pfm-lien', 'Lien vers une photo de la grille (facultatif)', 'Google Drive, WhatsApp Web…') + besoinMail + envoyerB();
     if (id === 'enquete') return '<p>Répondez à l’enquête, puis saisissez le code affiché à la fin.</p><p><a class="pf-lien" href="https://forms.gle/Sczi5p58q9ijuKqp9" target="_blank" rel="noopener">Ouvrir l’enquête →</a></p>' + champ('pfm-code', 'Code de fin d’enquête', 'ex. MOT 2026') + '<button type="button" class="pf-prev" data-act="code-enquete">Valider mon code</button>';
     if (id === 'diag') return localStorage.getItem('efa_mission_diag') ? '<p>Votre diagnostic est fait. Votre crédit vous attend.</p><button type="button" class="pf-prev" data-act="diag">Recevoir mon crédit</button>' : '<p>Six minutes pour faire le point sur votre budget, votre épargne et vos dettes. Le crédit arrive dès votre résultat.</p><p><a class="pf-lien" href="diagnostic.html?src=mission">Faire mon diagnostic →</a></p>';
-    if (id === 'parrain') { if (!mm) return '<p>Indiquez d’abord votre email : votre lien de parrainage en dépend.</p>' + champ('pfm-mail', 'Votre email', 'vous@exemple.com') + '<button type="button" class="pf-prev" data-act="lien-parrain">Créer mon lien</button>'; var cp = codeParrain(mm), L = 'https://efa.africa/coaching?parrain=' + cp; if (!M.parrainSignale) { M.parrainSignale = cp; ecrireM(M); try { fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: '426191fb-4812-4de4-b602-5857464c5916', subject: 'efa.africa · Lien de parrainage créé · ' + cp, from_name: 'Missions efa.africa', email: mm, replyto: mm, code_parrain: cp, a_faire: 'Quand une inscription porte « parrain ' + cp + ' », envoyer un code de 1 crédit à ' + mm + ' (3 au plus).' }) }); } catch (x) {} } return '<p>Partagez votre lien. Quand un proche s’inscrit avec son email, EFA vous envoie un code d’1 crédit (3 proches au plus).</p><input readonly value="' + L + '" id="pfm-lien-p"><div class="pf-2" style="margin-top:8px"><button type="button" class="pf-prev" data-act="copier">Copier le lien</button><a class="pf-prev" style="text-align:center;line-height:46px;text-decoration:none" href="https://wa.me/?text=' + encodeURIComponent('Je me forme à la Bourse et à l’argent avec EFA. 3 crédits offerts pour commencer : ' + L) + '" target="_blank" rel="noopener">WhatsApp</a></div>'; }
+    if (id === 'parrain') { if (!mm) return '<p>Indiquez d’abord votre email : votre lien de parrainage en dépend.</p>' + champ('pfm-mail', 'Votre email', 'vous@exemple.com') + '<button type="button" class="pf-prev" data-act="lien-parrain">Créer mon lien</button>'; var cp = codeParrain(mm), L = 'https://efa.africa/ateliers-elysee?parrain=' + cp; if (!M.parrainSignale) { M.parrainSignale = cp; ecrireM(M); try { fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: '426191fb-4812-4de4-b602-5857464c5916', subject: 'efa.africa · Lien de parrainage créé · ' + cp, from_name: 'Missions efa.africa', email: mm, replyto: mm, code_parrain: cp, a_faire: 'Quand une inscription porte « parrain ' + cp + ' », envoyer un code de 1 crédit à ' + mm + ' (3 au plus).' }) }); } catch (x) {} } return '<p>Partagez votre lien. Quand un proche s’inscrit avec son email, EFA vous envoie un code d’1 crédit (3 proches au plus).</p><input readonly value="' + L + '" id="pfm-lien-p"><div class="pf-2" style="margin-top:8px"><button type="button" class="pf-prev" data-act="copier">Copier le lien</button><a class="pf-prev" style="text-align:center;line-height:46px;text-decoration:none" href="https://wa.me/?text=' + encodeURIComponent('Je me forme à la Bourse et à l’argent avec EFA. 3 crédits offerts pour commencer : ' + L) + '" target="_blank" rel="noopener">WhatsApp</a></div>'; }
     if (id === 'temoignage') return '<p>Ce qu’EFA a changé pour vous, en quelques phrases.</p>' + champ('pfm-tem', 'Votre témoignage', 'Avant… Depuis…', true) + champ('pfm-pre', 'Prénom et ville', 'ex. Ibrahima, Dakar') + '<label class="pf-ck"><input type="checkbox" id="pfm-ok"> J’autorise EFA à publier ce témoignage avec mon prénom.</label>' + besoinMail + envoyerB();
     if (id === 'erreur') return '<p>Un chiffre faux, un lien cassé, une explication peu claire ? Dites-nous où.</p>' + champ('pfm-ou', 'Où ? (page ou cours)', location.pathname.replace(/^\//, '') || 'accueil') + champ('pfm-quoi', 'Ce qui ne va pas, ou votre idée', '', true) + besoinMail + envoyerB();
     if (id === 'beta') return '<p>Inscrivez-vous comme testeur : vous recevrez le prochain outil avant sa sortie, avec une fiche de test courte. Les crédits arrivent après la fiche.</p>' + champ('pfm-sujet', 'Ce qui vous intéresse', 'Bourse, tontine, budget, entreprise…') + besoinMail + envoyerB('Devenir testeur');

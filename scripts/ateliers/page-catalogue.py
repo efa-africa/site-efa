@@ -115,7 +115,11 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
 .aide{margin-top:52px;background:#EEF5FC;border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
 .aide p{max-width:60ch;color:var(--ink2)}.aide b{color:#0B1220}
 .bouton{display:inline-flex;align-items:center;font-weight:800;font-size:16px;min-height:46px;padding:12px 22px;border-radius:8px;background:var(--corail);color:#fff!important}
-@media (max-width:640px){.th-tete{grid-template-columns:1fr}.th-tete img{aspect-ratio:21/9!important}}
+.eli{margin-top:52px;background:#0B1220;color:#fff;border-radius:14px;padding:22px;display:grid;grid-template-columns:140px 1fr;gap:22px;align-items:center}
+.eli img{width:140px!important;height:175px!important;max-width:none!important;object-fit:cover!important;object-position:50% 12%;border-radius:12px!important;display:block}
+.cat .eli h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-top:6px}.eli p:not(.th-k){color:#C9D1DE;margin-top:8px!important;max-width:56ch}
+.eli-b{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.bouton.b2{background:#FFFFFF;color:#0B1220!important}
+@media (max-width:640px){.eli{grid-template-columns:1fr;gap:14px}.eli img{width:88px!important;height:88px!important;border-radius:999px!important}.th-tete{grid-template-columns:1fr}.th-tete img{aspect-ratio:21/9!important}}
 """
 JS = r"""
 (function(){
@@ -158,6 +162,7 @@ page = """<!DOCTYPE html>
   <nav class="puces" aria-label="Thèmes">%s</nav>
   <section class="reprise" id="reprise" hidden aria-label="Je continue"><div class="rg-t"><h3>Je continue</h3><span>là où je me suis arrêté</span></div><div class="rail"></div></section>
   %s
+  <section class="eli" aria-labelledby="eli-t"><img src="elysee-portrait.jpg" alt="Portrait d’Élysée Johnson" width="606" height="909" loading="lazy"><div><p class="th-k" style="color:#6DB8F2">Avec Élysée Johnson</p><h2 id="eli-t">Votre cas, avec le fondateur d’EFA.</h2><p>Des ateliers approfondis où il répond personnellement à votre question, et des rendez-vous pour décider.</p><div class="eli-b"><a class="bouton" href="ateliers-elysee.html#coaching-elysee">Les ateliers avec Élysée</a><a class="bouton b2" href="ateliers-elysee.html#rendez-vous-elysee">Réserver un rendez-vous</a></div></div></section>
   <div class="aide"><p><b>Vous ne savez pas par où commencer ?</b> Le diagnostic vous indique le thème qui compte le plus pour vous aujourd’hui, en 3 minutes.</p><a class="bouton" href="diagnostic.html">Faire mon diagnostic</a></div>
 </main>
 <script>%s</script>

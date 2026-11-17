@@ -41,7 +41,7 @@ for f in ['news/news-data.json', 'ambassadeurs-semaine.json'] + glob.glob('*.jso
     except Exception as e: pb.append('Fichier %s illisible : %s' % (f, e))
 
 # 4. Pages clés dans un navigateur
-PAGES = ['index.html', 'coaching.html', 'generateur-de-projet.html', 'news.html', 'investir.html', 'ambassadeurs.html',
+PAGES = ['index.html', 'ateliers.html', 'ateliers-elysee.html', 'generateur-de-projet.html', 'news.html', 'investir.html', 'ambassadeurs.html',
          'diagnostic.html', 'outils.html', 'marches.html', 'acteurs.html']
 try:
     der_art = sorted(glob.glob('news/20*.html'))[-1]; PAGES.append(der_art)
