@@ -27,7 +27,7 @@ THEMES = [
    ['retraite-droits', 'retraite-sans-pension', 'assurance-vie'], ['etudes-enfant', 'deces-parent', 'preter-ou-donner']),
   ('terrain', 'Terrain et logement', 'Savoir ce que vos revenus permettent, et acheter un lot sans se faire avoir.', 'univers-terrain.webp',
    ['acheter-construire-attendre', 'acheter-un-lot'], []),
-  ('arnaques', 'Se protéger des arnaques', 'Reconnaître la promesse trop belle et le faux conseiller, avant de payer.', 'gen-arnaques.webp',
+  ('arnaques', 'Se protéger des arnaques', 'Reconnaître la promesse trop belle et le faux conseiller, avant de payer.', 'theme-arnaques-900.webp',
    ['avant-de-confier-ou-d-investir', 'rendement-garanti', 'faux-conseiller'], ['crypto-reseaux', 'vente-en-reseau']),
 ]
 vus = {i for th in THEMES for i in th[4] + th[5]}
