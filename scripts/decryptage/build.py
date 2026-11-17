@@ -4,6 +4,7 @@ Lancer : python3 scripts/decryptage/build.py  → écrit decryptage.html"""
 import json, html, re
 D = {a['id']: a for a in json.load(open('news/news-data.json', encoding='utf8'))['articles']}
 E = lambda t: html.escape(str(t), quote=True)
+EXT = lambda u: ' target="_blank" rel="noopener"' if u.startswith('http') else ''
 DOSSIERS = [
  dict(slug='dette', k='Dossier 1 · Les États et leur dette', t='La dette des États africains : <em>qui paie, et combien&nbsp;?</em>',
   chapo='Quand un État emprunte trop, ce sont ses recettes, ses prêteurs et parfois ses habitants qui paient. Les chiffres de ces dernières semaines montrent comment.',
@@ -55,7 +56,7 @@ for d in DOSSIERS:
 src = open('personnalite.html', encoding='utf8').read()
 hdr = src[src.index('<header class="header clone-head"'):src.index('</header>', src.index('<header class="header clone-head"')) + 9]
 pv = src[src.index('<section class="efa-pourvous"'):src.index('</section>', src.index('<section class="efa-pourvous"')) + 10]
-actus = ''.join('<a class="dc-actu" href="%s" target="_blank" rel="noopener"><img src="%s" alt="" loading="lazy" decoding="async"><span class="dc-actu-t"><small>Actu décryptée · %s</small><b>%s</b><em>%s</em><span>%s</span><i>Lire l’actu décryptée →</i></span></a>' % (E(a['url']), E(a['img']), E(a['date']), E(a['titre']), E(a['sous']), E(a['resume'])) for a in ACTUS)
+actus = ''.join('<a class="dc-actu" href="%s"%s><img src="%s" alt="" loading="lazy" decoding="async"><span class="dc-actu-t"><small>Actu décryptée · %s</small><b>%s</b><em>%s</em><span>%s</span><i>Lire l’actu décryptée →</i></span></a>' % (E(a['url']), EXT(a['url']), E(a['img']), E(a['date']), E(a['titre']), E(a['sous']), E(a['resume'])) for a in ACTUS)
 sommaire = ''.join('<a href="#%s"><small>%s</small><b>%s</b></a>' % (d['slug'], E(d['k']), re.sub('<[^>]+>', '', d['t']).replace('&nbsp;', ' ')) for d in DOSSIERS)
 page = '''<!doctype html>
 <html data-clone data-clone-plein lang="fr">
