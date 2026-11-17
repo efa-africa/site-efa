@@ -35,7 +35,7 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 .pastille{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;background:var(--creme);color:var(--ink2)}
 .pastille.ok{background:#DDF3E6;color:#14603A}.pastille.fin{background:#F4DCD6;color:#8A2413}
 </style>
-<link rel="stylesheet" href="clone/habillage.css?v=20261116a">
+<link rel="stylesheet" href="clone/habillage.css?v=20261117a">
 </head>
 <body>
 <header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Apprendre et former</a><a href="index.html#pilier-progresser">Être coaché</a><a href="index.html#pilier-agir">Se lancer</a><a href="news.html">EFA News</a><a href="etudes-prospective.html">Études et prospective</a><a href="auteur.html#auteur">À propos</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · où j’en suis</a><a href="diagnostic.html">Faire mon diagnostic</a><a href="generateur-de-projet.html">EFA Déclic</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">efa<span style="color:#DA3C1B">.</span> abonnement · dès 10 000 F</a></div><a href="index.html#benefices">Apprendre et former <span>↗</span></a><a class="menu-sous" href="outils.html">Outils et simulateurs <span>↗</span></a><a href="index.html#pilier-progresser">Être coaché <span>↗</span></a><a href="index.html#pilier-agir">Se lancer <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Projets à suivre <span>↗</span></a><a class="menu-sous" href="marches.html">Marchés : la Bourse du jour <span>↗</span></a><a href="news.html">EFA News <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptage <span>↗</span></a><a href="etudes-prospective.html">Études et prospective <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 · prospective <span>↗</span></a><a href="auteur.html#auteur">À propos <span>↗</span></a><a class="menu-cle" href="organisations.html">Pour les organisations <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code d’organisation <span>↗</span></a><a href="rendez-vous.html#contact">Nous contacter <span>↗</span></a></nav></header>
@@ -63,6 +63,16 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 <div id="resultat"></div>
 </section>
 
+<section class="carte" id="unite">
+<h2>Achat à l’unité · code d’un atelier</h2>
+<p class="note">Après réception du paiement (Orange Money ou Wave), créez le code de l’atelier acheté et envoyez-le sur WhatsApp. Il ouvre cet atelier seul, sans date de fin.</p>
+<form id="f-unite" class="carte" style="padding:0">
+<label>Atelier<select name="at"><option value="economie-pour-investir">Comprendre l’économie pour mieux investir · 5 000 F</option><option value="retraite-droits">Préparer ma retraite : droits, besoins et décisions · 5 000 F</option></select></label>
+<button type="submit">Créer le code</button>
+</form>
+<div id="r-unite"></div>
+</section>
+
 <section class="carte">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h2>Accès ouverts</h2><button type="button" class="petit" id="recharger">Actualiser</button></div>
 <div id="liste"><p class="note">Chargement…</p></div>
@@ -71,6 +81,7 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
 </div>
 </main>
 <section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
 
 
 
@@ -138,6 +149,15 @@ button[disabled]{opacity:.55}button.sombre{background:var(--nuit)}button.petit{m
   if (cle()) entrer();
 })();
 </script>
-<script src="clone/habillage.js?v=20261116a" defer></script>
+<script src="clone/ateliers-data.js?v=20261117a"></script>
+<script>
+(function(){ var f=document.getElementById('f-unite'); if(!f) return;
+  var PAGES={'economie-pour-investir':['atelier-economie-pour-investir.html','Comprendre l’économie pour mieux investir'],'retraite-droits':['atelier-retraite-droits.html','Préparer ma retraite : droits, besoins et décisions']};
+  f.addEventListener('submit',function(e){ e.preventDefault(); var id=f.at.value, c=window.EFA_ATELIERS.codeUnite(id), p=PAGES[id];
+    var msg='Merci pour votre paiement. Votre code pour l’atelier « '+p[1]+' » : '+c+'\nOuvrez https://efa.africa/'+p[0]+' puis « J’ai un code d’accès ». L’atelier reste ensuite dans votre espace Mon EFA.';
+    document.getElementById('r-unite').innerHTML='<p style="font:800 24px/1.2 monospace;letter-spacing:.06em;margin:12px 0">'+c+'</p><p class="note">Message à envoyer :</p><textarea readonly rows="4" style="width:100%;box-sizing:border-box;font:inherit">'+msg.replace(/</g,'&lt;')+'</textarea><p><a class="petit" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(msg)+'">Ouvrir WhatsApp avec ce message</a></p>'; });
+})();
+</script>
+<script src="clone/habillage.js?v=20261117a" defer></script>
 </body>
 </html>

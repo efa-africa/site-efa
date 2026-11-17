@@ -6,7 +6,7 @@
    Sinon le contenu est masqué et la page propose : les crédits (3 offerts avec l'email), ou efa. abonnement.
    Les ateliers gratuits ne chargent pas ce fichier. */
 (function () {
-  /* fichier : [id, prix FCFA, titre, avec Élysée Johnson, chapitres offerts en avant-goût] */
+  /* fichier : [id, prix FCFA, titre, avec Élysée Johnson, chapitres offerts en avant-goût, 'unite' = abonnés ou achat à l'unité] */
   var P = {
     'premiers-pas-bourse': ['premiers-pas-bourse', 30000, 'Mes premiers pas en Bourse', 0, 2],
     'coach-bourse': ['premier-ordre-brvm', 50000, 'Mon premier ordre à la Bourse (BRVM)', 1, 1],
@@ -35,7 +35,10 @@
     'atelier-rembourser-sans-se-noyer': ['rembourser-sans-se-noyer', 15000, 'Rembourser sans se noyer'],
     'atelier-eviter-le-surendettement': ['eviter-le-surendettement', 15000, 'Éviter le surendettement'],
     'atelier-quand-le-credit-va-mal': ['quand-le-credit-va-mal', 30000, 'Quand le crédit va mal'],
-    'atelier-grandir-avec-le-credit': ['grandir-avec-le-credit', 30000, 'Grandir avec le crédit']
+    'atelier-grandir-avec-le-credit': ['grandir-avec-le-credit', 30000, 'Grandir avec le crédit'],
+    /* « unite » : réservé aux abonnés, ou acheté à l'unité (code EFAU-…) ; pas d'ouverture par crédits */
+    'atelier-economie-pour-investir': ['economie-pour-investir', 5000, 'Comprendre l’économie pour mieux investir', 0, 1, 'unite'],
+    'atelier-retraite-droits': ['retraite-droits', 5000, 'Préparer ma retraite : droits, besoins et décisions', 0, 1, 'unite']
   };
   var nom = (location.pathname.split('/').pop() || '').replace(/\.html$/, ''), A = P[nom];
   window.EFA_VERROU = { pages: P };
@@ -75,7 +78,7 @@
     + '#efa-verrou details summary{cursor:pointer;font-weight:700;color:#0B1220}#efa-verrou details form{margin-top:10px}';
   (document.head || html).appendChild(st);
   pret(function () {
-    charger('clone/ateliers-data.js?v=20261114b').then(decider, function () { montrer(null); });
+    charger('clone/ateliers-data.js?v=20261117a').then(decider, function () { montrer(null); });
   });
   }
 
@@ -122,11 +125,14 @@
     else if (active(fo) && fo.f === 'essentiel') c2 = '<p>Votre formule Essentiel ouvre déjà un autre atelier. Pour tous les ouvrir, passez à Intégral.</p><a class="v-b s" href="abonnement.html">Voir les formules</a>';
     else if (fo && !active(fo)) c2 = '<p>Votre formule s’est terminée le ' + date(fo.fin) + '.</p><a class="v-b s" href="abonnement.html">Renouveler ma formule</a>';
     else c2 = '<p>Cet atelier et tous les autres, pour 30 jours. Essentiel dès 10 000 F : un atelier de votre choix.</p><a class="v-b s" href="abonnement.html">Voir les formules</a><p class="v-n">Déjà abonné ? <a class="v-l" href="abonnement.html#acces">Entrer mon code à 6 chiffres</a></p>';
-    g.innerHTML = '<div class="v-in"><p class="v-sur">Atelier · ' + fcfa(A[1]) + ' · ' + pl(COUT) + '</p><h1 id="v-t">' + esc(A[2]) + '</h1>'
+    var UNITE = A[5] === 'unite', dem = lireJ('efa_achat_unite') || {}, c3;
+    if (UNITE) c3 = dem[ID] ? '<p>Votre demande est enregistrée. Nous vous écrivons sur WhatsApp sous 24 h : paiement par Orange Money ou Wave, puis votre code d’accès.</p><p class="v-n">Vous avez reçu votre code ? Entrez-le dans « J’ai un code d’accès », juste en dessous.</p>'
+      : '<p>Cet atelier seul, pour toujours, dans votre espace Mon EFA : <b>' + fcfa(A[1]) + '</b>, une fois.</p><form id="v-achat" novalidate><label class="v-n" for="v-ap">Votre prénom</label><input id="v-ap" autocomplete="given-name" placeholder="Prénom"><label class="v-n" for="v-aw">Votre numéro WhatsApp</label><input id="v-aw" type="tel" autocomplete="tel" inputmode="tel" placeholder="+225 07 00 00 00 00"><button class="v-b" type="submit">Acheter cet atelier · ' + fcfa(A[1]) + '</button></form><p class="v-n">Paiement par Orange Money ou Wave. Nous vous écrivons sur WhatsApp sous 24 h avec votre code.</p>';
+    g.innerHTML = '<div class="v-in"><p class="v-sur">Atelier · ' + (UNITE ? 'abonnés, ou ' + fcfa(A[1]) + ' à l’unité' : fcfa(A[1]) + ' · ' + pl(COUT)) + '</p><h1 id="v-t">' + esc(A[2]) + '</h1>'
       + (APERCU ? '<p>' + (APERCU > 1 ? 'Les ' + APERCU + ' premiers chapitres vous étaient offerts.' : 'Le premier chapitre vous était offert.') + ' Pour continuer, deux façons d’ouvrir la suite :</p>' : '<p>Cet atelier fait partie de l’école EFA. Deux façons de l’ouvrir :</p>')
-      + '<div class="v-c"><h2>Avec mes crédits</h2>' + c1 + '</div>'
-      + '<div class="v-c"><h2>Avec efa<span style="color:#DA3C1B">.</span> abonnement</h2>' + c2 + '</div>'
-      + (D ? '<details><summary>J’ai un code d’accès</summary><form id="v-code" novalidate><label class="v-n" for="v-k">Code promo, accès équipe ou Pass Étudiant</label><input id="v-k" autocomplete="off" autocapitalize="characters" placeholder="EFA-XXXX-XXXX"><button class="v-b s" type="submit">Valider</button></form></details>' : '')
+      + (UNITE ? '<div class="v-c"><h2>Inclus dans efa<span style="color:#DA3C1B">.</span> abonnement</h2>' + c2 + '</div><div class="v-c"><h2>Ou l’acheter à l’unité</h2>' + c3 + '</div>'
+        : '<div class="v-c"><h2>Avec mes crédits</h2>' + c1 + '</div><div class="v-c"><h2>Avec efa<span style="color:#DA3C1B">.</span> abonnement</h2>' + c2 + '</div>')
+      + (D ? '<details' + (UNITE && dem[ID] ? ' open' : '') + '><summary>J’ai un code d’accès</summary><form id="v-code" novalidate><label class="v-n" for="v-k">' + (UNITE ? 'Code d’achat, accès équipe ou Pass Étudiant' : 'Code promo, accès équipe ou Pass Étudiant') + '</label><input id="v-k" autocomplete="off" autocapitalize="characters" placeholder="' + (UNITE ? 'EFAU-XXXX-XXXX' : 'EFA-XXXX-XXXX') + '"><button class="v-b s" type="submit">Valider</button></form></details>' : '')
       + '<p class="v-ko" id="v-ko" role="alert" hidden></p>'
       + (APERCU ? '<p><button type="button" class="v-l" id="v-retour" style="background:none;border:0;padding:0;font:inherit;cursor:pointer">← Revenir ' + (APERCU > 1 ? 'aux chapitres offerts' : 'au chapitre offert') + '</button></p>' : '') + '</div>';
     var vr = document.getElementById('v-retour');
@@ -140,6 +146,15 @@
       var o = etat(); o.mail = v; ecrire(o); try { localStorage.setItem('efa_email_v1', v); } catch (x) {}
       var par = lireS('efa_parrain'); noter('Inscription phase de test · ' + OFFERTS + ' crédits' + (par ? ' · parrain ' + par : ''), ID, v);
       if (credits() >= COUT && D) payer(D); else montrer(D);
+    });
+    var fa = document.getElementById('v-achat');
+    if (fa) fa.addEventListener('submit', function (e) {
+      e.preventDefault(); var p = document.getElementById('v-ap').value.trim(), w = document.getElementById('v-aw').value.trim();
+      if (!p) return erreur('Indiquez votre prénom.');
+      if (w.replace(/\D/g, '').length < 8) return erreur('Indiquez un numéro WhatsApp complet, avec l’indicatif du pays.');
+      var d = lireJ('efa_achat_unite') || {}; d[ID] = { p: p, w: w, d: new Date().toISOString().slice(0, 10) }; try { localStorage.setItem('efa_achat_unite', JSON.stringify(d)); } catch (x) {}
+      noter('Achat à l’unité · ' + A[2] + ' · ' + fcfa(A[1]), p + ' · WhatsApp ' + w + ' · ' + ID + ' · code à créer dans admin-abonnement (achat à l’unité)', mail() || 'contact@efa.africa');
+      montrer(D);
     });
     var bo = document.getElementById('v-ouvrir'); if (bo) bo.addEventListener('click', function () { if (D) payer(D); else erreur('Rechargez la page et réessayez.'); });
     var bc = document.getElementById('v-choisir');
@@ -155,6 +170,9 @@
       if (/^\d{6}$/.test(v)) { location.href = 'abonnement.html#acces'; return; }
       if (D.equipeValide(v)) { try { localStorage.setItem('efa_equipe', v); } catch (x) {} return ouvrir(); }
       if (D.ecoleValide(v)) { if (A[3]) return erreur('Le Pass Étudiant ouvre les ateliers enregistrés et les cours, pas les ateliers avec Élysée Johnson.'); try { localStorage.setItem('efa_ecole', v); } catch (x) {} return ouvrir(); }
+      if (D.uniteValide && D.uniteValide(v, ID)) { var ou = etat(); ou.ok[ID] = v; ecrire(ou); noter('Code à l’unité · ' + A[2], ID + ' · ' + v, mail()); return ouvrir(); }
+      if (/^EFAU-/.test(v)) return erreur('Ce code d’achat est valable pour un autre atelier. Vérifiez la page, ou écrivez-nous.');
+      if (UNITE && D.cleValide(v)) return erreur('Cet atelier s’ouvre avec un abonnement ou un code d’achat (EFAU-…).');
       if (D.cleValide(v)) { var o = etat(); o.ok[ID] = v; ecrire(o); noter('Code promo · ' + A[2], ID + ' · ' + v, mail()); return ouvrir(); }
       erreur('Ce code n’est pas reconnu. Vérifiez les lettres et les tirets.');
     });

@@ -136,6 +136,7 @@
   function afficher(source) {
     if (vu || ferme() || document.querySelector('.efa-promo')) return;
     if (/\/(premiers-pas-bourse|coach-bourse)(\.html)?$/.test(location.pathname)) return; // pas au milieu d'un cours
+    try { var nm = (location.pathname.split('/').pop() || '').replace(/\.html$/, ''), VP = window.EFA_VERROU && window.EFA_VERROU.pages && window.EFA_VERROU.pages[nm]; if (VP && VP[5] === 'unite') return; } catch (e) {} // ateliers abonnés ou à l'unité : les crédits ne les ouvrent pas
     vu = true;
     var st = document.createElement('style');
     st.textContent = '.efa-promo{position:fixed;z-index:60;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translate(-50%,24px);opacity:0;transition:opacity .35s,transform .35s;width:min(640px,calc(100% - 24px));background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(11,18,32,.28);font-family:"Source Sans 3","Source Sans Pro",system-ui,sans-serif;color:#0B1220;overflow:hidden}'
