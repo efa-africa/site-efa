@@ -61,6 +61,21 @@ for cle, titre, chapo, img, parc, carteL in THEMES:
         s += '<div class="rg"><div class="rg-t"><h3>À la carte</h3><span>selon votre situation</span>%s</div><div class="rail">%s</div></div>' % (FL, ''.join(carte(i) for i in carteL))
     blocs.append(s + '</section>')
 total = len(D)
+import subprocess
+IDX = json.loads(subprocess.check_output(['node', 'scripts/ateliers/index-recherche.js']))
+EXTRA = {'premiers-pas-bourse': 'débuter en Bourse BRVM action SGI compte-titres premier pas cotation marché indice prêt à investir',
+         'premier-ordre-brvm': 'passer un ordre de Bourse BRVM SGI ordre limité au marché carnet acheter vendre action frais courtage',
+         'jeu-portefeuille-baisse': 'jeu portefeuille baisse Bourse krach panique vendre garder diversification simulation'}
+THEME_DE = {}
+for th in THEMES:
+    for i in th[4] + th[5]: THEME_DE.setdefault(i, []).append(th[1])
+REC = []
+for i, a in D.items():
+    ix = IDX.get(i, {})
+    REC.append({'id': i, 't': a['t'], 'p': a['page'], 'n': a.get('n') or 0, 'th': THEME_DE.get(i, []), 'h': ix.get('h1', ''), 'ch': ix.get('ch', []),
+                'x': (ix.get('x', '') + ' ' + EXTRA.get(i, '')).strip(),
+                'acc': 'Jeu gratuit' if a.get('jeu') else ('Gratuit' if not a['prix'] else ('Abonnés ou 5 000 F' if i in UNITE else 'Abonnés'))})
+json.dump(REC, open('data/ateliers-recherche.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 
 modele = open('mon-efa.html', encoding='utf-8').read()
 entete = re.search(r'<header class="header clone-head".*?</header>\n<header data-v1-cache class="top"></header>', modele, re.S).group(0)
@@ -119,6 +134,29 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
 .eli img{width:140px!important;height:175px!important;max-width:none!important;object-fit:cover!important;object-position:50% 12%;border-radius:12px!important;display:block}
 .cat .eli h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-top:6px}.eli p:not(.th-k){color:#C9D1DE;margin-top:8px!important;max-width:56ch}
 .eli-b{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.bouton.b2{background:#FFFFFF;color:#0B1220!important}
+.rech{margin-top:22px;position:relative}
+.rech-b{display:flex;align-items:center;gap:10px;background:#EEF5FC;border-radius:14px;padding:6px 6px 6px 16px}
+.rech-b svg{flex:0 0 auto;width:22px;height:22px;stroke:#0B1220;fill:none;stroke-width:2}
+.rech-b input{flex:1;min-width:0;border:0!important;background:transparent!important;box-shadow:none!important;font:600 18px/1.3 "Source Sans 3",system-ui,sans-serif;color:#0B1220;padding:12px 0!important;outline:none;min-height:0!important;height:auto!important}
+.rech-b button{border:0;background:#0B1220;color:#fff;font:800 15px "Source Sans 3",sans-serif;border-radius:10px;padding:12px 16px;cursor:pointer}
+.rech-b:focus-within{box-shadow:0 0 0 3px #1B71B2}
+html[data-clone] .cat .rech-b input,html[data-clone] .cat .rech-b input:hover,html[data-clone] .cat .rech-b input:focus{border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;padding:12px 0!important;min-height:0!important;outline:none!important}
+.mots{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mots span{font-size:14px;color:#5F6676;align-self:center;margin-right:2px}
+.mots button{border:0;background:#fff;box-shadow:inset 0 0 0 1.5px #DCE8ED;color:#0B1220;font:700 14.5px "Source Sans 3",sans-serif;border-radius:999px;padding:7px 13px;cursor:pointer}
+.mots button:hover{box-shadow:inset 0 0 0 1.5px #1B71B2}
+.res{margin-top:22px}.res h2{font-size:clamp(22px,3vw,28px)}
+.res-n{color:#5F6676;margin-top:6px!important}
+.res-l{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
+.res-c{display:flex;flex-direction:column;gap:6px;background:#EEF5FC;border-radius:14px;padding:16px 18px}
+.res-c .rk{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1B71B2}
+.res-c h3{font-size:18px;line-height:1.25}
+.res-c p{font-size:15px;color:#4E5566;line-height:1.45}
+.res-c mark{background:#FDE3B8;color:inherit;border-radius:3px;padding:0 2px}
+.res-c .rb{margin-top:auto;padding-top:6px;display:flex;gap:8px;align-items:center;font-size:14px;color:#5F6676}
+.res-c .rb b{font-size:13px;font-weight:800;padding:3px 10px;border-radius:999px;background:#fff;color:#1B71B2}
+.res-vide{background:#EEF5FC;border-radius:14px;padding:18px;margin-top:14px}
+body.cherche .th,body.cherche .reprise,body.cherche .puces{display:none!important}
 @media (max-width:640px){.eli{grid-template-columns:1fr;gap:14px}.eli img{width:88px!important;height:88px!important;border-radius:999px!important}.th-tete{grid-template-columns:1fr}.th-tete img{aspect-ratio:21/9!important}}
 """
 JS = r"""
@@ -135,6 +173,7 @@ JS = r"""
   if(cours.length){ var z=document.getElementById('reprise'), r=z.querySelector('.rail');
     cours.forEach(function(id){ var c=document.querySelector('.ca[data-id="'+id+'"]').cloneNode(true); c.querySelector('.ca-n').textContent='Je continue'; r.appendChild(c); }); z.hidden=false; }
   document.addEventListener('click',function(ev){ var b=ev.target.closest&&ev.target.closest('.fl button'); if(!b) return; var r=b.closest('.rg').querySelector('.rail'); r.scrollBy({left:+b.dataset.d*r.clientWidth*.8,behavior:'smooth'}); });
+%%RECHERCHE%%
   var h=document.querySelector('.clone-head'); if(h) document.documentElement.style.setProperty('--haut',h.offsetHeight+'px');
   var P=[].slice.call(document.querySelectorAll('.puces a')), T=P.map(function(a){return document.querySelector(a.getAttribute('href'));});
   if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(x){ if(x.isIntersecting){ var i=T.indexOf(x.target); P.forEach(function(a,j){a.classList.toggle('on',j===i);}); var a=P[i]; a.parentNode.scrollTo({left:a.offsetLeft-16,behavior:'smooth'}); } }); },{rootMargin:'-40% 0px -55% 0px'}); T.forEach(function(t){io.observe(t);}); }
@@ -159,6 +198,9 @@ page = """<!DOCTYPE html>
   <p class="cat-k">Les ateliers EFA · %d ateliers</p>
   <h1>Choisissez un thème. Suivez le parcours, ou piochez.</h1>
   <p class="cat-chapo">Chaque thème a son parcours principal, dans l’ordre, puis des ateliers à la carte selon votre situation. Faites glisser les rangées pour tout voir. Vos ateliers commencés restent dans Mon EFA.</p>
+  <form class="rech" role="search" id="rech" action="ateliers.html"><label class="rech-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span style="position:absolute;left:-9999px">Chercher un atelier</span><input type="search" name="q" id="q" placeholder="Chercher : dividende, tontine, CNPS, crédit…" autocomplete="off" enterkeyhint="search"><button type="submit">Chercher</button></label>
+  <div class="mots" aria-label="Mots clés"><span>Mots clés :</span><button type="button" data-m="Budget">Budget</button><button type="button" data-m="Épargne">Épargne</button><button type="button" data-m="Tontine">Tontine</button><button type="button" data-m="BRVM">BRVM</button><button type="button" data-m="Dividendes">Dividendes</button><button type="button" data-m="Crédit">Crédit</button><button type="button" data-m="Dettes">Dettes</button><button type="button" data-m="Retraite">Retraite</button><button type="button" data-m="Terrain">Terrain</button><button type="button" data-m="Mon activité">Mon activité</button><button type="button" data-m="Arnaques">Arnaques</button><button type="button" data-m="Bons du Trésor">Bons du Trésor</button><button type="button" data-m="Crypto">Crypto</button><button type="button" data-m="Inflation">Inflation</button></div></form>
+  <section class="res" id="res" hidden aria-live="polite"></section>
   <nav class="puces" aria-label="Thèmes">%s</nav>
   <section class="reprise" id="reprise" hidden aria-label="Je continue"><div class="rg-t"><h3>Je continue</h3><span>là où je me suis arrêté</span></div><div class="rail"></div></section>
   %s
@@ -169,5 +211,6 @@ page = """<!DOCTYPE html>
 %s</body>
 </html>
 """ % (CSS, entete, total, ''.join(puces), '\n'.join(blocs), JS, pied)
+page = page.replace('%%RECHERCHE%%', open('scripts/ateliers/recherche.js', encoding='utf-8').read())
 open('ateliers.html', 'w', encoding='utf-8').write(page)
 print('ateliers.html : %d ateliers, %d thèmes' % (total, len(THEMES)))

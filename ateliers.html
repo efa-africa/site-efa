@@ -62,6 +62,29 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
 .eli img{width:140px!important;height:175px!important;max-width:none!important;object-fit:cover!important;object-position:50% 12%;border-radius:12px!important;display:block}
 .cat .eli h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-top:6px}.eli p:not(.th-k){color:#C9D1DE;margin-top:8px!important;max-width:56ch}
 .eli-b{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.bouton.b2{background:#FFFFFF;color:#0B1220!important}
+.rech{margin-top:22px;position:relative}
+.rech-b{display:flex;align-items:center;gap:10px;background:#EEF5FC;border-radius:14px;padding:6px 6px 6px 16px}
+.rech-b svg{flex:0 0 auto;width:22px;height:22px;stroke:#0B1220;fill:none;stroke-width:2}
+.rech-b input{flex:1;min-width:0;border:0!important;background:transparent!important;box-shadow:none!important;font:600 18px/1.3 "Source Sans 3",system-ui,sans-serif;color:#0B1220;padding:12px 0!important;outline:none;min-height:0!important;height:auto!important}
+.rech-b button{border:0;background:#0B1220;color:#fff;font:800 15px "Source Sans 3",sans-serif;border-radius:10px;padding:12px 16px;cursor:pointer}
+.rech-b:focus-within{box-shadow:0 0 0 3px #1B71B2}
+html[data-clone] .cat .rech-b input,html[data-clone] .cat .rech-b input:hover,html[data-clone] .cat .rech-b input:focus{border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;padding:12px 0!important;min-height:0!important;outline:none!important}
+.mots{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mots span{font-size:14px;color:#5F6676;align-self:center;margin-right:2px}
+.mots button{border:0;background:#fff;box-shadow:inset 0 0 0 1.5px #DCE8ED;color:#0B1220;font:700 14.5px "Source Sans 3",sans-serif;border-radius:999px;padding:7px 13px;cursor:pointer}
+.mots button:hover{box-shadow:inset 0 0 0 1.5px #1B71B2}
+.res{margin-top:22px}.res h2{font-size:clamp(22px,3vw,28px)}
+.res-n{color:#5F6676;margin-top:6px!important}
+.res-l{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
+.res-c{display:flex;flex-direction:column;gap:6px;background:#EEF5FC;border-radius:14px;padding:16px 18px}
+.res-c .rk{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1B71B2}
+.res-c h3{font-size:18px;line-height:1.25}
+.res-c p{font-size:15px;color:#4E5566;line-height:1.45}
+.res-c mark{background:#FDE3B8;color:inherit;border-radius:3px;padding:0 2px}
+.res-c .rb{margin-top:auto;padding-top:6px;display:flex;gap:8px;align-items:center;font-size:14px;color:#5F6676}
+.res-c .rb b{font-size:13px;font-weight:800;padding:3px 10px;border-radius:999px;background:#fff;color:#1B71B2}
+.res-vide{background:#EEF5FC;border-radius:14px;padding:18px;margin-top:14px}
+body.cherche .th,body.cherche .reprise,body.cherche .puces{display:none!important}
 @media (max-width:640px){.eli{grid-template-columns:1fr;gap:14px}.eli img{width:88px!important;height:88px!important;border-radius:999px!important}.th-tete{grid-template-columns:1fr}.th-tete img{aspect-ratio:21/9!important}}
 </style>
 <link rel="stylesheet" href="clone/habillage.css?v=20261117a">
@@ -73,6 +96,9 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
   <p class="cat-k">Les ateliers EFA · 57 ateliers</p>
   <h1>Choisissez un thème. Suivez le parcours, ou piochez.</h1>
   <p class="cat-chapo">Chaque thème a son parcours principal, dans l’ordre, puis des ateliers à la carte selon votre situation. Faites glisser les rangées pour tout voir. Vos ateliers commencés restent dans Mon EFA.</p>
+  <form class="rech" role="search" id="rech" action="ateliers.html"><label class="rech-b"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span style="position:absolute;left:-9999px">Chercher un atelier</span><input type="search" name="q" id="q" placeholder="Chercher : dividende, tontine, CNPS, crédit…" autocomplete="off" enterkeyhint="search"><button type="submit">Chercher</button></label>
+  <div class="mots" aria-label="Mots clés"><span>Mots clés :</span><button type="button" data-m="Budget">Budget</button><button type="button" data-m="Épargne">Épargne</button><button type="button" data-m="Tontine">Tontine</button><button type="button" data-m="BRVM">BRVM</button><button type="button" data-m="Dividendes">Dividendes</button><button type="button" data-m="Crédit">Crédit</button><button type="button" data-m="Dettes">Dettes</button><button type="button" data-m="Retraite">Retraite</button><button type="button" data-m="Terrain">Terrain</button><button type="button" data-m="Mon activité">Mon activité</button><button type="button" data-m="Arnaques">Arnaques</button><button type="button" data-m="Bons du Trésor">Bons du Trésor</button><button type="button" data-m="Crypto">Crypto</button><button type="button" data-m="Inflation">Inflation</button></div></form>
+  <section class="res" id="res" hidden aria-live="polite"></section>
   <nav class="puces" aria-label="Thèmes"><a href="#budget">Mon budget au quotidien <small>9</small></a><a href="#placer">Placer mon épargne <small>13</small></a><a href="#bourse">La Bourse (BRVM) <small>12</small></a><a href="#credit">Crédit et dettes <small>10</small></a><a href="#activite">Mon activité <small>6</small></a><a href="#famille">Famille et retraite <small>6</small></a><a href="#terrain">Terrain et logement <small>2</small></a><a href="#arnaques">Se protéger des arnaques <small>5</small></a></nav>
   <section class="reprise" id="reprise" hidden aria-label="Je continue"><div class="rg-t"><h3>Je continue</h3><span>là où je me suis arrêté</span></div><div class="rail"></div></section>
   <section class="th" id="budget" aria-labelledby="t-budget"><div class="th-tete"><img src="clone/assets/theme-budget-900.webp" alt="" loading="lazy" width="900" height="506"><div><p class="th-k">9 ateliers</p><h2 id="t-budget">Mon budget au quotidien</h2><p>Savoir où part l’argent, tenir un budget et se constituer une réserve.</p></div></div><div class="rg"><div class="rg-t"><h3>Le parcours</h3><span>4 étapes, dans l’ordre</span><span class="fl"><button type="button" data-d="-1" aria-label="Précédents">‹</button><button type="button" data-d="1" aria-label="Suivants">›</button></span></div><div class="rail parc"><a class="ca" href="atelier-ou-passe-mon-argent.html" data-id="ou-passe-mon-argent"><span class="ca-n">Étape 1</span><h3>Où est passé mon argent ?</h3><span class="ca-m">14 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px g">Gratuit</span></span></a><a class="ca" href="atelier-budget-qui-tient.html" data-id="budget-qui-tient"><span class="ca-n">Étape 2</span><h3>Mon budget qui tient</h3><span class="ca-m">14 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px g">Gratuit</span></span></a><a class="ca" href="atelier-reserve-securite.html" data-id="reserve-securite"><span class="ca-n">Étape 3</span><h3>Ma réserve de sécurité</h3><span class="ca-m">12 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px g">Gratuit</span></span></a><a class="ca" href="atelier-mobile-money-frais.html" data-id="mobile-money-frais"><span class="ca-n">Étape 4</span><h3>Mobile money et frais : ce que coûtent les petits transferts</h3><span class="ca-m">14 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px">Abonnés</span></span></a></div></div><div class="rg"><div class="rg-t"><h3>À la carte</h3><span>selon votre situation</span><span class="fl"><button type="button" data-d="-1" aria-label="Précédents">‹</button><button type="button" data-d="1" aria-label="Suivants">›</button></span></div><div class="rail"><a class="ca" href="atelier-budget-zero.html" data-id="budget-zero"><span class="ca-n">À la carte</span><h3>Mon budget à zéro : une mission pour chaque franc</h3><span class="ca-m">6 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px">Abonnés</span><span class="px2">ou 5 000 F à l’unité</span></span></a><a class="ca" href="atelier-finances-personnelles.html" data-id="finances-personnelles"><span class="ca-n">À la carte</span><h3>Maîtriser ses finances personnelles : de l’argent qui entre à l’argent qui construit</h3><span class="ca-m">6 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px">Abonnés</span><span class="px2">ou 5 000 F à l’unité</span></span></a><a class="ca" href="atelier-epargner-ne-suffit-pas.html" data-id="epargner-ne-suffit-pas"><span class="ca-n">À la carte</span><h3>Épargner ne suffit pas : que faire de l’argent qui reste ?</h3><span class="ca-m">6 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px">Abonnés</span><span class="px2">ou 5 000 F à l’unité</span></span></a><a class="ca" href="atelier-grosse-somme.html" data-id="grosse-somme"><span class="ca-n">À la carte</span><h3>Recevoir une grosse somme</h3><span class="ca-m">13 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px">Abonnés</span></span></a><a class="ca" href="atelier-preter-ou-donner.html" data-id="preter-ou-donner"><span class="ca-n">À la carte</span><h3>Prêter à un proche, ou donner ?</h3><span class="ca-m">13 activités</span><span class="ca-pr" hidden><i></i></span><span class="ca-b"><span class="px">Abonnés</span></span></a></div></div></section>
@@ -100,6 +126,45 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
   if(cours.length){ var z=document.getElementById('reprise'), r=z.querySelector('.rail');
     cours.forEach(function(id){ var c=document.querySelector('.ca[data-id="'+id+'"]').cloneNode(true); c.querySelector('.ca-n').textContent='Je continue'; r.appendChild(c); }); z.hidden=false; }
   document.addEventListener('click',function(ev){ var b=ev.target.closest&&ev.target.closest('.fl button'); if(!b) return; var r=b.closest('.rg').querySelector('.rail'); r.scrollBy({left:+b.dataset.d*r.clientWidth*.8,behavior:'smooth'}); });
+  /* Recherche des ateliers : texte libre + mots clés, synonymes, sans accents, résultats classés.
+     Index : data/ateliers-recherche.json (fabriqué par page-catalogue.py). Lien direct : ateliers.html?q=… */
+  var IDX=null, form=document.getElementById('rech'), q=document.getElementById('q'), res=document.getElementById('res');
+  function nz(t){ return String(t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[’']/g,' '); }
+  var SYN={bourse:'brvm action actions dividende cotee sgi',brvm:'bourse action actions sgi',action:'bourse brvm',dividende:'dividendes action bourse',
+   credit:'pret emprunt dette dettes banque microfinance',dette:'dettes credit pret rembourser',pret:'credit emprunt preter',emprunt:'credit pret',
+   epargne:'epargner placer placement reserve',placer:'placement epargne placements',placement:'placer epargne fonds',
+   budget:'depenses argent mois',argent:'budget depenses',retraite:'pension cnps cgrae',cnps:'retraite pension',
+   arnaque:'arnaques escroquerie fraude faux rendement garanti',fraude:'arnaque',escroquerie:'arnaque',
+   tontine:'cotisation club tour',club:'tontine investissement',terrain:'lot maison logement immobilier construire',maison:'terrain logement',
+   logement:'terrain maison loyer',activite:'commerce business entreprise boutique',entreprise:'activite commerce business',commerce:'activite',
+   tresor:'bons obligations etat',obligation:'obligations revenu fixe tresor',crypto:'bitcoin ethereum solana ton cryptomonnaie',inflation:'prix hausse pouvoir achat',
+   famille:'enfant enfants parents deces etudes',assurance:'assurance-vie contrat'};
+  var VIDES=['de','la','le','les','des','du','un','une','et','en','mon','ma','mes','je','pour','au','aux','que','qui','comment','quoi','est','sur','dans','avec'];
+  function esc(t){ return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function charger(cb){ if(IDX) return cb(); fetch('data/ateliers-recherche.json').then(function(r){return r.json();}).then(function(d){ function mo(t){ return ' '+nz(t).replace(/[^a-z0-9]+/g,' ')+' '; } IDX=d.map(function(a){ return {a:a,t:mo(a.t),th:mo(a.th.join(' ')),ch:mo(a.ch.join(' ')),x:mo(a.h+' '+a.x)}; }); cb(); }).catch(function(){ res.hidden=false; res.innerHTML='<p class="res-vide">La recherche n’a pas pu se charger. Vérifiez votre connexion.</p>'; }); }
+  function mots(v){ return nz(v).split(/[^a-z0-9]+/).filter(function(m){ return m.length>1&&VIDES.indexOf(m)<0; }); }
+  function racine(m){ return m.length>4?m.replace(/(es|s|x)$/,''):m; }
+  function score(it,ms){ var s=0, tous=true; ms.forEach(function(m){ var r=racine(m), al=[r].concat((SYN[m]||SYN[r]||'').split(' ').filter(Boolean).map(racine)), best=0;
+      al.forEach(function(w,k){ var f=k?0.6:1, v=0, W=' '+w; if(it.t.indexOf(W)>=0) v=10; else if(it.th.indexOf(W)>=0) v=6; else if(it.ch.indexOf(W)>=0) v=4; else if(it.x.indexOf(W)>=0) v=1.5+Math.min(3,it.x.split(W).length-2)*0.5; if(v*f>best) best=v*f; });
+      if(!best) tous=false; s+=best; }); return tous?s:s*0.35; }
+  function surl(t,ms){ var h=esc(t); ms.forEach(function(m){ var r=racine(m); if(r.length<3) return; var re=new RegExp('('+r.split('').map(function(c){ return '['+c+({a:'àâä',e:'éèêë',i:'îï',o:'ôö',u:'ùûü',c:'ç'}[c]||'')+']'; }).join('')+'[a-zà-ÿ]*)','gi'); h=h.replace(re,'<mark>$1</mark>'); }); return h; }
+  function extrait(it,ms){ for(var i=0;i<ms.length;i++){ var r=racine(ms[i]); var c=it.a.ch.filter(function(x){ return nz(x).indexOf(r)>=0; })[0]; if(c) return 'Chapitre : '+c; } return it.a.h||it.a.ch.slice(0,2).join(' · '); }
+  function fermer(push){ document.body.classList.remove('cherche'); res.hidden=true; res.innerHTML=''; if(push){ try{ history.replaceState(null,'',location.pathname); }catch(e){} } }
+  function chercher(v,push,defile){ var ms=mots(v); if(!ms.length){ fermer(push); return; }
+    charger(function(){ var S=IDX.map(function(it){ return [score(it,ms),it]; }).sort(function(a,b){ return b[0]-a[0]; }), top=S.length?S[0][0]:0, L=S.filter(function(x){ return x[0]>=Math.max(1.5,top*0.3); }).map(function(x){ return x[1]; });
+      document.body.classList.add('cherche'); res.hidden=false;
+      res.innerHTML='<h2>Résultats pour « '+esc(v.trim())+' »</h2><p class="res-n">'+(L.length?L.length+' atelier'+(L.length>1?'s':''):'Aucun atelier ne correspond')+' · <a href="#" id="raz">Revenir aux thèmes</a></p>'
+       +(L.length?'<div class="res-l">'+L.slice(0,24).map(function(it){ var a=it.a; return '<a class="res-c" href="'+esc(a.p)+'?src=recherche"><span class="rk">'+esc(a.th[0]||'Atelier')+'</span><h3>'+surl(a.t,ms)+'</h3><p>'+surl(extrait(it,ms),ms)+'</p><span class="rb"><b>'+esc(a.acc)+'</b>'+(a.n?a.n+' activités':'')+'</span></a>'; }).join('')+'</div>'
+        :'<div class="res-vide"><p><b>Essayez un mot plus simple</b> : budget, épargne, tontine, Bourse, crédit, retraite. Ou faites le <a href="diagnostic.html">diagnostic</a> : il vous indique par où commencer.</p></div>');
+      document.getElementById('raz').onclick=function(e){ e.preventDefault(); q.value=''; fermer(true); window.scrollTo({top:0,behavior:'smooth'}); };
+      if(push){ try{ history.replaceState(null,'','?q='+encodeURIComponent(v.trim())); }catch(e){} }
+      if(defile) res.scrollIntoView({behavior:'smooth',block:'start'}); }); }
+  var tm; q.addEventListener('input',function(){ clearTimeout(tm); var v=q.value; tm=setTimeout(function(){ if(mots(v).length) chercher(v,false,false); else fermer(false); },300); });
+  q.addEventListener('focus',function(){ charger(function(){}); },{once:true});
+  form.addEventListener('submit',function(e){ e.preventDefault(); chercher(q.value,true,true); q.blur(); });
+  document.querySelectorAll('.mots button').forEach(function(b){ b.onclick=function(){ q.value=b.dataset.m; chercher(b.dataset.m,true,true); }; });
+  var q0=new URLSearchParams(location.search).get('q'); if(q0){ q.value=q0; chercher(q0,false,false); }
+
   var h=document.querySelector('.clone-head'); if(h) document.documentElement.style.setProperty('--haut',h.offsetHeight+'px');
   var P=[].slice.call(document.querySelectorAll('.puces a')), T=P.map(function(a){return document.querySelector(a.getAttribute('href'));});
   if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(x){ if(x.isIntersecting){ var i=T.indexOf(x.target); P.forEach(function(a,j){a.classList.toggle('on',j===i);}); var a=P[i]; a.parentNode.scrollTo({left:a.offsetLeft-16,behavior:'smooth'}); } }); },{rootMargin:'-40% 0px -55% 0px'}); T.forEach(function(t){io.observe(t);}); }
