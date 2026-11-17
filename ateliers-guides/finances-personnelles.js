@@ -15,7 +15,7 @@ window.ATELIER = {
   },
   chapitres: [
     { t: "Voir et nommer", acq: "Je connais ma marge réelle et je lui donne une mission", desc: "Ce qui entre, ce qui sort, ce qui reste. Une somme nommée se défend mieux.", e: [
-      { t: "Voir ce qui entre et ce qui sort", c: "Serge reçoit 500 000 F par mois. Il veut arrêter de découvrir sa situation le 20 du mois. Pendant un mois, il rassemble ses paiements en espèces, par carte et par mobile money, et les classe selon leur rôle, sans se juger. Ses chiffres sont un cas d’exercice, pas une répartition idéale.",
+      { t: "Voir ce qui entre et ce qui sort", outil: { t: "Mon budget à zéro", p: "Faites le même tableau que Serge avec vos chiffres, et téléchargez-le en PDF.", lien: "outil-budget.html", b: "Ouvrir l’outil" },  c: "Serge reçoit 500 000 F par mois. Il veut arrêter de découvrir sa situation le 20 du mois. Pendant un mois, il rassemble ses paiements en espèces, par carte et par mobile money, et les classe selon leur rôle, sans se juger. Ses chiffres sont un cas d’exercice, pas une répartition idéale.",
         w: { ex: "Serge : 500 000 F de revenu ; logement 140 000, alimentation et transport 130 000, aide aux proches 50 000, tontine 30 000, dettes 60 000, autres 65 000. Il reste 25 000 F.", k: "Votre mois (F)", champs: [ {id:"fp_rev", l:"Revenu du mois"}, {id:"fp_log", l:"Logement et charges"}, {id:"fp_ali", l:"Alimentation et transport"}, {id:"fp_aide", l:"Aide aux proches"}, {id:"fp_ton", l:"Tontine"}, {id:"fp_det", l:"Remboursements de dettes"}, {id:"fp_aut", l:"Autres dépenses"} ],
           v: function(D,H){ var r=H.N(D.fp_rev); if(!r) return ''; var s=['fp_log','fp_ali','fp_aide','fp_ton','fp_det','fp_aut'].reduce(function(a,k){return a+H.N(D[k]);},0), m=r-s; return '<div class="gros"><small>Ce qui reste du mois</small><b>'+(m<0?'−':'')+H.F(Math.abs(m))+'</b><p>'+(m<0?'Vous dépensez plus que ce qui entre : c’est la première chose à corriger, avant toute épargne.':'Avant de promettre d’investir, comprenez comment créer et garder cette marge. Une ligne estimée se vérifie le mois prochain.')+'</p></div>'; } },
         p: "Je connais ma marge réelle du mois." },
@@ -49,6 +49,7 @@ window.ATELIER = {
     ]}
   ],
   fin: {
+    outil: { t: "L’outil « Mon budget à zéro »", p: "Votre fiche de sortie, en budget complet : repères, orientations et PDF.", lien: "outil-budget.html", b: "Construire mon budget" },
     k: "Ma fiche de sortie « Mes finances, ce mois-ci »", titre: "La maîtrise commence quand vous savez où va votre argent",
     fiche: [
       ["Ce qui entre", function(D,H){ var r=H.N(D.fp_rev); return r?H.F(r):''; }],

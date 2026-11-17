@@ -21,7 +21,7 @@ window.ATELIER = {
           ["Awa paiera 180 000 F de formation dans six mois. Elle place tout dans un actif dont le prix peut baisser. Où est l’erreur ?", ["Avoir investi","Avoir donné à la même somme deux missions incompatibles"], 1, "Si le prix baisse au moment de la formation, elle devra vendre au mauvais moment pour une dépense qu’elle connaissait déjà."]
         ] },
         p: "Je sais qu’épargner et investir n’ont pas la même fonction." },
-      { t: "Une somme, plusieurs missions", c: "Awa a 300 000 F. Elle paiera 180 000 F de formation dans six mois et veut garder 100 000 F pour les imprévus. Il ne reste que 20 000 F à étudier pour un placement plus long.",
+      { t: "Une somme, plusieurs missions", outil: { t: "Mon budget à zéro", p: "Donnez une mission à chaque franc du mois, épargne comprise, et gardez le PDF.", lien: "outil-budget.html", b: "Ouvrir l’outil" },  c: "Awa a 300 000 F. Elle paiera 180 000 F de formation dans six mois et veut garder 100 000 F pour les imprévus. Il ne reste que 20 000 F à étudier pour un placement plus long.",
         w: { ex: "300 000 − 180 000 (formation) − 100 000 (réserve) = 20 000 F à étudier séparément. Les 280 000 F ont déjà un travail.", k: "Votre épargne", c3: 1, champs: [ {id:"es_tot", l:"Ce que j’ai de côté (F)"}, {id:"es_12", l:"Dépenses prévues dans les 12 mois (F)"}, {id:"es_res", l:"Ma réserve pour imprévus (F)"} ],
           v: function(D,H){ var t=H.N(D.es_tot); if(!t) return ''; var r=t-H.N(D.es_12)-H.N(D.es_res); return r>0?'<div class="gros"><small>Ce qui peut travailler plus longtemps</small><b>'+H.F(r)+'</b><p>Le reste a déjà une mission. Cette somme-là fera l’objet d’une décision à part.</p></div>':'<div class="verdict v-ko">Tout votre argent a déjà une mission. La prochaine étape : compléter la réserve, pas investir.</div>'; } },
         p: "Je sais quelle part de mon épargne peut travailler plus longtemps." }
@@ -53,6 +53,7 @@ window.ATELIER = {
     ]}
   ],
   fin: {
+    outil: { t: "L’outil « Mon budget à zéro »", p: "Donnez une mission à chaque franc du mois, puis téléchargez vos orientations.", lien: "outil-budget.html", b: "Construire mon budget" },
     k: "Ma fiche « Les trois missions de mon argent »", titre: "Votre épargne a une direction",
     fiche: [
       ["Ce qui peut travailler plus longtemps", function(D,H){ var t=H.N(D.es_tot); if(!t) return ''; var r=t-H.N(D.es_12)-H.N(D.es_res); return r>0?H.F(r):'Rien pour l’instant : réserve d’abord'; }],

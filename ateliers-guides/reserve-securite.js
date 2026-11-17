@@ -23,7 +23,7 @@ window.ATELIER = {
         p: "J’ai repéré les coups durs les plus probables pour moi." }
     ]},
     { t: "Combien", acq: "Je connais mon montant", desc: "Vos dépenses essentielles, multipliées par le bon nombre de mois.", e: [
-      { t: "Mes dépenses essentielles", c: "On ne compte que l’essentiel : ce qu’il faut pour vivre si le revenu s’arrêtait.",
+      { t: "Mes dépenses essentielles", outil: { t: "Mon budget à zéro", p: "L’outil calcule vos dépenses essentielles et votre réserve cible, puis vous donne un PDF.", lien: "outil-budget.html", b: "Ouvrir l’outil" },  c: "On ne compte que l’essentiel : ce qu’il faut pour vivre si le revenu s’arrêtait.",
         w: { ex: "Awa dépense 180 000 F par mois pour l’essentiel. Sa réserve minimale est de 3 × 180 000 = 540 000 F.", k: "Vos dépenses essentielles d’un mois", c3: 1, champs: [ {id:"r_log", l:"Logement"}, {id:"r_nou", l:"Nourriture"}, {id:"r_tra", l:"Transport"}, {id:"r_eco", l:"École"}, {id:"r_san", l:"Santé"}, {id:"r_sol", l:"Solidarité"} ],
           v: function(D,H){ var t=["r_log","r_nou","r_tra","r_eco","r_san","r_sol"].reduce(function(s,k){return s+H.N(D[k]);},0); D.r_mois=t; return t?'<div class="gros"><small>Vos dépenses essentielles</small><b>'+H.F(t)+' par mois</b></div>':''; } },
         p: "Mes dépenses essentielles sont écrites." },
@@ -63,6 +63,7 @@ window.ATELIER = {
     ]}
   ],
   fin: {
+    outil: { t: "L’outil « Mon budget à zéro »", p: "Faites entrer votre réserve dans un budget complet : l’outil calcule le temps pour l’atteindre.", lien: "outil-budget.html", b: "Construire mon budget" },
     k: "Ma fiche réserve de sécurité", titre: "Votre réserve a un plan",
     fiche: [
       ["Dépenses essentielles", function(D,H){ return H.N(D.r_mois)?H.F(H.N(D.r_mois))+' par mois':''; }],

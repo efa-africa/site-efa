@@ -41,7 +41,7 @@ window.ATELIER = {
       { t: "Ce qui va où", c: "L’essentiel fait vivre la maison. L’avenir prépare demain. La vie, c’est le plaisir et les sorties, sans culpabilité.",
         w: { quiz: [ ["Le loyer et la nourriture", ["Essentiel","Vie"], 0, "Sans eux, la maison ne tourne pas."], ["La cotisation de tontine pour un terrain", ["Avenir","Vie"], 0, "Elle prépare un projet : c’est l’avenir."], ["Un pagne pour la fête du quartier", ["Essentiel","Vie"], 1, "C’est la poche vie. Elle existe pour cela."] ] },
         p: "Je sais ranger une dépense dans la bonne poche." },
-      { t: "Mes pourcentages", c: "Repère indicatif : 60 % pour l’essentiel, 20 % pour l’avenir, 20 % pour la vie. Ajustez-le à votre situation.",
+      { t: "Mes pourcentages", outil: { t: "Mon budget à zéro", p: "Posez vos trois poches en vrais chiffres, voyez la différence et téléchargez votre budget en PDF.", lien: "outil-budget.html", b: "Ouvrir l’outil" },  c: "Repère indicatif : 60 % pour l’essentiel, 20 % pour l’avenir, 20 % pour la vie. Ajustez-le à votre situation.",
         w: { ex: "Sur un revenu de référence de 100 000 F, Moussa met 60 000 F dans l’essentiel, 20 000 F dans l’avenir et 20 000 F dans la vie.", k: "Vos pourcentages (laissez vide pour garder 60, 20, 20)", c3: 1, champs: [ {id:"bq_pe", l:"Essentiel (%)", ph:"60"}, {id:"bq_pa", l:"Avenir (%)", ph:"20"}, {id:"bq_pv", l:"Vie (%)", ph:"20"} ],
           v: function(D,H){ var A=window.ATELIER, r=A._ref(D,H), p=A._pc(D,H), t=p.e+p.a+p.v; if(t!==100) return '<div class="verdict v-mid">Vos trois poches font '+t+' %. Ajustez-les pour arriver à 100 %.</div>'; if(!r) return '<div class="verdict v-mid">Fixez d’abord votre revenu de référence au chapitre 2.</div>'; return '<div class="gros"><small>Vos trois poches sur '+H.F(r)+'</small><b>'+H.F(r*p.e/100)+' · '+H.F(r*p.a/100)+' · '+H.F(r*p.v/100)+'</b><p>Essentiel · Avenir · Vie</p></div>'; } },
         p: "Mes trois pourcentages sont choisis." },
@@ -77,6 +77,7 @@ window.ATELIER = {
     ]}
   ],
   fin: {
+    outil: { t: "L’outil « Mon budget à zéro »", p: "Mettez vos trois poches en vrais chiffres, avec vos repères et vos orientations en PDF.", lien: "outil-budget.html", b: "Construire mon budget" },
     k: "Ma fiche budget qui tient", titre: "Votre budget tient debout",
     fiche: [
       ["Mon revenu sur six mois", function(D,H){ var s=window.ATELIER._s(D,H); return s?'bas '+H.F(s.bas)+' · moyen '+H.F(s.moy)+' · haut '+H.F(s.haut):''; }],

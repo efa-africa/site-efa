@@ -55,7 +55,7 @@ window.ATELIER = {
         w: { champs: [ {id:"sp_m", l:"Ce que je mets de côté le jour de la paie (F)", ph:"10 000"} ],
           v: function(D,H){ var m=H.N(D.sp_m), r=H.N(D.rv_fixe)+H.N(D.rv_var); return m?'<div class="verdict v-ok">'+H.F(m)+' par mois'+(r?', soit '+Math.round(m/r*100)+' % de votre revenu':'')+'. Commencer petit vaut mieux que ne pas commencer.</div>':''; } },
         p: "Mon montant du jour de paie est fixé." },
-      { t: "Une enveloppe pour chaque usage", c: "Une enveloppe vide, c’est une décision, pas un échec : ce mois-là, on ne dépense plus dans cette catégorie.",
+      { t: "Une enveloppe pour chaque usage", outil: { t: "Mon budget à zéro", p: "Donnez une enveloppe à chaque usage en FCFA, et repartez avec votre budget en PDF.", lien: "outil-budget.html", b: "Ouvrir l’outil" },  c: "Une enveloppe vide, c’est une décision, pas un échec : ce mois-là, on ne dépense plus dans cette catégorie.",
         w: { k: "Votre reste à vivre, réparti", champs: [ {id:"en_vie", l:"Vie courante"}, {id:"en_fam", l:"Famille"}, {id:"en_pla", l:"Plaisir"}, {id:"en_imp", l:"Imprévus"} ],
           v: function(D,H){ var t=["en_vie","en_fam","en_pla","en_imp"].reduce(function(s,k){return s+H.N(D[k]);},0), r=H.N(D.reste)-H.N(D.sp_m); if(!t) return ''; return '<div class="verdict '+(r&&t>r?'v-ko':'v-ok')+'">Enveloppes : '+H.F(t)+(r?' pour '+H.F(r)+' disponibles.'+(t>r?' Vous dépassez : réduisez une enveloppe.':' Le compte est bon.'):'.')+'</div>'; } },
         p: "Mes enveloppes sont fixées." },
@@ -74,6 +74,7 @@ window.ATELIER = {
     ]}
   ],
   fin: {
+    outil: { t: "L’outil « Mon budget à zéro »", p: "Transformez votre plan en budget complet, avec vos orientations en PDF.", lien: "outil-budget.html", b: "Construire mon budget" },
     k: "Ma fiche « Où est passé mon argent ? »", titre: "Vous voyez votre argent",
     fiche: [
       ["Revenu du mois", function(D,H){ var t=H.N(D.rv_fixe)+H.N(D.rv_var); return t?H.F(t):''; }],
