@@ -48,7 +48,9 @@
     'atelier-crypto-reseaux': ['crypto-reseaux', 5000, 'Ethereum, Solana et TON : qu’achetez-vous vraiment ?', 0, 1, 'unite'],
     'atelier-epargner-ne-suffit-pas': ['epargner-ne-suffit-pas', 5000, 'Épargner ne suffit pas', 0, 1, 'unite'],
     'atelier-court-terme': ['court-terme', 5000, 'Placements à court terme', 0, 1, 'unite'],
-    'atelier-bons-du-tresor': ['bons-du-tresor', 5000, 'Les bons du Trésor, de A à Z', 0, 1, 'unite']
+    'atelier-bons-du-tresor': ['bons-du-tresor', 5000, 'Les bons du Trésor, de A à Z', 0, 1, 'unite'],
+    'atelier-etats-financiers': ['etats-financiers', 5000, 'Lire les états financiers d’une entreprise cotée', 0, 1, 'unite'],
+    'atelier-finances-personnelles': ['finances-personnelles', 5000, 'Maîtriser ses finances personnelles', 0, 1, 'unite']
   };
   var nom = (location.pathname.split('/').pop() || '').replace(/\.html$/, ''), A = P[nom];
   window.EFA_VERROU = { pages: P };
