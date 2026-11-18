@@ -276,3 +276,8 @@ for th in THEMES:
     sp = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s Les 3 ateliers essentiels, puis tous les autres pour aller plus loin.">' % e(chapo), sp, count=1)
     open('ateliers-%s.html' % cle, 'w', encoding='utf-8').write(sp)
     print('ateliers-%s.html : %d essentiels + %d' % (cle, len(top), len(p) + len(c)))
+
+# Habillage automatique (en-tête, menu, pied) de toutes les pages fabriquées : sans lui, le menu s'affiche brut.
+for _p in ['ateliers.html'] + ['ateliers-%s.html' % t[0] for t in THEMES if any(suite(t))]:
+    subprocess.check_call(['python3', 'scripts/clone/habiller.py', '--page', _p], stdout=subprocess.DEVNULL)
+print('habillage : fait')
