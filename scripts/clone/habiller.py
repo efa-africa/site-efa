@@ -70,6 +70,8 @@ for f in pages:
 rubrique['coaching.html'] = 'pilier-progresser'
 rubrique['ateliers-elysee.html'] = 'pilier-progresser'
 rubrique['ateliers.html'] = 'pilier-progresser'
+for _t in ('budget','placer','bourse','credit','activite','famille','terrain','arnaques'):
+    rubrique['ateliers-%s.html' % _t] = 'pilier-progresser'
 
 # ---------------------------------------------------------------- liens : modèle (clone/) → racine du site
 FICHIERS_CLONE = {os.path.basename(f) for f in glob.glob(os.path.join(CLONE, '*')) if os.path.isfile(f)}
