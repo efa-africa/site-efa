@@ -14,7 +14,7 @@ UNITE = set(re.findall(r"'atelier-[^']+': \['([^']+)', \d+, '[^']*', \d, \d, 'un
 THEMES = [
   # (clé, titre, chapo, image, 3 essentiels, parcours complet, à la carte)
   ('budget', 'Mon budget au quotidien', 'Savoir où part l’argent, tenir un budget et se constituer une réserve.', 'theme-budget-900.webp',
-   ['ou-passe-mon-argent', 'budget-qui-tient', 'reserve-securite'],
+   ['ou-passe-mon-argent', 'budget-zero', 'reserve-securite'],
    ['ou-passe-mon-argent', 'budget-qui-tient', 'reserve-securite', 'mobile-money-frais'], ['budget-zero', 'finances-personnelles', 'epargner-ne-suffit-pas', 'grosse-somme', 'preter-ou-donner']),
   ('placer', 'Épargner et placer', 'Choisir un placement selon la date de vos projets, et le comprendre avant de signer.', 'theme-placer-900.webp',
    ['placer-selon-horizon', 'placements-expliques', 'fonds-commun'],
