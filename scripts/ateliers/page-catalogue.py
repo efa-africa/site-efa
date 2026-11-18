@@ -4,7 +4,7 @@ Chaque thème : un parcours principal (dans l'ordre) puis les ateliers à la car
 Source : data/mon-efa-ateliers.json (node scripts/mon-efa/catalogue.js) + THEMES ci-dessous.
 Usage : python3 scripts/ateliers/page-catalogue.py  puis  python3 scripts/clone/habiller.py --page ateliers.html
 Un atelier absent de THEMES est signalé : l'ajouter dans un thème."""
-import json, os, re, html
+import os, json, os, re, html
 os.chdir(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 D = json.load(open('data/mon-efa-ateliers.json', encoding='utf-8'))
 D['jeu-portefeuille-baisse'] = {'t': 'Jeu : mon portefeuille face à la baisse', 'n': 0, 'page': 'jeu-portefeuille-baisse.html', 'prix': 0, 'jeu': 1}
@@ -58,6 +58,11 @@ def prix(i, a):
 def carte(i, k=None, lab=None):
     a = D[i]; n = a.get('n') or 0
     meta = 'Jeu · 5 minutes' if a.get('jeu') else ('%d activités' % n if n else 'Avec Élysée Johnson')
+    if os.path.exists('clone/assets/affiches/%s.webp' % i):
+        return ('<a class="ca ca-aff" href="%s" data-id="%s"><img class="ca-img" src="clone/assets/affiches/%s.webp?v=1" alt="Affiche de l’atelier « %s »" width="720" height="900" loading="lazy" decoding="async">'
+                '<span class="ca-pied"><span class="ca-n">%s</span><h3 class="ca-t">%s</h3><span class="ca-m">%s</span>'
+                '<span class="ca-pr" hidden><i></i></span><span class="ca-b">%s</span></span></a>') % (
+            e(a['page']), e(i), i, e(a['t']), lab or (('Étape %d' % k) if k else 'À la carte'), e(a['t']), meta, prix(i, a))
     return ('<a class="ca" href="%s" data-id="%s"><span class="ca-n">%s</span><h3>%s</h3><span class="ca-m">%s</span>'
             '<span class="ca-pr" hidden><i></i></span><span class="ca-b">%s</span></a>') % (
         e(a['page']), e(i), lab or (('Étape %d' % k) if k else 'À la carte'), e(a['t']), meta, prix(i, a))
@@ -162,6 +167,15 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
 .autres{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .autres a{font-size:15px;font-weight:700;padding:9px 14px;border-radius:999px;background:#FFFFFF;color:#0B1220!important}
 .autres a:hover{background:#E6F2FC}
+.ca-aff{position:relative;padding:0!important;gap:0!important;overflow:hidden;min-height:0!important;background:#0B1220!important}
+.ca-img{display:block;width:100%!important;height:auto!important;aspect-ratio:4/5;object-fit:contain;background:#06182E}
+.ca-pied{display:flex;flex-direction:column;gap:6px;padding:12px 14px 14px;background:#0B1220;color:#fff;flex:1}
+.ca-aff .ca-n{color:#F09680}.ca-aff .ca-m{color:#C9D1DE}.ca-aff .ca-ok{color:#3CCB7F}
+.ca-aff .ca-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ca-aff .px{background:#1B2B47;color:#6DB8F2}.ca-aff .px.g{background:#173B2B;color:#3CCB7F}.ca-aff .px2{color:#C9D1DE}
+.grille .ca-aff{min-height:0}
+.grille.suite{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+@media(max-width:640px){.grille.ess{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:min(76vw,320px);overflow-x:auto;max-width:100%;min-width:0;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}.grille.ess::-webkit-scrollbar{display:none}.grille.ess .ca{scroll-snap-align:start}.grille.suite{grid-template-columns:1fr 1fr;gap:10px}.grille.suite .ca-pied{padding:10px}}
 .aide{margin-top:52px;background:#EEF5FC;border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
 .aide p{max-width:60ch;color:var(--ink2)}.aide b{color:#0B1220}
 .bouton{display:inline-flex;align-items:center;font-weight:800;font-size:16px;min-height:46px;padding:12px 22px;border-radius:8px;background:var(--corail);color:#fff!important}
@@ -264,8 +278,8 @@ for th in THEMES:
     corps += ('<section class="bloc"><h2>Les %d essentiels</h2><p>Si vous ne deviez en suivre que trois sur ce thème, ce sont ceux-là.</p><div class="grille ess">%s</div></section>') % (
         len(top), ''.join(carte(i, lab='Essentiel %d' % (k + 1)) for k, i in enumerate(top)))
     corps += '<section class="bloc"><h2>Pour aller plus loin</h2><p>Quand les essentiels sont acquis, ou si votre situation le demande.</p>'
-    if p: corps += '<h3 class="sous">La suite du parcours</h3><div class="grille">%s</div>' % ''.join(carte(i, lab='Suite %d' % (k + 1)) for k, i in enumerate(p))
-    if c: corps += '<h3 class="sous">Selon votre situation</h3><div class="grille">%s</div>' % ''.join(carte(i) for i in c)
+    if p: corps += '<h3 class="sous">La suite du parcours</h3><div class="grille suite">%s</div>' % ''.join(carte(i, lab='Suite %d' % (k + 1)) for k, i in enumerate(p))
+    if c: corps += '<h3 class="sous">Selon votre situation</h3><div class="grille suite">%s</div>' % ''.join(carte(i) for i in c)
     corps += '</section>'
     corps += '<section class="bloc"><h2>Les autres thèmes</h2><div class="autres">%s</div></section>' % ''.join(
         '<a href="%s">%s</a>' % (('ateliers-%s.html' % t[0]) if any(suite(t)) else 'ateliers.html#%s' % t[0], e(t[1])) for t in THEMES if t[0] != cle)

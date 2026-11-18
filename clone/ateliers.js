@@ -18,7 +18,7 @@
   function carte(a, n) {
     var ok = etat.ok[a.id];
     return '<article class="at-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '">' +
-      '<span class="at-c-img at-c-affiche"><img src="clone/assets/ateliers/' + (a.aff || ('atelier-' + (n < 10 ? '0' : '') + n + '.webp?v=3')) + '" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
+      '<span class="at-c-img at-c-affiche"><img src="clone/assets/' + (a.aff ? (/\//.test(a.aff) ? '' : 'ateliers/') + a.aff : 'ateliers/' + ('atelier-' + (n < 10 ? '0' : '') + n + '.webp?v=3')) + '" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="864" height="1080" loading="lazy" decoding="async"></span>' +
       '<div class="at-c-corps"><span class="at-c-type">' + (a.cours ? 'Cours à votre rythme · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · atelier approfondi' : 'Enregistré · à votre rythme') + '</span>' +
       '<h3 class="at-c-titre">' + esc(a.t) + '</h3><p class="at-c-pour"><b>Pour qui :</b> ' + esc(a.pour) + '</p>' +
       '<p class="at-c-rep"><span>Vous repartez avec</span>' + esc(a.rep) + '</p>' +
@@ -29,7 +29,7 @@
   function carteEnr(a, n, k) {
     var ok = etat.ok[a.id], E = ENR[a.id] || [''], img = E[1] || a.img;
     return '<article class="at-c ae-c' + (ok ? ' debloque' : '') + '" id="' + esc(a.alias || ('atelier-' + a.id)) + '" data-id="' + esc(a.id) + '" data-pg="' + Math.floor(k / 2) + '"' + (k > 1 ? ' hidden' : '') + '>' +
-      '<div class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">' + (a.cours ? 'Cours · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · réponse personnelle' : 'Vidéo · exercice · fiche') + '</span></div>' +
+      (/^affiches\//.test(a.aff || '') ? '<div class="ae-vis ae-aff"><img src="clone/assets/' + esc(a.aff) + '" alt="Affiche de l’atelier « ' + esc(a.t) + ' »" width="720" height="900" loading="lazy" decoding="async"><span class="ae-dur">' : '<div class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">') + (a.cours ? 'Cours · 5 étapes, 31 exercices' : a.c ? 'Avec Élysée Johnson · réponse personnelle' : 'Vidéo · exercice · fiche') + '</span></div>' +
       '<div class="ae-corps"><div class="ae-meta"><span>' + (n < 10 ? '0' : '') + n + ' / ' + esc(E[0]) + '</span>' + (a.gratuit || a.cours ? '<span class="ae-free">' + (a.cours ? 'Offert avec vos 3 crédits' : 'Gratuit') + '</span>' : '') + '</div>' +
       '<h3 class="ae-t">' + esc(a.t) + '</h3><p class="ae-pb">' + esc(a.pour) + '</p>' +
       '<div class="ae-fin"><strong>À la fin</strong>' + esc(a.rep) + '</div>' +

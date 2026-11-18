@@ -35,3 +35,7 @@ a.ae-c .ae-t{color:#10253d!important}a.ae-c .ae-pb{color:#445567!important}a.ae-
 .ae-c .ae-vis img{object-position:center 22%!important}
 
 .ae-etat{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;margin-right:6px;background:#E3F2E8;color:#1F6B3F}.ae-etat.venir{background:#FFF1D6;color:#7A4E00}
+/* Affiches de formation (18 nov. 2026) : entières, jamais recadrées, sur un bandeau bleu nuit */
+.ae-vis.ae-aff{min-width:0;box-sizing:border-box;width:100%;height:auto!important;aspect-ratio:auto!important;background:#06182E;padding:18px;display:flex;justify-content:center}
+.ae-vis.ae-aff img{width:100%!important;height:auto!important;max-width:336px;aspect-ratio:4/5;object-fit:contain;border-radius:10px}
+.ae-vis.ae-aff:after,.ae-vis.ae-aff .ae-dur{display:none}

@@ -34,7 +34,7 @@
       cta = bientot ? 'Voir les ateliers' : outil ? 'Commencer' : 'Découvrir l’atelier';
     }
     return '<li class="ae-it" data-pg="' + Math.floor(k / 2) + '"' + (k > 1 ? ' hidden' : '') + '><a class="ae-c' + (bientot ? ' ae-bt' : '') + '" href="' + esc(h) + '">' +
-      '<span class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">' + esc(dur) + '</span></span>' +
+      (/^affiches\//.test((a && a.aff) || '') ? '<span class="ae-vis ae-aff"><img src="clone/assets/' + esc(a.aff) + '" alt="Affiche de l’atelier" width="720" height="900" loading="lazy" decoding="async"><span class="ae-dur">' : '<span class="ae-vis"><img src="clone/assets/' + esc(img) + '" alt="" loading="lazy" decoding="async"><span class="ae-dur">') + esc(dur) + '</span></span>' +
       '<span class="ae-corps"><span class="ae-meta"><span>' + n + ' / ' + esc(lab) + '</span>' + (gratuit && !bientot ? '<span class="ae-free">' + (a && a.cours ? 'Offert avec vos 3 crédits' : 'Gratuit') + '</span>' : '') + '</span>' +
       '<span class="ae-t">' + esc(titre) + '</span><span class="ae-pb">' + esc(pb) + '</span>' + fin + plus +
       '<span class="ae-pied"><span class="ae-st"><span class="ae-etat' + (bientot ? ' venir' : '') + '">' + (bientot ? 'À venir' : 'Disponible') + '</span>' + esc(st) + '</span><span class="at-c-btn ae-cta">' + esc(cta) + ' <span aria-hidden="true">→</span></span></span></span></a></li>';
