@@ -55,14 +55,14 @@ def prix(i, a):
     if not a['prix']: return '<span class="px g">Gratuit</span>'
     if i in UNITE: return '<span class="px">Abonnés</span><span class="px2">ou 5 000 F à l’unité</span>'
     return '<span class="px">Abonnés</span>' + ('<span class="px2">chapitre 1 offert</span>' if a.get('offerts') else '')
-def carte(i, k=None, lab=None):
+def carte(i, k=None, lab=None, visage=False):
     a = D[i]; n = a.get('n') or 0
     meta = 'Jeu · 5 minutes' if a.get('jeu') else ('%d activités' % n if n else 'Avec Élysée Johnson')
     if os.path.exists('clone/assets/affiches/%s.webp' % i):
-        return ('<a class="ca ca-aff" href="%s" data-id="%s"><img class="ca-img" src="clone/assets/affiches/%s.webp?v=1" alt="Affiche de l’atelier « %s »" width="720" height="900" loading="lazy" decoding="async">'
+        return ('<a class="ca ca-aff" href="%s" data-id="%s"><img class="ca-img" src="clone/assets/affiches/%s%s.webp?v=1" alt="Affiche de l’atelier « %s »" width="720" height="900" loading="lazy" decoding="async">'
                 '<span class="ca-pied"><span class="ca-n">%s</span><h3 class="ca-t">%s</h3><span class="ca-m">%s</span>'
                 '<span class="ca-pr" hidden><i></i></span><span class="ca-b">%s</span></span></a>') % (
-            e(a['page']), e(i), i, e(a['t']), lab or (('Étape %d' % k) if k else 'À la carte'), e(a['t']), meta, prix(i, a))
+            e(a['page']), e(i), '' if visage else 'sv/', i, e(a['t']), lab or (('Étape %d' % k) if k else 'À la carte'), e(a['t']), meta, prix(i, a))
     return ('<a class="ca" href="%s" data-id="%s"><span class="ca-n">%s</span><h3>%s</h3><span class="ca-m">%s</span>'
             '<span class="ca-pr" hidden><i></i></span><span class="ca-b">%s</span></a>') % (
         e(a['page']), e(i), lab or (('Étape %d' % k) if k else 'À la carte'), e(a['t']), meta, prix(i, a))
@@ -80,7 +80,7 @@ for th in THEMES:
     s = ('<section class="th" id="%s" aria-labelledby="t-%s"><div class="th-tete"><img src="clone/assets/%s" alt="" loading="lazy" width="900" height="506">'
          '<div><p class="th-k">%s · %d atelier%s</p><h2 id="t-%s">%s</h2><p>%s</p></div></div>') % (
         cle, cle, img, 'Les essentiels' if len(top) > 1 else 'L’essentiel', nb, 's' if nb > 1 else '', cle, e(titre), e(chapo))
-    s += '<div class="grille ess">%s</div>' % ''.join(carte(i, lab='Essentiel %d' % (k + 1)) for k, i in enumerate(top))
+    s += '<div class="grille ess">%s</div>' % ''.join(carte(i, lab='Essentiel %d' % (k + 1), visage=(k == THEMES.index(th) % len(top))) for k, i in enumerate(top))
     s += plus_lien(th)
     blocs.append(s + '</section>')
 TOUS = '<template id="tous">%s</template>' % ''.join(carte(i) for i in D)
@@ -276,7 +276,7 @@ for th in THEMES:
     corps = ('<a class="retour" href="ateliers.html#%s">← Tous les thèmes</a><p class="cat-k">Les ateliers EFA · %d ateliers</p><h1>%s</h1><p class="cat-chapo">%s</p>'
              '<img class="sp-hero" src="clone/assets/%s" alt="" width="900" height="506">') % (cle, len(top) + len(p) + len(c), e(titre), e(chapo), img)
     corps += ('<section class="bloc"><h2>Les %d essentiels</h2><p>Si vous ne deviez en suivre que trois sur ce thème, ce sont ceux-là.</p><div class="grille ess">%s</div></section>') % (
-        len(top), ''.join(carte(i, lab='Essentiel %d' % (k + 1)) for k, i in enumerate(top)))
+        len(top), ''.join(carte(i, lab='Essentiel %d' % (k + 1), visage=(k == 0)) for k, i in enumerate(top)))
     corps += '<section class="bloc"><h2>Pour aller plus loin</h2><p>Quand les essentiels sont acquis, ou si votre situation le demande.</p>'
     if p: corps += '<h3 class="sous">La suite du parcours</h3><div class="grille suite">%s</div>' % ''.join(carte(i, lab='Suite %d' % (k + 1)) for k, i in enumerate(p))
     if c: corps += '<h3 class="sous">Selon votre situation</h3><div class="grille suite">%s</div>' % ''.join(carte(i) for i in c)
