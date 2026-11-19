@@ -13,6 +13,125 @@
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
+   "origine": "veille EFA News du 2026-11-19",
+   "publication": "2026-11-19",
+   "maj": "2026-11-19",
+   "id": "2026-11-19-anthropic-bourse-34-pourcent-pour-qui",
+   "categorie": "brvm",
+   "rubrique": "Introductions en Bourse",
+   "titre": "Anthropic entre en Bourse : +34 % à l'ouverture. Pour qui ?",
+   "resume": "Proposée à 83 $, l'action Anthropic s'est échangée à 111,50 $ dès l'ouverture sur le Nasdaq, puis autour de 100 $. Le +34 % ne profite pas à tout le monde ; l'opportunité est ailleurs : accéder, depuis l'UEMOA, à des secteurs absents de la Bourse (BRVM).",
+   "pays": [
+    "États-Unis"
+   ],
+   "entites": [
+    "Anthropic",
+    "Nasdaq"
+   ],
+   "notions": [
+    "introduction en Bourse",
+    "prix d'introduction",
+    "prix d'ouverture",
+    "volatilité",
+    "risque de change"
+   ],
+   "evenement": "2026-11-19",
+   "evenement_label": "19 novembre 2026",
+   "fait": "Le 19 novembre 2026, l'entreprise américaine d'intelligence artificielle Anthropic est entrée au Nasdaq sous le symbole ANT. Le prix d'introduction a été fixé à 83 $, au-dessus de la fourchette de 70 à 78 $ annoncée le 10 novembre. Le premier échange s'est fait à 111,50 $ (+34 %), puis le cours est revenu vers 100 $ dans la journée. L'opération a porté sur 980 millions d'actions, pour 81,3 milliards de dollars : la plus grande introduction en Bourse de l'histoire.",
+   "chiffres": [
+    {
+     "valeur": "83 $",
+     "libelle": "prix d'introduction, au-dessus de la fourchette de 70 à 78 $",
+     "periode": "fixé avant le 19 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "111,50 $",
+     "libelle": "premier échange sur le Nasdaq, soit +34 %",
+     "periode": "19 nov. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "≈ −10 %",
+     "libelle": "pour qui a acheté au premier échange et vendu à 100,31 $ à 12 h 05, hors frais",
+     "periode": "19 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Avant la cotation, les actions de l'offre sont attribuées au prix d'introduction, surtout aux grands investisseurs.",
+    "À l'ouverture, le prix se forme entre acheteurs et vendeurs : celui qui achète paie le prix du marché, pas celui de l'offre.",
+    "Le +34 % des titres de presse mesure l'écart entre ces deux prix ; il n'est un gain que pour ceux qui ont obtenu des actions à 83 $."
+   ],
+   "mot": {
+    "terme": "Introduction en Bourse",
+    "definition": "Première mise en vente des actions d'une entreprise au public, à un prix fixé à l'avance, avant qu'elles ne s'échangent librement en Bourse."
+   },
+   "change": "La leçon vaut pour toute introduction, y compris à la Bourse (BRVM) : votre résultat dépend du prix que vous payez, pas du pourcentage qui fait la une. L'opportunité, elle, est ailleurs que dans le premier jour : depuis l'UEMOA, on peut devenir actionnaire d'entreprises internationales et de secteurs presque absents de la Bourse (BRVM), comme l'intelligence artificielle, la tech ou la santé. Diversifier au-delà de la cinquantaine de sociétés cotées à Abidjan, c'est aussi accepter un risque de change (dollar contre franc CFA), plus de volatilité, et passer par un intermédiaire agréé, car les placements hors de l'UEMOA sont encadrés par la réglementation des changes.",
+   "retenir": "Un +34 % à l'ouverture n'est pas votre gain : en Bourse, tout commence au prix que vous payez réellement.",
+   "limites": [
+    "Les actions de l'offre à 83 $ ont surtout été attribuées à de grands investisseurs ; un particulier y accède rarement.",
+    "Les cours de la journée évoluent minute par minute : 100,31 $ est le cours relevé à 12 h 05 (heure de New York), pas un cours de clôture.",
+    "Acheter des actions étrangères depuis l'UEMOA expose au risque de change et passe par un intermédiaire agréé ; renseignez-vous auprès de votre SGI ou de votre banque.",
+    "Article d'éducation financière : ni conseil d'achat ni promesse de gain."
+   ],
+   "question": "Face à une introduction en Bourse, regardez-vous d'abord le pourcentage de la une, ou le prix auquel vous pourriez réellement acheter ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Emprunts obligataires et introductions en Bourse",
+     "description": "Lire une offre d'actions : qui vend, combien, à quel prix.",
+     "url": "bourse-pro.html#B7"
+    },
+    {
+     "type": "Outil",
+     "titre": "Acheter des actions",
+     "description": "Choisir sa SGI et passer son premier ordre, pas à pas.",
+     "url": "acheter-des-actions.html"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Anthropic announces launch of roadshow for proposed initial public offering",
+     "organisme": "Anthropic",
+     "date": "10 nov. 2026",
+     "url": "https://anthropic.com/news/roadshow-launch",
+     "consulte_le": "2026-11-19",
+     "type": "primaire"
+    },
+    {
+     "titre": "Anthropic IPO Live Updates: Shares Pop 34% To Open At $111.50",
+     "organisme": "Forbes",
+     "date": "19 nov. 2026",
+     "url": "https://www.forbes.com/sites/fionariley/2026/11/19/anthropic-ipo-live-shares-pop-34-to-open-at-11150/",
+     "consulte_le": "2026-11-19",
+     "type": "media"
+    },
+    {
+     "titre": "UEMOA : ce qui change dans la réglementation des changes depuis le 20 décembre 2024",
+     "organisme": "Droit Médias Finance",
+     "date": "2025",
+     "url": "https://droitmediasfinance.com/index.php/actualites/droit-monetaire/915-uemoa-changes-ce-qui-a-change-dans-la-reglementation-des-changes-depuis-le-20-decembre-2024",
+     "consulte_le": "2026-11-19",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "L'action Anthropic, proposée à 83 $, ouvre à 111,50 $. Qui gagne ces 34 % ?",
+    "choix": [
+     "Tous ceux qui ont acheté l'action le 19 novembre",
+     "Seulement ceux qui ont obtenu des actions au prix d'introduction de 83 $",
+     "Ceux qui ont acheté au premier échange, à 111,50 $"
+    ],
+    "bonne": 1,
+    "explication": "Le +34 % mesure l'écart entre le prix de l'offre et le premier échange. Celui qui a acheté à 111,50 $ part de ce prix : à 100,31 $, il perdait environ 10 %."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
    "origine": "édition de rattrapage du 2026-11-13",
    "publication": "2026-11-13",
    "maj": "2026-11-13",
