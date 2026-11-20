@@ -182,6 +182,11 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
 .ca-maison b{font-family:"Libre Baskerville",Georgia,serif;font-size:18px;line-height:1.22;color:#0B1220}
 .cm-p{font-size:14.5px;color:#4E5566;line-height:1.4}.cm-f{margin-top:auto;font-weight:800;color:#1B71B2;font-size:15px}
 @media(max-width:640px){.ca-maison{padding:12px}.ca-maison b{font-size:15.5px}.cm-p{font-size:13.5px}}
+.ca-bientot{position:relative;display:flex;flex-direction:column;gap:8px;background:#E8EEF2!important;border-radius:14px;padding:18px 16px;color:#2A3142!important;text-decoration:none!important;min-height:220px}
+.ca-bientot:hover{background:#DEE7ED!important}
+.ca-bientot b{font-family:"Libre Baskerville",Georgia,serif;font-size:18px;line-height:1.22;color:#0B1220}
+.cb-p{align-self:flex-start;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#0B1220;color:#fff;border-radius:999px;padding:4px 10px}
+@media(max-width:640px){.ca-bientot{padding:12px}.ca-bientot b{font-size:15.5px}}
 .aide{margin-top:52px;background:#EEF5FC;border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
 .aide p{max-width:60ch;color:var(--ink2)}.aide b{color:#0B1220}
 .bouton{display:inline-flex;align-items:center;font-weight:800;font-size:16px;min-height:46px;padding:12px 22px;border-radius:8px;background:var(--corail);color:#fff!important}
@@ -285,10 +290,26 @@ def maison(cle):
     if not m: return ''
     return ('<a class="ca-maison" href="%s?src=carte"><span class="cm-k">EFA vous propose · %s</span><b>%s</b><span class="cm-p">%s</span><span class="cm-f">%s →</span></a>') % (
         e(m[4]), e(m[0]), e(m[1]), e(m[2]), e(m[3]))
+# Emplacements partenaires à venir : un par thème, catégorie générique, renvoie vers la présentation aux partenaires
+BIENTOT = {
+  'budget': ('Banque · compte épargne', 'L’offre d’épargne d’une banque partenaire, présentée quand vous construisez votre réserve.'),
+  'placer': ('Société de gestion · fonds communs', 'Les fonds d’une société de gestion partenaire, quand vous choisissez où placer.'),
+  'bourse': ('SGI · compte-titres', 'L’ouverture de compte d’une SGI partenaire, quand vous êtes prêt à passer votre premier ordre.'),
+  'credit': ('Banque ou microfinance · crédit', 'Un crédit responsable, présenté après avoir appris à en calculer le vrai coût.'),
+  'activite': ('Banque · financement des PME', 'Le financement d’une banque partenaire, quand votre activité est prête à grandir.'),
+  'famille': ('Société d’assurance · assurance-vie', 'Le contrat d’un assureur partenaire, quand vous préparez la retraite ou les études des enfants.'),
+  'arnaques': ('Banque · placements agréés', 'Des placements agréés et vérifiables, en face des promesses trop belles.'),
+}
+def bientot(cle):
+    b = BIENTOT.get(cle)
+    if not b: return ''
+    return ('<a class="ca-bientot" href="partenaires.html#%s"><span class="cb-p">Bientôt</span><span class="cm-k">Espace partenaire</span><b>%s</b><span class="cm-p">%s</span><span class="cm-f">Devenir partenaire →</span></a>') % (cle, e(b[0]), e(b[1]))
 def avec_maison(cartes, cle, pos=3):
     m = maison(cle)
     if not m: return ''.join(cartes)
-    cartes = list(cartes); cartes.insert(min(pos, len(cartes)), m); return ''.join(cartes)
+    cartes = list(cartes); cartes.insert(min(pos, len(cartes)), m)
+    if bientot(cle): cartes.insert(min(pos + 3, len(cartes)), bientot(cle))
+    return ''.join(cartes)
 
 # ---------------------------------------------------------------- une page par thème : les essentiels, puis pour aller plus loin
 JS_T = JS.split('%%RECHERCHE%%')[0] + JS.split('/*fin-recherche*/')[1]

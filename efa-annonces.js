@@ -9,7 +9,7 @@
   if (window.EFA_ANNONCES) return;
   var PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\?.*$/, '');
   if (!/\.html$/.test(PAGE)) PAGE += '.html';
-  var SANS = /^(index|abonnement|admin.*|mon-efa|rejoindre|organisations|rendez-vous|programme-organisation|etudiants|demo|ely|minfin|lettre|merci.*|paiement.*|connexion.*)\.html$/;
+  var SANS = /^(index|abonnement|partenaires|question|ateliers(-[a-z]+)?|admin.*|mon-efa|rejoindre|organisations|rendez-vous|programme-organisation|etudiants|demo|ely|minfin|lettre|merci.*|paiement.*|connexion.*)\.html$/;
 
   /* Le catalogue des produits EFA */
   var P = {
@@ -85,33 +85,39 @@
       if (vu) return; vu = true; window.removeEventListener('scroll', surScroll);
       if (document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
       try { sessionStorage.setItem('efa_eph', '1'); } catch (e) {}
-      style();
-      var d = document.createElement('aside'); d.className = 'ea-toast'; d.setAttribute('data-garde', ''); d.setAttribute('aria-label', 'EFA vous propose');
-      d.innerHTML = '<img src="clone/assets/efa-oiseau.png" alt=""><p><span class="ea-k">EFA vous propose · ' + esc(a.k) + '</span><b>' + esc(a.t) + '</b><a href="' + esc(a.u) + '?src=ephemere">' + esc(a.c) + '</a></p><button type="button" class="ea-x" aria-label="Fermer">×</button><span class="ea-t"><i></i></span>';
-      document.body.appendChild(d);
-      var tm, barre = d.querySelector('.ea-t i');
-      function fermer() { clearTimeout(tm); d.classList.remove('on'); setTimeout(function () { d.remove(); }, 500); }
-      function lancer() { barre.style.transition = 'transform 8s linear'; barre.style.transform = 'scaleX(0)'; tm = setTimeout(fermer, 8000); }
-      function pause() { clearTimeout(tm); var w = getComputedStyle(barre).transform; barre.style.transition = 'none'; barre.style.transform = w; }
-      d.querySelector('.ea-x').onclick = fermer;
-      d.addEventListener('mouseenter', pause); d.addEventListener('touchstart', pause, { passive: true });
-      d.querySelector('a').addEventListener('click', function () { compter('ephemere-clic'); });
-      requestAnimationFrame(function () { requestAnimationFrame(function () { d.classList.add('on'); lancer(); }); });
-      compter('ephemere-vu');
+      bulle(a, 'ephemere');
     }
     function surScroll() { var h = document.documentElement, p = (h.scrollTop + innerHeight) / h.scrollHeight; if (p >= 0.4 && h.scrollTop > 200) montrer(); }
     window.addEventListener('scroll', surScroll, { passive: true });
     if (document.documentElement.scrollHeight < innerHeight * 1.6) setTimeout(montrer, 20000);
   }
 
+  function bulle(a, src) {
+    style();
+    var lab = a.lab || 'EFA vous propose';
+    var d = document.createElement('aside'); d.className = 'ea-toast'; d.setAttribute('data-garde', ''); d.setAttribute('aria-label', lab);
+    d.innerHTML = '<img src="' + esc(a.logo || 'clone/assets/efa-oiseau.png') + '" alt=""><p><span class="ea-k">' + esc(lab) + ' · ' + esc(a.k) + '</span><b>' + esc(a.t) + '</b><a href="' + esc(a.u) + '?src=' + src + '">' + esc(a.c) + '</a></p><button type="button" class="ea-x" aria-label="Fermer">×</button><span class="ea-t"><i></i></span>';
+    document.body.appendChild(d);
+    var tm, barre = d.querySelector('.ea-t i');
+    function fermer() { clearTimeout(tm); d.classList.remove('on'); setTimeout(function () { d.remove(); }, 500); }
+    function lancer() { barre.style.transition = 'transform 8s linear'; barre.style.transform = 'scaleX(0)'; tm = setTimeout(fermer, 8000); }
+    function pause() { clearTimeout(tm); var w = getComputedStyle(barre).transform; barre.style.transition = 'none'; barre.style.transform = w; }
+    d.querySelector('.ea-x').onclick = fermer;
+    d.addEventListener('mouseenter', pause); d.addEventListener('touchstart', pause, { passive: true });
+    d.querySelector('a').addEventListener('click', function () { compter(src + '-clic'); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { d.classList.add('on'); lancer(); }); });
+    compter(src + '-vu');
+  }
+
   /* 2. L'intercalaire entre deux chapitres d'un atelier */
-  function intercalaire(idAtelier, th, suite) {
+  function intercalaire(idAtelier, th, suite, force) {
     var cle = 'efa_inter_' + idAtelier;
-    if (lire(cle)) return suite();
-    var a = choisir(th || themeDe(idAtelier)); if (!a) return suite();
-    ecrire(cle, '1'); style();
-    var v = document.createElement('div'); v.className = 'ea-voile'; v.setAttribute('data-garde', ''); v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', 'EFA vous propose');
-    v.innerHTML = '<div class="ea-int"><img src="clone/assets/' + esc(a.i) + '" alt=""><button type="button" class="ea-pass" disabled>Passer dans 3</button><div class="ea-b"><span class="ea-k">EFA vous propose · ' + esc(a.k) + '</span><h2>' + esc(a.t) + '</h2><p>' + esc(a.p) + '</p><div class="ea-acts"><a class="ea-go" href="' + esc(a.u) + '?src=intercalaire" target="_blank" rel="noopener">' + esc(a.c) + '</a><button type="button" class="ea-suite">Continuer l’atelier</button></div></div></div>';
+    if (!force && lire(cle)) return suite();
+    var a = force || choisir(th || themeDe(idAtelier)); if (!a) return suite();
+    if (!force) ecrire(cle, '1'); style();
+    var lab = a.lab || 'EFA vous propose';
+    var v = document.createElement('div'); v.className = 'ea-voile'; v.setAttribute('data-garde', ''); v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', lab);
+    v.innerHTML = '<div class="ea-int"><img src="clone/assets/' + esc(a.i) + '" alt=""><button type="button" class="ea-pass" disabled>Passer dans 3</button><div class="ea-b"><span class="ea-k">' + esc(lab) + ' · ' + esc(a.k) + '</span><h2>' + esc(a.t) + '</h2><p>' + esc(a.p) + '</p><div class="ea-acts"><a class="ea-go" href="' + esc(a.u) + '?src=intercalaire" target="_blank" rel="noopener">' + esc(a.c) + '</a><button type="button" class="ea-suite">Continuer l’atelier</button></div></div></div>';
     document.body.appendChild(v);
     var b = v.querySelector('.ea-pass'), n = 3;
     function fin() { v.classList.remove('on'); setTimeout(function () { v.remove(); }, 300); document.removeEventListener('keydown', esc2); suite(); }
@@ -146,7 +152,9 @@
     io.observe(z);
   }
 
-  window.EFA_ANNONCES = { intercalaire: intercalaire, themeDe: themeDe, produits: P };
+  window.EFA_ANNONCES = { intercalaire: intercalaire, bulle: bulle, themeDe: themeDe, produits: P,
+    /* démonstration des formats (page Espaces partenaires) */
+    demo: function (type, a) { if (type === 'intercalaire') intercalaire('demo', '', function () {}, a); else bulle(a, 'demo'); } };
   function demarrer() { ephemere(); resultat(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', demarrer); else demarrer();
 })();
