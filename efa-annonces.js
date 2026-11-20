@@ -57,12 +57,12 @@
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function compter(nom) { try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'espace-efa-' + nom, title: 'Espace EFA', event: true }); } catch (e) {} }
 
-  var CSS = '.ea-toast{position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:9000;max-width:460px;margin:0 auto;background:#FFFFFF!important;border-radius:16px;box-shadow:0 18px 44px -14px rgba(11,18,32,.5);padding:12px 40px 14px 12px;display:flex;gap:12px;align-items:center;font-family:"Source Sans 3",system-ui,sans-serif;color:#2A3142!important;transform:translateY(140%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}'
+  var CSS = '.ea-toast{position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:9000;max-width:460px;margin:0 auto;background:#0B1220!important;border-radius:16px;box-shadow:0 18px 44px -10px rgba(11,18,32,.65);padding:14px 40px 16px 14px;display:flex;gap:12px;align-items:center;font-family:"Source Sans 3",system-ui,sans-serif;color:#E8EDF5!important;transform:translateY(140%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s}'
     + '.ea-toast.on{transform:none;opacity:1}.ea-toast img{width:40px;height:40px;flex:0 0 40px;border-radius:10px}'
-    + '.ea-toast p{margin:0;font-size:15px;line-height:1.35}.ea-toast b{display:block;color:#0B1220!important;font-family:"Libre Baskerville",Georgia,serif;font-size:15.5px;line-height:1.25}'
-    + '.ea-toast a{color:#1B71B2!important;font-weight:800;text-decoration:underline;text-underline-offset:3px}.ea-k{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7A8293!important;margin-bottom:2px}'
-    + '.ea-x{position:absolute;top:6px;right:6px;width:32px;height:32px;border:0;background:transparent!important;color:#7A8293!important;font-size:22px;line-height:1;cursor:pointer}'
-    + '.ea-t{position:absolute;left:14px;right:14px;bottom:6px;height:3px;border-radius:9px;background:#E3EBF0!important;overflow:hidden}.ea-t i{display:block;height:3px;width:100%;background:#6DB8F2!important;transform-origin:left;transition:transform 8s linear}'
+    + '.ea-toast p{margin:0;font-size:15px;line-height:1.35}.ea-toast b{display:block;color:#FFFFFF!important;font-family:"Libre Baskerville",Georgia,serif;font-size:15.5px;line-height:1.25}'
+    + '.ea-toast a.ea-cta{display:inline-block;margin-top:8px;background:#DA3C1B!important;color:#fff!important;font-weight:800;font-size:14.5px;border-radius:8px;padding:8px 12px;text-decoration:none!important}.ea-toast .ea-k{color:#F09680!important}.ea-k{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7A8293!important;margin-bottom:2px}'
+    + '.ea-x{position:absolute;top:6px;right:6px;width:32px;height:32px;border:0;background:transparent!important;color:#C9D1DE!important;font-size:22px;line-height:1;cursor:pointer}'
+    + '.ea-t{position:absolute;left:14px;right:14px;bottom:6px;height:3px;border-radius:9px;background:#1F2C45!important;overflow:hidden}.ea-t i{display:block;height:3px;width:100%;background:#6DB8F2!important;transform-origin:left;transition:transform 8s linear}'
     + '.ea-voile{position:fixed;inset:0;z-index:9500;background:rgba(6,12,22,.62)!important;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px));opacity:0;transition:opacity .3s}.ea-voile.on{opacity:1}'
     + '.ea-int{position:relative;width:100%;max-width:420px;background:#0B1220!important;border-radius:20px;overflow:hidden;color:#E8EDF5!important;font-family:"Source Sans 3",system-ui,sans-serif;transform:translateY(18px);transition:transform .35s}.ea-voile.on .ea-int{transform:none}'
     + '.ea-int img{display:block;width:100%!important;height:190px!important;object-fit:cover}.ea-int .ea-b{padding:18px 20px 20px}'
@@ -71,8 +71,11 @@
     + '.ea-go{background:#DA3C1B!important;color:#fff!important;font-weight:800;border-radius:10px;padding:12px 16px;text-decoration:none!important}'
     + '.ea-pass{position:absolute;top:10px;right:10px;border:0;border-radius:999px;background:rgba(11,18,32,.72)!important;color:#fff!important;font:700 13.5px "Source Sans 3",system-ui,sans-serif;padding:7px 12px;cursor:pointer}.ea-pass[disabled]{opacity:.75;cursor:default}'
     + '.ea-suite{border:0;background:#1F2C45!important;color:#fff!important;font:700 15px "Source Sans 3",system-ui,sans-serif;border-radius:10px;padding:12px 16px;cursor:pointer}'
-    + '.ea-res{display:flex;gap:12px;align-items:center;background:#EAF3FB!important;border-radius:14px;padding:14px 16px;margin:18px 0 0;font-family:"Source Sans 3",system-ui,sans-serif;color:#2A3142!important;text-decoration:none!important}'
-    + '.ea-res b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-size:17px;color:#0B1220!important;line-height:1.25}.ea-res span.t{flex:1;font-size:15px;line-height:1.4}.ea-res .f{font-size:22px;font-weight:800;color:#DA3C1B!important}';
+    + '.ea-res{display:flex;gap:12px;align-items:center;background:#0B1220!important;border-radius:14px;padding:14px 16px;margin:18px 0 0;font-family:"Source Sans 3",system-ui,sans-serif;color:#C9D1DE!important;text-decoration:none!important}.ea-res .ea-k{color:#F09680!important}'
+    + '.ea-res b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-size:17px;color:#FFFFFF!important;line-height:1.25}.ea-res span.t{flex:1;font-size:15px;line-height:1.4}.ea-res .f{font-size:22px;font-weight:800;color:#F09680!important}'
+    + '.ea-pub{display:block;margin-top:8px;font-size:12.5px;font-weight:700;color:#F09680!important;text-decoration:underline!important;text-underline-offset:3px}'
+    + '.ea-pubb{display:block;background:#DA3C1B!important;color:#fff!important;text-align:center;font:800 14.5px "Source Sans 3",system-ui,sans-serif;padding:12px 14px;text-decoration:none!important}'
+    + '.ea-pubr{display:block;margin:8px 0 0;background:#DA3C1B!important;color:#fff!important;border-radius:10px;text-align:center;font:800 14px "Source Sans 3",system-ui,sans-serif;padding:10px 12px;text-decoration:none!important}';
   function style() { if (document.getElementById('ea-css')) return; var s = document.createElement('style'); s.id = 'ea-css'; s.textContent = CSS; document.head.appendChild(s); }
 
   /* 1. L'éphémère */
@@ -96,7 +99,7 @@
     style();
     var lab = a.lab || 'EFA vous propose';
     var d = document.createElement('aside'); d.className = 'ea-toast'; d.setAttribute('data-garde', ''); d.setAttribute('aria-label', lab);
-    d.innerHTML = '<img src="' + esc(a.logo || 'clone/assets/efa-oiseau.png') + '" alt=""><p><span class="ea-k">' + esc(lab) + ' · ' + esc(a.k) + '</span><b>' + esc(a.t) + '</b><a href="' + esc(a.u) + '?src=' + src + '">' + esc(a.c) + '</a></p><button type="button" class="ea-x" aria-label="Fermer">×</button><span class="ea-t"><i></i></span>';
+    d.innerHTML = '<img src="' + esc(a.logo || 'clone/assets/efa-oiseau.png') + '" alt=""><p><span class="ea-k">' + esc(lab) + ' · ' + esc(a.k) + '</span><b>' + esc(a.t) + '</b><a class="ea-cta" href="' + esc(a.u) + '?src=' + src + '">' + esc(a.c) + '</a>' + (a.lab ? '' : '<a class="ea-pub" href="partenaires.html?src=ephemere#contact">' + 'Espace publicitaire · Intéressé ? Contactez-nous →' + '</a>') + '</p><button type="button" class="ea-x" aria-label="Fermer">×</button><span class="ea-t"><i></i></span>';
     document.body.appendChild(d);
     var tm, barre = d.querySelector('.ea-t i');
     function fermer() { clearTimeout(tm); d.classList.remove('on'); setTimeout(function () { d.remove(); }, 500); }
@@ -104,7 +107,7 @@
     function pause() { clearTimeout(tm); var w = getComputedStyle(barre).transform; barre.style.transition = 'none'; barre.style.transform = w; }
     d.querySelector('.ea-x').onclick = fermer;
     d.addEventListener('mouseenter', pause); d.addEventListener('touchstart', pause, { passive: true });
-    d.querySelector('a').addEventListener('click', function () { compter(src + '-clic'); });
+    d.querySelector('a.ea-cta').addEventListener('click', function () { compter(src + '-clic'); });
     requestAnimationFrame(function () { requestAnimationFrame(function () { d.classList.add('on'); lancer(); }); });
     compter(src + '-vu');
   }
@@ -117,7 +120,7 @@
     if (!force) ecrire(cle, '1'); style();
     var lab = a.lab || 'EFA vous propose';
     var v = document.createElement('div'); v.className = 'ea-voile'; v.setAttribute('data-garde', ''); v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', lab);
-    v.innerHTML = '<div class="ea-int"><img src="clone/assets/' + esc(a.i) + '" alt=""><button type="button" class="ea-pass" disabled>Passer dans 3</button><div class="ea-b"><span class="ea-k">' + esc(lab) + ' · ' + esc(a.k) + '</span><h2>' + esc(a.t) + '</h2><p>' + esc(a.p) + '</p><div class="ea-acts"><a class="ea-go" href="' + esc(a.u) + '?src=intercalaire" target="_blank" rel="noopener">' + esc(a.c) + '</a><button type="button" class="ea-suite">Continuer l’atelier</button></div></div></div>';
+    v.innerHTML = '<div class="ea-int"><img src="clone/assets/' + esc(a.i) + '" alt=""><button type="button" class="ea-pass" disabled>Passer dans 3</button><div class="ea-b"><span class="ea-k">' + esc(lab) + ' · ' + esc(a.k) + '</span><h2>' + esc(a.t) + '</h2><p>' + esc(a.p) + '</p><div class="ea-acts"><a class="ea-go" href="' + esc(a.u) + '?src=intercalaire" target="_blank" rel="noopener">' + esc(a.c) + '</a><button type="button" class="ea-suite">Continuer l’atelier</button></div></div>' + (a.lab ? '' : '<a class="ea-pubb" href="partenaires.html?src=intercalaire#contact" target="_blank" rel="noopener">' + 'Espace publicitaire · Intéressé ? Contactez-nous →' + '</a>') + '</div>';
     document.body.appendChild(v);
     var b = v.querySelector('.ea-pass'), n = 3;
     function fin() { v.classList.remove('on'); setTimeout(function () { v.remove(); }, 300); document.removeEventListener('keydown', esc2); suite(); }
@@ -147,6 +150,7 @@
         c.innerHTML = '<img src="clone/assets/efa-oiseau.png" alt="" width="36" height="36" style="width:36px;height:36px;flex:0 0 36px"><span class="t"><span class="ea-k">EFA vous propose · ' + esc(a.k) + '</span><b>' + esc(a.t) + '</b>' + esc(a.p) + '</span><span class="f">→</span>';
         c.addEventListener('click', function () { compter('resultat-clic'); });
         z.appendChild(c);
+        var pb = document.createElement('a'); pb.className = 'ea-pubr'; pb.href = 'partenaires.html?src=resultat#contact'; pb.setAttribute('data-garde', ''); pb.textContent = 'Espace publicitaire · Intéressé ? Contactez-nous →'; z.appendChild(pb);
       });
     }, { threshold: 0.35 });
     io.observe(z);
