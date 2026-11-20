@@ -150,7 +150,7 @@
       if(b) n++; s+=b; }); return s*(0.4+0.6*n/ms.length); }
   function esc(t){ return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function surl(t,ms){ var h=esc(t); ms.forEach(function(m){ var r=rac(m); if(r.length<3) return; var re=new RegExp('(^|[^a-zà-ÿ])('+r.split('').map(function(c){ return '['+c+({a:'àâä',e:'éèêë',i:'îï',o:'ôö',u:'ùûü',c:'ç'}[c]||'')+']'; }).join('')+'[a-zà-ÿ]*)','gi'); h=h.replace(re,'$1<mark>$2</mark>'); }); return h; }
-  function charger(cb){ if(C&&A) return cb(); Promise.all([fetch('data/question-index.json?v=202611182001').then(function(r){return r.json();}),fetch('data/ateliers-recherche.json?v=202611182001').then(function(r){return r.json();})]).then(function(d){
+  function charger(cb){ if(C&&A) return cb(); Promise.all([fetch('data/question-index.json?v=202611200937').then(function(r){return r.json();}),fetch('data/ateliers-recherche.json?v=202611200937').then(function(r){return r.json();})]).then(function(d){
       C=d[0].map(function(a){ return {a:a,T:mo(a.t),D:mo(a.d),H:mo(a.h.join(' ')),X:mo(a.x)}; });
       A=d[1].map(function(a){ return {a:a,T:mo(a.t),D:mo(a.h+' '+a.th.join(' ')),H:mo(a.ch.join(' ')),X:mo(a.x)}; }); cb();
     }).catch(function(){ R.innerHTML='<p class="qn-vide">La recherche n’a pas pu se charger. Vérifiez votre connexion et réessayez.</p>'; }); }
