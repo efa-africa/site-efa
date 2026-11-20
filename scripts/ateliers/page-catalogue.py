@@ -176,6 +176,12 @@ body{margin:0;background:#F1F7FA;color:var(--ink);font-family:var(--f-body);font
 .grille .ca-aff{min-height:0}
 .grille.suite{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
 @media(max-width:640px){.grille.ess{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:min(76vw,320px);overflow-x:auto;max-width:100%;min-width:0;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}.grille.ess::-webkit-scrollbar{display:none}.grille.ess .ca{scroll-snap-align:start}.grille.suite{grid-template-columns:1fr 1fr;gap:10px}.grille.suite .ca-pied{padding:10px}}
+.ca-maison{display:flex;flex-direction:column;gap:8px;background:#EAF3FB!important;border-radius:14px;padding:18px 16px;color:#2A3142!important;text-decoration:none!important;min-height:220px;transition:background .15s}
+.ca-maison:hover{background:#DCEBF8!important}
+.cm-k{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5F6676}
+.ca-maison b{font-family:"Libre Baskerville",Georgia,serif;font-size:18px;line-height:1.22;color:#0B1220}
+.cm-p{font-size:14.5px;color:#4E5566;line-height:1.4}.cm-f{margin-top:auto;font-weight:800;color:#1B71B2;font-size:15px}
+@media(max-width:640px){.ca-maison{padding:12px}.ca-maison b{font-size:15.5px}.cm-p{font-size:13.5px}}
 .aide{margin-top:52px;background:#EEF5FC;border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
 .aide p{max-width:60ch;color:var(--ink2)}.aide b{color:#0B1220}
 .bouton{display:inline-flex;align-items:center;font-weight:800;font-size:16px;min-height:46px;padding:12px 22px;border-radius:8px;background:var(--corail);color:#fff!important}
@@ -265,6 +271,25 @@ page = page.replace('%%RECHERCHE%%', open('scripts/ateliers/recherche.js', encod
 open('ateliers.html', 'w', encoding='utf-8').write(page)
 print('ateliers.html : %d ateliers, %d thèmes' % (total, len(THEMES)))
 
+MAISON = {
+  'budget': ('Outil gratuit', 'Construire mon budget en 10 minutes', 'Chaque franc reçoit une mission, et vous gardez votre budget en PDF.', 'Ouvrir l’outil', 'outil-budget.html'),
+  'placer': ('Atelier accompagné', 'Un atelier avec Élysée Johnson', 'En petit groupe, sur votre situation.', 'Choisir mon atelier', 'ateliers-elysee.html'),
+  'bourse': ('Parcours accompagné', 'Mon premier ordre à la Bourse', 'Ouvrir son compte et passer son premier ordre, sans rester seul.', 'Découvrir le parcours', 'coach-bourse.html'),
+  'credit': ('Gratuit · 3 minutes', 'Par où commencer avec votre argent ?', 'Le diagnostic vous indique votre priorité.', 'Faire mon diagnostic', 'diagnostic.html'),
+  'activite': ('Gratuit · dès 1 minute', 'Trouver mon idée de business, à partir de mon budget', 'Des idées adaptées à votre budget, avec le premier pas.', 'Essayer Déclic', 'generateur-de-projet.html'),
+  'famille': ('Outil gratuit', 'Préparer ma retraite : où en êtes-vous ?', 'Ce qu’il vous manquera chaque mois, et combien mettre de côté.', 'Faire le calcul', 'preparer-ma-retraite.html'),
+  'arnaques': ('Gratuit', 'Une question d’argent ? Posez-la', 'Nous vous montrons les contenus qui y répondent.', 'Poser ma question', 'question.html'),
+}
+def maison(cle):
+    m = MAISON.get(cle)
+    if not m: return ''
+    return ('<a class="ca-maison" href="%s?src=carte"><span class="cm-k">EFA vous propose · %s</span><b>%s</b><span class="cm-p">%s</span><span class="cm-f">%s →</span></a>') % (
+        e(m[4]), e(m[0]), e(m[1]), e(m[2]), e(m[3]))
+def avec_maison(cartes, cle, pos=3):
+    m = maison(cle)
+    if not m: return ''.join(cartes)
+    cartes = list(cartes); cartes.insert(min(pos, len(cartes)), m); return ''.join(cartes)
+
 # ---------------------------------------------------------------- une page par thème : les essentiels, puis pour aller plus loin
 JS_T = JS.split('%%RECHERCHE%%')[0] + JS.split('/*fin-recherche*/')[1]
 JS_T = JS_T.replace("  var P=[].slice.call(document.querySelectorAll('.puces a'))", "  var P=[]").replace("T.forEach(function(t){io.observe(t);});", "")
@@ -278,8 +303,8 @@ for th in THEMES:
     corps += ('<section class="bloc"><h2>Les %d essentiels</h2><p>Si vous ne deviez en suivre que trois sur ce thème, ce sont ceux-là.</p><div class="grille ess">%s</div></section>') % (
         len(top), ''.join(carte(i, lab='Essentiel %d' % (k + 1), visage=(k == 0)) for k, i in enumerate(top)))
     corps += '<section class="bloc"><h2>Pour aller plus loin</h2><p>Quand les essentiels sont acquis, ou si votre situation le demande.</p>'
-    if p: corps += '<h3 class="sous">La suite du parcours</h3><div class="grille suite">%s</div>' % ''.join(carte(i, lab='Suite %d' % (k + 1)) for k, i in enumerate(p))
-    if c: corps += '<h3 class="sous">Selon votre situation</h3><div class="grille suite">%s</div>' % ''.join(carte(i) for i in c)
+    if p: corps += '<h3 class="sous">La suite du parcours</h3><div class="grille suite">%s</div>' % (''.join(carte(i, lab='Suite %d' % (k + 1)) for k, i in enumerate(p)) if c else avec_maison([carte(i, lab='Suite %d' % (k + 1)) for k, i in enumerate(p)], cle))
+    if c: corps += '<h3 class="sous">Selon votre situation</h3><div class="grille suite">%s</div>' % avec_maison([carte(i) for i in c], cle)
     corps += '</section>'
     corps += '<section class="bloc"><h2>Les autres thèmes</h2><div class="autres">%s</div></section>' % ''.join(
         '<a href="%s">%s</a>' % (('ateliers-%s.html' % t[0]) if any(suite(t)) else 'ateliers.html#%s' % t[0], e(t[1])) for t in THEMES if t[0] != cle)
