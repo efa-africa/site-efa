@@ -13,6 +13,129 @@
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
+   "origine": "veille EFA News du 2026-11-20",
+   "publication": "2026-11-20",
+   "maj": "2026-11-20",
+   "id": "2026-11-20-coris-bank-ci-entre-en-bourse",
+   "categorie": "brvm",
+   "rubrique": "Introductions en Bourse",
+   "titre": "Coris Bank Côte d'Ivoire entre à la Bourse (BRVM) : 20 % du capital à 7 720 F l'action",
+   "resume": "Du 30 novembre au 4 décembre 2026, Coris Holding vend 20 % de Coris Bank International Côte d'Ivoire au public, à 7 720 F CFA l'action. Avant de souscrire : qui vend, à quel prix, et ce que la date de cotation ne dit pas encore.",
+   "pays": [
+    "Côte d'Ivoire",
+    "UEMOA"
+   ],
+   "entites": [
+    "Coris Bank International Côte d'Ivoire",
+    "Coris Holding",
+    "Coris Bourse",
+    "AMF-UMOA",
+    "BRVM"
+   ],
+   "notions": [
+    "introduction en Bourse",
+    "offre publique de vente",
+    "note d'information",
+    "compte-titres",
+    "SGI"
+   ],
+   "evenement": "2026-11-30",
+   "evenement_label": "Souscription du 30 novembre au 4 décembre 2026",
+   "fait": "Coris Holding met sur le marché 8 160 000 actions de Coris Bank International Côte d'Ivoire, soit 20 % du capital, à 7 720 F CFA l'action pour le public (6 175 F pour le personnel du groupe). L'opération représente environ 62,7 milliards F CFA. La souscription est ouverte du 30 novembre au 4 décembre 2026, avec clôture anticipée possible, puis la banque demande son admission au compartiment « Prestige » de la Bourse (BRVM). L'AMF-UMOA a accordé son visa le 11 novembre 2026 (OA/26-05).",
+   "chiffres": [
+    {
+     "valeur": "7 720 F",
+     "libelle": "prix d'une action pour le public",
+     "periode": "OPV du 30 nov. au 4 déc. 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "20 %",
+     "libelle": "du capital vendu par Coris Holding, qui garde 80 %",
+     "periode": "OPV 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "24,5 Mds F",
+     "libelle": "résultat net de la banque",
+     "periode": "exercice 2025",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "C'est une offre publique de vente : les actions existent déjà et appartiennent à Coris Holding. L'argent de l'opération va donc au vendeur, pas à la banque.",
+    "Pour souscrire, il faut un compte-titres chez Coris Bourse (chef de file) ou chez une SGI du syndicat de placement, présent dans les 8 pays de l'UEMOA.",
+    "À la fin de la souscription, les actions sont attribuées selon les règles de la note d'information ; si la demande dépasse l'offre, on peut recevoir moins d'actions que demandé."
+   ],
+   "mot": {
+    "terme": "Offre publique de vente (OPV)",
+    "definition": "Vente au public d'actions déjà existantes par un actionnaire, à un prix fixé à l'avance, avant leur cotation en Bourse."
+   },
+   "change": "C'est l'application directe de la leçon d'Anthropic, mais chez nous et à notre portée : un prix d'offre connu, une période courte pour souscrire, puis une cotation dont personne ne connaît encore le premier cours. Au prix de l'offre, la banque est valorisée autour de 315 milliards F CFA, pour un résultat net de 24,5 milliards en 2025. Avant de souscrire, lisez la note d'information : montant minimum, règles d'attribution, risques et politique de dividende. Les actions donnent droit aux éventuels dividendes de l'exercice 2026.",
+   "retenir": "Une introduction en Bourse se prépare avant la date limite : ouvrir son compte-titres, lire la note d'information, et ne placer que l'argent qu'on peut laisser plusieurs années.",
+   "limites": [
+    "La date de première cotation n'est pas encore publiée ; l'annonce « d'ici fin janvier 2027 » qui circule n'est pas confirmée par les documents de l'opération.",
+    "Le montant minimum de souscription et les règles d'attribution figurent dans la note d'information, à demander à Coris Bourse ou à votre SGI.",
+    "Le premier cours peut être au-dessus ou en dessous de 7 720 F : rien ne garantit une hausse à l'ouverture.",
+    "Article d'éducation financière : ni conseil d'achat ni promesse de gain."
+   ],
+   "question": "Si vous souscrivez, ce sera pour la cotation du premier jour, ou pour garder ces actions plusieurs années ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Emprunts obligataires et introductions en Bourse",
+     "description": "Lire une offre d'actions : qui vend, combien, à quel prix.",
+     "url": "bourse-pro.html#B7"
+    },
+    {
+     "type": "Outil",
+     "titre": "Comparer les SGI",
+     "description": "Frais et services, pour ouvrir son compte-titres avant le 4 décembre.",
+     "url": "sgi-comparer.html"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Coris Bank Côte d'Ivoire ouvre 20 % de son capital au public",
+     "organisme": "Financial Afrik",
+     "date": "20 nov. 2026",
+     "url": "https://www.financialafrik.com/2026/11/20/coris-bank-cote-divoire-ouvre-20-de-son-capital-au-public/",
+     "consulte_le": "2026-11-20",
+     "type": "media"
+    },
+    {
+     "titre": "Coris Bank International Côte d'Ivoire prépare son introduction à la BRVM à travers une offre publique de vente de 20 % de son capital",
+     "organisme": "L'Économiste du Faso",
+     "date": "20 nov. 2026",
+     "url": "https://leconomistedufaso.com/2026/11/20/coris-bank-international-cote-divoire-prepare-son-introduction-a-la-brvm-a-travers-une-offre-publique-de-vente-de-20-de-son-capital/",
+     "consulte_le": "2026-11-20",
+     "type": "media"
+    },
+    {
+     "titre": "BRVM : Coris Bank CI ouvre son capital aux investisseurs dès le lundi 30 novembre",
+     "organisme": "Agence Ecofin",
+     "date": "20 nov. 2026",
+     "url": "https://www.agenceecofin.com/actualites-finance/2011-143648-brvm-coris-bank-ci-ouvre-son-capital-aux-investisseurs-des-le-lundi-30-novembre",
+     "consulte_le": "2026-11-20",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "Dans l'OPV de Coris Bank Côte d'Ivoire, à qui va l'argent payé par les souscripteurs ?",
+    "choix": [
+     "À la banque, pour financer ses nouvelles agences",
+     "À Coris Holding, l'actionnaire qui vend 20 % du capital",
+     "À la Bourse (BRVM)"
+    ],
+    "bonne": 1,
+    "explication": "Dans une offre publique de vente, ce sont des actions existantes qui changent de main : l'argent revient au vendeur, ici Coris Holding."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
    "origine": "veille EFA News du 2026-11-19",
    "publication": "2026-11-19",
    "maj": "2026-11-19",

@@ -158,7 +158,9 @@
   <url><loc>https://efa.africa/ateliers-famille</loc></url>
   <url><loc>https://efa.africa/ateliers-arnaques</loc></url>
   <url><loc>https://efa.africa/question</loc></url>
+  <url><loc>https://efa.africa/partenaires</loc></url>
 
+  <url><loc>https://efa.africa/news/2026-11-20-coris-bank-ci-entre-en-bourse</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://efa.africa/news/2026-11-19-anthropic-bourse-34-pourcent-pour-qui</loc><lastmod>2026-11-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://efa.africa/news/2026-11-13-mali-49-milliards-coupon-6-rendement-7-6</loc><lastmod>2026-11-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://efa.africa/news/2026-11-10-burkina-leve-30-milliards-personne-pour-sept-ans</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -191,5 +193,4 @@
   <url><loc>https://efa.africa/news/2026-10-13-airtel-money-bourse</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://efa.africa/news/2026-10-12-senegal-dette</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://efa.africa/news/2026-10-12-afrique-croissance-inflation</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://efa.africa/partenaires</loc></url>
 </urlset>
