@@ -45,3 +45,7 @@ La colonne « cours veille » de brvm.org n'est pas fiable. Depuis le 21 novembr
 - `historique/obligations_AAAA.csv` : obligations cotées par séance (cours, coupon couru, périodicité et montant du coupon, prochaine échéance, amortissement).
 - `historique/opcvm_AAAA.csv` : FCP et SICAV par séance (société de gestion, dépositaire, catégorie, valeurs liquidatives, performance depuis l'origine). Le nom de la société de gestion peut être incomplet quand il est écrit sur deux lignes dans le bulletin.
 Mis à jour chaque samedi par le robot « Historique BRVM ».
+
+## Ma BRVM (ma-brvm.html)
+
+Outil « Ma BRVM · Et si j'avais investi ? » (remplace simulateur-bourse.html, qui redirige) : cinq onglets (Si j'avais investi…, Quand êtes-vous entré ?, Comparer, Mon portefeuille, Décryptages), code dans `clone/ma-brvm.js`. Il lit `data/marches/` ; `jour.json` contient aussi `total_return` (BRVM Composite Total Return, publié depuis le 2 janvier 2026). Le portefeuille reste dans le navigateur du visiteur. Sonatel et Orange CI restent sélectionnables mais sont exclus des décryptages et ne sont jamais proposés par défaut.

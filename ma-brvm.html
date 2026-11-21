@@ -1,0 +1,252 @@
+<!doctype html>
+<html data-clone data-clone-plein lang="fr">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ma BRVM · Et si j’avais investi ? · EFA</title>
+<meta name="description" content="Ma BRVM : et si j’avais investi ? Choisissez une action, une date et un montant : ce que serait devenu votre argent à la Bourse (BRVM), dividendes et frais compris, comparé au marché.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700;800&display=swap">
+<style>body{margin:0;background:#fff}</style>
+<link rel="stylesheet" href="clone/marches-onglet.css?v=20261121a">
+<link rel="canonical" href="https://efa.africa/ma-brvm.html"><meta property="og:title" content="Ma BRVM · Et si j’avais investi ?"><meta property="og:description" content="Une action, une date, un montant : ce que serait devenu votre argent à la Bourse (BRVM), comparé au marché."><meta property="og:image" content="https://efa.africa/clone/assets/partage-ma-brvm.jpg">
+<style>
+.mb{--nuit:#0B1220;--creme:#F5EFE2;--papier:#FFFDF8;--corail:#DA3C1B;--bleu:#1B71B2;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--up:#1e7a4c;--dn:#b3261e}
+.mb-hero{background:var(--nuit);color:#E8EDF5;padding:34px 0 30px}
+.mb-hero .mb-k{color:#F09680}
+.mb-hero h1{color:#fff;font:700 clamp(34px,5.4vw,62px)/1.08 "Libre Baskerville",Georgia,serif;margin:10px 0 12px;text-wrap:balance}
+.mb-hero p{max-width:64ch;font-size:18px;line-height:1.55;margin:0;color:#C9D1DE}
+.mb-hero .mb-seance{margin-top:14px;font-size:14.5px;color:#C9D1DE}.mb-hero .mb-seance b{color:#fff}
+.mb-k{margin:0;font:800 12px/1.3 "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
+.mb-onglets{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:16px 0 4px;scroll-margin-top:150px}
+.mb-onglets::-webkit-scrollbar{display:none}
+.mb-onglet{flex:none;border:0;border-radius:999px;background:#EEF2F7;color:var(--nuit);font:700 15px "Source Sans 3",sans-serif;padding:10px 16px;cursor:pointer;min-height:44px}
+.mb-onglet small{display:block;font-weight:600;font-size:12px;opacity:.75}
+.mb-onglet[aria-selected=true]{background:var(--corail);color:#fff}
+.mb-outil{padding:22px 0 8px}
+.mb-outil>h2{font:700 clamp(26px,3.4vw,38px)/1.15 "Libre Baskerville",Georgia,serif;margin:0 0 8px}
+.mb-intro{max-width:68ch;color:var(--ink2);font-size:17.5px;line-height:1.55;margin:0 0 16px}
+.mb-form{display:grid;grid-template-columns:2fr 1.1fr 1fr 1fr;gap:14px;align-items:end;background:var(--creme);border-radius:16px;padding:20px}
+.mb-l{display:flex;flex-direction:column;gap:6px;font:700 14px "Source Sans 3",sans-serif;color:var(--nuit);min-width:0}
+.mb-l input,.mb-l select{font:600 16px "Source Sans 3",sans-serif;padding:11px 12px;border:1px solid #D9CFBC;border-radius:10px;background:#fff;color:var(--nuit);min-width:0;width:100%;box-sizing:border-box}
+.mb-frais{grid-column:1/-1}.mb-frais summary{cursor:pointer;font:700 15px "Source Sans 3",sans-serif;color:var(--bleu)}
+.mb-frais-in{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.mb-go,.mb-b{display:inline-block;border:0;border-radius:8px;background:var(--corail);color:#fff;font:800 16px/1.2 "Source Sans 3",sans-serif;padding:12px 20px;cursor:pointer;min-height:46px;text-decoration:none;box-sizing:border-box}
+.mb-go{grid-column:1/-1;justify-self:start}
+.mb-b-clair{background:#fff;color:var(--nuit)}
+.mb-lecon .mb-b-clair{background:#fff}
+.mb-note{font-size:14px;color:var(--ink3);line-height:1.5}
+.mb-err,.mb-attente{background:#fdecea;border-radius:12px;padding:14px 16px;color:var(--nuit)}.mb-attente{background:#EEF2F7}
+.mb-res{margin-top:20px}
+.mb-trois{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.mb-carte{border-radius:14px;padding:18px;background:var(--papier)}
+.mb-carte p{margin:6px 0 0;line-height:1.45;font-size:15px}
+.mb-chiffre{font:700 clamp(26px,3.2vw,36px)/1.1 "Libre Baskerville",Georgia,serif!important;margin:8px 0 4px!important}
+.mb-chiffre small{font-size:.5em}
+.mb-c-nuit{background:var(--nuit);color:#E8EDF5}.mb-c-nuit .mb-k{color:#F09680}.mb-c-nuit .mb-chiffre{color:#fff}
+.mb-c-up{background:#E4F4EA}.mb-c-dn{background:#FBE5E2}.mb-c-creme{background:var(--creme)}
+.mb-up{color:var(--up)}.mb-dn{color:var(--dn)}
+.mb-recit{background:var(--papier);border-radius:14px;padding:18px 20px}
+.mb-recit>p{margin:0 0 12px;line-height:1.6;max-width:80ch}
+.mb-deux{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mb-deux>div{background:var(--creme);border-radius:12px;padding:14px}
+.mb-moyen{font:700 26px/1.1 "Libre Baskerville",Georgia,serif;margin:6px 0}
+.mb-cols{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-top:14px}
+.mb-cols>*{min-width:0}
+.mb-bloc{background:var(--papier);border-radius:14px;padding:18px}
+.mb-bloc h3,.mb-h3{margin:0 0 10px;font:700 21px/1.2 "Libre Baskerville",Georgia,serif}
+.mb-h3{margin:22px 0 10px}
+.mb-courbe svg{width:100%;height:auto;display:block}
+.mb-grille{stroke:#E6E0D2;stroke-width:1}.mb-ref{stroke:#B8AE99;stroke-dasharray:3 4}.mb-marque{stroke:#1B71B2;stroke-width:1.5}
+.mb-ax{font:600 12px "Source Sans 3",sans-serif;fill:#5F6676}
+.mb-axe{display:flex;justify-content:space-between;font-size:13px;color:var(--ink3);margin:2px 0 0 54px}
+.mb-leg{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--ink2);margin:8px 0 0}
+.mb-leg i{display:inline-block;width:22px;height:0;vertical-align:middle;margin-right:6px}
+.mb-leg .mb-i-ref{border-top:2px dashed #B8AE99}
+.mb-t{width:100%;border-collapse:collapse;font-size:15px}
+.mb-t td,.mb-t th{padding:8px 6px;border-bottom:1px solid #EAE3D4;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mb-t td:first-child,.mb-t th:first-child{text-align:left;white-space:normal}
+.mb-t th{font:700 12px "Source Sans 3",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.mb-comp td:first-child{min-width:150px}
+.mb-t small{display:block;font-size:12.5px;color:var(--ink3);font-weight:600}
+.mb-tot td{font-weight:800;border-bottom:0}
+.mb-defile{overflow-x:auto;margin-top:14px;background:var(--papier);border-radius:14px;padding:6px 12px}
+.mb-pt{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.mb-lecon{margin-top:14px;background:var(--nuit);color:#E8EDF5;border-radius:14px;padding:20px 22px}
+.mb-lecon .mb-k{color:#F09680}.mb-lecon ul{margin:10px 0 14px;padding-left:20px;line-height:1.6}.mb-lecon li{margin-bottom:6px}.mb-lecon b{color:#fff}
+.mb-boutons{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+.mb-partage{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:14px;color:var(--ink2)}
+.mb-partage input{flex:1 1 220px;min-width:0;font:600 14px "Source Sans 3",sans-serif;padding:10px;border:1px solid #D9CFBC;border-radius:8px}
+.mb-partage .mb-b-clair{background:var(--creme)}
+.mb-curseur{display:flex;flex-direction:column;gap:6px;background:var(--creme);border-radius:14px;padding:16px 18px;margin:12px 0}
+.mb-curseur input[type=range]{width:100%;accent-color:var(--corail);min-height:32px}
+.mb-curseur b{font-size:17px}
+.mb-ligne-f{display:flex;flex-wrap:wrap;gap:12px}.mb-ligne-f .mb-l{flex:1 1 200px}
+.mb-pf-l{display:grid;grid-template-columns:2fr 1fr 1.2fr 1.2fr auto;gap:10px;align-items:end;background:var(--creme);border-radius:12px;padding:12px;margin-bottom:8px}
+.mb-x{border:0;background:#fff;border-radius:8px;width:44px;height:44px;font-size:22px;cursor:pointer;color:var(--nuit)}
+.mb-avert{padding-left:18px}
+.mb-decs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mb-dec{background:var(--papier);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.mb-dec h3{margin:0;font:700 19px/1.25 "Libre Baskerville",Georgia,serif}
+.mb-dec p{margin:0;line-height:1.5;font-size:15px}.mb-dec .mb-b{margin-top:auto;align-self:flex-start;background:var(--creme);font-size:15px}
+.mb-classe{margin:0;padding-left:20px;line-height:1.5}.mb-classe li{margin-bottom:10px}.mb-classe small{display:block;color:var(--ink3)}
+.mb-lien{background:none;border:0;padding:0;font:700 15px "Source Sans 3",sans-serif;color:var(--bleu);text-decoration:underline;text-decoration-color:var(--corail);text-underline-offset:4px;cursor:pointer}
+.mb-pourquoi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.mb-pourquoi div{background:var(--creme);border-radius:14px;padding:18px}
+.mb-pourquoi h3{margin:0 0 6px;font:700 19px/1.25 "Libre Baskerville",Georgia,serif}
+.mb-pourquoi p{margin:0;line-height:1.5;color:var(--ink2)}
+@media (max-width:860px){.mb-form{grid-template-columns:1fr 1fr}.mb-form .mb-titre{grid-column:1/-1}.mb-frais-in,.mb-trois,.mb-deux,.mb-cols,.mb-decs,.mb-pourquoi{grid-template-columns:1fr}.mb-pf-l{grid-template-columns:1fr 1fr}.mb-pf-l .mb-l:first-child{grid-column:1/-1}}
+</style>
+<script src="clone/ma-brvm.js?v=2026112102" defer></script>
+<link rel="stylesheet" href="clone/habillage.css?v=20261120b">
+</head>
+<body>
+<header class="header clone-head" id="clone-haut"><div class="container head-inner"><a class="efa-brand" href="/" aria-label="EFA — Accueil"><img class="efa-brand__bird" src="clone/assets/efa-oiseau.png" width="48" height="48" alt=""><span class="efa-brand__word" aria-hidden="true">efa<span class="efa-brand__dot"></span></span></a><nav class="desktop-nav" aria-label="Navigation principale"><a href="index.html#benefices">Comprendre mon argent</a><a href="index.html#pilier-progresser">Être accompagné</a><a href="index.html#pilier-agir">Lancer mon activité</a><a href="news.html">L’actu qui vous concerne</a><a href="etudes-prospective.html">Nos études</a><a href="auteur.html#auteur">Qui sommes-nous</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="clone-menu" aria-label="Ouvrir le menu"><span></span><span></span></button></div><nav id="clone-menu" class="menu-panel" aria-label="Menu"><div class="menu-rac"><a class="menu-moi" href="mon-efa.html" style="grid-column:1/-1;background:#0B1220;color:#fff!important">Mon EFA · ma progression</a><a href="ateliers.html" style="grid-column:1/-1;background:#DA3C1B;color:#fff!important">Me former · 57 ateliers</a><a href="diagnostic.html">Mon diagnostic · 1 min</a><a href="generateur-de-projet.html">Déclic · mon idée de business</a><a href="abonnement.html" style="grid-column:1/-1;background:#F5EFE2;color:#0B1220!important">S’abonner · dès 10 000 F/mois</a></div><a href="index.html#benefices">Comprendre mon argent <span>↗</span></a><a class="menu-sous" href="outils.html">Calculer et simuler <span>↗</span></a><a href="index.html#pilier-progresser">Être accompagné <span>↗</span></a><a class="menu-sous" href="rendez-vous.html">Rendez-vous avec Élysée <span>↗</span></a><a href="index.html#pilier-agir">Lancer mon activité <span>↗</span></a><a class="menu-sous" href="projets-a-suivre.html">Des projets qui inspirent <span>↗</span></a><a class="menu-sous" href="marches.html">La Bourse (BRVM) aujourd’hui <span>↗</span></a><a href="news.html">L’actu qui vous concerne <span>↗</span></a><a class="menu-sous" href="news.html?c=brvm">L’actu de la Bourse (BRVM) <span>↗</span></a><a class="menu-sous" href="decryptage.html">Décryptages <span>↗</span></a><a href="etudes-prospective.html">Nos études <span>↗</span></a><a class="menu-sous" href="africa-2075.html">Africa 2075 <span>↗</span></a><a href="auteur.html#auteur">Qui sommes-nous <span>↗</span></a><a class="menu-cle" href="organisations.html">Entreprises et écoles <span>↗</span></a><a class="menu-sous" href="rejoindre.html">J’ai un code <span>↗</span></a><a href="rendez-vous.html#contact">Nous écrire <span>↗</span></a></nav></header>
+<main id="contenu" class="mk" data-garde>
+<header class="mb-hero"><div class="mk-in"><p class="mb-k">Ma BRVM</p><h1>Et si j’avais investi&nbsp;?</h1><p>Une action, une date, un montant : voyez ce que serait devenu votre argent à la Bourse (BRVM), dividendes et frais compris, et comparez-le à tout le marché.</p><p class="mb-seance" id="mb-seance">Chargement des cours…</p></div></header>
+<nav class="mk-nav" aria-label="Onglet Marchés"><div class="mk-in mk-nav-in"><a href="marches.html">Aujourd’hui</a><a href="semaine-bourse.html">La semaine</a><a href="societes.html">Sociétés</a><a href="calendrier.html">Calendrier</a><a href="obligations.html">Obligations<small>bientôt</small></a><a href="ma-brvm.html" aria-current="page">Ma BRVM</a><a class="mk-sgi" href="acheter-des-actions.html">Acheter des actions</a></div></nav>
+<div class="mb mk-in" id="mb-outils">
+<div class="mb-onglets" role="tablist" aria-label="Les outils Ma BRVM">
+<button class="mb-onglet" role="tab" data-outil="investi" aria-selected="true">Si j’avais investi…<small>une action, une date, un montant</small></button>
+<button class="mb-onglet" role="tab" data-outil="entree" aria-selected="false">Quand êtes-vous entré&nbsp;?<small>la date change tout</small></button>
+<button class="mb-onglet" role="tab" data-outil="comparer" aria-selected="false">Comparer<small>deux ou trois actions</small></button>
+<button class="mb-onglet" role="tab" data-outil="portefeuille" aria-selected="false">Mon portefeuille<small>mes titres, mon résultat</small></button>
+<button class="mb-onglet" role="tab" data-outil="decryptages" aria-selected="false">Décryptages<small>les fortes hausses et baisses</small></button>
+</div>
+
+<section class="mb-outil" id="o-investi" aria-labelledby="t-investi">
+<h2 id="t-investi">Si j’avais investi…</h2>
+<p class="mb-intro">Choisissez une société ou tout le marché, un montant, une date d’achat et une date de revente. EFA reconstitue l’opération avec les cours officiels : nombre d’actions, dividendes encaissés, frais.</p>
+<form id="si-form" class="mb-form" novalidate>
+<label class="mb-l mb-titre"><span>J’aurais acheté</span><select id="si-titre"><option>Chargement…</option></select></label>
+<label class="mb-l"><span>Montant (FCFA)</span><input id="si-montant" inputmode="numeric" value="500 000"></label>
+<label class="mb-l"><span>Le</span><input id="si-date" type="date"></label>
+<label class="mb-l"><span>Revendu le</span><input id="si-fin" type="date"></label>
+<details class="mb-frais"><summary>Mes frais (modifiables)</summary>
+<div class="mb-frais-in">
+<label class="mb-l"><span>À l’achat (% du montant)</span><input id="si-fa" inputmode="decimal" value="1,4"></label>
+<label class="mb-l"><span>À la vente (% du montant)</span><input id="si-fv" inputmode="decimal" value="1,4"></label>
+<label class="mb-l"><span>Garde (% par an)</span><input id="si-garde" inputmode="decimal" value="0,3"></label>
+</div>
+<p class="mb-note">Par défaut : courtage d’environ 1 %, Bourse et dépositaire 0,3 %, taxe sur les commissions, soit environ 1,4 % par ordre (voir <a class="mk-lien" href="etude-frais-bourse.html">notre étude sur les frais</a>). Mettez les chiffres de la grille de votre SGI.</p></details>
+<button class="mb-go" type="submit">Voir le résultat</button>
+</form>
+<div id="si-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-entree" aria-labelledby="t-entree" hidden>
+<h2 id="t-entree">Quand êtes-vous entré&nbsp;?</h2>
+<p class="mb-intro">Deux personnes achètent la même action et racontent des histoires opposées. Déplacez la date d’achat sur la courbe : le résultat d’aujourd’hui change du tout au tout.</p>
+<div class="mb-ligne-f"><label class="mb-l"><span>L’action</span><select id="en-titre"></select></label>
+<label class="mb-l"><span>Sur</span><select id="en-per"><option value="12">les 12 derniers mois</option><option value="24" selected>les 2 dernières années</option><option value="0">tout l’historique (depuis 2023)</option></select></label></div>
+<div class="mb-curseur"><label for="en-curseur" class="mb-k">Ma date d’achat</label><input type="range" id="en-curseur" min="0" max="10" value="3"><b id="en-date"></b></div>
+<div id="en-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-comparer" aria-labelledby="t-comparer" hidden>
+<h2 id="t-comparer">Comparer deux ou trois actions</h2>
+<p class="mb-intro">Leurs parcours sur la même période, leur pire baisse, leurs dividendes et leur écart avec tout le marché.</p>
+<div class="mb-ligne-f"><label class="mb-l"><span>Première action</span><select id="co-a"></select></label><label class="mb-l"><span>Deuxième</span><select id="co-b"></select></label><label class="mb-l"><span>Troisième</span><select id="co-c"></select></label>
+<label class="mb-l"><span>Période</span><select id="co-per"><option value="6">6 mois</option><option value="12" selected>12 mois</option><option value="2026">depuis le 1er janvier 2026</option><option value="2024">depuis 2024</option><option value="tout">depuis 2023</option></select></label></div>
+<div id="co-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-portefeuille" aria-labelledby="t-portefeuille" hidden>
+<h2 id="t-portefeuille">Mon portefeuille BRVM</h2>
+<p class="mb-intro">Saisissez vos titres, le nombre d’actions et votre prix d’achat. Vous voyez votre résultat au dernier cours, les dividendes encaissés et la comparaison avec le marché. Rien n’est envoyé à EFA : tout reste sur votre téléphone.</p>
+<form id="pf-form" novalidate><div id="pf-lignes"></div>
+<p class="mb-boutons"><button type="button" class="mb-b mb-b-clair" id="pf-ajout" style="background:#F5EFE2">+ Ajouter une ligne</button> <button type="submit" class="mb-b">Calculer</button> <button type="button" class="mb-lien" id="pf-vider">Tout effacer</button></p></form>
+<div id="pf-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-decryptages" aria-labelledby="t-decryptages" hidden>
+<h2 id="t-decryptages">Décryptages : les séances qui ont tout changé</h2>
+<p class="mb-intro">Les plus fortes hausses et baisses des douze derniers mois, et ce qu’elles apprennent. Un détachement de dividende, peu de titres échangés, une annonce : derrière chaque chiffre, une situation à comprendre.</p>
+<div id="de-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" aria-labelledby="t-lire">
+<h2 id="t-lire">Bien lire ces résultats</h2>
+<div class="mb-pourquoi">
+<div><h3>Le prix n’est pas le rendement</h3><p>La courbe d’un cours ne compte pas les dividendes versés ni les frais payés. « Ma BRVM » affiche les deux : l’évolution du prix et ce qui serait vraiment resté dans votre poche.</p></div>
+<div><h3>Les fractionnements sont ajustés</h3><p>Quand une action est divisée, par exemple 10 pour 1, son cours baisse d’autant mais l’actionnaire a dix fois plus d’actions. Les cours antérieurs sont ajustés pour ne pas afficher une chute qui n’a pas eu lieu.</p></div>
+<div><h3>Deux repères de marché</h3><p>Le BRVM Composite suit les cours. Le Composite Total Return, publié depuis le 2 janvier 2026, compte aussi les dividendes réinvestis : c’est la comparaison juste pour un rendement dividendes compris.</p></div>
+</div>
+<p class="mb-note">Ces calculs regardent le passé : ils ne disent rien de l’avenir. Cours de clôture officiels de la BRVM, ajustés des opérations sur titres ; dividendes nets publiés au bulletin officiel de la cote ; le nombre d’actions achetées est arrondi à l’unité inférieure.</p>
+</section>
+</div>
+<section class="mk-sec mk-in"><div class="mk-act"><p>Pour acheter des actions, il faut un compte chez une SGI.</p><a class="mk-b" href="acheter-des-actions.html" data-goatcounter-click="fiche-sgi">Comment acheter des actions →</a></div></section>
+<footer class="mk-pied"><div class="mk-in"><p>Contenu pédagogique, ne constitue pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures.</p><p>Sources&nbsp;: BRVM (cours de clôture officiels, bulletin officiel de la cote), publications des sociétés cotées, AMF-UMOA. Calculs EFA. EFA n’est pas affiliée à la Bourse (BRVM).</p></div></footer>
+</main>
+<section class="efa-pourvous" data-garde aria-label="C’est fait pour vous" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">C’est fait pour vous.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">La finance, avec nos réalités africaines.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">C’est pensé pour nous</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On n’est pas seul</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">Tout au même endroit</span></p></section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="clone/marches-onglet.js?v=2026112105" defer></script>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="/clone/ambassadeur.js?v=20261103a" defer></script>
+<script src="/clone/mesure.js?v=20261104a" defer></script>
+<script src="clone/habillage.js?v=20261120b" defer></script>
+</body>
+</html>

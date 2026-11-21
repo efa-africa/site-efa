@@ -267,8 +267,11 @@ def main():
         return {'nom': n, 'niveau': d[1], 'var_jour': d[2], 'var_ytd': ytd, 'date': d[0], 'serie': [[x[0], x[1]] for x in s]}
     principaux = [bloc(n) for n in ('BRVM - COMPOSITE', 'BRVM-30', 'BRVM - PRESTIGE') if n in series]
     secteurs = [bloc(n) for n in series if cat[n] == 'sectoriel' and max(x[0] for x in series[n]) == jour]
+    # Composite « total return » (dividendes réinvestis), publié depuis le 2 janvier 2026 : repère de « Ma BRVM ».
+    tr = [n for n in series if cat[n] == 'total_return']
+    total_return = bloc(tr[0]) if tr else None
     vals = [x for x in liste if x['date'] == jour and x['var_jour'] is not None]
-    jour_json = {'date': jour, 'genere_le': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'), 'indices': principaux, 'secteurs': secteurs,
+    jour_json = {'date': jour, 'genere_le': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'), 'indices': principaux, 'secteurs': secteurs, 'total_return': total_return,
                  'hausses': [x['code'] for x in sorted(vals, key=lambda x: -x['var_jour'])[:5]],
                  'baisses': [x['code'] for x in sorted(vals, key=lambda x: x['var_jour'])[:5]],
                  'volumes': [x['code'] for x in sorted(vals, key=lambda x: -x['valeur_echangee'])[:5]],
