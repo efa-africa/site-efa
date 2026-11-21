@@ -48,8 +48,8 @@ if '--page' in sys.argv:
 modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
-RUBRIQUES = [('benefices', 'Apprendre et former'), ('pilier-progresser', 'Être coaché'), ('pilier-agir', 'Se lancer'),
-             ('pilier-media', 'EFA News'), ('etudes', 'Études et prospective'), ('apropos', 'À propos')]
+RUBRIQUES = [('benefices', 'Comprendre mon argent'), ('pilier-progresser', 'Être accompagné'), ('pilier-agir', 'Lancer mon activité'),
+             ('pilier-media', 'L’actu qui vous concerne'), ('etudes', 'Nos études'), ('apropos', 'Qui sommes-nous')]
 LIEN_RUBRIQUE = {'pilier-media': 'news.html', 'etudes': 'etudes-prospective.html', 'apropos': 'auteur.html#auteur'}
 SECTION_DE = {'portes': 'benefices', 'benefices': 'benefices', 'calculateur': 'benefices',
               'pilier-progresser': 'pilier-progresser', 'pilier-agir': 'pilier-agir',
