@@ -195,6 +195,7 @@
     var P = lignes($('pa-pas'), [{ k: 'n', t: 'Ce que je dois', txt: 1, ph: 'Ex. crédit' }, { k: 'm', t: 'Reste à rembourser (FCFA)', ph: '0' }], S.pas || [{ n: 'Crédits' }, { n: 'Dettes envers des proches' }], null);
     $('pa-act-plus').addEventListener('click', function () { A.ajouter(); }); $('pa-pas-plus').addEventListener('click', function () { P.ajouter(); });
     ['pa-mois', 'pa-cible'].forEach(function (id) { milliers($(id)); }); if (S.mois) $('pa-mois').value = f0(S.mois); if (S.cible) $('pa-cible').value = f0(S.cible);
+    try { var c0 = +new URLSearchParams(location.search).get('cible'); if (c0 >= 1000 && c0 <= 1e12) $('pa-cible').value = f0(c0); } catch (e) {}
     ['pa-t1', 'pa-t2', 'pa-t3'].forEach(function (id, i) { if (S.taux) $(id).value = String(S.taux[i]).replace('.', ','); });
     $('pa-form').addEventListener('submit', function (e) { e.preventDefault(); calc(true); });
     function proj(net, mois, taux, ans) { var r = taux / 100 / 12, v = net; for (var i = 0; i < ans * 12; i++) v = v * (1 + r) + mois; return v; }

@@ -11,12 +11,19 @@
   /* Une intention : id, mots repérés (une expression de plusieurs mots pèse plus), phrase « ce que j'ai compris »,
      outil [nom, promesse, adresse, pourquoi, bouton], compléments. « {m} » = le montant lu dans la question. */
   var I = [
-    { id: 'richesse', mots: ['devenir riche', 'riche', 'richesse', 'm enrichir', 'fortune', 'millionnaire', 'milliardaire', 'milliard', 'milliards', 'construire ma richesse', 'sortir du salaire', 'ne plus dependre de mon salaire', 'batir quelque chose', 'faire grandir mon patrimoine', 'construire mon patrimoine', 'reussir financierement'],
-      c: function (m) { return (m ? 'Vous avez <b>' + m.txt + '</b> et vous' : 'Vous') + ' voulez devenir riche : sortir des limites du salaire, bâtir quelque chose à vous, voir votre patrimoine grandir.'; },
-      o: ['Voir clair', 'Combien puis-je dégager chaque mois ?', 'ou-est-passe-mon-argent.html', 'Tout commence par la somme que vous pouvez mettre de côté chaque mois sans vous mettre en difficulté : c’est elle qui nourrit un business, un placement ou les deux.', 'Trouver ma capacité à construire'],
-      a: [A('Déclic', 'Bâtir quelque chose à moi', 'Quel business puis-je lancer avec ce que j’ai ?', function (m) { return 'generateur-de-projet.html' + (m ? '?budget=' + m.v : ''); }),
+    { id: 'milliard', mots: ['milliardaire', 'milliardaires', 'milliard', 'milliards', 'premier milliard', 'devenir milliardaire', 'immensement riche', 'comme dangote', 'grande fortune'],
+      c: 'Vous visez le milliard.',
+      o: ['Mon patrimoine', 'Mon premier million, puis mon premier milliard', 'mon-patrimoine.html?cible=1000000000', 'Indiquez ce que vous possédez et ce que vous mettez de côté chaque mois : l’outil vous montre en combien de temps vous atteignez votre objectif, et ce qui change la durée.', 'Calculer mon premier milliard'],
+      a: [A('Voir clair', 'D’abord, combien puis-je dégager chaque mois ?', 'La somme que vous pouvez mettre de côté sans vous mettre en difficulté : c’est elle qui nourrit tout le reste.', 'ou-est-passe-mon-argent.html'),
+          A('Les capitaines d’industrie', 'Comment ils ont bâti leur fortune', 'Dangote, Elumelu, Dossongui, Motsepe : douze parcours africains et la leçon de chacun.', 'bibliotheque.html#capitaines'),
+          A('Déclic', 'Bâtir une activité à moi', 'Quel business puis-je lancer avec ce que j’ai ?', 'generateur-de-projet.html'),
+          A('valo.', 'Ce que vaut mon entreprise', 'Une fourchette de valeur à partir de vos chiffres.', 'valoriser-mon-entreprise.html')] },
+    { id: 'richesse', mots: ['devenir riche', 'riche', 'richesse', 'm enrichir', 'fortune', 'millionnaire', 'millionnaires', 'premier million', 'construire ma richesse', 'sortir du salaire', 'ne plus dependre de mon salaire', 'batir quelque chose', 'faire grandir mon patrimoine', 'construire mon patrimoine', 'reussir financierement'],
+      c: 'Vous voulez devenir riche.',
+      o: ['Mon patrimoine', 'Quand aurai-je mon premier million ?', 'mon-patrimoine.html?cible=1000000', 'Indiquez ce que vous possédez et ce que vous mettez de côté chaque mois : l’outil vous montre en combien de temps vous atteignez votre objectif, et ce qui change la durée.', 'Calculer mon premier million'],
+      a: [A('Voir clair', 'D’abord, combien puis-je dégager chaque mois ?', 'La somme que vous pouvez mettre de côté sans vous mettre en difficulté : c’est elle qui nourrit un business, un placement ou les deux.', 'ou-est-passe-mon-argent.html'),
+          A('Déclic', 'Bâtir quelque chose à moi', 'Quel business puis-je lancer avec ce que j’ai ?', function (m) { return 'generateur-de-projet.html' + (m ? '?budget=' + m.v : ''); }),
           A('Ma BRVM', 'Faire travailler mon argent', 'Si j’avais investi, combien aurais-je aujourd’hui ?', function (m) { return 'ma-brvm.html' + (m ? '?m=' + m.v : ''); }),
-          A('Apprendre, seul ou accompagné', 'Tenir dans la durée', 'Quel chemin suivre, et comment tenir assez longtemps pour obtenir des résultats.', 'apprendre.html'),
           A('Ma liberté financière', 'Le chiffre à viser', 'Combien me faut-il pour vivre de mes revenus ?', 'liberte-financiere.html')] },
     { id: 'businessplan', mots: ['business plan', 'plan d affaires', 'mon plan', 'previsionnel', 'etude de marche'], c: 'Vous voulez savoir si votre business plan tient la route.',
       o: ['Mon business plan tient-il la route ?', 'Tester mon projet avant de me lancer', 'mon-business-plan-tient-il.html', 'Vous entrez vos chiffres ; l’outil cherche l’hypothèse qui ferait tout tomber, avant que la réalité s’en charge.', 'Tester mon plan'],
@@ -144,6 +151,7 @@
   ];
 
   /*REPONSES*/ var REP = {
+"milliard": "Un milliard ne s’épargne pas sur un salaire : il se bâtit. Les grandes fortunes africaines ont presque toutes le même chemin : une activité à soi, des bénéfices réinvestis pendant des années, puis une entreprise qui prend de la valeur. Le chemin a des étapes : savoir ce que vous possédez, dégager une somme chaque mois, atteindre le premier million, lancer ou faire grandir une activité. Personne ne peut vous promettre le milliard ; vous pouvez en revanche mesurer où vous en êtes et ce qui accélère.",
  "richesse": "Vous voulez devenir riche. Commençons par ce que vous avez, puis construisons ce qui peut grandir. La richesse ne vient pas d’un coup de chance : elle vient d’un écart régulier entre ce que vous gagnez et ce que vous dépensez, placé dans ce qui prend de la valeur, une activité à vous, des placements, des compétences. Trois étapes, dans l’ordre : dégager une somme chaque mois, la protéger, puis la faire travailler.",
  "businessplan": "Un business plan ne tient que si ses trois chiffres tiennent : combien de clients par jour, à quel prix, pour quel coût. Divisez par deux vos ventes prévues : si le projet survit, il est solide ; sinon, c’est cette hypothèse qu’il faut tester sur le terrain avant de dépenser. Un plan qui résiste à ce test est une base pour bâtir, et pour convaincre un associé ou une banque.",
  "rentable": "Le chiffre d’affaires n’est pas un gain. Ce que l’activité gagne, c’est ce qui reste après les achats, le loyer, le transport, les salaires et votre propre paie. Tant que la caisse de l’activité et votre poche sont mélangées, il est impossible de le savoir. Une activité dont vous connaissez le vrai gain est une activité que vous pouvez faire grandir.",

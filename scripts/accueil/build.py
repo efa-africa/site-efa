@@ -6,7 +6,7 @@ import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121zg'
+V = '20261121zh'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -318,7 +318,7 @@ open('questions.html', 'w', encoding='utf-8').write(questions)
 # ---- Les outils EFA du 21 novembre 2026 (scripts/outils/specs.py, calcul dans clone/outils-efa.js) et la carte des 100 outils ----
 sys.path.insert(0, 'scripts/outils')
 import specs as _sp
-V_OT = '20261121h'
+V_OT = '20261121i'
 LIENS_OT = '<link rel="stylesheet" href="clone/outils-efa.css?v=%s"><script src="clone/outils-efa.js?v=%s" defer></script>' % (V_OT, V_OT)
 NOMS_OT = {x['f']: x['t'] for x in _sp.PAGES}
 for k, x in enumerate(_sp.PAGES):
