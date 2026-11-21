@@ -6,13 +6,13 @@ import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121y'
+V = '20261121z'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
-  'diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart'),
+  'diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart cent-outils mon-vrai-reste mes-dettes puis-je-aider mon-patrimoine promesse-credible journal-decisions mon-annee'),
  ('activite', 'Bâtir et faire grandir mon activité', 'Idées de business, business plan, valeur de l’entreprise',
-  'generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre'),
+  'generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre mon-idee-test'),
  ('bourse', 'Faire grandir mon argent : investir, la Bourse (BRVM)', 'Ma BRVM, le marché du jour, les SGI, les cours pour débuter',
   'ma-brvm bourse premiers-pas-bourse marches semaine-bourse societes calendrier obligations acheter-des-actions sgi sgi-comparer questions-a-poser-a-sa-sgi questions-avant-d-investir acteurs coach-bourse ecole-de-la-bourse ecole-bourse bourse-essentiel bourse-marche bourse-pro bourse-projets investir investir-bourse investir-assurance-epargne investir-terrain-immobilier opcvm-fcpe club-investissement jeu-portefeuille-baisse personnalite etude-frais-bourse'),
  ('tontine', 'La tontine', 'Comprendre, choisir, cotiser sans se faire avoir',
@@ -29,7 +29,7 @@ FAMILLES = [
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
 EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
-TITRES = {'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
+TITRES = {'cent-outils': 'Les 100 outils EFA', 'mon-vrai-reste': 'Mon vrai reste', 'mes-dettes': 'Mes dettes classées', 'puis-je-aider': 'Puis-je aider ce mois-ci ?', 'mon-idee-test': 'Mon idée vaut-elle un test ?', 'mon-patrimoine': 'Mon patrimoine, aujourd’hui et dans dix ans', 'promesse-credible': 'Cette promesse est-elle crédible ?', 'journal-decisions': 'Mon journal de décisions', 'mon-annee': 'Mon année EFA', 'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
           'outils': 'Tous les outils et simulateurs', 'ateliers': 'Tous les ateliers, par thème', 'ateliers-elysee': 'Ateliers avec Élysée Johnson', 'news': 'EFA News', 'sgi': 'Les SGI de la Bourse (BRVM)',
@@ -179,7 +179,7 @@ accueil = TETE % META_ACCUEIL + '''
 <h2>Une question. Un premier pas.</h2><span class="pp-trait-g"></span>
 <p class="pp-exp-s">Une réponse courte, puis un outil pour avancer.</p>
 <div class="pp-exps">''' + EXPRESS + '''</div>
-<p class="pp-voir100"><a href="questions.html">Lire les 100 questions et leurs réponses ''' + FLECHE + '''</a></p>
+<p class="pp-voir100"><a href="cent-outils.html">Voir les 100 outils ''' + FLECHE + '''</a> &nbsp; <a href="questions.html">Lire les 100 questions et leurs réponses ''' + FLECHE + '''</a></p>
 </div></section>
 
 <section class="pp-former"><div class="pp-in">
@@ -226,6 +226,7 @@ open('index.html', 'w', encoding='utf-8').write(accueil)
 
 def carte(u, k, t, d, cta='Ouvrir'): return '<a class="pp-carte" href="%s"><p class="pp-k">%s</p><h3>%s</h3><p>%s</p><span class="pp-lien">%s →</span></a>' % (u, k, E(t), E(d), cta)
 SEUL = ''.join([
+ carte('cent-outils.html', 'Pratiquer', 'Les 100 outils EFA', 'Une question d’argent, un outil : vos chiffres, votre décision.', 'Voir les outils'),
  carte('questions.html', 'Questions et réponses', 'Les 100 questions sur l’argent', 'Budget, épargne, dettes, business, Bourse, patrimoine : une réponse courte et un outil pour chacune.', 'Lire les réponses'),
  carte('parcours.html', 'Le parcours complet', 'L’école EFA', 'Trois cycles, du diagnostic au patrimoine : Fondations, Maîtrise, Patrimoine. Un certificat local à la fin de chacun.', 'Commencer le parcours'),
  carte('diagnostic.html', 'Avant de commencer', 'Mon diagnostic', 'Six minutes pour savoir où vous en êtes et par quel module commencer.', 'Faire le point'),
@@ -312,7 +313,53 @@ questions = TETE % META_Q + '''
 ''' + blocs + '''</div></section>
 ''' + FIN
 open('questions.html', 'w', encoding='utf-8').write(questions)
-for p in ('index.html', 'prochain-pas.html', 'apprendre.html', 'questions.html'):
+
+# ---- Les outils EFA du 21 novembre 2026 (scripts/outils/specs.py, calcul dans clone/outils-efa.js) et la carte des 100 outils ----
+sys.path.insert(0, 'scripts/outils')
+import specs as _sp
+V_OT = '20261121c'
+LIENS_OT = '<link rel="stylesheet" href="clone/outils-efa.css?v=%s"><script src="clone/outils-efa.js?v=%s" defer></script>' % (V_OT, V_OT)
+NOMS_OT = {x['f']: x['t'] for x in _sp.PAGES}
+for k, x in enumerate(_sp.PAGES):
+    autres = [y for y in _sp.PAGES if y['f'] != x['f']]
+    autres = (autres[k:] + autres[:k])[:3]
+    meta = ('<title>%s · EFA</title>\n<link rel="canonical" href="https://efa.africa/%s">\n<meta name="description" content="%s">\n%s' % (E(x['t']), x['f'], E(x['d']), LIENS_OT))
+    page = TETE % meta + """
+<section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
+<p class="pp-fil"><a href="index.html">Accueil</a> / <a href="cent-outils.html">Les outils</a> / %s</p>
+<h1 class="pp-h1 pp-h1-c"><span>%s</span><span class="pp-ciel">%s</span></h1>
+<p class="pp-sous">%s</p>
+</div></div></section>
+<section class="ot" data-outil-efa="%s" data-garde><div class="pp-in">
+%s
+<div class="ot-suite"><h2>Continuer</h2><div class="pp-cartes">%s</div></div>
+</div></section>
+""" % (E(x['k']), E(x['h'][0]), E(x['h'][1]), E(x['s']), x['js'], x['form'],
+       ''.join(carte(y['f'] + '.html', y['k'], y['t'], y['s'], 'Ouvrir') for y in autres) + carte('cent-outils.html', 'Tout voir', 'Les 100 outils EFA', 'Chaque question d’argent a son outil.', 'Voir les outils')) + FIN
+    open(x['f'] + '.html', 'w', encoding='utf-8').write(page)
+manque = [c for c in _sp.CENT if not os.path.exists(re.split(r'[?#]', c[3])[0])]
+if manque: print('100 outils : pages absentes', [(c[0], c[3]) for c in manque]); sys.exit(1)
+sec = ''
+for i, fam in enumerate(_sp.FAMILLES):
+    L = _sp.CENT[i * 10:(i + 1) * 10]
+    sec += '<section class="c%d" id="f%d"><h2>%s</h2><ol>%s</ol></section>\n' % (i + 1, i + 1, E(fam), ''.join(
+        '<li><a href="%s"><i>%d</i><b>%s%s</b><span>%s</span>%s</a></li>' % (c[3], c[0], E(c[1]), '<em>Nouveau</em>' if c[4] == _sp.N else '', E(c[2]).replace(' ?', '&nbsp;?'), '<small>Dans : %s</small>' % E(c[4]) if c[4] and c[4] != _sp.N else '') for c in L))
+META_C = ('<title>Les 100 outils EFA : une question d’argent, un outil · EFA</title>\n<link rel="canonical" href="https://efa.africa/cent-outils">\n'
+          '<meta name="description" content="Budget, épargne, dettes, famille, business, Bourse (BRVM), patrimoine, arnaques : 100 outils EFA pour passer de la question à la décision, avec vos chiffres.">\n' + LIENS_OT)
+cent = TETE % META_C + """
+<section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
+<p class="pp-fil"><a href="index.html">Accueil</a> / Les 100 outils</p>
+<h1 class="pp-h1 pp-h1-c"><span>100 outils.</span><span class="pp-ciel">Vos chiffres, votre décision.</span></h1>
+<p class="pp-sous">Chaque outil part d’une question, prend vos chiffres et vous rend une décision ou une fiche à garder. La finance, avec nos réalités.</p>
+</div></div></section>
+<section class="ot ot-cent" data-garde><div class="pp-in">
+<nav class="ot-cent-nav" aria-label="Familles d’outils">%s</nav>
+%s</div></section>
+""" % (''.join('<a href="#f%d">%s</a>' % (i + 1, E(f)) for i, f in enumerate(_sp.FAMILLES)), sec) + FIN
+open('cent-outils.html', 'w', encoding='utf-8').write(cent)
+PAGES_OT = [x['f'] + '.html' for x in _sp.PAGES] + ['cent-outils.html']
+
+for p in ['index.html', 'prochain-pas.html', 'apprendre.html', 'questions.html'] + PAGES_OT:
     subprocess.run(['python3', 'scripts/clone/habiller.py', '--page', p], check=True, stdout=subprocess.DEVNULL)
 RENVOI = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="https://efa.africa/%s"><title>EFA</title><script>location.replace("%s"+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=%s"></head><body><p><a href="%s">Éducation Financière Afrique</a></p></body></html>\n'
 open('accueil-v3.html', 'w', encoding='utf-8').write(RENVOI % ('', './', './', './'))
