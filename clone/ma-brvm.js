@@ -224,8 +224,9 @@
       tr('Droits de garde (' + R.annees.toFixed(1).replace('.', ',') + ' an' + (R.annees >= 2 ? 's' : '') + ')', '−' + fF(R.garde)) + tr('Il vous resterait', fF(R.final), 'mb-tot') + '</tbody></table>' +
       (R.divs.length ? '<p class="mb-note">Dividendes nets détachés le ' + R.divs.map(function (d) { return dc(d.detachement) + (d.detachement_estime ? ' (date estimée)' : ''); }).join(', ') + '.</p>' : '<p class="mb-note">Aucun dividende détaché sur la période.</p>') +
       '<p class="mb-note">Pour rentrer dans ses frais, il fallait revendre au moins ' + fF(R.seuil * (R.P1epoque / R.P1)) + ' par action.</p></div></div>';
-    h += lecon(R, pRes) + partage(R);
+    h += lecon(R, pRes) + '<div id="si-top" class="mb-top"></div>' + partage(R);
     $('si-res').innerHTML = h;
+    meilleures(R.jAchat, R.jFin, R.code, R.M);
     var b = $('si-copier'); if (b) b.addEventListener('click', copier);
     MK.compte('ma-brvm-investi-' + R.code);
   }
@@ -241,7 +242,43 @@
       '<div class="mb-carte ' + (res >= 0 ? 'mb-c-up' : 'mb-c-dn') + '"><p class="mb-k">Écart</p><p class="mb-chiffre">' + sF(res) + '</p><p>' + pc(res / M * 100) + ' après frais.</p></div>' +
       '<div class="mb-carte mb-c-creme"><p class="mb-k">L’indice</p><p class="mb-chiffre">' + pc(marche) + '</p><p>' + (tr != null ? 'Dividendes réinvestis : <b>' + pc(tr) + '</b> (Composite Total Return).' : 'Hors dividendes : le Composite Total Return n’est publié que depuis le 2 janvier 2026.') + '</p></div></div>' +
       '<div class="mb-recit"><p>On ne peut pas acheter l’indice directement à la Bourse (BRVM) : c’est un repère. Pour s’en approcher, il faut répartir son argent entre plusieurs sociétés, ou passer par un fonds (FCP).</p></div>' +
-      '<div class="mb-bloc">' + courbe([{ nom: 'BRVM Composite', coul: '#1B71B2', pts: idx.map(function (x) { return [x[0], M * x[1] / idx[0][1]]; }) }], { ref: M, refNom: 'Montant de départ', label: 'Évolution du BRVM Composite', fmt: function (v) { return f0(v / 1000) + ' k'; } }) + '</div>';
+      '<div class="mb-bloc">' + courbe([{ nom: 'BRVM Composite', coul: '#1B71B2', pts: idx.map(function (x) { return [x[0], M * x[1] / idx[0][1]]; }) }], { ref: M, refNom: 'Montant de départ', label: 'Évolution du BRVM Composite', fmt: function (v) { return f0(v / 1000) + ' k'; } }) + '</div><div id="si-top" class="mb-top"></div>';
+    meilleures(idx[0][0], idx[idx.length - 1][0], 'IDX', M, marche);
+  }
+
+  /* Sur la même période : les meilleures performances du marché (dividendes compris) */
+  function meilleures(d0, d1, choix, M, marcheIdx) {
+    var box = $('si-top'); if (!box) return;
+    box.innerHTML = '<p class="mb-attente">EFA classe les ' + SOC.length + ' sociétés cotées sur la même période…</p>';
+    var codes = SOC.map(function (s) { return s.code; }).filter(function (c) { return !HORS_DECRYPTAGE[c]; });
+    var limite = decale(d0, 0); var tard = new Date(d0 + 'T12:00:00Z'); tard.setUTCDate(tard.getUTCDate() + 10); tard = tard.toISOString().slice(0, 10);
+    Promise.all(codes.map(function (c) { return fiche(c).catch(function () { return null; }); })).then(function (FS) {
+      if (!$('si-top') || $('si-top') !== box) return;
+      var L = [];
+      FS.forEach(function (f) {
+        if (!f) return;
+        var H = f.historique, i0 = premierApres(H, d0), i1 = dernierAvant(H, d1);
+        if (i0 < 0 || i1 <= i0 || H[i0][0] > tard) return;
+        var p0 = H[i0][1], p1 = H[i1][1];
+        var dv = (f.dividendes || []).filter(function (x) { return x.detachement > H[i0][0] && x.detachement <= H[i1][0]; }).reduce(function (s, x) { return s + x.montant; }, 0);
+        L.push({ f: f, prix: (p1 / p0 - 1) * 100, tot: ((p1 + dv) / p0 - 1) * 100, dv: dv > 0 });
+      });
+      if (!L.length) { box.innerHTML = ''; return; }
+      L.sort(function (a, b) { return b.tot - a.tot; });
+      var rang = -1; L.forEach(function (x, i) { if (x.f.code === choix) rang = i; });
+      var marche = marcheIdx != null ? marcheIdx : perfIndice(COMPO.serie, d0, d1), battent = L.filter(function (x) { return x.tot > marche; }).length;
+      var top = L.slice(0, 5);
+      box.innerHTML = '<div class="mb-bloc"><p class="mb-k">Sur la même période</p><h3>Les meilleures performances du marché</h3>' +
+        '<p class="mb-note">Du ' + dt(d0) + ' au ' + dt(d1) + ', dividendes compris, avant frais. ' + L.length + ' sociétés cotées sur toute la période.</p>' +
+        '<ol class="mb-podium">' + top.map(function (x, i) {
+          var moi = x.f.code === choix;
+          return '<li' + (moi ? ' class="mb-moi"' : '') + '><span class="mb-rang">' + (i + 1) + '</span><span class="mb-nom"><b>' + esc(MK.titre(x.f)) + '</b><small>cours ' + pc(x.prix) + (x.dv ? ', plus dividendes' : '') + (moi ? ' · votre choix' : '') + '</small></span><span class="mb-perf ' + cl(x.tot) + '">' + pc(x.tot) + '</span>' +
+            '<button type="button" class="mb-lien" data-aller="investi" data-code="' + esc(x.f.code) + '" data-date="' + d0 + '" data-fin="' + d1 + '">avec ' + (M ? f0(M) + ' F' : 'mon montant') + '</button></li>';
+        }).join('') + '</ol>' +
+        '<p class="mb-situ">' + (rang >= 0 ? (rang < 5 ? 'Votre choix est dans le haut du classement : ' : 'Votre choix arrive ') + '<b>' + (rang + 1) + '<sup>e</sup> sur ' + L.length + '</b>. ' : '') +
+        'Le BRVM Composite a fait ' + pc(marche) + ' (cours seuls) ; <b>' + battent + ' société' + (battent > 1 ? 's' : '') + ' sur ' + L.length + '</b> ont fait mieux, dividendes compris.</p>' +
+        '<p class="mb-note">Ce classement regarde le passé : les meilleures d’une période sont rarement les mêmes à la suivante. Il sert à comparer, pas à choisir.</p></div>';
+    });
   }
 
   function lecon(R, pRes) {
@@ -487,7 +524,7 @@
     opts = opts || {};
     if (outil === 'entree') initEntree(opts.code);
     else if (outil === 'investi' && opts.code) {
-      $('si-titre').value = opts.code; if (opts.date) $('si-date').value = opts.date; $('si-fin').value = DERNIER; calculer(false);
+      $('si-titre').value = opts.code; if (opts.date) $('si-date').value = opts.date; $('si-fin').value = opts.fin || DERNIER; calculer(false);
     } else INIT[outil]();
     try { history.replaceState(null, '', '#' + outil); } catch (e) {}
     if (opts.defiler !== false) $('mb-outils').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -502,7 +539,7 @@
         var b = e.target.closest('[data-outil]');
         if (b && b.classList.contains('mb-onglet')) { ouvrir(b.dataset.outil, { defiler: false }); return; }
         var a = e.target.closest('[data-aller]');
-        if (a) { e.preventDefault(); ouvrir(a.dataset.aller, { code: a.dataset.code, date: a.dataset.date }); }
+        if (a) { e.preventDefault(); ouvrir(a.dataset.aller, { code: a.dataset.code, date: a.dataset.date, fin: a.dataset.fin }); }
       });
       var depart = Q.get('outil') || (location.hash || '').slice(1);
       if (depart && depart !== 'investi' && INIT[depart]) ouvrir(depart, { defiler: false });

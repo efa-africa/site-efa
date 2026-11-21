@@ -106,9 +106,19 @@
 .mb-encours .mb-coche{border-color:#6DB8F2;border-top-color:transparent;animation:mbt .7s linear infinite}
 .mb-fait .mb-coche{background:#3CCB7F;border-color:#3CCB7F;position:relative}.mb-fait .mb-coche::after{content:"";position:absolute;left:4px;top:1px;width:5px;height:9px;border:solid #0B1220;border-width:0 2px 2px 0;transform:rotate(45deg)}
 @media (prefers-reduced-motion:reduce){.mb-roue,.mb-encours .mb-coche{animation:none}}
+.mb-top{margin-top:14px}
+.mb-podium{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.mb-podium li{display:grid;grid-template-columns:34px 1fr auto;grid-template-areas:"r n p" "r b b";align-items:center;column-gap:12px;background:var(--creme);border-radius:12px;padding:10px 14px}
+.mb-podium li.mb-moi{background:#E4F4EA}
+.mb-rang{grid-area:r;width:30px;height:30px;border-radius:50%;background:var(--nuit);color:#fff;font:800 15px "Source Sans 3",sans-serif;display:flex;align-items:center;justify-content:center}
+.mb-podium li:first-child .mb-rang{background:var(--corail)}
+.mb-nom{grid-area:n;min-width:0}.mb-nom small{display:block;color:var(--ink3);font-size:13px}
+.mb-perf{grid-area:p;font:700 20px "Libre Baskerville",Georgia,serif}
+.mb-podium .mb-lien{grid-area:b;justify-self:start;font-size:14px}
+.mb-situ{margin:12px 0 4px;line-height:1.55}
 @media (max-width:860px){.mb-form{grid-template-columns:1fr 1fr}.mb-form .mb-titre{grid-column:1/-1}.mb-frais-in,.mb-trois,.mb-deux,.mb-cols,.mb-decs,.mb-pourquoi{grid-template-columns:1fr}.mb-pf-l{grid-template-columns:1fr 1fr}.mb-pf-l .mb-l:first-child{grid-column:1/-1}}
 </style>
-<script src="clone/ma-brvm.js?v=2026112103" defer></script>
+<script src="clone/ma-brvm.js?v=2026112104" defer></script>
 <link rel="stylesheet" href="clone/habillage.css?v=20261120b">
 </head>
 <body>
