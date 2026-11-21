@@ -1,0 +1,56 @@
+name: Publications financières BRVM (états financiers, rapports)
+
+# Télécharge les états financiers, rapports trimestriels et rapports annuels publiés sur brvm.org
+# et en garde le texte sur la branche « brvm-etats-financiers-brut ».
+on:
+  schedule:
+    - cron: "41 9 * * 6"   # chaque samedi : 3 premières pages de chaque liste (nouveautés)
+  workflow_dispatch:
+    inputs:
+      pages:
+        description: "Pages à lire par liste (0 = toutes)"
+        default: "0"
+      types:
+        description: "Listes à lire"
+        default: "etats-financiers,rapports-trimestriels,annual-reports"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: brvm-etats-financiers
+  cancel-in-progress: false
+
+jobs:
+  telecharger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - run: pip install requests beautifulsoup4
+      - name: Préparer la branche
+        run: |
+          git config user.name "EFA robot BRVM"
+          git config user.email "robot-brvm@efa.africa"
+          cp scripts/brvm/etats_financiers_telecharger.py /tmp/ef.py
+          if git ls-remote --exit-code --heads origin brvm-etats-financiers-brut; then
+            git checkout -B brvm-etats-financiers-brut origin/brvm-etats-financiers-brut
+          else
+            git checkout --orphan brvm-etats-financiers-brut && git rm -rfq . && echo "Texte des publications financières des sociétés cotées (source : brvm.org)" > LISEZ-MOI.md
+          fi
+      - name: Télécharger
+        run: python /tmp/ef.py --sortie ef --pages "${{ inputs.pages || '3' }}" --types "${{ inputs.types || 'etats-financiers,rapports-trimestriels,annual-reports' }}"
+        timeout-minutes: 330
+      - name: Enregistrer
+        if: always()
+        run: |
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -qm "Publications financières BRVM"
+          git push origin HEAD:brvm-etats-financiers-brut
