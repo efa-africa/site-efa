@@ -150,15 +150,37 @@ def main():
         rapport["seances"] += 1
     sortie = DOSSIER / "historique"
     sortie.mkdir(exist_ok=True)
+    # Variation depuis le 31 décembre : base = dernière clôture de l'année précédente si elle est lue,
+    # sinon clôture de la première séance ÷ (1 + variation du jour).
+    for annee, d in par_annee.items():
+        prec = par_annee.get(str(int(annee) - 1))
+        base = {}
+        if prec:
+            for r in sorted(prec["i"], key=lambda r: r["date_seance"]):
+                base[r["indice"]] = r["cloture"]
+        prem = {}
+        for r in sorted(d["i"], key=lambda r: r["date_seance"]):
+            prem.setdefault(r["indice"], r)
+        for n, r in prem.items():
+            if n not in base and r["cloture"] and r["variation_pct"] is not None:
+                base[n] = r["cloture"] / (1 + r["variation_pct"] / 100)
+        for r in d["i"]:
+            b = base.get(r["indice"])
+            ref = variation_depuis_31_decembre(r["indice"], r["cloture"], int(annee))
+            r["variation_annuelle_pct"] = ref if ref is not None else (round((r["cloture"] / b - 1) * 100, 2) if b and r["cloture"] else None)
     for annee, d in par_annee.items():
         for nom, champs, lignes in (("actions", CHAMPS_ACTIONS, d["a"]), ("indices", CHAMPS_INDICES, d["i"])):
             with (sortie / ("%s_%s.csv" % (nom, annee))).open("w", encoding="utf-8", newline="") as fo:
                 w = csv.DictWriter(fo, fieldnames=champs)
                 w.writeheader()
                 w.writerows(lignes)
-    # Clôture du 31 décembre précédent, pour les performances depuis le 1er janvier :
+    # Clôture du 31 décembre précédent, quand l'année précédente n'est pas lue :
     # c'est le « cours précédent » de la première séance de l'année.
+    for f in sortie.glob("actions_*-12-31.csv"):
+        f.unlink()
     for annee, d in par_annee.items():
+        if str(int(annee) - 1) in par_annee:
+            continue
         prem = min((r["date_seance"] for r in d["a"]), default=None)
         if prem and prem[5:] <= "01-05":
             fin = "%d-12-31" % (int(annee) - 1)
