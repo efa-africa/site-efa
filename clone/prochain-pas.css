@@ -46,10 +46,10 @@
 .pp-compris .pp-k{color:var(--bleu)}
 .pp-k{margin:0;font:800 12px/1.3 "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--corail)}
 .pp-compris p{margin:4px 0 0;font-size:19px;color:var(--nuit)}
-.pp-reco{background:var(--nuit);color:#E8EDF5;border-radius:18px;padding:24px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
-.pp-reco .pp-k{color:#F09680}
-.pp-reco h2{color:#fff;font-size:clamp(28px,3.6vw,40px);margin:8px 0 4px}
-.pp-reco .pp-sur{font:italic 400 18px "Libre Baskerville",Georgia,serif;color:var(--ciel);margin:0 0 10px}
+.pp-reco{background:#E3F1FD;border:1px solid #BFDDF5;color:var(--ink);border-radius:18px;padding:24px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.pp-reco .pp-k{color:#0B7F88}
+.pp-reco h2{color:var(--nuit);font-size:clamp(28px,3.6vw,40px);margin:8px 0 4px}
+.pp-reco .pp-sur{font:italic 400 18px "Libre Baskerville",Georgia,serif;color:#1B71B2;margin:0 0 10px}
 .pp-reco p{margin:0;max-width:62ch}
 .pp-cta{display:inline-block;background:var(--corail);color:#fff;text-decoration:none;font:800 17px "Source Sans 3",sans-serif;padding:14px 22px;border-radius:10px;white-space:nowrap}
 .pp-deux{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
@@ -115,11 +115,20 @@
 /* Mise en ligne du 21/11/2026 : réponse en bref, réponses express, se former */
 .pp-bref{background:#fff;border-radius:14px;padding:18px 20px;margin-bottom:16px;box-shadow:0 8px 24px rgba(11,18,32,.07)}
 .pp-bref .pp-k{color:var(--corail)}.pp-bref p+p{margin:8px 0 0;font-size:18.5px;line-height:1.6;color:var(--nuit);max-width:78ch}
-.pp-express{padding:38px 0 10px;background:#fff}.pp-express h2{text-align:center;font-size:clamp(24px,3vw,34px);color:var(--nuit)}
-.pp-exps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.pp-exp{display:block;background:var(--nuit);color:#fff!important;border-radius:14px;padding:18px;text-decoration:none}
-.pp-exp small{display:block;font:800 12px "Source Sans 3",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#F09680;margin-bottom:8px}
-.pp-exp b{display:block;font:700 19px/1.3 "Libre Baskerville",Georgia,serif}.pp-exp span{display:block;margin-top:10px;color:var(--ciel);font-weight:700;font-size:15px}
+.pp-express{padding:38px 0 10px;background:#fff}.pp-express h2{text-align:left;font-size:clamp(28px,3.8vw,44px);color:var(--nuit);margin:6px 0 0}
+.pp-exps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pp-exp{--t:#1B71E0;--f:#E3F1FD;--b:#BFDDF5;display:block;background:var(--f);border:1px solid var(--b);color:var(--nuit)!important;border-radius:16px;padding:18px 20px 16px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.pp-exp:hover,.pp-exp:focus-visible{transform:translateY(-2px);box-shadow:0 10px 26px rgba(11,18,32,.08)}
+.pp-exp-t{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.pp-exp-ic{flex:none;width:38px;height:38px;border-radius:9px;background:var(--t);padding:7px;box-sizing:border-box;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:#fff}
+.pp-exp small{display:block;font:800 13px "Source Sans 3",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--nuit)}
+.pp-exp b{display:block;font:700 clamp(18px,1.9vw,22px)/1.3 "Libre Baskerville",Georgia,serif;color:var(--nuit)}
+.pp-lire{display:inline-flex;align-items:center;gap:10px;margin-top:10px;color:#0B7F88;font-weight:700;font-size:16px}
+.pp-fl{width:22px;height:22px;flex:none}.pp-fl circle{fill:#0E8C94}.pp-fl path{fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pp-t-placement{--t:#7C3AED;--f:#F1EAFD;--b:#D9C9F5}.pp-t-famille{--t:#D6284E;--f:#FDEAF0;--b:#F6C6D4}.pp-t-terrain{--t:#12A074;--f:#E6F8F0;--b:#BDE8D4}.pp-t-tontine{--t:#1D5FD9;--f:#E6ECFB;--b:#C5D2F3}.pp-t-epargne{--t:#0E9AA0;--f:#E2F6F8;--b:#BDE6EA}
+.pp-guide{margin:0;font:800 13px "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#0B7F88}
+.pp-trait-g{display:block;width:64px;height:4px;border-radius:4px;background:#0E8C94;margin:12px 0 10px}
+.pp-exp-s{margin:0 0 18px;font-size:18px;color:var(--ink)}
 .pp-former{padding:34px 0 8px;background:#fff}.pp-former h2{font-size:clamp(24px,3vw,34px);color:var(--nuit)}
 .pp-affs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .pp-aff{display:block;text-decoration:none;color:var(--nuit)}
@@ -173,3 +182,7 @@ html[data-clone] body{margin:0}
 .pp-reco h2,.pp-sur,.pp-carte h3,.pp-r b,.pp-art b,.pp-exp b,.pp-voie b,.pp-compris p,.pp-bref p{overflow-wrap:anywhere}
 .pp-cta{white-space:normal;text-align:center;max-width:100%;box-sizing:border-box}
 @media (max-width:720px){.pp-cta{display:block}.pp-reco{padding:20px}.pp-reco .pp-sur{font-size:17px}}
+
+@media (max-width:720px){.pp-exps{grid-template-columns:1fr}}
+.pp-express h2,.pp-exp b{font-weight:700!important}
+.pp-exp-ic{width:44px;height:44px;border-radius:10px;padding:8px}

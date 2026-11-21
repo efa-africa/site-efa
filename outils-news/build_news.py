@@ -296,7 +296,7 @@ LIB_BOUTON = {"Leçon": "Lire la leçon", "Calcul": "Faire le calcul", "Outil": 
 # ---- Statut : le carrousel de l'article, à faire défiler au-dessus du texte (règle du 21 nov. 2026) ----
 # Par défaut, il est composé à partir de l'article (titre, chiffres, mécanisme, mot, à retenir, question).
 # Si l'article porte un champ « carrousel » (liste d'images 4:5), ce sont ces images qui défilent.
-V_STATUT = "20261121b"
+V_STATUT = "20261121c"
 def statut(a):
     def L(t, n): return " l" if len(t) > n else ""
     logo = '<span class="st-logo"><img src="clone/assets/efa-oiseau.png" alt="" width="30" height="30">efa<i></i></span>'
@@ -312,10 +312,10 @@ def statut(a):
         ch = "".join(f'<div><b class="{L(v, 10).strip()}">{typo(v)}</b><span>{typo(l)}</span></div>' for v, l, per, _ in a["chiffres"][:3])
         D.append(f'<div class="st-d g" hidden><p class="st-k">Les chiffres</p><div class="st-ch">{ch}</div></div>')
         for k, e in enumerate(a["mecanisme"][:3]):
-            D.append(f'<div class="st-d{" g" if k % 2 else ""}" hidden><p class="st-k">Comment ça marche</p><p class="st-num">{k+1}</p><p class="st-p{L(e, 170)}">{typo(e)}</p></div>')
-        D.append(f'<div class="st-d g" hidden><p class="st-k">Le mot</p><p class="st-h">{typo(a["mot"][0])}</p><p class="st-p{L(a["mot"][1], 170)}">{typo(a["mot"][1])}</p></div>')
+            D.append(f'<div class="st-d {"vwr"[k]}" hidden><p class="st-k">Comment ça marche</p><p class="st-num">{k+1}</p><p class="st-p{L(e, 170)}">{typo(e)}</p></div>')
+        D.append(f'<div class="st-d i" hidden><p class="st-k">Le mot</p><p class="st-h">{typo(a["mot"][0])}</p><p class="st-p{L(a["mot"][1], 170)}">{typo(a["mot"][1])}</p></div>')
         D.append(f'<div class="st-d c" hidden><p class="st-k">À retenir</p><p class="st-q{L(a["retenir"], 150)}">{typo(a["retenir"])}</p></div>')
-        D.append(f'<div class="st-d" hidden><p class="st-k">La question EFA</p><p class="st-q{L(a["question"], 150)}">{typo(a["question"])}</p><a class="st-lire" href="news/{a["id"]}.html#fait" data-goatcounter-click="statut-lire-{a["id"]}">Lire l’article ↓</a></div>')
+        D.append(f'<div class="st-d t" hidden><p class="st-k">La question EFA</p><p class="st-q{L(a["question"], 150)}">{typo(a["question"])}</p><a class="st-lire" href="news/{a["id"]}.html#fait" data-goatcounter-click="statut-lire-{a["id"]}">Lire l’article ↓</a></div>')
     prog = "<i></i>" * len(D)
     return (f'<div class="statut-bloc"><p class="statut-t">L’essentiel en images<span>Touchez pour avancer</span></p>'
             f'<div class="statut{" image" if imgs else ""}" data-statut data-garde tabindex="0" role="group" aria-roledescription="carrousel" aria-label="L’essentiel de l’article en {len(D)} images">'

@@ -6,7 +6,7 @@ import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121r'
+V = '20261121t'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -120,9 +120,20 @@ AFF = [('atelier-ou-passe-mon-argent.html', 'ou-passe-mon-argent', '', 'Où est 
        ('coach-bourse.html', 'premier-ordre-brvm', 'sv/', 'Mon premier ordre à la Bourse (BRVM)', 'Du compte à l’achat, pas à pas'),
        ('atelier-activite-gagne-t-elle.html', 'activite-gagne-t-elle', 'sv/', 'Mon activité gagne-t-elle de l’argent ?', 'Ce qui reste vraiment')]
 FORMER = ''.join('<a class="pp-aff" href="%s?src=accueil-former"><img src="clone/assets/affiches/%s%s.webp" alt="" loading="lazy" decoding="async"><b>%s</b><span>%s</span></a>' % (u, d, i, E(t), E(x)) for u, i, d, t, x in AFF)
-EXPRESS = ''.join('<a class="pp-exp" href="%s"><small>%s</small><b>%s</b><span>Lire la réponse →</span></a>' % (q(t), k, E(t)) for k, t in [
-  ('Crédit', 'Combien me coûte vraiment un crédit ?'), ('Placement', 'On me promet 30 % par mois, est-ce sérieux ?'), ('Famille', 'Ma sœur me demande un prêt, que faire ?'),
-  ('Terrain', 'Que vérifier avant d’acheter un terrain ?'), ('Tontine', 'Faut-il entrer dans une tontine ?'), ('Épargne', 'Comment épargner quand on gagne peu ?')])
+# Icônes au trait des questions (carré de couleur, tracé blanc)
+IC_Q = {
+  'credit': '<rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6.5" width="8" height="3.5" rx="1"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17.5h.01M12 17.5h.01M15.5 17.5h.01"/>',
+  'placement': '<path d="M12 3l7 2.6v5.6c0 4.6-2.9 8.1-7 9.8-4.1-1.700-7-5.200-7-9.800V5.600L12 3z"/><path d="M12 8v5M12 16h.01"/>',
+  'famille': '<circle cx="9" cy="8.500" r="3"/><path d="M3.500 19c0-3 2.500-5 5.500-5s5.500 2 5.500 5"/><circle cx="16.500" cy="9.500" r="2.300"/><path d="M16 14.200c2.600.100 4.500 1.800 4.500 4.300"/>',
+  'terrain': '<path d="M12 12.500s3.500-3.300 3.500-6a3.500 3.500 0 0 0-7 0c0 2.700 3.500 6 3.500 6z"/><circle cx="12" cy="6.500" r="1"/><path d="M8 13.500H6.500L3.500 20h17l-3-6.500H16"/>',
+  'tontine': '<circle cx="12" cy="12" r="6.500"/><circle cx="12" cy="5.500" r="2" fill="currentColor"/><circle cx="6.300" cy="15.300" r="2" fill="currentColor"/><circle cx="17.700" cy="15.300" r="2" fill="currentColor"/>',
+  'epargne': '<rect x="8" y="3" width="8" height="3" rx="1"/><path d="M7 8.500c0-1.400 1.100-2.500 2.500-2.500h5c1.400 0 2.500 1.100 2.500 2.500v9.500a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V8.500z"/><ellipse cx="12" cy="13" rx="2.500" ry="1.200"/><path d="M9.500 13v3c0 .700 1.100 1.200 2.500 1.200s2.500-.500 2.500-1.200v-3"/>',
+}
+IC_Q = {k: v.replace('00"', '"').replace('00 ', ' ').replace('00-', '-').replace('00c', 'c').replace('00V', 'V').replace('00L', 'L').replace('00H', 'H').replace('00h', 'h') for k, v in IC_Q.items()}
+FLECHE = '<svg class="pp-fl" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M8 12h8M12.500 8.500 16 12l-3.500 3.500"/></svg>'.replace('500', '5')
+EXPRESS = ''.join('<a class="pp-exp pp-t-%s" href="%s"><span class="pp-exp-t"><svg class="pp-exp-ic" viewBox="0 0 24 24" aria-hidden="true">%s</svg><small>%s</small></span><b>%s</b><span class="pp-lire">Lire la réponse %s</span></a>' % (c, q(t), IC_Q[c], k, E(t).replace(' ?', '&nbsp;?'), FLECHE) for c, k, t in [
+  ('credit', 'Crédit', 'Combien me coûte vraiment un crédit ?'), ('placement', 'Placement', 'On me promet 30 % par mois, est-ce sérieux ?'), ('famille', 'Famille', 'Ma sœur me demande un prêt, que faire ?'),
+  ('terrain', 'Terrain', 'Que vérifier avant d’acheter un terrain ?'), ('tontine', 'Tontine', 'Faut-il entrer dans une tontine ?'), ('epargne', 'Épargne', 'Comment épargner quand on gagne peu ?')])
 
 def champ(ph):
     return ('<form class="pp-q" action="prochain-pas.html" method="get" role="search"><label for="pp-q" class="pp-sr">Votre question</label>'
@@ -164,8 +175,9 @@ accueil = TETE % META_ACCUEIL + '''
 </div></section>
 
 <section class="pp-express"><div class="pp-in">
-<h2>Une réponse tout de suite</h2><span class="pp-trait"></span>
-<p class="pp-tout-s">Les questions que l’on nous pose le plus. Une réponse courte, puis l’outil pour l’appliquer à votre cas.</p>
+<p class="pp-guide">EFA vous guide</p>
+<h2>Une question. Un premier pas.</h2><span class="pp-trait-g"></span>
+<p class="pp-exp-s">Une réponse courte, puis un outil pour avancer.</p>
 <div class="pp-exps">''' + EXPRESS + '''</div>
 </div></section>
 

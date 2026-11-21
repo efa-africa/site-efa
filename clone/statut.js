@@ -14,7 +14,7 @@
       i = Math.max(0, Math.min(D.length - 1, k));
       D.forEach(function (s, j) { s.hidden = j !== i; });
       B.forEach(function (b, j) { b.className = j < i ? 'fait' : j === i ? 'cours' : ''; });
-      el.classList.toggle('clair', D[i].classList.contains('g'));
+      el.classList.toggle('fonce', D[i].classList.contains('c'));
       if (N) N.textContent = (i + 1) + ' / ' + D.length;
       if (i === D.length - 1 && !compte.fin) { compte.fin = 1; try { window.efaCompte && window.efaCompte('statut-fin'); } catch (e) {} }
       relance();

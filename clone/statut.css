@@ -48,3 +48,15 @@
 .st-suiv::after{right:5px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 1l5 5-5 5' fill='none' stroke='%230B1220' stroke-width='2'/%3E%3C/svg%3E")}
 .statut:hover .st-zone::after{opacity:1}}
 @media (prefers-reduced-motion:reduce){.st-joue .st-prog i.cours::after{animation:none;transform:scaleX(1)}}
+
+/* 21 nov. 2026 : plus de bleu nuit. Chaque image prend une teinte claire ; seul « À retenir » reste en aplat vermillon. */
+.statut{background:#E3F1FD}
+.statut .st-d{background:#E3F1FD!important;color:#2A3142!important}
+.statut .st-d.g{background:#EEF5FC!important}.statut .st-d.v{background:#F1EAFD!important}.statut .st-d.w{background:#E6F8F0!important}.statut .st-d.r{background:#FDEAF0!important}.statut .st-d.i{background:#E6ECFB!important}.statut .st-d.t{background:#E2F6F8!important}
+.statut .st-d.c{background:#DA3C1B!important;color:#fff!important}
+.statut .st-k{color:#0B7F88!important}.statut .c .st-k{color:#fff!important}
+.statut .st-h{color:#0B1220!important}.statut .st-g{color:#DA3C1B!important}.statut .st-s{color:#4E5566!important}
+.statut .st-q{color:#0B1220!important}.statut .c .st-q{color:#fff!important}
+.statut .st-pied{color:#5F6676}.statut .st-logo{color:#0B1220}
+.statut .st-prog i{background:rgba(11,18,32,.16)}.statut .st-prog i::after{background:#0B1220}
+.statut.fonce .st-pied{color:#fff}.statut.fonce .st-logo{color:#fff}.statut.fonce .st-prog i{background:rgba(255,255,255,.35)}.statut.fonce .st-prog i::after{background:#fff}
