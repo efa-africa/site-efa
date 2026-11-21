@@ -80,5 +80,5 @@ jobs:
           git add data/brvm data/marches
           if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
           git commit -m "BRVM : dividendes et historique (bulletins officiels)"
-          git pull --rebase origin main
+          git pull --rebase -X theirs origin main
           git push origin HEAD:main

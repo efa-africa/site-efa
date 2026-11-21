@@ -61,6 +61,24 @@ def fiche(s, url):
     return date, pdfs
 
 
+def texte_pdf(contenu, e, max_pages=25):
+    """Texte du PDF ; si le PDF est un scan (presque pas de texte), reconnaissance de caractères (tesseract, français)."""
+    with tempfile.TemporaryDirectory() as d:
+        f = os.path.join(d, "doc.pdf")
+        open(f, "wb").write(contenu)
+        txt = subprocess.run(["pdftotext", "-layout", f, "-"], capture_output=True, text=True).stdout
+        if len(txt.strip()) >= 500:
+            return txt + "\n\f\n"
+        subprocess.run(["pdftoppm", "-r", "200", "-gray", "-l", str(max_pages), "-png", f, os.path.join(d, "p")], capture_output=True)
+        pages = sorted(x for x in os.listdir(d) if x.startswith("p") and x.endswith(".png"))
+        out = []
+        for x in pages:
+            r = subprocess.run(["tesseract", os.path.join(d, x), "-", "-l", "fra", "--psm", "6"], capture_output=True, text=True)
+            out.append(r.stdout)
+        e["ocr"] = True
+        return "\n\f\n".join(out) + "\n\f\n"
+
+
 def decouper(titre):
     soc, _, doc = titre.partition(" : ")
     m = re.search(r"(Exercice|Year|1er semestre|2e semestre|2ème semestre|[1-4](?:er|e|ème) trimestre|T[1-4])\s*(\d{4})", doc, re.I)
@@ -90,20 +108,20 @@ def main():
             nouveaux = 0
             for titre, url in items:
                 pid = url.rsplit("/", 1)[-1]
-                if pid in pubs and pubs[pid].get("pdf"):
+                if pid in pubs and pubs[pid].get("pdf") and (pubs[pid]["caracteres"] >= 500 or pubs[pid].get("ocr")):
                     continue
                 date, pdfs = fiche(s, url)
                 soc, doc, periode = decouper(titre)
                 e = {"type": typ, "societe": soc, "document": doc, "periode": periode, "date_publication": date,
                      "fiche": url, "pdf": pdfs, "caracteres": 0}
+                m = re.search(r"/(\d{4})(\d{2})(\d{2})_", pdfs[0]) if pdfs else None
+                if m:
+                    e["date_publication"] = "-".join(m.groups())
                 txt = ""
                 for p in pdfs[:3]:
                     r = get(s, p)
                     if r and r.content[:4] == b"%PDF":
-                        with tempfile.NamedTemporaryFile(suffix=".pdf") as t:
-                            t.write(r.content)
-                            t.flush()
-                            txt += subprocess.run(["pdftotext", "-layout", t.name, "-"], capture_output=True, text=True).stdout + "\n\f\n"
+                        txt += texte_pdf(r.content, e)
                     time.sleep(0.4)
                 if txt.strip():
                     open(os.path.join(a.sortie, "pdf_texte", pid + ".txt"), "w", encoding="utf-8").write(txt)
