@@ -115,11 +115,29 @@ def lire_indices(soup, jour):
                 continue
             categorie = "total_return" if "TOTAL RETURN" in nom else (
                 "sectoriel" if any(s in nom for s in SECTEURS) else "principal")
+            cloture = nombre(l[2])
             out.append({"date_seance": jour.isoformat(), "categorie": categorie, "indice": l[0].strip(),
-                        "cloture_veille": nombre(l[1]), "cloture": nombre(l[2]),
+                        "cloture_veille": nombre(l[1]), "cloture": cloture,
                         "variation_pct": nombre(l[3]),
-                        "variation_annuelle_pct": nombre(l[4]) if len(l) > 4 else None})
+                        "variation_annuelle_pct": variation_depuis_31_decembre(l[0], cloture, jour.year)})
     return out
+
+
+def _cle_indice(nom):
+    return re.sub(r"[\s\-–]", "", sans_accents(nom).upper())
+
+
+def variation_depuis_31_decembre(nom, cloture, annee):
+    """Variation depuis le 31 décembre précédent, calculée à partir des clôtures de fin
+    d'année du bulletin officiel (references.json). La colonne « Variation 31 décembre »
+    de brvm.org/fr/indices ne correspond pas au bulletin officiel : on ne l'utilise pas."""
+    try:
+        ref = json.load((DOSSIER / "references.json").open(encoding="utf-8"))
+        base = {_cle_indice(k): v for k, v in ref["cloture_31_decembre_%d" % (annee - 1)].items()}
+    except Exception:
+        return None
+    b = base.get(_cle_indice(nom))
+    return round((cloture / b - 1) * 100, 2) if b and cloture else None
 
 
 def deja_enregistree(fichier, jour):
