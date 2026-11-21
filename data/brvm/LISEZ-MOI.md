@@ -37,3 +37,11 @@ Si `marches.py` affiche « ALERTE : saut de cours non déclaré », il faut ajou
 ## Cours de la veille
 
 La colonne « cours veille » de brvm.org n'est pas fiable. Depuis le 21 novembre 2026, `collecte.py` déduit le cours de la veille de la clôture et de la variation officielle du jour, comme le bulletin officiel ; la base `actions.csv` a été corrigée de la même façon et les synthèses hebdomadaires recalculées.
+
+## Tout ce que contiennent les bulletins officiels (depuis 2024)
+
+- `dividendes.json` : dividendes nets par action, dates de détachement et de paiement.
+- `evenements_bulletins.json` : opérations en cours (paiements, fractionnements, premières cotations), avis BRVM et DC/BR (intérêts, remboursements, suspensions), communiqués des sociétés (états financiers, rapports d'activité, convocations d'assemblées, notations).
+- `historique/obligations_AAAA.csv` : obligations cotées par séance (cours, coupon couru, périodicité et montant du coupon, prochaine échéance, amortissement).
+- `historique/opcvm_AAAA.csv` : FCP et SICAV par séance (société de gestion, dépositaire, catégorie, valeurs liquidatives, performance depuis l'origine). Le nom de la société de gestion peut être incomplet quand il est écrit sur deux lignes dans le bulletin.
+Mis à jour chaque samedi par le robot « Historique BRVM ».

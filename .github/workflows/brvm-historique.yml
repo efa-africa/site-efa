@@ -70,6 +70,8 @@ jobs:
           git fetch origin brvm-historique-brut
           mkdir -p /tmp/brut && git archive origin/brvm-historique-brut brut | tar -x -C /tmp/brut --strip-components=1
           python scripts/brvm/historique_lire.py --brut /tmp/brut
+          python scripts/brvm/historique_evenements.py --brut /tmp/brut
+          python scripts/brvm/historique_titres.py --brut /tmp/brut
           python scripts/brvm/marches.py
       - name: Enregistrer
         run: |
