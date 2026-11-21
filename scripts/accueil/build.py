@@ -2,11 +2,11 @@
 # Fabrique : data/tout-efa.json (index de tout le site), index.html, prochain-pas.html, puis les habille (menu et pied du site).
 # L'accueil précédent est conservé : sauvegarde-plateforme-2026-11-21.html (modèle clone/_index.html) et branche git du même nom.
 # Lancer : python3 scripts/accueil/build.py
-import re, os, json, html, glob, subprocess
+import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121t'
+V = '20261121v'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -28,7 +28,7 @@ FAMILLES = [
  ('efa', 'EFA et moi', 'Mon espace, l’abonnement, Élysée, Ely, nous écrire',
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
-EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
+EXCLUES = set('index questions accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
 TITRES = {'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
@@ -179,6 +179,7 @@ accueil = TETE % META_ACCUEIL + '''
 <h2>Une question. Un premier pas.</h2><span class="pp-trait-g"></span>
 <p class="pp-exp-s">Une réponse courte, puis un outil pour avancer.</p>
 <div class="pp-exps">''' + EXPRESS + '''</div>
+<p class="pp-voir100"><a href="questions.html">Voir les 100 questions que l’on nous pose ''' + FLECHE + '''</a></p>
 </div></section>
 
 <section class="pp-former"><div class="pp-in">
@@ -282,7 +283,32 @@ reponse = TETE % META_REPONSE + '''
 <script>document.addEventListener('DOMContentLoaded',function(){window.EFA_PROCHAIN_PAS.page();});</script>
 ''' + FIN
 open('prochain-pas.html', 'w', encoding='utf-8').write(reponse)
-for p in ('index.html', 'prochain-pas.html', 'apprendre.html'):
+
+# ---- Les 100 questions : le catalogue (scripts/question/catalogue.py) rangé par thème ----
+sys.path.insert(0, 'scripts/question')
+import catalogue as _cat
+CAT = _cat.main()
+INTROS = ['Savoir où va l’argent, et reprendre la main.', 'Mettre de côté, même avec peu, et se protéger des coups durs.', 'Emprunter sans se noyer, prêter sans se fâcher.',
+          'Un revenu de plus, une activité qui gagne vraiment.', 'Faire grandir son argent avec les entreprises d’Afrique.', 'Bâtir ce qui dure, et le transmettre.']
+blocs = ''
+for k, th in enumerate(CAT['themes']):
+    L = [x for x in CAT['questions'] if x['th'] == th]
+    blocs += ('<section class="pp-cent-t pp-c%d" id="theme-%d"><h2>%s</h2><p>%s</p><ol>' % (k + 1, k + 1, E(th), INTROS[k]) +
+              ''.join('<li><a href="%s"><i>%d</i><span>%s</span></a></li>' % (q(x['q']), x['n'], E(x['q']).replace(' ?', '&nbsp;?')) for x in L) + '</ol></section>\n')
+META_Q = ('<title>Les 100 questions sur l’argent que l’on nous pose · EFA</title>\n<link rel="canonical" href="https://efa.africa/questions">\n'
+          '<meta name="description" content="Budget, épargne, dettes, business, Bourse (BRVM), patrimoine : 100 questions sur l’argent, chacune avec une réponse courte et l’outil pour l’appliquer à votre cas.">')
+questions = TETE % META_Q + '''
+<section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
+<p class="pp-fil"><a href="index.html">Accueil</a> / Les 100 questions</p>
+<h1 class="pp-h1 pp-h1-c"><span>100 questions.</span><span class="pp-ciel">Un premier pas.</span></h1>
+<p class="pp-sous">Les questions que l’on se pose sur l’argent, avec nos réalités. Touchez la vôtre : une réponse courte, puis l’outil pour l’appliquer à vos chiffres.</p>
+''' + champ('Ou posez la vôtre…') + '''
+</div></div></section>
+<section class="pp-cent"><div class="pp-in">
+''' + blocs + '''</div></section>
+''' + FIN
+open('questions.html', 'w', encoding='utf-8').write(questions)
+for p in ('index.html', 'prochain-pas.html', 'apprendre.html', 'questions.html'):
     subprocess.run(['python3', 'scripts/clone/habiller.py', '--page', p], check=True, stdout=subprocess.DEVNULL)
 RENVOI = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="https://efa.africa/%s"><title>EFA</title><script>location.replace("%s"+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=%s"></head><body><p><a href="%s">Éducation Financière Afrique</a></p></body></html>\n'
 open('accueil-v3.html', 'w', encoding='utf-8').write(RENVOI % ('', './', './', './'))

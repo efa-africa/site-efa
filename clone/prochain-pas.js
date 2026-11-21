@@ -232,34 +232,73 @@
     return R.slice(0, n || 6).map(function (x) { return x.f; });
   }
 
+  /* Catalogue des questions : on rapproche ce que la personne écrit de la fiche la plus proche */
+  function rapprocher(q, CAT) {
+    if (!CAT || !CAT.questions) return null;
+    var W = mots(q).filter(function (w, i, a) { return a.indexOf(w) === i; }), pq = plat(q), best = null, second = 0;
+    if (!W.length) return null;
+    CAT.questions.forEach(function (f) {
+      if (!f._w) { f._w = mots(f.q).filter(function (w, i, a) { return a.indexOf(w) === i; }); f._p = plat(f.q); }
+      if (f._p === pq) { best = { f: f, sc: 9 }; return; }
+      var n = 0; W.forEach(function (w) { if (f._w.indexOf(w) >= 0) n++; });
+      if (n < 2) return;
+      var sc = n / Math.sqrt(W.length * f._w.length);
+      if (!best || sc > best.sc) { if (best && best.f.o !== f.o) second = best.sc; best = { f: f, sc: sc }; }
+      else if (best.f.o !== f.o && sc > second) second = sc;
+    });
+    // Deux fiches aussi proches l'une que l'autre, vers deux outils différents : la question est ambiguë, le moteur général tranche.
+    if (best && best.sc < 9 && best.sc - second < 0.1) return null;
+    return best && best.sc >= 0.6 ? best.f : null;
+  }
+  function fiche(f, CAT, m, deja) {
+    var o = CAT.outils[f.o], u = o.u;
+    if (m && f.o === 'declic') u += '?budget=' + m.v; else if (m && f.o === 'mabrvm') u += '?m=' + m.v;
+    deja[o.u.split(/[?#]/)[0]] = 1;
+    var h = '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>Votre question : <b>' + esc(f.q) + '</b></p><p class="pp-theme">' + esc(f.th) + '</p></div>' +
+      '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p>' + esc(f.r) + '</p></div>' +
+      '<div class="pp-reco"><div><p class="pp-k">Pour l’appliquer à votre cas</p><h2>' + esc(o.nom) + '</h2><p class="pp-sur">' + esc(o.sur) + '</p><p>La réponse donne le principe. L’outil le calcule avec vos chiffres, dès 1 min.</p></div><a class="pp-cta" href="' + u + '">' + esc(o.cta) + ' →</a></div>';
+    if (f.l.length) h += '<div class="pp-deux">' + f.l.map(function (a) { deja[a.u.split(/[?#]/)[0]] = 1; return '<a class="pp-carte" href="' + a.u + '"><p class="pp-k">' + (a.u.indexOf('atelier-') === 0 ? 'Atelier' : a.u.indexOf('news/') === 0 ? 'À lire' : 'Pour aller plus loin') + '</p><h3>' + esc(a.t) + '</h3><span class="pp-lien">Ouvrir →</span></a>'; }).join('') + '</div>';
+    var V = CAT.questions.filter(function (x) { return x.th === f.th && x.n !== f.n; }), k = V.map(function (x) { return x.n; }).indexOf(f.n + 1);
+    V = (k >= 0 ? V.slice(k).concat(V.slice(0, k)) : V).slice(0, 4);
+    h += '<div class="pp-autres"><h3>Dans le même thème</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="prochain-pas.html?q=' + encodeURIComponent(x.q) + '">' + esc(x.q) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="questions.html">Voir les ' + CAT.questions.length + ' questions →</a></p></div>';
+    return h;
+  }
+
   /* Écran de réponse */
   var GENRE = { atelier: 'Atelier', actu: 'EFA News', argent: 'Mon argent', activite: 'Mon activité', bourse: 'Bourse (BRVM)', tontine: 'Tontine', famille: 'Famille et moments de vie', former: 'Me former', media: 'Études et média', espaces: 'Espaces', efa: 'EFA' };
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function url(u, m) { return typeof u === 'function' ? u(m) : u; }
   function page() {
+    var q0 = (new URLSearchParams(location.search).get('q') || '').trim();
+    if (!q0) return composer(null);
+    fetch('data/questions/catalogue.json?v=20261121a').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
+  }
+  function composer(CAT) {
     var q = (new URLSearchParams(location.search).get('q') || '').trim(), box = document.getElementById('pp-rep'), inp = document.getElementById('pp-q');
     inp.value = q; if (TAILLE) TAILLE(); else setTimeout(function () { inp.dispatchEvent(new Event('input')); }, 50);
     var it = q ? comprendre(q) : null, m = q ? montant(q) : null, h = '', deja = {};
-    if (it) {
+    var fq = q ? rapprocher(q, CAT) : null;
+    if (fq) { h += fiche(fq, CAT, m, deja); it = null; }
+    else if (it) {
       var c = typeof it.c === 'function' ? it.c(m) : it.c, o = it.o, pq = o[3].replace('{m}', m ? ' (' + m.txt + ')' : '');
       deja[url(o[2], null).split(/[?#]/)[0]] = 1;
       h += '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>' + c + '</p></div>';
       if (REP[it.id]) h += '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p>' + REP[it.id] + '</p></div>';
       h += '<div class="pp-reco"><div><p class="pp-k">Pour l’appliquer à votre cas</p><h2>' + esc(o[0]) + '</h2><p class="pp-sur">' + esc(o[1]) + '</p><p>' + pq + '</p></div><a class="pp-cta" href="' + url(o[2], m) + '">' + esc(o[4]) + ' →</a></div>';
       if (it.a.length) h += '<div class="pp-deux">' + it.a.map(function (a) { deja[url(a.url, null).split(/[?#]/)[0]] = 1; return '<a class="pp-carte" href="' + url(a.url, m) + '"><p class="pp-k">' + esc(a.t) + '</p><h3>' + esc(a.nom) + '</h3><p>' + esc(a.d) + '</p><span class="pp-lien">Ouvrir →</span></a>'; }).join('') + '</div>';
-    } else {
+    } else if (!fq) {
       h += '<div class="pp-compris"><p class="pp-k">' + (q ? 'Je n’ai pas trouvé d’outil dédié' : 'Posez votre question') + '</p><p>' + (q ? 'Pour « ' + esc(q) + ' », voici ce qu’EFA a de plus proche. Vous pouvez aussi reformuler.' : 'Écrivez ce que vous cherchez à faire avec votre argent.') + '</p></div>';
     }
     h += '<div id="pp-trouve"></div>';
-    h += '<div class="pp-autres"><h3>' + (it ? 'Ce n’est pas tout à fait ça ?' : 'Les demandes les plus fréquentes') + '</h3><div class="pp-chips">' +
+    if (!fq) h += '<div class="pp-autres"><h3>' + (it ? 'Ce n’est pas tout à fait ça ?' : 'Les demandes les plus fréquentes') + '</h3><div class="pp-chips">' +
       ['voirclair', 'lancer', 'bourse', 'epargner', 'credit', 'tontine', 'terrain', 'arnaque'].filter(function (id) { return !it || it.id !== id; }).map(function (id) { var x = I.filter(function (z) { return z.id === id; })[0]; return '<a href="' + url(x.o[2], null) + '">' + esc(x.o[1]) + '</a>'; }).join('') + '</div></div>';
     h += '<p class="pp-ely">Vous ne savez pas par où commencer ? <a href="diagnostic.html">Faites votre diagnostic</a> (6 min). Besoin d’en parler ? <a href="ely.html">Posez votre question à Ely</a>, le guide d’EFA. Ou parcourez <a href="index.html#tout-efa">tout EFA, par besoin</a>.</p>';
     box.innerHTML = h;
     if (!q) return;
     fetch('data/tout-efa.json').then(function (r) { return r.json(); }).then(function (IDX) {
-      var R = chercher(q, IDX, 9).filter(function (f) { return !deja[f.p]; }).slice(0, 6);
+      var R = chercher(q, IDX, 9).filter(function (f) { return !deja[f.p]; }).slice(0, fq ? 3 : 6);
       if (!R.length) return;
-      document.getElementById('pp-trouve').innerHTML = '<div class="pp-trouve"><h3>' + (it ? 'Dans tout EFA, sur votre question' : 'Ce qu’EFA a sur votre question') + '</h3><div class="pp-res">' +
+      document.getElementById('pp-trouve').innerHTML = '<div class="pp-trouve"><h3>' + (it || fq ? 'Dans tout EFA, sur votre question' : 'Ce qu’EFA a sur votre question') + '</h3><div class="pp-res">' +
         R.map(function (f) { return '<a class="pp-r" href="' + f.p + '"><small>' + esc(GENRE[f.f] || '') + '</small><b>' + esc(f.t) + '</b>' + (f.d ? '<span>' + esc(f.d.length > 120 ? f.d.slice(0, 118) + '…' : f.d) + '</span>' : '') + '</a>'; }).join('') + '</div></div>';
     }).catch(function () {});
   }
@@ -276,5 +315,5 @@
   var TAILLE = null;
   if (typeof document === 'undefined') { /* contrôle hors navigateur */ } else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { TAILLE = zone(); }); else TAILLE = zone();
 
-  window.EFA_PROCHAIN_PAS = { REP: REP, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
+  window.EFA_PROCHAIN_PAS = { REP: REP, rapprocher: rapprocher, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
 })();
