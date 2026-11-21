@@ -21,7 +21,7 @@ import os, re, sys, glob, shutil
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(RACINE)
 CLONE = 'clone'
-VERSION = '20261120b'
+VERSION = '20261121a'
 SITE = 'https://efa.africa/'
 VISUELS = {
     'tontine.html': 'etudes-terrain.webp', 'epargner.html': 'q2.webp',
@@ -48,9 +48,9 @@ if '--page' in sys.argv:
 modele_accueil = open(os.path.join(CLONE, '_index.html'), encoding='utf8').read()
 
 # ---------------------------------------------------------------- rubrique de chaque page (onglet actif)
-RUBRIQUES = [('benefices', 'Comprendre mon argent'), ('pilier-progresser', 'Être accompagné'), ('pilier-agir', 'Lancer mon activité'),
+RUBRIQUES = [('benefices', 'Reprendre la main sur mon argent'), ('pilier-progresser', 'Apprendre'), ('pilier-agir', 'Bâtir mon activité'),
              ('pilier-media', 'L’actu qui vous concerne'), ('etudes', 'Nos études'), ('apropos', 'Qui sommes-nous')]
-LIEN_RUBRIQUE = {'pilier-media': 'news.html', 'etudes': 'etudes-prospective.html', 'apropos': 'auteur.html#auteur'}
+LIEN_RUBRIQUE = {'pilier-progresser': 'apprendre.html', 'pilier-media': 'news.html', 'etudes': 'etudes-prospective.html', 'apropos': 'auteur.html#auteur'}
 SECTION_DE = {'portes': 'benefices', 'benefices': 'benefices', 'calculateur': 'benefices',
               'pilier-progresser': 'pilier-progresser', 'pilier-agir': 'pilier-agir',
               'pilier-media': 'pilier-media', 'etudes-prospective': 'etudes-prospective'}

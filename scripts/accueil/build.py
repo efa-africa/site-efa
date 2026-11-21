@@ -6,14 +6,14 @@ import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121p'
+V = '20261121q'
 
 FAMILLES = [
- ('argent', 'Comprendre et gérer mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
+ ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
   'diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart'),
- ('activite', 'Lancer et faire grandir mon activité', 'Idées de business, business plan, valeur de l’entreprise',
+ ('activite', 'Bâtir et faire grandir mon activité', 'Idées de business, business plan, valeur de l’entreprise',
   'generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre'),
- ('bourse', 'Investir et la Bourse (BRVM)', 'Ma BRVM, le marché du jour, les SGI, les cours pour débuter',
+ ('bourse', 'Faire grandir mon argent : investir, la Bourse (BRVM)', 'Ma BRVM, le marché du jour, les SGI, les cours pour débuter',
   'ma-brvm bourse premiers-pas-bourse marches semaine-bourse societes calendrier obligations acheter-des-actions sgi sgi-comparer questions-a-poser-a-sa-sgi questions-avant-d-investir acteurs coach-bourse ecole-de-la-bourse ecole-bourse bourse-essentiel bourse-marche bourse-pro bourse-projets investir investir-bourse investir-assurance-epargne investir-terrain-immobilier opcvm-fcpe club-investissement jeu-portefeuille-baisse personnalite etude-frais-bourse'),
  ('tontine', 'La tontine', 'Comprendre, choisir, cotiser sans se faire avoir',
   'tontine ecole-de-la-tontine avant-de-cotiser choisir-son-rang-tontine tontine-formations tontine-decider-avant-de-recevoir tontine-rentree cotiser-depuis-l-etranger etude-tontine-en-chiffres'),
@@ -129,9 +129,9 @@ def champ(ph):
             '<textarea id="pp-q" name="q" rows="1" autocomplete="off" enterkeyhint="search" placeholder="%s"></textarea><button class="pp-go" type="submit">Trouver mon prochain pas →</button></form>') % E(ph)
 
 PORTES = ''.join('<a class="pp-porte" href="%s"><span class="pp-ic">%s</span><span class="pp-pt"><b>%s</b><span>%s</span></span><i aria-hidden="true">→</i></a>' % (u, ic(i), t, s) for u, i, t, s in [
- ('ou-est-passe-mon-argent.html?src=accueil-portes', 'wallet', 'Voir clair', 'Comprendre mon argent'),
- ('generateur-de-projet.html?src=accueil-portes', 'bulb', 'Déclic', 'Trouver mon idée de business'),
- ('ma-brvm.html?src=accueil-portes', 'bars', 'Ma BRVM', 'Et si j’avais investi ?'),
+ ('ou-est-passe-mon-argent.html?src=accueil-portes', 'wallet', 'Voir clair', 'Reprendre la main sur mon argent'),
+ ('generateur-de-projet.html?src=accueil-portes', 'bulb', 'Déclic', 'Bâtir mon activité'),
+ ('ma-brvm.html?src=accueil-portes', 'bars', 'Ma BRVM', 'Faire grandir mon argent'),
  ('apprendre.html?src=accueil-portes', 'cap', 'Apprendre', 'Seul ou accompagné')])
 
 def liste(L): return '<ul class="pp-liens">' + ''.join('<li><a href="%s">%s</a></li>' % (f['p'], E(f['t'])) for f in L) + '</ul>'
@@ -149,8 +149,9 @@ accueil = TETE % META_ACCUEIL + '''
 <section class="pp-hero"><div class="pp-hero-img" style="background-image:url('clone/assets/accueil-porte-bourse-tour-f.webp')"></div>
 <div class="pp-in"><div class="pp-txt">
 <button type="button" class="pp-pastille" data-video><img src="clone/assets/elysee-portrait-carre.jpg" alt="">Élysée vous accueille<span class="pp-play" aria-hidden="true"></span></button>
+<p class="pp-devise">Apprendre. Bâtir. S’enrichir.</p>
 <h1 class="pp-h1"><span>Votre argent.</span><span>Votre question.</span><span class="pp-ciel">Votre prochain pas.</span></h1>
-<p class="pp-sous">Dites-nous ce que vous cherchez à faire. EFA vous aide à trouver par où commencer.</p>
+<p class="pp-sous">Dites-nous ce que vous voulez bâtir. EFA vous montre par où commencer.</p>
 ''' + champ('J’ai 500 000 F. Qu’est-ce que je peux lancer ?') + '''
 <div class="pp-chips"><a class="pp-chip-1" href="''' + q('Avec l’argent que j’ai aujourd’hui, par où commencer pour devenir riche ?') + '''">Avec l’argent que j’ai aujourd’hui, par où commencer pour devenir riche ?</a><a href="''' + q('Où passe mon argent ?') + '''">Où passe mon argent ?</a><a href="''' + q('Je veux investir à la BRVM') + '''">Je veux investir à la BRVM</a><a href="''' + q('J’ai une idée de business') + '''">J’ai une idée de business</a></div>
 <p class="pp-diag">Je ne sais pas par où commencer → <a href="diagnostic.html?src=accueil">Faire mon diagnostic</a> · 6 min, gratuit</p>
@@ -159,7 +160,7 @@ accueil = TETE % META_ACCUEIL + '''
 <section class="pp-portes"><div class="pp-in">
 <h2>Je sais déjà ce que je cherche</h2><span class="pp-trait"></span>
 <div class="pp-grille">''' + PORTES + '''</div>
-<p class="pp-bas">Gratuit pour commencer · <b>La finance, avec nos réalités.</b></p>
+<p class="pp-bas"><b>L’Afrique sera riche de ceux qui savent faire grandir leur argent.</b><br>Gratuit pour commencer · La finance, avec nos réalités.</p>
 </div></section>
 
 <section class="pp-express"><div class="pp-in">
@@ -235,7 +236,7 @@ apprendre = TETE % META_APP + '''
 <section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
 <p class="pp-fil"><a href="index.html">Accueil</a> / Apprendre</p>
 <h1 class="pp-h1 pp-h1-c"><span>Apprendre.</span><span class="pp-ciel">Seul, ou accompagné.</span></h1>
-<p class="pp-sous">Choisissez votre façon d’avancer. Vous pouvez passer de l’une à l’autre à tout moment.</p>
+<p class="pp-sous">On ne bâtit pas ce que l’on ne comprend pas. Choisissez votre façon d’avancer ; vous pouvez passer de l’une à l’autre à tout moment.</p>
 <div class="pp-voies"><a class="pp-voie" href="#seul"><small>Ma bibliothèque</small><b>J’apprends seul</b><span>L’école EFA, les cours gratuits, les livres, le podcast.</span></a><a class="pp-voie pp-voie-c" href="#accompagne"><small>Être accompagné</small><b>Je me fais coacher</b><span>Les ateliers, le coaching d’Élysée Johnson, le rendez-vous.</span></a></div>
 </div></div></section>
 
