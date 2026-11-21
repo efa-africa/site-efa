@@ -29,7 +29,7 @@ O = {
  'famille': ('solidarite-assureur-de-la-famille.html', 'La solidarité familiale', 'Aider sans s’épuiser', 'Fixer ma part pour la famille'),
  'papiers': ('papiers-famille.html', 'Les papiers de la famille', 'Ce que les miens doivent pouvoir retrouver', 'Mettre mes papiers en ordre'),
  'dette': ('renegocier-une-dette.html', 'Renégocier une dette', 'Quoi demander, à qui', 'Préparer ma renégociation'),
- 'credit': ('cout-total-credit.html#calcul', 'Le coût total d’un crédit', 'Ce que je rembourse vraiment', 'Calculer le coût'),
+ 'credit': ('cout-total-credit.html#calcul', 'Le coût total d’un crédit', 'Ce que je rembourse vraiment', 'Calculer le coût de mon crédit'),
  'preter': ('preter-a-un-proche.html', 'Prêter à un proche', 'Prêter, donner ou refuser', 'Décider pour ce prêt'),
  'declic': ('generateur-de-projet.html', 'Déclic', 'Trouver mon idée de business', 'Trouver mon idée'),
  'plan': ('mon-business-plan-tient-il.html', 'Mon business plan tient-il ?', 'Tester mon projet avant de dépenser', 'Tester mon projet'),

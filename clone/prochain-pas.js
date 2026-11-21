@@ -273,24 +273,26 @@
     });
     return best && best.sc >= 0.6 ? best : null;
   }
+  /* La bande de l'outil : c'est la raison du clic, elle vient en premier. Bouton très grand, blanc sur rouge. */
+  function bande(k, nom, sur, p, href, cta) {
+    return '<div class="pp-reco" data-garde><div class="pp-reco-t"><p class="pp-k">' + k + '</p><h2>' + esc(nom) + '</h2><p class="pp-sur">' + esc(sur) + '</p>' + (p ? '<p class="pp-reco-p">' + p + '</p>' : '') + '</div><a class="pp-cta" href="' + href + '"><span>' + esc(cta) + '</span><i aria-hidden="true">→</i></a></div>';
+  }
   function ficheOutil(o, CAT, deja) {
     deja[o.u.split(/[?#]/)[0]] = 1;
     var V = CAT.cent.filter(function (x) { return (o.h ? x.h === o.h : x.fam === o.fam) && x.n !== o.n; }).slice(0, 5);
-    return '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>Vous cherchez l’outil <b>' + esc(o.nom) + '</b>.</p><p class="pp-theme">' + esc(o.hn || o.fam) + '</p></div>' +
-      '<div class="pp-reco"><div><p class="pp-k">L’outil pour cela</p><h2>' + esc(o.nom) + '</h2><p class="pp-sur">' + esc(o.qq || o.q) + '</p><p>' + (o.dans ? 'Il se trouve dans <b>' + esc(o.dans) + '</b>.' : 'Vos chiffres, votre décision, dès 1 min.') + (o.h ? ' Il fait partie de l’outil <a href="' + o.h + '"><b>' + esc(o.hn) + '</b></a>.' : '') + '</p></div><a class="pp-cta" href="' + o.u + '">Ouvrir l’outil →</a></div>' +
-      '<div class="pp-autres"><h3>Dans le même outil</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="' + x.u + '">' + esc(x.nom) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="cent-outils.html">100 questions, 8 outils →</a></p></div>';
+    return bande('Votre outil', o.nom, o.qq || o.q, (o.dans ? 'Il se trouve dans <b>' + esc(o.dans) + '</b>.' : 'Vos chiffres, votre décision, dès 1 min.') + (o.h ? ' Il fait partie de l’outil <a href="' + o.h + '"><b>' + esc(o.hn) + '</b></a>.' : ''), o.u, 'Ouvrir ' + o.nom) +
+      '<div class="pp-autres"><h3>Vous cherchez autre chose ?</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="' + x.u + '">' + esc(x.nom) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="cent-outils.html">100 questions, 8 outils →</a></p></div>';
   }
   function fiche(f, CAT, m, deja) {
     var o = CAT.outils[f.o], u = o.u;
     if (m && f.o === 'declic') u += '?budget=' + m.v; else if (m && f.o === 'mabrvm') u += '?m=' + m.v;
     deja[o.u.split(/[?#]/)[0]] = 1;
-    var h = '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>Votre question : <b>' + esc(f.q) + '</b></p><p class="pp-theme">' + esc(f.th) + '</p></div>' +
-      '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p>' + esc(f.r) + '</p></div>' +
-      '<div class="pp-reco"><div><p class="pp-k">Pour l’appliquer à votre cas</p><h2>' + esc(o.nom) + '</h2><p class="pp-sur">' + esc(o.sur) + '</p><p>La réponse donne le principe. L’outil le calcule avec vos chiffres, dès 1 min.</p></div><a class="pp-cta" href="' + u + '">' + esc(o.cta) + ' →</a></div>';
+    var h = bande('L’outil pour votre question', o.nom, o.sur, 'L’outil fait le calcul avec vos chiffres, dès 1 min.', u, o.cta) +
+      '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p class="pp-bref-q">' + esc(f.q) + '</p><p>' + esc(f.r) + '</p></div>';
     if (f.l.length) h += '<div class="pp-deux">' + f.l.map(function (a) { deja[a.u.split(/[?#]/)[0]] = 1; return '<a class="pp-carte" href="' + a.u + '"><p class="pp-k">' + (a.u.indexOf('atelier-') === 0 ? 'Atelier' : a.u.indexOf('news/') === 0 ? 'À lire' : 'Pour aller plus loin') + '</p><h3>' + esc(a.t) + '</h3><span class="pp-lien">Ouvrir →</span></a>'; }).join('') + '</div>';
     var V = CAT.questions.filter(function (x) { return x.th === f.th && x.n !== f.n; }), k = V.map(function (x) { return x.n; }).indexOf(f.n + 1);
     V = (k >= 0 ? V.slice(k).concat(V.slice(0, k)) : V).slice(0, 4);
-    h += '<div class="pp-autres"><h3>Dans le même thème</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="prochain-pas.html?q=' + encodeURIComponent(x.q) + '">' + esc(x.q) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="questions.html">Voir les ' + CAT.questions.length + ' questions →</a></p></div>';
+    h += '<div class="pp-autres"><h3>Vous cherchez autre chose ?</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="prochain-pas.html?q=' + encodeURIComponent(x.q) + '">' + esc(x.q) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="questions.html">Voir les ' + CAT.questions.length + ' questions →</a></p></div>';
     return h;
   }
 
@@ -301,7 +303,7 @@
   function page() {
     var q0 = (new URLSearchParams(location.search).get('q') || '').trim();
     if (!q0) return composer(null);
-    fetch('data/questions/catalogue.json?v=20261121d').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
+    fetch('data/questions/catalogue.json?v=20261121e').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
   }
   function composer(CAT) {
     var q = (new URLSearchParams(location.search).get('q') || '').trim(), box = document.getElementById('pp-rep'), inp = document.getElementById('pp-q');
@@ -315,15 +317,14 @@
     else if (it) {
       var c = typeof it.c === 'function' ? it.c(m) : it.c, o = it.o, pq = o[3].replace('{m}', m ? ' (' + m.txt + ')' : '');
       deja[url(o[2], null).split(/[?#]/)[0]] = 1;
-      h += '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>' + c + '</p></div>';
+      h += bande('L’outil pour vous', o[0], o[1], pq, url(o[2], m), o[4]);
       if (REP[it.id]) h += '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p>' + REP[it.id] + '</p></div>';
-      h += '<div class="pp-reco"><div><p class="pp-k">Pour l’appliquer à votre cas</p><h2>' + esc(o[0]) + '</h2><p class="pp-sur">' + esc(o[1]) + '</p><p>' + pq + '</p></div><a class="pp-cta" href="' + url(o[2], m) + '">' + esc(o[4]) + ' →</a></div>';
       if (it.a.length) h += '<div class="pp-deux">' + it.a.map(function (a) { deja[url(a.url, null).split(/[?#]/)[0]] = 1; return '<a class="pp-carte" href="' + url(a.url, m) + '"><p class="pp-k">' + esc(a.t) + '</p><h3>' + esc(a.nom) + '</h3><p>' + esc(a.d) + '</p><span class="pp-lien">Ouvrir →</span></a>'; }).join('') + '</div>';
     } else if (!fq) {
       h += '<div class="pp-compris"><p class="pp-k">' + (q ? 'Je n’ai pas trouvé d’outil dédié' : 'Posez votre question') + '</p><p>' + (q ? 'Pour « ' + esc(q) + ' », voici ce qu’EFA a de plus proche. Vous pouvez aussi reformuler.' : 'Écrivez ce que vous cherchez à faire avec votre argent.') + '</p></div>';
     }
     h += '<div id="pp-trouve"></div>';
-    if (!fq) h += '<div class="pp-autres"><h3>' + (it ? 'Ce n’est pas tout à fait ça ?' : 'Les demandes les plus fréquentes') + '</h3><div class="pp-chips">' +
+    if (!fq) h += '<div class="pp-autres"><h3>' + (it ? 'Vous cherchez autre chose ?' : 'Les demandes les plus fréquentes') + '</h3><div class="pp-chips">' +
       ['voirclair', 'lancer', 'bourse', 'epargner', 'credit', 'tontine', 'terrain', 'arnaque'].filter(function (id) { return !it || it.id !== id; }).map(function (id) { var x = I.filter(function (z) { return z.id === id; })[0]; return '<a href="' + url(x.o[2], null) + '">' + esc(x.o[1]) + '</a>'; }).join('') + '</div></div>';
     h += '<p class="pp-ely">Vous ne savez pas par où commencer ? <a href="diagnostic.html">Faites votre diagnostic</a> (6 min). Besoin d’en parler ? <a href="ely.html">Posez votre question à Ely</a>, le guide d’EFA. Ou parcourez <a href="index.html#tout-efa">tout EFA, par besoin</a>.</p>';
     box.innerHTML = h;

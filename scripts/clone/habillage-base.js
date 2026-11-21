@@ -272,6 +272,8 @@
     }
     var t = rgb(cs.color); if (!t) return;
     var f = fondEffectif(el);
+    // Règle d'Élysée (21 nov. 2026) : sur du rouge, le texte est toujours blanc. Un texte bleu ou sombre sur rouge ne se voit pas.
+    if (f && f.r > 185 && f.g < 110 && f.b < 95) { if (lum(t) < .8) el.style.setProperty('color', '#ffffff', 'important'); return; }
     var proche = el.closest('[data-clair="bouton"],[data-clair="pastille"]');
     if (proche && proche !== el) {
       if (contraste(t, f) < 3.2) el.style.setProperty('color', proche.getAttribute('data-clair') === 'bouton' ? '#ffffff' : '#0b63b0', 'important');
