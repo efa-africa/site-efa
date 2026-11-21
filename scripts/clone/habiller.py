@@ -29,11 +29,11 @@ VISUELS = {
     'methode.html': 'etudes-publiees.webp',
 }
 # modèle (dans clone/) → page fabriquée à la racine ; indexée ou non
-MODELES = {'_index.html': ('index.html', True), '_coaching.html': ('ateliers-elysee.html', True),
+MODELES = {'_index.html': ('sauvegarde-plateforme-2026-11-21.html', False), '_coaching.html': ('ateliers-elysee.html', True),
            '_marches-labo.html': ('marches-labo.html', False), '_etudes-prospective.html': ('etudes-prospective.html', False),
            '_ely.html': ('ely.html', True), '_musee.html': ('musee.html', True), '_acteurs.html': ('acteurs.html', True)}
 FABRIQUEES = {v[0] for v in MODELES.values()}
-EXCLUES = FABRIQUEES | {'accueil-v1.html'}
+EXCLUES = FABRIQUEES | {'accueil-v1.html'}  # index.html (nouvel accueil du 21/11/2026) est fabriqué par scripts/accueil/build.py, puis habillé ici comme les autres pages
 
 # ---------------------------------------------------------------- pages à habiller
 pages = sorted(f for f in glob.glob('*.html') if f not in EXCLUES) + sorted(glob.glob('news/*.html'))

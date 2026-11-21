@@ -9,7 +9,8 @@
 (function(){var h=location.hash.replace('#',''),u=null;try{if(/[?&]hall\b/.test(location.search))localStorage.removeItem('efa_clone_univers');u=localStorage.getItem('efa_clone_univers');}catch(e){}if(u!=='1'&&(!h||h==='accueil'||h==='contact'))document.documentElement.classList.add('cl-hall');})();</script>
 <link rel="stylesheet" href="clone/clair.css?v=20261121a">
 <link rel="stylesheet" href="clone/efa-logo.css?v=20261102z">
-<title>EFA</title></head>
+<title>EFA</title><meta name="robots" content="noindex">
+</head>
 <body>
 <script>(function(){var R=document.documentElement;function entrer(){if(!R.classList.contains('cl-hall'))return;R.classList.remove('cl-hall');try{localStorage.setItem('efa_clone_univers','1');}catch(e){}try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'clone-entree-univers',title:'clone-entree-univers',event:true});}catch(e){}}
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a||!R.classList.contains('cl-hall'))return;var id=a.getAttribute('href').slice(1),c=id&&document.getElementById(id);if(!c||c.closest('.a-hero,.faq,#contact,.efa-foot'))return;entrer();},true);

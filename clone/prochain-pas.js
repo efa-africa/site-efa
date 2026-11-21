@@ -132,6 +132,49 @@
       a: [A('Voir clair', 'Le premier outil', 'Où passe votre argent, en cinq questions.', 'ou-est-passe-mon-argent.html')] }
   ];
 
+  /*REPONSES*/ var REP = {
+ "businessplan": "Un business plan ne tient que si ses trois chiffres tiennent : combien de clients par jour, à quel prix, pour quel coût. Divisez par deux vos ventes prévues : si le projet survit, il est solide ; sinon, c’est cette hypothèse qu’il faut tester sur le terrain avant de dépenser.",
+ "rentable": "Le chiffre d’affaires n’est pas un gain. Ce que l’activité gagne, c’est ce qui reste après les achats, le loyer, le transport, les salaires et votre propre paie. Tant que la caisse de l’activité et votre poche sont mélangées, il est impossible de le savoir.",
+ "valo": "Une entreprise vaut ce qu’elle peut rapporter demain, pas ce qu’elle a coûté. On l’estime à partir du bénéfice régulier, de ce qu’elle possède et de ce qu’elle doit. Trois années de chiffres propres pèsent plus que n’importe quel discours.",
+ "lancer": "Ne mettez pas toute la somme d’un coup. Gardez d’abord de quoi vivre trois mois, puis testez l’idée en petit, sur quelques semaines : c’est le marché qui dit si elle marche, pas le calcul. Une bonne idée est celle que vous savez déjà vendre à quelqu’un de précis.",
+ "arnaque": "Trois signaux suffisent pour s’arrêter : un rendement garanti, une urgence à verser, un gain qui dépend des personnes que vous faites entrer. Aucun placement sérieux ne promet un pourcentage fixe par mois. Demandez l’agrément et vérifiez-le vous-même auprès du régulateur.",
+ "actu": "Une actualité ne vaut que par ce qu’elle change pour vous : vos prix, votre crédit, votre épargne. EFA News reprend chaque fait avec ses chiffres, le mécanisme derrière, et la question à vous poser.",
+ "sgi": "On n’achète pas une action directement à la Bourse (BRVM) : il faut un compte chez une SGI, la société agréée qui passe vos ordres. Comparez trois choses avant de choisir : les frais par ordre, les droits de garde par an, et la facilité à suivre votre compte.",
+ "fcp": "Un fonds (FCP ou SICAV) réunit l’argent de plusieurs épargnants ; un gérant achète pour eux des actions ou des obligations. Vous y gagnez la diversification et le temps ; vous payez des frais de gestion chaque année. Regardez la composition du fonds, ses frais et sa durée conseillée.",
+ "analyse": "Avant le cours, regardez l’entreprise : gagne-t-elle de l’argent chaque année, que distribue-t-elle, est-elle endettée ? Le PER compare le prix au bénéfice ; le rendement compare le dividende au prix. Un ratio seul ne dit rien : comparez-le aux sociétés du même secteur.",
+ "grossesomme": "Quand une somme arrive, la décision se prend avant, pas après. Une règle simple : une part pour ce que vous devez, une part mise à l’abri tout de suite, une part pour vous faire plaisir sans remords. Ce qui n’a pas de mission disparaît en quelques semaines.",
+ "bourse": "Acheter une action, c’est devenir copropriétaire d’une entreprise : vous gagnez si son cours monte et si elle verse des dividendes, vous perdez si elle recule. Le résultat dépend beaucoup de la date d’achat et de la durée. N’y mettez que l’argent dont vous n’aurez pas besoin avant plusieurs années.",
+ "obligations": "Avec une obligation ou un dépôt à terme, vous prêtez votre argent pour une durée fixée, contre un intérêt connu à l’avance. Le rendement est plus bas que l’espoir d’une action, mais plus prévisible. Vérifiez la durée de blocage, l’impôt sur les intérêts et ce qui se passe si vous sortez avant le terme.",
+ "assurance": "Une assurance ne se juge pas à sa prime mais à ce qu’elle paie vraiment, à qui et dans quel délai. Lisez les exclusions avant le reste. Pour l’assurance-vie, demandez les frais sur chaque versement et la valeur de rachat après un, trois et huit ans.",
+ "terrain": "On ne paie pas un terrain avant d’avoir vérifié trois choses : qui en est le propriétaire sur les papiers, si le lot existe bien au plan officiel, et s’il n’a pas déjà été vendu. Faites vérifier par un professionnel indépendant du vendeur, et payez par étapes, contre un écrit à chaque fois.",
+ "deces": "Dans les premiers jours, ne signez rien et ne partagez rien dans l’urgence. Réunissez d’abord les papiers : acte de décès, pièces du défunt, comptes, contrats, titres de propriété. Les banques, l’employeur et les caisses de retraite ont chacun une démarche ; la liste des héritiers se règle ensuite, par écrit.",
+ "etudes": "Les études se préparent comme une dépense certaine, pas comme une surprise de septembre. Divisez la somme de l’année par douze et mettez-la de côté chaque mois, sur un compte séparé. Plus l’échéance est lointaine, plus une épargne placée peut vous aider ; à moins de deux ans, gardez cet argent disponible.",
+ "enfant": "Un enfant change trois lignes du budget : la santé, la garde et, plus tard, l’école. Chiffrez les dépenses des six premiers mois avant la naissance, mettez la somme de côté petit à petit, et vérifiez ce que couvrent votre assurance et votre employeur.",
+ "preter": "Ne prêtez que ce que vous pouvez vous permettre de ne jamais revoir. Dites un montant, une date et une façon de rembourser, et écrivez-les : ce n’est pas un manque de confiance, c’est ce qui protège la relation. Vous avez aussi le droit de donner moins, ou de dire non.",
+ "famille": "Aider les siens n’est pas une faute de gestion, c’est une charge à prévoir comme le loyer. Fixez une enveloppe mensuelle pour la famille, annoncez-la, et tenez-vous-y : ce qui épuise, ce sont les demandes sans limite, pas la solidarité.",
+ "mobilemoney": "Le mobile money rend chaque petite dépense invisible : 500 F ici, 1 000 F là, et le mois s’évapore. Gardez un compte pour les dépenses et un autre où l’argent ne sort pas, et regardez l’historique une fois par semaine : c’est votre relevé.",
+ "inflation": "Quand les prix montent, le même billet achète moins : c’est l’inflation. Un argent qui dort perd donc de la valeur sans que le solde bouge. La réponse n’est pas de dépenser plus vite, mais de savoir quelles dépenses augmentent et de faire travailler l’épargne qui peut attendre.",
+ "dette": "Commencez par tout écrire : à qui, combien, pour quand, à quel coût. Payez d’abord ce qui coûte le plus cher ou menace le plus. Parlez à vos créanciers avant l’échéance, avec une proposition chiffrée : un échéancier tenu vaut mieux qu’une promesse intenable.",
+ "credit": "Le prix d’un crédit n’est pas son taux, c’est le total que vous aurez remboursé à la fin : intérêts, frais de dossier, assurance. Comparez deux offres sur ce total et sur la mensualité. Un crédit se justifie pour ce qui rapporte ou dure plus longtemps que le remboursement.",
+ "tontine": "Une tontine est une épargne forcée et un crédit entre membres : les premiers à recevoir empruntent aux autres, les derniers leur prêtent. Elle tient par la confiance et par des règles claires : qui garde l’argent, que se passe-t-il si quelqu’un ne cotise plus, dans quel ordre on reçoit.",
+ "retraite": "La pension ne remplacera qu’une partie de votre revenu. Estimez-la dès maintenant, comparez-la à vos dépenses futures, et comblez l’écart par une épargne régulière : plus vous commencez tôt, moins l’effort mensuel est lourd.",
+ "liberte": "Être libre financièrement, c’est avoir des revenus qui paient vos dépenses sans dépendre de votre salaire. Le chiffre à connaître est donc celui de vos dépenses annuelles. On y arrive par étapes : une réserve, puis une épargne régulière, puis des placements et des activités qui rapportent.",
+ "diaspora": "L’argent envoyé au pays perd de la valeur à chaque étape : frais d’envoi, change, et parfois un autre usage que celui prévu. Comparez les frais, envoyez directement à celui qui doit être payé quand c’est possible, et pour tout projet, exigez des justificatifs et un tiers de confiance sur place.",
+ "reserve": "La réserve de sécurité est l’argent des coups durs : visez d’abord un mois de dépenses, puis trois. Elle doit être disponible en quelques jours et séparée de l’argent du quotidien. Elle ne se place pas en Bourse : son rôle est d’être là, pas de rapporter.",
+ "epargner": "On n’épargne pas ce qui reste, on met de côté dès que l’argent arrive. Commencez petit, même 5 % du revenu, mais à chaque rentrée et sur un compte séparé. Le montant compte moins que la régularité.",
+ "placer": "Avant de placer, répondez à trois questions : quand aurez-vous besoin de cet argent, combien pouvez-vous supporter de le voir baisser, et comprenez-vous comment il rapporte ? L’argent utile avant deux ans reste disponible ; le reste peut être réparti entre plusieurs placements, jamais un seul.",
+ "voirclair": "L’argent ne disparaît pas, il part dans des postes que l’on ne regarde pas : petites dépenses quotidiennes, aide aux proches, engagements oubliés. Notez tout pendant un mois, classez en quatre ou cinq postes, et vous verrez où agir. C’est le premier pas de toute décision.",
+ "etudiant": "Le premier revenu est le meilleur moment pour prendre les bons réflexes : mettre de côté dès que l’argent arrive, noter ses dépenses, et ne pas s’endetter pour paraître. De petites sommes épargnées tôt pèsent lourd plus tard.",
+ "organisation": "Un salarié inquiet pour son argent travaille moins bien et s’endette auprès de son employeur. Un programme d’éducation financière en entreprise porte sur le budget, le crédit, l’épargne et la retraite, avec des cas concrets.",
+ "certificat": "Le certificat EFA atteste d’un parcours suivi et d’épreuves réussies : la preuve que vous savez appliquer les notions à des cas réels.",
+ "abonnement": "Sur EFA, on commence gratuitement : outils, guides, actualité. Les formules d’abonnement ouvrent l’accès aux ateliers ; le détail et les prix sont sur la page.",
+ "elysee": "Élysée Johnson a fondé EFA après un parcours en banque d’investissement, en conseil et en capital-investissement. Vous pouvez suivre ses ateliers, lui écrire, ou demander un rendez-vous.",
+ "lire": "Un bon livre sur l’argent change une habitude, pas seulement une idée. EFA résume les ouvrages qui comptent et en tire ce qui s’applique à nos réalités.",
+ "etudesefa": "EFA publie ses propres études sur la tontine, l’épargne et la Bourse en Afrique, avec leurs sources, et une revue de prospective, Africa 2075.",
+ "apprendre": "La finance s’apprend comme une langue : un peu chaque jour, sur des situations réelles. Commencez par ce qui vous concerne aujourd’hui, pas par la théorie.",
+ "diagnostic": "Avant de chercher le bon placement ou la bonne idée, il faut savoir d’où l’on part : ce qui entre, ce qui sort, ce que l’on doit, ce que l’on a de côté. Le diagnostic pose ces questions dans l’ordre et vous dit par quoi commencer."
+};
+
   function plat(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’'`\-]/g, ' ').replace(/[?!.,;:«»"()]/g, ' ').replace(/\s+/g, ' ').trim(); }
 
   // Montant : « 500 000 F », « 500000 », « 500k », « 2 millions », « 1,5 M »
@@ -158,7 +201,7 @@
   }
 
   /* Recherche dans l'index de tout le site */
-  var VIDES = {}; 'le la les un une des de du d et ou a au aux en dans sur pour par avec sans que qui quoi est ce c je j ai mon ma mes me m se son sa ses il elle on nous vous ne pas plus tres comment combien pourquoi quel quelle quels quelles faire fais veux veut peux peut dois doit suis etre avoir ca cela si y l qu est-ce bien bon'.split(' ').forEach(function (w) { VIDES[w] = 1; });
+  var VIDES = {}; 'le la les un une des de du d et ou a au aux en dans sur pour par avec sans que qui quoi est ce c je j ai mon ma mes me m se son sa ses il elle on nous vous ne pas plus tres comment combien pourquoi quel quelle quels quelles faire fais veux veut peux peut dois doit suis etre avoir ca cela si y l qu est-ce bien bon mois annee an ans jour serieux vraiment faut entrer'.split(' ').forEach(function (w) { VIDES[w] = 1; });
   function racine(w) { return w.length > 4 ? w.replace(/(es|s|x|er|ez|ee)$/, '') : w; }
   function mots(q) { return plat(q).split(' ').filter(function (w) { return w.length > 2 && !VIDES[w] && !/^\d+$/.test(w); }).map(racine); }
   function chercher(q, IDX, n) {
@@ -193,7 +236,8 @@
       var c = typeof it.c === 'function' ? it.c(m) : it.c, o = it.o, pq = o[3].replace('{m}', m ? ' (' + m.txt + ')' : '');
       deja[url(o[2], null).split(/[?#]/)[0]] = 1;
       h += '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>' + c + '</p></div>';
-      h += '<div class="pp-reco"><div><p class="pp-k">L’outil pour avancer</p><h2>' + esc(o[0]) + '</h2><p class="pp-sur">' + esc(o[1]) + '</p><p>' + pq + '</p></div><a class="pp-cta" href="' + url(o[2], m) + '">' + esc(o[4]) + ' →</a></div>';
+      if (REP[it.id]) h += '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p>' + REP[it.id] + '</p></div>';
+      h += '<div class="pp-reco"><div><p class="pp-k">Pour l’appliquer à votre cas</p><h2>' + esc(o[0]) + '</h2><p class="pp-sur">' + esc(o[1]) + '</p><p>' + pq + '</p></div><a class="pp-cta" href="' + url(o[2], m) + '">' + esc(o[4]) + ' →</a></div>';
       if (it.a.length) h += '<div class="pp-deux">' + it.a.map(function (a) { deja[url(a.url, null).split(/[?#]/)[0]] = 1; return '<a class="pp-carte" href="' + url(a.url, m) + '"><p class="pp-k">' + esc(a.t) + '</p><h3>' + esc(a.nom) + '</h3><p>' + esc(a.d) + '</p><span class="pp-lien">Ouvrir →</span></a>'; }).join('') + '</div>';
     } else {
       h += '<div class="pp-compris"><p class="pp-k">' + (q ? 'Je n’ai pas trouvé d’outil dédié' : 'Posez votre question') + '</p><p>' + (q ? 'Pour « ' + esc(q) + ' », voici ce qu’EFA a de plus proche. Vous pouvez aussi reformuler.' : 'Écrivez ce que vous cherchez à faire avec votre argent.') + '</p></div>';
@@ -201,7 +245,7 @@
     h += '<div id="pp-trouve"></div>';
     h += '<div class="pp-autres"><h3>' + (it ? 'Ce n’est pas tout à fait ça ?' : 'Les demandes les plus fréquentes') + '</h3><div class="pp-chips">' +
       ['voirclair', 'lancer', 'bourse', 'epargner', 'credit', 'tontine', 'terrain', 'arnaque'].filter(function (id) { return !it || it.id !== id; }).map(function (id) { var x = I.filter(function (z) { return z.id === id; })[0]; return '<a href="' + url(x.o[2], null) + '">' + esc(x.o[1]) + '</a>'; }).join('') + '</div></div>';
-    h += '<p class="pp-ely">Vous ne savez pas par où commencer ? <a href="diagnostic.html">Faites votre diagnostic</a> (6 min). Besoin d’en parler ? <a href="ely.html">Posez votre question à Ely</a>, le guide d’EFA. Ou parcourez <a href="accueil-v3.html#tout-efa">tout EFA, par besoin</a>.</p>';
+    h += '<p class="pp-ely">Vous ne savez pas par où commencer ? <a href="diagnostic.html">Faites votre diagnostic</a> (6 min). Besoin d’en parler ? <a href="ely.html">Posez votre question à Ely</a>, le guide d’EFA. Ou parcourez <a href="index.html#tout-efa">tout EFA, par besoin</a>.</p>';
     box.innerHTML = h;
     if (!q) return;
     fetch('data/tout-efa.json').then(function (r) { return r.json(); }).then(function (IDX) {
@@ -212,5 +256,5 @@
     }).catch(function () {});
   }
 
-  window.EFA_PROCHAIN_PAS = { comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
+  window.EFA_PROCHAIN_PAS = { REP: REP, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
 })();

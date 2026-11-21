@@ -1,14 +1,16 @@
-# Maquette du nouvel accueil « Votre argent. Votre question. Votre prochain pas. »
-# Fabrique : data/tout-efa.json (index de tout le site), accueil-v3.html, prochain-pas.html, puis les habille (menu et pied du site).
+# Accueil d'efa.africa depuis le 21 novembre 2026 : « Votre argent. Votre question. Votre prochain pas. »
+# Fabrique : data/tout-efa.json (index de tout le site), index.html, prochain-pas.html, puis les habille (menu et pied du site).
+# L'accueil précédent est conservé : sauvegarde-plateforme-2026-11-21.html (modèle clone/_index.html) et branche git du même nom.
 # Lancer : python3 scripts/accueil/build.py
 import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
-V = '20261121d'
+def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
+V = '20261121f'
 
 FAMILLES = [
  ('argent', 'Comprendre et gérer mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
-  'diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart question'),
+  'diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart'),
  ('activite', 'Lancer et faire grandir mon activité', 'Idées de business, business plan, valeur de l’entreprise',
   'generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre'),
  ('bourse', 'Investir et la Bourse (BRVM)', 'Ma BRVM, le marché du jour, les SGI, les cours pour débuter',
@@ -26,7 +28,7 @@ FAMILLES = [
  ('efa', 'EFA et moi', 'Mon espace, l’abonnement, Élysée, Ely, nous écrire',
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
-EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
+EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
 TITRES = {'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
@@ -89,8 +91,8 @@ TETE = '''<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8"><link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0B1220"><meta name="robots" content="noindex">
-<title>%s</title>
+<meta name="theme-color" content="#0B1220">
+%s
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
 <link rel="stylesheet" href="clone/prochain-pas.css?v=''' + V + '''">
@@ -99,16 +101,32 @@ TETE = '''<!DOCTYPE html>
 <body>
 <header class="top"></header>
 <main id="contenu" class="pp" data-garde>
-<p class="pp-maquette">Maquette du nouvel accueil · non publiée · à valider</p>
 '''
 FIN = '''</main>
+<script data-goatcounter="https://efa-africa.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="efa-appli.js?v=20261116a" defer></script>
+<script src="/clone/ambassadeur.js?v=20261103a" defer></script>
+<script src="/clone/mesure.js?v=20261104a" defer></script>
 </body>
 </html>
 '''
+v1 = open('accueil-v1.html', encoding='utf-8').read(); v1 = v1[:v1.find('</head>')]
+META_ACCUEIL = '\n'.join(re.findall(r'<title>.*?</title>|<meta (?:name="description"|property="og:[^"]+"|name="twitter:[^"]+")[^>]*>'
+                          r'|<link rel="(?:canonical|apple-touch-icon)"[^>]*>|<script type="application/ld\+json">.*?</script>', v1, re.S))
+META_REPONSE = ('<title>Mon prochain pas · EFA</title>\n<link rel="canonical" href="https://efa.africa/prochain-pas">\n'
+                '<meta name="description" content="Posez votre question d’argent : EFA vous répond en bref, vous propose l’outil pour l’appliquer à votre cas et les contenus pour aller plus loin.">')
+AFF = [('atelier-ou-passe-mon-argent.html', 'ou-passe-mon-argent', '', 'Où est passé mon argent ?', 'Voir son mois, trouver les fuites'),
+       ('atelier-budget-zero.html', 'budget-zero', 'sv/', 'Mon budget à zéro', 'Une mission pour chaque franc'),
+       ('coach-bourse.html', 'premier-ordre-brvm', 'sv/', 'Mon premier ordre à la Bourse (BRVM)', 'Du compte à l’achat, pas à pas'),
+       ('atelier-activite-gagne-t-elle.html', 'activite-gagne-t-elle', 'sv/', 'Mon activité gagne-t-elle de l’argent ?', 'Ce qui reste vraiment')]
+FORMER = ''.join('<a class="pp-aff" href="%s?src=accueil-former"><img src="clone/assets/affiches/%s%s.webp" alt="" loading="lazy" decoding="async"><b>%s</b><span>%s</span></a>' % (u, d, i, E(t), E(x)) for u, i, d, t, x in AFF)
+EXPRESS = ''.join('<a class="pp-exp" href="%s"><small>%s</small><b>%s</b><span>Lire la réponse →</span></a>' % (q(t), k, E(t)) for k, t in [
+  ('Crédit', 'Combien me coûte vraiment un crédit ?'), ('Placement', 'On me promet 30 % par mois, est-ce sérieux ?'), ('Famille', 'Ma sœur me demande un prêt, que faire ?'),
+  ('Terrain', 'Que vérifier avant d’acheter un terrain ?'), ('Tontine', 'Faut-il entrer dans une tontine ?'), ('Épargne', 'Comment épargner quand on gagne peu ?')])
+
 def champ(ph):
     return ('<form class="pp-q" action="prochain-pas.html" method="get" role="search"><label for="pp-q" class="pp-sr">Votre question</label>'
             '<input id="pp-q" name="q" autocomplete="off" enterkeyhint="search" placeholder="%s"><button class="pp-go" type="submit">Trouver mon prochain pas →</button></form>') % E(ph)
-def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
 
 PORTES = ''.join('<a class="pp-porte" href="%s"><span class="pp-ic">%s</span><span class="pp-pt"><b>%s</b><span>%s</span></span><i aria-hidden="true">→</i></a>' % (u, ic(i), t, s) for u, i, t, s in [
  ('ou-est-passe-mon-argent.html?src=accueil-portes', 'wallet', 'Voir clair', 'Comprendre mon argent'),
@@ -127,7 +145,7 @@ for cle, nom, sous, _ in FAMILLES:
     n = len(L) + (len(ATELIERS) if cle == 'former' else 0)
     TOUT += '<details class="pp-fam" id="tout-%s"><summary><span><b>%s</b><small>%s</small></span><em>%d</em></summary>%s%s</details>' % (cle, E(nom), E(sous), n, liste(L), extra)
 
-accueil = TETE % 'Votre argent, votre prochain pas · EFA' + '''
+accueil = TETE % META_ACCUEIL + '''
 <section class="pp-hero"><div class="pp-hero-img" style="background-image:url('clone/assets/accueil-porte-bourse-tour-f.webp')"></div>
 <div class="pp-in"><div class="pp-txt">
 <button type="button" class="pp-pastille" data-video><img src="clone/assets/elysee-portrait-carre.jpg" alt="">Élysée vous accueille<span class="pp-play" aria-hidden="true"></span></button>
@@ -142,6 +160,18 @@ accueil = TETE % 'Votre argent, votre prochain pas · EFA' + '''
 <h2>Je sais déjà ce que je cherche</h2><span class="pp-trait"></span>
 <div class="pp-grille">''' + PORTES + '''</div>
 <p class="pp-bas">Gratuit pour commencer · <b>La finance, avec nos réalités.</b></p>
+</div></section>
+
+<section class="pp-express"><div class="pp-in">
+<h2>Une réponse tout de suite</h2><span class="pp-trait"></span>
+<p class="pp-tout-s">Les questions que l’on nous pose le plus. Une réponse courte, puis l’outil pour l’appliquer à votre cas.</p>
+<div class="pp-exps">''' + EXPRESS + '''</div>
+</div></section>
+
+<section class="pp-former"><div class="pp-in">
+<div class="pp-actu-t"><h2>Se former, à son rythme</h2><a class="pp-lien" href="ateliers.html">Les 57 ateliers, par thème →</a></div>
+<div class="pp-affs">''' + FORMER + '''</div>
+<p class="pp-former-b">Des situations d’ici, des exercices concrets. Vous préférez un parcours complet ? <a href="parcours.html">L’école EFA</a> · <a href="ateliers-elysee.html">Les ateliers avec Élysée Johnson</a></p>
 </div></section>
 
 <section class="pp-actu"><div class="pp-in">
@@ -167,15 +197,21 @@ accueil = TETE % 'Votre argent, votre prochain pas · EFA' + '''
     var C=d.categories||{},L=(d.articles||[]).filter(function(a){return a.statut==='publié'||a.statut==='corrigé'}).slice(0,3);
     document.getElementById('pp-actu').innerHTML=L.map(function(a){return '<a class="pp-art" href="news/'+a.id+'.html"><small>'+esc(C[a.categorie]||a.rubrique||'')+'</small><b>'+esc(a.titre)+'</b></a>'}).join('');
   }).catch(function(){document.querySelector('.pp-actu').hidden=true});
-  if(location.hash.indexOf('#tout-')===0){var el=document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true;}
+  /* Anciennes ancres de l'accueil (menu, pied de page, liens déjà partagés) : on ouvre le thème correspondant */
+  var ANC={benefices:'tout-argent',portes:'tout-argent',calculateur:'tout-argent',seul:'tout-former','pilier-progresser':'tout-former',certificats:'tout-former',
+    'pilier-agir':'tout-activite',marches:'tout-bourse','avant-de-signer':'tout-bourse',solutions:'tout-bourse','pilier-media':'tout-media','etudes-prospective':'tout-media',
+    organisation:'tout-espaces',espaces:'tout-espaces',contact:'tout-efa-moi',auteur:'tout-efa-moi'};
+  function ancre(){var h=location.hash.slice(1);if(!h)return;var id=ANC[h]||h;if(id==='tout-efa-moi')id='tout-efa';var el=document.getElementById(id);if(!el)return;
+    if(el.tagName==='DETAILS')el.open=true;setTimeout(function(){el.scrollIntoView({block:'start'})},60);}
+  ancre();window.addEventListener('hashchange',ancre);
 })();
 </script>
 ''' + FIN
-open('accueil-v3.html', 'w', encoding='utf-8').write(accueil)
+open('index.html', 'w', encoding='utf-8').write(accueil)
 
-reponse = TETE % 'Mon prochain pas · EFA' + '''
+reponse = TETE % META_REPONSE + '''
 <section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
-<p class="pp-fil"><a href="accueil-v3.html">Accueil</a> / Mon prochain pas</p>
+<p class="pp-fil"><a href="index.html">Accueil</a> / Mon prochain pas</p>
 <h1 class="pp-h1 pp-h1-c"><span>Une question.</span><span class="pp-ciel">Un prochain pas.</span></h1>
 ''' + champ('Posez votre question…') + '''
 </div></div></section>
@@ -183,10 +219,10 @@ reponse = TETE % 'Mon prochain pas · EFA' + '''
 <script>document.addEventListener('DOMContentLoaded',function(){window.EFA_PROCHAIN_PAS.page();});</script>
 ''' + FIN
 open('prochain-pas.html', 'w', encoding='utf-8').write(reponse)
-subprocess.run(['python3', 'scripts/clone/habiller.py'], check=True, stdout=subprocess.DEVNULL)
-# habiller.py réécrit aussi d'autres pages (lignes vides) : on ne garde que les deux pages de la maquette
-autres = [f for f in subprocess.run(['git', 'diff', '--name-only'], capture_output=True, text=True).stdout.split()
-          if f not in ('accueil-v3.html', 'prochain-pas.html', 'data/tout-efa.json') and f.endswith('.html')]
-if autres: subprocess.run(['git', 'checkout', '-q', '--'] + autres)
-for p in ('accueil-v3.html', 'prochain-pas.html'):
+for p in ('index.html', 'prochain-pas.html'):
+    subprocess.run(['python3', 'scripts/clone/habiller.py', '--page', p], check=True, stdout=subprocess.DEVNULL)
+RENVOI = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="https://efa.africa/%s"><title>EFA</title><script>location.replace("%s"+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=%s"></head><body><p><a href="%s">Éducation Financière Afrique</a></p></body></html>\n'
+open('accueil-v3.html', 'w', encoding='utf-8').write(RENVOI % ('', './', './', './'))
+open('question.html', 'w', encoding='utf-8').write(RENVOI % ('prochain-pas', 'prochain-pas.html', 'prochain-pas.html', 'prochain-pas.html'))
+for p in ('index.html', 'prochain-pas.html'):
     s = open(p, encoding='utf-8').read(); print(p, 'menu' if 'clone-haut' in s else 'SANS MENU', 'pied' if 'efa-foot' in s else 'SANS PIED')
