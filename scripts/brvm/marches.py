@@ -108,6 +108,11 @@ def main():
 
     # Indices
     ind = lire_csv(D('data', 'brvm', 'indices.csv'))
+    if os.path.isdir(hdir):
+        deja = {r['date_seance'] for r in ind}
+        for f in sorted(os.listdir(hdir)):
+            if f.startswith('indices_') and f.endswith('.csv'):
+                ind += [r for r in lire_csv(os.path.join(hdir, f)) if r['date_seance'] not in deja]
     series = collections.defaultdict(list); cat = {}
     for r in ind:
         series[r['indice']].append([r['date_seance'], nombre(r['cloture']), nombre(r['variation_pct']), nombre(r['variation_annuelle_pct'])])
