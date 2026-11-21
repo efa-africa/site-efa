@@ -6,7 +6,7 @@ import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121f'
+V = '20261121g'
 
 FAMILLES = [
  ('argent', 'Comprendre et gérer mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -20,7 +20,7 @@ FAMILLES = [
  ('famille', 'Famille, maison et moments de vie', 'Terrain, chantier, enfants, décès, prêter à un proche, arnaques',
   'acheter-un-terrain budget-chantier arrivee-enfant etudes-enfants-heritage apres-un-deces papiers-famille preter-a-un-proche question-preter-a-ma-soeur solidarite-assureur-de-la-famille arnaques se-proteger-des-arnaques'),
  ('former', 'Me former', 'Les ateliers, les parcours, les certificats, les écoles EFA',
-  'ateliers ateliers-budget ateliers-placer ateliers-bourse ateliers-credit ateliers-activite ateliers-famille ateliers-arnaques ateliers-elysee parcours certificat-pilote certificat-maitrise certificat-patrimoine certificat-cefa traders corporate ceo quiz minfin'),
+  'apprendre ateliers ateliers-budget ateliers-placer ateliers-bourse ateliers-credit ateliers-activite ateliers-famille ateliers-arnaques ateliers-elysee parcours certificat-pilote certificat-maitrise certificat-patrimoine certificat-cefa traders corporate ceo quiz minfin'),
  ('media', 'L’actu, les études, le média', 'EFA News, décryptages, tribunes, études, Africa 2075, podcast',
   'news decryptage decryptage-sir-brvm tribunes etudes-prospective methode africa-2075 africa-2075-fondateur africa-2075-n1 africa-2075-n2 africa-2075-dossier-1 podcast lettre bibliotheque musee balade-economie'),
  ('espaces', 'Cadres, dirigeants, étudiants, organisations', 'Les espaces par public et les programmes pour les organisations',
@@ -29,7 +29,7 @@ FAMILLES = [
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
 EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
-TITRES = {'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
+TITRES = {'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
           'outils': 'Tous les outils et simulateurs', 'ateliers': 'Tous les ateliers, par thème', 'ateliers-elysee': 'Ateliers avec Élysée Johnson', 'news': 'EFA News', 'sgi': 'Les SGI de la Bourse (BRVM)',
@@ -132,7 +132,7 @@ PORTES = ''.join('<a class="pp-porte" href="%s"><span class="pp-ic">%s</span><sp
  ('ou-est-passe-mon-argent.html?src=accueil-portes', 'wallet', 'Voir clair', 'Comprendre mon argent'),
  ('generateur-de-projet.html?src=accueil-portes', 'bulb', 'Déclic', 'Trouver mon idée de business'),
  ('ma-brvm.html?src=accueil-portes', 'bars', 'Ma BRVM', 'Et si j’avais investi ?'),
- ('ateliers.html?src=accueil-portes', 'cap', 'Formation', 'Apprendre à mon rythme')])
+ ('apprendre.html?src=accueil-portes', 'cap', 'Apprendre', 'Seul ou accompagné')])
 
 def liste(L): return '<ul class="pp-liens">' + ''.join('<li><a href="%s">%s</a></li>' % (f['p'], E(f['t'])) for f in L) + '</ul>'
 TOUT = ''
@@ -169,7 +169,8 @@ accueil = TETE % META_ACCUEIL + '''
 </div></section>
 
 <section class="pp-former"><div class="pp-in">
-<div class="pp-actu-t"><h2>Se former, à son rythme</h2><a class="pp-lien" href="ateliers.html">Les 57 ateliers, par thème →</a></div>
+<div class="pp-actu-t"><h2>Apprendre, seul ou accompagné</h2><a class="pp-lien" href="apprendre.html">Tout pour apprendre →</a></div>
+<div class="pp-voies"><a class="pp-voie" href="apprendre.html#seul"><small>Ma bibliothèque</small><b>J’apprends seul</b><span>L’école EFA, les cours gratuits, les livres, le podcast.</span></a><a class="pp-voie pp-voie-c" href="apprendre.html#accompagne"><small>Être accompagné</small><b>Je me fais coacher</b><span>Les 57 ateliers, les ateliers avec Élysée Johnson, le rendez-vous.</span></a></div>
 <div class="pp-affs">''' + FORMER + '''</div>
 <p class="pp-former-b">Des situations d’ici, des exercices concrets. Vous préférez un parcours complet ? <a href="parcours.html">L’école EFA</a> · <a href="ateliers-elysee.html">Les ateliers avec Élysée Johnson</a></p>
 </div></section>
@@ -198,16 +199,65 @@ accueil = TETE % META_ACCUEIL + '''
     document.getElementById('pp-actu').innerHTML=L.map(function(a){return '<a class="pp-art" href="news/'+a.id+'.html"><small>'+esc(C[a.categorie]||a.rubrique||'')+'</small><b>'+esc(a.titre)+'</b></a>'}).join('');
   }).catch(function(){document.querySelector('.pp-actu').hidden=true});
   /* Anciennes ancres de l'accueil (menu, pied de page, liens déjà partagés) : on ouvre le thème correspondant */
-  var ANC={benefices:'tout-argent',portes:'tout-argent',calculateur:'tout-argent',seul:'tout-former','pilier-progresser':'tout-former',certificats:'tout-former',
+  var ANC={benefices:'tout-argent',portes:'tout-argent',calculateur:'tout-argent',certificats:'tout-former',
     'pilier-agir':'tout-activite',marches:'tout-bourse','avant-de-signer':'tout-bourse',solutions:'tout-bourse','pilier-media':'tout-media','etudes-prospective':'tout-media',
     organisation:'tout-espaces',espaces:'tout-espaces',contact:'tout-efa-moi',auteur:'tout-efa-moi'};
-  function ancre(){var h=location.hash.slice(1);if(!h)return;var id=ANC[h]||h;if(id==='tout-efa-moi')id='tout-efa';var el=document.getElementById(id);if(!el)return;
+  function ancre(){var h=location.hash.slice(1);if(!h)return;if(h==='seul'){location.replace('apprendre.html#seul');return;}if(h==='pilier-progresser'){location.replace('apprendre.html#accompagne');return;}var id=ANC[h]||h;if(id==='tout-efa-moi')id='tout-efa';var el=document.getElementById(id);if(!el)return;
     if(el.tagName==='DETAILS')el.open=true;setTimeout(function(){el.scrollIntoView({block:'start'})},60);}
   ancre();window.addEventListener('hashchange',ancre);
 })();
 </script>
 ''' + FIN
 open('index.html', 'w', encoding='utf-8').write(accueil)
+
+def carte(u, k, t, d, cta='Ouvrir'): return '<a class="pp-carte" href="%s"><p class="pp-k">%s</p><h3>%s</h3><p>%s</p><span class="pp-lien">%s →</span></a>' % (u, k, E(t), E(d), cta)
+SEUL = ''.join([
+ carte('parcours.html', 'Le parcours complet', 'L’école EFA', 'Trois cycles, du diagnostic au patrimoine : Fondations, Maîtrise, Patrimoine. Un certificat local à la fin de chacun.', 'Commencer le parcours'),
+ carte('diagnostic.html', 'Avant de commencer', 'Mon diagnostic', 'Six minutes pour savoir où vous en êtes et par quel module commencer.', 'Faire le point'),
+ carte('ecole-de-la-bourse.html', 'Cours gratuit', 'École de la Bourse', 'Comprendre la Bourse (BRVM) pas à pas, avant d’acheter.'),
+ carte('ecole-de-la-tontine.html', 'Cours gratuit', 'École de la tontine', 'Comment marche une tontine, et comment cotiser sans se faire avoir.'),
+ carte('bibliotheque.html', 'Lire et s’inspirer', 'La bibliothèque EFA', 'Les livres résumés par EFA, le musée de l’économie, les parcours qui inspirent.'),
+ carte('podcast.html', 'À écouter', 'Le podcast EFA', 'Des épisodes de quelques minutes pour comprendre l’argent.'),
+ carte('quiz.html', 'S’entraîner', 'Le quiz de la semaine', 'Quelques questions pour vérifier ce que vous avez retenu.'),
+ carte('minfin.html', 'En histoires', 'Min’Fin, la série', 'L’éducation financière racontée en épisodes courts.'),
+ carte('outils.html', 'Pratiquer', 'Tous les outils et simulateurs', 'Budget, épargne, crédit, retraite, Bourse : appliquer à vos chiffres.')])
+THEMES_AT = ''.join('<a href="%s.html">%s</a>' % (f['p'][:-5], E(f['t'])) for f in PAR['former'] if f['p'].startswith('ateliers-') and f['p'] != 'ateliers-elysee.html')
+ACC = ''.join([
+ carte('ateliers.html', 'Les 57 ateliers', 'Tous les ateliers, par thème', 'Trois essentiels par thème, puis le reste pour aller plus loin. Des situations d’ici, des exercices concrets.', 'Choisir un atelier'),
+ carte('ateliers-elysee.html', 'Coaching', 'Ateliers avec Élysée Johnson', 'Être coaché par le fondateur d’EFA, sur votre situation.', 'Voir les ateliers'),
+ carte('rendez-vous.html', 'En direct', 'Rendez-vous avec Élysée', 'Un échange sur votre question, ou le besoin de votre organisation.', 'Prendre rendez-vous'),
+ carte('abonnement.html', 'Les formules', 'L’abonnement EFA', 'L’accès aux ateliers, mois par mois.', 'Voir les formules'),
+ carte('ely.html', 'À toute heure', 'Ely, le guide d’EFA', 'Posez votre question, Ely vous oriente et explique.', 'Parler à Ely'),
+ carte('organisations.html', 'En groupe', 'Pour les organisations', 'Former les salariés, les membres ou les étudiants de votre organisation.', 'Voir les programmes')])
+META_APP = ('<title>Apprendre : seul ou accompagné · EFA</title>\n<link rel="canonical" href="https://efa.africa/apprendre">\n'
+            '<meta name="description" content="Apprendre l’argent avec EFA : seul, avec l’école EFA, les cours gratuits et la bibliothèque ; ou accompagné, avec les ateliers et le coaching d’Élysée Johnson.">')
+apprendre = TETE % META_APP + '''
+<section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
+<p class="pp-fil"><a href="index.html">Accueil</a> / Apprendre</p>
+<h1 class="pp-h1 pp-h1-c"><span>Apprendre.</span><span class="pp-ciel">Seul, ou accompagné.</span></h1>
+<p class="pp-sous">Choisissez votre façon d’avancer. Vous pouvez passer de l’une à l’autre à tout moment.</p>
+<div class="pp-voies"><a class="pp-voie" href="#seul"><small>Ma bibliothèque</small><b>J’apprends seul</b><span>L’école EFA, les cours gratuits, les livres, le podcast.</span></a><a class="pp-voie pp-voie-c" href="#accompagne"><small>Être accompagné</small><b>Je me fais coacher</b><span>Les ateliers, le coaching d’Élysée Johnson, le rendez-vous.</span></a></div>
+</div></div></section>
+
+<section class="pp-app" id="seul"><div class="pp-in">
+<p class="pp-k">Ma bibliothèque</p><h2>J’apprends seul, à mon rythme</h2>
+<p class="pp-app-s">Gratuit pour commencer. Suivez le parcours dans l’ordre, ou piochez ce dont vous avez besoin aujourd’hui.</p>
+<div class="pp-cartes">''' + SEUL + '''</div>
+</div></section>
+
+<section class="pp-app pp-app-g" id="accompagne"><div class="pp-in">
+<p class="pp-k">Être accompagné</p><h2>Je me fais coacher</h2>
+<p class="pp-app-s">Un atelier pour chaque décision, avec vos chiffres. Et quelqu’un pour vous répondre.</p>
+<div class="pp-affs">''' + FORMER + '''</div>
+<div class="pp-chips pp-chips-c">''' + THEMES_AT + '''</div>
+<div class="pp-cartes">''' + ACC + '''</div>
+</div></section>
+
+<section class="pp-app" id="progression"><div class="pp-in">
+<div class="pp-cartes pp-cartes-2">''' + carte('mon-efa.html', 'Mon EFA', 'Ma progression', 'Vos ateliers, vos parcours, vos fiches et vos certificats, au même endroit.', 'Ouvrir Mon EFA') + carte('certificat-cefa.html', 'Valider', 'Les certificats EFA', 'Un certificat local à la fin de chaque cycle, puis le CEFA.', 'Voir les certificats') + '''</div>
+</div></section>
+''' + FIN
+open('apprendre.html', 'w', encoding='utf-8').write(apprendre)
 
 reponse = TETE % META_REPONSE + '''
 <section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
@@ -219,7 +269,7 @@ reponse = TETE % META_REPONSE + '''
 <script>document.addEventListener('DOMContentLoaded',function(){window.EFA_PROCHAIN_PAS.page();});</script>
 ''' + FIN
 open('prochain-pas.html', 'w', encoding='utf-8').write(reponse)
-for p in ('index.html', 'prochain-pas.html'):
+for p in ('index.html', 'prochain-pas.html', 'apprendre.html'):
     subprocess.run(['python3', 'scripts/clone/habiller.py', '--page', p], check=True, stdout=subprocess.DEVNULL)
 RENVOI = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="https://efa.africa/%s"><title>EFA</title><script>location.replace("%s"+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=%s"></head><body><p><a href="%s">Éducation Financière Afrique</a></p></body></html>\n'
 open('accueil-v3.html', 'w', encoding='utf-8').write(RENVOI % ('', './', './', './'))

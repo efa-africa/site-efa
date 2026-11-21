@@ -9,7 +9,7 @@
   if (window.EFA_ANNONCES) return;
   var PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\?.*$/, '');
   if (!/\.html$/.test(PAGE)) PAGE += '.html';
-  var SANS = /^(index|abonnement|partenaires|question|ateliers(-[a-z]+)?|admin.*|mon-efa|rejoindre|organisations|rendez-vous|programme-organisation|etudiants|demo|ely|minfin|lettre|merci.*|paiement.*|connexion.*|ma-brvm|accueil-v3|prochain-pas)\.html$/;
+  var SANS = /^(index|abonnement|partenaires|question|ateliers(-[a-z]+)?|admin.*|mon-efa|rejoindre|organisations|rendez-vous|programme-organisation|etudiants|demo|ely|minfin|lettre|merci.*|paiement.*|connexion.*|ma-brvm|accueil-v3|prochain-pas|apprendre)\.html$/;
 
   /* Le catalogue des produits EFA */
   var P = {

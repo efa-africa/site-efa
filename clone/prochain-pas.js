@@ -125,8 +125,8 @@
     { id: 'etudesefa', mots: ['etude efa', 'vos etudes', 'prospective', '2075', 'statistiques', 'chiffres de la tontine', 'enquete', 'recherche sur'], c: 'Vous cherchez les études et la prospective d’EFA.',
       o: ['Études et prospective', 'Les données d’EFA', 'etudes-prospective.html', 'Les études d’EFA sur la tontine et l’argent en Afrique, et la revue Africa 2075.', 'Voir les études'], a: [A('Africa 2075', 'La prospective', 'Les frontières de croissance.', 'africa-2075.html')] },
     { id: 'apprendre', g: 1, mots: ['apprendre', 'formation', 'formations', 'me former', 'cours', 'atelier', 'ateliers', 'comprendre la finance', 'education financiere', 'debuter', 'debutant', 'les bases'], c: 'Vous voulez apprendre à votre rythme.',
-      o: ['Les ateliers EFA', 'Apprendre à mon rythme', 'ateliers.html', 'Des ateliers courts, avec des situations d’ici et des exercices concrets, classés par thème.', 'Voir les ateliers'],
-      a: [A('L’école EFA', 'Les parcours complets', 'Du diagnostic au patrimoine.', 'parcours.html'), DIAG] },
+      o: ['Apprendre', 'Seul ou accompagné', 'apprendre.html', 'Deux façons d’avancer : seul, avec l’école EFA, les cours gratuits et la bibliothèque ; ou accompagné, avec les ateliers et le coaching.', 'Choisir ma façon d’apprendre'],
+      a: [A('L’école EFA', 'Apprendre seul', 'Le parcours complet, du diagnostic au patrimoine.', 'parcours.html'), A('Les ateliers EFA', 'Être accompagné', 'Des ateliers courts, par thème.', 'ateliers.html'), DIAG] },
     { id: 'diagnostic', g: 1, mots: ['par ou commencer', 'je ne sais pas', 'ou j en suis', 'faire le point', 'diagnostic', 'perdu', 'aide moi', 'aidez moi', 'conseil', 'que faire'], c: 'Vous ne savez pas par où commencer.',
       o: ['Mon diagnostic', 'Savoir où j’en suis', 'diagnostic.html', 'Six minutes sur votre budget, votre épargne, vos dettes, vos tontines et ce que vous donnez à vos proches. À la fin : votre prochain pas.', 'Faire mon diagnostic'],
       a: [A('Voir clair', 'Le premier outil', 'Où passe votre argent, en cinq questions.', 'ou-est-passe-mon-argent.html')] }

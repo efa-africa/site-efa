@@ -103,8 +103,8 @@ Quelles sont les nouvelles de la BRVM|news
 L'actualité économique|news
 Je veux lire un livre sur l argent|bibliotheque
 Un podcast sur la finance|bibliotheque
-Je veux apprendre la finance|ateliers
-Quelles formations proposez-vous|ateliers
+Je veux apprendre la finance|apprendre
+Quelles formations proposez-vous|apprendre
 Je ne sais pas par où commencer|diagnostic
 Je suis perdu avec mon argent|diagnostic
 Africa 2075|etudes-prospective
