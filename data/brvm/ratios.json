@@ -1,0 +1,295 @@
+{
+ "_note": "Dernier dividende net, date de paiement, rendement net et PER publiés par la BRVM dans le bulletin officiel de la cote. PER absent = bénéfice négatif ou non communiqué.",
+ "source": "BRVM, bulletin officiel de la cote",
+ "bulletin_du": "2026-11-19",
+ "titres": {
+  "NTLC": {
+   "dividende_net": 369.6,
+   "date_paiement": "2026-09-07",
+   "rendement_net_pct": 2.87,
+   "per": 15.45
+  },
+  "PALC": {
+   "dividende_net": 441.04,
+   "date_paiement": "2026-06-29",
+   "rendement_net_pct": 5.92,
+   "per": 7.42
+  },
+  "SPHC": {
+   "dividende_net": 430.32,
+   "date_paiement": "2026-08-28",
+   "rendement_net_pct": 5.7,
+   "per": 7.72
+  },
+  "SMBC": {
+   "dividende_net": 704,
+   "date_paiement": "2026-09-18",
+   "rendement_net_pct": 3.91,
+   "per": 10.73
+  },
+  "TTLC": {
+   "dividende_net": 139.77,
+   "date_paiement": "2026-08-31",
+   "rendement_net_pct": 4.67,
+   "per": 20.72
+  },
+  "TTLS": {
+   "dividende_net": 176.65,
+   "date_paiement": "2026-07-17",
+   "rendement_net_pct": 4.84,
+   "per": 17.54
+  },
+  "ECOC": {
+   "dividende_net": 781.44,
+   "date_paiement": "2026-05-26",
+   "rendement_net_pct": 5.25,
+   "per": 12.91
+  },
+  "SGBC": {
+   "dividende_net": 2298.75,
+   "date_paiement": "2026-08-24",
+   "rendement_net_pct": 5.91,
+   "per": 11.94
+  },
+  "SIBC": {
+   "dividende_net": 374,
+   "date_paiement": "2026-07-31",
+   "rendement_net_pct": 4.62,
+   "per": 14.57
+  },
+  "ONTBF": {
+   "dividende_net": 145.32,
+   "date_paiement": "2026-06-15",
+   "rendement_net_pct": 5.19,
+   "per": 13.11
+  },
+  "ORAC": {
+   "dividende_net": 704,
+   "date_paiement": "2026-06-08",
+   "rendement_net_pct": 3.71,
+   "per": 17.06
+  },
+  "SNTS": {
+   "dividende_net": 174,
+   "date_paiement": "2026-05-26",
+   "rendement_net_pct": 4.25,
+   "per": 9.89
+  },
+  "SCRC": {
+   "dividende_net": 40.5,
+   "date_paiement": "2021-08-20",
+   "rendement_net_pct": 3.15,
+   "per": null
+  },
+  "SICC": {
+   "dividende_net": 1919,
+   "date_paiement": "2000-09-25",
+   "rendement_net_pct": null,
+   "per": null
+  },
+  "SLBC": {
+   "dividende_net": 1871.76,
+   "date_paiement": "2026-07-30",
+   "rendement_net_pct": 4.62,
+   "per": 14.56
+  },
+  "SOGC": {
+   "dividende_net": 501.6,
+   "date_paiement": "2026-08-06",
+   "rendement_net_pct": 6.6,
+   "per": 13.14
+  },
+  "STBC": {
+   "dividende_net": 1707.2,
+   "date_paiement": "2026-08-13",
+   "rendement_net_pct": 8.0,
+   "per": 10.51
+  },
+  "UNLC": {
+   "dividende_net": 1233,
+   "date_paiement": "2012-07-09",
+   "rendement_net_pct": null,
+   "per": 587.72
+  },
+  "ABJC": {
+   "dividende_net": 201.52,
+   "date_paiement": "2026-09-30",
+   "rendement_net_pct": 6.5,
+   "per": 25.41
+  },
+  "BNBC": {
+   "dividende_net": 150,
+   "date_paiement": "2023-07-24",
+   "rendement_net_pct": null,
+   "per": null
+  },
+  "CFAC": {
+   "dividende_net": 55.44,
+   "date_paiement": "2026-08-14",
+   "rendement_net_pct": 4.72,
+   "per": 25.32
+  },
+  "LNBB": {
+   "dividende_net": 164.17,
+   "date_paiement": "2026-08-03",
+   "rendement_net_pct": 4.21,
+   "per": 16.87
+  },
+  "NEIC": {
+   "dividende_net": 140.4,
+   "date_paiement": "2026-09-10",
+   "rendement_net_pct": 7.39,
+   "per": 11.91
+  },
+  "PRSC": {
+   "dividende_net": 183.92,
+   "date_paiement": "2026-10-23",
+   "rendement_net_pct": 5.25,
+   "per": 15.14
+  },
+  "UNXC": {
+   "dividende_net": 60.75,
+   "date_paiement": "2022-07-29",
+   "rendement_net_pct": 3.58,
+   "per": null
+  },
+  "SHEC": {
+   "dividende_net": 85.07,
+   "date_paiement": "2026-09-25",
+   "rendement_net_pct": 4.73,
+   "per": 18.81
+  },
+  "BBGC": {
+   "dividende_net": null,
+   "date_paiement": null,
+   "rendement_net_pct": null,
+   "per": 15.63
+  },
+  "BICB": {
+   "dividende_net": 254.6,
+   "date_paiement": "2026-07-31",
+   "rendement_net_pct": 3.26,
+   "per": 12.43
+  },
+  "BICC": {
+   "dividende_net": 1157.2,
+   "date_paiement": "2026-07-06",
+   "rendement_net_pct": 3.76,
+   "per": 14.06
+  },
+  "BOAB": {
+   "dividende_net": 585,
+   "date_paiement": "2026-05-26",
+   "rendement_net_pct": 6.47,
+   "per": 18.25
+  },
+  "BOABF": {
+   "dividende_net": 397,
+   "date_paiement": "2026-04-23",
+   "rendement_net_pct": 5.1,
+   "per": 17.78
+  },
+  "BOAC": {
+   "dividende_net": 597.53,
+   "date_paiement": "2026-05-06",
+   "rendement_net_pct": 5.48,
+   "per": 12.27
+  },
+  "BOAM": {
+   "dividende_net": 305.04,
+   "date_paiement": "2026-06-03",
+   "rendement_net_pct": 6.03,
+   "per": 12.53
+  },
+  "BOAN": {
+   "dividende_net": 209.25,
+   "date_paiement": "2025-06-03",
+   "rendement_net_pct": null,
+   "per": null
+  },
+  "BOAS": {
+   "dividende_net": 450,
+   "date_paiement": "2026-06-01",
+   "rendement_net_pct": 5.84,
+   "per": 12.65
+  },
+  "CBIBF": {
+   "dividende_net": 900,
+   "date_paiement": "2026-06-19",
+   "rendement_net_pct": 3.12,
+   "per": 14.1
+  },
+  "ETIT": {
+   "dividende_net": 0.92,
+   "date_paiement": "2026-06-30",
+   "rendement_net_pct": 1.61,
+   "per": 2.98
+  },
+  "NSBC": {
+   "dividende_net": 675.98,
+   "date_paiement": "2026-08-04",
+   "rendement_net_pct": 4.43,
+   "per": 9.27
+  },
+  "ORGT": {
+   "dividende_net": 59.52,
+   "date_paiement": "2020-07-17",
+   "rendement_net_pct": 2.33,
+   "per": 8.18
+  },
+  "SAFC": {
+   "dividende_net": 23.04,
+   "date_paiement": "2011-07-29",
+   "rendement_net_pct": null,
+   "per": 54.95
+  },
+  "CABC": {
+   "dividende_net": 152.02,
+   "date_paiement": "2026-06-01",
+   "rendement_net_pct": 5.58,
+   "per": 11.21
+  },
+  "FTSC": {
+   "dividende_net": 1726.56,
+   "date_paiement": "2025-09-30",
+   "rendement_net_pct": 108.59,
+   "per": 48.12
+  },
+  "SDSC": {
+   "dividende_net": 92,
+   "date_paiement": "2026-10-27",
+   "rendement_net_pct": null,
+   "per": null
+  },
+  "SEMC": {
+   "dividende_net": 14,
+   "date_paiement": "2021-12-28",
+   "rendement_net_pct": 0.94,
+   "per": 37.21
+  },
+  "SIVC": {
+   "dividende_net": 63,
+   "date_paiement": "2017-09-29",
+   "rendement_net_pct": null,
+   "per": 80.13
+  },
+  "STAC": {
+   "dividende_net": 66.15,
+   "date_paiement": "2022-07-18",
+   "rendement_net_pct": 3.18,
+   "per": null
+  },
+  "CIEC": {
+   "dividende_net": 205.92,
+   "date_paiement": "2026-07-28",
+   "rendement_net_pct": 4.9,
+   "per": 17.92
+  },
+  "SDCC": {
+   "dividende_net": 462,
+   "date_paiement": "2026-09-16",
+   "rendement_net_pct": 4.02,
+   "per": 17.6
+  }
+ }
+}

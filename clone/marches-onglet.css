@@ -136,3 +136,39 @@ button.mk-carte{border:0;text-align:left;font:inherit;color:inherit;cursor:point
 .mk-form:hover{text-decoration:underline;text-underline-offset:3px}
 /* Téléphone : tous les onglets visibles, sur plusieurs lignes (plus de défilement caché) */
 @media (max-width:760px){.mk-nav{position:static}.mk-nav-in{flex-wrap:wrap;overflow:visible;gap:8px}.mk-nav a{padding:8px 14px;font-size:14.5px}}
+/* Fiche société : dividende, ratios, résultats */
+.mk-ratios{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mk-pt{display:block;margin-top:2px;font-size:13px;font-weight:400;color:#5f6676}
+td .mk-pt,.mk-ligne .mk-pt{display:inline}
+.mk-res-g{display:flex;align-items:flex-end;gap:0;margin-top:16px}
+.mk-res-g div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0;height:140px}
+.mk-res-g i{display:block;width:min(56px,70%);background:#0B1220;border-radius:4px 4px 0 0}
+.mk-res-g i.neg{background:#DA3C1B}
+.mk-res-v{font-size:12.5px;font-weight:700;color:#2A3142;margin-bottom:4px;white-space:nowrap}
+.mk-res-a{align-self:stretch;text-align:center;border-top:1px solid #c9d3df;padding-top:6px;font-size:12.5px;color:#5f6676;margin-top:0}
+.mk-res-g div{height:auto}.mk-res-g i{margin-bottom:0}.mk-res-g+.mk-per{margin-top:8px}
+.mk-defile{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mk-defile .mk-tab td:first-child{white-space:normal;min-width:150px}
+.mk-sem{margin-top:14px}
+.mk-sem .mk-ligne{flex-wrap:wrap;gap:6px 18px}
+.mk-docs{margin-top:14px}
+.mk-docs summary{cursor:pointer;font-weight:800;color:#1B71B2}
+.mk-docs ul{margin:10px 0 0;padding-left:18px;line-height:1.7}
+@media(max-width:820px){.mk-ratios{grid-template-columns:minmax(0,1fr)}}
+.mk-defile .mk-tab td:not(:first-child),.mk-defile .mk-tab th{white-space:nowrap}
+/* Calendrier */
+.mk-cal-av{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px}
+.mk-cal-av .mk-carte{padding:14px 16px}
+.mk-cal-av b{display:block;font:700 19px/1.2 "Libre Baskerville",Georgia,serif;color:#0B1220;margin:4px 0 6px}
+.mk-puces{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.mk-puces button{min-height:40px;border:1.5px solid #cfdbe6;background:#fff;border-radius:999px;padding:0 14px;font:700 14.5px "Source Sans 3",sans-serif;color:#2A3142;cursor:pointer}
+.mk-puces button[aria-pressed=true]{background:#0B1220;border-color:#0B1220;color:#fff}
+.mk-fil{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.mk-fil li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;background:#fff;border-radius:12px;padding:12px 14px;font-size:15.5px;line-height:1.4}
+.mk-fil time{font-weight:700;color:#5f6676;font-size:14px}
+.mk-fil .mk-c{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:800;background:#EEF5FC;color:#1B71B2;vertical-align:1px}
+.mk-fil .mk-c.dividende{background:#E6F4EC;color:#1d6b40}.mk-fil .mk-c.assemblee{background:#FFF3E0;color:#8A4B00}.mk-fil .mk-c.resultats{background:#F3ECFB;color:#5B3592}
+.mk-fil a{font-weight:700;color:#0B1220}
+.mk-plus{margin-top:14px;min-height:46px;padding:0 22px;border-radius:8px;border:0;background:#0B1220;color:#fff;font:800 15px "Source Sans 3",sans-serif;cursor:pointer}
+.mk-div-av td:first-child::after{content:"à venir";margin-left:8px;padding:1px 8px;border-radius:999px;background:#E6F4EC;color:#1d6b40;font-size:11.5px;font-weight:800}
+@media(max-width:560px){.mk-fil li{grid-template-columns:1fr;gap:2px}}

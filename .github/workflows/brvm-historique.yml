@@ -72,6 +72,7 @@ jobs:
           python scripts/brvm/historique_lire.py --brut /tmp/brut
           python scripts/brvm/historique_evenements.py --brut /tmp/brut
           python scripts/brvm/historique_titres.py --brut /tmp/brut
+          python scripts/brvm/ratios_lire.py --brut /tmp/brut
           python scripts/brvm/marches.py
       - name: Enregistrer
         run: |

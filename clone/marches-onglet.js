@@ -90,13 +90,58 @@
         R.sort(function (a, b) { if (k === 'nom') return titre(a).localeCompare(titre(b), 'fr'); var va = k === 'jour' ? a.var_jour : k === 'a1' ? a.perf.a1 : a.capitalisation, vb = k === 'jour' ? b.var_jour : k === 'a1' ? b.perf.a1 : b.capitalisation; if (va == null) return 1; if (vb == null) return -1; return vb - va; });
         document.getElementById('mk-tri-lib').textContent = 'Trié par : ' + LIB[k] + ' · ' + R.length + ' société' + (R.length > 1 ? 's' : '') + ' · Courbes : un point par séance (cours de clôture), sur les 3 derniers mois ou depuis le début de l’historique d’EFA s’il est plus court.';
         A.innerHTML = !R.length ? '<p class="mk-sous">Aucune société ne correspond.' + (fs.value ? ' Le secteur de chaque société est en cours de saisie.' : '') + '</p>' : tab
-          ? '<table class="mk-tab"><thead><tr><th>Société</th><th>Code</th><th>Cours</th><th>Jour</th><th>1 an</th><th>Capitalisation</th></tr></thead><tbody>' + R.map(function (s) { return '<tr><td><a class="mk-lien" href="societe.html?c=' + s.code + '">' + esc(titre(s)) + '</a></td><td>' + s.code + '</td><td>' + nb(s.cours) + '</td><td>' + vr(s.var_jour) + '</td><td>' + vr(s.perf.a1) + '</td><td>' + (s.capitalisation ? nb(s.capitalisation / 1e9, 1) + ' Md' : '<span class="mk-nc">Non communiqué</span>') + '</td></tr>'; }).join('') + '</tbody></table>'
+          ? '<table class="mk-tab"><thead><tr><th>Société</th><th>Code</th><th>Cours</th><th>Jour</th><th>1 an</th><th>PER</th><th>Rendement net</th><th>Capitalisation</th></tr></thead><tbody>' + R.map(function (s) { return '<tr><td><a class="mk-lien" href="societe.html?c=' + s.code + '">' + esc(titre(s)) + '</a></td><td>' + s.code + '</td><td>' + nb(s.cours) + '</td><td>' + vr(s.var_jour) + '</td><td>' + vr(s.perf.a1) + '</td><td>' + (s.per != null ? nb(s.per, 1) : '<span class="mk-nc">–</span>') + '</td><td>' + (s.rendement != null ? nb(s.rendement, 2) + ' %' : '<span class="mk-nc">–</span>') + '</td><td>' + (s.capitalisation ? nb(s.capitalisation / 1e9, 1) + ' Md' : '<span class="mk-nc">Non communiqué</span>') + '</td></tr>'; }).join('') + '</tbody></table>'
           : '<div class="mk-soc">' + R.map(function (s) { return '<a href="societe.html?c=' + s.code + '"><div class="mk-soc-h"><b>' + esc(titre(s)) + '</b><span class="mk-code">' + s.code + '</span></div><div class="mk-ligne"><span>' + (DRAP[s.pays] || '') + ' ' + esc(PAYS[s.pays] || '') + '</span><span>' + (s.secteur ? esc(s.secteur) : '<span class="mk-nc">Secteur à compléter</span>') + '</span></div><div class="mk-soc-c"><strong>' + nb(s.cours) + ' FCFA</strong>' + vr(s.var_jour) + '</div>' + spark(s.mini, 240, 38, 'Cours de ' + titre(s) + ', ' + periode(s.mini_du, s.date, s.mini.length), s.mini_d) + '<span class="mk-per">' + periode(s.mini_du, s.date, s.mini.length) + ' · un point par séance</span></a>'; }).join('') + '</div>';
       }
       [q, fp, fs, tri].forEach(function (x) { x.addEventListener('input', function () { if (x !== q) compte(x === tri ? 'societes-tri' : 'societes-filtre'); rendre(); }); });
       vue.onclick = function () { tab = !tab; vue.textContent = tab ? 'Vue cartes' : 'Vue tableau'; rendre(); };
       rendre();
     });
+  }
+
+  /* ---------- Calendrier ---------- */
+  var CAL = document.getElementById('mk-cal');
+  if (CAL) {
+    compte('calendrier-page');
+    Promise.all([json('data/marches/calendrier.json'), json('data/marches/societes.json')]).then(function (r) {
+      var c = r[0], S = {}; r[1].societes.forEach(function (s) { S[s.code] = s; }); seance(r[1].date);
+      var auj = c.maj || r[1].date, nomS = function (code) { return S[code] ? titre(S[code]) : code; };
+      var lien = function (code) { return code && S[code] ? '<a href="societe.html?c=' + code + '">' + esc(nomS(code)) + '</a>' : ''; };
+      var CAT = { dividende: 'Dividende', assemblee: 'Assemblée générale', resultats: 'Résultats', operation: 'Opération sur titres', cotation: 'Introduction en Bourse', obligation: 'Obligation', autre: 'Annonce' };
+      /* À venir : opérations annoncées + dividendes dont le paiement n'a pas eu lieu */
+      var av = (c.a_venir || []).map(function (e) { return { d: e.d, t: CAT[e.cat] || 'Annonce', h: (e.code ? lien(e.code) + ' · ' : (e.emetteur ? esc(e.emetteur) + ' · ' : '')) + esc(e.texte) }; })
+        .concat((c.dividendes || []).filter(function (d) { return d.paiement > auj; }).map(function (d) { return { d: d.paiement, t: 'Paiement de dividende', h: lien(d.code) + ' · ' + nb(d.montant, d.montant % 1 ? 2 : 0) + ' FCFA net par action' }; }))
+        .sort(function (a, b) { return a.d < b.d ? -1 : 1; });
+      document.getElementById('mk-av').innerHTML = av.length ? av.map(function (e) { return '<div class="mk-carte"><span class="mk-et">' + esc(e.t) + '</span><b>' + date(e.d, true) + '</b><span>' + e.h + '</span></div>'; }).join('')
+        : '<p class="mk-sous">Aucune date annoncée pour l’instant dans les bulletins officiels. Les dividendes sont surtout annoncés entre avril et septembre, après les assemblées générales.</p>';
+      /* Dividendes par année de paiement */
+      var D = c.dividendes || [], ans = D.map(function (d) { return d.paiement.slice(0, 4); }).filter(function (a, i, t) { return t.indexOf(a) === i; }).sort().reverse(), selA = document.getElementById('mk-an');
+      selA.innerHTML = ans.map(function (a) { return '<option>' + a + '</option>'; }).join('');
+      function divs() {
+        var L = D.filter(function (d) { return d.paiement.slice(0, 4) === selA.value; }).sort(function (a, b) { return a.paiement < b.paiement ? 1 : -1; });
+        document.getElementById('mk-div').innerHTML = '<thead><tr><th>Société</th><th>Montant net</th><th>Détachement</th><th>Paiement</th></tr></thead><tbody>' + L.map(function (d) {
+          return '<tr' + (d.paiement > auj ? ' class="mk-div-av"' : '') + '><td>' + lien(d.code) + '</td><td>' + nb(d.montant, d.montant % 1 ? 2 : 0) + ' FCFA</td><td>' + (d.detachement ? date(d.detachement) : '<span class="mk-nc">–</span>') + '</td><td>' + date(d.paiement) + '</td></tr>';
+        }).join('') + '</tbody>';
+      }
+      selA.onchange = function () { compte('calendrier-annee'); divs(); }; divs();
+      /* Fil des annonces */
+      var E = c.evenements_bulletins || [], cats = [['', 'Tout'], ['dividende', 'Dividendes'], ['assemblee', 'Assemblées'], ['resultats', 'Résultats'], ['operation', 'Opérations'], ['cotation', 'Introductions'], ['obligation', 'Obligations'], ['autre', 'Autres annonces']], ch = '', n = 40, q = document.getElementById('mk-q');
+      var P = document.getElementById('mk-cats');
+      P.innerHTML = cats.map(function (k) { return '<button type="button" data-c="' + k[0] + '" aria-pressed="' + (k[0] === ch) + '">' + k[1] + '</button>'; }).join('');
+      P.querySelectorAll('button').forEach(function (b) { b.onclick = function () { ch = b.dataset.c; n = 40; P.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); compte('calendrier-filtre'); fil(); }; });
+      function fil() {
+        var t = (q.value || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+        var L = E.filter(function (e) { var h = (e.texte + ' ' + (e.emetteur || '') + ' ' + (e.code ? nomS(e.code) + ' ' + e.code : '')).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); return (!ch || e.cat === ch) && (!t || h.indexOf(t) > -1); });
+        document.getElementById('mk-fil').innerHTML = L.slice(0, n).map(function (e) {
+          return '<li><time datetime="' + e.d + '">' + date(e.d) + '</time><div><span class="mk-c ' + e.cat + '">' + (CAT[e.cat] || 'Annonce') + '</span>' + (e.code ? lien(e.code) + ' · ' : (e.emetteur ? '<b>' + esc(e.emetteur) + '</b> · ' : '')) + esc(e.texte) + (e.prevu && e.annonce !== e.d ? ' <span class="mk-pt" style="display:inline">(annoncé le ' + date(e.annonce) + ')</span>' : '') + '</div></li>';
+        }).join('') || '<li><span></span><div>Aucune annonce ne correspond.</div></li>';
+        document.getElementById('mk-plus').style.display = L.length > n ? '' : 'none';
+      }
+      q.addEventListener('input', function () { n = 40; fil(); });
+      document.getElementById('mk-plus').onclick = function () { n += 60; compte('calendrier-plus'); fil(); };
+      document.getElementById('mk-fil-src').textContent = 'Source : ' + (c.source_bulletins || 'BRVM, bulletins officiels de la cote') + '. Date affichée : date annoncée quand le texte en donne une, sinon date du bulletin.';
+      fil();
+    }).catch(function () { CAL.insertAdjacentHTML('afterbegin', '<p class="mk-sous mk-in">Le calendrier n’a pas pu être chargé. Réessayez dans un instant.</p>'); });
   }
 
   /* ---------- Fiche société ---------- */
@@ -149,6 +194,48 @@
       var pf = s.perf; document.getElementById('mk-perf').innerHTML = [['1 semaine', pf.s1], ['1 mois', pf.m1], ['Depuis le 1er janvier', pf.ytd], ['1 an', pf.a1], ['1 an, dividendes compris', (s.perf_div || {}).a1], ['5 ans', pf.a5]].map(function (x) { return '<div><span class="mk-et">' + x[0] + '</span><b>' + vr(x[1]) + '</b></div>'; }).join('');
       var id = s.identite || {}, va = function (o) { return o && o.valeur != null ? o.valeur : null; };
       document.getElementById('mk-ident').innerHTML = [['Introduction en Bourse', id.date_introduction ? date(id.date_introduction, true) : null], ['Nombre d’actions', va(id.nombre_actions) != null ? nb(va(id.nombre_actions)) : null], ['Flottant', va(id.flottant_pct) != null ? nb(va(id.flottant_pct), 2) + ' %' : null], ['Capitalisation (calcul EFA)', s.capitalisation ? nb(s.capitalisation / 1e9, 1) + ' Md FCFA' : null], ['Site de la société', id.site ? '<a class="mk-lien" href="' + esc(id.site) + '" target="_blank" rel="noopener">Ouvrir</a>' : null]].map(function (x) { return '<div><span class="mk-et">' + x[0] + '</span><b>' + (x[1] == null ? '<span class="mk-nc">Non communiqué</span>' : x[1]) + '</b></div>'; }).join('');
+      /* Dividende et ratios publiés par la BRVM */
+      var ra = s.ratios, RT = document.getElementById('mk-ratios');
+      if (RT) {
+        if (!ra) document.getElementById('mk-ratios-s').remove();
+        else {
+          var exc = ra.rendement_net_pct != null && ra.rendement_net_pct > 20;
+          RT.innerHTML = [['Dernier dividende net', ra.dividende_net != null ? nb(ra.dividende_net, ra.dividende_net % 1 ? 2 : 0) + ' FCFA' : null, ra.date_paiement ? 'payé le ' + date(ra.date_paiement, true) : ''],
+            ['Rendement net', ra.rendement_net_pct != null ? nb(ra.rendement_net_pct, 2) + ' %' : null, exc ? 'dividende exceptionnel : ne se répète pas chaque année' : 'dividende ÷ cours'],
+            ['PER', ra.per != null ? nb(ra.per, 2) : null, ra.per != null ? 'cours ÷ bénéfice par action' : 'bénéfice négatif ou non publié']].map(function (x) {
+              return '<div><span class="mk-et">' + x[0] + '</span><b>' + (x[1] == null ? '<span class="mk-nc">Non communiqué</span>' : x[1]) + '</b>' + (x[2] ? '<small class="mk-pt">' + esc(x[2]) + '</small>' : '') + '</div>';
+            }).join('');
+          document.getElementById('mk-ratios-src').textContent = 'Source : BRVM, bulletin officiel de la cote du ' + date(ra.bulletin_du, true) + '.' + (ra.date_paiement && ra.date_paiement < String(+s.date.slice(0, 4) - 2) ? ' Le dernier dividende date de plusieurs années : la société n’en a pas versé depuis.' : '');
+        }
+      }
+      /* Résultats : exercices annuels lus dans les états financiers publiés */
+      var RS = document.getElementById('mk-res'), R = s.resultats || { exercices: [], semestres: [], documents: [] };
+      if (RS) {
+        var X = R.exercices || [], banque = X.some(function (e) { return e.produit_net_bancaire != null; }) && !X.some(function (e) { return e.chiffre_affaires != null; });
+        var md = function (v) { return v == null ? '<span class="mk-nc">–</span>' : nb(v / 1e9, Math.abs(v) < 1e10 ? 2 : 1); };
+        var lignes = [[banque ? 'Produit net bancaire' : 'Chiffre d’affaires', banque ? 'produit_net_bancaire' : 'chiffre_affaires'], ['Excédent brut d’exploitation', 'excedent_brut_exploitation'], ['Résultat d’exploitation', 'resultat_exploitation'], ['Résultat net', 'resultat_net'],
+          ['Capitaux propres', 'capitaux_propres'], ['Dettes financières', 'dettes_financieres'], ['Crédits à la clientèle', 'credits_clientele'], ['Dépôts de la clientèle', 'depots_clientele'], ['Total du bilan', 'total_bilan']]
+          .filter(function (l) { return X.some(function (e) { return e[l[1]] != null; }); });
+        var h = '';
+        if (X.length) {
+          var base = banque ? 'produit_net_bancaire' : 'chiffre_affaires', vmax = Math.max.apply(null, X.map(function (e) { return Math.abs(e.resultat_net || 0); })) || 1;
+          h += '<div class="mk-res-g" role="img" aria-label="Résultat net par exercice">' + X.map(function (e) { var v = e.resultat_net, hh = v == null ? 0 : Math.max(2, Math.abs(v) / vmax * 90); return '<div><span class="mk-res-v">' + (v == null ? '–' : md(v) + ' Md') + '</span><i class="' + (v < 0 ? 'neg' : '') + '" style="height:' + hh.toFixed(0) + 'px"></i><span class="mk-res-a">' + e.annee + '</span></div>'; }).join('') + '</div><p class="mk-per">Résultat net par exercice, en milliards de FCFA' + (X.some(function (e) { return e.resultat_net < 0; }) ? ' · en rouge : perte' : '') + '</p>';
+          h += '<div class="mk-defile"><table class="mk-tab"><thead><tr><th>En milliards de FCFA</th>' + X.map(function (e) { return '<th>' + e.annee + '</th>'; }).join('') + '</tr></thead><tbody>'
+            + lignes.map(function (l) { return '<tr><td>' + l[0] + '</td>' + X.map(function (e) { return '<td>' + md(e[l[1]]) + '</td>'; }).join('') + '</tr>'; }).join('')
+            + (X.some(function (e) { return e[base] && e.resultat_net != null; }) ? '<tr><td>Marge nette <small class="mk-pt">résultat net ÷ ' + (banque ? 'PNB' : 'chiffre d’affaires') + ', calcul EFA</small></td>' + X.map(function (e) { return '<td>' + (e[base] && e.resultat_net != null ? nb(e.resultat_net / e[base] * 100, 1) + ' %' : '<span class="mk-nc">–</span>') + '</td>'; }).join('') + '</tr>' : '')
+            + '</tbody></table></div>';
+          var src = X.filter(function (e) { return e._source; }).map(function (e) { return '<a class="mk-lien" href="' + esc(e._source.pdf) + '" target="_blank" rel="noopener">' + esc(e._source.titre) + '</a>'; });
+          h += '<p class="mk-src">Source : états financiers publiés par la société sur le site de la BRVM' + (src.length ? ' (' + src.join(', ') + ')' : '') + '. Chiffres lus automatiquement dans les documents : en cas de doute, le document fait foi.</p>';
+        }
+        (R.semestres || []).slice(-1).forEach(function (m) {
+          var c = m.chiffres, p = m.precedent, k = c.produit_net_bancaire != null ? ['Produit net bancaire', 'produit_net_bancaire'] : ['Chiffre d’affaires', 'chiffre_affaires'];
+          var vs = function (a, b) { return a != null && b ? ' <span class="mk-pt">(' + (a >= b ? '+' : '−') + nb(Math.abs(a / b - 1) * 100, 1) + ' % sur un an)</span>' : ''; };
+          h += '<div class="mk-carte mk-sem"><span class="mk-et">Dernière publication · ' + esc(m.periode) + '</span><div class="mk-ligne">' + (c[k[1]] != null ? '<span>' + k[0] + ' <b>' + md(c[k[1]]) + ' Md</b>' + vs(c[k[1]], p[k[1]]) + '</span>' : '') + (c.resultat_net != null ? '<span>Résultat net <b>' + md(c.resultat_net) + ' Md</b>' + vs(c.resultat_net, p.resultat_net) + '</span>' : '') + '</div></div>';
+        });
+        if (!X.length && !(R.semestres || []).length) h += '<p class="mk-sous">Les chiffres de cette société sont en cours de lecture dans ses publications.' + ((R.documents || []).length ? ' En attendant, les documents d’origine sont ci-dessous.' : '') + '</p>';
+        if ((R.documents || []).length) h += '<details class="mk-docs"><summary>Publications de la société (' + R.documents.length + ')</summary><ul>' + R.documents.map(function (d) { return '<li><a class="mk-lien" href="' + esc(d.pdf) + '" target="_blank" rel="noopener">' + esc(d.titre) + '</a> <span class="mk-pt">' + (d.date ? date(d.date) : '') + '</span></li>'; }).join('') + '</ul></details>';
+        RS.innerHTML = h;
+      }
       var bref = document.getElementById('mk-bref'); if (s.texte_efa && !s.texte_bloque) bref.innerHTML = '<h2>En bref</h2><p class="mk-sous">' + esc(s.texte_efa) + '</p>'; else bref.remove();
     }).catch(function () { F.innerHTML = '<p class="mk-sous">Cette société est introuvable. <a class="mk-lien" href="societes.html">Voir toutes les sociétés</a></p>'; });
   }

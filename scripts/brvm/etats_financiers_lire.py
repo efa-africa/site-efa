@@ -202,6 +202,9 @@ def main():
             chiffres = lire_ocr(txt, chiffres)
         if chiffres:
             stats["avec_chiffres"] += 1
+        m = re.search(r"/(\d{4})(\d{2})(\d{2})_", (e.get("pdf") or [""])[0])
+        if m:
+            e["date_publication"] = "-".join(m.groups())  # date du fichier déposé sur brvm.org
         sym = trouver_symbole(e["societe"], noms, ALIAS)
         if not sym:
             stats["sans_symbole"].add(e["societe"])

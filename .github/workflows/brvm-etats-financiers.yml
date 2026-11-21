@@ -71,11 +71,12 @@ jobs:
           git fetch origin brvm-etats-financiers-brut
           mkdir -p /tmp/ef && git archive origin/brvm-etats-financiers-brut ef | tar -x -C /tmp/ef --strip-components=1
           python scripts/brvm/etats_financiers_lire.py --ef /tmp/ef
+          python scripts/brvm/marches.py
       - name: Enregistrer
         run: |
           git config user.name "EFA robot BRVM"
           git config user.email "robot-brvm@efa.africa"
-          git add data/brvm/etats_financiers.json
+          git add data/brvm/etats_financiers.json data/marches
           if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
           git commit -m "BRVM : chiffres clés des publications financières"
           git pull --rebase -X theirs origin main
