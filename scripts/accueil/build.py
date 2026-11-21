@@ -6,7 +6,7 @@ import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121ze'
+V = '20261121zf'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -122,6 +122,7 @@ AFF = [('atelier-ou-passe-mon-argent.html', 'ou-passe-mon-argent', '', 'Où est 
 FORMER = ''.join('<a class="pp-aff" href="%s?src=accueil-former"><img src="clone/assets/affiches/%s%s.webp" alt="" loading="lazy" decoding="async"><b>%s</b><span>%s</span></a>' % (u, d, i, E(t), E(x)) for u, i, d, t, x in AFF)
 # Icônes au trait des questions (carré de couleur, tracé blanc)
 IC_Q = {
+  'entreprise': '<path d="M4 20V9l5-3v14"/><path d="M9 20V4h11v16"/><path d="M3 20h18M12.5 8h1M16 8h1M12.5 12h1M16 12h1M12.5 16h1M16 16h1"/>',
   'credit': '<rect x="5" y="3" width="14" height="18" rx="2.5"/><rect x="8" y="6.5" width="8" height="3.5" rx="1"/><path d="M8.5 14h.01M12 14h.01M15.5 14h.01M8.5 17.5h.01M12 17.5h.01M15.5 17.5h.01"/>',
   'placement': '<path d="M12 3l7 2.6v5.6c0 4.6-2.9 8.1-7 9.8-4.1-1.700-7-5.200-7-9.800V5.600L12 3z"/><path d="M12 8v5M12 16h.01"/>',
   'famille': '<circle cx="9" cy="8.500" r="3"/><path d="M3.500 19c0-3 2.500-5 5.500-5s5.500 2 5.500 5"/><circle cx="16.500" cy="9.500" r="2.300"/><path d="M16 14.200c2.600.100 4.500 1.800 4.500 4.300"/>',
@@ -132,8 +133,8 @@ IC_Q = {
 IC_Q = {k: v.replace('00"', '"').replace('00 ', ' ').replace('00-', '-').replace('00c', 'c').replace('00V', 'V').replace('00L', 'L').replace('00H', 'H').replace('00h', 'h') for k, v in IC_Q.items()}
 FLECHE = '<svg class="pp-fl" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M8 12h8M12.500 8.500 16 12l-3.500 3.500"/></svg>'.replace('500', '5')
 EXPRESS = ''.join('<a class="pp-exp pp-t-%s" href="%s"><span class="pp-exp-t"><svg class="pp-exp-ic" viewBox="0 0 24 24" aria-hidden="true">%s</svg><small>%s</small></span><b>%s</b><span class="pp-lire">Lire la réponse %s</span></a>' % (c, q(t), IC_Q[c], k, E(t).replace(' ?', '&nbsp;?'), FLECHE) for c, k, t in [
-  ('credit', 'Crédit', 'Combien me coûte vraiment un crédit ?'), ('placement', 'Placement', 'On me promet 30 % par mois, est-ce sérieux ?'), ('famille', 'Famille', 'Ma sœur me demande un prêt, que faire ?'),
-  ('terrain', 'Terrain', 'Que vérifier avant d’acheter un terrain ?'), ('tontine', 'Tontine', 'Faut-il entrer dans une tontine ?'), ('epargne', 'Épargne', 'Comment épargner quand on gagne peu ?')])
+  ('entreprise', 'Entreprise', 'Je suis entrepreneur. Que vaut mon entreprise ?'), ('credit', 'Crédit', 'Combien me coûte vraiment un crédit ?'), ('placement', 'Placement', 'On me promet 30 % par mois, est-ce sérieux ?'),
+  ('famille', 'Famille', 'Ma sœur me demande un prêt, que faire ?'), ('terrain', 'Terrain', 'Que vérifier avant d’acheter un terrain ?'), ('tontine', 'Tontine', 'Faut-il entrer dans une tontine ?')])
 
 def champ(ph):
     return ('<form class="pp-q" action="prochain-pas.html" method="get" role="search"><label for="pp-q" class="pp-sr">Votre question</label>'

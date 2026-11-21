@@ -125,7 +125,7 @@
 .pp-exp b{display:block;font:700 clamp(18px,1.9vw,22px)/1.3 "Libre Baskerville",Georgia,serif;color:var(--nuit)}
 .pp-lire{display:inline-flex;align-items:center;gap:10px;margin-top:10px;color:#0B7F88;font-weight:700;font-size:16px}
 .pp-fl{width:22px;height:22px;flex:none}.pp-fl circle{fill:#0E8C94}.pp-fl path{fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.pp-t-placement{--t:#7C3AED;--f:#F1EAFD;--b:#D9C9F5}.pp-t-famille{--t:#D6284E;--f:#FDEAF0;--b:#F6C6D4}.pp-t-terrain{--t:#12A074;--f:#E6F8F0;--b:#BDE8D4}.pp-t-tontine{--t:#1D5FD9;--f:#E6ECFB;--b:#C5D2F3}.pp-t-epargne{--t:#0E9AA0;--f:#E2F6F8;--b:#BDE6EA}
+.pp-t-entreprise{--t:#DA3C1B;--f:#FDECE7;--b:#F6CFC4}.pp-t-placement{--t:#7C3AED;--f:#F1EAFD;--b:#D9C9F5}.pp-t-famille{--t:#D6284E;--f:#FDEAF0;--b:#F6C6D4}.pp-t-terrain{--t:#12A074;--f:#E6F8F0;--b:#BDE8D4}.pp-t-tontine{--t:#1D5FD9;--f:#E6ECFB;--b:#C5D2F3}.pp-t-epargne{--t:#0E9AA0;--f:#E2F6F8;--b:#BDE6EA}
 .pp-guide{margin:0;font:800 13px "Source Sans 3",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#0B7F88}
 .pp-trait-g{display:block;width:64px;height:4px;border-radius:4px;background:#0E8C94;margin:12px 0 10px}
 .pp-exp-s{margin:0 0 18px;font-size:18px;color:var(--ink)}

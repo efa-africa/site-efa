@@ -104,7 +104,7 @@ Q = [
 (T1, "Je n’arrive jamais à garder d’argent : par quoi commencer ?", 'epargner', ['atelier-reserve-securite', 'ou-est-passe-mon-argent'],
  "Par un montant si petit qu’il ne peut pas échouer, mis de côté le jour où l’argent arrive, sur un compte que vous ne voyez pas tous les jours. L’habitude compte plus que la somme. Quand elle est installée, on augmente."),
 
-(T2, "Comment épargner avec un petit salaire ?", 'epargner', ['atelier-reserve-securite', 'tontine'],
+(T2, "Comment épargner quand on gagne peu ?", 'epargner', ['atelier-reserve-securite', 'tontine'],
  "En épargnant d’abord, pas avec ce qui reste. Même 5 000 F mis de côté le jour de paie valent mieux que 50 000 F promis pour plus tard. Une tontine bien choisie ou un virement automatique aident à tenir. La richesse commence par cet écart régulier."),
 (T2, "Combien devrais-je mettre de côté chaque mois ?", 'epargner', ['ou-garder-sa-reserve', 'liberte-financiere'],
  "Autant que vous pouvez tenir tous les mois sans exception. Un repère courant est un dixième du revenu, mais commencez plus bas s’il le faut et augmentez à chaque hausse de revenu. Le bon montant est celui que vous ne reprenez pas le 20 du mois."),
