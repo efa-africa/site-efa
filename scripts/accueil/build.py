@@ -6,7 +6,7 @@ import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121v'
+V = '20261121y'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -20,7 +20,7 @@ FAMILLES = [
  ('famille', 'Famille, maison et moments de vie', 'Terrain, chantier, enfants, décès, prêter à un proche, arnaques',
   'acheter-un-terrain budget-chantier arrivee-enfant etudes-enfants-heritage apres-un-deces papiers-famille preter-a-un-proche question-preter-a-ma-soeur solidarite-assureur-de-la-famille arnaques se-proteger-des-arnaques'),
  ('former', 'Me former', 'Les ateliers, les parcours, les certificats, les écoles EFA',
-  'apprendre ateliers ateliers-budget ateliers-placer ateliers-bourse ateliers-credit ateliers-activite ateliers-famille ateliers-arnaques ateliers-elysee parcours certificat-pilote certificat-maitrise certificat-patrimoine certificat-cefa traders corporate ceo quiz minfin'),
+  'apprendre questions ateliers ateliers-budget ateliers-placer ateliers-bourse ateliers-credit ateliers-activite ateliers-famille ateliers-arnaques ateliers-elysee parcours certificat-pilote certificat-maitrise certificat-patrimoine certificat-cefa traders corporate ceo quiz minfin'),
  ('media', 'L’actu, les études, le média', 'EFA News, décryptages, tribunes, études, Africa 2075, podcast',
   'news decryptage decryptage-sir-brvm tribunes etudes-prospective methode africa-2075 africa-2075-fondateur africa-2075-n1 africa-2075-n2 africa-2075-dossier-1 podcast lettre bibliotheque musee balade-economie'),
  ('espaces', 'Cadres, dirigeants, étudiants, organisations', 'Les espaces par public et les programmes pour les organisations',
@@ -28,8 +28,8 @@ FAMILLES = [
  ('efa', 'EFA et moi', 'Mon espace, l’abonnement, Élysée, Ely, nous écrire',
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
-EXCLUES = set('index questions accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
-TITRES = {'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
+EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
+TITRES = {'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
           'outils': 'Tous les outils et simulateurs', 'ateliers': 'Tous les ateliers, par thème', 'ateliers-elysee': 'Ateliers avec Élysée Johnson', 'news': 'EFA News', 'sgi': 'Les SGI de la Bourse (BRVM)',
@@ -179,7 +179,7 @@ accueil = TETE % META_ACCUEIL + '''
 <h2>Une question. Un premier pas.</h2><span class="pp-trait-g"></span>
 <p class="pp-exp-s">Une réponse courte, puis un outil pour avancer.</p>
 <div class="pp-exps">''' + EXPRESS + '''</div>
-<p class="pp-voir100"><a href="questions.html">Voir les 100 questions que l’on nous pose ''' + FLECHE + '''</a></p>
+<p class="pp-voir100"><a href="questions.html">Lire les 100 questions et leurs réponses ''' + FLECHE + '''</a></p>
 </div></section>
 
 <section class="pp-former"><div class="pp-in">
@@ -226,6 +226,7 @@ open('index.html', 'w', encoding='utf-8').write(accueil)
 
 def carte(u, k, t, d, cta='Ouvrir'): return '<a class="pp-carte" href="%s"><p class="pp-k">%s</p><h3>%s</h3><p>%s</p><span class="pp-lien">%s →</span></a>' % (u, k, E(t), E(d), cta)
 SEUL = ''.join([
+ carte('questions.html', 'Questions et réponses', 'Les 100 questions sur l’argent', 'Budget, épargne, dettes, business, Bourse, patrimoine : une réponse courte et un outil pour chacune.', 'Lire les réponses'),
  carte('parcours.html', 'Le parcours complet', 'L’école EFA', 'Trois cycles, du diagnostic au patrimoine : Fondations, Maîtrise, Patrimoine. Un certificat local à la fin de chacun.', 'Commencer le parcours'),
  carte('diagnostic.html', 'Avant de commencer', 'Mon diagnostic', 'Six minutes pour savoir où vous en êtes et par quel module commencer.', 'Faire le point'),
  carte('ecole-de-la-bourse.html', 'Cours gratuit', 'École de la Bourse', 'Comprendre la Bourse (BRVM) pas à pas, avant d’acheter.'),
@@ -293,18 +294,21 @@ INTROS = ['Savoir où va l’argent, et reprendre la main.', 'Mettre de côté, 
 blocs = ''
 for k, th in enumerate(CAT['themes']):
     L = [x for x in CAT['questions'] if x['th'] == th]
-    blocs += ('<section class="pp-cent-t pp-c%d" id="theme-%d"><h2>%s</h2><p>%s</p><ol>' % (k + 1, k + 1, E(th), INTROS[k]) +
-              ''.join('<li><a href="%s"><i>%d</i><span>%s</span></a></li>' % (q(x['q']), x['n'], E(x['q']).replace(' ?', '&nbsp;?')) for x in L) + '</ol></section>\n')
+    blocs += ('<section class="pp-cent-t pp-c%d" id="theme-%d"><h2>%s</h2><p>%s</p><div class="pp-qr">' % (k + 1, k + 1, E(th), INTROS[k]) +
+              ''.join('<details id="q%d"><summary><i>%d</i><span>%s</span></summary><div class="pp-qr-r"><p>%s</p><p class="pp-qr-a" data-garde><a class="pp-qr-o" href="%s" data-goatcounter-click="qr-outil-%d">%s →</a><a class="pp-qr-l" href="%s">Réponse complète et pages à lire</a></p></div></details>'
+                      % (x['n'], x['n'], E(x['q']).replace(' ?', '&nbsp;?'), re.sub(r'(\d) (\d{3})', r'\1&nbsp;\2', E(x['r'])).replace(' F ', '&nbsp;F ').replace(' %', '&nbsp;%'), CAT['outils'][x['o']]['u'], x['n'], E(CAT['outils'][x['o']]['cta']), q(x['q'])) for x in L) + '</div></section>\n')
+FAQ = json.dumps({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': x['q'], 'acceptedAnswer': {'@type': 'Answer', 'text': x['r']}} for x in CAT['questions']]}, ensure_ascii=False)
 META_Q = ('<title>Les 100 questions sur l’argent que l’on nous pose · EFA</title>\n<link rel="canonical" href="https://efa.africa/questions">\n'
-          '<meta name="description" content="Budget, épargne, dettes, business, Bourse (BRVM), patrimoine : 100 questions sur l’argent, chacune avec une réponse courte et l’outil pour l’appliquer à votre cas.">')
+          '<meta name="description" content="Budget, épargne, dettes, business, Bourse (BRVM), patrimoine : 100 questions sur l’argent, chacune avec une réponse courte et l’outil pour l’appliquer à votre cas.">\n<script type="application/ld+json">' + FAQ + '</script>')
 questions = TETE % META_Q + '''
 <section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
 <p class="pp-fil"><a href="index.html">Accueil</a> / Les 100 questions</p>
-<h1 class="pp-h1 pp-h1-c"><span>100 questions.</span><span class="pp-ciel">Un premier pas.</span></h1>
-<p class="pp-sous">Les questions que l’on se pose sur l’argent, avec nos réalités. Touchez la vôtre : une réponse courte, puis l’outil pour l’appliquer à vos chiffres.</p>
+<h1 class="pp-h1 pp-h1-c"><span>100 questions.</span><span class="pp-ciel">100 réponses.</span></h1>
+<p class="pp-sous">Les questions que l’on se pose sur l’argent, avec nos réalités. Touchez une question : la réponse s’ouvre, avec l’outil pour l’appliquer à vos chiffres.</p>
 ''' + champ('Ou posez la vôtre…') + '''
 </div></div></section>
 <section class="pp-cent"><div class="pp-in">
+<nav class="pp-cent-nav" aria-label="Thèmes">''' + ''.join('<a class="pp-c%d" href="#theme-%d">%s</a>' % (k + 1, k + 1, E(th)) for k, th in enumerate(CAT['themes'])) + '''</nav>
 ''' + blocs + '''</div></section>
 ''' + FIN
 open('questions.html', 'w', encoding='utf-8').write(questions)

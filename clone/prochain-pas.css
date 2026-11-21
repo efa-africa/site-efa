@@ -200,3 +200,21 @@ html[data-clone] body{margin:0}
 .pp-cent-t a:hover,.pp-cent-t a:focus-visible{box-shadow:0 6px 18px rgba(11,18,32,.08)}
 .pp-c2{--t:#12A074;--f:#E6F8F0;--b:#BDE8D4}.pp-c3{--t:#D6284E;--f:#FDEAF0;--b:#F6C6D4}.pp-c4{--t:#7C3AED;--f:#F1EAFD;--b:#D9C9F5}.pp-c5{--t:#1D5FD9;--f:#E6ECFB;--b:#C5D2F3}.pp-c6{--t:#0E9AA0;--f:#E2F6F8;--b:#BDE6EA}
 @media (max-width:720px){.pp-cent-t ol{grid-template-columns:1fr}.pp-cent-t{padding:18px 14px 8px}}
+.pp-qr{display:grid;gap:8px}
+.pp-qr details{background:#fff;border-radius:12px;overflow:hidden}
+.pp-qr summary{display:flex;gap:10px;align-items:flex-start;padding:13px 40px 13px 14px;cursor:pointer;list-style:none;position:relative;font:700 18px/1.35 "Libre Baskerville",Georgia,serif;color:var(--nuit)}
+.pp-qr summary::-webkit-details-marker{display:none}
+.pp-qr summary i{flex:none;font:800 13px/2 "Source Sans 3",sans-serif;font-style:normal;color:var(--t);min-width:24px}
+.pp-qr summary::after{content:"+";position:absolute;right:14px;top:9px;font:400 26px/1.2 "Source Sans 3",sans-serif;color:var(--t)}
+.pp-qr details[open] summary::after{content:"–"}
+.pp-qr summary:focus-visible{outline:3px solid var(--t);outline-offset:-3px}
+.pp-qr-r{padding:0 16px 16px 48px}.pp-qr-r p{margin:0 0 12px;font-size:17.5px;line-height:1.6;color:var(--ink);max-width:70ch}
+.pp-qr-a{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0!important}
+.pp-qr-o{display:inline-block;background:var(--corail,#DA3C1B);color:#fff!important;font-weight:800;font-size:16px;border-radius:8px;padding:11px 18px;text-decoration:none!important}
+.pp-qr-l{font-weight:700;color:#0B7F88;font-size:15.5px}
+.pp-cent-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.pp-cent-nav a{--t:#1B71E0;--f:#E3F1FD;--b:#BFDDF5;background:var(--f);border:1px solid var(--b);color:var(--nuit);font-weight:700;font-size:15px;border-radius:999px;padding:8px 14px;text-decoration:none}
+.pp-cent-t{scroll-margin-top:150px}
+@media (max-width:720px){.pp-qr-r{padding:0 14px 14px}.pp-qr summary{font-size:17px}}
+.pp-cent-t .pp-qr-o{background:#DA3C1B;display:inline-block;height:auto;padding:11px 18px;border-radius:8px;font-size:16px;line-height:1.2;box-shadow:none}
+.pp-cent-t .pp-qr-l{background:none;display:inline;padding:0;height:auto;font-size:15.5px;color:#0B7F88;box-shadow:none;text-decoration:underline}
