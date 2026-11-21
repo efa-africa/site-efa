@@ -6,7 +6,7 @@ import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121i'
+V = '20261121m'
 
 FAMILLES = [
  ('argent', 'Comprendre et gérer mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -126,7 +126,7 @@ EXPRESS = ''.join('<a class="pp-exp" href="%s"><small>%s</small><b>%s</b><span>L
 
 def champ(ph):
     return ('<form class="pp-q" action="prochain-pas.html" method="get" role="search"><label for="pp-q" class="pp-sr">Votre question</label>'
-            '<input id="pp-q" name="q" autocomplete="off" enterkeyhint="search" placeholder="%s"><button class="pp-go" type="submit">Trouver mon prochain pas →</button></form>') % E(ph)
+            '<textarea id="pp-q" name="q" rows="1" autocomplete="off" enterkeyhint="search" placeholder="%s"></textarea><button class="pp-go" type="submit">Trouver mon prochain pas →</button></form>') % E(ph)
 
 PORTES = ''.join('<a class="pp-porte" href="%s"><span class="pp-ic">%s</span><span class="pp-pt"><b>%s</b><span>%s</span></span><i aria-hidden="true">→</i></a>' % (u, ic(i), t, s) for u, i, t, s in [
  ('ou-est-passe-mon-argent.html?src=accueil-portes', 'wallet', 'Voir clair', 'Comprendre mon argent'),

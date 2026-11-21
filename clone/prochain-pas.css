@@ -153,3 +153,10 @@
  .pp-hero:not(.pp-hero-c) .pp-h1{margin-top:14px}
 }
 html[data-clone] body{margin:0}
+
+/* Zone de question agrandie : la question se lit en entier (elle passe à la ligne) */
+.pp-q textarea{flex:1;min-width:0;border:0;outline:0;resize:none;overflow:hidden;font:500 18px/1.4 "Source Sans 3",sans-serif;color:var(--nuit);padding:12px;background:transparent;min-height:50px;display:block}
+.pp-q textarea::placeholder{color:#6B7385}
+.pp-q{align-items:flex-end}
+@media (max-width:720px){.pp-q textarea{font-size:19px;min-height:86px;padding:14px 12px 10px;width:100%}.pp-q{align-items:stretch}}
+@media (max-width:720px){.pp-q textarea{flex:none}}

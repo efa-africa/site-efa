@@ -230,7 +230,7 @@
   function url(u, m) { return typeof u === 'function' ? u(m) : u; }
   function page() {
     var q = (new URLSearchParams(location.search).get('q') || '').trim(), box = document.getElementById('pp-rep'), inp = document.getElementById('pp-q');
-    inp.value = q;
+    inp.value = q; if (TAILLE) TAILLE(); else setTimeout(function () { inp.dispatchEvent(new Event('input')); }, 50);
     var it = q ? comprendre(q) : null, m = q ? montant(q) : null, h = '', deja = {};
     if (it) {
       var c = typeof it.c === 'function' ? it.c(m) : it.c, o = it.o, pq = o[3].replace('{m}', m ? ' (' + m.txt + ')' : '');
@@ -255,6 +255,18 @@
         R.map(function (f) { return '<a class="pp-r" href="' + f.p + '"><small>' + esc(GENRE[f.f] || '') + '</small><b>' + esc(f.t) + '</b>' + (f.d ? '<span>' + esc(f.d.length > 120 ? f.d.slice(0, 118) + '…' : f.d) + '</span>' : '') + '</a>'; }).join('') + '</div></div>';
     }).catch(function () {});
   }
+
+  /* Zone de question : elle grandit avec le texte, « Entrée » envoie la question */
+  function zone() {
+    var z = document.getElementById('pp-q'); if (!z || z.tagName !== 'TEXTAREA') return;
+    function taille() { z.style.setProperty('height', 'auto', 'important'); z.style.setProperty('height', (z.scrollHeight + 2) + 'px', 'important'); }
+    z.addEventListener('input', taille);
+    z.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (z.form.requestSubmit) z.form.requestSubmit(); else z.form.submit(); } });
+    window.addEventListener('resize', taille); setTimeout(taille, 0); setTimeout(taille, 400);
+    return taille;
+  }
+  var TAILLE = null;
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { TAILLE = zone(); }); else TAILLE = zone();
 
   window.EFA_PROCHAIN_PAS = { REP: REP, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
 })();
