@@ -248,7 +248,33 @@
     });
     // Deux fiches aussi proches l'une que l'autre, vers deux outils différents : la question est ambiguë, le moteur général tranche.
     if (best && best.sc < 9 && best.sc - second < 0.1) return null;
-    return best && best.sc >= 0.6 ? best.f : null;
+    if (best && best.sc >= 0.6) { best.f._sc = best.sc; return best.f; }
+    return null;
+  }
+  /* Les 100 outils : on les trouve par leur nom (« mon vrai reste ») ou par leur question */
+  function trouverOutil(q, CAT) {
+    if (!CAT || !CAT.cent) return null;
+    var uniq = function (w, i, a) { return a.indexOf(w) === i; }, W = mots(q).filter(uniq), pq = plat(q), best = null;
+    CAT.cent.forEach(function (o) {
+      if (!o._n) { o._n = mots(o.nom).filter(uniq); o._q = mots(o.q).filter(uniq); o._pn = plat(o.nom); o._pq = plat(o.q); }
+      var sc = 0;
+      if (o._pn === pq || o._pq === pq) sc = 9;
+      else if (W.length) {
+        var n1 = 0, n2 = 0; W.forEach(function (w) { if (o._n.indexOf(w) >= 0) n1++; if (o._q.indexOf(w) >= 0) n2++; });
+        var a = o._n.length && n1 === o._n.length ? n1 / Math.sqrt(W.length * o._n.length) : (n1 >= 2 ? n1 / Math.sqrt(W.length * o._n.length) : 0);
+        var b = n2 >= 2 ? n2 / Math.sqrt(W.length * o._q.length) : 0;
+        sc = Math.max(a, b);
+      }
+      if (sc && (!best || sc > best.sc)) best = { o: o, sc: sc };
+    });
+    return best && best.sc >= 0.6 ? best : null;
+  }
+  function ficheOutil(o, CAT, deja) {
+    deja[o.u.split(/[?#]/)[0]] = 1;
+    var V = CAT.cent.filter(function (x) { return x.fam === o.fam && x.n !== o.n; }).slice(0, 5);
+    return '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>Vous cherchez l’outil <b>' + esc(o.nom) + '</b>.</p><p class="pp-theme">' + esc(o.fam) + '</p></div>' +
+      '<div class="pp-reco"><div><p class="pp-k">L’outil pour cela</p><h2>' + esc(o.nom) + '</h2><p class="pp-sur">' + esc(o.q) + '</p><p>' + (o.dans ? 'Il se trouve dans <b>' + esc(o.dans) + '</b>.' : 'Vos chiffres, votre décision, dès 1 min.') + '</p></div><a class="pp-cta" href="' + o.u + '">Ouvrir l’outil →</a></div>' +
+      '<div class="pp-autres"><h3>Dans la même famille</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="' + x.u + '">' + esc(x.nom) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="cent-outils.html">Voir les ' + CAT.cent.length + ' outils →</a></p></div>';
   }
   function fiche(f, CAT, m, deja) {
     var o = CAT.outils[f.o], u = o.u;
@@ -271,14 +297,17 @@
   function page() {
     var q0 = (new URLSearchParams(location.search).get('q') || '').trim();
     if (!q0) return composer(null);
-    fetch('data/questions/catalogue.json?v=20261121a').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
+    fetch('data/questions/catalogue.json?v=20261121b').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
   }
   function composer(CAT) {
     var q = (new URLSearchParams(location.search).get('q') || '').trim(), box = document.getElementById('pp-rep'), inp = document.getElementById('pp-q');
     inp.value = q; if (TAILLE) TAILLE(); else setTimeout(function () { inp.dispatchEvent(new Event('input')); }, 50);
     var it = q ? comprendre(q) : null, m = q ? montant(q) : null, h = '', deja = {};
-    var fq = q ? rapprocher(q, CAT) : null;
-    if (fq) { h += fiche(fq, CAT, m, deja); it = null; }
+    var fq = q ? rapprocher(q, CAT) : null, fo = q ? trouverOutil(q, CAT) : null;
+    // Une question du catalogue l'emporte, sauf si la personne a écrit le nom d'un outil ou si l'outil colle nettement mieux.
+    if (fo && fq && !(fo.sc === 9 && fq._sc < 9) && fo.sc <= fq._sc + 0.15) fo = null;
+    if (fo) { h += ficheOutil(fo.o, CAT, deja); it = null; fq = fo.o; }
+    else if (fq) { h += fiche(fq, CAT, m, deja); it = null; }
     else if (it) {
       var c = typeof it.c === 'function' ? it.c(m) : it.c, o = it.o, pq = o[3].replace('{m}', m ? ' (' + m.txt + ')' : '');
       deja[url(o[2], null).split(/[?#]/)[0]] = 1;
@@ -315,5 +344,5 @@
   var TAILLE = null;
   if (typeof document === 'undefined') { /* contrôle hors navigateur */ } else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { TAILLE = zone(); }); else TAILLE = zone();
 
-  window.EFA_PROCHAIN_PAS = { REP: REP, rapprocher: rapprocher, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
+  window.EFA_PROCHAIN_PAS = { REP: REP, rapprocher: rapprocher, trouverOutil: trouverOutil, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
 })();

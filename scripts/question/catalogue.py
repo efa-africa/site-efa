@@ -304,7 +304,11 @@ def main():
     themes = []
     for x in out:
         if x['th'] not in themes: themes.append(x['th'])
-    d = {'themes': themes, 'outils': {k: {'u': v[0], 'nom': v[1], 'sur': v[2], 'cta': v[3]} for k, v in O.items()}, 'questions': out}
+    # Les 100 outils (scripts/outils/specs.py) : la zone de question les trouve par leur nom ou par leur question.
+    sys.path.insert(0, os.path.join(RACINE, 'scripts', 'outils'))
+    import specs
+    cent = [{'n': n, 'nom': nom, 'q': qq, 'u': u, 'dans': '' if dans == specs.N else dans, 'fam': specs.FAMILLES[(n - 1) // 10]} for n, nom, qq, u, dans in specs.CENT]
+    d = {'themes': themes, 'outils': {k: {'u': v[0], 'nom': v[1], 'sur': v[2], 'cta': v[3]} for k, v in O.items()}, 'questions': out, 'cent': cent}
     os.makedirs(os.path.join(RACINE, 'data', 'questions'), exist_ok=True)
     json.dump(d, open(os.path.join(RACINE, 'data', 'questions', 'catalogue.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     print('Catalogue : %d questions, %d thèmes, %d outils' % (len(out), len(themes), len(O)))
