@@ -1,0 +1,584 @@
+Résultats financiers
+#2023
+
+22 février 2024
+    Avertissement
+Cette présentation contient des informations pouvant être réputées prévisionnelles. Concernant les perspectives, bien que la Société
+estime que ces déclarations et informations reposent sur des hypothèses raisonnables à la date de publication du présent
+communiqué, elles sont par nature soumises à des risques et incertitudes. Sonatel ne saurait garantir, ni être responsable de
+l'exactitude, l'exhaustivité, la cohérence et l'efficacité de l'une des déclarations ou informations données dans ce communiqué relatives
+aux                                                            données                                                   prévisionnelles.
+
+
+    Lexique
+§   IFRS 16 : La comptabilisation de l’ensemble des contrats de location se traduit au bilan, par la reconnaissance d'un titre du droit d’utilisation
+    des actifs loués en contrepartie d’un passif pour les obligations. La charge opérationnelle des contrats de location est remplacée par une
+    charge d'amortissement et une charge d'intérêts.
+
+§   IAS 29: Le caractère Hyperinflationniste d'une économie se caractérise notamment par le cumul des taux d'inflations supérieur à 100% sur
+    les trois dernières années. Dans le groupe Sonatel la norme est appliquée pour les entités de la Sierra Leone. Elle consiste à réévaluer les
+    éléments non monétaires du bilan sur la base de la variation de l'Indice des Prix à la Consommation (IPC) entre la date d'acquisition et la
+    date de clôture de l'exercice.
+
+§   Ebitdaal : (EBITDA after Leases) est un indicateur de la rentabilité financière qui tient compte des charges d’amortissement et d’intérêt
+    relatives aux contrats de location. Il remplace l’EBITDA ajusté
+
+§   ECapex : L'eCAPEX correspond (i) aux investissements corporels et incorporels hors licences de télécommunication et hors actifs financés,
+    (ii) diminués des prix de cession des actifs incorporels et corporels cédés.
+
+
+                                                                  FY_2023                                                                       1
+                                                                         FY_2023
+Sommaire
+
+       1. Faits marquants
+
+
+           2. Etats Financiers consolidés 2023
+
+
+           3. Perspectives et projet d’affectation du résultat 2023
+
+
+
+                              FY_2023                                 2
+   Section
+
+     1
+Faits
+marquants
+                       3
+             FY_2023
+Pays de présence
+Sénégal
+Position   Parts de Marché          4,1%     Croissance PIB*
+
+                                    6,1%     Inflation*
+
+                  57,7%            18,1M     Population*                                                                                           Mali
+                                                                                Croissance PIB*           4,5%        Parts de Marché          Position
+1er / 4                            123%     Pénétration mobile**
+               +0,8 pts vs, 2022
+                                                                                       Inflation*         5,0%
+Guinée                                                                               Population*         23,3M              55,6%
+Position   Parts de Marché          5,9%     Croissance PIB*                                                                                   1er / 3
+                                                                             Pénétration mobile**         98%
+                                                                                                                        +2,3 pts vs, 2022
+                                    8,3%     Inflation*
+
+                  69,3%            14,2 M    Population*                                                                              Guinée Bissau
+
+ 1er / 3                                                                        Croissance PIB*           4,5%        Parts de Marché          Position
+                                    97%     Pénétration mobile**
+            +2,0 pts vs, 2022
+                                                                                       Inflation*         7,0%
+Sierra Leone                                                                         Population*          2,3M              63,5%
+Position   Parts de Marché          7,7%     Croissance PIB*                                                                                   1er / 2
+                                                                             Pénétration mobile**        119%
+                                                                                                                        +2,6 pts vs, 2022
+                                   +42,5%    Inflation*
+
+                  53,4%             8,5M     Population*
+
+ 1er / 3                            95%     Pénétration mobile**                             * Données économiques : source FMI Octobre 2023
+            +1,7 pts vs, 2022
+                                                                                             ** Dernière publication GSMA
+                                                                   FY_2023
+                                                                                                                                                     4
+                                                                                                                                                     5
+                                            LE GROUPE SONATEL MAINTIENT SA PROGRESSION GRÂCE À DES
+ Messages clés                                            INVESTISSEMENTS SOUTENUS
+
+                                                  Marché
+                                 • Attribution de la licence 5G au Sénégal à Sonatel et
+Environnement                      à Free
+                                 • Décision de partage des infrastructures mobiles        Business
+• Inflation persistante et         (roaming national) et fixes (dégroupage fibre) au
+                                   Sénégal                                                • Maintien leadership
+  supérieure à la
+                                                                                            dans tous les pays
+  croissance du PIB              • Renforcement des règles d'identification des clients
+                                   (réduction du nombre de Sims de 5 à 3) au Mali         • Croissance des parcs
+• Hausse des prix de
+                                                                                            Fixe, Mobile, Internet
+  l’énergie et indisponibilité   • Augmentation des tarifs planchers sur la voix et les
+                                   données en Sierra Leone                                  et Orange Money
+  dans certains pays
+                                 • Introduction d'une taxe sur le chiffre d'affaires      • Développement des
+• Fluctuations
+                                                                                            usages data et
+  défavorables du Leone            data en Sierra Leone
+                                 • Allègement des conditions d’identification des           atteinte de la barre
+  et du Franc guinéen
+                                                                                            des 10 Millions de
+• Levée de fonds de 75             clients et instauration de la non-discrimination sur
+                                   les tarifs on et off net en Guinée                       clients actifs 4G
+  milliards de FCFA via
+                                 • Baisse des tarifs d'interconnexion nationale au        • Croissance des
+  une opération de
+                                                                                            volumes de
+  titrisation de créances          Sénégal, au Mali et à Bissau
+                                 • Entrée en vigueur de l'asymétrie sur les tarifs          transactions Orange
+                                                                                            Money
+                                   d'interconnexion nationale à Bissau
+                                 • Obtention de l'agrément pour lancer
+                                   un établissement de monnaie électronique à Bissau                           5
+                                                         FY_2023
+Chiffres clés opérationnels
+ CROISSANCE DES BASES CLIENTS AVEC UN LEADERSHIP MAINTENU GRÂCE À UNE STRATÉGIE D'ANIMATION
+COMMERCIALE ET MARKETING SOUTENUE ET UN RÉSEAU ÉTENDU AVEC DES INVESTISSEMENTS IMPORTANTS.
+
+
+
+          CLIENTS MOBILE                               DATA MOBILE                  ACTIF 4G
+
+
+        39,9 millions              5,4%         19,1 millions            10,1%    14,4 millions     34,5%
+
+
+
+                                                                                    CLIENTS ORANGE ÉNERGIE
+              CLIENTS FIXE BROADBAND                     CLIENTS FIBRE
+
+
+                      741 K          25,1%                319 K          70,4%       90,5 K        +73%
+
+
+
+
+          INSCRITS ORANGE MONEY                 UTILISATEURS APP MAXIT           CLIENTS CONTENUS VIDÉO WIDO
+
+       31,6 millions               19,9%
+                                                  2,8 millions                       32,8 K         93%
+       Dont actifs 11,7 millions   9,2%
+
+
+                                             FY_2023                                                      6
+Chiffres clés financiers
+       CONSOLIDATION DE LA CROISSANCE GRACE A DES INVESTISSEMENTS SOUTENUS
+
+
+       REVENUS                 EBITDAAL                CAPEX              OPERATING CASH            RESULTAT NET
+      CONSOLIDÉS                                                              FLOW
+
+
+          1620,7                 747,5                 253,5                   493,9                     331,7
+         milliards              milliards             milliards               milliards                 milliards
+          FCFA                   FCFA                  FCFA                    FCFA                      FCFA
+
+
+                               Marge Ebitdaal         Taux Capex           Taux Op Cash Flow          Marge nette
+                                                                                 @30,5                   @20,5
+                                  @46,1%                @15,6%                                             %
+                                                                                  %
+
+
+            11,4%                   18,4%                -3,4%                    33,8%                   19%
+•   Croissance des revenus portée par la Data, la Voix, Orange money et le Broadband Fixe.
+•   Croissance Ebitdaal plus importante que celle du chiffre d’affaires grâce aux performances sur les revenus et la
+    maîtrise des charges.
+•   Niveau d'investissements importants pour soutenir cette croissance avec l’ouverture de nouveaux sites mobiles,
+    l’extension du réseau FTTX et les opérations d’amélioration de la qualité de service
+                                                      FY_2023
+                                                                                                                       7
+Relais de croissance
+Data Mobile
+            Parc data mobile                      ARPU Data                 Revenus Data
+        19,1 millions       +10,1      2,4 K FCFA         +9%          535,3 milliards      +20,4%
+      Dont 14,4 millions 4G %+34,5%        AUPU 6 236 Mo      +14%       Poids 33%
+
+
+
+Internet haut débit
+            Parc broadband fixe                  ARPU Broadband            Revenus broadband
+                  741 K     +25,1%                                         85,9 milliards     +21,2%
+                                         10,6 k FCFA          -6,4%
+                                                                            Poids 5,3%
+            Dont 319 K fibre
+
+
+
+Orange Money
+               Parc actif OM                                                   Revenus OM
+                                                   ARPU OM
+          11,7 millions    9,2%                                           164,9 milliards     +25%
+                                           1,2 K FCFA         +12,3%
+       Dont 75,6% full         +1 pt                                           Poids 10,2%
+
+                                       FY_2023                                                       8
+  Empreinte économique
+                        Chiffre d’affaires généré au                                                      Montants versés aux
+                                                                  Création d’emplois
+                        profit des entreprises locales                                                    budgets des Etats
+
+                        +355 Milliards FCFA                       +167 Milliards FCFA                     +417 Milliards FCFA
+                             Chiffre d’Affaires générés au        aux Distributeurs
+                                                                                                             A titre d’impôts, taxes collectées
+                             profit des entreprises locales                                                directement, redevances, cotisations
+                              dans les pays de présence.          +200 000                                     sociales, droits de douanes et
+                                                                                                          dividendes dans les pays de présence
+                                                                  Emplois Indirects
+Un des premiers                    Liste des activités
+                             opérateurs nationaux ;
+contributeurs à la
+                         •
+                         •   sous-traitants pour la production    +5 000                                  Exportations
+création de valeurs          d’abonnés ;                          Emplois Directs
+                             centres d’appels et bailleurs
+                                                                                                          +70 Milliards FCFA
+                         •
+dans nos pays de         •   agences de communication
+                                                                         Grâce à une distribution
+présence avec une        •   organismes de formation ;
+                                                                       commerciale étendue et des
+                                                                                                              Contribution à la balance des
+                         •   hôtellerie et restauration ;                                                    paiements à travers les services
+empreinte                •   avocats et notaires ;                       partenaires dynamiques
+                                                                                                           fournis aux opérateurs étrangers de
+économique de            •   concessionnaires automobiles                                                          télécommunications
+                         •   sociétés de gardiennage ;            Dividendes payés aux
+61% du Chiffre           •   entreprises d’entretien et de
+                                                                  actionnaires locaux
+d’affaires consolidé         nettoiement ;
+                         •   BTP pour les divers travaux
+qui                      •   banques et assurances ;              +54 Milliards FCFA
+atteint 993 milliards    •   producteurs de contenus
+                                                                       Distribués aux actionnaires
+                         •   agences d’intérim
+FCFA                                                                 minoritaires (personnel et locaux)
+
+
+                                                                 FY_2023                                                                     9
+                                                                                                                                             10
+Empreinte numérique, sociale et environnementale
+                                    Soutien à l’éducation et à la santé                 Inclusion Numérique & Soutien à l’entreprenariat local
+                                                                                                                        4 ODC au Sénégal, Mali,       Taux d’insertion : 90% au
+             Réhabilitation et équipements          Réhabilitation d’écoles et           Promouvoir la formation        Guinée et Sierra Leone :      bout de 3 à 6 mois après
+              de 5 sites sanitaires par an               d’universités                   au numérique et soutenir       37 000 bénéficiaires          la certification; 40% de
+                                                                                         l'employabilité des            accompagnés en 2022           taux de féminisation
+                                                                                         jeunes et les préparer
+                                                   40 bourses de spécialisation
+            Bourses d’études aux meilleurs                                               aux emplois du futur à        Orange Startup Studio         ODC club à déployés
+                                                   en médecine de 2 ans dans
+                lycéens et instituteurs              les domaines prioritaires           travers Orange Digital        (OSS) : 148 startups          dans les régions : 2000
+                                                                                         Center (ODC)                  accompagnés à travers         personnes / an
+                                                                                                                       nos programmes
+          Construction d’une maternité dernière génération dans la
+          région de Bakel permettant aux malades venants d’autres                  01                                               Maisons digitales : à 2023,
+           localités & même de Mauritanie de bénéficier des soins                                                                   24 maisons digitales dans les
+                                                                                                                                    pays du Groupe Sonatel
+
+                                                                            04             02
+                      Développement durable                                                                         Inclusion Sociale
+
+                         Taux énergie verte :
+Émission CO2                 38% Sénégal
+                                                                                   03
+     Objectif                 32% : Mali                  23 tonnes déchets                          Fondation Sonatel
+                                                                                                                               Inclusion des personnes vivant avec un handicap
+ d’atteindre un         67,5% : Guinée Conakry            dangereux traités                         20 nouveaux Projets
+                                                                                                                                  dont certaines deviennent des fournisseurs
+  taux de 50%            31.5 : Guinée Bissau                                                      «Village » en 2023 (32
+d'utilisation des        75,6% : Sierra-Léone                                                       Projets au total en 10    Répartition du genre : 38% de femme dans l’effectif
+    énergies                                                                                         ans ) : Point d’eau,      globale et +40% au niveau du comité de direction
+ renouvelables                                            7 800 produits clients                    construction d’école,
+    en 2025                                                                                           centres de santé,         Construction de Puits pour permettre l’accès à
+                             Reboisement                  reconditionnés soit un
+                                                                                                         écoles vertes          l’eau : 20 puits et 20 000 personnes impactées
+                         70 000 arbres plantés                taux de 70%
+                        chaque année soit 2100
+                          tonnes CO2 évités                                                                  Plus de 90 500 foyers ont accès à l'Energie grâce à Orange Energie
+
+
+                                                                                        FY_2023                                                                                  10
+                                                                                                                                                                                 11
+    Section
+
+      2
+                        Clients en Afrique
+
+États
+financiers
+consolidés
+              FY_2023
+Périmètre de consolidation
+
+                                                                             Mode                  Pourcentage                                              Méthode de
+          Pays                             Sociétés                                                                       Nature du contrôle               consolidation
+                                                                          de Détention             de détention
+
+                             Sonatel SA                                                              Société Mère               Consolidante
+
+  Sénégal                    Orange Finances Mobiles
+                                                                              Directe                  100%                 Contrôle exclusif           Intégration globale
+                             Sénégal
+                             Orange Mali                                      Directe                 69,40%                Contrôle exclusif           Intégration globale
+  Mali
+                             Orange Finances Mobiles Mali                    Indirecte                69,40%                Contrôle exclusif           Intégration globale
+
+                             Orange Guinée                                    Directe                 88,82%                Contrôle exclusif           Intégration globale
+  Guinée Conakry             Orange Finances Mobiles
+                                                                             Indirecte                88,82%                Contrôle exclusif           Intégration globale
+                             Guinée
+  Guinée Bissau              Orange Bissau                                    Directe                 89,85%                Contrôle exclusif           Intégration globale
+
+                             Orange Sierra Leone                              Directe                   50%                 Contrôle exclusif           Intégration globale
+  Sierra Leone *
+                             Orange Money Sierra Leone                       Indirecte                  50%                 Contrôle exclusif           Intégration globale
+
+  Côte d’Ivoire              Groupement Orange Services                      Indirecte                  47%                Influence Notable           Mise en équivalence
+
+  * Orange Sierra Leone détenue à 50% est consolidée par intégration globale conformément aux termes du pacte d’actionnaire qui confère le contrôle au Groupe Sonatel. Le Groupe
+  Orange détient les 50% restants.                                           FY_2023                                                                                               12
+Compte de résultat
+ Compte de résultat consolidé                                                    2023           2022            2021
+ (en milliers FCFA)
+ Chiffre d'affaires                                                           1 620 700 751   1 455 048 739   1 334 873 794
+ Achats externes                                                              (565 420 033)   (526 135 523)   (467 803 951)
+ Autres produits opérationnels                                                  38 441 720      20 265 735      18 175 425
+ Autres charges opérationnelles                                                (83 506 146)    (41 389 378)    (49 093 820)
+ Charges de personnel                                                         (143 627 895)   (134 164 924)   (126 773 992)
+ Impôts et taxes d'exploitation                                               (132 866 205)   (130 167 830)   (118 538 558)
+ Résultat de cession de titres et d'activités                                   (5 573 194)        66 072       (1 056 893)
+ Coûts des restructurations et d'intégration                                      155 379         185 296         155 379
+ Dotations aux amortissements                                                 (213 210 058)   (207 478 373)   (190 169 861)
+ Résultat des entités mises en équivalence                                        614 282         829 043        (112 320)
+ Résultat d'exploitation                                                       515 708 600     437 058 858     399 655 203
+ Coût de l'endettement financier brut                                          (21 130 650)    (23 511 173)    (28 340 530)
+ Produits et charges sur actifs constitutifs de l'endettement net                2 408 821       6 577 785       5 723 574
+ Charges d'intérêts des dettes locatives                                        (2 589 463)     (2 933 307)     (2 471 361)
+ Gain (perte) de change                                                          2 775 656      (2 573 796)     (3 023 477)
+ Autres produits et charges financiers                                           (708 868)       7 655 150       3 933 835
+ Résultat financier                                                            (19 244 504)    (14 785 341)    (24 177 959)
+ Impôt sur les sociétés                                                       (164 715 768)   (143 361 126)   (123 018 004)
+ Résultat net des activités poursuivies                                       331 748 328     278 912 390     252 459 241
+ Résultat net des activités cédées (EE)
+ Résultat net de l'ensemble consolidé                                         331 748 328     278 912 390     252 459 241
+ Résultat net - QP Groupe                                                     279 448 007     235 974 166     211 053 554
+ Résultat net - QP Minoritaire                                                (52 300 321)    (42 938 224)    (41 405 686)
+                                                                    FY_2023
+                                                                                                                              13
+Etat du résultat global
+
+   (en milliers FCFA)                                                            2023            2022
+   Résultat net de l'ensemble consolidé                                        331 748 328     278 912 390
+   Eléments non recyclables en résultat
+   Avantage post emploi, écart actuariel                                         (6 389 623)     (5 225 109)
+   Eléments recyclables en résultat
+   Actifs disponibles à la vente
+   Ecarts de conversion                                                         (13 636 220)    (27 657 099)
+   Autres éléments du résultat global avant impôt                               (20 025 843)    (32 882 208)
+   Impôt sur autres éléments du résultat global (non recyclable)                  1 773 592     1596196,48
+   Autres éléments du résultat global                                             1 773 592       1 596 196
+   Résultat global de l'ensemble consolidé                                     313 496 077     247 626 379
+   Résultat global attribuable aux actionnaires du Groupe                       265 349 873     172 390 038
+   Résultat global attribuable aux participations ne donnant pas le contrôle     48 146 204      75 236 340
+
+
+                                                      FY_2023                                                  14
+Bilan – Actif
+  (en milliers de FCFA)
+                                                  31-déc. 2023           31-déc. 2022       31-déc. 2021
+  Actif
+  Ecarts d'acquisition                                      17 506 079         22 169 034         37 229 641
+  Autres immobilisations incorporelles                    253 277 856         230 159 509        244 864 415
+  Immobilisations corporelles                           1 000 314 488         921 033 405        843 064 919
+  Titres mis en équivalence                                  4 579 242          3 964 321          3 090 752
+  Droits d'usage des immobilisations louées                23 398 153          21 285 241         24 559 173
+  Actifs financiers non courants                           154 587 880        143 074 571        135 959 997
+  Autres actifs non courants                                 7 345 884          8 234 900          8 727 020
+  Impôts différés actifs                                    40 517 581         20 955 451         19 265 841
+  Total de l'actif non courant                          1 501 527 162       1 370 876 433      1 316 761 757
+  Stocks                                                    26 135 757         26 651 906         18 097 994
+  Créances clients                                         184 735 180        166 101 786        142 134 611
+  Actifs financiers courants                                 7 276 403          5 371 279          5 759 552
+  Autres actifs courants                                   375 015 678        312 402 043        253 759 306
+  Impôts et taxes d'exploitation                            55 312 262         71 725 403         66 739 276
+  Impôt sur les sociétés                                    15 813 117         14 544 326         11 159 377
+  Charges constatées d'avance                                8 018 830          7 728 064          5 226 513
+  Disponibilités et quasi-disponibilités                   400 023 557        276 790 970        244 205 829
+  Total de l'actif courant                              1 072 330 785         881 315 777        747 082 459
+  Actifs destinés à être cédés
+  Total de l'actif                                      2 573 857 947       2 252 192 210      2 063 844 216
+
+
+                                              FY_2023                                                          15
+Bilan – Passif
+   (en milliers FCFA)
+   Passif                                                                          31-déc. 2023     31-déc. 2022      31-déc. 2021
+   Capital social                                                                     50 000 000        50 000 000       50 000 000
+   Prime d'émission et réserve légale                                               912 454 251       766 438 437       658 944 675
+   Ecarts de conversion                                                            (81 403 845)       (71 729 401)     (36 276 635)
+   Actions propres                                                                   (1 539 103)         (761 320)       (1 171 614)
+   Capitaux propres attribuables aux propriétaires de la société mère               879 511 303       743 947 716       671 496 426
+   Capitaux propres attribuables aux participations ne donnant pas le contrôle      186 212 642       154 575 689       149 753 703
+   Total capitaux propres                                                         1 065 723 946       898 523 405       821 250 129
+   Passifs financiers non courants                                                  167 129 484       199 559 866       202 538 268
+   Dettes locatives non courantes                                                     19 416 841        15 578 889       19 700 150
+   Avantages du personnel non courants                                                34 717 516        28 812 803       25 466 718
+   Autres passifs non courants                                                        16 702 320        12 386 073       11 568 377
+   Impôts différés passifs                                                                                 309 122
+   Total des passifs non courants                                                   237 966 160       256 646 753      259 273 513
+   Passifs financiers courants                                                      214 818 754       221 007 310      214 143 078
+   Dettes fournisseurs d'immobilisations courantes                                  143 558 718       140 633 070      117 899 778
+   Dettes fournisseurs sur autres biens et services                                 296 873 667       224 910 047      197 946 651
+   Passifs de contrats clients                                                        2 332 916          1 477 432       2 046 945
+   Dettes locatives courantes                                                         4 417 145          6 847 718       6 448 761
+   Avantages du personnel courants                                                   22 668 115         19 312 085      17 218 030
+   Autres passifs courants                                                          406 102 879       294 937 787      258 023 485
+   Impôts et taxes d'exploitation                                                    80 884 148         74 803 017      71 017 034
+   Impôt sur les sociétés                                                            74 927 858         90 309 462      83 292 061
+   Produits constatés d'avance                                                       23 583 642         22 784 124      15 284 752
+   Total des passifs courants                                                     1 270 167 841     1 097 022 052      983 320 574
+   Passifs liés aux actifs destinés à être cédés                                                                          -
+   Total du passif et des capitaux propres                                       2 573 857 947     2 252 192 210     2 063 844 216
+
+                                                                                                                                       16
+                                                                       FY_2023
+Tableau des flux de trésorerie
+   (en milliers de FCFA)                                                                     2023             2022               2021
+   Flux de trésorerie lié à l'activité
+    Résultat net                                                                               331 748 328      278 912 390        252 459 241
+   Impôts et taxes d'exploitation                                                              132 866 205      130 167 830        118 538 558
+   Dotation aux amortissements                                                                 213 210 058      207 478 373        190 169 861
+   Résultat de cession d'actifs et autres gains & pertes                                         5 586 122          ( 66 072)         1 056 893
+   Dotations (reprises) des autres provisions                                                    (136 844)     (10 636 830)           4 792 217
+   Impôt sur les sociétés                                                                      164 715 768      143 361 126        123 018 004
+   Quote-part dans les résultats des entités mises en équivalence                                (614 282)         (829 043)            112 320
+   Résultat financier                                                                           19 244 504       14 785 341         24 177 959
+   Ecart de change net (EXP)                                                                     3 487 771       (1 893 070)          1 972 953
+   Rémunération en actions                                                                       2 561 328         2 571 250          2 006 687
+   Diminution (augmentation) des stocks                                                             96 656       (8 319 183)       ( 5 454 701)
+   Diminution (augmentation) des créances clients                                             (18 298 558)     (26 259 409)       (12 498 359)
+   Augmentation (diminution) des dettes fournisseurs                                            74 223 744       26 197 836           3 198 977
+   Var des passifs sur contrats clients                                                            855 484         (569 513)        (2 922 920)
+   Diminution (augmentation) des autres créances                                              (64 497 015)     (57 981 906)       (44 888 937)
+   Augmentation (diminution) des autres dettes                                                  87 724 843       51 756 353         50 450 834
+    Impôts et taxes d'exploitation décaissés                                                 (110 409 309)    (133 041 658)     ( 114 500 522)
+   Dividendes encaissés                                                                            778 010           371 125            181 018
+   Produits d'intérêts encaissés                                                                 2 559 587       14 971 473         10 669 282
+   Intérêts décaissés et effet taux des dérivés net                                           (22 712 394)     (25 974 075)       (31 562 884)
+    Impôts sur les sociétés décaissé                                                         (179 913 475)    (140 866 113)      (107 722 509)
+   Trésorerie générée par les activités d'exploitation (a)                                      643 076 531       464 136 226        463 253 972
+   Flux de trésorerie lié aux opérations d'investissement
+   Acquisitions d'immobilisations corporelles et incorporelles                               (288 126 003)    (262 988 646)     (221 399 324)
+   Augmentation (diminution) des fournisseurs d'immobilisations                                     246 700      21 378 429          6 312 642
+   Produits de cession des biens immobiliers et des autres actifs corporels et incorporels          189 197          493 416           541 874
+   Acquisitions de titres de participation nettes de la trésorerie acquise                      (2 711 315)      (1 290 008)       (2 233 710)
+   Produits de cession de titres de participation nets de la trésorerie cédée                       215 367            (780)           276 972
+   Diminution (augmentation) des placements et autres actifs financiers                         (4 998 791)          528 696           196 902
+                                                                                                                                                   17
+   Trésorerie générée par les activités d'investissement (b)                                  (295 184 845)     (241 878 893)     (216 304 644)
+Tableau des flux de trésorerie (suite)
+
+ (en milliers de FCFA)                                                                 2023                  2022                2021
+ Flux de trésorerie lié aux opérations de financement
+ Cash flows de financement en capital
+  Emissions d'emprunts obligataires                                                                      0                   0                   0
+ Emissions d'emprunts à long terme                                                        11 007 121           35 159 704              24 860
+ Remboursements d'emprunts obligataires                                                 (20 000 000)
+ Remboursements d'emprunts à long terme                                                 (23 818 790)          (23 044 182)       (115 053 813)
+  Remboursements des dettes locatives                                                     (9 303 018)          (9 510 748)         (7 862 907)
+ Augmentation (diminution) des découverts bancaires et autres emprunts à court terme      (7 303 838)          (8 113 072)          73 574 422
+ Rachat d'actions                                                                           (777 783)              410 294             218 405
+ Variation % intérêt sans prise/perte de contrôle                                                   -               29 466
+  Augmentation de capital                                                                      58 988                                       -
+  Contribution des actionnaires minoritaires                                                   26 013
+ Dividendes versés aux actionnaires minoritaires                                       (175 856 294)         (187 316 434)       (166 224 889)
+ Trésorerie générée par les activités de financement (c)                               (225 967 601)         (192 384 972)       (215 323 921)
+ Variation monétaire des disponibilités et quasi-disponibilités (a) + (b) + (c)          121 924 086            29 872 361          31 625 406
+ Incidence de la variation des taux de change sur la trésorerie                             1 307 861            6 312 142          15 513 186
+  Autres incidences sur la trésorerie                                                                0         (3 600 000)         (2 628 480)
+ Variation nette de trésorerie                                                           123 231 947            32 584 502          44 510 112
+ Variation nette des disponibilités et quasi-disponibilités
+ Disponibilités et quasi-disponibilités à l'ouverture                                     276 790 970           244 205 829       199 691 894
+ Dont disponibilités et quasi-disponibilités des activités poursuivies                    276 790 970           244 205 829        199 691 894
+   Dont disponibilités et quasi-disponibilités des activités cédées
+ Variation monétaire des disponibilités et quasi-disponibilités                           123 232 587            32 585 141        44 513 935
+ Variation non monétaire des disponibilités et quasi-disponibilités
+   Incidence des variations des taux de change sur les disponibilités et quasi-
+   disponibilités et autres impacts non monétaires
+ Disponibilités et quasi-disponibilités à la clôture                                    400 023 557           276 790 970         244 205 829
+                                                                           FY_2023                                                                   18
+Tableau de variation des capitaux propres
+
+
+                                                                                                            Attribuables aux
+                                                  Attribuables aux propriétaires                             participations           Total capitaux
+                                                        de la société mère                                 ne donnant pas le             propres
+                                                                                                                 contrôle
+                                                               Ecart de        Actions
+                              Capital social     Réserves                                    Total        Réserves         Total           Total
+                                                              conversion       propres
+ Solde au 01 Janvier 2022     50 000 000       658 944 484   (36 276 443) (1 171 614)     671 496 426   149 753 703    149 753 703     821 250 129
+ Résultat global consolidé         -            235 974 166       -               -       235 974 166     42 938 224     42 938 224     278 912 390
+ Distribution de dividendes        -           (155 823 671)      -               -      (155 823 671) (31 704 564)    (31 704 564)   (187 528 234)
+ Autres mouvements (1)             -             27 343 267 (35 452 766)        410 294    (7 699 205)   (6 411 675)    (6 411 675)    (14 110 881)
+ Solde au 31 décembre 2022    50 000 000        766 438 246 (71 729 210)       (761 320) 743 947 716     154 575 688    154 575 688      898 523 404
+ Ajustement lié à IAS 29                         24 096 447                                 24 096 447    24 096 447     24 096 447      48 192 895
+ Résultat global consolidé          -           275 024 317 (9 674 444)           -        265 349 873    48 146 204    48 146 204      313 496 077
+ Distribution de dividendes         -          (165 419 990)      -               -       (165 419 990) (41 205 070)   (41 205 070)   (206 625 059)
+ Autres mouvements                  -             10 051 251      -           1 486 006     11 537 256     599 372        599 372       12 136 628
+ Solde au 31 décembre 2023    50 000 000       910 190 272   (81 403 654)      724 686    879 511 303   186 212 642    186 212 642    1 065 723 945
+
+
+
+
+                                                                    FY_2023                                                                            19
+                            POESAM
+
+
+
+      Section
+
+        3
+                                     + 700 000
+
+
+Perspectives et
+projet d’affectation
+de résultats
+                  FY_2023
+   Perspectives
+
+Le Groupe Sonatel a de nouveau réalisé ses prévisions, grâce à la résilience des salariés et des partenaires, dans
+un environnement socio-économique contraignant. Le Groupe a confirmé sa position de leader à la Bourse
+régionale des valeurs mobilières d’Abidjan après 25 ans de présence. Ces performances opérationnelles et
+financières sont le résultat d’une politique d’investissement soutenue pour contribuer davantage au
+développement numérique de tous les pays de présence, pour une expérience client incomparable.
+
+En 2024, la poursuite de l’amélioration de l’expérience de travail de tous les collaborateurs sera le socle sur
+lequel nous nous appuierons pour réaliser des performances opérationnelles et financières.
+
+Grâce à un plan d’investissement consistant et une efficience opérationnelle renforcée, nous poursuivrons notre
+stratégie d’opérateur multiservices en accélérant nos leviers de croissance que sont le Très Haut Débit Fixe
+(Fibre) et Mobile (5G, 4G), et le marché Entreprise. Nous continuerons de renforcer nos positions sur le marché
+du Mobile Money en nous appuyant sur l’IA et le digital, notre superApp Maxit et en développant de nouveaux
+produits pour une expérience client améliorée.
+
+Le groupe Sonatel maintiendra, à travers ses Orange Digital Centers, ses Fondations, et ses initiatives pour
+l’environnement, son engagement citoyen au profit des populations afin de demeurer un contributeur majeur de
+l’inclusion numérique, financière et sociale des communautés qu’il sert. »
+
+
+                                                  FY_2023                                                       21
+Projet de resolution : affectation du résultat de l’exercice 2023
+
+
+
+  L’Assemblée Générale, sur proposition du conseil d’administration et après en avoir délibéré
+  décide de :
+
+      •   fixer à 1 750 FCFA le dividende brut revenant à chaque action. Après déduction de la
+          retenue à la source de 10% au titre de l’IRVM, le dividende net de 1 575 FCFA par
+          action sera mis en paiement à compter du 17 mai 2024.
+
+      •   reporter le reliquat du résultat net en réserves libres, soit 76 197 502 067 FCFA.
+
+
+
+
+                                           FY_2023                                               22
+Merci
+
+

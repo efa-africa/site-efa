@@ -1,0 +1,78 @@
+                                                                                                     COMPAGNIE IVOIRIENNE D'ELECTRICITE
+
+                                                                                                                        - C.I.E. -
+
+                                                                               Société Anonyme avec conseil d'administration au capital de 14.000.000.000 FCFA
+                                                                                      Siège social: 1 avenue Christiani Treichville - 01 BP 6923 Abidjan 01
+                                                                                                        RCCM N° CI-ABJ-1990 B-149296
+
+                                                                                                ETATS FINANCIERS PERSONNELS SYSCOHADA
+                                                                                              BILAN AU 31 DECEMBRE 2022 (en millions de francs CFA)
+
+
+Actif (net)                                                                    Exercice 2022 Exercice 2021            Passif                                                                             Exercice 2022 Exercice 2021
+Immobilisations incorporelles                                                            2 709               3 280    Capital                                                                                   14 000        14 000
+Immobilisations corporelles                                                             41 375              41 522    Primes et réserves                                                                         8 801         8 575
+                                                                                             0                   0    Résultat de l'exercice                                                                     9 819         9 757
+                                                                                             0                   0    Provision réglementée                                                                          0             0
+Immobilisations financières                                                             86 747              77 838    Dettes financières                                                                        56 665        57 327
+Stocks                                                                                  48 529              36 723    Provision pour risques et charges                                                         12 661        12 421
+Créances et emplois assimilés                                                          251 882             246 494    Passif circulant                                                                         354 941       343 882
+Autres créances_Opérations_Actifs du Secteur(*)                                      1 315 397           1 136 817    Autres dettes_Opérations_Passif du Secteur(*)                                          1 315 397     1 136 817
+Trésorerie actif                                                                        69 748             136 919    Trésorerie passif                                                                         44 029        96 780
+Ecart de conversion-Actif                                                                                             Ecart de conversion-Passif                                                                    73            35
+Total actif                                                                          1 816 387           1 679 593    Total passif                                                                           1 816 387     1 679 593
+(*) Il s’agit des actifs et passifs gérés pour le compte de l’Autorité Concédante tels que détaillés plus bas.
+                 COMPTE DE RESULTAT AU 31 DECEMBRE 2022 (en millions de francs CFA)                                                  TABLEAU DE FLUX DE TRESORERIE AU 31 DECEMBRE 2022 (en millions de francs CFA)
+
+LIBELLES                                                                       Exercice 2022 Exercice 2021            LIBELLES                                                                           Exercice 2022 Exercice 2021
+
+                                                                                                                      Trésorerie nette au 1er Janvier
+Ventes de marchandises                                                     A                103                  73   (Trésorerie actif N-1 - Trésorerie passif N-1)                                 A          40 139       -60 053
+Achats de marchandises                                                                                                Capacité d'Autofinancement Globale (CAFG)                                      B          22 964        21 994
+Variation de stocks de marchandises                                                                                   - Actif circulant HAO
+Marge commerciale (XA)                                                                     103                  73    - Variation des stocks                                                                   -11 806        -5 132
+Ventes de produits fabriqués                                               B                 0                   1    - Variation des créances                                                                   5 975       758 324
+Travaux, services vendus                                                   C           195 040             199 498    + Variation du passif circulant                                                            9 025      -808 998
+Produits accessoires                                                       D            43 712              32 210    Variation du BF liées aux activités opérationnelles                           C            3 194       -55 806
+Chiffre d'affaires (A+B+C+D)=XB                                                        238 854             231 783    Flux de trésorerie provenant des activités opérationnelles                (B+C)           26 158       -33 811
+Production immobilisée                                                                       0                   0    - Décaissements liés aux acquisitions d'immobilisations incorporelles                       -530          -588
+Subvention d'exploitation                                                                    0                   0    - Décaissements liés aux acquisitions d'immobilisations corporelles                       -6 061        -8 327
+Autres produits                                                                          4 108               2 621    - Décaissements liés aux acquisitions d'immobilisations financières                      -19 162       -74 924
+                                                                                                                      + Encaissements liés aux cessions d'immobilisations incorporelles et
+Transfert de charges                                                                     6 431               -2 278   incorporelles                                                                                258        69 572
+Autres achats                                                                          -81 819              -66 104   + Encaissements liés aux cessions d'immobilisations financières                           10 253         9 378
+Variation de stocks d'autres approvisionnements                                         11 755                4 823   Flux de trésorerie provenant des activités d'investissements                   D         -15 242        -4 890
+Transport                                                                               -1 654               -1 728   + Augmentation de capital par apports nouveaux
+Services extérieurs                                                                    -76 012              -76 753   + Subventions d'investissements reçues
+Impôts et taxes                                                                         -6 644               -5 735   - Prélèvements sur le capital
+Autres charges                                                                          -6 398               -3 785   - Dividendes versés                                                                       -9 530       -10 400
+                                                                                                                      Flux de trésorerie provenant des capitaux propres                              E          -9 530       -10 400
+Valeur ajoutée                                                                          88 622               82 842   + Emprunts                                                                                     0        53 089
+Charges de personnel                                                                   -59 817              -55 144   + Autres dettes financières diverses                                                     -11 301       147 843
+                                                                                                                      - Remboursements des emprunts et autres dettes fin.                                       -4 505       -51 638
+Excédent brut d'exploitation                                                            28 805              27 698    Flux de trésorerie provenant des capitaux étrangers                           F          -15 806       149 293
+Reprises d'amortissement, provision et dépréciations                                       998                 284    Flux de trésorerie provenant des activités de financement                 (E+F)          -25 336       138 893
+                                                                                                                      Variation de la trésorerie nette de la période
+Dotations aux amortissement, provision et dépréciations                                -14 125              -12 534   H= (B+C+D+E+F)                                                                           -14 420       100 192
+                                                                                                                      Trésorerie nette au 31 Décembre (H+A)
+Résultat d'Exploitation                                                                 15 677               15 449   (Contrôle: Trésorerie actif N - Trésorerie passif N)                                      25 719        40 139
+Revenus financiers et assimilés                                                            314                  654
+Reprise de provisions et dépréciations financières                                           0                    0                   PROJET D'AFFECTATION DU RESULTAT DE L'EXERCICE (en millions de francs CFA)
+Transfert de charges financières                                                             0                    2
+Frais financiers et charges assimilées                                                  -3 036               -2 648                                                Résultat net de l'exercice (A)                              9 819
+Dotations aux provisions et aux dépréciations financières                                    0                    0                                                     Report à nouveau N    (B)                              6 001
+Résultat financier                                                                      -2 722               -1 992                                               Affectation aux dividendes  (C)                              9 800
+RÉSULTAT DES ACTIVITÉS ORDINAIRES                                                       12 956               13 456                                                     Report à nouveau= (A+B-C)                              6 021
+Produits de cession d'immobilisations                                                      258               69 572
+Autre produits HAO                                                                         255                  120
+Valeurs comptables des cessions d'immobilisations                                         -275              -69 560
+Autres charges HAO                                                                           0                    0
+Résultat H A O                                                                             238                  131
+Participation des travailleurs                                                               0                    0
+Impôts sur le résultat                                                                  -3 374               -3 831
+RÉSULTAT NET                                                                             9 819                9 757
+
+                                                                                                                      Ces comptes seront soumis à l'approbation de l'Assemblée Générale Ordinaire du 20 Juin 2023
+
+

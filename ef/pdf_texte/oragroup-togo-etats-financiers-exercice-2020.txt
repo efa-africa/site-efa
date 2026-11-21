@@ -1,0 +1,115 @@
+ORAGROUP SA
+ETATS FINANCIERS CONSOLIDES PROVISOIRES
+EXERCICE CLOS AU 31 DECEMBRE 2020
+1 - Bilan consolidé
+ En millions de FCFA                                                              Note     31.12.2020     31.12.2019
+ Actif
+ Caisse et banques centrales                                                      6.4.1         224 906         205 166
+ Autres actifs financiers aux coûts amortis                                       6.4.2         973 875         676 850
+ Actifs financiers à la juste valeur par les autres éléments du résultat global   6.4.3           6 248           5 998
+ Prêts et créances sur les établissements de crédit                               6.4.4         223 041         132 853
+ Prêts et créances sur la clientèle comptabilisé au coût amorti                   6.4.5       1 584 872       1 366 206
+ Actifs d'impôts courants                                                         6.4.6             401             580
+ Actifs d'impôts différés                                                         6.4.6          22 592          22 714
+ Actifs divers                                                                    6.4.7         100 354         108 495
+ Immeubles de placement                                                           6.4.8          46 360          38 599
+ Immobilisations corporelles                                                      6.4.9          61 770          52 392
+ Immobilisations incorporelles                                                    6.4.9           8 112           8 772
+ Goodwill                                                                         6.4.10         15 713          15 713
+ TOTAL DE ACTIF                                                                               3 268 244       2 634 338
+
+ En millions de FCFA                                                              Note     31.12.2020     31.12.2019
+ Dettes
+ Banques centrales                                                                6.4.11             26               3
+ Dettes envers les établissements de crédit                                       6.4.12        784 013         442 252
+ Dettes envers la clientèle                                                       6.4.13      2 124 048       1 822 532
+ Emprunts à terme                                                                 6.4.14        133 049         146 513
+ Passifs d'impôts courants                                                        6.4.6           3 949           4 877
+ Passifs d'impôts différés                                                        6.4.6          13 906          10 810
+ Passifs divers                                                                   6.4.6          54 186          58 963
+ Provisions                                                                       6.4.15         13 072           7 740
+ Total des passifs                                                                            3 126 248       2 493 690
+ CAPITAUX PROPRES
+ Capital                                                                                         86 531          86 830
+ Réserves consolidées et report à nouveau                                                        18 874          24 741
+ Total capital, réserves consolidées et résultat de la période, part du Groupe                  105 405         111 571
+ Total Capitaux propres part du groupe                                                          105 405         111 571
+ Participations ne donnant pas le contrôle                                                       36 591          29 077
+ Total des capitaux propres                                                                     141 995         140 648
+ TOTAL DES PASSIFS ET CAPITAUX PROPRES                                                        3 268 244       2 634 338
+
+
+2 - Compte de Résultat Consolidé
+ En millions de FCFA                                                              Note     31.12.2020     31.12.2019
+ Intérêts et produits assimilés                                                   6.3.1        162 621         139 458
+ Intérêts et charges assimilées                                                   6.3.1        -81 107          -66 649
+ Commissions (produits)                                                           6.3.2         84 752           84 402
+ Commissions (charges)                                                            6.3.2        -13 503          -14 108
+ Revenus des titres à revenu variable                                             6.3.3            128               43
+ Gains ou pertes nets sur cession d'actifs financiers évalués au coût amorti      6.3.4             33              -30
+ Produits des autres activités                                                    6.3.5          3 083            3 779
+ Charges des autres activités                                                     6.3.5           -613              -43
+ Produit net Bancaire                                                                          155 395         146 852
+ Frais de personnel                                                               6.3.6        -46 341          -42 583
+ Dotations aux amortissements des immobilisations incorporelles et corporelles    6.3.7         -9 115         - 11 821
+ Autres charges générales d'exploitation                                          6.3.8        -45 108          -45 953
+ Résultat Brut d'Exploitation                                                                   54 831           46 495
+ Coût du risque                                                                   6.3.9        -39 555          -22 705
+ Résultat d’exploitation                                                                        15 276           23 790
+ Gains ou pertes nets sur autres actifs                                           6.3.10           424              557
+ Résultat avant impôt                                                                           15 700           24 347
+ Impôts sur les bénéfices                                                         6.3.11        -6 260           -6 020
+ Résultat net                                                                                    9 440           18 327
+ Participations ne donnant pas le contrôle                                                       9 122            8 521
+ Résultat Net, Part du Groupe                                                                      318            9 806
+3 - Etat du résultat et des autres éléments du résultat global
+
+ En millions de FCFA                                                                                 31.12.2020     31.12.2019
+ Résultat net                                                                                               9 440         18 327
+ Eléments qui seront reclassés ultérieurement en résultat net                                              -2 156           -190
+ Variations de valeur des éléments relatifs aux parités monétaires                                         -2 156           -190
+ Éléments ne pouvant être rapportés au résultat                                                               207            129
+ Pertes et gains nets sur les titres de participations classés à la JVAERG                                    281            182
+ Impôts différés relatifs aux éléments qui ne seront pas reclassés ultérieurement en résultat net             -74            -53
+ Autres éléments du résultat global net d'impôt                                                             7 491         18 267
+ Part du Groupe                                                                                            -1 077          9 749
+ Participations ne donnant pas le contrôle                                                                  8 568          8 518
+
+4 - Tableau consolidé des flux de trésorerie
+
+ En millions de FCFA                                                                                 31.12.2020     31.12.2019
+ Résultat avant impôts                                                                                     15 700         24 347
+ Dotations nettes aux amortissements des immobilisations corporelles et incorporelles                       9 115         11 821
+ Dotations nettes aux provisions                                                                           39 555         22 705
+ Total des éléments non monétaires inclus dans le résultat net et autres ajustements                       48 669         34 526
+ Flux liés aux opérations avec les établissements de crédit et assimilés                                  213 100          9 976
+ Flux liés aux opérations prêts avec la clientèle                                                        -234 750       -184 925
+ Flux liés aux dépôts de la clientèle                                                                     301 516        360 227
+ Flux liés aux autres opérations affectant des actifs non financiers                                        9 557        -24 198
+ Flux liés aux autres opérations affectant des passifs non financiers                                      -9 915          2 450
+ Impôts payés                                                                                              -3 864         -8 504
+ Dividendes payés                                                                                          -5 496         -5 330
+ Diminution/(augmentation) nette des actifs et des passifs provenant des activités opérationnelles        270 147        149 697
+ Flux net de trésorerie généré par l’activité opérationnelle                                              334 517        208 570
+ Acquisitions liées aux autres actifs évalués au coût amorti                                             -299 164       -296 466
+ Remboursements liés aux autres actifs évalués au coût amorti                                               2 307        135 248
+ Acquisitions liées aux autres actifs évalués à la JVAERG                                                    -293           -774
+ Flux liés aux immeubles de placement                                                                      -8 250         -2 846
+ Acquisitions liées aux immobilisations corporelles                                                       -28 581        -19 939
+ Cessions liées aux immobilisations corporelles                                                             3 565            700
+ Acquisitions liées aux immobilisations incorporelles                                                      -1 197         -1 362
+ Flux net de trésorerie lié aux opérations d’investissement                                              -331 613       -185 439
+ Souscription de nouveaux emprunts                                                                          7 245        169 791
+ Remboursements liés aux emprunts                                                                         -21 055       -102 817
+ Flux net de trésorerie lié aux opérations de financement                                                 -13 810         66 974
+ Effet de la variation des taux de change sur la trésorerie et équivalent de trésorerie                    -8 048         -1 294
+ Flux net de la trésorerie et des équivalents de trésorerie                                               -18 954         88 812
+ Trésorerie et équivalents de trésorerie à l’ouverture                                                    238 405        149 594
+ Caisse, Banques centrales, CCP (actif & passif)                                                          205 163        141 646
+ Comptes (actif & passif) et prêts/emprunts à vue auprès des établissements de crédit                      33 243          7 947
+ Trésorerie et équivalents de trésorerie à la clôture                                                     219 451        238 405
+ Caisse, Banques centrales, CCP (actif & passif)                                                          224 881        205 163
+ Comptes (actif & passif) et prêts/emprunts à vue auprès des établissements de crédit                      -5 430         33 243
+ Variation de la trésorerie nette                                                                         -18 954         88 812
+
+

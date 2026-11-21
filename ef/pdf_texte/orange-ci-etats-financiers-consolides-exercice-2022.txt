@@ -1,0 +1,202 @@
+GROUPE
+ORANGE CI
+
+Etats financiers consolidés
+
+
+
+
+                              1
+Note aux lecteurs
+
+
+   Les états financiers consolidés comprennent les comptes de Orange Côte d’Ivoire et de toutes ses
+    filiales contrôlées directement ou indirectement.
+   Les filiales Orange Burkina, Orange Money Burkina, Orange Libéria, Orange Money Libéria, Orange
+    Money Côte d’ivoire, Orange Côte d’Ivoire Participations et Côte d’ivoire Câbles sont consolidées selon
+    la méthode de l’intégration globale.
+   Le Groupement Orange Service détenu à 22,64% a été intégré dans le périmètre de consolidation par
+    mise en équivalence.
+   Les transactions, soldes et résultats réciproques entre les sociétés intégrées sont éliminés.
+   Les états financiers consolidés sont présentés en FCFA. Les actifs, passifs et postes du compte de
+    résultat des filiales hors zone CFA sont convertis aux taux de change en vigueur à la clôture de la
+    période.
+   Les comptes consolidés sont établis suivants les normes IFRS
+   Les notes sur les états financiers seront publiées dans le rapport annuel 2022 qui sera présenté à la
+    prochaine Assemblée Générale des actionnaires.
+
+                                                      2
+Périmètre de consolidation
+
+
+  Pays            Société                                      Mode de     Pourcentage    Nature du           Méthode de
+                                                               détention   de détention   contrôle            consolidation
+
+                  Orange Côte d’Ivoire (OCI)                               Société mère   Consolidante        Intégration globale
+
+                  Orange Money Côte d’Ivoire (OMCI)            Directe     99,99%         Contrôle            Intégration globale
+
+  Côte d’Ivoire   Orange Côte d’Ivoire Participations (OCIP)   Directe     100,00%        Contrôle            Intégration globale
+
+                  Côte d’Ivoire Câbles (CIC)                   Directe     100,00%        Contrôle            Intégration globale
+
+                  Groupement Orange Services (GOS)             Indirecte   22,64%         Influence notable   Mise en équivalence
+
+                  Orange Burkina Faso (OBF)                    Indirecte   50,00%         Contrôle            Intégration globale
+  Burkina Faso
+                  Orange Money Burkina Faso (OMBF)             Indirecte   50,00%         Contrôle            Intégration globale
+
+                  Orange Libéria (OLIB)                        Indirecte   100,00%        Contrôle            Intégration globale
+  Libéria
+                  Orange Money Libéria (OMLIB)                 Indirecte   100,00%        Contrôle            Intégration globale
+
+
+
+
+                                                                      3
+Etats financiers consolidés 2022 IFRS_Compte de résultat
+
+                en Millions de FCFA                                                2022                 2021
+
+                Chiffre d'affaires                                                         965 025    965 042
+                Achats externes                                                           (370 854)   (358 127)
+                Charges de personnel                                                       (58 665)   (52 446)
+                Impôts et taxes d'exploitation (hors IS)                                  (134 631)   (130 027)
+                Autres charges opérationnelles                                              (7 154)   (42 248)
+                Autres produits opérationnels                                                8 749     4 112
+                Coûts de restructuration et d'intégration                                        0    (11 322)
+                Gains (pertes) sur cession d’immobilisations et de titres                    4 981      155
+                Dotations aux amortissements des droits d'usage des actifs loués           (20 386)   (20 091)
+                Dotation aux amortissements                                               (126 629)   (109 455)
+                Quote-part dans les résultats des entités mises en équivalence                 398      (54)
+                Résultat d'exploitation                                                    260 834    245 539
+                Coût de l'endettement brut                                                  (8 943)    (9 590)
+                Produits et charges sur actifs constitutifs de l'endettement net             3 810     3 496
+                Gain(perte) de change                                                       (1 030)     516
+                Charges d'intérêts des dettes locatives                                     (8 279)    (9 241)
+                Autres produits et charges financiers                                        3 354     3 921
+                Résultat financier                                                         (11 088)   (10 899)
+                Impôt sur les sociétés                                                     (96 262)   (78 804)
+                Résultat net de l'ensemble consolidé                                       153 485    155 835
+                Résultat net - QP Groupe                                                   118 320    125 421
+                Résultat net - QP Minoritaire                                               35 164    (30 414)
+
+                Résultats provisoires vérifiés par les commissaires aux comptes et non approuvés par l’assemblée générale
+
+
+                                                                              4
+Etats financiers consolidés 2022 IFRS_Actif
+
+             en Millions de FCFA                                                         2022                     2021
+
+             Ecarts d'acquisition                                                                   199 995      196 516
+             Autres immobilisations incorporelles                                                   150 127      158 834
+             Immobilisations corporelles                                                            566 556      513 852
+             Droits d'usage des immobilisations louées                                                1 561      120 553
+             Titres mis en équivalence                                                              106 525       1 141
+             Actifs financiers non courants                                                          19 261      12 693
+             Autres actifs non courants                                                               1 350       1 451
+             Impôts différés actifs                                                                  43 169      46 610
+             Total de l'actif non courant                                                         1 088 543     1 051 652
+             Stocks                                                                                  23 618      16 133
+             Créances clients                                                                       164 146      125 393
+             Actifs financiers courants                                                                   7         7
+             Autres actifs courants                                                                 399 056      330 744
+             Créances d'impôts et taxes d'exploitation                                               49 441      38 774
+             Créances d'impôt sur les sociétés                                                        2 949       2 053
+             Charges constatées d'avance                                                              6 462      12 446
+             Disponibilités et quasi-disponibilités                                                 283 535      177 819
+             Total de l'actif courant                                                              929 214      703 369
+             Actifs destinés à être cédés                                                                 -         0
+             Actifs destinés à être cédés                                                                 -        0
+             Comptes de liaison                                                                           -         0
+             Comptes de liaison                                                                           -        0
+             Total Actif                                                                        2 017 757      1 755 021
+
+              Résultats provisoires vérifiés par les commissaires aux comptes et non approuvés par l’assemblée générale
+
+                                                                   5
+Etats financiers consolidés 2022 IFRS_Passif
+
+             en Millions de FCFA                                                                   2022                  2021
+             Capital social                                                                                    6 026     6 026
+             Prime d'émission                                                                                 88 806     88 806
+             Réserves                                                                                        551 016    557 623
+             Ecarts de conversion                                                                              4 435     (596)
+             Actions propres                                                                   -               7 736
+             Capitaux propres attribuables aux propriétaires de la société mère                              642 547    651 859
+             Capitaux propres attribuables aux participations ne donnant pas le contrôle                      82 907     75 241
+             Total Equity                                                                                   725 453     727 100
+             Dettes fournisseurs d'immobilisations non courantes                                                 874      823
+             Passifs financiers non courants                                                                  59 866     89 286
+             Dettes locatives non courantes                                                                   99 831    115 590
+             Avantages du personnel non courants                                                              19 901     19 446
+             Provisions pour démantèlement non courantes                                                      13 479     1 112
+             Autres passifs non courants                                                                         324     9 406
+             Impôts différés passifs                                                                             250     1 052
+             Total du passif non courant                                                                    194 525     236 715
+             Dettes fournisseurs d'immobilisations courantes                                                 130 871     30 817
+             Dettes fournisseurs sur autres biens & services                                                  41 990    163 576
+             Passifs financiers courants                                                                     229 952     55 064
+             Dettes locatives courantes                                                                        8 578     15 963
+             Avantages du personnel courants                                                                  19 346     11 726
+             Provisions pour restructuration courantes                                                        14 707     4 478
+             Autres passifs courants                                                                           2 811    329 078
+             Impôts et taxes d'exploitation (hors IS)                                                        476 682     71 040
+             Impôt sur les sociétés                                                                           90 161     78 504
+             Passifs sur contrats clients                                                                     79 099     26 056
+             Produits constatés d'avance                                                                       3 581     4 905
+             Total du passif courant                                                                       1 097 779    791 206
+             Passifs liés aux actifs destinés à être cédés                                                         -       0
+             Passifs liés aux actifs destinés à être cédés                                                         -       0
+             Total Passif et capitaux propres                                                             2 017 757    1 755 021
+
+              Résultats provisoires vérifiés par les commissaires aux comptes et non approuvés par l’assemblée générale
+                                                                                           6
+Etats financiers consolidés 2022 Tableau de variation des capitaux propres consolidés
+au 31 décembre 2022
+
+
+
+
+                  Résultats provisoires vérifiés par les commissaires aux comptes et non approuvés par l’assemblée générale
+
+                                                                 7
+Etats financiers consolidés 2022 - Tableau de Flux de Trésorerie (1)
+
+
+
+
+                  Résultats provisoires vérifiés par les commissaires aux comptes et non approuvés par l’assemblée générale
+                                                                 8
+Etats financiers consolidés 2022 - Tableau de Flux de Trésorerie (2)
+
+
+
+
+                  Résultats provisoires vérifiés par les commissaires aux comptes et non approuvés par l’assemblée générale
+                                                                 9
+Projet d’ affectation du résultat de l’exercice 2022
+
+ AFFECTATION DU RESULTAT DE L’EXERCICE 2022
+ L’Assemblée Générale constate l’existence d’un résultat bénéficiaire net de 123 371 334 720 FCFA (cent vingt-trois milliards trois cent soixante-
+ onze millions trois cent trente-quatre mille sept cent vingt francs CFA) au titre de l’exercice clos le 31 décembre 2022.
+ L’Assemblée Générale, approuvant la proposition du Conseil d’Administration réuni le 14 février 2023, décide de :
+ -affecter intégralement le résultat net dudit exercice en dividendes à hauteur de 123 371 334 720 FCFA,
+ -prélever sur la réserve libre, la somme de 2 636 800 020 FCFA (deux milliards six-cent trente-six millions huit cent mille vingt francs CFA) et de
+ l’affecter en dividendes,
+ portant ainsi le montant total des dividendes bruts au titre de l’exercice clos le 31 décembre 2022 à 126 008 134 740 FCFA (cent vingt-six
+ milliards huit millions cent trente quatre mille sept cent quarante francs CFA), se décomposant comme suit :
+ Résultat net : 123 371 334 720 FCFA
+ Prélèvement sur réserve libre : 2 636 800 020 FCFA
+ Dividendes bruts : 126 008 134 740 FCFA
+ En conséquence, l’Assemblée Générale fixe à 836,4 FCFA le dividende brut revenant à chaque action, soit un dividende net par action de
+ 752,76 FCFA.
+ L’Assemblée Générale constate qu’à l’issue de cette distribution de dividendes, le compte "Réserve légale" présente un solde créditeur de
+ 1 205 242 800 FCFA (un milliard deux cent cinq millions deux cent quarante-deux mille huit cents francs CFA), soit 1/5ème du montant du capital
+ social tel que prescrit par la loi, le compte «Réserve libre » présente un solde créditeur de 234 571 762 069 FCFA (deux cent trente-quatre
+ milliards cinq cent soixante-onze millions sept cent soixante-deux mille soixante neuf francs CFA) et le compte "Report à nouveau", un solde
+ créditeur de 46 739 103 724 FCFA (quarante-six milliards sept cent trente-neuf millions cent trois mille sept cent vingt-quatre francs CFA)
+                                                                         10
+
+

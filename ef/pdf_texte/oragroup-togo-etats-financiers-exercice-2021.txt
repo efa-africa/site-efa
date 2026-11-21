@@ -1,0 +1,134 @@
+ORAGROUP SA
+ETATS FINANCIERS CONSOLIDES PROVISOIRES
+EXERCICE CLOS AU 31 DECEMBRE 2021
+1 - Bilan consolidé
+ En millions de FCFA                                                                              Note     31.12.2021     31.12.2020
+ Actif
+ Caisse et banques centrales                                                                      6.4.1         253 385         224 906
+ Autres actifs financiers aux coûts amortis                                                       6.4.2       1 253 847         973 875
+ Actifs financiers à la juste valeur par les autres éléments du résultat global                   6.4.3           5 437           6 248
+ Prêts et créances sur les établissements de crédit                                               6.4.4         280 753         223 041
+ Prêts et créances sur la clientèle comptabilisé au coût amorti                                   6.4.5       1 946 894       1 584 872
+ Actifs d'impôts courants                                                                         6.4.6           1 346             401
+ Actifs d'impôts différés                                                                         6.4.6          24 155          22 592
+ Actifs divers                                                                                    6.4.7         148 558         100 354
+ Immeubles de placement                                                                           6.4.8          53 656          46 360
+ Immobilisations corporelles                                                                      6.4.9          65 163          61 770
+ Immobilisations incorporelles                                                                    6.4.9           9 227           8 112
+ Goodwill                                                                                         6.4.10         15 713          15 713
+ TOTAL ACTIF                                                                                                  4 058 135       3 268 244
+
+ En millions de FCFA                                                                              Note     31.12.2021     31.12.2020
+ Dettes
+ Banques centrales                                                                                6.4.11              0              26
+ Dettes envers les établissements de crédit                                                       6.4.12      1 012 067         784 013
+ Dettes envers la clientèle                                                                       6.4.13      2 583 896       2 124 048
+ Emprunts à terme                                                                                 6.4.14        174 538         133 049
+ Passifs d'impôts courants                                                                        6.4.6           9 642           3 949
+ Passifs d'impôts différés                                                                        6.4.6          15 435          13 906
+ Passifs divers                                                                                   6.4.6          78 576          54 186
+ Provisions                                                                                       6.4.15         19 229          13 072
+ Total passifs                                                                                                3 893 383       3 126 248
+ CAPITAUX PROPRES
+ Capital                                                                                          6.4.16         86 726          86 531
+ Réserves consolidées et report à nouveau                                                         6.4.16         32 169          18 874
+ Total capital, réserves consolidées et résultat de la période, part du Groupe                                  118 895         105 405
+ Total Capitaux propres part du groupe                                                                          118 895         105 405
+ Participations ne donnant pas le contrôle                                                                       45 858          36 591
+ Total des capitaux propres                                                                                     164 752         141 996
+ TOTAL DES PASSIFS ET CAPITAUX PROPRES                                                                        4 058 135       3 268 244
+
+
+2 - Compte de Résultat Consolidé
+ En millions de FCFA                                                                              Note     31.12.2021     31.12.2020
+ Intérêts et produits assimilés                                                                   6.3.1        198 661         162 621
+ Intérêts et charges assimilées                                                                   6.3.1        -95 865         -81 107
+ Commissions (produits)                                                                           6.3.2         91 874          84 752
+ Commissions (charges)                                                                            6.3.2        -11 419         -13 503
+ Revenus des titres à revenu variable                                                             6.3.3            138             128
+ Gains ou pertes nets sur cession d'actifs financiers évalués au coût amorti                      6.3.4            -86              33
+ Produits des autres activités                                                                    6.3.5          4 285           3 083
+ Charges des autres activités                                                                     6.3.5           -274            -613
+ Produit net Bancaire                                                                                          187 315         155 395
+ Frais de personnel                                                                               6.3.6        -52 394         -46 341
+ Dotations aux amortissements et dépréciations des immobilisations incorporelles et corporelles   6.3.7        -13 321          -9 115
+ Autres charges générales d'exploitation                                                          6.3.8        -51 910         -45 108
+ Résultat Brut d'Exploitation                                                                                   69 691          54 831
+ Coût du risque                                                                                   6.3.9        -42 560         -39 555
+ Résultat d’exploitation                                                                                        27 131          15 276
+ Gains ou pertes nets sur autres actifs                                                           6.3.10             7             424
+ Résultat avant impôt                                                                                           27 138          15 700
+ Impôts sur les bénéfices                                                                         6.3.11        -7 340          -6 260
+ Résultat net                                                                                                   19 798           9 440
+ Participations ne donnant pas le contrôle                                                                       9 034           9 122
+ Résultat Net, Part du Groupe                                                                                   10 764             318
+3 - Etat du résultat et des autres éléments du résultat global
+
+ En millions de FCFA                                                                                          31.12.2021      31.12.2020
+ Résultat net                                                                                                      19 798              9 440
+ Eléments qui seront reclassés ultérieurement en résultat net                                                       2 450             -2 156
+ Variations de valeur des éléments relatifs aux parités monétaires                                                  2 450             -2 156
+ Éléments ne pouvant être rapportés au résultat                                                                      -745                207
+ Pertes et gains nets sur les titres de participations classés à la JVAERG                                         -1 038                281
+ Impôts différés relatifs aux éléments qui ne seront pas reclassés ultérieurement en résultat net                     293                -74
+ Autres éléments du résultat global net d'impôt                                                                    21 503              7 491
+ Part du Groupe                                                                                                    11 868             -1 077
+ Participations ne donnant pas le contrôle                                                                          9 634              8 568
+
+4 - Tableau consolidé des flux de trésorerie
+
+ En millions de FCFA                                                                                          31.12.2021      31.12.2020
+ Résultat avant impôts                                                                                              27 138           15 700
+ Dotations nettes aux amortissements des immobilisations corporelles et incorporelles                               13 321            9 115
+ Dotations nettes aux provisions                                                                                    45 357           39 554
+ Total des éléments non monétaires inclus dans le résultat net et autres ajustements                                58 678           48 669
+ Flux liés aux opérations avec les établissements de crédit et assimilés                                           182 503          213 100
+ Flux liés aux opérations prêts avec la clientèle                                                                 -383 167         -234 750
+ Flux liés aux dépôts de la clientèle                                                                              459 848          301 516
+ Flux liés aux autres opérations affectant des actifs non financiers                                               -48 094            9 557
+ Flux liés aux autres opérations affectant des passifs non financiers                                               16 566           -9 915
+ Impôts payés                                                                                                       -2 334           -3 864
+ Dividendes payés                                                                                                        0           -5 496
+ Diminution/(augmentation) nette des actifs et des passifs provenant des activités opérationnelles                 225 322          270 147
+ Flux net de trésorerie généré par l’activité opérationnelle                                                       311 139          334 516
+ Acquisitions liées aux autres actifs évalués au coût amorti                                                      -417 058         -299 164
+ Remboursements liés aux autres actifs évalués au coût amorti                                                      137 091            2 307
+ Acquisitions liées aux autres actifs évalués à la JVAERG                                                             -260             -293
+ Flux liés aux immeubles de placement                                                                               -8 507           -8 250
+ Acquisitions liées aux immobilisations corporelles                                                                -23 393          -28 581
+ Cessions liées aux immobilisations corporelles et financières                                                       1 034            3 565
+ Acquisitions liées aux immobilisations incorporelles                                                               -2 241           -1 197
+ Flux net de trésorerie lié aux opérations d’investissement                                                       -313 335         -331 612
+ Souscription de nouveaux emprunts                                                                                 148 470            7 245
+ Remboursements liés aux emprunts                                                                                 -106 944          -21 055
+ Flux net de trésorerie lié aux opérations de financement                                                           41 733          -13 810
+ Effet de la variation des taux de change sur la trésorerie et équivalent de trésorerie                              1 014           -8 048
+ Flux net de la trésorerie et des équivalents de trésorerie                                                         40 551          -18 954
+ Trésorerie et équivalents de trésorerie à l’ouverture                                                             219 451          238 405
+ Caisse, Banques centrales, CCP (actif & passif)                                                                   224 881          205 163
+ Comptes (actif & passif) et prêts/emprunts à vue auprès des établissements de crédit                               -5 430           33 243
+ Trésorerie et équivalents de trésorerie à la clôture                                                              260 002          219 451
+ Caisse, Banques centrales, CCP (actif & passif)                                                                   253 385          224 881
+ Comptes (actif & passif) et prêts/emprunts à vue auprès des établissements de crédit                                6 617           -5 430
+ Variation de la trésorerie nette                                                                                   40 551          -18 954
+
+Projet d’affectation de résultat de l’exercice 2021 d’Oragroup SA
+ Résultat de l’exercice                                                                                                        1 009 371 774
+ Report à nouveau antérieur                                                                                                    6 808 148 806
+ Bénéfice distribuable                                                                                                         7 817 520 580
+ - Dotation de la réserve obligatoire (10 % du résultat) : 100 937 177 francs CFA
+ - Distribution de dividendes : pas de distribution de dividendes
+ - Affectation au compte « Report à nouveau » : 7 716 583 403 francs CFA
+ Cette décision d’affectation modifie la situation des capitaux propres de Oragroup SA comme suit :
+ POSTE DU BILAN                                                                      AVANT RÉPARTITION                 APRÈS RÉPARTITION
+ Capital                                                                                   69 521 831 000                    69 521 831 000
+ Réserves obligatoires                                                                      4 827 112 939                     4 928 050 116
+ Réserves facultatives                                                                      3 042 503 737                     3 042 503 737
+ Report à nouveau                                                                           6 808 148 806                     7 716 583 403
+ Prime d’émission                                                                          18 862 503 038                    18 862 503 038
+ CAPITAUX PROPRES                                                                         103 062 099 520                   104 071 471 294
+ Résultat de l’exercice                                                                     1 009 371 774                                 0
+ Dividendes à distribuer                                                                                                                  0
+ TOTAUX                                                                                     104 071 471 294                 104 071 471 294
+
+

@@ -1,0 +1,100 @@
+                                                      Etat de la situation financière
+Actif                                                                                          31-déc   31-déc
+                                                                                        Note
+(en millions de FCFA)                                                                           2022     2021
+Droits d'usage des immobilisations louées                                                5       310      463
+Immobilisations corporelles                                                              6       874     1 088
+Actifs financiers non courants                                                           7       109       76
+Impôts différés actifs                                                                   8       428      403
+Total de l'actif non courant                                                                    1 720    2 030
+Stocks                                                                                   9       615      449
+Créances clients                                                                         10     2 556    1 908
+Autres débiteurs                                                                         10      618      307
+Trésorerie et équivalents de trésorerie                                                  11     5 408    3 773
+Total de l'actif courant                                                                        9 196    6 437
+Total de l'actif                                                                               10 917    8 467
+
+
+Passif et capitaux propres                                                                     31-déc   31-déc
+(en millions de FCFA)                                                                           2022     2021
+Capital social                                                                           12     1 364    1 364
+Ecart de réévaluation                                                                    12       56       56
+Réserves consolidés                                                                      12     2 232    2 262
+Résultat de l'exercice                                                                   1      1 272     670
+Total capitaux propres                                                                          4 924    4 352
+Impôts différés passifs                                                                  8        15       15
+Enmprunts et dettes financièrs non courants                                              13       68       52
+Emprunts liés aux droits d'utilisation non courants                                      13      192      369
+Engagement envers le personnel                                                           14      367      365
+Provisions                                                                               14      122       76
+Total des passifs non courants                                                                   764      877
+Emprunts et dettes financièrs courants                                                   14
+Emprunts liés aux droits d'utilisation courants                                          13      177      164
+Dettes fournisseurs et comptes rattachés                                                 15     3 703    2 567
+Autres créditeurs et dettes diverses                                                     16     1 349     507
+Total des passifs courants                                                                      5 228    3 238
+Total du passif et des capitaux propres                                                        10 917    8 467
+                                                                   Etat du résultat global
+                                                                                                             31-déc       31-déc
+                                                                                                Note
+(en millions FCFA)                                                                                             2022         2021
+Chiffre d'affaires                                                                                17         10 804        8 377
+Produits des ventes                                                                                          10 804        8 377
+Achats consommés                                                                                  18         (3 559)      (2 678)
+Charges externes                                                                                  19         (1 864)      (1 462)
+Charges de personnel                                                                              20         (2 281)      (2 183)
+Impôts et taxes                                                                                       8        (643)        (461)
+Dotations aux amortissements et dépréciations                                                     21           (429)        (465)
+Dotations aux provisions nettes                                                                   22             15           -30
+Charges provisionnées nettes sur créances commerciales                                            22              6          (13)
+Autres produits d'exploitation                                                                                  114           86
+Autres charges d'exploitation                                                                                  (240)        (216)
+Résultat opérationnel courant                                                                                 1 921          955
+Autres produits et charges opérationnels                                                                        (35)         (42)
+Résultat opérationnel                                                                                         1 886          913
+Coût de l'endettement financier brut                                                              13            (36)         (50)
+Revenus des équivalents de trésorerie                                                             11            104           81
+Autres produits et charges financiers                                                             13              3            2
+Résultat financier                                                                                               70           33
+Résultat avant impôt                                                                                          1 956          946
+Charge d'impôt sur le résultat                                                                        8        (683)        (276)
+Résultat net de l'ensemble                                                                       12           1 272          670
+Nombre total des actions                                                                                  10 912 000   10 912 000
+Résulat net par action (de base et dilué)                                                        12             117           61
+Eléments recyclables en résultat                                                                  12              0           -2
+Impôts différés sur les écarts actuariels                                                         12              0            1
+Autres éléments du résultat global nets d'impôts                                                                  0            -2
+Résultat global                                                                                   12          1 272          668
+
+
+
+
+                                                               Tableau des Flux de trésorerie
+                                                                                                             31-déc       31-déc
+(en millions de FCFA)                                                                                          2022         2021
+Flux de trésorerie lié à l'activité
+Résultat net                                                                                                  1 272          670
+Dotation aux amortissements (y compris l'amortissement du droit d'utilisation)                                  429          465
+Provisions nettes pour risques et charges                                                                       (15)          30
+Impôts & Impôts différés                                                                                        (25)         241
+Eléments calculés                                                                                               390          736
+Variation du besoin en fonds de roulement                                                                       849         (148)
+Variation nettes des stocks                                                                                    (166)        (103)
+Variation nette des créances clients et débiteurs divers                                                       (957)        (504)
+Variation nette des fournisseurs et créditeurs divers (y compris intérêts courus)                             1 971          459
+Trésorerie générée par les activités d'exploitation (a)                                                       2 510        1 258
+Flux de trésorerie lié aux opérations d'investissement
+Décaissements liés aux acquisitions d'immobilisations corporelles et incorporelles                              (28)         (22)
+Décaissements liés aux acquisitions d'immobilisations financières                                                 0          (14)
+Encaissement sur cession d'immobilisations financières                                                           17           48
+Trésorerie générée par les activités d'investissement (b)                                                        -12          12
+Flux de trésorerie lié aux opérations de financement
+Encaissements liés aux emprunts                                                                                (177)        (164)
+Décaissements liés aux emprunts (y compris contrat de location financement)                                      13           (1)
+Dividendes versés                                                                                              (700)           0
+Trésorerie générée par les activités de financement (c)                                                        -864         -165
+Variation monétaire des disponibilités et quasi-disponibilités (e) = (a) + (b) + (c)                          1 635        1 105
+Disponibilités et quasi-disponibilités à l'ouverture (d)                                                      3 773        2 668
+Disponibilités et quasi-disponibilités à la clôture (e) +(d)                                                  5 408        3 773
+
+

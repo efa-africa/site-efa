@@ -1,0 +1,286 @@
+                                BILAN DESTINE A LA PUBLICATION                    DEC 2800
+
+ETAT : COTE D'IVOIRE                        ETABLISSEMENT : BANK OF AFRICA
+
+
+
+|C|           2017 12 31         |A|0|0|3|2| |E|     AC0               |0|1|         |A| |1|
+  C                                 CIB      LC       D                  F            P M
+                                                           (en Millions de F CFA)
+
+Codes                                                             MONTANTS MONTANTS
+                                 ACTIF                              NETS       NETS
+Postes                                                            31/12/2016 31/12/2017
+
+
+
+ A10     CAISSE                                                          12 916         10 634
+
+ A02     CREANCES INTERBANCAIRES                                         46 454         48 396
+
+ A03     Créances interbancaires à vue                                   33 470         33 168
+ A04     Banque Centrale                                                 29 036         30 536
+ A05     Tresor Public , CCP
+ A07     Autres Etablissements de credit                                  4 434          2 632
+
+ A08     Créances interbancaires à terme                                 12 984         15 228
+
+ B02     CREANCES SUR LA CLIENTELE                                     294 326         341 664
+
+ B10     PORTEFEUILLE D'EFFETS COMMERCIAUX                                5 107         14 786
+ B11     Credits de campagne
+ B12     Crédits ordinaires                                               5 107         14 786
+
+ B2A     AUTRES CONCOURS A LA CLIENTELE                                262 483         296 935
+ B2C     Credits de campagne                                            29 711          27 763
+ B2G     credits ordinaires                                            232 771         269 173
+
+ B2N     COMPTES ORDINAIRES DEBITEURS                                    26 737         29 943
+
+ B50     AFFACTURAGE
+
+ C10     TITRES DE PLACEMENT                                           222 134         206 774
+
+ D1A     IMMOBILISATIONS FINANCIERES                                      6 103          6 102
+
+ D50     CREDIT-BAIL ET OP. ASSIMILES
+
+ D20     IMMOBILISATIONS INCORPORELLES                                     796               651
+
+ D22     IMMOBILISATIONS CORPORELLES                                     11 513         12 346
+
+ E01     ACTIONNAIRES OU ASSOCIES
+
+ C20     AUTRES ACTIFS                                                   16 652         13 784
+
+ C6A     COMPTES D'ORDRE ET DIVERS ( actif )                             12 131          2 188
+
+ L80     RESULTAT DE L'EXERCICE (PERTE)
+
+
+
+ E90      TOTAL DE L' ACTIF                                         623 026         642 538
+                               BILAN DESTINE A LA PUBLICATION                            DEC 2800
+
+ETAT : COTE D'IVOIRE                       ETABLISSEMENT : BANK OF AFRICA
+
+
+
+|C|           2017 12 31        |A|0|0|3|2| |E|     AC0                        |0|1|        |A| |1|
+  C          date d'arrêté         CIB      LC       D                           F           P M
+                                                                (en Millions de F CFA)
+
+Codes                                                                    MONTANTS MONTANTS
+                                PASSIF                                     NETS       NETS
+Postes                                                                   31/12/2016 31/12/2017
+
+
+
+ F02     DETTES INTERBANCAIRES                                                 220 195        182 270
+
+ F03     Dettes interbancaires à vue                                             5 570          6 626
+ F05     Tresor Public, CCP
+ F07     Autres Etablissements de credit                                         5 570          6 626
+
+ F08     Dettes interbancaires à terme                                         214 625        175 644
+
+ G02     DETTES A L'EGARD DE LA CLIENTELE                                      342 367        403 044
+
+ G03     Comptes d'épargne à vue                                                42 386         48 952
+ G04     Comptes d'épargne à terme                                               4 368          5 628
+ G05     Bons de caisse                                                          4 823          5 013
+ G06     Autres dettes à vue                                                   211 154        260 246
+ G07     Autres dettes à terme                                                  79 636         83 204
+
+ H30     DETTES REPRESENTEES PAR UN TITRE                                          800                0
+
+ H35     AUTRES PASSIFS                                                         15 197          8 892
+
+ H6A     COMPTES D'ORDRE ET DIVERS ( passif )                                    3 712          4 905
+
+ L30     PROVISIONS POUR RISQUES ET CHARGES                                        425              494
+
+ L35     PROVISIONS REGLEMENTEES
+
+ L10     SUBVENTIONS D'INVESTISSEMENT
+
+ L20     FONDS AFFECTES
+
+ L41     EMPRUNTS ET TITRES EMIS SUBORDONNES                                     1 318              545
+
+ L45     FONDS POUR RISQUES BANCAIRES GENERAUX                                   1 380                0
+
+ L66     CAPITAL                                                                10 000         20 000
+
+ L50     PRIMES LIEES AU CAPITAL                                                 6 675              675
+
+ L55     RESERVES                                                               10 616         10 138
+
+ L59     ECART DE REEVALUATION
+
+ L70     REPORT A NOUVEAU                                                          192              730
+
+ L80     RESULTAT                                                               10 149         10 845
+
+ L75     EXCEDENTS DES PRODUITS SUR LES CHARGES
+
+ L90     TOTAL DU PASSIF                                                    623 026        642 538
+                         BILAN DESTINE A LA PUBLICATION                            DEC 2800
+
+ETAT : COTE D'IVOIRE                    ETABLISSEMENT : BANK OF AFRICA
+
+
+|C|       2017 12 31      |A|0|0|3|2|   |E|     AC0                     |0|1|      |A| |1|
+  C      date d'arrêté       CIB        LC       D                        F         P M
+                                                             (en Millions de F CFA)
+
+Codes                                                               MONTANTS          MONTANTS
+                         HORS BILAN                                  NETS              NETS
+Postes                                                             31/12/2016        31/12/2017
+
+
+
+                         ENGAGEMENTS DONNES                               65 657         68 751
+
+
+                         ENGAGEMENTS DE FINANCEMENT                        3 103             3 140
+
+ N1A     ENGAG DE FINAN FAV ETS CREDITS
+
+ N1J     ENGAG DE FINAN FAV CLIENTELE                                      3 103             3 140
+
+
+                         ENGAGEMENTS DE GARANTIES                         62 553         65 611
+
+ N2A     ENGAG DE GARANT D'ORDRE ETS CREDITS                              14 136         13 343
+
+ N2J     ENGAG DE GARANT D'ORDRE CLIENTELE                                48 417         52 268
+
+ N3A     TITRES A LIVRER
+
+
+                         ENGAGEMENTS RECUS                               600 177        669 093
+
+
+                         ENGAGEMENTS DE FINANCEMENT
+
+ N1H     ENGAG DE FINAN RECU DES ETS CREDITS
+
+                         ENGAGEMENTS DE GARANTIES                        600 177        669 093
+
+
+ N2H     ENGAG DE GARANT RECU DES ETS CREDITS                             60 201         48 902
+
+ N2M     ENGAG DE GARANT RECU DE LA CLIENTELE                            539 976        620 191
+
+
+
+
+ N3E     TITRES A RECEVOIR
+                          COMPTE DE RESULTAT                                          DEC 2880
+
+ETAT :    COTE D'IVOIRE                  ETABLISSEMENT : BANK OF AFRICA
+
+
+|C|        2017 12 31      |A|0|0|3|2|   |E|        RE0                    |0|1|      |A| |1|
+   C      date d'arrêté       CIB        LC          D                       F         P M
+                                                             (en Millions de F CFA)
+
+ Codes                                                                  MONTANTS         MONTANTS
+                          CHARGES                                        NETS             NETS
+ Postes                                                                31/12/2016       31/12/2017
+
+
+
+  R01     INTERETS ET CHARGES ASSIMILEES                                     13 118             12 827
+
+  R03     Interets et charges/dettes interbancaires                           6 545              6 476
+  R04     Interets et charges/dettes sur la clientèle                         6 323              6 242
+  R4D     Interets et charges/dettes titres                                      96                 41
+  R05     Autres interets et charges assimilées                                 154                 68
+
+  RE5     CHARGES/CREDIT-BAIL ET OP.ASSIMILEES
+
+  R06     COMMISSIONS                                                         1 079               342
+
+  R4A     CHARGES/OPERATIONS FINANCIERES                                     10 249             15 392
+  R4C     Charges sur titres de placement                                        30                  0
+  R6A     Charges sur opérations de change                                   10 186             15 321
+  R6F     Charges sur opérations de Hors bilan                                   33                 70
+  R6V     Charges sur prestations de services financiers
+
+  R6U     CHARGES DIV. D'EXPLOITATION BANCAIRE                                  250               248
+  R8G     Achats de marchandises
+  R8J     Stocks vendus
+  R8L     Variartion de stocks de marchandises
+
+  S01     FRAIS GENERAUX D'EXPLOITATION                                      12 740             14 449
+  S02     Charges de personnel                                                5 808              6 662
+  S05     Autres frais généraux                                               6 932              7 787
+
+  T51     DOTATION AMORT ET PROV / IMMO                                       1 516              1 703
+
+  T6A     SOLDE EN PERTS DES CORRECT° VALEUR                                  4 443              4 493
+
+  T01     EXCEDENT DOTATION / REPRISESDU FRBG                                   257                 0
+
+  T80     CHARGES EXCEPTIONNELLES                                               191                295
+  T81     PERTES / EXERCICES ANTERIEURS                                         302              1 216
+  T82     IMPOTS SUR LE BENEFICE                                                 35                 35
+  T83     BENEFICE                                                           10 149             10 845
+
+  T85     TOTAL ( DEBIT CPTE DE RESULTAT PUBLIABLE )                         54 329             61 843
+                            COMPTES DE RESULTAT                                           DEC 2880
+
+ETAT :      COTE D'IVOIRE                 ETABLISSEMENT : BANK OF AFRICA
+
+
+|C|          2017 12 31     |A|0|0|3|2|   |E|         RE0                     |0|1|       |A| |1|
+      C     date d'arrêté      CIB        LC           D                        F          P M
+                                                               (en Millions de F CFA)
+
+  Codes                                                                   MONTANTS           MONTANTS
+                          PRODUITS                                         NETS               NETS
+  Postes                                                                 31/12/2016         31/12/2017
+
+
+
+      V01   INTERETS ET PRODUITS ASSIMILES                                     21 171           21 823
+
+   VO3      Interets et produits / créances interbancaires                      1 046            1 036
+   V04      Interets et produits / créances sur la clientele                   20 125           20 786
+   V5F      Interets et produits d'investissement
+   V05      Autres Interets et produits assimilés
+
+   V5G      Produits / credit-bail et operations assimilées
+
+      V06   COMMISSIONS                                                         4 637               4 968
+
+   V4A      PRODUITS / OPERATIONS FINANCIERES                                  26 930           31 240
+   V4C      Produits sur titres de placement                                   12 859           12 400
+   V4Z      Dividendes et produits assimilés                                      119              101
+   V6A      Produits sur opérations de change                                  13 376           17 959
+   V6F      Produits sur opérations de hors bilan                                 576              780
+
+      V6T   DIVERS PRODUITS D'EXPLOITATION BANCAIRE                                 605               910
+
+   V8B      Marges commerciales
+   V8C      Ventes de marchandises
+   V8D      Variartion de stocks de marchandises
+
+   W4R      PRODUITS GENERAUX D'EXPLOITATION                                        359               294
+
+      X51   REPRISES D' AMORT ET PROV / IMMO
+
+   X6A      SOLDE EN PERTS DES CORRECT° VALEUR
+
+      X01   EXCEDENT DES REPRISES / DOTATION DU FRBG                                                1 380
+
+      X80   PRODUITS EXCEPTIONNELS                                                    3                42
+      X81   PROFITS / EXERCICES ANTERIEURS                                          623             1 186
+      X83   PERTES
+
+
+      X85   TOTAL ( CREDIT CPTE DE RESULTAT PUBLIABLE )                    54 329            61 843
+
+

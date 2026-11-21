@@ -1,0 +1,114 @@
+                                                                                            COMPAGNIE IVOIRIENNE D'ELECTRICITE
+
+                                                                                                                - C.I.E. -
+
+                                                                       Société Anonyme avec conseil d'administration au capital de 14.000.000.000 FCFA
+                                                                              Siège social: 1 avenue Christiani Treichville - 01 BP 6923 Abidjan 01
+                                                                                                RCCM N° CI-ABJ-1990 B-149296
+
+                                                                ETATS FINANCIERS ANNUELS CONSOLIDES IFRS AU 31 DECEMBRE 2020
+
+                                                                           BILAN CONSOLIDE AU 31 DECEMBRE 2020 (en millions de francs CFA)
+                                                                              31 Décembre         31 Décembre                                                                                                    31 Décembre
+ACTIFS                                                             Note                                               CAPITAUX PROPRES & PASSIFS                                  Note      31 Décembre 2020
+                                                                                  2020                2019                                                                                                           2019
+
+                                                                                                                      Capital                                                      17                  14 000           14 000
+                                                                                                                      Réserves consolidées                                                              6 351            6 474
+                                                                                                                      Résultat de l'exercice                                                           17 183            7 826
+Immobilisations incorporelles                                         7                 4 111              5 462                                                                                            -                -
+Actifs au titre des droits d'utilisation                              8                16 644              7 551      Total des capitaux propres                                                       37 533           28 300
+Immobilisations corporelles                                           9               104 653             95 982
+Actifs financiers non courants                                       10                19 688              2 051      Emprunts liés aux droits d'utilisation - non courant         18                  10 404            5 426
+Impôts différés                                                      21                 5 127              4 530      Avantages au personnel                                       20                   9 485            8 977
+Titres mis en équivalence                                            11                 2 278              2 697      Provisions                                                   21                   2 447            1 369
+                                                                                                                      Impôts différés                                              22                      (0)             486
+Total des actifs non courants                                                        152 500            118 273       Total des passifs non courants                                                   22 335           16 258
+
+                                                                                                                      Emprunts et Dettes financières courantes                     18                 134 095           149 367
+Stocks                                                               12               31 591             33 601       Emprunts liés aux droits d'utilisation - courant             18                   5 509             4 088
+Créances clients                                                     13              488 130            435 623       Dettes fournisseurs et comptes rattachés                     19                 396 141           429 799
+Autres débiteurs                                                     14              506 824            665 377       Autres créditeurs                                            23                 618 568           657 196
+Autres actifs courants                                               15                1 506              1 033       Dettes d'impôt exigible                                                           4 938             1 363
+Trésorerie et équivalents de trésorerie                              16               74 230             83 125       Autres passifs courants                                      24                  35 663            50 661
+Total des actifs courants                                                          1 102 282          1 218 760       Total des passifs courants                                                    1 194 914         1 292 474
+Total actif                                                                        1 254 783          1 337 033       Total passif et capitaux propres                                              1 254 783         1 337 033
+
+
+                                                        TABLEAU DE VARIATION DES CAPITAUX PROPRES AU 31 DECEMBRE 2020 (en millions de francs CFA)
+                                                                                                   Capitaux propres du Groupe
+                                                                                                                   R                                                                               Intérêts ne
+                                                                                                   Primes liées                                                                   Part du
+Libellés                                                             NOTE             Capital                      é                       Réserves et résultat consolidés                    conférant pas le            Total
+                                                                                                      au capital                                                                  Groupe
+                                                                                                                   s                                                                                  contrôle
+Situation au 1er Janvier 2019                                                          14 000                  - -                                                       11 553   25 553                     -          25 553
+Autres éléments de résultat global                                                                                                                                         -192                                           -192
+Résultat de l'exercice                                               A                                                                                                    7 826    7 634                                 7 826
+Résultat global                                                                               -                 - -                                                       7 634   33 187                     -           7 634
+Distribution de dividendes                                                                                                                                               -4 930   -4 930                                -4 930
+Autres éléments                                                                                                                                                              43       43                                    43
+Situation au 31 décembre 2019                                                          14 000                   - -                                                      14 300   28 300                     -          28 300
+Autres éléments de résultat global                                                                                                                                         -287     -287                                  -287
+Résultat de l'exercice                                               A                                                                                                   17 183   17 183                                17 183
+Résultat global                                                                                                 - -                                                      16 896   16 896                     -          16 896
+Distribution de dividendes                                                                                                                                               -6 532    -6 532                                -6 532
+Autres éléments *                                                                                                                                                        -1 131    -1 131                                -1 131
+Situation au 31 décembre 2020                                                          14 000                   - -                                                      23 533   37 533                     -          37 533
+*Correction d'erreur sur les capitaux propres d'ouvertures d'Awale Corporation (prise en compte du PPA et application d'IFRS 15)
+
+
+
+           COMPTE DE RESULTAT CONSOLIDE AU 31 DECEMBRE 2020 (en millions de francs CFA)                                 TABLEAU CONSOLIDE DES FLUX DE TRESORERIE AU 31 DECEMBRE 2020 (en millions de francs CFA)
+                                                                              31 Décembre         31 Décembre                                                                                                    31 Décembre
+Libellés                                                           Note                                               Libellés                                                    Note      31 Décembre 2020
+                                                                                  2020                2019                                                                                                           2019
+
+Prestations de service                                                                 80 732            54 178       Résultat net total consolidé                                 A                   17 183             9 025
+Ventes de marchandises                                                                141 395           132 760       Elimination des incidences de :
+Produits des activités ordinaires                                    24               222 127           186 937        . Amortissements et provisions                                                  22 337           14 007
+                                                                                                                       . Incidence de la mise en équivalence                                             -713                0
+Achats consommés                                                     25               -50 115            -50 013       . Résultats de cession                                                             218                0
+Charges externes                                                     26               -80 505            -50 420      Impôt sur les bénéfices                                      34                   3 956              902
+Charges de personnel                                                 27               -51 440            -47 381      Coût de l'endettement financier net                          33                   2 378                0
+Impôts et taxes                                                      28                -4 915             -6 056      Autres produits et charges calculés                                                                 -898
+Dotations/Reprises Amortissements et Provisions - nets               29                39 460              2 208      Capacité d'autofinancement                                                       45 358           23 036
+Autres produits d'exploitation                                       30                 1 033              1 811
+Autres charges d'exploitation                                        30                  -213             -5 589
+Résultat opérationnel courant                                                          23 113             11 059        . Variation des créances clients                           13                -128 119         -124 534
+Autres produits et charges opérationnels                             31                  -237                (50)       . Variation des stocks                                     12                    -855            1 662
+Résultat opérationnel                                                                  22 875             11 008        . Variation des dettes fournisseurs                        19                 135 250          182 480
+                                                                                                                      Incidence de la variation de BFR                                                  6 276           59 608
+Coût de l'endettement financier                                      32                -3 885             -4 055      Impôts payés                                                                     -1 328                ()
+Revenu des équivalents de trésorerie                                 32                 1 507              1 245      Flux de trésorerie liés aux activités opérationnelles                            50 306           82 644
+Autres charges et produits financiers                                32                   -72                  0
+Résultat avant impôt                                                                   20 426              8 199
+Quote-part du résultat net des sociétés mises en
+                                                                                          713                827      Acquisition d'immobilisations corporelles et incorporelles 7 & 9
+équivalence                                                                                                                                                                                            -19 265          -29 405
+Impôt sur les bénéfices                                              33                -3 956             -1 199      Acquisition d'actifs financiers                                                        0           -1 396
+Résultat net de l'exercice                                                             17 183              7 826      Variation des prêts et avances consentis                     10                   -8 173            9 333
+Résultat net - Part du groupe                                                          17 183              7 826      Cession d'immobilisations corporelles et incorporelles                               115              298
+                                                                                                                      Flux de trésorerie liés aux activités d'investissement                          (27 323)         (21 171)
+Résultat net de l'exercice en MFCFA                                                   17 183              7 826
+Nombre d'actions en circulation                                                   56 000 000         56 000 000
+Résultat par action en FCFA                                                              307                140       Comptes courants d'actionnaires                                                    -299                 0
+Résultat par action dilué en FCFA                                                        307                140       Dividendes versés par CIE                                                        -6 532            -4 930
+                                                                                                                      Emissions d'emprunts                                         18                       0           10 640
+    AUTRES ELEMENTS DU RESULTAT GLOBALE AU 31 DECEMBRE 2020 (en millions de francs CFA)                               Remboursements d'emprunts                                    18                  -6 995           -12 644
+                                                                                                                      Intérêts versés sur dette locative                                                 -887                  0
+                                                                              31 Décembre 31 Décembre
+Libellés                                                           Note                                               Intérêts financiers nets
+                                                                                  2020        2019                                                                                                     -1 491                 0
+Résultat net de l'exercice                                                           17 183       7 826               Autres flux liés aux opérations de financement (*)                               72 383             5 528
+                                                                                                                      Flux de trésorerie liés aux activités de financement                             56 180           (1 405)
+Ecarts actuariels sur engagements sociaux (net)                      20                  -287               -192
+Sous-total éléments non recyclables                                                      -287               -192      Variation nette de la trésorerie                                                 79 162           60 068
+
+Sous-total éléments recyclables                                                               -                 -     Trésorerie d'ouverture                                                          -66 644         -126 712
+
+Total des autres éléments du résultat global                                             -287               -192      Variation de trésorerie                                                          79 162           60 068
+
+Résultat global de l'exercice                                                          16 896              7 634      Trésorerie de clôture                                                            12 518          (66 644)
+
+

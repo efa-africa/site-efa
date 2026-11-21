@@ -1,0 +1,151 @@
+Bilan Actif - Passif
+
+
+                                                                                 MONTANTS NETS                 VARIATION
+Poste                                 ACTIF
+                                                                              31/12/2023 31/12/2024         MONTANT    %
+  1     CAISSE BANQUE CENTRALE CCP                                                96 832     181 214           84 382    87,1%
+
+  2     EFFETS PUBLICS ET VALEURS ASSIMILEES                                     274 834     255 298 -         19 536    -7,1%
+
+  3     CREANCES BANCAIRES ET ASSIMILEES                                          37 416     144 347          106 931   285,8%
+
+  4     CREANCES SUR LA CLIENTELE                                                453 494     432 069 -         21 425    -4,7%
+
+  5     OBLIGATIONS ET AUTRES TITRES A REVENU FIXE                                     -              -             -
+
+  6     ACTIONS ET AUTRES TITRES A REVENU VARIABLE                                19 480      19 479 -              1     0,0%
+
+  7     ACTIONNAIRES OU ASSOCIES                                                       -              -             -
+
+  8     AUTRES ACTIFS                                                             36 466      24 142 -         12 324   -33,8%
+
+  9     COMPTES DE REGULARISATION                                                  4 098       3 821 -            277    -6,8%
+
+ 10     PARTICIPATIONS ET AUTRES TITRES DETENUS A LONG TERME                        222          222                -     0,0%
+
+ 11     PARTS DANS LES ENTREPRISES LIEES                                           2 862       2 855 -              7    -0,2%
+
+ 12     PRETS SUBORDONNES                                                              -              -             -
+
+ 13     IMMOBILISATIONS INCORPORELLES                                              1 280       1 264 -             16    -1,3%
+
+ 14     IMMOBILISATIONS CORPORELLES                                               11 754      10 768 -            986    -8,4%
+
+                                TOTAL DE L'ACTIF                                938 738    1 075 479          136 741   14,6%
+
+
+
+
+                                                                                 MONTANTS NETS                 VARIATION
+Poste                                PASSIF
+                                                                              31/12/2023 31/12/2024         MONTANT    %
+  1     BANQUES CENTRALES CCP                                                          -              -             -
+
+  2     DETTES INTERBANCAIRES ET ASSIMILEES                                      105 373      76 300 -         29 073   -27,6%
+
+  3     DETTES A L'EGARD DE LA CLIENTELE                                         713 575     856 274          142 699    20,0%
+
+  4     DETTES REPRESENTEES PAR UN TITRE                                               -              -             -
+
+  5     AUTRES PASSIFS                                                            13 409      16 997            3 588    26,8%
+
+  6     COMPTES DE REGULARISATION                                                  7 941      10 621            2 680    33,7%
+
+  7     PROVISIONS                                                                 2 640       2 643                3     0,1%
+
+  8     EMPRUNTS ET TITRES EMIS SUBORDONNES                                            -              -             -
+
+  9     CAPITAUX PROPRES ET RESSOURCES ASSIMILEES                                 95 800     112 644           16 844    17,6%
+
+ 10                                                      CAPITAL SOUSCRIT         20 000      40 000           20 000   100,0%
+
+ 11                                                PRIMES LIEES AU CAPITAL          675               - -         675   -100,0%
+
+ 12                                                              RESERVES         48 316      39 902 -          8 414   -17,4%
+
+ 13                                               ECARTS DE REEVALUATION               -              -             -
+
+ 14                                            PROVISIONS REGLEMENTEES                 -              -             -
+
+ 15                                                REPORT A NOUVEAU ( +/- )         734          698 -             36    -4,9%
+
+ 16                                                RESULTAT DE L'EXERCICE         26 075      32 044            5 969    22,9%
+
+                                TOTAL DU PASSIF                                 938 738    1 075 479          136 741   14,6%
+Hors bilan
+
+
+                                                                            MONTANTS NETS                     VARIATION
+Poste                              HORS BILAN
+                                                                         31/12/2023 31/12/2024             MONTANT    %
+        ENGAGEMENTS DONNES                                                  206 526          191 996 -        14 530    -7,0%
+
+  1     ENGAGEMENTS DE FINANCEMENT                                           96 458          104 247           7 789      8,1%
+
+  2     ENGAGEMENTS DE GARANTIE                                             110 068           87 749 -        22 319   -20,3%
+
+  3     ENGAGEMENTS SUR TITRES                                                        -                -           -
+
+                                                                                                                   -
+
+        ENGAGEMENTS RECUS                                                 1 157 419        1 299 961         142 542   12,3%
+
+  4     ENGAGEMENTS DE FINANCEMENT                                                    -                -           -
+
+  5     ENGAGEMENTS DE GARANTIE                                            1 157 419        1 299 961        142 542    12,3%
+
+  6     ENGAGEMENTS SUR TITRES                                                        -                -           -
+
+
+
+
+Compte de résultat
+
+
+                                                                              MONTANTS                        VARIATION
+Poste                               CHARGES
+                                                                         31/12/2023       31/12/2024       MONTANT      %
+
+  1     INTERETS ET PRODUITS ASSIMILES                                       50 326           55 772           5 446    10,8%
+
+  2     INTERETS ET CHARGES ASSIMILEES                               -       14 375 -         16 686 -         2 311    16,1%
+
+  3     REVENUS DES TITRES A REVENU VARIABLE                                     48               78              30    62,5%
+
+  4     COMMISSIONS (PRODUITS)                                               29 134           27 988 -         1 146      -3,9%
+
+  5     COMMISSIONS (CHARGES)                                        -          446 -            913 -           467   104,7%
+        GAINS OU PERTES NETS SUR OPERATIONS DES PORTEFEUILLES DE
+  6                                                                  -        4 257            6 033          10 290   -241,7%
+        NEGOCIATION
+        GAINS OU PERTES NETS SUR OPERATIONS DES PORTEFEUILLES DE
+  7                                                                  -          217 -             78             139   -64,1%
+        PLACEMENT ET ASSIMILES
+  8     AUTRES PRODUITS D'EXPLOITATION BANCAIRE                               1 734            2 670             936    54,0%
+
+  9     AUTRES CHARGES D'EXPLOITATION BANCAIRE                       -        1 136 -          2 140 -         1 004    88,4%
+
+ 10     PRODUIT NET BANCAIRE                                                 60 811           72 724          11 913   19,6%
+
+ 11     SUBVENTIONS D'INVESTISSEMENT                                                  -                -           -
+
+ 12     CHARGES GENERALES D'EXPLOITATION                             -       23 147 -         25 105 -         1 958      8,5%
+        DOTATION AUX AMORTISSEMENTS ET AUX DEPRECIATIONS DES IMMO.
+ 13                                                                  -        1 822 -          1 605             217   -11,9%
+        INCORP. & CORP.
+ 14     RESULTAT BRUT D'EXPLOITATION                                         35 842           46 014          10 172   28,4%
+
+ 15     COÛT DU RISQUE                                               -        4 824 -          6 792 -         1 968    40,8%
+
+ 16     RESULTAT D'EXPLOITATION                                              31 018           39 222           8 204   26,4%
+
+ 17     GAINS OU PERTES NETS SUR ACTIFS IMMOBILISES                  -          343               39             382   -111,4%
+
+ 18     RESULTAT AVANT IMPÔT                                                 30 675           39 261           8 586   28,0%
+
+ 19     IMPÔTS SUR LES BENEFICES                                     -        4 600 -          7 217 -         2 617    56,9%
+
+ 20     RESULTAT NET                                                         26 075           32 044           5 969   22,9%
+
+

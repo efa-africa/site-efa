@@ -1,0 +1,1080 @@
+Résultats financiers
+        2020
+Avertissement
+Cette présentation contient des informations pouvant être réputées prévisionnelles.
+Concernant les perspectives, bien que la Société estime que ces déclarations et informations
+reposent sur des hypothèses raisonnables à la date de publication du présent communiqué, elles
+sont par nature soumises à des risques et incertitudes, pouvant donner lieu à un écart entre les
+chiffres réels et ceux indiqués ou induits dans ces déclarations et informations.
+Sonatel ne saurait garantir, ni être responsable de l'exactitude, l'exhaustivité, la cohérence et
+l'efficacité de l'une des déclarations ou informations données dans ce communiqué relatives aux
+données prévisionnelles
+
+
+
+
+                                                        2
+                                         Sonatel Résultats Financiers 2020
+Lexique
+
+
+1. Proforma : Eléments retraités des effets de change
+
+
+2. L’impact de la norme IFRS 16 concerne surtout les éléments suivants :
+   Les engagements de location: ces passifs étaient précédemment communiqués hors bilan dans les annexes aux états financiers
+    consolidés. Sous IFRS 16, ils sont comptabilisés au bilan (i) en tant qu’actifs représentant le droit d’usage à l’actif, selon l’approche
+    d’évaluation requise par IFRS 16 et (ii) au passif.
+
+   Charge opérationnelle des contrats de location: cette charge était auparavant incluse dans les coûts indirects. En vertu d'IFRS 16, elle
+    est remplacée par une charge d'amortissement et par une charge d'intérêts.
+
+
+   Ebitdaal : (EBITDA after Leases) est un indicateur de la rentabilité financière qui tient compte des charges d’amortissement et d’intérêt
+    relatives aux contrats de location. Il remplace l’EBITDA ajusté
+
+   ECapex : L'eCAPEX correspond (i) aux investissements corporels et incorporels hors licences de télécommunication et hors actifs
+    financés, (ii) diminués des prix de cession des actifs incorporels et corporels cédés.
+
+
+
+
+                                                                      3
+                                                       Sonatel Résultats Financiers 2020
+   1
+Faits marquants
+
+
+
+
+                                 4
+                  Sonatel Résultats Financiers 2020
+Pays de présence
+
+
+
+
+                      Sénégal                             Mali                              Guinée                 Bissau                Sierra Leone
+
+
+
+
+         Croissance PIB* : 0,7%             Croissance PIB* : -2,0%              Croissance PIB* : 1,4%      Croissance PIB* : -2,9%     Croissance PIB* : -3,1%
+             Inflation* : 2,5%                  Inflation* : 1,8%                    Inflation* : 8,7%           Inflation* : 2,6%          Inflation* : 17,5%
+        Population : 16,8 millions         Population : 19,7 millions           Population : 14,0 millions   Population : 1,8 millions   Population : 8,0 millions
+           Pénétration : 108%                Pénétration : 105,2%                 Pénétration : 108,0%          Pénétration : 87%          Pénétration : 71,0%
+         Part de marché : 55,6%             Part de marché : 55,3%               Part de marché : 59%        Part de marché : 48,0%      Part de marché : 52,2%
+            Position : Leader                  Position : Leader                    Position : Leader           Position : Second           Position : Leader
+         Couverture 3G : 97,9%              Couverture 3G : 95,5%                Couverture 3G : 85,0%        Couverture 3G : 70%         Couverture 3G : 80,0%
+         Couverture 4G : 79,4%              Couverture 4G : 63,3%                Couverture 4G : 69,0%        Couverture 4G : 54%         Couverture 4G : 38,1%
+
+
+   *Données économiques : source FMI Octobre 2020 sauf
+    Sénégal (estimation gouvernement)
+
+                                                                                       5
+                                                                        Sonatel Résultats Financiers 2020
+Environnement et Business 2020
+                                                         Business
+                                                                           Evolution de la gamme d’offres
+                   Concurrence                                             d’abondance (Illimix) au Sénégal (market            Environnement
+                   et réglementation                                       repair) en réponse à la baisse de valeur
+                                                                           observée sur le marché prépayé
+          Baisse de la valeur du marché au Sénégal
+
+     Annonce par le principal concurrent au Sénégal de la cession à Helios         Refonte tarifaires des offres prépayés                  Crise sanitaire mondiale liée à
+      Tower de son parc d'infrastructures passives pour 105 milliards FCFA           mobile au Mali, en Guinée, à Bissau et en               la pandémie du Covid 19 avec
+                                                                                     Sierra Leone                                            des répercussions
+                           Allègement des règles sur les promos au                                                                          significatives sur l’activité
+                            Sénégal                                                    Atteinte de la barre symbolique des 10
+                                                                                                                                             économique
+                                                                                         millions d’abonnés mobiles au Sénégal et 8
+                                   Offensive sur le marché Mobile Money :
+                                    des nouveaux entrants et challengers
+                                                                                         millions de clients en Guinée et 1M de clients        Engagement soutenu des entités du
+                                                                                         Actifs Orange Money en Sierra Leone                    groupe auprès des états des pays de
+                                          Baisse des tarifs de terminaisons                                                                    présence dans la lutte contre la
+                                           nationales (Sénégal, Mali, Sierra                 Déploiement de la Fibre et de la TDD (Mali),      pandémie et les actions de résilience
+                                           Léone) et maintien de l’asymétrie                 lancement TDD et test 5G (Sénégal).                économique
+                                           sur les tarifs d’interconnexion au
+                                           Mali                                                                                                     Transition politique en cours au
+                                          Introduction des prix plancher sur          Lancement 4G+ (Guinée) et Orange Energie                    Mali dans un contexte sécuritaire
+                                           les offres bundle et promotions en           (Sierra Leone).                                             toujours tendu.
+                                           Sierra Leone
+                                 Inauguration et lancement commercial              Des promotions accrues sur les équipements               Réélection du président sortant
+                                  du Backbone national en Guinée                     clients en soutien aux usages data                        en Guinée, situation politique
+                 Mesures anti-covid de la BCEAO sur Orange                                                                                    sous tension impactant
+                  Money d’avril à juin 2020 (gratuité des paiements    Lancement Orange Energie en Sierra Leone et                            l’économie
+                  partenaire et allègement KYC).                       de l’offre « Lajor », une solution financière
+                                                                       innovante qui fournit des prêts rapides aux
+                                                                       abonnés via Orange Money.                      Succès de l’emprunt
+                                                                                                                       obligataire de Sonatel à la
+                   Renforcement des solutions digitales dans le contexte du Covid 19 (plateforme                      BRVM
+                    éducation, soutien télétravail)
+
+                                                                                         6
+                                                                      Sonatel Résultats Financiers 2020
+                                      Chiffres clés opérationnels
+ +9,9%
+               36 millions           Une croissance soutenue du parc de 9,9%, nonobstant les effets ralentisseurs de la
+                 Clients (Fixe,       COVID19 (restrictions des actions terrains).
+           Mobiles et Internet)
+                                     Bonne tenue du parc Data mobile au niveau Cluster, essentiellement tirée par le
+                                      Sénégal grâce à une bonne politique axée sur l’abondance.
+
+ +9,7%li
+            35,4 millions            Une hausse de parc Orange Money à l’échelle du Groupe portée par la bonne
+              Clients mobiles         dynamique de recrutement et l’assouplissement des mesures d’ouverture des comptes
+                                      dans le cadre du Covid.
+
+                                     Poursuite de la croissance du parc très haut débit autour des offres Fibre, LTE/FDD et
++11,7%
+            12,7 millions             TDD.
+               Clients Internet
+                       mobiles            Pénétration
+                                            Data
+ +29,1%
+              8,8 millions                   35,2%
+               Clients Orange
+                       Money
+                                           Pénétration
+               309,7 mille                  Orange
+ +35,5%       Clients THD Fixe               money
+                 (ADSL – Fibre               24,4%
+              Flybox - Wimax)                                       7
+                                                  Sonatel Résultats Financiers 2020
+                                       Chiffres clés financiers
+                                  Revenus
+ +2,3%
+       1 206,1 milliards          en croissance par rapport à 2019 (+27 Milliards FCFA, +52 Milliards FCFA en
+             Chiffre d’affaires   proforma) portée par l’activité mobile autour du renforcement des usages data, de        Taux
+                                  orange money et de l’internet fixe. Une croissance tirée par la Guinée, le Mali et la   Ebitdaal
+                                  Sierra Leone compensant la baisse au Sénégal et à Bissau                                %43%
+                                                                                                                          +2,1pts
+ +7,6i    519,2 milliards         Ebitdaal
+                    Ebitdaal      Bonne progression de la marge opérationnelle de +37 milliards FCFA, +48 milliards
+                                  FCFA en proforma principalement due aux efforts de maîtrise des charges
+                                  opérationnelles suite aux économies réalisées sur les frais généraux, les A&P
+                                  et les operating tax.                                                                    Marge
++15,7%    314,8 milliards                                                                                                  Nette
+                                  Résultat Net
+             Free Cash Flow                                                                                               16,7%
+                                   en croissance de 3% grâce à l’amélioration de l’Ebitdaal qui couvre la hausse des
+                                  amortissements et des frais financiers.
+
+
+          201,3 milliards         Free Cash Flow
+  +3%                              en croissance de 12,8%, lié à la bonne génération de marge combinée au retrait
+               Résultat Net       sur les réalisations de capex.
+                                                                                                                           Taux
+                                  Ecapex                                                                                  Ecapex
+                                  L’integralité du résultat net est investi en capex en vue de préparer nos réseaux
+  +0,4%   204,4 milliards         et plateformes de services à écouler encore plus de trafic avec une excellente          16,9%
+                     Ecapex       qualité de service, mais également de déployer de nouvelles offres et innovations
+                                  pour accélérer notre transformation en opérateur multiservices.
+                                                                     8
+                                                     Sonatel Résultats Financiers 2020
+COVID 19 : Plus de 3 milliards de FCFA de contribution dans nos pays
+           de présence
+    Sénégal
+
+
+
+
+                   Les salariés de Sonatel se sont mobilisés pour contribuer au fonds Force
+                   Covid19 à hauteur de 40 472 313 FCFA
+                                                                                              9
+COVID 19 : Plus de 3 milliards de FCFA de contribution dans nos pays de
+          présence
+     Mali                                                                                       Guinée
+  300 millions FCFA pour l’achats d’équipements médicaux, de médicaments et de         la Direction Générale d’Orange Guinée a présenté des initiatives d’une valeur de
+   kits de lavage de mains                                                               plus de 3,7 Milliards de GNF, visant à soutenir les autorités sanitaires. La baisse
+  100 millions FCFA de crédit de communication pour la gestion de la crise, la mise     de 75% du coût d’accès à la plateforme e-Education ;
+   en place et prise en charge du centre d’appel du numéro vert national, l’envoi de
+   message de sensibilisation à la population                                           L’activation d’un message de sensibilisation sur la tonalité (Funtones) ;
+  Forfaits internet résidentiels doublés, box 4 G au prix promotionnel de 10 000F      La gratuité des transferts nationaux Orange Money inférieurs à 100.000 GNF ;
+  Pass Education de 100mo par jour offerts à partir du 01/04                           La gratuité des frais sur le paiement des factures d’eau via Orange Money ;
+  Mise à disposition de contenus éducatifs digitaux pour les élèves                    La gratuité des frais du service « Accès à ma banque » pour le transfert du
+  Orange Money:                                                                         compte bancaire vers le compte du client avec toutes les banques partenaires ;
+         Gratuité des frais de transfert nationaux jusqu’à 5000F                       La mise en place d’un parcours permettant à chaque abonné qui le souhaite,
+         Gratuité des frais sur les paiements de facture                                d’ouvrir son compte, tout seul sans avoir à se déplacer.
+         Suppression des commissions pour les commerçants sur les paiements            Plus de 70 millions de sms envoyés pour le compte du ministère de la santé
+            marchands
+
+
+    Bissau                                                                                      Sierra Leone
+  Orange Bissau dans un élan de solidarité a soutenu le Ministère de la santé avec     Une donation de 1 milliard de Leones a NACOVERC (Centre National de
+   un don de 55 millions.                                                                Réponse au COVID)
+  Numéros d’urgence 2020 et envoi de push SMS de sensibilisation                       La donation de terminaux pour la Police Nationale afin de vérifier les e-pass de
+  Services voix, SMS et inclusion Financière aux populations                            circulation lors du confinement régional
+  Mise en place une plateforme USSD de sensibilisation gratuite afin de faciliter      La mise à disposition d’un portail internet d’E-learning (éducation en ligne) pour
+   l’accès à l’ensemble des recommandations de l’OMS et un push vocal permanent
+                                                                                         les étudiants et les élèves, entièrement gratuit
+   de sensibilisation avant la sonnerie d’appel
+  Suite à la recommandation de la BCEAO, Orange Bissau a procédé à l’ouverture         L’accès gratuit aux sites internet des Ministères de l’Education Primaire,
+   des comptes Orange Money en masse comme gestes barrières et réduit sa                 Secondaire et Tertiaire, et de certaines universités du pays
+   tarification Orange Money.                                                           La mise en disposition de sonneries d’appel et de messages dédiés de
+  Soutien de la Fondation Orange pour la crise Sanitaire                                sensibilisation sur la pandémie pour tous les appelants d’un numéro Orange
+                                                                                                                                                                    10
+Contribution à l’économie
+                                                                               Recettes budgétaires
+                                                                               pour les Etats
+Chiffre d’affaires généré au
+                                                                               +610 Milliards FCFA
+profit des entreprises locales
+                                                                               versés à titre d’impôt, taxes,
++250 Milliards FCFA                                                            redevances, cotisations sociales, droits
+ de chiffre d’affaires générés au profit                                       de douanes et dividendes dans les
+ des entreprises locales dans les pays                                         pays de présence
+ de présence
+
+
+
+
+                                                                                Exportations
+Création d’emplois
++160 000 Emplois indirects                                                      +115 Milliards FCFA
+                                                                                générés en contribution au niveau
++4500 Emplois directs                                                           de la balance des paiements par
+                                                                                les opérateurs étrangers de
+grâce à une distribution commerciale
+                                                                                télécommunications
+étendue et des partenaires
+dynamiques
+                                                          11
+                                           Sonatel Résultats Financiers 2020
+  Responsabilité sociétale
+
+
+
+
+                                                                                                     Sonatel, engagée pour l’inclusion Sociale,
+La fondation Sonatel réhabilite le lycée Mame
+                                                                                                     Economique et Numérique
+Cheikh Mbaye et bien d’autre infrastructures
+scolaires construites ou réhabilitées en régions    Cinquième édition Linguere Digital Challenge
+
+
+
+
+ Campagne sur la thématique de l’éducation des
+  filles : engagement et proximité
+ Campagne sur l’engagement numérique
+ Campagne handicap : #DaanSaLaago : un
+  facteur différenciant dans lequel nous sommes    La 10e édition du Prix Orange de l’entrepreneur
+  engagés en pionnier.                             social en Afrique et au Moyen Orient (POESAM)
+                                                                                                     Cérémonie de remise des diplômes de la
+ Campagne sur l’environnement : #AarLilaWër :     a retenus les 3 meilleurs projets qui proposent
+                                                                                                     deuxième promotion de sonatel academy en
+  un engagement fort pour participer à la          des solutions visant à améliorer les conditions
+                                                                                                     présence du ministre de tutelle
+  réduction de notre empreinte carbone             de vie des populations
+                                                         Sonatel Résultats Financiers 2019           1
+Consommation énergétique
+
+
+
+        Taux énergie
+          verte%
+           6,6%
+
+
+
+
+         Dépense
+         énergie /
+         Revenu
+           2,3%
+
+
+
+
+                                      13
+                       Sonatel Résultats Financiers 2019   9
+Sénégal
+Belle démonstration de résilience avec une croissance de l’Ebitdaal et du Free Cash flow malgré une forte décroissance du CA soutenue par
+l’accroissement de la concurrence avec une forte destruction de la valeur du marché prépayé mobile. Au plan opérationnel concrétisation de la
+fusion des entités Sonatel Mobile, Sonatel Multimédia et Sonatel Business Solutions avec SA. Renforcement de nos positions commerciales en
+volume et valeur à la faveur de la bonne dynamique de recrutement. Lancement d’un emprunt obligataire pour financer notre ambitieux
+programme d’investissement autour du maintien de l’avantage concurrentiel sur le très haut débit.
+                                                                                                                            496,1 Milliards                  196,7 Milliards
+          FMI                         Mobiles                                                                               Chiffre d’affaires                  Ebitdaal
+    11,1 Millions                10,6 Millions                                                                                  496,1 Milliards            196,7 Milliards
+       +11%                        +10,6%                       Broadband Fixe                                                      -2,9%                      +5,1%
+                                                                 249,8 Milliers
+    Data Mobiles                Orange Money                                                                                                  eCAPEX
+                                                                    +29,1%                                                                                       FCFA
+    4,3 Millions                  2,9 Millions                                                                                             88,3 Milliards
+       +6,8%                       +17,2%                                                                                                      -1,2%
+
+   Succès et cotation record de l’emprunt obligataire de Sonatel à la BRVM ;
+   Fusion des entités Sonatel Mobiles, Sonatel Multimédia et Sonatel Business Solutions avec Sonatel SA ;
+   Orange confirmé meilleur réseau mobile pour une expérience client unique (Awards Fastest Mobile Network)
+                                                                                                                                          Part de Marché Volume
+   Conformément à sa stratégie d’être first mover sur les nouvelles technologies, Sonatel a effectué ces premiers tests 5G ;
+   Lancement de Promobile premier MVNO au Sénégal et en Afrique de l’Ouest hébergé par Orange avec plus de 100 mille clients
+   Annonce par Free Sénégal de la cession de près 1200 sites au Groupe Helios pour 160 millions d’euros ;
+   Mise en demeure servit par l’Autorité de Régulation à Expresso pour défaut d’investissement ;                                                   55,6%
+   Offensive sur le marché Mobile Money des nouveaux entrants et challengers profitant du contexte Covid (Wave, Wizall, Yup )                       +1,7 pts
+   Posture RSE de Sonatel dans le cadre de la crise Covid19 ;
+   Annonce d’un partenariat entre Expresso et Huawei pour la 4G
+                                                                                                                                                  2G / 3G / 4G / 4G+
+    Mali
+    Malgré un contexte défavorable marqué par une crise politique, sécuritaire et sanitaire, Orange Mali a pu réaliser de solides performances
+    commerciales et financières. Les objectifs de rentabilité ont été dépassés, malgré une croissance des revenus plus faible que prévu. La pression
+    règlementaire s’intensifie notamment sur l’encadrement des promotions, la baisse des tarifs de terminaison, et la régulation des liaisons internet.
+    Les investissements soutenus dans le haut débit fixe et mobile, ainsi que les services financiers ont permis une croissance des revenus de 3,1%
+    en YOY, 4% Hors impacts directs du COVID (gratuités, baisses de tarifs).
+             FMI                         Mobiles                                                                                  ChiffreMilliards
+                                                                                                                                  496,1   d’affaires               Ebitdaal
+                                                                                                                                                                 196,7 Milliards
+      12,4 Millions                 12,3 Millions
+         +3,9%                         +3,7%                        Broadband Fixe                                                         +3,1%                     +5,7%
+                                                                      50,3 Milliers
+      Data Mobiles                 Orange Money                                                                                                       eCAPEX
+                                                                         +81,5%
+      4,6 Millions                     3 Millions                                                                                                  60,3 Milliards        FCFA
+         +11%                          +35,2%                                                                                                          +2,7%
+   Coup d’état militaire le 18 Août suite aux nombreuses manifestations du M5-RFP depuis le 5 juin 2020 ;
+   Désignation d’un Président de la transition, et d’un vice Président ancien chef du CNSP.
+   Nomination d’un premier ministre civil et d’un gouvernement de transition de 25 membres pour 18 mois ;
+   Embargo de la CEDEAO (fermeture des frontières terrestres, suspension des transactions financières) du 18 août au 06 oct 2020                    Part de Marché Volume
+   Soutien matériel, technique et humain au Ministère de la Santé dans la lutte contre le Covid-19 à travers la fondation orange Mali ;
+   Mise en place de plans d’action afin de booster le parc (promo sur les frais d’accès et recrutement de vendeurs supplémentaires) ;
+         5,4 millions de clients recrutés en 2020 avec une forte accélération sur le second semestre 2020
+         + de 6000 clients fibres recrutés sur l’année.                                                                                                    55,3%
+   Entrée en vigueur des nouvelles taxes d’interconnexion asymétriques                                                                                       -2,8 pts
+         Vers Orange: de 5.7 FCFA à 2.5 FCFA/min
+         Vers Malitel: de 7 FCFA à 3 FCFA/min
+   Renouvellement du contrat de sponsoring avec la Fédération Malienne de Football ;
+   Orange Mali désigné fournisseur d’accès Internet Fixe le plus rapide au Mali                                                                          2G / 3G / 4G / 4G+
+    Guinée
+    De solides performances opérationnelles et financières malgré un environnement socio politique instable et un contexte de pandémie. Performance
+    favorisée par le maintien de l’effort d’investissement et la bonne dynamique commerciale et d’animation le développement du parc et des usages.
+    Franchissement de la barre des 8,5 millions de clients Mobiles et plus de 600 clients actifs sur la 4G. Amélioration de la marge opérationnelle.
+    Extension de la couverture réseau du pays notamment rural avec plus de 200 nouvelles localités couvertes.
+             FMI                           Mobiles
+       8,5 Millions                                                                                                            ChiffreMilliards
+                                                                                                                               496,1   d’affaires            Ebitdaal
+                                                                                                                                                           196,7 Milliards
+                                      8,5 Millions
+          +10,9%                        +10,9%                                                                                         +19,1%                  +26,7%
+      Data Mobiles                   Orange Money                        2,5 Milliers
+       3 Millions                       1,6 Millions                                                                                            eCAPEX
+        +13,6%                           +22,9%                                                                                              651,9 Milliards       GNF
+                                                                                                                                                +17,3%
+    Réélection du Président sortant Alpha CONDE pour un 3ième mandat.
+    Tensions socio politiques continues dans le pays durant toute l’année
+    Orange leader sur les services offerts aux clients : voix, data et Sms suite à l’audit des réseaux par l’ARPT
+    Dépréciation continue du franc guinéen et manque de disponibilité des devises
+    Maintien du leadership sur tous les services (source ARTP – T3 2020) :                                                                     Part de Marché Volume
+            PDM mobile Volume stable à 59% et PDM Valeur : 72,4%
+            PDM Internet : Orange : 49%
+            PDM Mobile money Orange : 72%
+            Lancement offres résidentielles : HomeBox Rural, HomeBox Illimité et PMP ;
+    Franchissement de la barre des 8,5 millions d’abonnés mobiles et des 600.000 clients Data 4G .
+                                                                                                                                                       58,7%
+                                                                                                                                                        -0,3 pts
+    Lancement d’une nouvelle tranches de numéro :+224 610xxxxxx ;
+    Lancement de la 4G+ et Inauguration de 5 franchises à Conakry et en région
+    Inauguration et lancement commercial du Backbone national ; Audit & travaux en cours pour la relance de l’operateur historique Guinée
+     Télécom                                                                                                                                        2G / 3G / 4G / 4G+
+    Maintien des certification QSE (Qualité; sécurité & Environnement) et Top Employer pour la 5ieme année consécutive
+Bissau
+Résultats financiers fortement impactés par la crise sanitaire, économique (mauvaise campagne de cajou) et politique
+Début de dénouement de la crise politique avec l’élection d’un nouveau Président
+Amélioration de la part de marché volume après la perte de leadership
+Lancement d’un vaste programme de modernisation et d’extension du réseau
+
+        FMI                    Mobiles                                                               ChiffreMilliards
+                                                                                                     496,1   d’affaires               Ebitdaal
+                                                                                                                                    196,7 Milliards
+ 808,5 Milliers            801,5 Milliers
+     +13,1%                  +12,9%                 Broadband Fixe                                          -4,2%                     -10,6%
+                                                       6,9 Milliers
+  Data Mobiles            Orange Money                   +35,8%                                                       eCAPEX
+ 247,9 Milliers            145,3 Milliiers                                                                          4,3 Milliards        FCFA
+    +56,2%                   +152,7%                                                                                   -29,6%
+ Retour à la normale après plusieurs années d’instabilité politique suite à l’élection du Président EMBALLO en
+  février 2020 et retrait des forces de la CEDEAO installées en Guinée-Bissau depuis 2012
+ Situation économique fortement dégradée par la crise Covid-19 avec les mesures de restriction (fermeture
+                                                                                                                      Part de Marché Volume
+  des frontières, état d’urgence, confinement partiel,..)
+ Fléchissement de la croissance économique de 1,5 point en 2020 suite à la baisse des cours mondiaux de la
+  noix de Cajou et des exportations touchés par la crise Covid-19
+ Nouvelle taxe télécom approuvée pour 2021                                                                                   48%
+ Lancement d’un vaste programme de modernisation et d’extension du réseau de Orange Bissau
+                                                                                                                              -7,2 pts
+ Mise en service du câble ACE initialement prévue en juin 2020 reportée au mois de juillet 2021
+ Modification de l’amende en cas de non respect du cahier des charges(de 15 millions à 5% du CA )
+                                                                                                                          2G / 3G / 4G / 4G+
+ Mise en place du dispositif de contrôle du trafic
+ Relance du dossier de cession de l’opérateur historique Guinéetel
+Sierra Leone
+Confirmation du leadership en volume malgré le contexte COVID. Solides performances financières à la faveur d’une bonne performance
+commerciale et d’une croissance soutenue du chiffre d’Affaires. Pression fiscale et réglementaire encore pesante malgré l’adoption de mesures
+favorables à l’activité. Renforcement des investissements en soutien à la croissance de l’activité et aux ambitions de développement (notamment
+de la couverture rurale).
+
+           FMI                     Mobiles                                                                     ChiffreMilliards
+                                                                                                               496,1   d’affaires             Ebitdaal
+                                                                                                                                            196,7 Milliards
+     3,2 Millions              3,2 Millions
+        +30,8%                   +30,8%                   Broadband Fixe                                              +31,5%                   +92,9%
+                                                          1 284 customers
+    Data Mobiles              Orange Money                (one year after launch)                                                eCAPEX
+    494,9 Milliers               1 Millions                                                                                  235,3 SLL Mds            In Leones
+       +44,6%                     +55%                                                                                          +10,3%
+    Lancement d’une offre mobile dédiée aux étudiants et orientée Data (« Spak »)
+    Introduction d’un programme de fidélité (« Orange Lek You »)
+    Lancement d’Orange Energie                                                                                                    Part de Marché Volume
+    Bonne dynamique de recrutement, poursuite animation sur les offres et promotions
+    Franchissement de la barre des 1 million de clients actifs sur Orange Money. Deux nouvelles offres: Pico Crédit et
+     Transfert International
+    Introduction d’un prix plancher sur la voix et d’un encadrement des promotions                                                       52,2%
+    Accélération de la dévaluation du SLL par rapport aux devises étrangères notamment l’Euro                                             +4,1 pts
+    Focus sur l’expansion de la couverture réseau avec l’adressage des zones rurales (55 nouveaux sites) ainsi que
+     l’augmentation de la capacité en milieu urbain
+    Amélioration de la relation avec l’écosystème (basée sur les relations publiques et la RSE) et lancement de la
+     Fondation Orange                                                                                                                 2G / 3G / 4G
+    Lancement d’un portail éducatif gratuit en partenariat avec le Ministère de l’Education
+    Validation de 5 régulations ainsi qu’une nouvelle loi sur les Télécommunications                                     Notre mission: « To improve the daily
+    Dégroupage du monopole du point d’accès au câble ACE et du backbone terrestre                                        lives of the people in Sierra Leone
+    Projet de mise en place d’une Interconnexion Clearing House (chambre de compense) suspendu suite à la
+     déclaration du ministre en début de novembre
+                                                                                                                          through wonderful digital experiences »
+  2
+  Résultats
+opérationnels
+
+
+
+
+                                19
+                Sonatel Résultats Financiers 2020
+Base abonnés : fixe, mobile et internet
+                          2018                               2019     2020       2019 / 2018   2020 / 2019
+
+
+   Sénégal             8 734 542                        9 575 174   10 594 894     9,6%          10,6%
+
+   Mali                10 468 834                      11 881 918   12 318 240    13,4%          3,7%
+
+   Guinée              7 268 259                        7 670 324   8 503 852      5,5%          10,9%
+
+   Bissau               682 701                          709 819     801 536        4%           12,9%
+
+   Sierra Leone        1 992 314                        2 473 881   3 234 775     24,2%          30,8%
+
+   Mobile              29 146 650                      34 311 116   35 453 297    10,8%          9,7%
+
+   Fixe                 302 243                          206 173     227 645      -31,7%         10,4%
+
+   Internet             219 144                          228 640     309 749       4,8%          35,5%
+
+   TOTAL PARC          29 668 037                     32 745 929    35 990 691    23,8%          9,9%
+
+
+                                        20
+                                                                                                             6
+                         Sonatel Résultats Financiers 2020
+Arpu
+                                                                                         SIERRA
+                             SENEGAL                     MALI       GUINEE    BISSAU
+                                                                                         LEONE
+
+          Mensuel en FCFA
+
+
+
+  Mobile (Puce rechargeur)   2809,3                    2358,1       2371,3    2271,9    1201,3
+
+  Variation annuelle          -11,2%                     2,2%        15,2%     -6,9%    21,4%
+
+  Data Mobile                2319,1                    2120,3       1241,6    2230,3    1424,8
+
+  Variation annuelle          -3,9%                     22,5%        24,5%    -15,5%    -6,1%
+
+  Orange Money               1702,2                    1750,5       2019,1     819,3    503,8
+
+  Variation annuelle          -0,1%                     -0,4%        11,8%     55,8%    -3,8%
+
+  Internet Broadband          8941                    33436,4       15093,4   21564,7   129139
+  Variation annuelle          -6,1%                    -32,9%       115,6%     -1,6%     n/a
+
+
+
+                                               21
+                                                                                                  6
+                                Sonatel Résultats Financiers 2020
+Data mobile
+Belle performance commerciale et financière tirée par la croissance du Chiffre d’affaires (+20,2%) et soutenue par une
+progression forte du parc et des usages autour de l’abondance et à travers le développement du très haut débit (4G/4G+).
+Poursuite du déploiement de la 4G avec près de 4,8 millions de clients actifs, (+55% sur un an). Près du 1/4 du CA provient
+des services Data Mobiles soit +3,1 points d’amélioration en un an.
+
+                 Chiffre d’affaires                                  ARPU data mobile                % revenus groupe
+
+
+
+
+                       285,2                                             1870,2                          23,6%
+                  Milliards FCFA                                            FCFA
+                                                                                                      +3,1 points
+                      +20,2%                                               +7,6%
+
+
+
+
+                  12,7                                                                               4,78
+                 millions                                                 1,4
+                                                                       millions                     millions
+                 +11,7%                                                                              +55%
+                                                                       +12,5%
+
+
+
+
+                Clients actifs                               Delta parc clients                 Clients actifs 4G
+                                                                22
+                                                 Sonatel Résultats Financiers 2020
+Orange Money
+Très bonne performance avec une hausse du chiffre d’affaires de 23,5% malgré la crise sanitaire portée par la croissance du
+Parc (+1,9 millions de clients actifs sur un an) avec plus de la moitié des clients inscrits actifs sur nos services et des usages
+(+20,3% d’augmentation des transactions en volume sur un an). Renforcement de la conformité avec 62,2% de nos clients full
+conformes. En 2020, près de 12,5% de nos revenus ont été générés par nos activités Mobile Money..
+                   Chiffre d’affaires                           ARPU Orange Money                       % revenus groupe
+
+
+
+                                                                           1 649,1
+                         151,1                                                FCFA                           12,5%
+                    Milliards FCFA                                           +0,4%                         +1,5 points
+                        +23,5%
+
+
+
+
+                     8,8                                                                                          1 439,2
+                                                  52,4%                                   62,2%
+                   millions
+                                                -2,1 points                             +3,6 points               millions
+                   +29,1%
+                                                                                                                  +20,3%
+
+
+
+                Clients actifs                     Taux                                                            Volume
+                                                                                       Taux parc full
+                                              actifs/inscrits                                                   transactions
+                                                                  23
+                                                   Sonatel Résultats Financiers 2020
+Internet Broadband
+Renforcement des investissements sur la FTTX et la LTE/FDD-TDD en 2020, combiné à une bonne stratégie commerciale qui a
+permis d’accroitre fortement le chiffre d’affaires (+18,6%) et les usages (+81k clients ). Franchissement de la barre des 300 mille
+clients dont 22% ont une connexion fibre tandis que 40% ont une offre Flybox. La contribution au chiffre d’affaire groupe reste
+encore timide autour de 3,5%. Renforcement du déploiement de la fibre avec près du quart du potentiel de logements
+raccordables, raccordés. Cette performance est plus marquée au Sénégal avec un taux de 30%.
+                 Chiffre d’affaires                             ARPU data mobile                            % revenus groupe
+
+
+
+
+                       42,2                                            12 908,9                                  3,5%
+                  Milliards FCFA                                          FCFA
+                                                                                                               +0,4 points
+                      +18,6%                                             -11,2%
+
+
+
+
+                  309,7 K                        79,9 K                                     192,4 K                      25,1%
+                  +35,5%                         +95,6%                                     +81,6%                       +5,3%
+
+
+
+
+                                                                                         Clients fibre et            Parc FTTX / FTTX
+                Clients actifs               Delta parc clients
+                                                                                             Flybox                 logements éligibles
+                                                                       24
+                                                     Sonatel Résultats Financiers 2020
+     3
+Résultats financiers
+
+
+
+
+                                      25
+                       Sonatel Résultats Financiers 2020
+Résultats financiers
+Solides performances financières malgré les effets ralentisseurs de la crise sanitaire et le durcissement de
+l’environnement concurrentiel et réglementaire. Croissance du free cash flow.
+
+                                               2019                        2019 PF    2020     2020/2019       2020/2019 PF
+
+      Chiffre d’affaires                       1179,2                      1153,9    1206,1     2,3%              4,5%
+
+      Ebitdaal                                 482,7                          471    519,2      7,6%             10,2%
+
+      Marge d’EBITDA                           40,9%                        40,8%     43%      2,1 pts           2,2 pts
+
+      Résultat d’exploitation                  320,7                        312,6    339,7      5,9%              8,7%
+
+      Marge d’exploitation                     27,2%                        27,1%    28,2%       1 pt             1,1 pt
+
+      Résultat Net                             195,3                        192,6    201,3       3%               4,8%
+
+      Marge nette                              16,5%                        16,7%    16,7%      0,2 pt             0 pt
+      Ecapex                                   203,5                        198,9    204,4      0,4%              2,8%
+      Taux de CAPEX                            17,2%                        17,3%    16,9%      -0,3pt           -0,3 pt
+      Free Cash Flow                           279,1                        272,1    314,8      12,8%            15,7%
+
+
+                                                                26
+                                                                                                                              6
+                                                 Sonatel Résultats Financiers 2020
+Chiffre d’affaires
+Chiffre d’affaires / évolution mix: renforcement de la contribution de la Data et d’Orange Money face au recul de
+l’international. Les activités cœur de métier Voix, SMS connaissent une légère régression mais occupent encore une
+place prépondérante dans la génération de revenus.
+
+                 Poids dans l’activité            Poids dans l’activité                 Poids dans l’activité
+                      Réel 2019                      Proforma 2019                           Réel 2020
+
+
+
+
+                                                            27
+                                                                                                                     6
+                                             Sonatel Résultats Financiers 2020
+Marges
+   Hausse de la marge directe grâce à la maitrise des coûts directs. Baisse des taux de marges d’Ebitdaal et
+   d’exploitation mais en hausse en valeur absolue.
+
+
+                                                                                          18,1%      16,5%      16,7%
+ 42,2%    40,9%       43%
+
+
+
+
+                                            28%           27,2%                   28,2%
+
+
+ 2018      2019      2020                                                                  2018        2019      2020
+
+
+
+
+    Marge Ebitdaal                                                                                Marge Nette
+
+
+                                            2018               2019               2020
+
+
+
+                                                      Marge
+                                                   Opérationnelle
+
+
+                                                            28
+                                              Sonatel Résultats Financiers 2019                                         2
+Investissements
+Maintien des efforts d’investissements (16,9% des revenus ) sur l’ensemble des pays du Cluster notamment pour la mise en
+œuvre du câble sous marin MainOne, mais aussi pour répondre aux besoins d’extension rurale, de déploiement Mobile et FTTH
+afin de soutenir la data et l’internet fixe.
+
+
+                   Investissements                                                                Ecapex par pays
+                     En Milliards FCFA
+                                               207204
+                                         194                                                           Sierra
+          179174                                                                                       Leone
+                                                                                            Bissau
+    157                                                                                       2%
+                                                                                                        7%
+
+
+                                                                    2018
+                                                                    2019
+                                                                                       Guinee                       Senegal
+                                                                    2020                18%                          43%
+
+                      36 28 30
+
+
+
+     Réseaux       Hors Réseaux            Total                                                Mali
+                                                                                                30%
+
+
+                                                                  29
+                                                   Sonatel Résultats Financiers 2020                                     2
+Cours de l’action
+Baisse de 20,5% du cours de l’action contre une baisse de 8,7% de l’indice BRVM composite en 2020 expliquée en partie
+par la prudence des investisseurs institutionnels étrangers sur les marchés émergents face à la crise du Covid-19
+
+
+
+                                                                                                        flottant : 23%
+                                                                                                  •   30% Grand public
+                                                                                                  •   10% institutionnels UEMOA
+                                                                                                  •   60% institutionnels hors
+                                                                                                      UEMOA
+
+
+
+
+                                                                                   31/12
+                                                                                   Cours : 13
+                                                                                   500
+
+
+
+
+                                                              30
+                                               Sonatel Résultats Financiers 2019                                         2
+  4
+Perspectives
+
+
+
+
+                              31
+               Sonatel Résultats Financiers 2020
+Perspectives
+   L’année 2020 aura été marquée par la pandémie de la covid 19 qui a paralysé l’économie
+    mondiale provoquant un choc sans précédent dans nos différents pays de présence
+
+   Le groupe Sonatel s’est mobilisé durant cette période pour garantir la qualité du réseau et
+    de ses services. L’engagement du Groupe reste résolument orienté client. L’ambition est
+    de faire vivre à nos clients une expérience incomparable, par une QoS technique et
+    commerciale reconnue de Qualité (leadership NPS) tout en apportant des solutions aux
+    mutations de la société à travers le développement des nouveaux usages numériques.
+
+   Malgré l’intensification de la concurrence notamment au Sénégal et à Bissau, le groupe a
+    su maintenir de solides performances financières et opérationnelles grâce aux efforts de
+    maîtrise des charges opérationnelles
+
+   Le groupe poursuivra la dynamique de croissance de nos marges opérationnelles avec la
+    consolidation des résultats issus des plans de maîtrise des charges de 2020 avec un
+    renforcement des investissements pour un réseau Très Haut débit moderne, agile, orienté
+    création de valeur
+
+   Le groupe procèdera à l’accélération de la transformation technologique en privilégiant la
+    mutualisation, le partage d’infrastructures, la virtualisation des réseaux et le passage de
+    l’infrastructure IT en cloud
+
+                                                                  32
+                                                   Sonatel Résultats Financiers 2020
+ 5
+Annexes
+
+
+
+
+                         33
+          Sonatel Résultats Financiers 2020
+Etats financiers consolidés 2020
+
+
+   1. Note aux lecteurs
+
+   2. Périmètre de consolidation
+
+   3. Etats financiers consolidés
+
+   4. Attestation de sincérité des commissaires aux comptes
+
+
+
+
+                             Sonatel Résultats Financiers 2020   2
+Note aux lectures
+
+  • Les états financiers consolidés comprennent les comptes de Sonatel et de toutes ses filiales contrôlées
+    directement ou indirectement. Ces filiales sont consolidées selon la méthode de l’intégration globale.
+    Orange Sierra Léone détenue à 50% est consolidée par intégration globale conformément aux termes
+    du pacte d’actionnaire.
+
+  • Le Groupement Orange Service a été intégré dans le périmètre de consolidation en 2018 par mise en
+    équivalence.
+
+  • Les transactions, soldes et résultats réciproques entre les sociétés intégrées sont éliminés.
+
+  • Les états financiers consolidés sont présentés en FCFA. Les actifs, passifs et postes du compte de
+    résultat des filiales hors zone CFA sont convertis aux taux de change en vigueur à la clôture de la
+    période.
+
+  • Les comptes consolidés sont établis suivants les normes IFRS
+
+  • Les notes sur les états financiers seront publiées dans le rapport annuel 2020 qui sera présenté à
+    prochaine Assemblée Générale des actionnaires prévue le 28 Avril 2021.
+
+                                           Sonatel Résultats Financiers 2020
+Périmètre de consolidation
+
+
+                    Sonatel SA                                          Directe   Société mère
+
+
+                    Orange finances Mobiles Sénégal.                   Directe     100%
+
+
+
+
+                                   Sonatel Résultats Financiers 2020
+Etats financiers consolidés 2020 IFRS : Compte de résultat (en million de FCFA)
+     (en millions FCFA)                                                                             Note      31 décembre 2020     31 décembre 2019    31 décembre 2 018
+     Chiffre d'affaires                                                                                 4.1          1 206 086            1 179 224            1 098 698
+     Achats externes                                                                                    4.2          (439 972)            (432 896)            (419 327)
+     Autres produits opérationnels                                                                      4.8              21 892               19 401               20 825
+     Autres charges opérationnelles                                                                     4.4            (40 948)             (40 693)             (54 724)
+     Charges de personnel                                                                               4.5           (121 111)           (116 438)            (107 380)
+     Impôts et taxes d'exploitation                                                                     4.3          (100 392)            (116 852)              (81 302)
+     Dotations aux amortissements                                                                       4.6          (185 993)            (173 284)            (153 008)
+     Résultat de cession de titres et d'activités                                                                                              2 318                3 883
+     Coûts des restructurations et d'intégration                                                                            155
+     Effets liés aux prises de contrôle                                                                                                          109
+     Résultat des entités mises en équivalence                                                                            (636)                (269)                (53)
+     Résultat d'exploitation                                                                                           339 082              320 624             307 611
+     Coût de l'endettement financier brut                                                                              (29 985)             (27 634)            (16 965)
+     Charges d'intérêts des dettes locatives                                                                            (2 079)              (2 739)
+     Produits et charges sur actifs constitutifs de l'endettement net                                                     3 369               2 145                2 737
+     Gains (pertes) de change                                                                           4.7              (3 596)               (219)               (164)
+     Autres produits et charges financiers                                                                                 2 831               2 470               1 064
+     Résultat financier                                                                                 4.7            (29 460)             (25 976)            (13 329)
+     Impôt sur les sociétés                                                                             4.9           (108 350)             (99 302)           (107 191)
+     Résultat net de l'ensemble consolidé                                                                               201 272             195 343              187 091
+     Résultat net attribuable aux propriétaires de la maison mère                                                       168 588             153 340              159 833
+     Résultat net attribuable aux participations ne donnant pas le contrôle                                             32 684               42 003               27 257
+     Résultat net par actions attribuable aux propriétaires de la maison mère                       4.10
+          -      de base                                                                                                  1 686               1 533                1 598
+          -      dilué                                              Sonatel Résultats Financiers 2020
+                                                                                                                          1 686               1 533                1 598
+Etats financiers consolidés 2020 IFRS : Compte de résultat (en million de FCFA)
+
+         Etat du résultat global consolidé
+         Le résultat global consolidé est fortement impacté par les écarts de conversion sur la Guinée et Sierra Leone réalisée sur l’exercice 2020
+
+
+         (en millions FCFA)                                                                                                2 020                2 019
+         Résultat net de l'ensemble consolidé                                                                           201 272              195 343
+         Eléments non recyclables en résultat                                                                                   -
+         Avantage post emploi, écart actuariel                                                                             4 255              (1 071)
+         Eléments recyclables en résultat                                                                                       -
+         Actifs disponibles à la vente                                                                                   (1 185)                      -
+         Ecarts de conversion                                                                                           (28 741)             (12 030)
+         Autres éléments du résultat global avant impôt                                                                 (25 671)             (13 100)
+         Impôt sur autres éléments du résultat global (non recyclable)                                                       272                (671)
+         Autres éléments du résultat global                                                                                  272             (13 771)
+         Résultat global de l'ensemble consolidé                                                                        175 873              181 572
+         Résultat global attribuable aux actionnaires du Groupe                                                         147 528              142 635
+         Résultat global attribuable aux participations ne donnant pas le contrôle                                        28 345               38 937
+
+
+
+
+                                                            Sonatel Résultats Financiers 2020
+Etats financiers consolidés 2020 IFRS : Actif (en million de FCFA)
+         (en millions de FCFA)                                                                     31-déc 2020       31-déc 2020       31-déc 2020
+                                                                                   Note
+         Actif
+         Ecart d'acquisition                                                        5.1                     38 662            43 912           49 640
+         Autres immobilisations incorporelles                                       5.2                   244 710            273 016          233 202
+         Immobilisations corporelles                                                5.2                   778 797            749 539          697 947
+         Titres mis en équivalence                                                  5.2                     3 052              3 671            3 996
+
+         Droits d'usage des immobilisations louées                                   8                      27 169            26 718                 -
+
+         Actifs financiers non courants                                             5.7                    159 275           145 720           139 110
+         Autres actifs non courants                                                 5.5                      8 345             8 340             8 447
+         Impôts différés actifs                                                     5.6                     17 504            18 647            17 260
+                                Total de l'actif non courant                                             1 277 513         1 269 562         1 149 602
+         Stocks                                                                     5.3                     12 302            14 247            13 043
+         Créances clients                                                           5.4                    130 467           116 959           107 810
+         Actifs financiers courants                                                 5.7                      5 833             6 683            12 395
+         Autres actifs courants                                                     5.5                    199 461           143 409           121 265
+         Impôts et taxes d'exploitation                                                                     62 133            57 711            47 440
+         Impôt sur les sociétés                                                                              4 651             7 366             3 468
+         Charges constatées d'avance                                                                         4 822             2 972             2 567
+
+         Disponibilités et quasi-disponibilités                                     5.8                   199 692            204 103          218 591
+         Total de l'actif courant                                                                          619 360           553 450           526 578
+         Total de l'actif                                                                                1 896 874         1 823 012         1 676 180
+
+                                                               Sonatel Résultats Financiers 2020                                                         2
+Etats financiers consolidés 2020 IFRS : Passif (en million de FCFA)
+      (en millions de FCFA)                                                                       Note   31-déc 2020      31-déc 2019      31-déc 2018
+      Passif
+      Capital social                                                                                             50 000           50 000           50 000
+      Réserves et primes d’émission                                                                            620 475          572 717          578 128
+      Ecarts de conversion                                                                        6.7          (58 828)         (34 586)         (25 518)
+      Actions propres                                                                                           (1 390)          (2 809)          (3 042)
+      Capitaux propres attribuables aux propriétaires de la société mère                                       610 258          585 323          599 567
+      Capitaux propres attribuables aux participations ne donnant pas le contrôle                              138 919          136 202          126 070
+      Total capitaux propres                                                                                   749 177          721 525          725 637
+      Passifs financiers non courants                                                             6.1          296 368          175 280          142 932
+      Dettes locatives non courantes                                                               8             22 508           19 402
+      Avantages du personnel non courants                                                         6.2            22 267           24 664          23 297
+      Autres passifs non courants                                                                 6.3             9 760            7 311           6 157
+      Total des passifs non courants                                                                           350 903          226 656          172 387
+      Passifs financiers courants                                                                 6.1          160 744          242 602          261 181
+      Dettes fournisseurs d'immobilisations courantes                                             6.5            99 896           95 311          79 275
+      Dettes fournisseurs sur autres biens et services                                            6.5           192 333         187 221          176 775
+      Passifs de contrats clients                                                                                 4 970           4 925            8 978
+      Dettes locatives courantes                                                                                  5 916           8 419
+      Avantages du personnel courants                                                                            14 324          13 933           12 104
+      Autres passifs courants                                                                     6.3           189 916         183 012          108 601
+      Impôts et taxes d'exploitation                                                                             54 246          64 240           56 999
+      Impôt sur les sociétés                                                                                     57 348          59 163           57 855
+      Produits constatés d'avance                                                                 6.6            17 100          16 006           16 389
+      Total des passifs courants                                                                                796 793         874 831          778 156
+      Total du passif et des capitaux propres                                                                 1 896 874       1 823 012        1 676 180
+                                                              Sonatel Résultats Financiers 2020
+Etats financiers consolidés 2020 IFRS : (en million de FCFA)
+
+       Tableau de variation des capitaux propres consolidés au 31 décembre 2020
+                                                                                                                       Attribuables aux
+                                                                                                                                                Total
+                                                      Attribuables aux propriétaires                                    participations
+                                                                                                                                              capitaux
+                                                            de la société mère                                        ne donnant pas le
+                                                                                                                                              propres
+                                                                                                                            contrôle
+                                       Capital                     Ecart de                Actions
+                                                   Réserves                                              Total       Réserves      Total
+                                       social                     conversion               propres
+
+      Solde au 31 décembre 2018           50 000     578 128            (25 518)               (3 042)    599 567       126 070    126 070     725 637
+
+      Résultat global consolidé                       153 340                                              153 340        42 003     42 003     195 343
+      Distribution de dividendes                    (157 149)                                            (157 149)      (39 229)   (39 229)   (196 398)
+      Autres mouvements                                (1 602)            (9 068)                 234     (10 436)         7 358      7 358      (3 078)
+
+      Solde au 31 décembre 2019           50 000     572 717            (34 586)               (2 809)    585 323       136 202    136 202     721 525
+
+           Résultat global consolidé                 168 589                                              168 589        32 684     32 684     201 272
+
+          Distribution de dividendes                (136 392)                                            (136 392)      (29 814)   (29 814)   (166 206)
+
+                Autres mouvements                     15 562            (24 242)                1 419      (7 261)        (153)       (153)     (7 414)
+
+      Solde au 31 décembre 2020           50 000     620 475            (58 828)               (1390)     610 258       138 919    138 919     749 177
+
+
+
+
+                                                           Sonatel Résultats Financiers 2020
+Etats financiers consolidés 2020 IFRS : (en million de FCFA)
+                    Tableau des Flux de trésorerie consolidés
+                                                              (en millions de FCFA)                                             2 020                   2 019
+     Flux de trésorerie lié à l'activité
+     Résultat net                                                                                                                           201 272                 195 343
+     Eléments non monétaires et reclassement de présentation
+     Impôts et taxes d'exploitation                                                                                      4.3                100 392                 116 852
+     Dotation aux amortissements                                                                                         4.6                185 759                 173 284
+     Réévaluation à la juste valeur des quote-parts antérieurement détenues                                                                                            (109)
+     Pertes de valeur des immobilisations                                                                                                                                (66)
+     Résultat de cession d'actifs et autres gains & pertes                                                                                      234                  (2 318)
+     Dotations (reprises) des autres provisions                                                                                               2 579                    1 610
+     Impôt sur les sociétés                                                                                              4.9                108 350                  99 302
+     Quote-part dans les résultats des entités mises en équivalence                                                                             636                      269
+     Résultat financier                                                                                                  4.7                 29 460                  25 977
+     Ecart de change net                                                                                                                      2 027                  (2 225)
+     Rémunération en actions                                                                                                                  7 351                    1 794
+     Variation du besoin en fonds de roulement
+     Diminution (augmentation) des stocks                                                                                                      1 849                 (1 954)
+     Diminution (augmentation) des créances clients                                                                                         (18 856)                (11 485)
+     Augmentation (diminution) des dettes fournisseurs                                                                                        15 483                  14 409
+     Var des passifs sur contrats clients                                                                                                         45                 (3 925)
+     Diminution (augmentation) des autres créances                                                                                          (64 457)                (29 977)
+     Augmentation (diminution) des autres dettes                                                                                              55 813                  36 377
+     Autres décaissements nets
+     Impôts et taxes d'exploitation décaissés                                                                                              (113 246)               (114 854)
+     Dividendes encaissés                                                                                                                        370                 (1 106)
+      Produits d'intérêts encaissés                                                                                                            8 168                   6 652
+     Intérêts décaissés et effet taux des dérivés net                                                                                       (32 519)                (24 167)
+     Impôts sur les sociétés décaissées                                                                                                    (105 218)   (103 947)
+     Trésorerie générée par les activités d'exploitation (a)                                                                   385 491                  375 735
+     Flux de trésorerie lié aux opérations d'investissement
+     Acquisitions d'immobilisations corporelles et incorporelles                                                         1.3               (211 621)   (269 304)
+     Augmentation (diminution) des fournisseurs d'immobilisations                                                                              5 446     21 263
+     Produits de cession des biens immobiliers et des autres actifs corporels et incorporels                                                     190      6 461
+     Acquisitions de titres de participation nettes de la trésorerie acquise                                                                 (3 870)    (1 319)
+     Produits de cession de titres de participation nets de la trésorerie cédée                                                                            164
+     Diminution (augmentation) des placements et autres actifs financiers                                                                    (5 688)    (2 488)
+     Trésorerie générée par les activités d'investissement (b)                       Sonatel Résultats Financiers 2020         (215 543)               (245 223)
+Etats financiers consolidés 2020 IFRS : (en million de FCFA)
+
+        Tableau des Flux de trésorerie consolidés
+        (en millions de FCFA)                                                                        2 020       2 019
+        Flux de trésorerie lié aux opérations de financement
+        Emissions d'emprunts à long terme                                                          177 052       44563
+        Remboursements des emprunts à LT                                                           (34 602)
+        Remboursements dettes locatives                                                             (5 633)     (6 804)
+
+        Augmentation (diminution) des découverts bancaires et autres emprunts à court terme       (102 136)    (28 523)
+
+        Rachat d'actions                                                                             2 015         234
+        Contribution des actionnaires minoritaires                                                   1 382       3 745
+        Dividendes versés                                                                         (204 740)   (157 186)
+        Trésorerie générée par les activités de financement (c)                                   (166 662)    143 972
+
+        Variation monétaire des disponibilités et quasi-disponibilités (a) + (b) + (c)               3 286     (13 460)
+
+        Incidence de la variation des taux de change sur la trésorerie                              (7 698)     (1 028)
+        Autres incidences sur la trésorerie
+        Variation nette de trésorerie                                                               (4 412)    (14 487)
+        Variation nette des disponibilités et quasi-disponibilités
+        Disponibilités et quasi-disponibilités à l'ouverture                                       204 103     218 591
+        Variation nette des disponibilités et quasi-disponibilités                                  (4 412)    (14 487)
+        Disponibilités et quasi-disponibilités à la clôture                                        199 692     204 103
+
+
+                                                              Sonatel Résultats Financiers 2020
+Projet de résolution dividende 2020
+
+                         AFFECTATION DU RESULTAT DE L’EXERCICE 2020
+
+    L’Assemblée Générale, approuvant la proposition du Conseil d’Administration, constate l’existence d’un
+    résultat bénéficiaire de 150.446.962.632 F CFA.
+    L’Assemblée Générale décide de répartir le résultat ainsi qu’il suit :
+
+             Dividendes :     136.111.111.111 FCFA
+             Autres réserves : 14.335.851.521 FCFA
+                              ____________________
+             TOTAL             150.446.962.632 FCFA
+
+    En conséquence, l’Assemblée Générale Ordinaire fixe à 1.361 F CFA le dividende brut revenant à
+    chaque action.
+    Après déduction de la retenue à la source de 10 % au titre de l’IRVM, le dividende net de 1.225 F.CFA
+    par action sera mis en paiement à compter du 17 mai 2021.
+
+
+
+
+                                           Sonatel Résultats Financiers 2020                                 4
+Projet de résolution dividende 2020
+
+
+
+
+                            Sonatel Résultats Financiers 2020   4
+Projet de résolution dividende 2020
+
+
+
+
+                            Sonatel Résultats Financiers 2020   4
+Projet de résolution dividende 2020
+
+
+
+
+                            Sonatel Résultats Financiers 2020   4
+vous remercie !
+                  S O N A T E L . S N
+
+

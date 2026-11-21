@@ -1,0 +1,119 @@
+       BANK OF AFRICA - COTE D’IVOIRE
+
+
+
+
+ETATS FINANCIERS PUBLIABLES
+      31 DECEMBRE 2019
+       ____________________________
+
+
+
+
+                                        1
+Bilan Actif – Passif
+
+
+                                                            MONTANTS NETS                        VARIATION
+Poste                        ACTIF
+                                                           31/12/2018       31/12/2019        MONTANT           %
+ 1      CAISSE BANQUE CENTRALE CCP                           37 780           41 570            3 790         10,0%
+ 2      EFFETS PUBLICS ET VALEURS ASSIMILEES                164 259          202 100            37 841        23,0%
+ 3      CREANCES BANCAIRES ET ASSIMILEES                     28 879           16 717           -12 162        -42,1%
+ 4      CREANCES SUR LA CLIENTELE                           301 414          320 521            19 107         6,3%
+ 5      OBLIGATIONS ET AUTRES TITRES A REVENU FIXE              -                -                 -             -
+ 6      ACTIONS ET AUTRES TITRES A REVENU VARIABLE           11 449           1 120            -10 329        -90,2%
+ 7      ACTIONNAIRES OU ASSOCIES                                -                -                 -             -
+ 8      AUTRES ACTIFS                                        5 956            4 011             -1 945        -32,6%
+ 9      COMPTES DE REGULARISATION                            8 073            2 959             -5 114        -63,4%
+ 10     PARTICIPATIONS ET AUTRES TITRES DETENUS A LT         5 386            5 386                0           0,0%
+ 11     PARTS DANS LES ENTREPRISES LIEES                        -                -                 -             -
+ 12     PRETS SUBORDONNES                                       -                -                 -             -
+ 13     IMMOBILISATIONS INCORPORELLES                         861             1 108              247          28,7%
+ 14     IMMOBILISATIONS CORPORELLES                         12 870            13 005             135           1,1%
+                       TOTAL DE L'ACTIF                     576 928          608 499           31 571          5,5%
+
+
+
+
+                                                              MONTANTS NETS                       VARIATION
+Poste                        PASSIF
+                                                           31/12/2018        31/12/2019       MONTANT           %
+  1     BANQUES CENTRALES, CCP                                  -                -                -             -
+  2     DETTES INTERBANCAIRES ET ASSIMILEES                  139 116          161 626           22 510        16,2%
+  3     DETTES A L'EGARD DE LA CLIENTELE                     379 359          384 899           5 540         1,5%
+  4     DETTES REPRESENTEES PAR UN TITRE                        -                -                -           0,0%
+  5     AUTRES PASSIFS                                        2 973            3 098             125          4,2%
+  6     COMPTES DE REGULARISATION                             9 221            5 188            -4 033        -43,7%
+  7     PROVISIONS                                             467              486              19           4,1%
+  8     EMPRUNTS ET TITRES EMIS SUBORDONNES                    260               88              -172         -66,0%
+  9     CAPITAUX PROPRES                                     45 531            53 113           7 582         16,7%
+ 10                                   CAPITAL SOUSCRIT          20 000               20 000               -            -
+ 11                             PRIMES LIEES AU CAPITAL               675               675               -            -
+ 12                                           RESERVES          14 765               17 520           2 755     18,7%
+ 13                            ECARTS DE REEVALUATION                   -                 -               -            -
+ 14                           PROVISIONS REGLEMENTEES                   -                 -               -            -
+ 15                             REPORT A NOUVEAU ( +/- )            -1608               536           2 144   -133,3%
+ 16                             RESULTAT DE L'EXERCICE          11 699               14 382           2 683     22,9%
+                         TOTAL DU PASSIF                     576 928          608 499           31 571        5,5%
+
+
+
+
+                                                                                                                2
+Hors bilan
+
+
+                                                     MONTANTS NETS             VARIATION
+  Poste                  HORS BILAN
+                                                    31/12/2018   31/12/2019 MONTANT      %
+          ENGAGEMENTS DONNES                          76 070      72 307     -3 763    -4,9%
+   1      ENGAGEMENTS DE FINANCEMENT                  9 135       19 112      9 977    109,2%
+   2      ENGAGEMENTS DE GARANTIE                     66 935      53 195     -13 740   -20,5%
+   3      ENGAGEMENTS SUR TITRES                        0         15 000     15 000    100%
+
+          ENGAGEMENTS RECUS                          750 921      894 630    143 709   19,1%
+   4      ENGAGEMENTS DE FINANCEMENT
+   5      ENGAGEMENTS DE GARANTIE                    750 921      894 630    143 709   19,1%
+   6      ENGAGEMENTS SUR TITRES
+
+
+
+
+Compte de résultat
+
+                                                         MONTANTS              VARIATION
+  Poste                    POSTES
+                                                    31/12/2018 31/12/2019   MONTANT     %
+    1     INTERETS ET PRODUITS ASSIMILES             33 238       33 239        1       0,0%
+    2     INTERETS ET CHARGES ASSIMILEES             -12 464      -12 189      275      -2,2%
+    3     REVENUS DES TITRES A REVENU VARIABLE          -            -           -      0,0%
+    4     COMMISSIONS (PRODUITS)                     10 931       13 679      2 748     25,1%
+    5     COMMISSIONS (CHARGES)                       -2 337       -1 464      873     -37,3%
+          GAINS NETS SUR OPERATIONS DES
+    6                                                 1508         1 594        86      5,7%
+          PORTEFEUILLES DE NEGOCIATION
+          GAINS NETS SUR OPERATIONS DES
+    7                                                   -6           0          6      -100,0%
+          PORTEFEUILLES DE PLACEMENT ET ASSIMILES
+    8     AUTRES PRODUITS D'EXPL. BANCAIRE            2 458        1 395      -1 063   -43,2%
+    9     AUTRES CHARGES D'EXPL. BANCAIRE             -496         -880        -384     77,3%
+   10     PRODUIT NET BANCAIRE                       32 833       35 375      2 542     7,7%
+
+   11     SUBVENTIONS D'INVESTISSEMENT                  0            0          0          -
+   12     CHARGES GENERALES D'EXPLOITATION           -17 191      -17 576      -385     2,2%
+   13     DOTATION AUX AMORT.                         -1 878       -1 944       -66     3,5%
+   14     RESULTAT BRUT D'EXPLOITATION               13 763       15 855      2 092     15,2%
+   15     COÛT NET DU RISQUE                          -2 056       -1 458      598     -29,1%
+   16     RESULTAT D'EXPLOITATION                    11 707       14 397      2 690     23,0%
+   17     GAINS OU PERTES SUR ACTIFS IMMOBILISES       27           20          -7     -25,5%
+   18     RESULTAT AVANT IMPÔT                       11 734       14 417      2 683    22,9%
+   19     IMPÔTS SUR LES BENEFICES                    -35          -35          0       0,0%
+   20     RESULTAT NET                               11 699       14 382      2 683     22,9%
+
+
+
+
+                                                                                                3
+
+

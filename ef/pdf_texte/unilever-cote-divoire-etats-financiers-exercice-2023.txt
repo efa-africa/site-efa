@@ -1,0 +1,425 @@
+                                                                                                                                   -8-
+                                                                                                                                                                                                                                             BILAN SYSTEME NORMAL
+                                                                                                                                                                                                                                                    PAGE 1/1
+
+Dénomination sociale de l'entité :         UNILEVER COTE D'IVOIRE SA
+Adresse :                                  BOULEVARD DE VRIDI, 01 BP 1751 ABIDJAN 01, 01 BP 1751 ABIDJAN 01                                                                                                                              Sigle usuel :              UNI
+N° de compte contribuable (NCC) :          6900765 R                                                                                             Exercice clos le :                              31/12/2023                            Durée (en mois) :             12
+
+N° de télédéclarant (NTD):                 6359645458433
+
+                                                                                                                                 BILAN
+
+                                                                                                                                                EXERCICE AU                                                                                 EXERCICE AU         EXERCICE AU
+                                                                                                      EXERCICE au 31/12/ N
+                                                                                                                                                  31/12/N-1                                                                                   31/12/N             31/12/N-1
+REF                                        ACTIF                              NOTE                                                                                    REF                          PASSIF                        NOTE
+                                                                                                              AMORT et
+                                                                                           BRUT                                  NET                NET                                                                                          NET                NET
+                                                                                                              DEPREC.
+
+ AD      IMMOBILISATIONS INCORPORELLES                                          3        13 078 589 800        9 224 425 772    3 854 164 028     3 818 086 393       CA    Capital                                               13          24 336 010 000     24 336 010 000
+
+ AE      Frais de développement et de prospection                                                                                                               0     CB    Apporteurs capital non appelé (-)                     13
+
+ AF      Brevets, licences, logiciels et droits similaires                                3 297 262 993        3 261 185 358      36 077 635                    0     CD    Primes liées au capital social                        14
+
+ AG      Fonds commercial et droit au bail                                                9 781 326 807        5 963 240 414    3 818 086 393     3 818 086 393       CE    Ecarts de réévaluation                                3e
+
+ AH      Autres immobilisations incorporelles                                                                                                                   0     CF    Réserves indisponibles                                14
+
+  AI     IMMOBILISATIONS CORPORELLES                                            3        25 299 924 110       19 933 512 644    5 366 411 466     6 762 980 171 CG          Réserves libres                                       14
+        Terrains (1)
+ AJ                                                                                        289 787 663                           289 787 663        436 671 732       CH    Report à nouveau (+ ou -)                             14         -35 635 200 951     -28 726 838 949
+        dont Placement Net :
+        Bâtiments(1)
+ AK                                                                                       6 088 483 908        5 056 371 327    1 032 112 581     1 135 047 096       CJ    Résultat net de l'exercice (bénéfice + ou perte -)                   640 334 855      -6 908 362 002
+        dont Placement Net :
+ AL      Aménagements, agencements et installations                                           1 138 300                             1 138 300        64 604 055       CL    Subventions d'investissement                          15
+
+ AM      Matériel, mobilier et actifs biologiques                                        17 497 617 778       13 995 000 848    3 502 616 930     4 375 003 678 CM          Provisions réglementées                               15
+
+                                                                                                                                                                            TOTAL CAPITAUX PROPRES ET RESSOURCES
+ AN      Matériel de transport                                                            1 422 896 461         882 140 468      540 755 993        751 653 610       CP                                                                     -10 658 856 096     -11 299 190 951
+                                                                                                                                                                            ASSIMILEES
+
+ AP      AVANCES ET ACOMPTES VERSES SUR IMMOBILISATIONS                         3                                                                               0     DA    Emprunts et dettes financières diverses               16             509 775 940        266 899 600
+
+ AQ      IMMOBILISATIONS FINANCIERES                                            4          678 238 769          411 989 216      266 249 553        152 503 148       DB    Dettes de location-acquisition                        16               71 729 559       167 090 675
+
+ AR      Titres de participation                                                           408 025 286          408 025 286                                     0     DC    Provisions pour risques et charges                    16           3 797 596 438      3 393 309 140
+
+                                                                                                                                                                            TOTAL DETTES FINANCIERES ET RESSOURCES
+ AS      Autres immobilisations financières                                                270 213 483             3 963 930     266 249 553        152 503 148       DD                                                                       4 379 101 937      3 827 299 415
+                                                                                                                                                                            ASSIMILEES
+
+ AZ      TOTAL ACTIF IMMOBILISE                                                          39 056 752 679       29 569 927 632    9 486 825 047    10 733 569 712       DF    TOTAL RESSOURCES STABLES                                           -6 279 754 158     -7 471 891 536
+
+ BA      ACTIF CIRCULANT HAO                                                    5                                                                               0     DH    Dettes circulantes HAO                                5
+
+ BB      STOCKS ET ENCOURS                                                      6         5 345 672 200        1 249 292 214    4 096 379 986     4 823 393 080       DI    Clients, avances reçues                               7              905 800 202      1 212 939 182
+
+ BG      CREANCES ET EMPLOIS ASSIMILES                                                    8 447 747 648        1 938 857 743    6 508 889 905     5 264 973 154       DJ    Fournisseurs d'exploitation                           17          10 963 785 237     10 582 162 075
+
+ BH      Fournisseurs avances versées                                          17          439 212 255                           439 212 255         56 192 403       DK    Dettes fiscales et sociales                           18           2 307 150 602      3 547 889 215
+
+  BI     Clients                                                                7         6 911 578 990        1 751 821 077    5 159 757 913     4 684 194 441 DM          Autres dettes                                         19             215 493 353        205 065 262
+
+ BJ      Autres créances                                                        8         1 096 956 403         187 036 666      909 919 737        524 586 310       DN    Provisions pour risques et charges à court terme      19
+
+ BK      TOTAL ACTIF CIRCULANT                                                           13 793 419 848        3 188 149 957   10 605 269 891    10 088 366 234       DP    TOTAL PASSIF CIRCULANT                                            14 392 229 394     15 548 055 734
+
+ BQ      Titres de placement                                                    9
+
+ BR      Valeurs à encaisser                                                   10                                                                                     DQ    Banques, crédits d'escompte                           20
+
+                                                                                                                                                                            Banques, établissements financiers
+ BS      Banques, chèques postaux, caisse et assimilés                         11         2 917 467 737                         2 917 467 737     3 662 452 030       DR                                                          20          14 874 515 701     16 361 686 358
+                                                                                                                                                                            et crédits de trésorerie
+
+ BT      TOTAL TRESORERIE-ACTIF                                                           2 917 467 737                         2 917 467 737     3 662 452 030       DT    TOTAL TRESORERIE-PASSIF                                           14 874 515 701     16 361 686 358
+
+ BU      Ecart de conversion-Actif                                             12                                                                                     DV    Ecart de conversion-Passif                            12               22 571 739        46 537 419
+
+ BZ      TOTAL GENERAL                                                                   55 767 640 264       32 758 077 589   23 009 562 675    24 484 387 976       DZ    TOTAL GENERAL                                                     23 009 562 675     24 484 387 975
+                                                                                  -9-
+                                                                                                                                        BILAN SYSTEME NORMAL
+                                                                                                                                               PAGE 1/2
+
+Dénomination sociale de l'entité :            UNILEVER COTE D'IVOIRE SA
+Adresse :                                     BOULEVARD DE VRIDI, 01 BP 1751 ABIDJAN 01, 01 BP 1751 ABIDJAN 01                          Sigle usuel :       UNI
+N° de compte contribuable (NCC) :             6900765 R                                  Exercice clos le :      31/12/2023        Durée (en mois) :        12
+N° de télédéclarant (NTD):                    6359645458433
+
+                                                                                BILAN
+
+                                                                                                                                                        EXERCICE AU
+                                                                                                          EXERCICE au 31/12/ N
+                                                                                                                                                          31/12/N-1
+REF                                         ACTIF                              NOTE
+                                                                                            BRUT              AMORT et DEPREC.         NET                 NET
+
+ AD     IMMOBILISATIONS INCORPORELLES                                             3       13 078 589 800           9 224 425 772      3 854 164 028       3 818 086 393
+
+ AE     Frais de développement et de prospection                                                                                                                      0
+
+ AF     Brevets, licences, logiciels, et droits similaires                                 3 297 262 993           3 261 185 358         36 077 635                   0
+
+ AG     Fonds commercial et droit au bail                                                  9 781 326 807           5 963 240 414      3 818 086 393       3 818 086 393
+
+ AH     Autres immobilisations incorporelles                                                                                                                          0
+
+ AI     IMMOBILISATIONS CORPORELLES                                               3       25 299 924 110          19 933 512 644      5 366 411 466       6 762 980 171
+
+        Terrains (1)
+ AJ                                                                                          289 787 663                                289 787 663         436 671 732
+        dont Placement Net:
+
+        Bâtiments (1)
+ AK                                                                                        6 088 483 908           5 056 371 327      1 032 112 581       1 135 047 096
+        dont Placement Net:
+
+ AL     Aménagements, agencements et installations                                              1 138 300                                 1 138 300          64 604 055
+
+ AM     Matériel, mobilier et actifs biologiques                                          17 497 617 778          13 995 000 848      3 502 616 930       4 375 003 678
+
+ AN     Matériel de transport                                                              1 422 896 461            882 140 468         540 755 993         751 653 610
+
+ AP     AVANCES ET ACOMPTES VERSES SUR IMMOBILISATIONS                                                                                                                0
+
+ AQ     IMMOBILISATIONS FINANCIERES                                               4          678 238 769            411 989 216         266 249 553         152 503 148
+
+ AR     Titres de participation                                                              408 025 286            408 025 286                                       0
+
+ AS     Autres immobilisations financières                                                   270 213 483               3 963 930        266 249 553         152 503 148
+
+ AZ     TOTAL ACTIF IMMOBILISE                                                            39 056 752 679          29 569 927 632      9 486 825 047      10 733 569 712
+
+ BA     ACTIF CIRCULANT HAO                                                       5                                                                                   0
+
+ BB     STOCKS ET ENCOURS                                                         6        5 345 672 200           1 249 292 214      4 096 379 986       4 823 393 080
+
+ BG     CREANCES ET EMPLOIS ASSIMILES                                                      8 447 747 648           1 938 857 743      6 508 889 905       5 264 973 154
+
+ BH     Fournisseurs avances versées                                             17          439 212 255                                439 212 255          56 192 403
+
+ BI     Clients                                                                  7         6 911 578 990           1 751 821 077      5 159 757 913       4 684 194 441
+
+ BJ     Autres créances                                                           8        1 096 956 403            187 036 666         909 919 737         524 586 310
+
+ BK     TOTAL ACTIF CIRCULANT                                                             13 793 419 848           3 188 149 957    10 605 269 891       10 088 366 234
+
+ BQ     Titres de placement                                                      9
+
+ BR     Valeurs à encaisser                                                      10
+
+ BS     Banques, chèques postaux, caisse et assimilés                            11        2 917 467 737                              2 917 467 737       3 662 452 030
+
+ BT     TOTAL TRESORERIE-ACTIF                                                             2 917 467 737                              2 917 467 737       3 662 452 030
+
+ BU     Ecart de conversion-Actif                                                12
+
+ BZ     TOTAL GENERAL                                                                     55 767 640 264          32 758 077 589    23 009 562 675       24 484 387 976
+                                                                                - 10 -
+                                                                                                                    BILAN SYSTEME NORMAL
+                                                                                                                           PAGE 2/2
+
+Dénomination sociale de l'entité :          UNILEVER COTE D'IVOIRE SA
+Adresse :                                   BOULEVARD DE VRIDI, 01 BP 1751 ABIDJAN 01, 01 BP 1751 ABIDJAN 01        Sigle usuel :       UNI
+N° de compte contribuable (NCC) :           6900765 R                 Exercice clos le :   31/12/2023          Durée (en mois) :         12
+N° de télédéclarant (NTD):                  6359645458433
+
+                                                                               BILAN
+
+                                                                                                               EXERCICE AU          EXERCICE AU
+                                                                                                                 31/12/N              31/12/N-1
+REF                                                     PASSIF                                          NOTE
+                                                                                                                   NET                  NET
+
+ CA     Capital                                                                                          13      24 336 010 000       24 336 010 000
+
+ CB     Apporteurs capital non appelé (-)                                                                13
+
+ CD     Primes liées au capital social                                                                   14
+
+ CE     Ecarts de réévaluation                                                                           3e
+
+ CF     Réserves indisponibles                                                                           14
+
+ CG     Réserves libres                                                                                  14
+
+ CH     Report à nouveau (+ ou -)                                                                        14     -35 635 200 951      -28 726 838 949
+
+ CJ     Résultat net de l'exercice (bénéfice + ou perte -)                                                          640 334 855       -6 908 362 002
+
+ CL     Subventions d'investissement                                                                     15
+
+ CM     Provisions réglementées                                                                          15
+
+ CP     TOTAL CAPITAUX PROPRES ET RESSOURCES ASSIMILEES                                                         -10 658 856 096      -11 299 190 951
+
+ DA     Emprunts et dettes financières diverses                                                          16         509 775 940         266 899 600
+
+ DB     Dettes de location-acquisition                                                                   16          71 729 559         167 090 675
+
+ DC     Provisions pour risques et charges                                                               16       3 797 596 438        3 393 309 140
+
+ DD     TOTAL DETTES FINANCIERES ET RESSOURCES ASSIMILEES                                                         4 379 101 937        3 827 299 415
+
+ DF     TOTAL RESSOURCES STABLES                                                                                 -6 279 754 158       -7 471 891 536
+
+ DH     Dettes circulantes HAO                                                                           5
+
+ DI     Clients, avances reçues                                                                          7          905 800 202        1 212 939 182
+
+ DJ     Fournisseurs d'exploitation                                                                      17      10 963 785 237       10 582 162 075
+
+ DK     Dettes fiscales et sociales                                                                      18       2 307 150 602        3 547 889 215
+
+ DM     Autres dettes                                                                                    19         215 493 353         205 065 262
+
+ DN     Provisions pour risques et charges à court terme                                                 19
+
+ DP     TOTAL PASSIF CIRCULANT                                                                                   14 392 229 394       15 548 055 734
+
+
+
+
+ DQ     Banques, crédits d'escompte                                                                      20
+
+ DR     Banques, établissements financiers et crédits de trésorerie                                      20      14 874 515 701       16 361 686 358
+
+ DT     TOTAL TRESORERIE-PASSIF                                                                                  14 874 515 701       16 361 686 358
+
+ DV     Ecart de conversion-Passif                                                                       12          22 571 739          46 537 419
+
+ DZ     TOTAL GENERAL                                                                                            23 009 562 675       24 484 387 975
+                                                                                     -11-
+                                                                                                                        COMPTE DE RESULTAT SYSTEME NORMAL
+                                                                                                                                     PAGE 1/1
+
+Dénomination sociale de l'entité :                 UNILEVER COTE D'IVOIRE SA
+Adresse :                                          BOULEVARD DE VRIDI, 01 BP 1751 ABIDJAN 01, 01 BP 1751 ABIDJAN 01 Sigle usuel :                     UNI
+N° de compte contribuable (NCC) :                  6900765 R                  Exercice clos le :           31/12/2023         Durée (en mois) :        12
+N° de télédéclarant (NTD):                         6359645458433
+
+                                                                      COMPTE DE RESULTAT
+
+                                                                                                                              EXERCICE AU         EXERCICE AU
+REF                                                    LIBELLES                                             (2)   NOTE          31/12/N             31/12/N-1
+
+                                                                                                                                 NET (1)            NET (1)
+
+ TA      Ventes de marchandises                                                                        A     +     21           12 706 987 210     15 556 859 542
+
+ RA      Achats de marchandises                                                                              -     22           -8 042 707 101     -10 416 745 984
+
+ RB      Variation de stocks de marchandises                                                                -/+     6             453 653 503        -872 246 398
+
+ XA      MARGE COMMERCIALE (Somme TA à RB)                                                                                       5 117 933 612      4 267 867 160
+
+ TB      Ventes de produits fabriqués                                                                  B     +     21           21 502 012 987     20 488 098 845
+
+ TC      Travaux, services vendus                                                                      C     +     21             197 983 716         123 337 384
+
+ TD      Produits accessoires                                                                          D     +     21             275 099 302           6 267 608
+
+ XB      CHIFFRE D'AFFAIRES (A + B + C + D)                                                                                     34 682 083 215     36 174 563 379
+
+ TE      Production stockée (ou déstockage)                                                                 -/+     6           -1 117 134 377      1 172 309 475
+
+  TF     Production immobilisée                                                                              +     21
+
+ TG      Subventions d’exploitation                                                                          +     21
+
+ TH      Autres produits                                                                                     +     21            3 798 127 409        738 152 160
+
+  TI     Transferts de charges d'exploitation                                                                +     12
+
+ RC      Achats de matières premières et fournitures liées                                                   -     22           -8 209 584 190      -9 952 588 441
+
+ RD      Variation de stocks de matières premières et fournitures liées                                     -/+     6             -292 742 974       -433 435 687
+
+ RE      Autres achats                                                                                       -     22           -2 682 408 810      -3 016 805 562
+
+ RF      Variation de stocks d’autres approvisionnements                                                    -/+     6               20 830 330          -5 455 713
+
+ RG      Transports                                                                                          -     23           -1 006 090 171      -1 285 679 256
+
+ RH      Services extérieurs                                                                                 -     24           -3 795 607 862      -3 786 343 890
+
+  RI     Impôts et taxes                                                                                     -     25           -1 093 737 963      -2 628 154 046
+
+ RJ      Autres charges                                                                                      -     26           -2 430 758 627      -4 451 139 264
+
+ XC      VALEUR AJOUTEE (XB +RA+RB) + (somme TE à RJ)                                                                           10 283 922 382      1 236 430 773
+
+ RK      Charges de personnel                                                                                -     27           -6 943 279 205      -7 494 579 141
+
+ XD      EXCEDENT BRUT D'EXPLOITATION (XC+RK)                                                                                    3 340 643 177      -6 258 148 368
+
+  TJ     Reprises d’amortissements, provisions et dépréciations                                              +     28            2 636 057 740      5 452 122 715
+
+ RL      Dotations aux amortissements, aux provisions et dépréciations                                       -    3C&28         -4 403 147 580      -3 447 558 152
+
+ XE      RESULTAT D'EXPLOITATION (XD+TJ+ RL)                                                                                     1 573 553 337      -4 253 583 805
+
+ TK      Revenus financiers et assimilés                                                                     +     29             135 997 564         566 453 383
+
+  TL     Reprises de provisions et dépréciations financières                                                 +     28             166 108 146
+
+ TM      Transferts de charges financières                                                                   +     12
+
+ RM      Frais financiers et charges assimilées                                                              -     29           -1 042 411 785      -1 667 803 799
+
+ RN      Dotations aux provisions et aux dépréciations financières                                           -    3C&28                              -166 108 146
+
+ XF      RESULTAT FINANCIER (somme TK à RN)                                                                                       -740 306 075      -1 267 458 562
+
+ XG      RESULTAT DES ACTIVITES ORDINAIRES (XE+XF)                                                                                833 247 262       -5 521 042 367
+
+ TN      Produits des cessions d'immobilisations                                                             +     3D            1 117 500 000
+
+ TO      Autres Produits HAO                                                                                 +     30
+
+ RO      Valeurs comptables des cessions d'immobilisations                                                   -     3D             -146 884 069       -257 587 187
+
+ RP      Autres Charges HAO                                                                                  -     30
+
+ XH      RESULTAT HORS ACTIVITES ORDINAIRES (somme TN à RP)                                                                       970 615 931        -257 587 187
+
+ RQ      Participation des travailleurs                                                                      -     30
+
+ RS      Impôts sur le résultat                                                                              -     37           -1 163 528 338      -1 129 732 448
+
+  XI     RESULTAT NET (XG+XH+RQ+RS)                                                                                               640 334 855       -6 908 362 002
+
+(1):   Les montants seront précédés de signes (+) ou (-) en fonction de leurs soldes dans la balance générale:
+       (+/-) : Solde débiteur "(-)", solde créditeur "(+)"
+
+(2):   Les signes de cette colonne sont indicateurs du sens structurel des soldes,
+       ils ne jouent pas le rôle de signes opérateurs.
+                                                                                 - 12 -
+                                                                                                                 FLUX DE TRESORERIE SYSTEME NORMAL
+                                                                                                                              PAGE 1/1
+
+Dénomination sociale de l'entité :         UNILEVER COTE D'IVOIRE SA
+Adresse :                                  BOULEVARD DE VRIDI, 01 BP 1751 ABIDJAN 01, 01 BP 1751 ABIDJAN 01               Sigle usuel :      UNI
+N° de compte contribuable (NCC) :          6900765 R                  Exercice clos le :          31/12/2023          Durée (en mois) :       12
+N° de télédéclarant (NTD):                 6359645458433
+
+                                                               TABLEAU DES FLUX DE TRESORERIE
+
+                                                                                                                       EXERCICE           EXERCICE
+REF                                                      LIBELLES                                              NOTE
+                                                                                                                            N                N-1
+         Trésorerie nette au 1er janvier
+ ZA                                                                                                        A           -12 699 234 328     -6 217 821 505
+        (Trésorerie actif N-1 - Trésorerie passif N-1)
+
+         Flux de trésorerie provenant des activités opérationnelles
+
+ FA      Capacité d'Autofinancement Globale (CAFG)                                                                       1 270 700 618     -8 489 231 232
+
+ FB      - Variation d'actif circulant HAO (1)
+
+ FC      - Variation des stocks                                                                                           727 013 094      1 081 352 441
+
+ FD      - Variation des créances                                                                                       -1 243 916 751    10 653 850 089
+
+ FE      + Variation du passif circulant (1)                                                                            -1 155 826 340     -9 452 059 667
+
+         Variation du BF lié aux activités opérationnelles
+
+         FB+FC+FD+FE :                     -        1 672 729 997        2 283 142 863
+
+ ZB      Flux de trésorerie provenant des activités opérationnelles (Somme FA à FE)                        B              -402 029 380     -6 206 088 369
+
+         Flux de trésorerie provenant des activités d’investissements
+
+ FF      - Décaissements liés aux acquisitions d'immobilisations incorporelles
+
+ FG      - Décaissements liés aux acquisitions d'immobilisations corporelles                                                                  -69 024 570
+
+ FH      - Décaissements liés aux acquisitions d'immobilisations financières                                              -117 754 630      -264 368 971
+
+  FI     + Encaissements liés aux cessions d’immobilisations incorporelles et corporelles                                1 117 500 000
+
+ FJ      + Encaissements liés aux cessions d’immobilisations financières                                                                     147 303 743
+
+ ZC      Flux de trésorerie provenant des activités d’investissement (somme FF à FJ)                       C              999 745 370       -186 089 798
+
+         Flux de trésorerie provenant du financement par les capitaux propres
+
+ FK      + Augmentations de capital par apports nouveaux
+
+ FL      + Subventions d'investissement reçues
+
+ FM      - Prélèvements sur le capital
+
+ FN      - Dividendes versés
+
+ ZD      Flux de trésorerie provenant des capitaux propres (somme FK à FN)                                 D
+
+         Trésorerie provenant du financement par les capitaux étrangers
+
+ FO      + Emprunts (2)
+
+ FP      + Autres dettes financières diverses (3)                                                                         352 376 240         20 500 000
+
+ FQ      - Remboursements des emprunts et autres dettes financières                                                       -207 905 866      -109 734 657
+
+ ZE      Flux de trésorerie provenant des capitaux étrangers (somme FO à FQ)                               E              144 470 374         -89 234 657
+
+ ZF      Flux de trésorerie provenant des activités de financement (D+E)                                   F              144 470 374         -89 234 657
+
+ ZG      VARIATION DE LA TRÉSORERIE NETTE DE LA PÉRIODE (B+C+F)                                            G              742 186 364      -6 481 412 823
+
+ ZH      Trésorerie nette au 31 Décembre (G+A)                                                             H           -11 957 047 964    -12 699 234 328
+
+         Contrôle : Trésorerie actif N - Trésorerie passif N                                                           -11 957 047 964    -12 699 234 328
+ (1)   A l’exclusion des variations des créances et dettes liées aux activités d’investissement
+ (2)   Comptes 161, 162, 1661, 1662                                                                                             -
+ (3)   Comptes 16 sauf Comptes (161, 162, 1661, 1662) et comptes 18
+
+

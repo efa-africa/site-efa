@@ -1,0 +1,493 @@
+PUBLIC   #
+
+
+
+
+              Le Groupe Ecobank publie ses résultats financiers audités de l'exercice 2021 :
+              - Produit net bancaire : +5% à 1,8 milliards $EU ( 974 milliards FCFA)
+              - Résultat avant impôt:+174% à 478 millions $EU ( 265 milliards FCFA)
+              - Total du bilan : +6% à 27,6 milliards $EU ( 15 963 milliards FCFA)
+              -Total capitaux propres: +7% à 2,2 milliards $EU(1 254 milliards FCFA)
+             Chiffres Clés*                                                31 Décembre 2021                       31 Décembre 2020                                        Variation
+                                                                    milliers $EU        millions FCFA       milliers $EU     millions FCFA                     $EU                        FCFA
+
+             Produit net bancaire                                     1 756 714                974 058        1 679 765             966 891                       5%                           1%
+
+             Résultat avant dépréciation du goodwill
+                                                                        477 992                265 036          337 882             194 489                     41%                           36%
+
+             Résultat avant impôt                                       477 992                265 036          174 318             100 339                    174%                           164%
+
+             Résultat net consolidé                                     357 366                198 151            88 319             50 837                    305%                           290%
+
+             Total du bilan                                          27 561 793            15 962 697        25 939 473          13 866 171                       6%                          15%
+
+             Crédits à la clientèle                                   9 575 865              5 545 961        9 239 948           4 939 295                       4%                          12%
+
+             Dépôts de la clientèle                                  19 713 349            11 417 190        18 296 952           9 780 795                       8%                          17%
+             Capitaux propres                                         2 164 306              1 253 480        2 027 713           1 083 932                       7%                          16%
+
+             Résultat net par action (en cents $EU / FCFA)                 1,063                 5,892             0,010              0,056                  10785%                     10385%
+             Dividendes par action (en cents $EU )                     0,16
+
+
+             2021 a été l’année de toutes les transformations pour Ecobank, déclare Ade Ayeyemi, CEO du Groupe Ecobank.
+
+             « La Banque a accompli des progrès significatifs dans la réalisation de ses priorités stratégiques et a dégagé de solides rendements commerciaux et financiers. Nos revenus
+             ont augmenté, nous avons continué de faire preuve d’efficacité, la qualité du crédit s’est améliorée, nous avons consolidé le bilan et, pour la première fois depuis 2016, notre
+             Conseil d’administration a recommandé le versement de dividendes aux actionnaires. »
+
+             Le résultat avant impôt ressort à 478 millions $EU, en hausse de 140 millions $EU (après dotations aux provisions pour dépréciation du goodwill de 164 millions $EU en 2020)
+             et nous avons enregistré un rendement record des capitaux propres tangibles (ROTE) de 19 % Le produit net bancaire (produit d’exploitation total) a augmenté de 5 % pour
+             atteindre 1,8 milliard $EU, porté par notre modèle opérationnel diversifié et notre détermination à augmenter notre part de marché dans nos activités Financement du
+             commerce, Paiements, produits à revenus fixes, devises et matières premières (FICC). Par ailleurs, le coefficient d’exploitation de 58,9 % a atteint un plus bas depuis 10 ans »
+             précise M. Ayeyemi.
+
+             La qualité du crédit demeure particulièrement élevée, avec des prêts non performants à un niveau historiquement bas de 6,2 % du total des prêts et la diminution du risque de
+             concentration du portefeuille de crédit. Nous avons, en outre, constitué de manière proactive des provisions supérieures à 100 % des prêts non performants. La croissance des
+             dépôts a été robuste (hausse de 1,4 milliard $EU, soit +8 %), avec à la clé une forte augmentation des liquidités et une croissance modeste de nos prêts. Les investissements
+             dans le positionnement d’Ecobank en tant que levier crédible de l’activité économique pour les ménages, les entreprises et les gouvernements en Afrique augurent d’une année
+             2022 (ainsi que les années suivantes) placée sous les meilleurs auspices. Aux bénéfices procurés par ces investissements s’ajoute la perspective d’une forte reprise
+             économique mondiale suite à l’allègement des restrictions liées à la pandémie de Covid-19. »
+
+             « Toutefois, la prudence reste de mise eu égard aux déconvenues à l’échelle mondiale que sont : le projet du FMI de revoir à la baisse des prévisions de croissance mondiale,
+             dans un contexte d’inflation galopante, avec environ 60 % des pays à faible revenu en situation ou exposés au risque de “surendettement” et la récente invasion de l’Ukraine
+             par la Russie. Dans ce contexte, le devenir des économies africaines demeure incertain alors que les risques de contagion se propagent, que la Fed américaine et les autres
+             banques centrales des pays développés relèvent leurs taux d’intérêt, que les prix de l’énergie s’envolent et que les tensions géopolitiques exacerbent l’inflation et les goulets
+             d’étranglement dans la chaîne d’approvisionnement. Les répercussions de ces évolutions ont déjà contraint certaines banques centrales africaines à relever leurs taux, alors
+             que les prix des biens et des services s’envolent et que les monnaies sont sous pression, avec tout ce que cela implique en matière de sécurité. En ces temps agités, nous,
+             autres, Ecobankers, restons concentrés à l’extrême sur la conduite responsable de nos activités, sur notre engagement envers les principes ESG et sur nos investissements
+             dans la Fondation Ecobank. Nous n’aurons de cesse de mener à bien nos priorités stratégiques, de nous appuyer sur des technologies de pointe et de servir nos clients et nos
+             communautés. »
+
+              Enfin, je tiens à remercier tous les Ecobankers pour leur détermination sans faille à concrétiser notre vision et à demeurer la banque dans laquelle l’Afrique et les amis de
+             l’Afrique placent leur confiance. »
+
+
+
+
+#   PUBLIC                                                                                        1
+PUBLIC   #
+
+
+
+
+             Ecobank Transnational Incorporated
+             Exercice clos au 31 Décembre 2021
+
+
+             Responsabilité du Conseil d'Administration
+
+             Responsabilité relative aux états financiers consolidés
+
+
+             Les administrateurs sont responsables de la préparation des états financiers consolidés annuels donnant une image fidèle de la situation financière de la société et du
+             résultat de ses opérations de l’exercice. Cette responsabilité comprend :
+
+             (a) l'assurance que la société tient à jour des livres comptables probants qui présentent, avec une exactitude raisonnable, la situation financière de la société et des filiales;
+
+             (b) la conception, la mise en oeuvre et le fonctionnement d'un système de contrôle interne permettant l'établissement de comptes réguliers et sincères ne comportant pas
+             d'anomalies significatives dues à des fraudes ou à des erreurs; et
+
+             (c) la préparation des états financiers par l’application des principes comptables appropriés, soutenus par des estimations et des jugements raisonnables et prudents
+             appliqués de façon constante. (Permanence des méthodes).
+
+             Les administrateurs assument la responsabilité des états financiers consolidés et attestent qu’ils ont été établis en application des principes comptables appropriés, sur la
+             base d’estimations et de jugements prudents et raisonnables, conformément aux Normes Internationales d’Information Financière (IFRS).
+
+             Les administrateurs sont d'avis que les états financiers consolidés donnent une image fidèle de la situation financière du Groupe ainsi que du résultat de ses opérations au
+             titre de l'exercice. En outre, les administrateurs acceptent la responsabilité de tenir à jour des livres comptables probants étayant la préparation des états financiers
+             consolidés ainsi que de la fiabilité du système de contrôle interne.
+
+             A ce jour, les administrateurs n'ont connaissance d'aucun évènement indiquant que la société pourrait être en cessation d'activité dans les douze prochains mois.
+
+
+
+
+             Approbation des états financiers consolidés annuels
+
+
+             Les états financiers consolidés annuels ont été approuvés par le Conseil d'Administration du 25 Février 2022 et ont été signés par délégation par :
+
+
+
+
+             Alain Nkontchou                                                                                                                            Ade Ayeyemi
+             Président du Conseil d'Administration                                                                                                      Directeur Général du Groupe
+
+
+
+
+#   PUBLIC                                                                                          1
+RAPPORT DE L’AUDITEUR INDÉPENDANT SUR LES ÉTATS FINANCIERS CONSOLIDES RÉSUMÉS
+Aux actionnaires de ECOBANK TRANSNATIONAL INCORPORATED
+
+Opinion
+
+Les états financiers consolidés résumés d’Ecobank Transnational Incorporated, qui comprennent le bilan
+consolidé résumé au 31 décembre 2021, le compte de résultat consolidé résumé, l’état résumé des
+variations des capitaux propres et le tableau résumé des flux de trésorerie pour l’exercice clos à cette date,
+ainsi que les notes annexes, sont tirés des états financiers consolidés audités d’Ecobank Transnational
+Incorporated pour l’exercice clos le 31 décembre 2021.
+
+À notre avis, les états financiers consolidés résumés ci-joints sont cohérents, dans tous leurs aspects
+significatifs, avec les états financiers consolidés audités d’Ecobank Transnational Incorporated,
+conformément à la norme internationale d'audit (ISA) 810 (révisée), Missions visant la délivrance d’un
+rapport sur des états financiers résumés.
+
+États financiers consolidés résumés
+
+Les états financiers consolidés résumés ne contiennent pas toutes les informations requises par les Normes
+Internationales d'Information Financière. La lecture des états financiers résumés et du rapport de l’auditeur
+sur ceux-ci ne saurait par conséquent se substituer à la lecture des états financiers consolidés audités
+d’Ecobank Transnational Incorporated et du rapport de l’auditeur sur ces derniers. Ni les états financiers
+résumés ni les états financiers audités ne reflètent les incidences d’événements postérieurs à la date de
+notre rapport sur les états financiers audités.
+
+Les états financiers consolidés audités et notre rapport sur ces états
+
+Nous avons exprimé une opinion non modifiée sur les états financiers consolidés audités dans notre rapport
+daté du 07 Mars 2022. Ce rapport comprend également la communication de la question clé d’audit. Les
+questions clés de l’audit sont les questions qui, selon notre jugement professionnel, ont été les plus
+importantes dans l’audit des états financiers de la période considérée.
+
+Responsabilité de la direction pour les états financiers résumés
+
+La direction est responsable de la préparation des états financiers consolidés résumés conformément aux
+exigences.
+
+Responsabilité de l’auditeur
+
+Notre responsabilité consiste à exprimer une opinion indiquant si les états financiers consolidés résumés
+sont cohérents, dans tous leurs aspects significatifs, avec les états financiers audités, sur la base des
+procédures que nous avons mises en œuvre conformément à la Norme internationale d’audit (ISA) 810
+(révisée), Missions visant la délivrance d’un rapport sur des états financiers résumés.
+
+
+
+
+Pour: Deloitte & Touche                             Pour: Grant Thornton
+Chartered Accountants                               Expert-comptable
+Lagos, Nigeria                                      Abidjan, Côte d’Ivoire
+07 Mars 2022                                        07 Mars 2022
+
+Associé signataire: David Achugamonu                Associé signataire: Georges Yao-Yao
+FRC/2013/ICAN/0000000840
+PUBLIC   #
+
+
+
+
+      Ecobank Transnational Incorporated
+
+      Etats Financiers consolidés audités
+      Exercice clos au 31 Décembre 2021
+
+      Compte de Résultat Consolidé
+      (Montants en milliers de Dollars EU sauf indication contraire )
+
+                                                                                                                                                          Exercice clos au 31 décembre
+                                                                                                                                                                 2021                      2020
+
+      Produits d'intérêts                                                                                                                                  1 473 554                 1 390 438
+      Charges d'intérêts                                                                                                                                    (529 124)                 (483 212)
+
+      Marge nette des intérêts                                                                                                                               944 430                   907 226
+
+
+      Produits d'honoraires et de commissions                                                                                                                500 149                   424 589
+      Charges d'honoraires et de commissions                                                                                                                 (48 720)                  (35 643)
+      Revenus nets de trading                                                                                                                                295 617                   346 276
+      Produits des autres activités                                                                                                                           65 238                    37 317
+      Revenus hors intérêts                                                                                                                                  812 284                   772 539
+
+      Produit net bancaire                                                                                                                                 1 756 714                 1 679 765
+
+
+      Charges du personnel                                                                                                                                   (454 937)                (462 992)
+      Dotation aux amortissements                                                                                                                            (108 669)                (104 206)
+      Autres charges d'exploitation                                                                                                                          (471 092)                (486 840)
+      Total des charges d'exploitation                                                                                                                     (1 034 698)               (1 054 038)
+      Resultat d'exploitation hors provisions                                                                                                                722 016                   625 727
+
+
+      Provisions sur créances douteuses                                                                                                                      (169 610)                (181 555)
+      Provisions sur autres actifs                                                                                                                            (48 070)                  (45 470)
+      Provisions sur actifs finaniers                                                                                                                        (217 680)                (227 025)
+
+      Resultat d'exploitation                                                                                                                                504 336                   398 702
+
+      Perte monétaire nette résultant de l’économie hyperinflationniste                                                                                       (25 852)                  (60 523)
+      Quote-part de résultat net des sociétés mises en équivalence                                                                                               (492)                     (297)
+      Résultat d'exploitation avant dépréciation du goodwill                                                                                                 477 992                   337 882
+
+
+      Dépréciation du goodwill                                                                                                                                       -                (163 564)
+
+      Résultat avant impôt                                                                                                                                   477 992                   174 318
+
+      Impôt sur les bénéfices                                                                                                                                (122 281)                  (89 335)
+
+      Résultat net des activités poursuivies                                                                                                                 355 711                     84 983
+
+      Résultat net d’impôt des activités arrêtées ou en cours de cession                                                                                        1 655                     3 336
+
+      Résultat net consolidé                                                                                                                                 357 366                     88 319
+
+
+      Attribuable aux :
+      Résultat net, part du Groupe                                                                                                                           262 234                      4 202
+      Résultat net des activités poursuivies                                                                                                                 261 340                      2 400
+      Résultat net des activités arrêtées ou en cours de cession                                                                                                 894                      1 801
+
+
+      Intérêts minoritaires                                                                                                                                    95 132                    84 117
+      Résultat net des activités poursuivies                                                                                                                   94 371                    82 582
+      Résultat net des activités arrêtées ou en cours de cession                                                                                                  761                     1 535
+                                                                                                                                                             357 366                     88 319
+
+
+     Résultat net par action à attribuer aux actionnaires du Groupe durant l'exercice sur le résultat net des activités poursuivies (exprimé en cents de dollars EU par action):
+
+
+
+             - Résultat de base par action                                                                                                                      1,063                     0,010
+             - Résultat dilué par action                                                                                                                        1,063                     0,010
+
+
+
+     Résultat net par action à attribuer aux actionnaires du Groupe durant l'exercice sur le Résultat net des activités arrêtées ou en cours de cession (exprimé en cents de dollars EU par action):
+
+               Résultat de base par action                                                                                                                      0,004                     0,007
+               Résultat dilué par action                                                                                                                        0,004                     0,007
+
+
+               Les états financiers consolidés ont été établis conformément aux Normes Internationales d'Information Financière (IFRS).
+
+
+
+
+#   PUBLIC                                                                                         2
+PUBLIC   #
+
+
+
+
+      Ecobank Transnational Incorporated
+
+      Etats Financiers consolidés audités
+      Exercice clos au 31 Décembre 2021
+
+      Etat consolidé de la Situation Financière
+      (Montants en milliers de Dollars EU sauf indication contraire )
+
+                                                                                                                                         Exercice clos au 31 décembre
+                                                                                                                                                2021                    2020
+      ACTIF
+      Caisse et banques centrales                                                                                                         4 209 138               3 752 596
+      Actifs financiers de transactions                                                                                                     346 042                 156 490
+      Instruments financiers dérivés                                                                                                         78 404                 115 162
+      Prêts et créances sur les établissements de crédits                                                                                 2 289 445               2 011 343
+      Prêts et créances sur la clientèle                                                                                                  9 575 865               9 239 948
+      Bons du Trésor et autres effets publics                                                                                             2 087 085               1 730 845
+      Titres de placement et de participations                                                                                            6 560 228               6 074 244
+      Actifs affectés en garantie                                                                                                           206 001                 423 599
+      Comptes de régularisation et actifs divers                                                                                          1 095 569               1 128 200
+      Participations dans les sociétés mises en équivalence                                                                                   4 863                   3 468
+      Immobilisations incorporelles                                                                                                         122 288                 151 870
+      Immobilisations corporelles                                                                                                           750 615                 810 521
+      Immeubles de placement                                                                                                                 11 019                  12 365
+      Actifs d'impôts différés                                                                                                              201 996                 164 486
+                                                                                                                                         27 538 558              25 775 137
+
+      Actifs non courants destinés à être cédés                                                                                              23 235                164 336
+
+
+      Total Actif                                                                                                                        27 561 793              25 939 473
+
+      PASSIF
+      Dépôts des établissements de crédits                                                                                                2 229 935               2 386 747
+      Dépôts de la clientèle                                                                                                             19 713 349              18 296 952
+      Instruments financiers dérivés                                                                                                         29 101                  78 908
+      Emprunts                                                                                                                            2 352 437               1 923 182
+      Autres passifs                                                                                                                        821 264                 823 112
+      Provisions                                                                                                                             72 230                  60 462
+      Passifs d'impôts courants                                                                                                              66 342                  68 534
+      Passifs d'impôts différés                                                                                                              87 751                  76 528
+      Obligations au titre des retraites                                                                                                     25 078                  22 168
+                                                                                                                                         25 397 487              23 736 593
+
+      Dettes liées aux actifs non courants destinés à être cédés                                                                                  -                175 167
+
+
+      Total Passif                                                                                                                       25 397 487              23 911 760
+
+      Capitaux propres
+
+     Capitaux propres part du Groupe
+     Capital et réserves liées                                                                                                            2 113 961               2 113 961
+     Résultats cumulés non distribués et réserves                                                                                          (581 570)               (610 565)
+                                                                                                                                          1 532 391               1 503 396
+
+      Autres capitaux propres                                                                                                                74 088                       -
+
+      Total capitaux propres, hors Intérêts minoritaires                                                                                  1 606 479               1 503 396
+
+      Intérêts minoritaires                                                                                                                 557 827                524 317
+
+
+      Total capitaux propres                                                                                                              2 164 306               2 027 713
+
+      Total passif et capitaux propres                                                                                                   27 561 793              25 939 473
+
+
+
+
+              Les états financiers consolidés ont été établis conformément aux Normes Internationales d'Information Financière (IFRS).
+
+
+
+
+#   PUBLIC                                                                                      3
+PUBLIC   #
+
+
+
+
+      Ecobank Transnational Incorporated
+
+      Etats Financiers consolidés audités
+      Exercice clos au 31 Décembre 2021
+
+      Tableau consolidé des flux de trésorerie
+      (Montants en Dollars EU sauf indication expresse )
+                                                                                                                                         Exercice clos au 31 décembre
+
+                                                                                                                                                2021                    2020
+     Flux de trésorerie provenant des activités d'exploitation :
+     Résultat avant impôt                                                                                                                   477 992                 174 318
+     Revenus nets de trading – conversion de change                                                                                        (200 115)               (205 585)
+     Gains ou pertes nets sur titres                                                                                                        (18 563)                (16 617)
+     Gain net de juste valeur sur immeubles de placementt                                                                                       592                   2 730
+     Provisions sur créances douteuses                                                                                                      169 610                 181 555
+     Provisions sur autres actifs financiers                                                                                                 50 255                  45 470
+     Dotations aux amortissements sur immob corporelles                                                                                      75 177                  82 679
+     Dépréciation du goodwill                                                                                                                     -                 163 564
+     Dotations aux amortissements sur logiciels et immob. Incorp.                                                                            33 492                  21 527
+     Résultat de cession sur immobilisations corporelles                                                                                    (15 778)                 (1 928)
+     Quote-part de résultat net des sociétés mises en équivalence                                                                               492                     297
+
+
+      Impôts payés                                                                                                                         (160 211)               (126 841)
+
+
+      Variation nette des actifs et des passifs d'exploitation :
+           - Actifs financiers de transactions                                                                                             (189 552)                 26 172
+           - Instruments financiers dérivés actif                                                                                            36 758                 (49 703)
+           - Autres bons du Trésor                                                                                                         (385 958)                157 824
+           - Prêts et créances aux etablissements financiers                                                                                 21 783                 (66 269)
+           - Prêts et créances à la clientèle                                                                                              (430 178)                 35 595
+           - Actifs affectés en garantie                                                                                                    217 598                 (72 121)
+           - Créances diverses                                                                                                               32 631                  56 570
+           - Réserves obligatoires auprès des banques centrales                                                                             (26 343)                 87 327
+           - Autres Dépôts des etablissements financiers                                                                                   (198 090)                100 129
+           - Dépôts de la clientèle                                                                                                       1 416 397               2 050 832
+           - Instruments dérivés passifs                                                                                                    (49 807)                 27 653
+           - Autres provisions                                                                                                               11 768                  (8 020)
+           - Autres passifs                                                                                                                  (1 848)                (22 858)
+
+
+      Flux net de trésorerie provenant dans les activités d'exploitation                                                                    868 102               2 644 300
+
+      Flux de trésorerie provenant des activités d'investissement :
+      Achat de logiciels                                                                                                                     (20 353)               (25 393)
+      Acquisition d'immobilisations corporelles                                                                                             (276 250)              (265 000)
+      Produits de cessions d'immobilisations corporelles                                                                                     205 919                255 842
+      Produits de cessions d'immobilisations corporelles                                                                                  (4 160 242)            (3 419 589)
+      Achat de titres                                                                                                                      3 152 384              2 547 499
+      Acquisition de titres d'investissements                                                                                                      -                 (7 023)
+      Produits de titres d'investissements                                                                                                         -                  3 985
+      Coût d'émission des autres instruments de capitaux propres                                                                                (912)                     -
+      Coût d'acquisition de Pan African Savings and Loans                                                                                       (897)                     -
+      Payement pour la cession d'une filiale                                                                                                 (10 496)                     -
+
+
+      Flux net de trésorerie provenant des activités d'investissement                                                                     (1 110 847)              (909 679)
+
+      Flux de trésorerie provenant des activités de financement :
+      Décaissements liés aux remboursements d'emprunts                                                                                     (448 579)               (548 463)
+      Encaissements liés aux emprunts contractés                                                                                            729 361                 363 617
+      Emission des autres instruments de capitaux propres                                                                                    75 000
+      Dividendes payés aux actionnaires minoritaires                                                                                        (24 627)                (24 322)
+
+      Flux net de trésorerie provenant dans les activités de financement                                                                    331 155                (209 168)
+
+       Augmentation nette de la trésorerie et équivalents de trésorerie                                                                      88 410               1 525 453
+
+     Trésorerie et équivalents de trésorerie à l'ouverture de l'exercice                                                                  3 800 456               2 559 766
+     Effets des différences de change sur la trésorerie et équivalents de trésorerie                                                         97 443                (284 763)
+
+      Trésorerie et équivalents de trésorerie à la clôture de l'exercice                                                                  3 986 309               3 800 456
+
+
+              Les états financiers consolidés ont été établis conformément aux Normes Internationales d'Information Financière (IFRS).
+
+
+
+
+#   PUBLIC                                                                                      4
+PUBLIC   #
+
+
+
+
+     Ecobank Transnational Incorporated
+
+      Etats Financiers consolidés audités
+      Exercice clos au 31 Décembre 2021
+
+     Notes
+
+             1 Information générale
+               Ecobank Transnational Incorporated (ETI) et ses filiales (formant le Groupe) exercent les activités de banque de détail, banque de financement et d’investissement dans divers
+               pays d'Afrique sub-saharienne (hors Afrique du Sud). Le Groupe est actuellement implanté dans 39 pays avec un effectif de 13,167 salariés ( 2020: 14,023) au 31 Décembre
+               2021.
+
+               Ecobank Transnational Incorporated est une société anonyme domiciliée au Togo. Son siège social est situé au : 2365 Boulevard du Mono, Lomé, Togo. La société est cotée à
+               la Bourse du Ghana, à la Bourse du Nigéria et à la Bourse Régionale des Valeurs Mobilières (Abidjan) en Côte d’Ivoire .
+
+
+
+             2 Résumé des principaux principes comptables
+
+               Les principaux principes comptables appliqués dans la préparation des présents états financiers consolidés sont exposés ci-dessous. Ces principes comptables ont été
+               constamment appliqués pour toutes les années présentées dans le rapport, sauf dispositions particulières .
+
+               2.1    Principes d'établissement des comptes
+                      Les états financiers consolidés du Groupe de l'exercice 2021 ont été établis conformément aux Normes Internationales d'Information Financière IFRS (International
+                      Financial Reporting Standards) publiés par l' International Accounting Standards Board (IASB).
+
+                      Ces états financiers consolidés ont été préparés sur la base du principe de continuité de l'exploitation et selon la méthode du coût historique, cette dernière étant
+                      modifiée par la réévaluation de certains éléments de l'actif et du passif, le cas échéant, suivant les dispositions des IFRS.
+
+
+               2.2   Changement de méthodes comptables
+                      Les méthodes comptables ont été constamment appliquées au cours de l'exercice.
+
+
+
+             5 Engagements Hors Bilan
+               Les passifs éventuels relatifs aux lettres de garantie bancaire, avals et cautions, lettres de crédit et engagements d'octroi de crédits s'élevaient à 4 730 millions $EU ( 2020 : 4
+               000 millions $EU ).
+
+
+             6 Dividendes
+
+               A la prochaine assemblée générale ordinaire, il ne sera pas proposé de dividende par action au titre de l'exercice 2020 ( 2019 : 0 cents $EU ).
+
+
+
+
+#   PUBLIC                                                                                           5
+
+

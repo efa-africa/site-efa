@@ -1,0 +1,162 @@
+Groupe Sonatel
+Résultats T1 2023
+                                                                                                                               Lexique
+                                                                       1. Proforma : Eléments retraités des effets de change
+Avertissement                                                          2. L’impact de la norme IFRS 16 concerne surtout les éléments
+                                                                       suivants :
+
+                                                                       •   Les engagements de location : ces passifs étaient précédemment
+                                                                           communiqués hors bilan dans les annexes aux états financiers
+ Cette présentation contient des informations                              consolidés. Sous IFRS 16, la comptabilisation de l’ensemble des contrats
+                                                                           de location se traduit, au bilan, par la reconnaissance d’un actif au titre du
+ pouvant être réputées prévisionnelles. Concernant
+                                                                           droit d’utilisation des actifs loués en contrepartie d’un passif pour les
+ les perspectives, bien que la Société estime que ces
+                                                                           obligations.
+ déclarations et informations reposent sur des
+ hypothèses raisonnables à la date de publication du                   •   Charge opérationnelle des contrats de location : cette charge était
+ présent communiqué, elles sont par nature soumises                        auparavant incluse dans les coûts indirects. En vertu d'IFRS 16, elle est
+ à des risques et incertitudes. Sonatel ne saurait                         remplacée par une charge d'amortissement et par une charge d'intérêts.
+ garantir, ni être responsable de l'exactitude,
+ l'exhaustivité, la cohérence et l'efficacité de l'une des             •   Ebitdaal : (EBITDA after Leases) est un indicateur de la rentabilité
+ déclarations ou informations données dans ce                              financière qui tient compte des charges d’amortissement et d’intérêt
+ communiqué relatives aux données prévisionnelles.                         relatives aux contrats de location. Il remplace l’EBITDA ajusté
+
+                                                                       •   ECapex : L'eCAPEX correspond (i) aux investissements corporels et
+                                                                           incorporels hors licences de télécommunication et hors actifs financés, (ii)
+                                                                           diminués des prix de cession des actifs incorporels et corporels cédés.
+
+                                                             T1_2023                                                                                        1
+ Périmètre  de consolidation
+Périmètre de consolidation
+                                                                                             Mode                      Pourcentage                                                           Méthode de
+             Pays                                   Sociétés                                                                                        Nature du contrôle
+                                                                                          de Détention                 de détention                                                         consolidation
+
+                                                    Sonatel SA                                                           Société Mère                      Consolidante
+
+   Sénégal
+                                   Orange Finances Mobiles Sénégal                              Directe                       100%                       Contrôle exclusif                 Intégration globale
+
+
+                                   Orange Mali                                                  Directe                      69,40%                      Contrôle exclusif                 Intégration globale
+   Mali
+                                   Orange Finances Mobiles Mali                                Indirecte                     69,40%                      Contrôle exclusif                 Intégration globale
+
+                                   Orange Guinée                                                Directe                      88,82%                      Contrôle exclusif                 Intégration globale
+   Guinée Conakry
+                                   Orange Finances Mobiles Guinée                              Indirecte                     88,82%                      Contrôle exclusif                 Intégration globale
+
+   Guinée Bissau                   Orange Bissau                                                Directe                      89,85%                      Contrôle exclusif                 Intégration globale
+
+                                   Orange Sierra Leone                                          Directe                        50%                       Contrôle exclusif                 Intégration globale
+   Sierra Leone *
+                                   Orange Money Sierra Leone                                   Indirecte                       50%                       Contrôle exclusif                 Intégration globale
+
+   Côte d’Ivoire                   Groupement Orange Services                                  Indirecte                       47%                      Influence Notable                 Mise en équivalence
+   * Orange Sierra Leone détenue à 50% est consolidée par intégration globale conformément aux termes du pacte d’actionnaire qui confère le contrôle au Groupe Sonatel. Le Groupe Orange détient les 50% restant.
+
+
+
+
+                                                                                              T1_2023                                                                                                               2
+Section
+
+                    Faits
+                    marquants
+
+
+          FY_2022               3
+Messages clés
+
+
+         Environnement                                               Marché                                                       Régulation
+• Sénégal: Déploiement du câble sous marin Share
+                                                        • Starlink annonce le lancement de ses services en 2023
+  en phase de finalisation
+                                                          dans 23 pays africains dont le Sénégal
+
+• Sierra Leone: Poursuite de la dépréciation du Léone   • Sénégal: évolution des offres Flybox et développement         • Mali: Mise en œuvre par l’AMRTP du projet de
+  par rapport au dollar et à l’euro                       de la fibre optique pour la démocratisation de l’internet à     limitation du nombre des abonnés à 3 par client
+                                                          domicile avec une qualité de service optimale                   avec accès des opérateurs à la base NINA avec
+• Bissau: Inauguration du raccordement du câble                                                                           un impact sur les bases clients (forte baisse des
+  sous marin ACE à Suru en présence des autorités       • Mali: Bonne progression du programme                            recrutements)
+                                                          d’investissement 2023 avec la mise en service de 90
+• Mali : Rejet du pourvoi en cassation dans l’affaire     sites, la réhabilitation de 20 sites détruits au Nord et 15   • Guinée: Autorisation de déployer la fibre
+  opposant l’association des consommateurs                nouvelles plaques FTTx                                          résidentielle et exigence de revente de la
+  REMACOTEM et les opérateurs téléphoniques au                                                                            capacité excédentaire et de dégroupage
+                                                        • Guinée: Atteinte de la barre symbolique de 9millions de
+  Mali, portant sur la facturation des communications
+                                                          clients actifs mobiles et 2milions de clients actifs 4G
+  aboutissant sur la messagerie vocale. Les
+  opérateurs ont de nouveau obtenu un délai de grâce    • Sierra Leone: Lancement de l’école numérique en
+  de 2 mois qui court jusqu’au 13 Mai 2023.               partenariat avec SOS
+
+
+
+
+                                                                      T1_2023
+                                                                                                                                                                          4
+Section
+                    Eléments
+                    opérationnels
+                    et financiers
+
+          FY_2022               5
+Réalisations opérationnelles
+ Parc Fixe, Mobile et internet en croissance favorisée par une bonne dynamique commerciale et l’augmentation
+               significative des capacités réseaux en lien au rythme d’investissement soutenu.
+
+                   Parc Orange Money en croissance ainsi que les volumes de transaction
+
+                                                    CLIENTS MOBILE                            INTERNET MOBILE
+             PARC FMI
+                                                   38,3 Millions                             16,4 Millions   9%
+      39,3 Millions     0,6%                                         0,1%
+
+
+
+
+                               CLIENTS THD FIXE                                           ACTIF 4G
+
+                               621,8 Milles    32,1%
+                                                                                    11,8 Millions    36%
+
+
+
+                      ACTIF ORANGE MONEY                                    INSCRITS ORANGE MONEY
+
+                      10,8 Millions    10,2%                                27 Millions     10,2%
+
+
+
+                                                                                                                  6
+                                                  T1_2023
+Chiffres clés financiers
+  Croissance tirée par la Data, le Fixe et Orange Money grâce à un niveau d’investissement
+                                        toujours soutenu
+
+
+
+     REVENUS           EBITDAAL           eCAPEX         OPERATING CASH       RESULTAT NET
+                                                             FLOW
+
+
+      384,7             165,6               55,2              110,4               82,7
+     Milliards          Milliards         Milliards          Milliards          Milliards
+      FCFA               FCFA              FCFA               FCFA               FCFA
+
+
+                     Marge Ebitdaal     Taux Capex         Taux Cash Flow      Marge nette
+                           43%              14,3%             28,6%               21,5%
+
+
+
+      9,8%                 14,3%             51%                2,0%               31,9%
+
+
+
+                                                                                             7
+                                        T1_2023
+
+
