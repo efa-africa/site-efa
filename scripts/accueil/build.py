@@ -6,7 +6,7 @@ import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121zb'
+V = '20261121zc'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -14,7 +14,7 @@ FAMILLES = [
  ('activite', 'Bâtir et faire grandir mon activité', 'Idées de business, business plan, valeur de l’entreprise',
   'generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre mon-idee-test'),
  ('bourse', 'Faire grandir mon argent : investir, la Bourse (BRVM)', 'Ma BRVM, le marché du jour, les SGI, les cours pour débuter',
-  'ma-brvm bourse premiers-pas-bourse marches semaine-bourse societes calendrier obligations acheter-des-actions sgi sgi-comparer questions-a-poser-a-sa-sgi questions-avant-d-investir acteurs coach-bourse ecole-de-la-bourse ecole-bourse bourse-essentiel bourse-marche bourse-pro bourse-projets investir investir-bourse investir-assurance-epargne investir-terrain-immobilier opcvm-fcpe club-investissement jeu-portefeuille-baisse personnalite etude-frais-bourse'),
+  'ma-brvm bvmac bourse premiers-pas-bourse marches semaine-bourse societes calendrier obligations acheter-des-actions sgi sgi-comparer questions-a-poser-a-sa-sgi questions-avant-d-investir acteurs coach-bourse ecole-de-la-bourse ecole-bourse bourse-essentiel bourse-marche bourse-pro bourse-projets investir investir-bourse investir-assurance-epargne investir-terrain-immobilier opcvm-fcpe club-investissement jeu-portefeuille-baisse personnalite etude-frais-bourse'),
  ('tontine', 'La tontine', 'Comprendre, choisir, cotiser sans se faire avoir',
   'tontine ecole-de-la-tontine avant-de-cotiser choisir-son-rang-tontine tontine-formations tontine-decider-avant-de-recevoir tontine-rentree cotiser-depuis-l-etranger etude-tontine-en-chiffres'),
  ('famille', 'Famille, maison et moments de vie', 'Terrain, chantier, enfants, décès, prêter à un proche, arnaques',
@@ -29,7 +29,7 @@ FAMILLES = [
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
 EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
-TITRES = {'cent-outils': 'Les 100 outils EFA', 'mon-vrai-reste': 'Mon vrai reste', 'mes-dettes': 'Mes dettes classées', 'puis-je-aider': 'Puis-je aider ce mois-ci ?', 'mon-idee-test': 'Mon idée vaut-elle un test ?', 'mon-patrimoine': 'Mon patrimoine, aujourd’hui et dans dix ans', 'promesse-credible': 'Cette promesse est-elle crédible ?', 'journal-decisions': 'Mon journal de décisions', 'mon-annee': 'Mon année EFA', 'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
+TITRES = {'bvmac': 'La Bourse d’Afrique centrale (BVMAC)', 'cent-outils': 'Les 100 outils EFA', 'mon-vrai-reste': 'Mon vrai reste', 'mes-dettes': 'Mes dettes classées', 'puis-je-aider': 'Puis-je aider ce mois-ci ?', 'mon-idee-test': 'Mon idée vaut-elle un test ?', 'mon-patrimoine': 'Mon patrimoine, aujourd’hui et dans dix ans', 'promesse-credible': 'Cette promesse est-elle crédible ?', 'journal-decisions': 'Mon journal de décisions', 'mon-annee': 'Mon année EFA', 'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
           'outils': 'Tous les outils et simulateurs', 'ateliers': 'Tous les ateliers, par thème', 'ateliers-elysee': 'Ateliers avec Élysée Johnson', 'news': 'EFA News', 'sgi': 'Les SGI de la Bourse (BRVM)',
@@ -317,7 +317,7 @@ open('questions.html', 'w', encoding='utf-8').write(questions)
 # ---- Les outils EFA du 21 novembre 2026 (scripts/outils/specs.py, calcul dans clone/outils-efa.js) et la carte des 100 outils ----
 sys.path.insert(0, 'scripts/outils')
 import specs as _sp
-V_OT = '20261121c'
+V_OT = '20261121d'
 LIENS_OT = '<link rel="stylesheet" href="clone/outils-efa.css?v=%s"><script src="clone/outils-efa.js?v=%s" defer></script>' % (V_OT, V_OT)
 NOMS_OT = {x['f']: x['t'] for x in _sp.PAGES}
 for k, x in enumerate(_sp.PAGES):
@@ -358,6 +358,88 @@ cent = TETE % META_C + """
 """ % (''.join('<a href="#f%d">%s</a>' % (i + 1, E(f)) for i, f in enumerate(_sp.FAMILLES)), sec) + FIN
 open('cent-outils.html', 'w', encoding='utf-8').write(cent)
 PAGES_OT = [x['f'] + '.html' for x in _sp.PAGES] + ['cent-outils.html']
+
+# ---- La Bourse d'Afrique centrale (BVMAC) : une porte d'entrée, sans données de marché (décision du 21 nov. 2026) ----
+META_B = ('<title>La Bourse d’Afrique centrale (BVMAC) : comment elle marche, comment y investir · EFA</title>\n<link rel="canonical" href="https://efa.africa/bvmac">\n'
+          '<meta name="description" content="La BVMAC, Bourse des six pays de la CEMAC : les sociétés cotées, les obligations, les acteurs, comment acheter, et ce qui la distingue de la Bourse d’Afrique de l’Ouest (BRVM).">\n' + LIENS_OT)
+SOC_B = [('SEMC', 'Société des Eaux Minérales du Cameroun', 'Eaux minérales', 'Cameroun'), ('Safacam', 'Société Africaine Forestière et Agricole du Cameroun', 'Hévéa et palmier à huile', 'Cameroun'),
+         ('Socapalm', 'Société Camerounaise de Palmeraies', 'Huile de palme', 'Cameroun'), ('La Régionale', 'La Régionale Bank', 'Banque', 'Cameroun'),
+         ('BANGE', 'Banco Nacional de Guinea Ecuatorial', 'Banque', 'Guinée équatoriale'), ('SCG-Ré', 'Société Commerciale Gabonaise de Réassurance', 'Réassurance', 'Gabon'),
+         ('BGFI Holding', 'BGFI Holding Corporation', 'Groupe bancaire', 'Gabon')]
+COMP_B = [('Zone', 'UEMOA : 8 pays d’Afrique de l’Ouest', 'CEMAC : 6 pays d’Afrique centrale'), ('Siège', 'Abidjan', 'Douala'), ('Monnaie', 'Franc CFA d’Afrique de l’Ouest (XOF)', 'Franc CFA d’Afrique centrale (XAF)'),
+          ('Banque centrale', 'BCEAO', 'BEAC'), ('Gendarme du marché', 'AMF-UMOA', 'COSUMAF'), ('Pour acheter', 'Une SGI', 'Une société de Bourse'),
+          ('Actions cotées', '48', '7'), ('Échanges d’actions', 'Plusieurs centaines de millions de F par jour', 'Quelques millions de F par jour'), ('Le cœur du marché', 'Les actions', 'Les obligations, surtout d’États')]
+bvmac = TETE % META_B + """
+<section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
+<p class="pp-fil"><a href="index.html">Accueil</a> / <a href="bourse.html">Investir</a> / Afrique centrale</p>
+<h1 class="pp-h1 pp-h1-c"><span>Afrique centrale.</span><span class="pp-ciel">La Bourse (BVMAC).</span></h1>
+<p class="pp-sous">Cameroun, Gabon, Congo, Tchad, Centrafrique, Guinée équatoriale : six pays, une seule Bourse, à Douala. Ce qu’on y trouve, comment y investir, et ce qu’il faut savoir avant.</p>
+</div></div></section>
+<section class="ot" data-garde><div class="pp-in"><div class="ot-res" style="margin-top:0">
+
+<p class="ot-message">La BVMAC est une petite Bourse par ses actions, et un grand marché par ses obligations. <b>C’est la première chose à comprendre avant d’y mettre un franc.</b></p>
+
+<div class="ot-trois">
+<div class="ot-c ot-t1"><p class="ot-k">Sociétés cotées</p><p class="ot-v">7</p><p>dont une, BGFI Holding, pèse près des trois quarts de la valeur totale.</p></div>
+<div class="ot-c ot-t2"><p class="ot-k">Lignes d’obligations</p><p class="ot-v">32</p><p>pour environ 1 229 milliards de F d’encours : États, banque de développement, entreprises.</p></div>
+<div class="ot-c ot-t5"><p class="ot-k">Sociétés de Bourse</p><p class="ot-v">25</p><p>agréées pour passer vos ordres, dont 19 au Cameroun.</p></div>
+</div>
+<p class="ot-note">Chiffres du bulletin officiel de la cote du 5 août 2026 et du registre des sociétés de Bourse de la BVMAC.</p>
+
+<div class="ot-bloc ot-t1"><h3>Comment elle marche</h3>
+<ul class="ot-liste">
+<li><b>La BVMAC</b> (Bourse des Valeurs Mobilières de l’Afrique Centrale) organise le marché : elle admet les titres, fait se rencontrer les ordres et publie les cours après chaque séance. Elle est née du regroupement, en 2019, de la Bourse de Douala et de l’ancienne Bourse régionale de Libreville.</li>
+<li><b>La COSUMAF</b> est le gendarme du marché : elle agrée les acteurs, valide les opérations et protège les épargnants.</li>
+<li><b>La BEAC</b>, la banque centrale, assure la conservation des titres et le règlement des opérations, en attendant un dépositaire central unique.</li>
+<li><b>Les sociétés de Bourse</b> sont les seuls intermédiaires autorisés : c’est chez l’une d’elles que l’on ouvre un compte et que l’on passe ses ordres.</li>
+</ul></div>
+
+<div class="ot-bloc"><h3>Les sept sociétés cotées</h3>
+<ul class="ot-fiches">
+%s</ul>
+<p class="ot-note">Les États de la zone ont annoncé vouloir introduire en Bourse des entreprises de leur portefeuille : la liste peut s’allonger.</p></div>
+
+<div class="ot-bloc ot-t2"><h3>Le vrai marché&nbsp;: les obligations</h3>
+<p>Une obligation est un prêt que vous faites à un État ou à une entreprise : il vous verse des intérêts connus d’avance, puis vous rend votre capital à l’échéance.</p>
+<p>À la BVMAC, ce sont surtout les États (Cameroun, Gabon, Tchad), la banque de développement de la zone (BDEAC) et quelques entreprises qui empruntent ainsi. En 2025, ces obligations ont versé près de 100 milliards de F d’intérêts, contre 3,4 milliards de F de dividendes pour les actions.</p>
+<p class="ot-boutons"><a class="ot-b" href="dat-emprunts-etat.html#calcul">Comprendre un emprunt d’État</a></p></div>
+
+<div class="ot-bloc ot-t3"><h3>Trois précautions avant d’acheter une action</h3>
+<ol class="ot-ordre">
+<li><b>Pourrai-je revendre ?</b> C’est la question centrale. En 2025, toutes les actions réunies n’ont donné lieu qu’à 594 transactions dans l’année. Le jour de notre relevé, quatre sociétés sur sept n’ont pas échangé un seul titre. Un cours affiché n’est pas un prix auquel vous êtes sûr de vendre.</li>
+<li><b>Sur combien de temps ?</b> Sur un marché aussi peu animé, une action se garde des années, pour ses dividendes et pour l’entreprise, pas pour une revente rapide.</li>
+<li><b>Dans quelle monnaie ?</b> Le franc CFA d’Afrique centrale et celui d’Afrique de l’Ouest ont la même valeur, mais ce sont deux monnaies distinctes. Un compte à Abidjan ne sert pas à acheter à Douala, et inversement.</li>
+</ol></div>
+
+<div class="ot-bloc"><h3>Comment acheter, en quatre étapes</h3>
+<ol class="ot-ordre">
+<li><b>Choisir une société de Bourse</b> agréée par la COSUMAF. Il y en a 19 au Cameroun, 3 au Congo, 1 au Gabon, 1 au Tchad et 1 en Guinée équatoriale.</li>
+<li><b>Ouvrir un compte titres et espèces</b> chez elle.</li>
+<li><b>Demander sa grille de tarifs</b> : commissions sur chaque ordre, droits de garde. Comparez avant de signer.</li>
+<li><b>Passer vos ordres</b> vous-même, à un prix que vous fixez.</li>
+</ol>
+<p class="ot-note">La liste officielle des sociétés de Bourse, par pays, est publiée par la BVMAC : <a href="https://www.bvm-ac.org/societes-de-bourse-par-pays/" rel="noopener">bvm-ac.org</a>.</p></div>
+
+<div class="ot-bloc ot-t5"><h3>BVMAC et BRVM&nbsp;: ce qui change</h3>
+<div class="ot-comp"><div class="ot-comp-t"><span></span><b>Afrique de l’Ouest (BRVM)</b><b>Afrique centrale (BVMAC)</b></div>
+%s</div></div>
+
+<div class="ot-lecon"><p class="ot-k">Ce que cela aide à décider</p><ul>
+<li><b>Pour un revenu régulier</b>, regardez d’abord les obligations : c’est là que ce marché est profond.</li>
+<li><b>Pour devenir actionnaire</b>, n’y mettez que de l’argent que vous pouvez laisser longtemps, et vérifiez combien de titres s’échangent réellement.</li>
+<li><b>Les règles de base ne changent pas d’une zone à l’autre</b> : une réserve d’abord, pas de dette chère, et jamais une promesse de gain garanti.</li></ul>
+<p class="ot-boutons"><a class="ot-b" href="questions-avant-d-investir.html">10 questions avant d’investir</a><a class="ot-b ot-b2" href="promesse-credible.html">Cette promesse est-elle crédible ?</a><a class="ot-b ot-b2" href="ma-brvm.html">Voir Ma BRVM</a></p></div>
+
+<div class="ot-bloc ot-t6"><h3>Et sur EFA ?</h3>
+<p>Les outils d’EFA sur le budget, l’épargne, les dettes, le patrimoine et les arnaques servent partout où l’on compte en francs CFA. Les données de marché d’EFA couvrent aujourd’hui la Bourse d’Afrique de l’Ouest (BRVM). Pour la Bourse d’Afrique centrale, cette page est un point de départ : EFA suit ce marché et l’ouvrira davantage.</p>
+<p class="ot-boutons"><a class="ot-b" href="cent-outils.html">Les 100 outils EFA</a><a class="ot-b ot-b2" href="questions.html">Les 100 questions</a></p></div>
+
+<p class="ot-garde">Sources : BVMAC, bulletin officiel de la cote du 5 août 2026 ; rapport d’activité 2025 ; registre des sociétés de Bourse par pays (<a href="https://www.bvm-ac.org" rel="noopener">bvm-ac.org</a>). Contenu pédagogique, pas un conseil en placement. EFA n’est pas affiliée à la BVMAC.</p>
+</div></div></section>
+""" % (''.join('<li><b>%s</b><span>%s</span><small>%s · %s</small></li>' % (E(a), E(b), E(c), E(d)) for a, b, c, d in SOC_B),
+       ''.join('<div><span>%s</span><p data-z="BRVM">%s</p><p data-z="BVMAC">%s</p></div>' % (E(a), E(b), E(c)) for a, b, c in COMP_B)) + FIN
+open('bvmac.html', 'w', encoding='utf-8').write(bvmac)
+PAGES_OT.append('bvmac.html')
 
 for p in ['index.html', 'prochain-pas.html', 'apprendre.html', 'questions.html'] + PAGES_OT:
     subprocess.run(['python3', 'scripts/clone/habiller.py', '--page', p], check=True, stdout=subprocess.DEVNULL)

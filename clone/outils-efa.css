@@ -75,3 +75,11 @@
 .ot-cent-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.ot-cent-nav a{background:#EEF5FC;border:1px solid #C7D6E6;color:var(--nuit);font-weight:700;font-size:15px;border-radius:999px;padding:8px 14px;text-decoration:none}
 @media (max-width:760px){.ot-trois,.ot-deux,.ot-hyp-in,.ot-cent ol{grid-template-columns:1fr}.ot-l4{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ot-l4 label:first-child{grid-column:1/-1}.ot-l4 .ot-x{grid-column:2;justify-self:end}.ot-l4 label span{position:static!important;width:auto!important;height:auto!important;clip:auto!important}.ot-l4{background:#fff;border-radius:12px;padding:10px;margin-bottom:10px}
 .ot-l:not(.ot-l4){grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 40px}.ot-x{width:40px}.ot-br{grid-template-columns:minmax(70px,120px) minmax(0,1fr) minmax(64px,auto)}}
+.ot-fiches{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ot-fiches li{background:#fff;border-radius:12px;padding:12px 14px;display:grid;gap:2px;min-width:0}
+.ot-fiches b{font:700 18px/1.25 "Libre Baskerville",Georgia,serif;color:var(--nuit);font-weight:700!important}.ot-fiches span{font-size:15px;color:var(--ink2)}.ot-fiches small{font-size:13.5px;font-weight:700;color:var(--teal)}
+.ot-comp{display:grid;gap:6px}
+.ot-comp>div{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr) minmax(0,1.2fr);gap:10px;background:#fff;border-radius:10px;padding:10px 12px;align-items:start}
+.ot-comp>div.ot-comp-t{background:none;padding:0 12px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink3)}
+.ot-comp span{font-weight:700;color:var(--nuit)}.ot-comp p{margin:0!important;line-height:1.4}
+@media (max-width:760px){.ot-fiches{grid-template-columns:1fr}.ot-comp>div{grid-template-columns:1fr;gap:3px}.ot-comp>div.ot-comp-t{display:none}.ot-comp p::before{content:attr(data-z) " : ";font-weight:700;color:var(--teal)}}

@@ -1,0 +1,41 @@
+name: Archive BVMAC
+
+# Chaque jour ouvré en soirée : on garde le texte du bulletin officiel de la cote de la Bourse d'Afrique centrale.
+# Rien n'est affiché sur le site pour l'instant (décision du 21 novembre 2026) : on constitue l'historique.
+on:
+  schedule:
+    - cron: "23 19 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      depuis:
+        description: "Rattraper depuis cette date (AAAA-MM-JJ). Vide : les 14 derniers jours."
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bvmac-archive
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: Archiver les bulletins
+        run: python scripts/bvmac/archiver.py ${{ inputs.depuis }}
+      - name: Enregistrer dans le dépôt
+        run: |
+          git config user.name "EFA robot BVMAC"
+          git config user.email "robot-bvmac@efa.africa"
+          git add data/bvmac
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "BVMAC : bulletin officiel archivé"
+          git pull --rebase origin main
+          git push origin HEAD:main
