@@ -73,6 +73,16 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
 /* Actualités EFA News : une ligne monte toutes les 3,5 s, pause au survol */
 (function(){
   var vue=document.getElementById('mef-news');if(!vue)return;
+  /* les dernières actualités publiées (news/news-data.json), à la place de la liste figée de la page */
+  var MOIS=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  fetch('news/news-data.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+    var A=(d.articles||[]).filter(function(x){return x.statut==='publié'&&x.id&&x.titre;}).sort(function(x,y){return x.publication<y.publication?1:-1;}).slice(0,10);
+    if(A.length<5) return demarrer();
+    vue.querySelector('ul').innerHTML=A.map(function(x){var p=(x.publication||'').split('-');return '<li><a href="news/'+esc(x.id)+'.html"><time>'+(+p[2])+' '+MOIS[(+p[1])-1]+'</time><span>'+esc(x.titre)+'</span><b aria-hidden="true">↗</b></a></li>';}).join('');
+    demarrer();
+  }).catch(demarrer);
+  function demarrer(){
   var ul=vue.querySelector('ul'),items=[].slice.call(ul.children);if(items.length<5)return;
   items.forEach(function(li){ul.appendChild(li.cloneNode(true));});
   [].slice.call(ul.children).slice(items.length).forEach(function(li){li.setAttribute('aria-hidden','true');li.querySelector('a').tabIndex=-1;});
@@ -81,6 +91,7 @@ const dialog=document.querySelector('#lesson-dialog'),content=document.querySele
   vue.addEventListener('focusin',function(){pause=true;});vue.addEventListener('focusout',function(){pause=false;});
   setInterval(function(){if(pause||document.hidden)return;i++;var h=ul.children[0].offsetHeight;ul.style.transition='transform .7s ease';ul.style.transform='translateY(-'+(i*h)+'px)';
     if(i===items.length){setTimeout(function(){ul.style.transition='none';i=0;ul.style.transform='translateY(0)';},750);}},3500);
+  }
 })();
 /* Pastille « Mon EFA » (efa-moi.js) */
 (function () { try { if (window.EFA_MOI || document.querySelector('script[src^="efa-moi.js"],script[src^="/efa-moi.js"]')) return; var s = document.createElement("script"); s.src = "/efa-moi.js?v=20261116c"; s.defer = true; document.head.appendChild(s); } catch (e) {} })();

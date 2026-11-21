@@ -173,3 +173,5 @@ html.cl-hall .aig>section.fondateur{display:block!important}
 
 @keyframes a-depart-flash{0%{box-shadow:0 0 0 0 rgba(227,66,52,.55)}100%{box-shadow:0 0 0 18px rgba(227,66,52,0)}}
 .a-depart-flash{animation:a-depart-flash .9s ease-out 1;border-radius:18px}
+/* Accueil, vue d'entrée (hall) : le média EFA (EFA News et Bourse) reste visible (21 nov. 2026) */
+html.cl-hall body main#contenu>section#pilier-media{display:block!important}
