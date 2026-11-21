@@ -2,3 +2,4 @@ data/brvm/_verification/
 _test/
 plans-sources/
 *.plan-clair.json
+__pycache__/
