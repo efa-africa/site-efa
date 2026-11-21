@@ -11,7 +11,7 @@
   /* Une intention : id, mots repérés (une expression de plusieurs mots pèse plus), phrase « ce que j'ai compris »,
      outil [nom, promesse, adresse, pourquoi, bouton], compléments. « {m} » = le montant lu dans la question. */
   var I = [
-    { id: 'richesse', mots: ['devenir riche', 'riche', 'richesse', 'm enrichir', 'fortune', 'millionnaire', 'construire ma richesse', 'sortir du salaire', 'ne plus dependre de mon salaire', 'batir quelque chose', 'faire grandir mon patrimoine', 'construire mon patrimoine', 'reussir financierement'],
+    { id: 'richesse', mots: ['devenir riche', 'riche', 'richesse', 'm enrichir', 'fortune', 'millionnaire', 'milliardaire', 'milliard', 'milliards', 'construire ma richesse', 'sortir du salaire', 'ne plus dependre de mon salaire', 'batir quelque chose', 'faire grandir mon patrimoine', 'construire mon patrimoine', 'reussir financierement'],
       c: function (m) { return (m ? 'Vous avez <b>' + m.txt + '</b> et vous' : 'Vous') + ' voulez devenir riche : sortir des limites du salaire, bâtir quelque chose à vous, voir votre patrimoine grandir.'; },
       o: ['Voir clair', 'Combien puis-je dégager chaque mois ?', 'ou-est-passe-mon-argent.html', 'Tout commence par la somme que vous pouvez mettre de côté chaque mois sans vous mettre en difficulté : c’est elle qui nourrit un business, un placement ou les deux.', 'Trouver ma capacité à construire'],
       a: [A('Déclic', 'Bâtir quelque chose à moi', 'Quel business puis-je lancer avec ce que j’ai ?', function (m) { return 'generateur-de-projet.html' + (m ? '?budget=' + m.v : ''); }),
@@ -321,10 +321,12 @@
       if (REP[it.id]) h += '<div class="pp-bref"><p class="pp-k">La réponse en bref</p><p>' + REP[it.id] + '</p></div>';
       if (it.a.length) h += '<div class="pp-deux">' + it.a.map(function (a) { deja[url(a.url, null).split(/[?#]/)[0]] = 1; return '<a class="pp-carte" href="' + url(a.url, m) + '"><p class="pp-k">' + esc(a.t) + '</p><h3>' + esc(a.nom) + '</h3><p>' + esc(a.d) + '</p><span class="pp-lien">Ouvrir →</span></a>'; }).join('') + '</div>';
     } else if (!fq) {
-      h += '<div class="pp-compris"><p class="pp-k">' + (q ? 'Je n’ai pas trouvé d’outil dédié' : 'Posez votre question') + '</p><p>' + (q ? 'Pour « ' + esc(q) + ' », voici ce qu’EFA a de plus proche. Vous pouvez aussi reformuler.' : 'Écrivez ce que vous cherchez à faire avec votre argent.') + '</p></div>';
+      if (q) h += '<div class="pp-trois" data-garde><h2>Choisissez votre point de départ</h2><div class="pp-trois-b">' +
+        [['Devenir riche', 'Je veux devenir riche'], ['Comprendre mes finances', 'Où passe mon argent ?'], ['Trouver une idée de business', 'Je cherche une idée de business']].map(function (x) { return '<a class="pp-cta" href="prochain-pas.html?q=' + encodeURIComponent(x[1]) + '" data-goatcounter-click="question-trois-options"><span>' + x[0] + '</span><i aria-hidden="true">→</i></a>'; }).join('') + '</div></div>';
+      else h += '<div class="pp-compris"><p class="pp-k">Posez votre question</p><p>Écrivez ce que vous cherchez à faire avec votre argent.</p></div>';
     }
     h += '<div id="pp-trouve"></div>';
-    if (!fq) h += '<div class="pp-autres"><h3>' + (it ? 'Vous cherchez autre chose ?' : 'Les demandes les plus fréquentes') + '</h3><div class="pp-chips">' +
+    if (!fq) h += '<div class="pp-autres"><h3>' + (it ? 'Vous cherchez autre chose ?' : (q ? 'Ou une demande fréquente' : 'Les demandes les plus fréquentes')) + '</h3><div class="pp-chips">' +
       ['voirclair', 'lancer', 'bourse', 'epargner', 'credit', 'tontine', 'terrain', 'arnaque'].filter(function (id) { return !it || it.id !== id; }).map(function (id) { var x = I.filter(function (z) { return z.id === id; })[0]; return '<a href="' + url(x.o[2], null) + '">' + esc(x.o[1]) + '</a>'; }).join('') + '</div></div>';
     h += '<p class="pp-ely">Vous ne savez pas par où commencer ? <a href="diagnostic.html">Faites votre diagnostic</a> (6 min). Besoin d’en parler ? <a href="ely.html">Posez votre question à Ely</a>, le guide d’EFA. Ou parcourez <a href="index.html#tout-efa">tout EFA, par besoin</a>.</p>';
     box.innerHTML = h;

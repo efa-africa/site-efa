@@ -229,3 +229,10 @@ html[data-clone] body{margin:0}
 .pp-cta:hover,.pp-cta:focus-visible{background:#C2331A!important;outline:3px solid #0B1220;outline-offset:3px}
 .pp-bref-q{font:700 20px/1.3 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin:6px 0 8px!important}
 @media (max-width:720px){.pp-reco{grid-template-columns:minmax(0,1fr);gap:14px;padding:16px}.pp-reco .pp-reco-p{display:none}.pp-reco .pp-cta,.pp-cta{min-height:92px;font-size:23px;padding:18px;width:100%}.pp-reco h2{font-size:26px;margin:4px 0 2px}}
+
+/* Question non comprise (21 nov. 2026) : trois grands boutons, blanc sur rouge */
+.pp-trois{background:#EAF4FC;border-radius:18px;padding:22px;margin-bottom:16px}
+.pp-trois h2{font-size:clamp(24px,3vw,32px);color:#0B1220;margin:0 0 14px}
+.pp-trois-b{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pp-trois .pp-cta{justify-content:space-between;text-align:left;min-height:112px;font-size:clamp(20px,2vw,25px)}
+@media (max-width:720px){.pp-trois{padding:16px}.pp-trois-b{grid-template-columns:minmax(0,1fr)}.pp-trois .pp-cta{min-height:84px;font-size:22px}}
