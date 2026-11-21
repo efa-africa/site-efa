@@ -307,7 +307,13 @@ def main():
     # Les 100 outils (scripts/outils/specs.py) : la zone de question les trouve par leur nom ou par leur question.
     sys.path.insert(0, os.path.join(RACINE, 'scripts', 'outils'))
     import specs
-    cent = [{'n': n, 'nom': nom, 'q': qq, 'u': u, 'dans': '' if dans == specs.N else dans, 'fam': specs.FAMILLES[(n - 1) // 10]} for n, nom, qq, u, dans in specs.CENT]
+    import huit
+    place, err8 = huit.controle(specs.CENT)
+    if err8: print('8 outils :', err8); sys.exit(1)
+    def o8(n):
+        h = place[n][0]
+        return {'h': h['f'] + '.html', 'hn': h['nom']} if h else {}
+    cent = [dict({'n': n, 'nom': nom, 'q': qq, 'u': u, 'dans': '' if dans == specs.N else dans, 'fam': specs.FAMILLES[(n - 1) // 10], 'qq': huit.QQ[n]}, **o8(n)) for n, nom, qq, u, dans in specs.CENT]
     d = {'themes': themes, 'outils': {k: {'u': v[0], 'nom': v[1], 'sur': v[2], 'cta': v[3]} for k, v in O.items()}, 'questions': out, 'cent': cent}
     os.makedirs(os.path.join(RACINE, 'data', 'questions'), exist_ok=True)
     json.dump(d, open(os.path.join(RACINE, 'data', 'questions', 'catalogue.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))

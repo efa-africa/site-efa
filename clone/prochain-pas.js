@@ -275,10 +275,10 @@
   }
   function ficheOutil(o, CAT, deja) {
     deja[o.u.split(/[?#]/)[0]] = 1;
-    var V = CAT.cent.filter(function (x) { return x.fam === o.fam && x.n !== o.n; }).slice(0, 5);
-    return '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>Vous cherchez l’outil <b>' + esc(o.nom) + '</b>.</p><p class="pp-theme">' + esc(o.fam) + '</p></div>' +
-      '<div class="pp-reco"><div><p class="pp-k">L’outil pour cela</p><h2>' + esc(o.nom) + '</h2><p class="pp-sur">' + esc(o.q) + '</p><p>' + (o.dans ? 'Il se trouve dans <b>' + esc(o.dans) + '</b>.' : 'Vos chiffres, votre décision, dès 1 min.') + '</p></div><a class="pp-cta" href="' + o.u + '">Ouvrir l’outil →</a></div>' +
-      '<div class="pp-autres"><h3>Dans la même famille</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="' + x.u + '">' + esc(x.nom) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="cent-outils.html">Voir les ' + CAT.cent.length + ' outils →</a></p></div>';
+    var V = CAT.cent.filter(function (x) { return (o.h ? x.h === o.h : x.fam === o.fam) && x.n !== o.n; }).slice(0, 5);
+    return '<div class="pp-compris"><p class="pp-k">Voici ce que j’ai compris</p><p>Vous cherchez l’outil <b>' + esc(o.nom) + '</b>.</p><p class="pp-theme">' + esc(o.hn || o.fam) + '</p></div>' +
+      '<div class="pp-reco"><div><p class="pp-k">L’outil pour cela</p><h2>' + esc(o.nom) + '</h2><p class="pp-sur">' + esc(o.qq || o.q) + '</p><p>' + (o.dans ? 'Il se trouve dans <b>' + esc(o.dans) + '</b>.' : 'Vos chiffres, votre décision, dès 1 min.') + (o.h ? ' Il fait partie de l’outil <a href="' + o.h + '"><b>' + esc(o.hn) + '</b></a>.' : '') + '</p></div><a class="pp-cta" href="' + o.u + '">Ouvrir l’outil →</a></div>' +
+      '<div class="pp-autres"><h3>Dans le même outil</h3><div class="pp-chips pp-chips-c">' + V.map(function (x) { return '<a href="' + x.u + '">' + esc(x.nom) + '</a>'; }).join('') + '</div><p class="pp-toutes"><a href="cent-outils.html">100 questions, 8 outils →</a></p></div>';
   }
   function fiche(f, CAT, m, deja) {
     var o = CAT.outils[f.o], u = o.u;
@@ -301,7 +301,7 @@
   function page() {
     var q0 = (new URLSearchParams(location.search).get('q') || '').trim();
     if (!q0) return composer(null);
-    fetch('data/questions/catalogue.json?v=20261121b').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
+    fetch('data/questions/catalogue.json?v=20261121d').then(function (r) { return r.json(); }).then(composer, function () { composer(null); });
   }
   function composer(CAT) {
     var q = (new URLSearchParams(location.search).get('q') || '').trim(), box = document.getElementById('pp-rep'), inp = document.getElementById('pp-q');

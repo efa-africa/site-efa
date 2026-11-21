@@ -1,0 +1,45 @@
+/* Les 8 outils EFA (21 nov. 2026) : une grande décision = un outil, les outils existants en étapes. */
+.h8{--nuit:#0B1220;--ink:#2A3142;--ink2:#4E5566;--ink3:#5F6676;--corail:#DA3C1B;--bleu:#1B71B2;--ciel:#EEF5FC;padding:26px 0 40px;background:#fff;font-family:"Source Sans 3",system-ui,sans-serif;color:var(--ink)}
+.h8 h2{font:700 clamp(24px,3vw,32px)/1.18 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin:0 0 14px;font-weight:700!important;text-wrap:balance}
+.h8 h3.h8-sec{font:800 12px/1.3 "Source Sans 3",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--bleu);margin:22px 0 10px}
+.h8-k{margin:0;font:800 12px/1.3 "Source Sans 3",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--corail)}
+/* Commencer ici */
+.h8-go{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;background:var(--nuit);color:#fff;border-radius:16px;padding:22px 24px;text-decoration:none;margin:0 0 30px}
+.h8-go .h8-k{color:#F09680;grid-column:1/-1}
+.h8-go h2{color:#fff;margin:0}
+.h8-go p{margin:4px 0 0;color:#C9D1DE;font-size:17px;line-height:1.45}
+.h8-go .h8-b{grid-row:2/4;grid-column:2;background:var(--corail);color:#fff;border-radius:8px;font:800 17px/1.2 "Source Sans 3",sans-serif;padding:14px 22px;white-space:nowrap;min-height:48px;display:inline-flex;align-items:center}
+/* Les étapes */
+.h8-et{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:none}
+.h8-et a{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:4px 14px;align-items:start;background:var(--ciel);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--nuit)}
+.h8-et i{font:700 22px/1.1 "Libre Baskerville",Georgia,serif;font-style:normal;color:var(--bleu);padding-top:2px}
+.h8-et b{display:block;font:700 19px/1.25 "Libre Baskerville",Georgia,serif;font-weight:700!important}
+.h8-et span{display:block;font-size:16px;color:var(--ink2);line-height:1.45;margin-top:3px}
+.h8-et ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.h8-et li li{background:#fff;border-radius:999px;padding:5px 11px;font-size:14px;font-weight:600;color:var(--nuit);line-height:1.3}
+.h8-et em{font-style:normal;font-weight:800;color:var(--corail);white-space:nowrap;align-self:center}
+/* Aller plus loin, les autres outils */
+.h8-suite{margin-top:34px}
+.h8-autres{margin-top:34px;background:var(--ciel);border-radius:16px;padding:22px 22px 16px}
+.h8-chips{display:flex;flex-wrap:wrap;gap:8px}
+.h8-chips a{background:#fff;border-radius:999px;padding:9px 15px;color:var(--nuit);font-weight:700;font-size:15.5px;text-decoration:none}
+.h8-chips a[aria-current]{background:var(--nuit);color:#fff}
+.h8-tout{margin:14px 0 0;font-weight:700}.h8-tout a{color:var(--bleu)}
+/* Page « 100 questions, 8 outils » */
+.h8-grille{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 8px}
+.h8-carte{display:flex;flex-direction:column;gap:6px;background:var(--ciel);border-radius:16px;padding:18px;text-decoration:none;color:var(--nuit);min-height:100%}
+.h8-carte svg{width:30px;height:30px;color:var(--bleu)}
+.h8-carte .h8-k{color:var(--bleu)}
+.h8-carte h3{margin:0;font:700 21px/1.2 "Libre Baskerville",Georgia,serif;font-weight:700!important}
+.h8-carte p{margin:0;color:var(--ink2);font-size:16px;line-height:1.4;flex:1}
+.h8-carte span{font-weight:800;color:var(--corail);font-size:15px}
+.ot-cent .h8-ouvrir{margin:12px 0 4px;font-weight:800}.ot-cent .h8-ouvrir a{color:var(--t);text-decoration:none}
+@media (max-width:980px){.h8-grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){
+ .h8-go{grid-template-columns:1fr;padding:20px}.h8-go .h8-b{grid-row:auto;grid-column:1;justify-self:start;margin-top:10px}
+ .h8-et a{grid-template-columns:30px minmax(0,1fr);padding:14px}.h8-et em{grid-column:2;justify-self:start}
+ .h8-grille{grid-template-columns:1fr 1fr;gap:8px}.h8-carte{padding:14px}.h8-carte h3{font-size:18px}.h8-carte p{font-size:14.5px}
+}
+/* Titre des 8 outils : la question peut être longue, elle passe à la ligne */
+.pp-h1.h8-h1 span{white-space:normal;text-wrap:balance}
+.pp-h1.h8-h1 .pp-ciel{font-size:.8em;line-height:1.15;margin-top:4px}

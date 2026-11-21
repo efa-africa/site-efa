@@ -6,19 +6,19 @@ import sys, re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121zc'
+V = '20261121zd'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
-  'diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart cent-outils mon-vrai-reste mes-dettes puis-je-aider mon-patrimoine promesse-credible journal-decisions mon-annee'),
+  'voir-clair ma-reserve mes-dettes-et-credits ma-richesse diagnostic ou-est-passe-mon-argent outil-budget construire-son-budget budget-mobile-money engagements-et-exceptions separer-les-poches epargner cercle-spirale ou-garder-sa-reserve liberte-financiere cout-total-credit renegocier-une-dette consommer-et-acheter dat-emprunts-etat preparer-ma-retraite decider outils point-de-depart cent-outils mon-vrai-reste mes-dettes puis-je-aider mon-patrimoine promesse-credible journal-decisions mon-annee'),
  ('activite', 'Bâtir et faire grandir mon activité', 'Idées de business, business plan, valeur de l’entreprise',
-  'generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre mon-idee-test'),
+  'batir-mon-activite generateur-de-projet avec-100000-je-lance-quoi mon-business-plan-tient-il mon-espace-business-plan valoriser-mon-entreprise salaire-fixe-activite investir-gagner-plus projets-a-suivre mon-idee-test'),
  ('bourse', 'Faire grandir mon argent : investir, la Bourse (BRVM)', 'Ma BRVM, le marché du jour, les SGI, les cours pour débuter',
-  'ma-brvm bvmac bourse premiers-pas-bourse marches semaine-bourse societes calendrier obligations acheter-des-actions sgi sgi-comparer questions-a-poser-a-sa-sgi questions-avant-d-investir acteurs coach-bourse ecole-de-la-bourse ecole-bourse bourse-essentiel bourse-marche bourse-pro bourse-projets investir investir-bourse investir-assurance-epargne investir-terrain-immobilier opcvm-fcpe club-investissement jeu-portefeuille-baisse personnalite etude-frais-bourse'),
+  'ma-bourse ma-brvm bvmac bourse premiers-pas-bourse marches semaine-bourse societes calendrier obligations acheter-des-actions sgi sgi-comparer questions-a-poser-a-sa-sgi questions-avant-d-investir acteurs coach-bourse ecole-de-la-bourse ecole-bourse bourse-essentiel bourse-marche bourse-pro bourse-projets investir investir-bourse investir-assurance-epargne investir-terrain-immobilier opcvm-fcpe club-investissement jeu-portefeuille-baisse personnalite etude-frais-bourse'),
  ('tontine', 'La tontine', 'Comprendre, choisir, cotiser sans se faire avoir',
   'tontine ecole-de-la-tontine avant-de-cotiser choisir-son-rang-tontine tontine-formations tontine-decider-avant-de-recevoir tontine-rentree cotiser-depuis-l-etranger etude-tontine-en-chiffres'),
  ('famille', 'Famille, maison et moments de vie', 'Terrain, chantier, enfants, décès, prêter à un proche, arnaques',
-  'acheter-un-terrain budget-chantier arrivee-enfant etudes-enfants-heritage apres-un-deces papiers-famille preter-a-un-proche question-preter-a-ma-soeur solidarite-assureur-de-la-famille arnaques se-proteger-des-arnaques'),
+  'famille-et-tontine avant-de-signer acheter-un-terrain budget-chantier arrivee-enfant etudes-enfants-heritage apres-un-deces papiers-famille preter-a-un-proche question-preter-a-ma-soeur solidarite-assureur-de-la-famille arnaques se-proteger-des-arnaques'),
  ('former', 'Me former', 'Les ateliers, les parcours, les certificats, les écoles EFA',
   'apprendre questions ateliers ateliers-budget ateliers-placer ateliers-bourse ateliers-credit ateliers-activite ateliers-famille ateliers-arnaques ateliers-elysee parcours certificat-pilote certificat-maitrise certificat-patrimoine certificat-cefa traders corporate ceo quiz minfin'),
  ('media', 'L’actu, les études, le média', 'EFA News, décryptages, tribunes, études, Africa 2075, podcast',
@@ -29,7 +29,7 @@ FAMILLES = [
   'mon-efa abonnement rendez-vous ely auteur enquete confidentialite'),
 ]
 EXCLUES = set('index accueil-v1 accueil-v3 prochain-pas sauvegarde-plateforme-2026-11-21 question ateliers-cles comite merci-guide tableau-ely marches-labo sgi-fiche societe'.split())
-TITRES = {'bvmac': 'La Bourse d’Afrique centrale (BVMAC)', 'cent-outils': 'Les 100 outils EFA', 'mon-vrai-reste': 'Mon vrai reste', 'mes-dettes': 'Mes dettes classées', 'puis-je-aider': 'Puis-je aider ce mois-ci ?', 'mon-idee-test': 'Mon idée vaut-elle un test ?', 'mon-patrimoine': 'Mon patrimoine, aujourd’hui et dans dix ans', 'promesse-credible': 'Cette promesse est-elle crédible ?', 'journal-decisions': 'Mon journal de décisions', 'mon-annee': 'Mon année EFA', 'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
+TITRES = {'bvmac': 'La Bourse d’Afrique centrale (BVMAC)', 'cent-outils': '100 questions, 8 outils', 'voir-clair': 'Voir clair · où va mon argent', 'ma-reserve': 'Ma réserve · combien garder, et où', 'mes-dettes-et-credits': 'Mes dettes · emprunter, rembourser, renégocier', 'famille-et-tontine': 'Famille et tontine · aider, prêter, cotiser', 'batir-mon-activite': 'Déclic · lancer mon activité', 'ma-bourse': 'Ma BRVM · investir à la Bourse', 'ma-richesse': 'Ma richesse · faire grandir mon patrimoine', 'avant-de-signer': 'Avant de signer · cette offre est-elle sûre ?', 'mon-vrai-reste': 'Mon vrai reste', 'mes-dettes': 'Mes dettes classées', 'puis-je-aider': 'Puis-je aider ce mois-ci ?', 'mon-idee-test': 'Mon idée vaut-elle un test ?', 'mon-patrimoine': 'Mon patrimoine, aujourd’hui et dans dix ans', 'promesse-credible': 'Cette promesse est-elle crédible ?', 'journal-decisions': 'Mon journal de décisions', 'mon-annee': 'Mon année EFA', 'questions': 'Les 100 questions sur l’argent, et leurs réponses', 'apprendre': 'Apprendre : seul ou accompagné', 'generateur-de-projet': 'Déclic · trouver mon idée de business', 'rendez-vous': 'Rendez-vous, contact et organisations', 'auteur': 'À propos d’EFA et d’Élysée Johnson',
           'ely': 'Ely, le guide d’EFA', 'methode': 'Études sur la tontine et l’argent', 'etudes-prospective': 'Études et prospective', 'africa-2075-dossier-1': 'Africa 2075 · dossier n° 1',
           'investir-bourse': 'Investir : la Bourse (BRVM)', 'investir-gagner-plus': 'Investir : gagner plus', 'abonnement': 'L’abonnement EFA', 'ecole-bourse': 'École de la Bourse (parcours)',
           'outils': 'Tous les outils et simulateurs', 'ateliers': 'Tous les ateliers, par thème', 'ateliers-elysee': 'Ateliers avec Élysée Johnson', 'news': 'EFA News', 'sgi': 'Les SGI de la Bourse (BRVM)',
@@ -140,9 +140,9 @@ def champ(ph):
             '<textarea id="pp-q" name="q" rows="1" autocomplete="off" enterkeyhint="search" placeholder="%s"></textarea><button class="pp-go" type="submit">Trouver mon prochain pas →</button></form>') % E(ph)
 
 PORTES = ''.join('<a class="pp-porte" href="%s"><span class="pp-ic">%s</span><span class="pp-pt"><b>%s</b><span>%s</span></span><i aria-hidden="true">→</i></a>' % (u, ic(i), t, s) for u, i, t, s in [
- ('ou-est-passe-mon-argent.html?src=accueil-portes', 'wallet', 'Voir clair', 'Reprendre la main sur mon argent'),
- ('generateur-de-projet.html?src=accueil-portes', 'bulb', 'Déclic', 'Bâtir mon activité'),
- ('ma-brvm.html?src=accueil-portes', 'bars', 'Ma BRVM', 'Faire grandir mon argent'),
+ ('voir-clair.html?src=accueil-portes', 'wallet', 'Voir clair', 'Reprendre la main sur mon argent'),
+ ('batir-mon-activite.html?src=accueil-portes', 'bulb', 'Déclic', 'Bâtir mon activité'),
+ ('ma-bourse.html?src=accueil-portes', 'bars', 'Ma BRVM', 'Faire grandir mon argent'),
  ('apprendre.html?src=accueil-portes', 'cap', 'Apprendre', 'Seul ou accompagné')])
 
 def liste(L): return '<ul class="pp-liens">' + ''.join('<li><a href="%s">%s</a></li>' % (f['p'], E(f['t'])) for f in L) + '</ul>'
@@ -179,7 +179,7 @@ accueil = TETE % META_ACCUEIL + '''
 <h2>Une question. Un premier pas.</h2><span class="pp-trait-g"></span>
 <p class="pp-exp-s">Une réponse courte, puis un outil pour avancer.</p>
 <div class="pp-exps">''' + EXPRESS + '''</div>
-<p class="pp-voir100"><a href="cent-outils.html">Voir les 100 outils ''' + FLECHE + '''</a> &nbsp; <a href="questions.html">Lire les 100 questions et leurs réponses ''' + FLECHE + '''</a></p>
+<p class="pp-voir100"><a href="cent-outils.html">100 questions, 8 outils ''' + FLECHE + '''</a> &nbsp; <a href="questions.html">Lire les 100 questions et leurs réponses ''' + FLECHE + '''</a></p>
 </div></section>
 
 <section class="pp-former"><div class="pp-in">
@@ -226,7 +226,7 @@ open('index.html', 'w', encoding='utf-8').write(accueil)
 
 def carte(u, k, t, d, cta='Ouvrir'): return '<a class="pp-carte" href="%s"><p class="pp-k">%s</p><h3>%s</h3><p>%s</p><span class="pp-lien">%s →</span></a>' % (u, k, E(t), E(d), cta)
 SEUL = ''.join([
- carte('cent-outils.html', 'Pratiquer', 'Les 100 outils EFA', 'Une question d’argent, un outil : vos chiffres, votre décision.', 'Voir les outils'),
+ carte('cent-outils.html', 'Pratiquer', '100 questions, 8 outils', 'Une grande décision, un outil : vos chiffres, votre décision.', 'Voir les 8 outils'),
  carte('questions.html', 'Questions et réponses', 'Les 100 questions sur l’argent', 'Budget, épargne, dettes, business, Bourse, patrimoine : une réponse courte et un outil pour chacune.', 'Lire les réponses'),
  carte('parcours.html', 'Le parcours complet', 'L’école EFA', 'Trois cycles, du diagnostic au patrimoine : Fondations, Maîtrise, Patrimoine. Un certificat local à la fin de chacun.', 'Commencer le parcours'),
  carte('diagnostic.html', 'Avant de commencer', 'Mon diagnostic', 'Six minutes pour savoir où vous en êtes et par quel module commencer.', 'Faire le point'),
@@ -326,7 +326,7 @@ for k, x in enumerate(_sp.PAGES):
     meta = ('<title>%s · EFA</title>\n<link rel="canonical" href="https://efa.africa/%s">\n<meta name="description" content="%s">\n%s' % (E(x['t']), x['f'], E(x['d']), LIENS_OT))
     page = TETE % meta + """
 <section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
-<p class="pp-fil"><a href="index.html">Accueil</a> / <a href="cent-outils.html">Les outils</a> / %s</p>
+<p class="pp-fil"><a href="index.html">Accueil</a> / <a href="cent-outils.html">Les 8 outils</a> / %s</p>
 <h1 class="pp-h1 pp-h1-c"><span>%s</span><span class="pp-ciel">%s</span></h1>
 <p class="pp-sous">%s</p>
 </div></div></section>
@@ -335,29 +335,92 @@ for k, x in enumerate(_sp.PAGES):
 <div class="ot-suite"><h2>Continuer</h2><div class="pp-cartes">%s</div></div>
 </div></section>
 """ % (E(x['k']), E(x['h'][0]), E(x['h'][1]), E(x['s']), x['js'], x['form'],
-       ''.join(carte(y['f'] + '.html', y['k'], y['t'], y['s'], 'Ouvrir') for y in autres) + carte('cent-outils.html', 'Tout voir', 'Les 100 outils EFA', 'Chaque question d’argent a son outil.', 'Voir les outils')) + FIN
+       ''.join(carte(y['f'] + '.html', y['k'], y['t'], y['s'], 'Ouvrir') for y in autres) + carte('cent-outils.html', 'Tout voir', '100 questions, 8 outils', 'Chaque question d’argent mène à son outil.', 'Voir les 8 outils')) + FIN
     open(x['f'] + '.html', 'w', encoding='utf-8').write(page)
 manque = [c for c in _sp.CENT if not os.path.exists(re.split(r'[?#]', c[3])[0])]
 if manque: print('100 outils : pages absentes', [(c[0], c[3]) for c in manque]); sys.exit(1)
-sec = ''
-for i, fam in enumerate(_sp.FAMILLES):
-    L = _sp.CENT[i * 10:(i + 1) * 10]
-    sec += '<section class="c%d" id="f%d"><h2>%s</h2><ol>%s</ol></section>\n' % (i + 1, i + 1, E(fam), ''.join(
-        '<li><a href="%s"><i>%d</i><b>%s%s</b><span>%s</span>%s</a></li>' % (c[3], c[0], E(c[1]), '<em>Nouveau</em>' if c[4] == _sp.N else '', E(c[2]).replace(' ?', '&nbsp;?'), '<small>Dans : %s</small>' % E(c[4]) if c[4] and c[4] != _sp.N else '') for c in L))
-META_C = ('<title>Les 100 outils EFA : une question d’argent, un outil · EFA</title>\n<link rel="canonical" href="https://efa.africa/cent-outils">\n'
-          '<meta name="description" content="Budget, épargne, dettes, famille, business, Bourse (BRVM), patrimoine, arnaques : 100 outils EFA pour passer de la question à la décision, avec vos chiffres.">\n' + LIENS_OT)
+# ---- Les 8 outils (21 nov. 2026, scripts/outils/huit.py) : une grande décision = un outil ; la page des 100 devient « 100 questions, 8 outils » ----
+import huit as _h8
+_PLACE, _err = _h8.controle(_sp.CENT)
+if _err: print('8 outils :', _err); sys.exit(1)
+_C = {c[0]: c for c in _sp.CENT}
+ICONES = dict(IC, **IC_Q)
+def ic8(n): return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%s</svg>' % ICONES[n]
+LIENS_H8 = '<link rel="stylesheet" href="clone/huit-outils.css?v=%s">' % V_OT
+def titre_page(u):
+    f = fiche(re.split(r'[?#]', u)[0], '')
+    return f['t'], f['d']
+def puces_huit(courant=None):
+    return '<div class="h8-chips">' + ''.join('<a href="%s.html"%s>%s</a>' % (h['f'], ' aria-current="page"' if courant and h['id'] == courant['id'] else '', E(h['nom'])) for h in _h8.HUIT) + '</div>'
+def nq(h): return sum(len(e[3]) for e in h['etapes'])
+for k, h in enumerate(_h8.HUIT):
+    e0 = h['etapes'][0]
+    et = ''
+    ouvert = False
+    for j, e in enumerate(h['etapes']):
+        if len(e) > 4:
+            if ouvert: et += '</ol>'
+            et += '<h3 class="h8-sec">%s</h3><ol class="h8-et">' % E(e[4]); ouvert = True
+        elif not ouvert:
+            et += '<ol class="h8-et">'; ouvert = True
+        qs = ''.join('<li>%s</li>' % E(_h8.QQ[n]).replace(' ?', '&nbsp;?').replace(' :', '&nbsp;:') for n in e[3])
+        et += '<li><a href="%s"><i>%d</i><div><b>%s</b><span>%s</span>%s</div><em>Ouvrir →</em></a></li>' % (e[0], j + 1, E(e[1]), E(e[2]), '<ul>%s</ul>' % qs if qs else '')
+    et += '</ol>'
+    plus = ''
+    for u in h['plus']:
+        t, d = titre_page(u)
+        plus += carte(u, 'Atelier' if u.startswith('atelier-') else 'Pour aller plus loin', t, (d[:120].rsplit(' ', 1)[0] + '…') if len(d) > 120 else d)
+    meta = ('<title>%s : %s · EFA</title>\n<link rel="canonical" href="https://efa.africa/%s">\n<meta name="description" content="%s">\n%s' % (E(h['nom']), E(h['q']), h['f'], E(h['s']), LIENS_H8))
+    page = TETE % meta + """
+<section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
+<p class="pp-fil"><a href="index.html">Accueil</a> / <a href="cent-outils.html">100 questions, 8 outils</a> / %s</p>
+<h1 class="pp-h1 pp-h1-c h8-h1"><span>%s.</span><span class="pp-ciel">%s</span></h1>
+<p class="pp-sous">%s</p>
+</div></div></section>
+<section class="h8" data-garde><div class="pp-in">
+<a class="h8-go" href="%s"><p class="h8-k">Commencer ici</p><h2>%s</h2><p>%s</p><span class="h8-b">Ouvrir l’outil →</span></a>
+<h2>Les étapes</h2>
+<p style="margin:-6px 0 16px;color:#4E5566">Faites-les dans l’ordre, ou allez directement à celle qui répond à votre question. Vos chiffres restent sur votre téléphone.</p>
+%s
+<div class="h8-suite"><h2>Aller plus loin</h2><div class="pp-cartes">%s</div></div>
+<div class="h8-autres"><h2>Les 8 outils EFA</h2>%s<p class="h8-tout"><a href="cent-outils.html">Les 100 questions et l’outil qui répond à chacune →</a></p></div>
+</div></section>
+""" % (E(h['nom']), E(h['nom']), E(h['q']).replace(' ?', '&nbsp;?').replace(' :', '&nbsp;:'), E(h['s']), e0[0], E(e0[1]), E(e0[2]), et, plus, puces_huit(h)) + FIN
+    open(h['f'] + '.html', 'w', encoding='utf-8').write(page)
+
+grille = ''.join('<a class="h8-carte" href="%s.html">%s<p class="h8-k">Outil %d</p><h3>%s</h3><p>%s</p><span>%d questions →</span></a>' % (h['f'], ic8(h['ic']), k + 1, E(h['nom']), E(h['q']).replace(' ?', '&nbsp;?').replace(' :', '&nbsp;:'), nq(h)) for k, h in enumerate(_h8.HUIT))
+sec, num = '', 0
+for k, h in enumerate(_h8.HUIT):
+    L = ''
+    for e in h['etapes']:
+        for n in e[3]:
+            num += 1
+            L += '<li><a href="%s"><i>%d</i><b>%s</b><span>%s</span></a></li>' % (e[0], num, E(_h8.QQ[n]).replace(' ?', '&nbsp;?').replace(' :', '&nbsp;:'), 'Étape : ' + E(e[1]))
+    sec += '<section class="c%d" id="o%d"><h2>%s</h2><p style="margin:-6px 0 12px;color:#4E5566;font-size:16px">%s</p><ol>%s</ol><p class="h8-ouvrir"><a href="%s.html">Ouvrir l’outil %s →</a></p></section>\n' % (
+        k + 1, k + 1, E(h['nom']), E(h['q']), L, h['f'], E(h['nom']))
+for k, (nom, sous, Ls) in enumerate(_h8.AUTOUR):
+    L = ''
+    for n in Ls:
+        num += 1
+        c = _C[n]
+        L += '<li><a href="%s"><i>%d</i><b>%s</b><span>%s</span></a></li>' % (c[3], num, E(_h8.QQ[n]).replace(' ?', '&nbsp;?').replace(' :', '&nbsp;:'), E(c[1]))
+    sec += '<section class="c%d" id="a%d"><h2>%s</h2><p style="margin:-6px 0 12px;color:#4E5566;font-size:16px">%s</p><ol>%s</ol></section>\n' % (9 + k % 2, k + 1, E(nom), E(sous), L)
+assert num == 100, num
+META_C = ('<title>100 questions, 8 outils : décider avec vos chiffres · EFA</title>\n<link rel="canonical" href="https://efa.africa/cent-outils">\n'
+          '<meta name="description" content="Voir clair, réserve, dettes, famille et tontine, Déclic, Bourse (BRVM), richesse, avant de signer : 100 questions d’argent, 8 outils EFA pour décider avec vos chiffres.">\n' + LIENS_OT + LIENS_H8)
 cent = TETE % META_C + """
 <section class="pp-hero pp-hero-c"><div class="pp-in"><div class="pp-txt">
-<p class="pp-fil"><a href="index.html">Accueil</a> / Les 100 outils</p>
-<h1 class="pp-h1 pp-h1-c"><span>100 outils.</span><span class="pp-ciel">Vos chiffres, votre décision.</span></h1>
-<p class="pp-sous">Chaque outil part d’une question, prend vos chiffres et vous rend une décision ou une fiche à garder. La finance, avec nos réalités.</p>
+<p class="pp-fil"><a href="index.html">Accueil</a> / 100 questions, 8 outils</p>
+<h1 class="pp-h1 pp-h1-c"><span>100 questions.</span><span class="pp-ciel">8 outils pour décider.</span></h1>
+<p class="pp-sous">Chaque question mène à l’un des 8 outils EFA, et à l’étape qui y répond. Vos chiffres, votre décision. La finance, avec nos réalités.</p>
 </div></div></section>
+<section class="h8" data-garde><div class="pp-in"><div class="h8-grille">%s</div></div></section>
 <section class="ot ot-cent" data-garde><div class="pp-in">
-<nav class="ot-cent-nav" aria-label="Familles d’outils">%s</nav>
+<nav class="ot-cent-nav" aria-label="Les 8 outils">%s</nav>
 %s</div></section>
-""" % (''.join('<a href="#f%d">%s</a>' % (i + 1, E(f)) for i, f in enumerate(_sp.FAMILLES)), sec) + FIN
+""" % (grille, ''.join('<a href="#o%d">%s</a>' % (k + 1, E(h['nom'])) for k, h in enumerate(_h8.HUIT)) + '<a href="#a1">Autour des 8 outils</a>', sec) + FIN
 open('cent-outils.html', 'w', encoding='utf-8').write(cent)
-PAGES_OT = [x['f'] + '.html' for x in _sp.PAGES] + ['cent-outils.html']
+PAGES_OT = [x['f'] + '.html' for x in _sp.PAGES] + ['cent-outils.html'] + [h['f'] + '.html' for h in _h8.HUIT]
 
 # ---- La Bourse d'Afrique centrale (BVMAC) : une porte d'entrée, sans données de marché (décision du 21 nov. 2026) ----
 META_B = ('<title>La Bourse d’Afrique centrale (BVMAC) : comment elle marche, comment y investir · EFA</title>\n<link rel="canonical" href="https://efa.africa/bvmac">\n'
@@ -432,7 +495,7 @@ bvmac = TETE % META_B + """
 
 <div class="ot-bloc ot-t6"><h3>Et sur EFA ?</h3>
 <p>Les outils d’EFA sur le budget, l’épargne, les dettes, le patrimoine et les arnaques servent partout où l’on compte en francs CFA. Les données de marché d’EFA couvrent aujourd’hui la Bourse d’Afrique de l’Ouest (BRVM). Pour la Bourse d’Afrique centrale, cette page est un point de départ : EFA suit ce marché et l’ouvrira davantage.</p>
-<p class="ot-boutons"><a class="ot-b" href="cent-outils.html">Les 100 outils EFA</a><a class="ot-b ot-b2" href="questions.html">Les 100 questions</a></p></div>
+<p class="ot-boutons"><a class="ot-b" href="cent-outils.html">100 questions, 8 outils</a><a class="ot-b ot-b2" href="questions.html">Les 100 questions</a></p></div>
 
 <p class="ot-garde">Sources : BVMAC, bulletin officiel de la cote du 5 août 2026 ; rapport d’activité 2025 ; registre des sociétés de Bourse par pays (<a href="https://www.bvm-ac.org" rel="noopener">bvm-ac.org</a>). Contenu pédagogique, pas un conseil en placement. EFA n’est pas affiliée à la BVMAC.</p>
 </div></div></section>
