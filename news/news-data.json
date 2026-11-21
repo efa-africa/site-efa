@@ -10,7 +10,7 @@
  "articles": [
   {
    "statut": "publié",
-   "une": false,
+   "une": true,
    "corrections": [],
    "auteur": "Rédaction EFA",
    "origine": "veille EFA News du 2026-11-20",
@@ -1030,7 +1030,7 @@
      "type": "media"
     }
    ],
-   "une": true,
+   "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
    "origine": "édition spéciale du 2026-11-03",
