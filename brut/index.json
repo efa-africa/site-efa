@@ -699,7 +699,22 @@
   "2025-12-26": "https://www.brvm.org/sites/default/files/boc_20251226_2.pdf",
   "2025-12-29": "https://www.brvm.org/sites/default/files/boc_20251229_2.pdf",
   "2025-12-30": "https://www.brvm.org/sites/default/files/boc_20251230_2.pdf",
-  "2025-12-31": "https://www.brvm.org/sites/default/files/boc_20251231_2.pdf"
+  "2025-12-31": "https://www.brvm.org/sites/default/files/boc_20251231_2.pdf",
+  "2026-10-23": "https://www.brvm.org/sites/default/files/boc_20261023_2.pdf",
+  "2026-11-02": "https://www.brvm.org/sites/default/files/boc_20261102_2.pdf",
+  "2026-11-03": "https://www.brvm.org/sites/default/files/boc_20261103_2.pdf",
+  "2026-11-04": "https://www.brvm.org/sites/default/files/boc_20261104_2.pdf",
+  "2026-11-05": "https://www.brvm.org/sites/default/files/boc_20261105_2.pdf",
+  "2026-11-06": "https://www.brvm.org/sites/default/files/boc_20261106_2.pdf",
+  "2026-11-09": "https://www.brvm.org/sites/default/files/boc_20261109_2.pdf",
+  "2026-11-10": "https://www.brvm.org/sites/default/files/boc_20261110_2.pdf",
+  "2026-11-11": "https://www.brvm.org/sites/default/files/boc_20261111_2.pdf",
+  "2026-11-12": "https://www.brvm.org/sites/default/files/boc_20261112_2.pdf",
+  "2026-11-13": "https://www.brvm.org/sites/default/files/boc_20261113_2.pdf",
+  "2026-11-16": "https://www.brvm.org/sites/default/files/boc_20261116_2.pdf",
+  "2026-11-17": "https://www.brvm.org/sites/default/files/boc_20261117_2.pdf",
+  "2026-11-18": "https://www.brvm.org/sites/default/files/boc_20261118.pdf",
+  "2026-11-19": "https://www.brvm.org/sites/default/files/boc_20261119_2.pdf"
  },
  "introuvables": [
   "2026-03-16",
@@ -737,6 +752,7 @@
   "2025-08-07",
   "2025-08-15",
   "2025-09-04",
-  "2025-12-25"
+  "2025-12-25",
+  "2026-11-20"
  ]
 }
