@@ -63,7 +63,7 @@ def lire_actions(texte, jour):
         if len(t) < 6:
             continue
         t = [x for x in t if not (x.startswith("(") and len(x) <= 12)]
-        nom, reste = t[0], t[1:]
+        nom, reste = t[0].replace("''", "'"), t[1:]
         i_var = next((i for i, x in enumerate(reste) if x.endswith("%")), None)
         if i_var is None or i_var < 3:
             continue
