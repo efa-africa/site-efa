@@ -1,6 +1,192 @@
 {
  "source": "https://www.bvm-ac.org",
- "bulletins": {},
+ "bulletins": {
+  "2026-10-01": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261001.pdf",
+   "octets_pdf": 1763225,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-02": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261002.pdf",
+   "octets_pdf": 1742113,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-05": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261005.pdf",
+   "octets_pdf": 2238241,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-06": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261006.pdf",
+   "octets_pdf": 1750069,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-07": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261007.pdf",
+   "octets_pdf": 1740906,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-08": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261008.pdf",
+   "octets_pdf": 1761258,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-09": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261009.pdf",
+   "octets_pdf": 1759304,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-12": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261012.pdf",
+   "octets_pdf": 1744185,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-13": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261013.pdf",
+   "octets_pdf": 1762121,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-14": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261014.pdf",
+   "octets_pdf": 2240227,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-15": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261015.pdf",
+   "octets_pdf": 1748866,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-16": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261016.pdf",
+   "octets_pdf": 1738286,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-19": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261019.pdf",
+   "octets_pdf": 1749734,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-20": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261020.pdf",
+   "octets_pdf": 1751200,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-21": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261021.pdf",
+   "octets_pdf": 1743362,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-22": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261022.pdf",
+   "octets_pdf": 1743738,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-23": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261023.pdf",
+   "octets_pdf": 1743594,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-26": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261026.pdf",
+   "octets_pdf": 1760875,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-27": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261027.pdf",
+   "octets_pdf": 1807787,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-28": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261028.pdf",
+   "octets_pdf": 1773170,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-29": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261029.pdf",
+   "octets_pdf": 1755041,
+   "archive_le": "2026-11-21"
+  },
+  "2026-10-30": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/10/BOC-20261030.pdf",
+   "octets_pdf": 2262764,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-02": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261102.pdf",
+   "octets_pdf": 1756631,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-03": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261103.pdf",
+   "octets_pdf": 1755387,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-04": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261104.pdf",
+   "octets_pdf": 1766662,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-05": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261105.pdf",
+   "octets_pdf": 1767734,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-06": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261106.pdf",
+   "octets_pdf": 1754110,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-09": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261109.pdf",
+   "octets_pdf": 1770725,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-10": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261110.pdf",
+   "octets_pdf": 1751884,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-11": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261111.pdf",
+   "octets_pdf": 1774635,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-12": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261112.pdf",
+   "octets_pdf": 1771672,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-13": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261113.pdf",
+   "octets_pdf": 1769479,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-16": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261116.pdf",
+   "octets_pdf": 3066712,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-17": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261117.pdf",
+   "octets_pdf": 3067758,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-18": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261118.pdf",
+   "octets_pdf": 3070998,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-19": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261119.pdf",
+   "octets_pdf": 3070722,
+   "archive_le": "2026-11-21"
+  },
+  "2026-11-20": {
+   "url": "https://www.bvm-ac.org/wp-content/uploads/2026/11/BOC-20261120.pdf",
+   "octets_pdf": 3062126,
+   "archive_le": "2026-11-21"
+  }
+ },
  "dernier_passage": "2026-11-21",
- "nombre": 0
+ "nombre": 37
 }
