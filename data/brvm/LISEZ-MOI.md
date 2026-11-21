@@ -27,3 +27,13 @@ Indices sectoriels : anciens secteurs jusqu'à fin 2025 (Agriculture, Distributi
 Texte des bulletins : branche `brvm-historique-brut` (robot « Historique BRVM », lancement manuel). Lecture : `python scripts/brvm/historique_lire.py --brut <dossier brut>`.
 Contrôles : BRVM Composite 2024 +28,90 %, 2025 +25,26 % (chiffres officiels retrouvés) ; raccord exact entre années et avec la base quotidienne.
 Jours ouvrés sans bulletin trouvé : 12 en 2024, 13 en 2025, 11 en 2026, fériés pour la plupart (liste dans `brut/index.json` de la branche).
+
+## Opérations sur titres (fractionnements, actions gratuites)
+
+`operations.json` : liste sourcée des opérations qui changent le nombre d'actions (Solibra 2024 et Sonatel 2026 : 10 pour 1 ; Bank of Africa et SIB 2024 : actions gratuites ; Safca 2026 : augmentation de capital avec droit préférentiel), plus les dividendes exceptionnels (Filtisac 2025) à ne pas confondre avec un fractionnement.
+Les bases brutes gardent les cours publiés à l'époque. `marches.py` (courbes, performances) et `semaine.py` (synthèses) ajustent les cours et volumes antérieurs, pour qu'un détenteur de 10 Sonatel devenues 100 ne voie pas une perte fictive de 90 %.
+Si `marches.py` affiche « ALERTE : saut de cours non déclaré », il faut ajouter l'opération, avec sa source, dans `operations.json`.
+
+## Cours de la veille
+
+La colonne « cours veille » de brvm.org n'est pas fiable. Depuis le 21 novembre 2026, `collecte.py` déduit le cours de la veille de la clôture et de la variation officielle du jour, comme le bulletin officiel ; la base `actions.csv` a été corrigée de la même façon et les synthèses hebdomadaires recalculées.

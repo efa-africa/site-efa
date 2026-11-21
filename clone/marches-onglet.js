@@ -123,7 +123,18 @@
         var g = [mn, mn + r / 2, mx].map(function (v) { return '<text x="' + (W - 4) + '" y="' + (Y(v) - 4) + '" text-anchor="end" font-size="11" fill="#7a8293">' + nb(v) + '</text><line x1="0" x2="' + W + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="#eef2f6"/>'; }).join('');
         var bars = pts.map(function (x, i) { var bh = (x[2] / vm) * (hv - 6); return '<rect x="' + (X(i) - 1.5) + '" y="' + (Hh - bh) + '" width="3" height="' + bh + '" fill="#c9d3df"/>'; }).join('');
         var cap = document.getElementById('mk-percap'); if (!cap) { cap = document.createElement('p'); cap.id = 'mk-percap'; cap.className = 'mk-per'; G.parentNode.insertBefore(cap, G.nextSibling); }
-        cap.innerHTML = (s.ajustements && s.ajustements.length ? '<span class="mk-aj">Cours antérieurs ajustés : ' + s.ajustements.map(function (a) { return a.facteur >= 1 ? 'fractionnement du ' + date(a.date, true) + ' (1 action ancienne = ' + nb(a.facteur) + ' nouvelles)' : 'regroupement du ' + date(a.date, true); }).join(', ') + '.</span>' : '') + '<span class="mk-d">' + date(pts[0][0]) + '</span><span class="mk-pa">Période affichée : ' + periode(pts[0][0], pts[pts.length - 1][0], pts.length) + ' · un point par séance (cours de clôture en FCFA), barres grises : volumes échangés</span><span class="mk-d">' + date(pts[pts.length - 1][0]) + '</span>';
+        cap.innerHTML = (function () {
+          var aj = (s.ajustements || []).filter(function (a) { return a.ajuste !== false; }), ev = (s.ajustements || []).filter(function (a) { return a.ajuste === false; });
+          function txt(a) {
+            var d = date(a.date, true);
+            if (a.type === 'attribution gratuite') return 'actions gratuites du ' + d + ' (10 actions détenues avant = ' + nb(10 * a.facteur) + ' après)';
+            if (a.type && a.type.indexOf('droit préférentiel') >= 0) return 'augmentation de capital du ' + d + ' (cours ajustés du droit détaché)';
+            if (a.facteur >= 1) return 'fractionnement du ' + d + ' (1 action ancienne = ' + nb(a.facteur) + ' nouvelles)';
+            return 'regroupement du ' + d;
+          }
+          return (aj.length ? '<span class="mk-aj">Cours antérieurs ajustés, pour comparer ce qui est comparable : ' + aj.map(txt).join(', ') + '.</span>' : '') +
+            (ev.length ? '<span class="mk-aj">' + ev.map(function (a) { return 'Dividende exceptionnel détaché le ' + date(a.date, true) + ' : la baisse du cours ce jour-là correspond à l’argent versé aux actionnaires.'; }).join(' ') + '</span>' : '');
+        })() + '<span class="mk-d">' + date(pts[0][0]) + '</span><span class="mk-pa">Période affichée : ' + periode(pts[0][0], pts[pts.length - 1][0], pts.length) + ' · un point par séance (cours de clôture en FCFA), barres grises : volumes échangés</span><span class="mk-d">' + date(pts[pts.length - 1][0]) + '</span>';
         var an = pts[0][0].slice(0, 4) !== pts[pts.length - 1][0].slice(0, 4), RR = reperes(pts.length, W > 600 ? 9 : 5);
         var axe = '<line x1="0" x2="' + W + '" y1="' + Hh + '" y2="' + Hh + '" stroke="#c9d3df"/>' + RR.map(function (i, k) { var x = X(i), a = k === 0 ? 'start' : k === RR.length - 1 ? 'end' : 'middle'; return '<line x1="' + x + '" x2="' + x + '" y1="' + Hh + '" y2="' + (Hh + 5) + '" stroke="#8e9bb0"/><line x1="' + x + '" x2="' + x + '" y1="0" y2="' + Hh + '" stroke="#eef2f6"/><text x="' + x + '" y="' + (Hh + 19) + '" text-anchor="' + a + '" font-size="12" fill="#5f6676">' + jm(pts[i][0], an) + '</text>'; }).join('');
         G.setAttribute('viewBox', '0 0 ' + W + ' ' + (Hh + 24));
@@ -132,7 +143,7 @@
         function bouge(e) { var b = G.getBoundingClientRect(), x = ((e.touches ? e.touches[0].clientX : e.clientX) - b.left) / b.width, i = Math.max(0, Math.min(pts.length - 1, Math.round(x * (pts.length - 1)))), c = document.getElementById('mk-cur'); c.setAttribute('x1', X(i)); c.setAttribute('x2', X(i)); c.setAttribute('opacity', 1); bulle.innerHTML = date(pts[i][0], true) + ' · <b>' + nb(pts[i][1]) + ' FCFA</b> · ' + vr((pts[i][1] / pts[0][1] - 1) * 100) + ' depuis le début de la période'; }
         G.onpointermove = bouge; G.ontouchmove = bouge; G.onpointerleave = function () { bulle.innerHTML = ''; var c = document.getElementById('mk-cur'); if (c) c.setAttribute('opacity', 0); };
       }
-      P.innerHTML = dispo.map(function (p, i) { return '<button type="button" aria-pressed="' + (i === dispo.length - 1 ? 'true' : 'false') + '" data-i="' + i + '">' + ({ '1M': '1 mois', '6M': '6 mois', '1A': '1 an', '5A': '5 ans', 'Tout': 'Depuis le ' + court(H[0][0]) })[p[0]] + '</button>'; }).join('');
+      P.innerHTML = dispo.map(function (p, i) { return '<button type="button" aria-pressed="' + (i === dispo.length - 1 ? 'true' : 'false') + '" data-i="' + i + '">' + ({ '1M': '1 mois', '6M': '6 mois', '1A': '1 an', '5A': '5 ans', 'Tout': 'Depuis le ' + (H[0][0].slice(0, 4) === H[H.length - 1][0].slice(0, 4) ? court(H[0][0]) : date(H[0][0], true)) })[p[0]] + '</button>'; }).join('');
       P.querySelectorAll('button').forEach(function (b) { b.onclick = function () { P.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); compte('fiche-periode'); trace(dispo[+b.dataset.i]); }; });
       trace(dispo[dispo.length - 1]);
       var pf = s.perf; document.getElementById('mk-perf').innerHTML = [['1 semaine', pf.s1], ['1 mois', pf.m1], ['Depuis le 1er janvier', pf.ytd], ['1 an', pf.a1], ['5 ans', pf.a5]].map(function (x) { return '<div><span class="mk-et">' + x[0] + '</span><b>' + vr(x[1]) + '</b></div>'; }).join('');

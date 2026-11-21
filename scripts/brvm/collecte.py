@@ -94,10 +94,14 @@ def lire_actions(soup, jour):
             for l in lignes:
                 if len(l) < 7 or not re.fullmatch(r"[A-Z]{3,6}", l[0].strip()):
                     continue
+                clo, var = nombre(l[5]), nombre(l[6])
+                # La colonne « cours veille » de brvm.org n'est pas fiable (souvent égale à la clôture du jour) :
+                # le cours de la veille est déduit de la clôture et de la variation officielle, comme dans le bulletin officiel.
+                veille = round(clo / (1 + var / 100)) if clo and var is not None and var > -100 else nombre(l[3])
                 out.append({"date_seance": jour.isoformat(), "symbole": l[0].strip(), "nom": l[1].strip(),
-                            "volume": nombre(l[2]), "cours_veille": nombre(l[3]),
-                            "cours_ouverture": nombre(l[4]), "cours_cloture": nombre(l[5]),
-                            "variation_pct": nombre(l[6])})
+                            "volume": nombre(l[2]), "cours_veille": veille,
+                            "cours_ouverture": nombre(l[4]), "cours_cloture": clo,
+                            "variation_pct": var})
             return out
     return []
 

@@ -48,6 +48,24 @@ def main():
     # Si la clôture précédente ne correspond pas à ce cours ajusté (écart de plus de 1,8 fois), on ajuste tout l'historique antérieur,
     # pour que courbes et performances restent comparables.
     AJUST = collections.defaultdict(list)
+    def ajuster(code, date, k, type_op=None):
+        for d in par_titre[code]:
+            if d < date:
+                par_titre[code][d]['c'] = round(par_titre[code][d]['c'] / k, 2); par_titre[code][d]['v'] = int(round(par_titre[code][d]['v'] * k))
+        AJUST[code].append({'date': date, 'facteur': k, 'type': type_op or ('fractionnement' if k >= 1 else 'regroupement')})
+    # 1. Opérations déclarées (data/brvm/operations.json, sourcées au bulletin officiel) : elles font foi.
+    OPS = json.load(open(D('data', 'brvm', 'operations.json'), encoding='utf-8'))['operations']
+    declarees = set()
+    for op in OPS:
+        if op['code'] in par_titre:
+            declarees.add((op['code'], op['date']))
+            if op.get('ajuster', True) is False:
+                AJUST[op['code']].append({'date': op['date'], 'facteur': 1, 'type': op['type'], 'ajuste': False})
+                continue
+            ajuster(op['code'], op['date'], float(op['rapport']), op['type'])
+            print('Opération %s du %s : rapport %s (%s)' % (op['code'], op['date'], op['rapport'], op['source']))
+    # 2. Contrôle : un saut de cours que la variation officielle du jour n'explique pas, sans opération déclarée,
+    #    est ajusté par prudence et signalé, pour qu'on le déclare avec sa source.
     for code, serie in par_titre.items():
         ds = sorted(serie)
         for a, b in zip(ds, ds[1:]):
@@ -55,12 +73,10 @@ def main():
             if p is None or p <= -100 or not serie[a]['c']: continue
             f = serie[a]['c'] / (serie[b]['c'] / (1 + p / 100))
             if 0.55 < f < 1.8: continue
+            if (code, b) in declarees: continue
             k = float(round(f)) if f > 1 else 1 / round(1 / f)
-            for d in ds:
-                if d <= a:
-                    serie[d]['c'] = round(serie[d]['c'] / k, 2); serie[d]['v'] = int(round(serie[d]['v'] * k))
-            AJUST[code].append({'date': b, 'facteur': k})
-            print('Ajustement %s au %s : facteur %s' % (code, b, k))
+            ajuster(code, b, k)
+            print('ALERTE : saut de cours non déclaré %s au %s (facteur %s) : ajouter l’opération dans data/brvm/operations.json' % (code, b, k))
     seances = sorted({d for t in par_titre.values() for d in t})
     if not seances: erreur('aucune séance')
     jour = seances[-1]

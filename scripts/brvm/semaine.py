@@ -6,7 +6,7 @@ Les sociétés du groupe Orange (SNTS, ORAC) sont exclues des palmarès publiés
 
 Usage : python scripts/brvm/semaine.py [--fin AAAA-MM-JJ] [--jours 7]
 """
-import argparse, csv, datetime as dt
+import argparse, csv, datetime as dt, json
 from collections import defaultdict
 from pathlib import Path
 
@@ -71,10 +71,25 @@ def main():
     for r in act:
         par_titre[r["symbole"]][r["date_seance"]] = r
     perf = []
+    # Fractionnements et attributions gratuites (data/brvm/operations.json) : on compare ce qui est comparable.
+    try:
+        OPS = [o for o in json.load((DOSSIER / "operations.json").open(encoding="utf-8"))["operations"] if o.get("ajuster", True) is not False]
+    except (OSError, ValueError, KeyError):
+        OPS = []
     for sym, jours in par_titre.items():
         j = sorted(jours)
-        v0, v1 = num(jours[j[0]]["cours_veille"]), num(jours[j[-1]]["cours_cloture"])
-        vol = sum(num(jours[d]["volume"]) or 0 for d in j)
+        c0, p0 = num(jours[j[0]]["cours_cloture"]), num(jours[j[0]]["variation_pct"])
+        # Cours de référence de la veille, déduit de la variation officielle du premier jour (déjà ajusté si une opération a lieu ce jour-là)
+        v0 = round(c0 / (1 + p0 / 100), 2) if c0 and p0 is not None and p0 > -100 else num(jours[j[0]]["cours_veille"])
+        v1 = num(jours[j[-1]]["cours_cloture"])
+        facteurs = {d: 1.0 for d in j}
+        for o in OPS:
+            if o["code"] == sym and j[0] < o["date"] <= j[-1]:
+                v0 = round(v0 / float(o["rapport"]), 2) if v0 else v0
+                for d in j:
+                    if d < o["date"]:
+                        facteurs[d] *= float(o["rapport"])
+        vol = round(sum((num(jours[d]["volume"]) or 0) * facteurs[d] for d in j))
         perf.append((sym, jours[j[-1]]["nom"], v0, v1, pct(v0, v1), vol))
     publiables = [x for x in perf if x[0] not in EXCLUS and x[4] is not None]
     publiables.sort(key=lambda x: x[4], reverse=True)

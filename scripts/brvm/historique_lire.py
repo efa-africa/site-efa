@@ -63,6 +63,13 @@ def lire_actions(texte, jour):
         if len(t) < 6:
             continue
         t = [x for x in t if not (x.startswith("(") and len(x) <= 12)]
+        # Colonnes collées par le PDF (« 22 4.76 % ») : on les sépare.
+        t2 = []
+        t = [y.strip() for x in t for y in re.split(r"(?<=%) (?=\S)", x)]
+        for x in t:
+            m2 = re.fullmatch(r"(-?[\d.,]+(?: \d{3})*) (-?[\d.,]+ ?%)", x)
+            t2 += [m2.group(1), m2.group(2)] if m2 else [x]
+        t = t2
         nom, reste = t[0].replace("''", "'"), t[1:]
         i_var = next((i for i, x in enumerate(reste) if x.endswith("%")), None)
         if i_var is None or i_var < 3:

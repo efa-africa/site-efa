@@ -1,0 +1,94 @@
+{
+ "_note": "Opérations sur titres qui changent le nombre d'actions (fractionnement, regroupement). rapport = nombre d'actions nouvelles pour une action ancienne (regroupement : rapport < 1). Tous les cours antérieurs à la date sont divisés par le rapport et les volumes multipliés, pour comparer ce qui est comparable. Les bases brutes (actions.csv, historique/) gardent les cours publiés à l'époque. Une opération avec \"ajuster\": false (dividende exceptionnel) ne change pas le nombre d'actions : elle est déclarée pour ne pas être prise pour un fractionnement, et la baisse du cours reste visible (l'actionnaire a reçu l'argent). Pour une attribution gratuite, rapport = actions détenues après ÷ avant (1 nouvelle pour 2 anciennes : 1,5). Pour une augmentation de capital avec droit préférentiel, rapport = facteur d'ajustement du cours (approximation).",
+ "operations": [
+  {
+   "code": "BOABF",
+   "type": "attribution gratuite",
+   "date": "2024-08-28",
+   "rapport": 2,
+   "libelle": "Augmentation de capital par incorporation de réserves et de primes : une action nouvelle gratuite pour une ancienne",
+   "source": "BRVM, Bulletins officiels de la cote d'août 2024"
+  },
+  {
+   "code": "BOAM",
+   "type": "attribution gratuite",
+   "date": "2024-08-28",
+   "rapport": 1.5,
+   "libelle": "Augmentation de capital par incorporation de réserves et de primes : une action nouvelle gratuite pour deux anciennes (droit d'attribution 1/2)",
+   "source": "BRVM, Bulletins officiels de la cote d'août et septembre 2024"
+  },
+  {
+   "code": "BOAS",
+   "type": "attribution gratuite",
+   "date": "2024-08-29",
+   "rapport": 1.5,
+   "libelle": "Augmentation de capital par incorporation de réserves : une action nouvelle gratuite pour deux anciennes (droit d'attribution 1/2)",
+   "source": "BRVM, Bulletins officiels de la cote d'août et septembre 2024"
+  },
+  {
+   "code": "BOAB",
+   "type": "attribution gratuite",
+   "date": "2024-09-03",
+   "rapport": 2,
+   "libelle": "Augmentation de capital par incorporation de réserves et de primes : une action nouvelle gratuite pour une ancienne (droit d'attribution 1/1)",
+   "source": "BRVM, Bulletins officiels de la cote de septembre 2024"
+  },
+  {
+   "code": "BOAN",
+   "type": "attribution gratuite",
+   "date": "2024-09-04",
+   "rapport": 1.6,
+   "libelle": "Augmentation de capital par incorporation de réserves et de primes : trois actions nouvelles gratuites pour cinq anciennes (droit d'attribution 3/5)",
+   "source": "BRVM, Bulletins officiels de la cote de septembre 2024"
+  },
+  {
+   "code": "SLBC",
+   "type": "fractionnement",
+   "date": "2024-09-30",
+   "rapport": 10,
+   "libelle": "Fractionnement des actions à raison de dix (10) actions nouvelles pour une (1) action ancienne le 30/09/2024",
+   "source": "BRVM, Bulletin officiel de la cote du 30 septembre 2024"
+  },
+  {
+   "code": "BOAC",
+   "type": "attribution gratuite",
+   "date": "2024-10-25",
+   "rapport": 2,
+   "libelle": "Augmentation de capital par incorporation de réserves et de primes : une action nouvelle gratuite pour une ancienne",
+   "source": "BRVM, Bulletins officiels de la cote d'octobre 2024"
+  },
+  {
+   "code": "SIBC",
+   "type": "attribution gratuite",
+   "date": "2024-11-14",
+   "rapport": 2,
+   "libelle": "Augmentation de capital par incorporation de réserves : une action nouvelle gratuite pour une ancienne",
+   "source": "BRVM, Bulletins officiels de la cote de novembre 2024 (communiqué BRVM 293-2024)"
+  },
+  {
+   "code": "FTSC",
+   "type": "dividende exceptionnel",
+   "date": "2025-09-26",
+   "rapport": 1,
+   "ajuster": false,
+   "libelle": "Paiement du dividende de l'exercice 2024 et d'un dividende exceptionnel, le 30 septembre 2025",
+   "source": "BRVM, Bulletins officiels de la cote de septembre 2025"
+  },
+  {
+   "code": "SAFC",
+   "type": "augmentation de capital avec droit préférentiel",
+   "date": "2026-04-24",
+   "rapport": 1.415,
+   "libelle": "Augmentation de capital avec droit préférentiel de souscription (6 actions nouvelles pour 13 anciennes, droits cotés du 27 avril au 9 juin 2026). Facteur d'ajustement déduit du cours théorique après détachement du droit.",
+   "source": "BRVM, Bulletins officiels de la cote d'avril 2026 (communiqué BRVM 108-2026)"
+  },
+  {
+   "code": "SNTS",
+   "type": "fractionnement",
+   "date": "2026-10-26",
+   "rapport": 10,
+   "libelle": "Fractionnement des actions à raison de dix (10) actions nouvelles pour une (1) action ancienne le 26/10/2026",
+   "source": "BRVM, Bulletins officiels de la cote des 20 au 26 octobre 2026"
+  }
+ ]
+}
