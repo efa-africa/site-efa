@@ -16,6 +16,133 @@
    "origine": "édition du matin du 2026-11-21",
    "publication": "2026-11-21",
    "maj": "2026-11-21",
+   "id": "2026-11-21-pi-spi-4-millions-de-transactions-en-un-an",
+   "categorie": "paiements",
+   "rubrique": "Paiements instantanés",
+   "titre": "PI-SPI : 4 millions de virements instantanés en un an dans l'UEMOA, encore peu",
+   "resume": "Un an après son lancement, la plateforme de paiement instantané de la BCEAO a traité plus de 4 millions d'opérations pour plus de 300 milliards de FCFA, alors que des dizaines de millions de personnes y ont accès.",
+   "pays": [
+    "UEMOA",
+    "Côte d'Ivoire",
+    "Sénégal",
+    "Mali",
+    "Burkina Faso",
+    "Bénin",
+    "Togo",
+    "Niger",
+    "Guinée-Bissau"
+   ],
+   "entites": [
+    "BCEAO",
+    "PI-SPI",
+    "AfricaNenda"
+   ],
+   "notions": [
+    "paiement instantané",
+    "interopérabilité",
+    "mobile money",
+    "accès et usage"
+   ],
+   "evenement": "2026-11-19",
+   "evenement_label": "lancement du rapport SIIPS 2026 d'AfricaNenda, à Maurice",
+   "fait": "Lancée le 30 septembre 2025, la PI-SPI, plateforme de la BCEAO qui permet d'envoyer de l'argent instantanément d'une banque, d'un compte mobile money ou d'une microfinance à une autre, a dépassé 4 millions de transactions en un an, pour plus de 300 milliards de FCFA. La cheffe du projet à la BCEAO, Ndeye Fatou Dieng Gueye, a donné ces chiffres le 19 novembre 2026 à Maurice, lors de la présentation du rapport SIIPS 2026 de la fondation AfricaNenda. 175 institutions y sont connectées.",
+   "chiffres": [
+    {
+     "valeur": "4 millions",
+     "libelle": "transactions passées par la PI-SPI, pour plus de 300 milliards de FCFA",
+     "periode": "première année (depuis le 30 septembre 2025)",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "environ 75 000 F",
+     "libelle": "montant moyen d'une transaction (300 milliards ÷ 4 millions)",
+     "periode": "première année",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "55 %",
+     "libelle": "des utilisateurs de paiements numériques interrogés réglant encore environ la moitié de leurs achats en espèces (15 pays africains)",
+     "periode": "enquête SIIPS 2026",
+     "calcul_efa": false
+    }
+   ],
+   "mecanisme": [
+    "Avant, un virement d'un opérateur mobile money vers une banque ou un autre opérateur passait par des accords au cas par cas, souvent lents et payants.",
+    "La PI-SPI relie toutes les institutions connectées : l'argent arrive en quelques secondes, quel que soit l'opérateur du destinataire.",
+    "Avoir accès au service ne suffit pas : il faut que les commerçants, les familles et les entreprises l'utilisent pour que les frais et l'usage des espèces reculent."
+   ],
+   "mot": {
+    "terme": "Interopérabilité",
+    "definition": "La possibilité d'envoyer de l'argent d'un service à un autre (d'un opérateur mobile money à une banque, par exemple) aussi simplement qu'à l'intérieur d'un même service."
+   },
+   "change": "Pour un ménage, la PI-SPI permet d'envoyer de l'argent à un proche sans qu'il ait le même opérateur, et depuis le 2 novembre les petits envois entre particuliers sont gratuits. Pour un commerçant, elle permet d'être payé tout de suite par des clients de différents services. Avec 4 millions d'opérations en un an pour des dizaines de millions de personnes ayant accès, l'usage reste très faible.",
+   "retenir": "Un service disponible n'est pas un service utilisé : avant de payer des frais de transfert, vérifiez si votre banque ou votre opérateur passe par la PI-SPI.",
+   "limites": [
+    "Les chiffres sont ceux donnés oralement par la BCEAO et rapportés par la presse ; la BCEAO n'a pas encore publié de bilan écrit.",
+    "Le nombre de personnes ayant accès varie selon les déclarations : 60 millions dans un article, plus de 38 millions au 2 octobre 2026 dans un autre, sans explication de l'écart.",
+    "Le montant moyen de 75 000 F est un calcul EFA à partir de chiffres arrondis (« plus de ») : il donne un ordre de grandeur.",
+    "L'enquête d'AfricaNenda (1 403 personnes dans 15 pays) ne porte pas seulement sur l'UEMOA."
+   ],
+   "question": "Quand vous envoyez de l'argent à un proche qui n'a pas le même opérateur que vous, combien cela vous coûte-t-il, et savez-vous par où passe l'envoi ?",
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Budget mobile money",
+     "description": "Faire le compte de ce que vous coûtent vos envois et retraits sur un mois.",
+     "url": "budget-mobile-money.html"
+    },
+    {
+     "type": "Outil",
+     "titre": "Où est passé mon argent ?",
+     "description": "Retrouver les petites dépenses, comme les frais de transfert, qui s'accumulent.",
+     "url": "ou-est-passe-mon-argent.html"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "SIIPS 2026 : le PI-SPI dépasse les 4 millions de transactions en un an dans l'UEMOA",
+     "organisme": "Financial Afrik",
+     "date": "20 nov. 2026",
+     "url": "https://www.financialafrik.com/2026/11/20/siips-2026-le-pi-spi-depasse-les-4-millions-de-transactions-en-un-an-dans-luemoa/",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    },
+    {
+     "titre": "SIIPS Report 2026",
+     "organisme": "AfricaNenda",
+     "date": "19 nov. 2026",
+     "url": "https://africanenda.org/siips/siips-report-2026",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "SIIPS 2026 : avec 71,42 milliards de transactions, les paiements instantanés changent d'échelle en Afrique",
+     "organisme": "Financial Afrik",
+     "date": "20 nov. 2026",
+     "url": "https://www.financialafrik.com/2026/11/20/siips-2026-avec-714-milliards-de-transactions-les-paiements-instantanes-changent-dechelle-en-afrique/",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "Des dizaines de millions de personnes ont accès à la PI-SPI, mais elle n'a traité que 4 millions d'opérations en un an. Qu'en conclure ?",
+    "choix": [
+     "Le service ne fonctionne pas",
+     "L'accès est large, mais l'usage reste faible",
+     "Chaque personne fait en moyenne plusieurs virements par mois"
+    ],
+    "bonne": 1,
+    "explication": "Avoir accès veut dire que sa banque ou son opérateur est connecté ; l'usage, lui, ne progresse que si les gens et les commerçants s'en servent. 4 millions d'opérations, c'est moins d'une par personne et par an."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition du matin du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
    "id": "2026-11-21-ecobank-ci-benefice-recule-12-pourcent-cout-du-risque",
    "categorie": "brvm",
    "rubrique": "Résultats des sociétés cotées",
