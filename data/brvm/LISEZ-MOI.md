@@ -48,4 +48,4 @@ Mis à jour chaque samedi par le robot « Historique BRVM ».
 
 ## Ma BRVM (ma-brvm.html)
 
-Outil « Ma BRVM · Et si j'avais investi ? » (remplace simulateur-bourse.html, qui redirige) : cinq onglets (Si j'avais investi…, Quand êtes-vous entré ?, Comparer, Mon portefeuille, Décryptages), code dans `clone/ma-brvm.js`. Il lit `data/marches/` ; `jour.json` contient aussi `total_return` (BRVM Composite Total Return, publié depuis le 2 janvier 2026). Le portefeuille reste dans le navigateur du visiteur. Sonatel et Orange CI restent sélectionnables mais sont exclus des décryptages et ne sont jamais proposés par défaut.
+Outil « Ma BRVM · Et si j'avais investi ? » (remplace simulateur-bourse.html, qui redirige) : cinq onglets (Si j'avais investi…, Quand êtes-vous entré ?, Comparer, Mon portefeuille, Décryptages), code dans `clone/ma-brvm.js`. Il lit `data/marches/` ; `jour.json` contient aussi `total_return` (BRVM Composite Total Return, publié depuis le 2 janvier 2026). Le portefeuille reste dans le navigateur du visiteur. Sonatel et Orange CI figurent dans les classements et les décryptages, comme les autres sociétés (décision du 21 novembre 2026).

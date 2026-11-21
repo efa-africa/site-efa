@@ -11,7 +11,7 @@
   var MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
   var MC = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
   var COUL = ['#0B1220', '#DA3C1B', '#1B71B2'];
-  var HORS_DECRYPTAGE = { SNTS: 1, ORAC: 1 }; // groupe Orange : pas de contenu éditorial EFA
+  var HORS_DECRYPTAGE = {}; // décision d'Élysée (21/11/2026) : Sonatel et Orange CI figurent dans les classements et décryptages de Ma BRVM
   var SOC = [], CODES = {}, COMPO = null, TR = null, FICHES = {}, DERNIER = '';
 
   /* ---------- Petits outils ---------- */
