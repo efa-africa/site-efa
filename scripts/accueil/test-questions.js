@@ -81,6 +81,9 @@ Combien vaut mon entreprise|valoriser-mon-entreprise
 Un investisseur veut entrer dans ma société|valoriser-mon-entreprise
 Préparer ma retraite|preparer-ma-retraite
 Ma pension CNPS suffira-t-elle|preparer-ma-retraite
+Avec l’argent que j’ai aujourd’hui, par où commencer pour devenir riche ?|ou-est-passe-mon-argent
+Comment devenir riche avec 500 000 F|ou-est-passe-mon-argent
+Je veux construire mon patrimoine|ou-est-passe-mon-argent
 Devenir libre financièrement|liberte-financiere
 Je veux vivre de mes revenus|liberte-financiere
 Je suis en France et je veux investir au pays|cotiser-depuis-l-etranger

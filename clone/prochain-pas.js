@@ -11,6 +11,13 @@
   /* Une intention : id, mots repérés (une expression de plusieurs mots pèse plus), phrase « ce que j'ai compris »,
      outil [nom, promesse, adresse, pourquoi, bouton], compléments. « {m} » = le montant lu dans la question. */
   var I = [
+    { id: 'richesse', mots: ['devenir riche', 'riche', 'richesse', 'm enrichir', 'fortune', 'millionnaire', 'construire ma richesse', 'sortir du salaire', 'ne plus dependre de mon salaire', 'batir quelque chose', 'faire grandir mon patrimoine', 'construire mon patrimoine', 'reussir financierement'],
+      c: function (m) { return (m ? 'Vous avez <b>' + m.txt + '</b> et vous' : 'Vous') + ' voulez devenir riche : sortir des limites du salaire, bâtir quelque chose à vous, voir votre patrimoine grandir.'; },
+      o: ['Voir clair', 'Combien puis-je dégager chaque mois ?', 'ou-est-passe-mon-argent.html', 'Tout commence par la somme que vous pouvez mettre de côté chaque mois sans vous mettre en difficulté : c’est elle qui nourrit un business, un placement ou les deux.', 'Trouver ma capacité à construire'],
+      a: [A('Déclic', 'Bâtir quelque chose à moi', 'Quel business puis-je lancer avec ce que j’ai ?', function (m) { return 'generateur-de-projet.html' + (m ? '?budget=' + m.v : ''); }),
+          A('Ma BRVM', 'Faire travailler mon argent', 'Si j’avais investi, combien aurais-je aujourd’hui ?', function (m) { return 'ma-brvm.html' + (m ? '?m=' + m.v : ''); }),
+          A('Apprendre, seul ou accompagné', 'Tenir dans la durée', 'Quel chemin suivre, et comment tenir assez longtemps pour obtenir des résultats.', 'apprendre.html'),
+          A('Ma liberté financière', 'Le chiffre à viser', 'Combien me faut-il pour vivre de mes revenus ?', 'liberte-financiere.html')] },
     { id: 'businessplan', mots: ['business plan', 'plan d affaires', 'mon plan', 'previsionnel', 'etude de marche'], c: 'Vous voulez savoir si votre business plan tient la route.',
       o: ['Mon business plan tient-il la route ?', 'Tester mon projet avant de me lancer', 'mon-business-plan-tient-il.html', 'Vous entrez vos chiffres ; l’outil cherche l’hypothèse qui ferait tout tomber, avant que la réalité s’en charge.', 'Tester mon plan'],
       a: [A('Lire un business plan', 'L’atelier', 'Ce qu’un banquier ou un associé regarde en premier.', 'atelier-lire-business-plan.html'), A('Déclic', 'Pas encore d’idée arrêtée ?', 'Des activités à tester selon votre budget.', 'generateur-de-projet.html')] },
@@ -87,7 +94,7 @@
     { id: 'retraite', mots: ['retraite', 'vieux jours', 'pension', 'cnps', 'ipres', 'crrae', 'quand je serai vieux'], c: 'Vous pensez à votre retraite.',
       o: ['Préparer ma retraite', 'Combien il me faudra', 'preparer-ma-retraite.html', 'Estimer ce que vous toucherez, ce qui manquera, et combien mettre de côté dès maintenant.', 'Faire le calcul'],
       a: [A('Ma liberté financière', 'Voir plus loin', 'Combien faut-il pour vivre de ses revenus ?', 'liberte-financiere.html')] },
-    { id: 'liberte', mots: ['libre financierement', 'liberte financiere', 'independance financiere', 'rentier', 'arreter de travailler', 'vivre de mes revenus', 'revenus passifs', 'devenir riche', 'millionnaire'], c: 'Vous visez la liberté financière.',
+    { id: 'liberte', mots: ['libre financierement', 'liberte financiere', 'independance financiere', 'rentier', 'arreter de travailler', 'vivre de mes revenus', 'revenus passifs'], c: 'Vous visez la liberté financière.',
       o: ['Ma liberté financière', 'Combien me faut-il ?', 'liberte-financiere.html', 'Le calcul du capital qui paie vos dépenses, et le chemin pour y arriver.', 'Faire le calcul'],
       a: [A('Toutes les façons d’investir', 'Les moyens', 'Bourse, obligations, immobilier, activité.', 'investir.html')] },
     { id: 'diaspora', mots: ['etranger', 'diaspora', 'en france', 'en europe', 'au canada', 'aux etats unis', 'envoyer de l argent', 'envoyer au pays', 'depuis l exterieur', 'transfert', 'au pays'], c: 'Vous êtes à l’étranger et vous voulez agir au pays.',
@@ -133,6 +140,7 @@
   ];
 
   /*REPONSES*/ var REP = {
+ "richesse": "Vous voulez devenir riche. Commençons par ce que vous avez, puis construisons ce qui peut grandir. La richesse ne vient pas d’un coup de chance : elle vient d’un écart régulier entre ce que vous gagnez et ce que vous dépensez, placé dans ce qui prend de la valeur, une activité à vous, des placements, des compétences. Trois étapes, dans l’ordre : dégager une somme chaque mois, la protéger, puis la faire travailler.",
  "businessplan": "Un business plan ne tient que si ses trois chiffres tiennent : combien de clients par jour, à quel prix, pour quel coût. Divisez par deux vos ventes prévues : si le projet survit, il est solide ; sinon, c’est cette hypothèse qu’il faut tester sur le terrain avant de dépenser.",
  "rentable": "Le chiffre d’affaires n’est pas un gain. Ce que l’activité gagne, c’est ce qui reste après les achats, le loyer, le transport, les salaires et votre propre paie. Tant que la caisse de l’activité et votre poche sont mélangées, il est impossible de le savoir.",
  "valo": "Une entreprise vaut ce qu’elle peut rapporter demain, pas ce qu’elle a coûté. On l’estime à partir du bénéfice régulier, de ce qu’elle possède et de ce qu’elle doit. Trois années de chiffres propres pèsent plus que n’importe quel discours.",

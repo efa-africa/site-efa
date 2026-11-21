@@ -160,3 +160,7 @@ html[data-clone] body{margin:0}
 .pp-q{align-items:flex-end}
 @media (max-width:720px){.pp-q textarea{font-size:19px;min-height:86px;padding:14px 12px 10px;width:100%}.pp-q{align-items:stretch}}
 @media (max-width:720px){.pp-q textarea{flex:none}}
+
+/* Première suggestion : la question de fond (devenir riche) */
+.pp-chips .pp-chip-1{background:#fff;color:var(--nuit);border-color:#fff;font-weight:700;border-radius:14px;line-height:1.35;flex-basis:100%;max-width:680px;padding:12px 16px}
+.pp-chips .pp-chip-1:hover{background:#EEF5FC}

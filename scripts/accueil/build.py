@@ -6,7 +6,7 @@ import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121n'
+V = '20261121p'
 
 FAMILLES = [
  ('argent', 'Comprendre et gérer mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
@@ -152,7 +152,7 @@ accueil = TETE % META_ACCUEIL + '''
 <h1 class="pp-h1"><span>Votre argent.</span><span>Votre question.</span><span class="pp-ciel">Votre prochain pas.</span></h1>
 <p class="pp-sous">Dites-nous ce que vous cherchez à faire. EFA vous aide à trouver par où commencer.</p>
 ''' + champ('J’ai 500 000 F. Qu’est-ce que je peux lancer ?') + '''
-<div class="pp-chips"><a href="''' + q('Où passe mon argent ?') + '''">Où passe mon argent ?</a><a href="''' + q('Je veux investir à la BRVM') + '''">Je veux investir à la BRVM</a><a href="''' + q('J’ai une idée de business') + '''">J’ai une idée de business</a></div>
+<div class="pp-chips"><a class="pp-chip-1" href="''' + q('Avec l’argent que j’ai aujourd’hui, par où commencer pour devenir riche ?') + '''">Avec l’argent que j’ai aujourd’hui, par où commencer pour devenir riche ?</a><a href="''' + q('Où passe mon argent ?') + '''">Où passe mon argent ?</a><a href="''' + q('Je veux investir à la BRVM') + '''">Je veux investir à la BRVM</a><a href="''' + q('J’ai une idée de business') + '''">J’ai une idée de business</a></div>
 <p class="pp-diag">Je ne sais pas par où commencer → <a href="diagnostic.html?src=accueil">Faire mon diagnostic</a> · 6 min, gratuit</p>
 </div></div></section>
 
