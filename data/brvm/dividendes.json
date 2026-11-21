@@ -13,316 +13,533 @@
    "code": "SICC",
    "montant_net": 1919.0,
    "date_paiement": "2000-09-25",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "NEIC",
+   "montant_net": 9.0,
+   "date_paiement": "2001-06-28",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "SAFC",
    "montant_net": 23.04,
    "date_paiement": "2011-07-29",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "UNLC",
    "montant_net": 1233.0,
    "date_paiement": "2012-07-09",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "SIVC",
    "montant_net": 63.0,
    "date_paiement": "2017-09-29",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "BOAM",
    "montant_net": 271.0,
    "date_paiement": "2019-05-15",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BNBC",
+   "montant_net": 45.0,
+   "date_paiement": "2019-07-19",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "ORGT",
    "montant_net": 59.52,
    "date_paiement": "2020-07-17",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "NSBC",
+   "montant_net": 77.69,
+   "date_paiement": "2020-07-27",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BOAS",
+   "montant_net": 161.01,
+   "date_paiement": "2021-06-01",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "FTSC",
    "montant_net": 235.0,
    "date_paiement": "2021-07-30",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "SCRC",
    "montant_net": 40.5,
    "date_paiement": "2021-08-20",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "SEMC",
    "montant_net": 14.4,
    "date_paiement": "2021-12-28",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BOAC",
+   "montant_net": 374.0,
+   "date_paiement": "2022-04-28",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "ECOC",
+   "montant_net": 420.3,
+   "date_paiement": "2022-04-29",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BOABF",
+   "montant_net": 448.0,
+   "date_paiement": "2022-05-04",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BOAN",
+   "montant_net": 567.3,
+   "date_paiement": "2022-05-12",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SNTS",
+   "montant_net": 1400.0,
+   "date_paiement": "2022-05-18",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BOAB",
+   "montant_net": 546.0,
+   "date_paiement": "2022-05-25",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "ECOC",
    "montant_net": 549.0,
    "date_paiement": "2022-05-30",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-05-30",
+   "date_detachement": null
+  },
+  {
+   "code": "SGBC",
+   "montant_net": 1004.93,
+   "date_paiement": "2022-06-10",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "ONTBF",
+   "montant_net": 416.58,
+   "date_paiement": "2022-06-15",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "ETIT",
+   "montant_net": 0.9,
+   "date_paiement": "2022-06-20",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SIBC",
+   "montant_net": 405.0,
+   "date_paiement": "2022-06-30",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "CBIBF",
+   "montant_net": 448.0,
+   "date_paiement": "2022-07-06",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "BICC",
+   "montant_net": 518.0,
+   "date_paiement": "2022-07-15",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "STAC",
    "montant_net": 66.15,
    "date_paiement": "2022-07-18",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SOGC",
+   "montant_net": 541.81,
+   "date_paiement": "2022-07-21",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "STBC",
+   "montant_net": 445.12,
+   "date_paiement": "2022-07-21",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "TTLS",
+   "montant_net": 187.3,
+   "date_paiement": "2022-07-22",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "CIEC",
+   "montant_net": 153.16,
+   "date_paiement": "2022-07-25",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "UNXC",
    "montant_net": 60.75,
    "date_paiement": "2022-07-29",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "CABC",
+   "montant_net": 69.0,
+   "date_paiement": "2022-08-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "CFAC",
+   "montant_net": 69.47,
+   "date_paiement": "2022-08-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "NTLC",
+   "montant_net": 856.8,
+   "date_paiement": "2022-08-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SPHC",
+   "montant_net": 365.4,
+   "date_paiement": "2022-08-04",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "SLBC",
    "montant_net": 4050.0,
    "date_paiement": "2022-08-12",
-   "vu_le": "2024-01-02",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "ABJC",
+   "montant_net": 57.73,
+   "date_paiement": "2022-08-24",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SMBC",
+   "montant_net": 720.0,
+   "date_paiement": "2022-08-24",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "TTLC",
+   "montant_net": 159.29,
+   "date_paiement": "2022-08-25",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "PRSC",
+   "montant_net": 175.86,
+   "date_paiement": "2022-08-30",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "PALC",
+   "montant_net": 1236.34,
+   "date_paiement": "2022-08-31",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SDCC",
+   "montant_net": 432.0,
+   "date_paiement": "2022-10-21",
+   "vu_le": "2023-01-02",
+   "date_detachement": null
+  },
+  {
+   "code": "SHEC",
+   "montant_net": 29.0,
+   "date_paiement": "2022-10-28",
+   "vu_le": "2023-01-02",
    "date_detachement": null
   },
   {
    "code": "BOAC",
    "montant_net": 540.0,
    "date_paiement": "2023-04-28",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-04-25",
+   "date_detachement": "2023-04-25"
   },
   {
    "code": "BOABF",
    "montant_net": 577.0,
    "date_paiement": "2023-05-05",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-05-02",
+   "date_detachement": "2023-05-02"
   },
   {
    "code": "BOAB",
    "montant_net": 627.0,
    "date_paiement": "2023-05-25",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-05-22",
+   "date_detachement": "2023-05-22"
   },
   {
    "code": "BOAN",
    "montant_net": 613.8,
    "date_paiement": "2023-05-25",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-05-22",
+   "date_detachement": "2023-05-22"
   },
   {
    "code": "ECOC",
    "montant_net": 549.0,
    "date_paiement": "2023-05-30",
-   "vu_le": "2024-01-03",
-   "date_detachement": null
+   "vu_le": "2023-05-24",
+   "date_detachement": "2023-05-24"
   },
   {
    "code": "SNTS",
    "montant_net": 1500.0,
    "date_paiement": "2023-05-30",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-05-12",
+   "date_detachement": "2023-05-12"
   },
   {
    "code": "SGBC",
    "montant_net": 1112.43,
    "date_paiement": "2023-05-31",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-05-25",
+   "date_detachement": "2023-05-25"
   },
   {
    "code": "BOAS",
    "montant_net": 187.5,
    "date_paiement": "2023-06-01",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-05-30",
+   "date_detachement": "2023-05-30"
   },
   {
    "code": "ETIT",
    "montant_net": 0.6,
    "date_paiement": "2023-06-08",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-06-05",
+   "date_detachement": "2023-06-05"
   },
   {
    "code": "ORAC",
    "montant_net": 752.76,
    "date_paiement": "2023-06-15",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-06-12",
+   "date_detachement": "2023-06-12"
   },
   {
    "code": "ONTBF",
    "montant_net": 287.88,
    "date_paiement": "2023-06-26",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-06-21",
+   "date_detachement": "2023-06-21"
   },
   {
    "code": "CBIBF",
    "montant_net": 525.0,
    "date_paiement": "2023-07-06",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-03",
+   "date_detachement": "2023-07-03"
   },
   {
    "code": "NSBC",
    "montant_net": 363.6,
    "date_paiement": "2023-07-07",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-04",
+   "date_detachement": "2023-07-04"
   },
   {
    "code": "TTLS",
    "montant_net": 241.01,
    "date_paiement": "2023-07-13",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-10",
+   "date_detachement": "2023-07-10"
   },
   {
    "code": "SOGC",
    "montant_net": 558.0,
    "date_paiement": "2023-07-17",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-12",
+   "date_detachement": "2023-07-12"
   },
   {
    "code": "PALC",
    "montant_net": 1213.63,
    "date_paiement": "2023-07-19",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-14",
+   "date_detachement": "2023-07-14"
   },
   {
    "code": "BNBC",
    "montant_net": 150.0,
    "date_paiement": "2023-07-24",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-19",
+   "date_detachement": "2023-07-19"
   },
   {
    "code": "STBC",
    "montant_net": 551.0,
    "date_paiement": "2023-07-27",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-24",
+   "date_detachement": "2023-07-24"
   },
   {
    "code": "BICC",
    "montant_net": 401.4,
    "date_paiement": "2023-07-31",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-26",
+   "date_detachement": "2023-07-26"
   },
   {
    "code": "CIEC",
    "montant_net": 157.5,
    "date_paiement": "2023-07-31",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-26",
+   "date_detachement": "2023-07-26"
   },
   {
    "code": "CABC",
    "montant_net": 69.0,
    "date_paiement": "2023-08-02",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-07-28",
+   "date_detachement": "2023-07-28"
   },
   {
    "code": "NTLC",
    "montant_net": 728.1,
    "date_paiement": "2023-08-08",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-08-02",
+   "date_detachement": "2023-08-02"
   },
   {
    "code": "SIBC",
    "montant_net": 495.0,
    "date_paiement": "2023-08-11",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-08-08",
+   "date_detachement": "2023-08-08"
   },
   {
    "code": "ABJC",
    "montant_net": 92.0,
    "date_paiement": "2023-08-31",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-08-28",
+   "date_detachement": "2023-08-28"
   },
   {
    "code": "SMBC",
    "montant_net": 720.0,
    "date_paiement": "2023-08-31",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-08-28",
+   "date_detachement": "2023-08-28"
   },
   {
    "code": "PRSC",
    "montant_net": 224.1,
    "date_paiement": "2023-09-13",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-09-11",
+   "date_detachement": "2023-09-08"
   },
   {
    "code": "CFAC",
    "montant_net": 27.45,
    "date_paiement": "2023-09-15",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-09-12",
+   "date_detachement": "2023-09-12"
   },
   {
    "code": "SDCC",
    "montant_net": 450.0,
    "date_paiement": "2023-09-15",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-09-12",
+   "date_detachement": "2023-09-12"
   },
   {
    "code": "TTLC",
    "montant_net": 175.53,
    "date_paiement": "2023-09-21",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-09-18",
+   "date_detachement": "2023-09-18"
   },
   {
    "code": "NEIC",
    "montant_net": 35.25,
    "date_paiement": "2023-09-22",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-09-19",
+   "date_detachement": "2023-09-19"
   },
   {
    "code": "SPHC",
    "montant_net": 294.3,
    "date_paiement": "2023-09-29",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-09-25",
+   "date_detachement": "2023-09-25"
   },
   {
    "code": "SHEC",
    "montant_net": 53.0,
    "date_paiement": "2023-12-28",
-   "vu_le": "2024-01-02",
-   "date_detachement": null
+   "vu_le": "2023-12-22",
+   "date_detachement": "2023-12-22"
   },
   {
    "code": "BOAC",
