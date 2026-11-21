@@ -16,6 +16,118 @@
    "origine": "édition du matin du 2026-11-21",
    "publication": "2026-11-21",
    "maj": "2026-11-21",
+   "id": "2026-11-21-ecobank-ci-benefice-recule-12-pourcent-cout-du-risque",
+   "categorie": "brvm",
+   "rubrique": "Résultats des sociétés cotées",
+   "titre": "Ecobank Côte d'Ivoire : bénéfice en recul de 12,3 %, le coût du risque multiplié par 11",
+   "resume": "À fin septembre 2026, Ecobank Côte d'Ivoire gagne 38,95 milliards de FCFA contre 44,44 milliards un an plus tôt : ses revenus progressent, mais l'argent mis de côté pour les crédits à risque explose.",
+   "pays": [
+    "Côte d'Ivoire",
+    "UEMOA"
+   ],
+   "entites": [
+    "Ecobank Côte d'Ivoire",
+    "BRVM"
+   ],
+   "notions": [
+    "résultat net",
+    "produit net bancaire",
+    "coût du risque",
+    "provision",
+    "créance douteuse"
+   ],
+   "evenement": "2026-11-02",
+   "evenement_label": "rapport d'activité au 30 septembre 2026, relayé à partir du 2 novembre 2026",
+   "fait": "Selon le rapport d'activité de sa direction, Ecobank Côte d'Ivoire, cotée à la BRVM, a dégagé un résultat net de 38,95 milliards de FCFA au 30 septembre 2026, contre 44,44 milliards au 30 septembre 2025, soit une baisse de 12,3 %. Son produit net bancaire, le chiffre d'affaires d'une banque, progresse pourtant à 98,23 milliards de FCFA. La baisse vient surtout du coût du risque, passé de 0,70 à 8,08 milliards de FCFA.",
+   "chiffres": [
+    {
+     "valeur": "38,95 Md FCFA",
+     "libelle": "résultat net, contre 44,44 Md FCFA un an plus tôt (−12,3 %)",
+     "periode": "au 30 septembre 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "× 11,5",
+     "libelle": "coût du risque : 8,08 Md FCFA contre 0,70 Md FCFA un an plus tôt",
+     "periode": "au 30 septembre 2026 contre 30 septembre 2025",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+6,9 %",
+     "libelle": "charges d'exploitation (46,08 Md FCFA), plus vite que le produit net bancaire (+1,8 %)",
+     "periode": "au 30 septembre 2026 contre 30 septembre 2025",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Une banque gagne de l'argent sur l'écart entre ce que lui rapportent ses crédits et ses services, et ce que lui coûtent les dépôts : c'est le produit net bancaire.",
+    "Quand elle craint que certains emprunteurs ne remboursent pas, elle met de côté une partie de son bénéfice pour couvrir ces pertes possibles : c'est le coût du risque.",
+    "Ce qui est mis de côté sort du bénéfice de l'année : la banque peut vendre plus et gagner moins."
+   ],
+   "mot": {
+    "terme": "Coût du risque",
+    "definition": "La somme qu'une banque met de côté (provisions) ou passe en perte pour les crédits qui risquent de ne pas être remboursés. Elle est déduite du bénéfice, même si l'argent n'est pas encore perdu."
+   },
+   "change": "Pour les actionnaires, un bénéfice plus faible peut peser sur le dividende versé en 2027, qui dépend du résultat de l'année entière. Pour les clients, une banque qui provisionne davantage peut devenir plus prudente : ses crédits nets à la clientèle reculent déjà de 1,5 %, à 924,5 milliards de FCFA. Les dépôts, eux, progressent de 2,8 %, à 1 696 milliards de FCFA.",
+   "retenir": "Un chiffre d'affaires en hausse ne garantit pas un bénéfice en hausse : chez une banque, il faut regarder le coût du risque.",
+   "limites": [
+    "Ce sont des chiffres à fin septembre, non audités : le résultat de l'année entière peut être différent.",
+    "Le coût du risque peut traduire de vrais impayés ou une simple prudence de la banque ; le rapport parle de « mesures de prudence » sans détailler les dossiers concernés.",
+    "La rentabilité des capitaux propres reste élevée, à 24,9 % selon la direction.",
+    "Le rapport d'activité d'origine n'a pas pu être consulté : les chiffres viennent de deux médias qui le reprennent."
+   ],
+   "question": "Quand vous regardez une banque cotée, regardez-vous seulement son bénéfice, ou aussi ce qu'elle met de côté pour les crédits à risque ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Lire les annonces des sociétés",
+     "description": "Repérer, dans un rapport d'activité, les lignes qui expliquent une hausse ou une baisse du bénéfice.",
+     "url": "bourse-pro.html#B2"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Une entreprise sous la loupe",
+     "description": "Passer du chiffre d'affaires au bénéfice, ligne par ligne, sur une société cotée.",
+     "url": "bourse-marche.html#C6"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Banques : baisse de 12,3 % du bénéfice de Ecobank Côte d'Ivoire au troisième trimestre 2026",
+     "organisme": "Financial Afrik",
+     "date": "2 nov. 2026",
+     "url": "https://www.financialafrik.com/2026/11/02/banques-baisse-de-123-du-benefice-de-ecobank-cote-divoire-au-troisieme-trimestre-2026/",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    },
+    {
+     "titre": "Ecobank Côte d'Ivoire annonce une baisse de 12,3 % de son résultat net au troisième trimestre 2026",
+     "organisme": "Lejecos",
+     "date": "19 nov. 2026",
+     "url": "https://www.lejecos.com/Ecobank-Cote-d-Ivoire-annonce-une-baisse-de-123-de-son-resultat-net-au-troisieme-trimestre-2026_a31879.html",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "Le produit net bancaire d'Ecobank Côte d'Ivoire augmente, mais son bénéfice baisse. Pourquoi ?",
+    "choix": [
+     "La banque a perdu des clients et des dépôts",
+     "La banque a mis beaucoup plus d'argent de côté pour les crédits à risque, et ses charges ont augmenté",
+     "La Bourse a fait baisser le bénéfice"
+    ],
+    "bonne": 1,
+    "explication": "Le coût du risque passe de 0,70 à 8,08 milliards de FCFA et les charges augmentent de 6,9 % : ces sommes sont déduites du bénéfice, alors que les dépôts progressent."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "édition du matin du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
    "id": "2026-11-21-uemoa-inflation-1-9-pourcent-carburants",
    "categorie": "vie-quotidienne",
    "rubrique": "Prix et pouvoir d'achat",
