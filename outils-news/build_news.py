@@ -16,6 +16,7 @@ for _a in _SRC["articles"]:
     _b["sources"] = [(x["titre"], x["organisme"], x["date"], x["url"], x["consulte_le"]) for x in _a["sources"]]
     _b["types"] = [x.get("type", "media") for x in _a["sources"]]
     _b["verif"] = _a.get("verif")
+    _b["carrousel"] = _a.get("carrousel")
     _b["mot"] = (_a["mot"]["terme"], _a["mot"]["definition"])
     _b["corrections"] = [(x["date"], x["texte"]) for x in _a.get("corrections", [])]
     ARTICLES.append(_b)
@@ -292,6 +293,37 @@ CALC = '<span class="calc">Calcul EFA</span>'
 LIB_BOUTON = {"Leçon": "Lire la leçon", "Calcul": "Faire le calcul", "Outil": "Ouvrir l’outil", "Exercice": "Faire l’exercice"}
 
 # ------------------------------------------------------------------ page article
+# ---- Statut : le carrousel de l'article, à faire défiler au-dessus du texte (règle du 21 nov. 2026) ----
+# Par défaut, il est composé à partir de l'article (titre, chiffres, mécanisme, mot, à retenir, question).
+# Si l'article porte un champ « carrousel » (liste d'images 4:5), ce sont ces images qui défilent.
+V_STATUT = "20261121b"
+def statut(a):
+    def L(t, n): return " l" if len(t) > n else ""
+    logo = '<span class="st-logo"><img src="clone/assets/efa-oiseau.png" alt="" width="30" height="30">efa<i></i></span>'
+    D = []
+    imgs = a.get("carrousel") or []
+    lazy = ' loading="lazy"'
+    if imgs:
+        for k, u in enumerate(imgs):
+            D.append(f'<div class="st-d"{"" if k == 0 else " hidden"}><img class="st-img" src="{u}" alt="{attr(a["titre"])} · visuel {k+1} sur {len(imgs)}" width="1080" height="1350"{lazy if k else ""}></div>')
+    else:
+        v, l, per, _ = a["chiffres"][0]
+        D.append(f'<div class="st-d"><p class="st-k">{typo(a["rubrique"])}</p><p class="st-h{L(a["titre"], 80)}">{typo(a["titre"])}</p><p class="st-g{L(v, 8)}">{typo(v)}</p><p class="st-s">{typo(l)}</p></div>')
+        ch = "".join(f'<div><b class="{L(v, 10).strip()}">{typo(v)}</b><span>{typo(l)}</span></div>' for v, l, per, _ in a["chiffres"][:3])
+        D.append(f'<div class="st-d g" hidden><p class="st-k">Les chiffres</p><div class="st-ch">{ch}</div></div>')
+        for k, e in enumerate(a["mecanisme"][:3]):
+            D.append(f'<div class="st-d{" g" if k % 2 else ""}" hidden><p class="st-k">Comment ça marche</p><p class="st-num">{k+1}</p><p class="st-p{L(e, 170)}">{typo(e)}</p></div>')
+        D.append(f'<div class="st-d g" hidden><p class="st-k">Le mot</p><p class="st-h">{typo(a["mot"][0])}</p><p class="st-p{L(a["mot"][1], 170)}">{typo(a["mot"][1])}</p></div>')
+        D.append(f'<div class="st-d c" hidden><p class="st-k">À retenir</p><p class="st-q{L(a["retenir"], 150)}">{typo(a["retenir"])}</p></div>')
+        D.append(f'<div class="st-d" hidden><p class="st-k">La question EFA</p><p class="st-q{L(a["question"], 150)}">{typo(a["question"])}</p><a class="st-lire" href="news/{a["id"]}.html#fait" data-goatcounter-click="statut-lire-{a["id"]}">Lire l’article ↓</a></div>')
+    prog = "<i></i>" * len(D)
+    return (f'<div class="statut-bloc"><p class="statut-t">L’essentiel en images<span>Touchez pour avancer</span></p>'
+            f'<div class="statut{" image" if imgs else ""}" data-statut data-garde tabindex="0" role="group" aria-roledescription="carrousel" aria-label="L’essentiel de l’article en {len(D)} images">'
+            f'<div class="st-prog" aria-hidden="true">{prog}</div>{"".join(D)}'
+            f'<button type="button" class="st-zone st-prec" aria-label="Image précédente"></button><button type="button" class="st-zone st-suiv" aria-label="Image suivante"></button>'
+            f'<div class="st-pied" aria-hidden="true">{logo}<span class="st-n">1 / {len(D)}</span></div></div></div>\n'
+            f'<link rel="stylesheet" href="/clone/statut.css?v={V_STATUT}"><script src="/clone/statut.js?v={V_STATUT}" defer></script>\n')
+
 def page_article(a):
     pre = ""
     url = f"{BASEURL}news/{a['id']}"
@@ -344,7 +376,7 @@ def page_article(a):
   </div>
 </section>
 <div class="wrap">
-<article class="art col" data-pub="{a['publication']}">
+{statut(a)}<article class="art col" data-pub="{a['publication']}">
   <p class="ancien" id="ancien" hidden></p>
 """
     out += f'  <section id="fait"><p class="bk">Le fait</p><h2>Que s’est-il passé&nbsp;?</h2><p class="fait">{typo(a["fait"])}</p></section>\n'

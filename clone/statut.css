@@ -1,0 +1,50 @@
+/* Statut EFA : le carrousel d'un article, à faire défiler comme un statut (touche à droite, à gauche, glisser). */
+.statut-bloc{margin:0 auto 34px;max-width:460px}
+.statut-t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px;font:800 12px/1.3 "Source Sans 3",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#B8341A}
+.statut-t span{font-weight:700;letter-spacing:.02em;text-transform:none;font-size:13.5px;color:#5F6676}
+.statut{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;container-type:inline-size;background:#0B1220;-webkit-user-select:none;user-select:none;touch-action:pan-y;outline-offset:3px}
+.statut .st-d{position:absolute;inset:0;padding:13cqw 8cqw 15cqw;display:flex;flex-direction:column;font-family:"Source Sans 3",system-ui,sans-serif;background:#0B1220!important;color:#E8EDF5!important;box-sizing:border-box}
+.statut .st-d[hidden]{display:none}
+.statut .st-d.g{background:#EEF5FC!important;color:#2A3142!important}.statut .st-d.c{background:#DA3C1B!important;color:#fff!important}
+.st-d img.st-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.st-k{margin:0;font:800 3cqw/1.3 "Source Sans 3",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F09680!important}
+.statut .g .st-k{color:#B8341A!important}.statut .c .st-k{color:#fff!important}
+.st-h{margin:3.5cqw 0 0;font:700 7.6cqw/1.14 "Libre Baskerville",Georgia,serif;color:#fff!important;text-wrap:balance}
+.st-h.l{font-size:6.1cqw}.statut .g .st-h{color:#0B1220!important}
+.st-g{margin:auto 0 0;font:700 17cqw/1 "Libre Baskerville",Georgia,serif;color:#F09680!important}
+.st-g.l{font-size:10.5cqw}
+.st-s{margin:1.6cqw 0 0;font-size:4.1cqw;line-height:1.35;color:#C9D1DE!important}
+.st-ch{display:grid;gap:3cqw;margin:auto 0}
+.statut .st-ch div{background:#fff!important;border-radius:3.5cqw;padding:4cqw 4.5cqw}
+.st-ch b{display:block;font:700 8.6cqw/1.05 "Libre Baskerville",Georgia,serif;color:#1B71B2}
+.st-ch b.l{font-size:6.2cqw}
+.st-ch span{display:block;margin-top:1.2cqw;font-size:3.7cqw;line-height:1.3;color:#2A3142}
+.st-num{margin:auto 0 0;width:13cqw;height:13cqw;border-radius:50%;background:#DA3C1B;color:#fff;font:700 7cqw/13cqw "Libre Baskerville",Georgia,serif;text-align:center}
+.st-p{margin:4cqw 0 auto;font-size:5.5cqw;line-height:1.4;color:inherit!important}
+.st-p.l{font-size:4.7cqw}
+.st-q{margin:auto 0;font:700 6.6cqw/1.25 "Libre Baskerville",Georgia,serif;text-wrap:balance;color:#fff!important}
+.st-q.l{font-size:5.4cqw}
+.st-lire{position:relative;z-index:4;align-self:flex-start;display:inline-block;background:#DA3C1B;color:#fff!important;font:800 4.2cqw/1.2 "Source Sans 3",system-ui,sans-serif;border-radius:2cqw;padding:3cqw 5cqw;text-decoration:none!important}
+.st-pied{position:absolute;left:8cqw;right:8cqw;bottom:5cqw;z-index:3;display:flex;justify-content:space-between;align-items:center;font:700 3.2cqw "Source Sans 3",system-ui,sans-serif;color:#C9D1DE;pointer-events:none}
+.st-logo{display:flex;align-items:center;font:700 5.4cqw "Libre Baskerville",Georgia,serif;color:#fff}
+.st-logo img{width:6.6cqw;height:6.6cqw;margin-right:1.6cqw}
+.st-logo i{display:inline-block;width:1.3cqw;height:1.3cqw;border-radius:50%;background:#DA3C1B;margin:0 0 -2cqw .5cqw}
+.statut.clair .st-pied{color:#5F6676}.statut.clair .st-logo{color:#0B1220}
+.statut.image .st-pied{display:none}
+.st-prog{position:absolute;left:4cqw;right:4cqw;top:4cqw;z-index:3;display:flex;gap:1.2cqw;pointer-events:none}
+.st-prog i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.32);overflow:hidden;position:relative}
+.statut.clair .st-prog i{background:rgba(11,18,32,.18)}
+.st-prog i::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.statut.clair .st-prog i::after{background:#0B1220}
+.st-prog i.fait::after{transform:scaleX(1)}
+.st-joue .st-prog i.cours::after{animation:stp var(--st-duree,7s) linear forwards}
+.st-pause .st-prog i.cours::after{animation-play-state:paused}
+@keyframes stp{to{transform:scaleX(1)}}
+.st-zone{position:absolute;top:0;bottom:0;z-index:2;border:0;background:none;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.st-prec{left:0;width:34%}.st-suiv{right:0;width:66%}
+.st-zone:focus-visible{outline:3px solid #6DB8F2;outline-offset:-6px}
+@media (hover:hover){.st-zone::after{content:"";position:absolute;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:rgba(255,255,255,.9) center/10px no-repeat;opacity:0;transition:opacity .2s}
+.st-prec::after{left:5px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M8 1 3 6l5 5' fill='none' stroke='%230B1220' stroke-width='2'/%3E%3C/svg%3E")}
+.st-suiv::after{right:5px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 1l5 5-5 5' fill='none' stroke='%230B1220' stroke-width='2'/%3E%3C/svg%3E")}
+.statut:hover .st-zone::after{opacity:1}}
+@media (prefers-reduced-motion:reduce){.st-joue .st-prog i.cours::after{animation:none;transform:scaleX(1)}}
