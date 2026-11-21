@@ -6,7 +6,7 @@ import re, os, json, html, glob, subprocess
 os.chdir(os.path.join(os.path.dirname(__file__), '..', '..'))
 E = lambda t: html.escape(str(t), quote=True)
 def q(t): return 'prochain-pas.html?q=' + __import__('urllib.parse').parse.quote(t)
-V = '20261121q'
+V = '20261121r'
 
 FAMILLES = [
  ('argent', 'Reprendre la main sur mon argent', 'Budget, épargne, réserve, crédit, dettes, retraite',
