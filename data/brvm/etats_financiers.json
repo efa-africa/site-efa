@@ -1,0 +1,334 @@
+{
+ "_note": "Chiffres lus automatiquement dans les publications des sociétés (brvm.org). n = exercice ou période publiée, n_1 = période précédente. methode « libellé » ou texte_ocr = à vérifier sur le PDF avant publication.",
+ "source": "BRVM, publications des sociétés cotées",
+ "stats": {
+  "publications": 9,
+  "avec_texte": 9,
+  "avec_chiffres": 7,
+  "sans_symbole": []
+ },
+ "publications": [
+  {
+   "id": "uniwax-ci-etats-financiers-exercice-2025",
+   "symbole": "UNXC",
+   "societe": "UNIWAX CI",
+   "type": "etats-financiers",
+   "document": "Etats financiers - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-11-21",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260713_-_etats_financiers_-_exercice_2025_-_uniwax_ci.pdf"
+   ],
+   "texte_ocr": false,
+   "unite": "FCFA",
+   "chiffres": {
+    "capitaux_propres": {
+     "n": 24619180792,
+     "n_1": 15591475518,
+     "methode": "code SYSCOHADA CP"
+    },
+    "dettes_financieres": {
+     "n": 1023606969,
+     "n_1": 946536663,
+     "methode": "code SYSCOHADA DD"
+    },
+    "total_bilan": {
+     "n": 31735934378,
+     "n_1": 34241097739,
+     "methode": "code SYSCOHADA DZ"
+    },
+    "chiffre_affaires": {
+     "n": 29031727207,
+     "n_1": 27333349555,
+     "methode": "code SYSCOHADA XB"
+    },
+    "excedent_brut_exploitation": {
+     "n": 1126739480,
+     "n_1": -352217043,
+     "methode": "code SYSCOHADA XD"
+    },
+    "resultat_exploitation": {
+     "n": -423608525,
+     "n_1": -2136021358,
+     "methode": "code SYSCOHADA XE"
+    },
+    "resultat_net": {
+     "n": -624111469,
+     "n_1": -2188937902,
+     "methode": "code SYSCOHADA XI"
+    }
+   }
+  },
+  {
+   "id": "erium-ci-etats-financiers-exercice-2025",
+   "symbole": "SIVC",
+   "societe": "ERIUM CI",
+   "type": "etats-financiers",
+   "document": "Etats financiers - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-11-21",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260626_-_etats_financiers_-_exercice_2025_-_erium_ci.pdf"
+   ],
+   "texte_ocr": false,
+   "unite": "FCFA",
+   "chiffres": {
+    "capitaux_propres": {
+     "n": 2526541669,
+     "n_1": 3272424840,
+     "methode": "code SYSCOHADA CP"
+    },
+    "dettes_financieres": {
+     "n": 4164342386,
+     "n_1": 550914998,
+     "methode": "code SYSCOHADA DD"
+    },
+    "total_bilan": {
+     "n": 14611080094,
+     "n_1": 14023255232,
+     "methode": "code SYSCOHADA DZ"
+    },
+    "chiffre_affaires": {
+     "n": 10074573973,
+     "n_1": 9282599196,
+     "methode": "code SYSCOHADA XB"
+    },
+    "excedent_brut_exploitation": {
+     "n": 1441984871,
+     "n_1": 1473699844,
+     "methode": "code SYSCOHADA XD"
+    },
+    "resultat_exploitation": {
+     "n": 866372202,
+     "n_1": 522305061,
+     "methode": "code SYSCOHADA XE"
+    },
+    "resultat_net": {
+     "n": 179293282,
+     "n_1": 376956818,
+     "methode": "code SYSCOHADA XI"
+    }
+   }
+  },
+  {
+   "id": "sitab-ci-annule-et-remplace-le-precedent-etats-financiers-exercice-2025",
+   "symbole": "STBC",
+   "societe": "SITAB CI (Annule et remplace le précédent)",
+   "type": "etats-financiers",
+   "document": "Etats financiers - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-11-21",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260625_-_etats_financiers_-_exercice_2025_-_sitab_ci_annule_et_remplace_le_precedent.pdf"
+   ],
+   "texte_ocr": false,
+   "unite": "FCFA",
+   "chiffres": {
+    "total_bilan": {
+     "n": 75047177792,
+     "n_1": 94925572191,
+     "methode": "libellé"
+    },
+    "excedent_brut_exploitation": {
+     "n": 46192167656,
+     "n_1": 57252968172,
+     "methode": "libellé"
+    },
+    "resultat_exploitation": {
+     "n": 45935264330,
+     "n_1": 57068888519,
+     "methode": "libellé"
+    },
+    "resultat_net": {
+     "n": 36463616375,
+     "n_1": 44173762491,
+     "methode": "libellé"
+    }
+   }
+  },
+  {
+   "id": "onatel-bf-etats-financiers-approuves-exercice-2025",
+   "symbole": "ONTBF",
+   "societe": "ONATEL BF",
+   "type": "etats-financiers",
+   "document": "Etats financiers approuvés - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-11-21",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260611_-_etats_financiers_approuves_-_exercice_2025_-_onatel_bf.pdf"
+   ],
+   "texte_ocr": false,
+   "unite": "FCFA",
+   "chiffres": {
+    "capitaux_propres": {
+     "n": 57541603762,
+     "n_1": 62561325597,
+     "methode": "code SYSCOHADA CP"
+    },
+    "dettes_financieres": {
+     "n": 69691712889,
+     "n_1": 67226213127,
+     "methode": "code SYSCOHADA DD"
+    },
+    "total_bilan": {
+     "n": 324902379845,
+     "n_1": 301493038967,
+     "methode": "code SYSCOHADA DZ"
+    },
+    "chiffre_affaires": {
+     "n": 146176657128,
+     "n_1": 141841255383,
+     "methode": "code SYSCOHADA XB"
+    },
+    "excedent_brut_exploitation": {
+     "n": 56730677804,
+     "n_1": 64219933668,
+     "methode": "code SYSCOHADA XD"
+    },
+    "resultat_exploitation": {
+     "n": 25665215120,
+     "n_1": 33565159589,
+     "methode": "code SYSCOHADA XE"
+    },
+    "resultat_net": {
+     "n": 15886921152,
+     "n_1": 21471148928,
+     "methode": "code SYSCOHADA XI"
+    }
+   }
+  },
+  {
+   "id": "tractafric-motors-ci-etats-financiers-1er-semestre-2026",
+   "symbole": "PRSC",
+   "societe": "TRACTAFRIC MOTORS CI",
+   "type": "etats-financiers",
+   "document": "Etats financiers - 1er semestre 2026",
+   "periode": "1er semestre 2026",
+   "date_publication": "2026-10-29",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20261029_-_etats_financiers_-_1er_semestre_2026_-_tractafric_motors_ci.pdf"
+   ],
+   "texte_ocr": true,
+   "unite": "FCFA",
+   "chiffres": {}
+  },
+  {
+   "id": "africa-glogal-logistics-ci-attestation-des-commissaires-aux-comptes-etats-financiers-exercice-2025",
+   "symbole": "SDSC",
+   "societe": "AFRICA GLOGAL LOGISTICS CI",
+   "type": "etats-financiers",
+   "document": "Attestation des Commissaires Aux Comptes - Etats financiers - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-10-05",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20261005_-_attestation_des_commissaires_aux_comptes_-_etats_financiers_-_exercice_2025_-_africa_glogal_logistics_ci.pdf"
+   ],
+   "texte_ocr": true,
+   "unite": "FCFA",
+   "chiffres": {}
+  },
+  {
+   "id": "africa-global-logistics-ci-etats-financiers-certifies-exercice-2025",
+   "symbole": "SDSC",
+   "societe": "AFRICA GLOBAL LOGISTICS CI",
+   "type": "etats-financiers",
+   "document": "Etats Financiers certifiés - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-09-17",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260917_-_etats_financiers_certifies_-_exercice_2025_-_africa_global_logistics_ci.pdf"
+   ],
+   "texte_ocr": true,
+   "unite": "milliers FCFA",
+   "chiffres": {
+    "chiffre_affaires": {
+     "n": 52004268,
+     "n_1": 85643038,
+     "methode": "lecture optique"
+    },
+    "resultat_net": {
+     "n": 784070,
+     "n_1": 21066073,
+     "methode": "lecture optique"
+    },
+    "resultat_exploitation": {
+     "n": 2271029,
+     "n_1": 941675,
+     "methode": "lecture optique"
+    },
+    "excedent_brut_exploitation": {
+     "n": 4264164,
+     "n_1": 4585287,
+     "methode": "lecture optique"
+    }
+   }
+  },
+  {
+   "id": "boa-bf-etats-financiers-1er-semestre-2026",
+   "symbole": "BOABF",
+   "societe": "BOA BF",
+   "type": "etats-financiers",
+   "document": "Etats financiers - 1er semestre 2026",
+   "periode": "1er semestre 2026",
+   "date_publication": "2026-08-05",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260805_-_etats_financiers_-_1er_semestre_2026_-_boa_bf.pdf"
+   ],
+   "texte_ocr": true,
+   "unite": "FCFA",
+   "chiffres": {
+    "produit_net_bancaire": {
+     "n": 29061655101,
+     "n_1": 27539306240,
+     "methode": "lecture optique (colonnes déduites)"
+    },
+    "resultat_net": {
+     "n": 8224578736,
+     "n_1": 10770489599,
+     "methode": "lecture optique (colonnes déduites)"
+    },
+    "total_bilan": {
+     "n": 1148674652683,
+     "n_1": 1143639873930,
+     "methode": "lecture optique"
+    },
+    "resultat_exploitation": {
+     "n": 9298334196,
+     "n_1": 11826883172,
+     "methode": "lecture optique (colonnes déduites)"
+    },
+    "credits_clientele": {
+     "n": 474063826349,
+     "n_1": 479003395446,
+     "methode": "lecture optique"
+    },
+    "depots_clientele": {
+     "n": 877821961416,
+     "n_1": 942692154575,
+     "methode": "lecture optique"
+    }
+   }
+  },
+  {
+   "id": "coris-bank-international-bf-etats-financiers-exercice-2025",
+   "symbole": "CBIBF",
+   "societe": "CORIS BANK INTERNATIONAL BF",
+   "type": "etats-financiers",
+   "document": "Etats financiers - Exercice 2025",
+   "periode": "Exercice 2025",
+   "date_publication": "2026-07-07",
+   "pdf": [
+    "https://www.brvm.org/sites/default/files/20260707_-_etats_financiers_-_exercice_2025_-_coris_bank_international_bf.pdf"
+   ],
+   "texte_ocr": true,
+   "unite": "FCFA",
+   "chiffres": {
+    "total_bilan": {
+     "n": 150,
+     "n_1": 268279,
+     "methode": "lecture optique"
+    }
+   }
+  }
+ ]
+}

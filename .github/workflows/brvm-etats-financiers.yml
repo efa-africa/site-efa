@@ -54,3 +54,29 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -qm "Publications financières BRVM"
           git push origin HEAD:brvm-etats-financiers-brut
+
+  lire:
+    needs: telecharger
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lire les chiffres clés
+        run: |
+          git fetch origin brvm-etats-financiers-brut
+          mkdir -p /tmp/ef && git archive origin/brvm-etats-financiers-brut ef | tar -x -C /tmp/ef --strip-components=1
+          python scripts/brvm/etats_financiers_lire.py --ef /tmp/ef
+      - name: Enregistrer
+        run: |
+          git config user.name "EFA robot BRVM"
+          git config user.email "robot-brvm@efa.africa"
+          git add data/brvm/etats_financiers.json
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "BRVM : chiffres clés des publications financières"
+          git pull --rebase -X theirs origin main
+          git push origin HEAD:main
