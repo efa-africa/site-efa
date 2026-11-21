@@ -13,6 +13,131 @@
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
+   "origine": "édition du soir du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-sonatel-benefice-354-milliards-neuf-mois",
+   "categorie": "brvm",
+   "rubrique": "Résultats des sociétés cotées",
+   "titre": "Sonatel : 354 milliards de bénéfice en neuf mois, +12,9 %, plus vite que les ventes",
+   "resume": "À fin septembre 2026, le groupe Sonatel, première capitalisation de la BRVM, voit son bénéfice progresser de 12,9 % pour des ventes en hausse de 10,5 % : chaque franc vendu rapporte un peu plus.",
+   "pays": [
+    "Sénégal",
+    "Mali",
+    "Guinée",
+    "Guinée-Bissau",
+    "Sierra Leone",
+    "UEMOA"
+   ],
+   "entites": [
+    "Sonatel",
+    "Orange Money",
+    "BRVM"
+   ],
+   "notions": [
+    "chiffre d'affaires",
+    "résultat net",
+    "marge nette",
+    "EBITDAaL",
+    "investissements"
+   ],
+   "evenement": "2026-10-29",
+   "evenement_label": "publication des résultats au 30 septembre 2026, le 29 octobre 2026",
+   "fait": "Le groupe Sonatel, coté à la BRVM et présent au Sénégal, au Mali, en Guinée, en Guinée-Bissau et en Sierra Leone, a réalisé un résultat net consolidé de 354 milliards de FCFA sur les neuf premiers mois de 2026, en hausse de 12,9 % sur un an. Son chiffre d'affaires atteint 1 583 milliards de FCFA, contre 1 433 milliards un an plus tôt (+10,5 %). Orange Money compte 14,4 millions de clients actifs, 15,5 % de plus qu'un an plus tôt.",
+   "chiffres": [
+    {
+     "valeur": "354 Md FCFA",
+     "libelle": "résultat net consolidé, en hausse de 12,9 % sur un an",
+     "periode": "neuf mois au 30 septembre 2026",
+     "calcul_efa": false
+    },
+    {
+     "valeur": "22,4 %",
+     "libelle": "marge nette : 354 Md de bénéfice pour 1 583 Md de chiffre d'affaires, soit environ 22 F gagnés pour 100 F vendus",
+     "periode": "neuf mois au 30 septembre 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "231,5 Md FCFA",
+     "libelle": "investissements, contre 203,1 Md un an plus tôt (+14,0 %), dont 192,5 Md pour le réseau",
+     "periode": "neuf mois au 30 septembre 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Une entreprise vend des services (appels, internet, Orange Money) : c'est son chiffre d'affaires.",
+    "Une partie de ses coûts (réseau, antennes, personnel) ne grossit pas au même rythme que les ventes : chaque client en plus coûte moins cher que le précédent.",
+    "Quand les ventes montent de 10,5 % et que les coûts montent moins vite, le bénéfice peut monter plus vite, ici de 12,9 %."
+   ],
+   "mot": {
+    "terme": "Marge nette",
+    "definition": "La part du chiffre d'affaires qui reste en bénéfice une fois toutes les charges, les intérêts et les impôts payés. Une marge de 22 % signifie qu'il reste environ 22 F de bénéfice pour 100 F vendus."
+   },
+   "change": "Pour l'actionnaire, le dividende dépendra du bénéfice de l'année entière, qui sera connu en début d'année 2027. Pour le client, la croissance vient surtout de l'internet mobile, d'Orange Money et de la fibre, pas des appels. Le groupe continue d'investir lourdement dans son réseau, un peu plus vite que ses ventes progressent.",
+   "retenir": "Un bénéfice qui monte plus vite que les ventes signale une rentabilité qui s'améliore ; ce n'est pas une promesse sur le cours de l'action.",
+   "limites": [
+    "Ce sont des chiffres à fin septembre, non audités : le résultat de l'année entière peut différer.",
+    "Le détail par pays n'a pas été publié : on ne sait pas quelle filiale porte la croissance.",
+    "Le communiqué d'origine de Sonatel n'a pas pu être consulté : les chiffres viennent de reprises de presse concordantes.",
+    "Sonatel cite elle-même la concurrence et des difficultés d'approvisionnement en énergie dans plusieurs pays comme risques."
+   ],
+   "question": "Quand une société annonce un bénéfice en hausse, comparez-vous cette hausse à celle de ses ventes ?",
+   "actions": [
+    {
+     "type": "Leçon",
+     "titre": "Une entreprise sous la loupe",
+     "description": "Passer du chiffre d'affaires au bénéfice, ligne par ligne, sur une société cotée.",
+     "url": "bourse-marche.html#C6"
+    },
+    {
+     "type": "Leçon",
+     "titre": "Lire les annonces des sociétés",
+     "description": "Repérer, dans une publication de résultats, ce qui explique la hausse ou la baisse du bénéfice.",
+     "url": "bourse-pro.html#B2"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Le groupe Sonatel réalise un résultat net de 354 milliards FCFA au troisième trimestre 2026",
+     "organisme": "Osiris (reprise du Journal de l'économie sénégalaise)",
+     "date": "30 oct. 2026",
+     "url": "https://osiris.sn/le-groupe-sonatel-realise-un-resultat-net-de-354-milliards-fcfa-au-troisieme.html",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    },
+    {
+     "titre": "Sonatel : le bénéfice progresse de 12,9 % sur neuf mois, à 603,8 millions $",
+     "organisme": "Osiris (reprise de l'Agence Ecofin)",
+     "date": "30 oct. 2026",
+     "url": "https://osiris.sn/sonatel-le-benefice-progresse-de-12-9-sur-neuf-mois-a-603-8-millions.html",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    },
+    {
+     "titre": "Sonatel : un bénéfice de 354 milliards FCFA sur neuf mois, en hausse de 12,9 %",
+     "organisme": "Osiris (reprise de l'Agence Ecofin)",
+     "date": "31 oct. 2026",
+     "url": "https://www.osiris.sn/sonatel-un-benefice-de-354-milliards-fcfa-sur-neuf-mois-en-hausse-de-12-9.html",
+     "consulte_le": "2026-11-21",
+     "type": "media"
+    }
+   ],
+   "verif": {
+    "q": "Les ventes de Sonatel montent de 10,5 % et son bénéfice de 12,9 %. Qu'est-ce que cela indique ?",
+    "choix": [
+     "Que le cours de l'action va forcément monter",
+     "Que chaque franc vendu rapporte un peu plus de bénéfice qu'un an plus tôt",
+     "Que Sonatel a réduit ses investissements"
+    ],
+    "bonne": 1,
+    "explication": "Le bénéfice progresse plus vite que les ventes, donc la marge s'améliore. Cela ne dit rien du cours de demain, et les investissements ont au contraire augmenté de 14 %."
+   }
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
    "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
    "publication": "2026-11-21",
    "maj": "2026-11-21",
