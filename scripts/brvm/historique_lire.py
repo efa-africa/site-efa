@@ -135,6 +135,68 @@ def lire_indices(texte, jour):
     return out
 
 
+MOIS_FR = {"janv": 1, "févr": 2, "fevr": 2, "mars": 3, "avr": 4, "mai": 5, "juin": 6, "juil": 7, "août": 8, "aout": 8,
+           "sept": 9, "oct": 10, "nov": 11, "déc": 12, "dec": 12}
+MOIS_EN = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+DATE_DIV = re.compile(r"(?:(\d{1,2})-([a-zéû]+)\.?-(\d{2})|(\d{1,2}) ([A-Z][a-z]{2}) (\d{2}))")
+
+
+def lire_dividendes(texte, jour):
+    """Par titre : dernier dividende net payé (montant, date de paiement) et marque « (d) » d'ex-dividende du jour."""
+    out = {}
+    for l in texte.split("\n"):
+        m = LIGNE_ACTION.match(l)
+        if not m or m.group(1) == "TOTAL" or m.group(1) in out:
+            continue
+        reste = m.group(2)
+        pc = [x for x in re.finditer(r"-?[\d.,]+\s?%", reste)]
+        if len(pc) < 2:
+            continue
+        apres = reste[pc[1].end():]
+        dm = DATE_DIV.search(apres)
+        montant = date_paie = None
+        if dm:
+            mn = re.search(r"(-?\d{1,3}(?:[ ,]\d{3})*(?:[.,]\d+)?|-?\d+(?:[.,]\d+)?)\s*$", apres[:dm.start()])
+            montant = num(mn.group(1)) if mn else None
+            if dm.group(1):
+                mo = MOIS_FR.get(dm.group(2).rstrip(".").lower())
+                j, a = int(dm.group(1)), int(dm.group(3))
+            else:
+                mo = MOIS_EN.get(dm.group(5).lower())
+                j, a = int(dm.group(4)), int(dm.group(6))
+            if mo:
+                date_paie = "%04d-%02d-%02d" % ((2000 if a <= int(jour[2:4]) + 1 else 1900) + a, mo, j)
+        tete = reste[:pc[0].start()]
+        out[m.group(1)] = {"ex": "(d)" in tete or "(V)" in tete, "montant": montant, "paiement": date_paie}
+    return out
+
+
+def dividendes(brut):
+    """Historique des dividendes : un événement par (titre, date de paiement), avec la date de détachement (marque « (d) »)."""
+    suivi, ex_dates, suivi_dates = {}, {}, []
+    for f in sorted(os.listdir(brut)):
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}\.txt", f):
+            continue
+        jour = f[:10]
+        suivi_dates.append(jour)
+        for code, d in lire_dividendes(open(os.path.join(brut, f), encoding="utf-8").read(), jour).items():
+            if d["ex"]:
+                ex_dates.setdefault(code, []).append(jour)
+            if d["montant"] and d["paiement"]:
+                cle = (code, d["paiement"])
+                if cle not in suivi:
+                    suivi[cle] = {"code": code, "montant_net": d["montant"], "date_paiement": d["paiement"], "vu_le": jour}
+    evts = []
+    import datetime as _dt
+    for (code, paie), e in sorted(suivi.items(), key=lambda x: (x[0][1], x[0][0])):
+        lim = (_dt.date.fromisoformat(paie) - _dt.timedelta(days=60)).isoformat()
+        exs = [x for x in ex_dates.get(code, []) if lim <= x <= paie]
+        # Le détachement est la première séance marquée (d)/(V) avant le paiement ; à défaut, la séance où le dividende apparaît.
+        e["date_detachement"] = min(exs) if exs else (e["vu_le"] if e["vu_le"] <= paie and e["vu_le"] > min(suivi_dates) else None)
+        evts.append(e)
+    return evts
+
+
 def deja(fichier):
     if not fichier.exists():
         return set()
@@ -211,6 +273,13 @@ def main():
                 w.writeheader()
                 w.writerows(lignes)
             rapport["cloture_%s" % fin] = len(lignes)
+    # Dividendes (dernier dividende payé, montant net par action à l'époque, et date de détachement)
+    evts = dividendes(a.brut)
+    json.dump({"_note": "Dividendes nets par action, tels que publiés dans le bulletin officiel de la cote (montant par action de l'époque, avant tout fractionnement ultérieur : voir operations.json). date_detachement = première séance marquée ex-dividende avant le paiement ; null si le bulletin ne permet pas de la dater.",
+               "source": "BRVM, bulletins officiels de la cote", "dividendes": evts},
+              (DOSSIER / "dividendes.json").open("w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    rapport["dividendes"] = len(evts)
+    rapport["dividendes_sans_detachement_depuis_2024"] = [e["code"] + " " + e["date_paiement"] for e in evts if e["date_paiement"] >= "2024" and not e["date_detachement"]]
     print(json.dumps(rapport, ensure_ascii=False, indent=1))
 
 

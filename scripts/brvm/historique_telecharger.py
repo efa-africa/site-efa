@@ -16,14 +16,15 @@ ENTETES = {"User-Agent": "EFA-robot-BRVM"}
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--debut", required=True)
-    ap.add_argument("--fin", required=True)
+    ap.add_argument("--debut", default="")
+    ap.add_argument("--fin", default="")
     ap.add_argument("--sortie", default="brut")
     a = ap.parse_args()
     os.makedirs(a.sortie, exist_ok=True)
     fidx = os.path.join(a.sortie, "index.json")
     index = json.load(open(fidx)) if os.path.exists(fidx) else {"seances": {}, "introuvables": []}
-    d, fin = dt.date.fromisoformat(a.debut), dt.date.fromisoformat(a.fin)
+    fin = dt.date.fromisoformat(a.fin) if a.fin else dt.date.today()
+    d = dt.date.fromisoformat(a.debut) if a.debut else fin - dt.timedelta(days=14)
     s = requests.Session()
     s.headers.update(ENTETES)
     while d <= fin:

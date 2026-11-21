@@ -3,14 +3,16 @@ name: Historique BRVM (bulletins officiels)
 # Lancement manuel : télécharge les bulletins officiels de la cote sur une période
 # et en enregistre le texte sur la branche « brvm-historique-brut ».
 on:
+  schedule:
+    - cron: "17 8 * * 6"   # chaque samedi : bulletins des 14 derniers jours (dividendes, détachements)
   workflow_dispatch:
     inputs:
       debut:
         description: "Première séance (AAAA-MM-JJ)"
-        default: "2026-01-02"
+        default: ""
       fin:
         description: "Dernière séance (AAAA-MM-JJ)"
-        default: "2026-10-22"
+        default: ""
 
 permissions:
   contents: write
@@ -51,3 +53,30 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -qm "Bulletins officiels BRVM ${{ inputs.debut }} → ${{ inputs.fin }}"
           git push origin HEAD:brvm-historique-brut
+
+  dividendes:
+    needs: telecharger
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests beautifulsoup4
+      - name: Lire les bulletins (dividendes) et refaire l'onglet Marchés
+        run: |
+          git fetch origin brvm-historique-brut
+          mkdir -p /tmp/brut && git archive origin/brvm-historique-brut brut | tar -x -C /tmp/brut --strip-components=1
+          python scripts/brvm/historique_lire.py --brut /tmp/brut
+          python scripts/brvm/marches.py
+      - name: Enregistrer
+        run: |
+          git config user.name "EFA robot BRVM"
+          git config user.email "robot-brvm@efa.africa"
+          git add data/brvm data/marches
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "BRVM : dividendes et historique (bulletins officiels)"
+          git pull --rebase origin main
+          git push origin HEAD:main

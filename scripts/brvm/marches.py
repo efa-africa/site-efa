@@ -96,6 +96,29 @@ def main():
                'ytd': '%d-12-31' % (dj.year - 1), 'a1': (dj - datetime.timedelta(days=365)).isoformat(), 'a5': (dj - datetime.timedelta(days=5 * 365)).isoformat()}
     premiere = seances[0]
 
+    # Dividendes (data/brvm/dividendes.json) : montants ramenés à une action d'aujourd'hui (fractionnements, actions gratuites).
+    DIV = collections.defaultdict(list)
+    try:
+        for e in json.load(open(D('data', 'brvm', 'dividendes.json'), encoding='utf-8'))['dividendes']:
+            det = e.get('date_detachement') or e['date_paiement']
+            if det < premiere or not e.get('montant_net'): continue
+            k = 1.0
+            for op in OPS:
+                if op['code'] == e['code'] and op.get('ajuster', True) is not False and op['date'] > det:
+                    k *= float(op['rapport'])
+            DIV[e['code']].append({'detachement': det, 'detachement_estime': not e.get('date_detachement'), 'paiement': e['date_paiement'],
+                                   'montant_publie': e['montant_net'], 'montant': round(e['montant_net'] / k, 2)})
+    except (OSError, ValueError, KeyError):
+        pass
+
+    def avec_dividendes(serie, code, d0):
+        # Performance « dividendes compris » : (cours final + dividendes détachés depuis) / cours de départ
+        dates = sorted(serie); avant = [d for d in dates if d <= d0]
+        if not avant: return None
+        c0, c1 = serie[avant[-1]]['c'], serie[dates[-1]]['c']
+        dv = sum(x['montant'] for x in DIV.get(code, []) if avant[-1] < x['detachement'] <= dates[-1])
+        return round(((c1 + dv) / c0 - 1) * 100, 2) if c0 else None
+
     os.makedirs(os.path.join(SORTIE, 'fiches'), exist_ok=True)
     liste = []
     for code in sorted(par_titre):
@@ -106,19 +129,21 @@ def main():
         perf = {}
         for k, d0 in reperes.items():
             perf[k] = depuis(serie, d0) if d0 >= premiere else None   # pas de période plus longue que l'historique disponible
+        perf_div = {k: (avec_dividendes(serie, code, reperes[k]) if reperes[k] >= premiere else None) for k in ('ytd', 'a1')}
         dern = serie[dates[-1]]
         cap = None
         na = (s.get('nombre_actions') or {}).get('valeur') if s.get('nombre_actions') else None
         if na: cap = round(dern['c'] * na)
         item = {'code': code, 'nom': s.get('nom'), 'nom_court': s.get('nom_court'), 'pays': s.get('pays'), 'secteur': s.get('secteur'),
                 'date': dates[-1], 'cours': dern['c'], 'var_jour': dern['p'], 'volume': dern['v'], 'valeur_echangee': round(dern['c'] * dern['v']),
-                'perf': perf, 'capitalisation': cap, 'mini': [serie[d]['c'] for d in dates[-63:]], 'mini_du': dates[-63:][0] if dates else None, 'mini_d': dates[-63:]}
+                'perf': perf, 'perf_div': perf_div, 'capitalisation': cap, 'mini': [serie[d]['c'] for d in dates[-63:]], 'mini_du': dates[-63:][0] if dates else None, 'mini_d': dates[-63:]}
         liste.append(item)
         fiche = dict(item)
         fiche.update({'identite': {k: s.get(k) for k in ('date_introduction', 'nombre_actions', 'flottant_pct', 'site')},
                       'texte_efa': None if s.get('texte_efa_bloque') else s.get('texte_efa'),
                       'texte_bloque': bool(s.get('texte_efa_bloque')),
                       'ajustements': AJUST.get(code, []),
+                      'dividendes': DIV.get(code, []),
                       'historique': [[d, serie[d]['c'], serie[d]['v']] for d in dates],
                       'source': 's-brvm-cote'})
         json.dump(fiche, open(os.path.join(SORTIE, 'fiches', code + '.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
