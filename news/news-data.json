@@ -990,7 +990,7 @@
   },
   {
    "statut": "publié",
-   "une": false,
+   "une": true,
    "corrections": [],
    "auteur": "Rédaction EFA",
    "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
@@ -1453,7 +1453,7 @@
   },
   {
    "statut": "publié",
-   "une": true,
+   "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
    "origine": "veille EFA News du 2026-11-20",
