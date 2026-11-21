@@ -43,3 +43,11 @@
 /* Titre des 8 outils : la question peut être longue, elle passe à la ligne */
 .pp-h1.h8-h1 span{white-space:normal;text-wrap:balance}
 .pp-h1.h8-h1 .pp-ciel{font-size:.8em;line-height:1.15;margin-top:4px}
+
+/* valo. mis en avant (21 nov. 2026) : bande claire, très grand bouton blanc sur rouge */
+.h8-valo{margin-top:16px;background:#FDECE7;border-radius:18px;padding:clamp(18px,2.6vw,28px);display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,42%);gap:18px;align-items:stretch}
+.h8-valo .h8-k{color:#B8341A;margin:0 0 6px}.h8-valo h2{font-size:clamp(24px,3vw,34px);color:#0B1220;margin:0 0 8px}.h8-valo p{margin:0;color:#2A3142}
+.h8-valo-go{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#DA3C1B!important;color:#fff!important;border-radius:14px;padding:18px 24px;font:800 clamp(21px,2.4vw,28px)/1.15 "Source Sans 3",sans-serif;text-decoration:none;min-height:110px}
+.h8-valo-go span,.h8-valo-go i{color:#fff!important;font-style:normal}
+.ot-cent .h8-li-valo a{background:#FDECE7;border-radius:12px}.ot-cent .h8-li-valo i{color:#B8341A}
+@media (max-width:720px){.h8-valo{grid-template-columns:1fr}.h8-valo-go{min-height:84px}}

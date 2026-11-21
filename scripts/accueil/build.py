@@ -318,7 +318,7 @@ open('questions.html', 'w', encoding='utf-8').write(questions)
 # ---- Les outils EFA du 21 novembre 2026 (scripts/outils/specs.py, calcul dans clone/outils-efa.js) et la carte des 100 outils ----
 sys.path.insert(0, 'scripts/outils')
 import specs as _sp
-V_OT = '20261121e'
+V_OT = '20261121h'
 LIENS_OT = '<link rel="stylesheet" href="clone/outils-efa.css?v=%s"><script src="clone/outils-efa.js?v=%s" defer></script>' % (V_OT, V_OT)
 NOMS_OT = {x['f']: x['t'] for x in _sp.PAGES}
 for k, x in enumerate(_sp.PAGES):
@@ -393,6 +393,8 @@ grille = ''.join('<a class="h8-carte" href="%s.html">%s<p class="h8-k">Outil %d<
 sec, num = '', 0
 for k, h in enumerate(_h8.HUIT):
     L = ''
+    if h['id'] == 'declic':
+        L += '<li class="h8-li-valo"><a href="valoriser-mon-entreprise.html"><i>→</i><b>Je suis entrepreneur. Que vaut mon entreprise&nbsp;?</b><span>Outil : valo.</span></a></li>'
     for e in h['etapes']:
         for n in e[3]:
             num += 1
@@ -415,7 +417,8 @@ cent = TETE % META_C + """
 <h1 class="pp-h1 pp-h1-c"><span>100 questions.</span><span class="pp-ciel">8 outils pour décider.</span></h1>
 <p class="pp-sous">Chaque question mène à l’un des 8 outils EFA, et à l’étape qui y répond. Vos chiffres, votre décision. La finance, avec nos réalités.</p>
 </div></div></section>
-<section class="h8" data-garde><div class="pp-in"><div class="h8-grille">%s</div></div></section>
+<section class="h8" data-garde><div class="pp-in"><div class="h8-grille">%s</div>
+<div class="h8-valo"><div><p class="h8-k">valo. · pour les entrepreneurs</p><h2>Que vaut mon entreprise&nbsp;?</h2><p>Une fourchette de valeur à partir de vos chiffres, dès 1 min, et ce qu’un investisseur regardera.</p></div><a class="h8-valo-go" href="valoriser-mon-entreprise.html" data-goatcounter-click="cent-valo"><span>Estimer mon entreprise</span><i aria-hidden="true">→</i></a></div></div></section>
 <section class="ot ot-cent" data-garde><div class="pp-in">
 <nav class="ot-cent-nav" aria-label="Les 8 outils">%s</nav>
 %s</div></section>
