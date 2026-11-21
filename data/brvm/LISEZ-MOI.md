@@ -49,3 +49,10 @@ Mis à jour chaque samedi par le robot « Historique BRVM ».
 ## Ma BRVM (ma-brvm.html)
 
 Outil « Ma BRVM · Et si j'avais investi ? » (remplace simulateur-bourse.html, qui redirige) : cinq onglets (Si j'avais investi…, Quand êtes-vous entré ?, Comparer, Mon portefeuille, Décryptages), code dans `clone/ma-brvm.js`. Il lit `data/marches/` ; `jour.json` contient aussi `total_return` (BRVM Composite Total Return, publié depuis le 2 janvier 2026). Le portefeuille reste dans le navigateur du visiteur. Sonatel et Orange CI figurent dans les classements et les décryptages, comme les autres sociétés (décision du 21 novembre 2026).
+
+## Ma BRVM · aide à la décision (21 novembre 2026)
+
+- `scripts/brvm/reperes.py` écrit `data/marches/reperes.json` (lancé à la fin de `marches.py`, donc à chaque séance) : pour chaque société, gain en cours et dividendes compris, part des dividendes, régularité du dividende, pire baisse, part des années glissantes gagnantes, montant échangé par jour (médiane sur un an, pour écarter les volumes aberrants), écart avec l'indice ; pour le marché, les mêmes repères, les meilleures séances et les détachements par mois. `--bilan` affiche les chiffres clés.
+- Cinq écrans dans `ma-brvm.html` / `clone/ma-brvm.js` : Investir chaque mois, Combien de temps garder ? (avec « le prix d'attendre »), Mes dividendes, Fiche décision (sept repères, lien `ma-brvm.html?outil=fiche&c=CODE`), Trier par critères (liste alphabétique, jamais un palmarès). L'onglet Mon portefeuille ajoute « Mon portefeuille est-il solide ? » (nombre de sociétés, plus grosse ligne, test de résistance).
+- Garde-fou affiché sur chaque écran : l'historique commence en 2023 et ne couvre qu'un marché en hausse. Aucun écran ne recommande un titre.
+- `scripts/brvm/lecons_articles.py` : les dix articles du dossier « Les leçons de la BRVM » (EFA News, rubrique du même nom), repris en bas de Ma BRVM.

@@ -117,8 +117,34 @@
 .mb-podium .mb-lien{grid-area:b;justify-self:start;font-size:14px}
 .mb-situ{margin:12px 0 4px;line-height:1.55}
 @media (max-width:860px){.mb-form{grid-template-columns:1fr 1fr}.mb-form .mb-titre{grid-column:1/-1}.mb-frais-in,.mb-trois,.mb-deux,.mb-cols,.mb-decs,.mb-pourquoi{grid-template-columns:1fr}.mb-pf-l{grid-template-columns:1fr 1fr}.mb-pf-l .mb-l:first-child{grid-column:1/-1}}
+.mb-onglets{flex-wrap:wrap;overflow:visible}
+.mb-message{font:400 clamp(19px,2.2vw,24px)/1.35 "Libre Baskerville",Georgia,serif;color:var(--nuit);margin:0 0 4px;max-width:46ch;text-wrap:balance}
+.mb-barres{display:grid;gap:9px;margin:12px 0}
+.mb-br{display:grid;grid-template-columns:minmax(74px,132px) minmax(0,1fr) minmax(58px,auto);gap:10px;align-items:center;font-size:15px;font-variant-numeric:tabular-nums}
+.mb-br b{text-align:right;white-space:nowrap}
+.mb-piste{background:#DCE7F2;border-radius:5px;height:16px;overflow:hidden}.mb-piste i{display:block;height:100%;background:var(--up);border-radius:5px}
+.mb-piste i.mb-i-dn{background:var(--dn)}.mb-piste i.mb-i-bleu{background:var(--bleu)}
+.mb-garde{background:var(--corail);color:#fff;border-radius:4px;padding:14px 16px;margin:14px 0 0;line-height:1.5;max-width:80ch}
+.mb-simple{grid-template-columns:2fr 1fr 1fr}
+.mb-fiche{background:var(--papier);border-radius:16px;padding:20px}
+.mb-fiche h3{margin:6px 0 12px;font:700 clamp(22px,2.6vw,30px)/1.15 "Libre Baskerville",Georgia,serif}
+.mb-reperes{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:rp}
+.mb-reperes li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:baseline;background:#fff;border-radius:10px;padding:11px 14px}
+.mb-reperes li span{min-width:0;color:var(--ink2)}.mb-reperes li b{font:700 20px "Libre Baskerville",Georgia,serif;white-space:nowrap;text-align:right}
+.mb-reperes li small{grid-column:1/-1;font-size:13.5px;color:var(--ink3)}
+.mb-coches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:var(--creme);border-radius:16px;padding:16px}
+.mb-coches label{display:flex;gap:10px;align-items:center;background:#fff;border-radius:10px;padding:10px 12px;font:600 16px "Source Sans 3",sans-serif;min-height:44px;box-sizing:border-box;min-width:0}
+.mb-coches input[type=checkbox]{width:20px;height:20px;accent-color:var(--corail);flex:none}
+.mb-coches select{font:600 15px "Source Sans 3",sans-serif;padding:6px 8px;border:1px solid #C7D6E6;border-radius:8px;background:#fff;min-width:0;max-width:100%}
+.mb-mois{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;align-items:end;height:130px}
+.mb-mois div{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:12px;color:var(--ink3);min-width:0}
+.mb-mois i{display:block;width:100%;background:var(--bleu);border-radius:3px 3px 0 0;min-height:2px}.mb-mois b{order:-1;font-size:12px;color:var(--nuit)}
+.mb-lire{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.mb-lire a{display:block;background:var(--papier);border-radius:14px;padding:16px 18px;color:var(--nuit);text-decoration:none}
+.mb-lire a b{display:block;font:700 22px/1.1 "Libre Baskerville",Georgia,serif;color:var(--bleu)}.mb-lire a span{display:block;font:700 17px/1.3 "Libre Baskerville",Georgia,serif;margin-top:6px}
+@media (max-width:860px){.mb-onglets{display:grid;grid-template-columns:1fr 1fr}.mb-onglet{border-radius:12px;text-align:left;padding:9px 12px}.mb-simple,.mb-coches,.mb-lire{grid-template-columns:1fr}.mb-simple .mb-titre{grid-column:auto}}
 </style>
-<script src="clone/ma-brvm.js?v=2026112106" defer></script>
+<script src="clone/ma-brvm.js?v=2026112107" defer></script>
 <link rel="stylesheet" href="clone/habillage.css?v=20261121a">
 </head>
 <body>
@@ -129,9 +155,14 @@
 <div class="mb mk-in" id="mb-outils">
 <div class="mb-onglets" role="tablist" aria-label="Les outils Ma BRVM">
 <button class="mb-onglet" role="tab" data-outil="investi" aria-selected="true">Si j’avais investi…<small>une action, une date, un montant</small></button>
-<button class="mb-onglet" role="tab" data-outil="entree" aria-selected="false">Quand êtes-vous entré&nbsp;?<small>la date change tout</small></button>
+<button class="mb-onglet" role="tab" data-outil="mensuel" aria-selected="false">Investir chaque mois<small>un petit montant, régulièrement</small></button>
+<button class="mb-onglet" role="tab" data-outil="duree" aria-selected="false">Combien de temps garder&nbsp;?<small>mes chances selon la durée</small></button>
+<button class="mb-onglet" role="tab" data-outil="dividendes" aria-selected="false">Mes dividendes<small>mon revenu, année par année</small></button>
+<button class="mb-onglet" role="tab" data-outil="fiche" aria-selected="false">Fiche décision<small>sept repères par société</small></button>
+<button class="mb-onglet" role="tab" data-outil="criteres" aria-selected="false">Trier par critères<small>de 48 titres à une courte liste</small></button>
 <button class="mb-onglet" role="tab" data-outil="comparer" aria-selected="false">Comparer<small>deux ou trois actions</small></button>
-<button class="mb-onglet" role="tab" data-outil="portefeuille" aria-selected="false">Mon portefeuille<small>mes titres, mon résultat</small></button>
+<button class="mb-onglet" role="tab" data-outil="entree" aria-selected="false">Quand êtes-vous entré&nbsp;?<small>la date change tout</small></button>
+<button class="mb-onglet" role="tab" data-outil="portefeuille" aria-selected="false">Mon portefeuille<small>mon résultat, sa solidité</small></button>
 <button class="mb-onglet" role="tab" data-outil="decryptages" aria-selected="false">Décryptages<small>les fortes hausses et baisses</small></button>
 </div>
 
@@ -153,6 +184,58 @@
 <button class="mb-go" type="submit">Voir le résultat</button>
 </form>
 <div id="si-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-mensuel" aria-labelledby="t-mensuel" hidden>
+<h2 id="t-mensuel">Investir chaque mois</h2>
+<p class="mb-intro">Vous n’avez pas une grosse somme, mais vous mettez de côté chaque mois. Voyez ce que ce versement régulier serait devenu, sur tout le marché ou sur une société.</p>
+<form id="me-form" class="mb-form mb-simple" novalidate>
+<label class="mb-l mb-titre"><span>Chaque mois, j’aurais acheté</span><select id="me-titre"><option>Chargement…</option></select></label>
+<label class="mb-l"><span>Versement par mois (FCFA)</span><input id="me-montant" inputmode="numeric" value="50 000"></label>
+<label class="mb-l"><span>Depuis le</span><input id="me-date" type="date"></label>
+<button class="mb-go" type="submit">Voir le résultat</button>
+</form>
+<div id="me-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-duree" aria-labelledby="t-duree" hidden>
+<h2 id="t-duree">Combien de temps garder&nbsp;?</h2>
+<p class="mb-intro">Vos chances de finir en gain dépendent d’abord du temps que vous laissez à votre argent. EFA rejoue toutes les dates d’achat possibles et compte les périodes gagnantes.</p>
+<div class="mb-ligne-f"><label class="mb-l"><span>Pour</span><select id="du-titre"></select></label></div>
+<div id="du-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-dividendes" aria-labelledby="t-dividendes" hidden>
+<h2 id="t-dividendes">Mes dividendes</h2>
+<p class="mb-intro">Combien cette action m’aurait versé chaque année, et quand. Le rendement se lit sur le prix que vous avez payé, pas sur le cours du jour.</p>
+<form id="dv-form" class="mb-form mb-simple" novalidate>
+<label class="mb-l mb-titre"><span>L’action</span><select id="dv-titre"></select></label>
+<label class="mb-l"><span>Montant placé (FCFA)</span><input id="dv-montant" inputmode="numeric" value="500 000"></label>
+<label class="mb-l"><span>Achetée le</span><input id="dv-date" type="date"></label>
+<button class="mb-go" type="submit">Voir mes dividendes</button>
+</form>
+<div id="dv-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-fiche" aria-labelledby="t-fiche" hidden>
+<h2 id="t-fiche">La fiche décision</h2>
+<p class="mb-intro">Sept repères, toujours les mêmes et dans le même ordre, pour connaître l’histoire d’une action en une minute et comparer deux sociétés sur autre chose que leur cours.</p>
+<form id="fi-form" class="mb-ligne-f" novalidate><label class="mb-l"><span>La société</span><select id="fi-titre"></select></label>
+<label class="mb-l"><span>Si je devais revendre pour (FCFA)</span><input id="fi-montant" inputmode="numeric" value="1 000 000"></label></form>
+<div id="fi-res" class="mb-res" aria-live="polite"></div>
+</section>
+
+<section class="mb-outil" id="o-criteres" aria-labelledby="t-criteres" hidden>
+<h2 id="t-criteres">Trier par critères</h2>
+<p class="mb-intro">Vous cherchez des entreprises régulières plutôt qu’un coup. Cochez ce qui compte pour vous : EFA liste les sociétés qui y répondent, sans les classer.</p>
+<form id="cr-form" class="mb-coches" novalidate>
+<label><input type="checkbox" id="cr-d4" checked> Dividende versé 4 années sur 4</label>
+<label><input type="checkbox" id="cr-h3"> Dividende relevé chaque année depuis 2023</label>
+<label><input type="checkbox" id="cr-an"> Aucune année glissante perdante</label>
+<label><input type="checkbox" id="cr-bm"> Jamais plus de 30 % de baisse depuis un sommet</label>
+<label>Échangé par jour <select id="cr-liq" aria-label="Montant échangé par jour"><option value="0">peu importe</option><option value="10000000">au moins 10 millions F</option><option value="50000000">au moins 50 millions F</option></select></label>
+</form>
+<div id="cr-res" class="mb-res" aria-live="polite"></div>
 </section>
 
 <section class="mb-outil" id="o-entree" aria-labelledby="t-entree" hidden>
@@ -186,6 +269,23 @@
 <div id="de-res" class="mb-res" aria-live="polite"></div>
 </section>
 
+<section class="mb-outil" aria-labelledby="t-lecons">
+<h2 id="t-lecons">Les leçons de la BRVM</h2>
+<p class="mb-intro">Dix messages tirés de 960 séances de Bourse. Chacun part d’un chiffre calculé par EFA et se termine par la décision qu’il aide à prendre.</p>
+<div class="mb-lire">
+<a href="news/2026-11-21-50000-f-par-mois-depuis-2023.html" data-goatcounter-click="ma-brvm-lecon-1"><b>4,24 M F</b><span>50 000 F par mois depuis 2023 : 2,35 millions versés, 4,24 millions aujourd’hui</span></a>
+<a href="news/2026-11-21-duree-un-mois-un-an.html" data-goatcounter-click="ma-brvm-lecon-2"><b>100 %</b><span>La durée fait le résultat : sur un mois une période sur quatre perd, sur un an aucune</span></a>
+<a href="news/2026-11-21-vingt-seances-la-moitie-de-la-hausse.html" data-goatcounter-click="ma-brvm-lecon-3"><b>20 séances</b><span>Vingt séances sur 960 ont fait la moitié de la hausse</span></a>
+<a href="news/2026-11-21-dividendes-trente-points-de-gain.html" data-goatcounter-click="ma-brvm-lecon-4"><b>+30 points</b><span>Dividendes : le gain que la courbe du cours ne montre pas</span></a>
+<a href="news/2026-11-21-dividende-regularite-dix-societes.html" data-goatcounter-click="ma-brvm-lecon-5"><b>10 sociétés</b><span>Dix sociétés ont relevé leur dividende chaque année, dix n’ont rien versé</span></a>
+<a href="news/2026-11-21-17-actions-ont-perdu-la-moitie.html" data-goatcounter-click="ma-brvm-lecon-6"><b>17 sur 48</b><span>Même quand la Bourse monte, 17 actions ont perdu plus de la moitié en chemin</span></a>
+<a href="news/2026-11-21-un-titre-ou-cinq-diversifier.html" data-goatcounter-click="ma-brvm-lecon-7"><b>24 % → 13 %</b><span>Un titre ou cinq : ce que la diversification change vraiment</span></a>
+<a href="news/2026-11-21-liquidite-cinq-societes-45-pourcent.html" data-goatcounter-click="ma-brvm-lecon-8"><b>45 %</b><span>Cinq sociétés font 45 % des échanges : un gain sur le papier n’est pas un gain en poche</span></a>
+<a href="news/2026-11-21-moins-d-une-action-sur-deux-bat-l-indice.html" data-goatcounter-click="ma-brvm-lecon-9"><b>19 sur 44</b><span>Moins d’une action sur deux a fait mieux que l’indice</span></a>
+<a href="news/2026-11-21-plus-forte-baisse-depuis-2023.html" data-goatcounter-click="ma-brvm-lecon-10"><b>−11,3 %</b><span>La BRVM traverse sa plus forte baisse depuis 2023</span></a>
+</div>
+</section>
+
 <section class="mb-outil" aria-labelledby="t-lire">
 <h2 id="t-lire">Bien lire ces résultats</h2>
 <div class="mb-pourquoi">
@@ -200,6 +300,7 @@
 <footer class="mk-pied"><div class="mk-in"><p>Contenu pédagogique, ne constitue pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures.</p><p>Sources&nbsp;: BRVM (cours de clôture officiels, bulletin officiel de la cote), publications des sociétés cotées, AMF-UMOA. Calculs EFA. EFA n’est pas affiliée à la Bourse (BRVM).</p></div></footer>
 </main>
 <section class="efa-pourvous" data-garde aria-label="Apprendre, bâtir, s’enrichir" style="background:#EEF5FC;padding:44px 20px;text-align:center;font-family:'Source Sans 3',system-ui,sans-serif"><p style="margin:0;font:700 clamp(30px,4.4vw,46px)/1.12 'Libre Baskerville',Georgia,serif;color:#0B1220">Apprendre. Bâtir. S’enrichir.</p><p style="margin:8px 0 0;font:400 clamp(18px,2vw,22px)/1.4 'Libre Baskerville',Georgia,serif;font-style:italic;color:#1B71B2">L’Afrique sera riche de ceux qui savent faire grandir leur argent.</p><p style="margin:20px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px"><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">La finance, avec nos réalités</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On commence dès 1 min</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On avance ensemble</span><span style="background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15.5px;color:#0B1220">On bâtit pour durer</span></p></section>
+
 
 
 

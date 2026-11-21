@@ -283,6 +283,13 @@ def main():
     ev.update(calendrier(jour, {x['code']: x for x in liste}))
     json.dump(ev, open(os.path.join(SORTIE, 'calendrier.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     print('Marchés · séance du %s · %d titres · %d indices' % (jour, len(liste), len(principaux) + len(secteurs)))
+    # Repères de décision de « Ma BRVM » (data/marches/reperes.json), recalculés à chaque séance.
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import reperes
+        reperes.main()
+    except Exception as e:
+        print('Repères Ma BRVM non recalculés : %s' % e)
 
 if __name__ == '__main__':
     main()

@@ -445,7 +445,7 @@
           ['Dividendes encaissés', nd ? nd + ' ligne' + (nd > 1 ? 's' : '') + ' datée' + (nd > 1 ? 's' : '') : 'ajoutez vos dates d’achat pour les compter'],
           ['Comparaison avec le marché', 'BRVM Composite aux mêmes dates']], function () { calculerPf(false); });
       }
-      var tot = { achat: 0, val: 0, div: 0, marche: 0, marcheBase: 0 }, avert = [], rows = '';
+      var tot = { achat: 0, val: 0, div: 0, marche: 0, marcheBase: 0 }, avert = [], rows = '', LG = [];
       L.forEach(function (r, k) {
         var f = FS[k], H = f.historique, P1 = H[H.length - 1][1], q = num(r.q), p = num(r.p), K = 1, ops = [];
         if (r.d) { ops = (f.ajustements || []).filter(function (a) { return a.ajuste !== false && a.date > r.d; }); K = ops.reduce(function (s, a) { return s * a.facteur; }, 1); }
@@ -454,7 +454,7 @@
         var res = val - achat, m = r.d ? perfIndice(COMPO.serie, r.d, DERNIER) : null;
         if (ops.length) avert.push(esc(MK.titre(f)) + ' : ' + f0(q) + ' actions achetées avant ' + opsTexte(ops) + ' sont devenues ' + f0(qAuj) + '.');
         if (!r.d) avert.push(esc(MK.titre(f)) + ' : sans date d’achat, EFA ne peut ni compter les dividendes ni comparer au marché.');
-        tot.achat += achat; tot.val += val; tot.div += dv; if (m != null) { tot.marche += achat * (1 + m / 100); tot.marcheBase += achat; }
+        LG.push({ c: r.c, nom: MK.titre(f), val: val }); tot.achat += achat; tot.val += val; tot.div += dv; if (m != null) { tot.marche += achat * (1 + m / 100); tot.marcheBase += achat; }
         rows += '<tr><td>' + esc(MK.titre(f)) + '<small> ' + f0(qAuj) + ' × ' + fF(P1) + '</small></td><td>' + fF(achat) + '</td><td>' + fF(val) + '</td><td class="' + cl(res) + '">' + sF(res) + '<small> ' + pc(res / achat * 100) + '</small></td><td>' + (r.d ? fF(dv) + '<small> ' + nd + ' div.</small>' : '—') + '</td><td>' + (m != null ? pts((val + dv) / achat * 100 - 100 - m) : '—') + '</td></tr>';
       });
       var res = tot.val + tot.div - tot.achat;
@@ -465,7 +465,8 @@
         '<div class="mb-carte mb-c-creme"><p class="mb-k">Face au marché</p><p class="mb-chiffre ' + (mPct != null ? cl(res / tot.achat * 100 - mPct) : '') + '">' + (mPct != null ? pts(res / tot.achat * 100 - mPct) : '—') + '</p><p>' + (mPct != null ? 'Le même argent dans le BRVM Composite, aux mêmes dates, aurait fait ' + pc(mPct) + ' (cours seuls).' : 'Ajoutez vos dates d’achat pour comparer au marché.') + '</p></div></div>' +
         '<div class="mb-defile"><table class="mb-t mb-comp"><thead><tr><th>Ligne</th><th>Payé</th><th>Vaut</th><th>Plus ou moins-value</th><th>Dividendes</th><th>Face au marché</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
         (avert.length ? '<ul class="mb-note mb-avert">' + avert.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' : '') +
-        '<p class="mb-note">Vos lignes restent dans ce navigateur : EFA ne les reçoit pas. Le prix d’achat est celui de votre avis d’opéré, frais compris, au nombre d’actions de l’époque.</p>';
+        '<div id="pf-solide"></div><p class="mb-note">Vos lignes restent dans ce navigateur : EFA ne les reçoit pas. Le prix d’achat est celui de votre avis d’opéré, frais compris, au nombre d’actions de l’époque.</p>';
+      solidite(LG, tot.val);
       MK.compte('ma-brvm-portefeuille');
     });
   }
@@ -516,17 +517,236 @@
   }
 
   /* ---------- Onglets ---------- */
-  var INIT = { investi: function () {}, entree: function () { initEntree(); }, comparer: initComparer, portefeuille: initPortefeuille, decryptages: initDecryptages };
+  /* =========================================================
+     6. AIDE À LA DÉCISION : investir chaque mois, durée, dividendes, fiche, critères
+     ========================================================= */
+  var REP = null, PRET = {};
+  function reperes() { return REP ? Promise.resolve(REP) : MK.json('data/marches/reperes.json').then(function (r) { REP = r; return r; }); }
+  function serieDe(code) { return code === 'IDX' ? Promise.resolve({ f: null, H: COMPO.serie, nom: 'le BRVM Composite' }) : fiche(code).then(function (f) { return { f: f, H: serieCours(f), nom: MK.titre(f) }; }); }
+  function mF(x) { if (x == null) return '—'; return x >= 1e6 ? (x / 1e6).toFixed(x >= 1e7 ? 0 : 1).replace('.0', '').replace('.', ',') + ' M F' : fF(x); }
+  function pc0(x) { return Math.round(x) + ' %'; }
+  function barre(lib, part, val, c) { return '<div class="mb-br"><span>' + lib + '</span><div class="mb-piste"><i' + (c ? ' class="' + c + '"' : '') + ' style="width:' + Math.max(0, Math.min(100, part)).toFixed(1) + '%"></i></div><b>' + val + '</b></div>'; }
+  var GARDE = '<p class="mb-garde"><b>À garder en tête.</b> Notre historique commence en janvier 2023 et ne couvre qu’un marché en hausse. Ces chiffres décrivent ces années-là, pas l’avenir.</p>';
+
+  /* ---------- Investir chaque mois ---------- */
+  function initMensuel() {
+    if (PRET.me) return; PRET.me = 1;
+    options($('me-titre'), true, 'IDX');
+    var d = $('me-date'); d.min = COMPO.serie[0][0]; d.max = decale(DERNIER, -3); d.value = COMPO.serie[0][0];
+    $('me-form').addEventListener('submit', function (e) { e.preventDefault(); mensuel(true); });
+    [$('me-titre'), d].forEach(function (el) { el.addEventListener('change', function () { mensuel(false); }); });
+    mensuel(false);
+  }
+  function mensuel(anime) {
+    var code = $('me-titre').value, M = num($('me-montant').value), d0 = $('me-date').value, out = $('me-res');
+    var fa = (num($('si-fa').value) || 0) / 100;
+    if (!M || M < 1000) { out.innerHTML = '<p class="mb-err">Indiquez un versement d’au moins 1 000 F par mois.</p>'; return; }
+    serieDe(code).then(function (S) {
+      var i0 = premierApres(S.H, d0 || S.H[0][0]);
+      if (i0 < 0 || S.H.length - i0 < 45) { out.innerHTML = '<p class="mb-err">Choisissez une date de départ plus ancienne : il faut au moins trois mois de cours.</p>'; return; }
+      var h = S.H.slice(i0), j0 = h[0][0], fin = h[h.length - 1][1];
+      var divs = S.f ? (S.f.dividendes || []).filter(function (d) { return d.montant && d.detachement > j0; }).sort(function (a, b) { return a.detachement < b.detachement ? -1 : 1; }) : [];
+      var parts = 0, verse = 0, div = 0, n = 0, mois = '', di = 0, cv = [], cp = [];
+      h.forEach(function (x) {
+        while (di < divs.length && divs[di].detachement <= x[0]) { div += parts * divs[di].montant; di++; }
+        var m = x[0].slice(0, 7);
+        if (m !== mois) { mois = m; verse += M; parts += M / (1 + fa) / x[1]; n++; }
+        cv.push([x[0], parts * x[1] + div]); cp.push([x[0], verse]);
+      });
+      var val = parts * fin + div, gain = val - verse, pG = gain / verse * 100;
+      var p1 = verse / (1 + fa) / h[0][1], u = p1 * fin + divs.reduce(function (s, d) { return s + d.montant * p1; }, 0), pU = (u / verse - 1) * 100;
+      function rendu() {
+        var mieux = pU > pG;
+        out.innerHTML = '<p class="mb-message">' + fF(M) + ' par mois dans ' + esc(S.nom) + ' depuis ' + MOIS[+j0.slice(5, 7) - 1] + ' ' + j0.slice(0, 4) + ' : <b>' + fF(verse) + ' versés, ' + fF(val) + ' aujourd’hui.</b></p>' +
+          '<div class="mb-trois"><div class="mb-carte mb-c-creme"><p class="mb-k">Total versé</p><p class="mb-chiffre">' + fF(verse) + '</p><p>' + n + ' versements de ' + fF(M) + ', frais d’achat de ' + String((fa * 100).toFixed(1)).replace('.', ',') + ' % compris.</p></div>' +
+          '<div class="mb-carte mb-c-nuit"><p class="mb-k">Valeur aujourd’hui</p><p class="mb-chiffre">' + fF(val) + '</p><p>au ' + dt(DERNIER) + (div > 0 ? ', dont ' + fF(div) + ' de dividendes encaissés.' : '.') + '</p></div>' +
+          '<div class="mb-carte ' + (gain >= 0 ? 'mb-c-up' : 'mb-c-dn') + '"><p class="mb-k">Écart</p><p class="mb-chiffre">' + sF(gain) + '</p><p>' + pc(pG) + ' sur l’argent versé.</p></div></div>' +
+          '<div class="mb-cols"><div class="mb-bloc"><h3>Ce que vous versez, ce que cela vaut</h3>' +
+          courbe([{ nom: 'Valeur du placement', coul: COUL[0], pts: cv }, { nom: 'Total versé', coul: '#1B71B2', tirets: true, pts: cp }], { label: 'Valeur du placement et total versé', fmt: function (v) { return f0(v / 1000) + ' k'; } }) + '</div>' +
+          '<div class="mb-bloc"><h3>Étaler ou tout placer d’un coup ?</h3><div class="mb-barres">' + barre('Mois après mois', Math.max(pG, 0) / Math.max(pG, pU, 1) * 100, pc(pG, 0), pG < 0 ? 'mb-i-dn' : '') + barre('Tout le ' + dc(j0), Math.max(pU, 0) / Math.max(pG, pU, 1) * 100, pc(pU, 0), pU < 0 ? 'mb-i-dn' : 'mb-i-bleu') + '</div>' +
+          '<p>' + (mieux ? 'Sur cette période, placer les ' + fF(verse) + ' en une seule fois le premier jour aurait rapporté davantage : le marché a monté, et l’argent entré tôt a travaillé plus longtemps.' : 'Sur cette période, verser mois après mois a fait mieux que tout placer le premier jour : les achats faits pendant les baisses ont compté.') + '</p>' +
+          '<p class="mb-note">Mais qui a cette somme le premier jour ? Le versement mensuel est la façon d’investir de celui qui épargne sur son revenu. Il achète aussi pendant les baisses, sans avoir à choisir le moment.</p></div></div>' +
+          '<div class="mb-lecon"><p class="mb-k">Ce que cela aide à décider</p><ul><li><b>Commencer petit, mais commencer.</b> Le montant compte moins que la régularité et la durée.</li><li><b>Automatiser.</b> Un ordre de virement le jour de la paie évite de se demander chaque mois si c’est le bon moment.</li><li><b>Regarder la durée avant le titre.</b> Voyez vos chances selon le temps que vous pouvez laisser cet argent.</li></ul>' +
+          '<p class="mb-boutons"><button type="button" class="mb-b mb-b-clair" data-aller="duree" data-code="' + esc(code) + '">Combien de temps garder ?</button> <a class="mb-b" href="acheter-des-actions.html">Comment acheter des actions</a></p></div>' + GARDE +
+          '<p class="mb-note">Achat à la première séance de chaque mois, au cours de clôture ; calcul au prorata, comme si l’on pouvait acheter une fraction d’action' + (code === 'IDX' ? ' ; un indice ne s’achète pas directement, il sert de repère pour un panier large' : '') + '.</p>';
+        MK.compte('ma-brvm-mensuel-' + code);
+      }
+      if (!anime) return rendu();
+      analyse(out, [['Lecture des cours', f0(h.length) + ' séances de ' + esc(S.nom)], ['Un achat par mois', n + ' versements de ' + fF(M) + ', à la première séance du mois'], ['Dividendes encaissés', divs.length ? divs.length + ' détachements sur la période' : 'aucun sur ce repère'], ['Comparaison', 'la même somme placée en une fois le ' + dc(j0)]], rendu);
+    }).catch(function () { out.innerHTML = '<p class="mb-err">Les cours ne se chargent pas. Réessayez dans un instant.</p>'; });
+  }
+
+  /* ---------- Combien de temps garder ? et le prix d'attendre ---------- */
+  var DUREES = [[21, '1 mois'], [125, '6 mois'], [250, '1 an'], [500, '2 ans'], [750, '3 ans']];
+  function fen(P, n) {
+    var r = []; for (var i = 0; i + n < P.length; i++) r.push((P[i + n] / P[i] - 1) * 100);
+    if (r.length < 20) return null;
+    var g = r.filter(function (x) { return x > 0; }).length / r.length * 100; r.sort(function (a, b) { return a - b; });
+    return { n: r.length, g: g, pire: r[0], med: r[Math.floor(r.length / 2)], top: r[r.length - 1] };
+  }
+  function initDuree(code) {
+    if (!PRET.du) { PRET.du = 1; options($('du-titre'), true, 'IDX'); $('du-titre').addEventListener('change', duree); }
+    if (code) $('du-titre').value = code;
+    duree();
+  }
+  function duree() {
+    var code = $('du-titre').value, out = $('du-res');
+    serieDe(code).then(function (S) {
+      var P = S.H.map(function (x) { return x[1]; }), L = DUREES.map(function (d) { return [d[1], fen(P, d[0])]; }).filter(function (x) { return x[1]; });
+      if (!L.length) { out.innerHTML = '<p class="mb-err">L’historique de ' + esc(S.nom) + ' est encore trop court pour ce calcul.</p>'; return; }
+      var an = L.filter(function (x) { return x[0] === '1 an'; })[0] || L[L.length - 1], mo = L[0];
+      var v = []; for (var i = 1; i < P.length; i++) v.push(P[i] / P[i - 1]);
+      var tri = v.slice().sort(function (a, b) { return b - a; }), tout = (P[P.length - 1] / P[0] - 1) * 100;
+      function sans(n) { var p = P[P.length - 1] / P[0]; for (var k = 0; k < n; k++) p /= tri[k]; return (p - 1) * 100; }
+      var s5 = sans(5), s10 = sans(10), s20 = sans(20), ech = Math.max(tout, 1);
+      out.innerHTML = '<p class="mb-message">Sur ' + an[0] + ', <b>' + pc0(an[1].g) + ' des périodes</b> se sont terminées en gain pour ' + esc(S.nom) + '. Sur ' + mo[0] + ' : ' + pc0(mo[1].g) + '.</p>' +
+        '<div class="mb-cols"><div class="mb-bloc"><h3>Part des périodes gagnantes, selon la durée</h3><div class="mb-barres">' + L.map(function (x) { return barre(x[0], x[1].g, pc0(x[1].g), x[1].g < 50 ? 'mb-i-dn' : ''); }).join('') + '</div>' +
+        '<p class="mb-note">On prend toutes les dates d’achat possibles depuis le ' + dt(S.H[0][0]) + ' et on regarde le résultat après la durée choisie. Cours seuls, sans dividendes ni frais.</p></div>' +
+        '<div class="mb-bloc"><h3>Le pire, le milieu, le meilleur</h3><table class="mb-t"><thead><tr><th>Durée</th><th>Pire cas</th><th>Cas médian</th><th>Meilleur</th></tr></thead><tbody>' +
+        L.map(function (x) { return '<tr><td>' + x[0] + '</td><td class="' + cl(x[1].pire) + '">' + pc(x[1].pire, 0) + '</td><td class="' + cl(x[1].med) + '">' + pc(x[1].med, 0) + '</td><td class="' + cl(x[1].top) + '">' + pc(x[1].top, 0) + '</td></tr>'; }).join('') + '</tbody></table>' +
+        '<p class="mb-note">Le pire cas est la date d’achat la plus malchanceuse de l’historique.</p></div></div>' +
+        '<h3 class="mb-h3">Le prix d’attendre le bon moment</h3><div class="mb-bloc"><p>Depuis le ' + dt(S.H[0][0]) + ', ' + esc(S.nom) + ' a fait <b>' + pc(tout, 0) + '</b>. Voici le résultat pour quelqu’un qui aurait manqué ses meilleures séances, sur ' + f0(v.length) + '.</p><div class="mb-barres">' +
+        barre('Resté investi', Math.max(tout, 0) / ech * 100, pc(tout, 0), tout < 0 ? 'mb-i-dn' : '') + barre('Sans les 5 meilleures', Math.max(s5, 0) / ech * 100, pc(s5, 0), 'mb-i-bleu') + barre('Sans les 10', Math.max(s10, 0) / ech * 100, pc(s10, 0), 'mb-i-bleu') + barre('Sans les 20', Math.max(s20, 0) / ech * 100, pc(s20, 0), 'mb-i-dn') + '</div>' +
+        '<p class="mb-note">Personne ne connaît ces séances à l’avance. Sortir « en attendant que ça se calme », c’est prendre le risque de les manquer.</p></div>' +
+        '<div class="mb-lecon"><p class="mb-k">Ce que cela aide à décider</p><ul><li><b>Choisir sa durée avant son titre.</b> L’argent dont vous aurez besoin dans les mois qui viennent n’a pas sa place en Bourse.</li><li><b>Un titre n’est pas le marché.</b> Comparez cette lecture pour une société et pour le BRVM Composite : l’écart mesure le risque de tout miser sur un nom.</li><li><b>Rester investi.</b> Quelques séances font une grande part du résultat.</li></ul>' +
+        '<p class="mb-boutons"><button type="button" class="mb-b mb-b-clair" data-aller="mensuel">Investir chaque mois</button>' + (code !== 'IDX' ? ' <button type="button" class="mb-b mb-b-clair" data-aller="fiche" data-code="' + esc(code) + '">Sa fiche décision</button>' : '') + '</p></div>' + GARDE;
+      MK.compte('ma-brvm-duree-' + code);
+    }).catch(function () { out.innerHTML = '<p class="mb-err">Les cours ne se chargent pas. Réessayez dans un instant.</p>'; });
+  }
+
+  /* ---------- Mes dividendes ---------- */
+  function initDividendes(code) {
+    if (!PRET.dv) {
+      PRET.dv = 1; options($('dv-titre'), false, 'BOAC');
+      var d = $('dv-date'); d.min = COMPO.serie[0][0]; d.max = DERNIER; d.value = COMPO.serie[0][0];
+      $('dv-form').addEventListener('submit', function (e) { e.preventDefault(); dividendes(); });
+      [$('dv-titre'), d].forEach(function (el) { el.addEventListener('change', dividendes); });
+    }
+    if (code && CODES[code]) $('dv-titre').value = code;
+    dividendes();
+  }
+  function dividendes() {
+    var code = $('dv-titre').value, M = num($('dv-montant').value), d0 = $('dv-date').value, out = $('dv-res');
+    if (!M || M < 1000) { out.innerHTML = '<p class="mb-err">Indiquez un montant d’au moins 1 000 F.</p>'; return; }
+    Promise.all([fiche(code), reperes()]).then(function (r) {
+      var f = r[0], H = serieCours(f), k0 = premierApres(H, d0 || H[0][0]);
+      if (k0 < 0) { out.innerHTML = '<p class="mb-err">Pas de cours pour ' + esc(MK.titre(f)) + ' à cette date.</p>'; return; }
+      var jA = H[k0][0], P0 = H[k0][1], P1 = H[H.length - 1][1];
+      var K = (f.ajustements || []).filter(function (a) { return a.ajuste !== false && a.date > jA; }).reduce(function (p, a) { return p * a.facteur; }, 1);
+      var prixE = P0 * K, nE = Math.floor(M / prixE);
+      if (nE < 1) { out.innerHTML = '<p class="mb-err">Avec ' + fF(M) + ', on ne pouvait pas acheter une action ' + esc(MK.titre(f)) + ' le ' + dt(jA) + ' (cours : ' + fF(prixE) + ').</p>'; return; }
+      var nA = nE * K, cout = nE * prixE, ans = {}, moisD = {}, tot = 0;
+      (f.dividendes || []).forEach(function (d) { if (d.montant && d.detachement > jA && d.detachement <= DERNIER) { var a = d.detachement.slice(0, 4); ans[a] = (ans[a] || 0) + d.montant * nA; tot += d.montant * nA; moisD[+d.detachement.slice(5, 7) - 1] = 1; } });
+      var A = Object.keys(ans).sort(), cal = r[1].marche.detachements_par_mois, mx = Math.max.apply(null, cal);
+      var calH = '<h3 class="mb-h3">La saison des dividendes à la BRVM</h3><div class="mb-bloc"><div class="mb-mois">' + cal.map(function (n, i) { return '<div><i style="height:' + (n / mx * 100).toFixed(0) + '%"></i><b>' + n + '</b><span>' + MC[i].replace('.', '') + '</span></div>'; }).join('') + '</div><p class="mb-note">Nombre de détachements de dividende par mois, toutes sociétés, depuis 2023. Le jour du détachement, le cours baisse en général du montant versé : ce n’est pas une perte.</p></div>';
+      if (!A.length) { out.innerHTML = '<p class="mb-message"><b>' + esc(MK.titre(f)) + ' n’a versé aucun dividende</b> depuis le ' + dt(jA) + '.</p><p>Tout le résultat de l’actionnaire vient alors du cours. Ce n’est ni bon ni mauvais en soi : certaines sociétés gardent leurs bénéfices pour grandir, d’autres n’en ont pas à distribuer. La fiche décision aide à faire la différence.</p><p class="mb-boutons"><button type="button" class="mb-b mb-b-clair" data-aller="fiche" data-code="' + esc(code) + '">Sa fiche décision</button></p>' + calH; return; }
+      var der = A[A.length - 1], top = Math.max.apply(null, A.map(function (a) { return ans[a]; })), rA = ans[der] / cout * 100, rJ = ans[der] / (nA * P1) * 100;
+      var lm = Object.keys(moisD).map(function (i) { return MOIS[i]; });
+      out.innerHTML = '<p class="mb-message">' + fF(M) + ' en actions ' + esc(MK.titre(f)) + ' le ' + dt(jA) + ' : <b>' + fF(tot) + ' de dividendes encaissés</b> en ' + A.length + ' an' + (A.length > 1 ? 's' : '') + '.</p>' +
+        '<div class="mb-trois"><div class="mb-carte mb-c-up"><p class="mb-k">Dividendes encaissés</p><p class="mb-chiffre">' + fF(tot) + '</p><p>soit ' + pc0(tot / cout * 100) + ' des ' + fF(cout) + ' payés pour ' + f0(nE) + ' action' + (nE > 1 ? 's' : '') + '.</p></div>' +
+        '<div class="mb-carte mb-c-nuit"><p class="mb-k">Rendement sur mon prix d’achat</p><p class="mb-chiffre">' + String(rA.toFixed(1)).replace('.', ',') + ' %</p><p>Le dividende de ' + der + ' rapporté à ce que vous avez payé.</p></div>' +
+        '<div class="mb-carte mb-c-creme"><p class="mb-k">Rendement au cours du jour</p><p class="mb-chiffre">' + String(rJ.toFixed(1)).replace('.', ',') + ' %</p><p>Le même dividende pour qui achète aujourd’hui à ' + fF(P1) + '.</p></div></div>' +
+        '<div class="mb-bloc"><h3>Mon revenu, année par année</h3><div class="mb-barres">' + A.map(function (a) { return barre(a, ans[a] / top * 100, fF(ans[a])); }).join('') + '</div>' +
+        '<p class="mb-note">Dividendes nets, pour ' + f0(nA) + ' action' + (nA > 1 ? 's' : '') + (K > 1 ? ' après fractionnement' : '') + '. Détachement habituel en ' + lm.join(', ') + '. Un dividende passé n’engage pas la société pour l’avenir.</p></div>' +
+        '<div class="mb-lecon"><p class="mb-k">Ce que cela aide à décider</p><ul><li><b>Juger un titre sur le rendement total.</b> Le cours ne montre qu’une partie du gain.</li><li><b>Regarder la régularité.</b> Un dividende versé et relevé chaque année en dit plus qu’un versement exceptionnel.</li><li><b>Prévoir ses rentrées.</b> À la BRVM, l’essentiel tombe entre mai et septembre.</li></ul>' +
+        '<p class="mb-boutons"><button type="button" class="mb-b mb-b-clair" data-aller="fiche" data-code="' + esc(code) + '">Sa fiche décision</button> <button type="button" class="mb-b mb-b-clair" data-aller="criteres">Trier par critères</button></p></div>' + calH;
+      MK.compte('ma-brvm-dividendes-' + code);
+    }).catch(function () { out.innerHTML = '<p class="mb-err">Les données ne se chargent pas. Réessayez dans un instant.</p>'; });
+  }
+
+  /* ---------- Fiche décision : sept repères, toujours les mêmes ---------- */
+  function initFiche(code) {
+    if (!PRET.fi) {
+      PRET.fi = 1; options($('fi-titre'), false, 'SGBC');
+      $('fi-titre').addEventListener('change', ficheDecision);
+      $('fi-form').addEventListener('submit', function (e) { e.preventDefault(); ficheDecision(); });
+    }
+    if (code && CODES[code]) $('fi-titre').value = code;
+    ficheDecision();
+  }
+  function delai(M, liq) {
+    if (!liq) return ['—', ''];
+    var j = Math.ceil(M / (liq * 0.25));
+    return [j <= 1 ? 'Dans la journée' : j <= 5 ? 'Quelques jours' : j <= 22 ? 'Quelques semaines' : 'Plusieurs mois', j <= 1 ? 'mb-up' : j > 22 ? 'mb-dn' : ''];
+  }
+  function ficheDecision() {
+    var code = $('fi-titre').value, M = num($('fi-montant').value) || 1e6, out = $('fi-res');
+    reperes().then(function (R) {
+      var r = R.societes.filter(function (x) { return x.code === code; })[0];
+      if (!r) { out.innerHTML = '<p class="mb-err">L’historique de cette société est encore trop court pour une fiche.</p>'; return; }
+      var a0 = Math.max(2023, +r.depuis.slice(0, 4) + (r.depuis.slice(5) > '06-30' ? 1 : 0)), nAns = +R.date.slice(0, 4) - a0 + 1, face = r.prix - r.indice, dl = delai(M, r.liq);
+      var L = [
+        ['Gain depuis le ' + dc(r.depuis) + ', dividendes compris', '<b class="' + cl(r.total) + '">' + pc(r.total, 0) + '</b>', 'Cours seul : ' + pc(r.prix, 0) + '.'],
+        ['Part des dividendes dans ce gain', '<b>' + pts(r.div_pts) + '</b>', r.div_pts ? 'Ce que le cours ne montre pas.' : 'Tout le résultat vient du cours.'],
+        ['Régularité du dividende', '<b>' + (r.div_ans ? r.div_ans + ' an' + (r.div_ans > 1 ? 's' : '') + ' sur ' + nAns : 'Aucun versement') + '</b>', r.div_hausse3 ? 'Relevé chaque année depuis 2023.' : (r.div_ans >= nAns ? 'Versé chaque année, sans hausse continue.' : '')],
+        ['Années glissantes terminées en gain', r.an ? '<b class="' + (r.an.gagnant >= 75 ? 'mb-up' : '') + '">' + pc0(r.an.gagnant) + '</b>' : '<b>—</b>', r.an ? 'Pire année possible : ' + pc(r.an.pire, 0) + '.' : 'Historique trop court.'],
+        ['Pire baisse depuis un sommet', '<b class="mb-dn">' + pc(r.baisse.pct, 0) + '</b>', r.baisse.du ? 'Du ' + dc(r.baisse.du) + ' au ' + dc(r.baisse.au) + '.' : ''],
+        ['Échangé par jour', '<b>' + mF(r.liq) + '</b>', 'Médiane sur un an. Revendre ' + mF(M) + ' : <span class="' + dl[1] + '">' + dl[0].toLowerCase() + '</span>.'],
+        ['Face au marché, cours seuls', '<b class="' + cl(face) + '">' + pts(face) + '</b>', 'Le BRVM Composite a fait ' + pc(r.indice, 0) + ' sur la même période.']];
+      out.innerHTML = '<div class="mb-fiche"><p class="mb-k">Fiche décision · ' + esc(code) + '</p><h3>' + esc(nom(code)) + '</h3><ol class="mb-reperes">' + L.map(function (x) { return '<li><span>' + x[0] + '</span>' + x[1] + '<small>' + x[2] + '</small></li>'; }).join('') + '</ol>' +
+        '<p class="mb-note">Des faits passés, pas une recommandation. Séance du ' + dt(R.date) + '. Délai de revente : ordre de grandeur, en ne pesant pas plus d’un quart des échanges d’une journée.</p></div>' +
+        '<div class="mb-lecon"><p class="mb-k">Comment lire cette fiche</p><ul><li><b>Aucun repère ne suffit seul.</b> Un gain élevé avec très peu d’échanges ou une forte baisse en chemin ne raconte pas la même histoire.</li><li><b>Comparez deux sociétés</b> sur les sept mêmes lignes plutôt que sur leur seul cours.</li><li><b>Complétez par les comptes</b> : bénéfices, dette, activité sont sur la page de la société.</li></ul>' +
+        '<p class="mb-boutons"><button type="button" class="mb-b mb-b-clair" data-aller="investi" data-code="' + esc(code) + '" data-date="' + esc(r.depuis < COMPO.serie[0][0] ? COMPO.serie[0][0] : r.depuis) + '">Et si j’avais investi ?</button> <button type="button" class="mb-b mb-b-clair" data-aller="dividendes" data-code="' + esc(code) + '">Ses dividendes</button> <button type="button" class="mb-b mb-b-clair" data-aller="duree" data-code="' + esc(code) + '">Combien de temps garder ?</button> <a class="mb-b" href="societe.html?c=' + encodeURIComponent(code) + '">La société et ses comptes</a></p></div>' + GARDE;
+      try { history.replaceState(null, '', '?outil=fiche&c=' + encodeURIComponent(code) + '#fiche'); } catch (e) {}
+      MK.compte('ma-brvm-fiche-' + code);
+    }).catch(function () { out.innerHTML = '<p class="mb-err">Les repères ne se chargent pas. Réessayez dans un instant.</p>'; });
+  }
+
+  /* ---------- Trier par critères : une liste à étudier, jamais un palmarès ---------- */
+  function initCriteres() {
+    if (!PRET.cr) { PRET.cr = 1; Array.prototype.forEach.call(document.querySelectorAll('#cr-form input,#cr-form select'), function (el) { el.addEventListener('change', criteres); }); }
+    criteres();
+  }
+  function criteres() {
+    var out = $('cr-res');
+    reperes().then(function (R) {
+      var c = { d4: $('cr-d4').checked, h3: $('cr-h3').checked, an: $('cr-an').checked, bm: $('cr-bm').checked, liq: +$('cr-liq').value };
+      var L = R.societes.filter(function (r) {
+        return (!c.d4 || r.div_ans >= 4) && (!c.h3 || r.div_hausse3) && (!c.an || (r.an && r.an.gagnant === 100)) && (!c.bm || r.baisse.pct > -30) && (!c.liq || (r.liq || 0) >= c.liq);
+      }).sort(function (a, b) { return nom(a.code).localeCompare(nom(b.code), 'fr'); });
+      var aucun = !c.d4 && !c.h3 && !c.an && !c.bm && !c.liq;
+      out.innerHTML = '<p class="mb-message"><b>' + L.length + ' société' + (L.length > 1 ? 's' : '') + ' sur ' + R.societes.length + '</b> ' + (aucun ? 'cotées et suivies. Cochez vos critères.' : (L.length > 1 ? 'répondent' : 'répond') + ' à vos critères.') + '</p>' +
+        (L.length ? '<div class="mb-defile"><table class="mb-t mb-comp"><thead><tr><th>Société, par ordre alphabétique</th><th>Dividende</th><th>Années gagnantes</th><th>Pire baisse</th><th>Échangé par jour</th><th></th></tr></thead><tbody>' +
+          L.map(function (r) { return '<tr><td>' + esc(nom(r.code)) + '<small>' + esc(r.code) + '</small></td><td>' + (r.div_ans ? r.div_ans + ' an' + (r.div_ans > 1 ? 's' : '') + (r.div_hausse3 ? ', en hausse' : '') : 'aucun') + '</td><td>' + (r.an ? pc0(r.an.gagnant) : '—') + '</td><td>' + pc(r.baisse.pct, 0) + '</td><td>' + mF(r.liq) + '</td><td><button type="button" class="mb-lien" data-aller="fiche" data-code="' + esc(r.code) + '">Sa fiche</button></td></tr>'; }).join('') + '</tbody></table></div>'
+          : '<p>Aucune société ne coche toutes ces cases à la fois. Retirez un critère : c’est déjà une leçon, la société parfaite n’existe pas.</p>') +
+        '<p class="mb-note">La liste est rangée par ordre alphabétique, pas par performance : ce n’est pas un palmarès d’achat. Un critère rempli hier ne garantit rien pour demain ; il sert à réduire 48 titres à quelques dossiers à étudier.</p>' + GARDE;
+      MK.compte('ma-brvm-criteres');
+    }).catch(function () { out.innerHTML = '<p class="mb-err">Les repères ne se chargent pas. Réessayez dans un instant.</p>'; });
+  }
+
+  /* ---------- Mon portefeuille est-il solide ? ---------- */
+  function solidite(LG, total) {
+    var out = $('pf-solide'); if (!out || !total) return;
+    reperes().then(function (R) {
+      var par = {}; LG.forEach(function (l) { par[l.c] = par[l.c] || { nom: l.nom, val: 0 }; par[l.c].val += l.val; });
+      var C = Object.keys(par), gros = C.map(function (c) { return par[c]; }).sort(function (a, b) { return b.val - a.val; })[0], pg = gros.val / total * 100;
+      var choc = 0, liqBas = [];
+      C.forEach(function (c) { var r = R.societes.filter(function (x) { return x.code === c; })[0]; if (!r) return; choc += par[c].val * r.baisse.pct / 100; if (r.liq && delai(par[c].val, r.liq)[1] === 'mb-dn') liqBas.push(par[c].nom); });
+      var conc = C.length < 5 || pg > 40;
+      out.innerHTML = '<h3 class="mb-h3">Mon portefeuille est-il solide ?</h3><div class="mb-trois">' +
+        '<div class="mb-carte ' + (C.length < 5 ? 'mb-c-dn' : 'mb-c-up') + '"><p class="mb-k">Nombre de sociétés</p><p class="mb-chiffre">' + C.length + '</p><p>' + (C.length < 5 ? 'Sur un an, un titre seul a perdu bien plus souvent qu’un panier de cinq.' : 'Le risque d’un seul nom est déjà réparti.') + '</p></div>' +
+        '<div class="mb-carte ' + (pg > 40 ? 'mb-c-dn' : 'mb-c-creme') + '"><p class="mb-k">Ma plus grosse ligne</p><p class="mb-chiffre">' + pc0(pg) + '</p><p>' + esc(gros.nom) + (pg > 40 ? ' pèse lourd : son parcours décide du vôtre.' : '.') + '</p></div>' +
+        '<div class="mb-carte mb-c-nuit"><p class="mb-k">Test de résistance</p><p class="mb-chiffre">' + pc(choc / total * 100, 0) + '</p><p>si chaque titre refaisait en même temps sa pire baisse depuis 2023, soit ' + sF(choc) + '.</p></div></div>' +
+        '<p>' + (conc ? '<b>Portefeuille concentré.</b> Avant d’ajouter de l’argent sur les mêmes titres, regardez comment le répartir sur d’autres sociétés et d’autres secteurs.' : '<b>Portefeuille réparti.</b> Le test de résistance reste la bonne question : pourriez-vous voir ce montant baisser sans vendre ?') +
+        (liqBas.length ? ' <b>Revente lente</b> pour ' + liqBas.map(esc).join(', ') + ' : ces titres s’échangent peu au regard de votre ligne.' : '') + '</p>' +
+        '<p class="mb-note">Le test additionne les pires baisses de chaque titre, qui ne se sont pas produites au même moment : c’est un scénario dur, pas une prévision.</p>';
+    }).catch(function () {});
+  }
+
+  var INIT = { investi: function () {}, entree: function () { initEntree(); }, comparer: initComparer, portefeuille: initPortefeuille, decryptages: initDecryptages,
+    mensuel: initMensuel, duree: function () { initDuree(); }, dividendes: function () { initDividendes(); }, fiche: function () { initFiche(); }, criteres: initCriteres };
+  var AVEC_CODE = { duree: initDuree, dividendes: initDividendes, fiche: initFiche };
   function ouvrir(outil, opts) {
     if (!INIT[outil]) outil = 'investi';
     Array.prototype.forEach.call(document.querySelectorAll('.mb-onglet'), function (b) { b.setAttribute('aria-selected', b.dataset.outil === outil ? 'true' : 'false'); });
     Array.prototype.forEach.call(document.querySelectorAll('.mb-outil[id]'), function (s) { s.hidden = s.id !== 'o-' + outil; });
     opts = opts || {};
     if (outil === 'entree') initEntree(opts.code);
+    else if (AVEC_CODE[outil]) AVEC_CODE[outil](opts.code);
     else if (outil === 'investi' && opts.code) {
       $('si-titre').value = opts.code; if (opts.date) $('si-date').value = opts.date; $('si-fin').value = opts.fin || DERNIER; calculer(false);
     } else INIT[outil]();
-    try { history.replaceState(null, '', '#' + outil); } catch (e) {}
+    if (outil !== 'fiche') { try { history.replaceState(null, '', location.pathname + '#' + outil); } catch (e) {} }
     if (opts.defiler !== false) $('mb-outils').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -542,7 +762,7 @@
         if (a) { e.preventDefault(); ouvrir(a.dataset.aller, { code: a.dataset.code, date: a.dataset.date, fin: a.dataset.fin }); }
       });
       var depart = Q.get('outil') || (location.hash || '').slice(1);
-      if (depart && depart !== 'investi' && INIT[depart]) ouvrir(depart, { defiler: false });
+      if (depart && depart !== 'investi' && INIT[depart]) ouvrir(depart, { defiler: false, code: q.c });
     }).catch(function () { $('si-res').innerHTML = '<p class="mb-err">Les données de la Bourse ne se chargent pas. Réessayez dans un instant.</p>'; });
   });
 })();

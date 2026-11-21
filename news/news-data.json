@@ -13,6 +13,1093 @@
    "une": false,
    "corrections": [],
    "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-50000-f-par-mois-depuis-2023",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "50 000 F par mois à la Bourse depuis 2023 : 2,35 millions versés, 4,24 millions aujourd'hui",
+   "resume": "On n'a pas besoin d'une grosse somme pour investir, mais de régularité. Ce qu'un versement mensuel sur l'ensemble du marché serait devenu en 47 mois, et ce que cela change pour celui qui épargne sur son salaire.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "investissement programmé",
+    "épargne régulière",
+    "indice boursier"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Une personne qui aurait placé 50 000 F CFA à la première séance de chaque mois sur l'ensemble du marché (indice BRVM Composite) depuis janvier 2023 aurait versé 2 350 000 F en 47 fois. Au 20 novembre 2026, ce placement vaudrait 4 244 707 F, frais d'achat de 1,4 % compris : un gain de 1 894 707 F, soit +81 % sur l'argent versé. La même somme placée en une seule fois le 2 janvier 2023 aurait fait +136 %.",
+   "chiffres": [
+    {
+     "valeur": "4,24 M F",
+     "libelle": "valeur de 47 versements de 50 000 F sur l'ensemble du marché",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+81 %",
+     "libelle": "gain sur les 2 350 000 F versés, frais d'achat compris",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+136 %",
+     "libelle": "gain de la même somme placée en une seule fois le premier jour",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Chaque versement achète au cours du jour : davantage de parts quand le marché baisse, moins quand il monte. Le prix moyen se lisse sans avoir à choisir le moment.",
+    "L'argent entré tôt travaille plus longtemps. Dans un marché qui monte, le versement unique gagne donc plus : c'est le cas ici.",
+    "Mais le versement unique suppose d'avoir la somme le premier jour. Le versement mensuel est la manière d'investir de celui qui épargne sur son revenu."
+   ],
+   "mot": {
+    "terme": "Investissement programmé",
+    "definition": "Placer le même montant à date fixe, quel que soit le niveau du marché, plutôt que de chercher le bon moment."
+   },
+   "change": "Si vous attendez d'avoir « assez » pour commencer, vous comparez deux choses qui ne s'opposent pas. La vraie alternative, pour qui épargne chaque mois, est entre investir au fil de l'eau et laisser l'argent dormir. Le montant compte moins que la régularité et la durée : 10 000 F par mois suivent exactement la même courbe, à l'échelle. Un virement automatique le jour de la paie évite de se reposer la question chaque mois.",
+   "retenir": "Commencer petit, mais commencer : c'est la régularité et la durée qui font le résultat, pas le montant du premier versement.",
+   "limites": [
+    "Un indice ne s'achète pas directement : il sert ici de repère pour un panier large d'actions. Le calcul suppose qu'on peut acheter une fraction d'action.",
+    "Les frais de vente, les droits de garde et l'impôt ne sont pas déduits.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Quel montant pourriez-vous verser chaque mois pendant au moins trois ans sans jamais avoir à le retirer ?",
+   "verif": {
+    "q": "Pourquoi le versement unique a-t-il fait mieux que le versement mensuel sur cette période ?",
+    "choix": [
+     "Parce que les frais sont plus faibles",
+     "Parce que le marché a monté : l'argent entré tôt a travaillé plus longtemps",
+     "Parce que le versement mensuel est une mauvaise méthode"
+    ],
+    "bonne": 1,
+    "explication": "Dans un marché en hausse, plus l'argent entre tôt, plus il profite de la hausse. Cela ne dit rien d'un marché qui baisserait d'abord."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Investir chaque mois",
+     "description": "Refaire le calcul avec votre montant et votre date de départ.",
+     "url": "ma-brvm.html#mensuel"
+    },
+    {
+     "type": "Outil",
+     "titre": "Combien de temps garder ?",
+     "description": "Vos chances de gain selon la durée.",
+     "url": "ma-brvm.html#duree"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-duree-un-mois-un-an",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "À la Bourse, la durée fait le résultat : sur un mois une période sur quatre perd, sur un an aucune",
+   "resume": "Avant de choisir une action, il faut choisir une durée. Sur l'ensemble du marché depuis 2023, 73 % des périodes d'un mois finissent en gain, 99 % sur six mois, 100 % sur un an. Pour un titre seul, l'histoire est moins confortable.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "horizon de placement",
+    "risque",
+    "indice boursier"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "EFA a rejoué toutes les dates d'achat possibles sur l'indice BRVM Composite depuis le 2 janvier 2023. Sur un mois, 73 % des périodes se terminent en gain et la pire perd 6 %. Sur six mois, 99 % sont gagnantes. Sur un an, toutes le sont : la date d'achat la plus malchanceuse rapporte encore +2 %, la date médiane +30 %. Pour une action prise seule, le tableau change : la société médiane n'est gagnante que dans 77 % des périodes d'un an, et sa pire année perd 26 %.",
+   "chiffres": [
+    {
+     "valeur": "73 %",
+     "libelle": "des périodes d'un mois terminées en gain sur l'ensemble du marché",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "100 %",
+     "libelle": "des périodes d'un an terminées en gain ; la pire rapporte +2 %",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "−26 %",
+     "libelle": "pire année possible pour l'action médiane de la cote",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Sur quelques semaines, le cours bouge surtout au gré des ordres du moment. Sur plusieurs trimestres, ce sont les bénéfices et les dividendes des entreprises qui pèsent.",
+    "L'indice additionne une quarantaine de sociétés : les accidents de l'une sont compensés par les autres. Un titre seul n'a pas ce filet.",
+    "Sept sociétés n'ont connu aucune année glissante perdante sur la période : cela décrit leur passé, pas une garantie."
+   ],
+   "mot": {
+    "terme": "Horizon de placement",
+    "definition": "La durée pendant laquelle on peut laisser son argent investi sans avoir besoin de le retirer."
+   },
+   "change": "La première question n'est pas « quelle action ? » mais « de quel argent s'agit-il ? ». L'argent du loyer, de la scolarité ou d'un projet dans six mois n'a pas sa place en Bourse : une fois sur quatre, il vaudrait moins le mois suivant. L'argent que vous pouvez laisser plusieurs années peut traverser ces passages. Et plus vous concentrez votre mise sur un seul titre, plus il faut de temps et de sang-froid.",
+   "retenir": "Choisir sa durée avant son titre : ne placer en Bourse que l'argent dont on n'aura pas besoin avant plusieurs années.",
+   "limites": [
+    "Calcul sur les cours seuls, sans dividendes ni frais.",
+    "« 100 % » décrit quatre années favorables. Un marché peut perdre sur un an, et l'a fait ailleurs et à d'autres époques.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Dans combien de temps aurez-vous besoin de l'argent que vous pensez investir ?",
+   "verif": {
+    "q": "Que signifie « 100 % des périodes d'un an sont gagnantes » dans cet article ?",
+    "choix": [
+     "Qu'on ne peut pas perdre en gardant un an",
+     "Que sur 2023-2026, aucune période d'un an sur l'indice n'a fini en perte",
+     "Que toutes les actions ont gagné chaque année"
+    ],
+    "bonne": 1,
+    "explication": "C'est un constat sur quatre années de hausse, pour l'indice et non pour chaque action. Ce n'est pas une promesse."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Combien de temps garder ?",
+     "description": "La même lecture pour le marché ou pour une société.",
+     "url": "ma-brvm.html#duree"
+    },
+    {
+     "type": "Outil",
+     "titre": "Investir chaque mois",
+     "description": "Voir ce qu'un versement régulier serait devenu.",
+     "url": "ma-brvm.html#mensuel"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-vingt-seances-la-moitie-de-la-hausse",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Vingt séances sur 960 ont fait la moitié de la hausse de la BRVM",
+   "resume": "Attendre « le bon moment » a un prix. Depuis 2023, le marché a gagné 139 %. Sans ses vingt meilleures journées, le gain tombe à 68 %. Personne ne connaît ces journées à l'avance.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "rester investi",
+    "frais de courtage",
+    "volatilité"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Du 2 janvier 2023 au 20 novembre 2026, l'indice BRVM Composite a progressé de 139 % en 960 séances. Celui qui aurait manqué les cinq meilleures séances n'aurait gagné que 113 %. Sans les dix meilleures : 96 %. Sans les vingt meilleures : 68 %. Deux pour cent des journées ont donc porté la moitié du résultat. Pourtant le marché n'a monté que 56 % des jours, et sa meilleure séance n'a fait que +3,0 %.",
+   "chiffres": [
+    {
+     "valeur": "+139 %",
+     "libelle": "pour l'indice BRVM Composite en restant investi",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+68 %",
+     "libelle": "en ayant manqué les 20 meilleures séances sur 960",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "56 %",
+     "libelle": "des séances seulement se terminent en hausse",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Les gains s'enchaînent en se multipliant : retirer quelques fortes journées réduit toute la suite.",
+    "Les meilleures séances arrivent souvent juste après des baisses, au moment où l'on a le plus envie de rester à l'écart.",
+    "Sortir puis rentrer oblige à avoir raison deux fois, et se paie deux fois en frais de courtage."
+   ],
+   "mot": {
+    "terme": "Rester investi",
+    "definition": "Conserver ses titres à travers les hausses et les baisses plutôt que d'essayer d'entrer et de sortir aux bons moments."
+   },
+   "change": "Si votre plan est de vendre « en attendant que ça se calme » puis de racheter, vous pariez sur votre capacité à deviner des journées que personne ne sait prévoir. Le coût d'une erreur est élevé, et il s'ajoute aux frais d'achat et de vente. Pour l'argent placé à long terme, la décision qui compte est prise avant : combien, sur quelle durée, sur quels titres. Ensuite, on laisse travailler.",
+   "retenir": "On ne gagne pas en Bourse en devinant les bonnes journées, mais en étant présent quand elles arrivent.",
+   "limites": [
+    "Manquer exactement les meilleures séances est un cas extrême : il mesure un risque, il ne décrit pas un comportement réel.",
+    "Rester investi signifie aussi subir les pires séances : la plus forte baisse en une journée a été de −3,7 %.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Qu'est-ce qui vous ferait vendre demain : un besoin d'argent, ou la peur d'une baisse ?",
+   "verif": {
+    "q": "Que montre le calcul des « meilleures séances » ?",
+    "choix": [
+     "Qu'il faut acheter la veille des fortes hausses",
+     "Qu'une petite part des journées fait une grande part du gain, et qu'on ne les connaît pas d'avance",
+     "Que le marché monte tous les jours"
+    ],
+    "bonne": 1,
+    "explication": "Vingt journées sur 960 font la moitié de la hausse. Comme elles sont imprévisibles, sortir du marché expose à les manquer."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Combien de temps garder ?",
+     "description": "Le prix d'attendre, pour le marché ou pour une société.",
+     "url": "ma-brvm.html#duree"
+    },
+    {
+     "type": "Outil",
+     "titre": "Quand êtes-vous entré ?",
+     "description": "Déplacer sa date d'achat et voir le résultat changer.",
+     "url": "ma-brvm.html#entree"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-dividendes-trente-points-de-gain",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Dividendes : 30 points de gain que la courbe du cours ne montre pas",
+   "resume": "Juger une action sur son seul cours, c'est oublier une partie de ce qu'elle rapporte. Depuis 2023, l'action médiane de la BRVM a gagné 132 % en cours et 162 % dividendes compris. Pour Onatel, le dividende change même le signe du résultat.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM",
+    "Onatel Burkina Faso",
+    "Bank Of Africa Côte d'Ivoire"
+   ],
+   "notions": [
+    "dividende",
+    "rendement total",
+    "détachement"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Sur les 44 sociétés cotées pendant toute la période, le gain médian est de +132 % sur le cours et de +162 % une fois les dividendes ajoutés. L'écart, 30 points, n'apparaît sur aucun graphique de cours. Le cas le plus parlant est Onatel Burkina Faso : son cours a baissé de 12 % depuis 2023, mais l'actionnaire a gagné 14 % grâce aux dividendes encaissés. Pour Bank Of Africa Côte d'Ivoire, les dividendes ajoutent 91 points à un cours déjà en hausse de 494 %.",
+   "chiffres": [
+    {
+     "valeur": "+162 %",
+     "libelle": "gain médian d'une action, dividendes compris, contre +132 % en cours seul",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "−12 % → +14 %",
+     "libelle": "Onatel Burkina Faso : cours seul, puis dividendes compris",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "27 sur 48",
+     "libelle": "sociétés ont versé un dividende quatre années sur quatre",
+     "periode": "2023 à 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Le dividende est la part du bénéfice que l'entreprise verse en argent à ses actionnaires. Il arrive sur le compte, il ne se voit pas dans le cours.",
+    "Le jour du détachement, le cours baisse en général du montant versé : la courbe recule alors que l'actionnaire n'a rien perdu.",
+    "Sur plusieurs années, ces versements s'additionnent et peuvent représenter une part importante du gain total."
+   ],
+   "mot": {
+    "terme": "Rendement total",
+    "definition": "Le gain d'un placement en comptant à la fois l'évolution du cours et les dividendes encaissés."
+   },
+   "change": "Avant de dire qu'une action « n'a rien fait », regardez ce qu'elle a versé. Et avant de vendre une action dont le cours stagne, comptez ses dividendes : vous jugeriez sinon un loyer en ne regardant que le prix de la maison. À l'inverse, un dividende élevé ne rattrape pas toujours une forte baisse du cours. La bonne mesure est toujours la même : cours plus dividendes, moins frais.",
+   "retenir": "Le cours ne dit pas tout : on juge une action sur son rendement total, cours et dividendes ensemble.",
+   "limites": [
+    "Dividendes nets publiés au bulletin officiel, additionnés sans réinvestissement ; frais et fiscalité personnelle non déduits.",
+    "Un dividende passé n'engage pas la société pour l'avenir : il dépend de ses bénéfices.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Savez-vous ce que vos actions vous ont versé en dividendes l'an dernier ?",
+   "verif": {
+    "q": "Le cours d'une action baisse de 12 % en quatre ans. Que faut-il vérifier avant de conclure à une perte ?",
+    "choix": [
+     "Rien : le cours suffit",
+     "Les dividendes encaissés sur la période",
+     "Le cours des autres actions"
+    ],
+    "bonne": 1,
+    "explication": "Le résultat de l'actionnaire additionne le cours et les dividendes. Pour Onatel, ils transforment −12 % en +14 %."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Mes dividendes",
+     "description": "Le revenu qu'une action vous aurait versé, année par année.",
+     "url": "ma-brvm.html#dividendes"
+    },
+    {
+     "type": "Outil",
+     "titre": "Si j'avais investi…",
+     "description": "Le résultat complet : cours, dividendes et frais.",
+     "url": "ma-brvm.html"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-dividende-regularite-dix-societes",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Dix sociétés ont relevé leur dividende chaque année depuis 2023, dix n'ont rien versé",
+   "resume": "La régularité d'un dividende en dit plus qu'un versement exceptionnel. Qui paie, qui augmente, quand l'argent tombe, et pourquoi le rendement se lit sur le prix que l'on a payé.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM",
+    "Bank Of Africa Côte d'Ivoire",
+    "Sonatel",
+    "Société Générale Côte d'Ivoire",
+    "Vivo Energy Côte d'Ivoire"
+   ],
+   "notions": [
+    "dividende",
+    "rendement",
+    "assemblée générale"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Sur les 48 sociétés suivies, 27 ont versé un dividende quatre années sur quatre et 10 l'ont relevé chaque année depuis 2023 : sept banques (BICI CI, Bank Of Africa Bénin, Côte d'Ivoire et Sénégal, Ecobank CI, NSIA Banque CI, Société Générale CI), Sonatel, Sicable et Vivo Energy CI. Dix sociétés n'ont rien versé sur la période. Les versements se concentrent de mai à septembre : 125 des 135 détachements recensés. Et le temps joue pour l'actionnaire patient : le dividende 2026 de Bank Of Africa Côte d'Ivoire représente 32 % du prix payé en janvier 2023, contre 5,4 % pour qui achète au cours d'aujourd'hui.",
+   "chiffres": [
+    {
+     "valeur": "10",
+     "libelle": "sociétés ont relevé leur dividende chaque année depuis 2023",
+     "periode": "2023 à 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "125 sur 135",
+     "libelle": "détachements de dividende ont eu lieu entre mai et septembre",
+     "periode": "2023 à 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "32 % contre 5,4 %",
+     "libelle": "dividende 2026 de BOA Côte d'Ivoire : sur le prix de janvier 2023, puis sur le cours du jour",
+     "periode": "20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Un dividende régulier suppose des bénéfices réguliers : c'est un indice de solidité, pas une preuve.",
+    "Quand le dividende augmente et que le prix payé ne change pas, le rendement de l'actionnaire grimpe année après année.",
+    "Les sociétés publient leurs comptes au printemps et votent le dividende en assemblée générale : d'où la saison de mai à septembre."
+   ],
+   "mot": {
+    "terme": "Rendement sur prix d'achat",
+    "definition": "Le dividende d'une année divisé par le prix que l'on a soi-même payé l'action, et non par son cours du jour."
+   },
+   "change": "Si vous cherchez un revenu, la question n'est pas « qui verse le plus cette année ? » mais « qui verse chaque année, et de plus en plus ? ». Une société qui ne distribue rien n'est pas forcément un mauvais dossier : elle peut garder ses bénéfices pour grandir, ou ne pas en avoir. Il faut alors regarder ses comptes. Et retenez le calendrier : à la BRVM, l'essentiel des dividendes arrive entre mai et septembre ; ce n'est pas un revenu mensuel.",
+   "retenir": "Pour un revenu, cherchez la régularité et la progression du dividende, pas le plus gros chiffre d'une seule année.",
+   "limites": [
+    "Les listes décrivent le passé et ne sont pas des recommandations d'achat : un dividende peut être réduit ou supprimé.",
+    "Dividendes par action ajustés des fractionnements ; le rendement de 32 % ne vaut que pour un achat en janvier 2023.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Préférez-vous un revenu qui tombe chaque année ou un cours qui monte sans rien verser ?",
+   "verif": {
+    "q": "Pourquoi le rendement de BOA Côte d'Ivoire est-il de 32 % pour l'un et de 5,4 % pour l'autre ?",
+    "choix": [
+     "Parce qu'ils ne reçoivent pas le même dividende par action",
+     "Parce qu'ils n'ont pas payé l'action le même prix",
+     "Parce que l'un des deux paie plus de frais"
+    ],
+    "bonne": 1,
+    "explication": "Le dividende par action est le même. C'est le prix d'achat qui diffère : 1 850 F en janvier 2023, en tenant compte du fractionnement, contre 10 995 F aujourd'hui."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Trier par critères",
+     "description": "Lister les sociétés selon la régularité de leur dividende.",
+     "url": "ma-brvm.html#criteres"
+    },
+    {
+     "type": "Outil",
+     "titre": "Mes dividendes",
+     "description": "Votre revenu, année par année, et la saison des dividendes.",
+     "url": "ma-brvm.html#dividendes"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-17-actions-ont-perdu-la-moitie",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Même quand la Bourse monte de 139 %, 17 actions sur 48 ont perdu plus de la moitié de leur valeur en chemin",
+   "resume": "Un marché en hausse ne garantit aucun titre. Depuis 2023, l'action médiane a connu une baisse de 40 % à un moment, et trois sociétés sont perdantes sur toute la période. Ce qu'il faut savoir avant d'acheter.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM",
+    "Oragroup",
+    "Bernabé Côte d'Ivoire",
+    "Palm Côte d'Ivoire"
+   ],
+   "notions": [
+    "baisse maximale",
+    "risque",
+    "volatilité"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Entre janvier 2023 et novembre 2026, l'indice BRVM Composite a gagné 139 % et n'a jamais baissé de plus de 11 % depuis un sommet. Les actions, elles, ont beaucoup plus bougé : 34 sur 48 ont perdu plus de 30 % entre un sommet et un creux, et 17 plus de la moitié. La baisse maximale médiane est de 40 %. Sur les 44 sociétés cotées toute la période, trois finissent en perte dividendes compris : Oragroup (−36 %), Bernabé CI (−5 %) et Palm CI (−3 %).",
+   "chiffres": [
+    {
+     "valeur": "17 sur 48",
+     "libelle": "actions ont perdu plus de 50 % entre un sommet et un creux",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "−40 %",
+     "libelle": "baisse maximale médiane d'une action, contre −11 % pour l'indice",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "3 sur 44",
+     "libelle": "sociétés perdantes sur toute la période, dividendes compris",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "L'indice est une moyenne : quand une société chute, d'autres montent. L'actionnaire d'un seul titre encaisse la chute entière.",
+    "Une forte hausse est souvent suivie d'un repli marqué : les titres qui ont le plus monté sont aussi ceux qui ont le plus corrigé.",
+    "Une action qui perd 50 % doit ensuite gagner 100 % pour revenir à son niveau de départ."
+   ],
+   "mot": {
+    "terme": "Baisse maximale",
+    "definition": "La plus forte chute d'un cours entre un sommet et le creux qui le suit. Elle mesure ce qu'un actionnaire a dû supporter en chemin."
+   },
+   "change": "Le gain final d'une action ne dit pas ce qu'il a fallu traverser pour l'obtenir. Avant d'acheter, posez-vous la question dans l'autre sens : si ce titre perdait 40 % dans l'année, est-ce que je vendrais ? Si la réponse est oui, le montant est trop élevé ou le titre trop risqué pour vous. La baisse maximale passée de chaque société est un repère simple pour dimensionner sa mise.",
+   "retenir": "Avant de regarder ce qu'une action peut rapporter, regardez ce qu'elle a déjà fait perdre en chemin, et si vous l'auriez supporté.",
+   "limites": [
+    "La baisse maximale est mesurée sur les cours de clôture ajustés ; un titre peu échangé peut afficher des écarts amplifiés.",
+    "Une forte baisse passée ne prédit ni une nouvelle baisse ni un rebond.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Quelle baisse seriez-vous capable de regarder sans vendre : 10 %, 30 %, 50 % ?",
+   "verif": {
+    "q": "Une action perd 50 %. De combien doit-elle remonter pour retrouver son cours de départ ?",
+    "choix": [
+     "50 %",
+     "75 %",
+     "100 %"
+    ],
+    "bonne": 2,
+    "explication": "De 100 à 50, puis de 50 à 100 : il faut doubler. C'est pourquoi les fortes baisses sont si longues à effacer."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Fiche décision",
+     "description": "Sept repères par société, dont sa pire baisse.",
+     "url": "ma-brvm.html?outil=fiche"
+    },
+    {
+     "type": "Outil",
+     "titre": "Mon portefeuille",
+     "description": "Le test de résistance de vos propres lignes.",
+     "url": "ma-brvm.html#portefeuille"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-un-titre-ou-cinq-diversifier",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Un titre ou cinq : le risque de perdre sur un an passe de 24 % à 13 %, et le pire cas de −66 % à −43 %",
+   "resume": "Diversifier ne supprime pas le risque, mais change sa taille. Ce que donne, depuis 2023, un titre pris seul, un panier de cinq et un panier de dix sur toutes les périodes d'un an.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "diversification",
+    "risque",
+    "fonds commun de placement"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "EFA a tiré au hasard des actions et des dates d'achat depuis 2023, puis regardé le résultat un an plus tard. Avec une seule action, on finit en perte dans 24 % des cas, et le pire résultat observé est de −66 %. Avec cinq actions à parts égales, la perte arrive dans 13 % des cas et le pire résultat est de −43 %. Avec dix actions : 10 % des cas, pire résultat −28 %. Dans un mauvais scénario (un cas sur vingt), la perte passe de −33 % avec un titre à −9 % avec cinq et −5 % avec dix.",
+   "chiffres": [
+    {
+     "valeur": "24 % → 13 %",
+     "libelle": "risque de perdre sur un an : une action seule, puis cinq",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "−66 % → −43 %",
+     "libelle": "pire résultat sur un an : une action seule, puis cinq",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "−33 % → −5 %",
+     "libelle": "mauvais scénario (un cas sur vingt) : une action, puis dix",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Les sociétés ne connaissent pas leurs difficultés en même temps : la chute de l'une est amortie par les autres.",
+    "Le gain attendu ne baisse pas quand on répartit : ce sont surtout les extrêmes, bons et mauvais, qui se resserrent.",
+    "Cinq banques ne valent pas cinq secteurs : des sociétés du même métier ont tendance à monter et baisser ensemble."
+   ],
+   "mot": {
+    "terme": "Diversification",
+    "definition": "Répartir son argent sur plusieurs sociétés et plusieurs secteurs pour ne pas dépendre du sort d'une seule."
+   },
+   "change": "Si vous n'avez qu'une ou deux lignes, c'est le sort de ces sociétés qui décide du vôtre, pas celui de la Bourse. Avant d'ajouter de l'argent sur un titre que vous détenez déjà, demandez-vous s'il ne vaut pas mieux ouvrir une nouvelle ligne dans un autre secteur. Avec un petit capital, les fonds communs de placement proposés par les sociétés de gestion permettent d'obtenir un panier large en une seule souscription.",
+   "retenir": "On ne diversifie pas pour gagner plus, mais pour qu'une seule mauvaise nouvelle ne décide pas de tout.",
+   "limites": [
+    "Simulation sur des paniers tirés au hasard, cours seuls, parts égales, 40 000 tirages : un ordre de grandeur, pas une mesure exacte.",
+    "La diversification réduit le risque propre à chaque société, pas celui d'une baisse de tout le marché.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Combien de sociétés et combien de secteurs différents y a-t-il dans votre portefeuille ?",
+   "verif": {
+    "q": "Que change surtout la diversification ?",
+    "choix": [
+     "Elle garantit un gain",
+     "Elle réduit la fréquence et l'ampleur des mauvaises surprises",
+     "Elle supprime les frais"
+    ],
+    "bonne": 1,
+    "explication": "Répartir resserre les extrêmes : moins de pertes, et des pertes moins lourdes. Elle ne protège pas d'une baisse générale."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Mon portefeuille",
+     "description": "Concentration et test de résistance de vos lignes.",
+     "url": "ma-brvm.html#portefeuille"
+    },
+    {
+     "type": "Outil",
+     "titre": "Comparer",
+     "description": "Deux ou trois actions sur la même période.",
+     "url": "ma-brvm.html#comparer"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-liquidite-cinq-societes-45-pourcent",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Cinq sociétés font 45 % des échanges de la BRVM : un gain sur le papier n'est pas un gain en poche",
+   "resume": "Le jour où l'on veut vendre, il faut un acheteur. Sonatel s'échange pour 232 millions de F par jour, Unilever CI pour moins d'un million. Pourquoi la liquidité se regarde avant le palmarès.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM",
+    "Sonatel",
+    "Société Générale Côte d'Ivoire",
+    "Unilever Côte d'Ivoire",
+    "Bridge Bank Group Côte d'Ivoire"
+   ],
+   "notions": [
+    "liquidité",
+    "ordre à cours limité",
+    "volume"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Sur les douze derniers mois, cinq sociétés concentrent 45 % des montants échangés chaque jour à la BRVM : Sonatel (232 millions de F par jour en médiane), Société Générale CI (103 millions), Bridge Bank Group CI (84 millions), Bank Of Africa Côte d'Ivoire (75 millions) et la SIB (55 millions). L'action médiane s'échange pour 16 millions de F par jour. À l'autre bout, Unilever CI, plus forte hausse de cours de la période (+526 %), ne s'échange que pour 0,8 million de F par jour, et Sicor pour 0,1 million.",
+   "chiffres": [
+    {
+     "valeur": "45 %",
+     "libelle": "des échanges quotidiens sont concentrés sur cinq sociétés",
+     "periode": "12 derniers mois",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "16 M F",
+     "libelle": "montant échangé par jour pour l'action médiane de la cote",
+     "periode": "12 derniers mois",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "0,8 M F",
+     "libelle": "échangés par jour sur Unilever CI, dont le cours a gagné 526 %",
+     "periode": "12 derniers mois",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Un cours affiché est le prix du dernier échange, parfois sur quelques titres seulement. Il ne dit pas à quel prix on vendrait une grosse quantité.",
+    "Quand peu de titres s'échangent, un ordre de vente important fait baisser le cours ou reste plusieurs jours sans contrepartie.",
+    "Les fortes hausses sur des titres peu échangés sont difficiles à saisir à l'achat comme à la vente."
+   ],
+   "mot": {
+    "terme": "Liquidité",
+    "definition": "La facilité avec laquelle on peut acheter ou vendre un titre rapidement, sans faire bouger son prix."
+   },
+   "change": "Avant d'acheter, comparez le montant que vous comptez investir à ce qui s'échange chaque jour sur le titre. Si votre ligne pèse plusieurs jours d'échanges, vous ne sortirez ni vite ni au prix affiché. Cela ne condamne pas les petites valeurs : cela invite à y mettre des montants que l'on peut laisser longtemps, et à passer des ordres à cours limité plutôt qu'au marché.",
+   "retenir": "Regardez la liquidité avant le palmarès : une hausse ne vaut que si l'on peut vendre au prix affiché.",
+   "limites": [
+    "Médiane des montants échangés par séance sur un an, retenue pour écarter quelques volumes aberrants dans les données.",
+    "La liquidité d'un titre varie : elle peut augmenter après un fractionnement ou une forte actualité.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Si vous deviez vendre toutes vos actions cette semaine, trouveriez-vous des acheteurs au cours affiché ?",
+   "verif": {
+    "q": "Unilever CI affiche +526 % mais s'échange très peu. Qu'est-ce que cela implique ?",
+    "choix": [
+     "Que le gain est garanti",
+     "Qu'il a été difficile d'acheter et qu'il serait long de vendre une grosse ligne à ce prix",
+     "Que l'action est suspendue"
+    ],
+    "bonne": 1,
+    "explication": "Un cours peut monter fortement sur de petits volumes. Le gain affiché n'est encaissé que si l'on trouve un acheteur."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Fiche décision",
+     "description": "Montant échangé par jour et délai de revente, société par société.",
+     "url": "ma-brvm.html?outil=fiche"
+    },
+    {
+     "type": "Outil",
+     "titre": "Trier par critères",
+     "description": "Ne garder que les sociétés suffisamment échangées.",
+     "url": "ma-brvm.html#criteres"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-moins-d-une-action-sur-deux-bat-l-indice",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "Moins d'une action sur deux a fait mieux que l'indice : 19 sur 44 depuis 2023",
+   "resume": "Choisir ses actions, c'est un peu moins d'une chance sur deux de battre le marché. Les écarts entre sociétés sont immenses : de +585 % à −36 %. Ce que cela dit du choix entre panier large et sélection.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM",
+    "Bank Of Africa Côte d'Ivoire",
+    "Unilever Côte d'Ivoire",
+    "Bank Of Africa Mali",
+    "Oragroup"
+   ],
+   "notions": [
+    "indice boursier",
+    "sélection de titres",
+    "performance relative"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "Du 2 janvier 2023 au 20 novembre 2026, l'indice BRVM Composite a gagné 139 %. Sur les 44 sociétés cotées toute la période, 19 ont fait mieux en cours, 25 moins bien. En comptant les dividendes des sociétés face à l'indice de cours, elles sont 23 sur 44. Les écarts sont considérables : Bank Of Africa Côte d'Ivoire +585 % dividendes compris, Unilever CI +526 %, Bank Of Africa Mali +515 % ; à l'opposé Oragroup −36 %, Bernabé CI −5 %, Palm CI −3 %.",
+   "chiffres": [
+    {
+     "valeur": "19 sur 44",
+     "libelle": "actions ont fait mieux que l'indice, en cours seuls",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+585 % à −36 %",
+     "libelle": "écart entre la meilleure et la moins bonne action, dividendes compris",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+139 %",
+     "libelle": "progression de l'indice BRVM Composite",
+     "periode": "2 janv. 2023 au 20 nov. 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "L'indice est pondéré par la taille des sociétés : quelques grandes valeurs en forte hausse suffisent à le tirer au-dessus de la majorité des titres.",
+    "Les gagnants d'une période ne sont connus qu'après coup. Les repérer d'avance demande du travail sur les comptes, et une part de chance.",
+    "Une sélection de quelques titres peut faire beaucoup mieux que le marché, ou beaucoup moins bien : c'est le prix du choix."
+   ],
+   "mot": {
+    "terme": "Indice boursier",
+    "definition": "Un chiffre qui résume l'évolution d'un ensemble d'actions. Le BRVM Composite suit toutes les sociétés cotées, pondérées par leur taille."
+   },
+   "change": "Deux chemins s'offrent à vous. Viser le marché, avec un panier large ou un fonds, et accepter son résultat. Ou sélectionner quelques sociétés, en sachant qu'un peu plus d'une sur deux a fait moins bien que l'indice. Le second chemin n'a de sens que si vous êtes prêt à lire des comptes et à suivre vos dossiers. Dans les deux cas, comparez toujours votre résultat à celui du marché : gagner 60 % quand l'indice fait 139 %, c'est avoir pris un risque sans en être payé.",
+   "retenir": "Un résultat ne se juge pas seul : on le compare toujours à ce que le marché a fait sur la même période.",
+   "limites": [
+    "La comparaison en cours seuls est la plus juste : l'indice Composite ne compte pas les dividendes. L'indice Total Return, qui les compte, n'existe que depuis le 2 janvier 2026.",
+    "Les noms cités sont des constats sur le passé, pas des recommandations.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Votre portefeuille a-t-il fait mieux ou moins bien que le marché depuis votre premier achat ?",
+   "verif": {
+    "q": "Pourquoi une majorité d'actions peut-elle faire moins bien que l'indice ?",
+    "choix": [
+     "Parce que l'indice est faux",
+     "Parce que l'indice est tiré par quelques grandes sociétés en forte hausse",
+     "Parce que les dividendes sont comptés deux fois"
+    ],
+    "bonne": 1,
+    "explication": "Un indice pondéré par la taille reflète surtout ses plus grosses valeurs. Leur hausse peut dépasser celle de la plupart des autres titres."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Comparer",
+     "description": "Deux ou trois actions face au marché, sur la même période.",
+     "url": "ma-brvm.html#comparer"
+    },
+    {
+     "type": "Outil",
+     "titre": "Fiche décision",
+     "description": "L'écart de chaque société avec l'indice.",
+     "url": "ma-brvm.html?outil=fiche"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
+   "origine": "dossier « Les leçons de la BRVM », calculs Ma BRVM du 2026-11-21",
+   "publication": "2026-11-21",
+   "maj": "2026-11-21",
+   "id": "2026-11-21-plus-forte-baisse-depuis-2023",
+   "categorie": "brvm",
+   "rubrique": "Les leçons de la BRVM",
+   "titre": "La BRVM traverse sa plus forte baisse depuis 2023 : −11,3 % en deux mois, après +139 % en quatre ans",
+   "resume": "Depuis son sommet du 14 septembre 2026, le marché recule. C'est le repli le plus marqué de notre historique, et l'année reste à +43 %. Comment lire une baisse sans céder à la panique ni la nier.",
+   "pays": [
+    "UEMOA"
+   ],
+   "entites": [
+    "BRVM"
+   ],
+   "notions": [
+    "correction",
+    "prise de bénéfices",
+    "horizon de placement"
+   ],
+   "evenement": "2026-11-20",
+   "evenement_label": "Calcul arrêté à la séance du 20 novembre 2026",
+   "fait": "L'indice BRVM Composite a touché 555,90 points le 14 septembre 2026. Le 20 novembre, il clôture à 492,89 points, soit −11,3 % : c'est la plus forte baisse depuis un sommet de tout notre historique. Les six replis précédents de plus de 4 % étaient restés entre −4 % et −6 %, et le marché avait retrouvé son niveau en deux à sept mois. Malgré ce recul, l'indice gagne encore 42,6 % depuis le 1er janvier 2026, et 49,2 % dividendes réinvestis (Composite Total Return), après +3,8 % en 2023, +28,9 % en 2024 et +25,3 % en 2025.",
+   "chiffres": [
+    {
+     "valeur": "−11,3 %",
+     "libelle": "recul de l'indice BRVM Composite depuis son sommet du 14 septembre 2026",
+     "periode": "14 sept. au 20 nov. 2026",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "+42,6 %",
+     "libelle": "progression de l'indice depuis le 1er janvier, malgré ce recul",
+     "periode": "2026, au 20 nov.",
+     "calcul_efa": true
+    },
+    {
+     "valeur": "−4 % à −6 %",
+     "libelle": "ampleur des six replis précédents, effacés en deux à sept mois",
+     "periode": "2023 à 2026",
+     "calcul_efa": true
+    }
+   ],
+   "mecanisme": [
+    "Après trois années de forte hausse, une partie des investisseurs prend ses bénéfices : les ventes pèsent sur les cours.",
+    "Une baisse de 11 % après une hausse de plus de 50 % dans l'année ramène l'indice à son niveau de l'été, pas à celui de janvier.",
+    "Personne ne sait si le creux est atteint : les replis précédents ne disent rien de la durée de celui-ci."
+   ],
+   "mot": {
+    "terme": "Correction",
+    "definition": "Un recul marqué des cours après une période de hausse. On parle en général de correction à partir de 10 % de baisse depuis un sommet."
+   },
+   "change": "Une baisse ne se lit pas de la même façon selon votre situation. Si vous avez besoin de cet argent bientôt, la question n'est pas le marché mais votre durée de placement, et elle se posait déjà avant. Si vous investissez pour plusieurs années, ce recul fait partie du parcours : quelqu'un qui verse chaque mois achète en ce moment moins cher qu'en septembre. Dans tous les cas, évitez de décider un jour de forte baisse : relisez pourquoi vous aviez acheté.",
+   "retenir": "Une baisse de 11 % après 139 % de hausse est une information, pas un ordre de vendre : votre durée de placement décide, pas la séance du jour.",
+   "limites": [
+    "Situation arrêtée au 20 novembre 2026 ; la baisse est en cours et peut s'accentuer ou s'effacer.",
+    "Les replis précédents se sont produits dans un marché porteur : rien n'assure que celui-ci suivra le même chemin.",
+    "L'historique étudié commence le 2 janvier 2023 et ne couvre qu'un marché en hausse (+139 % pour l'indice). Ces chiffres décrivent ces années, pas l'avenir."
+   ],
+   "question": "Si vos actions baissaient encore de 10 %, que feriez-vous, et pourquoi ?",
+   "verif": {
+    "q": "L'indice a perdu 11,3 % depuis septembre. Que peut-on en conclure sur l'année 2026 ?",
+    "choix": [
+     "Que l'année est perdante",
+     "Que l'année reste en forte hausse (+42,6 %) malgré ce recul",
+     "Que tous les titres ont baissé de 11,3 %"
+    ],
+    "bonne": 1,
+    "explication": "Le recul se mesure depuis le sommet de septembre. Depuis le 1er janvier, l'indice gagne encore 42,6 %, et chaque action a son propre parcours."
+   },
+   "actions": [
+    {
+     "type": "Outil",
+     "titre": "Combien de temps garder ?",
+     "description": "Le pire et le meilleur selon la durée.",
+     "url": "ma-brvm.html#duree"
+    },
+    {
+     "type": "Outil",
+     "titre": "Investir chaque mois",
+     "description": "Acheter aussi pendant les baisses.",
+     "url": "ma-brvm.html#mensuel"
+    }
+   ],
+   "sources": [
+    {
+     "titre": "Cours de clôture officiels des actions cotées",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/cours-actions/0",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    },
+    {
+     "titre": "Indices de la BRVM (Composite, Composite Total Return)",
+     "organisme": "BRVM",
+     "date": "20 nov. 2026",
+     "url": "https://www.brvm.org/fr/indices",
+     "consulte_le": "2026-11-21",
+     "type": "primaire"
+    }
+   ]
+  },
+  {
+   "statut": "publié",
+   "une": false,
+   "corrections": [],
+   "auteur": "Rédaction EFA",
    "origine": "édition du matin du 2026-11-21",
    "publication": "2026-11-21",
    "maj": "2026-11-21",
