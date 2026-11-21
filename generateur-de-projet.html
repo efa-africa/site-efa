@@ -381,6 +381,37 @@ function H(){S.style.setProperty("--dci-h",Math.max(460,innerHeight-(S.getBoundi
 H();addEventListener("load",H);setTimeout(H,800);addEventListener("resize",function(){if(innerWidth!==w){w=innerWidth;H();}});
 b.addEventListener("click",function(e){e.preventDefault();var x=document.getElementById("explorer"),hh=h?h.offsetHeight:0;scrollTo({top:scrollY+x.getBoundingClientRect().top-hh-8,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});});})();</script>
 
+<style>
+/* Déclic : proposition de valeur et bouton « Lancer » toujours à portée */
+.g-valeur{display:none}
+@media(min-width:960px){
+ .ex-grille{align-items:stretch}
+ .zone{display:flex;flex-direction:column;gap:18px}
+ #gp .guide{position:static}
+ .g-valeur{display:block;position:sticky;top:96px;background:#0B1220;color:#C9D1DE;border-radius:var(--r-carte);padding:26px 28px}
+ .g-valeur .gv-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#F09680}
+ .g-valeur h3{margin:10px 0 0;font-family:"Libre Baskerville",Georgia,serif;font-size:26px;line-height:1.2;color:#fff}
+ .g-valeur ul{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+ .g-valeur li{position:relative;padding-left:34px;font-size:16px;line-height:1.4}
+ .g-valeur li b{color:#fff}
+ .g-valeur li:before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:#DA3C1B;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+ .gv-p{display:flex;gap:8px;margin:20px 0 0;flex-wrap:wrap}.gv-p span{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#F5EFE2;color:#0B1220;border-radius:999px;padding:7px 12px}
+ .g-valeur .lancer{margin-top:18px}
+ .gv-n{margin:12px 0 0;font-size:13.5px;color:#8E98AA}
+ .reglages{max-height:calc(100vh - 100px);overflow:auto;overscroll-behavior:contain}
+ .reglages #lancer{position:sticky;bottom:0;z-index:2;box-shadow:0 -14px 16px var(--papier)}
+}
+/* téléphone : barre « Lancer » quand le bouton n’est pas à l’écran */
+.gv-barre{position:fixed;left:12px;right:88px;bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:60;display:none}
+.gv-barre.on{display:block}.gv-barre .lancer{margin:0;box-shadow:0 14px 30px -8px rgba(11,18,32,.55)}
+@media(min-width:960px){.gv-barre{display:none!important}}
+</style>
+<div class="gv-barre" id="gv-barre" aria-hidden="true"><button type="button" class="lancer" tabindex="-1" onclick="document.getElementById('lancer').click()">Lancer l’analyse →</button></div>
+<script>document.addEventListener('DOMContentLoaded',function(){var ex=document.getElementById('explorer'),l=document.getElementById('lancer'),r=document.getElementById('resultats'),a=document.getElementById('analyse'),v=document.getElementById('g-valeur'),bar=document.getElementById('gv-barre');if(!ex||!l||!('IntersectionObserver' in window))return;
+var inEx=false,lVis=false;function maj(){var fini=(r&&!r.hidden)||(a&&!a.hidden);if(v)v.style.visibility=fini?'hidden':'';var on=inEx&&!lVis&&!fini;bar.classList.toggle('on',on);bar.setAttribute('aria-hidden',on?'false':'true');}
+new IntersectionObserver(function(e){inEx=e[0].isIntersecting;maj();},{rootMargin:'-120px 0px -40% 0px'}).observe(ex);
+new IntersectionObserver(function(e){lVis=e[0].isIntersecting;maj();}).observe(l);
+new MutationObserver(maj).observe(r,{attributes:true,attributeFilter:['hidden']});if(a)new MutationObserver(maj).observe(a,{attributes:true,attributeFilter:['hidden']});});</script>
 <section class="explorer" id="explorer" aria-label="Explorer des idées" data-garde><div class="wrap ex-grille">
   <aside class="reglages" aria-label="Vos choix" data-garde>
     <p class="prix-bp"><b>Les idées sont gratuites.</b> Business plan de démarrage&nbsp;: <strong>dès 5&nbsp;000&nbsp;F</strong>, prix de lancement <s>10&nbsp;000&nbsp;F</s></p>
@@ -423,6 +454,19 @@ b.addEventListener("click",function(e){e.preventDefault();var x=document.getElem
       <button type="button" class="lancer brille" onclick="document.getElementById('lancer').click()">Lancer l’analyse →</button>
       <p class="g-plan">Vous avez déjà commandé un business plan&nbsp;? <a href="mon-espace-business-plan.html">Ouvrir mon espace avec mon code</a></p>
     </div>
+    <aside class="g-valeur" id="g-valeur" aria-label="Ce que Déclic vous donne">
+      <span class="gv-k">Ce que Déclic vous donne</span>
+      <h3>Une idée à votre mesure, et un plan pour la tester sans tout risquer.</h3>
+      <ul>
+        <li><b>Une piste concrète</b>, choisie parmi 174 fiches projets selon votre budget.</li>
+        <li><b>Le premier test</b> à faire avant de dépenser tout votre argent.</li>
+        <li><b>Les pièges courants</b> et ce qu’il faut vérifier sur votre marché.</li>
+        <li><b>Une répartition</b> qui garde votre réserve de sécurité.</li>
+      </ul>
+      <p class="gv-p"><span>Gratuit</span><span>Sans compte</span><span>Dès 1 minute</span></p>
+      <button type="button" class="lancer" onclick="document.getElementById('lancer').click()">Lancer l’analyse →</button>
+      <p class="gv-n">Des idées pour décider, jamais des gains promis.</p>
+    </aside>
     <div class="analyse" id="analyse" hidden aria-live="polite">
       <div class="an-t"><span class="anneau" aria-hidden="true"></span><b>Nous croisons votre budget avec nos fiches projets</b></div>
       <div class="an-piste"><i id="an-barre"></i></div>
