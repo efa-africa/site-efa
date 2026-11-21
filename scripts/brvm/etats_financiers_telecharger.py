@@ -98,13 +98,17 @@ def main():
     s = requests.Session()
     s.headers.update(ENTETES)
     for typ in a.types.split(","):
-        page, nouveaux_type = 0, 0
+        page, nouveaux_type, precedents = 0, 0, None
         while True:
             if a.pages and page >= a.pages:
                 break
             items = liste(s, typ, page)
             if not items:
                 break
+            urls = [u for _, u in items]
+            if page and urls == precedents:   # au-delà de la dernière page, le site renvoie la même liste
+                break
+            precedents = urls
             nouveaux = 0
             for titre, url in items:
                 pid = url.rsplit("/", 1)[-1]

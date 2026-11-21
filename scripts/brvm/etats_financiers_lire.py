@@ -34,8 +34,9 @@ MONTANT = re.compile(r"^\(?-?\d{1,3}(?: \d{3})*(?:,\d+)?\)?$")
 
 def montant(t):
     neg = t.startswith("(") or t.startswith("-")
-    v = t.strip("()-").replace(" ", "").split(",")[0]
-    return -int(v) if neg else int(v)
+    v = t.strip("()-").replace(" ", "")
+    x = float(v.replace(",", ".")) if "," in v else int(v)
+    return -x if neg else x
 
 
 def montants(segment):
@@ -73,7 +74,13 @@ def lire(texte):
             m = re.match(r"\s*(?:[A-Z]{2}\s+)?(?:" + motif + r")", bas)  # libellé en début de ligne
             if not m:
                 continue
-            suite = re.split(r"\s[A-Za-zÀ-ÿ]{2,}", l[m.end():], maxsplit=1)[0]  # s'arrête à la colonne de texte suivante
+            reste = l[m.end():]
+            d = re.search(r"\s{2,}[(\-]?\d", reste)  # le libellé peut continuer (« de l'ensemble consolidé ») : chiffres après 2 espaces
+            if not d or re.search(r"\d", reste[:d.start()]):
+                continue
+            suite = re.split(r"\s[A-Za-zÀ-ÿ]{2,}", reste[d.start():], maxsplit=1)[0]  # s'arrête à la colonne de texte suivante
+            if re.match(r"\s*\d{1,2}(\.\d+)?\s{2,}", suite) and len(montants(suite)) >= 3:
+                suite = re.sub(r"^\s*\d{1,2}(\.\d+)?", "", suite)   # numéro de note
             vals = montants(suite)
             if len(vals) >= 2:
                 res[cle] = {"n": vals[0], "n_1": vals[1], "methode": "libellé"}
@@ -100,7 +107,10 @@ def deux_nombres(t):
         if x:
             nombres.append(x)
     if len(nombres) >= 2:
-        return [int(re.sub(r"[^\d]", "", n)) * (-1 if n.lstrip().startswith("-") else 1) for n in nombres[:2]], True
+        try:
+            return [int(re.sub(r"[^\d]", "", n)) * (-1 if n.lstrip().startswith("-") else 1) for n in nombres[:2]], True
+        except ValueError:
+            return [], False
     if not nombres:
         return [], False
     g = nombres[0].split()
@@ -111,8 +121,11 @@ def deux_nombres(t):
         droite.insert(0, g.pop())
     if not g or not droite:
         return [], False
-    f = lambda xs: int("".join(xs).replace("-", "")) * (-1 if xs[0].startswith("-") else 1)
-    return [f(g), f(droite)], False
+    f = lambda xs: int(re.sub(r"\D", "", "".join(xs))) * (-1 if xs[0].startswith("-") else 1)
+    try:
+        return [f(g), f(droite)], False
+    except ValueError:
+        return [], False
 
 
 def lire_ocr(texte, res):
@@ -153,9 +166,9 @@ def symboles():
 
 def trouver_symbole(societe, noms, alias):
     s = " ".join(norm(societe))
-    for k, v in alias.items():
-        if k in s:
-            return v
+    for k in sorted(alias, key=len, reverse=True):  # « SONATEL » avant « ONATEL »
+        if (" " + k.strip() + " ") in (" " + s + " ") or (len(k.strip()) > 6 and k.strip() in s):
+            return alias[k]
     mots = set(norm(societe)) - {"CI", "SA", "BF", "SN", "ML", "NG", "BN", "TG", "DE", "LA", "DU"}
     meilleur, score = None, 0
     for sym, ens in noms.items():
@@ -172,11 +185,11 @@ def trouver_symbole(societe, noms, alias):
     return meilleur if score >= 0.6 else None
 
 
-ALIAS = {"AFRICA GLOBAL": "SDSC", "AFRICA GLOGAL": "SDSC", "TRACTAFRIC": "PRSC", "ERIUM": "SIVC", "AIR LIQUIDE": "SIVC",
+ALIAS = {"BANQUE INTERNATIONALE POUR L INDUSTRIE ET LE COMMERCE DU BENIN": "BICB", "BOA BURKINA": "BOABF", "BOA SN": "BOAS", "BOLLORE": "SDSC", "LNB": "LNBB", "AFRICA GLOBAL": "SDSC", "AFRICA GLOGAL": "SDSC", "TRACTAFRIC": "PRSC", "ERIUM": "SIVC", "AIR LIQUIDE": "SIVC",
          "CORIS BANK": "CBIBF", "ONATEL": "ONTBF", "SONATEL": "SNTS", "BOA BF": "BOABF", "BOA CI": "BOAC", "BOA SENEGAL": "BOAS",
          "BOA S ": "BOAS", "BOA MALI": "BOAM", "BOA ML": "BOAM", "BOA NIGER": "BOAN", "BOA NG": "BOAN", "BOA BENIN": "BOAB", "BOA BN": "BOAB",
          "ECOBANK TRANSNATIONAL": "ETIT", "ETI ": "ETIT", "ECOBANK CI": "ECOC", "ECOBANK COTE": "ECOC", "SOCIETE GENERALE COTE": "SGBC",
-         "SGB CI": "SGBC", "SGCI": "SGBC", "BICI": "BICC", "BIIC": "BICB", "NSIA BANQUE": "NSBC", "ORANGE COTE": "ORAC", "ORANGE CI": "ORAC",
+         "SGB CI": "SGBC", "SGCI": "SGBC", "BICICI": "BICC", "BICI": "BICC", "BIIC": "BICB", "NSIA BANQUE": "NSBC", "ORANGE COTE": "ORAC", "ORANGE CI": "ORAC",
          "ORAGROUP": "ORGT", "SIB ": "SIBC", "SOCIETE IVOIRIENNE DE BANQUE": "SIBC", "VIVO ENERGY": "SHEC", "TOTALENERGIES MARKETING SENEGAL": "TTLS",
          "TOTAL SENEGAL": "TTLS", "TOTALENERGIES MARKETING COTE": "TTLC", "TOTAL CI": "TTLC", "SONOCO": "SEMC", "EVIOSYS": "SEMC", "SIEM": "SEMC",
          "LOTERIE NATIONALE": "LNBB", "LONAB": "LNBB", "BRIDGE BANK": "BBGC", "SUCRIVOIRE": "SCRC", "SODECI": "SDCC", "SODE CI": "SDCC",

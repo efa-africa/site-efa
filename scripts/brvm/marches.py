@@ -2,7 +2,7 @@
 """EFA · Onglet Marchés : fabrique les fichiers légers lus par les pages (data/marches/).
 Lancé après chaque collecte (workflow « Collecte BRVM »). Aucun cours en séance : seulement des clôtures.
 Contrôles : sources présentes, texte_efa vide sur les titres bloqués (SNTS, ORAC), au moins 40 titres par séance."""
-import csv, json, os, re, sys, datetime, collections
+import csv, json, math, os, re, sys, datetime, collections
 
 RACINE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 D = lambda *p: os.path.join(RACINE, *p)
@@ -183,31 +183,94 @@ def main():
         pass
     MULT = {'FCFA': 1, 'milliers FCFA': 1e3, 'millions FCFA': 1e6, '': 1}
 
-    def resultats(code):
-        """Exercices annuels (n et n-1 de chaque publication ; la plus récente l'emporte), semestres, et documents.
-        Les chiffres lus sur un scan (lecture optique) ne sont pas affichés : seul le document est listé."""
+    # Unités : les documents mélangent FCFA, milliers, millions et milliards, sans toujours le dire.
+    # Les montants des lignes à code SYSCOHADA sont en FCFA. Pour les autres, on cherche le multiplicateur qui place
+    # les grands postes (chiffre d'affaires, PNB, bilan, capitaux propres) dans la fourchette d'une société cotée,
+    # et on applique aux résultats le multiplicateur du chiffre d'affaires du même document.
+    GRANDS = ('chiffre_affaires', 'produit_net_bancaire', 'total_bilan', 'capitaux_propres', 'credits_clientele', 'depots_clientele')
+    BORNES = {'chiffre_affaires': (2e9, 5e12), 'produit_net_bancaire': (2e9, 2e12), 'total_bilan': (5e9, 3e13), 'capitaux_propres': (1e9, 5e12),
+              'credits_clientele': (5e9, 2e13), 'depots_clientele': (5e9, 2e13)}
+
+    def echelle(chiffres, cle_v):
+        out, k_ref = {}, None
+        for c, v in chiffres.items():
+            x = v.get(cle_v)
+            if x is None:
+                continue
+            if v.get('methode', '').startswith('code'):
+                out[c] = x
+                continue
+            if c in GRANDS:
+                lo, hi = BORNES[c]
+                ks = [k for k in (1, 1e3, 1e6, 1e9) if lo <= abs(x) * k <= hi]
+                if len(ks) == 1:
+                    out[c] = round(x * ks[0])
+                    if c in ('chiffre_affaires', 'produit_net_bancaire') or k_ref is None:
+                        k_ref = (ks[0], abs(x))
+        for c, v in chiffres.items():
+            x = v.get(cle_v)
+            if c in out or x is None or c in GRANDS or v.get('methode', '').startswith('code'):
+                continue
+            if k_ref and abs(x) <= k_ref[1] * 1.2:
+                out[c] = round(x * k_ref[0])
+        # garde-fous : un chiffre d'affaires nul n'est pas une donnée ; un résultat ne dépasse pas le chiffre d'affaires
+        for c in ('chiffre_affaires', 'produit_net_bancaire'):
+            if out.get(c) == 0:
+                out.pop(c)
+        base = out.get('chiffre_affaires') or out.get('produit_net_bancaire')
+        for c in ('resultat_net', 'resultat_exploitation', 'excedent_brut_exploitation'):
+            if c not in out:
+                continue
+            x = abs(out[c])
+            if x == 0:   # un résultat exactement nul est presque toujours une case vide lue comme zéro
+                out.pop(c)
+            elif base and not (base * 0.0005 <= x <= base * 1.05 or x == 0):
+                out.pop(c)
+            elif not base and (x > 6e10 or out.get('total_bilan') and x > 0.1 * out['total_bilan']):
+                out.pop(c)
+        return out
+
+    def resultats(code, cap):
+        """Exercices annuels lus dans les états financiers (n et n-1 de chaque publication ; la plus récente l'emporte),
+        dernier semestre, et documents. Les chiffres lus sur un scan (lecture optique) ne sont pas affichés."""
         ex, sem, docs = {}, [], []
+        DEVISE_ETRANGERE = {'ETIT'}   # Ecobank Transnational publie en dollars : pas de lecture automatique
         for p in sorted(RES.get(code, []), key=lambda x: x.get('date_publication', '')):
             docs.append({'titre': p['document'], 'date': p.get('date_publication'), 'pdf': (p.get('pdf') or [None])[0], 'type': p['type']})
-            if p.get('texte_ocr') or not p.get('chiffres'):
+            if p.get('texte_ocr') or not p.get('chiffres') or code in DEVISE_ETRANGERE:
                 continue
-            m = re.search(r'(\d{4})', p.get('periode') or '')
+            per = (p.get('periode') or '').lower()
+            m = re.search(r'(\d{4})', per) or re.search(r'(20\d{2})', p.get('document') or '')
             if not m:
                 continue
-            an, k = int(m.group(1)), MULT.get(p.get('unite', ''), 1)
-            val = lambda v: round(v * k) if v is not None else None
-            if (p.get('periode') or '').lower().startswith('exercice'):
+            an = int(m.group(1))
+            if p['type'] == 'etats-financiers' and 'semestre' not in per and 'trimestre' not in per and 'semestre' not in (p.get('document') or '').lower():
                 for a, cle in ((an, 'n'), (an - 1, 'n_1')):
                     e = ex.setdefault(a, {})
-                    for c, v in p['chiffres'].items():
-                        if v.get(cle) is not None and (cle == 'n' or c not in e):
-                            e[c] = val(v[cle])
+                    for c, x in echelle(p['chiffres'], cle).items():
+                        e.setdefault(c, []).append((x, p.get('date_publication', ''), cle == 'n'))
                     if cle == 'n':
                         e['_source'] = {'titre': p['document'], 'date': p.get('date_publication'), 'pdf': (p.get('pdf') or [None])[0]}
-            elif 'semestre' in (p.get('periode') or '').lower():
-                sem.append({'periode': p['periode'], 'chiffres': {c: val(v['n']) for c, v in p['chiffres'].items()},
-                            'precedent': {c: val(v['n_1']) for c, v in p['chiffres'].items()}, 'date': p.get('date_publication'), 'pdf': (p.get('pdf') or [None])[0]})
-        return {'exercices': [dict(annee=a, **ex[a]) for a in sorted(ex)][-6:], 'semestres': sem[-2:], 'documents': list(reversed(docs))[:12]}
+            elif 'semestre' in per:
+                sem.append({'periode': p['periode'], 'chiffres': echelle(p['chiffres'], 'n'), 'precedent': echelle(p['chiffres'], 'n_1'),
+                            'date': p.get('date_publication'), 'pdf': (p.get('pdf') or [None])[0]})
+        def choisir(cands):
+            """Plusieurs documents donnent le même chiffre (exercice publié, puis repris l'année suivante) :
+            on garde la valeur la plus souvent trouvée (à 2 % près) ; à égalité, celle de l'exercice lui-même, la plus récente."""
+            best = max(cands, key=lambda v: (sum(1 for w in cands if abs(w[0] - v[0]) <= 0.02 * max(abs(v[0]), 1)), v[2], v[1]))
+            return best[0]
+        for a in ex:
+            for c in list(ex[a]):
+                if c != '_source':
+                    ex[a][c] = choisir(ex[a][c])
+        X = [dict(annee=a, **ex[a]) for a in sorted(ex) if any(k in ex[a] for k in ('chiffre_affaires', 'produit_net_bancaire', 'resultat_net'))]
+        cles = ('chiffre_affaires', 'produit_net_bancaire', 'resultat_net')
+        X = [e for i, e in enumerate(X) if not (i and all(e.get(k) == X[i - 1].get(k) for k in cles))]   # exercice mal daté (copie du précédent)
+        for i in range(len(X) - 1):   # un même chiffre d'affaires au franc près deux années de suite : valeur reprise par erreur
+            for k in ('chiffre_affaires', 'produit_net_bancaire'):
+                if X[i].get(k) is not None and X[i].get(k) == X[i + 1].get(k):
+                    X[i].pop(k)
+        return {'exercices': X[-6:], 'semestres': sem[-1:], 'documents': list(reversed(docs))[:12]}
 
     os.makedirs(os.path.join(SORTIE, 'fiches'), exist_ok=True)
     liste = []
@@ -236,7 +299,7 @@ def main():
                       'ajustements': AJUST.get(code, []),
                       'dividendes': DIV.get(code, []),
                       'ratios': dict(RAT['titres'].get(code) or {}, bulletin_du=RAT.get('bulletin_du')) if RAT['titres'].get(code) else None,
-                      'resultats': resultats(code),
+                      'resultats': resultats(code, cap or 1e11),
                       'historique': [[d, serie[d]['c'], serie[d]['v']] for d in dates],
                       'source': 's-brvm-cote'})
         json.dump(fiche, open(os.path.join(SORTIE, 'fiches', code + '.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
