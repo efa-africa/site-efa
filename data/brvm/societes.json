@@ -312,7 +312,7 @@
    "flottant_pct": null,
    "site": null,
    "texte_efa": null,
-   "texte_efa_bloque": true
+   "texte_efa_bloque": false
   },
   {
    "code": "ORGT",
@@ -520,7 +520,7 @@
    "flottant_pct": null,
    "site": null,
    "texte_efa": null,
-   "texte_efa_bloque": true
+   "texte_efa_bloque": false
   },
   {
    "code": "SOGC",

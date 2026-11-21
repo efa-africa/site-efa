@@ -8,8 +8,8 @@ Alimentée automatiquement chaque jour ouvré par le robot « Collecte BRVM » (
 - `syntheses/AAAA-MM-JJ.md` : synthèse de la semaine, produite chaque samedi.
 
 Source : BRVM, cours de clôture officiels publiés sur brvm.org. Usage pédagogique ;
-ne constitue pas un conseil en investissement. Sonatel est exclue des contenus publiés par EFA,
-pas de la base.
+ne constitue pas un conseil en investissement. Toutes les sociétés cotées, Sonatel et Orange CI comprises, figurent dans les contenus publiés par EFA
+(exclusion du groupe Orange levée le 21 novembre 2026).
 
 Relance manuelle : onglet Actions du dépôt → « Collecte BRVM » → Run workflow.
 Synthèse sur une autre période : `python scripts/brvm/semaine.py --fin AAAA-MM-JJ --jours 30`.
