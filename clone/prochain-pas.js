@@ -266,7 +266,7 @@
     return taille;
   }
   var TAILLE = null;
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { TAILLE = zone(); }); else TAILLE = zone();
+  if (typeof document === 'undefined') { /* contrôle hors navigateur */ } else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { TAILLE = zone(); }); else TAILLE = zone();
 
   window.EFA_PROCHAIN_PAS = { REP: REP, comprendre: comprendre, montant: montant, chercher: chercher, page: page, INTENTS: I };
 })();
