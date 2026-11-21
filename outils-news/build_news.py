@@ -225,6 +225,7 @@ CSS_HOME = """<style>
 .lettre{margin-block:28px 52px;background:var(--corail);color:#fff;border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
 .lettre p{color:#fff;max-width:52ch;font-size:17px}.lettre b{font-family:var(--f-display);font-size:21px;display:block}
 .lettre .bt{background:var(--nuit)}
+@media (max-width:720px){.nw-hero-img{object-position:49% 50%!important}}
 </style>"""
 
 def head(titre, desc, canon, pre, og_type="website", image=None, extra=""):
@@ -508,7 +509,7 @@ def page_home():
         f'<button type="button" data-c="{k}" aria-pressed="false">{typo(v)}</button>' for k, v in CATEGORIES)
     statiques = "".join(carte(a, pre) for a in PUB if a is not UNE)
     out += f"""<section class="nw-hero" data-photo aria-labelledby="nw-t">
-  <img class="nw-hero-img" src="illus/news-hero.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+  <img class="nw-hero-img" src="illus/news-hero.webp?v=2" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
   <div class="nw-hero-voile" aria-hidden="true"></div>
   <div class="nw-hero-txt">
     <p class="nw-k"><span class="pill-news">EFA | NEWS</span></p>
