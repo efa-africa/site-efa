@@ -5,48 +5,52 @@
    "societe": "TRACTAFRIC MOTORS CI",
    "document": "Etats financiers - 1er semestre 2026",
    "periode": "1er semestre 2026",
-   "date_publication": "2026-11-21",
+   "date_publication": "2026-10-29",
    "fiche": "https://www.brvm.org/fr/tractafric-motors-ci-etats-financiers-1er-semestre-2026",
    "pdf": [
     "https://www.brvm.org/sites/default/files/20261029_-_etats_financiers_-_1er_semestre_2026_-_tractafric_motors_ci.pdf"
    ],
-   "caracteres": 0
+   "caracteres": 3611,
+   "ocr": true
   },
   "africa-glogal-logistics-ci-attestation-des-commissaires-aux-comptes-etats-financiers-exercice-2025": {
    "type": "etats-financiers",
    "societe": "AFRICA GLOGAL LOGISTICS CI",
    "document": "Attestation des Commissaires Aux Comptes - Etats financiers - Exercice 2025",
    "periode": "Exercice 2025",
-   "date_publication": "2026-11-21",
+   "date_publication": "2026-10-05",
    "fiche": "https://www.brvm.org/fr/africa-glogal-logistics-ci-attestation-des-commissaires-aux-comptes-etats-financiers-exercice-2025",
    "pdf": [
     "https://www.brvm.org/sites/default/files/20261005_-_attestation_des_commissaires_aux_comptes_-_etats_financiers_-_exercice_2025_-_africa_glogal_logistics_ci.pdf"
    ],
-   "caracteres": 0
+   "caracteres": 2916,
+   "ocr": true
   },
   "africa-global-logistics-ci-etats-financiers-certifies-exercice-2025": {
    "type": "etats-financiers",
    "societe": "AFRICA GLOBAL LOGISTICS CI",
    "document": "Etats Financiers certifiés - Exercice 2025",
    "periode": "Exercice 2025",
-   "date_publication": "2026-11-21",
+   "date_publication": "2026-09-17",
    "fiche": "https://www.brvm.org/fr/africa-global-logistics-ci-etats-financiers-certifies-exercice-2025",
    "pdf": [
     "https://www.brvm.org/sites/default/files/20260917_-_etats_financiers_certifies_-_exercice_2025_-_africa_global_logistics_ci.pdf"
    ],
-   "caracteres": 64
+   "caracteres": 4123,
+   "ocr": true
   },
   "boa-bf-etats-financiers-1er-semestre-2026": {
    "type": "etats-financiers",
    "societe": "BOA BF",
    "document": "Etats financiers - 1er semestre 2026",
    "periode": "1er semestre 2026",
-   "date_publication": "2026-11-21",
+   "date_publication": "2026-08-05",
    "fiche": "https://www.brvm.org/fr/boa-bf-etats-financiers-1er-semestre-2026",
    "pdf": [
     "https://www.brvm.org/sites/default/files/20260805_-_etats_financiers_-_1er_semestre_2026_-_boa_bf.pdf"
    ],
-   "caracteres": 0
+   "caracteres": 4312,
+   "ocr": true
   },
   "uniwax-ci-etats-financiers-exercice-2025": {
    "type": "etats-financiers",
@@ -65,12 +69,13 @@
    "societe": "CORIS BANK INTERNATIONAL BF",
    "document": "Etats financiers - Exercice 2025",
    "periode": "Exercice 2025",
-   "date_publication": "2026-11-21",
+   "date_publication": "2026-07-07",
    "fiche": "https://www.brvm.org/fr/coris-bank-international-bf-etats-financiers-exercice-2025",
    "pdf": [
     "https://www.brvm.org/sites/default/files/20260707_-_etats_financiers_-_exercice_2025_-_coris_bank_international_bf.pdf"
    ],
-   "caracteres": 0
+   "caracteres": 18665,
+   "ocr": true
   },
   "erium-ci-etats-financiers-exercice-2025": {
    "type": "etats-financiers",
