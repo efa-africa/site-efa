@@ -63,6 +63,22 @@
     return { pct: pire, de: de, a: a };
   }
 
+  /* ---------- « EFA analyse » : quelques secondes visibles avant le résultat ---------- */
+  // etapes : [[libellé, détail chiffré]] ; chaque étape s'affiche, se coche, puis la suivante démarre.
+  function analyse(out, etapes, fin) {
+    var rapide = false; try { rapide = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    var pas = rapide ? 220 : 620, n = etapes.length;
+    out.innerHTML = '<div class="mb-analyse" role="status" aria-live="polite"><div class="mb-an-tete"><span class="mb-roue" aria-hidden="true"></span><div><p class="mb-k">EFA analyse</p><p class="mb-an-t">Reconstitution de l’opération, séance par séance…</p></div></div>' +
+      '<div class="mb-barre"><i style="width:0"></i></div><ol class="mb-etapes">' + etapes.map(function (e) { return '<li><span class="mb-coche" aria-hidden="true"></span><b>' + e[0] + '</b><small>' + (e[1] || '') + '</small></li>'; }).join('') + '</ol></div>';
+    var L = out.querySelectorAll('.mb-etapes li'), barre = out.querySelector('.mb-barre i'), i = 0;
+    out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    (function suivant() {
+      if (i > 0) L[i - 1].className = 'mb-fait';
+      if (i < n) { L[i].className = 'mb-encours'; barre.style.width = Math.round((i + 1) / n * 100) + '%'; i++; setTimeout(suivant, pas + Math.random() * 180); }
+      else setTimeout(fin, rapide ? 100 : 350);
+    })();
+  }
+
   /* ---------- Courbes (SVG, sans bibliothèque) ---------- */
   // series : [{nom, coul, pts:[[date, valeur]], tirets}] ; opts : {ref (ligne horizontale), marque (date), h}
   function courbe(series, opts) {
@@ -134,7 +150,13 @@
     var I = COMPO.serie, i0 = premierApres(I, d0), i1 = dernierAvant(I, dFin);
     if (i0 < 0 || i1 <= i0) { out.innerHTML = '<p class="mb-err">Choisissez des dates entre le ' + dt(I[0][0]) + ' et le ' + dt(DERNIER) + '.</p>'; return; }
     var idx = I.slice(i0, i1 + 1);
-    if (code === 'IDX') { rendreIndice(M, fa, fv, g, idx); return; }
+    if (code === 'IDX') {
+      if (!defiler) { rendreIndice(M, fa, fv, g, idx); return; }
+      analyse(out, [['Lecture de l’indice', 'BRVM Composite, ' + f0(idx.length) + ' séances du ' + dc(idx[0][0]) + ' au ' + dc(idx[idx.length - 1][0])],
+        ['Frais d’achat, de vente et de garde', 'appliqués au montant de ' + fF(M)], ['Dividendes réinvestis', TR && TR.serie[0][0] <= idx[0][0] ? 'Composite Total Return' : 'indice publié seulement depuis le 2 janvier 2026'],
+        ['Pire passage', pc(baisseMax(idx).pct)]], function () { rendreIndice(M, fa, fv, g, idx); });
+      return;
+    }
     out.innerHTML = '<p class="mb-attente">Calcul en cours…</p>';
     fiche(code).then(function (f) {
       var H = serieCours(f), k0 = premierApres(H, d0), k1 = dernierAvant(H, dFin);
@@ -158,10 +180,19 @@
       var tr = TR ? (TR.serie[0][0] <= jAchat ? perfIndice(TR.serie, jAchat, jFin) : null) : null;
       var bm = baisseMax(h);
       var courbeV = h.map(function (x) { var dv = 0; divs.forEach(function (d) { if (d.detachement <= x[0]) dv += d.montant * nAdj; }); return [x[0], nAdj * x[1] + dv + reste]; });
-      rendre({ f: f, code: code, nom: MK.titre(f), M: M, jAchat: jAchat, jFin: jFin, prixEpoque: prixEpoque, P1: P1, P1epoque: P1 * Kfin, nEpoque: nEpoque, nFin: nFin, ops: opsPeriode,
+      var RR = { f: f, code: code, nom: MK.titre(f), M: M, jAchat: jAchat, jFin: jFin, prixEpoque: prixEpoque, P1: P1, P1epoque: P1 * Kfin, nEpoque: nEpoque, nFin: nFin, ops: opsPeriode,
         cout: cout, fraisA: fraisA, reste: reste, divs: divs, totDiv: totDiv, V1: V1, fraisV: fraisV, garde: garde, final: final, res: res, annees: annees,
-        prixSeul: prixSeul, marche: marche, tr: tr, bm: bm, courbe: courbeV, idx: idx, seuil: (M - reste) / nAdj });
-      if (defiler) out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        prixSeul: prixSeul, marche: marche, tr: tr, bm: bm, courbe: courbeV, idx: idx, seuil: (M - reste) / nAdj };
+      if (!defiler) { rendre(RR); return; }
+      analyse(out, [
+        ['Lecture des cours officiels', f0(h.length) + ' séances de ' + esc(MK.titre(f)) + ', du ' + dc(jAchat) + ' au ' + dc(jFin)],
+        ['Opérations sur titres', opsPeriode.length ? opsTexte(opsPeriode) + ' : cours ajustés' : 'aucun fractionnement ni action gratuite sur la période'],
+        ['Achat reconstitué', f0(nEpoque) + ' action' + (nEpoque > 1 ? 's' : '') + ' à ' + fF(prixEpoque) + ', frais d’achat compris'],
+        ['Dividendes détachés', divs.length ? divs.length + ' versement' + (divs.length > 1 ? 's' : '') + ', ' + fF(totDiv) + ' encaissés' : 'aucun dividende sur la période'],
+        ['Frais de vente et de garde', fF(fraisV + garde) + ' sur ' + annees.toFixed(1).replace('.', ',') + ' an' + (annees >= 2 ? 's' : '')],
+        ['Pire passage', pc(bm.pct) + ' entre un plus haut et un plus bas'],
+        ['Comparaison avec le marché', 'BRVM Composite sur ' + f0(idx.length) + ' séances' + (tr != null ? ', et Composite Total Return' : '')]
+      ], function () { rendre(RR); });
     }).catch(function () { out.innerHTML = '<p class="mb-err">Les cours de cette société ne se chargent pas. Réessayez dans un instant.</p>'; });
   }
 
@@ -342,7 +373,7 @@
     PF = lirePf(); if (!PF.length) PF = [{ c: 'SGBC', q: '', p: '', d: '' }];
     $('pf-ajout').addEventListener('click', function () { lirePfForm(); PF.push({ c: 'PALC', q: '', p: '', d: '' }); ligne(); });
     $('pf-vider').addEventListener('click', function () { PF = [{ c: 'SGBC', q: '', p: '', d: '' }]; ecrirePf([]); ligne(); });
-    $('pf-form').addEventListener('submit', function (e) { e.preventDefault(); lirePfForm(); ecrirePf(PF); calculerPf(); });
+    $('pf-form').addEventListener('submit', function (e) { e.preventDefault(); lirePfForm(); ecrirePf(PF); calculerPf(true); });
     ligne();
   }
   function ligne() {
@@ -365,11 +396,18 @@
       return { c: el.querySelector('.pf-c').value, q: el.querySelector('.pf-q').value.trim(), p: el.querySelector('.pf-p').value.trim(), d: el.querySelector('.pf-d').value };
     });
   }
-  function calculerPf() {
+  function calculerPf(anime) {
     var L = PF.filter(function (r) { return num(r.q) > 0 && num(r.p) > 0; });
     var out = $('pf-res');
     if (!L.length) { out.innerHTML = '<p class="mb-note">Saisissez au moins une ligne (société, nombre d’actions, prix d’achat), puis « Calculer ».</p>'; return; }
     Promise.all(L.map(function (r) { return fiche(r.c); })).then(function (FS) {
+      if (anime) {
+        var nd = L.filter(function (r) { return r.d; }).length;
+        return analyse(out, [['Lecture de vos lignes', L.length + ' société' + (L.length > 1 ? 's' : '') + ', ' + f0(L.reduce(function (s, r) { return s + num(r.q); }, 0)) + ' actions'],
+          ['Derniers cours de clôture', 'séance du ' + dc(DERNIER)], ['Opérations sur titres', 'fractionnements et actions gratuites depuis vos dates d’achat'],
+          ['Dividendes encaissés', nd ? nd + ' ligne' + (nd > 1 ? 's' : '') + ' datée' + (nd > 1 ? 's' : '') : 'ajoutez vos dates d’achat pour les compter'],
+          ['Comparaison avec le marché', 'BRVM Composite aux mêmes dates']], function () { calculerPf(false); });
+      }
       var tot = { achat: 0, val: 0, div: 0, marche: 0, marcheBase: 0 }, avert = [], rows = '';
       L.forEach(function (r, k) {
         var f = FS[k], H = f.historique, P1 = H[H.length - 1][1], q = num(r.q), p = num(r.p), K = 1, ops = [];

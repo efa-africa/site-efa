@@ -386,4 +386,4 @@
 /* Pastille « Mon EFA » (efa-moi.js) */
 (function () { try { if (window.EFA_MOI || document.querySelector('script[src^="efa-moi.js"],script[src^="/efa-moi.js"]')) return; var s = document.createElement("script"); s.src = "/efa-moi.js?v=20261116c"; s.defer = true; document.head.appendChild(s); } catch (e) {} })();
 /* Espaces EFA (produits EFA au bon moment) */
-(function(){ if(document.querySelector('script[src^="efa-annonces.js"]')) return; var s=document.createElement('script'); s.src='efa-annonces.js?v=20261120c'; s.defer=true; (document.head||document.documentElement).appendChild(s); })();
+(function(){ if(document.querySelector('script[src^="efa-annonces.js"]')) return; var s=document.createElement('script'); s.src='efa-annonces.js?v=20261121a'; s.defer=true; (document.head||document.documentElement).appendChild(s); })();
