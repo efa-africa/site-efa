@@ -84,6 +84,8 @@ def main():
     liste = []
     for code in sorted(par_titre):
         serie = par_titre[code]; dates = sorted(serie)
+        if dates[-1] < (dj - datetime.timedelta(days=30)).isoformat():
+            continue   # titre qui n'est plus coté (radié ou retiré) : on le garde dans la base, pas dans la liste
         s = REF.get(code, {'code': code, 'nom': code})
         perf = {}
         for k, d0 in reperes.items():
@@ -130,7 +132,7 @@ def main():
         ytd = round((d[1] / b - 1) * 100, 2) if b and d[1] else None
         return {'nom': n, 'niveau': d[1], 'var_jour': d[2], 'var_ytd': ytd, 'date': d[0], 'serie': [[x[0], x[1]] for x in s]}
     principaux = [bloc(n) for n in ('BRVM - COMPOSITE', 'BRVM-30', 'BRVM - PRESTIGE') if n in series]
-    secteurs = [bloc(n) for n in series if cat[n] == 'sectoriel']
+    secteurs = [bloc(n) for n in series if cat[n] == 'sectoriel' and max(x[0] for x in series[n]) == jour]
     vals = [x for x in liste if x['date'] == jour and x['var_jour'] is not None]
     jour_json = {'date': jour, 'genere_le': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'), 'indices': principaux, 'secteurs': secteurs,
                  'hausses': [x['code'] for x in sorted(vals, key=lambda x: -x['var_jour'])[:5]],

@@ -15,7 +15,7 @@
   function json(p) { return fetch(p, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw r; return r.json(); }); }
   /* Courbe : bleu nuit 2 px, zone à 6 % */
   /* Repère d'une date sur l'axe : jj/mm (et l'année si la courbe change d'année) */
-  function jm(d, an) { var p = d.split('-'); return p[2] + '/' + p[1] + (an ? '/' + p[0].slice(2) : ''); }
+  function jm(d, an) { var p = d.split('-'); return an ? MOIS[+p[1] - 1] + ' ' + p[0].slice(2) : p[2] + '/' + p[1]; }
   function reperes(n, max) { if (n <= max) { var t = []; for (var i = 0; i < n; i++) t.push(i); return t; } var r = [], pas = (n - 1) / (max - 1); for (var k = 0; k < max; k++) r.push(Math.round(k * pas)); return r; }
   /* Courbe : bleu nuit 2 px, zone à 6 %, avec l'axe des dates (un repère par séance, ou espacés si la période est longue) */
   function spark(vals, w, h, label, dates) {
@@ -23,7 +23,8 @@
     var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals), r = mx - mn || 1, n = vals.length;
     var pts = vals.map(function (v, i) { return [(i / (n - 1)) * w, h - 3 - ((v - mn) / r) * (h - 6)]; });
     var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
-    var R = dates && dates.length === n ? reperes(n, n <= 7 ? 7 : (w > 260 ? 7 : 5)) : [], an = dates && dates.length && dates[0].slice(0, 4) !== dates[n - 1].slice(0, 4);
+    var an = dates && dates.length && dates[0].slice(0, 4) !== dates[n - 1].slice(0, 4);
+    var R = dates && dates.length === n ? reperes(n, an ? 4 : (n <= 7 ? 7 : (w > 260 ? 7 : 5))) : [];
     var grille = R.map(function (i) { var x = (i / (n - 1)) * w; return '<line x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="0" y2="' + h + '" stroke="#dfe6ee" stroke-width="1" vector-effect="non-scaling-stroke"/>'; }).join('');
     var svg = '<svg class="mk-spark" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" role="img" aria-label="' + esc(label || '') + '">' + grille + '<path d="' + d + ' L' + w + ' ' + h + ' L0 ' + h + ' Z" fill="rgba(11,18,32,.06)"/><path d="' + d + '" fill="none" stroke="#0b1220" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>';
     if (!R.length) return svg;

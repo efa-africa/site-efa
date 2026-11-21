@@ -15,7 +15,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collecte import CHAMPS_ACTIONS, CHAMPS_INDICES, DOSSIER, nombre, variation_depuis_31_decembre  # noqa: E402
 
-LIGNE_ACTION = re.compile(r"^\s+(?:(?:CB|CD|ENE|FIN|IND|SP|SPU|TEL)\s+)?([A-Z][A-Z0-9]{2,6})\s{2,}(.*)$")
+SECT = r"(?:AGR|AUT|CB|CD|DIS|ENE|FIN|IND|SP|SPU|TEL|TRA)"
+LIGNE_ACTION = re.compile(r"^(?:\s+(?:" + SECT + r"\s+)?|" + SECT + r"\s+)([A-Z][A-Z0-9]{2,6})\s{2,}(.*)$")
 PRINCIPAUX = {"COMPOSITE": "BRVM - COMPOSITE", "30": "BRVM-30", "PRESTIGE": "BRVM - PRESTIGE"}
 TABLE_INDICES = re.compile(r"^\s*((?:B?RVM)\s*[-–²\x03]+\s*[A-Z ]+?|BRVM-[A-Z]+)\s*(?:\(\*+\))?\s{2,}(\d+)\s{2,}([\d\s,.]+[.,]\d+)\s{2,}(-?[\d\s,.]*[.,]\d+)\s*%")
 
@@ -34,7 +35,9 @@ def num(t):
 
 
 ANGLAIS = {"CONSUMER DISCRETIONARY": "CONSOMMATION DISCRETIONNAIRE", "CONSUMER STAPLES": "CONSOMMATION DE BASE",
-           "ENERGY": "ENERGIE", "FINANCIALS": "SERVICES FINANCIERS", "INDUSTRIALS": "INDUSTRIELS", "UTILITIES": "SERVICES PUBLICS"}
+           "ENERGY": "ENERGIE", "FINANCIALS": "SERVICES FINANCIERS", "INDUSTRIALS": "INDUSTRIELS", "UTILITIES": "SERVICES PUBLICS",
+           "FINANCIAL SERVICES": "FINANCES", "INDUSTRY": "INDUSTRIE", "OTHER SECTORS": "AUTRES SECTEURS",
+           "TRANSPORTATION": "TRANSPORT", "PUBLIC SERVICES PUBLICS": "SERVICES PUBLICS", "PUBLIC SERVICES": "SERVICES PUBLICS"}
 
 
 def nom_indice(brut):
@@ -86,7 +89,7 @@ def lire_indices(texte, jour):
     res = {}
     lignes = texte.split("\n")
     # Bandeau : BRVM COMPOSITE / BRVM 30 / BRVM PRESTIGE puis « Variation Jour »
-    for i, l in enumerate(lignes[:40]):
+    for i, l in enumerate(lignes[:400]):
         noms = re.findall(r"BRVM (COMPOSITE|30|PRESTIGE)\s+([\d\s,.]+[.,]\d+)", l)
         if len(noms) == 3:
             pos = []
@@ -99,10 +102,19 @@ def lire_indices(texte, jour):
             for k, (n, v) in enumerate(noms):
                 res[PRINCIPAUX[n]] = (num(v), num(pos[k][1]) if len(pos) == 3 else None)
             break
+    ancien = jour < "2025-01-01"
     for l in lignes:
+        if re.search(r"SECTORIELS ANCIENS|OLD SECTOR", l, re.I):
+            ancien = True
+        elif re.search(r"SECTORIELS NOUVEAUX|NEW SECTOR", l, re.I):
+            ancien = False
         m = TABLE_INDICES.match(l)
         if m:
             n = nom_indice(m.group(1))
+            if n == "BRVM - CONSOMMATION":
+                n = "BRVM - CONSOMMATION DISCRETIONNAIRE"
+            if n == "BRVM - SERVICES PUBLICS" and ancien:
+                n = "BRVM - SERVICES PUBLICS (ancien)"
             if n not in res:
                 res[n] = (num(m.group(3)), num(m.group(4)))
     out = []
