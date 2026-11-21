@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="clone/assets/efa-oiseau.png">
+<title>Mon prochain pas · EFA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="clone/prochain-pas.css?v=20261121b">
+<script src="clone/prochain-pas.js?v=20261121a" defer></script>
+</head>
+<body>
+<p class="pp-maquette">Maquette de l’accueil · non publiée · à valider</p>
+<header class="pp-tete"><div class="pp-in">
+<a class="pp-logo" href="accueil-v3.html" aria-label="EFA, accueil"><img src="clone/assets/efa-oiseau.png" alt=""><b>efa<i>.</i></b></a>
+<span class="pp-sign">La finance, avec nos réalités.</span>
+<nav class="pp-nav" aria-label="Navigation principale"><a href="atelier-ou-passe-mon-argent.html">Comprendre mon argent</a><a href="generateur-de-projet.html">Lancer mon activité</a><a href="ma-brvm.html">Ma BRVM</a><a href="ateliers.html">Me former</a><a href="news.html">L’actu</a></nav>
+<a class="pp-moi" href="mon-efa.html">Mon EFA</a>
+<a class="pp-burger" href="index.html" aria-label="Menu"><span></span><span></span><span></span></a>
+</div></header>
+<main>
+<section class="pp-hero"><div class="pp-in" style="padding-top:22px;padding-bottom:26px"><div class="pp-txt">
+<p class="pp-fil"><a href="accueil-v3.html">Accueil</a> / Mon prochain pas</p>
+<h1 class="pp-h1" style="font-size:clamp(30px,4.4vw,48px);margin:0 0 16px"><span>Une question.</span><span class="pp-ciel">Un prochain pas.</span></h1>
+<form class="pp-q" action="prochain-pas.html" method="get" role="search">
+<label for="pp-q" class="pp-sr" style="position:absolute;left:-9999px">Votre question</label>
+<input id="pp-q" name="q" autocomplete="off" placeholder="Posez votre question…" value="">
+<button class="pp-go" type="submit">Trouver mon prochain pas →</button></form>
+</div></div></section>
+<section class="pp-rep"><div class="pp-in" id="pp-rep" aria-live="polite"></div></section>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var P=window.EFA_PROCHAIN_PAS,q=(new URLSearchParams(location.search).get('q')||'').trim(),box=document.getElementById('pp-rep'),inp=document.getElementById('pp-q');
+  inp.value=q;
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var it=q?P.comprendre(q):null,m=q?P.montant(q):null,h='';
+  var autres=P.INTENTS.filter(function(x){return !it||x.id!==it.id}).slice(0,6).map(function(x){return '<a href="'+x.outil.url(null)+'">'+esc(x.outil.sur)+'</a>'}).join('');
+  if(it){
+    h+='<div class="pp-compris"><div><p class="pp-k">Voici ce que j’ai compris</p><p>'+it.compris(m)+'</p></div></div>';
+    h+='<div class="pp-reco"><div><p class="pp-k">L’outil pour avancer</p><h2>'+esc(it.outil.nom)+'</h2><p class="pp-sur">'+esc(it.outil.sur)+'</p><p>'+it.outil.pourquoi(m)+'</p></div><a class="pp-cta" href="'+it.outil.url(m)+'">'+esc(it.outil.cta)+' →</a></div>';
+    var cartes=it.aussi.map(function(a){return '<a class="pp-carte" href="'+a.url+'"><p class="pp-k">'+esc(a.t)+'</p><h3>'+esc(a.nom)+'</h3><p>'+esc(a.d)+'</p><span class="pp-lien">Ouvrir →</span></a>'});
+    if(it.autre)cartes.push('<a class="pp-carte" href="'+it.autre.url(m)+'"><p class="pp-k">Une autre décision ?</p><h3>'+esc(it.autre.nom)+'</h3><p>'+esc(it.autre.d)+'</p><span class="pp-lien">Explorer →</span></a>');
+    if(cartes.length)h+='<div class="pp-deux">'+cartes.join('')+'</div>';
+    h+='<div class="pp-autres"><h3>Ce n’est pas tout à fait ça ?</h3><div class="pp-chips">'+autres+'</div></div>';
+  } else {
+    h+='<div class="pp-compris"><div><p class="pp-k">Je n’ai pas encore bien compris</p><p>'+(q?'« '+esc(q)+' » : précisez ce que vous voulez faire avec votre argent, ou choisissez une piste.':'Écrivez ce que vous cherchez à faire avec votre argent.')+'</p></div></div>';
+    h+='<div class="pp-autres"><h3>Les pistes les plus demandées</h3><div class="pp-chips">'+P.INTENTS.slice(0,8).map(function(x){return '<a href="'+x.outil.url(null)+'">'+esc(x.outil.sur)+'</a>'}).join('')+'</div></div>';
+    if(q)h+='<p class="pp-ely">Chercher « '+esc(q)+' » dans <a href="question.html?q='+encodeURIComponent(q)+'">les contenus gratuits d’EFA</a>.</p>';
+  }
+  h+='<p class="pp-ely">Besoin d’en parler ? <a href="ely.html">Posez votre question à Ely</a>, le guide d’EFA.</p>';
+  box.innerHTML=h;
+});
+</script>
+</body></html>
